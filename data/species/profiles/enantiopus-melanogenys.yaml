@@ -1,0 +1,3007 @@
+schemaVersion: 1
+id: enantiopus-melanogenys
+legacyIds:
+- 43
+status: described
+taxonomy:
+  validName: Enantiopus melanogenys
+  genus: Enantiopus
+  species: melanogenys
+  author: '(Boulenger, 1898)'
+  source: &id040
+    kind: catalog-of-fishes
+    title: 'Eschmeyer''s Catalog of Fishes: Enantiopus melanogenys'
+    url: 'https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Enantiopus&species=melanogenys'
+    archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-8acc99f3/2026-10-14T220305Z
+    accessed: '2026-10-13'
+  synonyms:
+  - name: Ectodus melanogenys
+    note: Original combination.
+  - name: Ectodus longianalis
+    note: Current catalog status is synonym of Enantiopus melanogenys.
+  - name: Xenotilapia melanogenys
+    note: Earlier valid combination; the Catalog of Fishes currently accepts Enantiopus melanogenys.
+  legacyNames:
+  - Enantiopus melanogenys
+  note: The current-status line in the Catalog of Fishes accepts Enantiopus melanogenys. FishBase and Seriously
+    Fish use Xenotilapia melanogenys for the same described species. Ectodus melanogenys is the original combination
+    and Ectodus longianalis is a catalog synonym. Enantiopus albini has uncertain status and is not added as
+    a confirmed synonym. The undescribed Enantiopus sp. 'Kilesa' remains separate. The 2012 phylogeny places
+    Enantiopus within the Xenotilapia lineage; it does not establish that Kilesa and melanogenys are one species.
+names:
+  trade:
+    en:
+    - Melanogenys
+    - Black-chinned sand cichlid
+    - Black-chinned Xenotilapia
+    - Sand diver cichlid
+variants:
+- name: Bilinge Bay
+  kind: locality
+- name: Cape Nangu
+  kind: locality
+- name: Chisanse
+  kind: locality
+- name: Chituta Bay
+  kind: locality
+- name: Isanga Bay
+  kind: locality
+- name: Karilani Island
+  kind: locality
+- name: Kasanga
+  kind: locality
+- name: Kipili
+  kind: locality
+- name: Mtosi
+  kind: locality
+- name: Sibwesa
+  kind: locality
+- name: Utinta
+  kind: locality
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Tanganyika
+      waterbody: lake-tanganyika
+      localities:
+      - Moliro (type locality)
+      - Isanga Bay
+      - Kambwimba
+      - Nyanza Lac
+      - Mtosi Bay
+    confidence: high
+    rationale: 'The Catalog of Fishes, FishBase and CRC agree on Lake Tanganyika endemism. The waterbody label
+      is normalized to lake-tanganyika; locality records and the public Andersen account supply the named sites.
+      Nearly lake-wide distribution does not include the separate western-shore Kilesa taxon.'
+    sources:
+    - &id001
+      kind: database
+      title: 'FishBase species summary: Enantiopus melanogenys'
+      url: 'https://www.fishbase.se/summary/Enantiopus-melanogenys.html'
+      archived: fishbase.se/summary/enantiopus-melanogenys.html/2026-10-14T174403Z
+      accessed: '2026-10-13'
+    - &id002
+      kind: website
+      title: 'Lake Tanganyika cichlids: Enantiopus melanogenys ''Karilani Island'''
+      url: 'https://www.tanganyika.si/TanganjikaByLocations/Karilani%20Island/slides/Enantiopus%20melanogenys%20%27Karilani%20Island%27.html'
+      archived: tanganyika.si/tanganjikabylocations/karilani_island/slides/enantiopus_melanogenys__karilani_island_.html/2026-10-14T220335Z
+      accessed: '2026-10-13'
+    - kind: website
+      title: 'Lake Tanganyika cichlids species list: Enantiopus melanogenys localities'
+      url: 'https://www.tanganyika.si/Tanganjika/Enantiopus/Enantiopus%20melanogenys/index.html'
+      archived: tanganyika.si/tanganjika/enantiopus/enantiopus_melanogenys/index.html/2026-10-14T220305Z
+      accessed: '2026-10-13'
+    - &id004
+      kind: catalog-of-fishes
+      title: 'Eschmeyer''s Catalog of Fishes, species in the genus Enantiopus'
+      url: 'https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Enantiopus'
+      accessed: '2026-10-15'
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-f1abbf39/2026-10-14T171333Z
+    - &id006
+      kind: database
+      title: 'Cichlid Room Companion, Enantiopus melanogenys (public part)'
+      url: 'https://cichlidae.com/species.php?id=xYYFvKjnCtYQrXQ7T5p7-w'
+      accessed: '2026-10-15'
+      archived: cichlidae.com/species.php/q-3d5ff925/2026-10-14T220314Z
+    - &id003
+      kind: website
+      title: 'tanganyika.si, Enantiopus melanogenys Isanga Bay'
+      url: 'https://www.tanganyika.si/TanganjikaByLocations/Isanga%20Bay/slides/Enantiopus%20melanogenys%20%27Isanga%20Bay%27.html'
+      accessed: '2026-10-15'
+      archived: tanganyika.si/tanganjikabylocations/isanga_bay/slides/enantiopus_melanogenys__isanga_bay_.html/2026-10-14T220318Z
+    - &id005
+      kind: database
+      title: 'FishBase species summary, Xenotilapia melanogenys'
+      url: 'https://www.fishbase.se/summary/Xenotilapia-melanogenys.html'
+      accessed: '2026-10-13'
+      archived: fishbase.se/summary/xenotilapia-melanogenys.html/2026-10-14T220256Z
+    - &id013
+      kind: website
+      title: 'Lake Tanganyika cichlids, Enantiopus melanogenys account'
+      url: 'https://www.tanganyika.si/Tanganjika/Enantiopus/Enantiopus%20melanogenys/slides/Enantiopus%20melanogenys.html'
+      accessed: '2026-10-13'
+      archived: tanganyika.si/tanganjika/enantiopus/enantiopus_melanogenys/slides/enantiopus_melanogenys.html/2026-10-14T220301Z
+    - &id045
+      kind: catalog-of-fishes
+      title: 'Eschmeyer''s Catalog of Fishes, species in the genus Xenotilapia, checked as alternate placement'
+      url: 'https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Xenotilapia'
+      accessed: '2026-10-13'
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-446c8131/2026-10-14T171356Z
+    - &id007
+      kind: database
+      title: 'Seriously Fish: Xenotilapia melanogenys'
+      url: 'https://www.seriouslyfish.com/species/xenotilapia-melanogenys/'
+      accessed: '2026-10-13'
+      archived: seriouslyfish.com/species/xenotilapia-melanogenys/2026-10-14T220256Z
+    - &id008
+      kind: database
+      title: 'AquaInfo: Enantiopus melanogenys'
+      url: 'https://www.aquainfo.nl/en/article/xenotilapia-melanogenys/'
+      accessed: '2026-10-13'
+      archived: aquainfo.nl/en/article/xenotilapia-melanogenys/2026-10-14T220333Z
+    - &id009
+      kind: website
+      title: 'Atlarium: Enantiopus melanogenys aquarium care'
+      url: 'https://atlarium.bio/en/catalog/fish/enantiopus-melanogenys'
+      accessed: '2026-10-13'
+      archived: atlarium.bio/en/catalog/fish/enantiopus-melanogenys/2026-10-14T220433Z
+    - &id010
+      kind: forum
+      title: 'Cichlid of the Month: Enantiopus melanogenys'
+      url: 'https://www.aquariacentral.com/forums/threads/cichlid-of-the-month-enantiopus-melanogenys.99518/'
+      accessed: '2026-10-13'
+      archived: aquariacentral.com/forums/threads/cichlid-of-the-month-enantiopus-melanogenys.99518/2026-10-14T220322Z
+    - &id032
+      kind: literature
+      title: 'Kidd, M. R., Duftner, N., Koblmuller, S., Sturmbauer, C. and Hofmann, H. A. (2012). Repeated
+        Parallel Evolution of Parental Care Strategies within Xenotilapia, a Genus of Cichlid Fishes from Lake
+        Tanganyika.'
+      url: 'https://doi.org/10.1371/journal.pone.0031236'
+      accessed: '2026-10-13'
+      archived: doi.org/10.1371_journal.pone.0031236/2026-10-14T174550Z
+    - &id030
+      kind: archive
+      title: cichlids.com forum thread 14037
+      url: 'https://www.cichlids.com/disc/read.php?2,14037'
+      accessed: '2026-10-13'
+    - &id041
+      kind: database
+      title: 'Curated hybrid-group register, data/species/hybrid-groups.yaml'
+      accessed: '2026-10-13'
+    evidence:
+    - source: *id001
+      value: 'Lake Tanganyika, widespread and endemic'
+    - source: *id002
+      value: Lake-wide distribution in Lake Tanganyika
+    - source: *id001
+      value: 'Lake Tanganyika, widespread'
+    - source: *id003
+      value: 'Lake Tanganyika, lake-wide, type locality Moliro'
+    - source: *id004
+      value: 'Eastern Africa: Lake Tanganyika'
+    - source: *id004
+      value:
+        continent: Africa
+        region: Lake Tanganyika
+        waterbody: lake-tanganyika
+    - source: *id005
+      value:
+        continent: Africa
+        region: Lake Tanganyika
+        waterbody: lake-tanganyika
+    - source: *id006
+      value:
+        continent: Africa
+        region: Lake Tanganyika
+        waterbody: lake-tanganyika
+  temperatureC:
+    value:
+      min: 23
+      max: 29
+    confidence: high
+    rationale: 'The settled waterbody decision is 23 to 29 C, with high confidence. Verburg et al. measured
+      23.85 to 29.01 C in hourly near-surface records at Mpulungu, and the Plisnier studies describe seasonal
+      mixing and upwelling. This rounded lake envelope is the natural range. Species care recommendations of
+      24 to 27 C are retained separately and do not replace habitat measurements.'
+    sources:
+    - &id012
+      kind: literature
+      title: 'Plisnier, P.-D., Langenberg, V., Mwape, L., Chitamwembwa, D., Tshibangu, K. and Coenen, E. (1996).
+        Limnological sampling during an annual cycle at three stations on Lake Tanganyika (1993-1994). FAO/FINNIDA
+        Research for the Management of the Fisheries on Lake Tanganyika, GCP/RAF/271/FIN-TD/46.'
+      url: 'https://fao.org/fishery/static/LTR/FTP/TD46.PDF'
+      archived: fao.org/fishery/static/ltr/ftp/td46.pdf/2026-10-14T094054Z
+      accessed: '2026-10-12'
+    - &id011
+      kind: literature
+      title: 'Verburg, P., Huttula, T., Kakogozo, B., Kihakwi, A., Kotilainen, P., Makasa, L. and Peltonen,
+        A. (1997). Hydrodynamics of Lake Tanganyika and meteorological results. FAO/FINNIDA GCP/RAF/271/FIN-TD/59.'
+      url: 'https://fao.org/fishery/static/LTR/FTP/TD59.PDF'
+      archived: fao.org/fishery/static/ltr/ftp/td59.pdf/2026-10-14T094105Z
+      accessed: '2026-10-12'
+    - *id001
+    - &id014
+      kind: literature
+      title: 'Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and some
+        comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56.'
+      url: 'https://fao.org/fishery/static/LTR/FTP/TD56.PDF'
+      archived: fao.org/fishery/static/ltr/ftp/td56.pdf/2026-10-14T094059Z
+      accessed: '2026-10-12'
+    - &id015
+      kind: literature
+      title: 'Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake level
+        and paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late Holocene and modern
+        stromatolites. GSA Bulletin 109(4), 444-460 (Table 1, north basin surface water chemistry).'
+      url: 'https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf'
+      archived: awramik.faculty.geol.ucsb.edu/pubs/cohe9740.pdf/2026-10-14T094107Z
+      accessed: '2026-10-12'
+    - &id016
+      kind: literature
+      title: 'Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University.'
+      url: 'https://edepot.wur.nl/121977'
+      archived: edepot.wur.nl/121977/2026-10-14T094112Z
+      accessed: '2026-10-12'
+    - &id017
+      kind: literature
+      title: 'Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources
+        of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data after
+        Talling and Talling (1965).'
+      url: 'https://www.fao.org/4/t0473e/T0473E10.htm'
+      archived: fao.org/4/t0473e/t0473e10.htm/2026-10-14T094112Z
+      accessed: '2026-10-12'
+    - *id005
+    - *id007
+    - *id008
+    - *id009
+    - *id010
+    evidence:
+    - source: *id011
+      value:
+        min: 23
+        max: 29
+      note: 'Lake surface and shallow-water measurements; rounded habitat envelope synthesized across lake
+        studies, not an exact interval quoted from this source'
+    - source: *id001
+      value:
+        min: 25
+        max: 25
+      note: Species environment entry
+    - source: *id012
+      value:
+        min: 23
+        max: 29
+      note: 'lake water measurements; rounded habitat envelope synthesized across lake studies, not an exact
+        interval quoted from this source'
+    - source: *id011
+      value:
+        min: 23
+        max: 29
+      note: 'Lake waterbody table range, with seasonal upwelling in the south.; rounded habitat envelope synthesized
+        across lake studies, not an exact interval quoted from this source'
+    - source: *id011
+      value:
+        min: 23
+        max: 29
+      note: 'lake natural range; rounded lake synthesis attributed to the underlying limnological study; rounded
+        habitat envelope synthesized across lake studies, not an exact interval quoted from this source'
+    - source: *id005
+      value:
+        min: 25
+        max: 25
+      note: habitat summary gives 25 C
+    - source: *id007
+      value:
+        min: 24
+        max: 27
+      note: aquarium recommendation
+    - source: *id008
+      value:
+        min: 24
+        max: 26
+      note: aquarium recommendation
+    - source: *id009
+      value:
+        min: 24
+        max: 27
+      note: aquarium recommendation
+    - source: *id010
+      value:
+        min: 25.6
+        max: 27.2
+      note: 'aquarium recommendation, Fahrenheit converted'
+    - source: *id011
+      value:
+        min: 23.85
+        max: 29.01
+      note: Hourly readings at one metre at the Mpulungu buoy; habitat envelope rounded to 23 to 29 C.
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value:
+        min: 23
+        max: 30
+      confidence: low
+      rationale: 'The tally decides 23 to 30 C with unanimous agreement within the one-degree threshold and
+        low confidence. Generator and checker-a proposed 22 to 30 C; checker-b and checker-c proposed 23 to
+        29 C. The midpoint endpoints are 22.5 and 29.5 C, rounded by the tally to 23 and 30 C. The result is
+        narrower at the lower end than the 22 to 30 proposals, which were inferred margins rather than measurements.
+        Seriously Fish and the retailer recommend 24 to 27 C, AquaInfo and Aquablog 24 to 26 C, and the Swedish
+        register 24 to 27.5 C. The natural 23 to 29 C range is included, but 30 C is an inferred margin with
+        no demonstrated chronic threshold; routine keeping near 24 to 27 C is better supported.'
+      sources:
+      - *id010
+      - *id001
+      - &id018
+        kind: database
+        title: 'Nordiska Ciklidsällskapet species register: Xenotilapia melanogenys'
+        url: 'https://www.ciklid.org/artregister/art.php?ID=820'
+        archived: ciklid.org/artregister/art.php/q-dd1cc828/2026-10-14T220307Z
+        accessed: '2026-10-13'
+      - &id019
+        kind: website
+        title: 'Tropical Fish Co: Xenotilapia melanogenys - Kigoma'
+        url: 'https://tropicalfishco.co.uk/products/buy-fish-online-tropical-for-sale-uk-xenotilapia'
+        archived: tropicalfishco.co.uk/products/buy-fish-online-tropical-for-sale-uk-xenotilapia/2026-10-14T220307Z
+        accessed: '2026-10-13'
+      - &id020
+        kind: website
+        title: 'Aquablog, Fiche du poisson Enantiopus melanogenys'
+        url: 'https://www.aquablog.fr/enantiopus-melanogenys/'
+        accessed: '2026-10-15'
+        archived: aquablog.fr/enantiopus-melanogenys/2026-10-14T220321Z
+      - &id021
+        kind: forum
+        title: 'Cichlid-Forum species profile, Enantiopus melanogenys (Kambwimba)'
+        url: 'https://www.cichlid-forum.com/threads/enantiopus-melanogenys-kambwimba.457613/'
+        accessed: '2026-10-15'
+        archived: cichlid-forum.com/threads/enantiopus-melanogenys-kambwimba.457613/2026-10-14T220322Z
+      - *id012
+      - &id022
+        kind: database
+        title: 'Seriously Fish, Xenotilapia melanogenys'
+        url: 'https://www.seriouslyfish.com/species/xenotilapia-melanogenys'
+        accessed: '2026-10-13'
+        archived: seriouslyfish.com/species/xenotilapia-melanogenys/2026-10-14T175303Z
+      - *id013
+      - *id011
+      - *id007
+      - *id008
+      - *id009
+      - *id014
+      - *id015
+      - *id016
+      - *id017
+      evidence:
+      - source: *id010
+        value:
+          min: 25.6
+          max: 27.2
+        note: Aquarium recommendation converted from 78-81 F
+      - source: *id018
+        value:
+          min: 24
+          max: 27.5
+        note: Aquarium guidance
+      - source: *id019
+        value:
+          min: 24
+          max: 27
+        note: Aquarium listing
+      - source: *id020
+        value:
+          min: 24
+          max: 26
+        note: aquarium recommendation
+      - source: *id010
+        value:
+          min: 25.5
+          max: 27.2
+        note: aquarium recommendation (78 to 81 F)
+      - source: *id021
+        value:
+          min: 25
+          max: 26
+        note: aquarium recommendation (77 to 79 F)
+      - source: *id022
+        value:
+          min: 24
+          max: 27
+        note: Aquarium recommendation.
+      - source: *id011
+        value:
+          min: 23
+          max: 29
+        note: Natural range included by the rubric.
+      - source: *id007
+        value:
+          min: 24
+          max: 27
+        note: aquarium recommendation
+      - source: *id008
+        value:
+          min: 24
+          max: 26
+        note: aquarium recommendation
+      - source: *id009
+        value:
+          min: 24
+          max: 27
+        note: aquarium recommendation
+      - source: *id011
+        value:
+          min: 23
+          max: 29
+        note: natural range that tolerance must include; rounded lake synthesis attributed to the underlying
+          limnological study
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ph:
+    value:
+      min: 8.4
+      max: 9.4
+    confidence: high
+    rationale: 'The settled waterbody decision is pH 8.4 to 9.4, with high confidence. Plisnier et al. measured
+      8.47 to 9.40 at 40 m in the northern lake. FishBase gives a conflicting 7.5 to 8.5 species environment
+      summary and husbandry pages supply other intervals. The measured lake synthesis takes precedence for
+      natural water. Cohen et al. supply corroborating alkalinity chemistry rather than a direct measurement
+      of this full pH interval.'
+    sources:
+    - *id015
+    - *id001
+    - *id012
+    - *id005
+    - *id014
+    - *id011
+    - *id016
+    - *id017
+    - *id007
+    - *id008
+    - *id009
+    - *id010
+    evidence:
+    - source: *id015
+      value:
+        min: 8.4
+        max: 9.4
+      note: 'Lake pH range across surface and shallow measurements; rounded habitat envelope synthesized across
+        lake studies, not an exact interval quoted from this source'
+    - source: *id001
+      value:
+        min: 7.5
+        max: 8.5
+      note: 'Species environmental range, wider pH figures not available'
+    - source: *id012
+      value:
+        min: 8.4
+        max: 9.4
+      note: 'lake water measurements; rounded habitat envelope synthesized across lake studies, not an exact
+        interval quoted from this source'
+    - source: *id012
+      value:
+        min: 8.4
+        max: 9.4
+      note: 'Lake waterbody table range.; rounded habitat envelope synthesized across lake studies, not an
+        exact interval quoted from this source'
+    - source: *id005
+      value:
+        min: 7.5
+        max: 8.5
+      note: 'Species ecological pH range, lower and less alkaline than the measured lake table.'
+    - source: *id012
+      value:
+        min: 8.4
+        max: 9.4
+      note: 'lake natural range; rounded lake synthesis attributed to the underlying limnological study; rounded
+        habitat envelope synthesized across lake studies, not an exact interval quoted from this source'
+    - source: *id005
+      value:
+        min: 7.5
+        max: 8.5
+      note: habitat database summary
+    - source: *id007
+      value:
+        min: 7.5
+        max: 9.0
+      note: aquarium recommendation
+    - source: *id008
+      value:
+        min: 8.5
+        max: 9.0
+      note: aquarium recommendation
+    - source: *id009
+      value:
+        min: 8
+        max: 9
+      note: aquarium recommendation
+    - source: *id010
+      value:
+        min: 8.5
+        max: 9.4
+      note: aquarium recommendation
+    - source: *id012
+      value:
+        min: 8.47
+        max: 9.4
+      note: Annual observations at 40 m near Bujumbura and Uvira; rounds to the adopted lake envelope.
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value:
+        min: 7.5
+        max: 9.4
+      confidence: medium
+      rationale: 'The tally decides pH 7.5 to 9.4 with unanimous agreement within 0.3 pH units and medium confidence.
+        Generator proposed 7.5 to 9.5; checker-a, checker-b and checker-c proposed 7.5 to 9.4. The upper endpoint
+        follows the median and includes natural pH 8.4 to 9.4. Seriously Fish advises 7.5 to 9.0 and AquariaCentral
+        8.5 to 9.4. Aquablog also presents a wider 7 to 9 interval, whereas its narrative gives 7.5 to 8.5;
+        the identity-uncertain DRTA page reaches 9.5. These wider source figures remain cited but do not displace
+        the settled range. The endpoints are working husbandry bounds, not experimentally established failure
+        limits.'
+      sources:
+      - *id010
+      - &id023
+        kind: website
+        title: 'Aquablog species sheet: Enantiopus melanogenys'
+        url: 'https://aquablog.fr/enantiopus-melanogenys/'
+        archived: aquablog.fr/enantiopus-melanogenys/2026-10-14T220336Z
+        accessed: '2026-10-13'
+      - *id019
+      - *id015
+      - *id021
+      - *id020
+      - *id001
+      - *id012
+      - *id022
+      - *id005
+      - *id007
+      - *id008
+      - *id009
+      - *id014
+      - *id011
+      - *id016
+      - *id017
+      evidence:
+      - source: *id023
+        value:
+          min: 7
+          max: 9
+        note: Aquarium recommendation
+      - source: *id010
+        value:
+          min: 8.5
+          max: 9.4
+        note: Aquarium recommendation
+      - source: *id019
+        value:
+          min: 7.5
+          max: 9
+        note: Aquarium listing
+      - source: *id010
+        value:
+          min: 8.5
+          max: 9.4
+        note: aquarium recommendation
+      - source: *id021
+        value:
+          min: 8.6
+          max: 8.6
+        note: single value
+      - source: *id020
+        value:
+          min: 7.5
+          max: 8.5
+        note: 'aquarium recommendation, stated range 7 to 9'
+      - source: *id001
+        value:
+          min: 7.5
+          max: 8.5
+        note: FishBase environment line
+      - source: *id022
+        value:
+          min: 7.5
+          max: 9.0
+        note: Aquarium recommendation.
+      - source: *id005
+        value:
+          min: 7.5
+          max: 8.5
+        note: Species ecology value.
+      - source: *id015
+        value:
+          min: 8.4
+          max: 9.4
+        note: Natural range included by the rubric.
+      - source: *id005
+        value:
+          min: 7.5
+          max: 8.5
+        note: habitat summary; used cautiously for tolerance
+      - source: *id007
+        value:
+          min: 7.5
+          max: 9.0
+        note: aquarium recommendation
+      - source: *id008
+        value:
+          min: 8.5
+          max: 9.0
+        note: aquarium recommendation
+      - source: *id009
+        value:
+          min: 8
+          max: 9
+        note: aquarium recommendation
+      - source: *id012
+        value:
+          min: 8.4
+          max: 9.4
+        note: natural range that tolerance must include; rounded lake synthesis attributed to the underlying
+          limnological study
+      - source: *id022
+        value:
+          min: 7.5
+          max: 9
+        note: Aquarium recommendation.
+      - source: *id007
+        value:
+          min: 7.5
+          max: 9
+        note: aquarium recommendation
+      - source: *id008
+        value:
+          min: 8.5
+          max: 9
+        note: aquarium recommendation
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ghDgh:
+    value:
+      min: 10
+      max: 13
+    confidence: high
+    rationale: 'The settled waterbody decision is 10 to 13 dGH, with high confidence. Calcium and magnesium
+      measurements in the Plisnier annual-cycle studies and Cohen et al. support calculated hardness near 11
+      to 12 dGH, with the wider natural envelope allowing lake variation. FishBase gives an environmental upper
+      value of 20 dH and care sheets range as widely as 7 to 25 dGH collectively; these are retained as differing
+      habitat summaries or aquarium advice, not substituted for measured lake chemistry.'
+    sources:
+    - *id012
+    - *id001
+    - *id015
+    - *id022
+    - *id014
+    - *id011
+    - *id016
+    - *id017
+    - *id005
+    - *id007
+    - *id008
+    - *id009
+    - *id010
+    evidence:
+    - source: *id012
+      value:
+        min: 10
+        max: 13
+      note: 'Lake surface dGH calculated from reported calcium and magnesium; rounded habitat envelope synthesized
+        across lake studies, not an exact interval quoted from this source'
+    - source: *id001
+      value:
+        max: 20
+      note: FishBase reports dH as unknown minimum to 20
+    - source: *id012
+      value:
+        min: 10
+        max: 13
+      note: 'lake water measurements; rounded habitat envelope synthesized across lake studies, not an exact
+        interval quoted from this source'
+    - source: *id012
+      value:
+        min: 10
+        max: 13
+      note: 'Lake waterbody table range from calcium and magnesium measurements.; rounded habitat envelope
+        synthesized across lake studies, not an exact interval quoted from this source'
+    - source: *id022
+      value:
+        min: 10
+        max: 25
+      note: Aquarium hardness guidance.
+    - source: *id014
+      value:
+        min: 10
+        max: 13
+      note: 'lake natural range; rounded lake synthesis attributed to the underlying limnological study; rounded
+        habitat envelope synthesized across lake studies, not an exact interval quoted from this source'
+    - source: *id005
+      value: 20
+      note: habitat summary gives upper bound only
+    - source: *id007
+      value:
+        min: 10
+        max: 25
+      note: aquarium recommendation
+    - source: *id008
+      value:
+        min: 7
+        max: 11
+      note: aquarium recommendation
+    - source: *id009
+      value:
+        min: 10
+        max: 20
+      note: aquarium recommendation
+    - source: *id010
+      value:
+        min: 13.4
+        max: 17.9
+      note: 240 to 320 ppm converted to dGH
+    - source: *id014
+      value:
+        min: 11.1
+        max: 11.5
+      note: 'Calculated from paired surface calcium and magnesium station means using dGH = Ca/7.14 + Mg/4.34,
+        concentrations in mg/L.'
+    - source: *id015
+      value:
+        min: 12.2
+        max: 12.2
+      note: Approximate calculated GH from north-basin surface calcium and magnesium in Table 1; the broader
+        lake synthesis is 10 to 13 dGH.
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value:
+        min: 10
+        max: 25
+      confidence: medium
+      rationale: 'The tally decides 10 to 25 dGH by qualified majority, four of six votes, with medium confidence.
+        Generator, checker-b, tiebreaker-1 and tiebreaker-2 proposed 10 to 25; checker-a proposed 8 to 20 and
+        checker-c 7 to 25. Seriously Fish explicitly recommends 10 to 25 dGH and has higher trust than the
+        conflicting AquaInfo 7 to 11, Wet Spot 8 to 15 and Atlarium 10 to 20 recommendations. The wider combined
+        source envelope is 7 to 25 dGH; its lower end is retained as dissenting evidence. AquariaCentral gives
+        about 13.4 to 17.9 dGH, OATA 12 to 18 for African lake cichlids generally, and a Chituta aquarium records
+        18 dGH. FishBase reports only an upper environmental dH value of 20. The selected interval includes
+        natural 10 to 13 dGH and is husbandry guidance rather than a chronic tolerance experiment.'
+      sources:
+      - *id010
+      - *id023
+      - *id001
+      - *id020
+      - *id012
+      - *id022
+      - *id019
+      - *id007
+      - *id008
+      - *id009
+      - *id014
+      - *id011
+      - *id015
+      - *id016
+      - *id017
+      - &id024
+        kind: website
+        title: 'The Wet Spot Tropical Fish: Enantiopus melanogenys'
+        url: 'https://www.wetspottropicalfish.com/product/enantiopus-melanogenys/'
+        accessed: '2026-10-13'
+        archived: wetspottropicalfish.com/product/enantiopus-melanogenys/2026-10-14T221251Z
+      - &id025
+        kind: website
+        title: 'DRTA archive: Xenotilapia melanogenys, with a potentially confused Kilesa common name'
+        url: 'https://www.drta-archiv.de/xenotilapia-melanogenys/'
+        accessed: '2026-10-13'
+        archived: drta-archiv.de/xenotilapia-melanogenys/2026-10-14T221256Z
+      - &id026
+        kind: website
+        title: 'OATA: How to look after African lake cichlids'
+        url: 'https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-lake-cichlids/'
+        accessed: '2026-10-13'
+        archived: ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-lake-cichlids/2026-10-14T095725Z
+      - &id027
+        kind: database
+        title: AquaInfo. Enantiopus melanogenys.
+        url: 'https://aquainfo.nl/en/enantiopus-melanogenys/'
+        accessed: '2026-10-15'
+        archived: aquainfo.nl/en/enantiopus-melanogenys/2026-10-14T221231Z
+      - &id028
+        kind: website
+        title: 'Einrichtungsbeispiele: Aquarium 6839, Chituta Enantiopus husbandry record.'
+        url: 'https://www.einrichtungsbeispiele.de/becken-beispiele/tanganjikasee/aquarium-von-patrick-rohde_6839.html'
+        accessed: '2026-10-15'
+        archived: einrichtungsbeispiele.de/becken-beispiele/tanganjikasee/aquarium-von-patrick-rohde_6839.html/2026-10-14T221251Z
+      evidence:
+      - source: *id010
+        value:
+          min: 13.4
+          max: 17.9
+        note: Aquarium recommendation converted from 240-320 ppm as CaCO3
+      - source: *id023
+        value:
+          min: 15
+          max: 20
+        note: Aquarium recommendation
+      - source: *id001
+        value:
+          min: 8
+          max: 20
+        note: 'Inherited composite proposal: FishBase supplies only an upper dH value of 20; the 8 dGH lower
+          bound came from retailer advice, not FishBase.'
+      - source: *id020
+        value:
+          min: 15
+          max: 20
+        note: aquarium recommendation
+      - source: *id010
+        value:
+          min: 13.4
+          max: 18
+        note: aquarium recommendation (240 to 320 ppm)
+      - source: *id022
+        value:
+          min: 10
+          max: 25
+        note: Aquarium hardness recommendation.
+      - source: *id007
+        value:
+          min: 10
+          max: 25
+        note: aquarium recommendation
+      - source: *id008
+        value:
+          min: 7
+          max: 11
+        note: aquarium recommendation
+      - source: *id009
+        value:
+          min: 10
+          max: 20
+        note: aquarium recommendation
+      - source: *id010
+        value:
+          min: 13.4
+          max: 17.9
+        note: 'aquarium recommendation, ppm converted'
+      - source: *id014
+        value:
+          min: 10
+          max: 13
+        note: natural range that tolerance must include; rounded lake synthesis attributed to the underlying
+          limnological study
+      - source: *id007
+        value:
+          min: 10
+          max: 25
+        note: Species-specific aquarium recommendation.
+      - source: *id010
+        value:
+          min: 13.4
+          max: 17.9
+        note: Aquarium recommendation converted from 240 to 320 ppm GH as CaCO3.
+      - source: *id024
+        value:
+          min: 8
+          max: 15
+        note: Conflicting shop recommendation; the same page contains a breeding-mode error.
+      - source: *id025
+        value:
+          min: 10
+          max: 20
+        note: Published under melanogenys but with Kilesa as common name; identity uncertainty limits its application.
+      - source: *id026
+        value:
+          min: 12
+          max: 18
+        note: 'General aquarium guidance for African lake cichlids, not a measured species-specific tolerance.'
+      - source: *id014
+        value:
+          min: 10
+          max: 13
+        note: Mandatory natural range that the tolerance must contain; not evidence of a narrow tolerance.;
+          rounded lake synthesis attributed to the underlying limnological study
+      - source: *id007
+        value:
+          min: 10
+          max: 25
+        note: Explicit species-specific aquarium hardness recommendation.
+      - source: *id027
+        value:
+          min: 7
+          max: 11
+        note: Species care-table GH recommendation. Its upper endpoint does not contain the mandatory natural
+          range.
+      - source: *id024
+        value:
+          min: 8
+          max: 15
+        note: Species-specific retailer recommendation.
+      - source: *id009
+        value:
+          min: 10
+          max: 20
+        note: Species care-table GH recommendation.
+      - source: *id010
+        value:
+          min: 13.4
+          max: 17.9
+        note: Aquarium advice converted from 240 to 320 mg/L as CaCO3 using 17.848 mg/L per dGH.
+      - source: *id028
+        value:
+          min: 18
+          max: 18
+        note: 'Reported aquarium GH with Chituta melanogenys. A single husbandry reading, not a tolerance experiment.'
+      - source: *id026
+        value:
+          min: 12
+          max: 18
+        note: 'General African lake cichlid husbandry guidance, not species-specific.'
+      - source: *id014
+        value:
+          min: 10
+          max: 13
+        note: 'Required natural GH range. Habitat containment constraint, not an aquarium tolerance measurement.;
+          rounded lake synthesis attributed to the underlying limnological study'
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+  khDkh:
+    value:
+      min: 15
+      max: 20
+    confidence: high
+    rationale: 'The settled natural range is 15 to 20 dKH, with high confidence and no verification object.
+      It is a rounded synthesis of carbonate alkalinity in the Plisnier studies, Cohen et al. and Langenberg.
+      Cohen reports 6.5 to 6.6 meq/L, approximately 18.2 to 18.5 dKH. Aquarium KH recommendations below 15
+      dKH describe keeping practice rather than natural lake measurements; GH and carbonate alkalinity are
+      distinct quantities.'
+    sources:
+    - *id012
+    - *id016
+    - *id015
+    - *id014
+    - *id011
+    - *id017
+    - *id010
+    - *id009
+    evidence:
+    - source: *id012
+      value:
+        min: 15
+        max: 20
+      note: 'Lake alkalinity converted to dKH; rounded habitat envelope synthesized across lake studies, not
+        an exact interval quoted from this source'
+    - source: *id016
+      value:
+        min: 15
+        max: 20
+      note: 'Alkalinity-derived dKH range; rounded habitat envelope synthesized across lake studies, not an
+        exact interval quoted from this source'
+    - source: *id012
+      value:
+        min: 15
+        max: 20
+      note: 'lake water measurements; rounded habitat envelope synthesized across lake studies, not an exact
+        interval quoted from this source'
+    - source: *id012
+      value:
+        min: 15
+        max: 20
+      note: 'Lake waterbody table range from measured alkalinity.; rounded habitat envelope synthesized across
+        lake studies, not an exact interval quoted from this source'
+    - source: *id014
+      value:
+        min: 15
+        max: 20
+      note: 'lake natural range; rounded lake synthesis attributed to the underlying limnological study; rounded
+        habitat envelope synthesized across lake studies, not an exact interval quoted from this source'
+    - source: *id010
+      value:
+        min: 10.1
+        max: 13.4
+      note: 180 to 240 ppm converted to dKH
+    - source: *id009
+      value:
+        min: 5
+        max: 10
+      note: aquarium recommendation
+    - source: *id014
+      value:
+        min: 15.8
+        max: 20.2
+      note: Approximate station-mean carbonate alkalinity envelope converted at 2.8 dKH per meq/L; rounded
+        lake synthesis is 15 to 20 dKH.
+    - source: *id015
+      value:
+        min: 18.2
+        max: 18.5
+      note: Table 1 alkalinity of 6.5 to 6.6 meq/L converted at 2.8 dKH per meq/L.
+    tolerance:
+      value:
+        min: 10
+        max: 20
+      confidence: low
+      rationale: 'The tally decides 10 to 20 dKH by qualified majority within the two-degree threshold, four
+        of six votes, with low confidence. Generator proposed 10 to 25; checker-a 8 to 20; checker-b 12 to
+        25; checker-c, tiebreaker-1 and tiebreaker-2 10 to 20. The four matching lower proposals have a rounded
+        median of 10 to 20. AquariaCentral advises 180 to 240 mg/L as CaCO3, about 10.1 to 13.4 dKH; OATA gives
+        10 to 15 dKH for the broader lake-cichlid group, and a Chituta aquarium records 10 dKH. Including the
+        natural 15 to 20 dKH range extends the upper end to 20. Atlarium gives a wider lower extension to 5
+        dKH in its 5 to 10 advice, while proposals reaching 25 have no direct species KH source. Those values
+        remain in evidence or the proposal record. The retained Seriously Fish 10 to 25 entry is explicitly
+        a GH proxy and cannot be converted into KH. This is a derived working tolerance, not a demonstrated
+        physiological boundary; the DRTA target near 15 dKH has a Kilesa identity caveat.'
+      sources:
+      - *id010
+      - *id012
+      - *id020
+      - *id022
+      - *id015
+      - *id014
+      - *id011
+      - *id016
+      - *id017
+      - *id009
+      - *id026
+      - *id025
+      - *id007
+      - *id028
+      evidence:
+      - source: *id010
+        value:
+          min: 10.1
+          max: 13.4
+        note: Aquarium recommendation converted from 180-240 ppm as CaCO3
+      - source: *id012
+        value:
+          min: 15
+          max: 20
+        note: Natural alkalinity range converted to dKH
+      - source: *id010
+        value:
+          min: 10
+          max: 13.4
+        note: aquarium recommendation (180 to 240 ppm)
+      - source: *id022
+        value:
+          min: 10
+          max: 25
+        note: 'Inherited indirect proxy: this 10 to 25 range is GH advice, not a stated KH range, and is not
+          used to set KH endpoints.'
+      - source: *id015
+        value:
+          min: 15
+          max: 20
+        note: 'Natural range, not a measured tolerance.'
+      - source: *id010
+        value:
+          min: 10.1
+          max: 13.4
+        note: 180 to 240 ppm converted to dKH
+      - source: *id009
+        value:
+          min: 5
+          max: 10
+        note: aquarium recommendation
+      - source: *id014
+        value:
+          min: 15
+          max: 20
+        note: natural range that tolerance must include; rounded lake synthesis attributed to the underlying
+          limnological study
+      - source: *id010
+        value:
+          min: 10.1
+          max: 13.4
+        note: Species-specific aquarium recommendation converted from 180 to 240 ppm KH as CaCO3 using 17.848
+          mg/L per dKH.
+      - source: *id026
+        value:
+          min: 10
+          max: 15
+        note: Group-level aquarium recommendation; used as indirect support for the lower boundary.
+      - source: *id025
+        value:
+          min: 15
+          max: 15
+        note: 'Approximately 15 dKH is a recommended target, not a tested zero-width tolerance; Kilesa naming
+          makes species identity uncertain.'
+      - source: *id014
+        value:
+          min: 15
+          max: 20
+        note: Mandatory natural interval used to widen the derived tolerance; not itself a full aquarium tolerance.;
+          rounded lake synthesis attributed to the underlying limnological study
+      - source: *id026
+        value:
+          min: 10
+          max: 15
+        note: General African lake cichlid aquarium recommendation. Used as group-level support only.
+      - source: *id010
+        value:
+          min: 10.1
+          max: 13.4
+        note: Species keeping advice converted from 180 to 240 mg/L as CaCO3 using 17.848 mg/L per dKH.
+      - source: *id028
+        value:
+          min: 10
+          max: 10
+        note: Reported aquarium KH with Chituta melanogenys. Does not establish lower or upper physiological
+          limits.
+      - source: *id009
+        value:
+          min: 5
+          max: 10
+        note: Conflicting species care-table KH recommendation; retained but not adopted as the full tolerance.
+      - source: *id014
+        value:
+          min: 15
+          max: 20
+        note: Required natural KH range. Used to extend the inferred tolerance through natural habitat values.;
+          rounded lake synthesis attributed to the underlying limnological study
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+  maxSizeCm:
+    value:
+      male: 15
+      female: 13
+    confidence: medium
+    rationale: 'The male median is 15 cm from all four proposals. Generator, checker-a and checker-b proposed
+      female 13 cm; checker-c proposed 12, giving a median of 13. FishBase reports 15 cm total length without
+      a separate female maximum, and Andersen and the Swedish register describe smaller females. The female
+      endpoint is therefore an estimate, not a measured sex-specific maximum. Seriously Fish instead reports
+      16 cm standard length, Aquablog 16 cm without a stated length convention, and the Wet Spot averages 10
+      to 12 cm. These figures remain visible but do not establish a different typical aquarium maximum per
+      sex; standard and total length are not interchangeable.'
+    sources:
+    - *id001
+    - *id002
+    - *id003
+    - &id029
+      kind: literature
+      title: 'Andersen, T. (2005). A sparkling jewel: Xenotilapia melanogenys (Boulenger, 1898). Cichlid Room
+        Companion.'
+      url: 'https://cichlidae.com/article.php?id=IxmHLVf1Or36YQtoer2dDw'
+      accessed: '2026-10-15'
+      archived: cichlidae.com/article.php/q-6edbef19/2026-10-14T174622Z
+    - *id020
+    - *id010
+    - *id021
+    - *id005
+    - *id022
+    - *id008
+    - *id006
+    - *id024
+    evidence:
+    - source: *id001
+      value:
+        male: 15
+        female: 15
+      note: 'FishBase maximum length is total length and does not separate the sexes; any sex-specific numbers
+        here are inherited encodings of an unsexed maximum, not separately measured female lengths'
+    - source: *id002
+      value:
+        male: 15
+        female: 13
+      note: Females are reported as slightly smaller
+    - source: *id001
+      value:
+        male: 15
+        female: 15
+      note: 'maximum length TL, male or unsexed; any sex-specific numbers here are inherited encodings of an
+        unsexed maximum, not separately measured female lengths'
+    - source: *id003
+      value:
+        male: 15
+        female: 13
+      note: 'males up to 15 cm, females slightly smaller'
+    - source: *id029
+      value:
+        male: 15
+        female: 13
+      note: 'about 15 cm in the wild, females a little smaller'
+    - source: *id020
+      value:
+        male: 16
+        female: 16
+      note: 'any sex-specific numbers here are inherited encodings of an unsexed maximum, not separately measured
+        female lengths'
+    - source: *id010
+      value:
+        male: 15
+        female: 15
+      note: '5 to 6 inches; any sex-specific numbers here are inherited encodings of an unsexed maximum, not
+        separately measured female lengths'
+    - source: *id021
+      value:
+        male: 15
+        female: 15
+      note: '6 inches; any sex-specific numbers here are inherited encodings of an unsexed maximum, not separately
+        measured female lengths'
+    - source: *id005
+      value:
+        male: 15
+        female: 13
+      note: 'FishBase gives 15 cm total length for male or unsexed specimens; female set slightly smaller from
+        sex-specific husbandry descriptions.; any sex-specific numbers here are inherited encodings of an unsexed
+        maximum, not separately measured female lengths'
+    - source: *id022
+      value:
+        male: 16
+        female: 14
+      note: 'Inherited encoding: the source reports 16 cm standard length without a female maximum; female
+        14 cm is an agent estimate, not a source measurement.'
+    - source: *id005
+      value: 15
+      note: '15 cm TL, male or unsexed record'
+    - source: *id008
+      value:
+        male: 15
+        female: 15
+      note: 'maximum length; sexes not distinguished; any sex-specific numbers here are inherited encodings
+        of an unsexed maximum, not separately measured female lengths'
+    - source: *id010
+      value: 15.2
+      note: 5 to 6 inches converted; sexes not distinguished
+  predation:
+    value: 1
+    confidence: medium
+    rationale: 'The settled qualified majority is level 1, four of six votes, with medium confidence. Generator,
+      checker-b, tiebreaker-1 and tiebreaker-2 proposed 1; checker-a and checker-c proposed 0 from the natural
+      invertebrate diet. Seriously Fish explicitly reports adults consuming released fry and AquariaCentral
+      independently reports the same opportunity feeding. These direct observations outweigh an inference of
+      level 0 from stomach contents dominated by crustaceans. WaFishBox reports survival with cover and well-fed
+      adults, which is compatible with occasional predation. Level 1 uses the rubric threshold of roughly 2
+      cm, not a measured prey-size ceiling for this fish. The Oxford thesis abstract does not concern this
+      species and supplies no predation evidence.'
+    sources:
+    - *id001
+    - *id006
+    - *id010
+    - *id029
+    - *id003
+    - *id005
+    - *id022
+    - *id007
+    - &id031
+      kind: forum
+      title: 'WaFishBox: Behavioral Compatibility of Cyprichromis microlepidotus and Enantiopus melanogenys
+        (Especially in Regards to Spawning), 2025'
+      url: 'https://www.wafishbox.com/forums/threads/behavioral-compatibility-of-cyprichromis-microlepidotus-and-enantiopus-melanogenys-especially-in-regards-to-spawning.16103/'
+      accessed: '2026-10-13'
+      archived: wafishbox.com/forums/threads/behavioral-compatibility-of-cyprichromis-microlepidotus-and-enantiopus-melanogen/2026-10-14T221257Z
+    - *id004
+    - *id024
+    - kind: literature
+      title: 'Goldberg, R. (2022). Sexual selection and reproductive trade-offs in caring parents. University
+        of Oxford doctoral thesis. Repository abstract and metadata only.'
+      url: 'https://doi.org/10.5287/ora-j0ox4apa6'
+      accessed: '2026-10-13'
+      archived: doi.org/10.5287_ora-j0ox4apa6/2026-10-14T221326Z
+    - &id033
+      kind: archive
+      title: cichlids.com forum thread 13666
+      url: 'https://www.cichlids.com/disc/read.php?2,13666'
+      accessed: '2026-10-13'
+    - &id034
+      kind: archive
+      title: cichlids.com forum thread 13721
+      url: 'https://www.cichlids.com/disc/read.php?2,13721'
+      accessed: '2026-10-13'
+    - &id035
+      kind: archive
+      title: cichlids.com forum thread 14027
+      url: 'https://www.cichlids.com/disc/read.php?2,14027'
+      accessed: '2026-10-13'
+    - *id030
+    - &id036
+      kind: archive
+      title: cichlids.com forum thread 14340
+      url: 'https://www.cichlids.com/disc/read.php?2,14340'
+      accessed: '2026-10-13'
+    - kind: archive
+      title: cichlids.com forum thread 14505
+      url: 'https://www.cichlids.com/disc/read.php?2,14505'
+      accessed: '2026-10-13'
+    - &id037
+      kind: archive
+      title: cichlids.com forum thread 14924
+      url: 'https://www.cichlids.com/disc/read.php?2,14924'
+      accessed: '2026-10-13'
+    - &id044
+      kind: archive
+      title: cichlids.com forum thread 16919
+      url: 'https://www.cichlids.com/disc/read.php?2,16919'
+      accessed: '2026-10-13'
+    - &id038
+      kind: archive
+      title: cichlids.com forum thread 17140
+      url: 'https://www.cichlids.com/disc/read.php?2,17140'
+      accessed: '2026-10-13'
+    - kind: archive
+      title: cichlids.com forum thread 17221
+      url: 'https://www.cichlids.com/disc/read.php?2,17221'
+      accessed: '2026-10-13'
+    - kind: archive
+      title: cichlids.com forum thread 17767
+      url: 'https://www.cichlids.com/disc/read.php?2,17767'
+      accessed: '2026-10-13'
+    - kind: archive
+      title: cichlids.com forum thread 21163
+      url: 'https://www.cichlids.com/disc/read.php?2,21163'
+      accessed: '2026-10-13'
+    - &id039
+      kind: archive
+      title: cichlids.com forum thread 21321
+      url: 'https://www.cichlids.com/disc/read.php?2,21321'
+      accessed: '2026-10-13'
+    - &id046
+      kind: archive
+      title: cichlids.com forum thread 21350
+      url: 'https://www.cichlids.com/disc/read.php?2,21350'
+      accessed: '2026-10-13'
+    - *id027
+    - *id009
+    evidence:
+    - source: *id001
+      value: 1
+      note: 'FishBase reports small invertebrate prey and does not report fish predation.; rubric level inferred
+        from diet, not a direct test of fry predation'
+    - source: *id006
+      value: 0
+      note: 'CRC classifies it as a substrate sifter and gives no evidence of fish predation; rubric level
+        inferred from diet, not a direct test of fry predation'
+    - source: *id010
+      value: 1
+      note: The keeper reports that adults eat fry left in the aquarium.
+    - source: *id001
+      value: 0
+      note: 'stomach contents copepods, ostracods and shrimps; rubric level inferred from diet, not a direct
+        test of fry predation'
+    - source: *id029
+      value: 0
+      note: 'sifts sand for small crustaceans and invertebrates; rubric level inferred from diet, not a direct
+        test of fry predation'
+    - source: *id003
+      value: 0
+      note: feeds on small crustaceans from the sand surface
+    - source: *id006
+      value: 0
+      note: 'substrate sifter; rubric level inferred from diet, not a direct test of fry predation'
+    - source: *id022
+      value: 1
+      note: Adult conspecifics eat some free-swimming fry.
+    - source: *id005
+      value: 1
+      note: 'Stomach records list copepods, ostracods and shrimps; routine fish predation is not indicated.;
+        rubric level inferred from diet, not a direct test of fry predation'
+    - source: *id005
+      value: 0
+      note: 'stomach contents are copepods, ostracods and shrimps; rubric level inferred from diet, not a direct
+        test of fry predation'
+    - source: *id006
+      value: 0
+      note: 'substrate-sifting feeder; rubric level inferred from diet, not a direct test of fry predation'
+    - source: *id007
+      value: 0
+      note: invertebrate feeding from the substrate
+    - source: *id007
+      value: 1
+      note: 'In the recommended breeding setup without other species, the account reports released fry being
+        eaten by other adults. No measured prey-size ceiling is given.'
+    - source: *id010
+      value: 1
+      note: A keeper describes adults taking released fry when available and advises separate rearing. No measured
+        prey-size ceiling is given.
+    - source: *id031
+      value: 0
+      note: 'Closest rubric interpretation of the contrasting keeper experience, not an explicit level: fry
+        survive with fed adults and cover; the keeper considers feeding a greater concern than predation.'
+    - source: *id001
+      value: 0
+      note: 'Natural diet supports the nonpiscivorous end of the scale only: recorded stomach contents are
+        copepods, ostracods and shrimps; this is not proof against aquarium fry predation.; rubric level inferred
+        from diet, not a direct test of fry predation'
+    - source: *id006
+      value: 0
+      note: 'Public feeding classification is substrate sifting. This is indirect dietary context and does
+        not determine whether fry are eaten in aquaria.; rubric level inferred from diet, not a direct test
+        of fry predation'
+    - source: *id029
+      value: 0
+      note: 'Sand-sifting crustacean and invertebrate diet, with no fish prey reported; an indirect natural-diet
+        interpretation rather than a claim of zero aquarium fry predation.; rubric level inferred from diet,
+        not a direct test of fry predation'
+    - source: *id024
+      value: 0
+      note: The listed natural prey are small invertebrates and zooplankton; the page does not test fry predation.
+    - source: *id007
+      value: 1
+      note: Adults are reported to consume released fry in a breeding setup containing this species only.
+    - source: *id010
+      value: 1
+      note: A keeping account states that other adults take fry when opportunities arise.
+    - source: *id001
+      value: 0
+      note: 'Diet-based support for the competing level 0 interpretation only. Recorded stomach items are copepods,
+        ostracods and shrimps; this is not evidence that fry are never eaten.; rubric level inferred from diet,
+        not a direct test of fry predation'
+    - source: *id006
+      value: 0
+      note: 'Indirect support for the competing interpretation from substrate-sifting feeding. The public summary
+        does not describe fry predation.; rubric level inferred from diet, not a direct test of fry predation'
+    - source: *id031
+      value: 0
+      note: 'A keeper reports fry surviving among well-fed adults when cover is available. This supports low
+        predatory pressure under those conditions, not an absolute absence of fry consumption.'
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+      - small crustaceans
+      - copepods
+      - ostracods
+      - zooplankton
+    confidence: medium
+    rationale: 'The tally is unanimous for invertivore with bloatSensitive false, with medium confidence. FishBase
+      records copepods, ostracods and shrimps in stomachs; CRC and the husbandry accounts describe substrate
+      invertebrate feeding. AquaInfo, AquariaCentral and Atlarium sometimes use an omnivore label, but their
+      detailed feeding descriptions do not outweigh this specific natural-diet evidence. The four food lists
+      differ and are retained in disagreements and evidence; the final food list is exactly the tally decision.
+      No reviewed source establishes a special high-protein bloat susceptibility, so false is an absence-of-evidence
+      working flag rather than a guarantee against illness.'
+    sources:
+    - *id001
+    - *id006
+    - *id002
+    - *id029
+    - *id003
+    - *id020
+    - *id010
+    - *id021
+    - *id005
+    - *id007
+    - *id008
+    evidence:
+    - source: *id001
+      value: 'invertivore, small crustaceans, copepods, ostracods and shrimps'
+    - source: *id006
+      value: 'invertivore, substrate sifter'
+    - source: *id001
+      value: invertivore
+      note: 'copepods, ostracods, shrimps in stomachs'
+    - source: *id029
+      value: invertivore
+      note: 'carnivore, crustaceans and invertebrates from sand'
+    - source: *id003
+      value: invertivore
+      note: 'carnivorous, small crustaceans from the sand'
+    - source: *id006
+      value: invertivore
+      note: substrate sifters
+    - source: *id020
+      value: invertivore
+      note: small invertebrates from the sand
+    - source: *id010
+      value: omnivore
+      note: hobbyist says it accepts every food
+    - source: *id021
+      value: invertivore
+      note: listed as carnivore
+    - source: *id005
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - copepods
+        - ostracods
+        - shrimps
+      note: Stomach contents and feeding ecology.
+    - source: *id029
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - small crustaceans
+        - invertebrates
+      note: Field account describes sand-sifting and stomach records of small crustaceans.
+    - source: *id005
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - copepods
+        - ostracods
+        - shrimps
+    - source: *id006
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - substrate invertebrates
+    - source: *id007
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - substrate invertebrates
+        - live foods
+        - frozen foods
+    - source: *id008
+      value:
+        type: omnivore
+        bloatSensitive: false
+        foods:
+        - bottom-searched food
+      note: broad diet label conflicts
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 1
+    confidence: medium
+    rationale: 'Generator, checker-a and checker-b proposed 1, while checker-c proposed 2. With the recommended
+      adult group and sufficient sand, the Andersen account and AquariaCentral describe adjacent displaying
+      males with limited chasing rather than persistent injury. This fits level 1. Atlarium describes stronger
+      breeding rivalry and the Chituta tank record reports harassment in a small social unit; these cautionary
+      reports concern conditions outside the recommended group and do not determine its baseline score.'
+    sources:
+    - *id002
+    - *id018
+    - *id003
+    - *id029
+    - *id010
+    - *id020
+    - *id021
+    - *id013
+    - *id007
+    - *id009
+    - *id032
+    - *id028
+    evidence:
+    - source: *id002
+      value: 1
+      note: Multiple males can coexist; spawning bowers are spaced apart
+    - source: *id018
+      value: 1
+      note: Males show some aggression in aquaria
+    - source: *id003
+      value: 1
+      note: multiple males can be kept together without serious aggression
+    - source: *id029
+      value: 1
+      note: rivals chased with fins erect while courting
+    - source: *id010
+      value: 1
+      note: 'males never harass females, several males can share a tank'
+    - source: *id020
+      value: 1
+      note: 'peaceful, aggressive only in the breeding period'
+    - source: *id021
+      value: 2
+      note: mildly aggressive
+    - source: *id007
+      value: 2
+      note: 'generally peaceful, with territorial males during spawning'
+    - source: *id010
+      value: 1
+      note: males share a group without reported harassment
+    - source: *id009
+      value: 3
+      note: reports strong male rivalry when breeding
+    - source: *id032
+      value: 2
+      note: 'Inherited behavioral interpretation: the paper documents mating and care systems, not a measured
+        aquarium aggression score.'
+  aggressionHeterospecific:
+    value: 1
+    confidence: medium
+    rationale: 'Generator, checker-a and checker-c proposed 1; checker-b proposed 0. Sources consistently portray
+      a peaceful fish with calm companions, but localized spawning-site defense and disputes over bottom space
+      support immediate-area display at level 1. This does not imply attacks beyond the nest. Evidence encoded
+      as 0 remains because many observations describe uncomplicated coexistence.'
+    sources:
+    - *id002
+    - *id023
+    - *id003
+    - *id020
+    - *id010
+    - *id029
+    - *id021
+    - *id006
+    - *id022
+    - *id018
+    - *id007
+    - *id030
+    evidence:
+    - source: *id002
+      value: 1
+      note: A breeding male defends its sand spawning site
+    - source: *id023
+      value: 1
+      note: Described as peaceful outside breeding
+    - source: *id003
+      value: 0
+      note: peaceful towards other species
+    - source: *id020
+      value: 0
+      note: excellent relations with other species
+    - source: *id010
+      value: 1
+      note: 'bickering over space with rock dwellers, competes with nest builders'
+    - source: *id021
+      value: 0
+      note: temperament peaceful
+    - source: *id007
+      value: 1
+      note: peaceful; compatible with several other Tanganyikan genera
+    - source: *id010
+      value: 1
+      note: no aggression reported towards midwater companions
+    - source: *id030
+      value: 1
+      note: sand-dwelling breeders advised against placing it with competing sand sifters
+  territory:
+    value:
+      size: small
+      breedingOnly: true
+    confidence: medium
+    rationale: 'All four proposals agree on a small territory restricted to breeding. Seriously Fish allows
+      a roughly 30 cm square nest territory; Andersen describes a bower about 50 cm across with a smaller central
+      pit near 15 cm. The defended unit is the local nest, with neighbors maintaining adjoining sites, rather
+      than permanent ownership of a large tank section. The larger bower measurement is retained and explains
+      the need for a broad footprint.'
+    sources:
+    - *id002
+    - *id032
+    - *id029
+    - *id001
+    - *id020
+    - *id003
+    - *id018
+    - *id007
+    - *id010
+    - *id006
+    - *id030
+    evidence:
+    - source: *id002
+      value:
+        size: small
+        breedingOnly: true
+      note: Sand bower is built for breeding and may reach about 50 cm across
+    - source: *id029
+      value:
+        size: small
+        breedingOnly: true
+      note: saucer-shaped nest about 50 cm
+    - source: *id001
+      value:
+        size: small
+        breedingOnly: true
+      note: lek breeder in colonies
+    - source: *id020
+      value:
+        size: small
+        breedingOnly: true
+      note: 'nest of about 15 cm in the sand, aggression only while breeding'
+    - source: *id029
+      value:
+        size: small
+        breedingOnly: true
+      note: Adjacent spawning nests are about 50 cm across.
+    - source: *id007
+      value:
+        size: small
+        breedingOnly: true
+      note: male defends a spawning depression
+    - source: *id010
+      value:
+        size: small
+        breedingOnly: true
+      note: breeding territories implied by sand-nest displays
+    - source: *id030
+      value:
+        size: small
+        breedingOnly: true
+      note: breeding ritual requires sand
+  habitatZones:
+    value:
+    - sand
+    confidence: high
+    rationale: 'Generator proposed sand and rock; checker-a and checker-b proposed sand; checker-c proposed
+      sand and openWater. FishBase and the public CRC habitat classification identify a bottom-associated sand
+      feeder. Breeding beside occasional rocks does not make rock habitat a requirement, and shoaling above
+      the bottom does not establish a separate midwater habitat. The final required zone is sand; sparse edge
+      shelter remains compatible with it.'
+    sources:
+    - *id006
+    - *id002
+    - *id001
+    - *id003
+    - *id029
+    - *id010
+    - *id005
+    - *id030
+    - *id007
+    - *id009
+    evidence:
+    - source: *id006
+      value:
+      - sand
+    - source: *id002
+      value:
+      - sand
+      - rock
+      note: Open sand is used for feeding and spawning near rock edges
+    - source: *id001
+      value:
+      - sand
+      note: 'sand-dwelling, demersal'
+    - source: *id006
+      value:
+      - sand
+      note: 'habitat: sand'
+    - source: *id003
+      value:
+      - sand
+      note: 'open sandy substrate, few rocks'
+    - source: *id010
+      value:
+      - sand
+      note: 'open fine sand, very few rocks'
+    - source: *id005
+      value:
+      - sand
+      - openWater
+      note: sand-dwelling shoals forage over the bottom
+    - source: *id007
+      value:
+      - sand
+      - openWater
+      note: large shoals over sand
+    - source: *id006
+      value:
+      - sand
+      note: habitat summary
+    - source: *id009
+      value:
+      - sand
+      note: coastal sand habitat
+  social:
+    value:
+      structure: group
+      minGroup: 8
+    confidence: medium
+    rationale: 'Generator, checker-b and checker-c proposed a group of eight; checker-a proposed six. The median
+      minimum is eight, directly supported by Andersen and the AquariaCentral recommendation of eight to ten.
+      Tanganyika.si suggests five to seven, Aquablog five to six, and the Swedish register ten or more. AquaInfo
+      favors two females per male but still describes schooling, rather than a permanent isolated harem. Eight
+      with at least two males and more females is the working social unit; larger groups need correspondingly
+      more floor area.'
+    sources:
+    - *id001
+    - *id018
+    - *id010
+    - *id003
+    - *id020
+    - *id029
+    - *id013
+    - *id033
+    - *id034
+    - *id035
+    - *id030
+    - *id036
+    - *id037
+    - *id038
+    - *id039
+    - *id005
+    - *id007
+    - *id008
+    - *id009
+    evidence:
+    - source: *id018
+      value:
+        structure: group
+        minGroup: 10
+    - source: *id010
+      value:
+        structure: group
+        minGroup: 8
+    - source: *id003
+      value:
+        structure: group
+        minGroup: 5
+      note: at least 5 to 7
+    - source: *id020
+      value:
+        structure: group
+        minGroup: 5
+      note: five to six
+    - source: *id029
+      value:
+        structure: group
+        minGroup: 8
+      note: 'no fewer than eight, at least two males'
+    - source: *id010
+      value:
+        structure: group
+        minGroup: 8
+      note: 8 to 10
+    - source: *id005
+      value:
+        structure: group
+        minGroup: 8
+      note: 'large schools; group structure is reported, but eight is the agent recommendation rather than
+        a measured wild minimum'
+    - source: *id007
+      value:
+        structure: group
+        minGroup: 8
+      note: 'fixed shoals, group suggested; group structure is reported, but eight is the agent recommendation
+        rather than a measured wild minimum'
+    - source: *id010
+      value:
+        structure: group
+        minGroup: 8
+      note: recommends groups of 8 to 10
+    - source: *id008
+      value:
+        structure: harem
+        ratio: 2
+      note: suggests two females per male
+    - source: *id009
+      value:
+        structure: group
+        minGroup: 6
+      note: group with multiple males and females
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: 'The settled unanimous value is false with medium confidence. A dedicated aquarium can simplify
+      care and Seriously Fish recommends it for breeding, but its compatibility section and Andersen explicitly
+      allow calm companions such as Cyprichromis. Tanganyika.si also allows peaceful midwater species. A preference
+      for an uncrowded species display does not establish a general species-only requirement.'
+    sources:
+    - *id002
+    - *id010
+    - *id003
+    - *id029
+    - *id006
+    - *id022
+    - *id007
+    evidence:
+    - source: *id002
+      value: false
+      note: Calm mid- or upper-water tankmates are mentioned as an option
+    - source: *id010
+      value: false
+      note: Quiet mid-water fishes are reported as possible companions
+    - source: *id003
+      value: false
+      note: 'best species-only, calm mid- and upper-water tankmates are possible'
+    - source: *id029
+      value: false
+      note: 'can share with other Xenotilapia, Ophthalmotilapia and Cyprichromis in a large tank'
+    - source: *id010
+      value: false
+      note: 'few suitable tankmates, mid-water swimmers reported to work'
+    - source: *id029
+      value: false
+      note: Calm free-swimming companion species are described as compatible.
+    - source: *id022
+      value: false
+      note: Several calm Tanganyikan tankmate genera are listed.
+    - source: *id007
+      value: false
+      note: lists compatible non-conspecific genera
+    - source: *id010
+      value: false
+      note: describes midwater companions
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: low
+    rationale: 'The settled unanimous decision is an empty list, with low confidence. No listed group includes
+      this species and the consulted taxonomy, CRC accounts, husbandry sources and archive search identify
+      no named cross. The separate undescribed Enantiopus sp. ''Kilesa'' is not merged here or automatically
+      made a crossing partner. An empty list records the present evidence gap and does not establish reproductive
+      isolation.'
+    sources:
+    - *id040
+    - *id006
+    - *id004
+    - *id001
+    - *id029
+    - *id003
+    - *id041
+    evidence:
+    - source: *id040
+      value: []
+      note: The catalog treats Enantiopus melanogenys and the synonym Ectodus longianalis as one species
+    - source: *id006
+      value: []
+      note: Public taxonomy lists undescribed sp. 'kilesa' separately
+    - source: *id001
+      value: []
+      note: no hybrid information
+    - source: *id029
+      value: []
+      note: no hybrid information
+    - source: *id003
+      value: []
+      note: no hybrid information
+    - source: *id006
+      value: []
+      note: Public species page reports no named crossing group or cross.
+    - source: *id041
+      value: []
+      note: no listed group concerns this species
+    - source: *id006
+      value: []
+      note: the public species account does not identify a hybrid group
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+      - blue
+      - green
+      - yellow
+      - black
+      pattern: mixed
+    confidence: medium
+    rationale: 'Generator proposed green, yellow, black and blue with mixed markings; checker-a green, yellow
+      and blue with mixed markings; checker-b blue, green and black with spots; checker-c blue, yellow and
+      black with mixed markings. Andersen documents locality-dependent blue, green and purple iridescence and
+      dark dorsal spots, while AquariaCentral and Aquablog describe yellow areas and dark lip or fin markings.
+      The combined breeding-male palette fits mixed better than spots alone. The schema has no purple value.
+      Silver is the subdued nonbreeding appearance, not the defining display palette.'
+    sources:
+    - *id018
+    - *id002
+    - *id020
+    - *id010
+    - *id029
+    - *id003
+    - &id042
+      kind: website
+      title: 'Xenotilapia melanogenys Care, Habitat and Breeding, Cichlid Atlas'
+      url: 'https://www.cichlidatlas.com/species/xenotilapia-melanogenys/'
+      accessed: '2026-10-13'
+      archived: cichlidatlas.com/species/xenotilapia-melanogenys/2026-10-14T174434Z
+    - *id009
+    evidence:
+    - source: *id020
+      value:
+        baseColors:
+        - green
+        - yellow
+        pattern: mixed
+      note: 'metallic green back, yellow head patch and anal fin, violet spots'
+    - source: *id010
+      value:
+        baseColors:
+        - green
+        - yellow
+        - blue
+        pattern: mixed
+      note: 'green, yellow and purple iridescence'
+    - source: *id029
+      value:
+        baseColors:
+        - blue
+        - green
+        pattern: mixed
+      note: 'bluish, greenish or purple hue depending on locality'
+    - source: *id029
+      value:
+        baseColors:
+        - blue
+        - green
+        - black
+        pattern: spots
+      note: 'Breeding males vary from blue-green to purple, with dark dorsal spots.'
+    - source: *id009
+      value:
+        baseColors:
+        - blue
+        - yellow
+        - black
+        pattern: mixed
+      note: dark lower lip and blue-yellow markings
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: 'Generator, checker-a and checker-c proposed normal; checker-b proposed slow. AquariaCentral
+      describes a strong appetite and Andersen reports ready uptake of prepared foods. Substrate sifting and
+      sensitivity to boisterous fish alone do not show that feeding is consistently slow under suitable conditions.
+      No comparative feeding-rate study was found, so normal remains a low-confidence practical classification
+      and food delivery to the bottom still matters.'
+    sources:
+    - *id001
+    - *id010
+    - *id029
+    - *id005
+    - *id022
+    - *id007
+    evidence:
+    - source: *id010
+      value: normal
+      note: 'good appetite, not fussy'
+    - source: *id029
+      value: normal
+      note: takes frozen food and flakes
+    - source: *id007
+      value: normal
+      note: substrate feeding; no relative speed stated
+    - source: *id005
+      value: normal
+      note: active foraging in schools; no relative speed stated
+  minTank:
+    value:
+      volumeL: 300
+      lengthCm: 120
+      depthCm: 50
+    confidence: medium
+    rationale: 'Generator and checker-a proposed 300 L at 120 by 50 cm; checker-b 300 L at 150 by 50 cm; checker-c
+      280 L at 120 by 45 cm. The component-wise medians are 300 L, 120 cm length and 50 cm depth. Tanganyika.si
+      directly supports these dimensions, and AquariaCentral reports ten fish in about 284 L. Seriously Fish
+      gives a smaller 137 L at 120 by 38 cm without establishing that volume for the recommended eight adults;
+      this is not adopted. The selected minimum is below the larger 150 cm recommendation from Andersen and
+      the Swedish register, which remains preferable for several simultaneous display territories. Atlarium
+      gives a 150 by 50 cm footprint, while its inherited 375 L encoding is an agent assumption rather than
+      an explicit volume tied to that footprint.'
+    sources:
+    - *id002
+    - *id018
+    - *id003
+    - *id020
+    - *id010
+    - *id029
+    - *id022
+    - *id007
+    - *id009
+    evidence:
+    - source: *id002
+      value:
+        volumeL: 300
+        lengthCm: 120
+        depthCm: 50
+    - source: *id018
+      value:
+        volumeL: 300
+        lengthCm: 150
+        depthCm: 50
+      note: 'The register specifies 150 cm and 300 L; the 50 cm depth is an inherited agent interpretation,
+        not an explicit dimension in the source.'
+    - source: *id003
+      value:
+        volumeL: 300
+        lengthCm: 120
+        depthCm: 50
+      note: recommended aquarium size
+    - source: *id020
+      value:
+        volumeL: 300
+      note: 'at least 300 L, advised 200 to 400 L'
+    - source: *id010
+      value:
+        volumeL: 208
+      note: 55 US gallon tank as minimum
+    - source: *id029
+      value:
+        lengthCm: 150
+      note: minimum length about 150 cm
+    - source: *id018
+      value:
+        volumeL: 300
+        lengthCm: 150
+        depthCm: 50
+      note: 'The register specifies 150 cm and 300 L; the 50 cm depth is an inherited agent interpretation,
+        not an explicit dimension in the source.'
+    - source: *id022
+      value:
+        volumeL: 137
+        lengthCm: 120
+        depthCm: 38
+      note: Smaller aquarium base measurement; social group not specified in this value.
+    - source: *id010
+      value:
+        volumeL: 208
+        lengthCm: 120
+        depthCm: 33
+      note: 55 US gallon minimum and about four square feet of floor area
+    - source: *id010
+      value:
+        volumeL: 284
+        lengthCm: 120
+        depthCm: 45
+      note: keeper maintained ten fish in a 75 US gallon aquarium
+    - source: *id007
+      value:
+        volumeL: 137
+        lengthCm: 120
+        depthCm: 38
+      note: 'profile base dimensions, not group-specific'
+    - source: *id009
+      value:
+        volumeL: 375
+        lengthCm: 150
+        depthCm: 50
+      note: 'Inherited dimensional encoding: the page specifies a 150 by 50 cm base for a group; 375 L is an
+        agent assumption, while its separate numeric card says 180 L.'
+  lifespanYears:
+    value:
+      min: 3
+      max: 5
+    confidence: low
+    rationale: 'Generator proposed five to eight years from general knowledge; checker-a four to seven by analogy;
+      checker-b three to five from Cichlid Atlas; checker-c five to eight from Atlarium. The proposal medians
+      are 4.5 and 7 years. Checking those against source statements favors the explicit three to five year
+      estimate at Cichlid Atlas over the lower-trust Atlarium five to eight estimate and unsourced analogies,
+      so the median is not adopted. DRTA mentions up to five years but its Kilesa naming limits corroboration.
+      AquariaCentral reports breeding ages near one to three, which cannot be converted into lifespan. No longitudinal
+      lifespan study was found and confidence stays low.'
+    sources:
+    - kind: model-knowledge
+      title: Species-level estimate from general cichlid husbandry knowledge
+      accessed: '2026-10-13'
+    - *id010
+    - *id042
+    - *id009
+    - *id025
+    evidence:
+    - source: *id010
+      value:
+        min: 3
+        max: 5
+      note: 'Inherited extrapolation retained for comparison: the account reports breeding ages near one to
+        three years, not a three to five year lifespan.'
+    - source: *id042
+      value:
+        min: 3
+        max: 5
+      note: The page labels this as reported aquarium lifespan.
+    - source: *id009
+      value:
+        min: 5
+        max: 8
+      note: aquarium lifespan estimate
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: 'All four proposals identify maternal mouthbrooding. FishBase, CRC, Andersen and Kidd et al.
+      agree that females carry the brood, while males court at separate sand nests. The Kidd study includes
+      direct field and laboratory confirmation of parental care for this species. The Dobberfuhl abstract corroborates
+      lekking and polygyny only; it does not independently establish which parent incubates. The Wet Spot breeding
+      paragraph is inconsistent with the stronger evidence and is not adopted.'
+    sources:
+    - *id001
+    - *id032
+    - *id002
+    - *id006
+    - *id003
+    - *id029
+    - *id010
+    - &id043
+      kind: literature
+      title: 'Dobberfuhl et al. (2005). Visual acuity, environmental complexity, and social organization in
+        African cichlid fishes. Behavioral Neuroscience 119(6), abstract'
+      url: 'https://doi.org/10.1037/0735-7044.119.6.1648'
+      accessed: '2026-10-15'
+      offline: true
+    - *id005
+    - *id007
+    - *id008
+    - *id024
+    evidence:
+    - source: *id001
+      value: 'maternal mouthbrooder, polygamous lek breeder'
+    - source: *id032
+      value: maternal-only mouthbrooding
+      note: The paper directly observed the species in field and laboratory
+    - source: *id001
+      value: maternal-mouthbrooder
+      note: 'polygamous maternal mouthbrooder, lek breeder'
+    - source: *id006
+      value: maternal-mouthbrooder
+      note: maternal mouthbrooder
+    - source: *id003
+      value: maternal-mouthbrooder
+    - source: *id029
+      value: maternal-mouthbrooder
+    - source: *id010
+      value: maternal-mouthbrooder
+    - source: *id043
+      value: maternal-mouthbrooder
+      note: 'Inherited interpretation retained: only the abstract was read; it establishes lekking and polygyny,
+        not the sex of the mouthbrooding parent. The DOI page is blocked and full text is not open access.'
+    - source: *id006
+      value: maternal-mouthbrooder
+    - source: *id005
+      value: maternal-mouthbrooder
+    - source: *id032
+      value: maternal-mouthbrooder
+      note: field and laboratory observations included this species
+    - source: *id007
+      value: maternal-mouthbrooder
+    - source: *id008
+      value: maternal-mouthbrooder
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: 'Generator and checker-c proposed demanding; checker-a and checker-b proposed moderate. The
+      public CRC profile explicitly addresses intermediate aquarists, while Seriously Fish and Aquablog rate
+      the fish easy and the Swedish register rates it advanced. Moderate follows the high-trust CRC classification
+      while recognizing its large group, open sand, maintenance and startle-response requirements. The demanding
+      interpretations are retained as cautionary assessments rather than a consensus.'
+    sources:
+    - *id018
+    - *id002
+    - *id006
+    - *id020
+    - *id021
+    - *id044
+    - *id029
+    - *id022
+    - *id007
+    - *id010
+    - *id009
+    evidence:
+    - source: *id006
+      value: moderate
+      note: intermediate aquarists
+    - source: *id020
+      value: easy
+      note: maintenance rated easy
+    - source: *id021
+      value: demanding
+      note: 'difficulty 4, scale not stated'
+    - source: *id044
+      value: moderate
+      note: needs weekly water changes of 25 percent
+    - source: *id029
+      value: moderate
+      note: prone to panic
+    - source: *id007
+      value: demanding
+      note: 'skittish, needs a large aquarium and careful group setup'
+    - source: *id010
+      value: demanding
+      note: demands a long open sand area and appropriate companions
+    - source: *id009
+      value: demanding
+      note: specialized group and floor-space requirements
+partners:
+  suitable:
+  - species: Cyprichromis leptosoma
+    reason: Uses higher water and is reported to coexist with the sand-feeding group.
+    condition: Provide room for both shoals and deliver suitable food to the bottom.
+  - species: Paracyprichromis nigripinnis
+    reason: A relatively calm higher-water companion mentioned in specialist advice.
+    condition: Keep its edge shelter separate from the large open sand area; observe actual behavior.
+  - species: Lamprichthys tanganicanus
+    reason: 'Mentioned as a possible midwater companion in hobby accounts, with less direct confirmation.'
+    condition: Use a spacious covered aquarium and ensure the sand feeders receive enough food.
+  unsuitable:
+  - species: Callochromis macrops
+    reason: A cichlids.com breeder warns of competing sand-sifter use of the same bottom area.
+  - species: Aulonocranus dewindti
+    reason: A hobby account warns that its nest building can take floor space from Enantiopus.
+  - species: Lake Malawi mbuna
+    reason: Boisterous activity and feeding competition can unsettle this timid bottom feeder.
+  - species: Neolamprologus brichardi
+    reason: An expanding defended breeding territory can restrict the sand group and expose it to persistent
+      harassment.
+profile:
+  overview:
+    text: 'Give Enantiopus melanogenys room to sift sand as a group and its behavior becomes the main attraction:
+      mature males establish neighboring display sites while females move among them. This Lake Tanganyika
+      endemic is also traded as Xenotilapia melanogenys. Here the accepted name follows the Catalog of Fishes.
+      Enantiopus sp. ''Kilesa'' is a separate undescribed fish and is excluded from this account.'
+    sources:
+    - *id040
+    - *id004
+    - kind: catalog-of-fishes
+      title: 'Eschmeyer''s Catalog of Fishes: species in the genus Ectodus'
+      url: 'https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ectodus'
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-e5b59a95/2026-10-14T171331Z
+      accessed: '2026-10-13'
+    - *id045
+    - *id002
+    - *id006
+  habitat:
+    text: 'The species uses sandy lake bottoms and feeds close to the substrate, even when traveling in large
+      shoals. Records extend to about 40 m, with breeding fish moving into shallower water. Natural lake chemistry
+      is represented here by 23 to 29 C, pH 8.4 to 9.4, 10 to 13 dGH and 15 to 20 dKH. These values summarize
+      seasonal and regional measurements, rather than a single collecting site. Occasional nearby rocks do
+      not replace its requirement for open sand.'
+    sources:
+    - *id001
+    - *id002
+    - *id012
+    - *id014
+    - *id011
+    - *id015
+    - *id016
+    - *id017
+  sizeAndGrowth:
+    text: 'Plan around males near 15 cm and females near 13 cm. The female figure is estimated because available
+      accounts describe a size difference without measuring a separate female maximum. FishBase uses total
+      length, whereas Seriously Fish reports 16 cm standard length, so their numbers cannot be treated as equivalent
+      measurements. Spawning can begin around the first year, and a short reported reproductive period should
+      not be mistaken for a measured lifespan. The three to five year lifespan estimate remains poorly confirmed.'
+    sources:
+    - *id001
+    - *id002
+    - *id042
+    - *id009
+    - *id022
+  husbandry:
+    text: 'For eight adults, provide at least 300 L and a base around 120 by 50 cm. A length of 150 cm gives
+      displaying males more room and is preferable when several bowers are active. Keep most of the floor as
+      fine smooth sand, with sparse stable shelter at the margins. Use reliable filtration and regular partial
+      water changes, and check that waste does not accumulate. Routine temperature advice clusters near 24
+      to 27 C. The wider working tolerances are 23 to 30 C, pH 7.5 to 9.4, GH 10 to 25 dGH and KH 10 to 20
+      dKH; they include natural conditions and are not experimentally determined stress limits. Quiet surroundings,
+      a secure cover and gradual lighting changes reduce problems when fish startle.'
+    sources:
+    - *id002
+    - *id018
+    - *id022
+    - *id029
+    - *id026
+  socialBehavior:
+    text: 'A group of at least eight, including two or more males and more females than males, suits its schooling
+      and display behavior better than an isolated pair. The males maintain separate breeding sites and mainly
+      settle disputes by display and brief chasing when space is adequate. A small group can be nervous, and
+      a small social unit can concentrate harassment on females. Preserve enough open floor for fish to leave
+      a displaying male without being trapped at another nest.'
+    sources:
+    - *id002
+    - *id018
+    - *id029
+    - *id028
+  diet:
+    text: 'Food needs to reach the sand where the fish normally forage. Small sinking prepared foods and appropriately
+      sized frozen or live crustaceans offer a practical way to supply its mainly invertebrate diet. Wild stomach
+      records include copepods, ostracods and shrimps. Distribute food so shy individuals receive a share and
+      watch body condition rather than assuming that sifting always means successful feeding. The bloat-sensitive
+      flag is false because a special protein-related susceptibility has not been established; the diet still
+      needs variety and sensible portions.'
+    sources:
+    - *id001
+    - *id006
+  breeding:
+    text: 'Females alone incubate the brood after spawning at a male''s sand nest. Display sites may approach
+      50 cm across, although the actual laying pit can be much smaller and nest shape varies between populations.
+      Incubation commonly takes about three to four weeks; reported broods span roughly 10 to 80 young or eggs
+      across the accounts, with no single clutch size guaranteed. Handling and social disruption can cause
+      brood loss. Adults can consume released fry, so a breeding display does not guarantee recruitment. Reports
+      of young surviving with fed adults and cover are conditional successes, not evidence that predation never
+      occurs.'
+    sources:
+    - *id001
+    - *id002
+    - *id032
+    - *id022
+    - *id031
+  sexing:
+    text: 'Adult display males show stronger blue-green iridescence, yellow areas and dark lip or fin markings;
+      pattern and intensity vary among localities. Females and males outside display condition are more silvery
+      and can look similar. Males tend to be larger with longer dorsal and anal fins. A female carrying a brood
+      develops a fuller mouth profile, but color alone is unreliable for assigning sex to juveniles or subdued
+      adults.'
+    sources:
+    - *id018
+    - *id002
+  compatibility:
+    text: 'A calm midwater shoal such as Cyprichromis leptosoma can share a sufficiently spacious aquarium
+      while leaving the sand available. Paracyprichromis and Lamprichthys are also mentioned as possible companions,
+      with less direct experience behind some reports. Avoid crowding the bottom with competing sand nest builders
+      or exposing the group to persistent territorial harassment. A dedicated display is a useful option rather
+      than a strict requirement. The current hybrid-group list is empty because no named cross was found, not
+      because crossing with every related fish has been ruled out.'
+    sources:
+    - *id002
+    - *id010
+    - *id034
+    - *id039
+    - *id046
+    - *id030
+    - *id035
+    - *id036
+    - *id037
+    - *id038
+    - *id033
+    - *id031
+  problems:
+    text: 'Sudden flight can end in collisions with glass or decor, especially after abrupt lighting changes
+      or disturbance near the tank. Loss of feeding access, declining body condition and repeated hiding warrant
+      checking social pressure and maintenance. The archive contains a breeder report emphasizing regular water
+      changes and low nitrate accumulation. Gravel interferes with its normal sand processing, and a cramped
+      or sparsely populated group can behave very differently from a settled shoal. Neither species-specific
+      disease rates nor precise chronic tolerance limits are established by the reviewed evidence.'
+    sources:
+    - *id018
+    - *id002
+    - *id044
+provenance:
+  runs:
+  - role: generator
+    model: gpt-6-luna
+    date: 2026-10-13
+  - role: checker
+    model: claude-sonnet-5-5
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6-luna
+    date: 2026-10-13
+  - role: checker
+    model: gpt-6-luna
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: 2026-10-13
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  disagreements:
+  - field: features.origin
+    proposals:
+    - by: generator
+      value:
+        continent: Africa
+        region: Lake Tanganyika
+        waterbody: Lake Tanganyika
+        localities:
+        - Lake-wide distribution in sandy areas
+    - by: checker-a
+      value:
+        continent: Africa
+        region: Lake Tanganyika
+        waterbody: lake-tanganyika
+        localities:
+        - Moliro (type locality)
+        - Isanga
+        - Kambwimba
+        - Nyanza Lac
+        - Mtosi Bay
+    - by: checker-b
+      value:
+        continent: Africa
+        region: Lake Tanganyika
+        waterbody: lake-tanganyika
+    - by: checker-c
+      value:
+        continent: Africa
+        region: Lake Tanganyika
+        waterbody: lake-tanganyika
+    decision:
+      continent: Africa
+      region: Lake Tanganyika
+      waterbody: lake-tanganyika
+      localities:
+      - Moliro (type locality)
+      - Isanga Bay
+      - Kambwimba
+      - Nyanza Lac
+      - Mtosi Bay
+    rationale: 'The Catalog of Fishes, FishBase and CRC agree on Lake Tanganyika endemism. The waterbody label
+      is normalized to lake-tanganyika; locality records and the public Andersen account supply the named sites.
+      Nearly lake-wide distribution does not include the separate western-shore Kilesa taxon.'
+  - field: features.maxSizeCm
+    proposals:
+    - by: generator
+      value:
+        male: 15
+        female: 13
+    - by: checker-a
+      value:
+        male: 15
+        female: 13
+    - by: checker-b
+      value:
+        male: 15
+        female: 13
+    - by: checker-c
+      value:
+        male: 15
+        female: 12
+    decision:
+      male: 15
+      female: 13
+    rationale: 'The male median is 15 cm from all four proposals. Generator, checker-a and checker-b proposed
+      female 13 cm; checker-c proposed 12, giving a median of 13. FishBase reports 15 cm total length without
+      a separate female maximum, and Andersen and the Swedish register describe smaller females. The female
+      endpoint is therefore an estimate, not a measured sex-specific maximum. Seriously Fish instead reports
+      16 cm standard length, Aquablog 16 cm without a stated length convention, and the Wet Spot averages 10
+      to 12 cm. These figures remain visible but do not establish a different typical aquarium maximum per
+      sex; standard and total length are not interchangeable.'
+  - field: features.predation
+    proposals:
+    - by: generator
+      value: 1
+    - by: checker-a
+      value: 0
+    - by: checker-b
+      value: 1
+    - by: checker-c
+      value: 0
+    - by: tiebreaker-1
+      value: 1
+    - by: tiebreaker-2
+      value: 1
+    decision: 1
+    rationale: 'Tally method qualified-majority. The settled qualified majority is level 1, four of six votes,
+      with medium confidence. Generator, checker-b, tiebreaker-1 and tiebreaker-2 proposed 1; checker-a and
+      checker-c proposed 0 from the natural invertebrate diet. Seriously Fish explicitly reports adults consuming
+      released fry and AquariaCentral independently reports the same opportunity feeding. These direct observations
+      outweigh an inference of level 0 from stomach contents dominated by crustaceans. WaFishBox reports survival
+      with cover and well-fed adults, which is compatible with occasional predation. Level 1 uses the rubric
+      threshold of roughly 2 cm, not a measured prey-size ceiling for this fish. The Oxford thesis abstract
+      does not concern this species and supplies no predation evidence.'
+  - field: features.diet
+    proposals:
+    - by: generator
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - small crustaceans
+        - copepods
+        - ostracods
+        - zooplankton
+    - by: checker-a
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - frozen mosquito larvae
+        - cyclops
+        - mysis
+        - artemia
+        - high-quality flakes
+    - by: checker-b
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - copepods
+        - ostracods
+        - small crustaceans
+        - shrimps
+    - by: checker-c
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - copepods
+        - ostracods
+        - small crustaceans
+        - prepared foods
+    decision:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+      - small crustaceans
+      - copepods
+      - ostracods
+      - zooplankton
+    rationale: 'Tally method unanimous. The tally is unanimous for invertivore with bloatSensitive false, with
+      medium confidence. FishBase records copepods, ostracods and shrimps in stomachs; CRC and the husbandry
+      accounts describe substrate invertebrate feeding. AquaInfo, AquariaCentral and Atlarium sometimes use
+      an omnivore label, but their detailed feeding descriptions do not outweigh this specific natural-diet
+      evidence. The four food lists differ and are retained in disagreements and evidence; the final food list
+      is exactly the tally decision. No reviewed source establishes a special high-protein bloat susceptibility,
+      so false is an absence-of-evidence working flag rather than a guarantee against illness.'
+  - field: features.aggressionConspecific
+    proposals:
+    - by: generator
+      value: 1
+    - by: checker-a
+      value: 1
+    - by: checker-b
+      value: 1
+    - by: checker-c
+      value: 2
+    decision: 1
+    rationale: 'Generator, checker-a and checker-b proposed 1, while checker-c proposed 2. With the recommended
+      adult group and sufficient sand, the Andersen account and AquariaCentral describe adjacent displaying
+      males with limited chasing rather than persistent injury. This fits level 1. Atlarium describes stronger
+      breeding rivalry and the Chituta tank record reports harassment in a small social unit; these cautionary
+      reports concern conditions outside the recommended group and do not determine its baseline score.'
+  - field: features.aggressionHeterospecific
+    proposals:
+    - by: generator
+      value: 1
+    - by: checker-a
+      value: 1
+    - by: checker-b
+      value: 0
+    - by: checker-c
+      value: 1
+    decision: 1
+    rationale: 'Generator, checker-a and checker-c proposed 1; checker-b proposed 0. Sources consistently portray
+      a peaceful fish with calm companions, but localized spawning-site defense and disputes over bottom space
+      support immediate-area display at level 1. This does not imply attacks beyond the nest. Evidence encoded
+      as 0 remains because many observations describe uncomplicated coexistence.'
+  - field: features.habitatZones
+    proposals:
+    - by: generator
+      value:
+      - sand
+      - rock
+    - by: checker-a
+      value:
+      - sand
+    - by: checker-b
+      value:
+      - sand
+    - by: checker-c
+      value:
+      - sand
+      - openWater
+    decision:
+    - sand
+    rationale: 'Generator proposed sand and rock; checker-a and checker-b proposed sand; checker-c proposed
+      sand and openWater. FishBase and the public CRC habitat classification identify a bottom-associated sand
+      feeder. Breeding beside occasional rocks does not make rock habitat a requirement, and shoaling above
+      the bottom does not establish a separate midwater habitat. The final required zone is sand; sparse edge
+      shelter remains compatible with it.'
+  - field: features.social
+    proposals:
+    - by: generator
+      value:
+        structure: group
+        minGroup: 8
+    - by: checker-a
+      value:
+        structure: group
+        minGroup: 6
+    - by: checker-b
+      value:
+        structure: group
+        minGroup: 8
+    - by: checker-c
+      value:
+        structure: group
+        minGroup: 8
+    decision:
+      structure: group
+      minGroup: 8
+    rationale: 'Generator, checker-b and checker-c proposed a group of eight; checker-a proposed six. The median
+      minimum is eight, directly supported by Andersen and the AquariaCentral recommendation of eight to ten.
+      Tanganyika.si suggests five to seven, Aquablog five to six, and the Swedish register ten or more. AquaInfo
+      favors two females per male but still describes schooling, rather than a permanent isolated harem. Eight
+      with at least two males and more females is the working social unit; larger groups need correspondingly
+      more floor area.'
+  - field: features.coloration
+    proposals:
+    - by: generator
+      value:
+        baseColors:
+        - green
+        - yellow
+        - black
+        - blue
+        pattern: mixed
+    - by: checker-a
+      value:
+        baseColors:
+        - green
+        - yellow
+        - blue
+        pattern: mixed
+    - by: checker-b
+      value:
+        baseColors:
+        - blue
+        - green
+        - black
+        pattern: spots
+    - by: checker-c
+      value:
+        baseColors:
+        - blue
+        - yellow
+        - black
+        pattern: mixed
+    decision:
+      baseColors:
+      - blue
+      - green
+      - yellow
+      - black
+      pattern: mixed
+    rationale: 'Generator proposed green, yellow, black and blue with mixed markings; checker-a green, yellow
+      and blue with mixed markings; checker-b blue, green and black with spots; checker-c blue, yellow and
+      black with mixed markings. Andersen documents locality-dependent blue, green and purple iridescence and
+      dark dorsal spots, while AquariaCentral and Aquablog describe yellow areas and dark lip or fin markings.
+      The combined breeding-male palette fits mixed better than spots alone. The schema has no purple value.
+      Silver is the subdued nonbreeding appearance, not the defining display palette.'
+  - field: features.feedingSpeed
+    proposals:
+    - by: generator
+      value: normal
+    - by: checker-a
+      value: normal
+    - by: checker-b
+      value: slow
+    - by: checker-c
+      value: normal
+    decision: normal
+    rationale: 'Generator, checker-a and checker-c proposed normal; checker-b proposed slow. AquariaCentral
+      describes a strong appetite and Andersen reports ready uptake of prepared foods. Substrate sifting and
+      sensitivity to boisterous fish alone do not show that feeding is consistently slow under suitable conditions.
+      No comparative feeding-rate study was found, so normal remains a low-confidence practical classification
+      and food delivery to the bottom still matters.'
+  - field: features.minTank
+    proposals:
+    - by: generator
+      value:
+        volumeL: 300
+        lengthCm: 120
+        depthCm: 50
+    - by: checker-a
+      value:
+        volumeL: 300
+        lengthCm: 120
+        depthCm: 50
+    - by: checker-b
+      value:
+        volumeL: 300
+        lengthCm: 150
+        depthCm: 50
+    - by: checker-c
+      value:
+        volumeL: 280
+        lengthCm: 120
+        depthCm: 45
+    decision:
+      volumeL: 300
+      lengthCm: 120
+      depthCm: 50
+    rationale: 'Generator and checker-a proposed 300 L at 120 by 50 cm; checker-b 300 L at 150 by 50 cm; checker-c
+      280 L at 120 by 45 cm. The component-wise medians are 300 L, 120 cm length and 50 cm depth. Tanganyika.si
+      directly supports these dimensions, and AquariaCentral reports ten fish in about 284 L. Seriously Fish
+      gives a smaller 137 L at 120 by 38 cm without establishing that volume for the recommended eight adults;
+      this is not adopted. The selected minimum is below the larger 150 cm recommendation from Andersen and
+      the Swedish register, which remains preferable for several simultaneous display territories. Atlarium
+      gives a 150 by 50 cm footprint, while its inherited 375 L encoding is an agent assumption rather than
+      an explicit volume tied to that footprint.'
+  - field: features.lifespanYears
+    proposals:
+    - by: generator
+      value:
+        min: 5
+        max: 8
+    - by: checker-a
+      value:
+        min: 4
+        max: 7
+    - by: checker-b
+      value:
+        min: 3
+        max: 5
+    - by: checker-c
+      value:
+        min: 5
+        max: 8
+    decision:
+      min: 3
+      max: 5
+    rationale: 'Generator proposed five to eight years from general knowledge; checker-a four to seven by analogy;
+      checker-b three to five from Cichlid Atlas; checker-c five to eight from Atlarium. The proposal medians
+      are 4.5 and 7 years. Checking those against source statements favors the explicit three to five year
+      estimate at Cichlid Atlas over the lower-trust Atlarium five to eight estimate and unsourced analogies,
+      so the median is not adopted. DRTA mentions up to five years but its Kilesa naming limits corroboration.
+      AquariaCentral reports breeding ages near one to three, which cannot be converted into lifespan. No longitudinal
+      lifespan study was found and confidence stays low.'
+  - field: features.beginnerSuitability
+    proposals:
+    - by: generator
+      value: demanding
+    - by: checker-a
+      value: moderate
+    - by: checker-b
+      value: moderate
+    - by: checker-c
+      value: demanding
+    decision: moderate
+    rationale: 'Generator and checker-c proposed demanding; checker-a and checker-b proposed moderate. The
+      public CRC profile explicitly addresses intermediate aquarists, while Seriously Fish and Aquablog rate
+      the fish easy and the Swedish register rates it advanced. Moderate follows the high-trust CRC classification
+      while recognizing its large group, open sand, maintenance and startle-response requirements. The demanding
+      interpretations are retained as cautionary assessments rather than a consensus.'
+  - field: features.temperatureC.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 22
+        max: 30
+    - by: checker-a
+      value:
+        min: 22
+        max: 30
+    - by: checker-b
+      value:
+        min: 23
+        max: 29
+    - by: checker-c
+      value:
+        min: 23
+        max: 29
+    decision:
+      min: 23
+      max: 30
+    rationale: 'Tally method unanimous. The tally decides 23 to 30 C with unanimous agreement within the one-degree
+      threshold and low confidence. Generator and checker-a proposed 22 to 30 C; checker-b and checker-c proposed
+      23 to 29 C. The midpoint endpoints are 22.5 and 29.5 C, rounded by the tally to 23 and 30 C. The result
+      is narrower at the lower end than the 22 to 30 proposals, which were inferred margins rather than measurements.
+      Seriously Fish and the retailer recommend 24 to 27 C, AquaInfo and Aquablog 24 to 26 C, and the Swedish
+      register 24 to 27.5 C. The natural 23 to 29 C range is included, but 30 C is an inferred margin with
+      no demonstrated chronic threshold; routine keeping near 24 to 27 C is better supported.'
+  - field: features.ph.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 7.5
+        max: 9.5
+    - by: checker-a
+      value:
+        min: 7.5
+        max: 9.4
+    - by: checker-b
+      value:
+        min: 7.5
+        max: 9.4
+    - by: checker-c
+      value:
+        min: 7.5
+        max: 9.4
+    decision:
+      min: 7.5
+      max: 9.4
+    rationale: 'Tally method unanimous. The tally decides pH 7.5 to 9.4 with unanimous agreement within 0.3
+      pH units and medium confidence. Generator proposed 7.5 to 9.5; checker-a, checker-b and checker-c proposed
+      7.5 to 9.4. The upper endpoint follows the median and includes natural pH 8.4 to 9.4. Seriously Fish
+      advises 7.5 to 9.0 and AquariaCentral 8.5 to 9.4. Aquablog also presents a wider 7 to 9 interval, whereas
+      its narrative gives 7.5 to 8.5; the identity-uncertain DRTA page reaches 9.5. These wider source figures
+      remain cited but do not displace the settled range. The endpoints are working husbandry bounds, not experimentally
+      established failure limits.'
+  - field: features.ghDgh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 10
+        max: 25
+    - by: checker-a
+      value:
+        min: 8
+        max: 20
+    - by: checker-b
+      value:
+        min: 10
+        max: 25
+    - by: checker-c
+      value:
+        min: 7
+        max: 25
+    - by: tiebreaker-1
+      value:
+        min: 10
+        max: 25
+    - by: tiebreaker-2
+      value:
+        min: 10
+        max: 25
+    decision:
+      min: 10
+      max: 25
+    rationale: 'Tally method qualified-majority. The tally decides 10 to 25 dGH by qualified majority, four
+      of six votes, with medium confidence. Generator, checker-b, tiebreaker-1 and tiebreaker-2 proposed 10
+      to 25; checker-a proposed 8 to 20 and checker-c 7 to 25. Seriously Fish explicitly recommends 10 to 25
+      dGH and has higher trust than the conflicting AquaInfo 7 to 11, Wet Spot 8 to 15 and Atlarium 10 to 20
+      recommendations. The wider combined source envelope is 7 to 25 dGH; its lower end is retained as dissenting
+      evidence. AquariaCentral gives about 13.4 to 17.9 dGH, OATA 12 to 18 for African lake cichlids generally,
+      and a Chituta aquarium records 18 dGH. FishBase reports only an upper environmental dH value of 20. The
+      selected interval includes natural 10 to 13 dGH and is husbandry guidance rather than a chronic tolerance
+      experiment.'
+  - field: features.khDkh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 10
+        max: 25
+    - by: checker-a
+      value:
+        min: 8
+        max: 20
+    - by: checker-b
+      value:
+        min: 12
+        max: 25
+    - by: checker-c
+      value:
+        min: 10
+        max: 20
+    - by: tiebreaker-1
+      value:
+        min: 10
+        max: 20
+    - by: tiebreaker-2
+      value:
+        min: 10
+        max: 20
+    decision:
+      min: 10
+      max: 20
+    rationale: 'Tally method qualified-majority. The tally decides 10 to 20 dKH by qualified majority within
+      the two-degree threshold, four of six votes, with low confidence. Generator proposed 10 to 25; checker-a
+      8 to 20; checker-b 12 to 25; checker-c, tiebreaker-1 and tiebreaker-2 10 to 20. The four matching lower
+      proposals have a rounded median of 10 to 20. AquariaCentral advises 180 to 240 mg/L as CaCO3, about 10.1
+      to 13.4 dKH; OATA gives 10 to 15 dKH for the broader lake-cichlid group, and a Chituta aquarium records
+      10 dKH. Including the natural 15 to 20 dKH range extends the upper end to 20. Atlarium gives a wider
+      lower extension to 5 dKH in its 5 to 10 advice, while proposals reaching 25 have no direct species KH
+      source. Those values remain in evidence or the proposal record. The retained Seriously Fish 10 to 25
+      entry is explicitly a GH proxy and cannot be converted into KH. This is a derived working tolerance,
+      not a demonstrated physiological boundary; the DRTA target near 15 dKH has a Kilesa identity caveat.'
+  - field: taxonomy.synonyms
+    proposals:
+    - by: generator
+      value:
+      - Ectodus melanogenys
+      - Ectodus longianalis
+      - Xenotilapia melanogenys
+    - by: checker-a
+      value:
+      - Ectodus melanogenys
+      - Ectodus longianalis
+      - Xenotilapia melanogenys
+    - by: checker-b
+      value:
+      - Ectodus melanogenys
+      - Xenotilapia melanogenys
+      - Ectodus longianalis
+    - by: checker-c
+      value:
+      - Xenotilapia melanogenys
+      - Ectodus longianalis
+    decision:
+    - Ectodus melanogenys
+    - Ectodus longianalis
+    - Xenotilapia melanogenys
+    rationale: 'Retain original Ectodus melanogenys and confirmed synonym Ectodus longianalis, with Xenotilapia
+      melanogenys as the alternate combination. Checker-c omitted the original combination; omissions do not
+      overturn the Catalog of Fishes. Enantiopus albini remains uncertain rather than a confirmed synonym.'
