@@ -131,7 +131,7 @@ class EdgeDelivery(unittest.TestCase):
             self.assertEqual(len(issuers), 2)
             self.assertTrue(all(d['spec']['acme']['email'] == 'acme@example.invalid' for d in issuers))
 
-    def assert_placeholder(self, docs, host, namespace):
+    def assert_placeholder(self, docs, host, namespace, image=None):
         ingress = resource(docs, 'Ingress', 'placeholder')
         self.assertEqual(ingress['spec']['ingressClassName'], 'traefik')
         self.assertEqual(ingress['spec']['rules'][0]['host'], host)
@@ -142,7 +142,11 @@ class EdgeDelivery(unittest.TestCase):
         deployment = resource(docs, 'Deployment', 'placeholder')['spec']
         self.assertEqual(deployment['replicas'], 1)
         container = deployment['template']['spec']['containers'][0]
-        self.assertRegex(container['image'], r'@sha256:[0-9a-f]{64}$')
+        if image:
+            self.assertEqual(container['image'], image)
+            self.assertNotIn('volumeMounts', container)
+        else:
+            self.assertRegex(container['image'], r'@sha256:[0-9a-f]{64}$')
         for field in ['requests', 'limits']:
             self.assertIn('cpu', container['resources'][field])
             self.assertIn('memory', container['resources'][field])
@@ -188,9 +192,15 @@ class EdgeDelivery(unittest.TestCase):
                 shutil.copytree(ROOT / 'apps/placeholder', tree)
                 config = tree / 'overlays/preview/kustomization.yaml'
                 settings = yaml.safe_load(config.read_text())
-                settings.update(app['spec']['source']['kustomize'])
+                overrides = app['spec']['source']['kustomize']
+                patches = settings['patches'] + overrides['patches']
+                settings.update(overrides)
+                settings['patches'] = patches
+                settings['images'] = [{'name': image.split(':')[0], 'newTag': image.split(':')[1]}
+                                      for image in overrides['images']]
                 config.write_text(yaml.safe_dump(settings))
-                self.assert_placeholder(build(config.parent), f'pr-{number}.dev.cichlids.com', f'pr-{number}')
+                self.assert_placeholder(build(config.parent), f'pr-{number}.dev.cichlids.com', f'pr-{number}',
+                                        'ghcr.io/lngr/cichlids-web:' + pr['sha'])
                 self.assertFalse(check.generate(appset, ROOT, [{**pr, 'state': 'closed'}], chart))
                 self.assertFalse(check.generate(appset, ROOT, [{**pr, 'labels': []}], chart))
 

@@ -5,25 +5,32 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
+
+permissions: {}
 
 jobs:
   adr-index:
-    name: ADR index up to date
+    name: adr-index
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.x"
       - name: Check ADR index
         run: python3 tools/generate_adr_index.py --check
 
   story-test-binding:
-    name: Story-to-test binding (Definition of Done)
+    name: story-test-binding
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: "24"
       - name: Self-test of the check
@@ -32,14 +39,16 @@ jobs:
         run: node tools/check-story-test-binding.mjs
 
   manifests:
-    name: Cluster manifests and environment safeguards
+    name: manifests
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.x"
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: "24"
       - name: Install YAML parser
@@ -50,26 +59,36 @@ jobs:
         run: ./tools/check-cluster-manifests.sh
 
   toolchain:
-    name: Toolchain pinned and present
+    name: toolchain
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: "24"
       - name: Install pinned core toolchain
         run: bash tools/install-toolchain.sh
+      - name: Install YAML parser
+        run: python3 -m pip install PyYAML==6.0.3
+      - name: Delivery contracts
+        run: python3 tools/test-delivery.py
+      - name: Workflow lint
+        run: actionlint
       - name: Verify core toolchain
         run: ./tools/verify-toolchain.sh core
 
   secrets-scan:
-    name: No plaintext secrets committed
+    name: secrets-scan
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.x"
       - name: Install pinned core toolchain
@@ -98,9 +117,11 @@ jobs:
   keycloak-realm:
     name: Keycloak realm files carry no dev setting
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.x"
       - name: Self-test of the realm check
@@ -112,23 +133,27 @@ jobs:
   stack-bootstrap:
     name: Local stack bootstrap script
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.x"
       - name: Postgres wait and legacy stack default of bootstrap.sh
         run: python3 app/stack/bootstrap_test.py
 
   infra-validate:
-    name: OpenTofu tiers validate
+    name: infra-validate
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.x"
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: "24"
       - name: Exposure probe self-test
@@ -185,13 +210,15 @@ jobs:
   # lint step (no lint script exists). The e2e job runs the web write specs and verifies the
   # backend toolchain scope, not the Android scope.
   backend:
-    name: Backend build and tests (.NET, Testcontainers)
+    name: backend
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     timeout-minutes: 30
     env:
       DOTNET_CLI_TELEMETRY_OPTOUT: "1"
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - name: Install the pinned .NET SDK
         run: |
           bash tools/install-dotnet.sh
@@ -200,7 +227,7 @@ jobs:
           echo "DOTNET_ROOT=$HOME/.dotnet" >> "$GITHUB_ENV"
       - name: Verify backend toolchain
         run: ./tools/verify-toolchain.sh backend
-      - uses: actions/cache@v6
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ~/.nuget/packages
           key: nuget-${{ runner.os }}-${{ hashFiles('app/api/**/*.csproj', 'app/api/Directory.Build.props') }}
@@ -214,21 +241,23 @@ jobs:
           --results-directory TestResults --blame-hang-timeout 10m
       - name: Upload test results
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: backend-test-results
           path: TestResults
 
   client-core:
-    name: Frontend typecheck and unit tests (client-core, mobile)
+    name: client-core
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v5
-      - uses: pnpm/action-setup@v6
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
         with:
           package_json_file: app/package.json
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: "24"
           cache: pnpm
@@ -247,14 +276,16 @@ jobs:
         run: pnpm -r test
 
   e2e:
-    name: Playwright write tests (compose stack)
+    name: e2e
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     timeout-minutes: 30
     env:
       DOTNET_CLI_TELEMETRY_OPTOUT: "1"
       EXPO_NO_TELEMETRY: "1"
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - name: Start Postgres, RustFS and Keycloak
         run: app/stack/services-up.sh
       - name: Install the pinned .NET SDK
@@ -265,15 +296,15 @@ jobs:
           echo "DOTNET_ROOT=$HOME/.dotnet" >> "$GITHUB_ENV"
       - name: Verify backend toolchain
         run: ./tools/verify-toolchain.sh backend
-      - uses: actions/cache@v6
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ~/.nuget/packages
           key: nuget-${{ runner.os }}-${{ hashFiles('app/api/**/*.csproj', 'app/api/Directory.Build.props') }}
           restore-keys: nuget-${{ runner.os }}-
-      - uses: pnpm/action-setup@v6
+      - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
         with:
           package_json_file: app/package.json
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: "24"
           cache: pnpm
@@ -296,10 +327,59 @@ jobs:
           docker compose -f app/stack/compose.yaml logs > e2e-logs/compose.log 2>&1 || true
       - name: Upload logs
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: e2e-logs
           path: e2e-logs
       - name: Stop the compose stack
         if: always()
         run: docker compose -f app/stack/compose.yaml down -v
+
+  # Story: TASK-2.11
+  infra-policy:
+    name: infra-policy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Install pinned core toolchain
+        run: bash tools/install-toolchain.sh
+      - name: Policy fixtures
+        run: conftest verify -p policy
+      - name: App tier plan and policy gate
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          TF_VAR_ssh_private_key: ${{ secrets.CICHLIDS_APP_SSH_PRIVATE_KEY }}
+          TF_VAR_database_volume_id: ${{ vars.CICHLIDS_DATABASE_VOLUME_ID }}
+          TF_VAR_node_ipv4: ${{ vars.CICHLIDS_NODE_IPV4 }}
+          TF_VAR_node_host_key: ${{ vars.CICHLIDS_NODE_HOST_KEY }}
+          TF_VAR_state_encryption_passphrase: ${{ secrets.CICHLIDS_APP_STATE_PASSPHRASE }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.CICHLIDS_S3_PRIMARY_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CICHLIDS_S3_PRIMARY_SECRET_KEY }}
+        run: |
+          tofu -chdir=infra/app init -input=false
+          tofu -chdir=infra/app plan -input=false -lock-timeout=5m -out=tfplan
+          tofu -chdir=infra/app show -json tfplan > infra/app/plan.json
+          conftest test infra/app/plan.json -p policy/destroy_gate.rego
+
+  required:
+    name: required
+    if: ${{ always() }}
+    needs: [adr-index, story-test-binding, manifests, toolchain, secrets-scan, keycloak-realm, stack-bootstrap, infra-validate, infra-policy, backend, client-core, e2e]
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Require every job to succeed
+        env:
+          RESULTS: ${{ toJSON(needs) }}
+        run: |
+          python3 - <<'PYTHON'
+          import json, os, sys
+          results = json.loads(os.environ['RESULTS'])
+          bad = {name: job['result'] for name, job in results.items() if job['result'] != 'success'}
+          print(f"required: {len(results)} jobs; unsuccessful={bad}")
+          sys.exit(bool(bad))
+          PYTHON

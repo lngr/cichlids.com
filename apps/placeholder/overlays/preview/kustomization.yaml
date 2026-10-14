@@ -13,3 +13,18 @@ patches:
     - op: replace
       path: /spec/tls/0/hosts/0
       value: pr-0.dev.cichlids.com
+- target:
+    kind: Deployment
+    name: placeholder
+  patch: |
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: ghcr.io/lngr/cichlids-web:unpublished
+    - op: remove
+      path: /spec/template/spec/containers/0/command
+    - op: remove
+      path: /spec/template/spec/containers/0/args
+    - op: remove
+      path: /spec/template/spec/containers/0/volumeMounts
+    - op: remove
+      path: /spec/template/spec/volumes

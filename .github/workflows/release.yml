@@ -1,0 +1,41 @@
+# Story: TASK-2.11
+name: Release promotion
+on:
+  release:
+    types: [published]
+permissions: {}
+concurrency:
+  group: production-promotion
+  cancel-in-progress: false
+jobs:
+  promote:
+    if: github.repository == 'lngr/cichlids.com' && startsWith(github.event.release.tag_name, 'v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      RELEASE_TAG: ${{ github.event.release.tag_name }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+      - name: Install delivery tools
+        run: |
+          bash tools/install-toolchain.sh
+          python3 -m pip install PyYAML==6.0.3
+      - name: Validate release ancestry and promote published digests
+        run: python3 tools/delivery.py promote "$RELEASE_TAG"
+      - name: Validate production manifests
+        run: |
+          tools/check-cluster-manifests.sh
+          python3 tools/check-secret-manifests.py
+      - name: Commit production promotion to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/api/overlays/prod/kustomization.yaml apps/web/overlays/prod/kustomization.yaml
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "chore(deploy): promote ${RELEASE_TAG}"
+          git push origin HEAD:main

@@ -41,6 +41,10 @@ spec:
         path: '{{ .path.path }}'
         kustomize:
           namespace: pr-{{ .number }}
+          images:
+          - 'ghcr.io/lngr/cichlids-api:{{ .head_sha }}'
+          - 'ghcr.io/lngr/cichlids-migration:{{ .head_sha }}'
+          - 'ghcr.io/lngr/cichlids-web:{{ .head_sha }}'
           patches:
           - target:
               kind: Ingress

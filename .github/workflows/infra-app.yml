@@ -23,8 +23,7 @@ on:
       - ".github/workflows/infra-app.yml"
   workflow_dispatch:
 
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
   group: infra-app
@@ -36,6 +35,8 @@ jobs:
     # Pull requests from forks get no secrets and do not run.
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     env:
       TF_VAR_ssh_private_key: ${{ secrets.CICHLIDS_APP_SSH_PRIVATE_KEY }}
       TF_VAR_database_volume_id: ${{ vars.CICHLIDS_DATABASE_VOLUME_ID }}
@@ -45,13 +46,13 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.CICHLIDS_S3_PRIMARY_ACCESS_KEY }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.CICHLIDS_S3_PRIMARY_SECRET_KEY }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - name: Install pinned core toolchain
         run: bash tools/install-toolchain.sh
       - name: Init
-        run: tofu -chdir=infra/app init
+        run: tofu -chdir=infra/app init -input=false
       - name: Plan
-        run: tofu -chdir=infra/app plan -out=tfplan
+        run: tofu -chdir=infra/app plan -input=false -lock-timeout=5m -out=tfplan
       - name: Render plan
         run: tofu -chdir=infra/app show -json tfplan > infra/app/plan.json
       - name: Destroy gate (ADR-0014 Layer 3)

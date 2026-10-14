@@ -80,6 +80,7 @@ check_core() {
   check kubeconform "$KUBECONFORM_MIN" kubeconform -v
   check gitleaks "$GITLEAKS_MIN" gitleaks version
   check node "$NODE_MIN" node --version
+  check actionlint "$ACTIONLINT_MIN" actionlint -version
 }
 
 check_backend() {

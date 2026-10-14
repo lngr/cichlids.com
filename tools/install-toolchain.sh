@@ -23,6 +23,8 @@ KIND_VERSION="${KIND_VERSION:-0.32.0}"
 KUBECONFORM_VERSION="${KUBECONFORM_VERSION:-0.8.0}"
 GITLEAKS_VERSION="${GITLEAKS_VERSION:-8.30.1}"
 
+ACTIONLINT_VERSION="1.7.11"
+
 case "$(uname -m)" in
 x86_64) ARCH=amd64; ARCH_X=x86_64; ARCH_GL=x64 ;;
 aarch64 | arm64) ARCH=arm64; ARCH_X=arm64; ARCH_GL=arm64 ;;
@@ -101,6 +103,15 @@ if have_version gitleaks "$GITLEAKS_VERSION" version; then echo "  gitleaks $GIT
   curl -fsSL -o gitleaks_checksums.txt "$gl_base/gitleaks_${GITLEAKS_VERSION}_checksums.txt"
   grep " ${gl_archive}\$" gitleaks_checksums.txt | sha256sum -c -
   tar -xzf "$gl_archive" gitleaks && install_bin gitleaks gitleaks
+fi
+
+if have_version actionlint "$ACTIONLINT_VERSION" -version; then echo "  actionlint $ACTIONLINT_VERSION present"; else
+  al_archive="actionlint_${ACTIONLINT_VERSION}_linux_${ARCH}.tar.gz"
+  al_base="https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}"
+  curl -fsSL -o "$al_archive" "$al_base/$al_archive"
+  curl -fsSL -o actionlint_checksums.txt "$al_base/actionlint_${ACTIONLINT_VERSION}_checksums.txt"
+  grep " ${al_archive}\$" actionlint_checksums.txt | sha256sum -c -
+  tar -xzf "$al_archive" actionlint && install_bin actionlint actionlint
 fi
 
 echo "Core toolchain installation complete."

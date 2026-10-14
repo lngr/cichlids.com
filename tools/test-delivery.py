@@ -49,7 +49,7 @@ class Delivery(unittest.TestCase):
         before = self.snapshot()
         delivery.bump(self.root, 'staging', DIGESTS)
         after = self.snapshot()
-        self.assertEqual([p for p in before if before[p] != after[p]],
+        self.assertEqual(sorted(p for p in before if before[p] != after[p]),
                          ['apps/api/overlays/staging/kustomization.yaml', 'apps/web/overlays/staging/kustomization.yaml'])
         for service in ['api', 'web']:
             path = f'apps/{service}/overlays/staging/kustomization.yaml'
@@ -120,6 +120,36 @@ class Delivery(unittest.TestCase):
                 delivery.required({**results, 'backend': {'result': value}})
         with self.assertRaises(ValueError):
             delivery.required({name: value for name, value in results.items() if name != 'e2e'})
+
+    def test_given_preview_sha_then_appset_overrides_published_images(self):
+        topology = list(yaml.safe_load_all(subprocess.check_output(
+            ['kustomize', 'build', 'clusters/cichlids/apps'], cwd=ROOT, text=True)))
+        appset = next(doc for doc in topology if doc.get('kind') == 'ApplicationSet' and doc['metadata']['name'] == 'preview')
+        overrides = appset['spec']['template']['spec']['source']['kustomize']['images']
+        for name in delivery.IMAGES:
+            self.assertIn(f'ghcr.io/lngr/cichlids-{name}:{{{{ .head_sha }}}}', overrides)
+        docs = list(yaml.safe_load_all(subprocess.check_output(
+            ['kustomize', 'build', 'apps/placeholder/overlays/preview'], cwd=ROOT, text=True)))
+        container = next(doc for doc in docs if doc['kind'] == 'Deployment')['spec']['template']['spec']['containers'][0]
+        self.assertEqual(container['image'], 'ghcr.io/lngr/cichlids-web:unpublished')
+        self.assertNotIn('volumeMounts', container)
+        self.assertNotIn('command', container)
+        self.assertNotIn('args', container)
+
+    def test_given_fork_repository_then_image_publication_job_is_ineligible(self):
+        workflow = yaml.safe_load((ROOT / '.github/workflows/images.yml').read_text())
+        self.assertEqual(workflow['jobs']['select']['if'], "github.repository == 'lngr/cichlids.com'")
+
+    def test_given_results_when_real_summary_step_runs_then_only_all_success_passes(self):
+        workflow = yaml.safe_load((ROOT / '.github/workflows/ci.yml').read_text())
+        job = workflow['jobs']['required']
+        import os
+        results = {name: {'result': 'success'} for name in job['needs']}
+        for outcome, expected in [('success', 0), ('failure', 1), ('skipped', 1), ('cancelled', 1)]:
+            results['backend']['result'] = outcome
+            result = subprocess.run(['bash', '-e', '-c', job['steps'][0]['run']],
+                                    env={**os.environ, 'RESULTS': json.dumps(results)}, capture_output=True, text=True)
+            self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
 
     def test_workflow_gate_includes_every_ci_job_and_all_actions_are_pinned(self):
         ci = yaml.safe_load((ROOT / '.github/workflows/ci.yml').read_text())

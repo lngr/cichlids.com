@@ -167,6 +167,8 @@ class Postgres(unittest.TestCase):
                 # Application Kustomize options add patches to the overlay's own patch list.
                 options = copy.deepcopy(app['spec']['source']['kustomize'])
                 settings['patches'].extend(options.pop('patches'))
+                options['images'] = [{'name': image.split(':')[0], 'newTag': image.split(':')[1]}
+                                     for image in options['images']]
                 settings.update(options)
                 config.write_text(yaml.safe_dump(settings))
                 docs = topology.load(topology.run('kustomize', 'build', str(config.parent)))

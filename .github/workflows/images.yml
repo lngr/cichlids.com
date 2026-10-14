@@ -1,0 +1,146 @@
+# Story: TASK-2.11
+name: Images
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'apps/api/overlays/staging/**'
+      - 'apps/web/overlays/staging/**'
+      - 'apps/api/overlays/prod/**'
+      - 'apps/web/overlays/prod/**'
+  workflow_run:
+    workflows: [Preview admission]
+    types: [completed]
+permissions: {}
+concurrency:
+  group: images-${{ github.event_name }}
+  cancel-in-progress: false
+jobs:
+  select:
+    if: github.repository == 'lngr/cichlids.com'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      matrix: ${{ steps.select.outputs.matrix }}
+      publish: ${{ steps.select.outputs.publish }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        id: select
+        with:
+          script: |
+            if (context.eventName === 'push') {
+              core.setOutput('matrix', JSON.stringify({include: [{sha: context.sha, preview: false, origin: 'https://staging.cichlids.com'}]}));
+              core.setOutput('publish', 'true');
+              return;
+            }
+            const run = context.payload.workflow_run;
+            if (run.conclusion !== 'success' || run.head_repository.full_name !== context.repo.owner + '/' + context.repo.repo) {
+              core.setOutput('matrix', JSON.stringify({include: []}));
+              return;
+            }
+            const { pathToFileURL } = require('node:url');
+            const { admittedPreviews } = await import(pathToFileURL(`${process.env.GITHUB_WORKSPACE}/tools/preview-admission.mjs`));
+            const prs = await github.paginate(github.rest.pulls.list, {...context.repo, state: 'open', per_page: 100});
+            const admitted = new Set(admittedPreviews(prs));
+            const include = prs.filter(pr => admitted.has(pr.number) && pr.labels.some(l => l.name === 'preview-active'))
+              .map(pr => ({sha: pr.head.sha, preview: true, origin: `https://pr-${pr.number}.dev.cichlids.com`}));
+            core.setOutput('matrix', JSON.stringify({include}));
+
+  build:
+    needs: select
+    if: needs.select.outputs.matrix != '{"include":[]}'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.select.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: ${{ matrix.sha }}
+          persist-credentials: false
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
+        with:
+          context: app/api
+          target: api
+          push: true
+          tags: ghcr.io/lngr/cichlids-api:${{ matrix.sha }}
+      - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
+        with:
+          context: app/api
+          target: migration
+          push: true
+          tags: ghcr.io/lngr/cichlids-migration:${{ matrix.sha }}
+      - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
+        with:
+          context: app
+          file: app/mobile/Dockerfile
+          push: true
+          tags: ghcr.io/lngr/cichlids-web:${{ matrix.sha }}
+          build-args: |
+            APP_VARIANT=staging
+            EXPO_PUBLIC_API_URL=${{ matrix.origin }}
+            EXPO_PUBLIC_KEYCLOAK_URL=https://auth.staging.cichlids.com
+
+  staging:
+    needs: [select, build]
+    if: needs.select.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      IMAGE_SHA: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: main
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+      - name: Install delivery tools
+        run: |
+          bash tools/install-toolchain.sh
+          python3 -m pip install PyYAML==6.0.3
+      - name: Resolve published digests and prepare staging
+        run: |
+          python3 - <<'PYTHON'
+          import importlib.util, json, os
+          spec = importlib.util.spec_from_file_location('delivery', 'tools/delivery.py')
+          delivery = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(delivery)
+          with open('/tmp/digests.json', 'w') as output:
+              json.dump(delivery.resolve(os.environ['IMAGE_SHA']), output)
+          PYTHON
+          python3 tools/delivery.py bump staging /tmp/digests.json
+      - name: Open staging pull request and enable squash auto-merge
+        run: |
+          branch="deploy/staging-${IMAGE_SHA}"
+          git switch -c "$branch"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add apps/api/overlays/staging/kustomization.yaml apps/web/overlays/staging/kustomization.yaml
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "chore(deploy): stage ${IMAGE_SHA}"
+          if git ls-remote --exit-code origin "refs/heads/$branch"; then
+            echo 'Delivery branch exists; refusing to overwrite it' >&2
+            exit 1
+          fi
+          git push origin "$branch"
+          gh pr create --base main --head "$branch" --title "chore(deploy): stage ${IMAGE_SHA}" --body 'Updates staging image digests. Deployment preflight validates the published images and environment configuration.'
+          gh workflow run ci.yml --ref "$branch"
+          gh pr merge "$branch" --auto --squash
