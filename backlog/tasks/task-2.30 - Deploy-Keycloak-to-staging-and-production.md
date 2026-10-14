@@ -1,9 +1,10 @@
 ---
 id: TASK-2.30
 title: Deploy Keycloak to staging and production
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-12 06:41'
+updated_date: '2026-10-14 09:37'
 labels: []
 dependencies:
   - TASK-2.4
@@ -35,7 +36,7 @@ Keycloak runs in the cluster for staging and production. Each environment uses i
   - The master admin comes from a secret and is never `admin/admin`.
   - Realm admin and tester accounts are created by the operator outside Git, following `apps/keycloak/README.md`.
 - **Proxy and hostname:**
-  - `KC_PROXY_HEADERS=xforwarded` behind ingress-nginx;
+  - `KC_PROXY_HEADERS=xforwarded` behind Traefik;
   - an https `KC_HOSTNAME` per environment;
   - the admin console is not publicly exposed.
 - **Database:** Postgres through CloudNativePG (TASK-2.9) with `Prune=false` (ADR-0014).
@@ -60,3 +61,34 @@ Keycloak runs in the cluster for staging and production. Each environment uses i
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Approach (test-first)
+- Red first: manifest checks for `apps/keycloak` (base and overlays staging, prod; no preview
+  Keycloak) and an extension of `tools/check-keycloak-realm.py` or the manifest test for the
+  deployment rules below.
+
+### Deployment
+- Keycloak 26.6 (pinned image by digest), one replica per environment, production mode
+  (`start --optimized` or `start`), `KC_HOSTNAME=https://auth.staging.cichlids.com` and
+  `https://auth.cichlids.com`, `KC_PROXY_HEADERS=xforwarded`, `KC_HTTP_ENABLED=true` only behind
+  Traefik inside the cluster; Ingress through Traefik with HTTPS redirect and a cert-manager
+  certificate; the admin console and the master realm are not routed publicly (Ingress only for
+  `/realms/`, `/resources/` and the paths the login needs; admin through port-forward).
+- Database: its own CloudNativePG `Cluster` per environment (stateful rules of TASK-2.7; production
+  with the Barman Cloud backup of TASK-2.9 or a database inside the production cluster of
+  TASK-2.9, whichever is simpler and keeps one backup path; document it).
+- Realm apply: a mechanism that applies `apps/keycloak/overlays/<env>/cichlids-realm.json`
+  without ever setting `registrationAllowed` and without touching users, chosen and documented in
+  `apps/keycloak/README.md` within ADR-0025 (for example keycloak-config-cli as an Argo CD sync
+  hook, or `--import-realm` on first start plus a documented update path).
+- Secrets only through SOPS and KSOPS or created by the operator: master admin, database
+  credentials (from CloudNativePG), SMTP (host, port, user, password, from), Google and Facebook
+  client credentials (DRAFT-7, optional until decided), the BFF client secret (TASK-3.41).
+
+### Operator checks
+- Create the secrets, sync, open the discovery document over TLS (AC #1), plain HTTP redirects
+  (AC #2), password reset email through the SMTP settings (AC #3, needs a mail provider).
+<!-- SECTION:PLAN:END -->
