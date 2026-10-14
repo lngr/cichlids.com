@@ -155,6 +155,11 @@ genetic studies confirm the mixing."
 The smallest tank for the recommended social unit of adult fish: volume in litres, length and
 depth in centimetres.
 
+The numbers of soft features, such as the minimum tank, the maximum size and the lifespan, start
+from the median of the agents' proposals and are checked against the values the cited sources
+state. A value above the largest source value needs a reason, such as the recommended social unit.
+A tank that is larger than needed makes the stocking planner warn without cause.
+
 ## Confidence
 
 Every value carries a confidence:

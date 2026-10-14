@@ -61,6 +61,11 @@ file:
    the run is `generator`, `checker-a`, `checker-b`, `checker-c` or `tiebreaker-<n>`. Record the disagreements of hard features as well,
    with the decision and method from `tally.yaml`, or your adjudicated range and the reason for
    replacing the tally decision.
+
+   For the numbers of soft features (`maxSizeCm`, `minTank` volume, length and depth,
+   `lifespanYears`), start from the median of the proposals and check it against the values the
+   cited sources state. A value above the largest source value needs a reason in the rationale,
+   such as the recommended social unit; the largest proposal alone is no reason.
 5. Make the profile prose, `partners` and the final features consistent with each other; rewrite
    prose that contradicts a decided value.
 6. Merge the `provenance.runs` of all inputs and add your own run of role `adjudicator`.
