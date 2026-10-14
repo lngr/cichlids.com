@@ -1,9 +1,10 @@
 ---
 id: TASK-3.28
 title: 'Me tab shows the member''s own pictures, tanks and drafts'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-09-29 10:10'
+updated_date: '2026-10-14 10:51'
 labels: []
 dependencies: []
 parent_task_id: TASK-3
@@ -40,3 +41,15 @@ A logged-in member sees their own content in the Me tab without leaving it: prof
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Approach (test-first)
+- Red first: component and hook tests for the Me tab sections and a Playwright write spec tagged
+  TASK-3.28 that signs in a member with pictures, tanks and drafts on the write stack and
+  compares the lists with the API.
+- Reuse the building blocks of the public profile screen (header, tabs, picture and tank lists);
+  Me tab: header, tabs Pictures, Tanks, Drafts, link to the public profile, logout.
+- i18n en/de, theme tokens, 48dp targets, error and empty states like TASK-3.40.
+<!-- SECTION:PLAN:END -->

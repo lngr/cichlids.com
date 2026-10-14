@@ -3,10 +3,10 @@ id: TASK-2.19
 title: >-
   Automated dependency-update config (Renovate) for providers, Actions, and
   toolchain
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-06-09 06:16'
-updated_date: '2026-06-09 06:16'
+updated_date: '2026-10-14 10:51'
 labels:
   - infra
   - ci
@@ -54,3 +54,18 @@ Stop provider/toolchain pins from silently going stale (the root cause behind th
 - [ ] #2 A failing test was written first, then made to pass (red-green)
 - [ ] #3 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Approach
+- `renovate.json5` with the terraform manager (`infra/*/versions.tf`, `required_version`), the
+  github-actions manager (SHA pins with version comments), npm/pnpm, NuGet, Dockerfile and
+  Kubernetes image digests, kustomize, and custom regex managers for `tools/toolchain.versions`
+  and the pinned versions in `tools/install-toolchain.sh` (tofu, conftest, opa, sops, age,
+  kustomize, kubeconform, kind, helm, gitleaks, actionlint) and the pinned app tier versions (k3s,
+  Argo CD, KSOPS).
+- Grouping and schedule (weekly), majors as separate pull requests, no automerge.
+- Validation with `renovate-config-validator` (pinned through npx) as a CI step; a local
+  `renovate --platform=local` dry run shows the detected dependencies (AC #2 to #4).
+<!-- SECTION:PLAN:END -->
