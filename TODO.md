@@ -181,7 +181,8 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] Die Codex-Pipeline ins Repo übernehmen: Das Treiberskript überspringt jede Rolle, deren
   Datei im Arbeitsordner schon liegt; bei einem erneuten Lauf für eine Legacy-Nummer (etwa 749 für
   Heros efasciatus nach dem Severus-Lauf) muss es alte Dateien beiseitelegen statt sie mitzuzählen.
-  Weiter: ein Treiberskript je Art (Generator, Prüfer B und C
+  Bricht ein Codex-Lauf mit einem Fehlalarm des Inhaltsfilters ab ("flagged for possible
+  biological risk", gesehen bei Prüfer B zu Oscura heterospila), wiederholt es den Lauf. Weiter: ein Treiberskript je Art (Generator, Prüfer B und C
   parallel, Warten auf Prüfer A, bis zu drei Tie-Break-Runden, Schiedsrichter, Abschlussprüfung),
   ein Auftragsgenerator je Rolle, ein Gruppenabgleich aus den Validator-Warnungen und ein
   Watchdog. Wiederholung bei "Selected model is at capacity", Ausweichen auf `gpt-6-sol`. Codex
