@@ -129,8 +129,9 @@ requires no separate webhook Secret.
 
    The all-zero image digests are explicit publication placeholders. CI validates
    their syntax. Deployment preflight rejects them and unconfigured media bucket
-   placeholders. Run this preflight before enabling Argo CD sync. Image building,
-   publication and digest promotion are managed by TASK-2.11.
+   placeholders. Run this preflight before enabling Argo CD sync. The
+   [delivery pipeline](../../docs/runbooks/ci-delivery.md) builds images, publishes
+   SHA tags and promotes validated digests through Kustomize image overrides.
 6. Review and publish the overlay changes through the repository workflow. Sync
    `api-staging` first. Its `api-migrate` PreSync hook runs only `migrate`, has a
    five-minute deadline and two retries, and is deleted after success. A failed
@@ -156,9 +157,12 @@ headers, so restrict pod network access when permitting untrusted workloads.
 Staging discovers API and web overlays. Production discovers both with zero
 Deployment replicas, a suspended migration Job and no web Ingress. Production
 web login is disabled by omitting its callback and client secret settings.
-The production and preview placeholder overlays serve their hosts. API and web
-have no preview overlays because each preview requires its own addresses,
+The production placeholder serves its host. The placeholder preview overlay
+serves the SHA-tagged web image for static UI review. API and web have no
+dedicated preview overlays. Authenticated previews require isolated addresses,
 identity policy, Secrets and migration lifecycle within the preview quota.
+See the [delivery runbook](../../docs/runbooks/ci-delivery.md) for promotion
+prerequisites and the preview build contract.
 
 For production activation, publish a production web build, provision production
 Secrets and bucket settings, review schema compatibility, and configure replicas

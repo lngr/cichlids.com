@@ -26,7 +26,9 @@ apps/<service>/overlays/preview/kustomization.yaml
 
 The generator matches `apps/*/overlays/<environment>/kustomization.yaml`.
 Adding that file makes a service eligible. The API and web services supply staging and inactive production overlays. The
-`placeholder` service supplies production and preview overlays. Follow the
+`placeholder` service supplies a production page and a preview overlay for the
+SHA-tagged web image. The [delivery runbook](../docs/runbooks/ci-delivery.md)
+defines publication, promotion and repository permissions. Follow the
 [application rollout instructions](../apps/api/README.md) for image builds,
 Secrets, migrations, routing and staging placeholder retirement. Keycloak supplies
 staging and production overlays. Its persistent accounts use the environment
@@ -103,7 +105,7 @@ monitored ACME contact address before deployment. `acme@cichlids.com` is a
 placeholder that requires operator confirmation or replacement. Kustomize
 copies this value from `acme-settings` to both ClusterIssuers.
 
-The placeholder uses BusyBox **1.37.0-musl** pinned by the image digest in
+The production placeholder uses BusyBox **1.37.0-musl** pinned by the image digest in
 `apps/placeholder/base/deployment.yaml`. It serves the ConfigMap page on port
 8080 as UID 65534 with a read-only root filesystem and a disabled service
 account token. Its requests are 25m CPU and 16Mi memory; limits are 100m and
@@ -254,6 +256,11 @@ Applications and environment bounds. Rate limiting delays reconciliation.
 The preview service generator combines each admitted PR with the deployable
 `apps/*/overlays/preview/kustomization.yaml` files at its immutable `head_sha`.
 Every service uses its shared preview overlay and targets `pr-<number>`.
+The ApplicationSet supplies API, migration and web image overrides using the
+same `head_sha`. The placeholder preview deployment uses the web image and its
+bundled files for static UI review. API and login integration require their own
+isolated preview workloads. Image publication follows successful admission
+reconciliation; Argo CD retries while a matching image is unavailable.
 The environment Application uses the bounds in `clusters/cichlids/preview`
 at `main`, patches the Namespace name and applies the namespace to the bounds.
 It defines one namespace per admitted PR, including PRs with no deployable
