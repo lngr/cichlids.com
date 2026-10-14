@@ -1,10 +1,10 @@
 ---
 id: TASK-2.11
 title: CI green gate and GitOps delivery pipeline
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-06-03 16:02'
-updated_date: '2026-10-14 10:15'
+updated_date: '2026-10-14 10:27'
 labels:
   - infra
   - ci
@@ -16,6 +16,10 @@ dependencies:
   - TASK-2.1
 references:
   - .github/workflows/
+  - tools/delivery.py
+  - docs/runbooks/ci-delivery.md
+  - .github/workflows/images.yml
+  - .github/workflows/release.yml
 parent_task_id: TASK-2
 priority: high
 ordinal: 13000
@@ -111,5 +115,32 @@ Extend `.github/workflows/` with the required checks, alongside the existing `ad
 ## Implementation Notes
 
 <!-- SECTION:NOTES:BEGIN -->
-The backend, client-core and e2e checks listed above are delivered by TASK-2.28; this task wires them as required checks.
+### Implemented
+- `ci.yml`: the required checks plus a summary job `required` (no permissions) that fails when a
+  required job failed, was cancelled or skipped; actionlint with ShellCheck as a check; every job
+  `contents: read`; all actions pinned by commit SHA with the version as comment.
+- `images.yml`: on merge to main build API, migration and web images, push to
+  `ghcr.io/lngr/cichlids-{api,migration,web}` with the commit SHA tag (`packages: write` only in
+  the build job); a staging job opens a bump pull request with the digests in the staging image
+  overrides, dispatches CI for it and enables squash auto-merge. Preview images for
+  same-repository pull requests admitted by the preview workflow, tagged with the head SHA the
+  preview ApplicationSet uses.
+- `release.yml`: a published release `v*` whose commit is on main promotes the digests of that
+  commit (from GHCR or the committed staging snapshot) with one commit to the prod overlays.
+- `tools/delivery.py` with 13 tests (bump, promotion, preflight); deployment preflight passes real
+  digests and refuses placeholders.
+- Runbook `docs/runbooks/ci-delivery.md`: repository settings, GHCR package visibility, the
+  ruleset bypass for the release commit or a GitHub App token as alternative.
+
+### Verified by the agent (Codex)
+- Tests red then green; actionlint clean; manifests 285 valid; secret guard; policies 73 tests;
+  gitleaks over tracked files and history clean; story binding.
+- Not verified: runs on GitHub, image publication, auto-merge, release promotion, preview
+  reconciliation. The web image carries the staging addresses; prod stays disabled.
+
+### Operator checks
+- Repository settings from the runbook, a merge to main builds the images and the staging bump
+  pull request merges itself (AC #2); a release `v*` promotes to prod (AC #3); a pull request with
+  label `preview` gets and loses its preview (AC #5); `required` blocks a red pull request (AC #1,
+  with TASK-2.12).
 <!-- SECTION:NOTES:END -->
