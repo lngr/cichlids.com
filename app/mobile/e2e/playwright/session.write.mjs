@@ -264,6 +264,7 @@ try {
   if (JWT.test(keptWhileSignedOut)) throw new Error("The kept upload input holds a token");
   await submitKeycloakLogin(page, loginButton, username, password);
   await meName.waitFor({ timeout: 30000 });
+  await byTestId(page, "me-tab-drafts").click({ timeout: 20000 });
   await byTestId(page, "draft-open").first().click({ timeout: 20000 });
   await page.waitForURL(/\/upload\?draft=/, { timeout: 10000 });
   await byTestId(page, "upload-preview").waitFor({ timeout: 30000 });

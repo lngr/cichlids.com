@@ -83,6 +83,7 @@ try {
 
   // The Me tab refreshes its draft list on focus, so this waits for the expected count.
   async function expectDraftItems(count, context) {
+    await byTestId(page, "me-tab-drafts").click({ timeout: 20000 });
     try {
       await page.waitForFunction(
         (expected) => document.querySelectorAll('[data-testid="draft-item"]').length === expected,
