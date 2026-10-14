@@ -8,6 +8,9 @@ import subprocess
 import tempfile
 import unittest
 import yaml
+import sys
+
+sys.dont_write_bytecode = True
 
 ROOT = Path(__file__).resolve().parent.parent
 FINALIZER = 'resources-finalizer.argocd.argoproj.io'
@@ -26,7 +29,9 @@ def policy(docs, environment):
     cluster = next(d for d in docs if d['kind'] == 'Cluster')
     spec = cluster['spec']
     assert spec['instances'] == 1
-    assert spec['storage']['storageClass'] == 'local-path'
+    assert spec['storage']['storageClass'] == ('database-volume' if environment == 'prod' else 'local-path')
+    if environment == 'prod':
+        assert spec['storage']['pvcTemplate'].get('volumeName') == 'postgres-production'
     assert spec['bootstrap'] == {'initdb': {'database': 'cichlids', 'owner': 'cichlids'}}
     assert 'externalClusters' not in spec
     assert spec['resources']['requests'] == {'cpu': '250m', 'memory': '512Mi'}
@@ -66,6 +71,40 @@ def policy(docs, environment):
 
 
 class Postgres(unittest.TestCase):
+    def test_production_storage_contract(self):
+        docs = list(yaml.safe_load_all((ROOT / 'apps/postgres/storage.yaml').read_text()))
+        self.assert_storage_contract(docs)
+        for kind, field in [('StorageClass', 'reclaimPolicy'),
+                            ('PersistentVolume', 'persistentVolumeReclaimPolicy')]:
+            mutated = copy.deepcopy(docs)
+            resource = next(d for d in mutated if d['kind'] == kind)
+            settings = resource if kind == 'StorageClass' else resource['spec']
+            settings[field] = 'Delete'
+            with self.subTest(kind=kind), self.assertRaises(AssertionError):
+                self.assert_storage_contract(mutated)
+        result = subprocess.run(['kubeconform', '-strict', '-summary', '-schema-location',
+                                 str(ROOT / 'tools/manifest-schemas/{{.ResourceKind}}{{.KindSuffix}}.json'),
+                                 str(ROOT / 'apps/postgres/storage.yaml')], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        print(result.stdout.strip())
+
+    def assert_storage_contract(self, docs):
+        storage = next(d for d in docs if d['kind'] == 'StorageClass')
+        volume = next(d for d in docs if d['kind'] == 'PersistentVolume')
+        self.assertEqual(storage['metadata']['name'], 'database-volume')
+        self.assertEqual(storage['provisioner'], 'kubernetes.io/no-provisioner')
+        self.assertEqual(storage['reclaimPolicy'], 'Retain')
+        self.assertEqual(storage['volumeBindingMode'], 'WaitForFirstConsumer')
+        self.assertEqual(volume['metadata']['name'], 'postgres-production')
+        self.assertEqual(volume['spec']['storageClassName'], storage['metadata']['name'])
+        self.assertEqual(volume['spec']['persistentVolumeReclaimPolicy'], 'Retain')
+        self.assertEqual(volume['spec']['local'], {'path': '/var/lib/cichlids-db/postgres', 'fsType': 'ext4'})
+        self.assertEqual(volume['spec']['capacity'], {'storage': '20Gi'})
+        self.assertEqual(volume['spec']['accessModes'], ['ReadWriteOnce'])
+        self.assertEqual(volume['spec']['nodeAffinity']['required']['nodeSelectorTerms'], [
+            {'matchExpressions': [{'key': 'cichlids.com/database-volume',
+                                   'operator': 'In', 'values': ['true']}]}])
+
     def test_rendered_backup_and_isolation(self):
         for environment in ['prod', 'staging', 'preview']:
             with self.subTest(environment=environment):
@@ -75,7 +114,9 @@ class Postgres(unittest.TestCase):
         docs = build('prod')
         cluster = next(d for d in docs if d['kind'] == 'Cluster')
         store = next(d for d in docs if d['kind'] == 'ObjectStore')
-        mutations = [lambda: cluster['spec']['plugins'].clear(),
+        mutations = [lambda: cluster['spec']['storage'].update(storageClass='local-path'),
+                     lambda: cluster['spec']['storage']['pvcTemplate'].pop('volumeName', None),
+                     lambda: cluster['spec']['plugins'].clear(),
                      lambda: cluster['spec']['postgresql']['parameters'].update(archive_timeout='600s'),
                      lambda: cluster['metadata']['finalizers'].clear(),
                      lambda: cluster['spec']['inheritedMetadata']['annotations'].clear(),

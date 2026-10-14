@@ -221,8 +221,27 @@ no formatting. A k3s systemd drop-in requires the mount, binds service lifetime
 to it and verifies the device before each start. `nofail` permits node boot with
 an unavailable volume; k3s startup requires the database mount.
 
-Operator checks on the node are `findmnt -M /var/lib/cichlids-db` and
-`systemctl cat k3s`. Confirm ext4 on the expected device and the mount dependency.
+The production claim requires 20Gi. Bootstrap checks the mounted filesystem's
+capacity before publishing its PV. The platform's `db_volume_size` default is
+10 GB; choose at least 30 GB for this claim and filesystem overhead. On the
+operator workstation, review an in-place volume growth with
+`TF_VAR_db_volume_size=30 infra/tofu.sh platform plan`, then apply the reviewed
+plan with the same variable. For an existing filesystem, the operator grows
+ext4 on the node with `resize2fs /dev/disk/by-id/scsi-0HC_Volume_<id>` after the
+provider volume growth and verifies capacity with `df -B1 /var/lib/cichlids-db`.
+Filesystem growth preserves data. Confirm a usable backup before storage changes.
+
+After node readiness, bootstrap labels the node
+`cichlids.com/database-volume=true` and applies
+[`apps/postgres/storage.yaml`](../apps/postgres/storage.yaml). The app tier owns
+these cluster-wide StorageClass and PersistentVolume resources; Argo CD owns
+the PostgreSQL environment Clusters. Run the app bootstrap before synchronizing
+production. See the [database storage runbook](../apps/postgres/README.md#production-storage)
+for capacity, retained PVC recovery and an existing database's migration.
+
+Operator checks on the node are `findmnt -M /var/lib/cichlids-db`,
+`systemctl cat k3s` and `kubectl get sc/database-volume pv/postgres-production`.
+Confirm ext4 on the expected device and `Retain` on both storage resources.
 
 The k3s bootstrap writes `/etc/rancher/k3s/config.yaml` with mode 0600 and
 `write-kubeconfig-mode: "0600"`. It compares the desired file with the installed

@@ -28,6 +28,11 @@ fi
   [[ "$(readlink -f "$(findmnt -rn -M "$TARGET" -o SOURCE)")" == "$(readlink -f "$DEVICE")" ]] || {
     echo 'Database mount has an unexpected device or filesystem' >&2; exit 1;
   }
+# The static production claim requires 20Gi of filesystem capacity.
+CAPACITY=$(df -B1 --output=size "$TARGET" | awk 'NR == 2 {print $1}')
+[[ "$CAPACITY" =~ ^[0-9]+$ ]] && (( CAPACITY >= 21474836480 )) || {
+  echo 'Database filesystem requires at least 20Gi capacity; operator resize required' >&2; exit 1;
+}
 mkdir -p "$TARGET/postgres"
 mkdir -p "$DROPIN"
 DESIRED=$(mktemp)

@@ -23,6 +23,7 @@ class MountDatabase(unittest.TestCase):
             mounted = root / 'mounted'
             log = root / 'calls'
             mocks = {
+                'df': 'printf "1B-blocks\\n%s\\n" "${CAPACITY-30000000000}"',
                 'blkid': 'echo "${FS_TYPE-ext4}"',
                 'findmnt': f'''[ -f {mounted} ] || exit 1
 case "$*" in
@@ -62,6 +63,8 @@ esac''',
             run(success=False)
             device.touch()
             run({'FAIL_MOUNT': 'true'}, success=False)
+            self.assertFalse((target / 'postgres').exists())
+            run({'CAPACITY': '10000000000'}, success=False)
             self.assertFalse((target / 'postgres').exists())
             run()
             self.assertTrue((target / 'postgres').is_dir())

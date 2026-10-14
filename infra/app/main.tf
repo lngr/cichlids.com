@@ -13,6 +13,7 @@ resource "terraform_data" "k3s" {
     var.k3s_version,
     var.database_volume_id,
     filesha256("${path.module}/scripts/mount-database.sh"),
+    filesha256("${path.module}/../../apps/postgres/storage.yaml"),
     filesha256("${path.module}/scripts/install-k3s.sh"),
   ]
 
@@ -39,11 +40,17 @@ resource "terraform_data" "k3s" {
     destination = "${local.remote_dir}/mount-database.sh"
   }
 
+  provisioner "file" {
+    source      = "${path.module}/../../apps/postgres/storage.yaml"
+    destination = "${local.remote_dir}/storage.yaml"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "bash ${local.remote_dir}/mount-database.sh '${var.database_volume_id}'",
       "bash ${local.remote_dir}/install-k3s.sh '${var.k3s_version}'",
       "KUBECONFIG=/etc/rancher/k3s/k3s.yaml kubectl label node --all cichlids.com/database-volume=true --overwrite",
+      "KUBECONFIG=/etc/rancher/k3s/k3s.yaml kubectl apply -f ${local.remote_dir}/storage.yaml",
     ]
   }
 }

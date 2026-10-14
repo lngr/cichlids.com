@@ -1,13 +1,78 @@
 # PostgreSQL and object-store backup
 
-The CloudNativePG Cluster runs one PostgreSQL instance on k3s `local-path` storage.
+The CloudNativePG Cluster runs one PostgreSQL instance. Production uses the
+protected database volume through the `database-volume` StorageClass. Staging
+and previews use k3s `local-path` storage on the node disk.
 The database requests 250m CPU and 512Mi memory. Production also requests 100m CPU
 and 128Mi for the Barman sidecar. The CloudNativePG controller requests 100m CPU
 and 100Mi; the plugin controller requests 50m CPU and 128Mi. These requests fit a
 CX33 node alongside the cluster services. A single node provides no availability
-replica. The production and staging PVCs request 20Gi each; confirm free node disk
-space before deployment. `local-path` stores data on the node filesystem; it does
-not automatically use the platform tier's separately provisioned database volume.
+replica. Production and staging request 20Gi each; confirm free space on the
+database volume for production and on the node disk for staging.
+
+## Production storage
+
+The app-tier bootstrap mounts the platform-created ext4 volume at
+`/var/lib/cichlids-db` and creates its `postgres` directory only after verifying
+the mounted device and filesystem. It applies `apps/postgres/storage.yaml`
+before bootstrapping Argo CD. This file is owned by the app bootstrap, outside
+the environment ApplicationSets. Changes to it rerun the app provisioner.
+
+`database-volume` uses `kubernetes.io/no-provisioner` with
+`WaitForFirstConsumer`. The static local PV `postgres-production` exposes
+`/var/lib/cichlids-db/postgres` with node affinity for
+`cichlids.com/database-volume=true`, the label set by bootstrap on the single
+node. The production Cluster selects this PV through `pvcTemplate.volumeName`.
+Both the StorageClass and PV specify `Retain`. PVC deletion releases the PV;
+the database files remain on the protected volume and reuse requires operator
+review. Kubernetes local volumes require node affinity, as described in the
+[local-volume documentation](https://kubernetes.io/docs/concepts/storage/volumes/#local).
+[Retain recovery](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain)
+is a manual operation.
+
+A static PV suits one instance on one node and needs no storage controller or
+cleanup helper. The PV advertises 20Gi, matching the production claim; this is
+binding capacity, not a filesystem quota. Confirm actual free space with
+`df -h /var/lib/cichlids-db`. Bootstrap refuses filesystems smaller than 20Gi.
+The platform size default is 10 GB; the infrastructure runbook describes
+operator-controlled volume and ext4 growth to at least 30 GB before deployment.
+Additional instances, replacement-instance PVCs,
+a separate WAL volume or online capacity expansion require an explicit storage
+plan and additional PVs. An occupied or Released PV prevents a new claim from
+binding. Review the preserved data and claim identity before any manual rebind;
+bootstrap never clears a claim reference or deletes data.
+
+The k3s systemd drop-in requires the database mount and verifies its ext4 device
+before each service start. Loss of the mount stops k3s. The fstab `nofail` option
+allows the node to boot for operator repair. See the
+[infrastructure procedure](../../infra/README.md#app-ephemeral-tier) for the volume
+ID, app apply and mount checks.
+
+For an existing production database, schedule operator-controlled downtime.
+A storageClass change does not migrate a bound PVC. First inspect the current
+Cluster, PVCs, PVs and backup status. Verify a restorable base backup and WAL,
+then stop application writers and record the final recovery point. Bootstrap
+the volume and static PV. Recover production onto a fresh claim using the
+CloudNativePG recovery bootstrap and the production ObjectStore in an
+operator-only environment. Coordinate the protected Cluster/PVC replacement
+and its name with the manifest's explicit PV selection; never start `initdb`
+on existing production data. Retain the source PVC and disk until database
+contents, application reads/writes and backup archiving pass validation.
+Any removal of finalizers, PVCs or source data requires an explicit operator
+review under ADR-0014.
+
+After deployment, inspect:
+
+```sh
+kubectl get storageclass database-volume
+kubectl get pv postgres-production -o yaml
+kubectl -n cichlids-prod get pvc -o wide
+kubectl -n cichlids-prod get cluster postgres -o yaml
+```
+
+Confirm the production claim is Bound to `postgres-production`, its class is
+`database-volume`, the PV path is on the expected ext4 mount, and reclaim policy
+is `Retain`. Runtime binding and a backup restore require operator verification.
 
 ## Controllers and protection
 

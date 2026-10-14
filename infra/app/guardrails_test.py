@@ -98,8 +98,9 @@ def check(text):
 
     k3s = blocks(text, r'resource\s+"terraform_data"\s+"k3s"')
     if not k3s or not all(part in k3s[0] for part in [
-            'var.database_volume_id', 'scripts/mount-database.sh', 'mount-database.sh']):
-        failures.append("database mount bootstrap is missing")
+            'var.database_volume_id', 'scripts/mount-database.sh', 'postgres/storage.yaml',
+            'mount-database.sh', 'storage.yaml']):
+        failures.append("database mount and static storage bootstrap are missing")
     elif not (0 <= k3s[0].find('bash ${local.remote_dir}/mount-database.sh') < k3s[0].find('bash ${local.remote_dir}/install-k3s.sh')):
         failures.append("database mount must precede k3s installation")
     return failures

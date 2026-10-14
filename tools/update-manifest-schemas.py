@@ -12,7 +12,7 @@ ARGO = 'a5038b0e2bbac1715754380ae0084df8e3d5b48c'  # Argo CD v3.5.5
 KUBERNETES = '817113f21a2643311cbc3e992bb44ffe1c416c54'
 KUBERNETES_SPEC = 'ecf6decece6a6de25a57aad9ba90b6ce580f6f78'
 KINDS = ['namespace-v1', 'resourcequota-v1', 'limitrange-v1', 'configmap-v1',
-         'persistentvolumeclaim-v1', 'deployment-apps-v1', 'statefulset-apps-v1',
+         'persistentvolume-v1', 'storageclass-storage-v1', 'persistentvolumeclaim-v1', 'deployment-apps-v1', 'statefulset-apps-v1',
          'service-v1', 'serviceaccount-v1', 'role-rbac-v1', 'rolebinding-rbac-v1',
          'clusterrole-rbac-v1', 'clusterrolebinding-rbac-v1', 'ingress-networking-v1',
          'ingressclass-networking-v1', 'job-batch-v1',
