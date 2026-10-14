@@ -1,0 +1,163 @@
+# Trust levels of the sources cited in species profiles.
+#
+# A source counts with the level of the first entry whose host matches the host of its url or a
+# parent domain of it, and whose optional path is a prefix of the url path. Copies on
+# web.archive.org and archive.org count like the archived url. A source without a url counts by
+# its kind (byKind). Every other source counts as low.
+#
+# high:   curated by specialists with traceable evidence (scientific catalogs and databases,
+#         peer-reviewed literature, theses, books of known authors, reports and measurements of
+#         authorities and research institutes)
+# medium: serious sources with people and method behind them, without an evidence duty
+#         (associations, magazines, large dealers with staff, specialist sites)
+# low:    forums, blogs, general care-sheet aggregators, small shops, Wikipedia
+
+default: low
+
+byKind:
+  catalog-of-fishes: high
+  literature: high
+  database: medium
+  website: low
+  forum: low
+  archive: low
+  model-knowledge: low
+
+hosts:
+  # Scientific catalogs and databases
+  - {host: researcharchive.calacademy.org, level: high, note: Eschmeyer's Catalog of Fishes}
+  - {host: fishbase.se, level: high, note: FishBase}
+  - {host: fishbase.org, level: high, note: FishBase}
+  - {host: fishbase.de, level: high, note: FishBase}
+  - {host: fishbase.us, level: high, note: FishBase}
+  - {host: cichlidae.com, level: high, note: Cichlid Room Companion}
+  - {host: seriouslyfish.com, level: high, note: Seriously Fish}
+  - {host: iucnredlist.org, level: high, note: IUCN Red List}
+  - {host: treatment.plazi.org, level: high, note: taxonomic treatments from the literature}
+  - {host: faunafri.africamuseum.be, level: high, note: freshwater fish database of the Royal Museum for Central Africa}
+  - {host: feow.org, level: high, note: Freshwater Ecoregions of the World}
+  - {host: gbif.org, level: high, note: Global Biodiversity Information Facility}
+  - {host: api.gbif.org, level: high, note: Global Biodiversity Information Facility}
+  - {host: fishesoftexas.org, level: high, note: University of Texas fish atlas}
+  - {host: biogeodb.stri.si.edu, level: high, note: Smithsonian Tropical Research Institute}
+
+  # Peer-reviewed literature, publishers and journals
+  - {host: doi.org, level: high, note: resolved scholarly publication}
+  - {host: pmc.ncbi.nlm.nih.gov, level: high, note: PubMed Central}
+  - {host: hess.copernicus.org, level: high, note: Hydrology and Earth System Sciences}
+  - {host: scielo.br, level: high, note: SciELO journals}
+  - {host: scielo.sa.cr, level: high, note: SciELO journals}
+  - {host: jlimnol.it, level: high, note: Journal of Limnology}
+  - {host: revistas.ucr.ac.cr, level: high, note: journals of the University of Costa Rica}
+  - {host: revistas.unlp.edu.ar, level: high, note: journals of the University of La Plata}
+  - {host: revista-agroproductividad.org, level: high, note: peer-reviewed journal}
+  - {host: epubs.icar.org.in, level: high, note: journals of the Indian Council of Agricultural Research}
+  - {host: checklist.pensoft.net, level: high, note: Check List journal}
+
+  # Theses and institutional repositories
+  - {host: minds.wisconsin.edu, level: high, note: University of Wisconsin repository}
+  - {host: dora.lib4ri.ch, level: high, note: Eawag and ETH domain repository}
+  - {host: digitalcommons.unl.edu, level: high, note: University of Nebraska repository}
+  - {host: edepot.wur.nl, level: high, note: Wageningen University repository}
+  - {host: dc.uwm.edu, level: high, note: University of Wisconsin-Milwaukee repository}
+  - {host: repositorio.unan.edu.ni, level: high, note: National Autonomous University of Nicaragua repository}
+  - {host: era.ujat.mx, level: high, note: Juarez Autonomous University of Tabasco repository}
+  - {host: ru.dgb.unam.mx, level: high, note: UNAM repository}
+  - {host: scholarworks.utep.edu, level: high, note: University of Texas at El Paso repository}
+  - {host: erepository.uonbi.ac.ke, level: high, note: University of Nairobi repository}
+  - {host: ukdr.uplb.edu.ph, level: high, note: University of the Philippines repository}
+  - {host: ueaeprints.uea.ac.uk, level: high, note: University of East Anglia repository}
+  - {host: corescholar.libraries.wright.edu, level: high, note: Wright State University repository}
+  - {host: hdl.handle.net, level: high, note: handle of an institutional repository}
+  - {host: zenodo.org, level: high, note: research data and publication repository}
+  - {host: data.mendeley.com, level: high, note: research data repository}
+  - {host: erddap.bco-dmo.org, level: high, note: oceanographic research data}
+
+  # Authorities and research institutes
+  - {host: fao.org, level: high, note: Food and Agriculture Organization}
+  - {host: agris.fao.org, level: high, note: FAO bibliographic database}
+  - {host: waterqualitydata.us, level: high, note: US water quality portal (USGS and EPA)}
+  - {host: nas.er.usgs.gov, level: high, note: USGS nonindigenous aquatic species}
+  - {host: pubs.usgs.gov, level: high, note: USGS publications}
+  - {host: fws.gov, level: high, note: US Fish and Wildlife Service}
+  - {host: tpwd.texas.gov, level: high, note: Texas Parks and Wildlife}
+  - {host: wldb.ilec.or.jp, level: high, note: World Lake Database of ILEC}
+  - {host: freshwaterbiodiversity.go.ug, level: high, note: NaFIRRI freshwater biodiversity portal of Uganda}
+  - {host: nru.uncst.go.ug, level: high, note: Uganda National Council for Science and Technology}
+  - {host: datos.ine.gob.gt, level: high, note: national statistics institute of Guatemala}
+  - {host: openjicareport.jica.go.jp, level: high, note: JICA project reports}
+  - {host: documents.worldbank.org, level: high, note: World Bank reports}
+  - {host: documents1.worldbank.org, level: high, note: World Bank reports}
+  - {host: nbfgr.res.in, level: high, note: National Bureau of Fish Genetic Resources, India}
+  - {host: mpw.gov.lr, level: high, note: Ministry of Public Works, Liberia}
+  - {host: ecosur.mx, level: high, note: El Colegio de la Frontera Sur, research centre}
+  - {host: tropicalstudies.org, level: high, note: Organization for Tropical Studies}
+  - {host: ask.ifas.ufl.edu, level: high, note: University of Florida extension publications}
+  - {host: evolution.univie.ac.at, level: high, note: University of Vienna evolutionary biology}
+
+  # Preprints and research indexes
+  - {host: biorxiv.org, level: medium, note: preprints before peer review}
+  - {host: openalex.org, level: medium, note: bibliographic index}
+  - {host: animaldiversity.org, level: medium, note: Animal Diversity Web, student-written and edited at the University of Michigan}
+  - {host: sicb.org, level: medium, note: conference abstracts}
+  - {host: sites.uwm.edu, level: medium, note: research group pages}
+  - {host: awramik.faculty.geol.ucsb.edu, level: medium, note: research group pages}
+  - {host: ecosystems.psu.edu, level: medium, note: research group pages}
+  - {host: condor.depaul.edu, level: medium, note: university course and faculty pages}
+  - {host: biology.ug.edu.pl, level: medium, note: university faculty pages}
+  - {host: sajurin.enriquebolanos.org, level: medium, note: digital library of historical Nicaraguan works}
+  - {host: agua.org.mx, level: medium, note: Mexican water information NGO}
+
+  # Associations and magazines
+  - {host: ciklid.org, level: medium, note: Nordiska Ciklidsallskapet species register}
+  - {host: nvcweb.nl, level: medium, note: Dutch cichlid association}
+  - {host: dcg-online.de, level: medium, note: Deutsche Cichliden-Gesellschaft}
+  - {host: dcg-encyclopedia.de, level: medium, note: Deutsche Cichliden-Gesellschaft}
+  - {host: aka.org, level: medium, note: American Killifish Association}
+  - {host: gcca.net, level: medium, note: Greater Chicago Cichlid Association}
+  - {host: capitalcichlids.org, level: medium, note: Capital Cichlid Association}
+  - {host: cichlidpower.org.au, level: medium, note: Australian cichlid society}
+  - {host: drta-archiv.de, level: medium, note: archive of a German aquarium association}
+  - {host: asso-c2a.fr, level: medium, note: French cichlid association}
+  - {host: aquariophilie.org, level: medium, note: French aquarium federation}
+  - {host: practicalfishkeeping.co.uk, level: medium, note: Practical Fishkeeping magazine}
+  - {host: tfhmagazine.com, level: medium, note: Tropical Fish Hobbyist magazine}
+  - {host: cichlidnews.com, level: medium, note: Cichlid News magazine}
+  - {host: amazonasmagazine.com, level: medium, note: Amazonas magazine}
+  - {host: fishkeepingnews.com, level: medium, note: Practical Fishkeeping news site}
+
+  # Curated specialist sites with method and people behind them
+  - {host: aquainfo.nl, level: medium, note: AquaInfo, articles with named authors and associations}
+  - {host: malawi.si, level: medium, note: Lake Malawi species by location with photo credits}
+  - {host: tanganyika.si, level: medium, note: Lake Tanganyika species by location with photo credits}
+  - {host: malawi-guru.de, level: medium, note: Malawi species directory}
+  - {host: cichlidatlas.com, level: medium, note: cichlid atlas}
+  - {host: biotopeaquariumproject.com, level: medium, note: biotope project with habitat documentation}
+  - {host: andinoacara.com, level: medium, note: specialist site on Andinoacara}
+  - {host: apistogramma.com, level: medium, note: specialist site on Apistogramma}
+  - {host: aqualog.de, level: medium, note: publisher of the Aqualog books; the books themselves count as literature}
+  - {host: binnspedia.com, level: medium, note: Binns hybrid encyclopedia of labelled photographs}
+  - {host: cichlid-forum.com, path: /articles, level: medium, note: Cichlid-Forum articles}
+  - {host: wetwebmedia.com, level: medium, note: long-running answered reader questions by experienced keepers}
+
+  # Large dealers and importers with staff
+  - {host: fishkeeper.co.uk, level: medium, note: Maidenhead Aquatics species database}
+  - {host: aquariumglaser.de, level: medium, note: importer, reports by Frank Schaefer}
+  - {host: aquarium-glaser.de, level: medium, note: importer, reports by Frank Schaefer}
+  - {host: liveaquaria.com, level: medium, note: large US dealer with a care database}
+  - {host: imperialtropicals.com, level: medium, note: US cichlid importer}
+  - {host: ornamentalfish.org, level: medium, note: Ornamental Aquatic Trade Association}
+  - {host: jbl.de, level: medium, note: manufacturer with species information}
+  - {host: sera.de, level: medium, note: manufacturer with species information}
+  - {host: blog.tetra.net, level: medium, note: manufacturer blog}
+  - {host: aqueon.com, level: medium, note: manufacturer care sheets}
+  - {host: fluvalaquatics.com, level: medium, note: manufacturer care sheets}
+  - {host: seachem.com, level: medium, note: manufacturer information}
+
+  # Everything else, including forums, blogs, aggregators, small shops and wikis, is low. Listed
+  # here only when the level needs a note.
+  - {host: cichlids.com, level: low, note: legacy forum archive of cichlids.com}
+  - {host: cichlid-forum.com, level: low, note: forum and member profiles}
+  - {host: wikipedia.org, level: low, note: Wikipedia; read its references directly}
+  - {host: ecured.cu, level: low, note: Cuban wiki}
+  - {host: scribd.com, level: low, note: uploaded documents of unclear origin}
