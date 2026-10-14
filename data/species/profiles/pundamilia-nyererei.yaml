@@ -2240,6 +2240,7 @@ features:
       - "pundamilia-nyererei-azurea"
       - "pundamilia-nyererei-igneopinnis"
       - "pundamilia-nyererei-pundamilia"
+      - "pundamilia-nyererei-sp-crimson-tide"
     confidence: "low"
     rationale: "The tally applies the conservative rule after six votes fail to reach a four-vote majority.
       Generator proposes the three nyererei pairs with pundamilia, igneopinnis and azurea; checker-a proposes
@@ -2253,8 +2254,9 @@ features:
       without conspecific male choice, so their basis is presumed; Svensson's free-choice experiment found no
       pure nyererei-azurea mating. Stelkens (2009) explicitly labels a calliptera cross as nyererei, whereas
       the 2019 study uses the distinct nyererei-like lineage; this identity discrepancy remains unresolved and
-      exclusion by the tally support rule must not be read as proof of incompatibility. Crossing is not
-      transitive."
+      exclusion by the tally support rule must not be read as proof of incompatibility. The presumed
+      pundamilia-nyererei-sp-crimson-tide group rests on aquarium warnings and uncertain keeper reports, and is
+      defined in the curated hybrid group file. Crossing is not transitive."
     sources:
       - kind: "literature"
         title: "Meier et al. (2017). Demographic modelling with whole-genome data reveals parallel origin of similar
@@ -2329,6 +2331,11 @@ features:
         title: "cichlids.com forum thread 11386"
         url: "https://www.cichlids.com/disc/read.php?1,11386"
         accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet species register: Pundamilia sp. 'crimson tide'."
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1111"
+        accessed: "2026-10-13"
+        archived: "zoopet.com/fiskar/fisk.php/q-1c30ee67/2026-10-14T203957Z"
     evidence:
       - source:
           kind: "literature"
@@ -2434,6 +2441,15 @@ features:
         value:
           - "pundamilia-nyererei-pundamilia"
         note: "Secondary community account of light-dependent mating; low weight."
+      - source:
+          kind: "database"
+          title: "Zoopet species register: Pundamilia sp. 'crimson tide'."
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=1111"
+          accessed: "2026-10-13"
+          archived: "zoopet.com/fiskar/fisk.php/q-1c30ee67/2026-10-14T203957Z"
+        value:
+          - "pundamilia-nyererei-sp-crimson-tide"
+        note: "Aquarium cross warning supports a presumed named-pair risk."
     verification:
       method: "conservative"
       votes:
@@ -3049,6 +3065,9 @@ partners:
     - species: "Haplochromis chilotes"
       reason: "Fertile forced laboratory F1 and F2 crosses support a presumed pairwise risk. The older
         Paralabidochromis chilotes recommendation is removed from suitable partners."
+    - species: "Pundamilia sp. 'crimson tide'"
+      reason: "Aquarium warnings and uncertain keeper reports support a presumed crossing risk; parental identity
+        and free partner choice are unconfirmed."
     - species: "Small or timid community fish"
       reason: "Persistent territorial pressure and unequal feeding access make these unsuitable, independently of
         the decided predation level 0."
