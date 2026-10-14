@@ -199,7 +199,10 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] `tally.mjs` übernimmt Quellen-Einträge ungeprüft; ein Titel mit Doppelpunkt ohne
   Anführungszeichen erzeugt einen falschen Schlüssel (gesehen bei Geophagus altifrons). Quellen beim
   Zählen gegen das Schema prüfen und kaputte Einträge melden
-- [ ] Die Codex-Pipeline ins Repo übernehmen: ein Treiberskript je Art (Generator, Prüfer B und C
+- [ ] Die Codex-Pipeline ins Repo übernehmen: Das Treiberskript überspringt jede Rolle, deren
+  Datei im Arbeitsordner schon liegt; bei einem erneuten Lauf für eine Legacy-Nummer (etwa 749 für
+  Heros efasciatus nach dem Severus-Lauf) muss es alte Dateien beiseitelegen statt sie mitzuzählen.
+  Weiter: ein Treiberskript je Art (Generator, Prüfer B und C
   parallel, Warten auf Prüfer A, bis zu drei Tie-Break-Runden, Schiedsrichter, Abschlussprüfung),
   ein Auftragsgenerator je Rolle, ein Gruppenabgleich aus den Validator-Warnungen und ein
   Watchdog. Wiederholung bei "Selected model is at capacity", Ausweichen auf `gpt-6-sol`. Codex
