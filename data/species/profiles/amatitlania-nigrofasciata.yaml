@@ -959,7 +959,8 @@ features:
   hybridGroups:
     value: [amatitlania-nigrofasciata-blood-parrot, amatitlania-nigrofasciata-complex,
       amatitlania-nigrofasciata-hypsophrys-nicaraguensis,
-      amatitlania-nigrofasciata-thorichthys-meeki, cryptoheros-spilurus-amatitlania-nigrofasciata,
+      amatitlania-nigrofasciata-sajica, amatitlania-nigrofasciata-thorichthys-meeki,
+      cryptoheros-spilurus-amatitlania-nigrofasciata,
       nandopsis-tetracanthus-amatitlania-nigrofasciata]
     confidence: low
     rationale: >-
@@ -986,6 +987,9 @@ features:
       amatitlania-nigrofasciata-blood-parrot as presumed from hobby publications and archive
       accounts reporting captive offspring, with unverified parentage, convict species identity
       and access to conspecific mates.
+      The curated data/species/hybrid-groups.yaml file defines
+      amatitlania-nigrofasciata-sajica as presumed, based on an aquarium crossing warning and
+      hobby-labelled captive offspring without verified pedigrees or evidence of partner choice.
     sources:
       - *cof
       - &zt1603
@@ -1102,6 +1106,18 @@ features:
         title: cichlids.com forum thread 2272
         url: https://www.cichlids.com/disc/read.php?1,2272
         accessed: 2026-10-13
+      - &sajicaAquaInfo
+        kind: database
+        title: "AquaInfo: Amatitlania sajica"
+        url: https://aquainfo.nl/en/article/amatitlania-sajica/
+        archived: aquainfo.nl/en/article/amatitlania-sajica/2026-10-14T134530Z
+        accessed: 2026-10-13
+      - &sajicaBinns
+        kind: database
+        title: "Binns Hybrid Encyclopedia: Sajica crossing gallery"
+        url: https://www.binnspedia.com/amatitlania/sajica
+        accessed: 2026-10-13
+        archived: binnspedia.com/amatitlania/sajica/2026-10-14T140951Z
     evidence:
       - source: *cof
         value: amatitlania-nigrofasciata-complex
@@ -1163,6 +1179,12 @@ features:
       - source: *bloodParrotArchive2272
         value: [amatitlania-nigrofasciata-blood-parrot]
         note: Archive account reports hatched offspring; it may describe the same event as thread 2265.
+      - source: *sajicaAquaInfo
+        value: [amatitlania-nigrofasciata-sajica]
+        note: Identifies sajica and convict cichlids as a crossing risk, without documenting a verified cross.
+      - source: *sajicaBinns
+        value: [amatitlania-nigrofasciata-sajica]
+        note: Labels captive offspring of sajica and convict cichlids; pedigree and partner choice are unverified.
     verification:
       method: conservative
       votes: {agree: 3, total: 5}
