@@ -1,10 +1,10 @@
 ---
 id: TASK-2.10
 title: First tested database restore drill
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-06-03 16:02'
-updated_date: '2026-06-05 10:25'
+updated_date: '2026-10-14 10:28'
 labels:
   - infra
   - backup
@@ -59,3 +59,27 @@ is treated as broken.
 - [ ] #2 A failing test was written first, then made to pass (red-green)
 - [ ] #3 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Approach (test-first)
+- `tools/restore-drill/` with a drill script that creates a kind cluster, an S3-compatible store
+  (MinIO pinned by digest, or RustFS as in the local stack), installs the pinned CloudNativePG
+  operator and Barman Cloud plugin of TASK-2.9, creates a source cluster with synthetic data,
+  takes a base backup plus WAL, restores into a fresh target cluster from the object store, and
+  compares row counts per table; exits non-zero with the differing tables.
+- Red first: a negative mode that corrupts or removes the backup and must fail (AC #2), and a
+  check that the target and the kind cluster are gone afterwards (AC #3, trap on exit).
+- Reuse the manifests of `apps/postgres` (base) where possible, so the drill exercises the real
+  configuration.
+
+### CI
+- Workflow job `restore-drill` (scheduled monthly plus manual dispatch), no secrets, synthetic data
+  only.
+
+### Docs
+- `tools/restore-drill/README.md`: running the drill; the production restore-test environment is
+  out-of-band, operated by the operator only, no agent or CI access, handles real PII only
+  transiently (AC #4); RTO measurement.
+<!-- SECTION:PLAN:END -->
