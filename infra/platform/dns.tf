@@ -14,10 +14,10 @@ resource "hcloud_zone" "primary" {
   }
 }
 
-# The ingress hosts (apex, staging) and the *.dev wildcard of the preview environments point to
-# the node, so a preview host resolves without a DNS change per pull request.
+# Web and authentication hosts use the node IPv4 address.
+# The *.dev wildcard resolves preview hosts for every pull request.
 resource "hcloud_zone_rrset" "ingress" {
-  for_each = toset(["@", "staging", "*.dev"])
+  for_each = toset(["@", "staging", "*.dev", "auth", "auth.staging"])
 
   zone    = hcloud_zone.primary.id
   name    = each.value

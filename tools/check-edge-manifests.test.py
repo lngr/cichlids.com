@@ -215,7 +215,7 @@ class EdgeDelivery(unittest.TestCase):
     def test_dns_hosts_reference_platform_node_with_destroy_protection(self):
         text = (ROOT / 'infra/platform/dns.tf').read_text()
         self.assertIn('resource "hcloud_zone_rrset" "ingress"', text)
-        self.assertRegex(text, r'for_each\s*=\s*toset\(\["@", "staging", "\*\.dev"\]\)')
+        self.assertRegex(text, r'for_each\s*=\s*toset\(\["@", "staging", "\*\.dev", "auth", "auth\.staging"\]\)')
         self.assertIn('name    = each.value', text)
         self.assertIn('value = hcloud_server.node.ipv4_address', text)
         self.assertIn('prevent_destroy = true', text.split('resource "hcloud_zone_rrset" "ingress"')[1])
