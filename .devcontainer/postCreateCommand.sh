@@ -43,6 +43,18 @@ export TZ
 # Ensure /workspaces is writable for git worktrees
 sudo chown "$(id -u):$(id -g)" /workspaces 2>/dev/null || true
 
+# Match the device's numeric group, including hosts where that GID already has a name.
+if [ -c /dev/kvm ]; then
+  kvm_gid="$(stat -c '%g' /dev/kvm)"
+  kvm_group="$(getent group "$kvm_gid" | cut -d: -f1 || true)"
+  if [ -z "$kvm_group" ]; then
+    kvm_group="kvm-device-$kvm_gid"
+    sudo groupadd --gid "$kvm_gid" "$kvm_group"
+  fi
+  sudo usermod --append --groups "$kvm_group" "$(id -un)"
+  echo "KVM group configured. Reconnect the devcontainer to refresh process group membership."
+fi
+
 # Setup timezone
 if [ -f "/usr/share/zoneinfo/$TZ" ]; then
   sudo ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime 2>/dev/null || true
