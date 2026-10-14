@@ -3,6 +3,7 @@
 import copy
 import importlib.util
 from pathlib import Path
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -11,6 +12,9 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 FINALIZER = 'resources-finalizer.argocd.argoproj.io'
 PLUGIN = 'barman-cloud.cloudnative-pg.io'
+module_spec = importlib.util.spec_from_file_location('topology', ROOT / 'tools/check-cluster-manifests.py')
+topology = importlib.util.module_from_spec(module_spec)
+module_spec.loader.exec_module(topology)
 
 
 def build(environment):
@@ -94,6 +98,38 @@ class Postgres(unittest.TestCase):
                 next(d for d in docs if d['kind'] == 'Cluster')['spec'][key] = value
                 with self.assertRaises(AssertionError):
                     policy(docs, environment)
+
+    def test_generated_previews_render_isolated_databases_and_close(self):
+        appset = yaml.safe_load((ROOT / 'clusters/cichlids/apps/preview.yaml').read_text())
+        with tempfile.TemporaryDirectory() as directory:
+            temp = Path(directory)
+            chart = temp / 'chart'
+            (chart / 'templates').mkdir(parents=True)
+            (chart / 'Chart.yaml').write_text('apiVersion: v2\nname: postgres-test\nversion: 0.1.0\n')
+            (chart / 'templates/render.yaml').write_text(
+                'apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: rendered\ndata:\n'
+                '  rendered: {{ tpl (toYaml .Values.input) .Values.params | toJson }}\n')
+            for number in [17, 402]:
+                pr = {'number': number, 'sha': 'a' * 40, 'state': 'open', 'labels': ['preview-active']}
+                applications = topology.generate(appset, ROOT, [pr], chart)
+                app = next(a for a in applications if a['metadata']['name'] == f'postgres-pr-{number}')
+                topology.check_application(app)
+                self.assertTrue(app['spec']['syncPolicy']['automated']['prune'])
+                self.assertIn(FINALIZER, app['metadata']['finalizers'])
+                self.assertEqual(app['spec']['source']['targetRevision'], pr['sha'])
+                tree = temp / str(number) / 'postgres'
+                shutil.copytree(ROOT / 'apps/postgres', tree)
+                config = tree / 'overlays/preview/kustomization.yaml'
+                settings = yaml.safe_load(config.read_text())
+                # Application Kustomize options add patches to the overlay's own patch list.
+                options = copy.deepcopy(app['spec']['source']['kustomize'])
+                settings['patches'].extend(options.pop('patches'))
+                settings.update(options)
+                config.write_text(yaml.safe_dump(settings))
+                docs = topology.load(topology.run('kustomize', 'build', str(config.parent)))
+                policy(docs, 'preview')
+                self.assertTrue(all(d['metadata']['namespace'] == f'pr-{number}' for d in docs))
+                self.assertFalse(topology.generate(appset, ROOT, [{**pr, 'state': 'closed'}], chart))
 
     def test_schemas_reject_unknown_fields(self):
         docs = build('prod')
