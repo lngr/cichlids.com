@@ -3023,17 +3023,23 @@ features:
         note: Rubric mapping of a vigorous captive feeder.
   minTank:
     value: &a4
-      volumeL: 600
+      volumeL: 500
       lengthCm: 180
-      depthCm: 60
+      depthCm: 55
     confidence: medium
-    rationale: "The generator proposes 600 L with 180 by 60 cm; checker-a 450 L with 180 by 50 cm; checker-b 500 L
-      with 180 by 60 cm; checker-c 500 L with 180 by 50 cm. Retain 600 L and 180 by 60 cm as a conservative
-      planning minimum for one established adult pair without companions. Seriously Fish requires a roughly
-      152 to 183 cm breeding tank, Fishkeeping gives 400 L, and Berg and AquariumDomain give 125 US gallons,
-      approximately 473 L. The extra volume and 60 cm depth provide retreat and divider space for a 30 cm
-      male. They are a design synthesis rather than a source-quoted threshold; 450 and 500 L proposals do not
-      add comparable safety margin. Single-fish minima of 255 to 284 L are not pair minima."
+    rationale: >-
+      Generator proposed 600 L, 180 cm length and 60 cm depth; checker-a proposed 450 L, 180 cm
+      length and 50 cm depth; checker-b proposed 500 L, 180 cm length and 60 cm depth; checker-c
+      proposed 500 L, 180 cm length and 50 cm depth. The component medians are 500 L, 180 cm
+      length and 55 cm depth. The unit is one established adult pair without companions.
+      Fishkeeping gives 400 L for pair or mixed housing; AquariumDomain and the TFH account give
+      125 US gallons, about 473 L, for multiple specimens or a breeding pair. Seriously Fish
+      gives a five to six foot breeding recommendation, about 152 to 183 cm, without pair volume
+      or width. The 500 L volume and 180 cm length medians fit these pair-specific
+      recommendations. Depth is not established by the cited sources, so use its 55 cm median as
+      a provisional layout estimate. The pair is already the unit in the 473 L advice; an
+      unspecified safety margin does not establish a 600 L or 60 cm requirement. Arrange
+      separate retreats and maintain access to a divider.
     sources:
       - kind: literature
         title: "TFH Magazine: The Texas Cichlid Herichthys cyanoguttatus"
@@ -3461,13 +3467,16 @@ profile:
         url: "https://www.aquarismopaulista.com/herichthys-cyanoguttatus/"
         accessed: "2026-10-13"
   husbandry:
-    text: "For one established adult pair, use at least about 600 L and a 180 by 60 cm footprint. This is a
-      conservative planning recommendation synthesized from pair-specific guidance. Arrange stable shelters
-      with separate exits and broken sightlines, and keep a secure divider available. Support heavy rocks so
-      digging cannot undermine them. Strong filtration, water movement and regular partial water changes help
-      control the waste produced by large fish. Around 22 to 26 C is a practical maintenance band. The stored
-      tolerances are 13 to 32 C, pH 6.0 to 8.3, GH 5 to 30 dGH and KH 5 to 12 dKH; all have low confidence,
-      and their endpoints are not demonstrated equally safe constant settings for years."
+    text: >-
+      For one established adult pair, use at least about 500 L and a 180 by 55 cm footprint.
+      This is a conservative planning recommendation synthesized from pair-specific guidance.
+      Arrange stable shelters with separate exits and broken sightlines, and keep a secure
+      divider available. Support heavy rocks so digging cannot undermine them. Strong
+      filtration, water movement and regular partial water changes help control the waste
+      produced by large fish. Around 22 to 26 C is a practical maintenance band. The stored
+      tolerances are 13 to 32 C, pH 6.0 to 8.3, GH 5 to 30 dGH and KH 5 to 12 dKH; all have low
+      confidence, and their endpoints are not demonstrated equally safe constant settings for
+      years.
     sources:
       - kind: literature
         title: "TFH Magazine: The Texas Cichlid Herichthys cyanoguttatus"
@@ -3708,6 +3717,9 @@ provenance:
     - role: adjudicator
       model: gpt-6.1-sol
       date: "2026-10-14"
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-14
   disagreements:
     - field: taxonomy.synonyms
       proposals:
@@ -4374,13 +4386,19 @@ provenance:
             lengthCm: 180
             depthCm: 50
       decision: *a4
-      rationale: "The generator proposes 600 L with 180 by 60 cm; checker-a 450 L with 180 by 50 cm; checker-b 500 L
-        with 180 by 60 cm; checker-c 500 L with 180 by 50 cm. Retain 600 L and 180 by 60 cm as a conservative
-        planning minimum for one established adult pair without companions. Seriously Fish requires a roughly
-        152 to 183 cm breeding tank, Fishkeeping gives 400 L, and Berg and AquariumDomain give 125 US gallons,
-        approximately 473 L. The extra volume and 60 cm depth provide retreat and divider space for a 30 cm
-        male. They are a design synthesis rather than a source-quoted threshold; 450 and 500 L proposals do
-        not add comparable safety margin. Single-fish minima of 255 to 284 L are not pair minima."
+      rationale: >-
+        Generator proposed 600 L, 180 cm length and 60 cm depth; checker-a proposed 450 L, 180
+        cm length and 50 cm depth; checker-b proposed 500 L, 180 cm length and 60 cm depth;
+        checker-c proposed 500 L, 180 cm length and 50 cm depth. The component medians are 500
+        L, 180 cm length and 55 cm depth. The unit is one established adult pair without
+        companions. Fishkeeping gives 400 L for pair or mixed housing; AquariumDomain and the
+        TFH account give 125 US gallons, about 473 L, for multiple specimens or a breeding pair.
+        Seriously Fish gives a five to six foot breeding recommendation, about 152 to 183 cm,
+        without pair volume or width. The 500 L volume and 180 cm length medians fit these
+        pair-specific recommendations. Depth is not established by the cited sources, so use its
+        55 cm median as a provisional layout estimate. The pair is already the unit in the 473 L
+        advice; an unspecified safety margin does not establish a 600 L or 60 cm requirement.
+        Arrange separate retreats and maintain access to a divider.
     - field: features.lifespanYears
       proposals:
         - by: generator

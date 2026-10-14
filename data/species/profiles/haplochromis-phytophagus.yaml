@@ -1372,16 +1372,22 @@ features:
   minTank:
     value:
       volumeL: 300
-      lengthCm: 120
-      depthCm: 50
+      lengthCm: 110
+      depthCm: 42.5
     confidence: "medium"
-    rationale: "Generator proposes 300 L and 120 by 50 cm, checker-a 150 L and 90 by 40 cm, checker-b 200 L and
-      100 by 40 cm, and checker-c 150 L and 90 by 45 cm. Retain the generator recommendation for the selected
-      one-male, six-female social unit. The Nordic register states 300 L and 110 cm length; 120 by 50 cm is an
-      explicit layout judgement to provide refuges and interrupted sight lines. Stigliano gives about 151 L
-      without dimensions and Aquatic Community 150 L for a smaller single-male group. Those smaller
-      recommendations do not establish equal protection for six adult females; 300 L is a conservative
-      husbandry choice, not an experimentally determined boundary."
+    rationale: >-
+      Generator proposed 300 L, 120 cm length and 50 cm depth; checker-a proposed 150 L, 90 cm
+      length and 40 cm depth; checker-b proposed 200 L, 100 cm length and 40 cm depth; checker-c
+      proposed 150 L, 90 cm length and 45 cm depth. The component medians are 175 L, 95 cm
+      length and 42.5 cm depth. The selected social unit is one male with six females. The
+      Nordic register gives 300 L and 110 cm length, directly supporting values above the 175 L
+      volume and 95 cm length medians for this seven-fish unit. Stigliano gives about 151 L
+      without dimensions; Aquatic Community gives 150 L for a smaller single-male group, and
+      Guidarium gives 150 L and 90 cm. The comparative Aquarist Atlas example has a 91.44 by
+      45.72 cm base at about 151 L. The register supplies no depth, and no source establishes a
+      120 by 50 cm requirement for the selected unit. Use its 110 cm minimum length and the 42.5
+      cm depth median as a provisional floor estimate, with the 300 L lower volume limit
+      providing capacity for seven adults. Communities and multiple males need additional space.
     sources:
       - *a15
       - *a28
@@ -1580,12 +1586,14 @@ profile:
       - *a28
       - *a18
   husbandry:
-    text: "The recommended adult unit is one male with six females in at least 300 litres and a floor about 120 by
-      50 cm. Arrange dense cover so a female can move completely out of the male's view, and secure heavy
-      decorations before adding a diggable substrate. Routine maintenance around 24 to 28 C has better
-      husbandry support than the hottest swamp reports. Acclimate gradually to stable replacement water and
-      use filtration and regular partial changes to control waste. The wider tolerance bands include uncertain
-      endpoints and should not be read as experimentally proven targets."
+    text: >-
+      The recommended adult unit is one male with six females in at least 300 litres and a floor
+      about 110 by 42.5 cm. Arrange dense cover so a female can move completely out of the
+      male's view, and secure heavy decorations before adding a diggable substrate. Routine
+      maintenance around 24 to 28 C has better husbandry support than the hottest swamp reports.
+      Acclimate gradually to stable replacement water and use filtration and regular partial
+      changes to control waste. The wider tolerance bands include uncertain endpoints and should
+      not be read as experimentally proven targets.
     sources:
       - *a15
       - *a28
@@ -1677,6 +1685,9 @@ provenance:
     - role: "adjudicator"
       model: "gpt-6.1-sol"
       date: "2026-10-13"
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-14
   disagreements:
     - field: "features.diet"
       proposals:
@@ -2307,15 +2318,22 @@ provenance:
             depthCm: 45
       decision:
         volumeL: 300
-        lengthCm: 120
-        depthCm: 50
-      rationale: "Generator proposes 300 L and 120 by 50 cm, checker-a 150 L and 90 by 40 cm, checker-b 200 L and
-        100 by 40 cm, and checker-c 150 L and 90 by 45 cm. Retain the generator recommendation for the
-        selected one-male, six-female social unit. The Nordic register states 300 L and 110 cm length; 120 by
-        50 cm is an explicit layout judgement to provide refuges and interrupted sight lines. Stigliano gives
-        about 151 L without dimensions and Aquatic Community 150 L for a smaller single-male group. Those
-        smaller recommendations do not establish equal protection for six adult females; 300 L is a
-        conservative husbandry choice, not an experimentally determined boundary."
+        lengthCm: 110
+        depthCm: 42.5
+      rationale: >-
+        Generator proposed 300 L, 120 cm length and 50 cm depth; checker-a proposed 150 L, 90 cm
+        length and 40 cm depth; checker-b proposed 200 L, 100 cm length and 40 cm depth;
+        checker-c proposed 150 L, 90 cm length and 45 cm depth. The component medians are 175 L,
+        95 cm length and 42.5 cm depth. The selected social unit is one male with six females.
+        The Nordic register gives 300 L and 110 cm length, directly supporting values above the
+        175 L volume and 95 cm length medians for this seven-fish unit. Stigliano gives about
+        151 L without dimensions; Aquatic Community gives 150 L for a smaller single-male group,
+        and Guidarium gives 150 L and 90 cm. The comparative Aquarist Atlas example has a 91.44
+        by 45.72 cm base at about 151 L. The register supplies no depth, and no source
+        establishes a 120 by 50 cm requirement for the selected unit. Use its 110 cm minimum
+        length and the 42.5 cm depth median as a provisional floor estimate, with the 300 L
+        lower volume limit providing capacity for seven adults. Communities and multiple males
+        need additional space.
     - field: "features.lifespanYears"
       proposals:
         - by: "generator"

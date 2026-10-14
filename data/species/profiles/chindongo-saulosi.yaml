@@ -2559,14 +2559,20 @@ features:
     value:
       volumeL: 300
       lengthCm: 120
-      depthCm: 50
+      depthCm: 45
     confidence: medium
-    rationale: "Generator and checker-b propose 300 L, 120 cm length and 50 cm depth; checker-a proposes 200 L,\
-      \ 120 cm and 40 cm; checker-c proposes 210 L, 120 cm and 40 cm. Select the 300 L and 120 cm baseline explicitly\
-      \ recommended by Malawi-Guru and Einrichtungsbeispiele for the decided one-male, four-female unit. Fish Laboratory\
-      \ gives approximately 190 to 210 L and FishProfiles about 200 L; their smaller minima leave less refuge space.\
-      \ The 50 cm depth is an inferred rockwork allowance, not a published biological minimum. Larger mixed communities\
-      \ or several territorial males require a separate larger plan."
+    rationale: >-
+      Generator proposed 300 L, 120 cm length and 50 cm depth; checker-a proposed 200 L, 120 cm
+      length and 40 cm depth; checker-b proposed 300 L, 120 cm length and 50 cm depth; checker-c
+      proposed 210 L, 120 cm length and 40 cm depth. The component medians are 255 L, 120 cm
+      length and 45 cm depth. Malawi-Guru and Einrichtungsbeispiele explicitly give 300 L and
+      120 cm for a species aquarium or small group, supporting a volume above the 255 L median
+      for one male and four females. FishProfiles gives about 200 L, Fish Laboratory about 190
+      to 210 L, and Fishkeeper gives 200 L with a 120 by 40 cm base. The Cichlid Fish Forum
+      example is about 208 L with a 122 by 33 cm base. These sources do not establish a 50 cm
+      depth requirement for the selected harem. Use the 45 cm depth median as a provisional
+      allowance for rockwork and escape routes, together with the source-backed volume and
+      length. Mixed communities and additional males need more space.
     sources:
     - kind: database
       title: "Einrichtungsbeispiele: Chindongo saulosi, Saulosi Zebra-Maulbrüter"
@@ -3126,11 +3132,13 @@ profile:
       accessed: '2026-10-13'
       url: "https://www.fishlaboratory.com/fish/saulosi-cichlid/"
   husbandry:
-    text: "For one male and four females, start with 300 L, 120 cm length and 50 cm front-to-back depth. The depth\
-      \ allows rock cover and escape routes. Secure rocks against digging and break up long sightlines between shelters.\
-      \ Maintain biological filtration, good gas exchange and regular water changes. Around 24 to 26 C is better\
-      \ supported for routine keeping than either tolerance endpoint. Measure pH, GH and KH separately: buffered\
-      \ alkaline water can have modest calcium-magnesium hardness."
+    text: >-
+      For one male and four females, start with 300 L, 120 cm length and 45 cm front-to-back
+      depth. The depth allows rock cover and escape routes. Secure rocks against digging and
+      break up long sightlines between shelters. Maintain biological filtration, good gas
+      exchange and regular water changes. Around 24 to 26 C is better supported for routine
+      keeping than either tolerance endpoint. Measure pH, GH and KH separately: buffered
+      alkaline water can have modest calcium-magnesium hardness.
     sources:
     - kind: literature
       title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin"
@@ -3290,6 +3298,9 @@ provenance:
   - role: adjudicator
     model: gpt-6.1-sol
     date: '2026-10-13'
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: 2026-10-14
   disagreements:
   - field: features.origin
     proposals:
@@ -3653,10 +3664,16 @@ provenance:
     decision:
       volumeL: 300
       lengthCm: 120
-      depthCm: 50
-    rationale: "Generator and checker-b propose 300 L, 120 cm length and 50 cm depth; checker-a proposes 200 L,\
-      \ 120 cm and 40 cm; checker-c proposes 210 L, 120 cm and 40 cm. Select the 300 L and 120 cm baseline explicitly\
-      \ recommended by Malawi-Guru and Einrichtungsbeispiele for the decided one-male, four-female unit. Fish Laboratory\
-      \ gives approximately 190 to 210 L and FishProfiles about 200 L; their smaller minima leave less refuge space.\
-      \ The 50 cm depth is an inferred rockwork allowance, not a published biological minimum. Larger mixed communities\
-      \ or several territorial males require a separate larger plan."
+      depthCm: 45
+    rationale: >-
+      Generator proposed 300 L, 120 cm length and 50 cm depth; checker-a proposed 200 L, 120 cm
+      length and 40 cm depth; checker-b proposed 300 L, 120 cm length and 50 cm depth; checker-c
+      proposed 210 L, 120 cm length and 40 cm depth. The component medians are 255 L, 120 cm
+      length and 45 cm depth. Malawi-Guru and Einrichtungsbeispiele explicitly give 300 L and
+      120 cm for a species aquarium or small group, supporting a volume above the 255 L median
+      for one male and four females. FishProfiles gives about 200 L, Fish Laboratory about 190
+      to 210 L, and Fishkeeper gives 200 L with a 120 by 40 cm base. The Cichlid Fish Forum
+      example is about 208 L with a 122 by 33 cm base. These sources do not establish a 50 cm
+      depth requirement for the selected harem. Use the 45 cm depth median as a provisional
+      allowance for rockwork and escape routes, together with the source-backed volume and
+      length. Mixed communities and additional males need more space.

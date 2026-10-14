@@ -1329,16 +1329,21 @@ features:
   maxSizeCm:
     value:
       male: 10
-      female: 9
+      female: 8.5
     confidence: "medium"
-    rationale: "Generator proposed 10 cm male and 8 female, checker-a and checker-b 10 and 9, and
-      checker-c 10 and 7. The adopted 10 and 9 are cautious aquarium planning estimates: the Dutch
-      association gives males 10 and smaller females, while the Nordic account describes a male
-      advantage near 1 cm. AquaInfo explicitly gives 9 and 7, and FishProfiles lists 10 for both
-      sexes. These show variation rather than a precisely measured sex-specific ceiling. FishBase
-      7.5 cm is standard length from scientific material and excludes the tail; it is not
-      substituted for typical aquarium size. The erroneous inches in the AquaInfo English
-      translation are disregarded."
+    rationale: >-
+      Generator proposed 10 cm male and 8 cm female; checker-a proposed 10 cm male and 9 cm
+      female; checker-b proposed 10 cm male and 9 cm female; checker-c proposed 10 cm male and 7
+      cm female. The component medians are 10 cm male and 8.5 cm female. The Dutch association
+      gives aquarium males about 10 cm and describes smaller females without a numerical
+      ceiling; the Nordic register gives an unsexed 9 cm figure and an approximate
+      one-centimetre male advantage. AquaInfo explicitly gives about 9 cm males and 7 cm
+      females, while FishProfiles gives 10 cm for each sex. Neither the qualitative size
+      difference nor the equal-sex 10 cm table establishes a 9 cm female maximum. Use the female
+      median of 8.5 cm as a provisional aquarium estimate within those conflicting care figures,
+      with the male median of 10 cm supported by the Dutch association. FishBase gives 7.5 cm
+      standard length and Seriously Fish 10 cm standard length; neither is a sex-specific female
+      total-length record.
     sources:
       - kind: "database"
         title: "AquaInfo: Pseudotropheus cyaneorhabdos - Maingano"
@@ -2500,17 +2505,20 @@ features:
     value:
       volumeL: 300
       lengthCm: 120
-      depthCm: 50
+      depthCm: 47.5
     confidence: "medium"
-    rationale: "The proposals were generator 240 L with 120 by 45 cm, checker-a 200 L with 120 by 40 cm,
-      checker-b 250 L with 120 by 50 cm and checker-c 300 L with 120 by 50 cm. Adopt the last as a
-      conservative recommendation for one male and four females: Malawi-Guru explicitly recommends
-      300 L and 120 cm for a species aquarium, and AquaInfo and the Dutch association support at
-      least 120 cm. The 50 cm depth is a layout inference for rockwork and escape routes. Smaller
-      source minima are Seriously Fish about 154 L and 90 by 45 cm, FishProfiles 200 L, and the
-      Nordic small-harem option 200 L and 100 cm; they are not adopted because of the social risks
-      and shelter needs. Mixed stocking needs additional space, with Malawi-Guru recommending at
-      least 400 L."
+    rationale: >-
+      Generator proposed 240 L, 120 cm length and 45 cm depth; checker-a proposed 200 L, 120 cm
+      length and 40 cm depth; checker-b proposed 250 L, 120 cm length and 50 cm depth; checker-c
+      proposed 300 L, 120 cm length and 50 cm depth. The component medians are 245 L, 120 cm
+      length and 47.5 cm depth. Malawi-Guru explicitly gives 300 L and at least 120 cm for a
+      species aquarium, supporting a volume above the 245 L median for the selected one male and
+      four females. AquaInfo requires 120 cm for one male and three or four females, and the
+      Dutch association also gives 120 cm. Seriously Fish gives about 154 L on a 90 by 45 cm
+      base; the Nordic small-harem option gives 200 L and 100 cm. The species accounts do not
+      establish a 50 cm depth minimum. Use the 47.5 cm depth median as a provisional allowance
+      together with the source-backed volume and length. Mixed stocking needs more space;
+      Malawi-Guru gives at least 400 L for that scope.
     sources:
       - kind: "database"
         title: "AquaInfo: Pseudotropheus cyaneorhabdos - Maingano"
@@ -2904,12 +2912,13 @@ profile:
         url: "https://doi.org/10.5194/hessd-7-4371-2010"
         accessed: "2026-10-13"
   sizeAndGrowth:
-    text: "Plan for adult males around 10 cm and females around 9 cm, with considerable uncertainty in
-      the female estimate. The Dutch AquaInfo account gives smaller sex-specific figures of about 9
-      and 7 cm, while other aquarium accounts report adults near 10 cm. FishBase reports 7.5 cm
-      standard length, which excludes the tail and is a different measurement. These are planning
-      estimates rather than record sizes. Growth rate has not been established reliably; use the
-      full adult setup from the start and judge feeding by body condition."
+    text: >-
+      Plan for adult males around 10 cm and females around 8.5 cm, with considerable uncertainty
+      in the female estimate. The Dutch AquaInfo account gives smaller sex-specific figures of
+      about 9 and 7 cm, while other aquarium accounts report adults near 10 cm. FishBase reports
+      7.5 cm standard length, which excludes the tail and is a different measurement. These are
+      planning estimates rather than record sizes. Growth rate has not been established
+      reliably; use the full adult setup from the start and judge feeding by body condition.
     sources:
       - kind: "database"
         title: "Nederlandse Vereniging van Cichlidenliefhebbers: Pseudotropheus cyaneorhabdos, by Serge
@@ -2930,14 +2939,15 @@ profile:
         url: "https://www.fishbase.se/summary/Pseudotropheus-cyaneorhabdos.html"
         accessed: "2026-10-13"
   husbandry:
-    text: "For one male and four females use at least 300 L, with a base 120 cm long and 50 cm deep. The
-      depth is a cautious layout allowance for rockwork rather than a tested minimum. A community
-      needs more space; the Malawi specialist guide recommends at least 400 L. Support stones
-      securely before adding fine sand and provide multiple routes away from a pursuing male.
-      Maintain clean, well-oxygenated water. Around 24 to 26 C is a practical routine target. The
-      decided tolerances are 21 to 29 C, pH 7.5 to 8.8, GH 3 to 25 dGH and KH 5 to 10 dKH. Their
-      endpoints are provisional guidance rather than tested lifelong limits; KH is particularly
-      uncertain."
+    text: >-
+      For one male and four females use at least 300 L, with a base 120 cm long and 47.5 cm
+      deep. The depth is a provisional layout estimate based on the median of the proposals
+      rather than a tested minimum. A community needs more space; the Malawi specialist guide
+      recommends at least 400 L. Support stones securely before adding fine sand and provide
+      multiple routes away from a pursuing male. Maintain clean, well-oxygenated water. Around
+      24 to 26 C is a practical routine target. The decided tolerances are 21 to 29 C, pH 7.5 to
+      8.8, GH 3 to 25 dGH and KH 5 to 10 dKH. Their endpoints are provisional guidance rather
+      than tested lifelong limits; KH is particularly uncertain.
     sources:
       - kind: "database"
         title: "Malawi-Guru: Pseudotropheus cyaneorhabdos"
@@ -3110,6 +3120,9 @@ provenance:
     - role: "adjudicator"
       model: "gpt-6.1-sol"
       date: "2026-10-13"
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-14
   disagreements:
     - field: "features.diet"
       proposals:
@@ -3366,15 +3379,20 @@ provenance:
             female: 7
       decision:
         male: 10
-        female: 9
-      rationale: "Generator proposed 10 cm male and 8 female, checker-a and checker-b 10 and 9, and
-        checker-c 10 and 7. The adopted 10 and 9 are cautious aquarium planning estimates: the Dutch
-        association gives males 10 and smaller females, while the Nordic account describes a male
-        advantage near 1 cm. AquaInfo explicitly gives 9 and 7, and FishProfiles lists 10 for both
-        sexes. These show variation rather than a precisely measured sex-specific ceiling. FishBase
-        7.5 cm is standard length from scientific material and excludes the tail; it is not
-        substituted for typical aquarium size. The erroneous inches in the AquaInfo English
-        translation are disregarded."
+        female: 8.5
+      rationale: >-
+        Generator proposed 10 cm male and 8 cm female; checker-a proposed 10 cm male and 9 cm
+        female; checker-b proposed 10 cm male and 9 cm female; checker-c proposed 10 cm male and
+        7 cm female. The component medians are 10 cm male and 8.5 cm female. The Dutch
+        association gives aquarium males about 10 cm and describes smaller females without a
+        numerical ceiling; the Nordic register gives an unsexed 9 cm figure and an approximate
+        one-centimetre male advantage. AquaInfo explicitly gives about 9 cm males and 7 cm
+        females, while FishProfiles gives 10 cm for each sex. Neither the qualitative size
+        difference nor the equal-sex 10 cm table establishes a 9 cm female maximum. Use the
+        female median of 8.5 cm as a provisional aquarium estimate within those conflicting care
+        figures, with the male median of 10 cm supported by the Dutch association. FishBase
+        gives 7.5 cm standard length and Seriously Fish 10 cm standard length; neither is a
+        sex-specific female total-length record.
     - field: "features.aggressionConspecific"
       proposals:
         - by: "generator"
@@ -3511,16 +3529,19 @@ provenance:
       decision:
         volumeL: 300
         lengthCm: 120
-        depthCm: 50
-      rationale: "The proposals were generator 240 L with 120 by 45 cm, checker-a 200 L with 120 by 40 cm,
-        checker-b 250 L with 120 by 50 cm and checker-c 300 L with 120 by 50 cm. Adopt the last as a
-        conservative recommendation for one male and four females: Malawi-Guru explicitly recommends
-        300 L and 120 cm for a species aquarium, and AquaInfo and the Dutch association support at
-        least 120 cm. The 50 cm depth is a layout inference for rockwork and escape routes. Smaller
-        source minima are Seriously Fish about 154 L and 90 by 45 cm, FishProfiles 200 L, and the
-        Nordic small-harem option 200 L and 100 cm; they are not adopted because of the social risks
-        and shelter needs. Mixed stocking needs additional space, with Malawi-Guru recommending at
-        least 400 L."
+        depthCm: 47.5
+      rationale: >-
+        Generator proposed 240 L, 120 cm length and 45 cm depth; checker-a proposed 200 L, 120
+        cm length and 40 cm depth; checker-b proposed 250 L, 120 cm length and 50 cm depth;
+        checker-c proposed 300 L, 120 cm length and 50 cm depth. The component medians are 245
+        L, 120 cm length and 47.5 cm depth. Malawi-Guru explicitly gives 300 L and at least 120
+        cm for a species aquarium, supporting a volume above the 245 L median for the selected
+        one male and four females. AquaInfo requires 120 cm for one male and three or four
+        females, and the Dutch association also gives 120 cm. Seriously Fish gives about 154 L
+        on a 90 by 45 cm base; the Nordic small-harem option gives 200 L and 100 cm. The species
+        accounts do not establish a 50 cm depth minimum. Use the 47.5 cm depth median as a
+        provisional allowance together with the source-backed volume and length. Mixed stocking
+        needs more space; Malawi-Guru gives at least 400 L for that scope.
     - field: "features.lifespanYears"
       proposals:
         - by: "generator"

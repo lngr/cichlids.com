@@ -1178,20 +1178,24 @@ features:
         accessed: 2026-10-13
   minTank:
     value: &a45
-      volumeL: 500
-      lengthCm: 180
-      depthCm: 60
+      volumeL: 360
+      lengthCm: 150
+      depthCm: 47.5
     confidence: medium
-    rationale: "Generator proposes 500 L with a 180 by 60 cm base; checker-a 205 L and 120 by 45 cm;
-      checker-b 400 L and 150 by 50 cm; checker-c 320 L and 150 by 45 cm. Retain 500 L and 180 by 60
-      cm for one established adult pair as a cautious planning synthesis for the selected 30/25 cm
-      adults and separation risk. This rounds the retailer pair-specific 125 US gallons,
-      approximately 473 L, upward and expands the base beyond the smaller recommendations. The
-      selected base dimensions are a planning judgment, not a measured biological cutoff. Seriously
-      Fish gives 205 L for a compatible pair but prefers about 150 cm for breeding; Fishkeeping
-      gives 320 L and a converted 152.4 by 45.72 cm base. The Nordic register recommends the larger
-      700 L and 200 cm without specifying social unit, so the selected minimum is not a claim that
-      smaller or larger advice is erroneous. Other adult species need substantially more space."
+    rationale: >-
+      Generator proposed 500 L, 180 cm length and 60 cm depth; checker-a proposed 205 L, 120 cm
+      length and 45 cm depth; checker-b proposed 400 L, 150 cm length and 50 cm depth; checker-c
+      proposed 320 L, 150 cm length and 45 cm depth. The component medians are 360 L, 150 cm
+      length and 47.5 cm depth. The unit is one established adult pair. Seriously Fish gives a
+      compatible-pair example of about 205 L on a 120 by 45 cm base and prefers about 150 cm for
+      breeding. The medium-trust Fishkeeping pair recommendation is 320 L with a 152.4 by 45.72
+      cm base. These support the component medians of 360 L, 150 cm length and 47.5 cm depth as
+      a provisional pair plan. Tropical Treasures Wyo gives 125 US gallons, about 473 L, for a
+      breeding pair without dimensions; NageoireBleue gives 400 L for a single adult or pair.
+      The Nordic register gives 700 L and 200 cm without defining the adult unit. Neither the
+      lower-trust 473 L recommendation nor the unit-unspecified 700 L figure establishes a 500
+      L, 180 by 60 cm requirement for this pair. Maintain separate refuges and a divider;
+      additional adult species require more space.
     sources:
       - *a15
       - *a18
@@ -1377,14 +1381,15 @@ profile:
       - *a24
       - *a29
   husbandry:
-    text: "For one established pair, provide at least 500 litres with a base about 180 by 60 cm and a
-      workable divider or separate aquarium. Published minima vary substantially, and the Nordic
-      register recommends 700 litres and 200 cm. Build secure refuges and visual barriers with wood,
-      pots or stable rocks over smooth substrate. Combine effective filtration with oxygenation and
-      regular water replacement matched to the existing chemistry. A steady 26 to 27 C is a
-      practical target within the decided 23 to 28 C tolerance. Near-neutral pH and modest mineral
-      content have better aquarium support than the provisional low endpoints; the tolerance
-      envelope is not a set of targets."
+    text: >-
+      For one established pair, provide at least 360 litres with a base about 150 by 47.5 cm and
+      a workable divider or separate aquarium. Published minima vary substantially, and the
+      Nordic register recommends 700 litres and 200 cm. Build secure refuges and visual barriers
+      with wood, pots or stable rocks over smooth substrate. Combine effective filtration with
+      oxygenation and regular water replacement matched to the existing chemistry. A steady 26
+      to 27 C is a practical target within the decided 23 to 28 C tolerance. Near-neutral pH and
+      modest mineral content have better aquarium support than the provisional low endpoints;
+      the tolerance envelope is not a set of targets.
     sources:
       - *a15
       - *a18
@@ -1494,6 +1499,9 @@ provenance:
     - role: adjudicator
       model: gpt-6.1-sol
       date: 2026-10-13
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-14
   disagreements:
     - field: features.predation
       proposals:
@@ -2105,17 +2113,20 @@ provenance:
             lengthCm: 150
             depthCm: 45
       decision: *a45
-      rationale: "Generator proposes 500 L with a 180 by 60 cm base; checker-a 205 L and 120 by 45 cm;
-        checker-b 400 L and 150 by 50 cm; checker-c 320 L and 150 by 45 cm. Retain 500 L and 180 by
-        60 cm for one established adult pair as a cautious planning synthesis for the selected 30/25
-        cm adults and separation risk. This rounds the retailer pair-specific 125 US gallons,
-        approximately 473 L, upward and expands the base beyond the smaller recommendations. The
-        selected base dimensions are a planning judgment, not a measured biological cutoff.
-        Seriously Fish gives 205 L for a compatible pair but prefers about 150 cm for breeding;
-        Fishkeeping gives 320 L and a converted 152.4 by 45.72 cm base. The Nordic register
-        recommends the larger 700 L and 200 cm without specifying social unit, so the selected
-        minimum is not a claim that smaller or larger advice is erroneous. Other adult species need
-        substantially more space."
+      rationale: >-
+        Generator proposed 500 L, 180 cm length and 60 cm depth; checker-a proposed 205 L, 120
+        cm length and 45 cm depth; checker-b proposed 400 L, 150 cm length and 50 cm depth;
+        checker-c proposed 320 L, 150 cm length and 45 cm depth. The component medians are 360
+        L, 150 cm length and 47.5 cm depth. The unit is one established adult pair. Seriously
+        Fish gives a compatible-pair example of about 205 L on a 120 by 45 cm base and prefers
+        about 150 cm for breeding. The medium-trust Fishkeeping pair recommendation is 320 L
+        with a 152.4 by 45.72 cm base. These support the component medians of 360 L, 150 cm
+        length and 47.5 cm depth as a provisional pair plan. Tropical Treasures Wyo gives 125 US
+        gallons, about 473 L, for a breeding pair without dimensions; NageoireBleue gives 400 L
+        for a single adult or pair. The Nordic register gives 700 L and 200 cm without defining
+        the adult unit. Neither the lower-trust 473 L recommendation nor the unit-unspecified
+        700 L figure establishes a 500 L, 180 by 60 cm requirement for this pair. Maintain
+        separate refuges and a divider; additional adult species require more space.
     - field: features.lifespanYears
       proposals:
         - by: generator

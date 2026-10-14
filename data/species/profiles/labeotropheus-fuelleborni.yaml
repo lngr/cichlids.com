@@ -1176,16 +1176,21 @@ features:
     value:
       volumeL: 600
       lengthCm: 150
-      depthCm: 60
+      depthCm: 55
     confidence: "medium"
-    rationale: "Generator and checker-c propose 600 L, 150 cm length and 60 cm depth; checker-a proposes 200 L,
-      120 cm and 40 cm; checker-b proposes 400 L, 150 cm and 50 cm. Retain the larger specialist 600 L and 150
-      cm floor for the chosen one-male, four-female adult unit, with 60 cm front-to-back depth as an inferred
-      layout allowance. This gives room for separated rocky retreats and is not a measured welfare threshold.
-      The Nordic header gives 350 L and 150 cm, Einrichtungsbeispiele 400 L and 150 cm, and Seriously Fish
-      gives a 154 L general minimum with a roughly 122 cm harem breeding recommendation. The 160 L research
-      breeding tanks establish successful experimental reproduction under close management, not a minimum home
-      aquarium for long-term adult welfare. Added tankmate groups can require more room."
+    rationale: >-
+      Generator proposed 600 L, 150 cm length and 60 cm depth; checker-a proposed 200 L, 120 cm
+      length and 40 cm depth; checker-b proposed 400 L, 150 cm length and 50 cm depth; checker-c
+      proposed 600 L, 150 cm length and 60 cm depth. The component medians are 500 L, 150 cm
+      length and 55 cm depth. Malawi-Guru explicitly gives a 600 L minimum and 150 cm length,
+      supporting a volume above the 500 L median for the selected one male and four females. The
+      Nordic register gives 350 L and 150 cm, Einrichtungsbeispiele 400 L and 150 cm, and
+      Seriously Fish gives a smaller 154 L example with about 122 cm length in its harem
+      breeding discussion. The closely managed 160 L research breeding tanks do not establish
+      long-term home housing for five adults. None of these sources gives a 60 cm front-to-back
+      minimum. Use the 55 cm depth median as a provisional estimate alongside the source-backed
+      volume and length; separate rock retreats do not establish an additional numerical depth
+      requirement.
     sources:
       - *a2
       - *a28
@@ -1391,13 +1396,15 @@ profile:
       - *a23
       - *a11
   husbandry:
-    text: "For the recommended one male and four females, use at least 600 L with 150 cm length and about 60 cm
-      front-to-back room. The depth is a layout allowance for separate rock structures and retreat routes.
-      More fish may need a larger tank. Anchor rocks securely and leave swimming passages between them. Strong
-      oxygenation, suitable biological filtration and regular matched-water changes are essential. A stable 24
-      to 26 C is a well-supported routine target. The recorded tolerances are 21 to 29 C, pH 7.5 to 8.8, GH 3
-      to 25 dGH and KH 5 to 15 dKH; temperature extremes and the KH extension have weaker long-term support.
-      Test GH and KH separately and change conditions gradually."
+    text: >-
+      For the recommended one male and four females, use at least 600 L with 150 cm length and
+      about 55 cm front-to-back room. The depth is a layout allowance for separate rock
+      structures and retreat routes. More fish may need a larger tank. Anchor rocks securely and
+      leave swimming passages between them. Strong oxygenation, suitable biological filtration
+      and regular matched-water changes are essential. A stable 24 to 26 C is a well-supported
+      routine target. The recorded tolerances are 21 to 29 C, pH 7.5 to 8.8, GH 3 to 25 dGH and
+      KH 5 to 15 dKH; temperature extremes and the KH extension have weaker long-term support.
+      Test GH and KH separately and change conditions gradually.
     sources:
       - *a6
       - *a7
@@ -1524,6 +1531,9 @@ provenance:
     - role: "adjudicator"
       model: "gpt-6.1-sol"
       date: "2026-10-13"
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-14
   disagreements:
     - field: "features.origin"
       proposals:
@@ -1808,15 +1818,20 @@ provenance:
       decision:
         volumeL: 600
         lengthCm: 150
-        depthCm: 60
-      rationale: "Generator and checker-c propose 600 L, 150 cm length and 60 cm depth; checker-a proposes 200 L,
-        120 cm and 40 cm; checker-b proposes 400 L, 150 cm and 50 cm. Retain the larger specialist 600 L and
-        150 cm floor for the chosen one-male, four-female adult unit, with 60 cm front-to-back depth as an
-        inferred layout allowance. This gives room for separated rocky retreats and is not a measured welfare
-        threshold. The Nordic header gives 350 L and 150 cm, Einrichtungsbeispiele 400 L and 150 cm, and
-        Seriously Fish gives a 154 L general minimum with a roughly 122 cm harem breeding recommendation. The
-        160 L research breeding tanks establish successful experimental reproduction under close management,
-        not a minimum home aquarium for long-term adult welfare. Added tankmate groups can require more room."
+        depthCm: 55
+      rationale: >-
+        Generator proposed 600 L, 150 cm length and 60 cm depth; checker-a proposed 200 L, 120
+        cm length and 40 cm depth; checker-b proposed 400 L, 150 cm length and 50 cm depth;
+        checker-c proposed 600 L, 150 cm length and 60 cm depth. The component medians are 500
+        L, 150 cm length and 55 cm depth. Malawi-Guru explicitly gives a 600 L minimum and 150
+        cm length, supporting a volume above the 500 L median for the selected one male and four
+        females. The Nordic register gives 350 L and 150 cm, Einrichtungsbeispiele 400 L and 150
+        cm, and Seriously Fish gives a smaller 154 L example with about 122 cm length in its
+        harem breeding discussion. The closely managed 160 L research breeding tanks do not
+        establish long-term home housing for five adults. None of these sources gives a 60 cm
+        front-to-back minimum. Use the 55 cm depth median as a provisional estimate alongside
+        the source-backed volume and length; separate rock retreats do not establish an
+        additional numerical depth requirement.
     - field: "features.lifespanYears"
       proposals:
         - by: "generator"

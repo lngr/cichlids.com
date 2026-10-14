@@ -2344,15 +2344,20 @@ features:
     value:
       volumeL: 300
       lengthCm: 120
-      depthCm: 50
+      depthCm: 47.5
     confidence: medium
-    rationale: "Generator and checker-b proposed 300 L with a 120 by 50 cm base; checker-a proposed 150 L at\
-      \ 90 by 45 cm and checker-c 200 L at 120 by 45 cm. Select 300 L and 120 by 50 cm for one adult male with\
-      \ at least three females, using Malawi.si 300 L and Fischlexikon 300 L and 120 cm as the larger species-specific\
-      \ recommendations. Fischlexikon applies its recommendation to a larger group, so this is a cautious husbandry\
-      \ choice rather than proof of an exact minimum for a harem. Seriously Fish accepts about 154 L at 90\
-      \ by 45 cm and the Nordic register 200 L at 100 cm. The selected 50 cm depth is a layout inference for\
-      \ shelters and escape routes; mixed adult communities need more space."
+    rationale: >-
+      Generator proposed 300 L, 120 cm length and 50 cm depth; checker-a proposed 150 L, 90 cm
+      length and 45 cm depth; checker-b proposed 300 L, 120 cm length and 50 cm depth; checker-c
+      proposed 200 L, 120 cm length and 45 cm depth. The component medians are 250 L, 120 cm
+      length and 47.5 cm depth. The unit is one male and three females. Malawi.si explicitly
+      gives 300 L, supporting a volume above the 250 L median, and Fischlexikon gives 300 L and
+      120 cm for a larger group. Seriously Fish gives about 154 L with a 90 by 45 cm base,
+      Aqua-Fish gives 150 L for one male and several females, and the Nordic register gives 200
+      L and 100 cm. The species-specific 300 L volume and the 120 cm length median provide a
+      supported harem plan, but none of these sources gives a 50 cm depth requirement. Use the
+      47.5 cm depth median as a provisional estimate for shelters and escape routes. Communities
+      require additional space.
     sources:
       - kind: database
         title: "Malawi.si: Pseudotropheus johannii 'Gome'"
@@ -2845,13 +2850,15 @@ profile:
         url: "https://www.theaquariumwiki.com/wiki/Melanochromis_johannii"
         accessed: '2026-10-13'
   husbandry:
-    text: "Plan a 300 litre aquarium with a base of at least 120 by 50 cm for one male and at least three females.\
-      \ Smaller recommendations exist, but this profile chooses more room for shelter and escape during adult\
-      \ pursuit. Build stable rock formations with several routes between refuges and clear gaps for swimming.\
-      \ Biological filtration, oxygenation and regular partial water changes support the stocking. A steady\
-      \ temperature near 24 to 26 C is a practical routine target. The decided aquarium envelopes are 21 to\
-      \ 29 C, pH 7.5 to 8.8, GH 3 to 20 dGH and KH 5 to 15 dKH; these inferred limits do not demonstrate lifelong\
-      \ health at every endpoint. Measure each parameter and match replacement water gradually."
+    text: >-
+      Plan a 300 litre aquarium with a base of at least 120 by 47.5 cm for one male and at least
+      three females. Smaller recommendations exist, but this profile chooses more room for
+      shelter and escape during adult pursuit. Build stable rock formations with several routes
+      between refuges and clear gaps for swimming. Biological filtration, oxygenation and
+      regular partial water changes support the stocking. A steady temperature near 24 to 26 C
+      is a practical routine target. The decided aquarium envelopes are 21 to 29 C, pH 7.5 to
+      8.8, GH 3 to 20 dGH and KH 5 to 15 dKH; these inferred limits do not demonstrate lifelong
+      health at every endpoint. Measure each parameter and match replacement water gradually.
     sources:
       - kind: database
         title: "Malawi.si: Pseudotropheus johannii 'Gome'"
@@ -3064,6 +3071,9 @@ provenance:
     - role: adjudicator
       model: gpt-6.1-sol
       date: '2026-10-13'
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-14
   disagreements:
     - field: features.predation
       proposals:
@@ -3420,14 +3430,19 @@ provenance:
       decision:
         volumeL: 300
         lengthCm: 120
-        depthCm: 50
-      rationale: "Generator and checker-b proposed 300 L with a 120 by 50 cm base; checker-a proposed 150 L\
-        \ at 90 by 45 cm and checker-c 200 L at 120 by 45 cm. Select 300 L and 120 by 50 cm for one adult male\
-        \ with at least three females, using Malawi.si 300 L and Fischlexikon 300 L and 120 cm as the larger\
-        \ species-specific recommendations. Fischlexikon applies its recommendation to a larger group, so this\
-        \ is a cautious husbandry choice rather than proof of an exact minimum for a harem. Seriously Fish\
-        \ accepts about 154 L at 90 by 45 cm and the Nordic register 200 L at 100 cm. The selected 50 cm depth\
-        \ is a layout inference for shelters and escape routes; mixed adult communities need more space."
+        depthCm: 47.5
+      rationale: >-
+        Generator proposed 300 L, 120 cm length and 50 cm depth; checker-a proposed 150 L, 90 cm
+        length and 45 cm depth; checker-b proposed 300 L, 120 cm length and 50 cm depth;
+        checker-c proposed 200 L, 120 cm length and 45 cm depth. The component medians are 250
+        L, 120 cm length and 47.5 cm depth. The unit is one male and three females. Malawi.si
+        explicitly gives 300 L, supporting a volume above the 250 L median, and Fischlexikon
+        gives 300 L and 120 cm for a larger group. Seriously Fish gives about 154 L with a 90 by
+        45 cm base, Aqua-Fish gives 150 L for one male and several females, and the Nordic
+        register gives 200 L and 100 cm. The species-specific 300 L volume and the 120 cm length
+        median provide a supported harem plan, but none of these sources gives a 50 cm depth
+        requirement. Use the 47.5 cm depth median as a provisional estimate for shelters and
+        escape routes. Communities require additional space.
     - field: features.lifespanYears
       proposals:
         - by: generator

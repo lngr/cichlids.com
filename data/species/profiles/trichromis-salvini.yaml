@@ -641,15 +641,21 @@ features:
           note: Natural value at the type locality Lake Petén Itzá.
 
   maxSizeCm:
-    value: {male: 17, female: 12}
+    value: {male: 16.5, female: 12}
     confidence: medium
     rationale: >-
-      Seriously Fish gives about 15 cm standard length for males and 11.5 cm for females, which is
-      roughly 18 and 13.5 cm total length; AquaInfo reports 15 to 18 cm with 18 cm as the largest
-      fish measured; Tropical Freshwater Fish gives 15 cm for males and 10 cm for females; the USGS
-      fact sheet cites 13 cm standard length. Fishkeeper names 20 cm and FishBase records 22 cm
-      standard length; both are unsexed maxima or record sizes. Well-kept aquarium males reach about
-      16 to 18 cm total length and females about 11 to 13 cm, so 17 and 12 cm are used.
+      Generator proposed 17 cm male and 12 cm female; checker-a proposed 16 cm male and 11 cm
+      female; checker-b proposed 16 cm male and 12 cm female; checker-c proposed 18 cm male and
+      12 cm female. The component medians are 16.5 cm male and 12 cm female. Seriously Fish
+      gives about 15.2 cm standard length for males and 11.4 cm for females; these exclude the
+      tail and cannot be used directly as total-length planning values. AquaInfo reports an
+      unsexed 15 to 18 cm range and an 18 cm measured maximum, while TropicalFreshwaterFish
+      gives 15 cm males and 10 cm females. Fishkeeper gives an unsexed 20 cm figure, USGS 13 cm
+      standard length and FishBase a 22 cm standard-length record. These establish variation and
+      differing measurement conventions, but no source establishes a typical aquarium male limit
+      of exactly 17 cm. Use the male median of 16.5 cm and female median of 12 cm as provisional
+      total-length estimates within the aquarium guidance. Record sizes are not typical captive
+      ceilings.
     sources:
       - *seriouslyfish
       - *aquainfo
@@ -1082,15 +1088,22 @@ features:
         title: General knowledge of the feeding behaviour of predatory Central American cichlids
 
   minTank:
-    value: {volumeL: 350, lengthCm: 150, depthCm: 50}
+    value: {volumeL: 300, lengthCm: 150, depthCm: 45}
     confidence: medium
     rationale: >-
-      The recommendations for one pair diverge: Seriously Fish gives a base of 90 by 30 cm (about
-      100 L), Fishkeeper 120 cm, Tropical Freshwater Fish 122 cm and 190 L, AquaInfo and Aquarium
-      Glaser 150 cm, and the Nordiska Ciklidsällskapet register 160 cm and 540 L. Because partners
-      are often injured when the female cannot get away, the value follows the 150 cm of AquaInfo
-      and Aquarium Glaser with a depth of 50 cm, about 350 L. Tankmates need more room; Fishkeeper
-      asks for 180 cm or more for a pair with companions.
+      Generator proposed 240 L, 120 cm length and 45 cm depth; checker-a proposed 240 L, 120 cm
+      length and 45 cm depth; checker-b proposed 200 L, 100 cm length and 40 cm depth; checker-c
+      proposed 540 L, 160 cm length and 60 cm depth. The component medians are 240 L, 120 cm
+      length and 45 cm depth. The unit is one adult pair. AquaInfo explicitly requires 150 cm
+      length for a pair, supported by Aquarium Glaser, providing a concrete reason to exceed the
+      120 cm length median. Fishkeeper gives 120 cm for a pair and 180 cm with companions;
+      TropicalFreshwaterFish gives about 190 L and 122 cm, Seriously Fish about 103 L and a 90
+      by 30 cm base, and the Nordic register 540 L and 160 cm. Use the 45 cm depth median
+      because no pair-specific source establishes 50 cm as necessary. The 240 L volume median at
+      the median 120 by 45 cm base implies about 44.4 cm nominal height. Extending that same
+      cross-section to the source-backed 150 cm pair length requires 300 L, so the volume
+      follows a concrete geometric adjustment rather than the largest proposal or an unspecified
+      safety margin. The dimensions are a provisional pair plan; companions require more space.
     sources:
       - *aquainfo
       - *fishkeeper
@@ -1204,13 +1217,14 @@ profile:
   overview:
     text: >-
       Salvin's cichlid, also sold as yellow-belly or tricolor cichlid, is a medium-sized Central
-      American cichlid from the Atlantic slope of southern Mexico, Guatemala and Belize. Long kept as
-      Cichlasoma salvini, it is the only species of the genus Trichromis, whose closest relatives are
-      the firemouth cichlids of Thorichthys. The genus name refers to its three colours: a yellow
-      body, blue spangles and a red belly. Males reach about 17 cm and females about 12 cm in the
-      aquarium. It is hardy and copes with a wide range of water, but it is one of the most
-      aggressive cichlids of its size, above all when breeding. It suits a large Central American
-      tank with robust tankmates, provided the keeper plans for space and careful pairing.
+      American cichlid from the Atlantic slope of southern Mexico, Guatemala and Belize. Long
+      kept as Cichlasoma salvini, it is the only species of the genus Trichromis, whose closest
+      relatives are the firemouth cichlids of Thorichthys. The genus name refers to its three
+      colours: a yellow body, blue spangles and a red belly. Males reach about 16.5 cm and
+      females about 12 cm in the aquarium. It is hardy and copes with a wide range of water, but
+      it is one of the most aggressive cichlids of its size, above all when breeding. It suits a
+      large Central American tank with robust tankmates, provided the keeper plans for space and
+      careful pairing.
     sources:
       - *cof
       - *seriouslyfish
@@ -1259,15 +1273,15 @@ profile:
       - *nas
   husbandry:
     text: >-
-      A pair needs a tank of about 150 cm length, 50 cm depth and 350 litres; with tankmates plan
-      180 cm or more. Use a sand bottom, since the fish dig pits for their young, and build caves
-      and visual barriers from stones and roots so that a harassed partner can get out of sight,
-      with an open area for swimming. Tough plants tied to wood, such as Java fern or Anubias, last
-      better than rooted plants. The species comes from flowing water: give strong filtration, good
-      oxygenation and a zone of current. Keep the water at about 24 to 28 °C and pH 7 to 8; the
-      species stays healthy long-term within 22 to 30 °C, pH 6.5 to 8.5, 5 to 20 dGH and 4 to 12
-      dKH, so most tap water suits it. Nitrate should stay low, so change a large part of the water
-      every week.
+      A pair needs a tank of about 150 cm length, 45 cm depth and 300 litres; with tankmates
+      plan 180 cm or more. Use a sand bottom, since the fish dig pits for their young, and build
+      caves and visual barriers from stones and roots so that a harassed partner can get out of
+      sight, with an open area for swimming. Tough plants tied to wood, such as Java fern or
+      Anubias, last better than rooted plants. The species comes from flowing water: give strong
+      filtration, good oxygenation and a zone of current. Keep the water at about 24 to 28 °C
+      and pH 7 to 8; the species stays healthy long-term within 22 to 30 °C, pH 6.5 to 8.5, 5 to
+      20 dGH and 4 to 12 dKH, so most tap water suits it. Nitrate should stay low, so change a
+      large part of the water every week.
     sources:
       - *aquainfo
       - *fishkeeper
@@ -1396,6 +1410,9 @@ provenance:
     - role: adjudicator
       model: claude-opus-5-5
       date: 2026-10-13
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-14
   disagreements:
     - field: taxonomy.synonyms
       proposals:
@@ -1505,11 +1522,20 @@ provenance:
         - {by: checker-a, value: {male: 16, female: 11}}
         - {by: checker-b, value: {male: 16, female: 12}}
         - {by: checker-c, value: {male: 18, female: 12}}
-      decision: {male: 17, female: 12}
+      decision: {male: 16.5, female: 12}
       rationale: >-
-        The proposals lie within 2 cm of each other. Seriously Fish gives about 15 cm standard length
-        for males, roughly 18 cm total length, and AquaInfo 15 to 18 cm, so 17 cm sits in the middle
-        of the well-kept aquarium males; three runs agree on 12 cm for females.
+        Generator proposed 17 cm male and 12 cm female; checker-a proposed 16 cm male and 11 cm
+        female; checker-b proposed 16 cm male and 12 cm female; checker-c proposed 18 cm male
+        and 12 cm female. The component medians are 16.5 cm male and 12 cm female. Seriously
+        Fish gives about 15.2 cm standard length for males and 11.4 cm for females; these
+        exclude the tail and cannot be used directly as total-length planning values. AquaInfo
+        reports an unsexed 15 to 18 cm range and an 18 cm measured maximum, while
+        TropicalFreshwaterFish gives 15 cm males and 10 cm females. Fishkeeper gives an unsexed
+        20 cm figure, USGS 13 cm standard length and FishBase a 22 cm standard-length record.
+        These establish variation and differing measurement conventions, but no source
+        establishes a typical aquarium male limit of exactly 17 cm. Use the male median of 16.5
+        cm and female median of 12 cm as provisional total-length estimates within the aquarium
+        guidance. Record sizes are not typical captive ceilings.
     - field: features.aggressionConspecific
       proposals:
         - {by: generator, value: 3}
@@ -1574,13 +1600,22 @@ provenance:
         - {by: checker-a, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
         - {by: checker-b, value: {volumeL: 200, lengthCm: 100, depthCm: 40}}
         - {by: checker-c, value: {volumeL: 540, lengthCm: 160, depthCm: 60}}
-      decision: {volumeL: 350, lengthCm: 150, depthCm: 50}
+      decision: {volumeL: 300, lengthCm: 150, depthCm: 45}
       rationale: >-
-        Sources range from 90 cm (Seriously Fish) through 120 to 122 cm (Fishkeeper, Tropical
-        Freshwater Fish) to 150 cm (AquaInfo, Aquarium Glaser) and 160 cm with 540 L (Nordiska
-        Ciklidsällskapet). Given the documented risk to the female in cramped tanks, the 150 cm
-        named by two sources is taken, between the 120 cm of the generator and checker-a and the
-        160 cm of checker-c.
+        Generator proposed 240 L, 120 cm length and 45 cm depth; checker-a proposed 240 L, 120
+        cm length and 45 cm depth; checker-b proposed 200 L, 100 cm length and 40 cm depth;
+        checker-c proposed 540 L, 160 cm length and 60 cm depth. The component medians are 240
+        L, 120 cm length and 45 cm depth. The unit is one adult pair. AquaInfo explicitly
+        requires 150 cm length for a pair, supported by Aquarium Glaser, providing a concrete
+        reason to exceed the 120 cm length median. Fishkeeper gives 120 cm for a pair and 180 cm
+        with companions; TropicalFreshwaterFish gives about 190 L and 122 cm, Seriously Fish
+        about 103 L and a 90 by 30 cm base, and the Nordic register 540 L and 160 cm. Use the 45
+        cm depth median because no pair-specific source establishes 50 cm as necessary. The 240
+        L volume median at the median 120 by 45 cm base implies about 44.4 cm nominal height.
+        Extending that same cross-section to the source-backed 150 cm pair length requires 300
+        L, so the volume follows a concrete geometric adjustment rather than the largest
+        proposal or an unspecified safety margin. The dimensions are a provisional pair plan;
+        companions require more space.
     - field: features.lifespanYears
       proposals:
         - {by: generator, value: {min: 8, max: 12}}

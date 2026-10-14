@@ -1834,16 +1834,21 @@ features:
     value:
       volumeL: 400
       lengthCm: 150
-      depthCm: 50
+      depthCm: 40
     confidence: medium
-    rationale: "Generator proposes 400 L with a 150 by 50 cm footprint; checker-a 200 L with 120 by 40 cm; checker-b\
-      \ and checker-c 300 L with 150 by 40 cm. The larger 400 L, 150 by 50 cm pair setup is retained as a cautious\
-      \ spatial synthesis, with medium confidence. Garnelio explicitly recommends 400 L, and Fishkeeper asks for\
-      \ five feet, 152.4 cm, rounded here to the customary 150 cm tank class. The 50 cm depth is inferred room\
-      \ for retreats and divided sightlines. Seriously Fish gives 108 L and 120 by 30 cm for a mated pair; Aqua-Fish\
-      \ about 200 L; TropicalFreshwaterFish 209 L and 122 cm; WikiFish 250 L. Their smaller recommendations offer\
-      \ less margin for documented partner aggression. This minimum concerns one compatible pair, not a community\
-      \ or a guarantee against partner rejection."
+    rationale: >-
+      Generator proposed 400 L, 150 cm length and 50 cm depth; checker-a proposed 200 L, 120 cm
+      length and 40 cm depth; checker-b proposed 300 L, 150 cm length and 40 cm depth; checker-c
+      proposed 300 L, 150 cm length and 40 cm depth. The component medians are 300 L, 150 cm
+      length and 40 cm depth. The unit is one compatible adult pair. Garnelio explicitly gives
+      400 L, providing a source value above the 300 L volume median; Fishkeeper gives five feet,
+      about 152 cm, consistent with the 150 cm length class. Seriously Fish gives a 120 by 30 cm
+      base and about 108 L for a mated pair, Aqua-Fish about 200 L, TropicalFreshwaterFish about
+      209 L and 122 cm, and WikiFish 250 L. No cited species account supplies a 50 cm depth
+      requirement. Use the 40 cm depth median as a provisional floor estimate with the
+      source-backed volume and length. Broken sightlines and separate retreats remain necessary,
+      but do not establish a larger numerical depth threshold. Communities need additional
+      accommodation.
     sources:
       - kind: database
         title: "Seriously Fish species profile: Neolamprologus tretocephalus"
@@ -2228,13 +2233,16 @@ profile:
         url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
         accessed: '2026-10-13'
   husbandry:
-    text: "For one compatible adult pair, use at least 400 litres with a 150 cm length and 50 cm front-to-back\
-      \ depth. This is a cautious planning minimum assembled from differing care recommendations. Divide sightlines\
-      \ with secure rockwork and several retreats, while retaining sandy feeding space. Keep filtration and oxygenation\
-      \ effective and replace water regularly without abrupt changes in chemistry. Routine care around 24 to 26\
-      \ C is better supported than continuous maintenance at the full temperature endpoints. The decided tolerances\
-      \ are 23 to 29 C, pH 7.7 to 9.4, GH 8 to 25 dGH and KH 10 to 20 dKH. KH tolerance is provisional, and the\
-      \ upper temperature and pH limits include the natural envelope rather than chronic aquarium trial results."
+    text: >-
+      For one compatible adult pair, use at least 400 litres with a 150 cm length and 40 cm
+      front-to-back depth. This is a cautious planning minimum assembled from differing care
+      recommendations. Divide sightlines with secure rockwork and several retreats, while
+      retaining sandy feeding space. Keep filtration and oxygenation effective and replace water
+      regularly without abrupt changes in chemistry. Routine care around 24 to 26 C is better
+      supported than continuous maintenance at the full temperature endpoints. The decided
+      tolerances are 23 to 29 C, pH 7.7 to 9.4, GH 8 to 25 dGH and KH 10 to 20 dKH. KH tolerance
+      is provisional, and the upper temperature and pH limits include the natural envelope
+      rather than chronic aquarium trial results.
     sources:
       - kind: database
         title: "Seriously Fish species profile: Neolamprologus tretocephalus"
@@ -2439,6 +2447,9 @@ provenance:
     - role: adjudicator
       model: gpt-6.1-sol
       date: '2026-10-13'
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-14
   disagreements:
     - field: taxonomy.author
       proposals:
@@ -2731,15 +2742,20 @@ provenance:
       decision:
         volumeL: 400
         lengthCm: 150
-        depthCm: 50
-      rationale: "Generator proposes 400 L with a 150 by 50 cm footprint; checker-a 200 L with 120 by 40 cm; checker-b\
-        \ and checker-c 300 L with 150 by 40 cm. The larger 400 L, 150 by 50 cm pair setup is retained as a cautious\
-        \ spatial synthesis, with medium confidence. Garnelio explicitly recommends 400 L, and Fishkeeper asks\
-        \ for five feet, 152.4 cm, rounded here to the customary 150 cm tank class. The 50 cm depth is inferred\
-        \ room for retreats and divided sightlines. Seriously Fish gives 108 L and 120 by 30 cm for a mated pair;\
-        \ Aqua-Fish about 200 L; TropicalFreshwaterFish 209 L and 122 cm; WikiFish 250 L. Their smaller recommendations\
-        \ offer less margin for documented partner aggression. This minimum concerns one compatible pair, not\
-        \ a community or a guarantee against partner rejection."
+        depthCm: 40
+      rationale: >-
+        Generator proposed 400 L, 150 cm length and 50 cm depth; checker-a proposed 200 L, 120
+        cm length and 40 cm depth; checker-b proposed 300 L, 150 cm length and 40 cm depth;
+        checker-c proposed 300 L, 150 cm length and 40 cm depth. The component medians are 300
+        L, 150 cm length and 40 cm depth. The unit is one compatible adult pair. Garnelio
+        explicitly gives 400 L, providing a source value above the 300 L volume median;
+        Fishkeeper gives five feet, about 152 cm, consistent with the 150 cm length class.
+        Seriously Fish gives a 120 by 30 cm base and about 108 L for a mated pair, Aqua-Fish
+        about 200 L, TropicalFreshwaterFish about 209 L and 122 cm, and WikiFish 250 L. No cited
+        species account supplies a 50 cm depth requirement. Use the 40 cm depth median as a
+        provisional floor estimate with the source-backed volume and length. Broken sightlines
+        and separate retreats remain necessary, but do not establish a larger numerical depth
+        threshold. Communities need additional accommodation.
     - field: features.lifespanYears
       proposals:
         - by: generator

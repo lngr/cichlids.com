@@ -1984,16 +1984,22 @@ features:
         accessed: 2026-10-13
   minTank:
     value:
-      volumeL: 450
-      lengthCm: 150
-      depthCm: 60
+      volumeL: 300
+      lengthCm: 120
+      depthCm: 50
     confidence: low
-    rationale: The unit is one adult pair. Seriously Fish gives 120 x 45 x 45 cm (about 240 litres) as
-      the minimum for H. efasciatus, a care-sheet value of the congener that checker-b adopted and
-      the generator raised to 300 litres, 120 cm and 50 cm. For the narrow H. severus, which grows
-      to about 25 cm and is the more aggressive species, a breeder advises no less than 180 cm for a
-      group with other large cichlids. A pair with tankmates needs at least 150 cm length, 60 cm
-      front-to-back depth and about 450 litres, the proposal of checker-a.
+    rationale: >-
+      Generator proposed 300 L, 120 cm length and 50 cm depth; checker-a proposed 450 L, 150 cm
+      length and 60 cm depth; checker-b proposed 250 L, 120 cm length and 45 cm depth. The
+      component medians are 300 L, 120 cm length and 50 cm depth. The unit is one established
+      adult pair without other adult fish. Seriously Fish gives 120 by 45 by 45 cm, about 243 L,
+      for the similarly sized congener H. efasciatus. The cited breeder recommends at least 180
+      cm for a group with other large cichlids, a different unit from the selected pair. That
+      group recommendation supplies no pair-specific 150 by 60 cm footprint or 450 L minimum.
+      Use the component medians of 300 L, 120 cm length and 50 cm depth as a provisional pair
+      plan, with separated retreats and separation available. The volume exceeds the congener
+      example and the depth allows additional cover, but neither is a measured H. severus
+      threshold. A community or group requires a separate larger housing plan.
     sources:
       - kind: database
         title: "Seriously Fish: Heros efasciatus (Severum), the congener sold as severum"
@@ -2255,15 +2261,16 @@ profile:
         url: https://www.monsterfishkeepers.com/forums/goto/post?id=7936658
         accessed: 2026-10-13
   husbandry:
-    text: A pair needs a tank of about 450 litres with at least 150 cm length and 60 cm front-to-back
-      depth. Use a sand bottom, roots, branches and a few smooth stones, and leave open space in the
-      middle. Dim light, floating plants and leaf litter make the fish feel secure. Keep the water
-      warm (about 26 to 29 C), very soft and acidic, below pH 6.5; peat filtration or
-      reverse-osmosis water helps. Many care values in the hobby come from H. efasciatus, which is
-      kept in harder, neutral water, and they do not suit wild H. severus, which should be moved
-      into different water only slowly. Good filtration and large weekly water changes keep nitrate
-      low. Soft-leaved plants are eaten, so use tough species such as Anubias or Java fern if plants
-      are wanted.
+    text: >-
+      A pair needs a tank of about 300 litres with at least 120 cm length and 50 cm
+      front-to-back depth. Use a sand bottom, roots, branches and a few smooth stones, and leave
+      open space in the middle. Dim light, floating plants and leaf litter make the fish feel
+      secure. Keep the water warm (about 26 to 29 C), very soft and acidic, below pH 6.5; peat
+      filtration or reverse-osmosis water helps. Many care values in the hobby come from H.
+      efasciatus, which is kept in harder, neutral water, and they do not suit wild H. severus,
+      which should be moved into different water only slowly. Good filtration and large weekly
+      water changes keep nitrate low. Soft-leaved plants are eaten, so use tough species such as
+      Anubias or Java fern if plants are wanted.
     sources:
       - kind: database
         title: "Seriously Fish: Heros efasciatus (Severum), the congener sold as severum"
@@ -2503,6 +2510,9 @@ provenance:
     - role: adjudicator
       model: claude-opus-5-5
       date: 2026-10-13
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-14
   disagreements:
     - field: features.temperatureC
       proposals:
@@ -2868,12 +2878,22 @@ provenance:
             lengthCm: 120
             depthCm: 45
       decision:
-        volumeL: 450
-        lengthCm: 150
-        depthCm: 60
-      rationale: The smaller proposals follow the H. efasciatus minimum of Seriously Fish; the narrow
-        species grows to about 25 cm and is more aggressive, and its breeder advises at least 180 cm
-        for a group.
+        volumeL: 300
+        lengthCm: 120
+        depthCm: 50
+      rationale: >-
+        Generator proposed 300 L, 120 cm length and 50 cm depth; checker-a proposed 450 L, 150
+        cm length and 60 cm depth; checker-b proposed 250 L, 120 cm length and 45 cm depth. The
+        component medians are 300 L, 120 cm length and 50 cm depth. The unit is one established
+        adult pair without other adult fish. Seriously Fish gives 120 by 45 by 45 cm, about 243
+        L, for the similarly sized congener H. efasciatus. The cited breeder recommends at least
+        180 cm for a group with other large cichlids, a different unit from the selected pair.
+        That group recommendation supplies no pair-specific 150 by 60 cm footprint or 450 L
+        minimum. Use the component medians of 300 L, 120 cm length and 50 cm depth as a
+        provisional pair plan, with separated retreats and separation available. The volume
+        exceeds the congener example and the depth allows additional cover, but neither is a
+        measured H. severus threshold. A community or group requires a separate larger housing
+        plan.
     - field: features.lifespanYears
       proposals:
         - by: generator

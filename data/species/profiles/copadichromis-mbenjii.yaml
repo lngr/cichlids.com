@@ -1986,18 +1986,23 @@ features:
       note: "Rubric interpretation. Source wording mapped to the profile category."
   minTank:
     value:
-      volumeL: 500
+      volumeL: 300
       lengthCm: 150
-      depthCm: 60
+      depthCm: 45
     confidence: "low"
-    rationale: "Generator, checker-a and checker-c proposed 300 L, 150 cm length and 45 cm depth; checker-b proposed\
-      \ 500 L, 150 cm length and 60 cm depth. Choose the more cautious checker-b unit for one adult male and three\
-      \ females because Einrichtungsbeispiele explicitly recommends 500 L for a harem or group and notes stress\
-      \ sensitivity. Malawi.si instead gives 300 L and 150 cm; Zoopet gives 220 L and 125 cm with no defined social\
-      \ unit. Those smaller alternatives are recorded but not selected. The 150 cm length is species-specific, while\
-      \ 60 cm front-to-back depth is an inferred allowance for swimming, bower and retreats rather than a measured\
-      \ minimum, so confidence is low. The 45 cm congener footprint supports the smaller proposal but does not invalidate\
-      \ extra retreat space."
+    rationale: >-
+      Generator proposed 300 L, 150 cm length and 45 cm depth; checker-a proposed 300 L, 150 cm
+      length and 45 cm depth; checker-b proposed 500 L, 150 cm length and 60 cm depth; checker-c
+      proposed 300 L, 150 cm length and 45 cm depth. The component medians are 300 L, 150 cm
+      length and 45 cm depth. Malawi.si gives 300 L and at least 150 cm length and explicitly
+      permits a pair or one male with several females, matching the selected one-male,
+      three-female unit. Zoopet gives 220 L and 125 cm without defining the unit.
+      Einrichtungsbeispiele gives 500 L for a harem or group but provides no footprint or
+      distinct adult count requiring that volume for these four fish. Prefer the medium-trust
+      species account and the component medians, rather than the larger low-trust
+      recommendation. The comparative Seriously Fish C. azureus account gives about 304 L and a
+      150 by 45 cm base; it supports 45 cm as a provisional depth estimate, not a measured C.
+      mbenjii limit. No cited measurement establishes 60 cm as necessary for this harem.
     sources:
     - kind: "database"
       title: "malawi.si: Copadichromis mbenjii 'Mbenji Island'"
@@ -2322,12 +2327,14 @@ profile:
       url: "https://aquariumfishonline.com/products/copadichromis-mbenjii"
       accessed: "2026-10-13"
   husbandry:
-    text: "Provide at least 500 litres with a 150 cm length and about 60 cm front-to-back space for one male and\
-      \ three females. This follows the larger species care recommendation; the depth is an inferred allowance rather\
-      \ than a tested minimum. Arrange secure rock shelters beside sand and keep an open swimming lane. Establish\
-      \ biological filtration before stocking and maintain surface movement. A stable 24 to 26 C is a supported\
-      \ routine target. The wider recorded tolerance envelope is 21 to 29 C, pH 7.5 to 8.6, GH 3 to 15 dGH and KH\
-      \ 5 to 15 dKH, with limited evidence for chronic maintenance at the endpoints."
+    text: >-
+      Provide at least 300 litres with a 150 cm length and about 45 cm front-to-back space for
+      one male and three females. The volume and length follow Malawi.si; the depth is a
+      comparative planning estimate rather than a tested minimum. Arrange secure rock shelters
+      beside sand and keep an open swimming lane. Establish biological filtration before
+      stocking and maintain surface movement. A stable 24 to 26 C is a supported routine target.
+      The wider recorded tolerance envelope is 21 to 29 C, pH 7.5 to 8.6, GH 3 to 15 dGH and KH
+      5 to 15 dKH, with limited evidence for chronic maintenance at the endpoints.
     sources:
     - kind: "database"
       title: "malawi.si: Copadichromis mbenjii 'Mbenji Island'"
@@ -2509,6 +2516,9 @@ provenance:
   - role: "adjudicator"
     model: "gpt-6.1-sol"
     date: "2026-10-13"
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: 2026-10-14
   disagreements:
   - field: "features.ph.tolerance"
     proposals:
@@ -2795,17 +2805,22 @@ provenance:
         lengthCm: 150
         depthCm: 45
     decision:
-      volumeL: 500
+      volumeL: 300
       lengthCm: 150
-      depthCm: 60
-    rationale: "Generator, checker-a and checker-c proposed 300 L, 150 cm length and 45 cm depth; checker-b proposed\
-      \ 500 L, 150 cm length and 60 cm depth. Choose the more cautious checker-b unit for one adult male and three\
-      \ females because Einrichtungsbeispiele explicitly recommends 500 L for a harem or group and notes stress\
-      \ sensitivity. Malawi.si instead gives 300 L and 150 cm; Zoopet gives 220 L and 125 cm with no defined social\
-      \ unit. Those smaller alternatives are recorded but not selected. The 150 cm length is species-specific, while\
-      \ 60 cm front-to-back depth is an inferred allowance for swimming, bower and retreats rather than a measured\
-      \ minimum, so confidence is low. The 45 cm congener footprint supports the smaller proposal but does not invalidate\
-      \ extra retreat space."
+      depthCm: 45
+    rationale: >-
+      Generator proposed 300 L, 150 cm length and 45 cm depth; checker-a proposed 300 L, 150 cm
+      length and 45 cm depth; checker-b proposed 500 L, 150 cm length and 60 cm depth; checker-c
+      proposed 300 L, 150 cm length and 45 cm depth. The component medians are 300 L, 150 cm
+      length and 45 cm depth. Malawi.si gives 300 L and at least 150 cm length and explicitly
+      permits a pair or one male with several females, matching the selected one-male,
+      three-female unit. Zoopet gives 220 L and 125 cm without defining the unit.
+      Einrichtungsbeispiele gives 500 L for a harem or group but provides no footprint or
+      distinct adult count requiring that volume for these four fish. Prefer the medium-trust
+      species account and the component medians, rather than the larger low-trust
+      recommendation. The comparative Seriously Fish C. azureus account gives about 304 L and a
+      150 by 45 cm base; it supports 45 cm as a provisional depth estimate, not a measured C.
+      mbenjii limit. No cited measurement establishes 60 cm as necessary for this harem.
   - field: "features.lifespanYears"
     proposals:
     - by: "generator"

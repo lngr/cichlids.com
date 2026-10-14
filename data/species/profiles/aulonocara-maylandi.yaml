@@ -2093,18 +2093,20 @@ features:
     value:
       volumeL: 300
       lengthCm: 130
-      depthCm: 50
+      depthCm: 47.5
     confidence: "low"
-    rationale: "Generator and checker-b proposed 300 L, 130 cm length and 50 cm depth; checker-a and
-      checker-c proposed the same volume and length with 45 cm depth. Malawi-Guru and Malawi.si
-      explicitly recommend 300 L and at least 130 cm length, while Einrichtungsbeispiele also gives
-      300 L for a harem. Seriously Fish gives a smaller 120 by 30 cm base, AquaInfo 120 cm length,
-      Tropical Fish Site 200 L and Fischlexikon a longer 150 cm recommendation. The 300 L and 130 cm
-      specialist recommendation is retained for the one-male four-female unit. Between the two
-      inferred depths, 50 cm is selected as a cautious layout allowance for refuges and open sand,
-      not a published biological threshold or a measured median. Confidence is low because neither
-      proposed depth is directly established and the social-unit linkage is a planning judgment.
-      Mixed communities and multiple-male groups require additional room."
+    rationale: >-
+      Generator proposed 300 L, 130 cm length and 50 cm depth; checker-a proposed 300 L, 130 cm
+      length and 45 cm depth; checker-b proposed 300 L, 130 cm length and 50 cm depth; checker-c
+      proposed 300 L, 130 cm length and 45 cm depth. The component medians are 300 L, 130 cm
+      length and 47.5 cm depth. Malawi-Guru and Malawi.si give 300 L and 130 cm for a species
+      aquarium, consistent with one male and four females; Einrichtungsbeispiele also gives 300
+      L for a harem. Seriously Fish gives a 120 by 30 cm base, AquaInfo 120 cm length and
+      Fischlexikon 300 L with 150 cm length. Neither 45 nor 50 cm depth is a species-specific
+      source measurement. Use the 47.5 cm depth median as a provisional layout estimate for this
+      harem; a preference for additional refuge space does not establish a 50 cm minimum. Volume
+      and length remain source-based lower limits, with additional floor area required for mixed
+      stocking.
     sources:
       - kind: "database"
         title: "Malawi-Guru: Aulonocara maylandi species directory"
@@ -2586,13 +2588,15 @@ profile:
         url: "https://riverparkaquatics.co.uk/sulphur-head-peacock-cichlid-aulonocara-maylandi-5cm/"
         accessed: "2026-10-13"
   husbandry:
-    text: "For one male with four females, allow at least 300 L, 130 cm length and a planned 50 cm
-      front-to-back depth. The depth is a layout estimate. Arrange stable shelters and visual breaks
-      while leaving a generous fine-sand feeding area. Use an established biological filter, good
-      gas exchange and regular water changes, and keep conditions steady; about 24 to 26 C is a
-      practical routine target. The planner tolerances are 21 to 29 C, pH 7.5 to 8.6, GH 3 to 25 dGH
-      and KH 5 to 12 dKH. Their endpoints are not proven ideal permanent setpoints. Measure GH and
-      KH separately and assess existing water before adjusting minerals or buffering."
+    text: >-
+      For one male with four females, allow at least 300 L, 130 cm length and a planned 47.5 cm
+      front-to-back depth. The depth is a layout estimate. Arrange stable shelters and visual
+      breaks while leaving a generous fine-sand feeding area. Use an established biological
+      filter, good gas exchange and regular water changes, and keep conditions steady; about 24
+      to 26 C is a practical routine target. The planner tolerances are 21 to 29 C, pH 7.5 to
+      8.6, GH 3 to 25 dGH and KH 5 to 12 dKH. Their endpoints are not proven ideal permanent
+      setpoints. Measure GH and KH separately and assess existing water before adjusting
+      minerals or buffering.
     sources:
       - kind: "literature"
         title: "Branchu et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa),
@@ -2833,6 +2837,9 @@ provenance:
     - role: "adjudicator"
       model: "gpt-6.1-sol"
       date: "2026-10-13"
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-14
   disagreements:
     - field: "taxonomy.synonyms"
       proposals:
@@ -3242,17 +3249,19 @@ provenance:
       decision:
         volumeL: 300
         lengthCm: 130
-        depthCm: 50
-      rationale: "Generator and checker-b proposed 300 L, 130 cm length and 50 cm depth; checker-a and
-        checker-c proposed the same volume and length with 45 cm depth. Malawi-Guru and Malawi.si
-        explicitly recommend 300 L and at least 130 cm length, while Einrichtungsbeispiele also
-        gives 300 L for a harem. Seriously Fish gives a smaller 120 by 30 cm base, AquaInfo 120 cm
-        length, Tropical Fish Site 200 L and Fischlexikon a longer 150 cm recommendation. The 300 L
-        and 130 cm specialist recommendation is retained for the one-male four-female unit. Between
-        the two inferred depths, 50 cm is selected as a cautious layout allowance for refuges and
-        open sand, not a published biological threshold or a measured median. Confidence is low
-        because neither proposed depth is directly established and the social-unit linkage is a
-        planning judgment. Mixed communities and multiple-male groups require additional room."
+        depthCm: 47.5
+      rationale: >-
+        Generator proposed 300 L, 130 cm length and 50 cm depth; checker-a proposed 300 L, 130
+        cm length and 45 cm depth; checker-b proposed 300 L, 130 cm length and 50 cm depth;
+        checker-c proposed 300 L, 130 cm length and 45 cm depth. The component medians are 300
+        L, 130 cm length and 47.5 cm depth. Malawi-Guru and Malawi.si give 300 L and 130 cm for
+        a species aquarium, consistent with one male and four females; Einrichtungsbeispiele
+        also gives 300 L for a harem. Seriously Fish gives a 120 by 30 cm base, AquaInfo 120 cm
+        length and Fischlexikon 300 L with 150 cm length. Neither 45 nor 50 cm depth is a
+        species-specific source measurement. Use the 47.5 cm depth median as a provisional
+        layout estimate for this harem; a preference for additional refuge space does not
+        establish a 50 cm minimum. Volume and length remain source-based lower limits, with
+        additional floor area required for mixed stocking.
     - field: "features.lifespanYears"
       proposals:
         - by: "generator"

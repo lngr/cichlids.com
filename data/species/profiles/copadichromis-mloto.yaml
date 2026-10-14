@@ -2012,15 +2012,21 @@ features:
     value:
       volumeL: 500
       lengthCm: 150
-      depthCm: 60
+      depthCm: 52.5
     confidence: "low"
-    rationale: "Generator and checker-b propose 500 L with a 150 by 60 cm footprint; checker-a proposes 250 L and\
-      \ 120 by 45 cm; checker-c proposes 300 L and 150 by 45 cm for a smaller harem. Choose the larger proposal\
-      \ for the decided unit of one male and four females. Einrichtungsbeispiele explicitly recommends 500 L for\
-      \ at least five fish; the Nordic register gives 300 L and 150 cm, and Clarke gives at least 120 cm without\
-      \ a volume or depth. The congener 150 by 45 by 45 cm recommendation is about 304 L. Front-to-back depth 60\
-      \ cm is an inferred allowance for sand, retreat and swimming rather than a published C. mloto minimum. These\
-      \ differences and mixed trade identities keep confidence low."
+    rationale: >-
+      Generator proposed 500 L, 150 cm length and 60 cm depth; checker-a proposed 250 L, 120 cm
+      length and 45 cm depth; checker-b proposed 500 L, 150 cm length and 60 cm depth; checker-c
+      proposed 300 L, 150 cm length and 45 cm depth. The component medians are 400 L, 150 cm
+      length and 52.5 cm depth. Einrichtungsbeispiele explicitly gives 500 L for at least five
+      fish, matching the selected one male and four females and providing a concrete reason to
+      exceed the 400 L volume median. The Nordic register gives 300 L and 150 cm; Clarke gives
+      at least 120 cm without volume or depth. Seriously Fish gives about 304 L and a 150 by 45
+      cm base for the distinct congener C. virginalis. No cited C. mloto account supplies a
+      front-to-back minimum. Use the 52.5 cm depth median as a provisional estimate alongside
+      the source-backed 500 L volume and 150 cm length; additional sand and retreat space alone
+      does not establish a 60 cm threshold. Mixed trade identities and uncertain dimensions
+      limit confidence.
     sources:
     - kind: "database"
       title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
@@ -2360,12 +2366,15 @@ profile:
       url: "https://www.fishfish.fr/poisson/copadichromis-mloto"
       accessed: "2026-10-13"
   husbandry:
-    text: "For the recommended one male and four females, allow at least 500 L with approximately 150 cm length\
-      \ and 60 cm front-to-back space. The width is a cautious planning allowance rather than a published physiological\
-      \ requirement. Use an established filter, surface movement and regular conditioned-water changes. A temperature\
-      \ target of 24 to 26 C is better supported by species care guidance than continuous use of the full 21 to\
-      \ 29 C tolerance. Adopted aquarium tolerances are pH 7.5 to 8.6, GH 3 to 15 dGH and KH 5 to 10 dKH. Keep conditions\
-      \ stable; the endpoints are practical planning bounds with uneven long-term evidence."
+    text: >-
+      For the recommended one male and four females, allow at least 500 L with approximately 150
+      cm length and 52.5 cm front-to-back space. The width is a provisional estimate based on
+      the median of the proposals rather than a published physiological requirement. Use an
+      established filter, surface movement and regular conditioned-water changes. A temperature
+      target of 24 to 26 C is better supported by species care guidance than continuous use of
+      the full 21 to 29 C tolerance. Adopted aquarium tolerances are pH 7.5 to 8.6, GH 3 to 15
+      dGH and KH 5 to 10 dKH. Keep conditions stable; the endpoints are practical planning
+      bounds with uneven long-term evidence.
     sources:
     - kind: "database"
       title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
@@ -2560,6 +2569,9 @@ provenance:
   - role: "adjudicator"
     model: "gpt-6.1-sol"
     date: "2026-10-13"
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: 2026-10-14
   disagreements:
   - field: "taxonomy.synonyms"
     proposals:
@@ -2971,14 +2983,20 @@ provenance:
     decision:
       volumeL: 500
       lengthCm: 150
-      depthCm: 60
-    rationale: "Generator and checker-b propose 500 L with a 150 by 60 cm footprint; checker-a proposes 250 L and\
-      \ 120 by 45 cm; checker-c proposes 300 L and 150 by 45 cm for a smaller harem. Choose the larger proposal\
-      \ for the decided unit of one male and four females. Einrichtungsbeispiele explicitly recommends 500 L for\
-      \ at least five fish; the Nordic register gives 300 L and 150 cm, and Clarke gives at least 120 cm without\
-      \ a volume or depth. The congener 150 by 45 by 45 cm recommendation is about 304 L. Front-to-back depth 60\
-      \ cm is an inferred allowance for sand, retreat and swimming rather than a published C. mloto minimum. These\
-      \ differences and mixed trade identities keep confidence low."
+      depthCm: 52.5
+    rationale: >-
+      Generator proposed 500 L, 150 cm length and 60 cm depth; checker-a proposed 250 L, 120 cm
+      length and 45 cm depth; checker-b proposed 500 L, 150 cm length and 60 cm depth; checker-c
+      proposed 300 L, 150 cm length and 45 cm depth. The component medians are 400 L, 150 cm
+      length and 52.5 cm depth. Einrichtungsbeispiele explicitly gives 500 L for at least five
+      fish, matching the selected one male and four females and providing a concrete reason to
+      exceed the 400 L volume median. The Nordic register gives 300 L and 150 cm; Clarke gives
+      at least 120 cm without volume or depth. Seriously Fish gives about 304 L and a 150 by 45
+      cm base for the distinct congener C. virginalis. No cited C. mloto account supplies a
+      front-to-back minimum. Use the 52.5 cm depth median as a provisional estimate alongside
+      the source-backed 500 L volume and 150 cm length; additional sand and retreat space alone
+      does not establish a 60 cm threshold. Mixed trade identities and uncertain dimensions
+      limit confidence.
   - field: "features.lifespanYears"
     proposals:
     - by: "generator"
