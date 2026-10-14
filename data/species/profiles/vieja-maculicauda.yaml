@@ -2002,6 +2002,7 @@ features:
         total: 4
   hybridGroups:
     value:
+    - "kronoheros-umbrifer-vieja-maculicauda"
     - "rocio-octofasciata-vieja-maculicauda"
     - "vieja"
     - "vieja-bifasciata-maculicauda"
@@ -2023,7 +2024,10 @@ features:
       \ not inferred transitively.
       The curated data/species/hybrid-groups.yaml file defines vieja-bifasciata-maculicauda with
       basis presumed from labelled captive-offspring photographs and a specialist congener warning,
-      without independent pedigree checks or documented access to conspecific mates."
+      without independent pedigree checks or documented access to conspecific mates. The curated
+      data/species/hybrid-groups.yaml file defines kronoheros-umbrifer-vieja-maculicauda as presumed
+      from a single hobby warning naming the pair, without reports of offspring, breeding location
+      or verified parentage."
     sources:
     - kind: "catalog-of-fishes"
       title: "Eschmeyer's Catalog of Fishes: species of Rocio"
@@ -2094,6 +2098,11 @@ features:
       title: "Binns Hybrid Encyclopedia: Bifasciata cross examples"
       url: "https://www.binnspedia.com/vieja/bifasciata"
       archived: binnspedia.com/vieja/bifasciata/2026-10-14T103733Z
+      accessed: "2026-10-13"
+    - kind: website
+      title: "Cichlidamerique: Kronoheros umbriferum"
+      url: https://cichlidamerique.fr/blog/kronoheros-umbriferum
+      archived: cichlidamerique.fr/blog/kronoheros-umbriferum/2026-10-14T173254Z
       accessed: "2026-10-13"
     evidence:
     - source:
@@ -2180,6 +2189,14 @@ features:
         accessed: "2026-10-13"
       value: [vieja-bifasciata-maculicauda]
       note: "Labels captive offspring; pedigrees and conspecific mate availability are unverified."
+    - source:
+        kind: website
+        title: "Cichlidamerique: Kronoheros umbriferum"
+        url: https://cichlidamerique.fr/blog/kronoheros-umbriferum
+        archived: cichlidamerique.fr/blog/kronoheros-umbriferum/2026-10-14T173254Z
+        accessed: "2026-10-13"
+      value: [kronoheros-umbrifer-vieja-maculicauda]
+      note: "Single hobby warning naming the pair; it supplies no offspring, breeding location or verified parentage."
 
     verification:
       method: "conservative"
