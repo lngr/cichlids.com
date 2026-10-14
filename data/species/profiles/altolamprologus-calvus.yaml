@@ -1826,14 +1826,17 @@ features:
         agree: 3
         total: 3
   hybridGroups:
-    value: [altolamprologus]
+    value: [altolamprologus, altolamprologus-calvus-julidochromis-transcriptus]
     confidence: medium
     rationale: >-
-      No source documents a cross with A. compressiceps or any other species, so no documented group
-      applies. The presumed group altolamprologus rests on the very recent split of the two species,
+      No independently verified source documents a cross with A. compressiceps, and the aquarium
+      account involving another species is unverified. The presumed group altolamprologus rests on
+      the very recent split of the two species,
       which leaves neither monophyletic (Koblmüller et al. 2017), and on hobby advice not to breed
       them together; their stable coexistence in the lake argues for a caution rather than a
-      warning.
+      warning. The curated group file defines altolamprologus-calvus-julidochromis-transcriptus as
+      documented from one unverified accidental aquarium breeding account repeated in later forum
+      posts.
     sources:
       - kind: catalog-of-fishes
         title: "Eschmeyer's Catalog of Fishes: species of Altolamprologus (online version updated 21 Sep.
@@ -1874,6 +1877,14 @@ features:
       - kind: archive
         title: cichlids.com forum thread 13809
         url: https://www.cichlids.com/disc/read.php?2,13809
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 15449
+        url: https://www.cichlids.com/disc/read.php?2,15449
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 4247
+        url: https://www.cichlids.com/disc/read.php?1,4247
         accessed: 2026-10-13
       - &hyb24
         kind: archive
@@ -1918,6 +1929,20 @@ features:
       - source: *hyb24
         value: altolamprologus
         note: "advises keeping only one Altolamprologus species when breeding to avoid hybrids"
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 15449
+          url: https://www.cichlids.com/disc/read.php?2,15449
+          accessed: 2026-10-13
+        value: [altolamprologus-calvus-julidochromis-transcriptus]
+        note: repeats the unverified accidental aquarium cross report
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 4247
+          url: https://www.cichlids.com/disc/read.php?1,4247
+          accessed: 2026-10-13
+        value: [altolamprologus-calvus-julidochromis-transcriptus]
+        note: repeats the unverified accidental aquarium cross report
     verification:
       method: unanimous
       votes:
