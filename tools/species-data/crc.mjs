@@ -154,12 +154,15 @@ async function fetchOnce() {
 // The page that the last browser call read, kept for the source archive.
 const lastSnapshot = {};
 
-async function archive() {
+// A page served from the cache is archived with its cached text when no snapshot exists.
+async function archive(cachedText) {
   if (command !== 'page') return;
   try {
     let found = await findSnapshot(arg);
     if (!found && lastSnapshot.html) {
       found = await storeSnapshot({ url: arg, finalUrl: lastSnapshot.finalUrl, contentType: 'text/html', body: lastSnapshot.html, text: lastSnapshot.text, tool: 'crc' });
+    } else if (!found && cachedText) {
+      found = await storeSnapshot({ url: arg, contentType: 'text/plain', body: cachedText, text: cachedText, tool: 'crc-cache' });
     }
     if (found) console.log(`ARCHIVED: ${found.ref}`);
   } catch (e) {
@@ -170,7 +173,7 @@ async function archive() {
 const cached = readCache(command, arg);
 if (cached !== null) {
   console.log(cached);
-  await archive();
+  await archive(cached);
 } else {
   // A rate limit lifts after a while; two retries with growing pauses cover short blocks.
   const pauses = [60000, 120000];
