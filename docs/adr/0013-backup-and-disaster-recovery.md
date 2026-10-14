@@ -30,17 +30,25 @@ The following principles hold:
 2. **Postgres: continuous archiving + point-in-time recovery (PITR).** Backups use the
    **CloudNativePG** operator's **object-store method (Barman Cloud plugin)**: WAL is archived
    continuously and base backups are written to S3-compatible object storage
-   ([ADR-0010](0010-gitops-and-infrastructure-as-code.md)). **Retention is tiered:** a **14-day
-   continuous PITR window** (restore to any point) **plus monthly archival snapshots retained 12
-   months**. (Volume snapshots may be added later only as a fast-restore accelerator; the
-   authoritative, immutable, off-provider copy stays the object-store one.) Plain periodic
-   `pg_dump` alone is **not** sufficient (no PITR, large RPO).
+   ([ADR-0010](0010-gitops-and-infrastructure-as-code.md)). Retention guarantees at least a
+   **14-day continuous PITR window** and **monthly backups retained for twelve months**.
+   The backup bucket's Compliance lock covers the longest retention period with margin.
+   Bucket expiration removes objects after this period; versioned storage also requires
+   noncurrent-version expiry. Locks take precedence over expiry. The plugin has no retention
+   deletion policy. Daily backups and WAL share the longest lock, which increases storage cost.
 
-3. **Off-provider copy (3-2-1).** At least one backup copy lives in storage **independent of
-   the primary database host and independent of the media-serving provider** (different
-   provider/region). Backups are **encrypted at rest** with a defined **retention** policy.
-   This aligns with the provider-portability stance in ADR-0009 and the risk of an unexplained
-   provider ban.
+   A dedicated object-storage key belongs to the primary project. A cross-project bucket
+   policy grants only the object writing, reading, listing and multipart operations required
+   by Barman. It grants no object deletion or bucket administration. Restores use the same
+   read-capable key. No backup-project key leaves the operator.
+
+3. **Off-provider copy (3-2-1) and confidentiality.** An independent copy lives outside the
+   primary database host's provider and the media-serving provider. Backup encryption uses a
+   mechanism supported by both the storage provider and the backup client. Customer-provided
+   encryption requires durable recovery-key custody. When the configured path has no compatible
+   encryption setup, access is restricted to a private bucket, the operator and the scoped
+   cluster writer key, with TLS transport. The backup procedure states the encryption capability
+   and verifies the independent copy explicitly.
 
 4. **Restores are tested on a dedicated restore-test environment.** A scheduled job regularly
    restores the **real (un-anonymized)** production backup into a **separate, strictly
@@ -49,14 +57,10 @@ The following principles hold:
    path that is not exercised is treated as broken. Real PII therefore exists there only
    transiently, minimized and locked down.
 
-5. **Non-production data per environment.** **Development** uses **synthetic, auto-generated**
-   data (never production data). **Staging** is periodically rebuilt from a production backup
-   with **only user PII anonymized**, **deny-by-default** (every column in the user/identity
-   scope is masked unless explicitly classified non-sensitive, so a newly added PII column is
-   masked automatically). Content entities (comments, tanks, ratings, media metadata) are
-   **preserved** for realism. Masking removes all real contact/identity data, so staging can
-   **never** trigger real-user side effects (e.g. accidental notification emails). The restore
-   *proof* lives in the restore-test environment (principle 4), not here.
+5. **Non-production data per environment.** Development, staging and previews use isolated
+   databases with empty initialization and synthetic seed data. They never restore production
+   data and receive no production backup credentials. Production restore validation belongs in
+   the dedicated operator-only restore-test environment from principle 4.
 
 6. **Replication for availability.** A **streaming standby replica** (managed declaratively by
    CloudNativePG) provides failover/HA. This is distinct from the read-scaling replicas deferred
@@ -76,9 +80,9 @@ The following principles hold:
 ## Considered Options
 
 - **Continuous archiving + PITR + tested restores + off-provider copy (chosen).**
-  - *Pro:* small RPO; restores are proven (via the staging refresh); resilient to a provider
+  - *Pro:* small RPO; restores are proven through the operator-only restore drill; resilient to a provider
     ban; covers DB, media, and configuration coherently.
-  - *Con:* a backup/restore and anonymization pipeline to build and operate; a standby adds
+  - *Con:* a backup/restore pipeline and synthetic data generation to operate; a standby adds
     cost when introduced.
 - **Provider-managed backups only.**
   - *Pro:* least effort to switch on.
@@ -102,24 +106,23 @@ The following principles hold:
 Database data loss is existential and historically the hardest operational problem, so the
 recovery path — not just the backup — must be engineered and continuously proven. Continuous
 WAL archiving keeps the recovery-point window small; a dedicated restore-test environment that
-regularly restores the **real** backup defeats the classic "backup that never restores" (the
-anonymized staging refresh is for realistic non-prod data, deliberately a separate concern); and
-keeping an encrypted copy off-provider matches the portability posture from ADR-0009 and the
-documented risk of unexplained account suspensions. Media and configuration are folded in so the
+regularly restores the **real** backup verifies recovery. Synthetic non-production data isolates
+application testing from production identities. Keeping an independent copy off-provider matches
+the portability posture from ADR-0009 and the documented risk of unexplained account suspensions. Media and configuration are folded in so the
 entire system can be reconstituted from a provider-independent baseline.
 
 ## Consequences
 
-- **Positive:** small, verified RPO; restores proven on a schedule; realistic, anonymized
+- **Positive:** small, verified RPO; restores proven on a schedule; isolated synthetic
   staging data; resilience to provider loss/ban; a clear full-rebuild procedure.
-- **Negative / Trade-offs:** a backup/restore pipeline, a PII-anonymization step, a synthetic
+- **Negative / Trade-offs:** a backup/restore pipeline, a synthetic
   data generator, **and** a separate restore-test environment to build and maintain; the
   restore-test environment holds real PII transiently (minimized, locked down, ephemeral); a
   standby replica adds cost when introduced; retention storage to pay for (cheap relative to the
   risk).
-- **Open items:** none of the backup/DR *decisions* remain open. The only schema-dependent detail
-  is the **exact PII column classification** for staging masking, which is pinned when the data
-  model is designed (the **deny-by-default** policy already governs it).
+- **Operational proof:** restore drills measure RPO and RTO, verify complete WAL history and
+  demonstrate the independent provider copy. Encryption setup and recovery-key custody are
+  explicit parts of the provider-specific backup procedure.
 
 ## References
 

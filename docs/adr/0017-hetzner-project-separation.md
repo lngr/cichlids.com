@@ -38,8 +38,13 @@ or act on resources in another:
 - **`cichlids-backup`** holds *only* the irreplaceable assets: the database point-in-time/WAL
   backups and an immutable backup copy of the media originals, on object storage with **Object
   Lock in Compliance mode**, plus this tier's own OpenTofu state. It has **no cloud token**; it is
-  reached only by an operator-held write-scoped object-storage credential that never enters CI,
-  and Compliance-mode immutability prevents deleting a backup object even with that credential.
+  administered by an operator-held object-storage credential that never leaves the operator.
+  The cluster writes and restores database backups with a dedicated key of the primary
+  `cichlids` project. A bucket policy grants that cross-project principal only Barman's required
+  object writing, reading, listing and multipart operations. Object deletion, bucket configuration
+  and bucket policy changes are excluded. No key of the backup project enters the cluster or CI.
+  Compliance-mode Object Lock covers the longest backup retention period with margin; bucket
+  expiry removes unlocked objects and their noncurrent versions after retention.
 
 The principle: only the **irreplaceable backups** need isolation. Each tier's OpenTofu state lives
 with its tier (the `cichlids` state in `cichlids`, the backup state in `cichlids-backup`), so a
@@ -47,10 +52,8 @@ credential reaches only its own project's state and the backup state stays out o
 state in `cichlids` is itself cattle (a loss is re-imported; the resources persist and the data is
 in the backups), so it does not warrant a project of its own.
 
-This refines the blast-radius intent of ADR-0014: the unachievable "token without delete rights"
-is replaced by confining the only irreplaceable asset to a project no automation token can reach,
-while ADR-0014's other layers remain in force (undeletable-by-construction in the OpenTofu path
-and assume-breach immutable backups).
+Project isolation bounds backup administration capabilities. ADR-0014 also requires
+undeletable resources in the OpenTofu path and immutable backups for recovery.
 
 ## Considered Options
 
@@ -70,7 +73,7 @@ and assume-breach immutable backups).
   immutable backups plus the backup state). Chosen.**
   - *Pro:* an enforceable capability boundary on the only thing that is irreplaceable; automation
     manages all live infrastructure declaratively; the backups sit where no automation token can
-    reach them; the fewest projects that still bound the catastrophic outcome.
+    administer or delete them; the fewest projects that still bound the catastrophic outcome.
   - *Con:* the backup project is bootstrapped out-of-band by the operator; backups require
     cross-project object-storage wiring.
 - **Separate cloud accounts/organizations** (as larger providers do with dedicated backup and
@@ -85,16 +88,17 @@ boundary it cannot legally cross.
 ## Rationale
 
 The catastrophic outcome becomes **bounded by construction**. The automation token
-simply cannot reach the irreplaceable data, regardless of what scripts run or how a
-token is misused, because that data lives in a project the token cannot see. Whatever
-happens to `cichlids`, recovery is always possible from the immutable backups.
+cannot administer or delete the irreplaceable backups because that capability belongs to the
+operator in a separate project. The primary-project writer key has only the cross-project
+backup object capabilities granted by the bucket policy. Whatever happens to `cichlids`, recovery is always possible from the immutable backups.
 This is a stronger guarantee than any permission-scoping the provider can offer, and it
 holds even against arbitrary raw-API calls rather than only the OpenTofu path.
 
 ## Consequences
 
 - **Positive:** a capability boundary on the only irreplaceable asset; automation manages all
-  live infrastructure declaratively; the backups are out of automation's reach and recoverable.
+  live infrastructure declaratively; backup administration and deletion are outside automation
+  capabilities; backups are recoverable.
 - **Negative / Trade-offs:** the backup project is bootstrapped out-of-band by the operator;
   backups require cross-project object-storage wiring.
 - **Residual exposures:**
