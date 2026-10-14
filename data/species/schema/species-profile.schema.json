@@ -152,6 +152,14 @@
         "accessed": {
           "type": "string",
           "format": "date"
+        },
+        "archived": {
+          "type": "string",
+          "description": "Snapshot path relative to the internal source archive root."
+        },
+        "offline": {
+          "type": "boolean",
+          "description": "True when the source URL does not answer."
         }
       }
     },

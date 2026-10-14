@@ -9,13 +9,15 @@
 //   xvfb-run -a node tools/species-data/crc.mjs page "<cichlidae.com URL>"
 //
 // search prints the matching species pages as "name -> URL"; page prints the readable text of a
-// page followed by its subpage links (pictures, map, bibliography, articles).
+// page followed by its subpage links (pictures, map, bibliography, articles) and keeps a snapshot
+// of the page in the source archive, whose reference it prints as "ARCHIVED: <ref>".
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmdirSync, statSync, writeFileSync } from 'node:fs';
 import { homedir, tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
+import { findSnapshot, storeSnapshot } from './source-archive.mjs';
 
 const BASE = 'https://cichlidae.com';
 const LOCK_DIR = join(tmpdir(), 'cichlids-crc.lock');
@@ -107,10 +109,13 @@ async function search(page, query, out) {
   if (seen.size === 0) out.push('No results.');
 }
 
-async function read(page, url, out) {
+async function read(page, url, out, snapshot) {
   if (!/^https:\/\/(www\.)?cichlidae\.com\//.test(url)) throw new Error('page only reads cichlidae.com URLs.');
   await page.goto(url, { waitUntil: 'domcontentloaded' });
   await passCheck(page);
+  snapshot.finalUrl = page.url();
+  snapshot.html = await page.content();
+  snapshot.text = await page.innerText('body');
   out.push(`URL: ${page.url()}`);
   out.push(`TITLE: ${await page.title()}\n`);
   out.push(await page.innerText('body'));
@@ -139,16 +144,33 @@ async function fetchOnce() {
     const page = await browser.newPage();
     const out = [];
     if (command === 'search') await search(page, arg, out);
-    else await read(page, arg, out);
+    else await read(page, arg, out, lastSnapshot);
     return out.join('\n');
   } finally {
     await browser.close();
   }
 }
 
+// The page that the last browser call read, kept for the source archive.
+const lastSnapshot = {};
+
+async function archive() {
+  if (command !== 'page') return;
+  try {
+    let found = await findSnapshot(arg);
+    if (!found && lastSnapshot.html) {
+      found = await storeSnapshot({ url: arg, finalUrl: lastSnapshot.finalUrl, contentType: 'text/html', body: lastSnapshot.html, text: lastSnapshot.text, tool: 'crc' });
+    }
+    if (found) console.log(`ARCHIVED: ${found.ref}`);
+  } catch (e) {
+    console.error(`crc: archive: ${e.message}`);
+  }
+}
+
 const cached = readCache(command, arg);
 if (cached !== null) {
   console.log(cached);
+  await archive();
 } else {
   // A rate limit lifts after a while; two retries with growing pauses cover short blocks.
   const pauses = [60000, 120000];
@@ -158,6 +180,7 @@ if (cached !== null) {
       mkdirSync(CACHE_DIR, { recursive: true });
       writeFileSync(cachePath(command, arg), text);
       console.log(text);
+      await archive();
       break;
     } catch (e) {
       if (e instanceof RateLimited && attempt < pauses.length) {

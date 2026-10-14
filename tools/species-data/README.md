@@ -5,8 +5,11 @@ Tooling around the species catalog in `data/species/`.
 ## Contents
 
 - `literature-search.mjs`: searches scientific literature through OpenAlex (with an API key from `OPENALEX_API_KEY` or `~/.config/cichlids/openalex.key`), Europe PMC and Crossref, throttled across processes, and prints year, title, DOI, open-access link and abstract, so research agents need no web search for literature. Each printed result is cached for 30 days in `data/species/work/.literature/search/<sha1 of query and limit>.txt`; a cached query prints the cached text without network access.
+- `source-archive.mjs`: stores internal source snapshots and shares text extraction, access checks and process-safe host throttling with the research fetchers.
+- `archive-fetch.mjs`: fetches and archives a public web page or document and prints its reference and readable text.
+- `archive-backfill.mjs`: archives unique source URLs from profiles and shared tables and inserts missing archive references without reformatting YAML.
 - `fetch-oa.mjs`: fetches the full text of open-access works by DOI into a local library (see Open-access full texts).
-- `crc.mjs`: reads the public part of the Cichlid Room Companion for the agents, which use it for verification only. The site blocks curl and headless browsers through a Cloudflare bot check, so the tool drives a headed Chromium on a virtual display.
+- `crc.mjs`: reads the public part of the Cichlid Room Companion for the agents and keeps each page read in the source archive. The site blocks curl and headless browsers through a Cloudflare bot check, so the tool drives a headed Chromium on a virtual display.
 - `export-legacy-catalog.mjs`: exports the legacy species catalog with photo counts to `data/species/legacy-catalog.json`. It reads the restored legacy MySQL database read-only through its running container and holds catalog data only.
 - `prompts/`: prompts of the agent pipeline (generator, checker, tie-breaker, adjudicator and the shared rules) that produce species profiles.
 - `validate.mjs`: validator for profile files. `validate.test.mjs` holds its tests.
@@ -40,6 +43,67 @@ xvfb-run -a node tools/species-data/crc.mjs page "https://cichlidae.com/species.
 
 `search` lists matching species, genus and article pages; `page` prints the readable text of one page and its subpage links. Every call starts its own browser, so parallel agents do not share state. All calls share a lock with a minimum interval of 15 seconds, retry twice after a rate limit (Cloudflare error 1015) and cache the printed text for 30 days in `data/species/work/.crc-cache/`.
 
+## Internal source archive
+
+```sh
+node tools/species-data/archive-fetch.mjs https://www.seriouslyfish.com/species/neolamprologus-leleupi/
+node tools/species-data/archive-fetch.mjs https://example.org/article --refresh
+node tools/species-data/archive-backfill.mjs --dry-run
+node tools/species-data/archive-backfill.mjs
+node tools/species-data/fetch-oa.mjs --migrate-library
+```
+
+The archive root is `/workspaces/cichlids-source-archive`; `CICHLIDS_SOURCE_ARCHIVE` overrides it.
+It lives outside the repository, stays internal and is never published. Tests use temporary roots.
+Every cited web page is fetched through `archive-fetch.mjs`, and scientific full texts through
+`fetch-oa.mjs`. Agents put the printed reference in the source entry's `archived` field. A source
+may carry `offline: true` when its URL does not answer. The validator rejects malformed references
+and warns about missing snapshot directories when the archive root exists.
+
+A snapshot has this layout:
+
+```text
+<host>/<sanitized path segments>/<YYYY-MM-DDTHHMMSSZ>/
+  original.html | original.pdf | original.xml | original.bin
+  text.txt
+  meta.json
+index.jsonl
+failures.jsonl
+```
+
+The host omits `www.`. Each path segment uses `[a-z0-9._-]` and at most 80 characters. The root
+path uses `_root`. A query adds `q-<first 8 hex characters of the query's SHA-256>` after the path.
+The timestamp is UTC. For example, a reference is
+`seriouslyfish.com/species/neolamprologus-leleupi/2026-10-14T093000Z`. References are relative to the
+archive root. Timestamp collisions advance the directory timestamp by one second; metadata retains
+the actual fetch time. Exact URL matching keeps distinct URLs separate even when sanitized paths match.
+
+The original body keeps its bytes. HTML extraction removes scripts, styles and tags and prefers
+the article or main content; PDF extraction uses `pdfjs-dist`, as does `fetch-oa.mjs`. XML gets
+readable text, including the structured TEI extraction for scientific documents. `meta.json`
+records `url`, `finalUrl`, `fetchedAt`, `httpStatus`, `contentType`, `sha256`, `bytes`, `tool` and
+`version`. `index.jsonl` has one line per snapshot with `ref`, `url`, `fetchedAt` and `httpStatus`.
+Copies on `web.archive.org` follow the same rules and retain that archive URL in metadata.
+
+Without `--refresh`, an existing snapshot of the exact URL is served with no network request.
+The CLI prints the reference, the absolute path of `text.txt` and the first 1500 text characters.
+Plain requests identify themselves as `cichlids.com-species-research/1.0`, have timeouts and follow
+redirects. Per-host locks in the system temporary directory keep request starts at least two
+seconds apart across processes, including redirect destinations and the plain full-text routes.
+The headed Chromium full-text route retains its browser identity and session throttle.
+
+Only publicly reachable content is eligible. No client impersonation, login, paywall or captcha
+bypass is permitted. HTTP errors from status 400, network and certificate failures, browser error
+pages, bot checks, login and paywall pages, and text shorter than 200 characters produce no
+snapshot. `failures.jsonl` records `url`, `time` and `reason`; the fetch CLI exits non-zero.
+
+Backfill reads `data/species/profiles/*.yaml`, `data/species/hybrid-groups.yaml` and
+`data/species/waterbodies.yaml`. It archives each URL once and reuses snapshots. `--dry-run` only
+lists unique URLs and changes no files. A successful source gets `archived: <ref>` after its URL
+scalar, with matching indentation; quoted continuations stay intact. Flow mappings get the field
+before their closing brace. Entries with `archived` stay untouched, and every other byte stays
+unchanged. Failed sources retain their YAML and the command reports them with a non-zero exit.
+
 ## Open-access full texts
 
 ```
@@ -47,15 +111,15 @@ xvfb-run -a node tools/species-data/fetch-oa.mjs 10.3390/fishes11020106
 xvfb-run -a node tools/species-data/fetch-oa.mjs https://doi.org/10.3390/fishes11020106
 ```
 
-The tool gives research agents the text of open-access works. It prints a metadata summary (title, DOI, year, license, open-access status, route, source), the path of the text file and the first 1500 characters.
+The tool gives research agents the text of open-access works. It prints an archive reference and a metadata summary (title, DOI, year, license, open-access status, route, source), the path of the text file and the first 1500 characters.
 
-Library: `data/species/work/.literature/` (ignored by git). Per work it holds `<key>.json` (metadata), the original as `<key>.xml`, `<key>.pdf` or `<key>.html`, and the plain text `<key>.txt`; the key is the lowercase DOI with every character outside `[a-z0-9._-]` replaced by `_`. A work with a text file is served from the library without network access, so each work is downloaded once.
+Library: `data/species/work/.literature/` (ignored by git). Per work it holds `<key>.json` (metadata), the original as `<key>.xml`, `<key>.pdf` or `<key>.html`, and the plain text `<key>.txt`; the key is the lowercase DOI with every character outside `[a-z0-9._-]` replaced by `_`. A work with a text file is served from the library without network access, so each work is downloaded once. Every full text also has an archive snapshot under `doi.org/<sanitized DOI>/<UTC timestamp>/`, with `archived` in its library JSON. The DOI uses the library key as one path segment, limited to 80 characters. `--migrate-library` copies library originals into the archive without network access, retains `fetchedAt` where metadata records it, writes archive references into the JSON files and prints those references. Repeated migration reuses snapshots. Error documents are rejected before any full text is stored or reported.
 
 Open-access condition: OpenAlex (API key as for literature-search) must report `open_access.is_oa` as true. The routes are tried in this order, and the metadata field `route` names the one that delivered the text:
 
 1. `openalex-tei`: the TEI XML copy hosted by OpenAlex (`has_content.grobid_xml`); the text holds title, abstract, section heads and paragraphs of the body.
 2. `openalex-pdf`: the PDF copy hosted by OpenAlex (`has_content.pdf`), read with `pdfjs-dist`.
-3. `publisher-fetch`: the open-access addresses of the work (best location first, then the other open-access locations; PDF address before landing page) with a plain request and a browser user agent.
+3. `publisher-fetch`: the open-access addresses of the work (best location first, then the other open-access locations; PDF address before landing page) with a plain request and the honest research user agent.
 4. `publisher-browser`: the same address in a headed Chromium on a virtual display when the plain request is blocked (HTTP 403, 429 or 503, a bot challenge page, or an HTML page where a PDF is expected). Browser sessions of all processes share a lock and keep 10 seconds between them.
 
 Each OpenAlex content download costs $0.01 of the free daily budget of the API key (about 100 downloads per day). On HTTP 429 or an "Insufficient budget" answer the tool prints a message and continues with the publisher routes. Without an API key the OpenAlex routes are skipped.

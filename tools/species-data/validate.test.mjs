@@ -3,7 +3,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -769,4 +769,46 @@ test("a broken hybrid group file fails validateFiles", () => {
   } finally {
     rmSync(dir, { recursive: true });
   }
+});
+
+test('Sources accept archived references and offline flags; malformed references fail', () => {
+  const p = makeProfile();
+  p.taxonomy.source = { ...SOURCE, archived: 'fishbase.se/a/2026-10-14T093000Z', offline: true };
+  assert.equal(validateProfile(p, { archiveRoot: '/nonexistent-cichlids-test-root' }).length, 0);
+  for (const archived of ['../bad', 'fishbase.se/a/2026-99-99T000000Z', '/fishbase.se/a/2026-10-14T093000Z']) {
+    p.taxonomy.source.archived = archived;
+    assert.ok(validateProfile(p).some(i => i.level === 'error' && i.pointer.includes('archived')), archived);
+  }
+});
+test('Missing archive snapshots warn only when the archive root exists', () => {
+  const root = mkdtempSync(join(tmpdir(), 'cichlids-validation-archive-'));
+  try {
+    const p = makeProfile();
+    p.taxonomy.source = { ...SOURCE, archived: 'fishbase.se/a/2026-10-14T093000Z' };
+    assert.ok(validateProfile(p, { archiveRoot: root }).some(i => i.level === 'warning' && i.pointer === '/taxonomy/source/archived'));
+    assert.equal(validateProfile(p, { archiveRoot: join(root, 'absent') }).length, 0);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('An existing snapshot directory satisfies reference validation', () => {
+  const root = mkdtempSync(join(tmpdir(), 'cichlids-validation-archive-'));
+  try {
+    const p = makeProfile();
+    p.taxonomy.source = { ...SOURCE, archived: 'fishbase.se/a/2026-10-14T093000Z', offline: false };
+    mkdirSync(join(root, p.taxonomy.source.archived), { recursive: true });
+    assert.equal(validateProfile(p, { archiveRoot: root }).length, 0);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('The file validator checks archive references in shared waterbody and hybrid-group sources', () => {
+  const root = mkdtempSync(join(tmpdir(), 'cichlids-validation-tables-'));
+  try {
+    const waterbodiesPath = join(root, 'waterbodies.yaml');
+    const hybridGroupsPath = join(root, 'hybrid-groups.yaml');
+    writeFileSync(waterbodiesPath, 'waterbodies:\n  - sources:\n      - kind: literature\n        title: Lake measurements\n        archived: ../invalid\n');
+    writeFileSync(hybridGroupsPath, 'groups:\n  - id: group\n    description: Crosses\n    members: [A, B]\n    basis: documented\n    userNote: Observed crosses.\n    sources:\n      - kind: literature\n        title: Crosses\n        archived: example.org/crosses/2026-10-14T093000Z\n');
+    const issues = validateFiles([], { waterbodiesPath, hybridGroupsPath, archiveRoot: root });
+    assert.ok(issues.some(i => i.level === 'error' && i.pointer === '/waterbodies/0/sources/0/archived'));
+    assert.ok(issues.some(i => i.level === 'warning' && i.pointer === '/groups/0/sources/0/archived'));
+  } finally { rmSync(root, { recursive: true, force: true }); }
 });

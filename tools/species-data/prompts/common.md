@@ -14,10 +14,12 @@ when evidence is thin, say so through the confidence and the rationale.
 
 ## Research tools
 
-Web research is mandatory. WebSearch and WebFetch are deferred tools: load them first with
-ToolSearch (query `select:WebSearch,WebFetch`). `curl -sL <url>` through Bash works as well and
-often gets through where WebFetch is blocked. Fetch and read the pages you cite; a source you did
-not read is not a source.
+Web research is mandatory. Use WebSearch for discovery. Fetch every web page you read with
+`node tools/species-data/archive-fetch.mjs <url>` and read the printed text file. The tool prints
+an archive reference, the text path and a preview. Cite that reference as `archived: <ref>` in
+its source entry, including evidence entries. Do not use curl, WebFetch or other tools to fetch
+content you cite. A source you do not read is not a source. The archive stays internal and is
+never published. Copies on web.archive.org can be fetched with the same command.
 
 Literature search: `node tools/species-data/literature-search.mjs "<query>" [limit]` searches
 OpenAlex (with an API key), Europe PMC and Crossref and prints year, title, DOI, an open-access
@@ -28,13 +30,16 @@ and direct page fetches cannot find.
 Full texts of scientific works: `xvfb-run -a node tools/species-data/fetch-oa.mjs <doi>` returns the
 text of an open-access work. It looks in the local library first, then takes the copy that
 OpenAlex hosts and only then the publisher page. It refuses works that are not open access. Read
-the text file it names; the shared library `data/species/work/.literature/` is open to every role. Every download costs budget, so fetch only works you will cite.
+the text file it names; the shared library `data/species/work/.literature/` is open to every role.
+Cite the printed archive reference as `archived: <ref>` alongside `https://doi.org/<doi>` in every
+source entry for the work. OpenAlex content downloads cost budget, so fetch only works you will cite.
 
-Access rules: logins, paywalls and captchas are never bypassed. A bot check in front of a work
-that is free to read is passed only through `fetch-oa.mjs` (and the Cichlid Room Companion through
-`crc.mjs`); do not drive browsers yourself and do not set browser user agents or other client
-headers (for example `curl -A`). When a page stays blocked, use
-another source and say in the rationale what you could not read.
+Access rules: fetch only publicly reachable content. Never fake a browser user agent or bypass
+logins, paywalls or captchas. `archive-fetch.mjs` uses the honest research user agent and rejects
+access barriers and error pages. The headed Chromium route of `fetch-oa.mjs` uses its configured
+browser identity; do not drive browsers yourself or alter client headers. When a page stays
+blocked, use another source and say in the rationale what you cannot read. When a cited URL does
+not answer, retain its archive reference and mark the source `offline: true`.
 
 Minimum research per species:
 
@@ -47,20 +52,21 @@ Minimum research per species:
 
 ## Cichlid Room Companion
 
-The Cichlid Room Companion (cichlidae.com) serves for verification only: it confirms or questions
-values found in other sources, it is never the origin of a value and never a template for text.
-Copy nothing from it, neither sentences nor structure. Its detailed profiles are for subscribers;
+The Cichlid Room Companion (cichlidae.com) is a curated database of high trust: the facts on its
+public pages are evidence like those of FishBase or Seriously Fish. It is never a template for
+text. Copy nothing from it, neither sentences nor structure. Its detailed profiles are for subscribers;
 the public part of a species page holds the classification, the summary lines for morphology,
 habitat, feeding, breeding and aquarium level, a short abstract, the original description and
 the subspecies. Use it to check the valid name, the feeding type, the breeding mode and the
 habitat. When it contradicts a value, say so in the rationale and weigh the evidence.
 
-The site blocks curl and WebFetch. Read it with the project tool:
+The site blocks plain requests. Read it with the project tool:
 `xvfb-run -a node tools/species-data/crc.mjs search "<scientific name>"` lists matching pages,
-`xvfb-run -a node tools/species-data/crc.mjs page "<url>"` prints the readable text of one page.
-The site often uses older genus names (for example Metriaclima), so search by the species epithet
+`xvfb-run -a node tools/species-data/crc.mjs page "<url>"` prints the readable text of one page and
+its archive reference (`ARCHIVED: <ref>`), which you cite as `archived` in the source entry. The
+site often uses older genus names (for example Metriaclima), so search by the species epithet
 alone. All agents share one throttled connection and a cache, so a call can take a minute; one
-search and one page per species are enough.
+search and one page per species are enough. Member content is not accessible and is not used.
 
 `model-knowledge` as the only source of a value is allowed only with confidence `low`.
 
@@ -68,10 +74,10 @@ search and one page per species are enough.
 
 - The authority for valid names and synonyms is the Catalog of Fishes of the California Academy of
   Sciences (Eschmeyer's Catalog of Fishes). Its species list for a genus is plain HTML:
-  `curl -sL "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=<Genus>" | sed 's/<[^>]*>//g'`.
+  `node tools/species-data/archive-fetch.mjs "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=<Genus>"`.
   Every entry ends with "Current status: Valid as ..." or "Current status: Synonym of ...". Query
   the legacy genus as well as the current one, record the URL and the access date as the taxonomy
-  source.
+  source with the printed `archived` reference.
 - The legacy catalog name may be outdated (for example Cichlasoma octofasciatum is Rocio
   octofasciata). Use the valid name for `id`, `taxonomy.validName`, `taxonomy.genus` and
   `taxonomy.species`; list outdated names under `taxonomy.synonyms` and the legacy spelling under

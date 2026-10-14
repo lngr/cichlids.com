@@ -9,13 +9,14 @@
 //
 // Issues have the shape { level: "error" | "warning", file, pointer, message }. Errors fail the
 // run (exit code 1), warnings are reported only.
-import { readFileSync, readdirSync, existsSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { basename, dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 import { parse } from "yaml";
 import { findWaterbody, loadWaterbodies } from "./waterbodies.mjs";
+import { archiveRoot, validArchiveRef } from "./source-archive.mjs";
 import { loadSourceTrust, trustOf } from "./source-trust.mjs";
 
 const SOURCE_TRUST = loadSourceTrust();
@@ -340,6 +341,24 @@ function groupMembershipIssues(validName, groups, hybridGroups, file) {
   return issues;
 }
 
+/** Checks local snapshot references in source entries, including evidence and taxonomy. */
+export function snapshotSourceIssues(node, file, root = archiveRoot(), pointer = "") {
+  const issues = [];
+  if (Array.isArray(node)) {
+    node.forEach((value, i) => issues.push(...snapshotSourceIssues(value, file, root, `${pointer}/${i}`)));
+  } else if (isObject(node)) {
+    if ("kind" in node && "archived" in node) {
+      const at = `${pointer}/archived`;
+      if (!validArchiveRef(node.archived)) issues.push(error(at, "invalid source archive reference", file));
+      else if (existsSync(root) && (!existsSync(join(root, node.archived)) || !statSync(join(root, node.archived)).isDirectory())) {
+        issues.push(warning(at, `source archive snapshot not found: ${node.archived}`, file));
+      }
+    }
+    for (const [key, value] of Object.entries(node)) issues.push(...snapshotSourceIssues(value, file, root, `${pointer}/${key.replace(/~/g, "~0").replace(/\//g, "~1")}`));
+  }
+  return issues;
+}
+
 /**
  * Validates one profile object. With options.final, the final-profile checks run as well.
  * Options: final (boolean), fileName (base name, checked against the id), hybridGroupIds (Set),
@@ -349,6 +368,7 @@ function groupMembershipIssues(validName, groups, hybridGroups, file) {
 export function validateProfile(profile, options = {}) {
   const file = options.file;
   const issues = schemaIssues(profile, file);
+  issues.push(...snapshotSourceIssues(profile, file, options.archiveRoot));
   if (options.final && isObject(profile)) {
     issues.push(...semanticIssues(profile, options, file));
   }
@@ -449,7 +469,7 @@ function isFinalProfilePath(path) {
  */
 export function validateFiles(
   paths,
-  { hybridGroupIds, hybridGroups, hybridGroupsPath = HYBRID_GROUPS_PATH, waterbodiesPath = WATERBODIES_PATH, waterbodies } = {},
+  { hybridGroupIds, hybridGroups, hybridGroupsPath = HYBRID_GROUPS_PATH, waterbodiesPath = WATERBODIES_PATH, waterbodies, archiveRoot: sourceRoot = archiveRoot() } = {},
 ) {
   const issues = [];
   if (existsSync(hybridGroupsPath)) {
@@ -457,10 +477,19 @@ export function validateFiles(
     try {
       const doc = parse(readFileSync(hybridGroupsPath, "utf8"));
       issues.push(...hybridGroupIssues(doc, groupsFile));
+      issues.push(...snapshotSourceIssues(doc, groupsFile, sourceRoot));
       hybridGroupIds ??= new Set((Array.isArray(doc?.groups) ? doc.groups : []).map((g) => g?.id));
       hybridGroups ??= Array.isArray(doc?.groups) ? doc.groups : undefined;
     } catch (e) {
       issues.push(error("", `cannot read or parse YAML: ${e.message}`, groupsFile));
+    }
+  }
+  if (existsSync(waterbodiesPath)) {
+    const tableFile = relative(process.cwd(), waterbodiesPath) || waterbodiesPath;
+    try {
+      issues.push(...snapshotSourceIssues(parse(readFileSync(waterbodiesPath, "utf8")), tableFile, sourceRoot));
+    } catch (e) {
+      issues.push(error("", `cannot read or parse YAML: ${e.message}`, tableFile));
     }
   }
   hybridGroupIds ??= new Set();
@@ -490,8 +519,8 @@ export function validateFiles(
       issues.push(warning("", "waterbody table not found, waterbody rule skipped", tableFile));
     }
   }
-  issues.push(...validateProfiles(finals, { final: true, hybridGroupIds, hybridGroups, waterbodies }));
-  issues.push(...validateProfiles(others, { final: false, hybridGroupIds, waterbodies }));
+  issues.push(...validateProfiles(finals, { final: true, hybridGroupIds, hybridGroups, waterbodies, archiveRoot: sourceRoot }));
+  issues.push(...validateProfiles(others, { final: false, hybridGroupIds, waterbodies, archiveRoot: sourceRoot }));
   return issues;
 }
 

@@ -17,24 +17,23 @@
 //
 // Exit codes: 0 text available, 1 failure, 2 usage, 3 work is not open access, 4 blocked by login
 // or paywall.
+import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmdirSync, statSync, writeFileSync } from 'node:fs';
 import { homedir, tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
-const LIBRARY_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'data', 'species', 'work', '.literature');
+import { BLOCK_PAGE_MARKERS, teiToText, looksBlocked, looksLikeLoginOrPaywall, extractHtmlText, pdfText } from './source-content.mjs';
+export { teiToText, looksBlocked, looksLikeLoginOrPaywall, extractHtmlText } from './source-content.mjs';
+import { USER_AGENT, publicFetch, storeSnapshot, findSnapshot, contentIssue, recordFailure } from './source-archive.mjs';
+
+export const LIBRARY_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'data', 'species', 'work', '.literature');
 const LOCK_DIR = join(tmpdir(), 'cichlids-oa.lock');
 const LAST_CALL_FILE = join(tmpdir(), 'cichlids-oa.last');
 const MIN_INTERVAL_MS = 10000;
 const STALE_LOCK_MS = 180000;
-const USER_AGENT =
-  'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
 const MIN_TEXT_LENGTH = 500;
 const PREVIEW_LENGTH = 1500;
-const LOGIN_HOSTS = [
-  'login.', 'signin.', 'sso.', 'auth.', 'accounts.google.com', 'idp.', 'shibboleth', 'wayf.',
-  'login.microsoftonline.com', 'secure.jbs.elsevierhealth.com',
-];
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Reduces a bare DOI or a doi.org URL to the lowercase DOI.
@@ -83,28 +82,6 @@ export function pickOpenAlexContent(work) {
   return routes;
 }
 
-// Plain text of a TEI document: title, abstract, then section heads and paragraphs of the body.
-export function teiToText(xml) {
-  const x = String(xml ?? '');
-  const strip = (frag) =>
-    decodeEntities(frag.replace(/<[^>]+>/g, ' '))
-      .replace(/\s+/g, ' ')
-      .replace(/ ([.,;:)\]])/g, '$1')
-      .replace(/([(\[]) /g, '$1')
-      .trim();
-  const out = [];
-  const title = x.match(/<titleStmt>[\s\S]*?<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1];
-  if (title) out.push(strip(title));
-  const abstract = x.match(/<abstract\b[^>]*>([\s\S]*?)<\/abstract>/i)?.[1];
-  if (abstract) out.push('Abstract', ...[...abstract.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)].map((m) => strip(m[1])));
-  const body = x.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1] ?? '';
-  for (const m of body.matchAll(/<head\b[^>]*>([\s\S]*?)<\/head>|<p\b[^>]*>([\s\S]*?)<\/p>/gi)) {
-    if (m[1] !== undefined) out.push(`## ${strip(m[1])}`);
-    else out.push(strip(m[2]));
-  }
-  return out.filter(Boolean).join('\n\n');
-}
-
 // Decides from an OpenAlex work whether a download may start. Returns the exit code and message of
 // a refusal, or the metadata and candidate addresses.
 export function assessOpenAlexWork(work, doi) {
@@ -127,90 +104,6 @@ export function assessOpenAlexWork(work, doi) {
       oaStatus: work.open_access.oa_status ?? null,
     },
   };
-}
-
-const BLOCK_PAGE_MARKERS = [
-  /just a moment/i,
-  /cf-chl|cf-browser-verification|challenge-platform/i,
-  /attention required/i,
-  /verify (that )?you are (a )?human/i,
-  /enable javascript and cookies to continue/i,
-  /checking your browser/i,
-  /unusual traffic/i,
-  /pardon our interruption/i,
-  /making sure you.re not a bot/i,
-  /anubis/i,
-];
-
-// True when a response is a refusal for plain clients: a status of 403, 429 or 503, a bot challenge
-// page, or an HTML page where a PDF is expected (expectPdf).
-export function looksBlocked(status, contentType, text, { expectPdf = false } = {}) {
-  if ([403, 429, 503].includes(status)) return true;
-  const isHtml = /html/i.test(contentType ?? '');
-  if (expectPdf && !/pdf|octet-stream/i.test(contentType ?? '')) return true;
-  if (isHtml) {
-    const head = String(text ?? '').slice(0, 4000);
-    return BLOCK_PAGE_MARKERS.some((re) => re.test(head));
-  }
-  return false;
-}
-
-const LOGIN_MARKERS =
-  /\b(sign in|log in|login|purchase|buy (this )?(article|pdf|chapter)|subscribe|subscription (required|needed)|access denied|captcha|institutional (access|login)|rent this article|get access)\b/i;
-
-// True when a page asks for a login, a subscription, a purchase or a captcha: a marker in the title,
-// a marker in the first part of a short page (a full article that mentions "log in" somewhere is not
-// a login page) or an address on a login host.
-export function looksLikeLoginOrPaywall(title, text, url) {
-  if (LOGIN_MARKERS.test(String(title ?? ''))) return true;
-  const body = String(text ?? '');
-  if (body.length < 2500 && LOGIN_MARKERS.test(body.slice(0, 1000))) return true;
-  try {
-    const u = new URL(url);
-    const probe = `${u.hostname}${u.pathname}`.toLowerCase();
-    if (LOGIN_HOSTS.some((h) => probe.includes(h))) return true;
-    if (/\/(login|signin|sign-in|log-in)(\/|$)/.test(u.pathname.toLowerCase())) return true;
-  } catch {}
-  return false;
-}
-
-const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', ndash: '-', mdash: '-' };
-
-function decodeEntities(s) {
-  return s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => {
-    if (e[0] === '#') {
-      const code = e[1].toLowerCase() === 'x' ? Number.parseInt(e.slice(2), 16) : Number.parseInt(e.slice(1), 10);
-      return Number.isFinite(code) && code > 0 && code < 0x110000 ? String.fromCodePoint(code) : m;
-    }
-    return ENTITIES[e.toLowerCase()] ?? m;
-  });
-}
-
-// Readable body text of an HTML page: scripts, styles, navigation, headers, footers and asides are
-// dropped; the article or main element is preferred over the whole body.
-export function extractHtmlText(html) {
-  let h = String(html ?? '');
-  const title = decodeEntities((h.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? '').replace(/\s+/g, ' ').trim());
-  h = h.replace(/<!--[\s\S]*?-->/g, ' ');
-  for (const tag of ['script', 'style', 'noscript', 'svg', 'nav', 'header', 'footer', 'aside', 'form', 'button']) {
-    h = h.replace(new RegExp(`<${tag}\\b[\\s\\S]*?<\\/${tag}>`, 'gi'), ' ');
-  }
-  const region = h.match(/<article\b[\s\S]*<\/article>/i) ?? h.match(/<main\b[\s\S]*<\/main>/i) ?? h.match(/<body\b[\s\S]*/i);
-  h = region ? region[0] : h;
-  h = h
-    .replace(/<\s*br\s*\/?>/gi, '\n')
-    .replace(/<\/(p|div|section|article|li|ul|ol|h[1-6]|tr|table|blockquote|figure|figcaption|pre)>/gi, '\n')
-    .replace(/<(p|div|section|article|li|h[1-6]|tr|blockquote|figure|pre)\b[^>]*>/gi, '\n')
-    .replace(/<\/(td|th)>/gi, '\t')
-    .replace(/<[^>]+>/g, '');
-  const text = decodeEntities(h)
-    .replace(/[ \t\f\v]+/g, ' ')
-    .split('\n')
-    .map((l) => l.trim())
-    .filter((l, i, a) => l || (i > 0 && a[i - 1]))
-    .join('\n')
-    .trim();
-  return { title, text };
 }
 
 // Waits for the shared lock and the minimum interval between browser sessions of all processes.
@@ -260,7 +153,7 @@ async function fetchOpenAlexWork(doi) {
   if (key) url.searchParams.set('api_key', key);
   const pauses = [10000, 30000];
   for (let attempt = 0; ; attempt++) {
-    const res = await fetch(url, { signal: AbortSignal.timeout(30000) });
+    const res = await publicFetch(url.href, { timeoutMs: 30000 });
     if (res.status === 429 && attempt < pauses.length) {
       await sleep(pauses[attempt]);
       continue;
@@ -273,15 +166,15 @@ async function fetchOpenAlexWork(doi) {
 
 const isPdfBuffer = (buf) => buf.length > 4 && buf.subarray(0, 5).toString('latin1') === '%PDF-';
 
-// Plain request with a browser user agent. Returns the status, content type and body.
+// Plain request with the research user agent. Returns the status, content type and body.
 async function plainFetch(url) {
-  const res = await fetch(url, {
+  const res = await publicFetch(url, {
     headers: { 'user-agent': USER_AGENT, accept: 'application/pdf,text/html;q=0.9,*/*;q=0.8', 'accept-language': 'en' },
     redirect: 'follow',
     signal: AbortSignal.timeout(60000),
   });
   const buffer = Buffer.from(await res.arrayBuffer());
-  return { status: res.status, contentType: res.headers.get('content-type') ?? '', buffer, finalUrl: res.url };
+  return { status: res.status, contentType: res.headers.get('content-type') ?? '', buffer, finalUrl: res.url || url };
 }
 
 // Loads the address in a headed Chromium. A PDF answer is captured from the response (or the
@@ -295,7 +188,7 @@ async function browserFetch(url, kind) {
       args: ['--disable-blink-features=AutomationControlled'],
     });
     try {
-      const context = await browser.newContext({ userAgent: USER_AGENT, acceptDownloads: true });
+      const context = await browser.newContext({ acceptDownloads: true });
       const page = await context.newPage();
       let pdf = null;
       page.on('response', async (res) => {
@@ -315,7 +208,8 @@ async function browserFetch(url, kind) {
           }
         } catch {}
       });
-      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
+      const navigation = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => null);
+      const httpStatus = navigation?.status() ?? 200;
       const deadline = Date.now() + 45000;
       while (Date.now() < deadline) {
         if (pdf) return { pdf, finalUrl: page.url() };
@@ -327,6 +221,7 @@ async function browserFetch(url, kind) {
       }
       if (pdf) return { pdf, finalUrl: page.url() };
       return {
+        httpStatus,
         html: await page.content(),
         title: await page.title().catch(() => ''),
         finalUrl: page.url(),
@@ -337,32 +232,6 @@ async function browserFetch(url, kind) {
   });
 }
 
-// Returns an empty text for a broken PDF, so that the caller moves on to the next route.
-async function pdfText(buffer) {
-  const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
-  const task = pdfjs.getDocument({ data: new Uint8Array(buffer), verbosity: 0, useSystemFonts: true });
-  let doc;
-  try {
-    doc = await task.promise;
-  } catch (e) {
-    console.error(`fetch-oa: unreadable PDF (${e.name}), trying the next route`);
-    return '';
-  }
-  const pages = [];
-  for (let n = 1; n <= doc.numPages; n++) {
-    const content = await (await doc.getPage(n)).getTextContent();
-    let line = '';
-    for (const item of content.items) {
-      line += item.str;
-      if (item.hasEOL) line += '\n';
-      else if (item.str && !line.endsWith(' ')) line += ' ';
-    }
-    pages.push(line.replace(/[ \t]+\n/g, '\n').replace(/[ \t]{2,}/g, ' ').trim());
-  }
-  await task.destroy?.();
-  return pages.join('\n\n');
-}
-
 // Downloads one OpenAlex-hosted copy. Returns {format, data, text} or null after printing why the
 // route is skipped (budget used up, rate limit, missing content). The API key is never printed.
 async function openAlexContent({ route, format, url }) {
@@ -371,7 +240,7 @@ async function openAlexContent({ route, format, url }) {
   if (key) target.searchParams.set('api_key', key);
   let res;
   try {
-    res = await fetch(target, { signal: AbortSignal.timeout(120000) });
+    res = await publicFetch(target.href, { timeoutMs: 120000 });
   } catch (e) {
     console.error(`fetch-oa: ${route}: request failed (${e.name})`);
     return null;
@@ -389,11 +258,11 @@ async function openAlexContent({ route, format, url }) {
   if (format === 'pdf') {
     if (!isPdfBuffer(buffer)) return null;
     const text = await pdfText(buffer);
-    return text.trim().length >= MIN_TEXT_LENGTH ? { format, data: buffer, text, route } : null;
+    return text.trim().length >= MIN_TEXT_LENGTH ? { format, data: buffer, text, route, url: (res.url || url).replace(/[?&]api_key=[^&]*/, '') } : null;
   }
   const xml = buffer.toString('utf8');
   const text = teiToText(xml);
-  return text.length >= MIN_TEXT_LENGTH ? { format, data: xml, text, route } : null;
+  return text.length >= MIN_TEXT_LENGTH ? { format, data: buffer, text, route, url: (res.url || url).replace(/[?&]api_key=[^&]*/, '') } : null;
 }
 
 class Refusal extends Error {
@@ -415,17 +284,17 @@ async function tryCandidate({ url, kind }) {
   }
   if (fetched) {
     const asText = /html|text/i.test(fetched.contentType) ? fetched.buffer.toString('utf8') : '';
-    if (isPdfBuffer(fetched.buffer)) {
-      answer = { format: 'pdf', data: fetched.buffer, url: fetched.finalUrl, via: 'fetch' };
+    if (fetched.status < 400 && isPdfBuffer(fetched.buffer)) {
+      answer = { format: 'pdf', data: fetched.buffer, url: fetched.finalUrl, contentType: fetched.contentType, httpStatus: fetched.status, via: 'fetch' };
     } else if (!looksBlocked(fetched.status, fetched.contentType, asText, { expectPdf: kind === 'pdf' }) && fetched.status < 400) {
-      answer = { format: 'html', data: asText, url: fetched.finalUrl, via: 'fetch' };
+      answer = { format: 'html', data: fetched.buffer, url: fetched.finalUrl, contentType: fetched.contentType, httpStatus: fetched.status, via: 'fetch' };
     }
   }
   if (!answer) {
     console.error('fetch-oa: plain request blocked, retrying in a browser');
     const b = await browserFetch(url, kind);
     if (b.pdf) answer = { format: 'pdf', data: b.pdf, url: b.finalUrl, via: 'browser' };
-    else answer = { format: 'html', data: b.html, url: b.finalUrl, via: 'browser' };
+    else answer = { format: 'html', data: b.html, url: b.finalUrl, httpStatus: b.httpStatus, via: 'browser' };
   }
   if (answer.format === 'pdf') {
     const text = await pdfText(answer.data);
@@ -433,12 +302,14 @@ async function tryCandidate({ url, kind }) {
   }
   const { title, text } = extractHtmlText(answer.data);
   if (looksLikeLoginOrPaywall(title, text, answer.url)) throw new Refusal(4, 'blocked by login or paywall: not fetched');
-  if (looksBlocked(200, 'text/html', answer.data)) return null;
+  const reason = contentIssue({ url, finalUrl: answer.url, httpStatus: answer.httpStatus ?? 200, contentType: 'text/html', body: answer.data, text });
+  if (reason) { recordFailure(url, reason); return null; }
   return text.length >= MIN_TEXT_LENGTH ? { ...answer, text } : null;
 }
 
 function summary(meta) {
   return [
+    `archived: ${meta.archived}`,
     `title: ${meta.title}`,
     `doi: ${meta.doi}`,
     `year: ${meta.year ?? 'unknown'}`,
@@ -456,7 +327,65 @@ function report(meta, txtPath) {
   console.log(`\n${text.slice(0, PREVIEW_LENGTH)}${text.length > PREVIEW_LENGTH ? '\n[...]' : ''}`);
 }
 
-export async function main(argv) {
+// DOI references stay independent of publisher and download route.
+export async function archiveFullText(got, meta, options = {}) {
+  const url = `https://doi.org/${normaliseDoi(meta.doi)}`;
+  const contentType = got.contentType || ({ pdf: 'application/pdf', xml: 'application/xml', html: 'text/html' }[got.format] ?? 'application/octet-stream');
+  const input = { url, finalUrl: got.url ?? meta.url ?? url, contentType, body: got.data, text: got.text, httpStatus: got.httpStatus ?? 200, fetchedAt: meta.fetchedAt, tool: 'fetch-oa', version: '1.0' };
+  const reason = contentIssue(input);
+  if (reason) { recordFailure(url, reason, options); throw new Error(reason); }
+  const archiveOptions = { ...options, pathSegments: [cacheKey(meta.doi)] };
+  const cached = await findSnapshot(url, archiveOptions);
+  const sha256 = createHash('sha256').update(got.data).digest('hex');
+  return cached?.meta.sha256 === sha256 ? cached : storeSnapshot(input, archiveOptions);
+}
+
+async function archiveLibraryEntry(base, meta, options) {
+  const format = ['xml', 'pdf', 'html'].find(ext => existsSync(`${base}.${ext}`));
+  if (!format) throw new Error('Library entry has no original full text');
+  const got = { format, data: readFileSync(`${base}.${format}`), text: readFileSync(`${base}.txt`, 'utf8'), url: meta.url };
+  const snapshot = await archiveFullText(got, meta, options);
+  const updated = { ...meta, archived: snapshot.ref };
+  writeFileSync(`${base}.json`, `${JSON.stringify(updated, null, 2)}\n`);
+  return updated;
+}
+
+export async function migrateLibrary({ libraryDir = LIBRARY_DIR, ...options } = {}) {
+  const snapshots = [];
+  const failures = [];
+  if (!existsSync(libraryDir)) return { snapshots, failures };
+  for (const file of readdirSync(libraryDir).filter(f => /\.(xml|pdf|html)$/.test(f))) {
+    const base = join(libraryDir, file.replace(/\.(xml|pdf|html)$/, ''));
+    if (snapshots.some(s => s.base === base) || failures.some(f => f.base === base)) continue;
+    try {
+      const meta = existsSync(`${base}.json`) ? JSON.parse(readFileSync(`${base}.json`, 'utf8')) : {};
+      meta.doi ??= file.replace(/\.(xml|pdf|html)$/, '').replace(/^(10\.\d{4,9})_/, '$1/');
+      if (!/^10\.\d{4,9}\/\S+$/.test(meta.doi)) throw new Error('Library entry lacks a valid DOI');
+      // Extraction from the original also supports entries without a text sidecar.
+      if (!existsSync(`${base}.txt`)) {
+        const format = file.split('.').at(-1);
+        const data = readFileSync(join(libraryDir, file));
+        const text = format === 'pdf' ? await pdfText(data) : format === 'xml' ? teiToText(data.toString('utf8')) : extractHtmlText(data.toString('utf8')).text;
+        const snapshot = await archiveFullText({ format, data, text }, meta, options);
+        const updated = { ...meta, archived: snapshot.ref };
+        writeFileSync(`${base}.json`, `${JSON.stringify(updated, null, 2)}\n`);
+        snapshots.push({ base, ref: snapshot.ref });
+      } else {
+        const updated = await archiveLibraryEntry(base, meta, options);
+        snapshots.push({ base, ref: updated.archived });
+      }
+    } catch (e) { failures.push({ base, reason: e.message }); }
+  }
+  return { snapshots, failures };
+}
+
+export async function main(argv, { libraryDir = LIBRARY_DIR, ...archiveOptions } = {}) {
+  if (argv[0] === '--migrate-library' && argv.length === 1) {
+    const result = await migrateLibrary({ libraryDir, ...archiveOptions });
+    for (const snapshot of result.snapshots) console.log(snapshot.ref);
+    for (const failure of result.failures) console.error(`fetch-oa: ${failure.base}: ${failure.reason}`);
+    return result.failures.length ? 1 : 0;
+  }
   const input = argv[0];
   const doi = normaliseDoi(input);
   if (!/^10\.\d{4,9}\/\S+$/.test(doi)) {
@@ -464,11 +393,15 @@ export async function main(argv) {
     return 2;
   }
   const key = cacheKey(doi);
-  const base = join(LIBRARY_DIR, key);
+  const base = join(libraryDir, key);
   if (existsSync(`${base}.txt`)) {
-    const meta = existsSync(`${base}.json`) ? JSON.parse(readFileSync(`${base}.json`, 'utf8')) : { doi };
-    report(meta, `${base}.txt`);
-    return 0;
+    try {
+      const meta = existsSync(`${base}.json`) ? JSON.parse(readFileSync(`${base}.json`, 'utf8')) : { doi };
+      meta.doi ??= doi;
+      const updated = await archiveLibraryEntry(base, meta, archiveOptions);
+      report(updated, `${base}.txt`);
+      return 0;
+    } catch (e) { console.error(`fetch-oa: ${e.message}`); return 1; }
   }
   let work;
   try {
@@ -482,18 +415,21 @@ export async function main(argv) {
     console.error(assessment.message);
     return assessment.exitCode;
   }
-  const store = (got, url) => {
-    mkdirSync(LIBRARY_DIR, { recursive: true });
+  const store = async (got, url) => {
+    const meta = { ...assessment.metadata, url, format: got.format, route: got.route, fetchedAt: new Date().toISOString() };
+    const snapshot = await archiveFullText(got, meta, archiveOptions);
+    meta.archived = snapshot.ref;
+    mkdirSync(libraryDir, { recursive: true });
     writeFileSync(`${base}.${got.format}`, got.data);
     writeFileSync(`${base}.txt`, got.text);
-    const meta = { ...assessment.metadata, url, format: got.format, route: got.route, fetchedAt: new Date().toISOString() };
     writeFileSync(`${base}.json`, `${JSON.stringify(meta, null, 2)}\n`);
     report(meta, `${base}.txt`);
   };
   for (const route of openAlexKey() ? pickOpenAlexContent(work) : []) {
     const got = await openAlexContent(route);
     if (got) {
-      store(got, route.url);
+      try { await store(got, route.url); }
+      catch (e) { console.error(`fetch-oa: ${e.message}`); continue; }
       return 0;
     }
   }
@@ -502,7 +438,7 @@ export async function main(argv) {
     try {
       const got = await tryCandidate(candidate);
       if (!got) continue;
-      store({ ...got, route: got.via === 'browser' ? 'publisher-browser' : 'publisher-fetch' }, candidate.url);
+      await store({ ...got, route: got.via === 'browser' ? 'publisher-browser' : 'publisher-fetch' }, candidate.url);
       return 0;
     } catch (e) {
       if (e instanceof Refusal) loginSeen = true;

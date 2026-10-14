@@ -110,3 +110,125 @@ test('extractHtmlText keeps the article text and drops scripts and navigation', 
   assert.equal(r.title, 'T & U');
   assert.equal(r.text, 'Head\n\nPara one.\n\nPara two.');
 });
+
+test('Full texts are archived by DOI and migration preserves fetch time and exact originals', async t => {
+  const { mkdtempSync, writeFileSync, readFileSync, rmSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const { archiveFullText, migrateLibrary } = await import('./fetch-oa.mjs');
+  const dir = mkdtempSync(join(tmpdir(), 'cichlids-oa-migrate-'));
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  const root = join(dir, 'archive');
+  const doi = '10.1234/fish';
+  const text = 'Field observations of cichlid ecology in rocky habitats. '.repeat(15);
+  const data = `<article><p>${text}</p></article>`;
+  const meta = { doi, url: 'https://publisher.org/paper', fetchedAt: '2020-01-02T03:04:05Z', format: 'html' };
+  const snap = await archiveFullText({ data, text, format: 'html', url: meta.url }, meta, { root });
+  assert.equal(snap.ref, 'doi.org/10.1234_fish/2020-01-02T030405Z');
+  assert.equal(readFileSync(join(root, snap.ref, 'original.html'), 'utf8'), data);
+  const key = cacheKey(doi);
+  writeFileSync(join(dir, `${key}.json`), JSON.stringify(meta));
+  writeFileSync(join(dir, `${key}.html`), data);
+  writeFileSync(join(dir, `${key}.txt`), text);
+  const result = await migrateLibrary({ libraryDir: dir, root });
+  assert.equal(result.failures.length, 0);
+  assert.equal(JSON.parse(readFileSync(join(dir, `${key}.json`))).archived, snap.ref);
+  assert.equal(readFileSync(join(root, 'index.jsonl'), 'utf8').trim().split('\n').length, 1);
+});
+
+test('Full-text archiving refuses browser certificate-error pages even with long extracted text', async t => {
+  const { archiveFullText } = await import('./fetch-oa.mjs');
+  const { mkdtempSync, rmSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const root = mkdtempSync(join(tmpdir(), 'cichlids-oa-error-'));
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  await assert.rejects(archiveFullText({ format: 'html', data: '<title>Privacy error</title>NET::ERR_CERT_DATE_INVALID', text: 'error '.repeat(200) }, { doi: '10.1234/error' }, { root }), /certificate|error page/i);
+});
+
+test('Migration handles originals without text, rejects errors and continues with valid works', async t => {
+  const { migrateLibrary } = await import('./fetch-oa.mjs');
+  const { mkdtempSync, writeFileSync, readFileSync, rmSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const libraryDir = mkdtempSync(join(tmpdir(), 'cichlids-oa-migrate-'));
+  t.after(() => rmSync(libraryDir, { recursive: true, force: true }));
+  for (const suffix of ['good', 'bad']) {
+    const key = cacheKey(`10.1234/${suffix}`);
+    writeFileSync(join(libraryDir, `${key}.json`), JSON.stringify({ doi: `10.1234/${suffix}`, fetchedAt: '2021-06-07T08:09:10Z' }));
+    writeFileSync(join(libraryDir, `${key}.html`), suffix === 'good' ? `<article>${'Cichlid feeding ecology. '.repeat(50)}</article>` : `<title>Privacy error</title>NET::ERR_CERT_AUTHORITY_INVALID ${'error '.repeat(150)}`);
+  }
+  const result = await migrateLibrary({ libraryDir, root: join(libraryDir, 'archive') });
+  assert.equal(result.snapshots.length, 1);
+  assert.equal(result.failures.length, 1);
+  assert.match(result.snapshots[0].ref, /2021-06-07T080910Z$/);
+  assert.equal(JSON.parse(readFileSync(join(libraryDir, '10.1234_bad.json'))).archived, undefined);
+});
+test('Given a cached full text, fetch-oa prints and writes its archive reference without network access', async t => {
+  const { main } = await import('./fetch-oa.mjs');
+  const { mkdtempSync, writeFileSync, readFileSync, rmSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const libraryDir = mkdtempSync(join(tmpdir(), 'cichlids-oa-cache-'));
+  t.after(() => rmSync(libraryDir, { recursive: true, force: true }));
+  const text = 'Cichlid feeding ecology. '.repeat(50);
+  writeFileSync(join(libraryDir, '10.1234_cached.html'), `<article>${text}</article>`);
+  writeFileSync(join(libraryDir, '10.1234_cached.txt'), text);
+  writeFileSync(join(libraryDir, '10.1234_cached.json'), JSON.stringify({ doi: '10.1234/cached', fetchedAt: '2022-01-01T00:00:00Z' }));
+  const lines = [];
+  t.mock.method(console, 'log', x => lines.push(x));
+  t.mock.method(globalThis, 'fetch', () => { throw new Error('network must not be used'); });
+  assert.equal(await main(['10.1234/cached'], { libraryDir, root: join(libraryDir, 'archive') }), 0);
+  const meta = JSON.parse(readFileSync(join(libraryDir, '10.1234_cached.json')));
+  assert.equal(meta.archived, 'doi.org/10.1234_cached/2022-01-01T000000Z');
+  assert.ok(lines.join('\n').includes(`archived: ${meta.archived}`));
+});
+
+test('A DOI full-text snapshot is reused by the page archive and differing full texts remain preserved', async t => {
+  const { archiveFullText } = await import('./fetch-oa.mjs');
+  const { archiveUrl } = await import('./source-archive.mjs');
+  const { mkdtempSync, readFileSync, rmSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const root = mkdtempSync(join(tmpdir(), 'cichlids-oa-reuse-'));
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const meta = { doi: '10.1234/reuse', fetchedAt: '2020-01-01T00:00:00Z' };
+  const text = 'Field observations of cichlid ecology. '.repeat(20);
+  const first = await archiveFullText({ format: 'html', data: `<article>${text}</article>`, text }, meta, { root });
+  const cached = await archiveUrl('https://doi.org/10.1234/reuse', { root, fetchImpl: async () => { throw new Error('must reuse DOI full text'); } });
+  assert.equal(cached.ref, first.ref);
+  const second = await archiveFullText({ format: 'html', data: `<article>${text}Additional findings.</article>`, text: `${text}Additional findings.` }, meta, { root });
+  assert.notEqual(second.ref, first.ref);
+  assert.equal(readFileSync(join(root, 'index.jsonl'), 'utf8').trim().split('\n').length, 2);
+});
+
+test('Given an OA publisher response, fetch-oa archives the exact full text before storing the library', async t => {
+  const { main } = await import('./fetch-oa.mjs');
+  const { USER_AGENT } = await import('./source-archive.mjs');
+  const { mkdtempSync, readFileSync, rmSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const libraryDir = mkdtempSync(join(tmpdir(), 'cichlids-oa-publisher-'));
+  t.after(() => rmSync(libraryDir, { recursive: true, force: true }));
+  const root = join(libraryDir, 'archive');
+  const text = 'Field observations of cichlid ecology. '.repeat(20);
+  const html = `<title>Fish ecology</title><article>${text}</article>`;
+  const original = Buffer.concat([Buffer.from(html), Buffer.from([0x80, 0xff])]);
+  const urls = [];
+  t.mock.method(console, 'log', () => {});
+  t.mock.method(globalThis, 'fetch', async (url, options) => {
+    assert.equal(options.headers['user-agent'], USER_AGENT);
+    urls.push(url);
+    if (url.startsWith('https://api.openalex.org/')) return Response.json({ title: 'Fish ecology', open_access: { is_oa: true }, best_oa_location: { is_oa: true, landing_page_url: 'https://publisher.example/paper' } });
+    assert.equal(url, 'https://publisher.example/paper');
+    return new Response(original, { headers: { 'content-type': 'text/html; charset=utf-8' } });
+  });
+  assert.equal(await main(['10.1234/publisher'], { libraryDir, root }), 0);
+  assert.equal(urls.length, 2);
+  const meta = JSON.parse(readFileSync(join(libraryDir, '10.1234_publisher.json')));
+  assert.match(meta.archived, /^doi\.org\/10\.1234_publisher\//);
+  assert.deepEqual(readFileSync(join(root, meta.archived, 'original.html')), original);
+  const archiveMeta = JSON.parse(readFileSync(join(root, meta.archived, 'meta.json')));
+  assert.equal(archiveMeta.contentType, 'text/html; charset=utf-8');
+  assert.deepEqual(readFileSync(join(libraryDir, '10.1234_publisher.html')), original);
+});
