@@ -226,6 +226,8 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
   Feld `basis`; `hybridGroups` je Art ist eine Liste). `MVP-VISION.md` führt die Kreuzungsgruppe
   als harten Konflikt; anpassen. Gruppenmitglieder können auch Zuchtlinien wie der Flowerhorn sein;
   der Planer braucht dafür eigene Einträge für Zuchtlinien, die sich in einen Besatz aufnehmen lassen
+- [ ] Besatz-Planer: empfohlene Listen und beliebte Kombinationen ausgeben (etwa bewährte
+  Besatzvorschläge je Becken oder Region)
 - [ ] Vision-Modell: Anbieter, Kontingent je Mitglied, Gesamtbudget
 - [ ] Gemini-Vergleich im Scanner-Spike ausführen; braucht einen Gemini-API-Schlüssel
   (`tools/scanner-spike/RESULTS.md`)
