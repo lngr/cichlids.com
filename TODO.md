@@ -205,9 +205,14 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] `tally.mjs` übernimmt Quellen-Einträge ungeprüft; ein Titel mit Doppelpunkt ohne
   Anführungszeichen erzeugt einen falschen Schlüssel (gesehen bei Geophagus altifrons). Quellen beim
   Zählen gegen das Schema prüfen und kaputte Einträge melden
-- [ ] Startskript für Codex als Prüfer C ins Repo übernehmen (Auftrag nach der Prüfer-Vorlage,
-  Wiederholung bei "Selected model is at capacity", Ausweichen auf `gpt-6-sol`). Codex läuft im
-  Container mit `danger-full-access`, die Regeln stehen nur im Auftrag
+- [ ] Die Codex-Pipeline ins Repo übernehmen: ein Treiberskript je Art (Generator, Prüfer B und C
+  parallel, Warten auf Prüfer A, bis zu drei Tie-Break-Runden, Schiedsrichter, Abschlussprüfung),
+  ein Auftragsgenerator je Rolle, ein Gruppenabgleich aus den Validator-Warnungen und ein
+  Watchdog. Wiederholung bei "Selected model is at capacity", Ausweichen auf `gpt-6-sol`. Codex
+  läuft im Container mit `workspace-write` und Netzzugang, die Regeln stehen nur im Auftrag.
+  Bewährt: Prompt-Änderungen erst an einer Kopie testen und dann atomar tauschen; der
+  Schiedsrichter überschreibt kein vorhandenes Profil und ändert bestehende Gruppen nur um
+  Mitglieder
 
 ### 3.4 Taxonomie-Zuordnung
 
