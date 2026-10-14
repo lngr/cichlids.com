@@ -222,6 +222,11 @@ function toleranceIssues(features, file) {
   for (const name of TOLERANCE_FEATURES) {
     const feature = features[name];
     if (!isObject(feature)) continue;
+    // A natural range from a single reading is a point; the planner treats it as the ideal.
+    const point = feature.value;
+    if (isObject(point) && point.min === point.max) {
+      issues.push(warning(`/features/${name}/value`, `natural range of "${name}" is the single point ${point.min}; widen it with regional measurements of the same water type`, file));
+    }
     const at = `/features/${name}/tolerance`;
     const tolerance = feature.tolerance;
     if (!isObject(tolerance)) {

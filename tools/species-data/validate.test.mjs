@@ -460,6 +460,17 @@ test("method conservative is rejected on a tolerance", () => {
   assert.ok(found.some((i) => i.pointer === "/features/ph/tolerance/verification/method"), JSON.stringify(found));
 });
 
+test("a natural water range that is a single point gets a warning", () => {
+  const profile = makeProfile();
+  const found = validateProfile(profile, options).filter((i) => i.pointer === "/features/khDkh/value");
+  assert.deepEqual(found, []);
+  profile.features.khDkh.value = { min: 7, max: 7 };
+  profile.features.khDkh.tolerance.value = { min: 5, max: 12 };
+  const issues = validateProfile(profile, options).filter((i) => i.pointer === "/features/khDkh/value");
+  assert.equal(issues.length, 1);
+  assert.equal(issues[0].level, "warning");
+});
+
 const WATER = ["temperatureC", "ph", "ghDgh", "khDkh"];
 
 const ADJUDICATED = {
