@@ -96,7 +96,7 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 132 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+Stand: 143 Profile in `data/species/profiles/`, alle validiert. Verfahren in
 `tools/species-data/README.md`. Solange die Claude-Credits knapp sind, ist je Art nur Prüfer A ein
 Claude-Agent (Sonnet); die übrigen Rollen laufen über Codex: Generator und Prüfer B und C bei
 Seearten mit gpt-6-luna, bei Freilandarten mit gpt-6.1-sol, Tie-Breaker und Schiedsrichter immer
@@ -105,9 +105,18 @@ der Schiedsrichter auf Plausibilität prüft.
 
 ### 3.1 Weitere Profile
 
-- [ ] Nächste Arten nach Fotoanzahl: 733 Geophagus steindacheri, 816 Aulonocara masoni; danach
-  weiter nach Fotoanzahl. Legacy-Einträge unter älteren Namen einer Art mit Profil werden dem
-  Profil zugeordnet (Abgleich über Namen und Synonyme)
+- [ ] Umfang: Das Artenverzeichnis `data/species/directory.yaml` führt alle 1771 gültigen Arten
+  des Catalog of Fishes mit Erstbeschreibung und Links (Stubs); `trade-forms.yaml` führt
+  Handelsformen, Hybriden und Zuchtformen. Jeder Eintrag des alten Katalogs bleibt erhalten und
+  ist in `legacy-mapping.yaml` einer Art oder Handelsform zugeordnet. Besatzprofile bekommen alle
+  Arten des alten Katalogs plus die Arten im Handel (FishBase kommerziell oder Artseite bei
+  Seriously Fish); Reihenfolge nach Fotoanzahl, die Handelsarten außerhalb des Katalogs danach
+- [ ] Neun Einträge des alten Katalogs sind ohne Zuordnung, weil keine Quelle ihre Identität
+  klärt (etwa "Lamprologus spec.", "Labidochromis zebra", "Aulonocara carolinae",
+  "Amphilophus margaritifer"); bei neuen Quellen nachziehen
+- [ ] Handelsformen, die eine Population einer beschriebenen Art bezeichnen (etwa
+  "Aulonocara masoni" für A. stuartgranti), bekommen kein eigenes Besatzprofil, sondern verweisen
+  über `parents` auf das Profil der Art
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
 - [ ] Das OpenAlex-Tagesbudget (1 USD, Reset 02:00 Uhr MESZ) reicht für etwa 12 Arten. Danach
   zahlt das Prepaid-Guthaben des Schlüssels (am 2026-10-13 etwa 10 USD), weil die Werkzeuge nur
