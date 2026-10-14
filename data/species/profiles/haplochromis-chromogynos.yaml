@@ -1,0 +1,2118 @@
+schemaVersion: 1
+id: haplochromis-chromogynos
+legacyIds:
+- 541
+status: described
+taxonomy:
+  validName: Haplochromis chromogynos
+  genus: Haplochromis
+  species: chromogynos
+  author: "Greenwood, 1959"
+  source: &id001
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of the genus Haplochromis"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Haplochromis"
+    accessed: '2026-10-13'
+    archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-873e9721/2026-10-14T094822Z
+  synonyms:
+  - name: Paralabidochromis chromogynos
+    note: Alternative generic combination used in specialist and aquarium literature.
+  legacyNames:
+  - Paralabidochromis chromogynos
+  note: "The Catalog of Fishes recognizes Haplochromis chromogynos Greenwood, 1959. The separate Paralabidochromis\
+    \ query lists only P. victoriae and no chromogynos record. Paralabidochromis chromogynos is retained\
+    \ as an alternative generic combination used in hobby literature, not a separate species. FishBase,\
+    \ Faunafri and the public Cichlid Room Companion page support the broad Haplochromis placement."
+names:
+  trade:
+    en:
+    - Chromo Victoria cichlid
+    - Piebald hap
+    - Black piebald cichlid
+variants:
+- name: Zue Island
+  kind: locality
+  note: A locality form named in aquarium keeping records.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Victoria
+      waterbody: lake-victoria
+      localities:
+      - "Napoleon Gulf near Jinja, Uganda"
+      - "Zue Island, Tanzania"
+      - Mwanza Gulf
+    confidence: high
+    rationale: All runs place the species in Lake Victoria. The Catalog establishes Napoleon Gulf near
+      Jinja as the type locality; the specialist keeper account reports Zue Island aquarium stock and
+      historical records south to Mwanza Gulf. Generator lists Jinja and Zue Island; checker-a also lists
+      Mwanza Gulf; checker-b uses the broader lake basin; checker-c uses Jinja and lake-wide littoral
+      records and spells the waterbody as Lake Victoria. The locality synthesis retains these records
+      under the canonical lake-victoria identifier without implying that every historical locality remains
+      occupied.
+    sources:
+    - &id002
+      kind: database
+      title: "FishBase species summary, Haplochromis chromogynos"
+      url: "https://www.fishbase.se/summary/Haplochromis-chromogynos.html"
+      accessed: '2026-10-13'
+      archived: fishbase.se/summary/haplochromis-chromogynos.html/2026-10-14T222441Z
+    - *id001
+    - &id023
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of the genus Paralabidochromis"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Paralabidochromis"
+      accessed: '2026-10-13'
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-30db6986/2026-10-14T171420Z
+    - &id003
+      kind: literature
+      title: "Cichlid-Forum article: Paralabidochromis chromogynos (Steeves)"
+      url: "https://www.cichlid-forum.com/articles/para_chromogynos.php"
+      accessed: '2026-10-15'
+      archived: cichlid-forum.com/articles/para_chromogynos.php/2026-10-14T222502Z
+    - &id024
+      kind: archive
+      title: cichlids.com forum thread 63657
+      url: "https://www.cichlids.com/disc/read.php?2,63657"
+      accessed: '2026-10-13'
+      offline: true
+    - &id005
+      kind: literature
+      title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+        \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data\
+        \ after EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+      url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+      archived: fao.org/4/t0473e/t0473e12.htm/2026-10-14T100018Z
+      accessed: '2026-10-12'
+    - &id004
+      kind: database
+      title: "Faunafri CLOFFA species record: Haplochromis chromogynos"
+      url: "https://faunafri.africamuseum.be/cloffa/table/taxon2/view?idtaxon%3Aint=3363"
+      accessed: '2026-10-13'
+      archived: faunafri.africamuseum.be/cloffa/table/taxon2/view/q-a9dfee63/2026-10-14T222448Z
+    evidence:
+    - source: *id002
+      value: Lake Victoria
+    - source: *id001
+      value: "Lake Victoria, type locality Napoleon Gulf near Jinja"
+    - source: *id001
+      value: Lake Victoria; type locality Napoleon Gulf near Jinja
+    - source: *id003
+      value: Jinja south to the Mwanza Gulf; hobby line from Zue Island
+    - source: *id003
+      value: "Lake Victoria, including the Zue Island locality"
+    - source: *id001
+      value: Lake Victoria
+      note: "Type locality at Napoleon Gulf near Jinja, Uganda."
+    - source: *id004
+      value: Lake Victoria
+  temperatureC:
+    value:
+      min: 22
+      max: 30
+    confidence: high
+    rationale: "The settled tally fixes the Lake Victoria natural envelope at 22 to 30 C with high confidence\
+      \ and waterbody verification. Kishe, Orina and the broader lake monitoring underpin the combined\
+      \ littoral and gulf span; FAO reports the narrower surface range of 23 to 28 C, not the complete\
+      \ 22 to 30 C envelope attributed to it in earlier runs. These are lake measurements across places\
+      \ and seasons, not species-specific long-term aquarium experiments. Deirmendjian supplies seasonal\
+      \ context; its correct DOI is 10.1111/fwb.13780. The inherited 10.1002 DOI does not resolve and\
+      \ remains marked offline."
+    sources:
+    - *id005
+    - &id006
+      kind: website
+      title: "Aquarist Atlas, Haplochromis chromogynos care and habitat"
+      url: "https://www.aquaristatlas.com/species/haplochromis-chromogynos/"
+      accessed: '2026-10-13'
+      archived: aquaristatlas.com/species/haplochromis-chromogynos/2026-10-14T222449Z
+    - &id007
+      kind: website
+      title: "The Aquarium Wiki, Chromo Victoria Cichlid"
+      url: "https://www.theaquariumwiki.com/wiki/Haplochromis_chromogynos"
+      accessed: '2026-10-13'
+      archived: theaquariumwiki.com/wiki/haplochromis_chromogynos/2026-10-14T222456Z
+    - &id008
+      kind: literature
+      title: "Deirmendjian et al. (2021). Limnological changes in Lake Victoria since the mid-20th century.\
+        \ Freshwater Biology 66, 1630-1647"
+      url: "https://orbi.uliege.be/bitstream/2268/255437/1/fwb.13780.pdf"
+      accessed: '2026-10-12'
+      archived: orbi.uliege.be/bitstream/2268/255437/1/fwb.13780.pdf/2026-10-14T103819Z
+    - &id009
+      kind: website
+      title: "Cichlid Atlas: Haplochromis chromogynos"
+      url: "https://www.cichlidatlas.com/species/haplochromis-chromogynos/"
+      archived: cichlidatlas.com/species/haplochromis-chromogynos/2026-10-14T222449Z
+      accessed: '2026-10-13'
+    - &id010
+      kind: website
+      title: "TankBud: Piebald hap care guide"
+      url: "https://tankbud.com/species/piebald-hap"
+      archived: tankbud.com/species/piebald-hap/2026-10-14T222502Z
+      accessed: '2026-10-13'
+    - &id020
+      kind: literature
+      title: "Kishe (2004), Physical and chemical characteristics of water in selected locations in Lake\
+        \ Victoria, Tanzania"
+      url: "https://tjs.udsm.ac.tz/index.php/tjs/article/view/448"
+      accessed: '2026-10-13'
+      archived: tjs.udsm.ac.tz/index.php/tjs/article/view/448/2026-10-14T103825Z
+    - kind: literature
+      title: "Deirmendjian et al. (2021), Limnological changes in Lake Victoria since the mid-20th century"
+      url: "https://doi.org/10.1002/fwb.13780"
+      accessed: '2026-10-13'
+      archived: orbi.uliege.be/bitstream/2268/255437/1/fwb.13780.pdf/2026-10-14T103819Z
+      offline: true
+    - &id012
+      kind: website
+      title: "Aquatic Community: Lake Victoria cichlids"
+      url: "https://www.aquaticcommunity.com/lakevictoria/cichlids.php"
+      accessed: '2026-10-13'
+      archived: aquaticcommunity.com/lakevictoria/cichlids.php/2026-10-14T222527Z
+    - &id013
+      kind: literature
+      title: "Burgis et al. (1987), Nyanza Gulf water measurements"
+      url: "https://horizon.documentation.ird.fr/exl-doc/pleins_textes/divers14-08/25359.pdf"
+      accessed: '2026-10-13'
+      archived: horizon.documentation.ird.fr/exl-doc/pleins_textes/divers14-08/25359.pdf/2026-10-14T103818Z
+    - &id017
+      kind: literature
+      title: "Mbonde et al. (2015), Phytoplankton composition and microcystin concentrations in open and\
+        \ closed bays of Lake Victoria, Tanzania"
+      url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5221727/"
+      accessed: '2026-10-13'
+      archived: pmc.ncbi.nlm.nih.gov/articles/pmc5221727/2026-10-14T222753Z
+    - &id011
+      kind: literature
+      title: "Orina et al. (2020), Water quality of selected fishing beaches of Lake Victoria Kenyan Gulf"
+      url: "https://doi.org/10.4236/oje.2020.101002"
+      accessed: '2026-10-13'
+      archived: doi.org/10.4236_oje.2020.101002/2026-10-13T153307Z
+    - &id018
+      kind: literature
+      title: "Makaka et al. (2021). Spatial and Temporal Variation of Selected Water Quality Parameters\
+        \ in the Tanzanian Side of Lake Victoria. Tanzania Journal of Engineering and Technology 40(2),\
+        \ 1-23."
+      url: "https://tjet.udsm.ac.tz/index.php/tjet/article/view/729"
+      accessed: '2026-10-12'
+      offline: true
+    - &id019
+      kind: database
+      title: "BCO-DMO dataset 931936, Metagenomic Time Series of Winam Gulf, Lake Victoria from 2022-2023\
+        \ (pH, temperature, conductivity)."
+      url: "https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1"
+      archived: erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1/2026-10-14T102811Z
+      accessed: '2026-10-12'
+    - &id021
+      kind: literature
+      title: "Ochumba (1987). Periodic massive fish kills in the Kenyan portion of Lake Victoria. FAO\
+        \ Fisheries Report, CIFA sub-committee for Lake Victoria, 4th session, Appendix E."
+      url: "https://www.fao.org/4/ad858e/AD858E06.htm"
+      archived: fao.org/4/ad858e/ad858e06.htm/2026-10-14T103825Z
+      accessed: '2026-10-12'
+    - &id022
+      kind: literature
+      title: Deirmendjian et al. (2021). Limnological changes in Lake Victoria since the mid-20th century.
+      url: "https://doi.org/10.1111/fwb.13780"
+      accessed: '2026-10-13'
+      archived: doi.org/10.1111_fwb.13780/2026-10-13T153127Z
+    evidence:
+    - source: *id005
+      value:
+        min: 22
+        max: 30
+      note: "Inherited attribution of the combined lake envelope, derived across the cited lake studies;\
+        \ this individual source does not state the complete interval on its own."
+    - source: *id006
+      value:
+        min: 23
+        max: 27
+      note: Aquarium target range. Species-level aquarium guidance; narrower than the natural envelope.
+    - source: *id007
+      value:
+        min: 25.6
+        max: 27.8
+      note: "Aquarium recommendation, converted from 78-82 °F."
+    - source: *id008
+      value:
+        min: 22
+        max: 30
+      note: "Inherited attribution of the combined lake envelope, derived across the cited lake studies;\
+        \ this individual source does not state the complete interval on its own."
+    - source: *id009
+      value:
+        min: 23
+        max: 27
+      note: Aquarium recommendation
+    - source: *id010
+      value:
+        min: 23
+        max: 27
+      note: Aquarium recommendation
+    - source: *id005
+      value:
+        min: 23
+        max: 28
+      note: "Surface-water interval in the FAO compilation, narrower than the combined lake envelope."
+    - source: *id011
+      value:
+        min: 23.4
+        max: 29.5
+      note: Range of reported beach temperature means; not a captive tolerance experiment.
+    verification:
+      method: waterbody
+      waterbody: lake-victoria
+    tolerance:
+      value:
+        min: 22
+        max: 31
+      confidence: low
+      rationale: "The tally decides 22 to 31 C with unanimous verification and low confidence. Generator\
+        \ proposed 20 to 32 C, checker-a 21 to 31 C, checker-b 22 to 30 C and checker-c 22 to 30 C. The\
+        \ decided interval retains the natural 22 to 30 C span and the tallied upper margin; it does not\
+        \ adopt the generator's wider, unsupported endpoints. Ron's species listing recommends 23.3 to\
+        \ 28.9 C, Aquarium Wiki 25.6 to 27.8 C, and the atlas and TankBud around 23 to 27 C. These narrower\
+        \ care recommendations do not establish failure limits. The four proposals are not identical despite\
+        \ the tally's unanimous verification label, which is retained exactly. Long-term safety at 31\
+        \ C is inferred and remains poorly supported."
+      sources:
+      - *id006
+      - *id007
+      - &id014
+        kind: website
+        title: "Ron's Cichlids: Chromogynos Zue Island"
+        url: "https://ronscichlids.com/products/paralabidochromis-chromogynos-zue-island"
+        accessed: '2026-10-15'
+        archived: ronscichlids.com/products/paralabidochromis-chromogynos-zue-island/2026-10-14T222545Z
+      - &id016
+        kind: website
+        title: "OATA care sheet: how to look after African lake cichlids"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-lake-cichlids/"
+        accessed: '2026-10-15'
+        archived: ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-lake-cichlids/2026-10-14T095725Z
+      - &id015
+        kind: website
+        title: "That Pet Place: Malawi and Victoria cichlids care guide"
+        url: "https://www.thatpetplace.com/articles/malawi-victoria-cichlids-article-care-guide"
+        accessed: '2026-10-15'
+        archived: thatpetplace.com/articles/malawi-victoria-cichlids-article-care-guide/2026-10-14T222608Z
+      - *id009
+      - *id010
+      - *id005
+      - *id012
+      - *id013
+      evidence:
+      - source: *id006
+        value:
+          min: 23
+          max: 27
+        note: "Its care target informs the estimate; outer limits are inferred. Published captive-care\
+          \ range, expanded to contain the natural range."
+      - source: *id014
+        value:
+          min: 23.3
+          max: 28.9
+        note: "breeder listing, 74 to 84 F"
+      - source: *id015
+        value:
+          min: 23.9
+          max: 27.8
+        note: "75 to 82 F, Malawi and Victoria cichlids in general"
+      - source: *id016
+        value:
+          min: 23
+          max: 27
+        note: African lake cichlids in general
+      - source: *id009
+        value:
+          min: 23
+          max: 27
+        note: Stated aquarium range; widened to contain lake values
+      - source: *id010
+        value:
+          min: 23
+          max: 27
+        note: Stated aquarium range; widened to contain lake values
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ph:
+    value:
+      min: 6.8
+      max: 9.4
+    confidence: high
+    rationale: "The settled tally fixes the combined Lake Victoria natural envelope at pH 6.8 to 9.4 with\
+      \ high confidence and waterbody verification. Burgis compiles Nyanza Gulf values of 6.8 to 9.2,\
+      \ while the historical Kenyan measurements summarized by Ochumba reach 9.4. FAO gives open-lake\
+      \ values around 8.0 to 8.5 and gulf values up to 9.0; Orina independently reports beach means around\
+      \ 7.08 to 9.3. No single FAO or Deirmendjian measurement series establishes every endpoint of the\
+      \ compiled range. Husbandry recommendations do not replace this natural-water feature."
+    sources:
+    - *id005
+    - *id006
+    - *id008
+    - *id009
+    - *id010
+    - *id011
+    - *id017
+    - *id012
+    - *id013
+    - *id018
+    - *id019
+    - *id020
+    - *id021
+    - *id022
+    evidence:
+    - source: *id005
+      value:
+        min: 6.8
+        max: 9.4
+      note: "Inherited attribution of the combined lake envelope, derived across the cited lake studies;\
+        \ this individual source does not state the complete interval on its own."
+    - source: *id006
+      value:
+        min: 7.2
+        max: 9
+      note: Aquarium target range.
+    - source: *id008
+      value:
+        min: 6.8
+        max: 9.4
+      note: "Inherited attribution of the combined lake envelope, derived across the cited lake studies;\
+        \ this individual source does not state the complete interval on its own."
+    - source: *id009
+      value:
+        min: 7.2
+        max: 9
+      note: Aquarium guidance
+    - source: *id010
+      value:
+        min: 7
+        max: 8.5
+      note: Aquarium recommendation
+    - source: *id012
+      value:
+        min: 7.2
+        max: 8.6
+      note: Broad aquarium recommendation for Lake Victoria cichlids.
+    - source: *id011
+      value:
+        min: 7.08
+        max: 9.3
+      note: Beach pH means reported by Orina and colleagues; natural-water observations.
+    - source: *id013
+      value:
+        min: 6.8
+        max: 9.2
+      note: Nyanza Gulf field interval compiled by Burgis and colleagues.
+    - source: *id021
+      value:
+        min: 7.4
+        max: 9.4
+      note: Historical Kenyan-water interval summarized by Ochumba; supplies the upper endpoint.
+    verification:
+      method: waterbody
+      waterbody: lake-victoria
+    tolerance:
+      value:
+        min: 6.8
+        max: 9.4
+      confidence: low
+      rationale: "The tally decides pH 6.8 to 9.4 with unanimous verification and low confidence. Generator\
+        \ proposed the wider 6.5 to 9.5 interval; checker-a, checker-b and checker-c each proposed 6.8\
+        \ to 9.4. Ron's species listing gives 7.4 to 8.4, TankBud 7.0 to 8.5, the atlas 7.2 to 9.0 and\
+        \ general Victorian guidance 7.2 to 8.6. No read source establishes failure immediately outside\
+        \ those care targets or demonstrates years of health at the lake extremes. The chosen envelope\
+        \ equals the required natural range because the tally requires its inclusion, not because the\
+        \ endpoints are measured physiological limits. The wider generator proposal is unsupported by\
+        \ direct tolerance evidence and is not adopted."
+      sources:
+      - *id006
+      - *id007
+      - *id014
+      - *id015
+      - *id016
+      - *id009
+      - *id010
+      - *id005
+      - *id012
+      - *id013
+      evidence:
+      - source: *id006
+        value:
+          min: 7.2
+          max: 9
+        note: Published aquarium range; tolerance endpoints are inferred.
+      - source: *id014
+        value:
+          min: 7.4
+          max: 8.4
+        note: breeder listing
+      - source: *id015
+        value:
+          min: 7.8
+          max: 8.5
+        note: Malawi and Victoria cichlids in general
+      - source: *id016
+        value:
+          min: 8
+          max: 8.6
+        note: African lake cichlids in general
+      - source: *id009
+        value:
+          min: 7.2
+          max: 9
+        note: "Aquarium guidance, expanded to include habitat range"
+      - source: *id010
+        value:
+          min: 7
+          max: 8.5
+        note: "Aquarium recommendation, expanded to include habitat range"
+      - source: *id012
+        value:
+          min: 7.2
+          max: 8.6
+        note: Aquarium guidance; outside-range tolerance is not tested.
+      - source: *id005
+        value:
+          min: 6.8
+          max: 9.4
+        note: "Inherited combined natural-water baseline from FAO and Burgis, included in the tolerance\
+          \ by synthesis; not a captive tolerance experiment or an interval established by FAO alone."
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ghDgh:
+    value:
+      min: 1
+      max: 3
+    confidence: high
+    rationale: "The settled tally fixes natural GH at 1 to 3 dGH with high confidence. FAO compiles open-lake\
+      \ calcium of 5.0 to 7.0 mg/L and magnesium of 2.3 to 3.5 mg/L, about 1.2 to 1.8 dGH using Ca/7.14\
+      \ plus Mg/4.34. Burgis reports Nyanza Gulf calcium of 8.2 to 11.4 and magnesium of 2.1 to 3.2 mg/L,\
+      \ reaching about 2.4 dGH. The rounded lake envelope is therefore very soft. Aquarium recommendations\
+      \ of 10 to 20 dGH describe captive keeping and do not establish natural hardness."
+    sources:
+    - *id005
+    - *id013
+    - *id007
+    - *id008
+    - *id010
+    - *id017
+    - *id011
+    - *id018
+    - *id019
+    - *id020
+    - *id021
+    - *id022
+    evidence:
+    - source: *id005
+      value:
+        min: 1
+        max: 3
+      note: "Inherited attribution of the combined lake envelope, derived across the cited lake studies;\
+        \ this individual source does not state the complete interval on its own."
+    - source: *id007
+      value:
+        min: 10
+        max: 20
+      note: Care page reports 10-20 degrees hardness without specifying GH or KH.
+    - source: *id008
+      value:
+        min: 1
+        max: 3
+      note: "Inherited attribution of the combined lake envelope, derived across the cited lake studies;\
+        \ this individual source does not state the complete interval on its own."
+    - source: *id005
+      value:
+        min: 1.2
+        max: 1.8
+      note: Approximate dGH converted from the compiled open-lake calcium and magnesium intervals.
+    - source: *id013
+      value:
+        min: 1.6
+        max: 2.4
+      note: Approximate dGH converted from Nyanza Gulf calcium and magnesium intervals.
+    verification:
+      method: waterbody
+      waterbody: lake-victoria
+    tolerance:
+      value:
+        min: 1
+        max: 20
+      confidence: low
+      rationale: "The tally decides 1 to 20 dGH by qualified majority, five of six agreeing votes under\
+        \ the range-agreement rule, with low confidence. Generator, checker-c, tiebreaker-1 and tiebreaker-2\
+        \ proposed 1 to 20 dGH; checker-a proposed 1 to 18 dGH; checker-b proposed 1 to 10 dGH. The natural\
+        \ 1 to 3 dGH establishes the low end. Aquarium Wiki gives 10 to 20 degrees hardness, interpreted\
+        \ as GH in the later runs although the displayed scale is only degrees. The Einrichtungsbeispiele\
+        \ care sheet gives 5 to 15 dGH; aquarium 38016 reports 15 to 20 dGH between its 2017 establishment\
+        \ and 2019 update. That account contains a possible chilotes text substitution, and duration at\
+        \ each endpoint is unknown, so it is supporting experience rather than proof of chronic safety.\
+        \ Aquarium 41071 reports 7 to 9 dGH soon after stocking. Imperial Tropicals and Ron's recommend\
+        \ hard water without numeric limits, and OATA gives 12 to 18 dGH for African lake cichlids generally.\
+        \ The narrower 10 and 18 dGH proposals do not establish harm above their maxima. The full envelope\
+        \ is an uncertain husbandry synthesis, not a tested threshold."
+      sources:
+      - *id007
+      - *id014
+      - *id016
+      - *id005
+      - *id010
+      - *id012
+      - &id028
+        kind: website
+        title: "Imperial Tropicals, Haplochromis chromogynos"
+        url: "https://imperialtropicals.com/products/haplochromis-chromogynos"
+        accessed: '2026-10-13'
+        archived: imperialtropicals.com/products/haplochromis-chromogynos/2026-10-14T223047Z
+      - &id025
+        kind: website
+        title: "Einrichtungsbeispiele, Paralabidochromis chromogynos care sheet"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/victoriasee/paralabidochromis-chromogynos-slnk.html"
+        accessed: '2026-10-13'
+        archived: einrichtungsbeispiele.de/zierfische/victoriasee/paralabidochromis-chromogynos-slnk.html/2026-10-14T223115Z
+      - &id026
+        kind: website
+        title: "Einrichtungsbeispiele, chromogynos Zue aquarium 38016"
+        url: "https://www.einrichtungsbeispiele.de/becken-beispiele/victoriasee/paralabidochromis-chromogynos-zue-artenbecken-von-tonisafricancichlids_38016.html"
+        accessed: '2026-10-13'
+        archived: einrichtungsbeispiele.de/becken-beispiele/victoriasee/paralabidochromis-chromogynos-zue-artenbecken-von-tonisafricancichlids_38016.htm/2026-10-14T223055Z
+      - &id027
+        kind: website
+        title: "Einrichtungsbeispiele, chromogynos Zue aquarium 41071"
+        url: "https://www.einrichtungsbeispiele.de/becken-beispiele/victoriasee/paralabidochromis-chromogynos-zue-island-von-helga-kury_41071.html"
+        accessed: '2026-10-13'
+        archived: einrichtungsbeispiele.de/becken-beispiele/victoriasee/paralabidochromis-chromogynos-zue-island-von-helga-kury_41071.html/2026-10-14T223113Z
+      - *id001
+      - *id023
+      - *id002
+      - &id034
+        kind: database
+        title: "Cichlid Room Companion, Haplochromis chromogynos"
+        url: "https://cichlidae.com/species.php?id=S0ptE1R6E78wecPjrvGE9w"
+        accessed: '2026-10-13'
+        archived: cichlidae.com/species.php/q-7a016b24/2026-10-14T222457Z
+      - *id003
+      - *id024
+      - &id032
+        kind: archive
+        title: cichlids.com forum thread 68015
+        url: "https://www.cichlids.com/disc/read.php?2,68015"
+        accessed: '2026-10-13'
+      - *id009
+      - *id013
+      evidence:
+      - source: *id007
+        value:
+          min: 10
+          max: 20
+        note: "The published hardness recommendation is ambiguous; the wider tolerance is uncertain. Community-editable\
+          \ care entry, with a broad claimed hardness band. Species care recommendation; no duration or\
+          \ tolerance experiment is reported. Species-specific aquarium hardness recommendation in German\
+          \ degrees."
+      - source: *id014
+        value: hard water
+        note: no figure given
+      - source: *id016
+        value:
+          min: 12
+          max: 18
+        note: African lake cichlids in general
+      - source: *id005
+        value:
+          min: 1
+          max: 3
+        note: "Inherited combined natural-water baseline from FAO and Burgis, included in the tolerance\
+          \ by synthesis; not a captive tolerance experiment or an interval established by FAO alone."
+      - source: *id025
+        value:
+          min: 5
+          max: 15
+        note: Species care recommendation; endpoints are preferred conditions rather than demonstrated
+          failure thresholds.
+      - source: *id026
+        value:
+          min: 15
+          max: 20
+        note: "Reported species aquarium water; the aquarium began in 2017 and the account was updated\
+          \ in February 2019. Duration at each GH endpoint is unspecified. Reported GH of a species aquarium\
+          \ established in 2017 and updated in 2019, without a controlled health assessment."
+      - source: *id027
+        value:
+          min: 7
+          max: 9
+        note: Reported tap water for a newly stocked conservation aquarium; insufficient follow-up to
+          establish long-term tolerance.
+      - source: *id028
+        value: null
+        note: "Recommends hard water for captive-bred fish, without a numeric GH range."
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  khDkh:
+    value:
+      min: 2
+      max: 6
+    confidence: high
+    rationale: "The settled tally fixes natural alkalinity at 2 to 6 dKH with high confidence, without\
+      \ a verification object on this feature. FAO compiles open-lake bicarbonate and carbonate corresponding\
+      \ to roughly 2.5 to 3.1 dKH. Burgis reports Nyanza Gulf alkalinity of 0.80 to 1.44 meq/L and bicarbonate\
+      \ values of 1.57 to 1.86 meq/L, together about 2.2 to 5.2 dKH after multiplication by 2.8. The rounded\
+      \ lake envelope describes alkalinity, which must be distinguished from calcium and magnesium hardness."
+    sources:
+    - *id005
+    - *id006
+    - *id008
+    - *id010
+    - *id013
+    - *id017
+    - *id011
+    - *id018
+    - *id019
+    - *id020
+    - *id021
+    - *id022
+    evidence:
+    - source: *id005
+      value:
+        min: 2
+        max: 6
+      note: "Inherited attribution of the combined lake envelope, derived across the cited lake studies;\
+        \ this individual source does not state the complete interval on its own."
+    - source: *id008
+      value:
+        min: 2
+        max: 6
+      note: "Inherited attribution of the combined lake envelope, derived across the cited lake studies;\
+        \ this individual source does not state the complete interval on its own."
+    - source: *id005
+      value:
+        min: 2.5
+        max: 3.1
+      note: Approximate open-lake alkalinity expressed in dKH.
+    - source: *id013
+      value:
+        min: 2.2
+        max: 5.2
+      note: Approximate union of the compiled Nyanza Gulf alkalinity and bicarbonate series in dKH.
+    tolerance:
+      value:
+        min: 2
+        max: 11
+      confidence: low
+      rationale: "The tally decides 2 to 11 dKH with unanimous verification and low confidence. Generator\
+        \ proposed 1 to 10 dKH, checker-a and checker-b 2 to 12 dKH, and checker-c 2 to 10 dKH. The interval\
+        \ includes the natural 2 to 6 dKH and extends into buffered aquarium practice, using the tally's\
+        \ rounded endpoint synthesis. No species-specific KH limit was found. That Pet Place recommends\
+        \ 8 to 12 dKH for Malawi and Victoria cichlids, and OATA gives the wider upper range of 10 to\
+        \ 15 dKH for African lake cichlids generally. The chosen maximum of 11 is narrower than those\
+        \ source maxima of 12 and 15 because these are broad group recommendations rather than demonstrated\
+        \ chromogynos requirements or thresholds. KH is inferred from related pH and GH keeping advice,\
+        \ not equated with GH. Neither endpoint is evidence of failure outside the interval."
+      sources:
+      - *id006
+      - *id007
+      - *id015
+      - *id016
+      - *id005
+      - *id010
+      - *id012
+      - *id013
+      evidence:
+      - source: *id006
+        value: "alkaline, well-buffered water recommended; no numerical KH given"
+        note: Used only as related water advice from which the low-confidence range is inferred.
+      - source: *id015
+        value:
+          min: 8
+          max: 12
+        note: Malawi and Victoria cichlids in general
+      - source: *id016
+        value:
+          min: 10
+          max: 15
+        note: African lake cichlids in general
+      - source: *id005
+        value:
+          min: 2
+          max: 6
+        note: "Inherited combined natural-water baseline from FAO and Burgis, included in the tolerance\
+          \ by synthesis; not a captive tolerance experiment or an interval established by FAO alone."
+      - source: *id007
+        value: not reported
+        note: Gives 10-20 dGH but no KH figure; used only to derive a cautious buffered-water range.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  maxSizeCm:
+    value:
+      male: 11
+      female: 11
+    confidence: medium
+    rationale: "Male proposals are 11 cm in all four runs. Generator and checker-a propose females of\
+      \ 10 cm; checker-b and checker-c 11 cm, giving an initial female median of 10.5 cm. Steeves reports\
+      \ about 11 cm with little size difference between sexes, so 11 cm for both is better supported than\
+      \ imposing a half-centimetre sex difference. FishBase records 11 cm standard length for male or\
+      \ unsexed fish and does not independently measure females. The wider Aquarium Wiki range is 10.2\
+      \ to 12.7 cm and TankBud gives 13 cm without a comparable length standard. The 11 cm planning maximum\
+      \ is approximate and should not be treated as a precise total-length conversion."
+    sources:
+    - *id002
+    - *id007
+    - *id003
+    - *id014
+    evidence:
+    - source: *id002
+      value:
+        male: 11
+        female: 11
+      note: "FishBase states 11 cm standard length for male or unsexed fish. male or unsexed, standard\
+        \ length FishBase gives maximum standard length for male or unsexed fish Male/unsexed maximum\
+        \ is 11 cm SL; female value inferred from similar size in the keeper account."
+    - source: *id007
+      value:
+        male: 12.7
+        female: 12.7
+      note: Unsexed 4-5 inch aquarium size range; upper figure converted to centimetres.
+    - source: *id003
+      value:
+        male: 11
+        female: 11
+      note: little size difference Reports 11 cm and little size difference between sexes Keeper says
+        adult sexes show little size difference.
+    - source: *id014
+      value:
+        male: 12.7
+        female: 10
+      note: 4 to 5 inches
+  predation:
+    value: 0
+    confidence: medium
+    rationale: All four runs propose level 0 and the tally retains unanimous verification with medium
+      confidence. FishBase describes insect larvae in examined guts; Steeves and the inherited Witte and
+      van Oijen trophic review support insect feeding. No reviewed source reports regular fish predation.
+      Level 0 allows incidental fry-taking and does not guarantee fry survival in a community tank.
+    sources:
+    - *id002
+    - *id006
+    - *id003
+    - &id029
+      kind: database
+      title: "FishBase: Haplochromis chromogynos food items"
+      url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?genus=Haplochromis&species=chromogynos&vstockcode=7033"
+      archived: fishbase.se/trophiceco/fooditemslist.php/q-c68fb026/2026-10-14T222755Z
+      accessed: '2026-10-13'
+    - &id030
+      kind: literature
+      title: "Witte and van Oijen (1990), Lake Victoria haplochromine trophic groups"
+      url: "https://repository.naturalis.nl/pub/317685/ZV1990262001.pdf"
+      archived: repository.naturalis.nl/pub/317685/zv1990262001.pdf/2026-10-14T222510Z
+      accessed: '2026-10-13'
+    evidence:
+    - source: *id002
+      value: 0
+      note: "Reported gut contents were benthic insect larvae, not fish. gut contents insect larvae only\
+        \ Examined guts contained aquatic insect larvae Diet account lists aquatic insect larvae, not\
+        \ fish."
+    - source: *id003
+      value: 0
+      note: feeds mainly on insect larvae Keeper identifies insect larvae as the main natural food.
+    - source: *id029
+      value: 0
+      note: The two listed food records are zoobenthos and insects
+    - source: *id030
+      value: 0
+      note: Classifies H. chromogynos among specialized insectivores
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+      - insect larvae
+      - small benthic invertebrates
+      - quality cichlid pellets
+      - flakes
+    confidence: high
+    rationale: "The tally retains invertivore, bloatSensitive false and the generator's food list, with\
+      \ unanimous verification and high confidence. All four runs agree on the scored type and flag. FishBase\
+      \ reports chiefly caddisfly larvae with some midge larvae and mayfly nymphs; the inherited trophic\
+      \ review and the keeper account corroborate insect feeding. Aquarium Wiki instead labels the captive\
+      \ diet omnivorous, but acceptance of flakes and pellets does not outweigh the field feeding evidence.\
+      \ Generator lists insect larvae, small benthic invertebrates, pellets and flakes; checker-a adds\
+      \ Cyclop-eeze and brine shrimp; checker-b lists insect larvae and aquatic invertebrates; checker-c\
+      \ lists insect larvae and small benthic invertebrates. The false bloat flag means no particular\
+      \ sensitivity was documented, rather than demonstrated immunity."
+    sources:
+    - *id002
+    - *id006
+    - *id007
+    - *id003
+    - *id014
+    - *id029
+    - *id030
+    - &id033
+      kind: literature
+      title: "Seehausen (1996), Lake Victoria Rock Cichlids"
+      url: "https://www.aqua.iee.unibe.ch/e60752/e339757/e339813/e386476/VictoriaRockCichlids-Seehausen1996_eng.pdf"
+      accessed: '2026-10-13'
+      archived: aqua.iee.unibe.ch/e60752/e339757/e339813/e386476/victoriarockcichlids-seehausen1996_eng.pdf/2026-10-14T222458Z
+    evidence:
+    - source: *id002
+      value: invertivore
+      note: "Gut contents chiefly contained caddisfly larvae, with other insect larvae and nymphs. caddis\
+        \ larvae in the guts"
+    - source: *id003
+      value: invertivore
+      note: mainly insect larvae
+    - source: *id014
+      value: pellet staple
+      note: prepared diet in captivity
+    - source: *id002
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - insect larvae
+        - aquatic invertebrates
+    - source: *id029
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - zoobenthos
+        - insects
+    - source: *id030
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - insect larvae
+    - source: *id002
+      value:
+        type: invertivore
+        foods:
+        - caddisfly larvae
+        - midge larvae
+        - mayfly nymphs
+        bloatSensitive: false
+    - source: *id003
+      value:
+        type: invertivore
+        foods:
+        - insect larvae
+        bloatSensitive: false
+    - source: *id007
+      value:
+        type: omnivore
+      note: Dissenting captive-care label retained; natural gut contents support the decided invertivore
+        classification.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 2
+    confidence: low
+    rationale: "Generator and checker-b propose 3; checker-a and checker-c propose 2. A breeding colony\
+      \ in Steeves' account, Ron's mild-aggression description and the pre-spawning forum report of separate\
+      \ male territories support a managed hierarchy with chasing. The atlas warns that rival males can\
+      \ be bullied, but no source establishes frequent injury in a suitable adult harem. Level 2 is selected\
+      \ for the recommended one-male group; cramped housing or excess males may produce worse behavior."
+    sources:
+    - *id006
+    - *id007
+    - &id031
+      kind: forum
+      title: "Capital Cichlids forum: paralabidochromis chromogynos spawning advice"
+      url: "https://www.capitalcichlids.org/forums/goto/post?id=277903"
+      accessed: '2026-10-15'
+      archived: capitalcichlids.org/forums/goto/post/q-28c1bd9c/2026-10-14T222547Z
+    - *id003
+    - *id014
+    - *id009
+    - *id010
+    evidence:
+    - source: *id006
+      value: 3
+      note: Recommends one male with several females because males trouble rivals.
+    - source: *id014
+      value: 2
+      note: mildly aggressive
+    - source: *id031
+      value: 2
+      note: males defend territories
+    - source: *id009
+      value: 3
+      note: Describes males as rough with rivals
+    - source: *id003
+      value: 2
+      note: Breeding colony observations; fish were skittish and were kept with other cichlids Keeper
+        maintained a colony but did not quantify aggression.
+    - source: *id006
+      value: 2
+      note: Describes males as capable of roughness toward rivals.
+  aggressionHeterospecific:
+    value: 1
+    confidence: low
+    rationale: "Generator proposes 2; checker-a, checker-b and checker-c propose 1. The species-specific\
+      \ keeper account reports mixed housing, and Ron's describes only mild aggression. These observations\
+      \ better support local displays than repeated expulsion of other species. The inherited forum 63657\
+      \ level-2 entry is a request for advice rather than an observed aggression outcome, and thread 68015\
+      \ concerns an immature mixed aquarium with water-quality trouble rather than evidence of compatibility."
+    sources:
+    - *id006
+    - *id024
+    - *id014
+    - *id003
+    - *id010
+    - *id032
+    evidence:
+    - source: *id006
+      value: 2
+      note: Recommends a carefully chosen community of similarly sized Lake Victoria cichlids.
+    - source: *id024
+      value: 2
+      note: A keeper requested advice before introducing a group; the excerpt provides no aggression outcome.
+    - source: *id014
+      value: 1
+      note: mildly aggressive
+    - source: *id003
+      value: 1
+      note: "skittish, calmed by a dither species Reports successful mixed housing with other Lake Victoria\
+        \ fish Keeper housed it with other Victorian species."
+    - source: *id010
+      value: 1
+      note: Says unrelated species are not a particular aggression target
+    - source: *id006
+      value: 1
+      note: Reports territorial but limited aggression outside the species.
+    - source: *id032
+      value: 1
+      note: "Owner reported it housed among several different cichlids, without describing an attack."
+  territory:
+    value:
+      size: small
+      breedingOnly: false
+    confidence: low
+    rationale: "All runs propose a small territory. Generator, checker-b and checker-c restrict it to\
+      \ breeding; checker-a does not. The Capital Cichlids report describes two males excluding presumed\
+      \ females from established sites before any observed spawning, while Ron's mentions localized territorial\
+      \ behavior. That direct pre-spawning observation supports breedingOnly false more strongly than\
+      \ inferring a breeding restriction from habitat alone. No measured territory diameter is available."
+    sources:
+    - *id006
+    - *id033
+    - *id031
+    - *id014
+    - *id009
+    - *id003
+    evidence:
+    - source: *id006
+      value:
+        size: small
+        breedingOnly: true
+      note: Rock territories are recommended for aquarium setup; exact territory behavior is inferred.
+    - source: *id031
+      value: small
+      note: males hold stable territories
+    - source: *id014
+      value: small
+      note: may claim small territories
+    - source: *id009
+      value:
+        size: small
+        breedingOnly: true
+      note: Recommends rocks and describes males defending nearby cover
+    - source: *id003
+      value:
+        size: small
+        breedingOnly: true
+      note: Rockwork and a single spawning colony suggest localized breeding territory.
+    - source: *id031
+      value:
+        size: small
+        breedingOnly: false
+      note: Two males held separate aquarium sites and excluded presumed females before the keeper observed
+        spawning; territory size category is inferred.
+  habitatZones:
+    value:
+    - rock
+    - sand
+    confidence: medium
+    rationale: "Generator, checker-a and checker-b propose rock and sand; checker-c also adds openWater.\
+      \ FishBase describes firm littoral substrate, and Steeves reports pebbles on a shallow rocky slope\
+      \ at Zue Island. Swimming just above that substrate does not establish an independent open-water\
+      \ habitat requirement. Rock and adjacent sand are retained; open swimming room still belongs in\
+      \ the aquarium layout."
+    sources:
+    - *id002
+    - *id033
+    - *id003
+    - *id014
+    evidence:
+    - source: *id002
+      value:
+      - rock
+      - sand
+      note: Firm littoral bottom and a rocky shore association.
+    - source: *id002
+      value:
+      - sand
+      - rock
+      note: "littoral, firm substrate"
+    - source: *id003
+      value:
+      - rock
+      note: pebble over sloping rock at 4 m
+    - source: *id003
+      value:
+      - rock
+      - sand
+      note: Reports Zue Island fish on pebble substrate beside rocky slope
+    - source: *id002
+      value:
+      - rock
+      note: Firm littoral substrate
+    - source: *id003
+      value:
+      - rock
+      - sand
+      - openWater
+      note: Habitat described as a shallow rock decline at the pebble interface.
+  social:
+    value:
+      structure: harem
+      ratio: 3
+    confidence: low
+    rationale: "Generator, checker-a and checker-c propose one male with three females; checker-b proposes\
+      \ one male with two. CRC describes polygynandrous mating, not a permanent bonded harem, while direct\
+      \ aquarium accounts support colonies and Ron's offers a one-male/four-female breeder group. Three\
+      \ females per male is a practical median recommendation for distributing attention. TankBud's solitary-or-pair\
+      \ suggestion and Aquarium Wiki's 1:1 ratio remain dissenting husbandry advice rather than evidence\
+      \ for stable pair bonding."
+    sources:
+    - *id034
+    - *id006
+    - *id007
+    - *id014
+    - *id031
+    - *id009
+    - *id010
+    - *id003
+    evidence:
+    - source: *id034
+      value: maternal mouthbrooder; polygynandrous mating
+    - source: *id006
+      value: one male with several females
+    - source: *id034
+      value: polygynandrous
+    - source: *id014
+      value:
+        structure: harem
+        ratio: 4
+      note: breeder group of 1 male and 4 females
+    - source: *id034
+      value: "polygynandrous mating, female mouthbrooding"
+    - source: *id009
+      value:
+        structure: harem
+        ratio: 2
+      note: Recommends one male with several females
+    - source: *id010
+      value: solitary or pair
+      note: Contradicts the harem recommendation
+    - source: *id034
+      value:
+        structure: harem
+        ratio: 3
+      note: CRC states polygynandrous mating; the exact recommended ratio is inferred.
+    - source: *id003
+      value:
+        structure: harem
+        ratio: 3
+      note: Keeper reports colony breeding; ratio inferred.
+    - source: *id007
+      value:
+        structure: pair
+      note: "The care panel gives a 1:1 male-to-female ratio; this does not demonstrate a pair bond."
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: "All four runs propose false and the tally retains unanimous verification with medium confidence.\
+      \ Steeves reports a mixed colony, and Ron's and other husbandry pages allow suitable companions.\
+      \ This supports community keeping with careful selection, although a dedicated breeding tank remains\
+      \ sensible for a rare locality line. It does not establish every suggested companion as safe."
+    sources:
+    - &id035
+      kind: website
+      title: "American Aquarium Products, Victoria cichlids"
+      url: "https://www.americanaquariumproducts.com/victoria-cichlids.html"
+      accessed: '2026-10-13'
+      archived: americanaquariumproducts.com/victoria-cichlids.html/2026-10-14T100025Z
+    - *id006
+    - *id003
+    - *id014
+    - *id010
+    evidence:
+    - source: *id035
+      value: false
+      note: Mentions chromogynos among potential Lake Victoria community fish.
+    - source: *id003
+      value: false
+      note: can be housed with other Victoria species Reports mixed keeping with other Lake Victoria species
+        Keeper maintained the species with another Victorian cichlid.
+    - source: *id014
+      value: false
+      note: compatible with similar Victorian or African cichlids
+    - source: *id010
+      value: false
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: low
+    rationale: "All four runs propose an empty list and the tally retains unanimous verification with\
+      \ low confidence. The curated registry has no entry naming chromogynos, and the public CRC page,\
+      \ specialist keeper account and two legacy archive threads provide no named cross involving it.\
+      \ General warnings about Victorian haplochromines do not identify a defensible set of mutually crossing\
+      \ species for this fish. Absence of a group records missing specific evidence, not reproductive\
+      \ isolation."
+    sources:
+    - &id036
+      kind: database
+      title: "Curated hybrid groups, data/species/hybrid-groups.yaml"
+    - *id024
+    - *id003
+    - *id001
+    - *id034
+    - *id009
+    evidence:
+    - source: *id036
+      value: []
+      note: No existing group includes Haplochromis chromogynos.
+    - source: *id024
+      value: []
+      note: "Search excerpt contains a keeper inquiry, not a hybrid observation. Archive search found\
+        \ a keeper seeking husbandry details, not a cross report"
+    - source: *id003
+      value: []
+      note: "kept with other Victoria species, no cross reported No cross is reported despite keeping\
+        \ it with other Lake Victoria cichlids."
+    - source: *id034
+      value: []
+      note: Public record does not name a species-specific hybrid group Public species account names no
+        hybrid group or documented cross.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+      - blue
+      - red
+      - black
+      - white
+      pattern: mixed
+    confidence: medium
+    rationale: "Generator proposes blue-grey, plain males; checker-a, checker-b and checker-c propose\
+      \ blue, red, black and white with a mixed pattern. Steeves' direct Zue Island observations describe\
+      \ mottled adult males with additional blue and red, corroborated by Ron's and Aquarium Wiki. The\
+      \ atlas's plain blue-grey account may describe other populations and notes aquarium variation. The\
+      \ mixed pattern represents the commonly maintained Zue Island line without claiming that every wild\
+      \ male shares it."
+    sources:
+    - *id006
+    - *id007
+    - *id003
+    - *id014
+    - *id009
+    - *id034
+    evidence:
+    - source: *id006
+      value:
+        baseColors:
+        - blue
+        - grey
+        pattern: plain
+      note: Adult males are reported as plain blue-grey.
+    - source: *id007
+      value:
+        baseColors:
+        - white
+        - black
+        pattern: spots
+      note: "Inherited extraction concerns female markings. Rereading confirms that the page also describes\
+        \ coloured, blotched males; it does not contradict the Zue Island keeper account."
+    - source: *id003
+      value: black and white piebald with blue and red in males
+    - source: *id003
+      value:
+        baseColors:
+        - blue
+        - red
+        - white
+        - black
+        pattern: mixed
+    - source: *id003
+      value:
+        baseColors:
+        - blue
+        - red
+        - black
+        - white
+        pattern: mixed
+      note: Adult males share piebald markings with added red and blue coloration.
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: All runs propose normal. The read sources establish insect picking and prepared-food acceptance
+      but do not compare feeding speeds. Normal remains a low-confidence inference; the inherited FishBase
+      evidence should not be read as a direct observation of aquarium feeding competition.
+    sources:
+    - *id002
+    - *id006
+    - *id003
+    - kind: model-knowledge
+      title: Model inference from benthic insect-picking behaviour
+    evidence:
+    - source: *id006
+      value: normal
+      note: Care account describes ordinary acceptance of prepared and live foods.
+    - source: *id003
+      value: normal
+      note: No feeding-speed observation reported; neutral inference.
+    - source: *id002
+      value: normal
+      note: "Feeding speed inferred from benthic picking, not directly stated"
+  minTank:
+    value:
+      volumeL: 230
+      lengthCm: 120
+      depthCm: 45
+    confidence: low
+    rationale: "Generator proposes 280 L and 120 by 45 cm; checker-a 150 L and 90 by 40 cm; checker-b\
+      \ 250 L and 120 by 45 cm; checker-c 210 L and 120 by 45 cm. The component medians are 230 L, 120\
+      \ cm length and 45 cm depth. Steeves documents a 55 US gallon colony, about 208 L, although his\
+      \ fish were 7 to 8 cm when described. Ron's recommends 55 gallons or larger and TankBud gives 250\
+      \ L. The reread atlas also recommends around four feet and 55 gallons or more, not the 75-gallon/284\
+      \ L recommendation attributed to it in inherited evidence. Retaining 230 L for one male and three\
+      \ females places the median within the supported recommendations; dimensions are inferred for territorial\
+      \ separation rather than measured experimental minima."
+    sources:
+    - *id006
+    - *id007
+    - *id003
+    - *id014
+    - *id031
+    - *id010
+    - *id032
+    evidence:
+    - source: *id006
+      value:
+        volumeL: 284
+        lengthCm: 122
+        depthCm: 46
+      note: "Disputed inherited extraction of a 75 US gallon recommendation. Rereading the archived page\
+        \ finds around four feet and 55 US gallons or more, not 75 gallons; the original proposed value\
+        \ is retained for audit and is not adopted."
+    - source: *id003
+      value:
+        volumeL: 208
+      note: colony in 55 gallons
+    - source: *id014
+      value:
+        volumeL: 208
+      note: 55 gallons or larger
+    - source: *id003
+      value:
+        volumeL: 208
+        lengthCm: 120
+        depthCm: 45
+      note: Reported 55 US gallon colony tank; dimensions inferred from four-foot format Keeper reports
+        a 55 US gallon mixed colony; dimensions inferred.
+    - source: *id010
+      value:
+        volumeL: 250
+        lengthCm: 120
+        depthCm: 45
+      note: Explicit minimum volume; footprint extrapolated
+    - source: *id032
+      value:
+        volumeL: 208
+        lengthCm: 120
+        depthCm: 45
+      note: "An owner mentioned a 55 gallon mixed tank; length and depth are approximate converted dimensions,\
+        \ not measured."
+    - source: *id006
+      value:
+        volumeL: 208
+        lengthCm: 120
+      note: Approximately 55 US gallons and four feet on rereading; the page supplies no depth measurement.
+  lifespanYears:
+    value:
+      min: 5
+      max: 10
+    confidence: low
+    rationale: "Generator and checker-c propose 5 to 10 years; checker-a and checker-b estimate 5 to 8\
+      \ years, yielding an initial median of 5 to 9. The only numeric species care entry found, Aquarium\
+      \ Wiki, states the wider 5 to 10 year span. Its explicit upper figure is retained instead of inventing\
+      \ a nine-year boundary from two unsupported estimates. No individual age record or stronger longevity\
+      \ study was found, so the planning range remains low confidence."
+    sources:
+    - *id007
+    - *id003
+    - kind: model-knowledge
+      title: Model estimate from similarly sized haplochromine cichlids
+    evidence:
+    - source: *id007
+      value:
+        min: 5
+        max: 10
+    - source: *id003
+      value: none stated
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: "All runs agree on maternal mouthbrooding, supported by FishBase and CRC. Steeves reports\
+      \ females carrying and retrieving fry and an incubation of about 18 days in his colony. His speculation\
+      \ about substrate spawning is not an observation of substrate brood care and does not outweigh the\
+      \ documented oral care. A small reported brood is colony experience, not a species-wide fecundity\
+      \ limit."
+    sources:
+    - *id002
+    - *id034
+    - *id003
+    - *id014
+    - *id030
+    evidence:
+    - source: *id002
+      value: maternal-mouthbrooder
+    - source: *id034
+      value: maternal-mouthbrooder
+    - source: *id003
+      value: maternal-mouthbrooder
+      note: "18 days brooding Keeper also suspected substrate spawning, then described mouth brooding."
+  beginnerSuitability:
+    value: moderate
+    confidence: low
+    rationale: "All runs propose moderate. Prepared feeding is straightforward, but male territorial behavior,\
+      \ shyness, locality identification and stable water management require some cichlid experience.\
+      \ This is a practical low-confidence assessment rather than a measured skill threshold."
+    sources:
+    - *id007
+    - *id035
+    - *id003
+    - *id014
+    - *id009
+    - *id010
+    - *id012
+    - *id024
+    evidence:
+    - source: *id007
+      value: moderate
+    - source: *id003
+      value: moderate
+      note: Species-specific care is presented as manageable but based on experienced keeping.
+    - source: *id024
+      value: moderate
+      note: The forum search found a keeper explicitly seeking species-specific husbandry help; this is
+        context only.
+partners:
+  suitable:
+  - species: Neochromis sp. 'madonna'
+    reason: Steeves reports a mixed colony with similarly sized fish that appeared to reduce shyness.
+    condition: One reported aquarium combination; provide more space than a single-species minimum and
+      monitor territorial pressure. This is not evidence that mixed breeding preserves pure lines.
+  - species: Small Synodontis sold as dwarf petricola
+    reason: Steeves reports keeping this aquarium catfish stock with chromogynos.
+    condition: The historic trade identification is uncertain and the account is not a general guarantee
+      for all Synodontis. Released fry remain vulnerable.
+  unsuitable:
+  - species: Very aggressive Lake Malawi mbuna
+    reason: The breeder specifically advises against these companions; a shy chromogynos group may be
+      displaced or persistently harassed.
+  - species: Tiny or delicate community fish
+    reason: "The breeder advises against these companions because of size and territorial mismatch. Predation\
+      \ remains level 0, so routine adult-fish hunting is not asserted."
+profile:
+  overview:
+    text: "This Lake Victoria insect feeder combines a modest adult size with unusually variable colour.\
+      \ Aquarium stock often carries the Zue Island label, where males as well as females can be mottled.\
+      \ The valid name is Haplochromis chromogynos; Paralabidochromis chromogynos remains widespread in\
+      \ hobby literature. A deliberate social group and a reliable locality history matter more than treating\
+      \ it as a generic colourful African cichlid."
+    sources:
+    - *id001
+    - *id002
+    - *id006
+    - *id003
+    - *id014
+  habitat:
+    text: "The fish occupies firm shallow lake margins, especially the boundary between rocky slopes,\
+      \ pebbles and sand. Zue Island records place it at about 4 m depth. Provide both sheltered rock\
+      \ faces and accessible substrate for foraging, with swimming room above them. The combined natural-water\
+      \ envelope is 22 to 30 C, pH 6.8 to 9.4, GH 1 to 3 dGH and KH 2 to 6 dKH. This describes spatial\
+      \ and seasonal lake variation; it is not a schedule for fluctuating aquarium chemistry."
+    sources:
+    - *id002
+    - *id005
+    - *id033
+    - *id003
+    - *id013
+    - *id011
+    - *id022
+  sizeAndGrowth:
+    text: "Plan around roughly 11 cm for either sex. FishBase measures its male-or-unsexed maximum as\
+      \ standard length, whereas aquarium figures often leave the length convention unstated. A keeper\
+      \ reports little difference between adult sexes, so a separate smaller female maximum is not justified.\
+      \ Some care pages extend the size to about 12.7 or 13 cm; allow spare space and assess the fish\
+      \ themselves rather than treating any figure as an exact growth ceiling."
+    sources:
+    - *id002
+    - *id007
+    - *id003
+    - *id010
+  husbandry:
+    text: "Use about 230 litres with a 120 by 45 cm footprint for one male and three females. Secure rockwork\
+      \ before filling, provide several retreats and interrupt long sightlines over sand or fine gravel.\
+      \ A mature filter, oxygenation and consistent maintenance support stable conditions. Species care\
+      \ targets are usually around 23 to 29 C and mildly to moderately alkaline pH. The wider decided\
+      \ tolerances are provisional planning envelopes, especially their endpoints; they do not establish\
+      \ that sustained 31 C or pH 9.4 is an ideal target. Captive reports include GH up to 20 dGH even\
+      \ though the lake is very soft, so the phrase hard African-lake water does not describe its natural\
+      \ habitat."
+    sources:
+    - *id006
+    - *id007
+    - kind: database
+      title: "Seriously Fish species page, Haplochromis chromogynos"
+      url: "https://www.seriouslyfish.com/species/haplochromis-chromogynos/"
+      accessed: '2026-10-13'
+      offline: true
+    - *id003
+    - *id014
+    - *id005
+    - *id013
+  socialBehavior:
+    text: A single male with three females is the practical starting group. This arrangement distributes
+      courtship attention without adding a rival male; it is not a claim that the species forms permanent
+      family units. Expect a hierarchy and localized defence around rock sites. Reports of territory holding
+      before observed spawning mean that territorial behavior need not stop between broods. Particularly
+      shy fish need cover and an opportunity to feed without repeated displacement.
+    sources:
+    - *id034
+    - *id006
+    - *id003
+    - *id014
+    - *id031
+  diet:
+    text: "Wild gut records point primarily to aquatic insect larvae, particularly caddisflies, with some\
+      \ midges and mayflies. Feed an appropriately sized prepared cichlid food alongside varied invertebrate\
+      \ items, and check that less assertive fish obtain a share. Pellets and flakes are practical captive\
+      \ foods rather than evidence that the wild diet is plant-dominated. No particular bloat sensitivity\
+      \ is documented. Predation level 0 reflects the absence of reported regular fish eating; occasional\
+      \ loss of fry remains possible."
+    sources:
+    - *id002
+    - *id006
+    - *id003
+    - *id014
+    - *id007
+  breeding:
+    text: "The female carries developing offspring in her mouth. In one keeper's colony incubation lasted\
+      \ about 18 days and initial broods were around a dozen fry, but those observations do not establish\
+      \ fixed timing or clutch size for every aquarium. Give carrying females places to withdraw and leave\
+      \ released fry access to fine cover. Newly feeding young can take suitable tiny invertebrate foods\
+      \ and then finely crushed prepared food. Maintain locality labels and known parentage when preserving\
+      \ a breeding line."
+    sources:
+    - *id002
+    - *id034
+    - *id024
+    - *id003
+    - *id014
+  sexing:
+    text: "Pattern alone is an unreliable guide to sex. The commonly maintained Zue Island stock can have\
+      \ black-and-white markings in both sexes, with adult males developing additional blue and red, particularly\
+      \ on the fins. Other accounts describe more uniformly blue-grey males from different material. Young,\
+      \ subordinate and stressed fish may be difficult to distinguish. Use mature appearance together\
+      \ with observed courtship and mouthbrooding rather than assigning every mottled fish to the female\
+      \ sex."
+    sources:
+    - *id006
+    - *id007
+    - *id003
+    - *id014
+  compatibility:
+    text: "Community keeping is possible with carefully selected robust companions, and a specialist keeper\
+      \ reports it with another Victorian cichlid and small Synodontis. That experience is a starting\
+      \ point rather than a guarantee for every mix. Avoid strongly aggressive mbuna and very small or\
+      \ delicate fish; mixed communities need more space than the minimum for one chromogynos harem. The\
+      \ empty hybrid-group list means no specific crossing group was established in this review. It provides\
+      \ no assurance against hybridization, so a dedicated line remains the clearest option when parentage\
+      \ matters."
+    sources:
+    - *id006
+    - *id035
+    - *id024
+    - *id003
+    - *id014
+    - *id034
+  problems:
+    text: "Persistent exclusion from food or shelter is a reason to reassess the group and its layout.\
+      \ Spare retreats and a restrained male count help prevent a shy fish from becoming trapped by territorial\
+      \ pressure. The long-term GH, KH and extreme temperature or pH limits are poorly documented; avoid\
+      \ interpreting a broad planning tolerance as a reason to force water toward an endpoint. Misidentified\
+      \ mottled stock is another practical problem: the keeper account describes acquiring a different\
+      \ piebald fish under the chromogynos name. Verify the origin of breeding stock and investigate unexplained\
+      \ illness without assuming that all Victorian cichlids have the same needs."
+    sources:
+    - *id002
+    - *id006
+    - *id007
+    - *id003
+    - *id014
+provenance:
+  runs:
+  - role: generator
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  disagreements:
+  - field: features.origin
+    proposals:
+    - by: generator
+      value:
+        continent: Africa
+        region: Lake Victoria
+        waterbody: lake-victoria
+        localities:
+        - Napoleon Gulf near Jinja
+        - Zue Island
+    - by: checker-a
+      value:
+        continent: Africa
+        region: Lake Victoria
+        waterbody: lake-victoria
+        localities:
+        - Napoleon Gulf near Jinja (Uganda)
+        - Zue Island (Tanzania)
+        - Mwanza Gulf
+    - by: checker-b
+      value:
+        continent: Africa
+        region: Lake Victoria
+        waterbody: lake-victoria
+        localities:
+        - Lake Victoria basin
+    - by: checker-c
+      value:
+        continent: Africa
+        region: Lake Victoria
+        waterbody: Lake Victoria
+        localities:
+        - "Napoleon Gulf near Jinja, Uganda"
+        - Lake-wide littoral records
+    decision:
+      continent: Africa
+      region: Lake Victoria
+      waterbody: lake-victoria
+      localities:
+      - "Napoleon Gulf near Jinja, Uganda"
+      - "Zue Island, Tanzania"
+      - Mwanza Gulf
+    rationale: All runs place the species in Lake Victoria. The Catalog establishes Napoleon Gulf near
+      Jinja as the type locality; the specialist keeper account reports Zue Island aquarium stock and
+      historical records south to Mwanza Gulf. Generator lists Jinja and Zue Island; checker-a also lists
+      Mwanza Gulf; checker-b uses the broader lake basin; checker-c uses Jinja and lake-wide littoral
+      records and spells the waterbody as Lake Victoria. The locality synthesis retains these records
+      under the canonical lake-victoria identifier without implying that every historical locality remains
+      occupied.
+  - field: features.temperatureC.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 20
+        max: 32
+    - by: checker-a
+      value:
+        min: 21
+        max: 31
+    - by: checker-b
+      value:
+        min: 22
+        max: 30
+    - by: checker-c
+      value:
+        min: 22
+        max: 30
+    decision:
+      min: 22
+      max: 31
+    rationale: "The tally decides 22 to 31 C with unanimous verification and low confidence. Generator\
+      \ proposed 20 to 32 C, checker-a 21 to 31 C, checker-b 22 to 30 C and checker-c 22 to 30 C. The\
+      \ decided interval retains the natural 22 to 30 C span and the tallied upper margin; it does not\
+      \ adopt the generator's wider, unsupported endpoints. Ron's species listing recommends 23.3 to 28.9\
+      \ C, Aquarium Wiki 25.6 to 27.8 C, and the atlas and TankBud around 23 to 27 C. These narrower care\
+      \ recommendations do not establish failure limits. The four proposals are not identical despite\
+      \ the tally's unanimous verification label, which is retained exactly. Long-term safety at 31 C\
+      \ is inferred and remains poorly supported."
+  - field: features.ph.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 6.5
+        max: 9.5
+    - by: checker-a
+      value:
+        min: 6.8
+        max: 9.4
+    - by: checker-b
+      value:
+        min: 6.8
+        max: 9.4
+    - by: checker-c
+      value:
+        min: 6.8
+        max: 9.4
+    decision:
+      min: 6.8
+      max: 9.4
+    rationale: "The tally decides pH 6.8 to 9.4 with unanimous verification and low confidence. Generator\
+      \ proposed the wider 6.5 to 9.5 interval; checker-a, checker-b and checker-c each proposed 6.8 to\
+      \ 9.4. Ron's species listing gives 7.4 to 8.4, TankBud 7.0 to 8.5, the atlas 7.2 to 9.0 and general\
+      \ Victorian guidance 7.2 to 8.6. No read source establishes failure immediately outside those care\
+      \ targets or demonstrates years of health at the lake extremes. The chosen envelope equals the required\
+      \ natural range because the tally requires its inclusion, not because the endpoints are measured\
+      \ physiological limits. The wider generator proposal is unsupported by direct tolerance evidence\
+      \ and is not adopted."
+  - field: features.ghDgh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 1
+        max: 20
+    - by: checker-a
+      value:
+        min: 1
+        max: 18
+    - by: checker-b
+      value:
+        min: 1
+        max: 10
+    - by: checker-c
+      value:
+        min: 1
+        max: 20
+    - by: tiebreaker-1
+      value:
+        min: 1
+        max: 20
+    - by: tiebreaker-2
+      value:
+        min: 1
+        max: 20
+    decision:
+      min: 1
+      max: 20
+    rationale: "The tally decides 1 to 20 dGH by qualified majority, five of six agreeing votes under\
+      \ the range-agreement rule, with low confidence. Generator, checker-c, tiebreaker-1 and tiebreaker-2\
+      \ proposed 1 to 20 dGH; checker-a proposed 1 to 18 dGH; checker-b proposed 1 to 10 dGH. The natural\
+      \ 1 to 3 dGH establishes the low end. Aquarium Wiki gives 10 to 20 degrees hardness, interpreted\
+      \ as GH in the later runs although the displayed scale is only degrees. The Einrichtungsbeispiele\
+      \ care sheet gives 5 to 15 dGH; aquarium 38016 reports 15 to 20 dGH between its 2017 establishment\
+      \ and 2019 update. That account contains a possible chilotes text substitution, and duration at\
+      \ each endpoint is unknown, so it is supporting experience rather than proof of chronic safety.\
+      \ Aquarium 41071 reports 7 to 9 dGH soon after stocking. Imperial Tropicals and Ron's recommend\
+      \ hard water without numeric limits, and OATA gives 12 to 18 dGH for African lake cichlids generally.\
+      \ The narrower 10 and 18 dGH proposals do not establish harm above their maxima. The full envelope\
+      \ is an uncertain husbandry synthesis, not a tested threshold."
+  - field: features.khDkh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 1
+        max: 10
+    - by: checker-a
+      value:
+        min: 2
+        max: 12
+    - by: checker-b
+      value:
+        min: 2
+        max: 12
+    - by: checker-c
+      value:
+        min: 2
+        max: 10
+    decision:
+      min: 2
+      max: 11
+    rationale: "The tally decides 2 to 11 dKH with unanimous verification and low confidence. Generator\
+      \ proposed 1 to 10 dKH, checker-a and checker-b 2 to 12 dKH, and checker-c 2 to 10 dKH. The interval\
+      \ includes the natural 2 to 6 dKH and extends into buffered aquarium practice, using the tally's\
+      \ rounded endpoint synthesis. No species-specific KH limit was found. That Pet Place recommends\
+      \ 8 to 12 dKH for Malawi and Victoria cichlids, and OATA gives the wider upper range of 10 to 15\
+      \ dKH for African lake cichlids generally. The chosen maximum of 11 is narrower than those source\
+      \ maxima of 12 and 15 because these are broad group recommendations rather than demonstrated chromogynos\
+      \ requirements or thresholds. KH is inferred from related pH and GH keeping advice, not equated\
+      \ with GH. Neither endpoint is evidence of failure outside the interval."
+  - field: features.maxSizeCm
+    proposals:
+    - by: generator
+      value:
+        male: 11
+        female: 10
+    - by: checker-a
+      value:
+        male: 11
+        female: 10
+    - by: checker-b
+      value:
+        male: 11
+        female: 11
+    - by: checker-c
+      value:
+        male: 11
+        female: 11
+    decision:
+      male: 11
+      female: 11
+    rationale: "Male proposals are 11 cm in all four runs. Generator and checker-a propose females of\
+      \ 10 cm; checker-b and checker-c 11 cm, giving an initial female median of 10.5 cm. Steeves reports\
+      \ about 11 cm with little size difference between sexes, so 11 cm for both is better supported than\
+      \ imposing a half-centimetre sex difference. FishBase records 11 cm standard length for male or\
+      \ unsexed fish and does not independently measure females. The wider Aquarium Wiki range is 10.2\
+      \ to 12.7 cm and TankBud gives 13 cm without a comparable length standard. The 11 cm planning maximum\
+      \ is approximate and should not be treated as a precise total-length conversion."
+  - field: features.diet
+    proposals:
+    - by: generator
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - insect larvae
+        - small benthic invertebrates
+        - quality cichlid pellets
+        - flakes
+    - by: checker-a
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - insect larvae
+        - Cyclop-eeze
+        - brine shrimp
+        - cichlid pellets
+    - by: checker-b
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - insect larvae
+        - aquatic invertebrates
+    - by: checker-c
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - insect larvae
+        - small benthic invertebrates
+    decision:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+      - insect larvae
+      - small benthic invertebrates
+      - quality cichlid pellets
+      - flakes
+    rationale: "The tally retains invertivore, bloatSensitive false and the generator's food list, with\
+      \ unanimous verification and high confidence. All four runs agree on the scored type and flag. FishBase\
+      \ reports chiefly caddisfly larvae with some midge larvae and mayfly nymphs; the inherited trophic\
+      \ review and the keeper account corroborate insect feeding. Aquarium Wiki instead labels the captive\
+      \ diet omnivorous, but acceptance of flakes and pellets does not outweigh the field feeding evidence.\
+      \ Generator lists insect larvae, small benthic invertebrates, pellets and flakes; checker-a adds\
+      \ Cyclop-eeze and brine shrimp; checker-b lists insect larvae and aquatic invertebrates; checker-c\
+      \ lists insect larvae and small benthic invertebrates. The false bloat flag means no particular\
+      \ sensitivity was documented, rather than demonstrated immunity."
+  - field: features.aggressionConspecific
+    proposals:
+    - by: generator
+      value: 3
+    - by: checker-a
+      value: 2
+    - by: checker-b
+      value: 3
+    - by: checker-c
+      value: 2
+    decision: 2
+    rationale: "Generator and checker-b propose 3; checker-a and checker-c propose 2. A breeding colony\
+      \ in Steeves' account, Ron's mild-aggression description and the pre-spawning forum report of separate\
+      \ male territories support a managed hierarchy with chasing. The atlas warns that rival males can\
+      \ be bullied, but no source establishes frequent injury in a suitable adult harem. Level 2 is selected\
+      \ for the recommended one-male group; cramped housing or excess males may produce worse behavior."
+  - field: features.aggressionHeterospecific
+    proposals:
+    - by: generator
+      value: 2
+    - by: checker-a
+      value: 1
+    - by: checker-b
+      value: 1
+    - by: checker-c
+      value: 1
+    decision: 1
+    rationale: "Generator proposes 2; checker-a, checker-b and checker-c propose 1. The species-specific\
+      \ keeper account reports mixed housing, and Ron's describes only mild aggression. These observations\
+      \ better support local displays than repeated expulsion of other species. The inherited forum 63657\
+      \ level-2 entry is a request for advice rather than an observed aggression outcome, and thread 68015\
+      \ concerns an immature mixed aquarium with water-quality trouble rather than evidence of compatibility."
+  - field: features.territory
+    proposals:
+    - by: generator
+      value:
+        size: small
+        breedingOnly: true
+    - by: checker-a
+      value:
+        size: small
+        breedingOnly: false
+    - by: checker-b
+      value:
+        size: small
+        breedingOnly: true
+    - by: checker-c
+      value:
+        size: small
+        breedingOnly: true
+    decision:
+      size: small
+      breedingOnly: false
+    rationale: "All runs propose a small territory. Generator, checker-b and checker-c restrict it to\
+      \ breeding; checker-a does not. The Capital Cichlids report describes two males excluding presumed\
+      \ females from established sites before any observed spawning, while Ron's mentions localized territorial\
+      \ behavior. That direct pre-spawning observation supports breedingOnly false more strongly than\
+      \ inferring a breeding restriction from habitat alone. No measured territory diameter is available."
+  - field: features.habitatZones
+    proposals:
+    - by: generator
+      value:
+      - rock
+      - sand
+    - by: checker-a
+      value:
+      - rock
+      - sand
+    - by: checker-b
+      value:
+      - rock
+      - sand
+    - by: checker-c
+      value:
+      - rock
+      - sand
+      - openWater
+    decision:
+    - rock
+    - sand
+    rationale: "Generator, checker-a and checker-b propose rock and sand; checker-c also adds openWater.\
+      \ FishBase describes firm littoral substrate, and Steeves reports pebbles on a shallow rocky slope\
+      \ at Zue Island. Swimming just above that substrate does not establish an independent open-water\
+      \ habitat requirement. Rock and adjacent sand are retained; open swimming room still belongs in\
+      \ the aquarium layout."
+  - field: features.social
+    proposals:
+    - by: generator
+      value:
+        structure: harem
+        ratio: 3
+    - by: checker-a
+      value:
+        structure: harem
+        ratio: 3
+    - by: checker-b
+      value:
+        structure: harem
+        ratio: 2
+    - by: checker-c
+      value:
+        structure: harem
+        ratio: 3
+    decision:
+      structure: harem
+      ratio: 3
+    rationale: "Generator, checker-a and checker-c propose one male with three females; checker-b proposes\
+      \ one male with two. CRC describes polygynandrous mating, not a permanent bonded harem, while direct\
+      \ aquarium accounts support colonies and Ron's offers a one-male/four-female breeder group. Three\
+      \ females per male is a practical median recommendation for distributing attention. TankBud's solitary-or-pair\
+      \ suggestion and Aquarium Wiki's 1:1 ratio remain dissenting husbandry advice rather than evidence\
+      \ for stable pair bonding."
+  - field: features.coloration
+    proposals:
+    - by: generator
+      value:
+        baseColors:
+        - blue
+        - grey
+        pattern: plain
+    - by: checker-a
+      value:
+        baseColors:
+        - black
+        - white
+        - blue
+        - red
+        pattern: mixed
+    - by: checker-b
+      value:
+        baseColors:
+        - blue
+        - red
+        - white
+        - black
+        pattern: mixed
+    - by: checker-c
+      value:
+        baseColors:
+        - blue
+        - red
+        - black
+        - white
+        pattern: mixed
+    decision:
+      baseColors:
+      - blue
+      - red
+      - black
+      - white
+      pattern: mixed
+    rationale: "Generator proposes blue-grey, plain males; checker-a, checker-b and checker-c propose\
+      \ blue, red, black and white with a mixed pattern. Steeves' direct Zue Island observations describe\
+      \ mottled adult males with additional blue and red, corroborated by Ron's and Aquarium Wiki. The\
+      \ atlas's plain blue-grey account may describe other populations and notes aquarium variation. The\
+      \ mixed pattern represents the commonly maintained Zue Island line without claiming that every wild\
+      \ male shares it."
+  - field: features.minTank
+    proposals:
+    - by: generator
+      value:
+        volumeL: 280
+        lengthCm: 120
+        depthCm: 45
+    - by: checker-a
+      value:
+        volumeL: 150
+        lengthCm: 90
+        depthCm: 40
+    - by: checker-b
+      value:
+        volumeL: 250
+        lengthCm: 120
+        depthCm: 45
+    - by: checker-c
+      value:
+        volumeL: 210
+        lengthCm: 120
+        depthCm: 45
+    decision:
+      volumeL: 230
+      lengthCm: 120
+      depthCm: 45
+    rationale: "Generator proposes 280 L and 120 by 45 cm; checker-a 150 L and 90 by 40 cm; checker-b\
+      \ 250 L and 120 by 45 cm; checker-c 210 L and 120 by 45 cm. The component medians are 230 L, 120\
+      \ cm length and 45 cm depth. Steeves documents a 55 US gallon colony, about 208 L, although his\
+      \ fish were 7 to 8 cm when described. Ron's recommends 55 gallons or larger and TankBud gives 250\
+      \ L. The reread atlas also recommends around four feet and 55 gallons or more, not the 75-gallon/284\
+      \ L recommendation attributed to it in inherited evidence. Retaining 230 L for one male and three\
+      \ females places the median within the supported recommendations; dimensions are inferred for territorial\
+      \ separation rather than measured experimental minima."
+  - field: features.lifespanYears
+    proposals:
+    - by: generator
+      value:
+        min: 5
+        max: 10
+    - by: checker-a
+      value:
+        min: 5
+        max: 8
+    - by: checker-b
+      value:
+        min: 5
+        max: 8
+    - by: checker-c
+      value:
+        min: 5
+        max: 10
+    decision:
+      min: 5
+      max: 10
+    rationale: "Generator and checker-c propose 5 to 10 years; checker-a and checker-b estimate 5 to 8\
+      \ years, yielding an initial median of 5 to 9. The only numeric species care entry found, Aquarium\
+      \ Wiki, states the wider 5 to 10 year span. Its explicit upper figure is retained instead of inventing\
+      \ a nine-year boundary from two unsupported estimates. No individual age record or stronger longevity\
+      \ study was found, so the planning range remains low confidence."
+  - field: taxonomy.synonyms
+    proposals:
+    - by: generator
+      value:
+      - name: Paralabidochromis chromogynos
+        note: Older generic combination used in hobby literature.
+    - by: checker-a
+      value:
+      - name: Paralabidochromis chromogynos
+        note: Name used in the aquarium hobby; the Catalog of Fishes lists no combination in Paralabidochromis
+          and treats the species as valid in Haplochromis.
+    - by: checker-b
+      value: []
+    - by: checker-c
+      value:
+      - name: Paralabidochromis chromogynos
+        note: Historical combination used by Greenwood and in hobby literature.
+    decision:
+    - name: Paralabidochromis chromogynos
+      note: Alternative generic combination used in specialist and aquarium literature.
+    rationale: "Generator, checker-a and checker-c retain the alternative combination Paralabidochromis\
+      \ chromogynos; checker-b omits a synonyms list but retains the legacy name. Keep the combination\
+      \ for discoverability with an explicit generic-combination note, while the Catalog controls the\
+      \ valid name. The difference is nomenclatural presentation rather than a competing species identity."
