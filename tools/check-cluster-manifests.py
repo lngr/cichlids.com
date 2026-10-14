@@ -176,11 +176,12 @@ def main():
                {'number': 19, 'sha': 'c' * 40, 'state': 'open', 'labels': ['preview']}]
         for name, appset in sets.items():
             current = generate(appset, ROOT, [], chart)
-            require(len(current) == (3 if name in {'staging', 'prod'} else 0),
-                    f'{name}: repository discovers placeholder, postgres and keycloak, with no unrequested previews')
+            services = {'api', 'web', 'postgres', 'keycloak'} if name == 'staging' else (
+                {'api', 'web', 'placeholder', 'postgres', 'keycloak'} if name == 'prod' else set())
+            require(len(current) == len(services), f'{name}: repository discovers environment services')
             for app in current:
                 check_application(app)
-                require(app['metadata']['name'] in {f'placeholder-{name}', f'postgres-{name}', f'keycloak-{name}'},
+                require(app['metadata']['name'] in {f'{service}-{name}' for service in services},
                         'Deployable services join environment discovery')
                 rendered.append(app)
             fixture = generate(appset, ROOT / 'tools/fixtures/cluster-manifests', prs, chart)

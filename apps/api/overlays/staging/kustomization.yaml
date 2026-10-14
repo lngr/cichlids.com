@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: cichlids-staging
+resources:
+- ../../base
+- settings.yaml
+patches:
+- target:
+    kind: Deployment
+    name: api
+  patch: "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: api\nspec:\n \
+    \ template:\n    spec:\n      containers:\n      - name: api\n        env:\n \
+    \       - name: WebSession__ClientSecret\n          valueFrom:\n            secretKeyRef:\n\
+    \              name: keycloak-web-bff\n              key: client-secret\n"
+images:
+- name: ghcr.io/lngr/cichlids-api
+  digest: sha256:0000000000000000000000000000000000000000000000000000000000000000
+- name: ghcr.io/lngr/cichlids-migration
+  digest: sha256:0000000000000000000000000000000000000000000000000000000000000000

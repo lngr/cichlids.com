@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: cichlids-prod
+resources:
+- ../../base
+- settings.yaml
+replicas:
+- name: api
+  count: 0
+patches:
+- target:
+    kind: Job
+    name: api-migrate
+  patch: "- op: remove\n  path: /metadata/annotations\n- op: add\n  path: /spec/suspend\n\
+    \  value: true\n"
+images:
+- name: ghcr.io/lngr/cichlids-api
+  digest: sha256:0000000000000000000000000000000000000000000000000000000000000000
+- name: ghcr.io/lngr/cichlids-migration
+  digest: sha256:0000000000000000000000000000000000000000000000000000000000000000

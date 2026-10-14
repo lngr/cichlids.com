@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels: &id001
+      app.kubernetes.io/name: api
+  template:
+    metadata:
+      labels: *id001
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1654
+        runAsGroup: 1654
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: api
+        image: ghcr.io/lngr/cichlids-api@sha256:0000000000000000000000000000000000000000000000000000000000000000
+        ports:
+        - name: http
+          containerPort: 8080
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        resources:
+          requests:
+            cpu: 250m
+            memory: 256Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          periodSeconds: 10
+          timeoutSeconds: 2
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          periodSeconds: 10
+          timeoutSeconds: 2
+          failureThreshold: 3
+        startupProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          periodSeconds: 10
+          timeoutSeconds: 2
+          failureThreshold: 30
+        envFrom:
+        - configMapRef:
+            name: api-settings
+        env:
+        - name: ConnectionStrings__Cichlids
+          value: Host=postgres-rw;Port=5432;Database=cichlids;Username=cichlids;Passfile=/db/pgpass;GSS Encryption Mode=Disable
+        - name: CICHLIDS_SLUG_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: api-slugs
+              key: secret
+        - name: ObjectStorage__AccessKey
+          valueFrom:
+            secretKeyRef:
+              name: api-media
+              key: access-key
+        - name: ObjectStorage__SecretKey
+          valueFrom:
+            secretKeyRef:
+              name: api-media
+              key: secret-key
+        volumeMounts:
+        - name: key-ring
+          mountPath: /keys
+          readOnly: true
+        - name: tmp
+          mountPath: /tmp
+        - name: database
+          mountPath: /db
+          readOnly: true
+      volumes:
+      - name: key-ring
+        secret:
+          secretName: api-data-protection
+      - name: tmp
+        emptyDir:
+          medium: Memory
+          sizeLimit: 64Mi
+      - name: database
+        secret:
+          secretName: postgres-app
+          items:
+          - key: pgpass
+            path: pgpass

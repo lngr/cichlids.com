@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-settings
+data:
+  ASPNETCORE_ENVIRONMENT: Staging
+  Authentication__Authority: https://auth.staging.cichlids.com/realms/cichlids
+  Authentication__Audience: cichlids-api
+  Authentication__RequireHttpsMetadata: 'true'
+  DataProtection__KeyRingPath: /keys
+  WebSession__SecureCookies: 'true'
+  ObjectStorage__ServiceUrl: https://nbg1.your-objectstorage.com
+  ObjectStorage__Region: nbg1
+  ObjectStorage__Bucket: REPLACE_WITH_STAGING_MEDIA_BUCKET
+  ObjectStorage__PublicBaseUrl: https://REPLACE_WITH_STAGING_MEDIA_BUCKET.nbg1.your-objectstorage.com
+  ObjectStorage__ForcePathStyle: 'false'
+  OutboxDispatcher__Enabled: 'false'
+  WebSession__CallbackUrl: https://staging.cichlids.com/api/auth/callback
+  WebSession__PostLogoutRedirectUrl: https://staging.cichlids.com/me
+  WebSession__AllowedOrigins__0: https://staging.cichlids.com
+  WebSession__ClientId: cichlids-web-bff
+  ASPNETCORE_FORWARDEDHEADERS_ENABLED: 'true'

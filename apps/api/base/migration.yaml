@@ -1,0 +1,63 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: api-migrate
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded
+spec:
+  backoffLimit: 2
+  activeDeadlineSeconds: 300
+  ttlSecondsAfterFinished: 600
+  template:
+    spec:
+      restartPolicy: Never
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1654
+        runAsGroup: 1654
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: migrate
+        image: ghcr.io/lngr/cichlids-migration@sha256:0000000000000000000000000000000000000000000000000000000000000000
+        args:
+        - migrate
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        env:
+        - name: CICHLIDS_ETL_TARGET_CONNECTION
+          value: Host=postgres-rw;Port=5432;Database=cichlids;Username=cichlids;Passfile=/db/pgpass;GSS Encryption Mode=Disable
+        - name: CICHLIDS_ETL_LEGACY_CONNECTION
+          value: unused-by-migrate
+        - name: DOTNET_ENVIRONMENT
+          value: Production
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+        - name: database
+          mountPath: /db
+          readOnly: true
+      volumes:
+      - name: tmp
+        emptyDir:
+          medium: Memory
+          sizeLimit: 64Mi
+      - name: database
+        secret:
+          secretName: postgres-app
+          items:
+          - key: pgpass
+            path: pgpass

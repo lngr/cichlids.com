@@ -164,7 +164,7 @@ class EdgeDelivery(unittest.TestCase):
         self.assertIn('cichlids.com', resource(docs, 'ConfigMap', 'placeholder-page')['data']['index.html'])
 
     def test_persistent_placeholder_hosts_and_tls(self):
-        for env, host in [('staging', 'staging.cichlids.com'), ('prod', 'cichlids.com')]:
+        for env, host in [('prod', 'cichlids.com')]:
             with self.subTest(env=env):
                 self.assert_placeholder(build(f'apps/placeholder/overlays/{env}'), host, f'cichlids-{env}')
 
