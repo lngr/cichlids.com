@@ -1,12 +1,3 @@
-# Native Android flow: logs in as the local dev user through the Keycloak page, uploads a photo
-# from the device gallery and publishes it; the picture detail and the gallery show its title.
-# Publishing writes to the database, so it runs against a native build whose API URL points at
-# the write stack's API (app/mobile/e2e/write-stack.sh), never at the seeded dev API. The login
-# also needs Keycloak reachable from the emulator under the issuer the API accepts,
-# http://localhost:8180/realms/cichlids. With adb reverse tcp:8180 tcp:8180 and adb reverse
-# tcp:5046 tcp:5046 the localhost URLs work on the device, so the build uses
-# EXPO_PUBLIC_API_URL=http://localhost:5046 and the default Keycloak URL. The pick steps drive
-# the Android system photo picker, which lists the most recently added image first.
 appId: com.cichlids.app
 tags:
   - TASK-3.21
@@ -17,21 +8,21 @@ tags:
     clearState: true
 - evalScript: ${output.title = 'Maestro upload ' + Date.now()}
 
-# Anonymous, the upload button leads to the Me tab and its login.
+# Keycloak runs in the Android browser; its fields use accessible labels.
 - tapOn:
     id: "upload-button"
 - tapOn:
     id: "login-button"
 - tapOn:
-    id: "username"
+    text: "Username or email|Benutzername oder E-Mail"
 - inputText: "dev-user"
 - tapOn:
-    id: "password"
+    text: "Password|Passwort"
 - inputText: "dev-password" # gitleaks:allow
 - tapOn:
-    id: "kc-login"
+    text: "Sign In|Anmelden"
 - assertVisible:
-    id: "me-name"
+    id: "me-profile-button"
 
 - tapOn:
     id: "tab-gallery"
@@ -51,6 +42,10 @@ tags:
     id: "upload-title"
 - inputText: ${output.title}
 - hideKeyboard
+- scrollUntilVisible:
+    element:
+      id: "upload-publish"
+    direction: DOWN
 - tapOn:
     id: "upload-publish"
 - extendedWaitUntil:

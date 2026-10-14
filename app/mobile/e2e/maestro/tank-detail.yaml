@@ -1,12 +1,17 @@
-appId: http://localhost:8081
+appId: com.cichlids.app
 tags:
   - TASK-3.20
 ---
-- launchApp
-- assertVisible: "Galerie"
-- tapOn: "Becken"
-- assertVisible: "Becken"
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "tab-tanks"
 - tapOn:
     id: "tank-card"
     index: 0
-- assertVisible: "Datenblatt"
+- scrollUntilVisible:
+    element:
+      id: "tank-datasheet"
+    direction: DOWN
+- assertVisible:
+    id: "tank-datasheet"

@@ -1,11 +1,17 @@
-appId: http://localhost:8081
+appId: com.cichlids.app
 tags:
   - TASK-3.19
 ---
-- launchApp
-- assertVisible: "Galerie"
+- launchApp:
+    clearState: true
+- assertVisible:
+    id: "tab-gallery"
 - tapOn:
     id: "picture-card"
     index: 0
+- extendedWaitUntil:
+    visible:
+      id: "picture-title"
+    timeout: 30000
 - assertVisible:
-    text: ".+"
+    id: "picture-title"

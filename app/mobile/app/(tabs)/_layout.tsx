@@ -31,6 +31,7 @@ export default function TabsLayout() {
         name="tanks"
         options={{
           title: t("tabs.tanks"),
+          tabBarButtonTestID: "tab-tanks",
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="fishbowl" color={color} size={size} />,
         }}
       />
@@ -38,6 +39,7 @@ export default function TabsLayout() {
         name="community"
         options={{
           title: t("tabs.community"),
+          tabBarButtonTestID: "tab-community",
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="forum" color={color} size={size} />,
         }}
       />

@@ -134,7 +134,7 @@ start_api() {
     ASPNETCORE_ENVIRONMENT=Development \
     ConnectionStrings__Cichlids="$DB_CONNECTION" \
     ObjectStorage__Bucket="$BUCKET_NAME" \
-    ObjectStorage__PublicBaseUrl="http://127.0.0.1:9000/${BUCKET_NAME}" \
+    ObjectStorage__PublicBaseUrl="http://${CICHLIDS_WRITE_PUBLIC_HOST:-127.0.0.1}:9000/${BUCKET_NAME}" \
     OutboxDispatcher__Enabled=true \
     OutboxDispatcher__PollInterval=00:00:01 \
     OutboxDispatcher__GiveUpAfter=00:00:15 \

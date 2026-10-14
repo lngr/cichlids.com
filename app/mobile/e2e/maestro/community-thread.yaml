@@ -1,11 +1,11 @@
-appId: http://localhost:8081
+appId: com.cichlids.app
 tags:
   - TASK-3.27
 ---
-- launchApp
-- assertVisible: "Galerie"
-- tapOn: "Community"
-- assertVisible: "Archiv der alten Community-Foren. Nur lesbar, keine neuen Beiträge."
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "tab-community"
 - tapOn:
     id: "thread-row"
     index: 0

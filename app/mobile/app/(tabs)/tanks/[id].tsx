@@ -97,7 +97,7 @@ export default function TankDetailScreen() {
               <Text style={[theme.type.body, { color: theme.colors.fg, marginTop: 10 }]}>{tank.description}</Text>
             ) : null}
 
-            <Text style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20, marginBottom: 4 }]}>{t("tanks.detail.datasheet")}</Text>
+            <Text testID="tank-datasheet" style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20, marginBottom: 4 }]}>{t("tanks.detail.datasheet")}</Text>
             <DataRow label={t("tanks.detail.dimensions")} value={dimensions} />
             <DataRow label={t("tanks.detail.waterValues")} value={waterSummary} />
             <DataRow label={t("tanks.detail.substrate")} value={tank.gravel} />
