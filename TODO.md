@@ -110,12 +110,6 @@ Claude-Agent (Sonnet); Generator, Prüfer B und C, Tie-Breaker und Schiedsrichte
 - [ ] Legacy 589 „Tilapia aurea" (0 Fotos, Kategorie African) ist vermutlich Oreochromis aureus;
   das Profil von Melanochromis auratus führt Tilapia aurea als Synonym nach Goren (1974). Prüfen,
   ob dieses Synonym stimmt
-- [ ] Weiche Merkmale mit auffällig großen Werten prüfen: Der Schiedsrichter übernimmt beim
-  Mindestbecken und bei der Maximalgröße oft den größten Vorschlag (etwa Labeotropheus
-  fuelleborni 600 L, Chilotilapia rhoadesii 30 cm und 1000 L)
-- [ ] Legacy 770 „Hybrid (man-made) Parrot Cichlid" (174 Fotos) ist keine Art: offen, ob und wie
-  die Zuchthybride ein Profil bekommt; der Flowerhorn hat ein Profil, und Kreuzungsgruppen nennen
-  den Blutpapagei als Mitglied
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
 - [ ] Das OpenAlex-Tagesbudget (1 USD, Reset 02:00 Uhr MESZ) reicht für etwa 12 Arten. Danach
   zahlt das Prepaid-Guthaben des Schlüssels (am 2026-10-13 etwa 10 USD), weil die Werkzeuge nur
@@ -130,20 +124,6 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
   Bereich" nicht. Vorgabe: Der Konflikt hängt von der Größe des gemeinsamen Bereichs und vom
   Abstand zu den Idealen beider Arten ab, denn je weiter ein Fisch von seinem Ideal entfernt lebt,
   desto größer sind Stress und Krankheitsrisiko. Umsetzung im Besatz-Planer, siehe Abschnitt 5.
-- [ ] **Quellenarten bekannter Seiten:** Fishkeeper gilt in manchen Profilen als database, in
-  anderen als website; Tropical Freshwater Fish und FishProfiles sind als database eingestuft.
-  Davon hängt ab, ob ein hartes Merkmal zwei externe Quellen hat. Ebenso offen: ob Cichlid Room
-  Companion als eine der zwei Quellen zählt oder nur zusätzlich. Vorschlag: feste Liste der
-  Quellenarten in `tools/species-data/prompts/common.md`, Profile danach neu prüfen. Die
-  Schiedsrichter stufen Händlerseiten (LiveAquaria, Aquarium Glaser, Guidarium) als website
-  ein, Fishkeeper wechselnd (database bei Maylandia greshakei und Chindongo demasoni, website
-  bei Pseudotropheus sp. 'acei', Chindongo socolofi und Maylandia lombardoi), den Cichlid Room
-  Companion bei Amphilophus labiatus als website.
-- [ ] **Heros severus und der Handels-Severum:** Das Profil beschreibt H. severus im engen Sinn
-  (Schwarzwasser, pH etwa 4-6). Legacy 749 und die Archivfotos zeigen fast sicher den
-  Handels-Severum, meist H. efasciatus. Optionen: zusätzliches Profil H. efasciatus mit
-  Zuordnung der Fotos, oder Legacy 749 umhängen. Legacy 709 Cichlasoma severum (187 Fotos) ist
-  ein weiterer Eintrag derselben Art und gehört in diese Entscheidung.
 - [ ] **Vorsichtsregel bei der Ernährung:** Sie kombiniert Merkmale aus verschiedenen Stimmen und
   wird strenger als jede einzelne (Andinoacara rivulatus; Otopharynx lithobates bekommt bei 3:2
   für Allesfresser den Typ Wirbellosenfresser; Protomelas sp. 'Steveni Taiwan' bekommt bei 4:1
