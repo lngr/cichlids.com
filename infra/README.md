@@ -423,7 +423,7 @@ API, whose policy test restricts anonymous access to `s3:GetObject` on `variants
 settings before execution. Additional S3 buckets follow the private default; the named
 media master has the explicit public prefix exception.
 
-The `exposure-watch.yml` workflow runs every three hours at minute 17 UTC and supports
+The `exposure-watch.yml` workflow runs once a month, on the first day at 05:17 UTC, and supports
 `workflow_dispatch`. It has `contents: read` permission and uses no secrets. Bucket names,
 location and private canary keys are committed in `tools/public-exposure.json`. Keep this
 configuration aligned with the actual bucket names and location. The probe makes plain

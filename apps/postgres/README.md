@@ -152,7 +152,7 @@ is public configuration; its secret key never enters the backup tier.
 
 Static backup and platform guardrails and the plan policy gate reject public exposure
 before changes. The keyless `exposure-watch` workflow checks anonymous listing and
-private canaries every three hours. See the [exposure runbook](../../infra/README.md#public-exposure-safeguards)
+private canaries once a month. See the [exposure runbook](../../infra/README.md#public-exposure-safeguards)
 for one-time canary creation, GitHub failure notifications and workflow dispatch.
 
 ## Staging and previews
