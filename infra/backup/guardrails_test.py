@@ -9,6 +9,9 @@ Parses the .tf sources directly (brace-matched resource blocks) so it needs no c
 credentials and runs offline in CI.
 Story: task-2.16
 """
+import contextlib
+import copy
+import io
 import importlib.util
 from pathlib import Path
 import glob
@@ -46,8 +49,9 @@ def load_blocks():
     return blocks
 
 
-def main():
-    blocks = load_blocks()
+def main(blocks=None):
+    if blocks is None:
+        blocks = load_blocks()
     failures = []
 
     for rtype, rname in CRITICAL:
@@ -78,11 +82,35 @@ def main():
     return 0
 
 
+def self_test():
+    """Exercise backup resource protection and versioning failures."""
+    good = load_blocks()
+    cases = [("protected backup buckets", good, 0)]
+    for kind, name in CRITICAL:
+        missing = copy.deepcopy(good)
+        missing.pop((kind, name))
+        cases.append((f"missing {name}", missing, 1))
+        changed = copy.deepcopy(good)
+        changed[(kind, name)] = re.sub(r"prevent_destroy\s*=\s*true", "prevent_destroy = false", changed[(kind, name)])
+        cases.append((f"unprotected {name}", changed, 1))
+        changed = copy.deepcopy(good)
+        changed[("aws_s3_bucket_versioning", name)] = 'status = "Suspended"'
+        cases.append((f"disabled versioning {name}", changed, 1))
+    for label, blocks, expected in cases:
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            got = main(blocks)
+        if got != expected:
+            print(f"backup guardrails self-test FAILED: {label}", file=sys.stderr)
+            return 1
+    print(f"backup guardrails self-test OK ({len(cases)} cases)")
+    return 0
+
+
 if __name__ == "__main__":
     if '--self-test' in sys.argv:
         policy_spec = importlib.util.spec_from_file_location(
             'separation', Path(HERE).parents[1] / 'tools/check-project-separation.py')
         policy = importlib.util.module_from_spec(policy_spec)
         policy_spec.loader.exec_module(policy)
-        sys.exit(policy.self_test())
+        sys.exit(self_test() or policy.self_test())
     sys.exit(main())
