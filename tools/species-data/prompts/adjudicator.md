@@ -4,10 +4,13 @@ You receive the generator's full profile, the independent checkers' results, the
 results if any, and `tally.yaml`, the vote count for the hard features. Produce the final profile
 file:
 
-1. When `tally.yaml` lists pending tie-breakers, stop and report this instead of writing the
-   profile. Take the decided values, `verification` objects and confidence from `tally.yaml`,
-   subject to the water plausibility check below. Use the sources listed there plus the sources
-   of the agreeing votes; write a rationale that explains the decided value from these sources.
+1. When `tally.yaml` lists pending tie-breakers, stop and report them; profile output requires
+   a settled tally. Take the decided values, `verification` objects and confidence from `tally.yaml`,
+   subject to the water plausibility check below. Keep every source and evidence entry from every
+   input, including dissenting votes; write a rationale that explains the decided value from these
+   sources. Trust from `data/species/source-trust.yaml` guides confidence and conflict weight, never
+   the retention of a source or the validity of a value. A hard feature or tolerance has confidence
+   `high` only with at least one high-trust evidence source; otherwise use `medium` or `low`.
    For predation, diet, speciesOnly and hybridGroups, keep the tally decision. If any of these
    decisions is implausible, name it and the reason at the start of your report with the words
    PLAUSIBILITY CHECK.
@@ -22,8 +25,7 @@ file:
    `decision` range as `verification.replaced` and its method as `verification.replacedMethod`
    (unanimous, qualified-majority, conservative or median). Name the replaced decision and the
    reason in the rationale. Set confidence to `low` or `medium` and provide at least one evidence
-   entry of any kind; the two-external-sources rule does not apply to an adjudicated range. Keep
-   each tolerance wide enough to contain the decided natural range. Never remove a source or an
+   entry of any trust level. Keep each tolerance wide enough to contain the decided natural range. Never remove a source or an
    evidence entry: keep those whose values lie outside the adjudicated range, with the value the
    source states.
 
@@ -53,8 +55,9 @@ file:
 3. Where they agree, keep the value, merge the sources and raise the confidence where independent
    sources support it.
 4. Where they differ, weigh the rationales and sources (verify them with web search where useful)
-   and decide. Record every difference in `provenance.disagreements` with the field, all
-   proposals, your decision and the reason. Each proposal is `{by: <run>, value: <value>}`, where
+   and decide. In a conflict, the higher trust source wins unless the lower trust source reports a
+   direct field measurement and the higher trust source gives a general recommendation. Record every
+   difference in `provenance.disagreements` with the field, all proposals, your decision and the reason. Each proposal is `{by: <run>, value: <value>}`, where
    the run is `generator`, `checker-a`, `checker-b`, `checker-c` or `tiebreaker-<n>`. Record the disagreements of hard features as well,
    with the decision and method from `tally.yaml`, or your adjudicated range and the reason for
    replacing the tally decision.

@@ -4,8 +4,8 @@ import assert from "node:assert/strict";
 
 import { tally } from "./tally.mjs";
 
-const lit = (n) => ({ kind: "literature", title: `Literature ${n}`, url: `https://example.org/l${n}` });
-const db = (n) => ({ kind: "database", title: `Database ${n}`, url: `https://example.org/d${n}` });
+const lit = (n) => ({ kind: "literature", title: `Literature ${n}`, url: `https://fishbase.se/l${n}` });
+const db = (n) => ({ kind: "database", title: `Database ${n}`, url: `https://ciklid.org/d${n}` });
 const forum = (n) => ({ kind: "forum", title: `Forum ${n}`, url: `https://example.org/f${n}` });
 const TWO = [lit(1), db(1)];
 
@@ -37,7 +37,7 @@ const LAKE = {
   sources: [lit(9)],
 };
 
-test("three equal votes with two external sources are unanimous", () => {
+test("three equal votes with two distinct sources including a trusted source are unanimous", () => {
   const f = decide("predation", [1, 1, 1]);
   assert.equal(f.decision, 1);
   assert.deepEqual(f.verification, { method: "unanimous", votes: { agree: 3, total: 3 } });
@@ -45,7 +45,7 @@ test("three equal votes with two external sources are unanimous", () => {
   assert.equal(f.needsTiebreaker, undefined);
 });
 
-test("three or more distinct external sources give high confidence", () => {
+test("three or more distinct sources including high trust give high confidence", () => {
   const f = decide("predation", [1, 1, 1], [lit(1), db(1), lit(2)]);
   assert.equal(f.confidence, "high");
   assert.equal(f.sources.length, 3);
@@ -61,14 +61,14 @@ test("a disagreement below five votes asks for a tie-breaker", () => {
   assert.ok(result.pendingTiebreakers.includes("predation"));
 });
 
-test("agreeing votes with fewer than two external sources ask for a tie-breaker", () => {
-  const f = decide("speciesOnly", [true, true, true], [lit(1), forum(1)]);
+test("agreeing votes with fewer than two distinct sources including a trusted source ask for a tie-breaker", () => {
+  const f = decide("speciesOnly", [true, true, true], [lit(1)]);
   assert.equal(f.needsTiebreaker, true);
   assert.equal(f.reason, "insufficient-sources");
 });
 
-test("sources are counted once by url and forum sources do not count", () => {
-  const f = decide("speciesOnly", [true, true, true], [lit(1), lit(1), forum(1)]);
+test("sources are counted once by url", () => {
+  const f = decide("speciesOnly", [true, true, true], [lit(1), lit(1)]);
   assert.equal(f.reason, "insufficient-sources");
 });
 
@@ -424,4 +424,69 @@ test("the confidence does not exceed the median confidence of the agreeing agent
   const f = tally(files).features.predation;
   assert.equal(f.verification.method, "unanimous");
   assert.equal(f.confidence, "medium");
+});
+
+
+test("medium and low trust sources can settle unanimous and qualified votes", () => {
+  for (const values of [[true, true, true], [true, true, true, true, false]]) {
+    const sources = [db(1), forum(1)];
+    const f = decide("speciesOnly", values, sources);
+    assert.equal(f.decision, true);
+    assert.equal(f.verification.method, values.length === 3 ? "unanimous" : "qualified-majority");
+    assert.equal(f.confidence, "medium");
+    assert.deepEqual(f.sources, sources);
+  }
+});
+
+test("any number of low-trust sources alone cannot settle votes", () => {
+  for (const values of [[1, 1, 1], [1, 1, 1, 1, 1]]) {
+    const sources = [forum(1), forum(2), forum(3)];
+    const f = decide("predation", values, sources);
+    if (values.length === 3) assert.equal(f.reason, "insufficient-sources");
+    else assert.equal(f.verification.method, "conservative");
+    assert.deepEqual(f.sources, sources);
+  }
+});
+
+test("three medium or low-trust sources suggest medium confidence", () => {
+  assert.equal(decide("predation", [1, 1, 1], [db(1), db(2), forum(1)]).confidence, "medium");
+  assert.equal(decide("predation", [1, 1, 1], [lit(1), forum(1), forum(2)]).confidence, "high");
+});
+
+test("dissenting sources stay cited but do not support agreement or confidence", () => {
+  const files = voteFiles("predation", [1, 1, 1, 1, 2], [forum(1), forum(2)]);
+  files[4].data.features.predation.sources = [lit(1)];
+  let f = tally(files).features.predation;
+  assert.equal(f.verification.method, "conservative");
+  assert.deepEqual(f.sources, [forum(1), forum(2), lit(1)]);
+  for (const entry of files.slice(0, 4)) entry.data.features.predation.sources = [db(1), forum(1), forum(2)];
+  f = tally(files).features.predation;
+  assert.equal(f.verification.method, "qualified-majority");
+  assert.equal(f.confidence, "medium");
+  assert.deepEqual(f.sources, [db(1), forum(1), forum(2), lit(1)]);
+});
+
+test("sources without URLs are distinct by title", () => {
+  const sources = [{ kind: "literature", title: "Book A" }, { kind: "website", title: "Site B" }];
+  const f = decide("predation", [1, 1, 1], [...sources, { ...sources[0] }]);
+  assert.equal(f.verification.method, "unanimous");
+  assert.deepEqual(f.sources, sources);
+});
+
+test("tolerance votes use trust for source support and confidence", () => {
+  for (const [sources, method, confidence] of [
+    [[db(1), forum(1)], "unanimous", "medium"],
+    [[db(1), db(2), forum(1)], "unanimous", "medium"],
+    [[lit(1), forum(1), forum(2)], "unanimous", "high"],
+    [[forum(1), forum(2), forum(3)], undefined, undefined],
+  ]) {
+    const files = NAMES.slice(0, 3).map((name) => file(name, {
+      ph: { value: { min: 7, max: 8 }, sources: TWO, tolerance: { value: { min: 6, max: 9 }, sources } },
+    }));
+    const f = tally(files).features["ph.tolerance"];
+    assert.equal(f.verification?.method, method);
+    assert.equal(f.confidence, confidence);
+    if (!method) assert.equal(f.reason, "insufficient-sources");
+    assert.deepEqual(f.sources, sources);
+  }
 });

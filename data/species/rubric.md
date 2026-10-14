@@ -161,6 +161,14 @@ Every value carries a confidence:
 
 | Value | Meaning |
 |---|---|
-| `high` | Several independent, reliable sources agree. |
+| `high` | Several independent, reliable sources agree. A hard feature or tolerance has at least one high-trust evidence source. |
 | `medium` | One reliable source, or sources agree only roughly. |
 | `low` | Derived from related species or general knowledge; needs confirmation. |
+
+Source trust follows `data/species/source-trust.yaml`: the first matching host or parent domain
+and optional path prefix decides the level. Archive copies use the archived URL. Sources without
+a URL use `byKind`; unlisted hosts use the default, `low`. Trust guides confidence and the weight
+of conflicting claims. Every source stays cited, and medium or low trust does not invalidate a
+value. Every hard feature and tolerance needs at least one evidence entry. Without a high-trust
+evidence source, its confidence is `medium` or `low`. Conservative and median decisions have
+confidence `low`; adjudicated ranges have confidence `low` or `medium`.

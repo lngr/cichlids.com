@@ -10,6 +10,7 @@ when evidence is thin, say so through the confidence and the rationale.
 - `data/species/rubric.md`: the fixed meaning of every level and value. Use it literally.
 - `data/species/schema/species-profile.schema.json`: the file format.
 - `data/species/hybrid-groups.yaml`: the curated hybrid groups and their members.
+- `data/species/source-trust.yaml`: source trust levels and matching rules.
 
 ## Research tools
 
@@ -82,30 +83,36 @@ search and one page per species are enough.
 
 ## Sources
 
-- Source kinds: `literature` for papers, books, magazine articles and reports; `database` for
-  species databases (FishBase, Seriously Fish) and structured care sheets; `website` for Wikipedia,
-  blogs and other general pages. Only `catalog-of-fishes`, `literature` and `database` count as
-  external sources; `website`, `forum`, `archive` and `model-knowledge` carry low weight.
+- Cite every source you read and keep every source any agent finds, including sources that
+  disagree with the decided value. More sources are welcome. Trust is a signal for confidence and
+  conflict weight, never a reason to drop a source or reject a value.
+- `data/species/source-trust.yaml` decides each source's weight. The first entry matching the URL
+  host or a parent domain and its optional path prefix wins. Archive copies use the archived URL;
+  sources without a URL use `byKind`, and unlisted hosts count as `low`. In a conflict, the higher
+  trust source wins unless the lower trust source reports a direct field measurement and the
+  higher trust source gives a general recommendation. Explain the evidence in the rationale.
+- Source kinds remain descriptive: `literature` for papers, books, magazine articles and reports;
+  `database` for species databases and structured care sheets; `website` for general pages;
+  `catalog-of-fishes`, `forum`, `archive` and `model-knowledge` describe their respective origins.
 - Every value needs at least one source. Peer-reviewed papers and monographs with a DOI are
   especially welcome: search for them deliberately (species descriptions, ecology, diet and
   limnology studies), read them and cite them with `https://doi.org/<doi>` as url; a paper of
   which only the abstract was readable supports only what the abstract states. Prefer primary literature, species databases (Seriously
   Fish, FishBase), books and well-regarded hobby sources. Record title and
-  URL. Use `model-knowledge` only when no external source confirms a value, and then never with
+  URL. Use `model-knowledge` only when no read source confirms a value, and then never with
   confidence `high`.
 - The cichlids.com archive is a source of practical experience. Search the forum posts with
   `node tools/species-data/archive-search.mjs "<name>" [limit]`; it prints each matching thread with
   its legacy thread id, its URL and excerpts of the posts. Cite archive findings as kind `archive`
   with exactly the printed title `cichlids.com forum thread <legacy id>` and the printed `url`.
-  Archive and forum posts are community experience with very low weight: list them after the
-  literature and database sources, and let a value rest on them only when no source of kind
-  `catalog-of-fishes`, `literature` or `database` states it; such a value has confidence `low`.
+  Archive and forum posts contribute community experience; their weight follows the trust list.
   Never copy member names or handles into any file.
 - Record in `evidence` which source states which value: one entry per source with the value it
   states, converted to the unit and shape of the feature, and an optional short note in your own
   words (for example "lake surface water"). The app shows these entries when a value is uncertain.
-  Hard features need at least two entries from sources of kind `catalog-of-fishes`, `literature`
-  or `database`; give evidence for the other features wherever a source states a value.
+  Every hard feature and tolerance needs at least one evidence entry of any trust level. Confidence
+  `high` requires at least one high-trust evidence source; without one, use `medium` or `low`. Give
+  evidence for the other features wherever a source states a value.
 - Copyright is binding. Foreign texts are evidence for facts and numbers only. Never quote
   verbatim: no sentence, part of a sentence, list or definition from Seriously Fish, forums or any
   other source, not even short and not even in quotation marks. Write all prose and rationales in
@@ -124,24 +131,23 @@ search and one page per species are enough.
 - Each water feature also has a `tolerance`: the range in which the species stays healthy for years
   in the aquarium, according to husbandry literature, care sheets, breeders and the archive. Here
   care sheets count as sources. The tolerance contains the natural range. It is a fact of its own
-  with value, confidence, rationale, sources and evidence, and it needs at least two sources of kind
-  `literature` or `database`. Do not write a `verification` object for it either.
+  with value, confidence, rationale, sources and at least one evidence entry. Confidence `high`
+  requires a high-trust evidence source. Do not write a `verification` object for it either.
 - Maximum size is the typical maximum of well-kept adult aquarium fish per sex, not record sizes.
 - `minTank` is for the recommended social unit of adults (for example one male with three females).
 - `hybridGroups` is the list of ids of every group of `hybrid-groups.yaml` whose crosses concern
   the species, and `[]` when none does. A group means that every member may cross with every other
   member; a documented cross of two species without a wider group is a group of two members. Crossing
   is not transitive, so a species belongs to every group whose crosses concern it. Use the existing
-  id of a listed group and propose a new id only for a group the file does not list. Each listed
+  id of a listed group and propose an id only for a group the file does not list. Each listed
   group has a `basis`: `documented` when a cross between named members is reported from the wild or
   from a tank where the fish could choose partners of their own species, `presumed` when only
   general warnings or a very close relationship exist. The basis decides how hard the conflict of
   two members is in the stocking planner; the value of `hybridGroups` lists the ids either way.
 - Hard features (water values, predation, diet, species-only and hybrid groups) are verified by
-  counting the votes of independent agents. Predation, diet, species-only and hybrid groups each need
-  at least two sources of kind `catalog-of-fishes`, `literature` or `database`; forum and archive
-  posts support them but do not count towards these two. Do not write a `verification` object;
-  the vote count adds it.
+  counting the votes of independent agents. A unanimous or qualified-majority decision needs at
+  least two distinct sources of any trust among agreeing votes, including at least one of trust
+  `medium` or `high`. Do not write a `verification` object; the vote count adds it.
 
 ## Output
 

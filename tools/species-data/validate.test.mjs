@@ -9,7 +9,7 @@ import { join } from "node:path";
 
 import { hybridGroupIssues, validateFiles, validateProfile, validateProfiles } from "./validate.mjs";
 
-const SOURCE = { kind: "literature", title: "Example source", url: "https://example.org/a", accessed: "2026-01-02" };
+const SOURCE = { kind: "literature", title: "Example source", url: "https://fishbase.se/a", accessed: "2026-01-02" };
 const SOURCE_2 = { kind: "database", title: "Second source", url: "https://example.org/b", accessed: "2026-01-02" };
 
 function fact(value, extra = {}) {
@@ -217,19 +217,20 @@ test("a species from a water body outside the table is not bound to it", () => {
   assert.deepEqual(validateProfile(profile, options), []);
 });
 
-test("a hard feature with one external source fails unless it is conservative", () => {
-  for (const name of ["predation", "diet", "speciesOnly", "hybridGroups"]) {
+test("hard features accept one source and one high-trust evidence entry", () => {
+  for (const name of ["predation", "diet", "speciesOnly", "hybridGroups", "temperatureC", "ph", "ghDgh"]) {
     const profile = makeProfile();
-    profile.features[name].sources = [SOURCE, { kind: "forum", title: "Forum thread", url: "https://example.org/c" }];
-    const found = errors(validateProfile(profile, options));
-    assert.ok(found.some((i) => i.pointer === `/features/${name}/sources`), `${name}: ${JSON.stringify(found)}`);
+    const feature = profile.features[name];
+    feature.sources = [SOURCE];
+    feature.evidence = [{ source: SOURCE, value: feature.value }];
+    assert.deepEqual(errors(validateProfile(profile, options)), [], name);
   }
 });
 
-test("two entries of the same source do not count twice", () => {
+test("duplicate source citations do not invalidate a value", () => {
   const profile = makeProfile();
   profile.features.predation.sources = [SOURCE, { ...SOURCE }];
-  assert.ok(errors(validateProfile(profile, options)).some((i) => i.pointer === "/features/predation/sources"));
+  assert.deepEqual(errors(validateProfile(profile, options)), []);
 });
 
 test("a conservative value with one source passes at confidence low", () => {
@@ -370,25 +371,29 @@ test("a hard feature without evidence fails", () => {
   }
 });
 
-test("evidence from one distinct source or from a forum source fails", () => {
-  const profile = makeProfile();
-  profile.features.predation.evidence = [
-    { source: SOURCE, value: 0 },
-    { source: { ...SOURCE }, value: 0, note: "same source again" },
-  ];
-  profile.features.ph.evidence = [
-    { source: SOURCE, value: { min: 8, max: 9 } },
-    { source: { kind: "forum", title: "Forum thread", url: "https://example.org/c" }, value: { min: 8, max: 9 } },
-  ];
-  const found = errors(validateProfile(profile, options));
-  assert.ok(found.some((i) => i.pointer === "/features/predation/evidence"), JSON.stringify(found));
-  assert.ok(found.some((i) => i.pointer === "/features/ph/evidence"), JSON.stringify(found));
+test("hard features with only low-trust evidence accept medium and low but reject high", () => {
+  for (const name of ["predation", "diet", "speciesOnly", "hybridGroups", "temperatureC", "ph", "ghDgh"]) {
+    for (const confidence of ["high", "medium", "low"]) {
+      const profile = makeProfile();
+      const feature = profile.features[name];
+      // Kind does not override an unknown URL, even when sources lists a trusted source.
+      feature.evidence = [{ source: SOURCE_2, value: feature.value }];
+      feature.confidence = confidence;
+      const found = errors(validateProfile(profile, options));
+      assert.deepEqual(found.map((i) => i.pointer), confidence === "high" ? [`/features/${name}/confidence`] : [], name);
+    }
+  }
 });
 
-test("a waterbody verified water value needs no evidence", () => {
+test("waterbody verified hard features need evidence", () => {
   const profile = lakeProfile();
-  for (const name of ["temperatureC", "ph", "ghDgh"]) delete profile.features[name].evidence;
-  assert.deepEqual(validateProfile(profile, options), []);
+  for (const name of ["temperatureC", "ph", "ghDgh"]) {
+    delete profile.features[name].evidence;
+  }
+  const found = errors(validateProfile(profile, options));
+  for (const name of ["temperatureC", "ph", "ghDgh"]) {
+    assert.ok(found.some((i) => i.pointer === `/features/${name}/evidence`));
+  }
 });
 
 test("a fact may carry evidence with a note, a malformed entry fails the schema", () => {
@@ -632,21 +637,29 @@ test("a lake species still needs a tolerance that is voted on", () => {
   assert.ok(errors(validateProfile(profile, options)).some((i) => i.pointer === "/features/ph/tolerance"));
 });
 
-test("a tolerance needs two distinct external evidence sources", () => {
-  const profile = makeProfile();
-  profile.features.ph.tolerance.evidence = [{ source: SOURCE, value: { min: 7, max: 10 } }];
-  profile.features.ghDgh.tolerance.evidence = [
-    { source: SOURCE, value: { min: 9, max: 21 } },
-    { source: { kind: "forum", title: "Forum", url: "https://example.org/c" }, value: { min: 9, max: 21 } },
-  ];
-  const found = errors(validateProfile(profile, options));
-  assert.ok(found.some((i) => i.pointer === "/features/ph/tolerance/evidence"), JSON.stringify(found));
-  assert.ok(found.some((i) => i.pointer === "/features/ghDgh/tolerance/evidence"), JSON.stringify(found));
+test("every tolerance accepts one evidence entry and requires high trust for confidence high", () => {
+  for (const name of WATER) {
+    for (const source of [SOURCE, SOURCE_2, { kind: "website", title: "Association", url: "https://ciklid.org/species" }]) {
+      for (const confidence of ["high", "medium", "low"]) {
+        const profile = makeProfile();
+        const tolerance = profile.features[name].tolerance;
+        Object.assign(tolerance, { confidence, sources: [source], evidence: [{ source, value: tolerance.value }] });
+        const found = errors(validateProfile(profile, options));
+        assert.deepEqual(found.map((i) => i.pointer), confidence === "high" && source !== SOURCE ? [`/features/${name}/tolerance/confidence`] : []);
+      }
+    }
+    for (const evidence of [undefined, []]) {
+      const profile = makeProfile();
+      Object.assign(profile.features[name].tolerance, { confidence: "medium", evidence });
+      assert.ok(errors(validateProfile(profile, options)).some((i) => i.pointer === `/features/${name}/tolerance/evidence`));
+    }
+  }
 });
 
 test("a conservative tolerance needs confidence low and one evidence entry of any kind", () => {
   const profile = makeProfile();
   Object.assign(profile.features.ph.tolerance, {
+    confidence: "medium",
     verification: { method: "conservative", votes: { agree: 2, total: 5 } },
     evidence: [{ source: { kind: "forum", title: "Forum", url: "https://example.org/c" }, value: { min: 7, max: 10 } }],
   });
@@ -664,15 +677,23 @@ test("a tolerance on a non-water feature fails", () => {
   assert.ok(errors(validateProfile(profile, options)).some((i) => i.pointer === "/features/predation/tolerance"));
 });
 
-test("a value resting only on archive or forum sources must have confidence low", () => {
+test("source kind does not cap the confidence of a soft feature", () => {
   const profile = makeProfile();
   profile.features.feedingSpeed = fact("hasty", {
     sources: [{ kind: "archive", title: "cichlids.com forum thread 13697", url: "https://www.cichlids.com/disc/read.php?2,13697" }],
   });
-  const found = errors(validateProfile(profile, options));
-  assert.ok(found.some((i) => i.pointer === "/features/feedingSpeed/confidence"), JSON.stringify(found));
-  profile.features.feedingSpeed.confidence = "low";
   assert.deepEqual(errors(validateProfile(profile, options)), []);
+});
+
+test("URL-free literature and archived high-trust URLs support high confidence", () => {
+  for (const source of [
+    { kind: "literature", title: "A monograph" },
+    { kind: "website", title: "Archived study", url: "https://web.archive.org/web/20260102/https://fishbase.se/a" },
+  ]) {
+    const profile = makeProfile();
+    profile.features.predation.evidence = [{ source, value: 0 }];
+    assert.deepEqual(errors(validateProfile(profile, options)), []);
+  }
 });
 
 function group(extra = {}) {

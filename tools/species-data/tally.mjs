@@ -16,6 +16,9 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse, stringify } from "yaml";
 import { findWaterbody, loadWaterbodies } from "./waterbodies.mjs";
+import { loadSourceTrust, trustOf } from "./source-trust.mjs";
+
+const SOURCE_TRUST = loadSourceTrust();
 
 const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const WATERBODIES_PATH = join(REPO_ROOT, "data", "species", "waterbodies.yaml");
@@ -27,10 +30,9 @@ const VOTED_FEATURES = ["predation", "diet", "speciesOnly", "hybridGroups", "tem
 const RANGE_TOLERANCE = { temperatureC: 1, ph: 0.3, ghDgh: 2, khDkh: 2 };
 const RANGE_DECIMALS = { temperatureC: 0, ph: 1, ghDgh: 0, khDkh: 0 };
 const TOLERANCE_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh"];
-const EXTERNAL_KINDS = ["catalog-of-fishes", "literature", "database"];
 // Diet types from strictest to least strict requirement on tank mates and food.
 const DIET_STRICTNESS = ["aufwuchs", "piscivore", "invertivore", "omnivore"];
-const MIN_EXTERNAL_SOURCES = 2;
+const MIN_SOURCES = 2;
 // A unanimous decision needs at least this many independent votes.
 const UNANIMOUS_MIN_VOTES = 3;
 const QUALIFIED_TOTAL = 5;
@@ -86,11 +88,11 @@ function medianRange(name, values) {
   };
 }
 
-function externalSources(votes) {
+function collectSources(votes) {
   const found = new Map();
   for (const vote of votes) {
     for (const source of vote.sources) {
-      if (!EXTERNAL_KINDS.includes(source?.kind)) continue;
+      if (!source) continue;
       const key = source.url ?? source.title;
       if (!found.has(key)) found.set(key, source);
     }
@@ -190,7 +192,10 @@ function decideVoted(name, votes, natural) {
   }
   const total = votes.length;
   const agree = top.agreeing.length;
-  const sources = externalSources(top.agreeing);
+  const agreeingSources = collectSources(top.agreeing);
+  const sources = collectSources(votes);
+  const enoughSources = agreeingSources.length >= MIN_SOURCES &&
+    agreeingSources.some((source) => ["medium", "high"].includes(trustOf(source, SOURCE_TRUST)));
   const evidence = collectEvidence(votes);
   let decidedValue = top.candidate.value;
   if (isRange(name)) decidedValue = medianRange(name, top.agreeing.map((v) => v.value));
@@ -203,13 +208,14 @@ function decideVoted(name, votes, natural) {
     sources,
     evidence,
   });
-  // The confidence is the lower of two judgements: the number of external sources and the median
-  // confidence the agreeing agents gave themselves.
-  const sourceStrength = sources.length >= 3 ? "high" : "medium";
+  // Confidence combines source count and trust among agreeing votes with the median confidence
+  // the agreeing agents gave themselves.
+  const sourceStrength = agreeingSources.length >= 3 &&
+    agreeingSources.some((source) => trustOf(source, SOURCE_TRUST) === "high") ? "high" : "medium";
   const strength = lowerConfidence(sourceStrength, medianConfidence(top.agreeing.map((v) => v.confidence)));
 
   if (total < QUALIFIED_TOTAL) {
-    if (total >= UNANIMOUS_MIN_VOTES && agree === total && sources.length >= MIN_EXTERNAL_SOURCES) {
+    if (total >= UNANIMOUS_MIN_VOTES && agree === total && enoughSources) {
       return decided("unanimous", strength);
     }
     return {
@@ -222,7 +228,7 @@ function decideVoted(name, votes, natural) {
       evidence,
     };
   }
-  if (agree >= QUALIFIED_AGREE && sources.length >= MIN_EXTERNAL_SOURCES) return decided("qualified-majority", strength);
+  if (agree >= QUALIFIED_AGREE && enoughSources) return decided("qualified-majority", strength);
   // The intersection of many natural ranges is narrower than any measurement, so the votes without
   // a majority are summarised by their median range.
   if (isNaturalRange(name)) {
@@ -231,7 +237,7 @@ function decideVoted(name, votes, natural) {
       verification: { method: "median", votes: { agree, total } },
       confidence: "low",
       proposals,
-      sources: externalSources(votes),
+      sources,
       evidence,
     };
   }
@@ -240,7 +246,7 @@ function decideVoted(name, votes, natural) {
     verification: { method: "conservative", votes: { agree, total } },
     confidence: "low",
     proposals,
-    sources: externalSources(votes),
+    sources,
     evidence,
   };
 }

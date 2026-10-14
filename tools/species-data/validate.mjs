@@ -16,6 +16,9 @@ import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 import { parse } from "yaml";
 import { findWaterbody, loadWaterbodies } from "./waterbodies.mjs";
+import { loadSourceTrust, trustOf } from "./source-trust.mjs";
+
+const SOURCE_TRUST = loadSourceTrust();
 
 const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const SPECIES_DIR = join(REPO_ROOT, "data", "species");
@@ -30,10 +33,8 @@ export const HARD_FEATURES = ["temperatureC", "ph", "ghDgh", "predation", "diet"
 // Water values that a lake table decides; the first three are hard features, khDkh is a plain fact.
 const WATERBODY_VERIFIED_FEATURES = ["temperatureC", "ph", "ghDgh"];
 const WATERBODY_VALUE_FEATURES = [...WATERBODY_VERIFIED_FEATURES, "khDkh"];
-// Hard features outside the water values need independent sources unless the value is conservative.
-const SOURCE_RULE_FEATURES = ["predation", "diet", "speciesOnly", "hybridGroups"];
-const EXTERNAL_SOURCE_KINDS = ["catalog-of-fishes", "literature", "database"];
-const MIN_EXTERNAL_SOURCES = 2;
+// Hard features outside the water values carry conservative confidence checks.
+const CONSERVATIVE_FEATURES = ["predation", "diet", "speciesOnly", "hybridGroups"];
 // Water features carry a tolerance next to the natural-habitat value.
 const TOLERANCE_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh"];
 // Natural water values may be decided by the median of the votes; no other fact may be.
@@ -76,20 +77,6 @@ const isObject = (x) => x !== null && typeof x === "object" && !Array.isArray(x)
 // check reports structural problems separately.
 function sameRange(a, b) {
   return isObject(a) && isObject(b) && a.min === b.min && a.max === b.max;
-}
-
-function externalSourceCount(sources) {
-  if (!Array.isArray(sources)) return 0;
-  const keys = new Set();
-  for (const s of sources) {
-    if (isObject(s) && EXTERNAL_SOURCE_KINDS.includes(s.kind)) keys.add(s.url ?? s.title);
-  }
-  return keys.size;
-}
-
-function externalEvidenceCount(evidence) {
-  if (!Array.isArray(evidence)) return 0;
-  return externalSourceCount(evidence.map((e) => (isObject(e) ? e.source : undefined)));
 }
 
 // A median value exists because the votes did not settle; like a conservative value it has
@@ -136,24 +123,24 @@ function adjudicatedIssues(features, file) {
 
 function evidenceIssues(features, file) {
   const issues = [];
-  for (const name of [...SOURCE_RULE_FEATURES, ...WATERBODY_VERIFIED_FEATURES]) {
+  for (const name of new Set([...HARD_FEATURES, ...TOLERANCE_FEATURES])) {
     const feature = features[name];
-    if (!isObject(feature)) continue;
-    if (WATERBODY_VERIFIED_FEATURES.includes(name) && feature.verification?.method === "waterbody") continue;
-    // Median and adjudicated values have their own evidence checks.
-    if (["median", "adjudicated"].includes(feature.verification?.method)) continue;
-    // A conservative value exists because the sources are too few or disagree; its evidence shows
-    // what the sources state, so it needs at least one entry of any kind.
-    if (feature.verification?.method === "conservative") {
-      if (!Array.isArray(feature.evidence) || feature.evidence.length === 0) {
-        issues.push(error(`/features/${name}/evidence`, `conservative value of "${name}" needs at least one evidence entry`, file));
+    const facts = [];
+    if (HARD_FEATURES.includes(name)) facts.push([`/features/${name}`, feature, false]);
+    if (TOLERANCE_FEATURES.includes(name)) facts.push([`/features/${name}/tolerance`, feature?.tolerance, true]);
+    for (const [pointer, fact, isTolerance] of facts) {
+      if (!isObject(fact)) continue;
+      const method = fact.verification?.method;
+      // Median, adjudicated and conservative tolerances retain their own evidence checks.
+      const checkedElsewhere = ["median", "adjudicated"].includes(method) || (isTolerance && method === "conservative");
+      if (!checkedElsewhere && (!Array.isArray(fact.evidence) || fact.evidence.length === 0)) {
+        const label = method === "conservative" ? "conservative value of " : "";
+        issues.push(error(`${pointer}/evidence`, `${label}"${name}" needs at least one evidence entry`, file));
       }
-      continue;
-    }
-    if (externalEvidenceCount(feature.evidence) < MIN_EXTERNAL_SOURCES) {
-      issues.push(
-        error(`/features/${name}/evidence`, `"${name}" needs evidence entries from at least ${MIN_EXTERNAL_SOURCES} distinct sources of kind ${EXTERNAL_SOURCE_KINDS.join(", ")}`, file),
-      );
+      if (fact.confidence === "high" &&
+          !(Array.isArray(fact.evidence) && fact.evidence.some((entry) => trustOf(entry?.source, SOURCE_TRUST) === "high"))) {
+        issues.push(error(`${pointer}/confidence`, "confidence high needs at least one high-trust evidence source", file));
+      }
     }
   }
   return issues;
@@ -264,10 +251,6 @@ function toleranceIssues(features, file) {
       if (!Array.isArray(tolerance.evidence) || tolerance.evidence.length === 0) {
         issues.push(error(`${at}/evidence`, `conservative tolerance of "${name}" needs at least one evidence entry`, file));
       }
-    } else if (externalEvidenceCount(tolerance.evidence) < MIN_EXTERNAL_SOURCES) {
-      issues.push(
-        error(`${at}/evidence`, `tolerance of "${name}" needs evidence entries from at least ${MIN_EXTERNAL_SOURCES} distinct sources of kind ${EXTERNAL_SOURCE_KINDS.join(", ")}`, file),
-      );
     }
   }
   return issues;
@@ -306,27 +289,13 @@ function semanticIssues(profile, { fileName, hybridGroupIds, hybridGroups, water
     }
   }
 
-  // Forum, archive and model knowledge carry very low weight: a value resting on them alone has
-  // confidence low.
-  for (const [name, feature] of Object.entries(features)) {
-    for (const [pointer, fact] of [[`/features/${name}`, feature], [`/features/${name}/tolerance`, feature?.tolerance]]) {
-      if (isObject(fact) && Array.isArray(fact.sources) && externalSourceCount(fact.sources) === 0 && fact.confidence !== "low") {
-        issues.push(error(`${pointer}/confidence`, "a value without a source of kind catalog-of-fishes, literature or database must have confidence low", file));
-      }
-    }
-  }
-
-  for (const name of SOURCE_RULE_FEATURES) {
+  for (const name of CONSERVATIVE_FEATURES) {
     const feature = features[name];
     if (!isObject(feature) || !isObject(feature.verification)) continue;
     if (feature.verification.method === "conservative") {
       if (feature.confidence !== "low") {
         issues.push(error(`/features/${name}/confidence`, `conservative value of "${name}" must have confidence low`, file));
       }
-    } else if (externalSourceCount(feature.sources) < MIN_EXTERNAL_SOURCES) {
-      issues.push(
-        error(`/features/${name}/sources`, `"${name}" needs at least ${MIN_EXTERNAL_SOURCES} sources of kind ${EXTERNAL_SOURCE_KINDS.join(", ")} unless the verification method is conservative`, file),
-      );
     }
   }
 
