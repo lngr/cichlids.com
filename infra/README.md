@@ -221,15 +221,13 @@ no formatting. A k3s systemd drop-in requires the mount, binds service lifetime
 to it and verifies the device before each start. `nofail` permits node boot with
 an unavailable volume; k3s startup requires the database mount.
 
-The production claim requires 20Gi. Bootstrap checks the mounted filesystem's
-capacity before publishing its PV. The platform's `db_volume_size` default is
-10 GB; choose at least 30 GB for this claim and filesystem overhead. On the
-operator workstation, review an in-place volume growth with
-`TF_VAR_db_volume_size=30 infra/tofu.sh platform plan`, then apply the reviewed
-plan with the same variable. For an existing filesystem, the operator grows
-ext4 on the node with `resize2fs /dev/disk/by-id/scsi-0HC_Volume_<id>` after the
-provider volume growth and verifies capacity with `df -B1 /var/lib/cichlids-db`.
-Filesystem growth preserves data. Confirm a usable backup before storage changes.
+The production claim requires 8Gi. Bootstrap checks that the mounted ext4
+filesystem has at least 8Gi of capacity before publishing its PV. Monitor
+filesystem usage and grow the volume when usage exceeds 70 percent. Set
+`db_volume_size` in the platform tier and apply the reviewed provider volume
+change. Then grow ext4 on the node with `resize2fs` on the database device and
+verify capacity with `df -B1 /var/lib/cichlids-db`. Filesystem growth preserves
+data. Confirm a usable backup before storage changes.
 
 After node readiness, bootstrap labels the node
 `cichlids.com/database-volume=true` and applies

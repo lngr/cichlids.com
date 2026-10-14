@@ -32,6 +32,8 @@ def policy(docs, environment):
     assert spec['storage']['storageClass'] == ('database-volume' if environment == 'prod' else 'local-path')
     if environment == 'prod':
         assert spec['storage']['pvcTemplate'].get('volumeName') == 'postgres-production'
+        assert spec['storage']['size'] == '8Gi'
+        assert spec['storage']['pvcTemplate']['resources']['requests']['storage'] == '8Gi'
     assert spec['bootstrap'] == {'initdb': {'database': 'cichlids', 'owner': 'cichlids'}}
     assert 'externalClusters' not in spec
     assert spec['resources']['requests'] == {'cpu': '250m', 'memory': '512Mi'}
@@ -99,7 +101,7 @@ class Postgres(unittest.TestCase):
         self.assertEqual(volume['spec']['storageClassName'], storage['metadata']['name'])
         self.assertEqual(volume['spec']['persistentVolumeReclaimPolicy'], 'Retain')
         self.assertEqual(volume['spec']['local'], {'path': '/var/lib/cichlids-db/postgres', 'fsType': 'ext4'})
-        self.assertEqual(volume['spec']['capacity'], {'storage': '20Gi'})
+        self.assertEqual(volume['spec']['capacity'], {'storage': '8Gi'})
         self.assertEqual(volume['spec']['accessModes'], ['ReadWriteOnce'])
         self.assertEqual(volume['spec']['nodeAffinity']['required']['nodeSelectorTerms'], [
             {'matchExpressions': [{'key': 'cichlids.com/database-volume',

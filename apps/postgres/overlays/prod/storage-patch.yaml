@@ -4,6 +4,10 @@ metadata:
   name: postgres
 spec:
   storage:
+    size: 8Gi
     storageClass: database-volume
     pvcTemplate:
       volumeName: postgres-production
+      resources:
+        requests:
+          storage: 8Gi

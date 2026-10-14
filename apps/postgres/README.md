@@ -7,7 +7,7 @@ The database requests 250m CPU and 512Mi memory. Production also requests 100m C
 and 128Mi for the Barman sidecar. The CloudNativePG controller requests 100m CPU
 and 100Mi; the plugin controller requests 50m CPU and 128Mi. These requests fit a
 CX33 node alongside the cluster services. A single node provides no availability
-replica. Production and staging request 20Gi each; confirm free space on the
+replica. Production requests 8Gi and staging requests 20Gi; confirm free space on the
 database volume for production and on the node disk for staging.
 
 ## Production storage
@@ -31,11 +31,12 @@ review. Kubernetes local volumes require node affinity, as described in the
 is a manual operation.
 
 A static PV suits one instance on one node and needs no storage controller or
-cleanup helper. The PV advertises 20Gi, matching the production claim; this is
+cleanup helper. The PV advertises 8Gi, matching the production claim; this is
 binding capacity, not a filesystem quota. Confirm actual free space with
-`df -h /var/lib/cichlids-db`. Bootstrap refuses filesystems smaller than 20Gi.
-The platform size default is 10 GB; the infrastructure runbook describes
-operator-controlled volume and ext4 growth to at least 30 GB before deployment.
+`df -h /var/lib/cichlids-db`. Bootstrap requires at least 8Gi of filesystem
+capacity. Monitor filesystem usage and grow the platform volume when usage
+exceeds 70 percent. Set `db_volume_size` in the platform tier, apply the
+reviewed volume change, then grow ext4 with `resize2fs` on the mounted node.
 Additional instances, replacement-instance PVCs,
 a separate WAL volume or online capacity expansion require an explicit storage
 plan and additional PVs. An occupied or Released PV prevents a new claim from

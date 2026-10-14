@@ -12,7 +12,7 @@ metadata:
   name: postgres-production
 spec:
   capacity:
-    storage: 20Gi
+    storage: 8Gi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
