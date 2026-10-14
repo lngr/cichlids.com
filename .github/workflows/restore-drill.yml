@@ -1,0 +1,56 @@
+name: restore-drill
+
+on:
+  schedule:
+    - cron: '43 4 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  restore-drill:
+    name: Synthetic database restore and broken backup
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Install pinned toolchain and drill dependencies
+        run: |
+          bash tools/install-toolchain.sh
+          python -m pip install -r tools/restore-drill/requirements.txt
+      - name: Recovery contracts
+        run: python tools/restore-drill/test_drill.py
+      - name: Restore base backup and post-backup WAL
+        run: |
+          set -o pipefail
+          python -u tools/restore-drill/drill.py 2>&1 | tee restore-drill-green.log
+      - name: Broken base backup fails recovery
+        run: |
+          set +e
+          set -o pipefail
+          python -u tools/restore-drill/drill.py --break-backup 2>&1 | tee restore-drill-negative.log
+          result=${PIPESTATUS[0]}
+          set -e
+          test "$result" -ne 0
+          grep -F 'BROKEN BACKUP: deleted' restore-drill-negative.log
+          grep -F 'RESTORE FAILED:' restore-drill-negative.log
+          grep -F 'CLEANUP VERIFIED:' restore-drill-negative.log
+      - name: Assert drill resources are absent
+        if: always()
+        run: |
+          python tools/restore-drill/check-cleanup.py
+          kind get clusters
+          docker ps -a --format '{{.Names}} {{.Status}}'
+      - name: Upload drill evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: restore-drill-evidence
+          path: restore-drill-*.log
+          if-no-files-found: ignore
