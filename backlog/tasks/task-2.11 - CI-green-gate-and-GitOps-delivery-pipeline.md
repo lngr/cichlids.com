@@ -1,10 +1,10 @@
 ---
 id: TASK-2.11
 title: CI green gate and GitOps delivery pipeline
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-06-03 16:02'
-updated_date: '2026-10-12 04:49'
+updated_date: '2026-10-14 10:15'
 labels:
   - infra
   - ci
@@ -73,6 +73,40 @@ Extend `.github/workflows/` with the required checks, alongside the existing `ad
 - [ ] #2 A failing test was written first, then made to pass (red-green)
 - [ ] #3 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Approach (test-first)
+- Red first: tests for the delivery helpers (digest bump of an overlay, release promotion, the
+  required-check list) and a workflow lint step (actionlint, pinned) before the workflows exist.
+
+### Green gate
+- `ci.yml` exposes exactly the required check names (adr-index, story-test-binding, toolchain,
+  infra-validate, infra-policy, secrets-scan, manifests, backend, client-core, e2e); a summary job
+  `required` depends on all of them, so branch protection (TASK-2.12) needs one check name.
+  `infra-policy` runs the conftest policies on fixtures and the app tier plan.
+
+### Images (merge to main)
+- Workflow `images.yml`: build the API, migration and web images of TASK-2.31 with Buildx, push to
+  GHCR (`ghcr.io/lngr/cichlids-*`) with the commit SHA tag, record the digests, sign nothing yet;
+  `permissions: packages: write, contents: read` only in that job.
+- Staging bump: a second job opens a pull request that sets the new digests in the staging
+  overlays (kustomize image override) and enables auto-merge; the pull request runs the normal
+  checks. Uses `GITHUB_TOKEN` with `contents: write, pull-requests: write`; the operator allows
+  Actions to create pull requests and enables auto-merge in the repository settings.
+
+### Production (release)
+- Workflow `release.yml` on a published GitHub release of a tag `v*`: resolves the digests of the
+  release commit from GHCR and commits them to the prod overlays on main (no promotion pull
+  request), guarded so only a release from main promotes.
+
+### Infra and previews
+- The app tier plan and apply stay in `infra-app.yml` (TASK-2.4); AC #4 is covered there.
+- Previews: the pull request images of same-repository pull requests with the label `preview`
+  are built with the pull request SHA tag; the preview ApplicationSet of TASK-2.7 uses them;
+  teardown follows the pull request close (TASK-2.7). Fork pull requests never build or deploy.
+<!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
 
