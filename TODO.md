@@ -96,7 +96,7 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 143 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+Stand: 156 Profile in `data/species/profiles/`, alle validiert. Verfahren in
 `tools/species-data/README.md`. Solange die Claude-Credits knapp sind, ist je Art nur Prüfer A ein
 Claude-Agent (Sonnet); die übrigen Rollen laufen über Codex: Generator und Prüfer B und C bei
 Seearten mit gpt-6-luna, bei Freilandarten mit gpt-6.1-sol, Tie-Breaker und Schiedsrichter immer
@@ -110,7 +110,10 @@ der Schiedsrichter auf Plausibilität prüft.
   Handelsformen, Hybriden und Zuchtformen. Jeder Eintrag des alten Katalogs bleibt erhalten und
   ist in `legacy-mapping.yaml` einer Art oder Handelsform zugeordnet. Besatzprofile bekommen alle
   Arten des alten Katalogs plus die Arten im Handel (FishBase kommerziell oder Artseite bei
-  Seriously Fish); Reihenfolge nach Fotoanzahl, die Handelsarten außerhalb des Katalogs danach
+  Seriously Fish); Reihenfolge nach Fotoanzahl, die Handelsarten außerhalb des Katalogs danach.
+  Das Verzeichnis markiert 647 Arten als Handelsarten (Feld `trade`); zusammen mit dem alten
+  Katalog sind 849 Besatzprofile nötig, davon fehlen 693 (130 Handelsarten stehen nicht im alten
+  Katalog)
 - [ ] Neun Einträge des alten Katalogs sind ohne Zuordnung, weil keine Quelle ihre Identität
   klärt (etwa "Lamprologus spec.", "Labidochromis zebra", "Aulonocara carolinae",
   "Amphilophus margaritifer"); bei neuen Quellen nachziehen
