@@ -1,0 +1,2836 @@
+schemaVersion: 1
+id: cichla-temensis
+legacyIds:
+- 671
+status: described
+taxonomy:
+  validName: Cichla temensis
+  genus: Cichla
+  species: temensis
+  author: "Humboldt, 1821"
+  source: &id001
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species in Cichla"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cichla"
+    accessed: '2026-10-13'
+    archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-cefbe376/2026-10-14T171442Z
+  synonyms:
+  - name: Chichla uitaeniatus
+    note: Original double misspelling recorded by the Catalog of Fishes; often rendered Cichla unitaeniatus.
+  - name: Cichla tucunare
+  - name: Cychla flavomaculata
+  - name: Cychla trifasciata
+  legacyNames:
+  - Cichla temensis
+  note: "Catalog of Fishes controls the name and synonyms. The older public CRC page lists Cichla atabapensis\
+    \ under this species, but the Catalog currently places that name under Cichla orinocensis, so it is\
+    \ excluded here."
+names:
+  trade:
+    en:
+    - Speckled peacock bass
+    - Speckled pavon
+    - Three-barred peacock bass
+    de:
+    - Getüpfelter Kammbuntbarsch
+    es:
+    - Pavón
+    - Pavón cinchado
+    pt-BR:
+    - Tucunaré-açu
+    - Tucunaré-paca
+variants:
+- name: Paca phase
+  kind: color-morph
+  note: "Dark spotted end of a reversible reproductive color cycle in both sexes, not a separate lineage."
+- name: Acu phase
+  kind: color-morph
+  note: Bright three-barred reproductive appearance in both sexes; not a permanent strain.
+- name: Rio Negro
+  kind: locality
+  note: Geographic provenance label; preserve reliable collection information.
+- name: Orinoco
+  kind: locality
+  note: "Geographic provenance label, not a formally named subspecies."
+features:
+  origin:
+    value: &id050
+      continent: South America
+      region: Rio Negro and Uatuma drainages and Orinoco basin
+      waterbody: null
+      localities:
+      - Rio Negro
+      - Rio Uatuma
+      - Rio Temi
+      - Rio Cinaruco
+      - Rio Pasimoni
+      - Rio Atabapo
+      - Rio Tea
+      - Rio Caures
+      - Araca-Demeni sub-basin
+    confidence: high
+    rationale: "All four roles agree on South America and the Negro, Uatuma and Orinoco systems but name\
+      \ different localities. The merged list uses catalog type-locality data, species occurrence in field\
+      \ studies and Atabapo observations. Basin-wide chemistry studies are distinguished from simultaneous\
+      \ species-and-water observations in the water rationales. Introduced reservoir populations used\
+      \ as hybrid evidence do not extend the native origin. No named waterbody table entry applies."
+    sources:
+    - *id001
+    - &id005
+      kind: database
+      title: "FishBase: Cichla temensis"
+      url: "https://www.fishbase.se/summary/Cichla-temensis.html"
+      accessed: '2026-10-13'
+      archived: fishbase.se/summary/cichla-temensis.html/2026-10-14T200755Z
+    - &id009
+      kind: literature
+      title: Hoeinghaus et al. (2003). Movement of Cichla species in a Venezuelan floodplain river.
+      url: "https://doi.org/10.1590/S1679-62252003000200006"
+      accessed: '2026-10-13'
+      archived: doi.org/10.1590_s1679-62252003000200006/2026-10-14T200848Z
+    - &id028
+      kind: literature
+      title: "Willis, Macrander, Farias and Orti (2012). Simultaneous delimitation of species and quantification\
+        \ of interspecific hybridization in Amazonian peacock cichlids using multi-locus data."
+      url: "https://doi.org/10.1186/1471-2148-12-96"
+      accessed: '2026-10-13'
+      archived: doi.org/10.1186_1471-2148-12-96/2026-10-14T200829Z
+    - &id010
+      kind: literature
+      title: "Reiss et al. (2012). Color pattern variation in Cichla temensis: resolution based on morphological,\
+        \ molecular, and reproductive data."
+      url: "https://doi.org/10.1590/S1679-62252012000100006"
+      accessed: '2026-10-13'
+      archived: doi.org/10.1590_s1679-62252012000100006/2026-10-14T200831Z
+    - &id002
+      kind: literature
+      title: "Winemiller, K. O., Taphorn, D. C. and Barbarino-Duque, A. (1997). Ecology of Cichla (Cichlidae)\
+        \ in two blackwater rivers of southern Venezuela. Copeia 1997(4), 690-696"
+      url: "https://doi.org/10.2307/1447287"
+      archived: aquaticecology.tamu.edu/wp-content/uploads/sites/3/2012/07/w-etal.cichla-copeia97.pdf/2026-10-14T201034Z
+      accessed: '2026-10-14'
+      offline: true
+    - &id003
+      kind: literature
+      title: "Campos et al. (2015). Growth of Cichla temensis from the middle rio Negro, Amazonas, Brazil."
+      url: "https://doi.org/10.1590/1982-0224-20140090"
+      accessed: '2026-10-13'
+      archived: doi.org/10.1590_1982-0224-20140090/2026-10-14T200911Z
+    - &id007
+      kind: website
+      title: "JBL Colombia expedition 2022: Rio Atabapo underwater observations and water measurements"
+      url: "https://www.jbl.de/en/expedition-2022/detail/29/expedition-2022-colombia-i?country=gb&page_id=27170"
+      accessed: '2026-10-13'
+      archived: jbl.de/en/expedition-2022/detail/29/expedition-2022-colombia-i/q-f29832fa/2026-10-14T201028Z
+    - &id011
+      kind: archive
+      title: cichlids.com forum thread 32881
+      url: "https://www.cichlids.com/disc/read.php?1,32881"
+      accessed: '2026-10-13'
+    - &id006
+      kind: database
+      title: "Seriously Fish: Cichla temensis"
+      url: "https://www.seriouslyfish.com/species/cichla-temensis/"
+      accessed: '2026-10-13'
+      archived: seriouslyfish.com/species/cichla-temensis/2026-10-14T200803Z
+    - &id008
+      kind: literature
+      title: "Scott, B. M. (2007). Experiences with Cichla temensis. Tropical Fish Hobbyist."
+      url: "https://www.tfhmagazine.com/articles/freshwater/experiences-with-cichla-temensis"
+      accessed: '2026-10-13'
+      archived: tfhmagazine.com/articles/freshwater/experiences-with-cichla-temensis/2026-10-14T200759Z
+    - kind: literature
+      title: Siqueira-Souza et al. (2023). Abiotic factors and fish assemblages of the Araca-Demeni sub-basin
+      url: "https://doi.org/10.1590/1519-6984.274100"
+      accessed: '2026-10-14'
+      archived: doi.org/10.1590_1519-6984.274100/2026-10-13T114351Z
+    - kind: literature
+      title: Bacterioplankton Communities in Dissolved Organic Carbon-Rich Amazonian Black Water (2023)
+      url: "https://doi.org/10.1128/spectrum.04793-22"
+      accessed: '2026-10-14'
+      archived: doi.org/10.1128_spectrum.04793-22/2026-10-14T200946Z
+    - &id004
+      kind: literature
+      title: "Winemiller, Taphorn and Barbarino-Duque (1997). Ecology of Cichla in two blackwater rivers\
+        \ of southern Venezuela. Abstract only via literature-search; full text unavailable through fetch-oa."
+      url: "https://doi.org/10.2307/1447287"
+      accessed: '2026-10-13'
+      archived: doi.org/10.2307/1447287/2026-10-14T200847Z
+      offline: true
+    - &id012
+      kind: archive
+      title: cichlids.com forum thread 60723
+      url: "https://www.cichlids.com/disc/read.php?3,60723"
+      accessed: '2026-10-13'
+    evidence:
+    - source: *id001
+      value: "Orinoco and north-central Amazon basins; Brazil, Colombia, Guyana, Venezuela"
+    - source: *id002
+      value: Rio Cinaruco (Orinoco) and Rio Pasimoni (Rio Negro drainage)
+    - source: *id003
+      value: Middle Rio Negro near Barcelos
+  temperatureC:
+    value: &id051
+      min: 28
+      max: 31
+    confidence: medium
+    rationale: "The tally selects 28 to 31 C by qualified majority, with four of six proposals within\
+      \ its agreement threshold. Generator and tiebreaker-1 proposed 28 to 31 C; checker-a 26 to 31 C;\
+      \ checker-b 29 to 31 C; checker-c 28 to 32 C; tiebreaker-2 26 to 32 C. Species-specific Balbina\
+      \ capture sites measured 29.18 to 30.50 C. Serra and Paz measured 28.9 to 30.7 C in Rio Negro water,\
+      \ and JBL recorded 28 to 29 C in the Atabapo wet season and 30.4 C in the dry season. The decision\
+      \ is narrower than the 26 to 31 C Venezuelan range reported by checker-a from Winemiller et al.,\
+      \ the 29 to 32 C regional band in Thome-Souza et al., and the 28.4 to 34.7 C microhabitat measurements\
+      \ in Oliveira and Ferreira. It describes a typical warm-water interval rather than all seasonal\
+      \ extrema. JBL also reported an Atabapo surface peak of 32.5 C, and Glaser reported occurrences\
+      \ at 22 to 30 C without station details. These broader observations remain in evidence but do not\
+      \ establish typical species-wide limits. The Copeia full text was refused as non-open-access by\
+      \ fetch-oa, so its checker-a measurements remain unverified here; the accessible secondary Atlas\
+      \ account is lower-weight. FishBase 27 to 29 C derives from an aquarium reference, as noted by FWS,\
+      \ and is not independent field evidence."
+    sources:
+    - &id013
+      kind: literature
+      title: "Serra and Paz (2020). Hydrochemical analysis of a basin under anthropogenic influence and\
+        \ effects in Manaus' shoreline, Central Amazonia."
+      url: "https://doi.org/10.14393/rcg217752794"
+      accessed: '2026-10-13'
+      archived: doi.org/10.14393_rcg217752794/2026-10-14T201023Z
+    - &id014
+      kind: literature
+      title: "Castro et al. (2021, online 2020). Hematological parameters of three species of the peacock\
+        \ bass from Balbina lake, Presidente Figueiredo, Amazonas, Brazil."
+      url: "https://doi.org/10.1590/1519-6984.219409"
+      accessed: '2026-10-13'
+      archived: doi.org/10.1590_1519-6984.219409/2026-10-14T200818Z
+    - *id004
+    - *id005
+    - *id002
+    - *id006
+    - *id007
+    - &id017
+      kind: literature
+      title: Val and colleagues (2022). Global change and physiological challenges for fish of the Amazon
+        today and in the near future
+      url: "https://doi.org/10.1242/jeb.216440"
+      accessed: '2026-10-13'
+      archived: doi.org/10.1242_jeb.216440/2026-10-12T202830Z
+    - &id015
+      kind: literature
+      title: "Oliveira and Ferreira (2008). Spawning areas, dispersion and microhabitats of fish larvae\
+        \ in Anavilhanas"
+      url: "https://doi.org/10.1590/s1679-62252008000400003"
+      accessed: '2026-10-14'
+      archived: doi.org/10.1590_s1679-62252008000400003/2026-10-13T182908Z
+    - &id016
+      kind: literature
+      title: "Araujo et al. (2017). Triportheus albus in Amazonian water types, field water measurements"
+      url: "https://doi.org/10.3389/fgene.2017.00114"
+      accessed: '2026-10-14'
+      archived: doi.org/10.3389_fgene.2017.00114/2026-10-13T004655Z
+    - &id018
+      kind: website
+      title: "Diehl (2007). Cichla temensis, Aquarium Glaser"
+      url: "https://www.aquariumglaser.de/fischarchiv/cichla_temensis_de/"
+      accessed: '2026-10-14'
+      archived: aquariumglaser.de/fischarchiv/cichla_temensis_de/2026-10-14T200811Z
+    - &id019
+      kind: website
+      title: "JBL Brazil expedition 2009: measured water chemistry and depth profiles"
+      url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?country=dk&page_id=5002"
+      accessed: '2026-10-13'
+      archived: jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil/q-62db1559/2026-10-14T103649Z
+    - &id020
+      kind: website
+      title: "JBL Colombia expedition 2022 II: seasonal water temperature measurements"
+      url: "https://www.jbl.de/pt/expedicao-2022-2/detail/31/jbl-expediaaao-2022-colaombia-ii?country=pt&page_id=30256"
+      accessed: '2026-10-13'
+      archived: jbl.de/pt/expedicao-2022-2/detail/31/jbl-expediaaao-2022-colaombia-ii/q-cab712c5/2026-10-14T201918Z
+    - &id021
+      kind: website
+      title: "Diehl, K. Cichla temensis. Aquarium Glaser."
+      url: "https://www.aquariumglaser.de/en/25-perchlike-fishes/25e-perchlike-fishes-5-remaining-cichlids-from-south-and-central-america/cichla_temensis_en/"
+      accessed: '2026-10-13'
+      archived: aquariumglaser.de/en/25-perchlike-fishes/25e-perchlike-fishes-5-remaining-cichlids-from-south-and-central-america/cichla_temensis_en/2026-10-14T200855Z
+    - &id022
+      kind: website
+      title: "AquariumDomain: Temensis Peacock Bass"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/TemensisPeacockBass.shtml"
+      accessed: '2026-10-13'
+      archived: aquariumdomain.com/speciesprofiles/newworldcichlids/temensispeacockbass.shtml/2026-10-14T200830Z
+    - *id008
+    - &id023
+      kind: website
+      title: "Lone Star Rare Exotic Fish: Temensis Peacock Bass care parameters"
+      url: "https://www.lonestarrareexoticfish.com/products/temensis-peacock-bass-cichla-temensis-for-sale-online-live"
+      accessed: '2026-10-13'
+      archived: lonestarrareexoticfish.com/products/temensis-peacock-bass-cichla-temensis-for-sale-online-live/2026-10-14T201707Z
+    - *id001
+    - &id036
+      kind: database
+      title: "Cichlid Room Companion: Cichla temensis, public information"
+      url: "https://cichlidae.com/species.php?id=aYYYC0OP7KwEAGJ6yNtxtg"
+      accessed: '2026-10-13'
+      archived: cichlidae.com/species.php/q-8849472f/2026-10-14T200815Z
+    - *id009
+    - *id010
+    - *id003
+    - kind: literature
+      title: Siqueira-Souza et al. (2021). Patterns of pelagic fish diversity in central Amazon floodplain
+        lakes
+      url: "https://doi.org/10.3389/fevo.2021.602895"
+      accessed: '2026-10-13'
+      archived: doi.org/10.3389_fevo.2021.602895/2026-10-13T132013Z
+    - &id042
+      kind: archive
+      title: cichlids.com forum thread 30735
+      url: "https://www.cichlids.com/disc/read.php?1,30735"
+      accessed: '2026-10-13'
+    - *id011
+    - *id012
+    - &id024
+      kind: literature
+      title: "Thome-Souza et al. (2014). Peacock bass mortality associated with catch-and-release sport\
+        \ fishing in the Negro River, Amazonas State, Brazil."
+      url: "https://doi.org/10.1590/1809-4392201400193"
+      accessed: '2026-10-14'
+      archived: doi.org/10.1590_1809-4392201400193/2026-10-14T201623Z
+    - &id025
+      kind: website
+      title: "Aquarist Atlas: Cichla intermedia, summary of Venezuelan river measurements"
+      url: "https://www.cichlidatlas.com/species/cichla-intermedia/"
+      accessed: '2026-10-14'
+      archived: cichlidatlas.com/species/cichla-intermedia/2026-10-14T201723Z
+    - &id029
+      kind: literature
+      title: U.S. Fish and Wildlife Service (2020). Speckled Pavon ecological risk screening summary.
+      url: "https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Speckled-Pavon.pdf"
+      accessed: '2026-10-14'
+      archived: fws.gov/sites/default/files/documents/ecological-risk-screening-summary-speckled-pavon.pdf/2026-10-14T201621Z
+    evidence:
+    - source: *id013
+      value:
+        min: 28.9
+        max: 30.7
+      note: "Rio Negro sites, excluding urban streams and springs"
+    - source: *id014
+      value:
+        min: 29.18
+        max: 30.5
+      note: "Table 4, C. temensis capture sites; table read in archived TEI XML"
+    - source: *id002
+      value:
+        min: 26
+        max: 31
+      note: "river channel and lagoon, survey in February 1993; checker-a claim retained; original full\
+        \ text unavailable through fetch-oa for independent verification"
+    - source: *id005
+      value:
+        min: 27
+        max: 29
+      note: climate summary of the database
+    - source: *id006
+      value:
+        min: 27
+        max: 29
+      note: aquarium recommendation
+    - source: *id014
+      value:
+        min: 29.18
+        max: 30.5
+      note: C. temensis capture sites in Balbina; Table 4 values recovered from archived XML table
+    - source: *id007
+      value:
+        min: 30.4
+        max: 30.4
+      note: Atabapo surface measurement at biotopes where the species was observed
+    - source: *id005
+      value:
+        min: 27
+        max: 29
+      note: "Aquarium-reference range, not independent field measurements"
+    - source: *id015
+      value:
+        min: 28.4
+        max: 34.7
+      note: "Measured water across river microhabitats, depths and day/night samples."
+    - source: *id016
+      value:
+        min: 29.4
+        max: 29.6
+      note: Negro collection mean 29.5 C with reported variation 0.1 C.
+    - source: *id017
+      value:
+        min: 28
+        max: 32
+      note: "Regional synthesis, not a species-specific field series."
+    - source: *id018
+      value:
+        min: 22
+        max: 30
+      note: Reported habitat occurrences without station details.
+    - source: *id005
+      value:
+        min: 27
+        max: 29
+      note: "Aquarium-reference interval, excluded from natural decision."
+    - source: *id019
+      value:
+        min: 28.9
+        max: 30.3
+      note: Measured Rio Negro main river stations near Manaus and Barcelos in April 2009.
+    - source: *id019
+      value:
+        min: 26.3
+        max: 26.3
+      note: Measured Rio Jauaperi clearwater station; occurrence of C. temensis at this station was not
+        established.
+    - source: *id019
+      value:
+        min: 27.8
+        max: 27.8
+      note: Measured Cayman Lake clearwater station; occurrence of C. temensis at this station was not
+        established.
+    - source: *id007
+      value:
+        min: 30.4
+        max: 30.4
+      note: Atabapo surface measurement in habitat where the report identifies C. temensis.
+    - source: *id020
+      value:
+        min: 28
+        max: 30.4
+      note: Atabapo November 2022 and February 2022 seasonal comparison.
+    - source: *id020
+      value:
+        min: 32.5
+        max: 32.5
+      note: Earlier February 2020 Atabapo surface reading reported for comparison; seasonal peak.
+    - source: *id005
+      value:
+        min: 27
+        max: 29
+      note: Species environment summary; no field station stated.
+    - source: *id006
+      value:
+        min: 27
+        max: 29
+      note: "Aquarium recommendation, not a field measurement."
+    - source: *id021
+      value:
+        min: 23
+        max: 28
+      note: "Aquarium recommendation, not a field measurement."
+    - source: *id022
+      value:
+        min: 26.7
+        max: 28.9
+      note: Aquarium recommendation converted from 80 to 84 F.
+    - source: *id023
+      value:
+        min: 24
+        max: 28
+      note: Aquarium recommendation as explicitly stated in Celsius.
+    - source: *id024
+      value:
+        min: 29
+        max: 32
+      note: Regional Negro basin annual water temperatures reported in a native peacock-bass field study;
+        not an individual fish capture range.
+    - source: *id014
+      value:
+        min: 29.18
+        max: 30.5
+      note: "Table 4, C. temensis column only; measured water at capture sites in the Uatuma drainage\
+        \ reservoir."
+    - source: *id025
+      value:
+        min: 26.1
+        max: 31.1
+      note: "Secondary account of Pasimoni and Cinaruco field measurements, converted from approximately\
+        \ 79 and 86 to 88 F; original numeric table not accessible through fetch-oa."
+    - source: *id005
+      value:
+        min: 27
+        max: 29
+      note: Database summary; aquarium origin of temperature citation flagged by FWS.
+    - source: *id006
+      value:
+        min: 27
+        max: 29
+      note: "Aquarium recommendation, retained for comparison rather than defining native temperatures."
+    tolerance:
+      value: &id052
+        min: 26
+        max: 31
+      confidence: low
+      rationale: "The tally treats the four proposals as unanimous within the one-degree threshold and\
+        \ takes their rounded bound medians: generator 25 to 31 C, checker-a 26 to 31 C, checker-b 27\
+        \ to 31 C and checker-c 25 to 32 C yield 26 to 31 C. Seriously Fish recommends 27 to 29 C; Scott\
+        \ supports approximately 25 to 28 C; Guidarium gives 26 to 30 C; AquariumDomain approximately\
+        \ 26.7 to 28.9 C. Glaser gives the wider, cooler 23 to 28 C recommendation, which is retained\
+        \ but does not establish chronic health at 23 C. The decided upper endpoint contains the natural\
+        \ range; neither warm field occurrence nor the juvenile metabolic experiment at 25, 30 and 35\
+        \ C establishes years of aquarium health at 31 C. Low confidence reflects this endpoint uncertainty.\
+        \ Routine maintenance around 27 to 29 C has better support."
+      sources:
+      - *id006
+      - *id008
+      - *id021
+      - *id014
+      - *id013
+      - &id049
+        kind: literature
+        title: Effects of temperature on metabolic rate and lower dissolved oxygen tolerance of juvenile
+          speckled peacock bass Cichla temensis (2023). Abstract only via literature-search.
+        url: "https://doi.org/10.1111/jfb.15305"
+        accessed: '2026-10-13'
+        offline: true
+      - &id026
+        kind: model-knowledge
+        title: Generator inference where published quantitative aquarium evidence is absent
+        accessed: '2026-10-13'
+      - &id027
+        kind: website
+        title: "Guidarium: Peacock Bass Temensis care guide"
+        url: "https://guidarium.com/fishes/peacock-bass-temensis"
+        archived: guidarium.com/fishes/peacock-bass-temensis/2026-10-14T201100Z
+        accessed: '2026-10-14'
+      - *id002
+      - *id022
+      - *id017
+      evidence:
+      - source: *id006
+        value:
+          min: 27
+          max: 29
+        note: Aquarium recommendation
+      - source: *id008
+        value:
+          min: 25
+          max: 28
+        note: Approximate conversion of upper 70s to low 80s Fahrenheit
+      - source: *id021
+        value:
+          min: 23
+          max: 28
+        note: Broader aquarium recommendation
+      - source: *id026
+        value:
+          min: 25
+          max: 31
+        note: Synthesis widened to contain field measurements; upper endpoint uncertain
+      - source: *id006
+        value:
+          min: 27
+          max: 29
+        note: recommended aquarium range
+      - source: *id027
+        value:
+          min: 26
+          max: 30
+        note: retail care guide
+      - source: *id002
+        value:
+          min: 26
+          max: 31
+        note: natural habitat; checker-a claim retained; original full text unavailable through fetch-oa
+          for independent verification
+      - source: *id022
+        value:
+          min: 26.7
+          max: 28.9
+        note: 80 to 84 F aquarium recommendation
+      - source: *id014
+        value:
+          min: 29.18
+          max: 30.5
+        note: "Field occurrence supports the necessary upper extension, not a multi-year aquarium trial"
+      - source: *id008
+        value:
+          min: 25
+          max: 28
+        note: Approximate conversion of a qualitative Fahrenheit recommendation.
+      - source: *id006
+        value:
+          min: 27
+          max: 29
+      - source: *id017
+        value:
+          min: 28
+          max: 32
+        note: "Habitat context for required extension, not a long-term aquarium trial."
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  ph:
+    value: &id053
+      min: 4.3
+      max: 6.3
+    confidence: low
+    rationale: "The tally uses the median method because six proposals do not produce a qualified majority:\
+      \ generator 3.9 to 6.5, checker-a 4.5 to 5.8, checker-b 4.5 to 6.5, checker-c 4.0 to 6.0, tiebreaker-1\
+      \ 3.9 to 6.5 and tiebreaker-2 4.6 to 6.0. Bound medians of 4.25 and 6.25 round to pH 4.3 to 6.3,\
+      \ with low confidence. This is a synthesis of uneven regional coverage, not a new measurement or\
+      \ a physiological limit. Balbina capture sites measured 4.75 to 5.10; JBL observed the species at\
+      \ Atabapo pH 4.5. The decision is narrower than Kuchler et al.'s Rio Negro basin range of 3.89 to\
+      \ 6.07 at the acidic end, the occupied-water envelope of 3.9 to 6.5 proposed by generator and tiebreaker-1,\
+      \ and the database environment interval of 5.5 to 6.5 at the less acidic end. Silva et al. report\
+      \ a Uatuma dry-season mean of 6.32. The basin minimum at Rio Tea has indirect species linkage through\
+      \ molecular sampling, rather than a simultaneous fish-and-water observation. The broader review\
+      \ interval of 2.5 to 6.0 in Val et al. includes regional extremes without species-specific occurrence.\
+      \ Checker-a's original Copeia water readings could not be independently verified through fetch-oa.\
+      \ All wider source ranges and aquarium-context values remain visible; aquarium recommendations do\
+      \ not define natural pH."
+    sources:
+    - &id030
+      kind: literature
+      title: "Kuchler, Miekeley and Forsberg (2000). A contribution to the chemical characterization of\
+        \ rivers in the Rio Negro Basin, Brazil."
+      url: "https://doi.org/10.1590/S0103-50532000000300015"
+      accessed: '2026-10-13'
+      archived: doi.org/10.1590_s0103-50532000000300015/2026-10-12T202947Z
+    - *id028
+    - *id014
+    - &id031
+      kind: literature
+      title: Silva et al. (2019). A contribution to the hydrochemistry and water typology of the Amazon
+        River and its tributaries.
+      url: "https://doi.org/10.14393/rcg207246295"
+      accessed: '2026-10-13'
+      archived: doi.org/10.14393_rcg207246295/2026-10-12T203053Z
+    - *id013
+    - *id005
+    - *id002
+    - &id032
+      kind: literature
+      title: "Rios-Villamizar et al. (2020). Hydrochemical classification of Amazonian rivers: a systematic\
+        \ review and meta-analysis."
+      url: "https://doi.org/10.14393/rcg217853272"
+      accessed: '2026-10-13'
+      archived: doi.org/10.14393_rcg217853272/2026-10-13T074935Z
+    - *id006
+    - *id007
+    - &id033
+      kind: literature
+      title: Pinto et al. (2009). The human action effects on the hydrogeochemistry of Negro river at
+        the Manaus shoreline
+      url: "https://doi.org/10.1590/s0044-59672009000300018"
+      accessed: '2026-10-13'
+      archived: doi.org/10.1590_s0044-59672009000300018/2026-10-13T181858Z
+    - &id035
+      kind: literature
+      title: "Gonzalez, Patrick and Val (2024). Ion uptake in naturally acidic water."
+      url: "https://doi.org/10.1007/s00360-024-01552-6"
+      accessed: '2026-10-13'
+      archived: doi.org/10.1007_s00360-024-01552-6/2026-10-13T131655Z
+    - *id017
+    - *id015
+    - *id016
+    - *id019
+    - *id022
+    - *id023
+    - *id024
+    - *id025
+    - *id029
+    - &id034
+      kind: website
+      title: "Aquarist Atlas: Cichla temensis"
+      url: "https://www.cichlidatlas.com/species/cichla-temensis/"
+      accessed: '2026-10-14'
+      archived: cichlidatlas.com/species/cichla-temensis/2026-10-14T201620Z
+    evidence:
+    - source: *id030
+      value:
+        min: 3.89
+        max: 5.8
+      note: "Tea and Negro sites, Table 2; not every sampled tributary is assumed occupied"
+    - source: *id014
+      value:
+        min: 4.75
+        max: 5.1
+      note: "Species-specific capture sites, Table 4"
+    - source: *id031
+      value:
+        min: 6.32
+        max: 6.32
+      note: "Uatuma dry-period site mean, not a species tolerance experiment"
+    - source: *id013
+      value:
+        min: 4.77
+        max: 5.51
+      note: Rio Negro shoreline measurements
+    - source: *id002
+      value:
+        min: 4.6
+        max: 5.8
+      note: "two rivers, channel and lagoon; checker-a claim retained; original full text unavailable\
+        \ through fetch-oa for independent verification"
+    - source: *id032
+      value:
+        min: 4
+        max: 5.5
+      note: blackwater class of the Rio Negro type
+    - source: *id005
+      value:
+        min: 5.5
+        max: 6.5
+    - source: *id006
+      value:
+        min: 5.5
+        max: 6.5
+      note: aquarium recommendation
+    - source: *id007
+      value:
+        min: 4.5
+        max: 4.5
+      note: Atabapo field observation
+    - source: *id014
+      value:
+        min: 4.75
+        max: 5.1
+      note: Species-specific capture sites
+    - source: *id033
+      value:
+        min: 4.7
+        max: 5.5
+      note: Less impacted Rio Negro stations
+    - source: *id005
+      value:
+        min: 5.5
+        max: 6.5
+      note: Species environment range; endpoint field provenance unclear
+    - source: *id015
+      value:
+        min: 4.15
+        max: 4.65
+      note: "Mean plus/minus reported variation, not observed extrema."
+    - source: *id016
+      value:
+        min: 4.5
+        max: 4.7
+      note: Mean plus/minus reported variation.
+    - source: *id017
+      value:
+        min: 2.5
+        max: 6
+      note: Broad blackwater synthesis including unusually acidic environments.
+    - source: *id005
+      value:
+        min: 5.5
+        max: 6.5
+      note: Database environment interval without field detail.
+    - source: *id030
+      value:
+        min: 3.89
+        max: 6.07
+      note: "Field survey of the Rio Negro basin; minimum from Rio Tea, not a species-specific capture\
+        \ station."
+    - source: *id019
+      value:
+        min: 4.5
+        max: 5.16
+      note: Rio Negro near Barcelos and Manaus.
+    - source: *id007
+      value:
+        min: 4.5
+        max: 4.5
+      note: Atabapo habitat with observed C. temensis.
+    - source: *id005
+      value:
+        min: 5.5
+        max: 6.5
+      note: Species environment range without station details.
+    - source: *id006
+      value:
+        min: 5.5
+        max: 6.5
+      note: Aquarium recommendation.
+    - source: *id022
+      value:
+        min: 5
+        max: 6.5
+      note: Aquarium care range.
+    - source: *id023
+      value:
+        min: 6
+        max: 7.5
+      note: Dealer aquarium care range; no duration or breeding outcome stated.
+    - source: *id014
+      value:
+        min: 4.75
+        max: 5.1
+      note: "Table 4, water at sites where C. temensis was captured; other species columns excluded."
+    - source: *id025
+      value:
+        min: 4.6
+        max: 5.8
+      note: Secondary report of Pasimoni pH 4.6 to 5.1 and Cinaruco pH 5.7 to 5.8; native occurrence checked
+        independently.
+    - source: *id005
+      value:
+        min: 5.5
+        max: 6.5
+      note: Environment summary with no locality-specific measurement presented.
+    - source: *id034
+      value:
+        min: 5.5
+        max: 6.5
+      note: "Repeats the FishBase habitat band, rather than supplying independent field measurements."
+    tolerance:
+      value: &id054
+        min: 4.3
+        max: 6.5
+      confidence: low
+      rationale: "The six proposals are generator 3.9 to 6.5, checker-a 4.5 to 7.5, checker-b 4.5 to 6.5,\
+        \ checker-c 4.0 to 7.0, tiebreaker-1 3.9 to 6.5 and tiebreaker-2 4.6 to 6.5. No qualified majority\
+        \ forms. The tally selects the rounded median lower bound of 4.3 and the median upper bound of\
+        \ 6.5, with low confidence, containing the decided natural pH 4.3 to 6.3. Seriously Fish recommends\
+        \ 5.5 to 6.5 and AquariumDomain 5.0 to 6.5. The decision is narrower than Guidarium's 5.5 to 7.5,\
+        \ Lone Star's 6.0 to 7.5, the genus-level Il Mio Acquario range of 5.5 to 7.5, and Aquariumpro's\
+        \ 5.0 to 7.0. Those broader recommendations are preserved, but lack independently established\
+        \ long-term endpoints. Scott and Glaser describe chemical flexibility without numerical pH limits.\
+        \ The lower extension is required by native-range containment and is not verified by a multi-year\
+        \ aquarium trial; ordinary mildly acidic maintenance has better support than treating pH 4.3 as\
+        \ a target."
+      sources:
+      - *id006
+      - *id008
+      - *id021
+      - *id030
+      - *id028
+      - *id026
+      - *id027
+      - *id002
+      - *id022
+      - *id007
+      - &id037
+        kind: website
+        title: "Aquariumpro: Striped Tucunare"
+        url: "https://aquarium-pro.com/species/striped-tucunare"
+        accessed: '2026-10-13'
+        archived: aquarium-pro.com/species/striped-tucunare/2026-10-14T201029Z
+      - *id035
+      - &id038
+        kind: model-knowledge
+        title: Explicit checker inference where numerical husbandry evidence is unavailable
+      - *id019
+      - *id023
+      - &id039
+        kind: website
+        title: "Il Mio Acquario: Cichla, genus-level aquarium parameters"
+        url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/cichla/"
+        accessed: '2026-10-14'
+        archived: ilmioacquario.it/acqua-dolce/pesci/cichlidae/cichla/2026-10-14T201723Z
+      - *id014
+      - *id025
+      - &id045
+        kind: literature
+        title: "Weight-length relationship, condition factor and blood parameters of farmed Cichla temensis\
+          \ in central Amazon (2011)."
+        url: "https://doi.org/10.1590/s1679-62252011005000010"
+        accessed: '2026-10-14'
+        archived: doi.org/10.1590_s1679-62252011005000010/2026-10-14T201737Z
+      - *id036
+      evidence:
+      - source: *id006
+        value:
+          min: 5.5
+          max: 6.5
+        note: Quantified aquarium recommendation
+      - source: *id026
+        value:
+          min: 3.9
+          max: 6.5
+        note: Native-range containment; low-end long-term aquarium evidence missing
+      - source: *id006
+        value:
+          min: 5.5
+          max: 6.5
+        note: recommended range; states hardiness
+      - source: *id027
+        value:
+          min: 5.5
+          max: 7.5
+        note: retail care guide
+      - source: *id002
+        value:
+          min: 4.6
+          max: 5.8
+        note: natural habitat; checker-a claim retained; original full text unavailable through fetch-oa
+          for independent verification
+      - source: *id006
+        value:
+          min: 5.5
+          max: 6.5
+        note: Aquarium recommendation
+      - source: *id022
+        value:
+          min: 5
+          max: 6.5
+        note: Aquarium recommendation
+      - source: *id037
+        value:
+          min: 5
+          max: 7
+        note: Lower-trust care range
+      - source: *id007
+        value:
+          min: 4.5
+          max: 4.5
+        note: Natural observation requires the lower extension
+      - source: *id006
+        value:
+          min: 5.5
+          max: 6.5
+      - source: *id038
+        value:
+          min: 4
+          max: 7
+        note: Provisional inference combining native range and qualitative husbandry flexibility.
+      - source: *id006
+        value:
+          min: 5.5
+          max: 6.5
+        note: High-trust aquarium recommendation.
+      - source: *id022
+        value:
+          min: 5
+          max: 6.5
+        note: Independent aquarium care recommendation.
+      - source: *id023
+        value:
+          min: 6
+          max: 7.5
+        note: Conflicting low-trust dealer recommendation.
+      - source: *id030
+        value:
+          min: 3.89
+          max: 6.07
+        note: Natural regional measurements used only to ensure containment of the natural range.
+      - source: *id007
+        value:
+          min: 4.5
+          max: 4.5
+        note: "Natural species habitat, not an aquarium trial."
+      - source: *id006
+        value:
+          min: 5.5
+          max: 6.5
+        note: Species-specific aquarium recommendation.
+      - source: *id022
+        value:
+          min: 5
+          max: 6.5
+        note: Species-specific aquarium recommendation.
+      - source: *id023
+        value:
+          min: 6
+          max: 7.5
+        note: "Dealer recommendation, retained despite disagreement with the higher-trust acidic recommendation."
+      - source: *id039
+        value:
+          min: 5.5
+          max: 7.5
+        note: "Genus-level recommendation, not a C. temensis longevity study."
+      - source: *id014
+        value:
+          min: 4.75
+          max: 5.1
+        note: Native capture-site measurements support inclusion of acidic water; not an aquarium tolerance
+          trial.
+      - source: *id025
+        value:
+          min: 4.6
+          max: 5.8
+        note: Secondary native-habitat measurements support the lower extension; not long-term captive
+          evidence.
+      verification:
+        method: median
+        votes:
+          agree: 2
+          total: 6
+    verification:
+      method: median
+      votes:
+        agree: 2
+        total: 6
+  ghDgh:
+    value: &id055
+      min: 0
+      max: 1
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c proposed 0 to 1 dGH; checker-a proposed 0 to 0.4 dGH.\
+      \ The tally treats these as unanimous within its two-degree threshold and decides the rounded median\
+      \ envelope 0 to 1 dGH with medium confidence. JBL measured GH 0 at Atabapo where the species was\
+      \ observed. Kuchler et al.'s blackwater calcium and magnesium extrema yield a calculated outer envelope\
+      \ of roughly 0.01 to 0.14 dGH, and the wet/dry calcium and magnesium measurements reproduced by\
+      \ Gonzalez et al. yield about 0.042 to 0.048 dGH. Checker-a retained a converted Venezuelan field\
+      \ range of 0 to 0.34 dGH, which could not be independently checked through the allowed full-text\
+      \ tool. Zero denotes near-zero hardness at aquarium-test resolution. The 1 dGH ceiling is outward\
+      \ practical rounding, not a measured concentration. Conductivity supports low mineral content but\
+      \ is not converted into general hardness; basin proxies do not prove identical chemistry throughout\
+      \ the Orinoco distribution."
+    sources:
+    - *id030
+    - *id032
+    - *id035
+    - *id002
+    - &id040
+      kind: literature
+      title: "Physicochemical features of Amazonian water typologies for water resources management. IOP\
+        \ Conference Series: Earth and Environmental Science 427, 012003 (2020)"
+      url: "https://doi.org/10.1088/1755-1315/427/1/012003"
+      archived: doi.org/10.1088_1755-1315_427_1_012003/2026-10-13T004655Z
+      accessed: '2026-10-14'
+    - *id007
+    - *id033
+    - *id017
+    - &id041
+      kind: literature
+      title: "Gonzalez, Patrick and Val (2024). Ion uptake in naturally acidic water, Table 1"
+      url: "https://doi.org/10.1007/s00360-024-01552-6"
+      accessed: '2026-10-14'
+      archived: pmc.ncbi.nlm.nih.gov/articles/pmc11486802/2026-10-14T200858Z
+    evidence:
+    - source: *id030
+      value:
+        min: 0.01
+        max: 0.14
+      note: Calculated outer envelope from blackwater Ca and Mg measurements; ion extrema need not co-occur
+    - source: *id002
+      value:
+        min: 0
+        max: 0.34
+      note: converted from <0.5-6 mg/l CaCO3; checker-a claim retained; original full text unavailable
+        through fetch-oa for independent verification
+    - source: *id032
+      value: "conductivity under 30 uS/cm, solute-poor"
+      note: blackwater class
+    - source: *id040
+      value: "conductivity under 25 uS/cm, solute-poor"
+      note: blackwater class
+    - source: *id007
+      value:
+        min: 0
+        max: 0
+      note: Reported test reading; practical natural envelope allows sub-degree hardness
+    - source: *id041
+      value:
+        min: 0.042
+        max: 0.048
+      note: "Calculated from measured calcium and magnesium, rounded only in decided value."
+    tolerance:
+      value:
+        min: 0
+        max: 15
+      confidence: medium
+      rationale: "All four proposals are 0 to 15 dGH, and the tally retains their unanimous decision with\
+        \ medium confidence. Seriously Fish provides the quantified upper recommendation of 15 dGH. Guidarium\
+        \ and Aquariumpro recommend 2 to 15 dGH, and AquariumDomain describes 5 to 15 dH in prose; the\
+        \ lower endpoint includes near-zero natural water. Scott and Glaser describe general flexibility\
+        \ without a numerical maximum. Multiple repetitions do not establish several independent long-term\
+        \ trials, so the ceiling remains a care recommendation rather than a demonstrated chronic physiological\
+        \ threshold."
+      sources:
+      - *id006
+      - *id008
+      - *id021
+      - *id030
+      - *id027
+      - *id037
+      - *id022
+      - *id007
+      evidence:
+      - source: *id006
+        value:
+          min: 0
+          max: 15
+        note: Care sheet maximum 15 dGH; zero lower end consistent with native measurements
+      - source: *id006
+        value:
+          min: 0
+          max: 15
+        note: recommended aquarium range
+      - source: *id027
+        value:
+          min: 2
+          max: 15
+        note: retail care guide
+      - source: *id006
+        value:
+          min: 0
+          max: 15
+        note: Aquarium recommendation
+      - source: *id037
+        value:
+          min: 2
+          max: 15
+        note: Aquarium recommendation
+      - source: *id022
+        value:
+          min: 5
+          max: 15
+        note: Prose hardness range; not accepted as natural field chemistry
+      - source: *id006
+        value:
+          min: 0
+          max: 15
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  khDkh:
+    value: &id056
+      min: 0
+      max: 1
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c proposed 0 to 1 dKH; checker-a proposed 0 to 0.1 dKH.\
+      \ The tally agrees within its two-degree threshold and decides 0 to 1 dKH with medium confidence;\
+      \ natural carbonate hardness carries no verification object. JBL reported KH 0 at Atabapo. Serra\
+      \ and Paz measured bicarbonate below 1.5 mg/L, equivalent to less than 0.069 dKH, in Rio Negro samples.\
+      \ Pinto et al.'s 1.22 to 6.10 mg/L bicarbonate-equivalent results at less impacted shoreline stations\
+      \ convert to about 0.056 to 0.280 dKH. The review table cited by checker-c gives 0.43 to 0.69 dKH-equivalent\
+      \ total alkalinity, which can include organic buffering and is not necessarily carbonate hardness.\
+      \ Checker-a's converted original Copeia limit below 0.03 dKH is retained but independently unverified\
+      \ here. Zero means approximately unbuffered water; the upper whole-degree limit is rounding rather\
+      \ than a measured 1 dKH endpoint. Polluted urban tributary values and general hardness recommendations\
+      \ do not set natural KH."
+    sources:
+    - *id013
+    - *id032
+    - *id035
+    - *id002
+    - *id007
+    - *id033
+    - *id041
+    evidence:
+    - source: *id013
+      value:
+        min: 0
+        max: 0.07
+      note: "Bicarbonate-based upper bound; results below quantification limit, not exact zero"
+    - source: *id002
+      value:
+        min: 0
+        max: 0.03
+      note: converted from <0.5 mg/l CaCO3; checker-a claim retained; original full text unavailable through
+        fetch-oa for independent verification
+    - source: *id032
+      value: "low alkalinity, sodium-dominated blackwater"
+      note: Rio Negro
+    - source: *id007
+      value:
+        min: 0
+        max: 0
+      note: Atabapo test result
+    - source: *id033
+      value:
+        min: 0.056
+        max: 0.28
+      note: Converted from 1.22 to 6.10 mg/L HCO3 at less impacted stations
+    - source: *id041
+      value:
+        min: 0.43
+        max: 0.69
+      note: Alkalinity converted to dKH equivalents; organic contributions may inflate carbonate KH.
+    tolerance:
+      value: &id057
+        min: 0
+        max: 8
+      confidence: low
+      rationale: "The proposals are generator 0 to 5 dKH, checker-a 0 to 8, checker-b 0 to 15, checker-c\
+        \ 0 to 5, tiebreaker-1 0 to 10 and tiebreaker-2 0 to 8. No qualified majority forms; the tally\
+        \ takes bound medians and decides 0 to 8 dKH with low confidence. This contains the natural range\
+        \ and avoids allowing one narrow estimate to define the entire compatibility interval. The 5 dKH\
+        \ proposals were inferences, while checker-a's 8 dKH estimate was indirectly based on GH, which\
+        \ cannot establish KH. Il Mio Acquario gives genus-level KH 2 to 8 dKH. The decision is narrower\
+        \ than Lone Star's 4 to 10 dKH and AquariumDomain's header claim of 5 to 15 dKH; the latter uses\
+        \ the same numbers as unspecified hardness in its prose, making the chemical quantity ambiguous.\
+        \ Scott describes alkalinity flexibility without numerical limits. No medium- or high-trust numerical\
+        \ long-term KH ceiling was found. Eight dKH is therefore a provisional maintenance estimate, not\
+        \ an experimentally established limit or a reason to pursue that KH in strongly acidic water."
+      sources:
+      - *id008
+      - *id021
+      - *id026
+      - *id006
+      - *id022
+      - *id007
+      - *id033
+      - *id038
+      - *id019
+      - *id023
+      - *id039
+      - *id025
+      - *id034
+      evidence:
+      - source: *id026
+        value:
+          min: 0
+          max: 5
+        note: Explicit generator estimate; numeric species-specific KH tolerance unverified
+      - source: *id006
+        value:
+          min: 0
+          max: 15
+        note: "general hardness range, not carbonate hardness; used as indirect basis"
+      - source: *id022
+        value:
+          min: 5
+          max: 15
+        note: Header explicitly labels this KH; uncorroborated husbandry claim
+      - source: *id007
+        value:
+          min: 0
+          max: 0
+        note: Native habitat requires zero lower limit
+      - source: *id038
+        value:
+          min: 0
+          max: 5
+        note: "Numerical inference, not a measurement or quoted care-sheet range."
+      - source: *id019
+        value:
+          min: 0
+          max: 0
+        note: Measured natural Rio Negro KH in dKH; establishes the necessary lower endpoint only.
+      - source: *id007
+        value:
+          min: 0
+          max: 0
+        note: Measured natural Atabapo KH in species habitat; not long-term captive evidence.
+      - source: *id023
+        value:
+          min: 4
+          max: 10
+        note: Explicit dealer aquarium KH recommendation.
+      - source: *id022
+        value:
+          min: 5
+          max: 15
+        note: Explicit care-header KH claim; its prose uses the less specific unit dH.
+      - source: *id039
+        value:
+          min: 2
+          max: 8
+        note: "Aquarium KH recommendation for Cichla as a genus, including C. temensis."
+      - source: *id023
+        value:
+          min: 4
+          max: 10
+        note: Explicit species-level carbonate hardness recommendation from a small dealer; longevity
+          not documented.
+      - source: *id022
+        value:
+          min: 5
+          max: 15
+        note: "Quick-facts KH label; prose calls the same interval hardness, making its identity uncertain."
+      - source: *id025
+        value:
+          min: 0
+          max: 0
+        note: "Encoding of a qualitative report of almost unmeasurable alkalinity in native Pasimoni water;\
+          \ approximate natural endpoint, not a numerical titration or captive limit."
+      verification:
+        method: median
+        votes:
+          agree: 3
+          total: 6
+  maxSizeCm:
+    value: &id058
+      male: 77.5
+      female: 67.5
+    confidence: low
+    rationale: "Generator and checker-c proposed male/female 75/65 cm, checker-a 80/70 cm and checker-b\
+      \ 90/80 cm. Their component medians are 77.5 and 67.5 cm, retained as approximate total-length planning\
+      \ maxima for well-kept aquarium adults. Scott reports average adults exceeding 61 cm TL and about\
+      \ 41 cm TL at 12 to 14 months. Lone Star describes typical captive size 60 to 75 cm; Guidarium gives\
+      \ an unsexed 85 cm adult figure and AquariumDomain roughly 91 cm. Forum estimates of 76 to 91 cm\
+      \ and FishBase's 99 cm TL record warn of larger potential. Seriously Fish labels its 99 cm figure\
+      \ SL, so it is not silently treated as the same measurement as FishBase TL. These sources lack a\
+      \ sex-separated captive series. The female estimate and precise sex difference are inferred, and\
+      \ confidence stays low; the medians are not reasons to discount unusually large individuals."
+    sources:
+    - *id008
+    - *id006
+    - *id005
+    - *id042
+    - *id026
+    - *id003
+    - *id027
+    - *id022
+    - *id023
+    evidence:
+    - source: *id008
+      value:
+        male: 61
+        female: 61
+      note: "Lower benchmark only: unsexed average adults exceed 61 cm TL"
+    - source: *id005
+      value:
+        male: 99
+        female: 99
+      note: "Record male/unsexed TL, not a sex-specific captive maximum"
+    - source: *id026
+      value:
+        male: 75
+        female: 65
+      note: Typical captive maxima and sex split inferred
+    - source: *id005
+      value: 99
+      note: maximum published total length
+    - source: *id006
+      value: 99
+      note: standard length
+    - source: *id003
+      value: 68
+      note: "asymptotic standard length, middle Rio Negro"
+    - source: *id027
+      value: 85
+      note: adult size of a care guide
+    - source: *id042
+      value: 91
+      note: keeper's statement of 30-36 inches maximum
+    - source: *id022
+      value:
+        male: 91
+        female: 91
+      note: Around three feet for adults without separate sex values; sex split inferred in final value
+    - source: *id005
+      value: 99
+      note: Male/unsexed wild record in cm TL; no female maximum is supplied.
+    - source: *id042
+      value:
+        min: 76.2
+        max: 91.4
+      note: "Community maximum estimate, sexes unspecified."
+    - source: *id023
+      value:
+        male: 75
+        female: 75
+      note: Unsexed upper endpoint of dealer's 60 to 75 cm typical captive-size statement; no sex split
+        provided
+  predation:
+    value: 3
+    confidence: high
+    rationale: "All four proposals assign level 3. FishBase trophic data, the public CRC feeding classification,\
+      \ Seriously Fish, Scott and open-access field observations identify fish as the main food. This\
+      \ meets the pronounced-piscivore rubric independently of aggression toward fish too large to swallow.\
+      \ The unanimous tally decision and high confidence are retained."
+    sources:
+    - *id005
+    - *id036
+    - *id008
+    - *id006
+    - *id009
+    - *id004
+    - *id002
+    - &id043
+      kind: database
+      title: "FishBase: diet composition of Cichla temensis"
+      url: "https://www.fishbase.se/TrophicEco/DietCompoList.php?ID=6461&GenusName=Cichla&SpeciesName=temensis&fc=349&StockCode=6783"
+      accessed: '2026-10-13'
+      archived: fishbase.se/trophiceco/dietcompolist.php/q-eb4d4776/2026-10-14T200930Z
+    - &id044
+      kind: database
+      title: "FishBase: food items of Cichla temensis"
+      url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=6783&genus=Cichla&species=temensis"
+      accessed: '2026-10-13'
+      archived: fishbase.se/trophiceco/fooditemslist.php/q-e54ac31c/2026-10-14T200932Z
+    - kind: database
+      title: "FishBase: ecology of Cichla temensis"
+      url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=6783&GenusName=Cichla&SpeciesName=temensis"
+      accessed: '2026-10-13'
+      archived: fishbase.se/ecology/fishecologysummary.php/q-4e6ac7ff/2026-10-14T200928Z
+    evidence:
+    - source: *id005
+      value: 3
+      note: Small fish dominate adult diet
+    - source: *id036
+      value: 3
+      note: Public feeding classification
+    - source: *id008
+      value: 3
+      note: Species-specific piscivorous feeding account
+    - source: *id002
+      value: 3
+      note: "stomachs hold characids, cichlids and others; large fish attack 20-35 cm prey; checker-a\
+        \ claim retained; original full text unavailable through fetch-oa for independent verification"
+    - source: *id005
+      value: 3
+      note: feeds mainly on small fish
+    - source: *id006
+      value: 3
+      note: "piscivorous, eats tankmates that fit"
+    - source: *id036
+      value: 3
+      note: feeding type piscivorous
+    - source: *id043
+      value: 3
+      note: Nekton dominates the listed Cinaruco and Guri diets
+    - source: *id044
+      value: 3
+      note: Reported prey entries are finfish
+    - source: *id009
+      value: 3
+      note: Field observations of predation on migrating fish
+    - source: *id036
+      value: 3
+      note: Public feeding classification is piscivorous
+    - source: *id005
+      value: 3
+    - source: *id006
+      value: 3
+    - source: *id036
+      value: 3
+    - source: *id008
+      value: 3
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value: &id059
+      type: piscivore
+      bloatSensitive: false
+      foods:
+      - complete carnivore pellets
+      - thawed whole fish of suitable size
+      - prawn
+      - mussel
+      - earthworms
+    confidence: high
+    rationale: "All four proposals agree on piscivore and bloatSensitive false; foods differ in wording\
+      \ and selection. The tally retains the generator food list, including complete carnivore pellets,\
+      \ thawed whole fish, prawn, mussel and earthworms. Checker-a proposed whole fish, prawn, mussel,\
+      \ lancefish and whitebait; checker-b fish flesh, small thawed fish, shrimp, mussels and carnivore\
+      \ pellets; checker-c fish flesh, shrimp, mussels and carnivore pellets. These are overlapping aquatic-animal\
+      \ and prepared-food choices supported by Scott and Seriously Fish, not contradictory feeding types.\
+      \ Field diets and farmed-fish food-training evidence support piscivory and pellet acceptance. The\
+      \ false bloat flag means the rubric's high-protein conflict for plant-feeding cichlids is absent;\
+      \ it does not promise immunity to digestive illness. The unanimous tally decision has high confidence."
+    sources:
+    - *id036
+    - *id005
+    - *id008
+    - *id006
+    - *id009
+    - *id002
+    - *id043
+    - *id044
+    - *id022
+    - *id045
+    evidence:
+    - source: *id036
+      value:
+        type: piscivore
+        bloatSensitive: false
+      note: Piscivory is explicit; false bloat flag is a rubric interpretation
+    - source: *id008
+      value:
+        type: piscivore
+        bloatSensitive: false
+      note: Fish-based diet with pellets and aquatic animal foods
+    - source: *id006
+      value:
+        type: piscivore
+        bloatSensitive: false
+      note: Fish-eating natural diet
+    - source: *id002
+      value: piscivore
+      note: mostly characiform fish; checker-a claim retained; original full text unavailable through
+        fetch-oa for independent verification
+    - source: *id005
+      value: piscivore
+    - source: *id006
+      value: piscivore
+      note: meaty foods such as prawn and white fish
+    - source: *id036
+      value: piscivore
+    - source: *id036
+      value:
+        type: piscivore
+        bloatSensitive: false
+      note: Piscivorous feeding classification; bloat flag interpreted from the rubric
+    - source: *id006
+      value:
+        type: piscivore
+        bloatSensitive: false
+      note: Animal-based aquarium diet
+    - source: *id036
+      value:
+        type: piscivore
+        bloatSensitive: false
+      note: Feeding type explicit; bloat flag inferred.
+    - source: *id006
+      value:
+        type: piscivore
+        bloatSensitive: false
+      note: Piscivory explicit; bloat flag inferred.
+    - source: *id008
+      value:
+        type: piscivore
+        bloatSensitive: false
+      note: High-animal-protein husbandry supports absence of the rubric dietary conflict.
+    - source: *id045
+      value:
+        type: piscivore
+        bloatSensitive: false
+      note: Farmed fingerlings accepted trained extruded high-protein feed; bloat flag is the rubric interpretation
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: "Generator, checker-a and checker-c proposed 3; checker-b proposed 2. Seriously Fish describes\
+      \ moderate territorial aggression and AquariumDomain a settling hierarchy, supporting the lower\
+      \ interpretation. Scott reports pronounced aggression within Cichla and gives direct experience\
+      \ with adult group housing. Persistent chasing during dominance and pair formation supports level\
+      \ 3 for a managed three-adult group, but routine killing in adequate accommodation is not established.\
+      \ This behavioral mapping has medium confidence and requires monitoring and separation capacity."
+    sources:
+    - *id006
+    - *id008
+    - *id002
+    - *id022
+    - *id018
+    evidence:
+    - source: *id006
+      value: 3
+      note: Rubric interpretation of territorial group keeping with exceptional space
+    - source: *id008
+      value: 3
+      note: Rubric interpretation of species-specific aggressive behavior
+    - source: *id006
+      value: 3
+      note: "territorial, groups only in an extremely large tank"
+    - source: *id002
+      value: adult pairs guard nests and fry
+      note: wild observation
+    - source: *id022
+      value: 2
+      note: Group dominance hierarchy described
+    - source: *id006
+      value: 2
+      note: Interpretation of moderate aggression in suitably large groups.
+    - source: *id008
+      value: 3
+      note: Interpretation of strong belligerence and space requirements.
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c proposed 2; checker-a proposed 3, partly from predation\
+      \ and a general aggressive rating. Predation is scored separately. Seriously Fish describes moderate\
+      \ territorial aggression, while Scott describes successful large-fish communities and vulnerability\
+      \ to more combative cichlids. Displacement from territory fits level 2; attacks well beyond a territory\
+      \ on comparable-size fish are not established by the stronger species accounts."
+    sources:
+    - *id006
+    - *id008
+    - *id027
+    - *id022
+    - *id018
+    evidence:
+    - source: *id006
+      value: 2
+      note: Territorial and moderately aggressive; numerical rubric mapping
+    - source: *id006
+      value: 3
+      note: "territorial, moderately aggressive, eats small tankmates"
+    - source: *id027
+      value: 3
+      note: "rated aggressive, 7 of 10"
+    - source: *id006
+      value: 2
+      note: Moderate territorial aggression with sufficiently large tankmates
+    - source: *id006
+      value: 2
+    - source: *id008
+      value: 2
+  territory:
+    value: &id060
+      size: large
+      breedingOnly: false
+    confidence: medium
+    rationale: "All proposals give large territory. Generator limits it to breeding; checker-a, checker-b\
+      \ and checker-c do not. Aquarium accounts describe territorial or dominant adults without a breeding-only\
+      \ restriction, while field observations add stronger nest and brood defense. The species' size makes\
+      \ a substantial tank area relevant, so breedingOnly false is retained. This does not imply continuous\
+      \ defense of a fixed wild home range."
+    sources:
+    - *id009
+    - *id010
+    - *id006
+    - *id002
+    - *id022
+    - *id008
+    - &id046
+      kind: literature
+      title: Reiss and Grothues (2015). Cyclical body shape changes in Cichla temensis
+      url: "https://doi.org/10.1590/1982-0224-20140030"
+      accessed: '2026-10-14'
+      archived: doi.org/10.1590_1982-0224-20140030/2026-10-14T200858Z
+    evidence:
+    - source: *id009
+      value:
+        size: large
+        breedingOnly: true
+      note: Substrate nesting and biparental brood defense; area class inferred
+    - source: *id006
+      value: large
+      note: territorial
+    - source: *id002
+      value: deeper littoral areas along sandbanks and rocky banks
+      note: habitat use
+  habitatZones:
+    value:
+    - openWater
+    - sand
+    - rock
+    - wood
+    confidence: high
+    rationale: "Field accounts place adults in deeper littoral water, at sandy and rocky banks, and among\
+      \ woody structure. The aquarium needs an unobstructed swimming area as well as robust peripheral\
+      \ cover."
+    sources:
+    - *id005
+    - *id009
+    - *id004
+    - *id006
+    - *id021
+    - *id002
+    - *id007
+    - *id008
+    evidence:
+    - source: *id002
+      value:
+      - sand
+      - rock
+      note: sandbanks and steep rocky banks
+    - source: *id005
+      value:
+      - sand
+      - rock
+      note: deeper littoral areas in lagoons and sandy and rocky banks
+    - source: *id006
+      value:
+      - wood
+      - openWater
+      note: bogwood and plenty of swimming space
+  social:
+    value: &id061
+      structure: group
+      minGroup: 3
+    confidence: medium
+    rationale: "Generator and checker-a proposed pair; checker-b group with five adults; checker-c group\
+      \ with three adults. Field nesting pairs establish the breeding association, not permanent exclusion\
+      \ of other adults outside reproduction. Seriously Fish allows species groups and Scott directly\
+      \ describes two or three adults in very large aquaria. A managed group of three therefore has better\
+      \ numerical husbandry support than an inferred compulsory five. Three is a recommended social unit,\
+      \ not a proven aggression-dispersal threshold. A breeding pair can dominate the third fish, so sight\
+      \ breaks and separation capacity remain necessary."
+    sources:
+    - *id009
+    - *id010
+    - *id006
+    - *id008
+    - *id002
+    - *id028
+    - *id022
+    - *id046
+    evidence:
+    - source: *id009
+      value:
+        structure: pair
+      note: Two parents guard the brood
+    - source: *id010
+      value:
+        structure: pair
+      note: Field observations of fry-guarding pairs
+    - source: *id002
+      value: pairs attending nests and larval schools
+    - source: *id006
+      value: can be kept in groups in an extremely large tank
+    - source: *id028
+      value: seasonally monogamous with parental care
+      note: genus statement
+    - source: *id008
+      value:
+        structure: group
+        minGroup: 3
+      note: Aquarium account gives two or three specimens; three selected for the recommended unit.
+    - source: *id046
+      value:
+        structure: pair
+      note: "Breeding association, rather than year-round aquarium stocking instruction."
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "All four proposals are false. Seriously Fish and Scott describe mixed housing with sufficiently\
+      \ large companions in very large aquaria; Glaser also discusses companions. Dedicated aquaria may\
+      \ be convenient and juveniles may be bullied, but these observations do not support an obligatory\
+      \ species-only restriction. The unanimous tally decision and high confidence are retained; prey-sized\
+      \ companions remain unsuitable."
+    sources:
+    - *id006
+    - *id008
+    - *id021
+    - *id022
+    - *id018
+    evidence:
+    - source: *id006
+      value: false
+      note: Large mixed communities possible in exceptional space
+    - source: *id008
+      value: false
+      note: Dedicated tanks discussed but suitable mixed communities also described
+    - source: *id006
+      value: false
+      note: kept with other large species
+    - source: *id006
+      value: false
+      note: Mixed housing with appropriately large fishes explicitly described
+    - source: *id022
+      value: false
+      note: Large non-conspecific companions listed
+    - source: *id006
+      value: false
+    - source: *id008
+      value: false
+    - source: *id018
+      value: false
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+    - cichla-monoculus-temensis
+    - cichla-nigromaculata-temensis
+    - cichla-ocellaris-temensis
+    - cichla-orinocensis-temensis
+    confidence: medium
+    rationale: "All four roles proposed the same four pair groups, with checker-c using a different list\
+      \ order. The unanimous tally retains cichla-monoculus-temensis, cichla-nigromaculata-temensis, cichla-ocellaris-temensis\
+      \ and cichla-orinocensis-temensis with medium confidence. Brinn and colleagues support naturally\
+      \ collected monoculus x temensis hybrids in the Uatuma and Balbina system; Scott separately reports\
+      \ Asian farm crosses without partner-choice details. Thus the monoculus group has documented basis\
+      \ from wild evidence, despite the generator's farm-only presumed proposal. Willis et al. infer wild\
+      \ introgression with nigromaculata at Mavaca, ocellaris at Cuyuni and orinocensis at Guri Reservoir.\
+      \ The nigromaculata result is mitochondrial, with no significant nuclear admixture detected, whereas\
+      \ the Guri fish show extensive nuclear admixture. These wild inferences support documented pair\
+      \ groups under the rubric but do not quantify aquarium crossing frequency. The 2020 cytogenetic\
+      \ study leaves some newer hybrids' parentage unresolved and does not justify a temensis x vazzoleri\
+      \ group. Current catalog names are retained despite the inclusive species concept in Willis et al.;\
+      \ crossability is not extrapolated transitively to the entire genus."
+    sources:
+    - *id028
+    - *id008
+    - &id047
+      kind: literature
+      title: Karyological evidence for interspecific hybridization between Cichla monoculus and C. temensis
+        in the Amazon. Hereditas 142 (2005)
+      url: "https://doi.org/10.1111/j.1601-5223.2004.01830.x"
+      archived: doi.org/10.1111_j.1601-5223.2004.01830.x/2026-10-14T200842Z
+      accessed: '2026-10-14'
+    - &id048
+      kind: literature
+      title: Quadros et al. (2020). Comparative cytogenetic of six species of Amazonian Peacock bass
+      url: "https://doi.org/10.3897/compcytogen.v14i3.55279"
+      accessed: '2026-10-13'
+      archived: doi.org/10.3897_compcytogen.v14i3.55279/2026-10-14T201019Z
+    evidence:
+    - source: *id028
+      value:
+      - cichla-nigromaculata-temensis
+      - cichla-ocellaris-temensis
+      - cichla-orinocensis-temensis
+      note: "Three natural-population pair groups; molecular inference, with weaker nuclear support for\
+        \ nigromaculata"
+    - source: *id008
+      value:
+      - cichla-monoculus-temensis
+      note: Farm hybrid report; partner choice not described
+    - source: *id047
+      value:
+      - cichla-monoculus-temensis
+      note: natural hybrids in the Uatuma river and Lake Balbina; earlier report of a captive cross
+    - source: *id028
+      value:
+      - cichla-orinocensis-temensis
+      - cichla-ocellaris-temensis
+      - cichla-nigromaculata-temensis
+      note: putative recent introgression found with microsatellites and mtDNA
+    - source: *id028
+      value:
+      - cichla-nigromaculata-temensis
+      - cichla-ocellaris-temensis
+      - cichla-orinocensis-temensis
+      note: Three named wild introgression pairs under the current catalog species names
+    - source: *id048
+      value:
+      - cichla-monoculus-temensis
+      note: Earlier named Balbina monoculus x temensis report discussed; new hybrid parentage remains
+        partly unresolved
+    - source: *id047
+      value:
+      - cichla-monoculus-temensis
+      note: Natural Uatuma hybrids supported cytogenetically.
+    - source: *id008
+      value:
+      - cichla-monoculus-temensis
+      note: Captive-farm hybrid report without pedigree detail.
+    - source: *id028
+      value:
+      - cichla-ocellaris-temensis
+      - cichla-orinocensis-temensis
+      - cichla-nigromaculata-temensis
+      note: Different genetic support among pairs; no all-to-all genus group is inferred.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value: &id062
+      baseColors:
+      - brown
+      - grey
+      - green
+      - yellow
+      - black
+      - white
+      pattern: mixed
+    confidence: high
+    rationale: "All roles proposed mixed pattern but different color subsets: generator brown, grey, green,\
+      \ yellow, black and white; checker-a brown and yellow; checker-b brown, green, yellow, black and\
+      \ white; checker-c brown, grey, yellow, black and white. Reiss et al. and the later morphometric\
+      \ study establish reversible spotted and barred reproductive states in both sexes. The wider set\
+      \ captures adult background and marking colors across that cycle; paca and acu are not separate\
+      \ species, permanent strains or reliable male-female labels."
+    sources:
+    - *id010
+    - *id005
+    - *id047
+    - *id022
+    - *id046
+    evidence:
+    - source: *id047
+      value: brownish body with 4-6 rows of yellow spots and three faint bars
+    - source: *id005
+      value: "midlateral band, rows of light spots, vertical bars"
+  feedingSpeed:
+    value: hasty
+    confidence: medium
+    rationale: An active visual predator that intercepts moving prey and rapidly takes food once settled.
+      Scott describes vigorous feeding responses and warns against excessive meal size. New imports refusing
+      inert food are a separate acclimation issue.
+    sources:
+    - *id008
+    - *id006
+    - *id002
+    - *id022
+    - *id009
+    evidence:
+    - source: *id008
+      value: hasty
+      note: Rubric interpretation of rapid food interception
+    - source: *id002
+      value: hasty
+      note: "fast pursuit of prey in the wild, inferred"
+    - source: *id022
+      value: hasty
+      note: Aggressive food capture described
+  minTank:
+    value: &id063
+      volumeL: 3200
+      lengthCm: 305
+      depthCm: 122
+    confidence: medium
+    rationale: "Generator proposed 3000 L and 305 by 122 cm; checker-a 3000 L and 300 by 100 cm; checker-b\
+      \ 5000 L and 400 by 150 cm for five adults; checker-c 3400 L and 305 by 122 cm for three adults.\
+      \ Component medians give 3200 L and a 305 by 122 cm footprint. Scott reports two or three adults\
+      \ in aquaria 244 to 305 cm long and 91 to 122 cm wide. Seriously Fish specifies about 305 cm length,\
+      \ 91 cm height and 122 cm front-to-back width, roughly 3398 L gross; 3200 L represents a modest\
+      \ allowance for freeboard and furnishing within that larger published enclosure. This profile selects\
+      \ a managed group of three adults, so Scott's direct group experience supports retaining the median\
+      \ footprint. Guidarium gives 3000 L and 300 cm length but no independently established 100 cm width;\
+      \ checker-a's 91 cm Seriously Fish depth conversion is the vertical height, not front-to-back width.\
+      \ The five-adult 5000 L proposal is not adopted after selecting three adults. Additional giant tankmates\
+      \ or an incompatible breeding pair require more space or separation, and the dimensions are practical\
+      \ husbandry guidance rather than a measured welfare threshold."
+    sources:
+    - *id006
+    - *id008
+    - *id027
+    - *id022
+    evidence:
+    - source: *id006
+      value:
+        volumeL: 3380
+        lengthCm: 305
+        depthCm: 122
+      note: Converted adult tank dimensions; calculated gross volume
+    - source: *id008
+      value:
+        volumeL: 1360
+        lengthCm: 244
+        depthCm: 91
+      note: "Small end of example dimensions at 61 cm height, approximately; not a universal adult recommendation"
+    - source: *id006
+      value:
+        volumeL: 3400
+        lengthCm: 305
+        depthCm: 91
+      note: 10 x 3 x 4 feet for one adult; checker-a converted height as depth; published front-to-back
+        width is 122 cm
+    - source: *id027
+      value:
+        volumeL: 3000
+        lengthCm: 300
+        depthCm: 100
+    - source: *id006
+      value:
+        volumeL: 3398
+        lengthCm: 304.8
+        depthCm: 121.92
+      note: Converted adult minimum; height 91.44 cm
+    - source: *id022
+      value:
+        volumeL: 1703
+        lengthCm: 243.84
+        depthCm: 121.92
+      note: 450 US gallons and adult footprint guidance
+    - source: *id006
+      value:
+        volumeL: 3398
+        lengthCm: 304.8
+        depthCm: 121.92
+      note: "Converted adult aquarium recommendation, originally for one adult."
+    - source: *id008
+      value:
+        volumeL: 3398
+        lengthCm: 304.8
+        depthCm: 121.92
+      note: "Upper dimensions of reported two- or three-adult tanks, using the preferred 36 inch height."
+  lifespanYears:
+    value: &id064
+      min: 9
+      max: 14.5
+    confidence: low
+    rationale: "Generator and checker-c proposed 10 to 15 years, checker-a 8 to 14 and checker-b 8 to\
+      \ 12. Component medians give 9 to 14.5 years. Campos et al. estimate wild longevity near 14 years\
+      \ from a growth model, rather than observing aquarium lifespan. Aquariumpro gives 8 to 12 years\
+      \ and Lone Star gives the wider 10 to 15 years, both without a documented captive cohort. Checker-a's\
+      \ 7 to 11 year Venezuelan estimate remains retained but could not be independently verified from\
+      \ the original full text. The decided range stays low-confidence and approximate; the decimal upper\
+      \ endpoint reflects the median calculation rather than biological precision."
+    sources:
+    - *id003
+    - *id026
+    - *id002
+    - *id037
+    - *id038
+    - *id023
+    evidence:
+    - source: *id003
+      value:
+        min: 14
+        max: 14
+      note: "Modeled wild longevity, not observed aquarium survival"
+    - source: *id026
+      value:
+        min: 10
+        max: 15
+      note: Aquarium planning range inferred
+    - source: *id003
+      value:
+        min: 6
+        max: 14
+      note: six annuli seen on scales; longevity estimate 14 years
+    - source: *id002
+      value:
+        min: 7
+        max: 11
+      note: "7-9 annuli on large fish, 9-11 years estimated"
+    - source: *id037
+      value:
+        min: 8
+        max: 12
+    - source: *id038
+      value:
+        min: 10
+        max: 15
+    - source: *id023
+      value:
+        min: 10
+        max: 15
+      note: Dealer lifespan expectation without a documented captive cohort
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: Field studies describe substrate nests and biparental defense of eggs and fry. This is
+      not mouthbrooding. Limited hobby reports make breeding procedures less certain than the reproductive
+      mode.
+    sources:
+    - *id009
+    - *id010
+    - *id006
+    - *id002
+    - *id003
+    - *id028
+    - *id046
+    evidence:
+    - source: *id009
+      value: open-substrate-spawner
+      note: Nesting on substrate with both parents guarding
+    - source: *id002
+      value: nests with eggs and larval schools guarded by pairs
+    - source: *id003
+      value: nest building and parental care at the start of falling water
+    - source: *id006
+      value: limited reports in the hobby
+    - source: *id009
+      value: open-substrate-spawner
+      note: Substrate nesting and biparental defence in the field
+  beginnerSuitability:
+    value: demanding
+    confidence: high
+    rationale: "Adult footprint, filtration load, explosive growth, jumping and tankmate selection require\
+      \ experienced planning. A healthy juvenile being easy to feed does not remove these adult requirements."
+    sources:
+    - *id006
+    - *id008
+    - *id021
+    - *id027
+    - *id022
+    - *id018
+    evidence:
+    - source: *id006
+      value: demanding
+      note: rated difficult; experienced keepers with a very large tank
+    - source: *id027
+      value: demanding
+partners:
+  suitable:
+  - species: Osteoglossum bicirrhosum
+    reason: A sufficiently large arowana can share warm soft water and occupies a different part of a
+      very large enclosure.
+    condition: "Only large adults beyond swallowing size, with additional surface area and secure covers;\
+      \ a larger enclosure than the three-adult group minimum is required."
+  - species: Astronotus ocellatus
+    reason: Scott lists oscars among potential companions; robust adults can coexist if neither fish can
+      swallow the other.
+    condition: "Only exceptionally large adults at least half the bass length; match current sizes, monitor\
+      \ aggression and provide substantially more space."
+  - species: Pterygoplichthys gibbiceps
+    reason: A large loricariid is a conditional example of the large catfish companions listed by Seriously
+      Fish.
+    condition: "Fully grown specimen safely beyond swallowing size, ample bottom refuge and separate feeding;\
+      \ observe for skin rasping and separate if it occurs."
+  unsuitable:
+  - species: Paracheirodon axelrodi
+    reason: Its entire adult body fits easily within the mouth of an adult bass and will be treated as
+      prey.
+  - species: Apistogramma agassizii
+    reason: A dwarf cichlid is prey-sized despite sharing broadly similar water chemistry.
+  - species: Parachromis dovii
+    reason: Scott warns that combative Parachromis can bully peacock bass; similarly large size does not
+      resolve this aggression risk.
+  - species: Cichla monoculus
+    reason: Reported farm hybridization makes it unsuitable when maintaining an identifiable pure breeding
+      line.
+  - species: Cichla orinocensis
+    reason: Natural-population genetic evidence of hybridization makes it unsuitable for a pure-species
+      breeding setup.
+profile:
+  overview:
+    text: The speckled pavon is a large South American fish predator whose juvenile size can conceal the
+      scale of its adult care requirements. Its native distribution includes the Negro and Uatuma drainages
+      and tributaries of the Orinoco. A small group needs a permanent enclosure measured in several thousand
+      litres. Dark spotting and bright vertical bars are phases of a reproductive color cycle shared by
+      both sexes. They do not identify separate species or permanent captive strains. Identification and
+      provenance deserve attention because peacock bass crosses have been reported both in wild populations
+      and in commercial farms.
+    sources:
+    - *id001
+    - *id005
+    - *id010
+    - *id008
+    - *id011
+  habitat:
+    text: "Adults use river margins and connected lagoons with sandy or rocky shores, deeper littoral\
+      \ water and submerged wood. Seasonal flooding changes access to feeding and breeding areas. Much\
+      \ of the native water is acidic and contains very little calcium, magnesium or carbonate buffering.\
+      \ The decided natural intervals are 28 to 31 C, pH 4.3 to 6.3 and 0 to 1 dGH/dKH; they summarize\
+      \ selected typical habitats rather than every population and season. Balbina measurements come from\
+      \ sites where this species was captured. Wider regional measurements remain relevant context: Anavilhanas\
+      \ microhabitats reached 28.4 to 34.7 C, JBL reported an Atabapo surface peak of 32.5 C, and a Rio\
+      \ Negro basin survey reached pH 3.89 at Rio Tea. These readings are not established long-term aquarium\
+      \ targets or a complete species-specific field envelope. Polluted urban tributary chemistry is excluded\
+      \ from the habitat estimate."
+    sources:
+    - *id005
+    - *id009
+    - *id030
+    - *id013
+    - *id014
+    - *id031
+    - *id032
+    - *id035
+    - *id004
+    - *id007
+    - *id017
+    - *id015
+    - *id019
+    - *id020
+    - *id024
+  sizeAndGrowth:
+    text: "Approximate typical aquarium planning maxima are 77.5 cm TL for males and 67.5 cm TL for females.\
+      \ These figures are proposal medians with low confidence; a reliable sex-separated captive series\
+      \ is missing. Larger individuals occur, and FishBase lists a 99 cm TL male or unsexed record. Seriously\
+      \ Fish labels a similar numerical maximum as SL, a different measurement. Scott reports about 41\
+      \ cm TL at 12 to 14 months, showing why temporary juvenile housing can quickly become inadequate.\
+      \ The estimated lifespan of 9 to 14.5 years is also provisional. A wild growth model estimated longevity\
+      \ near 14 years, while captive-life claims have not been confirmed by a documented long-term cohort."
+    sources:
+    - *id008
+    - *id005
+    - *id006
+    - *id042
+    - *id003
+    - *id037
+    - *id023
+  husbandry:
+    text: "Provide a permanent enclosure at least 305 cm long and 122 cm front to back with about 3200\
+      \ litres of water for the recommended three-adult group. The footprint follows the larger published\
+      \ aquarium recommendation and direct experience with two or three adults. Additional giant companions\
+      \ require a larger system. Preserve broad swimming and turning space, with securely placed roots\
+      \ or rocks at the perimeter. Strong covers, protected equipment, substantial biological filtration\
+      \ and good oxygenation matter. Routine maintenance around 27 to 29 C and stable mildly acidic water\
+      \ has stronger support than the edges of the provisional tolerance ranges. Match temperature during\
+      \ water changes, keep ammonia and nitrite undetectable and control accumulating waste. Monitor weakly\
+      \ buffered water carefully and avoid abrupt pH adjustment."
+    sources:
+    - *id006
+    - *id008
+    - *id021
+    - *id013
+    - *id022
+    - *id023
+    - *id039
+  socialBehavior:
+    text: "A managed group of three adults is the social unit used here. Species groups are described\
+      \ in husbandry literature, and Scott reports two or three fish in very large aquaria. Breeding pairs\
+      \ are seasonal associations and do not establish a mandatory year-round pair-only arrangement. Adults\
+      \ can chase persistently, and an emerging pair may dominate the remaining fish. Use sight breaks\
+      \ and maintain a workable separation option. Watch for exclusion from food, repeated pursuit and\
+      \ injuries rather than assuming that a numerical group size guarantees stability. Juveniles can\
+      \ also be bullied by more forceful tankmates. Larger groups may work in larger systems, but a five-fish\
+      \ minimum lacks direct numerical support."
+    sources:
+    - *id009
+    - *id010
+    - *id006
+    - *id008
+    - *id022
+    - *id046
+  diet:
+    text: "Fish dominate the natural adult diet. Suitable captive choices include accepted complete carnivore\
+      \ pellets and varied aquatic animal foods such as thawed whole fish, prawns and mussels, with earthworms\
+      \ as another option. Prepared-food acceptance can require gradual training; farm studies show that\
+      \ trained fish can use extruded feed. Adjust portion size and frequency to growth and body condition,\
+      \ and remove leftovers. Avoid meals that grossly distend the abdomen. Feeder fish of uncertain health\
+      \ can transmit infection or parasites. The false bloat-sensitive flag describes the absence of the\
+      \ rubric dietary conflict associated with high protein in plant-feeding cichlids; it does not rule\
+      \ out digestive disease."
+    sources:
+    - *id005
+    - *id036
+    - *id008
+    - *id006
+    - *id009
+    - *id045
+  breeding:
+    text: "This is an open-substrate spawner with care by both parents. Field studies describe nests and\
+      \ defended schools of young, with reproductive timing linked to the local flood cycle. Parents may\
+      \ become substantially more territorial while guarding. Aquarium spawning accounts are limited,\
+      \ and simply placing two adults together does not establish a compatible pair. A breeding pair in\
+      \ the recommended group may require separation from the third fish. Hybridization adds a separate\
+      \ concern: four named species pairs are supported by wild or farm evidence. A pure-species breeding\
+      \ project depends on reliable identification and avoids reproductive contact with those congeners."
+    sources:
+    - *id009
+    - *id010
+    - *id006
+    - *id028
+    - *id008
+    - *id047
+    - *id048
+    - *id046
+  sexing:
+    text: "Mature males may be larger and develop a more prominent forehead, but these clues do not reliably\
+      \ sex juveniles or establish a precise female maximum. Body condition can also change apparent shape.\
+      \ Studies of the color cycle show that both sexes pass between spotted paca and more strongly barred\
+      \ acu appearances as reproductive condition changes. A dark spotted fish should not be labeled female,\
+      \ or a bright barred fish male, from appearance alone. Retain uncertainty until sex can be established\
+      \ by reliable reproductive observation or expert examination."
+    sources:
+    - *id006
+    - *id010
+    - *id046
+  compatibility:
+    text: "Large companions can be possible, so this species has no absolute species-only restriction.\
+      \ Every companion must remain beyond swallowing size, including during juvenile growth and any later\
+      \ replacement. Body depth and temperament matter as well as length. A large arowana, robust adult\
+      \ oscar or appropriate large catfish is only a conditional option in a system larger than the group\
+      \ minimum. Small tetras and dwarf cichlids are prey. More combative Central American cichlids may\
+      \ intimidate or injure the bass. Hybrid risks are pair-specific with Cichla monoculus, C. nigromaculata,\
+      \ C. ocellaris and C. orinocensis. Wild genetic findings do not establish how frequently those crosses\
+      \ occur in ordinary aquaria."
+    sources:
+    - *id006
+    - *id008
+    - *id021
+    - *id028
+    - *id047
+    - *id048
+  problems:
+    text: "Adult space, waste removal and social management require planning before a juvenile is acquired.\
+      \ Restricted turning room, insecure lids and unstable heavy decor create avoidable injury risks.\
+      \ Chronic poor water quality and contaminated feeder fish can undermine health. Gradual food training\
+      \ may be needed after import, while repeated loss of appetite should prompt investigation rather\
+      \ than automatic extra feeding. Provisional tolerances of 26 to 31 C, pH 4.3 to 6.5, 0 to 15 dGH\
+      \ and 0 to 8 dKH contain the decided natural ranges but do not make every combination of their endpoints\
+      \ an appropriate maintenance target. In particular, the KH ceiling lacks strong long-term evidence\
+      \ and strongly acidic water must not be forced against high carbonate buffering. Abnormal breathing,\
+      \ declining condition or persistent wounds warrant environmental assessment and qualified veterinary\
+      \ advice."
+    sources:
+    - *id006
+    - *id008
+    - *id021
+    - *id049
+    - *id011
+    - *id012
+    - *id022
+    - *id037
+    - *id023
+    - *id039
+provenance:
+  runs:
+  - role: generator
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-14'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-14'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-14'
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  disagreements:
+  - field: features.origin
+    proposals:
+    - by: generator
+      value:
+        continent: South America
+        region: Rio Negro and Uatuma drainages and Orinoco basin
+        localities:
+        - Rio Negro
+        - Rio Temi
+        - Rio Cinaruco
+        - Rio Pasimoni
+        - Rio Uatuma
+        - Rio Caures
+        - Rio Tea
+    - by: checker-a
+      value:
+        continent: South America
+        region: "Orinoco basin and blackwater and clearwater tributaries of the middle Rio Negro (Brazil,\
+          \ Venezuela, Colombia, Guyana)"
+        waterbody: null
+        localities:
+        - "Rio Cinaruco (Orinoco, Venezuela)"
+        - "Rio Pasimoni (Casiquiare-Negro, Venezuela)"
+        - middle Rio Negro near Barcelos (Brazil)
+        - Rio Uatuma (Brazil)
+    - by: checker-b
+      value:
+        continent: South America
+        region: Negro and Uatuma drainages of the Amazon basin and tributaries of the Orinoco
+        waterbody: null
+        localities:
+        - Rio Negro
+        - Rio Uatuma
+        - Rio Atabapo
+        - Rio Cinaruco
+    - by: checker-c
+      value:
+        continent: South America
+        region: Rio Negro and Uatuma drainages and Orinoco tributaries
+        waterbody: null
+        localities:
+        - Rio Temi
+        - Cinaruco River
+        - Araca-Demeni sub-basin
+    decision: *id050
+    rationale: "All four roles agree on South America and the Negro, Uatuma and Orinoco systems but name\
+      \ different localities. The merged list uses catalog type-locality data, species occurrence in field\
+      \ studies and Atabapo observations. Basin-wide chemistry studies are distinguished from simultaneous\
+      \ species-and-water observations in the water rationales. Introduced reservoir populations used\
+      \ as hybrid evidence do not extend the native origin. No named waterbody table entry applies."
+  - field: features.temperatureC
+    proposals:
+    - by: generator
+      value:
+        min: 28
+        max: 31
+    - by: checker-a
+      value:
+        min: 26
+        max: 31
+    - by: checker-b
+      value:
+        min: 29
+        max: 31
+    - by: checker-c
+      value:
+        min: 28
+        max: 32
+    - by: tiebreaker-1
+      value:
+        min: 28
+        max: 31
+    - by: tiebreaker-2
+      value:
+        min: 26
+        max: 32
+    decision: *id051
+    rationale: "The tally selects 28 to 31 C by qualified majority, with four of six proposals within\
+      \ its agreement threshold. Generator and tiebreaker-1 proposed 28 to 31 C; checker-a 26 to 31 C;\
+      \ checker-b 29 to 31 C; checker-c 28 to 32 C; tiebreaker-2 26 to 32 C. Species-specific Balbina\
+      \ capture sites measured 29.18 to 30.50 C. Serra and Paz measured 28.9 to 30.7 C in Rio Negro water,\
+      \ and JBL recorded 28 to 29 C in the Atabapo wet season and 30.4 C in the dry season. The decision\
+      \ is narrower than the 26 to 31 C Venezuelan range reported by checker-a from Winemiller et al.,\
+      \ the 29 to 32 C regional band in Thome-Souza et al., and the 28.4 to 34.7 C microhabitat measurements\
+      \ in Oliveira and Ferreira. It describes a typical warm-water interval rather than all seasonal\
+      \ extrema. JBL also reported an Atabapo surface peak of 32.5 C, and Glaser reported occurrences\
+      \ at 22 to 30 C without station details. These broader observations remain in evidence but do not\
+      \ establish typical species-wide limits. The Copeia full text was refused as non-open-access by\
+      \ fetch-oa, so its checker-a measurements remain unverified here; the accessible secondary Atlas\
+      \ account is lower-weight. FishBase 27 to 29 C derives from an aquarium reference, as noted by FWS,\
+      \ and is not independent field evidence."
+  - field: features.temperatureC.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 25
+        max: 31
+    - by: checker-a
+      value:
+        min: 26
+        max: 31
+    - by: checker-b
+      value:
+        min: 27
+        max: 31
+    - by: checker-c
+      value:
+        min: 25
+        max: 32
+    decision: *id052
+    rationale: "The tally treats the four proposals as unanimous within the one-degree threshold and takes\
+      \ their rounded bound medians: generator 25 to 31 C, checker-a 26 to 31 C, checker-b 27 to 31 C\
+      \ and checker-c 25 to 32 C yield 26 to 31 C. Seriously Fish recommends 27 to 29 C; Scott supports\
+      \ approximately 25 to 28 C; Guidarium gives 26 to 30 C; AquariumDomain approximately 26.7 to 28.9\
+      \ C. Glaser gives the wider, cooler 23 to 28 C recommendation, which is retained but does not establish\
+      \ chronic health at 23 C. The decided upper endpoint contains the natural range; neither warm field\
+      \ occurrence nor the juvenile metabolic experiment at 25, 30 and 35 C establishes years of aquarium\
+      \ health at 31 C. Low confidence reflects this endpoint uncertainty. Routine maintenance around\
+      \ 27 to 29 C has better support."
+  - field: features.ph
+    proposals:
+    - by: generator
+      value:
+        min: 3.9
+        max: 6.5
+    - by: checker-a
+      value:
+        min: 4.5
+        max: 5.8
+    - by: checker-b
+      value:
+        min: 4.5
+        max: 6.5
+    - by: checker-c
+      value:
+        min: 4
+        max: 6
+    - by: tiebreaker-1
+      value:
+        min: 3.9
+        max: 6.5
+    - by: tiebreaker-2
+      value:
+        min: 4.6
+        max: 6
+    decision: *id053
+    rationale: "The tally uses the median method because six proposals do not produce a qualified majority:\
+      \ generator 3.9 to 6.5, checker-a 4.5 to 5.8, checker-b 4.5 to 6.5, checker-c 4.0 to 6.0, tiebreaker-1\
+      \ 3.9 to 6.5 and tiebreaker-2 4.6 to 6.0. Bound medians of 4.25 and 6.25 round to pH 4.3 to 6.3,\
+      \ with low confidence. This is a synthesis of uneven regional coverage, not a new measurement or\
+      \ a physiological limit. Balbina capture sites measured 4.75 to 5.10; JBL observed the species at\
+      \ Atabapo pH 4.5. The decision is narrower than Kuchler et al.'s Rio Negro basin range of 3.89 to\
+      \ 6.07 at the acidic end, the occupied-water envelope of 3.9 to 6.5 proposed by generator and tiebreaker-1,\
+      \ and the database environment interval of 5.5 to 6.5 at the less acidic end. Silva et al. report\
+      \ a Uatuma dry-season mean of 6.32. The basin minimum at Rio Tea has indirect species linkage through\
+      \ molecular sampling, rather than a simultaneous fish-and-water observation. The broader review\
+      \ interval of 2.5 to 6.0 in Val et al. includes regional extremes without species-specific occurrence.\
+      \ Checker-a's original Copeia water readings could not be independently verified through fetch-oa.\
+      \ All wider source ranges and aquarium-context values remain visible; aquarium recommendations do\
+      \ not define natural pH."
+  - field: features.ph.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 3.9
+        max: 6.5
+    - by: checker-a
+      value:
+        min: 4.5
+        max: 7.5
+    - by: checker-b
+      value:
+        min: 4.5
+        max: 6.5
+    - by: checker-c
+      value:
+        min: 4
+        max: 7
+    - by: tiebreaker-1
+      value:
+        min: 3.9
+        max: 6.5
+    - by: tiebreaker-2
+      value:
+        min: 4.6
+        max: 6.5
+    decision: *id054
+    rationale: "The six proposals are generator 3.9 to 6.5, checker-a 4.5 to 7.5, checker-b 4.5 to 6.5,\
+      \ checker-c 4.0 to 7.0, tiebreaker-1 3.9 to 6.5 and tiebreaker-2 4.6 to 6.5. No qualified majority\
+      \ forms. The tally selects the rounded median lower bound of 4.3 and the median upper bound of 6.5,\
+      \ with low confidence, containing the decided natural pH 4.3 to 6.3. Seriously Fish recommends 5.5\
+      \ to 6.5 and AquariumDomain 5.0 to 6.5. The decision is narrower than Guidarium's 5.5 to 7.5, Lone\
+      \ Star's 6.0 to 7.5, the genus-level Il Mio Acquario range of 5.5 to 7.5, and Aquariumpro's 5.0\
+      \ to 7.0. Those broader recommendations are preserved, but lack independently established long-term\
+      \ endpoints. Scott and Glaser describe chemical flexibility without numerical pH limits. The lower\
+      \ extension is required by native-range containment and is not verified by a multi-year aquarium\
+      \ trial; ordinary mildly acidic maintenance has better support than treating pH 4.3 as a target."
+  - field: features.ghDgh
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 1
+    - by: checker-a
+      value:
+        min: 0
+        max: 0.4
+    - by: checker-b
+      value:
+        min: 0
+        max: 1
+    - by: checker-c
+      value:
+        min: 0
+        max: 1
+    decision: *id055
+    rationale: "Generator, checker-b and checker-c proposed 0 to 1 dGH; checker-a proposed 0 to 0.4 dGH.\
+      \ The tally treats these as unanimous within its two-degree threshold and decides the rounded median\
+      \ envelope 0 to 1 dGH with medium confidence. JBL measured GH 0 at Atabapo where the species was\
+      \ observed. Kuchler et al.'s blackwater calcium and magnesium extrema yield a calculated outer envelope\
+      \ of roughly 0.01 to 0.14 dGH, and the wet/dry calcium and magnesium measurements reproduced by\
+      \ Gonzalez et al. yield about 0.042 to 0.048 dGH. Checker-a retained a converted Venezuelan field\
+      \ range of 0 to 0.34 dGH, which could not be independently checked through the allowed full-text\
+      \ tool. Zero denotes near-zero hardness at aquarium-test resolution. The 1 dGH ceiling is outward\
+      \ practical rounding, not a measured concentration. Conductivity supports low mineral content but\
+      \ is not converted into general hardness; basin proxies do not prove identical chemistry throughout\
+      \ the Orinoco distribution."
+  - field: features.khDkh
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 1
+    - by: checker-a
+      value:
+        min: 0
+        max: 0.1
+    - by: checker-b
+      value:
+        min: 0
+        max: 1
+    - by: checker-c
+      value:
+        min: 0
+        max: 1
+    decision: *id056
+    rationale: "Generator, checker-b and checker-c proposed 0 to 1 dKH; checker-a proposed 0 to 0.1 dKH.\
+      \ The tally agrees within its two-degree threshold and decides 0 to 1 dKH with medium confidence;\
+      \ natural carbonate hardness carries no verification object. JBL reported KH 0 at Atabapo. Serra\
+      \ and Paz measured bicarbonate below 1.5 mg/L, equivalent to less than 0.069 dKH, in Rio Negro samples.\
+      \ Pinto et al.'s 1.22 to 6.10 mg/L bicarbonate-equivalent results at less impacted shoreline stations\
+      \ convert to about 0.056 to 0.280 dKH. The review table cited by checker-c gives 0.43 to 0.69 dKH-equivalent\
+      \ total alkalinity, which can include organic buffering and is not necessarily carbonate hardness.\
+      \ Checker-a's converted original Copeia limit below 0.03 dKH is retained but independently unverified\
+      \ here. Zero means approximately unbuffered water; the upper whole-degree limit is rounding rather\
+      \ than a measured 1 dKH endpoint. Polluted urban tributary values and general hardness recommendations\
+      \ do not set natural KH."
+  - field: features.khDkh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 5
+    - by: checker-a
+      value:
+        min: 0
+        max: 8
+    - by: checker-b
+      value:
+        min: 0
+        max: 15
+    - by: checker-c
+      value:
+        min: 0
+        max: 5
+    - by: tiebreaker-1
+      value:
+        min: 0
+        max: 10
+    - by: tiebreaker-2
+      value:
+        min: 0
+        max: 8
+    decision: *id057
+    rationale: "The proposals are generator 0 to 5 dKH, checker-a 0 to 8, checker-b 0 to 15, checker-c\
+      \ 0 to 5, tiebreaker-1 0 to 10 and tiebreaker-2 0 to 8. No qualified majority forms; the tally takes\
+      \ bound medians and decides 0 to 8 dKH with low confidence. This contains the natural range and\
+      \ avoids allowing one narrow estimate to define the entire compatibility interval. The 5 dKH proposals\
+      \ were inferences, while checker-a's 8 dKH estimate was indirectly based on GH, which cannot establish\
+      \ KH. Il Mio Acquario gives genus-level KH 2 to 8 dKH. The decision is narrower than Lone Star's\
+      \ 4 to 10 dKH and AquariumDomain's header claim of 5 to 15 dKH; the latter uses the same numbers\
+      \ as unspecified hardness in its prose, making the chemical quantity ambiguous. Scott describes\
+      \ alkalinity flexibility without numerical limits. No medium- or high-trust numerical long-term\
+      \ KH ceiling was found. Eight dKH is therefore a provisional maintenance estimate, not an experimentally\
+      \ established limit or a reason to pursue that KH in strongly acidic water."
+  - field: features.maxSizeCm
+    proposals:
+    - by: generator
+      value:
+        male: 75
+        female: 65
+    - by: checker-a
+      value:
+        male: 80
+        female: 70
+    - by: checker-b
+      value:
+        male: 90
+        female: 80
+    - by: checker-c
+      value:
+        male: 75
+        female: 65
+    decision: *id058
+    rationale: "Generator and checker-c proposed male/female 75/65 cm, checker-a 80/70 cm and checker-b\
+      \ 90/80 cm. Their component medians are 77.5 and 67.5 cm, retained as approximate total-length planning\
+      \ maxima for well-kept aquarium adults. Scott reports average adults exceeding 61 cm TL and about\
+      \ 41 cm TL at 12 to 14 months. Lone Star describes typical captive size 60 to 75 cm; Guidarium gives\
+      \ an unsexed 85 cm adult figure and AquariumDomain roughly 91 cm. Forum estimates of 76 to 91 cm\
+      \ and FishBase's 99 cm TL record warn of larger potential. Seriously Fish labels its 99 cm figure\
+      \ SL, so it is not silently treated as the same measurement as FishBase TL. These sources lack a\
+      \ sex-separated captive series. The female estimate and precise sex difference are inferred, and\
+      \ confidence stays low; the medians are not reasons to discount unusually large individuals."
+  - field: features.diet
+    proposals:
+    - by: generator
+      value:
+        type: piscivore
+        bloatSensitive: false
+        foods:
+        - complete carnivore pellets
+        - thawed whole fish of suitable size
+        - prawn
+        - mussel
+        - earthworms
+    - by: checker-a
+      value:
+        type: piscivore
+        bloatSensitive: false
+        foods:
+        - whole fish
+        - prawn
+        - mussel
+        - lancefish
+        - whitebait
+    - by: checker-b
+      value:
+        type: piscivore
+        bloatSensitive: false
+        foods:
+        - fish flesh
+        - whole small thawed fish
+        - shrimp
+        - mussels
+        - appropriately sized carnivore pellets
+    - by: checker-c
+      value:
+        type: piscivore
+        bloatSensitive: false
+        foods:
+        - Fish flesh
+        - Shrimp
+        - Mussels
+        - Prepared carnivore pellets
+    decision: *id059
+    rationale: "All four proposals agree on piscivore and bloatSensitive false; foods differ in wording\
+      \ and selection. The tally retains the generator food list, including complete carnivore pellets,\
+      \ thawed whole fish, prawn, mussel and earthworms. Checker-a proposed whole fish, prawn, mussel,\
+      \ lancefish and whitebait; checker-b fish flesh, small thawed fish, shrimp, mussels and carnivore\
+      \ pellets; checker-c fish flesh, shrimp, mussels and carnivore pellets. These are overlapping aquatic-animal\
+      \ and prepared-food choices supported by Scott and Seriously Fish, not contradictory feeding types.\
+      \ Field diets and farmed-fish food-training evidence support piscivory and pellet acceptance. The\
+      \ false bloat flag means the rubric's high-protein conflict for plant-feeding cichlids is absent;\
+      \ it does not promise immunity to digestive illness. The unanimous tally decision has high confidence."
+  - field: features.aggressionConspecific
+    proposals:
+    - by: generator
+      value: 3
+    - by: checker-a
+      value: 3
+    - by: checker-b
+      value: 2
+    - by: checker-c
+      value: 3
+    decision: 3
+    rationale: "Generator, checker-a and checker-c proposed 3; checker-b proposed 2. Seriously Fish describes\
+      \ moderate territorial aggression and AquariumDomain a settling hierarchy, supporting the lower\
+      \ interpretation. Scott reports pronounced aggression within Cichla and gives direct experience\
+      \ with adult group housing. Persistent chasing during dominance and pair formation supports level\
+      \ 3 for a managed three-adult group, but routine killing in adequate accommodation is not established.\
+      \ This behavioral mapping has medium confidence and requires monitoring and separation capacity."
+  - field: features.aggressionHeterospecific
+    proposals:
+    - by: generator
+      value: 2
+    - by: checker-a
+      value: 3
+    - by: checker-b
+      value: 2
+    - by: checker-c
+      value: 2
+    decision: 2
+    rationale: "Generator, checker-b and checker-c proposed 2; checker-a proposed 3, partly from predation\
+      \ and a general aggressive rating. Predation is scored separately. Seriously Fish describes moderate\
+      \ territorial aggression, while Scott describes successful large-fish communities and vulnerability\
+      \ to more combative cichlids. Displacement from territory fits level 2; attacks well beyond a territory\
+      \ on comparable-size fish are not established by the stronger species accounts."
+  - field: features.territory
+    proposals:
+    - by: generator
+      value:
+        size: large
+        breedingOnly: true
+    - by: checker-a
+      value:
+        size: large
+        breedingOnly: false
+    - by: checker-b
+      value:
+        size: large
+        breedingOnly: false
+    - by: checker-c
+      value:
+        size: large
+        breedingOnly: false
+    decision: *id060
+    rationale: "All proposals give large territory. Generator limits it to breeding; checker-a, checker-b\
+      \ and checker-c do not. Aquarium accounts describe territorial or dominant adults without a breeding-only\
+      \ restriction, while field observations add stronger nest and brood defense. The species' size makes\
+      \ a substantial tank area relevant, so breedingOnly false is retained. This does not imply continuous\
+      \ defense of a fixed wild home range."
+  - field: features.social
+    proposals:
+    - by: generator
+      value:
+        structure: pair
+    - by: checker-a
+      value:
+        structure: pair
+    - by: checker-b
+      value:
+        structure: group
+        minGroup: 5
+    - by: checker-c
+      value:
+        structure: group
+        minGroup: 3
+    decision: *id061
+    rationale: "Generator and checker-a proposed pair; checker-b group with five adults; checker-c group\
+      \ with three adults. Field nesting pairs establish the breeding association, not permanent exclusion\
+      \ of other adults outside reproduction. Seriously Fish allows species groups and Scott directly\
+      \ describes two or three adults in very large aquaria. A managed group of three therefore has better\
+      \ numerical husbandry support than an inferred compulsory five. Three is a recommended social unit,\
+      \ not a proven aggression-dispersal threshold. A breeding pair can dominate the third fish, so sight\
+      \ breaks and separation capacity remain necessary."
+  - field: features.coloration
+    proposals:
+    - by: generator
+      value:
+        baseColors:
+        - brown
+        - grey
+        - green
+        - yellow
+        - black
+        - white
+        pattern: mixed
+    - by: checker-a
+      value:
+        baseColors:
+        - brown
+        - yellow
+        pattern: mixed
+    - by: checker-b
+      value:
+        baseColors:
+        - brown
+        - green
+        - yellow
+        - black
+        - white
+        pattern: mixed
+    - by: checker-c
+      value:
+        baseColors:
+        - brown
+        - grey
+        - yellow
+        - black
+        - white
+        pattern: mixed
+    decision: *id062
+    rationale: "All roles proposed mixed pattern but different color subsets: generator brown, grey, green,\
+      \ yellow, black and white; checker-a brown and yellow; checker-b brown, green, yellow, black and\
+      \ white; checker-c brown, grey, yellow, black and white. Reiss et al. and the later morphometric\
+      \ study establish reversible spotted and barred reproductive states in both sexes. The wider set\
+      \ captures adult background and marking colors across that cycle; paca and acu are not separate\
+      \ species, permanent strains or reliable male-female labels."
+  - field: features.minTank
+    proposals:
+    - by: generator
+      value:
+        volumeL: 3000
+        lengthCm: 305
+        depthCm: 122
+    - by: checker-a
+      value:
+        volumeL: 3000
+        lengthCm: 300
+        depthCm: 100
+    - by: checker-b
+      value:
+        volumeL: 5000
+        lengthCm: 400
+        depthCm: 150
+    - by: checker-c
+      value:
+        volumeL: 3400
+        lengthCm: 305
+        depthCm: 122
+    decision: *id063
+    rationale: "Generator proposed 3000 L and 305 by 122 cm; checker-a 3000 L and 300 by 100 cm; checker-b\
+      \ 5000 L and 400 by 150 cm for five adults; checker-c 3400 L and 305 by 122 cm for three adults.\
+      \ Component medians give 3200 L and a 305 by 122 cm footprint. Scott reports two or three adults\
+      \ in aquaria 244 to 305 cm long and 91 to 122 cm wide. Seriously Fish specifies about 305 cm length,\
+      \ 91 cm height and 122 cm front-to-back width, roughly 3398 L gross; 3200 L represents a modest\
+      \ allowance for freeboard and furnishing within that larger published enclosure. This profile selects\
+      \ a managed group of three adults, so Scott's direct group experience supports retaining the median\
+      \ footprint. Guidarium gives 3000 L and 300 cm length but no independently established 100 cm width;\
+      \ checker-a's 91 cm Seriously Fish depth conversion is the vertical height, not front-to-back width.\
+      \ The five-adult 5000 L proposal is not adopted after selecting three adults. Additional giant tankmates\
+      \ or an incompatible breeding pair require more space or separation, and the dimensions are practical\
+      \ husbandry guidance rather than a measured welfare threshold."
+  - field: features.lifespanYears
+    proposals:
+    - by: generator
+      value:
+        min: 10
+        max: 15
+    - by: checker-a
+      value:
+        min: 8
+        max: 14
+    - by: checker-b
+      value:
+        min: 8
+        max: 12
+    - by: checker-c
+      value:
+        min: 10
+        max: 15
+    decision: *id064
+    rationale: "Generator and checker-c proposed 10 to 15 years, checker-a 8 to 14 and checker-b 8 to\
+      \ 12. Component medians give 9 to 14.5 years. Campos et al. estimate wild longevity near 14 years\
+      \ from a growth model, rather than observing aquarium lifespan. Aquariumpro gives 8 to 12 years\
+      \ and Lone Star gives the wider 10 to 15 years, both without a documented captive cohort. Checker-a's\
+      \ 7 to 11 year Venezuelan estimate remains retained but could not be independently verified from\
+      \ the original full text. The decided range stays low-confidence and approximate; the decimal upper\
+      \ endpoint reflects the median calculation rather than biological precision."
+  - field: hybridGroups.cichla-monoculus-temensis.basis
+    proposals:
+    - by: generator
+      value: presumed
+    - by: checker-a
+      value: documented
+    - by: checker-b
+      value: documented
+    - by: checker-c
+      value: documented
+    decision: documented
+    rationale: The generator had only a farm report with unspecified partner choice. Independently read
+      Brinn et al. report hybrids collected from the Uatuma/Balbina system with both named parental species
+      present; wild evidence satisfies the documented rubric. Quadros et al. provide secondary support
+      and note unresolved parentage in newer specimens.
