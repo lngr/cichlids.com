@@ -144,6 +144,10 @@ independently of the profile paths supplied for schema validation. Errors fail t
 - Every profile legacy id maps to that profile id or the directory entry for its valid name.
   Missing, open or contradictory mappings are errors.
 - A correction has a non-empty reason in `note`.
+- The `profile` of each directory entry names the described profile with the same valid name, or
+  is `null` when none exists. A reference to a missing profile is an error; a stale reference is a
+  warning, because parallel pipelines write profiles before the directory is rebuilt. Rebuilding the
+  directory after adding a profile refreshes the references.
 
 ## Cichlid Room Companion
 

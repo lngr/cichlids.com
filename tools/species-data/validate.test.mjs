@@ -820,7 +820,7 @@ test('The file validator checks archive references in shared waterbody and hybri
 
 function directoryFixture() {
   return {
-    directory:{species:[{id:'one-alpha',name:'One alpha'},{id:'two-beta',name:'Two beta'}]},
+    directory:{species:[{id:'one-alpha',name:'One alpha',profile:'one-alpha'},{id:'two-beta',name:'Two beta',profile:null}]},
     forms:{forms:[{id:'red-form',name:'Red form',kind:'domestic-form',parents:['one-alpha']}]},
     legacy:[{legacyId:1,genus:'Old',species:'alpha'},{legacyId:2,genus:'Red',species:'form'}],
     mappings:{mappings:[{legacyId:1,legacyName:'Old alpha',target:'one-alpha',match:'profile'},{legacyId:2,legacyName:'Red form',target:'red-form',match:'profile'}]},
@@ -831,6 +831,16 @@ function directoryFixture() {
 test('Given a complete directory and authoritative profile mapping, directory validation succeeds', async () => {
   const {directoryIssues}=await import('./validate.mjs');
   assert.deepEqual(directoryIssues(directoryFixture()),[]);
+});
+
+test('Given a stale profile reference the directory gets a warning, and a dangling one an error', async () => {
+  const {directoryIssues}=await import('./validate.mjs');
+  const input=directoryFixture();
+  input.directory.species[0].profile=null;
+  input.directory.species[1].profile='absent-profile';
+  const issues=directoryIssues(input);
+  assert.ok(issues.some(x=>x.level==='warning'&&/one-alpha names profile null, expected one-alpha/.test(x.message)));
+  assert.ok(issues.some(x=>x.level==='error'&&/missing profile absent-profile/.test(x.message)));
 });
 
 test('Given duplicate, malformed or overlapping directory and trade ids, validation reports errors', async () => {
@@ -877,7 +887,7 @@ test('Given undescribed profiles without trade forms and contradicting legacy ta
 
 test('Given a directory id different from the profile id, authoritative legacy mapping accepts that directory entry', async () => {
   const {directoryIssues}=await import('./validate.mjs');
-  const input=directoryFixture(); input.profiles[0].data.id='profile-alpha';
+  const input=directoryFixture(); input.profiles[0].data.id='profile-alpha'; input.directory.species[0].profile='profile-alpha';
   assert.deepEqual(directoryIssues(input),[]);
 });
 

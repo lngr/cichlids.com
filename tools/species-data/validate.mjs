@@ -567,10 +567,17 @@ export function directoryIssues({directory, forms, mappings, legacy, profiles}) 
   });
   for (const id of legacyIds) if (index.get(id)?.length!==1) issues.push(error('/mappings',`legacyId ${id} must appear exactly once`,files.mappings));
   if (open) issues.push(warning('/mappings',`${open} open legacy entries`,files.mappings));
+  const profileIds=new Set(profiles.map(({data})=>data?.id));
+  for (const entry of lists.directory) {
+    if (entry?.profile!=null && !profileIds.has(entry.profile)) issues.push(error('/species',`directory entry ${entry.id} names the missing profile ${entry.profile}`,files.directory));
+  }
   for (const {data:profile,file} of profiles) {
     const entry=names.get(profile?.taxonomy?.validName);
     if (profile?.status==='described' && !entry) issues.push(warning('/taxonomy/validName',`profile ${profile.id}: ${profile.taxonomy?.validName} is absent from directory`,file));
     if (profile?.status!=='described' && !trade.has(profile?.id)) issues.push(error('/id',`profile ${profile?.id} needs a trade-forms entry`,file));
+    // The directory names the profile of each species; build-directory.mjs refreshes the reference.
+    // A stale reference is a warning, because parallel pipelines write profiles before the rebuild.
+    if (profile?.status==='described' && entry && entry.profile!==profile.id) issues.push(warning('/species',`directory entry ${entry.id} names profile ${entry.profile ?? 'null'}, expected ${profile.id}; run build-directory.mjs`,files.directory));
     const targets=new Set([profile?.id, ...(entry ? [entry.id] : [])]);
     if (profile?.legacyIds !== undefined && !Array.isArray(profile.legacyIds)) issues.push(error('/legacyIds','legacyIds must be an array',file));
     for (const id of Array.isArray(profile?.legacyIds) ? profile.legacyIds : []) {
