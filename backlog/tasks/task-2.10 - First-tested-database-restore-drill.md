@@ -1,10 +1,10 @@
 ---
 id: TASK-2.10
 title: First tested database restore drill
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-06-03 16:02'
-updated_date: '2026-10-14 10:28'
+updated_date: '2026-10-14 10:51'
 labels:
   - infra
   - backup
@@ -15,6 +15,8 @@ dependencies:
   - TASK-2.9
 references:
   - tools/restore-drill/
+  - tools/restore-drill/README.md
+  - .github/workflows/restore-drill.yml
 parent_task_id: TASK-2
 priority: high
 ordinal: 12000
@@ -83,3 +85,25 @@ is treated as broken.
   out-of-band, operated by the operator only, no agent or CI access, handles real PII only
   transiently (AC #4); RTO measurement.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- `tools/restore-drill/`: a kind cluster with a local S3 store, the pinned cert-manager,
+  CloudNativePG v1.30.1 and the Barman Cloud plugin v0.15.1 with the `apps/postgres` base;
+  synthetic data in three tables, base backup, further writes, WAL switch, recovery into a fresh
+  target cluster, comparison of row counts and checksums per table; `--break-backup` removes the
+  base archive and must fail; a trap removes target, kind cluster and networks; the restore
+  duration is printed.
+- Workflow `restore-drill.yml`: monthly and on dispatch, no secrets, runs the drill and the
+  negative mode.
+- README: the production restore-test environment is out of band, run by the operator only, no
+  agent or CI access, real personal data only transiently.
+
+### Verified by the agent (Codex) and the main session
+- Red: the drill failed without the recovery step. Green: measurements 9231, observations 7000,
+  tanks 2500 rows with equal checksums, restore 52.24 s. Negative: exit 1 with
+  "Missing file source/base/... data.*". No kind cluster or drill container left.
+- Not verified: the run on GitHub; the operator restore from the real backup bucket.
+<!-- SECTION:NOTES:END -->
