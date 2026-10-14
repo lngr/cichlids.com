@@ -61,6 +61,39 @@ def has_variable(tf_text, name):
     return re.search(r'variable\s+"' + re.escape(name) + r'"\s*\{', tf_text) is not None
 
 
+def check_writer_policy(tf_text):
+    """Enforce the cross-project writer capability and immutable database retention."""
+    failures = []
+    blocks = resource_blocks(tf_text)
+    body = blocks.get(("aws_s3_bucket_policy", "database_writer"), "")
+    expected = {"s3:ListBucket", "s3:GetObject", "s3:PutObject", "s3:AbortMultipartUpload"}
+    actions = re.findall(r'"(s3:[^"\n]+)"', body)
+    if set(actions) != expected or len(actions) != len(expected):
+        failures.append("backup: database writer actions must be exactly list, get, put and abort multipart")
+    principal = 'arn:aws:iam:::user/p${var.database_writer_primary_project_id}:${var.database_writer_access_key_id}'
+    if body.count(principal) != 2 or len(re.findall(r'Principal\s*=', body)) != 2:
+        failures.append("backup: writer principal must use the primary project and access key variables")
+    if len(re.findall(r'Effect\s*=\s*"Allow"', body)) != 2:
+        failures.append("backup: writer policy requires two explicit Allow statements")
+    if not re.search(r'bucket\s*=\s*aws_s3_bucket.database_backup.id', body):
+        failures.append("backup: writer policy must bind the database backup bucket")
+    resources = re.findall(r'Resource\s*=\s*([^\n]+)', body)
+    if [r.strip() for r in resources] != ['aws_s3_bucket.database_backup.arn',
+                                          '"${aws_s3_bucket.database_backup.arn}/*"']:
+        failures.append("backup: writer resources must be the database bucket and its objects")
+    if 'database_writer_secret' in tf_text:
+        failures.append("backup: cluster secret key must never enter the backup tier")
+    retention = re.search(r'variable "database_backup_retention_days"\s*\{(.*?)\n\}', tf_text, re.S)
+    if not retention or not re.search(r'default\s*=\s*400\b', retention[1]):
+        failures.append("backup: database Compliance retention must cover 12 months with margin (400 days)")
+    lifecycle = blocks.get(("aws_s3_bucket_lifecycle_configuration", "database_backup"), "")
+    for expression in [r'days\s*=\s*var.database_backup_retention_days',
+                       r'noncurrent_days\s*=\s*1', r'expired_object_delete_marker\s*=\s*true']:
+        if not re.search(expression, lifecycle):
+            failures.append("backup: database expiry must remove current versions, unlocked noncurrent versions and markers")
+    return failures
+
+
 def check_backup_tier(tf_text):
     failures = []
     if not tf_text.strip():
@@ -79,7 +112,7 @@ def check_backup_tier(tf_text):
             failures.append(f"backup: aws_s3_bucket.{name} missing lifecycle prevent_destroy = true")
     if "COMPLIANCE" not in tf_text:
         failures.append("backup: no Object Lock COMPLIANCE configuration for the backup buckets (ADR-0013/0017)")
-    return failures
+    return failures + check_writer_policy(tf_text)
 
 
 def check_platform_tier(tf_text):
@@ -143,13 +176,29 @@ def self_test():
         ("backup without compliance lock", good_backup.replace('"COMPLIANCE"', '"GOVERNANCE"'), 1),
         ("backup tier missing entirely", "", 1),
     ]
+    good_policy = read_tf(os.path.join(INFRA, "backup"))
+    policy_cases = [("writer policy", good_policy, 0)]
+    for action in ["s3:DeleteObject", "s3:DeleteObjectVersion", "s3:PutBucketPolicy",
+                   "s3:PutLifecycleConfiguration", "s3:PutBucketObjectLockConfiguration", "s3:*"]:
+        policy_cases.append((action, good_policy.replace('"s3:GetObject"', '"' + action + '"'), 1))
+    policy_cases += [
+        ("backup project principal", good_policy.replace('var.database_writer_primary_project_id', 'var.project_name'), 1),
+        ("missing policy", re.sub(r'resource "aws_s3_bucket_policy"', 'resource "missing_policy"', good_policy), 1),
+        ("short retention", re.sub(r'default\s*=\s*400', 'default = 14', good_policy), 1),
+        ("writer secret", good_policy + 'variable "database_writer_secret" {}', 1),
+        ("configuration wildcard", good_policy.replace('"s3:PutObject"', '"s3:Put*Configuration"'), 1),
+    ]
     errors = []
+    for label, text, want in policy_cases:
+        got = len(check_writer_policy(text))
+        if (got > 0) != (want > 0):
+            errors.append(f"policy/{label}: expected {want}, got {got} failure(s)")
     for label, text, want in platform_cases:
         got = len(check_platform_tier(text))
         if (got > 0) != (want > 0):
             errors.append(f"platform/{label}: expected {'failures' if want else 'pass'}, got {got} failure(s)")
     for label, text, want in backup_cases:
-        got = len(check_backup_tier(text))
+        got = len([f for f in check_backup_tier(text) if f not in check_writer_policy(text)])
         if (got > 0) != (want > 0):
             errors.append(f"backup/{label}: expected {'failures' if want else 'pass'}, got {got} failure(s)")
     if errors:

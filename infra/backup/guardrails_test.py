@@ -9,6 +9,8 @@ Parses the .tf sources directly (brace-matched resource blocks) so it needs no c
 credentials and runs offline in CI.
 Story: task-2.16
 """
+import importlib.util
+from pathlib import Path
 import glob
 import os
 import re
@@ -61,6 +63,12 @@ def main():
         if vbody is None or "Enabled" not in vbody:
             failures.append(f"aws_s3_bucket_versioning.{bucket}: versioning is not Enabled")
 
+    policy_spec = importlib.util.spec_from_file_location(
+        'separation', Path(HERE).parents[1] / 'tools/check-project-separation.py')
+    policy = importlib.util.module_from_spec(policy_spec)
+    policy_spec.loader.exec_module(policy)
+    failures += policy.check_writer_policy(policy.read_tf(HERE))
+
     if failures:
         print("backup guardrails missing (ADR-0014):", file=sys.stderr)
         for f in failures:
@@ -71,4 +79,10 @@ def main():
 
 
 if __name__ == "__main__":
+    if '--self-test' in sys.argv:
+        policy_spec = importlib.util.spec_from_file_location(
+            'separation', Path(HERE).parents[1] / 'tools/check-project-separation.py')
+        policy = importlib.util.module_from_spec(policy_spec)
+        policy_spec.loader.exec_module(policy)
+        sys.exit(policy.self_test())
     sys.exit(main())
