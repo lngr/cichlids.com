@@ -1,0 +1,2379 @@
+schemaVersion: 1
+id: copadichromis-virginalis
+legacyIds:
+  - 276
+status: described
+taxonomy:
+  validName: Copadichromis virginalis
+  genus: Copadichromis
+  species: virginalis
+  author: "(Iles, 1960)"
+  source: &id001
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: Copadichromis species"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Copadichromis"
+    accessed: '2026-10-13'
+    archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-24880c11/2026-10-14T095213Z
+  synonyms:
+    - name: Haplochromis virginalis
+      note: Original combination
+  legacyNames:
+    - Copadichromis virginalis
+  note: "Copadichromis virginalis is valid in the Catalog of Fishes; Haplochromis virginalis is its original\
+    \ combination. Turner and colleagues (2022) identify the holotype-associated Kaduna form as virginalis\
+    \ and the Kajose component of the original type series as C. mloto. FishBase still treats Kajose as awaiting\
+    \ description; that older remark is superseded by the revision. C. cyaneus and C. ilesi remain separate\
+    \ valid species here because proposed synonymies have not been adopted. The original-genus catalog was\
+    \ also checked on 2026-10-13 at https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Haplochromis\
+    \ (archive researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-873e9721/2026-10-14T094822Z)."
+names:
+  trade:
+    en:
+      - Lake Malawi utaka
+      - Pure Utaka
+      - Kaduna Utaka
+variants:
+  - name: Nkhata Bay (Kaduna)
+    kind: locality
+    note: The type-locality reference population; mature males develop a yellow upper blaze.
+  - name: Manda
+    kind: locality
+    note: Pale-blue virginalis-like population; the 2022 study leaves its status as a geographic variant or
+      a separate sister species open.
+  - name: Higga Reef
+    kind: locality
+    note: Pale-blue virginalis-like population; its exact boundary relative to type-locality virginalis remains
+      unresolved.
+  - name: Gold Nkanda
+    kind: color-morph
+    note: Trade label retained for identification context. The 2022 study leaves its species assignment unresolved;
+      it is not a confirmed colour morph of true virginalis.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: lake-malawi
+      localities:
+        - Nkhata Bay
+        - Manda
+        - Higga Reef
+    confidence: high
+    rationale: "Nkhata Bay is the confirmed type locality and source of the modern sequenced Kaduna samples.\
+      \ Manda and Higga Reef are included as provisional virginalis-like populations discussed by Turner and\
+      \ colleagues, rather than as genomically confirmed populations of the same species. Some broad lake-wide\
+      \ and Lake Malombe reports involve the older species concept that also included mloto."
+    sources:
+      - *id001
+      - &id004
+        kind: database
+        title: "FishBase: Copadichromis virginalis summary"
+        url: "https://www.fishbase.se/summary/Copadichromis-virginalis.html"
+        accessed: '2026-10-13'
+        archived: fishbase.se/summary/copadichromis-virginalis.html/2026-10-14T214358Z
+      - &id002
+        kind: literature
+        title: Turner et al. 2022. Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids Copadichromis
+          mloto and C. virginalis
+        url: "https://doi.org/10.1007/s10750-022-05025-1"
+        accessed: '2026-10-13'
+        archived: doi.org/10.1007_s10750-022-05025-1/2026-10-13T065301Z
+      - &id003
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, Copadichromis virginalis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Copadichromis&species=virginalis"
+        archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-9dd603b0/2026-10-14T214354Z
+        accessed: '2026-10-14'
+      - &id005
+        kind: database
+        title: "Seriously Fish: Copadichromis virginalis"
+        url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+        archived: seriouslyfish.com/species/copadichromis-virginalis/2026-10-14T094808Z
+        accessed: '2026-10-14'
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Haplochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Haplochromis"
+        accessed: '2026-10-13'
+        archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-873e9721/2026-10-14T094822Z
+      - &id007
+        kind: database
+        title: "Seriously Fish, Copadichromis virginalis"
+        url: "https://www.seriouslyfish.com/species/copadichromis-virginalis"
+        accessed: '2026-10-13'
+        archived: seriouslyfish.com/species/copadichromis-virginalis/2026-10-14T195541Z
+      - &id006
+        kind: website
+        title: "Cichlid Atlas, Copadichromis virginalis"
+        url: "https://www.cichlidatlas.com/species/copadichromis-virginalis/"
+        accessed: '2026-10-13'
+        archived: cichlidatlas.com/species/copadichromis-virginalis/2026-10-14T214403Z
+      - &id022
+        kind: database
+        title: "Cichlid Room Companion, Copadichromis virginalis"
+        url: "https://cichlidae.com/species.php?id=MLgEe56Ub6KpfpzVhoZtQA"
+        accessed: '2026-10-13'
+        archived: cichlidae.com/species.php/q-47373128/2026-10-14T214532Z
+    evidence:
+      - source: *id001
+        value: Lake Malawi
+        note: Current catalog distribution
+      - source: *id002
+        value: "Lake Malawi, including Nkhata Bay and named populations at Manda and Higga Reef"
+      - source: *id003
+        value: Lake Malawi
+        note: distribution line and type locality Nkhata Bay
+      - source: *id004
+        value: "Lake Malawi, northern end"
+      - source: *id005
+        value: "Lake Malawi, northern end"
+      - source: *id002
+        value: Nkhata Bay; Higga Reef and Manda for relatives of the same form
+      - source: *id001
+        value: Lake Malawi
+      - source: *id002
+        value: Nkhata Bay and multiple Lake Malawi localities
+      - source: *id004
+        value: "Lake Malawi, endemic to its northern end"
+      - source: *id006
+        value: Lake Malawi system
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: high
+    rationale: The settled waterbody decision is 21 to 29 C with high confidence. Eccles documents seasonal
+      inshore cooling to 21 C in the southeast arm and upper waters near 27 C; Vollmer and colleagues describe
+      warmer summer surfaces and cooler winter mixing. The broad interval is the prescribed lake-wide synthesis
+      rather than a measured range for one northern population. The Ngochera repository abstract supports seasonal
+      lake variation but supplies no numeric endpoints; the Eccles publisher page was inaccessible and only
+      its literature-search abstract was read. Care recommendations are retained separately and do not replace
+      natural lake values.
+    sources:
+      - &id009
+        kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+          \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+          \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf"
+        archived: hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf/2026-10-14T094507Z
+        accessed: '2026-10-12'
+      - &id010
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data\
+          \ after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        archived: fao.org/4/t0473e/t0473e05.htm/2026-10-14T094507Z
+        accessed: '2026-10-12'
+      - &id008
+        kind: literature
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+          \ and Oceanography 19(5), 730-742 (abstract)."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: '2026-10-12'
+        offline: true
+      - &id011
+        kind: literature
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,\
+          \ Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology\
+          \ and Oceanography 50(2), 727-732."
+        url: "https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view"
+        archived: dora.lib4ri.ch/empa/dload/empa_1253/pdf/view/2026-10-14T094508Z
+        accessed: '2026-10-12'
+      - &id013
+        kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal.\
+          \ In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity\
+          \ Conservation Project, chapter 4."
+        url: "https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf"
+        archived: sites.uwm.edu/hbootsma/files/2020/11/ch4-lake-internal-mixing.pdf/2026-10-14T094509Z
+        accessed: '2026-10-12'
+      - &id014
+        kind: literature
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+        url: "https://minds.wisconsin.edu/handle/1793/91765"
+        archived: minds.wisconsin.edu/handle/1793/91765/2026-10-14T094513Z
+        accessed: '2026-10-12'
+      - *id005
+      - *id006
+      - *id007
+      - &id018
+        kind: literature
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin (discussion\
+          \ paper)."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        archived: doi.org/10.5194_hessd-7-4371-2010/2026-10-13T071931Z
+        accessed: '2026-10-13'
+      - &id012
+        kind: literature
+        title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        archived: doi.org/10.4319_lo.2005.50.2.0727/2026-10-13T071601Z
+        accessed: '2026-10-13'
+    evidence:
+      - source: *id008
+        value:
+          min: 21
+          max: 29
+        note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the backing\
+          \ lake studies and is not one measurement series. Lake Malawi natural water range"
+      - source: *id005
+        value:
+          min: 25
+          max: 29
+        note: Aquarium care range
+      - source: *id009
+        value:
+          min: 21
+          max: 29
+        note: Lake Malawi table value
+      - source: *id010
+        value:
+          min: 21
+          max: 29
+        note: Lake Malawi table value
+      - source: *id005
+        value:
+          min: 25
+          max: 29
+        note: "aquarium recommendation, not habitat data"
+      - source: *id008
+        value:
+          min: 21
+          max: 29
+        note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the backing\
+          \ lake studies and is not one measurement series. Lake Malawi waterbody range"
+      - source: *id005
+        value:
+          min: 25
+          max: 29
+        note: Aquarium recommendation
+      - source: *id008
+        value:
+          min: 21
+          max: 29
+        note: Lake temperature varies by season and region.
+      - source: *id007
+        value:
+          min: 25
+          max: 29
+        note: Aquarium recommendation.
+      - source: *id006
+        value:
+          min: 24
+          max: 28
+        note: Aquarium recommendation.
+      - source: *id008
+        value:
+          min: 21
+          max: 27
+        note: Abstract reports inshore seasonal cooling to 21 C and approximately 27 C in the upper 60 m by
+          May; it does not itself give the complete 21 to 29 C synthesis.
+      - source: *id010
+        value:
+          min: 23
+          max: 25
+        note: Historical surface-temperature interval compiled after Jackson and colleagues.
+      - source: *id011
+        value:
+          min: 23.5
+          max: 28
+        note: "Approximate winter epilimnion to summer surface context from the lake study, not a species tolerance\
+          \ trial."
+      - source: *id012
+        value:
+          min: 23.5
+          max: 28
+        note: Approximate winter epilimnion and summer surface-water context; not a species-specific tolerance
+          experiment.
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: low
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+      rationale: "All four main runs propose 21 to 29 C; the tally retains that unanimous interval with low\
+        \ confidence. Seriously Fish gives 25 to 29 C, Cichlid-Forum about 25.6 to 27.8 C, Fishipedia 23 to\
+        \ 28 C and Cichlid Atlas 24 to 28 C. The lower endpoint is extended to contain the required natural\
+        \ lake range, so equality with the habitat interval is a containment result rather than evidence of\
+        \ harm immediately outside it or proof of a preferred year-round 21 C setting. AquariumPro also advertises\
+        \ a wider 22.2 to 27.8 C interval from 72 to 82 F; its generic advice carries less weight than the\
+        \ explicit specialist account."
+      sources:
+        - *id005
+        - *id009
+        - *id010
+        - *id008
+        - *id011
+        - *id013
+        - *id014
+        - &id015
+          kind: database
+          title: "Cichlid-Forum species profile: Copadichromis virginalis"
+          url: "https://www.cichlid-forum.com/threads/copadichromis-virginalis.457063/"
+          archived: cichlid-forum.com/threads/copadichromis-virginalis.457063/2026-10-14T214709Z
+          accessed: '2026-10-14'
+        - &id016
+          kind: website
+          title: "Fishipedia: Copadichromis virginalis (pure utaka)"
+          url: "https://www.fishi-pedia.com/fishes/copadichromis-virginalis"
+          archived: fishi-pedia.com/fishes/copadichromis-virginalis/2026-10-14T214709Z
+          accessed: '2026-10-14'
+        - *id007
+        - *id006
+        - &id017
+          kind: website
+          title: "AquariumPro: Pure Utaka (Copadichromis virginalis)"
+          url: "https://aquarium-pro.com/species/copadichromis-virginalis"
+          accessed: '2026-10-13'
+          archived: aquarium-pro.com/species/copadichromis-virginalis/2026-10-14T214404Z
+      evidence:
+        - source: *id005
+          value:
+            min: 25
+            max: 29
+          note: "Published aquarium recommendation, narrower than the natural lake range"
+        - source: *id008
+          value:
+            min: 21
+            max: 29
+          note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the\
+            \ backing lake studies and is not one measurement series. Natural range that the tolerance must\
+            \ contain"
+        - source: *id005
+          value:
+            min: 25
+            max: 29
+        - source: *id015
+          value:
+            min: 25.6
+            max: 27.8
+          note: 78 to 82 F converted
+        - source: *id016
+          value:
+            min: 23
+            max: 28
+        - source: *id005
+          value:
+            min: 25
+            max: 29
+          note: Aquarium recommendation
+        - source: *id008
+          value:
+            min: 21
+            max: 29
+          note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the\
+            \ backing lake studies and is not one measurement series. Natural range sets the lower bound"
+        - source: *id007
+          value:
+            min: 25
+            max: 29
+          note: "Published aquarium range, narrower than the natural range."
+        - source: *id006
+          value:
+            min: 24
+            max: 28
+          note: "Published aquarium range, narrower than the natural range."
+        - source: *id008
+          value:
+            min: 21
+            max: 29
+          note: Measured lake range that the decided tolerance must contain.
+        - source: *id017
+          value:
+            min: 22.2
+            max: 27.8
+          note: AquariumPro FAQ temperature advice converted from 72 to 82 F; generic page.
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: high
+    rationale: "The settled lake-water decision is pH 7.7 to 8.6 with high confidence, following the surface\
+      \ measurements compiled by FAO after Jackson and colleagues. Branchu and colleagues discuss 7.5 to 8.5\
+      \ over the water column, including deeper conditions. The higher surface minimum is appropriate to the\
+      \ prescribed Lake Malawi range; aquarium recommendations do not redefine this natural value."
+    sources:
+      - *id009
+      - *id010
+      - *id008
+      - *id011
+      - *id013
+      - *id014
+      - *id005
+      - *id006
+      - *id007
+      - *id018
+    evidence:
+      - source: *id010
+        value:
+          min: 7.7
+          max: 8.6
+        note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the backing\
+          \ lake studies and is not one measurement series. Surface water range for Lake Malawi"
+      - source: *id005
+        value:
+          min: 7.5
+          max: 8.5
+        note: "Aquarium care range, not used as the natural range"
+      - source: *id009
+        value:
+          min: 7.7
+          max: 8.6
+        note: lake surface water
+      - source: *id010
+        value:
+          min: 7.7
+          max: 8.6
+        note: lake surface water
+      - source: *id005
+        value:
+          min: 7.5
+          max: 8.5
+        note: aquarium recommendation
+      - source: *id015
+        value:
+          min: 7.8
+          max: 8.6
+        note: aquarium recommendation
+      - source: *id010
+        value:
+          min: 7.7
+          max: 8.6
+        note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the backing\
+          \ lake studies and is not one measurement series. Lake Malawi waterbody range"
+      - source: *id005
+        value:
+          min: 7.5
+          max: 8.5
+        note: Aquarium recommendation
+      - source: *id010
+        value:
+          min: 7.7
+          max: 8.6
+        note: Surface lake water range.
+      - source: *id009
+        value:
+          min: 7.5
+          max: 8.5
+        note: Whole-column measurements include lower deep-water values.
+      - source: *id010
+        value:
+          min: 7.7
+          max: 8.6
+        note: Jackson and colleagues surface-water measurements compiled by FAO.
+      - source: *id018
+        value:
+          min: 7.5
+          max: 8.5
+        note: "Northern-basin whole-column pH context, including deeper water."
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.6
+      confidence: medium
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+      rationale: "Generator, checker-a and checker-b propose 7.5 to 8.6; checker-c proposes 7.5 to 8.8. The\
+        \ proposals agree within the 0.3 pH comparison rule, and the tally keeps the median upper endpoint\
+        \ of 8.6 with unanimous verification and medium confidence. Seriously Fish and Fishipedia give 7.5\
+        \ to 8.5, Cichlid-Forum gives 7.8 to 8.6, and Cichlid Atlas gives the wider 7.7 to 8.8. The decided\
+        \ interval contains the lake surface values and the leading species recommendation; 8.8 remains recorded\
+        \ rather than being presented as a demonstrated unsafe value. General Malawi advice from JBL is wider\
+        \ still at 7.5 to 9.0, and Malawi.si gives 7.6 to 8.7, but neither establishes this species' long-term\
+        \ limits."
+      sources:
+        - *id005
+        - *id009
+        - *id010
+        - *id008
+        - *id011
+        - *id013
+        - *id014
+        - *id015
+        - *id016
+        - *id007
+        - *id006
+        - &id019
+          kind: website
+          title: JBL Malawi Rocks aquarium guide
+          url: "https://www.jbl.de/fr/themes/essential_section/37/les-thames-jbl-pour-votre-passion?country=lu&cpref=528"
+          archived: jbl.de/fr/themes/essential_section/37/les-thames-jbl-pour-votre-passion/q-40149ad1/2026-10-14T215308Z
+          accessed: '2026-10-13'
+        - &id020
+          kind: website
+          title: "Malawi.si: Lake Malawi Aquarium Setup"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          archived: malawi.si/slides/lake_malawi_aquarium_setup.html/2026-10-14T094756Z
+          accessed: '2026-10-14'
+      evidence:
+        - source: *id005
+          value:
+            min: 7.5
+            max: 8.5
+          note: Aquarium pH recommendation
+        - source: *id010
+          value:
+            min: 7.7
+            max: 8.6
+          note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the\
+            \ backing lake studies and is not one measurement series. Natural pH range"
+        - source: *id005
+          value:
+            min: 7.5
+            max: 8.5
+        - source: *id015
+          value:
+            min: 7.8
+            max: 8.6
+        - source: *id016
+          value:
+            min: 7.5
+            max: 8.5
+        - source: *id005
+          value:
+            min: 7.5
+            max: 8.5
+          note: Aquarium recommendation
+        - source: *id010
+          value:
+            min: 7.7
+            max: 8.6
+          note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the\
+            \ backing lake studies and is not one measurement series. Natural range"
+        - source: *id007
+          value:
+            min: 7.5
+            max: 8.5
+          note: Aquarium recommendation.
+        - source: *id006
+          value:
+            min: 7.7
+            max: 8.8
+          note: Aquarium recommendation.
+        - source: *id010
+          value:
+            min: 7.7
+            max: 8.6
+          note: Natural range.
+        - source: *id019
+          value:
+            min: 7.5
+            max: 9.0
+          note: "General JBL Malawi community target, not a species-specific limit."
+        - source: *id020
+          value:
+            min: 7.6
+            max: 8.7
+          note: "General Malawi.si aquarium advice, not a species-specific trial."
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: high
+    rationale: "The settled natural decision is 3 to 5 dGH with high confidence. Historical calcium and magnesium\
+      \ measurements compiled by FAO calculate to about 3.2 to 4.9 dGH, and the northern-basin profiles of\
+      \ Branchu and colleagues give about 4.2 to 4.6 dGH. Alkaline pH therefore does not imply high calcium-magnesium\
+      \ hardness. Seriously Fish gives a wider and higher 10 to 25 dGH aquarium range, which is retained as\
+      \ husbandry evidence rather than habitat chemistry."
+    sources:
+      - *id009
+      - *id010
+      - *id008
+      - *id011
+      - *id013
+      - *id014
+      - *id005
+      - *id007
+      - *id006
+      - *id018
+      - *id016
+    evidence:
+      - source: *id010
+        value:
+          min: 3
+          max: 5
+        note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the backing\
+          \ lake studies and is not one measurement series. Measured Lake Malawi water converted to dGH"
+      - source: *id005
+        value:
+          min: 10
+          max: 25
+        note: General aquarium hardness recommendation; not a natural lake measurement
+      - source: *id009
+        value:
+          min: 3
+          max: 5
+        note: "Lake Malawi table value, from calcium and magnesium"
+      - source: *id010
+        value:
+          min: 3
+          max: 5
+        note: "Lake Malawi table value, from calcium and magnesium"
+      - source: *id005
+        value:
+          min: 10
+          max: 25
+        note: aquarium recommendation; not a habitat value
+      - source: *id010
+        value:
+          min: 3
+          max: 5
+        note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the backing\
+          \ lake studies and is not one measurement series. Lake Malawi waterbody range"
+      - source: *id009
+        value:
+          min: 4.2
+          max: 4.6
+        note: Converted from measured calcium and magnesium in the northern basin.
+      - source: *id010
+        value:
+          min: 3
+          max: 5
+        note: Range converted from historical lake measurements.
+      - source: *id007
+        value:
+          min: 10
+          max: 25
+        note: "Aquarium recommendation, outside the measured natural range."
+      - source: *id018
+        value:
+          min: 4.2
+          max: 4.6
+        note: Calculated from upper-water calcium and magnesium in the northern-basin profiles.
+      - source: *id010
+        value:
+          min: 3.2
+          max: 4.9
+        note: Calculated from historical calcium and magnesium measurements; rounded lake interval is 3 to
+          5 dGH.
+      - source: *id016
+        value:
+          min: 8
+          max: 15
+        note: "Fishipedia natural-environment box; generic husbandry account, not direct lake measurements."
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 3
+        max: 25
+      confidence: low
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+      rationale: "All four main runs propose 3 to 25 dGH; the tally retains that unanimous decision with low\
+        \ confidence. Seriously Fish recommends 10 to 25 dGH, while the lake studies support 3 to 5 dGH. The\
+        \ interval preserves the natural lower values and the stated husbandry upper value without claiming\
+        \ that both endpoints have been tested long term. Fishipedia gives 8 to 15 dGH, Malawi.si gives 3 to\
+        \ 15 dGH for Malawi aquaria, and OATA gives 12 to 18 dGH; none narrows the species-specific upper recommendation\
+        \ by evidence of harm."
+      sources:
+        - *id005
+        - *id009
+        - *id010
+        - *id008
+        - *id011
+        - *id013
+        - *id014
+        - *id016
+        - *id015
+        - *id007
+        - *id020
+        - &id021
+          kind: website
+          title: "OATA: How to look after African Malawi Cichlids"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+          archived: ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/2026-10-14T094603Z
+          accessed: '2026-10-14'
+      evidence:
+        - source: *id005
+          value:
+            min: 10
+            max: 25
+          note: Aquarium hardness advice
+        - source: *id010
+          value:
+            min: 3
+            max: 5
+          note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the\
+            \ backing lake studies and is not one measurement series. Natural range"
+        - source: *id005
+          value:
+            min: 10
+            max: 25
+        - source: *id016
+          value: "hard, basic water"
+          note: no figure given on the page read
+        - source: *id015
+          value: hard
+          note: qualitative
+        - source: *id005
+          value:
+            min: 10
+            max: 25
+          note: Aquarium recommendation
+        - source: *id007
+          value:
+            min: 10
+            max: 25
+          note: Aquarium recommendation.
+        - source: *id010
+          value:
+            min: 3
+            max: 5
+          note: "Natural lake range, required to be contained."
+        - source: *id020
+          value:
+            min: 3
+            max: 15
+          note: General Malawi.si aquarium advice.
+        - source: *id021
+          value:
+            min: 12
+            max: 18
+          note: General OATA Malawi-cichlid advice; not natural lake chemistry.
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: high
+    rationale: "The settled natural decision is 5 to 8 dKH with high confidence. FAO compiles alkalinity of\
+      \ 2.00 to 2.59 meq/L, equivalent to about 5.6 to 7.3 dKH, while Branchu and colleagues give about 6.5\
+      \ to 6.9 dKH. Rounding these lake measurements outward supports the prescribed interval. This alkalinity-based\
+      \ value can exceed calcium-magnesium hardness because sodium also balances bicarbonate."
+    sources:
+      - *id009
+      - *id010
+      - *id008
+      - *id011
+      - *id013
+      - *id014
+      - *id007
+      - *id006
+      - *id018
+    evidence:
+      - source: *id010
+        value:
+          min: 5
+          max: 8
+        note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the backing\
+          \ lake studies and is not one measurement series. Natural alkalinity expressed as dKH"
+      - source: *id009
+        value:
+          min: 5
+          max: 8
+        note: alkalinity of lake water
+      - source: *id010
+        value:
+          min: 5
+          max: 8
+        note: alkalinity of lake water
+      - source: *id010
+        value:
+          min: 5
+          max: 8
+        note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the backing\
+          \ lake studies and is not one measurement series. Lake Malawi waterbody range"
+      - source: *id009
+        value:
+          min: 6.5
+          max: 6.9
+        note: Alkalinity converted to dKH.
+      - source: *id010
+        value:
+          min: 5
+          max: 8
+        note: Range converted from historical alkalinity measurements.
+      - source: *id018
+        value:
+          min: 6.5
+          max: 6.9
+        note: Measured alkalinity converted from milliequivalents per litre to dKH.
+      - source: *id010
+        value:
+          min: 5.6
+          max: 7.3
+        note: Historical alkalinity of 2.00 to 2.59 meq/L converted to dKH.
+    tolerance:
+      value:
+        min: 5
+        max: 14
+      confidence: low
+      verification:
+        method: median
+        votes:
+          agree: 3
+          total: 6
+      rationale: "Generator, checker-b and tiebreaker-1 propose 5 to 12 dKH; checker-a and tiebreaker-2 propose\
+        \ 5 to 15 dKH; checker-c proposes 5 to 20 dKH. With no qualified majority among six votes, the tally\
+        \ uses the endpoint medians: 5 and 13.5, with the upper endpoint rounded to 14 dKH. Verification remains\
+        \ median with three agreeing votes out of six and low confidence. The range contains the natural 5\
+        \ to 8 dKH. JBL gives a general Malawi target of 5 to 10 dKH, Malawi.si gives 6 to 12, a hobby forum\
+        \ discusses approximately 12, and OATA gives 10 to 15. The wider OATA upper value of 15 is retained\
+        \ in evidence; the decided 14 is a rounded synthesis, not a demonstrated failure threshold. No read\
+        \ source supplies a species-specific long-term KH trial or substantiates the 20 dKH proposal. Seriously\
+        \ Fish gives pH and GH but no KH range, Seachem discusses buffering without endpoints, and the Malawi-Guru\
+        \ GH/KH example is not a species tolerance. GH is not converted into KH. The cichlids.com archive hits\
+        \ contain stocking discussions without KH evidence; the JBL test-product URL provides no usable numeric\
+        \ advice."
+      sources:
+        - *id009
+        - *id010
+        - *id008
+        - *id011
+        - *id013
+        - *id014
+        - *id005
+        - *id007
+        - *id006
+        - *id019
+        - &id023
+          kind: forum
+          title: "Aquariumforum: Malawi aquarium water discussion"
+          url: "https://www.aquariumforum.de/t/malawi-becken.1440387/"
+          archived: aquariumforum.de/t/malawi-becken.1440387/2026-10-14T215253Z
+          accessed: '2026-10-13'
+        - &id032
+          kind: website
+          title: "Malawi-Guru: GH and KH in Malawi aquaria"
+          url: "https://malawi-guru.de/wasserhaerte-gh-und-kh-aquarium-malawisee/"
+          archived: malawi-guru.de/wasserhaerte-gh-und-kh-aquarium-malawisee/2026-10-14T130426Z
+          accessed: '2026-10-13'
+        - &id033
+          kind: website
+          title: "Seachem: Malawi/Victoria Buffer"
+          url: "https://seachem.com/malawi-victoria-buffer.php"
+          archived: seachem.com/malawi-victoria-buffer.php/2026-10-14T211322Z
+          accessed: '2026-10-13'
+        - *id001
+        - *id004
+        - *id022
+        - &id034
+          kind: archive
+          title: cichlids.com forum thread 36378
+          url: "https://www.cichlids.com/disc/read.php?2,36378"
+          accessed: '2026-10-13'
+        - &id035
+          kind: archive
+          title: cichlids.com forum thread 53583
+          url: "https://www.cichlids.com/disc/read.php?2,53583"
+          accessed: '2026-10-13'
+        - &id036
+          kind: website
+          title: JBL PROAQUATEST KH product URL returned notification information only
+          url: "https://www.jbl.de/en/products/detail/8652/jbl-proaquatest-kh-carbonate-hardness?country=my"
+          archived: jbl.de/en/products/detail/8652/jbl-proaquatest-kh-carbonate-hardness/q-315ec04b/2026-10-14T175451Z
+          accessed: '2026-10-13'
+        - *id020
+        - *id021
+      evidence:
+        - source: *id010
+          value:
+            min: 5
+            max: 8
+          note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the\
+            \ backing lake studies and is not one measurement series. Natural alkalinity; no direct aquarium\
+            \ KH tolerance was reported"
+        - source: *id005
+          value:
+            min: 7.5
+            max: 8.5
+          note: Aquarium pH advice used only as indirect context
+        - source: *id005
+          value:
+            min: 5
+            max: 15
+          note: "derived from pH and hardness advice, not stated"
+        - source: *id010
+          value:
+            min: 5
+            max: 8
+          note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the\
+            \ backing lake studies and is not one measurement series. Natural range"
+        - source: *id005
+          value:
+            min: 7.5
+            max: 8.5
+          note: Related pH recommendation; KH itself is not stated
+        - source: *id009
+          value:
+            min: 6.5
+            max: 6.9
+          note: Natural alkalinity converted to dKH.
+        - source: *id007
+          value:
+            min: 7.5
+            max: 8.5
+          note: pH advice used only to infer that aquarium water should remain alkaline and buffered; not a
+            KH measurement.
+        - source: *id010
+          value:
+            min: 5
+            max: 8
+          note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the\
+            \ backing lake studies and is not one measurement series. Natural habitat range from the lake compilation;\
+            \ not an aquarium tolerance."
+        - source: *id019
+          value:
+            min: 5
+            max: 10
+          note: Aquarium target for a Malawi community; group-level advice rather than a physiological limit.
+        - source: *id023
+          value:
+            min: 5
+            max: 12
+          note: Combines the stated natural lower bound of 5 dKH with the reported aquarium acceptance up to
+            approximately 12 dKH; no species-specific trial.
+        - source: *id010
+          value:
+            min: 5
+            max: 8
+          note: "Inherited lake synthesis, retained from the input runs; the numeric interval combines the\
+            \ backing lake studies and is not one measurement series. Mandatory natural Lake Malawi KH range;\
+            \ habitat evidence, not a measured aquarium tolerance."
+        - source: *id020
+          value:
+            min: 6
+            max: 12
+          note: Explicit KH recommendation for Lake Malawi aquariums; extrapolated to this utaka.
+        - source: *id021
+          value:
+            min: 10
+            max: 15
+          note: "Explicit carbonate hardness guidance for Malawi cichlids, including utaka; not a species-specific\
+            \ tolerance trial."
+        - source: *id005
+          value: null
+          note: No KH range stated. Species husbandry gives pH 7.5 to 8.5 and hardness identified as 10 to
+            25 dGH; GH is not KH.
+        - source: *id006
+          value: null
+          note: No numeric KH range. Species aquarium advice gives pH 7.7 to 8.8 and recommends buffered alkaline
+            water.
+  maxSizeCm:
+    value:
+      male: 13
+      female: 10.5
+    confidence: low
+    rationale: "Male proposals are 13 cm from generator, checker-a and checker-c, and 13.2 cm from checker-b;\
+      \ the median is 13 cm. For females, generator proposes 10 cm, checker-a 11 cm, checker-b 12 cm and checker-c\
+      \ 9.5 cm, giving a median of 10.5 cm. FishBase gives 13.2 cm total length for male or unsexed fish, Seriously\
+      \ Fish gives 13 cm standard length without a sex split, and Fishipedia gives 14 cm maximum and 11 cm\
+      \ average without a sex split. The association register gives 17 cm under an older Firecrest label, so\
+      \ that larger and taxonomically ambiguous figure is retained but not used as the typical maximum. Length\
+      \ conventions cannot be equated, and 10.5 cm is a planning estimate for the smaller female rather than\
+      \ a measured sex-specific maximum. The 2022 paper has inconsistent holotype lengths between its specimen\
+      \ list and figure legend, further limiting that inference."
+    sources:
+      - *id004
+      - *id005
+      - *id002
+      - *id016
+      - &id024
+        kind: database
+        title: "Nordiska Ciklidsällskapet, Copadichromis virginalis species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1183"
+        accessed: '2026-10-13'
+        archived: ciklid.org/artregister/art.php/q-399819c6/2026-10-14T214631Z
+      - *id007
+      - *id006
+    evidence:
+      - source: *id004
+        value:
+          male: 13.2
+          female: 13.2
+        note: "Maximum total length, sex not separated"
+      - source: *id005
+        value:
+          male: 13
+          female: 13
+        note: "Maximum standard length, sex not separated"
+      - source: *id002
+        value:
+          male: 9.2
+          female: 9.2
+        note: "Female holotype standard length, not a maximum"
+      - source: *id005
+        value:
+          male: 13
+          female: 13
+        note: "130 mm SL, not split by sex"
+      - source: *id004
+        value:
+          male: 13.2
+          female: 13.2
+        note: "maximum, male or unsexed"
+      - source: *id002
+        value:
+          male: 11
+          female: 10
+        note: "type specimens 84 to 107 mm SL, holotype female 92 mm SL"
+      - source: *id016
+        value:
+          male: 14
+          female: 11
+        note: "maximum 14, average 11"
+      - source: *id004
+        value:
+          male: 13.2
+          female: 13.2
+        note: "Reported maximum total length, sex not separated"
+      - source: *id005
+        value:
+          male: 13
+          female: 13
+        note: Length listed as standard length
+      - source: *id024
+        value:
+          male: 17
+          female: 17
+        note: "Register maximum, length type unspecified"
+      - source: *id004
+        value:
+          male: 13.2
+          female: 9.2
+        note: "Maximum total length is male or unsexed; 9.2 cm is the female holotype's standard length, not\
+          \ a maximum. The female measurement was imported from type-material interpretation by a checker,\
+          \ not reported by FishBase."
+      - source: *id007
+        value:
+          male: 13
+          female: 9.5
+        note: "The profile gives 13 cm standard length without a sex split; female figure is estimated from\
+          \ the type material. This female value is a checker estimate, not a number given by the care sheet."
+      - source: *id002
+        value:
+          male: 13
+          female: 9.2
+        note: "Male breeding sample and female holotype sizes are standard length, not species maxima."
+      - source: *id016
+        value:
+          male: 14
+          female: 14
+        note: Maximum without a sex split; 11 cm is the reported average rather than a female maximum.
+  predation:
+    value: 0
+    confidence: high
+    rationale: "All four main runs choose level 0, retained by the unanimous tally with high confidence. The\
+      \ revised taxonomic account and Seriously Fish identify animal-plankton feeding rather than fish predation;\
+      \ incidental fry-taking remains possible under this level. The historical Duponchelle report found over\
+      \ 95 percent zooplankton, but its trawl identifications predate the separation of mloto and true virginalis,\
+      \ so it is supporting group context rather than a securely reidentified species sample."
+    sources:
+      - *id002
+      - *id005
+      - *id004
+      - &id025
+        kind: literature
+        title: "Duponchelle et al., Temporal diet patterns of some Lake Malawi demersal fish species as revealed\
+          \ by stomach contents and stable isotope analysis"
+        url: "https://malawicichlids.com/duponchelle_ch4.pdf"
+        accessed: '2026-10-13'
+        archived: malawicichlids.com/duponchelle_ch4.pdf/2026-10-14T095249Z
+      - *id007
+      - *id006
+    evidence:
+      - source: *id002
+        value: 0
+        note: "Zooplankton-feeding utaka, not piscivorous"
+      - source: *id005
+        value: 0
+        note: Specialised on plankton in nature
+      - source: *id005
+        value: 0
+        note: specialised zooplankton feeder
+      - source: *id002
+        value: 0
+        note: utaka are zooplankton-feeding cichlids with small protrusible mouths
+      - source: *id004
+        value: 0
+        note: "demersal, sand-dwelling; no fish prey listed"
+      - source: *id025
+        value: 0
+        note: Zooplankton exceeded 95 percent of diet; scales were interpreted as likely sampling artefacts
+          Historical trawl material used a broader species concept; the 2022 revision means its identification
+          as true virginalis is uncertain.
+      - source: *id005
+        value: 0
+        note: Specialized zooplankton feeder
+      - source: *id002
+        value: 0
+        note: Identifies the species within the zooplanktivorous utaka.
+      - source: *id007
+        value: 0
+        note: Describes specialized zooplankton feeding.
+      - source: *id006
+        value: 0
+        note: "Reports plankton feeding, with no fish prey noted."
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - zooplankton
+        - small crustaceans
+        - prepared foods with some vegetable matter
+    confidence: high
+    rationale: "The four main runs agree on invertivore and bloatSensitive false; the unanimous tally retains\
+      \ the generator food list with high confidence. The 2022 account and Seriously Fish support zooplankton\
+      \ specialization. Small crustaceans and varied prepared foods fit captive guidance, including some vegetable\
+      \ food. The historical trawl diet report also describes plankton feeding but may concern mloto under\
+      \ the revised taxonomy. AquariumPro calls the fish omnivorous in generic feeding advice; that does not\
+      \ outweigh the species literature on its main natural food. The false bloat flag records the lack of\
+      \ a recognized special sensitivity, not immunity to dietary disease."
+    sources:
+      - *id002
+      - *id005
+      - *id025
+      - *id004
+      - *id024
+      - *id007
+      - *id006
+    evidence:
+      - source: *id002
+        value: invertivore
+        note: The utaka group is described as zooplankton-feeding
+      - source: *id005
+        value: invertivore
+        note: Small animal plankton is the natural food; varied aquarium diet advised
+      - source: *id005
+        value: invertivore
+        note: specialised zooplankton feeders; also takes some vegetable food in captivity
+      - source: *id002
+        value: invertivore
+        note: zooplankton feeding utaka
+      - source: *id015
+        value: invertivore
+        note: listed as carnivore
+      - source: *id025
+        value:
+          type: invertivore
+          bloatSensitive: false
+          foods:
+            - copepods
+            - cladocerans
+            - zooplankton
+        note: "Field stomach contents, 30 fish Historical trawl material used a broader species concept; the\
+          \ 2022 revision means its identification as true virginalis is uncertain."
+      - source: *id005
+        value:
+          type: invertivore
+          bloatSensitive: false
+          foods:
+            - zooplankton
+        note: Species and genus-level feeding guidance
+      - source: *id024
+        value:
+          type: invertivore
+          bloatSensitive: false
+          foods:
+            - plankton
+      - source: *id002
+        value:
+          type: invertivore
+          bloatSensitive: false
+          foods:
+            - zooplankton
+      - source: *id007
+        value:
+          type: invertivore
+          bloatSensitive: false
+          foods:
+            - zooplankton
+            - small live or frozen invertebrate foods
+      - source: *id006
+        value:
+          type: invertivore
+          bloatSensitive: false
+          foods:
+            - zooplankton
+            - planktonic animals
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: "Males establish individual spawning sites and court females persistently, while a shoal and\
+      \ a female-biased ratio spread attention. This fits a visible hierarchy with regular chasing, but serious\
+      \ injury is not the usual outcome in a suitable group."
+    sources:
+      - *id005
+      - *id022
+      - *id015
+      - *id024
+      - &id026
+        kind: literature
+        title: "Evolution of bower building in Lake Malawi cichlid fish: phylogeny, morphology, and behavior"
+        url: "https://doi.org/10.3389/fevo.2015.00018"
+        accessed: '2026-10-13'
+        archived: doi.org/10.3389_fevo.2015.00018/2026-10-13T065302Z
+      - *id007
+      - *id006
+    evidence:
+      - source: *id005
+        value: 2
+        note: Male territories and harem advice
+      - source: *id022
+        value: 2
+        note: Polygynandrous mating system
+      - source: *id005
+        value: 2
+        note: males need room for territories; harem needed to spread male attention
+      - source: *id015
+        value: 2
+        note: mildly aggressive
+      - source: *id005
+        value: 2
+        note: Rival males need space; harem advised to spread male attention
+      - source: *id024
+        value: 2
+        note: Reports males contesting territory and females shoaling
+      - source: *id026
+        value: 2
+        note: Males were territorial during courtship observations
+      - source: *id007
+        value: 2
+        note: Recommends one male with at least three females and reports forceful courtship.
+      - source: *id006
+        value: 2
+        note: Describes a shoal hierarchy and persistent male courtship.
+  aggressionHeterospecific:
+    value: 1
+    confidence: medium
+    rationale: "It is described as peaceful toward other species, although breeding males defend nearby spawning\
+      \ sites. A low display and local-defense level best fits those accounts."
+    sources:
+      - *id005
+      - *id006
+      - *id015
+      - *id024
+      - *id026
+      - *id007
+    evidence:
+      - source: *id005
+        value: 1
+        note: Characterises the fish as peaceful but territorial during spawning
+      - source: *id006
+        value: 1
+        note: Describes the species as peaceful by hap standards
+      - source: *id005
+        value: 1
+        note: "peaceful, even by Copadichromis standards"
+      - source: *id015
+        value: 1
+        note: mildly aggressive
+      - source: *id005
+        value: 1
+        note: Peaceful overall; males display and defend spawning sites
+      - source: *id024
+        value: 1
+        note: Territorial males interact aggressively during breeding
+      - source: *id007
+        value: 1
+        note: Generally peaceful; breeding males defend a local nest site.
+      - source: *id006
+        value: 1
+        note: "Calm with suitable tankmates, with breeding males territorial around a bower."
+  territory:
+    value:
+      size: small
+      breedingOnly: true
+    confidence: medium
+    rationale: "All four main runs choose a small territory used during breeding. The revised species account\
+      \ describes a crater beside or below an overhanging rock, and the laboratory study confirms localized\
+      \ digging and courtship. The association register reports one nest about 60 cm across under a broader\
+      \ Firecrest label, but nest diameter alone does not establish a defended tank fraction for the recommended\
+      \ one-male unit. The small spawning-site interpretation is retained with medium confidence; a male can\
+      \ still pursue females beyond the immediate pit."
+    sources:
+      - *id002
+      - *id005
+      - *id015
+      - *id026
+      - *id024
+      - *id007
+      - *id006
+    evidence:
+      - source: *id002
+        value:
+          size: small
+          breedingOnly: true
+        note: Male bowers are formed under overhanging rocks
+      - source: *id005
+        value:
+          size: small
+          breedingOnly: true
+        note: Describes a simple substrate nest used for spawning
+      - source: *id015
+        value:
+          size: small
+          breedingOnly: true
+        note: nests sometimes only a metre apart
+      - source: *id005
+        value:
+          size: small
+          breedingOnly: true
+        note: "males build a nest depression in sand, usually under or beside a stone"
+      - source: *id002
+        value:
+          size: small
+          breedingOnly: true
+        note: bower crater under an overhanging rock
+      - source: *id002
+        value:
+          size: small
+          breedingOnly: true
+        note: Simple crater bower under an overhanging rock
+      - source: *id026
+        value:
+          size: small
+          breedingOnly: true
+        note: Pit dug at a stereotyped site within the male's territory
+      - source: *id007
+        value:
+          size: small
+          breedingOnly: true
+        note: Male builds a simple nest depression under or beside a stone.
+      - source: *id006
+        value:
+          size: small
+          breedingOnly: true
+        note: Describes a bower beneath an overhanging rock.
+  habitatZones:
+    value:
+      - openWater
+      - rock
+      - sand
+    confidence: high
+    rationale: It shoals in open water near rocky shores and uses sand beneath rocks for spawning bowers.
+    sources:
+      - *id002
+      - *id005
+      - *id015
+      - *id004
+      - *id024
+      - *id006
+      - *id007
+    evidence:
+      - source: *id005
+        value:
+          - openWater
+          - rock
+          - sand
+        note: Open-water shoaling by rocky shores with sand nests
+      - source: *id002
+        value:
+          - rock
+          - sand
+        note: Rock-associated bowers over soft substrate
+      - source: *id005
+        value:
+          - rock
+          - sand
+          - openWater
+        note: open water over rocky shores and reefs; sand substrate essential for nests
+      - source: *id015
+        value:
+          - rock
+          - sand
+          - openWater
+        note: open water and steep sandy slopes along rocky coasts
+      - source: *id004
+        value:
+          - sand
+        note: "demersal, sand-dwelling"
+      - source: *id004
+        value:
+          - sand
+        note: Demersal and sand-dwelling
+      - source: *id005
+        value:
+          - openWater
+          - rock
+          - sand
+        note: Shoaling by rocky shores and reefs; sand substrate used for spawning
+      - source: *id002
+        value:
+          - rock
+          - sand
+        note: Bowers on soft substrate beneath overhanging rocks
+      - source: *id007
+        value:
+          - openWater
+          - sand
+          - rock
+        note: Open-water shoaling at rocky shores and reefs; sandy nest substrate.
+      - source: *id004
+        value:
+          - sand
+          - openWater
+        note: Demersal and sand dwelling.
+      - source: *id002
+        value:
+          - rock
+          - sand
+        note: Reports rock-associated bowers over a soft substrate.
+  social:
+    value:
+      structure: harem
+      ratio: 3
+    confidence: medium
+    rationale: "All four main runs recommend an aquarium harem of one male to at least three females. Seriously\
+      \ Fish explicitly supplies that ratio; the CRC public account supplies the mating system but not a numeric\
+      \ ratio. The association register suggests several males are needed for breeding and describes a large\
+      \ captive group with eight males and ten females, but that observation does not establish a universal\
+      \ minimum. The one-male unit is retained as the more clearly specified baseline; several males require\
+      \ additional space and females."
+    sources:
+      - *id005
+      - *id022
+      - *id017
+      - *id024
+      - *id007
+      - *id006
+    evidence:
+      - source: *id005
+        value:
+          structure: harem
+          ratio: 3
+        note: One male with at least three females
+      - source: *id022
+        value:
+          structure: harem
+          ratio: 3
+        note: Polygynandrous mating pattern
+      - source: *id017
+        value:
+          structure: harem
+          ratio: 3
+        note: Recommends one male with several females
+      - source: *id005
+        value:
+          structure: harem
+          ratio: 3
+        note: one male with three or more females
+      - source: *id005
+        value:
+          structure: harem
+          ratio: 3
+      - source: *id022
+        value:
+          structure: harem
+        note: Mating system classified as polygynandrous
+      - source: *id024
+        value:
+          structure: harem
+          ratio: 2.25
+        note: "One captive breeding group had eight males and ten females Retained checker conversion is arithmetically\
+          \ inconsistent: ten females divided by eight males is 1.25, and this is an observed group rather\
+          \ than a minimum recommendation."
+      - source: *id007
+        value:
+          structure: harem
+          ratio: 3
+        note: Standard aquarium group.
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "The unanimous four-run tally keeps false with high confidence. Seriously Fish explicitly allows\
+      \ peaceful Aulonocara and calm haps, and the other care accounts also describe community keeping. A dedicated\
+      \ breeding aquarium is an option for managing courtship and fry survival, not a requirement to exclude\
+      \ all other species."
+    sources:
+      - *id005
+      - *id006
+      - *id007
+    evidence:
+      - source: *id005
+        value: false
+        note: Recommends compatible Aulonocara and Cyrtocara tankmates
+      - source: *id006
+        value: false
+        note: Provides a calm Malawi community shortlist
+      - source: *id005
+        value: false
+        note: tankmates such as Aulonocara and Cyrtocara moorii are suggested
+      - source: *id005
+        value: false
+        note: Recommends compatible non-Copadichromis tankmates
+      - source: *id007
+        value: false
+        note: Names peaceful Aulonocara and hap tankmates as suitable examples.
+      - source: *id006
+        value: false
+        note: Recommends calm companions and describes community use.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - copadichromis
+    confidence: medium
+    rationale: "All four main runs propose copadichromis, retained by the unanimous tally with medium confidence.\
+      \ Seriously Fish gives a genus-level interbreeding warning, and the existing curated group already includes\
+      \ virginalis with basis presumed. Neither the catalog nor that internal group supplies an independent\
+      \ observation of a named crossing pair. The warning does not establish a documented free-choice cross\
+      \ between every pair of members."
+    sources:
+      - *id005
+      - &id027
+        kind: database
+        title: "Cichlids.com curated hybrid group: Copadichromis"
+      - *id001
+      - *id007
+    evidence:
+      - source: *id005
+        value:
+          - copadichromis
+        note: Warns against mixing Copadichromis because they can hybridise
+      - source: *id027
+        value:
+          - copadichromis
+        note: The curated group lists virginalis as a member
+      - source: *id005
+        value:
+          - copadichromis
+        note: advises against keeping other Copadichromis because they can hybridise
+      - source: *id005
+        value:
+          - copadichromis
+        note: General warning about interbreeding within the genus
+      - source: *id007
+        value:
+          - copadichromis
+        note: Gives a genus-wide hybridisation warning.
+      - source: *id001
+        value:
+          - copadichromis
+        note: Lists this valid species among the genus members; the catalogue itself does not discuss crosses.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+        - grey
+        - black
+        - yellow
+        - blue
+      pattern: plain
+    confidence: medium
+    rationale: "Generator proposes grey, black, yellow and blue with plain pattern; checker-a black and yellow\
+      \ with plain pattern; checker-b black, yellow and white with mixed pattern; checker-c blue, yellow, red,\
+      \ grey and black with stripes. The 2022 study documents dark grey males with yellow upper colour at Nkhata\
+      \ Bay and pale-blue upper colour in provisional Manda and Higga Reef populations. These dominant colours\
+      \ are retained, and plain describes the unspotted flanks; the narrow dorsal marking is a fin detail rather\
+      \ than a horizontal body-stripe pattern. Occasional white edging and the red dorsal band reported by\
+      \ older husbandry pages remain in evidence but do not define the dominant body colours or establish the\
+      \ identity of every trade form."
+    sources:
+      - *id002
+      - *id005
+      - *id015
+      - *id024
+      - *id006
+      - *id007
+    evidence:
+      - source: *id002
+        value:
+          baseColors:
+            - grey
+            - black
+            - yellow
+          pattern: plain
+        note: Nkhata Bay breeding males have a yellow upper blaze and dark body
+      - source: *id005
+        value:
+          baseColors:
+            - blue
+            - yellow
+            - black
+          pattern: plain
+        note: Locality forms vary; flank remains unspotted
+      - source: *id002
+        value:
+          baseColors:
+            - black
+            - yellow
+          pattern: plain
+        note: Nkhata Bay males dark grey with yellow upper surface
+      - source: *id005
+        value:
+          baseColors:
+            - black
+          pattern: plain
+        note: red stripe along the dorsal fin
+      - source: *id015
+        value:
+          baseColors:
+            - red
+          pattern: plain
+        note: red band in the dorsal fin
+      - source: *id002
+        value:
+          baseColors:
+            - black
+            - yellow
+            - white
+          pattern: mixed
+        note: Adult males from Nkhata Bay
+      - source: *id024
+        value:
+          baseColors:
+            - black
+            - yellow
+            - white
+          pattern: mixed
+        note: Dominant male coloration
+      - source: *id002
+        value:
+          baseColors:
+            - yellow
+            - grey
+            - black
+          pattern: stripes
+        note: Type-locality breeding males.
+      - source: *id007
+        value:
+          baseColors:
+            - red
+            - silver
+          pattern: stripes
+        note: Red dorsal stripe in males and silver females.
+      - source: *id006
+        value:
+          baseColors:
+            - blue
+            - yellow
+            - grey
+            - black
+          pattern: stripes
+        note: Reports blue or yellow male colour forms and a black dorsal mark.
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: "Small plankton foods are taken actively, but the sources give no species-specific comparison\
+      \ of feeding speed in mixed tanks."
+    sources:
+      - *id005
+      - *id025
+      - *id002
+      - *id007
+      - *id006
+      - &id028
+        kind: model-knowledge
+        title: General feeding-speed estimate; no species-specific feeding-speed observation found
+    evidence:
+      - source: *id005
+        value: normal
+        note: "Active open-water plankton feeding, with no claim of unusually fast feeding"
+      - source: *id005
+        value: normal
+        note: specialised zooplankton picker; unfussy in captivity
+      - source: *id025
+        value: normal
+        note: Wild feeding observations show selective plankton feeding but do not measure speed Historical
+          trawl material used a broader species concept; the 2022 revision means its identification as true
+          virginalis is uncertain.
+      - source: *id028
+        value: normal
+        note: Low-confidence inference from plankton feeding; no direct speed measurement was found.
+  minTank:
+    value:
+      volumeL: 304
+      lengthCm: 150
+      depthCm: 45
+    confidence: medium
+    rationale: "Generator and checker-c propose 304 L, while checker-a and checker-b propose 300 L; all propose\
+      \ a 150 by 45 cm footprint. The component medians are 302 L, 150 cm and 45 cm. Volume is rounded to the\
+      \ explicitly published approximately 304 L in Seriously Fish, matching the recommended unit of one male\
+      \ and at least three females. The association register instead gives 350 L and 110 cm length, while Fishipedia\
+      \ recommends 800 L and 140 cm for at least five fish. Those larger community recommendations are retained\
+      \ as context, but the more explicit species-specific minimum from Seriously Fish supports this harem\
+      \ floor; more males or a community need more room. AquariumPro mentions only 20 US gallons, about 76\
+      \ L, which conflicts with the active adult group and the better-supported long footprint."
+    sources:
+      - *id005
+      - *id024
+      - *id007
+      - *id006
+      - *id016
+      - *id017
+    evidence:
+      - source: *id005
+        value:
+          volumeL: 304
+          lengthCm: 150
+          depthCm: 45
+        note: Minimum base and volume recommendation
+      - source: *id005
+        value:
+          volumeL: 304
+          lengthCm: 150
+          depthCm: 45
+        note: minimum for an active shoaling fish
+      - source: *id005
+        value:
+          volumeL: 304
+          lengthCm: 150
+          depthCm: 45
+        note: Recommended minimum for an active adult group
+      - source: *id024
+        value:
+          volumeL: 350
+          lengthCm: 110
+          depthCm: 50
+        note: Association register recommendation
+      - source: *id007
+        value:
+          volumeL: 304
+          lengthCm: 150
+          depthCm: 45
+        note: Minimum tank base and approximate volume.
+      - source: *id006
+        value:
+          volumeL: 303
+          lengthCm: 150
+          depthCm: 45
+        note: Approximate 80 US gallon minimum and 60 by 18 inch footprint.
+      - source: *id016
+        value:
+          volumeL: 800
+          lengthCm: 140
+        note: Species page recommends this size for a group of at least five; no depth given.
+      - source: *id017
+        value:
+          volumeL: 75.7
+        note: FAQ recommends 20 US gallons without a footprint; rejected against the specialist species guidance.
+  lifespanYears:
+    value:
+      min: 5.5
+      max: 8
+    confidence: low
+    rationale: "Generator proposes 6 to 10 years, checker-a 5 to 8, checker-b 4 to 6 and checker-c 6 to 8.\
+      \ The endpoint medians are 5.5 and 8 years. Fishipedia reports seven years on an unfinished account,\
+      \ within that interval; the other estimates rest on general Malawi-cichlid knowledge. The upper planning\
+      \ estimate exceeds that sole source figure by one year because seven years is not established as a failure\
+      \ limit or maximum longevity. No cohort study or verified species-specific longevity series was found."
+    sources:
+      - &id029
+        kind: model-knowledge
+        title: "Model knowledge: lifespan estimate for medium Lake Malawi cichlids"
+      - *id016
+      - &id030
+        kind: model-knowledge
+        title: General longevity estimate for Lake Malawi haplochromine cichlids
+      - &id031
+        kind: model-knowledge
+        title: General estimate for captive Lake Malawi cichlids; species-specific lifespan source not found
+    evidence:
+      - source: *id029
+        value:
+          min: 6
+          max: 10
+        note: "General husbandry estimate, no species-specific record located"
+      - source: *id016
+        value:
+          min: 7
+          max: 7
+        note: longevity 7 years
+      - source: *id030
+        value:
+          min: 4
+          max: 6
+      - source: *id031
+        value:
+          min: 6
+          max: 8
+        note: "Estimate only, not a measured species record."
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: The female collects eggs and incubates them in her mouth; CRC independently records maternal
+      mouthbrooding.
+    sources:
+      - *id005
+      - *id022
+      - *id004
+      - *id002
+      - *id007
+      - *id006
+    evidence:
+      - source: *id005
+        value: maternal-mouthbrooder
+        note: Female broods the eggs and releases free-swimming fry
+      - source: *id022
+        value: maternal-mouthbrooder
+        note: CRC lists maternal mouthbrooding
+      - source: *id005
+        value: maternal-mouthbrooder
+      - source: *id022
+        value: maternal-mouthbrooder
+        note: mating polygynandrous
+      - source: *id004
+        value: maternal-mouthbrooder
+        note: females carry young in the buccal pouch
+      - source: *id022
+        value: maternal-mouthbrooder
+      - source: *id007
+        value: maternal-mouthbrooder
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: "Peaceful temperament and flexible feeding help, but an adult group needs a long tank, stable\
+      \ alkaline water, and careful separation from boisterous mbuna and similar utaka."
+    sources:
+      - *id005
+      - *id006
+      - *id015
+      - *id024
+      - *id007
+    evidence:
+      - source: *id005
+        value: moderate
+        note: Rates difficulty as moderate and requires a very large tank
+      - source: *id006
+        value: moderate
+        note: Emphasises group size and open swimming room
+      - source: *id005
+        value: moderate
+        note: difficulty moderate
+      - source: *id015
+        value: easy
+        note: difficulty 2
+      - source: *id005
+        value: moderate
+      - source: *id024
+        value: moderate
+      - source: *id007
+        value: moderate
+        note: Listed care difficulty.
+      - source: *id006
+        value: moderate
+        note: Its tank-size and social-group requirements make it a considered rather than beginner-level choice.
+partners:
+  suitable:
+    - species: Cyrtocara moorii
+      reason: Named by Seriously Fish as a calm hap companion.
+      condition: A community tank must be sized for the larger adults and the full group.
+    - species: Aulonocara stuartgranti
+      reason: A candidate within the Aulonocara group suggested by Seriously Fish.
+      condition: Assess individual temperament and allow additional community space.
+    - species: Placidochromis electra
+      reason: "A possible calm-hap companion from the hobby shortlist, rather than a verified pairing trial."
+      condition: Only in an adequately sized community with compatible individuals.
+  unsuitable:
+    - species: Copadichromis mloto
+      reason: Shares the presumed copadichromis crossing group; historical name confusion also complicates
+        identification.
+    - species: Melanochromis auratus
+      reason: An assertive mbuna example covered by the care source's warning against boisterous companions.
+    - species: Maylandia zebra
+      reason: A territorial mbuna example likely to dominate space and feeding in an unsuitable community.
+profile:
+  overview:
+    text: "Plan this utaka around a long open swimming lane and a female-biased group. Copadichromis virginalis\
+      \ is a Malawi plankton feeder whose breeding males become dark below a conspicuous upper blaze. It is\
+      \ comparatively mild toward suitable tankmates, while male courtship still needs space and refuges. The\
+      \ name is best anchored to the Kaduna population at Nkhata Bay. Older aquarium labels sometimes include\
+      \ fish now assigned to C. mloto or unresolved local forms, so a trade name alone cannot establish identity."
+    sources:
+      - *id002
+      - *id005
+  habitat:
+    text: "Nkhata Bay provides the confirmed reference population. Manda and Higga Reef have similar pale-blue\
+      \ forms that the 2022 study treats as possible geographic variants or sister species. Fish use the water\
+      \ above the bottom for feeding and sandy areas beside rock for spawning. Lake chemistry combines alkaline\
+      \ pH with relatively low calcium-magnesium hardness: the decided natural intervals are 21 to 29 C, pH\
+      \ 7.7 to 8.6, GH 3 to 5 dGH and KH 5 to 8 dKH. These describe the lake across seasons and locations,\
+      \ rather than simultaneous measurements at one collection site. Historical southern-arm and Malombe records\
+      \ under virginalis require caution because many such fish are now identified as mloto."
+    sources:
+      - *id001
+      - *id002
+      - *id009
+      - *id010
+      - *id008
+      - *id011
+      - *id013
+      - *id014
+      - *id005
+  sizeAndGrowth:
+    text: "Use about 13 cm for a typical adult male and 10.5 cm for the smaller female when planning the group.\
+      \ The female figure is an estimate. FishBase reports 13.2 cm total length for male or unsexed fish, whereas\
+      \ Seriously Fish reports 13 cm standard length, which excludes the tail; these measurements cannot be\
+      \ treated as interchangeable. An older association account gives 17 cm under a broader trade label. Growth\
+      \ rate is poorly documented. The provisional lifespan interval is 5.5 to 8 years, supported only weakly\
+      \ by one seven-year hobby estimate."
+    sources:
+      - *id004
+      - *id005
+      - *id002
+      - *id029
+      - *id016
+      - *id030
+      - *id031
+  husbandry:
+    text: "A small harem needs approximately 304 L with a footprint at least 150 cm long and 45 cm deep. Leave\
+      \ most of that length open and provide sand for digging, with stable rocks and sheltered edges to break\
+      \ visual contact. Larger groups and mixed communities need additional room. Seriously Fish recommends\
+      \ 25 to 29 C; the decided temperature envelope extends to 21 C to include the natural lake interval,\
+      \ but continuous keeping at its cool endpoint is not established. The other decided envelopes are pH\
+      \ 7.5 to 8.6, GH 3 to 25 dGH and KH 5 to 14 dKH. GH and KH describe different properties; the broad GH\
+      \ interval and estimated KH endpoints have low confidence. Stable conditions, oxygenation and effective\
+      \ filtration matter more than pushing water toward an uncertain endpoint."
+    sources:
+      - *id005
+      - *id009
+      - *id010
+      - *id008
+      - *id011
+      - *id013
+      - *id014
+      - *id007
+      - *id006
+      - *id019
+      - *id023
+      - *id032
+      - *id033
+      - *id001
+      - *id004
+      - *id022
+      - *id034
+      - *id035
+      - *id036
+      - *id020
+      - *id021
+  socialBehavior:
+    text: "One male with at least three females is the baseline aquarium unit. Shoaling and a breeding hierarchy\
+      \ coexist: the male establishes a courtship site while females need routes and shelters that let them\
+      \ disengage. A larger aquarium can accommodate additional males with more females and separated sites.\
+      \ The association account favours several males for breeding and describes such a group in a much larger\
+      \ tank; that is useful experience rather than proof that a smaller harem cannot breed. Persistent pursuit\
+      \ is a reason to reassess space and group composition."
+    sources:
+      - *id005
+      - *id022
+      - *id017
+      - *id024
+      - *id007
+      - *id006
+  diet:
+    text: "Offer small animal foods suited to a plankton-feeding mouth, with a varied prepared diet and appropriately\
+      \ sized live or frozen invertebrates. Captive guidance also includes some plant material. The invertivore\
+      \ classification describes the main natural food rather than a demand for an exclusively animal ration.\
+      \ The sources do not identify a special high-protein bloat sensitivity for this species. Allow every\
+      \ fish access to food and adjust portions to avoid uneaten waste."
+    sources:
+      - *id002
+      - *id005
+  breeding:
+    text: "Females provide mouthbrooding care after spawning at a male-held site. A male works a shallow sand\
+      \ depression near an overhanging or adjacent rock and courts passing females. Eggs are collected during\
+      \ spawning and develop in the female's mouth; the care account reports release after roughly three to\
+      \ four weeks. A brooding female needs a quiet refuge from renewed courtship. Community spawning is possible,\
+      \ although fry survival is less predictable. Published seasonal dates differ across labels and populations,\
+      \ so they are not treated as a fixed aquarium schedule."
+    sources:
+      - *id005
+      - *id022
+      - *id002
+  sexing:
+    text: "Mature males are larger and develop longer fins and stronger colour than females. At Nkhata Bay\
+      \ the upper blaze is yellow over a dark grey body, with a thin dark band at the dorsal-fin base that\
+      \ rises near the rear. Some related locality populations show pale blue instead of yellow; occasional\
+      \ white edging is also reported. Females remain silvery. Older care pages describe a red dorsal band,\
+      \ but that is not a universal diagnostic for the revised species. Juveniles and subordinate males are\
+      \ harder to sex reliably by colour."
+    sources:
+      - *id002
+      - *id005
+      - *id015
+      - *id024
+      - *id006
+      - *id007
+  compatibility:
+    text: "Calm Malawi haps and suitable peacocks are the most plausible companions; Seriously Fish names Aulonocara\
+      \ and Cyrtocara moorii. Such examples still need an aquarium sized for the entire adult community. Boisterous\
+      \ mbuna can dominate this comparatively mild fish, while similarly coloured males may attract rivalry.\
+      \ The presumed copadichromis group carries a genus-wide crossing caution. It rests on a specialist husbandry\
+      \ warning rather than verified free-choice crosses between all named species, and applies independently\
+      \ of whether two fish seem behaviourally peaceful."
+    sources:
+      - *id005
+      - *id006
+  problems:
+    text: A short aquarium or too few females can turn ordinary courtship into repeated harassment. Heavy rockwork
+      that blocks the swimming lane also reduces usable space. Uncertain locality labels create an identification
+      problem because older virginalis accounts can include mloto and unresolved relatives. Large changes in
+      water chemistry add avoidable stress; the broad tolerance values do not justify abrupt changes. Check
+      that all group members feed and that females can leave the male's immediate spawning area. The retrieved
+      forum archive posts are stocking discussions and establish neither numeric tolerances nor a verified
+      husbandry outcome.
+    sources:
+      - *id005
+      - *id002
+      - *id009
+      - *id010
+      - *id008
+      - *id011
+      - *id013
+      - *id014
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6-luna
+      date: '2026-10-13'
+    - role: checker
+      model: claude-sonnet-5-5
+      date: '2026-10-14'
+    - role: checker
+      model: gpt-6-luna
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6-luna
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-14'
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+  disagreements:
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Africa
+            region: Lake Malawi
+            waterbody: Lake Malawi
+            localities:
+              - Nkhata Bay
+              - Manda
+              - Higga Reef
+        - by: checker-a
+          value:
+            continent: Africa
+            region: Lake Malawi
+            waterbody: lake-malawi
+            localities:
+              - Nkhata Bay
+              - northern Lake Malawi
+              - Higga Reef
+              - Manda
+        - by: checker-b
+          value:
+            continent: Africa
+            region: Lake Malawi
+            waterbody: lake-malawi
+            localities:
+              - Nkhata Bay
+        - by: checker-c
+          value:
+            continent: Africa
+            region: Lake Malawi
+            waterbody: lake-malawi
+            localities:
+              - Nkhata Bay
+              - Manda
+      decision:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+          - Nkhata Bay
+          - Manda
+          - Higga Reef
+      rationale: "Nkhata Bay is the confirmed type locality and source of the modern sequenced Kaduna samples.\
+        \ Manda and Higga Reef are included as provisional virginalis-like populations discussed by Turner\
+        \ and colleagues, rather than as genomically confirmed populations of the same species. Some broad\
+        \ lake-wide and Lake Malombe reports involve the older species concept that also included mloto."
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 7.5
+            max: 8.6
+        - by: checker-a
+          value:
+            min: 7.5
+            max: 8.6
+        - by: checker-b
+          value:
+            min: 7.5
+            max: 8.6
+        - by: checker-c
+          value:
+            min: 7.5
+            max: 8.8
+      decision:
+        min: 7.5
+        max: 8.6
+      rationale: "Generator, checker-a and checker-b propose 7.5 to 8.6; checker-c proposes 7.5 to 8.8. The\
+        \ proposals agree within the 0.3 pH comparison rule, and the tally keeps the median upper endpoint\
+        \ of 8.6 with unanimous verification and medium confidence. Seriously Fish and Fishipedia give 7.5\
+        \ to 8.5, Cichlid-Forum gives 7.8 to 8.6, and Cichlid Atlas gives the wider 7.7 to 8.8. The decided\
+        \ interval contains the lake surface values and the leading species recommendation; 8.8 remains recorded\
+        \ rather than being presented as a demonstrated unsafe value. General Malawi advice from JBL is wider\
+        \ still at 7.5 to 9.0, and Malawi.si gives 7.6 to 8.7, but neither establishes this species' long-term\
+        \ limits."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 12
+        - by: checker-a
+          value:
+            min: 5
+            max: 15
+        - by: checker-b
+          value:
+            min: 5
+            max: 12
+        - by: checker-c
+          value:
+            min: 5
+            max: 20
+        - by: tiebreaker-1
+          value:
+            min: 5
+            max: 12
+        - by: tiebreaker-2
+          value:
+            min: 5
+            max: 15
+      decision:
+        min: 5
+        max: 14
+      rationale: "Generator, checker-b and tiebreaker-1 propose 5 to 12 dKH; checker-a and tiebreaker-2 propose\
+        \ 5 to 15 dKH; checker-c proposes 5 to 20 dKH. With no qualified majority among six votes, the tally\
+        \ uses the endpoint medians: 5 and 13.5, with the upper endpoint rounded to 14 dKH. Verification remains\
+        \ median with three agreeing votes out of six and low confidence. The range contains the natural 5\
+        \ to 8 dKH. JBL gives a general Malawi target of 5 to 10 dKH, Malawi.si gives 6 to 12, a hobby forum\
+        \ discusses approximately 12, and OATA gives 10 to 15. The wider OATA upper value of 15 is retained\
+        \ in evidence; the decided 14 is a rounded synthesis, not a demonstrated failure threshold. No read\
+        \ source supplies a species-specific long-term KH trial or substantiates the 20 dKH proposal. Seriously\
+        \ Fish gives pH and GH but no KH range, Seachem discusses buffering without endpoints, and the Malawi-Guru\
+        \ GH/KH example is not a species tolerance. GH is not converted into KH. The cichlids.com archive hits\
+        \ contain stocking discussions without KH evidence; the JBL test-product URL provides no usable numeric\
+        \ advice."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 13
+            female: 10
+        - by: checker-a
+          value:
+            male: 13
+            female: 11
+        - by: checker-b
+          value:
+            male: 13.2
+            female: 12
+        - by: checker-c
+          value:
+            male: 13
+            female: 9.5
+      decision:
+        male: 13
+        female: 10.5
+      rationale: "Male proposals are 13 cm from generator, checker-a and checker-c, and 13.2 cm from checker-b;\
+        \ the median is 13 cm. For females, generator proposes 10 cm, checker-a 11 cm, checker-b 12 cm and\
+        \ checker-c 9.5 cm, giving a median of 10.5 cm. FishBase gives 13.2 cm total length for male or unsexed\
+        \ fish, Seriously Fish gives 13 cm standard length without a sex split, and Fishipedia gives 14 cm\
+        \ maximum and 11 cm average without a sex split. The association register gives 17 cm under an older\
+        \ Firecrest label, so that larger and taxonomically ambiguous figure is retained but not used as the\
+        \ typical maximum. Length conventions cannot be equated, and 10.5 cm is a planning estimate for the\
+        \ smaller female rather than a measured sex-specific maximum. The 2022 paper has inconsistent holotype\
+        \ lengths between its specimen list and figure legend, further limiting that inference."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - zooplankton
+              - small crustaceans
+              - prepared foods with some vegetable matter
+        - by: checker-a
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - zooplankton
+              - Artemia nauplii
+              - frozen and live small foods
+              - spirulina flake
+        - by: checker-b
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - copepods
+              - cladocerans
+              - zooplankton
+        - by: checker-c
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - zooplankton
+              - small crustaceans
+              - other planktonic invertebrates
+      decision:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+          - zooplankton
+          - small crustaceans
+          - prepared foods with some vegetable matter
+      rationale: "The four main runs agree on invertivore and bloatSensitive false; the unanimous tally retains\
+        \ the generator food list with high confidence. The 2022 account and Seriously Fish support zooplankton\
+        \ specialization. Small crustaceans and varied prepared foods fit captive guidance, including some\
+        \ vegetable food. The historical trawl diet report also describes plankton feeding but may concern\
+        \ mloto under the revised taxonomy. AquariumPro calls the fish omnivorous in generic feeding advice;\
+        \ that does not outweigh the species literature on its main natural food. The false bloat flag records\
+        \ the lack of a recognized special sensitivity, not immunity to dietary disease."
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - grey
+              - black
+              - yellow
+              - blue
+            pattern: plain
+        - by: checker-a
+          value:
+            baseColors:
+              - black
+              - yellow
+            pattern: plain
+        - by: checker-b
+          value:
+            baseColors:
+              - black
+              - yellow
+              - white
+            pattern: mixed
+        - by: checker-c
+          value:
+            baseColors:
+              - blue
+              - yellow
+              - red
+              - grey
+              - black
+            pattern: stripes
+      decision:
+        baseColors:
+          - grey
+          - black
+          - yellow
+          - blue
+        pattern: plain
+      rationale: "Generator proposes grey, black, yellow and blue with plain pattern; checker-a black and yellow\
+        \ with plain pattern; checker-b black, yellow and white with mixed pattern; checker-c blue, yellow,\
+        \ red, grey and black with stripes. The 2022 study documents dark grey males with yellow upper colour\
+        \ at Nkhata Bay and pale-blue upper colour in provisional Manda and Higga Reef populations. These dominant\
+        \ colours are retained, and plain describes the unspotted flanks; the narrow dorsal marking is a fin\
+        \ detail rather than a horizontal body-stripe pattern. Occasional white edging and the red dorsal band\
+        \ reported by older husbandry pages remain in evidence but do not define the dominant body colours\
+        \ or establish the identity of every trade form."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 304
+            lengthCm: 150
+            depthCm: 45
+        - by: checker-a
+          value:
+            volumeL: 300
+            lengthCm: 150
+            depthCm: 45
+        - by: checker-b
+          value:
+            volumeL: 300
+            lengthCm: 150
+            depthCm: 45
+        - by: checker-c
+          value:
+            volumeL: 304
+            lengthCm: 150
+            depthCm: 45
+      decision:
+        volumeL: 304
+        lengthCm: 150
+        depthCm: 45
+      rationale: "Generator and checker-c propose 304 L, while checker-a and checker-b propose 300 L; all propose\
+        \ a 150 by 45 cm footprint. The component medians are 302 L, 150 cm and 45 cm. Volume is rounded to\
+        \ the explicitly published approximately 304 L in Seriously Fish, matching the recommended unit of\
+        \ one male and at least three females. The association register instead gives 350 L and 110 cm length,\
+        \ while Fishipedia recommends 800 L and 140 cm for at least five fish. Those larger community recommendations\
+        \ are retained as context, but the more explicit species-specific minimum from Seriously Fish supports\
+        \ this harem floor; more males or a community need more room. AquariumPro mentions only 20 US gallons,\
+        \ about 76 L, which conflicts with the active adult group and the better-supported long footprint."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 6
+            max: 10
+        - by: checker-a
+          value:
+            min: 5
+            max: 8
+        - by: checker-b
+          value:
+            min: 4
+            max: 6
+        - by: checker-c
+          value:
+            min: 6
+            max: 8
+      decision:
+        min: 5.5
+        max: 8
+      rationale: "Generator proposes 6 to 10 years, checker-a 5 to 8, checker-b 4 to 6 and checker-c 6 to 8.\
+        \ The endpoint medians are 5.5 and 8 years. Fishipedia reports seven years on an unfinished account,\
+        \ within that interval; the other estimates rest on general Malawi-cichlid knowledge. The upper planning\
+        \ estimate exceeds that sole source figure by one year because seven years is not established as a\
+        \ failure limit or maximum longevity. No cohort study or verified species-specific longevity series\
+        \ was found."
