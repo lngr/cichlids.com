@@ -56,13 +56,35 @@ variable "enable_object_lock" {
 }
 
 variable "database_backup_retention_days" {
-  description = "Object Lock (Compliance) retention window in days for the database backup bucket when object lock is enabled (ADR-0013)."
+  description = "Database Compliance lock and expiry in days: 400 covers monthly backups for 12 months with margin and at least 14 days of PITR (ADR-0013)."
   type        = number
-  default     = 14
+  default     = 400
+  validation {
+    condition     = var.database_backup_retention_days >= 400 && floor(var.database_backup_retention_days) == var.database_backup_retention_days
+    error_message = "Database backup retention must be an integer of at least 400 days."
+  }
 }
 
 variable "media_master_backup_retention_days" {
   description = "Object Lock (Compliance) retention window in days for the media-master backup bucket when object lock is enabled (ADR-0013)."
   type        = number
   default     = 14
+}
+
+variable "database_writer_primary_project_id" {
+  description = "Numeric Hetzner project ID of cichlids, the primary project owning the cluster writer key."
+  type        = string
+  validation {
+    condition     = can(regex("^[0-9]+$", var.database_writer_primary_project_id))
+    error_message = "Use the numeric primary project ID."
+  }
+}
+
+variable "database_writer_access_key_id" {
+  description = "Public access key ID of the dedicated primary-project cluster writer; its secret never enters this tier."
+  type        = string
+  validation {
+    condition     = can(regex("^[A-Za-z0-9]+$", var.database_writer_access_key_id))
+    error_message = "Use the dedicated writer access key ID."
+  }
 }

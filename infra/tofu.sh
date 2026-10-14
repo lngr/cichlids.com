@@ -98,7 +98,11 @@ case "$TIER" in
   backup)
     # No cloud token by design (ADR-0017). The backup project's key serves both the provider
     # (backup buckets) and the state backend.
-    require CICHLIDS_S3_BACKUP_ACCESS_KEY CICHLIDS_S3_BACKUP_SECRET_KEY
+    require CICHLIDS_S3_BACKUP_ACCESS_KEY CICHLIDS_S3_BACKUP_SECRET_KEY \
+      CICHLIDS_PRIMARY_PROJECT_ID CICHLIDS_S3_DB_WRITER_ACCESS_KEY
+    export TF_VAR_database_writer_primary_project_id="$CICHLIDS_PRIMARY_PROJECT_ID"
+    export TF_VAR_database_writer_access_key_id="$CICHLIDS_S3_DB_WRITER_ACCESS_KEY"
+    unset CICHLIDS_S3_DB_WRITER_SECRET_KEY
     export TF_VAR_s3_access_key="$CICHLIDS_S3_BACKUP_ACCESS_KEY"
     export TF_VAR_s3_secret_key="$CICHLIDS_S3_BACKUP_SECRET_KEY"
     export AWS_ACCESS_KEY_ID="$CICHLIDS_S3_BACKUP_ACCESS_KEY"
