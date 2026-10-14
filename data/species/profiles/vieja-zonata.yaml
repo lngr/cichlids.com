@@ -2152,20 +2152,19 @@ features:
         total: 6
   khDkh:
     value:
-      min: 18
+      min: 2
       max: 18
     confidence: low
-    rationale: "Four of six tally votes support the single Niltepec value of 18 dKH: generator, checker-c, tiebreaker-1\
-      \ and tiebreaker-2. Checker-a proposed 2 to 8 and checker-b 3 to 12 from regional extrapolation or explicit\
-      \ inference. Checker-c had not authenticated the historical measurement, whereas the generator and both tiebreakers\
-      \ retained Werner's archived collecting report. Identical endpoints represent one reported observation, not\
-      \ a uniform habitat requirement. The neighboring coastal bicarbonate interval of 2.2 to 4.4 dKH and the statewide\
-      \ converted mean of about 8.5 are not species-site measurements. Neither GH nor conductivity establishes KH.\
-      \ Alkalinity can exceed GH when bicarbonate is balanced by other cations, so KH 18 beside GH 12 is not intrinsically\
-      \ impossible. Niltepec is a flowing river habitat without evidence of exceptional karst chemistry. Confidence\
-      \ remains low because analytical details, independent replication and historical stock identity are unresolved.\
-      \ The non-DOI Werner full text could not be independently fetched through the required DOI-only tool; its\
-      \ archived observations are retained from the supplied inputs. Natural KH carries no verification object."
+    rationale: "Adjudicated 2 to 18 dKH replaces the qualified-majority point range of 18 to 18 dKH because the\
+      \ Niltepec collecting observation is a single sample. Regional Pacific-draining freshwaters of coastal\
+      \ Oaxaca and Chiapas provide bicarbonate-dominated river comparisons within the native region. The\
+      \ 2023 survey reports interquartile bicarbonate concentrations of 0.77 to 1.57 meq/L across 31\
+      \ stations, equivalent to about 2.2 to 4.4 dKH using 1 dKH = 0.35696 meq/L. The lower endpoint rounds\
+      \ to 2 dKH; the Niltepec observation supplies the upper endpoint. The central quartiles provide\
+      \ freshwater context without using the survey maximum from saline coastal waters. These are regional\
+      \ comparisons without matched zonata collections. Confidence is low because the historical reading has\
+      \ limited analytical detail and the survey includes coastal mixing. The tolerance extends to 2 dKH for\
+      \ containment; GH and conductivity do not determine KH."
     sources:
     - kind: literature
       title: "Werner, U. (2009). Wieder aufgetaucht: Der Gürtelbuntbarsch Vieja zonata. DCG-Informationen Sonderheft\
@@ -2272,6 +2271,11 @@ features:
       url: "https://doi.org/10.28940/terra.v38i2.610"
       archived: doi.org/10.28940_terra.v38i2.610/2026-10-14T114145Z
       accessed: '2026-10-13'
+    - kind: literature
+      title: "Hydrochemistry and irrigation water quality in coastal Oaxaca and Chiapas, RH 21 and 23 (2023)"
+      url: "https://doi.org/10.28940/terra.v41i0.1600"
+      archived: doi.org/10.28940_terra.v41i0.1600/2026-10-14T132250Z
+      accessed: '2026-10-15'
     evidence:
     - source:
         kind: literature
@@ -2384,18 +2388,36 @@ features:
         min: 2
         max: 2
       note: Keeper reports two KH drops in aquarium water; not a habitat measurement or a long-term outcome.
+    - source:
+        kind: literature
+        title: "Hydrochemistry and irrigation water quality in coastal Oaxaca and Chiapas, RH 21 and 23 (2023)"
+        url: "https://doi.org/10.28940/terra.v41i0.1600"
+        archived: doi.org/10.28940_terra.v41i0.1600/2026-10-14T132250Z
+        accessed: '2026-10-15'
+      value:
+        min: 2.2
+        max: 4.4
+      note: "Table 1 bicarbonate quartiles 0.77 and 1.57 meq/L divided by 0.35696; regional river-water context without matched zonata captures. The full survey includes saline coastal stations."
+    verification:
+      method: adjudicated
+      votes:
+        agree: 4
+        total: 6
+      replaced:
+        min: 18
+        max: 18
+      replacedMethod: qualified-majority
     tolerance:
       value:
-        min: 4
+        min: 2
         max: 18
       confidence: low
-      rationale: "Generator, checker-c and both tiebreakers propose 4 to 18 dKH; checker-a proposes 2 to 14 and\
-        \ checker-b 3 to 15. The four-of-six qualified majority decides 4 to 18 with low confidence. Aquasistema\
-        \ recommends a point near 4 without a duration study, and the retained Niltepec collecting observation of\
-        \ 18 requires the tolerance to reach 18. A forum reading near 2 lacks a documented long-term healthy outcome,\
-        \ and interpretations from pH or GH supply no measured KH limits. This is a provisional husbandry envelope\
-        \ between a retail care point and a single habitat point, not verified years of survival throughout the\
-        \ interval. The natural 18 dKH observation is contained exactly."
+      rationale: "Adjudicated 2 to 18 dKH replaces the qualified-majority tolerance of 4 to 18 to contain the natural\
+        \ regional envelope. Aquasistema gives a care point near 4 dKH and the Niltepec collecting record\
+        \ reaches 18. Regional bicarbonate quartiles equivalent to about 2.2 to 4.4 dKH support the rounded\
+        \ lower boundary for containment. Confidence is low because a habitat comparison and a retail care\
+        \ point do not establish years of healthy maintenance throughout this interval. The matching natural\
+        \ and tolerance endpoints do not imply injury outside them."
       sources:
       - kind: website
         title: "Aquasistema: Vieja zonata care and sale page"
@@ -2490,6 +2512,11 @@ features:
         url: "https://www.monsterfishkeepers.com/forums/threads/best-way-to-adjust-kh-gh.415932/"
         accessed: '2026-10-13'
         archived: monsterfishkeepers.com/forums/threads/best-way-to-adjust-kh-gh.415932/2026-10-14T202045Z
+      - kind: literature
+        title: "Hydrochemistry and irrigation water quality in coastal Oaxaca and Chiapas, RH 21 and 23 (2023)"
+        url: "https://doi.org/10.28940/terra.v41i0.1600"
+        archived: doi.org/10.28940_terra.v41i0.1600/2026-10-14T132250Z
+        accessed: '2026-10-15'
       evidence:
       - source:
           kind: website
@@ -2608,11 +2635,25 @@ features:
           min: 2
           max: 2
         note: Single aquarium reading with no documented healthy long-term outcome.
+      - source:
+          kind: literature
+          title: "Hydrochemistry and irrigation water quality in coastal Oaxaca and Chiapas, RH 21 and 23 (2023)"
+          url: "https://doi.org/10.28940/terra.v41i0.1600"
+          archived: doi.org/10.28940_terra.v41i0.1600/2026-10-14T132250Z
+          accessed: '2026-10-15'
+        value:
+          min: 2.2
+          max: 4.4
+        note: "Table 1 bicarbonate quartiles 0.77 and 1.57 meq/L divided by 0.35696; regional river-water context without matched zonata captures. The full survey includes saline coastal stations."
       verification:
-        method: qualified-majority
+        method: adjudicated
         votes:
           agree: 4
           total: 6
+        replaced:
+          min: 4
+          max: 18
+        replacedMethod: qualified-majority
   maxSizeCm:
     value:
       male: 35
@@ -4931,14 +4972,16 @@ profile:
       archived: fishbase.se/summary/vieja-zonata.html/2026-10-14T200939Z
       accessed: '2026-10-13'
   habitat:
-    text: "River channels, creeks and quieter margins provide the natural setting, with soft bottoms and locally\
-      \ rocky or vegetated areas. The current range includes Pacific Oaxaca and adjacent Chiapas and the Atlantic\
-      \ Coatzacoalcos drainage. Natural water values in this profile are uncertain regional summaries. The inputs\
-      \ retain one Niltepec collecting reading of pH 7.5, GH 12 and KH 18. Lower Tehuantepec seasonal means of 26.7\
-      \ to 30.5 C, pH 8.0 to 8.3 and about 8.1 to 8.4 dGH pool freshwater with estuarine stations. Los Perros monitoring\
-      \ found 25 to 33.1 C and pH 7.1 to 9.3; the highest temperatures came from polluted lower reaches and the\
-      \ unusual alkaline episode was not typical. Those observations remain context and do not enlarge the decided\
-      \ natural range or aquarium tolerance."
+    text: "River channels, creeks and quieter margins provide the natural setting, with soft bottoms and\
+      \ locally rocky or vegetated areas. The native range includes Pacific Oaxaca and adjacent Chiapas and\
+      \ the Atlantic Coatzacoalcos drainage. Natural water values in this profile are uncertain regional\
+      \ summaries. One Niltepec collecting reading records of pH 7.5, GH 12 and KH 18. Natural KH of 2 to 18\
+      \ dKH combines that point with bicarbonate measurements from neighboring Pacific-draining rivers;\
+      \ regional chemistry stations lack matched zonata captures. Lower Tehuantepec seasonal means of 26.7\
+      \ to 30.5 C, pH 8.0 to 8.3 and about 8.1 to 8.4 dGH pool freshwater with estuarine stations. Los\
+      \ Perros monitoring records 25 to 33.1 C and pH 7.1 to 9.3; the highest temperatures occur in polluted\
+      \ lower reaches and the unusual alkaline episode is atypical. Those observations remain context and do\
+      \ not enlarge the decided natural range or aquarium tolerance."
     sources:
     - kind: literature
       title: "McMahan et al. (2019). Species or population? Systematic status of Vieja coatlicue (Teleostei: Cichlidae)"
@@ -5233,6 +5276,11 @@ profile:
       url: "https://doi.org/10.28940/terra.v38i2.610"
       archived: doi.org/10.28940_terra.v38i2.610/2026-10-14T114145Z
       accessed: '2026-10-13'
+    - kind: literature
+      title: "Hydrochemistry and irrigation water quality in coastal Oaxaca and Chiapas, RH 21 and 23 (2023)"
+      url: "https://doi.org/10.28940/terra.v41i0.1600"
+      archived: doi.org/10.28940_terra.v41i0.1600/2026-10-14T132250Z
+      accessed: '2026-10-15'
   sizeAndGrowth:
     text: "Allow for an aquarium male around 35 cm and a female around 30 cm. The sex-specific account supports\
       \ larger adults than several older summaries near 25 cm, which also mix total and standard length. Some historical\
@@ -6165,20 +6213,18 @@ provenance:
         min: 18
         max: 18
     decision:
-      min: 18
+      min: 2
       max: 18
-    rationale: "Tally method qualified-majority. Four of six tally votes support the single Niltepec value of 18\
-      \ dKH: generator, checker-c, tiebreaker-1 and tiebreaker-2. Checker-a proposed 2 to 8 and checker-b 3 to 12\
-      \ from regional extrapolation or explicit inference. Checker-c had not authenticated the historical measurement,\
-      \ whereas the generator and both tiebreakers retained Werner's archived collecting report. Identical endpoints\
-      \ represent one reported observation, not a uniform habitat requirement. The neighboring coastal bicarbonate\
-      \ interval of 2.2 to 4.4 dKH and the statewide converted mean of about 8.5 are not species-site measurements.\
-      \ Neither GH nor conductivity establishes KH. Alkalinity can exceed GH when bicarbonate is balanced by other\
-      \ cations, so KH 18 beside GH 12 is not intrinsically impossible. Niltepec is a flowing river habitat without\
-      \ evidence of exceptional karst chemistry. Confidence remains low because analytical details, independent\
-      \ replication and historical stock identity are unresolved. The non-DOI Werner full text could not be independently\
-      \ fetched through the required DOI-only tool; its archived observations are retained from the supplied inputs.\
-      \ Natural KH carries no verification object."
+    rationale: "Adjudicated 2 to 18 dKH replaces the qualified-majority point range of 18 to 18 dKH because the\
+      \ Niltepec collecting observation is a single sample. Regional Pacific-draining freshwaters of coastal\
+      \ Oaxaca and Chiapas provide bicarbonate-dominated river comparisons within the native region. The\
+      \ 2023 survey reports interquartile bicarbonate concentrations of 0.77 to 1.57 meq/L across 31\
+      \ stations, equivalent to about 2.2 to 4.4 dKH using 1 dKH = 0.35696 meq/L. The lower endpoint rounds\
+      \ to 2 dKH; the Niltepec observation supplies the upper endpoint. The central quartiles provide\
+      \ freshwater context without using the survey maximum from saline coastal waters. These are regional\
+      \ comparisons without matched zonata collections. Confidence is low because the historical reading has\
+      \ limited analytical detail and the survey includes coastal mixing. The tolerance extends to 2 dKH for\
+      \ containment; GH and conductivity do not determine KH."
   - field: features.khDkh.tolerance
     proposals:
     - by: generator
@@ -6206,15 +6252,14 @@ provenance:
         min: 4
         max: 18
     decision:
-      min: 4
+      min: 2
       max: 18
-    rationale: "Tally method qualified-majority. Generator, checker-c and both tiebreakers propose 4 to 18 dKH;\
-      \ checker-a proposes 2 to 14 and checker-b 3 to 15. The four-of-six qualified majority decides 4 to 18 with\
-      \ low confidence. Aquasistema recommends a point near 4 without a duration study, and the retained Niltepec\
-      \ collecting observation of 18 requires the tolerance to reach 18. A forum reading near 2 lacks a documented\
-      \ long-term healthy outcome, and interpretations from pH or GH supply no measured KH limits. This is a provisional\
-      \ husbandry envelope between a retail care point and a single habitat point, not verified years of survival\
-      \ throughout the interval. The natural 18 dKH observation is contained exactly."
+    rationale: "Adjudicated 2 to 18 dKH replaces the qualified-majority tolerance of 4 to 18 to contain the natural\
+      \ regional envelope. Aquasistema gives a care point near 4 dKH and the Niltepec collecting record\
+      \ reaches 18. Regional bicarbonate quartiles equivalent to about 2.2 to 4.4 dKH support the rounded\
+      \ lower boundary for containment. Confidence is low because a habitat comparison and a retail care\
+      \ point do not establish years of healthy maintenance throughout this interval. The matching natural\
+      \ and tolerance endpoints do not imply injury outside them."
   - field: features.maxSizeCm
     proposals:
     - by: generator

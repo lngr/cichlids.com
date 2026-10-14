@@ -274,19 +274,18 @@ features:
           region: "Algodon, Itaya, Nanay and Huallaga collecting populations in Peru"
   temperatureC:
     value:
-      min: 27
+      min: 24.5
       max: 27
     confidence: "low"
-    rationale: "The tally retains 27 to 27 C by qualified majority, with five of six votes agreeing. Generator,
-      checker-b, checker-c, tiebreaker-1 and tiebreaker-2 proposed that point interval; checker-a proposed 25
-      to 29 C from regional extrapolation and measurements at Corydoras sites. The latter paper reports the
-      wider 24.5 to 27 C range for another species, not confirmed cacatuoides habitat. PlayFish reproduces a
-      27 C field observation attributed to Linke and Staeck; a specialist discussion gives identical chemistry
-      with a conflicting locality label, so these are not independent field measurements. Aquariumwereld and
-      Fischlexikon also report about 27 C without seasonal sampling. FishBase gives 24 to 25 C from aquarium
-      atlas reference 1672. The decided entry records sparse observed temperature, not a constant natural
-      requirement or full seasonal range. The exceptional modified fish-farm observation of 34.1 C is
-      excluded. Confidence remains low."
+    rationale: "Adjudicated 24.5 to 27 C replaces the qualified-majority point range of 27 to 27 C because a single
+      collecting reading cannot represent natural variation. Tencatt et al. report 24.5 to 27 C at small
+      Itaya and Nanay tributaries, with 26.2 C at the type locality. These shallow forest streams include
+      muddy and mixed waters in the native upper Amazon region and provide regional thermal context for
+      sheltered stream margins. The measurements concern Corydoras iiap and do not establish cacatuoides
+      occurrence at each station. The 27 C collecting observation anchors the upper endpoint;
+      aquarium-atlas temperatures and the exceptional 34.1 C fish-farm observation do not set habitat
+      limits. Confidence is low because water types vary among stations and species-specific seasonal
+      coverage is sparse."
     sources:
       - kind: "literature"
         title: "Ricca, M. (2003). Apistogramma cacatuoides. PlayFish 3, 6-9, CIR hobby association article"
@@ -421,6 +420,11 @@ features:
         url: "https://www.fishbase.se/references/FBRefSummary.php?ID=1672"
         archived: "fishbase.se/references/fbrefsummary.php/q-927afa14/2026-10-14T095932Z"
         accessed: "2026-10-13"
+      - kind: literature
+        title: "Tencatt et al. (2024). Corydoras iiap habitat measurements in Itaya and Nanay streams"
+        url: "https://doi.org/10.1590/1982-0224-2024-0016"
+        archived: doi.org/10.1590_1982-0224-2024-0016/2026-10-14T110535Z
+        accessed: "2026-10-15"
     evidence:
       - source:
           kind: "literature"
@@ -594,6 +598,16 @@ features:
           min: 24
           max: 25
         note: "Environment summary linked to aquarium atlas reference 1672; not used as a collecting range."
+      - source:
+          kind: literature
+          title: "Tencatt et al. (2024). Corydoras iiap habitat measurements in Itaya and Nanay streams"
+          url: "https://doi.org/10.1590/1982-0224-2024-0016"
+          archived: doi.org/10.1590_1982-0224-2024-0016/2026-10-14T110535Z
+          accessed: "2026-10-15"
+        value:
+          min: 24.5
+          max: 27
+        note: "Regional first-order streams in the Itaya and Nanay basins; another fish species is sampled. The type locality averages 26.2 C; other localities average 24.5 to 27 C."
     tolerance:
       value:
         min: 22
@@ -1168,10 +1182,14 @@ features:
           agree: 6
           total: 6
     verification:
-      method: "qualified-majority"
+      method: "adjudicated"
       votes:
         agree: 5
         total: 6
+      replaced:
+        min: 27
+        max: 27
+      replacedMethod: qualified-majority
   ph:
     value:
       min: 5.8
@@ -7335,14 +7353,16 @@ profile:
         accessed: "2026-10-13"
   habitat:
     text: "Native populations occur in the upper Amazon basin of Peru, Colombia and western Brazil, from the
-      Ucayali and Pachitea systems toward Tabatinga. Fish use shallow, sheltered margins with fallen leaves,
-      branches and sometimes flooded land vegetation. Occupied waters differ in mineral content and acidity. A
-      Colombian collector reported pH 5.5, while secondary collecting literature extends to pH 8.0 and 17 dGH.
-      The tallied pH entry of 5.8 to 8.0 is a median compromise that does not encompass that 5.5 observation.
-      The 27 C natural temperature entry is a sparse field point, not a complete seasonal range. A repeated 27
-      C, pH 7.6, GH 12 and KH 14 record has inconsistent locality labels. An exceptional modified fish-farm
-      account near Paujil reported 34.1 C and pH 8.2; these values are excluded from natural and aquarium
-      ranges. Regional water measurements for other species do not establish this fish's chemistry."
+      Ucayali and Pachitea systems toward Tabatinga. Fish use shallow, sheltered margins with fallen
+      leaves, branches and sometimes flooded land vegetation. Occupied waters differ in mineral content
+      and acidity. A Colombian collector reported pH 5.5, while secondary collecting literature extends to
+      pH 8.0 and 17 dGH. The tallied pH entry of 5.8 to 8.0 is a median compromise that does not encompass
+      that 5.5 observation. The natural temperature interval of 24.5 to 27 C combines a collecting point
+      with regional measurements in small Itaya and Nanay streams. A repeated 27 C, pH 7.6, GH 12 and KH
+      14 record has inconsistent locality labels. An exceptional modified fish-farm account near Paujil
+      reported 34.1 C and pH 8.2; these values are excluded from natural and aquarium ranges. Regional
+      stream temperatures describe habitat variation without establishing this fish's occurrence at every
+      station."
     sources:
       - kind: "catalog-of-fishes"
         title: "Eschmeyer's Catalog of Fishes: Apistogramma species and synonym records"
@@ -7658,6 +7678,11 @@ profile:
         url: "https://doi.org/10.3897/vz.62.e31386"
         archived: "doi.org/10.3897_vz.62.e31386/2026-10-14T110726Z"
         accessed: "2026-10-13"
+      - kind: literature
+        title: "Tencatt et al. (2024). Corydoras iiap habitat measurements in Itaya and Nanay streams"
+        url: "https://doi.org/10.1590/1982-0224-2024-0016"
+        archived: doi.org/10.1590_1982-0224-2024-0016/2026-10-14T110535Z
+        accessed: "2026-10-15"
   sizeAndGrowth:
     text: "Typical well-kept aquarium adults reach about 8 cm for males and 5 cm for females when the tail is
       included. Some accounts describe larger males, but exceptional specimens do not determine this stocking
@@ -8787,18 +8812,17 @@ provenance:
             min: 27
             max: 27
       decision:
-        min: 27
+        min: 24.5
         max: 27
-      rationale: "The tally retains 27 to 27 C by qualified majority, with five of six votes agreeing. Generator,
-        checker-b, checker-c, tiebreaker-1 and tiebreaker-2 proposed that point interval; checker-a proposed
-        25 to 29 C from regional extrapolation and measurements at Corydoras sites. The latter paper reports
-        the wider 24.5 to 27 C range for another species, not confirmed cacatuoides habitat. PlayFish
-        reproduces a 27 C field observation attributed to Linke and Staeck; a specialist discussion gives
-        identical chemistry with a conflicting locality label, so these are not independent field
-        measurements. Aquariumwereld and Fischlexikon also report about 27 C without seasonal sampling.
-        FishBase gives 24 to 25 C from aquarium atlas reference 1672. The decided entry records sparse
-        observed temperature, not a constant natural requirement or full seasonal range. The exceptional
-        modified fish-farm observation of 34.1 C is excluded. Confidence remains low."
+      rationale: "Adjudicated 24.5 to 27 C replaces the qualified-majority point range of 27 to 27 C because a single
+        collecting reading cannot represent natural variation. Tencatt et al. report 24.5 to 27 C at small
+        Itaya and Nanay tributaries, with 26.2 C at the type locality. These shallow forest streams include
+        muddy and mixed waters in the native upper Amazon region and provide regional thermal context for
+        sheltered stream margins. The measurements concern Corydoras iiap and do not establish cacatuoides
+        occurrence at each station. The 27 C collecting observation anchors the upper endpoint;
+        aquarium-atlas temperatures and the exceptional 34.1 C fish-farm observation do not set habitat
+        limits. Confidence is low because water types vary among stations and species-specific seasonal
+        coverage is sparse."
     - field: "features.ph"
       proposals:
         - by: "generator"
