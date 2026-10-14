@@ -1793,6 +1793,7 @@ features:
   hybridGroups:
     value:
       - mayaheros-urophthalmus-blood-parrot
+      - mayaheros-urophthalmus-parachromis-motaguensis
       - vieja-melanurus-mayaheros-urophthalmus
     confidence: medium
     rationale: "Tally qualified-majority, 4 of 6 retain mayaheros-urophthalmus-blood-parrot and
@@ -1804,7 +1805,10 @@ features:
       fertilization was artificial. The Mendeley dataset supports the Vieja experiment but shares its
       investigators and is not independent replication. The curated registry, Catalog names and general
       retailer crossing warning do not independently confirm either named cross. No crosses with species in
-      blood-parrot ancestry are inferred."
+      blood-parrot ancestry are inferred. The curated data/species/hybrid-groups.yaml file defines
+      mayaheros-urophthalmus-parachromis-motaguensis as a presumed pairwise group based on labelled
+      captive-offspring reports in a hobby compilation without tested parentage or evidence of
+      access to same-species mates."
     sources:
       - &a109
         kind: literature
@@ -1844,6 +1848,11 @@ features:
         title: "cichlids.com curated hybrid groups, data/species/hybrid-groups.yaml"
         accessed: 2026-10-13
       - kind: database
+        title: "Binns Hybrid Encyclopedia, Mayan crossing gallery"
+        url: https://www.binnspedia.com/mayan
+        accessed: 2026-10-13
+        archived: binnspedia.com/mayan/2026-10-14T124523Z
+      - kind: database
         title: "cichlids.com curated hybrid-groups.yaml: vieja-melanurus-mayaheros-urophthalmus"
         accessed: 2026-10-13
     evidence:
@@ -1860,6 +1869,15 @@ features:
       - source: *a111
         value: null
         note: "General retailer crossing warning, not confirmation of a named pair."
+      - source:
+          kind: database
+          title: "Binns Hybrid Encyclopedia, Mayan crossing gallery"
+          url: https://www.binnspedia.com/mayan
+          accessed: 2026-10-13
+          archived: binnspedia.com/mayan/2026-10-14T124523Z
+        value:
+          - mayaheros-urophthalmus-parachromis-motaguensis
+        note: Labels captive offspring of the named pair; parentage and access to same-species mates are unverified.
     verification:
       method: qualified-majority
       votes:

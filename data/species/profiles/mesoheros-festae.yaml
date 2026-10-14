@@ -932,7 +932,7 @@ features:
         note: compatibility depends on tank size
 
   hybridGroups:
-    value: [parachromis-dovii-mesoheros-festae, vieja-melanurus-mesoheros-festae]
+    value: [parachromis-dovii-mesoheros-festae, mesoheros-festae-parachromis-motaguensis, vieja-melanurus-mesoheros-festae]
     confidence: medium
     verification: {method: unanimous, votes: {agree: 3, total: 3}}
     rationale: >-
@@ -940,6 +940,7 @@ features:
       the congeners are not in the trade, so no group applies.
       The curated hybrid-groups.yaml file defines parachromis-dovii-mesoheros-festae as a presumed pairwise crossing group based on hobby photographs labelled as captive offspring, without verified parentage or documented access to conspecific mates.
       The curated hybrid-groups.yaml file defines vieja-melanurus-mesoheros-festae as a presumed pairwise crossing group based on unverified hobby photographs of captive offspring labelled with the melanurus or synspilum name, with catalog taxonomy supporting the name rather than the cross.
+      The curated data/species/hybrid-groups.yaml file defines mesoheros-festae-parachromis-motaguensis as a presumed pairwise group based on labelled captive-offspring reports in a hobby compilation without verified parentage or evidence of access to same-species mates.
     sources:
       - *cof
       - *fishbase
@@ -954,6 +955,11 @@ features:
         url: https://www.binnspedia.com/vieja/synspilum
         archived: binnspedia.com/vieja/synspilum/2026-10-14T101616Z
         accessed: 2026-10-13
+      - kind: database
+        title: "Binns Hybrid Encyclopedia, Red Terror crossing gallery"
+        url: https://www.binnspedia.com/red-terror
+        accessed: 2026-10-13
+        archived: binnspedia.com/red-terror/2026-10-14T124451Z
       - kind: catalog-of-fishes
         title: Eschmeyer's Catalog of Fishes, species of the genus Vieja
         url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vieja
@@ -996,6 +1002,15 @@ features:
           - vieja-melanurus-mesoheros-festae
         note: Catalog taxonomy identifies Vieja melanurus and its synspilum name; it does not verify
           crossing.
+      - source:
+          kind: database
+          title: "Binns Hybrid Encyclopedia, Red Terror crossing gallery"
+          url: https://www.binnspedia.com/red-terror
+          accessed: 2026-10-13
+          archived: binnspedia.com/red-terror/2026-10-14T124451Z
+        value:
+          - mesoheros-festae-parachromis-motaguensis
+        note: Labels captive offspring of the named pair; parentage and access to same-species mates are unverified.
 
   coloration:
     value:
