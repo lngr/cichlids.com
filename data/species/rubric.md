@@ -10,7 +10,10 @@ display.
 
 ## Water values (`temperatureC`, `ph`, `ghDgh`, `khDkh`)
 
-Natural ranges describe the typical waters of the species relevant for keeping. Exceptional
+Natural ranges describe the typical waters of the species relevant for keeping. A single
+reading is a point, not a range: when a site has only one measurement, the natural range adds
+regional measurements of the same water type, because the planner treats the natural range as
+the ideal and a point ideal turns every deviation into a conflict. Exceptional
 habitats with chemistry no aquarist provides, such as a gypsum karst lagoon, are described in
 `profile.habitat` with their reported values and stay out of the natural range and the tolerance.
 The tolerance describes the range in which the species stays healthy long-term according to

@@ -134,7 +134,8 @@ search and one page per species are enough. Member content is not accessible and
   For species of Lake Malawi, Lake Tanganyika and Lake Victoria they are exactly the lake values in
   `data/species/waterbodies.yaml`; copy them with that file as source. For other species use
   measurements from the habitat (limnological papers, collecting reports, FishBase environment
-  data). Aquarium care sheets are no source for water values: many of them describe Lake Malawi as
+  data). A single reading is a point, not a range; widen it with regional measurements of the same
+  water type. Aquarium care sheets are no source for water values: many of them describe Lake Malawi as
   hard water, which confuses hardness with alkalinity. Hybrids and domestic forms take the habitat
   values of their parent species.
 - Each water feature also has a `tolerance`: the range in which the species stays healthy for years
