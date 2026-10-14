@@ -1,13 +1,16 @@
 ---
 id: TASK-2.25
 title: Run the Maestro flows of the native app in CI
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-09 21:28'
-updated_date: '2026-10-14 11:01'
+updated_date: '2026-10-14 11:13'
 labels: []
 milestone: m-0
 dependencies: []
+references:
+  - app/mobile/e2e/maestro/README.md
+  - .github/workflows/ci.yml
 parent_task_id: TASK-2
 priority: medium
 ordinal: 50000
@@ -53,3 +56,26 @@ The Maestro flows in app/mobile/e2e/maestro (browse-gallery, tank-detail, commun
 - Devcontainer: grant the KVM group so the emulator can run locally (operator rebuilds the
   devcontainer); F13 in `PROJECT-STATUS.md` names it.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- Flows: selectors independent of the UI language, synthetic fixtures, a final assertion on the
+  picture detail screen, the appId from the app configuration.
+- CI job `maestro` (push to main, dispatch, `contents: read`, no secrets): KVM, Android API 35
+  `google_apis;x86_64`, Maestro 1.39.0 from the toolchain file, Expo prebuild plus Gradle debug
+  APK with embedded JavaScript (no Metro), API through `10.0.2.2`, Keycloak through `adb reverse`
+  on `localhost` (shared OIDC issuer), runs with device locale en and de, JUnit reports and logs
+  as artifacts. AC #3 as a documented negative check.
+- Devcontainer: KVM group access (effective after a rebuild); local run steps in the Maestro README.
+
+### Verified by the agent (Codex)
+- Mobile 184 tests and typecheck; 5 flows parse; actionlint; Expo prebuild; Android bundle
+  export; fixtures answer 200.
+- Not verified: the Gradle APK build and the device runs (first GitHub run); no local emulator.
+
+### Operator checks
+- First `maestro` run on GitHub green in both locales (AC #1, #2); the documented negative check
+  (AC #3); after a devcontainer rebuild `test -w /dev/kvm` succeeds (F13).
+<!-- SECTION:NOTES:END -->
