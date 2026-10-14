@@ -15,6 +15,11 @@ habitats with chemistry no aquarist provides, such as a gypsum karst lagoon, are
 `profile.habitat` with their reported values and stay out of the natural range and the tolerance.
 The tolerance describes the range in which the species stays healthy long-term according to
 literature and husbandry experience and contains the natural range.
+With 5 or more votes and no qualified majority, a tolerance has method `median` and confidence
+`low`: the median of all minima and the median of all maxima, rounded to one decimal for ph and
+to integers for temperatureC, ghDgh and khDkh, widened to contain the decided natural range.
+The intersection lets the single narrowest proposal set the limit and produces water conflicts
+absent from aquarium practice; the median range reflects what the sources recommend.
 
 The adjudicator checks every decided water range and tolerance for sense in aquarium practice.
 A median between two camps of votes or a range stretched by an exceptional habitat can be

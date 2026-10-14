@@ -41,7 +41,6 @@ const EPSILON = 1e-9;
 
 const baseName = (name) => name.replace(/\.tolerance$/, "");
 const isRange = (name) => baseName(name) in RANGE_TOLERANCE;
-const isNaturalRange = (name) => name in RANGE_TOLERANCE;
 
 /** Position of a file in the vote order: generator, checker-a, checker-b, checker-c, tiebreaker-1, ... */
 function rank(name) {
@@ -136,20 +135,8 @@ function conservativeGroups(values) {
   return counts.size > 0 ? [mostCommon(values.flat())] : [];
 }
 
-// natural: the decided natural range for a tolerance entry; the tolerance is widened to contain it.
-function conservativeValue(name, votes, natural) {
+function conservativeValue(name, votes) {
   const values = votes.map((v) => v.value);
-  if (isRange(name)) {
-    const min = Math.max(...values.map((v) => v.min));
-    const max = Math.min(...values.map((v) => v.max));
-    const decimals = RANGE_DECIMALS[baseName(name)];
-    const range = min <= max ? { min: round(min, decimals), max: round(max, decimals) } : medianRange(name, values);
-    if (name.endsWith(".tolerance") && natural) {
-      range.min = Math.min(range.min, natural.min);
-      range.max = Math.max(range.max, natural.max);
-    }
-    return range;
-  }
   switch (name) {
     case "predation":
       return Math.max(...values);
@@ -179,7 +166,7 @@ function lowerConfidence(a, b) {
   return CONFIDENCE_ORDER[Math.min(CONFIDENCE_ORDER.indexOf(a), CONFIDENCE_ORDER.indexOf(b))];
 }
 
-function decideVoted(name, votes, natural) {
+function decideVoted(name, votes) {
   const proposals = votes.map((v) => ({ file: v.file, value: v.value }));
   if (votes.length === 0) {
     return { decision: null, verification: null, needsTiebreaker: true, reason: "no-votes", proposals, sources: [], evidence: [] };
@@ -229,9 +216,10 @@ function decideVoted(name, votes, natural) {
     };
   }
   if (agree >= QUALIFIED_AGREE && enoughSources) return decided("qualified-majority", strength);
-  // The intersection of many natural ranges is narrower than any measurement, so the votes without
-  // a majority are summarised by their median range.
-  if (isNaturalRange(name)) {
+  // Natural ranges and tolerances without a qualified majority use the median range.
+  // For tolerances, an intersection lets the narrowest proposal set the limit and produces water
+  // conflicts absent from aquarium practice; the median reflects what the sources recommend.
+  if (isRange(name)) {
     return {
       decision: medianRange(name, votes.map((v) => v.value)),
       verification: { method: "median", votes: { agree, total } },
@@ -242,7 +230,7 @@ function decideVoted(name, votes, natural) {
     };
   }
   return {
-    decision: conservativeValue(name, votes, natural),
+    decision: conservativeValue(name, votes),
     verification: { method: "conservative", votes: { agree, total } },
     confidence: "low",
     proposals,
@@ -314,7 +302,7 @@ export function tally(files, waterbodies = new Map()) {
   // The tolerance is voted for every water feature, also where a water body decides the natural value.
   for (const name of TOLERANCE_FEATURES) {
     const natural = features[name]?.decision ?? undefined;
-    const tolerance = decideVoted(`${name}.tolerance`, castVotes(name, (feature) => feature?.tolerance), natural);
+    const tolerance = decideVoted(`${name}.tolerance`, castVotes(name, (feature) => feature?.tolerance));
     // A tolerance contains the natural range, whatever method decided either of them.
     if (tolerance.decision && natural) {
       tolerance.decision = {

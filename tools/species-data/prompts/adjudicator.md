@@ -34,6 +34,11 @@ file:
    Natural water values decided by a water body get evidence entries from the lake studies behind
    `data/species/waterbodies.yaml`; cite these studies, never the table file itself. Every water
    feature carries the `tolerance` the tally decides, subject to the water plausibility check.
+   With 5 or more votes and no qualified majority, a tolerance has method `median` and confidence
+   `low`: the median of all minima and the median of all maxima, rounded to one decimal for ph
+   and to integers for temperatureC, ghDgh and khDkh, widened to contain the decided natural range.
+   The intersection lets the single narrowest proposal set the limit and produces water conflicts
+   absent from aquarium practice; the median range reflects what the sources recommend.
    For every group id in the `hybridGroups` the tally decides: when `data/species/hybrid-groups.yaml`
    does not list the group, add it there with `id`, a one-sentence `description`, the valid names of
    its `members`, the `sources` (literature or database) that report crosses, a `userNote` and its `basis`:

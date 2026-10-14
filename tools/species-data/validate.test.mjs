@@ -453,9 +453,9 @@ test("method median is rejected on predation, diet, speciesOnly and hybridGroups
   }
 });
 
-test("method median is rejected on a tolerance", () => {
+test("method conservative is rejected on a tolerance", () => {
   const profile = makeProfile();
-  Object.assign(profile.features.ph.tolerance, { confidence: "low", verification: MEDIAN });
+  Object.assign(profile.features.ph.tolerance, { confidence: "low", verification: { method: "conservative", votes: { agree: 2, total: 5 } } });
   const found = errors(validateProfile(profile, options));
   assert.ok(found.some((i) => i.pointer === "/features/ph/tolerance/verification/method"), JSON.stringify(found));
 });
@@ -656,19 +656,24 @@ test("every tolerance accepts one evidence entry and requires high trust for con
   }
 });
 
-test("a conservative tolerance needs confidence low and one evidence entry of any kind", () => {
-  const profile = makeProfile();
-  Object.assign(profile.features.ph.tolerance, {
-    confidence: "medium",
-    verification: { method: "conservative", votes: { agree: 2, total: 5 } },
-    evidence: [{ source: { kind: "forum", title: "Forum", url: "https://example.org/c" }, value: { min: 7, max: 10 } }],
-  });
-  const found = errors(validateProfile(profile, options));
-  assert.deepEqual(found.map((i) => i.pointer), ["/features/ph/tolerance/confidence"]);
-  profile.features.ph.tolerance.confidence = "low";
-  assert.deepEqual(validateProfile(profile, options), []);
-  profile.features.ph.tolerance.evidence = [];
-  assert.ok(errors(validateProfile(profile, options)).some((i) => i.pointer === "/features/ph/tolerance/evidence"));
+test("every median tolerance accepts confidence low and one evidence entry of any kind", () => {
+  for (const name of WATER) {
+    const profile = makeProfile();
+    const tolerance = profile.features[name].tolerance;
+    Object.assign(tolerance, {
+      confidence: "low",
+      verification: MEDIAN,
+      evidence: [{ source: { kind: "forum", title: "Forum" }, value: tolerance.value }],
+    });
+    assert.deepEqual(errors(validateProfile(profile, options)), [], name);
+    tolerance.confidence = "medium";
+    assert.deepEqual(errors(validateProfile(profile, options)).map((i) => i.pointer), [`/features/${name}/tolerance/confidence`], name);
+    tolerance.confidence = "low";
+    for (const evidence of [[], undefined]) {
+      tolerance.evidence = evidence;
+      assert.ok(errors(validateProfile(profile, options)).some((i) => i.pointer === `/features/${name}/tolerance/evidence`), name);
+    }
+  }
 });
 
 test("a tolerance on a non-water feature fails", () => {

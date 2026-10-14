@@ -38,9 +38,9 @@ const WATERBODY_VALUE_FEATURES = [...WATERBODY_VERIFIED_FEATURES, "khDkh"];
 const CONSERVATIVE_FEATURES = ["predation", "diet", "speciesOnly", "hybridGroups"];
 // Water features carry a tolerance next to the natural-habitat value.
 const TOLERANCE_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh"];
-// Natural water values may be decided by the median of the votes; no other fact may be.
+// Natural water values and their tolerances may be decided by the median of the votes.
 const MEDIAN_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh"];
-const TOLERANCE_METHODS = ["unanimous", "qualified-majority", "conservative", "adjudicated"];
+const TOLERANCE_METHODS = ["unanimous", "qualified-majority", "median", "adjudicated"];
 const RANGE_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh", "lifespanYears"];
 const MAX_PLAUSIBLE_SIZE_CM = 150;
 
@@ -127,13 +127,13 @@ function evidenceIssues(features, file) {
   for (const name of new Set([...HARD_FEATURES, ...TOLERANCE_FEATURES])) {
     const feature = features[name];
     const facts = [];
-    if (HARD_FEATURES.includes(name)) facts.push([`/features/${name}`, feature, false]);
-    if (TOLERANCE_FEATURES.includes(name)) facts.push([`/features/${name}/tolerance`, feature?.tolerance, true]);
-    for (const [pointer, fact, isTolerance] of facts) {
+    if (HARD_FEATURES.includes(name)) facts.push([`/features/${name}`, feature]);
+    if (TOLERANCE_FEATURES.includes(name)) facts.push([`/features/${name}/tolerance`, feature?.tolerance]);
+    for (const [pointer, fact] of facts) {
       if (!isObject(fact)) continue;
       const method = fact.verification?.method;
-      // Median, adjudicated and conservative tolerances retain their own evidence checks.
-      const checkedElsewhere = ["median", "adjudicated"].includes(method) || (isTolerance && method === "conservative");
+      // Median and adjudicated ranges have their own evidence checks.
+      const checkedElsewhere = ["median", "adjudicated"].includes(method);
       if (!checkedElsewhere && (!Array.isArray(fact.evidence) || fact.evidence.length === 0)) {
         const label = method === "conservative" ? "conservative value of " : "";
         issues.push(error(`${pointer}/evidence`, `${label}"${name}" needs at least one evidence entry`, file));
@@ -245,12 +245,12 @@ function toleranceIssues(features, file) {
     }
     // Adjudicated tolerances have their evidence and confidence checked in adjudicatedIssues.
     if (method === "adjudicated") continue;
-    if (method === "conservative") {
+    if (method === "median") {
       if (tolerance.confidence !== "low") {
-        issues.push(error(`${at}/confidence`, `conservative tolerance of "${name}" must have confidence low`, file));
+        issues.push(error(`${at}/confidence`, `median tolerance of "${name}" must have confidence low`, file));
       }
       if (!Array.isArray(tolerance.evidence) || tolerance.evidence.length === 0) {
-        issues.push(error(`${at}/evidence`, `conservative tolerance of "${name}" needs at least one evidence entry`, file));
+        issues.push(error(`${at}/evidence`, `median tolerance of "${name}" needs at least one evidence entry`, file));
       }
     }
   }

@@ -364,23 +364,41 @@ test("khDkh tolerance agrees within 2", () => {
   assert.deepEqual(f.decision, { min: 5, max: 12 });
 });
 
-test("a conservative tolerance is the intersection widened to contain the natural range", () => {
+test("a median tolerance uses all minima and maxima and contains the natural range", () => {
   const spread = [{ min: 1, max: 40 }, { min: 4, max: 36 }, { min: 7, max: 32 }, { min: 10, max: 28 }, { min: 13, max: 24 }];
   const files = NAMES.map((n, i) => rangeFile(n, { min: 15, max: 20 }, spread[i]));
   let f = tally(files).features["ghDgh.tolerance"];
-  assert.equal(f.verification.method, "conservative");
-  assert.deepEqual(f.decision, { min: 13, max: 24 });
-  const narrow = NAMES.map((n, i) => rangeFile(n, { min: 10, max: 30 }, spread[i]));
+  assert.equal(f.verification.method, "median");
+  assert.deepEqual(f.decision, { min: 7, max: 32 });
+  assert.equal(f.confidence, "low");
+  const narrow = NAMES.map((n, i) => rangeFile(n, { min: 5, max: 35 }, spread[i]));
   f = tally(narrow).features["ghDgh.tolerance"];
-  assert.deepEqual(f.decision, { min: 10, max: 30 });
+  assert.deepEqual(f.decision, { min: 5, max: 35 });
 });
 
-test("an empty intersection falls back to the median range, widened the same way", () => {
+test("a median tolerance with disjoint votes is widened to contain the natural range", () => {
   const spread = [{ min: 3, max: 4 }, { min: 10, max: 12 }, { min: 20, max: 24 }, { min: 30, max: 32 }, { min: 40, max: 44 }];
   const files = NAMES.map((n, i) => rangeFile(n, { min: 18, max: 26 }, spread[i]));
   const f = tally(files).features["ghDgh.tolerance"];
-  assert.equal(f.verification.method, "conservative");
+  assert.equal(f.verification.method, "median");
   assert.deepEqual(f.decision, { min: 18, max: 26 });
+});
+
+test("median tolerances round both bounds with the water feature precision", () => {
+  for (const name of ["temperatureC", "ph", "ghDgh", "khDkh"]) {
+    const ph = name === "ph";
+    const ranges = ph
+      ? [5, 6, 7, 7.1, 8, 9].map((min) => ({ min, max: min + 1 }))
+      : [1, 4, 7, 8, 11, 14].map((min) => ({ min, max: min + 10 }));
+    const natural = ph ? { min: 7.2, max: 7.8 } : { min: 10, max: 12 };
+    const files = [...NAMES, "tiebreaker-3.yaml"].map((n, i) => file(n, {
+      [name]: { value: natural, sources: TWO, tolerance: { value: ranges[i], sources: TWO } },
+    }));
+    const f = tally(files).features[`${name}.tolerance`];
+    assert.deepEqual(f.verification, { method: "median", votes: { agree: 2, total: 6 } }, name);
+    assert.equal(f.confidence, "low", name);
+    assert.deepEqual(f.decision, ph ? { min: 7.1, max: 8.1 } : { min: 8, max: 18 }, name);
+  }
 });
 
 test("a decided tolerance of any method is widened to contain the natural range", () => {
