@@ -187,7 +187,7 @@
       }
     },
     "verification": {
-      "description": "How the value of a hard feature was verified automatically: unanimous or qualified agreement of independent agent votes, the most cautious value or, for natural water ranges, the median range when the votes do not settle, or the measured values of a water body.",
+      "description": "How the value of a hard feature or a water tolerance is verified: unanimous or qualified agreement of independent agent votes, the most cautious value or, for natural water ranges, the median range when the votes do not settle, or the measured values of a water body. For natural water ranges and water tolerances, adjudicated replaces a tally decision that is implausible for aquarium keeping; replaced and replacedMethod record that decision, votes retain its vote count, and the rationale names the replaced decision and the reason.",
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -200,6 +200,7 @@
             "qualified-majority",
             "conservative",
             "median",
+            "adjudicated",
             "waterbody"
           ]
         },
@@ -221,11 +222,43 @@
             }
           }
         },
+        "replaced": {
+          "description": "The tallied range that the adjudicator replaces.",
+          "$ref": "#/$defs/range"
+        },
+        "replacedMethod": {
+          "description": "The verification method of the replaced tally decision.",
+          "enum": [
+            "unanimous",
+            "qualified-majority",
+            "conservative",
+            "median"
+          ]
+        },
         "waterbody": {
           "type": "string"
         }
       },
       "allOf": [
+        {
+          "if": {
+            "properties": {
+              "method": {
+                "const": "adjudicated"
+              }
+            },
+            "required": [
+              "method"
+            ]
+          },
+          "then": {
+            "required": [
+              "votes",
+              "replaced",
+              "replacedMethod"
+            ]
+          }
+        },
         {
           "if": {
             "properties": {

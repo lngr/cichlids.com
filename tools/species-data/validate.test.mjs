@@ -457,6 +457,139 @@ test("method median is rejected on a tolerance", () => {
 
 const WATER = ["temperatureC", "ph", "ghDgh", "khDkh"];
 
+const ADJUDICATED = {
+  method: "adjudicated",
+  votes: { agree: 2, total: 5 },
+  replaced: { min: 8, max: 10 },
+  replacedMethod: "median",
+};
+
+test("an adjudicated water value or tolerance passes at confidence low or medium with one evidence entry of any kind", () => {
+  for (const name of WATER) {
+    for (const isTolerance of [false, true]) {
+      for (const confidence of ["low", "medium"]) {
+        const profile = makeProfile();
+        const feature = isTolerance ? profile.features[name].tolerance : profile.features[name];
+        Object.assign(feature, {
+          confidence,
+          sources: [SOURCE],
+          verification: ADJUDICATED,
+          evidence: [{ source: { kind: "forum", title: "A forum post" }, value: feature.value }],
+        });
+        assert.deepEqual(errors(validateProfile(profile, options)), [], `${name}, tolerance ${isTolerance}, ${confidence}`);
+      }
+    }
+  }
+});
+
+test("an adjudicated water value or tolerance at confidence high fails", () => {
+  for (const name of WATER) {
+    for (const isTolerance of [false, true]) {
+      const profile = makeProfile();
+      const feature = isTolerance ? profile.features[name].tolerance : profile.features[name];
+      feature.verification = ADJUDICATED;
+      const at = `/features/${name}${isTolerance ? "/tolerance" : ""}`;
+      const found = errors(validateProfile(profile, options));
+      assert.ok(found.some((i) => i.pointer === `${at}/confidence` && /adjudicated/.test(i.message)), JSON.stringify(found));
+    }
+  }
+});
+
+test("an adjudicated water value or tolerance without evidence fails", () => {
+  for (const name of WATER) {
+    for (const isTolerance of [false, true]) {
+      for (const evidence of [undefined, []]) {
+        const profile = makeProfile();
+        const feature = isTolerance ? profile.features[name].tolerance : profile.features[name];
+        Object.assign(feature, { confidence: "low", verification: ADJUDICATED, evidence });
+        const at = `/features/${name}${isTolerance ? "/tolerance" : ""}`;
+        const found = errors(validateProfile(profile, options));
+        assert.ok(found.some((i) => i.pointer === `${at}/evidence` && /adjudicated.*at least one/.test(i.message)), JSON.stringify(found));
+      }
+    }
+  }
+});
+
+test("method adjudicated is rejected on every non-water feature and its tolerance", () => {
+  const names = Object.keys(makeProfile().features).filter((name) => !WATER.includes(name));
+  for (const name of names) {
+    for (const isTolerance of [false, true]) {
+      const profile = makeProfile();
+      if (isTolerance) profile.features[name].tolerance = hard({ min: 0, max: 1 });
+      const feature = isTolerance ? profile.features[name].tolerance : profile.features[name];
+      Object.assign(feature, { confidence: "low", verification: ADJUDICATED });
+      const at = `/features/${name}${isTolerance ? "/tolerance" : ""}`;
+      const found = errors(validateProfile(profile, options));
+      assert.ok(found.some((i) => i.pointer === `${at}/verification/method` && /adjudicated/.test(i.message)), `${name}: ${JSON.stringify(found)}`);
+    }
+  }
+});
+
+test("an adjudicated verification requires votes, replaced and replacedMethod", () => {
+  for (const isTolerance of [false, true]) {
+    for (const field of ["votes", "replaced", "replacedMethod"]) {
+      const profile = makeProfile();
+      const verification = { ...ADJUDICATED };
+      delete verification[field];
+      const feature = isTolerance ? profile.features.ph.tolerance : profile.features.ph;
+      Object.assign(feature, { confidence: "low", verification });
+      const at = `/features/ph${isTolerance ? "/tolerance" : ""}/verification`;
+      const found = errors(validateProfile(profile));
+      assert.ok(found.some((i) => i.pointer === at && i.message.includes(field)), JSON.stringify(found));
+    }
+  }
+});
+
+test("an adjudicated verification accepts each tally replacement method", () => {
+  for (const replacedMethod of ["unanimous", "qualified-majority", "conservative", "median"]) {
+    const profile = makeProfile();
+    Object.assign(profile.features.ph, { confidence: "low", verification: { ...ADJUDICATED, replacedMethod } });
+    assert.deepEqual(errors(validateProfile(profile, options)), [], replacedMethod);
+  }
+});
+
+test("an adjudicated verification rejects replacement methods outside the tally methods", () => {
+  for (const replacedMethod of ["waterbody", "adjudicated", "approved"]) {
+    const profile = makeProfile();
+    profile.features.ph.verification = { ...ADJUDICATED, replacedMethod };
+    const found = errors(validateProfile(profile));
+    assert.ok(found.some((i) => i.pointer === "/features/ph/verification/replacedMethod"), JSON.stringify(found));
+  }
+});
+
+test("the replaced tally decision is a range with numeric min and max", () => {
+  for (const replaced of [null, 8, { min: 8 }, { max: 10 }, { min: "8", max: 10 }, { min: 8, max: "10" }]) {
+    const profile = makeProfile();
+    profile.features.ph.verification = { ...ADJUDICATED, replaced };
+    const found = errors(validateProfile(profile));
+    assert.ok(found.some((i) => i.pointer.startsWith("/features/ph/verification/replaced")), JSON.stringify(found));
+  }
+});
+
+test("an adjudicated tolerance still contains the natural range", () => {
+  const profile = makeProfile();
+  Object.assign(profile.features.ph.tolerance, { confidence: "low", verification: ADJUDICATED, value: { min: 8.2, max: 8.8 } });
+  const found = errors(validateProfile(profile, options));
+  assert.ok(found.some((i) => i.pointer === "/features/ph/tolerance/value" && /must contain/.test(i.message)), JSON.stringify(found));
+});
+
+test("a named lake keeps waterbody verification for temperatureC, ph and ghDgh when adjudication is attempted", () => {
+  for (const name of ["temperatureC", "ph", "ghDgh"]) {
+    const profile = lakeProfile();
+    Object.assign(profile.features[name], { confidence: "low", verification: ADJUDICATED });
+    const found = errors(validateProfile(profile, options));
+    assert.ok(found.some((i) => i.pointer === `/features/${name}/verification` && /requires verification method waterbody/.test(i.message)), JSON.stringify(found));
+  }
+});
+
+test("a named lake accepts adjudicated tolerances and keeps its natural table ranges", () => {
+  const profile = lakeProfile();
+  for (const name of WATER) {
+    Object.assign(profile.features[name].tolerance, { confidence: "medium", verification: ADJUDICATED, evidence: [{ source: SOURCE, value: profile.features[name].tolerance.value }] });
+  }
+  assert.deepEqual(errors(validateProfile(profile, options)), []);
+});
+
 test("a water feature without tolerance fails", () => {
   for (const name of WATER) {
     const profile = makeProfile();

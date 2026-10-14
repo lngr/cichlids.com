@@ -8,6 +8,23 @@ tank and recommended social structure.
 Units are metric: centimetres, litres, degrees Celsius, dGH and dKH. The app converts them for
 display.
 
+## Water values (`temperatureC`, `ph`, `ghDgh`, `khDkh`)
+
+Natural ranges describe the typical waters of the species relevant for keeping. Exceptional
+habitats with chemistry no aquarist provides, such as a gypsum karst lagoon, are described in
+`profile.habitat` with their reported values and stay out of the natural range and the tolerance.
+The tolerance describes the range in which the species stays healthy long-term according to
+literature and husbandry experience and contains the natural range.
+
+The adjudicator checks every decided water range and tolerance for sense in aquarium practice.
+A median between two camps of votes or a range stretched by an exceptional habitat can be
+implausible. The adjudicator replaces an implausible tally decision with method `adjudicated`,
+records the tallied range in `verification.replaced`, its method in `verification.replacedMethod`
+and its vote count in `verification.votes`, and names the replaced decision and the reason in the
+rationale. An adjudicated range has confidence `low` or `medium` and at least one evidence entry
+of any kind. For a species whose origin names a water body in the table, the natural values keep
+the table ranges and temperatureC, ph and ghDgh keep verification method `waterbody`.
+
 ## Predation (`predation`, 0 to 3)
 
 | Level | Meaning | Example |

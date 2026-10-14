@@ -38,7 +38,7 @@ const MIN_EXTERNAL_SOURCES = 2;
 const TOLERANCE_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh"];
 // Natural water values may be decided by the median of the votes; no other fact may be.
 const MEDIAN_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh"];
-const TOLERANCE_METHODS = ["unanimous", "qualified-majority", "conservative"];
+const TOLERANCE_METHODS = ["unanimous", "qualified-majority", "conservative", "adjudicated"];
 const RANGE_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh", "lifespanYears"];
 const MAX_PLAUSIBLE_SIZE_CM = 150;
 
@@ -112,14 +112,36 @@ function medianIssues(features, file) {
   return issues;
 }
 
+// An adjudicated water range replaces an implausible tally decision; its evidence supports the
+// replacement, with confidence low or medium.
+function adjudicatedIssues(features, file) {
+  const issues = [];
+  for (const [name, feature] of Object.entries(features)) {
+    for (const [pointer, fact] of [[`/features/${name}`, feature], [`/features/${name}/tolerance`, feature?.tolerance]]) {
+      if (!isObject(fact) || fact.verification?.method !== "adjudicated") continue;
+      if (!TOLERANCE_FEATURES.includes(name)) {
+        issues.push(error(`${pointer}/verification/method`, `method adjudicated applies only to ${TOLERANCE_FEATURES.join(", ")} and their tolerances`, file));
+        continue;
+      }
+      if (!["low", "medium"].includes(fact.confidence)) {
+        issues.push(error(`${pointer}/confidence`, `adjudicated range of "${name}" must have confidence low or medium`, file));
+      }
+      if (!Array.isArray(fact.evidence) || fact.evidence.length === 0) {
+        issues.push(error(`${pointer}/evidence`, `adjudicated range of "${name}" needs at least one evidence entry`, file));
+      }
+    }
+  }
+  return issues;
+}
+
 function evidenceIssues(features, file) {
   const issues = [];
   for (const name of [...SOURCE_RULE_FEATURES, ...WATERBODY_VERIFIED_FEATURES]) {
     const feature = features[name];
     if (!isObject(feature)) continue;
     if (WATERBODY_VERIFIED_FEATURES.includes(name) && feature.verification?.method === "waterbody") continue;
-    // The evidence of a median value is checked in medianIssues.
-    if (feature.verification?.method === "median") continue;
+    // Median and adjudicated values have their own evidence checks.
+    if (["median", "adjudicated"].includes(feature.verification?.method)) continue;
     // A conservative value exists because the sources are too few or disagree; its evidence shows
     // what the sources state, so it needs at least one entry of any kind.
     if (feature.verification?.method === "conservative") {
@@ -233,6 +255,8 @@ function toleranceIssues(features, file) {
     } else if (!TOLERANCE_METHODS.includes(method)) {
       issues.push(error(`${at}/verification/method`, `tolerance verification method must be one of ${TOLERANCE_METHODS.join(", ")}`, file));
     }
+    // Adjudicated tolerances have their evidence and confidence checked in adjudicatedIssues.
+    if (method === "adjudicated") continue;
     if (method === "conservative") {
       if (tolerance.confidence !== "low") {
         issues.push(error(`${at}/confidence`, `conservative tolerance of "${name}" must have confidence low`, file));
@@ -308,6 +332,7 @@ function semanticIssues(profile, { fileName, hybridGroupIds, hybridGroups, water
 
   issues.push(...evidenceIssues(features, file));
   issues.push(...medianIssues(features, file));
+  issues.push(...adjudicatedIssues(features, file));
   issues.push(...toleranceIssues(features, file));
   if (waterbodies) issues.push(...waterbodyIssues(features, waterbodies, file));
 
