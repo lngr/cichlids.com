@@ -12,6 +12,7 @@ Tooling around the species catalog in `data/species/`.
 - `crc.mjs`: reads the public part of the Cichlid Room Companion for the agents and keeps each page read in the source archive. The site blocks curl and headless browsers through a Cloudflare bot check, so the tool drives a headed Chromium on a virtual display.
 - `export-legacy-catalog.mjs`: exports the legacy species catalog with photo counts to `data/species/legacy-catalog.json`. It reads the restored legacy MySQL database read-only through its running container and holds catalog data only.
 - `prompts/`: prompts of the agent pipeline (generator, checker, tie-breaker, adjudicator and the shared rules) that produce species profiles.
+- `check-seriously-fish.mjs`: checks accepted names and catalog synonyms for archived Seriously Fish care pages and writes resumable decisions to `data/species/seriously-fish.yaml`.
 - `build-directory.mjs`: builds the accepted-species directory and legacy mapping from archived catalog and FishBase inputs. `build-directory.test.mjs` holds its tests.
 - `validate.mjs`: validator for profile files and the species directory. `validate.test.mjs` holds its tests.
 - `source-trust.mjs`: loads and validates `data/species/source-trust.yaml` and resolves source trust by URL or kind. `source-trust.test.mjs` holds its tests.
@@ -64,7 +65,8 @@ npm --prefix tools/species-data run build-directory
 node tools/species-data/validate.mjs data/species/profiles/*.yaml
 ```
 
-The two build commands are equivalent. Rebuilding sorts species by accepted name and mappings
+The two build commands are equivalent. `--directory-only` writes the directory while preserving
+`legacy-mapping.yaml` and `trade-forms.yaml`. Rebuilding sorts species by accepted name and mappings
 by numeric `legacyId`, uses stable YAML formatting and retains the source access dates from
 snapshot metadata. It prints a JSON report with species and FishBase match totals, inspected
 column names, Aquarium values, cichlid Aquarium counts, mapping counts and unresolved legacy
@@ -88,14 +90,56 @@ The document holds `sources` once at file level, with the profile-source fields 
   from the citation; alternate page numbers in brackets and publication qualifiers are retained.
 - `synonyms`: original combinations of final synonym records pointing to the accepted species,
   plus its own original combination when different. Names are deduplicated and sorted.
-- `links`: accepted-name `catalogOfFishes` species query and `fishbase` summary URL or `null`.
+- `links`: accepted-name `catalogOfFishes` species query, `fishbase` summary URL or `null`, and
+  `seriouslyFish` species-page URL or `null`.
 - `fishbase`: `{specCode, aquarium}` or `null`. Aquarium keeps the raw table value, including
   `null`. Matching tries accepted genus and epithet, then catalog synonym combinations. Multiple
   distinct FishBase candidates leave the match unresolved.
+- `trade`: `true` when FishBase Aquarium equals `commercial` or `highly commercial`, or a
+  Seriously Fish species page exists. Seriously Fish publishes care pages for species kept by
+  hobbyists; these pages supply evidence that FishBase Aquarium alone omits. A completed negative
+  Seriously Fish check gives `false` without positive FishBase evidence. An undecided Seriously
+  Fish check gives `null` without positive FishBase evidence.
 - `profile`: id of the profile with the same `taxonomy.validName`, or `null`.
 
 Absent catalog values remain `null`. Directory stubs contain taxonomy and references;
 compatibility and husbandry facts belong to the full profiles.
+
+### Seriously Fish checks
+
+```sh
+node tools/species-data/check-seriously-fish.mjs
+node tools/species-data/build-directory.mjs --directory-only
+node --test tools/species-data/*.test.mjs
+node tools/species-data/validate.mjs data/species/profiles/*.yaml
+```
+
+`data/species/seriously-fish.yaml` holds a `species` mapping keyed by directory id. Each decided
+entry has `url`, `archived` and `checked` (UTC date). A found page supplies its candidate URL and
+archive reference; a negative decision has `url: null` and `archived: null`. Missing ids represent
+undecided checks. The directory includes the file as a derived database source at file level,
+with the Seriously Fish site URL and the latest check date as `accessed`. Individual archive
+references belong to the check file.
+
+Candidates use `https://www.seriouslyfish.com/species/<lowercase-hyphenated-name>`, first the
+accepted name, then each unique directory synonym. The canonical route omits a trailing slash.
+A species title and a canonical species URL identify a species page. Title comparisons ignore
+quotation marks around genus and epithet. A title using another genus
+also qualifies when the canonical URL matches the candidate, or the canonical URL matches the
+title and its epithet matches a candidate name. A matching title with Maintenance and Water
+conditions sections also qualifies without a canonical URL. Species pages with sparse husbandry
+content count because the selection rule uses page existence. A page naming another accepted
+directory species is excluded from the requested species, because synonym binomials can be
+homonymous. HTTP 404 and 410 establish absence. Network failures, server errors, access blocks
+and unrecognized successful documents leave the candidate undecided. A species receives a
+negative decision only when every candidate establishes absence; any found candidate supplies
+positive evidence even when another candidate fails.
+
+The check fetches one candidate at a time through `source-archive.mjs`. Its honest research user
+agent and shared host throttle enforce a minimum two-second interval between public requests,
+including redirects. Successful snapshots are reused. Decisions are written atomically after
+each species, so rerunning the command skips decided ids and retries undecided checks. The
+command exits with code 1 when undecided species remain.
 
 ### Legacy mapping
 
@@ -137,6 +181,7 @@ independently of the profile paths supplied for schema validation. Errors fail t
 
 - Directory ids are unique and well formed. Trade-form ids are unique, well formed and distinct
   from directory ids.
+- Every id in `seriously-fish.yaml`, when the file exists, belongs to the directory.
 - Every legacy record appears exactly once. Foreign legacy ids, unknown match kinds and
   missing non-open targets are errors. An open mapping has a null target; the total is a warning.
 - A described profile whose valid name is absent from the directory produces a warning naming

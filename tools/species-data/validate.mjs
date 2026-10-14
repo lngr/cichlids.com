@@ -525,7 +525,7 @@ export function validateFiles(
 }
 
 // Directory checks apply to the full catalog independently of the selected profile paths.
-export function directoryIssues({directory, forms, mappings, legacy, profiles}) {
+export function directoryIssues({directory, forms, mappings, legacy, profiles, seriouslyFish}) {
   const issues=[];
   const files={directory:'data/species/directory.yaml',forms:'data/species/trade-forms.yaml',mappings:'data/species/legacy-mapping.yaml',legacy:'data/species/legacy-catalog.json'};
   const lists={directory:directory?.species,forms:forms?.forms,mappings:mappings?.mappings,legacy};
@@ -544,6 +544,11 @@ export function directoryIssues({directory, forms, mappings, legacy, profiles}) 
     return index;
   }
   const species=idIndex(lists.directory,files.directory);
+  if(seriouslyFish!==undefined) {
+    const decisions=seriouslyFish?.species;
+    if(!decisions || typeof decisions!=='object' || Array.isArray(decisions)) issues.push(error('/species','Seriously Fish checks need a species mapping','data/species/seriously-fish.yaml'));
+    else for(const id of Object.keys(decisions)) if(!species.has(id)) issues.push(error(`/species/${id}`,`unknown species id ${id}`,'data/species/seriously-fish.yaml'));
+  }
   const trade=idIndex(lists.forms,files.forms);
   for (const id of trade.keys()) if (species.has(id)) issues.push(error('/forms',`id ${id} occurs in directory and trade forms`,files.forms));
   const names=new Map(lists.directory.map(entry=>[entry?.name,entry]));
@@ -596,6 +601,7 @@ export function validateDirectoryFiles(speciesDir=SPECIES_DIR) {
     catch (e) { issues.push(error('',`cannot read or parse directory data: ${e.message}`,path)); return null; }
   }
   const directory=read('directory.yaml');
+  const seriouslyFish=existsSync(join(speciesDir,'seriously-fish.yaml')) ? read('seriously-fish.yaml') : undefined;
   const forms=read('trade-forms.yaml');
   const mappings=read('legacy-mapping.yaml');
   const legacy=read('legacy-catalog.json',true);
@@ -607,7 +613,7 @@ export function validateDirectoryFiles(speciesDir=SPECIES_DIR) {
       if (data) profiles.push({data,file:join(profileDir,name)});
     }
   }
-  if (!issues.length) issues.push(...directoryIssues({directory,forms,mappings,legacy,profiles}));
+  if (!issues.length) issues.push(...directoryIssues({directory,forms,mappings,legacy,profiles,seriouslyFish}));
   return issues;
 }
 

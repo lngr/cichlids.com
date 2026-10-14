@@ -76,7 +76,7 @@ function uniqueMatch(candidates=[]) {
   return unique.length === 1 ? unique[0] : null;
 }
 
-export function buildDirectory(records, fishbaseRows, profiles) {
+export function buildDirectory(records, fishbaseRows, profiles, seriouslyFish={}) {
   const accepted=records.filter(x=>x.status==='valid');
   const byName=new Map();
   for (const record of accepted) {
@@ -95,10 +95,13 @@ export function buildDirectory(records, fishbaseRows, profiles) {
     const exactRows=fishbase.get(entry.name);
     const fb=exactRows?.length ? uniqueMatch(exactRows) : uniqueMatch(synonyms.flatMap(x=>fishbase.get(x) ?? []));
     const profile=uniqueMatch(profileNames.get(entry.name));
+    const sf=seriouslyFish[speciesId(entry.name)];
+    const commercial=['commercial','highly commercial'].includes(fb?.Aquarium);
     return {
       id:speciesId(entry.name), ...entry, synonyms,
-      links:{catalogOfFishes:`${CATALOG_BASE}fishcatget.asp?tbl=species&genus=${encodeURIComponent(entry.genus)}&species=${encodeURIComponent(entry.epithet)}`,fishbase:fb ? `https://www.fishbase.se/summary/${fb.SpecCode}` : null},
+      links:{seriouslyFish:sf?.url ?? null,catalogOfFishes:`${CATALOG_BASE}fishcatget.asp?tbl=species&genus=${encodeURIComponent(entry.genus)}&species=${encodeURIComponent(entry.epithet)}`,fishbase:fb ? `https://www.fishbase.se/summary/${fb.SpecCode}` : null},
       fishbase:fb ? {specCode:fb.SpecCode,aquarium:fb.Aquarium ?? null} : null,
+      trade:commercial || sf?.url ? true : sf ? false : null,
       profile:profile?.id ?? null,
     };
   }).sort((a,b)=>compare(a.name,b.name));
@@ -159,17 +162,25 @@ export async function readFishbase(path) {
   return {columns,rows};
 }
 
-export async function build({speciesDir=SPECIES_DIR,root,catalogRef=CATALOG_REF,fishbaseRef=FISHBASE_REF,readFishbase:readTable=readFishbase}={}) {
+export async function build({speciesDir=SPECIES_DIR,root,catalogRef=CATALOG_REF,fishbaseRef=FISHBASE_REF,readFishbase:readTable=readFishbase,directoryOnly=false}={}) {
   const catalog=resolveSnapshot(catalogRef,{root});
   const fishbase=resolveSnapshot(fishbaseRef,{root});
   const table=await readTable(fishbase.originalPath);
   const profiles=readdirSync(join(speciesDir,'profiles')).filter(x=>x.endsWith('.yaml')).sort().map(x=>parse(readFileSync(join(speciesDir,'profiles',x),'utf8')));
   const records=parseCatalog(readFileSync(catalog.textPath,'utf8'));
-  const species=buildDirectory(records,table.rows,profiles);
+  const seriouslyFishPath=join(speciesDir,'seriously-fish.yaml');
+  const seriouslyFish=existsSync(seriouslyFishPath) ? parse(readFileSync(seriouslyFishPath,'utf8')).species : {};
+  const species=buildDirectory(records,table.rows,profiles,seriouslyFish);
+  const speciesIds=new Set(species.map(entry=>entry.id));
+  for(const id of Object.keys(seriouslyFish)) if(!speciesIds.has(id)) throw new Error(`Unknown Seriously Fish species id: ${id}`);
   const sources=[
     {kind:'catalog-of-fishes',title:"Eschmeyer's Catalog of Fishes, Cichlidae family list",snapshot:catalog},
     {kind:'database',title:'FishBase species table v25.04',snapshot:fishbase},
   ].map(({snapshot,...source})=>({...source,url:snapshot.meta.url,accessed:snapshot.meta.fetchedAt.slice(0,10),archived:snapshot.ref}));
+  if(existsSync(seriouslyFishPath)) {
+    const accessed=Object.values(seriouslyFish).map(entry=>entry.checked).sort().at(-1) ?? null;
+    sources.push({kind:'database',title:'Seriously Fish species page checks (data/species/seriously-fish.yaml)',url:'https://www.seriouslyfish.com/',accessed});
+  }
   const mappingPath=join(speciesDir,'legacy-mapping.yaml');
   const existing=existsSync(mappingPath) ? parse(readFileSync(mappingPath,'utf8')).mappings : [];
   const mappings=buildLegacyMapping(JSON.parse(readFileSync(join(speciesDir,'legacy-catalog.json'),'utf8')),species,profiles,existing);
@@ -178,8 +189,8 @@ export async function build({speciesDir=SPECIES_DIR,root,catalogRef=CATALOG_REF,
   const ids=new Set(forms.map(x=>x.id));
   const additions=impliedTradeForms(profiles).filter(x=>!ids.has(x.id));
   writeFileSync(join(speciesDir,'directory.yaml'),yaml({sources,species}));
-  writeMapping(mappingPath,mappings);
-  if (!existsSync(formsPath) || additions.length) {
+  if(!directoryOnly) writeMapping(mappingPath,mappings);
+  if (!directoryOnly && (!existsSync(formsPath) || additions.length)) {
     // A missing file starts as a block sequence, so that curated entries keep one field per line.
     const doc=existsSync(formsPath) ? parseDocument(readFileSync(formsPath,'utf8')) : new Document({forms: []});
     for (const form of additions) doc.get('forms').add(doc.createNode(form, {flow: false}));
@@ -192,6 +203,6 @@ export async function build({speciesDir=SPECIES_DIR,root,catalogRef=CATALOG_REF,
 }
 
 if (process.argv[1] && resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
-  try { console.log(JSON.stringify(await build(),null,2)); }
+  try { console.log(JSON.stringify(await build({directoryOnly:process.argv.includes('--directory-only')}),null,2)); }
   catch (error) { console.error(`build-directory: ${error.message}`); process.exitCode=1; }
 }

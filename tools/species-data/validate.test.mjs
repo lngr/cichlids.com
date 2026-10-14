@@ -919,3 +919,11 @@ test('Given malformed profile legacyIds, directory validation leaves the schema 
   const input=directoryFixture(); input.profiles[0].data.legacyIds=3;
   assert.doesNotThrow(()=>directoryIssues(input));
 });
+
+test('Given Seriously Fish decisions, every species id belongs to the directory',async()=>{
+  const {directoryIssues}=await import('./validate.mjs');
+  const input=directoryFixture();input.seriouslyFish={species:{'one-alpha':{url:null,archived:null,checked:'2026-10-14'}}};
+  assert.deepEqual(directoryIssues(input),[]);
+  input.seriouslyFish.species['absent-species']={url:null,archived:null,checked:'2026-10-14'};
+  assert.ok(directoryIssues(input).some(issue=>issue.level==='error' && issue.file==='data/species/seriously-fish.yaml' && /absent-species/.test(issue.message)));
+});

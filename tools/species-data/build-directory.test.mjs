@@ -149,3 +149,32 @@ for (const [tail,locality] of [
     assert.equal(buildDirectory(parseCatalog(text),[],[])[0].originalDescription.typeLocality,locality);
   });
 }
+
+test('Given Aquarium values and Seriously Fish decisions, trade combines positive evidence and preserves uncertainty',()=>{
+  for(const aquarium of ['commercial','highly commercial','never/rarely','potential','public aquariums','show aquarium',null]) {
+    for(const decision of [undefined,{url:null,archived:null,checked:'2026-10-14'},{url:'https://www.seriouslyfish.com/species/geophagus-abalios',archived:'ref',checked:'2026-10-14'}]) {
+      const sf=decision===undefined ? {} : {'geophagus-abalios':decision};
+      const entry=buildDirectory(parseCatalog(abalios),[{...rows[0],Aquarium:aquarium}],[],sf)[0];
+      const commercial=['commercial','highly commercial'].includes(aquarium);
+      assert.equal(entry.trade,commercial || !!decision?.url ? true : decision===undefined ? null : false);
+      assert.equal(entry.links.seriouslyFish,decision?.url ?? null);
+    }
+  }
+});
+
+test('Given a Seriously Fish file, the build adds its derived source and directory-only mode preserves curated files',async t=>{
+  const root=sandbox(t);const speciesDir=join(root,'data');mkdirSync(join(speciesDir,'profiles'),{recursive:true});
+  const catalog=await storeSnapshot({url:'https://example.org/catalog',body:catalogText,contentType:'text/plain'},{root:join(root,'archive')});
+  const fishbase=await storeSnapshot({url:'https://example.org/fishbase',body:'FishBase data. '.repeat(20),contentType:'text/plain'},{root:join(root,'archive')});
+  writeFileSync(join(speciesDir,'legacy-catalog.json'),'[]');
+  writeFileSync(join(speciesDir,'legacy-mapping.yaml'),'mappings: []\n# curated\n');
+  writeFileSync(join(speciesDir,'trade-forms.yaml'),'forms: []\n# curated\n');
+  writeFileSync(join(speciesDir,'seriously-fish.yaml'),stringify({species:{'geophagus-abalios':{url:null,archived:null,checked:'2026-10-14'}}}));
+  const options={speciesDir,root:join(root,'archive'),catalogRef:catalog.ref,fishbaseRef:fishbase.ref,readFishbase:async()=>({rows,columns:[]}),directoryOnly:true};
+  await build(options);
+  const doc=parse(readFileSync(join(speciesDir,'directory.yaml'),'utf8'));
+  assert.deepEqual(doc.sources[2],{kind:'database',title:'Seriously Fish species page checks (data/species/seriously-fish.yaml)',url:'https://www.seriouslyfish.com/',accessed:'2026-10-14'});
+  assert.equal(doc.species.find(x=>x.id==='geophagus-abalios').trade,false);
+  assert.equal(readFileSync(join(speciesDir,'legacy-mapping.yaml'),'utf8'),'mappings: []\n# curated\n');
+  assert.equal(readFileSync(join(speciesDir,'trade-forms.yaml'),'utf8'),'forms: []\n# curated\n');
+});
