@@ -392,23 +392,21 @@ features:
       method: waterbody
       waterbody: lake-tanganyika
     tolerance:
-      value: {min: 10, max: 22}
+      value: {min: 8, max: 25}
       confidence: low
       rationale: >-
+        The proposals in vote order are 8 to 25, 8 to 25, 8 to 22, 8 to 25, 10 to 22 (dGH). Without
+        a qualified majority, the medians of all proposed minima and maxima are 8 and 25, rounded to
+        8 to 25 dGH. The median 8 to 25 dGH contains the natural 10 to 13 range without widening.
         The care sources ask for hard water but differ widely in the band: FishBase after the
-        Aquarien Atlas 8 to 12 dGH, TropicalFreshwaterFish 8 to 22 with 12 preferred, Seriously
-        Fish 10 to 25, Fishkeeper 15 to 25, Fishstores 12 to 20, Guidarium 12 to 25 and Fishkeeping
-        World 12 to 14; Aqua-Fish gives 12 to 30 without saying which hardness it means, and the
-        Flowgrow database 7 to 14 together with a pH that contradicts all other sources. Accordingly
-        the five votes split: three proposed 8 to 25, one 8 to 22 and one 10 to 22, so no proposal
-        reached the four agreeing votes a qualified majority needs. The value is therefore the
-        conservative one, the intersection of all votes: 10 dGH, the lower bound of Seriously Fish
-        and of the natural lake range, to 22 dGH, the upper bound of TropicalFreshwaterFish. The
-        narrower range makes the compatibility check warn earlier, and it still contains the
-        natural 10 to 13 dGH. Fish are kept in softer water down to about 8 dGH and in harder water
-        up to 25 dGH according to some care sheets, so the limits are cautious rather than
-        measured. Stable water matters more than the exact figure; carbonate hardness and pH
-        are the decisive values for this species.
+        Aquarien Atlas 8 to 12 dGH, TropicalFreshwaterFish 8 to 22 with 12 preferred, Seriously Fish
+        10 to 25, Fishkeeper 15 to 25, Fishstores 12 to 20, Guidarium 12 to 25 and Fishkeeping World
+        12 to 14; Aqua-Fish gives 12 to 30 without saying which hardness it means, and the Flowgrow
+        database 7 to 14 together with a pH that contradicts all other sources. Fish are kept in
+        softer water down to about 8 dGH and in harder water up to 25 dGH according to some care
+        sheets, so the endpoints are husbandry estimates rather than measured health thresholds.
+        Stable water matters more than the exact figure; carbonate hardness and pH are the decisive
+        values for this species. Confidence is low because endpoint support is incomplete.
       sources:
         - *sf
         - *fk
@@ -466,7 +464,7 @@ features:
           value: {min: 11.1, max: 11.5}
           note: natural lake water
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
 
   khDkh:
@@ -1491,12 +1489,20 @@ provenance:
           value: {min: 8, max: 25}
         - by: tiebreaker-2
           value: {min: 10, max: 22}
-      decision: {min: 10, max: 22}
+      decision: {min: 8, max: 25}
       rationale: >-
-        Decided by the vote count (conservative, 3 of 5): the top proposal of 8 to 25 dGH has only
-        three agreeing votes, fewer than the four a qualified majority needs, so the tolerance is
-        the intersection of all votes, 10 to 22 dGH, which contains the natural 10 to 13 dGH.
-        Confidence is low.
+        The proposals in vote order are 8 to 25, 8 to 25, 8 to 22, 8 to 25, 10 to 22 (dGH). Without
+        a qualified majority, the medians of all proposed minima and maxima are 8 and 25, rounded to
+        8 to 25 dGH. The median 8 to 25 dGH contains the natural 10 to 13 range without widening.
+        The care sources ask for hard water but differ widely in the band: FishBase after the
+        Aquarien Atlas 8 to 12 dGH, TropicalFreshwaterFish 8 to 22 with 12 preferred, Seriously Fish
+        10 to 25, Fishkeeper 15 to 25, Fishstores 12 to 20, Guidarium 12 to 25 and Fishkeeping World
+        12 to 14; Aqua-Fish gives 12 to 30 without saying which hardness it means, and the Flowgrow
+        database 7 to 14 together with a pH that contradicts all other sources. Fish are kept in
+        softer water down to about 8 dGH and in harder water up to 25 dGH according to some care
+        sheets, so the endpoints are husbandry estimates rather than measured health thresholds.
+        Stable water matters more than the exact figure; carbonate hardness and pH are the decisive
+        values for this species. Confidence is low because endpoint support is incomplete.
     - field: features.khDkh.tolerance
       proposals:
         - by: generator

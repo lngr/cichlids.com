@@ -1925,21 +1925,23 @@ features:
     tolerance:
       value:
         min: 5
-        max: 8
+        max: 14
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
-      rationale: "The tally conservatively intersects all six proposals at 5 to 8 dKH, with low confidence and votes\
-        \ agree 3 of 6. Generator and checker-b propose 5 to 8; checker-a, checker-c and tiebreaker-1 propose 5\
-        \ to 15; tiebreaker-2 proposes 5 to 12. No candidate obtains four agreeing votes. The intersection includes\
-        \ the entire measured natural range and is a cautious planning interval, not proof of illness beyond 8.\
-        \ Wider recommendations remain visible: OATA 10 to 15 dKH, JBL 5 to 10 and Malawi.si 6 to 12; the species-specific\
-        \ Portalpez sheet gives 4 to 8. They are recommendations or extrapolations without species-specific multi-year\
-        \ tests. GH and KH cannot be converted interchangeably; Seachem explicitly distinguishes carbonate buffering\
-        \ from GH. The conservative tally range is plausible and is retained exactly."
+      rationale: "The proposals in vote order are 5 to 8, 5 to 15, 5 to 8, 5 to 15, 5 to 15, 5 to 12 (dKH).\
+        \ Without a qualified majority, the medians of all proposed minima and maxima are 5 and 13.5,\
+        \ rounded to 5 to 14 dKH. The median 5 to 14 dKH contains the natural 5 to 8 range without\
+        \ widening. Explicit recommendations include: OATA 10 to 15 dKH, JBL 5 to 10 and Malawi.si 6\
+        \ to 12; the species-specific Portalpez sheet gives 4 to 8. They are recommendations or\
+        \ extrapolations without species-specific multi-year tests. GH and KH cannot be converted\
+        \ interchangeably; Seachem explicitly distinguishes carbonate buffering from GH. The median 5\
+        \ to 14 dKH contains the natural 5 to 8 range and overlaps cited Malawi husbandry\
+        \ recommendations, making it plausible with stable pH and separate GH and KH measurements.\
+        \ Confidence is low because endpoint support is incomplete."
       sources:
         - kind: literature
           title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
@@ -5239,10 +5241,11 @@ profile:
         accessed: '2026-10-13'
         archived: fishbase.se/summary/maylandia-hajomaylandi.html/2026-10-14T125307Z
   problems:
-    text: "Stress can rise when rivals cannot escape or a female receives repeated attention. Severe aggression\
-      \ warnings coexist with reports of restrained defence, so monitor the actual harem. Inappropriate feeding\
-      \ and unstable water can compound these problems. The decided KH tolerance of 5 to 8 dKH is a conservative\
-      \ planning range; broader husbandry recommendations remain in the evidence and are not proven unsafe."
+    text: "Stress can rise when rivals cannot escape or a female receives repeated attention. Severe\
+      \ aggression warnings coexist with reports of restrained defence, so monitor the actual harem.\
+      \ Inappropriate feeding and unstable water can compound these problems. The decided KH tolerance\
+      \ of 5 to 14 dKH is a median estimate; broader husbandry recommendations remain in the evidence\
+      \ and are not proven unsafe."
     sources:
       - kind: website
         title: "Hörnlimann, S. and Bandhauer, F. Metriaclima hajomaylandi. Malawi-Guru"
@@ -5391,15 +5394,17 @@ provenance:
             max: 12
       decision:
         min: 5
-        max: 8
-      rationale: "The tally conservatively intersects all six proposals at 5 to 8 dKH, with low confidence and votes\
-        \ agree 3 of 6. Generator and checker-b propose 5 to 8; checker-a, checker-c and tiebreaker-1 propose 5\
-        \ to 15; tiebreaker-2 proposes 5 to 12. No candidate obtains four agreeing votes. The intersection includes\
-        \ the entire measured natural range and is a cautious planning interval, not proof of illness beyond 8.\
-        \ Wider recommendations remain visible: OATA 10 to 15 dKH, JBL 5 to 10 and Malawi.si 6 to 12; the species-specific\
-        \ Portalpez sheet gives 4 to 8. They are recommendations or extrapolations without species-specific multi-year\
-        \ tests. GH and KH cannot be converted interchangeably; Seachem explicitly distinguishes carbonate buffering\
-        \ from GH. The conservative tally range is plausible and is retained exactly."
+        max: 14
+      rationale: "The proposals in vote order are 5 to 8, 5 to 15, 5 to 8, 5 to 15, 5 to 15, 5 to 12 (dKH).\
+        \ Without a qualified majority, the medians of all proposed minima and maxima are 5 and 13.5,\
+        \ rounded to 5 to 14 dKH. The median 5 to 14 dKH contains the natural 5 to 8 range without\
+        \ widening. Explicit recommendations include: OATA 10 to 15 dKH, JBL 5 to 10 and Malawi.si 6\
+        \ to 12; the species-specific Portalpez sheet gives 4 to 8. They are recommendations or\
+        \ extrapolations without species-specific multi-year tests. GH and KH cannot be converted\
+        \ interchangeably; Seachem explicitly distinguishes carbonate buffering from GH. The median 5\
+        \ to 14 dKH contains the natural 5 to 8 range and overlaps cited Malawi husbandry\
+        \ recommendations, making it plausible with stable pH and separate GH and KH measurements.\
+        \ Confidence is low because endpoint support is incomplete."
     - field: features.maxSizeCm
       proposals:
         - by: generator

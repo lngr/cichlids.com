@@ -1634,17 +1634,17 @@ features:
         min: 6.5
         max: 8.9
       confidence: low
-      rationale: "Retain the conservative tally tolerance 6.5 to 8.9 with low confidence. Intersecting\
-        \ all proposed tolerances gives 6.5 to 8.0, then the tally widens the upper endpoint to contain\
-        \ the decided parental range reaching 8.9. This containment extension has no demonstrated multiyear\
-        \ blood-parrot health evidence at pH 8.9. Aquarium Co-Op, Expoaqua and LiveAquaria support 6.5\
-        \ to 8.0; Gay and Monks recommend 7 to 8. Maidenhead gives the broader lower allowance 6.0 to\
-        \ 8.0, while Aqua-Fish gives 6.4 to 7.0 and Fishkeeping.co.uk 6.5 to 7.5. These differing source\
-        \ ranges and the older 6 to 8 community guide remain evidence. Archive reports of losses after\
-        \ a rapid pH fall support stability without defining a lethal threshold. Prefer the directly supported\
-        \ near-neutral to mildly alkaline care band rather than targeting the inherited upper edge. Proposals:\
-        \ generator proposed 6.5 to 8.9; checker-a proposed 6.5 to 8; checker-b proposed 6.5 to 8.9; checker-c\
-        \ proposed 6.4 to 8.5; tiebreaker-1 proposed 6 to 8.9; tiebreaker-2 proposed 6.5 to 8.9."
+      rationale: "The proposals in vote order are 6.5 to 8.9, 6.5 to 8.0, 6.5 to 8.9, 6.4 to 8.5, 6.0\
+        \ to 8.9 and 6.5 to 8.9. No qualified majority exists. The median bounds give pH 6.5\
+        \ to 8.9 with low confidence and contain the decided parental proxy of 7.0 to 8.9\
+        \ without widening. Aquarium Co-Op, Expoaqua and LiveAquaria recommend 6.5 to 8.0, Gay\
+        \ and Monks 7 to 8, Maidenhead 6.0 to 8.0, Aqua-Fish 6.4 to 7.0 and Fishkeeping.co.uk\
+        \ 6.5 to 7.5. A community guide gives 6 to 8 with uncertain ancestry assumptions.\
+        \ These direct husbandry sources support near-neutral to mildly alkaline routine care.\
+        \ The 8.9 endpoint is an extrapolation from parental habitat chemistry, making the\
+        \ full median a provisional allowance rather than a preferred keeping band; multiyear\
+        \ blood-parrot health at 8.9 is unverified. Archive reports of losses after rapid pH\
+        \ falls support stability without defining a lethal threshold."
       sources:
       - kind: website
         title: "Aquarium Co-Op: Care Guide for Blood Parrot Cichlids, the hybrid with a tiny mouth"
@@ -2199,7 +2199,7 @@ features:
           max: 8
         note: Midas parent aquarium range
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -2577,16 +2577,17 @@ features:
         min: 3
         max: 20
       confidence: low
-      rationale: "Retain the conservative tally tolerance 3 to 20 dGH with low confidence. The intersection\
-        \ of all proposals is 6 to 20 dGH, widened downward to contain the decided natural proxy beginning\
-        \ at 3 dGH. That lower endpoint is parental inference, not a controlled chronic hybrid threshold.\
-        \ Monks recommends 10 to 20 dGH and Fishkeeping.co.uk 8 to 15; Aqua-Fish gives 3 to 16 and several\
-        \ domestic sheets give 6 to 18. Wider published claims remain evidence: Aquario gives 2 to 25\
-        \ dGH, Maidenhead permits hardness up to 25 without a minimum, and the Midas parental guide gives\
-        \ 5 to 25. Fishkeeping World instead recommends 3.3 to 6.6. These recommendations differ substantially\
-        \ and do not measure lifetime physiological limits. Proposals: generator proposed 2 to 25; checker-a\
-        \ proposed 6 to 20; checker-b proposed 3 to 20; checker-c proposed 3 to 20; tiebreaker-1 proposed\
-        \ 3 to 25; tiebreaker-2 proposed 3 to 20."
+      rationale: "The proposals in vote order are 2 to 25, 6 to 20, 3 to 20, 3 to 20, 3 to 25 and 3 to\
+        \ 20 dGH. No qualified majority exists. The median bounds give 3 to 20 dGH with low\
+        \ confidence and contain the decided parental proxy of 3 to 16 dGH without widening.\
+        \ The lower endpoint has parental habitat support rather than a controlled chronic\
+        \ hybrid threshold, and Aqua-Fish also recommends 3 to 16. Monks gives 10 to 20 dGH,\
+        \ Fishkeeping.co.uk 8 to 15 and several domestic sheets 6 to 18, supporting the harder\
+        \ part in aquarium practice. Wider claims are 2 to 25 at Aquario, a maximum of 25\
+        \ without a minimum at Maidenhead, and 5 to 25 in the Midas parent guide. Fishkeeping\
+        \ World recommends a softer 3.3 to 6.6. The combined care advice makes the median\
+        \ plausible, although recommendations differ substantially and do not measure lifetime\
+        \ physiological limits."
       sources:
       - kind: database
         title: "Aquario: Blood Parrot Cichlid care profile"
@@ -3034,7 +3035,7 @@ features:
           max: 17.92
         note: "Parent field chemistry supports the harder part, not a domestic tolerance experiment."
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -8180,17 +8181,17 @@ provenance:
     decision:
       min: 6.5
       max: 8.9
-    rationale: "Retain the conservative tally tolerance 6.5 to 8.9 with low confidence. Intersecting all\
-      \ proposed tolerances gives 6.5 to 8.0, then the tally widens the upper endpoint to contain the\
-      \ decided parental range reaching 8.9. This containment extension has no demonstrated multiyear\
-      \ blood-parrot health evidence at pH 8.9. Aquarium Co-Op, Expoaqua and LiveAquaria support 6.5 to\
-      \ 8.0; Gay and Monks recommend 7 to 8. Maidenhead gives the broader lower allowance 6.0 to 8.0,\
-      \ while Aqua-Fish gives 6.4 to 7.0 and Fishkeeping.co.uk 6.5 to 7.5. These differing source ranges\
-      \ and the older 6 to 8 community guide remain evidence. Archive reports of losses after a rapid\
-      \ pH fall support stability without defining a lethal threshold. Prefer the directly supported near-neutral\
-      \ to mildly alkaline care band rather than targeting the inherited upper edge. Proposals: generator\
-      \ proposed 6.5 to 8.9; checker-a proposed 6.5 to 8; checker-b proposed 6.5 to 8.9; checker-c proposed\
-      \ 6.4 to 8.5; tiebreaker-1 proposed 6 to 8.9; tiebreaker-2 proposed 6.5 to 8.9."
+    rationale: "The proposals in vote order are 6.5 to 8.9, 6.5 to 8.0, 6.5 to 8.9, 6.4 to 8.5, 6.0 to\
+      \ 8.9 and 6.5 to 8.9. No qualified majority exists. The median bounds give pH 6.5 to 8.9\
+      \ with low confidence and contain the decided parental proxy of 7.0 to 8.9 without\
+      \ widening. Aquarium Co-Op, Expoaqua and LiveAquaria recommend 6.5 to 8.0, Gay and Monks\
+      \ 7 to 8, Maidenhead 6.0 to 8.0, Aqua-Fish 6.4 to 7.0 and Fishkeeping.co.uk 6.5 to 7.5.\
+      \ A community guide gives 6 to 8 with uncertain ancestry assumptions. These direct\
+      \ husbandry sources support near-neutral to mildly alkaline routine care. The 8.9\
+      \ endpoint is an extrapolation from parental habitat chemistry, making the full median a\
+      \ provisional allowance rather than a preferred keeping band; multiyear blood-parrot\
+      \ health at 8.9 is unverified. Archive reports of losses after rapid pH falls support\
+      \ stability without defining a lethal threshold."
   - field: features.ghDgh
     proposals:
     - by: generator
@@ -8261,16 +8262,17 @@ provenance:
     decision:
       min: 3
       max: 20
-    rationale: "Retain the conservative tally tolerance 3 to 20 dGH with low confidence. The intersection\
-      \ of all proposals is 6 to 20 dGH, widened downward to contain the decided natural proxy beginning\
-      \ at 3 dGH. That lower endpoint is parental inference, not a controlled chronic hybrid threshold.\
-      \ Monks recommends 10 to 20 dGH and Fishkeeping.co.uk 8 to 15; Aqua-Fish gives 3 to 16 and several\
-      \ domestic sheets give 6 to 18. Wider published claims remain evidence: Aquario gives 2 to 25 dGH,\
-      \ Maidenhead permits hardness up to 25 without a minimum, and the Midas parental guide gives 5 to\
-      \ 25. Fishkeeping World instead recommends 3.3 to 6.6. These recommendations differ substantially\
-      \ and do not measure lifetime physiological limits. Proposals: generator proposed 2 to 25; checker-a\
-      \ proposed 6 to 20; checker-b proposed 3 to 20; checker-c proposed 3 to 20; tiebreaker-1 proposed\
-      \ 3 to 25; tiebreaker-2 proposed 3 to 20."
+    rationale: "The proposals in vote order are 2 to 25, 6 to 20, 3 to 20, 3 to 20, 3 to 25 and 3 to\
+      \ 20 dGH. No qualified majority exists. The median bounds give 3 to 20 dGH with low\
+      \ confidence and contain the decided parental proxy of 3 to 16 dGH without widening. The\
+      \ lower endpoint has parental habitat support rather than a controlled chronic hybrid\
+      \ threshold, and Aqua-Fish also recommends 3 to 16. Monks gives 10 to 20 dGH,\
+      \ Fishkeeping.co.uk 8 to 15 and several domestic sheets 6 to 18, supporting the harder\
+      \ part in aquarium practice. Wider claims are 2 to 25 at Aquario, a maximum of 25\
+      \ without a minimum at Maidenhead, and 5 to 25 in the Midas parent guide. Fishkeeping\
+      \ World recommends a softer 3.3 to 6.6. The combined care advice makes the median\
+      \ plausible, although recommendations differ substantially and do not measure lifetime\
+      \ physiological limits."
   - field: features.khDkh
     proposals:
     - by: generator

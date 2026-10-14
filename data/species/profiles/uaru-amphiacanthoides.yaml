@@ -1045,16 +1045,20 @@ features:
     tolerance:
       value:
         min: 0
-        max: 5
+        max: 10
       confidence: low
-      rationale: "The tally uses the conservative intersection of all six proposals, yielding 0 to 5 dGH with low\
-        \ confidence. Generator and tiebreaker-2 proposed 0 to 8; checker-a, checker-c and tiebreaker-1 proposed\
-        \ 0 to 12; checker-b proposed 0 to 5. Seriously Fish gives an upper limit of 5, whereas Fishkeeper allows\
-        \ 8, FishBase and Akvaforum give 5 to 12, Aqua-Fish 5 to 12, Aquariumline 2 to 12 and FishProfiles 5 to\
-        \ 14 dGH. Those wider source ranges do not establish identical long-term suitability for every population.\
-        \ Zero is an inferred very-soft-water reporting floor, not an explicit care-sheet minimum or a recommendation\
-        \ for chemically pure water. This conservative compatibility limit can warn against conditions that some\
-        \ broader care sheets permit."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 0 to 8; checker-a proposes\
+        \ 0 to 12; checker-b proposes 0 to 5; checker-c proposes 0 to 12; tiebreaker-1 proposes 0 to\
+        \ 12; tiebreaker-2 proposes 0 to 8 (dGH). The rounded median of all minima and all maxima is 0\
+        \ to 10 dGH. This contains natural 0 to 2 without widening. Confidence is low. Seriously Fish\
+        \ gives an upper limit of 5, whereas Fishkeeper allows 8, FishBase and Akvaforum give 5 to 12,\
+        \ Aqua-Fish 5 to 12, Aquariumline 2 to 12 and FishProfiles 5 to 14 dGH. Those wider source\
+        \ ranges do not establish identical long-term suitability for every population. Zero is an\
+        \ inferred very-soft-water reporting floor, not an explicit care-sheet minimum or a\
+        \ recommendation for chemically pure water. The median upper edge of 10 dGH lies within\
+        \ several explicit care ranges, while soft, stable water has stronger routine support. The\
+        \ median contains natural 0 to 2 dGH and has explicit care-sheet support at its upper edge,\
+        \ making it a plausible provisional keeping envelope."
       sources:
       - kind: literature
         title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
@@ -1195,7 +1199,7 @@ features:
           max: 12
         note: "Stated aquarium general-hardness range, with a long-term emphasis on stable conditions."
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -3381,14 +3385,16 @@ profile:
       title: cichlids.com forum thread 125
       url: "https://www.cichlids.com/disc/read.php?1,125"
   husbandry:
-    text: "Provide a compatible group of at least six adults with a practical minimum of 600 litres, 180 cm length\
-      \ and 60 cm front-to-back space. Those dimensions are an adjudicated planning allowance; published recommendations\
-      \ vary, and additional large fish need more room. Arrange submerged wood and sheltered areas around an unobstructed\
-      \ swimming space, with a fine substrate. Decorative plants may be eaten. Mature filtration and regular partial\
-      \ water changes are central to sustained health. Routine temperatures near 28 to 30 C, soft water and a stable\
-      \ mildly acidic to near-neutral pH are better supported than the outer tolerance endpoints. The selected tolerances\
-      \ are 26 to 32 C, pH 4.4 to 7.5, GH 0 to 5 dGH and KH 0 to 5 dKH, with low confidence in each complete interval.\
-      \ Different endpoint combinations need not be chemically achievable together."
+    text: "Provide a compatible group of at least six adults with a practical minimum of 600 litres, 180\
+      \ cm length and 60 cm front-to-back space. Those dimensions are an adjudicated planning\
+      \ allowance; published recommendations vary, and additional large fish need more room. Arrange\
+      \ submerged wood and sheltered areas around an unobstructed swimming space, with a fine\
+      \ substrate. Decorative plants may be eaten. Mature filtration and regular partial water changes\
+      \ are central to sustained health. Routine temperatures near 28 to 30 C, soft water and a stable\
+      \ mildly acidic to near-neutral pH are better supported than the outer tolerance endpoints. The\
+      \ selected tolerances are 26 to 32 C, pH 4.4 to 7.5, GH 0 to 10 dGH and KH 0 to 5 dKH, with low\
+      \ confidence in each complete interval. Different endpoint combinations need not be chemically\
+      \ achievable together."
     sources:
     - accessed: '2026-10-13'
       kind: literature
@@ -3985,15 +3991,19 @@ provenance:
         max: 8
     decision:
       min: 0
-      max: 5
-    rationale: "The tally uses the conservative intersection of all six proposals, yielding 0 to 5 dGH with low\
-      \ confidence. Generator and tiebreaker-2 proposed 0 to 8; checker-a, checker-c and tiebreaker-1 proposed 0\
-      \ to 12; checker-b proposed 0 to 5. Seriously Fish gives an upper limit of 5, whereas Fishkeeper allows 8,\
-      \ FishBase and Akvaforum give 5 to 12, Aqua-Fish 5 to 12, Aquariumline 2 to 12 and FishProfiles 5 to 14 dGH.\
-      \ Those wider source ranges do not establish identical long-term suitability for every population. Zero is\
-      \ an inferred very-soft-water reporting floor, not an explicit care-sheet minimum or a recommendation for\
-      \ chemically pure water. This conservative compatibility limit can warn against conditions that some broader\
-      \ care sheets permit. The recorded decision and verification method are copied from tally.yaml."
+      max: 10
+    rationale: "No qualified majority settles the 6 proposals. generator proposes 0 to 8; checker-a proposes 0\
+      \ to 12; checker-b proposes 0 to 5; checker-c proposes 0 to 12; tiebreaker-1 proposes 0 to 12;\
+      \ tiebreaker-2 proposes 0 to 8 (dGH). The rounded median of all minima and all maxima is 0 to 10\
+      \ dGH. This contains natural 0 to 2 without widening. Confidence is low. Seriously Fish gives an\
+      \ upper limit of 5, whereas Fishkeeper allows 8, FishBase and Akvaforum give 5 to 12, Aqua-Fish\
+      \ 5 to 12, Aquariumline 2 to 12 and FishProfiles 5 to 14 dGH. Those wider source ranges do not\
+      \ establish identical long-term suitability for every population. Zero is an inferred\
+      \ very-soft-water reporting floor, not an explicit care-sheet minimum or a recommendation for\
+      \ chemically pure water. The median upper edge of 10 dGH lies within several explicit care\
+      \ ranges, while soft, stable water has stronger routine support. The median contains natural 0\
+      \ to 2 dGH and has explicit care-sheet support at its upper edge, making it a plausible\
+      \ provisional keeping envelope."
   - field: features.khDkh.tolerance
     proposals:
     - by: generator

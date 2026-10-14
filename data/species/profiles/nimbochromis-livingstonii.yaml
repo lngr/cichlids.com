@@ -695,18 +695,20 @@ features:
     tolerance:
       value:
         min: 3
-        max: 20
+        max: 22
       confidence: low
-      rationale: "The runs agree on the lower end but not on the upper one: generator 3 to 20, checker-a 3
-        to 25, checker-b 3 to 22, checker-c 3 to 25 and tiebreaker-1 3 to 20 dGH. With no qualified
-        majority the vote count takes the conservative value, the intersection of all proposals,
-        which is 3 to 20 dGH. The care sheets span a wider range of 3 to 25 dGH: Fischlexikon 3 to
-        15, DRTA 5 to 10, Garnelio 5 to 20, FishBase 9 to 19, AquaInfo 12 to 16, B-Aqua 10 to 20,
-        Tropical Freshwater Fish 10 to 22, Seriously Fish and Guidarium 10 to 25, and Fishkeeper up
-        to 25. An upper limit of 20 dGH lies within or next to most of these ranges, while 22 and 25
-        dGH rest on a few sheets that probably mix up total hardness and alkalinity. The lower end
-        is the natural lake value, which the fish live in; the higher lower limits of the care
-        sheets are recommendations, not observed harm."
+      rationale: "No qualified majority settles the 5 proposals. generator proposes 3 to 20; checker-a
+        proposes 3 to 25; checker-b proposes 3 to 22; checker-c proposes 3 to 25; tiebreaker-1
+        proposes 3 to 20 (dGH). The rounded median of all minima and all maxima is 3 to 22 dGH. This
+        contains natural 3 to 5 without widening. Confidence is low. The care sheets span a wider
+        range of 3 to 25 dGH: Fischlexikon 3 to 15, DRTA 5 to 10, Garnelio 5 to 20, FishBase 9 to
+        19, AquaInfo 12 to 16, B-Aqua 10 to 20, Tropical Freshwater Fish 10 to 22, Seriously Fish
+        and Guidarium 10 to 25, and Fishkeeper up to 25. The median upper limit of 22 dGH has direct
+        care-sheet support and lies within several broader aquarium ranges; total hardness and
+        alkalinity are distinct quantities. The lower end is the natural lake value, which the fish
+        live in; the higher lower limits of the care sheets are recommendations, not observed harm.
+        The median is plausible because it contains soft natural lake water and a directly
+        recommended aquarium maximum."
       sources:
         - kind: database
           title: "FishBase species summary: Nimbochromis livingstonii"
@@ -900,7 +902,7 @@ features:
             max: 4.9
           note: natural lake water
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 5
@@ -3016,15 +3018,14 @@ profile:
         archived: riverparkaquatics.co.uk/livingstons-cichlid-nimbochromis-livingstonii/2026-10-14T102014Z
         accessed: 2026-10-13
   husbandry:
-    text: "A group of one male and three females needs a tank of about 200 cm length, 60 cm
-      front-to-back depth and around 600 litres. Open sand, a few sturdy rock structures set
-      directly on the bottom glass and clumps of Vallisneria or other robust plants along the back
-      and sides suit it; plenty of open floor matters, because the fish likes to rest on the sand.
-      The water should be alkaline and well buffered: pH 7.5 to 8.8, 21 to 29 C with 24 to 28 C as
-      the comfortable middle, a total hardness of up to about 20 dGH and a carbonate hardness of
-      about 5 to 13 dKH. Strong filtration and large weekly water changes are needed, because the
-      fish eats meaty food and produces much waste. Strong currents across the whole tank are best
-      avoided."
+    text: "A group of one male and three females needs a tank of about 200 cm length, 60 cm front-to-back
+      depth and around 600 litres. Open sand, a few sturdy rock structures set directly on the
+      bottom glass and clumps of Vallisneria or other robust plants along the back and sides suit
+      it; plenty of open floor matters, because the fish likes to rest on the sand. The water should
+      be alkaline and well buffered: pH 7.5 to 8.8, 21 to 29 C with 24 to 28 C as the comfortable
+      middle, a total hardness of up to about 22 dGH and a carbonate hardness of about 5 to 13 dKH.
+      Strong filtration and large weekly water changes are needed, because the fish eats meaty food
+      and produces much waste. Strong currents across the whole tank are best avoided."
     sources:
       - kind: database
         title: "Seriously Fish: Nimbochromis livingstonii"
@@ -3558,9 +3559,19 @@ provenance:
             max: 20
       decision:
         min: 3
-        max: 20
-      rationale: Decided by the vote count as the conservative value (intersection of all votes) because
-        no proposal reached a qualified majority; the care sheets span 3 to 25 dGH.
+        max: 22
+      rationale: No qualified majority settles the 5 proposals. generator proposes 3 to 20; checker-a
+        proposes 3 to 25; checker-b proposes 3 to 22; checker-c proposes 3 to 25; tiebreaker-1
+        proposes 3 to 20 (dGH). The rounded median of all minima and all maxima is 3 to 22 dGH. This
+        contains natural 3 to 5 without widening. Confidence is low. The care sheets span a wider
+        range of 3 to 25 dGH, Fischlexikon 3 to 15, DRTA 5 to 10, Garnelio 5 to 20, FishBase 9 to
+        19, AquaInfo 12 to 16, B-Aqua 10 to 20, Tropical Freshwater Fish 10 to 22, Seriously Fish
+        and Guidarium 10 to 25, and Fishkeeper up to 25. The median upper limit of 22 dGH has direct
+        care-sheet support and lies within several broader aquarium ranges; total hardness and
+        alkalinity are distinct quantities. The lower end is the natural lake value, which the fish
+        live in; the higher lower limits of the care sheets are recommendations, not observed harm.
+        The median is plausible because it contains soft natural lake water and a directly
+        recommended aquarium maximum.
     - field: features.khDkh.tolerance
       proposals:
         - by: generator

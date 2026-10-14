@@ -1030,16 +1030,18 @@ features:
     tolerance:
       value:
         min: 5
-        max: 10
+        max: 14
       confidence: "low"
-      rationale: "Generator, checker-a and tiebreaker-2 propose 5 to 15 dKH; checker-b and tiebreaker-1 propose\
-        \ 5 to 12; checker-c proposes 5 to 10. No candidate reaches the required four agreeing votes. The tally\
-        \ therefore intersects all six proposals conservatively at 5 to 10 dKH and keeps confidence low; the natural\
-        \ 5 to 8 interval already fits inside it. JBL gives 5 to 10 in a commercial Malawi aquarium example. Wider\
-        \ source recommendations are 6 to 12 from Malawi.si, 6 to 15 from the Einrichtungsbeispiele genus article\
-        \ and 10 to 15 from OATA. Narrowing their upper extent is a planner precaution, not evidence that 12 or\
-        \ 15 dKH harms C. mloto. Related-species pH and GH figures cannot independently supply KH values, and no\
-        \ verified species-specific long-term KH study was found."
+      rationale: "The proposals in vote order are 5 to 15, 5 to 15, 5 to 12, 5 to 10, 5 to 12 and 5 to\
+        \ 15 dKH. No qualified majority exists. The median minimum is 5 and the middle maxima\
+        \ average 13.5, rounded to 14. The tolerance is 5 to 14 dKH with low confidence and\
+        \ contains the natural 5 to 8 dKH without widening. JBL gives 5 to 10 for a commercial\
+        \ Malawi aquarium example, Malawi.si 6 to 12, the Einrichtungsbeispiele genus article\
+        \ 6 to 15 and OATA 10 to 15. The median upper endpoint is within the broader genus and\
+        \ Malawi aquarium guidance, so it is plausible for well buffered keeping even though\
+        \ some guides prefer lower targets. Related-species pH and GH cannot independently\
+        \ supply KH, and no verified species-specific long-term KH study establishes these\
+        \ endpoints."
       sources:
       - kind: "website"
         title: "Einrichtungsbeispiele: Copadichromis genus husbandry article"
@@ -1166,7 +1168,7 @@ features:
           max: 7.3
         note: "Jackson alkalinity of 2.00 to 2.59 meq/L expressed in dKH."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -2636,14 +2638,14 @@ profile:
       accessed: "2026-10-13"
   husbandry:
     text: >-
-      For the recommended one male and four females, allow at least 500 L with approximately 150
-      cm length and 52.5 cm front-to-back space. The width is a provisional estimate based on
-      the median of the proposals rather than a published physiological requirement. Use an
-      established filter, surface movement and regular conditioned-water changes. A temperature
-      target of 24 to 26 C is better supported by species care guidance than continuous use of
-      the full 21 to 29 C tolerance. Adopted aquarium tolerances are pH 7.5 to 8.6, GH 3 to 15
-      dGH and KH 5 to 10 dKH. Keep conditions stable; the endpoints are practical planning
-      bounds with uneven long-term evidence.
+      For the recommended one male and four females, allow at least 500 L with approximately
+      150 cm length and 52.5 cm front-to-back space. The width is a provisional estimate
+      based on the median of the proposals rather than a published physiological
+      requirement. Use an established filter, surface movement and regular conditioned-water
+      changes. A temperature target of 24 to 26 C is better supported by species care
+      guidance than continuous use of the full 21 to 29 C tolerance. Adopted aquarium
+      tolerances are pH 7.5 to 8.6, GH 3 to 15 dGH and KH 5 to 14 dKH. Keep conditions
+      stable; the endpoints are practical planning bounds with uneven long-term evidence.
     sources:
     - kind: "database"
       title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
@@ -3055,15 +3057,17 @@ provenance:
         max: 15
     decision:
       min: 5
-      max: 10
-    rationale: "Generator, checker-a and tiebreaker-2 propose 5 to 15 dKH; checker-b and tiebreaker-1 propose 5\
-      \ to 12; checker-c proposes 5 to 10. No candidate reaches the required four agreeing votes. The tally therefore\
-      \ intersects all six proposals conservatively at 5 to 10 dKH and keeps confidence low; the natural 5 to 8\
-      \ interval already fits inside it. JBL gives 5 to 10 in a commercial Malawi aquarium example. Wider source\
-      \ recommendations are 6 to 12 from Malawi.si, 6 to 15 from the Einrichtungsbeispiele genus article and 10\
-      \ to 15 from OATA. Narrowing their upper extent is a planner precaution, not evidence that 12 or 15 dKH harms\
-      \ C. mloto. Related-species pH and GH figures cannot independently supply KH values, and no verified species-specific\
-      \ long-term KH study was found. Tally method: conservative."
+      max: 14
+    rationale: "The proposals in vote order are 5 to 15, 5 to 15, 5 to 12, 5 to 10, 5 to 12 and 5 to\
+      \ 15 dKH. No qualified majority exists. The median minimum is 5 and the middle maxima\
+      \ average 13.5, rounded to 14. The tolerance is 5 to 14 dKH with low confidence and\
+      \ contains the natural 5 to 8 dKH without widening. JBL gives 5 to 10 for a commercial\
+      \ Malawi aquarium example, Malawi.si 6 to 12, the Einrichtungsbeispiele genus article 6\
+      \ to 15 and OATA 10 to 15. The median upper endpoint is within the broader genus and\
+      \ Malawi aquarium guidance, so it is plausible for well buffered keeping even though\
+      \ some guides prefer lower targets. Related-species pH and GH cannot independently\
+      \ supply KH, and no verified species-specific long-term KH study establishes these\
+      \ endpoints."
   - field: "features.maxSizeCm"
     proposals:
     - by: "generator"

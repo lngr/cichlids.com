@@ -324,16 +324,19 @@ features:
         min: 23
         max: 32
       confidence: low
-      rationale: Decided conservatively because the votes did not reach a qualified majority. The
-        proposals were 22 to 30 C (generator), 23 to 30 C (checker-a), 19 to 34 C (checker-b), 23 to
-        36 C (checker-c and tiebreaker-1) and 23 to 33 C (tiebreaker-2). Their intersection, 23 to
-        30 C, is widened to 32 C so that it contains the decided natural range. Care sheets
-        recommend 23 to 28 C (Seriously Fish), 23 to 27 C (FishProfiles, Fishkeeper), about 24 to 28
-        C (LiveAquaria, Riverpark Aquatics) and 22 to 28 C (Aquarium Glaser), and a Costa Rican
-        hatchery held wild brood fish for 14 months at 25 to 27 C. FishBase gives 23 to 36 C. The
-        sources thus span 19 to 36 C, wider than the decided range; the upper part from 29 to 32 C
-        rests on habitat measurements, not on long-term husbandry, so the well supported keeping
-        range stays at about 24 to 28 C.
+      rationale: The proposals in vote order are 22 to 30, 23 to 30, 19 to 34, 23 to 36, 23 to 36, 23 to 33
+        (C). Without a qualified majority, the medians of all proposed minima and maxima are 23 and
+        33.5, rounded to 23 to 34 C. The median 23 to 34 C contains the natural 23 to 32 range
+        without widening. The adjudicated 23 to 32 C range replaces the median 23 to 34 C decision
+        because the upper endpoint derives from hot habitat observations without evidence for
+        healthy long-term aquarium keeping at that temperature. Care sheets recommend 23 to 28 C
+        (Seriously Fish), 23 to 27 C (FishProfiles, Fishkeeper), about 24 to 28 C (LiveAquaria,
+        Riverpark Aquatics) and 22 to 28 C (Aquarium Glaser), and a Costa Rican hatchery reports
+        wild brood fish held for 14 months at 25 to 27 C. FishBase gives 23 to 36 C as an
+        environmental range, and Molina-Arias attributes this habitat span to Bussing. The 23 to 32
+        C adjudicated envelope contains the natural 23 to 32 C range; its upper part from 29 to 32 C
+        rests on habitat measurements rather than long-term husbandry, while about 24 to 28 C has
+        stronger keeping support. Confidence is low because endpoint support is incomplete.
       sources:
         - kind: database
           title: "Seriously Fish: Hypsophrys nicaraguensis (Nicaragua Cichlid)"
@@ -465,10 +468,12 @@ features:
             max: 28
           note: retailer care guide
       verification:
-        method: conservative
+        method: adjudicated
         votes:
           agree: 2
           total: 6
+        replaced: {min: 23, max: 34}
+        replacedMethod: median
   ph:
     value:
       min: 7
@@ -1266,15 +1271,16 @@ features:
         min: 3
         max: 16
       confidence: low
-      rationale: "Decided conservatively because the votes did not reach a qualified majority. The
-        proposals were 3 to 12 dKH (generator), 3 to 16 dKH (checker-a and tiebreaker-1), 0.5 to 15
-        dKH (checker-b), 3 to 25 dKH (checker-c) and 4 to 16 dKH (tiebreaker-2). Their intersection,
-        4 to 12 dKH, is widened to 3 to 16 dKH so that it contains the decided natural range. Few
-        husbandry sources name a carbonate hardness: LiveAquaria gives 1 to 12 dKH,
-        Zierfische-Direkt 4 to 10 dKH and Aqua-Pedia 6 to 15 dKH, and a breeder reports spawning at
-        3 dKH. Seriously Fish and FishBase give only a total hardness of 8 to 20 dGH and a neutral
-        to alkaline pH, which needs buffering. The sources span 1 to 25 dKH, wider than the decided
-        range; the bounds rest mainly on the natural water."
+      rationale: "The proposals in vote order are 3 to 12, 3 to 16, 0.5 to 15, 3 to 25, 3 to 16, 4 to 16
+        (dKH). Without a qualified majority, the medians of all proposed minima and maxima are 3 and
+        16, rounded to 3 to 16 dKH. The median 3 to 16 dKH contains the natural 3 to 16 range
+        without widening. Few husbandry sources name a carbonate hardness: LiveAquaria gives 1 to 12
+        dKH, Zierfische-Direkt 4 to 10 dKH and Aqua-Pedia 6 to 15 dKH, and a breeder reports
+        spawning at 3 dKH. Seriously Fish and FishBase give only a total hardness of 8 to 20 dGH and
+        a neutral to alkaline pH, which needs buffering. The 3 to 16 dKH envelope is plausible for
+        buffered Central American water; the lower endpoint has breeding support and the upper
+        endpoint rests mainly on natural river chemistry, with little direct chronic evidence.
+        Confidence is low because endpoint support is incomplete."
       sources:
         - kind: database
           title: "Seriously Fish: Hypsophrys nicaraguensis (Nicaragua Cichlid)"
@@ -1384,7 +1390,7 @@ features:
             max: 15.7
           note: natural river water between the great lakes
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -2912,8 +2918,19 @@ provenance:
       decision:
         min: 23
         max: 32
-      rationale: "Decided by the tally with method conservative: the intersection 23 to 30 C widened to
-        contain the natural range."
+      rationale: "The proposals in vote order are 22 to 30, 23 to 30, 19 to 34, 23 to 36, 23 to 36, 23 to 33
+        (C). Without a qualified majority, the medians of all proposed minima and maxima are 23 and
+        33.5, rounded to 23 to 34 C. The median 23 to 34 C contains the natural 23 to 32 range
+        without widening. The adjudicated 23 to 32 C range replaces the median 23 to 34 C decision
+        because the upper endpoint derives from hot habitat observations without evidence for
+        healthy long-term aquarium keeping at that temperature. Care sheets recommend 23 to 28 C
+        (Seriously Fish), 23 to 27 C (FishProfiles, Fishkeeper), about 24 to 28 C (LiveAquaria,
+        Riverpark Aquatics) and 22 to 28 C (Aquarium Glaser), and a Costa Rican hatchery reports
+        wild brood fish held for 14 months at 25 to 27 C. FishBase gives 23 to 36 C as an
+        environmental range, and Molina-Arias attributes this habitat span to Bussing. The 23 to 32
+        C adjudicated envelope contains the natural 23 to 32 C range; its upper part from 29 to 32 C
+        rests on habitat measurements rather than long-term husbandry, while about 24 to 28 C has
+        stronger keeping support. Confidence is low because endpoint support is incomplete."
     - field: features.ph.value
       proposals:
         - by: generator
@@ -3097,8 +3114,16 @@ provenance:
       decision:
         min: 3
         max: 16
-      rationale: "Decided by the tally with method conservative: the intersection 4 to 12 dKH widened to
-        contain the natural range."
+      rationale: "The proposals in vote order are 3 to 12, 3 to 16, 0.5 to 15, 3 to 25, 3 to 16, 4 to 16
+        (dKH). Without a qualified majority, the medians of all proposed minima and maxima are 3 and
+        16, rounded to 3 to 16 dKH. The median 3 to 16 dKH contains the natural 3 to 16 range
+        without widening. Few husbandry sources name a carbonate hardness: LiveAquaria gives 1 to 12
+        dKH, Zierfische-Direkt 4 to 10 dKH and Aqua-Pedia 6 to 15 dKH, and a breeder reports
+        spawning at 3 dKH. Seriously Fish and FishBase give only a total hardness of 8 to 20 dGH and
+        a neutral to alkaline pH, which needs buffering. The 3 to 16 dKH envelope is plausible for
+        buffered Central American water; the lower endpoint has breeding support and the upper
+        endpoint rests mainly on natural river chemistry, with little direct chronic evidence.
+        Confidence is low because endpoint support is incomplete."
     - field: features.predation.value
       proposals:
         - by: generator

@@ -1110,18 +1110,20 @@ features:
     tolerance:
       value:
         min: 5
-        max: 12
+        max: 15
       confidence: "low"
-      rationale: "Generator proposes 5 to 20 dKH; checker-a, tiebreaker-1 and tiebreaker-2 propose 5 to 15;\
-        \ checker-b and checker-c propose 5 to 12. No qualifying four-vote majority settles the range, so the\
-        \ tally conservative method intersects all six proposals to 5 to 12, retaining the complete natural\
-        \ 5 to 8 range. Its reported agreement is three of six and confidence is low; agreement counts use\
-        \ the 2 dKH endpoint threshold and are not simply the number of exact-value proposals. The Nordic register\
-        \ recommends strictly above 10 without a maximum. Malawi.si and the Malawi Cichlids lake table give\
-        \ 6 to 12, while broader source recommendations are OATA and the Malawi Cichlids water guide at 10\
-        \ to 15 and Malawi-Guru at 6 to 20. JBL gives 5 to 10 for a generic Malawi setup. The narrower decided\
-        \ ceiling triggers cautious planning warnings but is not evidence that 13 to 20 dKH harms this species.\
-        \ No chronic species-specific KH experiment was found; GH figures are not used as KH evidence."
+      rationale: "No qualified majority settles the 6 proposals: generator proposes 5 to 20; checker-a\
+        \ proposes 5 to 15; checker-b proposes 5 to 12; checker-c proposes 5 to 12; tiebreaker-1\
+        \ proposes 5 to 15; tiebreaker-2 proposes 5 to 15 (dKH). The rounded median of all minima and\
+        \ all maxima is 5 to 15 dKH. This contains the natural 5 to 8 range without widening.\
+        \ Confidence is low. The Nordic register recommends strictly above 10 dKH without a maximum.\
+        \ Malawi.si and the Malawi Cichlids lake table give 6 to 12, OATA and the Malawi Cichlids\
+        \ water guide give 10 to 15, Malawi-Guru gives 6 to 20, and JBL gives 5 to 10 for a generic\
+        \ Malawi setup. The median joins natural buffering to common aquarium recommendations without\
+        \ treating one narrow guide as a health boundary. The reported agreement is three of six under\
+        \ the 2 dKH endpoint threshold, not a count of exact-value proposals. No chronic\
+        \ species-specific KH experiment establishes the endpoints; GH figures do not supply KH\
+        \ evidence."
       sources:
       - kind: "literature"
         title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa),\
@@ -1288,7 +1290,7 @@ features:
           max: 15
         note: "General Malawi aquarium recommendation; not a species-specific tolerance measurement."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -3519,14 +3521,16 @@ profile:
       url: "https://aquainfo.nl/en/article/nimbochromis-fuscotaeniatus/"
       accessed: "2026-10-13"
   husbandry:
-    text: "For one male with three females, provide at least 1100 litres, 250 cm length and 70 cm front-to-back\
-      \ depth. The depth is a planning allowance for turning and separate retreats; it is not a published biological\
-      \ threshold. Additional large companions require more space. Preserve open swimming lanes and secure\
-      \ the rocks against digging, with several routes into cover. Large carnivores need substantial biological\
-      \ filtration, surface movement and regular partial water changes. A stable 24 to 26 C is a well-supported\
-      \ routine setting. The decided planning tolerances are 21 to 29 C, pH 7.5 to 8.6, GH 3 to 15 dGH and\
-      \ KH 5 to 12 dKH. Confidence is low for the temperature extremes and KH ceiling because multi-year species-specific\
-      \ health limits are unavailable. Test GH and KH separately and make chemistry changes gradually."
+    text: "For one male with three females, provide at least 1100 litres, 250 cm length and 70 cm\
+      \ front-to-back depth. The depth is a planning allowance for turning and separate retreats; it\
+      \ is not a published biological threshold. Additional large companions require more space.\
+      \ Preserve open swimming lanes and secure the rocks against digging, with several routes into\
+      \ cover. Large carnivores need substantial biological filtration, surface movement and regular\
+      \ partial water changes. A stable 24 to 26 C is a well-supported routine setting. The decided\
+      \ planning tolerances are 21 to 29 C, pH 7.5 to 8.6, GH 3 to 15 dGH and KH 5 to 15 dKH.\
+      \ Confidence is low for the temperature extremes and KH ceiling because multi-year\
+      \ species-specific health limits are unavailable. Test GH and KH separately and make chemistry\
+      \ changes gradually."
     sources:
     - kind: "literature"
       title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa),\
@@ -3938,17 +3942,18 @@ provenance:
         max: 15
     decision:
       min: 5
-      max: 12
-    rationale: "Generator proposes 5 to 20 dKH; checker-a, tiebreaker-1 and tiebreaker-2 propose 5 to 15; checker-b\
-      \ and checker-c propose 5 to 12. No qualifying four-vote majority settles the range, so the tally conservative\
-      \ method intersects all six proposals to 5 to 12, retaining the complete natural 5 to 8 range. Its reported\
-      \ agreement is three of six and confidence is low; agreement counts use the 2 dKH endpoint threshold\
-      \ and are not simply the number of exact-value proposals. The Nordic register recommends strictly above\
-      \ 10 without a maximum. Malawi.si and the Malawi Cichlids lake table give 6 to 12, while broader source\
-      \ recommendations are OATA and the Malawi Cichlids water guide at 10 to 15 and Malawi-Guru at 6 to 20.\
-      \ JBL gives 5 to 10 for a generic Malawi setup. The narrower decided ceiling triggers cautious planning\
-      \ warnings but is not evidence that 13 to 20 dKH harms this species. No chronic species-specific KH experiment\
-      \ was found; GH figures are not used as KH evidence."
+      max: 15
+    rationale: "No qualified majority settles the 6 proposals: generator proposes 5 to 20; checker-a proposes\
+      \ 5 to 15; checker-b proposes 5 to 12; checker-c proposes 5 to 12; tiebreaker-1 proposes 5 to\
+      \ 15; tiebreaker-2 proposes 5 to 15 (dKH). The rounded median of all minima and all maxima is 5\
+      \ to 15 dKH. This contains the natural 5 to 8 range without widening. Confidence is low. The\
+      \ Nordic register recommends strictly above 10 dKH without a maximum. Malawi.si and the Malawi\
+      \ Cichlids lake table give 6 to 12, OATA and the Malawi Cichlids water guide give 10 to 15,\
+      \ Malawi-Guru gives 6 to 20, and JBL gives 5 to 10 for a generic Malawi setup. The median joins\
+      \ natural buffering to common aquarium recommendations without treating one narrow guide as a\
+      \ health boundary. The reported agreement is three of six under the 2 dKH endpoint threshold,\
+      \ not a count of exact-value proposals. No chronic species-specific KH experiment establishes\
+      \ the endpoints; GH figures do not supply KH evidence."
   - field: "features.diet"
     proposals:
     - by: "generator"

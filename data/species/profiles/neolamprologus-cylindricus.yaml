@@ -768,14 +768,17 @@ features:
         min: 15
         max: 20
       confidence: low
-      rationale: "The generator, tiebreaker-1 and tiebreaker-2 proposed 15 to 20 dKH; checker-a and checker-b proposed\
-        \ 10 to 20; checker-c proposed 15 to 25. No qualified majority settles these proposals. The tally applies\
-        \ the conservative intersection of all six ranges, 15 to 20, which already contains natural KH, with conservative\
-        \ verification, 3 of 6 exact supporters and low confidence. Fischlexikon recommends 15 to 20 and AquariumDomain\
-        \ the wider 15 to 25. GarnelenTv gives 10 to 16 and Aquabota 8 to 15, both conflicting retailer recommendations;\
-        \ neither establishes long-term health at the lower endpoints. Aquatics Unlimited was blocked and its proposed\
-        \ 10 to 20 cannot be checked here. Fishkeeper states no KH range, so its general hard-water advice is not\
-        \ converted into numerical KH evidence. The retained interval avoids unsupported lower and upper extensions."
+      rationale: "The proposals in vote order are 15 to 20, 10 to 20, 10 to 20, 15 to 25, 15 to 20, 15 to 20\
+        \ (dKH). Without a qualified majority, the medians of all proposed minima and maxima are 15\
+        \ and 20, rounded to 15 to 20 dKH. The median 15 to 20 dKH contains the natural 15 to 20 range\
+        \ without widening. Fischlexikon recommends 15 to 20 and AquariumDomain the wider 15 to 25.\
+        \ GarnelenTv gives 10 to 16 and Aquabota 8 to 15, both conflicting retailer recommendations;\
+        \ neither establishes long-term health at the lower endpoints. Aquatics Unlimited lacks\
+        \ readable source support for its proposed 10 to 20. Fishkeeper states no KH range, so its\
+        \ general hard-water advice is not converted into numerical KH evidence. The median 15 to 20\
+        \ dKH agrees with explicit care advice and contains lake alkalinity near 18 to 19 dKH, making\
+        \ it plausible for stable, buffered Tanganyika aquaria. Confidence is low because endpoint\
+        \ support is incomplete."
       sources:
       - kind: database
         title: "Fischlexikon: Gestreifter Tanganjikabuntbarsch"
@@ -899,7 +902,7 @@ features:
         note: "Table 2 has 6 mmol/L bicarbonate plus 0.28 mmol/L carbonate; charge equivalents multiplied by 2.8.\
           \ Natural water evidence only; included for containment, not chronic aquarium tolerance."
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -2980,14 +2983,17 @@ provenance:
     decision:
       min: 15
       max: 20
-    rationale: "The generator, tiebreaker-1 and tiebreaker-2 proposed 15 to 20 dKH; checker-a and checker-b proposed\
-      \ 10 to 20; checker-c proposed 15 to 25. No qualified majority settles these proposals. The tally applies\
-      \ the conservative intersection of all six ranges, 15 to 20, which already contains natural KH, with conservative\
-      \ verification, 3 of 6 exact supporters and low confidence. Fischlexikon recommends 15 to 20 and AquariumDomain\
-      \ the wider 15 to 25. GarnelenTv gives 10 to 16 and Aquabota 8 to 15, both conflicting retailer recommendations;\
-      \ neither establishes long-term health at the lower endpoints. Aquatics Unlimited was blocked and its proposed\
-      \ 10 to 20 cannot be checked here. Fishkeeper states no KH range, so its general hard-water advice is not\
-      \ converted into numerical KH evidence. The retained interval avoids unsupported lower and upper extensions."
+    rationale: "The proposals in vote order are 15 to 20, 10 to 20, 10 to 20, 15 to 25, 15 to 20, 15 to 20\
+      \ (dKH). Without a qualified majority, the medians of all proposed minima and maxima are 15 and\
+      \ 20, rounded to 15 to 20 dKH. The median 15 to 20 dKH contains the natural 15 to 20 range\
+      \ without widening. Fischlexikon recommends 15 to 20 and AquariumDomain the wider 15 to 25.\
+      \ GarnelenTv gives 10 to 16 and Aquabota 8 to 15, both conflicting retailer recommendations;\
+      \ neither establishes long-term health at the lower endpoints. Aquatics Unlimited lacks readable\
+      \ source support for its proposed 10 to 20. Fishkeeper states no KH range, so its general\
+      \ hard-water advice is not converted into numerical KH evidence. The median 15 to 20 dKH agrees\
+      \ with explicit care advice and contains lake alkalinity near 18 to 19 dKH, making it plausible\
+      \ for stable, buffered Tanganyika aquaria. Confidence is low because endpoint support is\
+      \ incomplete."
   - field: features.origin
     proposals:
     - by: generator

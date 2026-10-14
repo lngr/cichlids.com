@@ -163,17 +163,21 @@ features:
         note: Climate entry cites aquarium-atlas reference 1672; excluded as a field measurement.
     tolerance:
       value:
-        min: 24
+        min: 22
         max: 32
       confidence: low
-      rationale: 'The tally conservatively decides 24 to 32 C with low confidence. Generator proposed 24 to 30,
-        checker-a 22 to 29, checker-b 22 to 32, and checker-c, tiebreaker-1 and tiebreaker-2 each 22 to 33.4 C.
-        Their intersection is 24 to 29 C, widened to contain the decided natural range of 24 to 32 C. This explains
-        why the stored upper limit exceeds direct species-labelled care recommendations. NCS gives the wider lower-end
-        range of 22 to 30 C; FishFish gives 24 to 29, Zoopet 24 to 27 and Aqua-Fish 22 to 27. Seriously Fish allows
-        altifrons 26 to 32 and brokopondo 25 to 33, but these are different species. Mol et al. measure the wider
-        habitat envelope of 24.4 to 33.4 C, which is not a chronic aquarium trial. Long-term health at constant
-        32 C is unverified; ordinary maintenance around 26 to 29 C has better husbandry support.'
+      rationale: 'The proposals in vote order are 24 to 30, 22 to 29, 22 to 32, 22 to 33.4, 22 to 33.4, 22 to
+        33.4 (C). Without a qualified majority, the medians of all proposed minima and maxima are 22
+        and 32.7, rounded to 22 to 33 C. The median 22 to 33 C contains the natural 24 to 32 range
+        without widening. The adjudicated 22 to 32 C range replaces the median 22 to 33 C decision
+        because its upper endpoint derives from hot habitat observations and recommendations for
+        different species, without species-specific evidence for healthy long-term aquarium keeping
+        at that temperature. NCS recommends 22 to 30 C; FishFish gives 24 to 29, Zoopet 24 to 27 and
+        Aqua-Fish 22 to 27. Seriously Fish allows altifrons 26 to 32 and brokopondo 25 to 33, but
+        these are different species. Mol et al. report the wider habitat envelope of 24.4 to 33.4 C,
+        which is not a chronic aquarium trial. Long-term health at constant 32 C lacks verification;
+        ordinary maintenance around 26 to 29 C has better husbandry support. Confidence is low
+        because endpoint support is incomplete.'
       sources:
         - *id003
         - &id008
@@ -289,10 +293,12 @@ features:
             max: 33.4
           note: 'Field envelope supports habitat containment only, not years at its extremes.'
       verification:
-        method: conservative
+        method: adjudicated
         votes:
           agree: 3
           total: 6
+        replaced: {min: 22, max: 33}
+        replacedMethod: median
     verification:
       method: median
       votes:
@@ -607,16 +613,21 @@ features:
     tolerance:
       value:
         min: 0
-        max: 3
+        max: 5
       confidence: low
-      rationale: 'The tally conservatively decides 0 to 3 dKH with low confidence. Generator and tiebreaker-1 proposed
-        0.5 to 3, checker-a 0 to 8, checker-b 0 to 6, checker-c 0.1 to 6, and tiebreaker-2 0 to 3. Their intersection
-        is 0.5 to 3, then widened to zero to contain the decided natural 0 to 1 dKH. The result is narrower than
-        Aqua-Pedia 1 to 6 and Monitarium 3 to 8. Aqua-Pedia discloses generated data and Monitarium contains identification
-        and breeding errors. Monks gives 2 to 3 dKH for the Tapajos redhead, providing congener analogy only. Stalsberg
-        and Landburg describe native or regional water rather than chronic captive limits. No two reliable numerical
-        species-specific husbandry sources establish these endpoints; the broader published KH ranges remain weak
-        evidence. GH and conductivity are not converted to KH.'
+      rationale: 'The proposals in vote order are 0.5 to 3, 0 to 8, 0 to 6, 0.1 to 6, 0.5 to 3, 0 to 3 (dKH).
+        Without a qualified majority, the medians of all proposed minima and maxima are 0.05 and
+        4.5, rounded to 0 to 5 dKH. The median 0 to 5 dKH contains the natural 0 to 1 range without
+        widening. Aqua-Pedia gives 1 to 6 dKH and discloses generated data and Monitarium gives 3 to
+        8 dKH and contains identification and breeding errors. Monks gives 2 to 3 dKH for the
+        Tapajos redhead, providing congener analogy only. Stalsberg and Landburg describe native or
+        regional water rather than chronic captive limits. No two reliable numerical
+        species-specific husbandry sources establish these endpoints; the broader published KH
+        ranges remain weak evidence. GH and conductivity are not converted to KH. The 0 to 5 dKH
+        envelope is plausible for adaptable soft-water eartheaters, with buffering and gradual
+        acclimation more useful than an unverified numerical ceiling. A rounded zero includes dilute
+        natural water and does not prescribe mineral-free water. Confidence is low because endpoint
+        support is incomplete.'
       sources:
         - *id020
         - *id018
@@ -667,7 +678,7 @@ features:
           value: null
           note: No numerical KH recommendation.
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -1378,12 +1389,13 @@ profile:
       - *id002
       - *id010
   husbandry:
-    text: 'A group of six adults is planned for at least 600 litres and a floor of 180 by 60 cm. Leave broad areas
-      of smooth fine sand exposed, with secure woody shelter around the edges. Established biological filtration,
-      accessible mechanical filtration and regular water replacement help handle suspended particles and waste.
-      Match new water carefully and keep it well oxygenated. Routine maintenance around 26 to 29 C has better support
-      than constant heat near the stored 32 C ceiling. Decided tolerances are 24 to 32 C, pH 5.1 to 7, GH 0 to 11
-      and KH 0 to 3, with especially weak evidence for temperature and hardness endpoints.'
+    text: 'A group of six adults is planned for at least 600 litres and a floor of 180 by 60 cm. Leave
+      broad areas of smooth fine sand exposed, with secure woody shelter around the edges.
+      Established biological filtration, accessible mechanical filtration and regular water
+      replacement help handle suspended particles and waste. Match replacement water carefully and
+      keep it well oxygenated. Routine maintenance around 26 to 29 C has better support than
+      constant heat near the stored 32 C ceiling. Decided tolerances are 22 to 32 C, pH 5.1 to 7, GH
+      0 to 11 and KH 0 to 5, with especially weak evidence for temperature and hardness endpoints.'
     sources:
       - *id003
       - *id008
@@ -1600,16 +1612,20 @@ provenance:
             min: 22
             max: 33.4
       decision:
-        min: 24
+        min: 22
         max: 32
-      rationale: 'The tally conservatively decides 24 to 32 C with low confidence. Generator proposed 24 to 30,
-        checker-a 22 to 29, checker-b 22 to 32, and checker-c, tiebreaker-1 and tiebreaker-2 each 22 to 33.4 C.
-        Their intersection is 24 to 29 C, widened to contain the decided natural range of 24 to 32 C. This explains
-        why the stored upper limit exceeds direct species-labelled care recommendations. NCS gives the wider lower-end
-        range of 22 to 30 C; FishFish gives 24 to 29, Zoopet 24 to 27 and Aqua-Fish 22 to 27. Seriously Fish allows
-        altifrons 26 to 32 and brokopondo 25 to 33, but these are different species. Mol et al. measure the wider
-        habitat envelope of 24.4 to 33.4 C, which is not a chronic aquarium trial. Long-term health at constant
-        32 C is unverified; ordinary maintenance around 26 to 29 C has better husbandry support.'
+      rationale: 'The proposals in vote order are 24 to 30, 22 to 29, 22 to 32, 22 to 33.4, 22 to 33.4, 22 to
+        33.4 (C). Without a qualified majority, the medians of all proposed minima and maxima are 22
+        and 32.7, rounded to 22 to 33 C. The median 22 to 33 C contains the natural 24 to 32 range
+        without widening. The adjudicated 22 to 32 C range replaces the median 22 to 33 C decision
+        because its upper endpoint derives from hot habitat observations and recommendations for
+        different species, without species-specific evidence for healthy long-term aquarium keeping
+        at that temperature. NCS recommends 22 to 30 C; FishFish gives 24 to 29, Zoopet 24 to 27 and
+        Aqua-Fish 22 to 27. Seriously Fish allows altifrons 26 to 32 and brokopondo 25 to 33, but
+        these are different species. Mol et al. report the wider habitat envelope of 24.4 to 33.4 C,
+        which is not a chronic aquarium trial. Long-term health at constant 32 C lacks verification;
+        ordinary maintenance around 26 to 29 C has better husbandry support. Confidence is low
+        because endpoint support is incomplete.'
     - field: features.ph
       proposals:
         - by: generator
@@ -1796,15 +1812,20 @@ provenance:
             max: 3
       decision:
         min: 0
-        max: 3
-      rationale: 'The tally conservatively decides 0 to 3 dKH with low confidence. Generator and tiebreaker-1 proposed
-        0.5 to 3, checker-a 0 to 8, checker-b 0 to 6, checker-c 0.1 to 6, and tiebreaker-2 0 to 3. Their intersection
-        is 0.5 to 3, then widened to zero to contain the decided natural 0 to 1 dKH. The result is narrower than
-        Aqua-Pedia 1 to 6 and Monitarium 3 to 8. Aqua-Pedia discloses generated data and Monitarium contains identification
-        and breeding errors. Monks gives 2 to 3 dKH for the Tapajos redhead, providing congener analogy only. Stalsberg
-        and Landburg describe native or regional water rather than chronic captive limits. No two reliable numerical
-        species-specific husbandry sources establish these endpoints; the broader published KH ranges remain weak
-        evidence. GH and conductivity are not converted to KH.'
+        max: 5
+      rationale: 'The proposals in vote order are 0.5 to 3, 0 to 8, 0 to 6, 0.1 to 6, 0.5 to 3, 0 to 3 (dKH).
+        Without a qualified majority, the medians of all proposed minima and maxima are 0.05 and
+        4.5, rounded to 0 to 5 dKH. The median 0 to 5 dKH contains the natural 0 to 1 range without
+        widening. Aqua-Pedia gives 1 to 6 dKH and discloses generated data and Monitarium gives 3 to
+        8 dKH and contains identification and breeding errors. Monks gives 2 to 3 dKH for the
+        Tapajos redhead, providing congener analogy only. Stalsberg and Landburg describe native or
+        regional water rather than chronic captive limits. No two reliable numerical
+        species-specific husbandry sources establish these endpoints; the broader published KH
+        ranges remain weak evidence. GH and conductivity are not converted to KH. The 0 to 5 dKH
+        envelope is plausible for adaptable soft-water eartheaters, with buffering and gradual
+        acclimation more useful than an unverified numerical ceiling. A rounded zero includes dilute
+        natural water and does not prescribe mineral-free water. Confidence is low because endpoint
+        support is incomplete.'
     - field: features.maxSizeCm
       proposals:
         - by: generator

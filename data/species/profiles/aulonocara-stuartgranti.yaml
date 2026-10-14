@@ -363,18 +363,18 @@ features:
       value: {min: 7.5, max: 8.6}
       confidence: low
       rationale: >-
-        Decided by the vote count with the conservative method. Generator, checker-a and
-        tiebreaker-1 proposed 7.5 to 8.6; checker-b and tiebreaker-2 proposed 7.5 to 9.0. The upper
-        limits differ by 0.4, more than the 0.3 that counts as agreement, and the larger camp holds
-        only 3 of 5 votes, so the intersection of all proposals, 7.5 to 8.6, applies; it contains
-        the natural lake range. The sources support this cautious range: nearly all care sheets
-        put the lower limit at 7.5 (Seriously Fish, Fishkeeper, Fishipedia, FishProfiles,
-        Garnelio, The Fish Barn) and the upper limit between 8.2 and 8.6 (Fishkeeper, Fishipedia,
-        Guidarium, FishProfiles and several retailers), while 9.0 rests on Seriously Fish alone,
-        which gives the same value on its other Aulonocara pages. Aqualog and a shop listing with
-        7.0 to 8.0 do not even cover the lake range. Laboratory holding at 7.6 to 7.8 for a month
-        and a two-week holding of juveniles at about 7.1 show short-term survival, not long-term
-        health. Values up to 9.0 are probably tolerated but remain unconfirmed.
+        The proposals in vote order are 7.5 to 8.6, 7.5 to 8.6, 7.5 to 9.0, 7.5 to 8.6 and
+        7.5 to 9.0. No qualified majority exists. The median bounds give pH 7.5 to 8.6 with
+        low confidence and contain the natural 7.7 to 8.6 without widening. Nearly all care
+        sheets place the lower limit at 7.5 (Seriously Fish, Fishkeeper, Fishipedia,
+        FishProfiles, Garnelio and The Fish Barn) and the upper limit between 8.2 and 8.6
+        (Fishkeeper, Fishipedia, Guidarium, FishProfiles and several retailers). This
+        supports the median as a plausible alkaline aquarium range. The 9.0 recommendation
+        rests on Seriously Fish alone, which repeats it on other Aulonocara pages; values up
+        to 9.0 are plausible but unconfirmed. Aqualog and a shop listing give 7.0 to 8.0,
+        which does not cover the lake range. Laboratory holding at 7.6 to 7.8 for a month
+        and juveniles at about 7.1 for two weeks demonstrate short-term holding, not
+        lifetime health.
       sources:
         - *sf
         - *fk
@@ -454,7 +454,7 @@ features:
           value: {min: 7.8, max: 7.8}
           note: single keeper report of a breeding group
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
 
   ghDgh:
@@ -554,20 +554,20 @@ features:
       method: waterbody
       waterbody: lake-malawi
     tolerance:
-      value: {min: 5, max: 12}
+      value: {min: 5, max: 15}
       confidence: low
       rationale: >-
-        Decided by the vote count with the conservative method. Generator, checker-b and
-        tiebreaker-2 proposed 5 to 15 dKH, checker-a 5 to 12 dKH and tiebreaker-1 5 to 20 dKH.
-        The upper limits lie more than 2 dKH apart and the largest camp holds only 3 of 5 votes, so
-        the intersection of all proposals, 5 to 12 dKH, applies; it contains the natural lake
-        range. Species-specific carbonate hardness figures are rare: the only ones found come from
-        retailers, 6 to 30 dKH at Garnelio and 8 to 12 dKH in a Singapore care guide, while a
-        genus-level hobby article advises at least 10 dKH and a genus-level guide gives 4 to 6 dKH,
-        which stays below the lake maximum. The species databases state only total hardness and
-        hard, alkaline water. The lower limit is the lake minimum, in which wild fish live; the
-        upper limit of 12 dKH is the cautious end of thin evidence, and higher buffering as in
-        many Malawi tanks is probably tolerated but unconfirmed.
+        The proposals in vote order are 5 to 15, 5 to 12, 5 to 15, 5 to 20 and 5 to 15 dKH.
+        No qualified majority exists. The median bounds give 5 to 15 dKH with low confidence
+        and contain the natural 5 to 8 dKH without widening. Species-specific
+        carbonate-hardness figures are rare and come from retailers, 6 to 30 dKH at Garnelio
+        and 8 to 12 in a Singapore care guide. A genus-level hobby article advises at least
+        10 dKH; another genus guide gives 4 to 6, below the lake maximum. Species databases
+        state total hardness and the need for alkaline water, without establishing KH. The
+        lake supports the lower endpoint and common Malawi aquarium practice supports
+        buffering above 12 dKH, making 15 a plausible provisional upper allowance. Neither
+        the retailer extremes nor the general advice establish chronic physiological
+        endpoints.
       sources:
         - *branchu
         - *fao
@@ -607,7 +607,7 @@ features:
           value: {min: 5, max: 15}
           note: buffered Malawi tanks in general
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
 
   maxSizeCm:
@@ -1423,10 +1423,18 @@ provenance:
         - {by: tiebreaker-2, value: {min: 7.5, max: 9.0}}
       decision: {min: 7.5, max: 8.6}
       rationale: >-
-        Decided by the vote count with the conservative method: the upper limits of 8.6 and 9.0
-        differ by more than 0.3 and the larger camp has only 3 of 5 votes. The intersection of all
-        votes, 7.5 to 8.6, is the most cautious range and contains the lake range; 9.0 rests on
-        Seriously Fish alone.
+        The proposals in vote order are 7.5 to 8.6, 7.5 to 8.6, 7.5 to 9.0, 7.5 to 8.6 and
+        7.5 to 9.0. No qualified majority exists. The median bounds give pH 7.5 to 8.6 with
+        low confidence and contain the natural 7.7 to 8.6 without widening. Nearly all care
+        sheets place the lower limit at 7.5 (Seriously Fish, Fishkeeper, Fishipedia,
+        FishProfiles, Garnelio and The Fish Barn) and the upper limit between 8.2 and 8.6
+        (Fishkeeper, Fishipedia, Guidarium, FishProfiles and several retailers). This
+        supports the median as a plausible alkaline aquarium range. The 9.0 recommendation
+        rests on Seriously Fish alone, which repeats it on other Aulonocara pages; values up
+        to 9.0 are plausible but unconfirmed. Aqualog and a shop listing give 7.0 to 8.0,
+        which does not cover the lake range. Laboratory holding at 7.6 to 7.8 for a month
+        and juveniles at about 7.1 for two weeks demonstrate short-term holding, not
+        lifetime health.
     - field: features.khDkh.tolerance
       proposals:
         - {by: generator, value: {min: 5, max: 15}}
@@ -1434,12 +1442,19 @@ provenance:
         - {by: checker-b, value: {min: 5, max: 15}}
         - {by: tiebreaker-1, value: {min: 5, max: 20}}
         - {by: tiebreaker-2, value: {min: 5, max: 15}}
-      decision: {min: 5, max: 12}
+      decision: {min: 5, max: 15}
       rationale: >-
-        Decided by the vote count with the conservative method: the upper limits of 12, 15 and 20
-        dKH lie more than 2 dKH apart and the largest camp has only 3 of 5 votes. The intersection
-        of all votes, 5 to 12 dKH, is the most cautious range; no species database states a
-        carbonate hardness.
+        The proposals in vote order are 5 to 15, 5 to 12, 5 to 15, 5 to 20 and 5 to 15 dKH.
+        No qualified majority exists. The median bounds give 5 to 15 dKH with low confidence
+        and contain the natural 5 to 8 dKH without widening. Species-specific
+        carbonate-hardness figures are rare and come from retailers, 6 to 30 dKH at Garnelio
+        and 8 to 12 in a Singapore care guide. A genus-level hobby article advises at least
+        10 dKH; another genus guide gives 4 to 6, below the lake maximum. Species databases
+        state total hardness and the need for alkaline water, without establishing KH. The
+        lake supports the lower endpoint and common Malawi aquarium practice supports
+        buffering above 12 dKH, making 15 a plausible provisional upper allowance. Neither
+        the retailer extremes nor the general advice establish chronic physiological
+        endpoints.
     - field: features.diet.value.foods
       proposals:
         - {by: generator, value: [insect larvae and small crustaceans sifted from sand, fine cichlid pellets and flakes, "frozen mysis, brine shrimp and krill", bloodworm and mosquito larvae, food with Spirulina or other plant matter]}

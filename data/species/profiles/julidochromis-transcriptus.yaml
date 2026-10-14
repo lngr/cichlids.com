@@ -702,18 +702,20 @@ features:
       waterbody: "lake-tanganyika"
     tolerance:
       value:
-        min: 8
+        min: 7.8
         max: 9.4
       confidence: "low"
-      rationale: "The conservative tally chooses pH 8.0 to 9.4 with low confidence because neither camp reaches four
-        agreeing votes. Generator and checker-b propose 7.5 to 9.4; checker-c proposes 7.5 to 9.5; checker-a,
-        tiebreaker-1 and tiebreaker-2 propose 8.0 to 9.4. The intersection of all proposals is 8.0 to 9.4 and
-        contains the natural 8.4 to 9.4 interval. Maidenhead recommends 8.0 to 9.0; TropicalFreshwaterFish
-        gives the wider lower allowance of 7.5 to 9.0, while Aquario and Zierfische-Direkt give the wider 7.5
-        to 9.5 interval. Those claims remain in evidence. The Nordic association gives 8.8 to 9.3 and Gauthier
-        bred Gombi stock at 8.2. Schumer et al. maintained study fish at pH 8.0, supporting a point at the
-        chosen floor without proving all lifetime endpoints. The upper endpoint is retained for lake
-        containment, not as a captive target to pursue."
+      rationale: "The proposals in vote order are 7.5 to 9.4, 8 to 9.4, 7.5 to 9.4, 7.5 to 9.5, 8 to 9.4, 8 to
+        9.4 (pH). Without a qualified majority, the medians of all proposed minima and maxima are
+        7.75 and 9.4, rounded to 7.8 to 9.4 pH. The median 7.8 to 9.4 pH contains the natural 8.4 to
+        9.4 range without widening. Maidenhead recommends 8.0 to 9.0; TropicalFreshwaterFish gives
+        the wider lower allowance of 7.5 to 9.0, while Aquario and Zierfische-Direkt give the wider
+        7.5 to 9.5 interval. The Nordic association gives 8.8 to 9.3 and Gauthier reports breeding
+        Gombi stock at 8.2. Schumer et al. report study fish maintained at pH 8.0, supporting a
+        point close to the median floor without proving all lifetime endpoints. The upper endpoint
+        is retained for lake containment, not as a captive target to pursue. The 7.8 lower bound
+        lies within several explicit care ranges, so the median is plausible with stable carbonate
+        buffering. Confidence is low because endpoint support is incomplete."
       sources:
         - kind: "database"
           title: "FishBase: Julidochromis transcriptus summary"
@@ -1057,7 +1059,7 @@ features:
             max: 8
           note: "Reported pH used for naturally formed study pairs; not an endurance endpoint experiment."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -5107,17 +5109,19 @@ provenance:
             min: 8
             max: 9.4
       decision:
-        min: 8
+        min: 7.8
         max: 9.4
-      rationale: "conservative decision from tally.yaml. The conservative tally chooses pH 8.0 to 9.4 with low
-        confidence because neither camp reaches four agreeing votes. Generator and checker-b propose 7.5 to
-        9.4; checker-c proposes 7.5 to 9.5; checker-a, tiebreaker-1 and tiebreaker-2 propose 8.0 to 9.4. The
-        intersection of all proposals is 8.0 to 9.4 and contains the natural 8.4 to 9.4 interval. Maidenhead
-        recommends 8.0 to 9.0; TropicalFreshwaterFish gives the wider lower allowance of 7.5 to 9.0, while
-        Aquario and Zierfische-Direkt give the wider 7.5 to 9.5 interval. Those claims remain in evidence. The
-        Nordic association gives 8.8 to 9.3 and Gauthier bred Gombi stock at 8.2. Schumer et al. maintained
-        study fish at pH 8.0, supporting a point at the chosen floor without proving all lifetime endpoints.
-        The upper endpoint is retained for lake containment, not as a captive target to pursue."
+      rationale: "The proposals in vote order are 7.5 to 9.4, 8 to 9.4, 7.5 to 9.4, 7.5 to 9.5, 8 to 9.4, 8 to
+        9.4 (pH). Without a qualified majority, the medians of all proposed minima and maxima are
+        7.75 and 9.4, rounded to 7.8 to 9.4 pH. The median 7.8 to 9.4 pH contains the natural 8.4 to
+        9.4 range without widening. Maidenhead recommends 8.0 to 9.0; TropicalFreshwaterFish gives
+        the wider lower allowance of 7.5 to 9.0, while Aquario and Zierfische-Direkt give the wider
+        7.5 to 9.5 interval. The Nordic association gives 8.8 to 9.3 and Gauthier reports breeding
+        Gombi stock at 8.2. Schumer et al. report study fish maintained at pH 8.0, supporting a
+        point close to the median floor without proving all lifetime endpoints. The upper endpoint
+        is retained for lake containment, not as a captive target to pursue. The 7.8 lower bound
+        lies within several explicit care ranges, so the median is plausible with stable carbonate
+        buffering. Confidence is low because endpoint support is incomplete."
     - field: "features.ghDgh.tolerance"
       proposals:
         - by: "generator"

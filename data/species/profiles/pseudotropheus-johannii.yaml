@@ -714,15 +714,18 @@ features:
     tolerance:
       value:
         min: 3
-        max: 20
+        max: 23
       confidence: low
-      rationale: "Generator, checker-a and tiebreaker-2 proposed 3 to 20 dGH; checker-b, checker-c and tiebreaker-1\
-        \ proposed 3 to 25 dGH. The three-to-three split has no qualified majority, so the tally takes the\
-        \ conservative intersection of 3 to 20 dGH and low confidence. Fischlexikon gives 5 to 20 and FishProfiles\
-        \ 10 to 20 dGH, whereas Seriously Fish and Aqua-Fish give the wider 10 to 25 and retailer Interaquaristik\
-        \ 8 to 25 dGH. Their upper extension is recorded but does not override the required tally intersection\
-        \ or demonstrate a chronic physiological limit. The native 3 to 5 dGH anchors the lower end; GH is\
-        \ distinct from KH."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 3 to 20; checker-a\
+        \ proposes 3 to 20; checker-b proposes 3 to 25; checker-c proposes 3 to 25; tiebreaker-1\
+        \ proposes 3 to 25; tiebreaker-2 proposes 3 to 20 (dGH). The rounded median of all minima and\
+        \ all maxima is 3 to 23 dGH. This contains natural 3 to 5 without widening. Confidence is low.\
+        \ Fischlexikon gives 5 to 20 and FishProfiles 10 to 20 dGH, whereas Seriously Fish and\
+        \ Aqua-Fish give the wider 10 to 25 and retailer Interaquaristik 8 to 25 dGH. The broader care\
+        \ ranges contain the rounded median upper edge of 23 dGH, without demonstrating a chronic\
+        \ physiological limit. The native 3 to 5 dGH anchors the lower end; GH is distinct from KH.\
+        \ The median upper endpoint is 22.5 dGH rounded to 23, within broader species-care ranges,\
+        \ while natural lake water anchors the lower end."
       sources:
         - kind: literature
           title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
@@ -926,7 +929,7 @@ features:
             max: 25
           note: Species-specific aquarium care range explicitly labeled dGH.
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -3200,13 +3203,13 @@ profile:
   husbandry:
     text: >-
       Plan a 300 litre aquarium with a base of at least 120 by 47.5 cm for one male and at least
-      three females. Smaller recommendations exist, but this profile chooses more room for
-      shelter and escape during adult pursuit. Build stable rock formations with several routes
-      between refuges and clear gaps for swimming. Biological filtration, oxygenation and
-      regular partial water changes support the stocking. A steady temperature near 24 to 26 C
-      is a practical routine target. The decided aquarium envelopes are 21 to 29 C, pH 7.5 to
-      8.8, GH 3 to 20 dGH and KH 5 to 15 dKH; these inferred limits do not demonstrate lifelong
-      health at every endpoint. Measure each parameter and match replacement water gradually.
+      three females. Smaller recommendations exist, but this profile chooses more room for shelter
+      and escape during adult pursuit. Build stable rock formations with several routes between
+      refuges and clear gaps for swimming. Biological filtration, oxygenation and regular partial
+      water changes support the stocking. A steady temperature near 24 to 26 C is a practical
+      routine target. The decided aquarium envelopes are 21 to 29 C, pH 7.5 to 8.8, GH 3 to 23 dGH
+      and KH 5 to 15 dKH; these inferred limits do not demonstrate lifelong health at every
+      endpoint. Measure each parameter and match replacement water gradually.
     sources:
       - kind: database
         title: "Malawi.si: Pseudotropheus johannii 'Gome'"
@@ -3598,14 +3601,17 @@ provenance:
             max: 20
       decision:
         min: 3
-        max: 20
-      rationale: "Generator, checker-a and tiebreaker-2 proposed 3 to 20 dGH; checker-b, checker-c and tiebreaker-1\
-        \ proposed 3 to 25 dGH. The three-to-three split has no qualified majority, so the tally takes the\
-        \ conservative intersection of 3 to 20 dGH and low confidence. Fischlexikon gives 5 to 20 and FishProfiles\
-        \ 10 to 20 dGH, whereas Seriously Fish and Aqua-Fish give the wider 10 to 25 and retailer Interaquaristik\
-        \ 8 to 25 dGH. Their upper extension is recorded but does not override the required tally intersection\
-        \ or demonstrate a chronic physiological limit. The native 3 to 5 dGH anchors the lower end; GH is\
-        \ distinct from KH."
+        max: 23
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 3 to 20; checker-a\
+        \ proposes 3 to 20; checker-b proposes 3 to 25; checker-c proposes 3 to 25; tiebreaker-1\
+        \ proposes 3 to 25; tiebreaker-2 proposes 3 to 20 (dGH). The rounded median of all minima and\
+        \ all maxima is 3 to 23 dGH. This contains natural 3 to 5 without widening. Confidence is low.\
+        \ Fischlexikon gives 5 to 20 and FishProfiles 10 to 20 dGH, whereas Seriously Fish and\
+        \ Aqua-Fish give the wider 10 to 25 and retailer Interaquaristik 8 to 25 dGH. The broader care\
+        \ ranges contain the rounded median upper edge of 23 dGH, without demonstrating a chronic\
+        \ physiological limit. The native 3 to 5 dGH anchors the lower end; GH is distinct from KH.\
+        \ The median upper endpoint is 22.5 dGH rounded to 23, within broader species-care ranges,\
+        \ while natural lake water anchors the lower end."
     - field: features.khDkh.tolerance
       proposals:
         - by: generator

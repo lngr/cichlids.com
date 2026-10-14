@@ -815,19 +815,20 @@ features:
       waterbody: lake-tanganyika
     tolerance:
       value:
-        min: 10
+        min: 9
         max: 20
       confidence: low
-      rationale: "The five votes did not reach a qualified majority: the generator proposed 8 to 20 dGH,
-        checker-a 9 to 25, checker-b and checker-c 10 to 20 and tiebreaker-1 8 to 25. The tally
-        therefore decided conservatively and took the intersection of all votes, 10 to 20 dGH, which
-        contains the natural range of 10 to 13 dGH; the narrower range makes the app warn earlier.
+      rationale: "The proposals in vote order are 8 to 20, 9 to 25, 10 to 20, 10 to 20, 8 to 25 (dGH). Without
+        a qualified majority, the medians of all proposed minima and maxima are 9 and 20, rounded to
+        9 to 20 dGH. The median 9 to 20 dGH contains the natural 10 to 13 range without widening.
         The sources span a wider range of 8 to 25 dGH: Seriously Fish gives 10 to 25 dGH for this
         species and for C. frontosa, Fishkeeper 15 to 25, Guidarium 12 to 25, Tropicalfreshwaterfish
         8 to 22 and Tanganyika.si 8 to 20 dGH for Tanganyika cichlids in general. A few sheets stop
         lower, such as FishBase with 8 to 12, Flowgrow with 7 to 14 and FishFish with 6 to 15 dGH;
-        they describe a comfortable middle rather than a limit. Total hardness matters less than a
-        high, stable pH and carbonate hardness for this species."
+        they describe recommended conditions rather than demonstrated health limits. Total hardness
+        matters less than a high, stable pH and carbonate hardness for this species. Fishipedia
+        recommends 9 to 19 dGH and Aquarium Guide 10 to 20, supporting the selected median band.
+        Confidence is low because endpoint support is incomplete."
       sources:
         - kind: database
           title: "Seriously Fish, Cyphotilapia gibberosa"
@@ -1041,7 +1042,7 @@ features:
             max: 15
           note: general hobby page; minimum target, harder water also kept
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 5
@@ -3683,10 +3684,19 @@ provenance:
             min: 8
             max: 25
       decision:
-        min: 10
+        min: 9
         max: 20
-      rationale: "Decided by the tally as conservative: no qualified majority among five votes (3
-        agreeing), so the intersection of all votes applies; the sources span 8 to 25 dGH."
+      rationale: "The proposals in vote order are 8 to 20, 9 to 25, 10 to 20, 10 to 20, 8 to 25 (dGH). Without
+        a qualified majority, the medians of all proposed minima and maxima are 9 and 20, rounded to
+        9 to 20 dGH. The median 9 to 20 dGH contains the natural 10 to 13 range without widening.
+        The sources span a wider range of 8 to 25 dGH: Seriously Fish gives 10 to 25 dGH for this
+        species and for C. frontosa, Fishkeeper 15 to 25, Guidarium 12 to 25, Tropicalfreshwaterfish
+        8 to 22 and Tanganyika.si 8 to 20 dGH for Tanganyika cichlids in general. A few sheets stop
+        lower, such as FishBase with 8 to 12, Flowgrow with 7 to 14 and FishFish with 6 to 15 dGH;
+        they describe recommended conditions rather than demonstrated health limits. Total hardness
+        matters less than a high, stable pH and carbonate hardness for this species. Fishipedia
+        recommends 9 to 19 dGH and Aquarium Guide 10 to 20, supporting the selected median band.
+        Confidence is low because endpoint support is incomplete."
     - field: features.khDkh.tolerance
       proposals:
         - by: generator

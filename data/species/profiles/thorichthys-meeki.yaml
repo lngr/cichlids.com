@@ -472,20 +472,23 @@ features:
         value: {max: 10}
         note: Upper limit only, aquarium value.
     tolerance:
-      value: {min: 5, max: 30}
+      value: {min: 4, max: 30}
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 6}
       rationale: >-
-        The votes did not settle, so the tolerance is the intersection of all proposals, widened to
-        contain the decided natural range. The proposals were generator 4 to 90, checker-a 5 to 30,
-        checker-b 4 to 22, checker-c 2 to 20, tiebreaker-1 4 to 30 and tiebreaker-2 4 to 30 dGH; their
-        intersection of 5 to 20 dGH is widened to 30 dGH at the top. Husbandry sources reach wider at
-        both ends: Seriously Fish accepts 2 to 15 dGH, a breeding colony spawned repeatedly at 3 to 5
-        dGH, Aqua-Fish.net names 4 to 30 dGH, and wild fish live in Laguna Bacalar at about 74 to 90
-        dGH. Practical Fishkeeping asks for more than 6 and up to 18 dGH and Fishkeeper up to 18 dH.
-        Captive-bred stock is commonly kept in soft to hard tap water without trouble.
+        No qualified majority settles the 6 proposals. generator proposes 4 to 90; checker-a
+        proposes 5 to 30; checker-b proposes 4 to 22; checker-c proposes 2 to 20; tiebreaker-1
+        proposes 4 to 30; tiebreaker-2 proposes 4 to 30 (dGH). The rounded median of all minima and
+        all maxima is 4 to 30 dGH. This contains natural 8 to 30 without widening. Confidence is
+        low. Husbandry sources cover soft to hard water: Seriously Fish accepts 2 to 15 dGH, a
+        breeding account reports repeated spawning at 3 to 5 dGH, Aqua-Fish.net names 4 to 30 dGH,
+        and wild fish live in Laguna Bacalar at about 74 to 90 dGH, an exceptional gypsum habitat
+        with unresolved population identity, not an aquarium target. Practical Fishkeeping asks for
+        more than 6 and up to 18 dGH and Fishkeeper up to 18 dH. Captive-bred stock is commonly kept
+        in soft to hard tap water without trouble. The median has direct aquarium-care support at 4
+        to 30 dGH and contains natural 8 to 30 without adopting the exceptional Bacalar ceiling.
       sources:
         - *sf
         - *pfk
@@ -1461,8 +1464,18 @@ provenance:
         - {by: checker-c, value: {min: 2, max: 20}}
         - {by: tiebreaker-1, value: {min: 4, max: 30}}
         - {by: tiebreaker-2, value: {min: 4, max: 30}}
-      decision: {min: 5, max: 30}
-      rationale: Conservative decision of the tally; the intersection of all votes (5 to 20 dGH) is widened to contain the natural range of 8 to 30 dGH.
+      decision: {min: 4, max: 30}
+      rationale: No qualified majority settles the 6 proposals. generator proposes 4 to 90; checker-a
+        proposes 5 to 30; checker-b proposes 4 to 22; checker-c proposes 2 to 20; tiebreaker-1
+        proposes 4 to 30; tiebreaker-2 proposes 4 to 30 (dGH). The rounded median of all minima and
+        all maxima is 4 to 30 dGH. This contains natural 8 to 30 without widening. Confidence is
+        low. Husbandry sources cover soft to hard water, Seriously Fish accepts 2 to 15 dGH, a
+        breeding account reports repeated spawning at 3 to 5 dGH, Aqua-Fish.net names 4 to 30 dGH,
+        and wild fish live in Laguna Bacalar at about 74 to 90 dGH, an exceptional gypsum habitat
+        with unresolved population identity, not an aquarium target. Practical Fishkeeping asks for
+        more than 6 and up to 18 dGH and Fishkeeper up to 18 dH. Captive-bred stock is commonly kept
+        in soft to hard tap water without trouble. The median has direct aquarium-care support at 4
+        to 30 dGH and contains natural 8 to 30 without adopting the exceptional Bacalar ceiling.
     - field: features.khDkh
       proposals:
         - {by: generator, value: {min: 4, max: 21}}

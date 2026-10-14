@@ -441,11 +441,11 @@ features:
         note: Routine Anzalduas water samples dated October 1998 through September 2000.
     tolerance:
       value:
-        min: 13
-        max: 32
+        min: 12
+        max: 33
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 2
           total: 6
@@ -690,16 +690,19 @@ features:
             min: 16
             max: 34.5
           note: Ambient native river values only; no demonstration of multi-year aquarium health at the upper endpoint.
-      rationale: "generator proposed 18 to 32; checker-a proposed 12 to 33; checker-b proposed 11 to 33; checker-c
-        proposed 9.5 to 34.5; tiebreaker-1 proposed 9.5 to 34.5; tiebreaker-2 proposed 18 to 33. No qualified
-        majority formed. Tally intersects all six proposals at 18 to 32 C, then lowers the minimum to 13 C to
-        contain its natural decision. The resulting conservative 13 to 32 C has low confidence: no husbandry
-        source establishes healthy constant maintenance at 13 C for years. Aquarismo Paulista gives 18 to 32
-        C, FishProfiles 20 to 31 C, and Fishkeeping 20 to 28 C; the wider TFH care envelope is 20 to 33 C and
-        the Nordic register gives 18 to 33 C. Berg recommends approximately 21.1 to 23.9 C, while AKVARISTA
-        summarizes 18 C breeding and 15 C winter holding. Short cold-survival experiments and historical river
-        extremes do not demonstrate a chronic aquarium tolerance. Around 22 to 26 C is a practical routine
-        band."
+      rationale: "The proposals in vote order are 18 to 32, 12 to 33, 11 to 33, 9.5 to 34.5, 9.5 to 34.5, 18
+        to 33 (C). Without a qualified majority, the medians of all proposed minima and maxima are
+        11.5 and 33, rounded to 12 to 33 C. The median 12 to 33 C contains the natural 13 to 32
+        range without widening. Aquarismo Paulista gives 18 to 32 C, FishProfiles 20 to 31 C, and
+        Fishkeeping 20 to 28 C; the wider TFH care envelope is 20 to 33 C and the Nordic register
+        gives 18 to 33 C. Berg recommends approximately 21.1 to 23.9 C, while AKVARISTA summarizes
+        18 C breeding and 15 C winter holding. Short cold-survival experiments and historical river
+        extremes do not demonstrate a chronic aquarium tolerance. Around 22 to 26 C is a practical
+        routine band. The 12 to 33 C median is a plausible seasonal envelope for this subtropical
+        cichlid, with 33 C supported by aquarium recommendations and the lower extension inferred
+        from native seasonal exposure. The 12 C endpoint is not a supported constant aquarium
+        setting, and acclimation and oxygenation matter. Confidence is low because endpoint support
+        is incomplete."
     verification:
       method: median
       votes:
@@ -1486,7 +1489,7 @@ features:
         max: 30
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -1737,15 +1740,16 @@ features:
             min: 14
             max: 25.2
           note: "Native field hardness; supports the small containment extension, not captive duration."
-      rationale: "generator proposed 5 to 26; checker-a proposed 5 to 26; checker-b proposed 5 to 34; checker-c
-        proposed 4.5 to 35.3; tiebreaker-1 proposed 4.5 to 35.3; tiebreaker-2 proposed 5 to 26. No four-vote
-        cluster formed. Tally intersects the proposals at 5 to 26 dGH, then increases the upper endpoint to 30
-        dGH to contain its natural decision. This conservative result is low confidence because chronic
-        aquarium health at 30 dGH was not demonstrated. Seriously Fish, FishProfiles and Fishkeeping give 5 to
-        12 dGH; Berg gives 8 to 25 dGH, Aqua-Fish 5 to 20 dGH, and the other TFH account approximately 4.5 to
-        11.2 dGH. The decision is narrower than the proposals extending to 34 or 35.3 dGH and the river
-        evidence underlying those extensions. Field exposure supports possible adaptation, not years of
-        constant exposure. Salinity experiments are not converted to GH."
+      rationale: "The proposals in vote order are 5 to 26, 5 to 26, 5 to 34, 4.5 to 35.3, 4.5 to 35.3, 5 to 26
+        (dGH). Without a qualified majority, the medians of all proposed minima and maxima are 5 and
+        30, rounded to 5 to 30 dGH. The median 5 to 30 dGH contains the natural 9 to 30 range
+        without widening. Seriously Fish, FishProfiles and Fishkeeping give 5 to 12 dGH; Berg gives
+        8 to 25 dGH, Aqua-Fish 5 to 20 dGH, and the other TFH account approximately 4.5 to 11.2 dGH.
+        The 5 to 30 dGH median covers the natural 9 to 30 range and is plausible for a river fish
+        exposed to hard water, although the upper endpoint rests on field exposure rather than
+        chronic captive evidence. Field exposure supports possible adaptation, not years of constant
+        exposure. Salinity experiments are not converted to GH. Confidence is low because endpoint
+        support is incomplete."
     verification:
       method: median
       votes:
@@ -3876,15 +3880,14 @@ profile:
         accessed: "2026-10-13"
   husbandry:
     text: >-
-      For one established adult pair, use at least about 500 L and a 180 by 55 cm footprint.
-      This is a conservative planning recommendation synthesized from pair-specific guidance.
-      Arrange stable shelters with separate exits and broken sightlines, and keep a secure
-      divider available. Support heavy rocks so digging cannot undermine them. Strong
-      filtration, water movement and regular partial water changes help control the waste
-      produced by large fish. Around 22 to 26 C is a practical maintenance band. The stored
-      tolerances are 13 to 32 C, pH 6.0 to 8.3, GH 5 to 30 dGH and KH 5 to 12 dKH; all have low
-      confidence, and their endpoints are not demonstrated equally safe constant settings for
-      years.
+      For one established adult pair, use at least about 500 L and a 180 by 55 cm footprint. This is
+      a conservative planning recommendation synthesized from pair-specific guidance. Arrange stable
+      shelters with separate exits and broken sightlines, and keep a secure divider available.
+      Support heavy rocks so digging cannot undermine them. Strong filtration, water movement and
+      regular partial water changes help control the waste produced by large fish. Around 22 to 26 C
+      is a practical maintenance band. The stored tolerances are 12 to 33 C, pH 6.0 to 8.3, GH 5 to
+      30 dGH and KH 5 to 12 dKH; all have low confidence, and their endpoints are not demonstrated
+      equally safe constant settings for years.
     sources:
       - kind: literature
         title: "TFH Magazine: The Texas Cichlid Herichthys cyanoguttatus"
@@ -4518,18 +4521,21 @@ provenance:
             min: 18
             max: 33
       decision:
-        min: 13
-        max: 32
-      rationale: "generator proposed 18 to 32; checker-a proposed 12 to 33; checker-b proposed 11 to 33; checker-c
-        proposed 9.5 to 34.5; tiebreaker-1 proposed 9.5 to 34.5; tiebreaker-2 proposed 18 to 33. No qualified
-        majority formed. Tally intersects all six proposals at 18 to 32 C, then lowers the minimum to 13 C to
-        contain its natural decision. The resulting conservative 13 to 32 C has low confidence: no husbandry
-        source establishes healthy constant maintenance at 13 C for years. Aquarismo Paulista gives 18 to 32
-        C, FishProfiles 20 to 31 C, and Fishkeeping 20 to 28 C; the wider TFH care envelope is 20 to 33 C and
-        the Nordic register gives 18 to 33 C. Berg recommends approximately 21.1 to 23.9 C, while AKVARISTA
-        summarizes 18 C breeding and 15 C winter holding. Short cold-survival experiments and historical river
-        extremes do not demonstrate a chronic aquarium tolerance. Around 22 to 26 C is a practical routine
-        band."
+        min: 12
+        max: 33
+      rationale: "The proposals in vote order are 18 to 32, 12 to 33, 11 to 33, 9.5 to 34.5, 9.5 to 34.5, 18
+        to 33 (C). Without a qualified majority, the medians of all proposed minima and maxima are
+        11.5 and 33, rounded to 12 to 33 C. The median 12 to 33 C contains the natural 13 to 32
+        range without widening. Aquarismo Paulista gives 18 to 32 C, FishProfiles 20 to 31 C, and
+        Fishkeeping 20 to 28 C; the wider TFH care envelope is 20 to 33 C and the Nordic register
+        gives 18 to 33 C. Berg recommends approximately 21.1 to 23.9 C, while AKVARISTA summarizes
+        18 C breeding and 15 C winter holding. Short cold-survival experiments and historical river
+        extremes do not demonstrate a chronic aquarium tolerance. Around 22 to 26 C is a practical
+        routine band. The 12 to 33 C median is a plausible seasonal envelope for this subtropical
+        cichlid, with 33 C supported by aquarium recommendations and the lower extension inferred
+        from native seasonal exposure. The 12 C endpoint is not a supported constant aquarium
+        setting, and acclimation and oxygenation matter. Confidence is low because endpoint support
+        is incomplete."
     - field: features.ph.tolerance
       proposals:
         - by: generator
@@ -4597,15 +4603,16 @@ provenance:
       decision:
         min: 5
         max: 30
-      rationale: "generator proposed 5 to 26; checker-a proposed 5 to 26; checker-b proposed 5 to 34; checker-c
-        proposed 4.5 to 35.3; tiebreaker-1 proposed 4.5 to 35.3; tiebreaker-2 proposed 5 to 26. No four-vote
-        cluster formed. Tally intersects the proposals at 5 to 26 dGH, then increases the upper endpoint to 30
-        dGH to contain its natural decision. This conservative result is low confidence because chronic
-        aquarium health at 30 dGH was not demonstrated. Seriously Fish, FishProfiles and Fishkeeping give 5 to
-        12 dGH; Berg gives 8 to 25 dGH, Aqua-Fish 5 to 20 dGH, and the other TFH account approximately 4.5 to
-        11.2 dGH. The decision is narrower than the proposals extending to 34 or 35.3 dGH and the river
-        evidence underlying those extensions. Field exposure supports possible adaptation, not years of
-        constant exposure. Salinity experiments are not converted to GH."
+      rationale: "The proposals in vote order are 5 to 26, 5 to 26, 5 to 34, 4.5 to 35.3, 4.5 to 35.3, 5 to 26
+        (dGH). Without a qualified majority, the medians of all proposed minima and maxima are 5 and
+        30, rounded to 5 to 30 dGH. The median 5 to 30 dGH contains the natural 9 to 30 range
+        without widening. Seriously Fish, FishProfiles and Fishkeeping give 5 to 12 dGH; Berg gives
+        8 to 25 dGH, Aqua-Fish 5 to 20 dGH, and the other TFH account approximately 4.5 to 11.2 dGH.
+        The 5 to 30 dGH median covers the natural 9 to 30 range and is plausible for a river fish
+        exposed to hard water, although the upper endpoint rests on field exposure rather than
+        chronic captive evidence. Field exposure supports possible adaptation, not years of constant
+        exposure. Salinity experiments are not converted to GH. Confidence is low because endpoint
+        support is incomplete."
     - field: features.khDkh.tolerance
       proposals:
         - by: generator

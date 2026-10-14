@@ -1102,20 +1102,19 @@ features:
     tolerance:
       value:
         min: 6
-        max: 12
+        max: 18
       confidence: low
-      rationale: "The tally conservatively intersects the six proposed tolerance ranges at 10 to 12 dKH, then\
-        \ widens the lower endpoint to 6 to contain the decided natural KH. The result is 6 to 12 dKH with\
-        \ low confidence and two of six counted agreeing votes. LiveAquaria states 10 to 15, AquariumDomain\
-        \ 10 to 25, and Bay Bridge Aquarium 10 to 20 dKH; all are wider than the selected upper interval and\
-        \ none establishes years of healthy exposure at the endpoints. Checker-a's upper endpoint of 12 was\
-        \ inferred from GH and pH, which cannot establish KH and is not presented as a direct source statement.\
-        \ It nevertheless constrains the mandatory conservative tally decision. Natural measurements near 6.1\
-        \ and 11 dKH explain containment but do not validate chronic aquarium limits. The 6 to 12 envelope\
-        \ is therefore a precautionary pipeline decision with an especially uncertain upper endpoint. generator\
-        \ proposed {\"min\": 6, \"max\": 15}; checker-a proposed {\"min\": 2, \"max\": 12}; checker-b proposed\
-        \ {\"min\": 10, \"max\": 15}; checker-c proposed {\"min\": 6.1, \"max\": 20}; tiebreaker-1 proposed\
-        \ {\"min\": 6.1, \"max\": 20}; tiebreaker-2 proposed {\"min\": 3.4, \"max\": 20}."
+      rationale: "The proposals in vote order are 6 to 15, 2 to 12, 10 to 15, 6.1 to 20, 6.1 to 20, 3.4 to 20\
+        \ (dKH). Without a qualified majority, the medians of all proposed minima and maxima are 6.05\
+        \ and 17.5, rounded to 6 to 18 dKH. The median 6 to 18 dKH contains the natural 6 to 11 range\
+        \ without widening. LiveAquaria states 10 to 15, AquariumDomain 10 to 25, and Bay Bridge\
+        \ Aquarium 10 to 20 dKH; the recommendations overlap the median and none establishes years of\
+        \ healthy exposure at the endpoints. Checker-a's upper endpoint of 12 is an inference from GH\
+        \ and pH, which cannot establish KH and is not presented as a direct source statement. Natural\
+        \ measurements near 6.1 and 11 dKH explain the habitat context but do not validate chronic\
+        \ aquarium limits. The 6 to 18 dKH median overlaps explicit aquarium recommendations and is\
+        \ plausible for buffered aquarium water, with especially uncertain endpoint evidence.\
+        \ Confidence is low because endpoint support is incomplete."
       sources:
         - kind: literature
           title: "Welcomme (1972). The inland waters of Africa. CIFA Technical Paper 1. Kyoga System: EAFRO\
@@ -1256,7 +1255,7 @@ features:
             max: 5.5
           note: "Natural regional mean buffering equivalents, not a chronic tolerance experiment."
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 2
           total: 6
@@ -2791,13 +2790,14 @@ profile:
         archived: imperialtropicals.com/products/zebra-obliquidens-dominate-male-3/2026-10-14T095948Z
         accessed: "2026-10-13"
   problems:
-    text: "Uneven male pressure is a common practical concern. A fish that stays hidden or repeatedly loses\
-      \ access to food needs attention even before injuries appear. Preserve water quality and oxygenation,\
-      \ particularly in warm conditions. Appetite loss during mouthbrooding can be normal, but persistent deterioration\
-      \ requires checking the fish and its surroundings. Avoid abrupt changes in pH or minerals. The adopted\
-      \ KH tolerance of 6 to 12 dKH is particularly uncertain because its upper endpoint derives from the conservative\
-      \ vote calculation rather than a direct maintenance study. Watch behavior and health instead of treating\
-      \ an endpoint as a goal."
+    text: "Uneven male pressure is a common practical concern. A fish that stays hidden or repeatedly\
+      \ loses access to food needs attention even before injuries appear. Preserve water quality and\
+      \ oxygenation, particularly in warm conditions. Appetite loss during mouthbrooding can be\
+      \ normal, but persistent deterioration requires checking the fish and its surroundings. Avoid\
+      \ abrupt changes in pH or minerals. The adopted KH tolerance of 6 to 18 dKH is particularly\
+      \ uncertain because its upper endpoint derives from the median vote calculation rather than a\
+      \ direct maintenance study. Watch behavior and health, and treat the endpoints as estimates\
+      \ rather than goals."
     sources:
       - kind: literature
         title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
@@ -3195,20 +3195,18 @@ provenance:
             max: 20
       decision:
         min: 6
-        max: 12
-      rationale: "Tally method conservative; agree 2 of 6. The tally conservatively intersects the six proposed\
-        \ tolerance ranges at 10 to 12 dKH, then widens the lower endpoint to 6 to contain the decided natural\
-        \ KH. The result is 6 to 12 dKH with low confidence and two of six counted agreeing votes. LiveAquaria\
-        \ states 10 to 15, AquariumDomain 10 to 25, and Bay Bridge Aquarium 10 to 20 dKH; all are wider than\
-        \ the selected upper interval and none establishes years of healthy exposure at the endpoints. Checker-a's\
-        \ upper endpoint of 12 was inferred from GH and pH, which cannot establish KH and is not presented\
-        \ as a direct source statement. It nevertheless constrains the mandatory conservative tally decision.\
-        \ Natural measurements near 6.1 and 11 dKH explain containment but do not validate chronic aquarium\
-        \ limits. The 6 to 12 envelope is therefore a precautionary pipeline decision with an especially uncertain\
-        \ upper endpoint. generator proposed {\"min\": 6, \"max\": 15}; checker-a proposed {\"min\": 2, \"\
-        max\": 12}; checker-b proposed {\"min\": 10, \"max\": 15}; checker-c proposed {\"min\": 6.1, \"max\"\
-        : 20}; tiebreaker-1 proposed {\"min\": 6.1, \"max\": 20}; tiebreaker-2 proposed {\"min\": 3.4, \"max\"\
-        : 20}."
+        max: 18
+      rationale: "The proposals in vote order are 6 to 15, 2 to 12, 10 to 15, 6.1 to 20, 6.1 to 20, 3.4 to 20\
+        \ (dKH). Without a qualified majority, the medians of all proposed minima and maxima are 6.05\
+        \ and 17.5, rounded to 6 to 18 dKH. The median 6 to 18 dKH contains the natural 6 to 11 range\
+        \ without widening. LiveAquaria states 10 to 15, AquariumDomain 10 to 25, and Bay Bridge\
+        \ Aquarium 10 to 20 dKH; the recommendations overlap the median and none establishes years of\
+        \ healthy exposure at the endpoints. Checker-a's upper endpoint of 12 is an inference from GH\
+        \ and pH, which cannot establish KH and is not presented as a direct source statement. Natural\
+        \ measurements near 6.1 and 11 dKH explain the habitat context but do not validate chronic\
+        \ aquarium limits. The 6 to 18 dKH median overlaps explicit aquarium recommendations and is\
+        \ plausible for buffered aquarium water, with especially uncertain endpoint evidence.\
+        \ Confidence is low because endpoint support is incomplete."
     - field: features.origin
       proposals:
         - by: generator

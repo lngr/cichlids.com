@@ -856,15 +856,18 @@ features:
         min: 8
         max: 20
       confidence: low
-      rationale: 'The conservative tally selects 8 to 20 dGH with low confidence. Generator, checker-a and tiebreaker-1
-        proposed 8 to 20; checker-b and checker-c proposed the wider 5 to 20. With five votes and only three agreeing
-        within 2 dGH, the rule takes the intersection of all proposals, which already contains the decided natural
-        14 to 20 dGH. Aqua-Pedia gives 8 to 20 but discloses generated data; the retailer also gives 8 to 20. Seriously
-        Fish supports 10 to 15 and AquaInfo 12 to 16. Aqua-Fish gives the wider 5 to 20 and Fishkeeper gives only
-        an upper bound of 18; neither establishes a proven low-hardness endpoint. Aqua-Fish also describes naturally
-        soft acidic water, conflicting with regional field chemistry. The conservative lower limit avoids treating
-        its lone 5 dGH recommendation as well established. GH does not measure carbonate buffering, and no multiyear
-        controlled endpoint trial was found.'
+      rationale: 'The proposals in vote order are 8 to 20, 8 to 20, 5 to 20, 5 to 20, 8 to 20 (dGH). Without a
+        qualified majority, the medians of all proposed minima and maxima are 8 and 20, rounded to 8
+        to 20 dGH. The median 8 to 20 dGH contains the natural 14 to 20 range without widening.
+        Aqua-Pedia gives 8 to 20 but discloses generated data; the retailer also gives 8 to 20.
+        Seriously Fish supports 10 to 15 and AquaInfo 12 to 16. Aqua-Fish gives the wider 5 to 20
+        and Fishkeeper gives only an upper bound of 18; neither establishes a proven low-hardness
+        endpoint. Aqua-Fish also describes naturally soft acidic water, conflicting with regional
+        field chemistry. The median 8 to 20 dGH follows multiple aquarium recommendations and
+        contains the natural 14 to 20 range, making it plausible without treating the lone 5 dGH
+        recommendation as an established lower limit. GH does not measure carbonate buffering, and
+        the cited evidence provides no multiyear controlled endpoint trial. Confidence is low
+        because endpoint support is incomplete.'
       sources:
         - kind: database
           title: 'Seriously Fish: Vieja argentea (Silver Cichlid)'
@@ -973,7 +976,7 @@ features:
             max: 18
           note: Only an upper limit is stated; no zero-dGH lower bound is claimed.
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 5
@@ -3312,15 +3315,18 @@ provenance:
       decision:
         min: 8
         max: 20
-      rationale: 'The conservative tally selects 8 to 20 dGH with low confidence. Generator, checker-a and tiebreaker-1
-        proposed 8 to 20; checker-b and checker-c proposed the wider 5 to 20. With five votes and only three agreeing
-        within 2 dGH, the rule takes the intersection of all proposals, which already contains the decided natural
-        14 to 20 dGH. Aqua-Pedia gives 8 to 20 but discloses generated data; the retailer also gives 8 to 20. Seriously
-        Fish supports 10 to 15 and AquaInfo 12 to 16. Aqua-Fish gives the wider 5 to 20 and Fishkeeper gives only
-        an upper bound of 18; neither establishes a proven low-hardness endpoint. Aqua-Fish also describes naturally
-        soft acidic water, conflicting with regional field chemistry. The conservative lower limit avoids treating
-        its lone 5 dGH recommendation as well established. GH does not measure carbonate buffering, and no multiyear
-        controlled endpoint trial was found. Tally method: conservative; agreement count 3 of 5.'
+      rationale: 'The proposals in vote order are 8 to 20, 8 to 20, 5 to 20, 5 to 20, 8 to 20 (dGH). Without a
+        qualified majority, the medians of all proposed minima and maxima are 8 and 20, rounded to 8
+        to 20 dGH. The median 8 to 20 dGH contains the natural 14 to 20 range without widening.
+        Aqua-Pedia gives 8 to 20 but discloses generated data; the retailer also gives 8 to 20.
+        Seriously Fish supports 10 to 15 and AquaInfo 12 to 16. Aqua-Fish gives the wider 5 to 20
+        and Fishkeeper gives only an upper bound of 18; neither establishes a proven low-hardness
+        endpoint. Aqua-Fish also describes naturally soft acidic water, conflicting with regional
+        field chemistry. The median 8 to 20 dGH follows multiple aquarium recommendations and
+        contains the natural 14 to 20 range, making it plausible without treating the lone 5 dGH
+        recommendation as an established lower limit. GH does not measure carbonate buffering, and
+        the cited evidence provides no multiyear controlled endpoint trial. Confidence is low
+        because endpoint support is incomplete.'
     - field: features.khDkh.tolerance
       proposals:
         - by: generator

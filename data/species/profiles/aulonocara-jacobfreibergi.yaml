@@ -366,22 +366,20 @@ features:
       method: waterbody
       waterbody: lake-malawi
     tolerance:
-      value: {min: 3, max: 19}
+      value: {min: 3, max: 20}
       confidence: low
       rationale: >-
-        Aquarium sources accept far harder water than the lake: Seriously Fish, Guidarium and
-        TropicalFreshwaterFish.com give 10 to 25 dGH, a UK breeder 10 to 20, FishBase after the
-        Aquarien Atlas 9 to 19 and a care guide 8 to 15. Their lower limits of 8 to 10 reflect the
-        belief that Malawi cichlids need hard water rather than an observed limit, and Tropical Fish
-        Hobbyist notes that peacocks adapt to a wide range of water; the wild fish live permanently
-        at 3 to 5 dGH, so the tolerance starts at the lake value. The votes split on the upper
-        limit: the generator and checker-a proposed 25 dGH, checker-b 19, tiebreaker-1 and
-        tiebreaker-2 20. The largest agreeing camp (19 and 20) has 3 of 5 votes, short of the four a
-        qualified majority needs, so the vote count took the conservative value, the intersection
-        of all votes, which ends at 19 dGH. A narrower tolerance makes the compatibility check warn
-        earlier, which errs on the safe side for the fish. Water up to about 25 dGH is probably
-        tolerated as well, but only the sheets that repeat this figure support it, so the range
-        needs confirmation.
+        The proposals in vote order are 3 to 25, 3 to 25, 3 to 19, 3 to 20 and 3 to 20 dGH.
+        No qualified majority exists. The median bounds give 3 to 20 dGH with low confidence
+        and contain the natural 3 to 5 dGH without widening. Seriously Fish, Guidarium and
+        Tropical Freshwater Fish give 10 to 25 dGH, a UK breeder 10 to 20, FishBase after
+        the Aquarien Atlas 9 to 19 and a care guide 8 to 15. The care-sheet minima of 8 to
+        10 do not establish harm in the softer water the wild population inhabits
+        permanently. Tropical Fish Hobbyist notes that peacocks adapt to a wide range of
+        water. The median combines this soft-water baseline with an upper endpoint directly
+        supported by breeder advice and within the broader care recommendations. Values up
+        to about 25 dGH have care-sheet support, but the physiological limits lack
+        confirmation.
       sources:
         - *sf
         - *tff
@@ -431,7 +429,7 @@ features:
           value: {min: 3.2, max: 4.9}
           note: hardness the wild fish live in
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
 
   khDkh:
@@ -1362,11 +1360,19 @@ provenance:
         - {by: checker-b, value: {min: 3, max: 19}}
         - {by: tiebreaker-1, value: {min: 3, max: 20}}
         - {by: tiebreaker-2, value: {min: 3, max: 20}}
-      decision: {min: 3, max: 19}
+      decision: {min: 3, max: 20}
       rationale: >-
-        Decided by the vote count with the conservative method: the upper limits of 25 and of 19 to
-        20 dGH lie more than 2 dGH apart, and the larger camp has only 3 of 5 votes. The
-        intersection of all votes, 3 to 19 dGH, is the most cautious range.
+        The proposals in vote order are 3 to 25, 3 to 25, 3 to 19, 3 to 20 and 3 to 20 dGH.
+        No qualified majority exists. The median bounds give 3 to 20 dGH with low confidence
+        and contain the natural 3 to 5 dGH without widening. Seriously Fish, Guidarium and
+        Tropical Freshwater Fish give 10 to 25 dGH, a UK breeder 10 to 20, FishBase after
+        the Aquarien Atlas 9 to 19 and a care guide 8 to 15. The care-sheet minima of 8 to
+        10 do not establish harm in the softer water the wild population inhabits
+        permanently. Tropical Fish Hobbyist notes that peacocks adapt to a wide range of
+        water. The median combines this soft-water baseline with an upper endpoint directly
+        supported by breeder advice and within the broader care recommendations. Values up
+        to about 25 dGH have care-sheet support, but the physiological limits lack
+        confirmation.
     - field: features.khDkh.tolerance
       proposals:
         - {by: generator, value: {min: 5, max: 12}}

@@ -840,19 +840,21 @@ features:
         min: 3.8
         max: 6.5
       confidence: "low"
-      rationale: "The tally makes a conservative decision of 3.8 to 6.5 with low confidence because only
-        three of six proposals form its leading agreement cluster. Generator, checker-c and
-        tiebreaker-1 proposed 3.8 to 6.5; checker-a 4.0 to 7.0; checker-b 4.2 to 6.5; and
-        tiebreaker-2 3.8 to 7.0. Their intersection is 4.2 to 6.5, then the tally widens it to
-        include the decided natural lower boundary of 3.8. FishProfiles gives 5 to 6.5, Tropical
-        Freshwater Fish 5.5 to 6.5 and MARE 2000 5 to 6.5. Wider evidence includes Bayer's
-        maintenance recommendation of 6 to 7 for acclimated wild Heckels, Akvaforum's maintenance
-        point of 6.7, Zoopet's 6 to 7, AquaInfo's 6.5 to 6.8 and Diskusmann's 5.5 to 6.8. The latter
-        also discusses cross stock; general non-Heckel guidance is wider still at 5 to 7 or 5.5 to
-        7.5. The algorithm retains 6.5 conservatively despite the species-specific higher
-        maintenance reports, not because 6.5 is a measured physiological limit. FishFish is stricter
-        at 4.5 to 5.5. The 3.8 endpoint represents natural occurrence rather than a chronic aquarium
-        trial; acute low-pH experiments do not establish lifetime tolerance."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 3.8 to 6.5; checker-a
+        proposes 4 to 7; checker-b proposes 4.2 to 6.5; checker-c proposes 3.8 to 6.5; tiebreaker-1
+        proposes 3.8 to 6.5; tiebreaker-2 proposes 3.8 to 7 (pH). The rounded median of all minima
+        and all maxima is 3.8 to 6.5 pH. This contains natural 3.8 to 5.2 without widening.
+        Confidence is low. FishProfiles gives 5 to 6.5, Tropical Freshwater Fish 5.5 to 6.5 and MARE
+        2000 5 to 6.5. Wider evidence includes Bayer's maintenance recommendation of 6 to 7 for
+        acclimated wild Heckels, Akvaforum's maintenance point of 6.7, Zoopet's 6 to 7, AquaInfo's
+        6.5 to 6.8 and Diskusmann's 5.5 to 6.8. The latter also discusses cross stock; general
+        non-Heckel guidance is wider at 5 to 7 or 5.5 to 7.5. The median upper edge of 6.5 agrees
+        with several Heckel care sheets, while higher species-specific maintenance reports show that
+        it is not a measured physiological ceiling. FishFish is stricter at 4.5 to 5.5. The 3.8
+        endpoint represents natural occurrence rather than a chronic aquarium trial; acute low-pH
+        experiments do not establish lifetime tolerance. The median is plausible as an envelope
+        containing the natural blackwater range and several Heckel maintenance recommendations, with
+        uncertain chronic endpoints."
       sources:
         - kind: "literature"
           title: "Livengood, E. J., Ohs, C. L. and Chapman, F. A. Candidate Species for Florida Aquaculture:
@@ -1145,7 +1147,7 @@ features:
           note: "Species-specific prose gives approximately 6.7 for maintenance; its tabulated 4.2 to 6.2 band
             is narrower."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -4968,20 +4970,21 @@ provenance:
       decision:
         min: 3.8
         max: 6.5
-      rationale: "The tally makes a conservative decision of 3.8 to 6.5 with low confidence because only
-        three of six proposals form its leading agreement cluster. Generator, checker-c and
-        tiebreaker-1 proposed 3.8 to 6.5; checker-a 4.0 to 7.0; checker-b 4.2 to 6.5; and
-        tiebreaker-2 3.8 to 7.0. Their intersection is 4.2 to 6.5, then the tally widens it to
-        include the decided natural lower boundary of 3.8. FishProfiles gives 5 to 6.5, Tropical
-        Freshwater Fish 5.5 to 6.5 and MARE 2000 5 to 6.5. Wider evidence includes Bayer's
-        maintenance recommendation of 6 to 7 for acclimated wild Heckels, Akvaforum's maintenance
-        point of 6.7, Zoopet's 6 to 7, AquaInfo's 6.5 to 6.8 and Diskusmann's 5.5 to 6.8. The latter
-        also discusses cross stock; general non-Heckel guidance is wider still at 5 to 7 or 5.5 to
-        7.5. The algorithm retains 6.5 conservatively despite the species-specific higher
-        maintenance reports, not because 6.5 is a measured physiological limit. FishFish is stricter
-        at 4.5 to 5.5. The 3.8 endpoint represents natural occurrence rather than a chronic aquarium
-        trial; acute low-pH experiments do not establish lifetime tolerance. Verification method:
-        conservative (3 of 6 votes)."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 3.8 to 6.5; checker-a
+        proposes 4 to 7; checker-b proposes 4.2 to 6.5; checker-c proposes 3.8 to 6.5; tiebreaker-1
+        proposes 3.8 to 6.5; tiebreaker-2 proposes 3.8 to 7 (pH). The rounded median of all minima
+        and all maxima is 3.8 to 6.5 pH. This contains natural 3.8 to 5.2 without widening.
+        Confidence is low. FishProfiles gives 5 to 6.5, Tropical Freshwater Fish 5.5 to 6.5 and MARE
+        2000 5 to 6.5. Wider evidence includes Bayer's maintenance recommendation of 6 to 7 for
+        acclimated wild Heckels, Akvaforum's maintenance point of 6.7, Zoopet's 6 to 7, AquaInfo's
+        6.5 to 6.8 and Diskusmann's 5.5 to 6.8. The latter also discusses cross stock; general
+        non-Heckel guidance is wider at 5 to 7 or 5.5 to 7.5. The median upper edge of 6.5 agrees
+        with several Heckel care sheets, while higher species-specific maintenance reports show that
+        it is not a measured physiological ceiling. FishFish is stricter at 4.5 to 5.5. The 3.8
+        endpoint represents natural occurrence rather than a chronic aquarium trial; acute low-pH
+        experiments do not establish lifetime tolerance. The median is plausible as an envelope
+        containing the natural blackwater range and several Heckel maintenance recommendations, with
+        uncertain chronic endpoints."
     - field: "features.ghDgh.tolerance"
       proposals:
         - by: "generator"

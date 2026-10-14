@@ -429,20 +429,22 @@ features:
       method: median
       votes: {agree: 3, total: 5}
     tolerance:
-      value: {min: 5.0, max: 7.5}
+      value: {min: 5, max: 8}
       confidence: low
       rationale: >-
-        The vote did not reach a qualified majority, so the conservative rule applies: the
-        generator, checker-a and tiebreaker-1 proposed pH 5.0 to 8.0, checker-b 5.5 to 7.5 and
-        checker-c 4.5 to 8.0. The intersection of all five votes is 5.5 to 7.5, which is widened to
-        5.0 to 7.5 so that it contains the natural range; the narrower range triggers more warnings
-        and the confidence is low. Care sheets mostly place the keeping range between pH 6.0 and
-        7.5 (Seriously Fish 6.0 to 7.4, Practical Fishkeeping and AquaInfo 6 to 7.5, AquaExperience
-        5.5 to 7.5), and captive juveniles grew best at 7 to 7.5. Eggs develop well at about 6.8,
-        while at 8.2 almost all embryos die; adults adjust to slightly alkaline water over time.
-        Wild Rio Negro fish were held at pH 6.0 without problems. The sources span a wider pH 4.5
-        to 8.0: a retailer guide keeps wild Rio Nanay fish down to 4.5, and FishBase, Tropical Fish
-        Hobbyist, a breeder's article and a retailer's care data allow up to 8.0 for domestic stock.
+        No qualified majority settles the 5 proposals. generator proposes 5 to 8; checker-a proposes
+        5 to 8; checker-b proposes 5.5 to 7.5; checker-c proposes 4.5 to 8; tiebreaker-1 proposes 5
+        to 8 (pH). The rounded median of all minima and all maxima is 5 to 8 pH. This contains
+        natural 5 to 7.5 without widening. Confidence is low. Care sheets mostly place the keeping
+        range between pH 6.0 and 7.5 (Seriously Fish 6.0 to 7.4, Practical Fishkeeping and AquaInfo
+        6 to 7.5, AquaExperience 5.5 to 7.5), and captive juveniles grow best at 7 to 7.5. Eggs
+        develop well at about 6.8, while at 8.2 almost all embryos die; adults adjust to slightly
+        alkaline water over time. A laboratory report documents uneventful holding of wild Rio Negro
+        fish at pH 6.0. The sources span a wider pH 4.5 to 8.0: a retailer guide keeps wild Rio
+        Nanay fish down to 4.5, and FishBase, Tropical Fish Hobbyist, a breeder's article and a
+        retailer's care data allow up to 8.0 for domestic stock. The median is plausible for keeping
+        across wild and domestic stocks, but the alkaline edge is not a breeding recommendation and
+        population differences matter.
       sources:
         - *sf
         - *pfkfacts
@@ -509,7 +511,7 @@ features:
           value: {min: 6.0, max: 8.0}
           note: Breeder's recommendation, used for verification only.
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
 
   ghDgh:
@@ -1590,8 +1592,20 @@ provenance:
         - {by: checker-b, value: {min: 5.5, max: 7.5}}
         - {by: checker-c, value: {min: 4.5, max: 8.0}}
         - {by: tiebreaker-1, value: {min: 5.0, max: 8.0}}
-      decision: {min: 5.0, max: 7.5}
-      rationale: No qualified majority; the tally takes the conservative intersection of all votes, 5.5 to 7.5, widened to contain the natural range down to 5.0.
+      decision: {min: 5, max: 8}
+      rationale: No qualified majority settles the 5 proposals. generator proposes 5 to 8; checker-a proposes
+        5 to 8; checker-b proposes 5.5 to 7.5; checker-c proposes 4.5 to 8; tiebreaker-1 proposes 5
+        to 8 (pH). The rounded median of all minima and all maxima is 5 to 8 pH. This contains
+        natural 5 to 7.5 without widening. Confidence is low. Care sheets mostly place the keeping
+        range between pH 6.0 and 7.5 (Seriously Fish 6.0 to 7.4, Practical Fishkeeping and AquaInfo
+        6 to 7.5, AquaExperience 5.5 to 7.5), and captive juveniles grow best at 7 to 7.5. Eggs
+        develop well at about 6.8, while at 8.2 almost all embryos die; adults adjust to slightly
+        alkaline water over time. A laboratory report documents uneventful holding of wild Rio Negro
+        fish at pH 6.0. The sources span a wider pH 4.5 to 8.0, a retailer guide keeps wild Rio
+        Nanay fish down to 4.5, and FishBase, Tropical Fish Hobbyist, a breeder's article and a
+        retailer's care data allow up to 8.0 for domestic stock. The median is plausible for keeping
+        across wild and domestic stocks, but the alkaline edge is not a breeding recommendation and
+        population differences matter.
     - field: features.ghDgh.tolerance
       proposals:
         - {by: generator, value: {min: 0, max: 15}}

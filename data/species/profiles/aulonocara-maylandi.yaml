@@ -398,18 +398,18 @@ features:
     tolerance:
       value:
         min: 7.5
-        max: 8.6
+        max: 8.8
       confidence: "low"
-      rationale: "Generator, checker-b and tiebreaker-1 proposed pH 7.5 to 8.6; checker-a, checker-c and
-        tiebreaker-2 proposed 7.5 to 9.0. No proposal reached four agreeing votes, so the tally
-        takes their intersection, 7.5 to 8.6, by the conservative method with low confidence.
-        Seriously Fish and The Evolved Fish give the wider 7.5 to 9.0 range, as does the general
-        Aqua-Fish guide. FishBase, AquaInfo, FedeAqua, Fischlexikon, my-fish and
-        Einrichtungsbeispiele give 7.5 to 8.5, while Tropical Fish Site gives 7.6 to 8.6. These
-        recommendations do not establish physiological endpoints. The conservative decision
-        preserves the full natural range and declines to infer demonstrated long-term health at 9.0
-        from broad care advice; Seriously Fish also combines this fish with A. kandeense. The
-        retailer repetition is not independent confirmation."
+      rationale: "The proposals in vote order are 7.5 to 8.6, 7.5 to 9.0, 7.5 to 8.6, 7.5 to 9.0, 7.5
+        to 8.6 and 7.5 to 9.0. No qualified majority exists. The median minimum is 7.5 and
+        the middle maxima average 8.8, giving pH 7.5 to 8.8 with low confidence. It contains
+        the natural 7.7 to 8.6 without widening. Seriously Fish, The Evolved Fish and the
+        general Aqua-Fish guide give 7.5 to 9.0. FishBase, AquaInfo, FedeAqua, Fischlexikon,
+        my-fish and Einrichtungsbeispiele give 7.5 to 8.5, while Tropical Fish Site gives
+        7.6 to 8.6. The median upper endpoint lies within published alkaline aquarium
+        guidance, so the midpoint between the vote camps is plausible. These recommendations
+        do not establish physiological endpoints; Seriously Fish combines this fish with A.
+        kandeense, and retailer repetition is not independent confirmation."
       sources:
         - kind: "catalog-of-fishes"
           title: "Eschmeyer's Catalog of Fishes: species of Aulonocara"
@@ -576,7 +576,7 @@ features:
             max: 9
           note: "Water recommendation for stock sold as Aulonocara maylandi Sulfurhead."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -2875,14 +2875,14 @@ profile:
         accessed: "2026-10-13"
   husbandry:
     text: >-
-      For one male with four females, allow at least 300 L, 130 cm length and a planned 47.5 cm
-      front-to-back depth. The depth is a layout estimate. Arrange stable shelters and visual
-      breaks while leaving a generous fine-sand feeding area. Use an established biological
-      filter, good gas exchange and regular water changes, and keep conditions steady; about 24
-      to 26 C is a practical routine target. The planner tolerances are 21 to 29 C, pH 7.5 to
-      8.6, GH 3 to 25 dGH and KH 5 to 12 dKH. Their endpoints are not proven ideal permanent
-      setpoints. Measure GH and KH separately and assess existing water before adjusting
-      minerals or buffering.
+      For one male with four females, allow at least 300 L, 130 cm length and a planned 47.5
+      cm front-to-back depth. The depth is a layout estimate. Arrange stable shelters and
+      visual breaks while leaving a generous fine-sand feeding area. Use an established
+      biological filter, good gas exchange and regular water changes, and keep conditions
+      steady; about 24 to 26 C is a practical routine target. The planner tolerances are 21
+      to 29 C, pH 7.5 to 8.8, GH 3 to 25 dGH and KH 5 to 12 dKH. Their endpoints are not
+      proven ideal permanent setpoints. Measure GH and KH separately and assess existing
+      water before adjusting minerals or buffering.
     sources:
       - kind: "literature"
         title: "Branchu et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa),
@@ -3294,18 +3294,17 @@ provenance:
             max: 9
       decision:
         min: 7.5
-        max: 8.6
-      rationale: "Generator, checker-b and tiebreaker-1 proposed pH 7.5 to 8.6; checker-a, checker-c and
-        tiebreaker-2 proposed 7.5 to 9.0. No proposal reached four agreeing votes, so the tally
-        takes their intersection, 7.5 to 8.6, by the conservative method with low confidence.
-        Seriously Fish and The Evolved Fish give the wider 7.5 to 9.0 range, as does the general
-        Aqua-Fish guide. FishBase, AquaInfo, FedeAqua, Fischlexikon, my-fish and
-        Einrichtungsbeispiele give 7.5 to 8.5, while Tropical Fish Site gives 7.6 to 8.6. These
-        recommendations do not establish physiological endpoints. The conservative decision
-        preserves the full natural range and declines to infer demonstrated long-term health at 9.0
-        from broad care advice; Seriously Fish also combines this fish with A. kandeense. The
-        retailer repetition is not independent confirmation. Verification method: conservative;
-        votes 3 of 6."
+        max: 8.8
+      rationale: "The proposals in vote order are 7.5 to 8.6, 7.5 to 9.0, 7.5 to 8.6, 7.5 to 9.0, 7.5
+        to 8.6 and 7.5 to 9.0. No qualified majority exists. The median minimum is 7.5 and
+        the middle maxima average 8.8, giving pH 7.5 to 8.8 with low confidence. It contains
+        the natural 7.7 to 8.6 without widening. Seriously Fish, The Evolved Fish and the
+        general Aqua-Fish guide give 7.5 to 9.0. FishBase, AquaInfo, FedeAqua, Fischlexikon,
+        my-fish and Einrichtungsbeispiele give 7.5 to 8.5, while Tropical Fish Site gives
+        7.6 to 8.6. The median upper endpoint lies within published alkaline aquarium
+        guidance, so the midpoint between the vote camps is plausible. These recommendations
+        do not establish physiological endpoints; Seriously Fish combines this fish with A.
+        kandeense, and retailer repetition is not independent confirmation."
     - field: "features.ghDgh.tolerance"
       proposals:
         - by: "generator"

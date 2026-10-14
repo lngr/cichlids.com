@@ -613,19 +613,22 @@ features:
     tolerance:
       value:
         min: 4
-        max: 6.5
+        max: 7
       confidence: low
-      rationale: "Decided by the vote count with method conservative: only 2 of 5 proposals agree
-        (generator 4.0 to 7.5, checker-a 4.0 to 7.0, checker-b 4.0 to 7.5, tiebreaker-1 3.5 to 6.5,
-        tiebreaker-2 3.7 to 7.0), so the tolerance is the intersection of all proposals, 4.0 to 6.5,
-        which contains the natural range of 4.0 to 5.5. FishBase, the only species-level husbandry
-        value, gives 5.0 to 6.5. Care sheets for H. efasciatus (5.5 to 7.0) and H. notatus (6.0 to
-        7.0) and the retailer sheets for the gold line of H. efasciatus (up to 8) describe congeners
-        from less acidic water; these are H. efasciatus care-sheet values. Aquarium Glaser describes
-        water around neutral for the mouthbrooder sold as H. severus, today H. liberifer, with
-        fading colours in hard water. Staeck and Schindler regard the narrow H. severus as a
-        blackwater specialist, and a keeper of wild fish holds them at pH 4 with the best colours in
-        soft water. The lower values below 5 suit only wild fish acclimatised slowly."
+      rationale: "The proposals in vote order are 4 to 7.5, 4 to 7, 4 to 7.5, 3.5 to 6.5, 3.7 to 7 (pH).
+        Without a qualified majority, the medians of all proposed minima and maxima are 4 and 7,
+        rounded to 4 to 7 pH. The median 4 to 7 pH contains the natural 4 to 5.5 range without
+        widening. FishBase, the only species-level husbandry value, gives 5.0 to 6.5. Care sheets
+        for H. efasciatus (5.5 to 7.0) and H. notatus (6.0 to 7.0) and the retailer sheets for the
+        gold line of H. efasciatus (up to 8) describe congeners from less acidic water; these are H.
+        efasciatus care-sheet values. Aquarium Glaser describes water around neutral for the
+        mouthbrooder sold as H. severus, identified as H. liberifer, with fading colours in hard
+        water. Staeck and Schindler regard the narrow H. severus as a blackwater specialist, and a
+        keeper of wild fish reports holding them at pH 4 with the best colours in soft water. The
+        lower values below 5 suit only wild fish acclimatised slowly. The 4 to 7 median is plausible
+        as a low-confidence blackwater-to-neutral envelope, with the upper endpoint supported mainly
+        by congener and trade-name evidence rather than confirmed narrow-species lifetime tests.
+        Confidence is low because endpoint support is incomplete."
       sources:
         - kind: database
           title: "FishBase species summary: Heros severus"
@@ -772,7 +775,7 @@ features:
             max: 4
           note: one keeper of wild H. severus
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 2
           total: 5
@@ -2911,9 +2914,21 @@ provenance:
             max: 7
       decision:
         min: 4
-        max: 6.5
-      rationale: "Decided by the vote count (conservative, 2 of 5): the conservative rule takes the
-        intersection of all proposals, which contains the natural range of 4.0 to 5.5."
+        max: 7
+      rationale: "The proposals in vote order are 4 to 7.5, 4 to 7, 4 to 7.5, 3.5 to 6.5, 3.7 to 7 (pH).
+        Without a qualified majority, the medians of all proposed minima and maxima are 4 and 7,
+        rounded to 4 to 7 pH. The median 4 to 7 pH contains the natural 4 to 5.5 range without
+        widening. FishBase, the only species-level husbandry value, gives 5.0 to 6.5. Care sheets
+        for H. efasciatus (5.5 to 7.0) and H. notatus (6.0 to 7.0) and the retailer sheets for the
+        gold line of H. efasciatus (up to 8) describe congeners from less acidic water; these are H.
+        efasciatus care-sheet values. Aquarium Glaser describes water around neutral for the
+        mouthbrooder sold as H. severus, identified as H. liberifer, with fading colours in hard
+        water. Staeck and Schindler regard the narrow H. severus as a blackwater specialist, and a
+        keeper of wild fish reports holding them at pH 4 with the best colours in soft water. The
+        lower values below 5 suit only wild fish acclimatised slowly. The 4 to 7 median is plausible
+        as a low-confidence blackwater-to-neutral envelope, with the upper endpoint supported mainly
+        by congener and trade-name evidence rather than confirmed narrow-species lifetime tests.
+        Confidence is low because endpoint support is incomplete."
     - field: features.ghDgh
       proposals:
         - by: generator

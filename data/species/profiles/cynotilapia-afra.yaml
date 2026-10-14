@@ -395,21 +395,20 @@ features:
         value: {min: 5.6, max: 7.3}
         note: computed from alkalinity after Jackson et al. 1963
     tolerance:
-      value: {min: 5, max: 12}
+      value: {min: 5, max: 15}
       confidence: low
       rationale: >-
-        Decided by the vote count with the conservative method. The proposals were 5 to 25 dKH
-        (generator), 5 to 12 (checker-a) and 5 to 15 (checker-b, tiebreaker-1, tiebreaker-2). The
-        top candidate of 5 to 15 dKH reached 3 of 5 votes, short of a qualified majority, so the
-        tolerance is the intersection of all votes, 5 to 12 dKH, which already contains the
-        natural range. No species care sheet gives a carbonate hardness: Seriously Fish, FishBase
-        and Fishkeeper state only total hardness (10 to 25, at least 15, up to 25 dGH), which says
-        nothing about the buffer. General Lake Malawi advice names 10 to 14 dKH (Wittig), 10 to
-        12 and 10 to 15 dKH (Furrycritter) and 6 to 10 dKH (Gensou); the lake itself holds 5 to
-        8 dKH. The narrower upper limit of 12 dKH sits inside every general recommendation, and
-        the 25 dKH of the generator, which read total hardness figures as carbonate hardness, has
-        no support. Values above 12 dKH are not shown to harm the species; they are only not
-        covered by the votes.
+        The proposals in vote order are 5 to 25, 5 to 12, 5 to 15, 5 to 15 and 5 to 15 dKH.
+        No qualified majority exists. The median bounds give 5 to 15 dKH with low confidence
+        and contain the natural 5 to 8 dKH without widening. Seriously Fish, FishBase and
+        Fishkeeper give only total hardness (10 to 25, at least 15 and up to 25 dGH), which
+        does not determine carbonate buffering. General Lake Malawi advice gives 10 to 14
+        dKH in the Cichlid-Forum water-chemistry article and 10 to 12 and 10 to 15 at
+        Furrycritter; Gensou gives 6 to 10 as lake-water advice. The lake supports the lower
+        edge and general Malawi husbandry supports the upper edge, making the median
+        plausible in aquarium practice. The generator's 25 dKH proposal reads total-hardness
+        figures as KH and has no support, but it does not determine the median.
+        Species-specific long-term KH endpoints remain unverified.
       sources:
         - &wittig
           kind: literature
@@ -459,7 +458,7 @@ features:
           value: {min: 5.6, max: 7.3}
           note: lake water the species lives in
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
 
   maxSizeCm:
@@ -1250,12 +1249,19 @@ provenance:
         - {by: checker-b, value: {min: 5, max: 15}}
         - {by: tiebreaker-1, value: {min: 5, max: 15}}
         - {by: tiebreaker-2, value: {min: 5, max: 15}}
-      decision: {min: 5, max: 12}
+      decision: {min: 5, max: 15}
       rationale: >-
-        Decided by the vote count with the conservative method: the top candidate of 5 to 15 dKH
-        reached 3 of 5 votes, short of a qualified majority, so the intersection of all votes, 5
-        to 12 dKH, applies with confidence low. The generator's 25 dKH rests on total hardness
-        figures read as carbonate hardness.
+        The proposals in vote order are 5 to 25, 5 to 12, 5 to 15, 5 to 15 and 5 to 15 dKH.
+        No qualified majority exists. The median bounds give 5 to 15 dKH with low confidence
+        and contain the natural 5 to 8 dKH without widening. Seriously Fish, FishBase and
+        Fishkeeper give only total hardness (10 to 25, at least 15 and up to 25 dGH), which
+        does not determine carbonate buffering. General Lake Malawi advice gives 10 to 14
+        dKH in the Cichlid-Forum water-chemistry article and 10 to 12 and 10 to 15 at
+        Furrycritter; Gensou gives 6 to 10 as lake-water advice. The lake supports the lower
+        edge and general Malawi husbandry supports the upper edge, making the median
+        plausible in aquarium practice. The generator's 25 dKH proposal reads total-hardness
+        figures as KH and has no support, but it does not determine the median.
+        Species-specific long-term KH endpoints remain unverified.
     - field: features.hybridGroups
       proposals:
         - {by: generator, value: [maylandia]}

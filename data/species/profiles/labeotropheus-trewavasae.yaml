@@ -388,20 +388,21 @@ features:
         note: Jackson et al. 1963
     verification: {method: waterbody, waterbody: lake-malawi}
     tolerance:
-      value: {min: 5, max: 10}
+      value: {min: 5, max: 12}
       confidence: low
       rationale: >-
-        No species database, book or paper gives a carbonate hardness for this species; Seriously
-        Fish, FishBase, FishProfiles and Fishkeeper state only total or unspecified hardness. Explicit
-        KH figures come from hobby pages alone: a species care guide aims at 6 to 10 dKH, a retailer
+        The proposals in vote order are 5 to 10, 5 to 12, 4 to 15, 5 to 20, 5 to 10 (dKH). Without a
+        qualified majority, the medians of all proposed minima and maxima are 5 and 12, rounded to 5
+        to 12 dKH. The median 5 to 12 dKH contains the natural 5 to 8 range without widening. No
+        species database, book or paper gives a carbonate hardness for this species; Seriously Fish,
+        FishBase, FishProfiles and Fishkeeper state only total or unspecified hardness. Explicit KH
+        figures come from hobby pages alone: a species care guide aims at 6 to 10 dKH, a retailer
         guide to Malawi tanks accepts 6 to 20 dKH with 8 to 10 as the optimum, and a general mbuna
         page suggests 10 to 12 dKH. The lower bound of 5 dKH is the natural lake value, which the
-        tolerance must contain. The five votes differ: generator 5 to 10, checker-a 5 to 12,
-        checker-b 4 to 15, tiebreaker-1 5 to 20 and tiebreaker-2 5 to 10 dKH. With only 3 of 5
-        votes agreeing there is no qualified majority, so the vote count took the conservative
-        value, the intersection of all five ranges: 5 to 10 dKH, with confidence low. The narrower
-        range warns earlier when a tankmate needs much harder water; it covers the species care
-        guide and the optimum of the retailer guide.
+        tolerance must contain. The 5 to 12 dKH median covers the species care guide, the retailer
+        optimum and the general mbuna target, making it a plausible buffered-water maintenance
+        envelope with limited species-specific endpoint evidence. Confidence is low because endpoint
+        support is incomplete.
       sources:
         - *branchu
         - *fao
@@ -444,7 +445,7 @@ features:
           value: {min: 5, max: 12}
           note: unspecified dH, no KH value
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
 
   maxSizeCm:
@@ -1180,12 +1181,20 @@ provenance:
         - {by: checker-b, value: {min: 4, max: 15}}
         - {by: tiebreaker-1, value: {min: 5, max: 20}}
         - {by: tiebreaker-2, value: {min: 5, max: 10}}
-      decision: {min: 5, max: 10}
+      decision: {min: 5, max: 12}
       rationale: >-
-        Decided by the vote count as the conservative value (3 of 5 agree, no qualified majority,
-        confidence low): the intersection of all five ranges. No species source of kind literature
-        or database states a carbonate hardness; the upper bounds above 10 dKH rest on general
-        mbuna pages or on total hardness used as a proxy.
+        The proposals in vote order are 5 to 10, 5 to 12, 4 to 15, 5 to 20, 5 to 10 (dKH). Without a
+        qualified majority, the medians of all proposed minima and maxima are 5 and 12, rounded to 5
+        to 12 dKH. The median 5 to 12 dKH contains the natural 5 to 8 range without widening. No
+        species database, book or paper gives a carbonate hardness for this species; Seriously Fish,
+        FishBase, FishProfiles and Fishkeeper state only total or unspecified hardness. Explicit KH
+        figures come from hobby pages alone: a species care guide aims at 6 to 10 dKH, a retailer
+        guide to Malawi tanks accepts 6 to 20 dKH with 8 to 10 as the optimum, and a general mbuna
+        page suggests 10 to 12 dKH. The lower bound of 5 dKH is the natural lake value, which the
+        tolerance must contain. The 5 to 12 dKH median covers the species care guide, the retailer
+        optimum and the general mbuna target, making it a plausible buffered-water maintenance
+        envelope with limited species-specific endpoint evidence. Confidence is low because endpoint
+        support is incomplete.
     - field: features.diet.value.foods
       proposals:
         - {by: generator, value: [spirulina flakes and pellets, vegetable-based mbuna pellets, "blanched spinach, peas, cucumber", mysis or brine shrimp as a rare treat]}

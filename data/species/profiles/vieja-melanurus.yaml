@@ -858,16 +858,17 @@ features:
         min: 6.8
         max: 8.5
       confidence: "low"
-      rationale: "The conservative rule intersects the six proposals at 7 to 8.5, then widens the lower endpoint to
-        6.8 to contain the decided natural range. This produces 6.8 to 8.5 at low confidence. It is narrower
-        than Aquarium Guide's 6.5 to 7.5 lower recommendation and excludes the 8.6 and 8.8 proposal endpoints.
-        Aqua-Fish gives 7 to 8.1, FishBase and the Nordic register 7 to 8, and the GarnelenTv retailer 7 to
-        8.5. The Caobas measurement of 6.55 and Perdida measurement of 8.8 remain outside this voted envelope.
-        Natural exposure and short-term rearing at 8.2 do not prove multi-year captive health at either
-        endpoint. Proposals: generator proposed {\"min\":7,\"max\":8.5}; checker-a proposed
-        {\"min\":7,\"max\":8.5}; checker-b proposed {\"min\":6.5,\"max\":8.5}; checker-c proposed
-        {\"min\":7,\"max\":8.8}; tiebreaker-1 proposed {\"min\":6.5,\"max\":8.6}; tiebreaker-2 proposed
-        {\"min\":6.5,\"max\":8.5}."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 7 to 8.5; checker-a
+        proposes 7 to 8.5; checker-b proposes 6.5 to 8.5; checker-c proposes 7 to 8.8; tiebreaker-1
+        proposes 6.5 to 8.6; tiebreaker-2 proposes 6.5 to 8.5 (pH). The rounded median of all minima
+        and all maxima is 6.8 to 8.5 pH. This contains natural 6.8 to 8.5 without widening.
+        Confidence is low. Aquarium Guide recommends 6.5 to 7.5; the median excludes the 8.6 and 8.8
+        proposal endpoints. Aqua-Fish gives 7 to 8.1, FishBase and the Nordic register 7 to 8, and
+        the GarnelenTv retailer 7 to 8.5. The Caobas measurement of 6.55 and Perdida measurement of
+        8.8 remain outside this voted envelope. Natural exposure and short-term rearing at 8.2 do
+        not prove multi-year captive health at either endpoint. The median lower bound is 6.75,
+        rounded to 6.8. The range is plausible because it contains the natural summary and its edges
+        lie within explicit aquarium advice."
       sources:
         - kind: "literature"
           title: "Hernandez-Hernandez et al. (2020). Desarrollo embrionario y larval de la mojarra paleta Vieja melanura
@@ -1062,7 +1063,7 @@ features:
           note: "Native surface water used only to ensure tolerance contains the natural envelope, not proof of years in
             captivity."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -1273,20 +1274,22 @@ features:
           reported concentration bounds."
     tolerance:
       value:
-        min: 8
-        max: 20
+        min: 7
+        max: 25
       confidence: "low"
-      rationale: "The conservative intersection of all six proposals is 8 to 20 dGH, which already contains the
-        decided natural summary of 10 to 20. Confidence is low. FishBase gives 9 to 20, Seriously Fish 10 to
-        15 and Aqua-Fish a wider 8 to 21. Aquarium Guide gives 5 to 20, while GarnelenTv and Reef Trak give
-        wider upper recommendations of 25 dGH. The 4 to 91 proposal extends to native Bacalar chemistry rather
-        than a chronic aquarium trial. The decided tolerance excludes the published natural outliers of 4.3 to
-        22.6, 4.37 to 72.8 and 73.58 to 90.2 dGH. It contains the tally's natural summary, not every source
-        measurement. Do not interpret 20 as a demonstrated lethal threshold or recreate sulfate-rich native
-        hardness by raising KH. Proposals: generator proposed {\"min\":8,\"max\":25}; checker-a proposed
-        {\"min\":8,\"max\":20}; checker-b proposed {\"min\":8,\"max\":25}; checker-c proposed
-        {\"min\":4,\"max\":25}; tiebreaker-1 proposed {\"min\":4,\"max\":91}; tiebreaker-2 proposed
-        {\"min\":5,\"max\":25}."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 8 to 25; checker-a
+        proposes 8 to 20; checker-b proposes 8 to 25; checker-c proposes 4 to 25; tiebreaker-1
+        proposes 4 to 91; tiebreaker-2 proposes 5 to 25 (dGH). The rounded median of all minima and
+        all maxima is 7 to 25 dGH. This contains natural 10 to 20 without widening. Confidence is
+        low. FishBase gives 9 to 20, Seriously Fish 10 to 15 and Aqua-Fish a wider 8 to 21. Aquarium
+        Guide gives 5 to 20, while GarnelenTv and Reef Trak give wider upper recommendations of 25
+        dGH. The 4 to 91 proposal extends to native Bacalar chemistry rather than a chronic aquarium
+        trial. Published native ranges of 4.3 to 22.6, 4.37 to 72.8 and 73.58 to 90.2 dGH extend
+        outside the decided envelope. It contains the tally's natural summary, not every source
+        measurement. Do not interpret 25 as a demonstrated lethal threshold or recreate sulfate-rich
+        native hardness by raising KH. The median lower bound is 6.5, rounded to 7. The range is
+        plausible because it contains natural 10 to 20 dGH and its edges lie within explicit
+        aquarium advice."
       sources:
         - kind: "website"
           title: "Garnelio: Feuerkopfcichlide Blue Spotted DNZ, Cichlasoma synspilum, structured husbandry sheet"
@@ -1476,7 +1479,7 @@ features:
             max: 25
           note: "Species-specific husbandry advice; lower weight than the structured databases."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 2
           total: 6
@@ -4721,16 +4724,17 @@ provenance:
       decision:
         min: 6.8
         max: 8.5
-      rationale: "conservative; votes 3 of 6. The conservative rule intersects the six proposals at 7 to 8.5, then
-        widens the lower endpoint to 6.8 to contain the decided natural range. This produces 6.8 to 8.5 at low
-        confidence. It is narrower than Aquarium Guide's 6.5 to 7.5 lower recommendation and excludes the 8.6
-        and 8.8 proposal endpoints. Aqua-Fish gives 7 to 8.1, FishBase and the Nordic register 7 to 8, and the
-        GarnelenTv retailer 7 to 8.5. The Caobas measurement of 6.55 and Perdida measurement of 8.8 remain
-        outside this voted envelope. Natural exposure and short-term rearing at 8.2 do not prove multi-year
-        captive health at either endpoint. Proposals: generator proposed {\"min\":7,\"max\":8.5}; checker-a
-        proposed {\"min\":7,\"max\":8.5}; checker-b proposed {\"min\":6.5,\"max\":8.5}; checker-c proposed
-        {\"min\":7,\"max\":8.8}; tiebreaker-1 proposed {\"min\":6.5,\"max\":8.6}; tiebreaker-2 proposed
-        {\"min\":6.5,\"max\":8.5}."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 7 to 8.5; checker-a
+        proposes 7 to 8.5; checker-b proposes 6.5 to 8.5; checker-c proposes 7 to 8.8; tiebreaker-1
+        proposes 6.5 to 8.6; tiebreaker-2 proposes 6.5 to 8.5 (pH). The rounded median of all minima
+        and all maxima is 6.8 to 8.5 pH. This contains natural 6.8 to 8.5 without widening.
+        Confidence is low. Aquarium Guide recommends 6.5 to 7.5; the median excludes the 8.6 and 8.8
+        proposal endpoints. Aqua-Fish gives 7 to 8.1, FishBase and the Nordic register 7 to 8, and
+        the GarnelenTv retailer 7 to 8.5. The Caobas measurement of 6.55 and Perdida measurement of
+        8.8 remain outside this voted envelope. Natural exposure and short-term rearing at 8.2 do
+        not prove multi-year captive health at either endpoint. The median lower bound is 6.75,
+        rounded to 6.8. The range is plausible because it contains the natural summary and its edges
+        lie within explicit aquarium advice."
     - field: "features.ghDgh.tolerance"
       proposals:
         - by: "generator"
@@ -4758,19 +4762,21 @@ provenance:
             min: 5
             max: 25
       decision:
-        min: 8
-        max: 20
-      rationale: "conservative; votes 2 of 6. The conservative intersection of all six proposals is 8 to 20 dGH,
-        which already contains the decided natural summary of 10 to 20. Confidence is low. FishBase gives 9 to
-        20, Seriously Fish 10 to 15 and Aqua-Fish a wider 8 to 21. Aquarium Guide gives 5 to 20, while
-        GarnelenTv and Reef Trak give wider upper recommendations of 25 dGH. The 4 to 91 proposal extends to
-        native Bacalar chemistry rather than a chronic aquarium trial. The decided tolerance excludes the
-        published natural outliers of 4.3 to 22.6, 4.37 to 72.8 and 73.58 to 90.2 dGH. It contains the tally's
-        natural summary, not every source measurement. Do not interpret 20 as a demonstrated lethal threshold
-        or recreate sulfate-rich native hardness by raising KH. Proposals: generator proposed
-        {\"min\":8,\"max\":25}; checker-a proposed {\"min\":8,\"max\":20}; checker-b proposed
-        {\"min\":8,\"max\":25}; checker-c proposed {\"min\":4,\"max\":25}; tiebreaker-1 proposed
-        {\"min\":4,\"max\":91}; tiebreaker-2 proposed {\"min\":5,\"max\":25}."
+        min: 7
+        max: 25
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 8 to 25; checker-a
+        proposes 8 to 20; checker-b proposes 8 to 25; checker-c proposes 4 to 25; tiebreaker-1
+        proposes 4 to 91; tiebreaker-2 proposes 5 to 25 (dGH). The rounded median of all minima and
+        all maxima is 7 to 25 dGH. This contains natural 10 to 20 without widening. Confidence is
+        low. FishBase gives 9 to 20, Seriously Fish 10 to 15 and Aqua-Fish a wider 8 to 21. Aquarium
+        Guide gives 5 to 20, while GarnelenTv and Reef Trak give wider upper recommendations of 25
+        dGH. The 4 to 91 proposal extends to native Bacalar chemistry rather than a chronic aquarium
+        trial. Published native ranges of 4.3 to 22.6, 4.37 to 72.8 and 73.58 to 90.2 dGH extend
+        outside the decided envelope. It contains the tally's natural summary, not every source
+        measurement. Do not interpret 25 as a demonstrated lethal threshold or recreate sulfate-rich
+        native hardness by raising KH. The median lower bound is 6.5, rounded to 7. The range is
+        plausible because it contains natural 10 to 20 dGH and its edges lie within explicit
+        aquarium advice."
     - field: "features.khDkh.tolerance"
       proposals:
         - by: "generator"

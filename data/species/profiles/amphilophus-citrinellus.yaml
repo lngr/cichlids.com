@@ -595,20 +595,20 @@ features:
         max: 9.3
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 5
-      rationale: "Five votes were cast: generator, checker-a and tiebreaker-1 proposed 6.5 to 9.3,
-        checker-b and tiebreaker-2 proposed 6.0 to 9.0. Three votes agree, one short of a qualified
-        majority, so the decided value is the conservative one: the intersection of all proposals,
-        6.5 to 9.0, widened to contain the natural range up to pH 9.3, which gives 6.5 to 9.3. Care
-        sheets agree on a lower end between 6.0 and 7.5 (Seriously Fish and
-        tropicalfreshwaterfish.com 6.0, Fishkeeper 6.5, Aqua-Fish 6.8, Aquahoy 7.0,
-        Aquarium-Ratgeber 7.5) and stop at pH 8.0 to 8.5; a research colony is kept at 7.0 to 8.0.
-        None of them covers the alkaline lake water, but wild fish live their whole life at pH 8.5
-        to 9.3 in lakes Masaya and Managua, so the upper bound follows these measurements. Neutral
-        to moderately alkaline, well buffered water suits the species."
+      rationale: "The proposals in vote order are 6.5 to 9.3, 6.5 to 9.3, 6.0 to 9.0, 6.5 to 9.3 and
+        6.0 to 9.0. No qualified majority exists. The median bounds give pH 6.5 to 9.3 with
+        low confidence, containing the natural 7.2 to 9.3 without widening. Care sheets
+        place the lower end between 6.0 and 7.5 (Seriously Fish and Tropical Freshwater Fish
+        6.0, Fishkeeper 6.5, Aqua-Fish 6.8, Aquahoy 7.0, Aquarium-Ratgeber 7.5) and stop at
+        8.0 to 8.5; a research colony is kept at 7.0 to 8.0. Wild populations live
+        permanently in the alkaline water of lakes Masaya and Managua, with reported pH 8.5
+        to 9.3, supporting the upper extension beyond care-sheet targets. Neutral to
+        moderately alkaline, well buffered water suits routine aquarium keeping. The high
+        endpoint rests on habitat evidence rather than an aquarium endpoint trial."
       sources:
         - kind: database
           title: "Seriously Fish: Amphilophus citrinellus (Midas Cichlid)"
@@ -1043,23 +1043,24 @@ features:
     tolerance:
       value:
         min: 3
-        max: 16
+        max: 25
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 5
-      rationale: "Five votes were cast: generator, checker-a and tiebreaker-1 proposed 3 to 25 dKH,
-        checker-b 3 to 20 and tiebreaker-2 3 to 15 dKH. Three votes agree, one short of a qualified
-        majority, so the method is conservative: the intersection of all proposals is 3 to 15 dKH.
-        The decided natural range is 3 to 16 dKH, so the tolerance is widened to contain it and
-        becomes 3 to 16 dKH. No care sheet states a carbonate hardness for the species; Seriously
-        Fish and Fishkeeper give general hardness up to 25 dGH only. The bounds therefore rest on
-        the water the species lives in for life: about 3.5 to 4 dKH in Lake Nicaragua, 12 dKH in
-        Lake Masaya and 6.7 to 15.7 dKH in Lake Managua water of the 1950s and its outflow river.
-        Higher alkalinity, as in parts of Lake Managua, is probably tolerated as well but stays
-        outside this cautious range. A stable, buffered tank matters more than an exact value."
+      rationale: "The proposals in vote order are 3 to 25, 3 to 25, 3 to 20, 3 to 25 and 3 to 15 dKH.
+        No qualified majority exists. The median bounds give 3 to 25 dKH with low
+        confidence, containing the natural 3 to 16 dKH without widening. No care sheet
+        states a carbonate hardness for the species; Seriously Fish and Fishkeeper give
+        total hardness up to 25 dGH, which does not establish KH. Habitat evidence includes
+        about 3.5 to 4 dKH in Lake Nicaragua, 12 dKH in Lake Masaya and 6.7 to 15.7 dKH in
+        Lake Managua water from the 1950s and its outflow river. Cole also compiles Lake
+        Managua alkalinity equivalent to about 24.4 dKH. This supports the plausibility of
+        the rounded upper endpoint for a fish inhabiting these buffered waters, although the
+        historical lake estimates differ and long-term aquarium endpoint trials are absent.
+        Stable buffering matters more than targeting the upper edge."
       sources:
         - kind: literature
           title: "Cole, G. A. (1976). Limnology of the Great Lakes of Nicaragua. In: Thorson, T. B. (ed.),
@@ -2911,8 +2912,16 @@ provenance:
       decision:
         min: 6.5
         max: 9.3
-      rationale: conservative decision of the vote count (3 of 5 agreeing votes). Three votes agree; the
-        intersection 6.5 to 9.0 is widened to contain the natural maximum of 9.3.
+      rationale: The proposals in vote order are 6.5 to 9.3, 6.5 to 9.3, 6.0 to 9.0, 6.5 to 9.3 and
+        6.0 to 9.0. No qualified majority exists. The median bounds give pH 6.5 to 9.3 with
+        low confidence, containing the natural 7.2 to 9.3 without widening. Care sheets
+        place the lower end between 6.0 and 7.5 (Seriously Fish and Tropical Freshwater Fish
+        6.0, Fishkeeper 6.5, Aqua-Fish 6.8, Aquahoy 7.0, Aquarium-Ratgeber 7.5) and stop at
+        8.0 to 8.5; a research colony is kept at 7.0 to 8.0. Wild populations live
+        permanently in the alkaline water of lakes Masaya and Managua, with reported pH 8.5
+        to 9.3, supporting the upper extension beyond care-sheet targets. Neutral to
+        moderately alkaline, well buffered water suits routine aquarium keeping. The high
+        endpoint rests on habitat evidence rather than an aquarium endpoint trial.
     - field: features.ghDgh.value
       proposals:
         - by: generator
@@ -3003,7 +3012,15 @@ provenance:
             max: 15
       decision:
         min: 3
-        max: 16
-      rationale: conservative decision of the vote count (3 of 5 agreeing votes). Three votes agree; the
-        intersection of all proposals is 3 to 15 dKH, widened to 3 to 16 dKH to contain the natural
-        range.
+        max: 25
+      rationale: The proposals in vote order are 3 to 25, 3 to 25, 3 to 20, 3 to 25 and 3 to 15 dKH.
+        No qualified majority exists. The median bounds give 3 to 25 dKH with low
+        confidence, containing the natural 3 to 16 dKH without widening. No care sheet
+        states a carbonate hardness for the species; Seriously Fish and Fishkeeper give
+        total hardness up to 25 dGH, which does not establish KH. Habitat evidence includes
+        about 3.5 to 4 dKH in Lake Nicaragua, 12 dKH in Lake Masaya and 6.7 to 15.7 dKH in
+        Lake Managua water from the 1950s and its outflow river. Cole also compiles Lake
+        Managua alkalinity equivalent to about 24.4 dKH. This supports the plausibility of
+        the rounded upper endpoint for a fish inhabiting these buffered waters, although the
+        historical lake estimates differ and long-term aquarium endpoint trials are absent.
+        Stable buffering matters more than targeting the upper edge.

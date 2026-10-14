@@ -476,22 +476,23 @@ features:
         value: {min: 5.6, max: 7.3}
         note: computed from alkalinity after Jackson et al. (1963)
     tolerance:
-      value: {min: 5, max: 12}
+      value: {min: 5, max: 18}
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 6}
       rationale: >-
-        The votes did not settle: the generator, checker-a and tiebreaker-1 proposed 5 to 20 dKH,
-        checker-b and checker-c 5 to 12 dKH and tiebreaker-2 5 to 15 dKH. The conservative rule
-        takes the intersection of all votes, 5 to 12 dKH, because a narrower tolerance warns
-        earlier. The sources reach wider: the Garnelio dealer sheet allows 4 to 20 dKH, Aquarium
-        Ratgeber prints 3 to 12 under carbonate hardness with an unclear unit, Einrichtungsbeispiele
-        recommends 7 to 12 dKH, and The Tropical Tank calls 10 to 12 dKH ideal and 5 to 6 the
-        least, without a maximum. Fishkeeper, Guidarium and Seriously Fish give no carbonate
-        hardness at all. The lower edge is the natural lake minimum. Few and weak sources, hence
-        the low confidence; a stable buffer that holds the pH above 7.5 matters more than the
-        exact figure.
+        The proposals in vote order are 5 to 20, 5 to 20, 5 to 12, 5 to 12, 5 to 20 and 5 to
+        15 dKH. No qualified majority exists. The median minimum is 5 and the middle maxima
+        average 17.5, rounded to 18. The tolerance is 5 to 18 dKH with low confidence and
+        contains the natural 5 to 8 dKH without widening. Garnelio recommends 4 to 20 dKH,
+        Aquarium Ratgeber prints 3 to 12 under carbonate hardness with an unclear unit, and
+        Einrichtungsbeispiele recommends 7 to 12. The Tropical Tank gives 10 to 12 as ideal
+        and 5 to 6 as the minimum, without an upper limit. Fishkeeper, Guidarium and
+        Seriously Fish do not state KH. The lake supports the lower edge and Garnelio
+        supports stronger buffering encompassing the median, making it plausible despite
+        weak evidence for the high endpoint. Stable buffering that holds pH above 7.5
+        matters more than a precise KH target.
       sources:
         - *tt
         - *branchu
@@ -1621,8 +1622,16 @@ provenance:
           value: {min: 5, max: 20}
         - by: tiebreaker-2
           value: {min: 5, max: 15}
-      decision: {min: 5, max: 12}
+      decision: {min: 5, max: 18}
       rationale: >-
-        Decided by tally.yaml with the conservative method, because no proposal reached four
-        agreeing votes: the intersection of all votes is 5 to 12 dKH. The sources reach up to
-        20 dKH (Garnelio, 4 to 20 dKH), so the range is narrower than the widest care sheet.
+        The proposals in vote order are 5 to 20, 5 to 20, 5 to 12, 5 to 12, 5 to 20 and 5 to
+        15 dKH. No qualified majority exists. The median minimum is 5 and the middle maxima
+        average 17.5, rounded to 18. The tolerance is 5 to 18 dKH with low confidence and
+        contains the natural 5 to 8 dKH without widening. Garnelio recommends 4 to 20 dKH,
+        Aquarium Ratgeber prints 3 to 12 under carbonate hardness with an unclear unit, and
+        Einrichtungsbeispiele recommends 7 to 12. The Tropical Tank gives 10 to 12 as ideal
+        and 5 to 6 as the minimum, without an upper limit. Fishkeeper, Guidarium and
+        Seriously Fish do not state KH. The lake supports the lower edge and Garnelio
+        supports stronger buffering encompassing the median, making it plausible despite
+        weak evidence for the high endpoint. Stable buffering that holds pH above 7.5
+        matters more than a precise KH target.

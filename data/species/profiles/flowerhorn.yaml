@@ -261,20 +261,22 @@ features:
         value: {min: 24, max: 30}
         note: parent V. melanurus, value from an aquarium reference
     tolerance:
-      value: {min: 24, max: 30}
+      value: {min: 22, max: 31}
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
       rationale: >-
-        The votes did not settle, so the vote count took the most cautious value, the intersection
-        of all proposals: generator 24 to 30, checker-a 21 to 33, checker-b 22 to 31, tiebreaker-1
-        22 to 31 and tiebreaker-2 22 to 30 C. Three votes agree on about 22 to 31 C, and the
-        sources support that wider span: Fishkeeper keeps the flowerhorn at 24 to 29 C, LiveAquaria
-        at 22 to 27 C, Riverpark Aquatics at 26 to 30 C, Seriously Fish keeps the parents at 21 to 26
-        C (A. citrinellus), 22 to 28 C (A. labiatus) and 23 to 30 C (A. trimaculatus), and larvae were
-        reared at about 28 C. The intersection 24 to 30 C is therefore narrower than the evidence,
-        which supports roughly 22 to 31 C; the narrower range only makes the app warn earlier.
+        The proposals in vote order are 24 to 30, 21 to 33, 22 to 31, 22 to 31, 22 to 30 (C).
+        Without a qualified majority, the medians of all proposed minima and maxima are 22 and 31,
+        rounded to 22 to 31 C. The median 22 to 31 C contains the natural 24 to 30 range without
+        widening. The sources support this maintenance envelope: Fishkeeper keeps the flowerhorn at
+        24 to 29 C, LiveAquaria at 22 to 27 C, Riverpark Aquatics at 26 to 30 C, Seriously Fish
+        keeps the parents at 21 to 26 C (A. citrinellus), 22 to 28 C (A. labiatus) and 23 to 30 C
+        (A. trimaculatus), and the larval study reports rearing at about 28 C. Fishkeeping World
+        recommends 26.7 to 31.7 C, supporting the upper endpoint; routine care nearer 26 to 29 C has
+        stronger overlap among the sources. Confidence is low because endpoint support is
+        incomplete.
       sources:
         - *fishkeeper
         - &sfCitrinellus
@@ -468,18 +470,19 @@ features:
       value: {min: 6.5, max: 9}
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes: {agree: 2, total: 5}
       rationale: >-
-        The votes did not reach a qualified majority, so the vote count took the intersection of all
-        proposals, widened to contain the natural range: generator 6.5 to 9.0, checker-a 6.5 to 8.5,
-        checker-b 6.5 to 8.5, tiebreaker-1 6.5 to 9.0 and tiebreaker-2 6.0 to 9.3. The intersection
-        is 6.5 to 8.5; the natural range 7.0 to 9.0 reaches higher, so the upper bound is widened to
-        9.0. All votes agree on the lower bound of 6.5, the lowest value of the care sheets written
-        for the flowerhorn (Fishkeeper 6.5 to 7.8, LiveAquaria 6.5 to 8.0); Seriously Fish keeps both
-        Nicaraguan parents down to 6.0, and fish were reared at about pH 6.9 to 7.6. No husbandry
-        source tests water above pH 8.0, but the parents live in lakes whose surface water reaches
-        8.9, which supports the widened upper bound.
+        The proposals in vote order are 6.5 to 9, 6.5 to 8.5, 6.5 to 8.5, 6.5 to 9, 6 to 9.3 (pH).
+        Without a qualified majority, the medians of all proposed minima and maxima are 6.5 and 9,
+        rounded to 6.5 to 9 pH. The median 6.5 to 9 pH contains the natural 7 to 9 range without
+        widening. Four proposals share the lower bound of 6.5, the lowest value of the care sheets
+        written for the flowerhorn (Fishkeeper 6.5 to 7.8, LiveAquaria 6.5 to 8.0); Seriously Fish
+        keeps both Nicaraguan parents down to 6.0, and rearing studies report about pH 6.9 to 7.6.
+        The cited husbandry evidence does not test water above pH 8.0, but the parents live in lakes
+        whose surface water reaches 8.9, which supports the widened upper bound. The range is a
+        plausible parental-habitat and care-sheet synthesis, with weaker support near pH 9 than
+        around neutral water. Confidence is low because endpoint support is incomplete.
       sources:
         - *fishkeeper
         - *sfCitrinellus
@@ -648,21 +651,20 @@ features:
       value: {min: 4, max: 16}
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 6}
       rationale: >-
-        The votes did not reach a qualified majority, so the vote count took the intersection of all
-        proposals, widened to contain the natural range: generator 3 to 8, checker-a 4 to 16,
-        tiebreaker-1 4 to 20, tiebreaker-2 3 to 12, tiebreaker-3 3 to 12 and tiebreaker-4 4 to 12
-        dKH; checker-b gave no tolerance. The intersection is 4 to 8 dKH; the natural range 4 to 16
-        dKH reaches higher, so the upper bound is widened to 16. The only care sheet that names a
-        carbonate hardness, Modest Fish, gives 3 to 12 dKH, a keeper on MonsterFishKeepers advises
-        at least 4 dKH, and four of six votes reach 12 dKH or more. LiveAquaria labels 9 to 20 as
-        dKH, but this band equals the general hardness that other sheets give, so it most likely is
-        general hardness. The parents' habitats reach about 16 dKH. The care sheets alone support
-        about 4 to 12 dKH, so the decided upper end of 16 dKH rests on the habitat data. General
-        hardness figures of Fishkeeper, Seriously Fish and FishBase say nothing about carbonate
-        hardness and are not listed as evidence here.
+        The proposals in vote order are 3 to 8, 4 to 16, 4 to 20, 3 to 12, 3 to 12, 4 to 12 (dKH).
+        Without a qualified majority, the medians of all proposed minima and maxima are 3.5 and 12,
+        rounded to 4 to 12 dKH. Containment of the natural 4 to 16 range widens the rounded median
+        to 4 to 16 dKH. The only care sheet that names a carbonate hardness, Modest Fish, gives 3 to
+        12 dKH, a MonsterFishKeepers discussion advises at least 4 dKH, and four of six votes reach
+        12 dKH or more. LiveAquaria labels 9 to 20 as dKH, but this band equals the general hardness
+        that other sheets give, so it most likely is general hardness. The parents' habitats reach
+        about 16 dKH, providing a plausible buffering context. The care sheets alone support about 4
+        to 12 dKH, so the decided upper end of 16 dKH rests on the habitat data. General hardness
+        figures of Fishkeeper, Seriously Fish and FishBase say nothing about carbonate hardness and
+        are not listed as evidence here. Confidence is low because endpoint support is incomplete.
       sources:
         - *swain
         - *tipitapa
@@ -1614,11 +1616,18 @@ provenance:
           value: {min: 22, max: 31}
         - by: tiebreaker-2
           value: {min: 22, max: 30}
-      decision: {min: 24, max: 30}
+      decision: {min: 22, max: 31}
       rationale: >-
-        Conservative decision of the vote count (3 of 5 votes agree on the top candidate): the
-        intersection of all votes, which contains the natural range. The care sheets support about 22
-        to 31 C.
+        The proposals in vote order are 24 to 30, 21 to 33, 22 to 31, 22 to 31, 22 to 30 (C).
+        Without a qualified majority, the medians of all proposed minima and maxima are 22 and 31,
+        rounded to 22 to 31 C. The median 22 to 31 C contains the natural 24 to 30 range without
+        widening. The sources support this maintenance envelope: Fishkeeper keeps the flowerhorn at
+        24 to 29 C, LiveAquaria at 22 to 27 C, Riverpark Aquatics at 26 to 30 C, Seriously Fish
+        keeps the parents at 21 to 26 C (A. citrinellus), 22 to 28 C (A. labiatus) and 23 to 30 C
+        (A. trimaculatus), and the larval study reports rearing at about 28 C. Fishkeeping World
+        recommends 26.7 to 31.7 C, supporting the upper endpoint; routine care nearer 26 to 29 C has
+        stronger overlap among the sources. Confidence is low because endpoint support is
+        incomplete.
     - field: features.ph.tolerance
       proposals:
         - by: generator
@@ -1633,9 +1642,16 @@ provenance:
           value: {min: 6.0, max: 9.3}
       decision: {min: 6.5, max: 9}
       rationale: >-
-        Conservative decision of the vote count (2 of 5 votes agree on the top candidate): the
-        intersection of all votes is 6.5 to 8.5, widened at the top to 9.0 to contain the natural
-        range. Care sheets and habitat data together support about 6.5 to 9.0.
+        The proposals in vote order are 6.5 to 9, 6.5 to 8.5, 6.5 to 8.5, 6.5 to 9, 6 to 9.3 (pH).
+        Without a qualified majority, the medians of all proposed minima and maxima are 6.5 and 9,
+        rounded to 6.5 to 9 pH. The median 6.5 to 9 pH contains the natural 7 to 9 range without
+        widening. Four proposals share the lower bound of 6.5, the lowest value of the care sheets
+        written for the flowerhorn (Fishkeeper 6.5 to 7.8, LiveAquaria 6.5 to 8.0); Seriously Fish
+        keeps both Nicaraguan parents down to 6.0, and rearing studies report about pH 6.9 to 7.6.
+        The cited husbandry evidence does not test water above pH 8.0, but the parents live in lakes
+        whose surface water reaches 8.9, which supports the widened upper bound. The range is a
+        plausible parental-habitat and care-sheet synthesis, with weaker support near pH 9 than
+        around neutral water. Confidence is low because endpoint support is incomplete.
     - field: features.khDkh.tolerance
       proposals:
         - by: generator
@@ -1652,10 +1668,17 @@ provenance:
           value: {min: 4, max: 12}
       decision: {min: 4, max: 16}
       rationale: >-
-        Conservative decision of the vote count (3 of 6 votes agree on the top candidate; checker-b
-        gave no tolerance): the intersection of all votes is 4 to 8 dKH, widened at the top to 16 to
-        contain the natural 4 to 16 dKH. The only explicit carbonate hardness of a care sheet is 3
-        to 12 dKH; the habitat values up to about 16 dKH carry the upper end.
+        The proposals in vote order are 3 to 8, 4 to 16, 4 to 20, 3 to 12, 3 to 12, 4 to 12 (dKH).
+        Without a qualified majority, the medians of all proposed minima and maxima are 3.5 and 12,
+        rounded to 4 to 12 dKH. Containment of the natural 4 to 16 range widens the rounded median
+        to 4 to 16 dKH. The only care sheet that names a carbonate hardness, Modest Fish, gives 3 to
+        12 dKH, a MonsterFishKeepers discussion advises at least 4 dKH, and four of six votes reach
+        12 dKH or more. LiveAquaria labels 9 to 20 as dKH, but this band equals the general hardness
+        that other sheets give, so it most likely is general hardness. The parents' habitats reach
+        about 16 dKH, providing a plausible buffering context. The care sheets alone support about 4
+        to 12 dKH, so the decided upper end of 16 dKH rests on the habitat data. General hardness
+        figures of Fishkeeper, Seriously Fish and FishBase say nothing about carbonate hardness and
+        are not listed as evidence here. Confidence is low because endpoint support is incomplete.
     - field: features.maxSizeCm
       proposals:
         - by: generator

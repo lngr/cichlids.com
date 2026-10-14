@@ -234,18 +234,19 @@ features:
     tolerance:
       value: {min: 22, max: 30}
       confidence: low
-      verification: {method: conservative, votes: {agree: 3, total: 5}}
+      verification: {method: median, votes: {agree: 3, total: 5}}
       rationale: >-
-        The tolerance votes did not reach a qualified majority either: the generator proposed 23 to
-        29 C, checker-a and tiebreaker-2 20 to 30 C, checker-b and tiebreaker-1 22 to 30 C. The
-        conservative method takes the intersection of all five, 23 to 29 C, which is narrower than
-        the decided natural range of 22 to 30 C, so the tolerance was widened to contain that
-        natural range and is 22 to 30 C. Care sheets put the long-term aquarium range between 24 and
-        29 C: Seriously Fish and Tropical Freshwater Fish 25 to 29 C, Fishkeeper 25 to 28 C,
-        FishProfiles 24.4 to 27.8 C and FishBase, after an aquarium atlas, 26 to 28 C. The wider
-        proposals of 20 to 30 C rest on the river measurements and on aquaculture stock held for a
-        month at 19.5 C; these show that the fish survives cooler and warmer phases, but no source
-        documents years at the edges. Keepers do best at 25 to 28 C.
+        The proposals in vote order are 23 to 29, 20 to 30, 22 to 30, 22 to 30, 20 to 30 (C).
+        Without a qualified majority, the medians of all proposed minima and maxima are 22 and 30,
+        rounded to 22 to 30 C. The median 22 to 30 C contains the natural 22 to 30 range without
+        widening. Care sheets put the long-term aquarium range between 24 and 29 C: Seriously Fish
+        and Tropical Freshwater Fish 25 to 29 C, Fishkeeper 25 to 28 C, FishProfiles 24.4 to 27.8 C
+        and FishBase, after an aquarium atlas, 26 to 28 C. The wider proposals of 20 to 30 C rest on
+        the river measurements and on a 30-day aquaculture trial at 19.5 C; these document exposure
+        to cooler and warmer phases, but no source documents years at the edges. Keepers do best at
+        25 to 28 C. The median 22 to 30 C matches the decided natural range and is plausible as a
+        seasonal maintenance envelope, with stronger support in the middle. Confidence is low
+        because endpoint support is incomplete.
       sources:
         - &sf
           kind: database
@@ -1389,8 +1390,17 @@ provenance:
         - {by: tiebreaker-2, value: {min: 20, max: 30}}
       decision: {min: 22, max: 30}
       rationale: >-
-        Decided by the vote count with method conservative (3 of 5): the intersection of all
-        proposals, 23 to 29 C, widened to 22 to 30 C to contain the decided natural range.
+        The proposals in vote order are 23 to 29, 20 to 30, 22 to 30, 22 to 30, 20 to 30 (C).
+        Without a qualified majority, the medians of all proposed minima and maxima are 22 and 30,
+        rounded to 22 to 30 C. The median 22 to 30 C contains the natural 22 to 30 range without
+        widening. Care sheets put the long-term aquarium range between 24 and 29 C: Seriously Fish
+        and Tropical Freshwater Fish 25 to 29 C, Fishkeeper 25 to 28 C, FishProfiles 24.4 to 27.8 C
+        and FishBase, after an aquarium atlas, 26 to 28 C. The wider proposals of 20 to 30 C rest on
+        the river measurements and on a 30-day aquaculture trial at 19.5 C; these document exposure
+        to cooler and warmer phases, but no source documents years at the edges. Keepers do best at
+        25 to 28 C. The median 22 to 30 C matches the decided natural range and is plausible as a
+        seasonal maintenance envelope, with stronger support in the middle. Confidence is low
+        because endpoint support is incomplete.
     - field: features.diet
       proposals:
         - {by: generator, value: {type: omnivore, bloatSensitive: false}}

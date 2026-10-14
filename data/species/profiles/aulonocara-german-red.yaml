@@ -919,19 +919,19 @@ features:
     tolerance:
       value:
         min: 5
-        max: 12
+        max: 15
       confidence: low
-      rationale: "The votes did not settle, so the most cautious value applies: the intersection of all
-        proposals. Generator proposed 5 to 15 dKH (after LiveAquaria), checker-a 5 to 20, checker-b
-        5 to 12, tiebreaker-1 5 to 20 and tiebreaker-2 5 to 12; only checker-b and tiebreaker-2
-        agree. Their intersection is 5 to 12 dKH, which contains the lake value of 5 to 8 dKH. The
-        narrower upper bound triggers more warnings in the compatibility check, which is the safer
-        side. No database or literature source states a carbonate hardness for this line or its
-        parent form; Seriously Fish gives only pH and general hardness. Retailers give 10 to 15
-        (LiveAquaria), 6 to 30 (Garnelio, also for a red Aulonocara line) and 8 to 12 (Gensou),
-        general care guides 6 to 8 and 4 to 6, and the archive advises 10 to 12 dKH. Peacocks are
-        commonly kept above 12 dKH, so the upper bound is a cautious limit rather than a proven
-        maximum."
+      rationale: "The proposals in vote order are 5 to 15, 5 to 20, 5 to 12, 5 to 20 and 5 to 12 dKH.
+        No qualified majority exists. The median bounds give 5 to 15 dKH with low confidence
+        and contain the natural parent-lake range of 5 to 8 dKH without widening. No
+        database or literature source states carbonate hardness for this line or its parent
+        form; Seriously Fish gives pH and total hardness only. Retailers give 10 to 15 dKH
+        (LiveAquaria), 6 to 30 (Garnelio, also for a red Aulonocara line) and 8 to 12
+        (Gensou); general guides give 6 to 8 and 4 to 6, while the archive advises 10 to 12.
+        Peacocks are commonly kept above 12 dKH. The median includes the LiveAquaria
+        recommendation and ordinary well buffered Malawi aquarium conditions, so 15 is
+        plausible without adopting the poorly supported 30 dKH claim. The evidence does not
+        establish physiological endpoints."
       sources:
         - kind: database
           title: "Seriously Fish: Aulonocara stuartgranti (Grant's Peacock)"
@@ -1099,7 +1099,7 @@ features:
             max: 12
           note: member advice for Malawi peacocks
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 2
           total: 5
@@ -3231,8 +3231,15 @@ provenance:
             max: 12
       decision:
         min: 5
-        max: 12
-      rationale: "Decided by the vote count with method conservative (2 of 5 agree) and confidence low:
-        the intersection of all five proposals is 5 to 12 dKH, which contains the lake value of 5 to
-        8 dKH. No database or literature source states a carbonate hardness for the line or its
-        parent form."
+        max: 15
+      rationale: "The proposals in vote order are 5 to 15, 5 to 20, 5 to 12, 5 to 20 and 5 to 12 dKH.
+        No qualified majority exists. The median bounds give 5 to 15 dKH with low confidence
+        and contain the natural parent-lake range of 5 to 8 dKH without widening. No
+        database or literature source states carbonate hardness for this line or its parent
+        form; Seriously Fish gives pH and total hardness only. Retailers give 10 to 15 dKH
+        (LiveAquaria), 6 to 30 (Garnelio, also for a red Aulonocara line) and 8 to 12
+        (Gensou); general guides give 6 to 8 and 4 to 6, while the archive advises 10 to 12.
+        Peacocks are commonly kept above 12 dKH. The median includes the LiveAquaria
+        recommendation and ordinary well buffered Malawi aquarium conditions, so 15 is
+        plausible without adopting the poorly supported 30 dKH claim. The evidence does not
+        establish physiological endpoints."

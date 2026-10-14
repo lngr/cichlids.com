@@ -827,9 +827,21 @@ features:
     tolerance:
       value:
         min: 3
-        max: 20
+        max: 25
       confidence: low
-      rationale: "All votes set the lower bound at the natural minimum of 3 dGH, which the tolerance has to contain; the care sheet lower bounds of 6 to 12 dGH follow the common confusion of hardness with alkalinity, since the wild ancestors live at 3 to 5 dGH. The votes split on the upper bound. Three set 25 dGH after Seriously Fish (10 to 25 dGH for the parent species) and the hybrid entry of Fishkeeper (up to 25). Two set 20 dGH, the median of the upper limits in the care sources: 15 in FishBase for A. hansbaenschi, in Fishipedia and in one OB retailer sheet, 18 in OATA, 19 in FishBase for A. jacobfreibergi, 20 in retailer sheets for OB hybrids, 25 in Seriously Fish and Fishkeeper, 30 in FishBase for A. baenschi and A. maylandi and in one retailer sheet for a red line. The two upper limits differ by more than 2 dGH, so neither reached a qualified majority, and the most cautious value applies: the intersection of all votes, 3 to 20 dGH. The narrower range makes the compatibility check warn earlier against tankmates kept in very hard water. Long-term keeping at 20 to 25 dGH is plausible from the sources that allow it but not documented, hence the low confidence. An archive tank with peacocks ran at 13 dGH."
+      rationale: "The proposals in vote order are 3 to 20, 3 to 25, 3 to 25, 3 to 25 and 3 to 20 dGH.
+        No qualified majority exists. The median bounds give 3 to 25 dGH with low confidence
+        and contain the natural ancestral range of 3 to 5 dGH without widening. Care-sheet
+        minima of 6 to 12 do not establish a requirement for high total hardness, because
+        the wild ancestors inhabit softer, alkaline water. Seriously Fish gives 10 to 25 dGH
+        for the parent species and Fishkeeper up to 25 for hybrids. Other source maxima are
+        15 in FishBase for A. hansbaenschi, Fishipedia and one OB retailer sheet, 18 in
+        OATA, 19 in FishBase for A. jacobfreibergi, 20 in OB retailer sheets, and 30 in
+        FishBase for A. baenschi and A. maylandi and a red-line retailer sheet. These upper
+        limits have a median of 20 across the care sources, but the vote median is 25.
+        Keeping at 20 to 25 dGH is plausible from the sources allowing it, although
+        long-term endpoint outcomes are undocumented. An archive peacock tank runs at 13
+        dGH."
       sources:
         - kind: database
           title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
@@ -1095,7 +1107,7 @@ features:
             max: 13
           note: community tank with peacocks, single reading
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 5
@@ -2996,8 +3008,20 @@ provenance:
           by: tiebreaker-4
       decision:
         min: 3
-        max: 20
-      rationale: "Decided by the vote count as the most cautious value (conservative): the upper limits of 20 and 25 dGH differ by more than 2 dGH, the top proposal has 3 of 5 votes, so the intersection of all votes, 3 to 20 dGH, applies with low confidence."
+        max: 25
+      rationale: "The proposals in vote order are 3 to 20, 3 to 25, 3 to 25, 3 to 25 and 3 to 20 dGH.
+        No qualified majority exists. The median bounds give 3 to 25 dGH with low confidence
+        and contain the natural ancestral range of 3 to 5 dGH without widening. Care-sheet
+        minima of 6 to 12 do not establish a requirement for high total hardness, because
+        the wild ancestors inhabit softer, alkaline water. Seriously Fish gives 10 to 25 dGH
+        for the parent species and Fishkeeper up to 25 for hybrids. Other source maxima are
+        15 in FishBase for A. hansbaenschi, Fishipedia and one OB retailer sheet, 18 in
+        OATA, 19 in FishBase for A. jacobfreibergi, 20 in OB retailer sheets, and 30 in
+        FishBase for A. baenschi and A. maylandi and a red-line retailer sheet. These upper
+        limits have a median of 20 across the care sources, but the vote median is 25.
+        Keeping at 20 to 25 dGH is plausible from the sources allowing it, although
+        long-term endpoint outcomes are undocumented. An archive peacock tank runs at 13
+        dGH."
     - field: features.khDkh.tolerance
       proposals:
         - value:

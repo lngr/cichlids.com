@@ -523,21 +523,21 @@ features:
     value: {min: 4, max: 12}
     confidence: low
     rationale: >-
-      The vote count decided this range with the method median (3 of 5 votes agree, no qualified
-      majority). The proposals were generator 3 to 12 dKH, checker-a 3 to 12, checker-b 3.5 to
-      4.3, tiebreaker-1 4 to 14 and tiebreaker-2 3.5 to 4.5. The five minima sorted are 3, 3, 3.5,
-      3.5 and 4, so the median minimum is 3.5, which rounds to 4 dKH; the five maxima sorted are
-      4.3, 4.5, 12, 12 and 14, so the median maximum is 12 dKH. The decided range is slightly
-      narrower than the measured and estimated range of the sources, which spans about 3 to 14
-      dKH. No alkalinity was measured in the range of the narrow
-      species. The only measurement comes from four Costa Rican streams of A. siquia (Wisenden
-      1995), and it is read in two ways: Wikipedia reports 63 to 77 mg/L CaCO3 (3.5 to 4.3 dKH) as
-      carbonate hardness, while the archived reprint, as read by one vote, gives that figure as
-      total hardness and an alkalinity of 107 to 127 mg/L CaCO3 (6.0 to 7.1 dKH). The full text
-      is not open access and could not be checked here. Estimates from pH and conductivity give
-      roughly 3 to 9 dKH for the Salvadoran rivers and 8 to 14 dKH for alkaline Lake Amatitlán.
-      The decided range spans the soft river water and most of the lake estimate; the tolerance of
-      3 to 15 dKH contains it.
+      The vote count decided this range with the method median (3 of 5 votes agree, no
+      qualified majority). The proposals were generator 3 to 12 dKH, checker-a 3 to 12,
+      checker-b 3.5 to 4.3, tiebreaker-1 4 to 14 and tiebreaker-2 3.5 to 4.5. The five
+      minima sorted are 3, 3, 3.5, 3.5 and 4, so the median minimum is 3.5, which rounds to
+      4 dKH; the five maxima sorted are 4.3, 4.5, 12, 12 and 14, so the median maximum is 12
+      dKH. The decided range is slightly narrower than the measured and estimated range of
+      the sources, which spans about 3 to 14 dKH. No alkalinity was measured in the range of
+      the narrow species. The only measurement comes from four Costa Rican streams of A.
+      siquia (Wisenden 1995), and it is read in two ways: Wikipedia reports 63 to 77 mg/L
+      CaCO3 (3.5 to 4.3 dKH) as carbonate hardness, while the archived reprint, as read by
+      one vote, gives that figure as total hardness and an alkalinity of 107 to 127 mg/L
+      CaCO3 (6.0 to 7.1 dKH). The full text is not open access and could not be checked
+      here. Estimates from pH and conductivity give roughly 3 to 9 dKH for the Salvadoran
+      rivers and 8 to 14 dKH for alkaline Lake Amatitlán. The decided range spans the soft
+      river water and most of the lake estimate; the tolerance of 3 to 20 dKH contains it.
     sources:
       - *acahuapa
       - *amdiv
@@ -572,18 +572,18 @@ features:
       method: median
       votes: {agree: 3, total: 5}
     tolerance:
-      value: {min: 3, max: 15}
+      value: {min: 3, max: 20}
       confidence: low
       rationale: >-
-        The vote count decided this range with the method conservative (3 of 5 votes agree). The
-        proposals were generator 3 to 20 dKH, checker-a 3 to 20, checker-b 2 to 15, tiebreaker-1 3
-        to 20 and tiebreaker-2 3 to 15; the intersection of all proposals is 3 to 15 dKH, which
-        contains the natural range of 4 to 12 dKH. Only Aquarium-Ratgeber states a carbonate hardness (10
-        to 20 dKH). The other care sheets give pH 6.0 to 8.0 and a total hardness of up to 20 to 25
-        dGH, which in tap water goes with a moderate to high carbonate hardness, and keepers hold
-        the species in soft as well as in hard, well buffered water. The upper bound of 15 dKH is
-        the conservative choice; well buffered water above it is probably tolerated, but no source
-        confirms that for long-term keeping.
+        The proposals in vote order are 3 to 20, 3 to 20, 2 to 15, 3 to 20 and 3 to 15 dKH.
+        No qualified majority exists. The median minimum is 3 and the median maximum is 20
+        dKH, giving a tolerance of 3 to 20 dKH with low confidence. It contains the natural
+        4 to 12 dKH without widening. Only Aquarium-Ratgeber states a carbonate hardness, 10
+        to 20 dKH, directly supporting the harder part. The other care sheets give pH 6.0 to
+        8.0 and total hardness up to 20 to 25 dGH, and husbandry experience includes soft
+        and hard, well buffered water. These observations make the broad buffering range
+        plausible, but GH and pH do not determine KH. The softer endpoint is an inference
+        rather than a verified long-term limit.
       sources:
         - *rg
         - *sf
@@ -604,7 +604,7 @@ features:
           value: {min: 3.5, max: 4.3}
           note: natural water of the related A. siquia, in which the species thrives
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
 
   maxSizeCm:
@@ -1625,10 +1625,17 @@ provenance:
         - {by: checker-b, value: {min: 2, max: 15}}
         - {by: tiebreaker-1, value: {min: 3, max: 20}}
         - {by: tiebreaker-2, value: {min: 3, max: 15}}
-      decision: {min: 3, max: 15}
+      decision: {min: 3, max: 20}
       rationale: >-
-        Decided by the vote count with method conservative (3 of 5 agree): the intersection of all
-        proposals, which contains the natural value.
+        The proposals in vote order are 3 to 20, 3 to 20, 2 to 15, 3 to 20 and 3 to 15 dKH.
+        No qualified majority exists. The median minimum is 3 and the median maximum is 20
+        dKH, giving a tolerance of 3 to 20 dKH with low confidence. It contains the natural
+        4 to 12 dKH without widening. Only Aquarium-Ratgeber states a carbonate hardness, 10
+        to 20 dKH, directly supporting the harder part. The other care sheets give pH 6.0 to
+        8.0 and total hardness up to 20 to 25 dGH, and husbandry experience includes soft
+        and hard, well buffered water. These observations make the broad buffering range
+        plausible, but GH and pH do not determine KH. The softer endpoint is an inference
+        rather than a verified long-term limit.
     - field: features.speciesOnly
       proposals:
         - {by: generator, value: false}

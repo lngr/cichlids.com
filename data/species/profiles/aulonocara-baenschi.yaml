@@ -329,17 +329,15 @@ features:
       value: {min: 3, max: 25}
       confidence: low
       rationale: >-
-        Aquarium sources accept far harder water than the lake: Seriously Fish and a UK breeder give
-        10 to 25 dGH, while the Aquarien Atlas via FishBase, Fishipedia and FishProfiles give 10 to
-        30, probably all after the same atlas entry. The lower limit of 10 in these sheets reflects
-        the belief that Malawi water is hard and is no evidence that softer water harms the fish;
-        the wild population lives permanently at 3 to 5 dGH, so the tolerance starts at the lake
-        value. The votes split between an upper limit of 25 and one of 30 dGH, and neither reached
-        the four of five agreeing votes a qualified majority needs. The vote count therefore took
-        the conservative value, the intersection of all votes, which ends at 25 dGH: a narrower
-        tolerance makes the compatibility check warn earlier, which errs on the safe side for the
-        fish. No source tests the species in soft aquarium water with a high carbonate hardness,
-        so the range needs confirmation.
+        The proposals in vote order are 3 to 25, 3 to 30, 3 to 25, 3 to 30 and 3 to 25 dGH.
+        No qualified majority exists. The median bounds give 3 to 25 dGH with low
+        confidence, containing the natural 3 to 5 dGH without widening. Seriously Fish and a
+        UK breeder recommend 10 to 25 dGH; the Aquarien Atlas via FishBase, Fishipedia and
+        FishProfiles gives 10 to 30, probably reflecting the same atlas entry. Their lower
+        bound of 10 does not demonstrate harm in the softer lake water where wild fish live
+        permanently. Combining that habitat evidence with the aquarium recommendations makes
+        the median a plausible keeping range. No source tests the species in soft aquarium
+        water with high carbonate hardness, so confirmation of the endpoints is necessary.
       sources:
         - *sf
         - *fb
@@ -370,7 +368,7 @@ features:
           value: {min: 3.2, max: 4.9}
           note: hardness the wild fish live in
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
 
   khDkh:
@@ -1267,9 +1265,15 @@ provenance:
         - {by: tiebreaker-2, value: {min: 3, max: 25}}
       decision: {min: 3, max: 25}
       rationale: >-
-        Decided by the vote count with the conservative method: the upper limits of 25 and 30 dGH
-        lie more than 2 dGH apart, and the larger camp has only 3 of 5 votes. The intersection of
-        all votes, 3 to 25 dGH, is the most cautious range.
+        The proposals in vote order are 3 to 25, 3 to 30, 3 to 25, 3 to 30 and 3 to 25 dGH.
+        No qualified majority exists. The median bounds give 3 to 25 dGH with low
+        confidence, containing the natural 3 to 5 dGH without widening. Seriously Fish and a
+        UK breeder recommend 10 to 25 dGH; the Aquarien Atlas via FishBase, Fishipedia and
+        FishProfiles gives 10 to 30, probably reflecting the same atlas entry. Their lower
+        bound of 10 does not demonstrate harm in the softer lake water where wild fish live
+        permanently. Combining that habitat evidence with the aquarium recommendations makes
+        the median a plausible keeping range. No source tests the species in soft aquarium
+        water with high carbonate hardness, so confirmation of the endpoints is necessary.
     - field: features.khDkh.tolerance
       proposals:
         - {by: generator, value: {min: 5, max: 15}}

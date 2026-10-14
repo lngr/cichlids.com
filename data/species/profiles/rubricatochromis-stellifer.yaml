@@ -296,20 +296,23 @@ features:
         max: 30
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
-      rationale: "No qualified majority: the generator, checker-a and tiebreaker-1 proposed 22 to 30 C,
-        checker-b 22 to 28 C, tiebreaker-2 22 to 32 C and checker-c 20 to 33 C. The conservative
-        rule takes the intersection of all votes, 22 to 28 C, and widens it to contain the natural
-        range of 24 to 30 C, which gives 22 to 30 C. Husbandry sources cover the lower part:
-        Seriously Fish keeps the species at 23 to 26 C and breeds it at 24 to 28 C, AquaInfo gives
-        22 to 26 C, FishBase handbook data 22 to 24 and 22 to 26 C, the Nordic cichlid society 22 to
-        28 C and B-Aqua 22 to 30 C; in breeding trials 28 C gave clearly better hatching than 25 C.
-        The wider votes of checker-c (20 to 33 C) and tiebreaker-2 (up to 32 C) rest on field
-        extremes, not on long-term keeping. No husbandry source documents years above 28 C, so the
-        upper end follows the habitat water only."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 22 to 30; checker-a
+        proposes 22 to 30; checker-b proposes 22 to 28; checker-c proposes 20 to 33; tiebreaker-1
+        proposes 22 to 30; tiebreaker-2 proposes 22 to 32 (C). The rounded median of all minima and
+        all maxima is 22 to 30 C. This contains natural 24 to 30 without widening. Confidence is
+        low. Husbandry sources cover the lower part: Seriously Fish keeps the species at 23 to 26 C
+        and breeds it at 24 to 28 C, AquaInfo gives 22 to 26 C, FishBase handbook data 22 to 24 and
+        22 to 26 C, the Nordic cichlid society 22 to 28 C and B-Aqua 22 to 30 C; breeding trials
+        find clearly better hatching at 28 C than at 25 C. The wider votes of checker-c (20 to 33 C)
+        and tiebreaker-2 (up to 32 C) rest on field extremes, not on long-term keeping. No husbandry
+        source documents years above 28 C, so the upper end has habitat support and B-Aqua care
+        guidance, without a chronic endpoint trial. The median is plausible around species-linked
+        habitat measurements and care guidance, with routine settings better supported than chronic
+        health at every edge."
       sources:
         - kind: database
           title: "Seriously Fish: Hemichromis lifalili (Blood-Red Jewel Cichlid)"
@@ -650,23 +653,26 @@ features:
         note: aquarium handbook figure, not a habitat measurement
     tolerance:
       value:
-        min: 5.1
+        min: 5
         max: 7.8
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
-      rationale: "No qualified majority: the generator proposed 4.0 to 7.8, checker-c 4.2 to 7.8,
-        checker-a and tiebreaker-1 5.0 to 7.8, tiebreaker-2 5.1 to 7.8 and checker-b 6.0 to 7.8. The
-        conservative rule takes the intersection, 6.0 to 7.8, and widens it to contain the natural
-        range, which gives 5.1 to 7.8. All votes share the upper end: Seriously Fish allows up to
-        7.8, AquaInfo and FishBase handbook data give 6.5 to 7.5, AquariumDomain 6.0 to 7.5, and a
-        breeder spawned a pair at 7.6. No husbandry source documents long-term keeping below pH 6.0,
-        so the lower end of 5.1 rests on the habitat measurements alone. The lower bounds of 4.0 and
-        4.2 proposed by the generator and checker-c come from the blackwater of Lake Tumba and are
-        tied neither to the species nor to aquarium experience."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 4 to 7.8; checker-a
+        proposes 5 to 7.8; checker-b proposes 6 to 7.8; checker-c proposes 4.2 to 7.8; tiebreaker-1
+        proposes 5 to 7.8; tiebreaker-2 proposes 5.1 to 7.8 (pH). The rounded median of all minima
+        and all maxima is 5 to 7.8 pH. This contains natural 5.1 to 6.8 without widening. Confidence
+        is low. All votes share the upper end: Seriously Fish allows up to 7.8, AquaInfo and
+        FishBase handbook data give 6.5 to 7.5, AquariumDomain 6.0 to 7.5, and a breeder reports
+        spawning at 7.6. No husbandry source documents long-term keeping below pH 6.0, so the median
+        lower end of 5 is close to the species-linked habitat minimum of 5.11 and has no chronic
+        aquarium trial. The lower bounds of 4.0 and 4.2 proposed by the generator and checker-c come
+        from the blackwater of Lake Tumba and are tied neither to the species nor to aquarium
+        experience. The median is plausible as a provisional envelope containing species-linked
+        habitat pH and aquarium guidance; the acidic edge is not a routine care target."
       sources:
         - kind: database
           title: "Seriously Fish: Hemichromis lifalili (Blood-Red Jewel Cichlid)"
@@ -2807,8 +2813,19 @@ provenance:
       decision:
         min: 22
         max: 30
-      rationale: "Tally: conservative, 3 of 6 votes agree; intersection 22 to 28 C widened to the natural
-        range of 24 to 30 C."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 22 to 30; checker-a
+        proposes 22 to 30; checker-b proposes 22 to 28; checker-c proposes 20 to 33; tiebreaker-1
+        proposes 22 to 30; tiebreaker-2 proposes 22 to 32 (C). The rounded median of all minima and
+        all maxima is 22 to 30 C. This contains natural 24 to 30 without widening. Confidence is
+        low. Husbandry sources cover the lower part: Seriously Fish keeps the species at 23 to 26 C
+        and breeds it at 24 to 28 C, AquaInfo gives 22 to 26 C, FishBase handbook data 22 to 24 and
+        22 to 26 C, the Nordic cichlid society 22 to 28 C and B-Aqua 22 to 30 C; breeding trials
+        find clearly better hatching at 28 C than at 25 C. The wider votes of checker-c (20 to 33 C)
+        and tiebreaker-2 (up to 32 C) rest on field extremes, not on long-term keeping. No husbandry
+        source documents years above 28 C, so the upper end has habitat support and B-Aqua care
+        guidance, without a chronic endpoint trial. The median is plausible around species-linked
+        habitat measurements and care guidance, with routine settings better supported than chronic
+        health at every edge."
     - field: features.ph.tolerance
       proposals:
         - by: generator
@@ -2836,10 +2853,20 @@ provenance:
             min: 5.1
             max: 7.8
       decision:
-        min: 5.1
+        min: 5
         max: 7.8
-      rationale: "Tally: conservative, 3 of 6 votes agree; intersection 6.0 to 7.8 widened to the natural
-        minimum of 5.1."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 4 to 7.8; checker-a
+        proposes 5 to 7.8; checker-b proposes 6 to 7.8; checker-c proposes 4.2 to 7.8; tiebreaker-1
+        proposes 5 to 7.8; tiebreaker-2 proposes 5.1 to 7.8 (pH). The rounded median of all minima
+        and all maxima is 5 to 7.8 pH. This contains natural 5.1 to 6.8 without widening. Confidence
+        is low. All votes share the upper end: Seriously Fish allows up to 7.8, AquaInfo and
+        FishBase handbook data give 6.5 to 7.5, AquariumDomain 6.0 to 7.5, and a breeder reports
+        spawning at 7.6. No husbandry source documents long-term keeping below pH 6.0, so the median
+        lower end of 5 is close to the species-linked habitat minimum of 5.11 and has no chronic
+        aquarium trial. The lower bounds of 4.0 and 4.2 proposed by the generator and checker-c come
+        from the blackwater of Lake Tumba and are tied neither to the species nor to aquarium
+        experience. The median is plausible as a provisional envelope containing species-linked
+        habitat pH and aquarium guidance; the acidic edge is not a routine care target."
     - field: features.ghDgh.tolerance
       proposals:
         - by: generator

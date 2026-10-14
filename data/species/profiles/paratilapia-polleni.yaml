@@ -228,20 +228,21 @@ features:
         total: 6
     tolerance:
       value: &a37
-        min: 23
-        max: 28
+        min: 22
+        max: 29
       confidence: low
-      rationale: "The tally applies the conservative intersection of all six proposals: the highest lower
-        endpoint is 23 and the lowest upper endpoint is 28 C. This already contains the decided
-        natural interval. There were only three agreeing votes around the leading candidate, so low
-        confidence is mandatory. FishFish and Aqua-Fish support 23 to 28 C. Seriously Fish lists the
-        wider 17 to 28 C band but prefers approximately 22 to 27 C, and the 1992 study kept eastern
-        historical stock for about two years at 28 to 30 C. Neither colder routine limits nor 30 C
-        can be transferred confidently to every northern stock. The culture paper recommends 22 to
-        28 C for unidentified Paratilapia sp.; Williams advises at least 26 C. Routine 26 to 27 C
-        sits within these overlapping recommendations. Proposals were generator: 23 to 28;
-        checker-a: 17 to 30; checker-b: 22 to 30; checker-c: 22 to 28; tiebreaker-1: 22 to 30;
-        tiebreaker-2: 22 to 28."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 23 to 28; checker-a
+        proposes 17 to 30; checker-b proposes 22 to 30; checker-c proposes 22 to 28; tiebreaker-1
+        proposes 22 to 30; tiebreaker-2 proposes 22 to 28 (C). The rounded median of all minima and
+        all maxima is 22 to 29 C. This contains natural 25 to 28 without widening. Confidence is
+        low. FishFish and Aqua-Fish support 23 to 28 C. Seriously Fish lists the wider 17 to 28 C
+        band but prefers approximately 22 to 27 C, and the 1992 study reports about two years of
+        captive rearing of eastern historical stock at 28 to 30 C. Neither colder routine limits nor
+        30 C can be transferred confidently to every northern stock. The culture paper recommends 22
+        to 28 C for unidentified Paratilapia sp.; Williams advises at least 26 C. Routine 26 to 27 C
+        sits within these overlapping recommendations. The median is plausible around preferred
+        keeping conditions and extended captive observations, with stock identity limiting transfer
+        of the warm edge."
       sources:
         - &a12
           kind: database
@@ -324,7 +325,7 @@ features:
             max: 28
           note: Retailer advice with errors elsewhere in the page; low weight.
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -1410,14 +1411,14 @@ profile:
       - *a29
   husbandry:
     text: >-
-      For one established pair, provide at least 360 litres with a base about 150 by 47.5 cm and
-      a workable divider or separate aquarium. Published minima vary substantially, and the
-      Nordic register recommends 700 litres and 200 cm. Build secure refuges and visual barriers
-      with wood, pots or stable rocks over smooth substrate. Combine effective filtration with
-      oxygenation and regular water replacement matched to the existing chemistry. A steady 26
-      to 27 C is a practical target within the decided 23 to 28 C tolerance. Near-neutral pH and
-      modest mineral content have better aquarium support than the provisional low endpoints;
-      the tolerance envelope is not a set of targets.
+      For one established pair, provide at least 360 litres with a base about 150 by 47.5 cm and a
+      workable divider or separate aquarium. Published minima vary substantially, and the Nordic
+      register recommends 700 litres and 200 cm. Build secure refuges and visual barriers with wood,
+      pots or stable rocks over smooth substrate. Combine effective filtration with oxygenation and
+      regular water replacement matched to the existing chemistry. A steady 26 to 27 C is a
+      practical target within the decided 22 to 29 C tolerance. Near-neutral pH and modest mineral
+      content have better aquarium support than the provisional low endpoints; the tolerance
+      envelope is not a set of targets.
     sources:
       - *a15
       - *a18
@@ -1835,17 +1836,18 @@ provenance:
             min: 22
             max: 28
       decision: *a37
-      rationale: "Tally method conservative, 3 of 6 agreeing votes. The tally applies the conservative
-        intersection of all six proposals: the highest lower endpoint is 23 and the lowest upper
-        endpoint is 28 C. This already contains the decided natural interval. There were only three
-        agreeing votes around the leading candidate, so low confidence is mandatory. FishFish and
-        Aqua-Fish support 23 to 28 C. Seriously Fish lists the wider 17 to 28 C band but prefers
-        approximately 22 to 27 C, and the 1992 study kept eastern historical stock for about two
-        years at 28 to 30 C. Neither colder routine limits nor 30 C can be transferred confidently
-        to every northern stock. The culture paper recommends 22 to 28 C for unidentified
-        Paratilapia sp.; Williams advises at least 26 C. Routine 26 to 27 C sits within these
-        overlapping recommendations. Proposals were generator: 23 to 28; checker-a: 17 to 30;
-        checker-b: 22 to 30; checker-c: 22 to 28; tiebreaker-1: 22 to 30; tiebreaker-2: 22 to 28."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 23 to 28; checker-a
+        proposes 17 to 30; checker-b proposes 22 to 30; checker-c proposes 22 to 28; tiebreaker-1
+        proposes 22 to 30; tiebreaker-2 proposes 22 to 28 (C). The rounded median of all minima and
+        all maxima is 22 to 29 C. This contains natural 25 to 28 without widening. Confidence is
+        low. FishFish and Aqua-Fish support 23 to 28 C. Seriously Fish lists the wider 17 to 28 C
+        band but prefers approximately 22 to 27 C, and the 1992 study reports about two years of
+        captive rearing of eastern historical stock at 28 to 30 C. Neither colder routine limits nor
+        30 C can be transferred confidently to every northern stock. The culture paper recommends 22
+        to 28 C for unidentified Paratilapia sp.; Williams advises at least 26 C. Routine 26 to 27 C
+        sits within these overlapping recommendations. The median is plausible around preferred
+        keeping conditions and extended captive observations, with stock identity limiting transfer
+        of the warm edge."
     - field: features.ph.tolerance
       proposals:
         - by: generator

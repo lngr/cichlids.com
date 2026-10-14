@@ -497,18 +497,19 @@ features:
         total: 6
     tolerance:
       value:
-        min: 6.5
+        min: 6.3
         max: 9.3
       confidence: low
-      rationale: "The votes did not settle: generator, checker-a and tiebreaker-2 proposed 6.5 to 9.3,
-        checker-b, checker-c and tiebreaker-1 proposed 6.0 to 9.3, and the lower bounds differ by
-        more than 0.3. The tally therefore applies the conservative rule, the intersection of all
-        votes, 6.5 to 9.3, with confidence low. The care sheets reach lower than this decision:
-        Seriously Fish, Fishkeeper and Tropical Freshwater Fish accept pH 6.0 to 8.0 and
-        FishProfiles 6.0 to 7.5, while Aqualog and the Nordic Cichlid Society register give 7.0 to
-        8.0 and LiveAquaria a target of 6.8 to 7.2. No care sheet goes above pH 8.0; the upper end
-        of 9.3 follows the alkaline lake water the species lives in permanently (Swain), not a
-        long-term aquarium test."
+      rationale: "The proposals in vote order are 6.5 to 9.3, 6.5 to 9.3, 6.0 to 9.3, 6.0 to 9.3, 6.0
+        to 9.3 and 6.5 to 9.3. No qualified majority exists. The median lower bound is 6.25,
+        rounded to 6.3, and the median upper bound is 9.3. The tolerance is pH 6.3 to 9.3
+        with low confidence and contains the natural 8.2 to 9.3 without widening. Seriously
+        Fish, Fishkeeper and Tropical Freshwater Fish recommend 6.0 to 8.0 and FishProfiles
+        6.0 to 7.5, while Aqualog and the Nordic Cichlid Society register give 7.0 to 8.0
+        and LiveAquaria a target of 6.8 to 7.2. Aquariadise gives 6.5 to 7.5. These
+        recommendations support the softer side in aquarium practice. No care sheet goes
+        above 8.0; the upper endpoint follows the alkaline lake water the species inhabits
+        permanently (Swain), rather than a long-term aquarium test."
       sources:
         - kind: database
           title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
@@ -643,7 +644,7 @@ features:
             max: 7.5
           note: recommended aquarium range
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -2957,10 +2958,18 @@ provenance:
             min: 6.5
             max: 9.3
       decision:
-        min: 6.5
+        min: 6.3
         max: 9.3
-      rationale: "Decided by tally.yaml: conservative, 3 of 6 votes; the intersection of all votes. Care
-        sheets reach down to pH 6.0, which the rationale names."
+      rationale: "The proposals in vote order are 6.5 to 9.3, 6.5 to 9.3, 6.0 to 9.3, 6.0 to 9.3, 6.0
+        to 9.3 and 6.5 to 9.3. No qualified majority exists. The median lower bound is 6.25,
+        rounded to 6.3, and the median upper bound is 9.3. The tolerance is pH 6.3 to 9.3
+        with low confidence and contains the natural 8.2 to 9.3 without widening. Seriously
+        Fish, Fishkeeper and Tropical Freshwater Fish recommend 6.0 to 8.0 and FishProfiles
+        6.0 to 7.5, while Aqualog and the Nordic Cichlid Society register give 7.0 to 8.0
+        and LiveAquaria a target of 6.8 to 7.2. Aquariadise gives 6.5 to 7.5. These
+        recommendations support the softer side in aquarium practice. No care sheet goes
+        above 8.0; the upper endpoint follows the alkaline lake water the species inhabits
+        permanently (Swain), rather than a long-term aquarium test."
     - field: features.ghDgh
       proposals:
         - by: generator

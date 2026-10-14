@@ -702,16 +702,18 @@ features:
     tolerance:
       value:
         min: 3
-        max: 16
+        max: 20
       confidence: low
-      rationale: "The conservative tally decision is 3 to 16 dGH at low confidence, with two of six votes agreeing\
-        \ on that range. Generator and checker-b propose 3 to 16; checker-c and tiebreaker-1 propose 3 to 20; checker-a\
-        \ and tiebreaker-2 propose 3 to 25. Their intersection gives 3 to 16 and contains the natural 3 to 5 dGH.\
-        \ AquaInfo and Tropischevissengids recommend 12 to 16, whereas my-fish and Animallux give 8 to 20, Aquario\
-        \ and ExpoAqua give 10 to 25, Fishkeeper specifies only an upper bound of 25, and FishBase and FishProfiles\
-        \ give 7 to 30. These wider recommendations lack multi-year boundary tests. Sixteen is a cautious planning\
-        \ ceiling, not proof of harm above it; Monitarium was unavailable through curl and its indexed care record\
-        \ has limited traceable support."
+      rationale: "The proposals in vote order are 3 to 16, 3 to 25, 3 to 16, 3 to 20, 3 to 20 and 3 to\
+        \ 25 dGH. No qualified majority exists. The median bounds give 3 to 20 dGH with low\
+        \ confidence and contain the natural 3 to 5 dGH without widening. AquaInfo and\
+        \ Tropischevissengids recommend 12 to 16, my-fish and Animallux 8 to 20, Aquario and\
+        \ ExpoAqua 10 to 25, Fishkeeper a maximum of 25 without a minimum, and FishBase and\
+        \ FishProfiles 7 to 30. The natural lake supports the soft endpoint and multiple care\
+        \ sheets directly support 20 dGH, making the median plausible for aquarium keeping.\
+        \ The recommendations lack multiyear endpoint tests. Monitarium's indexed care record\
+        \ has limited traceable support and its page is inaccessible through curl, reducing\
+        \ its evidential weight."
       sources:
       - kind: literature
         title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin"
@@ -983,7 +985,7 @@ features:
           max: 25
         note: Only an upper general-hardness recommendation is supplied; the lower endpoint is unspecified.
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 2
           total: 6
@@ -3783,15 +3785,17 @@ provenance:
         max: 25
     decision:
       min: 3
-      max: 16
-    rationale: "The conservative tally decision is 3 to 16 dGH at low confidence, with two of six votes agreeing\
-      \ on that range. Generator and checker-b propose 3 to 16; checker-c and tiebreaker-1 propose 3 to 20; checker-a\
-      \ and tiebreaker-2 propose 3 to 25. Their intersection gives 3 to 16 and contains the natural 3 to 5 dGH.\
-      \ AquaInfo and Tropischevissengids recommend 12 to 16, whereas my-fish and Animallux give 8 to 20, Aquario\
-      \ and ExpoAqua give 10 to 25, Fishkeeper specifies only an upper bound of 25, and FishBase and FishProfiles\
-      \ give 7 to 30. These wider recommendations lack multi-year boundary tests. Sixteen is a cautious planning\
-      \ ceiling, not proof of harm above it; Monitarium was unavailable through curl and its indexed care record\
-      \ has limited traceable support."
+      max: 20
+    rationale: "The proposals in vote order are 3 to 16, 3 to 25, 3 to 16, 3 to 20, 3 to 20 and 3 to\
+      \ 25 dGH. No qualified majority exists. The median bounds give 3 to 20 dGH with low\
+      \ confidence and contain the natural 3 to 5 dGH without widening. AquaInfo and\
+      \ Tropischevissengids recommend 12 to 16, my-fish and Animallux 8 to 20, Aquario and\
+      \ ExpoAqua 10 to 25, Fishkeeper a maximum of 25 without a minimum, and FishBase and\
+      \ FishProfiles 7 to 30. The natural lake supports the soft endpoint and multiple care\
+      \ sheets directly support 20 dGH, making the median plausible for aquarium keeping. The\
+      \ recommendations lack multiyear endpoint tests. Monitarium's indexed care record has\
+      \ limited traceable support and its page is inaccessible through curl, reducing its\
+      \ evidential weight."
   - field: features.khDkh.tolerance
     proposals:
     - by: generator

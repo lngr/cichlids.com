@@ -354,21 +354,21 @@ features:
         value: {min: 11.4, max: 11.4}
         note: Computed from calcium and magnesium after Talling and Talling (1965).
     tolerance:
-      value: {min: 8, max: 20}
+      value: {min: 7, max: 20}
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
       rationale: >-
-        Care sheets agree on hard water but differ in width: Seriously Fish 7 to 25 dGH, Tropical
-        Freshwater Fish 7 to 18, The Tropical Tank 12 to 20, FishBase 8 to 12 after aquarium
-        literature, and Seriously Fish 8 to 20 for the congener A. calvus. The proposals were
-        8 to 20 (generator), 7 to 20 (checker-a and tiebreaker-1) and 7 to 25 (checker-b and
-        tiebreaker-2). No range reached four agreeing votes, so the vote count applied the
-        conservative rule and took the intersection of all proposals, 8 to 20 dGH, which contains
-        the lake range of 10 to 13 dGH. The sources reach wider, from 7 dGH (Seriously Fish,
-        Tropical Freshwater Fish) up to 25 dGH (Seriously Fish); the narrower range makes the app
-        warn earlier and is kept at low confidence.
+        Care sheets agree on hard water but differ in width. Seriously Fish gives 7 to 25
+        dGH, Tropical Freshwater Fish 7 to 18, The Tropical Tank 12 to 20, FishBase 8 to 12
+        after aquarium literature, and Seriously Fish 8 to 20 for the congener A. calvus.
+        The proposals in vote order are 8 to 20, 7 to 20, 7 to 25, 7 to 20 and 7 to 25 dGH.
+        No qualified majority exists. The median minimum is 7 and the median maximum is 20
+        dGH, so the tolerance is 7 to 20 dGH with low confidence. It contains the natural 10
+        to 13 dGH without widening. The softer edge follows two care sources and the upper
+        edge lies within several aquarium recommendations, making this a plausible
+        hard-water keeping range rather than a measured physiological limit.
       sources:
         - *sf
         - *tff
@@ -1365,11 +1365,17 @@ provenance:
         - {by: checker-b, value: {min: 7, max: 25}}
         - {by: tiebreaker-1, value: {min: 7, max: 20}}
         - {by: tiebreaker-2, value: {min: 7, max: 25}}
-      decision: {min: 8, max: 20}
+      decision: {min: 7, max: 20}
       rationale: >-
-        Decided by the vote count with the conservative method (3 of 5 agreeing votes, no
-        qualified majority): the intersection of all proposals, 8 to 20 dGH, which contains the
-        lake range. The sources reach from 7 to 25 dGH.
+        Care sheets agree on hard water but differ in width. Seriously Fish gives 7 to 25
+        dGH, Tropical Freshwater Fish 7 to 18, The Tropical Tank 12 to 20, FishBase 8 to 12
+        after aquarium literature, and Seriously Fish 8 to 20 for the congener A. calvus.
+        The proposals in vote order are 8 to 20, 7 to 20, 7 to 25, 7 to 20 and 7 to 25 dGH.
+        No qualified majority exists. The median minimum is 7 and the median maximum is 20
+        dGH, so the tolerance is 7 to 20 dGH with low confidence. It contains the natural 10
+        to 13 dGH without widening. The softer edge follows two care sources and the upper
+        edge lies within several aquarium recommendations, making this a plausible
+        hard-water keeping range rather than a measured physiological limit.
     - field: features.khDkh.tolerance
       proposals:
         - {by: generator, value: {min: 10, max: 20}}

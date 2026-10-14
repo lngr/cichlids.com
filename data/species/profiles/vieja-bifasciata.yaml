@@ -327,20 +327,25 @@ features:
           is excluded from the representative range."
     tolerance:
       value:
-        min: 23
+        min: 21
         max: 32
       confidence: "low"
-      rationale: "The tally conservatively intersects the six proposed tolerance envelopes at 25 to 30.2 C, then
-        expands the result to 23 to 32 C to contain the decided natural interval. This is an algorithmic
-        planning envelope with low confidence, not two independent demonstrations of healthy aquarium survival
-        for years at both edges. Care recommendations are Seriously Fish 27 to 29, Zoopet 24 to 28, Aqua-Fish
-        22 to 28, Aquarismo Paulista 26 to 30 and Fishkeeper 24 to 30 C. The Nordic summary gives 25 to 30
-        while its narrative gives 22 to 28. The 2025 aquaculture review gives a wider group-level 24 to 32 C
-        range including bifasciata, not a species-specific longevity trial. Wider vote envelopes and regional
-        field observations are retained as evidence of uncertainty. The 32.1 C capture mean cannot establish
-        chronic tolerance, and about 27 to 28 C has the clearest overlap among the species care
-        recommendations. Proposals: generator 22 to 32.1; checker-a 24 to 32; checker-b 25 to 33; checker-c
-        20.8 to 32.1; tiebreaker-1 20.8 to 32.1; tiebreaker-2 20.8 to 30.2."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 22 to 32.1; checker-a
+        proposes 24 to 32; checker-b proposes 25 to 33; checker-c proposes 20.8 to 32.1;
+        tiebreaker-1 proposes 20.8 to 32.1; tiebreaker-2 proposes 20.8 to 30.2 (C). The rounded
+        median of all minima and all maxima is 21 to 32 C. This contains natural 23 to 32 without
+        widening. Confidence is low. This is an algorithmic planning envelope with low confidence,
+        not two independent demonstrations of healthy aquarium survival for years at both edges.
+        Care recommendations are Seriously Fish 27 to 29, Zoopet 24 to 28, Aqua-Fish 22 to 28,
+        Aquarismo Paulista 26 to 30 and Fishkeeper 24 to 30 C. The Nordic summary gives 25 to 30
+        while its narrative gives 22 to 28. The 2025 aquaculture review gives a wider group-level 24
+        to 32 C range including bifasciata, not a species-specific longevity trial. Wider vote
+        envelopes and regional field observations are retained as evidence of uncertainty. The 32.1
+        C capture mean cannot establish chronic tolerance, and about 27 to 28 C has the clearest
+        overlap among the species care recommendations. The median endpoints are 21.4 and 32.1 C,
+        rounded to 21 and 32. Regional water observations reach 20.8 C, and breeder care data give
+        approximately 22.2 to 27.8 C. The median is plausible as a provisional envelope around
+        habitat exposure and broad culture guidance, with limited endpoint confidence."
       sources:
         - kind: "database"
           title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
@@ -536,7 +541,7 @@ features:
             max: 30.2
           note: "Field site means only, used for required containment; not aquarium tolerance evidence."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 2
           total: 6
@@ -889,18 +894,20 @@ features:
         note: "Rainy-season freshwater and oligohaline lagoon categories; excludes very hard mesohaline Cometa."
     tolerance:
       value:
-        min: 9
-        max: 23
+        min: 8
+        max: 33
       confidence: "low"
-      rationale: "The tally conservatively intersects all six proposed envelopes at 9 to 23 dGH, which already
-        contains decided natural GH 9 to 20. Only two votes support its top candidate, so confidence remains
-        low. Aqua-Fish recommends 10 to 23; Aquarismo Paulista gives the wider 9 to 33 and Seriously Fish and
-        Einrichtungsbeispiele 8 to 33. Decoulon instead gives 5 to 10 and Fishkeeper only an upper limit of
-        20, not a stated zero lower limit. The chosen 9 to 23 is an intersection of agent proposals rather
-        than a common intersection of all these source ranges. It deliberately discards broader proposed
-        tolerance edges for planning and does not prove harmfulness outside the decided interval. No multiyear
-        endpoint study was found. Proposals: generator 9 to 23; checker-a 8 to 25; checker-b 4 to 33;
-        checker-c 8 to 33; tiebreaker-1 5 to 33; tiebreaker-2 8 to 33."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 9 to 23; checker-a
+        proposes 8 to 25; checker-b proposes 4 to 33; checker-c proposes 8 to 33; tiebreaker-1
+        proposes 5 to 33; tiebreaker-2 proposes 8 to 33 (dGH). The rounded median of all minima and
+        all maxima is 8 to 33 dGH. This contains natural 9 to 20 without widening. Confidence is
+        low. Aqua-Fish recommends 10 to 23; Aquarismo Paulista gives the wider 9 to 33 and Seriously
+        Fish and Einrichtungsbeispiele 8 to 33. Decoulon gives 5 to 10 and Fishkeeper only an upper
+        limit of 20, not a stated zero lower limit. The median 8 to 33 has explicit species-care
+        support from Seriously Fish and Einrichtungsbeispiele, though other recommendations are
+        narrower. No endpoint establishes harmfulness outside the decided interval. The evidence
+        contains no multiyear endpoint study. The median is plausible because it contains natural 9
+        to 20 dGH and has explicit species-care support at 8 to 33."
       sources:
         - kind: "database"
           title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
@@ -1007,7 +1014,7 @@ features:
             max: 10
           note: "Explicit GH aquarium care range."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 2
           total: 6
@@ -2805,12 +2812,12 @@ profile:
         archived: fishbase.se/summary/vieja-bifasciata.html/2026-10-14T103717Z
         accessed: "2026-10-13"
   husbandry:
-    text: "For a compatible adult pair, the selected minimum is 700 L with 200 cm length and 60 cm front-to-back
-      space. Place secure wood and stones to break sight lines and provide several escape routes over soft
-      substrate. Keep separation equipment ready and maintain effective filtration with regular water changes.
-      The decided tolerance envelopes are 23 to 32 C, pH 7 to 8.5, GH 9 to 23 and KH 2 to 20. Their weakly
-      supported edges are not permanent maintenance targets; around 27 to 28 C has clearer agreement among
-      species care recommendations."
+    text: "For a compatible adult pair, the selected minimum is 700 L with 200 cm length and 60 cm
+      front-to-back space. Place secure wood and stones to break sight lines and provide several
+      escape routes over soft substrate. Keep separation equipment ready and maintain effective
+      filtration with regular water changes. The decided tolerance envelopes are 21 to 32 C, pH 7 to
+      8.5, GH 8 to 33 and KH 2 to 20. Their weakly supported edges are not permanent maintenance
+      targets; around 27 to 28 C has clearer agreement among species care recommendations."
     sources:
       - kind: "database"
         title: "Nordiska Ciklidsallskapet: Vieja bifasciata species register"
@@ -3329,18 +3336,24 @@ provenance:
             min: 20.8
             max: 30.2
       decision:
-        min: 23
+        min: 21
         max: 32
-      rationale: "Tally method conservative; 2 agreeing of 6 votes. The tally conservatively intersects the six
-        proposed tolerance envelopes at 25 to 30.2 C, then expands the result to 23 to 32 C to contain the
-        decided natural interval. This is an algorithmic planning envelope with low confidence, not two
-        independent demonstrations of healthy aquarium survival for years at both edges. Care recommendations
-        are Seriously Fish 27 to 29, Zoopet 24 to 28, Aqua-Fish 22 to 28, Aquarismo Paulista 26 to 30 and
-        Fishkeeper 24 to 30 C. The Nordic summary gives 25 to 30 while its narrative gives 22 to 28. The 2025
-        aquaculture review gives a wider group-level 24 to 32 C range including bifasciata, not a
-        species-specific longevity trial. Wider vote envelopes and regional field observations are retained as
-        evidence of uncertainty. The 32.1 C capture mean cannot establish chronic tolerance, and about 27 to
-        28 C has the clearest overlap among the species care recommendations."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 22 to 32.1; checker-a
+        proposes 24 to 32; checker-b proposes 25 to 33; checker-c proposes 20.8 to 32.1;
+        tiebreaker-1 proposes 20.8 to 32.1; tiebreaker-2 proposes 20.8 to 30.2 (C). The rounded
+        median of all minima and all maxima is 21 to 32 C. This contains natural 23 to 32 without
+        widening. Confidence is low. This is an algorithmic planning envelope with low confidence,
+        not two independent demonstrations of healthy aquarium survival for years at both edges.
+        Care recommendations are Seriously Fish 27 to 29, Zoopet 24 to 28, Aqua-Fish 22 to 28,
+        Aquarismo Paulista 26 to 30 and Fishkeeper 24 to 30 C. The Nordic summary gives 25 to 30
+        while its narrative gives 22 to 28. The 2025 aquaculture review gives a wider group-level 24
+        to 32 C range including bifasciata, not a species-specific longevity trial. Wider vote
+        envelopes and regional field observations are retained as evidence of uncertainty. The 32.1
+        C capture mean cannot establish chronic tolerance, and about 27 to 28 C has the clearest
+        overlap among the species care recommendations. The median endpoints are 21.4 and 32.1 C,
+        rounded to 21 and 32. Regional water observations reach 20.8 C, and breeder care data give
+        approximately 22.2 to 27.8 C. The median is plausible as a provisional envelope around
+        habitat exposure and broad culture guidance, with limited endpoint confidence."
     - field: "features.ph.tolerance"
       proposals:
         - by: "generator"
@@ -3395,16 +3408,19 @@ provenance:
             min: 8
             max: 33
       decision:
-        min: 9
-        max: 23
-      rationale: "Tally method conservative; 2 agreeing of 6 votes. The tally conservatively intersects all six
-        proposed envelopes at 9 to 23 dGH, which already contains decided natural GH 9 to 20. Only two votes
-        support its top candidate, so confidence remains low. Aqua-Fish recommends 10 to 23; Aquarismo
-        Paulista gives the wider 9 to 33 and Seriously Fish and Einrichtungsbeispiele 8 to 33. Decoulon
-        instead gives 5 to 10 and Fishkeeper only an upper limit of 20, not a stated zero lower limit. The
-        chosen 9 to 23 is an intersection of agent proposals rather than a common intersection of all these
-        source ranges. It deliberately discards broader proposed tolerance edges for planning and does not
-        prove harmfulness outside the decided interval. No multiyear endpoint study was found."
+        min: 8
+        max: 33
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 9 to 23; checker-a
+        proposes 8 to 25; checker-b proposes 4 to 33; checker-c proposes 8 to 33; tiebreaker-1
+        proposes 5 to 33; tiebreaker-2 proposes 8 to 33 (dGH). The rounded median of all minima and
+        all maxima is 8 to 33 dGH. This contains natural 9 to 20 without widening. Confidence is
+        low. Aqua-Fish recommends 10 to 23; Aquarismo Paulista gives the wider 9 to 33 and Seriously
+        Fish and Einrichtungsbeispiele 8 to 33. Decoulon gives 5 to 10 and Fishkeeper only an upper
+        limit of 20, not a stated zero lower limit. The median 8 to 33 has explicit species-care
+        support from Seriously Fish and Einrichtungsbeispiele, though other recommendations are
+        narrower. No endpoint establishes harmfulness outside the decided interval. The evidence
+        contains no multiyear endpoint study. The median is plausible because it contains natural 9
+        to 20 dGH and has explicit species-care support at 8 to 33."
     - field: "features.khDkh.tolerance"
       proposals:
         - by: "generator"

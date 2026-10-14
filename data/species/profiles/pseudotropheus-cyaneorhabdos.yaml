@@ -1256,19 +1256,19 @@ features:
     tolerance:
       value:
         min: 5
-        max: 10
+        max: 15
       confidence: "low"
-      rationale: "The conservative tally decision is the intersection of all six proposals, 5 to 10 dKH,
-        which already contains the natural 5 to 8 range. Generator proposed 5 to 10; checker-a and
-        both tiebreakers proposed 5 to 15; checker-b proposed 5 to 20; checker-c proposed 5 to 12.
-        The recorded tally votes are 3 of 6, below the qualified-majority threshold, so the larger
-        upper endpoints are not accepted. JBL gives 5 to 10 for a general Malawi setup and Aquasabi
-        5 to 9. Wider source recommendations are Monitarium 8 to 12, Aquatrium and
-        AquariumStoreDepot 10 to 15, Aquarium.org.il 12 to 20, Malawi-Guru 6 to 20 and
-        AquariumDomain 10 to 25 dKH. Those broad ranges lack controlled long-term health data;
-        several come from retailers or general hobby guides. The conservative boundary is a planning
-        precaution with low confidence, not proof that water above 10 dKH is harmful. GH and pH
-        advice is not used as numerical KH evidence."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 5 to 10; checker-a
+        proposes 5 to 15; checker-b proposes 5 to 20; checker-c proposes 5 to 12; tiebreaker-1
+        proposes 5 to 15; tiebreaker-2 proposes 5 to 15 (dKH). The rounded median of all minima and
+        all maxima is 5 to 15 dKH. This contains natural 5 to 8 without widening. Confidence is low.
+        JBL gives 5 to 10 for a general Malawi setup and Aquasabi 5 to 9. Wider source
+        recommendations are Monitarium 8 to 12, Aquatrium and AquariumStoreDepot 10 to 15,
+        Aquarium.org.il 12 to 20, Malawi-Guru 6 to 20 and AquariumDomain 10 to 25 dKH. Those broad
+        ranges lack controlled long-term health data; several come from retailers or general hobby
+        guides. The median endpoint is provisional, not proof that water above 15 dKH is harmful. GH
+        and pH advice is not used as numerical KH evidence. The median is plausible because it joins
+        natural lake buffering to explicit species-care recommendations at 10 to 15 dKH."
       sources:
         - kind: "database"
           title: "JBL Malawi Rocks: structured aquarium setup and water recommendations"
@@ -1469,7 +1469,7 @@ features:
             max: 7.3
           note: "Jackson alkalinity of 2.00 to 2.59 meq/L multiplied by 2.8."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -3298,14 +3298,14 @@ profile:
         accessed: "2026-10-13"
   husbandry:
     text: >-
-      For one male and four females use at least 300 L, with a base 120 cm long and 47.5 cm
-      deep. The depth is a provisional layout estimate based on the median of the proposals
-      rather than a tested minimum. A community needs more space; the Malawi specialist guide
-      recommends at least 400 L. Support stones securely before adding fine sand and provide
-      multiple routes away from a pursuing male. Maintain clean, well-oxygenated water. Around
-      24 to 26 C is a practical routine target. The decided tolerances are 21 to 29 C, pH 7.5 to
-      8.8, GH 3 to 25 dGH and KH 5 to 10 dKH. Their endpoints are provisional guidance rather
-      than tested lifelong limits; KH is particularly uncertain.
+      For one male and four females use at least 300 L, with a base 120 cm long and 47.5 cm deep.
+      The depth is a provisional layout estimate based on the median of the proposals rather than a
+      tested minimum. A community needs more space; the Malawi specialist guide recommends at least
+      400 L. Support stones securely before adding fine sand and provide multiple routes away from a
+      pursuing male. Maintain clean, well-oxygenated water. Around 24 to 26 C is a practical routine
+      target. The decided tolerances are 21 to 29 C, pH 7.5 to 8.8, GH 3 to 25 dGH and KH 5 to 15
+      dKH. Their endpoints are provisional guidance rather than tested lifelong limits; KH is
+      particularly uncertain.
     sources:
       - kind: "database"
         title: "Malawi-Guru: Pseudotropheus cyaneorhabdos"
@@ -3675,19 +3675,18 @@ provenance:
             max: 15
       decision:
         min: 5
-        max: 10
-      rationale: "conservative decision from tally.yaml, with 3 of 6 recorded agreeing votes. The
-        conservative tally decision is the intersection of all six proposals, 5 to 10 dKH, which
-        already contains the natural 5 to 8 range. Generator proposed 5 to 10; checker-a and both
-        tiebreakers proposed 5 to 15; checker-b proposed 5 to 20; checker-c proposed 5 to 12. The
-        recorded tally votes are 3 of 6, below the qualified-majority threshold, so the larger upper
-        endpoints are not accepted. JBL gives 5 to 10 for a general Malawi setup and Aquasabi 5 to
-        9. Wider source recommendations are Monitarium 8 to 12, Aquatrium and AquariumStoreDepot 10
-        to 15, Aquarium.org.il 12 to 20, Malawi-Guru 6 to 20 and AquariumDomain 10 to 25 dKH. Those
-        broad ranges lack controlled long-term health data; several come from retailers or general
-        hobby guides. The conservative boundary is a planning precaution with low confidence, not
-        proof that water above 10 dKH is harmful. GH and pH advice is not used as numerical KH
-        evidence."
+        max: 15
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 5 to 10; checker-a
+        proposes 5 to 15; checker-b proposes 5 to 20; checker-c proposes 5 to 12; tiebreaker-1
+        proposes 5 to 15; tiebreaker-2 proposes 5 to 15 (dKH). The rounded median of all minima and
+        all maxima is 5 to 15 dKH. This contains natural 5 to 8 without widening. Confidence is low.
+        JBL gives 5 to 10 for a general Malawi setup and Aquasabi 5 to 9. Wider source
+        recommendations are Monitarium 8 to 12, Aquatrium and AquariumStoreDepot 10 to 15,
+        Aquarium.org.il 12 to 20, Malawi-Guru 6 to 20 and AquariumDomain 10 to 25 dKH. Those broad
+        ranges lack controlled long-term health data; several come from retailers or general hobby
+        guides. The median endpoint is provisional, not proof that water above 15 dKH is harmful. GH
+        and pH advice is not used as numerical KH evidence. The median is plausible because it joins
+        natural lake buffering to explicit species-care recommendations at 10 to 15 dKH."
     - field: "features.origin"
       proposals:
         - by: "generator"

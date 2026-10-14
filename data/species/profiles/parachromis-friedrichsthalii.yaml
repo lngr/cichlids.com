@@ -313,7 +313,7 @@ features:
         max: 30
       confidence: "low"
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -477,14 +477,17 @@ features:
           min: 24
           max: 37
         note: "Natural environmental range, not evidence for years of aquarium health at the upper extreme."
-      rationale: "Conservative intersection decided by tally at 24 to 30 C with low confidence. Generator, checker-c\
-        \ and tiebreaker-2 proposed 24 to 30; checker-a 22 to 30; checker-b and tiebreaker-1 24 to 32. With no four-vote\
-        \ qualified majority, the intersection is 24 to 30 and already contains the natural 24 to 28. FishProfiles\
-        \ and Rybicky directly recommend 24 to 30. The wider Nordic and Zoopet recommendations of 25 to 32 are not\
-        \ adopted above 30; Einrichtungsbeispiele and FishFish are narrower at 24 to 28. The 22 C proposal drew\
-        \ on an old mixed-identity account. FishBase 24 to 37 describes environmental observations, not years of\
-        \ captive health. Wong was cited for verification by earlier checkers, but adjudicator access timed out\
-        \ and adds no independently read endpoint evidence."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 24 to 30; checker-a\
+        \ proposes 22 to 30; checker-b proposes 24 to 32; checker-c proposes 24 to 30; tiebreaker-1\
+        \ proposes 24 to 32; tiebreaker-2 proposes 24 to 30 (C). The rounded median of all minima and\
+        \ all maxima is 24 to 30 C. This contains natural 24 to 28 without widening. Confidence is\
+        \ low. FishProfiles and Rybicky directly recommend 24 to 30. The wider Nordic and Zoopet\
+        \ recommendations of 25 to 32 are not adopted above 30; Einrichtungsbeispiele and FishFish are\
+        \ narrower at 24 to 28. The 22 C proposal relies on a mixed-identity account. FishBase 24 to\
+        \ 37 describes environmental observations, not years of captive health. Wong supplies\
+        \ verification-only evidence at 27.8 C; the unavailable full account does not independently\
+        \ establish endpoints. The median is a plausible provisional envelope around the cited care\
+        \ recommendations and natural range, with weaker long-term evidence at some edges."
     verification:
       method: "unanimous"
       votes:
@@ -683,10 +686,10 @@ features:
     tolerance:
       value:
         min: 5.8
-        max: 8
+        max: 8.1
       confidence: "low"
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -904,14 +907,18 @@ features:
           min: 7.2
           max: 7.5
         note: "Indexed first-hand keeping and breeding passage only."
-      rationale: "Conservative decision from tally at 5.8 to 8.0, with low confidence. Generator proposed 6.4 to\
-        \ 8, checker-a 6 to 8, checker-b and tiebreaker-1 5.6 to 8.2, checker-c 6.5 to 8.9, and tiebreaker-2 5.4\
-        \ to 8. The intersection is 6.5 to 8, then tally widens its lower bound to 5.8 to contain the decided natural\
-        \ range. Rybicky recommends 6.5 to 7.5, and FishProfiles, Zoopet and the Nordic register 7 to 8; Werner\
-        \ reports breeding at 7.2 to 7.5 in the accessible indexed passage. Wider proposals include an unverified\
-        \ retrospective aquarium report at 8.2 and regional lake measurements up to 8.9, neither adopted as a chronic\
-        \ upper endpoint. Aquarium health for years at 5.8 is unproven: that extension is containment of a regional\
-        \ field proxy, not a husbandry target. Wong could not be reopened and is earlier-checker verification only."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 6.4 to 8; checker-a\
+        \ proposes 6 to 8; checker-b proposes 5.6 to 8.2; checker-c proposes 6.5 to 8.9; tiebreaker-1\
+        \ proposes 5.6 to 8.2; tiebreaker-2 proposes 5.4 to 8 (pH). The rounded median of all minima\
+        \ and all maxima is 5.8 to 8.1 pH. This contains natural 5.8 to 7.2 without widening.\
+        \ Confidence is low. Rybicky recommends 6.5 to 7.5, and FishProfiles, Zoopet and the Nordic\
+        \ register 7 to 8; Werner reports breeding at 7.2 to 7.5 in the accessible indexed passage.\
+        \ Wider proposals include an unverified retrospective aquarium report at 8.2 and regional lake\
+        \ measurements up to 8.9, neither demonstrating a chronic upper endpoint. Aquarium health for\
+        \ years at 5.8 is unproven: that edge contains a regional field proxy, not a husbandry target.\
+        \ Wong contributes verification-only evidence; the full account is unavailable. The median is\
+        \ a plausible provisional envelope around the cited care recommendations and natural range,\
+        \ with weaker long-term evidence at some edges."
     verification:
       method: "median"
       votes:
@@ -3906,14 +3913,17 @@ provenance:
     decision:
       min: 24
       max: 30
-    rationale: "Tally method conservative. Conservative intersection decided by tally at 24 to 30 C with low confidence.\
-      \ Generator, checker-c and tiebreaker-2 proposed 24 to 30; checker-a 22 to 30; checker-b and tiebreaker-1\
-      \ 24 to 32. With no four-vote qualified majority, the intersection is 24 to 30 and already contains the natural\
-      \ 24 to 28. FishProfiles and Rybicky directly recommend 24 to 30. The wider Nordic and Zoopet recommendations\
-      \ of 25 to 32 are not adopted above 30; Einrichtungsbeispiele and FishFish are narrower at 24 to 28. The 22\
-      \ C proposal drew on an old mixed-identity account. FishBase 24 to 37 describes environmental observations,\
-      \ not years of captive health. Wong was cited for verification by earlier checkers, but adjudicator access\
-      \ timed out and adds no independently read endpoint evidence."
+    rationale: "No qualified majority settles the 6 proposals. generator proposes 24 to 30; checker-a proposes\
+      \ 22 to 30; checker-b proposes 24 to 32; checker-c proposes 24 to 30; tiebreaker-1 proposes 24\
+      \ to 32; tiebreaker-2 proposes 24 to 30 (C). The rounded median of all minima and all maxima is\
+      \ 24 to 30 C. This contains natural 24 to 28 without widening. Confidence is low. FishProfiles\
+      \ and Rybicky directly recommend 24 to 30. The wider Nordic and Zoopet recommendations of 25 to\
+      \ 32 are not adopted above 30; Einrichtungsbeispiele and FishFish are narrower at 24 to 28. The\
+      \ 22 C proposal relies on a mixed-identity account. FishBase 24 to 37 describes environmental\
+      \ observations, not years of captive health. Wong supplies verification-only evidence at 27.8 C;\
+      \ the unavailable full account does not independently establish endpoints. The median is a\
+      \ plausible provisional envelope around the cited care recommendations and natural range, with\
+      \ weaker long-term evidence at some edges."
   - field: "features.ph.tolerance"
     proposals:
     - by: "generator"
@@ -3942,16 +3952,19 @@ provenance:
         max: 8
     decision:
       min: 5.8
-      max: 8
-    rationale: "Tally method conservative. Conservative decision from tally at 5.8 to 8.0, with low confidence.\
-      \ Generator proposed 6.4 to 8, checker-a 6 to 8, checker-b and tiebreaker-1 5.6 to 8.2, checker-c 6.5 to 8.9,\
-      \ and tiebreaker-2 5.4 to 8. The intersection is 6.5 to 8, then tally widens its lower bound to 5.8 to contain\
-      \ the decided natural range. Rybicky recommends 6.5 to 7.5, and FishProfiles, Zoopet and the Nordic register\
-      \ 7 to 8; Werner reports breeding at 7.2 to 7.5 in the accessible indexed passage. Wider proposals include\
-      \ an unverified retrospective aquarium report at 8.2 and regional lake measurements up to 8.9, neither adopted\
-      \ as a chronic upper endpoint. Aquarium health for years at 5.8 is unproven: that extension is containment\
-      \ of a regional field proxy, not a husbandry target. Wong could not be reopened and is earlier-checker verification\
-      \ only."
+      max: 8.1
+    rationale: "No qualified majority settles the 6 proposals. generator proposes 6.4 to 8; checker-a proposes\
+      \ 6 to 8; checker-b proposes 5.6 to 8.2; checker-c proposes 6.5 to 8.9; tiebreaker-1 proposes\
+      \ 5.6 to 8.2; tiebreaker-2 proposes 5.4 to 8 (pH). The rounded median of all minima and all\
+      \ maxima is 5.8 to 8.1 pH. This contains natural 5.8 to 7.2 without widening. Confidence is low.\
+      \ Rybicky recommends 6.5 to 7.5, and FishProfiles, Zoopet and the Nordic register 7 to 8; Werner\
+      \ reports breeding at 7.2 to 7.5 in the accessible indexed passage. Wider proposals include an\
+      \ unverified retrospective aquarium report at 8.2 and regional lake measurements up to 8.9,\
+      \ neither demonstrating a chronic upper endpoint. Aquarium health for years at 5.8 is unproven:\
+      \ that edge contains a regional field proxy, not a husbandry target. Wong contributes\
+      \ verification-only evidence; the full account is unavailable. The median is a plausible\
+      \ provisional envelope around the cited care recommendations and natural range, with weaker\
+      \ long-term evidence at some edges."
   - field: "features.ghDgh.tolerance"
     proposals:
     - by: "generator"

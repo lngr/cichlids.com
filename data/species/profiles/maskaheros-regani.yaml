@@ -1522,16 +1522,17 @@ features:
         min: 3
         max: 20
       confidence: low
-      rationale: "Retain the conservative tolerance 3 to 20 dGH with low confidence. generator proposed\
-        \ 5 to 20; checker-a proposed 5 to 20; checker-b proposed 4 to 20; checker-c proposed 1.5 to 20;\
-        \ tiebreaker-1 proposed 1 to 20; tiebreaker-2 proposed 1.5 to 20. Only three of six votes agree\
-        \ with the leading candidate, so the tally intersects all six proposals at 5 to 20 and then lowers\
-        \ the bound to 3 to contain its decided natural 3 to 13 range. The wider proposed intervals of\
-        \ 4 to 20, 1.5 to 20 and 1 to 20 stay represented. Seriously Fish supports an upper limit of 20,\
-        \ corroborated by the recorded aquarium at 20 dGH; its displayed 0 to 20 range does not establish\
-        \ health in mineral-free water. AquaInfo recommends the narrower 5 to 8. The lower endpoint is\
-        \ inferred from the settled habitat synthesis, not a documented captive limit, and field observations\
-        \ of 0.75 to 18.1 remain evidence rather than proving chronic maintenance at the full spread."
+      rationale: "The proposals in vote order are 5 to 20, 5 to 20, 4 to 20, 1.5 to 20, 1 to 20, 1.5 to 20\
+        \ (dGH). Without a qualified majority, the medians of all proposed minima and maxima are 2.75\
+        \ and 20, rounded to 3 to 20 dGH. The median 3 to 20 dGH contains the natural 3 to 13 range\
+        \ without widening. Seriously Fish supports an upper limit of 20, corroborated by the recorded\
+        \ aquarium at 20 dGH; its displayed 0 to 20 range does not establish health in mineral-free\
+        \ water. AquaInfo recommends the narrower 5 to 8. The lower endpoint is inferred from the\
+        \ settled habitat synthesis, not a documented captive limit, and field observations of 0.75 to\
+        \ 18.1 remain evidence rather than proving chronic maintenance at the full spread. The 3 to 20\
+        \ dGH median is plausible as a habitat-containing maintenance envelope, with aquarium\
+        \ observations supporting the upper end and weaker captive evidence at the lower end.\
+        \ Confidence is low because endpoint support is incomplete."
       sources:
       - kind: database
         title: "AquaInfo: Maskaheros regani"
@@ -1804,7 +1805,7 @@ features:
         note: "Native river chemistry supports including the lower habitat endpoint, not a measured captive\
           \ tolerance limit."
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -5644,16 +5645,17 @@ provenance:
     decision:
       min: 3
       max: 20
-    rationale: "Retain the conservative tolerance 3 to 20 dGH with low confidence. generator proposed\
-      \ 5 to 20; checker-a proposed 5 to 20; checker-b proposed 4 to 20; checker-c proposed 1.5 to 20;\
-      \ tiebreaker-1 proposed 1 to 20; tiebreaker-2 proposed 1.5 to 20. Only three of six votes agree\
-      \ with the leading candidate, so the tally intersects all six proposals at 5 to 20 and then lowers\
-      \ the bound to 3 to contain its decided natural 3 to 13 range. The wider proposed intervals of 4\
-      \ to 20, 1.5 to 20 and 1 to 20 stay represented. Seriously Fish supports an upper limit of 20, corroborated\
-      \ by the recorded aquarium at 20 dGH; its displayed 0 to 20 range does not establish health in mineral-free\
-      \ water. AquaInfo recommends the narrower 5 to 8. The lower endpoint is inferred from the settled\
-      \ habitat synthesis, not a documented captive limit, and field observations of 0.75 to 18.1 remain\
-      \ evidence rather than proving chronic maintenance at the full spread."
+    rationale: "The proposals in vote order are 5 to 20, 5 to 20, 4 to 20, 1.5 to 20, 1 to 20, 1.5 to 20\
+      \ (dGH). Without a qualified majority, the medians of all proposed minima and maxima are 2.75\
+      \ and 20, rounded to 3 to 20 dGH. The median 3 to 20 dGH contains the natural 3 to 13 range\
+      \ without widening. Seriously Fish supports an upper limit of 20, corroborated by the recorded\
+      \ aquarium at 20 dGH; its displayed 0 to 20 range does not establish health in mineral-free\
+      \ water. AquaInfo recommends the narrower 5 to 8. The lower endpoint is inferred from the\
+      \ settled habitat synthesis, not a documented captive limit, and field observations of 0.75 to\
+      \ 18.1 remain evidence rather than proving chronic maintenance at the full spread. The 3 to 20\
+      \ dGH median is plausible as a habitat-containing maintenance envelope, with aquarium\
+      \ observations supporting the upper end and weaker captive evidence at the lower end. Confidence\
+      \ is low because endpoint support is incomplete."
   - field: features.khDkh
     proposals:
     - by: generator

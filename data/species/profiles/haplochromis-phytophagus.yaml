@@ -777,19 +777,19 @@ features:
     tolerance:
       value:
         min: 2
-        max: 7
+        max: 9
       confidence: "low"
-      rationale: "The tally conservatively selects the intersection of the six proposals, 2 to 7 dKH (3 of 6, low
-        confidence); it already contains the decided natural 4 to 7 band. Generator and checker-b proposed 2
-        to 7, checker-a 2 to 12, checker-c 0.4 to 7, and both tie-breakers 2 to 11 dKH. The 0.4 to 7, 2 to 11
-        and 2 to 12 proposals are wider than the result. Aquatic Community and Aquarist Atlas discuss 6 to 7
-        dKH and unquantified soft neutral-water reproduction, but repeat the same older field history. The 2
-        dKH floor is inferred, not a measured chronic minimum. Newman's 11 dKH is a natural-water observation
-        excluded by the conservative intersection, not evidence of a chronic aquarium threshold. The decided
-        tolerance consequently does not cover that observed Nawampasa locality even though it contains the
-        tally's median natural band; the unresolved mismatch must remain explicit. Proposals: generator
-        {\"min\":2,\"max\":7}; checker-a {\"min\":2,\"max\":12}; checker-b {\"min\":2,\"max\":7}; checker-c
-        {\"min\":0.4,\"max\":7}; tiebreaker-1 {\"min\":2,\"max\":11}; tiebreaker-2 {\"min\":2,\"max\":11}."
+      rationale: "The proposals in vote order are 2 to 7, 2 to 12, 2 to 7, 0.4 to 7, 2 to 11, 2 to 11 (dKH).
+        Without a qualified majority, the medians of all proposed minima and maxima are 2 and 9,
+        rounded to 2 to 9 dKH. The median 2 to 9 dKH contains the natural 4 to 7 range without
+        widening. Aquatic Community and Aquarist Atlas discuss 6 to 7 dKH and unquantified soft
+        neutral-water reproduction, but repeat the same older field history. The 2 dKH floor is
+        inferred, not a measured chronic minimum. Newman's 11 dKH is a natural-water observation
+        outside the 2 to 9 dKH median, not evidence of a chronic aquarium threshold. The tolerance
+        contains the natural 4 to 7 dKH band but does not cover that Nawampasa reading; this
+        evidence difference remains explicit. Soft neutral-water reproduction and overlapping 6 to 7
+        dKH advice support a plausible adaptable maintenance band, with weaker support at its
+        endpoints. Confidence is low because endpoint support is incomplete."
       sources:
         - *a8
         - *a21
@@ -828,7 +828,7 @@ features:
             max: 6.1
           note: "Natural-water alkalinity estimate, supporting context rather than demonstrated tolerance."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -1684,12 +1684,13 @@ profile:
       - *a2
       - *a35
   problems:
-    text: "Repeated pursuit can keep a female from feeding even when the tank contains plenty of food. Check
-      access to shelter and feeding space before simply increasing portions. Digging can undermine unsecured
-      rocks or plants, while leftover food increases the maintenance load. The voted natural KH band of 4 to 7
-      and conservative tolerance of 2 to 7 dKH omit a published 11 dKH Nawampasa reading; this is an
-      unresolved evidence difference rather than a claim that the wild fish could not live there. Protect
-      stocking identity and monitor water quality and fish condition as well as numerical chemistry."
+    text: "Repeated pursuit can keep a female from feeding even when the tank contains plenty of food.
+      Check access to shelter and feeding space before simply increasing portions. Digging can
+      undermine unsecured rocks or plants, while leftover food increases the maintenance load. The
+      voted natural KH band of 4 to 7 and median tolerance of 2 to 9 dKH omit a published 11 dKH
+      Nawampasa reading; this is an unresolved evidence difference rather than a claim that the wild
+      fish could not live there. Protect stocking identity and monitor water quality and fish
+      condition as well as numerical chemistry."
     sources:
       - *a28
       - *a8
@@ -2118,19 +2119,18 @@ provenance:
             max: 11
       decision:
         min: 2
-        max: 7
-      rationale: "Tally method conservative; 3 of 6 votes; confidence low. The tally conservatively selects the
-        intersection of the six proposals, 2 to 7 dKH (3 of 6, low confidence); it already contains the
-        decided natural 4 to 7 band. Generator and checker-b proposed 2 to 7, checker-a 2 to 12, checker-c 0.4
-        to 7, and both tie-breakers 2 to 11 dKH. The 0.4 to 7, 2 to 11 and 2 to 12 proposals are wider than
-        the result. Aquatic Community and Aquarist Atlas discuss 6 to 7 dKH and unquantified soft
-        neutral-water reproduction, but repeat the same older field history. The 2 dKH floor is inferred, not
-        a measured chronic minimum. Newman's 11 dKH is a natural-water observation excluded by the
-        conservative intersection, not evidence of a chronic aquarium threshold. The decided tolerance
-        consequently does not cover that observed Nawampasa locality even though it contains the tally's
-        median natural band; the unresolved mismatch must remain explicit. Proposals: generator
-        {\"min\":2,\"max\":7}; checker-a {\"min\":2,\"max\":12}; checker-b {\"min\":2,\"max\":7}; checker-c
-        {\"min\":0.4,\"max\":7}; tiebreaker-1 {\"min\":2,\"max\":11}; tiebreaker-2 {\"min\":2,\"max\":11}."
+        max: 9
+      rationale: "The proposals in vote order are 2 to 7, 2 to 12, 2 to 7, 0.4 to 7, 2 to 11, 2 to 11 (dKH).
+        Without a qualified majority, the medians of all proposed minima and maxima are 2 and 9,
+        rounded to 2 to 9 dKH. The median 2 to 9 dKH contains the natural 4 to 7 range without
+        widening. Aquatic Community and Aquarist Atlas discuss 6 to 7 dKH and unquantified soft
+        neutral-water reproduction, but repeat the same older field history. The 2 dKH floor is
+        inferred, not a measured chronic minimum. Newman's 11 dKH is a natural-water observation
+        outside the 2 to 9 dKH median, not evidence of a chronic aquarium threshold. The tolerance
+        contains the natural 4 to 7 dKH band but does not cover that Nawampasa reading; this
+        evidence difference remains explicit. Soft neutral-water reproduction and overlapping 6 to 7
+        dKH advice support a plausible adaptable maintenance band, with weaker support at its
+        endpoints. Confidence is low because endpoint support is incomplete."
     - field: "features.origin"
       proposals:
         - by: "generator"

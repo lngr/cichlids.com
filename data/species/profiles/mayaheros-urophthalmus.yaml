@@ -932,19 +932,20 @@ features:
     tolerance:
       value:
         min: 5
-        max: 9
+        max: 13
       confidence: low
-      rationale: "Tally conservative, 3 of 6 in the leading agreement cluster; no qualified majority. All proposals
-        are generator 4 to 10, checker-a 3 to 20, checker-b 5 to 15, checker-c 5 to 9, tiebreaker-1 5 to 15
-        and tiebreaker-2 5 to 10 dKH. The nonempty intersection is 5 to 9 and already contains the decided
-        natural range, so no widening is needed. The decision deliberately narrows the wider culture
-        conditions of approximately 11.8 to 14.8 dKH: Hernandez and colleagues reported alkalinity 238 plus or
-        minus 27 mg/L during a 21-week trial, not experimental tolerance boundaries or years of adult health.
-        Flowgrow lists an even wider 0 to 30 carbonate-hardness field with an inconsistent dGH unit label.
-        Cenote Azul extends natural bicarbonate evidence to 9.9. Neither wider dataset overrides the required
-        tally decision. Species-specific long-term numerical KH bounds remain unverified; Fishkeeper warns
-        about low KH without stating a threshold. Confidence stays low and the intersection must not be read
-        as a physiological ceiling."
+      rationale: "The proposals in vote order are 4 to 10, 3 to 20, 5 to 15, 5 to 9, 5 to 15, 5 to 10 (dKH).
+        Without a qualified majority, the medians of all proposed minima and maxima are 5 and 12.5,
+        rounded to 5 to 13 dKH. The median 5 to 13 dKH contains the natural 5 to 9 range without
+        widening. The median 5 to 13 dKH overlaps culture conditions of approximately 11.8 to 14.8
+        dKH: Hernandez and colleagues report alkalinity 238 plus or minus 27 mg/L during a 21-week
+        trial, not experimental tolerance boundaries or years of adult health. Flowgrow lists an
+        even wider 0 to 30 carbonate-hardness field with an inconsistent dGH unit label. Cenote Azul
+        extends natural bicarbonate evidence to 9.9. The median contains the natural 5 to 9 dKH
+        range and overlaps both habitat and culture evidence, making it a plausible buffered-water
+        envelope. Species-specific long-term numerical KH bounds remain unverified; Fishkeeper warns
+        about low KH without stating a threshold. The endpoints are estimates rather than
+        physiological limits. Confidence is low because endpoint support is incomplete."
       sources:
         - &a54
           kind: website
@@ -1047,7 +1048,7 @@ features:
           value: null
           note: No numerical KH limit supplied.
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -2314,12 +2315,12 @@ profile:
         archived: aquario.me/fish/mojarra/2026-10-14T101222Z
         accessed: 2026-10-13
   husbandry:
-    text: "For a compatible adult pair, allow about 750 L and a 210 by 60 cm footprint, with more room for
-      companions. Use secure heavy decor, sheltered retreats and open escape routes around a diggable
-      substrate. Reliable filtration and regular water changes must match adult waste production. Routine
-      freshwater care near 24 to 28 C and pH 7 to 8 is supported. GH tolerance above ordinary 8 to 20 dGH
-      advice is a habitat-derived provisional extension; the conservative 5 to 9 dKH tolerance also lacks
-      established long-term numerical boundaries."
+    text: "For a compatible adult pair, allow about 750 L and a 210 by 60 cm footprint, with more room
+      for companions. Use secure heavy decor, sheltered retreats and open escape routes around a
+      diggable substrate. Reliable filtration and regular water changes must match adult waste
+      production. Routine freshwater care near 24 to 28 C and pH 7 to 8 is supported. GH tolerance
+      above ordinary 8 to 20 dGH advice is a habitat-derived provisional extension; the median 5 to
+      13 dKH tolerance also lacks established long-term numerical boundaries."
     sources:
       - kind: database
         title: "Seriously Fish: Cichlasoma urophthalmus"
@@ -2485,11 +2486,12 @@ profile:
         archived: doi.org/10.17632_z997fw7m7z.1/2026-10-13T201306Z
         accessed: 2026-10-13
   problems:
-    text: "Adult space shortages, incompatible pairs and prey-sized companions are major avoidable failures.
-      Digging can undermine rocks, uproot plants and expose equipment. Large appetites and body mass increase
-      filtration and maintenance demands. Monitor injuries and loss of access to food before social pressure
-      becomes severe. Chemical survival extremes do not define aquarium targets, and neither the very high GH
-      extension nor the narrow conservative KH band is a proven long-term physiological boundary."
+    text: "Adult space shortages, incompatible pairs and prey-sized companions are major avoidable
+      failures. Digging can undermine rocks, uproot plants and expose equipment. Large appetites and
+      body mass increase filtration and maintenance demands. Monitor injuries and loss of access to
+      food before social pressure becomes severe. Chemical survival extremes do not define aquarium
+      targets, and neither the very high GH extension nor the median KH band is a proven long-term
+      physiological boundary."
     sources:
       - kind: database
         title: "Aqua-Fish: Mayan cichlid care profile"
@@ -2869,18 +2871,19 @@ provenance:
             max: 10
       decision:
         min: 5
-        max: 9
-      rationale: "Tally conservative, 3 of 6 in the leading agreement cluster; no qualified majority. All proposals
-        are generator 4 to 10, checker-a 3 to 20, checker-b 5 to 15, checker-c 5 to 9, tiebreaker-1 5 to 15
-        and tiebreaker-2 5 to 10 dKH. The nonempty intersection is 5 to 9 and already contains the decided
-        natural range, so no widening is needed. The decision deliberately narrows the wider culture
-        conditions of approximately 11.8 to 14.8 dKH: Hernandez and colleagues reported alkalinity 238 plus or
-        minus 27 mg/L during a 21-week trial, not experimental tolerance boundaries or years of adult health.
-        Flowgrow lists an even wider 0 to 30 carbonate-hardness field with an inconsistent dGH unit label.
-        Cenote Azul extends natural bicarbonate evidence to 9.9. Neither wider dataset overrides the required
-        tally decision. Species-specific long-term numerical KH bounds remain unverified; Fishkeeper warns
-        about low KH without stating a threshold. Confidence stays low and the intersection must not be read
-        as a physiological ceiling."
+        max: 13
+      rationale: "The proposals in vote order are 4 to 10, 3 to 20, 5 to 15, 5 to 9, 5 to 15, 5 to 10 (dKH).
+        Without a qualified majority, the medians of all proposed minima and maxima are 5 and 12.5,
+        rounded to 5 to 13 dKH. The median 5 to 13 dKH contains the natural 5 to 9 range without
+        widening. The median 5 to 13 dKH overlaps culture conditions of approximately 11.8 to 14.8
+        dKH: Hernandez and colleagues report alkalinity 238 plus or minus 27 mg/L during a 21-week
+        trial, not experimental tolerance boundaries or years of adult health. Flowgrow lists an
+        even wider 0 to 30 carbonate-hardness field with an inconsistent dGH unit label. Cenote Azul
+        extends natural bicarbonate evidence to 9.9. The median contains the natural 5 to 9 dKH
+        range and overlaps both habitat and culture evidence, making it a plausible buffered-water
+        envelope. Species-specific long-term numerical KH bounds remain unverified; Fishkeeper warns
+        about low KH without stating a threshold. The endpoints are estimates rather than
+        physiological limits. Confidence is low because endpoint support is incomplete."
     - field: features.origin
       proposals:
         - by: generator

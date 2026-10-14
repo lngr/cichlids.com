@@ -2488,20 +2488,23 @@ features:
     tolerance:
       value:
         min: 0
-        max: 10
+        max: 16
       confidence: "low"
-      rationale: "Conservative tally decision: the intersection of all six proposed intervals is 0 to 10 dGH, with\
-        \ low confidence and no replacement. Generator, checker-b and tiebreaker-1 propose 0 to 20; checker-a and\
-        \ tiebreaker-2 propose 0 to 10; checker-c proposes 0 to 12. No candidate has the four agreeing votes required\
-        \ for a qualified majority. Seriously Fish and Fishkeeping give 1 to 8 dGH, Akvaforum explicitly gives 0\
-        \ to 10, and Aquendium gives the wider 2 to 12. Wider practical evidence is retained: Rak kept captive red-spotted\
-        \ fish for several years at 8 to 14 dGH, Mi Pecera reports 13 degrees without a duration, WetWebMedia gives\
-        \ 5 to 20, and the pooled DCG Heros experience reaches 20 dGH without assigning that maximum separately\
-        \ to efasciatus. The retailer interval of 5 to 20 lacks an explicit unit, and FishBase has only one known\
-        \ 20 dH endpoint. Therefore 10 dGH is a conservative planner limit, not a demonstrated health-failure threshold;\
-        \ some established captive lines clearly tolerate more. Near-zero includes the natural lower boundary without\
-        \ prescribing unmineralized water. A short gold-form experiment at about 4.5 to 6.7 dGH supports only central\
-        \ conditions, and successful maintenance does not guarantee egg development."
+      rationale: "The proposals in vote order are 0 to 20, 0 to 10, 0 to 20, 0 to 12, 0 to 20, 0 to 10 (dGH).\
+        \ Without a qualified majority, the medians of all proposed minima and maxima are 0 and 16,\
+        \ rounded to 0 to 16 dGH. The median 0 to 16 dGH contains the natural 0 to 3 range without\
+        \ widening. Seriously Fish and Fishkeeping give 1 to 8 dGH, Akvaforum explicitly gives 0 to\
+        \ 10, and Aquendium gives the wider 2 to 12. Practical evidence includes Rak's report of\
+        \ captive red-spotted fish kept for several years at 8 to 14 dGH, Mi Pecera reports 13 degrees\
+        \ without a duration, WetWebMedia gives 5 to 20, and the pooled DCG Heros experience reaches\
+        \ 20 dGH without assigning that maximum separately to efasciatus. The retailer interval of 5\
+        \ to 20 lacks an explicit unit, and FishBase has only one known 20 dH endpoint. The 0 to 16\
+        \ dGH median is plausible because measured multi-year captive success reaches 14 dGH and\
+        \ broader husbandry guidance reaches 20; the exact ceiling is a synthesis rather than a\
+        \ health-failure threshold. Near-zero includes the natural lower boundary without prescribing\
+        \ unmineralized water. A short gold-form experiment at about 4.5 to 6.7 dGH supports only\
+        \ central conditions, and successful maintenance does not guarantee egg development.\
+        \ Confidence is low because endpoint support is incomplete."
       sources:
       - kind: "database"
         title: "Seriously Fish: Heros efasciatus"
@@ -2960,7 +2963,7 @@ features:
           max: 20
         note: "One 20 dH endpoint is populated and the other is unknown; not a complete tolerance."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -6821,16 +6824,17 @@ profile:
       archived: monsterfishkeepers.com/forums/threads/yellow-labs-with-severum.742512/2026-10-14T100504Z
       accessed: "2026-10-13"
   husbandry:
-    text: "Provide at least 300 L with a 120 by 50 cm base for one compatible adult pair. Additional severums or\
-      \ a community need more space according to their own social units. Use fine substrate, stable wood and stones,\
-      \ and sight barriers that allow either fish to retreat; leave swimming routes open. Soft plants may be grazed,\
-      \ and shade can help fish settle. Mature filtration, partial water changes and oxygen exchange are important.\
-      \ Around 26 to 28 C is a practical routine temperature within the wider 22 to 32 C maintenance tolerance.\
-      \ The other decided tolerances are pH 5 to 7.6, GH 0 to 10 dGH and KH 0 to 8 dKH. These are outer maintenance\
-      \ bands rather than breeding guarantees. The GH ceiling is a conservative planner decision: captive success\
-      \ at 8 to 14 dGH and pooled Heros reports up to 20 dGH remain evidence. Wild imports deserve attention to\
-      \ their source water. Very low GH and KH describe dilute water, not a recipe for unmineralized water, and\
-      \ low buffering makes stability especially important."
+    text: "Provide at least 300 L with a 120 by 50 cm base for one compatible adult pair. Additional\
+      \ severums or a community need more space according to their own social units. Use fine\
+      \ substrate, stable wood and stones, and sight barriers that allow either fish to retreat; leave\
+      \ swimming routes open. Soft plants may be grazed, and shade can help fish settle. Mature\
+      \ filtration, partial water changes and oxygen exchange are important. Around 26 to 28 C is a\
+      \ practical routine temperature within the wider 22 to 32 C maintenance tolerance. The other\
+      \ decided tolerances are pH 5 to 7.6, GH 0 to 16 dGH and KH 0 to 8 dKH. These are outer\
+      \ maintenance bands rather than breeding guarantees. The GH ceiling is a median estimate:\
+      \ captive success at 8 to 14 dGH and pooled Heros reports up to 20 dGH remain evidence. Wild\
+      \ imports deserve attention to their source water. Very low GH and KH describe dilute water, not\
+      \ a recipe for unmineralized water, and low buffering makes stability especially important."
     sources:
     - kind: "literature"
       title: "Rak, R. (2015). Heros efasciatus a rostlinna nadrz. Akvarium, online article"
@@ -8222,19 +8226,22 @@ provenance:
         max: 10
     decision:
       min: 0
-      max: 10
-    rationale: "Tally method conservative. Conservative tally decision: the intersection of all six proposed intervals\
-      \ is 0 to 10 dGH, with low confidence and no replacement. Generator, checker-b and tiebreaker-1 propose 0\
-      \ to 20; checker-a and tiebreaker-2 propose 0 to 10; checker-c proposes 0 to 12. No candidate has the four\
-      \ agreeing votes required for a qualified majority. Seriously Fish and Fishkeeping give 1 to 8 dGH, Akvaforum\
-      \ explicitly gives 0 to 10, and Aquendium gives the wider 2 to 12. Wider practical evidence is retained: Rak\
-      \ kept captive red-spotted fish for several years at 8 to 14 dGH, Mi Pecera reports 13 degrees without a duration,\
-      \ WetWebMedia gives 5 to 20, and the pooled DCG Heros experience reaches 20 dGH without assigning that maximum\
-      \ separately to efasciatus. The retailer interval of 5 to 20 lacks an explicit unit, and FishBase has only\
-      \ one known 20 dH endpoint. Therefore 10 dGH is a conservative planner limit, not a demonstrated health-failure\
-      \ threshold; some established captive lines clearly tolerate more. Near-zero includes the natural lower boundary\
-      \ without prescribing unmineralized water. A short gold-form experiment at about 4.5 to 6.7 dGH supports only\
-      \ central conditions, and successful maintenance does not guarantee egg development."
+      max: 16
+    rationale: "The proposals in vote order are 0 to 20, 0 to 10, 0 to 20, 0 to 12, 0 to 20, 0 to 10 (dGH).\
+      \ Without a qualified majority, the medians of all proposed minima and maxima are 0 and 16,\
+      \ rounded to 0 to 16 dGH. The median 0 to 16 dGH contains the natural 0 to 3 range without\
+      \ widening. Seriously Fish and Fishkeeping give 1 to 8 dGH, Akvaforum explicitly gives 0 to 10,\
+      \ and Aquendium gives the wider 2 to 12. Practical evidence includes Rak's report of captive\
+      \ red-spotted fish kept for several years at 8 to 14 dGH, Mi Pecera reports 13 degrees without a\
+      \ duration, WetWebMedia gives 5 to 20, and the pooled DCG Heros experience reaches 20 dGH\
+      \ without assigning that maximum separately to efasciatus. The retailer interval of 5 to 20\
+      \ lacks an explicit unit, and FishBase has only one known 20 dH endpoint. The 0 to 16 dGH median\
+      \ is plausible because measured multi-year captive success reaches 14 dGH and broader husbandry\
+      \ guidance reaches 20; the exact ceiling is a synthesis rather than a health-failure threshold.\
+      \ Near-zero includes the natural lower boundary without prescribing unmineralized water. A short\
+      \ gold-form experiment at about 4.5 to 6.7 dGH supports only central conditions, and successful\
+      \ maintenance does not guarantee egg development. Confidence is low because endpoint support is\
+      \ incomplete."
   - field: "features.khDkh.tolerance"
     proposals:
     - by: "generator"

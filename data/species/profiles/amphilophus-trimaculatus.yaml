@@ -2436,16 +2436,17 @@ features:
         min: 3
         max: 20
       confidence: low
-      rationale: "Keep the low-confidence conservative tally tolerance of 3 to 20 dGH. Intersecting all\
-        \ six proposed intervals gives 5 to 20 dGH; widening that intersection to contain the decided\
-        \ natural range lowers the minimum to 3. This is the tally rule, not a physiological boundary.\
-        \ Seriously Fish recommends around 15 dGH, AquaInfo 12 to 16 and FishProfiles 10 to 20. The decided\
-        \ range is narrower than AKVARISTA keeping advice of 9 to 25 dGH and Aqua-Fish advice of 8 to\
-        \ 24 dGH, and excludes the lower portions of measured native river intervals of 1.12 to 3.64 and\
-        \ approximately 1.1 to 6.1 dGH. Those wider values and all six proposals remain visible. The softer\
-        \ endpoint is inferred from the chosen habitat baseline; multi-year endpoint trials are missing.\
-        \ Proposals were generator 1.8 to 20; checker-a 5 to 25; checker-b 4 to 20; checker-c 4 to 20;\
-        \ tiebreaker-1 1 to 25; tiebreaker-2 1 to 20."
+      rationale: "The proposals in vote order are 1.8 to 20, 5 to 25, 4 to 20, 4 to 20, 1 to 25 and 1\
+        \ to 20 dGH. No qualified majority exists. The middle minima are 1.8 and 4, averaging\
+        \ 2.9 and rounding to 3; the median maximum is 20. The tolerance is 3 to 20 dGH with\
+        \ low confidence and contains the natural 3 to 8 dGH without widening. Seriously Fish\
+        \ recommends around 15 dGH, AquaInfo 12 to 16 and FishProfiles 10 to 20, supporting\
+        \ the aquarium plausibility of the upper part. AKVARISTA gives 9 to 25 and Aqua-Fish 8\
+        \ to 24 dGH. Measured native river intervals of 1.12 to 3.64 and approximately 1.1 to\
+        \ 6.1 dGH support softer water, although their lower portions lie below the decision.\
+        \ The soft endpoint is an inference from habitat evidence, and multiyear aquarium\
+        \ endpoint trials are absent. The range expresses a practical keeping estimate rather\
+        \ than established physiological limits."
       sources:
       - kind: website
         title: "Tri County Tropicals: Three Spot Cichlid care sheet"
@@ -2847,7 +2848,7 @@ features:
         note: "Natural surface-water measurements only; support the low-end inference, not proof of aquarium\
           \ longevity."
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 2
           total: 6
@@ -3000,20 +3001,21 @@ features:
       note: "Papagayo basin streams and river, converted from mg/L CaCO3"
     tolerance:
       value:
-        min: 4
-        max: 6
+        min: 3
+        max: 10
       confidence: low
-      rationale: "Keep the low-confidence conservative tally tolerance of 4 to 6 dKH, the intersection\
-        \ of all six proposals and already containing the decided natural interval. Beerlink reports 4\
-        \ to 6 as habitat chemistry, not a long-term aquarium limit. This conservative interval is narrower\
-        \ than all broader proposals and the regional INEGI alkalinity interval of about 1.3 to 6.8 dKH.\
-        \ The Fish Farmer's Daughter lists captive stock at KH 15 but omits units and exposure duration;\
-        \ its interpretation as 15 dKH is retained provisionally as wider husbandry evidence. Historic\
-        \ Coatan alkalinity is about 3.36 dKH and Cahuacan/Suchiate about 0.56 to 1.4 dKH. No read source\
-        \ verifies numeric chronic KH endpoints. This narrow compatibility setting expresses unresolved\
-        \ uncertainty and must not be presented as demonstrated harm outside 4 to 6 dKH. Proposals were\
-        \ generator 2 to 8; checker-a 3 to 12; checker-b 4 to 6; checker-c 4 to 6; tiebreaker-1 1 to 15;\
-        \ tiebreaker-2 1 to 15."
+      rationale: "The proposals in vote order are 2 to 8, 3 to 12, 4 to 6, 4 to 6, 1 to 15 and 1 to 15\
+        \ dKH. No qualified majority exists. The middle minima are 2 and 3, averaging 2.5 and\
+        \ rounding to 3; the middle maxima are 8 and 12, averaging 10. The tolerance is 3 to\
+        \ 10 dKH with low confidence, containing the natural 4 to 6 dKH without widening.\
+        \ Beerlink reports 4 to 6 as habitat chemistry rather than a long-term aquarium limit.\
+        \ Regional INEGI alkalinity spans about 1.3 to 6.8 dKH; historical Coatan alkalinity\
+        \ is about 3.36 dKH and Cahuacan/Suchiate about 0.56 to 1.4 dKH. The Fish Farmer's\
+        \ Daughter lists captive stock at KH 15 without units or exposure duration,\
+        \ provisionally interpreted as dKH. Together these observations make moderate\
+        \ buffering beyond the narrow habitat report plausible for aquarium keeping, but do\
+        \ not verify chronic endpoints. The median is a provisional husbandry estimate, not\
+        \ evidence of harm outside its bounds."
       sources:
       - kind: database
         title: "Rene Beerlink (NVC): Amphilophus trimaculatus, AquaInfo"
@@ -3274,7 +3276,7 @@ features:
           max: 6
         note: natural value only; no husbandry source states KH
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -6064,15 +6066,16 @@ profile:
       accessed: '2026-10-13'
       archived: cichlidatlas.com/species/amphilophus-trimaculatus/2026-10-14T131108Z
   husbandry:
-    text: "For an established adult pair, provide about 900 litres with a footprint of 240 by 60 cm and\
-      \ a secure divider available. The volume and length follow association guidance; depth is a practical\
-      \ estimate for turning and cover. Provide open swimming space and sheltered areas behind securely\
-      \ supported rocks or wood. Digging must not undermine heavy structures or expose fragile equipment.\
-      \ Use effective biological filtration, surface movement and regular partial water changes. The settled\
-      \ maintenance envelopes are 21 to 31 C, pH 6.0 to 8.7, GH 3 to 20 dGH and KH 4 to 6 dKH. Their endpoints\
-      \ are not equally well established; particularly the conservative KH interval is an uncertain planning\
-      \ setting, not a demonstrated narrow physiological need. Keep conditions stable rather than targeting\
-      \ boundaries."
+    text: "For an established adult pair, provide about 900 litres with a footprint of 240 by 60\
+      \ cm and a secure divider available. The volume and length follow association guidance;\
+      \ depth is a practical estimate for turning and cover. Provide open swimming space and\
+      \ sheltered areas behind securely supported rocks or wood. Digging must not undermine\
+      \ heavy structures or expose fragile equipment. Use effective biological filtration,\
+      \ surface movement and regular partial water changes. The settled maintenance envelopes\
+      \ are 21 to 31 C, pH 6.0 to 8.7, GH 3 to 20 dGH and KH 3 to 10 dKH. Their endpoints are\
+      \ not equally well established; the KH interval is an uncertain husbandry estimate\
+      \ rather than a demonstrated physiological limit. Keep conditions stable rather than\
+      \ targeting boundaries."
     sources:
     - kind: database
       title: "Aquarist Atlas: Amphilophus trimaculatus"
@@ -7098,16 +7101,17 @@ provenance:
     decision:
       min: 3
       max: 20
-    rationale: "Keep the low-confidence conservative tally tolerance of 3 to 20 dGH. Intersecting all\
-      \ six proposed intervals gives 5 to 20 dGH; widening that intersection to contain the decided natural\
-      \ range lowers the minimum to 3. This is the tally rule, not a physiological boundary. Seriously\
-      \ Fish recommends around 15 dGH, AquaInfo 12 to 16 and FishProfiles 10 to 20. The decided range\
-      \ is narrower than AKVARISTA keeping advice of 9 to 25 dGH and Aqua-Fish advice of 8 to 24 dGH,\
-      \ and excludes the lower portions of measured native river intervals of 1.12 to 3.64 and approximately\
-      \ 1.1 to 6.1 dGH. Those wider values and all six proposals remain visible. The softer endpoint is\
-      \ inferred from the chosen habitat baseline; multi-year endpoint trials are missing. Proposals were\
-      \ generator 1.8 to 20; checker-a 5 to 25; checker-b 4 to 20; checker-c 4 to 20; tiebreaker-1 1 to\
-      \ 25; tiebreaker-2 1 to 20."
+    rationale: "The proposals in vote order are 1.8 to 20, 5 to 25, 4 to 20, 4 to 20, 1 to 25 and 1 to\
+      \ 20 dGH. No qualified majority exists. The middle minima are 1.8 and 4, averaging 2.9\
+      \ and rounding to 3; the median maximum is 20. The tolerance is 3 to 20 dGH with low\
+      \ confidence and contains the natural 3 to 8 dGH without widening. Seriously Fish\
+      \ recommends around 15 dGH, AquaInfo 12 to 16 and FishProfiles 10 to 20, supporting the\
+      \ aquarium plausibility of the upper part. AKVARISTA gives 9 to 25 and Aqua-Fish 8 to 24\
+      \ dGH. Measured native river intervals of 1.12 to 3.64 and approximately 1.1 to 6.1 dGH\
+      \ support softer water, although their lower portions lie below the decision. The soft\
+      \ endpoint is an inference from habitat evidence, and multiyear aquarium endpoint trials\
+      \ are absent. The range expresses a practical keeping estimate rather than established\
+      \ physiological limits."
   - field: features.khDkh
     proposals:
     - by: generator
@@ -7166,19 +7170,19 @@ provenance:
         min: 1
         max: 15
     decision:
-      min: 4
-      max: 6
-    rationale: "Keep the low-confidence conservative tally tolerance of 4 to 6 dKH, the intersection of\
-      \ all six proposals and already containing the decided natural interval. Beerlink reports 4 to 6\
-      \ as habitat chemistry, not a long-term aquarium limit. This conservative interval is narrower than\
-      \ all broader proposals and the regional INEGI alkalinity interval of about 1.3 to 6.8 dKH. The\
-      \ Fish Farmer's Daughter lists captive stock at KH 15 but omits units and exposure duration; its\
-      \ interpretation as 15 dKH is retained provisionally as wider husbandry evidence. Historic Coatan\
-      \ alkalinity is about 3.36 dKH and Cahuacan/Suchiate about 0.56 to 1.4 dKH. No read source verifies\
-      \ numeric chronic KH endpoints. This narrow compatibility setting expresses unresolved uncertainty\
-      \ and must not be presented as demonstrated harm outside 4 to 6 dKH. Proposals were generator 2\
-      \ to 8; checker-a 3 to 12; checker-b 4 to 6; checker-c 4 to 6; tiebreaker-1 1 to 15; tiebreaker-2\
-      \ 1 to 15."
+      min: 3
+      max: 10
+    rationale: "The proposals in vote order are 2 to 8, 3 to 12, 4 to 6, 4 to 6, 1 to 15 and 1 to 15\
+      \ dKH. No qualified majority exists. The middle minima are 2 and 3, averaging 2.5 and\
+      \ rounding to 3; the middle maxima are 8 and 12, averaging 10. The tolerance is 3 to 10\
+      \ dKH with low confidence, containing the natural 4 to 6 dKH without widening. Beerlink\
+      \ reports 4 to 6 as habitat chemistry rather than a long-term aquarium limit. Regional\
+      \ INEGI alkalinity spans about 1.3 to 6.8 dKH; historical Coatan alkalinity is about\
+      \ 3.36 dKH and Cahuacan/Suchiate about 0.56 to 1.4 dKH. The Fish Farmer's Daughter lists\
+      \ captive stock at KH 15 without units or exposure duration, provisionally interpreted\
+      \ as dKH. Together these observations make moderate buffering beyond the narrow habitat\
+      \ report plausible for aquarium keeping, but do not verify chronic endpoints. The median\
+      \ is a provisional husbandry estimate, not evidence of harm outside its bounds."
   - field: features.maxSizeCm
     proposals:
     - by: generator

@@ -2615,20 +2615,23 @@ features:
         note: inferred from conductivity and pH; not measured
     tolerance:
       value:
-        min: 4
-        max: 12
+        min: 3
+        max: 15
       confidence: low
-      rationale: "The conservative tally decision is 4 to 12 dKH, with low confidence and votes 3 of 6. Generator\
-        \ proposed 3 to 12; checker-a 3 to 16; checker-b 4 to 20; checker-c 2 to 12; tiebreaker-1 3 to 13; tiebreaker-2\
-        \ 3 to 20. Their intersection is 4 to 12 and contains the decided natural range. This narrower interval\
-        \ is a cautious compatibility estimate, not an experimentally established lifetime tolerance. Aquarium.org.il\
-        \ reports the wider KH range 10 to 20 without methods or chronic outcomes. The generic Parachromis overview\
-        \ gives 2 to 8, and the Hungarian page gives 6 to 12 while confusing the fish with a Cuban common name.\
-        \ Motagua field alkalinity extends to 12.53 dKH in 2003 and 14.29 in the broader 2002 series, with Puente\
-        \ Orellana at 5.89 to 12.61; these wider native measurements remain evidence but do not independently\
-        \ establish years of aquarium health. The conservative cap must not be read as proof that 12.1 dKH is\
-        \ harmful. Monks supports buffered and mildly brackish keeping without numerical KH limits. GH recommendations\
-        \ and brackish occurrence do not establish KH tolerance."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 3 to 12; checker-a\
+        \ proposes 3 to 16; checker-b proposes 4 to 20; checker-c proposes 2 to 12; tiebreaker-1\
+        \ proposes 3 to 13; tiebreaker-2 proposes 3 to 20 (dKH). The rounded median of all minima and\
+        \ all maxima is 3 to 15 dKH. This contains natural 4 to 12 without widening. Confidence is\
+        \ low. Aquarium.org.il reports the wider KH range 10 to 20 without methods or chronic\
+        \ outcomes. The generic Parachromis overview gives 2 to 8, and the Hungarian page gives 6 to\
+        \ 12 while confusing the fish with a Cuban common name. Motagua field alkalinity extends to\
+        \ 12.53 dKH in 2003 and 14.29 in the broader 2002 series, with Puente Orellana at 5.89 to\
+        \ 12.61; these wider native measurements remain evidence but do not independently establish\
+        \ years of aquarium health. The median upper edge is not a demonstrated injury threshold.\
+        \ Monks supports buffered and mildly brackish keeping without numerical KH limits. GH\
+        \ recommendations and brackish occurrence do not establish KH tolerance. The median is\
+        \ plausible as a provisional buffering envelope around native-river alkalinity and broad care\
+        \ advice; GH-derived estimates do not establish KH."
       sources:
         - kind: model-knowledge
           title: Generator inference where a measured or husbandry limit could not be established
@@ -2870,7 +2873,7 @@ features:
             max: 16
           note: carbonate hardness not stated; estimate scaled from the general hardness range of 6 to 16 dH
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -6878,17 +6881,18 @@ profile:
         archived: fishi-pedia.com/fishes/parachromis-motaguensis/2026-10-14T114044Z
         accessed: '2026-10-13'
   husbandry:
-    text: "For an established adult pair, provide at least 720 litres and 200 cm length, with about 60 cm front-to-back\
-      \ space. Volume and length follow the Nordic association; depth is an inferred layout dimension. Use securely\
-      \ supported rocks and anchored timber to interrupt sight lines while preserving a swimming route. Sand allows\
-      \ digging, and plants may be moved or damaged. Provide strong biological filtration, removal of accumulated\
-      \ waste, oxygenation and regular water changes matching the established conditions. Around 26 C is well\
-      \ supported for routine maintenance. Published keeping envelopes are 20 to 30 C, pH 6 to 8.5, GH 4 to 20\
-      \ dGH and a particularly uncertain KH estimate of 4 to 12 dKH. Their endpoints are not all confirmed by\
-      \ multi-year observations. The KH interval comes from a conservative vote intersection; broader river alkalinity\
-      \ and care-sheet recommendations remain in the evidence and the upper bound is not a demonstrated injury\
-      \ threshold. Fit a secure cover and have a rigid divider and alternative accommodation ready before placing\
-      \ adults together."
+    text: "For an established adult pair, provide at least 720 litres and 200 cm length, with about 60 cm\
+      \ front-to-back space. Volume and length follow the Nordic association; depth is an inferred\
+      \ layout dimension. Use securely supported rocks and anchored timber to interrupt sight lines\
+      \ while preserving a swimming route. Sand allows digging, and plants may be moved or damaged.\
+      \ Provide strong biological filtration, removal of accumulated waste, oxygenation and regular\
+      \ water changes matching the established conditions. Around 26 C is well supported for routine\
+      \ maintenance. Published keeping envelopes are 20 to 30 C, pH 6 to 8.5, GH 4 to 20 dGH and a\
+      \ particularly uncertain KH estimate of 3 to 15 dKH. Their endpoints are not all confirmed by\
+      \ multi-year observations. The KH interval is the rounded median of six proposals; river\
+      \ alkalinity and care-sheet recommendations support a provisional buffering envelope, and its\
+      \ upper bound is not a demonstrated injury threshold. Fit a secure cover and have a rigid\
+      \ divider and alternative accommodation ready before placing adults together."
     sources:
       - kind: database
         title: "Nordiska Ciklidsallskapet species register: Parachromis motaguensis"
@@ -8657,19 +8661,22 @@ provenance:
             min: 3
             max: 20
       decision:
-        min: 4
-        max: 12
-      rationale: "Tally method conservative. The conservative tally decision is 4 to 12 dKH, with low confidence\
-        \ and votes 3 of 6. Generator proposed 3 to 12; checker-a 3 to 16; checker-b 4 to 20; checker-c 2 to 12;\
-        \ tiebreaker-1 3 to 13; tiebreaker-2 3 to 20. Their intersection is 4 to 12 and contains the decided natural\
-        \ range. This narrower interval is a cautious compatibility estimate, not an experimentally established\
-        \ lifetime tolerance. Aquarium.org.il reports the wider KH range 10 to 20 without methods or chronic outcomes.\
-        \ The generic Parachromis overview gives 2 to 8, and the Hungarian page gives 6 to 12 while confusing\
-        \ the fish with a Cuban common name. Motagua field alkalinity extends to 12.53 dKH in 2003 and 14.29 in\
-        \ the broader 2002 series, with Puente Orellana at 5.89 to 12.61; these wider native measurements remain\
-        \ evidence but do not independently establish years of aquarium health. The conservative cap must not\
-        \ be read as proof that 12.1 dKH is harmful. Monks supports buffered and mildly brackish keeping without\
-        \ numerical KH limits. GH recommendations and brackish occurrence do not establish KH tolerance."
+        min: 3
+        max: 15
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 3 to 12; checker-a\
+        \ proposes 3 to 16; checker-b proposes 4 to 20; checker-c proposes 2 to 12; tiebreaker-1\
+        \ proposes 3 to 13; tiebreaker-2 proposes 3 to 20 (dKH). The rounded median of all minima and\
+        \ all maxima is 3 to 15 dKH. This contains natural 4 to 12 without widening. Confidence is\
+        \ low. Aquarium.org.il reports the wider KH range 10 to 20 without methods or chronic\
+        \ outcomes. The generic Parachromis overview gives 2 to 8, and the Hungarian page gives 6 to\
+        \ 12 while confusing the fish with a Cuban common name. Motagua field alkalinity extends to\
+        \ 12.53 dKH in 2003 and 14.29 in the broader 2002 series, with Puente Orellana at 5.89 to\
+        \ 12.61; these wider native measurements remain evidence but do not independently establish\
+        \ years of aquarium health. The median upper edge is not a demonstrated injury threshold.\
+        \ Monks supports buffered and mildly brackish keeping without numerical KH limits. GH\
+        \ recommendations and brackish occurrence do not establish KH tolerance. The median is\
+        \ plausible as a provisional buffering envelope around native-river alkalinity and broad care\
+        \ advice; GH-derived estimates do not establish KH."
     - field: taxonomy.synonyms
       proposals:
         - by: generator

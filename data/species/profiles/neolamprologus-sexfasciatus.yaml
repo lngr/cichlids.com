@@ -1619,17 +1619,20 @@ features:
       note: Historical alkalinity 6.71 meq/L converted to dKH.
     tolerance:
       value:
-        min: 15
+        min: 14
         max: 20
       confidence: low
-      rationale: "The conservative tally intersects all six proposals and retains 15 to 20 dKH with low confidence.\
-        \ Generator, checker-b and tiebreaker-1 proposed 15 to 20; checker-a and tiebreaker-2 proposed 10 to\
-        \ 20; checker-c proposed 12 to 20. Fischlexikon and Aquaristik-Profi directly recommend 15 to 20. The\
-        \ wider 12 to 20 in the gold-form trade compilation and OATA's generic 10 to 15, plus aquarium readings\
-        \ at 10 and 14, remain dissenting evidence. Monitarium gives 8 to 12 without long-term observations.\
-        \ Neither the intersection nor the natural lake range proves that lower KH causes harm; no sustained\
-        \ species-specific health study resolves those alternatives. Seriously Fish supplies GH and pH, from\
-        \ which KH cannot be calculated."
+      rationale: "No qualified majority settles the 6 proposals: generator proposes 15 to 20; checker-a\
+        \ proposes 10 to 20; checker-b proposes 15 to 20; checker-c proposes 12 to 20; tiebreaker-1\
+        \ proposes 15 to 20; tiebreaker-2 proposes 10 to 20 (dKH). The rounded median of all minima\
+        \ and all maxima is 14 to 20 dKH. This contains the natural 15 to 20 range without widening.\
+        \ Confidence is low. Fischlexikon and Aquaristik-Profi directly recommend 15 to 20 dKH. The\
+        \ gold-form trade compilation gives 12 to 20, OATA gives a generic 10 to 15, and aquarium\
+        \ reports include readings of 10 and 14. These support a plausible buffered aquarium envelope\
+        \ of 14 to 20 without demonstrating a lower physiological limit. Monitarium gives 8 to 12\
+        \ without long-term observations, and Aquarists Across Canada gives 9 to 12 for the gold form\
+        \ without a health trial. No sustained species-specific health study resolves the lower\
+        \ recommendations. Seriously Fish supplies GH and pH, from which KH cannot be calculated."
       sources:
       - kind: database
         title: "Fischlexikon: Neolamprologus sexfasciatus"
@@ -1929,7 +1932,7 @@ features:
         note: Retailer recommendation for the gold form; not a long-term health trial and below the conservative
           decided range.
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -4784,12 +4787,13 @@ profile:
     - kind: model-knowledge
       title: Checker synthesis from available feeding observations
   husbandry:
-    text: "For one self-selected pair, plan around at least 350 L with a footprint of 135 by 46 cm. These dimensions\
-      \ are a synthesis of differing recommendations and do not include space for a mixed community. Secure\
-      \ the rockwork and provide several cavities with routes between cover so one adult cannot trap the other.\
-      \ Keep water stable with efficient filtration and regular maintenance. The recorded tolerance is 23 to\
-      \ 29 C, pH 7.5 to 9.4, 8 to 25 dGH and 15 to 20 dKH; ordinary care sources center temperature closer\
-      \ to 23 to 27 C. The KH band is a cautious decision rather than a demonstrated lower physiological limit."
+    text: "For one self-selected pair, plan around at least 350 L with a footprint of 135 by 46 cm. These\
+      \ dimensions are a synthesis of differing recommendations and do not include space for a mixed\
+      \ community. Secure the rockwork and provide several cavities with routes between cover so one\
+      \ adult cannot trap the other. Keep water stable with efficient filtration and regular\
+      \ maintenance. The recorded tolerance is 23 to 29 C, pH 7.5 to 9.4, 8 to 25 dGH and 14 to 20\
+      \ dKH; ordinary care sources center temperature closer to 23 to 27 C. The KH band is a cautious\
+      \ decision rather than a demonstrated lower physiological limit."
     sources:
     - kind: database
       title: "Seriously Fish: Neolamprologus sexfasciatus"
@@ -5684,16 +5688,19 @@ provenance:
         min: 10
         max: 20
     decision:
-      min: 15
+      min: 14
       max: 20
-    rationale: "Tally method conservative. The conservative tally intersects all six proposals and retains\
-      \ 15 to 20 dKH with low confidence. Generator, checker-b and tiebreaker-1 proposed 15 to 20; checker-a\
-      \ and tiebreaker-2 proposed 10 to 20; checker-c proposed 12 to 20. Fischlexikon and Aquaristik-Profi\
-      \ directly recommend 15 to 20. The wider 12 to 20 in the gold-form trade compilation and OATA's generic\
-      \ 10 to 15, plus aquarium readings at 10 and 14, remain dissenting evidence. Monitarium gives 8 to 12\
-      \ without long-term observations. Neither the intersection nor the natural lake range proves that lower\
-      \ KH causes harm; no sustained species-specific health study resolves those alternatives. Seriously Fish\
-      \ supplies GH and pH, from which KH cannot be calculated."
+    rationale: "No qualified majority settles the 6 proposals: generator proposes 15 to 20; checker-a proposes\
+      \ 10 to 20; checker-b proposes 15 to 20; checker-c proposes 12 to 20; tiebreaker-1 proposes 15\
+      \ to 20; tiebreaker-2 proposes 10 to 20 (dKH). The rounded median of all minima and all maxima\
+      \ is 14 to 20 dKH. This contains the natural 15 to 20 range without widening. Confidence is low.\
+      \ Fischlexikon and Aquaristik-Profi directly recommend 15 to 20 dKH. The gold-form trade\
+      \ compilation gives 12 to 20, OATA gives a generic 10 to 15, and aquarium reports include\
+      \ readings of 10 and 14. These support a plausible buffered aquarium envelope of 14 to 20\
+      \ without demonstrating a lower physiological limit. Monitarium gives 8 to 12 without long-term\
+      \ observations, and Aquarists Across Canada gives 9 to 12 for the gold form without a health\
+      \ trial. No sustained species-specific health study resolves the lower recommendations.\
+      \ Seriously Fish supplies GH and pH, from which KH cannot be calculated."
   - field: features.maxSizeCm
     proposals:
     - by: generator

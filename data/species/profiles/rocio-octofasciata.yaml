@@ -169,10 +169,21 @@ features:
       value: { min: 22, max: 30 }
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes: { agree: 3, total: 5 }
       rationale: >-
-        Five votes were cast: two proposed 20 to 31 °C (the lower bound of Seriously Fish and an upper bound raised to the warm-season lake temperatures of up to 31.3 °C at Laguna Bacalar and 31.4 °C at Lake Izabal), three proposed 22 to 30 °C. Without a qualified majority the tolerance is the intersection of all votes, 22 to 30 °C, which contains the natural range of 24 to 30 °C. Most care sources share these bounds: FishBase (after an aquarium book), FishProfiles, Fishkeeping World, Aquarium Source and Wikipedia give 22 to 30 °C, Fishkeeper and Aquarium Guide 22 to 28 °C, Seriously Fish 20 to 30 °C, and narrower comfort bands of 24 to 28 °C appear in several guides. Physiological limits lie far outside: a mean lower lethal temperature of 8 °C, acclimation between 10 and 35 °C and loss of equilibrium from about 34 °C, which are short-term limits and not years of healthy keeping.
+        No qualified majority settles the 5 proposals. generator proposes 20 to 31; checker-a
+        proposes 20 to 31; checker-b proposes 22 to 30; checker-c proposes 22 to 30; tiebreaker-1
+        proposes 22 to 30 (C). The rounded median of all minima and all maxima is 22 to 30 C. This
+        contains natural 24 to 30 without widening. Confidence is low. Most care sources share these
+        bounds: FishBase (after an aquarium book), FishProfiles, Fishkeeping World, Aquarium Source
+        and Wikipedia give 22 to 30 °C, Fishkeeper and Aquarium Guide 22 to 28 °C, Seriously Fish 20
+        to 30 °C, and narrower comfort bands of 24 to 28 °C appear in several guides. Physiological
+        limits lie far outside: a mean lower lethal temperature of 8 °C, acclimation between 10 and
+        35 °C and loss of equilibrium from about 34 °C, which are short-term limits and not years of
+        healthy keeping. Common aquarium-care recommendations directly support the median endpoints,
+        making the range plausible. The 20 to 31 C proposals combine Seriously Fish's lower bound
+        with warm-season lake temperatures up to 31.3 C at Laguna Bacalar and 31.4 C at Lake Izabal.
       sources:
         - *sf
         - *fishbase
@@ -443,10 +454,22 @@ features:
       value: { min: 6.5, max: 8.5 }
       confidence: low
       verification:
-        method: conservative
+        method: median
         votes: { agree: 2, total: 5 }
       rationale: >-
-        Five votes were cast: 6.5 to 9.0 (care range extended to the alkaline Sian Ka'an and Petén Itzá waters), 6.0 to 8.5 twice (lower bound from care sources that accept pH 6, upper bound raised to the habitat values of up to 8.5) and 6.5 to 8.0 twice (the bounds shared by Seriously Fish and most care sheets). Without a qualified majority the tolerance is the intersection of all votes, 6.5 to 8.0 (the largest minimum and the smallest maximum). The natural range of 6.5 to 8.5 reaches beyond that upper bound, so the tolerance is widened to contain it and is 6.5 to 8.5. Seriously Fish gives 6.5 to 8.0; FishBase, Fishkeeper, FishProfiles and Practical Fishkeeping 7.0 to 8.0; AquariumSource, FishLore and the Aqualog text 6 to 8; Aqua-Fish.net reaches 8.5. Guides that recommend 6.0 to 7.0 contradict the habitat data. Wild fish live permanently at pH 8.2 to 8.5 in Lago Petén Itzá, so the upper bound is a cautious care limit rather than a physiological one.
+        No qualified majority settles the 5 proposals. generator proposes 6.5 to 9; checker-a
+        proposes 6 to 8.5; checker-b proposes 6 to 8.5; checker-c proposes 6.5 to 8; tiebreaker-1
+        proposes 6.5 to 8 (pH). The rounded median of all minima and all maxima is 6.5 to 8.5 pH.
+        This contains natural 6.5 to 8.5 without widening. Confidence is low. Seriously Fish gives
+        6.5 to 8.0; FishBase, Fishkeeper, FishProfiles and Practical Fishkeeping 7.0 to 8.0;
+        AquariumSource, FishLore and the Aqualog text 6 to 8; Aqua-Fish.net reaches 8.5. Guides that
+        recommend 6.0 to 7.0 contradict the habitat data. Wild fish live permanently at pH 8.2 to
+        8.5 in Lago Petén Itzá, so the upper bound is a cautious care limit rather than a
+        physiological one. Natural occurrence and aquarium-care guidance support the median upper
+        edge, making it a plausible keeping envelope. The 6.5 to 9 proposal includes alkaline Sian
+        Ka'an and Peten Itza habitat waters. The two 6 to 8.5 proposals combine care sources
+        accepting pH 6 with habitat values up to 8.5, while the two 6.5 to 8 proposals follow common
+        care-sheet bounds.
       sources:
         - *sf
         - *fishbase
@@ -1367,7 +1390,18 @@ provenance:
             max: 30
       decision: { min: 22, max: 30 }
       rationale: >-
-        Tally method conservative (3 of 5 votes for the top candidate, below a qualified majority): intersection of all votes, which contains the natural range of 24 to 30 °C.
+        No qualified majority settles the 5 proposals. generator proposes 20 to 31; checker-a
+        proposes 20 to 31; checker-b proposes 22 to 30; checker-c proposes 22 to 30; tiebreaker-1
+        proposes 22 to 30 (C). The rounded median of all minima and all maxima is 22 to 30 C. This
+        contains natural 24 to 30 without widening. Confidence is low. Most care sources share these
+        bounds: FishBase (after an aquarium book), FishProfiles, Fishkeeping World, Aquarium Source
+        and Wikipedia give 22 to 30 °C, Fishkeeper and Aquarium Guide 22 to 28 °C, Seriously Fish 20
+        to 30 °C, and narrower comfort bands of 24 to 28 °C appear in several guides. Physiological
+        limits lie far outside: a mean lower lethal temperature of 8 °C, acclimation between 10 and
+        35 °C and loss of equilibrium from about 34 °C, which are short-term limits and not years of
+        healthy keeping. Common aquarium-care recommendations directly support the median endpoints,
+        making the range plausible. The 20 to 31 C proposals combine Seriously Fish's lower bound
+        with warm-season lake temperatures up to 31.3 C at Laguna Bacalar and 31.4 C at Lake Izabal.
     - field: features.ph
       proposals:
         - by: generator
@@ -1421,7 +1455,19 @@ provenance:
             max: 8
       decision: { min: 6.5, max: 8.5 }
       rationale: >-
-        Tally method conservative (2 of 5 votes for the top candidate): intersection of all votes, 6.5 to 8.0, widened to 6.5 to 8.5 to contain the natural range of 6.5 to 8.5.
+        No qualified majority settles the 5 proposals. generator proposes 6.5 to 9; checker-a
+        proposes 6 to 8.5; checker-b proposes 6 to 8.5; checker-c proposes 6.5 to 8; tiebreaker-1
+        proposes 6.5 to 8 (pH). The rounded median of all minima and all maxima is 6.5 to 8.5 pH.
+        This contains natural 6.5 to 8.5 without widening. Confidence is low. Seriously Fish gives
+        6.5 to 8.0; FishBase, Fishkeeper, FishProfiles and Practical Fishkeeping 7.0 to 8.0;
+        AquariumSource, FishLore and the Aqualog text 6 to 8; Aqua-Fish.net reaches 8.5. Guides that
+        recommend 6.0 to 7.0 contradict the habitat data. Wild fish live permanently at pH 8.2 to
+        8.5 in Lago Petén Itzá, so the upper bound is a cautious care limit rather than a
+        physiological one. Natural occurrence and aquarium-care guidance support the median upper
+        edge, making it a plausible keeping envelope. The 6.5 to 9 proposal includes alkaline Sian
+        Ka'an and Peten Itza habitat waters. The two 6 to 8.5 proposals combine care sources
+        accepting pH 6 with habitat values up to 8.5, while the two 6.5 to 8 proposals follow common
+        care-sheet bounds.
     - field: features.ghDgh
       proposals:
         - by: generator

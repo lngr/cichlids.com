@@ -246,15 +246,15 @@ features:
       value: {min: 20, max: 28}
       confidence: low
       rationale: >-
-        The five votes did not settle on one tolerance: generator 20 to 30 C, checker-a, checker-b
-        and tiebreaker-1 20 to 28 C, tiebreaker-2 20 to 30 C. Three agreeing votes are one short of
-        a qualified majority, so the vote count takes the intersection of all proposals, 20 to 28 C,
-        which contains the natural range of 20 to 28 C. FishBase, Seriously Fish and the
-        Maidenhead Aquatics data bank recommend 20 to 24 C, Fishipedia 25 to 28 C and an aquarium
-        guide 20 to 27 C. Husbandry studies keep the species warmer without reported problems:
-        broodstock at 26 C (Piesiewicz et al. 2025), farm and laboratory stocks at 27 to 28 C (Luo
-        et al. 2024) and breeding pairs at 29.5 C during a five-day trial (Hu et al. 2021). The warm
-        values beyond 28 C are short-term or farm conditions and do not widen the long-term range.
+        The proposals in vote order are 20 to 30, 20 to 28, 20 to 28, 20 to 28 and 20 to 30
+        C. No qualified majority exists. The median bounds give 20 to 28 C with low
+        confidence, containing the natural 20 to 28 C without widening. FishBase, Seriously
+        Fish and Maidenhead Aquatics recommend 20 to 24 C, Fishipedia 25 to 28 C and an
+        aquarium guide 20 to 27 C, making the median consistent with the combined aquarium
+        advice. Husbandry studies report broodstock at 26 C (Piesiewicz et al. 2025), farm
+        and laboratory stocks at 27 to 28 C (Luo et al. 2024) and breeding pairs at 29.5 C
+        during a five-day trial (Hu et al. 2021). The warmer trial and farm observations do
+        not establish long-term tolerance above 28 C.
       sources:
         - &sf
           kind: database
@@ -332,7 +332,7 @@ features:
           value: {min: 20, max: 27}
           note: optimum given as 22 to 25 C
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
 
   ph:
@@ -1479,8 +1479,15 @@ provenance:
         - {by: tiebreaker-2, value: {min: 20, max: 30}}
       decision: {min: 20, max: 28}
       rationale: >-
-        Decided by the vote count with method conservative (3 of 5 agree): the intersection of all
-        proposals, which contains the natural range.
+        The proposals in vote order are 20 to 30, 20 to 28, 20 to 28, 20 to 28 and 20 to 30
+        C. No qualified majority exists. The median bounds give 20 to 28 C with low
+        confidence, containing the natural 20 to 28 C without widening. FishBase, Seriously
+        Fish and Maidenhead Aquatics recommend 20 to 24 C, Fishipedia 25 to 28 C and an
+        aquarium guide 20 to 27 C, making the median consistent with the combined aquarium
+        advice. Husbandry studies report broodstock at 26 C (Piesiewicz et al. 2025), farm
+        and laboratory stocks at 27 to 28 C (Luo et al. 2024) and breeding pairs at 29.5 C
+        during a five-day trial (Hu et al. 2021). The warmer trial and farm observations do
+        not establish long-term tolerance above 28 C.
     - field: features.ghDgh
       proposals:
         - {by: generator, value: {min: 2, max: 12}}

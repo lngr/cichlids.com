@@ -296,16 +296,16 @@ features:
       value: {min: 22, max: 32}
       confidence: low
       rationale: >-
-        The five votes did not settle on one tolerance: generator, checker-a and tiebreaker-1
-        proposed 22 to 32 C, checker-b 20 to 31 C and tiebreaker-2 20 to 30 C. The vote count takes
-        the intersection of all proposals, 22 to 30 C, and widens it to contain the natural range of
-        26 to 32 C, which gives 22 to 32 C. The lower bound is the value most care sources share (FishBase,
-        Animal Diversity Web, Aqualog, Fishipedia; Seriously Fish goes down to 20 C), and the cold
-        side is the real risk: the lower lethal limit lies near 12 C (USGS), and feral Florida stocks
-        collapse after cold winters. Care sheets stop at 25 to 28 C, but wild oscars live for months
-        in water of 28 to 32 C, so the tolerance follows the habitat on the warm side. Short-term
-        survival from 9 to 41 C in experiments (Gutierre et al. 2016) says nothing about keeping fish
-        for years and does not widen the range. Most keepers hold oscars at 25 to 28 C.
+        The proposals in vote order are 22 to 32, 22 to 32, 20 to 31, 22 to 32 and 20 to 30
+        C. No qualified majority exists. The median bounds give 22 to 32 C with low
+        confidence, containing the natural 26 to 32 C without widening. The lower bound is
+        shared by FishBase, Animal Diversity Web, Aqualog and Fishipedia, while Seriously
+        Fish reaches 20 C. Cold is the principal temperature risk, with a lower lethal limit
+        near 12 C (USGS) and collapses of feral Florida populations after cold winters. Care
+        sheets stop at 25 to 28 C, but wild oscars inhabit 28 to 32 C water for months,
+        supporting the warm endpoint as a habitat-based keeping allowance. Experimental
+        short-term survival from 9 to 41 C (Gutierre et al. 2016) does not establish health
+        over years or justify wider bounds. Most keepers use 25 to 28 C.
       sources:
         - *sf
         - *fishbase
@@ -405,7 +405,7 @@ features:
           value: {min: 26.7, max: 27.8}
           note: one keeper's pair kept at 80 to 82 F
       verification:
-        method: conservative
+        method: median
         votes: {agree: 3, total: 5}
 
   ph:
@@ -631,19 +631,21 @@ features:
       method: unanimous
       votes: {agree: 3, total: 3}
     tolerance:
-      value: {min: 1, max: 12}
+      value: {min: 1, max: 15}
       confidence: low
       rationale: >-
-        The five votes did not settle: generator 0.7 to 15, checker-a 0.7 to 20, checker-b 0.5 to
-        12, tiebreaker-1 0.5 to 12 and tiebreaker-2 1 to 15 dKH; at most two of them agree. The vote
-        count takes the intersection of all proposals, 1 to 12 dKH, which contains the natural
-        range. No care source read for this profile states a carbonate hardness for oscars: Seriously
-        Fish and FishBase give only general hardness (5 to 20 dGH), Flowgrow fills its field with a
-        very wide 0 to 30, and Fishkeeping World labels the same 5 to 20 as dKH in one place and dGH
-        in another. Tap water within the accepted general hardness and a pH up to 8 typically carries
-        up to about 10 to 12 dKH, in which captive oscars are widely kept; the upper bound is
-        inferred from this, the lower bound from the habitat. The evidence is thin, hence the low
-        confidence.
+        The proposals in vote order are 0.7 to 15, 0.7 to 20, 0.5 to 12, 0.5 to 12 and 1 to
+        15 dKH. No qualified majority exists. The median minimum is 0.7, rounded to 1, and
+        the median maximum is 15 dKH. The tolerance is 1 to 15 dKH with low confidence and
+        contains the natural 1 to 2 dKH without widening. No unambiguous species-specific
+        care recommendation establishes chronic KH endpoints. Seriously Fish and FishBase
+        give total hardness of 5 to 20 dGH; Flowgrow supplies a very broad KH field of 0 to
+        30, and Fishkeeping World labels the same 5 to 20 interval as dKH and dGH in
+        different places. Captive oscars are widely kept in tap water, including buffering
+        around 10 to 12 dKH, but total hardness and pH up to 8 do not determine carbonate
+        hardness. The median upper endpoint is a plausible, weakly supported allowance
+        within the published KH claims, not a verified long-term maximum. Habitat
+        measurements support the softer endpoint.
       sources:
         - *catalao
         - *friagem
@@ -667,7 +669,7 @@ features:
           value: {min: 5, max: 20}
           note: hobby page; the same range appears as dGH elsewhere on the page
       verification:
-        method: conservative
+        method: median
         votes: {agree: 2, total: 5}
 
   maxSizeCm:
@@ -1291,15 +1293,16 @@ profile:
     sources: [*sf, *fishbase, *yilmaz, *adw, *tavares]
   husbandry:
     text: >-
-      A pair of adult oscars needs a tank of at least 180 x 60 cm and about 650 L; a single fish can
-      manage with 150 cm. Use a soft sand substrate, a few large roots and smooth stones, and fix all
-      decoration firmly because oscars dig and move objects. Plants are often uprooted; floating
-      plants or epiphytes on wood last longest. Oscars produce a lot of waste, so filter capacity
-      should be generous and 30 to 50 percent of the water should be changed every week. Heaters
-      are best placed outside the tank or behind a guard, since large oscars can break them.
-      Captive-bred oscars accept a wide range of water: 22 to 32 C (most keepers use 25 to 28 C), pH
-      about 6 to 8, and soft to fairly hard water up to about 20 dGH and 12 dKH, as long as nitrate
-      stays low. Temperatures below 22 C are a real risk for this warm-water fish.
+      A pair of adult oscars needs a tank of at least 180 x 60 cm and about 650 L; a single
+      fish can manage with 150 cm. Use a soft sand substrate, a few large roots and smooth
+      stones, and fix all decoration firmly because oscars dig and move objects. Plants are
+      often uprooted; floating plants or epiphytes on wood last longest. Oscars produce a
+      lot of waste, so filter capacity should be generous and 30 to 50 percent of the water
+      should be changed every week. Heaters are best placed outside the tank or behind a
+      guard, since large oscars can break them. Captive-bred oscars accept a wide range of
+      water: 22 to 32 C (most keepers use 25 to 28 C), pH about 6 to 8, and soft to fairly
+      hard water up to about 20 dGH and 15 dKH, as long as nitrate stays low. Temperatures
+      below 22 C are a real risk for this warm-water fish.
     sources: [*sf, *yilmaz, *fishbase, *adw, *usgs]
   socialBehavior:
     text: >-
@@ -1421,8 +1424,16 @@ provenance:
         - {by: tiebreaker-2, value: {min: 20, max: 30}}
       decision: {min: 22, max: 32}
       rationale: >-
-        Decided by the vote count: conservative, 3 of 5 votes for the top candidate; the
-        intersection 22 to 30 C is widened to contain the natural range of 26 to 32 C.
+        The proposals in vote order are 22 to 32, 22 to 32, 20 to 31, 22 to 32 and 20 to 30
+        C. No qualified majority exists. The median bounds give 22 to 32 C with low
+        confidence, containing the natural 26 to 32 C without widening. The lower bound is
+        shared by FishBase, Animal Diversity Web, Aqualog and Fishipedia, while Seriously
+        Fish reaches 20 C. Cold is the principal temperature risk, with a lower lethal limit
+        near 12 C (USGS) and collapses of feral Florida populations after cold winters. Care
+        sheets stop at 25 to 28 C, but wild oscars inhabit 28 to 32 C water for months,
+        supporting the warm endpoint as a habitat-based keeping allowance. Experimental
+        short-term survival from 9 to 41 C (Gutierre et al. 2016) does not establish health
+        over years or justify wider bounds. Most keepers use 25 to 28 C.
     - field: features.ph
       proposals:
         - {by: generator, value: {min: 5.9, max: 7.5}}
@@ -1470,10 +1481,20 @@ provenance:
         - {by: checker-b, value: {min: 0.5, max: 12}}
         - {by: tiebreaker-1, value: {min: 0.5, max: 12}}
         - {by: tiebreaker-2, value: {min: 1, max: 15}}
-      decision: {min: 1, max: 12}
+      decision: {min: 1, max: 15}
       rationale: >-
-        Decided by the vote count: conservative, at most 2 of 5 votes agree; the intersection of all
-        proposals is 1 to 12 dKH, which contains the natural range.
+        The proposals in vote order are 0.7 to 15, 0.7 to 20, 0.5 to 12, 0.5 to 12 and 1 to
+        15 dKH. No qualified majority exists. The median minimum is 0.7, rounded to 1, and
+        the median maximum is 15 dKH. The tolerance is 1 to 15 dKH with low confidence and
+        contains the natural 1 to 2 dKH without widening. No unambiguous species-specific
+        care recommendation establishes chronic KH endpoints. Seriously Fish and FishBase
+        give total hardness of 5 to 20 dGH; Flowgrow supplies a very broad KH field of 0 to
+        30, and Fishkeeping World labels the same 5 to 20 interval as dKH and dGH in
+        different places. Captive oscars are widely kept in tap water, including buffering
+        around 10 to 12 dKH, but total hardness and pH up to 8 do not determine carbonate
+        hardness. The median upper endpoint is a plausible, weakly supported allowance
+        within the published KH claims, not a verified long-term maximum. Habitat
+        measurements support the softer endpoint.
     - field: features.diet.value.foods
       proposals:
         - by: generator

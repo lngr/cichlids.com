@@ -333,19 +333,19 @@ features:
       method: waterbody
       waterbody: lake-malawi
     tolerance:
-      value: {min: 3, max: 15}
+      value: {min: 3, max: 20}
       confidence: low
       rationale: >-
-        A conservative decision of the vote count (no qualified majority, confidence low). The five
-        votes proposed 3 to 20 dGH (generator, checker-a), 3 to 15 dGH (checker-b) and 3 to 25 dGH
-        (tiebreaker-1, tiebreaker-2); all start at the soft lake water, but their upper bounds
-        spread over 10 dGH. The vote count takes the intersection of all proposals, 3 to 15 dGH, the
-        narrower range that triggers more warnings. The care sources themselves differ widely:
-        Fishipedia gives 8 to 15 dGH, Rizzo about 20 degrees of hardness, Garnelio 5 to 25 dGH, and
-        for the close relative P. electra Seriously Fish gives 10 to 25 and FishBase 9 to 19 dGH. The
-        upper bound of 15 dGH is the one that Fishipedia and the most cautious vote share; harder
-        water is reported as kept but is not covered by the decided range. The lower bound is the
-        lake water, in which the species lives permanently.
+        No qualified majority settles the 5 proposals. generator proposes 3 to 20; checker-a
+        proposes 3 to 20; checker-b proposes 3 to 15; checker-c proposes 3 to 25; tiebreaker-1
+        proposes 3 to 25 (dGH). The rounded median of all minima and all maxima is 3 to 20 dGH. This
+        contains natural 3 to 5 without widening. Confidence is low. The care sources themselves
+        differ widely: Fishipedia gives 8 to 15 dGH, Rizzo about 20 degrees of hardness, Garnelio 5
+        to 25 dGH, and for the close relative P. electra Seriously Fish gives 10 to 25 and FishBase
+        9 to 19 dGH. The median upper bound of 20 dGH reaches Rizzo's aquarium target and lies
+        within Garnelio's broader recommendation. The lower bound is the lake water, in which the
+        species lives permanently. The median is plausible because it contains natural soft lake
+        water and a species-specific aquarium hardness target.
       sources:
         - *fishipedia
         - *rizzo
@@ -382,7 +382,7 @@ features:
           value: {min: 5, max: 25}
           note: retailer care sheet
       verification:
-        method: conservative
+        method: median
         votes: {agree: 2, total: 5}
   khDkh:
     value: {min: 5, max: 8}
@@ -969,14 +969,14 @@ profile:
       - *rizzo
   husbandry:
     text: >-
-      Plan a tank of at least 160 cm length and around 450 L for one male and three females; a
-      mixed community deserves more. Cover most of the floor with fine sand and leave a long open
-      swimming area, with a few rocks or caves along the back as refuges for brooding females.
-      Sturdy plants such as Vallisneria or Anubias can grow at the rear. These fish react badly to
-      poor water and low oxygen, so filter strongly, keep good circulation and change a large share
-      of the water every week. Keep the temperature at 24 to 27 C and the pH between 7.5 and 8.5.
-      Moderately hard water is fine; keep the total hardness at or below about 15 dGH and the
-      carbonate hardness between 5 and 12 dKH, so that the pH stays stable.
+      Plan a tank of at least 160 cm length and around 450 L for one male and three females; a mixed
+      community deserves more. Cover most of the floor with fine sand and leave a long open swimming
+      area, with a few rocks or caves along the back as refuges for brooding females. Sturdy plants
+      such as Vallisneria or Anubias can grow at the rear. These fish react badly to poor water and
+      low oxygen, so filter strongly, keep good circulation and change a large share of the water
+      every week. Keep the temperature at 24 to 27 C and the pH between 7.5 and 8.5. Moderately hard
+      water is fine; keep the total hardness at or below about 20 dGH and the carbonate hardness
+      between 5 and 12 dKH, so that the pH stays stable.
     sources:
       - *rizzo
       - *garnelio
@@ -1172,11 +1172,18 @@ provenance:
           value: {min: 3, max: 25}
         - by: tiebreaker-2
           value: {min: 3, max: 25}
-      decision: {min: 3, max: 15}
+      decision: {min: 3, max: 20}
       rationale: >-
-        Conservative decision of the vote count: no proposal reached four agreeing votes, so the
-        intersection of all proposals applies, with confidence low. The care sources range from 8
-        to 15 dGH (Fishipedia) up to 25 dGH (Garnelio, and Seriously Fish for P. electra).
+        No qualified majority settles the 5 proposals. generator proposes 3 to 20; checker-a
+        proposes 3 to 20; checker-b proposes 3 to 15; checker-c proposes 3 to 25; tiebreaker-1
+        proposes 3 to 25 (dGH). The rounded median of all minima and all maxima is 3 to 20 dGH. This
+        contains natural 3 to 5 without widening. Confidence is low. The care sources themselves
+        differ widely: Fishipedia gives 8 to 15 dGH, Rizzo about 20 degrees of hardness, Garnelio 5
+        to 25 dGH, and for the close relative P. electra Seriously Fish gives 10 to 25 and FishBase
+        9 to 19 dGH. The median upper bound of 20 dGH reaches Rizzo's aquarium target and lies
+        within Garnelio's broader recommendation. The lower bound is the lake water, in which the
+        species lives permanently. The median is plausible because it contains natural soft lake
+        water and a species-specific aquarium hardness target.
     - field: features.hybridGroups
       proposals:
         - by: generator

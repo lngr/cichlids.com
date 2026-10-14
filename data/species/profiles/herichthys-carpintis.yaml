@@ -398,22 +398,21 @@ features:
         total: 6
     tolerance:
       value:
-        min: 22
-        max: 29
+        min: 20
+        max: 30
       confidence: "low"
-      rationale: "No qualified majority settled the tolerance, so the tally applies its conservative
-        rule with a leading cluster of 3 of 6 votes. generator proposed 20 to 30; checker-a proposed
-        22 to 28; checker-b proposed 20 to 30; checker-c proposed 22 to 30; tiebreaker-1 proposed 20
-        to 33; tiebreaker-2 proposed 20 to 30. The intersection is 22 to 28 C, then the tally widens
-        it to 22 to 29 C to contain the decided natural range of 23 to 29 C. This is a computational
-        precaution rather than independent evidence of years of health at 29 C. Wider sources
-        include Decoulon and Fishipedia at 20 to 33 C, AKVARISTA at 22 to 33 C, Zapater's seasonal
-        observations at approximately 20 to 30 C, FishFish at 12 to 30 C and Beerlink's table at 18
-        to 28 C. None establishes continuous healthy maintenance for years at both endpoints.
-        Seriously Fish and the Nordic register support 24 to 26 C as a routine core, while Zoopet
-        recommends 22 to 28 C. Seasonal exposure and an aquarium recommendation are different kinds
-        of support, and locality effects remain unresolved. Low confidence is required by the
-        conservative decision."
+      rationale: "The proposals in vote order are 20 to 30, 22 to 28, 20 to 30, 22 to 30, 20 to 33, 20 to 30
+        (C). Without a qualified majority, the medians of all proposed minima and maxima are 20 and
+        30, rounded to 20 to 30 C. The median 20 to 30 C contains the natural 23 to 29 range without
+        widening. Wider sources include Decoulon and Fishipedia at 20 to 33 C, AKVARISTA at 22 to 33
+        C, Zapater's seasonal keeping observations at approximately 20 to 30 C, FishFish at 12 to 30
+        C and Beerlink's table at 18 to 28 C. None establishes continuous healthy maintenance for
+        years at both endpoints. Seriously Fish and the Nordic register support 24 to 26 C as a
+        routine core, while Zoopet recommends 22 to 28 C. Seasonal exposure and an aquarium
+        recommendation are different kinds of support, and locality effects remain unresolved. The
+        median 20 to 30 C follows the reported seasonal keeping span and fits broader aquarium
+        recommendations, with the middle temperatures better supported for routine maintenance.
+        Confidence is low because endpoint support is incomplete."
       sources:
         - kind: "literature"
           title: "Zapater, M. (2001). Herichthys carpintis. Ciclidos-Sp breeding report."
@@ -596,7 +595,7 @@ features:
             min: 23
             max: 28
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -3574,13 +3573,13 @@ profile:
         archived: seriouslyfish.com/species/herichthys-carpintis/2026-10-14T100111Z
         accessed: "2026-10-13"
   husbandry:
-    text: "For one compatible adult pair, provide at least 500 litres with a footprint around 180 by
-      60 cm. This is a planning synthesis; Zoopet recommends a larger 700 L and 200 cm aquarium.
+    text: "For one compatible adult pair, provide at least 500 litres with a footprint around 180 by 60
+      cm. This is a planning synthesis; Zoopet recommends a larger 700 L and 200 cm aquarium.
       Arrange secure stones and wood to break lines of sight and give both adults several routes
       away from each other. Fine sand allows digging, while plants may be uprooted or eaten. Filter
       for the adult waste load and maintain clean, well-oxygenated water through regular changes.
-      Around 24 to 26 C is well supported for routine care. The broader encoded tolerances are 22 to
-      29 C, pH 7 to 8.5, GH 8 to 25 dGH and KH 6 to 15 dKH, with weak support at some endpoints. A
+      Around 24 to 26 C is well supported for routine care. The broader encoded tolerances are 20 to
+      30 C, pH 7 to 8.5, GH 8 to 25 dGH and KH 6 to 15 dKH, with weak support at some endpoints. A
       usable divider or separate aquarium should be ready before adults are combined."
     sources:
       - kind: "literature"
@@ -4248,22 +4247,20 @@ provenance:
             min: 20
             max: 30
       decision:
-        min: 22
-        max: 29
-      rationale: "Tally decision by conservative, with 3 of 6 in the leading agreement count. No
-        qualified majority settled the tolerance, so the tally applies its conservative rule with a
-        leading cluster of 3 of 6 votes. generator proposed 20 to 30; checker-a proposed 22 to 28;
-        checker-b proposed 20 to 30; checker-c proposed 22 to 30; tiebreaker-1 proposed 20 to 33;
-        tiebreaker-2 proposed 20 to 30. The intersection is 22 to 28 C, then the tally widens it to
-        22 to 29 C to contain the decided natural range of 23 to 29 C. This is a computational
-        precaution rather than independent evidence of years of health at 29 C. Wider sources
-        include Decoulon and Fishipedia at 20 to 33 C, AKVARISTA at 22 to 33 C, Zapater's seasonal
-        observations at approximately 20 to 30 C, FishFish at 12 to 30 C and Beerlink's table at 18
-        to 28 C. None establishes continuous healthy maintenance for years at both endpoints.
-        Seriously Fish and the Nordic register support 24 to 26 C as a routine core, while Zoopet
-        recommends 22 to 28 C. Seasonal exposure and an aquarium recommendation are different kinds
-        of support, and locality effects remain unresolved. Low confidence is required by the
-        conservative decision."
+        min: 20
+        max: 30
+      rationale: "The proposals in vote order are 20 to 30, 22 to 28, 20 to 30, 22 to 30, 20 to 33, 20 to 30
+        (C). Without a qualified majority, the medians of all proposed minima and maxima are 20 and
+        30, rounded to 20 to 30 C. The median 20 to 30 C contains the natural 23 to 29 range without
+        widening. Wider sources include Decoulon and Fishipedia at 20 to 33 C, AKVARISTA at 22 to 33
+        C, Zapater's seasonal keeping observations at approximately 20 to 30 C, FishFish at 12 to 30
+        C and Beerlink's table at 18 to 28 C. None establishes continuous healthy maintenance for
+        years at both endpoints. Seriously Fish and the Nordic register support 24 to 26 C as a
+        routine core, while Zoopet recommends 22 to 28 C. Seasonal exposure and an aquarium
+        recommendation are different kinds of support, and locality effects remain unresolved. The
+        median 20 to 30 C follows the reported seasonal keeping span and fits broader aquarium
+        recommendations, with the middle temperatures better supported for routine maintenance.
+        Confidence is low because endpoint support is incomplete."
     - field: "features.ph.tolerance"
       proposals:
         - by: "generator"

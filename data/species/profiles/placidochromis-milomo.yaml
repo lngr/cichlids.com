@@ -793,9 +793,19 @@ features:
     tolerance:
       value:
         min: 5
-        max: 10
+        max: 15
       confidence: "low"
-      rationale: "Generator, checker-a and tiebreaker-2 propose 5 to 15 dKH; checker-b proposes 5 to 10; checker-c and tiebreaker-1 propose 5 to 20. No qualified majority settles the endpoints, so conservative verification retains the intersection 5 to 10 dKH with votes 3 of 6 and low confidence. JBL gives 5 to 10 for a Malawi aquarium; wider recommendations are OATA 10 to 15, Sera instructions reproduced by ATZ 10 to 15, Aquarium.org.il 12 to 20 and Il Mio Acquario 8 to 18. The latter is genus-level guidance and the Israeli field does not explicitly spell out degrees. These recommendations explain the wider proposals without establishing a milomo physiological ceiling. The natural 5 to 8 dKH remains included. Monks could not be retrieved and adds no numerical support."
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 5 to 15; checker-a
+        proposes 5 to 15; checker-b proposes 5 to 10; checker-c proposes 5 to 20; tiebreaker-1
+        proposes 5 to 20; tiebreaker-2 proposes 5 to 15 (dKH). The rounded median of all minima and
+        all maxima is 5 to 15 dKH. This contains natural 5 to 8 without widening. Confidence is low.
+        JBL gives 5 to 10 for a Malawi aquarium; wider recommendations are OATA 10 to 15, Sera
+        instructions reproduced by ATZ 10 to 15, Aquarium.org.il 12 to 20 and Il Mio Acquario 8 to
+        18. The latter is genus-level guidance and the Israeli field does not explicitly spell out
+        degrees. These recommendations explain the wider proposals without establishing a milomo
+        physiological ceiling. The natural 5 to 8 dKH remains included. Monks's unavailable account
+        supplies no numerical support. The median is plausible because it contains natural buffering
+        and reaches the common 10 to 15 dKH aquarium recommendation."
       sources:
         - kind: "literature"
           title: "OATA: How to look after African Malawi Cichlids"
@@ -959,7 +969,7 @@ features:
             max: 6.9
           note: "Measured alkalinity multiplied by 2.8; the full profile includes deeper samples."
       verification:
-        method: "conservative"
+        method: median
         votes:
           agree: 3
           total: 6
@@ -3025,7 +3035,13 @@ profile:
         url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
         archived: theaquariumwiki.com/wiki/placidochromis_milomo/2026-10-14T102429Z
   husbandry:
-    text: "Allow at least 700 L with a 200 x 60 cm footprint for one adult male and three females. The depth is a planning inference; a mixed community needs more space. Place stable rock refuges around a clear swimming route and retain sand between them. Maintain established filtration and good oxygenation. A steady 24 to 26 C is a practical routine target. The catalog tolerances are 21 to 29 C, pH 7.5 to 8.8, GH 3 to 25 dGH and KH 5 to 10 dKH; they are recommendation envelopes with uncertain limits rather than optimal targets throughout. Test GH and KH separately."
+    text: "Allow at least 700 L with a 200 x 60 cm footprint for one adult male and three females. The
+        depth is a planning inference; a mixed community needs more space. Place stable rock refuges
+        around a clear swimming route and retain sand between them. Maintain established filtration
+        and good oxygenation. A steady 24 to 26 C is a practical routine target. The catalog
+        tolerances are 21 to 29 C, pH 7.5 to 8.8, GH 3 to 25 dGH and KH 5 to 15 dKH; they are
+        recommendation envelopes with uncertain limits rather than optimal targets throughout. Test
+        GH and KH separately."
     sources:
       - kind: "database"
         title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
@@ -3370,8 +3386,18 @@ provenance:
             max: 15
       decision:
         min: 5
-        max: 10
-      rationale: "Generator, checker-a and tiebreaker-2 propose 5 to 15 dKH; checker-b proposes 5 to 10; checker-c and tiebreaker-1 propose 5 to 20. No qualified majority settles the endpoints, so conservative verification retains the intersection 5 to 10 dKH with votes 3 of 6 and low confidence. JBL gives 5 to 10 for a Malawi aquarium; wider recommendations are OATA 10 to 15, Sera instructions reproduced by ATZ 10 to 15, Aquarium.org.il 12 to 20 and Il Mio Acquario 8 to 18. The latter is genus-level guidance and the Israeli field does not explicitly spell out degrees. These recommendations explain the wider proposals without establishing a milomo physiological ceiling. The natural 5 to 8 dKH remains included. Monks could not be retrieved and adds no numerical support."
+        max: 15
+      rationale: "No qualified majority settles the 6 proposals. generator proposes 5 to 15; checker-a
+        proposes 5 to 15; checker-b proposes 5 to 10; checker-c proposes 5 to 20; tiebreaker-1
+        proposes 5 to 20; tiebreaker-2 proposes 5 to 15 (dKH). The rounded median of all minima and
+        all maxima is 5 to 15 dKH. This contains natural 5 to 8 without widening. Confidence is low.
+        JBL gives 5 to 10 for a Malawi aquarium; wider recommendations are OATA 10 to 15, Sera
+        instructions reproduced by ATZ 10 to 15, Aquarium.org.il 12 to 20 and Il Mio Acquario 8 to
+        18. The latter is genus-level guidance and the Israeli field does not explicitly spell out
+        degrees. These recommendations explain the wider proposals without establishing a milomo
+        physiological ceiling. The natural 5 to 8 dKH remains included. Monks's unavailable account
+        supplies no numerical support. The median is plausible because it contains natural buffering
+        and reaches the common 10 to 15 dKH aquarium recommendation."
     - field: "features.diet"
       proposals:
         - by: "generator"

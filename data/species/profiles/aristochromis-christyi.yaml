@@ -916,20 +916,20 @@ features:
     tolerance:
       value: &a88
         min: 5
-        max: 10
+        max: 13
       confidence: low
-      rationale: "The conservative tally decides 5 to 10 dKH at low confidence with 3 agreeing votes out
-        of 6. Generator, checker-b and checker-c proposed 5 to 10; checker-a, tiebreaker-1 and
-        tiebreaker-2 proposed 5 to 15. Neither camp reaches four votes, so the tally takes their
-        intersection. Abysse gives KH 10 as a target rather than a proven upper limit, and aquarium
-        records report KH 7 and 5 to 6. The wider Neotropic species recommendation is 5 to 15; its
-        original archived HTML contains that value although automatic text extraction omitted it.
-        OATA gives 10 to 15 for Malawi cichlids generally, Malawi-Guru allows the wider 6 to 20 with
-        a preferred 8 to 10, Malawi Cichlids UK gives 6 to 12, and Best4Pets gives the much wider 8
-        to 25 alongside inconsistent adult tank advice. JBL gives 5 to 10 for an example mbuna
-        aquarium. All these claims remain evidence. The narrower tally decision is a provisional
-        precaution, not a demonstrated injury threshold above 10; no species-specific multiyear KH
-        experiment was found."
+      rationale: "The proposals in vote order are 5 to 10, 5 to 15, 5 to 10, 5 to 10, 5 to 15 and 5 to
+        15 dKH. Neither camp reaches a qualified majority. The median minimum is 5 and the
+        middle maxima average 12.5, rounded to 13. The tolerance is 5 to 13 dKH with low
+        confidence and contains the natural 5 to 8 dKH without widening. Abysse gives KH 10
+        as a target rather than an upper limit, and aquarium records report KH 7 and 5 to 6.
+        Neotropic recommends 5 to 15 in its archived HTML description. OATA gives 10 to 15
+        for Malawi cichlids, Malawi-Guru 6 to 20 with a preferred 8 to 10, Malawi Cichlids
+        UK 6 to 12 and JBL 5 to 10 for an example mbuna aquarium. Best4Pets gives 8 to 25
+        alongside inconsistent adult tank advice, weakening that claim. The median falls
+        within the species recommendation and overlaps ordinary Malawi aquarium guidance,
+        making the intermediate endpoint plausible despite the split votes. No
+        species-specific multiyear KH experiment establishes a precise upper limit."
       sources:
         - *a8
         - &a32
@@ -1203,7 +1203,7 @@ features:
           note: Explicit species-labelled retailer KH recommendation; unsupported upper endpoint and
             inconsistent adult tank advice reduce its weight.
       verification:
-        method: conservative
+        method: median
         votes:
           agree: 3
           total: 6
@@ -2656,13 +2656,14 @@ profile:
       - *a24
   husbandry:
     text: "For one male and three females, the adopted minimum is 700 litres with a 200 by 60 cm
-      footprint. Keep broad turning and swimming lanes alongside separated rock refuges. Large
-      companions need additional room for their own adult space and social requirements. Published
-      advice also includes larger 900 to 1000 litre setups and 250 cm lengths. Efficient biological
-      filtration and regular removal of accumulated waste matter for these large predators. Routine
-      maintenance near 24 to 26 C is better supported than holding fish constantly at the 21 or 29 C
-      tolerance endpoints. The KH tolerance of 5 to 10 dKH is provisional and does not establish
-      that water above 10 causes harm."
+      footprint. Keep broad turning and swimming lanes alongside separated rock refuges.
+      Large companions need additional room for their own adult space and social
+      requirements. Published advice also includes larger 900 to 1000 litre setups and 250
+      cm lengths. Efficient biological filtration and regular removal of accumulated waste
+      matter for these large predators. Routine maintenance near 24 to 26 C is better
+      supported than holding fish constantly at the 21 or 29 C tolerance endpoints. The KH
+      tolerance of 5 to 13 dKH is provisional and does not establish that water above 13
+      causes harm."
     sources:
       - *a52
       - *a13
@@ -3211,15 +3212,15 @@ provenance:
             min: 5
             max: 15
       decision: *a88
-      rationale: "The conservative tally decides 5 to 10 dKH at low confidence with 3 agreeing votes out
-        of 6. Generator, checker-b and checker-c proposed 5 to 10; checker-a, tiebreaker-1 and
-        tiebreaker-2 proposed 5 to 15. Neither camp reaches four votes, so the tally takes their
-        intersection. Abysse gives KH 10 as a target rather than a proven upper limit, and aquarium
-        records report KH 7 and 5 to 6. The wider Neotropic species recommendation is 5 to 15; its
-        original archived HTML contains that value although automatic text extraction omitted it.
-        OATA gives 10 to 15 for Malawi cichlids generally, Malawi-Guru allows the wider 6 to 20 with
-        a preferred 8 to 10, Malawi Cichlids UK gives 6 to 12, and Best4Pets gives the much wider 8
-        to 25 alongside inconsistent adult tank advice. JBL gives 5 to 10 for an example mbuna
-        aquarium. All these claims remain evidence. The narrower tally decision is a provisional
-        precaution, not a demonstrated injury threshold above 10; no species-specific multiyear KH
-        experiment was found."
+      rationale: "The proposals in vote order are 5 to 10, 5 to 15, 5 to 10, 5 to 10, 5 to 15 and 5 to
+        15 dKH. Neither camp reaches a qualified majority. The median minimum is 5 and the
+        middle maxima average 12.5, rounded to 13. The tolerance is 5 to 13 dKH with low
+        confidence and contains the natural 5 to 8 dKH without widening. Abysse gives KH 10
+        as a target rather than an upper limit, and aquarium records report KH 7 and 5 to 6.
+        Neotropic recommends 5 to 15 in its archived HTML description. OATA gives 10 to 15
+        for Malawi cichlids, Malawi-Guru 6 to 20 with a preferred 8 to 10, Malawi Cichlids
+        UK 6 to 12 and JBL 5 to 10 for an example mbuna aquarium. Best4Pets gives 8 to 25
+        alongside inconsistent adult tank advice, weakening that claim. The median falls
+        within the species recommendation and overlaps ordinary Malawi aquarium guidance,
+        making the intermediate endpoint plausible despite the split votes. No
+        species-specific multiyear KH experiment establishes a precise upper limit."
