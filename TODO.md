@@ -34,15 +34,15 @@ Umgesetzt und in `main` gemergt. TASK-3.29 ist Done, die übrigen stehen in Revi
 - [ ] TASK-2.6 SOPS, age und KSOPS: umgesetzt, wartet auf den age-Schlüssel des Operators
 - [ ] TASK-2.7 Argo CD app-of-apps und Umgebungen: umgesetzt, abnehmen
 - [ ] TASK-2.8 Ingress (Traefik aus k3s), TLS per HTTP-01 und Platzhalter-Workload: umgesetzt, abnehmen
-- [ ] API und App als Workload in Staging: Overlays, Secrets (Slug-Secret, Data-Protection-Key-Ring, Secret des BFF-Clients), Web-App und API unter derselben Origin
-- [ ] TASK-2.9 CloudNativePG mit PITR
-- [ ] TASK-2.10 Erste getestete Restore-Übung
-- [ ] TASK-2.11 CI-Grün-Gate und Delivery-Pipeline
+- [ ] TASK-2.31 API und Web-App als Workload in Staging (Web-App und API unter derselben Origin): umgesetzt, abnehmen
+- [ ] TASK-2.9 CloudNativePG mit PITR: umgesetzt (auf dem geschützten Volume, Backup-Schlüssel nur mit Schreib- und Leserecht, Wächter-Job gegen öffentliche Buckets), abnehmen
+- [ ] TASK-2.10 Erste getestete Restore-Übung: umgesetzt, lokal nachgewiesen (Restore in 52 s), abnehmen
+- [ ] TASK-2.11 CI-Grün-Gate und Delivery-Pipeline: umgesetzt, abnehmen
 - [ ] TASK-2.12 Branch-Protection auf `main`
 - [ ] TASK-2.17 Umgebungsdaten (anonymisierter Snapshot, CoW-Klon, Medien-Overlay)
 - [ ] TASK-2.23 Slug-Secret für Staging und Produktion (F26)
-- [ ] TASK-2.30 Keycloak nach Staging und Produktion
-- [ ] TASK-2.19 Renovate
+- [ ] TASK-2.30 Keycloak nach Staging und Produktion: umgesetzt, abnehmen; offen: Mail-Anbieter (AC #3), Textanpassung ADR-0025
+- [ ] TASK-2.19 Renovate: umgesetzt, abnehmen
 - [ ] TASK-1 Erster grüner E2E-Smoke-Pfad
 
 ### 1.3 Korrekturen aus dem MVP-Review, Priorität mittel und niedrig
@@ -54,7 +54,7 @@ Umgesetzt und in `main` gemergt. TASK-3.29 ist Done, die übrigen stehen in Revi
 - [ ] TASK-3.40 Konfiguration und Fehlerzustände der App (R25, R26, R27, R41): umgesetzt, abnehmen
 - [ ] TASK-3.41 Dauerhafte Anmeldung pro Gerät (R8): umgesetzt, abnehmen; ADR-0027 (Proposed) annehmen
 - [ ] TASK-3.42 Code- und Doku-Korrekturen (R32, R39, R40, R42 bis R46): umgesetzt, abnehmen
-- [ ] TASK-3.28 Ich-Tab mit eigenen Bildern, Becken und Entwürfen
+- [ ] TASK-3.28 Ich-Tab mit eigenen Bildern, Becken und Entwürfen: umgesetzt, abnehmen
 - [ ] TASK-2.24 Playwright-Smoke mit anonymisierten Daten in CI
 - [ ] TASK-2.25 Maestro-Flows in CI (hängt an F13)
 - [ ] TASK-2.26 gitleaks statt Eigenbau-Scanner: umgesetzt, abnehmen
