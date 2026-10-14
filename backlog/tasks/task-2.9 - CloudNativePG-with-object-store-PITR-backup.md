@@ -1,10 +1,10 @@
 ---
 id: TASK-2.9
 title: CloudNativePG with object-store PITR backup
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-06-03 16:01'
-updated_date: '2026-10-14 06:00'
+updated_date: '2026-10-14 06:15'
 labels:
   - infra
   - postgres
@@ -15,6 +15,10 @@ dependencies:
   - TASK-2.7
 references:
   - apps/postgres/
+  - tools/check-public-exposure.mjs
+  - .github/workflows/exposure-watch.yml
+  - apps/postgres/README.md
+  - tools/verify-backup-writer-policy.sh
 parent_task_id: TASK-2
 priority: high
 ordinal: 11000
@@ -120,4 +124,26 @@ one (ADR-0013).
   mounts it (ext4, never formatted, `nofail`) at `/var/lib/cichlids-db`; a static local
   PersistentVolume with Retain, 8Gi, fits the existing 10 GB volume (the migrated database
   measures about 1.8 GB); grow the volume when usage passes 70 percent.
+
+### Implemented
+- CloudNativePG v1.30.1 and the Barman Cloud plugin v0.15.1 in the addons project; PostgreSQL
+  18.6. Production `Cluster` with `ObjectStore` on `cichlids-db-backup`, archive timeout 5 minutes,
+  daily and monthly `ScheduledBackup`, no plugin retention (the plugin never deletes).
+- Backup tier: bucket policy for the writer key of the primary project with exactly
+  `s3:ListBucket`, `s3:GetObject`, `s3:PutObject`, `s3:AbortMultipartUpload`; Compliance retention
+  400 days; lifecycle: delete marker after 400 days, unlocked noncurrent versions expire one day
+  later. Hetzner supports only SSE-C, so no server-side encryption is configured.
+- Staging and previews: own clusters on `local-path`, no backup to the backup bucket, never
+  restored from production (synthetic seed data: TASK-2.17).
+- Exposure safeguards: backup and platform guardrails (33 and 30 self-test cases), plan policy
+  against public bucket changes, API test of the media policy allowlist, keyless probe
+  `tools/check-public-exposure.mjs` (self-test 51 cases) in the monthly workflow
+  `exposure-watch` (first day, 05:17 UTC); a live anonymous run answered 403 on all 12 checks.
+- ADR-0013, ADR-0014 and ADR-0017 describe the writer key, the lock-based retention and the
+  exposure safeguards.
+
+### Operator checks
+- Writer key, backup tier apply, `tools/verify-backup-writer-policy.sh`, canary objects, first
+  `exposure-watch` run, the writer secret in `cichlids-prod`, then a base backup and WAL archive
+  in the bucket and a test restore (TASK-2.10). AC #4 depends on TASK-2.17.
 <!-- SECTION:NOTES:END -->
