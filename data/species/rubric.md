@@ -22,7 +22,8 @@ implausible. The adjudicator replaces an implausible tally decision with method 
 records the tallied range in `verification.replaced`, its method in `verification.replacedMethod`
 and its vote count in `verification.votes`, and names the replaced decision and the reason in the
 rationale. An adjudicated range has confidence `low` or `medium` and at least one evidence entry
-of any kind. For a species whose origin names a water body in the table, the natural values keep
+of any kind. Sources and evidence entries stay in the profile, including those whose values lie
+outside the adjudicated range; every source an agent found stays cited. For a species whose origin names a water body in the table, the natural values keep
 the table ranges and temperatureC, ph and ghDgh keep verification method `waterbody`.
 
 ## Predation (`predation`, 0 to 3)

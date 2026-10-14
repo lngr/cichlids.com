@@ -23,7 +23,9 @@ file:
    (unanimous, qualified-majority, conservative or median). Name the replaced decision and the
    reason in the rationale. Set confidence to `low` or `medium` and provide at least one evidence
    entry of any kind; the two-external-sources rule does not apply to an adjudicated range. Keep
-   each tolerance wide enough to contain the decided natural range.
+   each tolerance wide enough to contain the decided natural range. Never remove a source or an
+   evidence entry: keep those whose values lie outside the adjudicated range, with the value the
+   source states.
 
    For a species whose origin names a water body in `data/species/waterbodies.yaml`, keep its
    natural table ranges and verification method `waterbody` for temperatureC, ph and ghDgh.
