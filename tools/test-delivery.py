@@ -82,6 +82,26 @@ class Delivery(unittest.TestCase):
                          {'apps/api/overlays/prod/kustomization.yaml', 'apps/web/overlays/prod/kustomization.yaml'})
         delivery.preflight(self.root, 'prod')
 
+    def test_given_staging_bump_release_when_sha_tag_is_missing_then_use_that_commit_overlay(self):
+        delivery.bump(self.root, 'staging', DIGESTS)
+        self.git('add', 'apps/api/overlays/staging/kustomization.yaml', 'apps/web/overlays/staging/kustomization.yaml')
+        self.git('commit', '-m', 'chore(deploy): stage fixture')
+        self.git('tag', 'v1.1.0')
+        released = self.git('rev-parse', 'HEAD').strip()
+        other = {name: 'sha256:' + 'd' * 64 for name in DIGESTS}
+        delivery.bump(self.root, 'staging', other)
+        with patch.object(delivery, 'resolve', side_effect=subprocess.CalledProcessError(1, 'inspect')):
+            self.assertEqual(delivery.promote(self.root, 'v1.1.0'), released)
+        prod = yaml.safe_load((self.root / 'apps/web/overlays/prod/kustomization.yaml').read_text())
+        self.assertEqual(prod['images'][0]['digest'], DIGESTS['web'])
+
+    def test_given_unpublished_release_and_placeholder_snapshot_then_refuse(self):
+        before = self.snapshot()
+        with patch.object(delivery, 'resolve', side_effect=subprocess.CalledProcessError(1, 'inspect')):
+            with self.assertRaises(ValueError):
+                delivery.promote(self.root, 'v1.0.0')
+        self.assertEqual(before, self.snapshot())
+
     def test_given_release_outside_main_or_invalid_tag_then_refuse_before_registry(self):
         self.git('switch', '-c', 'other')
         (self.root / 'other').write_text('fixture\n')

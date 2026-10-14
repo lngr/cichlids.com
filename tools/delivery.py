@@ -8,6 +8,8 @@ import re
 import subprocess
 import sys
 
+import yaml
+
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parent.parent
 IMAGES = ('api', 'migration', 'web')
@@ -63,7 +65,21 @@ def promote(root, tag):
         subprocess.run(['git', 'merge-base', '--is-ancestor', sha, 'main'], cwd=root, check=True)
     except subprocess.CalledProcessError as error:
         raise ValueError('Release commit must exist on main') from error
-    digests = resolve(sha)
+    try:
+        digests = resolve(sha)
+    except subprocess.CalledProcessError:
+        digests = {}
+        for service in ('api', 'web'):
+            snapshot = subprocess.check_output(
+                ['git', 'show', f'{sha}:apps/{service}/overlays/staging/kustomization.yaml'],
+                cwd=root, text=True)
+            for image in yaml.safe_load(snapshot).get('images', []):
+                for name in IMAGES:
+                    expected = f'ghcr.io/lngr/cichlids-{name}'
+                    if image.get('name') == expected and image.get('newName', expected) == expected:
+                        digests[name] = image.get('digest')
+        validate(digests)
+        print(f'Resolve staging digests from release commit {sha}')
     bump(root, 'prod', digests)
     preflight(root, 'prod')
     return sha

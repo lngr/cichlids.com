@@ -100,9 +100,11 @@ environment settings, Secrets, replica counts or production files.
 
 Publish a GitHub release whose tag starts with `v` and resolves to a commit on
 `main`. `tools/delivery.py promote` resolves that commit's three SHA tags from
-GHCR, validates every digest and updates only the API and web prod image
-overrides. Missing manifests, zero digests and tags outside main fail before
-promotion. Deployment preflight and manifest checks precede one commit on main
+GHCR. If registry inspection fails, it reads the staging image overrides from
+that exact release commit. This supports releases tagged on staging bump commits,
+which have no image build of their own. The helper validates every digest and
+updates only the API and web prod image overrides. Missing digests in both
+sources, zero digests and tags outside main fail before promotion. Deployment preflight and manifest checks precede one commit on main
 with subject `chore(deploy): promote <tag>`. Argo CD reconciles that commit.
 Concurrent main updates reject the push; inspect and rerun against main.
 
