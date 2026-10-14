@@ -1,0 +1,2234 @@
+schemaVersion: 1
+id: telmatochromis-temporalis
+legacyIds:
+  - 174
+  - 177
+status: described
+taxonomy:
+  validName: Telmatochromis temporalis
+  genus: Telmatochromis
+  species: temporalis
+  author: "Boulenger, 1898"
+  source: &id001
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species in the genus Telmatochromis"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Telmatochromis"
+    accessed: 2026-10-13
+    archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-f469e491/2026-10-14T171406Z
+  synonyms:
+    - name: Telmatochromis burgeoni
+      note: "Poll, 1942. Current Catalog synonym; commonly misapplied in the trade to the southern dwarf shell form."
+    - name: Telmatochromis lestradei
+      note: "Poll, 1942. Current Catalog synonym."
+  legacyNames:
+    - Telmatochromis burgeoni
+    - Telmatochromis temporalis
+  note: "The current Catalog of Fishes accepts Telmatochromis temporalis and places T. burgeoni and T. lestradei\
+    \ in its synonymy. The name was originally described in Telmatochromis, so the authority has no parentheses.\
+    \ CRC still separates burgeoni in its older public listing; that treatment does not override the current Catalog.\
+    \ Hanssens and Snoeks (2001) retained the nominal burgeoni, with the later 2003 treatment resolving the current\
+    \ synonymy. Aquarium usage of burgeoni for southern dwarf shell fish does not identify the northern type population.\
+    \ Julidochromis macrolepis is currently valid as Telmatochromis macrolepis and is excluded from this synonym\
+    \ list."
+names:
+  trade:
+    en:
+      - Temporalis cichlid
+      - Shell Telmatochromis
+      - Dwarf Temporalis
+      - Burgeoni cichlid
+variants:
+  - name: Telmatochromis temporalis 'shell'
+    kind: locality
+    note: Dwarf shell-dwelling ecomorph; often sold as T. burgeoni or T. sp. temporalis 'shell'.
+features:
+  origin:
+    value: &id034
+      continent: Africa
+      region: Lake Tanganyika
+      waterbody: lake-tanganyika
+      localities:
+        - Kinyamkolo
+        - Mbity Rocks
+        - Nyanza-Lac
+        - M'toto
+        - Mbita
+        - Kachese
+    confidence: high
+    rationale: "All four runs identify Lake Tanganyika. Generator lists Kinyamkolo, Nyanza-Lac, Mtoto, Mbita and\
+      \ Kachese; checker-a gives no locality list; checker-b lists Kinyamkolo, Mbity Rocks and a general shoreline\
+      \ label; checker-c lists Kinyamkolo and Mbity Rocks. The valid waterbody id is lake-tanganyika. The final\
+      \ locality list joins named type and reported populations, with Nyanza-Lac referring to the burgeoni type\
+      \ and southern sites to fish traded as the dwarf form. Tanganyika.si restricts true temporalis to the southern\
+      \ type area and labels other populations cf. temporalis; the current Catalog and FishBase use a broader lake\
+      \ endemic treatment, followed here without claiming every population is taxonomically resolved."
+    sources:
+      - *id001
+      - &id002
+        kind: database
+        title: FishBase species summary for Telmatochromis temporalis
+        url: "https://www.fishbase.se/summary/Telmatochromis-temporalis.html"
+        accessed: 2026-10-13
+        archived: fishbase.se/summary/telmatochromis-temporalis.html/2026-10-14T203427Z
+      - &id006
+        kind: literature
+        title: "Ford, M. Telmatochromis temporalis. Practical Fishkeeping."
+        url: "https://www.practicalfishkeeping.co.uk/features/telmatochromis-temporalis/"
+        accessed: 2026-10-13
+        archived: practicalfishkeeping.co.uk/features/telmatochromis-temporalis/2026-10-14T203443Z
+      - &id003
+        kind: literature
+        title: Hanssens and Snoeks. A revised synonymy of Telmatochromis temporalis from Lake Tanganyika
+        url: "https://doi.org/10.1006/jfbi.2000.1475"
+        accessed: 2026-10-13
+        archived: africamuseum.be/publication_docs/hanssens_and_snoeks_2001.pdf/2026-10-14T203503Z
+      - &id004
+        kind: database
+        title: "Cichlid Room Companion: Telmatochromis temporalis"
+        url: "https://cichlidae.com/species.php?id=juON7F8UM98t0UYiFRPY4g"
+        accessed: 2026-10-13
+        archived: cichlidae.com/species.php/q-c9af72fb/2026-10-14T203443Z
+      - &id005
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, Telmatochromis burgeoni species entry"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?spid=42168"
+        archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-690b6312/2026-10-14T203450Z
+        accessed: 2026-10-13
+      - &id030
+        kind: website
+        title: "Aquarist Atlas species profile: Telmatochromis temporalis"
+        url: "https://www.aquaristatlas.com/species/telmatochromis-temporalis/"
+        archived: aquaristatlas.com/species/telmatochromis-temporalis/2026-10-14T203445Z
+        accessed: 2026-10-13
+    evidence:
+      - source: *id001
+        value:
+          continent: Africa
+          region: Lake Tanganyika
+          waterbody: lake-tanganyika
+      - source: *id002
+        value:
+          continent: Africa
+          region: Lake Tanganyika
+          waterbody: lake-tanganyika
+      - source: *id003
+        value:
+          continent: Africa
+          region: Lake Tanganyika
+          waterbody: lake-tanganyika
+        note: Taxonomic revision of this Lake Tanganyika species and its synonyms.
+      - source: *id001
+        value:
+          region: Lake Tanganyika
+        note: distribution and type locality Kinyamkolo
+      - source: *id002
+        value:
+          region: Lake Tanganyika
+        note: endemic
+      - source: *id004
+        value:
+          region: Lake Tanganyika
+      - source: *id001
+        value:
+          continent: Africa
+          region: Lake Tanganyika
+          waterbody: Lake Tanganyika
+          localities:
+            - Kinyamkolo
+            - Mbity Rocks
+      - source: *id005
+        value:
+          continent: Africa
+          region: Lake Tanganyika
+          waterbody: Lake Tanganyika
+      - source: *id002
+        value:
+          continent: Africa
+          region: Lake Tanganyika
+          waterbody: Lake Tanganyika
+      - source: *id006
+        value:
+          continent: Africa
+          region: Lake Tanganyika
+          waterbody: Lake Tanganyika
+          localities:
+            - M'toto
+            - Mbita
+            - Kachese
+      - source: *id001
+        value: "Lake Tanganyika, Eastern Africa"
+      - source: *id002
+        value: Lake Tanganyika endemic
+      - source: *id004
+        value: Lake Tanganyika
+  temperatureC:
+    value:
+      min: 23
+      max: 29
+    confidence: high
+    rationale: "The decided natural range is 23 to 29 C with waterbody verification. Verburg and colleagues measured\
+      \ 23.85 to 29.01 C at the Mpulungu buoy; the rounded lake synthesis includes seasonal cooling in the south.\
+      \ FishBase gives the narrower species summary of 24 to 28 C. The measured lake studies govern the natural\
+      \ range, while aquarium recommendations remain separate evidence."
+    sources:
+      - &id008
+        kind: literature
+        title: Verburg et al. Hydrodynamics of Lake Tanganyika and meteorological results
+        url: "https://fao.org/fishery/static/LTR/FTP/TD59.PDF"
+        accessed: 2026-10-13
+        archived: fao.org/fishery/static/ltr/ftp/td59.pdf/2026-10-14T094105Z
+      - &id007
+        kind: literature
+        title: Plisnier et al. Limnological sampling during an annual cycle at three stations on Lake Tanganyika
+          (1993-1994)
+        url: "https://fao.org/fishery/static/LTR/FTP/TD46.PDF"
+        accessed: 2026-10-13
+        archived: fao.org/fishery/static/ltr/ftp/td46.pdf/2026-10-14T094054Z
+      - &id010
+        kind: literature
+        title: Langenberg. On the limnology of Lake Tanganyika
+        url: "https://edepot.wur.nl/121977"
+        accessed: 2026-10-13
+        archived: edepot.wur.nl/121977/2026-10-14T094112Z
+      - *id002
+      - *id006
+      - &id009
+        kind: database
+        title: "Akvaforum species profile: Telmatochromis temporalis"
+        url: "https://www.akvaforum.no/lex/fish.cfm/2358/Telmatochromis-temporalis"
+        archived: akvaforum.no/lex/fish.cfm/2358/telmatochromis-temporalis/2026-10-14T203445Z
+        accessed: 2026-10-13
+      - &id011
+        kind: literature
+        title: "Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and some\
+          \ comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD56.PDF"
+        archived: fao.org/fishery/static/ltr/ftp/td56.pdf/2026-10-14T094059Z
+        accessed: 2026-10-13
+      - &id012
+        kind: literature
+        title: Cohen et al. Lake level and paleoenvironmental history of Lake Tanganyika
+        url: "https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf"
+        accessed: 2026-10-13
+        archived: awramik.faculty.geol.ucsb.edu/pubs/cohe9740.pdf/2026-10-14T094107Z
+      - &id013
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data after\
+          \ Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        archived: fao.org/4/t0473e/t0473e10.htm/2026-10-14T094112Z
+        accessed: 2026-10-13
+    evidence:
+      - source: *id007
+        value:
+          min: 23
+          max: 29
+        note: Union of measured lake conditions in the waterbody table.
+      - source: *id008
+        value:
+          min: 23
+          max: 29
+        note: Rounded synthesis of the cited lake measurements; retained range from the input. This is habitat evidence
+          and does not measure aquarium tolerance.
+      - source: *id008
+        value:
+          min: 23.85
+          max: 29.01
+        note: hourly buoy values at Mpulungu
+      - source: *id002
+        value:
+          min: 24
+          max: 28
+        note: species ecology range
+      - source: *id008
+        value:
+          min: 23
+          max: 29
+        note: Natural Lake Tanganyika range in the project waterbody table.
+      - source: *id006
+        value:
+          min: 25
+          max: 26.1
+        note: "Aquarium recommendation, narrower than natural range."
+      - source: *id008
+        value:
+          min: 23.85
+          max: 29.01
+        note: Hourly water temperatures at 1 m at the Mpulungu buoy.
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value:
+        min: 23
+        max: 29
+      confidence: medium
+      rationale: "Generator, checker-a, checker-b and checker-c all propose 23 to 29 C; the tally is unanimous at\
+        \ medium confidence. This contains the natural lake range. Species-specific aquarium recommendations are\
+        \ narrower: Practical Fishkeeping gives 25 to 26.1 C and Akvaforum 25 to 27 C; FishBase reports habitat\
+        \ temperatures of 24 to 28 C. Seriously Fish gives 23 to 27 C for T. vittatus, which is indirect congener\
+        \ support. The endpoints are a husbandry estimate including habitat variation, not demonstrated long-term\
+        \ experimental limits."
+      sources:
+        - *id006
+        - *id002
+        - &id014
+          kind: database
+          title: "Seriously Fish: Telmatochromis vittatus (congener, no page exists for T. temporalis)"
+          url: "https://www.seriouslyfish.com/species/telmatochromis-vittatus"
+          archived: seriouslyfish.com/species/telmatochromis-vittatus/2026-10-14T203610Z
+          accessed: 2026-10-13
+        - *id009
+        - &id015
+          kind: website
+          title: "Aquarios Peixes Cuidados e Especies: Temporalis (2015)"
+          url: "https://aquariospeixescuidadoseespecies.blogspot.com/2015/03/temporalis.html?m=0"
+          accessed: 2026-10-13
+          archived: aquariospeixescuidadoseespecies.blogspot.com/2015/03/temporalis.html/q-4219f3c9/2026-10-14T204133Z
+        - *id008
+        - *id007
+        - *id010
+        - *id011
+        - *id012
+        - *id013
+      evidence:
+        - source: *id006
+          value:
+            min: 25
+            max: 26.1
+          note: Aquarium range given for the shell form.
+        - source: *id002
+          value:
+            min: 24
+            max: 28
+          note: environment data
+        - source: *id006
+          value:
+            min: 25
+            max: 26.1
+          note: aquarium recommendation
+        - source: *id014
+          value:
+            min: 23
+            max: 27
+          note: congener T. vittatus
+        - source: *id009
+          value:
+            min: 25
+            max: 27
+          note: aquarium recommendation
+        - source: *id002
+          value:
+            min: 24
+            max: 28
+          note: species ecology range
+        - source: *id006
+          value:
+            min: 25
+            max: 26.1
+          note: Recommended aquarium temperature.
+        - source: *id002
+          value:
+            min: 24
+            max: 28
+          note: "Habitat temperature data, not an aquarium tolerance."
+        - source: *id015
+          value:
+            min: 24
+            max: 27
+          note: Dwarf shell-form care recommendation from a general hobby blog.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ph:
+    value:
+      min: 8.4
+      max: 9.4
+    confidence: high
+    rationale: The decided natural range is pH 8.4 to 9.4 with waterbody verification. Plisnier and colleagues measured
+      8.47 to 9.40 at 40 m over the annual cycle and about 8.8 to 9.2 at the surface. FishBase gives 8 to 9. The
+      lake synthesis is retained rather than replacing measured variation with the narrower species summary.
+    sources:
+      - *id007
+      - *id012
+      - *id010
+      - *id008
+      - *id002
+      - *id006
+      - *id011
+      - *id013
+    evidence:
+      - source: *id007
+        value:
+          min: 8.4
+          max: 9.4
+        note: Aggregated natural range from the waterbody table.
+      - source: *id007
+        value:
+          min: 8.4
+          max: 9.4
+        note: Rounded synthesis of the cited lake measurements; retained range from the input. This is habitat evidence
+          and does not measure aquarium tolerance.
+      - source: *id007
+        value:
+          min: 8.47
+          max: 9.4
+        note: lake surface to 40 m over a year
+      - source: *id002
+        value:
+          min: 8
+          max: 9
+        note: species ecology range
+      - source: *id010
+        value:
+          min: 8.4
+          max: 9.4
+        note: Natural lake range in the project waterbody table.
+      - source: *id002
+        value:
+          min: 8
+          max: 9
+        note: Species habitat summary.
+      - source: *id007
+        value:
+          min: 8.47
+          max: 9.4
+        note: Annual variation at 40 m at Bujumbura and Uvira.
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value:
+        min: 8
+        max: 9.4
+      confidence: medium
+      rationale: "Generator, checker-a, checker-b and checker-c all propose pH 8 to 9.4; the tally is unanimous\
+        \ at medium confidence. FishBase gives habitat pH 8 to 9, Practical Fishkeeping recommends 8.5 to 9, and\
+        \ the upper bound includes the lake maximum. Seriously Fish gives a wider pH 8 to 9.5 for T. vittatus; that\
+        \ congener range does not establish a higher endpoint for temporalis. The species range is therefore narrower\
+        \ than this indirect source, with the wider interval retained as evidence."
+      sources:
+        - *id002
+        - *id006
+        - *id014
+        - *id007
+        - *id012
+        - *id010
+        - *id008
+        - *id011
+        - *id013
+      evidence:
+        - source: *id002
+          value:
+            min: 8
+            max: 9
+          note: "Habitat pH, used as a lower-range reference rather than an aquarium prescription."
+        - source: *id002
+          value:
+            min: 8
+            max: 9
+        - source: *id006
+          value:
+            min: 8.5
+            max: 9
+          note: aquarium recommendation
+        - source: *id014
+          value:
+            min: 8
+            max: 9.5
+          note: congener T. vittatus
+        - source: *id002
+          value:
+            min: 8
+            max: 9
+          note: species ecology range
+        - source: *id006
+          value:
+            min: 8.5
+            max: 9
+          note: Aquarium recommendation.
+        - source: *id002
+          value:
+            min: 8
+            max: 9
+          note: "Habitat values, used as supporting context."
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ghDgh:
+    value:
+      min: 10
+      max: 13
+    confidence: high
+    rationale: "The decided natural range is 10 to 13 dGH with waterbody verification. Plisnier and colleagues measured\
+      \ surface calcium means of 10.9 to 11.6 mg/L and magnesium means of 41.2 to 43.2 mg/L, equivalent to about\
+      \ 11.1 to 11.6 dGH. Cohen and colleagues give north-basin values equivalent to about 12.2 dGH. The rounded\
+      \ synthesis also covers historical lake chemistry. FishBase gives a wider 10 to 20 dH interval, retained as\
+      \ evidence but not substituted for measured calcium and magnesium hardness."
+    sources:
+      - *id007
+      - *id012
+      - *id010
+      - *id008
+      - *id002
+      - *id006
+      - *id009
+      - *id011
+      - *id013
+    evidence:
+      - source: *id007
+        value:
+          min: 10
+          max: 13
+        note: Calculated natural hardness range as collated in the waterbody table.
+      - source: *id007
+        value:
+          min: 10
+          max: 13
+        note: Rounded synthesis of the cited lake measurements; retained range from the input. This is habitat evidence
+          and does not measure aquarium tolerance.
+      - source: *id007
+        value:
+          min: 10
+          max: 13
+        note: calcium and magnesium of the lake
+      - source: *id002
+        value:
+          min: 10
+          max: 20
+        note: species ecology range
+      - source: *id007
+        value:
+          min: 10
+          max: 13
+        note: "Lake hardness range, converted to dGH in the project waterbody table."
+      - source: *id007
+        value:
+          min: 11.1
+          max: 11.6
+        note: Calculated from reported surface calcium and magnesium station means using dGH = Ca/7.14 + Mg/4.34.
+      - source: *id012
+        value:
+          min: 12.2
+          max: 12.3
+        note: Approximate dGH conversion of north-basin calcium and magnesium chemistry.
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value:
+        min: 10
+        max: 20
+      confidence: medium
+      rationale: "Generator, checker-a, checker-b and checker-c all propose 10 to 20 dGH; the tally is unanimous\
+        \ at medium confidence. FishBase and Akvaforum give 10 to 20 degrees, and the range contains the measured\
+        \ lake chemistry. Practical Fishkeeping recommends GH above 15 without an upper limit. Seriously Fish gives\
+        \ a wider 8 to 25 dGH for T. vittatus; the narrower decided range follows species-specific data instead\
+        \ of assuming the congener endpoints transfer. Retained bounded PFK entries include an inferred upper endpoint,\
+        \ not one stated by the magazine."
+      sources:
+        - *id002
+        - *id006
+        - *id014
+        - *id009
+        - *id015
+        - *id007
+        - *id012
+        - *id010
+        - *id008
+        - *id011
+        - *id013
+      evidence:
+        - source: *id002
+          value:
+            min: 10
+            max: 20
+          note: FishBase gives a broad dH habitat range.
+        - source: *id002
+          value:
+            min: 10
+            max: 20
+        - source: *id006
+          value:
+            min: 15
+            max: 20
+          note: stated as above 15
+        - source: *id014
+          value:
+            min: 8
+            max: 25
+          note: congener T. vittatus
+        - source: *id002
+          value:
+            min: 10
+            max: 20
+          note: species ecology range
+        - source: *id009
+          value:
+            min: 10
+            max: 20
+          note: aquarium profile
+        - source: *id006
+          value:
+            min: 15
+            max: 20
+          note: source states greater than 15; upper bound is capped at the table range
+        - source: *id002
+          value:
+            min: 10
+            max: 20
+          note: Species environment hardness range.
+        - source: *id006
+          value:
+            min: 15
+            max: 20
+          note: PFK sets a lower bound above 15 degrees; upper endpoint is bounded to the reported species range.
+        - source: *id006
+          value:
+            min: 15
+            max: null
+          note: Magazine recommendation is strictly above 15 degrees GH; no upper endpoint is stated.
+        - source: *id015
+          value:
+            min: 11
+            max: 17
+          note: Dwarf shell-form care recommendation; narrower than the decided tolerance.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  khDkh:
+    value:
+      min: 15
+      max: 20
+    confidence: high
+    rationale: "The decided natural range is 15 to 20 dKH and intentionally carries no verification object. FAO\
+      \ measurements of bicarbonate and carbonate include values near 15.4 dKH; Cohen and colleagues report alkalinity\
+      \ of 6.5 to 6.6 meq/L, and Langenberg cites Edmond and colleagues at 6.7 to 6.9 meq/L, about 18.2 to 19.3\
+      \ dKH across those studies. Carbonate alkalinity exceeds calcium and magnesium hardness because other cations\
+      \ contribute. The range is a rounded lake synthesis rather than a GH conversion."
+    sources:
+      - *id010
+      - *id007
+      - *id008
+      - *id006
+      - *id011
+      - *id012
+      - *id013
+    evidence:
+      - source: *id007
+        value:
+          min: 15
+          max: 20
+        note: Table range based on alkalinity and carbonate measurements.
+      - source: *id010
+        value:
+          min: 15
+          max: 20
+        note: Rounded synthesis of the cited lake measurements; retained range from the input. This is habitat evidence
+          and does not measure aquarium tolerance.
+      - source: *id010
+        value:
+          min: 18.2
+          max: 19.3
+        note: alkalinity of 6.5 to 6.9 meq/L
+      - source: *id007
+        value:
+          min: 15
+          max: 20
+        note: Natural alkalinity range converted to dKH in the project waterbody table.
+      - source: *id010
+        value:
+          min: 18.8
+          max: 19.3
+        note: "Alkalinity of 6.7 to 6.9 meq/L reported from Edmond et al., converted with dKH = meq/L x 2.8."
+    tolerance:
+      value: &id035
+        min: 8
+        max: 20
+      confidence: low
+      rationale: "The qualified-majority 15 to 20 dKH decision treats habitat bounds as tolerance limits without\
+        \ evidence of harm outside them. The adjudicated 8 to 20 dKH range combines the genus care recommendation\
+        \ of 8 to 18 dKH from Il Mio Acquario with the natural lake range. Practical Fishkeeping recommends KH\
+        \ above 15 without an upper endpoint; that advice identifies suitable water, not a demonstrated lower\
+        \ survival limit. The species pH tolerance of 8 to 9.4 and GH tolerance of 10 to 20 dGH support stable,\
+        \ alkaline husbandry but do not convert numerically to KH. Seriously Fish recommends pH 8 to 9.5 and\
+        \ 8 to 25 dGH for T. vittatus without specifying KH. The endpoints are low-confidence husbandry estimates,\
+        \ not measured physiological limits; maintain the accepted pH and GH ranges independently."
+      sources:
+        - *id014
+        - *id006
+        - *id007
+        - *id002
+        - *id010
+        - *id015
+        - &id016
+          kind: website
+          title: "Il Mio Acquario: Telmatochromis genus care sheet"
+          url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/telmatochromis/"
+          accessed: 2026-10-13
+          archived: ilmioacquario.it/acqua-dolce/pesci/cichlidae/telmatochromis/2026-10-14T204132Z
+        - &id017
+          kind: website
+          title: "Einrichtungsbeispiele: aquarium 381"
+          url: "https://www.einrichtungsbeispiele.de/becken-beispiele/tanganjikasee/aquarium-von-uwe-schilling_381.html"
+          accessed: 2026-10-13
+          archived: einrichtungsbeispiele.de/becken-beispiele/tanganjikasee/aquarium-von-uwe-schilling_381.html/2026-10-14T204143Z
+        - &id024
+          kind: website
+          title: "Aquarist Atlas, Telmatochromis temporalis"
+          url: "https://www.cichlidatlas.com/species/telmatochromis-temporalis/"
+          accessed: 2026-10-13
+          archived: cichlidatlas.com/species/telmatochromis-temporalis/2026-10-14T203558Z
+        - *id008
+        - *id011
+        - *id012
+        - *id013
+      evidence:
+        - source: *id006
+          value:
+            min: 15
+            max: 20
+          note: Article states that GH and KH above 15 degrees are acceptable; the lake table supplies the rounded
+            upper bound.
+        - source: *id006
+          value:
+            min: 15
+            max: 20
+          note: stated as above 15
+        - source: *id006
+          value:
+            min: 15
+            max: 20
+          note: source states greater than 15; upper bound follows the natural range
+        - source: *id006
+          value:
+            min: 15
+            max: 20
+          note: Recommendation is above 15 degrees with no stated upper limit; the upper endpoint is not explicit
+            in the care source.
+        - source: *id006
+          value:
+            min: 15
+            max: null
+          note: "Recommends KH above 15 dKH; upper endpoint is unspecified, represented by null. The lower endpoint\
+            \ denotes the stated threshold, not an inclusive experimental boundary."
+        - source: *id015
+          value:
+            min: 16
+            max: 19
+          note: Species-specific aquarium recommendation for the dwarf shell form.
+        - source: *id016
+          value:
+            min: 8
+            max: 18
+          note: "Conflicting aquarium range for the genus as a whole, not demonstrated long-term performance of\
+            \ this species."
+        - source: *id010
+          value:
+            min: 15
+            max: 20
+          note: Rounded synthesis of the cited lake measurements; retained range from the input. This is habitat
+            evidence and does not measure aquarium tolerance.
+        - source: *id006
+          value:
+            min: 15
+            max: null
+          note: Source recommends strictly above 15 dKH and supplies no upper bound; null preserves that missing
+            endpoint.
+        - source: *id017
+          value:
+            min: 15
+            max: 15
+          note: Reported aquarium KH with this species present; duration and health outcomes are not established.
+        - source: *id015
+          value:
+            min: 16
+            max: 19
+          note: Aquarium KH recommendation for the small shell-dwelling form.
+        - source: *id014
+          value:
+            ph:
+              min: 8
+              max: 9.5
+            ghDgh:
+              min: 8
+              max: 25
+          note: Congener husbandry context supports alkaline water; the care sheet specifies no KH range and GH is not converted to KH.
+      verification:
+        method: adjudicated
+        replaced:
+          min: 15
+          max: 20
+        replacedMethod: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  maxSizeCm:
+    value: &id036
+      male: 10
+      female: 8
+    confidence: medium
+    rationale: "The component medians are 10 cm male and 8 cm female: generator, checker-a and checker-c propose\
+      \ 10 and 8; checker-b proposes 10.2 and 8. FishBase gives 10.2 cm total length for male or unsexed fish, and\
+      \ Tanganyika.si gives about 10 cm with females roughly 20 percent shorter. Aquarium Glaser reports a wider\
+      \ 10 to 12 cm for the normal form; 10 is retained as a typical adult maximum rather than its uppermost reported\
+      \ size. The female endpoint is approximate. Shell-form figures are smaller: Practical Fishkeeping gives male\
+      \ 4.4 cm and smaller females, while Glaser gives 5 to 6 cm and Tanganyika.si about 6 cm. Wild mouth-study\
+      \ lengths of 4.13 to 7.92 cm are standard length, not aquarium total length. The retained 2005 abstract entry\
+      \ supports relative sex size only, not its numerical 10 and 8 endpoints."
+    sources:
+      - *id002
+      - *id006
+      - &id018
+        kind: website
+        title: "Aquarium Glaser: Telmatochromis temporalis"
+        url: "https://www.aquariumglaser.de/en/fish-archives/telmatochromis_temporalis_en"
+        archived: aquariumglaser.de/en/fish-archives/telmatochromis_temporalis_en/2026-10-14T203644Z
+        accessed: 2026-10-13
+      - &id019
+        kind: literature
+        title: Asymmetry of Mouth-Opening of a Small Herbivorous Cichlid Fish Telmatochromis temporalis in Lake
+          Tanganyika (Zoological Science 15)
+        url: "https://doi.org/10.2108/zsj.15.405"
+        archived: doi.org/10.2108_zsj.15.405/2026-10-14T203459Z
+        accessed: 2026-10-13
+      - &id020
+        kind: literature
+        title: "Alternative Male Mating Tactics of the Substrate Brooding Cichlid Telmatochromis temporalis in Lake\
+          \ Tanganyika (Zoological Science 22, abstract only)"
+        url: "https://doi.org/10.2108/zsj.22.555"
+        accessed: 2026-10-13
+      - &id021
+        kind: website
+        title: "Lake Tanganyika cichlids, Telmatochromis cf. temporalis Cameron Bay"
+        url: "https://tanganyika.si/Tanganjika/Telmatochromis/Telmatochromis%20temporalis/slides/Telmatochromis%20cf.%20temporalis%20%27Cameron%20Bay%27.html"
+        accessed: 2026-10-13
+        archived: tanganyika.si/tanganjika/telmatochromis/telmatochromis_temporalis/slides/telmatochromis_cf._temporalis__cameron_bay_.html/2026-10-14T203456Z
+    evidence:
+      - source: *id002
+        value:
+          male: 10.2
+          female: 10.2
+        note: FishBase gives one maximum for male or unsexed fish; the displayed female value is an estimate. The
+          female number repeats an unsexed maximum and is not a measured female limit.
+      - source: *id002
+        value:
+          male: 10.2
+          female: 10.2
+        note: unsexed maximum TL The female number repeats an unsexed maximum and is not a measured female limit.
+      - source: *id018
+        value:
+          male: 11
+          female: 11
+        note: "ordinary form 10 to 12 cm; dwarf form 5 to 6 cm Both sex entries encode a midpoint of the unsexed\
+          \ 10 to 12 cm account, not sex-resolved source maxima."
+      - source: *id019
+        value:
+          male: 7.9
+          female: 7.9
+        note: "largest wild fish measured, SL"
+      - source: *id020
+        value:
+          male: 10
+          female: 8
+        note: "abstract: paired males are larger than their mates These numerical endpoints are an input estimate;\
+          \ the readable abstract establishes only that paired males exceed females."
+      - source: *id002
+        value:
+          male: 10.2
+          female: 10.2
+        note: maximum reported length is not sex-resolved The female number repeats an unsexed maximum and is not
+          a measured female limit.
+      - source: *id006
+        value:
+          male: 4.4
+          female: 3.5
+        note: "dwarf shell form; females reported smaller, female value approximate Female 3.5 cm is an agent estimate;\
+          \ the page states only that females are smaller than 4.4 cm males."
+      - source: *id002
+        value:
+          male: 10.2
+          female: 10.2
+        note: "Maximum total length, unsexed record. The female number repeats an unsexed maximum and is not a measured\
+          \ female limit."
+      - source: *id021
+        value:
+          male: 10
+          female: 8
+        note: Typical size and female size difference.
+      - source: *id021
+        value:
+          male: 6
+          female: 6
+        note: "Dwarf shell ecotype, approximate size."
+  predation:
+    value: 1
+    confidence: medium
+    rationale: "All four runs propose level 1 and the tally is unanimous at medium confidence. FishBase includes\
+      \ small fish in the diet, and the isotope study discusses insect larvae and fry. These observations fit opportunistic\
+      \ capture of fry and fish around 2 cm rather than regular piscivory. The mouth study describes algal feeding\
+      \ and the care article gives no predation warning; their retained level 0 interpretations show that emphasis,\
+      \ but neither demonstrates absence of opportunistic predation."
+    sources:
+      - *id002
+      - &id022
+        kind: literature
+        title: Takeuchi et al. Depth segregation and diet disparity revealed by stable isotope analyses in sympatric
+          herbivorous cichlids in Lake Tanganyika
+        url: "https://doi.org/10.1186/s40851-015-0016-1"
+        accessed: 2026-10-13
+        archived: doi.org/10.1186_s40851-015-0016-1/2026-10-13T103444Z
+      - *id019
+      - *id006
+      - &id023
+        kind: literature
+        title: "Hata et al. (2014), Diet disparity among sympatric herbivorous cichlids in Lake Tanganyika"
+        url: "https://doi.org/10.1186/s12915-014-0090-4"
+        archived: doi.org/10.1186_s12915-014-0090-4/2026-10-14T203458Z
+        accessed: 2026-10-13
+    evidence:
+      - source: *id002
+        value: 1
+        note: "FishBase reports small fish among foods, alongside microorganisms and aufwuchs."
+      - source: *id002
+        value: 1
+        note: lists small fish among the food
+      - source: *id019
+        value: 0
+        note: describes the fish as a small herbivore grazing algae
+      - source: *id006
+        value: 0
+        note: kept with other rock dwellers; no predation warning
+      - source: *id002
+        value: 1
+        note: small fish included among foods
+      - source: *id022
+        value: 1
+        note: discussion reports ingestion of fish fry among other animal foods
+      - source: *id002
+        value: 1
+        note: "Small fish appear among foods, with no evidence that fish dominate the diet."
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value: &id037
+      type: omnivore
+      bloatSensitive: false
+      foods:
+        - aufwuchs
+        - algae
+        - benthic invertebrates
+        - small fish and fry
+    confidence: medium
+    rationale: "Generator, checker-b, checker-c, tiebreaker-1 and tiebreaker-2 propose omnivore with bloatSensitive\
+      \ false; checker-a proposes aufwuchs with the same flag. The tally selects the complete generator diet value\
+      \ by a qualified majority of five of six at medium confidence. CRC, the mouth study and Cichlid Atlas emphasize\
+      \ algal browsing; that feeding mechanism alone does not establish the rubric requirement for a plant-based\
+      \ low-protein husbandry diet. FishBase reports plant-associated and animal foods, the isotope study indicates\
+      \ substantial benthic animal use and discusses larvae and fry, and Practical Fishkeeping recommends algae-containing\
+      \ prepared food plus live or frozen food. The blog excludes animal foods, a conflicting lower-trust recommendation\
+      \ retained in evidence. No source demonstrates unusual protein-related bloat susceptibility, so the false\
+      \ flag is a limited husbandry inference rather than proof of immunity. Prepared aquarium food should combine\
+      \ an algal component with suitable small animal foods."
+    sources:
+      - *id002
+      - *id004
+      - *id022
+      - *id019
+      - *id006
+      - *id023
+      - *id001
+      - &id025
+        kind: website
+        title: "Tanganyika.si: Telmatochromis cf. temporalis 'Mtoto'"
+        url: "https://www.tanganyika.si/Tanganjika/Telmatochromis/Telmatochromis%20temporalis/slides/Telmatochromis%20cf.%20temporalis%20%27Mtoto%27.html"
+        accessed: 2026-10-13
+        archived: tanganyika.si/tanganjika/telmatochromis/telmatochromis_temporalis/slides/telmatochromis_cf._temporalis__mtoto_.html/2026-10-14T204132Z
+      - *id015
+      - *id016
+      - kind: archive
+        title: cichlids.com forum thread 14319
+        url: "https://www.cichlids.com/disc/read.php?2,14319"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 14321
+        url: "https://www.cichlids.com/disc/read.php?2,14321"
+        accessed: 2026-10-13
+      - *id024
+      - *id017
+      - kind: archive
+        title: cichlids.com forum thread 14090
+        url: "https://www.cichlids.com/disc/read.php?2,14090"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 34808
+        url: "https://www.cichlids.com/disc/read.php?2,34808"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 55583
+        url: "https://www.cichlids.com/disc/read.php?3,55583"
+        accessed: 2026-10-13
+    evidence:
+      - source: *id002
+        value:
+          type: omnivore
+          bloatSensitive: false
+          foods:
+            - microorganisms
+            - small fish
+            - aufwuchs
+      - source: *id004
+        value:
+          type: aufwuchs
+          bloatSensitive: false
+          foods:
+            - algae
+        note: CRC classifies the feeding type as algae-pulling.
+      - source: *id019
+        value:
+          type: aufwuchs
+        note: field study of grazing on rock algae
+      - source: *id002
+        value:
+          type: aufwuchs
+        note: calls it omnivorous and an aufwuchs eater
+      - source: *id006
+        value:
+          type: omnivore
+        note: "mixed diet with algae, live and frozen food"
+      - source: *id004
+        value:
+          type: aufwuchs
+        note: "feeding summary: algae pullers"
+      - source: *id022
+        value:
+          type: omnivore
+          bloatSensitive: false
+          foods:
+            - periphyton
+            - benthic animals
+            - insect larvae
+            - fish fry
+      - source: *id004
+        value:
+          type: aufwuchs
+          bloatSensitive: false
+          foods:
+            - algae
+      - source: *id006
+        value:
+          type: omnivore
+          bloatSensitive: false
+          foods:
+            - aufwuchs
+            - algae
+            - live and frozen foods
+      - source: *id002
+        value:
+          type: omnivore
+        note: Reports both animal feeding and aufwuchs feeding; does not assess bloat sensitivity.
+      - source: *id022
+        value:
+          type: omnivore
+        note: Field isotope results and discussion support use of algae and benthic animals; insect larvae and fry
+          are also reported. Bloat was not studied.
+      - source: *id006
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: "Dwarf shell-form mixed-food recommendation supports omnivory. The false flag is inferred from recommending\
+          \ animal foods, not explicitly stated."
+      - source: *id025
+        value:
+          type: omnivore
+        note: Mtoto complex population consumes zooplankton and grazes aufwuchs; not a nutritional trial.
+      - source: *id004
+        value:
+          type: aufwuchs
+        note: Public feeding summary emphasizes removal of algae. This describes feeding mode and supplies no low-protein
+          requirement or bloat assessment.
+      - source: *id015
+        value:
+          type: aufwuchs
+        note: Shell-form sheet recommends plant food and excludes animal-origin prepared foods; no supporting experiment
+          or bloat claim is given.
+      - source: *id016
+        value:
+          type: omnivore
+        note: Genus-level description combines plant material with animal food; not a species-specific bloat assessment.
+      - source: *id002
+        value:
+          type: omnivore
+        note: Reports algal browsing as well as microorganisms and small fish.
+      - source: *id004
+        value:
+          type: aufwuchs
+        note: Public feeding category concerns algal browsing; it supplies no protein restriction or bloat claim.
+      - source: *id022
+        value:
+          type: omnivore
+        note: Conversion to the rubric from algal browsing together with insect larvae and fry consumption.
+      - source: *id006
+        value:
+          type: omnivore
+        note: Dwarf shell form receives algae-containing dried food and live or frozen animal food; no bloat flag
+          is stated.
+      - source: *id024
+        value:
+          type: aufwuchs
+        note: Emphasizes predominantly algal feeding while acknowledging small animal prey; no bloat flag is stated.
+      - source: *id015
+        value:
+          type: aufwuchs
+        note: Recommends plant food and excludes animal-derived food; no bloat flag is stated.
+      - source: *id017
+        value:
+          type: omnivore
+        note: Animal frozen foods are fed to a community containing this species; plant intake is not described
+          and this is only contextual husbandry support.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: "All four runs propose level 3. The species-specific magazine account warns of marked aggression\
+      \ toward conspecifics and recommends one pair for its small setup. Territory defense and rival reproductive\
+      \ tactics are documented in the field. Persistent chasing is a practical concern when adults cannot retreat,\
+      \ but the read sources do not establish routine lethal attacks under the recommended pair setup. Field territory\
+      \ observations support the mechanism, not an experimentally measured aquarium score."
+    sources:
+      - *id006
+      - *id002
+      - *id020
+      - *id014
+      - *id009
+      - &id026
+        kind: literature
+        title: "Hata and Ochi (2016), Depth and substratum differentiations among coexisting herbivorous cichlids\
+          \ in Lake Tanganyika"
+        url: "https://doi.org/10.1098/rsos.160229"
+        accessed: 2026-10-13
+        archived: pmc.ncbi.nlm.nih.gov/articles/pmc5180107/2026-10-14T203444Z
+      - *id021
+    evidence:
+      - source: *id006
+        value: 3
+        note: Article describes strong aggression toward conspecifics.
+      - source: *id006
+        value: 3
+        note: quite aggressive towards conspecifics
+      - source: *id020
+        value: 3
+        note: paired males defend territories around nests; small sneaker males exist
+      - source: *id014
+        value: 3
+        note: congener is aggressive to its own kind; keep as a pair
+      - source: *id006
+        value: 3
+        note: explicitly warns of substantial conspecific aggression
+      - source: *id002
+        value: 2
+        note: male territory and temporary pair bond; lower level evidence
+      - source: *id006
+        value: 3
+        note: Strong aggression toward conspecifics; a pair is the recommended unit.
+      - source: *id026
+        value: 3
+        note: Feeding territory documented in the wild; the rubric level is an aquarium interpretation.
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "Generator, checker-a and checker-b propose level 2; checker-c proposes level 3 from Tanganyika.si\
+      \ reporting strong breeding aggression toward other fish. The primary territory studies and Practical Fishkeeping\
+      \ support local defense with community keeping possible in larger tanks. The specialist warning does not specify\
+      \ attacks beyond the territory or injuries in a suitably arranged aquarium, which are needed to justify level\
+      \ 3 under this rubric. Level 2 is retained, while brood defense and the dissenting interpretation remain explicit."
+    sources:
+      - *id002
+      - *id006
+      - *id018
+      - *id023
+      - *id009
+      - *id021
+    evidence:
+      - source: *id006
+        value: 2
+        note: "can be kept with Neolamprologus, Altolamprologus and Julidochromis in bigger tanks"
+      - source: *id018
+        value: 2
+        note: described as robust in behaviour
+      - source: *id023
+        value: 2
+        note: territory holders defend feeding areas against other herbivores
+      - source: *id006
+        value: 2
+        note: tankmates possible in larger tanks
+      - source: *id021
+        value: 3
+        note: Reports strong aggression toward other fish during breeding.
+      - source: *id006
+        value: 2
+        note: Reports possible cohabitation with rock dwellers in larger tanks.
+  territory:
+    value: &id038
+      size: small
+      breedingOnly: false
+    confidence: medium
+    rationale: "Checker-a, checker-b and checker-c propose a small territory held outside breeding; generator proposes\
+      \ large and breedingOnly true. Field studies document defended feeding areas as well as nest territories,\
+      \ so breedingOnly false is better supported. Practical Fishkeeping describes shelters within a pair territory,\
+      \ consistent with a localized rock or shell area. No read source establishes the aquarium-scale footprint\
+      \ needed for the large category; small is an approximation rather than a measured 30 cm boundary."
+    sources:
+      - *id002
+      - *id006
+      - *id020
+      - *id023
+      - *id004
+      - *id026
+    evidence:
+      - source: *id006
+        value:
+          size: small
+        note: pair occupies separate residences within their territory
+      - source: *id020
+        value:
+          size: small
+        note: territories around nests
+      - source: *id002
+        value:
+          size: small
+        note: male defends the territory
+      - source: *id023
+        value:
+          size: small
+          breedingOnly: false
+        note: feeding territory defended outside the breeding description
+      - source: *id002
+        value:
+          size: small
+          breedingOnly: false
+        note: male defends a territory
+      - source: *id002
+        value:
+          size: small
+          breedingOnly: true
+        note: Describes male defense of a breeding territory.
+      - source: *id026
+        value:
+          size: small
+          breedingOnly: false
+        note: Field study lists a feeding territory.
+  habitatZones:
+    value:
+      - rock
+      - sand
+      - shell
+    confidence: high
+    rationale: "All four runs identify rocks, sand and shells; checker-c lists the same set in a different order.\
+      \ FishBase and CRC identify rocky habitat, and the competition study distinguishes rock and shell populations.\
+      \ Sand accommodates shell beds and the care layout. This combined species profile includes both ecomorphs\
+      \ rather than requiring rock-form adults to brood in shells."
+    sources:
+      - *id004
+      - *id006
+      - *id019
+      - *id018
+      - *id002
+      - *id021
+      - &id027
+        kind: literature
+        title: "Winkelmann et al. (2014), Competition-driven speciation in cichlid fish"
+        url: "https://doi.org/10.1038/ncomms4412"
+        accessed: 2026-10-13
+        archived: doi.org/10.1038/ncomms4412/2026-10-14T203601Z
+    evidence:
+      - source: *id019
+        value:
+          - rock
+        note: rocky shore at Kasenga Point
+      - source: *id006
+        value:
+          - rock
+          - sand
+          - shell
+        note: "sand, rocks and empty shells"
+      - source: *id018
+        value:
+          - shell
+        note: dwarf form lives in shell fields
+      - source: *id002
+        value:
+          - rock
+        note: rocky substrates
+      - source: *id006
+        value:
+          - rock
+          - sand
+          - shell
+        note: husbandry setup for rock and shell forms
+      - source: *id004
+        value:
+          - rock
+        note: sediment-free rocky habitat
+      - source: *id004
+        value:
+          - rock
+        note: Sediment-free rocky habitat.
+      - source: *id027
+        value:
+          - rock
+          - shell
+        note: Research compares rock-living and shell-living ecotypes.
+      - source: *id006
+        value:
+          - rock
+          - shell
+          - sand
+        note: Aquarium setup for the small shell form.
+  social:
+    value:
+      structure: pair
+    confidence: high
+    rationale: "All four runs recommend a pair. FishBase describes temporary breeding pairs and otherwise solitary\
+      \ fish; the mating abstract documents paired nest holders. Practical Fishkeeping says most dwarf-form males\
+      \ take one mate, although some have several females. Pair is the recommended adult aquarium unit, not a claim\
+      \ that all populations are permanently monogamous or live socially in pairs outside breeding."
+    sources:
+      - *id002
+      - *id006
+      - *id004
+      - *id009
+    evidence:
+      - source: *id006
+        value:
+          structure: pair
+        note: most select a single partner; some males take harems
+      - source: *id002
+        value:
+          structure: pair
+        note: "temporary pair bonds, male defends the territory"
+      - source: *id002
+        value:
+          structure: pair
+        note: temporary pair bonds
+      - source: *id006
+        value:
+          structure: pair
+        note: most shell-form males select one partner; some harems occur
+      - source: *id009
+        value:
+          structure: pair
+        note: recommended pair keeping
+      - source: *id002
+        value:
+          structure: pair
+        note: Temporary breeding pairs.
+      - source: *id006
+        value:
+          structure: pair
+        note: Most shell-form males select one partner; some form harems.
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: "All four runs propose false and the tally is unanimous at medium confidence. Practical Fishkeeping\
+      \ describes other Tanganyikan rock dwellers as possible companions in larger aquaria. The blog instead advises\
+      \ a species-only setup for its aggressive shell fish; that dissenting husbandry recommendation is retained\
+      \ but does not establish a universal requirement. Community keeping still depends on separate territories,\
+      \ sufficient floor space and protecting small fish."
+    sources:
+      - *id006
+      - *id014
+      - *id009
+      - *id021
+      - *id015
+    evidence:
+      - source: *id006
+        value: false
+        note: Recommends other lake cichlids as possible companions in larger tanks.
+      - source: *id006
+        value: false
+        note: "suited to tanks with Neolamprologus, Altolamprologus and Julidochromis"
+      - source: *id014
+        value: false
+        note: congener fits the smaller Tanganyikan community
+      - source: *id006
+        value: false
+        note: reports compatible genera for larger aquaria
+      - source: *id006
+        value: false
+        note: Larger aquarium may support other rock-dwelling species.
+      - source: *id021
+        value: false
+        note: "The warning is about heightened breeding aggression, not an absolute restriction."
+      - source: *id015
+        value: true
+        note: General hobby blog advises an own-species-only aquarium for the dwarf shell form; conflicts with the
+          species-specific magazine recommendation.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: medium
+    rationale: "All four runs propose an empty list and the tally is unanimous at medium confidence. No listed group\
+      \ includes this species and the reviewed sources contain no named interspecific cross sufficient to add a\
+      \ group. The competition study concerns reproductive separation of rock and shell ecomorphs within the currently\
+      \ accepted species. Curated-list absence, taxonomic validity and lack of a warning are limited negative evidence,\
+      \ not proof that crosses cannot occur. The forum searches supply identification and stocking context without\
+      \ substantiating a hybrid pair."
+    sources:
+      - &id028
+        kind: database
+        title: Curated hybrid groups in data/species/hybrid-groups.yaml
+      - *id006
+      - *id002
+      - &id029
+        kind: database
+        title: "Curated hybrid groups, data/species/hybrid-groups.yaml"
+      - *id004
+      - *id001
+    evidence:
+      - source: *id028
+        value: []
+        note: No group is listed for Telmatochromis temporalis.
+      - source: *id006
+        value: []
+        note: no crossing warning
+      - source: *id002
+        value: []
+        note: no crossing report
+      - source: *id029
+        value: []
+        note: no listed group includes this species
+      - source: *id006
+        value: []
+        note: no named cross reported in the species-specific care article
+      - source: *id006
+        value: []
+        note: No hybrid group or cross is reported in the species-specific account.
+      - source: *id001
+        value: []
+        note: "Species is valid and T. burgeoni is a synonym, with no hybrid-group record."
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value: &id039
+      baseColors:
+        - brown
+        - grey
+        - black
+      pattern: plain
+    confidence: medium
+    rationale: "Generator proposes brown, grey and black with a plain pattern; checker-a proposes brown and grey\
+      \ with plain; checker-b includes black but proposes mixed; checker-c includes black with plain. The three\
+      \ plain interpretations match the weak or absent lateral marking described for this complex, while subdued\
+      \ light and dark tones vary with form and surroundings. Mixed is retained as an interpretation of ecomorph\
+      \ variation rather than the typical dominant adult pattern. This broad summary does not mean every individual\
+      \ lacks markings."
+    sources:
+      - *id006
+      - *id018
+      - &id031
+        kind: model-knowledge
+        title: "Model knowledge, morphology estimate across rock and shell ecomorphs"
+      - *id030
+      - *id024
+      - *id027
+    evidence:
+      - source: *id018
+        value:
+          baseColors:
+            - brown
+            - grey
+        note: rather dull coloration
+      - source: *id006
+        value:
+          pattern: plain
+        note: only faint or no lateral stripes
+      - source: *id006
+        value:
+          baseColors:
+            - brown
+            - grey
+            - black
+          pattern: mixed
+        note: color summary interpreted from form descriptions
+      - source: *id030
+        value:
+          baseColors:
+            - brown
+            - grey
+            - black
+          pattern: mixed
+        note: morphology and color varies between ecomorphs
+      - source: *id024
+        value:
+          baseColors:
+            - black
+            - brown
+            - grey
+          pattern: plain
+        note: Broad dark-bodied appearance; aquarist atlas summary.
+      - source: *id006
+        value:
+          baseColors:
+            - grey
+            - black
+          pattern: plain
+        note: Notes faint or absent body stripes in the temporalis complex.
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: "All four runs propose normal, but none provides a measured aquarium feeding-speed comparison. Browsing\
+      \ and acceptance of prepared, live and frozen foods do not establish competitive speed. Normal is a provisional\
+      \ model interpretation, with that limitation also attached to the magazine evidence."
+    sources:
+      - kind: model-knowledge
+        title: Model estimate from general cichlid feeding behaviour
+      - *id006
+      - *id031
+      - &id032
+        kind: model-knowledge
+        title: Model knowledge based on the documented browser and omnivorous feeding mode
+    evidence:
+      - source: *id006
+        value: normal
+        note: does well on mixed diet Normal is an agent interpretation; the source states no speed.
+      - source: *id031
+        value: normal
+      - source: *id032
+        value: normal
+  minTank:
+    value: &id040
+      volumeL: 100
+      lengthCm: 80
+      depthCm: 35
+    confidence: low
+    rationale: "Generator proposes 100 L with an 80 by 35 cm base; checker-a proposes 68 L and 75 by 30 cm; checker-b\
+      \ proposes 160 L and 100 by 40 cm; checker-c proposes 60 L and 61 by 30 cm. Component medians are 84 L, 77.5\
+      \ cm length and 32.5 cm depth. The final 100 L, 80 by 35 cm pair setup rounds the median footprint and uses\
+      \ the species-specific 100 L pair recommendation at Tanganyika.si. Its page gives no dimensions, so the footprint\
+      \ is an adjudicator husbandry estimate. Akvaforum gives a larger 160 L minimum without dimensions or an explicit\
+      \ comparison of social units; it remains credible dissent but does not establish that every isolated pair\
+      \ needs 160 L. Practical Fishkeeping gives 24 by 12 by 12 inches, approximately 56.6 L, for the dwarf shell\
+      \ form. The 68 L, 75 by 30 cm Seriously Fish tank is for T. vittatus, not this species. Those smaller setups\
+      \ do not establish the normal-form pair minimum. The retained 60 by 35 cm Tanganyika.si evidence dimensions\
+      \ were inferred by checker-c and are not stated on the page. Communities and multiple adults need more room\
+      \ than this single-pair planning minimum. The estimated longer and deeper base accommodates separate retreats\
+      \ for the larger normal-form adult pair; the explicit 75 cm source length belongs to the smaller-bodied congener."
+    sources:
+      - *id006
+      - *id014
+      - *id009
+      - *id021
+    evidence:
+      - source: *id006
+        value:
+          volumeL: 57
+          lengthCm: 61
+          depthCm: 30
+        note: Approximate conversion of article dimensions for a pair of the shell form.
+      - source: *id006
+        value:
+          volumeL: 55
+          lengthCm: 61
+          depthCm: 30
+        note: pair of the dwarf form
+      - source: *id014
+        value:
+          volumeL: 68
+          lengthCm: 75
+          depthCm: 30
+        note: congener T. vittatus
+      - source: *id009
+        value:
+          volumeL: 160
+          lengthCm: 100
+          depthCm: 40
+        note: "source specifies 160 L; dimensions express a practical long footprint Length and depth are inferred,\
+          \ not reported dimensions."
+      - source: *id006
+        value:
+          volumeL: 55
+          lengthCm: 61
+          depthCm: 30
+        note: pair tank recommendation for dwarf shell form; converted from 24 x 12 x 12 inches
+      - source: *id006
+        value:
+          volumeL: 60
+          lengthCm: 61
+          depthCm: 30
+        note: Approximate 24 by 12 by 12 inch pair tank; volume computed from dimensions.
+      - source: *id021
+        value:
+          volumeL: 100
+          lengthCm: 60
+          depthCm: 35
+        note: Specialist recommendation for a pair. Only 100 L is explicit in this source; length and depth were
+          added in the checker interpretation.
+      - source: *id021
+        value:
+          volumeL: 100
+        note: Species-complex recommendation for a pair; the page states no length or depth.
+      - source: *id009
+        value:
+          volumeL: 160
+        note: Published species minimum; no length or depth is stated.
+      - source: *id006
+        value:
+          volumeL: 56.6
+          lengthCm: 61
+          depthCm: 30.5
+        note: Dwarf pair setup converted from 24 by 12 by 12 inches; dimensions are approximate and include no allowance
+          for displaced water.
+  lifespanYears:
+    value: &id041
+      min: 8
+      max: 10
+    confidence: low
+    rationale: "Generator, checker-a and checker-b propose 5 to 8 years; checker-c proposes 8 to 10. The component\
+      \ median is 5 to 8, but those three proposals are unsupported estimates, and Practical Fishkeeping states\
+      \ no lifespan. AquAnswers actually reports 8 to 10 years, the only explicit species figure read, so that range\
+      \ replaces the numerical median. It is a lower-trust care-guide claim without a documented cohort or aging\
+      \ method and stays low confidence; 8 is an approximate lower end of the claimed longevity, not a guaranteed\
+      \ minimum. The unsupported estimates remain visible as evidence."
+    sources:
+      - kind: model-knowledge
+        title: Model estimate from lifespan of similarly sized Tanganyika lamprologines
+      - *id006
+      - *id031
+      - &id033
+        kind: website
+        title: "AquAnswers, Telmatochromis temporalis care, habitat and breeding guide"
+        url: "https://aquanswers.com/telmatochromis-temporalis-the-ultimate-guide-to-care-habitat-and-breeding/"
+        accessed: 2026-10-13
+        archived: aquanswers.com/telmatochromis-temporalis-the-ultimate-guide-to-care-habitat-and-breeding/2026-10-14T203628Z
+    evidence:
+      - source: *id006
+        value:
+          min: 5
+          max: 8
+        note: no figure given; estimate This value was proposed by checker-a and is absent from the source.
+      - source: *id031
+        value:
+          min: 5
+          max: 8
+      - source: *id033
+        value:
+          min: 8
+          max: 10
+  breeding:
+    value: cave-spawner
+    confidence: high
+    rationale: "Generator, checker-a and checker-c propose cave-spawner; checker-b proposes shell-spawner. FishBase\
+      \ and CRC describe cave substrate spawning for the species, and parental care is documented in the mating\
+      \ study. The dwarf ecomorph broods in shells, so shell-spawner is valid for that form but too narrow for the\
+      \ combined rock and shell species profile. The final category covers protected cavities, with the form difference\
+      \ explained in the prose."
+    sources:
+      - *id002
+      - *id004
+      - *id006
+      - *id020
+      - *id021
+    evidence:
+      - source: *id002
+        value: cave-spawner
+        note: spawns in caves
+      - source: *id006
+        value: cave-spawner
+        note: shell form is a facultative shell brooder
+      - source: *id004
+        value: cave-spawner
+        note: "breeding: substrate cave"
+      - source: *id020
+        value: cave-spawner
+        note: bi-parental substrate brooder
+      - source: *id002
+        value: cave-spawner
+      - source: *id006
+        value: shell-spawner
+        note: dwarf form is a facultative shell brooder
+      - source: *id004
+        value: cave-spawner
+        note: substrate cave
+      - source: *id004
+        value: cave-spawner
+      - source: *id006
+        value: shell-spawner
+        note: The dwarf shell form is a facultative shell brooder.
+  beginnerSuitability:
+    value: easy
+    confidence: medium
+    rationale: "Checker-a proposes easy; generator, checker-b and checker-c propose moderate because of aggression\
+      \ and alkaline-water preparation. CRC directly classifies the species for beginners, and Practical Fishkeeping\
+      \ reports ordinary Tanganyikan water requirements. That high-trust explicit classification is retained as\
+      \ easy when the aquarium meets the recommended pair setup and water requirements. It does not remove the need\
+      \ to manage conspecific aggression. Akvaforum rates care intermediate; that lower-trust dissent is also retained."
+    sources:
+      - *id004
+      - *id006
+      - *id009
+    evidence:
+      - source: *id004
+        value: easy
+        note: "aquarium: beginner species"
+      - source: *id006
+        value: easy
+        note: no demands out of the ordinary for a Tanganyikan cichlid
+      - source: *id004
+        value: easy
+        note: aquarium level marked beginner
+      - source: *id006
+        value: moderate
+        note: pair tank and aggression require planning
+      - source: *id004
+        value: easy
+        note: CRC public profile labels the aquarium level beginner.
+      - source: *id006
+        value: moderate
+        note: Interpretation of pair-oriented care and aggression advice.
+      - source: *id009
+        value: moderate
+        note: Species sheet rates keeping difficulty intermediate.
+partners:
+  suitable:
+    - species: Cyprichromis leptosoma
+      reason: Uses open water and leaves the rocky bottom and shells to the temporalis pair.
+      condition: A larger community aquarium with open swimming space and no overlap with the pair shelters; not
+        the minimum pair tank.
+    - species: Altolamprologus calvus
+      reason: A rock-associated Tanganyika cichlid that can occupy a distinct rocky section.
+      condition: A larger aquarium with separate rock territories and escape routes; evaluate brood defense and
+        the needs of both species.
+    - species: Julidochromis transcriptus
+      reason: Can use a separate rock area in a larger lake-style community.
+      condition: A larger aquarium with independent rock retreats and enough floor space for both territories.
+  unsuitable:
+    - species: Neolamprologus multifasciatus
+      reason: "Both compete for shells and defend nearby substrate, which can cause persistent conflict in a small\
+        \ tank."
+    - species: Lamprologus ocellatus
+      reason: Another strongly territorial shell dweller would contest the same bottom area and shell sites.
+    - species: Tropheus moorii
+      reason: "A small pair aquarium does not provide the space or social setup needed by an active Tropheus group;\
+        \ its specialist feeding needs also complicate a mixed-food community. This is a setup-dependent recommendation,\
+        \ not a universal species-only rule for temporalis."
+profile:
+  overview:
+    text: "Telmatochromis temporalis combines a standard rock-dwelling form with a much smaller shell-dwelling form.\
+      \ Both are included in this species profile, as are legacy records entered as T. burgeoni. Its interest lies\
+      \ in shelter use, territorial behavior and parental care. A pair needs an aquarium arranged so either fish\
+      \ can retreat; small body size does not make the dwarf form harmless."
+    sources:
+      - *id001
+      - *id006
+      - *id018
+      - *id027
+  habitat:
+    text: "This cichlid is native to Lake Tanganyika. Rocks provide feeding surfaces and cavities for the normal\
+      \ form, while dwarf populations occupy beds of empty snail shells. FishBase records rocky substrates and depths\
+      \ down to about 20 m, with shallower intermediate depths commonly used. Some specialist treatments distinguish\
+      \ cf. temporalis populations outside the southern type area. The natural water ranges are 23 to 29 C, pH 8.4\
+      \ to 9.4, GH 10 to 13 dGH and KH 15 to 20 dKH, based on lake studies rather than aquarium care sheets."
+    sources:
+      - *id002
+      - *id022
+      - kind: literature
+        title: "Studying the evolution of social behaviour in one of Darwin's Dreamponds: a case for the Lamprologine\
+          \ shell-dwelling cichlids"
+        url: "https://doi.org/10.1007/s10750-020-04473-x"
+        accessed: 2026-10-13
+        archived: doi.org/10.1007_s10750-020-04473-x/2026-10-13T092353Z
+      - *id004
+      - *id027
+      - *id007
+      - *id011
+      - *id008
+      - *id012
+      - *id010
+      - *id013
+  sizeAndGrowth:
+    text: "The standard form is represented by typical adult maxima of about 10 cm for males and 8 cm for females.\
+      \ The female estimate is less secure than the unsexed 10.2 cm FishBase record. Other husbandry reports give\
+      \ 10 to 12 cm for the normal form. Dwarf male sizes vary among accounts: the magazine gives 4.4 cm, while\
+      \ other reports place the shell form around 5 to 6 cm. Check the form offered before choosing an aquarium.\
+      \ Longevity of about 8 to 10 years is reported by one general care guide and remains poorly verified."
+    sources:
+      - *id002
+      - *id006
+      - *id021
+      - *id018
+      - *id033
+  husbandry:
+    text: "The planning minimum is 100 L with an estimated 80 by 35 cm base for one standard-form pair. This footprint\
+      \ is an approximate husbandry choice, not a tested threshold; one species sheet recommends 160 L. A published\
+      \ dwarf-pair setup is about 61 by 30.5 by 30.5 cm and does not establish the normal-form minimum. Provide\
+      \ firm rock shelters, sight breaks and a sand area; dwarf fish also need several usable empty shells. Keep\
+      \ the water stable and clean. The accepted tolerance estimates are 23 to 29 C, pH 8 to 9.4, GH 10 to 20 dGH\
+      \ and KH 8 to 20 dKH. These broad ranges do not require routine swings between their endpoints. A mixed community\
+      \ needs more space."
+    sources:
+      - *id006
+      - *id002
+      - *id021
+      - *id009
+  socialBehavior:
+    text: "Use a compatible pair as the adult starting unit. Pair bonds can be temporary, and some dwarf-form males\
+      \ associate with several females. Feeding areas are defended outside spawning, so territorial behavior is\
+      \ not confined to brood care. Rival adults can be persistently chased when escape routes are poor. Brood defense\
+      \ intensifies the conflict, making separate shelters and unobstructed retreat paths essential."
+    sources:
+      - *id002
+      - *id006
+      - *id023
+      - *id020
+  diet:
+    text: "The decided diet is omnivorous with an important algal and biofilm component. Field work supports animal\
+      \ intake as well as browsing, and husbandry accounts recommend algae-containing prepared food with small live\
+      \ or frozen foods. Fry and very small fish may be eaten opportunistically. No read study demonstrates an unusual\
+      \ bloat susceptibility; the false bloat flag expresses that limited evidence rather than immunity to digestive\
+      \ illness."
+    sources:
+      - *id002
+      - *id004
+      - *id022
+      - *id006
+  breeding:
+    text: "The general breeding category is cave-spawner. Eggs are placed in protected cavities, with the dwarf\
+      \ form using empty snail shells. Females tend the enclosed brood while males defend the surrounding area.\
+      \ Scientific observations show that small sneaker males can participate in reproduction, so the aquarium pair\
+      \ recommendation should not be confused with a universal wild mating system. Parents strongly defend young."
+    sources:
+      - *id002
+      - *id006
+      - *id004
+      - *id020
+  sexing:
+    text: "Adult males are generally larger and can show a more prominent forehead, while females are smaller and\
+      \ slimmer. The approximate 20 percent sex difference is a guide for standard-form adults. Size comparisons\
+      \ become unreliable when fish are young, of different ages or from different ecomorphs. Breeding behavior\
+      \ supplies more useful confirmation than a size difference alone."
+    sources:
+      - *id002
+      - *id006
+      - *id021
+      - *id009
+  compatibility:
+    text: "A larger Tanganyika community can work when bottom territories remain distinct. Altolamprologus and Julidochromis\
+      \ are possible rock-dwelling companions; open-water Cyprichromis offer less overlap with the pair home area.\
+      \ Those examples are conditional, not guarantees. Crowded shell-dweller combinations contest the same retreats,\
+      \ and tiny fry face opportunistic predation. No named interspecific hybrid group is currently supported for\
+      \ this species, which does not prove crossing is impossible."
+    sources:
+      - *id006
+      - *id002
+      - *id024
+      - *id017
+  problems:
+    text: "The principal practical risk is territorial pressure on a fish that cannot withdraw, particularly a conspecific\
+      \ rival or a neighboring shell dweller. A dwarf pair setup should not be applied automatically to normal-form\
+      \ adults. Food waste and unstable alkaline water also need attention. The beginner classification assumes\
+      \ a prepared aquarium and a compatible pair. The sources do not establish a specific disease syndrome or precise\
+      \ lifelong tolerance endpoints."
+    sources:
+      - *id006
+      - *id002
+      - *id004
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6-luna
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-14
+    - role: checker
+      model: gpt-6-luna
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6-luna
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-13
+  disagreements:
+    - field: taxonomy.author
+      proposals:
+        - by: generator
+          value: "(Boulenger, 1898)"
+        - by: checker-a
+          value: "Boulenger, 1898"
+        - by: checker-b
+          value: "Boulenger, 1898"
+        - by: checker-c
+          value: "Boulenger, 1898"
+      decision: "Boulenger, 1898"
+      rationale: "The current Catalog of Fishes accepts Telmatochromis temporalis and places T. burgeoni and T.\
+        \ lestradei in its synonymy. The name was originally described in Telmatochromis, so the authority has no\
+        \ parentheses. CRC still separates burgeoni in its older public listing; that treatment does not override\
+        \ the current Catalog. Hanssens and Snoeks (2001) retained the nominal burgeoni, with the later 2003 treatment\
+        \ resolving the current synonymy. Aquarium usage of burgeoni for southern dwarf shell fish does not identify\
+        \ the northern type population. Julidochromis macrolepis is currently valid as Telmatochromis macrolepis\
+        \ and is excluded from this synonym list."
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+            localities:
+              - Kinyamkolo
+              - Nyanza-Lac
+              - M'toto
+              - Mbita
+              - Kachese
+        - by: checker-a
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+        - by: checker-b
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: Lake Tanganyika
+            localities:
+              - Kinyamkolo
+              - Mbity Rocks
+              - Lake Tanganyika shoreline
+        - by: checker-c
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+            localities:
+              - Kinyamkolo
+              - Mbity Rocks
+      decision: *id034
+      rationale: "All four runs identify Lake Tanganyika. Generator lists Kinyamkolo, Nyanza-Lac, Mtoto, Mbita and\
+        \ Kachese; checker-a gives no locality list; checker-b lists Kinyamkolo, Mbity Rocks and a general shoreline\
+        \ label; checker-c lists Kinyamkolo and Mbity Rocks. The valid waterbody id is lake-tanganyika. The final\
+        \ locality list joins named type and reported populations, with Nyanza-Lac referring to the burgeoni type\
+        \ and southern sites to fish traded as the dwarf form. Tanganyika.si restricts true temporalis to the southern\
+        \ type area and labels other populations cf. temporalis; the current Catalog and FishBase use a broader\
+        \ lake endemic treatment, followed here without claiming every population is taxonomically resolved."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 15
+            max: 20
+        - by: checker-a
+          value:
+            min: 12
+            max: 20
+        - by: checker-b
+          value:
+            min: 15
+            max: 20
+        - by: checker-c
+          value:
+            min: 15
+            max: 20
+        - by: tiebreaker-1
+          value:
+            min: 15
+            max: 20
+        - by: tiebreaker-2
+          value:
+            min: 15
+            max: 20
+      decision: *id035
+      rationale: "The qualified-majority 15 to 20 dKH decision treats habitat bounds as tolerance limits without\
+        \ evidence of harm outside them. The adjudicated 8 to 20 dKH range combines the genus care recommendation\
+        \ of 8 to 18 dKH from Il Mio Acquario with the natural lake range. Practical Fishkeeping recommends KH\
+        \ above 15 without an upper endpoint; that advice identifies suitable water, not a demonstrated lower\
+        \ survival limit. The species pH tolerance of 8 to 9.4 and GH tolerance of 10 to 20 dGH support stable,\
+        \ alkaline husbandry but do not convert numerically to KH. Seriously Fish recommends pH 8 to 9.5 and\
+        \ 8 to 25 dGH for T. vittatus without specifying KH. The endpoints are low-confidence husbandry estimates,\
+        \ not measured physiological limits; maintain the accepted pH and GH ranges independently."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 10
+            female: 8
+        - by: checker-a
+          value:
+            male: 10
+            female: 8
+        - by: checker-b
+          value:
+            male: 10.2
+            female: 8
+        - by: checker-c
+          value:
+            male: 10
+            female: 8
+      decision: *id036
+      rationale: "The component medians are 10 cm male and 8 cm female: generator, checker-a and checker-c propose\
+        \ 10 and 8; checker-b proposes 10.2 and 8. FishBase gives 10.2 cm total length for male or unsexed fish,\
+        \ and Tanganyika.si gives about 10 cm with females roughly 20 percent shorter. Aquarium Glaser reports a\
+        \ wider 10 to 12 cm for the normal form; 10 is retained as a typical adult maximum rather than its uppermost\
+        \ reported size. The female endpoint is approximate. Shell-form figures are smaller: Practical Fishkeeping\
+        \ gives male 4.4 cm and smaller females, while Glaser gives 5 to 6 cm and Tanganyika.si about 6 cm. Wild\
+        \ mouth-study lengths of 4.13 to 7.92 cm are standard length, not aquarium total length. The retained 2005\
+        \ abstract entry supports relative sex size only, not its numerical 10 and 8 endpoints."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - aufwuchs
+              - algae
+              - benthic invertebrates
+              - small fish and fry
+        - by: checker-a
+          value:
+            type: aufwuchs
+            bloatSensitive: false
+            foods:
+              - algae
+              - biofilm
+              - small invertebrates
+              - fine dried food with algae
+              - frozen food
+        - by: checker-b
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - periphyton
+              - algae
+              - benthic invertebrates
+              - insect larvae
+              - fish fry
+        - by: checker-c
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - aufwuchs
+              - algae
+              - small invertebrates
+              - microorganisms
+              - small fish
+        - by: tiebreaker-1
+          value:
+            type: omnivore
+            bloatSensitive: false
+        - by: tiebreaker-2
+          value:
+            type: omnivore
+            bloatSensitive: false
+      decision: *id037
+      rationale: "Generator, checker-b, checker-c, tiebreaker-1 and tiebreaker-2 propose omnivore with bloatSensitive\
+        \ false; checker-a proposes aufwuchs with the same flag. The tally selects the complete generator diet value\
+        \ by a qualified majority of five of six at medium confidence. CRC, the mouth study and Cichlid Atlas emphasize\
+        \ algal browsing; that feeding mechanism alone does not establish the rubric requirement for a plant-based\
+        \ low-protein husbandry diet. FishBase reports plant-associated and animal foods, the isotope study indicates\
+        \ substantial benthic animal use and discusses larvae and fry, and Practical Fishkeeping recommends algae-containing\
+        \ prepared food plus live or frozen food. The blog excludes animal foods, a conflicting lower-trust recommendation\
+        \ retained in evidence. No source demonstrates unusual protein-related bloat susceptibility, so the false\
+        \ flag is a limited husbandry inference rather than proof of immunity. Prepared aquarium food should combine\
+        \ an algal component with suitable small animal foods."
+    - field: features.aggressionHeterospecific
+      proposals:
+        - by: generator
+          value: 2
+        - by: checker-a
+          value: 2
+        - by: checker-b
+          value: 2
+        - by: checker-c
+          value: 3
+      decision: 2
+      rationale: "Generator, checker-a and checker-b propose level 2; checker-c proposes level 3 from Tanganyika.si\
+        \ reporting strong breeding aggression toward other fish. The primary territory studies and Practical Fishkeeping\
+        \ support local defense with community keeping possible in larger tanks. The specialist warning does not\
+        \ specify attacks beyond the territory or injuries in a suitably arranged aquarium, which are needed to\
+        \ justify level 3 under this rubric. Level 2 is retained, while brood defense and the dissenting interpretation\
+        \ remain explicit."
+    - field: features.territory
+      proposals:
+        - by: generator
+          value:
+            size: large
+            breedingOnly: true
+        - by: checker-a
+          value:
+            size: small
+            breedingOnly: false
+        - by: checker-b
+          value:
+            size: small
+            breedingOnly: false
+        - by: checker-c
+          value:
+            size: small
+            breedingOnly: false
+      decision: *id038
+      rationale: "Checker-a, checker-b and checker-c propose a small territory held outside breeding; generator\
+        \ proposes large and breedingOnly true. Field studies document defended feeding areas as well as nest territories,\
+        \ so breedingOnly false is better supported. Practical Fishkeeping describes shelters within a pair territory,\
+        \ consistent with a localized rock or shell area. No read source establishes the aquarium-scale footprint\
+        \ needed for the large category; small is an approximation rather than a measured 30 cm boundary."
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - brown
+              - grey
+              - black
+            pattern: plain
+        - by: checker-a
+          value:
+            baseColors:
+              - brown
+              - grey
+            pattern: plain
+        - by: checker-b
+          value:
+            baseColors:
+              - brown
+              - grey
+              - black
+            pattern: mixed
+        - by: checker-c
+          value:
+            baseColors:
+              - black
+              - brown
+              - grey
+            pattern: plain
+      decision: *id039
+      rationale: "Generator proposes brown, grey and black with a plain pattern; checker-a proposes brown and grey\
+        \ with plain; checker-b includes black but proposes mixed; checker-c includes black with plain. The three\
+        \ plain interpretations match the weak or absent lateral marking described for this complex, while subdued\
+        \ light and dark tones vary with form and surroundings. Mixed is retained as an interpretation of ecomorph\
+        \ variation rather than the typical dominant adult pattern. This broad summary does not mean every individual\
+        \ lacks markings."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 100
+            lengthCm: 80
+            depthCm: 35
+        - by: checker-a
+          value:
+            volumeL: 68
+            lengthCm: 75
+            depthCm: 30
+        - by: checker-b
+          value:
+            volumeL: 160
+            lengthCm: 100
+            depthCm: 40
+        - by: checker-c
+          value:
+            volumeL: 60
+            lengthCm: 61
+            depthCm: 30
+      decision: *id040
+      rationale: "Generator proposes 100 L with an 80 by 35 cm base; checker-a proposes 68 L and 75 by 30 cm; checker-b\
+        \ proposes 160 L and 100 by 40 cm; checker-c proposes 60 L and 61 by 30 cm. Component medians are 84 L,\
+        \ 77.5 cm length and 32.5 cm depth. The final 100 L, 80 by 35 cm pair setup rounds the median footprint\
+        \ and uses the species-specific 100 L pair recommendation at Tanganyika.si. Its page gives no dimensions,\
+        \ so the footprint is an adjudicator husbandry estimate. Akvaforum gives a larger 160 L minimum without\
+        \ dimensions or an explicit comparison of social units; it remains credible dissent but does not establish\
+        \ that every isolated pair needs 160 L. Practical Fishkeeping gives 24 by 12 by 12 inches, approximately\
+        \ 56.6 L, for the dwarf shell form. The 68 L, 75 by 30 cm Seriously Fish tank is for T. vittatus, not this\
+        \ species. Those smaller setups do not establish the normal-form pair minimum. The retained 60 by 35 cm\
+        \ Tanganyika.si evidence dimensions were inferred by checker-c and are not stated on the page. Communities\
+        \ and multiple adults need more room than this single-pair planning minimum. The estimated longer and deeper\
+        \ base accommodates separate retreats for the larger normal-form adult pair; the explicit 75 cm source length\
+        \ belongs to the smaller-bodied congener."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 8
+        - by: checker-a
+          value:
+            min: 5
+            max: 8
+        - by: checker-b
+          value:
+            min: 5
+            max: 8
+        - by: checker-c
+          value:
+            min: 8
+            max: 10
+      decision: *id041
+      rationale: "Generator, checker-a and checker-b propose 5 to 8 years; checker-c proposes 8 to 10. The component\
+        \ median is 5 to 8, but those three proposals are unsupported estimates, and Practical Fishkeeping states\
+        \ no lifespan. AquAnswers actually reports 8 to 10 years, the only explicit species figure read, so that\
+        \ range replaces the numerical median. It is a lower-trust care-guide claim without a documented cohort\
+        \ or aging method and stays low confidence; 8 is an approximate lower end of the claimed longevity, not\
+        \ a guaranteed minimum. The unsupported estimates remain visible as evidence."
+    - field: features.breeding
+      proposals:
+        - by: generator
+          value: cave-spawner
+        - by: checker-a
+          value: cave-spawner
+        - by: checker-b
+          value: shell-spawner
+        - by: checker-c
+          value: cave-spawner
+      decision: cave-spawner
+      rationale: "Generator, checker-a and checker-c propose cave-spawner; checker-b proposes shell-spawner. FishBase\
+        \ and CRC describe cave substrate spawning for the species, and parental care is documented in the mating\
+        \ study. The dwarf ecomorph broods in shells, so shell-spawner is valid for that form but too narrow for\
+        \ the combined rock and shell species profile. The final category covers protected cavities, with the form\
+        \ difference explained in the prose."
+    - field: features.beginnerSuitability
+      proposals:
+        - by: generator
+          value: moderate
+        - by: checker-a
+          value: easy
+        - by: checker-b
+          value: moderate
+        - by: checker-c
+          value: moderate
+      decision: easy
+      rationale: "Checker-a proposes easy; generator, checker-b and checker-c propose moderate because of aggression\
+        \ and alkaline-water preparation. CRC directly classifies the species for beginners, and Practical Fishkeeping\
+        \ reports ordinary Tanganyikan water requirements. That high-trust explicit classification is retained as\
+        \ easy when the aquarium meets the recommended pair setup and water requirements. It does not remove the\
+        \ need to manage conspecific aggression. Akvaforum rates care intermediate; that lower-trust dissent is\
+        \ also retained."
