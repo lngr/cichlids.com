@@ -39,6 +39,8 @@ file:
    and to integers for temperatureC, ghDgh and khDkh, widened to contain the decided natural range.
    The intersection lets the single narrowest proposal set the limit and produces water conflicts
    absent from aquarium practice; the median range reflects what the sources recommend.
+   Group ids that name the same members are one group: keep the id the naming rule of `common.md`
+   gives, count the votes of all these ids for it and list it once, also in `hybrid-groups.yaml`.
    For every group id in the `hybridGroups` the tally decides: when `data/species/hybrid-groups.yaml`
    does not list the group, add it there with `id`, a one-sentence `description`, the valid names of
    its `members`, the `sources` (literature or database) that report crosses, a `userNote` and its `basis`:

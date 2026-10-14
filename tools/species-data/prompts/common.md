@@ -148,7 +148,11 @@ search and one page per species are enough. Member content is not accessible and
   the species, and `[]` when none does. A group means that every member may cross with every other
   member; a documented cross of two species without a wider group is a group of two members. Crossing
   is not transitive, so a species belongs to every group whose crosses concern it. Use the existing
-  id of a listed group and propose an id only for a group the file does not list. Each listed
+  id of a listed group and propose an id only for a group the file does not list. A proposed id
+  of a group of two species joins the kebab-case names of both members in alphabetical order and
+  writes a shared genus once (`amatitlania-nigrofasciata-sajica`,
+  `altolamprologus-calvus-julidochromis-transcriptus`), so that independent agents name the same
+  pair alike. Each listed
   group has a `basis`: `documented` when a cross between named members is reported from the wild or
   from a tank where the fish could choose partners of their own species, `presumed` when only
   general warnings or a very close relationship exist. The basis decides how hard the conflict of
