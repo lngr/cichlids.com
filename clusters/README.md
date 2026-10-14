@@ -25,7 +25,10 @@ apps/<service>/overlays/preview/kustomization.yaml
 ```
 
 The generator matches `apps/*/overlays/<environment>/kustomization.yaml`.
-Adding that file makes a service eligible. The `placeholder` service supplies all three environment overlays. Keycloak supplies
+Adding that file makes a service eligible. The API and web services supply staging and inactive production overlays. The
+`placeholder` service supplies production and preview overlays. Follow the
+[application rollout instructions](../apps/api/README.md) for image builds,
+Secrets, migrations, routing and staging placeholder retirement. Keycloak supplies
 staging and production overlays. Its persistent accounts use the environment
 PostgreSQL Cluster; Keycloak has no disposable preview overlay. Follow the
 [Keycloak rollout instructions](../apps/keycloak/README.md#operator-rollout) for
