@@ -1,0 +1,469 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "timezone": "Europe/Berlin",
+  "schedule": [
+    "before 6am on monday"
+  ],
+  "dependencyDashboard": true,
+  "automerge": false,
+  "separateMajorMinor": true,
+  "pinDigests": true,
+  "enabledManagers": [
+    "terraform",
+    "github-actions",
+    "npm",
+    "nuget",
+    "dockerfile",
+    "kubernetes",
+    "kustomize",
+    "custom.regex"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupName": "GitHub Actions",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
+    },
+    {
+      "matchManagers": [
+        "terraform"
+      ],
+      "groupName": "OpenTofu providers",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
+    },
+    {
+      "matchManagers": [
+        "npm"
+      ],
+      "groupName": "JavaScript dependencies",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
+    },
+    {
+      "matchManagers": [
+        "nuget"
+      ],
+      "groupName": ".NET dependencies",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
+    },
+    {
+      "matchManagers": [
+        "dockerfile",
+        "kubernetes"
+      ],
+      "groupName": "Container images",
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "digest"
+      ]
+    },
+    {
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "groupName": "Toolchain and platform versions",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "TOFU_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "TOFU",
+      "packageNameTemplate": "opentofu/opentofu",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "KUBECTL_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "KUBECTL",
+      "packageNameTemplate": "kubernetes/kubernetes",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "HELM_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "HELM",
+      "packageNameTemplate": "helm/helm",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "KUSTOMIZE_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "KUSTOMIZE",
+      "packageNameTemplate": "kubernetes-sigs/kustomize",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "SOPS_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "SOPS",
+      "packageNameTemplate": "getsops/sops",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "AGE_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "AGE",
+      "packageNameTemplate": "FiloSottile/age",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "CONFTEST_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "CONFTEST",
+      "packageNameTemplate": "open-policy-agent/conftest",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "KIND_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "KIND",
+      "packageNameTemplate": "kubernetes-sigs/kind",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "KUBECONFORM_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "KUBECONFORM",
+      "packageNameTemplate": "yannh/kubeconform",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "GITLEAKS_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "GITLEAKS",
+      "packageNameTemplate": "gitleaks/gitleaks",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "NODE_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "NODE",
+      "packageNameTemplate": "nodejs/node",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "DOTNET_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "DOTNET",
+      "packageNameTemplate": "dotnet/sdk",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "MAESTRO_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "MAESTRO",
+      "packageNameTemplate": "mobile-dev-inc/maestro",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/toolchain.versions/"
+      ],
+      "matchStrings": [
+        "ACTIONLINT_MIN=(?<currentValue>[^\\n]+)"
+      ],
+      "depNameTemplate": "ACTIONLINT",
+      "packageNameTemplate": "rhysd/actionlint",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/install-toolchain.sh/"
+      ],
+      "matchStrings": [
+        "TOFU_VERSION=\"\\$\\{TOFU_VERSION:-(?<currentValue>[^}]+)\\}\""
+      ],
+      "depNameTemplate": "OpenTofu",
+      "packageNameTemplate": "opentofu/opentofu",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/install-toolchain.sh/"
+      ],
+      "matchStrings": [
+        "KUBECTL_VERSION=\"\\$\\{KUBECTL_VERSION:-(?<currentValue>[^}]+)\\}\""
+      ],
+      "depNameTemplate": "kubectl",
+      "packageNameTemplate": "kubernetes/kubernetes",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/install-toolchain.sh/"
+      ],
+      "matchStrings": [
+        "HELM_VERSION=\"\\$\\{HELM_VERSION:-(?<currentValue>[^}]+)\\}\""
+      ],
+      "depNameTemplate": "Helm",
+      "packageNameTemplate": "helm/helm",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/install-toolchain.sh/"
+      ],
+      "matchStrings": [
+        "KUSTOMIZE_VERSION=\"\\$\\{KUSTOMIZE_VERSION:-(?<currentValue>[^}]+)\\}\""
+      ],
+      "depNameTemplate": "Kustomize",
+      "packageNameTemplate": "kubernetes-sigs/kustomize",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/install-toolchain.sh/"
+      ],
+      "matchStrings": [
+        "SOPS_VERSION=\"\\$\\{SOPS_VERSION:-(?<currentValue>[^}]+)\\}\""
+      ],
+      "depNameTemplate": "SOPS",
+      "packageNameTemplate": "getsops/sops",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/install-toolchain.sh/"
+      ],
+      "matchStrings": [
+        "AGE_VERSION=\"\\$\\{AGE_VERSION:-(?<currentValue>[^}]+)\\}\""
+      ],
+      "depNameTemplate": "age",
+      "packageNameTemplate": "FiloSottile/age",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/install-toolchain.sh/"
+      ],
+      "matchStrings": [
+        "CONFTEST_VERSION=\"\\$\\{CONFTEST_VERSION:-(?<currentValue>[^}]+)\\}\""
+      ],
+      "depNameTemplate": "Conftest",
+      "packageNameTemplate": "open-policy-agent/conftest",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/install-toolchain.sh/"
+      ],
+      "matchStrings": [
+        "KIND_VERSION=\"\\$\\{KIND_VERSION:-(?<currentValue>[^}]+)\\}\""
+      ],
+      "depNameTemplate": "kind",
+      "packageNameTemplate": "kubernetes-sigs/kind",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/install-toolchain.sh/"
+      ],
+      "matchStrings": [
+        "KUBECONFORM_VERSION=\"\\$\\{KUBECONFORM_VERSION:-(?<currentValue>[^}]+)\\}\""
+      ],
+      "depNameTemplate": "kubeconform",
+      "packageNameTemplate": "yannh/kubeconform",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/install-toolchain.sh/"
+      ],
+      "matchStrings": [
+        "GITLEAKS_VERSION=\"\\$\\{GITLEAKS_VERSION:-(?<currentValue>[^}]+)\\}\""
+      ],
+      "depNameTemplate": "gitleaks",
+      "packageNameTemplate": "gitleaks/gitleaks",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/install-toolchain.sh/"
+      ],
+      "matchStrings": [
+        "ACTIONLINT_VERSION=\"(?<currentValue>[^\"\\n]+)\""
+      ],
+      "depNameTemplate": "actionlint",
+      "packageNameTemplate": "rhysd/actionlint",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/tools/install-ksops.sh/"
+      ],
+      "matchStrings": [
+        "VERSION=(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+      ],
+      "depNameTemplate": "KSOPS",
+      "packageNameTemplate": "viaduct-ai/kustomize-sops",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/infra/app/variables.tf/"
+      ],
+      "matchStrings": [
+        "variable \"k3s_version\" \\{[\\s\\S]*?default\\s*=\\s*\"(?<currentValue>v[^\"\\n]+)\""
+      ],
+      "depNameTemplate": "k3s",
+      "packageNameTemplate": "k3s-io/k3s",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/infra/app/variables.tf/"
+      ],
+      "matchStrings": [
+        "variable \"argocd_version\" \\{[\\s\\S]*?default\\s*=\\s*\"(?<currentValue>v[^\"\\n]+)\""
+      ],
+      "depNameTemplate": "Argo CD",
+      "packageNameTemplate": "argoproj/argo-cd",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    }
+  ],
+  "ignorePaths": [
+    ".claude/**",
+    "workspace-legacy/**",
+    "data/**",
+    "prototypes/**",
+    "**/node_modules/**"
+  ],
+  "includePaths": [
+    ".github/workflows/**",
+    "infra/**",
+    "tools/**",
+    "app/**",
+    "apps/**",
+    "clusters/**"
+  ]
+}

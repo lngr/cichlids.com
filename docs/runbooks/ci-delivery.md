@@ -31,6 +31,14 @@ approval; dispatch supplies an automatic run on the branch commit. The operator
 checks the head commit and `required` result on the PR before enabling repository
 protection. See [GitHub's workflow triggering rules](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow).
 
+## Dependency updates
+
+Renovate reads `renovate.json5` and opens weekly dependency update pull requests.
+Install the Renovate GitHub App for `lngr/cichlids.com` with repository access, or
+run the pinned Renovate CLI as a self-hosted GitHub Action with the repository token
+permissions required to create branches and pull requests. Keep automerge disabled
+and review each update through the required CI checks.
+
 ## Infrastructure and deployment inputs
 
 CI's `infra-policy` job plans the app tier with the routine SSH and state-storage

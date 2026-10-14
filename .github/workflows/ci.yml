@@ -70,6 +70,8 @@ jobs:
           node-version: "24"
       - name: Install pinned core toolchain
         run: bash tools/install-toolchain.sh
+      - name: Validate Renovate configuration
+        run: npx --yes --package renovate@44.156.1 renovate-config-validator --strict renovate.json5
       - name: Install YAML parser
         run: python3 -m pip install PyYAML==6.0.3
       - name: Delivery contracts
