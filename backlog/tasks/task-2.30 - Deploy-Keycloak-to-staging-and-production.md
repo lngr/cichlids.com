@@ -1,10 +1,10 @@
 ---
 id: TASK-2.30
 title: Deploy Keycloak to staging and production
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 06:41'
-updated_date: '2026-10-14 09:37'
+updated_date: '2026-10-14 09:56'
 labels: []
 dependencies:
   - TASK-2.4
@@ -13,6 +13,8 @@ references:
   - apps/keycloak/overlays/staging/cichlids-realm.json
   - apps/keycloak/overlays/prod/cichlids-realm.json
   - docs/adr/0010-gitops-and-infrastructure-as-code.md
+  - apps/keycloak/README.md
+  - tools/check-cluster-manifests.sh
 parent_task_id: TASK-2
 priority: high
 ordinal: 68000
@@ -92,3 +94,34 @@ Keycloak runs in the cluster for staging and production. Each environment uses i
 - Create the secrets, sync, open the discovery document over TLS (AC #1), plain HTTP redirects
   (AC #2), password reset email through the SMTP settings (AC #3, needs a mail provider).
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- `apps/keycloak` with overlays staging and prod (no preview Keycloak): Keycloak 26.6.4 pinned by
+  digest, one replica, 250m CPU and 768Mi requested; Ingress through Traefik with HTTPS redirect
+  and a cert-manager certificate for `auth.staging.cichlids.com` and `auth.cichlids.com`; only the
+  cichlids realm, resources and the paths of login and account flows are routed; the admin console
+  and master realm stay private (port-forward).
+- Realm apply: keycloak-config-cli 6.5.1-26 as an Argo CD PostSync job with `no-delete`; a
+  renderer adds mounted secrets and fails on unresolved placeholders; users and the registration
+  setting are runtime state and survive re-applies. Limits: not atomic, selective syncs skip the
+  hook, removed configuration needs a deliberate operator deletion.
+- Database: production uses its own database in the production PostgreSQL cluster (one backup
+  path, TASK-2.9); staging without backup bucket access.
+- DNS: A records for both auth hosts in the platform tier.
+- Secrets created by the operator per environment: `keycloak-admin`, `keycloak-db`
+  (basic-auth), `keycloak-smtp`, optional `keycloak-providers`, optional `keycloak-web-bff`.
+
+### Verified by the agent (Codex)
+- Manifest checks red then green, 268 resources valid, realm check 69 cases, secret guard,
+  platform validate and guardrails, policies 73 tests; local Docker run of Keycloak 26.6.4 with the
+  apply: registration false on create and kept after re-apply, users and the BFF secret kept;
+  discovery issuer, login resources and a private admin frontend.
+- Not verified: TLS issuance, ingress behaviour, SMTP delivery, CloudNativePG reconciliation.
+
+### Open
+- Mail provider for SMTP (AC #3).
+- Proposed ADR-0025 wording for the apply mechanism (project owner).
+<!-- SECTION:NOTES:END -->
