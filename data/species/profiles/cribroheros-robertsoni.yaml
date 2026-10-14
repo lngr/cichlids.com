@@ -723,21 +723,9 @@ features:
   ghDgh:
     value:
       min: 12
-      max: 53
-    confidence: "low"
-    rationale: "The fixed tally applies the median method because only 3 of 6 votes agree within its
-      hardness threshold. Generator proposed 12.3 to 14.1 dGH, checker-a 6 to 14, checker-b 12 to
-      15, checker-c 12 to 91, and tiebreaker-1 and tiebreaker-2 12.3 to 91. Median minima and maxima
-      are rounded to 12 and 53. The 53 dGH boundary is a vote statistic, not a measured maximum or a
-      complete habitat envelope. Peten Itza surface calcium 2.9 plus magnesium 1.5 meq/L gives 12.34
-      dGH; Hillesheim's lake means give 14.05. PANGAEA Bacalar chemistry gives 72.8, the older
-      Bacalar dataset compiled in Valdespino-Castillo gives 62.79, and Yanez-Montalvo gives 73.58 to
-      90.2 dGH. Thus the wider measured locality envelope reaches about 12.3 to 90.2 dGH, beyond
-      this decision. The highest Bacalar station also had elevated ammonium and no simultaneous
-      observation of healthy robertsoni. Calcium and magnesium, converted as Ca/7.14 + Mg/4.34 for
-      mg/L, support these values; conductivity and limestone geology alone do not. Checker-a's
-      conductivity-derived estimate is rejected as numeric source evidence. Different locality
-      coverage explains the split and requires low confidence."
+      max: 15
+    confidence: "medium"
+    rationale: "The median decision of 12 to 53 dGH is replaced with 12 to 15 dGH because 53 is an arithmetic compromise between ordinary lake water and exceptional Bacalar chemistry, proposed by none of the votes. Checker-b's range rounds outward from Peten Itza measurements: Perez et al. report calcium and magnesium equivalent to 12.34 dGH, and Hillesheim et al. give a lake mean equivalent to 14.05 dGH. These observations support a moderately hard natural range relevant to keeping, with incomplete geographic coverage. Bacalar's sulfate-rich karst water is described in the habitat rather than used to set aquarium ranges; conductivity alone does not establish GH."
     sources:
       - kind: "literature"
         title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and
@@ -781,8 +769,7 @@ features:
     evidence:
       - source:
           kind: "literature"
-          title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and
-            hydrochemical characteristics of Lago Peten Itza, Guatemala"
+          title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and hydrochemical characteristics of Lago Peten Itza, Guatemala"
           url: "https://doi.org/10.4081/jlimnol.2010.146"
           accessed: "2026-10-13"
         value:
@@ -791,8 +778,7 @@ features:
         note: "Surface Ca 2.9 plus Mg 1.5 meq/L, multiplied by 2.804."
       - source:
           kind: "literature"
-          title: "Hillesheim et al. (2005). Climate change in lowland Central America during the late
-            deglacial and early Holocene"
+          title: "Hillesheim et al. (2005). Climate change in lowland Central America during the late deglacial and early Holocene"
           url: "https://doi.org/10.1002/jqs.924"
           accessed: "2026-10-13"
         value:
@@ -844,13 +830,17 @@ features:
     tolerance:
       value:
         min: 8
-        max: 53
-      confidence: "low"
+        max: 18
+      confidence: "medium"
       verification:
-        method: "conservative"
+        method: "adjudicated"
         votes:
           agree: 3
           total: 6
+        replaced:
+          min: 8
+          max: 53
+        replacedMethod: "conservative"
       sources:
         - kind: "literature"
           title: "Artigas Azas (2018). A Sand-sifter of Maya Land Cribroheros robertsoni. Cichlid News 27(2),
@@ -940,8 +930,7 @@ features:
         - source:
             kind: "database"
             title: "Einrichtungsbeispiele species profile: Cribroheros robertsoni"
-            url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/cribroheros-robertsoni-slnk.htm\
-              l"
+            url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/cribroheros-robertsoni-slnk.html"
             accessed: "2026-10-13"
           value:
             min: 5
@@ -964,8 +953,7 @@ features:
           value:
             min: 5
             max: 300
-          note: "Actual printed dH range; the implausible upper limit is rejected, without silently
-            substituting 20."
+          note: "Actual printed dH range; the implausible upper limit is rejected, without silently substituting 20."
         - source:
             kind: "literature"
             title: "Yanez-Montalvo et al. (2025). Karst-environments of the southeastern Yucatan Peninsula:
@@ -977,23 +965,16 @@ features:
             max: 90.2
           note: "Field chemistry only; neither this nor the imposed 53 dGH bound establishes chronic aquarium
             health."
-      rationale: "The fixed tally applies the conservative method because only 3 of 6 proposals form the
-        leading agreement. Generator proposed 5 to 18 dGH, checker-a 5 to 20, checker-b 8 to 20, and
-        checker-c, tiebreaker-1 and tiebreaker-2 5 to 91. Their intersection is 8 to 18; the tally
-        then widens its upper limit to contain the decided natural 12 to 53 dGH, producing 8 to 53
-        with low confidence. This is not a physiological experiment. Aqua-Fish recommends 10 to 18,
-        Fischlexikon 5 to 14, AquaInfo 5 to 8, Einrichtungsbeispiele 5 to 15, and Guidarium 8 to 20.
-        Tjorvar's retailer sheet offers a wider 10 to 35 recommendation. FishProfiles actually
-        prints 5 to 300 dH; its implausible upper value and checker-a's invented replacement of 20
-        are not accepted as measured tolerance limits. Bacalar field chemistry reaches 90.2 dGH,
-        wider than the decision, without demonstrating years of captive health. The 18 to 53
-        extension is imposed by natural-range containment and lacks independent husbandry support.
-        Stock origin and the calcium-sulfate mixture matter, so 53 is not an aquarium target."
+      rationale: "The conservative decision of 8 to 53 dGH is replaced with 8 to 18 dGH because its upper extension only follows the unsupported natural median and has no long-term husbandry evidence. The unexpanded intersection of the votes is 8 to 18 dGH and contains the decided natural 12 to 15 dGH. Aqua-Fish recommends 10 to 18 dGH, Fischlexikon 5 to 14 dGH and Guidarium 8 to 20 dGH; support is weaker at the lower endpoint. Exceptional Bacalar ion measurements do not establish captive tolerance in ordinary aquarium water."
     verification:
-      method: "median"
+      method: "adjudicated"
       votes:
         agree: 3
         total: 6
+      replaced:
+        min: 12
+        max: 53
+      replacedMethod: "median"
   khDkh:
     value:
       min: 5
@@ -3135,15 +3116,7 @@ profile:
         url: "https://ciklid.org/artregister/art.php?ID=247"
         accessed: "2026-10-13"
   habitat:
-    text: "The species occurs on the Atlantic slope from southern Mexico through Belize and Guatemala to
-      Honduras, using rivers, lakes and sinkholes. Soft sediment offers feeding ground, while
-      stones, vegetation and submerged structure provide cover. Chemistry differs markedly among
-      localities. Caobas fish sampling provides the lower temperature and pH observations, and Peten
-      Itza and Bacalar studies supply ion measurements. Bacalar calcium-sulfate water can have very
-      high GH without matching KH. The displayed GH median of 12 to 53 dGH is an uncertain
-      aggregation of conflicting habitat proposals; actual Bacalar measurements reach about 90 dGH.
-      The chemistry campaigns do not establish equivalent captive tolerance or simultaneous fish
-      health at every station."
+    text: "The species occurs on the Atlantic slope from southern Mexico through Belize and Guatemala to Honduras, using rivers, lakes and sinkholes. Soft sediment offers feeding ground, while stones, vegetation and submerged structure provide cover. Chemistry differs markedly among localities. Caobas fish sampling provides the lower temperature and pH observations, and Peten Itza studies supply calcium and magnesium measurements for moderately hard water. Bacalar is a notable sulfate-rich lagoon in a gypsum karst system: Yanez-Montalvo et al. report calcium and magnesium concentrations equivalent to about 73.6 to 90.2 dGH. This exceptional chemistry does not represent ordinary aquarium water or demonstrate long-term captive tolerance."
     sources:
       - kind: "catalog-of-fishes"
         title: "Eschmeyer's Catalog of Fishes: Cribroheros species and the robertsoni entry"
@@ -3203,15 +3176,7 @@ profile:
         url: "https://en.aqua-fish.net/fish/false-firemouth-cichlid"
         accessed: "2026-10-13"
   husbandry:
-    text: "Use at least 500 litres and about 150 by 60 cm of bottom space for an established compatible
-      pair. The 60 cm depth is a layout judgment rather than a published experimental threshold.
-      Leave open fine sand, interrupt sightlines with securely supported wood and rocks, and anchor
-      any plants away from digging areas. Groups and mixed displays need more room. Provide
-      effective biological filtration, oxygenation and regular water changes. Routine care around 24
-      to 27 C has stronger support than prolonged keeping at the warm edge. The displayed GH
-      tolerance of 8 to 53 dGH includes a required extension from habitat voting; its high endpoint
-      is not a recommended target or demonstrated long-term limit. Measure GH and KH separately and
-      consider the collection locality."
+    text: "Use at least 500 litres and about 150 by 60 cm of bottom space for an established compatible pair. The 60 cm depth is a layout judgment rather than a published experimental threshold. Leave open fine sand, interrupt sightlines with securely supported wood and rocks, and anchor any plants away from digging areas. Groups and mixed displays need more room. Provide effective biological filtration, oxygenation and regular water changes. Routine care around 24 to 27 C has stronger support than prolonged keeping at the warm edge. The GH tolerance of 8 to 18 dGH contains the moderately hard natural range; published aquarium recommendations support its central portion more strongly than its endpoints. Measure GH and KH separately and consider the collection locality."
     sources:
       - kind: "literature"
         title: "Toromanovic (2016). Astatheros robertsoni. Greater Chicago Cichlid Association breeding
@@ -3448,6 +3413,9 @@ provenance:
     - role: "adjudicator"
       model: "gpt-6.1-sol"
       date: "2026-10-13"
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: "2026-10-14"
   disagreements:
     - field: "features.predation"
       proposals:
@@ -3645,21 +3613,8 @@ provenance:
             max: 91
       decision:
         min: 12
-        max: 53
-      rationale: "The fixed tally applies the median method because only 3 of 6 votes agree within its
-        hardness threshold. Generator proposed 12.3 to 14.1 dGH, checker-a 6 to 14, checker-b 12 to
-        15, checker-c 12 to 91, and tiebreaker-1 and tiebreaker-2 12.3 to 91. Median minima and
-        maxima are rounded to 12 and 53. The 53 dGH boundary is a vote statistic, not a measured
-        maximum or a complete habitat envelope. Peten Itza surface calcium 2.9 plus magnesium 1.5
-        meq/L gives 12.34 dGH; Hillesheim's lake means give 14.05. PANGAEA Bacalar chemistry gives
-        72.8, the older Bacalar dataset compiled in Valdespino-Castillo gives 62.79, and
-        Yanez-Montalvo gives 73.58 to 90.2 dGH. Thus the wider measured locality envelope reaches
-        about 12.3 to 90.2 dGH, beyond this decision. The highest Bacalar station also had elevated
-        ammonium and no simultaneous observation of healthy robertsoni. Calcium and magnesium,
-        converted as Ca/7.14 + Mg/4.34 for mg/L, support these values; conductivity and limestone
-        geology alone do not. Checker-a's conductivity-derived estimate is rejected as numeric
-        source evidence. Different locality coverage explains the split and requires low
-        confidence."
+        max: 15
+      rationale: "The median decision of 12 to 53 dGH is replaced with 12 to 15 dGH because 53 is an arithmetic compromise between ordinary lake water and exceptional Bacalar chemistry, proposed by none of the votes. Checker-b's range rounds outward from Peten Itza measurements: Perez et al. report calcium and magnesium equivalent to 12.34 dGH, and Hillesheim et al. give a lake mean equivalent to 14.05 dGH. These observations support a moderately hard natural range relevant to keeping, with incomplete geographic coverage. Bacalar's sulfate-rich karst water is described in the habitat rather than used to set aquarium ranges; conductivity alone does not establish GH."
     - field: "features.khDkh"
       proposals:
         - by: "generator"
@@ -3797,19 +3752,8 @@ provenance:
             max: 91
       decision:
         min: 8
-        max: 53
-      rationale: "The fixed tally applies the conservative method because only 3 of 6 proposals form the
-        leading agreement. Generator proposed 5 to 18 dGH, checker-a 5 to 20, checker-b 8 to 20, and
-        checker-c, tiebreaker-1 and tiebreaker-2 5 to 91. Their intersection is 8 to 18; the tally
-        then widens its upper limit to contain the decided natural 12 to 53 dGH, producing 8 to 53
-        with low confidence. This is not a physiological experiment. Aqua-Fish recommends 10 to 18,
-        Fischlexikon 5 to 14, AquaInfo 5 to 8, Einrichtungsbeispiele 5 to 15, and Guidarium 8 to 20.
-        Tjorvar's retailer sheet offers a wider 10 to 35 recommendation. FishProfiles actually
-        prints 5 to 300 dH; its implausible upper value and checker-a's invented replacement of 20
-        are not accepted as measured tolerance limits. Bacalar field chemistry reaches 90.2 dGH,
-        wider than the decision, without demonstrating years of captive health. The 18 to 53
-        extension is imposed by natural-range containment and lacks independent husbandry support.
-        Stock origin and the calcium-sulfate mixture matter, so 53 is not an aquarium target."
+        max: 18
+      rationale: "The conservative decision of 8 to 53 dGH is replaced with 8 to 18 dGH because its upper extension only follows the unsupported natural median and has no long-term husbandry evidence. The unexpanded intersection of the votes is 8 to 18 dGH and contains the decided natural 12 to 15 dGH. Aqua-Fish recommends 10 to 18 dGH, Fischlexikon 5 to 14 dGH and Guidarium 8 to 20 dGH; support is weaker at the lower endpoint. Exceptional Bacalar ion measurements do not establish captive tolerance in ordinary aquarium water."
     - field: "features.khDkh.tolerance"
       proposals:
         - by: "generator"

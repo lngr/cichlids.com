@@ -559,18 +559,9 @@ features:
   ghDgh:
     value:
       min: 12
-      max: 91
-    confidence: medium
-    rationale: "Tally qualified-majority, 5 of 6 retain 12 to 91 dGH; checker-a proposed 6 to 20. Peten Itza
-      surface Ca 2.9 and Mg 1.5 meq/L yield about 12.3 dGH using summed equivalents times 2.804. Paired
-      Bacalar Ca/Mg measurements of 370.69/94 and 358.05/173.85 mg/L yield 73.6 and 90.2 dGH using Ca/7.14
-      plus Mg/4.34. Outward rounding gives the decided envelope. The older Bacalar compilation gives 62.8 dGH.
-      Sulfate-rich native freshwater explains high GH without comparably high KH. Regional conductivity and
-      care-sheet hardness do not replace measured divalent ions. Fish occurrence and chemistry were not
-      measured simultaneously, and population differences and seasonal coverage limit generalization.
-      Checker-a also cites a wider regional lower bound of about 4 dGH in a 4 to 20 dGH lake survey; the
-      selected 12 to 91 range is not an exhaustive geographic envelope and does not absorb unconfirmed
-      fish-to-site assignments."
+      max: 16
+    confidence: "medium"
+    rationale: "The qualified-majority decision of 12 to 91 dGH is replaced with 12 to 16 dGH because its upper boundary comes from exceptional sulfate-rich Bacalar water rather than typical freshwater relevant to aquarium keeping. Perez et al. give Peten Itza surface calcium and magnesium equivalent to 12.34 dGH. The lake survey cited by checker-a reports calcium 80 mg/L and magnesium 21 mg/L at 15 m, equivalent to about 16 dGH. These paired measurements support a moderately hard lake proxy; conductivity estimates, unconfirmed regional sites and unpaired water-column maxima do not set its boundaries. Geographic and seasonal coverage is incomplete."
     sources:
       - &a33
         kind: literature
@@ -622,11 +613,15 @@ features:
         url: "https://www.ecosur.mx/lagunabacalar/270/"
         accessed: 2026-10-13
     evidence:
-      - source: *a33
+      - source:
+          kind: "literature"
+          title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and hydrochemical characteristics of Lago Peten Itza, Guatemala. Tables and water-column measurements"
+          url: "https://doi.org/10.4081/jlimnol.2010.146"
+          accessed: "2026-10-13"
         value:
           min: 12.34
           max: 12.34
-        note: Surface-water ions; whole-column cation maxima are not a paired shallow-water sample.
+        note: "Surface-water ions; whole-column cation maxima are not a paired shallow-water sample."
       - source: *a34
         value:
           min: 73.58
@@ -637,24 +632,21 @@ features:
           min: 62.8
           max: 62.8
         note: Earlier Bacalar ambient-water cation compilation.
-      - source: *a36
+      - source:
+          kind: "literature"
+          title: "Tropical freshwater ostracodes as environmental indicators across an altitude gradient in Guatemala and Mexico (lake water chemistry of El Peten)"
+          url: "https://doi.org/10.15517/rbt.v67i4.33278"
+          accessed: "2026-10-13"
         value:
           min: 16
           max: 16
-        note: Alternative Peten Itza survey calculation reported by checker-a; no replacement of the more explicit
-          selected chemistry.
+        note: "Peten Itza calcium 80 mg/L and magnesium 21 mg/L at 15 m give about 16 dGH; a sampled lake proxy rather than a simultaneous fish collection."
     tolerance:
       value:
         min: 8
-        max: 91
-      confidence: low
-      rationale: "Tally qualified-majority, 5 of 6 retain 8 to 91 dGH; checker-a proposed 4 to 20. Aqua-Fish states
-        8 to 18 and Seriously Fish and Fishkeeper provide an upper recommendation of 20. Their displayed or
-        inferred zero is not a proven lower aquarium limit. Aquario states 12 to 35; the Aquarium Wiki gives a
-        wider low-weight 4 to 30. A ten-day larval trial used about 7.7 to 9.1 dGH. The 91 upper bound is a
-        required extension to contain the decided Bacalar natural range, not evidence of years of aquarium
-        health at that hardness. Ordinary care recommendations near 8 to 20 are substantially better
-        supported. Confidence remains low despite agreement on the composite envelope."
+        max: 20
+      confidence: "medium"
+      rationale: "The qualified-majority decision of 8 to 91 dGH is replaced with 8 to 20 dGH because the 91 dGH endpoint is imposed by exceptional Bacalar chemistry without long-term aquarium evidence. The generator and checking votes identify 8 to 20 dGH as the supported ordinary aquarium band: Aqua-Fish recommends 8 to 18 dGH and Seriously Fish gives an upper recommendation of 20 dGH. This band contains the decided natural 12 to 16 dGH. A ten-day larval trial near 8 dGH offers limited corroboration of the lower endpoint, not proof of lifetime tolerance; a displayed zero is not treated as a proven minimum."
       sources:
         - &a37
           kind: database
@@ -709,55 +701,91 @@ features:
           url: "https://www.theaquariumwiki.com/wiki/Cichlasoma_urophthalmus"
           accessed: 2026-10-13
       evidence:
-        - source: *a37
+        - source:
+            kind: "database"
+            title: "Aqua-Fish: Mayan cichlid care profile"
+            url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+            accessed: "2026-10-13"
           value:
             min: 8
             max: 18
-          note: Direct aquarium recommendation.
-        - source: *a38
+          note: "Direct aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Cichlasoma urophthalmus"
+            url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+            accessed: "2026-10-13"
           value:
             min: 0
             max: 20
           note: "Displayed range; prose states only up to 20, so zero is not an established minimum."
-        - source: *a39
+        - source:
+            kind: "website"
+            title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+            accessed: "2026-10-13"
           value:
             max: 20
-          note: Retailer supplies no numerical lower bound.
-        - source: *a40
+          note: "Retailer supplies no numerical lower bound."
+        - source:
+            kind: "database"
+            title: "Aquario: Mojarra care sheet"
+            url: "https://aquario.me/fish/mojarra"
+            accessed: "2026-10-13"
           value:
             min: 12
             max: 35
-          note: Wider aquarium recommendation without comparative long-term data.
-        - source: *a41
+          note: "Wider aquarium recommendation without comparative long-term data."
+        - source:
+            kind: "literature"
+            title: "Farhadian et al. (2012). Culture experiments with Ceriodaphnia quadrangula as suitable live food for Mayan cichlid larvae"
+            url: "https://doi.org/10.14210/bjast.v16n2.p1-11"
+            accessed: "2026-10-13"
           value:
             min: 7.7
             max: 9.1
-          note: 150 plus or minus 12 mg/L total hardness converted assuming CaCO3 equivalents; ten-day larval trial.
+          note: "150 plus or minus 12 mg/L total hardness converted assuming CaCO3 equivalents; ten-day larval trial."
         - source: *a42
           value:
             min: 73.58
             max: 90.21
           note: "Native cation chemistry justifies containment, not the long-term aquarium endpoint."
-        - source: *a43
+        - source:
+            kind: "literature"
+            title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and hydrochemical characteristics of Lago Peten Itza, Guatemala. Tables and water-column measurements"
+            url: "https://doi.org/10.4081/jlimnol.2010.146"
+            accessed: "2026-10-13"
           value:
             min: 12.34
             max: 12.34
-          note: Native surface-water context.
-        - source: *a44
+          note: "Native surface-water context."
+        - source:
+            kind: "website"
+            title: "The Aquarium Wiki: Mayan Cichlid"
+            url: "https://www.theaquariumwiki.com/wiki/Cichlasoma_urophthalmus"
+            accessed: "2026-10-13"
           value:
             min: 4
             max: 30
-          note: Low-weight editable hobby encyclopedia.
+          note: "Low-weight editable hobby encyclopedia."
       verification:
-        method: qualified-majority
+        method: "adjudicated"
         votes:
           agree: 5
           total: 6
+        replaced:
+          min: 8
+          max: 91
+        replacedMethod: "qualified-majority"
     verification:
-      method: qualified-majority
+      method: "adjudicated"
       votes:
         agree: 5
         total: 6
+      replaced:
+        min: 12
+        max: 91
+      replacedMethod: "qualified-majority"
   khDkh:
     value:
       min: 5
@@ -2039,11 +2067,7 @@ profile:
         url: "https://www.cichlids.com/disc/read.php?1,643"
         accessed: 2026-10-13
   habitat:
-    text: "Shallow lakeshores, slow river margins, vegetated wetlands and mangrove lagoons provide shelter and
-      feeding sites. Brackish-water tolerance is well supported, including a native collection at 24 ppt, but
-      freshwater aquarium maintenance is suitable. The decided water ranges summarize selected native surveys
-      rather than every occupied locality. Sulfate-rich Bacalar has exceptionally high GH while its
-      bicarbonate alkalinity remains much lower. GH, KH and salinity describe different properties."
+    text: "Shallow lakeshores, slow river margins, vegetated wetlands and mangrove lagoons provide shelter and feeding sites. Brackish-water tolerance is well supported, including a native collection at 24 ppt, but freshwater aquarium maintenance is suitable. The decided water ranges summarize selected native surveys rather than every occupied locality. Bacalar is a notable sulfate-rich lagoon in a gypsum karst system, with reported calcium and magnesium concentrations equivalent to about 73.6 to 90.2 dGH while bicarbonate alkalinity remains much lower. These exceptional values describe that habitat rather than ordinary aquarium conditions or demonstrated long-term captive tolerance. GH, KH and salinity describe different properties."
     sources:
       - kind: literature
         title: Fernandez-Perez et al. (2025). Captive reproductive performance of Mayaheros urophthalmus from four
@@ -2283,6 +2307,9 @@ provenance:
     - role: adjudicator
       model: gpt-6.1-sol
       date: 2026-10-13
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: "2026-10-14"
   disagreements:
     - field: features.diet
       proposals:
@@ -2489,17 +2516,8 @@ provenance:
             max: 91
       decision:
         min: 12
-        max: 91
-      rationale: "Tally qualified-majority, 5 of 6 retain 12 to 91 dGH; checker-a proposed 6 to 20. Peten Itza
-        surface Ca 2.9 and Mg 1.5 meq/L yield about 12.3 dGH using summed equivalents times 2.804. Paired
-        Bacalar Ca/Mg measurements of 370.69/94 and 358.05/173.85 mg/L yield 73.6 and 90.2 dGH using Ca/7.14
-        plus Mg/4.34. Outward rounding gives the decided envelope. The older Bacalar compilation gives 62.8
-        dGH. Sulfate-rich native freshwater explains high GH without comparably high KH. Regional conductivity
-        and care-sheet hardness do not replace measured divalent ions. Fish occurrence and chemistry were not
-        measured simultaneously, and population differences and seasonal coverage limit generalization.
-        Checker-a also cites a wider regional lower bound of about 4 dGH in a 4 to 20 dGH lake survey; the
-        selected 12 to 91 range is not an exhaustive geographic envelope and does not absorb unconfirmed
-        fish-to-site assignments."
+        max: 16
+      rationale: "The qualified-majority decision of 12 to 91 dGH is replaced with 12 to 16 dGH because its upper boundary comes from exceptional sulfate-rich Bacalar water rather than typical freshwater relevant to aquarium keeping. Perez et al. give Peten Itza surface calcium and magnesium equivalent to 12.34 dGH. The lake survey cited by checker-a reports calcium 80 mg/L and magnesium 21 mg/L at 15 m, equivalent to about 16 dGH. These paired measurements support a moderately hard lake proxy; conductivity estimates, unconfirmed regional sites and unpaired water-column maxima do not set its boundaries. Geographic and seasonal coverage is incomplete."
     - field: features.khDkh
       proposals:
         - by: generator
@@ -2592,14 +2610,8 @@ provenance:
             max: 91
       decision:
         min: 8
-        max: 91
-      rationale: "Tally qualified-majority, 5 of 6 retain 8 to 91 dGH; checker-a proposed 4 to 20. Aqua-Fish states
-        8 to 18 and Seriously Fish and Fishkeeper provide an upper recommendation of 20. Their displayed or
-        inferred zero is not a proven lower aquarium limit. Aquario states 12 to 35; the Aquarium Wiki gives a
-        wider low-weight 4 to 30. A ten-day larval trial used about 7.7 to 9.1 dGH. The 91 upper bound is a
-        required extension to contain the decided Bacalar natural range, not evidence of years of aquarium
-        health at that hardness. Ordinary care recommendations near 8 to 20 are substantially better
-        supported. Confidence remains low despite agreement on the composite envelope."
+        max: 20
+      rationale: "The qualified-majority decision of 8 to 91 dGH is replaced with 8 to 20 dGH because the 91 dGH endpoint is imposed by exceptional Bacalar chemistry without long-term aquarium evidence. The generator and checking votes identify 8 to 20 dGH as the supported ordinary aquarium band: Aqua-Fish recommends 8 to 18 dGH and Seriously Fish gives an upper recommendation of 20 dGH. This band contains the decided natural 12 to 16 dGH. A ten-day larval trial near 8 dGH offers limited corroboration of the lower endpoint, not proof of lifetime tolerance; a displayed zero is not treated as a proven minimum."
     - field: features.khDkh.tolerance
       proposals:
         - by: generator

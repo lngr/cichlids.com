@@ -309,18 +309,9 @@ features:
   ph:
     value:
       min: 6.8
-      max: 9.6
-    confidence: medium
-    rationale: "The qualified-majority decision is 6.8 to 9.6, with four of six votes agreeing within the pH\
-      \ threshold. Fishing areas in Ongom reach 6.8 to 7.5, the 2023 shallow fish-habitat survey reaches 7.0\
-      \ to 9.6, and Newman reports about 7.0 to 7.5 in Nawampasa. Obubu's eastern-arm series has a wider union\
-      \ of 6.5 to 9.9; it documents lake variation but not this species occupying every extreme. Waste-associated\
-      \ readings down to 5.7 are also outside the selected envelope. The tally favors the fish-habitat interpretation\
-      \ over both the 9.0 ceiling and the broader 6.5 to 9.9 proposal. Seasonal photosynthesis can produce\
-      \ transient high pH. The Naigaga abstract contains no confirmable numeric pH range. generator proposed\
-      \ {\"min\": 6.8, \"max\": 9}; checker-a proposed {\"min\": 7, \"max\": 9.6}; checker-b proposed {\"min\"\
-      : 6.8, \"max\": 9}; checker-c proposed {\"min\": 6.8, \"max\": 9.6}; tiebreaker-1 proposed {\"min\":\
-      \ 6.5, \"max\": 9.9}; tiebreaker-2 proposed {\"min\": 6.8, \"max\": 9.6}."
+      max: 9
+    confidence: "medium"
+    rationale: "The qualified-majority decision of pH 6.8 to 9.6 is replaced with 6.8 to 9.0 because the upper endpoint is a daytime photosynthetic peak in shallow Kyoga water, not a typical stable condition relevant to aquarium keeping. The generator and checker-b propose 6.8 to 9.0: Ongom et al. report 6.8 to 7.5 in fishing areas, Newman describes 7.0 to 7.5 in Nawampasa, and the FAO Kyoga compilation gives 7.6 to 9.0. The 2023 survey establishes that pH 9.6 occurs, but concerns Nile perch and Nile tilapia habitats and does not establish occupancy or sustained exposure by this species. That exceptional observation is described in the habitat."
     sources:
       - kind: literature
         title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake Kyoga
@@ -357,15 +348,14 @@ features:
         accessed: "2026-10-13"
     evidence:
       - source:
-          kind: literature
-          title: "Ongom, Andama and Lukubye (2017). Physico-Chemical Quality of Lake Kyoga at Selected Landing\
-            \ Sites and Anthropogenic Activities. Table 1."
+          kind: "literature"
+          title: "Ongom, Andama and Lukubye (2017). Physico-Chemical Quality of Lake Kyoga at Selected Landing Sites and Anthropogenic Activities. Table 1."
           url: "https://doi.org/10.4236/jwarp.2017.911080"
           accessed: "2026-10-13"
         value:
           min: 6.8
           max: 7.5
-        note: Fishing-area subset; waste-area measurements extend lower.
+        note: "Fishing-area subset; waste-area measurements extend lower."
       - source:
           kind: literature
           title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake
@@ -377,14 +367,14 @@ features:
           max: 9.6
         note: "Measured shallow fish-habitat interval, without species-specific occupancy."
       - source:
-          kind: literature
-          title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
+          kind: "literature"
+          title: "Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo."
           url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
           accessed: "2026-10-13"
         value:
           min: 7
           max: 7.5
-        note: Nawampasa field-kit interval; the separator is missing in the online typography.
+        note: "Nawampasa field-kit interval; the separator is missing in the online typography."
       - source:
           kind: literature
           title: "Obubu et al. (2022). Determination of the Connectedness of Land Use, Land Cover Change to\
@@ -397,15 +387,14 @@ features:
         note: Union of the eastern-arm monitoring ranges; the printed 2010 maximum of 85 is interpreted as
           8.5 in context.
       - source:
-          kind: literature
-          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
-            \ Vol. 1. Uganda: Kyoga Lakes Complex water chemistry compilation."
+          kind: "literature"
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. Uganda: Kyoga Lakes Complex water chemistry compilation."
           url: "https://www.fao.org/4/t0473e/T0473E11.htm"
           accessed: "2026-10-13"
         value:
           min: 7.6
           max: 9
-        note: Historical Kyoga summary.
+        note: "Historical Kyoga summary."
       - source:
           kind: database
           title: "ILEC World Lake Database: Lake Kyoga, Bugondo water-column measurements"
@@ -426,17 +415,9 @@ features:
     tolerance:
       value:
         min: 6.8
-        max: 9.6
-      confidence: low
-      rationale: "The qualified-majority tally fixes 6.8 to 9.6 with four of six agreeing votes, then contains\
-        \ the decided natural interval. Seriously Fish recommends 7.2 to 8.2 and the Nordic register 7.5 to\
-        \ 8.0; other aquarium accounts extend toward 8.5 or 9.0. The endpoints of the selected envelope come\
-        \ from habitat coverage, not controlled multiyear aquarium outcomes. The wider 6.5 to 9.9 eastern-arm\
-        \ source range and tiebreaker-1 proposal are recorded but excluded by the tally. Stable central conditions\
-        \ have stronger husbandry support than continuous exposure to either outer endpoint. generator proposed\
-        \ {\"min\": 6.8, \"max\": 9}; checker-a proposed {\"min\": 7, \"max\": 9.6}; checker-b proposed {\"\
-        min\": 6.8, \"max\": 9}; checker-c proposed {\"min\": 6.8, \"max\": 9.6}; tiebreaker-1 proposed {\"\
-        min\": 6.5, \"max\": 9.9}; tiebreaker-2 proposed {\"min\": 6.8, \"max\": 9.6}."
+        max: 9
+      confidence: "low"
+      rationale: "The qualified-majority decision of pH 6.8 to 9.6 is replaced with 6.8 to 9.0 because a transient photosynthetic maximum does not demonstrate healthy long-term aquarium exposure at 9.6. The generator and checker-b support this containing range. Seriously Fish recommends 7.2 to 8.2, the Nordic register 7.5 to 8.0, and Bay Bridge gives a lower-weight recommendation extending to 9.0. The selected tolerance contains the decided natural range; its outer endpoints are less secure than the shared husbandry core, so confidence is low."
       sources:
         - kind: literature
           title: Newman (1997). Cichlid Conservation in Uganda. Collecting report republished by AquaInfo.
@@ -500,90 +481,89 @@ features:
           accessed: "2026-10-13"
       evidence:
         - source:
-            kind: database
+            kind: "database"
             title: "Seriously Fish: Haplochromis latifasciatus"
             url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
             accessed: "2026-10-13"
           value:
             min: 7.2
             max: 8.2
-          note: Species-specific aquarium recommendation.
+          note: "Species-specific aquarium recommendation."
         - source:
-            kind: database
+            kind: "database"
             title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
             url: "https://www.ciklid.org/artregister/art.php?ID=301"
             accessed: "2026-10-13"
           value:
             min: 7.5
             max: 8
-          note: Specialist aquarium recommendation.
+          note: "Specialist aquarium recommendation."
         - source:
-            kind: database
+            kind: "database"
             title: "Einrichtungsbeispiele: Haplochromis latifasciatus husbandry profile."
             url: "https://www.einrichtungsbeispiele.de/zierfische/afrika/haplochromis-latifasciatus-slnk.html"
             accessed: "2026-10-13"
           value:
             min: 7.5
             max: 8.5
-          note: Structured aquarium recommendation.
+          note: "Structured aquarium recommendation."
         - source:
-            kind: database
+            kind: "database"
             title: "Guidarium: Zebra Obliquidens"
             url: "https://guidarium.com/fishes/zebra-obliquidens"
             accessed: "2026-10-13"
           value:
             min: 7.5
             max: 8.6
-          note: Structured aquarium recommendation.
+          note: "Structured aquarium recommendation."
         - source:
-            kind: website
+            kind: "website"
             title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
             url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
             accessed: "2026-10-13"
           value:
             min: 7.5
             max: 8.5
-          note: Breeder aquarium recommendation.
+          note: "Breeder aquarium recommendation."
         - source:
-            kind: website
+            kind: "website"
             title: "Fishkeeper: Zebra Obliquidens"
             url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
             accessed: "2026-10-13"
           value:
             min: 7.5
             max: 8.5
-          note: Retail aquarium recommendation.
+          note: "Retail aquarium recommendation."
         - source:
-            kind: website
+            kind: "website"
             title: "LiveAquaria structured care sheet: Zebra Obliquidens"
             url: "https://www.liveaquaria.com/products/zebra-obliquidens"
             accessed: "2026-10-13"
           value:
             min: 7.8
             max: 8.6
-          note: Retail aquarium recommendation.
+          note: "Retail aquarium recommendation."
         - source:
-            kind: website
+            kind: "website"
             title: "Bay Bridge Aquarium: Zebra Obliquidens care sheet"
             url: "https://www.baybridgeaquarium.com/products/zebra-obliquidens"
             accessed: "2026-10-13"
           value:
             min: 7.8
             max: 9
-          note: Retail recommendation without chronic outcomes.
+          note: "Retail recommendation without chronic outcomes."
         - source:
-            kind: website
+            kind: "website"
             title: "AquariumDomain species profile: Zebra Obliquidens"
             url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
             accessed: "2026-10-13"
           value:
             min: 7
             max: 8.5
-          note: Hobby aquarium recommendation on a page with a wrong lake label.
+          note: "Hobby aquarium recommendation on a page with a wrong lake label."
         - source:
-            kind: literature
-            title: "Ongom, Andama and Lukubye (2017). Physico-Chemical Quality of Lake Kyoga at Selected Landing\
-              \ Sites and Anthropogenic Activities. Table 1."
+            kind: "literature"
+            title: "Ongom, Andama and Lukubye (2017). Physico-Chemical Quality of Lake Kyoga at Selected Landing Sites and Anthropogenic Activities. Table 1."
             url: "https://doi.org/10.4236/jwarp.2017.911080"
             accessed: "2026-10-13"
           value:
@@ -601,8 +581,8 @@ features:
             max: 9.6
           note: Natural fish-habitat observation used for containment.
         - source:
-            kind: literature
-            title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
+            kind: "literature"
+            title: "Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo."
             url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
             accessed: "2026-10-13"
           value:
@@ -620,15 +600,23 @@ features:
             max: 9.9
           note: Wider lake observations; the tally does not retain both endpoints.
       verification:
-        method: qualified-majority
+        method: "adjudicated"
         votes:
           agree: 4
           total: 6
+        replaced:
+          min: 6.8
+          max: 9.6
+        replacedMethod: "qualified-majority"
     verification:
-      method: qualified-majority
+      method: "adjudicated"
       votes:
         agree: 4
         total: 6
+      replaced:
+        min: 6.8
+        max: 9.6
+      replacedMethod: "qualified-majority"
   ghDgh:
     value:
       min: 4
@@ -2265,13 +2253,7 @@ profile:
         url: "https://www.ciklid.org/artregister/art.php?ID=301"
         accessed: "2026-10-13"
   habitat:
-    text: "Vegetated shores and shallow water are central to its native setting. Newman's Nawampasa field account\
-      \ describes dense submerged plants above mud and accumulated plant material. The two lakes have their\
-      \ own chemistry; Victoria-basin membership does not justify substituting Lake Victoria measurements.\
-      \ The natural values retained here are rounded decisions from incomplete Kyoga and Nawampasa evidence.\
-      \ Wider field readings include 24.5 to 30.4 C, pH 6.5 to 9.9, and substantially softer regional mean\
-      \ hardness than the chosen GH interval. These lake observations do not identify the conditions occupied\
-      \ by every wild individual."
+    text: "Vegetated shores and shallow water are central to its native setting. Newman's Nawampasa field account describes dense submerged plants above mud and accumulated plant material. The two lakes have their own chemistry; Victoria-basin membership does not justify substituting Lake Victoria measurements. The natural values retained here are rounded decisions from incomplete Kyoga and Nawampasa evidence. Wider field readings include 24.5 to 30.4 C, pH 6.5 to 9.9, and substantially softer regional mean hardness than the chosen GH interval. These lake observations do not identify the conditions occupied by every wild individual. Shallow, productive Kyoga water can develop daytime pH peaks through photosynthesis; the 2023 fish-habitat survey reports pH 7.0 to 9.6. Such peaks are notable field conditions rather than stable aquarium targets or evidence of chronic tolerance by this species."
     sources:
       - kind: literature
         title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
@@ -2539,6 +2521,9 @@ provenance:
     - role: adjudicator
       model: gpt-6.1-sol
       date: "2026-10-13"
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: "2026-10-14"
   disagreements:
     - field: features.diet
       proposals:
@@ -2665,18 +2650,8 @@ provenance:
             max: 9.6
       decision:
         min: 6.8
-        max: 9.6
-      rationale: "Tally method qualified-majority; agree 4 of 6. The qualified-majority decision is 6.8 to\
-        \ 9.6, with four of six votes agreeing within the pH threshold. Fishing areas in Ongom reach 6.8 to\
-        \ 7.5, the 2023 shallow fish-habitat survey reaches 7.0 to 9.6, and Newman reports about 7.0 to 7.5\
-        \ in Nawampasa. Obubu's eastern-arm series has a wider union of 6.5 to 9.9; it documents lake variation\
-        \ but not this species occupying every extreme. Waste-associated readings down to 5.7 are also outside\
-        \ the selected envelope. The tally favors the fish-habitat interpretation over both the 9.0 ceiling\
-        \ and the broader 6.5 to 9.9 proposal. Seasonal photosynthesis can produce transient high pH. The Naigaga\
-        \ abstract contains no confirmable numeric pH range. generator proposed {\"min\": 6.8, \"max\": 9};\
-        \ checker-a proposed {\"min\": 7, \"max\": 9.6}; checker-b proposed {\"min\": 6.8, \"max\": 9}; checker-c\
-        \ proposed {\"min\": 6.8, \"max\": 9.6}; tiebreaker-1 proposed {\"min\": 6.5, \"max\": 9.9}; tiebreaker-2\
-        \ proposed {\"min\": 6.8, \"max\": 9.6}."
+        max: 9
+      rationale: "The qualified-majority decision of pH 6.8 to 9.6 is replaced with 6.8 to 9.0 because the upper endpoint is a daytime photosynthetic peak in shallow Kyoga water, not a typical stable condition relevant to aquarium keeping. The generator and checker-b propose 6.8 to 9.0: Ongom et al. report 6.8 to 7.5 in fishing areas, Newman describes 7.0 to 7.5 in Nawampasa, and the FAO Kyoga compilation gives 7.6 to 9.0. The 2023 survey establishes that pH 9.6 occurs, but concerns Nile perch and Nile tilapia habitats and does not establish occupancy or sustained exposure by this species. That exceptional observation is described in the habitat."
     - field: features.ghDgh
       proposals:
         - by: generator
@@ -2819,17 +2794,8 @@ provenance:
             max: 9.6
       decision:
         min: 6.8
-        max: 9.6
-      rationale: "Tally method qualified-majority; agree 4 of 6. The qualified-majority tally fixes 6.8 to\
-        \ 9.6 with four of six agreeing votes, then contains the decided natural interval. Seriously Fish recommends\
-        \ 7.2 to 8.2 and the Nordic register 7.5 to 8.0; other aquarium accounts extend toward 8.5 or 9.0.\
-        \ The endpoints of the selected envelope come from habitat coverage, not controlled multiyear aquarium\
-        \ outcomes. The wider 6.5 to 9.9 eastern-arm source range and tiebreaker-1 proposal are recorded but\
-        \ excluded by the tally. Stable central conditions have stronger husbandry support than continuous\
-        \ exposure to either outer endpoint. generator proposed {\"min\": 6.8, \"max\": 9}; checker-a proposed\
-        \ {\"min\": 7, \"max\": 9.6}; checker-b proposed {\"min\": 6.8, \"max\": 9}; checker-c proposed {\"\
-        min\": 6.8, \"max\": 9.6}; tiebreaker-1 proposed {\"min\": 6.5, \"max\": 9.9}; tiebreaker-2 proposed\
-        \ {\"min\": 6.8, \"max\": 9.6}."
+        max: 9
+      rationale: "The qualified-majority decision of pH 6.8 to 9.6 is replaced with 6.8 to 9.0 because a transient photosynthetic maximum does not demonstrate healthy long-term aquarium exposure at 9.6. The generator and checker-b support this containing range. Seriously Fish recommends 7.2 to 8.2, the Nordic register 7.5 to 8.0, and Bay Bridge gives a lower-weight recommendation extending to 9.0. The selected tolerance contains the decided natural range; its outer endpoints are less secure than the shared husbandry core, so confidence is low."
     - field: features.ghDgh.tolerance
       proposals:
         - by: generator
