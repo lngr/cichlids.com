@@ -406,3 +406,79 @@ The bucket is private; the manifests configure no at-rest encryption because
 Hetzner offers SSE-C with a separate customer key, and no SSE-S3 or SSE-KMS.
 The [database runbook](../apps/postgres/README.md) lists supported actions,
 provider sources, credential provisioning and runtime verification.
+
+## Public exposure safeguards
+
+Backups are private and unencrypted on the client side because no mature CloudNativePG
+tool encrypts before upload. Barman Cloud supports AWS SSE-S3 and KMS; Hetzner supports
+SSE-C, which Barman does not support. Client-side encryption is required when a mature
+compatible tool exists (ADR-0013).
+
+Two independent checks enforce private access. CI runs backup and platform source
+guardrails and Conftest policy tests on every push and pull request. The source checks
+allow only private ACLs and the exact database writer policy in the backup tier. They
+reject website hosting and CORS configurations. Platform bucket policies belong to the
+API, whose policy test restricts anonymous access to `s3:GetObject` on `variants/*` and
+`forum_attachments/*`. The plan gate also rejects public grants and unknown access
+settings before execution. Additional S3 buckets follow the private default; the named
+media master has the explicit public prefix exception.
+
+The `exposure-watch.yml` workflow runs every three hours at minute 17 UTC and supports
+`workflow_dispatch`. It has `contents: read` permission and uses no secrets. Bucket names,
+location and private canary keys are committed in `tools/public-exposure.json`. Keep this
+configuration aligned with the actual bucket names and location. The probe makes plain
+unauthenticated HTTPS GET requests using virtual-host and path addressing. Anonymous
+listing of `cichlids-db-backup`, `cichlids-media-backup` and `cichlids-media-master`, and reads
+of each private canary, must return HTTP 403. HTTP 200, HTTP 404, redirects, timeouts and
+connection failures fail the workflow. Public variants require no probe. Responses do
+not establish that a canary exists; the operator creates and preserves these objects.
+
+GitHub sends scheduled workflow notifications to the user who last modified the cron
+syntax. The repository owner must be that user and enable Actions email or web
+notifications in GitHub Settings, Notifications, System, Actions; select failed workflow
+notifications. With these settings, a failed scheduled run alerts the repository owner
+through GitHub. See [scheduled workflow notifications](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)
+and [Actions notification settings](https://docs.github.com/en/subscriptions-and-notifications/how-tos/managing-github-actions-notifications).
+GitHub schedules can be delayed; this check detects exposure on each executed run.
+
+### Operator activation
+
+Create the canaries once on the operator workstation with the operator's project keys.
+The commands use the credential file defined above and contain no credential values.
+Keep the objects at these keys; backup objects inherit Compliance retention.
+
+```sh
+set -a
+. "${CICHLIDS_ENV:-$HOME/.config/cichlids/cichlids.env}"
+set +a
+export AWS_EC2_METADATA_DISABLED=true
+unset AWS_SESSION_TOKEN AWS_PROFILE AWS_DEFAULT_PROFILE
+EXPOSURE_ENDPOINT="${CICHLIDS_S3_ENDPOINT:-https://nbg1.your-objectstorage.com}"
+EXPOSURE_REGION="${CICHLIDS_S3_REGION:-nbg1}"
+s3() { command aws "$@" --endpoint-url "$EXPOSURE_ENDPOINT" --region "$EXPOSURE_REGION"; }
+export AWS_ACCESS_KEY_ID="$CICHLIDS_S3_BACKUP_ACCESS_KEY"
+export AWS_SECRET_ACCESS_KEY="$CICHLIDS_S3_BACKUP_SECRET_KEY"
+for exposure_bucket in cichlids-db-backup cichlids-media-backup; do
+  printf 'private exposure canary\n' | s3 s3 cp - \
+    "s3://$exposure_bucket/exposure-canary/do-not-delete.txt" --content-type text/plain
+done
+export AWS_ACCESS_KEY_ID="$CICHLIDS_S3_PRIMARY_ACCESS_KEY"
+export AWS_SECRET_ACCESS_KEY="$CICHLIDS_S3_PRIMARY_SECRET_KEY"
+printf 'private exposure canary\n' | s3 s3 cp - \
+  s3://cichlids-media-master/originals/exposure-canary/do-not-delete.txt --content-type text/plain
+```
+
+After publication on `main`, activate Actions failure notifications as described above and
+run the workflow once from the Actions UI or the authenticated operator's GitHub CLI:
+
+```sh
+gh workflow run exposure-watch.yml --ref main
+```
+
+Open the run and confirm `public exposure probe: 12/12 checks passed`. A failure requires
+inspection of the reported bucket and access settings. Offline verification uses a local
+fake HTTP server and requires no keys:
+
+```sh
+node tools/check-public-exposure.mjs --self-test
+```

@@ -11,7 +11,7 @@ Keycloak's backing store), the **object store** for media ([ADR-0009](0009-hosti
 and **Git** for configuration and infrastructure ([ADR-0010](0010-gitops-and-infrastructure-as-code.md)).
 
 Of these, **database recovery is the critical risk** and, by experience, the hardest part to
-get right — a backup that has never been restored is not a backup, and a long recovery-point
+get right, a backup that has never been restored is not a backup, and a long recovery-point
 window means real data loss. Backup, replication, and recovery must therefore be **designed in
 from the start**, not bolted on later. Media and configuration recovery must also be covered so
 that the whole system can be rebuilt from a provider-independent position.
@@ -22,8 +22,8 @@ Backup and disaster recovery are first-class and binding. The concrete tooling i
 **CloudNativePG** operator's object-store backups ([ADR-0010](0010-gitops-and-infrastructure-as-code.md)).
 The following principles hold:
 
-1. **Defined RPO/RTO.** **RPO ≤ 5 minutes** (continuous write-ahead-log archiving) and
-   **RTO ≤ 4 hours** (restore-from-backup on the single node). RTO improves automatically once a
+1. **Defined RPO/RTO.** **RPO at most 5 minutes** (continuous write-ahead-log archiving) and
+   **RTO at most 4 hours** (restore-from-backup on the single node). RTO improves automatically once a
    standby is added (only on massive growth, per ADR-0010). These targets are explicit and
    verified, not assumed.
 
@@ -43,16 +43,22 @@ The following principles hold:
    read-capable key. No backup-project key leaves the operator.
 
 3. **Off-provider copy (3-2-1) and confidentiality.** An independent copy lives outside the
-   primary database host's provider and the media-serving provider. Backup encryption uses a
-   mechanism supported by both the storage provider and the backup client. Customer-provided
-   encryption requires durable recovery-key custody. When the configured path has no compatible
-   encryption setup, access is restricted to a private bucket, the operator and the scoped
-   cluster writer key, with TLS transport. The backup procedure states the encryption capability
-   and verifies the independent copy explicitly.
+   primary database host's provider and the media-serving provider. Backups are private and
+   use TLS transport. They are unencrypted on the client side because no mature tool for
+   CloudNativePG encrypts before upload. Barman Cloud supports AWS SSE-S3 and KMS;
+   Hetzner supports SSE-C, which Barman does not support. Client-side encryption is required
+   when a mature compatible tool exists, with durable recovery-key custody.
+
+   Two independent safeguards protect against accidental public exposure. Static source and
+   plan checks before every change reject public backup access and restrict anonymous media
+   reads to serving prefixes. These checks block the CI merge gate. A scheduled external
+   probe uses unauthenticated HTTPS requests and no keys to verify that backup listing,
+   backup canaries and media originals are private. Any response other than access denied
+   fails the probe and alerts the repository owner through configured GitHub notifications.
 
 4. **Restores are tested on a dedicated restore-test environment.** A scheduled job regularly
    restores the **real (un-anonymized)** production backup into a **separate, strictly
-   access-controlled, ephemeral** environment — **no agent/CI access** — validates it, then
+   access-controlled, ephemeral** environment with **no agent/CI access**, validates it, then
    tears it down. This is the genuine restore drill (a faithful restore of real data); a backup
    path that is not exercised is treated as broken. Real PII therefore exists there only
    transiently, minimized and locked down.
@@ -75,7 +81,7 @@ The following principles hold:
 8. **Configuration and Keycloak.** Keycloak's data sits in Postgres and is covered by the
    database backup; the realm is declarative in Git, and infrastructure is reproducible via IaC
    ([ADR-0010](0010-gitops-and-infrastructure-as-code.md)). A full rebuild is therefore: IaC apply
-   → cluster bootstrap → database restore → media re-seed.
+   then cluster bootstrap then database restore then media re-seed.
 
 ## Considered Options
 
@@ -98,13 +104,13 @@ The following principles hold:
     by the object-store PITR plus the immutable off-project copy above.
 - **Periodic `pg_dump` to a cron job only.**
   - *Pro:* trivially simple.
-  - *Con:* no PITR, large RPO, slow restore as data grows, and easy to fail silently — exactly
+  - *Con:* no PITR, large RPO, slow restore as data grows, and easy to fail silently, exactly
     the historical pain point.
 
 ## Rationale
 
 Database data loss is existential and historically the hardest operational problem, so the
-recovery path — not just the backup — must be engineered and continuously proven. Continuous
+recovery path must be engineered and continuously proven. Continuous
 WAL archiving keeps the recovery-point window small; a dedicated restore-test environment that
 regularly restores the **real** backup verifies recovery. Synthetic non-production data isolates
 application testing from production identities. Keeping an independent copy off-provider matches
@@ -121,8 +127,9 @@ entire system can be reconstituted from a provider-independent baseline.
   standby replica adds cost when introduced; retention storage to pay for (cheap relative to the
   risk).
 - **Operational proof:** restore drills measure RPO and RTO, verify complete WAL history and
-  demonstrate the independent provider copy. Encryption setup and recovery-key custody are
-  explicit parts of the provider-specific backup procedure.
+  demonstrate the independent provider copy. The backup procedure verifies
+  private access through both independent safeguards and documents encryption capabilities.
+  Recovery-key custody is required for encrypted copies.
 
 ## References
 

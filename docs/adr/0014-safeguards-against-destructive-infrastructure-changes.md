@@ -7,15 +7,15 @@
 ## Context and Problem Statement
 
 Under strict, reconciling GitOps ([ADR-0010](0010-gitops-and-infrastructure-as-code.md)),
-automation — CI pipelines and coding agents — can change infrastructure. An automated agent can,
+automation (CI pipelines and coding agents) can change infrastructure. An automated agent can,
 during debugging, execute a **catastrophic destructive operation**: `tofu destroy`, replacing or
 recreating the whole cluster, or deleting the database, volumes, or object-storage buckets. This
 has occurred in practice.
 
-Human review is **not** a sufficient safeguard: a single critical destructive line can — and
-does — slip through review unnoticed. Protection must therefore be **machine-enforced and
+Human review is **not** a sufficient safeguard: a critical destructive line can slip through
+review unnoticed. Protection must therefore be **machine-enforced and
 layered (defense in depth)**, designed so that the dangerous outcome is prevented *by
-construction* and, failing that, fully recoverable — never dependent on a reviewer catching the
+construction* and, failing that, fully recoverable, never dependent on a reviewer catching the
 line.
 
 ## Decision
@@ -28,22 +28,22 @@ reach (ADR-0017) and are immutable, so any destruction of live infrastructure is
 Within the live project, accidents are prevented by Layer 1 and caught by the plan-diff gate
 (Layer 3); recovery is guaranteed by Layer 4.
 
-### Layer 1 — Critical resources are undeletable by default (by construction)
+### Layer 1: Critical resources are undeletable by default (by construction)
 - **OpenTofu `lifecycle { prevent_destroy = true }`** on every critical resource (cluster node
-  and its disk, DB volume, master and backup buckets, DNS zone) → `destroy`/replace **fails**.
-- **Hetzner delete-protection** flag on servers and volumes → the provider API refuses deletion
+  and its disk, DB volume, master and backup buckets, DNS zone) makes `destroy`/replace **fail**.
+- **Hetzner delete-protection** flag on servers and volumes makes the provider API refuse deletion
   until protection is *explicitly* removed.
 - **Object storage immutability (per bucket):** the **backup** bucket uses **Object Lock in
-  Compliance mode** (immutable for the retention window — not even root can delete or shorten
+  Compliance mode** (immutable for the retention window, not even root can delete or shorten
   it); the **media-master** bucket uses **versioning + Object Lock in Governance mode** (routine
-  credentials cannot delete/overwrite, but a privileged break-glass action can — so **GDPR
+  credentials cannot delete/overwrite, but a privileged break-glass action can, so **GDPR
   erasure remains possible**). If the chosen provider lacks Object Lock, the compliance-locked
   copy lives on one that does (e.g. Backblaze B2 / S3). Retention durations are set in
   [ADR-0013](0013-backup-and-disaster-recovery.md).
-- **Argo CD `Prune=false` + finalizers** on stateful resources → reconciliation never deletes the
-  CloudNativePG cluster, PVCs, or namespaces, even if a manifest disappears.
+- **Argo CD `Prune=false` + finalizers** on stateful resources prevent reconciliation from deleting
+  the CloudNativePG cluster, PVCs, or namespaces, even if a manifest disappears.
 
-### Layer 2 — Separated blast radius (the irreplaceable data is isolated)
+### Layer 2: Separated blast radius (the irreplaceable data is isolated)
 - **The immutable backups live in a separate project with no cloud token** (ADR-0017): the
   database PITR/WAL backups and the off-master copy of the media originals. No automation
   credential can see or delete them, and Compliance-mode Object Lock blocks deletion even with the
@@ -54,7 +54,7 @@ Within the live project, accidents are prevented by Layer 1 and caught by the pl
   (ADR-0017). The live infrastructure is therefore guarded against accidents by Layer 1, not by
   withholding it from automation.
 
-### Layer 3 — Fail-closed plan-diff gate (catch before execution)
+### Layer 3: Fail-closed plan-diff gate (catch before execution)
 - **Automated plan-diff policy gate:** when CI applies the live project, **Conftest (OPA/Rego)**
   evaluates the `tofu plan -json` and **fails the pipeline (default deny)** on any `delete` or
   `replace` of a **critical** resource, while allowing in-place updates (so CI can resize a volume
@@ -67,21 +67,44 @@ Within the live project, accidents are prevented by Layer 1 and caught by the pl
   `prevent_destroy`/delete-protection; the immutable backups make even a mistaken one recoverable.
 - Branch protection on `main` (PR + green gate + review) per [ADR-0005](0005-ci-platform.md).
 
-### Layer 4 — Assume-breach recovery (last line)
+### Layer 4: Assume-breach recovery (last line)
 - **Immutable, off-provider, tested backups** ([ADR-0013](0013-backup-and-disaster-recovery.md)),
-  stored with credentials that agents/CI do **not** hold → even a successful destroy is fully
+  stored with credentials that agents/CI do **not** hold make a successful destroy fully
   recoverable.
+
+### Confidentiality: independent protection against public exposure
+
+Backups are private and unencrypted on the client side because no mature tool for
+CloudNativePG encrypts before upload. Client-side encryption is required when a mature
+compatible tool exists (ADR-0013). Media originals are private; anonymous object reads are
+limited to the variants and forum attachment prefixes.
+
+Two independent safeguards enforce this access boundary:
+
+- Static source and plan checks before every change reject public bucket ACLs, anonymous
+  backup principals, backup permissions outside the scoped database writer capability,
+  website hosting and CORS configuration. Anonymous media policies grant only object reads
+  within the public serving prefixes. Unknown planned access settings fail closed. These
+  checks form a required CI merge gate and run before infrastructure execution.
+- An external scheduled probe operates without keys or secrets and checks both supported
+  HTTPS addressing forms. Anonymous listing of every backup and media master bucket and
+  anonymous reads of backup and media original canaries must return access denied. Every
+  other response fails the workflow. GitHub failure notifications alert the repository owner.
+
+The external probe verifies the deployed access boundary independently of infrastructure
+code, credentials and the path used to change a bucket. The operator owns notification
+settings and the private canary objects.
 
 ## Considered Options
 
-- **Full machine-enforced defense in depth (all four layers) — chosen.**
+- **Full machine-enforced defense in depth (all four layers), chosen.**
   - *Pro:* the catastrophic outcome is prevented by construction *and* by a fail-closed pipeline
     gate *and* recoverable if all else fails; protection does not depend on a reviewer spotting a
     line.
   - *Con:* friction for legitimate destroys; discipline to tag critical resources; two credential
     tiers and a policy gate to build and maintain.
 - **Rely on human review / approval only.**
-  - *Con:* demonstrably insufficient — critical destructive lines slip through review; no backstop
+  - *Con:* demonstrably insufficient, critical destructive lines slip through review; no backstop
     when they do. Rejected.
 - **In-CI override via an "allow-destroy" label / approval.**
   - *Con:* coding agents run under the operator's own GitHub identity, so an agent could grant

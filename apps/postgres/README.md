@@ -127,8 +127,11 @@ lock deadlines; a default-retention change applies to newly written versions.
 Hetzner supports these lifecycle actions, with only `NoncurrentDays` for
 noncurrent expiration. Its encryption support is SSE-C only. The manifests
 configure neither SSE-S3 nor SSE-KMS, and configure no SSE-C encryption key.
-Backups therefore have no configured at-rest encryption. The bucket is private
-to the operator and the cluster writer key, with HTTPS transport. The independent
+Backups are unencrypted on the client side because no mature CloudNativePG tool
+encrypts before upload. Barman Cloud supports AWS SSE-S3 and KMS, while Hetzner
+supports SSE-C, which Barman does not support. Client-side encryption is required
+when a mature compatible tool exists (ADR-0013). The bucket is private to the
+operator and the cluster writer key, with HTTPS transport. The independent
 provider copy and restore drill require separate operational verification.
 
 The bucket policy grants exactly:
@@ -146,6 +149,11 @@ multipart listing calls, so `ListMultipartUploadParts` and
 are absent. The principal is
 `arn:aws:iam:::user/p<primary-project-id>:<writer-access-key-id>`. The access key ID
 is public configuration; its secret key never enters the backup tier.
+
+Static backup and platform guardrails and the plan policy gate reject public exposure
+before changes. The keyless `exposure-watch` workflow checks anonymous listing and
+private canaries every three hours. See the [exposure runbook](../../infra/README.md#public-exposure-safeguards)
+for one-time canary creation, GitHub failure notifications and workflow dispatch.
 
 ## Staging and previews
 
