@@ -173,7 +173,7 @@ jobs:
           python3 tools/check-remote-state-backend.py --self-test
           python3 tools/check-remote-state-backend.py
       - name: Destroy-gate policy unit tests (ADR-0014 Layer 3)
-        run: conftest verify -p policy/destroy_gate.rego -p policy/destroy_gate_test.rego
+        run: conftest verify -p policy
 
   # Story: task-2.28
   # Not covered by CI: the seeded Playwright smoke (TASK-2.24), the Maestro flows (TASK-2.25) and a

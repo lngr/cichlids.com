@@ -11,6 +11,8 @@ Parses the .tf sources directly (brace-matched resource blocks) so it needs no c
 credentials and runs offline in CI.
 Story: task-2.2, task-2.18, task-2.22
 """
+import importlib.util
+from pathlib import Path
 import contextlib
 import io
 import copy
@@ -69,6 +71,12 @@ def main(blocks=None):
         if vbody is None or "Enabled" not in vbody:
             failures.append(f"aws_s3_bucket_versioning.{bucket}: versioning is not Enabled")
 
+    exposure_spec = importlib.util.spec_from_file_location(
+        'exposure', Path(HERE).parents[1] / 'tools/check-bucket-exposure.py')
+    exposure = importlib.util.module_from_spec(exposure_spec)
+    exposure_spec.loader.exec_module(exposure)
+    failures += exposure.check(blocks, backup=False)
+
     if failures:
         print("platform guardrails missing (ADR-0014):", file=sys.stderr)
         for f in failures:
@@ -93,12 +101,53 @@ def self_test():
     changed = copy.deepcopy(good)
     changed[("aws_s3_bucket_versioning", "media_master")] = 'status = "Suspended"'
     cases.append(("disabled versioning", changed, 1))
+    for acl in ['public-read', 'public-read-write', 'authenticated-read', 'var.bucket_acl']:
+        changed = copy.deepcopy(good)
+        name = 'media_master'
+        changed[("aws_s3_bucket_acl", "exposure")] = f'bucket = aws_s3_bucket.{name}.id\nacl = "{acl}"'
+        cases.append((f"unsafe ACL {acl}", changed, 1))
+    changed = copy.deepcopy(good)
+    changed[("aws_s3_bucket_acl", "exposure")] = 'access_control_policy { grant { grantee { type = "Group" uri = "http://acs.amazonaws.com/groups/global/AllUsers" } permission = "READ" } }'
+    cases.append(("anonymous ACL grant", changed, 1))
+    name = 'media_master'
+    for suffix in ['website_configuration', 'cors_configuration']:
+        changed = copy.deepcopy(good)
+        changed[(f"aws_s3_bucket_{suffix}", "exposure")] = f'bucket = aws_s3_bucket.{name}.id'
+        cases.append((suffix, changed, 1))
+    for attribute in ['acl = "public-read"', 'website { index_document = "index.html" }', 'cors_rule { allowed_origins = ["*"] }']:
+        changed = copy.deepcopy(good)
+        changed[("aws_s3_bucket", name)] += '\n' + attribute
+        cases.append((f"inline {attribute}", changed, 1))
+    changed = copy.deepcopy(good)
+    changed[("aws_s3_bucket_public_access_block", "exposure")] = 'block_public_acls = false'
+    cases.append(("disabled public ACL block", changed, 1))
+    changed = copy.deepcopy(good)
+    changed[("aws_s3_bucket_policy", "exposure")] = 'policy = "public"'
+    cases.append(("platform policy outside API ownership", changed, 1))
+    for label, body in [
+        ('comment hides public ACL', '# acl = "private"\nacl = "public-read"'),
+        ('dynamic grants', 'dynamic "access_control_policy" { for_each = [1] content { grant {} } }'),
+        ('ACL expression unresolved', 'acl = var.acl'),
+    ]:
+        changed = copy.deepcopy(good)
+        changed[("aws_s3_bucket_acl", "exposure")] = body
+        cases.append((label, changed, 1))
+    for kind, body in [
+        ('aws_s3_bucket_public_access_block', 'block_public_acls = true ? false : true\nignore_public_acls = true\nblock_public_policy = true\nrestrict_public_buckets = true'),
+        ('aws_s3_bucket_acl', 'acl = "private"\ndynamic "access_control_policy" { for_each = var.grants content {} }'),
+    ]:
+        changed = copy.deepcopy(good)
+        changed[(kind, "exposure")] = body
+        cases.append((f"computed exposure {kind}", changed, 1))
+    errors = []
     for label, blocks, expected in cases:
         with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
             got = main(blocks)
         if got != expected:
             print(f"platform guardrails self-test FAILED: {label}", file=sys.stderr)
-            return 1
+            errors.append(label)
+    if errors:
+        return 1
     print(f"platform guardrails self-test OK ({len(cases)} cases)")
     return 0
 

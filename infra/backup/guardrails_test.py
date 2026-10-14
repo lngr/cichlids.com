@@ -73,6 +73,12 @@ def main(blocks=None):
     policy_spec.loader.exec_module(policy)
     failures += policy.check_writer_policy(policy.read_tf(HERE))
 
+    exposure_spec = importlib.util.spec_from_file_location(
+        'exposure', Path(HERE).parents[1] / 'tools/check-bucket-exposure.py')
+    exposure = importlib.util.module_from_spec(exposure_spec)
+    exposure_spec.loader.exec_module(exposure)
+    failures += exposure.check(blocks, backup=True)
+
     if failures:
         print("backup guardrails missing (ADR-0014):", file=sys.stderr)
         for f in failures:
@@ -96,12 +102,65 @@ def self_test():
         changed = copy.deepcopy(good)
         changed[("aws_s3_bucket_versioning", name)] = 'status = "Suspended"'
         cases.append((f"disabled versioning {name}", changed, 1))
+    for acl in ['public-read', 'public-read-write', 'authenticated-read', 'var.bucket_acl']:
+        changed = copy.deepcopy(good)
+        name = 'database_backup'
+        changed[("aws_s3_bucket_acl", "exposure")] = f'bucket = aws_s3_bucket.{name}.id\nacl = "{acl}"'
+        cases.append((f"unsafe ACL {acl}", changed, 1))
+    changed = copy.deepcopy(good)
+    changed[("aws_s3_bucket_acl", "exposure")] = 'access_control_policy { grant { grantee { type = "Group" uri = "http://acs.amazonaws.com/groups/global/AllUsers" } permission = "READ" } }'
+    cases.append(("anonymous ACL grant", changed, 1))
+    name = 'database_backup'
+    for suffix in ['website_configuration', 'cors_configuration']:
+        changed = copy.deepcopy(good)
+        changed[(f"aws_s3_bucket_{suffix}", "exposure")] = f'bucket = aws_s3_bucket.{name}.id'
+        cases.append((suffix, changed, 1))
+    for attribute in ['acl = "public-read"', 'website { index_document = "index.html" }', 'cors_rule { allowed_origins = ["*"] }']:
+        changed = copy.deepcopy(good)
+        changed[("aws_s3_bucket", name)] += '\n' + attribute
+        cases.append((f"inline {attribute}", changed, 1))
+    changed = copy.deepcopy(good)
+    changed[("aws_s3_bucket_public_access_block", "exposure")] = 'block_public_acls = false'
+    cases.append(("disabled public ACL block", changed, 1))
+    for principal in ['"*"', '{ AWS = "*" }', '{ AWS = ["*"] }', '{ CanonicalUser = "" }', '{ AWS = "arn:aws:iam:::user/p1:other" }']:
+        changed = copy.deepcopy(good)
+        changed[("aws_s3_bucket_policy", "exposure")] = f'policy = jsonencode({{ Statement = [{{ Effect = "Allow" Principal = {principal} Action = "s3:GetObject" Resource = "*" }}] }})'
+        cases.append((f"extra policy {principal}", changed, 1))
+    writer = good[("aws_s3_bucket_policy", "database_writer")]
+    for label, replacement in [
+        ("wildcard writer", writer.replace('arn:aws:iam:::user/p${var.database_writer_primary_project_id}:${var.database_writer_access_key_id}', '*')),
+        ("other writer", writer.replace('${var.database_writer_access_key_id}', 'other')),
+        ("extra writer action", writer.replace('"s3:PutObject"', '"s3:PutObject", "s3:DeleteObject"')),
+        ("list on objects", writer.replace('["s3:ListBucket"]', '["s3:GetObject"]')),
+        ("extra AWS principal", writer.replace('Principal = { AWS =', 'Principal = { CanonicalUser = "anonymous", AWS =')),
+    ]:
+        changed = copy.deepcopy(good)
+        changed[("aws_s3_bucket_policy", "database_writer")] = replacement
+        cases.append((label, changed, 1))
+    for label, body in [
+        ('comment hides public ACL', '# acl = "private"\nacl = "public-read"'),
+        ('dynamic grants', 'dynamic "access_control_policy" { for_each = [1] content { grant {} } }'),
+        ('ACL expression unresolved', 'acl = var.acl'),
+    ]:
+        changed = copy.deepcopy(good)
+        changed[("aws_s3_bucket_acl", "exposure")] = body
+        cases.append((label, changed, 1))
+    for kind, body in [
+        ('aws_s3_bucket_public_access_block', 'block_public_acls = true ? false : true\nignore_public_acls = true\nblock_public_policy = true\nrestrict_public_buckets = true'),
+        ('aws_s3_bucket_acl', 'acl = "private"\ndynamic "access_control_policy" { for_each = var.grants content {} }'),
+    ]:
+        changed = copy.deepcopy(good)
+        changed[(kind, "exposure")] = body
+        cases.append((f"computed exposure {kind}", changed, 1))
+    errors = []
     for label, blocks, expected in cases:
         with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
             got = main(blocks)
         if got != expected:
             print(f"backup guardrails self-test FAILED: {label}", file=sys.stderr)
-            return 1
+            errors.append(label)
+    if errors:
+        return 1
     print(f"backup guardrails self-test OK ({len(cases)} cases)")
     return 0
 
