@@ -12,7 +12,8 @@ Tooling around the species catalog in `data/species/`.
 - `crc.mjs`: reads the public part of the Cichlid Room Companion for the agents and keeps each page read in the source archive. The site blocks curl and headless browsers through a Cloudflare bot check, so the tool drives a headed Chromium on a virtual display.
 - `export-legacy-catalog.mjs`: exports the legacy species catalog with photo counts to `data/species/legacy-catalog.json`. It reads the restored legacy MySQL database read-only through its running container and holds catalog data only.
 - `prompts/`: prompts of the agent pipeline (generator, checker, tie-breaker, adjudicator and the shared rules) that produce species profiles.
-- `validate.mjs`: validator for profile files. `validate.test.mjs` holds its tests.
+- `build-directory.mjs`: builds the accepted-species directory and legacy mapping from archived catalog and FishBase inputs. `build-directory.test.mjs` holds its tests.
+- `validate.mjs`: validator for profile files and the species directory. `validate.test.mjs` holds its tests.
 - `source-trust.mjs`: loads and validates `data/species/source-trust.yaml` and resolves source trust by URL or kind. `source-trust.test.mjs` holds its tests.
 - `tally.mjs`: counts the votes of the agents of one work directory and decides the hard features that the votes settle. `tally.test.mjs` holds its tests.
 - `waterbodies.mjs`: loads and validates the table of measured lake values `data/species/waterbodies.yaml` and finds an entry by id, name or alias. `waterbodies.test.mjs` holds its tests.
@@ -33,6 +34,116 @@ The export script uses only Node built-ins. The validator needs the dependencies
 ```
 node tools/species-data/export-legacy-catalog.mjs
 ```
+
+## Species directory and legacy mapping
+
+`data/species/directory.yaml` lets the app list and select every accepted cichlid species,
+link to its original description and find a full profile where one exists. It contains one
+`species` entry per final `Current status: Valid as` record in the Catalog of Fishes family list.
+Historical status statements, uncertain names and records without a final status do not supply
+accepted species. The archived list contains 2,375 nominal records, including 1,771 accepted
+species and 557 synonym records. A synonym assigned only to a genus supplies no species alias.
+
+The build uses two immutable archive references in `build-directory.mjs`:
+
+- Eschmeyer's Catalog of Fishes, Cichlidae family list:
+  `researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-b612c649/2026-10-14T110429Z`.
+- FishBase species table v25.04:
+  `huggingface.co/datasets/cboettig/fishbase/resolve/main/data/fb/v25.04/parquet/species.parquet/2026-10-14T165859Z`.
+
+`resolveSnapshot` resolves references through the archive root, including
+`CICHLIDS_SOURCE_ARCHIVE`. The build reads catalog text and the FishBase binary locally and
+performs no network requests. `hyparquet`, pinned to `1.31.4`, reads Parquet through JavaScript.
+The archive preserves Parquet bytes in `original.bin` and identifies the dataset in `text.txt`;
+header and footer signatures distinguish Parquet from text and error documents.
+
+```sh
+node tools/species-data/archive-fetch.mjs https://huggingface.co/datasets/cboettig/fishbase/resolve/main/data/fb/v25.04/parquet/species.parquet
+node tools/species-data/build-directory.mjs
+npm --prefix tools/species-data run build-directory
+node tools/species-data/validate.mjs data/species/profiles/*.yaml
+```
+
+The two build commands are equivalent. Rebuilding sorts species by accepted name and mappings
+by numeric `legacyId`, uses stable YAML formatting and retains the source access dates from
+snapshot metadata. It prints a JSON report with species and FishBase match totals, inspected
+column names, Aquarium values, cichlid Aquarium counts, mapping counts and unresolved legacy
+names. FishBase Cichlidae rows have `FamCode: 349`; the report identifies that code through
+`Geophagus` rows. The relevant table columns are `SpecCode`, `Genus`, `Species`, `Author`,
+`FamCode` and `Aquarium`. The Aquarium value set is `commercial`, `highly commercial`,
+`never/rarely`, `potential`, `public aquariums`, `show aquarium` and `null`.
+
+### Directory fields
+
+The document holds `sources` once at file level, with the profile-source fields `kind`, `title`,
+`url`, `accessed` and `archived`. Its `species` list contains:
+
+- `id`: accepted name in lowercase kebab-case, matching the profile id convention.
+- `name`, `genus`, `epithet`, `author`, `year`: accepted taxonomy, with author names separated
+  from the numeric year and combination parentheses.
+- `subfamily`, `distribution`, `habitat`: the final catalog status section's values.
+- `originalDescription`: `citation` (original authors, year, pages and publication), numeric
+  `catalogRef`, reference-page `url`, `originalCombination` (original genus and epithet), and
+  `typeLocality`. Author initials in catalog brackets and figure or plate references are omitted
+  from the citation; alternate page numbers in brackets and publication qualifiers are retained.
+- `synonyms`: original combinations of final synonym records pointing to the accepted species,
+  plus its own original combination when different. Names are deduplicated and sorted.
+- `links`: accepted-name `catalogOfFishes` species query and `fishbase` summary URL or `null`.
+- `fishbase`: `{specCode, aquarium}` or `null`. Aquarium keeps the raw table value, including
+  `null`. Matching tries accepted genus and epithet, then catalog synonym combinations. Multiple
+  distinct FishBase candidates leave the match unresolved.
+- `profile`: id of the profile with the same `taxonomy.validName`, or `null`.
+
+Absent catalog values remain `null`. Directory stubs contain taxonomy and references;
+compatibility and husbandry facts belong to the full profiles.
+
+### Legacy mapping
+
+`data/species/legacy-mapping.yaml` holds `mappings`, one entry for each of the 829 records in
+`legacy-catalog.json`. Each entry has `legacyId`, `legacyName` (legacy genus and species),
+`target` (directory or trade-form id, or `null`) and `match`, with an optional `note`.
+
+| Match | Meaning |
+| --- | --- |
+| `profile` | A profile claims the legacy id. Its valid name or trade-form id determines the target. |
+| `exact` | The legacy name equals an accepted directory name. |
+| `synonym` | The legacy name equals a catalog original combination for that species. |
+| `correction` | A manually resolved spelling, gender ending or outdated combination, with the reason in `note`. |
+| `trade-form` | A manually identified undescribed aquarium form. |
+| `hybrid` | A manually identified hybrid. |
+| `domestic-form` | A manually identified domestic form. |
+| `open` | No authoritative or unambiguous automatic match, with `target: null`. |
+
+The build generates `profile`, `exact`, `synonym` and `open` in that priority order. It preserves
+existing `correction`, `trade-form`, `hybrid` and `domestic-form` entries, including their YAML
+comments and values. It makes no spelling corrections. Ambiguous original combinations remain
+open unless a profile or a manual entry establishes the target. A preserved entry that
+contradicts a profile fails validation.
+
+### Trade forms
+
+`data/species/trade-forms.yaml` holds `forms` for names without an accepted described species.
+The build seeds only forms implied by profiles with status `undescribed`, `hybrid` or
+`domestic-form`. Each entry contains the profile `id` and `taxonomy.validName` as `name`,
+`kind` (`trade-form` for undescribed profiles), `parents` (directory ids from `taxonomy.parents`,
+or an empty list), `note` (a curator's explanation, or `null`) and `sources` (the profile's
+taxonomy source). Existing forms retain their contents; missing profile-implied forms are
+appended. Further forms and mapping corrections require curation supported by sources.
+
+### Directory validation
+
+The validator CLI checks the full directory, mapping and trade forms with all profiles,
+independently of the profile paths supplied for schema validation. Errors fail the command:
+
+- Directory ids are unique and well formed. Trade-form ids are unique, well formed and distinct
+  from directory ids.
+- Every legacy record appears exactly once. Foreign legacy ids, unknown match kinds and
+  missing non-open targets are errors. An open mapping has a null target; the total is a warning.
+- A described profile whose valid name is absent from the directory produces a warning naming
+  that profile. Every other profile has a trade-form entry, or validation reports an error.
+- Every profile legacy id maps to that profile id or the directory entry for its valid name.
+  Missing, open or contradictory mappings are errors.
+- A correction has a non-empty reason in `note`.
 
 ## Cichlid Room Companion
 

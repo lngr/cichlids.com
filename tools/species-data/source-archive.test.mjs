@@ -200,3 +200,15 @@ test('Given simultaneous requests for the same URL, one snapshot and one request
   assert.equal(requests, 1);
   assert.equal(got[0].stdout, got[1].stdout);
 });
+
+test('Given a Parquet payload, the archive preserves binary bytes and resolves its reference', async t => {
+  const { resolveSnapshot } = await import('./source-archive.mjs');
+  const root = sandbox(t);
+  const body = Buffer.concat([Buffer.from('PAR1'), Buffer.alloc(40), Buffer.from('PAR1')]);
+  const snap = await storeSnapshot({url: 'https://example.org/species.parquet', contentType: 'application/octet-stream', body}, {root});
+  assert.deepEqual(readFileSync(resolveSnapshot(snap.ref, {root}).originalPath), body);
+  assert.match(readFileSync(snap.textPath, 'utf8'), /Parquet/);
+  assert.equal((await findSnapshot('https://example.org/species.parquet', {root})).ref, snap.ref);
+  assert.throws(() => resolveSnapshot('../outside', {root}), /reference/i);
+  await assert.rejects(storeSnapshot({url:'https://example.org/fake.parquet', contentType:'application/octet-stream', body:Buffer.from('<title>Access denied</title>')}, {root}));
+});

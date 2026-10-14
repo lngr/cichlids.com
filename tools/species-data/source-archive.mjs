@@ -124,6 +124,18 @@ async function extractedText(body, type) {
   return raw;
 }
 
+export function resolveSnapshot(ref, { root = archiveRoot() } = {}) {
+  if (!validArchiveRef(ref)) throw new Error('Invalid archive reference');
+  const dir = join(root, ref);
+  const meta = JSON.parse(readFileSync(join(dir, 'meta.json'), 'utf8'));
+  return { ref, meta, textPath: join(dir, 'text.txt'), originalPath: join(dir, `original.${extension(meta.contentType)}`) };
+}
+
+function isParquet(body) {
+  return Buffer.isBuffer(body) && body.length >= 12 &&
+    body.subarray(0, 4).toString() === 'PAR1' && body.subarray(-4).toString() === 'PAR1';
+}
+
 export async function findSnapshot(url, { root = archiveRoot(), pathSegments } = {}) {
   const base = archivePath(url, pathSegments);
   const dir = join(root, base);
@@ -153,9 +165,10 @@ export async function storeSnapshot(input, { root = archiveRoot(), pathSegments 
   const { url, finalUrl = url, contentType = 'application/octet-stream', httpStatus = 200, tool = 'archive-fetch', version = VERSION } = input;
   try {
     const body = Buffer.isBuffer(input.body) ? input.body : Buffer.from(input.body ?? '');
-    const text = input.text ?? await extractedText(body, contentType);
+    const parquet = isParquet(body);
+    const text = parquet ? `Parquet binary dataset (${body.length} bytes).` : input.text ?? await extractedText(body, contentType);
     const reason = contentIssue({ url, finalUrl, contentType, httpStatus, body, text });
-    if (reason) throw new Error(reason);
+    if (reason && !(parquet && reason === 'Readable text is shorter than 200 characters')) throw new Error(reason);
     const fetchedAt = new Date(input.fetchedAt ?? Date.now()).toISOString();
     const base = archivePath(url, pathSegments);
     return await withFileLock(`snapshot:${resolve(root)}:${base}`, async () => {

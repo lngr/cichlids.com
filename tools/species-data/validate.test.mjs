@@ -817,3 +817,95 @@ test('The file validator checks archive references in shared waterbody and hybri
     assert.ok(issues.some(i => i.level === 'warning' && i.pointer === '/groups/0/sources/0/archived'));
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
+
+function directoryFixture() {
+  return {
+    directory:{species:[{id:'one-alpha',name:'One alpha'},{id:'two-beta',name:'Two beta'}]},
+    forms:{forms:[{id:'red-form',name:'Red form',kind:'domestic-form',parents:['one-alpha']}]},
+    legacy:[{legacyId:1,genus:'Old',species:'alpha'},{legacyId:2,genus:'Red',species:'form'}],
+    mappings:{mappings:[{legacyId:1,legacyName:'Old alpha',target:'one-alpha',match:'profile'},{legacyId:2,legacyName:'Red form',target:'red-form',match:'profile'}]},
+    profiles:[{file:'one-alpha.yaml',data:{id:'one-alpha',status:'described',legacyIds:[1],taxonomy:{validName:'One alpha'}}},{file:'red-form.yaml',data:{id:'red-form',status:'domestic-form',legacyIds:[2],taxonomy:{validName:'Red form'}}}],
+  };
+}
+
+test('Given a complete directory and authoritative profile mapping, directory validation succeeds', async () => {
+  const {directoryIssues}=await import('./validate.mjs');
+  assert.deepEqual(directoryIssues(directoryFixture()),[]);
+});
+
+test('Given duplicate, malformed or overlapping directory and trade ids, validation reports errors', async () => {
+  const {directoryIssues}=await import('./validate.mjs');
+  const input=directoryFixture();
+  input.directory.species.push({id:'one-alpha',name:'Other alpha'},{id:'Bad_ID',name:'Bad ID'});
+  input.forms.forms.push({...input.forms.forms[0]},{id:'one-alpha',name:'Form',kind:'hybrid',parents:[]});
+  const issues=directoryIssues(input);
+  assert.ok(issues.filter(x=>x.level==='error').length>=4);
+  assert.ok(issues.some(x=>/well formed/.test(x.message)));
+  assert.ok(issues.some(x=>/directory and trade/.test(x.message)));
+});
+
+test('Given missing, repeated, foreign or dangling legacy mappings, validation rejects them', async () => {
+  const {directoryIssues}=await import('./validate.mjs');
+  const input=directoryFixture();
+  input.mappings.mappings=[input.mappings.mappings[0],{...input.mappings.mappings[0],target:'absent'},{legacyId:9,legacyName:'Unknown',target:'absent',match:'exact'}];
+  const issues=directoryIssues(input);
+  for(const word of ['exactly once','unknown legacyId','target']) assert.ok(issues.some(x=>x.level==='error'&&x.message.includes(word)),word);
+});
+
+test('Given open mappings and absent described species, validation counts warnings and names the profile', async () => {
+  const {directoryIssues}=await import('./validate.mjs');
+  const input=directoryFixture();
+  input.profiles[0].data.legacyIds=[];
+  input.profiles[0].data.taxonomy.validName='Missing species';
+  input.mappings.mappings[0]={legacyId:1,legacyName:'Old alpha',target:null,match:'open'};
+  const issues=directoryIssues(input);
+  assert.equal(issues.filter(x=>x.level==='error').length,0);
+  assert.ok(issues.some(x=>x.level==='warning'&&/1 open legacy/.test(x.message)));
+  assert.ok(issues.some(x=>x.level==='warning'&&x.file==='one-alpha.yaml'&&x.message.includes('Missing species')));
+});
+
+test('Given undescribed profiles without trade forms and contradicting legacy targets, validation fails', async () => {
+  const {directoryIssues}=await import('./validate.mjs');
+  const input=directoryFixture(); input.forms.forms=[];
+  input.mappings.mappings[0].target='two-beta';
+  const issues=directoryIssues(input);
+  assert.ok(issues.some(x=>x.level==='error'&&x.file==='red-form.yaml'&&/trade/.test(x.message)));
+  assert.ok(issues.some(x=>x.level==='error'&&x.file==='one-alpha.yaml'&&/legacyId 1/.test(x.message)));
+  input.mappings.mappings[0]={...input.mappings.mappings[0],target:null,match:'open'};
+  assert.ok(directoryIssues(input).some(x=>x.level==='error'&&/legacyId 1/.test(x.message)));
+});
+
+test('Given a directory id different from the profile id, authoritative legacy mapping accepts that directory entry', async () => {
+  const {directoryIssues}=await import('./validate.mjs');
+  const input=directoryFixture(); input.profiles[0].data.id='profile-alpha';
+  assert.deepEqual(directoryIssues(input),[]);
+});
+
+test('Given unknown match kinds, correction without a reason, or open targets, validation rejects malformed mappings', async () => {
+  const {directoryIssues}=await import('./validate.mjs');
+  for(const row of [{match:'guess',target:'one-alpha'},{match:'correction',target:'one-alpha'},{match:'open',target:'one-alpha'}]) {
+    const input=directoryFixture(); Object.assign(input.mappings.mappings[0],row);
+    assert.ok(directoryIssues(input).some(x=>x.level==='error'));
+  }
+});
+
+test('Given directory files, validation reads all profiles and reports missing or malformed data files', async t => {
+  const {validateDirectoryFiles}=await import('./validate.mjs');
+  const root=mkdtempSync(join(tmpdir(),'species-directory-validation-')); t.after(()=>rmSync(root,{recursive:true,force:true}));
+  assert.ok(validateDirectoryFiles(root).some(x=>x.level==='error'));
+  const input=directoryFixture(); mkdirSync(join(root,'profiles'));
+  writeFileSync(join(root,'directory.yaml'),JSON.stringify(input.directory));
+  writeFileSync(join(root,'trade-forms.yaml'),JSON.stringify(input.forms));
+  writeFileSync(join(root,'legacy-mapping.yaml'),JSON.stringify(input.mappings));
+  writeFileSync(join(root,'legacy-catalog.json'),JSON.stringify(input.legacy));
+  for(const profile of input.profiles) writeFileSync(join(root,'profiles',profile.file),JSON.stringify(profile.data));
+  assert.deepEqual(validateDirectoryFiles(root),[]);
+  writeFileSync(join(root,'directory.yaml'),'species: wrong');
+  assert.ok(validateDirectoryFiles(root).some(x=>x.level==='error'&&/species/.test(x.message)));
+});
+
+test('Given malformed profile legacyIds, directory validation leaves the schema issue report intact', async () => {
+  const {directoryIssues}=await import('./validate.mjs');
+  const input=directoryFixture(); input.profiles[0].data.legacyIds=3;
+  assert.doesNotThrow(()=>directoryIssues(input));
+});

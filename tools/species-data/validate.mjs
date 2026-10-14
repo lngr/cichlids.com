@@ -524,6 +524,86 @@ export function validateFiles(
   return issues;
 }
 
+// Directory checks apply to the full catalog independently of the selected profile paths.
+export function directoryIssues({directory, forms, mappings, legacy, profiles}) {
+  const issues=[];
+  const files={directory:'data/species/directory.yaml',forms:'data/species/trade-forms.yaml',mappings:'data/species/legacy-mapping.yaml',legacy:'data/species/legacy-catalog.json'};
+  const lists={directory:directory?.species,forms:forms?.forms,mappings:mappings?.mappings,legacy};
+  for (const [key,list] of Object.entries(lists)) {
+    if (!Array.isArray(list)) issues.push(error('',`${key} needs an array (${key==='directory' ? 'species' : key})`,files[key]));
+  }
+  if (issues.length) return issues;
+  function idIndex(entries,file) {
+    const index=new Map();
+    entries.forEach((entry,i)=>{
+      const id=entry?.id;
+      if (typeof id!=='string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)) issues.push(error(`/${i}/id`,'id must be well formed kebab-case',file));
+      if (index.has(id)) issues.push(error(`/${i}/id`,`duplicate id ${id}`,file));
+      index.set(id,entry);
+    });
+    return index;
+  }
+  const species=idIndex(lists.directory,files.directory);
+  const trade=idIndex(lists.forms,files.forms);
+  for (const id of trade.keys()) if (species.has(id)) issues.push(error('/forms',`id ${id} occurs in directory and trade forms`,files.forms));
+  const names=new Map(lists.directory.map(entry=>[entry?.name,entry]));
+  const legacyIds=new Set(lists.legacy.map(row=>row?.legacyId));
+  const index=new Map();
+  const kinds=['profile','exact','synonym','correction','trade-form','hybrid','domestic-form','open'];
+  let open=0;
+  lists.mappings.forEach((row,i)=>{
+    const at=`/mappings/${i}`;
+    if (!legacyIds.has(row?.legacyId)) issues.push(error(`${at}/legacyId`,`unknown legacyId ${row?.legacyId}`,files.mappings));
+    if (!index.has(row?.legacyId)) index.set(row?.legacyId,[]);
+    index.get(row?.legacyId).push(row);
+    if (!kinds.includes(row?.match)) issues.push(error(`${at}/match`,`match must be one of ${kinds.join(', ')}`,files.mappings));
+    if (row?.match==='open') {
+      open++;
+      if (row.target!==null) issues.push(error(`${at}/target`,'open mapping target must be null',files.mappings));
+    } else if (!species.has(row?.target) && !trade.has(row?.target)) {
+      issues.push(error(`${at}/target`,`target ${row?.target} does not exist`,files.mappings));
+    }
+    if (row?.match==='correction' && (typeof row.note!=='string' || !row.note.trim())) issues.push(error(`${at}/note`,'correction needs a reason in note',files.mappings));
+  });
+  for (const id of legacyIds) if (index.get(id)?.length!==1) issues.push(error('/mappings',`legacyId ${id} must appear exactly once`,files.mappings));
+  if (open) issues.push(warning('/mappings',`${open} open legacy entries`,files.mappings));
+  for (const {data:profile,file} of profiles) {
+    const entry=names.get(profile?.taxonomy?.validName);
+    if (profile?.status==='described' && !entry) issues.push(warning('/taxonomy/validName',`profile ${profile.id}: ${profile.taxonomy?.validName} is absent from directory`,file));
+    if (profile?.status!=='described' && !trade.has(profile?.id)) issues.push(error('/id',`profile ${profile?.id} needs a trade-forms entry`,file));
+    const targets=new Set([profile?.id, ...(entry ? [entry.id] : [])]);
+    if (profile?.legacyIds !== undefined && !Array.isArray(profile.legacyIds)) issues.push(error('/legacyIds','legacyIds must be an array',file));
+    for (const id of Array.isArray(profile?.legacyIds) ? profile.legacyIds : []) {
+      const rows=index.get(id) ?? [];
+      if (rows.length!==1 || rows[0]?.match==='open' || !targets.has(rows[0]?.target)) issues.push(error('/legacyIds',`legacyId ${id} contradicts profile ${profile.id}, target must be ${[...targets].join(' or ')}`,file));
+    }
+  }
+  return issues;
+}
+
+export function validateDirectoryFiles(speciesDir=SPECIES_DIR) {
+  const issues=[];
+  function read(name,json=false) {
+    const path=join(speciesDir,name);
+    try { return json ? JSON.parse(readFileSync(path,'utf8')) : parse(readFileSync(path,'utf8')); }
+    catch (e) { issues.push(error('',`cannot read or parse directory data: ${e.message}`,path)); return null; }
+  }
+  const directory=read('directory.yaml');
+  const forms=read('trade-forms.yaml');
+  const mappings=read('legacy-mapping.yaml');
+  const legacy=read('legacy-catalog.json',true);
+  const profiles=[];
+  const profileDir=join(speciesDir,'profiles');
+  if (existsSync(profileDir)) {
+    for (const name of readdirSync(profileDir).filter(x=>x.endsWith('.yaml')).sort()) {
+      const data=read(`profiles/${name}`);
+      if (data) profiles.push({data,file:join(profileDir,name)});
+    }
+  }
+  if (!issues.length) issues.push(...directoryIssues({directory,forms,mappings,legacy,profiles}));
+  return issues;
+}
+
 export function formatReport(issues, fileCount) {
   const lines = issues.map((i) => `${i.level === "error" ? "ERROR  " : "WARNING"} ${i.file ?? "-"} ${i.pointer || "/"}: ${i.message}`);
   const errorCount = issues.filter((i) => i.level === "error").length;
@@ -538,7 +618,7 @@ function main() {
       ? readdirSync(PROFILES_DIR).filter((f) => f.endsWith(".yaml")).sort().map((f) => join(PROFILES_DIR, f))
       : [];
   }
-  const issues = validateFiles(paths);
+  const issues = [...validateFiles(paths), ...validateDirectoryFiles()];
   console.log(formatReport(issues, paths.length));
   process.exit(issues.some((i) => i.level === "error") ? 1 : 0);
 }
