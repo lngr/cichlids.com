@@ -33,6 +33,9 @@ OpenAlex hosts and only then the publisher page. It refuses works that are not o
 the text file it names; the shared library `data/species/work/.literature/` is open to every role.
 Cite the printed archive reference as `archived: <ref>` alongside `https://doi.org/<doi>` in every
 source entry for the work. OpenAlex content downloads cost budget, so fetch only works you will cite.
+Reports of authorities and international organisations without a DOI that are openly published as
+web pages or PDF files (for example FAO, UNIDO or ministry reports) are fetched with
+`archive-fetch.mjs` like any other public page.
 
 Access rules: fetch only publicly reachable content. Never fake a browser user agent or bypass
 logins, paywalls or captchas. `archive-fetch.mjs` uses the honest research user agent and rejects
