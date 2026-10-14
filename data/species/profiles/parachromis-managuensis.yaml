@@ -855,7 +855,7 @@ features:
         note: recommends a single fish, not a species tank
 
   hybridGroups:
-    value: [nandopsis-tetracanthus-parachromis-managuensis, parachromis-dovii-managuensis, parachromis-managuensis-motaguensis]
+    value: [nandopsis-tetracanthus-parachromis-managuensis, parachromis-dovii-managuensis, parachromis-managuensis-motaguensis, parachromis-managuensis-petenia-splendida]
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}
@@ -870,7 +870,14 @@ features:
       based on labelled hobby photographs of captive offspring, without verified parentage or
       documented access to conspecific mates.
       The curated data/species/hybrid-groups.yaml file defines parachromis-managuensis-motaguensis as a presumed pairwise group based on labelled captive-offspring reports in a hobby compilation without independently verified parentage or evidence of access to same-species mates.
+      The curated data/species/hybrid-groups.yaml file defines parachromis-managuensis-petenia-splendida as a presumed pairwise group based on Binns Hybrid Encyclopedia reports of captive offspring, which do not independently verify parentage or mate choice.
     sources:
+      - &snookPetenia
+        kind: database
+        title: "Binns Hybrid Encyclopedia: Snook cross examples"
+        url: https://www.binnspedia.com/snook-petenia-splendida
+        accessed: '2026-10-13'
+        archived: binnspedia.com/snook-petenia-splendida/2026-10-14T171356Z
       - *cof
       - *fb
       - *sf
@@ -972,6 +979,9 @@ features:
         value:
           - parachromis-managuensis-motaguensis
         note: Labels captive offspring of the named pair; parentage and access to same-species mates are unverified.
+      - source: *snookPetenia
+        value: [parachromis-managuensis-petenia-splendida]
+        note: Labels captive offspring of managuensis and Petenia splendida; parentage and mate choice are unverified.
 
   coloration:
     value: {baseColors: [silver, yellow, black], pattern: spots}

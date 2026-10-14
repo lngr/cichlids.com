@@ -4782,6 +4782,7 @@ features:
   hybridGroups:
     value:
     - amphilophus-trimaculatus-midas
+    - amphilophus-trimaculatus-petenia-splendida
     confidence: medium
     rationale: "All four votes select only amphilophus-trimaculatus-midas, retained from the unanimous\
       \ tally with medium confidence. The existing curated group already contains Amphilophus trimaculatus\
@@ -4790,11 +4791,20 @@ features:
       \ ancestry in six Flowerhorn morphotypes. These reports support involvement in hybrid lines, but\
       \ maternal barcoding and lists of ancestors do not independently verify every pairwise crossing\
       \ or free partner choice. Retain the existing group unchanged as instructed and do not infer additional\
-      \ crosses transitively with Vieja or other Flowerhorn ancestors."
+      \ crosses transitively with Vieja or other Flowerhorn ancestors. The curated data/species/hybrid-groups.yaml\
+      \ file defines amphilophus-trimaculatus-petenia-splendida as a presumed pairwise group based on Binns\
+      \ Hybrid Encyclopedia reports of captive offspring, which do not verify parentage or free choice among\
+      \ conspecific mates."
     sources:
     - kind: database
       title: "cichlids.com curated hybrid groups: amphilophus-trimaculatus-midas"
       accessed: '2026-10-13'
+    - &snookPetenia
+      kind: database
+      title: "Binns Hybrid Encyclopedia: Snook cross examples"
+      url: https://www.binnspedia.com/snook-petenia-splendida
+      accessed: '2026-10-13'
+      archived: binnspedia.com/snook-petenia-splendida/2026-10-14T171356Z
     - kind: literature
       title: "Sari et al. (2023). Molecular Identification of Several Morphologically Distinct Flowerhorn\
         \ Fish (Family) Using Mitochondrial COI Gene Marker: abstract and references"
@@ -4860,6 +4870,10 @@ features:
       archived: ciklid.org/artregister/art.php/q-24ec1b88/2026-10-14T131207Z
       accessed: '2026-10-13'
     evidence:
+    - source: *snookPetenia
+      value:
+      - amphilophus-trimaculatus-petenia-splendida
+      note: Binns labels captive offspring; parentage and mate choice are unverified.
     - source:
         kind: database
         title: "cichlids.com curated hybrid groups: amphilophus-trimaculatus-midas"

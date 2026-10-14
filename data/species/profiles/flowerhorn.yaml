@@ -1040,7 +1040,7 @@ features:
         value: false
 
   hybridGroups:
-    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, nandopsis-tetracanthus-flowerhorn, parachromis-dovii-flowerhorn, vieja-melanurus-midas]
+    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, flowerhorn-petenia-splendida, nandopsis-tetracanthus-flowerhorn, parachromis-dovii-flowerhorn, vieja-melanurus-midas]
     confidence: medium
     verification:
       method: unanimous
@@ -1058,7 +1058,16 @@ features:
       unverified hobby reports of captive offspring labelled as Cuban cichlid and Flowerhorn
       crosses, with uncertain domestic pedigrees and access to fitting conspecific mates and
       no proof of crosses with each ancestral species.
+      The curated data/species/hybrid-groups.yaml file defines flowerhorn-petenia-splendida as a presumed
+      pairwise group based on Binns Hybrid Encyclopedia reports of captive offspring, which do not verify
+      parentage or the availability of same-species mates.
     sources:
+      - &snookPetenia
+        kind: database
+        title: "Binns Hybrid Encyclopedia: Snook cross examples"
+        url: https://www.binnspedia.com/snook-petenia-splendida
+        accessed: '2026-10-13'
+        archived: binnspedia.com/snook-petenia-splendida/2026-10-14T171356Z
       - &tarkhani
         kind: literature
         title: >-
@@ -1142,6 +1151,9 @@ features:
       - source: *cubanCross
         value: [nandopsis-tetracanthus-flowerhorn]
         note: Labels captive Cuban and Flowerhorn offspring; domestic pedigrees and mate choice are unverified.
+      - source: *snookPetenia
+        value: [flowerhorn-petenia-splendida]
+        note: Labels captive Petenia splendida and Flowerhorn offspring; pedigree and mate choice are unverified.
 
   coloration:
     value:
