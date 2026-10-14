@@ -1,12 +1,15 @@
 ---
 id: TASK-3.28
 title: 'Me tab shows the member''s own pictures, tanks and drafts'
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-09-29 10:10'
-updated_date: '2026-10-14 10:51'
+updated_date: '2026-10-14 11:01'
 labels: []
 dependencies: []
+references:
+  - app/mobile/e2e/playwright/me-content.write.mjs
+  - app/mobile/src/profile/useProfileLists.test.ts
 parent_task_id: TASK-3
 priority: medium
 ordinal: 48000
@@ -53,3 +56,20 @@ A logged-in member sees their own content in the Me tab without leaving it: prof
   Me tab: header, tabs Pictures, Tanks, Drafts, link to the public profile, logout.
 - i18n en/de, theme tokens, 48dp targets, error and empty states like TASK-3.40.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- Me tab: profile header, tabs Pictures (default), Tanks and Drafts with pagination and retry on
+  errors, link to the public profile, logout; shared profile building blocks
+  (`ProfileContentList`, `ProfileTabs`, `useProfileLists`) with accessible tabs; i18n en/de.
+
+### Verified by the agent (Codex)
+- Red: missing modules, then the e2e spec timed out on the missing `me-tab-pictures`. Green:
+  mobile 184 tests and typecheck; `pnpm run e2e:write` 12 of 12 including `me-content.write.mjs`.
+- Not verified: native Android and iOS.
+
+### Operator checks
+- `pnpm run e2e:write` in `app/mobile` passes `me-content.write.mjs` (AC #1).
+<!-- SECTION:NOTES:END -->
