@@ -142,6 +142,11 @@ search and one page per species are enough. Member content is not accessible and
   care sheets count as sources. The tolerance contains the natural range. It is a fact of its own
   with value, confidence, rationale, sources and at least one evidence entry. Confidence `high`
   requires a high-trust evidence source. Do not write a `verification` object for it either.
+- When no source states a tolerance for a water feature (common for khDkh), never copy the natural
+  range as the tolerance: a tolerance equal to the natural range claims that the species fails
+  outside its habitat values, which needs evidence. Derive the tolerance from the husbandry advice
+  for the related values (pH, GH) and the keeping practice of the group, give it confidence `low`
+  and say so in the rationale.
 - Maximum size is the typical maximum of well-kept adult aquarium fish per sex, not record sizes.
 - `minTank` is for the recommended social unit of adults (for example one male with three females).
 - `hybridGroups` is the list of ids of every group of `hybrid-groups.yaml` whose crosses concern

@@ -23,7 +23,8 @@ absent from aquarium practice; the median range reflects what the sources recomm
 
 The adjudicator checks every decided water range and tolerance for sense in aquarium practice.
 A median between two camps of votes or a range stretched by an exceptional habitat can be
-implausible. The adjudicator replaces an implausible tally decision with method `adjudicated`,
+implausible, and so can a tolerance equal to the natural range when no source reports harm
+outside the habitat values. The adjudicator replaces an implausible tally decision with method `adjudicated`,
 records the tallied range in `verification.replaced`, its method in `verification.replacedMethod`
 and its vote count in `verification.votes`, and names the replaced decision and the reason in the
 rationale. An adjudicated range has confidence `low` or `medium` and at least one evidence entry
