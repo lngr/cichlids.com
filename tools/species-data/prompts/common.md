@@ -97,6 +97,9 @@ search and one page per species are enough. Member content is not accessible and
   sources without a URL use `byKind`, and unlisted hosts count as `low`. In a conflict, the higher
   trust source wins unless the lower trust source reports a direct field measurement and the
   higher trust source gives a general recommendation. Explain the evidence in the rationale.
+- When you cite a thesis, report or paper from a university or research institute repository whose
+  host the trust list does not name, give the host in your final report, so that the list can be
+  extended.
 - Source kinds remain descriptive: `literature` for papers, books, magazine articles and reports;
   `database` for species databases and structured care sheets; `website` for general pages;
   `catalog-of-fishes`, `forum`, `archive` and `model-knowledge` describe their respective origins.
