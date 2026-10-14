@@ -4,7 +4,7 @@ title: CloudNativePG with object-store PITR backup
 status: In Progress
 assignee: []
 created_date: '2026-06-03 16:01'
-updated_date: '2026-10-14 05:11'
+updated_date: '2026-10-14 06:00'
 labels:
   - infra
   - postgres
@@ -101,3 +101,23 @@ one (ADR-0013).
   that a bucket policy limits to writing and reading, so no key of the backup project leaves the
   operator; restores use the same path.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Decided by the project owner
+- Backups are stored without client-side encryption: no mature tool for CloudNativePG encrypts
+  before upload (Barman Cloud supports only AWS SSE-S3 and KMS, Hetzner only SSE-C). ADR-0013
+  states this with its reason; client-side encryption follows once such a tool exists.
+- In return a double safeguard against accidental public exposure of the backup buckets and the
+  media originals: static checks before every change (backup and platform guardrails, a plan
+  policy, the API bucket policy test) and a keyless external probe on a schedule
+  (`exposure-watch` workflow with canary objects) that fails loudly when a bucket or prefix is
+  readable or listable by anyone.
+
+### Storage
+- Production PostgreSQL lives on the protected database volume of the platform tier: the app tier
+  mounts it (ext4, never formatted, `nofail`) at `/var/lib/cichlids-db`; a static local
+  PersistentVolume with Retain, 8Gi, fits the existing 10 GB volume (the migrated database
+  measures about 1.8 GB); grow the volume when usage passes 70 percent.
+<!-- SECTION:NOTES:END -->
