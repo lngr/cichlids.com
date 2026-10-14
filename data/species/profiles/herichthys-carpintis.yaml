@@ -2239,6 +2239,7 @@ features:
         total: 4
   hybridGroups:
     value:
+      - herichthys-carpintis-blood-parrot
       - "herichthys-carpintis-cyanoguttatus"
       - "herichthys-carpintis-labridens"
       - "herichthys-carpintis-pame"
@@ -2276,7 +2277,11 @@ features:
       poorly resolving COI. The archive's ambiguous Texas and Flowerhorn labels establish no
       additional named pair. Shared URLs or reproduced Beerlink text are not independent
       confirmation.
-      The curated data/species/hybrid-groups.yaml file defines nandopsis-tetracanthus-herichthys-carpintis as a presumed pairwise crossing group based on labelled hobby photographs of captive offspring, without verified parentage or documented access to conspecific mates."
+      The curated data/species/hybrid-groups.yaml file defines nandopsis-tetracanthus-herichthys-carpintis as a presumed pairwise crossing group based on labelled hobby photographs of captive offspring, without verified parentage or documented access to conspecific mates.
+      The curated data/species/hybrid-groups.yaml file defines
+      herichthys-carpintis-blood-parrot as presumed from a firsthand aquarium account of a blood
+      parrot and Green Texas cichlid with fry, without parentage testing or information about
+      conspecific partners."
     sources:
       - kind: "catalog-of-fishes"
         title: "Eschmeyer's Catalog of Fishes: species of Herichthys"
@@ -2346,6 +2351,11 @@ features:
         title: "Binns Hybrid Encyclopedia: Cuban cross examples"
         accessed: 2026-10-13
         url: https://www.binnspedia.com/nandopsis/cuban
+      - &bloodParrotBrood
+        kind: website
+        title: "Maidenhead Aquatics (2019). What the Fish December 2019: witnessed blood parrot and Green Texas offspring."
+        url: https://www.fishkeeper.co.uk/stories/what-the-fish-december-2019
+        accessed: 2026-10-13
     evidence:
       - source:
           kind: "catalog-of-fishes"
@@ -2478,6 +2488,9 @@ features:
       - source: *cubanCross
         value: [nandopsis-tetracanthus-herichthys-carpintis]
         note: Labels captive Cuban and carpintis offspring; parentage and mate choice are unverified.
+      - source: *bloodParrotBrood
+        value: [herichthys-carpintis-blood-parrot]
+        note: Firsthand account of a blood parrot and Green Texas cichlid with fry; parentage and conspecific mate availability are unverified.
     verification:
       method: "qualified-majority"
       votes:

@@ -1731,7 +1731,8 @@ features:
         value: false
         note: medium to large cichlids
   hybridGroups:
-    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, vieja-melanurus-midas]
+    value: [amphilophus-citrinellus-blood-parrot, amphilophus-citrinellus-complex,
+      amphilophus-trimaculatus-midas, vieja-melanurus-midas]
     confidence: high
     verification:
       method: unanimous
@@ -1746,6 +1747,10 @@ features:
       (Magalhães et al. 2017, Manassila et al. 2025), and vieja-melanurus-midas, with Vieja
       melanurus, the cross behind the blood parrot, whose females gave viable young with both
       parents in a preliminary trial (Fisher et al. 2025).
+      The curated data/species/hybrid-groups.yaml file defines
+      amphilophus-citrinellus-blood-parrot as presumed from a preliminary laboratory report of
+      viable offspring produced by artificially fertilizing female blood parrot eggs with Midas
+      sperm, without evidence of free partner choice.
     sources:
       - kind: literature
         title: "Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex in
@@ -1872,6 +1877,9 @@ features:
       - source: *hyb28
         value: vieja-melanurus-midas
         note: "blood parrot is a trade hybrid of V. melanurus and A. citrinellus; females gave viable young with both parent species"
+      - source: *hyb28
+        value: [amphilophus-citrinellus-blood-parrot]
+        note: Reports viable offspring from stripped blood parrot eggs fertilized with Midas sperm; free partner choice was not tested.
   coloration:
     value:
       baseColors:
