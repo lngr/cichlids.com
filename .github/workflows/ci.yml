@@ -208,9 +208,8 @@ jobs:
         run: conftest verify -p policy
 
   # Story: task-2.28
-  # Not covered by CI: the seeded Playwright smoke (TASK-2.24), the Maestro flows (TASK-2.25) and a
-  # lint step (no lint script exists). The e2e job runs the web write specs and verifies the
-  # backend toolchain scope, not the Android scope.
+  # The e2e job runs the web write specs; maestro runs the native Android flows.
+  # The seeded Playwright smoke (TASK-2.24) and lint have separate coverage requirements.
   backend:
     name: backend
     runs-on: ubuntu-latest
@@ -276,6 +275,101 @@ jobs:
       - name: Unit tests
         working-directory: app
         run: pnpm -r test
+
+  maestro:
+    name: maestro (${{ matrix.locale }})
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        locale: [en-US, de-DE]
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+      EXPO_NO_TELEMETRY: "1"
+      CICHLIDS_WRITE_PUBLIC_HOST: "10.0.2.2"
+      MAESTRO_REPORT_DIR: ${{ github.workspace }}/maestro-reports
+      MAESTRO_DEVICE_LOCALE: ${{ matrix.locale }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          test -r /dev/kvm && test -w /dev/kvm
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
+        with:
+          package_json_file: app/package.json
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: "24"
+          cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
+      - name: Install dependencies
+        working-directory: app
+        run: pnpm install --frozen-lockfile
+      - name: Install the pinned .NET SDK
+        run: |
+          bash tools/install-dotnet.sh
+          echo "$HOME/.dotnet" >> "$GITHUB_PATH"
+          echo "DOTNET_ROOT=$HOME/.dotnet" >> "$GITHUB_ENV"
+      - name: Install pinned Maestro
+        run: |
+          source tools/toolchain.versions
+          curl --fail --location --retry 3 "https://github.com/mobile-dev-inc/maestro/releases/download/cli-${MAESTRO_MIN}/maestro.zip" -o /tmp/maestro.zip
+          mkdir -p "$HOME/.local"
+          unzip -q /tmp/maestro.zip -d "$HOME/.local"
+          echo "$HOME/.local/maestro/bin" >> "$GITHUB_PATH"
+          "$HOME/.local/maestro/bin/maestro" --version
+      - name: Start services and the isolated write stack
+        run: |
+          app/stack/services-up.sh --wait-realm
+          app/mobile/e2e/write-stack.sh up
+          node app/mobile/e2e/maestro/seed.mjs
+      - name: Build an Android debug APK with embedded JavaScript
+        run: app/mobile/e2e/maestro/build-android.sh
+      - name: Run every native flow
+        uses: reactivecircus/android-emulator-runner@69c8581131285561115a2e413eb0037446bdc2d6 # v2.35.0
+        with:
+          api-level: 35
+          system-image-api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          disable-spellchecker: true
+          disable-linux-hw-accel: false
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+          script: app/mobile/e2e/maestro/run-android.sh
+      - name: Collect stack logs
+        if: always()
+        run: |
+          mkdir -p maestro-reports
+          cp /tmp/cichlids-write-stack/api.log /tmp/cichlids-write-stack/web.log maestro-reports/ || true
+          docker compose -f app/stack/compose.yaml logs > maestro-reports/compose.log 2>&1 || true
+      - name: Upload Maestro reports and diagnostics
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: maestro-${{ matrix.locale }}
+          path: maestro-reports
+          retention-days: 7
+      - name: Stop the isolated write stack
+        if: always()
+        run: app/mobile/e2e/write-stack.sh down
+      - name: Stop compose services
+        if: always()
+        run: docker compose -f app/stack/compose.yaml down -v
 
   e2e:
     name: e2e
@@ -370,18 +464,21 @@ jobs:
   required:
     name: required
     if: ${{ always() }}
-    needs: [adr-index, story-test-binding, manifests, toolchain, secrets-scan, keycloak-realm, stack-bootstrap, infra-validate, infra-policy, backend, client-core, e2e]
+    needs: [adr-index, story-test-binding, manifests, toolchain, secrets-scan, keycloak-realm, stack-bootstrap, infra-validate, infra-policy, backend, client-core, e2e, maestro]
     runs-on: ubuntu-latest
     permissions: {}
     steps:
       - name: Require every job to succeed
         env:
           RESULTS: ${{ toJSON(needs) }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           python3 - <<'PYTHON'
           import json, os, sys
           results = json.loads(os.environ['RESULTS'])
-          bad = {name: job['result'] for name, job in results.items() if job['result'] != 'success'}
+          allowed_skips = {'maestro'} if os.environ['EVENT_NAME'] == 'pull_request' else set()
+          bad = {name: job['result'] for name, job in results.items()
+                 if job['result'] != 'success' and not (name in allowed_skips and job['result'] == 'skipped')}
           print(f"required: {len(results)} jobs; unsuccessful={bad}")
           sys.exit(bool(bad))
           PYTHON
