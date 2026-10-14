@@ -96,17 +96,18 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 116 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+Stand: 132 Profile in `data/species/profiles/`, alle validiert. Verfahren in
 `tools/species-data/README.md`. Solange die Claude-Credits knapp sind, ist je Art nur Prüfer A ein
-Claude-Agent (Sonnet); Generator, Prüfer B und C, Tie-Breaker und Schiedsrichter laufen über Codex
-(gpt-6.1-sol). Die Codex-Stimmen fallen dabei öfter zusammen, etwa beim größten Mindestbecken.
+Claude-Agent (Sonnet); die übrigen Rollen laufen über Codex: Generator und Prüfer B und C bei
+Seearten mit gpt-6-luna, bei Freilandarten mit gpt-6.1-sol, Tie-Breaker und Schiedsrichter immer
+mit gpt-6.1-sol. Ohne Mehrheit gilt bei Wasserwerten und Toleranzen der Median der Stimmen, den
+der Schiedsrichter auf Plausibilität prüft.
 
 ### 3.1 Weitere Profile
 
-- [ ] Nächste Arten nach Fotoanzahl: 633 Apistogramma cacatuoides; danach weiter nach
-  Fotoanzahl. 748 Heros appendiculatum wartet
-  auf die Heros-Entscheidung. Legacy-Einträge unter älteren Namen einer Art mit
-  Profil werden dem Profil zugeordnet (Abgleich über Namen und Synonyme)
+- [ ] Nächste Arten nach Fotoanzahl: 733 Geophagus steindacheri, 816 Aulonocara masoni; danach
+  weiter nach Fotoanzahl. Legacy-Einträge unter älteren Namen einer Art mit Profil werden dem
+  Profil zugeordnet (Abgleich über Namen und Synonyme)
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
 - [ ] Das OpenAlex-Tagesbudget (1 USD, Reset 02:00 Uhr MESZ) reicht für etwa 12 Arten. Danach
   zahlt das Prepaid-Guthaben des Schlüssels (am 2026-10-13 etwa 10 USD), weil die Werkzeuge nur
