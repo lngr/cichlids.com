@@ -1,6 +1,6 @@
 # Projektstatus cichlids.com
 
-**Stand: 2026-10-13**
+**Stand: 2026-10-15**
 
 Dieses Dokument ist der Einstiegspunkt, um die Arbeit an cichlids.com ohne Vorwissen aufzunehmen. Es
 beschreibt, wo das Projekt steht, welche Arbeitsstränge es gibt und welche Fäden offen sind.
@@ -505,6 +505,13 @@ O2 legt Deployment zuerst fest. Der gemergte MVP dient als erster Staging-Worklo
 Abnahmen und die Operator-Prüfungen der für Staging relevanten Review-Tasks sind offen.
 Die Slices des Zielbilds beginnen mit einem laufenden Staging-System; Scanner-Spike,
 Taxonomie-Zuordnung und Profildaten-Pipeline sind parallel bearbeitbare Arbeit.
+
+Slice 1 des Zielbilds ist das Epic TASK-4 "Slice 1 app frame". Seine Stories TASK-4.1 bis 4.8
+stehen In Review: Feature-Flags, die App-Texte in elf Sprachen, die fünf Tabs, Einheiten mit
+gespeicherter Eingabeeinheit, das Onboarding mit Region, Interessen und Abzeichen, die
+Becken-Seite nach der Hi-Fi-Vorlage mit Zeitraffer, Entdecken mit Hall of Fame je Region und
+Heute als Startseite. Die Produktentscheidungen dazu stehen in den Notizen der Tasks; das
+vollständige Heute des Zielbilds hält DRAFT-11 fest.
 
 ---
 
