@@ -1,0 +1,3793 @@
+schemaVersion: 1
+id: neetroplus-nematopus
+legacyIds:
+- 763
+status: described
+taxonomy:
+  validName: Neetroplus nematopus
+  genus: Neetroplus
+  species: nematopus
+  author: "Günther, 1867"
+  source: &id001
+    kind: catalog-of-fishes
+    title: "Eschmeyer Catalog of Fishes: Neetroplus species"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neetroplus"
+    accessed: '2026-10-15'
+    archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-38bf10fd/2026-10-14T100905Z
+  synonyms:
+  - name: Hypsophrys nematopus
+    note: Alternative generic combination used by FishBase.
+  - name: Neetroplus fluviatilis
+    note: A junior synonym in the Catalog of Fishes.
+  - name: Neetroplus nicaraguensis
+    note: An unavailable usage treated as a synonym; distinct from Hypsophrys nicaraguensis.
+  legacyNames:
+  - Neetroplus nematopus
+  note: "The Catalog of Fishes accepts Neetroplus nematopus in its original genus; CRC agrees. FishBase uses the\
+    \ alternative combination Hypsophrys nematopus. Both genus lists are checked. Lake Managua is the type locality\
+    \ in the catalog, which takes priority over the conflicting NCS locality label."
+names:
+  trade:
+    en:
+    - Poor man's tropheus
+    - Neet
+    es:
+    - Moga
+    - Picaculo
+variants:
+- name: Lake Xiloa
+  kind: locality
+  note: Documented wild population; locality identity is not a named color morph.
+- name: Lake Managua
+  kind: locality
+  note: Type-locality population; preserve collection information when known.
+- name: Lake Masaya
+  kind: locality
+  note: Population listed in the NCS locality register.
+features:
+  origin:
+    value:
+      continent: Central America
+      region: San Juan drainage and Atlantic-slope waters of Nicaragua and Costa Rica
+      waterbody: null
+      localities:
+      - Lake Nicaragua
+      - Lake Managua
+      - Lake Xiloa
+      - Lake Masaya
+      - Rio San Juan
+      - Sarapiqui drainage
+      - "Buen Suceso River, Ometepe"
+    confidence: high
+    rationale: "The Catalog of Fishes and FishBase place the species on the Atlantic slope of Nicaragua and Costa\
+      \ Rica in the San Juan drainage. The NCS register adds Xiloa and Masaya; river surveys add the Sarapiqui system\
+      \ and Buen Suceso on Ometepe. Lake Managua is the type locality according to the taxonomic catalog, despite\
+      \ the NCS label naming Nicaragua. None of these lakes appears in the waterbody table, so no African lake chemistry\
+      \ is assigned."
+    sources:
+    - *id001
+    - &id004
+      kind: database
+      title: "FishBase: Hypsophrys nematopus species summary"
+      url: "https://www.fishbase.se/summary/Neetroplus-nematopus.html"
+      accessed: '2026-10-15'
+      archived: fishbase.se/summary/neetroplus-nematopus.html/2026-10-15T100107Z
+    - &id025
+      kind: database
+      title: "Nordiska Ciklidsallskapet: Neetroplus nematopus"
+      url: "https://www.ciklid.org/artregister/art.php?ID=455"
+      accessed: '2026-10-15'
+      archived: ciklid.org/artregister/art.php/q-2d64fdfb/2026-10-15T100520Z
+    - &id002
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species in the genus Neetroplus"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neetroplus"
+      accessed: '2026-10-15'
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-38bf10fd/2026-10-14T100905Z
+    - &id003
+      kind: database
+      title: "FishBase: Hypsophrys nematopus (Günther, 1867), species summary"
+      url: "https://www.fishbase.se/summary/Neetroplus-nematopus.html"
+      accessed: '2026-10-15'
+      archived: fishbase.se/summary/neetroplus-nematopus.html/2026-10-15T100107Z
+    - &id076
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: Neetroplus"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neetroplus"
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-38bf10fd/2026-10-14T100905Z
+      accessed: '2026-10-15'
+    - &id077
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: Hypsophrys"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Hypsophrys"
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-b67a3394/2026-10-14T100812Z
+      accessed: '2026-10-15'
+    - &id006
+      kind: database
+      title: "FishBase species summary: Hypsophrys nematopus"
+      url: "https://www.fishbase.se/summary/Neetroplus-nematopus.html"
+      accessed: '2026-10-15'
+      archived: fishbase.se/summary/neetroplus-nematopus.html/2026-10-15T100107Z
+    - &id026
+      kind: database
+      title: "Nordiska Ciklidsallskapet: Neetroplus nematopus"
+      url: "https://ciklid.org/artregister/art.php?ID=455"
+      accessed: '2026-10-15'
+      archived: ciklid.org/artregister/art.php/q-2d64fdfb/2026-10-15T100147Z
+    - &id005
+      kind: website
+      title: "Cordero Porras: field biotope survey of Rio San Jose, Horquetas, Costa Rica"
+      url: "https://biotopeaquariumproject.com/bin/shallow-backwater-pool-rio-san-jose-horquetas-costa-rica-acporras/"
+      accessed: '2026-10-15'
+      archived: biotopeaquariumproject.com/bin/shallow-backwater-pool-rio-san-jose-horquetas-costa-rica-acporras/2026-10-15T100239Z
+    - &id071
+      kind: literature
+      title: "Loughnan: The Cichlid Diversity of a Volcanic Nicaraguan Island"
+      url: "https://www.tfhmagazine.com/articles/freshwater/the-cichlid-diversity-of-a-volcanic-nicaraguan-island"
+      accessed: '2026-10-15'
+      archived: tfhmagazine.com/articles/freshwater/the-cichlid-diversity-of-a-volcanic-nicaraguan-island/2026-10-15T100330Z
+    - &id081
+      kind: literature
+      title: "Montenegro-Guillen: Lake Cocibolca/Nicaragua, Experience and Lessons Learned Brief"
+      url: "https://wldb.ilec.or.jp/itembyid/11101"
+      accessed: '2026-10-15'
+      archived: wldb.ilec.or.jp/itembyid/11101/2026-10-15T100220Z
+    - &id008
+      kind: database
+      title: "FishBase: Hypsophrys nematopus"
+      url: "https://www.fishbase.se/summary/Neetroplus-nematopus.html"
+      archived: fishbase.se/summary/neetroplus-nematopus.html/2026-10-15T100107Z
+      accessed: '2026-10-15'
+    - &id007
+      kind: website
+      title: "Andres Cordero Porras: Shallow Backwater Pool, Rio San Jose, Horquetas, Costa Rica, field survey"
+      url: "https://biotopeaquariumproject.com/bin/shallow-backwater-pool-rio-san-jose-horquetas-costa-rica-acporras/"
+      archived: biotopeaquariumproject.com/bin/shallow-backwater-pool-rio-san-jose-horquetas-costa-rica-acporras/2026-10-15T100239Z
+      accessed: '2026-10-15'
+    - &id087
+      kind: database
+      title: "Biotope Aquarium Project: Neetroplus nematopus, incomplete species record"
+      url: "https://biotopeaquariumproject.com/fish/neetroplus-nematopus/"
+      archived: biotopeaquariumproject.com/fish/neetroplus-nematopus/2026-10-15T100320Z
+      accessed: '2026-10-15'
+    - &id088
+      kind: literature
+      title: "Bussing 1993: Fish communities and environmental characteristics of a tropical rain forest river in\
+        \ Costa Rica, abstract only"
+      url: "https://revistas.ucr.ac.cr/index.php/rbt/article/view/24105"
+      archived: revistas.ucr.ac.cr/index.php/rbt/article/view/24105/2026-10-14T100822Z
+      accessed: '2026-10-15'
+    - &id060
+      kind: archive
+      title: cichlids.com forum thread 2759
+      url: "https://www.cichlids.com/disc/read.php?1,2759"
+      accessed: '2026-10-15'
+    - &id061
+      kind: archive
+      title: cichlids.com forum thread 65965
+      url: "https://www.cichlids.com/disc/read.php?1,65965"
+      accessed: '2026-10-15'
+    evidence:
+    - source: *id002
+      value: "Lake Managua (type locality), Lake Nicaragua, Atlantic slope of western Costa Rica and Nicaragua"
+    - source: *id003
+      value: "San Juan River drainage including Lakes Nicaragua and Managua, also rivers between 35 and 535 m elevation"
+  temperatureC:
+    value:
+      min: 24
+      max: 31
+    confidence: low
+    rationale: "The settled median is 24 to 31 C, with low confidence because the proposals do not form a qualified\
+      \ majority. It covers the 24 C Costa Rican pool, Swain's great-lake surface readings of 24.7 to 28 C, FAO's\
+      \ Managua range of 26 to 30 C, and JICA's 30.1 C point. The wider FishBase and NCS range is 21 to 34 C. Regional\
+      \ Sarapiqui means of 19.8 to 23.7 C include higher sites without demonstrated species occurrence, while the\
+      \ occupied lowland measurements reported by tiebreaker-1 span 22 to 26.1 C. Tipitapa reaches 32.4 C but is\
+      \ not a species-specific collection series. These wider observations remain evidence; the tally describes\
+      \ a provisional typical envelope rather than every occupied temperature or a physiological limit. Proposals:\
+      \ generator 26 to 31; checker-a 21 to 31; checker-b 24 to 33; checker-c 24 to 30; tiebreaker-1 22 to 30; tiebreaker-2\
+      \ 26 to 30."
+    sources:
+    - &id009
+      kind: literature
+      title: "FAO: The inland waters of Latin America, Central America, FAO/UN 1961 lake chemistry"
+      url: "https://www.fao.org/4/ad770b/AD770B13.htm"
+      accessed: '2026-10-15'
+      archived: fao.org/4/ad770b/ad770b13.htm/2026-10-14T094349Z
+    - &id010
+      kind: literature
+      title: "JICA and ENACAL (2005): Water supply system in Managua, supporting report 2, Table 2.5.1"
+      url: "https://openjicareport.jica.go.jp/pdf/11814944_01.pdf"
+      accessed: '2026-10-15'
+      archived: openjicareport.jica.go.jp/pdf/11814944_01.pdf/2026-10-15T100254Z
+    - &id011
+      kind: literature
+      title: "Beyond cichlid diversification: environmental drivers of biodiversity across the Nicaraguan lake system\
+        \ (2026), Table 1"
+      url: "https://doi.org/10.1007/s10750-026-06401-x"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1007_s10750-026-06401-x/2026-10-12T203429Z
+    - *id004
+    - &id082
+      kind: database
+      title: "FishBase reference record: Bussing (1998), Freshwater fishes of Costa Rica"
+      url: "https://www.fishbase.se/references/FBRefSummary.php?ID=36880"
+      accessed: '2026-10-15'
+      archived: fishbase.se/references/fbrefsummary.php/q-94e70c73/2026-10-14T100647Z
+    - &id012
+      kind: literature
+      title: "Cole, G. A. (1976). Limnology of the Great Lakes of Nicaragua. In: Investigations of the Ichthyofauna\
+        \ of Nicaraguan Lakes, University of Nebraska-Lincoln"
+      url: "https://digitalcommons.unl.edu/ichthynicar/3"
+      accessed: '2026-10-15'
+      archived: web.archive.org/web/2023/https_/digitalcommons.unl.edu/cgi/viewcontent.cgi/q-71323b83/2026-10-15T100443Z
+    - &id013
+      kind: literature
+      title: "Tolerancia de diez especies de diatomeas (Bacillariophyceae) a los factores físico-químicos del agua\
+        \ en el Río Sarapiquí, Costa Rica. Revista de Biología Tropical 64(1)"
+      url: "https://doi.org/10.15517/rbt.v64i1.18295"
+      accessed: '2026-10-15'
+      archived: revistas.ucr.ac.cr/index.php/rbt/article/download/18295/22990/2026-10-14T223232Z
+    - *id003
+    - *id005
+    - &id014
+      kind: literature
+      title: "Swain (1966): Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua"
+      url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1306_74d71500-2b21-11d7-8648000102c1865d/2026-10-12T203312Z
+    - &id015
+      kind: literature
+      title: "Lacayo Morales and Picado Pavon (2022): Calidad y uso potencial de las aguas del rio Tipitapa"
+      url: "https://doi.org/10.5377/rtu.v11i31.14292"
+      accessed: '2026-10-15'
+      archived: doi.org/10.5377_rtu.v11i31.14292/2026-10-12T203353Z
+    - *id006
+    - &id016
+      kind: literature
+      title: "Swain: Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua, limnological observations\
+        \ and Table 1"
+      url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+      archived: doi.org/10.1306_74d71500-2b21-11d7-8648000102c1865d/2026-10-12T203312Z
+      accessed: '2026-10-15'
+    - &id017
+      kind: literature
+      title: "FAO: The inland waters of Latin America, Central America, lake measurements attributed to FAO/UN 1961"
+      url: "https://www.fao.org/4/ad770b/AD770B13.htm"
+      archived: fao.org/4/ad770b/ad770b13.htm/2026-10-14T094349Z
+      accessed: '2026-10-15'
+    - *id007
+    - *id008
+    - &id018
+      kind: literature
+      title: "FAO: The Inland Waters of Latin America, Central America, Nicaragua and Managua lake chemistry"
+      url: "https://www.fao.org/4/ad770b/AD770B13.htm"
+      accessed: '2026-10-15'
+      archived: fao.org/4/ad770b/ad770b13.htm/2026-10-14T094349Z
+    - &id019
+      kind: literature
+      title: "Masis-Calvo, Umana Villalobos and Madrigal Mora (2026): Fish diversity along the Sarapiqui River"
+      url: "https://doi.org/10.15517/pcw7kw36"
+      accessed: '2026-10-15'
+      archived: doi.org/10.15517_pcw7kw36/2026-10-13T073357Z
+    - &id020
+      kind: database
+      title: "Nordiska Ciklidsallskapet: Neetroplus nematopus species register"
+      url: "https://ciklid.org/artregister/art.php?ID=455"
+      accessed: '2026-10-15'
+      archived: ciklid.org/artregister/art.php/q-2d64fdfb/2026-10-15T100147Z
+    - &id054
+      kind: literature
+      title: "Cole (1976): Limnology of the Great Lakes of Nicaragua, repository abstract only"
+      url: "https://digitalcommons.unl.edu/ichthynicar/3/"
+      accessed: '2026-10-15'
+      archived: digitalcommons.unl.edu/ichthynicar/3/2026-10-14T223823Z
+    - &id051
+      kind: literature
+      title: "Bussing (1993): Fish communities and environmental characteristics of a tropical rain forest river\
+        \ in Costa Rica, abstract only"
+      url: "https://revistas.ucr.ac.cr/index.php/rbt/article/view/24105"
+      accessed: '2026-10-15'
+      archived: revistas.ucr.ac.cr/index.php/rbt/article/view/24105/2026-10-14T100822Z
+    - &id052
+      kind: literature
+      title: "Burcham (1988): Fish communities and environmental characteristics of two lowland streams in Costa\
+        \ Rica, abstract only"
+      url: "https://revistas.ucr.ac.cr/index.php/rbt/article/view/23711"
+      accessed: '2026-10-15'
+      archived: revistas.ucr.ac.cr/index.php/rbt/article/view/23711/2026-10-15T101235Z
+    - &id021
+      kind: database
+      title: "AquaInfo: Neetroplus nematopus, Jan Bukkems"
+      url: "https://aquainfo.nl/artikel/neetroplus-nematopus/"
+      accessed: '2026-10-15'
+      archived: aquainfo.nl/artikel/neetroplus-nematopus/2026-10-15T101100Z
+    - &id022
+      kind: literature
+      title: "FAO, The inland waters of Latin America, Central America, Lake Nicaragua and Lake Managua measurements"
+      url: "https://www.fao.org/4/ad770b/AD770B13.htm"
+      accessed: '2026-10-15'
+      archived: fao.org/4/ad770b/ad770b13.htm/2026-10-14T094349Z
+    - &id023
+      kind: database
+      title: "FishBase species summary, Hypsophrys nematopus"
+      url: "https://www.fishbase.se/summary/Neetroplus-nematopus.html"
+      accessed: '2026-10-15'
+      archived: fishbase.se/summary/neetroplus-nematopus.html/2026-10-15T100107Z
+    - &id024
+      kind: database
+      title: "Fishipedia, Neetroplus nematopus"
+      url: "https://www.fishi-pedia.com/fishes/hypsophrys-nematopus"
+      accessed: '2026-10-15'
+      archived: fishi-pedia.com/fishes/hypsophrys-nematopus/2026-10-15T100157Z
+    - &id053
+      kind: literature
+      title: "Fish Species Richness in Lowland Streams with a Geothermal Input Phenomenon, Sarapiqui de Heredia,\
+        \ Costa Rica"
+      url: "https://doi.org/10.5402/2011/695492"
+      accessed: '2026-10-15'
+      archived: doi.org/10.5402_2011_695492/2026-10-13T073235Z
+    - &id083
+      kind: literature
+      title: "Beyond cichlid diversification, environmental drivers of biodiversity across the Nicaraguan lake system"
+      url: "https://doi.org/10.1007/s10750-026-06401-x"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1007_s10750-026-06401-x/2026-10-12T203429Z
+    - &id084
+      kind: literature
+      title: "Bussing 1993, Fish communities and environmental characteristics of a tropical rain forest river in\
+        \ Costa Rica, abstract only"
+      url: "https://revistas.ucr.ac.cr/index.php/rbt/article/view/24105"
+      accessed: '2026-10-15'
+      archived: revistas.ucr.ac.cr/index.php/rbt/article/view/24105/2026-10-14T100822Z
+    - &id085
+      kind: literature
+      title: "Burcham 1988, Fish communities and environmental characteristics of two lowland streams in Costa Rica,\
+        \ abstract only"
+      url: "https://revistas.ucr.ac.cr/index.php/rbt/article/view/23711"
+      accessed: '2026-10-15'
+      archived: revistas.ucr.ac.cr/index.php/rbt/article/view/23711/2026-10-15T101235Z
+    evidence:
+    - source: *id009
+      value:
+        min: 26
+        max: 30
+      note: Lake Managua water temperatures
+    - source: *id010
+      value:
+        min: 30.1
+        max: 30.1
+      note: "Lake Nicaragua at El Guayabo, one reading"
+    - source: *id011
+      value:
+        min: 27.5
+        max: 28.04
+      note: Two separate great-lake surface readings
+    - source: *id004
+      value:
+        min: 21
+        max: 34
+      note: "Published environmental limits, measurement context unavailable"
+    - source: *id012
+      value:
+        min: 24
+        max: 31
+      note: Lake Nicaragua bottom to Lake Managua morning surface layer
+    - source: *id013
+      value:
+        min: 19.8
+        max: 23.7
+      note: "Mean temperatures of six sites in the Sarapiquí drainage, 160 to 700 m elevation"
+    - source: *id003
+      value:
+        min: 21
+        max: 34
+      note: Climate-zone range of the species summary
+    - source: *id005
+      value:
+        min: 24
+        max: 24
+      note: Species present at the measured Costa Rican field site.
+    - source: *id014
+      value:
+        min: 24.7
+        max: 28
+      note: Combined surface observations in the two great lakes.
+    - source: *id015
+      value:
+        min: 28.5
+        max: 32.4
+      note: Regional surface-water measurements across two seasons; not species-specific collection temperatures.
+    - source: *id006
+      value:
+        min: 21
+        max: 34
+      note: Database environmental range; measurement locations unavailable on the page.
+    - source: *id016
+      value:
+        min: 24.7
+        max: 28
+      note: Combined surface readings for the two great lakes; lake-bottom readings reach 24 C.
+    - source: *id017
+      value:
+        min: 26
+        max: 30
+      note: Lake Managua
+    - source: *id007
+      value:
+        min: 24
+        max: 24
+      note: Single river-pool reading
+    - source: *id008
+      value:
+        min: 21
+        max: 34
+      note: "Environment summary, not a documented series on this page"
+    - source: *id014
+      value:
+        min: 24.7
+        max: 28
+      note: Surface measurements from both great lakes; bottom water is 24 to 26 C.
+    - source: *id018
+      value:
+        min: 26
+        max: 30
+      note: Managua water temperatures.
+    - source: *id019
+      value:
+        min: 22
+        max: 26.1
+      note: Envelope of site-date means at the three lowland stations occupied by N. nematopus; not individual physiological
+        limits.
+    - source: *id004
+      value:
+        min: 21
+        max: 34
+      note: Species-summary range without station-level measurement context.
+    - source: *id020
+      value:
+        min: 21
+        max: 34
+      note: "Species-register range, not a field series."
+    - source: *id021
+      value:
+        min: 24
+        max: 26
+      note: "Aquarium recommendation only, excluded from the natural-range decision."
+    - source: *id022
+      value:
+        min: 26
+        max: 30
+      note: "Lake Managua water, not the air-temperature series in ILEC."
+    - source: *id023
+      value:
+        min: 21
+        max: 34
+      note: Species environmental summary; locality and duration are not given.
+    - source: *id024
+      value:
+        min: 21
+        max: 30
+      note: "Unreferenced habitat and husbandry summary, not a field series."
+    tolerance:
+      value:
+        min: 21
+        max: 31
+      confidence: low
+      rationale: "The qualified-majority tally is 21 to 31 C with low confidence. Care recommendations include Akvarij's\
+        \ 21 to 28 C, Zoopet's 21 to 29 C, Fishipedia's 21 to 30 C, AquaInfo's 24 to 26 C and Fishkeeper's 24 to\
+        \ 28 C. FishBase and NCS give a wider 21 to 34 C range, and the proposals span upper bounds from 30 to 33\
+        \ C. The decided upper bound retains the natural 31 C ceiling without treating 34 C as demonstrated healthy\
+        \ multiyear maintenance. Boundaries are provisional; routine maintenance around 25 to 28 C has stronger\
+        \ husbandry support."
+      sources:
+      - &id027
+        kind: website
+        title: "The Evolved Fish: Neet Cichlid husbandry listing"
+        url: "https://theevolvedfish.com/products/neet-cichlid"
+        accessed: '2026-10-15'
+        archived: theevolvedfish.com/products/neet-cichlid/2026-10-15T100317Z
+      - &id028
+        kind: database
+        title: "Bukkems: Neetroplus nematopus, AquaInfo"
+        url: "https://aquainfo.nl/en/neetroplus-nematopus/"
+        accessed: '2026-10-15'
+        archived: aquainfo.nl/en/neetroplus-nematopus/2026-10-15T100332Z
+      - *id025
+      - *id010
+      - *id003
+      - &id029
+        kind: website
+        title: "Fishkeeper (Maidenhead Aquatics): Neet Cichlid, Neetroplus nematopus, species profile"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/central-american-cichlids/neet"
+        accessed: '2026-10-15'
+        archived: fishkeeper.co.uk/fish/freshwater/cichlids/central-american-cichlids/neet/2026-10-15T100547Z
+      - &id030
+        kind: database
+        title: "Akvarij.net: Neetroplus nematopus"
+        url: "https://www.akvarij.net/slatkovodna-akvaristika/ribe-slatkovodna/ciklidi-ribe-slatkovodna/832-neetroplus-nematopus"
+        accessed: '2026-10-15'
+        archived: akvarij.net/slatkovodna-akvaristika/ribe-slatkovodna/ciklidi-ribe-slatkovodna/832-neetroplus-nematopus/2026-10-15T100248Z
+      - &id031
+        kind: database
+        title: "Fishipedia: Neetroplus nematopus, provisional species sheet"
+        url: "https://www.fishi-pedia.com/fishes/hypsophrys-nematopus/"
+        accessed: '2026-10-15'
+        archived: fishi-pedia.com/fishes/hypsophrys-nematopus/2026-10-15T100401Z
+      - &id032
+        kind: database
+        title: "AquaInfo: Neetroplus nematopus"
+        url: "https://www.aquainfo.nl/artikel/neetroplus-nematopus/"
+        accessed: '2026-10-15'
+        archived: aquainfo.nl/artikel/neetroplus-nematopus/2026-10-15T100124Z
+      - *id026
+      - *id015
+      - &id033
+        kind: database
+        title: "Zoopet: Neetroplus nematopus"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1616"
+        archived: zoopet.com/fiskar/fisk.php/q-b7ba6ed7/2026-10-15T100248Z
+        accessed: '2026-10-15'
+      - &id034
+        kind: literature
+        title: "Danijel Ban: Neetroplus nematopus, Akvarij NET"
+        url: "https://www.akvarij.net/slatkovodna-akvaristika/ribe-slatkovodna/ciklidi-ribe-slatkovodna/832-neetroplus-nematopus"
+        archived: akvarij.net/slatkovodna-akvaristika/ribe-slatkovodna/ciklidi-ribe-slatkovodna/832-neetroplus-nematopus/2026-10-15T100248Z
+        accessed: '2026-10-15'
+      - &id035
+        kind: database
+        title: "Fishipedia: Neetroplus nematopus, provisional species sheet"
+        url: "https://www.fishi-pedia.com/fishes/hypsophrys-nematopus"
+        archived: fishi-pedia.com/fishes/hypsophrys-nematopus/2026-10-15T100157Z
+        accessed: '2026-10-15'
+      - *id008
+      - *id004
+      - *id020
+      - *id021
+      - &id038
+        kind: literature
+        title: "Duc Nguyen: Neetroplus nematopus, The Lateral Line article reproduced by Cichlid-Forum"
+        url: "https://www.cichlid-forum.com/articles/neet_nematopus.php"
+        accessed: '2026-10-15'
+        archived: cichlid-forum.com/articles/neet_nematopus.php/2026-10-15T100123Z
+      - *id019
+      - *id018
+      - *id024
+      - &id036
+        kind: database
+        title: "AquaInfo, Neetroplus nematopus, Jan Bukkems"
+        url: "https://aquainfo.nl/artikel/neetroplus-nematopus/"
+        accessed: '2026-10-15'
+        archived: aquainfo.nl/artikel/neetroplus-nematopus/2026-10-15T101100Z
+      - &id037
+        kind: website
+        title: "The Evolved Fish, Neet Cichlid husbandry information"
+        url: "https://theevolvedfish.com/products/neet-cichlid"
+        accessed: '2026-10-15'
+        archived: theevolvedfish.com/products/neet-cichlid/2026-10-15T100317Z
+      - *id023
+      - *id022
+      evidence:
+      - source: *id027
+        value:
+          min: 23.9
+          max: 27.8
+        note: "75 to 82 F, converted"
+      - source: *id028
+        value:
+          min: 24
+          max: 26
+      - source: *id025
+        value:
+          min: 21
+          max: 34
+      - source: *id003
+        value:
+          min: 21
+          max: 34
+      - source: *id029
+        value:
+          min: 24
+          max: 28
+        note: Aquarium recommendation
+      - source: *id030
+        value:
+          min: 21
+          max: 28
+        note: Aquarium recommendation.
+      - source: *id031
+        value:
+          min: 21
+          max: 30
+        note: Aquarium recommendation on a provisional sheet.
+      - source: *id032
+        value:
+          min: 24
+          max: 26
+        note: Narrow aquarium recommendation.
+      - source: *id026
+        value:
+          min: 21
+          max: 34
+        note: Listed temperature span; long-term endpoints unspecified.
+      - source: *id015
+        value:
+          min: 28.5
+          max: 32.4
+        note: Field evidence used only to widen the provisional upper boundary.
+      - source: *id033
+        value:
+          min: 21
+          max: 29
+      - source: *id034
+        value:
+          min: 21
+          max: 28
+      - source: *id035
+        value:
+          min: 21
+          max: 30
+      - source: *id008
+        value:
+          min: 21
+          max: 34
+        note: Environmental envelope rather than proof of long-term tolerance
+      - source: *id004
+        value:
+          min: 21
+          max: 34
+        note: "Broad species environment range, not a chronic exposure experiment."
+      - source: *id020
+        value:
+          min: 21
+          max: 34
+        note: Husbandry species-register range.
+      - source: *id021
+        value:
+          min: 24
+          max: 26
+        note: Narrower care recommendation.
+      - source: *id019
+        value:
+          min: 22
+          max: 26.1
+        note: Occupied lowland habitat measurements included in the tolerance.
+      - source: *id024
+        value:
+          min: 21
+          max: 30
+        note: Explicit aquarium recommendation.
+      - source: *id036
+        value:
+          min: 24
+          max: 26
+        note: Aquarium recommendation.
+      - source: *id037
+        value:
+          min: 23.9
+          max: 27.8
+        note: Aquarium recommendation converted from 75 to 82 F.
+      - source: *id023
+        value:
+          min: 21
+          max: 34
+        note: "Environmental range, not a long-term husbandry trial."
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+    verification:
+      method: median
+      votes:
+        agree: 2
+        total: 6
+  ph:
+    value:
+      min: 7
+      max: 9.3
+    confidence: low
+    rationale: "The settled median is pH 7 to 9.3 with low confidence. FAO reports 7 in Nicaragua and 8.7 in Managua;\
+      \ Swain reports surface ranges of 8.2 to 8.9 and 8.9 to 9.3 respectively, with small daily changes. ILEC independently\
+      \ reports Managua seasonal surface means of 9.18 to 9.26. This repeated alkaline evidence from a major native\
+      \ lake supports keeping the upper boundary despite generator and checker-a excluding it as an altered or bloom-related\
+      \ extreme. FishBase and most care sheets give only 7 to 8. The Sarapiqui study behind tiebreaker-1 reports\
+      \ a wider lower range of 6.1 to 7.15 at occupied stations, so 7 is a tally-selected typical bound rather than\
+      \ proof that acidic habitat is absent. The full source envelope is therefore broader than the decision. Deep\
+      \ reducing-water readings are not aquarium targets. Proposals: generator 7 to 8.7; checker-a 7 to 8.5; checker-b\
+      \ 7 to 9.3; checker-c 7 to 9.3; tiebreaker-1 6.1 to 9.3; tiebreaker-2 7 to 9.3."
+    sources:
+    - *id009
+    - *id010
+    - &id039
+      kind: database
+      title: "ILEC World Lake Database: Lake Managua, historical surface measurements"
+      url: "https://wldb.ilec.or.jp/Display/html/3461"
+      accessed: '2026-10-15'
+      archived: wldb.ilec.or.jp/display/html/3461/2026-10-14T094307Z
+    - *id004
+    - *id012
+    - &id040
+      kind: literature
+      title: "Barlow, G. W., Baylis, J. R. and Roberts, D. (1976). Chemical Analyses of some Crater Lakes in Relation\
+        \ to Adjacent Lake Nicaragua. In: Investigations of the Ichthyofauna of Nicaraguan Lakes"
+      url: "https://digitalcommons.unl.edu/ichthynicar/4"
+      accessed: '2026-10-15'
+      archived: web.archive.org/web/2023/https_/digitalcommons.unl.edu/cgi/viewcontent.cgi/q-1a6c4401/2026-10-15T100438Z
+    - *id013
+    - *id003
+    - *id005
+    - *id014
+    - &id041
+      kind: literature
+      title: "Harer et al.: Heterogeneity across Neotropical aquatic environments affects prokaryotic and eukaryotic\
+        \ biodiversity based on environmental DNA"
+      url: "https://doi.org/10.1002/edn3.267"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1002_edn3.267/2026-10-13T000709Z
+    - &id042
+      kind: database
+      title: "ILEC World Lake Database: Lake Managua"
+      url: "https://wldb.ilec.or.jp/Display/html/3461"
+      accessed: '2026-10-15'
+      archived: wldb.ilec.or.jp/display/html/3461/2026-10-14T094307Z
+    - *id006
+    - *id017
+    - *id016
+    - *id007
+    - *id008
+    - *id035
+    - *id019
+    - &id043
+      kind: database
+      title: "ILEC World Lake Database: Lake Managua, surface water measurements"
+      url: "https://wldb.ilec.or.jp/Display/html/3461"
+      accessed: '2026-10-15'
+      archived: wldb.ilec.or.jp/display/html/3461/2026-10-14T094307Z
+    - *id018
+    - *id038
+    - *id021
+    - *id020
+    - *id022
+    - &id044
+      kind: database
+      title: "ILEC World Lake Database, Lake Managua, surface pH at eleven stations"
+      url: "https://wldb.ilec.or.jp/Display/html/3461"
+      accessed: '2026-10-15'
+      archived: wldb.ilec.or.jp/display/html/3461/2026-10-14T094307Z
+    - *id023
+    - *id024
+    - &id086
+      kind: literature
+      title: "Cole 1976, Limnology of the Great Lakes of Nicaragua, repository abstract only"
+      url: "https://digitalcommons.unl.edu/ichthynicar/3/"
+      accessed: '2026-10-15'
+      archived: digitalcommons.unl.edu/ichthynicar/3/2026-10-14T223823Z
+    evidence:
+    - source: *id009
+      value:
+        min: 7
+        max: 8.7
+      note: Separate lake measurements
+    - source: *id010
+      value:
+        min: 8.06
+        max: 8.19
+      note: Field and laboratory pH at El Guayabo
+    - source: *id039
+      value:
+        min: 9.18
+        max: 9.26
+      note: Seasonal lake-wide means in a heavily altered habitat
+    - source: *id004
+      value:
+        min: 7
+        max: 8
+    - source: *id012
+      value:
+        min: 7.0
+        max: 8.7
+      note: "Lakes Nicaragua and Managua, typical readings; bloom peaks to 8.9 and 9.3 excluded"
+    - source: *id040
+      value:
+        min: 8.0
+        max: 8.35
+      note: "Lake Nicaragua and the crater lake Xiloá, April 1970"
+    - source: *id013
+      value:
+        min: 7.2
+        max: 8.5
+      note: Site means in the Sarapiquí drainage
+    - source: *id003
+      value:
+        min: 7.0
+        max: 8.0
+    - source: *id005
+      value:
+        min: 7
+        max: 7
+      note: Rio San Jose field measurement.
+    - source: *id014
+      value:
+        min: 8.2
+        max: 9.3
+      note: Union of measured surface-water ranges of Nicaragua and Managua.
+    - source: *id041
+      value:
+        min: 7.33
+        max: 8.69
+      note: "Xiloa and the two great lakes, measured one metre below the surface."
+    - source: *id042
+      value:
+        min: 9.18
+        max: 9.26
+      note: Seasonal surface means of eleven Managua stations.
+    - source: *id006
+      value:
+        min: 7
+        max: 8
+      note: Database range conflicts with direct lake measurements.
+    - source: *id017
+      value:
+        min: 7
+        max: 8.7
+      note: Two lake point measurements
+    - source: *id016
+      value:
+        min: 8.2
+        max: 9.3
+      note: Union of surface measurements from both lakes
+    - source: *id007
+      value:
+        min: 7
+        max: 7
+      note: Single Costa Rican pool
+    - source: *id008
+      value:
+        min: 7
+        max: 8
+    - source: *id035
+      value:
+        min: 7
+        max: 8
+    - source: *id019
+      value:
+        min: 6.1
+        max: 7.15
+      note: "Site-date means at La Guaria, Chilamate and El Roble, the lowland sites with N. nematopus records."
+    - source: *id014
+      value:
+        min: 8.2
+        max: 9.3
+      note: Nicaragua surface pH 8.2 to 8.9 and Managua surface pH 8.9 to 9.3.
+    - source: *id043
+      value:
+        min: 9.18
+        max: 9.26
+      note: Managua seasonal means over 11 surface stations.
+    - source: *id018
+      value:
+        min: 7
+        max: 8.7
+      note: "Separate lake readings, Nicaragua 7 and Managua 8.7."
+    - source: *id004
+      value:
+        min: 7
+        max: 8
+      note: Summary range without sampling context.
+    - source: *id038
+      value:
+        min: 7
+        max: 8.2
+      note: Literature advice 7 to 8 plus a keeper's successful breeding at 8.2; aquarium evidence only.
+    - source: *id021
+      value:
+        min: 7
+        max: 7.5
+      note: Aquarium care interval.
+    - source: *id020
+      value:
+        min: 7
+        max: 8
+      note: Species-register interval.
+    - source: *id022
+      value:
+        min: 7
+        max: 8.7
+      note: "Range across the two Great Lakes, each endpoint representing a separate lake reading."
+    - source: *id044
+      value:
+        min: 9.18
+        max: 9.26
+      note: "Dry-season and rainy-season surface means, not within-day minima and maxima."
+    - source: *id023
+      value:
+        min: 7
+        max: 8
+      note: Species environmental summary.
+    - source: *id024
+      value:
+        min: 7
+        max: 8
+      note: Habitat summary without a field measurement series.
+    - source: *id012
+      value:
+        min: 7
+        max: 8.7
+      note: "Lakes Nicaragua and Managua, typical readings; bloom peaks to 8.9 and 9.3 excluded"
+    - source: *id040
+      value:
+        min: 8
+        max: 8.35
+      note: "Lake Nicaragua and the crater lake Xiloá, April 1970"
+    tolerance:
+      value:
+        min: 7
+        max: 9.3
+      confidence: low
+      rationale: "The settled median is 7 to 9.3 with low confidence, including the decided natural range. Most\
+        \ aquarium advice gives 7 to 8, AquaInfo gives 7 to 7.5 and Nguyen reports successful breeding at 8.2. The\
+        \ wider proposal of 6 to 9.3 derives from occupied Sarapiqui readings of 6.1 to 7.15, while another gives\
+        \ 6.5 to 9.3; neither is discarded as evidence. The upper boundary rests on repeated native Managua measurements,\
+        \ not a multiyear aquarium exposure study. Equality with the natural range results from independently stated\
+        \ husbandry advice at the lower end and habitat containment at the upper end; it does not establish injury\
+        \ immediately outside either bound. The interval is a provisional population-wide envelope rather than a\
+        \ routine pH target. Proposals: generator 7 to 9; checker-a 7 to 8.5; checker-b 6.5 to 9.3; checker-c 7\
+        \ to 9.3; tiebreaker-1 6 to 9.3; tiebreaker-2 7 to 9.3."
+      sources:
+      - &id045
+        kind: literature
+        title: "Nguyen: Neetroplus nematopus, The Lateral Line breeding account"
+        url: "https://www.cichlid-forum.com/articles/neet_nematopus.php"
+        accessed: '2026-10-15'
+        archived: cichlid-forum.com/articles/neet_nematopus.php/2026-10-15T100123Z
+      - *id028
+      - *id025
+      - *id009
+      - *id003
+      - *id029
+      - &id046
+        kind: website
+        title: "Neetroplus nematopus (Duc Nguyen, The Lateral Line, Hill Country Cichlid Club), cichlid-forum.com"
+        url: "http://www.cichlid-forum.com/articles/neet_nematopus.php"
+        accessed: '2026-10-15'
+        archived: cichlid-forum.com/articles/neet_nematopus.php/2026-10-15T100625Z
+      - &id047
+        kind: literature
+        title: "Nguyen: Neetroplus nematopus, Hill Country Cichlid Club article on Cichlid-Forum"
+        url: "https://www.cichlid-forum.com/articles/neet_nematopus.php"
+        accessed: '2026-10-15'
+        archived: cichlid-forum.com/articles/neet_nematopus.php/2026-10-15T100123Z
+      - *id032
+      - *id005
+      - *id014
+      - &id048
+        kind: model-knowledge
+        title: Checker inference from cichlid husbandry and the cited species observations
+      - *id033
+      - *id034
+      - *id035
+      - &id049
+        kind: literature
+        title: "Duc Nguyen: Neetroplus nematopus, The Lateral Line, reproduced by Cichlid-Forum"
+        url: "https://www.cichlid-forum.com/articles/neet_nematopus.php"
+        archived: cichlid-forum.com/articles/neet_nematopus.php/2026-10-15T100123Z
+        accessed: '2026-10-15'
+      - *id016
+      - *id038
+      - *id021
+      - *id020
+      - *id004
+      - *id019
+      - *id043
+      - &id050
+        kind: literature
+        title: "Duc Nguyen, Neetroplus nematopus, Hill Country Cichlid Club article reproduced by Cichlid-Forum"
+        url: "https://www.cichlid-forum.com/articles/neet_nematopus.php"
+        accessed: '2026-10-15'
+        archived: cichlid-forum.com/articles/neet_nematopus.php/2026-10-15T100123Z
+      - *id036
+      - *id024
+      - *id037
+      - *id044
+      evidence:
+      - source: *id045
+        value:
+          min: 7
+          max: 8.2
+        note: General advice 7 to 8 and successful breeding at 8.2
+      - source: *id028
+        value:
+          min: 7
+          max: 7.5
+      - source: *id025
+        value:
+          min: 7
+          max: 8
+      - source: *id003
+        value:
+          min: 7.0
+          max: 8.0
+      - source: *id029
+        value:
+          min: 7.0
+          max: 8.0
+      - source: *id046
+        value:
+          min: 7.0
+          max: 8.2
+        note: Group kept in hard water of pH 8.2 with spawning
+      - source: *id047
+        value:
+          min: 7
+          max: 8.2
+        note: Cited recommendation plus measured successful keeping and breeding at pH 8.2.
+      - source: *id032
+        value:
+          min: 7
+          max: 7.5
+        note: Published aquarium range.
+      - source: *id048
+        value:
+          min: 6.5
+          max: 9.3
+        note: Provisional synthesis of husbandry adaptability and the required habitat containment.
+      - source: *id033
+        value:
+          min: 7
+          max: 8
+      - source: *id034
+        value:
+          min: 7
+          max: 8
+      - source: *id035
+        value:
+          min: 7
+          max: 8
+      - source: *id049
+        value:
+          min: 8.2
+          max: 8.2
+        note: Successful aquarium reproduction
+      - source: *id016
+        value:
+          min: 8.2
+          max: 9.3
+        note: Habitat evidence used to widen the inferred tolerance
+      - source: *id038
+        value:
+          min: 7
+          max: 8.2
+        note: Care advice supplemented by an actual breeding aquarium at pH 8.2.
+      - source: *id021
+        value:
+          min: 7
+          max: 7.5
+        note: Narrow aquarium recommendation; general text describes chemical adaptability.
+      - source: *id020
+        value:
+          min: 7
+          max: 8
+        note: Care-register range.
+      - source: *id019
+        value:
+          min: 6.1
+          max: 7.15
+        note: "Occupied lowland habitat, used to widen the husbandry envelope."
+      - source: *id014
+        value:
+          min: 8.2
+          max: 9.3
+        note: "Occupied great-lake surface water, used to widen the husbandry envelope."
+      - source: *id050
+        value:
+          min: 7
+          max: 8.2
+        note: Literature guidance of 7 to 8 plus the author aquarium observation at 8.2.
+      - source: *id036
+        value:
+          min: 7
+          max: 7.5
+        note: Care-sheet recommendation.
+      - source: *id024
+        value:
+          min: 7
+          max: 8
+        note: Aquarium recommendation.
+      - source: *id037
+        value:
+          min: 7
+          max: 8
+        note: Aquarium recommendation.
+      - source: *id044
+        value:
+          min: 9.18
+          max: 9.26
+        note: "Habitat evidence used to widen the tolerance, not a captive experiment."
+      - source: *id003
+        value:
+          min: 7
+          max: 8
+      - source: *id029
+        value:
+          min: 7
+          max: 8
+      - source: *id046
+        value:
+          min: 7
+          max: 8.2
+        note: Group kept in hard water of pH 8.2 with spawning
+      verification:
+        method: median
+        votes:
+          agree: 3
+          total: 6
+    verification:
+      method: median
+      votes:
+        agree: 3
+        total: 6
+  ghDgh:
+    value:
+      min: 3
+      max: 7
+    confidence: low
+    rationale: "The qualified-majority decision is 3 to 7 dGH, retaining the tally's low confidence. FAO's measured\
+      \ calcium and magnesium sums of 1.24 and 2.29 meq/L convert to 3.48 and 6.42 dGH using 2.804 dGH per meq/L;\
+      \ JICA independently gives 3.73 dGH for Nicaragua. Direct measurements outweigh FishBase's wider 9 to 20 dH\
+      \ summary as a description of these lakes. The Costa Rican pool's 17 mg/L implies 0.95 dGH only if its ambiguous\
+      \ unit means CaCO3 equivalents, and Tipitapa station means span 5.6 to 7.6 dGH without demonstrating species\
+      \ capture at each station. Barlow's Nicaragua-to-Xiloa range is wider at 3.6 to 24.7 dGH; the unusually mineralized\
+      \ crater lake is described separately. Thus the tally range is a provisional great-lake baseline with incomplete\
+      \ river coverage, not the full geographic envelope."
+    sources:
+    - *id009
+    - *id010
+    - *id004
+    - *id012
+    - *id040
+    - *id013
+    - *id003
+    - *id005
+    - *id014
+    - *id015
+    - *id006
+    - *id032
+    - *id017
+    - *id007
+    - *id008
+    - *id034
+    - *id035
+    - *id016
+    - *id018
+    - *id019
+    - *id051
+    - *id052
+    - *id022
+    - *id023
+    - *id024
+    - *id053
+    - &id055
+      kind: literature
+      title: Stable isotope and hydrochemical study of Laguna de Tiscapa and the Managua hydrological system
+      url: "https://doi.org/10.5377/farem.v0i37.11211"
+      accessed: '2026-10-15'
+      archived: doi.org/10.5377_farem.v0i37.11211/2026-10-12T203548Z
+    evidence:
+    - source: *id009
+      value:
+        min: 3.48
+        max: 6.42
+      note: Converted from measured divalent-ion equivalents
+    - source: *id010
+      value:
+        min: 3.73
+        max: 3.73
+      note: 66.53 divided by 17.848
+    - source: *id004
+      value:
+        min: 9
+        max: 20
+      note: Conflicting general environment summary
+    - source: *id012
+      value:
+        min: 3.4
+        max: 6.4
+      note: "Lake Nicaragua 3.4 to 3.5 dGH, Lake Managua 6.4 dGH, from calcium and magnesium"
+    - source: *id040
+      value:
+        min: 3.6
+        max: 24.7
+      note: "Lake Nicaragua 3.6 dGH, crater lake Xiloá 24.7 dGH"
+    - source: *id003
+      value:
+        min: 9
+        max: 20
+    - source: *id005
+      value:
+        min: 0.95
+        max: 0.95
+      note: "17/17.848, assuming the reported GH unit is CaCO3 equivalent."
+    - source: *id014
+      value:
+        min: 3.3
+        max: 3.3
+      note: Approximate Lake Nicaragua hardness calculated from reported calcium and magnesium.
+    - source: *id015
+      value:
+        min: 5.6
+        max: 7.6
+      note: "Range of station mean hardness, converted from mg/L CaCO3; seasonal variability is additional."
+    - source: *id006
+      value:
+        min: 9
+        max: 20
+      note: Database dH range without site-specific analytical context.
+    - source: *id032
+      value:
+        min: 12
+        max: 16
+      note: Aquarium recommendation; not used as a habitat measurement.
+    - source: *id017
+      value:
+        min: 3.47
+        max: 6.41
+      note: Converted sum of Ca and Mg equivalents for the two lakes
+    - source: *id007
+      value:
+        min: 0.95
+        max: 0.95
+      note: "17 mg/L, provisionally interpreted as CaCO3; basis not explicit"
+    - source: *id008
+      value:
+        min: 9
+        max: 20
+    - source: *id034
+      value:
+        min: 9
+        max: 20
+      note: Husbandry recommendation
+    - source: *id035
+      value:
+        min: 9
+        max: 20
+    - source: *id018
+      value:
+        min: 3.48
+        max: 6.42
+      note: "Calculated from separate lake calcium and magnesium analyses in meq/L, not from conductivity."
+    - source: *id014
+      value:
+        min: 3.3
+        max: 3.5
+      note: Approximate Nicaragua hardness calculated from the reported calcium and magnesium analyses.
+    - source: *id004
+      value:
+        min: 9
+        max: 20
+      note: Summary dH range; direct native lake measurements contradict this as a universal habitat interval.
+    - source: *id022
+      value:
+        min: 3.48
+        max: 6.42
+      note: Calculated from measured calcium and magnesium equivalents in the two lakes.
+    - source: *id023
+      value:
+        min: 9
+        max: 20
+      note: "General species dH summary, without a station-level analytical basis."
+    - source: *id024
+      value:
+        min: 9
+        max: 20
+      note: "General habitat hardness claim, without measurements."
+    tolerance:
+      value:
+        min: 2
+        max: 20
+      confidence: low
+      rationale: "The tally gives 2 to 20 dGH with low confidence and unanimous agreement under the two-degree comparison\
+        \ rule, despite proposals of 3 to 20, 2 to 20, 1 to 20 and 1 to 20. FishBase and Akvarij recommend 9 to\
+        \ 20, AquaInfo 12 to 16 and the dealer 10 to 20 dGH. Measured great-lake occurrence supports softer water.\
+        \ Barlow's wider natural evidence reaches 24.7 dGH in mineralized Xiloa, and the Costa Rican pool estimate\
+        \ reaches 0.95 dGH with ambiguous units. Those observations remain evidence outside the decided interval,\
+        \ but neither supplies a demonstrated multiyear aquarium boundary. The result is a provisional typical husbandry\
+        \ range rather than the entire occupied-habitat envelope."
+      sources:
+      - *id009
+      - *id010
+      - *id028
+      - *id027
+      - *id003
+      - *id040
+      - *id030
+      - *id032
+      - *id006
+      - *id005
+      - *id014
+      - *id034
+      - *id008
+      - *id049
+      - *id007
+      evidence:
+      - source: *id028
+        value:
+          min: 12
+          max: 16
+      - source: *id027
+        value:
+          min: 10
+          max: 20
+      - source: *id009
+        value:
+          min: 3.48
+          max: 6.42
+        note: Natural occurrence supports the softer end
+      - source: *id003
+        value:
+          min: 9
+          max: 20
+      - source: *id040
+        value:
+          min: 3.6
+          max: 24.7
+        note: Habitats from Lake Nicaragua to Lake Xiloá
+      - source: *id030
+        value:
+          min: 9
+          max: 20
+        note: Species-specific aquarium recommendation.
+      - source: *id032
+        value:
+          min: 12
+          max: 16
+        note: Narrower aquarium recommendation.
+      - source: *id005
+        value:
+          min: 0.95
+          max: 0.95
+        note: "Natural occurrence supports soft-water adaptability, not a multiyear trial."
+      - source: *id034
+        value:
+          min: 9
+          max: 20
+      - source: *id008
+        value:
+          min: 9
+          max: 20
+      - source: *id007
+        value:
+          min: 0.95
+          max: 0.95
+        note: Native soft-water point supporting the inferred lower extension
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  khDkh:
+    value:
+      min: 2
+      max: 25
+    confidence: low
+    rationale: "The settled median is 2 to 25 dKH with low confidence; natural KH carries no verification object.\
+      \ Here KH expresses alkalinity equivalents. FAO's bicarbonate plus carbonate totals of 1.35 and 8.70 meq/L\
+      \ yield 3.79 and 24.39 dKH; both columns are charge equivalents, so carbonate is not doubled. JICA gives 4.82\
+      \ dKH in Nicaragua. Managua's sodium-rich water can have far higher KH than calcium-magnesium hardness. Sarapiqui\
+      \ site means of 1.1 to 2.4 dKH and the pool estimate of 0.5 dKH, whose unit basis is uncertain, extend below\
+      \ the decision and remain evidence. The tally uses a typical compromise rather than the complete measured\
+      \ source range, about 0.5 to 24.4 dKH. No conductivity-to-hardness conversion is used. Proposals: generator\
+      \ 3 to 25; checker-a 1 to 8; checker-b 0.5 to 16; checker-c 0.5 to 25; tiebreaker-1 3 to 25; tiebreaker-2\
+      \ 3 to 25."
+    sources:
+    - *id009
+    - *id010
+    - *id012
+    - *id040
+    - *id013
+    - *id005
+    - *id014
+    - *id015
+    - *id017
+    - *id016
+    - *id007
+    - *id018
+    - *id019
+    - *id054
+    - *id051
+    - *id052
+    - *id022
+    - *id055
+    - *id053
+    evidence:
+    - source: *id009
+      value:
+        min: 3.79
+        max: 24.39
+      note: Alkalinity in meq/L multiplied by 2.804
+    - source: *id010
+      value:
+        min: 4.82
+        max: 4.82
+      note: Alkalinity divided by 17.848
+    - source: *id012
+      value:
+        min: 3.5
+        max: 24
+      note: "Lake Nicaragua 3.5 to 3.8 dKH, Lake Managua about 24 dKH"
+    - source: *id040
+      value:
+        min: 4.1
+        max: 17.6
+      note: Lake Nicaragua and the crater lake Xiloá
+    - source: *id013
+      value:
+        min: 1.1
+        max: 2.4
+      note: Site mean alkalinity of the Sarapiquí drainage converted from mg/L as CaCO3
+    - source: *id005
+      value:
+        min: 0.5
+        max: 0.5
+      note: "9/17.848, assuming CaCO3 equivalent; method unspecified."
+    - source: *id014
+      value:
+        min: 3.4
+        max: 3.6
+      note: 60 to 65 mg/L total alkalinity divided by 17.848.
+    - source: *id015
+      value:
+        min: 4.6
+        max: 15.7
+      note: 81.95 to 280.05 mg/L divided by 17.848; assumes the paper uses CaCO3 equivalents for total alkalinity.
+    - source: *id017
+      value:
+        min: 3.78
+        max: 24.36
+      note: "Nicaragua and Managua, converted carbonate plus bicarbonate equivalents"
+    - source: *id016
+      value:
+        min: 3.36
+        max: 3.64
+      note: "Nicaragua total alkalinity 60 to 65 mg/L, conventional CaCO3 basis"
+    - source: *id007
+      value:
+        min: 0.5
+        max: 0.5
+      note: "9 mg/L, assumed CaCO3 basis; unit interpretation uncertain"
+    - source: *id018
+      value:
+        min: 3.79
+        max: 24.39
+      note: Alkalinity from the sum of carbonate and bicarbonate equivalents in each lake.
+    - source: *id014
+      value:
+        min: 3.36
+        max: 3.64
+      note: Lake Nicaragua alkalinity of 60 to 65 mg/L as CaCO3 divided by 17.848.
+    - source: *id022
+      value:
+        min: 3.79
+        max: 24.39
+      note: Calculated alkalinity equivalents for Lake Nicaragua and Lake Managua; two separate lake measurements.
+    tolerance:
+      value:
+        min: 1
+        max: 28
+      confidence: low
+      rationale: "The settled median is 1 to 28 dKH with low confidence. The median upper endpoint of 27.5 rounds\
+        \ to 28; this interval contains the decided natural 2 to 25 dKH and extends beyond it. Fishkeeper gives\
+        \ an actual care-sheet KH recommendation of 10 to 20 dKH, retained alongside the other agents' statement\
+        \ that they find no numerical species-specific limits. That recommendation is not an experiment defining\
+        \ failure outside 10 to 20. Broader endpoints are inferred from chemical adaptability, successful breeding\
+        \ at pH 8.2 and the contrasting river and sodium-buffered lake habitats. Proposals reaching 30 dKH are wider\
+        \ than the decision; neither 28 nor 30 is a demonstrated chronic limit. Related pH and GH advice informs\
+        \ this low-confidence inference without converting GH into KH. Proposals: generator 2 to 25; checker-a 1\
+        \ to 20; checker-b 0.5 to 20; checker-c 0 to 30; tiebreaker-1 1 to 30; tiebreaker-2 1 to 30."
+      sources:
+      - *id009
+      - *id010
+      - *id045
+      - &id056
+        kind: model-knowledge
+        title: Explicit husbandry inference where species-specific evidence is absent
+      - *id029
+      - *id040
+      - *id005
+      - *id047
+      - *id032
+      - *id015
+      - *id048
+      - *id049
+      - *id034
+      - *id017
+      - *id007
+      - &id057
+        kind: model-knowledge
+        title: Checker inference from the cited ecology and husbandry evidence
+      - *id038
+      - *id021
+      - *id004
+      - *id018
+      - *id050
+      - *id036
+      - *id024
+      - *id037
+      - *id022
+      evidence:
+      - source: *id009
+        value:
+          min: 3.79
+          max: 24.39
+        note: "Native alkalinity, not an aquarium experiment"
+      - source: *id056
+        value:
+          min: 2
+          max: 25
+        note: Inferred tolerance from habitat and pH keeping practice
+      - source: *id029
+        value:
+          min: 10
+          max: 20
+        note: Care sheet water parameters
+      - source: *id040
+        value:
+          min: 4.1
+          max: 17.6
+        note: Lake Nicaragua and Lake Xiloá
+      - source: *id048
+        value:
+          min: 0.5
+          max: 20
+        note: Derived KH tolerance from field alkalinity and aquarium pH/GH adaptability; no direct KH keeping trial.
+      - source: *id057
+        value:
+          min: 0
+          max: 30
+        note: Explicit inference from the related pH and GH advice and measured native alkalinity
+      - source: *id038
+        value:
+          min: 1
+          max: 30
+        note: Inferred KH envelope from successful hard-water breeding at pH 8.2 and stated chemical adaptability;
+          the article supplies no KH measurement.
+      - source: *id021
+        value:
+          min: 1
+          max: 30
+        note: Inference from the general chemical-adaptability advice; no numerical KH limit is stated.
+      - source: *id018
+        value:
+          min: 3.79
+          max: 24.39
+        note: Measured native alkalinity that the inferred aquarium tolerance must include.
+      - source: *id050
+        value:
+          min: 1
+          max: 30
+        note: "Derived working range, not a source-stated KH interval; breeding at pH 8.2 and unspecified hard water\
+          \ supports chemical adaptability only."
+      - source: *id036
+        value:
+          min: 1
+          max: 30
+        note: "Derived from the account of low chemical specificity, not a measured KH limit."
+      - source: *id022
+        value:
+          min: 3.79
+          max: 24.39
+        note: Natural alkalinity equivalents that the derived tolerance must contain.
+      verification:
+        method: median
+        votes:
+          agree: 3
+          total: 6
+  maxSizeCm:
+    value:
+      male: 13
+      female: 10
+    confidence: medium
+    rationale: "The component medians are 13 cm male and 10 cm female from proposals of 13/10, 12/9, 13/10 and 13/10.\
+      \ Nguyen's aquarium upper lengths convert to about 12.7 and 10.2 cm, and Barberis independently gives 13 and\
+      \ 10 cm. These support rounded typical aquarium maxima. Fishkeeper's unsexed 12 cm, Zoopet's 16 cm, NCS and\
+      \ Akvarij maxima reaching 18 cm, and FishBase's 14 cm standard length remain evidence but do not define typical\
+      \ total length by sex. The reproductive-study mass ratio alone is not converted into an independent length\
+      \ measurement."
+    sources:
+    - *id045
+    - *id025
+    - *id004
+    - *id027
+    - *id029
+    - *id046
+    - *id003
+    - &id058
+      kind: literature
+      title: "The reproductive biology of a Central American cichlid Neetroplus nematopus in Lake Xiloá, Nicaragua.\
+        \ Current Zoology 56(1) (abstract only)"
+      url: "https://doi.org/10.1093/czoolo/56.1.43"
+      accessed: '2026-10-15'
+      offline: true
+    - *id047
+    - &id059
+      kind: literature
+      title: "Barberis: Neetroplus nematopus, Associazione Italiana Ciclidofili"
+      url: "https://www.aiconline.it/articoli-ciclidi/cliclidi-americani/63-neetroplus-nematopus-3-95-di-c-barberis.html"
+      accessed: '2026-10-15'
+      archived: aiconline.it/articoli-ciclidi/cliclidi-americani/63-neetroplus-nematopus-3-95-di-c-barberis.html/2026-10-15T100330Z
+    - *id026
+    - *id006
+    - *id030
+    - *id049
+    - *id008
+    - *id034
+    - *id033
+    evidence:
+    - source: *id045
+      value:
+        male: 12.7
+        female: 10.2
+    - source: *id029
+      value:
+        male: 12
+        female: 12
+    - source: *id046
+      value:
+        male: 12.7
+        female: 10
+    - source: *id003
+      value:
+        male: 14
+        female: 14
+      note: Maximum standard length
+    - source: *id058
+      value:
+        male: 12
+        female: 9
+      note: Only a body mass ratio of females to males of 0.39 is stated; the female length is derived from it
+    - source: *id047
+      value:
+        male: 12.7
+        female: 10.2
+      note: Upper ends of 4.5 to 5 inches male and 3 to 4 inches female.
+    - source: *id059
+      value:
+        male: 13
+        female: 10
+    - source: *id030
+      value:
+        male: 18
+        female: 9
+      note: Alternative larger male maximum.
+    - source: *id049
+      value:
+        male: 12.7
+        female: 10.2
+      note: Upper endpoints converted from inches
+    - source: *id034
+      value:
+        male: 18
+        female: 9
+      note: Female size approximated from the stated half-male relationship
+  predation:
+    value: 0
+    confidence: medium
+    rationale: "The tally selects level 0 by five of six votes with medium confidence. FishBase, CRC, direct river\
+      \ observations and the feeding study characterize a periphyton scraper with negligible reliance on evasive\
+      \ prey. Level 0 permits incidental fry intake. Generator instead proposes level 1 because Practical Fishkeeping\
+      \ describes small cichlids, including this species, consuming dovii fry. That report is retained as positive\
+      \ dissenting evidence; the majority treats it as insufficient to establish a general small-fish hunting tendency.\
+      \ Neither plant feeding nor the tally establishes that fry are safe, and territorial killing is distinct from\
+      \ feeding."
+    sources:
+    - &id062
+      kind: literature
+      title: "Practical Fishkeeping: Six best pet cichlids, wolf cichlid food web"
+      url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+      accessed: '2026-10-15'
+      archived: practicalfishkeeping.co.uk/features/six-best-pet-cichlids/2026-10-14T100737Z
+    - *id004
+    - &id063
+      kind: database
+      title: "Artigas Azas: Neetroplus nematopus, public species summary"
+      url: "https://cichlidae.com/species.php?id=221"
+      accessed: '2026-10-15'
+      archived: cichlidae.com/species.php/q-c7819548/2026-10-15T100416Z
+    - *id003
+    - &id064
+      kind: database
+      title: "Cichlid Room Companion: Neetroplus nematopus (public summary)"
+      url: "https://cichlidae.com/species.php?id=_ruexs3HNyVtMVcBC2jJ_w"
+      accessed: '2026-10-15'
+      archived: cichlidae.com/species.php/q-9db507c1/2026-10-15T100315Z
+    - *id029
+    - &id065
+      kind: database
+      title: "FishBase ecology table: Hypsophrys nematopus"
+      url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=20979&GenusName=Hypsophrys&SpeciesName=nematopus"
+      accessed: '2026-10-15'
+      archived: fishbase.se/ecology/fishecologysummary.php/q-972abfe4/2026-10-15T100256Z
+    - &id066
+      kind: database
+      title: "FishBase food items: Hypsophrys nematopus"
+      url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=20979&genus=Hypsophrys&species=nematopus"
+      accessed: '2026-10-15'
+      archived: fishbase.se/trophiceco/fooditemslist.php/q-e5e9ad41/2026-10-15T100258Z
+    - &id067
+      kind: database
+      title: "Cichlid Room Companion: Neetroplus nematopus, public species account"
+      url: "https://cichlidae.com/species.php?id=_ruexs3HNyVtMVcBC2jJ_w"
+      accessed: '2026-10-15'
+      archived: cichlidae.com/species.php/q-9db507c1/2026-10-15T100315Z
+    - &id075
+      kind: literature
+      title: "Lehtonen and Helantera: The role of neighbours in aggressive defence of territories in mixed-species\
+        \ breeding aggregations of cichlid fish"
+      url: "https://doi.org/10.1007/s10750-024-05749-2"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1007_s10750-024-05749-2/2026-10-13T073640Z
+    - *id008
+    - *id049
+    - &id068
+      kind: literature
+      title: "Shannon Loughnan: The Cichlid Diversity of a Volcanic Nicaraguan Island"
+      url: "https://www.tfhmagazine.com/articles/freshwater/the-cichlid-diversity-of-a-volcanic-nicaraguan-island"
+      accessed: '2026-10-15'
+      archived: tfhmagazine.com/articles/freshwater/the-cichlid-diversity-of-a-volcanic-nicaraguan-island/2026-10-15T100330Z
+    - *id038
+    - *id023
+    - &id069
+      kind: database
+      title: "Cichlid Room Companion, Neetroplus nematopus, public profile"
+      url: "https://cichlidae.com/species.php?id=_ruexs3HNyVtMVcBC2jJ_w"
+      accessed: '2026-10-15'
+      archived: cichlidae.com/species.php/q-9db507c1/2026-10-15T100315Z
+    - &id070
+      kind: literature
+      title: "Latent feeding behaviors support trophic versatility in cichlids, accessible author manuscript"
+      url: "https://doi.org/10.1242/jeb.251609"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1242_jeb.251609/2026-10-13T120421Z
+    - &id091
+      kind: literature
+      title: The role of neighbours in aggressive defence of territories in mixed-species breeding aggregations
+        of cichlid fish
+      url: "https://doi.org/10.1007/s10750-024-05749-2"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1007_s10750-024-05749-2/2026-10-13T073640Z
+    - *id050
+    - &id074
+      kind: archive
+      title: cichlids.com forum thread 84
+      url: "https://www.cichlids.com/disc/read.php?1,84"
+      accessed: '2026-10-15'
+    - &id092
+      kind: catalog-of-fishes
+      title: "Eschmeyer Catalog of Fishes, Neetroplus species"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neetroplus"
+      accessed: '2026-10-15'
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-38bf10fd/2026-10-14T100905Z
+    - *id060
+    - &id072
+      kind: archive
+      title: cichlids.com forum thread 62113
+      url: "https://www.cichlids.com/disc/read.php?1,62113"
+      accessed: '2026-10-15'
+    - *id061
+    evidence:
+    - source: *id062
+      value: 1
+      note: Fry predation described in a native-lake food web
+    - source: *id063
+      value: 0
+      note: Herbivorous summary alone would suggest no routine fish feeding
+    - source: *id003
+      value: 0
+      note: Feeds on aufwuchs of rocks and algal filaments
+    - source: *id064
+      value: 0
+      note: "Algae scraper, herbivorous"
+    - source: *id029
+      value: 0
+      note: "Grazes algae, accepts plant flakes, pellets and frozen foods"
+    - source: *id065
+      value: 0
+      note: Mapped from the plant/detritus feeding category; not an experimental test of fry consumption.
+    - source: *id066
+      value: 0
+      note: Listed juvenile and adult foods are algae and periphyton; no fish prey is listed.
+    - source: *id067
+      value: 0
+      note: Herbivorous algal-scraper classification.
+    - source: *id008
+      value: 0
+      note: Inferred from the reported aufwuchs and filamentous-algae diet
+    - source: *id067
+      value: 0
+      note: Herbivorous scraping ecology mapped to the rubric
+    - source: *id004
+      value: 0
+      note: "Rubric interpretation of the reported algal and attached-biofilm diet, rather than an explicit statement\
+        \ that fish are never eaten."
+    - source: *id067
+      value: 0
+      note: Public account classifies feeding as herbivorous algal scraping; level 0 is inferred.
+    - source: *id068
+      value: 0
+      note: "Direct river observation concerns algae and plant detritus, with no fish prey reported."
+    - source: *id023
+      value: 0
+      note: "Mapping from attached algae and biofilm feeding, rather than an explicit aquarium predation score."
+    - source: *id069
+      value: 0
+      note: Mapping from herbivorous algal scraping.
+    - source: *id070
+      value: 0
+      note: The manuscript describes a periphyton scraper with zero reliance on evasive prey; this does not rule
+        out incidental fry consumption.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: false
+      foods:
+      - Vegetable-rich cichlid pellets
+      - Spirulina flakes
+      - Natural algal biofilm
+      - Small occasional portions of aquatic invertebrates
+    confidence: medium
+    rationale: "Five of six votes support aufwuchs with bloatSensitive false, at medium confidence. All six agree\
+      \ on the feeding type; checker-a alone infers bloat sensitivity from grazing and gut anatomy. FishBase, CRC,\
+      \ the feeding study and field observations support attached algal food. AquaInfo's carnivorous label and animal-heavy\
+      \ advice, and Fishipedia's broad omnivore label, conflict with that ecological evidence and remain cited.\
+      \ False records the lack of demonstrated species-specific protein-induced bloat, rather than tolerance of\
+      \ unlimited rich food. Plant-rich staples with modest aquatic-invertebrate supplements follow the stronger\
+      \ evidence."
+    sources:
+    - *id004
+    - *id063
+    - *id025
+    - *id028
+    - &id089
+      kind: database
+      title: "Bukkems: Neetroplus nematopus, AquaInfo mirror"
+      url: "https://aquainfo.org/neetroplus-nematopus/"
+      accessed: '2026-10-15'
+      archived: aquainfo.org/neetroplus-nematopus/2026-10-15T100304Z
+    - *id045
+    - *id003
+    - *id064
+    - *id029
+    - *id046
+    - *id065
+    - *id066
+    - *id067
+    - *id026
+    - *id071
+    - *id047
+    - *id032
+    - *id031
+    - *id059
+    - *id008
+    - *id049
+    - *id034
+    - *id035
+    - &id090
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: Neetroplus species"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neetroplus"
+      accessed: '2026-10-15'
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-38bf10fd/2026-10-14T100905Z
+    - *id068
+    - *id038
+    - *id020
+    - *id021
+    - *id061
+    - *id023
+    - *id069
+    - *id070
+    - *id050
+    - *id036
+    - *id024
+    evidence:
+    - source: *id004
+      value:
+        type: aufwuchs
+      note: Algal turf on rock and submerged trees
+    - source: *id063
+      value:
+        type: aufwuchs
+      note: Public ecology summary
+    - source: *id028
+      value:
+        type: invertivore
+      note: Conflicting animal-food emphasis; translated to the closest rubric category
+    - source: *id056
+      value:
+        bloatSensitive: false
+      note: No direct evidence for the flag; provisional inference
+    - source: *id003
+      value:
+        type: aufwuchs
+    - source: *id064
+      value:
+        type: aufwuchs
+      note: "Feeding line reads algae scrapers, herbivorous"
+    - source: *id046
+      value:
+        type: aufwuchs
+      note: Grazes algae and aufwuchs from rock
+    - source: *id065
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+      note: "Type follows the ecology table; false bloat flag means no special syndrome is evidenced, not proof\
+        \ of immunity."
+    - source: *id067
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+      note: Public herbivore classification; no bloat-specific statement.
+    - source: *id032
+      value:
+        type: invertivore
+        bloatSensitive: false
+      note: Conflicting carnivore recommendation mapped to an animal-food category; fish prey is not specified.
+    - source: *id031
+      value:
+        type: omnivore
+        bloatSensitive: false
+      note: Conflicting provisional generic diet classification.
+    - source: *id008
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+      note: Grazing diet explicit; bloat flag is an evidence-gap inference
+    - source: *id067
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+      note: Herbivory explicit; no public bloat claim
+    - source: *id035
+      value:
+        type: omnivore
+        bloatSensitive: false
+      note: Broad diet classification; no bloat claim
+    - source: *id034
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+      note: Predominantly vegetable feeding with acceptance of mixed prepared food
+    - source: *id004
+      value:
+        type: aufwuchs
+      note: Attached biofilm and filamentous algae are the reported natural food.
+    - source: *id067
+      value:
+        type: aufwuchs
+      note: Public feeding classification describes herbivorous scraping.
+    - source: *id068
+      value:
+        type: aufwuchs
+      note: The Buen Suceso observation records algae and decomposing plant material.
+    - source: *id038
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+      note: Keeper describes algal grazing and successful feeding with spirulina and brine-shrimp foods. The false
+        bloat flag is an inference from the absence of a reported special restriction.
+    - source: *id020
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+      note: Plant-rich food with frozen supplements is advised. No special bloat predisposition is stated; false
+        is inferred.
+    - source: *id021
+      value:
+        type: omnivore
+      note: "Animal foods and prepared food are advised, with a carnivorous label. This conflicts with the natural\
+        \ feeding accounts; the rubric has no general carnivore category, and this is not evidence of piscivory."
+    - source: *id023
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+      note: Algal and attached-biofilm feeding is explicit; false is inferred because no bloat tendency is stated.
+    - source: *id069
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+      note: Herbivorous scraper; the public account does not assess bloat.
+    - source: *id070
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+      note: Periphyton specialization; the experiment does not test digestive disease.
+    - source: *id050
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+      note: "Grazing plus mixed plant and brine-shrimp feeding in the aquarium, without a reported protein-associated\
+        \ problem."
+    - source: *id024
+      value:
+        type: omnivore
+        bloatSensitive: false
+      note: "The care sheet permits prepared, fresh and frozen foods; it makes no bloat claim."
+    - source: *id036
+      value:
+        type: invertivore
+        bloatSensitive: false
+      note: Nearest rubric mapping of its animal-food recommendation and carnivore label; no fish prey or bloat
+        sensitivity is established.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  aggressionConspecific:
+    value: 4
+    confidence: medium
+    rationale: "Level 4 follows the three agreeing proposals over checker-a's level 3. Nguyen records a pair killing\
+      \ the other three adults after pair formation; Barberis also describes danger to the female after a failed\
+      \ spawn. Those observations meet the rubric's lethal-aggression threshold rather than only persistent chasing.\
+      \ The minimum assumes one established pair with cover and separation options, not a small group of rival adults."
+    sources:
+    - *id045
+    - *id025
+    - *id072
+    - *id046
+    - *id029
+    - &id073
+      kind: literature
+      title: The role of neighbours in aggressive defence of territories in mixed-species breeding aggregations
+        of cichlid fish. Hydrobiologia
+      url: "https://doi.org/10.1007/s10750-024-05749-2"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1007_s10750-024-05749-2/2026-10-13T073640Z
+    - *id047
+    - *id059
+    - *id031
+    - *id049
+    - *id035
+    - *id034
+    evidence:
+    - source: *id045
+      value: 4
+      note: Three conspecific deaths after pair formation
+    - source: *id046
+      value: 3
+      note: "Very aggressive, especially towards conspecifics"
+    - source: *id029
+      value: 3
+      note: Needs a target for territorial aggression to remain compatible
+    - source: *id073
+      value: 3
+      note: One of the two most aggressive territory holders at the breeding grounds of Lake Xiloá
+    - source: *id047
+      value: 4
+      note: Three other adults killed after a pair forms.
+    - source: *id059
+      value: 4
+      note: Partner aggression after reproductive failure can endanger the female.
+    - source: *id049
+      value: 4
+    - source: *id035
+      value: 4
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: "All four proposals give level 3. NCS, Akvarij and the archive describe the need for robust companions,\
+      \ and the field experiment finds strong responses to a larger heterospecific intruder. Nguyen's more localized\
+      \ brood defence supports a milder level 2 interpretation in the evidence, but repeated advice about robust\
+      \ companions supports level 3 for planning. Routine killing of similarly sized heterospecifics is not established."
+    sources:
+    - *id025
+    - *id045
+    - *id028
+    - *id074
+    - *id072
+    - *id029
+    - *id046
+    - *id073
+    - *id075
+    - *id026
+    - *id047
+    - *id032
+    - *id030
+    - *id049
+    - *id034
+    - *id035
+    evidence:
+    - source: *id029
+      value: 3
+      note: "Highly aggressive when breeding, best with robust tankmates"
+    - source: *id046
+      value: 2
+      note: Tankmates tolerated except near the spawning site and fry
+    - source: *id072
+      value: 3
+      note: "Keeper rates the species as the most violent small fish he has seen, worse when spawning"
+    - source: *id073
+      value: 3
+      note: "Among the most aggressive species of the Xiloá breeding grounds, attacking dummy intruders"
+    - source: *id075
+      value: 3
+      note: High attack rate toward a 16 cm heterospecific dummy; rubric mapping is interpretive.
+    - source: *id047
+      value: 2
+      note: Lower assessment from tolerated companions and chasing near the brood.
+    - source: *id026
+      value: 3
+      note: Robust companions advised and aggression outside spawning noted.
+    - source: *id049
+      value: 3
+      note: Strong breeding attacks but surviving non-conspecific tankmates
+    - source: *id034
+      value: 3
+      note: Equally robust and aggressive cichlids mentioned as possible companions
+    - source: *id072
+      value: 3
+      note: Community report of extreme aggression
+  territory:
+    value:
+      size: large
+      breedingOnly: false
+    confidence: medium
+    rationale: "Large and breedingOnly false follow generator, checker-b and checker-c rather than checker-a's small\
+      \ breeding-only proposal. NCS describes territorial aggression outside spawning; the Buen Suceso account observes\
+      \ log defence without visible fry, and aquarium pairs can exclude rivals across much of a small tank. A cave\
+      \ is the nesting focus but is not the entire defended area. The exact defended footprint is inferred, and\
+      \ breeding strongly increases defence."
+    sources:
+    - *id025
+    - *id045
+    - *id028
+    - *id073
+    - *id046
+    - *id029
+    - *id047
+    - *id071
+    - *id075
+    - *id030
+    - *id049
+    - *id035
+    evidence:
+    - source: *id073
+      value:
+        size: small
+        breedingOnly: true
+      note: Territories are breeding territories packed within about 1 m of each other
+    - source: *id046
+      value:
+        size: small
+        breedingOnly: true
+      note: Pair took over a terracotta cave
+    - source: *id075
+      value:
+        size: large
+        breedingOnly: true
+      note: Breeding-territory intruder responses are assessed within a one metre neighbourhood.
+    - source: *id071
+      value:
+        size: large
+        breedingOnly: false
+      note: Log defence without observed eggs or fry; size is inferred rather than measured.
+    - source: *id049
+      value:
+        size: large
+        breedingOnly: true
+      note: Pair dominance during spawning
+    - source: *id035
+      value:
+        size: large
+        breedingOnly: false
+      note: General territoriality; area inferred
+  habitatZones:
+    value:
+    - rock
+    - wood
+    - sand
+    confidence: high
+    rationale: "Rock, wood and sand combine the direct river observations retained by checker-b and checker-c with\
+      \ the rock-and-wood proposals of generator and checker-a. Rock and submerged timber carry grazing surfaces;\
+      \ the Costa Rican pool and Buen Suceso observations add sandy ground among roots and stones. Sand supplements\
+      \ these structures rather than replacing grazing surfaces and sheltered cavities."
+    sources:
+    - *id004
+    - *id063
+    - *id025
+    - *id029
+    - *id003
+    - *id073
+    - *id006
+    - *id067
+    - *id005
+    - *id071
+    - *id008
+    - *id007
+    evidence:
+    - source: *id029
+      value:
+      - rock
+      - wood
+      note: Sanctuary among submerged roots and rock crevices
+    - source: *id003
+      value:
+      - rock
+      - wood
+      note: Aufwuchs of rocks and submerged trees
+    - source: *id073
+      value:
+      - rock
+      note: "Xiloá breeding ground of stones, pebbles and sand"
+    - source: *id006
+      value:
+      - rock
+      - wood
+    - source: *id005
+      value:
+      - rock
+      - wood
+      - sand
+    - source: *id008
+      value:
+      - rock
+      - wood
+    - source: *id007
+      value:
+      - rock
+      - wood
+      - sand
+  social:
+    value:
+      structure: pair
+    confidence: high
+    rationale: All full profiles recommend a pair. CRC identifies monogamy and aquarium accounts describe biparental
+      breeding with surplus adults excluded. Fishipedia's group-of-five recommendation is retained as conflicting
+      source evidence but is outweighed by direct reports of conspecific deaths after pair formation. Juvenile grouping
+      does not establish a safe adult group.
+    sources:
+    - *id063
+    - *id045
+    - *id028
+    - *id025
+    - *id064
+    - *id058
+    - *id046
+    - *id067
+    - *id047
+    - *id059
+    - *id026
+    - *id031
+    - *id049
+    - &id078
+      kind: literature
+      title: "The reproductive biology of a Central American cichlid Neetroplus nematopus in Lake Xiloa, Nicaragua,\
+        \ abstract only"
+      url: "https://doi.org/10.1093/czoolo/56.1.43"
+      accessed: '2026-10-15'
+      offline: true
+    - *id035
+    - *id034
+    evidence:
+    - source: *id064
+      value: pair
+      note: Mating monogamous
+    - source: *id058
+      value: pair
+      note: Biparental breeding pairs
+    - source: *id046
+      value: pair
+      note: Group of five paired off
+    - source: *id067
+      value:
+        structure: pair
+    - source: *id047
+      value:
+        structure: pair
+    - source: *id031
+      value:
+        structure: group
+        minGroup: 5
+      note: Contradictory group advice on a provisional sheet.
+    - source: *id049
+      value:
+        structure: pair
+    - source: *id035
+      value:
+        structure: group
+        minGroup: 5
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: "All four full-profile votes agree on false, with medium confidence. The NCS register permits robust\
+      \ companions, Nguyen reports heterospecific cohabitation, and the forum archive describes success with Jack\
+      \ Dempseys. A dedicated pair tank can simplify territorial management, but conspecific-only keeping is not\
+      \ a universal requirement. The decision does not imply ordinary community-fish suitability."
+    sources:
+    - *id025
+    - *id045
+    - *id074
+    - *id029
+    - *id046
+    - *id026
+    - *id047
+    - *id030
+    - *id049
+    - *id034
+    - *id035
+    evidence:
+    - source: *id025
+      value: false
+      note: Robust heterospecific companions allowed
+    - source: *id045
+      value: false
+      note: Mixed keeping documented with strong breeding territoriality
+    - source: *id074
+      value: false
+      note: Positive report with Jack Dempseys
+    - source: *id029
+      value: false
+      note: Robust tankmates recommended
+    - source: *id046
+      value: false
+      note: Tankmates tolerated outside spawning
+    - source: *id074
+      value: false
+      note: Kept with firemouths and Dempsey-type cichlids
+    - source: *id026
+      value: false
+      note: Other robust species are explicitly permitted.
+    - source: *id047
+      value: false
+      note: Keeping with heterospecifics is reported.
+    - source: *id030
+      value: false
+      note: "Species tank preferred, with robust heterospecifics offered as an alternative."
+    - source: *id049
+      value: false
+    - source: *id034
+      value: false
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: low
+    rationale: "All four full-profile votes give an empty list, with low confidence. The curated groups contain\
+      \ neither Neetroplus nematopus nor its Hypsophrys combination, and the retained sources identify no named\
+      \ crossing partner. A generic same-genus caution in Fishipedia and phylogenetic proximity to Hypsophrys nicaraguensis\
+      \ do not establish a particular cross. Shared brood care also does not establish hybridization. The empty\
+      \ list describes the available evidence and does not demonstrate complete reproductive isolation."
+    sources:
+    - *id001
+    - *id063
+    - *id025
+    - *id029
+    - *id046
+    - *id002
+    - &id079
+      kind: database
+      title: "cichlids.com curated hybrid groups: data/species/hybrid-groups.yaml"
+    - *id076
+    - *id077
+    - *id031
+    - *id035
+    - *id078
+    evidence:
+    - source: *id001
+      value: []
+      note: "Name and synonyms define the curated-group membership search, not a crossing experiment"
+    - source: *id063
+      value: []
+      note: No named hybrid partner in public summary
+    - source: *id029
+      value: []
+      note: No crossing warning
+    - source: *id046
+      value: []
+      note: No crossing warning
+    - source: *id002
+      value: []
+      note: Monotypic genus in the Catalog
+    - source: *id079
+      value: []
+      note: No applicable member or group is listed.
+    - source: *id076
+      value: []
+      note: "One valid Neetroplus species; the other genus entries are synonyms, not hybrid parents."
+    - source: *id076
+      value: []
+      note: Taxonomic membership check combined with the curated hybrid-group table
+    - source: *id035
+      value: []
+      note: Generic warning with no named parental pair
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+      - grey
+      - brown
+      - black
+      - white
+      pattern: bars
+    confidence: high
+    rationale: "The decision includes grey, brown, black and white with vertical bars, combining the different subsets\
+      \ proposed by all four full profiles. The normal ground colour is grey to brown with a dark flank bar; reproductive\
+      \ colour reverses the contrast to a dark body with a pale bar. White is included because the adult breeding\
+      \ pattern is conspicuous in both sexes, rather than because it is the resting ground colour."
+    sources:
+    - *id045
+    - *id025
+    - *id063
+    - *id029
+    - *id046
+    - *id047
+    - *id059
+    - *id030
+    - *id049
+    - *id034
+    evidence:
+    - source: *id029
+      value:
+        baseColors:
+        - black
+        - white
+        pattern: bars
+      note: Breeding colouration black with white bar
+    - source: *id046
+      value:
+        baseColors:
+        - grey
+        pattern: bars
+      note: Males and females look alike in normal colouration
+    - source: *id047
+      value:
+        baseColors:
+        - grey
+        - black
+        pattern: bars
+    - source: *id059
+      value:
+        baseColors:
+        - grey
+        - brown
+        - black
+        pattern: bars
+    - source: *id049
+      value:
+        baseColors:
+        - grey
+        - black
+        - white
+        pattern: bars
+    - source: *id034
+      value:
+        baseColors:
+        - silver
+        - grey
+        - black
+        pattern: bars
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: "All full-profile proposals select normal. Grazing, substrate feeding and acceptance of prepared\
+      \ food are described, but direct measurements of food competition are absent. Normal is therefore a low-confidence\
+      \ interpretation; reluctance to feed at the surface alone does not establish slow feeding."
+    sources:
+    - *id045
+    - *id025
+    - *id056
+    - *id029
+    - *id046
+    - *id071
+    - *id030
+    - *id048
+    - *id034
+    - *id049
+    - *id057
+    evidence:
+    - source: *id029
+      value: normal
+      note: Accepts most aquarium foods
+    - source: *id048
+      value: normal
+      note: Inferred from grazing and sinking-food acceptance; not directly measured.
+    - source: *id057
+      value: normal
+      note: Inferred from substrate feeding and ready acceptance of aquarium foods
+  minTank:
+    value:
+      volumeL: 200
+      lengthCm: 100
+      depthCm: 45
+    confidence: low
+    rationale: "The component medians are 200 L, 100 cm length and 45 cm depth from generator's 200/100/40, checker-a's\
+      \ 110/80/35, checker-b's 250/120/50 and checker-c's 200/100/50. This is a practical minimum for one established\
+      \ pair with multiple retreats and a separation option. Akvarij recommends more than 200 L, Zoopet gives 150\
+      \ L and 100 cm, and Barberis reports breeding in 250 L. The inferred 45 cm depth lies between the layout proposals;\
+      \ no source measures a biological depth threshold. NCS's 400 L and 140 cm and Fishipedia's 300 L group advice\
+      \ remain wider recommendations. Nguyen's smaller breeding aquarium also records fatalities among surplus adults,\
+      \ so it does not establish an appropriate group minimum. Communities need more room than this pair minimum."
+    sources:
+    - *id045
+    - *id027
+    - *id025
+    - *id056
+    - *id046
+    - *id029
+    - *id060
+    - *id059
+    - *id047
+    - *id026
+    - *id030
+    - *id031
+    - *id034
+    - *id033
+    - *id035
+    - *id049
+    evidence:
+    - source: *id027
+      value:
+        volumeL: 151
+      note: 40 US gallons or more
+    - source: *id025
+      value:
+        volumeL: 400
+        lengthCm: 140
+      note: General species recommendation
+    - source: *id046
+      value:
+        volumeL: 110
+        lengthCm: 80
+        depthCm: 35
+      note: Pair held in 29 gallons (about 110 L)
+    - source: *id029
+      value:
+        volumeL: 150
+        lengthCm: 100
+        depthCm: 40
+      note: Describes a large aquarium; no figure
+    - source: *id059
+      value:
+        volumeL: 250
+      note: Reported breeding aquarium volume; footprint is not stated.
+    - source: *id026
+      value:
+        volumeL: 400
+        lengthCm: 140
+      note: Published recommendation; depth is not stated.
+    - source: *id030
+      value:
+        volumeL: 200
+      note: Published minimum is above 200 L; footprint is not stated.
+    - source: *id034
+      value:
+        volumeL: 200
+      note: Published lower-volume recommendation
+    - source: *id033
+      value:
+        volumeL: 150
+        lengthCm: 100
+    - source: *id035
+      value:
+        volumeL: 300
+        lengthCm: 120
+      note: For a proposed five-fish group
+  lifespanYears:
+    value:
+      min: 6
+      max: 8
+    confidence: low
+    rationale: "The proposal medians are 6 to 9 years: generator and checker-a give 6 to 10, while checker-b and\
+      \ checker-c give 6 to 8. Fishipedia's eight-year estimate is the only cited species-specific lifespan value.\
+      \ The upper median of nine exceeds that source without independent longevity evidence, so the decision is\
+      \ 6 to 8 years with low confidence. Six is an inferred planning lower bound, not a measured mortality threshold;\
+      \ the retained 6-to-10 proposals are general cichlid extrapolations."
+    sources:
+    - *id056
+    - &id080
+      kind: database
+      title: "Fishipedia: Hypsophrys nematopus, Tropheus du pauvre"
+      url: "https://www.fishipedia.fr/fr/poissons/hypsophrys-nematopus"
+      accessed: '2026-10-15'
+      archived: fishipedia.fr/fr/poissons/hypsophrys-nematopus/2026-10-15T100548Z
+    - *id031
+    - *id048
+    - *id035
+    - *id057
+    evidence:
+    - source: *id080
+      value:
+        min: 8
+        max: 8
+    - source: *id031
+      value:
+        min: 8
+        max: 8
+      note: Published lifespan.
+    - source: *id048
+      value:
+        min: 6
+        max: 8
+      note: Lower endpoint is an estimate.
+    - source: *id035
+      value:
+        min: 8
+        max: 8
+    - source: *id057
+      value:
+        min: 6
+        max: 8
+      note: Estimated span around the published lifespan
+  breeding:
+    value: cave-spawner
+    confidence: high
+    rationale: "All profiles agree on cave spawning. FishBase and CRC identify sheltered substrate spawning, and\
+      \ independent aquarium accounts describe eggs and young in cavities with both parents defending the brood.\
+      \ The reproductive-study abstract is retained from the checkers but its DOI cannot be independently reopened;\
+      \ no additional numerical claim is based on that inaccessible text."
+    sources:
+    - *id004
+    - *id063
+    - *id045
+    - *id028
+    - *id025
+    - *id003
+    - *id064
+    - *id058
+    - *id029
+    - *id006
+    - *id067
+    - *id047
+    - *id059
+    - *id026
+    - *id008
+    - *id049
+    - *id078
+    evidence:
+    - source: *id003
+      value: cave-spawner
+      note: Spawns in caves
+    - source: *id064
+      value: cave-spawner
+      note: Substrate cave breeding
+    - source: *id058
+      value: cave-spawner
+      note: Biparental substrate spawner using nesting cavities
+    - source: *id006
+      value: cave-spawner
+    - source: *id067
+      value: cave-spawner
+    - source: *id008
+      value: cave-spawner
+    - source: *id049
+      value: cave-spawner
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: "Demanding follows generator, checker-b and checker-c over checker-a's moderate proposal. CRC's intermediate\
+      \ category and Zoopet's low difficulty score concern general husbandry, while NCS rates the fish advanced.\
+      \ Documented lethal conspecific aggression and potential partner injury require observation and separation\
+      \ facilities despite adaptable water chemistry and attainable spawning. Those behavioral demands determine\
+      \ the selected category."
+    sources:
+    - *id063
+    - *id025
+    - *id045
+    - *id064
+    - *id029
+    - *id067
+    - *id026
+    - *id047
+    - *id059
+    - *id031
+    - *id049
+    - *id034
+    - *id033
+    evidence:
+    - source: *id064
+      value: moderate
+      note: Aquarium level intermediate
+    - source: *id029
+      value: moderate
+      note: "Non-community, large tank with robust tankmates"
+    - source: *id067
+      value: moderate
+      note: Intermediate aquarium classification.
+    - source: *id026
+      value: demanding
+      note: Advanced category.
+    - source: *id047
+      value: demanding
+      note: Fatal conspecific aggression in a breeding group.
+    - source: *id067
+      value: moderate
+      note: Intermediate keeper category mapped to moderate
+    - source: *id049
+      value: demanding
+      note: Derived from repeated conspecific fatalities
+partners:
+  suitable:
+  - species: Rocio octofasciata
+    reason: A legacy keeping report describes success with Jack Dempseys; robust adults can withstand territorial
+      displays.
+    condition: "Conditional combination in a substantially larger tank than the pair minimum, with separate territories\
+      \ and immediate separation available."
+  unsuitable:
+  - species: Hypsophrys nicaraguensis
+    reason: NCS specifically warns that this combination is often extremely difficult despite natural coexistence.
+  - species: Paracheirodon innesi
+    reason: Its small size and peaceful behaviour expose it to territorial harassment and physical injury; a zero
+      predation level does not imply safety from aggression.
+  - species: Parachromis dovii
+    reason: This native predator eats small cichlids including Neetroplus; defensive aggression does not prevent
+      predation.
+profile:
+  overview:
+    text: "A pair of this Central American rock grazer can dominate an aquarium despite its modest size. The familiar\
+      \ grey or brown body and dark flank bar change markedly during reproduction, when the body darkens and the\
+      \ bar becomes pale. Both sexes participate in brood defence. The trade name poor man's tropheus refers to\
+      \ appearance and grazing habits; it does not imply African lake ancestry or mouthbrooding. Its strongest husbandry\
+      \ requirement is control of social aggression, especially when young fish mature and form a pair."
+    sources:
+    - *id001
+    - *id004
+    - *id063
+    - *id045
+    - *id025
+  habitat:
+    text: "Populations occupy lakes Nicaragua and Managua, several Nicaraguan crater lakes and Atlantic-draining\
+      \ rivers of Nicaragua and Costa Rica. Rock faces and submerged timber provide attached food, while cavities\
+      \ and roots offer shelter. River observations include sandy pools as well as flowing channels. The principal\
+      \ lakes differ chemically: Nicaragua has relatively low calcium-magnesium hardness, while sodium-rich Managua\
+      \ has much greater alkalinity. The decided ranges describe typical conditions selected from uneven geographic\
+      \ evidence. Occupied Sarapiqui stations include reports near 22 C and pH 6.1 below those typical bounds. Xiloa\
+      \ is an unusually mineralized crater-lake habitat: Barlow reports about 24.7 dGH and 17.6 dKH there, outside\
+      \ the typical GH range. Managua surface pH reaches 9.3 in repeated surveys; this is habitat evidence rather\
+      \ than a routine aquarium target."
+    sources:
+    - *id004
+    - *id063
+    - *id009
+    - *id010
+    - *id039
+    - *id011
+    - *id081
+    - kind: literature
+      title: "INPESCA: Evaluation of the fishery resources of Lake Nicaragua"
+      url: "https://www.fao.org/4/ad772s/ad772s11.htm"
+      accessed: '2026-10-15'
+      archived: fao.org/4/ad772s/ad772s11.htm/2026-10-14T224036Z
+    - *id082
+    - *id012
+    - *id013
+    - *id003
+    - *id005
+    - *id014
+    - *id015
+    - *id006
+    - *id016
+    - *id017
+    - *id007
+    - *id008
+    - *id018
+    - *id019
+    - *id020
+    - *id054
+    - *id051
+    - *id052
+    - *id021
+    - *id022
+    - *id023
+    - *id024
+    - *id053
+    - *id083
+    - *id084
+    - *id085
+    - *id040
+    - *id041
+    - *id042
+    - *id035
+    - *id043
+    - *id038
+    - *id044
+    - *id086
+    - *id032
+    - *id034
+    - *id055
+    - *id001
+    - *id025
+    - *id002
+    - *id076
+    - *id077
+    - *id026
+    - *id071
+    - *id087
+    - *id088
+    - *id060
+    - *id061
+  sizeAndGrowth:
+    text: "Plan for a male around 13 cm and a female around 10 cm at the typical upper end of aquarium growth. Larger\
+      \ published figures include exceptional specimens and measurements of standard length, which excludes the\
+      \ caudal fin. Males generally become larger and develop more extended fins. A group of young fish can change\
+      \ abruptly as a pair forms, so available space and spare accommodation matter before maturity. A lifespan\
+      \ of roughly six to eight years is a low-confidence planning estimate based on a single published eight-year\
+      \ figure rather than a measured survival distribution."
+    sources:
+    - *id045
+    - *id025
+    - *id004
+    - *id056
+    - *id027
+    - *id029
+    - *id046
+    - *id003
+    - *id058
+    - *id047
+    - *id059
+    - *id026
+    - *id006
+    - *id030
+    - *id049
+    - *id008
+    - *id034
+    - *id033
+    - *id080
+    - *id031
+    - *id048
+    - *id035
+    - *id057
+  husbandry:
+    text: "For one established adult pair, provide at least the proposed 200 litres with a footprint of 100 by 45\
+      \ cm. This recommendation combines published husbandry advice with room for retreat; additional cichlid territories\
+      \ require a larger aquarium. Arrange stable rockwork and wood so that fish can shelter out of one another's\
+      \ view. Include several cavities and sandy areas, with heavy structures supported securely. Maintain effective\
+      \ filtration, surface agitation and clean, oxygenated water. Routine temperatures around 25 to 28 C have better\
+      \ aquarium support than the extremes of the tolerance. Keep water chemistry stable and distinguish alkalinity\
+      \ from calcium-magnesium hardness when interpreting test results."
+    sources:
+    - *id045
+    - *id025
+    - *id028
+    - *id027
+    - *id056
+    - *id046
+    - *id029
+    - *id060
+    - *id059
+    - *id047
+    - *id026
+    - *id030
+    - *id031
+    - *id034
+    - *id033
+    - *id035
+    - *id049
+    - *id009
+    - *id010
+    - *id011
+    - *id004
+    - *id082
+    - *id012
+    - *id013
+    - *id003
+    - *id005
+    - *id014
+    - *id015
+    - *id006
+    - *id016
+    - *id017
+    - *id007
+    - *id008
+    - *id018
+    - *id019
+    - *id020
+    - *id054
+    - *id051
+    - *id052
+    - *id021
+    - *id022
+    - *id023
+    - *id024
+    - *id053
+    - *id083
+    - *id084
+    - *id085
+  socialBehavior:
+    text: "An established male-female pair is the recommended adult unit. Extra adults can face persistent attacks,\
+      \ and an aquarium account records a breeding pair killing all three remaining conspecifics. A failed spawning\
+      \ attempt can also expose a female to her partner's aggression. Provide a practical way to separate fish before\
+      \ introducing them, and watch whether each partner can feed and use shelter. The defended area extends beyond\
+      \ the nest entrance and territorial behaviour also occurs outside reproduction. Brood defence intensifies\
+      \ attacks on intruders, so apparent compatibility before spawning does not establish lasting compatibility."
+    sources:
+    - *id045
+    - *id025
+    - *id028
+    - *id074
+    - *id072
+    - *id061
+    - *id060
+    - *id046
+    - *id029
+    - *id073
+    - *id047
+    - *id059
+    - *id031
+    - *id049
+    - *id035
+    - *id034
+    - *id071
+    - *id075
+    - *id030
+  diet:
+    text: "Make algal biofilm, vegetable-rich pellets and spirulina-based foods the foundation of feeding. Observations\
+      \ in nature identify scraping of attached growth on rocks and wood. Small aquatic invertebrate foods can supplement\
+      \ the plant-rich staple. Animal-heavy feeding advice in AquaInfo conflicts with the more specific ecological\
+      \ accounts. A species-specific predisposition to protein-associated bloat is unconfirmed, which does not justify\
+      \ unrestricted rich feeding. The predation score is zero under the rubric, allowing incidental fry consumption.\
+      \ A dissenting hobby account reports feeding on dovii fry, so small offspring should not be treated as protected\
+      \ by the adult's grazing diet."
+    sources:
+    - *id004
+    - *id063
+    - *id025
+    - *id045
+    - *id028
+    - *id062
+    - *id089
+    - *id003
+    - *id064
+    - *id029
+    - *id046
+    - *id065
+    - *id066
+    - *id067
+    - *id026
+    - *id071
+    - *id047
+    - *id032
+    - *id031
+    - *id059
+    - *id008
+    - *id049
+    - *id034
+    - *id035
+    - *id090
+    - *id068
+    - *id038
+    - *id020
+    - *id021
+    - *id061
+    - *id023
+    - *id069
+    - *id070
+    - *id050
+    - *id036
+    - *id024
+    - *id075
+    - *id091
+    - *id074
+    - *id092
+    - *id060
+    - *id072
+  breeding:
+    text: "Spawning takes place in a cave or similarly sheltered cavity. Both parents defend the brood, with the\
+      \ female often showing the more intense reproductive contrast and staying close to the refuge. Offer several\
+      \ nest sites and space for retreat rather than relying on one confined cavity. Eggs develop within the sheltered\
+      \ site before the young emerge and begin feeding. Small prepared foods and newly hatched Artemia suit free-swimming\
+      \ fry. Reports differ on brood size and duration of care, so those observations do not establish a fixed schedule\
+      \ for every pair. Growing offspring also require space apart from the territorial adults."
+    sources:
+    - *id004
+    - *id063
+    - *id045
+    - *id028
+    - *id025
+    - *id003
+    - *id064
+    - *id058
+    - *id029
+    - *id006
+    - *id067
+    - *id047
+    - *id059
+    - *id026
+    - *id008
+    - *id049
+    - *id078
+  sexing:
+    text: "Compare adults of similar age when using body size and fin shape to distinguish sexes. Males tend to\
+      \ be larger, with longer dorsal and anal extensions; females have a more compact appearance. Normal coloration\
+      \ is similar in both sexes. Reproductive darkening and the pale flank bar indicate breeding condition rather\
+      \ than sex by themselves. The male's colour response can be less pronounced than the female's. Size differences\
+      \ alone do not prove that two fish form a compatible pair, and repeated confinement or exclusion from food\
+      \ indicates social pressure rather than courtship success."
+    sources:
+    - *id045
+    - *id025
+    - *id063
+  compatibility:
+    text: "Robust companions are possible in an aquarium substantially larger than the pair minimum. A legacy report\
+      \ describes success with Jack Dempseys, but one account does not guarantee a repeatable combination. Give\
+      \ each territorial fish separate cover and remove companions if attacks become sustained. Delicate community\
+      \ fish are poor candidates, and large predators such as Parachromis dovii can consume this species despite\
+      \ its defensive behaviour. NCS specifically warns about difficult combinations with Hypsophrys nicaraguensis.\
+      \ Shared natural habitat is not proof of compatibility in a restricted aquarium. The empty hybrid-group list\
+      \ means no supported crossing group is identified, rather than proven isolation from every other cichlid."
+    sources:
+    - *id025
+    - *id045
+    - *id074
+    - *id062
+    - *id029
+    - *id046
+    - *id026
+    - *id047
+    - *id030
+    - *id049
+    - *id034
+    - *id035
+    - *id001
+    - *id063
+    - *id002
+    - *id079
+    - *id076
+    - *id077
+    - *id031
+    - *id078
+  problems:
+    text: "Social injury is a central risk, particularly at pair formation and after failed breeding. Regularly\
+      \ check that both partners emerge, eat and retain intact fins. Chased fish need effective refuge or separation;\
+      \ adding another rival can create further victims. Nitrite exposure, inadequate oxygen and accumulated food\
+      \ waste compound social stress. Use a mature biological filter and adjust feeding and maintenance to observed\
+      \ water quality. Abdominal swelling, loss of appetite or rapid breathing has several possible causes, so evaluate\
+      \ water conditions and aggression rather than assuming a particular dietary syndrome. Persistent or worsening\
+      \ illness warrants help from a qualified fish-health professional."
+    sources:
+    - *id045
+    - *id025
+    - *id004
+    - *id063
+    - *id056
+provenance:
+  runs:
+  - role: generator
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  disagreements:
+  - field: features.origin
+    proposals:
+    - by: generator
+      value:
+        continent: Central America
+        region: San Juan drainage in Nicaragua and Costa Rica
+        waterbody: null
+        localities:
+        - Lake Nicaragua
+        - Lake Managua
+        - Lake Xiloa
+        - Lake Masaya
+        - Costa Rican Caribbean-slope rivers
+    - by: checker-a
+      value:
+        continent: Central America
+        region: Atlantic slope of Nicaragua and Costa Rica (San Juan drainage)
+        waterbody: null
+        localities:
+        - Lake Nicaragua
+        - Lake Managua
+        - Lake Xiloá
+        - Costa Rican rivers of the Atlantic slope
+    - by: checker-b
+      value:
+        continent: Central America
+        region: San Juan drainage of Nicaragua and Costa Rica
+        localities:
+        - Lake Nicaragua
+        - Lake Managua
+        - Lake Xiloa
+        - Lake Masaya
+        - "Rio San Jose, Sarapiqui"
+        - "Buen Suceso River, Ometepe"
+    - by: checker-c
+      value:
+        continent: Central America
+        region: "Atlantic slope of Nicaragua and Costa Rica, San Juan drainage"
+        localities:
+        - Lake Nicaragua
+        - Lake Managua
+        - Rio San Juan
+        - Sarapiqui tributaries
+    decision:
+      continent: Central America
+      region: San Juan drainage and Atlantic-slope waters of Nicaragua and Costa Rica
+      waterbody: null
+      localities:
+      - Lake Nicaragua
+      - Lake Managua
+      - Lake Xiloa
+      - Lake Masaya
+      - Rio San Juan
+      - Sarapiqui drainage
+      - "Buen Suceso River, Ometepe"
+    rationale: "The Catalog of Fishes and FishBase place the species on the Atlantic slope of Nicaragua and Costa Rica\
+      \ in the San Juan drainage. The NCS register adds Xiloa and Masaya; river surveys add the Sarapiqui system\
+      \ and Buen Suceso on Ometepe. Lake Managua is the type locality according to the taxonomic catalog, despite\
+      \ the NCS label naming Nicaragua. None of these lakes appears in the waterbody table, so no African lake chemistry\
+      \ is assigned."
+  - field: features.temperatureC
+    proposals:
+    - by: generator
+      value:
+        min: 26
+        max: 31
+    - by: checker-a
+      value:
+        min: 21
+        max: 31
+    - by: checker-b
+      value:
+        min: 24
+        max: 33
+    - by: checker-c
+      value:
+        min: 24
+        max: 30
+    - by: tiebreaker-1
+      value:
+        min: 22
+        max: 30
+    - by: tiebreaker-2
+      value:
+        min: 26
+        max: 30
+    decision:
+      min: 24
+      max: 31
+    rationale: "Tally method median. The settled median is 24 to 31 C, with low confidence because the proposals do\
+      \ not form a qualified majority. It covers the 24 C Costa Rican pool, Swain's great-lake surface readings\
+      \ of 24.7 to 28 C, FAO's Managua range of 26 to 30 C, and JICA's 30.1 C point. The wider FishBase and NCS\
+      \ range is 21 to 34 C. Regional Sarapiqui means of 19.8 to 23.7 C include higher sites without demonstrated\
+      \ species occurrence, while the occupied lowland measurements reported by tiebreaker-1 span 22 to 26.1 C.\
+      \ Tipitapa reaches 32.4 C but is not a species-specific collection series. These wider observations remain\
+      \ evidence; the tally describes a provisional typical envelope rather than every occupied temperature or a\
+      \ physiological limit. Proposals: generator 26 to 31; checker-a 21 to 31; checker-b 24 to 33; checker-c 24\
+      \ to 30; tiebreaker-1 22 to 30; tiebreaker-2 26 to 30."
+  - field: features.temperatureC.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 22
+        max: 31
+    - by: checker-a
+      value:
+        min: 21
+        max: 32
+    - by: checker-b
+      value:
+        min: 21
+        max: 33
+    - by: checker-c
+      value:
+        min: 21
+        max: 30
+    - by: tiebreaker-1
+      value:
+        min: 21
+        max: 32
+    - by: tiebreaker-2
+      value:
+        min: 21
+        max: 30
+    decision:
+      min: 21
+      max: 31
+    rationale: "Tally method qualified-majority. The qualified-majority tally is 21 to 31 C with low confidence. Care\
+      \ recommendations include Akvarij's 21 to 28 C, Zoopet's 21 to 29 C, Fishipedia's 21 to 30 C, AquaInfo's 24\
+      \ to 26 C and Fishkeeper's 24 to 28 C. FishBase and NCS give a wider 21 to 34 C range, and the proposals span\
+      \ upper bounds from 30 to 33 C. The decided upper bound retains the natural 31 C ceiling without treating\
+      \ 34 C as demonstrated healthy multiyear maintenance. Boundaries are provisional; routine maintenance around\
+      \ 25 to 28 C has stronger husbandry support."
+  - field: features.ph
+    proposals:
+    - by: generator
+      value:
+        min: 7
+        max: 8.7
+    - by: checker-a
+      value:
+        min: 7.0
+        max: 8.5
+    - by: checker-b
+      value:
+        min: 7
+        max: 9.3
+    - by: checker-c
+      value:
+        min: 7
+        max: 9.3
+    - by: tiebreaker-1
+      value:
+        min: 6.1
+        max: 9.3
+    - by: tiebreaker-2
+      value:
+        min: 7
+        max: 9.3
+    decision:
+      min: 7
+      max: 9.3
+    rationale: "Tally method median. The settled median is pH 7 to 9.3 with low confidence. FAO reports 7 in Nicaragua\
+      \ and 8.7 in Managua; Swain reports surface ranges of 8.2 to 8.9 and 8.9 to 9.3 respectively, with small daily\
+      \ changes. ILEC independently reports Managua seasonal surface means of 9.18 to 9.26. This repeated alkaline\
+      \ evidence from a major native lake supports keeping the upper boundary despite generator and checker-a excluding\
+      \ it as an altered or bloom-related extreme. FishBase and most care sheets give only 7 to 8. The Sarapiqui\
+      \ study behind tiebreaker-1 reports a wider lower range of 6.1 to 7.15 at occupied stations, so 7 is a tally-selected\
+      \ typical bound rather than proof that acidic habitat is absent. The full source envelope is therefore broader\
+      \ than the decision. Deep reducing-water readings are not aquarium targets. Proposals: generator 7 to 8.7;\
+      \ checker-a 7 to 8.5; checker-b 7 to 9.3; checker-c 7 to 9.3; tiebreaker-1 6.1 to 9.3; tiebreaker-2 7 to 9.3."
+  - field: features.ph.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 7
+        max: 9
+    - by: checker-a
+      value:
+        min: 7.0
+        max: 8.5
+    - by: checker-b
+      value:
+        min: 6.5
+        max: 9.3
+    - by: checker-c
+      value:
+        min: 7
+        max: 9.3
+    - by: tiebreaker-1
+      value:
+        min: 6
+        max: 9.3
+    - by: tiebreaker-2
+      value:
+        min: 7
+        max: 9.3
+    decision:
+      min: 7
+      max: 9.3
+    rationale: "Tally method median. The settled median is 7 to 9.3 with low confidence, including the decided natural\
+      \ range. Most aquarium advice gives 7 to 8, AquaInfo gives 7 to 7.5 and Nguyen reports successful breeding\
+      \ at 8.2. The wider proposal of 6 to 9.3 derives from occupied Sarapiqui readings of 6.1 to 7.15, while another\
+      \ gives 6.5 to 9.3; neither is discarded as evidence. The upper boundary rests on repeated native Managua\
+      \ measurements, not a multiyear aquarium exposure study. Equality with the natural range results from independently\
+      \ stated husbandry advice at the lower end and habitat containment at the upper end; it does not establish\
+      \ injury immediately outside either bound. The interval is a provisional population-wide envelope rather than\
+      \ a routine pH target. Proposals: generator 7 to 9; checker-a 7 to 8.5; checker-b 6.5 to 9.3; checker-c 7\
+      \ to 9.3; tiebreaker-1 6 to 9.3; tiebreaker-2 7 to 9.3."
+  - field: features.ghDgh
+    proposals:
+    - by: generator
+      value:
+        min: 3
+        max: 7
+    - by: checker-a
+      value:
+        min: 2
+        max: 7
+    - by: checker-b
+      value:
+        min: 1
+        max: 10
+    - by: checker-c
+      value:
+        min: 1
+        max: 7
+    - by: tiebreaker-1
+      value:
+        min: 3
+        max: 7
+    - by: tiebreaker-2
+      value:
+        min: 3
+        max: 7
+    decision:
+      min: 3
+      max: 7
+    rationale: "Tally method qualified-majority. The qualified-majority decision is 3 to 7 dGH, retaining the tally's\
+      \ low confidence. FAO's measured calcium and magnesium sums of 1.24 and 2.29 meq/L convert to 3.48 and 6.42\
+      \ dGH using 2.804 dGH per meq/L; JICA independently gives 3.73 dGH for Nicaragua. Direct measurements outweigh\
+      \ FishBase's wider 9 to 20 dH summary as a description of these lakes. The Costa Rican pool's 17 mg/L implies\
+      \ 0.95 dGH only if its ambiguous unit means CaCO3 equivalents, and Tipitapa station means span 5.6 to 7.6\
+      \ dGH without demonstrating species capture at each station. Barlow's Nicaragua-to-Xiloa range is wider at\
+      \ 3.6 to 24.7 dGH; the unusually mineralized crater lake is described separately. Thus the tally range is\
+      \ a provisional great-lake baseline with incomplete river coverage, not the full geographic envelope."
+  - field: features.ghDgh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 3
+        max: 20
+    - by: checker-a
+      value:
+        min: 2
+        max: 20
+    - by: checker-b
+      value:
+        min: 1
+        max: 20
+    - by: checker-c
+      value:
+        min: 1
+        max: 20
+    decision:
+      min: 2
+      max: 20
+    rationale: "Tally method unanimous. The tally gives 2 to 20 dGH with low confidence and unanimous agreement under\
+      \ the two-degree comparison rule, despite proposals of 3 to 20, 2 to 20, 1 to 20 and 1 to 20. FishBase and\
+      \ Akvarij recommend 9 to 20, AquaInfo 12 to 16 and the dealer 10 to 20 dGH. Measured great-lake occurrence\
+      \ supports softer water. Barlow's wider natural evidence reaches 24.7 dGH in mineralized Xiloa, and the Costa\
+      \ Rican pool estimate reaches 0.95 dGH with ambiguous units. Those observations remain evidence outside the\
+      \ decided interval, but neither supplies a demonstrated multiyear aquarium boundary. The result is a provisional\
+      \ typical husbandry range rather than the entire occupied-habitat envelope."
+  - field: features.khDkh
+    proposals:
+    - by: generator
+      value:
+        min: 3
+        max: 25
+    - by: checker-a
+      value:
+        min: 1
+        max: 8
+    - by: checker-b
+      value:
+        min: 0.5
+        max: 16
+    - by: checker-c
+      value:
+        min: 0.5
+        max: 25
+    - by: tiebreaker-1
+      value:
+        min: 3
+        max: 25
+    - by: tiebreaker-2
+      value:
+        min: 3
+        max: 25
+    decision:
+      min: 2
+      max: 25
+    rationale: "Tally method median. The settled median is 2 to 25 dKH with low confidence; natural KH carries no verification\
+      \ object. Here KH expresses alkalinity equivalents. FAO's bicarbonate plus carbonate totals of 1.35 and 8.70\
+      \ meq/L yield 3.79 and 24.39 dKH; both columns are charge equivalents, so carbonate is not doubled. JICA gives\
+      \ 4.82 dKH in Nicaragua. Managua's sodium-rich water can have far higher KH than calcium-magnesium hardness.\
+      \ Sarapiqui site means of 1.1 to 2.4 dKH and the pool estimate of 0.5 dKH, whose unit basis is uncertain,\
+      \ extend below the decision and remain evidence. The tally uses a typical compromise rather than the complete\
+      \ measured source range, about 0.5 to 24.4 dKH. No conductivity-to-hardness conversion is used. Proposals:\
+      \ generator 3 to 25; checker-a 1 to 8; checker-b 0.5 to 16; checker-c 0.5 to 25; tiebreaker-1 3 to 25; tiebreaker-2\
+      \ 3 to 25."
+  - field: features.khDkh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 2
+        max: 25
+    - by: checker-a
+      value:
+        min: 1
+        max: 20
+    - by: checker-b
+      value:
+        min: 0.5
+        max: 20
+    - by: checker-c
+      value:
+        min: 0
+        max: 30
+    - by: tiebreaker-1
+      value:
+        min: 1
+        max: 30
+    - by: tiebreaker-2
+      value:
+        min: 1
+        max: 30
+    decision:
+      min: 1
+      max: 28
+    rationale: "Tally method median. The settled median is 1 to 28 dKH with low confidence. The median upper endpoint\
+      \ of 27.5 rounds to 28; this interval contains the decided natural 2 to 25 dKH and extends beyond it. Fishkeeper\
+      \ gives an actual care-sheet KH recommendation of 10 to 20 dKH, retained alongside the other agents' statement\
+      \ that they find no numerical species-specific limits. That recommendation is not an experiment defining failure\
+      \ outside 10 to 20. Broader endpoints are inferred from chemical adaptability, successful breeding at pH 8.2\
+      \ and the contrasting river and sodium-buffered lake habitats. Proposals reaching 30 dKH are wider than the\
+      \ decision; neither 28 nor 30 is a demonstrated chronic limit. Related pH and GH advice informs this low-confidence\
+      \ inference without converting GH into KH. Proposals: generator 2 to 25; checker-a 1 to 20; checker-b 0.5\
+      \ to 20; checker-c 0 to 30; tiebreaker-1 1 to 30; tiebreaker-2 1 to 30."
+  - field: features.maxSizeCm
+    proposals:
+    - by: generator
+      value:
+        male: 13
+        female: 10
+    - by: checker-a
+      value:
+        male: 12
+        female: 9
+    - by: checker-b
+      value:
+        male: 13
+        female: 10
+    - by: checker-c
+      value:
+        male: 13
+        female: 10
+    decision:
+      male: 13
+      female: 10
+    rationale: "The component medians are 13 cm male and 10 cm female from proposals of 13/10, 12/9, 13/10 and 13/10.\
+      \ Nguyen's aquarium upper lengths convert to about 12.7 and 10.2 cm, and Barberis independently gives 13 and\
+      \ 10 cm. These support rounded typical aquarium maxima. Fishkeeper's unsexed 12 cm, Zoopet's 16 cm, NCS and\
+      \ Akvarij maxima reaching 18 cm, and FishBase's 14 cm standard length remain evidence but do not define typical\
+      \ total length by sex. The reproductive-study mass ratio alone is not converted into an independent length\
+      \ measurement."
+  - field: features.predation
+    proposals:
+    - by: generator
+      value: 1
+    - by: checker-a
+      value: 0
+    - by: checker-b
+      value: 0
+    - by: checker-c
+      value: 0
+    - by: tiebreaker-1
+      value: 0
+    - by: tiebreaker-2
+      value: 0
+    decision: 0
+    rationale: "Tally method qualified-majority. The tally selects level 0 by five of six votes with medium confidence.\
+      \ FishBase, CRC, direct river observations and the feeding study characterize a periphyton scraper with negligible\
+      \ reliance on evasive prey. Level 0 permits incidental fry intake. Generator instead proposes level 1 because\
+      \ Practical Fishkeeping describes small cichlids, including this species, consuming dovii fry. That report\
+      \ is retained as positive dissenting evidence; the majority treats it as insufficient to establish a general\
+      \ small-fish hunting tendency. Neither plant feeding nor the tally establishes that fry are safe, and territorial\
+      \ killing is distinct from feeding."
+  - field: features.diet
+    proposals:
+    - by: generator
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+        foods:
+        - Vegetable-rich cichlid pellets
+        - Spirulina flakes
+        - Natural algal biofilm
+        - Small occasional portions of aquatic invertebrates
+    - by: checker-a
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+        foods:
+        - algae
+        - aufwuchs
+        - spirulina flake
+        - vegetable pellets
+        - frozen foods
+    - by: checker-b
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+        foods:
+        - algal biofilm
+        - spirulina-based prepared foods
+        - vegetable matter
+        - small supplementary aquatic invertebrates
+    - by: checker-c
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+        foods:
+        - algae and attached biofilm
+        - vegetable-rich sinking pellets
+        - spirulina flakes
+        - small supplementary invertebrate foods
+    - by: tiebreaker-1
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+    - by: tiebreaker-2
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+    decision:
+      type: aufwuchs
+      bloatSensitive: false
+      foods:
+      - Vegetable-rich cichlid pellets
+      - Spirulina flakes
+      - Natural algal biofilm
+      - Small occasional portions of aquatic invertebrates
+    rationale: "Tally method qualified-majority. Five of six votes support aufwuchs with bloatSensitive false, at medium\
+      \ confidence. All six agree on the feeding type; checker-a alone infers bloat sensitivity from grazing and\
+      \ gut anatomy. FishBase, CRC, the feeding study and field observations support attached algal food. AquaInfo's\
+      \ carnivorous label and animal-heavy advice, and Fishipedia's broad omnivore label, conflict with that ecological\
+      \ evidence and remain cited. False records the lack of demonstrated species-specific protein-induced bloat,\
+      \ rather than tolerance of unlimited rich food. Plant-rich staples with modest aquatic-invertebrate supplements\
+      \ follow the stronger evidence."
+  - field: features.aggressionConspecific
+    proposals:
+    - by: generator
+      value: 4
+    - by: checker-a
+      value: 3
+    - by: checker-b
+      value: 4
+    - by: checker-c
+      value: 4
+    decision: 4
+    rationale: "Level 4 follows the three agreeing proposals over checker-a's level 3. Nguyen records a pair killing\
+      \ the other three adults after pair formation; Barberis also describes danger to the female after a failed\
+      \ spawn. Those observations meet the rubric's lethal-aggression threshold rather than only persistent chasing.\
+      \ The minimum assumes one established pair with cover and separation options, not a small group of rival adults."
+  - field: features.territory
+    proposals:
+    - by: generator
+      value:
+        size: large
+        breedingOnly: false
+    - by: checker-a
+      value:
+        size: small
+        breedingOnly: true
+    - by: checker-b
+      value:
+        size: large
+        breedingOnly: false
+    - by: checker-c
+      value:
+        size: large
+        breedingOnly: false
+    decision:
+      size: large
+      breedingOnly: false
+    rationale: "Large and breedingOnly false follow generator, checker-b and checker-c rather than checker-a's small\
+      \ breeding-only proposal. NCS describes territorial aggression outside spawning; the Buen Suceso account observes\
+      \ log defence without visible fry, and aquarium pairs can exclude rivals across much of a small tank. A cave\
+      \ is the nesting focus but is not the entire defended area. The exact defended footprint is inferred, and\
+      \ breeding strongly increases defence."
+  - field: features.habitatZones
+    proposals:
+    - by: generator
+      value:
+      - rock
+      - wood
+    - by: checker-a
+      value:
+      - rock
+      - wood
+    - by: checker-b
+      value:
+      - rock
+      - wood
+      - sand
+    - by: checker-c
+      value:
+      - rock
+      - wood
+      - sand
+    decision:
+    - rock
+    - wood
+    - sand
+    rationale: "Rock, wood and sand combine the direct river observations retained by checker-b and checker-c with\
+      \ the rock-and-wood proposals of generator and checker-a. Rock and submerged timber carry grazing surfaces;\
+      \ the Costa Rican pool and Buen Suceso observations add sandy ground among roots and stones. Sand supplements\
+      \ these structures rather than replacing grazing surfaces and sheltered cavities."
+  - field: features.coloration
+    proposals:
+    - by: generator
+      value:
+        baseColors:
+        - grey
+        - brown
+        - black
+        - white
+        pattern: bars
+    - by: checker-a
+      value:
+        baseColors:
+        - grey
+        - black
+        pattern: bars
+    - by: checker-b
+      value:
+        baseColors:
+        - grey
+        - brown
+        - black
+        pattern: bars
+    - by: checker-c
+      value:
+        baseColors:
+        - grey
+        - black
+        - white
+        pattern: bars
+    decision:
+      baseColors:
+      - grey
+      - brown
+      - black
+      - white
+      pattern: bars
+    rationale: "The decision includes grey, brown, black and white with vertical bars, combining the different subsets\
+      \ proposed by all four full profiles. The normal ground colour is grey to brown with a dark flank bar; reproductive\
+      \ colour reverses the contrast to a dark body with a pale bar. White is included because the adult breeding\
+      \ pattern is conspicuous in both sexes, rather than because it is the resting ground colour."
+  - field: features.minTank
+    proposals:
+    - by: generator
+      value:
+        volumeL: 200
+        lengthCm: 100
+        depthCm: 40
+    - by: checker-a
+      value:
+        volumeL: 110
+        lengthCm: 80
+        depthCm: 35
+    - by: checker-b
+      value:
+        volumeL: 250
+        lengthCm: 120
+        depthCm: 50
+    - by: checker-c
+      value:
+        volumeL: 200
+        lengthCm: 100
+        depthCm: 50
+    decision:
+      volumeL: 200
+      lengthCm: 100
+      depthCm: 45
+    rationale: "The component medians are 200 L, 100 cm length and 45 cm depth from generator's 200/100/40, checker-a's\
+      \ 110/80/35, checker-b's 250/120/50 and checker-c's 200/100/50. This is a practical minimum for one established\
+      \ pair with multiple retreats and a separation option. Akvarij recommends more than 200 L, Zoopet gives 150\
+      \ L and 100 cm, and Barberis reports breeding in 250 L. The inferred 45 cm depth lies between the layout proposals;\
+      \ no source measures a biological depth threshold. NCS's 400 L and 140 cm and Fishipedia's 300 L group advice\
+      \ remain wider recommendations. Nguyen's smaller breeding aquarium also records fatalities among surplus adults,\
+      \ so it does not establish an appropriate group minimum. Communities need more room than this pair minimum."
+  - field: features.lifespanYears
+    proposals:
+    - by: generator
+      value:
+        min: 6
+        max: 10
+    - by: checker-a
+      value:
+        min: 6
+        max: 10
+    - by: checker-b
+      value:
+        min: 6
+        max: 8
+    - by: checker-c
+      value:
+        min: 6
+        max: 8
+    decision:
+      min: 6
+      max: 8
+    rationale: "The proposal medians are 6 to 9 years: generator and checker-a give 6 to 10, while checker-b and checker-c\
+      \ give 6 to 8. Fishipedia's eight-year estimate is the only cited species-specific lifespan value. The upper\
+      \ median of nine exceeds that source without independent longevity evidence, so the decision is 6 to 8 years\
+      \ with low confidence. Six is an inferred planning lower bound, not a measured mortality threshold; the retained\
+      \ 6-to-10 proposals are general cichlid extrapolations."
+  - field: features.beginnerSuitability
+    proposals:
+    - by: generator
+      value: demanding
+    - by: checker-a
+      value: moderate
+    - by: checker-b
+      value: demanding
+    - by: checker-c
+      value: demanding
+    decision: demanding
+    rationale: "Demanding follows generator, checker-b and checker-c over checker-a's moderate proposal. CRC's intermediate\
+      \ category and Zoopet's low difficulty score concern general husbandry, while NCS rates the fish advanced.\
+      \ Documented lethal conspecific aggression and potential partner injury require observation and separation\
+      \ facilities despite adaptable water chemistry and attainable spawning. Those behavioral demands determine\
+      \ the selected category."
+  - field: taxonomy.author
+    proposals:
+    - by: generator
+      value: Günther 1867
+    - by: checker-a
+      value: "Günther, 1867"
+    - by: checker-b
+      value: "Günther, 1867"
+    - by: checker-c
+      value: "Günther, 1867"
+    decision: "Günther, 1867"
+    rationale: The catalog determines the accepted authorship and synonym identities. Punctuation and author suffixes
+      in synonym labels are standardized; unavailable N. nicaraguensis is distinguished from the different species
+      H. nicaraguensis.
+  - field: taxonomy.synonyms
+    proposals:
+    - by: generator
+      value:
+      - name: Hypsophrys nematopus
+        note: Former generic combination used by FishBase.
+      - name: Neetroplus fluviatilis
+      - name: Neetroplus nicaraguensis
+        note: Catalog treats this usage as unavailable and as a synonym; it is distinct from Hypsophrys nicaraguensis.
+    - by: checker-a
+      value:
+      - name: "Neetroplus nicaraguensis Gill, 1877"
+        note: Not an available name; synonym of N. nematopus.
+      - name: "Neetroplus fluviatilis Meek, 1912"
+        note: Riverine form from Costa Rica; synonym of N. nematopus.
+      - name: "Hypsophrys nematopus (Günther, 1867)"
+        note: Combination used by Schmitter-Soto (2007) and in FishBase; the Catalog of Fishes lists Neetroplus
+          nematopus as the current valid name.
+    - by: checker-b
+      value:
+      - name: Hypsophrys nematopus
+        note: Alternative generic combination used by FishBase.
+      - name: Neetroplus fluviatilis
+      - name: Neetroplus nicaraguensis
+        note: Catalog of Fishes treats this as an unavailable name and synonym.
+    - by: checker-c
+      value:
+      - name: Hypsophrys nematopus
+        note: Alternative combination used by FishBase.
+      - name: Neetroplus fluviatilis
+      - name: Neetroplus nicaraguensis
+        note: Catalog lists the Gill name as a synonym and notes doubtful availability.
+    decision:
+    - name: Hypsophrys nematopus
+      note: Alternative generic combination used by FishBase.
+    - name: Neetroplus fluviatilis
+      note: A junior synonym in the Catalog of Fishes.
+    - name: Neetroplus nicaraguensis
+      note: An unavailable usage treated as a synonym; distinct from Hypsophrys nicaraguensis.
+    rationale: The catalog determines the accepted authorship and synonym identities. Punctuation and author suffixes
+      in synonym labels are standardized; unavailable N. nicaraguensis is distinguished from the different species
+      H. nicaraguensis.
