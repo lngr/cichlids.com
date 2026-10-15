@@ -1,9 +1,10 @@
 ---
 id: TASK-5.4
 title: Today shows due care and the streak
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-15 12:26'
+updated_date: '2026-10-15 20:18'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
