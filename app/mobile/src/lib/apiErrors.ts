@@ -10,6 +10,7 @@ export const API_ERROR_CODES = [
   "request_too_large",
   "tank_title_invalid",
   "tank_not_found",
+  "discover_invalid_regions",
   "tank_dimensions_invalid",
   "tank_volume_invalid",
   "tank_region_invalid",
