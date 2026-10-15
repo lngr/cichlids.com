@@ -882,6 +882,54 @@
       }
     },
     "/api/tanks": {
+      "post": {
+        "tags": [
+          "Tanks"
+        ],
+        "operationId": "CreateTank",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTankRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TankDetailDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
       "get": {
         "tags": [
           "Tanks"
@@ -949,54 +997,6 @@
               "application/json": {
                 "schema": {
                   "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Tanks"
-        ],
-        "operationId": "CreateTank",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTankRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TankDetailDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -2044,6 +2044,39 @@
           }
         }
       },
+      "CreateTankRequest": {
+        "required": [
+          "title",
+          "dimensions",
+          "volume"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "dimensions": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/DimensionInputDto"
+              }
+            ]
+          },
+          "volume": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/VolumeInputDto"
+              }
+            ]
+          }
+        }
+      },
       "CreateWebhookRequest": {
         "required": [
           "url",
@@ -2086,6 +2119,47 @@
               "null",
               "string"
             ]
+          }
+        }
+      },
+      "DimensionInputDto": {
+        "required": [
+          "width",
+          "height",
+          "depth",
+          "unit"
+        ],
+        "type": "object",
+        "properties": {
+          "width": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "height": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "depth": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/DimensionUnit"
           }
         }
       },
@@ -3482,6 +3556,70 @@
           }
         }
       },
+      "VolumeDto": {
+        "required": [
+          "liters",
+          "inputValue",
+          "inputUnit"
+        ],
+        "type": "object",
+        "properties": {
+          "liters": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "inputValue": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "inputUnit": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/VolumeUnit"
+              }
+            ]
+          }
+        }
+      },
+      "VolumeInputDto": {
+        "required": [
+          "value",
+          "unit"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/VolumeUnit"
+          }
+        }
+      },
+      "VolumeUnit": {
+        "enum": [
+          "liter",
+          "us_gallon",
+          null
+        ]
+      },
       "WaterValuesDto": {
         "required": [
           "ph",
@@ -3573,144 +3711,6 @@
             "format": "date-time"
           }
         }
-      },
-      "CreateTankRequest": {
-        "required": [
-          "title",
-          "dimensions",
-          "volume"
-        ],
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string"
-          },
-          "dimensions": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/DimensionInputDto"
-              }
-            ]
-          },
-          "volume": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/VolumeInputDto"
-              }
-            ]
-          }
-        }
-      },
-      "DimensionInputDto": {
-        "required": [
-          "width",
-          "height",
-          "depth",
-          "unit"
-        ],
-        "type": "object",
-        "properties": {
-          "width": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
-          },
-          "height": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
-          },
-          "depth": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
-          },
-          "unit": {
-            "$ref": "#/components/schemas/DimensionUnit"
-          }
-        }
-      },
-      "VolumeDto": {
-        "required": [
-          "liters",
-          "inputValue",
-          "inputUnit"
-        ],
-        "type": "object",
-        "properties": {
-          "liters": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "number",
-              "string"
-            ],
-            "format": "double"
-          },
-          "inputValue": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
-          },
-          "inputUnit": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/VolumeUnit"
-              }
-            ]
-          }
-        }
-      },
-      "VolumeInputDto": {
-        "required": [
-          "value",
-          "unit"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "number",
-              "string"
-            ],
-            "format": "double"
-          },
-          "unit": {
-            "$ref": "#/components/schemas/VolumeUnit"
-          }
-        }
-      },
-      "VolumeUnit": {
-        "enum": [
-          "liter",
-          "us_gallon",
-          null
-        ]
       }
     }
   },

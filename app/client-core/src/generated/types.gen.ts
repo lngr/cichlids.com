@@ -86,6 +86,12 @@ export type CreatedRatingDto = {
     stars: number | string;
 };
 
+export type CreateTankRequest = {
+    title: string;
+    dimensions: null | DimensionInputDto;
+    volume: null | VolumeInputDto;
+};
+
 export type CreateWebhookRequest = {
     url: null | string;
     secret: null | string;
@@ -94,6 +100,13 @@ export type CreateWebhookRequest = {
 
 export type DeleteCommentRequest = {
     reason: null | string;
+};
+
+export type DimensionInputDto = {
+    width: null | number | string;
+    height: null | number | string;
+    depth: null | number | string;
+    unit: DimensionUnit;
 };
 
 export type DimensionsDto = {
@@ -357,6 +370,19 @@ export type ThreadStartedByDto = {
     posterName: null | string;
 };
 
+export type VolumeDto = {
+    liters: number | string;
+    inputValue: null | number | string;
+    inputUnit: null | VolumeUnit;
+};
+
+export type VolumeInputDto = {
+    value: number | string;
+    unit: VolumeUnit;
+};
+
+export type VolumeUnit = 'liter' | 'us_gallon';
+
 export type WaterValuesDto = {
     ph: null | string;
     kh: null | string;
@@ -374,32 +400,6 @@ export type WebhookDto = {
     active: boolean;
     createdAt: string;
 };
-
-export type CreateTankRequest = {
-    title: string;
-    dimensions: null | DimensionInputDto;
-    volume: null | VolumeInputDto;
-};
-
-export type DimensionInputDto = {
-    width: null | number | string;
-    height: null | number | string;
-    depth: null | number | string;
-    unit: DimensionUnit;
-};
-
-export type VolumeDto = {
-    liters: number | string;
-    inputValue: null | number | string;
-    inputUnit: null | VolumeUnit;
-};
-
-export type VolumeInputDto = {
-    value: number | string;
-    unit: VolumeUnit;
-};
-
-export type VolumeUnit = 'liter' | 'us_gallon';
 
 export type GetHealthData = {
     body?: never;
@@ -981,7 +981,7 @@ export type CreateTankErrors = {
     /**
      * Bad Request
      */
-    400: string;
+    400: ProblemDetails;
     /**
      * Forbidden
      */
