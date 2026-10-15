@@ -3070,9 +3070,9 @@ features:
         agree: 4
         total: 4
   hybridGroups:
-    value: []
+    value: [lepidiolamprologus]
     confidence: "low"
-    rationale: "All four initial runs propose an empty list, retained exactly with unanimous 4 of 4 verification and low confidence. No curated group includes hecqui and no read source reports a named cross involving verified L. hecqui. Koblmuller et al. place trade-labelled hecqui within a phylogenetic clade, which does not establish a pairwise aquarium crossing risk. Identity uncertainty and missing reports prevent treating the empty list as evidence that crossing cannot occur."
+    rationale: "The curated group file defines lepidiolamprologus as a presumed aquarium crossing group based on general congener warnings; Tanganyika.si and Aquarist Atlas provide these warnings, but neither documents a verified named brood or access to same-species mates. No read source reports a named cross involving verified L. hecqui. Koblmuller et al. place trade-labelled hecqui within a phylogenetic clade, which does not establish a pairwise aquarium crossing risk. Identity uncertainty and missing reports prevent treating group membership as evidence that crossing is certain."
     sources:
       - kind: "catalog-of-fishes"
         title: "Eschmeyer's Catalog of Fishes, species entry for Lepidiolamprologus hecqui"
@@ -3108,6 +3108,16 @@ features:
         url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Lepidiolamprologus"
         accessed: "2026-10-13"
         archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-f5aefad6/2026-10-14T171348Z"
+      - kind: "database"
+        title: "Tanganyika.si, Lepidiolamprologus kamambae 'Kamamba Island' (close relative treated by some authors as a subspecies of L. kendalli)"
+        url: "https://tanganyika.si/TanganjikaByLocations/Kamamba%20Island/slides/Lepidiolamprologus%20kamambae%20%27Kamamba%20Island%27.html"
+        accessed: "2026-10-15"
+        archived: "tanganyika.si/tanganjikabylocations/kamamba_island/slides/lepidiolamprologus_kamambae__kamamba_island_.html/2026-10-15T092014Z"
+      - kind: "literature"
+        title: "Kullander, S. O., Karlsson, M. and Karlsson, M. (2012). Lepidiolamprologus kamambae, a new species of cichlid fish from Lake Tanganyika. Zootaxa 3492, 31-46."
+        url: "https://doi.org/10.11646/zootaxa.3492.1.2"
+        accessed: "2026-10-15"
+        archived: "doi.org/10.11646_zootaxa.3492.1.2/2026-10-15T092021Z"
     evidence:
       - source:
           kind: "catalog-of-fishes"
@@ -3149,8 +3159,24 @@ features:
       - source:
           kind: "database"
           title: "Project hybrid-groups.yaml"
-        value: []
-        note: "No named interspecific cross was identified in this source. An empty list represents missing reports rather than proven reproductive isolation."
+        value: [lepidiolamprologus]
+        note: "The curated file defines Lepidiolamprologus hecqui as a member of its presumed genus-level aquarium crossing group."
+      - source:
+          kind: "database"
+          title: "Tanganyika.si, Lepidiolamprologus kamambae 'Kamamba Island' (close relative treated by some authors as a subspecies of L. kendalli)"
+          url: "https://tanganyika.si/TanganjikaByLocations/Kamamba%20Island/slides/Lepidiolamprologus%20kamambae%20%27Kamamba%20Island%27.html"
+          accessed: "2026-10-15"
+          archived: "tanganyika.si/tanganjikabylocations/kamamba_island/slides/lepidiolamprologus_kamambae__kamamba_island_.html/2026-10-15T092014Z"
+        value: [lepidiolamprologus]
+        note: "Warns that mixing Lepidiolamprologus species may produce hybrids; no verified named brood is provided."
+      - source:
+          kind: "literature"
+          title: "Kullander, S. O., Karlsson, M. and Karlsson, M. (2012). Lepidiolamprologus kamambae, a new species of cichlid fish from Lake Tanganyika. Zootaxa 3492, 31-46."
+          url: "https://doi.org/10.11646/zootaxa.3492.1.2"
+          accessed: "2026-10-15"
+          archived: "doi.org/10.11646_zootaxa.3492.1.2/2026-10-15T092021Z"
+        value: [lepidiolamprologus]
+        note: "Taxonomic description supports the group's congener context, not a documented aquarium cross."
     verification:
       method: "unanimous"
       votes:
