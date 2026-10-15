@@ -64,7 +64,10 @@ try {
     UPDATE profile SET interests = ARRAY['south_america'] WHERE id = (SELECT author_profile_id FROM post WHERE id = ${draft.id});
   `);
   const tankId = Number(sql("SELECT id FROM tank WHERE title = 'Discover American archive'"));
-  const archive = await (await fetch(`${API_URL}/api/discover?regions=south_america`)).json();
+  // A fresh test API builds its shared archive snapshot from these seeded records.
+  execFileSync("bash", ["e2e/write-stack.sh", "set-discover-activity", "false"], { stdio: "inherit" });
+  const archive = JSON.parse(execFileSync("curl", ["--fail", "--silent", "--show-error",
+    `${API_URL}/api/discover?regions=south_america`], { encoding: "utf8" }));
   assert.equal(archive.regions[0].tankOfTheWeek.id, tankId);
   assert.ok(archive.regions[0].pictures.some(p => p.id === Number(draft.id)));
   assert.ok(archive.regions[0].timeLapses.some(t => t.id === tankId));

@@ -125,6 +125,70 @@ public class DiscoverTests(ApiFixture fixture)
         Assert.Contains(global.EnumerateArray(), p => p.GetProperty("id").GetInt64() == ids[4]);
     }
 
+    [Fact]
+    public async Task CachedArchive_HidesItemsThatBecameInvisibleAfterTheComputation()
+    {
+        await using var db = fixture.CreateDbContext();
+        using var scope = fixture.Services.CreateScope();
+        using var cache = new Microsoft.Extensions.Caching.Memory.MemoryCache(new Microsoft.Extensions.Caching.Memory.MemoryCacheOptions());
+        var objectStore = scope.ServiceProvider.GetRequiredService<Cichlids.Infrastructure.Storage.IObjectStore>();
+        var service = new Cichlids.Api.Features.Discover.DiscoverQueryService(db,
+            new Cichlids.Api.Features.Tanks.TankTimeLapseQueryService(db, objectStore), objectStore, cache, TimeProvider.System);
+        var suspended = new Profile { Username = Guid.NewGuid().ToString(), Kind = ProfileKind.Member };
+        var active = new Profile { Username = Guid.NewGuid().ToString(), Kind = ProfileKind.Member };
+        db.Profiles.AddRange(suspended, active);
+        await db.SaveChangesAsync();
+        var tank = new Tank { ProfileId = suspended.Id, Title = "Stale tank", Region = TankRegion.LakeVictoria, State = TankState.Published };
+        db.Tanks.Add(tank);
+        await db.SaveChangesAsync();
+        var posts = new List<Post>();
+        foreach (var author in new[] { suspended, active })
+        {
+            var post = new Post { AuthorProfileId = author.Id, TankId = tank.Id, Title = "Stale picture", State = PostState.Published };
+            var photo = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
+            db.AddRange(post, photo);
+            await db.SaveChangesAsync();
+            db.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = photo.Id });
+            for (var i = 0; i < 50; i++) db.Ratings.Add(new Rating { PostId = post.Id, Stars = 5 });
+            posts.Add(post);
+        }
+        for (var i = 0; i < 50; i++) db.Ratings.Add(new Rating { TankId = tank.Id, Stars = 5 });
+        await db.SaveChangesAsync();
+        try
+        {
+            await AssertCachedArchiveHidesAsync(db, service, suspended, tank, posts);
+        }
+        finally
+        {
+            var postIds = posts.Select(p => p.Id).ToList();
+            await db.Ratings.Where(r => r.TankId == tank.Id || (r.PostId != null && postIds.Contains(r.PostId.Value))).ExecuteDeleteAsync();
+            await db.PostMedia.Where(pm => postIds.Contains(pm.PostId)).ExecuteDeleteAsync();
+            await db.Posts.Where(p => postIds.Contains(p.Id)).ExecuteDeleteAsync();
+            await db.Tanks.Where(t => t.Id == tank.Id).ExecuteDeleteAsync();
+        }
+    }
+
+    private static async Task AssertCachedArchiveHidesAsync(Cichlids.Infrastructure.Persistence.CichlidsDbContext db,
+        Cichlids.Api.Features.Discover.DiscoverQueryService service, Profile suspended, Tank tank, List<Post> posts)
+    {
+        var before = Assert.Single((await service.GetAsync([TankRegion.LakeVictoria], default)).Regions);
+        Assert.Contains(before.Tanks, t => t.Id == tank.Id);
+        Assert.Equal(tank.Id, before.TankOfTheWeek?.Id);
+        Assert.Contains(before.Pictures, p => p.Id == posts[1].Id);
+
+        suspended.SuspendedUntil = DateTimeOffset.UtcNow.AddDays(1);
+        posts[1].DeletedAt = DateTimeOffset.UtcNow;
+        await db.SaveChangesAsync();
+
+        var after = await service.GetAsync([TankRegion.LakeVictoria], default);
+        var region = Assert.Single(after.Regions);
+        Assert.DoesNotContain(region.Tanks, t => t.Id == tank.Id);
+        Assert.NotEqual(tank.Id, region.TankOfTheWeek?.Id);
+        Assert.DoesNotContain(region.TimeLapses, t => t.Id == tank.Id);
+        Assert.DoesNotContain(region.Pictures, p => posts.Any(post => post.Id == p.Id));
+        Assert.DoesNotContain(after.GlobalPictures, p => posts.Any(post => post.Id == p.Id));
+    }
+
     [Theory]
     [InlineData("americas_unassigned")]
     [InlineData("unknown")]
@@ -212,7 +276,10 @@ public class DiscoverTests(ApiFixture fixture)
             && db.Profiles.Any(p => p.Id == t.ProfileId && p.Kind == ProfileKind.Member && p.SuspendedUntil == null)));
         var prior = await eligible.AverageAsync(r => (double)r.Stars);
         Assert.Equal((500 + 10 * prior) / 110, region.Tanks[0].Score, 10);
-        Assert.Same(first, await service.GetAsync([TankRegion.LakeVictoria, TankRegion.LakeVictoria], default));
+        var repeated = Assert.Single((await service.GetAsync([TankRegion.LakeVictoria, TankRegion.LakeVictoria], default)).Regions);
+        Assert.Equal(region.Tanks, repeated.Tanks);
+        Assert.Equal(region.Pictures, repeated.Pictures);
+        Assert.Equal(region.TankOfTheWeek, repeated.TankOfTheWeek);
         clock.Advance(TimeSpan.FromSeconds(1));
         var next = Assert.Single((await service.GetAsync([TankRegion.LakeVictoria], default)).Regions);
         Assert.NotEqual(region.TankOfTheWeek!.Id, next.TankOfTheWeek!.Id);

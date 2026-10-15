@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Cichlids.Api.Features.Media;
 using Cichlids.Api.Features.Tanks;
 using Cichlids.Domain.Enums;
@@ -16,14 +17,68 @@ public sealed record DiscoverDto(IReadOnlyList<DiscoverRegionDto> Regions, IRead
 public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLapseQueryService series,
     IObjectStore objectStore, IMemoryCache cache, TimeProvider clock)
 {
+    private static readonly ConditionalWeakTable<IMemoryCache, SemaphoreSlim> ComputationLocks = new();
+
     public static readonly TankRegion[] SelectableRegions = Enum.GetValues<TankRegion>().Where(r => r != TankRegion.AmericasUnassigned).ToArray();
 
     public async Task<DiscoverDto> GetAsync(IReadOnlyCollection<TankRegion> regions, CancellationToken cancellationToken)
     {
         var selected = regions.Distinct().Order().ToArray();
         var now = clock.GetUtcNow();
-        var key = $"discover:{string.Join(',', selected)}:{System.Globalization.ISOWeek.GetYear(now.UtcDateTime)}:{System.Globalization.ISOWeek.GetWeekOfYear(now.UtcDateTime)}";
-        if (cache.TryGetValue<DiscoverDto>(key, out var cached)) return cached!;
+        var key = $"discover:{System.Globalization.ISOWeek.GetYear(now.UtcDateTime)}:{System.Globalization.ISOWeek.GetWeekOfYear(now.UtcDateTime)}";
+        if (!cache.TryGetValue<DiscoverDto>(key, out var archive))
+        {
+            var gate = ComputationLocks.GetValue(cache, _ => new SemaphoreSlim(1, 1));
+            await gate.WaitAsync(cancellationToken);
+            try
+            {
+                if (!cache.TryGetValue(key, out archive))
+                {
+                    archive = await ComputeAsync(now, cancellationToken);
+                    cache.Set(key, archive, TimeSpan.FromMinutes(15));
+                }
+            }
+            finally
+            {
+                gate.Release();
+            }
+        }
+        return await VisibleAsync(archive!, selected, now, cancellationToken);
+    }
+
+    /// <summary>
+    /// Filters the cached rankings against the current visibility, so a deletion, an unpublished
+    /// item or a suspension takes effect at once while the rankings themselves stay cached.
+    /// </summary>
+    private async Task<DiscoverDto> VisibleAsync(DiscoverDto archive, TankRegion[] selected, DateTimeOffset now, CancellationToken cancellationToken)
+    {
+        var regions = archive.Regions.Where(r => selected.Contains(r.Region)).ToList();
+        var tankIds = regions.SelectMany(r => r.Tanks.Concat(r.TimeLapses)).Select(t => t.Id)
+            .Concat(regions.Where(r => r.TankOfTheWeek != null).Select(r => r.TankOfTheWeek!.Id)).Distinct().ToList();
+        var postIds = regions.SelectMany(r => r.Pictures).Concat(archive.GlobalPictures).Select(p => p.Id).Distinct().ToList();
+        var members = context.Profiles.Where(p => p.Kind == ProfileKind.Member && (p.SuspendedUntil == null || p.SuspendedUntil <= now));
+        var visibleTanks = (await context.Tanks.Where(t => tankIds.Contains(t.Id) && t.State == TankState.Published
+                && t.DeletedAt == null && members.Any(p => p.Id == t.ProfileId))
+            .Select(t => t.Id).ToListAsync(cancellationToken)).ToHashSet();
+        var visiblePosts = (await context.Posts.Where(p => postIds.Contains(p.Id) && p.State == PostState.Published
+                && p.DeletedAt == null && members.Any(a => a.Id == p.AuthorProfileId))
+            .Select(p => p.Id).ToListAsync(cancellationToken)).ToHashSet();
+        return new DiscoverDto(regions.Select(region =>
+        {
+            var hall = region.Tanks.Where(t => visibleTanks.Contains(t.Id)).ToList();
+            return region with
+            {
+                Tanks = hall,
+                Pictures = region.Pictures.Where(p => visiblePosts.Contains(p.Id)).ToList(),
+                TankOfTheWeek = hall.Count == 0 ? null : hall[DiscoverRanking.WeeklyIndex(now, hall.Count)],
+                TimeLapses = region.TimeLapses.Where(t => visibleTanks.Contains(t.Id)).ToList(),
+            };
+        }).ToList(), archive.GlobalPictures.Where(p => visiblePosts.Contains(p.Id)).ToList());
+    }
+
+    private async Task<DiscoverDto> ComputeAsync(DateTimeOffset now, CancellationToken cancellationToken)
+    {
+        var selected = SelectableRegions;
         var members = context.Profiles.Where(p => p.Kind == ProfileKind.Member && (p.SuspendedUntil == null || p.SuspendedUntil <= now));
         var tanks = context.Tanks.AsNoTracking().Where(t => t.State == TankState.Published && t.DeletedAt == null && members.Any(p => p.Id == t.ProfileId));
         var posts = context.Posts.AsNoTracking().Where(p => p.State == PostState.Published && p.DeletedAt == null
@@ -68,8 +123,21 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
         var variants = await context.MediaVariants.Where(v => mediaIds.Contains(v.MediaItemId)).ToListAsync(cancellationToken);
         var builder = new MediaUrlBuilder(objectStore);
         var images = variants.GroupBy(v => v.MediaItemId).ToDictionary(g => g.Key, g => builder.Build(g.ToDictionary(v => v.Label, v => v.StorageKey)));
+        var visiblePhotos = context.MediaItems.Where(m => m.Kind == MediaKind.Photo
+            && (m.OwnerProfileId == null || members.Any(p => p.Id == m.OwnerProfileId)));
+        var photoLinks = context.TankMedia.Select(tm => new { tm.TankId, tm.MediaItemId })
+            .Union(context.Tanks.Where(t => t.MainMediaId != null)
+                .Select(t => new { TankId = t.Id, MediaItemId = t.MainMediaId!.Value }))
+            .Union(from p in posts
+                join pm in context.PostMedia on p.Id equals pm.PostId
+                where p.TankId != null
+                select new { TankId = p.TankId!.Value, pm.MediaItemId });
+        var candidateIds = await photoLinks.Where(link => tankIds.Contains(link.TankId)
+                && visiblePhotos.Any(m => m.Id == link.MediaItemId))
+            .GroupBy(link => link.TankId).Where(g => g.Count() >= 8)
+            .Select(g => g.Key).ToListAsync(cancellationToken);
         var showcases = new Dictionary<long, TankTimeLapseDto>();
-        foreach (var chunk in tankIds.Chunk(100))
+        foreach (var chunk in candidateIds.Chunk(100))
         {
             foreach (var (id, timeLapse) in await series.GetManyAsync(chunk, cancellationToken))
                 if (timeLapse.IsShowcase) showcases[id] = timeLapse;
@@ -96,9 +164,7 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
             }).ToList();
             return new DiscoverRegionDto(region, hall, pictures, hall.Count == 0 ? null : hall[DiscoverRanking.WeeklyIndex(now, hall.Count)], timeLapses);
         }).ToList();
-        var response = new DiscoverDto(result, globalPictures.Select(PictureCard).ToList());
-        cache.Set(key, response, TimeSpan.FromSeconds(30));
-        return response;
+        return new DiscoverDto(result, globalPictures.Select(PictureCard).ToList());
     }
 
     private static double Prior(IReadOnlyCollection<Stats> stats) => stats.Count == 0 ? 0 : (double)stats.Sum(s => s.Sum) / stats.Sum(s => s.Count);
