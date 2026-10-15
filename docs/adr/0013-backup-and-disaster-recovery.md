@@ -64,9 +64,11 @@ The following principles hold:
    transiently, minimized and locked down.
 
 5. **Non-production data per environment.** Development, staging and previews use isolated
-   databases with empty initialization and synthetic seed data. They never restore production
-   data and receive no production backup credentials. Production restore validation belongs in
-   the dedicated operator-only restore-test environment from principle 4.
+   databases. Staging and previews load only operator-published, verified, anonymized golden
+   snapshots ([ADR-0018](0018-environment-data-provisioning.md)) or synthetic seed data;
+   development uses synthetic seed data. None of them restores a production backup directly,
+   and none receives production accounts, sessions or backup credentials. Production restore
+   validation belongs in the dedicated operator-only restore-test environment from principle 4.
 
 6. **Replication for availability.** A **streaming standby replica** (managed declaratively by
    CloudNativePG) provides failover/HA. This is distinct from the read-scaling replicas deferred
