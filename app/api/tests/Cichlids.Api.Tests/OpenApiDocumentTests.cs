@@ -57,6 +57,7 @@ public class OpenApiDocumentTests(ApiFixture fixture)
     [InlineData("delete", "/api/posts/{id}")]
     [InlineData("post", "/api/pictures/{slug}/comments")]
     [InlineData("post", "/api/tanks/{id}/comments")]
+    [InlineData("post", "/api/tanks")]
     [InlineData("delete", "/api/comments/{id}")]
     public async Task Document_ListsForbiddenResponseForEveryEndpointThatResolvesTheProfile(string method, string path)
     {

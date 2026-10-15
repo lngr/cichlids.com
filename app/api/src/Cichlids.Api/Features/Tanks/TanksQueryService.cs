@@ -106,7 +106,8 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
 
         DimensionsDto? dimensions = tank.WidthValue is null && tank.HeightValue is null && tank.DepthValue is null && tank.DimensionUnit is null
             ? null
-            : new DimensionsDto(tank.WidthValue, tank.HeightValue, tank.DepthValue, tank.DimensionUnit);
+            : new DimensionsDto(tank.WidthValue, tank.HeightValue, tank.DepthValue, DimensionUnit.Cm,
+                tank.WidthInputValue, tank.HeightInputValue, tank.DepthInputValue, tank.DimensionUnit);
 
         return new TankDetailDto(
             tank.Id,
@@ -127,7 +128,8 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             mainMediaItemByTank.TryGetValue(tank.Id, out var mainMediaItemId) ? images[mainMediaItemId] : null,
             sections,
             inhabitants,
-            authors[tank.ProfileId].ToDto(objectStore));
+            authors[tank.ProfileId].ToDto(objectStore),
+            tank.VolumeLiters is { } liters ? new VolumeDto(liters, tank.VolumeInputValue, tank.VolumeInputUnit) : null);
     }
 
     private static List<TankMediaItemDto> BuildSection(

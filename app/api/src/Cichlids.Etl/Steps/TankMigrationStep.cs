@@ -1,4 +1,5 @@
 using Cichlids.Domain.Enums;
+using Cichlids.Domain;
 using Cichlids.Etl.Persistence;
 using Cichlids.Etl.Runtime;
 using Cichlids.Infrastructure.Persistence.Conversions;
@@ -69,6 +70,9 @@ public sealed class TankMigrationStep : IEtlStep
 
             var title = reader.GetTrimmedOrNull("title") ?? $"Tank {legacyId}";
 
+            var dimensionUnit = MapDimensionUnit(reader.GetTrimmedOrNull("unit"));
+            var dimensionFactor = dimensionUnit == Domain.Enums.DimensionUnit.Inch ? TankMeasurements.CentimetersPerInch : 1m;
+
             var values = new (string, object?)[]
             {
                 ("legacy_id", legacyId),
@@ -76,10 +80,13 @@ public sealed class TankMigrationStep : IEtlStep
                 ("title", title),
                 ("description", reader.GetTrimmedOrNull("description")),
                 ("category", category is null ? null : CategoryConverter.ConvertToProvider(category.Value)),
-                ("width_value", NullIfZero(reader.GetInt32("width"))),
-                ("height_value", NullIfZero(reader.GetInt32("height"))),
-                ("depth_value", NullIfZero(reader.GetInt32("depth"))),
-                ("dimension_unit", DimensionUnitConverter.ConvertToProvider(MapDimensionUnit(reader.GetTrimmedOrNull("unit")))),
+                ("width_value", NullIfZero(reader.GetInt32("width")) * dimensionFactor),
+                ("width_input_value", NullIfZero(reader.GetInt32("width"))),
+                ("height_value", NullIfZero(reader.GetInt32("height")) * dimensionFactor),
+                ("height_input_value", NullIfZero(reader.GetInt32("height"))),
+                ("depth_value", NullIfZero(reader.GetInt32("depth")) * dimensionFactor),
+                ("depth_input_value", NullIfZero(reader.GetInt32("depth"))),
+                ("dimension_unit", DimensionUnitConverter.ConvertToProvider(dimensionUnit)),
                 ("gravel", reader.GetTrimmedOrNull("gravel")),
                 ("plants", reader.GetTrimmedOrNull("plants")),
                 ("decoration", reader.GetTrimmedOrNull("more_deco")),

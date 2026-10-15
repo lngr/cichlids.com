@@ -13,10 +13,16 @@ public class Tank
     public string Title { get; set; } = string.Empty;
     public string? Description { get; set; }
     public TankCategory? Category { get; set; }
-    public int? WidthValue { get; set; }
-    public int? HeightValue { get; set; }
-    public int? DepthValue { get; set; }
+    public decimal? WidthValue { get; set; }
+    public decimal? HeightValue { get; set; }
+    public decimal? DepthValue { get; set; }
     public DimensionUnit? DimensionUnit { get; set; }
+    public decimal? WidthInputValue { get; set; }
+    public decimal? HeightInputValue { get; set; }
+    public decimal? DepthInputValue { get; set; }
+    public decimal? VolumeLiters { get; set; }
+    public decimal? VolumeInputValue { get; set; }
+    public VolumeUnit? VolumeInputUnit { get; set; }
     public string? Gravel { get; set; }
     public string? Plants { get; set; }
     public string? Decoration { get; set; }

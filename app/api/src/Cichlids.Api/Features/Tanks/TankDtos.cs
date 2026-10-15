@@ -9,7 +9,17 @@ public sealed record TankListItemDto(
 
 public sealed record WaterValuesDto(string? Ph, string? Kh, string? Gh, string? No2, string? No3, string? Po4, string? Notes);
 
-public sealed record DimensionsDto(int? Width, int? Height, int? Depth, DimensionUnit? Unit);
+public sealed record DimensionsDto(
+    decimal? Width, decimal? Height, decimal? Depth, DimensionUnit? Unit,
+    decimal? InputWidth, decimal? InputHeight, decimal? InputDepth, DimensionUnit? InputUnit);
+
+public sealed record VolumeDto(decimal Liters, decimal? InputValue, VolumeUnit? InputUnit);
+
+public sealed record DimensionInputDto(decimal? Width, decimal? Height, decimal? Depth, DimensionUnit Unit);
+
+public sealed record VolumeInputDto(decimal Value, VolumeUnit Unit);
+
+public sealed record CreateTankRequest(string Title, DimensionInputDto? Dimensions, VolumeInputDto? Volume);
 
 public sealed record TankMediaItemDto(long MediaItemId, ImageUrlsDto Image);
 
@@ -41,4 +51,5 @@ public sealed record TankDetailDto(
     ImageUrlsDto? MainImage,
     TankSectionsDto Sections,
     IReadOnlyList<InhabitantDto> Inhabitants,
-    AuthorDto Author);
+    AuthorDto Author,
+    VolumeDto? Volume);

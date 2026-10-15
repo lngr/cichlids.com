@@ -51,6 +51,7 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
             Assert.Equal(40, reef.HeightValue);
             Assert.Equal(40, reef.DepthValue);
             Assert.Equal(DimensionUnit.Cm, reef.DimensionUnit);
+            Assert.Equal(100m, reef.WidthInputValue);
             Assert.Null(reef.MainMediaId);
 
             // Position 0 resolves to species legacy id 101; position 1 ("0") drops entirely
@@ -75,7 +76,8 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
             Assert.Equal(DateTimeOffset.FromUnixTimeSeconds(1000000700), draft.CreatedAt);
             Assert.Null(draft.Category);
             Assert.Null(draft.WidthValue);
-            Assert.Equal(50, draft.HeightValue);
+            Assert.Equal(127m, draft.HeightValue);
+            Assert.Equal(50m, draft.HeightInputValue);
             Assert.Null(draft.DepthValue);
             Assert.Equal(DimensionUnit.Inch, draft.DimensionUnit);
 

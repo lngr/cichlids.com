@@ -15,6 +15,7 @@ public class TankConfiguration : IEntityTypeConfiguration<Tank>
         builder.Property(x => x.Title).IsRequired();
         builder.Property(x => x.Category).HasConversion<SnakeCaseEnumConverter<TankCategory>>();
         builder.Property(x => x.DimensionUnit).HasConversion<SnakeCaseEnumConverter<DimensionUnit>>();
+        builder.Property(x => x.VolumeInputUnit).HasConversion<SnakeCaseEnumConverter<VolumeUnit>>();
         builder.Property(x => x.State).HasConversion<SnakeCaseEnumConverter<TankState>>().IsRequired();
         builder.Property(x => x.CreatedAt).IsRequired();
 
@@ -44,6 +45,9 @@ public class TankConfiguration : IEntityTypeConfiguration<Tank>
             tb.HasCheckConstraint(
                 "ck_tank_dimension_unit",
                 "dimension_unit IS NULL OR dimension_unit IN ('cm', 'inch')");
+            tb.HasCheckConstraint(
+                "ck_tank_volume_input_unit",
+                "volume_input_unit IS NULL OR volume_input_unit IN ('liter', 'us_gallon')");
             tb.HasCheckConstraint(
                 "ck_tank_state",
                 "state IN ('draft', 'published')");

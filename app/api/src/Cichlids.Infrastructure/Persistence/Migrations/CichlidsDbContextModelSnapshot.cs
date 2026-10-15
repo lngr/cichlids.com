@@ -1368,8 +1368,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("deleted_by_profile_id");
 
-                    b.Property<int?>("DepthValue")
-                        .HasColumnType("integer")
+                    b.Property<decimal?>("DepthInputValue")
+                        .HasColumnType("numeric")
+                        .HasColumnName("depth_input_value");
+
+                    b.Property<decimal?>("DepthValue")
+                        .HasColumnType("numeric")
                         .HasColumnName("depth_value");
 
                     b.Property<string>("Description")
@@ -1392,8 +1396,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("gravel");
 
-                    b.Property<int?>("HeightValue")
-                        .HasColumnType("integer")
+                    b.Property<decimal?>("HeightInputValue")
+                        .HasColumnType("numeric")
+                        .HasColumnName("height_input_value");
+
+                    b.Property<decimal?>("HeightValue")
+                        .HasColumnType("numeric")
                         .HasColumnName("height_value");
 
                     b.Property<int?>("LegacyId")
@@ -1442,6 +1450,18 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("title");
 
+                    b.Property<string>("VolumeInputUnit")
+                        .HasColumnType("text")
+                        .HasColumnName("volume_input_unit");
+
+                    b.Property<decimal?>("VolumeInputValue")
+                        .HasColumnType("numeric")
+                        .HasColumnName("volume_input_value");
+
+                    b.Property<decimal?>("VolumeLiters")
+                        .HasColumnType("numeric")
+                        .HasColumnName("volume_liters");
+
                     b.Property<string>("WaterGh")
                         .HasColumnType("text")
                         .HasColumnName("water_gh");
@@ -1470,8 +1490,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("water_po4");
 
-                    b.Property<int?>("WidthValue")
-                        .HasColumnType("integer")
+                    b.Property<decimal?>("WidthInputValue")
+                        .HasColumnType("numeric")
+                        .HasColumnName("width_input_value");
+
+                    b.Property<decimal?>("WidthValue")
+                        .HasColumnType("numeric")
                         .HasColumnName("width_value");
 
                     b.HasKey("Id")
@@ -1497,6 +1521,8 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                             t.HasCheckConstraint("ck_tank_dimension_unit", "dimension_unit IS NULL OR dimension_unit IN ('cm', 'inch')");
 
                             t.HasCheckConstraint("ck_tank_state", "state IN ('draft', 'published')");
+
+                            t.HasCheckConstraint("ck_tank_volume_input_unit", "volume_input_unit IS NULL OR volume_input_unit IN ('liter', 'us_gallon')");
                         });
                 });
 
