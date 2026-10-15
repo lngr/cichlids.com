@@ -1,14 +1,18 @@
 ---
 id: TASK-2.32
 title: Restrict staging and previews to a self-hosted tailnet with Headscale
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-15 06:45'
-updated_date: '2026-10-15 07:07'
+updated_date: '2026-10-15 07:27'
 labels: []
 dependencies:
   - TASK-2.8
   - TASK-2.31
+references:
+  - apps/headscale/README.md
+  - apps/traefik/overlays/cluster/config.yaml
+  - tools/check-cluster-manifests.sh
 parent_task_id: TASK-2
 priority: high
 ordinal: 70000
@@ -53,3 +57,31 @@ username and password protection, no hosted coordination service.
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- Headscale 0.29.5 (digest) in the addons project, SQLite on a Retain PVC, embedded DERP relay
+  with STUN on UDP 3478 through ServiceLB, public host `headscale.cichlids.com` with a certificate,
+  periodic SQLite backup plus documented external copy.
+- Node: Tailscale 1.104.1 (SHA-256) installed by the app tier, joins with the optional sensitive
+  variable `tailscale_auth_key` (empty: no join), advertises its public IPv4 as a /32 route that
+  the operator approves; public DNS names, including dynamic preview hosts, then reach the node
+  through the tunnel.
+- Traefik: `externalTrafficPolicy: Local`; middleware `tailnet-only` (`ipAllowList` on the
+  connection address, 100.64.0.0/10 and the tailnet IPv6 range, forwarded headers grant nothing)
+  on the staging and preview Ingresses; separate public ACME solver Ingresses; production
+  untouched.
+- DNS record for `headscale` in the platform tier.
+
+### Verified by the agent (Codex) and the main session
+- Manifest checks red then green (301 valid); local Docker test with two Tailscale nodes: HTTPS
+  200 through the /32 route, 403 for staging and previews from outside, production 200, ACME path
+  200, HTTP redirect 301, staging through the embedded DERP when direct WireGuard is blocked.
+- Not verified: ServiceLB source address on the real node, DNS, certificate issuance, SSH while
+  the tailnet is down.
+
+### Open
+- Proposed ADR-0010/0014 text (project owner).
+<!-- SECTION:NOTES:END -->
