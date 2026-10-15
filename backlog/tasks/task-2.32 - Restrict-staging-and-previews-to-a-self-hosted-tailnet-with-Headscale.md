@@ -1,9 +1,10 @@
 ---
 id: TASK-2.32
 title: Restrict staging and previews to a self-hosted tailnet with Headscale
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-15 06:45'
+updated_date: '2026-10-15 07:07'
 labels: []
 dependencies:
   - TASK-2.8
