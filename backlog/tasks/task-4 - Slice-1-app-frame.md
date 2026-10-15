@@ -4,6 +4,7 @@ title: Slice 1 app frame
 status: To Do
 assignee: []
 created_date: '2026-10-15 08:46'
+updated_date: '2026-10-15 08:55'
 labels: []
 dependencies: []
 priority: high
@@ -33,3 +34,15 @@ Discover and Today.
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Regions (decided by the project owner, 2026-10-15)
+- Lake Malawi, Lake Tanganyika, Lake Victoria, Africa other (West Africa, rivers, Madagascar),
+  Central America, South America, Mixed (for example mbuna with haps, community tanks).
+- Legacy tanks: malawi, tanganyika map directly; african to Africa other; community to Mixed;
+  central_american and south_american directly; legacy "american" without detail becomes
+  "Americas (unassigned)", which the member refines with one tap on their tank; until then such
+  tanks count for both American regions in the hall of fame.
+<!-- SECTION:NOTES:END -->
