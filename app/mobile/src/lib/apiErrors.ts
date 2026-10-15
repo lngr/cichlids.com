@@ -9,6 +9,7 @@ export const API_ERROR_CODES = [
   "upload_rate_limited",
   "request_too_large",
   "tank_title_invalid",
+  "tank_not_found",
   "tank_dimensions_invalid",
   "tank_volume_invalid",
   "tank_region_invalid",
