@@ -240,7 +240,11 @@
     "request_too_large": "The request is too large.",
     "tank_title_invalid": "Enter a tank title with 1 to 200 characters.",
     "tank_dimensions_invalid": "Enter positive dimensions up to 1,000,000 in cm or inches.",
-    "tank_volume_invalid": "Enter a positive volume up to 1,000,000 in liters or US gallons."
+    "tank_volume_invalid": "Enter a positive volume up to 1,000,000 in liters or US gallons.",
+    "tank_region_invalid": "Choose a valid region for your tank.",
+    "onboarding_invalid": "Choose one onboarding path.",
+    "interests_invalid": "Choose valid interest regions.",
+    "legacy_tank_not_found": "This archive tank is unavailable."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -297,5 +301,47 @@
     "photo": "Upload photo",
     "cancel": "Cancel",
     "back": "Back"
+  },
+  "onboarding": {
+    "title": "Set up your tank",
+    "question": "Do you have a tank?",
+    "intro": "Start your tank story, or explore the regions you love.",
+    "yes": "Yes, I have a tank",
+    "no": "No, I am exploring",
+    "tankTitle": "Your tank",
+    "interests": "Your interests",
+    "legacy": "Your tanks from the archive",
+    "standard": "Choose a standard tank",
+    "custom": "Custom size",
+    "name": "Tank name",
+    "region": "Tank region",
+    "refine": "Is your tank from Central or South America?",
+    "save": "Save and continue",
+    "skip": "Skip for now",
+    "success": "Your tank is created. From now on it tells its story.",
+    "photo": "Add your first photo",
+    "done": "Go to Me",
+    "long": "long",
+    "breeder": "breeder",
+    "volume": "Volume",
+    "width": "Length",
+    "depth": "Depth",
+    "height": "Height",
+    "customUnits": "Volume in {{volumeUnit}}, dimensions in {{lengthUnit}}",
+    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})"
+  },
+  "regions": {
+    "lake_malawi": "Lake Malawi",
+    "lake_tanganyika": "Lake Tanganyika",
+    "lake_victoria": "Lake Victoria",
+    "africa_other": "Africa, other",
+    "central_america": "Central America",
+    "south_america": "South America",
+    "mixed": "Mixed",
+    "americas_unassigned": "Americas (unassigned)"
+  },
+  "badges": {
+    "first_tank": "First tank",
+    "returned": "Returned"
   }
 }

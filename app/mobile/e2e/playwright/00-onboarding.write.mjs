@@ -39,6 +39,7 @@ try {
   assert.equal(detail.region, "lake_malawi");
   await page.screenshot({ path: "/tmp/task-4.5-reward-dark.png" });
   await byTestId(page, "onboarding-done").click();
+  await byTestId(page, "badge-first_tank").waitFor();
   await page.reload({ waitUntil: "networkidle" });
   await byTestId(page, "me-name").waitFor();
   await byTestId(page, "badge-first_tank").waitFor();

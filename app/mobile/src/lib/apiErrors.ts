@@ -11,6 +11,10 @@ export const API_ERROR_CODES = [
   "tank_title_invalid",
   "tank_dimensions_invalid",
   "tank_volume_invalid",
+  "tank_region_invalid",
+  "onboarding_invalid",
+  "interests_invalid",
+  "legacy_tank_not_found",
 ] as const;
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];

@@ -248,7 +248,11 @@
     "request_too_large": "A solicitação é muito grande.",
     "tank_title_invalid": "Digite um título para o aquário com 1 a 200 caracteres.",
     "tank_dimensions_invalid": "Informe dimensões positivas de até 1.000.000 em cm ou polegadas.",
-    "tank_volume_invalid": "Informe um volume positivo de até 1.000.000 em litros ou galões americanos."
+    "tank_volume_invalid": "Informe um volume positivo de até 1.000.000 em litros ou galões americanos.",
+    "tank_region_invalid": "Escolha uma região válida para seu aquário.",
+    "onboarding_invalid": "Escolha uma opção para começar.",
+    "interests_invalid": "Escolha regiões de interesse válidas.",
+    "legacy_tank_not_found": "Este aquário do arquivo está indisponível."
   },
   "featureFlags": {
     "activityTitle": "Atividade da comunidade",
@@ -305,5 +309,47 @@
     "photo": "Enviar foto",
     "cancel": "Cancelar",
     "back": "Voltar"
+  },
+  "onboarding": {
+    "title": "Configure seu aquário",
+    "question": "Você tem um aquário?",
+    "intro": "Comece a história do seu aquário ou explore suas regiões favoritas.",
+    "yes": "Sim, tenho um aquário",
+    "no": "Não, estou explorando",
+    "tankTitle": "Seu aquário",
+    "interests": "Seus interesses",
+    "legacy": "Seus aquários do arquivo",
+    "standard": "Escolha um aquário padrão",
+    "custom": "Medidas personalizadas",
+    "name": "Nome do aquário",
+    "region": "Região do aquário",
+    "refine": "Seu aquário é da América Central ou do Sul?",
+    "save": "Salvar e continuar",
+    "skip": "Pular por enquanto",
+    "success": "Seu aquário está criado. A partir de agora ele conta sua história.",
+    "photo": "Adicione sua primeira foto",
+    "done": "Ir para Meu perfil",
+    "long": "longo",
+    "breeder": "de criação",
+    "volume": "Volume",
+    "width": "Comprimento",
+    "depth": "Profundidade",
+    "height": "Altura",
+    "customUnits": "Volume em {{volumeUnit}}, medidas em {{lengthUnit}}",
+    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})"
+  },
+  "regions": {
+    "lake_malawi": "Lago Malawi",
+    "lake_tanganyika": "Lago Tanganica",
+    "lake_victoria": "Lago Vitória",
+    "africa_other": "Outras regiões da África",
+    "central_america": "América Central",
+    "south_america": "América do Sul",
+    "mixed": "Misto",
+    "americas_unassigned": "Américas (não atribuído)"
+  },
+  "badges": {
+    "first_tank": "Primeiro aquário",
+    "returned": "De volta"
   }
 }

@@ -154,6 +154,7 @@ try {
 
   await page.goto(`${WEB_URL}/me`, { waitUntil: "networkidle", timeout: 60000 });
   await submitKeycloakLogin(page, loginButton, username, password);
+  await byTestId(page, "onboarding-skip").click({ timeout: 30000 });
   await meName.waitFor({ timeout: 30000 });
   const session = sessionRow(memberId);
   if (!session) throw new Error("The API stored no web session for the member");

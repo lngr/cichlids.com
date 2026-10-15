@@ -1,6 +1,7 @@
 import { useMachineRouter } from "../../../src/navigation/NavigationProvider";
+import { OnboardingProfile } from "../../../src/onboarding/OnboardingProfile";
 import { LanguageSettings } from "../../../src/i18n/LanguageSettings";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useFocusEffect } from "expo-router";
 import { useTranslation } from "react-i18next";
@@ -54,7 +55,7 @@ function ProfileView() {
   const [error, setError] = useState<string | null>(null);
   const [attempt, setAttempt] = useState(0);
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     let cancelled = false;
     setError(null);
     apiClient.me
@@ -64,7 +65,7 @@ function ProfileView() {
     return () => {
       cancelled = true;
     };
-  }, [attempt, t]);
+  }, [attempt, t]));
 
   if (error) {
     return (
@@ -107,6 +108,7 @@ function MemberContent({ profile }: { profile: Me["profile"] }) {
         <Button testID="logout-button" variant="secondary" label={t("me.logout")} onPress={() => void logout()} />
       </View>
       <LanguageSettings />
+      <OnboardingProfile profile={profile} />
       <ProfileTabs section={section} onSelect={setSection} own />
     </View>
   );

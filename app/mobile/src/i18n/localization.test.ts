@@ -15,7 +15,10 @@ function flatten(value: object, prefix = ""): Record<string, string> {
 }
 const base = flatten(en);
 const placeholders = (text: string) => [...text.matchAll(/{{\s*([^}]+)\s*}}/g)].map((m) => m[1].trim()).sort();
-const pluralBase = (key: string) => key.replace(/_(zero|one|two|few|many|other)$/, "");
+const pluralBase = (key: string) => {
+  const root = key.replace(/_(zero|one|two|few|many|other)$/, "");
+  return `${root}_one` in base ? root : key;
+};
 
 describe("launch localization", () => {
   it("resolves device regions, language families and the English fallback", () => {

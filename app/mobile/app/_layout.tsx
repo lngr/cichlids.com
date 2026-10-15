@@ -3,6 +3,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { LocaleDirContext } from "expo-router/react-navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { MachineStack as Stack } from "../src/navigation/MachineStack";
+import { OnboardingGate } from "../src/onboarding/OnboardingGate";
 import { CreateSheet } from "../src/navigation/CreateSheet";
 import { NavigationProvider } from "../src/navigation/NavigationProvider";
 import { StatusBar } from "expo-status-bar";
@@ -47,8 +48,10 @@ export default function RootLayout() {
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
                 <Stack.Screen name="profile/[id]" options={{ title: t("profile.title") }} />
                 <Stack.Screen name="auth" options={{ headerShown: false }} />
+                <Stack.Screen name="onboarding" options={{ title: t("onboarding.title") }} />
                 <Stack.Screen name="upload/index" options={{ title: t("upload.title") }} />
               </Stack>
+              <OnboardingGate />
               <CreateSheet />
             </NavigationProvider>
           </FeatureFlagsProvider>

@@ -58,7 +58,7 @@ describe("navigation", () => {
   });
   it("accepts browser history and deep links centrally and resolves legacy tab ownership", () => {
     const actor = start();
-    for (const [path, tab] of [["/gallery/a", "discover"], ["/tanks/1", "discover"], ["/community/thread/1", "discover"], ["/species/frontosa", "fish"], ["/profile/1", "me"]]) {
+    for (const [path, tab] of [["/onboarding", "me"], ["/gallery/a", "discover"], ["/tanks/1", "discover"], ["/community/thread/1", "discover"], ["/species/frontosa", "fish"], ["/profile/1", "me"]]) {
       actor.send({ type: "EXTERNAL", path });
       expect(actor.getSnapshot().context.path).toBe(path);
       expect(selectedTab(path)).toBe(tab);

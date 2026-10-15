@@ -240,7 +240,11 @@
     "request_too_large": "Die Anfrage ist zu groß.",
     "tank_title_invalid": "Gib einen Beckentitel mit 1 bis 200 Zeichen ein.",
     "tank_dimensions_invalid": "Gib positive Maße bis 1.000.000 in cm oder Zoll ein.",
-    "tank_volume_invalid": "Gib ein positives Volumen bis 1.000.000 in Litern oder US-Gallonen ein."
+    "tank_volume_invalid": "Gib ein positives Volumen bis 1.000.000 in Litern oder US-Gallonen ein.",
+    "tank_region_invalid": "Wähle eine gültige Region für dein Becken.",
+    "onboarding_invalid": "Wähle einen Weg zur Einrichtung.",
+    "interests_invalid": "Wähle gültige Interessenregionen.",
+    "legacy_tank_not_found": "Dieses Archivbecken ist nicht verfügbar."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -297,5 +301,47 @@
     "photo": "Foto hochladen",
     "cancel": "Abbrechen",
     "back": "Zurück"
+  },
+  "onboarding": {
+    "title": "Dein Becken einrichten",
+    "question": "Hast du ein Becken?",
+    "intro": "Beginne die Geschichte deines Beckens oder entdecke deine Lieblingsregionen.",
+    "yes": "Ja, ich habe ein Becken",
+    "no": "Nein, ich schaue mich um",
+    "tankTitle": "Dein Becken",
+    "interests": "Deine Interessen",
+    "legacy": "Deine Becken aus dem Archiv",
+    "standard": "Standardbecken wählen",
+    "custom": "Eigene Maße",
+    "name": "Beckenname",
+    "region": "Region des Beckens",
+    "refine": "Kommt dein Becken aus Mittel- oder Südamerika?",
+    "save": "Speichern und weiter",
+    "skip": "Vorerst überspringen",
+    "success": "Dein Becken ist angelegt. Ab hier erzählt es seine Geschichte.",
+    "photo": "Dein erstes Foto hinzufügen",
+    "done": "Zu Ich",
+    "long": "lang",
+    "breeder": "Zuchtbecken",
+    "volume": "Volumen",
+    "width": "Länge",
+    "depth": "Tiefe",
+    "height": "Höhe",
+    "customUnits": "Volumen in {{volumeUnit}}, Maße in {{lengthUnit}}",
+    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})"
+  },
+  "regions": {
+    "lake_malawi": "Malawisee",
+    "lake_tanganyika": "Tanganjikasee",
+    "lake_victoria": "Viktoriasee",
+    "africa_other": "Übriges Afrika",
+    "central_america": "Mittelamerika",
+    "south_america": "Südamerika",
+    "mixed": "Gemischt",
+    "americas_unassigned": "Amerika (nicht zugeordnet)"
+  },
+  "badges": {
+    "first_tank": "Erstes Becken",
+    "returned": "Zurückgekehrt"
   }
 }

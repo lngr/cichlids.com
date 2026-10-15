@@ -240,7 +240,11 @@
     "request_too_large": "İstek çok büyük.",
     "tank_title_invalid": "Akvaryum için 1 ile 200 karakter arasında bir başlık girin.",
     "tank_dimensions_invalid": "Cm veya inç cinsinden en fazla 1.000.000 olan pozitif boyutlar girin.",
-    "tank_volume_invalid": "Litre veya ABD galonu cinsinden en fazla 1.000.000 olan pozitif bir hacim girin."
+    "tank_volume_invalid": "Litre veya ABD galonu cinsinden en fazla 1.000.000 olan pozitif bir hacim girin.",
+    "tank_region_invalid": "Akvaryumun için geçerli bir bölge seç.",
+    "onboarding_invalid": "Bir kurulum yolu seç.",
+    "interests_invalid": "Geçerli ilgi bölgeleri seç.",
+    "legacy_tank_not_found": "Bu arşiv akvaryumu kullanılamıyor."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -297,5 +301,47 @@
     "photo": "Fotoğraf yükle",
     "cancel": "İptal",
     "back": "Geri"
+  },
+  "onboarding": {
+    "title": "Akvaryumunu kur",
+    "question": "Akvaryumun var mı?",
+    "intro": "Akvaryumunun hikayesini başlat veya sevdiğin bölgeleri keşfet.",
+    "yes": "Evet, akvaryumum var",
+    "no": "Hayır, keşfediyorum",
+    "tankTitle": "Akvaryumun",
+    "interests": "İlgi alanların",
+    "legacy": "Arşivdeki akvaryumların",
+    "standard": "Standart akvaryum seç",
+    "custom": "Özel ölçüler",
+    "name": "Akvaryum adı",
+    "region": "Akvaryum bölgesi",
+    "refine": "Akvaryumun Orta Amerika mı Güney Amerika mı?",
+    "save": "Kaydet ve devam et",
+    "skip": "Şimdilik atla",
+    "success": "Akvaryumun oluşturuldu. Artık hikayesini anlatıyor.",
+    "photo": "İlk fotoğrafını ekle",
+    "done": "Ben bölümüne git",
+    "long": "uzun",
+    "breeder": "üretim",
+    "volume": "Hacim",
+    "width": "Uzunluk",
+    "depth": "Derinlik",
+    "height": "Yükseklik",
+    "customUnits": "Hacim {{volumeUnit}}, ölçüler {{lengthUnit}}",
+    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})"
+  },
+  "regions": {
+    "lake_malawi": "Malawi Gölü",
+    "lake_tanganyika": "Tanganyika Gölü",
+    "lake_victoria": "Victoria Gölü",
+    "africa_other": "Diğer Afrika",
+    "central_america": "Orta Amerika",
+    "south_america": "Güney Amerika",
+    "mixed": "Karışık",
+    "americas_unassigned": "Amerika (atanmamış)"
+  },
+  "badges": {
+    "first_tank": "İlk akvaryum",
+    "returned": "Geri döndü"
   }
 }

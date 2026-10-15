@@ -256,7 +256,11 @@
     "request_too_large": "Požadavek je příliš velký.",
     "tank_title_invalid": "Zadejte název akvária o délce 1 až 200 znaků.",
     "tank_dimensions_invalid": "Zadejte kladné rozměry do 1 000 000 v cm nebo palcích.",
-    "tank_volume_invalid": "Zadejte kladný objem do 1 000 000 v litrech nebo amerických galonech."
+    "tank_volume_invalid": "Zadejte kladný objem do 1 000 000 v litrech nebo amerických galonech.",
+    "tank_region_invalid": "Vyberte platnou oblast akvária.",
+    "onboarding_invalid": "Vyberte jednu cestu nastavení.",
+    "interests_invalid": "Vyberte platné oblasti zájmu.",
+    "legacy_tank_not_found": "Toto archivní akvárium není dostupné."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -313,5 +317,47 @@
     "photo": "Nahrát fotku",
     "cancel": "Zrušit",
     "back": "Zpět"
+  },
+  "onboarding": {
+    "title": "Nastavte své akvárium",
+    "question": "Máte akvárium?",
+    "intro": "Začněte jeho příběh nebo objevujte oblíbené oblasti.",
+    "yes": "Ano, mám akvárium",
+    "no": "Ne, rozhlížím se",
+    "tankTitle": "Vaše akvárium",
+    "interests": "Vaše zájmy",
+    "legacy": "Vaše akvária z archivu",
+    "standard": "Vyberte standardní akvárium",
+    "custom": "Vlastní rozměry",
+    "name": "Název akvária",
+    "region": "Oblast akvária",
+    "refine": "Je vaše akvárium ze Střední nebo Jižní Ameriky?",
+    "save": "Uložit a pokračovat",
+    "skip": "Prozatím přeskočit",
+    "success": "Vaše akvárium je vytvořeno. Odteď vypráví svůj příběh.",
+    "photo": "Přidat první fotografii",
+    "done": "Přejít na Já",
+    "long": "dlouhé",
+    "breeder": "chovné",
+    "volume": "Objem",
+    "width": "Délka",
+    "depth": "Hloubka",
+    "height": "Výška",
+    "customUnits": "Objem v {{volumeUnit}}, rozměry v {{lengthUnit}}",
+    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})"
+  },
+  "regions": {
+    "lake_malawi": "Jezero Malawi",
+    "lake_tanganyika": "Jezero Tanganika",
+    "lake_victoria": "Viktoriino jezero",
+    "africa_other": "Ostatní Afrika",
+    "central_america": "Střední Amerika",
+    "south_america": "Jižní Amerika",
+    "mixed": "Smíšené",
+    "americas_unassigned": "Amerika (nepřiřazeno)"
+  },
+  "badges": {
+    "first_tank": "První akvárium",
+    "returned": "Návrat"
   }
 }
