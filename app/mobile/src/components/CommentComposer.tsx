@@ -149,7 +149,7 @@ function ComposerForm({
       <Text
         testID="comment-counter"
         accessibilityRole={overLimit ? "alert" : undefined}
-        style={[theme.type.meta, { color: overLimit ? theme.colors.danger : theme.colors.muted, textAlign: "right" }]}
+        style={[theme.type.meta, { color: overLimit ? theme.colors.danger : theme.colors.muted, textAlign: "auto" }]}
       >
         {t("comments.counter", { length: commentLength(effectiveDraft), max: COMMENT_MAX_LENGTH })}
       </Text>

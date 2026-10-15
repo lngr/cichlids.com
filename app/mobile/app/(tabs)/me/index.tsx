@@ -1,3 +1,4 @@
+import { LanguageSettings } from "../../../src/i18n/LanguageSettings";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useFocusEffect, useRouter } from "expo-router";
@@ -30,7 +31,7 @@ function AnonymousView() {
   const { busy, failure, onLogin } = useLoginAction();
 
   return (
-    <View style={[styles.anonymous, { backgroundColor: theme.colors.bg, padding: theme.space[6], gap: theme.space[3] }]}>
+    <ScrollView contentContainerStyle={[styles.anonymous, { backgroundColor: theme.colors.bg, padding: theme.space[6], gap: theme.space[3] }]}>
       <Text style={[theme.type.h1, styles.centered, { color: theme.colors.fg }]}>{t("me.anonymousTitle")}</Text>
       <Text style={[theme.type.body, styles.centered, { color: theme.colors.muted }]}>{t("me.anonymousText")}</Text>
       {failure ? (
@@ -38,8 +39,9 @@ function AnonymousView() {
           {failure === "unavailable" ? t("me.loginUnavailable") : t("me.loginError")}
         </Text>
       ) : null}
+      <LanguageSettings />
       <Button testID="login-button" label={failure ? t("common.retry") : t("me.login")} onPress={onLogin} busy={busy} />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -103,6 +105,7 @@ function MemberContent({ profile }: { profile: Me["profile"] }) {
         <Button testID="me-profile-button" variant="secondary" label={t("me.openProfile")} onPress={() => router.push(`/profile/${profile.id}`)} />
         <Button testID="logout-button" variant="secondary" label={t("me.logout")} onPress={() => void logout()} />
       </View>
+      <LanguageSettings />
       <ProfileTabs section={section} onSelect={setSection} own />
     </View>
   );
@@ -117,7 +120,7 @@ function MemberContent({ profile }: { profile: Me["profile"] }) {
 
 const styles = StyleSheet.create({
   anonymous: {
-    flex: 1,
+    flexGrow: 1,
     alignItems: "center",
     justifyContent: "center",
   },

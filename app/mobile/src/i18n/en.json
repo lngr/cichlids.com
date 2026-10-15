@@ -5,7 +5,8 @@
     "guest": "Guest",
     "untitled": "Untitled",
     "unknownError": "Unknown error",
-    "loadError": "Failed to load"
+    "loadError": "Failed to load",
+    "unknownValue": "?"
   },
   "tabs": {
     "gallery": "Gallery",
@@ -98,7 +99,9 @@
       "comments": "Comments",
       "commentsLoading": "Loading comments…",
       "commentsEmpty": "No comments yet.",
-      "commentsError": "The comments could not be loaded."
+      "commentsError": "The comments could not be loaded.",
+      "dimensionValue": "{{width}} × {{height}} × {{depth}} {{unit}}",
+      "waterValue": "{{label}} {{value}}"
     }
   },
   "species": {
@@ -204,7 +207,8 @@
     "discardError": "Discarding the draft failed. Please try again.",
     "loadingDraft": "Loading draft…",
     "draftNotFound": "This draft was not found. It may have been published or deleted.",
-    "draftLoadError": "The draft could not be loaded. Please try again."
+    "draftLoadError": "The draft could not be loaded. Please try again.",
+    "libraryPermission": "Allows cichlids to upload photos from your library."
   },
   "comments": {
     "inputLabel": "Your comment",
@@ -233,5 +237,25 @@
   "featureFlags": {
     "activityTitle": "Community activity",
     "activityPlaceholder": "New tanks and active members will appear here."
+  },
+  "settings": {
+    "language": "Language",
+    "device": "Device language",
+    "saveError": "Language could not be saved. Please try again.",
+    "pseudoRTL": "Pseudo RTL (restart the native app)",
+    "formatPreview": "Number and date format",
+    "languages": {
+      "en": "English",
+      "es-419": "Español (Latinoamérica)",
+      "pt-BR": "Português (Brasil)",
+      "de": "Deutsch",
+      "fr": "Français",
+      "it": "Italiano",
+      "pl": "Polski",
+      "nl": "Nederlands",
+      "cs": "Čeština",
+      "id": "Bahasa Indonesia",
+      "tr": "Türkçe"
+    }
   }
 }

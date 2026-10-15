@@ -18,7 +18,7 @@ export function TankCard({ tank, onPress }: { tank: TankListItem; onPress: () =>
     >
       <Image
         source={tank.mainImage?.small ?? tank.mainImage?.thumb ?? undefined}
-        style={[styles.image, { backgroundColor: theme.colors.placeholder, borderTopLeftRadius: theme.radius.lg, borderTopRightRadius: theme.radius.lg }]}
+        style={[styles.image, { backgroundColor: theme.colors.placeholder }]}
         contentFit="cover"
       />
       <View style={styles.body}>

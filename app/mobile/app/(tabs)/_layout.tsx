@@ -47,6 +47,7 @@ export default function TabsLayout() {
         name="species"
         options={{
           title: t("tabs.species"),
+          tabBarButtonTestID: "tab-species",
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="fish" color={color} size={size} />,
         }}
       />

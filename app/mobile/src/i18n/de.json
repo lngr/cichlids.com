@@ -5,7 +5,8 @@
     "guest": "Gast",
     "untitled": "Ohne Titel",
     "unknownError": "Unbekannter Fehler",
-    "loadError": "Fehler beim Laden"
+    "loadError": "Fehler beim Laden",
+    "unknownValue": "?"
   },
   "tabs": {
     "gallery": "Galerie",
@@ -98,7 +99,9 @@
       "comments": "Kommentare",
       "commentsLoading": "Kommentare laden…",
       "commentsEmpty": "Noch keine Kommentare.",
-      "commentsError": "Die Kommentare konnten nicht geladen werden."
+      "commentsError": "Die Kommentare konnten nicht geladen werden.",
+      "dimensionValue": "{{width}} × {{height}} × {{depth}} {{unit}}",
+      "waterValue": "{{label}} {{value}}"
     }
   },
   "species": {
@@ -204,7 +207,8 @@
     "discardError": "Der Entwurf konnte nicht verworfen werden. Bitte versuche es erneut.",
     "loadingDraft": "Entwurf wird geladen…",
     "draftNotFound": "Dieser Entwurf wurde nicht gefunden. Vielleicht wurde er veröffentlicht oder gelöscht.",
-    "draftLoadError": "Der Entwurf konnte nicht geladen werden. Bitte versuche es erneut."
+    "draftLoadError": "Der Entwurf konnte nicht geladen werden. Bitte versuche es erneut.",
+    "libraryPermission": "Erlaubt cichlids, Fotos aus deiner Mediathek hochzuladen."
   },
   "comments": {
     "inputLabel": "Dein Kommentar",
@@ -233,5 +237,25 @@
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
     "activityPlaceholder": "Hier erscheinen neue Becken und aktive Mitglieder."
+  },
+  "settings": {
+    "language": "Sprache",
+    "device": "Gerätesprache",
+    "saveError": "Die Sprache konnte nicht gespeichert werden. Bitte versuche es erneut.",
+    "pseudoRTL": "Pseudo-RTL (native App neu starten)",
+    "formatPreview": "Zahlen- und Datumsformat",
+    "languages": {
+      "en": "English",
+      "es-419": "Español (Latinoamérica)",
+      "pt-BR": "Português (Brasil)",
+      "de": "Deutsch",
+      "fr": "Français",
+      "it": "Italiano",
+      "pl": "Polski",
+      "nl": "Nederlands",
+      "cs": "Čeština",
+      "id": "Bahasa Indonesia",
+      "tr": "Türkçe"
+    }
   }
 }
