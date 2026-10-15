@@ -1,3 +1,4 @@
+import { translateApiError } from "../../../src/lib/apiErrors";
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
@@ -37,7 +38,7 @@ export default function PictureDetailScreen() {
         setPicture(detail);
         navigation.setOptions({ title: detail.title ?? t("gallery.untitled") });
       })
-      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : t("common.loadError")))
+      .catch((err) => !cancelled && setError(translateApiError(err, t, "common.loadError")))
       .finally(() => !cancelled && setLoading(false));
     return () => {
       cancelled = true;
@@ -89,8 +90,8 @@ export default function PictureDetailScreen() {
               </Text>
             </Pressable>
             <Text testID="picture-meta" style={[theme.type.meta, { color: theme.colors.muted, marginTop: 2 }]}>
-              {formatDate(picture.publishedAt, i18n.language)} · {Number(picture.viewCount)} {t("gallery.views", { count: Number(picture.viewCount) })}
-              {picture.ratingAverage ? ` · ${"★".repeat(Math.round(Number(picture.ratingAverage)))} (${Number(picture.ratingCount)})` : ""}
+              {formatDate(picture.publishedAt, i18n.language)} · {new Intl.NumberFormat(i18n.language).format(Number(picture.viewCount))} {t("gallery.views", { count: Number(picture.viewCount) })}
+              {picture.ratingAverage ? ` · ${"★".repeat(Math.round(Number(picture.ratingAverage)))} (${new Intl.NumberFormat(i18n.language).format(Number(picture.ratingCount))})` : ""}
             </Text>
             {picture.description ? (
               <Text testID="picture-description" style={[theme.type.body, { color: theme.colors.fg, marginTop: 10 }]}>

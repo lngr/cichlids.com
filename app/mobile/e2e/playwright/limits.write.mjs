@@ -97,7 +97,7 @@ try {
   // A comment above the limit shows the counter above the limit and cannot be sent.
   await input.fill("a".repeat(COMMENT_LIMIT + 1));
   const overText = (await counter.textContent())?.replace(/\s+/g, " ").trim();
-  if (!overText?.includes(`${COMMENT_LIMIT + 1}`) || !overText.includes(`${COMMENT_LIMIT}`)) {
+  if (!overText?.includes(new Intl.NumberFormat("en").format(COMMENT_LIMIT + 1)) || !overText.includes(new Intl.NumberFormat("en").format(COMMENT_LIMIT))) {
     throw new Error(`Expected the counter to show ${COMMENT_LIMIT + 1} of ${COMMENT_LIMIT}, got "${overText}"`);
   }
   if ((await submit.getAttribute("aria-disabled")) !== "true") throw new Error("Submit is enabled for a comment above the limit");

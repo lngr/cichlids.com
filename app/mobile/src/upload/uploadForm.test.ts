@@ -99,9 +99,9 @@ describe("uploadErrorMessage", () => {
     expect(uploadErrorMessage(rateLimit, "fallback", t)).toBe("translated:errors.upload_rate_limited");
   });
 
-  it("shows the API message of a 400 response", () => {
+  it("uses a translated fallback for an unrecognized validation message", () => {
     const error = Object.assign(new Error("The file must be image/jpeg, image/png or image/webp."), { status: 400 });
-    expect(uploadErrorMessage(error, "fallback", t)).toBe("The file must be image/jpeg, image/png or image/webp.");
+    expect(uploadErrorMessage(error, "fallback", t)).toBe("fallback");
   });
 
   it("uses the fallback for other failures", () => {

@@ -1,3 +1,4 @@
+import { translateApiError } from "../../src/lib/apiErrors";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { useLocalSearchParams, useNavigation } from "expo-router";
@@ -32,7 +33,7 @@ export default function ProfileScreen() {
         setProfile(detail);
         navigation.setOptions({ title: detail.displayName ?? detail.username });
       })
-      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : t("common.loadError")))
+      .catch((err) => !cancelled && setError(translateApiError(err, t, "common.loadError")))
       .finally(() => !cancelled && setLoading(false));
     return () => {
       cancelled = true;

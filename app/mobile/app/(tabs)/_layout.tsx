@@ -1,3 +1,5 @@
+import { Text } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Tabs } from "expo-router";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
@@ -5,6 +7,7 @@ import { useTheme } from "../../src/theme";
 
 export default function TabsLayout() {
   const theme = useTheme();
+  const insets = useSafeAreaInsets();
   const { t } = useTranslation();
 
   return (
@@ -13,7 +16,9 @@ export default function TabsLayout() {
         headerShown: false,
         tabBarActiveTintColor: theme.colors.accent,
         tabBarInactiveTintColor: theme.colors.muted,
+        tabBarLabel: ({ color, children }) => <Text numberOfLines={2} style={[theme.type.meta, { color, textAlign: "center" }]}>{children}</Text>,
         tabBarStyle: {
+          height: 64 + insets.bottom,
           backgroundColor: theme.colors.surface,
           borderTopColor: theme.colors.border,
         },

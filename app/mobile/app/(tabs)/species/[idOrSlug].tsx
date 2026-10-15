@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { getDirection, subscribeDirection } from "../../../src/i18n";
+import { translateApiError } from "../../../src/lib/apiErrors";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
@@ -11,6 +14,7 @@ import type { SpeciesDetail, SpeciesLink } from "@cichlids/client-core";
 export default function SpeciesDetailScreen() {
   const { idOrSlug } = useLocalSearchParams<{ idOrSlug: string }>();
   const theme = useTheme();
+  const rtl = useSyncExternalStore(subscribeDirection, getDirection, () => false);
   const router = useRouter();
   const navigation = useNavigation();
   const { t } = useTranslation();
@@ -29,7 +33,7 @@ export default function SpeciesDetailScreen() {
         setSpecies(detail);
         navigation.setOptions({ title: detail.displayName });
       })
-      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : t("common.loadError")))
+      .catch((err) => !cancelled && setError(translateApiError(err, t, "common.loadError")))
       .finally(() => !cancelled && setLoading(false));
     return () => {
       cancelled = true;
@@ -69,10 +73,12 @@ export default function SpeciesDetailScreen() {
         onPress={() => species.slug && router.push(`/gallery?species=${species.slug}`)}
         disabled={!species.slug || pictureCount === 0}
         accessibilityRole="button"
+        accessibilityLabel={t("species.detail.viewPictures", { count: pictureCount })}
       >
         <Text style={[theme.type.bodyStrong, { color: theme.colors.accent }]}>
           {t("species.detail.viewPictures", { count: pictureCount })}
         </Text>
+        <MaterialCommunityIcons testID="species-gallery-arrow" name={rtl ? "arrow-left" : "arrow-right"} size={20} color={theme.colors.accent} accessible={false} />
       </Pressable>
 
       {species.links.length > 0 ? (
@@ -96,6 +102,9 @@ const styles = StyleSheet.create({
     padding: 14,
     minHeight: 48,
     justifyContent: "center",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
   },
   links: { marginTop: 20 },
 });

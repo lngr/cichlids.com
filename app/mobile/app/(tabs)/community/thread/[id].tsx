@@ -1,3 +1,4 @@
+import { translateApiError } from "../../../../src/lib/apiErrors";
 import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
@@ -29,7 +30,7 @@ export default function ThreadDetailScreen() {
         setThread(detail);
         navigation.setOptions({ title: detail.title });
       })
-      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : t("common.loadError")))
+      .catch((err) => !cancelled && setError(translateApiError(err, t, "common.loadError")))
       .finally(() => !cancelled && setLoading(false));
     return () => {
       cancelled = true;

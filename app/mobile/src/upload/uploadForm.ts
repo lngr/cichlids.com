@@ -57,17 +57,8 @@ export function toUploadFile(asset: PickedAsset): UploadFile {
   };
 }
 
-/**
- * The text to show for a failed upload or publish: the translation of the API error code the
- * error carries, else the API's own message for a 400 response (not an image, too large, too many
- * pixels, invalid title), else the given fallback, since other failures carry technical text such
- * as a status line or a network error.
- */
+/** Translates upload errors by code and uses the localized fallback for unrecognized errors. */
 export function uploadErrorMessage(error: unknown, fallback: string, t: (key: string) => string): string {
   const key = apiErrorKey(error);
-  if (key) return t(key);
-  if (error instanceof Error && (error as { status?: unknown }).status === 400 && error.message) {
-    return error.message;
-  }
-  return fallback;
+  return key ? t(key) : fallback;
 }

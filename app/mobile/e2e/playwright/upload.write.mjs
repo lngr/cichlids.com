@@ -1,6 +1,6 @@
 // Story: TASK-3.21
 // Logs in as the local dev user from the gallery's upload button, uploads photos and checks the
-// whole flow on the web: a file that is not an image shows the API's error message, a discarded
+// whole flow on the web: a file that is not an image shows a localized error, a discarded
 // draft is deleted, and leaving the screen without publishing keeps the draft, which the Me tab
 // lists under the "Untitled" label. A draft opened from that list resumes on the upload screen and
 // publishes from there, and deleting a draft from the list removes it. A draft that has a title,
@@ -127,7 +127,7 @@ try {
   const error = byTestId(page, "upload-error");
   await error.waitFor({ timeout: 20000 });
   const errorText = (await error.textContent())?.trim() ?? "";
-  if (!errorText.includes("not image/jpeg")) throw new Error(`Expected the API's error message, got "${errorText}"`);
+  if (errorText !== "The upload failed. Please try again.") throw new Error(`Expected the localized upload error, got "${errorText}"`);
   await byTestId(page, "upload-retry").waitFor({ timeout: 5000 });
   if ((await preview.count()) !== 0) throw new Error("A preview is visible after a rejected upload");
   console.log(`A non-image upload shows "${errorText}"`);

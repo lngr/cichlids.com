@@ -63,7 +63,25 @@ function uiViolations(source: string): string[] {
       if (value && ts.isStringLiteral(value) && /\p{L}/u.test(value.text)) problems.push(value.text);
     }
     if (ts.isPropertyAssignment(node) && /^(title|label|placeholder|accessibilityLabel|message)$/.test(node.name.getText(file)) && ts.isStringLiteral(node.initializer) && /\p{L}/u.test(node.initializer.text)) problems.push(node.initializer.text);
-    if (ts.isJsxExpression(node) && node.expression && ts.isStringLiteral(node.expression) && /\p{L}/u.test(node.expression.text)) problems.push(node.expression.text);
+    if (ts.isJsxExpression(node) && node.expression) {
+      function expressionLiterals(expression: ts.Node) {
+        if (ts.isJsxElement(expression) || ts.isJsxSelfClosingElement(expression) || ts.isCallExpression(expression) || ts.isArrowFunction(expression)) return;
+        if (ts.isConditionalExpression(expression)) {
+          expressionLiterals(expression.whenTrue);
+          expressionLiterals(expression.whenFalse);
+          return;
+        }
+        if (ts.isBinaryExpression(expression)) {
+          if ([ts.SyntaxKind.PlusToken, ts.SyntaxKind.BarBarToken, ts.SyntaxKind.QuestionQuestionToken].includes(expression.operatorToken.kind)) expressionLiterals(expression.left);
+          if ([ts.SyntaxKind.PlusToken, ts.SyntaxKind.BarBarToken, ts.SyntaxKind.QuestionQuestionToken, ts.SyntaxKind.AmpersandAmpersandToken].includes(expression.operatorToken.kind)) expressionLiterals(expression.right);
+          return;
+        }
+        if (ts.isStringLiteral(expression) && /\p{L}/u.test(expression.text)) problems.push(expression.text);
+        if ((ts.isTemplateHead(expression) || ts.isTemplateMiddle(expression) || ts.isTemplateTail(expression) || ts.isNoSubstitutionTemplateLiteral(expression)) && /\p{L}/u.test(expression.text)) problems.push(expression.text);
+        ts.forEachChild(expression, expressionLiterals);
+      }
+      if (ts.isJsxElement(node.parent) || ts.isJsxFragment(node.parent)) expressionLiterals(node.expression);
+    }
     if (ts.isPropertyAssignment(node) && /^(left|right|marginLeft|marginRight|paddingLeft|paddingRight|borderTopLeftRadius|borderTopRightRadius)$/.test(node.name.getText(file))) problems.push(node.name.getText(file));
     ts.forEachChild(node, visit);
   }
@@ -77,6 +95,8 @@ it("detects visible literals and physical layout properties", () => {
   expect(uiViolations('<Text>Hello</Text>')).toEqual(["Hello"]);
   expect(uiViolations('<Button label="Hello" />')).toEqual(["Hello"]);
   expect(uiViolations('<Text>{"Hello"}</Text>')).toEqual(["Hello"]);
+  expect(uiViolations('<Text>{ready ? "Hello" : t("common.loading")}</Text>')).toEqual(["Hello"]);
+  expect(uiViolations('<Text>{`Hello ${name}`}</Text>')).toEqual(["Hello "]);
   expect(uiViolations('const style = { marginLeft: 2 };')).toEqual(["marginLeft"]);
 });
 it("screens and shared components use translated text and logical layout properties", () => {

@@ -1,3 +1,4 @@
+import { translateApiError } from "../../../src/lib/apiErrors";
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
@@ -39,7 +40,7 @@ export default function TankDetailScreen() {
         setTank(detail);
         navigation.setOptions({ title: detail.title });
       })
-      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : t("common.loadError")))
+      .catch((err) => !cancelled && setError(translateApiError(err, t, "common.loadError")))
       .finally(() => !cancelled && setLoading(false));
     return () => {
       cancelled = true;
@@ -64,11 +65,11 @@ export default function TankDetailScreen() {
   if (error || !tank) return <ErrorView message={error ?? t("tanks.detail.notFound")} />;
 
   const dimensions = tank.dimensions
-    ? `${tank.dimensions.width ?? "?"} × ${tank.dimensions.height ?? "?"} × ${tank.dimensions.depth ?? "?"} ${tank.dimensions.unit ?? ""}`
+    ? t("tanks.detail.dimensionValue", { width: tank.dimensions.width ?? t("common.unknownValue"), height: tank.dimensions.height ?? t("common.unknownValue"), depth: tank.dimensions.depth ?? t("common.unknownValue"), unit: tank.dimensions.unit ?? "" })
     : null;
   const water = tank.waterValues;
   const waterSummary = water
-    ? [water.ph && `pH ${water.ph}`, water.kh && `KH ${water.kh}`, water.gh && `GH ${water.gh}`].filter(Boolean).join(" · ")
+    ? [water.ph && t("tanks.detail.waterValue", { label: t("species.detail.ph"), value: water.ph }), water.kh && t("tanks.detail.waterValue", { label: t("species.detail.kh"), value: water.kh }), water.gh && t("tanks.detail.waterValue", { label: t("species.detail.gh"), value: water.gh })].filter(Boolean).join(" · ")
     : null;
 
   return (

@@ -46,9 +46,13 @@ try {
   async function compareCards(kind, cardId) {
     const expected = await get(`profiles/${profileId}/${kind}?limit=100`);
     assert.ok(expected.total > 20);
+    await page.mouse.move(195, 650);
     for (let attempt = 0; attempt < 40; attempt++) {
       if (await byTestId(page, cardId).count() === expected.total) break;
-      await page.mouse.wheel(0, 1600);
+      await byTestId(page, cardId).last().scrollIntoViewIfNeeded();
+      await page.mouse.wheel(0, -500);
+      await page.waitForTimeout(100);
+      await page.mouse.wheel(0, 2000);
       await page.waitForTimeout(150);
     }
     const labels = await byTestId(page, cardId).evaluateAll((cards) => cards.map((card) => card.getAttribute("aria-label")));
