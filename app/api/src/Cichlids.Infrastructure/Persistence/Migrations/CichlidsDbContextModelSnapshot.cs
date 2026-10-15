@@ -207,6 +207,64 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.CarePlanRule", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("boolean")
+                        .HasColumnName("enabled");
+
+                    b.Property<string>("Kind")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("kind");
+
+                    b.Property<string>("ReasonCode")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("reason_code");
+
+                    b.Property<string>("ReasonParametersJson")
+                        .HasColumnType("jsonb")
+                        .HasColumnName("reason_parameters_json");
+
+                    b.Property<int>("RhythmDays")
+                        .HasColumnType("integer")
+                        .HasColumnName("rhythm_days");
+
+                    b.Property<long>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id")
+                        .HasName("pk_care_plan_rule");
+
+                    b.HasIndex("TankId", "Kind")
+                        .IsUnique()
+                        .HasDatabaseName("ix_care_plan_rule_tank_id_kind");
+
+                    b.ToTable("care_plan_rule", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_care_plan_kind", "kind IN ('water_change', 'measurement')");
+
+                            t.HasCheckConstraint("ck_care_plan_reason", "reason_code ~ '^[a-z][a-z0-9_]{0,63}$'");
+
+                            t.HasCheckConstraint("ck_care_plan_reason_parameters", "reason_parameters_json IS NULL OR jsonb_typeof(reason_parameters_json) = 'object'");
+
+                            t.HasCheckConstraint("ck_care_plan_rhythm", "rhythm_days BETWEEN 1 AND 90");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
                 {
                     b.Property<long>("Id")
@@ -1840,6 +1898,16 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_care_measurement_value_care_entry_care_entry_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.CarePlanRule", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_plan_rule_tanks_tank_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
