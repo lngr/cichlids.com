@@ -1,3 +1,4 @@
+import { TankMeasurements } from "../../../src/units/TankMeasurements";
 import { translateApiError } from "../../../src/lib/apiErrors";
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
@@ -64,9 +65,6 @@ export default function TankDetailScreen() {
   if (loading) return <LoadingView label={t("tanks.detail.loading")} />;
   if (error || !tank) return <ErrorView message={error ?? t("tanks.detail.notFound")} />;
 
-  const dimensions = tank.dimensions
-    ? t("tanks.detail.dimensionValue", { width: tank.dimensions.width ?? t("common.unknownValue"), height: tank.dimensions.height ?? t("common.unknownValue"), depth: tank.dimensions.depth ?? t("common.unknownValue"), unit: tank.dimensions.unit ?? "" })
-    : null;
   const water = tank.waterValues;
   const waterSummary = water
     ? [water.ph && t("tanks.detail.waterValue", { label: t("species.detail.ph"), value: water.ph }), water.kh && t("tanks.detail.waterValue", { label: t("species.detail.kh"), value: water.kh }), water.gh && t("tanks.detail.waterValue", { label: t("species.detail.gh"), value: water.gh })].filter(Boolean).join(" · ")
@@ -99,7 +97,7 @@ export default function TankDetailScreen() {
             ) : null}
 
             <Text testID="tank-datasheet" style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20, marginBottom: 4 }]}>{t("tanks.detail.datasheet")}</Text>
-            <DataRow label={t("tanks.detail.dimensions")} value={dimensions} />
+            <TankMeasurements tank={tank} />
             <DataRow label={t("tanks.detail.waterValues")} value={waterSummary} />
             <DataRow label={t("tanks.detail.substrate")} value={tank.gravel} />
             <DataRow label={t("tanks.detail.planting")} value={tank.plants} />

@@ -1,3 +1,4 @@
+import { UnitsSettings } from "../units/UnitsSettings";
 import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { useTranslation } from "react-i18next";
@@ -26,7 +27,8 @@ export function LanguageSettings() {
     finally { setBusy(false); }
   }
 
-  return <View style={{ padding: theme.space[4], gap: theme.space[2], alignSelf: "stretch" }}>
+  return <>
+  <View style={{ padding: theme.space[4], gap: theme.space[2], alignSelf: "stretch" }}>
     <Pressable testID="language-settings-toggle" accessibilityRole="button" accessibilityState={{ expanded }} onPress={() => setExpanded(!expanded)} style={{ minHeight: 48, justifyContent: "center" }}>
       <Text style={[theme.type.bodyStrong, { color: theme.colors.fg }]}>{t("settings.language")}</Text>
       <Text style={[theme.type.body, { color: theme.colors.muted }]}>{selected ? t(`settings.languages.${selected}`) : t("settings.device")}</Text>
@@ -40,5 +42,7 @@ export function LanguageSettings() {
       {__DEV__ ? <Button testID="pseudo-rtl-toggle" variant="secondary" label={t("settings.pseudoRTL")} onPress={() => { void setPseudoRTLPreference(!rtl).then(() => setRTL(!rtl)).catch(() => setError(true)); }} /> : null}
     </View> : null}
     {error ? <Text accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>{t("settings.saveError")}</Text> : null}
-  </View>;
+  </View>
+  <UnitsSettings />
+  </>;
 }
