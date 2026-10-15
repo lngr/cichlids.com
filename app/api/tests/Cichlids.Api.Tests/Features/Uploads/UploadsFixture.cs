@@ -142,6 +142,15 @@ public sealed class UploadsFixture : IAsyncLifetime
         await _rustfs.DisposeAsync();
     }
 
+    public WebApplicationFactory<Program> CreateOverlayHost(string writePrefix) =>
+        _factory.WithWebHostBuilder(builder =>
+            builder.ConfigureAppConfiguration((_, configuration) =>
+                configuration.AddInMemoryCollection(new Dictionary<string, string?>
+                {
+                    ["ObjectStorage:ReadFallbackPrefix"] = "golden/v1/media/",
+                    ["ObjectStorage:WritePrefix"] = writePrefix,
+                })));
+
     public CichlidsDbContext CreateDbContext()
     {
         var optionsBuilder = new DbContextOptionsBuilder<CichlidsDbContext>()

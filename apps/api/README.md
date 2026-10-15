@@ -61,7 +61,7 @@ independent values for production.
 | `api-slugs` | `secret` | Operator supplies the stable environment slug secret as `CICHLIDS_SLUG_SECRET`. Share it with any import workload for this environment. |
 | `api-data-protection` | `key-<uuid>.xml` files | Operator supplies a valid ASP.NET Core Data Protection key ring. All files mount read-only at `/keys`. |
 | `keycloak-web-bff` | `client-secret` | Use the same confidential client credential as the Keycloak realm apply for `cichlids-web-bff`. Staging enables web login. |
-| `api-media` | `access-key`, `secret-key` | Operator supplies the application credential scoped to this environment's media bucket. |
+| `api-media` | `access-key`, `secret-key` | Operator supplies the application credential scoped to environment writes and golden media reads. |
 
 [CloudNativePG](https://cloudnative-pg.io/docs/devel/applications/) also supplies
 `username` and `password` in `postgres-app`; the
@@ -110,10 +110,13 @@ requires no separate webhook Secret.
    managed database Application, so provision the database before syncing the API.
 2. Provision the Secrets above and apply the Keycloak realm. Confirm public DNS
    for `staging.cichlids.com` and `auth.staging.cichlids.com` reaches Traefik.
-3. Set the environment media bucket and its public base URL in
-   `apps/api/overlays/staging/settings.yaml`. Confirm the endpoint and region
-   match the provisioned media store. The bucket starts with synthetic media;
-   data provisioning has its own workflow.
+3. Configure the shared non-production media bucket and its tailnet gateway URL
+   in `apps/api/overlays/staging/settings.yaml`. Confirm endpoint and region match
+   the provisioned media store. Set `ObjectStorage__ReadFallbackPrefix` to
+   `golden/<version>/media/`, using the database restore Job's `GOLDEN_VERSION`
+   and `GOLDEN_BUCKET`. The `unpublished` value requires a published version.
+   `ObjectStorage__WritePrefix=environments/staging/` isolates staging writes.
+   See the [golden snapshot procedure](../../tools/golden-snapshot/README.md).
 4. Set each `images[].digest` in the API and web staging kustomizations to a
    published `sha256` digest. Set `images[].newName` if the registry repository
    differs from `ghcr.io/lngr/cichlids-api`, `cichlids-migration` or `cichlids-web`.
@@ -176,6 +179,24 @@ the web Ingress, disable its automated sync, remove the old placeholder Ingress
 and retire that Application and its stateless resources explicitly. Confirm the
 production and preview Applications are unaffected. Only one Ingress may own
 `staging.cichlids.com` with a catch-all route.
+
+## Media overlay configuration
+
+`ObjectStorage:ReadFallbackPrefix` enables read-only fallback in the configured
+bucket. Reads, HEAD, existence and size checks use the environment object first,
+then the golden object on a missing key. Public URLs include the resolved prefix;
+URL construction performs metadata requests when fallback is enabled. Provider
+errors propagate. `ObjectStorage:WritePrefix` scopes uploads, deletes and listings
+to the environment; discards and expired draft cleanup use this same scope.
+Both options default to empty. Production uses those defaults.
+
+Provision the API credential with reads on the selected golden media prefix and
+reads/writes/deletes on `environments/staging/` only. List permissions must allow
+the environment prefix. The bucket stays private. Its tailnet-only delivery gateway
+must serve both golden variants and environment variants at the URLs built from
+`ObjectStorage:PublicBaseUrl`. API configuration does not create bucket policies
+or gateway routes. Prefixes for previews use `environments/pr-<number>/` and the
+same versioned golden subset. Shared media survives environment cleanup.
 
 ## Capacity
 

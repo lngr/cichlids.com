@@ -188,39 +188,47 @@ Operator activation order:
    ordinary Job to confirm the matching marker. A changed golden version never
    refreshes an existing database automatically.
 
-## Media overlay and API follow-up
+## Media overlay
 
-The intended configuration contract is:
+The API uses one shared non-production bucket. The publisher stores the curated
+subset under `golden/<version>/media/`; each environment writes its own prefix.
+The database stores logical keys such as `variants/thumb/media-1.jpg`.
 
 | Setting | Meaning |
 | --- | --- |
-| `ObjectStorage:GoldenBucket` | Private bucket with the golden subset |
-| `ObjectStorage:GoldenReadPrefix` | `golden/<version>/media/` |
-| `ObjectStorage:WritePrefix` | `environments/staging/` or `environments/pr-<number>/` |
-| `ObjectStorage:PublicBaseUrl` | Tailnet-only media gateway with overlay resolution |
+| `ObjectStorage:Bucket` | Bucket containing the golden subset and environment objects |
+| `ObjectStorage:ReadFallbackPrefix` | `golden/<version>/media/`; empty by default |
+| `ObjectStorage:WritePrefix` | `environments/staging/` or `environments/pr-<number>/`; empty by default |
+| `ObjectStorage:PublicBaseUrl` | Tailnet-only media gateway base URL for this bucket |
 
-These overlay settings require an API change. The existing `ObjectStorage`
-options expose one bucket and public URL, with no read/write prefix routing.
-`S3ObjectStore` accesses a single key directly and constructs public URLs by
-appending that key. Configuration alone cannot express the overlay.
+Reads, HEAD, existence and size checks consult the environment key first. A
+missing object permits a lookup under the golden prefix. Authorization and
+provider failures propagate. Public URL generation uses the same lookup order
+and URL-encodes the resolved key. With fallback enabled the synchronous URL
+builder performs metadata requests; with the default empty value it composes
+the URL without querying S3. If both objects are missing it returns the environment
+URL, whose delivery path reports the missing object.
 
-The API follow-up needs an object-store wrapper that resolves reads/HEAD/exists/
-size against the environment prefix first, then the read-only golden prefix.
-Only a missing object permits fallback; authorization and provider failures
-propagate. Uploads and deletes target the environment prefix exclusively.
-Listings and cleanup must exclude the golden base. A shared base object cannot
-be deleted by the environment; if deletion must hide it, use an environment
-metadata tombstone. Public URL generation and the tailnet gateway must implement
-the same lookup order. Upload-generated variant keys must use this routing.
-Disable bucket creation and anonymous public-read policy configuration for this
-private store. Separate reader and upload identities enforce permissions. Each
-preview teardown removes only `environments/pr-<number>/`, through an operator or
-scoped cleanup worker; the database Job has no media deletion permission.
+Uploads and deletes use the environment prefix. Discard and draft cleanup delete
+only environment objects, including when a golden object has the same logical
+key. Listings return logical keys from the environment and exclude golden keys.
+Direct writes and deletes to `golden/` and the configured fallback prefix are
+rejected when fallback is enabled. Deleting an environment object exposes any
+matching golden object; hiding a shared object requires database visibility rules.
 
-API code is outside this tool's scope. Until that follow-up is deployed, staging
-and previews can restore the database but cannot serve the intended overlay or
-accept uploads through it. Tailnet-only routing and upload-prefix cleanup are
-separate deployment work. The golden subset remains private.
+Set staging's fallback version to the same `GOLDEN_VERSION` used by the database
+restore Job. The checked-in `golden/unpublished/media/` requires a published
+version before activation. Configure `ObjectStorage:Bucket` to match
+`GOLDEN_BUCKET`. Production leaves both prefix options empty.
+
+The operator provisions bucket permissions: the API identity may read its own
+prefix and the selected golden media prefix, and may put/delete only under its
+own environment prefix. Bucket listing must be scoped to the environment prefix.
+The publisher has separate credentials. The media gateway must serve both resolved
+prefixes through the tailnet and preserve private bucket access. Bucket creation
+and anonymous public-read policy setup belong to operator provisioning; the API
+does not invoke them. Each preview teardown removes only its environment prefix.
+Live permissions and gateway routing require deployment verification.
 
 ## Verification
 
