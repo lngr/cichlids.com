@@ -1,12 +1,15 @@
 ---
 id: TASK-4.5
 title: Onboarding with Do you have a tank
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-15 08:46'
-updated_date: '2026-10-15 09:55'
+updated_date: '2026-10-15 11:27'
 labels: []
 dependencies: []
+references:
+  - app/mobile/e2e/playwright/00-onboarding.write.mjs
+  - app/api/tests/Cichlids.Api.Tests/Features/Me/OnboardingTests.cs
 parent_task_id: TASK-4
 priority: high
 ordinal: 76000
@@ -54,4 +57,13 @@ interests. The first entry is rewarded at once.
   of the recognition logic that slice 5 extends.
 - A direct next step: "Add your first photo".
 - No points and no leaderboards.
+
+### Implementation (2026-10-15)
+- Region enum on tanks (EF migration TankRegionsAndOnboarding maps legacy categories; ETL writes the region); americas_unassigned is refused for new tanks and refined by the owner through PUT /api/tanks/{id}/region.
+- Profile: interests (set of regions without mixed), badges (first_tank, returned) and onboarding completion; POST /api/me/onboarding (exactly one path: new tank, legacy takeover, interests or skip), GET /api/me/legacy-tanks, PUT /api/me/interests. Every write runs in one transaction with outbox events (tank.created, tank.adopted, tank.region_refined, profile.onboarding_completed, profile.interests_updated) and coded problems.
+- Only published legacy tanks can be taken over; a legacy tank hidden in the archive is neither listed nor published by the takeover.
+- App: onboarding gate after sign-in, standard sizes per units region (US gallons and common metric sizes with dimensions in app/mobile/src/onboarding/standardTanks.ts), custom size, legacy takeover with one-tap refinement, interest choice, calm reward with badge and the button to add the first photo; texts in all 11 catalogs.
+- Verification on the combined state of TASK-4.5 and TASK-4.6: .NET 325/476/342 green with 0 warnings, client-core 26, mobile 241, both typechecks, all 19 write e2e specs green.
+- Tests: app/api/tests/Cichlids.Api.Tests/Features/Me/OnboardingTests.cs, app/api/tests/Cichlids.Infrastructure.Tests/Persistence/TankRegionsMigrationTests.cs, app/mobile/src/onboarding/standardTanks.test.ts, app/mobile/e2e/playwright/00-onboarding.write.mjs (AC #1 and legacy takeover).
+- Not verified: native Android and iOS runs, remote CI.
 <!-- SECTION:NOTES:END -->

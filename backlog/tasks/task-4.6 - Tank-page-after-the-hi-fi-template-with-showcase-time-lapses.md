@@ -1,12 +1,15 @@
 ---
 id: TASK-4.6
 title: Tank page after the hi-fi template with showcase time-lapses
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-15 08:46'
-updated_date: '2026-10-15 09:55'
+updated_date: '2026-10-15 11:27'
 labels: []
 dependencies: []
+references:
+  - app/mobile/e2e/playwright/tank-story.write.mjs
+  - app/api/tests/Cichlids.Api.Tests/Features/Tanks/TankTimeLapseTests.cs
 parent_task_id: TASK-4
 priority: high
 ordinal: 77000
@@ -45,4 +48,12 @@ time-lapses built from the archive photo series of a tank.
   different months; the best rated of those.
 - View counts do not count (distorted by crawlers in the legacy data); tanks and pictures of
   deleted or suspended members are excluded.
+
+### Implementation (2026-10-15)
+- GET /api/tanks/{id}/time-lapse returns the photo series of a tank (tank media, main image and photos of published posts, oldest first, with variants) and the story posts, plus isShowcase (at least 8 photos from 8 different months spanning at least one year, owner a visible member); hidden tanks and suspended owners give a coded 404.
+- The archive holds no capture dates, so the series orders by the publication date of the post or the upload date (takenAt stays null).
+- App: tank page after the hi-fi template with header slot for the region (refinement control of TASK-4.5), story and care views through an XState machine (tankStoryMachine in client-core), time-lapse with cross-fade, play and pause, scrubbing with accessibility actions, reduced motion respected, showcase mark; care view shows the existing water and equipment texts and an empty state for logs.
+- Verification on the combined state: see TASK-4.5 (all suites and all 19 write e2e specs green).
+- Tests: app/api/tests/Cichlids.Api.Tests/Features/Tanks/TankTimeLapseTests.cs, app/client-core/src/tankStory.test.ts, app/client-core/src/tankSeries.test.ts, app/mobile/e2e/playwright/tank-story.write.mjs.
+- Not verified: native Android and iOS runs, remote CI.
 <!-- SECTION:NOTES:END -->
