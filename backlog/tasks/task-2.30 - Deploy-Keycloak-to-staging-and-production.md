@@ -4,7 +4,7 @@ title: Deploy Keycloak to staging and production
 status: In Review
 assignee: []
 created_date: '2026-10-12 06:41'
-updated_date: '2026-10-14 09:56'
+updated_date: '2026-10-15 06:30'
 labels: []
 dependencies:
   - TASK-2.4
@@ -124,4 +124,10 @@ Keycloak runs in the cluster for staging and production. Each environment uses i
 ### Open
 - Mail provider for SMTP (AC #3).
 - Proposed ADR-0025 wording for the apply mechanism (project owner).
+
+### Mail provider (decided by the project owner)
+- Mailgun, plan Flex (1,000 messages per month free, then about 0.002 USD per message), sending
+  domain in the EU region; Keycloak reaches it through the generic SMTP secret `keycloak-smtp`, so
+  the provider stays replaceable. The DNS records of the sending domain (SPF, DKIM, MX, DMARC) go
+  into the platform tier once Mailgun shows them.
 <!-- SECTION:NOTES:END -->
