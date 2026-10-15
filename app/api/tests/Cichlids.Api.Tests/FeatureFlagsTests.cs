@@ -7,16 +7,23 @@ namespace Cichlids.Api.Tests;
 
 public sealed class FeatureFlagsTests
 {
+    private static WebApplicationFactory<Program> CreateFactory(string name, string? value) =>
+        new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
+        {
+            builder.UseSetting("ConnectionStrings:Cichlids", "Host=127.0.0.1;Port=1;Database=feature_flags_test;Username=test;Password=test");
+            builder.UseSetting("DraftCleanup:Enabled", "false");
+            builder.UseSetting("WebSessionCleanup:Enabled", "false");
+            builder.UseSetting("OutboxDispatcher:Enabled", "false");
+            if (value is not null) builder.UseSetting($"FeatureFlags:{name}", value);
+        });
+
     [Theory]
     [InlineData(null, false)]
     [InlineData("false", false)]
     [InlineData("true", true)]
     public async Task Anonymous_endpoint_returns_only_known_flags_and_short_public_cache(string? configured, bool expected)
     {
-        await using var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
-        {
-            if (configured is not null) builder.UseSetting("FeatureFlags:discover-activity", configured);
-        });
+        await using var factory = CreateFactory("discover-activity", configured);
         using var client = factory.CreateClient();
         using var response = await client.GetAsync("/api/feature-flags");
 
@@ -34,8 +41,7 @@ public sealed class FeatureFlagsTests
     [InlineData("discover-activity:child", "true")]
     public async Task Invalid_configuration_refuses_startup(string name, string value)
     {
-        await using var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
-            builder.UseSetting($"FeatureFlags:{name}", value));
+        await using var factory = CreateFactory(name, value);
 
         var exception = Assert.ThrowsAny<Exception>(() => factory.CreateClient());
         Assert.Contains("FeatureFlags", exception.ToString());
