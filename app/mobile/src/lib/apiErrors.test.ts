@@ -1,7 +1,6 @@
 import { ApiError } from "@cichlids/client-core";
 import { describe, expect, it } from "vitest";
-import de from "../i18n/de.json";
-import en from "../i18n/en.json";
+import { TRANSLATIONS } from "../i18n/catalogues";
 import { API_ERROR_CODES, apiErrorKey, translateApiError } from "./apiErrors";
 
 describe("apiErrorKey", () => {
@@ -12,6 +11,13 @@ describe("apiErrorKey", () => {
     expect(apiErrorKey({ code: "draft_limit_reached" })).toBe("errors.draft_limit_reached");
     expect(apiErrorKey({ code: "upload_rate_limited" })).toBe("errors.upload_rate_limited");
     expect(apiErrorKey({ code: "request_too_large" })).toBe("errors.request_too_large");
+  });
+
+  it.each(["tank_title_invalid", "tank_dimensions_invalid", "tank_volume_invalid"])("translates %s", (code) => {
+    expect(apiErrorKey(new ApiError("Bad Request", 400, code))).toBe(`errors.${code}`);
+    for (const resource of Object.values(TRANSLATIONS)) {
+      expect((resource.errors as Record<string, string>)[code], code).toBeTruthy();
+    }
   });
 
   it("returns null for unknown codes, missing codes and non-objects", () => {
@@ -57,10 +63,7 @@ describe("translateApiError", () => {
 });
 
 describe("API error translations", () => {
-  it.each([
-    ["en", en],
-    ["de", de],
-  ])("%s translates every known code", (_name, resource) => {
+  it.each(Object.entries(TRANSLATIONS))("%s translates every known code", (_name, resource) => {
     const errors = (resource as { errors?: Record<string, string> }).errors ?? {};
     for (const code of API_ERROR_CODES) {
       expect(errors[code], code).toBeTruthy();

@@ -8,6 +8,9 @@ export const API_ERROR_CODES = [
   "draft_limit_reached",
   "upload_rate_limited",
   "request_too_large",
+  "tank_title_invalid",
+  "tank_dimensions_invalid",
+  "tank_volume_invalid",
 ] as const;
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];
