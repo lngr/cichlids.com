@@ -253,7 +253,13 @@
     "care_kind_invalid": "Su değişimini seçin.",
     "care_amount_invalid": "100% veya 1.000.000 hacim birimine kadar pozitif bir miktar girin.",
     "care_request_invalid": "Miktarı, birimi ve zamanı kontrol edin.",
-    "care_auth_required": "Bakımı kaydetmek için giriş yapın."
+    "care_auth_required": "Bakımı kaydetmek için giriş yapın.",
+    "care_measurement_invalid": "Bir ölçüm için bir ila on farklı parametre gir.",
+    "care_parameter_invalid": "Bu parametre kullanılamıyor.",
+    "care_unit_invalid": "Bu birim parametreye uymuyor.",
+    "care_value_invalid": "Değer makul aralığın dışında.",
+    "care_origin_invalid": "Test kiti, ölçüm cihazı veya prob seç.",
+    "care_range_invalid": "Zaman aralığının başlangıcı bitişinden önce olmalı."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -428,6 +434,53 @@
     "more": "Daha fazla yükle",
     "chooseTank": "Akvaryumunuzu seçin",
     "noTanks": "Bakımı kaydetmek için bir akvaryum oluşturun.",
-    "openTank": "Akvaryumu aç"
+    "openTank": "Akvaryumu aç",
+    "title": "Bakım",
+    "measure": {
+      "button": "Ölç",
+      "formTitle": "Ölçüm kaydet",
+      "editTitle": "Ölçümü düzenle",
+      "hint": "Ölçtüğünü gir, gerisini boş bırak.",
+      "more": "Daha fazla parametre",
+      "origin": "Kaynak",
+      "originNone": "Belirtilmedi",
+      "save": "Ölçümü kaydet",
+      "delete": "Ölçümü sil",
+      "entry": "Ölçüm",
+      "chartTitle": "Zaman içinde su değerleri",
+      "chartEmpty": "Grafiği görmek için bir ölçüm kaydet.",
+      "summary": "{{parameter}}: son değer {{latest}}, değer sayısı {{count}}",
+      "lowest": "En düşük: {{value}}",
+      "highest": "En yüksek: {{value}}",
+      "valuesList": "{{parameter}} değerleri",
+      "errorInvalid": "Bir sayı gir.",
+      "errorRange": "Bu değer makul aralığın dışında.",
+      "parameters": {
+        "temperature": "Sıcaklık",
+        "ph": "pH",
+        "kh": "Karbonat sertliği (KH)",
+        "gh": "Genel sertlik (GH)",
+        "no2": "Nitrit (NO2)",
+        "no3": "Nitrat (NO3)",
+        "nh4": "Amonyum (NH4)",
+        "po4": "Fosfat (PO4)",
+        "conductivity": "İletkenlik",
+        "tds": "Toplam çözünmüş madde (TDS)"
+      },
+      "origins": {
+        "test_kit": "Test kiti",
+        "meter": "Ölçüm cihazı",
+        "probe": "Prob"
+      },
+      "units": {
+        "celsius": "°C",
+        "fahrenheit": "°F",
+        "dgh": "°dGH",
+        "dkh": "°dKH",
+        "ppm": "ppm",
+        "mg_per_liter": "mg/l",
+        "microsiemens_per_cm": "µS/cm"
+      }
+    }
   }
 }

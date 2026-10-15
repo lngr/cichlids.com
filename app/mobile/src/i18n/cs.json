@@ -269,7 +269,13 @@
     "care_kind_invalid": "Vyberte výměnu vody.",
     "care_amount_invalid": "Zadejte kladné množství, nejvýše 100% nebo 1 000 000 jednotek objemu.",
     "care_request_invalid": "Zkontrolujte množství, jednotku a čas.",
-    "care_auth_required": "Přihlaste se pro záznam péče."
+    "care_auth_required": "Přihlaste se pro záznam péče.",
+    "care_measurement_invalid": "Zadej pro měření jeden až deset různých parametrů.",
+    "care_parameter_invalid": "Tento parametr není k dispozici.",
+    "care_unit_invalid": "Tato jednotka k parametru nepatří.",
+    "care_value_invalid": "Hodnota je mimo věrohodný rozsah.",
+    "care_origin_invalid": "Vyber test, měřicí přístroj nebo sondu.",
+    "care_range_invalid": "Začátek období musí být před jeho koncem."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -448,6 +454,53 @@
     "more": "Načíst další",
     "chooseTank": "Vyberte své akvárium",
     "noTanks": "Vytvořte akvárium pro záznam péče.",
-    "openTank": "Otevřít akvárium"
+    "openTank": "Otevřít akvárium",
+    "title": "Péče",
+    "measure": {
+      "button": "Změřit",
+      "formTitle": "Zapsat měření",
+      "editTitle": "Upravit měření",
+      "hint": "Zadej, co jsi změřil, a zbytek nech prázdný.",
+      "more": "Další parametry",
+      "origin": "Zdroj",
+      "originNone": "Neuvedeno",
+      "save": "Uložit měření",
+      "delete": "Smazat měření",
+      "entry": "Měření",
+      "chartTitle": "Hodnoty vody v čase",
+      "chartEmpty": "Zapiš měření, aby se zobrazil graf.",
+      "summary": "{{parameter}}: poslední hodnota {{latest}}, počet hodnot {{count}}",
+      "lowest": "Nejnižší: {{value}}",
+      "highest": "Nejvyšší: {{value}}",
+      "valuesList": "Hodnoty: {{parameter}}",
+      "errorInvalid": "Zadej číslo.",
+      "errorRange": "Tato hodnota je mimo věrohodný rozsah.",
+      "parameters": {
+        "temperature": "Teplota",
+        "ph": "pH",
+        "kh": "Uhličitanová tvrdost (KH)",
+        "gh": "Celková tvrdost (GH)",
+        "no2": "Dusitany (NO2)",
+        "no3": "Dusičnany (NO3)",
+        "nh4": "Amonium (NH4)",
+        "po4": "Fosforečnany (PO4)",
+        "conductivity": "Vodivost",
+        "tds": "Rozpuštěné látky (TDS)"
+      },
+      "origins": {
+        "test_kit": "Test",
+        "meter": "Měřicí přístroj",
+        "probe": "Sonda"
+      },
+      "units": {
+        "celsius": "°C",
+        "fahrenheit": "°F",
+        "dgh": "°dGH",
+        "dkh": "°dKH",
+        "ppm": "ppm",
+        "mg_per_liter": "mg/l",
+        "microsiemens_per_cm": "µS/cm"
+      }
+    }
   }
 }

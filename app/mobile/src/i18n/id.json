@@ -253,7 +253,13 @@
     "care_kind_invalid": "Pilih ganti air.",
     "care_amount_invalid": "Masukkan jumlah positif, hingga 100% atau 1.000.000 satuan volume.",
     "care_request_invalid": "Periksa jumlah, satuan, dan waktu.",
-    "care_auth_required": "Masuk untuk mencatat perawatan."
+    "care_auth_required": "Masuk untuk mencatat perawatan.",
+    "care_measurement_invalid": "Isi satu sampai sepuluh parameter berbeda untuk satu pengukuran.",
+    "care_parameter_invalid": "Parameter ini tidak tersedia.",
+    "care_unit_invalid": "Satuan ini tidak cocok dengan parameternya.",
+    "care_value_invalid": "Nilai di luar rentang yang masuk akal.",
+    "care_origin_invalid": "Pilih kit uji, alat ukur, atau probe.",
+    "care_range_invalid": "Awal rentang waktu harus sebelum akhirnya."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -426,6 +432,53 @@
     "more": "Muat lagi",
     "chooseTank": "Pilih akuarium Anda",
     "noTanks": "Buat akuarium untuk mulai mencatat perawatan.",
-    "openTank": "Buka akuarium"
+    "openTank": "Buka akuarium",
+    "title": "Perawatan",
+    "measure": {
+      "button": "Ukur",
+      "formTitle": "Catat pengukuran",
+      "editTitle": "Ubah pengukuran",
+      "hint": "Isi yang kamu ukur dan biarkan sisanya kosong.",
+      "more": "Parameter lainnya",
+      "origin": "Sumber",
+      "originNone": "Tidak disebutkan",
+      "save": "Simpan pengukuran",
+      "delete": "Hapus pengukuran",
+      "entry": "Pengukuran",
+      "chartTitle": "Nilai air dari waktu ke waktu",
+      "chartEmpty": "Catat pengukuran untuk melihat grafiknya.",
+      "summary": "{{parameter}}: nilai terakhir {{latest}}, jumlah nilai {{count}}",
+      "lowest": "Terendah: {{value}}",
+      "highest": "Tertinggi: {{value}}",
+      "valuesList": "Nilai {{parameter}}",
+      "errorInvalid": "Masukkan angka.",
+      "errorRange": "Nilai ini di luar rentang yang masuk akal.",
+      "parameters": {
+        "temperature": "Suhu",
+        "ph": "pH",
+        "kh": "Kesadahan karbonat (KH)",
+        "gh": "Kesadahan total (GH)",
+        "no2": "Nitrit (NO2)",
+        "no3": "Nitrat (NO3)",
+        "nh4": "Amonium (NH4)",
+        "po4": "Fosfat (PO4)",
+        "conductivity": "Daya hantar",
+        "tds": "Total padatan terlarut (TDS)"
+      },
+      "origins": {
+        "test_kit": "Kit uji",
+        "meter": "Alat ukur",
+        "probe": "Probe"
+      },
+      "units": {
+        "celsius": "°C",
+        "fahrenheit": "°F",
+        "dgh": "°dGH",
+        "dkh": "°dKH",
+        "ppm": "ppm",
+        "mg_per_liter": "mg/l",
+        "microsiemens_per_cm": "µS/cm"
+      }
+    }
   }
 }
