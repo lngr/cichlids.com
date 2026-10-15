@@ -9,6 +9,7 @@ export function Button({
   disabled = false,
   busy = false,
   testID,
+  accessibilityLabel,
 }: {
   label: string;
   onPress: () => void;
@@ -16,6 +17,7 @@ export function Button({
   disabled?: boolean;
   busy?: boolean;
   testID?: string;
+  accessibilityLabel?: string;
 }) {
   const theme = useTheme();
   const primary = variant === "primary";
@@ -27,7 +29,7 @@ export function Button({
       onPress={onPress}
       disabled={inactive}
       accessibilityRole="button"
-      accessibilityLabel={label}
+      accessibilityLabel={accessibilityLabel ?? label}
       accessibilityState={{ disabled: inactive, busy }}
       style={({ pressed }) => [
         styles.button,

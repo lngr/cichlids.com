@@ -9,7 +9,7 @@ import { measurementUnitSymbol } from "./measurementFormat";
 import type { CareStream } from "./useCareStream";
 
 /** The progressive form of a measurement: the common parameters first, more on demand, one source for all values. */
-export function MeasurementForm({ stream }: { stream: CareStream }) {
+export function MeasurementForm({ stream }: { stream: Pick<CareStream, "measure"> }) {
   const { t, i18n } = useTranslation();
   const theme = useTheme();
   const { state, send } = stream.measure;
