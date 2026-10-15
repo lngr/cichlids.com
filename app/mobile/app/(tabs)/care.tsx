@@ -33,7 +33,7 @@ function CarePickerContent({ selected }: { selected?: string }) {
     : apiClient.tanks.list({ user: profileId, offset, limit }), [profileId]);
   const list = usePagedList<TankListItem>(fetchPage, [profileId]);
   return <ScrollView style={{ backgroundColor: theme.colors.bg }} contentContainerStyle={{ padding: theme.space[4], gap: theme.space[3] }}>
-    <Text accessibilityRole="header" style={[theme.type.h1, { color: theme.colors.fg }]}>{t("care.waterChange")}</Text>
+    <Text accessibilityRole="header" style={[theme.type.h1, { color: theme.colors.fg }]}>{t("care.title")}</Text>
     {selected && profileId !== null ? <QuickCare tankId={Number(selected)} profileId={profileId} /> : <>
       <Text style={[theme.type.body, { color: theme.colors.fg }]}>{t("care.chooseTank")}</Text>
       {list.items.map(tank => <Button key={String(tank.id)} testID={`care-choose-${tank.id}`} variant="secondary" label={tank.title} onPress={() => router.push(`/care?tank=${tank.id}`)} />)}

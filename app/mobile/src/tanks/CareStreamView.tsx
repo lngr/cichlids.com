@@ -7,41 +7,60 @@ import { useTheme } from "../theme";
 import { useUnits } from "../units/useUnits";
 import { translateApiError } from "../lib/apiErrors";
 import { amountDraft, parseCareAmount, formatCareAmount, type AmountUnit } from "./careAmount";
+import { MeasurementForm } from "./MeasurementForm";
+import { MeasurementGraphs } from "./MeasurementGraphs";
+import { measurementLines } from "./measurementFormat";
 import type { CareStream } from "./useCareStream";
 
 export function CareStreamView({ stream }: { stream: CareStream }) {
   const { t, i18n } = useTranslation();
   const theme = useTheme();
+  const system = useUnits();
   const { state, send, list, entries, owner } = stream;
+  const measure = stream.measure.state;
+  const measuring = !measure.matches("idle");
   const text = { color: theme.colors.fg };
   const busy = state.matches("logging") || state.matches("undoing") || state.matches("saving") || state.matches("deleting");
   const editing = state.matches("editing") || state.matches("saving") || state.matches("deleting");
   return <View style={{ gap: theme.space[3] }}>
     <Text accessibilityRole="header" style={[theme.type.h2, text]}>{t("tankStory.logs")}</Text>
     {owner ? <>
-      <Button testID="care-water-change" label={t("care.waterChange")} busy={busy} disabled={editing} onPress={() => send({ type: "LOG" })} />
+      <Button testID="care-water-change" label={t("care.waterChange")} busy={busy} disabled={editing || measuring} onPress={() => send({ type: "LOG" })} />
+      <Button testID="care-measure" variant="secondary" label={t("care.measure.button")} disabled={busy || editing || measuring}
+        onPress={() => stream.measure.send({ type: "OPEN", system })} />
       <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("care.oneTap")}</Text>
       {state.matches("confirmed") ? <View testID="care-confirmation" style={{ gap: theme.space[2] }}>
         <Text accessibilityLiveRegion="polite" style={[theme.type.body, text]}>{t("care.logged")}</Text>
         <Button testID="care-undo" variant="secondary" label={t("care.undo")} onPress={() => send({ type: "UNDO" })} />
       </View> : null}
       {state.context.error && !editing ? <Text accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>{translateApiError(state.context.error, t, "common.loadError")}</Text> : null}
+      <MeasurementGraphs tankId={stream.tankId} revision={stream.revision} />
       {list.loading ? <Text style={[theme.type.body, text]}>{t("common.loading")}</Text> : null}
       {list.error ? <>
         <Text accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>{list.error}</Text>
         <Button variant="secondary" label={t("common.retry")} onPress={list.reload} />
       </> : null}
       {entries.map(entry => <View key={String(entry.id)} testID={`care-entry-${entry.id}`} style={{ paddingVertical: theme.space[3], gap: theme.space[2], borderBottomWidth: 1, borderColor: theme.colors.border }}>
-        <Text style={[theme.type.bodyStrong, text]}>{t("care.waterChange")}</Text>
+        <Text style={[theme.type.bodyStrong, text]}>{t(entry.kind === "measurement" ? "care.measure.entry" : "care.waterChange")}</Text>
         <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{new Intl.DateTimeFormat(i18n.language, { dateStyle: "medium", timeStyle: "short" }).format(new Date(entry.occurredAt))}</Text>
         {entry.amount ? <Text testID="care-entry-amount" style={[theme.type.body, text]}>{formatCareAmount(entry.amount, i18n.language)}</Text> : null}
-        <Button testID={`care-edit-${entry.id}`} variant="secondary" label={t(entry.amount ? "care.editAmount" : "care.addAmount")} disabled={busy || editing} onPress={() => send({ type: "EDIT", entry })} />
+        {measurementLines(entry, system, i18n.language).map(line => <Text key={line} testID="care-entry-value" style={[theme.type.body, text]}>{line}</Text>)}
+        {entry.kind === "measurement"
+          ? <Button testID={`care-edit-${entry.id}`} variant="secondary" label={t("care.measure.editTitle")} disabled={busy || editing || measuring} onPress={() => stream.measure.send({ type: "OPEN", system, entry })} />
+          : <Button testID={`care-edit-${entry.id}`} variant="secondary" label={t(entry.amount ? "care.editAmount" : "care.addAmount")} disabled={busy || editing || measuring} onPress={() => send({ type: "EDIT", entry })} />}
       </View>)}
       {list.hasMore ? <Button testID="care-more" variant="secondary" label={t("care.more")} busy={list.loadingMore} onPress={list.loadMore} /> : null}
       <Modal visible={editing} transparent animationType="slide" onRequestClose={() => send({ type: "CANCEL" })}>
         <View style={{ flex: 1, justifyContent: "flex-end", backgroundColor: theme.colors.bg }}>
           <ScrollView contentContainerStyle={{ padding: theme.space[6], gap: theme.space[4] }}>
             {state.context.entry && editing ? <AmountEditor key={String(state.context.entry.id)} entry={state.context.entry} stream={stream} /> : null}
+          </ScrollView>
+        </View>
+      </Modal>
+      <Modal visible={measuring} transparent animationType="slide" onRequestClose={() => stream.measure.send({ type: "CANCEL" })}>
+        <View style={{ flex: 1, justifyContent: "flex-end", backgroundColor: theme.colors.bg }}>
+          <ScrollView contentContainerStyle={{ padding: theme.space[6], gap: theme.space[4] }}>
+            {measuring ? <MeasurementForm key={String(measure.context.entry?.id ?? "new")} stream={stream} /> : null}
           </ScrollView>
         </View>
       </Modal>

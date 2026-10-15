@@ -16,6 +16,8 @@ import { TimeLapseScrubber } from "./TimeLapseScrubber";
 import { useCareStream } from "./useCareStream";
 import { CareStreamView } from "./CareStreamView";
 import { formatCareAmount } from "./careAmount";
+import { measurementLines } from "./measurementFormat";
+import { useUnits } from "../units/useUnits";
 import { useLocalSearchParams } from "expo-router";
 import { TankRegionSlot } from "./TankRegionSlot";
 
@@ -27,6 +29,7 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
   const { t, i18n } = useTranslation();
   const theme = useTheme();
   const stream = useCareStream(Number(tank.id), tank.author.id);
+  const system = useUnits();
   const { view } = useLocalSearchParams<{ view?: string }>();
   const router = useMachineRouter();
   const reduced = useReducedMotion();
@@ -60,7 +63,8 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
   const timeline = [
     ...stream.entries.map(entry => ({
       key: `care-${entry.id}`, date: entry.occurredAt,
-      title: t("care.waterChange"), description: entry.amount ? formatCareAmount(entry.amount, i18n.language) : null,
+      title: t(entry.kind === "measurement" ? "care.measure.entry" : "care.waterChange"),
+      description: entry.kind === "measurement" ? measurementLines(entry, system, i18n.language).join("\n") : entry.amount ? formatCareAmount(entry.amount, i18n.language) : null,
       image: undefined, slug: null,
     })),
     ...series.photos.filter(item => !postMedia.has(String(item.mediaItemId))).map(item => ({
