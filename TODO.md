@@ -41,7 +41,7 @@ Umgesetzt und in `main` gemergt. TASK-3.29 ist Done, die übrigen stehen in Revi
 - [ ] TASK-2.12 Branch-Protection auf `main`
 - [ ] TASK-2.17 Umgebungsdaten (anonymisierter Snapshot, CoW-Klon, Medien-Overlay)
 - [ ] TASK-2.23 Slug-Secret für Staging und Produktion (F26)
-- [ ] TASK-2.30 Keycloak nach Staging und Produktion: umgesetzt, abnehmen; offen: Mail-Anbieter (AC #3), Textanpassung ADR-0025
+- [ ] TASK-2.30 Keycloak nach Staging und Produktion: umgesetzt, abnehmen; Mail über Mailgun (EU-Region), offen: DNS-Einträge der Versand-Domain, Textanpassung ADR-0025
 - [ ] TASK-2.19 Renovate: umgesetzt, abnehmen
 - [ ] TASK-1 Erster grüner E2E-Smoke-Pfad
 
