@@ -617,6 +617,10 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 - [x] **O2** Priorität: zuerst das Deployment (Strang A). Der MVP ist in `main` gemergt und dient als
   Testobjekt für Staging; die Stories in Review benötigen ihre Abnahme.
 - [x] **O3** ADR-0015 (Backlog.md) ist angenommen.
+- [ ] **O4** Serie in Wochen (TASK-5.5): Die Regel steht in den Notizen des Tasks, offen ist der
+  Umgang mit dem Freeze. Einträge beruhen auf Selbstauskunft; der Freeze verhindert erfundene
+  Einträge im Urlaub. Zur Wahl stehen eine nur private Serie mit Freeze, eine öffentliche Serie
+  mit Freeze, eine Serie ohne Freeze oder keine Serie. TASK-5.5 wartet auf diese Entscheidung.
 
 ---
 

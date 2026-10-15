@@ -4,7 +4,7 @@ title: Weekly streak with vacation freeze and heatmap
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-15 20:01'
+updated_date: '2026-10-15 20:04'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -40,4 +40,8 @@ A streak counts weeks with completed care, survives vacations through a freeze, 
 - A week (ISO week) counts when the member has at least one care entry in it (water change or measurement, any tank).
 - Up to 2 missed weeks are bridged automatically by a freeze; every 4 kept weeks give back one freeze, at most 2 in reserve.
 - The streak can be switched off in the settings.
+
+### Open: freeze and visibility (raised by the project owner, 2026-10-15)
+- Care entries are self-reported, so a member could claim a water change. The freeze rule above is on hold until the project owner decides between: a private streak with freeze (no kudos on streaks), a public streak with freeze, a streak without freeze, or no streak (heatmap and plan only).
+- Do not implement this story before that decision; TASK-5.4 shows due care first and adds the streak afterwards.
 <!-- SECTION:NOTES:END -->
