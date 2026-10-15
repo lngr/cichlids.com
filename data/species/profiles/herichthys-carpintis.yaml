@@ -2486,6 +2486,7 @@ features:
       - herichthys-carpintis-blood-parrot
       - "herichthys-carpintis-cyanoguttatus"
       - "herichthys-carpintis-labridens"
+      - herichthys-carpintis-mayaheros-beani
       - "herichthys-carpintis-pame"
       - "herichthys-carpintis-pantostictus"
       - "herichthys-carpintis-tamasopoensis"
@@ -2525,7 +2526,9 @@ features:
       The curated data/species/hybrid-groups.yaml file defines
       herichthys-carpintis-blood-parrot as presumed from a firsthand aquarium account of a blood
       parrot and Green Texas cichlid with fry, without parentage testing or information about
-      conspecific partners."
+      conspecific partners. The curated data/species/hybrid-groups.yaml file defines
+      herichthys-carpintis-mayaheros-beani as a presumed pairwise crossing group based on labelled
+      captive-offspring photographs, with parentage unverified."
     sources:
       - kind: "catalog-of-fishes"
         title: "Eschmeyer's Catalog of Fishes: species of Herichthys"
@@ -2611,6 +2614,11 @@ features:
         url: https://www.fishkeeper.co.uk/stories/what-the-fish-december-2019
         archived: fishkeeper.co.uk/stories/what-the-fish-december-2019/2026-10-14T094910Z
         accessed: 2026-10-13
+      - kind: website
+        title: "Binns Hybrid Encyclopedia: Beani cross examples"
+        url: "https://www.binnspedia.com/beani"
+        accessed: "2026-10-15"
+        archived: binnspedia.com/beani/2026-10-15T094721Z
     evidence:
       - source:
           kind: "catalog-of-fishes"
@@ -2755,6 +2763,14 @@ features:
       - source: *bloodParrotBrood
         value: [herichthys-carpintis-blood-parrot]
         note: Firsthand account of a blood parrot and Green Texas cichlid with fry; parentage and conspecific mate availability are unverified.
+      - source:
+          kind: website
+          title: "Binns Hybrid Encyclopedia: Beani cross examples"
+          url: "https://www.binnspedia.com/beani"
+          accessed: "2026-10-15"
+          archived: binnspedia.com/beani/2026-10-15T094721Z
+        value: [herichthys-carpintis-mayaheros-beani]
+        note: Labelled captive-offspring photographs; parentage is unverified.
     verification:
       method: "qualified-majority"
       votes:
