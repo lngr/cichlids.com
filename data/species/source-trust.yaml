@@ -9,7 +9,8 @@
 #         peer-reviewed literature, theses, books of known authors, reports and measurements of
 #         authorities and research institutes)
 # medium: serious sources with people and method behind them, without an evidence duty
-#         (associations, magazines, large dealers with staff, specialist sites)
+#         (associations, magazines, large dealers with staff, specialist sites, open repositories
+#         where any registered user uploads without review)
 # low:    forums, blogs, general care-sheet aggregators, small shops, Wikipedia
 
 default: low
@@ -104,7 +105,7 @@ hosts:
   - {host: etd.ohiolink.edu, level: high, note: OhioLINK electronic theses and dissertations}
   - {host: utoronto.scholaris.ca, level: high, note: University of Toronto repository}
   - {host: research.rug.nl, level: high, note: University of Groningen research portal}
-  - {host: hydroshare.org, level: high, note: CUAHSI HydroShare data repository}
+  - {host: hydroshare.org, level: medium, note: CUAHSI HydroShare open data repository}
   - {host: icj-cij.org, level: high, note: International Court of Justice case documents}
   - {host: corescholar.libraries.wright.edu, level: high, note: Wright State University repository}
   - {host: hdl.handle.net, level: high, note: handle of an institutional repository}
@@ -113,7 +114,7 @@ hosts:
   - {host: horizon.documentation.ird.fr, level: high, note: document archive of the French Research Institute for Development (IRD)}
   - {host: tel.archives-ouvertes.fr, level: high, note: TEL archive of French theses}
   - {host: theses.fr, level: high, note: French national thesis portal}
-  - {host: zenodo.org, level: high, note: research data and publication repository}
+  - {host: zenodo.org, level: medium, note: open research data and publication repository}
   - {host: data.mendeley.com, level: high, note: research data repository}
   - {host: erddap.bco-dmo.org, level: high, note: oceanographic research data}
   - {host: daac.ornl.gov, level: high, note: ORNL Distributed Active Archive Center for NASA earth science data}
