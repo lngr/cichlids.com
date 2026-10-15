@@ -1,0 +1,2861 @@
+schemaVersion: 1
+id: aulonocara-korneliae
+legacyIds:
+- 231
+status: described
+taxonomy:
+  validName: Aulonocara korneliae
+  genus: Aulonocara
+  species: korneliae
+  author: "Meyer, Riehl & Zetzsche, 1987"
+  source: &id001
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Aulonocara"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Aulonocara"
+    accessed: '2026-10-15'
+    archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-b79476cc/2026-10-14T094505Z
+  synonyms: []
+  legacyNames:
+  - Aulonocara korneliae
+  note: "The Catalog of Fishes accepts the original combination and records the east coast of Chizumulu Island as\
+    \ its type locality. Chisumulu is an alternative island spelling. Aquarium labels such as Aulonocara chizumulu\
+    \ are common names, not formal synonyms; the unrelated Chilumba locality label is not adopted as a synonym."
+names:
+  trade:
+    en:
+    - Chizumulu peacock
+    - Chizumulu Aulonocara
+    - Blue-gold peacock
+variants:
+- name: "Same Bay, Chizumulu Island"
+  kind: locality
+  note: A locality label independently confirmed by the CRC public photograph; no separate taxon is implied.
+- name: "Chilongo Bay, Chizumulu Island"
+  kind: locality
+  note: A locality label reported by secondary care accounts; it is not an established captive color strain.
+features:
+  origin:
+    sources:
+    - *id001
+    - &id002
+      kind: database
+      title: "FishBase: Aulonocara korneliae summary"
+      url: "https://fishbase.se/summary/Aulonocara-korneliae.html"
+      accessed: '2026-10-15'
+      archived: fishbase.se/summary/aulonocara-korneliae.html/2026-10-14T232327Z
+    - &id028
+      kind: database
+      title: "Cichlid Room Companion: Aulonocara korneliae"
+      url: "https://cichlidae.com/species.php?id=oY-95JE-HdgT4O2OhMttyQ"
+      accessed: '2026-10-15'
+      archived: cichlidae.com/species.php/q-2ee56563/2026-10-14T232336Z
+    - &id003
+      kind: database
+      title: "FishBase: Aulonocara korneliae"
+      url: "https://www.fishbase.se/summary/Aulonocara-korneliae.html"
+      archived: fishbase.se/summary/aulonocara-korneliae.html/2026-10-14T232328Z
+      accessed: '2026-10-15'
+    - &id004
+      kind: database
+      title: "Lake Malawi cichlids: Aulonocara korneliae 'Chizumulu Island'"
+      url: "https://www.malawi.si/malawibylocations/Chizumulu%20Island/slides/Aulonocara%20korneliae%20%27Chizumulu%20Island%27.html"
+      accessed: '2026-10-15'
+      archived: malawi.si/malawibylocations/chizumulu_island/slides/aulonocara_korneliae__chizumulu_island_.html/2026-10-14T232415Z
+    evidence:
+    - source: *id001
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: Lake Malawi
+        localities:
+        - Chizumulu Island
+      note: ''
+    - source: *id002
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: Lake Malawi
+        localities:
+        - Chizumulu Island
+      note: ''
+    - source: *id001
+      value:
+        region: Lake Malawi
+        locality: Chizumulu Island
+      note: Distribution line and type locality.
+    - source: *id003
+      value:
+        region: Lake Malawi
+        locality: Chizumulu Island
+      note: Described as endemic to the island.
+    - source: *id001
+      value: "Valid Aulonocara korneliae; distribution Chisumulu Island, Lake Malawi"
+      note: ''
+    - source: *id003
+      value: "Africa: endemic to Chisumulu Island, Lake Malawi"
+      note: ''
+    - source: *id004
+      value: "Endemic to Lake Malawi, restricted to Chizumulu Island"
+      note: ''
+    - source: *id001
+      value: "Chizumulu Island, Lake Malawi"
+      note: ''
+    - source: *id003
+      value: "Chisumulu Island, Lake Malawi"
+      note: ''
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: lake-malawi
+      localities:
+      - Chizumulu Island
+    confidence: high
+    rationale: "The Catalog of Fishes and FishBase restrict the known natural distribution to Chizumulu Island in\
+      \ Lake Malawi. The generator used the lake name as the waterbody key; the three checkers used lake-malawi,\
+      \ which is the canonical identifier. The CRC public photograph identifies Same Bay on that island."
+  temperatureC:
+    sources:
+    - &id005
+      kind: literature
+      title: "Branchu et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+        \ Northern Basin: local versus global considerations."
+      url: "https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf"
+      accessed: '2026-10-15'
+      archived: hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf/2026-10-14T094507Z
+    - &id012
+      kind: literature
+      title: "Vanden Bossche and Bernacsek (1990), FAO Source book for inland fishery resources of Africa, Lake\
+        \ Malawi data"
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      accessed: '2026-10-15'
+      archived: fao.org/4/t0473e/t0473e05.htm/2026-10-14T094507Z
+    - &id006
+      kind: literature
+      title: "Eccles (1974), An outline of the physical limnology of Lake Malawi"
+      url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+      accessed: '2026-10-15'
+      offline: true
+    - &id008
+      kind: literature
+      title: "Vollmer et al. (2005), Deep-water warming trend in Lake Malawi, East Africa"
+      url: "https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view"
+      accessed: '2026-10-15'
+      archived: dora.lib4ri.ch/empa/dload/empa_1253/pdf/view/2026-10-14T094508Z
+    - &id017
+      kind: literature
+      title: "Vollmer, Weiss and Bootsma (1999), Lake Malawi/Nyasa deep water renewal"
+      url: "https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf"
+      accessed: '2026-10-15'
+      archived: sites.uwm.edu/hbootsma/files/2020/11/ch4-lake-internal-mixing.pdf/2026-10-14T094509Z
+    - &id018
+      kind: literature
+      title: "Ngochera (2018), Carbon Dynamics in Tropical Lake Malawi, PhD dissertation"
+      url: "https://minds.wisconsin.edu/handle/1793/91765"
+      accessed: '2026-10-15'
+      archived: minds.wisconsin.edu/handle/1793/91765/2026-10-14T094513Z
+    - *id002
+    - &id007
+      kind: literature
+      title: "Branchu et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+        \ Northern Basin: local versus global considerations."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      archived: doi.org/10.5194_hessd-7-4371-2010/2026-10-13T071931Z
+      accessed: '2026-10-15'
+    - &id009
+      kind: database
+      title: "Nordiska Ciklidsällskapet species register: Aulonocara korneliae"
+      url: "https://www.ciklid.org/artregister/art.php?ID=149"
+      archived: ciklid.org/artregister/art.php/q-b5cd12ff/2026-10-14T232328Z
+      accessed: '2026-10-15'
+    - &id010
+      kind: website
+      title: "Tropical Fish Site: Aulonocara Blue Gold"
+      url: "https://www.tropicalfishsite.com/aulonocara-blue-gold-aulonocara-korneliae/"
+      archived: tropicalfishsite.com/aulonocara-blue-gold-aulonocara-korneliae/2026-10-14T232332Z
+      accessed: '2026-10-15'
+    - &id011
+      kind: literature
+      title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa."
+      url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+      archived: doi.org/10.4319_lo.2005.50.2.0727/2026-10-13T071601Z
+      accessed: '2026-10-15'
+    evidence:
+    - source: *id005
+      value:
+        min: 21
+        max: 29
+      note: Lake table range assembled from measured lake conditions This inherited regional temperature envelope
+        is not measured in Branchu alone.
+    - source: *id006
+      value:
+        min: 21
+        max: 29
+      note: Seasonal surface and upper-water temperatures contribute to the lake range This inherited envelope combines
+        lake studies; the Eccles full text was not accessible for independent checking.
+    - source: *id002
+      value:
+        min: 23
+        max: 27
+      note: FishBase species environment interval
+    - source: *id005
+      value:
+        min: 21
+        max: 29
+      note: "Retained regional lake synthesis from an input, based on the lake studies; not a range independently\
+        \ measured in this single study. Lake Malawi water, combined lake measurements. This inherited regional\
+        \ temperature envelope is not measured in Branchu alone."
+    - source: *id005
+      value:
+        min: 25.4
+        max: 25.4
+      note: Surface point measured in the north basin during October 1993; the final regional range follows the
+        waterbody table
+    - source: *id007
+      value:
+        min: 21
+        max: 29
+      note: "Retained regional lake synthesis from an input, based on the lake studies; not a range independently\
+        \ measured in this single study. Natural Lake Malawi temperature range used by the project This inherited\
+        \ regional temperature envelope is not measured in Branchu alone."
+    - source: *id005
+      value:
+        min: 21
+        max: 29
+      note: Lake Malawi regional temperature range from the project waterbody table This inherited regional temperature
+        envelope is not measured in Branchu alone.
+    - source: *id008
+      value:
+        min: 21
+        max: 29
+      note: Seasonal upper-water temperatures contribute to the project's regional lake range
+    - source: *id009
+      value:
+        min: 23
+        max: 28
+      note: Aquarium recommendation
+    - source: *id010
+      value:
+        min: 23
+        max: 28
+      note: Aquarium recommendation
+    - source: *id011
+      value:
+        min: 23.5
+        max: 28
+      note: "Seasonal upper-water context: winter is described as below 24 C and about 23.5 C in cited observations;\
+        \ summer surface water reaches about 28 C. These are approximate seasonal observations, not the full regional\
+        \ extrema."
+    - source: *id012
+      value:
+        min: 23
+        max: 25
+      note: "Historical surface interval attributed to Jackson et al. (1963), narrower than the combined regional\
+        \ envelope."
+    value:
+      min: 21
+      max: 29
+    confidence: high
+    rationale: "All four complete profiles propose 21 to 29 C, and the settled tally retains this regional Lake\
+      \ Malawi range with waterbody verification and high confidence. It combines seasonal lake observations, rather\
+      \ than claiming that every endpoint was measured at Chizumulu. Vollmer et al. describe summer surface water\
+      \ around 28 C and winter water below 24 C; their discussion attributes additional cooling in the southeastern\
+      \ arm to Eccles. The 23 to 25 C historical interval compiled by FAO and the 25.4 C northern-basin point in\
+      \ Branchu are narrower observations within that regional synthesis. Inherited evidence that assigns the entire\
+      \ 21 to 29 C synthesis to one study is retained as a synthesis, not a single-study measurement."
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      sources:
+      - *id009
+      - &id013
+        kind: database
+        title: "Fishipedia: Aulonocara korneliae"
+        url: "https://www.fishipedia.fr/fr/poissons/aulonocara-korneliae"
+        accessed: '2026-10-15'
+        archived: fishipedia.fr/fr/poissons/aulonocara-korneliae/2026-10-14T232339Z
+      - *id002
+      - *id003
+      - *id010
+      - &id015
+        kind: database
+        title: "Seriously Fish: Aulonocara stuartgranti (Grant's Peacock)"
+        url: "https://www.seriouslyfish.com/species/aulonocara-stuartgranti/"
+        archived: seriouslyfish.com/species/aulonocara-stuartgranti/2026-10-14T094539Z
+        accessed: '2026-10-15'
+      - &id014
+        kind: website
+        title: "The Aquarium Wiki: Aulonocara chizumulu (Aulonocara korneliae)"
+        url: "https://theaquariumwiki.com/wiki/Aulonocara_chizumulu"
+        archived: theaquariumwiki.com/wiki/aulonocara_chizumulu/2026-10-14T232357Z
+        accessed: '2026-10-15'
+      - &id016
+        kind: website
+        title: "Aquarist Atlas: Aulonocara korneliae care guide"
+        url: "https://www.aquaristatlas.com/species/aulonocara-korneliae/"
+        accessed: '2026-10-15'
+        archived: aquaristatlas.com/species/aulonocara-korneliae/2026-10-14T232333Z
+      evidence:
+      - source: *id009
+        value:
+          min: 23
+          max: 28
+        note: Aquarium recommendation
+      - source: *id013
+        value:
+          min: 23
+          max: 27
+        note: Species care recommendation
+      - source: *id002
+        value:
+          min: 23
+          max: 27
+        note: "Environmental interval, not a proven aquarium limit"
+      - source: *id003
+        value:
+          min: 23
+          max: 27
+        note: Range listed on the species summary.
+      - source: *id010
+        value:
+          min: 23
+          max: 28
+        note: Care sheet recommendation.
+      - source: *id014
+        value:
+          min: 25.6
+          max: 27.8
+        note: "Wiki stub, converted from 78 to 82 F."
+      - source: *id015
+        value:
+          min: 23
+          max: 29
+        note: Close congener.
+      - source: *id009
+        value:
+          min: 23
+          max: 28
+        note: Species care range
+      - source: *id016
+        value:
+          min: 23
+          max: 27
+        note: Species care range
+      - source: *id010
+        value:
+          min: 23
+          max: 28
+        note: Aquarium recommendation
+      - source: *id003
+        value:
+          min: 23
+          max: 27
+        note: "Tropical habitat envelope, not a tested tolerance"
+      value:
+        min: 21
+        max: 30
+      confidence: low
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+      rationale: "The settled unanimous decision under the 1 C agreement threshold is 21 to 30 C with low confidence.\
+        \ The generator and checker-b proposed 20 to 30 C, checker-a 21 to 29 C, and checker-c 21 to 30 C. The rounded\
+        \ median of the agreeing bounds gives 21 to 30 C and contains the natural 21 to 29 C range. Species-specific\
+        \ recommendations are mostly 23 to 28 C, FishBase and Fishipedia give 23 to 27 C, the wiki gives 25.6 to\
+        \ 27.8 C, and Seriously Fish gives 23 to 29 C for A. stuartgranti. The wider 20 to 30 C proposals extend\
+        \ below the decision, but their 20 C minimum is an inferred margin without a species-specific long-term\
+        \ observation. The adopted outer endpoints are provisional allowances, not demonstrated injury thresholds\
+        \ or recommended routine settings."
+  ph:
+    sources:
+    - *id005
+    - *id012
+    - *id006
+    - *id008
+    - *id017
+    - *id018
+    - *id007
+    - *id009
+    - *id010
+    - *id011
+    evidence:
+    - source: *id005
+      value:
+        min: 7.7
+        max: 8.6
+      note: Lake table range based on surface and regional measurements
+    - source: *id012
+      value:
+        min: 7.7
+        max: 8.6
+      note: Historical measurements included in the project lake range
+    - source: *id005
+      value:
+        min: 7.7
+        max: 8.6
+      note: "Retained regional lake synthesis from an input, based on the lake studies; not a range independently\
+        \ measured in this single study. Lake Malawi surface water, combined lake measurements."
+    - source: *id005
+      value:
+        min: 7.5
+        max: 8.5
+      note: Lake pH interval discussed in the hydrochemistry paper; the final surface range follows the waterbody
+        table
+    - source: *id007
+      value:
+        min: 7.7
+        max: 8.6
+      note: "Retained regional lake synthesis from an input, based on the lake studies; not a range independently\
+        \ measured in this single study. Natural Lake Malawi pH range used by the project"
+    - source: *id005
+      value:
+        min: 7.7
+        max: 8.6
+      note: Surface range represented by the project waterbody table
+    - source: *id012
+      value:
+        min: 7.7
+        max: 8.6
+      note: Lake Malawi values summarized in the project waterbody table
+    - source: *id009
+      value:
+        min: 7.5
+        max: 8.5
+      note: Aquarium recommendation
+    - source: *id010
+      value:
+        min: 7.6
+        max: 8.6
+      note: Aquarium recommendation
+    - source: *id012
+      value:
+        min: 7.7
+        max: 8.6
+      note: Lake Malawi surface pH compiled from Jackson et al. (1963).
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: high
+    rationale: "All four complete profiles propose 7.7 to 8.6, retained exactly by the settled waterbody decision.\
+      \ The FAO compilation of Jackson et al. gives this surface-water interval. Branchu discusses the wider water\
+      \ column at pH 7.5 to 8.5; its lower readings do not replace the surface range for this shallow-water fish.\
+      \ The wider 7.5 to 9.0 aquarium recommendation for A. stuartgranti informs tolerance only. Sources are the\
+      \ underlying lake studies and compilation, rather than an internal table."
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      sources:
+      - *id009
+      - *id013
+      - *id016
+      - *id010
+      - *id014
+      - &id019
+        kind: website
+        title: "Fishi-pedia: Aulonocara korneliae"
+        url: "https://www.fishi-pedia.com/fishes/aulonocara-korneliae"
+        archived: fishi-pedia.com/fishes/aulonocara-korneliae/2026-10-14T232358Z
+        accessed: '2026-10-15'
+      - *id015
+      evidence:
+      - source: *id009
+        value:
+          min: 7.5
+          max: 8.5
+        note: Aquarium pH recommendation
+      - source: *id013
+        value:
+          min: 7.5
+          max: 8.5
+        note: Aquarium recommendation
+      - source: *id016
+        value:
+          min: 7.8
+          max: 8.6
+        note: Aquarium target
+      - source: *id010
+        value:
+          min: 7.6
+          max: 8.6
+        note: Care sheet.
+      - source: *id014
+        value:
+          min: 7.8
+          max: 8.6
+        note: Wiki stub.
+      - source: *id019
+        value:
+          min: 7.5
+          max: 8.5
+        note: Species sheet.
+      - source: *id015
+        value:
+          min: 7.5
+          max: 9.0
+        note: Close congener.
+      - source: *id009
+        value:
+          min: 8.0
+          max: 8.0
+        note: Recommended aquarium pH point
+      - source: *id015
+        value:
+          min: 7.5
+          max: 9.0
+        note: Related Aulonocara aquarium range
+      - source: *id009
+        value:
+          min: 7.5
+          max: 8.5
+        note: Aquarium recommendation
+      - source: *id010
+        value:
+          min: 7.6
+          max: 8.6
+        note: Aquarium recommendation
+      value:
+        min: 7.5
+        max: 8.7
+      confidence: medium
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+      rationale: "The settled unanimous decision under the 0.3 pH agreement rule is 7.5 to 8.7 with medium confidence.\
+        \ The generator and checker-a proposed 7.5 to 8.6, checker-b 7.5 to 9.0, and checker-c 7.5 to 8.8. The median\
+        \ upper bound of the agreeing proposals is 8.7. Nordic and Fishipedia species advice is 7.5 to 8.5, Tropical\
+        \ Fish Site gives 7.6 to 8.6, and the wiki gives 7.8 to 8.6. The wider Seriously Fish recommendation of\
+        \ 7.5 to 9.0 is for related A. stuartgranti, not a tested limit for korneliae; it remains visible as indirect\
+        \ evidence. This compromise contains the natural range without interpreting any care target as a physiological\
+        \ failure boundary."
+  ghDgh:
+    sources:
+    - *id005
+    - *id012
+    - *id006
+    - *id008
+    - *id017
+    - *id018
+    - *id007
+    - *id010
+    - *id016
+    - *id011
+    evidence:
+    - source: *id005
+      value:
+        min: 3
+        max: 5
+      note: Lake table range calculated from measured calcium and magnesium
+    - source: *id012
+      value:
+        min: 3
+        max: 5
+      note: Historical calcium and magnesium measurements contribute to the lake range
+    - source: *id005
+      value:
+        min: 3
+        max: 5
+      note: "Retained regional lake synthesis from an input, based on the lake studies; not a range independently\
+        \ measured in this single study. Lake Malawi water, combined lake measurements."
+    - source: *id005
+      value:
+        min: 4.2
+        max: 4.6
+      note: dGH calculated from calcium and magnesium in the upper 50 m; the table broadens to 3 to 5
+    - source: *id007
+      value:
+        min: 3
+        max: 5
+      note: "Retained regional lake synthesis from an input, based on the lake studies; not a range independently\
+        \ measured in this single study. Natural Lake Malawi total hardness range used by the project"
+    - source: *id005
+      value:
+        min: 3
+        max: 5
+      note: Converted lake Ca and Mg values summarized by the project waterbody table
+    - source: *id012
+      value:
+        min: 3
+        max: 5
+      note: Lake Malawi Ca and Mg values summarized by the project waterbody table
+    - source: *id010
+      value:
+        min: 10
+        max: 18
+      note: "Aquarium hardness recommendation, stated as dH without distinguishing GH and KH"
+    - source: *id016
+      value:
+        min: 10
+        max: 15
+      note: Aquarium total hardness recommendation
+    - source: *id007
+      value:
+        min: 4.2
+        max: 4.6
+      note: Calculated from calcium and magnesium measurements in the upper 50 m; rounded to one decimal.
+    - source: *id012
+      value:
+        min: 3.2
+        max: 4.9
+      note: Approximate dGH conversion of the calcium and magnesium values compiled after Jackson et al. and Talling
+        and Talling.
+    value:
+      min: 3
+      max: 5
+    confidence: high
+    rationale: "All four complete profiles propose 3 to 5 dGH, and the settled waterbody decision retains this range.\
+      \ Branchu measured calcium at 450 to 508 micromol/L and magnesium at 294 to 322 micromol/L in the upper 50\
+      \ m, equivalent to approximately 4.2 to 4.6 dGH. The calcium and magnesium measurements compiled by FAO after\
+      \ Jackson et al. and Talling and Talling span approximately 3.2 to 4.9 dGH. These measurements support the\
+      \ rounded regional range. Aquarium targets as wide as 10 to 25 dGH for a related peacock are retained separately;\
+      \ they are not measurements of natural Malawi hardness."
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      sources:
+      - *id013
+      - *id016
+      - *id005
+      - *id014
+      - *id019
+      - *id015
+      - &id020
+        kind: website
+        title: "Aquarium Industries: African Peacock Cichlids care sheet"
+        url: "https://www.aquariumindustries.com.au/wp-content/uploads/2015/03/Peacock-Cichlids.pdf"
+        archived: aquariumindustries.com.au/wp-content/uploads/2015/03/peacock-cichlids.pdf/2026-10-14T232400Z
+        accessed: '2026-10-15'
+      - *id010
+      - *id007
+      - &id021
+        kind: database
+        title: "Einrichtungsbeispiele: Aulonocara korneliae"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/aulonocara-korneliae-slnk.html"
+        accessed: '2026-10-15'
+        archived: einrichtungsbeispiele.de/zierfische/malawisee/aulonocara-korneliae-slnk.html/2026-10-14T232834Z
+      - &id022
+        kind: website
+        title: "Cichlid Atlas: Aulonocara korneliae"
+        url: "https://www.cichlidatlas.com/species/aulonocara-korneliae/"
+        accessed: '2026-10-15'
+        archived: cichlidatlas.com/species/aulonocara-korneliae/2026-10-14T232339Z
+      - &id023
+        kind: website
+        title: "Aquarium Dietzenbach: Aulonocara stuartgranti"
+        url: "https://www.aquarium-dietzenbach.de/descriptions_aulonocara_stuartgranti"
+        accessed: '2026-10-15'
+        archived: aquarium-dietzenbach.de/descriptions_aulonocara_stuartgranti/2026-10-14T094740Z
+      - kind: database
+        title: "AquaPortail: Aulonocara korneliae, inaccessible with HTTP 403"
+        url: "https://www.aquaportail.com/fiche-poisson-4373-aulonocara-korneliae.html"
+        accessed: '2026-10-15'
+        offline: true
+      - kind: website
+        title: "Diapteron: Aulonocara korneliae, inaccessible with HTTP 403"
+        url: "https://diapteron.co.uk/product/blue-gold-peacock-cichlid-aulonocara-korneliae/"
+        accessed: '2026-10-15'
+        offline: true
+      - &id024
+        kind: website
+        title: "OATA: How to look after African Malawi Cichlids"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+        archived: ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/2026-10-14T094603Z
+        accessed: '2026-10-15'
+      evidence:
+      - source: *id005
+        value:
+          min: 3
+          max: 5
+        note: Measured natural lake water
+      - source: *id013
+        value:
+          min: 8
+          max: 15
+        note: Aquarium hardness recommendation
+      - source: *id016
+        value:
+          min: 10
+          max: 15
+        note: General hardness target
+      - source: *id014
+        value:
+          min: 8
+          max: 12
+        note: Wiki stub.
+      - source: *id019
+        value:
+          min: 8
+          max: 15
+        note: Species sheet.
+      - source: *id020
+        value:
+          min: 8
+          max: 20
+        note: "Genus sheet, converted from 150 to 350 ppm."
+      - source: *id015
+        value:
+          min: 10
+          max: 25
+        note: Close congener.
+      - source: *id016
+        value:
+          min: 10
+          max: 15
+        note: Aquarium advice recommends at least this hardness
+      - source: *id015
+        value:
+          min: 10
+          max: 25
+        note: Related Aulonocara aquarium range
+      - source: *id010
+        value:
+          min: 10
+          max: 18
+        note: "Aquarium hardness recommendation, not clearly separated into GH and KH"
+      - source: *id016
+        value:
+          min: 10
+          max: 15
+        note: Aquarium total hardness recommendation
+      - source: *id007
+        value:
+          min: 3
+          max: 5
+        note: "Retained natural lake synthesis from an input, supported by the underlying lake chemistry studies\
+          \ rather than a tolerance trial. Measured natural GH, included as the habitat constraint rather than a\
+          \ complete aquarium tolerance."
+      - source: *id021
+        value:
+          min: 5
+          max: 15
+        note: Species-specific aquarium recommendation.
+      - source: *id022
+        value:
+          min: 10
+          max: 15
+        note: Suggested aquarium target introduced as a minimum recommendation; not an experimentally established
+          upper limit.
+      - source: *id010
+        value:
+          min: 10
+          max: 18
+        note: "Species-specific breeding recommendation, not a tested full tolerance."
+      - source: *id015
+        value:
+          min: 10
+          max: 25
+        note: Aquarium recommendation for related A. stuartgranti; indirect basis for the adopted upper endpoint.
+      - source: *id023
+        value:
+          min: 5
+          max: 15
+        note: Related A. stuartgranti summary recommendation.
+      - source: *id023
+        value:
+          min: 10
+          max: 20
+        note: The same related-species page gives a different GH recommendation in its longer husbandry text; retained
+          as an internal source disagreement.
+      - source: *id007
+        value:
+          min: 3
+          max: 5
+        note: "Retained natural lake synthesis from an input, supported by the underlying lake chemistry studies\
+          \ rather than a tolerance trial. Natural lake range, included by the pipeline rule; not an aquarium tolerance\
+          \ measurement."
+      - source: *id021
+        value:
+          min: 5
+          max: 15
+        note: Species-specific aquarium GH recommendation.
+      - source: *id010
+        value:
+          min: 10
+          max: 18
+        note: Species-specific breeding-water hardness recommendation.
+      - source: *id024
+        value:
+          min: 12
+          max: 18
+        note: "General Malawi aquarium guidance, not species-specific physiological limits."
+      - source: *id022
+        value:
+          min: 10
+          max: 15
+        note: Aquarium target band; wording does not establish an upper survival limit.
+      - source: *id015
+        value:
+          min: 10
+          max: 25
+        note: High-trust care recommendation for related A. stuartgranti only.
+      value:
+        min: 3
+        max: 19
+      confidence: low
+      verification:
+        method: median
+        votes:
+          agree: 3
+          total: 6
+      rationale: "The settled median decision is 3 to 19 dGH with low confidence and 3 of 6 votes in the largest\
+        \ agreement cluster. The generator proposed 3 to 15, checker-a 3 to 20, checker-b 3 to 25, checker-c 3 to\
+        \ 18, tiebreaker-1 3 to 25, and tiebreaker-2 3 to 18 dGH. The ordered upper bounds are 15, 18, 18, 20, 25\
+        \ and 25; their median is 19, while every lower bound is 3. No qualified majority exists, so this follows\
+        \ the required median rather than the narrowest intersection. Species targets include 5 to 15 dGH at Einrichtungsbeispiele,\
+        \ 8 to 15 at Fishipedia, and 10 to 18 dH for breeding at Tropical Fish Site, whose dH label is not explicitly\
+        \ separated into GH and KH. OATA gives 12 to 18 dGH for Malawi fish. Wider advice remains cited: Aquarium\
+        \ Industries gives 150 to 350 ppm, approximately 8.4 to 19.6 dGH, Dietzenbach gives conflicting 5 to 15\
+        \ and 10 to 20 dGH for A. stuartgranti, and Seriously Fish gives 10 to 25 dGH for that relative. The decided\
+        \ upper bound is narrower than the latter two ranges and is a provisional keeping envelope, not evidence\
+        \ of harm above 19. The natural 3 to 5 dGH must remain included. AquaPortail and Diapteron returned HTTP\
+        \ 403 and supply no readable evidence."
+  khDkh:
+    sources:
+    - *id005
+    - *id012
+    - *id006
+    - *id008
+    - *id017
+    - *id018
+    - *id007
+    - *id011
+    evidence:
+    - source: *id005
+      value:
+        min: 5
+        max: 8
+      note: Lake table range converted from measured alkalinity
+    - source: *id012
+      value:
+        min: 5
+        max: 8
+      note: Historical alkalinity contributes to the table range
+    - source: *id005
+      value:
+        min: 5
+        max: 8
+      note: "Retained regional lake synthesis from an input, based on the lake studies; not a range independently\
+        \ measured in this single study. Lake Malawi water, combined lake measurements."
+    - source: *id005
+      value:
+        min: 6.5
+        max: 6.9
+      note: dKH calculated from measured alkalinity; the table broadens to 5 to 8
+    - source: *id007
+      value:
+        min: 5
+        max: 8
+      note: "Retained regional lake synthesis from an input, based on the lake studies; not a range independently\
+        \ measured in this single study. Natural Lake Malawi alkalinity range used by the project"
+    - source: *id005
+      value:
+        min: 5
+        max: 8
+      note: Lake Malawi alkalinity converted to dKH in the project waterbody table
+    - source: *id012
+      value:
+        min: 5
+        max: 8
+      note: Lake Malawi alkalinity converted to dKH in the project waterbody table
+    - source: *id007
+      value:
+        min: 6.5
+        max: 6.9
+      note: Alkalinity converted with approximately 2.8 dKH per meq/L.
+    - source: *id012
+      value:
+        min: 5.6
+        max: 7.3
+      note: Historical alkalinity of 2.00 to 2.59 meq/L converted to dKH.
+    value:
+      min: 5
+      max: 8
+    confidence: high
+    rationale: "All four complete profiles propose 5 to 8 dKH, retained exactly from the settled lake decision without\
+      \ a verification object for this natural feature. Branchu reports alkalinity around 2.33 to 2.46 meq/L, approximately\
+      \ 6.5 to 6.9 dKH, while Jackson et al. as compiled by FAO report 2.00 to 2.59 meq/L, approximately 5.6 to\
+      \ 7.3 dKH. The rounded regional envelope is 5 to 8 dKH. Bicarbonate balanced partly by sodium allows alkalinity\
+      \ expressed as dKH to exceed the calcium and magnesium hardness expressed as dGH."
+    tolerance:
+      sources:
+      - *id016
+      - *id009
+      - *id005
+      - *id019
+      - *id020
+      - *id015
+      - *id010
+      - *id007
+      - &id025
+        kind: literature
+        title: "JBL Research Team: Cichlids, correct feeding for a good husbandry, page 12"
+        url: "https://s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/JBL-Correct-Feeding-of-Cichlids.pdf"
+        accessed: '2026-10-15'
+        archived: s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/jbl-correct-feeding-of-cichlids.pdf/2026-10-14T131039Z
+      - *id022
+      - *id023
+      - *id024
+      - *id021
+      evidence:
+      - source: *id016
+        value:
+          min: 10
+          max: 15
+        note: "Recommends buffering near its hardness target, without a separate validated KH range"
+      - source: *id009
+        value:
+          min: 5
+          max: 15
+        note: "Alkaline aquarium advice and pH target; KH interval is inferred, not stated"
+      - source: *id005
+        value:
+          min: 5
+          max: 8
+        note: Measured natural lake alkalinity
+      - source: *id019
+        value:
+          min: 4
+          max: 12
+        note: Derived from its pH and hardness figures; the sheet gives no dKH.
+      - source: *id020
+        value:
+          min: 4
+          max: 12
+        note: Derived from its pH and hardness figures; the sheet gives no dKH.
+      - source: *id016
+        value:
+          min: 5
+          max: 15
+        note: Derived from its alkaline pH and hardness advice; it does not state a KH range
+      - source: *id009
+        value:
+          min: 7.5
+          max: 8.5
+        note: pH advice only; KH tolerance is inferred
+      - source: *id010
+        value:
+          min: 10
+          max: 18
+        note: "Aquarium hardness recommendation, not clearly distinguished as GH or KH Retained contextual dH evidence;\
+          \ the page does not independently label this a KH interval."
+      - source: *id007
+        value:
+          min: 5
+          max: 8
+        note: "Retained natural lake synthesis from an input, supported by the underlying lake chemistry studies\
+          \ rather than a tolerance trial. Measured natural KH, included as the habitat constraint rather than the\
+          \ entire tolerance."
+      - source: *id025
+        value:
+          min: 5
+          max: 15
+        note: Page 12 recommends this aquarium KH for Malawi cichlids and explicitly includes Aulonocara species.
+      - source: *id022
+        value:
+          min: 10
+          max: 15
+        note: Species-specific carbonate-hardness target expressed by comparison with the GH target; not a precise
+          tested boundary.
+      - source: *id023
+        value:
+          min: 6
+          max: 10
+        note: "Related A. stuartgranti aquarium recommendation, used only as indirect support."
+      - source: *id007
+        value:
+          min: 5
+          max: 8
+        note: "Retained natural lake synthesis from an input, supported by the underlying lake chemistry studies\
+          \ rather than a tolerance trial. Natural lake alkalinity expressed in dKH; not an aquarium tolerance experiment."
+      - source: *id024
+        value:
+          min: 10
+          max: 15
+        note: General Malawi aquarium KH recommendation.
+      - source: *id022
+        value:
+          min: 10
+          max: 15
+        note: Approximate KH target inferred from the explicit advice to use a carbonate-hardness band similar to
+          its GH target.
+      value:
+        min: 5
+        max: 15
+      confidence: low
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+      rationale: "The settled qualified-majority decision is 5 to 15 dKH with low confidence and 5 of 6 agreeing\
+        \ votes. The generator, checker-b, checker-c, tiebreaker-1 and tiebreaker-2 proposed 5 to 15; checker-a\
+        \ proposed 4 to 12 dKH. The latter lower endpoint was inferred from pH and general hardness advice, not\
+        \ a KH measurement. The JBL brochure explicitly recommends 5 to 15 dKH for the Malawi group including Aulonocara,\
+        \ OATA gives 10 to 15 dKH, and Cichlid Atlas describes a similar carbonate-hardness target. The related\
+        \ A. stuartgranti account at Dietzenbach gives 6 to 10 dKH. The decision contains the natural 5 to 8 dKH\
+        \ and allows ordinary buffering practice, but species-specific long-term harm thresholds were not established.\
+        \ Inherited evidence containing pH or unspecified dH numbers remains for transparency and is not treated\
+        \ as a direct KH measurement."
+  maxSizeCm:
+    sources:
+    - *id002
+    - *id013
+    - *id009
+    - *id016
+    - *id003
+    - *id019
+    - *id014
+    - *id010
+    - *id004
+    - &id026
+      kind: database
+      title: "Malawi.si locality account: Aulonocara korneliae at Chizumulu Island"
+      url: "https://www.malawi.si/MalawiByLocations/Chizumulu%20Island/slides/Aulonocara%20korneliae%20%27Chizumulu%20Island%27.html"
+      archived: malawi.si/malawibylocations/chizumulu_island/slides/aulonocara_korneliae__chizumulu_island_.html/2026-10-14T232330Z
+      accessed: '2026-10-15'
+    - *id021
+    - &id027
+      kind: website
+      title: "The Wet Spot Tropical Fish: Aulonocara korneliae"
+      url: "https://www.wetspottropicalfish.com/product/aulonocara-korneliae/"
+      accessed: '2026-10-15'
+      archived: wetspottropicalfish.com/product/aulonocara-korneliae/2026-10-14T232909Z
+    evidence:
+    - source: *id002
+      value:
+        male: 7.8
+        female: 7.8
+      note: "Maximum standard length, not total length, sex unspecified"
+    - source: *id013
+      value:
+        male: 11
+        female: 9
+      note: Maximum and sex-size difference
+    - source: *id009
+      value:
+        male: 14
+        female: 14
+      note: "Unqualified size value, likely not comparable"
+    - source: *id003
+      value:
+        male: 7.8
+        female: 7.8
+      note: "Standard length, unsexed."
+    - source: *id019
+      value:
+        male: 11
+        female: 9
+      note: "Average 9 cm, dominant males up to 11 cm."
+    - source: *id014
+      value:
+        male: 15.2
+        female: 12.7
+      note: Range 12.7 to 15.2 cm for the species.
+    - source: *id010
+      value:
+        male: 14
+        female: 14
+      note: Average adult size.
+    - source: *id003
+      value:
+        male: 7.8
+        female: 7.8
+      note: FishBase reports maximum standard length for male or unsexed specimen
+    - source: *id004
+      value:
+        male: 12
+        female: 10
+      note: Typical adult total length by sex
+    - source: *id009
+      value:
+        male: 14
+        female: 14
+      note: Unsexed species register maximum; not identified as a sex-specific typical aquarium size
+    - source: *id026
+      value:
+        male: 12
+        female: 10
+      note: Typical adult total length by sex
+    - source: *id003
+      value: 7.8
+      note: "Maximum standard length, sex not specified"
+    - source: *id009
+      value: 14
+      note: Unsexed length
+    - source: *id010
+      value: 14
+      note: Unsexed average adult size
+    - source: *id021
+      value:
+        male: 14
+        female: 12
+      note: "Explicit sexed aquarium maxima in this care page, larger than the typical locality-account figures\
+        \ adopted here."
+    - source: *id027
+      value:
+        male: 10
+        female: 10
+      note: Unsexed average adult size represented in both fields for comparison; not two measured sex maxima.
+    value:
+      male: 12
+      female: 10
+    confidence: medium
+    rationale: "The generator proposed 11/9 cm for male/female, checker-a 12/9, and checker-b and checker-c 12/10.\
+      \ The sex-specific medians are 12 and 9.5 cm; the female estimate is rounded to the explicitly sexed 10 cm\
+      \ in Malawi.si, which also gives 12 cm for males. These represent typical aquarium adult maxima. FishBase\
+      \ gives 7.8 cm standard length without a female measurement; it excludes the tail and cannot be substituted\
+      \ for aquarium total length. Fishipedia gives 9 cm average and 11 cm for dominant males, without establishing\
+      \ a 9 cm female maximum. The Nordic register and Tropical Fish Site give unsexed 14 cm, Einrichtungsbeispiele\
+      \ gives 14/12 cm, and the wiki gives an unsexed 12.7 to 15.2 cm band. These wider or larger accounts remain\
+      \ visible; they do not outweigh the locality account for a typical sex split. Evidence that copies an unsexed\
+      \ size into both sex fields is retained as an input conversion, not independent sexed data."
+  predation:
+    sources:
+    - *id002
+    - *id013
+    - *id003
+    - *id010
+    - &id029
+      kind: literature
+      title: "Schwalbe and Webb (2016): Detection of artificial water flows by the lateral line system of a benthic\
+        \ feeding cichlid fish, J. Exp. Biol. 219"
+      url: "https://doi.org/10.1242/jeb.136150"
+      archived: doi.org/10.1242_jeb.136150/2026-10-12T203248Z
+      accessed: '2026-10-15'
+    - &id030
+      kind: database
+      title: "FishBase: Ecology of Aulonocara korneliae"
+      url: "https://www.fishbase.se/Ecology/Aulonocara_korneliae"
+      accessed: '2026-10-15'
+      archived: fishbase.se/ecology/aulonocara_korneliae/2026-10-14T232330Z
+    - *id004
+    - *id026
+    - *id009
+    - *id021
+    - *id022
+    - &id031
+      kind: literature
+      title: "Schwalbe, Bassett and Webb (2012). Feeding in the dark: lateral-line-mediated prey detection in the\
+        \ peacock cichlid Aulonocara stuartgranti. Abstract only."
+      url: "https://doi.org/10.1242/jeb.065920"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1242_jeb.065920/2026-10-12T203641Z
+    - *id001
+    - *id028
+    - *id027
+    - &id041
+      kind: archive
+      title: cichlids.com forum thread 13934
+      url: "https://www.cichlids.com/disc/read.php?2,13934"
+      accessed: '2026-10-15'
+    - &id033
+      kind: archive
+      title: cichlids.com forum thread 13948
+      url: "https://www.cichlids.com/disc/read.php?2,13948"
+      accessed: '2026-10-15'
+    - &id042
+      kind: archive
+      title: cichlids.com forum thread 17419
+      url: "https://www.cichlids.com/disc/read.php?2,17419"
+      accessed: '2026-10-15'
+    - &id032
+      kind: database
+      title: "Malawi.si: Aulonocara korneliae, Same Bay, Chizumulu Island"
+      url: "https://www.malawi.si/Malawi/Aulonocara/Aulonocara%20korneliae/slides/Aulonocara%20korneliae%20%27Same%20Bay%2C%20Chizumulu%20Island%27.html"
+      archived: malawi.si/malawi/aulonocara/aulonocara_korneliae/slides/aulonocara_korneliae__same_bay__chizumulu_island_.html/2026-10-15T043836Z
+      accessed: '2026-10-15'
+    evidence:
+    - source: *id002
+      value: 0
+      note: Diet consists of sand-dwelling invertebrates
+    - source: *id013
+      value: 0
+      note: "Carnivorous, with bottom-dwelling invertebrate food"
+    - source: *id003
+      value: 0
+      note: Feeds on sand-dwelling invertebrates; no fish prey mentioned.
+    - source: *id029
+      value: 0
+      note: Genus feeds on benthic invertebrates found by the lateral line.
+    - source: *id010
+      value: 1
+      note: "Carnivorous, prefers live foods such as worms and shrimp; level 1 for the chance of small fry."
+    - source: *id030
+      value: 0
+      note: "Ecology describes macrofauna hunting and animal food, without fish prey"
+    - source: *id004
+      value: 0
+      note: Small sand-dwelling invertebrates are the stated natural food
+    - source: *id003
+      value: 0
+      note: Feeds on sand-dwelling invertebrates
+    - source: *id026
+      value: 0
+      note: Small invertebrates and crustaceans are the stated natural food
+    - source: *id003
+      value: 0
+      note: Rubric interpretation of reported sand-invertebrate feeding; fish predation was not experimentally excluded.
+    - source: *id009
+      value: 0
+      note: Species-specific account of small invertebrates detected in bottom sediment; no fish prey reported.
+    - source: *id021
+      value: 0
+      note: Species-specific feeding account identifies invertebrates and microscopic animal prey in sand.
+    - source: *id022
+      value: 0
+      note: "Species account describes specialized benthic invertebrate feeding; partly relies on FishBase, so is\
+        \ not an independent primary observation."
+    - source: *id010
+      value: 0
+      note: Aquarium foods named are invertebrates and prepared foods; this does not by itself exclude incidental
+        fry capture.
+    - source: *id031
+      value: 0
+      note: "Indirect support only: abstract reports brine-shrimp capture by A. stuartgranti, not a fish-prey test\
+        \ of A. korneliae."
+    - source: *id003
+      value: 0
+      note: Inferred from a diet of invertebrates taken from sand; no fish prey listed.
+    - source: *id009
+      value: 0
+      note: Small bottom-dwelling invertebrates are the reported natural food; level inferred.
+    - source: *id032
+      value: 0
+      note: Sand-associated invertebrates and crustaceans are the stated prey; level inferred.
+    - source: *id021
+      value: 0
+      note: Describes benthic microfauna rather than fish prey; level inferred.
+    - source: *id022
+      value: 0
+      note: Describes a benthic invertebrate specialist; level inferred.
+    - source: *id010
+      value: 0
+      note: "Food examples are invertebrates; this is supporting husbandry evidence, not a fish-prey trial."
+    - source: *id031
+      value: 0
+      note: "Indirect support only: the abstract tests invertebrate detection in A. stuartgranti, not predation\
+        \ by A. korneliae."
+    value: 0
+    confidence: medium
+    rationale: "The settled qualified-majority decision is level 0 with medium confidence: the generator, checker-b,\
+      \ checker-c and both tiebreakers proposed 0, while checker-a proposed 1. FishBase, the Nordic association\
+      \ and species-specific accounts describe small invertebrates taken from the substrate, without a report of\
+      \ hunting fish approaching 2 cm. The rubric already permits incidental fry capture at level 0. Checker-a inferred\
+      \ level 1 from carnivory and possible fry capture, rather than a direct observation; its proposal and the\
+      \ interpreted Tropical Fish Site evidence are retained. The Schwalbe studies concern invertebrate detection\
+      \ in A. stuartgranti, so they neither prove absence of fish predation in korneliae nor support level 1. No\
+      \ species-specific fish-prey experiment was found. The CRC public account confirms habitat and reproduction\
+      \ but gives no accessible detailed feeding data."
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    sources:
+    - *id002
+    - *id013
+    - *id009
+    - *id003
+    - *id029
+    - *id015
+    - *id010
+    - *id020
+    - *id030
+    - *id004
+    - *id026
+    - *id031
+    evidence:
+    - source: *id002
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - sand-dwelling invertebrates
+      note: ''
+    - source: *id013
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - small invertebrates
+        - dry food
+        - frozen food
+      note: ''
+    - source: *id009
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - small invertebrates
+      note: ''
+    - source: *id003
+      value:
+        type: invertivore
+      note: Forages over sand for invertebrates.
+    - source: *id029
+      value:
+        type: invertivore
+      note: Aulonocara hunt benthic invertebrates (study on A. stuartgranti).
+    - source: *id015
+      value:
+        type: invertivore
+      note: Genus sifts substrate for small items; captive diet of fine foods and small live foods.
+    - source: *id010
+      value:
+        type: invertivore
+      note: "Carnivorous, live foods preferred."
+    - source: *id020
+      value:
+        type: omnivore
+      note: Generic peacock sheet calls the genus omnivorous.
+    - source: *id030
+      value: invertivore
+      note: Mainly animal food; macrofauna hunting
+    - source: *id003
+      value: invertivore
+      note: Sand-dwelling invertebrates
+    - source: *id026
+      value: invertivore
+      note: Small invertebrates and crustaceans
+    - source: *id031
+      value: invertivore
+      note: Congeneric study tests detection of brine shrimp prey
+    - source: *id010
+      value: invertivore
+      note: Described as carnivorous; live invertebrates are preferred foods
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+      - small benthic invertebrates
+      - crustaceans
+      - quality cichlid pellets
+    confidence: high
+    rationale: "The settled unanimous decision is invertivore with bloatSensitive false and high confidence. All\
+      \ four complete profiles agree on those two voted attributes; their food lists differ and the tally retains\
+      \ the generator list. FishBase identifies sand-associated invertebrates as natural food, supported by the\
+      \ Nordic and Malawi.si accounts. The 2012 Schwalbe abstract and 2016 study support the sensory hunting mechanism\
+      \ in related A. stuartgranti only. Aquarium Industries calls peacocks omnivorous as a genus-level care description;\
+      \ that dissenting evidence remains, but the species-specific prey accounts determine the feeding type. No\
+      \ reviewed source establishes the specialized high-protein sensitivity represented by the rubric flag. A false\
+      \ flag does not imply immunity to digestive illness or permission to overfeed."
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    sources:
+    - *id009
+    - *id013
+    - *id028
+    - *id033
+    - *id019
+    - *id015
+    - *id004
+    - *id016
+    - *id026
+    evidence:
+    - source: *id009
+      value: 2
+      note: Territorial breeding males; females forage in groups
+    - source: *id013
+      value: 2
+      note: Reports hierarchy and aggression toward conspecifics
+    - source: *id028
+      value: 2
+      note: Mating is polygynandrous rather than pair-bonded
+    - source: *id019
+      value: 2
+      note: Hierarchy; may be virulent towards conspecifics.
+    - source: *id015
+      value: 2
+      note: "Congener; males are territorial, keep one male with four to six females."
+    - source: *id033
+      value: 2
+      note: "Keeper with a colony of one male and four females reports rival males in the tank. Adjudicator check:\
+        \ the rival explicitly identified in this thread is Labeotropheus trewavasae, not another male korneliae."
+    - source: *id004
+      value: 2
+      note: Territory defense is centered on breeding males
+    - source: *id009
+      value: 2
+      note: Males defend a territory; females move in groups
+    - source: *id026
+      value: 2
+      note: Recommends a male with multiple females and describes male breeding territories
+    - source: *id009
+      value: 2
+      note: Allows a male with females and suggests nonviolent tankmates
+    value: 2
+    confidence: medium
+    rationale: "All four complete profiles propose level 2. Species-specific accounts describe a male guarding a\
+      \ site and females ranging in groups, while Fishipedia describes a hierarchy and possible conspecific pursuit.\
+      \ This supports regular chasing in a properly arranged harem without evidence that routine severe injury is\
+      \ characteristic. The archive colony report describes competition from Labeotropheus trewavasae, a different\
+      \ species; it is not direct evidence of korneliae male-to-male injury."
+  aggressionHeterospecific:
+    sources:
+    - *id009
+    - *id013
+    - *id019
+    - *id015
+    - *id020
+    - *id004
+    - *id016
+    - *id026
+    - *id010
+    evidence:
+    - source: *id009
+      value: 1
+      note: Male defends a defined breeding area
+    - source: *id013
+      value: 1
+      note: Calm overall but territorial near its space
+    - source: *id019
+      value: 2
+      note: "Territorial, dislikes intruders with similar behaviour, ignores non-territorial fish."
+    - source: *id015
+      value: 2
+      note: Congener; males attack fish of similar colour pattern.
+    - source: *id020
+      value: 2
+      note: Genus is semi-aggressive and territorial.
+    - source: *id004
+      value: 1
+      note: "Described as peaceful, with territorial behavior mainly in breeding males"
+    - source: *id016
+      value: 1
+      note: General compatibility guidance calls for peaceful tankmates
+    - source: *id026
+      value: 1
+      note: Recommends peaceful cichlid tankmates and describes a localized male territory
+    - source: *id009
+      value: 1
+      note: Recommends tankmates that are not too aggressive
+    value: 1
+    confidence: medium
+    rationale: "The generator, checker-b and checker-c propose 1; checker-a proposes 2. Malawi.si and the Nordic\
+      \ association describe a relatively peaceful fish with a localized male site, supporting display and immediate-area\
+      \ defense at level 1 in a suitable tank. Fishipedia and the broader peacock accounts imply territorial chasing,\
+      \ retained as evidence for level 2, but do not establish that expelling other species is the characteristic\
+      \ behavior of a well-kept korneliae group."
+  territory:
+    sources:
+    - *id009
+    - *id013
+    - *id022
+    - *id019
+    - *id015
+    - *id004
+    - *id026
+    evidence:
+    - source: *id009
+      value:
+        size: small
+        breedingOnly: true
+      note: Male holds a cave or rock-edge site
+    - source: *id013
+      value:
+        size: small
+        breedingOnly: true
+      note: Territorial behavior is associated with breeding
+    - source: *id019
+      value:
+        size: small
+      note: Territorial species.
+    - source: *id015
+      value:
+        size: small
+      note: Males are territorial; congener.
+    - source: *id004
+      value:
+        size: small
+        breedingOnly: true
+      note: Breeding territories are centered on a cave or overhang
+    - source: *id026
+      value:
+        size: small
+        breedingOnly: true
+      note: Male territory around a cave or overhang during breeding
+    value:
+      size: small
+      breedingOnly: true
+    confidence: medium
+    rationale: "The generator, checker-b and checker-c propose a small territory linked to breeding; checker-a proposes\
+      \ a small permanent territory. Malawi.si specifically links territorial behavior mainly to breeding males\
+      \ and places the site around a cave or rock overhang. The Nordic account also describes a local male site\
+      \ visited by females. This supports small and breedingOnly true; generic territorial descriptions do not establish\
+      \ year-round defense. The scale category is inferred from the described site, not a measured 30 cm radius."
+  habitatZones:
+    sources:
+    - *id002
+    - *id009
+    - *id013
+    - *id003
+    - *id019
+    - *id015
+    - *id004
+    - *id016
+    - *id026
+    evidence:
+    - source: *id002
+      value:
+      - rock
+      - sand
+      note: Uses rocky habitat and forages over sand
+    - source: *id009
+      value:
+      - rock
+      - sand
+      note: Rock-sand transition habitat
+    - source: *id013
+      value:
+      - rock
+      - sand
+      note: Rock and sand substrate
+    - source: *id003
+      value:
+      - rock
+      - sand
+      note: "Rocky habitat, forages over sand."
+    - source: *id019
+      value:
+      - rock
+      - sand
+      note: Biotope of sand and rocks.
+    - source: *id015
+      value:
+      - rock
+      - sand
+      note: Congener; intermediate zone between rock and sand.
+    - source: *id003
+      value:
+      - rock
+      - sand
+      note: Rock-associated; forages over sand
+    - source: *id004
+      value:
+      - rock
+      - sand
+      - openWater
+      note: Rocks and open sandy areas; females school while foraging
+    - source: *id026
+      value:
+      - rock
+      - sand
+      note: Intermediate zone with foraging mainly over sand
+    - source: *id009
+      value:
+      - rock
+      - sand
+      note: Rock and sand transition habitat
+    value:
+    - rock
+    - sand
+    confidence: high
+    rationale: "The generator, checker-a and checker-c propose rock and sand; checker-b adds openWater. FishBase\
+      \ describes rocky surroundings with feeding over sand, and species-specific locality and Nordic accounts agree.\
+      \ Moving in loose foraging schools over sand does not establish an open-water habitat requirement, so the\
+      \ two substrate zones are retained."
+  social:
+    sources:
+    - *id028
+    - *id009
+    - *id013
+    - *id033
+    - *id014
+    - *id015
+    - *id004
+    - *id016
+    - *id026
+    evidence:
+    - source: *id028
+      value:
+        structure: harem
+        ratio: 3
+      note: Polygynandrous mating; maternal mouthbrooding Aquarium ratio is the input interpretation; CRC states
+        mating mode but gives no numerical ratio in the public content.
+    - source: *id009
+      value:
+        structure: harem
+        ratio: 3
+      note: Territorial male with a group of females
+    - source: *id013
+      value:
+        structure: harem
+        ratio: 3
+      note: Polygamous; recommends several females per male
+    - source: *id014
+      value:
+        structure: harem
+        ratio: 3
+      note: "Stocking ratio 1:3 M:F."
+    - source: *id015
+      value:
+        structure: harem
+        ratio: 4
+      note: Congener; 4 to 6 females.
+    - source: *id028
+      value:
+        structure: harem
+      note: Mating listed as polygynandrous.
+    - source: *id004
+      value:
+        structure: harem
+        ratio: 2
+      note: One male with two females is the stated aquarium group
+    - source: *id009
+      value:
+        structure: harem
+      note: No lasting pair; females range in groups
+    - source: *id026
+      value:
+        structure: harem
+        ratio: 2
+      note: "One male with two females, or larger groups"
+    - source: *id009
+      value:
+        structure: harem
+        ratio: 2
+      note: One male with several females
+    value:
+      structure: harem
+      ratio: 3
+    confidence: medium
+    rationale: "The generator and checker-a propose one male to three females; checker-b and checker-c propose one\
+      \ male to two females. The ratio median is 2.5, rounded to three females because Fishipedia explicitly recommends\
+      \ 1:3 and a four-fish group, also matching the wiki. Malawi.si allows 1:2, while Seriously Fish recommends\
+      \ four to six females for A. stuartgranti. These are husbandry choices rather than fixed wild harems. CRC\
+      \ describes polygynandrous mating and maternal brooding; it does not itself specify an aquarium ratio. Three\
+      \ females provide a source-supported social unit for the decided tank."
+  speciesOnly:
+    sources:
+    - *id009
+    - *id013
+    - *id015
+    - *id010
+    - *id004
+    - *id016
+    - *id026
+    evidence:
+    - source: *id009
+      value: false
+      note: Recommends peaceful tankmates
+    - source: *id013
+      value: false
+      note: Allows nonaggressive compatible species
+    - source: *id015
+      value: false
+      note: "Genus-wide warning concerns peacock hybridization, not keeping the fish alone"
+    - source: *id010
+      value: false
+      note: Combine with other Malawi haplochromines and Aulonocara.
+    - source: *id015
+      value: false
+      note: "Congener; mbuna unsuitable, other Aulonocara to avoid."
+    - source: *id004
+      value: false
+      note: Recommends peaceful cichlid tankmates
+    - source: *id026
+      value: false
+      note: Allows peaceful cichlid tankmates
+    - source: *id010
+      value: false
+      note: Suggests other haps and Aulonocara as tankmates
+    value: false
+    confidence: medium
+    rationale: "All four complete profiles propose false, retained by the settled unanimous decision with medium\
+      \ confidence. Species accounts allow peaceful Malawi companions, and the archive describes korneliae in mixed\
+      \ tanks, including one report of injury from mbuna. Advice to avoid mixing Aulonocara concerns hybridization\
+      \ and similar-looking rivals; it does not require excluding every other species. Tropical Fish Site permits\
+      \ mixed peacocks, but its broad compatibility recommendation does not negate explicit crossing warnings."
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    sources:
+    - *id015
+    - &id034
+      kind: database
+      title: "Seriously Fish: Sciaenochromis fryeri (Electric Blue Hap)"
+      url: "https://www.seriouslyfish.com/species/sciaenochromis-fryeri/"
+      accessed: '2026-10-15'
+      archived: seriouslyfish.com/species/sciaenochromis-fryeri/2026-10-14T094529Z
+    - &id038
+      kind: website
+      title: "Fishkeeper: Electric Blue Hap, Sciaenochromis fryeri species profile"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/electric-blue-hap"
+      accessed: '2026-10-15'
+      archived: fishkeeper.co.uk/fish/freshwater/cichlids/electric-blue-hap/2026-10-14T094530Z
+    - *id001
+    - *id004
+    - &id035
+      kind: literature
+      title: "Clarke (2005), Aulonocara stuartgranti Ngara Mdoka, Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/aulonocara-stuartgranti-ngara-mdoka/"
+      archived: practicalfishkeeping.co.uk/features/aulonocara-stuartgranti-ngara-mdoka/2026-10-14T094548Z
+      accessed: '2026-10-15'
+    - &id036
+      kind: database
+      title: "data/species/hybrid-groups.yaml: aulonocara and sciaenochromis-fryeri-aulonocara"
+      accessed: '2026-10-15'
+    - &id037
+      kind: website
+      title: "Malawi-Guru: Wissenswertes uber Aulonocara"
+      url: "https://malawi-guru.de/wissenswertes-ueber-aulonocara-arten-buntbarsche/"
+      accessed: '2026-10-15'
+      archived: malawi-guru.de/wissenswertes-ueber-aulonocara-arten-buntbarsche/2026-10-14T232923Z
+    - *id022
+    - *id023
+    - *id010
+    - &id039
+      kind: database
+      title: "data/species/hybrid-groups.yaml, aulonocara and sciaenochromis-fryeri-aulonocara"
+      accessed: '2026-10-15'
+    evidence:
+    - source: *id015
+      value:
+      - aulonocara
+      note: Genus-wide hybrid warning; no named species pair
+    - source: *id034
+      value:
+      - sciaenochromis-fryeri-aulonocara
+      note: Reports cross-genus spawning with Aulonocara females
+    - source: *id015
+      value:
+      - aulonocara
+      note: Other Aulonocara are best avoided because most can hybridise.
+    - source: *id001
+      value:
+      - aulonocara
+      note: Valid species of the genus Aulonocara.
+    - source: *id015
+      value:
+      - aulonocara
+      note: Warns that most Aulonocara can hybridize when mixed
+    - source: *id034
+      value:
+      - sciaenochromis-fryeri-aulonocara
+      note: Reports S. fryeri males spawning with Aulonocara females
+    - source: *id015
+      value:
+      - aulonocara
+      note: General warning that Aulonocara species can hybridize
+    - source: *id035
+      value:
+      - aulonocara
+      - sciaenochromis-fryeri-aulonocara
+      note: "Reports interbreeding risk among peacocks and anecdotal crosses with haps Adjudicator check: the accessible\
+        \ article supports Aulonocara crossing warnings but does not name S. fryeri; that part of the inherited\
+        \ interpretation is not directly substantiated here."
+    - source: *id036
+      value:
+      - aulonocara
+      - sciaenochromis-fryeri-aulonocara
+      note: Both groups explicitly list A. korneliae with basis presumed.
+    - source: *id015
+      value:
+      - aulonocara
+      note: "Genus-level warning about crossing between peacocks, applied to this valid congener."
+    - source: *id037
+      value:
+      - aulonocara
+      note: Includes korneliae in the stuartgranti group and warns about hybrids when multiple peacock species are
+        kept; also notes usual conspecific preference across groups.
+    - source: *id022
+      value:
+      - aulonocara
+      note: Species-specific warning about crossing with other peacocks; no experimental pairing documented.
+    - source: *id034
+      value:
+      - sciaenochromis-fryeri-aulonocara
+      note: Reported S. fryeri spawning with Aulonocara females; no particular peacock species identified.
+    - source: *id038
+      value:
+      - sciaenochromis-fryeri-aulonocara
+      note: Genus-level report of male fryeri seeking peacock females and excluding their males.
+    - source: *id023
+      value:
+      - aulonocara
+      note: Warns about peacock hybridization; its approval of fryeri tankmates contains no statement excluding
+        fryeri crosses.
+    - source: *id039
+      value:
+      - aulonocara
+      - sciaenochromis-fryeri-aulonocara
+      note: Both curated presumed groups list Aulonocara korneliae as a member.
+    - source: *id015
+      value:
+      - aulonocara
+      note: General warning that most Aulonocara can interbreed.
+    - source: *id022
+      value:
+      - aulonocara
+      note: Warns that A. korneliae can hybridise with other peacocks; no independently verified parentage supplied.
+    - source: *id034
+      value:
+      - sciaenochromis-fryeri-aulonocara
+      note: Reports fryeri spawning with peacock females without identifying the peacock species.
+    - source: *id038
+      value:
+      - sciaenochromis-fryeri-aulonocara
+      note: Warns of fryeri males attempting to breed with Aulonocara females.
+    value:
+    - aulonocara
+    - sciaenochromis-fryeri-aulonocara
+    confidence: medium
+    rationale: "The settled qualified-majority decision retains aulonocara and sciaenochromis-fryeri-aulonocara\
+      \ with medium confidence: the generator, checker-b, checker-c and both tiebreakers proposed both groups; checker-a\
+      \ proposed only aulonocara. Seriously Fish and Malawi-Guru warn about peacock crosses, although Malawi-Guru\
+      \ also notes usual conspecific partner preference between peacock groups. Seriously Fish separately reports\
+      \ S. fryeri spawning with Aulonocara females, and Maidenhead Aquatics reports reproductive pursuit of peacock\
+      \ females. These genus-level reports justify the second presumed group without claiming a verified S. fryeri\
+      \ x A. korneliae brood. Both existing groups already list this species and retain their presumed basis. Practical\
+      \ Fishkeeping supports peacock crossing warnings but its read article does not report a fryeri cross; the\
+      \ broader inherited attribution is retained with that limitation. Advice allowing some community combinations\
+      \ at Tropical Fish Site or Dietzenbach is not evidence against the reported risk."
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  coloration:
+    sources:
+    - *id009
+    - *id016
+    - *id022
+    - *id010
+    - *id004
+    - *id026
+    evidence:
+    - source: *id009
+      value:
+        baseColors:
+        - blue
+        - orange
+        pattern: plain
+      note: Blue male with yellow-orange area near the gills
+    - source: *id016
+      value:
+        baseColors:
+        - blue
+        - orange
+        pattern: plain
+      note: Metallic blue male with orange shoulder
+    - source: *id010
+      value:
+        baseColors:
+        - blue
+        - yellow
+      note: Mostly blue with yellow egg spots.
+    - source: *id004
+      value:
+        baseColors:
+        - blue
+        - orange
+        pattern: plain
+      note: Breeding male coloration
+    - source: *id026
+      value:
+        baseColors:
+        - blue
+        - orange
+        pattern: plain
+      note: Blue male with orange shoulder marking
+    - source: *id009
+      value:
+        baseColors:
+        - blue
+        - orange
+        pattern: plain
+      note: Blue male with a yellow-orange gill area
+    value:
+      baseColors:
+      - blue
+      - orange
+      pattern: plain
+    confidence: medium
+    rationale: "The generator, checker-b and checker-c propose blue and orange with a plain pattern; checker-a proposes\
+      \ blue and yellow with a plain pattern. The Nordic account and Malawi.si describe a warm orange or yellow-orange\
+      \ shoulder on breeding males, supporting blue and orange as the dominant colors. Tropical Fish Site emphasizes\
+      \ yellow egg spots, retained as evidence but not a dominant body color. Plain describes the predominant adult\
+      \ male appearance; female camouflage bars and anal-fin egg spots do not change that category."
+  feedingSpeed:
+    sources:
+    - *id002
+    - *id009
+    - *id015
+    - *id020
+    - *id030
+    - *id016
+    - *id010
+    evidence:
+    - source: *id002
+      value: normal
+      note: Forages deliberately over substrate; speed not stated
+    - source: *id009
+      value: normal
+      note: Accepts varied aquarium food; speed not stated
+    - source: *id015
+      value: normal
+      note: Browses and sifts substrate.
+    - source: *id020
+      value: hasty
+      note: Calls the genus greedy and messy eaters.
+    - source: *id016
+      value: normal
+      note: Small benthic prey are hunted by hovering and probing
+    - source: *id010
+      value: normal
+      note: Accepts a range of prepared foods
+    value: normal
+    confidence: low
+    rationale: "All four complete profiles propose normal, but none cites a direct comparative feeding-rate measurement.\
+      \ Substrate searching and acceptance of prepared foods support this provisional placement. The Aquarium Industries\
+      \ genus sheet describes eager feeding, which was interpreted as hasty in one evidence entry; that broader\
+      \ aquarium description does not establish the species routinely outcompetes tankmates."
+  minTank:
+    sources:
+    - *id009
+    - *id013
+    - *id033
+    - *id014
+    - *id010
+    - *id019
+    - *id015
+    - *id004
+    - *id016
+    - *id026
+    - *id021
+    - *id027
+    evidence:
+    - source: *id009
+      value:
+        volumeL: 300
+        lengthCm: 130
+        depthCm: 45
+      note: Suggests 300 to 450 litres for aquarium keeping The 130 cm length and depth were input layout estimates;
+        the page itself states 100 cm/150 L in its summary and 300 to 450 L in the text.
+    - source: *id013
+      value:
+        volumeL: 400
+        lengthCm: 130
+        depthCm: 45
+      note: Minimum for at least four fish
+    - source: *id033
+      value:
+        lengthCm: 122
+        depthCm: 36
+      note: Community report of a breeding group; tank height and volume are not stated
+    - source: *id014
+      value:
+        volumeL: 208
+      note: ''
+    - source: *id010
+      value:
+        volumeL: 200
+      note: ''
+    - source: *id019
+      value:
+        volumeL: 400
+      note: For at least four fish.
+    - source: *id015
+      value:
+        volumeL: 243
+        lengthCm: 120
+        depthCm: 45
+      note: Congener base area.
+    - source: *id004
+      value:
+        volumeL: 400
+        lengthCm: 120
+        depthCm: 50
+      note: 400 L and 120 cm are stated; depth inferred from the volume
+    - source: *id026
+      value:
+        volumeL: 400
+        lengthCm: 120
+        depthCm: 50
+      note: Volume and length stated; depth is an inferred compatible footprint
+    - source: *id009
+      value:
+        volumeL: 300
+        lengthCm: 100
+        depthCm: 45
+      note: General 300 to 450 L advice and 100 cm minimum length; depth inferred
+    - source: *id010
+      value:
+        volumeL: 200
+        lengthCm: 100
+        depthCm: 40
+      note: 200 L recommendation; dimensions are inferred from a practical tank footprint
+    - source: *id009
+      value:
+        volumeL: 150
+        lengthCm: 100
+      note: Summary minimum; the longer species text instead recommends about 300 to 450 L with peaceful companions.
+    - source: *id009
+      value:
+        volumeL: 450
+      note: Upper endpoint of the 300 to 450 L recommendation in the species text; no tank depth stated.
+    - source: *id021
+      value:
+        volumeL: 400
+      note: Harem recommendation; a larger group is recommended from about 500 L.
+    - source: *id027
+      value:
+        volumeL: 240
+      note: "Retailer care recommendation, with no measured floor dimensions."
+    - source: *id016
+      value:
+        volumeL: 246
+        lengthCm: 152
+      note: "Approximate conversion of 65 US gallons and 5 ft, without a stated tank depth."
+    value:
+      volumeL: 375
+      lengthCm: 120
+      depthCm: 50
+    confidence: medium
+    rationale: "The generator proposed 350 L/130 cm/45 cm, checker-a 200 L/120 cm/40 cm, and checker-b and checker-c\
+      \ 400 L/120 cm/50 cm. Their component medians are 375 L, 120 cm and 47.5 cm. Retain the volume and length\
+      \ medians and round the inferred depth to a practical 50 cm, allowing separate rock cover and open sand for\
+      \ one male with three females. The Nordic text recommends about 300 to 450 L, although its summary also lists\
+      \ 100 cm and 150 L; Malawi.si recommends 400 L and 120 cm, Fishipedia 400 L and 130 cm for at least four fish,\
+      \ Tropical Fish Site 200 L, the wiki 208 L, and the Wet Spot 240 L. Seriously Fish gives a 120 by 45 cm base\
+      \ and about 243 L for A. stuartgranti. Atlas pages add approximately 246 L with 152 cm length. Thus 375 L\
+      \ falls within the independent Nordic range and below the largest species-specific recommendation, rather\
+      \ than simply taking the largest proposal. No species source directly measures a necessary tank depth: the\
+      \ adopted 50 cm and inherited depth entries are layout estimates. The 122 by 36 cm archive tank held a breeding\
+      \ colony with competing tankmates and is not proof of an adequate minimum."
+  lifespanYears:
+    sources:
+    - *id013
+    - *id014
+    - *id019
+    - *id020
+    - &id040
+      kind: model-knowledge
+      title: "Model knowledge, general Aulonocara aquarium lifespan estimate"
+      accessed: '2026-10-15'
+    evidence:
+    - source: *id013
+      value:
+        min: 8
+        max: 8
+      note: Published lifespan estimate
+    - source: *id014
+      value:
+        min: 5
+        max: 10
+      note: ''
+    - source: *id019
+      value:
+        min: 8
+        max: 8
+      note: ''
+    - source: *id020
+      value:
+        min: 10
+        max: 10
+      note: "Genus, more than 10 years."
+    - source: *id013
+      value:
+        min: 8
+        max: 8
+      note: Single stated lifespan estimate
+    - source: *id040
+      value:
+        min: 6
+        max: 10
+      note: "General estimate, not a species-specific study"
+    value:
+      min: 6
+      max: 9
+    confidence: low
+    rationale: "The generator proposed 6 to 8 years, checker-a 5 to 10, checker-b 8 to 8, and checker-c 6 to 10.\
+      \ The component medians are 6 and 9 years and are retained as an approximate planning range. Fishipedia gives\
+      \ an eight-year estimate, consistent with that range, but no species-specific longevity study was found. The\
+      \ wider wiki range of 5 to 10 years and the Aquarium Industries genus statement of more than ten years remain\
+      \ cited. The latter was encoded as a point at ten in an input and is retained as that conversion, not a reported\
+      \ maximum. Neither endpoint of the decision is a demonstrated lifespan limit."
+  breeding:
+    sources:
+    - *id028
+    - *id009
+    - *id013
+    - *id015
+    - *id041
+    - *id004
+    - *id026
+    evidence:
+    - source: *id028
+      value: maternal-mouthbrooder
+      note: Public breeding classification
+    - source: *id009
+      value: maternal-mouthbrooder
+      note: Female carries the brood and releases free-swimming young
+    - source: *id013
+      value: maternal-mouthbrooder
+      note: Identifies the species as a mouthbrooder
+    - source: *id028
+      value: maternal-mouthbrooder
+      note: ''
+    - source: *id015
+      value: maternal-mouthbrooder
+      note: Congener.
+    - source: *id041
+      value: maternal-mouthbrooder
+      note: Keeper reports a pregnant female.
+    - source: *id004
+      value: maternal-mouthbrooder
+      note: ''
+    - source: *id026
+      value: maternal-mouthbrooder
+      note: ''
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: "All four complete profiles agree on maternal mouthbrooding. The CRC public classification states\
+      \ the maternal mode, supported independently by the Nordic account of females releasing young and the Malawi.si\
+      \ account. The forum contains reports of females carrying eggs; those observations support aquarium breeding\
+      \ without establishing a controlled incubation duration."
+  beginnerSuitability:
+    sources:
+    - *id009
+    - *id013
+    - *id016
+    - *id014
+    - *id019
+    - *id015
+    - *id026
+    evidence:
+    - source: *id009
+      value: moderate
+      note: Rates difficulty as medium
+    - source: *id013
+      value: easy
+      note: Care page rates captive maintenance as accessible
+    - source: *id016
+      value: moderate
+      note: Calls it low to moderate difficulty
+    - source: *id014
+      value: moderate
+      note: ''
+    - source: *id019
+      value: easy
+      note: "Robust, easy to breed."
+    - source: *id015
+      value: moderate
+      note: Congener; needs stable water.
+    - source: *id009
+      value: moderate
+      note: Species difficulty rated medium
+    - source: *id009
+      value: moderate
+      note: Register rates care difficulty as medium
+    - source: *id026
+      value: moderate
+      note: Large group tank and peaceful tankmate selection require planning
+    value: moderate
+    confidence: medium
+    rationale: "All four complete profiles propose moderate. The Nordic association and wiki assign intermediate\
+      \ difficulty, while Fishipedia calls maintenance accessible. Stable water, a suitable harem and enough floor\
+      \ area require planning even though the fish is relatively peaceful. Easy breeding alone does not make its\
+      \ social and compatibility requirements trivial."
+partners:
+  suitable:
+  - species: Peaceful Lake Malawi non-mbuna
+    reason: Species accounts allow peaceful companions using the same alkaline lake water.
+    condition: "Choose compatible adult size and behavior, with additional space beyond the minimum for the harem."
+  - species: Lake Malawi Synodontis catfish
+    reason: General Malawi husbandry sources allow appropriate lake catfish as companions.
+    condition: "Confirm the catfish species, adult size and shelter needs before stocking."
+  unsuitable:
+  - species: Other Aulonocara species and aquarium lines
+    reason: The presumed aulonocara group records crossing warnings; similar males may also provoke rivalry.
+  - species: Sciaenochromis fryeri
+    reason: The presumed cross-genus group reflects reports of fryeri males spawning with peacock females and pursuing
+      their males.
+  - species: Aggressive Lake Malawi mbuna
+    reason: Boisterous or territorial mbuna may injure this relatively peaceful peacock or prevent it feeding.
+profile:
+  overview:
+    text: "Around Chizumulu Island in Lake Malawi, this peacock searches sandy feeding patches beside rocks. Breeding\
+      \ males show blue with an orange-gold shoulder, while females are smaller and less conspicuous. A practical\
+      \ aquarium group consists of one male and three females. It is a relatively peaceful Malawi cichlid, but territory\
+      \ defense and uncertain crosses make the choice of companions important."
+    sources:
+    - *id003
+    - *id026
+    - *id009
+    - *id001
+    - *id002
+    - *id016
+  habitat:
+    text: "The known range is centered on Chizumulu Island, with the type locality on its eastern coast and Same\
+      \ Bay documented by CRC. Rocky cover adjoins the sand used for feeding; locality accounts describe shallow\
+      \ intermediate habitat, often around 3 to 10 m. The regional natural-water envelope is 21 to 29 C, pH 7.7\
+      \ to 8.6, 3 to 5 dGH and 5 to 8 dKH. Lake studies show that low calcium and magnesium hardness can coexist\
+      \ with appreciable bicarbonate alkalinity. These regional values combine observations across the lake and\
+      \ seasons; they are not all measurements made beside this island."
+    sources:
+    - *id001
+    - *id003
+    - *id028
+    - *id026
+    - *id007
+    - *id012
+    - *id011
+    - *id002
+    - *id022
+    - *id005
+  sizeAndGrowth:
+    text: "Use about 12 cm for an adult male and 10 cm for a female when planning space. Published aquarium sizes\
+      \ vary, and some accounts give larger fish. FishBase records 7.8 cm standard length, a measurement that leaves\
+      \ out the tail and does not provide a female maximum. Juveniles need room to grow and enough feeding access\
+      \ without excessive portions. The estimated lifespan of 6 to 9 years is a planning allowance around sparse\
+      \ care-sheet figures, not a measured limit."
+    sources:
+    - *id026
+    - *id003
+    - *id013
+    - *id009
+    - *id014
+    - *id002
+  husbandry:
+    text: "Plan roughly 375 litres with at least 120 cm length and about 50 cm depth for one male with three females.\
+      \ Keep much of the floor available as fine sand, with stable rockwork forming retreats and interrupting sightlines.\
+      \ Provide established biological filtration, good gas exchange and regular partial water changes. A routine\
+      \ temperature near 24 to 26 C and stable alkaline pH sit within the published care advice. The broader compatibility\
+      \ tolerances are 21 to 30 C, pH 7.5 to 8.7, 3 to 19 dGH and 5 to 15 dKH; their outer endpoints are provisional.\
+      \ Measure GH and KH separately rather than raising calcium hardness merely because Malawi water is alkaline."
+    sources:
+    - *id009
+    - *id026
+    - *id013
+    - *id021
+    - *id007
+    - *id016
+    - *id005
+  socialBehavior:
+    text: "A male courts females from a small site, often near sheltered rockwork. Females may feed together away\
+      \ from his display area, and the adults do not maintain a lasting pair bond. The recommended three females\
+      \ per male spread courtship pressure; give each female routes out of view. Conspecific chasing can establish\
+      \ a hierarchy, while defense toward other species is usually concentrated near the male. Additional males\
+      \ require substantially more room and careful observation."
+    sources:
+    - *id009
+    - *id026
+    - *id013
+    - *id028
+    - *id033
+  diet:
+    text: "Small substrate-associated invertebrates are the natural prey. Supply appropriately sized prepared cichlid\
+      \ food and varied invertebrate foods, such as frozen small crustaceans, in measured portions. Food should\
+      \ reach every member of the group. Related-species experiments support a role for the lateral line in locating\
+      \ prey; they do not test every food choice of korneliae. Predation level 0 allows accidental fry capture,\
+      \ and the absence of a special bloat-sensitivity flag does not remove the risks of overfeeding or poor water\
+      \ quality."
+    sources:
+    - *id003
+    - *id009
+    - *id010
+    - *id029
+    - *id002
+    - *id013
+  breeding:
+    text: "The female carries the eggs and developing young in her mouth after spawning near the male's site. The\
+      \ Nordic account reports release after about 20 to 22 days, while aquarium observations in the archive confirm\
+      \ females holding broods. Reduce disturbance around a brooding female and protect released young from tankmates.\
+      \ Newly released fry can take suitably small foods. Keeping one peacock species in a breeding setup helps\
+      \ preserve identifiable offspring."
+    sources:
+    - *id028
+    - *id009
+    - *id041
+    - *id015
+    - *id013
+  sexing:
+    text: "A mature displaying male is larger and predominantly blue, with warm shoulder coloration and anal-fin\
+      \ egg spots. Females remain subdued in brown or grey tones. Young fish and subordinate males can be difficult\
+      \ to identify from color alone, and egg spots by themselves do not establish sex. Collection locality and\
+      \ the appearance of mature fish are more useful than a trade label when confirming identity."
+    sources:
+    - *id026
+    - *id009
+    - *id010
+    - *id020
+    - *id013
+    - *id016
+  compatibility:
+    text: "Peaceful Malawi non-mbuna and suitably sized lake catfish are possible companions when their space and\
+      \ water needs also fit. The minimum tank here covers the recommended korneliae group, so adding other adults\
+      \ needs additional capacity. Forceful mbuna can suppress or injure it; the archive includes a report of fin\
+      \ damage in a mixed mbuna tank. Other Aulonocara and Sciaenochromis fryeri carry presumed crossing risks.\
+      \ Those group warnings do not establish a confirmed cross involving this particular species, but broad community-tank\
+      \ recommendations do not resolve the uncertainty."
+    sources:
+    - *id009
+    - *id026
+    - *id015
+    - *id034
+    - *id038
+    - *id042
+    - *id013
+  problems:
+    text: "Loss of feeding access, repeated pursuit, damaged fins and declining water quality are useful reasons\
+      \ to review the setup. Provide cover that permits escape without blocking the sandy feeding area. The Nordic\
+      \ account notes vulnerability of the large eyes to handling injuries, so handle fish carefully. Avoid excess\
+      \ food and sudden changes to water chemistry. Unexpected offspring from mixed peacock stocks may have uncertain\
+      \ ancestry even when they resemble a familiar species."
+    sources:
+    - *id009
+    - *id013
+    - *id015
+    - *id033
+    - *id016
+provenance:
+  runs:
+  - role: generator
+    model: gpt-6-luna
+    date: '2026-10-13'
+  - role: checker
+    model: claude-sonnet-5-5
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6-luna
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6-luna
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  disagreements:
+  - field: features.origin
+    proposals:
+    - by: generator
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: Lake Malawi
+        localities:
+        - Chizumulu Island
+    - by: checker-a
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+        - Chizumulu Island
+    - by: checker-b
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+        - Chizumulu Island
+    - by: checker-c
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+        - Chizumulu Island
+    decision:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: lake-malawi
+      localities:
+      - Chizumulu Island
+    rationale: "The Catalog of Fishes and FishBase restrict the known natural distribution to Chizumulu Island in\
+      \ Lake Malawi. The generator used the lake name as the waterbody key; the three checkers used lake-malawi,\
+      \ which is the canonical identifier. The CRC public photograph identifies Same Bay on that island."
+  - field: features.temperatureC.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 20
+        max: 30
+    - by: checker-a
+      value:
+        min: 21
+        max: 29
+    - by: checker-b
+      value:
+        min: 20
+        max: 30
+    - by: checker-c
+      value:
+        min: 21
+        max: 30
+    decision:
+      min: 21
+      max: 30
+    rationale: "The settled unanimous decision under the 1 C agreement threshold is 21 to 30 C with low confidence.\
+      \ The generator and checker-b proposed 20 to 30 C, checker-a 21 to 29 C, and checker-c 21 to 30 C. The rounded\
+      \ median of the agreeing bounds gives 21 to 30 C and contains the natural 21 to 29 C range. Species-specific\
+      \ recommendations are mostly 23 to 28 C, FishBase and Fishipedia give 23 to 27 C, the wiki gives 25.6 to 27.8\
+      \ C, and Seriously Fish gives 23 to 29 C for A. stuartgranti. The wider 20 to 30 C proposals extend below\
+      \ the decision, but their 20 C minimum is an inferred margin without a species-specific long-term observation.\
+      \ The adopted outer endpoints are provisional allowances, not demonstrated injury thresholds or recommended\
+      \ routine settings. Verification method: unanimous."
+  - field: features.ph.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 7.5
+        max: 8.6
+    - by: checker-a
+      value:
+        min: 7.5
+        max: 8.6
+    - by: checker-b
+      value:
+        min: 7.5
+        max: 9.0
+    - by: checker-c
+      value:
+        min: 7.5
+        max: 8.8
+    decision:
+      min: 7.5
+      max: 8.7
+    rationale: "The settled unanimous decision under the 0.3 pH agreement rule is 7.5 to 8.7 with medium confidence.\
+      \ The generator and checker-a proposed 7.5 to 8.6, checker-b 7.5 to 9.0, and checker-c 7.5 to 8.8. The median\
+      \ upper bound of the agreeing proposals is 8.7. Nordic and Fishipedia species advice is 7.5 to 8.5, Tropical\
+      \ Fish Site gives 7.6 to 8.6, and the wiki gives 7.8 to 8.6. The wider Seriously Fish recommendation of 7.5\
+      \ to 9.0 is for related A. stuartgranti, not a tested limit for korneliae; it remains visible as indirect\
+      \ evidence. This compromise contains the natural range without interpreting any care target as a physiological\
+      \ failure boundary. Verification method: unanimous."
+  - field: features.ghDgh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 3
+        max: 15
+    - by: checker-a
+      value:
+        min: 3
+        max: 20
+    - by: checker-b
+      value:
+        min: 3
+        max: 25
+    - by: checker-c
+      value:
+        min: 3
+        max: 18
+    - by: tiebreaker-1
+      value:
+        min: 3
+        max: 25
+    - by: tiebreaker-2
+      value:
+        min: 3
+        max: 18
+    decision:
+      min: 3
+      max: 19
+    rationale: "The settled median decision is 3 to 19 dGH with low confidence and 3 of 6 votes in the largest agreement\
+      \ cluster. The generator proposed 3 to 15, checker-a 3 to 20, checker-b 3 to 25, checker-c 3 to 18, tiebreaker-1\
+      \ 3 to 25, and tiebreaker-2 3 to 18 dGH. The ordered upper bounds are 15, 18, 18, 20, 25 and 25; their median\
+      \ is 19, while every lower bound is 3. No qualified majority exists, so this follows the required median rather\
+      \ than the narrowest intersection. Species targets include 5 to 15 dGH at Einrichtungsbeispiele, 8 to 15 at\
+      \ Fishipedia, and 10 to 18 dH for breeding at Tropical Fish Site, whose dH label is not explicitly separated\
+      \ into GH and KH. OATA gives 12 to 18 dGH for Malawi fish. Wider advice remains cited: Aquarium Industries\
+      \ gives 150 to 350 ppm, approximately 8.4 to 19.6 dGH, Dietzenbach gives conflicting 5 to 15 and 10 to 20\
+      \ dGH for A. stuartgranti, and Seriously Fish gives 10 to 25 dGH for that relative. The decided upper bound\
+      \ is narrower than the latter two ranges and is a provisional keeping envelope, not evidence of harm above\
+      \ 19. The natural 3 to 5 dGH must remain included. AquaPortail and Diapteron returned HTTP 403 and supply\
+      \ no readable evidence. Verification method: median."
+  - field: features.khDkh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 5
+        max: 15
+    - by: checker-a
+      value:
+        min: 4
+        max: 12
+    - by: checker-b
+      value:
+        min: 5
+        max: 15
+    - by: checker-c
+      value:
+        min: 5
+        max: 15
+    - by: tiebreaker-1
+      value:
+        min: 5
+        max: 15
+    - by: tiebreaker-2
+      value:
+        min: 5
+        max: 15
+    decision:
+      min: 5
+      max: 15
+    rationale: "The settled qualified-majority decision is 5 to 15 dKH with low confidence and 5 of 6 agreeing votes.\
+      \ The generator, checker-b, checker-c, tiebreaker-1 and tiebreaker-2 proposed 5 to 15; checker-a proposed\
+      \ 4 to 12 dKH. The latter lower endpoint was inferred from pH and general hardness advice, not a KH measurement.\
+      \ The JBL brochure explicitly recommends 5 to 15 dKH for the Malawi group including Aulonocara, OATA gives\
+      \ 10 to 15 dKH, and Cichlid Atlas describes a similar carbonate-hardness target. The related A. stuartgranti\
+      \ account at Dietzenbach gives 6 to 10 dKH. The decision contains the natural 5 to 8 dKH and allows ordinary\
+      \ buffering practice, but species-specific long-term harm thresholds were not established. Inherited evidence\
+      \ containing pH or unspecified dH numbers remains for transparency and is not treated as a direct KH measurement.\
+      \ Verification method: qualified-majority."
+  - field: features.maxSizeCm
+    proposals:
+    - by: generator
+      value:
+        male: 11
+        female: 9
+    - by: checker-a
+      value:
+        male: 12
+        female: 9
+    - by: checker-b
+      value:
+        male: 12
+        female: 10
+    - by: checker-c
+      value:
+        male: 12
+        female: 10
+    decision:
+      male: 12
+      female: 10
+    rationale: "The generator proposed 11/9 cm for male/female, checker-a 12/9, and checker-b and checker-c 12/10.\
+      \ The sex-specific medians are 12 and 9.5 cm; the female estimate is rounded to the explicitly sexed 10 cm\
+      \ in Malawi.si, which also gives 12 cm for males. These represent typical aquarium adult maxima. FishBase\
+      \ gives 7.8 cm standard length without a female measurement; it excludes the tail and cannot be substituted\
+      \ for aquarium total length. Fishipedia gives 9 cm average and 11 cm for dominant males, without establishing\
+      \ a 9 cm female maximum. The Nordic register and Tropical Fish Site give unsexed 14 cm, Einrichtungsbeispiele\
+      \ gives 14/12 cm, and the wiki gives an unsexed 12.7 to 15.2 cm band. These wider or larger accounts remain\
+      \ visible; they do not outweigh the locality account for a typical sex split. Evidence that copies an unsexed\
+      \ size into both sex fields is retained as an input conversion, not independent sexed data."
+  - field: features.predation
+    proposals:
+    - by: generator
+      value: 0
+    - by: checker-a
+      value: 1
+    - by: checker-b
+      value: 0
+    - by: checker-c
+      value: 0
+    - by: tiebreaker-1
+      value: 0
+    - by: tiebreaker-2
+      value: 0
+    decision: 0
+    rationale: "The settled qualified-majority decision is level 0 with medium confidence: the generator, checker-b,\
+      \ checker-c and both tiebreakers proposed 0, while checker-a proposed 1. FishBase, the Nordic association\
+      \ and species-specific accounts describe small invertebrates taken from the substrate, without a report of\
+      \ hunting fish approaching 2 cm. The rubric already permits incidental fry capture at level 0. Checker-a inferred\
+      \ level 1 from carnivory and possible fry capture, rather than a direct observation; its proposal and the\
+      \ interpreted Tropical Fish Site evidence are retained. The Schwalbe studies concern invertebrate detection\
+      \ in A. stuartgranti, so they neither prove absence of fish predation in korneliae nor support level 1. No\
+      \ species-specific fish-prey experiment was found. The CRC public account confirms habitat and reproduction\
+      \ but gives no accessible detailed feeding data. Verification method: qualified-majority."
+  - field: features.diet
+    proposals:
+    - by: generator
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - small benthic invertebrates
+        - crustaceans
+        - quality cichlid pellets
+    - by: checker-a
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - chironomid larvae
+        - brine shrimp
+        - mosquito larvae
+        - frozen food
+        - pellets
+    - by: checker-b
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - sand-dwelling invertebrates
+        - crustaceans
+        - insect larvae
+    - by: checker-c
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - small invertebrates
+        - crustaceans
+        - prepared aquarium foods
+    decision:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+      - small benthic invertebrates
+      - crustaceans
+      - quality cichlid pellets
+    rationale: "The settled unanimous decision is invertivore with bloatSensitive false and high confidence. All\
+      \ four complete profiles agree on those two voted attributes; their food lists differ and the tally retains\
+      \ the generator list. FishBase identifies sand-associated invertebrates as natural food, supported by the\
+      \ Nordic and Malawi.si accounts. The 2012 Schwalbe abstract and 2016 study support the sensory hunting mechanism\
+      \ in related A. stuartgranti only. Aquarium Industries calls peacocks omnivorous as a genus-level care description;\
+      \ that dissenting evidence remains, but the species-specific prey accounts determine the feeding type. No\
+      \ reviewed source establishes the specialized high-protein sensitivity represented by the rubric flag. A false\
+      \ flag does not imply immunity to digestive illness or permission to overfeed. Verification method: unanimous."
+  - field: features.aggressionHeterospecific
+    proposals:
+    - by: generator
+      value: 1
+    - by: checker-a
+      value: 2
+    - by: checker-b
+      value: 1
+    - by: checker-c
+      value: 1
+    decision: 1
+    rationale: "The generator, checker-b and checker-c propose 1; checker-a proposes 2. Malawi.si and the Nordic\
+      \ association describe a relatively peaceful fish with a localized male site, supporting display and immediate-area\
+      \ defense at level 1 in a suitable tank. Fishipedia and the broader peacock accounts imply territorial chasing,\
+      \ retained as evidence for level 2, but do not establish that expelling other species is the characteristic\
+      \ behavior of a well-kept korneliae group."
+  - field: features.territory
+    proposals:
+    - by: generator
+      value:
+        size: small
+        breedingOnly: true
+    - by: checker-a
+      value:
+        size: small
+        breedingOnly: false
+    - by: checker-b
+      value:
+        size: small
+        breedingOnly: true
+    - by: checker-c
+      value:
+        size: small
+        breedingOnly: true
+    decision:
+      size: small
+      breedingOnly: true
+    rationale: "The generator, checker-b and checker-c propose a small territory linked to breeding; checker-a proposes\
+      \ a small permanent territory. Malawi.si specifically links territorial behavior mainly to breeding males\
+      \ and places the site around a cave or rock overhang. The Nordic account also describes a local male site\
+      \ visited by females. This supports small and breedingOnly true; generic territorial descriptions do not establish\
+      \ year-round defense. The scale category is inferred from the described site, not a measured 30 cm radius."
+  - field: features.habitatZones
+    proposals:
+    - by: generator
+      value:
+      - rock
+      - sand
+    - by: checker-a
+      value:
+      - rock
+      - sand
+    - by: checker-b
+      value:
+      - rock
+      - sand
+      - openWater
+    - by: checker-c
+      value:
+      - rock
+      - sand
+    decision:
+    - rock
+    - sand
+    rationale: "The generator, checker-a and checker-c propose rock and sand; checker-b adds openWater. FishBase\
+      \ describes rocky surroundings with feeding over sand, and species-specific locality and Nordic accounts agree.\
+      \ Moving in loose foraging schools over sand does not establish an open-water habitat requirement, so the\
+      \ two substrate zones are retained."
+  - field: features.social
+    proposals:
+    - by: generator
+      value:
+        structure: harem
+        ratio: 3
+    - by: checker-a
+      value:
+        structure: harem
+        ratio: 3
+    - by: checker-b
+      value:
+        structure: harem
+        ratio: 2
+    - by: checker-c
+      value:
+        structure: harem
+        ratio: 2
+    decision:
+      structure: harem
+      ratio: 3
+    rationale: "The generator and checker-a propose one male to three females; checker-b and checker-c propose one\
+      \ male to two females. The ratio median is 2.5, rounded to three females because Fishipedia explicitly recommends\
+      \ 1:3 and a four-fish group, also matching the wiki. Malawi.si allows 1:2, while Seriously Fish recommends\
+      \ four to six females for A. stuartgranti. These are husbandry choices rather than fixed wild harems. CRC\
+      \ describes polygynandrous mating and maternal brooding; it does not itself specify an aquarium ratio. Three\
+      \ females provide a source-supported social unit for the decided tank."
+  - field: features.hybridGroups
+    proposals:
+    - by: generator
+      value:
+      - aulonocara
+      - sciaenochromis-fryeri-aulonocara
+    - by: checker-a
+      value:
+      - aulonocara
+    - by: checker-b
+      value:
+      - aulonocara
+      - sciaenochromis-fryeri-aulonocara
+    - by: checker-c
+      value:
+      - aulonocara
+      - sciaenochromis-fryeri-aulonocara
+    - by: tiebreaker-1
+      value:
+      - aulonocara
+      - sciaenochromis-fryeri-aulonocara
+    - by: tiebreaker-2
+      value:
+      - aulonocara
+      - sciaenochromis-fryeri-aulonocara
+    decision:
+    - aulonocara
+    - sciaenochromis-fryeri-aulonocara
+    rationale: "The settled qualified-majority decision retains aulonocara and sciaenochromis-fryeri-aulonocara\
+      \ with medium confidence: the generator, checker-b, checker-c and both tiebreakers proposed both groups; checker-a\
+      \ proposed only aulonocara. Seriously Fish and Malawi-Guru warn about peacock crosses, although Malawi-Guru\
+      \ also notes usual conspecific partner preference between peacock groups. Seriously Fish separately reports\
+      \ S. fryeri spawning with Aulonocara females, and Maidenhead Aquatics reports reproductive pursuit of peacock\
+      \ females. These genus-level reports justify the second presumed group without claiming a verified S. fryeri\
+      \ x A. korneliae brood. Both existing groups already list this species and retain their presumed basis. Practical\
+      \ Fishkeeping supports peacock crossing warnings but its read article does not report a fryeri cross; the\
+      \ broader inherited attribution is retained with that limitation. Advice allowing some community combinations\
+      \ at Tropical Fish Site or Dietzenbach is not evidence against the reported risk. Verification method: qualified-majority."
+  - field: features.coloration
+    proposals:
+    - by: generator
+      value:
+        baseColors:
+        - blue
+        - orange
+        pattern: plain
+    - by: checker-a
+      value:
+        baseColors:
+        - blue
+        - yellow
+        pattern: plain
+    - by: checker-b
+      value:
+        baseColors:
+        - blue
+        - orange
+        pattern: plain
+    - by: checker-c
+      value:
+        baseColors:
+        - blue
+        - orange
+        pattern: plain
+    decision:
+      baseColors:
+      - blue
+      - orange
+      pattern: plain
+    rationale: "The generator, checker-b and checker-c propose blue and orange with a plain pattern; checker-a proposes\
+      \ blue and yellow with a plain pattern. The Nordic account and Malawi.si describe a warm orange or yellow-orange\
+      \ shoulder on breeding males, supporting blue and orange as the dominant colors. Tropical Fish Site emphasizes\
+      \ yellow egg spots, retained as evidence but not a dominant body color. Plain describes the predominant adult\
+      \ male appearance; female camouflage bars and anal-fin egg spots do not change that category."
+  - field: features.minTank
+    proposals:
+    - by: generator
+      value:
+        volumeL: 350
+        lengthCm: 130
+        depthCm: 45
+    - by: checker-a
+      value:
+        volumeL: 200
+        lengthCm: 120
+        depthCm: 40
+    - by: checker-b
+      value:
+        volumeL: 400
+        lengthCm: 120
+        depthCm: 50
+    - by: checker-c
+      value:
+        volumeL: 400
+        lengthCm: 120
+        depthCm: 50
+    decision:
+      volumeL: 375
+      lengthCm: 120
+      depthCm: 50
+    rationale: "The generator proposed 350 L/130 cm/45 cm, checker-a 200 L/120 cm/40 cm, and checker-b and checker-c\
+      \ 400 L/120 cm/50 cm. Their component medians are 375 L, 120 cm and 47.5 cm. Retain the volume and length\
+      \ medians and round the inferred depth to a practical 50 cm, allowing separate rock cover and open sand for\
+      \ one male with three females. The Nordic text recommends about 300 to 450 L, although its summary also lists\
+      \ 100 cm and 150 L; Malawi.si recommends 400 L and 120 cm, Fishipedia 400 L and 130 cm for at least four fish,\
+      \ Tropical Fish Site 200 L, the wiki 208 L, and the Wet Spot 240 L. Seriously Fish gives a 120 by 45 cm base\
+      \ and about 243 L for A. stuartgranti. Atlas pages add approximately 246 L with 152 cm length. Thus 375 L\
+      \ falls within the independent Nordic range and below the largest species-specific recommendation, rather\
+      \ than simply taking the largest proposal. No species source directly measures a necessary tank depth: the\
+      \ adopted 50 cm and inherited depth entries are layout estimates. The 122 by 36 cm archive tank held a breeding\
+      \ colony with competing tankmates and is not proof of an adequate minimum."
+  - field: features.lifespanYears
+    proposals:
+    - by: generator
+      value:
+        min: 6
+        max: 8
+    - by: checker-a
+      value:
+        min: 5
+        max: 10
+    - by: checker-b
+      value:
+        min: 8
+        max: 8
+    - by: checker-c
+      value:
+        min: 6
+        max: 10
+    decision:
+      min: 6
+      max: 9
+    rationale: "The generator proposed 6 to 8 years, checker-a 5 to 10, checker-b 8 to 8, and checker-c 6 to 10.\
+      \ The component medians are 6 and 9 years and are retained as an approximate planning range. Fishipedia gives\
+      \ an eight-year estimate, consistent with that range, but no species-specific longevity study was found. The\
+      \ wider wiki range of 5 to 10 years and the Aquarium Industries genus statement of more than ten years remain\
+      \ cited. The latter was encoded as a point at ten in an input and is retained as that conversion, not a reported\
+      \ maximum. Neither endpoint of the decision is a demonstrated lifespan limit."
