@@ -33,3 +33,5 @@ export type {
   UploadFile,
   PublishPostRequest,
 } from "./client.js";
+export { navigationMachine, selectedTab, canonicalPath } from "./navigation.js";
+export type { NavigationTab, NavigationEvent, NavigationContext } from "./navigation.js";
