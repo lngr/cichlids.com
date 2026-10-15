@@ -17,6 +17,7 @@ public static class TanksEndpoints
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status403Forbidden);
         group.MapGet("/", ListAsync).WithName("ListTanks");
+        group.MapGet("/{id:long}/time-lapse", GetTimeLapseAsync).WithName("GetTankTimeLapse");
         group.MapGet("/{id:long}", GetByIdAsync).WithName("GetTank");
         group.MapGet("/{id:long}/comments", ListCommentsAsync).WithName("ListTankComments");
         group.MapPost("/{id:long}/comments", CreateCommentAsync).WithName("CreateTankComment")
@@ -62,6 +63,15 @@ public static class TanksEndpoints
         var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
         var result = await queryService.ListAsync(user, categoryFilter, normalizedOffset, normalizedLimit, cancellationToken);
         return TypedResults.Ok(result);
+    }
+
+    private static async Task<Results<Ok<TankTimeLapseDto>, ProblemHttpResult>> GetTimeLapseAsync(
+        TankTimeLapseQueryService queryService, long id, CancellationToken cancellationToken)
+    {
+        var result = await queryService.GetAsync(id, cancellationToken);
+        return result is null
+            ? ApiProblems.WithCode(StatusCodes.Status404NotFound, "Tank unavailable", "This tank is unavailable.", "tank_not_found")
+            : TypedResults.Ok(result);
     }
 
     private static async Task<Results<Ok<TankDetailDto>, NotFound>> GetByIdAsync(

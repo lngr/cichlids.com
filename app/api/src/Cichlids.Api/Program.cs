@@ -124,6 +124,7 @@ builder.Services.AddExceptionHandler<NonMemberLoginExceptionHandler>();
 builder.Services.AddScoped<SpeciesQueryService>();
 builder.Services.AddScoped<PicturesQueryService>();
 builder.Services.AddScoped<TanksQueryService>();
+builder.Services.AddScoped<TankTimeLapseQueryService>();
 builder.Services.AddScoped<TanksWriteService>();
 builder.Services.AddScoped<ProfilesQueryService>();
 builder.Services.AddScoped<CommentsQueryService>();
