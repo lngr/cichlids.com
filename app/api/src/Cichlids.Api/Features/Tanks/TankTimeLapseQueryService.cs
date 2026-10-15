@@ -12,28 +12,30 @@ public sealed record TankTimeLapseDto(bool IsShowcase, IReadOnlyList<TankTimeLap
 
 public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObjectStore objectStore)
 {
-    public async Task<TankTimeLapseDto?> GetAsync(long id, CancellationToken cancellationToken)
+    public async Task<TankTimeLapseDto?> GetAsync(long id, CancellationToken cancellationToken) =>
+        (await GetManyAsync([id], cancellationToken)).GetValueOrDefault(id);
+
+    public async Task<Dictionary<long, TankTimeLapseDto>> GetManyAsync(IReadOnlyCollection<long> tankIds, CancellationToken cancellationToken)
     {
         var now = DateTimeOffset.UtcNow;
         var visibleProfiles = context.Profiles.Where(p => p.SuspendedUntil == null || p.SuspendedUntil <= now);
-        var tank = await context.Tanks.AsNoTracking()
-            .Where(t => t.Id == id && t.State == TankState.Published && t.DeletedAt == null
+        var tanks = await context.Tanks.AsNoTracking()
+            .Where(t => tankIds.Contains(t.Id) && t.State == TankState.Published && t.DeletedAt == null
                 && visibleProfiles.Any(p => p.Id == t.ProfileId))
-            .FirstOrDefaultAsync(cancellationToken);
-        if (tank is null) return null;
+            .ToListAsync(cancellationToken);
+        var idsOfTanks = tanks.Select(t => t.Id).ToList();
 
         var posts = await context.Posts.AsNoTracking()
-            .Where(p => p.TankId == id && p.State == PostState.Published && p.DeletedAt == null
+            .Where(p => p.TankId != null && idsOfTanks.Contains(p.TankId.Value) && p.State == PostState.Published && p.DeletedAt == null
                 && visibleProfiles.Any(a => a.Id == p.AuthorProfileId && a.Kind == ProfileKind.Member))
             .OrderByDescending(p => p.PublishedAt ?? p.CreatedAt).ThenByDescending(p => p.Id)
             .ToListAsync(cancellationToken);
         var postIds = posts.Select(p => p.Id).ToList();
         var postMedia = await context.PostMedia.Where(pm => postIds.Contains(pm.PostId))
             .OrderBy(pm => pm.Sort).ToListAsync(cancellationToken);
-        var directIds = await context.TankMedia.Where(tm => tm.TankId == id)
-            .Select(tm => tm.MediaItemId).ToListAsync(cancellationToken);
-        if (tank.MainMediaId is { } mainId) directIds.Add(mainId);
-        var ids = directIds.Concat(postMedia.Select(pm => pm.MediaItemId)).Distinct().ToList();
+        var directMedia = await context.TankMedia.Where(tm => idsOfTanks.Contains(tm.TankId)).ToListAsync(cancellationToken);
+        var ids = directMedia.Select(tm => tm.MediaItemId).Concat(tanks.Where(t => t.MainMediaId != null).Select(t => t.MainMediaId!.Value))
+            .Concat(postMedia.Select(pm => pm.MediaItemId)).Distinct().ToList();
         var media = await context.MediaItems.AsNoTracking()
             .Where(m => ids.Contains(m.Id) && m.Kind == MediaKind.Photo
                 && (m.OwnerProfileId == null || visibleProfiles.Any(p => p.Id == m.OwnerProfileId && p.Kind == ProfileKind.Member)))
@@ -56,10 +58,30 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
         var story = posts.Select(p => new TankStoryPostDto(p.Id, slugs.GetValueOrDefault(p.Id), p.Title,
             p.Description, p.PublishedAt ?? p.CreatedAt, postMedia.Where(pm => pm.PostId == p.Id)
                 .Select(pm => pm.MediaItemId).Where(photoIds.Contains).ToList())).ToList();
+        var members = await visibleProfiles.Where(p => p.Kind == ProfileKind.Member && tanks.Select(t => t.ProfileId).Contains(p.Id))
+            .Select(p => p.Id).ToListAsync(cancellationToken);
+        var result = new Dictionary<long, TankTimeLapseDto>();
+        foreach (var tank in tanks)
+        {
+            var ownPosts = posts.Where(p => p.TankId == tank.Id).Select(p => p.Id).ToHashSet();
+            var ownIds = directMedia.Where(m => m.TankId == tank.Id).Select(m => m.MediaItemId)
+                .Concat(postMedia.Where(pm => ownPosts.Contains(pm.PostId)).Select(pm => pm.MediaItemId)).ToHashSet();
+            if (tank.MainMediaId is { } main) ownIds.Add(main);
+            var ownPhotos = photos.Where(p => ownIds.Contains(p.MediaItemId)).Select(p => p with
+            {
+                PublishedAt = postMedia.Where(pm => pm.MediaItemId == p.MediaItemId && ownPosts.Contains(pm.PostId))
+                    .Select(pm => postDates[pm.PostId]).DefaultIfEmpty(media.First(m => m.Id == p.MediaItemId).CreatedAt).Min()
+            }).OrderBy(p => p.PublishedAt).ThenBy(p => p.MediaItemId).ToList();
+            result[tank.Id] = new TankTimeLapseDto(IsShowcase(ownPhotos, members.Contains(tank.ProfileId)), ownPhotos,
+                story.Where(p => ownPosts.Contains(p.Id)).ToList());
+        }
+        return result;
+    }
+
+    public static bool IsShowcase(IReadOnlyCollection<TankTimeLapsePhotoDto> photos, bool member)
+    {
         var dates = photos.Select(p => p.TakenAt ?? p.PublishedAt).ToList();
-        var qualifies = dates.Count >= 8 && dates.Max() >= dates.Min().AddYears(1)
-            && dates.Select(d => (d.Year, d.Month)).Distinct().Count() >= 8
-            && await visibleProfiles.AnyAsync(p => p.Id == tank.ProfileId && p.Kind == ProfileKind.Member, cancellationToken);
-        return new TankTimeLapseDto(qualifies, photos, story);
+        return member && dates.Count >= 8 && dates.Max() >= dates.Min().AddYears(1)
+            && dates.Select(d => (d.Year, d.Month)).Distinct().Count() >= 8;
     }
 }
