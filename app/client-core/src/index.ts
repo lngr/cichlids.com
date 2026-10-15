@@ -1,5 +1,8 @@
 export { createCichlidsClient, ApiError } from "./client.js";
 export type {
+  CareEntry,
+  CareAmountRequest,
+  LogCareRequest,
   DiscoverArchive,
   DiscoverItem,
   CichlidsClient,
@@ -45,3 +48,5 @@ export type {
 export { navigationMachine, selectedTab, canonicalPath } from "./navigation.js";
 export type { NavigationTab, NavigationEvent, NavigationContext } from "./navigation.js";
 export { tankStoryMachine } from "./tankStory.js";
+
+export { careMachine } from "./care.js";

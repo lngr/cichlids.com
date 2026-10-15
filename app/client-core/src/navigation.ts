@@ -5,7 +5,7 @@ export type NavigationEvent =
   | { type: "TAB"; tab: NavigationTab }
   | { type: "OPEN" | "REPLACE" | "DISMISS" | "EXTERNAL"; path: string }
   | { type: "BACK" | "HOME" | "CREATE" }
-  | { type: "PHOTO"; authenticated: boolean };
+  | { type: "PHOTO" | "WATER_CHANGE"; authenticated: boolean };
 export type NavigationContext = {
   path: string;
   history: string[];
@@ -22,7 +22,7 @@ export function selectedTab(path: string): NavigationTab {
   const root = path.split(/[/?]/)[1];
   if (["discover", "gallery", "tanks", "community"].includes(root)) return "discover";
   if (["fish", "species"].includes(root)) return "fish";
-  if (["me", "profile", "upload", "onboarding"].includes(root)) return "me";
+  if (["me", "profile", "upload", "onboarding", "care"].includes(root)) return "me";
   return "today";
 }
 function parentPath(path: string): string {
@@ -31,12 +31,12 @@ function parentPath(path: string): string {
   const tab = selectedTab(path);
   return path.split("?")[0] === `/${tab}` ? "/today" : `/${tab}`;
 }
-const viewNames = ["today", "discover", "fish", "me", "gallery", "tanks", "community", "species", "profile", "upload", "onboarding"] as const;
+const viewNames = ["today", "discover", "fish", "me", "gallery", "tanks", "community", "species", "profile", "upload", "onboarding", "care"] as const;
 export const navigationMachine = setup({
   types: { context: {} as NavigationContext, events: {} as NavigationEvent },
   actions: {
     open: assign(({ context, event }) => {
-      const path = canonicalPath(event.type === "TAB" ? `/${event.tab}` : event.type === "HOME" ? "/today" : event.type === "PHOTO" ? event.authenticated ? "/upload" : "/me" : "path" in event ? event.path : context.path);
+      const path = canonicalPath(event.type === "TAB" ? `/${event.tab}` : event.type === "HOME" ? "/today" : event.type === "PHOTO" || event.type === "WATER_CHANGE" ? event.authenticated ? event.type === "PHOTO" ? "/upload" : "/care" : "/me" : "path" in event ? event.path : context.path);
       const external = event.type === "EXTERNAL";
       const replace = event.type === "REPLACE" || event.type === "DISMISS" || event.type === "HOME";
       return {
@@ -79,12 +79,13 @@ export const navigationMachine = setup({
             { target: "unknown" },
           ],
         },
-        today: {}, discover: {}, fish: {}, me: {}, gallery: {}, tanks: {}, community: {}, species: {}, profile: {}, upload: {}, onboarding: {}, unknown: {},
+        today: {}, discover: {}, fish: {}, me: {}, gallery: {}, tanks: {}, community: {}, species: {}, profile: {}, upload: {}, onboarding: {}, care: {}, unknown: {},
       },
     },
     creating: {
       on: {
         BACK: "viewing.routing",
+        WATER_CHANGE: { target: "viewing.routing", actions: "open" },
         PHOTO: { target: "viewing.routing", actions: "open" },
       },
     },

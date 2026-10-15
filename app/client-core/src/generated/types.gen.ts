@@ -13,6 +13,31 @@ export type AuthorDto = {
     avatarUrl: null | string;
 };
 
+export type CareAmountDto = {
+    value: number | string;
+    unit: CareAmountUnit;
+    liters: null | number | string;
+};
+
+export type CareAmountRequest = {
+    value: number | string;
+    unit: string;
+};
+
+export type CareAmountUnit = 'liter' | 'us_gallon' | 'percent';
+
+export type CareEntryDto = {
+    id: number | string;
+    tankId: number | string;
+    authorProfileId: number | string;
+    kind: CareKind;
+    occurredAt: string;
+    recordedAt: string;
+    amount: null | CareAmountDto;
+};
+
+export type CareKind = 'water_change';
+
 export type CommentCreatedDto = {
     comment: null | CommentDto;
     rating: null | CreatedRatingDto;
@@ -191,6 +216,12 @@ export type LegacyTankDto = {
     region: null | TankRegion;
 };
 
+export type LogCareRequest = {
+    occurredAt?: null | string;
+    amount?: null | CareAmountRequest;
+    kind?: string;
+};
+
 export type MeDto = {
     profile: ProfileDetailDto;
     roles: Array<string>;
@@ -225,6 +256,11 @@ export type OutboxEventDto = {
 
 export type OutboxRedeliveryDto = {
     count: number | string;
+};
+
+export type PagedResponseOfCareEntryDto = {
+    total: number | string;
+    items: Array<CareEntryDto>;
 };
 
 export type PagedResponseOfCommentDto = {
@@ -477,6 +513,10 @@ export type TodayTankDto = {
 export type TodayWeeklyTankDto = {
     region: TankRegion;
     tank: DiscoverItemDto;
+};
+
+export type UpdateCareRequest = {
+    amount: null | CareAmountRequest;
 };
 
 export type VolumeDto = {
@@ -1344,6 +1384,151 @@ export type CreateTankCommentResponses = {
 };
 
 export type CreateTankCommentResponse = CreateTankCommentResponses[keyof CreateTankCommentResponses];
+
+export type ListCareEntriesData = {
+    body?: never;
+    path: {
+        tankId: number;
+    };
+    query?: {
+        offset?: number | string;
+        limit?: number | string;
+    };
+    url: '/api/tanks/{tankId}/care';
+};
+
+export type ListCareEntriesErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type ListCareEntriesError = ListCareEntriesErrors[keyof ListCareEntriesErrors];
+
+export type ListCareEntriesResponses = {
+    /**
+     * OK
+     */
+    200: PagedResponseOfCareEntryDto;
+};
+
+export type ListCareEntriesResponse = ListCareEntriesResponses[keyof ListCareEntriesResponses];
+
+export type LogCareEntryData = {
+    body: LogCareRequest;
+    path: {
+        tankId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/care';
+};
+
+export type LogCareEntryErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type LogCareEntryError = LogCareEntryErrors[keyof LogCareEntryErrors];
+
+export type LogCareEntryResponses = {
+    /**
+     * Created
+     */
+    201: CareEntryDto;
+};
+
+export type LogCareEntryResponse = LogCareEntryResponses[keyof LogCareEntryResponses];
+
+export type DeleteCareEntryData = {
+    body?: never;
+    path: {
+        tankId: number;
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/care/{id}';
+};
+
+export type DeleteCareEntryErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type DeleteCareEntryError = DeleteCareEntryErrors[keyof DeleteCareEntryErrors];
+
+export type DeleteCareEntryResponses = {
+    /**
+     * OK
+     */
+    200: CareEntryDto;
+};
+
+export type DeleteCareEntryResponse = DeleteCareEntryResponses[keyof DeleteCareEntryResponses];
+
+export type UpdateCareEntryData = {
+    body: UpdateCareRequest;
+    path: {
+        tankId: number;
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/care/{id}';
+};
+
+export type UpdateCareEntryErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type UpdateCareEntryError = UpdateCareEntryErrors[keyof UpdateCareEntryErrors];
+
+export type UpdateCareEntryResponses = {
+    /**
+     * OK
+     */
+    200: CareEntryDto;
+};
+
+export type UpdateCareEntryResponse = UpdateCareEntryResponses[keyof UpdateCareEntryResponses];
 
 export type GetProfileData = {
     body?: never;

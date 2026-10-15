@@ -69,3 +69,14 @@ describe("navigation", () => {
     expect(actor.getSnapshot().context.path).toBe("/today");
   });
 });
+
+
+it("routes Water change from the create sheet through tank selection", () => {
+  const actor = createActor(navigationMachine).start();
+  actor.send({ type: "CREATE" });
+  actor.send({ type: "WATER_CHANGE", authenticated: true });
+  expect(actor.getSnapshot().context.path).toBe("/care");
+  actor.send({ type: "OPEN", path: "/tanks/7?view=care" });
+  expect(actor.getSnapshot().context.path).toBe("/tanks/7?view=care");
+  actor.stop();
+});

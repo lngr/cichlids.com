@@ -1,6 +1,10 @@
 import { createClient, createConfig } from "./generated/client/index.js";
 import type { Client } from "./generated/client/index.js";
 import {
+  logCareEntry,
+  updateCareEntry,
+  deleteCareEntry,
+  listCareEntries,
   createPictureComment,
   createTankComment,
   createTank,
@@ -33,6 +37,9 @@ import {
   uploadPhoto,
 } from "./generated/sdk.gen.js";
 import type {
+  CareEntryDto,
+  CareAmountRequest,
+  LogCareRequest,
   DiscoverDto,
   DiscoverItemDto,
   CommentCreatedDto,
@@ -67,6 +74,8 @@ import type {
   WaterValuesDto,
 } from "./generated/types.gen.js";
 
+export type CareEntry = CareEntryDto;
+export type { CareAmountRequest, LogCareRequest };
 export type DiscoverArchive = DiscoverDto;
 export type DiscoverItem = DiscoverItemDto;
 export type PictureListItem = PictureListItemDto;
@@ -195,6 +204,12 @@ function unwrapPaged<T>(result: { data?: { total: number | string; items: T[] };
 }
 
 export interface CichlidsClient {
+  care: {
+    list(tankId: number, params?: PageParams): Promise<PagedResponse<CareEntry>>;
+    log(tankId: number, request?: LogCareRequest): Promise<CareEntry>;
+    update(tankId: number, id: number, amount: CareAmountRequest | null): Promise<CareEntry>;
+    remove(tankId: number, id: number): Promise<CareEntry>;
+  };
   discover: {
     get(regions?: TankRegion[]): Promise<DiscoverArchive>;
   };
@@ -271,6 +286,12 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
   }
 
   return {
+    care: {
+      async list(tankId, params) { return unwrapPaged(await listCareEntries({ client, path: { tankId }, query: params ?? {} })); },
+      async log(tankId, request) { return unwrap(await logCareEntry({ client, path: { tankId }, body: request ?? {} })); },
+      async update(tankId, id, amount) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount } })); },
+      async remove(tankId, id) { return unwrap(await deleteCareEntry({ client, path: { tankId, id } })); },
+    },
     discover: {
       async get(regions) {
         return unwrap(await getDiscover({ client, query: regions ? { regions: regions.join(",") } : {} }));
