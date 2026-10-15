@@ -37,6 +37,7 @@ export type {
   LegacyTankDto,
   TankRegion,
   Me,
+  Today,
   Draft,
   UploadFile,
   PublishPostRequest,

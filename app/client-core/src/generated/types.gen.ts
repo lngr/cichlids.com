@@ -450,6 +450,35 @@ export type ThreadStartedByDto = {
     posterName: null | string;
 };
 
+export type TodayDto = {
+    displayName: string;
+    memberSinceYear: null | number | string;
+    tanks: Array<TodayTankDto>;
+    draftCount: number | string;
+    drafts: Array<DraftDto>;
+    tankOfTheWeek: null | TodayWeeklyTankDto;
+    onThisDay?: null | TodayMemoryDto;
+};
+
+export type TodayMemoryDto = {
+    postId: number | string;
+    slug: null | string;
+    title: null | string;
+    yearsAgo: number | string;
+    image: ImageUrlsDto;
+};
+
+export type TodayTankDto = {
+    id: number | string;
+    title: string;
+    newestPhoto: null | TankTimeLapsePhotoDto;
+};
+
+export type TodayWeeklyTankDto = {
+    region: TankRegion;
+    tank: DiscoverItemDto;
+};
+
 export type VolumeDto = {
     liters: number | string;
     inputValue: null | number | string;
@@ -599,6 +628,37 @@ export type GetMeResponses = {
 };
 
 export type GetMeResponse = GetMeResponses[keyof GetMeResponses];
+
+export type GetTodayData = {
+    body?: never;
+    path?: never;
+    query?: {
+        date?: string;
+    };
+    url: '/api/me/today';
+};
+
+export type GetTodayErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type GetTodayError = GetTodayErrors[keyof GetTodayErrors];
+
+export type GetTodayResponses = {
+    /**
+     * OK
+     */
+    200: TodayDto;
+};
+
+export type GetTodayResponse = GetTodayResponses[keyof GetTodayResponses];
 
 export type CompleteOnboardingData = {
     body: OnboardingRequest;

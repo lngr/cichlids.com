@@ -13,6 +13,7 @@ import {
   getFeatureFlags,
   getDiscover,
   getMe,
+  getToday,
   getPicture,
   getProfile,
   getSpecies,
@@ -51,6 +52,7 @@ import type {
   DraftDto,
   InhabitantDto,
   MeDto,
+  TodayDto,
   PictureDetailDto,
   PictureListItemDto,
   ProfileDetailDto,
@@ -90,6 +92,7 @@ export type CommentCreated = CommentCreatedDto;
 export type { CreateTankRequest, CreateCommentRequest, PublishPostRequest };
 export type { OnboardingRequest, OnboardingResultDto, LegacyTankDto, TankRegion };
 export type Me = MeDto;
+export type Today = TodayDto;
 export type Draft = DraftDto;
 export type PagedResponse<T> = { total: number; items: T[] };
 
@@ -229,6 +232,7 @@ export interface CichlidsClient {
   };
   me: {
     get(): Promise<Me>;
+    today(date: string): Promise<Today>;
     completeOnboarding(request: OnboardingRequest): Promise<OnboardingResultDto>;
     legacyTanks(): Promise<LegacyTankDto[]>;
     setInterests(interests: string[]): Promise<string[]>;
@@ -362,6 +366,9 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
     },
     me: {
+      async today(date) {
+        return unwrap(await getToday({ client, query: { date } }));
+      },
       async completeOnboarding(request) {
         return unwrap(await completeOnboarding({ client, body: request }));
       },

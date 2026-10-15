@@ -173,6 +173,55 @@
         }
       }
     },
+    "/api/me/today": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "GetToday",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TodayDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/me/onboarding": {
       "post": {
         "tags": [
@@ -4190,6 +4239,160 @@
               "null",
               "string"
             ]
+          }
+        }
+      },
+      "TodayDto": {
+        "required": [
+          "displayName",
+          "memberSinceYear",
+          "tanks",
+          "draftCount",
+          "drafts",
+          "tankOfTheWeek"
+        ],
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "memberSinceYear": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "tanks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TodayTankDto"
+            }
+          },
+          "draftCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "drafts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DraftDto"
+            }
+          },
+          "tankOfTheWeek": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TodayWeeklyTankDto"
+              }
+            ]
+          },
+          "onThisDay": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TodayMemoryDto"
+              }
+            ]
+          }
+        }
+      },
+      "TodayMemoryDto": {
+        "required": [
+          "postId",
+          "slug",
+          "title",
+          "yearsAgo",
+          "image"
+        ],
+        "type": "object",
+        "properties": {
+          "postId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "slug": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "yearsAgo": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "image": {
+            "$ref": "#/components/schemas/ImageUrlsDto"
+          }
+        }
+      },
+      "TodayTankDto": {
+        "required": [
+          "id",
+          "title",
+          "newestPhoto"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "newestPhoto": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TankTimeLapsePhotoDto"
+              }
+            ]
+          }
+        }
+      },
+      "TodayWeeklyTankDto": {
+        "required": [
+          "region",
+          "tank"
+        ],
+        "type": "object",
+        "properties": {
+          "region": {
+            "$ref": "#/components/schemas/TankRegion"
+          },
+          "tank": {
+            "$ref": "#/components/schemas/DiscoverItemDto"
           }
         }
       },
