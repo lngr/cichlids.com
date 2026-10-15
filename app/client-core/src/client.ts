@@ -4,6 +4,10 @@ import {
   createPictureComment,
   createTankComment,
   createTank,
+  completeOnboarding,
+  listMyLegacyTanks,
+  setMyInterests,
+  refineTankRegion,
   discardPost,
   getCommunityThread,
   getFeatureFlags,
@@ -35,6 +39,10 @@ import type {
   CommunityThreadListItemDto,
   CreateCommentRequest,
   CreateTankRequest,
+  OnboardingRequest,
+  OnboardingResultDto,
+  LegacyTankDto,
+  TankRegion,
   DimensionsDto,
   DraftDto,
   InhabitantDto,
@@ -72,6 +80,7 @@ export type SpeciesLink = SpeciesLinkDto;
 export type Comment = CommentDto;
 export type CommentCreated = CommentCreatedDto;
 export type { CreateTankRequest, CreateCommentRequest, PublishPostRequest };
+export type { OnboardingRequest, OnboardingResultDto, LegacyTankDto, TankRegion };
 export type Me = MeDto;
 export type Draft = DraftDto;
 export type PagedResponse<T> = { total: number; items: T[] };
@@ -186,6 +195,7 @@ export interface CichlidsClient {
   };
   tanks: {
     create(request: CreateTankRequest): Promise<TankDetail>;
+    refineRegion(id: number, region: TankRegion): Promise<void>;
     list(params?: TanksListParams): Promise<PagedResponse<TankListItem>>;
     get(id: number): Promise<TankDetail>;
     listComments(id: number, params?: PageParams): Promise<PagedResponse<Comment>>;
@@ -207,6 +217,9 @@ export interface CichlidsClient {
   };
   me: {
     get(): Promise<Me>;
+    completeOnboarding(request: OnboardingRequest): Promise<OnboardingResultDto>;
+    legacyTanks(): Promise<LegacyTankDto[]>;
+    setInterests(interests: string[]): Promise<string[]>;
     drafts(): Promise<Draft[]>;
   };
   uploads: {
@@ -266,6 +279,9 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
     },
     tanks: {
+      async refineRegion(id, region) {
+        unwrap(await refineTankRegion({ client, path: { id }, body: { region } }));
+      },
       async create(request) {
         const result = await createTank({ client, body: request });
         return unwrap(result);
@@ -326,6 +342,15 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
     },
     me: {
+      async completeOnboarding(request) {
+        return unwrap(await completeOnboarding({ client, body: request }));
+      },
+      async legacyTanks() {
+        return unwrap(await listMyLegacyTanks({ client }));
+      },
+      async setInterests(interests) {
+        return unwrap(await setMyInterests({ client, body: { interests } }));
+      },
       async get() {
         const result = await getMe({ client });
         return unwrap(result);

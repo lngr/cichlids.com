@@ -2,7 +2,7 @@
 
 import { client } from './client.gen.js';
 import { type Client, type ClientMeta, formDataBodySerializer, type Options as Options2, type RequestResult, type TDataShape } from './client/index.js';
-import type { CreatePictureCommentData, CreatePictureCommentErrors, CreatePictureCommentResponses, CreateTankCommentData, CreateTankCommentErrors, CreateTankCommentResponses, CreateTankData, CreateTankErrors, CreateTankResponses, CreateWebhookSubscriptionData, CreateWebhookSubscriptionErrors, CreateWebhookSubscriptionResponses, DeleteCommentData, DeleteCommentErrors, DeleteCommentResponses, DiscardPostData, DiscardPostErrors, DiscardPostResponses, GetCommunityThreadData, GetCommunityThreadErrors, GetCommunityThreadResponses, GetFeatureFlagsData, GetFeatureFlagsResponses, GetHealthData, GetHealthResponses, GetMeData, GetMeErrors, GetMeResponses, GetPictureData, GetPictureErrors, GetPictureResponses, GetProfileData, GetProfileErrors, GetProfileResponses, GetSpeciesData, GetSpeciesErrors, GetSpeciesResponses, GetTankData, GetTankErrors, GetTankResponses, LegacyDiscussionListRedirectData, LegacyDiscussionListRedirectResponses, LegacyDiscussionReadRedirectData, LegacyDiscussionReadRedirectResponses, LegacyMemberRedirectData, LegacyMemberRedirectResponses, LegacyMemberRedirectWithRestData, LegacyMemberRedirectWithRestResponses, LegacyPictureRedirectData, LegacyPictureRedirectHtmlData, LegacyPictureRedirectHtmlResponses, LegacyPictureRedirectResponses, LegacySpeciesRedirectData, LegacySpeciesRedirectResponses, LegacyTankRedirectData, LegacyTankRedirectResponses, LegacyWikiRedirectData, LegacyWikiRedirectResponses, ListCommunityCategoriesData, ListCommunityCategoriesResponses, ListCommunityThreadsData, ListCommunityThreadsErrors, ListCommunityThreadsResponses, ListMyDraftsData, ListMyDraftsErrors, ListMyDraftsResponses, ListOutboxEventsData, ListOutboxEventsErrors, ListOutboxEventsResponses, ListPictureCommentsData, ListPictureCommentsErrors, ListPictureCommentsResponses, ListPicturesData, ListPicturesErrors, ListPicturesResponses, ListProfilePicturesData, ListProfilePicturesResponses, ListProfileTanksData, ListProfileTanksResponses, ListSpeciesData, ListSpeciesResponses, ListTankCommentsData, ListTankCommentsErrors, ListTankCommentsResponses, ListTanksData, ListTanksErrors, ListTanksResponses, ListWebhookSubscriptionsData, ListWebhookSubscriptionsResponses, PublishPostData, PublishPostErrors, PublishPostResponses, RedeliverGivenUpOutboxEventsData, RedeliverGivenUpOutboxEventsResponses, RedeliverOutboxEventData, RedeliverOutboxEventErrors, RedeliverOutboxEventResponses, UploadPhotoData, UploadPhotoErrors, UploadPhotoResponses } from './types.gen.js';
+import type { CompleteOnboardingData, CompleteOnboardingResponses, CreatePictureCommentData, CreatePictureCommentErrors, CreatePictureCommentResponses, CreateTankCommentData, CreateTankCommentErrors, CreateTankCommentResponses, CreateTankData, CreateTankErrors, CreateTankResponses, CreateWebhookSubscriptionData, CreateWebhookSubscriptionErrors, CreateWebhookSubscriptionResponses, DeleteCommentData, DeleteCommentErrors, DeleteCommentResponses, DiscardPostData, DiscardPostErrors, DiscardPostResponses, GetCommunityThreadData, GetCommunityThreadErrors, GetCommunityThreadResponses, GetFeatureFlagsData, GetFeatureFlagsResponses, GetHealthData, GetHealthResponses, GetMeData, GetMeErrors, GetMeResponses, GetPictureData, GetPictureErrors, GetPictureResponses, GetProfileData, GetProfileErrors, GetProfileResponses, GetSpeciesData, GetSpeciesErrors, GetSpeciesResponses, GetTankData, GetTankErrors, GetTankResponses, LegacyDiscussionListRedirectData, LegacyDiscussionListRedirectResponses, LegacyDiscussionReadRedirectData, LegacyDiscussionReadRedirectResponses, LegacyMemberRedirectData, LegacyMemberRedirectResponses, LegacyMemberRedirectWithRestData, LegacyMemberRedirectWithRestResponses, LegacyPictureRedirectData, LegacyPictureRedirectHtmlData, LegacyPictureRedirectHtmlResponses, LegacyPictureRedirectResponses, LegacySpeciesRedirectData, LegacySpeciesRedirectResponses, LegacyTankRedirectData, LegacyTankRedirectResponses, LegacyWikiRedirectData, LegacyWikiRedirectResponses, ListCommunityCategoriesData, ListCommunityCategoriesResponses, ListCommunityThreadsData, ListCommunityThreadsErrors, ListCommunityThreadsResponses, ListMyDraftsData, ListMyDraftsErrors, ListMyDraftsResponses, ListMyLegacyTanksData, ListMyLegacyTanksResponses, ListOutboxEventsData, ListOutboxEventsErrors, ListOutboxEventsResponses, ListPictureCommentsData, ListPictureCommentsErrors, ListPictureCommentsResponses, ListPicturesData, ListPicturesErrors, ListPicturesResponses, ListProfilePicturesData, ListProfilePicturesResponses, ListProfileTanksData, ListProfileTanksResponses, ListSpeciesData, ListSpeciesResponses, ListTankCommentsData, ListTankCommentsErrors, ListTankCommentsResponses, ListTanksData, ListTanksErrors, ListTanksResponses, ListWebhookSubscriptionsData, ListWebhookSubscriptionsResponses, PublishPostData, PublishPostErrors, PublishPostResponses, RedeliverGivenUpOutboxEventsData, RedeliverGivenUpOutboxEventsResponses, RedeliverOutboxEventData, RedeliverOutboxEventErrors, RedeliverOutboxEventResponses, RefineTankRegionData, RefineTankRegionResponses, SetMyInterestsData, SetMyInterestsResponses, UploadPhotoData, UploadPhotoErrors, UploadPhotoResponses } from './types.gen.js';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -32,6 +32,35 @@ export const deleteComment = <ThrowOnError extends boolean = false>(options: Opt
 });
 
 export const getMe = <ThrowOnError extends boolean = false>(options?: Options<GetMeData, ThrowOnError>): RequestResult<GetMeResponses, GetMeErrors, ThrowOnError> => (options?.client ?? client).get<GetMeResponses, GetMeErrors, ThrowOnError>({ url: '/api/me', ...options });
+
+export const completeOnboarding = <ThrowOnError extends boolean = false>(options: Options<CompleteOnboardingData, ThrowOnError>): RequestResult<CompleteOnboardingResponses, unknown, ThrowOnError> => (options.client ?? client).post<CompleteOnboardingResponses, unknown, ThrowOnError>({
+    url: '/api/me/onboarding',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+export const listMyLegacyTanks = <ThrowOnError extends boolean = false>(options?: Options<ListMyLegacyTanksData, ThrowOnError>): RequestResult<ListMyLegacyTanksResponses, unknown, ThrowOnError> => (options?.client ?? client).get<ListMyLegacyTanksResponses, unknown, ThrowOnError>({ url: '/api/me/legacy-tanks', ...options });
+
+export const setMyInterests = <ThrowOnError extends boolean = false>(options: Options<SetMyInterestsData, ThrowOnError>): RequestResult<SetMyInterestsResponses, unknown, ThrowOnError> => (options.client ?? client).put<SetMyInterestsResponses, unknown, ThrowOnError>({
+    url: '/api/me/interests',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+export const refineTankRegion = <ThrowOnError extends boolean = false>(options: Options<RefineTankRegionData, ThrowOnError>): RequestResult<RefineTankRegionResponses, unknown, ThrowOnError> => (options.client ?? client).put<RefineTankRegionResponses, unknown, ThrowOnError>({
+    url: '/api/tanks/{id}/region',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
 
 export const legacyPictureRedirectHtml = <ThrowOnError extends boolean = false>(options: Options<LegacyPictureRedirectHtmlData, ThrowOnError>): RequestResult<LegacyPictureRedirectHtmlResponses, unknown, ThrowOnError> => (options.client ?? client).get<LegacyPictureRedirectHtmlResponses, unknown, ThrowOnError>({ url: '/pictures/pic/{alias}.html', ...options });
 

@@ -134,6 +134,127 @@
         }
       }
     },
+    "/api/me/onboarding": {
+      "post": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "CompleteOnboarding",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OnboardingRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OnboardingResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/me/legacy-tanks": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "ListMyLegacyTanks",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LegacyTankDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/me/interests": {
+      "put": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "SetMyInterests",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterestsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tanks/{id}/region": {
+      "put": {
+        "tags": [
+          "Tanks"
+        ],
+        "operationId": "RefineTankRegion",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefineRegionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/pictures/pic/{alias}.html": {
       "get": {
         "tags": [
@@ -2074,6 +2195,16 @@
                 "$ref": "#/components/schemas/VolumeInputDto"
               }
             ]
+          },
+          "region": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TankRegion"
+              }
+            ]
           }
         }
       },
@@ -2255,8 +2386,7 @@
       "DimensionUnit": {
         "enum": [
           "cm",
-          "inch",
-          null
+          "inch"
         ]
       },
       "DiscussionCategory": {
@@ -2421,6 +2551,51 @@
           }
         }
       },
+      "InterestsRequest": {
+        "required": [
+          "interests"
+        ],
+        "type": "object",
+        "properties": {
+          "interests": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "LegacyTankDto": {
+        "required": [
+          "id",
+          "title",
+          "region"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "region": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TankRegion"
+              }
+            ]
+          }
+        }
+      },
       "MeDto": {
         "required": [
           "profile",
@@ -2436,6 +2611,84 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      },
+      "OnboardingRequest": {
+        "type": "object",
+        "properties": {
+          "tank": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/CreateTankRequest"
+              }
+            ]
+          },
+          "legacyTankId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "region": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TankRegion"
+              }
+            ]
+          },
+          "interests": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "skip": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "OnboardingResultDto": {
+        "required": [
+          "tankId",
+          "title",
+          "badge"
+        ],
+        "type": "object",
+        "properties": {
+          "tankId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "badge": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
@@ -2977,6 +3230,31 @@
           },
           "stats": {
             "$ref": "#/components/schemas/ProfileStatsDto"
+          },
+          "onboardingCompletedAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "interests": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "badges": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -3039,6 +3317,17 @@
               "null",
               "string"
             ]
+          }
+        }
+      },
+      "RefineRegionRequest": {
+        "required": [
+          "region"
+        ],
+        "type": "object",
+        "properties": {
+          "region": {
+            "$ref": "#/components/schemas/TankRegion"
           }
         }
       },
@@ -3425,6 +3714,16 @@
                 "$ref": "#/components/schemas/VolumeDto"
               }
             ]
+          },
+          "region": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TankRegion"
+              }
+            ]
           }
         }
       },
@@ -3480,6 +3779,16 @@
           },
           "author": {
             "$ref": "#/components/schemas/AuthorDto"
+          },
+          "region": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TankRegion"
+              }
+            ]
           }
         }
       },
@@ -3502,6 +3811,19 @@
             "$ref": "#/components/schemas/ImageUrlsDto"
           }
         }
+      },
+      "TankRegion": {
+        "enum": [
+          "lake_malawi",
+          "lake_tanganyika",
+          "lake_victoria",
+          "africa_other",
+          "central_america",
+          "south_america",
+          "mixed",
+          "americas_unassigned",
+          null
+        ]
       },
       "TankSectionsDto": {
         "required": [
@@ -3616,8 +3938,7 @@
       "VolumeUnit": {
         "enum": [
           "liter",
-          "us_gallon",
-          null
+          "us_gallon"
         ]
       },
       "WaterValuesDto": {
@@ -3728,6 +4049,9 @@
       "name": "Me"
     },
     {
+      "name": "Tanks"
+    },
+    {
       "name": "LegacyRedirectsEndpoints"
     },
     {
@@ -3741,9 +4065,6 @@
     },
     {
       "name": "Pictures"
-    },
-    {
-      "name": "Tanks"
     },
     {
       "name": "Profiles"

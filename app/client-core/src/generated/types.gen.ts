@@ -90,6 +90,7 @@ export type CreateTankRequest = {
     title: string;
     dimensions: null | DimensionInputDto;
     volume: null | VolumeInputDto;
+    region?: null | TankRegion;
 };
 
 export type CreateWebhookRequest = {
@@ -158,9 +159,33 @@ export type InhabitantSpeciesRefDto = {
     displayName: string;
 };
 
+export type InterestsRequest = {
+    interests: Array<string>;
+};
+
+export type LegacyTankDto = {
+    id: number | string;
+    title: string;
+    region: null | TankRegion;
+};
+
 export type MeDto = {
     profile: ProfileDetailDto;
     roles: Array<string>;
+};
+
+export type OnboardingRequest = {
+    tank?: null | CreateTankRequest;
+    legacyTankId?: null | number | string;
+    region?: null | TankRegion;
+    interests?: null | Array<string>;
+    skip?: boolean;
+};
+
+export type OnboardingResultDto = {
+    tankId: null | number | string;
+    title: null | string;
+    badge: null | string;
 };
 
 export type OutboxEventDto = {
@@ -263,6 +288,9 @@ export type ProfileDetailDto = {
     avatarUrl: null | string;
     profileImageUrl: null | string;
     stats: ProfileStatsDto;
+    onboardingCompletedAt?: null | string;
+    interests?: null | Array<string>;
+    badges?: null | Array<string>;
 };
 
 export type ProfileStatsDto = {
@@ -275,6 +303,10 @@ export type PublishPostRequest = {
     title: null | string;
     description: null | string;
     topic: null | string;
+};
+
+export type RefineRegionRequest = {
+    region: TankRegion;
 };
 
 export type SpeciesBreeding = 'unspecified' | 'mouthbreeder' | 'cave_breeder' | 'substrate_breeder';
@@ -343,6 +375,7 @@ export type TankDetailDto = {
     inhabitants: Array<InhabitantDto>;
     author: AuthorDto;
     volume: null | VolumeDto;
+    region?: null | TankRegion;
 };
 
 export type TankListItemDto = {
@@ -352,12 +385,15 @@ export type TankListItemDto = {
     mainImage: null | ImageUrlsDto;
     imageCount: number | string;
     author: AuthorDto;
+    region?: null | TankRegion;
 };
 
 export type TankMediaItemDto = {
     mediaItemId: number | string;
     image: ImageUrlsDto;
 };
+
+export type TankRegion = 'lake_malawi' | 'lake_tanganyika' | 'lake_victoria' | 'africa_other' | 'central_america' | 'south_america' | 'mixed' | 'americas_unassigned';
 
 export type TankSectionsDto = {
     showcase: Array<TankMediaItemDto>;
@@ -492,6 +528,70 @@ export type GetMeResponses = {
 };
 
 export type GetMeResponse = GetMeResponses[keyof GetMeResponses];
+
+export type CompleteOnboardingData = {
+    body: OnboardingRequest;
+    path?: never;
+    query?: never;
+    url: '/api/me/onboarding';
+};
+
+export type CompleteOnboardingResponses = {
+    /**
+     * OK
+     */
+    200: OnboardingResultDto;
+};
+
+export type CompleteOnboardingResponse = CompleteOnboardingResponses[keyof CompleteOnboardingResponses];
+
+export type ListMyLegacyTanksData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/me/legacy-tanks';
+};
+
+export type ListMyLegacyTanksResponses = {
+    /**
+     * OK
+     */
+    200: Array<LegacyTankDto>;
+};
+
+export type ListMyLegacyTanksResponse = ListMyLegacyTanksResponses[keyof ListMyLegacyTanksResponses];
+
+export type SetMyInterestsData = {
+    body: InterestsRequest;
+    path?: never;
+    query?: never;
+    url: '/api/me/interests';
+};
+
+export type SetMyInterestsResponses = {
+    /**
+     * OK
+     */
+    200: Array<string>;
+};
+
+export type SetMyInterestsResponse = SetMyInterestsResponses[keyof SetMyInterestsResponses];
+
+export type RefineTankRegionData = {
+    body: RefineRegionRequest;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{id}/region';
+};
+
+export type RefineTankRegionResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
 
 export type LegacyPictureRedirectHtmlData = {
     body?: never;

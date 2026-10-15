@@ -29,6 +29,10 @@ export type {
   CommentCreated,
   CreateCommentRequest,
   CreateTankRequest,
+  OnboardingRequest,
+  OnboardingResultDto,
+  LegacyTankDto,
+  TankRegion,
   Me,
   Draft,
   UploadFile,
@@ -36,4 +40,3 @@ export type {
 } from "./client.js";
 export { navigationMachine, selectedTab, canonicalPath } from "./navigation.js";
 export type { NavigationTab, NavigationEvent, NavigationContext } from "./navigation.js";
-export { tankStoryMachine } from "./tankStory.js";
