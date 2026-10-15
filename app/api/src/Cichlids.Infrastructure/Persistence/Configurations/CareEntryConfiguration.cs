@@ -15,10 +15,11 @@ public sealed class CareEntryConfiguration : IEntityTypeConfiguration<CareEntry>
         builder.Property(x => x.AmountInputUnit).HasConversion<SnakeCaseEnumConverter<CareAmountUnit>>();
         builder.HasOne<Tank>().WithMany().HasForeignKey(x => x.TankId).OnDelete(DeleteBehavior.Restrict);
         builder.HasOne<Profile>().WithMany().HasForeignKey(x => x.AuthorProfileId).OnDelete(DeleteBehavior.Restrict);
+        builder.HasMany(x => x.Values).WithOne().HasForeignKey(x => x.CareEntryId).OnDelete(DeleteBehavior.Cascade);
         builder.HasIndex(x => new { x.TankId, x.OccurredAt, x.Id }).IsDescending(false, true, true);
         builder.ToTable("care_entry", table =>
         {
-            table.HasCheckConstraint("ck_care_kind", "kind IN ('water_change')");
+            table.HasCheckConstraint("ck_care_kind", "kind IN ('water_change', 'measurement')");
             table.HasCheckConstraint("ck_care_time", "occurred_at <= recorded_at + interval '2 minutes'");
             table.HasCheckConstraint("ck_care_amount", """
                 (amount_input_value IS NULL AND amount_input_unit IS NULL AND amount_liters IS NULL)

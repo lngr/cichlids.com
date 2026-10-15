@@ -13,4 +13,5 @@ public class CareEntry
     public decimal? AmountInputValue { get; set; }
     public CareAmountUnit? AmountInputUnit { get; set; }
     public decimal? AmountLiters { get; set; }
+    public List<CareMeasurementValue> Values { get; set; } = [];
 }

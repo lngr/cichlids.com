@@ -149,9 +149,61 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         {
                             t.HasCheckConstraint("ck_care_amount", "(amount_input_value IS NULL AND amount_input_unit IS NULL AND amount_liters IS NULL)\nOR (amount_input_value IS NOT NULL AND amount_input_value > 0 AND amount_input_value <= 1000000\n    AND amount_input_unit IS NOT NULL AND (\n        (amount_input_unit = 'percent' AND amount_input_value <= 100 AND amount_liters IS NULL)\n        OR (amount_input_unit = 'liter' AND amount_liters IS NOT NULL AND amount_liters = amount_input_value)\n        OR (amount_input_unit = 'us_gallon' AND amount_liters IS NOT NULL AND amount_liters > 0)))");
 
-                            t.HasCheckConstraint("ck_care_kind", "kind IN ('water_change')");
+                            t.HasCheckConstraint("ck_care_kind", "kind IN ('water_change', 'measurement')");
 
                             t.HasCheckConstraint("ck_care_time", "occurred_at <= recorded_at + interval '2 minutes'");
+                        });
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.CareMeasurementValue", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("CareEntryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("care_entry_id");
+
+                    b.Property<string>("InputUnit")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("input_unit");
+
+                    b.Property<decimal>("InputValue")
+                        .HasColumnType("numeric")
+                        .HasColumnName("input_value");
+
+                    b.Property<decimal>("NormalizedValue")
+                        .HasColumnType("numeric")
+                        .HasColumnName("normalized_value");
+
+                    b.Property<string>("Origin")
+                        .HasColumnType("text")
+                        .HasColumnName("origin");
+
+                    b.Property<string>("Parameter")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("parameter");
+
+                    b.HasKey("Id")
+                        .HasName("pk_care_measurement_value");
+
+                    b.HasIndex("CareEntryId", "Parameter")
+                        .IsUnique()
+                        .HasDatabaseName("ix_care_measurement_value_care_entry_id_parameter");
+
+                    b.ToTable("care_measurement_value", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_care_measurement_origin", "origin IS NULL OR origin IN ('test_kit', 'meter', 'probe')");
+
+                            t.HasCheckConstraint("ck_care_measurement_range", "(parameter = 'temperature' AND normalized_value BETWEEN 0 AND 45)\nOR (parameter = 'ph' AND normalized_value BETWEEN 0 AND 14)\nOR (parameter = 'kh' AND normalized_value BETWEEN 0 AND 50)\nOR (parameter = 'gh' AND normalized_value BETWEEN 0 AND 100)\nOR (parameter IN ('no2', 'nh4', 'po4') AND normalized_value BETWEEN 0 AND 100)\nOR (parameter = 'no3' AND normalized_value BETWEEN 0 AND 1000)\nOR (parameter IN ('conductivity', 'tds') AND normalized_value BETWEEN 0 AND 100000)");
+
+                            t.HasCheckConstraint("ck_care_measurement_unit", "(parameter = 'temperature' AND input_unit IN ('celsius', 'fahrenheit'))\nOR (parameter = 'ph' AND input_unit = 'none')\nOR (parameter = 'kh' AND input_unit IN ('dkh', 'ppm'))\nOR (parameter = 'gh' AND input_unit IN ('dgh', 'ppm'))\nOR (parameter IN ('no2', 'no3', 'nh4', 'po4') AND input_unit = 'mg_per_liter')\nOR (parameter = 'conductivity' AND input_unit = 'microsiemens_per_cm')\nOR (parameter = 'tds' AND input_unit = 'ppm')");
                         });
                 });
 
@@ -1780,6 +1832,16 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasConstraintName("fk_care_entry_tanks_tank_id");
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.CareMeasurementValue", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.CareEntry", null)
+                        .WithMany("Values")
+                        .HasForeignKey("CareEntryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_measurement_value_care_entry_care_entry_id");
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.Profile", null)
@@ -2110,6 +2172,11 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_tank_media_tanks_tank_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.CareEntry", b =>
+                {
+                    b.Navigation("Values");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
