@@ -27,7 +27,8 @@ export function CreateSheet() {
       <Pressable accessibilityLabel={t("navigation.cancel")} onPress={() => send({ type: "BACK" })} style={{ flex: 1, backgroundColor: theme.colors.bg, opacity: 0.8 }} />
       <View testID="create-sheet" accessibilityViewIsModal style={{ backgroundColor: theme.colors.surface, borderTopStartRadius: theme.radius.sheet, borderTopEndRadius: theme.radius.sheet, padding: theme.space[6], paddingBottom: theme.space[6] + insets.bottom, gap: theme.space[4] }}>
         <Text accessibilityRole="header" style={[theme.type.h2, { color: theme.colors.fg }]}>{t("navigation.createTitle")}</Text>
-        <Button testID="create-photo" label={t("navigation.photo")} onPress={() => send({ type: "PHOTO", authenticated: status === "authenticated" })} />
+        <Button testID="create-water-change" label={t("care.waterChange")} onPress={() => send({ type: "WATER_CHANGE", authenticated: status === "authenticated" })} />
+        <Button variant="secondary" testID="create-photo" label={t("navigation.photo")} onPress={() => send({ type: "PHOTO", authenticated: status === "authenticated" })} />
         <Button testID="create-cancel" variant="secondary" label={t("navigation.cancel")} onPress={() => send({ type: "BACK" })} />
       </View>
     </View>

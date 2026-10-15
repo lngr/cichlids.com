@@ -37,3 +37,16 @@ it("keeps the editor after a failed update and allows retry", async () => {
   expect(update).toHaveBeenLastCalledWith(7, { value: 30, unit: "percent" });
   actor.stop();
 });
+it("keeps a failed undo in the confirmation so the member can retry it", async () => {
+  const remove = vi.fn().mockRejectedValueOnce(new Error("offline")).mockResolvedValue(entry);
+  const actor = createActor(careMachine, { input: { log: async () => entry, update: vi.fn(), remove } }).start();
+  actor.send({ type: "LOG" });
+  await waitFor(actor, s => s.matches("confirmed"));
+  actor.send({ type: "UNDO" });
+  await waitFor(actor, s => s.context.error !== null);
+  expect(actor.getSnapshot().matches("confirmed")).toBe(true);
+  actor.send({ type: "UNDO" });
+  await waitFor(actor, s => s.matches("idle"));
+  expect(remove).toHaveBeenCalledTimes(2);
+  actor.stop();
+});

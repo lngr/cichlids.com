@@ -13,6 +13,10 @@ import { Button } from "../components/Button";
 import { formatDate } from "../lib/format";
 import { TimeLapsePhoto, useReducedMotion } from "./TimeLapsePhoto";
 import { TimeLapseScrubber } from "./TimeLapseScrubber";
+import { useCareStream } from "./useCareStream";
+import { CareStreamView } from "./CareStreamView";
+import { formatCareAmount } from "./careAmount";
+import { useLocalSearchParams } from "expo-router";
 import { TankRegionSlot } from "./TankRegionSlot";
 
 function photoUrl(image: TankTimeLapse["photos"][number]["image"]) {
@@ -22,6 +26,8 @@ function photoUrl(image: TankTimeLapse["photos"][number]["image"]) {
 export function TankExperience({ tank, series, children }: { tank: TankDetail; series: TankTimeLapse; children?: ReactNode }) {
   const { t, i18n } = useTranslation();
   const theme = useTheme();
+  const stream = useCareStream(Number(tank.id), tank.author.id);
+  const { view } = useLocalSearchParams<{ view?: string }>();
   const router = useMachineRouter();
   const reduced = useReducedMotion();
   const [actor] = useState(() => createActor(tankStoryMachine, { input: { count: series.photos.length } }).start());
@@ -41,6 +47,7 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
     if (upcoming.length) void Image.prefetch(upcoming).catch(() => {});
   }, [index, series.photos]);
   const send = actor.send;
+  useEffect(() => { if (view === "care") send({ type: "CARE" }); }, [view, send]);
   useEffect(() => {
     if (!playing) return;
     const timer = setInterval(() => send({ type: "TICK" }), 1400);
@@ -51,6 +58,11 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
   const card = { backgroundColor: theme.colors.surface, borderColor: theme.colors.border, borderRadius: theme.radius.lg };
   const postMedia = new Set(series.posts.flatMap(post => post.mediaItemIds.map(String)));
   const timeline = [
+    ...stream.entries.map(entry => ({
+      key: `care-${entry.id}`, date: entry.occurredAt,
+      title: t("care.waterChange"), description: entry.amount ? formatCareAmount(entry.amount, i18n.language) : null,
+      image: undefined, slug: null,
+    })),
     ...series.photos.filter(item => !postMedia.has(String(item.mediaItemId))).map(item => ({
       key: `photo-${item.mediaItemId}`, date: item.takenAt ?? item.publishedAt,
       title: t("tankStory.photo"), description: null, image: item.image, slug: null,
@@ -97,9 +109,8 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
         </View>
       </View>
       {care ? <>
-        <View style={[styles.card, card]}>
-          {heading(t("tankStory.logs"))}
-          <Text testID="tank-care-empty" style={[theme.type.body, text]}>{t("tankStory.logsEmpty")}</Text>
+        <View testID="tank-care-stream" style={[styles.card, card]}>
+          <CareStreamView stream={stream} />
         </View>
         <View style={[styles.card, card]}>
           {heading(t("tanks.detail.waterValues"))}
@@ -153,6 +164,7 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
               {event.description ? <Text style={[theme.type.body, text]}>{event.description}</Text> : null}
             </View>
           </Pressable>)}
+          {stream.owner && stream.list.hasMore ? <Button testID="tank-story-care-more" variant="secondary" label={t("care.more")} busy={stream.list.loadingMore} onPress={stream.list.loadMore} /> : null}
         </View>
         <View style={[styles.card, card]}>
           {heading(t("tankStory.inhabitants"))}

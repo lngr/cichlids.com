@@ -1,3 +1,4 @@
+import { useAuth } from "../../../src/auth/AuthProvider";
 import { translateApiError } from "../../../src/lib/apiErrors";
 import { useCallback, useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
@@ -19,6 +20,7 @@ const commentKey = (comment: Comment) => comment.id;
 export default function TankDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const tankId = Number(id);
+  const { accountId, status } = useAuth();
   const theme = useTheme();
   const navigation = useNavigation();
   const { t } = useTranslation();
@@ -51,7 +53,7 @@ export default function TankDetailScreen() {
   if (error || !detail) return <ErrorView message={error ?? t("tanks.detail.notFound")} onRetry={() => setAttempt(value => value + 1)} />;
   return <ScrollView style={{ backgroundColor: theme.colors.bg }} contentContainerStyle={styles.content}>
     <View style={styles.page}>
-      <TankExperience key={`${tankId}-${attempt}`} tank={detail.tank} series={detail.series}>
+      <TankExperience key={`${tankId}-${attempt}-${accountId}-${status}`} tank={detail.tank} series={detail.series}>
         <Text accessibilityRole="header" style={[theme.type.h2, { color: theme.colors.fg }]}>{t("tanks.detail.comments")}</Text>
         <CommentComposer submit={submitComment} onPosted={onCommentPosted} ownerId={detail.tank.author.id} />
         {comments.items.map(comment => <CommentItem key={String(comment.id)} comment={comment} />)}

@@ -2,6 +2,12 @@ import { ApiError } from "@cichlids/client-core";
 
 /** The error codes the API returns in the code field of its problem details. */
 export const API_ERROR_CODES = [
+  "care_not_found",
+  "care_time_invalid",
+  "care_kind_invalid",
+  "care_amount_invalid",
+  "care_request_invalid",
+  "care_auth_required",
   "self_rating",
   "non_member_profile",
   "comment_too_long",

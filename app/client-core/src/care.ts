@@ -37,7 +37,7 @@ export const careMachine = setup({
     },
     confirmed: {
       after: { 6000: "idle" },
-      on: { UNDO: { target: "deleting", actions: "clearError" }, EDIT: { target: "editing", actions: "edit" }, LOG: { target: "logging", actions: "clearError" } },
+      on: { UNDO: { target: "undoing", actions: "clearError" }, EDIT: { target: "editing", actions: "edit" }, LOG: { target: "logging", actions: "clearError" } },
     },
     editing: {
       on: { CANCEL: "idle", SAVE: { target: "saving", actions: "amount" }, DELETE: { target: "deleting", actions: "clearError" } },
@@ -46,6 +46,12 @@ export const careMachine = setup({
       invoke: { src: "update", input: ({ context }) => ({ effects: context.effects, id: Number(context.entry!.id), amount: context.amount }),
         onDone: { target: "idle", actions: assign({ revision: ({ context }) => context.revision + 1 }) },
         onError: { target: "editing", actions: assign({ error: ({ event }) => event.error }) },
+      },
+    },
+    undoing: {
+      invoke: { src: "remove", input: ({ context }) => ({ effects: context.effects, id: Number(context.entry!.id) }),
+        onDone: { target: "idle", actions: assign({ entry: null, revision: ({ context }) => context.revision + 1 }) },
+        onError: { target: "confirmed", actions: assign({ error: ({ event }) => event.error }) },
       },
     },
     deleting: {

@@ -43,6 +43,7 @@ export default function TabsLayout() {
     <Tabs.Screen name="discover" options={{ headerShown: true, title: t("tabs.discover") }} />
     <Tabs.Screen name="fish" options={{ headerShown: true, title: t("tabs.fish") }} />
     <Tabs.Screen name="me" />
+    <Tabs.Screen name="care" options={{ href: null, headerShown: true, title: t("care.waterChange") }} />
     <Tabs.Screen name="gallery" options={{ href: null }} />
     <Tabs.Screen name="tanks" options={{ href: null }} />
     <Tabs.Screen name="community" options={{ href: null }} />
