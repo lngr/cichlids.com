@@ -12,6 +12,7 @@ import { Chip } from "../../../src/components/Chip";
 import { PictureCard } from "../../../src/components/PictureCard";
 import { EmptyView, ErrorView, LoadingView } from "../../../src/components/StatusView";
 import type { PictureListItem } from "@cichlids/client-core";
+import { DiscoverActivity } from "../../../src/featureFlags/DiscoverActivity";
 
 const SORTS: { value: "newest" | "views" | "rating"; labelKey: string }[] = [
   { value: "newest", labelKey: "gallery.sort.newest" },
@@ -77,6 +78,7 @@ export default function GalleryScreen() {
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.bg }]}>
       <Stack.Screen options={{ headerRight: () => <UploadHeaderButton onPress={openUpload} /> }} />
+      <DiscoverActivity />
       {species ? (
         <View style={styles.filterRow}>
           <Chip label={t("gallery.speciesFilter", { species })} active onPress={() => setSpecies(undefined)} />

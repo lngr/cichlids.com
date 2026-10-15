@@ -6,6 +6,7 @@
 #
 # Usage:
 #   write-stack.sh up             bring the write stack up
+#   write-stack.sh set-discover-activity <true|false>   restart the isolated API with the flag
 #   write-stack.sh down           tear it down (idempotent: safe after a partial up, or with
 #                                  nothing up at all)
 #   write-stack.sh run <command...>   up, run the command with the stack's env exported, then
@@ -141,7 +142,7 @@ start_api() {
     WebSession__CallbackUrl="${API_URL}/api/auth/callback" \
     WebSession__PostLogoutRedirectUrl="${WEB_URL}/me" \
     DataProtection__KeyRingPath="$KEY_RING_DIR" \
-    nohup "$DOTNET" "$API_BUILD_DIR/Cichlids.Api.dll" >"$API_LOG" 2>&1 &
+    nohup "$DOTNET" "$API_BUILD_DIR/Cichlids.Api.dll" "--FeatureFlags:discover-activity=${CICHLIDS_WRITE_DISCOVER_ACTIVITY:-false}" >"$API_LOG" 2>&1 &
     echo $! >"$API_PID_FILE"
   )
   # Running the built DLL directly (rather than `dotnet run`) never consults
@@ -230,6 +231,18 @@ cmd_run() {
 case "${1:-}" in
   up)
     cmd_up
+    ;;
+  set-discover-activity)
+    if [[ "${2:-}" != "true" && "${2:-}" != "false" ]]; then
+      echo "Expected true or false." >&2
+      exit 2
+    fi
+    if [[ ! -f "$API_PID_FILE" ]]; then
+      echo "The isolated write API must be running." >&2
+      exit 1
+    fi
+    stop_pid_file "$API_PID_FILE" "Cichlids.Api.dll"
+    CICHLIDS_WRITE_DISCOVER_ACTIVITY="$2" start_api
     ;;
   down)
     cmd_down
