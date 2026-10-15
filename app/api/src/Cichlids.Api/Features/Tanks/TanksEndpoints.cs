@@ -17,7 +17,8 @@ public static class TanksEndpoints
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status403Forbidden);
         group.MapGet("/", ListAsync).WithName("ListTanks");
-        group.MapGet("/{id:long}/time-lapse", GetTimeLapseAsync).WithName("GetTankTimeLapse");
+        group.MapGet("/{id:long}/time-lapse", GetTimeLapseAsync).WithName("GetTankTimeLapse")
+            .ProducesProblem(StatusCodes.Status404NotFound);
         group.MapGet("/{id:long}", GetByIdAsync).WithName("GetTank");
         group.MapGet("/{id:long}/comments", ListCommentsAsync).WithName("ListTankComments");
         group.MapPost("/{id:long}/comments", CreateCommentAsync).WithName("CreateTankComment")

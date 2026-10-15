@@ -16,6 +16,7 @@ import {
   getProfile,
   getSpecies,
   getTank,
+  getTankTimeLapse,
   listCommunityCategories,
   listCommunityThreads,
   listMyDrafts,
@@ -55,6 +56,7 @@ import type {
   SpeciesLinkDto,
   SpeciesListItemDto,
   TankDetailDto,
+  TankTimeLapseDto,
   TankListItemDto,
   TankMediaItemDto,
   WaterValuesDto,
@@ -64,6 +66,7 @@ export type PictureListItem = PictureListItemDto;
 export type PictureDetail = PictureDetailDto;
 export type TankListItem = TankListItemDto;
 export type TankDetail = TankDetailDto;
+export type TankTimeLapse = TankTimeLapseDto;
 export type TankMediaItem = TankMediaItemDto;
 export type Dimensions = DimensionsDto;
 export type WaterValues = WaterValuesDto;
@@ -198,6 +201,7 @@ export interface CichlidsClient {
     refineRegion(id: number, region: TankRegion): Promise<void>;
     list(params?: TanksListParams): Promise<PagedResponse<TankListItem>>;
     get(id: number): Promise<TankDetail>;
+    timeLapse(id: number): Promise<TankTimeLapse>;
     listComments(id: number, params?: PageParams): Promise<PagedResponse<Comment>>;
     createComment(id: number, request: CreateCommentRequest): Promise<CommentCreated>;
   };
@@ -279,6 +283,9 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
     },
     tanks: {
+      async timeLapse(id) {
+        return unwrap(await getTankTimeLapse({ client, path: { id } }));
+      },
       async refineRegion(id, region) {
         unwrap(await refineTankRegion({ client, path: { id }, body: { region } }));
       },

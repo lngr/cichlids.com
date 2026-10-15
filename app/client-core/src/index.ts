@@ -12,6 +12,7 @@ export type {
   PictureDetail,
   TankListItem,
   TankDetail,
+  TankTimeLapse,
   TankMediaItem,
   Dimensions,
   WaterValues,
@@ -40,3 +41,4 @@ export type {
 } from "./client.js";
 export { navigationMachine, selectedTab, canonicalPath } from "./navigation.js";
 export type { NavigationTab, NavigationEvent, NavigationContext } from "./navigation.js";
+export { tankStoryMachine } from "./tankStory.js";

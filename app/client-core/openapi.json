@@ -1125,6 +1125,48 @@
         }
       }
     },
+    "/api/tanks/{id}/time-lapse": {
+      "get": {
+        "tags": [
+          "Tanks"
+        ],
+        "operationId": "GetTankTimeLapse",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TankTimeLapseDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/tanks/{id}": {
       "get": {
         "tags": [
@@ -3850,6 +3892,118 @@
             "items": {
               "$ref": "#/components/schemas/TankMediaItemDto"
             }
+          }
+        }
+      },
+      "TankStoryPostDto": {
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "description",
+          "publishedAt",
+          "mediaItemIds"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "slug": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "mediaItemIds": {
+            "type": "array",
+            "items": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int64"
+            }
+          }
+        }
+      },
+      "TankTimeLapseDto": {
+        "required": [
+          "isShowcase",
+          "photos",
+          "posts"
+        ],
+        "type": "object",
+        "properties": {
+          "isShowcase": {
+            "type": "boolean"
+          },
+          "photos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TankTimeLapsePhotoDto"
+            }
+          },
+          "posts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TankStoryPostDto"
+            }
+          }
+        }
+      },
+      "TankTimeLapsePhotoDto": {
+        "required": [
+          "mediaItemId",
+          "image",
+          "takenAt",
+          "publishedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "mediaItemId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "image": {
+            "$ref": "#/components/schemas/ImageUrlsDto"
+          },
+          "takenAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },

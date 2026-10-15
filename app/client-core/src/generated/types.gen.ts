@@ -401,6 +401,28 @@ export type TankSectionsDto = {
     technic: Array<TankMediaItemDto>;
 };
 
+export type TankStoryPostDto = {
+    id: number | string;
+    slug: null | string;
+    title: null | string;
+    description: null | string;
+    publishedAt: string;
+    mediaItemIds: Array<number | string>;
+};
+
+export type TankTimeLapseDto = {
+    isShowcase: boolean;
+    photos: Array<TankTimeLapsePhotoDto>;
+    posts: Array<TankStoryPostDto>;
+};
+
+export type TankTimeLapsePhotoDto = {
+    mediaItemId: number | string;
+    image: ImageUrlsDto;
+    takenAt: null | string;
+    publishedAt: string;
+};
+
 export type ThreadStartedByDto = {
     profileRef: null | AuthorDto;
     posterName: null | string;
@@ -1098,6 +1120,33 @@ export type CreateTankResponses = {
 };
 
 export type CreateTankResponse = CreateTankResponses[keyof CreateTankResponses];
+
+export type GetTankTimeLapseData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{id}/time-lapse';
+};
+
+export type GetTankTimeLapseErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetTankTimeLapseError = GetTankTimeLapseErrors[keyof GetTankTimeLapseErrors];
+
+export type GetTankTimeLapseResponses = {
+    /**
+     * OK
+     */
+    200: TankTimeLapseDto;
+};
+
+export type GetTankTimeLapseResponse = GetTankTimeLapseResponses[keyof GetTankTimeLapseResponses];
 
 export type GetTankData = {
     body?: never;

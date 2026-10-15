@@ -100,6 +100,16 @@ public class TankTimeLapseTests(ApiFixture fixture)
         }
     }
 
+    [Fact]
+    public async Task OpenApi_DeclaresUnavailableTankAsProblemDetails()
+    {
+        using var json = JsonDocument.Parse(await fixture.Client.GetStringAsync("/openapi/v1.json"));
+        var responses = json.RootElement.GetProperty("paths").GetProperty("/api/tanks/{id}/time-lapse")
+            .GetProperty("get").GetProperty("responses");
+        Assert.True(responses.TryGetProperty("404", out var problem));
+        Assert.True(problem.GetProperty("content").TryGetProperty("application/problem+json", out _));
+    }
+
     [Theory]
     [InlineData(-1)]
     [InlineData(0)]
