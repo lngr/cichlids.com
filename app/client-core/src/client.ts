@@ -13,6 +13,7 @@ import {
   setMyInterests,
   refineTankRegion,
   discardPost,
+  getCareSeries,
   getCommunityThread,
   getFeatureFlags,
   getDiscover,
@@ -39,7 +40,13 @@ import {
 import type {
   CareEntryDto,
   CareAmountRequest,
+  CareParameter,
+  CareSeriesDto,
   LogCareRequest,
+  MeasurementOrigin,
+  MeasurementUnit,
+  MeasurementValueDto,
+  MeasurementValueRequest,
   DiscoverDto,
   DiscoverItemDto,
   CommentCreatedDto,
@@ -75,7 +82,10 @@ import type {
 } from "./generated/types.gen.js";
 
 export type CareEntry = CareEntryDto;
-export type { CareAmountRequest, LogCareRequest };
+export type CareSeries = CareSeriesDto;
+export type MeasurementValue = MeasurementValueDto;
+export type { CareAmountRequest, CareParameter, LogCareRequest, MeasurementOrigin, MeasurementUnit, MeasurementValueRequest };
+export type CareSeriesRange = { from?: string; to?: string };
 export type DiscoverArchive = DiscoverDto;
 export type DiscoverItem = DiscoverItemDto;
 export type PictureListItem = PictureListItemDto;
@@ -208,6 +218,8 @@ export interface CichlidsClient {
     list(tankId: number, params?: PageParams): Promise<PagedResponse<CareEntry>>;
     log(tankId: number, request?: LogCareRequest): Promise<CareEntry>;
     update(tankId: number, id: number, amount: CareAmountRequest | null): Promise<CareEntry>;
+    updateValues(tankId: number, id: number, values: MeasurementValueRequest[]): Promise<CareEntry>;
+    series(tankId: number, parameter: CareParameter, range?: CareSeriesRange): Promise<CareSeries>;
     remove(tankId: number, id: number): Promise<CareEntry>;
   };
   discover: {
@@ -290,6 +302,8 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       async list(tankId, params) { return unwrapPaged(await listCareEntries({ client, path: { tankId }, query: params ?? {} })); },
       async log(tankId, request) { return unwrap(await logCareEntry({ client, path: { tankId }, body: request ?? {} })); },
       async update(tankId, id, amount) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount } })); },
+      async updateValues(tankId, id, values) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount: null, values } })); },
+      async series(tankId, parameter, range) { return unwrap(await getCareSeries({ client, path: { tankId }, query: { parameter, ...range } })); },
       async remove(tankId, id) { return unwrap(await deleteCareEntry({ client, path: { tankId, id } })); },
     },
     discover: {

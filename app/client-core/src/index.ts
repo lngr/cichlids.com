@@ -2,7 +2,14 @@ export { createCichlidsClient, ApiError } from "./client.js";
 export type {
   CareEntry,
   CareAmountRequest,
+  CareParameter,
+  CareSeries,
+  CareSeriesRange,
   LogCareRequest,
+  MeasurementOrigin,
+  MeasurementUnit,
+  MeasurementValue,
+  MeasurementValueRequest,
   DiscoverArchive,
   DiscoverItem,
   CichlidsClient,
@@ -50,3 +57,8 @@ export type { NavigationTab, NavigationEvent, NavigationContext } from "./naviga
 export { tankStoryMachine } from "./tankStory.js";
 
 export { careMachine } from "./care.js";
+export {
+  COMMON_PARAMETERS, MEASUREMENT_ORIGINS, MEASUREMENT_PARAMETERS, createDraft, editDraft, fromCanonical, inputUnit,
+  measurementMachine, scaleSeries, seriesForDisplay, setField, setOrigin, showMore, validateDraft, visibleParameters,
+} from "./measurement.js";
+export type { DisplayPoint, DisplaySeries, DraftErrors, MeasurementDraft, ScaledPoint, UnitSystem } from "./measurement.js";
