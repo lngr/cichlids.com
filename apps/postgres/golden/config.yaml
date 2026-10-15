@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: golden-snapshot
+data:
+  GOLDEN_VERSION: unpublished
+  GOLDEN_BUCKET: cichlids-golden
+  GOLDEN_S3_ENDPOINT: https://nbg1.your-objectstorage.com
+  AWS_DEFAULT_REGION: nbg1

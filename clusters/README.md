@@ -282,7 +282,7 @@ The namespace sync wave precedes the quota and limits. Service Applications
 reconcile independently and can retry while their namespace is created.
 Preview service overlays must contain disposable workloads and cannot own
 Namespaces, ResourceQuotas or LimitRanges. The postgres preview overlay is the
-scoped exception for disposable database storage, with empty initialization,
+scoped exception for disposable database storage, with empty initialization followed by an anonymized golden restore,
 one 1Gi PVC and no production restore or backup access.
 
 Closing or merging the PR, removing admission or reaching expiry removes it
@@ -360,6 +360,10 @@ scheduled backups, PVC protection and the disposable preview database exception.
 The add-on project permits their RBAC, CRDs, cert-manager Issuer and Certificate
 resources in `cnpg-system`. Server-side apply handles the large controller CRDs.
 The environment generators discover the PostgreSQL overlays alongside the
-placeholder. Staging and previews initialize empty and never restore production
-data. The operator provisions the primary-project writer key through the backup
+placeholder. Staging and previews initialize empty and run the
+[golden snapshot restore Job](../tools/golden-snapshot/README.md) against a private,
+operator-published anonymized snapshot. Each preview owns its database; media
+uses a shared subset with an API overlay follow-up. Provision `golden-reader`
+per namespace and select a published version before PostgreSQL synchronization.
+The operator provisions the primary-project backup writer key through the backup
 bucket policy and the production Secret before verifying backup readiness.

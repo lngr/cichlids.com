@@ -175,18 +175,26 @@ for one-time canary creation, GitHub failure notifications and workflow dispatch
 
 ## Staging and previews
 
-Each environment has its own Cluster from the same base and initializes an empty
-`cichlids` database with `initdb`. These databases never restore production data
-and receive no production backup credentials, ObjectStore or backup schedule.
-Synthetic seeding is specified in TASK-2.17.
+Staging and each preview have an isolated Cluster initialized with `initdb`.
+A PostSync Job restores the operator-published anonymized golden snapshot into
+the application database. The Job receives only read access to the private golden
+prefix through `golden-reader`; production backup credentials, ObjectStore and
+backup schedules are absent. The checked-in `unpublished` version requires
+operator activation. See the [golden snapshot procedure](../../tools/golden-snapshot/README.md)
+for image publication, Secret provisioning, version selection, staging refresh,
+privacy verification and the required API media-overlay follow-up.
 
 Previews use a disposable 1Gi PVC per PR namespace. The quota permits one PVC and
 1Gi of storage; service overlays can introduce no other persistent resources.
-The preview patch removes Cluster finalizers and inherited Argo CD deletion
-protection to permit PR teardown. Kubernetes manages the native PVC finalizer.
-The preview Application and namespace Application retain their teardown
-finalizers. This disposable database exception is limited to the postgres preview
-overlay and requires empty initialization and absence of production access.
+The preview patch permits deletion of the Cluster and its generated PVCs through
+the ApplicationSet teardown. Kubernetes manages the native PVC finalizer.
+The preview Application and namespace Application have teardown finalizers.
+The disposable database exception is limited to the postgres preview overlay.
+It bootstraps empty and imports only the anonymized golden application database.
+The `local-path` provisioner uses a logical restore per environment; database
+copy-on-write requires a snapshot-capable storage layer. The shared media subset
+has no per-environment copy. Confirm that a restored golden database fits the
+preview quota before activation.
 
 ## Operator procedure
 
