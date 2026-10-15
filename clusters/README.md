@@ -42,18 +42,24 @@ this topology defines no image build or promotion automation.
 
 ## Cluster add-ons and TLS
 
-Deploy cluster-wide services through the fixed `traefik`, `cert-manager`, `cloudnative-pg` and
-`barman-cloud` Applications in `clusters/cichlids/apps/addons.yaml`. Each uses
+Deploy cluster-wide services through the fixed `traefik`, `cert-manager`, `cloudnative-pg`,
+`barman-cloud` and `headscale` Applications in `clusters/cichlids/apps/addons.yaml`. Each uses
 its service's `overlays/cluster` at `main`. The environment generators discover
 only `staging`, `prod` and `preview` overlays, so each add-on has one owner.
 
 Use the `cichlids-addons` AppProject for these Applications. Its destinations
-are `cnpg-system`, `cert-manager` and `kube-system` (Traefik configuration and cert-manager
+are `cnpg-system`, `cert-manager`, `headscale` and `kube-system` (Traefik configuration and cert-manager
 leader election RBAC). Its explicit resource allowlists permit the upstream RBAC,
 webhooks, cert-manager CRDs, ClusterIssuers and namespaced HelmChartConfig. Workload
 Applications use the separate `cichlids` project.
 
-The add-on Applications use server-side apply for the large CRDs, self-healing
+The Headscale add-on owns a protected SQLite volume on the node disk. Its
+stateful Application has a resources finalizer and resource deletion safeguards.
+Follow the [Headscale runbook](../apps/headscale/README.md) for DNS, initial user
+creation, pre-auth keys, device enrollment, route approval, key rotation, backup
+and recovery over public SSH.
+
+The other add-on Applications use server-side apply for the large CRDs, self-healing
 and deliberate pruning. They have no cascade finalizer. Namespaces, CRDs and
 ClusterIssuers have `Prune=false,Delete=false`. Review resource deletion as an
 explicit operator action. Webhook CA bundles are owned by certificate
@@ -68,7 +74,8 @@ configuration belongs in Git because Argo CD bootstrap uses the local Kubernetes
 API and requires no ingress. Traefik's version follows the pinned k3s release.
 
 The chart runs one replica with a LoadBalancer Service. k3s ServiceLB exposes
-TCP 80 and 443 on the single node. Public DNS uses the platform node's IPv4
+TCP 80 and 443 on the single node. The Service uses
+`externalTrafficPolicy: Local` to preserve client source addresses. Public DNS uses the platform node's IPv4
 address. Controller updates can interrupt ingress on this node. Keep both
 ports reachable from the public internet for HTTP-01 and HTTPS.
 
@@ -117,6 +124,24 @@ TLS. For ACME diagnostics, set the cert-manager annotation to
 require a test trust configuration. The staging issuer refers to the ACME
 test service, independently of the application's staging environment.
 
+## Private staging and previews
+
+The staging web Ingress, including `/api`, and preview Ingresses use
+`tailnet-only@file`, an IP allowlist in Traefik's file provider. Enrolled
+clients reach the node's public IPv4 through its manually approved `/32`
+tailnet route. Public DNS resolves every preview name. Production Ingresses
+are public; the dedicated Keycloak authentication hosts use public Ingresses.
+cert-manager's independent HTTP-01 solver Ingresses are public.
+
+Apply the platform DNS record, run the app tier with an empty enrollment key,
+and sync Headscale before creating the first user and node pre-auth key.
+Supply the sensitive app variable `tailscale_auth_key`, approve the advertised
+route, then join operator devices with
+`tailscale up --login-server https://headscale.cichlids.com --accept-routes=true`.
+Follow the [ordered operator instructions](../apps/headscale/README.md#operator-setup)
+for commands and the external/tailnet acceptance checks. Public operator SSH
+uses the platform SSH key and is independent of Headscale.
+
 ## Operator rollout and checks
 
 Configure the ACME email value above. Use the platform tier's operator credentials and state encryption
@@ -127,7 +152,7 @@ DNS records:
 tofu -chdir=infra/platform apply
 ```
 
-The A RRsets `@`, `staging`, `*.dev`, `auth` and `auth.staging` use
+The A RRsets `@`, `staging`, `*.dev`, `auth`, `auth.staging` and `headscale` use
 `hcloud_server.node.ipv4_address` with a 300-second TTL and `prevent_destroy`.
 The platform manages IPv4 ingress records. Review any existing AAAA records
 for these names so clients and ACME validation reach the same serving node.
@@ -143,7 +168,7 @@ external controller resources and releases their port bindings before rollout.
 
 Publish the reviewed manifests to `main`. From an operator workstation with
 cluster access, inspect Argo CD sync and
-health for both add-ons and the placeholder Applications. Then run:
+health for the add-ons and workload Applications. Then run:
 
 ```sh
 kubectl -n kube-system get helmchart/traefik helmchartconfig/traefik
@@ -155,8 +180,9 @@ kubectl -n cert-manager rollout status deployment/cert-manager-webhook
 kubectl -n cert-manager rollout status deployment/cert-manager-cainjector
 kubectl wait --for=condition=Ready clusterissuer/letsencrypt-production --timeout=300s
 kubectl wait --for=condition=Ready clusterissuer/letsencrypt-staging --timeout=300s
-kubectl -n cichlids-staging wait --for=condition=Ready certificate/placeholder-tls --timeout=300s
+kubectl -n cichlids-staging wait --for=condition=Ready certificate/web-tls --timeout=300s
 kubectl -n cichlids-prod wait --for=condition=Ready certificate/placeholder-tls --timeout=300s
+# Run private HTTPS checks from an enrolled client with subnet routes enabled.
 curl --fail --show-error https://staging.cichlids.com/
 curl --fail --show-error https://cichlids.com/
 curl --head http://staging.cichlids.com/

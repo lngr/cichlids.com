@@ -11,6 +11,8 @@ spec:
       replicas: 1
     service:
       type: LoadBalancer
+      spec:
+        externalTrafficPolicy: Local
     ports:
       web:
         exposedPort: 80
@@ -31,6 +33,11 @@ spec:
                 - https-redirect
                 service: noop@internal
             middlewares:
+              tailnet-only:
+                ipAllowList:
+                  sourceRange:
+                  - 100.64.0.0/10
+                  - fd7a:115c:a1e0::/48
               https-redirect:
                 redirectScheme:
                   scheme: https

@@ -4,6 +4,7 @@ metadata:
   name: web
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
+    traefik.ingress.kubernetes.io/router.middlewares: tailnet-only@file
 spec:
   ingressClassName: traefik
   tls:

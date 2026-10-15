@@ -7,6 +7,13 @@ patches:
     kind: Ingress
     name: placeholder
   patch: |
+    - op: add
+      path: /metadata/annotations/traefik.ingress.kubernetes.io~1router.middlewares
+      value: tailnet-only@file
+- target:
+    kind: Ingress
+    name: placeholder
+  patch: |
     - op: replace
       path: /spec/rules/0/host
       value: pr-0.dev.cichlids.com

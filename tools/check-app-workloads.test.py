@@ -85,7 +85,7 @@ class ApplicationWorkloads(unittest.TestCase):
         self.assertEqual(rule['host'], 'staging.cichlids.com')
         self.assertEqual({p['path']: p['backend']['service']['name'] for p in rule['http']['paths']},
                          {'/api': 'api', '/': 'web'})
-        self.assertNotIn('traefik.ingress.kubernetes.io/router.middlewares', ingress['metadata']['annotations'])
+        self.assertEqual(ingress['metadata']['annotations']['traefik.ingress.kubernetes.io/router.middlewares'], 'tailnet-only@file')
         self.assertFalse((ROOT / 'apps/placeholder/overlays/staging/kustomization.yaml').exists())
         self.assertFalse(any(d['kind'] == 'Ingress' for d in build('web', 'prod')))
 
