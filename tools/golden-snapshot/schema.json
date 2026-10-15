@@ -1,0 +1,300 @@
+{
+  "archive.legacy_comment": {
+    "author_legacy_user_id": "integer",
+    "body": "text",
+    "created_at_legacy": "timestamp with time zone",
+    "id": "bigint",
+    "imported_at": "timestamp with time zone",
+    "legacy_id": "integer",
+    "legacy_target_id": "integer",
+    "legacy_target_type": "text",
+    "payload": "jsonb",
+    "poster_name": "text",
+    "stars": "smallint",
+    "vault_reason": "text"
+  },
+  "public.__EFMigrationsHistory": {
+    "MigrationId": "character varying(150)",
+    "ProductVersion": "character varying(32)"
+  },
+  "public.collection": {
+    "created_at": "timestamp with time zone",
+    "id": "bigint",
+    "is_public": "boolean",
+    "legacy_id": "integer",
+    "profile_id": "bigint",
+    "title": "text"
+  },
+  "public.collection_entry": {
+    "collection_id": "bigint",
+    "id": "bigint",
+    "post_id": "bigint",
+    "sort": "integer"
+  },
+  "public.comment": {
+    "author_profile_id": "bigint",
+    "body": "text",
+    "created_at": "timestamp with time zone",
+    "delete_reason": "text",
+    "deleted_at": "timestamp with time zone",
+    "deleted_by_profile_id": "bigint",
+    "id": "bigint",
+    "legacy_id": "integer",
+    "post_id": "bigint",
+    "poster_name": "text",
+    "score": "integer",
+    "tank_id": "bigint"
+  },
+  "public.comment_vote": {
+    "comment_id": "bigint",
+    "created_at": "timestamp with time zone",
+    "id": "bigint",
+    "profile_id": "bigint",
+    "value": "smallint"
+  },
+  "public.discussion_post": {
+    "author_profile_id": "bigint",
+    "body": "text",
+    "created_at": "timestamp with time zone",
+    "id": "bigint",
+    "legacy_id": "integer",
+    "poster_name": "text",
+    "sort": "integer",
+    "thread_id": "bigint"
+  },
+  "public.discussion_post_media": {
+    "discussion_post_id": "bigint",
+    "id": "bigint",
+    "media_item_id": "bigint",
+    "sort": "integer"
+  },
+  "public.discussion_thread": {
+    "category": "text",
+    "created_at": "timestamp with time zone",
+    "id": "bigint",
+    "last_post_at": "timestamp with time zone",
+    "legacy_id": "integer",
+    "post_count": "integer",
+    "state": "text",
+    "title": "text"
+  },
+  "public.follow": {
+    "created_at": "timestamp with time zone",
+    "follower_profile_id": "bigint",
+    "id": "bigint",
+    "target_profile_id": "bigint",
+    "target_tank_id": "bigint"
+  },
+  "public.inhabitant": {
+    "count": "integer",
+    "id": "bigint",
+    "sort": "integer",
+    "species_id": "bigint",
+    "tank_id": "bigint"
+  },
+  "public.media_item": {
+    "byte_size": "bigint",
+    "checksum_sha256": "text",
+    "content_type": "text",
+    "created_at": "timestamp with time zone",
+    "height": "integer",
+    "id": "bigint",
+    "kind": "text",
+    "legacy_id": "integer",
+    "original_filename": "text",
+    "owner_profile_id": "bigint",
+    "storage_key": "text",
+    "width": "integer"
+  },
+  "public.media_variant": {
+    "byte_size": "bigint",
+    "id": "bigint",
+    "label": "text",
+    "media_item_id": "bigint",
+    "storage_key": "text",
+    "width": "integer"
+  },
+  "public.outbox_event": {
+    "acknowledged_subscription_ids": "bigint[]",
+    "aggregate_id": "text",
+    "aggregate_type": "text",
+    "attempt_count": "integer",
+    "dispatched_at": "timestamp with time zone",
+    "event_type": "text",
+    "given_up_at": "timestamp with time zone",
+    "id": "uuid",
+    "last_attempt_at": "timestamp with time zone",
+    "last_error": "text",
+    "next_attempt_at": "timestamp with time zone",
+    "occurred_at": "timestamp with time zone",
+    "payload": "jsonb",
+    "redelivered_at": "timestamp with time zone"
+  },
+  "public.post": {
+    "author_profile_id": "bigint",
+    "created_at": "timestamp with time zone",
+    "delete_reason": "text",
+    "deleted_at": "timestamp with time zone",
+    "deleted_by_profile_id": "bigint",
+    "description": "text",
+    "id": "bigint",
+    "kind": "text",
+    "legacy_id": "integer",
+    "published_at": "timestamp with time zone",
+    "rating_average": "double precision",
+    "rating_count": "integer",
+    "state": "text",
+    "tank_id": "bigint",
+    "title": "text",
+    "topic": "text",
+    "updated_at": "timestamp with time zone",
+    "view_count": "bigint"
+  },
+  "public.post_media": {
+    "id": "bigint",
+    "media_item_id": "bigint",
+    "post_id": "bigint",
+    "sort": "integer"
+  },
+  "public.post_species": {
+    "id": "bigint",
+    "post_id": "bigint",
+    "sort": "integer",
+    "species_id": "bigint"
+  },
+  "public.profile": {
+    "avatar_media_id": "bigint",
+    "city": "text",
+    "country_code": "text",
+    "created_at": "timestamp with time zone",
+    "display_name": "text",
+    "external_avatar_url": "text",
+    "id": "bigint",
+    "kind": "text",
+    "last_login_at": "timestamp with time zone",
+    "legacy_id": "integer",
+    "profile_image_media_id": "bigint",
+    "suspended_until": "timestamp with time zone",
+    "username": "text"
+  },
+  "public.profile_identity": {
+    "created_at": "timestamp with time zone",
+    "id": "bigint",
+    "profile_id": "bigint",
+    "provider": "text",
+    "subject": "text"
+  },
+  "public.rating": {
+    "created_at": "timestamp with time zone",
+    "id": "bigint",
+    "legacy_comment_id": "integer",
+    "post_id": "bigint",
+    "profile_id": "bigint",
+    "stars": "smallint",
+    "tank_id": "bigint"
+  },
+  "public.slug_alias": {
+    "created_at": "timestamp with time zone",
+    "id": "bigint",
+    "is_canonical": "boolean",
+    "post_id": "bigint",
+    "value": "text"
+  },
+  "public.species": {
+    "aggression": "text",
+    "breeding": "text",
+    "category": "text",
+    "created_at": "timestamp with time zone",
+    "description": "text",
+    "diet": "text",
+    "display_name": "text",
+    "genus": "text",
+    "gh_range": "text",
+    "habitat": "text",
+    "id": "bigint",
+    "intra_aggression": "text",
+    "kh_range": "text",
+    "legacy_id": "integer",
+    "max_size": "text",
+    "morphs": "text",
+    "name": "text",
+    "origin": "text",
+    "ph_range": "text",
+    "slug": "text",
+    "temperature_range": "text"
+  },
+  "public.species_common_name": {
+    "id": "bigint",
+    "name": "text",
+    "species_id": "bigint"
+  },
+  "public.species_link": {
+    "id": "bigint",
+    "label": "text",
+    "sort": "integer",
+    "species_id": "bigint",
+    "url": "text"
+  },
+  "public.tank": {
+    "category": "text",
+    "created_at": "timestamp with time zone",
+    "decoration": "text",
+    "delete_reason": "text",
+    "deleted_at": "timestamp with time zone",
+    "deleted_by_profile_id": "bigint",
+    "depth_value": "integer",
+    "description": "text",
+    "dimension_unit": "text",
+    "filtration": "text",
+    "food": "text",
+    "gravel": "text",
+    "height_value": "integer",
+    "id": "bigint",
+    "legacy_id": "integer",
+    "light": "text",
+    "light_duration": "text",
+    "main_media_id": "bigint",
+    "notes": "text",
+    "plants": "text",
+    "profile_id": "bigint",
+    "published_at": "timestamp with time zone",
+    "state": "text",
+    "technic": "text",
+    "title": "text",
+    "water_gh": "text",
+    "water_kh": "text",
+    "water_no2": "text",
+    "water_no3": "text",
+    "water_notes": "text",
+    "water_ph": "text",
+    "water_po4": "text",
+    "width_value": "integer"
+  },
+  "public.tank_media": {
+    "id": "bigint",
+    "media_item_id": "bigint",
+    "section": "text",
+    "sort": "integer",
+    "tank_id": "bigint"
+  },
+  "public.web_session": {
+    "access_token_expires_at": "timestamp with time zone",
+    "created_at": "timestamp with time zone",
+    "csrf_token": "text",
+    "encrypted_access_token": "text",
+    "encrypted_id_token": "text",
+    "encrypted_refresh_token": "text",
+    "id": "bigint",
+    "last_seen_at": "timestamp with time zone",
+    "session_id_hash": "bytea",
+    "subject": "text"
+  },
+  "public.webhook_subscription": {
+    "active": "boolean",
+    "created_at": "timestamp with time zone",
+    "event_types": "text[]",
+    "id": "bigint",
+    "secret": "text",
+    "url": "text"
+  }
+}
