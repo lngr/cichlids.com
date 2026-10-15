@@ -972,7 +972,7 @@ features:
         note: with robust large tankmates in spacious tanks
 
   hybridGroups:
-    value: [nandopsis-tetracanthus-rocio-octofasciata, rocio-octofasciata-vieja-maculicauda, vieja-melanurus-rocio-octofasciata]
+    value: [nandopsis-haitiensis-rocio-octofasciata, nandopsis-tetracanthus-rocio-octofasciata, rocio-octofasciata-vieja-maculicauda, vieja-melanurus-rocio-octofasciata]
     confidence: medium
     verification:
       method: unanimous
@@ -990,6 +990,10 @@ features:
       The curated data/species/hybrid-groups.yaml file defines rocio-octofasciata-vieja-maculicauda
       with basis presumed from captive-offspring photograph labels in two galleries of one hobby
       compilation, without verified parentage or evidence of access to conspecific mates.
+      The curated data/species/hybrid-groups.yaml file defines nandopsis-haitiensis-rocio-octofasciata
+      as a presumed pairwise crossing group based on captive offspring photographs labelled as
+      Haitian cichlid and Jack Dempsey, without verified parentage or evidence of access to
+      conspecific mates.
     sources:
       - *cof
       - *sf
@@ -1026,6 +1030,11 @@ features:
         url: "https://www.binnspedia.com/jack-dempsey"
         archived: binnspedia.com/jack-dempsey/2026-10-14T101709Z
         accessed: "2026-10-13"
+      - kind: database
+        title: "Binns Hybrid Encyclopedia: Black Nasty cross examples"
+        url: "https://www.binnspedia.com/nandopsis/black-nasty"
+        archived: binnspedia.com/nandopsis/black-nasty/2026-10-15T054529Z
+        accessed: "2026-10-15"
     evidence:
       - source: *cof
         value: null
@@ -1076,8 +1085,16 @@ features:
           url: "https://www.binnspedia.com/jack-dempsey"
           archived: binnspedia.com/jack-dempsey/2026-10-14T101709Z
           accessed: "2026-10-13"
-        value: [rocio-octofasciata-vieja-maculicauda]
+        value: [nandopsis-haitiensis-rocio-octofasciata, rocio-octofasciata-vieja-maculicauda]
         note: "Labels captive offspring; pedigrees and conspecific mate availability are unverified."
+      - source:
+          kind: database
+          title: "Binns Hybrid Encyclopedia: Black Nasty cross examples"
+          url: "https://www.binnspedia.com/nandopsis/black-nasty"
+          archived: binnspedia.com/nandopsis/black-nasty/2026-10-15T054529Z
+          accessed: "2026-10-15"
+        value: [nandopsis-haitiensis-rocio-octofasciata]
+        note: "Photographs label captive offspring; parentage and conspecific mate availability are unverified."
 
   coloration:
     value: { baseColors: [ brown, black, blue ], pattern: mixed }
