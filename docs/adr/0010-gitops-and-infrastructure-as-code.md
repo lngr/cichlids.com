@@ -99,3 +99,4 @@ destroying the cluster or data) are **binding** and specified in
 - [ADR-0009: Hosting and Global Delivery](0009-hosting-and-global-delivery.md)
 - [ADR-0013: Backup and Disaster Recovery](0013-backup-and-disaster-recovery.md)
 - [ADR-0014: Safeguards Against Destructive Infrastructure Changes](0014-safeguards-against-destructive-infrastructure-changes.md)
+- [ADR-0028: Private Access to Non-Production Environments](0028-private-access-to-non-production-environments.md)
