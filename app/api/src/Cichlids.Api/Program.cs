@@ -1,3 +1,4 @@
+using Cichlids.Api.Features.Care;
 using Cichlids.Api.Features.Discover;
 using System.Text.Json.Serialization;
 using Cichlids.Api.Features.Auth;
@@ -120,7 +121,11 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy(AuthorizationPolicies.Admin, policy => policy.RequireRole("admin"));
 });
 
-builder.Services.AddProblemDetails();
+builder.Services.AddProblemDetails(options => options.CustomizeProblemDetails = context =>
+{
+    if (CareEndpoints.IsCarePath(context.HttpContext.Request.Path))
+        context.ProblemDetails.Extensions.TryAdd("code", "care_request_invalid");
+});
 builder.Services.AddExceptionHandler<NonMemberLoginExceptionHandler>();
 
 builder.Services.AddScoped<SpeciesQueryService>();
@@ -131,6 +136,7 @@ builder.Services.AddScoped<DiscoverQueryService>();
 builder.Services.AddScoped<TodayQueryService>();
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<TanksWriteService>();
+builder.Services.AddScoped<CareWriteService>();
 builder.Services.AddScoped<OnboardingWriteService>();
 builder.Services.AddScoped<ProfilesQueryService>();
 builder.Services.AddScoped<CommentsQueryService>();
@@ -186,6 +192,14 @@ if (app.Environment.IsDevelopment())
     app.UseCors(localWebDevCorsPolicy);
 }
 
+app.UseWhen(context => CareEndpoints.IsCarePath(context.Request.Path), branch =>
+    branch.UseStatusCodePages(async context =>
+    {
+        var status = context.HttpContext.Response.StatusCode;
+        await Cichlids.Api.Features.Common.ApiProblems.WithCode(status, "Care request refused", "The care request could not be completed.",
+            status == 401 ? "care_auth_required" : "care_request_invalid").ExecuteAsync(context.HttpContext);
+    }));
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -196,6 +210,7 @@ app.MapFeatureFlagEndpoints();
 app.MapSpeciesEndpoints();
 app.MapPicturesEndpoints();
 app.MapTanksEndpoints();
+app.MapCareEndpoints();
 app.MapDiscoverEndpoints();
 app.MapProfilesEndpoints();
 app.MapCommentsEndpoints();

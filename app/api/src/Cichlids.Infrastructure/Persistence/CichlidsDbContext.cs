@@ -21,6 +21,7 @@ public class CichlidsDbContext : DbContext
     public DbSet<Species> Species => Set<Species>();
     public DbSet<SpeciesCommonName> SpeciesCommonNames => Set<SpeciesCommonName>();
     public DbSet<SpeciesLink> SpeciesLinks => Set<SpeciesLink>();
+    public DbSet<CareEntry> CareEntries => Set<CareEntry>();
     public DbSet<Tank> Tanks => Set<Tank>();
     public DbSet<Inhabitant> Inhabitants => Set<Inhabitant>();
     public DbSet<TankMedia> TankMedia => Set<TankMedia>();

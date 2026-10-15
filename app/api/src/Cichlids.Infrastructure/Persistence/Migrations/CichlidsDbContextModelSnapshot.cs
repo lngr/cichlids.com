@@ -93,6 +93,68 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.CareEntry", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("AmountInputUnit")
+                        .HasColumnType("text")
+                        .HasColumnName("amount_input_unit");
+
+                    b.Property<decimal?>("AmountInputValue")
+                        .HasColumnType("numeric")
+                        .HasColumnName("amount_input_value");
+
+                    b.Property<decimal?>("AmountLiters")
+                        .HasColumnType("numeric")
+                        .HasColumnName("amount_liters");
+
+                    b.Property<long>("AuthorProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("author_profile_id");
+
+                    b.Property<string>("Kind")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("kind");
+
+                    b.Property<DateTimeOffset>("OccurredAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("occurred_at");
+
+                    b.Property<DateTimeOffset>("RecordedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("recorded_at");
+
+                    b.Property<long>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_care_entry");
+
+                    b.HasIndex("AuthorProfileId")
+                        .HasDatabaseName("ix_care_entry_author_profile_id");
+
+                    b.HasIndex("TankId", "OccurredAt", "Id")
+                        .IsDescending(false, true, true)
+                        .HasDatabaseName("ix_care_entry_tank_id_occurred_at_id");
+
+                    b.ToTable("care_entry", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_care_amount", "(amount_input_value IS NULL AND amount_input_unit IS NULL AND amount_liters IS NULL)\nOR (amount_input_value IS NOT NULL AND amount_input_value > 0 AND amount_input_value <= 1000000\n    AND amount_input_unit IS NOT NULL AND (\n        (amount_input_unit = 'percent' AND amount_input_value <= 100 AND amount_liters IS NULL)\n        OR (amount_input_unit = 'liter' AND amount_liters IS NOT NULL AND amount_liters = amount_input_value)\n        OR (amount_input_unit = 'us_gallon' AND amount_liters IS NOT NULL AND amount_liters > 0)))");
+
+                            t.HasCheckConstraint("ck_care_kind", "kind IN ('water_change')");
+
+                            t.HasCheckConstraint("ck_care_time", "occurred_at <= recorded_at + interval '2 minutes'");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
                 {
                     b.Property<long>("Id")
@@ -1699,6 +1761,23 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasName("pk_webhook_subscription");
 
                     b.ToTable("webhook_subscription", "public");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.CareEntry", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("AuthorProfileId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_entry_profiles_author_profile_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_entry_tanks_tank_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
