@@ -3,10 +3,10 @@ id: TASK-2.17
 title: >-
   Environment data provisioning: anonymized snapshot, CoW DB clone, media
   overlay
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-06-08 13:14'
-updated_date: '2026-06-08 13:14'
+updated_date: '2026-10-15 06:42'
 labels:
   - infra
 milestone: m-0
@@ -52,3 +52,32 @@ terabyte-scale media corpus per environment.
 - [ ] #2 A failing test was written first, then made to pass (red-green)
 - [ ] #3 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Decided masking (project owner, 2026-10-15)
+- Source: the migrated legacy data now, a production backup later; the anonymizer runs out of
+  band at the operator (no CI or agent access to real personal data); agents build and test it
+  with synthetic fixtures only; the result is published to a private bucket as a versioned
+  golden snapshot.
+- No Keycloak data from production; staging and previews use test accounts only.
+- Usernames and display names: stable pseudonyms `member-<n>`; city, avatar URL, last login and
+  suspension data removed, country kept; `profile_identity` removed; guest names `guest-<n>`.
+- Every free text (comments, forum posts, titles, descriptions, tank texts, collection titles,
+  delete reasons) replaced by generated text of similar length; counts, structure and timestamps
+  kept.
+- `archive.legacy_comment`, outbox events and webhook subscriptions emptied; species unchanged.
+- Media: a curated subset of about 2,000 pictures, public variants only, never originals,
+  original file names replaced.
+- Staging and previews are reachable only from the tailnet (separate task); certificates through
+  HTTP-01 with only the ACME challenge path public.
+
+### Implementation
+- `tools/golden-snapshot/` (anonymizer with a verification step that fails when any pattern of
+  real data survives: e-mail addresses, URLs to personal sites, original usernames from a
+  denylist given at run time), tests on synthetic fixtures, a restore path for staging and the
+  preview clone (copy-on-write through a CloudNativePG restore from the snapshot backup or a
+  volume snapshot; choose the simplest robust variant on single-node k3s).
+- Media overlay: read-only base prefix of the subset plus a per-preview write prefix.
+<!-- SECTION:PLAN:END -->
