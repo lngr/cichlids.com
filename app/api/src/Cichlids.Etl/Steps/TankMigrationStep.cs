@@ -80,6 +80,7 @@ public sealed class TankMigrationStep : IEtlStep
                 ("title", title),
                 ("description", reader.GetTrimmedOrNull("description")),
                 ("category", category is null ? null : CategoryConverter.ConvertToProvider(category.Value)),
+                ("region", TankRegions.FromLegacyCategory(category) is { } region ? TankRegions.Key(region) : null),
                 ("width_value", NullIfZero(reader.GetInt32("width")) * dimensionFactor),
                 ("width_input_value", NullIfZero(reader.GetInt32("width"))),
                 ("height_value", NullIfZero(reader.GetInt32("height")) * dimensionFactor),

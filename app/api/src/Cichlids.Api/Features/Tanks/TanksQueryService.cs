@@ -37,7 +37,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
         var page = await filtered
             .OrderByDescending(t => t.PublishedAt ?? DateTimeOffset.MinValue).ThenByDescending(t => t.Id)
             .Skip(offset).Take(limit)
-            .Select(t => new TankProjection(t.Id, t.Title, t.Category, t.MainMediaId, t.ProfileId))
+            .Select(t => new TankProjection(t.Id, t.Title, t.Category, t.MainMediaId, t.ProfileId, t.Region))
             .ToListAsync(cancellationToken);
 
         if (page.Count == 0)
@@ -64,7 +64,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
                 t.Category,
                 mainMediaItemByTank.TryGetValue(t.Id, out var mediaItemId) ? images[mediaItemId] : null,
                 imageCounts.GetValueOrDefault(t.Id, 0),
-                authors[t.ProfileId].ToDto(objectStore)))
+                authors[t.ProfileId].ToDto(objectStore), t.Region))
             .ToList();
 
         return new PagedResponse<TankListItemDto>(total, items);
@@ -90,7 +90,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             .ToListAsync(cancellationToken);
 
         var mainMediaItemByTank = await ResolveMainMediaItemsAsync(
-            [new TankProjection(tank.Id, tank.Title, tank.Category, tank.MainMediaId, tank.ProfileId)], cancellationToken);
+            [new TankProjection(tank.Id, tank.Title, tank.Category, tank.MainMediaId, tank.ProfileId, tank.Region)], cancellationToken);
 
         IEnumerable<long> sectionMediaItemIds = mediaRows.Select(m => m.MediaItemId);
         var allMediaItemIds = sectionMediaItemIds.Concat(mainMediaItemByTank.Values).Distinct().ToList();
@@ -129,7 +129,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             sections,
             inhabitants,
             authors[tank.ProfileId].ToDto(objectStore),
-            tank.VolumeLiters is { } liters ? new VolumeDto(liters, tank.VolumeInputValue, tank.VolumeInputUnit) : null);
+            tank.VolumeLiters is { } liters ? new VolumeDto(liters, tank.VolumeInputValue, tank.VolumeInputUnit) : null, tank.Region);
     }
 
     private static List<TankMediaItemDto> BuildSection(
@@ -221,7 +221,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             .ToList();
     }
 
-    private sealed record TankProjection(long Id, string Title, TankCategory? Category, long? MainMediaId, long ProfileId);
+    private sealed record TankProjection(long Id, string Title, TankCategory? Category, long? MainMediaId, long ProfileId, TankRegion? Region);
 
     private sealed record TankMediaRow(long MediaItemId, TankMediaSection Section);
 }

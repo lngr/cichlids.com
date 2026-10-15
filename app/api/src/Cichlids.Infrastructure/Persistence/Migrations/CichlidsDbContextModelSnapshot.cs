@@ -931,6 +931,13 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("avatar_media_id");
 
+                    b.PrimitiveCollection<string[]>("Badges")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("text[]")
+                        .HasColumnName("badges")
+                        .HasDefaultValueSql("ARRAY[]::text[]");
+
                     b.Property<string>("City")
                         .HasColumnType("text")
                         .HasColumnName("city");
@@ -951,6 +958,13 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("external_avatar_url");
 
+                    b.PrimitiveCollection<string[]>("Interests")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("text[]")
+                        .HasColumnName("interests")
+                        .HasDefaultValueSql("ARRAY[]::text[]");
+
                     b.Property<string>("Kind")
                         .IsRequired()
                         .HasColumnType("text")
@@ -963,6 +977,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.Property<int?>("LegacyId")
                         .HasColumnType("integer")
                         .HasColumnName("legacy_id");
+
+                    b.Property<DateTimeOffset?>("OnboardingCompletedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("onboarding_completed_at");
 
                     b.Property<long?>("ProfileImageMediaId")
                         .HasColumnType("bigint")
@@ -1344,6 +1362,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
+                    b.Property<DateTimeOffset?>("AdoptedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("adopted_at");
+
                     b.Property<string>("Category")
                         .HasColumnType("text")
                         .HasColumnName("category");
@@ -1436,6 +1458,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("published_at");
 
+                    b.Property<string>("Region")
+                        .HasColumnType("text")
+                        .HasColumnName("region");
+
                     b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("text")
@@ -1519,6 +1545,8 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                             t.HasCheckConstraint("ck_tank_category", "category IS NULL OR category IN ('tanganyika', 'malawi', 'american', 'african', 'community', 'central_american', 'south_american')");
 
                             t.HasCheckConstraint("ck_tank_dimension_unit", "dimension_unit IS NULL OR dimension_unit IN ('cm', 'inch')");
+
+                            t.HasCheckConstraint("ck_tank_region", "region IS NULL OR region IN ('lake_malawi', 'lake_tanganyika', 'lake_victoria', 'africa_other', 'central_america', 'south_america', 'mixed', 'americas_unassigned')");
 
                             t.HasCheckConstraint("ck_tank_state", "state IN ('draft', 'published')");
 

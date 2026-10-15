@@ -66,6 +66,7 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
             profile.CreatedAt,
             avatarUrl,
             profileImageUrl,
-            new ProfileStatsDto(pictureCount, tankCount, commentCount));
+            new ProfileStatsDto(pictureCount, tankCount, commentCount),
+            profile.OnboardingCompletedAt, profile.Interests, profile.Badges);
     }
 }

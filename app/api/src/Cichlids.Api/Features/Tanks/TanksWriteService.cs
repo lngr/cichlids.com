@@ -16,6 +16,10 @@ public sealed class TanksWriteService(CichlidsDbContext context)
 
     public static (string Code, string Detail)? Validate(CreateTankRequest request)
     {
+        if (request.Region is { } region && !TankRegions.IsSelectable(region))
+        {
+            return ("tank_region_invalid", "Choose a region for a new tank.");
+        }
         if (string.IsNullOrWhiteSpace(request.Title) || request.Title.Length > 200)
         {
             return ("tank_title_invalid", "A title of at most 200 characters is required.");
@@ -45,6 +49,7 @@ public sealed class TanksWriteService(CichlidsDbContext context)
         var tank = new Tank
         {
             ProfileId = profileId,
+            Region = request.Region,
             Title = request.Title.Trim(),
             State = TankState.Published,
             CreatedAt = now,
@@ -59,14 +64,15 @@ public sealed class TanksWriteService(CichlidsDbContext context)
             TankMeasurements.SetVolume(tank, volume.Value, volume.Unit);
         }
 
-        await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
+        await using var transaction = context.Database.CurrentTransaction is null
+            ? await context.Database.BeginTransactionAsync(cancellationToken) : null;
         context.Tanks.Add(tank);
         await context.SaveChangesAsync(cancellationToken);
         context.OutboxEvents.Add(OutboxEvent.Create(
             "tank.created", "tank", tank.Id.ToString(),
             JsonSerializer.Serialize(new { tankId = tank.Id, profileId }, PayloadOptions), now));
         await context.SaveChangesAsync(cancellationToken);
-        await transaction.CommitAsync(cancellationToken);
+        if (transaction is not null) await transaction.CommitAsync(cancellationToken);
         return tank;
     }
 

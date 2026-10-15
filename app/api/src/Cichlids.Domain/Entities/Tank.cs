@@ -12,6 +12,8 @@ public class Tank
     public long ProfileId { get; set; }
     public string Title { get; set; } = string.Empty;
     public string? Description { get; set; }
+    public TankRegion? Region { get; set; }
+    public DateTimeOffset? AdoptedAt { get; set; }
     public TankCategory? Category { get; set; }
     public decimal? WidthValue { get; set; }
     public decimal? HeightValue { get; set; }

@@ -11,4 +11,7 @@ public sealed record ProfileDetailDto(
     DateTimeOffset CreatedAt,
     string? AvatarUrl,
     string? ProfileImageUrl,
-    ProfileStatsDto Stats);
+    ProfileStatsDto Stats,
+    DateTimeOffset? OnboardingCompletedAt = null,
+    string[]? Interests = null,
+    string[]? Badges = null);

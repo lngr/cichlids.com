@@ -44,6 +44,7 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
             Assert.Equal(owner.Id, reef.ProfileId);
             Assert.Equal("Reef Tank", reef.Title);
             Assert.Equal(TankCategory.Tanganyika, reef.Category);
+            Assert.Equal(TankRegion.LakeTanganyika, reef.Region);
             Assert.Equal(TankState.Published, reef.State);
             Assert.Equal(DateTimeOffset.FromUnixTimeSeconds(1000000600), reef.PublishedAt);
             Assert.Equal(DateTimeOffset.FromUnixTimeSeconds(1000000500), reef.CreatedAt);
@@ -75,6 +76,7 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
             Assert.Null(draft.PublishedAt);
             Assert.Equal(DateTimeOffset.FromUnixTimeSeconds(1000000700), draft.CreatedAt);
             Assert.Null(draft.Category);
+            Assert.Null(draft.Region);
             Assert.Null(draft.WidthValue);
             Assert.Equal(127m, draft.HeightValue);
             Assert.Equal(50m, draft.HeightInputValue);

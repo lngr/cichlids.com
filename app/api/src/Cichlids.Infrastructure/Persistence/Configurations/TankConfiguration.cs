@@ -13,6 +13,7 @@ public class TankConfiguration : IEntityTypeConfiguration<Tank>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Title).IsRequired();
+        builder.Property(x => x.Region).HasConversion<SnakeCaseEnumConverter<TankRegion>>();
         builder.Property(x => x.Category).HasConversion<SnakeCaseEnumConverter<TankCategory>>();
         builder.Property(x => x.DimensionUnit).HasConversion<SnakeCaseEnumConverter<DimensionUnit>>();
         builder.Property(x => x.VolumeInputUnit).HasConversion<SnakeCaseEnumConverter<VolumeUnit>>();
@@ -39,6 +40,7 @@ public class TankConfiguration : IEntityTypeConfiguration<Tank>
 
         builder.ToTable("tank", tb =>
         {
+            tb.HasCheckConstraint("ck_tank_region", "region IS NULL OR region IN ('lake_malawi', 'lake_tanganyika', 'lake_victoria', 'africa_other', 'central_america', 'south_america', 'mixed', 'americas_unassigned')");
             tb.HasCheckConstraint(
                 "ck_tank_category",
                 "category IS NULL OR category IN ('tanganyika', 'malawi', 'american', 'african', 'community', 'central_american', 'south_american')");

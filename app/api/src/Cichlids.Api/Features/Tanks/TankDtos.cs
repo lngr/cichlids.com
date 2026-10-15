@@ -5,7 +5,7 @@ using Cichlids.Domain.Enums;
 namespace Cichlids.Api.Features.Tanks;
 
 public sealed record TankListItemDto(
-    long Id, string Title, TankCategory? Category, ImageUrlsDto? MainImage, int ImageCount, AuthorDto Author);
+    long Id, string Title, TankCategory? Category, ImageUrlsDto? MainImage, int ImageCount, AuthorDto Author, TankRegion? Region = null);
 
 public sealed record WaterValuesDto(string? Ph, string? Kh, string? Gh, string? No2, string? No3, string? Po4, string? Notes);
 
@@ -19,7 +19,7 @@ public sealed record DimensionInputDto(decimal? Width, decimal? Height, decimal?
 
 public sealed record VolumeInputDto(decimal Value, VolumeUnit Unit);
 
-public sealed record CreateTankRequest(string Title, DimensionInputDto? Dimensions, VolumeInputDto? Volume);
+public sealed record CreateTankRequest(string Title, DimensionInputDto? Dimensions, VolumeInputDto? Volume, TankRegion? Region = null);
 
 public sealed record TankMediaItemDto(long MediaItemId, ImageUrlsDto Image);
 
@@ -52,4 +52,5 @@ public sealed record TankDetailDto(
     TankSectionsDto Sections,
     IReadOnlyList<InhabitantDto> Inhabitants,
     AuthorDto Author,
-    VolumeDto? Volume);
+    VolumeDto? Volume,
+    TankRegion? Region = null);

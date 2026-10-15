@@ -22,5 +22,9 @@ public class Profile
     public long? ProfileImageMediaId { get; set; }
     public long? AvatarMediaId { get; set; }
 
+    public DateTimeOffset? OnboardingCompletedAt { get; set; }
+    public string[] Interests { get; set; } = [];
+    public string[] Badges { get; set; } = [];
+
     public List<ProfileIdentity> Identities { get; set; } = [];
 }

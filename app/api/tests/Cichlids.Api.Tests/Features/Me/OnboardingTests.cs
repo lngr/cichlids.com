@@ -9,8 +9,16 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Api.Tests.Features.Me;
 
 [Collection(ApiCollection.Name)]
-public sealed class OnboardingTests(ApiFixture fixture)
+public sealed class OnboardingTests(ApiFixture fixture) : IAsyncLifetime
 {
+    private readonly string titlePrefix = $"Onboarding {Guid.NewGuid():N} ";
+    public Task InitializeAsync() => Task.CompletedTask;
+    public async Task DisposeAsync()
+    {
+        await using var db = fixture.CreateDbContext();
+        await db.Tanks.Where(t => t.Title.StartsWith(titlePrefix)).ExecuteDeleteAsync();
+    }
+
     private async Task<HttpResponseMessage> SendAsync(string path, object body, string token, HttpMethod? method = null)
     {
         using var request = new HttpRequestMessage(method ?? HttpMethod.Post, path) { Content = JsonContent.Create(body) };
@@ -24,7 +32,7 @@ public sealed class OnboardingTests(ApiFixture fixture)
         var token = TestTokens.Create(Guid.NewGuid().ToString(), $"onboard-{Guid.NewGuid():N}"[..24]);
         var response = await SendAsync("/api/me/onboarding", new
         {
-            tank = new { title = "First Malawi", region = "lake_malawi", dimensions = new { width = 60, height = 30, depth = 30, unit = "cm" }, volume = new { value = 54, unit = "liter" } },
+            tank = new { title = titlePrefix + "First Malawi", region = "lake_malawi", dimensions = new { width = 60, height = 30, depth = 30, unit = "cm" }, volume = new { value = 54, unit = "liter" } },
         }, token);
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
@@ -51,7 +59,7 @@ public sealed class OnboardingTests(ApiFixture fixture)
     public async Task RegionSetsInterests(string region, int count)
     {
         var token = TestTokens.Create(Guid.NewGuid().ToString(), $"region-{Guid.NewGuid():N}"[..24]);
-        var response = await SendAsync("/api/me/onboarding", new { tank = new { title = "Region", region } }, token);
+        var response = await SendAsync("/api/me/onboarding", new { tank = new { title = titlePrefix + "Region", region } }, token);
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         using var read = new HttpRequestMessage(HttpMethod.Get, "/api/me");
         read.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -84,6 +92,26 @@ public sealed class OnboardingTests(ApiFixture fixture)
             Assert.Equal("south_america", detail.RootElement.GetProperty("region").GetString());
         }
         finally { await db.Tanks.Where(t => t.Id == tank.Id).ExecuteDeleteAsync(); }
+    }
+
+    [Fact]
+    public async Task HiddenLegacyTankIsNeitherListedNorPublishedByTakeover()
+    {
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), $"hidden-{Guid.NewGuid():N}"[..24]);
+        using var read = new HttpRequestMessage(HttpMethod.Get, "/api/me");
+        read.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        using var me = JsonDocument.Parse(await (await fixture.Client.SendAsync(read)).Content.ReadAsStringAsync());
+        var profileId = me.RootElement.GetProperty("profile").GetProperty("id").GetInt64();
+        await using var db = fixture.CreateDbContext();
+        var tank = new Tank { LegacyId = 987655, ProfileId = profileId, Title = titlePrefix + "Hidden", Category = TankCategory.Malawi, State = TankState.Draft, CreatedAt = DateTimeOffset.UtcNow };
+        db.Tanks.Add(tank);
+        await db.SaveChangesAsync();
+        using var list = new HttpRequestMessage(HttpMethod.Get, "/api/me/legacy-tanks");
+        list.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        using var listed = JsonDocument.Parse(await (await fixture.Client.SendAsync(list)).Content.ReadAsStringAsync());
+        Assert.Equal(0, listed.RootElement.GetArrayLength());
+        Assert.Equal(HttpStatusCode.NotFound, (await SendAsync("/api/me/onboarding", new { legacyTankId = tank.Id }, token)).StatusCode);
+        Assert.Equal(TankState.Draft, (await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == tank.Id)).State);
     }
 
     [Fact]
