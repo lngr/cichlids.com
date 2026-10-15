@@ -1675,6 +1675,7 @@ features:
         total: 4
   hybridGroups:
     value: &a48
+      - thorichthys
       - "thorichthys-meeki-maculipinnis"
     confidence: "medium"
     rationale: "The qualified majority retains the existing thorichthys-meeki-maculipinnis group: generator,
@@ -1686,7 +1687,9 @@ features:
       warnings. Conspecific partner availability and independent parentage confirmation are unspecified, so
       its existing presumed basis is appropriate. The Practical Fishkeeping incident concerns a firemouth and
       a convict, not an additional maculipinnis cross. Sources with no crossing claim remain contextual
-      evidence rather than support for a new group."
+      evidence rather than support for a new group. Thorichthys species form a presumed genus group
+      based on their close relationship and general hobby reports of aquarium crossing, as defined in
+      the curated group file."
     sources:
       - &a29
         kind: "forum"
@@ -1714,6 +1717,18 @@ features:
         title: "Horvath. Caring for Firemouth cichlids. Practical Fishkeeping"
         url: "https://www.practicalfishkeeping.co.uk/features/caring-for-firemouth-cichlids/"
         archived: "practicalfishkeeping.co.uk/features/caring-for-firemouth-cichlids/2026-10-14T094241Z"
+        accessed: "2026-10-15"
+      - &beerlink
+        kind: "literature"
+        title: "Beerlink: Thorichthys pasionis, AquaInfo / Nederlandse Cichliden Vereniging"
+        url: "https://aquainfo.nl/en/article/thorichthys-pasionis/"
+        archived: "aquainfo.nl/en/article/thorichthys-pasionis/2026-10-14T103440Z"
+        accessed: "2026-10-15"
+      - &schreiber
+        kind: "literature"
+        title: "Schreiber (2016). Erfahrungen eines Thorichthys-Fans. DCG-Informationen 47(6), 128 to 132"
+        url: "https://dcg-encyclopedia.de/wp-content/uploads/2016/05/2016-06-S-128-132.pdf"
+        archived: "dcg-encyclopedia.de/wp-content/uploads/2016/05/2016-06-s-128-132.pdf/2026-10-15T110358Z"
         accessed: "2026-10-15"
       - *a2
     evidence:
@@ -1751,6 +1766,12 @@ features:
         value:
           - "thorichthys-meeki-maculipinnis"
         note: "Reported tank spawning and surviving fry; partner choice not documented."
+      - source: *beerlink
+        value: [thorichthys]
+        note: "General warning that Thorichthys species cross readily in aquaria."
+      - source: *schreiber
+        value: [thorichthys]
+        note: "Reports general Thorichthys crossing and notes it is uncommon when both species have mates."
       - source: *a16
         value:
           - "thorichthys-meeki-maculipinnis"

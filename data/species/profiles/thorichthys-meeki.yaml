@@ -959,7 +959,7 @@ features:
         value: false
         note: A pair lived without problems in a community with barbs, rainbowfish and catfish.
   hybridGroups:
-    value: [amatitlania-nigrofasciata-thorichthys-meeki, thorichthys-meeki-maculipinnis]
+    value: [amatitlania-nigrofasciata-thorichthys-meeki, thorichthys, thorichthys-meeki-maculipinnis, thorichthys-meeki-pasionis]
     confidence: low
     verification:
       method: conservative
@@ -978,7 +978,10 @@ features:
       that Thorichthys species cross in aquaria. The Swedish Ciklidbladet article that earlier votes
       cited for this cross is a version of the same author's account; its early hybrid mishap is the
       convict cross, not a cross between the two Thorichthys. Free choice of partners is shown for
-      neither group and no wild cross is known.
+      neither group and no wild cross is known. Thorichthys species form a presumed genus group based
+      on close relationship and general aquarium crossing warnings, as defined in the curated group
+      file. The meeki and pasionis pair is a presumed group based on a first-hand mixed-aquarium
+      offspring report without confirmed parentage, as defined in the curated group file.
     sources:
       - *pfk
       - &novak
@@ -1021,6 +1024,18 @@ features:
         archived: monsterfishkeepers.com/forums/goto/post/q-15da78f9/2026-10-14T103448Z
         accessed: 2026-10-13
       - *archive156
+      - &schreiber
+        kind: literature
+        title: "Schreiber (2016). Erfahrungen eines Thorichthys-Fans. DCG-Informationen 47(6), 128 to 132"
+        url: https://dcg-encyclopedia.de/wp-content/uploads/2016/05/2016-06-S-128-132.pdf
+        archived: dcg-encyclopedia.de/wp-content/uploads/2016/05/2016-06-s-128-132.pdf/2026-10-15T110358Z
+        accessed: 2026-10-15
+      - &artigas-pasionis
+        kind: database
+        title: "Artigas Azas: Thorichthys pasionis, Cichlid Room Companion"
+        url: https://cichlidae.com/species.php?id=ffXRmdo-Ufe46UIBPAgGlQ
+        archived: cichlidae.com/species.php/q-70cb537f/2026-10-15T105509Z
+        accessed: 2026-10-15
     evidence:
       - source: *pfk
         value: [amatitlania-nigrofasciata-thorichthys-meeki]
@@ -1052,6 +1067,12 @@ features:
       - source: *archive156
         value: []
         note: A member asks whether convicts and firemouths cross; the answer stays general.
+      - source: *schreiber
+        value: [thorichthys]
+        note: Reports general Thorichthys crossing and notes it is uncommon when both species have mates.
+      - source: *artigas-pasionis
+        value: [thorichthys-meeki-pasionis]
+        note: First-hand account of occasional offspring in a mixed aquarium; parentage was not genetically checked.
   coloration:
     value:
       baseColors: [grey, blue, red]
