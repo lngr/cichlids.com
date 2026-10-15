@@ -4,7 +4,7 @@ title: Discover cold start from 20 years of cichlids.com
 status: To Do
 assignee: []
 created_date: '2026-10-15 08:46'
-updated_date: '2026-10-15 08:55'
+updated_date: '2026-10-15 08:57'
 labels: []
 dependencies: []
 parent_task_id: TASK-4
@@ -45,4 +45,13 @@ feature flag.
   central_american and south_american directly; legacy "american" without detail becomes
   "Americas (unassigned)", which the member refines with one tap on their tank; until then such
   tanks count for both American regions in the hall of fame.
+
+### Hall of fame, tank of the week, showcase time-lapses (decided by the project owner, 2026-10-15)
+- Hall of fame per region: the 20 tanks and 20 pictures with the best weighted (Bayesian) rating
+  average; at least 10 ratings; self-ratings are already excluded (TASK-3.36).
+- Tank of the week: each week another tank of the regional hall of fame, in rotation.
+- Showcase time-lapses: tanks whose photos span at least one year with at least 8 photos from
+  different months; the best rated of those.
+- View counts do not count (distorted by crawlers in the legacy data); tanks and pictures of
+  deleted or suspended members are excluded.
 <!-- SECTION:NOTES:END -->
