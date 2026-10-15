@@ -2,9 +2,12 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
+using Cichlids.Api.Features.Onboarding;
+using Cichlids.Api.Features.Tanks;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Cichlids.Api.Tests.Features.Me;
 
@@ -131,5 +134,64 @@ public sealed class OnboardingTests(ApiFixture fixture) : IAsyncLifetime
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
         Assert.Equal(2, json.RootElement.GetArrayLength());
+    }
+
+    [Fact]
+    public async Task ProfileOutboxFailureRollsBackTankBadgeInterestsAndCompletion()
+    {
+        await using var db = fixture.CreateDbContext();
+        var profile = new Profile { Username = $"rollback-{Guid.NewGuid():N}", CreatedAt = DateTimeOffset.UtcNow, Interests = ["lake_victoria"] };
+        db.Profiles.Add(profile);
+        await db.SaveChangesAsync();
+        var title = titlePrefix + "Rollback";
+        try
+        {
+            await using (var write = fixture.CreateDbContext(new RefuseCompletionEvent()))
+            {
+                var service = new OnboardingWriteService(write, new TanksWriteService(write));
+                await Assert.ThrowsAsync<InvalidOperationException>(() => service.CompleteAsync(profile.Id,
+                    new OnboardingRequest(Tank: new CreateTankRequest(title, null, null, TankRegion.LakeMalawi)), CancellationToken.None));
+            }
+            Assert.False(await db.Tanks.AnyAsync(t => t.Title == title));
+            await db.Entry(profile).ReloadAsync();
+            Assert.Null(profile.OnboardingCompletedAt);
+            Assert.Empty(profile.Badges);
+            Assert.Equal(new[] { "lake_victoria" }, profile.Interests);
+            Assert.False(await db.OutboxEvents.AnyAsync(e => e.AggregateType == "profile" && e.AggregateId == profile.Id.ToString()));
+        }
+        finally { await db.Profiles.Where(p => p.Id == profile.Id).ExecuteDeleteAsync(); }
+    }
+
+    private sealed class RefuseCompletionEvent : SaveChangesInterceptor
+    {
+        public override ValueTask<InterceptionResult<int>> SavingChangesAsync(
+            DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
+        {
+            if (eventData.Context!.ChangeTracker.Entries<OutboxEvent>().Any(e => e.State == EntityState.Added && e.Entity.EventType == "profile.onboarding_completed"))
+                throw new InvalidOperationException("Completion event refused by test.");
+            return ValueTask.FromResult(result);
+        }
+    }
+
+    [Fact]
+    public async Task RegionRefinementRequiresOwnerAndAmericanRegionAndSavesAnEvent()
+    {
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), $"refine-{Guid.NewGuid():N}"[..24]);
+        using var request = new HttpRequestMessage(HttpMethod.Get, "/api/me");
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        using var me = JsonDocument.Parse(await (await fixture.Client.SendAsync(request)).Content.ReadAsStringAsync());
+        var profileId = me.RootElement.GetProperty("profile").GetProperty("id").GetInt64();
+        await using var db = fixture.CreateDbContext();
+        var tank = new Tank { ProfileId = profileId, Title = titlePrefix + "Refine", Region = TankRegion.AmericasUnassigned, State = TankState.Published, CreatedAt = DateTimeOffset.UtcNow };
+        db.Tanks.Add(tank);
+        await db.SaveChangesAsync();
+        var foreign = TestTokens.Create(Guid.NewGuid().ToString(), $"foreign-{Guid.NewGuid():N}"[..24]);
+        Assert.Equal(HttpStatusCode.NotFound, (await SendAsync($"/api/tanks/{tank.Id}/region", new { region = "south_america" }, foreign, HttpMethod.Put)).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await SendAsync($"/api/tanks/{tank.Id}/region", new { region = "lake_malawi" }, token, HttpMethod.Put)).StatusCode);
+        Assert.Equal(HttpStatusCode.OK, (await SendAsync($"/api/tanks/{tank.Id}/region", new { region = "central_america" }, token, HttpMethod.Put)).StatusCode);
+        await db.Entry(tank).ReloadAsync();
+        Assert.Equal(TankRegion.CentralAmerica, tank.Region);
+        Assert.True(await db.OutboxEvents.AnyAsync(e => e.EventType == "tank.region_refined" && e.AggregateId == tank.Id.ToString()));
+        Assert.Equal(HttpStatusCode.BadRequest, (await SendAsync($"/api/tanks/{tank.Id}/region", new { region = "south_america" }, token, HttpMethod.Put)).StatusCode);
     }
 }
