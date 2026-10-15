@@ -66,7 +66,7 @@ export type { NavigationTab, NavigationEvent, NavigationContext } from "./naviga
 export { tankStoryMachine } from "./tankStory.js";
 
 export { careMachine } from "./care.js";
-export { MAX_RHYTHM_DAYS, MIN_RHYTHM_DAYS, RHYTHM_CHOICES, dueSummary, isValidRhythm, parseRhythm } from "./carePlan.js";
+export { MAX_RHYTHM_DAYS, MIN_RHYTHM_DAYS, RHYTHM_CHOICES, TODAY_DUE_HORIZON_DAYS, dueCareForToday, dueSummary, isValidRhythm, parseRhythm } from "./carePlan.js";
 export type { DueSummary } from "./carePlan.js";
 export {
   COMMON_PARAMETERS, MEASUREMENT_ORIGINS, MEASUREMENT_PARAMETERS, createDraft, editDraft, fromCanonical, inputUnit,
