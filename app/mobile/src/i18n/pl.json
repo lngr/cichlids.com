@@ -275,7 +275,9 @@
     "care_unit_invalid": "Ta jednostka nie pasuje do parametru.",
     "care_value_invalid": "Wartość jest poza wiarygodnym zakresem.",
     "care_origin_invalid": "Wybierz zestaw testowy, miernik lub sondę.",
-    "care_range_invalid": "Początek zakresu musi być przed jego końcem."
+    "care_range_invalid": "Początek zakresu musi być przed jego końcem.",
+    "care_plan_invalid": "Wybierz rytm od 1 do 90 dni albo włącz lub wyłącz regułę.",
+    "care_date_invalid": "Nie udało się odczytać daty z urządzenia."
   },
   "featureFlags": {
     "activityTitle": "Aktywność społeczności",
@@ -503,6 +505,46 @@
         "mg_per_liter": "mg/l",
         "microsiemens_per_cm": "µS/cm"
       }
+    },
+    "plan": {
+      "title": "Plan pielęgnacji",
+      "kind": {
+        "water_change": "Podmiana wody",
+        "measurement": "Pomiar"
+      },
+      "daily": "Codziennie",
+      "every_one": "Co {{count}} dnia",
+      "every_few": "Co {{count}} dni",
+      "every_many": "Co {{count}} dni",
+      "every_other": "Co {{count}} dnia",
+      "rhythmReason": "{{rhythm}}: {{reason}}",
+      "reason": {
+        "cichlid_default": "Zwykłe zalecenie dla akwariów z pielęgnicami",
+        "member_choice": "Twój wybór"
+      },
+      "reasonOther": "Z twojego planu pielęgnacji",
+      "dueIn_one": "Następnym razem za {{count}} dzień",
+      "dueIn_few": "Następnym razem za {{count}} dni",
+      "dueIn_many": "Następnym razem za {{count}} dni",
+      "dueIn_other": "Następnym razem za {{count}} dnia",
+      "dueToday": "Na dziś",
+      "overdue_one": "Zaplanowane {{count}} dzień temu",
+      "overdue_few": "Zaplanowane {{count}} dni temu",
+      "overdue_many": "Zaplanowane {{count}} dni temu",
+      "overdue_other": "Zaplanowane {{count}} dnia temu",
+      "overdueNote": "Bez pośpiechu, zrób to, kiedy ci pasuje.",
+      "neverLogged": "Jeszcze nie zapisano",
+      "switchedOff": "Wyłączona",
+      "noRule": "Jeszcze bez reguły",
+      "edit": "Zmień rytm",
+      "close": "Gotowe",
+      "off": "Wyłącz",
+      "on": "Włącz",
+      "add": "Dodaj regułę",
+      "choicesLabel": "Rytm w dniach",
+      "customLabel": "Własny rytm w dniach (od 1 do 90)",
+      "saveCustom": "Użyj tego rytmu",
+      "customInvalid": "Wpisz liczbę całkowitą od 1 do 90."
     }
   }
 }

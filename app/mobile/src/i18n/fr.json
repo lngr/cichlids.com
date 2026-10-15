@@ -267,7 +267,9 @@
     "care_unit_invalid": "Cette unité ne convient pas au paramètre.",
     "care_value_invalid": "La valeur est hors de la plage plausible.",
     "care_origin_invalid": "Choisis kit de test, appareil de mesure ou sonde.",
-    "care_range_invalid": "Le début de la période doit précéder sa fin."
+    "care_range_invalid": "Le début de la période doit précéder sa fin.",
+    "care_plan_invalid": "Choisis un rythme de 1 à 90 jours ou active ou désactive la règle.",
+    "care_date_invalid": "La date de ton appareil n’a pas pu être lue."
   },
   "featureFlags": {
     "activityTitle": "Activité de la communauté",
@@ -493,6 +495,43 @@
         "mg_per_liter": "mg/l",
         "microsiemens_per_cm": "µS/cm"
       }
+    },
+    "plan": {
+      "title": "Plan d’entretien",
+      "kind": {
+        "water_change": "Changement d’eau",
+        "measurement": "Mesure"
+      },
+      "daily": "Tous les jours",
+      "every_one": "Tous les {{count}} jours",
+      "every_many": "Tous les {{count}} jours",
+      "every_other": "Tous les {{count}} jours",
+      "rhythmReason": "{{rhythm}} : {{reason}}",
+      "reason": {
+        "cichlid_default": "La recommandation habituelle pour les aquariums de cichlidés",
+        "member_choice": "Ton choix"
+      },
+      "reasonOther": "De ton plan d’entretien",
+      "dueIn_one": "Prochaine fois dans {{count}} jour",
+      "dueIn_many": "Prochaine fois dans {{count}} jours",
+      "dueIn_other": "Prochaine fois dans {{count}} jours",
+      "dueToday": "À faire aujourd’hui",
+      "overdue_one": "Prévu il y a {{count}} jour",
+      "overdue_many": "Prévu il y a {{count}} jours",
+      "overdue_other": "Prévu il y a {{count}} jours",
+      "overdueNote": "Pas de pression, fais-le quand ça te convient.",
+      "neverLogged": "Pas encore enregistré",
+      "switchedOff": "Désactivée",
+      "noRule": "Pas encore de règle",
+      "edit": "Changer le rythme",
+      "close": "Terminé",
+      "off": "Désactiver",
+      "on": "Activer",
+      "add": "Ajouter une règle",
+      "choicesLabel": "Rythme en jours",
+      "customLabel": "Ton propre rythme en jours (1 à 90)",
+      "saveCustom": "Utiliser ce rythme",
+      "customInvalid": "Saisis un nombre entier de 1 à 90."
     }
   }
 }

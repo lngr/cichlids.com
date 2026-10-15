@@ -275,7 +275,9 @@
     "care_unit_invalid": "Tato jednotka k parametru nepatří.",
     "care_value_invalid": "Hodnota je mimo věrohodný rozsah.",
     "care_origin_invalid": "Vyber test, měřicí přístroj nebo sondu.",
-    "care_range_invalid": "Začátek období musí být před jeho koncem."
+    "care_range_invalid": "Začátek období musí být před jeho koncem.",
+    "care_plan_invalid": "Vyber rytmus od 1 do 90 dní nebo pravidlo zapni či vypni.",
+    "care_date_invalid": "Datum zařízení se nepodařilo přečíst."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -503,6 +505,46 @@
         "mg_per_liter": "mg/l",
         "microsiemens_per_cm": "µS/cm"
       }
+    },
+    "plan": {
+      "title": "Plán péče",
+      "kind": {
+        "water_change": "Výměna vody",
+        "measurement": "Měření"
+      },
+      "daily": "Každý den",
+      "every_one": "Každých {{count}} dní",
+      "every_few": "Každé {{count}} dny",
+      "every_many": "Každých {{count}} dne",
+      "every_other": "Každých {{count}} dní",
+      "rhythmReason": "{{rhythm}}: {{reason}}",
+      "reason": {
+        "cichlid_default": "Obvyklé doporučení pro akvária s cichlidami",
+        "member_choice": "Tvoje volba"
+      },
+      "reasonOther": "Z tvého plánu péče",
+      "dueIn_one": "Příště za {{count}} den",
+      "dueIn_few": "Příště za {{count}} dny",
+      "dueIn_many": "Příště za {{count}} dne",
+      "dueIn_other": "Příště za {{count}} dní",
+      "dueToday": "Na dnes",
+      "overdue_one": "Naplánováno před {{count}} dnem",
+      "overdue_few": "Naplánováno před {{count}} dny",
+      "overdue_many": "Naplánováno před {{count}} dne",
+      "overdue_other": "Naplánováno před {{count}} dny",
+      "overdueNote": "Žádný spěch, udělej to, až se ti to hodí.",
+      "neverLogged": "Zatím nezaznamenáno",
+      "switchedOff": "Vypnuto",
+      "noRule": "Zatím bez pravidla",
+      "edit": "Změnit rytmus",
+      "close": "Hotovo",
+      "off": "Vypnout",
+      "on": "Zapnout",
+      "add": "Přidat pravidlo",
+      "choicesLabel": "Rytmus ve dnech",
+      "customLabel": "Vlastní rytmus ve dnech (1 až 90)",
+      "saveCustom": "Použít tento rytmus",
+      "customInvalid": "Zadej celé číslo od 1 do 90."
     }
   }
 }

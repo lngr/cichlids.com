@@ -267,7 +267,9 @@
     "care_unit_invalid": "Esta unidade não combina com o parâmetro.",
     "care_value_invalid": "O valor está fora da faixa plausível.",
     "care_origin_invalid": "Escolha kit de teste, medidor ou sonda.",
-    "care_range_invalid": "O início do período deve vir antes do fim."
+    "care_range_invalid": "O início do período deve vir antes do fim.",
+    "care_plan_invalid": "Escolha um ritmo de 1 a 90 dias ou ative ou desative a regra.",
+    "care_date_invalid": "Não foi possível ler a data do seu dispositivo."
   },
   "featureFlags": {
     "activityTitle": "Atividade da comunidade",
@@ -493,6 +495,43 @@
         "mg_per_liter": "mg/l",
         "microsiemens_per_cm": "µS/cm"
       }
+    },
+    "plan": {
+      "title": "Plano de cuidados",
+      "kind": {
+        "water_change": "Troca de água",
+        "measurement": "Medição"
+      },
+      "daily": "Todo dia",
+      "every_one": "A cada {{count}} dias",
+      "every_many": "A cada {{count}} dias",
+      "every_other": "A cada {{count}} dias",
+      "rhythmReason": "{{rhythm}}: {{reason}}",
+      "reason": {
+        "cichlid_default": "A recomendação usual para aquários de ciclídeos",
+        "member_choice": "Sua escolha"
+      },
+      "reasonOther": "Do seu plano de cuidados",
+      "dueIn_one": "Próxima vez em {{count}} dia",
+      "dueIn_many": "Próxima vez em {{count}} dias",
+      "dueIn_other": "Próxima vez em {{count}} dias",
+      "dueToday": "Para hoje",
+      "overdue_one": "Planejado há {{count}} dia",
+      "overdue_many": "Planejado há {{count}} dias",
+      "overdue_other": "Planejado há {{count}} dias",
+      "overdueNote": "Sem pressa, faça quando for conveniente.",
+      "neverLogged": "Ainda não registrado",
+      "switchedOff": "Desativada",
+      "noRule": "Ainda sem regra",
+      "edit": "Alterar ritmo",
+      "close": "Concluído",
+      "off": "Desativar",
+      "on": "Ativar",
+      "add": "Adicionar regra",
+      "choicesLabel": "Ritmo em dias",
+      "customLabel": "Seu próprio ritmo em dias (1 a 90)",
+      "saveCustom": "Usar este ritmo",
+      "customInvalid": "Informe um número inteiro de 1 a 90."
     }
   }
 }

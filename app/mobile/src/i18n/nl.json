@@ -259,7 +259,9 @@
     "care_unit_invalid": "Deze eenheid past niet bij de parameter.",
     "care_value_invalid": "De waarde ligt buiten het aannemelijke bereik.",
     "care_origin_invalid": "Kies testset, meter of sonde.",
-    "care_range_invalid": "Het begin van de periode moet voor het einde liggen."
+    "care_range_invalid": "Het begin van de periode moet voor het einde liggen.",
+    "care_plan_invalid": "Kies een ritme van 1 tot 90 dagen of schakel de regel in of uit.",
+    "care_date_invalid": "De datum van je apparaat kon niet worden gelezen."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -483,6 +485,40 @@
         "mg_per_liter": "mg/l",
         "microsiemens_per_cm": "µS/cm"
       }
+    },
+    "plan": {
+      "title": "Verzorgingsplan",
+      "kind": {
+        "water_change": "Water verversen",
+        "measurement": "Meting"
+      },
+      "daily": "Elke dag",
+      "every_one": "Elke {{count}} dagen",
+      "every_other": "Elke {{count}} dagen",
+      "rhythmReason": "{{rhythm}}: {{reason}}",
+      "reason": {
+        "cichlid_default": "De gebruikelijke aanbeveling voor cichlidenaquaria",
+        "member_choice": "Jouw keuze"
+      },
+      "reasonOther": "Uit je verzorgingsplan",
+      "dueIn_one": "Volgende keer over {{count}} dag",
+      "dueIn_other": "Volgende keer over {{count}} dagen",
+      "dueToday": "Vandaag aan de beurt",
+      "overdue_one": "{{count}} dag geleden gepland",
+      "overdue_other": "{{count}} dagen geleden gepland",
+      "overdueNote": "Geen haast, doe het wanneer het jou uitkomt.",
+      "neverLogged": "Nog niet vastgelegd",
+      "switchedOff": "Uitgeschakeld",
+      "noRule": "Nog geen regel",
+      "edit": "Ritme wijzigen",
+      "close": "Klaar",
+      "off": "Uitschakelen",
+      "on": "Inschakelen",
+      "add": "Regel toevoegen",
+      "choicesLabel": "Ritme in dagen",
+      "customLabel": "Eigen ritme in dagen (1 tot 90)",
+      "saveCustom": "Dit ritme gebruiken",
+      "customInvalid": "Voer een geheel getal van 1 tot 90 in."
     }
   }
 }

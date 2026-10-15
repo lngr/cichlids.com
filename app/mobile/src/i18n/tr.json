@@ -259,7 +259,9 @@
     "care_unit_invalid": "Bu birim parametreye uymuyor.",
     "care_value_invalid": "Değer makul aralığın dışında.",
     "care_origin_invalid": "Test kiti, ölçüm cihazı veya prob seç.",
-    "care_range_invalid": "Zaman aralığının başlangıcı bitişinden önce olmalı."
+    "care_range_invalid": "Zaman aralığının başlangıcı bitişinden önce olmalı.",
+    "care_plan_invalid": "1 ile 90 gün arasında bir ritim seç ya da kuralı aç veya kapat.",
+    "care_date_invalid": "Cihazının tarihi okunamadı."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -483,6 +485,40 @@
         "mg_per_liter": "mg/l",
         "microsiemens_per_cm": "µS/cm"
       }
+    },
+    "plan": {
+      "title": "Bakım planı",
+      "kind": {
+        "water_change": "Su değişimi",
+        "measurement": "Ölçüm"
+      },
+      "daily": "Her gün",
+      "every_one": "{{count}} günde bir",
+      "every_other": "{{count}} günde bir",
+      "rhythmReason": "{{rhythm}}: {{reason}}",
+      "reason": {
+        "cichlid_default": "Çiklit akvaryumları için olağan öneri",
+        "member_choice": "Senin seçimin"
+      },
+      "reasonOther": "Bakım planından",
+      "dueIn_one": "Bir sonraki {{count}} gün sonra",
+      "dueIn_other": "Bir sonraki {{count}} gün sonra",
+      "dueToday": "Bugün zamanı",
+      "overdue_one": "{{count}} gün önce planlanmıştı",
+      "overdue_other": "{{count}} gün önce planlanmıştı",
+      "overdueNote": "Acele yok, uygun olduğunda yap.",
+      "neverLogged": "Henüz kaydedilmedi",
+      "switchedOff": "Kapalı",
+      "noRule": "Henüz kural yok",
+      "edit": "Ritmi değiştir",
+      "close": "Bitti",
+      "off": "Kapat",
+      "on": "Aç",
+      "add": "Kural ekle",
+      "choicesLabel": "Gün olarak ritim",
+      "customLabel": "Kendi ritmin, gün olarak (1 ile 90)",
+      "saveCustom": "Bu ritmi kullan",
+      "customInvalid": "1 ile 90 arasında bir tam sayı gir."
     }
   }
 }

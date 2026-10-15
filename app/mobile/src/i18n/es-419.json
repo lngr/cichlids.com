@@ -267,7 +267,9 @@
     "care_unit_invalid": "Esta unidad no corresponde al parámetro.",
     "care_value_invalid": "El valor está fuera del rango plausible.",
     "care_origin_invalid": "Elige kit de pruebas, medidor o sonda.",
-    "care_range_invalid": "El inicio del intervalo debe ser anterior a su final."
+    "care_range_invalid": "El inicio del intervalo debe ser anterior a su final.",
+    "care_plan_invalid": "Elige un ritmo de 1 a 90 días o activa o desactiva la regla.",
+    "care_date_invalid": "No se pudo leer la fecha de tu dispositivo."
   },
   "featureFlags": {
     "activityTitle": "Actividad de la comunidad",
@@ -493,6 +495,43 @@
         "mg_per_liter": "mg/l",
         "microsiemens_per_cm": "µS/cm"
       }
+    },
+    "plan": {
+      "title": "Plan de cuidados",
+      "kind": {
+        "water_change": "Cambio de agua",
+        "measurement": "Medición"
+      },
+      "daily": "Todos los días",
+      "every_one": "Cada {{count}} días",
+      "every_many": "Cada {{count}} días",
+      "every_other": "Cada {{count}} días",
+      "rhythmReason": "{{rhythm}}: {{reason}}",
+      "reason": {
+        "cichlid_default": "La recomendación habitual para acuarios de cíclidos",
+        "member_choice": "Tu elección"
+      },
+      "reasonOther": "De tu plan de cuidados",
+      "dueIn_one": "Próxima vez en {{count}} día",
+      "dueIn_many": "Próxima vez en {{count}} días",
+      "dueIn_other": "Próxima vez en {{count}} días",
+      "dueToday": "Toca hoy",
+      "overdue_one": "Planeado hace {{count}} día",
+      "overdue_many": "Planeado hace {{count}} días",
+      "overdue_other": "Planeado hace {{count}} días",
+      "overdueNote": "Sin prisa, hazlo cuando te venga bien.",
+      "neverLogged": "Aún sin registrar",
+      "switchedOff": "Desactivada",
+      "noRule": "Aún sin regla",
+      "edit": "Cambiar ritmo",
+      "close": "Listo",
+      "off": "Desactivar",
+      "on": "Activar",
+      "add": "Agregar una regla",
+      "choicesLabel": "Ritmo en días",
+      "customLabel": "Tu propio ritmo en días (1 a 90)",
+      "saveCustom": "Usar este ritmo",
+      "customInvalid": "Ingresa un número entero de 1 a 90."
     }
   }
 }

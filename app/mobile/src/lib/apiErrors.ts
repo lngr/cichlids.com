@@ -14,6 +14,8 @@ export const API_ERROR_CODES = [
   "care_value_invalid",
   "care_origin_invalid",
   "care_range_invalid",
+  "care_plan_invalid",
+  "care_date_invalid",
   "self_rating",
   "non_member_profile",
   "comment_too_long",

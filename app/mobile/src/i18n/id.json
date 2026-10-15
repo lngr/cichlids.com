@@ -259,7 +259,9 @@
     "care_unit_invalid": "Satuan ini tidak cocok dengan parameternya.",
     "care_value_invalid": "Nilai di luar rentang yang masuk akal.",
     "care_origin_invalid": "Pilih kit uji, alat ukur, atau probe.",
-    "care_range_invalid": "Awal rentang waktu harus sebelum akhirnya."
+    "care_range_invalid": "Awal rentang waktu harus sebelum akhirnya.",
+    "care_plan_invalid": "Pilih ritme 1 sampai 90 hari atau nyalakan atau matikan aturan.",
+    "care_date_invalid": "Tanggal perangkatmu tidak bisa dibaca."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -481,6 +483,37 @@
         "mg_per_liter": "mg/l",
         "microsiemens_per_cm": "µS/cm"
       }
+    },
+    "plan": {
+      "title": "Rencana perawatan",
+      "kind": {
+        "water_change": "Ganti air",
+        "measurement": "Pengukuran"
+      },
+      "daily": "Setiap hari",
+      "every_other": "Setiap {{count}} hari",
+      "rhythmReason": "{{rhythm}}: {{reason}}",
+      "reason": {
+        "cichlid_default": "Rekomendasi umum untuk akuarium cichlid",
+        "member_choice": "Pilihanmu"
+      },
+      "reasonOther": "Dari rencana perawatanmu",
+      "dueIn_other": "Berikutnya dalam {{count}} hari",
+      "dueToday": "Waktunya hari ini",
+      "overdue_other": "Direncanakan {{count}} hari lalu",
+      "overdueNote": "Tidak perlu terburu-buru, lakukan saat kamu sempat.",
+      "neverLogged": "Belum dicatat",
+      "switchedOff": "Dimatikan",
+      "noRule": "Belum ada aturan",
+      "edit": "Ubah ritme",
+      "close": "Selesai",
+      "off": "Matikan",
+      "on": "Nyalakan",
+      "add": "Tambah aturan",
+      "choicesLabel": "Ritme dalam hari",
+      "customLabel": "Ritme sendiri dalam hari (1 sampai 90)",
+      "saveCustom": "Pakai ritme ini",
+      "customInvalid": "Masukkan bilangan bulat dari 1 sampai 90."
     }
   }
 }

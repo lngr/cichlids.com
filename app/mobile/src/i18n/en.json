@@ -259,7 +259,9 @@
     "care_unit_invalid": "This unit does not fit the parameter.",
     "care_value_invalid": "The value is outside the plausible range.",
     "care_origin_invalid": "Choose test kit, meter or probe.",
-    "care_range_invalid": "The start of the time range must come before its end."
+    "care_range_invalid": "The start of the time range must come before its end.",
+    "care_plan_invalid": "Choose a rhythm of 1 to 90 days, or switch the rule on or off.",
+    "care_date_invalid": "Your device date could not be read."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -483,6 +485,40 @@
         "mg_per_liter": "mg/l",
         "microsiemens_per_cm": "µS/cm"
       }
+    },
+    "plan": {
+      "title": "Care plan",
+      "kind": {
+        "water_change": "Water change",
+        "measurement": "Measurement"
+      },
+      "daily": "Every day",
+      "every_one": "Every {{count}} days",
+      "every_other": "Every {{count}} days",
+      "rhythmReason": "{{rhythm}}: {{reason}}",
+      "reason": {
+        "cichlid_default": "The usual recommendation for cichlid tanks",
+        "member_choice": "Your choice"
+      },
+      "reasonOther": "Set in your care plan",
+      "dueIn_one": "Next in {{count}} day",
+      "dueIn_other": "Next in {{count}} days",
+      "dueToday": "Due today",
+      "overdue_one": "Planned {{count}} day ago",
+      "overdue_other": "Planned {{count}} days ago",
+      "overdueNote": "No rush, do it when it suits you.",
+      "neverLogged": "Not logged yet",
+      "switchedOff": "Switched off",
+      "noRule": "No rule yet",
+      "edit": "Change rhythm",
+      "close": "Done",
+      "off": "Switch off",
+      "on": "Switch on",
+      "add": "Add a rule",
+      "choicesLabel": "Rhythm in days",
+      "customLabel": "Your own rhythm in days (1 to 90)",
+      "saveCustom": "Use this rhythm",
+      "customInvalid": "Enter a whole number from 1 to 90."
     }
   }
 }

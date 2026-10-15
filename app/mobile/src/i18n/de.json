@@ -259,7 +259,9 @@
     "care_unit_invalid": "Diese Einheit passt nicht zum Parameter.",
     "care_value_invalid": "Der Wert liegt außerhalb des plausiblen Bereichs.",
     "care_origin_invalid": "Wähle Testset, Messgerät oder Sonde.",
-    "care_range_invalid": "Der Beginn des Zeitraums muss vor seinem Ende liegen."
+    "care_range_invalid": "Der Beginn des Zeitraums muss vor seinem Ende liegen.",
+    "care_plan_invalid": "Wähle einen Rhythmus von 1 bis 90 Tagen oder schalte die Regel an oder aus.",
+    "care_date_invalid": "Das Datum deines Geräts konnte nicht gelesen werden."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -483,6 +485,40 @@
         "mg_per_liter": "mg/l",
         "microsiemens_per_cm": "µS/cm"
       }
+    },
+    "plan": {
+      "title": "Pflegeplan",
+      "kind": {
+        "water_change": "Wasserwechsel",
+        "measurement": "Messung"
+      },
+      "daily": "Jeden Tag",
+      "every_one": "Alle {{count}} Tage",
+      "every_other": "Alle {{count}} Tage",
+      "rhythmReason": "{{rhythm}}: {{reason}}",
+      "reason": {
+        "cichlid_default": "Die übliche Empfehlung für Buntbarsch-Becken",
+        "member_choice": "Deine Wahl"
+      },
+      "reasonOther": "Aus deinem Pflegeplan",
+      "dueIn_one": "Nächstes Mal in {{count}} Tag",
+      "dueIn_other": "Nächstes Mal in {{count}} Tagen",
+      "dueToday": "Heute dran",
+      "overdue_one": "Vor {{count}} Tag eingeplant",
+      "overdue_other": "Vor {{count}} Tagen eingeplant",
+      "overdueNote": "Kein Stress, mach es, wenn es passt.",
+      "neverLogged": "Noch nicht erfasst",
+      "switchedOff": "Ausgeschaltet",
+      "noRule": "Noch keine Regel",
+      "edit": "Rhythmus ändern",
+      "close": "Fertig",
+      "off": "Ausschalten",
+      "on": "Einschalten",
+      "add": "Regel hinzufügen",
+      "choicesLabel": "Rhythmus in Tagen",
+      "customLabel": "Eigener Rhythmus in Tagen (1 bis 90)",
+      "saveCustom": "Diesen Rhythmus verwenden",
+      "customInvalid": "Gib eine ganze Zahl von 1 bis 90 ein."
     }
   }
 }
