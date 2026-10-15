@@ -23,6 +23,29 @@
         }
       }
     },
+    "/api/feature-flags": {
+      "get": {
+        "tags": [
+          "FeatureFlags"
+        ],
+        "operationId": "GetFeatureFlags",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/comments/{id}": {
       "delete": {
         "tags": [
@@ -3456,6 +3479,9 @@
   "tags": [
     {
       "name": "Cichlids.Api"
+    },
+    {
+      "name": "FeatureFlags"
     },
     {
       "name": "Comments"

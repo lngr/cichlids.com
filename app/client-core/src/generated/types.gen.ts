@@ -384,6 +384,24 @@ export type GetHealthResponses = {
     200: unknown;
 };
 
+export type GetFeatureFlagsData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/feature-flags';
+};
+
+export type GetFeatureFlagsResponses = {
+    /**
+     * OK
+     */
+    200: {
+        [key: string]: boolean;
+    };
+};
+
+export type GetFeatureFlagsResponse = GetFeatureFlagsResponses[keyof GetFeatureFlagsResponses];
+
 export type DeleteCommentData = {
     body: DeleteCommentRequest;
     path: {

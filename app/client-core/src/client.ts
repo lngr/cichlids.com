@@ -5,6 +5,7 @@ import {
   createTankComment,
   discardPost,
   getCommunityThread,
+  getFeatureFlags,
   getMe,
   getPicture,
   getProfile,
@@ -172,6 +173,9 @@ function unwrapPaged<T>(result: { data?: { total: number | string; items: T[] };
 }
 
 export interface CichlidsClient {
+  featureFlags: {
+    get(): Promise<Record<string, boolean>>;
+  };
   pictures: {
     list(params?: PicturesListParams): Promise<PagedResponse<PictureListItem>>;
     get(slug: string): Promise<PictureDetail>;
@@ -235,6 +239,11 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
   }
 
   return {
+    featureFlags: {
+      async get() {
+        return unwrap(await getFeatureFlags({ client, cache: "no-cache" }));
+      },
+    },
     pictures: {
       async list(params) {
         const result = await listPictures({ client, query: params ?? {} });
