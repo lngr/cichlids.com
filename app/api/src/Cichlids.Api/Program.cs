@@ -128,6 +128,7 @@ builder.Services.AddScoped<PicturesQueryService>();
 builder.Services.AddScoped<TanksQueryService>();
 builder.Services.AddScoped<TankTimeLapseQueryService>();
 builder.Services.AddScoped<DiscoverQueryService>();
+builder.Services.AddScoped<TodayQueryService>();
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<TanksWriteService>();
 builder.Services.AddScoped<OnboardingWriteService>();

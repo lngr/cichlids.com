@@ -14,12 +14,13 @@ public sealed class DraftsQueryService(CichlidsDbContext context, IObjectStore o
     private static readonly IReadOnlyDictionary<string, string> NoVariants = new Dictionary<string, string>();
     private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore);
 
-    public async Task<IReadOnlyList<DraftDto>> ListAsync(long authorProfileId, CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<DraftDto>> ListAsync(long authorProfileId, CancellationToken cancellationToken, int limit = int.MaxValue)
     {
         var drafts = await context.Posts
             .Where(p => p.AuthorProfileId == authorProfileId && p.State == PostState.Draft && p.DeletedAt == null)
             .OrderByDescending(p => p.CreatedAt)
             .ThenByDescending(p => p.Id)
+            .Take(limit)
             .Select(p => new { p.Id, p.State, p.Topic, p.Title, p.Description, p.CreatedAt })
             .ToListAsync(cancellationToken);
 
