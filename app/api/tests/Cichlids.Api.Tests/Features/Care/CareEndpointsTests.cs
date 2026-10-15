@@ -112,7 +112,7 @@ public sealed class CareEndpointsTests(ApiFixture fixture) : IAsyncLifetime
     [InlineData("{\"amount\":{\"value\":101,\"unit\":\"percent\"}}", "care_amount_invalid")]
     [InlineData("{\"amount\":{\"value\":1000001,\"unit\":\"liter\"}}", "care_amount_invalid")]
     [InlineData("{\"amount\":{\"value\":1,\"unit\":\"bucket\"}}", "care_request_invalid")]
-    [InlineData("{\"kind\":\"measurement\"}", "care_kind_invalid")]
+    [InlineData("{\"kind\":\"bogus\"}", "care_kind_invalid")]
     public async Task GivenInvalidInput_WhenLogging_ThenCodedProblemAndNoOutbox(string json, string code)
     {
         var (token, tank) = await OwnTankAsync();
