@@ -3685,6 +3685,7 @@ features:
   hybridGroups:
     value:
       - julidochromis
+      - julidochromis-dickfeldi-telmatochromis-vittatus
     confidence: low
     rationale: "Retain the unanimous tally group julidochromis with low confidence. The listed group
       already contains dickfeldi and has basis presumed. Seriously Fish explicitly warns about
@@ -3693,7 +3694,9 @@ features:
       involving dickfeldi. The dickfeldi Seriously Fish page does not itself state a hybridization
       warning, so inherited entries attributing that warning to it are qualified. Fishkeeper,
       FishProfiles and Fischlexikon also discourage mixing congeners. This is a general risk group,
-      not proof that each pair has produced hybrids."
+      not proof that each pair has produced hybrids. The curated julidochromis-dickfeldi-telmatochromis-vittatus
+      group has a documented basis from Marquis's aquarium report of suspected offspring, and the
+      hybrid-groups.yaml entry defines this pair while noting that parentage lacks genetic confirmation."
     sources:
       - kind: literature
         title: "Tawil, P. (2013). Julidochromis ornatus and its dwarf relatives, Cichlid News"
@@ -3724,6 +3727,11 @@ features:
         url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=185"
         accessed: 2026-10-13
         offline: true
+      - kind: literature
+        title: "Audrey Marquis, Telmatochromis vittatus Boulenger, 1898, Cichlid Room Companion, 2003"
+        url: "https://cichlidae.com/article.php?id=8XRmuHjY-BnrpG3jzKNtmA"
+        accessed: 2026-10-15
+        archived: cichlidae.com/article.php/q-14b9242c/2026-10-15T103231Z
     evidence:
       - source:
           kind: literature
@@ -3793,6 +3801,15 @@ features:
         value:
           - julidochromis
         note: Advises against keeping this species with other Julidochromis
+      - source:
+          kind: literature
+          title: "Audrey Marquis, Telmatochromis vittatus Boulenger, 1898, Cichlid Room Companion, 2003"
+          url: "https://cichlidae.com/article.php?id=8XRmuHjY-BnrpG3jzKNtmA"
+          accessed: 2026-10-15
+          archived: cichlidae.com/article.php/q-14b9242c/2026-10-15T103231Z
+        value:
+          - julidochromis-dickfeldi-telmatochromis-vittatus
+        note: Reports suspected offspring in a mixed aquarium without genetic parentage confirmation
     verification:
       method: unanimous
       votes:
