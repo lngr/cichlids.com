@@ -46,6 +46,77 @@
         }
       }
     },
+    "/api/me/care/due": {
+      "get": {
+        "tags": [
+          "Care"
+        ],
+        "operationId": "ListDueCare",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "utcOffsetMinutes",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DueCareDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/discover": {
       "get": {
         "tags": [
@@ -1795,6 +1866,186 @@
         }
       }
     },
+    "/api/tanks/{tankId}/care/plan": {
+      "get": {
+        "tags": [
+          "Care"
+        ],
+        "operationId": "GetCarePlan",
+        "parameters": [
+          {
+            "name": "tankId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "utcOffsetMinutes",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarePlanDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tanks/{tankId}/care/plan/{kind}": {
+      "patch": {
+        "tags": [
+          "Care"
+        ],
+        "operationId": "UpdateCarePlanRule",
+        "parameters": [
+          {
+            "name": "tankId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "kind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "utcOffsetMinutes",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCarePlanRuleRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarePlanDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/profiles/{id}": {
       "get": {
         "tags": [
@@ -2360,6 +2611,41 @@
           "percent"
         ]
       },
+      "CareDueDto": {
+        "required": [
+          "state",
+          "days",
+          "dueDate"
+        ],
+        "type": "object",
+        "properties": {
+          "state": {
+            "$ref": "#/components/schemas/CareDueState"
+          },
+          "days": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "dueDate": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "CareDueState": {
+        "enum": [
+          "due_in",
+          "due_today",
+          "overdue",
+          "never_logged"
+        ]
+      },
       "CareEntryDto": {
         "required": [
           "id",
@@ -2447,6 +2733,101 @@
           "conductivity",
           "tds"
         ]
+      },
+      "CarePlanDto": {
+        "required": [
+          "tankId",
+          "rules"
+        ],
+        "type": "object",
+        "properties": {
+          "tankId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarePlanRuleDto"
+            }
+          }
+        }
+      },
+      "CarePlanRuleDto": {
+        "required": [
+          "kind",
+          "rhythmDays",
+          "enabled",
+          "isDefault",
+          "reason",
+          "due"
+        ],
+        "type": "object",
+        "properties": {
+          "kind": {
+            "$ref": "#/components/schemas/CareKind"
+          },
+          "rhythmDays": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "reason": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/CareReasonDto"
+              }
+            ]
+          },
+          "due": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/CareDueDto"
+              }
+            ]
+          }
+        }
+      },
+      "CareReasonDto": {
+        "required": [
+          "code",
+          "parameters"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "parameters": {
+            "type": [
+              "null",
+              "object"
+            ],
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
       },
       "CareSeriesDto": {
         "required": [
@@ -3303,6 +3684,61 @@
           },
           "image": {
             "$ref": "#/components/schemas/ImageUrlsDto"
+          }
+        }
+      },
+      "DueCareDto": {
+        "required": [
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DueCareItemDto"
+            }
+          }
+        }
+      },
+      "DueCareItemDto": {
+        "required": [
+          "tankId",
+          "tankTitle",
+          "kind",
+          "rhythmDays",
+          "reason",
+          "due"
+        ],
+        "type": "object",
+        "properties": {
+          "tankId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "tankTitle": {
+            "type": "string"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/CareKind"
+          },
+          "rhythmDays": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/CareReasonDto"
+          },
+          "due": {
+            "$ref": "#/components/schemas/CareDueDto"
           }
         }
       },
@@ -5158,6 +5594,26 @@
           }
         }
       },
+      "UpdateCarePlanRuleRequest": {
+        "type": "object",
+        "properties": {
+          "rhythmDays": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "enabled": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          }
+        }
+      },
       "UpdateCareRequest": {
         "required": [
           "amount"
@@ -5350,6 +5806,9 @@
       "name": "FeatureFlags"
     },
     {
+      "name": "Care"
+    },
+    {
       "name": "Discover"
     },
     {
@@ -5375,9 +5834,6 @@
     },
     {
       "name": "Pictures"
-    },
-    {
-      "name": "Care"
     },
     {
       "name": "Profiles"

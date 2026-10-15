@@ -26,6 +26,14 @@ export type CareAmountRequest = {
 
 export type CareAmountUnit = 'liter' | 'us_gallon' | 'percent';
 
+export type CareDueDto = {
+    state: CareDueState;
+    days: number | string;
+    dueDate: null | string;
+};
+
+export type CareDueState = 'due_in' | 'due_today' | 'overdue' | 'never_logged';
+
 export type CareEntryDto = {
     id: number | string;
     tankId: number | string;
@@ -40,6 +48,27 @@ export type CareEntryDto = {
 export type CareKind = 'water_change' | 'measurement';
 
 export type CareParameter = 'temperature' | 'ph' | 'kh' | 'gh' | 'no2' | 'no3' | 'nh4' | 'po4' | 'conductivity' | 'tds';
+
+export type CarePlanDto = {
+    tankId: number | string;
+    rules: Array<CarePlanRuleDto>;
+};
+
+export type CarePlanRuleDto = {
+    kind: CareKind;
+    rhythmDays: null | number | string;
+    enabled: boolean;
+    isDefault: boolean;
+    reason: null | CareReasonDto;
+    due: null | CareDueDto;
+};
+
+export type CareReasonDto = {
+    code: string;
+    parameters: null | {
+        [key: string]: string;
+    };
+};
 
 export type CareSeriesDto = {
     parameter: CareParameter;
@@ -200,6 +229,19 @@ export type DraftDto = {
     description: null | string;
     createdAt: string;
     image: ImageUrlsDto;
+};
+
+export type DueCareDto = {
+    items: Array<DueCareItemDto>;
+};
+
+export type DueCareItemDto = {
+    tankId: number | string;
+    tankTitle: string;
+    kind: CareKind;
+    rhythmDays: number | string;
+    reason: CareReasonDto;
+    due: CareDueDto;
 };
 
 export type IFormFile = Blob | File;
@@ -554,6 +596,11 @@ export type TodayWeeklyTankDto = {
     tank: DiscoverItemDto;
 };
 
+export type UpdateCarePlanRuleRequest = {
+    rhythmDays?: null | number | string;
+    enabled?: null | boolean;
+};
+
 export type UpdateCareRequest = {
     amount: null | CareAmountRequest;
     values?: null | Array<MeasurementValueRequest>;
@@ -621,6 +668,42 @@ export type GetFeatureFlagsResponses = {
 };
 
 export type GetFeatureFlagsResponse = GetFeatureFlagsResponses[keyof GetFeatureFlagsResponses];
+
+export type ListDueCareData = {
+    body?: never;
+    path?: never;
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/me/care/due';
+};
+
+export type ListDueCareErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type ListDueCareError = ListDueCareErrors[keyof ListDueCareErrors];
+
+export type ListDueCareResponses = {
+    /**
+     * OK
+     */
+    200: DueCareDto;
+};
+
+export type ListDueCareResponse = ListDueCareResponses[keyof ListDueCareResponses];
 
 export type GetDiscoverData = {
     body?: never;
@@ -1604,6 +1687,83 @@ export type UpdateCareEntryResponses = {
 };
 
 export type UpdateCareEntryResponse = UpdateCareEntryResponses[keyof UpdateCareEntryResponses];
+
+export type GetCarePlanData = {
+    body?: never;
+    path: {
+        tankId: number;
+    };
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/tanks/{tankId}/care/plan';
+};
+
+export type GetCarePlanErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetCarePlanError = GetCarePlanErrors[keyof GetCarePlanErrors];
+
+export type GetCarePlanResponses = {
+    /**
+     * OK
+     */
+    200: CarePlanDto;
+};
+
+export type GetCarePlanResponse = GetCarePlanResponses[keyof GetCarePlanResponses];
+
+export type UpdateCarePlanRuleData = {
+    body: UpdateCarePlanRuleRequest;
+    path: {
+        tankId: number;
+        kind: string;
+    };
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/tanks/{tankId}/care/plan/{kind}';
+};
+
+export type UpdateCarePlanRuleErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type UpdateCarePlanRuleError = UpdateCarePlanRuleErrors[keyof UpdateCarePlanRuleErrors];
+
+export type UpdateCarePlanRuleResponses = {
+    /**
+     * OK
+     */
+    200: CarePlanDto;
+};
+
+export type UpdateCarePlanRuleResponse = UpdateCarePlanRuleResponses[keyof UpdateCarePlanRuleResponses];
 
 export type GetProfileData = {
     body?: never;
