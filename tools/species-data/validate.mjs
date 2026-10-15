@@ -530,7 +530,7 @@ export function validateFiles(
 }
 
 // Directory checks apply to the full catalog independently of the selected profile paths.
-export function directoryIssues({directory, forms, mappings, legacy, profiles, seriouslyFish}) {
+export function directoryIssues({directory, forms, mappings, legacy, profiles, seriouslyFish, groups}) {
   const issues=[];
   const files={directory:'data/species/directory.yaml',forms:'data/species/trade-forms.yaml',mappings:'data/species/legacy-mapping.yaml',legacy:'data/species/legacy-catalog.json'};
   const lists={directory:directory?.species,forms:forms?.forms,mappings:mappings?.mappings,legacy};
@@ -595,6 +595,27 @@ export function directoryIssues({directory, forms, mappings, legacy, profiles, s
       if (rows.length!==1 || rows[0]?.match==='open' || !targets.has(rows[0]?.target)) issues.push(error('/legacyIds',`legacyId ${id} contradicts profile ${profile.id}, target must be ${[...targets].join(' or ')}`,file));
     }
   }
+  issues.push(...pairGroupNameIssues(groups?.groups,lists.directory));
+  return issues;
+}
+
+// A group of two directory species is named by both species ids in alphabetical order, with a
+// shared genus written once. Groups named by their genus and groups with trade forms or domestic
+// lines keep their names.
+function pairGroupNameIssues(groups,directory) {
+  if (!Array.isArray(groups)) return [];
+  const ids=new Map(directory.map(entry=>[entry?.name,entry?.id]));
+  const genera=new Set(directory.map(entry=>String(entry?.id).split('-')[0]));
+  const issues=[];
+  groups.forEach((group,i)=>{
+    if (!Array.isArray(group?.members) || group.members.length!==2 || genera.has(group.id)) return;
+    const slugs=group.members.map(name=>ids.get(name));
+    if (slugs.some(slug=>!slug)) return;
+    const [a,b]=slugs.sort();
+    const genus=a.split('-')[0];
+    const expected=b.startsWith(`${genus}-`) ? `${a}-${b.slice(genus.length+1)}` : `${a}-${b}`;
+    if (group.id!==expected) issues.push(warning(`/groups/${i}/id`,`pair group ${group.id} should be ${expected}`,'data/species/hybrid-groups.yaml'));
+  });
   return issues;
 }
 
@@ -610,6 +631,7 @@ export function validateDirectoryFiles(speciesDir=SPECIES_DIR) {
   const forms=read('trade-forms.yaml');
   const mappings=read('legacy-mapping.yaml');
   const legacy=read('legacy-catalog.json',true);
+  const groups=existsSync(join(speciesDir,'hybrid-groups.yaml')) ? read('hybrid-groups.yaml') : undefined;
   const profiles=[];
   const profileDir=join(speciesDir,'profiles');
   if (existsSync(profileDir)) {
@@ -618,7 +640,7 @@ export function validateDirectoryFiles(speciesDir=SPECIES_DIR) {
       if (data) profiles.push({data,file:join(profileDir,name)});
     }
   }
-  if (!issues.length) issues.push(...directoryIssues({directory,forms,mappings,legacy,profiles,seriouslyFish}));
+  if (!issues.length) issues.push(...directoryIssues({directory,forms,mappings,legacy,profiles,seriouslyFish,groups}));
   return issues;
 }
 

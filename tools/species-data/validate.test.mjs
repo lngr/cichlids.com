@@ -931,6 +931,22 @@ test('Given malformed profile legacyIds, directory validation leaves the schema 
   assert.doesNotThrow(()=>directoryIssues(input));
 });
 
+test('Given pair groups of two directory species, the id lists the members in order with the shared genus once',async()=>{
+  const {directoryIssues}=await import('./validate.mjs');
+  const input=directoryFixture();
+  input.directory.species.push({id:'one-gamma',name:'One gamma',profile:null});
+  input.groups={groups:[
+    {id:'one-alpha-two-beta',members:['Two beta','One alpha']},
+    {id:'one-alpha-gamma',members:['One gamma','One alpha']},
+    {id:'one',members:['One alpha','One gamma']},
+    {id:'one-alpha-red',members:['One alpha','Red form']},
+    {id:'two-beta-one-alpha',members:['One alpha','Two beta']},
+  ]};
+  const issues=directoryIssues(input);
+  assert.deepEqual(issues.map(x=>[x.level,x.pointer,x.file]),[['warning','/groups/4/id','data/species/hybrid-groups.yaml']]);
+  assert.match(issues[0].message,/two-beta-one-alpha should be one-alpha-two-beta/);
+});
+
 test('Given Seriously Fish decisions, every species id belongs to the directory',async()=>{
   const {directoryIssues}=await import('./validate.mjs');
   const input=directoryFixture();input.seriouslyFish={species:{'one-alpha':{url:null,archived:null,checked:'2026-10-14'}}};
