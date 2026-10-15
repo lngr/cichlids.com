@@ -18,7 +18,7 @@ public sealed class KeycloakRegistrationGuardTests(KeycloakImportFixture fixture
     [Fact]
     public async Task KeepsRegistrationClosedAndFailsWhileAnAccountIsUnresolved()
     {
-        using var admin = new AdminApiDouble();
+        await using var admin = new AdminApiDouble();
         var settings = new KeycloakAdminSettings(admin.BaseUrl, "cichlids", "admin", "admin");
 
         var exitCode = await KeycloakAccountImportCommand.RunAsync(
@@ -39,7 +39,7 @@ public sealed class KeycloakRegistrationGuardTests(KeycloakImportFixture fixture
     /// A minimal Keycloak admin API: the realm prerequisites exist, the user list is empty, a
     /// partial import reports every user as added, and a realm update is recorded.
     /// </summary>
-    private sealed class AdminApiDouble : IDisposable
+    private sealed class AdminApiDouble : IAsyncDisposable
     {
         private readonly HttpListener _listener = new();
         private readonly Task _serving;
@@ -59,16 +59,10 @@ public sealed class KeycloakRegistrationGuardTests(KeycloakImportFixture fixture
 
         public bool RegistrationOpened { get; private set; }
 
-        public void Dispose()
+        public async ValueTask DisposeAsync()
         {
             _listener.Close();
-            try
-            {
-                _serving.Wait(TimeSpan.FromSeconds(5));
-            }
-            catch (AggregateException)
-            {
-            }
+            await _serving.WaitAsync(TimeSpan.FromSeconds(5));
         }
 
         private static int FreePort()
@@ -94,11 +88,11 @@ public sealed class KeycloakRegistrationGuardTests(KeycloakImportFixture fixture
                     return;
                 }
 
-                Respond(context);
+                await RespondAsync(context);
             }
         }
 
-        private void Respond(HttpListenerContext context)
+        private async Task RespondAsync(HttpListenerContext context)
         {
             var path = context.Request.Url!.AbsolutePath.TrimEnd('/');
             var method = context.Request.HttpMethod;
@@ -106,7 +100,7 @@ public sealed class KeycloakRegistrationGuardTests(KeycloakImportFixture fixture
             if (context.Request.HasEntityBody)
             {
                 using var reader = new StreamReader(context.Request.InputStream, Encoding.UTF8);
-                body = reader.ReadToEnd();
+                body = await reader.ReadToEndAsync();
             }
 
             string json = path switch
@@ -135,7 +129,7 @@ public sealed class KeycloakRegistrationGuardTests(KeycloakImportFixture fixture
             context.Response.StatusCode = 200;
             context.Response.ContentType = "application/json";
             context.Response.ContentLength64 = bytes.Length;
-            context.Response.OutputStream.Write(bytes);
+            await context.Response.OutputStream.WriteAsync(bytes);
             context.Response.Close();
         }
 

@@ -8,7 +8,7 @@ public class S3GoldenMediaTests(RustFsFixture fixture)
     [Fact]
     public async Task Given_stored_golden_keys_when_reading_then_the_exact_object_is_used()
     {
-        var store = fixture.CreateStoreForNewBucket();
+        var store = await fixture.CreateStoreForNewBucketAsync();
         const string key = "variants/thumb/media-1.jpg";
         const string golden = "golden/v1/media/" + key;
         await SeedAsync(store, golden);
@@ -46,7 +46,7 @@ public class S3GoldenMediaTests(RustFsFixture fixture)
     [Fact]
     public async Task Empty_option_uses_environment_keys_only()
     {
-        var store = fixture.CreateStoreForNewBucket();
+        var store = await fixture.CreateStoreForNewBucketAsync();
         const string key = "variants/thumb/media-1.jpg";
         await SeedAsync(store, "golden/v1/media/" + key);
         Assert.False(await store.ExistsAsync(key));
@@ -59,7 +59,7 @@ public class S3GoldenMediaTests(RustFsFixture fixture)
     [Fact]
     public async Task Golden_keys_reject_direct_writes_and_deletes()
     {
-        var store = fixture.CreateStoreForNewBucket();
+        var store = await fixture.CreateStoreForNewBucketAsync();
         await Assert.ThrowsAsync<InvalidOperationException>(() => store.PutAsync("golden/v1/media/a", new MemoryStream([1]), "image/jpeg"));
         await Assert.ThrowsAsync<InvalidOperationException>(() => store.DeleteAsync("golden/v1/media/a"));
     }
@@ -67,7 +67,7 @@ public class S3GoldenMediaTests(RustFsFixture fixture)
     [Fact]
     public async Task Environment_prefix_isolates_writes_and_listings()
     {
-        var store = fixture.CreateStoreForNewBucket(writePrefix: "environments/staging/");
+        var store = await fixture.CreateStoreForNewBucketAsync(writePrefix: "environments/staging/");
         const string key = "variants/thumb/media-1.jpg";
         await SeedAsync(store, "golden/v1/media/" + key);
         Assert.Null(await store.GetSizeAsync(key));
@@ -89,7 +89,7 @@ public class S3GoldenMediaTests(RustFsFixture fixture)
     [Fact]
     public async Task Golden_download_obeys_download_cap()
     {
-        var store = fixture.CreateStoreForNewBucket(maxDownloadBytes: 2);
+        var store = await fixture.CreateStoreForNewBucketAsync(maxDownloadBytes: 2);
         await SeedAsync(store, "golden/v1/media/variants/thumb/media-1.jpg");
         await Assert.ThrowsAsync<ObjectTooLargeException>(() => store.GetAsync("golden/v1/media/variants/thumb/media-1.jpg"));
     }

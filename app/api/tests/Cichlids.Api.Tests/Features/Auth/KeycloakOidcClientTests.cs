@@ -71,14 +71,14 @@ public sealed class KeycloakOidcClientTests
     {
         var forms = new List<Dictionary<string, string>>();
         var client = new KeycloakOidcClient(
-            new SingleClientFactory(new Handler(request =>
+            new SingleClientFactory(new Handler(async request =>
             {
                 if (request.Method == HttpMethod.Get)
                 {
                     return Discovery(request);
                 }
 
-                forms.Add(ReadForm(request));
+                forms.Add(await ReadFormAsync(request));
                 return new HttpResponseMessage(HttpStatusCode.OK)
                 {
                     Content = new StringContent("{\"access_token\":\"a\",\"refresh_token\":\"r\",\"expires_in\":300}", Encoding.UTF8, "application/json"),
@@ -175,16 +175,21 @@ public sealed class KeycloakOidcClientTests
             "application/json"),
     };
 
-    private static Dictionary<string, string> ReadForm(HttpRequestMessage request) =>
-        request.Content!.ReadAsStringAsync().GetAwaiter().GetResult()
+    private static async Task<Dictionary<string, string>> ReadFormAsync(HttpRequestMessage request) =>
+        (await request.Content!.ReadAsStringAsync())
             .Split('&', StringSplitOptions.RemoveEmptyEntries)
             .Select(pair => pair.Split('=', 2))
             .ToDictionary(parts => Uri.UnescapeDataString(parts[0]), parts => Uri.UnescapeDataString(parts[1].Replace('+', ' ')));
 
-    private sealed class Handler(Func<HttpRequestMessage, HttpResponseMessage> answer) : HttpMessageHandler
+    private sealed class Handler(Func<HttpRequestMessage, Task<HttpResponseMessage>> answer) : HttpMessageHandler
     {
+        public Handler(Func<HttpRequestMessage, HttpResponseMessage> answer)
+            : this(request => Task.FromResult(answer(request)))
+        {
+        }
+
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) =>
-            Task.FromResult(answer(request));
+            answer(request);
     }
 
     private sealed class SingleClientFactory(HttpMessageHandler handler) : IHttpClientFactory

@@ -225,14 +225,14 @@ public sealed class KeycloakAdminClientTests
     public async Task ResendsTheBodyOfARetriedPut()
     {
         var bodies = new List<string>();
-        var handler = new StubHandler(request =>
+        var handler = new StubHandler(async request =>
         {
             if (IsTokenRequest(request))
             {
                 return Json(HttpStatusCode.OK, TokenBody);
             }
 
-            bodies.Add(request.Content!.ReadAsStringAsync().Result);
+            bodies.Add(await request.Content!.ReadAsStringAsync());
             return bodies.Count == 1 ? Json(HttpStatusCode.InternalServerError, "{}") : Json(HttpStatusCode.NoContent, string.Empty);
         });
         using var client = CreateClient(handler, new List<TimeSpan>());
@@ -286,10 +286,15 @@ public sealed class KeycloakAdminClientTests
         Content = new StringContent(body, Encoding.UTF8, "application/json"),
     };
 
-    private sealed class StubHandler(Func<HttpRequestMessage, HttpResponseMessage> respond) : HttpMessageHandler
+    private sealed class StubHandler(Func<HttpRequestMessage, Task<HttpResponseMessage>> respond) : HttpMessageHandler
     {
+        public StubHandler(Func<HttpRequestMessage, HttpResponseMessage> respond)
+            : this(request => Task.FromResult(respond(request)))
+        {
+        }
+
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) =>
-            Task.FromResult(respond(request));
+            respond(request);
     }
 
     private sealed class ThrowingContent : HttpContent

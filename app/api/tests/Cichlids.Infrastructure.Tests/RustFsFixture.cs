@@ -41,7 +41,7 @@ public sealed class RustFsFixture : IAsyncLifetime
     /// Creates a store for a freshly named bucket and ensures the bucket exists, so each test
     /// gets an isolated namespace inside the shared container.
     /// </summary>
-    public S3ObjectStore CreateStoreForNewBucket(int? listPageSize = null, long? maxDownloadBytes = null, string writePrefix = "")
+    public async Task<S3ObjectStore> CreateStoreForNewBucketAsync(int? listPageSize = null, long? maxDownloadBytes = null, string writePrefix = "")
     {
         var options = new S3ObjectStoreOptions
         {
@@ -69,7 +69,7 @@ public sealed class RustFsFixture : IAsyncLifetime
             new AmazonS3Config { ServiceURL = options.ServiceUrl, ForcePathStyle = options.ForcePathStyle, AuthenticationRegion = options.Region });
 
         var store = new S3ObjectStore(client, Options.Create(options));
-        store.EnsureBucketAsync().GetAwaiter().GetResult();
+        await store.EnsureBucketAsync();
         return store;
     }
 

@@ -19,7 +19,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task PutAsync_then_GetAsync_returns_the_same_content()
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
         var content = Encoding.UTF8.GetBytes("cichlids swim in schools");
 
         await store.PutAsync("images/original.jpg", new MemoryStream(content), "image/jpeg");
@@ -35,7 +35,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task GetAsync_reads_an_object_exactly_at_the_download_cap()
     {
-        var store = _fixture.CreateStoreForNewBucket(maxDownloadBytes: 1024);
+        var store = await _fixture.CreateStoreForNewBucketAsync(maxDownloadBytes: 1024);
         var content = new byte[1024];
         Random.Shared.NextBytes(content);
         await store.PutAsync("images/at-cap.bin", new MemoryStream(content), "application/octet-stream");
@@ -50,7 +50,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task GetAsync_refuses_an_object_one_byte_over_the_download_cap()
     {
-        var store = _fixture.CreateStoreForNewBucket(maxDownloadBytes: 1024);
+        var store = await _fixture.CreateStoreForNewBucketAsync(maxDownloadBytes: 1024);
         await store.PutAsync("images/over-cap.bin", new MemoryStream(new byte[1025]), "application/octet-stream");
 
         var ex = await Assert.ThrowsAsync<ObjectTooLargeException>(() => store.GetAsync("images/over-cap.bin"));
@@ -62,7 +62,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task GetAsync_returns_null_for_a_missing_key()
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
 
         var result = await store.GetAsync("does/not/exist.jpg");
 
@@ -72,7 +72,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task ExistsAsync_reflects_whether_the_key_was_put()
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
 
         Assert.False(await store.ExistsAsync("images/present.jpg"));
 
@@ -84,7 +84,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task GetSizeAsync_returns_the_byte_length_of_an_existing_object()
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
         var content = Encoding.UTF8.GetBytes("cichlids swim in schools");
 
         await store.PutAsync("images/sized.jpg", new MemoryStream(content), "image/jpeg");
@@ -97,7 +97,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task GetSizeAsync_returns_null_for_a_missing_key()
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
 
         var size = await store.GetSizeAsync("does/not/exist.jpg");
 
@@ -107,7 +107,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task PutAsync_with_metadata_is_read_back_by_HeadAsync_with_the_size_and_unprefixed_keys()
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
         var content = Encoding.UTF8.GetBytes("cichlids swim in schools");
         var metadata = new Dictionary<string, string>
         {
@@ -131,7 +131,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task HeadAsync_returns_empty_metadata_for_an_object_put_without_metadata()
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
         await store.PutAsync("images/plain.jpg", new MemoryStream([1, 2, 3]), "image/jpeg");
 
         var head = await store.HeadAsync("images/plain.jpg");
@@ -144,7 +144,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task HeadAsync_returns_null_for_a_missing_key()
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
 
         Assert.Null(await store.HeadAsync("does/not/exist.jpg"));
     }
@@ -152,7 +152,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task DeleteAsync_removes_the_object()
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
         await store.PutAsync("images/to-delete.jpg", new MemoryStream([1, 2, 3]), "application/octet-stream");
         Assert.True(await store.ExistsAsync("images/to-delete.jpg"));
 
@@ -166,7 +166,7 @@ public sealed class S3ObjectStoreTests
     {
         // A small page size forces the SDK to hand back multiple result pages for five objects,
         // exercising the continuation-token loop without uploading thousands of objects.
-        var store = _fixture.CreateStoreForNewBucket(listPageSize: 2);
+        var store = await _fixture.CreateStoreForNewBucketAsync(listPageSize: 2);
         var expectedKeys = Enumerable.Range(1, 5).Select(i => $"gallery/photo-{i}.jpg").ToArray();
 
         foreach (var key in expectedKeys)
@@ -186,7 +186,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task ListKeysAsync_returns_no_keys_for_a_prefix_with_no_matching_objects()
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
 
         var listedKeys = new List<string>();
         await foreach (var key in store.ListKeysAsync("empty-prefix/"))
@@ -202,7 +202,7 @@ public sealed class S3ObjectStoreTests
     [InlineData("forum_attachments/x.jpg")]
     public async Task EnsurePublicReadPolicyAsync_makes_an_object_under_a_public_prefix_anonymously_readable(string key)
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
         await store.PutAsync(key, new MemoryStream([1, 2, 3]), "image/jpeg");
 
         var applied = await store.EnsurePublicReadPolicyAsync(MediaStorageKeys.PublicPrefixes);
@@ -214,7 +214,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task EnsurePublicReadPolicyAsync_refuses_an_anonymous_read_of_an_original()
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
         await store.PutAsync("originals/public-read.jpg", new MemoryStream([1, 2, 3]), "image/jpeg");
 
         var applied = await store.EnsurePublicReadPolicyAsync(MediaStorageKeys.PublicPrefixes);
@@ -226,7 +226,7 @@ public sealed class S3ObjectStoreTests
     [Fact]
     public async Task EnsurePublicReadPolicyAsync_leaves_a_missing_variant_reported_as_not_found()
     {
-        var store = _fixture.CreateStoreForNewBucket();
+        var store = await _fixture.CreateStoreForNewBucketAsync();
 
         var applied = await store.EnsurePublicReadPolicyAsync(MediaStorageKeys.PublicPrefixes);
         Assert.True(applied);

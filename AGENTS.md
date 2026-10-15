@@ -42,6 +42,10 @@ Die Design-Richtung steht und ist verbindliche Grundlage für jede UI-Umsetzung.
 - Stack starten: `cd workspace-legacy/legacy-stack && docker compose up -d` (MySQL :3306 root/legacy, phpMyAdmin :8085).
 - **Repo-Hygiene:** Open-Design-Wegwerf-Artefakte gehören **nicht** ins Repo und sind in [`.gitignore`](.gitignore): `*.artifact.json` (Vorschau-Sidecars) und `mpz*-image.png` (eingefügte Screenshots). Design-**Quellen** dagegen schon: `design-system/`, `cichlids-design-system.html`, `cichlids-tank-prototype.html`, `cichlids-tank-detail-hifi.html`.
 
+## Backend (.NET)
+
+Im gesamten .NET-Code unter `app/api/`, einschließlich Tests, Fixtures und Tools, wird asynchrone Arbeit ausnahmslos mit `await` verarbeitet; blockierende Task-/ValueTask-Aufrufe sind durch `BannedSymbols.txt` und RS0030 als Buildfehler verboten.
+
 ## Grundhaltung
 
 Die Entwicklung erfolgt **test-first und spec-driven**: Eine Story wird zuerst über einen
