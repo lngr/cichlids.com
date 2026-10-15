@@ -1,0 +1,2642 @@
+schemaVersion: 1
+id: maylandia-aurora
+legacyIds:
+- 464
+status: described
+taxonomy:
+  validName: Maylandia aurora
+  genus: Maylandia
+  species: aurora
+  author: "(Burgess, 1976)"
+  source: &id001
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species in the genus Maylandia"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Maylandia"
+    accessed: '2026-10-15'
+    archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-47330f77/2026-10-14T095140Z
+  synonyms:
+  - name: Pseudotropheus aurora
+    note: Original combination; the legacy catalog name.
+  - name: Metriaclima aurora
+    note: Combination used by CRC and many cichlid references.
+  legacyNames:
+  - Pseudotropheus aurora
+  note: "The Catalog of Fishes is the naming authority for this profile and accepts Maylandia aurora (Burgess, 1976). The Maylandia and legacy Pseudotropheus genus queries were both checked; the latter currently has no aurora entry. CRC uses Metriaclima aurora. Stauffer and colleagues (2026), https://doi.org/10.3390/taxonomy6010003, argue that Maylandia is unavailable, but this disagreement does not change the catalog-based valid name used here. Likoma is the probable type locality. The separate sources and archive references are retained under origin."
+names:
+  trade:
+    en:
+    - Aurora cichlid
+    - Aurora mbuna
+    - Aurora
+    de:
+    - Aurora-Buntbarsch
+variants:
+- name: Likoma Island
+  kind: locality
+  note: Typical blue and golden male form associated with the original population.
+- name: Mbweca and Tumbi Point
+  kind: locality
+  note: The adult male form has a brown rather than blue dorsal back.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: lake-malawi
+      localities:
+      - Likoma Island
+      - Chizumulu Island
+      - Mala (Mara) Point
+      - Mbweca Rocks
+      - Tumbi Point
+      - N'kolongwe
+      - Otter Point (introduced)
+      - Thumbi West Island (introduced)
+    confidence: high
+    rationale: "The Catalog of Fishes anchors the species to Likoma Island and records its introduction at Thumbi West. FishBase and the Malawi.si locality account report additional island and Mozambican shore populations, so the broader list is retained with introduced localities explicitly labelled. The checker-c Likoma-only list is a restricted summary rather than evidence excluding the other populations."
+    sources:
+    - *id001
+    - &id064
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes, species in the genus Pseudotropheus"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus"
+      accessed: '2026-10-15'
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-54fb6171/2026-10-14T101559Z
+    - &id002
+      kind: database
+      title: "FishBase: Maylandia aurora (Burgess, 1976) summary"
+      url: "https://fishbase.se/summary/Pseudotropheus-aurora.html"
+      accessed: '2026-10-15'
+      archived: fishbase.se/summary/pseudotropheus-aurora.html/2026-10-15T052619Z
+    - &id003
+      kind: website
+      title: "Cichlid Atlas: Maylandia aurora"
+      url: "https://www.cichlidatlas.com/species/maylandia-aurora/"
+      accessed: '2026-10-15'
+      archived: cichlidatlas.com/species/maylandia-aurora/2026-10-15T052619Z
+    - &id004
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes, species of the genus Maylandia (entry aurora)"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Maylandia"
+      accessed: '2026-10-15'
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-47330f77/2026-10-14T095140Z
+    - &id005
+      kind: database
+      title: "FishBase: Maylandia aurora (Burgess, 1976)"
+      url: "https://www.fishbase.se/summary/Maylandia-aurora.html"
+      accessed: '2026-10-15'
+      archived: fishbase.se/summary/maylandia-aurora.html/2026-10-15T052612Z
+    - &id006
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes, species of the genus Maylandia"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Maylandia"
+      accessed: '2026-10-15'
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-47330f77/2026-10-14T095140Z
+    - &id007
+      kind: database
+      title: "FishBase, Maylandia aurora summary"
+      url: "https://www.fishbase.se/summary/Maylandia-aurora.html"
+      accessed: '2026-10-15'
+      archived: fishbase.se/summary/maylandia-aurora.html/2026-10-15T052612Z
+    - &id049
+      kind: website
+      title: "Lake Malawi cichlids: Maylandia aurora 'Likoma Island'"
+      url: "https://malawi.si/Malawi/Maylandia/Maylandia%20aurora/slides/Maylandia%20aurora%20%27Likoma%20Island%27.html"
+      accessed: '2026-10-15'
+      archived: malawi.si/malawi/maylandia/maylandia_aurora/slides/maylandia_aurora__likoma_island_.html/2026-10-15T052644Z
+    - &id008
+      kind: database
+      title: "FishBase species summary, Maylandia aurora"
+      url: "https://www.fishbase.se/summary/Maylandia-aurora.html"
+      accessed: '2026-10-15'
+      archived: fishbase.se/summary/maylandia-aurora.html/2026-10-15T052612Z
+    - &id051
+      kind: database
+      title: "Cichlid Room Companion, Metriaclima aurora"
+      url: "https://cichlidae.com/species.php?id=SamGEcLVFLLbbpROIW6SqA"
+      accessed: '2026-10-15'
+      archived: cichlidae.com/species.php/q-83f7ed73/2026-10-15T052728Z
+    - &id010
+      kind: website
+      title: "Lake Malawi cichlids, Maylandia aurora Likoma Island page"
+      url: "https://www.malawi.si/Malawi/Maylandia/Maylandia%20aurora/slides/Maylandia%20aurora%20%27Likoma%20Island%27.html"
+      accessed: '2026-10-15'
+      archived: malawi.si/malawi/maylandia/maylandia_aurora/slides/maylandia_aurora__likoma_island_.html/2026-10-15T052631Z
+    - &id063
+      kind: literature
+      title: "Stauffer et al. (2026). Maylandia (Teleostei: Cichlidae) Remains a Nomen Nudum"
+      url: "https://doi.org/10.3390/taxonomy6010003"
+      accessed: '2026-10-15'
+      archived: doi.org/10.3390_taxonomy6010003/2026-10-13T065812Z
+    evidence:
+    - source: *id001
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+        - Likoma Island
+        - Thumbi West Island (introduced)
+    - source: *id002
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+        - Likoma Island
+        - Mara Point
+        - Tumbi Point
+        - N'kolongwe
+        - Otter Point (introduced)
+        - Thumbi West Island (introduced)
+    - source: *id003
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+        - Likoma Island
+        - Chizumulu Island
+        - Mara Point
+        - Mbweca
+        - Tumbi Point
+        - N'kolongwe
+    - source: *id004
+      value: "Likoma Island endemic, Lake Malawi"
+    - source: *id005
+      value: "Likoma Island, Mozambican shore populations, transplants to Otter Point and Thumbi West"
+    - source: *id006
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+        - Likoma Island
+    - source: *id007
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+        - Likoma Island
+        - Mara Point
+        - Tumbi Point
+        - Nkolongwe
+    - source: *id006
+      value:
+        continent: Africa
+        region: Lake Malawi
+        localities:
+        - Likoma Island
+      note: Native distribution; introduced populations are also recorded at Thumbi West.
+    - source: *id008
+      value:
+        continent: Africa
+        region: Lake Malawi
+        localities:
+        - Likoma Island
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: high
+    rationale: "The natural 21 to 29 C range is the Lake Malawi seasonal and inshore synthesis. Eccles supplies the cool inshore endpoint in the inherited synthesis, Vollmer and colleagues describe summer surface temperatures near 28 C and cooler winter water, and the 2013 campaign reported in Ngochera supplies the upper endpoint. The FAO compilation itself reports only 23 to 25 C, not the complete synthesis. FishBase's 24 to 26 C is a narrower species summary. The settled lake range is retained unchanged. Eccles could not be reopened: the DOI page returned HTTP 403 and the full-text tool reports no open-access copy. Its inherited citation is retained with offline true; the range remains the settled lake synthesis."
+    sources:
+    - &id011
+      kind: literature
+      title: "Branchu et al. (2010), Hydrochemistry of Lake Malawi, northern basin"
+      url: "https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf"
+      accessed: '2026-10-15'
+      archived: hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf/2026-10-14T094507Z
+    - &id012
+      kind: literature
+      title: "Vanden Bossche and Bernacsek (1990), FAO source book: Lake Malawi water chemistry"
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      accessed: '2026-10-15'
+      archived: fao.org/4/t0473e/t0473e05.htm/2026-10-14T094507Z
+    - *id002
+    - &id013
+      kind: literature
+      title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+      url: "https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf"
+      archived: hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf/2026-10-14T094507Z
+      accessed: '2026-10-12'
+    - &id016
+      kind: literature
+      title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      archived: fao.org/4/t0473e/t0473e05.htm/2026-10-14T094507Z
+      accessed: '2026-10-12'
+    - &id024
+      kind: literature
+      title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+      url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+      accessed: '2026-10-12'
+      offline: true
+    - &id025
+      kind: literature
+      title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+      url: "https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view"
+      archived: dora.lib4ri.ch/empa/dload/empa_1253/pdf/view/2026-10-14T094508Z
+      accessed: '2026-10-12'
+    - &id026
+      kind: literature
+      title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+      url: "https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf"
+      archived: sites.uwm.edu/hbootsma/files/2020/11/ch4-lake-internal-mixing.pdf/2026-10-14T094509Z
+      accessed: '2026-10-12'
+    - &id027
+      kind: literature
+      title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+      url: "https://minds.wisconsin.edu/handle/1793/91765"
+      archived: minds.wisconsin.edu/handle/1793/91765/2026-10-14T094513Z
+      accessed: '2026-10-12'
+    - &id009
+      kind: literature
+      title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      archived: doi.org/10.5194_hessd-7-4371-2010/2026-10-13T071931Z
+      accessed: '2026-10-15'
+    - *id007
+    - *id009
+    - *id008
+    - *id010
+    - &id014
+      kind: website
+      title: "Aqua-Pedia, Aurora cichlid care sheet"
+      url: "https://www.aqua-pedia.com/en/species/maylandia-aurora-aurora-cichlid"
+      accessed: '2026-10-15'
+      archived: aqua-pedia.com/en/species/maylandia-aurora-aurora-cichlid/2026-10-15T052631Z
+    - &id015
+      kind: website
+      title: "Aqua-Fish, Aurora cichlid profile"
+      url: "https://en.aqua-fish.net/fish/aurora-cichlid"
+      accessed: '2026-10-15'
+      archived: en.aqua-fish.net/fish/aurora-cichlid/2026-10-15T052619Z
+    - *id009
+    - &id017
+      kind: literature
+      title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+      url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+      archived: doi.org/10.4319_lo.2005.50.2.0727/2026-10-13T071601Z
+      accessed: '2026-10-15'
+    evidence:
+    - source: *id011
+      value:
+        min: 21
+        max: 29
+      note: "Lake-wide temperature range in the source table, including seasonal surface variation. Retained input lake synthesis; these seasonal endpoints do not come from this northern-basin ion survey alone."
+    - source: *id002
+      value:
+        min: 24
+        max: 26
+      note: FishBase lists a narrower species habitat temperature interval.
+    - source: *id012
+      value:
+        min: 21
+        max: 29
+      note: Lake measurements summarized in the lake synthesis. Retained input synthesis attributed to this compilation; its own printed lake temperature is 23 to 25 C.
+    - source: *id013
+      value:
+        min: 21
+        max: 29
+      note: "lake water measurements, lake synthesis Retained input lake synthesis; these seasonal endpoints do not come from this northern-basin ion survey alone."
+    - source: *id009
+      value:
+        min: 21
+        max: 29
+      note: Natural lake water range.
+    - source: *id007
+      value:
+        min: 24
+        max: 26
+      note: "Species ecology value, narrower than the lake-wide measured range."
+    - source: *id009
+      value:
+        min: 21
+        max: 29
+      note: Natural Lake Malawi range.
+    - source: *id014
+      value:
+        min: 24
+        max: 28
+      note: Aquarium recommendation.
+    - source: *id015
+      value:
+        min: 24
+        max: 27
+      note: Aquarium recommendation.
+    - source: *id016
+      value:
+        min: 23
+        max: 25
+      note: Temperature interval printed in the historical Lake Malawi compilation; the complete seasonal range also needs other lake studies.
+    - source: *id017
+      value:
+        min: 23.5
+        max: 28
+      note: Approximate winter mixed-layer and summer surface values discussed in the lake temperature study; cooler inshore records and later warmer observations widen the synthesis.
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: low
+      rationale: "Proposals are generator 21 to 30; checker-a 21 to 29; checker-b 21 to 29; checker-c 21 to 29. The tally treats these as agreement within its one-degree threshold and selects 21 to 29 C with low confidence. Aqua-Fish and AquariumLesson recommend 24 to 27 C, Fishkeeper 24 to 26 C, Aqua-Pedia 24 to 28 C and the Nordic register 23 to 28 C. These central recommendations are widened to contain the complete natural range; they do not demonstrate that every seasonal extreme is equally suitable for continuous aquarium exposure. The generator's extra degree to 30 C has no species-specific long-term support. This provisional tolerance equals the natural range because no stronger endpoint evidence is available, not because failure outside it has been demonstrated."
+      sources:
+      - &id018
+        kind: website
+        title: "Aqua-Fish: Aurora cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/aurora-cichlid"
+        accessed: '2026-10-15'
+        archived: en.aqua-fish.net/fish/aurora-cichlid/2026-10-15T052619Z
+      - &id019
+        kind: website
+        title: "Aquadiction: Aurora Cichlid care guide"
+        url: "https://www.aquadiction.world/species-spotlight/aurora-cichlid/"
+        accessed: '2026-10-15'
+        archived: aquadiction.world/species-spotlight/aurora-cichlid/2026-10-15T052621Z
+      - *id003
+      - *id005
+      - &id020
+        kind: website
+        title: "Fishkeeper (Maidenhead Aquatics) data bank: Aurora, Maylandia aurora"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/aurora"
+        accessed: '2026-10-15'
+        archived: fishkeeper.co.uk/fish/freshwater/cichlids/aurora/2026-10-15T052845Z
+      - &id021
+        kind: website
+        title: "Aqua-Fish: Aurora cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/aurora-cichlid"
+        accessed: '2026-10-15'
+        archived: en.aqua-fish.net/fish/aurora-cichlid/2026-10-15T052619Z
+      - &id022
+        kind: website
+        title: "Aquadiction: Aurora Cichlid profile and care guide"
+        url: "https://aquadiction.world/species-spotlight/aurora-cichlid/"
+        accessed: '2026-10-15'
+        archived: aquadiction.world/species-spotlight/aurora-cichlid/2026-10-15T052846Z
+      - &id023
+        kind: website
+        title: Aurora Cichlid Aquarium Care Guide
+        url: "https://aquariumlesson.com/aquarium-fish/aurora-cichlid/"
+        accessed: '2026-10-15'
+        archived: aquariumlesson.com/aquarium-fish/aurora-cichlid/2026-10-15T052719Z
+      - *id007
+      - *id014
+      - *id015
+      evidence:
+      - source: *id018
+        value:
+          min: 24
+          max: 27
+        note: Aquarium recommendation.
+      - source: *id019
+        value:
+          min: 24
+          max: 27
+        note: Aquarium temperature guidance.
+      - source: *id005
+        value:
+          min: 24
+          max: 26
+        note: aquarium temperature
+      - source: *id020
+        value:
+          min: 24
+          max: 26
+        note: care sheet
+      - source: *id021
+        value:
+          min: 24
+          max: 27
+        note: care sheet
+      - source: *id022
+        value:
+          min: 24
+          max: 27
+        note: care sheet
+      - source: *id023
+        value:
+          min: 24
+          max: 27
+        note: Species-specific aquarium recommendation.
+      - source: *id007
+        value:
+          min: 24
+          max: 26
+        note: FishBase ecological temperature range.
+      - source: *id014
+        value:
+          min: 24
+          max: 28
+        note: Aquarium recommendation.
+      - source: *id009
+        value:
+          min: 21
+          max: 29
+        note: The natural seasonal range widens the recommendation.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: high
+    rationale: "The natural pH 7.7 to 8.6 range follows the surface measurements of Jackson and colleagues compiled by FAO. Branchu and colleagues discuss 7.5 to 8.5 across the water column, which includes deeper water; it does not directly state the selected surface interval. FishBase's 7.5 to 8.5 species summary remains visible as conflicting secondary evidence. The settled lake surface range is retained."
+    sources:
+    - *id011
+    - *id012
+    - *id002
+    - *id013
+    - *id016
+    - *id024
+    - *id025
+    - *id026
+    - *id027
+    - *id009
+    - *id007
+    - *id009
+    - *id008
+    - *id014
+    - *id015
+    - *id009
+    evidence:
+    - source: *id012
+      value:
+        min: 7.7
+        max: 8.6
+      note: Surface water range in the lake summary.
+    - source: *id011
+      value:
+        min: 7.7
+        max: 8.6
+      note: "The lake synthesis synthesizes surface measurements. Retained input surface synthesis; Branchu discusses 7.5 to 8.5, while FAO supplies 7.7 to 8.6."
+    - source: *id002
+      value:
+        min: 7.5
+        max: 8.5
+      note: FishBase gives a broader depth-related range; the lake table uses surface values.
+    - source: *id013
+      value:
+        min: 7.7
+        max: 8.6
+      note: "lake water measurements, lake synthesis Retained input surface synthesis; Branchu discusses 7.5 to 8.5, while FAO supplies 7.7 to 8.6."
+    - source: *id009
+      value:
+        min: 7.7
+        max: 8.6
+      note: Natural lake water range.
+    - source: *id007
+      value:
+        min: 7.5
+        max: 8.5
+      note: "Species ecology range, close to the lake-wide measurements."
+    - source: *id009
+      value:
+        min: 7.7
+        max: 8.6
+      note: Natural surface water range.
+    - source: *id008
+      value:
+        min: 7.5
+        max: 8.5
+      note: Reported environment range.
+    - source: *id016
+      value:
+        min: 7.7
+        max: 8.6
+      note: "Surface pH reported by Jackson and colleagues, compiled by FAO."
+    - source: *id009
+      value:
+        min: 7.5
+        max: 8.5
+      note: Lake pH discussed in the hydrochemical study; includes deeper-water conditions.
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.8
+      confidence: medium
+      rationale: "Proposals are generator 7.5 to 8.8; checker-a 7.5 to 8.8; checker-b 7.5 to 8.6; checker-c 7.5 to 8.8. The tally selects 7.5 to 8.8 as unanimous within its 0.3 pH threshold, with medium confidence. Aqua-Fish explicitly recommends 7.5 to 8.8; Fishkeeper, FishBase and Aquadiction give 7.5 to 8.5, and Aqua-Pedia gives 7.8 to 8.6. The selected aquarium envelope includes the natural 7.7 to 8.6 interval and the wider read species-specific advice, without claiming experimentally established injury thresholds."
+      sources:
+      - *id018
+      - *id019
+      - *id003
+      - *id005
+      - *id020
+      - *id021
+      - *id022
+      - *id007
+      - *id023
+      - *id009
+      - *id015
+      - *id014
+      evidence:
+      - source: *id018
+        value:
+          min: 7.5
+          max: 8.8
+        note: Recommended aquarium pH.
+      - source: *id019
+        value:
+          min: 7.5
+          max: 8.5
+        note: Published water parameter range.
+      - source: *id005
+        value:
+          min: 7.5
+          max: 8.5
+      - source: *id020
+        value:
+          min: 7.5
+          max: 8.5
+        note: "hard, alkaline water advised"
+      - source: *id021
+        value:
+          min: 7.5
+          max: 8.8
+      - source: *id022
+        value:
+          min: 7.5
+          max: 8.5
+      - source: *id007
+        value:
+          min: 7.5
+          max: 8.5
+      - source: *id023
+        value:
+          min: 7.5
+          max: 8.5
+      - source: *id009
+        value:
+          min: 7.7
+          max: 8.6
+        note: Lake range widens the aquarium recommendation's upper edge.
+      - source: *id015
+        value:
+          min: 7.5
+          max: 8.8
+        note: Aquarium recommendation.
+      - source: *id014
+        value:
+          min: 7.8
+          max: 8.6
+        note: Aquarium recommendation.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: high
+    rationale: The natural 3 to 5 dGH range is the rounded synthesis of calcium and magnesium measurements. Branchu and colleagues' upper-water concentrations convert to approximately 4.2 to 4.6 dGH; Jackson and Talling measurements compiled by FAO span about 3.2 to 4.9 dGH. FishBase's 12 to 30 dH is incompatible with those direct lake measurements and cannot replace the natural range. Alkalinity and calcium-magnesium hardness are separate quantities.
+    sources:
+    - *id011
+    - *id012
+    - *id002
+    - *id013
+    - *id016
+    - *id024
+    - *id025
+    - *id026
+    - *id027
+    - *id009
+    - *id007
+    - *id009
+    - *id008
+    - *id014
+    - *id015
+    - *id009
+    evidence:
+    - source: *id011
+      value:
+        min: 3
+        max: 5
+      note: Converted calcium and magnesium measurements in the lake synthesis.
+    - source: *id012
+      value:
+        min: 3
+        max: 5
+      note: Historical lake measurements in the lake synthesis.
+    - source: *id002
+      value:
+        min: 12
+        max: 30
+      note: "FishBase lists this habitat hardness, which conflicts with the lake's measured calcium and magnesium values."
+    - source: *id013
+      value:
+        min: 3
+        max: 5
+      note: "lake water measurements, lake synthesis"
+    - source: *id009
+      value:
+        min: 3
+        max: 5
+      note: Natural lake water range.
+    - source: *id007
+      value:
+        min: 12
+        max: 30
+      note: FishBase reports this broad dH range; measured lake chemistry takes precedence.
+    - source: *id009
+      value:
+        min: 3
+        max: 5
+      note: Natural Lake Malawi range calculated from measured calcium and magnesium.
+    - source: *id008
+      value:
+        min: 12
+        max: 30
+      note: FishBase environment field reports dH; it is not adopted as lake chemistry.
+    - source: *id009
+      value:
+        min: 4.2
+        max: 4.6
+      note: Upper-water calcium and magnesium concentrations converted to German general hardness.
+    - source: *id016
+      value:
+        min: 3.2
+        max: 4.9
+      note: Historical calcium and magnesium values converted to dGH; rounded outward for the natural lake envelope.
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 3
+        max: 25
+      confidence: low
+      rationale: "Proposals are generator 3 to 25; checker-a 3 to 25; checker-b 3 to 15; checker-c 3 to 25; tiebreaker-1 3 to 30; tiebreaker-2 3 to 15. No qualified majority settles the endpoints: the tally records 3 agreeing votes of 6 and uses method median. All minima are 3 and the ordered maxima are 15, 15, 25, 25, 25 and 30, giving 3 to 25 dGH with low confidence. This includes the natural lake range and Aqua-Fish's 12 to 25 recommendation. It is narrower than FishBase's wider 12 to 30 environmental summary, which does not identify chronic aquarium exposure limits. Fishkeeper states an upper limit of 25 without a lower bound. Malawi.si recommends 3 to 15 for Malawi aquaria, Aquadiction and AquariumLesson 5 to 15, Aqua-Pedia 10 to 20 and Fishipedia 8 to 15 under habitat characteristics. These conflicting recommendations remain evidence. The median is a provisional practical envelope; neither 25 nor the alternative 30 is a demonstrated species failure threshold."
+      sources:
+      - *id002
+      - *id018
+      - *id003
+      - *id005
+      - *id020
+      - *id021
+      - *id022
+      - *id023
+      - *id009
+      - *id014
+      - *id015
+      - &id028
+        kind: database
+        title: "FishBase species summary: Maylandia aurora"
+        url: "https://www.fishbase.se/summary/Maylandia-aurora.html"
+        archived: fishbase.se/summary/maylandia-aurora.html/2026-10-15T052612Z
+        accessed: '2026-10-15'
+      - &id029
+        kind: website
+        title: "Aqua-Fish: Aurora cichlid husbandry profile"
+        url: "https://en.aqua-fish.net/fish/aurora-cichlid"
+        archived: en.aqua-fish.net/fish/aurora-cichlid/2026-10-15T052619Z
+        accessed: '2026-10-15'
+      - &id030
+        kind: website
+        title: "Aqua-Pedia: Aurora cichlid water parameters"
+        url: "https://www.aqua-pedia.com/en/species/maylandia-aurora-aurora-cichlid"
+        archived: aqua-pedia.com/en/species/maylandia-aurora-aurora-cichlid/2026-10-15T052631Z
+        accessed: '2026-10-15'
+      - &id032
+        kind: website
+        title: "Sera: Raising the pH value while lowering the hardness at the same time"
+        url: "https://www.sera.de/en/service/faq/faq-detail/raising-the-ph-value-while-lowering-the-hardness-at-the-same-time/"
+        archived: sera.de/en/service/faq/faq-detail/raising-the-ph-value-while-lowering-the-hardness-at-the-same-time/2026-10-14T102428Z
+        accessed: '2026-10-15'
+      - &id031
+        kind: website
+        title: "Chris Roider: Wasserhaerte GH und KH zum Malawi-Aquarium"
+        url: "https://malawi-guru.de/wasserhaerte-gh-und-kh-aquarium-malawisee/"
+        archived: malawi-guru.de/wasserhaerte-gh-und-kh-aquarium-malawisee/2026-10-14T130426Z
+        accessed: '2026-10-15'
+      - *id009
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Maylandia species"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Maylandia"
+        archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-47330f77/2026-10-14T095140Z
+        accessed: '2026-10-15'
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Pseudotropheus species"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus"
+        archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-54fb6171/2026-10-14T101559Z
+        accessed: '2026-10-15'
+      - &id037
+        kind: database
+        title: "Cichlid Room Companion: Metriaclima aurora public profile"
+        url: "https://cichlidae.com/species.php?id=SamGEcLVFLLbbpROIW6SqA"
+        archived: cichlidae.com/species.php/q-83f7ed73/2026-10-15T052728Z
+        accessed: '2026-10-15'
+      - kind: database
+        title: "FishBase reference record 1672: Riehl and Baensch 1991 Aquarien Atlas"
+        url: "https://www.fishbase.se/references/FBRefSummary.php?ID=1672"
+        archived: fishbase.se/references/fbrefsummary.php/q-927afa14/2026-10-14T095932Z
+        accessed: '2026-10-15'
+      - &id038
+        kind: archive
+        title: cichlids.com forum thread 1443
+        url: "https://www.cichlids.com/disc/read.php?1,1443"
+        accessed: '2026-10-15'
+      - &id039
+        kind: archive
+        title: cichlids.com forum thread 17763
+        url: "https://www.cichlids.com/disc/read.php?2,17763"
+        accessed: '2026-10-15'
+      - &id040
+        kind: archive
+        title: cichlids.com forum thread 19643
+        url: "https://www.cichlids.com/disc/read.php?2,19643"
+        accessed: '2026-10-15'
+      - &id041
+        kind: archive
+        title: cichlids.com forum thread 19874
+        url: "https://www.cichlids.com/disc/read.php?2,19874"
+        accessed: '2026-10-15'
+      - &id042
+        kind: archive
+        title: cichlids.com forum thread 20127
+        url: "https://www.cichlids.com/disc/read.php?2,20127"
+        accessed: '2026-10-15'
+      - &id043
+        kind: archive
+        title: cichlids.com forum thread 37886
+        url: "https://www.cichlids.com/disc/read.php?1,37886"
+        accessed: '2026-10-15'
+      - &id044
+        kind: archive
+        title: cichlids.com forum thread 38238
+        url: "https://www.cichlids.com/disc/read.php?1,38238"
+        accessed: '2026-10-15'
+      - &id045
+        kind: archive
+        title: cichlids.com forum thread 38271
+        url: "https://www.cichlids.com/disc/read.php?1,38271"
+        accessed: '2026-10-15'
+      - &id046
+        kind: archive
+        title: cichlids.com forum thread 38326
+        url: "https://www.cichlids.com/disc/read.php?1,38326"
+        accessed: '2026-10-15'
+      - *id009
+      - &id033
+        kind: website
+        title: "Malawi.si: Lake Malawi Aquarium Setup"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+        accessed: '2026-10-15'
+        archived: malawi.si/slides/lake_malawi_aquarium_setup.html/2026-10-14T094756Z
+      - &id034
+        kind: database
+        title: "FishBase: Maylandia aurora species summary"
+        url: "https://www.fishbase.se/summary/Maylandia-aurora.html"
+        accessed: '2026-10-15'
+        archived: fishbase.se/summary/maylandia-aurora.html/2026-10-15T052612Z
+      - &id035
+        kind: website
+        title: "Aqua-Pedia: Aurora cichlid care profile"
+        url: "https://www.aqua-pedia.com/en/species/maylandia-aurora-aurora-cichlid"
+        accessed: '2026-10-15'
+        archived: aqua-pedia.com/en/species/maylandia-aurora-aurora-cichlid/2026-10-15T052631Z
+      - &id036
+        kind: database
+        title: "Fishipedia: Maylandia aurora"
+        url: "https://www.fishipedia.fr/fr/poissons/maylandia-aurora"
+        accessed: '2026-10-15'
+        archived: fishipedia.fr/fr/poissons/maylandia-aurora/2026-10-15T053513Z
+      - kind: website
+        title: "Imperial Tropicals: Metriaclima aurora Likoma"
+        url: "https://imperialtropicals.com/products/likoma-metriaclima-aurora"
+        accessed: '2026-10-15'
+        archived: imperialtropicals.com/products/likoma-metriaclima-aurora/2026-10-15T053502Z
+      - kind: database
+        title: "Cichlid Room Companion: public Metriaclima aurora profile"
+        url: "https://cichlidae.com/species.php?id=SamGEcLVFLLbbpROIW6SqA"
+        accessed: '2026-10-15'
+        archived: cichlidae.com/species.php/q-83f7ed73/2026-10-15T052728Z
+      - kind: database
+        title: "FishBase bibliography: Riehl and Baensch, Aquarien Atlas Band 1 (1991), reference 1672"
+        url: "https://www.fishbase.se/references/FBRefSummary.php?ID=1672"
+        accessed: '2026-10-15'
+        archived: fishbase.se/references/fbrefsummary.php/q-927afa14/2026-10-14T095932Z
+      evidence:
+      - source: *id018
+        value:
+          min: 12
+          max: 25
+        note: "Aquarium hardness recommendation, reported as degrees German hardness."
+      - source: *id003
+        value:
+          min: 5
+          max: 15
+        note: Aquarium target range.
+      - source: *id005
+        value:
+          min: 12
+          max: 30
+        note: aquarium hardness range
+      - source: *id020
+        value:
+          min: 12
+          max: 25
+        note: "upper limit 25, lower limit not stated Only the upper endpoint of 25 is stated by Fishkeeper; the retained minimum of 12 was inferred in the input."
+      - source: *id021
+        value:
+          min: 12
+          max: 25
+      - source: *id022
+        value:
+          min: 5
+          max: 15
+      - source: *id023
+        value:
+          min: 5
+          max: 15
+        note: Species-specific aquarium recommendation.
+      - source: *id009
+        value:
+          min: 3
+          max: 5
+        note: Natural range included in the tolerance.
+      - source: *id014
+        value:
+          min: 10
+          max: 20
+        note: Aquarium GH recommendation.
+      - source: *id015
+        value:
+          min: 12
+          max: 25
+        note: "Aquarium water-hardness recommendation, converted from degrees N."
+      - source: *id009
+        value:
+          min: 3
+          max: 5
+        note: Natural range widens the aquarium recommendations.
+      - source: *id028
+        value:
+          min: 12
+          max: 30
+        note: Species dH range in the environment summary; interpreted as general hardness. No exposure duration or chronic endpoint is supplied.
+      - source: *id029
+        value:
+          min: 12
+          max: 25
+        note: Species aquarium recommendation; the printed German hardness scale and ppm equivalent agree with dGH.
+      - source: *id030
+        value:
+          min: 10
+          max: 20
+        note: Species aquarium GH recommendation.
+      - source: *id031
+        value:
+          min: 4
+          max: 15
+        note: General fishkeeping guidance only; the article does not establish an aurora-specific upper limit.
+      - source: *id032
+        value:
+          min: 5
+          max: 5
+        note: Approximate natural Malawi GH only; the accompanying advice says higher hardness is tolerated without giving an upper limit.
+      - source: *id009
+        value:
+          min: 3
+          max: 5
+        note: Mandatory natural habitat range included in the tolerance; not an independent aquarium tolerance measurement.
+      - source: *id033
+        value:
+          min: 3
+          max: 15
+        note: "Explicit aquarium recommendation for Lake Malawi cichlids, including mbuna; applied to aurora rather than measured in a species trial."
+      - source: *id009
+        value:
+          min: 3
+          max: 5
+        note: Mandatory natural range; establishes inclusion of the lake values rather than the upper aquarium limit.
+      - source: *id034
+        value:
+          min: 12
+          max: 30
+        note: Unqualified dH range in the environment summary; not a demonstrated aquarium tolerance or a reported lake measurement.
+      - source: *id018
+        value:
+          min: 12
+          max: 25
+        note: Aquarium hardness recommendation; the printed calcium-carbonate equivalents identify German hardness degrees.
+      - source: *id035
+        value:
+          min: 10
+          max: 20
+        note: Species-specific aquarium GH recommendation from a low-trust generated and reviewed care database.
+      - source: *id036
+        value:
+          min: 8
+          max: 15
+        note: Listed under habitat characteristics; no underlying measurement or long-term tolerance trial is supplied.
+      verification:
+        method: median
+        votes:
+          agree: 3
+          total: 6
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: high
+    rationale: "The natural 5 to 8 dKH range is the rounded lake alkalinity synthesis. Branchu and colleagues report about 2.33 to 2.46 meq/L, or 6.5 to 6.9 dKH, and Jackson's measurements compiled by FAO give 2.00 to 2.59 meq/L, or about 5.6 to 7.3 dKH. The wider rounded range is retained. Sodium bicarbonate contributes alkalinity without increasing calcium-magnesium hardness, so KH can exceed GH here. This natural fact intentionally has no verification object."
+    sources:
+    - *id011
+    - *id012
+    - *id013
+    - *id016
+    - *id024
+    - *id025
+    - *id026
+    - *id027
+    - *id009
+    - *id009
+    - *id014
+    - *id009
+    evidence:
+    - source: *id011
+      value:
+        min: 5
+        max: 8
+      note: Alkalinity converted from meq/L in the lake synthesis.
+    - source: *id012
+      value:
+        min: 5
+        max: 8
+      note: Historical alkalinity converted in the lake synthesis.
+    - source: *id013
+      value:
+        min: 5
+        max: 8
+      note: "lake water measurements, lake synthesis"
+    - source: *id009
+      value:
+        min: 5
+        max: 8
+      note: Natural lake alkalinity range.
+    - source: *id009
+      value:
+        min: 5
+        max: 8
+      note: Natural range from measured alkalinity.
+    - source: *id009
+      value:
+        min: 6.5
+        max: 6.9
+      note: Measured alkalinity converted using dKH = meq/L multiplied by 2.8.
+    - source: *id016
+      value:
+        min: 5.6
+        max: 7.3
+      note: Historical alkalinity converted to dKH; the decided natural envelope rounds outward.
+    tolerance:
+      value:
+        min: 5
+        max: 12
+      confidence: low
+      rationale: "Proposals are generator 4 to 12; checker-a 5 to 20; checker-b 5 to 12; checker-c 5 to 18; tiebreaker-1 5 to 10; tiebreaker-2 5 to 12. The tally selects 5 to 12 dKH by qualified majority, with 4 agreeing votes of 6 under its two-degree threshold and low confidence. Malawi.si recommends 6 to 12 for Malawi aquaria; lowering the minimum to 5 includes the complete natural range. JBL recommends 5 to 10 for a Malawi mbuna aquarium. The decision is narrower than Aqua-Pedia's wider 10 to 18 species recommendation and the inferred checker-a ceiling of 20, while retaining both as dissenting evidence. The Nordic register favors KH above 10 but gives no upper limit. Sera reports about 7 in the lake and Seachem explains independent KH buffering, neither establishing a chronic maximum. This is inferred husbandry guidance rather than a measured physiological boundary."
+      sources:
+      - *id018
+      - *id019
+      - *id003
+      - *id011
+      - *id020
+      - *id021
+      - *id009
+      - *id023
+      - *id014
+      - *id009
+      - &id047
+        kind: website
+        title: "JBL Malawi Rocks: rocky reef aquarium husbandry"
+        url: "https://www.jbl.de/en/areas/section/37/rocky-reef-aquarium-type-jbl-malawi-rocks?country=au"
+        archived: jbl.de/en/areas/section/37/rocky-reef-aquarium-type-jbl-malawi-rocks/q-e4500ccd/2026-10-15T053445Z
+        accessed: '2026-10-15'
+      - *id030
+      - *id009
+      - *id032
+      - *id028
+      - *id029
+      - *id037
+      - *id031
+      - *id038
+      - *id039
+      - *id040
+      - *id041
+      - *id042
+      - *id043
+      - *id044
+      - *id045
+      - *id046
+      - *id009
+      - *id033
+      - *id035
+      - kind: website
+        title: "Seachem: Malawi/Victoria Buffer"
+        url: "https://seachem.com/malawi-victoria-buffer.php"
+        accessed: '2026-10-15'
+        archived: seachem.com/malawi-victoria-buffer.php/2026-10-14T211322Z
+      - &id048
+        kind: database
+        title: "Nordiska Ciklidsällskapet: Metriaclima aurora species register"
+        url: "https://ciklid.org/artregister/art.php?ID=750"
+        accessed: '2026-10-15'
+        archived: ciklid.org/artregister/art.php/q-e1e73e37/2026-10-15T052646Z
+      evidence:
+      - source: *id011
+        value:
+          min: 5
+          max: 8
+        note: Natural lake KH only; the source gives no aquarium tolerance.
+      - source: *id020
+        value:
+          min: 5
+          max: 20
+        note: "derived: care sheet asks for hard, alkaline water without a KH value"
+      - source: *id021
+        value:
+          min: 5
+          max: 20
+        note: derived from pH 7.5 to 8.8 and the hardness advice
+      - source: *id009
+        value:
+          min: 5
+          max: 8
+        note: Natural range; no KH aquarium limit was published in the cited care advice.
+      - source:
+          kind: model-knowledge
+          title: General Lake Malawi mbuna alkalinity tolerance estimate
+        value:
+          min: 5
+          max: 12
+        note: "Low-confidence inferred aquarium envelope, not a reported measurement."
+      - source: *id014
+        value:
+          min: 10
+          max: 18
+        note: Aquarium KH recommendation.
+      - source: *id009
+        value:
+          min: 5
+          max: 8
+        note: Natural range widens the inferred tolerance.
+      - source: *id047
+        value:
+          min: 5
+          max: 10
+        note: Lake Malawi mbuna aquarium recommendation; extrapolated to this species and not a measured chronic limit.
+      - source: *id030
+        value:
+          min: 10
+          max: 18
+        note: Species aquarium KH recommendation; disagrees with the selected range and has no reported chronic trial.
+      - source: *id009
+        value:
+          min: 5
+          max: 8
+        note: Mandatory natural Lake Malawi KH range; not an aquarium tolerance limit.
+      - source: *id032
+        value:
+          min: 7
+          max: 7
+        note: Approximate natural lake KH only; no aquarium tolerance endpoints supplied.
+      - source: *id033
+        value:
+          min: 6
+          max: 12
+        note: "Explicit aquarium range for Malawi cichlids; group husbandry evidence, not a species-specific tolerance experiment."
+      - source: *id009
+        value:
+          min: 5
+          max: 8
+        note: Mandatory natural range included by lowering the recommended aquarium minimum to 5.
+      - source: *id035
+        value:
+          min: 10
+          max: 18
+        note: Conflicting species-specific aquarium KH recommendation from a low-trust care database.
+      - source: *id048
+        value:
+          min: 10
+        note: The register favors KH above 10 for aquarium stability; it gives no upper limit and does not establish harm below that recommendation.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+  maxSizeCm:
+    value:
+      male: 12
+      female: 10
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c propose 12 cm males and 10 cm females; checker-a proposes 10.5 and 9 cm. The sex-specific medians are 12 and 10 cm, matching the Malawi.si report of typical adult males at 10 to 12 cm and females 1 to 2 cm shorter. FishBase reports 8.7 and 8.0 cm standard length, which excludes the tail and cannot be equated with aquarium total length. Aqua-Fish gives 9 to 11 cm without sex-specific maxima and Fishkeeper gives 12.5 cm overall. Malawi.si also mentions occasional aquarium fish approaching 14 cm; that upper observation is not adopted as the typical maximum."
+    sources:
+    - *id002
+    - *id018
+    - *id003
+    - *id048
+    - *id005
+    - *id020
+    - *id021
+    - *id022
+    - &id050
+      kind: website
+      title: "Malawi Mayhem species profile: Maylandia aurora"
+      url: "https://www.malawimayhem.com/maylandia-aurora"
+      accessed: '2026-10-15'
+      archived: malawimayhem.com/maylandia-aurora/2026-10-15T052846Z
+    - *id049
+    - *id007
+    - *id010
+    - *id008
+    - *id014
+    - *id015
+    - &id061
+      kind: website
+      title: "Aquarist Atlas, Maylandia aurora profile"
+      url: "https://www.aquaristatlas.com/species/maylandia-aurora/"
+      accessed: '2026-10-15'
+      archived: aquaristatlas.com/species/maylandia-aurora/2026-10-15T052631Z
+    evidence:
+    - source: *id002
+      value:
+        male: 8.7
+        female: 8.0
+      note: "Maximum standard length, not total length."
+    - source: *id018
+      value:
+        male: 11
+        female: 9
+      note: "Typical aquarium length interval applied by sex from its 9 to 11 cm range. Sex allocation is the proposing run's conversion of an overall length, not two measured sex-specific maxima."
+    - source: *id048
+      value:
+        male: 11
+        female: 9
+      note: "Species register gives 11 cm overall. Sex allocation is the proposing run's conversion of an overall length, not two measured sex-specific maxima."
+    - source: *id005
+      value:
+        male: 8.7
+        female: 8.0
+      note: standard length
+    - source: *id020
+      value:
+        male: 12.5
+        female: 12.5
+      note: "total length, no sex difference given Sex allocation is the proposing run's conversion of an overall length, not two measured sex-specific maxima."
+    - source: *id021
+      value:
+        male: 11
+        female: 9
+      note: "usual size 9 to 11 cm Sex allocation is the proposing run's conversion of an overall length, not two measured sex-specific maxima."
+    - source: *id022
+      value:
+        male: 10
+        female: 10
+      note: "Sex allocation is the proposing run's conversion of an overall length, not two measured sex-specific maxima."
+    - source: *id050
+      value:
+        male: 10
+        female: 10
+      note: "4 inches Sex allocation is the proposing run's conversion of an overall length, not two measured sex-specific maxima."
+    - source: *id049
+      value:
+        male: 12
+        female: 10
+    - source: *id007
+      value:
+        male: 8.7
+        female: 8
+      note: FishBase reports standard length rather than aquarium total length.
+    - source: *id010
+      value:
+        male: 12
+        female: 10
+      note: Males reported at 10 to 12 cm; females usually smaller by 1 to 2 cm.
+    - source: *id008
+      value:
+        male: 8.7
+        female: 8.0
+      note: "Standard length, not total length."
+  predation:
+    value: 0
+    confidence: medium
+    rationale: "All four full-profile runs propose level 0. CRC identifies an algae-combing feeder, FishBase gives trophic level 2.0, and the field-oriented account describes predominantly algal feeding. There is no substantiated report here of regular fish predation. Aquadiction suggests feeder guppies as food, but supplies no observation establishing natural fish consumption; that advice is outweighed by the documented grazing niche and the plant-based husbandry guidance. Level 0 still permits incidental losses of fry and does not make a breeding tank safe for unrelated fry."
+    sources:
+    - &id052
+      kind: database
+      title: "Cichlid Room Companion: Metriaclima aurora"
+      url: "https://cichlidae.com/species.php?id=SamGEcLVFLLbbpROIW6SqA"
+      accessed: '2026-10-15'
+      archived: cichlidae.com/species.php/q-83f7ed73/2026-10-15T052728Z
+    - *id002
+    - *id003
+    - &id053
+      kind: database
+      title: "Cichlid Room Companion: Metriaclima aurora (public part)"
+      url: "https://cichlidae.com/species.php?id=SamGEcLVFLLbbpROIW6SqA"
+      accessed: '2026-10-15'
+      archived: cichlidae.com/species.php/q-83f7ed73/2026-10-15T052728Z
+    - &id054
+      kind: literature
+      title: "Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation and adaptive radiation. Fish and Fisheries 6(1), 1-34."
+      url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1111_j.1467-2679.2005.00173.x/2026-10-12T202949Z
+    - *id020
+    - *id007
+    - *id051
+    - *id008
+    evidence:
+    - source: *id052
+      value: 0
+      note: Classified as an algae-comber. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id002
+      value: 0
+      note: "Trophic level 2.0 indicates primary-consumer feeding, not piscivory. Rubric value interpreted by the proposing run from the described behavior or care rating."
+    - source: *id053
+      value: 0
+      note: "algae comber, no piscivory stated Rubric value interpreted by the proposing run from the described behavior or care rating."
+    - source: *id054
+      value: 0
+      note: Maylandia teeth are for combing algae Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id020
+      value: 0
+      note: diet is mainly vegetarian Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id007
+      value: 0
+      note: Trophic level 2.0 and benthic algae-grazing ecology. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id051
+      value: 0
+      note: Feeding category is algae combing. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id051
+      value: 0
+      note: "Public feeding summary identifies algae-combing, not fish consumption. Rubric value interpreted by the proposing run from the described behavior or care rating."
+    - source: *id008
+      value: 0
+      note: Low trophic level and species feeding references do not indicate piscivory. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods:
+      - algae
+      - diatoms
+      - biofilm
+      - small invertebrates within aufwuchs
+    confidence: high
+    rationale: "All four full-profile runs agree on aufwuchs and bloatSensitive true. Their proposed foods differ: generator lists algae, diatoms, biofilm and small invertebrates within aufwuchs; checker-a lists spirulina flake, cichlid granules, algae and vegetable matter; checker-b lists algae, diatoms and aufwuchs; checker-c lists algae, phytoplankton, spirulina and vegetable matter. The tally retains the generator list. CRC supports algae combing, FishBase supports a primary-consumer niche and Malawi.si describes an algal grazer that also takes suspended food. Aqua-Fish and Aquadiction use an omnivore label, reflecting supplementary animal food and aquarium acceptance, without overturning the grazing specialization. Bloat sensitivity follows Fishkeeper and Aqua-Fish husbandry warnings, not a CRC or FishBase diagnosis. Rich animal foods and the feeder-fish advice in Aquadiction are unsuitable as the staple for this profile."
+    sources:
+    - *id052
+    - *id002
+    - *id018
+    - *id019
+    - *id053
+    - *id054
+    - *id050
+    - *id020
+    - *id021
+    - *id022
+    - *id007
+    - *id051
+    - *id049
+    - *id023
+    - &id055
+      kind: website
+      title: "Aquarist Atlas, Maylandia aurora care and behavior"
+      url: "https://www.cichlidatlas.com/species/maylandia-aurora/"
+      accessed: '2026-10-15'
+      archived: cichlidatlas.com/species/maylandia-aurora/2026-10-15T052619Z
+    - *id010
+    - *id015
+    - *id014
+    evidence:
+    - source: *id052
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+      note: Public species summary calls it an algae-comber. This source supports feeding mode only; bloat sensitivity in this retained composite value is inferred from separate husbandry advice.
+    - source: *id002
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+      note: Trophic level is 2.0; it does not state bloat sensitivity. This source supports feeding mode only; bloat sensitivity in this retained composite value is inferred from separate husbandry advice.
+    - source: *id018
+      value:
+        type: omnivore
+        bloatSensitive: true
+      note: Calls the aquarium diet omnivorous and warns of Malawi bloat.
+    - source: *id053
+      value: aufwuchs
+      note: algae combers
+    - source: *id054
+      value: aufwuchs
+      note: Maylandia comb algae and periphyton
+    - source: *id050
+      value: aufwuchs
+      note: wild diet is algae from rocks
+    - source: *id020
+      value: aufwuchs
+      note: "primarily vegetarian diet, bloat risk with animal protein"
+    - source: *id021
+      value: omnivore
+      note: classed as omnivorous; susceptible to bloat
+    - source: *id022
+      value: omnivore
+      note: algae with plankton and small invertebrates in the wild
+    - source: *id051
+      value:
+        type: aufwuchs
+        foods:
+        - algae
+      note: CRC calls it an algae-combing feeder; its page does not address bloat sensitivity.
+    - source: *id049
+      value:
+        type: aufwuchs
+        foods:
+        - algae
+        - phytoplankton
+      note: Field account describes herbivorous algae grazing.
+    - source: *id023
+      value:
+        type: omnivore
+      note: Conflicting broad aquarium diet label; it gives no bloat warning.
+    - source: *id055
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+      note: Recommends mainly plant-based food and cautions against protein-heavy feeding.
+    - source: *id051
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+      note: Algae-combing feeding category. This source supports feeding mode only; bloat sensitivity in this retained composite value is inferred from separate husbandry advice.
+    - source: *id010
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+      note: Herbivorous algae grazer; animal matter is secondary. This source supports feeding mode only; bloat sensitivity in this retained composite value is inferred from separate husbandry advice.
+    - source: *id015
+      value:
+        type: omnivore
+        bloatSensitive: true
+      note: It labels the species omnivorous but recommends a vegetable-forward varied menu.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: "Males defend rock territories and species-specific care accounts warn of persistent male aggression and female harassment; a harem and broken sightlines reduce, but do not remove, this risk."
+    sources:
+    - *id002
+    - *id018
+    - *id019
+    - *id003
+    - *id054
+    - *id020
+    - *id021
+    - *id022
+    - *id049
+    - *id055
+    - *id010
+    - &id056
+      kind: literature
+      title: "Genner and Turner, The mbuna cichlids of Lake Malawi"
+      url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1111_j.1467-2679.2005.00173.x/2026-10-12T202949Z
+    evidence:
+    - source: *id002
+      value: 2
+      note: "Males hold territories, without a graded aggression score. Rubric value interpreted by the proposing run from the described behavior or care rating."
+    - source: *id018
+      value: 3
+      note: Describes the species as aggressive and territorial toward its own kind. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id019
+      value: 3
+      note: Warns of serious male aggression and recommends one male with several females. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id054
+      value: 3
+      note: territorial males; male P. aurora held the same territory for up to 18 months in the wild Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id020
+      value: 3
+      note: one male with several females advised Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id021
+      value: 3
+      note: aggressive/territorial Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id022
+      value: 3
+      note: several males fight to injury or death Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id049
+      value: 3
+      note: "Aggressive toward its own species, especially males. Rubric value interpreted by the proposing run from the described behavior or care rating."
+    - source: *id055
+      value: 3
+      note: Reports persistent male rivalry and risk of severe female harassment at a poor ratio. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id010
+      value: 3
+      note: Aggression is reported as directed especially at conspecific males. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id056
+      value: 3
+      note: General mbuna evidence says males defend territories year-round. Rubric value interpreted by the proposing run from the described behavior or care rating.
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "Generator, checker-a and checker-c propose level 2; checker-b proposes level 1 from the Malawi.si description of tolerance toward other mbuna. Fishkeeper also calls it moderately aggressive and emphasizes stronger reactions toward similar males, while Aqua-Fish reports territorial aggression toward other fish. Localized territorial chasing fits level 2 better than displays alone. These accounts do not justify attacks throughout the tank at level 3 when the social unit and footprint are suitable. One inherited Malawi.si URL with underscores returned 404 and is retained as offline; the correctly encoded locality page was readable."
+    sources:
+    - *id018
+    - *id019
+    - *id003
+    - *id020
+    - *id021
+    - *id022
+    - *id049
+    - &id065
+      kind: website
+      title: "Lake Malawi cichlids, Maylandia aurora Likoma Island page"
+      url: "https://www.malawi.si/Malawi/Maylandia/Maylandia%20aurora/slides/Maylandia%20aurora__Likoma_Island_.html"
+      accessed: '2026-10-15'
+      archived: malawi.si/malawi/maylandia/maylandia_aurora/slides/maylandia_aurora__likoma_island_.html/2026-10-15T052631Z
+      offline: true
+    - *id014
+    evidence:
+    - source: *id018
+      value: 2
+      note: "Territorial toward other species, with robust mbuna suggested as tankmates. Rubric value interpreted by the proposing run from the described behavior or care rating."
+    - source: *id019
+      value: 2
+      note: Advises against peaceful cichlids and allows robust mbuna in a large aquarium. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id020
+      value: 2
+      note: moderately aggressive; can live with outgoing mbuna Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id021
+      value: 2
+      note: aggressive/territorial towards other species; mbuna tankmates suitable Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id022
+      value: 2
+      note: not for peaceful cichlids Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id049
+      value: 1
+      note: It is generally tolerant of other mbuna but reacts to similar male rivals. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id010
+      value: 2
+      note: Usually tolerates other mbuna but reacts to look-alike males. Rubric value interpreted by the proposing run from the described behavior or care rating.
+  territory:
+    value:
+      size: small
+      breedingOnly: false
+    confidence: medium
+    rationale: Males defend the top of a medium or large rock; this is a discrete rock territory rather than a broad stretch of shore.
+    sources:
+    - *id002
+    - *id052
+    - *id005
+    - *id054
+    - *id007
+    - *id008
+    - *id056
+    evidence:
+    - source: *id002
+      value:
+        size: small
+        breedingOnly: false
+      note: Male territory is centred on a rock surface. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id005
+      value: small
+      note: "males hold territories over rock surfaces, some at rock bases Rubric value interpreted by the proposing run from the described behavior or care rating."
+    - source: *id054
+      value: small
+      note: males of most mbuna are territorial all year; breedingOnly false Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id007
+      value:
+        size: small
+        breedingOnly: false
+      note: "Male territories occur on rocks, with some males defending scrape nests by sand. Rubric value interpreted by the proposing run from the described behavior or care rating."
+    - source: *id008
+      value:
+        size: small
+        breedingOnly: false
+      note: Most males occupy a rock-top site; a few nest by scraping sand. Rubric value interpreted by the proposing run from the described behavior or care rating.
+  habitatZones:
+    value:
+    - rock
+    - sand
+    confidence: high
+    rationale: The species is most common at the transition from rocky substrate to adjacent sand and may dig at the rock base.
+    sources:
+    - *id002
+    - *id003
+    - *id018
+    - *id005
+    - *id020
+    - *id021
+    - *id007
+    - *id049
+    - *id008
+    - *id010
+    evidence:
+    - source: *id002
+      value:
+      - rock
+      - sand
+      note: Intermediate habitat at the rock-sand interface.
+    - source: *id005
+      value:
+      - rock
+      - sand
+      note: "rock-sand interface, 2 to 12 m"
+    - source: *id020
+      value:
+      - rock
+      - sand
+      note: rock-sand interface
+    - source: *id021
+      value:
+      - rock
+      - sand
+      note: lower rocky regions where rocks meet sand
+    - source: *id007
+      value:
+      - rock
+      - sand
+      note: Intermediate habitat around rock-sand interface.
+    - source: *id010
+      value:
+      - rock
+      - sand
+  social:
+    value:
+      structure: harem
+      ratio: 3
+    confidence: medium
+    rationale: Species-specific husbandry accounts recommend one male with several females so courtship and aggression are spread across the group.
+    sources:
+    - *id018
+    - *id019
+    - *id003
+    - *id020
+    - *id021
+    - *id022
+    - *id051
+    - *id049
+    - *id010
+    - *id015
+    - *id056
+    evidence:
+    - source: *id018
+      value:
+        structure: harem
+        ratio: 3
+      note: Recommends several females for one male.
+    - source: *id019
+      value:
+        structure: harem
+        ratio: 3
+      note: One male and multiple females are the recommended arrangement.
+    - source: *id020
+      value:
+        structure: harem
+      note: one male with several females
+    - source: *id021
+      value:
+        structure: harem
+        ratio: 3
+      note: one male with 2 to 3 females
+    - source: *id022
+      value:
+        structure: harem
+      note: one male with multiple females
+    - source: *id051
+      value:
+        structure: harem
+      note: "CRC lists polygynandrous mating for this species. CRC describes polygynandrous mating; a fixed aquarium harem is a husbandry arrangement, not a lifelong wild mating bond."
+    - source: *id049
+      value:
+        structure: harem
+        ratio: 3
+    - source: *id010
+      value:
+        structure: harem
+        ratio: 3
+      note: The locality page recommends at least three females per male.
+    - source: *id015
+      value:
+        structure: harem
+        ratio: 2
+      note: Recommends a male with two or three females.
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: "All four full-profile runs propose false. Fishkeeper, Malawi.si and other species accounts allow appropriately robust mbuna with adequate territory and shelter. This supports a mixed Malawi aquarium under suitable conditions, while look-alike Maylandia, timid fish and cramped groups remain poor combinations."
+    sources:
+    - *id018
+    - *id019
+    - *id003
+    - *id020
+    - *id021
+    - *id049
+    - *id010
+    - *id014
+    evidence:
+    - source: *id019
+      value: false
+      note: Allows robust mbuna in a sufficiently spacious aquarium.
+    - source: *id018
+      value: false
+      note: Suggests other mbuna and Synodontis as tankmates.
+    - source: *id003
+      value: false
+      note: "Recommends robust, differently coloured mbuna as possible tankmates."
+    - source: *id020
+      value: false
+      note: can be kept alongside other outgoing mbuna
+    - source: *id021
+      value: false
+      note: other mbuna and Synodontis are suitable
+    - source: *id049
+      value: false
+    - source: *id010
+      value: false
+      note: Reports tolerance of other mbuna with caution around similar colors.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+    - maylandia
+    confidence: medium
+    rationale: "All four full-profile runs propose the existing maylandia group. Its basis remains presumed: Fishkeeper warns about congeneric aquarium crosses, and Husemann and colleagues produced fertile M. zebra and M. benetos hybrids through artificial fertilization. That experiment does not demonstrate free partner choice or directly test M. aurora. Forum thread 1443 reports an aurora and red-zebra cross without establishing access to conspecific mates; it is anecdotal support for possible crossing rather than proof of every pairing in the genus. No additional group is selected by the tally. The species is already a member of the listed group."
+    sources:
+    - *id001
+    - *id038
+    - &id057
+      kind: website
+      title: "Fishkeeper: Red-top Ice-blue Zebra, Maylandia greshakei"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-top-ice-blue-zebra-"
+      accessed: '2026-10-15'
+      archived: fishkeeper.co.uk/fish/freshwater/cichlids/red-top-ice-blue-zebra-/2026-10-14T101416Z
+    - *id020
+    - &id058
+      kind: database
+      title: "Curated Maylandia group, data/species/hybrid-groups.yaml"
+    - *id055
+    - *id006
+    - &id059
+      kind: website
+      title: "Fishkeeper data bank, Red-top Ice-blue Zebra"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-top-ice-blue-zebra-"
+      accessed: '2026-10-15'
+      archived: fishkeeper.co.uk/fish/freshwater/cichlids/red-top-ice-blue-zebra-/2026-10-14T101416Z
+    - &id060
+      kind: literature
+      title: "Husemann et al., Body shape differences in a pair of closely related Malawi cichlids and their hybrids"
+      url: "https://doi.org/10.1002/ece3.2823"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1002_ece3.2823/2026-10-13T093221Z
+    evidence:
+    - source: *id038
+      value:
+      - maylandia
+      note: "A keeper reports an aurora cross, with no clear record that conspecific mates were available."
+    - source: *id057
+      value:
+      - maylandia
+      note: General warning that zebra mbuna in Maylandia may cross in aquaria.
+    - source: *id020
+      value:
+      - maylandia
+      note: many Maylandia can cross-breed
+    - source: *id038
+      value:
+      - maylandia
+      note: one hybrid with a red zebra reported
+    - source: *id058
+      value:
+      - maylandia
+      note: Listed group membership and presumed basis.
+    - source: *id059
+      value:
+      - maylandia
+      note: General warning that multiple Maylandia species are capable of crossing.
+    - source: *id060
+      value:
+      - Maylandia zebra
+      - Maylandia benetos
+      note: Artificial fertilization produced viable fertile hybrids; this supports genus-level potential but does not document free-choice crossing by M. aurora.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+      - blue
+      - yellow
+      pattern: bars
+    confidence: high
+    rationale: "Generator includes black with blue and yellow, whereas checker-a, checker-b and checker-c list blue and yellow. FishBase describes the male body and bars in blue tones with yellow lower coloration and fins, so blue and yellow are the dominant colors; faint bars do not require black as a dominant color. Brown-backed locality forms are described separately and do not replace the Likoma male pattern."
+    sources:
+    - *id002
+    - *id003
+    - *id018
+    - *id005
+    - *id021
+    - *id022
+    - *id007
+    - *id049
+    - *id008
+    - *id010
+    - *id061
+    evidence:
+    - source: *id002
+      value:
+        baseColors:
+        - blue
+        - yellow
+        - black
+        pattern: bars
+      note: Male coloration and faint vertical bars described in the species account.
+    - source: *id005
+      value:
+        baseColors:
+        - blue
+        - yellow
+        pattern: bars
+      note: "six faint bars, yellow head underside and fins"
+    - source: *id021
+      value:
+        baseColors:
+        - blue
+        - yellow
+      note: "blue body, yellow throat"
+    - source: *id022
+      value:
+        baseColors:
+        - blue
+        - yellow
+        pattern: bars
+      note: seven to eight cross-bands
+    - source: *id007
+      value:
+        baseColors:
+        - blue
+        - yellow
+        pattern: bars
+    - source: *id049
+      value:
+        baseColors:
+        - blue
+        - yellow
+        pattern: bars
+    - source: *id008
+      value:
+        baseColors:
+        - blue
+        - yellow
+        pattern: bars
+    - source: *id061
+      value:
+        baseColors:
+        - blue
+        - yellow
+        pattern: bars
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: The species has a voracious feeding response and belongs to the active grazing mbuna group; this rate is less well documented than its diet.
+    sources:
+    - *id018
+    - *id019
+    - *id021
+    - kind: model-knowledge
+      title: General Maylandia feeding behavior
+    - *id015
+    - *id056
+    evidence:
+    - source: *id019
+      value: hasty
+      note: Describes a voracious appetite in captivity. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id021
+      value: hasty
+      note: "voracious appetite, accepts all foods Rubric value interpreted by the proposing run from the described behavior or care rating."
+    - source: *id015
+      value: hasty
+      note: The profile describes a voracious appetite. Rubric value interpreted by the proposing run from the described behavior or care rating.
+  minTank:
+    value:
+      volumeL: 250
+      lengthCm: 120
+      depthCm: 45
+    confidence: medium
+    rationale: "The generator proposes 200 L at 100 by 40 cm, checker-a 150 L at 120 by 40 cm, checker-b 300 L at 120 by 45 cm and checker-c 300 L at 120 by 50 cm. Component medians are 250 L, 120 cm length and 42.5 cm depth. The volume matches Aqua-Pedia and the length matches the roughly four-foot recommendation of Fishkeeper and Aquadiction; depth is rounded to a practical 45 cm footprint for a male and three females, rock shelters and a sand margin. The depth remains an inferred layout allowance. Smaller published recommendations include 110 L from Aqua-Fish, 190 L from Malawi Mayhem and the Nordic register headline of 200 L at 100 cm. Malawi.si and AquariumLesson recommend 300 L; the Nordic explanatory text also recommends more than 250 L for mbuna. Those larger options provide additional layout and stocking room, but do not establish that a carefully arranged 250 L species harem is inadequate. A mixed-species community requires additional space."
+    sources:
+    - *id048
+    - *id018
+    - *id019
+    - *id020
+    - *id021
+    - *id050
+    - *id022
+    - *id049
+    - *id023
+    - *id010
+    - *id015
+    - *id014
+    evidence:
+    - source: *id048
+      value:
+        volumeL: 200
+        lengthCm: 100
+      note: Species register gives the volume and length; depth is not specified.
+    - source: *id018
+      value:
+        volumeL: 110
+      note: "Gives the minimum volume for one male and two to three females, without dimensions."
+    - source: *id019
+      value:
+        volumeL: 208
+        lengthCm: 122
+      note: "Gives a four-foot aquarium recommendation; volume conversion reflects the article's approximate 55 gallon guidance. The read page specifies four feet, but does not state 55 gallons; this volume is an inherited input conversion."
+    - source: *id020
+      value:
+        lengthCm: 120
+      note: at least 4 ft
+    - source: *id021
+      value:
+        volumeL: 110
+      note: for a male with 2 to 3 females
+    - source: *id050
+      value:
+        volumeL: 190
+      note: 50 US gallons
+    - source: *id022
+      value:
+        lengthCm: 120
+      note: at least 4 ft
+    - source: *id049
+      value:
+        volumeL: 300
+      note: The page specifies volume but no footprint.
+    - source: *id023
+      value:
+        volumeL: 300
+        lengthCm: 120
+      note: Source states the volume and length only; depth is inferred.
+    - source: *id010
+      value:
+        volumeL: 300
+      note: The page gives volume only; the selected footprint is inferred.
+    - source: *id015
+      value:
+        volumeL: 110
+      note: Smaller recommendation for one male and two or three females.
+    - source: *id014
+      value:
+        volumeL: 250
+      note: Minimum volume recommendation.
+  lifespanYears:
+    value:
+      min: 7
+      max: 10
+    confidence: low
+    rationale: "Generator and checker-c propose 8 to 10 years, checker-a 6 to 10 and checker-b 5 to 10. Their component medians give 7 to 10 years. Aqua-Fish, Aquadiction and AquariumLesson support only an upper expectation near ten years; none establishes seven as a measured lower endpoint. The lower value is therefore a planning estimate and the confidence stays low. Inherited ranges in evidence include the agents' inferred minima and are labelled accordingly."
+    sources:
+    - *id018
+    - *id019
+    - *id021
+    - *id022
+    - *id023
+    - *id015
+    evidence:
+    - source: *id018
+      value:
+        min: 8
+        max: 10
+      note: Reports up to ten years. The source supports an upper age near ten only; the retained lower endpoint was inferred by the proposing run.
+    - source: *id019
+      value:
+        min: 8
+        max: 10
+      note: Gives an average lifespan up to ten years. The source supports an upper age near ten only; the retained lower endpoint was inferred by the proposing run.
+    - source: *id021
+      value:
+        min: 6
+        max: 10
+      note: up to 10 years The source supports an upper age near ten only; the retained lower endpoint was inferred by the proposing run.
+    - source: *id022
+      value:
+        min: 6
+        max: 10
+      note: up to 10 years The source supports an upper age near ten only; the retained lower endpoint was inferred by the proposing run.
+    - source: *id023
+      value: 10
+      note: The source states only an upper limit.
+    - source: *id015
+      value:
+        min: 10
+        max: 10
+      note: The page reports lifespan up to about ten years. The source supports an upper age near ten only; the retained lower endpoint was inferred by the proposing run.
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: The female carries the fertilized clutch in her mouth; this is the Malawi cichlid breeding mode recorded for the species.
+    sources:
+    - *id052
+    - *id002
+    - &id062
+      kind: literature
+      title: "Genner and Turner (2005), The mbuna cichlids of Lake Malawi: a model for rapid speciation and adaptive radiation"
+      url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1111_j.1467-2679.2005.00173.x/2026-10-12T202949Z
+    - *id053
+    - *id054
+    - *id020
+    - *id021
+    - *id051
+    - *id007
+    - *id056
+    - *id015
+    evidence:
+    - source: *id052
+      value: maternal-mouthbrooder
+      note: Public species classification identifies maternal mouthbrooding.
+    - source: *id002
+      value: maternal-mouthbrooder
+      note: Species record gives a clutch of 40 to 70 eggs; CRC identifies the mode.
+    - source: *id062
+      value: maternal-mouthbrooder
+      note: Review reports maternal mouthbrooding across mbuna.
+    - source: *id053
+      value: maternal-mouthbrooder
+    - source: *id054
+      value: maternal-mouthbrooder
+      note: all mbuna
+    - source: *id020
+      value: maternal-mouthbrooder
+    - source: *id021
+      value: maternal-mouthbrooder
+    - source: *id051
+      value: maternal-mouthbrooder
+    - source: *id007
+      value: maternal-mouthbrooder
+    - source: *id056
+      value: maternal-mouthbrooder
+      note: General description of mbuna breeding mode.
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: "Generator and checker-b propose demanding; checker-a and checker-c propose moderate. The high-trust public CRC classification places the species at an intermediate aquarium level, which maps most closely to moderate. Aqua-Fish excludes complete beginners and Aquadiction rates it intermediate to advanced. A stable harem, secure rockwork and observation of aggression require some Malawi experience, but these sources do not establish the exceptional difficulty implied by demanding."
+    sources:
+    - *id018
+    - *id019
+    - *id003
+    - *id053
+    - *id021
+    - *id022
+    - *id023
+    - *id049
+    - *id014
+    - *id015
+    evidence:
+    - source: *id018
+      value: demanding
+      note: Warns that its aggression makes it unsuitable for complete novices. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id053
+      value: moderate
+      note: intermediate aquarists Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id021
+      value: moderate
+      note: not for complete novices Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id022
+      value: demanding
+      note: intermediate to advanced Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id023
+      value: demanding
+      note: Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id014
+      value: moderate
+      note: The site's difficulty rating is intermediate. Rubric value interpreted by the proposing run from the described behavior or care rating.
+    - source: *id015
+      value: demanding
+      note: It cautions the fish is not for complete novices. Rubric value interpreted by the proposing run from the described behavior or care rating.
+partners:
+  suitable:
+  - species: Labidochromis caeruleus
+    reason: A possible robust Malawi companion with a predominantly yellow adult appearance distinct from the blue-and-gold aurora male; individual territorial behavior still matters.
+    condition: "Use a larger mixed aquarium than the 250 litre species-harem minimum, with separate sheltered areas and observation of feeding access."
+  - species: Iodotropheus sprengerae
+    reason: A possible algae-oriented Malawi companion with rusty coloration distinct from the aurora male; smaller individuals need effective refuges.
+    condition: "Use a larger mixed aquarium than the 250 litre species-harem minimum, with separate sheltered areas and observation of feeding access."
+  - species: Pseudotropheus acei
+    reason: "This active, robust mbuna is usually blue with yellow fins rather than aurora's barred blue-and-gold pattern."
+    condition: "Use a larger mixed aquarium than the 250 litre species-harem minimum, with separate sheltered areas and observation of feeding access."
+  unsuitable:
+  - species: Maylandia zebra
+    reason: It shares the presumed Maylandia hybrid group and its barred blue appearance can provoke rival-directed aggression.
+  - species: Melanochromis auratus
+    reason: Its persistent aggression can overwhelm a territorial harem species in a mixed tank.
+  - species: Aulonocara baenschi
+    reason: "It is a less robust, open-water-feeding Malawi cichlid that is likely to be harassed in a rocky mbuna setup."
+profile:
+  overview:
+    text: "A male Maylandia aurora brings blue and gold to the rockwork, but its behavior shapes the aquarium as much as its color. This Lake Malawi mbuna defends a feeding and spawning site and needs companions chosen for their resilience and appearance. One male with at least three females is the recommended starting unit. It suits keepers with some experience of Malawi social behavior. Pseudotropheus aurora is the older catalog name, and Metriaclima aurora remains common in specialist sources. The accepted name here follows the Catalog of Fishes despite continuing disagreement over the genus."
+    sources:
+    - *id001
+    - *id002
+    - *id018
+    - *id052
+    - *id063
+  habitat:
+    text: "Likoma Island is central to this species' identity and is its probable type locality. FishBase and specialist locality records extend its distribution to other island and Mozambican shore sites. Some southern populations, including Thumbi West and Otter Point, were introduced within Lake Malawi. The fish uses the boundary between rock and sand, with many observations from shallow water and records extending to about 12 m. Dominant males occupy rock surfaces or excavated sites at rock bases. Other adults and juveniles also gather outside defended patches. Lake Malawi has alkaline water with relatively little calcium and magnesium. Its carbonate alkalinity can exceed its general hardness because those measurements describe different dissolved components."
+    sources:
+    - *id002
+    - *id052
+    - *id011
+    - *id012
+    - *id001
+    - *id064
+    - *id003
+    - *id004
+    - *id005
+    - *id006
+    - *id007
+    - *id049
+    - *id008
+    - *id051
+    - *id010
+    - *id063
+    - *id013
+    - *id016
+    - *id024
+    - *id025
+    - *id026
+    - *id027
+    - *id009
+    - *id009
+    - *id014
+    - *id015
+    - *id009
+    - *id017
+  sizeAndGrowth:
+    text: "Use about 12 cm for a typical adult male maximum and 10 cm for a female when planning the aquarium. These are aquarium total-length estimates supported by the locality account. FishBase's 8.7 cm male and 8.0 cm female maxima are standard lengths and exclude the tail. Larger aquarium individuals are occasionally reported, so the planning values are not absolute growth ceilings. Juveniles give little indication of the adult male's full color. Good care may allow a lifespan approaching ten years; the numerical seven-to-ten-year range is a cautious planning estimate, with a poorly documented lower endpoint."
+    sources:
+    - *id002
+    - *id018
+    - *id019
+    - *id003
+    - *id048
+    - *id005
+    - *id020
+    - *id021
+    - *id022
+    - *id050
+    - *id049
+    - *id007
+    - *id010
+    - *id008
+    - *id014
+    - *id015
+    - *id061
+    - *id023
+  husbandry:
+    text: "For one male and at least three females, plan a tank of at least 250 litres with a footprint about 120 cm long and 45 cm deep. The depth is a layout allowance for retreats and sand around the rocks. Some specialist accounts recommend 300 litres, which gives more flexibility; extra species require extra space. Place stable rock structures securely before adding sand, since males may excavate beneath them. Arrange several escape routes so a fish can leave the dominant male's view. Maintain effective biological filtration and regular water changes. Published aquarium temperatures mostly lie around 24 to 28 C; the broader tolerance includes natural seasonal extremes and is less certain at its ends. Stable alkaline water matters more than repeatedly adjusting minerals to an exact figure."
+    sources:
+    - *id018
+    - *id019
+    - *id048
+    - *id011
+    - *id020
+    - *id021
+    - *id050
+    - *id022
+    - *id049
+    - *id023
+    - *id010
+    - *id015
+    - *id014
+    - *id012
+    - *id002
+    - *id013
+    - *id016
+    - *id024
+    - *id025
+    - *id026
+    - *id027
+    - *id009
+    - *id007
+    - *id009
+    - *id008
+    - *id009
+    - *id017
+  socialBehavior:
+    text: "A fixed aquarium harem helps distribute courtship pressure among several females, although wild mating is polygynandrous rather than a permanent family bond. Rival adult males can fight persistently, and a female with no refuge may also suffer repeated pursuit. Territory centers are relatively small rock sites, but rock cover must allow subordinate fish to move between them. Expect chasing of other fish near the male's patch, especially from similarly colored males. This does not mean every robust mbuna is excluded. Observe access to food and resting places after introductions, because a fish that stays hidden continually may be under more pressure than brief chases suggest."
+    sources:
+    - *id002
+    - *id018
+    - *id019
+    - *id003
+    - *id020
+    - *id021
+    - *id022
+    - *id051
+    - *id049
+    - *id010
+    - *id015
+    - *id056
+    - *id054
+    - *id055
+    - *id065
+    - *id014
+  diet:
+    text: "Its natural feeding equipment and field accounts identify aurora as an aufwuchs grazer. Algae and the material growing with them form the center of that niche, with suspended food and small animal items contributing opportunistically. A plant-rich mbuna food and suitable vegetable ingredients make a practical aquarium staple. Readily accepting animal foods does not justify a protein-heavy menu. Husbandry sources warn of bloat associated with rich feeding and overfeeding. Offer portions the fish can consume promptly and check that subordinate females get their share. The omnivore label used by some care pages describes feeding breadth, while the compatibility diet category reflects the dominant grazing requirement."
+    sources:
+    - *id052
+    - *id002
+    - *id018
+    - *id019
+    - *id053
+    - *id054
+    - *id050
+    - *id020
+    - *id021
+    - *id022
+    - *id007
+    - *id051
+    - *id049
+    - *id023
+    - *id055
+    - *id010
+    - *id015
+    - *id014
+  breeding:
+    text: "The female incubates the brood in her mouth and carries the parental care without assistance from the male. Courtship occurs at a defended site, which may be beside or beneath a rock where sand has been moved. Eggs are laid in small batches and collected by the female during the spawning sequence; the male's fin display helps bring milt close to her mouth. FishBase records clutches of 40 to 70 eggs, while aquarium accounts vary with female size and conditions. Incubation and release timing also differ among reports, commonly taking several weeks overall. Holding females need sheltered routes and should not be forced to compete continually with an actively courting male."
+    sources:
+    - *id052
+    - *id002
+    - *id018
+    - *id062
+    - *id053
+    - *id054
+    - *id020
+    - *id021
+    - *id051
+    - *id007
+    - *id056
+    - *id015
+  sexing:
+    text: "The usual adult Likoma male has blue across the upper body and golden yellow on the lower head and breast, with yellow in the fins. Vertical bars may be faint. Mature females are less colorful and usually smaller, with brownish or grey-blue tones. Males from Mbweca and Tumbi Point can have a browner back, so locality affects appearance. Juveniles and subordinate males can be difficult to distinguish from females by color alone. Females of related aurora-group species are also similar. A locality label and a known breeding history are more informative than assuming every dull fish is a female aurora."
+    sources:
+    - *id002
+    - *id003
+    - *id048
+    - *id018
+    - *id005
+    - *id021
+    - *id022
+    - *id007
+    - *id049
+    - *id008
+    - *id010
+    - *id061
+  compatibility:
+    text: "Select other mbuna with similar feeding needs and enough resilience to use their own shelters. Labidochromis caeruleus and Iodotropheus sprengerae are possible companions because their adult appearance differs from the Likoma male, but success depends on the individuals and additional tank space. A group of Pseudotropheus acei needs a larger mixed aquarium with swimming room. Other Maylandia carry the presumed crossing caution, and blue-barred look-alikes also attract rival-directed aggression. A forum keeper reported an aurora and red-zebra cross without documenting partner choice. Avoid delicate or timid cichlids that cannot feed normally around territorial mbuna, and do not treat a list of possible companions as a guarantee."
+    sources:
+    - *id018
+    - *id019
+    - *id003
+    - *id001
+    - *id038
+    - *id039
+    - *id040
+    - kind: archive
+      title: cichlids.com forum thread 42535
+      url: "https://www.cichlids.com/disc/read.php?2,42535"
+      accessed: '2026-10-15'
+    - kind: archive
+      title: cichlids.com forum thread 42562
+      url: "https://www.cichlids.com/disc/read.php?2,42562"
+      accessed: '2026-10-15'
+    - kind: archive
+      title: cichlids.com forum thread 57036
+      url: "https://www.cichlids.com/disc/read.php?2,57036"
+      accessed: '2026-10-15'
+    - kind: archive
+      title: cichlids.com forum thread 63480
+      url: "https://www.cichlids.com/disc/read.php?2,63480"
+      accessed: '2026-10-15'
+    - *id057
+    - *id020
+    - *id058
+    - *id055
+    - *id006
+    - *id059
+    - *id060
+    - *id021
+    - *id049
+    - *id010
+    - *id014
+  problems:
+    text: "Persistent social pressure can become a health problem before obvious injuries appear. Watch females and subordinate fish for poor feeding, prolonged hiding or repeated pursuit. Too few females and limited escape routes concentrate that pressure. Heavy rocks placed insecurely above sand can shift when a male digs. Rich feeding, uneaten food and deteriorating water quality add avoidable stress to an algae-grazing mbuna. Use the published water ranges as planning guidance, not an invitation to make abrupt chemistry changes. Swelling or loss of appetite needs an assessment of both husbandry and illness; the bloat flag does not identify the cause of an individual case."
+    sources:
+    - *id018
+    - *id019
+    - *id003
+    - *id052
+    - *id002
+    - *id053
+    - *id054
+    - *id050
+    - *id020
+    - *id021
+    - *id022
+    - *id007
+    - *id051
+    - *id049
+    - *id023
+    - *id055
+    - *id010
+    - *id015
+    - *id014
+    - *id056
+provenance:
+  runs:
+  - role: generator
+    model: gpt-6-luna
+    date: '2026-10-15'
+  - role: checker
+    model: claude-sonnet-5-5
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6-luna
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6-luna
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  disagreements:
+  - field: features.origin
+    proposals:
+    - by: generator
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+        - Likoma Island
+        - Chizumulu Island
+        - Mara Point
+        - Mbweca
+        - Tumbi Point
+        - N'kolongwe
+        - Thumbi West Island (introduced)
+    - by: checker-a
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+        - Likoma Island
+        - Otter Point (introduced)
+        - Thumbi West Island (introduced)
+    - by: checker-b
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+        - Likoma Island
+        - Chizumulu Island
+        - Mala Point
+        - Mbweca Rocks
+        - Tumbi Point
+        - Nkolongwe
+    - by: checker-c
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+        localities:
+        - Likoma Island
+    decision:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: lake-malawi
+      localities:
+      - Likoma Island
+      - Chizumulu Island
+      - Mala (Mara) Point
+      - Mbweca Rocks
+      - Tumbi Point
+      - N'kolongwe
+      - Otter Point (introduced)
+      - Thumbi West Island (introduced)
+    rationale: "The Catalog of Fishes anchors the species to Likoma Island and records its introduction at Thumbi West. FishBase and the Malawi.si locality account report additional island and Mozambican shore populations, so the broader list is retained with introduced localities explicitly labelled. The checker-c Likoma-only list is a restricted summary rather than evidence excluding the other populations."
+  - field: features.temperatureC.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 21
+        max: 30
+    - by: checker-a
+      value:
+        min: 21
+        max: 29
+    - by: checker-b
+      value:
+        min: 21
+        max: 29
+    - by: checker-c
+      value:
+        min: 21
+        max: 29
+    decision:
+      min: 21
+      max: 29
+    rationale: "Proposals are generator 21 to 30; checker-a 21 to 29; checker-b 21 to 29; checker-c 21 to 29. The tally treats these as agreement within its one-degree threshold and selects 21 to 29 C with low confidence. Aqua-Fish and AquariumLesson recommend 24 to 27 C, Fishkeeper 24 to 26 C, Aqua-Pedia 24 to 28 C and the Nordic register 23 to 28 C. These central recommendations are widened to contain the complete natural range; they do not demonstrate that every seasonal extreme is equally suitable for continuous aquarium exposure. The generator's extra degree to 30 C has no species-specific long-term support. This provisional tolerance equals the natural range because no stronger endpoint evidence is available, not because failure outside it has been demonstrated. Verification method unanimous."
+  - field: features.ph.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 7.5
+        max: 8.8
+    - by: checker-a
+      value:
+        min: 7.5
+        max: 8.8
+    - by: checker-b
+      value:
+        min: 7.5
+        max: 8.6
+    - by: checker-c
+      value:
+        min: 7.5
+        max: 8.8
+    decision:
+      min: 7.5
+      max: 8.8
+    rationale: "Proposals are generator 7.5 to 8.8; checker-a 7.5 to 8.8; checker-b 7.5 to 8.6; checker-c 7.5 to 8.8. The tally selects 7.5 to 8.8 as unanimous within its 0.3 pH threshold, with medium confidence. Aqua-Fish explicitly recommends 7.5 to 8.8; Fishkeeper, FishBase and Aquadiction give 7.5 to 8.5, and Aqua-Pedia gives 7.8 to 8.6. The selected aquarium envelope includes the natural 7.7 to 8.6 interval and the wider read species-specific advice, without claiming experimentally established injury thresholds. Verification method unanimous."
+  - field: features.ghDgh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 3
+        max: 25
+    - by: checker-a
+      value:
+        min: 3
+        max: 25
+    - by: checker-b
+      value:
+        min: 3
+        max: 15
+    - by: checker-c
+      value:
+        min: 3
+        max: 25
+    - by: tiebreaker-1
+      value:
+        min: 3
+        max: 30
+    - by: tiebreaker-2
+      value:
+        min: 3
+        max: 15
+    decision:
+      min: 3
+      max: 25
+    rationale: "Proposals are generator 3 to 25; checker-a 3 to 25; checker-b 3 to 15; checker-c 3 to 25; tiebreaker-1 3 to 30; tiebreaker-2 3 to 15. No qualified majority settles the endpoints: the tally records 3 agreeing votes of 6 and uses method median. All minima are 3 and the ordered maxima are 15, 15, 25, 25, 25 and 30, giving 3 to 25 dGH with low confidence. This includes the natural lake range and Aqua-Fish's 12 to 25 recommendation. It is narrower than FishBase's wider 12 to 30 environmental summary, which does not identify chronic aquarium exposure limits. Fishkeeper states an upper limit of 25 without a lower bound. Malawi.si recommends 3 to 15 for Malawi aquaria, Aquadiction and AquariumLesson 5 to 15, Aqua-Pedia 10 to 20 and Fishipedia 8 to 15 under habitat characteristics. These conflicting recommendations remain evidence. The median is a provisional practical envelope; neither 25 nor the alternative 30 is a demonstrated species failure threshold. Verification method median."
+  - field: features.khDkh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 4
+        max: 12
+    - by: checker-a
+      value:
+        min: 5
+        max: 20
+    - by: checker-b
+      value:
+        min: 5
+        max: 12
+    - by: checker-c
+      value:
+        min: 5
+        max: 18
+    - by: tiebreaker-1
+      value:
+        min: 5
+        max: 10
+    - by: tiebreaker-2
+      value:
+        min: 5
+        max: 12
+    decision:
+      min: 5
+      max: 12
+    rationale: "Proposals are generator 4 to 12; checker-a 5 to 20; checker-b 5 to 12; checker-c 5 to 18; tiebreaker-1 5 to 10; tiebreaker-2 5 to 12. The tally selects 5 to 12 dKH by qualified majority, with 4 agreeing votes of 6 under its two-degree threshold and low confidence. Malawi.si recommends 6 to 12 for Malawi aquaria; lowering the minimum to 5 includes the complete natural range. JBL recommends 5 to 10 for a Malawi mbuna aquarium. The decision is narrower than Aqua-Pedia's wider 10 to 18 species recommendation and the inferred checker-a ceiling of 20, while retaining both as dissenting evidence. The Nordic register favors KH above 10 but gives no upper limit. Sera reports about 7 in the lake and Seachem explains independent KH buffering, neither establishing a chronic maximum. This is inferred husbandry guidance rather than a measured physiological boundary. Verification method qualified-majority."
+  - field: features.maxSizeCm
+    proposals:
+    - by: generator
+      value:
+        male: 12
+        female: 10
+    - by: checker-a
+      value:
+        male: 10.5
+        female: 9
+    - by: checker-b
+      value:
+        male: 12
+        female: 10
+    - by: checker-c
+      value:
+        male: 12
+        female: 10
+    decision:
+      male: 12
+      female: 10
+    rationale: "Generator, checker-b and checker-c propose 12 cm males and 10 cm females; checker-a proposes 10.5 and 9 cm. The sex-specific medians are 12 and 10 cm, matching the Malawi.si report of typical adult males at 10 to 12 cm and females 1 to 2 cm shorter. FishBase reports 8.7 and 8.0 cm standard length, which excludes the tail and cannot be equated with aquarium total length. Aqua-Fish gives 9 to 11 cm without sex-specific maxima and Fishkeeper gives 12.5 cm overall. Malawi.si also mentions occasional aquarium fish approaching 14 cm; that upper observation is not adopted as the typical maximum."
+  - field: features.diet
+    proposals:
+    - by: generator
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+        foods:
+        - algae
+        - diatoms
+        - biofilm
+        - small invertebrates within aufwuchs
+    - by: checker-a
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+        foods:
+        - spirulina flake
+        - cichlid granules
+        - algae
+        - vegetable matter
+    - by: checker-b
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+        foods:
+        - algae
+        - diatoms
+        - aufwuchs
+    - by: checker-c
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+        foods:
+        - algae
+        - phytoplankton
+        - spirulina
+        - vegetable matter
+    decision:
+      type: aufwuchs
+      bloatSensitive: true
+      foods:
+      - algae
+      - diatoms
+      - biofilm
+      - small invertebrates within aufwuchs
+    rationale: "All four full-profile runs agree on aufwuchs and bloatSensitive true. Their proposed foods differ: generator lists algae, diatoms, biofilm and small invertebrates within aufwuchs; checker-a lists spirulina flake, cichlid granules, algae and vegetable matter; checker-b lists algae, diatoms and aufwuchs; checker-c lists algae, phytoplankton, spirulina and vegetable matter. The tally retains the generator list. CRC supports algae combing, FishBase supports a primary-consumer niche and Malawi.si describes an algal grazer that also takes suspended food. Aqua-Fish and Aquadiction use an omnivore label, reflecting supplementary animal food and aquarium acceptance, without overturning the grazing specialization. Bloat sensitivity follows Fishkeeper and Aqua-Fish husbandry warnings, not a CRC or FishBase diagnosis. Rich animal foods and the feeder-fish advice in Aquadiction are unsuitable as the staple for this profile. Verification method unanimous."
+  - field: features.aggressionHeterospecific
+    proposals:
+    - by: generator
+      value: 2
+    - by: checker-a
+      value: 2
+    - by: checker-b
+      value: 1
+    - by: checker-c
+      value: 2
+    decision: 2
+    rationale: "Generator, checker-a and checker-c propose level 2; checker-b proposes level 1 from the Malawi.si description of tolerance toward other mbuna. Fishkeeper also calls it moderately aggressive and emphasizes stronger reactions toward similar males, while Aqua-Fish reports territorial aggression toward other fish. Localized territorial chasing fits level 2 better than displays alone. These accounts do not justify attacks throughout the tank at level 3 when the social unit and footprint are suitable."
+  - field: features.coloration
+    proposals:
+    - by: generator
+      value:
+        baseColors:
+        - blue
+        - yellow
+        - black
+        pattern: bars
+    - by: checker-a
+      value:
+        baseColors:
+        - blue
+        - yellow
+        pattern: bars
+    - by: checker-b
+      value:
+        baseColors:
+        - blue
+        - yellow
+        pattern: bars
+    - by: checker-c
+      value:
+        baseColors:
+        - blue
+        - yellow
+        pattern: bars
+    decision:
+      baseColors:
+      - blue
+      - yellow
+      pattern: bars
+    rationale: "Generator includes black with blue and yellow, whereas checker-a, checker-b and checker-c list blue and yellow. FishBase describes the male body and bars in blue tones with yellow lower coloration and fins, so blue and yellow are the dominant colors; faint bars do not require black as a dominant color. Brown-backed locality forms are described separately and do not replace the Likoma male pattern."
+  - field: features.minTank
+    proposals:
+    - by: generator
+      value:
+        volumeL: 200
+        lengthCm: 100
+        depthCm: 40
+    - by: checker-a
+      value:
+        volumeL: 150
+        lengthCm: 120
+        depthCm: 40
+    - by: checker-b
+      value:
+        volumeL: 300
+        lengthCm: 120
+        depthCm: 45
+    - by: checker-c
+      value:
+        volumeL: 300
+        lengthCm: 120
+        depthCm: 50
+    decision:
+      volumeL: 250
+      lengthCm: 120
+      depthCm: 45
+    rationale: "The generator proposes 200 L at 100 by 40 cm, checker-a 150 L at 120 by 40 cm, checker-b 300 L at 120 by 45 cm and checker-c 300 L at 120 by 50 cm. Component medians are 250 L, 120 cm length and 42.5 cm depth. The volume matches Aqua-Pedia and the length matches the roughly four-foot recommendation of Fishkeeper and Aquadiction; depth is rounded to a practical 45 cm footprint for a male and three females, rock shelters and a sand margin. The depth remains an inferred layout allowance. Smaller published recommendations include 110 L from Aqua-Fish, 190 L from Malawi Mayhem and the Nordic register headline of 200 L at 100 cm. Malawi.si and AquariumLesson recommend 300 L; the Nordic explanatory text also recommends more than 250 L for mbuna. Those larger options provide additional layout and stocking room, but do not establish that a carefully arranged 250 L species harem is inadequate. A mixed-species community requires additional space."
+  - field: features.lifespanYears
+    proposals:
+    - by: generator
+      value:
+        min: 8
+        max: 10
+    - by: checker-a
+      value:
+        min: 6
+        max: 10
+    - by: checker-b
+      value:
+        min: 5
+        max: 10
+    - by: checker-c
+      value:
+        min: 8
+        max: 10
+    decision:
+      min: 7
+      max: 10
+    rationale: "Generator and checker-c propose 8 to 10 years, checker-a 6 to 10 and checker-b 5 to 10. Their component medians give 7 to 10 years. Aqua-Fish, Aquadiction and AquariumLesson support only an upper expectation near ten years; none establishes seven as a measured lower endpoint. The lower value is therefore a planning estimate and the confidence stays low. Inherited ranges in evidence include the agents' inferred minima and are labelled accordingly."
+  - field: features.beginnerSuitability
+    proposals:
+    - by: generator
+      value: demanding
+    - by: checker-a
+      value: moderate
+    - by: checker-b
+      value: demanding
+    - by: checker-c
+      value: moderate
+    decision: moderate
+    rationale: "Generator and checker-b propose demanding; checker-a and checker-c propose moderate. The high-trust public CRC classification places the species at an intermediate aquarium level, which maps most closely to moderate. Aqua-Fish excludes complete beginners and Aquadiction rates it intermediate to advanced. A stable harem, secure rockwork and observation of aggression require some Malawi experience, but these sources do not establish the exceptional difficulty implied by demanding."
