@@ -4,7 +4,7 @@ title: Today as the starting point before care content
 status: To Do
 assignee: []
 created_date: '2026-10-15 08:46'
-updated_date: '2026-10-15 09:00'
+updated_date: '2026-10-15 09:01'
 labels: []
 dependencies: []
 parent_task_id: TASK-4
@@ -46,4 +46,7 @@ Today is the first tab; before the care features of slice 2 it shows a minimal, 
 5. Tank of the week from the hall of fame of the member's interest region, linking to Discover.
 Sections 2 to 4 disappear without own content, and the tank of the week moves up. Slice 2 adds
 due care tasks and the streak above section 2.
+
+- The target Today of the mockup and the vision is kept in DRAFT-11; each of its parts replaces
+  the reduced Today as soon as the slice that delivers its data exists.
 <!-- SECTION:NOTES:END -->

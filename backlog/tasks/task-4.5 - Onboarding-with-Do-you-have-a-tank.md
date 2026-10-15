@@ -4,7 +4,7 @@ title: Onboarding with Do you have a tank
 status: To Do
 assignee: []
 created_date: '2026-10-15 08:46'
-updated_date: '2026-10-15 08:55'
+updated_date: '2026-10-15 09:01'
 labels: []
 dependencies: []
 parent_task_id: TASK-4
@@ -46,4 +46,12 @@ interests. The first entry is rewarded at once.
   central_american and south_american directly; legacy "american" without detail becomes
   "Americas (unassigned)", which the member refines with one tap on their tank; until then such
   tanks count for both American regions in the hall of fame.
+
+### Reward of the first entry (decided by the project owner, 2026-10-15)
+- A short success moment right after saving: a calm animation (no confetti storm) with the tank
+  in the center and "Your tank is created. From now on it tells its story."
+- A first badge in the profile: "First tank", for returning legacy members "Returned"; the start
+  of the recognition logic that slice 5 extends.
+- A direct next step: "Add your first photo".
+- No points and no leaderboards.
 <!-- SECTION:NOTES:END -->
