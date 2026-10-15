@@ -852,17 +852,35 @@ features:
       votes: {agree: 3, total: 3}
 
   hybridGroups:
-    value: []
+    value: [otopharynx]
     confidence: medium
     rationale: >-
-      No source reports a cross of O. lithobates with another species, and its closest relative O.
-      spelaeotes lives apart and is hardly traded. General advice against mixing species of one
-      genus is no crossing evidence, so no group applies.
+      The curated hybrid-groups.yaml defines Otopharynx as a presumed group based on general hobby
+      warnings about congeneric crosses for O. tetraspilus, rather than evidence of a verified named
+      cross involving O. lithobates.
     sources:
       - *cleaver
       - *cof
       - *sf
       - *fishbase
+      - &hybrid_wikipedia
+        kind: website
+        title: "French Wikipedia, Otopharynx tetraspilus"
+        url: https://fr.wikipedia.org/wiki/Otopharynx_tetraspilus
+        archived: fr.wikipedia.org/wiki/otopharynx_tetraspilus/2026-10-15T094249Z
+        accessed: '2026-10-15'
+      - &hybrid_fishipedia
+        kind: website
+        title: "Fishipedia: Otopharynx tetraspilus"
+        url: https://www.fishi-pedia.com/fishes/otopharynx-tetraspilus
+        archived: fishi-pedia.com/fishes/otopharynx-tetraspilus/2026-10-15T093523Z
+        accessed: '2026-10-15'
+      - &hybrid_mad_aquariums
+        kind: website
+        title: "Mad Aquariums: Otopharynx tetraspilum Yellow Fin Mloto"
+        url: https://madaquariums.com.au/products/topharynx-tetraspilum-yellow-fin-mloto
+        archived: madaquariums.com.au/products/topharynx-tetraspilum-yellow-fin-mloto/2026-10-15T093536Z
+        accessed: '2026-10-15'
     evidence:
       - source: *cleaver
         value: null
@@ -876,6 +894,15 @@ features:
       - source: *sf
         value: null
         note: no warning about crossing with related species
+      - source: *hybrid_wikipedia
+        value: [otopharynx]
+        note: general warning about crossing Otopharynx species
+      - source: *hybrid_fishipedia
+        value: [otopharynx]
+        note: provisional species sheet gives a general same-genus warning
+      - source: *hybrid_mad_aquariums
+        value: [otopharynx]
+        note: source listed in the curated Otopharynx group
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}
