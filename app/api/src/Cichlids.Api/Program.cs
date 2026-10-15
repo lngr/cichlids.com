@@ -4,6 +4,7 @@ using Cichlids.Api.Features.Auth.WebSessions;
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Comments;
 using Cichlids.Api.Features.Community;
+using Cichlids.Api.Features.FeatureFlags;
 using Cichlids.Api.Features.LegacyRedirects;
 using Cichlids.Api.Features.Me;
 using Cichlids.Api.Features.Pictures;
@@ -27,6 +28,7 @@ using Scalar.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+builder.Services.AddSingleton(FeatureFlagSettings.Resolve(builder.Configuration));
 
 // The Expo web target runs the app's browser build against this API from a
 // different origin (Metro's dev server port); browsers enforce CORS for
@@ -182,6 +184,7 @@ app.UseAuthorization();
 app.MapGet("/healthz", () => Results.Ok(new { status = "ok" }))
     .WithName("GetHealth");
 
+app.MapFeatureFlagEndpoints();
 app.MapSpeciesEndpoints();
 app.MapPicturesEndpoints();
 app.MapTanksEndpoints();
