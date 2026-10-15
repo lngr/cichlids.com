@@ -137,6 +137,7 @@ builder.Services.AddScoped<TodayQueryService>();
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<TanksWriteService>();
 builder.Services.AddScoped<CareWriteService>();
+builder.Services.AddScoped<CarePlanService>();
 builder.Services.AddScoped<OnboardingWriteService>();
 builder.Services.AddScoped<ProfilesQueryService>();
 builder.Services.AddScoped<CommentsQueryService>();

@@ -14,12 +14,12 @@ namespace Cichlids.Api.Features.Care;
 public static partial class CareEndpoints
 {
     /// <summary>
-    /// Whether a request path addresses the care routes of a tank, so framework refusals such as
+    /// Whether a request path addresses the care routes of a tank or the due care of a member, so framework refusals such as
     /// binding errors or a missing login on these routes carry a care problem code.
     /// </summary>
     public static bool IsCarePath(PathString path) => path.HasValue && CarePath().IsMatch(path.Value!);
 
-    [GeneratedRegex("^/api/tanks/[0-9]+/care(/[0-9]+|/series)?/?$", RegexOptions.CultureInvariant)]
+    [GeneratedRegex("^(/api/tanks/[0-9]+/care(/[0-9]+|/series|/plan|/plan/[a-z_]+)?|/api/me/care/due)/?$", RegexOptions.CultureInvariant)]
     private static partial Regex CarePath();
 
     public static IEndpointRouteBuilder MapCareEndpoints(this IEndpointRouteBuilder app)
@@ -33,6 +33,11 @@ public static partial class CareEndpoints
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
         group.MapDelete("/{id:long}", DeleteAsync).WithName("DeleteCareEntry").RequireAuthorization()
             .ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
+        group.MapGet("/plan", PlanAsync).WithName("GetCarePlan").ProducesProblem(400).ProducesProblem(404);
+        group.MapPatch("/plan/{kind}", ChangeRuleAsync).WithName("UpdateCarePlanRule").RequireAuthorization()
+            .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
+        app.MapGet("/api/me/care/due", DueAsync).WithName("ListDueCare").WithTags("Care").RequireAuthorization()
+            .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403);
         return app;
     }
 
@@ -53,6 +58,32 @@ public static partial class CareEndpoints
         var entries = await query.OrderByDescending(e => e.OccurredAt).ThenByDescending(e => e.Id).Skip(skip).Take(take)
             .Include(e => e.Values).ToListAsync(ct);
         return TypedResults.Ok(new PagedResponse<CareEntryDto>(total, entries.Select(CareEntryDto.From).ToList()));
+    }
+
+    private static async Task<Results<Ok<CarePlanDto>, ProblemHttpResult>> PlanAsync(
+        long tankId, string? date, int? utcOffsetMinutes, ClaimsPrincipal user, CichlidsDbContext db, CarePlanService plans, CancellationToken ct)
+    {
+        if (!await OwnsTankAsync(tankId, user, db, ct)) return Problem("care_not_found");
+        if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
+        return TypedResults.Ok(await plans.GetPlanAsync(tankId, today, offset, ct));
+    }
+
+    private static async Task<Results<Ok<CarePlanDto>, ProblemHttpResult>> ChangeRuleAsync(
+        long tankId, string kind, UpdateCarePlanRuleRequest request, string? date, int? utcOffsetMinutes,
+        ClaimsPrincipal user, CurrentProfileService profiles, CarePlanService plans, CancellationToken ct)
+    {
+        if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
+        var profile = await profiles.ResolveAsync(user, ct);
+        var (plan, error) = await plans.ChangeRuleAsync(tankId, profile.Id, kind, request, today, offset, ct);
+        return error is not null ? Problem(error) : TypedResults.Ok(plan!);
+    }
+
+    private static async Task<Results<Ok<DueCareDto>, ProblemHttpResult>> DueAsync(
+        string? date, int? utcOffsetMinutes, ClaimsPrincipal user, CurrentProfileService profiles, CarePlanService plans, CancellationToken ct)
+    {
+        if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
+        var profile = await profiles.ResolveAsync(user, ct);
+        return TypedResults.Ok(await plans.ListDueAsync(profile.Id, today, offset, ct));
     }
 
     private const int MaxSeriesPoints = 1000;
@@ -111,6 +142,8 @@ public static partial class CareEndpoints
             "care_value_invalid" => "The value is outside the plausible range of the parameter.",
             "care_origin_invalid" => "Choose test_kit, meter or probe.",
             "care_range_invalid" => "The start of the range must not be after its end.",
+            "care_plan_invalid" => "Choose a rhythm of 1 to 90 days or switch the rule on or off; a measurement rule needs a rhythm.",
+            "care_date_invalid" => "Send your local calendar date as YYYY-MM-DD and, optionally, the offset of your clock from UTC in minutes (-840 to 840).",
             _ => "Check the care request and its units.",
         }, code);
 }

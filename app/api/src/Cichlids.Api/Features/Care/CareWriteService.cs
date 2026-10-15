@@ -114,11 +114,8 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
         return (request is null ? dto : CareEntryDto.From(entry), null);
     }
 
-    private async Task<bool> LockOwnTankAsync(long tankId, long profileId, CancellationToken ct)
-    {
-        var tank = await context.Tanks.FromSqlInterpolated($"SELECT * FROM public.tank WHERE id = {tankId} FOR UPDATE").SingleOrDefaultAsync(ct);
-        return tank is not null && tank.ProfileId == profileId && tank.DeletedAt is null;
-    }
+    private Task<bool> LockOwnTankAsync(long tankId, long profileId, CancellationToken ct) =>
+        CareTanks.LockOwnAsync(context, tankId, profileId, ct);
 
     private static DateTimeOffset AtMicrosecondPrecision(DateTimeOffset value) => value.AddTicks(-(value.Ticks % 10));
 
