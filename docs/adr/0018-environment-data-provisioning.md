@@ -37,15 +37,21 @@ A single, anonymized **golden snapshot** is the only source of non-production da
 - Each **preview** environment receives its own **ephemeral database cloned from the
   golden snapshot**, so the feature under review is testable against realistic data.
   The clone is discarded when the pull request closes.
-- Database cloning at scale relies on **copy-on-write** where available — storage-layer
-  volume snapshots of the golden database volume, or a restore from a base backup — so
-  that creating a clone is near-instant and does not physically duplicate the data.
+- **Target for database clones: copy-on-write.** Clones come from storage-layer volume
+  snapshots of the golden database volume, so creating a clone is near-instant and does
+  not physically duplicate the data.
+- **Interim while the storage offers no snapshots.** The local-path storage of the
+  single-node k3s cluster supports no volume snapshots. Until a storage layer with snapshot
+  support is in place, each environment restores the versioned anonymized dump into its own
+  volume; capacity and provisioning time are measured. Copy-on-write clones remain the
+  target and are worth building once the storage supports them, because they keep preview
+  provisioning fast and independent of the database size.
 - **Media is never copied per environment.** Non-production environments use an
-  **overlay** model: reads resolve against a shared, read-only base (the golden media
-  subset), while writes — new uploads made within a preview — go to a small
-  per-environment ephemeral store that is consulted first and discarded with the
-  environment. Per-environment media storage is therefore bounded to only what that
-  environment itself writes.
+  **overlay** model: the snapshot points every exported media item at a shared, read-only
+  base (the golden media subset), while writes (new uploads made within an environment) go
+  to a small per-environment prefix that is discarded with the environment. Each stored key
+  names where its object lives, so reads need no lookup order. Per-environment media storage
+  is therefore bounded to only what that environment itself writes.
 - A minimal **synthetic seed** remains available as an option for the fastest smoke
   checks that do not need realistic data. The anonymized golden snapshot is the default.
 
@@ -89,9 +95,10 @@ source, rather than re-litigated in every environment.
   privacy correctness must be enforced.
 - **Negative / Trade-offs:** an anonymization pipeline must be built and kept correct,
   and it is a privacy-critical step; copy-on-write depends on a storage layer that
-  supports volume snapshots; the media overlay adds complexity to the read path.
-- **To be decided later:** the snapshot refresh cadence; the exact masking ruleset; the
-  concrete overlay mechanism.
+  supports volume snapshots, and on local-path storage every environment holds a full copy
+  of the anonymized database; the media overlay adds a second key space for writes.
+- **To be decided later:** the snapshot refresh cadence; the storage layer with snapshot
+  support for copy-on-write clones.
 
 ## References
 
