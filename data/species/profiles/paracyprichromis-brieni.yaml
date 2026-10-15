@@ -1,0 +1,2545 @@
+schemaVersion: 1
+id: paracyprichromis-brieni
+legacyIds:
+  - 138
+status: described
+taxonomy:
+  validName: Paracyprichromis brieni
+  genus: Paracyprichromis
+  species: brieni
+  author: "(Poll, 1981)"
+  source: &a1
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species in Paracyprichromis"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&gen\
+      us=Paracyprichromis"
+    accessed: 2026-10-15
+    archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-d2623ff7/2026-10-14T102209Z
+  synonyms:
+    - name: Cyprichromis brieni
+      note: Original combination recorded by the Catalog of Fishes.
+  legacyNames:
+    - Paracyprichromis brieni
+  note: "The Catalog accepts Paracyprichromis brieni (Poll, 1981), originally described as Cyprichromis
+    brieni. Both genus lists were checked. Locality and trade names do not establish additional synonyms;
+    the Kitumba or Velifer material is treated cautiously because its identity may differ from nominal
+    brieni."
+names:
+  trade:
+    en:
+      - Brien's cichlid
+      - Brien's paracyprichromis
+    de:
+      - Brien-Paracyprichromis
+variants: []
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Tanganyika
+      waterbody: lake-tanganyika
+      localities:
+        - Ubwari Peninsula
+        - Kiku
+        - Magara
+    confidence: high
+    rationale: "All four full-profile runs place the species in Lake Tanganyika. The generator names Ubwari
+      and the lake shoreline, checker-a adds Kiku and Magara, and checker-b and checker-c omit locality
+      detail. Retain the documented locality detail without implying restriction to those sites; the
+      Catalog establishes Ubwari as the type locality and specialist accounts describe a wider lake
+      distribution."
+    sources:
+      - *a1
+      - &a2
+        kind: database
+        title: "FishBase species summary: Paracyprichromis brieni"
+        url: "https://www.fishbase.se/summary/Paracyprichromis-brieni.html"
+        accessed: 2026-10-15
+        archived: fishbase.se/summary/paracyprichromis-brieni.html/2026-10-15T081626Z
+      - &a3
+        kind: database
+        title: "Seriously Fish: Paracyprichromis brieni"
+        url: "https://www.seriouslyfish.com/species/paracyprichromis-brieni/"
+        accessed: 2026-10-15
+        archived: seriouslyfish.com/species/paracyprichromis-brieni/2026-10-15T081628Z
+      - &a4
+        kind: website
+        title: "Lake Tanganyika cichlids: Paracyprichromis brieni 'Kiku'"
+        url: "https://tanganyika.si/TanganjikaByLocations/Kiku/slides/Paracyprichromis%20brieni%20%27Kiku%27.htm\
+          l"
+        accessed: 2026-10-15
+        archived: tanganyika.si/tanganjikabylocations/kiku/slides/paracyprichromis_brieni__kiku_.html/2026-10-15T082143Z
+      - &a5
+        kind: database
+        title: "Cichlid Room Companion: Paracyprichromis brieni"
+        url: "https://cichlidae.com/species.php?id=igBCD9MP_7jNZ2YM8ChgUw"
+        accessed: 2026-10-15
+        archived: cichlidae.com/species.php/q-4d104575/2026-10-15T081657Z
+      - &a40
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species in Cyprichromis (historical genus query)"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&gen\
+          us=Cyprichromis"
+        accessed: 2026-10-15
+        archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-99103159/2026-10-14T095717Z
+    evidence:
+      - source: *a1
+        value: "Lake Tanganyika, eastern Africa; type locality Ubwari in the north"
+      - source: *a2
+        value: "Lake Tanganyika, Africa"
+      - source: *a1
+        value:
+          region: Lake Tanganyika
+        note: "type locality Ubwari, Kivu District"
+      - source: *a3
+        value:
+          region: Lake Tanganyika
+        note: "endemic, quite widespread"
+      - source: *a4
+        value:
+          region: Lake Tanganyika
+        note: several distinct populations
+      - source: *a1
+        value: Lake Tanganyika
+      - source: *a2
+        value: Lake Tanganyika
+      - source: *a5
+        value: Lake Tanganyika
+  temperatureC:
+    value:
+      min: 23
+      max: 29
+    confidence: high
+    rationale: "Keep the tallied Lake Tanganyika envelope of 23 to 29 C. Verburg and colleagues report hourly
+      Mpulungu buoy extrema of 23.85 and 29.01 C, supporting a rounded regional envelope rather than a
+      single sampling point. FishBase gives 23 to 28 C and aquarium guidance gives 24 to 27 C; these
+      narrower intervals do not replace regional natural measurements."
+    sources:
+      - &a6
+        kind: literature
+        title: "Verburg et al. (1997), Hydrodynamics of Lake Tanganyika and meteorological results"
+        url: "https://fao.org/fishery/static/LTR/FTP/TD59.PDF"
+        accessed: 2026-10-15
+        archived: fao.org/fishery/static/ltr/ftp/td59.pdf/2026-10-14T094105Z
+      - *a3
+      - &a7
+        kind: literature
+        title: "Plisnier, P.-D. et al. (1996). Limnological sampling during an annual cycle at three stations on
+          Lake Tanganyika (1993-1994). FAO/FINNIDA GCP/RAF/271/FIN-TD/46"
+        url: "https://fao.org/fishery/static/LTR/FTP/TD46.PDF"
+        accessed: 2026-10-15
+        archived: fao.org/fishery/static/ltr/ftp/td46.pdf/2026-10-14T094054Z
+      - *a2
+      - &a14
+        kind: literature
+        title: "Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and some
+          comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD56.PDF"
+        archived: fao.org/fishery/static/ltr/ftp/td56.pdf/2026-10-14T094059Z
+        accessed: 2026-10-15
+      - &a13
+        kind: literature
+        title: "Cohen et al. (1997), Lake level and paleoenvironmental history of Lake Tanganyika, Africa"
+        url: "https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf"
+        accessed: 2026-10-15
+        archived: awramik.faculty.geol.ucsb.edu/pubs/cohe9740.pdf/2026-10-14T094107Z
+      - &a15
+        kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen
+          University."
+        url: "https://edepot.wur.nl/121977"
+        archived: edepot.wur.nl/121977/2026-10-14T094112Z
+        accessed: 2026-10-15
+      - &a16
+        kind: literature
+        title: "Vanden Bossche and Bernacsek (1990), FAO sourcebook, physical and chemical data for Lake
+          Tanganyika"
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: 2026-10-15
+        archived: fao.org/4/t0473e/t0473e10.htm/2026-10-14T094112Z
+    evidence:
+      - source: *a6
+        value:
+          min: 23
+          max: 29
+        note: Lake temperature envelope summarized in the project waterbody table
+      - source: *a3
+        value:
+          min: 24
+          max: 27
+        note: Aquarium recommendation
+      - source: *a7
+        value:
+          min: 23
+          max: 29
+        note: Lake Tanganyika values from the project's waterbody table
+      - source: *a2
+        value:
+          min: 23
+          max: 28
+        note: "species entry, tropical lake water"
+      - source: *a6
+        value:
+          min: 23.9
+          max: 29
+        note: Measured hourly surface range at the Mpulungu buoy; rounded to tenths
+      - source: *a7
+        value:
+          min: 23
+          max: 29
+        note: Natural lake range
+      - source: *a6
+        value:
+          min: 23.85
+          max: 29.01
+        note: Hourly surface-water extrema at the Mpulungu buoy; rounded outward by the adopted regional
+          envelope.
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value:
+        min: 23
+        max: 29
+      confidence: medium
+      rationale: "All four full-profile runs propose 23 to 29 C, and the tally retains this unanimously with
+        medium confidence. Seriously Fish gives 24 to 27 C, Akwarium 23 to 28 C and FishFish 24 to 28 C.
+        Containment of the measured lake envelope accounts for the wider decided interval; no
+        physiological threshold has been experimentally demonstrated. The Kitumba-labelled Zoopet account
+        gives 23 to 26 C and may concern a distinct form. Archive thread 14859 reports illness after
+        heating to about 32 C in unspecified Paracyprichromis, supporting caution about heat without
+        proving a healthy upper endpoint."
+      sources:
+        - *a3
+        - *a2
+        - *a6
+        - &a8
+          kind: archive
+          title: cichlids.com forum thread 14859
+          url: "https://www.cichlids.com/disc/read.php?2,14859"
+          accessed: 2026-10-15
+        - &a9
+          kind: database
+          title: "Seriously Fish, Paracyprichromis brieni"
+          url: "https://www.seriouslyfish.com/species/paracyprichromis-brieni/"
+          accessed: 2026-10-15
+          archived: seriouslyfish.com/species/paracyprichromis-brieni/2026-10-14T204503Z
+        - &a12
+          kind: website
+          title: "Zoopet, Paracyprichromis brieni, Kitumba"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=736"
+          accessed: 2026-10-15
+          archived: zoopet.com/fiskar/fisk.php/q-ffb913ff/2026-10-15T081708Z
+        - &a11
+          kind: website
+          title: "FishFish, Paracyprichromis brieni care sheet"
+          url: "https://www.fishfish.fr/poisson/paracyprichromis-brieni"
+          accessed: 2026-10-15
+          archived: fishfish.fr/poisson/paracyprichromis-brieni/2026-10-15T081633Z
+        - &a10
+          kind: website
+          title: "Akwarium.info.pl, Paracyprichromis brieni"
+          url: "https://akwarium.info.pl/ryby/pielegnice-afrykanskie-jez-tanganika/paracyprichromis-brieni"
+          accessed: 2026-10-15
+          archived: akwarium.info.pl/ryby/pielegnice-afrykanskie-jez-tanganika/paracyprichromis-brieni/2026-10-15T081627Z
+      evidence:
+        - source: *a3
+          value:
+            min: 24
+            max: 27
+          note: Aquarium recommendation
+        - source: *a2
+          value:
+            min: 23
+            max: 28
+          note: Species summary range
+        - source: *a6
+          value:
+            min: 23
+            max: 29
+          note: Natural range included to ensure the long-term tolerance contains habitat conditions
+        - source: *a3
+          value:
+            min: 24
+            max: 27
+          note: aquarium recommendation
+        - source: *a2
+          value:
+            min: 23
+            max: 28
+          note: species entry
+        - source: *a8
+          value:
+            min: 23
+            max: 29
+          note: Inherited proposed safe interval retained for audit; the thread actually reports illness near 32 C
+            in unspecified Paracyprichromis and does not measure a 23 to 29 C healthy interval.
+        - source: *a9
+          value:
+            min: 24
+            max: 27
+          note: "Aquarium recommendation, widened to contain the natural range"
+        - source: *a10
+          value:
+            min: 23
+            max: 28
+          note: Aquarium recommendation
+        - source: *a11
+          value:
+            min: 24
+            max: 28
+          note: Aquarium recommendation
+        - source: *a12
+          value:
+            min: 23
+            max: 26
+          note: Kitumba or Velifer-labelled account; taxonomic applicability to nominal brieni is uncertain.
+        - source: *a11
+          value:
+            min: 24
+            max: 28
+          note: Species-labelled aquarium recommendation.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ph:
+    value:
+      min: 8.4
+      max: 9.4
+    confidence: high
+    rationale: "Keep the tallied natural lake interval of pH 8.4 to 9.4. Plisnier and colleagues report
+      surface values around 8.8 to 9.2 and an annual span of 8.47 to 9.40 at 40 m. FishBase gives 7.0 to
+      8.5 and Seriously Fish recommends 7.5 to 9.0 for aquaria; those claims remain visible, but measured
+      lake chemistry determines this natural feature. The older FAO sourcebook pH of 7.3 to 7.8 conflicts
+      with the modern measurements and is not adopted."
+    sources:
+      - *a7
+      - *a13
+      - *a3
+      - *a2
+      - *a14
+      - *a6
+      - *a15
+      - *a16
+    evidence:
+      - source: *a7
+        value:
+          min: 8.4
+          max: 9.4
+        note: Surface and near-surface lake readings summarized in the project waterbody table
+      - source: *a13
+        value:
+          min: 8.4
+          max: 9.4
+        note: Lake chemistry context summarized in the project waterbody table
+      - source: *a3
+        value:
+          min: 7.5
+          max: 9
+        note: "Aquarium recommendation, not a natural habitat measurement"
+      - source: *a7
+        value:
+          min: 8.4
+          max: 9.4
+        note: Lake Tanganyika values from the project's waterbody table
+      - source: *a2
+        value:
+          min: 7
+          max: 8.5
+        note: "species entry, lower than the lake measurements"
+      - source: *a7
+        value:
+          min: 8.4
+          max: 9.4
+        note: Lake range from the waterbody table
+      - source: *a7
+        value:
+          min: 8.4
+          max: 9.4
+        note: Natural lake range
+      - source: *a2
+        value:
+          min: 7
+          max: 8.5
+        note: "General habitat entry, differs from measured lake table"
+      - source: *a7
+        value:
+          min: 8.47
+          max: 9.4
+        note: Annual lake measurements at 40 m; the regional minimum is rounded outward.
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value:
+        min: 7.5
+        max: 9.5
+      confidence: medium
+      rationale: "The generator and checker-a propose 7.5 to 9.4, while checker-b and checker-c propose 7.5 to
+        9.5. The tally treats these as unanimous within the pH agreement threshold and decides 7.5 to 9.5
+        at medium confidence. Seriously Fish and Akwarium recommend 7.5 to 9.0, and FishFish extends its
+        upper recommendation to 9.5. FishBase gives the partly wider lower span of 7.0 to 8.5; its
+        environmental summary alone does not establish sustained aquarium health down to 7.0. The decided
+        interval contains natural lake pH and does not imply that abrupt changes are acceptable."
+      sources:
+        - *a3
+        - *a2
+        - *a7
+        - *a8
+        - *a9
+        - *a11
+        - *a10
+      evidence:
+        - source: *a3
+          value:
+            min: 7.5
+            max: 9
+          note: Aquarium recommendation
+        - source: *a2
+          value:
+            min: 7
+            max: 8.5
+          note: Broad species environmental range
+        - source: *a7
+          value:
+            min: 8.4
+            max: 9.4
+          note: Natural range included so the tolerance contains habitat conditions
+        - source: *a3
+          value:
+            min: 7.5
+            max: 9
+          note: aquarium recommendation
+        - source: *a2
+          value:
+            min: 7
+            max: 8.5
+          note: species entry
+        - source: *a8
+          value:
+            min: 8.2
+            max: 8.2
+          note: single tank reading
+        - source: *a9
+          value:
+            min: 7.5
+            max: 9
+          note: "Aquarium recommendation, range widened to include natural lake values"
+        - source: *a10
+          value:
+            min: 7.5
+            max: 9
+          note: Aquarium recommendation
+        - source: *a11
+          value:
+            min: 8
+            max: 9.5
+          note: Aquarium recommendation
+        - source: *a11
+          value:
+            min: 8
+            max: 9.5
+          note: Species-labelled aquarium recommendation.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ghDgh:
+    value:
+      min: 10
+      max: 13
+    confidence: high
+    rationale: "Keep the tallied natural interval of 10 to 13 dGH. The FAO annual-cycle measurements give
+      station-average calcium and magnesium concentrations corresponding to roughly 11 to 12 dGH;
+      north-basin chemistry reported by Cohen and colleagues is around 12.2 dGH. These observations
+      support a regional envelope rather than either point alone. FishBase gives the wider species
+      interval of 10 to 15 dGH, while aquarium recommendations of 8 to 25 dGH describe tolerance rather
+      than natural conditions."
+    sources:
+      - *a7
+      - *a13
+      - *a3
+      - *a2
+      - *a16
+      - *a14
+      - *a6
+      - *a15
+    evidence:
+      - source: *a7
+        value:
+          min: 10
+          max: 13
+        note: Surface hardness range summarized in the project waterbody table
+      - source: *a13
+        value:
+          min: 10
+          max: 13
+        note: North-basin chemistry summarized in the project waterbody table
+      - source: *a3
+        value:
+          min: 8
+          max: 25
+        note: Aquarium recommendation
+      - source: *a7
+        value:
+          min: 10
+          max: 13
+        note: Lake Tanganyika values from the project's waterbody table
+      - source: *a2
+        value:
+          min: 10
+          max: 15
+        note: species entry
+      - source: *a16
+        value:
+          min: 11.3
+          max: 11.3
+        note: Ca and Mg measurements converted to dGH from the FAO sourcebook point reading
+      - source: *a7
+        value:
+          min: 10
+          max: 13
+        note: Natural lake range
+      - source: *a7
+        value:
+          min: 11.1
+          max: 11.5
+        note: Approximate station-mean GH calculated from calcium and magnesium; these means are not tolerance
+          limits.
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value:
+        min: 8
+        max: 25
+      confidence: medium
+      rationale: "The generator, checker-a and checker-b propose 8 to 25 dGH; checker-c proposes 7 to 25 dGH.
+        The tally counts agreement within its 2 dGH threshold and retains 8 to 25 dGH at medium
+        confidence. Seriously Fish and Akwarium state 8 to 25 dGH, while FishFish states 7 to 15 dGH. The
+        latter has a lower minimum, but offers no documented outcome requiring extension to 7. FishBase
+        gives 10 to 15 dGH, and the congener Fishkeeper sheet gives 15 to 25 dGH. Retain all claims and
+        keep the species-specific interval that contains measured lake GH."
+      sources:
+        - *a3
+        - &a17
+          kind: website
+          title: "Tanganyika.si: Paracyprichromis brieni (unknown locality)"
+          url: "https://www.tanganyika.si/Tanganjika/Paracyprichromis/Paracyprichromis%20brieni/slides/Paracyprich\
+            romis%20brieni.html"
+          accessed: 2026-10-15
+          archived: tanganyika.si/tanganjika/paracyprichromis/paracyprichromis_brieni/slides/paracyprichromis_brieni.html/2026-10-15T081634Z
+        - *a2
+        - &a18
+          kind: website
+          title: "Fishkeeper (Maidenhead Aquatics): Blue Neon Cichlid, Paracyprichromis nigripinnis (congener)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-neon-cichlid"
+          accessed: 2026-10-15
+          archived: fishkeeper.co.uk/fish/freshwater/cichlids/blue-neon-cichlid/2026-10-14T102215Z
+        - *a9
+        - *a10
+        - *a11
+      evidence:
+        - source: *a3
+          value:
+            min: 8
+            max: 25
+          note: Aquarium recommendation
+        - source: *a17
+          value:
+            min: 10
+            max: 13
+          note: Natural range; specialist guidance confirms hard Tanganyika-style water The archived specialist
+            text provides no numeric GH range; this is inherited lake-context inference.
+        - source: *a3
+          value:
+            min: 8
+            max: 25
+          note: aquarium recommendation
+        - source: *a18
+          value:
+            min: 15
+            max: 25
+          note: care sheet for the congener P. nigripinnis
+        - source: *a2
+          value:
+            min: 10
+            max: 15
+          note: species entry
+        - source: *a9
+          value:
+            min: 8
+            max: 25
+          note: Stated aquarium hardness interval
+        - source: *a10
+          value:
+            min: 8
+            max: 25
+          note: Aquarium recommendation
+        - source: *a11
+          value:
+            min: 7
+            max: 15
+          note: Aquarium recommendation
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  khDkh:
+    value:
+      min: 15
+      max: 20
+    confidence: high
+    rationale: "Keep the tallied natural interval of 15 to 20 dKH without a verification object. Published
+      lake alkalinity around 6.5 to 6.9 meq/L converts to about 18.2 to 19.3 dKH, with FAO titrations
+      extending lower. This is a regional alkalinity envelope, independent of GH; husbandry estimates
+      extending to 25 dKH do not redefine the measured natural interval."
+    sources:
+      - *a7
+      - *a13
+      - *a17
+      - *a16
+      - *a14
+      - *a6
+      - *a15
+    evidence:
+      - source: *a7
+        value:
+          min: 15
+          max: 20
+        note: Alkalinity converted to dKH in the project waterbody table
+      - source: *a13
+        value:
+          min: 15
+          max: 20
+        note: Lake alkalinity context summarized in the project waterbody table
+      - source: *a17
+        value: "hard, alkaline, well-buffered Tanganyika water"
+      - source: *a7
+        value:
+          min: 15
+          max: 20
+        note: Lake Tanganyika values from the project's waterbody table
+      - source: *a16
+        value:
+          min: 18.8
+          max: 18.8
+        note: 6.71 meq/L alkalinity converted to dKH from the FAO sourcebook point reading
+      - source: *a7
+        value:
+          min: 15
+          max: 20
+        note: Natural lake range
+      - source: *a7
+        value:
+          min: 15
+          max: 20
+        note: Rounded regional envelope synthesized from the reported alkalinity titrations.
+    tolerance:
+      value:
+        min: 9
+        max: 20
+      confidence: low
+      rationale: "Retain the tallied qualified-majority decision of 9 to 20 dKH with four agreeing votes out of
+        six and low confidence. Proposals are 10 to 25 from the generator, 10 to 20 from checker-a, 10 to
+        20 from checker-b, 12 to 25 from checker-c, 8 to 20 from tiebreaker-1 and 7 to 20 from
+        tiebreaker-2. The agreeing lower bounds of 10, 10, 8 and 7 yield 9 after median aggregation and
+        rounding; this is not a measured species threshold. Practical Fishkeeping gives 8 to 18 for
+        Tanganyikan cichlids, JBL gives 7 to 20 for Malawi and Tanganyika, and New Life gives 10 to 20.
+        The wider Guppys.life recommendation of 12 to 25 and the generator and checker-c ceilings of 25
+        remain dissenting evidence; no species-specific long-term outcome establishes that ceiling. A
+        Kitumba or Velifer blog gives 4 to 10 but has unresolved taxonomic applicability. A tank account
+        reports 15 to 16 after recent introduction, and an archive report gives 12 during heat-related
+        illness; neither establishes long-term limits. Seriously Fish and FishBase report GH or pH rather
+        than KH, so their numbers cannot be transferred directly. The interval remains an inference from
+        group husbandry and buffering practice and contains natural KH of 15 to 20. OATA and
+        BreederDirect requests failed; AquaInfo, Tropical Fish Co and the JBL product extractions provide
+        no usable numerical KH evidence."
+      sources:
+        - *a3
+        - *a17
+        - *a7
+        - *a8
+        - *a9
+        - *a10
+        - *a11
+        - &a19
+          kind: literature
+          title: "Jeremy Gay: Quick guide to Tanganyikan cichlids. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/quick-guide-to-tanganyikan-cichlids/"
+          accessed: 2026-10-15
+          archived: practicalfishkeeping.co.uk/features/quick-guide-to-tanganyikan-cichlids/2026-10-14T101840Z
+        - &a20
+          kind: website
+          title: "Einrichtungsbeispiele aquarium 43849: Tanganyika community aquarium and water measurements"
+          url: "https://www.einrichtungsbeispiele.de/becken-beispiele/tanganjikasee/die-haengenden-felsen-von-mpul\
+            ungu-von-ravaka_43849.html"
+          accessed: 2026-10-15
+          archived: einrichtungsbeispiele.de/becken-beispiele/tanganjikasee/die-haengenden-felsen-von-mpulungu-von-ravaka_43849.html/2026-10-15T082630Z
+        - &a21
+          kind: website
+          title: "Cesar da Silva: Paracyprichromis brieni, Kitumba husbandry account reproduced in 2014"
+          url: "https://aquariospeixescuidadoseespecies.blogspot.com/2014/10/paracyprichromis-brieni.html"
+          accessed: 2026-10-15
+          archived: aquariospeixescuidadoseespecies.blogspot.com/2014/10/paracyprichromis-brieni.html/2026-10-15T082618Z
+        - kind: website
+          title: "Sera kH-Test: instructions and carbonate buffering advice"
+          url: "https://www.sera.de/fileadmin/user_upload/manuals/sourcefiles/04210_sera_kH-Test_2015-06_INT.pdf"
+          accessed: 2026-10-15
+          archived: sera.de/fileadmin/user_upload/manuals/sourcefiles/04210_sera_kh-test_2015-06_int.pdf/2026-10-14T175518Z
+        - kind: website
+          title: "DRTA Archiv: Paracyprichromis brieni"
+          url: "https://www.drta-archiv.de/paracyprichromis-brieni/"
+          accessed: 2026-10-15
+          archived: drta-archiv.de/paracyprichromis-brieni/2026-10-15T082630Z
+        - *a2
+        - &a31
+          kind: database
+          title: "Seriously Fish: Paracyprichromis nigripinnis"
+          url: "https://www.seriouslyfish.com/species/paracyprichromis-nigripinnis/"
+          accessed: 2026-10-15
+          archived: seriouslyfish.com/species/paracyprichromis-nigripinnis/2026-10-14T102213Z
+        - kind: website
+          title: "AquaInfo: Paracyprichromis brieni, archived response contains only a lake map caption"
+          url: "https://www.aquainfo.nl/artikel/paracyprichromis-brieni/"
+          accessed: 2026-10-15
+          archived: aquainfo.nl/artikel/paracyprichromis-brieni/2026-10-15T081640Z
+        - &a22
+          kind: literature
+          title: "JBL (2022). PROAQUATEST booklet. Second edition, page 8. Public distributor copy"
+          url: "https://aquapremium.com.au/wp-content/uploads/2025/05/PROAQUATEST-V02-EN.pdf"
+          accessed: 2026-10-15
+          archived: aquapremium.com.au/wp-content/uploads/2025/05/proaquatest-v02-en.pdf/2026-10-15T044338Z
+        - &a23
+          kind: website
+          title: New Life Keysborough guide to Lake Tanganyika cichlids
+          url: "https://newlifekeys.com.au/blog/the-african-cichlids-lake-tanganyika/"
+          accessed: 2026-10-15
+          archived: newlifekeys.com.au/blog/the-african-cichlids-lake-tanganyika/2026-10-15T051554Z
+        - &a24
+          kind: website
+          title: Guppys.life guide to a Lake Tanganyika cichlid aquarium
+          url: "https://guppys.life/lake-tanganyika-cichlid-aquarium/"
+          accessed: 2026-10-15
+          archived: guppys.life/lake-tanganyika-cichlid-aquarium/2026-10-15T082644Z
+        - &a25
+          kind: website
+          title: Aquarist Atlas species profile for Paracyprichromis brieni
+          url: "https://www.cichlidatlas.com/species/paracyprichromis-brieni/"
+          accessed: 2026-10-15
+          archived: cichlidatlas.com/species/paracyprichromis-brieni/2026-10-15T081633Z
+        - &a30
+          kind: archive
+          title: cichlids.com forum thread 55371
+          url: "https://www.cichlids.com/disc/read.php?2,55371"
+          accessed: 2026-10-15
+        - kind: website
+          title: OATA other African cichlids care sheet. Requested URL returned HTTP 404
+          url: "https://ornamentalfish.org/wp-content/uploads/Other-African-cichlids.pdf"
+          accessed: 2026-10-15
+          offline: true
+        - kind: website
+          title: OATA other African cichlids care sheet. Alternate host also returned HTTP 404
+          url: "https://www.ornamentalfish.org/wp-content/uploads/Other-African-cichlids.pdf"
+          accessed: 2026-10-15
+          offline: true
+        - kind: website
+          title: BreederDirect Tanganyika care guide. Request returned HTTP 403
+          url: "https://br-choku.com/en/column/tanganyika-cichlid-care-guide"
+          accessed: 2026-10-15
+          offline: true
+        - kind: website
+          title: Tropical Fish Co Kigoma compressiceps listing. Archived extraction contains product links only
+          url: "https://tropicalfishco.co.uk/products/lake-tanganyika-cichlid-for-sale-uk-lamprologus-comp-kigoma-\
+            4-n657"
+          accessed: 2026-10-15
+          archived: tropicalfishco.co.uk/products/lake-tanganyika-cichlid-for-sale-uk-lamprologus-comp-kigoma-4-n657/2026-10-15T082704Z
+        - kind: website
+          title: JBL KH product page. Archived extraction contains notification information only
+          url: "https://www.jbl.de/en/products/detail/8652/jbl-proaquatest-kh-carbonate-hardness?country=my"
+          accessed: 2026-10-15
+          archived: jbl.de/en/products/detail/8652/jbl-proaquatest-kh-carbonate-hardness/q-315ec04b/2026-10-14T175451Z
+        - kind: website
+          title: JBL product request 8679. Archived extraction contains notification information only
+          url: "https://www.jbl.de/en/products/detail/8679/jbl-proaquatest-kh"
+          accessed: 2026-10-15
+          archived: jbl.de/en/products/detail/8679/jbl-proaquatest-kh/2026-10-15T082717Z
+      evidence:
+        - source: *a3
+          value:
+            min: 7.5
+            max: 9
+          note: "pH husbandry guidance used for the inference; no KH limit is stated These numeric bounds describe
+            pH or GH as labelled above, not measured KH."
+        - source: *a3
+          value:
+            min: 8
+            max: 25
+          note: "GH husbandry guidance used for the inference; no KH limit is stated These numeric bounds describe
+            pH or GH as labelled above, not measured KH."
+        - source: *a7
+          value:
+            min: 15
+            max: 20
+          note: "Natural KH range, not a measured tolerance"
+        - source: *a8
+          value:
+            min: 12
+            max: 12
+          note: "single tank reading, fish alive but stressed by heat"
+        - source: *a3
+          value:
+            min: 7.5
+            max: 9
+          note: "pH advice from which the buffering need is derived These numeric bounds describe pH or GH as
+            labelled above, not measured KH."
+        - source: *a9
+          value:
+            min: 10
+            max: 20
+          note: "Derived low-confidence KH tolerance; the source gives GH and pH recommendations, not KH"
+        - source: *a3
+          value:
+            min: 12
+            max: 25
+          note: "KH not reported; derived from this source's pH and GH advice, widened to contain natural KH"
+        - source: *a10
+          value:
+            min: 12
+            max: 25
+          note: "KH not reported; derived from this source's pH and GH advice, widened to contain natural KH"
+        - source: *a19
+          value:
+            min: 8
+            max: 18
+          note: "Aquarium recommendation for Tanganyikan cichlids, including Paracyprichromis; group-level advice."
+        - source: *a7
+          value:
+            min: 15
+            max: 20
+          note: Mandatory natural range which the tolerance must contain; not itself an aquarium tolerance study.
+        - source: *a20
+          value:
+            min: 15
+            max: 16
+          note: Reported aquarium KH with brieni listed in the stock; recent introduction limits evidence for
+            long-term health.
+        - source: *a21
+          value:
+            min: 4
+            max: 10
+          note: Aquarium recommendation for the Kitumba form discussed as possibly distinct velifer; lower range
+            retained as conflicting evidence.
+        - source: *a8
+          value:
+            min: 12
+            max: 12
+          note: KH reading during illness in unspecified Paracyprichromis after excessive heat; not evidence of a
+            KH-induced health problem.
+        - source: *a22
+          value:
+            min: 7
+            max: 20
+          note: "Aquarium KH recommendation for the combined Malawi and Tanganyika group, not species-specific
+            tolerance measurements."
+        - source: *a23
+          value:
+            min: 10
+            max: 20
+          note: General Tanganyika aquarium KH advice.
+        - source: *a24
+          value:
+            min: 12
+            max: 25
+          note: General Tanganyika aquarium KH advice; the wider upper endpoint is retained as a conflicting claim.
+        - source: *a7
+          value:
+            min: 15
+            max: 20
+          note: Natural lake KH range only. This anchors containment and does not establish tolerance endpoints.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+  maxSizeCm:
+    value:
+      male: 10
+      female: 9
+    confidence: low
+    rationale: "Start from the component medians of all proposals: generator 10/10 cm, checker-a 10/9,
+      checker-b 10/9 and checker-c 9/7 give 10 cm male and 9 cm female. Tanganyika.si describes adults
+      around 10 cm total length, while FishBase reports a maximum of 11 cm total length without a female
+      figure. Seriously Fish gives 11 cm standard length, which excludes the tail and cannot be treated
+      as the same total-length measurement. FishFish separates males at 9 and females at 7 cm; Zoopet
+      gives 9 cm for the uncertain Kitumba or Velifer form. Retain 10/9 as approximate aquarium maxima,
+      with low confidence because the sex difference is poorly established and the larger female figure
+      is an inference."
+    sources:
+      - *a17
+      - *a2
+      - *a3
+      - *a4
+      - *a12
+      - *a11
+      - *a9
+      - *a25
+    evidence:
+      - source: *a17
+        value:
+          male: 10
+          female: 10
+        note: "Approximate total length, not separated by sex"
+      - source: *a2
+        value:
+          male: 11
+          female: 11
+        note: "Maximum reported length, sex not resolved"
+      - source: *a3
+        value:
+          male: 11
+          female: 11
+        note: Standard length; not directly equivalent to total length
+      - source: *a2
+        value:
+          male: 11
+          female: 11
+        note: "maximum total length, unsexed"
+      - source: *a3
+        value:
+          male: 11
+          female: 11
+        note: standard length
+      - source: *a4
+        value:
+          male: 10
+          female: 10
+        note: typical adult total length
+      - source: *a12
+        value:
+          male: 9
+          female: 9
+      - source: *a11
+        value:
+          male: 9
+          female: 7
+      - source: *a11
+        value:
+          male: 9
+          female: 7
+        note: Sex-specific adult sizes
+      - source: *a2
+        value:
+          male: 11
+          female: 11
+        note: "Maximum total length, sex not distinguished"
+      - source: *a3
+        value:
+          male: 11
+          female: 11
+        note: "Maximum standard length, sex not distinguished"
+      - source: *a25
+        value:
+          male: 10
+          female: 10
+        note: "Approximate adult size, sex not distinguished"
+  predation:
+    value: 0
+    confidence: high
+    rationale: "All four votes choose level 0 and the tally is unanimous with high confidence. FishBase and
+      Seriously Fish identify zooplankton feeding, and the specialist account adds small crustaceans.
+      There is no evidence of regular fish feeding; incidental fry capture would remain within level 0.
+      The archived guppy observation concerns the congener and is supporting context rather than a direct
+      test of brieni."
+    sources:
+      - *a2
+      - *a3
+      - *a5
+      - *a4
+      - &a26
+        kind: archive
+        title: cichlids.com forum thread 15011
+        url: "https://www.cichlids.com/disc/read.php?2,15011"
+        accessed: 2026-10-15
+      - *a12
+    evidence:
+      - source: *a2
+        value: 0
+        note: Zooplankton feeder; no fish prey listed
+      - source: *a3
+        value: 0
+        note: Describes zooplankton feeding and peaceful behaviour
+      - source: *a2
+        value: 0
+        note: feeds on zooplankton in open water
+      - source: *a3
+        value: 0
+        note: "small mouth, zooplankton feeder"
+      - source: *a4
+        value: 0
+        note: feeds on zooplankton and small crustaceans
+      - source: *a26
+        value: 0
+        note: kept with guppies; note concerns the congener
+      - source: *a2
+        value: 0
+        note: "Zooplankton feeder, no fish reported"
+      - source: *a2
+        value: 0
+        note: Feeds on zooplankton in the water column
+      - source: *a3
+        value: 0
+        note: Small-mouth zooplankton feeder
+      - source: *a5
+        value: 0
+        note: Public profile identifies mouth-brooding and rocky habitat; no fish prey is reported
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - zooplankton
+        - small crustaceans
+        - cyclops
+        - brine shrimp
+        - daphnia
+    confidence: high
+    rationale: "Keep the unanimous tallied invertivore decision and bloatSensitive false with high
+      confidence. The natural diet is dominated by zooplankton and small crustaceans. The generator lists
+      zooplankton, small crustaceans, cyclops, brine shrimp and daphnia; checker-a adds frozen mosquito
+      larvae and fine flakes, checker-b lists only zooplankton and crustaceans, and checker-c adds insect
+      larvae. These food-list differences do not change the dietary category. No reviewed source
+      establishes a special protein-related bloat tendency, so false represents the available evidence
+      rather than immunity to digestive illness."
+    sources:
+      - *a2
+      - *a3
+      - *a17
+      - *a4
+      - *a9
+      - *a12
+      - &a27
+        kind: website
+        title: "Lake Tanganyika cichlids, Paracyprichromis brieni"
+        url: "https://tanganyika.si/Tanganjika/Paracyprichromis/Paracyprichromis%20brieni/slides/Paracyprichromi\
+          s%20brieni.html"
+        accessed: 2026-10-15
+        archived: tanganyika.si/tanganjika/paracyprichromis/paracyprichromis_brieni/slides/paracyprichromis_brieni.html/2026-10-15T081628Z
+      - *a10
+      - *a5
+    evidence:
+      - source: *a2
+        value:
+          type: invertivore
+          bloatSensitive: false
+          foods:
+            - zooplankton
+      - source: *a3
+        value:
+          type: invertivore
+          bloatSensitive: false
+          foods:
+            - zooplankton
+            - small live or frozen foods
+      - source: *a17
+        value:
+          type: invertivore
+          bloatSensitive: false
+          foods:
+            - zooplankton
+            - small crustaceans
+      - source: *a2
+        value:
+          type: invertivore
+        note: zooplankton in the open water column
+      - source: *a3
+        value:
+          type: invertivore
+        note: live and frozen foods should form the bulk
+      - source: *a4
+        value:
+          type: invertivore
+        note: zooplankton and small crustaceans
+      - source: *a2
+        value:
+          type: invertivore
+          bloatSensitive: false
+          foods:
+            - zooplankton
+        note: FishBase states pelagic zooplankton feeding
+      - source: *a2
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: Zooplankton
+      - source: *a27
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: Zooplankton and small crustaceans
+      - source: *a10
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: Insect larvae and crustaceans
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: "The generator, checker-b and checker-c propose level 2; checker-a proposes level 1.
+      Specialist sources describe territorial males at rock faces together with loose group living.
+      Limited but repeated displacement around male sites fits level 2 without implying frequent injury
+      in the recommended group. The precise frequency of chasing is incompletely documented, so
+      confidence remains medium rather than treating territoriality alone as proof of severe aggression."
+    sources:
+      - *a3
+      - *a17
+      - *a4
+      - *a18
+      - *a9
+      - *a12
+      - *a27
+      - &a28
+        kind: literature
+        title: "Mating systems of two midwater-spawning cichlids, Cyprichromis microlepidotus and
+          Paracyprichromis brieni, in Lake Tanganyika"
+        url: "https://doi.org/10.1007/bf02347596"
+        accessed: 2026-10-15
+        archived: doi.org/10.1007/bf02347596/2026-10-15T081738Z
+    evidence:
+      - source: *a3
+        value: 2
+        note: Territorial males with several females in a shoal
+      - source: *a17
+        value: 2
+        note: Male breeding territories against vertical rock faces
+      - source: *a3
+        value: 1
+        note: "very peaceful, males territorial under overhangs"
+      - source: *a4
+        value: 1
+        note: territorial males at vertical rock faces
+      - source: *a18
+        value: 1
+        note: "congener: two males may argue in small tanks"
+      - source: *a3
+        value: 2
+        note: Males defend small sites under rock overhangs
+      - source: *a28
+        value: 2
+        note: Males use fixed spawning sites near vertical rock
+  aggressionHeterospecific:
+    value: 0
+    confidence: medium
+    rationale: "The generator and checker-c infer level 1 from male territory defense, while checker-a and
+      checker-b choose 0. Seriously Fish explicitly describes a retiring species and allows calm
+      companions; no read account establishes routine displays directed at other species. Adopt level 0
+      and reserve the territorial warning for conspecific males. Congener harassment reports describe
+      this fish group as the victim, not evidence that brieni attacks tankmates."
+    sources:
+      - *a3
+      - *a17
+      - *a4
+      - &a29
+        kind: archive
+        title: cichlids.com forum thread 17295
+        url: "https://www.cichlids.com/disc/read.php?2,17295"
+        accessed: 2026-10-15
+      - *a26
+      - *a9
+      - *a10
+      - *a27
+    evidence:
+      - source: *a3
+        value: 1
+        note: Peaceful and retiring; avoid boisterous species
+      - source: *a17
+        value: 1
+        note: Relatively peaceful; aggressive tankmates are unsuitable
+      - source: *a3
+        value: 0
+        note: very peaceful and retiring
+      - source: *a4
+        value: 0
+        note: should not be kept with aggressive species
+      - source: *a29
+        value: 0
+        note: "keeper: the congener was harassed by furcifer"
+      - source: *a26
+        value: 0
+        note: keepers cannot imagine Paracyprichromis harassing tankmates
+      - source: *a3
+        value: 1
+        note: Peaceful fish with locally territorial males
+      - source: *a27
+        value: 1
+        note: Advice excludes aggressive species
+  territory:
+    value:
+      size: small
+      breedingOnly: true
+    confidence: low
+    rationale: "The generator, checker-b and checker-c link a small defended site to spawning and propose
+      breedingOnly true; checker-a proposes false because seasonal restriction is unproven. All agree on
+      a limited rock-face or overhang site. Retain true as the best-supported functional association with
+      reproduction, with low confidence because the sources do not demonstrate complete cessation of site
+      defense outside reproductive activity."
+    sources:
+      - *a3
+      - *a17
+      - *a4
+      - *a9
+      - *a12
+      - *a27
+      - *a28
+    evidence:
+      - source: *a3
+        value:
+          size: small
+          breedingOnly: true
+        note: Male territory associated with overhangs and spawning
+      - source: *a17
+        value:
+          size: small
+          breedingOnly: true
+        note: Male breeding territories along rock faces
+      - source: *a3
+        value:
+          size: small
+        note: males sit under overhangs and in caves
+      - source: *a4
+        value:
+          size: small
+        note: territories along vertical rock faces
+      - source: *a3
+        value:
+          size: small
+          breedingOnly: true
+        note: Male spawning territories at rock refuges
+      - source: *a28
+        value:
+          size: small
+          breedingOnly: true
+        note: Fixed mating sites around vertical rock
+  habitatZones:
+    value:
+      - rock
+      - openWater
+    confidence: high
+    rationale: All four full-profile runs choose rock and openWater. Lake accounts describe plankton feeding
+      just off rocks and male shelter or spawning sites at vertical faces and overhangs. The combination
+      requires both structure and adjacent clear swimming water; the species is not independent of rock
+      cover.
+    sources:
+      - *a3
+      - *a2
+      - *a17
+      - *a4
+      - *a9
+      - kind: database
+        title: "Seriously Fish, Paracyprichromis genus"
+        url: "https://www.seriouslyfish.com/genus/paracyprichromis"
+        accessed: 2026-10-15
+        archived: seriouslyfish.com/genus/paracyprichromis/2026-10-15T081633Z
+      - *a27
+    evidence:
+      - source: *a3
+        value:
+          - rock
+          - openWater
+        note: Rock overhangs and open water above the rocks
+      - source: *a2
+        value:
+          - rock
+          - openWater
+        note: Zooplankton feeding in open water over rocky habitat
+      - source: *a3
+        value:
+          - rock
+          - openWater
+        note: "females in open water above rocks, males at rock overhangs"
+      - source: *a4
+        value:
+          - rock
+          - openWater
+        note: "close to rock, feeds in open water"
+      - source: *a2
+        value:
+          - openWater
+        note: pelagic over rocky habitat
+      - source: *a3
+        value:
+          - rock
+          - openWater
+      - source: *a27
+        value:
+          - rock
+          - openWater
+      - source: *a2
+        value:
+          - rock
+          - openWater
+        note: Pelagic feeding over rocky habitat
+  social:
+    value:
+      structure: group
+      minGroup: 8
+    confidence: medium
+    rationale: "The generator, checker-a and checker-c propose eight fish, while checker-b proposes ten.
+      Their median is eight and Seriously Fish explicitly recommends at least eight; Tanganyika.si
+      recommends ten. Adopt eight as the supported minimum and describe ten or more as a reasonable
+      larger group. FishFish suggests five or six, but the specialist advice carries greater weight.
+      FishBase documents large wild aggregations and does not itself establish an aquarium minimum of
+      eight. Several females per male reduce concentrated courtship pressure without changing group to a
+      harem designation."
+    sources:
+      - *a2
+      - *a3
+      - *a17
+      - *a4
+      - *a9
+      - *a12
+      - *a30
+      - *a27
+      - *a10
+      - *a11
+    evidence:
+      - source: *a2
+        value:
+          structure: group
+          minGroup: 8
+        note: Gregarious; reported wild schools can contain hundreds The aquarium group minimum is the input run
+          interpretation; FishBase establishes wild schooling only.
+      - source: *a3
+        value:
+          structure: group
+          minGroup: 8
+        note: Aquarium recommendation
+      - source: *a17
+        value:
+          structure: group
+          minGroup: 10
+        note: Aquarium recommendation
+      - source: *a3
+        value:
+          structure: group
+          minGroup: 8
+        note: "shoal of at least 8, loose shoaling"
+      - source: *a4
+        value:
+          structure: group
+          minGroup: 10
+        note: group of at least 10
+      - source: *a2
+        value:
+          structure: group
+        note: "gregarious, schools of hundreds"
+      - source: *a2
+        value:
+          structure: group
+          minGroup: 8
+        note: Natural schools may number in the hundreds The aquarium group minimum is the input run
+          interpretation; FishBase establishes wild schooling only.
+      - source: *a3
+        value:
+          structure: group
+          minGroup: 8
+        note: Aquarium group recommendation
+      - source: *a27
+        value:
+          structure: group
+          minGroup: 10
+        note: Aquarium group recommendation
+      - source: *a11
+        value:
+          structure: group
+          minGroup: 5
+        note: The community sheet suggests five or six fish; retained as the lower published recommendation.
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: "All four votes choose false and the tally retains unanimous agreement at medium confidence.
+      Seriously Fish prefers a dedicated aquarium but also names possible companion genera, and
+      Tanganyika.si recommends quiet bottom-oriented fish. These conditional community options do not
+      meet the rubric for obligatory species-only keeping. An archived brieni and Tropheus combination is
+      an anecdotal success, not general proof that active grazers are suitable."
+    sources:
+      - *a3
+      - *a17
+      - *a29
+      - *a4
+      - *a9
+      - *a27
+      - *a10
+    evidence:
+      - source: *a3
+        value: false
+        note: Species-only is preferred but several other Tanganyika genera are presented as possible tankmates
+      - source: *a17
+        value: false
+        note: Peaceful bottom dwellers such as Xenotilapia are suggested
+      - source: *a3
+        value: false
+        note: "species tank best, some tankmates possible"
+      - source: *a29
+        value: false
+        note: kept with a Tropheus colony for almost a year
+      - source: *a4
+        value: false
+        note: peaceful bottom dwellers such as Xenotilapia are suitable
+      - source: *a9
+        value: false
+        note: Lists other peaceful cichlids as possible tankmates
+      - source: *a3
+        value: false
+        note: Community housing is described as possible with suitable calm species
+      - source: *a27
+        value: false
+        note: Peaceful bottom-oriented companions are suggested
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - paracyprichromis-nigripinnis-brieni
+    confidence: medium
+    rationale: "Keep the tallied qualified-majority value paracyprichromis-nigripinnis-brieni with five
+      agreeing votes out of six and medium confidence. The generator, checker-b, checker-c and both
+      tiebreakers use that existing ID; checker-a uses paracyprichromis-brieni-nigripinnis for the same
+      pair. Retain the existing tallied ID once without creating a duplicate or changing the recorded
+      vote count. Both members are already listed and the basis remains presumed. Takahashi supports
+      their shared lineage, and Behrens and colleagues discuss suspected tembwe hybrids without
+      establishing a brieni x nigripinnis parent pair. Seriously Fish warns about geographic colour
+      forms, not a verified cross between these two species. Aquarist Atlas warns about the named pair
+      but supplies no traceable brood or partner-choice record. Medium confidence records the tally
+      outcome and reliable relationship evidence; actual aquarium crossability remains unconfirmed."
+    sources:
+      - *a3
+      - &a32
+        kind: literature
+        title: "Sex chromosomes in the tribe Cyprichromini (Teleostei: Cichlidae) of Lake Tanganyika"
+        url: "https://doi.org/10.1038/s41598-022-23017-y"
+        accessed: 2026-10-15
+        archived: doi.org/10.1038_s41598-022-23017-y/2026-10-13T163810Z
+      - *a9
+      - *a5
+      - &a33
+        kind: website
+        title: Curated hybrid group entry for Paracyprichromis nigripinnis and P. brieni
+      - &a34
+        kind: literature
+        title: Phylogenetic analysis of Cyprichromini endemic to Lake Tanganyika and validation of the genus
+          Paracyprichromis
+        url: "https://doi.org/10.1007/s10228-003-0183-5"
+        accessed: 2026-10-15
+        archived: doi.org/10.1007/s10228-003-0183-5/2026-10-14T102229Z
+      - &a35
+        kind: database
+        title: "cichlids.com curated hybrid groups: paracyprichromis-nigripinnis-brieni"
+        accessed: 2026-10-15
+      - *a1
+      - *a31
+      - *a2
+      - &a43
+        kind: archive
+        title: cichlids.com forum thread 1486
+        url: "https://www.cichlids.com/disc/read.php?1,1486"
+        accessed: 2026-10-15
+      - &a44
+        kind: archive
+        title: cichlids.com forum thread 14037
+        url: "https://www.cichlids.com/disc/read.php?2,14037"
+        accessed: 2026-10-15
+      - &a45
+        kind: archive
+        title: cichlids.com forum thread 14699
+        url: "https://www.cichlids.com/disc/read.php?2,14699"
+        accessed: 2026-10-15
+      - &a46
+        kind: archive
+        title: cichlids.com forum thread 14769
+        url: "https://www.cichlids.com/disc/read.php?2,14769"
+        accessed: 2026-10-15
+      - &a47
+        kind: archive
+        title: cichlids.com forum thread 14863
+        url: "https://www.cichlids.com/disc/read.php?2,14863"
+        accessed: 2026-10-15
+      - *a26
+      - &a39
+        kind: archive
+        title: cichlids.com forum thread 16608
+        url: "https://www.cichlids.com/disc/read.php?2,16608"
+        accessed: 2026-10-15
+      - *a29
+      - &a48
+        kind: archive
+        title: cichlids.com forum thread 17659
+        url: "https://www.cichlids.com/disc/read.php?2,17659"
+        accessed: 2026-10-15
+      - *a30
+      - *a25
+    evidence:
+      - source: *a3
+        value:
+          - paracyprichromis-nigripinnis-brieni
+        note: "Warns against mixing the closely similar Paracyprichromis forms Adjudicator clarification: the
+          explicit warning concerns geographic forms; this is not a documented brieni x nigripinnis
+          cross."
+      - source: *a32
+        value:
+          - paracyprichromis-nigripinnis-brieni
+        note: "Confirms Paracyprichromis brieni and P. nigripinnis are distinct close congeners; this supports a
+          presumed, not documented, risk Adjudicator clarification: suspected tembwe parentage is
+          unresolved and does not establish this named pair."
+      - source: *a32
+        value:
+          - paracyprichromis-brieni-nigripinnis
+        note: "sample of Paracyprichromis sp. 'tembwe' likely of hybrid origin between the XY and ZW lineages
+          Adjudicator clarification: suspected tembwe parentage is unresolved and does not establish this
+          named pair."
+      - source: *a3
+        value:
+          - paracyprichromis-brieni-nigripinnis
+        note: "warns against mixing colour morphs and congeners because of hybridisation Adjudicator
+          clarification: the explicit warning concerns geographic forms; this is not a documented brieni
+          x nigripinnis cross."
+      - source: *a5
+        value:
+          - paracyprichromis-nigripinnis-brieni
+        note: CRC recognizes the species in the genus; the pair remains a cautious inference from close
+          relationship
+      - source: *a33
+        value:
+          - paracyprichromis-nigripinnis-brieni
+        note: The existing group is explicitly marked presumed
+      - source: *a34
+        value:
+          - paracyprichromis-nigripinnis-brieni
+        note: Supports the close congeneric relationship underlying the presumed group
+      - source: *a35
+        value:
+          - paracyprichromis-nigripinnis-brieni
+        note: The curated file explicitly lists both species in this presumed group.
+      - source: *a34
+        value:
+          - paracyprichromis-nigripinnis-brieni
+        note: Inferred membership from the abstract supporting monophyly of Paracyprichromis; the paper does not
+          report a cross.
+      - source: *a32
+        value:
+          - paracyprichromis-nigripinnis-brieni
+        note: "Relationship-based inference only. Suspected tembwe hybrids do not have identified parental
+          species. Adjudicator clarification: suspected tembwe parentage is unresolved and does not
+          establish this named pair."
+      - source: *a34
+        value:
+          - paracyprichromis-nigripinnis-brieni
+        note: Inferred presumed membership from the morphological support for a monophyletic Paracyprichromis.
+          The abstract reports no cross.
+      - source: *a32
+        value:
+          - paracyprichromis-nigripinnis-brieni
+        note: "Relationship evidence for presumed membership only. The possible hybrids called tembwe do not
+          establish the parents of a named cross. Adjudicator clarification: suspected tembwe parentage
+          is unresolved and does not establish this named pair."
+      - source: *a25
+        value:
+          - paracyprichromis-nigripinnis-brieni
+        note: "Explicit warning about brieni crossing with nigripinnis, without independently verified offspring
+          or partner availability."
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - blue
+        - brown
+        - yellow
+      pattern: bars
+    confidence: low
+    rationale: "The generator proposes blue, silver and black with bars; checker-a proposes blue, silver and
+      white with a plain pattern; checker-b and checker-c propose brown, blue and yellow with bars.
+      FishFish describes a brown or pinkish body with blue reflections and yellowish fins, and
+      Tanganyika.si identifies vertical barring as characteristic of brieni populations. Adopt those
+      described colours and bars rather than inferring a plain pattern from a source that gives no
+      pattern diagnosis. Population variation and the uncertain identity of some trade forms keep
+      confidence low."
+    sources:
+      - *a17
+      - &a37
+        kind: model-knowledge
+        title: "General species coloration knowledge, used only for this low-confidence estimate"
+      - *a3
+      - &a36
+        kind: model-knowledge
+        title: General knowledge of small Tanganyika cichlids
+        accessed: 2026-10-15
+      - *a11
+      - &a42
+        kind: website
+        title: "Aquarist Atlas, Paracyprichromis brieni care, habitat and breeding"
+        url: "https://www.aquaristatlas.com/species/paracyprichromis-brieni/"
+        accessed: 2026-10-15
+        archived: aquaristatlas.com/species/paracyprichromis-brieni/2026-10-15T081709Z
+      - *a10
+      - *a27
+    evidence:
+      - source: *a17
+        value:
+          baseColors:
+            - blue
+            - silver
+            - black
+          pattern: bars
+        note: Reports vertical bars as characteristic of P. brieni populations
+      - source: *a3
+        value:
+          pattern: plain
+        note: "males more colourful, colour lost under bright light"
+      - source: *a36
+        value:
+          baseColors:
+            - blue
+            - silver
+            - white
+        note: colour of trade fish from general knowledge
+      - source: *a10
+        value:
+          baseColors:
+            - blue
+            - brown
+            - yellow
+          pattern: bars
+        note: Body and fin colors in the species account
+      - source: *a27
+        value:
+          baseColors:
+            - blue
+            - brown
+          pattern: bars
+        note: Geographic form comparison
+  feedingSpeed:
+    value: slow
+    confidence: low
+    rationale: "All four runs choose slow. The sources describe small-mouth plankton feeding and
+      vulnerability to boisterous companions, which supports concern about food competition. No direct
+      comparative feeding-rate measurement was found, so slow remains a low-confidence husbandry
+      inference; observe whether each fish takes food in midwater."
+    sources:
+      - *a3
+      - *a17
+      - *a4
+      - *a9
+      - *a2
+    evidence:
+      - source: *a3
+        value: slow
+        note: Retiring fish; smaller foods should be delivered to the water column
+      - source: *a17
+        value: slow
+        note: "Midwater zooplankton feeder, not a rapid food competitor"
+      - source: *a3
+        value: slow
+        note: "small mouth, retiring"
+      - source: *a4
+        value: slow
+        note: "peaceful fish, keep away from aggressive species"
+      - source: *a3
+        value: slow
+        note: Retiring fish with a small mouth that needs time at fine foods
+      - source: *a2
+        value: slow
+        note: Plankton picked from open water
+  minTank:
+    value:
+      volumeL: 250
+      lengthCm: 120
+      depthCm: 45
+    confidence: medium
+    rationale: "The generator proposes 205 L and 120 by 45 cm, checker-a and checker-c propose 250 L and 120
+      by 45 cm, and checker-b proposes 300 L and 125 by 45 cm. The component medians are 250 L, 120 cm
+      length and 45 cm depth. Tanganyika.si directly supports 250 L for a group of ten, and Seriously
+      Fish supplies the 120 by 45 cm footprint with about 205 L for a small shoal. The decided volume
+      provides room for vertical cover and at least eight adults, preferably ten when space allows.
+      Zoopet gives 300 L and 125 cm for the Kitumba or Velifer-labelled form, whose uncertain identity
+      does not justify imposing its larger minimum on every brieni group. The 45 cm horizontal depth is
+      taken from Seriously Fish rather than independently stated by Zoopet or Tanganyika.si."
+    sources:
+      - *a3
+      - *a17
+      - *a4
+      - *a12
+      - *a9
+      - *a27
+    evidence:
+      - source: *a3
+        value:
+          volumeL: 205
+          lengthCm: 120
+          depthCm: 45
+        note: Minimum base for a small shoal
+      - source: *a17
+        value:
+          volumeL: 250
+          lengthCm: 120
+          depthCm: 45
+        note: Specialist recommendation for a group of ten or more This page directly states volume only; the
+          footprint is inferred from Seriously Fish.
+      - source: *a3
+        value:
+          volumeL: 205
+          lengthCm: 120
+          depthCm: 45
+        note: "base 120 x 45 cm, 38 cm high"
+      - source: *a4
+        value:
+          volumeL: 250
+        note: for a group of at least 10
+      - source: *a12
+        value:
+          volumeL: 300
+          lengthCm: 125
+          depthCm: 45
+        note: Published minimum size The source states 300 L and 125 cm length for Kitumba; its 45 cm depth in
+          this entry is an input inference.
+      - source: *a3
+        value:
+          volumeL: 205
+          lengthCm: 120
+          depthCm: 45
+        note: Small shoal recommendation
+      - source: *a27
+        value:
+          volumeL: 250
+          lengthCm: 120
+          depthCm: 45
+        note: Group recommendation This page directly states volume only; the footprint is inferred from
+          Seriously Fish.
+  lifespanYears:
+    value:
+      min: 5
+      max: 8
+    confidence: low
+    rationale: "All four full-profile runs propose 5 to 8 years, so their median preserves those bounds. None
+      of the read species sources provides a verified longevity measurement. This is a low-confidence
+      estimate from general knowledge of small Tanganyikan cichlids, not a documented lifespan for
+      brieni."
+    sources:
+      - *a37
+      - *a36
+      - &a41
+        kind: model-knowledge
+        title: Model knowledge
+      - &a38
+        kind: model-knowledge
+        title: "Model knowledge, no species-specific lifespan source located"
+    evidence:
+      - source: *a37
+        value:
+          min: 5
+          max: 8
+      - source: *a36
+        value:
+          min: 5
+          max: 8
+        note: estimate from general keeping experience; no read source states a lifespan
+      - source: *a38
+        value:
+          min: 5
+          max: 8
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: "All four runs identify maternal mouthbrooding. Aquarium and specialist accounts describe
+      female egg collection and incubation for roughly three to four weeks; the public CRC summary
+      independently confirms mouthbrooding but does not establish sex-specific incubation detail. The
+      retained Ochi reference concerns the mating system, but full text was not open access and no
+      unverified additional detail is inferred from it."
+    sources:
+      - *a3
+      - *a5
+      - *a17
+      - *a4
+      - *a9
+      - *a2
+      - *a28
+    evidence:
+      - source: *a3
+        value: maternal-mouthbrooder
+        note: Describes the female carrying the clutch for about three to four weeks
+      - source: *a5
+        value: mouthbrooder
+        note: Public profile identifies mouthbrooding but does not specify the brooding parent
+      - source: *a17
+        value: maternal-mouthbrooder
+        note: Female carries the clutch before releasing free-swimming fry
+      - source: *a3
+        value: maternal-mouthbrooder
+        note: "polygamous maternal mouthbrooder, 3 to 4 weeks"
+      - source: *a4
+        value: maternal-mouthbrooder
+        note: about three weeks
+      - source: *a5
+        value: maternal-mouthbrooder
+        note: listed as a mouthbrooder
+      - source: *a28
+        value: maternal-mouthbrooder
+        note: Field study of the breeding system
+      - source: *a5
+        value: maternal-mouthbrooder
+        note: CRC public breeding classification
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: "The generator and checker-b propose moderate based on summary difficulty ratings; checker-a
+      and checker-c propose demanding based on the detailed husbandry advice. Seriously Fish explicitly
+      discourages beginner keeping because the fish needs a sufficiently large group, shaded rock
+      retreats and carefully chosen quiet companions. That species-specific explanation outweighs its
+      general moderate badge. Zoopet gives an intermediate rating for the uncertain Kitumba form;
+      retained archive losses are anecdotal and do not establish a special disease."
+    sources:
+      - *a3
+      - *a17
+      - *a29
+      - *a39
+      - *a9
+      - *a12
+      - *a27
+    evidence:
+      - source: *a3
+        value: moderate
+        note: Moderate overall difficulty rating
+      - source: *a17
+        value: moderate
+        note: Describes peaceful temperament but need for a large group and habitat-specific setup
+      - source: *a3
+        value: moderate
+        note: moderate rating but not a beginner fish
+      - source: *a29
+        value: demanding
+        note: "keeper: such fish die off easily from small disturbances"
+      - source: *a39
+        value: demanding
+        note: "keeper: odd fish, losses while others did well"
+      - source: *a3
+        value: demanding
+        note: The care profile discourages beginner keeping
+      - source: *a27
+        value: demanding
+        note: Requires a large group and a carefully arranged rocky habitat
+partners:
+  suitable:
+    - species: Xenotilapia bathyphilus
+      reason: "A keeper reports this named combination in archive thread 55371, consistent with specialist
+        advice for peaceful bottom-oriented Xenotilapia."
+      condition: A larger community aquarium with a separate sand area and calm feeding conditions; the brief
+        report does not prove long-term compatibility.
+    - species: Julidochromis transcriptus
+      reason: A potential small rock-dwelling companion inferred from the recommended genus rather than a
+        verified named pairing.
+      condition: Separate crevices and territory space in a suitably large aquarium; monitor breeding aggression.
+    - species: Altolamprologus calvus
+      reason: "A conditional option inferred from the recommended genus, with rock use that can differ from the
+        brieni feeding space."
+      condition: Adults must be appropriately sized and the tank spacious; small brieni and fry can be vulnerable.
+  unsuitable:
+    - species: Paracyprichromis nigripinnis
+      reason: Shares a presumed hybrid-risk group and a similar feeding and shelter niche; the named cross
+        remains unverified.
+    - species: Tropheus moorii
+      reason: "Activity and feeding competition make this a poor default pairing, despite an archived report of
+        brieni kept successfully with a Tropheus colony."
+    - species: Cyprichromis
+      reason: Competing midwater shoalers can dominate the feeding and swimming space; Seriously Fish
+        discourages this combination.
+profile:
+  overview:
+    text: "A group of Brien's cichlids brings activity to the water just beside Tanganyikan rockwork. These
+      slender plankton feeders stay close to cover, and mature males display from sheltered positions
+      rather than roaming a large territory. Their quiet temperament makes careful community design
+      essential. They belong in an established aquarium with a group of their own kind and enough room to
+      escape persistent attention. The species is valid as Paracyprichromis brieni (Poll, 1981); Ubwari
+      Peninsula is its type locality. Some populations sold under related trade labels may have a
+      different identity, so geographic forms should remain distinguishable."
+    sources:
+      - *a3
+      - *a17
+      - *a2
+      - *a1
+      - *a4
+      - *a5
+      - *a40
+  habitat:
+    text: "Rock faces connect this fish's shelter, feeding and reproductive space. Nonterritorial individuals
+      take drifting prey near the rocks, while males use vertical faces, ledges, overhangs or cave areas.
+      Accounts differ in how strongly they emphasize caves and depth; the specialist locality account
+      records occurrences from a few metres down to about 30 to 40 m. Reproduce the sheltered structure
+      without filling the swimming space. The regional natural water envelope is 23 to 29 C, pH 8.4 to
+      9.4, GH 10 to 13 dGH and KH 15 to 20 dKH, based on published lake measurements. These describe a
+      regional habitat rather than one fixed aquarium reading."
+    sources:
+      - *a17
+      - *a2
+      - *a7
+      - *a13
+      - *a6
+      - *a3
+      - *a14
+      - *a15
+      - *a16
+  sizeAndGrowth:
+    text: "Use approximately 10 cm for an adult male and 9 cm for an adult female when planning space. The
+      sex-specific estimates are uncertain: FishFish lists 9 and 7 cm, while the specialist account gives
+      an unsexed typical adult length around 10 cm. FishBase records an 11 cm total-length maximum, and
+      Seriously Fish uses 11 cm standard length. Standard length leaves out the tail and must not be
+      compared directly with total length. No reliable growth curve or species-specific longevity record
+      was found. The 5 to 8 year lifespan estimate remains provisional."
+    sources:
+      - *a2
+      - *a3
+      - *a17
+      - *a4
+      - *a12
+      - *a11
+      - *a9
+      - *a25
+      - *a37
+      - *a36
+      - *a41
+      - *a38
+  husbandry:
+    text: "Provide at least 250 L with a 120 cm length and 45 cm horizontal depth for the recommended group.
+      Tall stones should offer several shaded faces and retreats while leaving clear water above and
+      between them. Subdued lighting helps the fish settle and display. Keep filtration effective and
+      water changes regular without abrupt chemistry or temperature shifts. The tallied aquarium
+      tolerance intervals are 23 to 29 C, pH 7.5 to 9.5, GH 8 to 25 dGH and KH 9 to 20 dKH. These broad
+      intervals are planning bounds rather than suggested targets at their extremes; KH in particular is
+      inferred with low confidence. Observe feeding and social behavior as well as water readings."
+    sources:
+      - *a3
+      - *a17
+      - *a4
+      - *a12
+      - *a9
+      - *a27
+      - *a6
+      - *a7
+      - *a2
+      - *a14
+      - *a13
+      - *a15
+      - *a16
+  socialBehavior:
+    text: "Keep at least eight together, with ten or more a useful option when the aquarium has room. Several
+      females per male and multiple sheltered male sites help disperse attention. The group remains
+      loose, and males may repeatedly displace one another near spawning positions. This is the basis of
+      conspecific aggression level 2. Available accounts do not establish routine aggression toward other
+      species, which is rated 0. The small-territory flag is linked to reproduction, although the sources
+      do not prove that males entirely abandon site defense at other times."
+    sources:
+      - *a3
+      - *a17
+      - *a32
+      - *a2
+      - *a4
+      - *a9
+      - *a12
+      - *a30
+      - *a27
+      - *a10
+      - *a11
+      - *a18
+      - *a28
+      - *a29
+      - *a26
+  diet:
+    text: "The natural diet centres on zooplankton and small crustaceans. Offer suitably small foods that the
+      fish can intercept before they settle, including cyclops, daphnia and brine shrimp alongside
+      accepted fine prepared foods. Watch the quieter individuals during meals because active companions
+      can monopolize drifting food. The slow feeding classification is an inference from this behavior
+      rather than a measured feeding rate. Predation level 0 reflects the plankton-based diet and absence
+      of evidence for regular fish consumption; it does not guarantee that every newly released fry will
+      be ignored. No species-specific protein-related bloat tendency was established."
+    sources:
+      - *a2
+      - *a3
+      - *a17
+      - *a4
+      - *a9
+      - *a12
+      - *a27
+      - *a10
+      - *a5
+      - *a26
+  breeding:
+    text: "Females incubate the brood in their mouths, while males maintain the spawning sites. Spawning
+      occurs beside a rock face with the fish oriented head-down. The female releases eggs individually
+      and collects them rapidly as the male releases sperm nearby; specialist observations place
+      fertilization outside the mouth. Reported clutches commonly contain about 8 to 15 eggs, with
+      broader aquarium accounts giving 5 to 25. Incubation lasts roughly three to four weeks. Disturbance
+      can interrupt incubation, and a brooding female may stop feeding. Newly released fry can take newly
+      hatched brine shrimp and no longer receive extended guarding."
+    sources:
+      - *a3
+      - *a17
+      - *a5
+      - *a4
+      - *a9
+      - *a2
+      - *a28
+  sexing:
+    text: "Mature males generally show stronger colour and longer tail-fin extensions, but these distinctions
+      become less useful in unsettled fish and juveniles. A distended mouth during incubation identifies
+      a brooding female. Body and fin colours vary geographically; the provisional description combines
+      brownish body tones, blue reflections, yellowish fins and vertical bars. The usual species-level
+      distinction from P. nigripinnis is a slimmer body and proportionally smaller eyes. Kitumba or
+      Velifer material has identification complications, so a trade label alone cannot establish sex,
+      synonymy or locality identity."
+    sources:
+      - *a3
+      - *a17
+      - *a37
+      - *a36
+      - *a11
+      - *a42
+      - *a10
+      - *a27
+  compatibility:
+    text: "A dedicated aquarium is a sound option, although suitably calm companions can work. Peaceful
+      Xenotilapia use lower sandy areas, while small Julidochromis or carefully selected Altolamprologus
+      may occupy separate rock spaces in a sufficiently large setup. Genus-level advice is not proof that
+      every member is suitable, and fry need protection from potential predators. Boisterous grazers,
+      aggressive cave defenders and competing midwater shoalers can suppress feeding and display. One
+      archive account reports brieni living with Tropheus, but this does not establish a generally
+      dependable pairing. The shared hybrid group with P. nigripinnis remains presumed: relationship
+      studies and a hobby warning support caution, but no verified named cross with known partner choice
+      was established."
+    sources:
+      - *a3
+      - *a17
+      - *a32
+      - *a29
+      - *a4
+      - *a9
+      - *a27
+      - *a10
+      - *a5
+      - *a33
+      - *a34
+      - *a35
+      - *a1
+      - *a31
+      - *a2
+      - *a43
+      - *a44
+      - *a45
+      - *a46
+      - *a47
+      - *a26
+      - *a39
+      - *a48
+      - *a30
+      - *a25
+  problems:
+    text: "Persistent hiding, fading colour and missed meals should prompt a review of group size, lighting,
+      shelter and pressure from tankmates. A fish unable to use the midwater feeding area can decline
+      even when food is supplied regularly. Preserve stable, oxygenated conditions and avoid excessive
+      heat. An archive account describes fin deterioration and appetite loss after a tank containing
+      unspecified Paracyprichromis reached roughly 32 C, but it cannot identify a cause or prove a
+      precise temperature limit for brieni. No characteristic disease was established by the sources.
+      This fish requires deliberate setup and observation, which is why beginner suitability is rated
+      demanding."
+    sources:
+      - *a3
+      - *a17
+      - *a2
+      - *a30
+      - *a37
+      - *a29
+      - *a39
+      - *a9
+      - *a12
+      - *a27
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6-luna
+      date: 2026-10-15
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-15
+    - role: checker
+      model: gpt-6-luna
+      date: 2026-10-15
+    - role: checker
+      model: gpt-6-luna
+      date: 2026-10-15
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-15
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-15
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-15
+  disagreements:
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+            localities:
+              - Ubwari Peninsula
+              - Lake Tanganyika shoreline
+        - by: checker-a
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+            localities:
+              - Ubwari (type locality)
+              - Kiku
+              - Magara
+        - by: checker-b
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+        - by: checker-c
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+      decision:
+        continent: Africa
+        region: Lake Tanganyika
+        waterbody: lake-tanganyika
+        localities:
+          - Ubwari Peninsula
+          - Kiku
+          - Magara
+      rationale: "All four full-profile runs place the species in Lake Tanganyika. The generator names Ubwari
+        and the lake shoreline, checker-a adds Kiku and Magara, and checker-b and checker-c omit locality
+        detail. Retain the documented locality detail without implying restriction to those sites; the
+        Catalog establishes Ubwari as the type locality and specialist accounts describe a wider lake
+        distribution."
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 7.5
+            max: 9.4
+        - by: checker-a
+          value:
+            min: 7.5
+            max: 9.4
+        - by: checker-b
+          value:
+            min: 7.5
+            max: 9.5
+        - by: checker-c
+          value:
+            min: 7.5
+            max: 9.5
+      decision:
+        min: 7.5
+        max: 9.5
+      rationale: "Tally method unanimous; retain its value, confidence and vote count. The generator and
+        checker-a propose 7.5 to 9.4, while checker-b and checker-c propose 7.5 to 9.5. The tally treats
+        these as unanimous within the pH agreement threshold and decides 7.5 to 9.5 at medium confidence.
+        Seriously Fish and Akwarium recommend 7.5 to 9.0, and FishFish extends its upper recommendation
+        to 9.5. FishBase gives the partly wider lower span of 7.0 to 8.5; its environmental summary alone
+        does not establish sustained aquarium health down to 7.0. The decided interval contains natural
+        lake pH and does not imply that abrupt changes are acceptable."
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 8
+            max: 25
+        - by: checker-a
+          value:
+            min: 8
+            max: 25
+        - by: checker-b
+          value:
+            min: 8
+            max: 25
+        - by: checker-c
+          value:
+            min: 7
+            max: 25
+      decision:
+        min: 8
+        max: 25
+      rationale: "Tally method unanimous; retain its value, confidence and vote count. The generator, checker-a
+        and checker-b propose 8 to 25 dGH; checker-c proposes 7 to 25 dGH. The tally counts agreement
+        within its 2 dGH threshold and retains 8 to 25 dGH at medium confidence. Seriously Fish and
+        Akwarium state 8 to 25 dGH, while FishFish states 7 to 15 dGH. The latter has a lower minimum,
+        but offers no documented outcome requiring extension to 7. FishBase gives 10 to 15 dGH, and the
+        congener Fishkeeper sheet gives 15 to 25 dGH. Retain all claims and keep the species-specific
+        interval that contains measured lake GH."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 10
+            max: 25
+        - by: checker-a
+          value:
+            min: 10
+            max: 20
+        - by: checker-b
+          value:
+            min: 10
+            max: 20
+        - by: checker-c
+          value:
+            min: 12
+            max: 25
+        - by: tiebreaker-1
+          value:
+            min: 8
+            max: 20
+        - by: tiebreaker-2
+          value:
+            min: 7
+            max: 20
+      decision:
+        min: 9
+        max: 20
+      rationale: "Tally method qualified-majority; retain its value, confidence and vote count. Retain the
+        tallied qualified-majority decision of 9 to 20 dKH with four agreeing votes out of six and low
+        confidence. Proposals are 10 to 25 from the generator, 10 to 20 from checker-a, 10 to 20 from
+        checker-b, 12 to 25 from checker-c, 8 to 20 from tiebreaker-1 and 7 to 20 from tiebreaker-2. The
+        agreeing lower bounds of 10, 10, 8 and 7 yield 9 after median aggregation and rounding; this is
+        not a measured species threshold. Practical Fishkeeping gives 8 to 18 for Tanganyikan cichlids,
+        JBL gives 7 to 20 for Malawi and Tanganyika, and New Life gives 10 to 20. The wider Guppys.life
+        recommendation of 12 to 25 and the generator and checker-c ceilings of 25 remain dissenting
+        evidence; no species-specific long-term outcome establishes that ceiling. A Kitumba or Velifer
+        blog gives 4 to 10 but has unresolved taxonomic applicability. A tank account reports 15 to 16
+        after recent introduction, and an archive report gives 12 during heat-related illness; neither
+        establishes long-term limits. Seriously Fish and FishBase report GH or pH rather than KH, so
+        their numbers cannot be transferred directly. The interval remains an inference from group
+        husbandry and buffering practice and contains natural KH of 15 to 20. OATA and BreederDirect
+        requests failed; AquaInfo, Tropical Fish Co and the JBL product extractions provide no usable
+        numerical KH evidence."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 10
+            female: 10
+        - by: checker-a
+          value:
+            male: 10
+            female: 9
+        - by: checker-b
+          value:
+            male: 10
+            female: 9
+        - by: checker-c
+          value:
+            male: 9
+            female: 7
+      decision:
+        male: 10
+        female: 9
+      rationale: "Start from the component medians of all proposals: generator 10/10 cm, checker-a 10/9,
+        checker-b 10/9 and checker-c 9/7 give 10 cm male and 9 cm female. Tanganyika.si describes adults
+        around 10 cm total length, while FishBase reports a maximum of 11 cm total length without a
+        female figure. Seriously Fish gives 11 cm standard length, which excludes the tail and cannot be
+        treated as the same total-length measurement. FishFish separates males at 9 and females at 7 cm;
+        Zoopet gives 9 cm for the uncertain Kitumba or Velifer form. Retain 10/9 as approximate aquarium
+        maxima, with low confidence because the sex difference is poorly established and the larger
+        female figure is an inference."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - zooplankton
+              - small crustaceans
+              - cyclops
+              - brine shrimp
+              - daphnia
+        - by: checker-a
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - zooplankton
+              - frozen cyclops
+              - frozen brine shrimp
+              - frozen mosquito larvae
+              - fine flakes
+        - by: checker-b
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - zooplankton
+              - small crustaceans
+        - by: checker-c
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - zooplankton
+              - small crustaceans
+              - insect larvae
+      decision:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+          - zooplankton
+          - small crustaceans
+          - cyclops
+          - brine shrimp
+          - daphnia
+      rationale: "Tally method unanimous; retain its value, confidence and vote count. Keep the unanimous
+        tallied invertivore decision and bloatSensitive false with high confidence. The natural diet is
+        dominated by zooplankton and small crustaceans. The generator lists zooplankton, small
+        crustaceans, cyclops, brine shrimp and daphnia; checker-a adds frozen mosquito larvae and fine
+        flakes, checker-b lists only zooplankton and crustaceans, and checker-c adds insect larvae. These
+        food-list differences do not change the dietary category. No reviewed source establishes a
+        special protein-related bloat tendency, so false represents the available evidence rather than
+        immunity to digestive illness."
+    - field: features.aggressionConspecific
+      proposals:
+        - by: generator
+          value: 2
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 2
+        - by: checker-c
+          value: 2
+      decision: 2
+      rationale: "The generator, checker-b and checker-c propose level 2; checker-a proposes level 1.
+        Specialist sources describe territorial males at rock faces together with loose group living.
+        Limited but repeated displacement around male sites fits level 2 without implying frequent injury
+        in the recommended group. The precise frequency of chasing is incompletely documented, so
+        confidence remains medium rather than treating territoriality alone as proof of severe
+        aggression."
+    - field: features.aggressionHeterospecific
+      proposals:
+        - by: generator
+          value: 1
+        - by: checker-a
+          value: 0
+        - by: checker-b
+          value: 0
+        - by: checker-c
+          value: 1
+      decision: 0
+      rationale: "The generator and checker-c infer level 1 from male territory defense, while checker-a and
+        checker-b choose 0. Seriously Fish explicitly describes a retiring species and allows calm
+        companions; no read account establishes routine displays directed at other species. Adopt level 0
+        and reserve the territorial warning for conspecific males. Congener harassment reports describe
+        this fish group as the victim, not evidence that brieni attacks tankmates."
+    - field: features.territory
+      proposals:
+        - by: generator
+          value:
+            size: small
+            breedingOnly: true
+        - by: checker-a
+          value:
+            size: small
+            breedingOnly: false
+        - by: checker-b
+          value:
+            size: small
+            breedingOnly: true
+        - by: checker-c
+          value:
+            size: small
+            breedingOnly: true
+      decision:
+        size: small
+        breedingOnly: true
+      rationale: "The generator, checker-b and checker-c link a small defended site to spawning and propose
+        breedingOnly true; checker-a proposes false because seasonal restriction is unproven. All agree
+        on a limited rock-face or overhang site. Retain true as the best-supported functional association
+        with reproduction, with low confidence because the sources do not demonstrate complete cessation
+        of site defense outside reproductive activity."
+    - field: features.social
+      proposals:
+        - by: generator
+          value:
+            structure: group
+            minGroup: 8
+        - by: checker-a
+          value:
+            structure: group
+            minGroup: 8
+        - by: checker-b
+          value:
+            structure: group
+            minGroup: 10
+        - by: checker-c
+          value:
+            structure: group
+            minGroup: 8
+      decision:
+        structure: group
+        minGroup: 8
+      rationale: "The generator, checker-a and checker-c propose eight fish, while checker-b proposes ten.
+        Their median is eight and Seriously Fish explicitly recommends at least eight; Tanganyika.si
+        recommends ten. Adopt eight as the supported minimum and describe ten or more as a reasonable
+        larger group. FishFish suggests five or six, but the specialist advice carries greater weight.
+        FishBase documents large wild aggregations and does not itself establish an aquarium minimum of
+        eight. Several females per male reduce concentrated courtship pressure without changing group to
+        a harem designation."
+    - field: features.hybridGroups
+      proposals:
+        - by: generator
+          value:
+            - paracyprichromis-nigripinnis-brieni
+        - by: checker-a
+          value:
+            - paracyprichromis-brieni-nigripinnis
+        - by: checker-b
+          value:
+            - paracyprichromis-nigripinnis-brieni
+        - by: checker-c
+          value:
+            - paracyprichromis-nigripinnis-brieni
+        - by: tiebreaker-1
+          value:
+            - paracyprichromis-nigripinnis-brieni
+        - by: tiebreaker-2
+          value:
+            - paracyprichromis-nigripinnis-brieni
+      decision:
+        - paracyprichromis-nigripinnis-brieni
+      rationale: "Tally method qualified-majority; retain its value, confidence and vote count. Keep the
+        tallied qualified-majority value paracyprichromis-nigripinnis-brieni with five agreeing votes out
+        of six and medium confidence. The generator, checker-b, checker-c and both tiebreakers use that
+        existing ID; checker-a uses paracyprichromis-brieni-nigripinnis for the same pair. Retain the
+        existing tallied ID once without creating a duplicate or changing the recorded vote count. Both
+        members are already listed and the basis remains presumed. Takahashi supports their shared
+        lineage, and Behrens and colleagues discuss suspected tembwe hybrids without establishing a
+        brieni x nigripinnis parent pair. Seriously Fish warns about geographic colour forms, not a
+        verified cross between these two species. Aquarist Atlas warns about the named pair but supplies
+        no traceable brood or partner-choice record. Medium confidence records the tally outcome and
+        reliable relationship evidence; actual aquarium crossability remains unconfirmed."
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - blue
+              - silver
+              - black
+            pattern: bars
+        - by: checker-a
+          value:
+            baseColors:
+              - blue
+              - silver
+              - white
+            pattern: plain
+        - by: checker-b
+          value:
+            baseColors:
+              - brown
+              - blue
+              - yellow
+            pattern: bars
+        - by: checker-c
+          value:
+            baseColors:
+              - blue
+              - brown
+              - yellow
+            pattern: bars
+      decision:
+        baseColors:
+          - blue
+          - brown
+          - yellow
+        pattern: bars
+      rationale: "The generator proposes blue, silver and black with bars; checker-a proposes blue, silver and
+        white with a plain pattern; checker-b and checker-c propose brown, blue and yellow with bars.
+        FishFish describes a brown or pinkish body with blue reflections and yellowish fins, and
+        Tanganyika.si identifies vertical barring as characteristic of brieni populations. Adopt those
+        described colours and bars rather than inferring a plain pattern from a source that gives no
+        pattern diagnosis. Population variation and the uncertain identity of some trade forms keep
+        confidence low."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 205
+            lengthCm: 120
+            depthCm: 45
+        - by: checker-a
+          value:
+            volumeL: 250
+            lengthCm: 120
+            depthCm: 45
+        - by: checker-b
+          value:
+            volumeL: 300
+            lengthCm: 125
+            depthCm: 45
+        - by: checker-c
+          value:
+            volumeL: 250
+            lengthCm: 120
+            depthCm: 45
+      decision:
+        volumeL: 250
+        lengthCm: 120
+        depthCm: 45
+      rationale: "The generator proposes 205 L and 120 by 45 cm, checker-a and checker-c propose 250 L and 120
+        by 45 cm, and checker-b proposes 300 L and 125 by 45 cm. The component medians are 250 L, 120 cm
+        length and 45 cm depth. Tanganyika.si directly supports 250 L for a group of ten, and Seriously
+        Fish supplies the 120 by 45 cm footprint with about 205 L for a small shoal. The decided volume
+        provides room for vertical cover and at least eight adults, preferably ten when space allows.
+        Zoopet gives 300 L and 125 cm for the Kitumba or Velifer-labelled form, whose uncertain identity
+        does not justify imposing its larger minimum on every brieni group. The 45 cm horizontal depth is
+        taken from Seriously Fish rather than independently stated by Zoopet or Tanganyika.si."
+    - field: features.beginnerSuitability
+      proposals:
+        - by: generator
+          value: moderate
+        - by: checker-a
+          value: demanding
+        - by: checker-b
+          value: moderate
+        - by: checker-c
+          value: demanding
+      decision: demanding
+      rationale: "The generator and checker-b propose moderate based on summary difficulty ratings; checker-a
+        and checker-c propose demanding based on the detailed husbandry advice. Seriously Fish explicitly
+        discourages beginner keeping because the fish needs a sufficiently large group, shaded rock
+        retreats and carefully chosen quiet companions. That species-specific explanation outweighs its
+        general moderate badge. Zoopet gives an intermediate rating for the uncertain Kitumba form;
+        retained archive losses are anecdotal and do not establish a special disease."
