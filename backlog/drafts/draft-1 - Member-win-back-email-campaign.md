@@ -4,10 +4,11 @@ title: Member win-back email campaign
 status: Draft
 assignee: []
 created_date: '2026-07-09 09:46'
+updated_date: '2026-10-15 06:32'
 labels: []
 dependencies:
   - TASK-3.15
-parent_task_id: task-3
+parent_task_id: TASK-3
 priority: medium
 ---
 
@@ -30,3 +31,16 @@ Bring former members back: an email to every imported account announcing the rel
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Mail sending (project owner, 2026-10-15)
+- Transactional mail (Keycloak verification and password reset) and campaign mail use separate
+  sender domains (for example `mg.cichlids.com` and `news.cichlids.com`) and separate credentials,
+  so campaign bounces and complaints never harm the delivery of password resets; the campaign
+  provider is a configuration choice (Mailgun Flex, a one-month plan or another bulk provider).
+- Cost estimate with Mailgun Flex: about 24 USD for a one-time campaign to about 12,000 members.
+- Risk: many legacy addresses no longer exist; high bounce rates can suspend the sending account.
+  Validate addresses before sending, send in staggered batches, ideally from a separate account.
+<!-- SECTION:NOTES:END -->
