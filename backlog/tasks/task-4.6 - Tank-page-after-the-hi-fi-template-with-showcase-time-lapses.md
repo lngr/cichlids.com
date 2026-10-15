@@ -1,10 +1,10 @@
 ---
 id: TASK-4.6
 title: Tank page after the hi-fi template with showcase time-lapses
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-15 08:46'
-updated_date: '2026-10-15 08:57'
+updated_date: '2026-10-15 09:55'
 labels: []
 dependencies: []
 parent_task_id: TASK-4
