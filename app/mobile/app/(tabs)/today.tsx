@@ -12,6 +12,7 @@ import { ErrorView, LoadingView } from "../../src/components/StatusView";
 import { translateApiError } from "../../src/lib/apiErrors";
 import { useMachineRouter } from "../../src/navigation/NavigationProvider";
 import { minTouchTarget, useTheme } from "../../src/theme";
+import { DueCareSection } from "../../src/today/DueCareSection";
 import { localCalendarDate } from "../../src/today/localDate";
 import { draftTitle } from "../../src/upload/drafts";
 
@@ -35,6 +36,11 @@ function Welcome() {
     <Button testID="today-login" label={t(failure ? "common.retry" : "me.login")} onPress={onLogin} busy={busy} />
     <Button testID="today-discover" variant="secondary" label={t("today.discover")} onPress={() => router.push("/discover")} />
   </ScrollView>;
+}
+
+/** The place of the care streak in the Today layout, between the greeting and the due care. */
+function StreakSlot() {
+  return null;
 }
 
 function MemberToday() {
@@ -71,6 +77,8 @@ function MemberToday() {
         <Text accessibilityRole="header" style={[theme.type.display, { color: theme.colors.fg }]}>{t("today.greeting", { name: today.displayName })}</Text>
         {today.memberSinceYear != null ? <Text style={[theme.type.body, { color: theme.colors.muted }]}>{t("today.memberSince", { year: today.memberSinceYear })}</Text> : null}
       </View>
+      <StreakSlot />
+      <DueCareSection />
       {today.tanks.length ? <View testID="today-tanks" style={{ gap: theme.space[3] }}>
         {heading(t("today.tanks"))}
         {today.tanks.map(tank => card(`today-tank-${tank.id}`, tank.title, tank.newestPhoto?.image, `/tanks/${tank.id}`))}
