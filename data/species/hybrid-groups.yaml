@@ -4098,8 +4098,7 @@ groups:
     - Cichla temensis
     basis: documented
     sources:
-    - &cichla_willis_2012
-      kind: literature
+    - kind: literature
       title: "Willis, Macrander, Farias and Orti (2012). Simultaneous delimitation of species and quantification\
         \ of interspecific hybridization in Amazonian peacock cichlids using multi-locus data."
       url: "https://doi.org/10.1186/1471-2148-12-96"
@@ -4117,7 +4116,12 @@ groups:
     - Cichla temensis
     basis: documented
     sources:
-    - *cichla_willis_2012
+    - kind: literature
+      title: "Willis, Macrander, Farias and Orti (2012). Simultaneous delimitation of species and quantification\
+        \ of interspecific hybridization in Amazonian peacock cichlids using multi-locus data."
+      url: "https://doi.org/10.1186/1471-2148-12-96"
+      accessed: '2026-10-13'
+      archived: doi.org/10.1186_1471-2148-12-96/2026-10-14T200829Z
     userNote: "Willis and colleagues found nuclear alleles indicating gene exchange between these species\
       \ in Cuyuni River fish, in a region affected by gold-mining sediment. This is genetic evidence from\
       \ wild fish rather than a measured aquarium crossing rate, and current catalog species names are retained."
@@ -4129,7 +4133,12 @@ groups:
     - Cichla temensis
     basis: documented
     sources:
-    - *cichla_willis_2012
+    - kind: literature
+      title: "Willis, Macrander, Farias and Orti (2012). Simultaneous delimitation of species and quantification\
+        \ of interspecific hybridization in Amazonian peacock cichlids using multi-locus data."
+      url: "https://doi.org/10.1186/1471-2148-12-96"
+      accessed: '2026-10-13'
+      archived: doi.org/10.1186_1471-2148-12-96/2026-10-14T200829Z
     userNote: "Willis and colleagues found substantial nuclear admixture involving these species in Guri\
       \ Reservoir fish in Venezuela. The multilocus findings support wild hybridization in an altered reservoir\
       \ habitat, but do not establish its frequency in ordinary aquarium groups."
@@ -4859,3 +4868,70 @@ groups:
       from nuclear and mitochondrial samples collected across Lake Tanganyika. This is genetic evidence
       of historical wild hybridization rather than a direct spawning observation; aquarium crossing frequency
       is unknown.
+
+  - id: telmatochromis-bifrenatus-brichardi
+    description: A presumed pairwise hybrid risk links Telmatochromis brichardi and Telmatochromis bifrenatus through
+      named-congener hobby warnings and close morphological affinity.
+    members:
+    - Telmatochromis bifrenatus
+    - Telmatochromis brichardi
+    basis: presumed
+    sources:
+    - kind: website
+      title: "Cichlid Atlas: Telmatochromis brichardi"
+      url: "https://www.cichlidatlas.com/species/telmatochromis-brichardi/"
+      accessed: '2026-10-15'
+      archived: cichlidatlas.com/species/telmatochromis-brichardi/2026-10-15T111938Z
+    - kind: website
+      title: "FishFish: Telmatochromis brichardi"
+      url: "https://www.fishfish.fr/poisson/telmatochromis-brichardi"
+      accessed: '2026-10-15'
+      archived: fishfish.fr/poisson/telmatochromis-brichardi/2026-10-15T112909Z
+    - kind: website
+      title: "Telmatochromis brichardi, PetsHome.ro"
+      url: "https://www.petshome.ro/ROMANA/PESTI/RASE%20DE%20PESTI%20DE%20APA%20DULCE/TELMATOCHROMIS%20BRICHARDI.html"
+      accessed: '2026-10-15'
+      archived: petshome.ro/romana/pesti/rase_de_pesti_de_apa_dulce/telmatochromis_brichardi.html/2026-10-15T112002Z
+    - kind: literature
+      title: Morphological diversity of the genus Telmatochromis from the Lake Tanganyika drainage with the description
+        of a new riverine species and the generic reassignment of the Malagarasi River lamprologine
+      url: "https://doi.org/10.1111/jfb.16042"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1111_jfb.16042/2026-10-15T103151Z
+    userNote: "Aquarist Atlas and the FishFish community sheet warn of possible aquarium hybridisation between Telmatochromis\
+      \ brichardi and Telmatochromis bifrenatus, while Indermaur and colleagues place both in the same slender-bodied\
+      \ species complex. These accounts give no verified offspring or partner-choice observations, so the pairwise\
+      \ risk is plausible but unconfirmed."
+  - id: telmatochromis-brichardi-vittatus
+    description: A presumed pairwise hybrid risk links Telmatochromis brichardi and Telmatochromis vittatus through
+      named-congener hobby warnings and close morphological affinity.
+    members:
+    - Telmatochromis brichardi
+    - Telmatochromis vittatus
+    basis: presumed
+    sources:
+    - kind: website
+      title: "Cichlid Atlas: Telmatochromis brichardi"
+      url: "https://www.cichlidatlas.com/species/telmatochromis-brichardi/"
+      accessed: '2026-10-15'
+      archived: cichlidatlas.com/species/telmatochromis-brichardi/2026-10-15T111938Z
+    - kind: website
+      title: "FishFish: Telmatochromis brichardi"
+      url: "https://www.fishfish.fr/poisson/telmatochromis-brichardi"
+      accessed: '2026-10-15'
+      archived: fishfish.fr/poisson/telmatochromis-brichardi/2026-10-15T112909Z
+    - kind: website
+      title: "Telmatochromis brichardi, PetsHome.ro"
+      url: "https://www.petshome.ro/ROMANA/PESTI/RASE%20DE%20PESTI%20DE%20APA%20DULCE/TELMATOCHROMIS%20BRICHARDI.html"
+      accessed: '2026-10-15'
+      archived: petshome.ro/romana/pesti/rase_de_pesti_de_apa_dulce/telmatochromis_brichardi.html/2026-10-15T112002Z
+    - kind: literature
+      title: Morphological diversity of the genus Telmatochromis from the Lake Tanganyika drainage with the description
+        of a new riverine species and the generic reassignment of the Malagarasi River lamprologine
+      url: "https://doi.org/10.1111/jfb.16042"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1111_jfb.16042/2026-10-15T103151Z
+    userNote: "Aquarist Atlas and the FishFish community sheet warn of possible aquarium hybridisation between Telmatochromis\
+      \ brichardi and Telmatochromis vittatus, while Indermaur and colleagues place both in the same slender-bodied\
+      \ species complex. These accounts give no verified offspring or partner-choice observations, so the pairwise\
+      \ risk is plausible but unconfirmed."
