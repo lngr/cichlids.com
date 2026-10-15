@@ -1,0 +1,3542 @@
+schemaVersion: 1
+id: "haplochromis-sauvagei"
+legacyIds: []
+status: "described"
+taxonomy:
+  validName: "Haplochromis sauvagei"
+  genus: "Haplochromis"
+  species: "sauvagei"
+  author: "(Pfeffer, 1896)"
+  source: &a1
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: species of Haplochromis"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ha\
+      plochromis"
+    accessed: "2026-10-15"
+    archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-873e9721/2026-10-14T0\
+      94822Z"
+  synonyms: &a89
+    - name: "Ctenochromis sauvagei"
+      note: "Original combination of the nominal species."
+    - name: "Paralabidochromis sauvagei"
+      note: "Alternative generic placement used in aquarium references."
+    - name: "Ptyochromis sauvagei"
+      note: "Historical generic combination; older ecological literature under this name may concern H. fischeri."
+    - name: "Paralabidochromis sp. 'rock kribensis'"
+      note: "Former informal name linked to H. sauvagei in Takeda et al. (2013); CRC still retains a separate
+        undescribed entry."
+    - name: "Haplochromis sp. 'rock kribensis'"
+      note: "Former informal name for the rock-dwelling fish, not sauvagei sensu Greenwood."
+  legacyNames: &a90
+    - "Paralabidochromis spec. \"rock kribensis\""
+    - "Paralabidochromis sauvagei 'rock kribensis'"
+  note: "The Catalog accepts Haplochromis sauvagei and records rediscovery of its original holotype; its
+    Paralabidochromis list contains only P. victoriae. Takeda et al. (2013) explicitly identify their rock
+    kribensis as H. sauvagei and distinguish it from sauvagei sensu Greenwood, now H. fischeri. NCBI
+    independently records the same name correction. This supports described status despite checker A, both
+    tie-breakers, the trade-form registry and CRC retaining an undescribed form. The separate CRC trade-form
+    page and the association's inconsistent naming remain cited. The identification follows the read 2013
+    study, which cites the Seegers (2008) revision, alongside the Catalog and NCBI notes. The requested
+    profile ID is retained as the legacy trade-form identifier."
+names:
+  trade:
+    en:
+      - "Rock kribensis"
+      - "Rock krib"
+      - "Yellow rock kribensis"
+    de:
+      - "Rockkribensis"
+    sv:
+      - "Rockkribensis"
+variants:
+  - name: "Entebbe"
+    kind: "locality"
+    note: "The association register also uses Florida and De Maison for this locality form."
+  - name: "Makobe Island"
+    kind: "locality"
+    note: "Locality form named in the association register."
+  - name: "Yellow form"
+    kind: "color-morph"
+    note: "Aquarium accounts and breeders describe a yellow form; a sales label alone does not prove collection
+      locality."
+features:
+  origin:
+    value: &a91
+      continent: "Africa"
+      region: "Lake Victoria"
+      waterbody: "lake-victoria"
+      localities:
+        - "Makobe Island"
+        - "Mwanza Gulf"
+        - "Entebbe"
+    confidence: "high"
+    rationale: "All proposals place the fish in Lake Victoria. The original Lake Victoria study identifies rock
+      kribensis and sampled its rocky littoral populations; the association register names Makobe Island,
+      Mwanza Gulf and Entebbe. Generic shore descriptions and the generator's redundant lake locality are
+      consolidated into those named localities."
+    sources:
+      - *a1
+      - &a13
+        kind: "database"
+        title: "FishBase species summary: Haplochromis sauvagei"
+        url: "https://www.fishbase.se/summary/Haplochromis-sauvagei.html"
+        accessed: "2026-10-15"
+        archived: "fishbase.se/summary/haplochromis-sauvagei.html/2026-10-14T231720Z"
+      - &a14
+        kind: "database"
+        title: "Nordiska Ciklidsällskapet artregister: Paralabidochromis sauvagei"
+        url: "https://ciklid.org/artregister/art.php?ID=1778"
+        accessed: "2026-10-15"
+        archived: "ciklid.org/artregister/art.php/q-3dc391b9/2026-10-14T231739Z"
+      - &a2
+        kind: "website"
+        title: "Nordiska Ciklidsallskapet, Paralabidochromis sauvagei (rock kribensis)"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1778"
+        accessed: "2026-10-15"
+        archived: "ciklid.org/artregister/art.php/q-3dc391b9/2026-10-14T173457Z"
+      - &a3
+        kind: "database"
+        title: "Cichlid Room Companion, Paralabidochromis sp. 'rock kribensis'"
+        url: "https://cichlidae.com/species.php?id=obWIiLgZeHJ9v7GxTqVt5A"
+        accessed: "2026-10-15"
+        archived: "cichlidae.com/species.php/q-1e4e93f2/2026-10-14T231809Z"
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes, species in the genus Paralabidochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pa\
+          ralabidochromis"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-30db6986/2026-10-14T1\
+          71420Z"
+      - &a5
+        kind: "database"
+        title: "FishBase species summary: Haplochromis sauvagei"
+        url: "https://www.fishbase.se/summary/Haplochromis-sauvagei.html"
+        accessed: "2026-10-15"
+        archived: "fishbase.se/summary/haplochromis-sauvagei.html/2026-10-14T231829Z"
+      - &a6
+        kind: "database"
+        title: "Nordiska Ciklidsällskapet species register: Paralabidochromis sauvagei"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1778"
+        accessed: "2026-10-15"
+        archived: "ciklid.org/artregister/art.php/q-3dc391b9/2026-10-14T173457Z"
+      - &a7
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Haplochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ha\
+          plochromis"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-873e9721/2026-10-14T0\
+          94822Z"
+      - &a8
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Paralabidochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pa\
+          ralabidochromis"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-30db6986/2026-10-14T1\
+          71420Z"
+      - &a12
+        kind: "literature"
+        title: "Takeda et al. (2013), Genetic Structure of Pelagic and Littoral Cichlid Fishes from Lake Victoria"
+        url: "https://doi.org/10.1371/journal.pone.0074088"
+        accessed: "2026-10-15"
+        archived: "doi.org/10.1371_journal.pone.0074088/2026-10-14T232658Z"
+      - &a9
+        kind: "literature"
+        title: "Cichlid News, What's New Across the World, July 2006"
+        url: "https://www.cichlidnews.com/issues/2006jul/whatsnew.html"
+        accessed: "2026-10-15"
+        archived: "cichlidnews.com/issues/2006jul/whatsnew.html/2026-10-14T231744Z"
+      - &a10
+        kind: "website"
+        title: "Aquarist Atlas, Haplochromis sauvagei species profile"
+        url: "https://www.aquaristatlas.com/species/haplochromis-sauvagei/"
+        accessed: "2026-10-15"
+        archived: "aquaristatlas.com/species/haplochromis-sauvagei/2026-10-14T231744Z"
+      - &a11
+        kind: "database"
+        title: "NCBI Taxonomy Browser, Haplochromis sauvagei"
+        url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=77313&mode=info"
+        accessed: "2026-10-15"
+        archived: "ncbi.nlm.nih.gov/taxonomy/browser/wwwtax.cgi/q-92e7d6f1/2026-10-14T231733Z"
+      - &a77
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes, species of Paralabidochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pa\
+          ralabidochromis"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-30db6986/2026-10-14T1\
+          71420Z"
+      - &a4
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes, species in the genus Haplochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ha\
+          plochromis"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-873e9721/2026-10-14T0\
+          94822Z"
+      - &a78
+        kind: "database"
+        title: "NCBI Taxonomy Browser, Haplochromis sauvagei"
+        url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=77313&mode=info"
+        accessed: "2026-10-15"
+        archived: "ncbi.nlm.nih.gov/taxonomy/browser/wwwtax.cgi/q-92e7d6f1/2026-10-14T232635Z"
+      - &a67
+        kind: "literature"
+        title: "Takeda et al. (2013). Genetic Structure of Pelagic and Littoral Cichlid Fishes from Lake Victoria."
+        url: "https://doi.org/10.1371/journal.pone.0074088"
+        archived: "doi.org/10.1371_journal.pone.0074088/2026-10-14T232658Z"
+        accessed: "2026-10-15"
+    evidence:
+      - source: *a2
+        value:
+          region: "Lake Victoria"
+          localities:
+            - "Makobe Island"
+            - "Mwanza Gulf"
+            - "Entebbe"
+      - source: *a3
+        value:
+          region: "Lake Victoria"
+        note: "lists the form under Paralabidochromis with Seehausen 1996 as original reference The public entry
+          provides taxonomy and an original reference only; no husbandry summary was accessible. The public
+          entry provides taxonomy and an original reference only; no husbandry summary was accessible."
+      - source: *a4
+        value: "Haplochromis sauvagei; Lake Victoria"
+      - source: *a5
+        value: "Lake Victoria"
+        note: "Historical sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence
+          unless specimen identity is resolved. Historical sauvagei ecology may include the fish now named H.
+          fischeri; this is comparison evidence unless specimen identity is resolved."
+      - source: *a6
+        value: "Lake Victoria, reported throughout the lake"
+      - source: *a7
+        value: "Lake Victoria, Eastern Africa"
+      - source: *a8
+        value: "Paralabidochromis sauvagei is not listed as valid; only P. victoriae is listed"
+      - source: *a9
+        value: "Lake Victoria, reported from several locations"
+      - source: *a10
+        value: "Lake Victoria littoral zone"
+      - source: *a11
+        value: "Includes Paralabidochromis sp. rock kribensis under Haplochromis sauvagei"
+      - source: *a12
+        value: "Lake Victoria littoral zone"
+  temperatureC:
+    value:
+      min: 22
+      max: 30
+    confidence: "high"
+    rationale: "The settled waterbody decision is 22 to 30 C at high confidence. FAO compiles 23 to 28 C surface
+      readings, Burgis and colleagues report gulf temperatures up to 29 C, and Orina and colleagues report
+      site means from 23.4 to 29.5 C. These support the rounded regional envelope. The retained temperature
+      advice from care pages is aquarium guidance. Ancillary lake sources are retained for traceability; the
+      Makaka page could not be fetched and contributes no new measurement. Mbonde and colleagues report a
+      wider upper extension, 24.9 to 32.3 C in nearshore bays. The required regional envelope remains 22 to 30
+      C because those locally heated bay observations do not establish usual conditions for this rock-dwelling
+      fish."
+    sources:
+      - &a22
+        kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+          Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+          EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+        archived: "fao.org/4/t0473e/t0473e12.htm/2026-10-14T100018Z"
+        accessed: "2026-10-15"
+      - &a15
+        kind: "literature"
+        title: "Burgis, M. J., Mavuti, K. M., Moreau, J. and Moreau, I. (1987). The Central Plateau. In: Burgis, M. J.
+          and Symoens, J. J. (eds.), African wetlands and shallow water bodies, ORSTOM, Paris, section 6.3
+          (6.3.a Nyanza Gulf)."
+        url: "https://horizon.documentation.ird.fr/exl-doc/pleins_textes/divers14-08/25359.pdf"
+        archived: "horizon.documentation.ird.fr/exl-doc/pleins_textes/divers14-08/25359.pdf/2026-10-14T103818Z"
+        accessed: "2026-10-15"
+      - &a35
+        kind: "literature"
+        title: "Deirmendjian, L., Descy, J.-P., Morana, C., Okello, W., Stoyneva-Gaertner, M. P., Bouillon, S. and
+          Borges, A. V. (2021). Limnological changes in Lake Victoria since the mid-20th century. Freshwater
+          Biology 66, 1630-1647."
+        url: "https://doi.org/10.1111/fwb.13780"
+        archived: "doi.org/10.1111_fwb.13780/2026-10-13T153127Z"
+        accessed: "2026-10-15"
+      - &a36
+        kind: "literature"
+        title: "Mbonde, A. S., Sitoki, L. and Kurmayer, R. (2015). Phytoplankton composition and microcystin
+          concentrations in open and closed bays of Lake Victoria, Tanzania. Aquatic Ecosystem Health and
+          Management (Table 1)."
+        url: "https://doi.org/10.1080/14634988.2015.1011030"
+        accessed: "2026-10-15"
+        archived: "doi.org/10.1080_14634988.2015.1011030/2026-10-13T160334Z"
+      - &a23
+        kind: "literature"
+        title: "Orina, P. S., Onyango, D. M., Lungayia, H., Oduor, A., Sifuna, A. W., Otuya, P., Owigar, R. A.,
+          Kowenje, C. B. and Hinzano, S. M. (2020). Water quality of selected fishing beaches of Lake Victoria
+          Kenyan Gulf. Open Journal of Ecology 10, 22-35."
+        url: "https://doi.org/10.4236/oje.2020.101002"
+        archived: "doi.org/10.4236_oje.2020.101002/2026-10-13T153307Z"
+        accessed: "2026-10-15"
+      - &a37
+        kind: "literature"
+        title: "Makaka et al. (2021). Spatial and Temporal Variation of Selected Water Quality Parameters in the
+          Tanzanian Side of Lake Victoria. Tanzania Journal of Engineering and Technology 40(2), 1-23."
+        url: "https://tjet.udsm.ac.tz/index.php/tjet/article/view/729"
+        accessed: "2026-10-15"
+        offline: true
+      - &a38
+        kind: "database"
+        title: "BCO-DMO dataset 931936, Metagenomic Time Series of Winam Gulf, Lake Victoria from 2022-2023 (pH,
+          temperature, conductivity)."
+        url: "https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1"
+        archived: "erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1/2026-10-14T102811Z"
+        accessed: "2026-10-15"
+      - &a39
+        kind: "literature"
+        title: "Kishe (2004). Physical and chemical characteristics of water in selected locations in Lake Victoria,
+          Tanzania. Tanzania Journal of Science 30(2), 65-72."
+        url: "https://tjs.udsm.ac.tz/index.php/tjs/article/view/448"
+        archived: "tjs.udsm.ac.tz/index.php/tjs/article/view/448/2026-10-14T103825Z"
+        accessed: "2026-10-15"
+      - &a40
+        kind: "literature"
+        title: "Ochumba (1987). Periodic massive fish kills in the Kenyan portion of Lake Victoria. FAO Fisheries
+          Report, CIFA sub-committee for Lake Victoria, 4th session, Appendix E."
+        url: "https://www.fao.org/4/ad858e/AD858E06.htm"
+        archived: "fao.org/4/ad858e/ad858e06.htm/2026-10-14T103825Z"
+        accessed: "2026-10-15"
+      - &a41
+        kind: "literature"
+        title: "Deirmendjian et al. (2021). Limnological changes in Lake Victoria since the mid-20th century."
+        url: "https://doi.org/10.1111/fwb.13780"
+        archived: "doi.org/10.1111_fwb.13780/2026-10-13T153127Z"
+        accessed: "2026-10-15"
+      - &a24
+        kind: "literature"
+        title: "Mbonde, Sitoki and Kurmayer (2015). Phytoplankton composition and microcystin concentrations in open
+          and closed bays of Lake Victoria, Tanzania."
+        url: "https://doi.org/10.1080/14634988.2015.1011030"
+        archived: "doi.org/10.1080_14634988.2015.1011030/2026-10-13T160334Z"
+        accessed: "2026-10-15"
+      - *a13
+      - *a14
+      - &a16
+        kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+          Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria physical and chemical data."
+        url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+        accessed: "2026-10-15"
+        archived: "fao.org/4/t0473e/t0473e12.htm/2026-10-14T100018Z"
+      - &a17
+        kind: "literature"
+        title: "Deirmendjian et al. (2021). Limnological changes in Lake Victoria since the mid-20th century.
+          Freshwater Biology 66, 1630-1647."
+        url: "https://doi.org/10.1111/fwb.13780"
+        accessed: "2026-10-15"
+        archived: "doi.org/10.1111_fwb.13780/2026-10-13T153127Z"
+      - *a5
+      - *a6
+      - &a18
+        kind: "website"
+        title: "FishProfiles species profile: Paralabidochromis sp. Rock Kribensis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Paralabidochromis_sp_Rock_Kribensis/"
+        accessed: "2026-10-15"
+        archived: "fishprofiles.com/profiles/freshwater/cichlids/paralabidochromis_sp_rock_kribensis/2026-10-14T23173\
+          3Z"
+      - &a19
+        kind: "database"
+        title: "Nordiska Ciklidsällskapet, Paralabidochromis sauvagei species register"
+        url: "https://ciklid.org/artregister/art.php?ID=1778"
+        accessed: "2026-10-15"
+        archived: "ciklid.org/artregister/art.php/q-3dc391b9/2026-10-14T231739Z"
+      - &a20
+        kind: "website"
+        title: "FishProfiles.com, Paralabidochromis sp Rock Kribensis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Paralabidochromis_sp_Rock_Kribensis/"
+        accessed: "2026-10-15"
+        archived: "fishprofiles.com/profiles/freshwater/cichlids/paralabidochromis_sp_rock_kribensis/2026-10-14T23173\
+          3Z"
+      - &a21
+        kind: "database"
+        title: "Zoopet species results, Paralabidochromis sp. rockkribensis"
+        url: "https://www.no.zoopet.com/fiskar/fisk_grupp_resultat.php?GRUPP=14&ORDNING=all"
+        accessed: "2026-10-15"
+        archived: "no.zoopet.com/fiskar/fisk_grupp_resultat.php/q-80b3b03c/2026-10-14T231733Z"
+    evidence:
+      - source: *a15
+        value:
+          min: 22
+          max: 30
+        note: "Lake-wide measured natural range used by the profile pipeline. Earlier run's rounded regional
+          aggregate, retained as an inference from the cited lake studies; not a standalone measurement or
+          aquarium survival limit. Lake Victoria range Earlier run's rounded regional aggregate, retained as
+          an inference from the cited lake studies; not a standalone measurement or aquarium survival limit.
+          Required natural Lake Victoria range. Earlier run's rounded regional aggregate, retained as an
+          inference from the cited lake studies; not a standalone measurement or aquarium survival limit."
+      - source: *a13
+        value:
+          min: 24
+          max: 27
+        note: "Species summary range. Historical sauvagei ecology may include the fish now named H. fischeri; this is
+          comparison evidence unless specimen identity is resolved. Historical sauvagei ecology may include
+          the fish now named H. fischeri; this is comparison evidence unless specimen identity is resolved.
+          Historical sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence
+          unless specimen identity is resolved."
+      - source: *a14
+        value:
+          min: 22
+          max: 28
+        note: "Aquarium recommendation."
+      - source: *a16
+        value:
+          min: 22
+          max: 30
+        note: "lake water table value"
+      - source: *a17
+        value:
+          min: 22
+          max: 30
+        note: "lake water table value"
+      - source: *a5
+        value:
+          min: 24
+          max: 27
+        note: "FishBase environment range Historical sauvagei ecology may include the fish now named H. fischeri; this
+          is comparison evidence unless specimen identity is resolved. Historical sauvagei ecology may include
+          the fish now named H. fischeri; this is comparison evidence unless specimen identity is resolved.
+          Historical sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence
+          unless specimen identity is resolved."
+      - source: *a6
+        value:
+          min: 22
+          max: 28
+        note: "Aquarium recommendation"
+      - source: *a18
+        value:
+          min: 22
+          max: 30
+        note: "Aquarium recommendation"
+      - source: *a19
+        value:
+          min: 22
+          max: 28
+        note: "Aquarium recommendation."
+      - source: *a20
+        value:
+          min: 22
+          max: 30
+        note: "Aquarium care entry."
+      - source: *a21
+        value:
+          min: 23
+          max: 26
+        note: "Aquarium recommendation."
+      - source: *a22
+        value: &a28
+          min: 23
+          max: 28
+        note: "Reported lake surface temperatures."
+      - source: *a15
+        value: &a29
+          min: 23.8
+          max: 29
+        note: "Nyanza Gulf observations across the cited surveys."
+      - source: *a23
+        value: &a30
+          min: 23.4
+          max: 29.5
+        note: "Range of reported site means, not a physiological tolerance."
+      - source: *a24
+        value:
+          min: 24.9
+          max: 32.3
+        note: "Measured nearshore variation across open and enclosed bays; local warm records exceed the typical lake
+          envelope."
+    tolerance:
+      value:
+        min: 22
+        max: 30
+      confidence: "medium"
+      rationale: "All four proposals are 22 to 30 C, so the unanimous tally is retained at medium confidence.
+        FishProfiles explicitly gives this interval; the association recommends 22 to 28 C and Maidenhead 24
+        to 26 C. It contains the natural lake envelope and is supported independently of simply copying that
+        envelope. Multihobby reports keeping acclimated fish at 21 to 22 C and Garnelio's summary gives 20 to
+        25 C, a wider lower extension than this decision; those observations are retained, but do not change
+        the settled tally or establish multiyear performance at those endpoints. Mbonde and colleagues record
+        natural bay temperatures up to 32.3 C, above the decided maximum, without demonstrating long-term
+        keeping at that endpoint."
+      sources:
+        - *a13
+        - &a25
+          kind: "website"
+          title: "FishProfiles: Paralabidochromis sp Rock Kribensis"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Paralabidochromis_sp_Rock_Kribensis/"
+          accessed: "2026-10-15"
+          archived: "fishprofiles.com/profiles/freshwater/cichlids/paralabidochromis_sp_rock_kribensis/2026-10-14T23173\
+            3Z"
+        - *a14
+        - &a26
+          kind: "website"
+          title: "Maidenhead Aquatics fishkeeper data bank, Rock Kribensis Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/african-cichlids/rock-kribensis-hap"
+          accessed: "2026-10-15"
+          archived: "fishkeeper.co.uk/fish/freshwater/cichlids/african-cichlids/rock-kribensis-hap/2026-10-14T231748Z"
+        - &a27
+          kind: "website"
+          title: "Fish Profiles, Paralabidochromis sp Rock Kribensis"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Paralabidochromis_sp_Rock_Kribensis"
+          accessed: "2026-10-15"
+          archived: "fishprofiles.com/profiles/freshwater/cichlids/paralabidochromis_sp_rock_kribensis/2026-10-14T23174\
+            9Z"
+        - *a2
+        - *a18
+        - *a6
+        - *a19
+        - *a20
+        - *a21
+        - *a22
+        - *a15
+        - *a23
+        - &a31
+          kind: "website"
+          title: "Multihobby: Paralabidochromis sp. Rock Kribensis, keeping and breeding"
+          url: "https://www.multihobby.net/?p=7972"
+          accessed: "2026-10-15"
+          archived: "multihobby.net/_root/q-fecac2a9/2026-10-14T232249Z"
+        - &a32
+          kind: "website"
+          title: "Garnelio: Yellow Victoria mouthbrooder, Haplochromis rock kribensis"
+          url: "https://www.garnelio.de/en/2x-yellow-victoria-mouthbrooder-haplochromis-rock-kribensis-dnz-5cm"
+          accessed: "2026-10-15"
+          archived: "garnelio.de/en/2x-yellow-victoria-mouthbrooder-haplochromis-rock-kribensis-dnz-5cm/2026-10-14T2323\
+            07Z"
+        - &a33
+          kind: "website"
+          title: "Imperial Tropicals: Yellow Rock Kribensis (Paralabidochromis sauvagei)"
+          url: "https://imperialtropicals.com/products/yellow-rock-kribensis-paralabidochromis-sauvagei"
+          accessed: "2026-10-15"
+          archived: "imperialtropicals.com/products/yellow-rock-kribensis-paralabidochromis-sauvagei/2026-10-14T232314Z"
+        - &a34
+          kind: "website"
+          title: "Rons Cichlids: Rock Kribensis"
+          url: "https://ronscichlids.com/products/rock-kribensis"
+          accessed: "2026-10-15"
+          archived: "ronscichlids.com/products/rock-kribensis/2026-10-14T232338Z"
+        - *a24
+      evidence:
+        - source: *a25
+          value:
+            min: 22
+            max: 30
+          note: "Published aquarium range."
+        - source: *a14
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium range."
+        - source: *a15
+          value:
+            min: 22
+            max: 30
+          note: "The tolerance is widened to contain the natural range. Earlier run's rounded regional aggregate,
+            retained as an inference from the cited lake studies; not a standalone measurement or aquarium
+            survival limit."
+        - source: *a26
+          value:
+            min: 24
+            max: 26
+          note: "aquarium recommendation"
+        - source: *a27
+          value:
+            min: 22
+            max: 30
+          note: "aquarium recommendation"
+        - source: *a2
+          value:
+            min: 22
+            max: 28
+          note: "aquarium recommendation"
+        - source: *a18
+          value:
+            min: 22
+            max: 30
+          note: "Aquarium care interval"
+        - source: *a6
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium recommendation"
+        - source: *a19
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium recommendation."
+        - source: *a20
+          value:
+            min: 22
+            max: 30
+          note: "Aquarium care entry."
+        - source: *a21
+          value:
+            min: 23
+            max: 26
+          note: "Aquarium recommendation."
+        - source: *a22
+          value: *a28
+          note: "Reported lake surface temperatures. Natural-water evidence only; not an aquarium limit."
+        - source: *a15
+          value: *a29
+          note: "Nyanza Gulf observations across the cited surveys. Natural-water evidence only; not an aquarium limit."
+        - source: *a23
+          value: *a30
+          note: "Range of reported site means, not a physiological tolerance. Natural-water evidence only; not an
+            aquarium limit."
+        - source: *a31
+          value:
+            min: 21
+            max: 27
+          note: "Keeping account recommends 23 to 27 C and also reports acclimated fish at 21 to 22 C."
+        - source: *a32
+          value:
+            min: 20
+            max: 25
+          note: "Retail summary; contradicts its detailed care text."
+        - source: *a32
+          value:
+            min: 24
+            max: 28
+          note: "Detailed aquarium-care text on the same page."
+        - source: *a33
+          value:
+            min: 22.2
+            max: 27.8
+          note: "Animal-data block, converted from 72 to 82 F."
+        - source: *a34
+          value:
+            min: 23.3
+            max: 28.9
+          note: "Aquarium advice, converted from 74 to 84 F."
+        - source: *a24
+          value:
+            min: 24.9
+            max: 32.3
+          note: "Natural bay observations only; no chronic aquarium trial at the warm extreme."
+        - source: *a33
+          value:
+            min: 22.2
+            max: 25.6
+          note: "Summary block gives 72 to 78 F; the same page also has a wider 72 to 82 F tank-parameter block."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "waterbody"
+      waterbody: "lake-victoria"
+  ph:
+    value:
+      min: 6.8
+      max: 9.4
+    confidence: "high"
+    rationale: "The settled Lake Victoria value is pH 6.8 to 9.4 at high confidence. Burgis and colleagues report
+      6.8 to 9.2 in Nyanza Gulf, while Ochumba's Kenyan station table reaches 9.4. FAO's open-lake and gulf
+      readings fall inside this regional envelope. It describes variation among lake sites and times; it does
+      not mean one fish routinely experiences both ends. Care-page recommendations do not replace those
+      natural measurements. The complete BCO-DMO dataset reports pH 6.7 to 9.0 and includes river and
+      other-lake samples, so its unfiltered minimum is not a rock-kribensis habitat bound. The regional
+      synthesis excludes the isolated Kisumu reading of 6.7."
+    sources:
+      - *a22
+      - *a15
+      - *a35
+      - *a36
+      - *a23
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a24
+      - *a25
+      - *a14
+      - *a16
+      - *a17
+      - *a6
+      - *a18
+      - *a19
+      - *a20
+      - *a21
+    evidence:
+      - source: *a15
+        value:
+          min: 6.8
+          max: 9.4
+        note: "Lake-wide measured natural range. Earlier run's rounded regional aggregate, retained as an inference
+          from the cited lake studies; not a standalone measurement or aquarium survival limit. Lake Victoria
+          range Earlier run's rounded regional aggregate, retained as an inference from the cited lake
+          studies; not a standalone measurement or aquarium survival limit. Required natural Lake Victoria
+          range. Earlier run's rounded regional aggregate, retained as an inference from the cited lake
+          studies; not a standalone measurement or aquarium survival limit."
+      - source: *a25
+        value:
+          min: 7
+          max: 8.5
+        note: "Aquarium recommendation, not a wild measurement."
+      - source: *a14
+        value:
+          min: 7.5
+          max: 8
+        note: "Aquarium recommendation."
+      - source: *a16
+        value:
+          min: 6.8
+          max: 9.4
+        note: "lake water table value"
+      - source: *a17
+        value:
+          min: 6.8
+          max: 9.4
+        note: "lake water table value"
+      - source: *a6
+        value:
+          min: 7.5
+          max: 8
+        note: "Aquarium recommendation"
+      - source: *a18
+        value:
+          min: 7
+          max: 8.5
+        note: "Aquarium recommendation"
+      - source: *a19
+        value:
+          min: 7.5
+          max: 8
+        note: "Aquarium recommendation."
+      - source: *a20
+        value:
+          min: 7
+          max: 8.5
+        note: "Aquarium recommendation."
+      - source: *a21
+        value:
+          min: 7
+          max: 8.5
+        note: "Aquarium recommendation."
+      - source: *a22
+        value: &a42
+          min: 8
+          max: 9
+        note: "Combined open-lake and gulf pH readings."
+      - source: *a15
+        value: &a43
+          min: 6.8
+          max: 9.2
+        note: "Nyanza Gulf measurements in June 1984."
+      - source: *a40
+        value: &a44
+          min: 7.42
+          max: 9.4
+        note: "Kenyan lake stations in the 1985 to 1986 table."
+      - source: *a38
+        value:
+          min: 6.7
+          max: 9
+        note: "Unfiltered dataset metadata includes river and other-lake outgroups; not an exclusive Lake Victoria
+          habitat interval."
+    tolerance:
+      value: &a92
+        min: 6.8
+        max: 9.5
+      confidence: "low"
+      rationale: "The unanimous tally under the 0.3 pH agreement rule is retained as 6.8 to 9.5 with low confidence.
+        Generator and checker A propose 6.8 to 9.4, checker B 6.8 to 9.5, and checker C 6.5 to 9.5. The
+        rounded median among agreeing bounds contains the natural range. This is narrower at the lower end
+        than checker C's 6.5 to 9.5 proposal; no read species source establishes 6.5 as a long-term limit.
+        Actual aquarium advice clusters around 7 to 8.5, or 7.5 to 8 for the association. The extended upper
+        end is a planning inference, not a preferred daily target or a measured failure threshold."
+      sources:
+        - *a25
+        - *a14
+        - *a22
+        - *a15
+        - *a35
+        - *a36
+        - *a23
+        - *a37
+        - *a38
+        - *a39
+        - *a40
+        - *a41
+        - *a24
+        - *a26
+        - *a27
+        - *a2
+        - *a6
+        - *a18
+        - *a19
+        - *a20
+        - *a21
+      evidence:
+        - source: *a25
+          value:
+            min: 7
+            max: 8.5
+          note: "Aquarium recommendation."
+        - source: *a14
+          value:
+            min: 7.5
+            max: 8
+          note: "Aquarium recommendation."
+        - source: *a15
+          value:
+            min: 6.8
+            max: 9.4
+          note: "Natural range retained within the tolerance. Earlier run's rounded regional aggregate, retained as an
+            inference from the cited lake studies; not a standalone measurement or aquarium survival limit.
+            Natural range only; tolerance widened beyond it by inference Earlier run's rounded regional
+            aggregate, retained as an inference from the cited lake studies; not a standalone measurement or
+            aquarium survival limit."
+        - source: *a26
+          value:
+            min: 7.5
+            max: 8.5
+          note: "aquarium recommendation"
+        - source: *a27
+          value:
+            min: 7
+            max: 8.5
+          note: "aquarium recommendation"
+        - source: *a2
+          value:
+            min: 7.5
+            max: 8
+          note: "aquarium recommendation"
+        - source: *a6
+          value:
+            min: 7.5
+            max: 8
+          note: "Aquarium recommendation; not a measured tolerance limit"
+        - source: *a18
+          value:
+            min: 7
+            max: 8.5
+          note: "Aquarium recommendation; not a measured tolerance limit"
+        - source: *a19
+          value:
+            min: 7.5
+            max: 8
+          note: "Aquarium recommendation."
+        - source: *a20
+          value:
+            min: 7
+            max: 8.5
+          note: "Aquarium recommendation."
+        - source: *a21
+          value:
+            min: 7
+            max: 8.5
+          note: "Aquarium recommendation."
+        - source: *a22
+          value: *a42
+          note: "Combined open-lake and gulf pH readings. Natural-water evidence only; not an aquarium limit."
+        - source: *a15
+          value: *a43
+          note: "Nyanza Gulf measurements in June 1984. Natural-water evidence only; not an aquarium limit."
+        - source: *a40
+          value: *a44
+          note: "Kenyan lake stations in the 1985 to 1986 table. Natural-water evidence only; not an aquarium limit."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "waterbody"
+      waterbody: "lake-victoria"
+  ghDgh:
+    value:
+      min: 1
+      max: 3
+    confidence: "high"
+    rationale: "The settled Lake Victoria value is 1 to 3 dGH at high confidence. FAO's calcium and magnesium data
+      convert to approximately 1.2 to 1.8 dGH, and Burgis and colleagues' Nyanza Gulf data reach about 2.4
+      dGH. The rounded range accommodates the main lake and its gulfs. Aquarium advice of 15 to 30 dH is
+      retained separately and cannot establish natural hardness. Earlier whole-envelope attributions to
+      Deirmendjian are retained with their original values as pipeline inferences; that study does not measure
+      a GH interval."
+    sources:
+      - *a22
+      - *a15
+      - *a35
+      - *a36
+      - *a23
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a24
+      - *a25
+      - *a16
+      - *a17
+      - *a18
+      - *a20
+    evidence:
+      - source: *a22
+        value:
+          min: 1
+          max: 3
+        note: "Lake-wide measured natural range. Earlier run's rounded regional aggregate, retained as an inference
+          from the cited lake studies; not a standalone measurement or aquarium survival limit. Lake Victoria
+          range Earlier run's rounded regional aggregate, retained as an inference from the cited lake
+          studies; not a standalone measurement or aquarium survival limit. Required natural Lake Victoria
+          range. Earlier run's rounded regional aggregate, retained as an inference from the cited lake
+          studies; not a standalone measurement or aquarium survival limit."
+      - source: *a25
+        value:
+          min: 15
+          max: 30
+        note: "The page reports nonspecific hardness in dH; it is not a measured lake value."
+      - source: *a16
+        value:
+          min: 1
+          max: 3
+        note: "lake water table value"
+      - source: *a17
+        value:
+          min: 1
+          max: 3
+        note: "lake water table value"
+      - source: *a18
+        value:
+          min: 15
+          max: 30
+        note: "Care page reports dH values far above measured lake hardness"
+      - source: *a20
+        value:
+          min: 15
+          max: 30
+        note: "Aquarium hardness recommendation; not natural habitat chemistry."
+      - source: *a22
+        value: &a47
+          min: 1.23
+          max: 1.79
+        note: "Calculated from Ca 5.0 to 7.0 and Mg 2.3 to 3.5 mg/L using dGH = Ca/7.14 + Mg/4.34."
+      - source: *a15
+        value: &a48
+          min: 1.63
+          max: 2.4
+        note: "Calculated from Nyanza Gulf ion measurements in meq/L; total equivalents converted using 1 dGH =
+          0.35696 meq/L."
+    tolerance:
+      value: &a93
+        min: 1
+        max: 30
+      confidence: "low"
+      rationale: "The qualified-majority tally retains 1 to 30 dGH at low confidence: checker B, checker C and both
+        tie-breakers propose that range, generator proposes 1 to 15 and checker A 1 to 20. FishProfiles and
+        Multihobby each give 15 to 30 German degrees; Garnelio gives 5 to 20 and OATA gives a general
+        African-lake recommendation of 12 to 18. The lower bound includes natural Lake Victoria water. The
+        narrower proposals cap the published 30-degree recommendation without evidence of harm above their
+        ceilings. This broad decision combines habitat measurements with keeping advice, not a controlled
+        continuous survival trial. Maidenhead's KH figure and Imperial Tropicals' TDS are not GH
+        measurements."
+      sources:
+        - *a25
+        - *a22
+        - *a15
+        - *a35
+        - *a36
+        - *a23
+        - *a37
+        - *a38
+        - *a39
+        - *a40
+        - *a41
+        - *a24
+        - *a26
+        - *a27
+        - *a18
+        - *a20
+        - *a31
+        - *a32
+        - *a33
+        - &a45
+          kind: "website"
+          title: "Multihobby: Paralabidochromis sp. Rock Kribensis husbandry and breeding"
+          url: "https://www.multihobby.net/?p=7972"
+          accessed: "2026-10-15"
+          archived: "multihobby.net/_root/q-fecac2a9/2026-10-14T232249Z"
+        - &a46
+          kind: "website"
+          title: "OATA: How to look after African lake cichlids"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fis\
+            h/how-to-look-after-african-lake-cichlids/"
+          accessed: "2026-10-15"
+          archived: "ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/h\
+            ow-to-look-after-african-lake-cichlids/2026-10-14T095725Z"
+        - &a49
+          kind: "website"
+          title: "Imperial Tropicals: Yellow Rock Kribensis"
+          url: "https://imperialtropicals.com/products/yellow-rock-kribensis-paralabidochromis-sauvagei"
+          accessed: "2026-10-15"
+          archived: "imperialtropicals.com/products/yellow-rock-kribensis-paralabidochromis-sauvagei/2026-10-14T232314Z"
+      evidence:
+        - source: *a25
+          value:
+            min: 15
+            max: 30
+          note: "General hardness guidance, without a distinction between GH and carbonate hardness. Any capped or
+            inferred interval is an earlier agent interpretation; the page states 15 to 30 dH and no KH
+            interval. Aquarium hardness recommendation, interpreted as total hardness in German degrees. Any
+            capped or inferred interval is an earlier agent interpretation; the page states 15 to 30 dH and no
+            KH interval. Species-specific recommended aquarium hardness. Any capped or inferred interval is an
+            earlier agent interpretation; the page states 15 to 30 dH and no KH interval. Any capped or
+            inferred interval is an earlier agent interpretation; the page states 15 to 30 dH and no KH
+            interval."
+        - source: *a22
+          value:
+            min: 1
+            max: 3
+          note: "Natural range kept within the derived tolerance. Earlier run's rounded regional aggregate, retained as
+            an inference from the cited lake studies; not a standalone measurement or aquarium survival limit.
+            Natural range; supports the lower bound, not the aquarium limit Earlier run's rounded regional
+            aggregate, retained as an inference from the cited lake studies; not a standalone measurement or
+            aquarium survival limit. Required natural Lake Victoria range. Earlier run's rounded regional
+            aggregate, retained as an inference from the cited lake studies; not a standalone measurement or
+            aquarium survival limit. Required natural range; direct long-term tolerance evidence is absent.
+            Earlier run's rounded regional aggregate, retained as an inference from the cited lake studies;
+            not a standalone measurement or aquarium survival limit. Natural Lake Victoria GH, used only to
+            include the obligatory habitat range. Earlier run's rounded regional aggregate, retained as an
+            inference from the cited lake studies; not a standalone measurement or aquarium survival limit.
+            Mandatory natural lake range; not an aquarium tolerance claim. Earlier run's rounded regional
+            aggregate, retained as an inference from the cited lake studies; not a standalone measurement or
+            aquarium survival limit."
+        - source: *a26
+          value:
+            min: 1
+            max: 20
+          note: "care sheet asks for hard water; value derived from carbonate hardness up to 25 dKH The numeric GH
+            interval or lower KH bound here is the earlier agent's inference; the page actually gives only an
+            upper KH recommendation of 25 dKH. The numeric GH interval or lower KH bound here is the earlier
+            agent's inference; the page actually gives only an upper KH recommendation of 25 dKH."
+        - source: *a27
+          value:
+            min: 15
+            max: 20
+          note: "care sheet states 15 to 30 dH; capped here Any capped or inferred interval is an earlier agent
+            interpretation; the page states 15 to 30 dH and no KH interval. Any capped or inferred interval is
+            an earlier agent interpretation; the page states 15 to 30 dH and no KH interval."
+        - source: *a18
+          value:
+            min: 15
+            max: 30
+          note: "Reported dH care interval; likely overstates hardness for this lake species Any capped or inferred
+            interval is an earlier agent interpretation; the page states 15 to 30 dH and no KH interval. Any
+            capped or inferred interval is an earlier agent interpretation; the page states 15 to 30 dH and no
+            KH interval."
+        - source: *a20
+          value:
+            min: 15
+            max: 30
+          note: "Aquarium hardness recommendation. Any capped or inferred interval is an earlier agent interpretation;
+            the page states 15 to 30 dH and no KH interval. Any capped or inferred interval is an earlier
+            agent interpretation; the page states 15 to 30 dH and no KH interval."
+        - source: *a31
+          value:
+            min: 15
+            max: 30
+          note: "Aquarium hardness recommendation in German degrees from a species-specific keeping and breeding
+            account."
+        - source: *a32
+          value:
+            min: 5
+            max: 20
+          note: "Explicit aquarium total-hardness recommendation; this narrower band is retained as differing evidence.
+            Species-specific recommended aquarium total hardness."
+        - source: *a45
+          value:
+            min: 15
+            max: 30
+          note: "Species-specific husbandry and breeding account; German hardness units."
+        - source: *a46
+          value:
+            min: 12
+            max: 18
+          note: "General African lake cichlid care guidance, not an experimentally established limit for this trade
+            form."
+        - source: *a22
+          value: *a47
+          note: "Calculated from Ca 5.0 to 7.0 and Mg 2.3 to 3.5 mg/L using dGH = Ca/7.14 + Mg/4.34. Natural-water
+            evidence only; not an aquarium limit."
+        - source: *a15
+          value: *a48
+          note: "Calculated from Nyanza Gulf ion measurements in meq/L; total equivalents converted using 1 dGH =
+            0.35696 meq/L. Natural-water evidence only; not an aquarium limit."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 4
+          total: 6
+    verification:
+      method: "waterbody"
+      waterbody: "lake-victoria"
+  khDkh:
+    value:
+      min: 2
+      max: 6
+    confidence: "high"
+    rationale: "The settled natural value is 2 to 6 dKH at high confidence and has no verification object. FAO's
+      compiled main-lake chemistry is equivalent to about 2.5 to 3.1 dKH, while Burgis and colleagues' gulf
+      alkalinity and bicarbonate observations span about 2.2 to 5.2 dKH. The rounded regional range represents
+      weakly buffered lake water. No conversion of a GH recommendation into KH is made. Earlier whole-envelope
+      attributions to Deirmendjian are carried as inferred regional summaries, not direct KH measurements."
+    sources:
+      - *a22
+      - *a15
+      - *a35
+      - *a36
+      - *a23
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a24
+      - *a25
+      - *a16
+      - *a17
+    evidence:
+      - source: *a15
+        value:
+          min: 2
+          max: 6
+        note: "Lake-wide measured natural range. Earlier run's rounded regional aggregate, retained as an inference
+          from the cited lake studies; not a standalone measurement or aquarium survival limit. Lake Victoria
+          range Earlier run's rounded regional aggregate, retained as an inference from the cited lake
+          studies; not a standalone measurement or aquarium survival limit. Required natural Lake Victoria
+          range. Earlier run's rounded regional aggregate, retained as an inference from the cited lake
+          studies; not a standalone measurement or aquarium survival limit."
+      - source: *a25
+        value: "No KH value reported"
+        note: "Its hardness value is not identified as KH."
+      - source: *a16
+        value:
+          min: 2
+          max: 6
+        note: "lake water table value"
+      - source: *a17
+        value:
+          min: 2
+          max: 6
+        note: "lake water table value"
+      - source: *a22
+        value: &a51
+          min: 2.52
+          max: 3.08
+        note: "Approximate alkalinity equivalents from the compiled lake chemistry, converted from 0.9 to 1.1 meq/L."
+      - source: *a15
+        value: &a52
+          min: 2.24
+          max: 5.21
+        note: "Nyanza Gulf alkalinity 40 to 72 mg/L as CaCO3 and bicarbonate 1.57 to 1.86 meq/L, converted to dKH."
+    tolerance:
+      value: &a94
+        min: 2
+        max: 14
+      confidence: "low"
+      rationale: "No qualified majority exists, so the settled median tolerance is 2 to 14 dKH with low confidence.
+        Generator and tiebreaker-1 propose 2 to 12, checker A 2 to 18, checker B 2 to 10, and checker C and
+        tiebreaker-2 2 to 15. All minima are 2; sorted maxima are 10, 12, 12, 15, 15 and 18, giving a median
+        of 13.5 rounded to 14. This contains natural 2 to 6 dKH and avoids allowing the narrowest proposal to
+        determine the ceiling. OATA recommends 10 to 15 dKH for African lake cichlids generally. Maidenhead
+        permits up to 25 dKH, a wider source interval than this decision; that is aquarium advice rather than
+        a demonstrated multiyear limit. FishProfiles gives no KH value, and neither GH, pH nor TDS determines
+        KH. The median remains an uncertain estimate from group keeping practice, not evidence of failure
+        above 14."
+      sources:
+        - *a25
+        - *a22
+        - *a15
+        - *a35
+        - *a36
+        - *a23
+        - *a37
+        - *a38
+        - *a39
+        - *a40
+        - *a41
+        - *a24
+        - *a26
+        - *a27
+        - *a6
+        - *a18
+        - *a20
+        - *a19
+        - *a33
+        - *a31
+        - *a32
+        - *a34
+        - &a50
+          kind: "model-knowledge"
+          title: "Explicit inference from waterbody chemistry and rock kribensis husbandry advice; no measured KH
+            tolerance available"
+          accessed: "2026-10-15"
+        - *a46
+        - &a79
+          kind: "website"
+          title: "Seachem: Malawi/Victoria Buffer"
+          url: "https://www.seachem.com/malawi-victoria-buffer.php"
+          accessed: "2026-10-15"
+          archived: "seachem.com/malawi-victoria-buffer.php/2026-10-14T130539Z"
+        - *a49
+      evidence:
+        - source: *a15
+          value:
+            min: 2
+            max: 6
+          note: "Natural range retained in the derived tolerance. Earlier run's rounded regional aggregate, retained as
+            an inference from the cited lake studies; not a standalone measurement or aquarium survival limit.
+            Natural KH baseline; no aquarium tolerance stated Earlier run's rounded regional aggregate,
+            retained as an inference from the cited lake studies; not a standalone measurement or aquarium
+            survival limit. Natural Lake Victoria range included in the derived tolerance. Earlier run's
+            rounded regional aggregate, retained as an inference from the cited lake studies; not a standalone
+            measurement or aquarium survival limit. Measured natural-water range from the project table, not
+            an aquarium tolerance. Earlier run's rounded regional aggregate, retained as an inference from the
+            cited lake studies; not a standalone measurement or aquarium survival limit. Mandatory natural
+            lake range; establishes habitat inclusion, not the full keeping tolerance. Earlier run's rounded
+            regional aggregate, retained as an inference from the cited lake studies; not a standalone
+            measurement or aquarium survival limit."
+        - source: *a25
+          value: "No KH value reported"
+          note: "The wider tolerance is derived, not stated by the source. Any capped or inferred interval is an earlier
+            agent interpretation; the page states 15 to 30 dH and no KH interval. Any capped or inferred
+            interval is an earlier agent interpretation; the page states 15 to 30 dH and no KH interval."
+        - source: *a26
+          value:
+            min: 2
+            max: 25
+          note: "care sheet says up to 25 dKH The numeric GH interval or lower KH bound here is the earlier agent's
+            inference; the page actually gives only an upper KH recommendation of 25 dKH. The numeric GH
+            interval or lower KH bound here is the earlier agent's inference; the page actually gives only an
+            upper KH recommendation of 25 dKH."
+        - source: *a27
+          value:
+            min: 2
+            max: 18
+          note: "care sheet asks for rift-lake chemistry with crushed coral; derived Any capped or inferred interval is
+            an earlier agent interpretation; the page states 15 to 30 dH and no KH interval. Any capped or
+            inferred interval is an earlier agent interpretation; the page states 15 to 30 dH and no KH
+            interval."
+        - source: *a20
+          value: "no KH range stated"
+          note: "Reports GH and pH advice, plus crushed coral, but no KH value. Any capped or inferred interval is an
+            earlier agent interpretation; the page states 15 to 30 dH and no KH interval. Any capped or
+            inferred interval is an earlier agent interpretation; the page states 15 to 30 dH and no KH
+            interval."
+        - source: *a19
+          value: "no KH range stated"
+          note: "Reports pH advice but no KH value."
+        - source: *a50
+          value:
+            min: 2
+            max: 12
+          note: "Provisional derived aquarium interval; pH and GH advice support adaptation to stronger buffering but do
+            not determine its numeric upper limit."
+        - source: *a46
+          value:
+            min: 10
+            max: 15
+          note: "General African lake cichlid aquarium recommendation applied provisionally to this Lake Victoria trade
+            form."
+        - source: *a22
+          value: *a51
+          note: "Approximate alkalinity equivalents from the compiled lake chemistry, converted from 0.9 to 1.1 meq/L.
+            Natural-water evidence only; not an aquarium limit."
+        - source: *a15
+          value: *a52
+          note: "Nyanza Gulf alkalinity 40 to 72 mg/L as CaCO3 and bicarbonate 1.57 to 1.86 meq/L, converted to dKH.
+            Natural-water evidence only; not an aquarium limit."
+      verification:
+        method: "median"
+        votes:
+          agree: 3
+          total: 6
+  maxSizeCm:
+    value: &a95
+      male: 12
+      female: 10
+    confidence: "low"
+    rationale: "Generator and checkers A and B propose 12 cm males and 10 cm females; checker C proposes 14 and 12
+      cm. The medians are 12 and 10 cm. Maidenhead gives 12 cm without a separate female maximum, FishProfiles
+      gives 12 cm for both sexes, the association gives 14 cm, and Multihobby gives about 11 cm males and 8 cm
+      females. The medians fit between these aquarium observations but remain approximate, especially for
+      females. Bailey's sex-specific standard lengths and FishBase's 10.5 cm SL are retained as uncertain
+      historical comparison records and are not converted to total length."
+    sources:
+      - *a13
+      - &a53
+        kind: "literature"
+        title: "Bailey, M. (1998). Experiences with Ctenochromis sauvagei, Cichlid Room Companion"
+        url: "https://cichlidae.com/article.php?id=HY_ZaIwNz193oxtFVDLosg"
+        accessed: "2026-10-15"
+        archived: "cichlidae.com/article.php/q-e4e2ae5b/2026-10-14T231756Z"
+      - *a26
+      - *a27
+      - *a2
+      - *a5
+      - *a18
+      - *a6
+      - &a54
+        kind: "database"
+        title: "FishBase species summary, Haplochromis sauvagei"
+        url: "https://www.fishbase.se/summary/Haplochromis-sauvagei.html"
+        accessed: "2026-10-15"
+        archived: "fishbase.se/summary/haplochromis-sauvagei.html/2026-10-14T231720Z"
+      - *a19
+      - *a20
+      - *a31
+      - *a33
+      - *a34
+    evidence:
+      - source: *a13
+        value:
+          male: 10.5
+        note: "FishBase maximum standard length, sex not specified separately. Historical sauvagei ecology may include
+          the fish now named H. fischeri; this is comparison evidence unless specimen identity is resolved.
+          Historical sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence
+          unless specimen identity is resolved."
+      - source: *a53
+        value:
+          male: 12
+          female: 10
+        note: "Aquarium adults measured as standard length. Bailey's 1998 fish identity is uncertain under the later
+          name correction; this record does not establish behavior or adult size of rock kribensis. Bailey's
+          1998 fish identity is uncertain under the later name correction; this record does not establish
+          behavior or adult size of rock kribensis."
+      - source: *a26
+        value:
+          male: 12
+          female: 12
+        note: "maximum size, males larger"
+      - source: *a27
+        value:
+          male: 12
+          female: 12
+      - source: *a2
+        value:
+          male: 14
+          female: 14
+      - source: *a5
+        value:
+          male: 10.5
+          female: 10.5
+        note: "Maximum standard length, sex unspecified; total-length and sex-specific conversion is unavailable
+          Historical sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence
+          unless specimen identity is resolved. Historical sauvagei ecology may include the fish now named H.
+          fischeri; this is comparison evidence unless specimen identity is resolved."
+      - source: *a18
+        value:
+          male: 12
+          female: 12
+        note: "Reported potential length, sex-specific"
+      - source: *a6
+        value: 14
+        note: "Species register size estimate"
+      - source: *a54
+        value: 10.5
+        note: "Maximum standard length, male or unspecified. Historical sauvagei ecology may include the fish now
+          named H. fischeri; this is comparison evidence unless specimen identity is resolved. Historical
+          sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence unless
+          specimen identity is resolved."
+      - source: *a19
+        value: 14
+        note: "Species-register size; sex not specified."
+      - source: *a20
+        value:
+          male: 12
+          female: 12
+        note: "Potential size by sex."
+      - source: *a31
+        value:
+          male: 11
+          female: 8
+        note: "Approximate adult lengths from a species-specific keeping account."
+      - source: *a33
+        value:
+          male: 10.2
+        note: "Four-inch adult maximum, sex not separately specified."
+      - source: *a34
+        value:
+          male: 12.7
+        note: "About five-inch adult size, sex not separately specified; generic stock-selector sizes are not species
+          maxima."
+  predation:
+    value: 0
+    confidence: "medium"
+    rationale: "The qualified-majority decision is level 0 with medium confidence: generator, checkers B and C and
+      both tie-breakers propose 0; checker A proposes 1 from size and an assumed opportunity to eat fry. The
+      association and Multihobby describe insects, small invertebrates and attached growth without purposeful
+      fish capture. Neither adult size nor animal feeding establishes regular capture of fish up to 2 cm.
+      Ron's warning about tiny tankmates lacks an observed prey size. Level 0 allows incidental fry capture
+      under the rubric. Old sauvagei diet records remain comparison evidence because the 2008 name correction
+      complicates their identity; GCCA was blocked by HTTP 403."
+    sources:
+      - *a13
+      - *a53
+      - *a2
+      - &a55
+        kind: "database"
+        title: "FishBase, Haplochromis sauvagei"
+        url: "https://www.fishbase.se/summary/Haplochromis-sauvagei.html"
+        accessed: "2026-10-15"
+        archived: "fishbase.se/summary/haplochromis-sauvagei.html/2026-10-14T231720Z"
+      - *a5
+      - &a56
+        kind: "database"
+        title: "Royal Museum for Central Africa, Faunafri entry: Haplochromis sauvagei"
+        url: "https://faunafri.africamuseum.be/cloffa/table/taxon2/view?idtaxon%3Aint=3309"
+        accessed: "2026-10-15"
+        archived: "faunafri.africamuseum.be/cloffa/table/taxon2/view/q-f121fc93/2026-10-14T231757Z"
+      - *a54
+      - *a19
+      - &a57
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Paralabidochromis sauvagei (rock kribensis)"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1778"
+        accessed: "2026-10-15"
+        archived: "ciklid.org/artregister/art.php/q-3dc391b9/2026-10-14T173457Z"
+      - *a31
+      - *a25
+      - *a32
+      - *a33
+      - *a34
+      - &a80
+        kind: "database"
+        title: "FishBase: Haplochromis sauvagei, nominal species used only for comparison"
+        url: "https://www.fishbase.se/summary/Haplochromis-sauvagei.html"
+        accessed: "2026-10-15"
+        archived: "fishbase.se/summary/haplochromis-sauvagei.html/2026-10-14T231720Z"
+      - &a81
+        kind: "catalog-of-fishes"
+        title: "Eschmeyers Catalog of Fishes: Paralabidochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pa\
+          ralabidochromis"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-30db6986/2026-10-14T1\
+          71420Z"
+      - &a82
+        kind: "catalog-of-fishes"
+        title: "Eschmeyers Catalog of Fishes: Haplochromis, sauvagei entry"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ha\
+          plochromis"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-873e9721/2026-10-14T0\
+          94822Z"
+      - &a83
+        kind: "database"
+        title: "Cichlid Room Companion: Paralabidochromis sp. rock kribensis, public page"
+        url: "https://cichlidae.com/species.php?id=obWIiLgZeHJ9v7GxTqVt5A"
+        accessed: "2026-10-15"
+        archived: "cichlidae.com/species.php/q-1e4e93f2/2026-10-14T231809Z"
+      - &a84
+        kind: "literature"
+        title: "Terai et al. (2006). Divergent Selection on Opsins Drives Incipient Speciation in Lake Victoria
+          Cichlids. Contextual search result only; studied species differ from rock kribensis."
+        url: "https://doi.org/10.1371/journal.pbio.0040433"
+        accessed: "2026-10-15"
+        archived: "doi.org/10.1371_journal.pbio.0040433/2026-10-14T232324Z"
+      - &a85
+        kind: "website"
+        title: "GCCA: Paralabidochromis sauvagei, unavailable during this check"
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/victorian-cichlids/164-paralabidochromis-sauvagei.h\
+          tml"
+        accessed: "2026-10-15"
+        offline: true
+      - &a61
+        kind: "archive"
+        title: "cichlids.com forum thread 14713"
+        url: "https://www.cichlids.com/disc/read.php?2,14713"
+        accessed: "2026-10-15"
+      - &a63
+        kind: "archive"
+        title: "cichlids.com forum thread 39542"
+        url: "https://www.cichlids.com/disc/read.php?2,39542"
+        accessed: "2026-10-15"
+      - &a64
+        kind: "archive"
+        title: "cichlids.com forum thread 39544"
+        url: "https://www.cichlids.com/disc/read.php?1,39544"
+        accessed: "2026-10-15"
+      - &a62
+        kind: "archive"
+        title: "cichlids.com forum thread 39711"
+        url: "https://www.cichlids.com/disc/read.php?2,39711"
+        accessed: "2026-10-15"
+      - &a65
+        kind: "archive"
+        title: "cichlids.com forum thread 39835"
+        url: "https://www.cichlids.com/disc/read.php?2,39835"
+        accessed: "2026-10-15"
+      - &a66
+        kind: "archive"
+        title: "cichlids.com forum thread 58635"
+        url: "https://www.cichlids.com/disc/read.php?2,58635"
+        accessed: "2026-10-15"
+      - &a58
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet: aquarium Rock Kribensis"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1778"
+        accessed: "2026-10-15"
+        archived: "ciklid.org/artregister/art.php/q-3dc391b9/2026-10-14T173457Z"
+      - *a45
+      - *a49
+      - &a86
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Paralabidochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pa\
+          ralabidochromis"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-30db6986/2026-10-14T1\
+          71420Z"
+      - &a87
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Haplochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ha\
+          plochromis"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-873e9721/2026-10-14T0\
+          94822Z"
+      - &a59
+        kind: "database"
+        title: "FishBase: Haplochromis sauvagei, nominal species comparison"
+        url: "https://www.fishbase.se/summary/Haplochromis-sauvagei.html"
+        accessed: "2026-10-15"
+        archived: "fishbase.se/summary/haplochromis-sauvagei.html/2026-10-14T231720Z"
+      - &a88
+        kind: "database"
+        title: "Cichlid Room Companion: Haplochromis sauvagei, public summary"
+        url: "https://cichlidae.com/species.php?id=nJgTwjjBWtXwu4khoY2gsQ"
+        accessed: "2026-10-15"
+        archived: "cichlidae.com/species.php/q-f2520496/2026-10-14T231737Z"
+    evidence:
+      - source: *a13
+        value: 0
+        note: "Recorded prey are molluscs and small benthic organisms, with no fish listed. Historical sauvagei
+          ecology may include the fish now named H. fischeri; this is comparison evidence unless specimen
+          identity is resolved."
+      - source: *a53
+        value: 0
+        note: "Captive observations focus on snails and other aquatic organisms. Bailey's 1998 fish identity is
+          uncertain under the later name correction; this record does not establish behavior or adult size of
+          rock kribensis."
+      - source: *a2
+        value: 1
+        note: "feeds on insects and some algae; accepts most foods"
+      - source: *a55
+        value: 1
+        note: "related species eats snails and insect larvae; no fish Historical sauvagei ecology may include the fish
+          now named H. fischeri; this is comparison evidence unless specimen identity is resolved."
+      - source: *a5
+        value: 0
+        note: "Species diet list contains no fish prey Historical sauvagei ecology may include the fish now named H.
+          fischeri; this is comparison evidence unless specimen identity is resolved."
+      - source: *a56
+        value: 0
+        note: "Stomach-content summary lists invertebrates, algae and sponges, not fish Historical sauvagei ecology
+          may include the fish now named H. fischeri; this is comparison evidence unless specimen identity is
+          resolved."
+      - source: *a54
+        value: 0
+        note: "Reported natural diet has no fish prey. Historical sauvagei ecology may include the fish now named H.
+          fischeri; this is comparison evidence unless specimen identity is resolved."
+      - source: *a19
+        value: 0
+        note: "Reports insects and some aufwuchs."
+      - source: *a57
+        value: 0
+        note: "Inferred rubric mapping from insects and some aufwuchs; no explicit claim that fish are never eaten."
+      - source: *a31
+        value: 0
+        note: "Inferred rubric mapping from attached algae and microinvertebrates plus captive insect and crustacean
+          feeding; incidental fry capture remains possible."
+      - source: *a32
+        value: 0
+        note: "Inferred from larval insects and organisms on rock surfaces; no fish prey reported. Insect larvae and
+          biofilm microfauna are described as natural foods; no fish prey reported."
+      - source: *a58
+        value: 0
+        note: "Rubric interpretation of insect and attached-growth feeding in the aquarium entry explicitly linked to
+          rock kribensis; incidental fry capture remains possible."
+      - source: *a45
+        value: 0
+        note: "Rubric interpretation of biofilm grazing and invertebrate foods; no fish prey described."
+      - source: *a25
+        value: 0
+        note: "Omnivorous aquarium diet lists algae and invertebrate foods, without fish prey; interpreted as level 0
+          rather than direct proof that fry are never eaten."
+      - source: *a59
+        value: 0
+        note: "Comparison only: nominal H. sauvagei consumes snails and other small benthic organisms; identity with
+          the trade form is unconfirmed. Historical sauvagei ecology may include the fish now named H.
+          fischeri; this is comparison evidence unless specimen identity is resolved."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value: &a96
+      type: "invertivore"
+      bloatSensitive: false
+      foods:
+        - "gastropods"
+        - "insect larvae"
+        - "copepods"
+        - "other small aquatic invertebrates"
+    confidence: "medium"
+    rationale: "All four votes agree on invertivore with bloatSensitive false, so the unanimous tally is retained
+      at medium confidence, including its food list. The association emphasizes insects with some attached
+      growth, and Multihobby reports biofilm foraging and acceptance of invertebrate foods. FishProfiles and
+      Garnelio use an omnivore label for the varied aquarium menu; those dissenting source labels are
+      retained. Older FishBase, museum and Bailey snail-feeding records may concern the previous sauvagei
+      usage and do not establish specialization in this trade fish. The decided gastropod list is therefore
+      less secure than the general invertebrate category. No read source establishes a specific high-protein
+      bloat syndrome, and false is not proof that overfeeding is harmless. The tally compares type and bloat
+      sensitivity, not food-list equality: generator proposes gastropods, insect larvae, copepods and other
+      small aquatic invertebrates; checker A proposes insects, insect larvae, algae, flakes, pellets and
+      frozen foods; checker B proposes gastropods, insect larvae, copepods, diatoms, algae and sponges;
+      checker C proposes snails, insect larvae, copepods and algae. The decided food list is the generator
+      proposal retained by the tally."
+    sources:
+      - *a13
+      - *a14
+      - *a53
+      - *a2
+      - *a55
+      - *a26
+      - *a27
+      - *a5
+      - *a56
+      - &a60
+        kind: "database"
+        title: "FishBase ecology table: Haplochromis sauvagei"
+        url: "https://fishbase.se/Ecology/Haplochromis_sauvagei"
+        accessed: "2026-10-15"
+        archived: "fishbase.se/ecology/haplochromis_sauvagei/2026-10-14T231755Z"
+      - *a54
+      - *a19
+      - *a31
+      - *a32
+    evidence:
+      - source: *a13
+        value:
+          type: "invertivore"
+          foods:
+            - "gastropods"
+            - "insect larvae"
+            - "copepods"
+            - "diatoms"
+        note: "Listed wild foods include bottom material with small invertebrates and diatoms. Historical sauvagei
+          ecology may include the fish now named H. fischeri; this is comparison evidence unless specimen
+          identity is resolved. Historical sauvagei ecology may include the fish now named H. fischeri; this
+          is comparison evidence unless specimen identity is resolved."
+      - source: *a14
+        value:
+          type: "invertivore"
+          foods:
+            - "insects"
+            - "aufwuchs"
+        note: "Natural feeding is described as insects with some aufwuchs."
+      - source: *a53
+        value:
+          type: "invertivore"
+          foods:
+            - "snails"
+            - "other aquatic organisms"
+        note: "Captive fish consumed snails. Bailey's 1998 fish identity is uncertain under the later name correction;
+          this record does not establish behavior or adult size of rock kribensis. Bailey's 1998 fish identity
+          is uncertain under the later name correction; this record does not establish behavior or adult size
+          of rock kribensis."
+      - source: *a2
+        value:
+          type: "invertivore"
+        note: "insects mainly, some aufwuchs"
+      - source: *a55
+        value:
+          type: "invertivore"
+        note: "gastropods and insect larvae of the related species Historical sauvagei ecology may include the fish
+          now named H. fischeri; this is comparison evidence unless specimen identity is resolved. Historical
+          sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence unless
+          specimen identity is resolved."
+      - source: *a27
+        value:
+          type: "omnivore"
+        note: "care sheet calls it an unpicky omnivore"
+      - source: *a26
+        value:
+          type: "omnivore"
+        note: "flake, granules and frozen foods"
+      - source: *a5
+        value: "invertivore"
+        note: "Mainly gastropods, insecta, copepods and other bottom foods Historical sauvagei ecology may include the
+          fish now named H. fischeri; this is comparison evidence unless specimen identity is resolved.
+          Historical sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence
+          unless specimen identity is resolved."
+      - source: *a56
+        value: "omnivore"
+        note: "Stomach analyses report algae as well as insect larvae, sponges and chironomids Historical sauvagei
+          ecology may include the fish now named H. fischeri; this is comparison evidence unless specimen
+          identity is resolved. Historical sauvagei ecology may include the fish now named H. fischeri; this
+          is comparison evidence unless specimen identity is resolved."
+      - source: *a60
+        value: "invertivore"
+        note: "Feeding type is mainly animal; trophic level estimated at 2.71 Historical sauvagei ecology may include
+          the fish now named H. fischeri; this is comparison evidence unless specimen identity is resolved.
+          Historical sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence
+          unless specimen identity is resolved."
+      - source: *a54
+        value:
+          type: "invertivore"
+          foods:
+            - "gastropods"
+            - "insect larvae"
+            - "copepods"
+            - "diatoms"
+        note: "Historical sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence
+          unless specimen identity is resolved. Historical sauvagei ecology may include the fish now named H.
+          fischeri; this is comparison evidence unless specimen identity is resolved."
+      - source: *a19
+        value:
+          type: "invertivore"
+          foods:
+            - "insects"
+            - "aufwuchs"
+      - source: *a31
+        value:
+          type: "invertivore"
+          foods:
+            - "insect larvae"
+            - "small crustaceans"
+            - "biofilm organisms"
+        note: "Rubric interpretation of the keeping account; it also records algae consumption."
+      - source: *a32
+        value:
+          type: "omnivore"
+          foods:
+            - "insect larvae"
+            - "algae"
+            - "biofilm microfauna"
+        note: "Retailer labels the menu omnivorous and describes invertebrates as the main natural food."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 2
+    confidence: "medium"
+    rationale: "Generator and checkers A and B propose level 2; checker C proposes 3. The rubric assumes enough
+      space and the recommended sex ratio. Multihobby reports a manageable hierarchy and limited aggression
+      away from spawning, while Maidenhead warns of intensified male pursuit during reproduction.
+      FishProfiles' serious injuries concern skewed ratios or breeding conflict. These conditions warrant
+      explicit caution but do not establish persistent harmful aggression in a suitable harem. Bailey's calm
+      multi-male colony is retained with uncertain fish identity rather than used as decisive evidence."
+    sources:
+      - *a53
+      - *a14
+      - *a26
+      - *a27
+      - *a2
+      - *a18
+      - *a6
+      - *a61
+      - *a62
+      - *a63
+      - *a64
+      - *a65
+      - *a66
+      - *a20
+      - *a19
+      - *a31
+    evidence:
+      - source: *a53
+        value: 2
+        note: "Territorial displays and short boundary chases, with no significant injuries in the reported group.
+          Bailey's 1998 fish identity is uncertain under the later name correction; this record does not
+          establish behavior or adult size of rock kribensis. Bailey's 1998 fish identity is uncertain under
+          the later name correction; this record does not establish behavior or adult size of rock kribensis."
+      - source: *a14
+        value: 2
+        note: "Described as a relatively calm cichlid that may live alone or in small groups."
+      - source: *a26
+        value: 2
+        note: "males territorial, outnumber them with females"
+      - source: *a27
+        value: 2
+        note: "breeding males can injure a lone female"
+      - source: *a2
+        value: 1
+        note: "calm species for a cichlid"
+      - source: *a18
+        value: 2
+        note: "Chasing and possible injury are reported around spawning, especially with a single female"
+      - source: *a6
+        value: 2
+        note: "Small groups or solitary occurrence in the wild, consistent with some conspecific spacing"
+      - source: *a20
+        value: 3
+        note: "Reports potentially lethal conflict under skewed sex ratios and breeding aggression."
+      - source: *a19
+        value: 1
+        note: "Describes a comparatively calm cichlid, often solitary or in small groups."
+      - source: *a31
+        value: 2
+        note: "Rubric mapping from manageable hierarchy and increased male conflict during spawning."
+  aggressionHeterospecific:
+    value: 2
+    confidence: "low"
+    rationale: "Generator and checkers A and C propose level 2; checker B proposes 1. Maidenhead and the
+      association recommend calm or robust companions with sight breaks, while Multihobby describes generally
+      restrained behavior. Local territory defense and chasing fit level 2 more closely than display alone.
+      Broad attacks outside the territory are not established; this remains a behavioral interpretation of
+      husbandry accounts."
+    sources:
+      - *a53
+      - *a25
+      - *a26
+      - *a27
+      - *a2
+      - *a18
+      - *a6
+      - *a20
+      - *a19
+    evidence:
+      - source: *a53
+        value: 2
+        note: "Small territories are reported; the score infers local defense. Bailey's 1998 fish identity is
+          uncertain under the later name correction; this record does not establish behavior or adult size of
+          rock kribensis."
+      - source: *a25
+        value: 2
+        note: "This care page suggests mixed tanks with other Victorian cichlids outside breeding bouts."
+      - source: *a26
+        value: 2
+        note: "needs robust but easy-going tankmates"
+      - source: *a27
+        value: 2
+        note: "reasonable tankmate for other Victoria cichlids when not breeding"
+      - source: *a2
+        value: 1
+        note: "keep only with other calm species"
+      - source: *a18
+        value: 1
+        note: "Describes reasonable non-breeding tank compatibility with other cichlids"
+      - source: *a6
+        value: 1
+        note: "Usually found in small groups or alone; no cross-species attack behavior reported"
+      - source: *a20
+        value: 2
+        note: "Says nonbreeding fish can share a tank, with aggression rising during breeding."
+      - source: *a19
+        value: 2
+        note: "Recommends only relatively calm companions."
+  territory:
+    value: &a97
+      size: "small"
+      breedingOnly: false
+    confidence: "low"
+    rationale: "Generator and checker B restrict small territories to breeding; checkers A and C keep them outside
+      breeding too. Takeda and colleagues characterize the identified rock kribensis as territorial rock
+      dwellers without limiting that description to reproduction, and aquarium advice uses several separated
+      rock sites. The decided small territory is an unmeasured husbandry scale, with defense becoming stronger
+      during spawning. Bailey's measured 15 to 20 cm territories are retained only as an older record with
+      unresolved fish identity."
+    sources:
+      - *a53
+      - *a26
+      - *a27
+      - *a5
+      - *a18
+      - *a6
+      - *a12
+      - *a19
+      - *a67
+    evidence:
+      - source: *a53
+        value:
+          size: "small"
+          breedingOnly: true
+        note: "Males held compact territories during courtship. Bailey's 1998 fish identity is uncertain under the
+          later name correction; this record does not establish behavior or adult size of rock kribensis.
+          Bailey's 1998 fish identity is uncertain under the later name correction; this record does not
+          establish behavior or adult size of rock kribensis."
+      - source: *a26
+        value:
+          size: "small"
+        note: "territorial; rock structures to avoid one another"
+      - source: *a27
+        value:
+          size: "small"
+        note: "tanks with many caves to stake out territories"
+      - source: *a18
+        value:
+          size: "small"
+          breedingOnly: true
+        note: "Cave and rock cover is recommended, with aggression associated with spawning"
+      - source: *a6
+        value:
+          size: "small"
+          breedingOnly: true
+        note: "Rock-dwelling littoral fish; typically sparse and not strongly group-forming"
+      - source: *a12
+        value:
+          size: "small"
+          breedingOnly: false
+        note: "Reports territorial rock-dwelling littoral cichlids including this species."
+      - source: *a19
+        value:
+          size: "small"
+          breedingOnly: false
+        note: "Describes a rocky-shore species found in small groups or alone."
+  habitatZones:
+    value: &a98
+      - "rock"
+      - "sand"
+    confidence: "medium"
+    rationale: "All checkers propose rock and sand; generator adds openWater from Bailey's aquarium shoal. The
+      identified fish is a rocky littoral species in Takeda and colleagues' field study, and contemporary
+      aquarium sources provide sandy ground alongside stone cover. Swimming above the bottom does not
+      establish a wild open-water habitat requirement, especially when the historical captive fish identity is
+      uncertain. Rock and sand are retained; the wider three-zone proposal remains in the disagreements."
+    sources:
+      - *a13
+      - *a14
+      - *a53
+      - *a2
+      - *a26
+      - *a5
+      - *a56
+      - *a6
+      - &a68
+        kind: "database"
+        title: "Biotope Aquarium Project: Haplochromis sauvagei"
+        url: "https://biotopeaquariumproject.com/fish/haplochromis-sauvagei-nkhardina/"
+        accessed: "2026-10-15"
+        archived: "biotopeaquariumproject.com/fish/haplochromis-sauvagei-nkhardina/2026-10-14T231836Z"
+      - *a54
+      - *a12
+      - *a67
+      - *a31
+      - *a32
+    evidence:
+      - source: *a13
+        value:
+          - "rock"
+          - "sand"
+        note: "Littoral hard bottom and exposed sandy beaches. Historical sauvagei ecology may include the fish now
+          named H. fischeri; this is comparison evidence unless specimen identity is resolved. Historical
+          sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence unless
+          specimen identity is resolved."
+      - source: *a14
+        value:
+          - "rock"
+        note: "The record describes a rock-dwelling fish."
+      - source: *a53
+        value:
+          - "rock"
+          - "openWater"
+        note: "Captive territories were on the substrate while the nonbreeding shoal occupied water above it. Bailey's
+          1998 fish identity is uncertain under the later name correction; this record does not establish
+          behavior or adult size of rock kribensis. Bailey's 1998 fish identity is uncertain under the later
+          name correction; this record does not establish behavior or adult size of rock kribensis."
+      - source: *a2
+        value:
+          - "rock"
+        note: "lives at 1 to 6 m"
+      - source: *a26
+        value:
+          - "rock"
+          - "sand"
+        note: "sandy littoral zone where rocks give shelter"
+      - source: *a5
+        value:
+          - "rock"
+          - "sand"
+        note: "Hard littoral bottom, frequent over sandy beaches Historical sauvagei ecology may include the fish now
+          named H. fischeri; this is comparison evidence unless specimen identity is resolved. Historical
+          sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence unless
+          specimen identity is resolved."
+      - source: *a56
+        value:
+          - "rock"
+          - "sand"
+        note: "Shallow shore habitat often includes rocks; rocks are not obligatory Historical sauvagei ecology may
+          include the fish now named H. fischeri; this is comparison evidence unless specimen identity is
+          resolved. Historical sauvagei ecology may include the fish now named H. fischeri; this is comparison
+          evidence unless specimen identity is resolved."
+      - source: *a6
+        value:
+          - "rock"
+        note: "Describes a widespread rock-dwelling Lake Victoria cichlid"
+      - source: *a68
+        value:
+          - "sand"
+        note: "Littoral hard substrate, with preference for sand"
+      - source: *a54
+        value:
+          - "rock"
+          - "sand"
+        note: "Hard littoral bottom and exposed sandy beaches. Historical sauvagei ecology may include the fish now
+          named H. fischeri; this is comparison evidence unless specimen identity is resolved. Historical
+          sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence unless
+          specimen identity is resolved."
+      - source: *a12
+        value:
+          - "rock"
+        note: "Territorial rocky-shore habitat."
+  social:
+    value: &a99
+      structure: "harem"
+      ratio: 3
+    confidence: "medium"
+    rationale: "Generator proposes a group of at least four, checker A a harem with two females per male, and
+      checkers B and C a harem with three. Maidenhead recommends at least two females per male and Multihobby
+      describes one male with three or four females. One male and three females follows the more explicit
+      breeding arrangement while meeting the minimum of two. It is a captive social unit rather than a claim
+      of a permanent wild harem. Bailey's multi-male group and CRC's mating summary remain cited with their
+      identity and interpretation limits."
+    sources:
+      - *a53
+      - *a14
+      - *a26
+      - *a27
+      - &a69
+        kind: "database"
+        title: "Cichlid Room Companion species page: Haplochromis sauvagei"
+        url: "https://cichlidae.com/species.php?id=nJgTwjjBWtXwu4khoY2gsQ"
+        accessed: "2026-10-15"
+        archived: "cichlidae.com/species.php/q-f2520496/2026-10-14T231737Z"
+      - *a18
+      - *a6
+      - *a20
+      - *a19
+      - &a70
+        kind: "database"
+        title: "Cichlid Room Companion species profile, Haplochromis sauvagei"
+        url: "https://cichlidae.com/species.php?id=nJgTwjjBWtXwu4khoY2gsQ"
+        accessed: "2026-10-15"
+        archived: "cichlidae.com/species.php/q-f2520496/2026-10-14T231737Z"
+      - *a31
+      - *a33
+      - *a34
+    evidence:
+      - source: *a53
+        value:
+          structure: "group"
+          minGroup: 4
+        note: "Several males were held in one aquarium with females. Bailey's 1998 fish identity is uncertain under
+          the later name correction; this record does not establish behavior or adult size of rock kribensis.
+          Bailey's 1998 fish identity is uncertain under the later name correction; this record does not
+          establish behavior or adult size of rock kribensis."
+      - source: *a14
+        value:
+          structure: "group"
+          minGroup: 4
+        note: "Wild fish are reported alone or in small groups; the minimum of four is a husbandry interpretation."
+      - source: *a26
+        value:
+          structure: "harem"
+          ratio: 2
+        note: "2 or more females per male"
+      - source: *a27
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "several females per male"
+      - source: *a69
+        value:
+          structure: "harem"
+        note: "Polygynandrous mating system"
+      - source: *a18
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "Recommends several females per male"
+      - source: *a6
+        value:
+          structure: "group"
+        note: "Wild fish may be solitary or occur in small groups"
+      - source: *a20
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "Advises several females per male."
+      - source: *a19
+        value:
+          structure: "group"
+          minGroup: 3
+        note: "Reports singles or small groups in the lake, not an aquarium ratio."
+      - source: *a70
+        value: "polygynandrous"
+        note: "Public profile's mating-system summary."
+      - source: *a31
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "Keeping account describes one male with three or four females."
+  speciesOnly:
+    value: false
+    confidence: "medium"
+    rationale: "All four proposals are false and the unanimous tally retains medium confidence. The association
+      and Maidenhead allow carefully chosen calm or robust companions; FishProfiles also considers mixed
+      stocking outside spawning periods. Those are conditional recommendations, not evidence that every
+      Victorian or Malawi species is suitable. A breeding colony can be kept separately without making
+      species-only housing obligatory."
+    sources:
+      - *a25
+      - *a14
+      - *a26
+      - *a27
+      - *a18
+      - *a6
+      - *a19
+      - *a20
+    evidence:
+      - source: *a25
+        value: false
+        note: "The page discusses keeping the fish with other Victorian cichlids and mbuna."
+      - source: *a14
+        value: false
+        note: "It allows suitable calm companion species."
+      - source: *a26
+        value: false
+        note: "easy-going mbuna and Victoria cichlids suit it"
+      - source: *a27
+        value: false
+        note: "reasonable with other Victoria cichlids and mbuna"
+      - source: *a18
+        value: false
+        note: "Reports possible mixed-species keeping outside breeding periods"
+      - source: *a19
+        value: false
+        note: "Allows other species when their temperament is calm."
+      - source: *a20
+        value: false
+        note: "Describes reasonable tankmates outside breeding."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: "low"
+    rationale: "All four proposals are empty and the unanimous tally retains low confidence. No curated group
+      contains the decided name or its trade combinations, and no reviewed source identifies a crossing
+      partner for rock kribensis. Multihobby warns generally of mixing Victorian cichlids, and Aquarist Atlas
+      claims crossing with other haplochromines without naming a pair or giving a traceable case. The genetic
+      study identifies a distinct sampled cluster but does not demonstrate universal reproductive isolation.
+      Empty means no supported group was located, not that hybridization is impossible."
+    sources:
+      - &a71
+        kind: "database"
+        title: "Curated hybrid group register, data/species/hybrid-groups.yaml"
+      - &a72
+        kind: "database"
+        title: "Cichlid Room Companion species record: Haplochromis sauvagei"
+        url: "https://cichlidae.com/species.php?id=nJgTwjjBWtXwu4khoY2gsQ"
+        accessed: "2026-10-15"
+        archived: "cichlidae.com/species.php/q-f2520496/2026-10-14T231737Z"
+      - *a3
+      - *a26
+      - *a4
+      - *a69
+      - *a61
+      - *a62
+      - &a73
+        kind: "database"
+        title: "data/species/hybrid-groups.yaml, curated hybrid groups checked for Haplochromis sauvagei"
+        accessed: "2026-10-13"
+      - *a12
+      - *a10
+      - *a31
+      - *a67
+    evidence:
+      - source: *a71
+        value: []
+        note: "No existing group includes this valid name or its old combination."
+      - source: *a72
+        value: []
+        note: "The public record reports maternal mouthbrooding but no specific hybrid pair."
+      - source: *a26
+        value: []
+        note: "no cross is mentioned"
+      - source: *a3
+        value: []
+        note: "no cross is mentioned on the public page The public entry provides taxonomy and an original reference
+          only; no husbandry summary was accessible. The public entry provides taxonomy and an original
+          reference only; no husbandry summary was accessible."
+      - source: *a69
+        value: []
+        note: "Public species page gives no hybridization report"
+      - source: *a4
+        value: []
+        note: "Catalog records taxonomy only; no hybrid group or cross is reported"
+      - source: *a73
+        value: []
+        note: "No group lists Haplochromis sauvagei."
+      - source: *a12
+        value: []
+        note: "Study reports genetic separation for this littoral species, not a cross."
+      - source: *a10
+        value: []
+        note: "Broad crossing claim without a named partner or supporting report."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value: &a100
+      baseColors:
+        - "red"
+        - "yellow"
+        - "blue"
+        - "black"
+        - "white"
+        - "orange"
+        - "green"
+      pattern: "mixed"
+    confidence: "medium"
+    rationale: "Generator and checker B propose blue, yellow and red; checker A red, yellow and white; checker C
+      adds black to red, yellow and blue. The association describes a red lower body and a yellow or white
+      upper body, with red and blue-black males in other populations. These colors are merged across reported
+      populations rather than treated as one universal male pattern. Mixed retains changing horizontal and
+      checker-like markings; females are often yellow. Imperial Tropicals also records orange and green males,
+      and Rons records orange; these repeated observations expand the merged male palette."
+    sources:
+      - *a53
+      - *a14
+      - *a25
+      - *a2
+      - *a27
+      - *a18
+      - *a6
+      - *a69
+      - *a19
+      - *a20
+      - *a33
+      - *a34
+    evidence:
+      - source: *a14
+        value:
+          baseColors:
+            - "red"
+            - "yellow"
+            - "blue"
+          pattern: "mixed"
+        note: "Register describes yellow, red and blue-black populations with variable patterning."
+      - source: *a25
+        value:
+          baseColors:
+            - "red"
+            - "yellow"
+            - "blue"
+          pattern: "mixed"
+        note: "Aquarium page reports red, yellow and blue male coloration."
+      - source: *a2
+        value:
+          baseColors:
+            - "red"
+            - "yellow"
+            - "white"
+        note: "red belly and yellow or white back"
+      - source: *a27
+        value:
+          baseColors:
+            - "red"
+            - "yellow"
+            - "blue"
+        note: "striped and spotted"
+      - source: *a18
+        value:
+          baseColors:
+            - "red"
+            - "yellow"
+            - "blue"
+          pattern: "mixed"
+        note: "Male colors vary; body markings include bars and a checkerboard phase"
+      - source: *a6
+        value:
+          baseColors:
+            - "red"
+            - "yellow"
+            - "blue"
+          pattern: "mixed"
+        note: "Males vary among populations; yellow females"
+      - source: *a19
+        value:
+          baseColors:
+            - "red"
+            - "yellow"
+            - "blue"
+            - "black"
+          pattern: "mixed"
+        note: "Notes variable male colors and changing markings."
+      - source: *a20
+        value:
+          baseColors:
+            - "red"
+            - "yellow"
+            - "blue"
+          pattern: "mixed"
+        note: "Reports red, yellow and blue coloration with stripes and spots."
+      - source: *a33
+        value:
+          baseColors:
+            - "red"
+            - "orange"
+            - "yellow"
+            - "green"
+        note: "Adult male colors in the breeder account."
+      - source: *a34
+        value:
+          baseColors:
+            - "red"
+            - "orange"
+            - "yellow"
+        note: "Adult male colors in the retailer account."
+  feedingSpeed:
+    value: "normal"
+    confidence: "low"
+    rationale: "All four proposals are normal. The read sources describe ready food acceptance, and Multihobby
+      reports an eager appetite, but none supplies a comparison of feeding pace with tankmates. Normal remains
+      a working estimate and should not be mistaken for a measured competition advantage."
+    sources:
+      - *a53
+      - *a14
+      - *a27
+      - *a18
+      - *a6
+      - *a54
+      - *a19
+      - *a31
+    evidence:
+      - source: *a53
+        value: "normal"
+        note: "Fish accepted a range of foods; the account gives no speed comparison. Bailey's 1998 fish identity is
+          uncertain under the later name correction; this record does not establish behavior or adult size of
+          rock kribensis. Bailey's 1998 fish identity is uncertain under the later name correction; this
+          record does not establish behavior or adult size of rock kribensis."
+      - source: *a27
+        value: "normal"
+        note: "unpicky eater, no hasty feeding reported"
+      - source: *a18
+        value: "normal"
+        note: "Broad range of accepted prepared and animal foods; no unusually rapid feeding described"
+      - source: *a54
+        value: "normal"
+        note: "Diet data only; feeding speed is an inference. Historical sauvagei ecology may include the fish now
+          named H. fischeri; this is comparison evidence unless specimen identity is resolved. Historical
+          sauvagei ecology may include the fish now named H. fischeri; this is comparison evidence unless
+          specimen identity is resolved."
+      - source: *a19
+        value: "normal"
+        note: "Accepts varied aquarium foods; pace not stated."
+  minTank:
+    value: &a101
+      volumeL: 150
+      lengthCm: 100
+      depthCm: 40
+    confidence: "low"
+    rationale: "Generator proposes 200 L, 120 cm length and 38 cm depth; checkers A and B 150 L, 100 cm and 40 cm;
+      checker C 150 L, 100 cm and 45 cm. Component medians are 150 L, 100 cm and 40 cm. The association states
+      150 L and 100 cm; Zoopet gives 150 L and 90 cm, and Imperial Tropicals reports breeding in 40 US
+      gallons, about 151 L. Multihobby asks for more than 150 L for a male with three or four females, while
+      Garnelio recommends 300 L. The settled footprint is a minimum for one male and three females with
+      divided rock sites; additional territorial males or substantial tankmates call for more space. Depth is
+      inferred and not a published measurement. Bailey's larger multi-male tank has unresolved fish identity
+      and does not define this harem minimum."
+    sources:
+      - *a14
+      - *a53
+      - *a2
+      - *a6
+      - *a19
+      - *a21
+      - *a20
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+    evidence:
+      - source: *a14
+        value:
+          volumeL: 150
+          lengthCm: 100
+        note: "Association minimum; tank depth is not stated."
+      - source: *a53
+        value:
+          volumeL: 213
+          lengthCm: 122
+          depthCm: 38
+        note: "Reported tank dimensions of a multi-male captive group. Bailey's 1998 fish identity is uncertain under
+          the later name correction; this record does not establish behavior or adult size of rock kribensis.
+          Bailey's 1998 fish identity is uncertain under the later name correction; this record does not
+          establish behavior or adult size of rock kribensis."
+      - source: *a2
+        value:
+          volumeL: 150
+          lengthCm: 100
+          depthCm: 40
+        note: "100 cm and 150 L, depth assumed"
+      - source: *a6
+        value:
+          volumeL: 150
+          lengthCm: 100
+          depthCm: 40
+        note: "Source gives volume and length; depth is inferred"
+      - source: *a19
+        value:
+          volumeL: 150
+          lengthCm: 100
+          depthCm: 45
+        note: "Source states 150 litres and 100 cm; depth is my footprint estimate."
+      - source: *a21
+        value:
+          volumeL: 150
+          lengthCm: 90
+          depthCm: 40
+        note: "Source states 150 litres and 90 cm; depth estimated."
+      - source: *a20
+        value:
+          volumeL: 151
+          lengthCm: 91
+          depthCm: 46
+        note: "Approximate conversion of its 40 US gallon recommendation."
+      - source: *a31
+        value:
+          volumeL: 150
+        note: "Lower reference point only; the account actually requires more than 150 L for a male with three or four
+          females."
+      - source: *a32
+        value:
+          volumeL: 300
+        note: "Detailed retail care recommendation; its summary mentions 250 to 300 L and about 120 cm."
+      - source: *a33
+        value:
+          volumeL: 151.4
+        note: "Forty US gallons converted to litres; footprint not given."
+      - source: *a34
+        value:
+          volumeL: 208.2
+        note: "Fifty-five US gallon recommendation converted to litres; footprint not given."
+  lifespanYears:
+    value: &a102
+      min: 4
+      max: 4
+    confidence: "low"
+    rationale: "Generator and checkers A and B estimate 5 to 8 years from general cichlid knowledge; checker C
+      estimates 8 to 10. Their component median is 5 to 8 years, but none is supported by a species longevity
+      observation. The read Garnelio profile explicitly gives an approximate life expectancy of four years.
+      This direct species estimate replaces the unsupported median. A point of four represents the source's
+      rough expectation, not a proven biological maximum or evidence that older fish are impossible; no
+      observed age distribution is available."
+    sources:
+      - &a75
+        kind: "model-knowledge"
+        title: "General cichlid lifespan estimate"
+      - &a74
+        kind: "model-knowledge"
+        title: "Typical lifespan of small haplochromine cichlids"
+      - &a76
+        kind: "model-knowledge"
+        title: "General husbandry estimate for a medium-sized Lake Victoria haplochromine"
+      - *a32
+    evidence:
+      - source: *a74
+        value:
+          min: 5
+          max: 8
+      - source: *a75
+        value:
+          min: 5
+          max: 8
+        note: "Estimate only; no species-specific lifespan record found"
+      - source: *a76
+        value:
+          min: 8
+          max: 10
+        note: "Estimate only; no species-specific longevity study was found."
+      - source: *a32
+        value:
+          min: 4
+          max: 4
+        note: "Approximate retail life-expectancy figure, without a documented longevity study."
+  breeding:
+    value: "maternal-mouthbrooder"
+    confidence: "high"
+    rationale: "All four proposals agree. The association, Maidenhead, FishProfiles, Multihobby and current
+      breeders describe females carrying eggs or fry orally, providing several independent confirmations.
+      Brooding duration differs between accounts and temperatures. Older records under sauvagei remain cited
+      but are not required to establish the breeding mode."
+    sources:
+      - *a13
+      - *a72
+      - *a53
+      - *a2
+      - *a26
+      - *a27
+      - *a55
+      - *a69
+      - *a18
+      - *a70
+      - *a19
+      - *a20
+      - *a31
+      - *a33
+      - *a34
+    evidence:
+      - source: *a72
+        value: "maternal-mouthbrooder"
+        note: "The public species entry explicitly records maternal mouthbrooding."
+      - source: *a53
+        value: "maternal-mouthbrooder"
+        note: "Captive females carried eggs and fry. Bailey's 1998 fish identity is uncertain under the later name
+          correction; this record does not establish behavior or adult size of rock kribensis. Bailey's 1998
+          fish identity is uncertain under the later name correction; this record does not establish behavior
+          or adult size of rock kribensis."
+      - source: *a2
+        value: "maternal-mouthbrooder"
+        note: "brood time 17 to 18 days"
+      - source: *a26
+        value: "maternal-mouthbrooder"
+        note: "female picks up the eggs"
+      - source: *a27
+        value: "maternal-mouthbrooder"
+        note: "female carries eggs 3 to 4 weeks"
+      - source: *a55
+        value: "maternal-mouthbrooder"
+        note: "related species is a mouthbrooder Historical sauvagei ecology may include the fish now named H.
+          fischeri; this is comparison evidence unless specimen identity is resolved. Historical sauvagei
+          ecology may include the fish now named H. fischeri; this is comparison evidence unless specimen
+          identity is resolved."
+      - source: *a69
+        value: "maternal-mouthbrooder"
+      - source: *a18
+        value: "maternal-mouthbrooder"
+        note: "Female carries the brood for several weeks"
+      - source: *a70
+        value: "maternal-mouthbrooder"
+        note: "Public species summary states maternal mouthbrooding."
+      - source: *a19
+        value: "maternal-mouthbrooder"
+        note: "Reports mouthbrooding and a 17 to 18 day brood period."
+      - source: *a20
+        value: "maternal-mouthbrooder"
+        note: "Reports female oral incubation."
+  beginnerSuitability:
+    value: "moderate"
+    confidence: "medium"
+    rationale: "All four proposals are moderate. The association rates care at an intermediate level; Maidenhead
+      requires deliberate territorial stocking, and Multihobby reports adaptable feeding and uncomplicated
+      breeding. Biotope Aquarium Project uses demanding and Imperial Tropicals uses beginner. Moderate
+      balances those source labels with the need to manage courtship, sex ratio and stable water, rather than
+      assuming uncomplicated feeding makes any first aquarium suitable."
+    sources:
+      - *a53
+      - *a14
+      - *a2
+      - *a26
+      - *a6
+      - *a68
+      - *a18
+      - *a19
+      - *a21
+      - *a31
+      - *a33
+    evidence:
+      - source: *a2
+        value: "moderate"
+        note: "difficulty 3 of 5"
+      - source: *a26
+        value: "moderate"
+        note: "specialist community tank"
+      - source: *a6
+        value: "moderate"
+        note: "Association difficulty rating is medium"
+      - source: *a68
+        value: "demanding"
+        note: "Biotope project difficulty rating"
+      - source: *a19
+        value: "moderate"
+        note: "Association assigns an intermediate care rating."
+      - source: *a21
+        value: "moderate"
+        note: "Lists a low-to-moderate difficulty rating."
+partners:
+  suitable:
+    - species: "Synodontis species"
+      reason: "Current breeder advice names these catfish as possible companions occupying different shelter and
+        feeding niches."
+      condition: "Select a robust, similarly sized species with overlapping water tolerances and use more space than
+        the harem minimum."
+    - species: "Lake Malawi peacocks"
+      reason: "Maidenhead and Imperial Tropicals report compatibility with selected less aggressive peacocks."
+      condition: "Only with compatible diet, water tolerances and adult size in a larger tank with distinct areas."
+  unsuitable:
+    - species: "Aggressive rock-territorial cichlids"
+      reason: "Persistent attackers may overwhelm this relatively calm fish or monopolize refuges."
+    - species: "Tiny or delicate community fish"
+      reason: "Breeding pursuit can stress or injure fragile fish; incidental fry capture remains possible at
+        predation level 0."
+    - species: "Similar-looking Lake Victoria haplochromines"
+      reason: "Rivalry and broad husbandry warnings justify caution when maintaining breeding lines; no named
+        crossing group has been established."
+profile:
+  overview:
+    text: "Rock kribensis is the aquarium name for a colorful Lake Victoria haplochromine. The Catalog accepts
+      Haplochromis sauvagei, and a later genetic study explicitly connects rock kribensis with that nominal
+      species. Some aquarium registers and CRC still retain an undescribed label. This profile follows the
+      accepted species name while preserving the requested trade-form identifier. It should not be confused
+      with West African Pelvicachromis kribensis."
+    sources:
+      - *a1
+      - *a77
+      - *a4
+      - *a7
+      - *a3
+      - *a11
+      - *a78
+      - *a67
+      - *a9
+      - *a2
+  habitat:
+    text: "Identified rock kribensis populations occupy the Lake Victoria rocky littoral. The association reports
+      fish at about 1 to 6 m around shores and islands, including Makobe Island, Mwanza Gulf and Entebbe.
+      Sandy areas between stable stones provide usable ground and shelter. One nearshore study recorded 24.9
+      to 32.3 C across sheltered bays; the high local observation is outside the typical regional planning
+      envelope and is not a keeping target. Natural lake chemistry is dilute: 1 to 3 dGH and 2 to 6 dKH, with
+      a regional temperature envelope of 22 to 30 C and pH 6.8 to 9.4. These bounds combine different sites
+      and seasons; they do not describe a daily cycle to reproduce in one tank. Older reports of sand-dwelling
+      snail specialists under sauvagei may refer to H. fischeri."
+    sources:
+      - *a13
+      - *a14
+      - *a53
+      - *a2
+      - *a26
+      - *a5
+      - *a56
+      - *a6
+      - *a68
+      - *a54
+      - *a12
+      - *a67
+      - *a31
+      - *a32
+      - *a22
+      - *a15
+      - *a35
+      - *a36
+      - *a23
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a24
+  sizeAndGrowth:
+    text: "Use approximately 12 cm for an adult male and 10 cm for a female when planning stock. Modern aquarium
+      accounts differ: one keeper reports about 11 and 8 cm by sex, while general profiles give 12 to 14 cm
+      without reliable sex separation. The chosen maxima are approximate. FishBase and an older breeding
+      article report standard lengths, which exclude the tail, but their historical sauvagei identification
+      needs care. No species-specific growth timetable or documented lifespan distribution was established;
+      the only explicit longevity estimate found is about four years and has low confidence."
+    sources:
+      - *a13
+      - *a53
+      - *a26
+      - *a27
+      - *a2
+      - *a5
+      - *a18
+      - *a6
+      - *a54
+      - *a19
+      - *a20
+      - *a31
+      - *a33
+      - *a34
+      - *a75
+      - *a74
+      - *a76
+      - *a32
+  husbandry:
+    text: "The minimum planning unit is one male with three females in about 150 L, at least 100 cm long and about
+      40 cm deep. Divide the bottom with secure rockwork and several retreats, leaving swimming room between
+      the structures. The 40 cm depth is an inferred footprint. More males or substantial tankmates need
+      additional room. Use efficient biological filtration, aeration and regular partial water changes.
+      Husbandry recommendations commonly favor the mid-20s C and pH around 7 to 8.5. Decided tolerances are 22
+      to 30 C, pH 6.8 to 9.5, 1 to 30 dGH and 2 to 14 dKH; the broad chemistry intervals are uncertain
+      planning allowances, not preferred targets or measured failure thresholds."
+    sources:
+      - *a14
+      - *a53
+      - *a2
+      - *a6
+      - *a19
+      - *a21
+      - *a20
+      - *a31
+      - *a32
+      - *a33
+      - *a34
+      - *a13
+      - *a25
+      - *a26
+      - *a27
+      - *a18
+      - *a22
+      - *a15
+      - *a23
+      - *a24
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a45
+      - *a46
+      - *a49
+      - *a50
+      - *a79
+  socialBehavior:
+    text: "A suitable harem develops a hierarchy, with males defending rock sites and intensifying courtship
+      during spawning. Several females reduce concentrated pursuit of one fish. Local chasing fits aggression
+      level 2 toward both conspecifics and other species, although crowded tanks or skewed ratios can produce
+      more serious conflict. Provide distinct retreats and watch individuals that remain hidden, lose
+      condition or develop damaged fins. A small territory is a husbandry interpretation; the available field
+      account does not restrict territorial behavior to breeding."
+    sources:
+      - *a53
+      - *a14
+      - *a26
+      - *a27
+      - *a69
+      - *a18
+      - *a6
+      - *a20
+      - *a19
+      - *a70
+      - *a31
+      - *a33
+      - *a34
+      - *a2
+      - *a61
+      - *a62
+      - *a63
+      - *a64
+      - *a65
+      - *a66
+      - *a25
+      - *a5
+      - *a12
+      - *a67
+  diet:
+    text: "The decided feeding category is invertivore. Species-specific accounts emphasize insect larvae and
+      other small animals among attached growth, with algae also taken. Offer suitably sized pellets or flakes
+      and varied invertebrate foods, with some vegetable material. The retained feature list includes
+      gastropods and copepods, but the older detailed snail-feeding records under sauvagei have uncertain
+      identity after the taxonomic correction. Those records do not justify making snails the essential
+      staple. No specific bloat sensitivity was established. Predation level 0 permits incidental fry capture
+      and does not guarantee safety for released fry."
+    sources:
+      - *a13
+      - *a14
+      - *a53
+      - *a2
+      - *a55
+      - *a26
+      - *a27
+      - *a5
+      - *a56
+      - *a60
+      - *a54
+      - *a19
+      - *a31
+      - *a32
+      - *a57
+      - *a25
+      - *a33
+      - *a34
+      - *a80
+      - *a81
+      - *a82
+      - *a83
+      - *a84
+      - *a85
+      - *a61
+      - *a63
+      - *a64
+      - *a62
+      - *a65
+      - *a66
+      - *a58
+      - *a45
+      - *a49
+      - *a86
+      - *a87
+      - *a59
+      - *a88
+  breeding:
+    text: "Females mouthbrood the eggs and developing young, while the male defends and displays from a spawning
+      site. Accounts report roughly 17 days to four weeks of carrying, depending on conditions and the stage
+      counted. Reported broods vary from around 20 to 30 to more than 40 young. Give brooding females quiet
+      refuge and avoid unnecessary handling. Newly independent fry can take very small invertebrate foods and
+      finely sized prepared feed. The recommended harem describes aquarium management rather than a permanent
+      pair bond."
+    sources:
+      - *a13
+      - *a72
+      - *a53
+      - *a2
+      - *a26
+      - *a27
+      - *a55
+      - *a69
+      - *a18
+      - *a70
+      - *a19
+      - *a20
+      - *a31
+      - *a33
+      - *a34
+      - *a14
+      - *a6
+  sexing:
+    text: "Adult males tend to grow larger and display stronger color than females. Red and yellow are common, but
+      the association also records white-backed or blue-black males and red forms; a current breeder
+      additionally reports orange and green males. Markings change with dominance and disturbance, sometimes
+      showing horizontal lines and sometimes a checker-like pattern. Females are often yellow or subdued in
+      color. Egg spots and adult behavior can help with sexing, but color in juveniles or stressed fish can
+      mislead."
+    sources:
+      - *a53
+      - *a14
+      - *a25
+      - *a2
+      - *a27
+      - *a18
+      - *a6
+      - *a69
+      - *a19
+      - *a20
+      - *a33
+      - *a34
+      - *a31
+  compatibility:
+    text: "Species-only housing is optional: carefully selected calm, robust companions can share a sufficiently
+      large tank when water tolerances and diets overlap. Current breeder advice includes selected Malawi
+      peacocks and Synodontis, rather than every member of those groups. Avoid fish that crowd the same sites
+      or persistently attack quieter fish. Tiny or delicate companions can suffer during breeding disputes
+      even though purposeful fish predation is not established. No supported named hybrid group was located.
+      General warnings about mixing Victorian breeding lines remain relevant, but they do not establish a
+      documented cross with any particular species."
+    sources:
+      - *a25
+      - *a14
+      - *a26
+      - *a27
+      - *a18
+      - *a6
+      - *a19
+      - *a20
+      - *a71
+      - *a72
+      - *a3
+      - *a4
+      - *a69
+      - *a61
+      - *a62
+      - *a73
+      - *a12
+      - *a10
+      - *a31
+      - *a67
+      - *a33
+      - *a34
+  problems:
+    text: "The main documented husbandry concerns are concentrated courtship pressure, inadequate refuge and
+      unstable water quality. Secure stones against digging and check that pursued females can escape view.
+      Loss of appetite, rapid breathing, persistent hiding or damaged fins warrant attention to the stock and
+      water conditions. General African-lake hard-water advice should not be mistaken for Lake Victoria
+      measurements. Published GH and KH recommendations differ greatly, and the decided upper bounds remain
+      uncertain. Identification matters when using older sauvagei records: ecological and breeding
+      observations made before the corrected name may concern another fish. No species-specific disease
+      syndrome was confirmed."
+    sources:
+      - *a53
+      - *a14
+      - *a26
+      - *a27
+      - *a2
+      - *a18
+      - *a6
+      - *a61
+      - *a62
+      - *a63
+      - *a64
+      - *a65
+      - *a66
+      - *a20
+      - *a19
+      - *a31
+      - *a25
+      - *a22
+      - *a15
+      - *a35
+      - *a36
+      - *a23
+      - *a37
+      - *a38
+      - *a39
+      - *a40
+      - *a41
+      - *a24
+      - *a32
+      - *a33
+      - *a45
+      - *a46
+      - *a49
+      - *a34
+      - *a50
+      - *a79
+      - *a67
+provenance:
+  runs:
+    - role: "generator"
+      model: "gpt-6-luna"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "claude-sonnet-5-5"
+      date: "2026-10-15"
+    - role: "checker"
+      model: "gpt-6-luna"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6-luna"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-15"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "adjudicator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-15"
+  disagreements:
+    - field: "status"
+      proposals:
+        - by: "generator"
+          value: "described"
+        - by: "checker-a"
+          value: "undescribed"
+        - by: "checker-b"
+          value: "described"
+        - by: "checker-c"
+          value: "described"
+      decision: "described"
+      rationale: "The Catalog accepts Haplochromis sauvagei and records rediscovery of its original holotype; its
+        Paralabidochromis list contains only P. victoriae. Takeda et al. (2013) explicitly identify their rock
+        kribensis as H. sauvagei and distinguish it from sauvagei sensu Greenwood, now H. fischeri. NCBI
+        independently records the same name correction. This supports described status despite checker A, both
+        tie-breakers, the trade-form registry and CRC retaining an undescribed form. The separate CRC
+        trade-form page and the association's inconsistent naming remain cited. The identification follows the
+        read 2013 study, which cites the Seegers (2008) revision, alongside the Catalog and NCBI notes. The trade
+        name rock kribensis is a trade form of this species and points to this profile."
+    - field: "taxonomy.validName"
+      proposals:
+        - by: "generator"
+          value: "Haplochromis sauvagei"
+        - by: "checker-a"
+          value: "Paralabidochromis sp. 'rock kribensis'"
+        - by: "checker-b"
+          value: "Haplochromis sauvagei"
+        - by: "checker-c"
+          value: "Haplochromis sauvagei"
+      decision: "Haplochromis sauvagei"
+      rationale: "The Catalog accepts Haplochromis sauvagei and records rediscovery of its original holotype; its
+        Paralabidochromis list contains only P. victoriae. Takeda et al. (2013) explicitly identify their rock
+        kribensis as H. sauvagei and distinguish it from sauvagei sensu Greenwood, now H. fischeri. NCBI
+        independently records the same name correction. This supports described status despite checker A, both
+        tie-breakers, the trade-form registry and CRC retaining an undescribed form. The separate CRC
+        trade-form page and the association's inconsistent naming remain cited. The identification follows the
+        read 2013 study, which cites the Seegers (2008) revision, alongside the Catalog and NCBI notes. The trade
+        name rock kribensis is a trade form of this species and points to this profile."
+    - field: "taxonomy.genus"
+      proposals:
+        - by: "generator"
+          value: "Haplochromis"
+        - by: "checker-a"
+          value: "Paralabidochromis"
+        - by: "checker-b"
+          value: "Haplochromis"
+        - by: "checker-c"
+          value: "Haplochromis"
+      decision: "Haplochromis"
+      rationale: "The Catalog accepts Haplochromis sauvagei and records rediscovery of its original holotype; its
+        Paralabidochromis list contains only P. victoriae. Takeda et al. (2013) explicitly identify their rock
+        kribensis as H. sauvagei and distinguish it from sauvagei sensu Greenwood, now H. fischeri. NCBI
+        independently records the same name correction. This supports described status despite checker A, both
+        tie-breakers, the trade-form registry and CRC retaining an undescribed form. The separate CRC
+        trade-form page and the association's inconsistent naming remain cited. The identification follows the
+        read 2013 study, which cites the Seegers (2008) revision, alongside the Catalog and NCBI notes. The trade
+        name rock kribensis is a trade form of this species and points to this profile."
+    - field: "taxonomy.species"
+      proposals:
+        - by: "generator"
+          value: "sauvagei"
+        - by: "checker-a"
+          value: null
+        - by: "checker-b"
+          value: "sauvagei"
+        - by: "checker-c"
+          value: "sauvagei"
+      decision: "sauvagei"
+      rationale: "The Catalog accepts Haplochromis sauvagei and records rediscovery of its original holotype; its
+        Paralabidochromis list contains only P. victoriae. Takeda et al. (2013) explicitly identify their rock
+        kribensis as H. sauvagei and distinguish it from sauvagei sensu Greenwood, now H. fischeri. NCBI
+        independently records the same name correction. This supports described status despite checker A, both
+        tie-breakers, the trade-form registry and CRC retaining an undescribed form. The separate CRC
+        trade-form page and the association's inconsistent naming remain cited. The identification follows the
+        read 2013 study, which cites the Seegers (2008) revision, alongside the Catalog and NCBI notes. The trade
+        name rock kribensis is a trade form of this species and points to this profile."
+    - field: "taxonomy.author"
+      proposals:
+        - by: "generator"
+          value: "(Pfeffer, 1896)"
+        - by: "checker-a"
+          value: null
+        - by: "checker-b"
+          value: "(Pfeffer, 1896)"
+        - by: "checker-c"
+          value: "(Pfeffer, 1896)"
+      decision: "(Pfeffer, 1896)"
+      rationale: "The Catalog accepts Haplochromis sauvagei and records rediscovery of its original holotype; its
+        Paralabidochromis list contains only P. victoriae. Takeda et al. (2013) explicitly identify their rock
+        kribensis as H. sauvagei and distinguish it from sauvagei sensu Greenwood, now H. fischeri. NCBI
+        independently records the same name correction. This supports described status despite checker A, both
+        tie-breakers, the trade-form registry and CRC retaining an undescribed form. The separate CRC
+        trade-form page and the association's inconsistent naming remain cited. The identification follows the
+        read 2013 study, which cites the Seegers (2008) revision, alongside the Catalog and NCBI notes. The trade
+        name rock kribensis is a trade form of this species and points to this profile."
+    - field: "taxonomy.synonyms"
+      proposals:
+        - by: "generator"
+          value:
+            - name: "Ctenochromis sauvagei"
+              note: "Original combination; the Catalog of Fishes accepts Haplochromis sauvagei."
+            - name: "Paralabidochromis sauvagei"
+              note: "Commonly used older combination in aquarium references."
+            - name: "Paralabidochromis sp. 'rock kribensis'"
+              note: "Trade name applied to this species."
+            - name: "Haplochromis sp. 'rock kribensis'"
+              note: "Older trade-name combination."
+        - by: "checker-a"
+          value:
+            - name: "Paralabidochromis sauvagei"
+              note: "Name used for the rock kribensis in aquarium references (Nordiska Ciklidsallskapet, Maidenhead
+                Aquatics). It is not a valid combination; the Catalog of Fishes lists only Paralabidochromis
+                victoriae in the genus."
+        - by: "checker-b"
+          value:
+            - name: "Ctenochromis sauvagei"
+              note: "Original combination; Catalog of Fishes treats it as Haplochromis sauvagei."
+            - name: "Paralabidochromis sauvagei"
+              note: "Earlier aquarium and genus usage, not the valid name in the Catalog of Fishes."
+        - by: "checker-c"
+          value:
+            - name: "Ctenochromis sauvagei"
+              note: "Original combination."
+            - name: "Ptyochromis sauvagei"
+            - name: "Paralabidochromis sauvagei"
+              note: "Older generic placement used in the trade."
+      decision: *a89
+      rationale: "The Catalog accepts Haplochromis sauvagei and records rediscovery of its original holotype; its
+        Paralabidochromis list contains only P. victoriae. Takeda et al. (2013) explicitly identify their rock
+        kribensis as H. sauvagei and distinguish it from sauvagei sensu Greenwood, now H. fischeri. NCBI
+        independently records the same name correction. This supports described status despite checker A, both
+        tie-breakers, the trade-form registry and CRC retaining an undescribed form. The separate CRC
+        trade-form page and the association's inconsistent naming remain cited. The identification follows the
+        read 2013 study, which cites the Seegers (2008) revision, alongside the Catalog and NCBI notes. The trade
+        name rock kribensis is a trade form of this species and points to this profile."
+    - field: "taxonomy.legacyNames"
+      proposals:
+        - by: "generator"
+          value:
+            - "Paralabidochromis spec. \"rock kribensis\""
+        - by: "checker-a"
+          value:
+            - "Paralabidochromis spec. \"rock kribensis\""
+        - by: "checker-b"
+          value:
+            - "Paralabidochromis spec. \"rock kribensis\""
+            - "Paralabidochromis sauvagei 'rock kribensis'"
+        - by: "checker-c"
+          value:
+            - "Paralabidochromis spec. \"rock kribensis\""
+      decision: *a90
+      rationale: "The Catalog accepts Haplochromis sauvagei and records rediscovery of its original holotype; its
+        Paralabidochromis list contains only P. victoriae. Takeda et al. (2013) explicitly identify their rock
+        kribensis as H. sauvagei and distinguish it from sauvagei sensu Greenwood, now H. fischeri. NCBI
+        independently records the same name correction. This supports described status despite checker A, both
+        tie-breakers, the trade-form registry and CRC retaining an undescribed form. The separate CRC
+        trade-form page and the association's inconsistent naming remain cited. The identification follows the
+        read 2013 study, which cites the Seegers (2008) revision, alongside the Catalog and NCBI notes. The trade
+        name rock kribensis is a trade form of this species and points to this profile."
+    - field: "features.origin"
+      proposals:
+        - by: "generator"
+          value:
+            continent: "Africa"
+            region: "Lake Victoria"
+            waterbody: "lake-victoria"
+            localities:
+              - "Lake Victoria"
+              - "Mwanza Gulf"
+              - "Makobe Island"
+              - "Entebbe"
+        - by: "checker-a"
+          value:
+            continent: "Africa"
+            region: "Lake Victoria"
+            waterbody: "lake-victoria"
+            localities:
+              - "Makobe Island"
+              - "Mwanza Gulf"
+              - "Entebbe"
+        - by: "checker-b"
+          value:
+            continent: "Africa"
+            region: "Lake Victoria"
+            waterbody: "lake-victoria"
+            localities:
+              - "Lake Victoria littoral shores"
+        - by: "checker-c"
+          value:
+            continent: "Africa"
+            region: "Lake Victoria"
+            waterbody: "Lake Victoria"
+            localities:
+              - "Lake Victoria rocky shore"
+      decision: *a91
+      rationale: "All proposals place the fish in Lake Victoria. The original Lake Victoria study identifies rock
+        kribensis and sampled its rocky littoral populations; the association register names Makobe Island,
+        Mwanza Gulf and Entebbe. Generic shore descriptions and the generator's redundant lake locality are
+        consolidated into those named localities."
+    - field: "features.ph.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 6.8
+            max: 9.4
+        - by: "checker-a"
+          value:
+            min: 6.8
+            max: 9.4
+        - by: "checker-b"
+          value:
+            min: 6.8
+            max: 9.5
+        - by: "checker-c"
+          value:
+            min: 6.5
+            max: 9.5
+      decision: *a92
+      rationale: "The unanimous tally under the 0.3 pH agreement rule is retained as 6.8 to 9.5 with low confidence.
+        Generator and checker A propose 6.8 to 9.4, checker B 6.8 to 9.5, and checker C 6.5 to 9.5. The
+        rounded median among agreeing bounds contains the natural range. This is narrower at the lower end
+        than checker C's 6.5 to 9.5 proposal; no read species source establishes 6.5 as a long-term limit.
+        Actual aquarium advice clusters around 7 to 8.5, or 7.5 to 8 for the association. The extended upper
+        end is a planning inference, not a preferred daily target or a measured failure threshold."
+    - field: "features.ghDgh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 1
+            max: 15
+        - by: "checker-a"
+          value:
+            min: 1
+            max: 20
+        - by: "checker-b"
+          value:
+            min: 1
+            max: 30
+        - by: "checker-c"
+          value:
+            min: 1
+            max: 30
+        - by: "tiebreaker-1"
+          value:
+            min: 1
+            max: 30
+        - by: "tiebreaker-2"
+          value:
+            min: 1
+            max: 30
+      decision: *a93
+      rationale: "The qualified-majority tally retains 1 to 30 dGH at low confidence: checker B, checker C and both
+        tie-breakers propose that range, generator proposes 1 to 15 and checker A 1 to 20. FishProfiles and
+        Multihobby each give 15 to 30 German degrees; Garnelio gives 5 to 20 and OATA gives a general
+        African-lake recommendation of 12 to 18. The lower bound includes natural Lake Victoria water. The
+        narrower proposals cap the published 30-degree recommendation without evidence of harm above their
+        ceilings. This broad decision combines habitat measurements with keeping advice, not a controlled
+        continuous survival trial. Maidenhead's KH figure and Imperial Tropicals' TDS are not GH
+        measurements."
+    - field: "features.khDkh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 2
+            max: 12
+        - by: "checker-a"
+          value:
+            min: 2
+            max: 18
+        - by: "checker-b"
+          value:
+            min: 2
+            max: 10
+        - by: "checker-c"
+          value:
+            min: 2
+            max: 15
+        - by: "tiebreaker-1"
+          value:
+            min: 2
+            max: 12
+        - by: "tiebreaker-2"
+          value:
+            min: 2
+            max: 15
+      decision: *a94
+      rationale: "No qualified majority exists, so the settled median tolerance is 2 to 14 dKH with low confidence.
+        Generator and tiebreaker-1 propose 2 to 12, checker A 2 to 18, checker B 2 to 10, and checker C and
+        tiebreaker-2 2 to 15. All minima are 2; sorted maxima are 10, 12, 12, 15, 15 and 18, giving a median
+        of 13.5 rounded to 14. This contains natural 2 to 6 dKH and avoids allowing the narrowest proposal to
+        determine the ceiling. OATA recommends 10 to 15 dKH for African lake cichlids generally. Maidenhead
+        permits up to 25 dKH, a wider source interval than this decision; that is aquarium advice rather than
+        a demonstrated multiyear limit. FishProfiles gives no KH value, and neither GH, pH nor TDS determines
+        KH. The median remains an uncertain estimate from group keeping practice, not evidence of failure
+        above 14."
+    - field: "features.maxSizeCm"
+      proposals:
+        - by: "generator"
+          value:
+            male: 12
+            female: 10
+        - by: "checker-a"
+          value:
+            male: 12
+            female: 10
+        - by: "checker-b"
+          value:
+            male: 12
+            female: 10
+        - by: "checker-c"
+          value:
+            male: 14
+            female: 12
+      decision: *a95
+      rationale: "Generator and checkers A and B propose 12 cm males and 10 cm females; checker C proposes 14 and 12
+        cm. The medians are 12 and 10 cm. Maidenhead gives 12 cm without a separate female maximum,
+        FishProfiles gives 12 cm for both sexes, the association gives 14 cm, and Multihobby gives about 11 cm
+        males and 8 cm females. The medians fit between these aquarium observations but remain approximate,
+        especially for females. Bailey's sex-specific standard lengths and FishBase's 10.5 cm SL are retained
+        as uncertain historical comparison records and are not converted to total length."
+    - field: "features.predation"
+      proposals:
+        - by: "generator"
+          value: 0
+        - by: "checker-a"
+          value: 1
+        - by: "checker-b"
+          value: 0
+        - by: "checker-c"
+          value: 0
+        - by: "tiebreaker-1"
+          value: 0
+        - by: "tiebreaker-2"
+          value: 0
+      decision: 0
+      rationale: "The qualified-majority decision is level 0 with medium confidence: generator, checkers B and C and
+        both tie-breakers propose 0; checker A proposes 1 from size and an assumed opportunity to eat fry. The
+        association and Multihobby describe insects, small invertebrates and attached growth without
+        purposeful fish capture. Neither adult size nor animal feeding establishes regular capture of fish up
+        to 2 cm. Ron's warning about tiny tankmates lacks an observed prey size. Level 0 allows incidental fry
+        capture under the rubric. Old sauvagei diet records remain comparison evidence because the 2008 name
+        correction complicates their identity; GCCA was blocked by HTTP 403."
+    - field: "features.diet"
+      proposals:
+        - by: "generator"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "gastropods"
+              - "insect larvae"
+              - "copepods"
+              - "other small aquatic invertebrates"
+        - by: "checker-a"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "insects"
+              - "insect larvae"
+              - "algae"
+              - "flakes"
+              - "pellets"
+              - "frozen foods"
+        - by: "checker-b"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "gastropods"
+              - "insect larvae"
+              - "copepods"
+              - "diatoms"
+              - "algae"
+              - "sponges"
+        - by: "checker-c"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "snails"
+              - "insect larvae"
+              - "copepods"
+              - "algae"
+      decision: *a96
+      rationale: "All four votes agree on invertivore with bloatSensitive false, so the unanimous tally is retained
+        at medium confidence, including its food list. The association emphasizes insects with some attached
+        growth, and Multihobby reports biofilm foraging and acceptance of invertebrate foods. FishProfiles and
+        Garnelio use an omnivore label for the varied aquarium menu; those dissenting source labels are
+        retained. Older FishBase, museum and Bailey snail-feeding records may concern the previous sauvagei
+        usage and do not establish specialization in this trade fish. The decided gastropod list is therefore
+        less secure than the general invertebrate category. No read source establishes a specific high-protein
+        bloat syndrome, and false is not proof that overfeeding is harmless. The tally compares type and bloat
+        sensitivity, not food-list equality: generator proposes gastropods, insect larvae, copepods and other
+        small aquatic invertebrates; checker A proposes insects, insect larvae, algae, flakes, pellets and
+        frozen foods; checker B proposes gastropods, insect larvae, copepods, diatoms, algae and sponges;
+        checker C proposes snails, insect larvae, copepods and algae. The decided food list is the generator
+        proposal retained by the tally."
+    - field: "features.aggressionConspecific"
+      proposals:
+        - by: "generator"
+          value: 2
+        - by: "checker-a"
+          value: 2
+        - by: "checker-b"
+          value: 2
+        - by: "checker-c"
+          value: 3
+      decision: 2
+      rationale: "Generator and checkers A and B propose level 2; checker C proposes 3. The rubric assumes enough
+        space and the recommended sex ratio. Multihobby reports a manageable hierarchy and limited aggression
+        away from spawning, while Maidenhead warns of intensified male pursuit during reproduction.
+        FishProfiles' serious injuries concern skewed ratios or breeding conflict. These conditions warrant
+        explicit caution but do not establish persistent harmful aggression in a suitable harem. Bailey's calm
+        multi-male colony is retained with uncertain fish identity rather than used as decisive evidence."
+    - field: "features.aggressionHeterospecific"
+      proposals:
+        - by: "generator"
+          value: 2
+        - by: "checker-a"
+          value: 2
+        - by: "checker-b"
+          value: 1
+        - by: "checker-c"
+          value: 2
+      decision: 2
+      rationale: "Generator and checkers A and C propose level 2; checker B proposes 1. Maidenhead and the
+        association recommend calm or robust companions with sight breaks, while Multihobby describes
+        generally restrained behavior. Local territory defense and chasing fit level 2 more closely than
+        display alone. Broad attacks outside the territory are not established; this remains a behavioral
+        interpretation of husbandry accounts."
+    - field: "features.territory"
+      proposals:
+        - by: "generator"
+          value:
+            size: "small"
+            breedingOnly: true
+        - by: "checker-a"
+          value:
+            size: "small"
+            breedingOnly: false
+        - by: "checker-b"
+          value:
+            size: "small"
+            breedingOnly: true
+        - by: "checker-c"
+          value:
+            size: "small"
+            breedingOnly: false
+      decision: *a97
+      rationale: "Generator and checker B restrict small territories to breeding; checkers A and C keep them outside
+        breeding too. Takeda and colleagues characterize the identified rock kribensis as territorial rock
+        dwellers without limiting that description to reproduction, and aquarium advice uses several separated
+        rock sites. The decided small territory is an unmeasured husbandry scale, with defense becoming
+        stronger during spawning. Bailey's measured 15 to 20 cm territories are retained only as an older
+        record with unresolved fish identity."
+    - field: "features.habitatZones"
+      proposals:
+        - by: "generator"
+          value:
+            - "rock"
+            - "sand"
+            - "openWater"
+        - by: "checker-a"
+          value:
+            - "rock"
+            - "sand"
+        - by: "checker-b"
+          value:
+            - "rock"
+            - "sand"
+        - by: "checker-c"
+          value:
+            - "rock"
+            - "sand"
+      decision: *a98
+      rationale: "All checkers propose rock and sand; generator adds openWater from Bailey's aquarium shoal. The
+        identified fish is a rocky littoral species in Takeda and colleagues' field study, and contemporary
+        aquarium sources provide sandy ground alongside stone cover. Swimming above the bottom does not
+        establish a wild open-water habitat requirement, especially when the historical captive fish identity
+        is uncertain. Rock and sand are retained; the wider three-zone proposal remains in the disagreements."
+    - field: "features.social"
+      proposals:
+        - by: "generator"
+          value:
+            structure: "group"
+            minGroup: 4
+        - by: "checker-a"
+          value:
+            structure: "harem"
+            ratio: 2
+        - by: "checker-b"
+          value:
+            structure: "harem"
+            ratio: 3
+        - by: "checker-c"
+          value:
+            structure: "harem"
+            ratio: 3
+      decision: *a99
+      rationale: "Generator proposes a group of at least four, checker A a harem with two females per male, and
+        checkers B and C a harem with three. Maidenhead recommends at least two females per male and
+        Multihobby describes one male with three or four females. One male and three females follows the more
+        explicit breeding arrangement while meeting the minimum of two. It is a captive social unit rather
+        than a claim of a permanent wild harem. Bailey's multi-male group and CRC's mating summary remain
+        cited with their identity and interpretation limits."
+    - field: "features.coloration"
+      proposals:
+        - by: "generator"
+          value:
+            baseColors:
+              - "blue"
+              - "yellow"
+              - "red"
+            pattern: "mixed"
+        - by: "checker-a"
+          value:
+            baseColors:
+              - "red"
+              - "yellow"
+              - "white"
+            pattern: "mixed"
+        - by: "checker-b"
+          value:
+            baseColors:
+              - "red"
+              - "yellow"
+              - "blue"
+            pattern: "mixed"
+        - by: "checker-c"
+          value:
+            baseColors:
+              - "red"
+              - "yellow"
+              - "blue"
+              - "black"
+            pattern: "mixed"
+      decision: *a100
+      rationale: "Generator and checker B propose blue, yellow and red; checker A red, yellow and white; checker C
+        adds black to red, yellow and blue. The association describes a red lower body and a yellow or white
+        upper body, with red and blue-black males in other populations. These colors are merged across
+        reported populations rather than treated as one universal male pattern. Mixed retains changing
+        horizontal and checker-like markings; females are often yellow. Imperial Tropicals also records orange
+        and green males, and Rons records orange; these repeated observations expand the merged male palette."
+    - field: "features.minTank"
+      proposals:
+        - by: "generator"
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 38
+        - by: "checker-a"
+          value:
+            volumeL: 150
+            lengthCm: 100
+            depthCm: 40
+        - by: "checker-b"
+          value:
+            volumeL: 150
+            lengthCm: 100
+            depthCm: 40
+        - by: "checker-c"
+          value:
+            volumeL: 150
+            lengthCm: 100
+            depthCm: 45
+      decision: *a101
+      rationale: "Generator proposes 200 L, 120 cm length and 38 cm depth; checkers A and B 150 L, 100 cm and 40 cm;
+        checker C 150 L, 100 cm and 45 cm. Component medians are 150 L, 100 cm and 40 cm. The association
+        states 150 L and 100 cm; Zoopet gives 150 L and 90 cm, and Imperial Tropicals reports breeding in 40
+        US gallons, about 151 L. Multihobby asks for more than 150 L for a male with three or four females,
+        while Garnelio recommends 300 L. The settled footprint is a minimum for one male and three females
+        with divided rock sites; additional territorial males or substantial tankmates call for more space.
+        Depth is inferred and not a published measurement. Bailey's larger multi-male tank has unresolved fish
+        identity and does not define this harem minimum."
+    - field: "features.lifespanYears"
+      proposals:
+        - by: "generator"
+          value:
+            min: 5
+            max: 8
+        - by: "checker-a"
+          value:
+            min: 5
+            max: 8
+        - by: "checker-b"
+          value:
+            min: 5
+            max: 8
+        - by: "checker-c"
+          value:
+            min: 8
+            max: 10
+      decision: *a102
+      rationale: "Generator and checkers A and B estimate 5 to 8 years from general cichlid knowledge; checker C
+        estimates 8 to 10. Their component median is 5 to 8 years, but none is supported by a species
+        longevity observation. The read Garnelio profile explicitly gives an approximate life expectancy of
+        four years. This direct species estimate replaces the unsupported median. A point of four represents
+        the source's rough expectation, not a proven biological maximum or evidence that older fish are
+        impossible; no observed age distribution is available."

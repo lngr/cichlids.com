@@ -338,9 +338,15 @@ forms:
   - id: paralabidochromis-sp-rock-kribensis
     name: Paralabidochromis sp. 'rock kribensis'
     kind: trade-form
-    parents: []
-    note: Undescribed Lake Victoria rock cichlid traded as Rock Kribensis and also listed as Paralabidochromis sauvagei in aquarium references. That aquarium usage does not establish identity with the nominal species Haplochromis sauvagei.
+    parents:
+      - haplochromis-sauvagei
+    note: Trade name of the Lake Victoria rock cichlid Haplochromis sauvagei. Takeda et al. (2013) identify the aquarium rock kribensis with H. sauvagei, distinct from sauvagei in the sense of Greenwood, which is H. fischeri.
     sources:
+      - kind: literature
+        title: Takeda et al. (2013), Genetic Structure of Pelagic and Littoral Cichlid Fishes from Lake Victoria
+        url: https://doi.org/10.1371/journal.pone.0074088
+        accessed: 2026-10-15
+        archived: doi.org/10.1371_journal.pone.0074088/2026-10-14T232658Z
       - kind: catalog-of-fishes
         title: Eschmeyer's Catalog of Fishes, species of Paralabidochromis
         url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Paralabidochromis
