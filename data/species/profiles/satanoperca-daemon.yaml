@@ -1,0 +1,2665 @@
+schemaVersion: 1
+id: satanoperca-daemon
+legacyIds:
+- 776
+status: described
+taxonomy:
+  validName: Satanoperca daemon
+  genus: Satanoperca
+  species: daemon
+  author: "(Heckel, 1840)"
+  source: &id001
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: Satanoperca species list"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Satanoperca"
+    archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-2aa646eb/2026-10-14T103136Z
+    accessed: '2026-10-15'
+  synonyms:
+  - name: Geophagus daemon
+    note: Original combination; the Catalog of Fishes recognizes Satanoperca daemon as valid.
+  legacyNames:
+  - Satanoperca daemon
+  note: "Catalog of Fishes accepts Satanoperca daemon (Heckel, 1840), originally described as Geophagus\
+    \ daemon. The current and historical genus lists were checked; the former provides the valid status\
+    \ and original combination."
+names:
+  trade:
+    en:
+    - Threespot eartheater
+    - Spotted demonfish
+    de:
+    - Dreifleck-Erdfresser
+    - Dreifleck-Daemon
+variants: []
+features:
+  origin:
+    value: &id058
+      continent: South America
+      region: "Upper Rio Negro, Casiquiare and upper Orinoco basins"
+      waterbody: null
+      localities:
+      - Rio Negro at Maribitanos
+      - Rio Uaupes
+      - Rio Atabapo
+      - Rio Inirida
+      - Rio Cinaruco
+    confidence: high
+    rationale: "All four complete runs identify the connected Negro, Casiquiare and Orinoco systems in\
+      \ Brazil, Colombia and Venezuela. The locality lists describe the same distribution at different\
+      \ scales; the final list combines named river localities rather than treating country names as collecting\
+      \ sites. Catalog taxonomy and Seriously Fish support this restriction; distant Amazon reports can\
+      \ involve misidentification. No lake-table override applies."
+    sources:
+    - *id001
+    - &id045
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: Geophagus species list"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Geophagus"
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-99b1ebbc/2026-10-14T095906Z
+      accessed: '2026-10-15'
+    - &id002
+      kind: database
+      title: "Seriously Fish: Satanoperca daemon"
+      url: "https://www.seriouslyfish.com/species/satanoperca-daemon/"
+      archived: seriouslyfish.com/species/satanoperca-daemon/2026-10-15T050738Z
+      accessed: '2026-10-15'
+    - &id003
+      kind: database
+      title: "FishBase: Satanoperca daemon species summary"
+      url: "https://www.fishbase.se/summary/Satanoperca-daemon.html"
+      archived: fishbase.se/summary/satanoperca-daemon.html/2026-10-15T050738Z
+      accessed: '2026-10-15'
+    - &id018
+      kind: database
+      title: "Cichlid Room Companion: Satanoperca daemon, public species account"
+      url: "https://cichlidae.com/species.php?id=f1yy-jyWNhuJ4-s3JeIw_Q"
+      archived: cichlidae.com/species.php/q-15b7ace7/2026-10-15T050953Z
+      accessed: '2026-10-15'
+    - &id017
+      kind: literature
+      title: "Layman and Winemiller (2005): habitat segregation among large fishes in a Venezuelan floodplain\
+        \ river"
+      url: "https://doi.org/10.1590/s1679-62252005000100007"
+      archived: doi.org/10.1590_s1679-62252005000100007/2026-10-14T133632Z
+      accessed: '2026-10-15'
+    evidence:
+    - source: *id001
+      value: Amazon and Orinoco basins; type locality Rio Negro
+    - source: *id002
+      value: "Rio Negro, Casiquiare, upper Orinoco"
+    - source: *id003
+      value: "upper Rio Negro, Orinoco in Colombia and Venezuela"
+    - source: *id003
+      value:
+        continent: South America
+        region: Upper Negro and Orinoco basins
+  temperatureC:
+    value: &id059
+      min: 27
+      max: 31
+    confidence: low
+    rationale: "The unanimous tally selects 27 to 31 C from generator 28 to 31 and checker-a, checker-b\
+      \ and checker-c 27 to 31. This is a regional planning envelope, with low confidence because collection-site\
+      \ seasonal coverage is incomplete. FishBase gives 27 to 30 C. Wider regional source ranges remain\
+      \ evidence: Oliveira and Ferreira measured 28.4 to 34.7 C; Fonseca and colleagues 28.0 to 34.6 C;\
+      \ the Amazon review gives 28 to 32 C; drought-recovery observations give 30.20 to 35.35 C. The Krib\
+      \ reproduces seasonal collecting-area observations of 25.5 to 32.5 C. These surveys differ in location,\
+      \ season and exposure, and do not establish that every extreme is a routine temperature for every\
+      \ population. Their extremes are retained without extending the tallied typical range."
+    sources:
+    - &id004
+      kind: literature
+      title: "Oliveira and Ferreira (2008). Spawning areas, dispersion and microhabitats of fish larvae\
+        \ in the Anavilhanas Ecological Station"
+      url: "https://doi.org/10.1590/s1679-62252008000400003"
+      archived: doi.org/10.1590_s1679-62252008000400003/2026-10-13T182908Z
+      accessed: '2026-10-15'
+    - *id003
+    - &id005
+      kind: literature
+      title: Val et al. (2022). Global change and physiological challenges for fish of the Amazon
+      url: "https://doi.org/10.1242/jeb.216440"
+      archived: doi.org/10.1242_jeb.216440/2026-10-12T202830Z
+      accessed: '2026-10-15'
+    - &id006
+      kind: literature
+      title: "Duarte et al. (2026): Ionoregulatory and hematological parameters of Triportheus albus populations\
+        \ living in natural white- and blackwaters of the Amazon"
+      url: "https://doi.org/10.1007/s00360-025-01651-y"
+      archived: doi.org/10.1007_s00360-025-01651-y/2026-10-13T005555Z
+      accessed: '2026-10-15'
+    - &id037
+      kind: literature
+      title: Influence of Limnological Processes and Water Level Variation on the Biodiversity of Brazilian
+        Amazon Lakes (2022)
+      url: "https://doi.org/10.9734/jalsi/2022/v25i530303"
+      archived: doi.org/10.9734_jalsi_2022_v25i530303/2026-10-15T051116Z
+      accessed: '2026-10-15'
+    - &id007
+      kind: literature
+      title: "Fonseca et al. (1982): pollution and self-purification of the Rio Negro near Manaus"
+      url: "https://doi.org/10.1590/1809-43921982122271"
+      archived: doi.org/10.1590_1809-43921982122271/2026-10-15T051000Z
+      accessed: '2026-10-15'
+    - &id008
+      kind: forum
+      title: The Krib collecting reports for Apistogramma sp. Four Stripes and associated fishes
+      url: "https://www.thekrib.com/Apisto/A-sp-fourstripes.html"
+      archived: thekrib.com/apisto/a-sp-fourstripes.html/2026-10-15T051724Z
+      accessed: '2026-10-15'
+    evidence:
+    - source: *id004
+      value:
+        min: 28.4
+        max: 34.7
+      note: "Measured regional waters, not a species-specific temperature envelope"
+    - source: *id003
+      value:
+        min: 27
+        max: 30
+      note: "Summary environmental range, measurement context unspecified"
+    - source: *id005
+      value:
+        min: 28
+        max: 32
+      note: Amazonian waters in general
+    - source: *id003
+      value:
+        min: 27
+        max: 30
+      note: environment entry
+    - source: *id006
+      value:
+        min: 30.2
+        max: 35.35
+      note: Regional Negro measurements during exceptional drought recovery; not species-specific capture
+        temperatures.
+    - source: *id003
+      value:
+        min: 27
+        max: 30
+      note: Species environment range; original measurement context is not supplied.
+    - source: *id007
+      value:
+        min: 28
+        max: 34.6
+      note: "Annual regional field survey; mean 30.6 C, with urban as well as upstream stations."
+    - source: *id003
+      value:
+        min: 27
+        max: 30
+      note: "Environment summary, not an independently documented field series."
+    - source: *id008
+      value:
+        min: 25.5
+        max: 32.5
+      note: Seasonal values for an upper Orinoco collecting area that includes a daemon locality; not
+        a species-wide temperature series.
+    tolerance:
+      value:
+        min: 24
+        max: 31
+      confidence: low
+      rationale: "All four tolerance proposals are 24 to 31 C, retained with unanimous verification and\
+        \ low confidence. Seriously Fish and NCS state 24 to 28 C; Newman recommends 29 to 31 C and describes\
+        \ extended growth at 31 C. Glaser recommends above 28 C without an upper endpoint; Mikolji advises\
+        \ against temperatures below 26 C and favors 29 C. The adopted envelope includes both published\
+        \ numerical recommendations and the decided natural range. It does not imply equal long-term support\
+        \ at all temperatures: the cool end is disputed, and about 28 to 30 C is a reasonable routine\
+        \ target. No controlled multiyear endpoint study was found."
+      sources:
+      - *id002
+      - &id009
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Satanoperca daemon"
+        url: "https://www.ciklid.org/artregister/art.php?ID=509"
+        archived: ciklid.org/artregister/art.php/q-dd021254/2026-10-15T050758Z
+        accessed: '2026-10-15'
+      - &id010
+        kind: literature
+        title: "Newman (1996). Keeping and breeding Satanoperca daemon, Dutch translation hosted by AquaInfo"
+        url: "https://www.aquainfo.nl/artikel/satanoperca-daemon-gevlekte-duivelsbaars/"
+        archived: aquainfo.nl/artikel/satanoperca-daemon-gevlekte-duivelsbaars/2026-10-15T050756Z
+        accessed: '2026-10-15'
+      - &id027
+        kind: website
+        title: "Schaefer (2026). Satanoperca daemon, Aquarium Glaser"
+        url: "https://www.aquariumglaser.de/fischarchiv/satanoperca-daemon/"
+        archived: aquariumglaser.de/fischarchiv/satanoperca-daemon/2026-10-15T050814Z
+        accessed: '2026-10-15'
+      - *id003
+      - &id011
+        kind: website
+        title: "Aquarium Glaser: Satanoperca daemon (Schaefer)"
+        url: "https://www.aquarium-glaser.de/en/satanoperca-daemon"
+        archived: aquarium-glaser.de/en/satanoperca-daemon/2026-10-15T051113Z
+        accessed: '2026-10-15'
+      - &id012
+        kind: website
+        title: "Aquatic Community: Spotted Demonfish"
+        url: "https://www.aquaticcommunity.com/cichlid/demonfish.php"
+        archived: aquaticcommunity.com/cichlid/demonfish.php/2026-10-15T050758Z
+        accessed: '2026-10-15'
+      - &id013
+        kind: literature
+        title: "Newman (1996): spotted demonfish husbandry, Dutch translation at AquaInfo"
+        url: "https://aquainfo.nl/artikel/satanoperca-daemon-gevlekte-duivelsbaars/"
+        archived: aquainfo.nl/artikel/satanoperca-daemon-gevlekte-duivelsbaars/2026-10-15T050826Z
+        accessed: '2026-10-15'
+      - &id014
+        kind: website
+        title: "Schaefer: Satanoperca daemon, Aquarium Glaser"
+        url: "https://www.aquariumglaser.de/en/fisharchive/satanoperca-daemon-2/"
+        archived: aquariumglaser.de/en/fisharchive/satanoperca-daemon-2/2026-10-15T050757Z
+        accessed: '2026-10-15'
+      - &id015
+        kind: literature
+        title: "Mikolji (2014). Satanoperca daemon in nature, Italian translation of the Practical Fishkeeping\
+          \ article"
+        url: "https://acquario.top/satanoperca-daemon-in-natura/"
+        archived: acquario.top/satanoperca-daemon-in-natura/2026-10-15T051637Z
+        accessed: '2026-10-15'
+      - &id016
+        kind: website
+        title: Karpalo Satanoperca daemon breeding diary (2007)
+        url: "http://www.karpalo.net/s-daemon/"
+        archived: karpalo.net/s-daemon/2026-10-15T051754Z
+        accessed: '2026-10-15'
+      evidence:
+      - source: *id002
+        value:
+          min: 24
+          max: 28
+      - source: *id009
+        value:
+          min: 24
+          max: 28
+      - source: *id010
+        value:
+          min: 29
+          max: 31
+        note: Published husbandry recommendation and 31 C keeping account
+      - source: *id002
+        value:
+          min: 24
+          max: 28
+        note: care recommendation
+      - source: *id003
+        value:
+          min: 27
+          max: 30
+        note: environment entry
+      - source: *id011
+        value:
+          min: 28
+          max: 31
+        note: Checker-a assigned 28 to 31 C from advice above 28 C; this source supplies no upper bound.
+      - source: *id002
+        value:
+          min: 24
+          max: 28
+        note: Aquarium recommendation.
+      - source: *id010
+        value:
+          min: 29
+          max: 31
+        note: Experienced keeper recommendation and extended keeping at 31 C.
+      - source: *id012
+        value:
+          min: 28.9
+          max: 31.1
+        note: 84 to 88 F converted to Celsius.
+      - source: *id013
+        value:
+          min: 29
+          max: 31
+        note: Text recommendation; captive growth and spawning observed at 31 C.
+      - source: *id014
+        value:
+          min: 28
+          max: 28
+        note: Only a lower threshold above 28 C is stated; no upper limit is supplied.
+      - source: *id015
+        value:
+          min: 26
+          max: null
+        note: Recommends avoiding temperatures below 26 C and favors 29 C; no upper tolerance endpoint
+          is stated.
+      - source: *id016
+        value:
+          min: 26
+          max: 27
+        note: "Breeding aquarium temperatures in the dated diary, not a long-term tolerance trial."
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  ph:
+    value: &id060
+      min: 3.5
+      max: 5.8
+    confidence: low
+    rationale: "The median tally selects 3.5 to 5.8, with low confidence and no qualified majority. Proposals\
+      \ were generator 4.0 to 5.5, checker-a 4.3 to 6.5, checker-b 3.5 to 5.3, checker-c 3.5 to 6.0, tiebreaker-1\
+      \ 3.5 to 6.0 and tiebreaker-2 3.5 to 5.5. The lower endpoint relies partly on Newman relaying Goulding,\
+      \ whose original book was not read. Negro field observations and the Orinoco seasonal collecting\
+      \ account support strongly acidic regional water. Kuchler and colleagues report a wider basin range\
+      \ of 3.89 to 6.07, with the upper endpoint in chemically distinct Branco water; the blackwater subset\
+      \ reaches 5.80. Silva and colleagues include tributary values to 6.70. The broader Amazonian blackwater\
+      \ context of 2.8 to 5.0 is not a daemon locality series. These wider values remain evidence rather\
+      \ than redefining the characteristic habitat. FishBase states only a lower bound of 6.0 and no upper\
+      \ bound or field station. Some Cinaruco full texts were unavailable as open access; no unseen numerical\
+      \ readings from them were used."
+    sources:
+    - &id019
+      kind: literature
+      title: Silva et al. (2019). A contribution to the hydrochemistry and water typology of the Amazon
+        River and its tributaries
+      url: "https://doi.org/10.14393/rcg207246295"
+      archived: doi.org/10.14393_rcg207246295/2026-10-12T203053Z
+      accessed: '2026-10-15'
+    - *id004
+    - &id022
+      kind: literature
+      title: Rios-Villamizar et al. (2020). Physicochemical features of Amazonian water typologies for
+        water resources management
+      url: "https://doi.org/10.1088/1755-1315/427/1/012003"
+      archived: doi.org/10.1088_1755-1315_427_1_012003/2026-10-13T004655Z
+      accessed: '2026-10-15'
+    - &id031
+      kind: literature
+      title: "Rios-Villamizar et al. (2020). Hydrochemical classification of Amazonian rivers, a systematic\
+        \ review and meta-analysis"
+      url: "https://doi.org/10.14393/rcg217853272"
+      archived: doi.org/10.14393_rcg217853272/2026-10-13T074935Z
+      accessed: '2026-10-15'
+    - *id017
+    - *id002
+    - *id005
+    - &id020
+      kind: literature
+      title: "Leenheer and Santos (1980): sedimentation and water chemistry of the Rio Negro"
+      url: "https://doi.org/10.1590/1809-43921980102343"
+      archived: doi.org/10.1590_1809-43921980102343/2026-10-13T132319Z
+      accessed: '2026-10-15'
+    - *id006
+    - *id010
+    - *id003
+    - &id021
+      kind: literature
+      title: "Kuchler et al. (2000): chemical characterization of rivers in the Rio Negro basin"
+      url: "https://doi.org/10.1590/s0103-50532000000300015"
+      archived: doi.org/10.1590_s0103-50532000000300015/2026-10-12T202947Z
+      accessed: '2026-10-15'
+    - *id013
+    - &id023
+      kind: literature
+      title: "Eunotia amazonica (2018): diatom ecology and field chemistry of the lower Rio Negro"
+      url: "https://doi.org/10.1080/09670262.2017.1402372"
+      archived: doi.org/10.1080_09670262.2017.1402372/2026-10-15T051030Z
+      accessed: '2026-10-15'
+    - *id008
+    - *id001
+    - *id018
+    - &id046
+      kind: literature
+      title: Hoeinghaus and colleagues (2003). Movement of Cichla species in a Venezuelan floodplain river
+      url: "https://doi.org/10.1590/s1679-62252003000200006"
+      archived: doi.org/10.1590_s1679-62252003000200006/2026-10-14T200848Z
+      accessed: '2026-10-15'
+    - &id047
+      kind: literature
+      title: "Roman-Valencia, Taphorn and Ruiz-C (2008). Two new Bryconamericus from the Cinaruco River"
+      url: "https://doi.org/10.32800/abc.2008.31.0015"
+      archived: doi.org/10.32800_abc.2008.31.0015/2026-10-15T051650Z
+      accessed: '2026-10-15'
+    - &id048
+      kind: literature
+      title: Montana and colleagues (2011). Gape size influences seasonal patterns of piscivore diets
+        in three Neotropical rivers
+      url: "https://doi.org/10.1590/s1679-62252011005000028"
+      archived: doi.org/10.1590_s1679-62252011005000028/2026-10-14T200840Z
+      accessed: '2026-10-15'
+    - &id049
+      kind: literature
+      title: Lopez-Fernandez and colleagues (2014). Morphology and efficiency of sediment sifting in Neotropical
+        cichlid fishes
+      url: "https://doi.org/10.1371/journal.pone.0089832"
+      archived: doi.org/10.1371_journal.pone.0089832/2026-10-13T092411Z
+      accessed: '2026-10-15'
+    - &id024
+      kind: literature
+      title: "Welcomme: River fisheries, chapter 2, Table 2.7"
+      url: "https://www.fao.org/4/t0537e/T0537E02.htm"
+      accessed: '2026-10-15'
+      archived: fao.org/4/t0537e/t0537e02.htm/2026-10-14T094032Z
+    - &id025
+      kind: literature
+      title: "Distribution of Metals in the Waters and Sediments of Rivers in Central Amazon Region, Brazil\
+        \ (2019), Table 2"
+      url: "https://doi.org/10.21577/0103-5053.20190100"
+      accessed: '2026-10-15'
+      archived: doi.org/10.21577_0103-5053.20190100/2026-10-15T051643Z
+    - *id012
+    - &id026
+      kind: literature
+      title: Bacterioplankton Communities in Dissolved Organic Carbon-Rich Amazonian Black Water (2023)
+      url: "https://doi.org/10.1128/spectrum.04793-22"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1128_spectrum.04793-22/2026-10-14T200946Z
+    - &id050
+      kind: literature
+      title: "Hydrology, water chemistry, and sediment dynamics of fluvial ecosystems of Venezuela: A\
+        \ systematic review (2025)"
+      url: "https://doi.org/10.23818/limn.46.01"
+      accessed: '2026-10-15'
+      archived: doi.org/10.23818_limn.46.01/2026-10-13T004644Z
+    - &id051
+      kind: literature
+      title: Improving river dolphin monitoring using aerial surveys (2017)
+      url: "https://doi.org/10.1002/ecs2.1912"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1002_ecs2.1912/2026-10-15T051727Z
+    - &id036
+      kind: literature
+      title: Comparative feeding ecology and habitats use of Crenicichla species in a Venezuelan floodplain
+        river (2009)
+      url: "https://doi.org/10.1590/s1679-62252009000200019"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1590_s1679-62252009000200019/2026-10-14T210548Z
+    - &id052
+      kind: literature
+      title: Effects of seasonality and migratory prey on body condition of Cichla species in a tropical
+        floodplain river (2006)
+      url: "https://doi.org/10.1111/j.1600-0633.2006.00152.x"
+      accessed: '2026-10-15'
+      archived: doi.org/10.1111_j.1600-0633.2006.00152.x/2026-10-15T051909Z
+    - &id053
+      kind: website
+      title: "Cichlid-Forum: former Satanoperca daemon article URL, now unrelated forum index"
+      url: "https://www.cichlid-forum.com/articles/s_daemon.php"
+      accessed: '2026-10-15'
+      archived: cichlid-forum.com/articles/s_daemon.php/2026-10-15T051111Z
+    - &id054
+      kind: archive
+      title: cichlids.com forum thread 55268
+      url: "https://www.cichlids.com/disc/read.php?1,55268"
+      accessed: '2026-10-15'
+    evidence:
+    - source: *id019
+      value:
+        min: 3.96
+        max: 5.29
+      note: Cubati rainy-season mean to Negro at Manaus dry-season mean; upper Negro means around 4.7
+    - source: *id004
+      value:
+        min: 4.15
+        max: 4.65
+      note: "Regional pH mean 4.4 plus or minus 0.25, not observed extrema"
+    - source: *id019
+      value:
+        min: 4.32
+        max: 6.7
+      note: "Rio Negro basin rivers, dry and rainy period; Negro at Manaus 5.29"
+    - source: *id017
+      value: "low pH, moderate blackwater"
+      note: no numbers stated
+    - source: *id005
+      value: blackwater of the upper Negro at or below 4.5
+      note: general statement
+    - source: *id002
+      value:
+        min: 3.5
+        max: 6.0
+      note: aquarium recommendation
+    - source: *id020
+      value:
+        min: 4.2
+        max: 5.2
+      note: Union of sampled Negro sites and seasonal observations.
+    - source: *id006
+      value:
+        min: 4.67
+        max: 4.67
+      note: Mean of regional field observations; not a full natural range.
+    - source: *id010
+      value:
+        min: 3.5
+        max: 5.3
+      note: Secondary account of native blackwater observations.
+    - source: *id021
+      value:
+        min: 3.89
+        max: 6.07
+      note: Basin field series; upper endpoint is the distinct Rio Branco water type.
+    - source: *id020
+      value:
+        min: 4.2
+        max: 4.9
+      note: Two Rio Negro surface samples in 1978.
+    - source: *id022
+      value:
+        min: 4
+        max: 5
+      note: Synthesis of measured classical Amazonian blackwaters.
+    - source: *id013
+      value:
+        min: 3.5
+        max: 5.3
+      note: Secondary report of Goulding habitat observations.
+    - source: *id003
+      value:
+        min: 6
+        max: null
+      note: "FishBase states only pH 6.0 to an unspecified upper bound. The input encoded {'min': 6, 'max':\
+        \ 6}; that extra endpoint is not a source measurement. Only the lower pH bound is given; upper\
+        \ bound is unspecified."
+    - source: *id023
+      value:
+        min: 4.8
+        max: 5.1
+      note: "Regional background chemistry attributed to Furch and Junk, separate from polluted sites."
+    - source: *id021
+      value:
+        min: 3.89
+        max: 5.8
+      note: Regional blackwater measurements from Table 2 after excluding Solimoes and the chemically
+        intermediate Branco sample.
+    - source: *id021
+      value:
+        min: 3.89
+        max: 6.07
+      note: Full Negro-basin range stated in the paper includes the Branco sample excluded from the decision.
+    - source: *id013
+      value:
+        min: 3.5
+        max: 5.3
+      note: Regional blackwater chemistry attributed to Goulding and colleagues (1988); the original book
+        was not read.
+    - source: *id008
+      value:
+        min: 4.1
+        max: 5.5
+      note: Secondary account of Linke and Staeck's seasonal collecting measurements near Puerto Ayacucho
+        with daemon recorded at Laguna Paraquena.
+    - source: *id003
+      value:
+        min: 6
+        max: null
+      note: The database leaves the upper endpoint unknown and gives no measuring locality here.
+    - source: *id024
+      value:
+        min: 4.6
+        max: 5.2
+      note: Rio Negro field measurements compiled from Ungemach; Table 2.7.
+    - source: *id025
+      value:
+        min: 4.1
+        max: 4.1
+      note: Single Rio Negro surface-water reading in the rainy-season table; not a range.
+    - source: *id008
+      value:
+        min: 4.1
+        max: 5.5
+      note: Seasonal collecting observations attributed to Linke and Staeck; the account includes S. daemon
+        at Laguna Paraquena. Secondary reporting.
+    - source: *id010
+      value:
+        min: 3.5
+        max: 5.3
+      note: "Regional blackwater range attributed to Goulding (1988), not aquarium limits."
+    - source: *id012
+      value:
+        min: 3.5
+        max: 5.3
+      note: General blackwater habitat figures; not an independent field survey.
+    - source: *id026
+      value:
+        min: 2.8
+        max: 5
+      note: "Broad Amazonian blackwater context cited by the authors, not S. daemon-specific measurements.\
+        \ Excluded extremes."
+    - source: *id002
+      value:
+        min: 3.5
+        max: 6
+      note: aquarium recommendation
+    tolerance:
+      value: &id061
+        min: 3.5
+        max: 6.3
+      confidence: low
+      rationale: "The median decision is 3.5 to 6.3, with low confidence. Proposals were generator 3.5\
+        \ to 7.0, checker-a 4.0 to 7.5, checker-b 3.5 to 6.0, checker-c 3.5 to 6.5, tiebreaker-1 3.5 to\
+        \ 6.0 and tiebreaker-2 3.5 to 6.0. The six upper endpoints have a median of 6.25, rounded to 6.3;\
+        \ the lower median is 3.5. Seriously Fish gives 3.5 to 6.0. Wider recommendations remain explicit:\
+        \ NCS 3.5 to 7.0, AquaInfo metadata 6.0 to 6.5 and LICG 5.5 to 6.5. Newman describes keeping at\
+        \ 4.3 and relays spawning at 4.5; a Finnish diary records spawning at 5.5 to 6.0 and subsequent\
+        \ fry growth at 6.5. Glaser reports successful slightly alkaline care and breeding without measured\
+        \ endpoints or duration. Checker-a numeric alkaline extensions are interpretations, not measurements\
+        \ supplied by Glaser or FishBase. The median contains the natural range and is an operational\
+        \ husbandry estimate; 6.3 is not a demonstrated disease or survival boundary."
+      sources:
+      - *id002
+      - *id009
+      - *id010
+      - *id027
+      - *id003
+      - *id011
+      - *id012
+      - *id013
+      - *id014
+      - &id028
+        kind: website
+        title: Quality Marine (2023). What's in a name? Satanoperca daemon
+        url: "https://www.qualitymarine.com/news/whats-in-a-name-satanoperca-daemon/"
+        archived: qualitymarine.com/news/whats-in-a-name-satanoperca-daemon/2026-10-15T051546Z
+        accessed: '2026-10-15'
+      - &id029
+        kind: literature
+        title: LICG cichlid care guide species table (June 2021)
+        url: "https://www.licg.nl/media/4798/cichliden_bijsluiter5_12r_bijlage1.pdf"
+        archived: licg.nl/media/4798/cichliden_bijsluiter5_12r_bijlage1.pdf/2026-10-14T215438Z
+        accessed: '2026-10-15'
+      - *id016
+      - *id015
+      - &id030
+        kind: website
+        title: "Aquarium Glaser: Satanoperca daemon, German account"
+        url: "https://www.aquariumglaser.de/en/25-perchlike-fishes/satanoperca-daemon/"
+        accessed: '2026-10-15'
+        archived: aquariumglaser.de/en/25-perchlike-fishes/satanoperca-daemon/2026-10-15T051818Z
+      evidence:
+      - source: *id002
+        value:
+          min: 3.5
+          max: 6
+      - source: *id009
+        value:
+          min: 3.5
+          max: 7
+      - source: *id010
+        value:
+          min: 4.3
+          max: 4.3
+        note: Actual adult keeping water; metadata separately recommends 6.0 to 6.5
+      - source: *id010
+        value:
+          min: 6
+          max: 6.5
+        note: "AquaInfo care metadata, distinct from the historical article"
+      - source: *id002
+        value:
+          min: 3.5
+          max: 6.0
+        note: care recommendation
+      - source: *id003
+        value:
+          min: 6
+          max: null
+        note: "FishBase states only pH 6.0 to an unspecified upper bound. The input encoded {'min': 6.0,\
+          \ 'max': 7.5}; that extra endpoint is not a source measurement. minimum 6.0 listed, no maximum"
+      - source: *id011
+        value:
+          min: 6.0
+          max: 7.8
+        note: Checker-a numerical interpretation of qualitative moderately hard or slightly alkaline keeping
+          advice; the source gives no numeric range. slightly alkaline water works with excellent hygiene
+      - source: *id010
+        value:
+          min: 4.3
+          max: 4.3
+        note: Actual keeping pH.
+      - source: *id010
+        value:
+          min: 6
+          max: 6.5
+        note: Conflicting summary metadata rather than the detailed article.
+      - source: *id013
+        value:
+          min: 6
+          max: 6.5
+        note: Page metadata conflict with the article body describing successful keeping at pH 4.3.
+      - source: *id013
+        value:
+          min: 4.3
+          max: 4.3
+        note: Observed captive keeping.
+      - source: *id002
+        value:
+          min: 3.5
+          max: 6
+        note: Explicit aquarium water recommendation.
+      - source: *id013
+        value:
+          min: 4.3
+          max: 4.3
+        note: Aquarium pH during multiyear maintenance; a point observation rather than a tolerance range.
+      - source: *id013
+        value:
+          min: 4.5
+          max: 4.5
+        note: Successful spawning conditions attributed to Eckinger (1987).
+      - source: *id013
+        value:
+          min: 6
+          max: 6.5
+        note: Appended AquaInfo care table differs from the author's narrative.
+      - source: *id028
+        value:
+          min: 4
+          max: 5
+        note: Importer's preferred range for long-term keeping.
+      - source: *id029
+        value:
+          min: 5.5
+          max: 6.5
+        note: Species-specific care guideline.
+      - source: *id016
+        value:
+          min: 5.5
+          max: 6
+        note: Breeding aquarium containing approximately three-year-old adults.
+      - source: *id016
+        value:
+          min: 6.5
+          max: 6.5
+        note: Fry aquarium in the subsequent growth diary; not years of adult keeping at this pH.
+      - source: *id015
+        value:
+          min: null
+          max: 6
+        note: Recommends aquarium pH below 6 without stating a lower boundary.
+      - source: *id027
+        value:
+          min: 6
+          max: 6
+        note: Describes pH around 6 as the traditional target but disputes its necessity and reports success
+          in slightly alkaline water without numeric endpoints.
+      - source: *id002
+        value:
+          min: 3.5
+          max: 6
+        note: Explicit aquarium recommendation.
+      - source: *id010
+        value:
+          min: 4.3
+          max: 4.3
+        note: Growth reported over eighteen months at this aquarium pH.
+      - source: *id010
+        value:
+          min: 4.5
+          max: 4.5
+        note: Successful spawning reported from Eckinger; a point observation.
+      - source: *id010
+        value:
+          min: 6
+          max: 6.5
+        note: "Separate AquaInfo care summary, in tension with the article narrative."
+      - source: *id003
+        value:
+          min: 6
+          max: null
+        note: "FishBase states only pH 6.0 to an unspecified upper bound. The input encoded {'min': 6,\
+          \ 'max': 7.5}; that extra endpoint is not a source measurement. minimum 6.0 listed, no maximum"
+      - source: *id011
+        value:
+          min: 6
+          max: 7.8
+        note: Checker-a numerical interpretation of qualitative moderately hard or slightly alkaline keeping
+          advice; the source gives no numeric range. slightly alkaline water works with excellent hygiene
+      verification:
+        method: median
+        votes:
+          agree: 3
+          total: 6
+    verification:
+      method: median
+      votes:
+        agree: 2
+        total: 6
+  ghDgh:
+    value:
+      min: 0
+      max: 1
+    confidence: medium
+    rationale: "All four natural-hardness votes select 0 to 1 dGH, retained with medium confidence. Negro\
+      \ calcium and magnesium measurements yield approximately 0.038 to 0.060 dGH using Ca/7.14 plus Mg/4.34;\
+      \ the FAO compilation independently implies about 0.057 to 0.122 dGH. Newman relays habitat hardness\
+      \ below 1 dH. Zero denotes practical near-zero hardness, not chemically pure water. The wider FishBase\
+      \ entry of 5 to 10 dH has no collection-site basis on the summary page and conflicts with the measured\
+      \ ions. Conductivity alone cannot be converted into GH. The adopted band allows regional variation\
+      \ rather than claiming 1 dGH was a measured species-wide maximum."
+    sources:
+    - *id010
+    - *id003
+    - *id022
+    - &id043
+      kind: literature
+      title: "Rios-Villamizar et al. Chemistry of different Amazonian water types for river classification,\
+        \ a preliminary review"
+      url: "https://doi.org/10.2495/ws130021"
+      archived: doi.org/10.2495_ws130021/2026-10-12T203004Z
+      accessed: '2026-10-15'
+    - &id044
+      kind: literature
+      title: Gonzalez et al. (2024). Ion uptake in naturally acidic water
+      url: "https://doi.org/10.1007/s00360-024-01552-6"
+      archived: doi.org/10.1007_s00360-024-01552-6/2026-10-13T131655Z
+      accessed: '2026-10-15'
+    - *id019
+    - *id005
+    - *id020
+    - &id032
+      kind: literature
+      title: "Water Typology in the Amazon: Close Correlation with the Hydrogeochemistry of River Basins\
+        \ (2023)"
+      url: "https://doi.org/10.9734/jalsi/2023/v26i5621"
+      archived: doi.org/10.9734_jalsi_2023_v26i5621/2026-10-13T113323Z
+      accessed: '2026-10-15'
+    - *id021
+    - *id013
+    evidence:
+    - source: *id010
+      value:
+        min: 0
+        max: 1
+      note: Secondary report of Goulding et al. 1988 habitat hardness below 1 dH
+    - source: *id003
+      value:
+        min: 5
+        max: 10
+      note: "Species summary hardness, no sampling station supplied"
+    - source: *id019
+      value:
+        min: 0
+        max: 1
+      note: "Checker-a inferred the proposed near-zero GH band from conductivity reported as 8.5 to 26\
+        \ microS/cm. The original numbers are conductivity, not dGH; conductivity alone does not establish\
+        \ GH."
+    - source: *id005
+      value: "calcium below 10 mg/L in virtually all Amazon waters, far lower in blackwater"
+      note: general upper bound
+    - source: *id020
+      value:
+        min: 0.038
+        max: 0.06
+      note: Calculated from measured calcium and magnesium in two Negro samples.
+    - source: *id010
+      value:
+        min: 0
+        max: 1
+      note: Reported blackwater hardness below 1 dH; upper value is a reporting bound.
+    - source: *id003
+      value:
+        min: 5
+        max: 10
+      note: Conflicting database environment range without capture-site chemistry.
+    - source: *id020
+      value:
+        min: 0.038
+        max: 0.06
+      note: Calculated from paired Ca and Mg measurements in Table 1.
+    - source: *id013
+      value:
+        min: 0
+        max: 1
+      note: Habitat hardness reported from Goulding; below 1 dH.
+    - source: *id003
+      value:
+        min: 5
+        max: 10
+      note: "General species environment entry, not accepted as native field hardness."
+    tolerance:
+      value: &id062
+        min: 0
+        max: 5
+      confidence: medium
+      rationale: "The qualified-majority tally selects 0 to 5 dGH, with medium confidence: generator proposed\
+        \ 0 to 8, checker-a 0 to 12, and checker-b, checker-c, tiebreaker-1 and tiebreaker-2 0 to 5. Seriously\
+        \ Fish states 1 to 5 dGH; near-zero native hardness and Newman very-soft-water keeping widen its\
+        \ lower endpoint to zero. Wider source figures are preserved: AquaInfo metadata 5 to 8, LICG 1\
+        \ to 8, FishBase 5 to 10, and the Finnish breeding diary GH 10 at spawning by approximately three-year-old\
+        \ parents. Mikolji recommends below about 1.1 dGH. Glaser reports success in moderately hard water\
+        \ but supplies no numerical GH or observation period, so checker-a 5 to 12 is an extrapolation.\
+        \ The tally follows the explicit higher-trust care range for a general long-term recommendation;\
+        \ 5 dGH is not a proven physiological ceiling, and sustained adult outcomes in the wider ranges\
+        \ remain insufficiently documented."
+      sources:
+      - *id002
+      - *id010
+      - *id027
+      - *id003
+      - *id011
+      - *id013
+      - *id014
+      - *id029
+      - *id015
+      - *id016
+      - *id008
+      - *id030
+      - *id024
+      evidence:
+      - source: *id002
+        value:
+          min: 1
+          max: 5
+      - source: *id010
+        value:
+          min: 5
+          max: 8
+        note: Care metadata rather than field measurements
+      - source: *id010
+        value:
+          min: 2
+          max: 2
+        note: "Successful breeding reported from Eckinger, not a tolerance experiment"
+      - source: *id002
+        value:
+          min: 1
+          max: 5
+        note: care recommendation
+      - source: *id003
+        value:
+          min: 5
+          max: 10
+        note: environment entry
+      - source: *id011
+        value:
+          min: 5
+          max: 12
+        note: Checker-a numerical interpretation of qualitative moderately hard or slightly alkaline keeping
+          advice; the source gives no numeric range. medium-hard water works
+      - source: *id010
+        value:
+          min: 2
+          max: 2
+        note: Reported successful breeding hardness.
+      - source: *id010
+        value:
+          min: 5
+          max: 8
+        note: Conflicting metadata beneath the article.
+      - source: *id003
+        value:
+          min: 5
+          max: 10
+        note: "Environment listing, not a demonstrated long-term tolerance."
+      - source: *id013
+        value:
+          min: 5
+          max: 8
+        note: "Page metadata, distinct from the extremely soft water described in the text."
+      - source: *id013
+        value:
+          min: 2
+          max: 2
+        note: Successful spawning report attributed to Eckinger.
+      - source: *id002
+        value:
+          min: 1
+          max: 5
+        note: Explicit aquarium hardness range.
+      - source: *id013
+        value:
+          min: 2
+          max: 2
+        note: Successful spawning hardness attributed to Eckinger (1987).
+      - source: *id013
+        value:
+          min: 5
+          max: 8
+        note: AquaInfo's appended care table rather than Newman's own measurements.
+      - source: *id003
+        value:
+          min: 5
+          max: 10
+        note: Summary hardness range with no habitat measurement or long-term aquarium trial identified
+          on the page.
+      - source: *id029
+        value:
+          min: 1
+          max: 8
+        note: Species-specific care guideline.
+      - source: *id015
+        value:
+          min: 0
+          max: 1.1
+        note: Recommends below 20 ppm GH; divided by 17.848 to convert CaCO3-equivalent mg/L to dGH and
+          rounded.
+      - source: *id016
+        value:
+          min: 10
+          max: 10
+        note: Aquarium GH at spawning by approximately three-year-old parents; earlier lifetime chemistry
+          is not documented.
+      - source: *id008
+        value:
+          min: 0
+          max: 1
+        note: Collecting waters below 1 dGH support inclusion of near-zero habitat hardness; not an aquarium
+          upper tolerance.
+      - source: *id002
+        value:
+          min: 1
+          max: 5
+        note: Explicit species aquarium recommendation.
+      - source: *id010
+        value:
+          min: 2
+          max: 2
+        note: Hardness in the cited successful breeding aquarium.
+      - source: *id010
+        value:
+          min: 5
+          max: 8
+        note: Separate AquaInfo summary table.
+      - source: *id003
+        value:
+          min: 5
+          max: 10
+        note: Summary dH entry; field or aquarium basis not specified.
+      - source: *id024
+        value:
+          min: 0.057
+          max: 0.122
+        note: "Habitat context only: Rio Negro Ca 0.232 to 0.450 mg/L and Mg 0.108 to 0.254 mg/L give\
+          \ approximately 0.057 to 0.122 dGH. Not a tolerance measurement."
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  khDkh:
+    value: &id063
+      min: 0
+      max: 1
+    confidence: medium
+    rationale: "The settled tally selects a rounded 0 to 1 dKH with medium confidence. Generator proposed\
+      \ 0 to 0.5, checker-a and checker-c 0 to 1, and checker-b 0 to 0.1. Measured Negro bicarbonate of\
+      \ 0 to 0.01 mg/L corresponds to about 0 to 0.00046 dKH; a different regional alkalinity series gives\
+      \ approximately 0.056 to 0.280 dKH equivalent. These are different analytical quantities in humic\
+      \ water. Near-zero carbonate buffering and regional variation support the rounded planning band,\
+      \ not an observed 1 dKH maximum. Organic acid buffering is not carbonate hardness, and GH does not\
+      \ determine KH. This natural KH fact carries no verification object."
+    sources:
+    - &id033
+      kind: literature
+      title: Pinto et al. (2009). Efeitos da acao antropica sobre a hidrogeoquimica do rio Negro na orla
+        de Manaus/AM
+      url: "https://doi.org/10.1590/s0044-59672009000300018"
+      archived: doi.org/10.1590_s0044-59672009000300018/2026-10-13T181858Z
+      accessed: '2026-10-15'
+    - *id022
+    - *id031
+    - *id019
+    - *id005
+    - *id020
+    - *id032
+    evidence:
+    - source: *id033
+      value:
+        min: 0.056
+        max: 0.28
+      note: Converted regional alkalinity at less impacted stations; dKH equivalent
+    - source: *id019
+      value:
+        min: 0
+        max: 1
+      note: inferred from pH 4.3-5.3 and conductivity of 8-10 microS/cm
+    - source: *id005
+      value: "extremely dilute, low alkalinity, poorly buffered Amazon waters"
+    - source: *id020
+      value:
+        min: 0
+        max: 0.00046
+      note: Calculated carbonate alkalinity from measured bicarbonate; not total organic buffering.
+    - source: *id020
+      value:
+        min: 0
+        max: 0.00046
+      note: "Calculated carbonate equivalent from measured bicarbonate, not total organic alkalinity."
+    tolerance:
+      value: &id064
+        min: 0
+        max: 3
+      confidence: low
+      rationale: "The qualified-majority tally selects 0 to 3 dKH with low confidence. Generator, checker-c,\
+        \ tiebreaker-1 and tiebreaker-2 proposed 0 to 3, checker-a 0 to 6 and checker-b 0 to 2; five proposals\
+        \ agree under the two-degree comparison rule. Mikolji recommends below 30 ppm as CaCO3, approximately\
+        \ 1.7 dKH, while the Finnish breeding diary measured 2 to 3 dKH during successful spawning. The\
+        \ Orinoco collecting account supports inclusion of near-zero buffering. The wider checker-a range\
+        \ to 6 and its inferred Glaser band of 2 to 6 are retained as proposals, but Glaser supplies no\
+        \ KH measurement. Neither pH nor GH can establish an exact KH tolerance. The selected allowance\
+        \ extends beyond the decided natural band, informed by care advice and breeding practice, with\
+        \ no measured long-term health threshold."
+      sources:
+      - *id002
+      - *id009
+      - *id010
+      - *id027
+      - *id011
+      - *id013
+      - &id034
+        kind: model-knowledge
+        title: Explicit checker inference from husbandry context
+        accessed: '2026-10-15'
+      - *id015
+      - *id016
+      - *id008
+      - *id014
+      - *id030
+      evidence:
+      - source: *id002
+        value:
+          min: 0
+          max: 3
+        note: "Inferred from soft acidic husbandry, not a KH value stated by this source"
+      - source: *id002
+        value:
+          min: 0
+          max: 3
+        note: derived from the GH 1-5 and pH 3.5-6.0 advice
+      - source: *id011
+        value:
+          min: 2
+          max: 6
+        note: "Checker-a numerical interpretation of qualitative moderately hard or slightly alkaline\
+          \ keeping advice; the source gives no numeric range. derived from medium-hard, slightly alkaline\
+          \ water"
+      - source: *id002
+        value:
+          min: 0
+          max: 2
+        note: Inferred from recommended acidic pH and low GH; KH itself is not stated.
+      - source: *id010
+        value:
+          min: 0
+          max: 2
+        note: Inferred from very-soft-water keeping at pH 4.3; no direct KH measurement.
+      - source: *id002
+        value:
+          min: 0
+          max: 3
+        note: Checker inference from pH 3.5 to 6 and GH 1 to 5; the source does not give KH.
+      - source: *id034
+        value:
+          min: 0
+          max: 3
+        note: Unverified numerical KH tolerance.
+      - source: *id015
+        value:
+          min: 0
+          max: 1.7
+        note: Aquarium recommendation below 30 ppm KH converted using 17.848 mg/L CaCO3 per dKH; upper
+          endpoint rounded and originally exclusive.
+      - source: *id016
+        value:
+          min: 2
+          max: 3
+        note: Breeding aquarium measurement; multiyear constancy at these values is not established.
+      - source: *id008
+        value:
+          min: 0
+          max: 1
+        note: Collecting waters below 1 dKH; supports the lower endpoint but does not establish aquarium
+          tolerance.
+      - source: *id002
+        value:
+          min: 0
+          max: 3
+        note: Derived KH proposal using the source pH 3.5 to 6.0 and GH 1 to 5 recommendations; the source
+          does not state KH.
+      - source: *id010
+        value:
+          min: 0
+          max: 3
+        note: Derived KH proposal informed by extremely soft-water maintenance and the reported 2 dGH
+          breeding aquarium; the author does not state KH.
+      - source: *id008
+        value:
+          min: 0
+          max: 1
+        note: "Natural collecting-area KH reported as less than 1 dKH; 1 is an upper reporting bound,\
+          \ not a tolerance limit."
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  maxSizeCm:
+    value: &id065
+      male: 25
+      female: 25
+    confidence: medium
+    rationale: "The component-wise median is 25 cm for both sexes: generator, checker-b and checker-c\
+      \ proposed 25/25 cm and checker-a 25/22 cm. Newman describes captive adults around 25 cm and NCS\
+      \ lists 25 cm, whereas FishBase and Glaser include 30 cm total-length maxima. Seriously Fish uses\
+      \ 25 cm standard length, so its measurement is not interchangeable with total length. No read source\
+      \ establishes a 22 cm female maximum or a dependable sex difference in adult length. Equal planning\
+      \ sizes reflect that uncertainty rather than a sex-specific growth study."
+    sources:
+    - *id010
+    - *id009
+    - *id002
+    - *id003
+    - *id027
+    - *id011
+    - *id013
+    - *id014
+    evidence:
+    - source: *id010
+      value:
+        male: 25
+        female: 25
+      note: Captive adult size without demonstrated sex difference
+    - source: *id027
+      value:
+        male: 30
+        female: 30
+      note: "Reported maximum total length, sex unspecified"
+    - source: *id002
+      value:
+        male: 25
+        female: 25
+      note: standard length
+    - source: *id003
+      value:
+        male: 20.9
+        female: 20.9
+      note: SL of the largest specimen; 30 cm TL elsewhere
+    - source: *id011
+      value:
+        male: 30
+        female: 30
+      note: "total length, upper limit"
+    - source: *id010
+      value:
+        male: 25
+        female: 25
+      note: Aquarium adult length without sex-specific measurements.
+    - source: *id013
+      value:
+        male: 25
+        female: 25
+      note: Aquarium adult size; sexes not separated.
+    - source: *id003
+      value:
+        male: 30
+        female: 30
+      note: "Maximum total length, unsexed."
+  predation:
+    value: 0
+    confidence: high
+    rationale: "All four votes select rubric level 0. Seriously Fish limits the fish-prey concern to extremely\
+      \ small fry; this does not support regular capture of fish up to 2 cm. CRC identifies insect feeding\
+      \ and substrate sifting. Incidental fry consumption remains possible, but these sources do not describe\
+      \ a fish-hunting species."
+    sources:
+    - *id002
+    - *id018
+    - *id010
+    - &id035
+      kind: website
+      title: "Aquario: Geophagus daemon care sheet"
+      url: "https://aquario.me/fish/geophagus-daemon"
+      archived: aquario.me/fish/geophagus-daemon/2026-10-15T050826Z
+      accessed: '2026-10-15'
+    evidence:
+    - source: *id002
+      value: 0
+      note: Only tiny fry are at risk
+    - source: *id018
+      value: 0
+      note: Interpretation of insectivorous substrate-sifting feeding category
+    - source: *id002
+      value: 0
+      note: will not prey on fish beyond a few millimetres
+    - source: *id018
+      value: 0
+      note: insect-feeding substrate sifter
+    - source: *id002
+      value: 0
+      note: Only very small fry are at risk.
+    - source: *id018
+      value: 0
+      note: "Feeding summary supports invertebrate feeding, not piscivory."
+    - source: *id002
+      value: 0
+      note: Reports safety for fish above a few millimetres.
+    - source: *id035
+      value: 0
+      note: Care sheet regards it as non-predatory.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value: &id066
+      type: invertivore
+      bloatSensitive: false
+      foods:
+      - Small sinking prepared foods
+      - Artemia
+      - Small insect larvae
+      - Fine vegetable-containing foods
+    confidence: medium
+    rationale: "The unanimous tally retains invertivore with bloatSensitive false and the generator food\
+      \ list. CRC and Seriously Fish support feeding dominated by small invertebrates obtained from sediment,\
+      \ alongside some plant material. The comparative feeding study supports benthic feeding at the genus\
+      \ level; no missing table percentages are inferred. AquaInfo metadata instead label the diet omnivorous,\
+      \ and that dissent remains in evidence. Newman reports serious abdominal swelling associated with\
+      \ disrupted maintenance and stress, without establishing a high-protein dietary trigger. False therefore\
+      \ describes the rubric-specific causal flag, not freedom from bloat or permission for an unbalanced\
+      \ diet."
+    sources:
+    - *id018
+    - *id002
+    - *id010
+    - *id027
+    - *id011
+    - &id056
+      kind: literature
+      title: "Lopez-Fernandez et al. (2012): Diet-Morphology Correlations in the Radiation of South American\
+        \ Geophagine Cichlids"
+      url: "https://doi.org/10.1371/journal.pone.0033997"
+      archived: doi.org/10.1371_journal.pone.0033997/2026-10-13T092527Z
+      accessed: '2026-10-15'
+    - *id012
+    - *id013
+    evidence:
+    - source: *id018
+      value:
+        type: invertivore
+        bloatSensitive: false
+      note: "Insect-focused feeding; bloat flag is an interpretation, not a tested protein threshold"
+    - source: *id002
+      value:
+        type: invertivore
+        bloatSensitive: false
+      note: Animal-dominated stomach contents with some plant material
+    - source: *id010
+      value:
+        type: omnivore
+        bloatSensitive: false
+      note: AquaInfo metadata differs on diet category; bloat account does not establish protein causation
+    - source: *id002
+      value: invertivore
+      note: stomach contents mainly small invertebrates plus some plant matter
+    - source: *id018
+      value: invertivore
+      note: insectivorous substrate sifter
+    - source: *id018
+      value:
+        type: invertivore
+      note: Insect feeding in the public summary.
+    - source: *id002
+      value:
+        type: invertivore
+      note: Predominantly small invertebrates in wild gut contents.
+    - source: *id010
+      value:
+        type: omnivore
+      note: Conflicting metadata; detailed article accepts varied aquarium foods.
+    - source: *id010
+      value:
+        bloatSensitive: false
+      note: "Rubric interpretation: water-quality-associated bloat is reported, not sensitivity to a high-protein\
+        \ diet."
+    - source: *id018
+      value:
+        type: invertivore
+        bloatSensitive: false
+      note: Insect feeding supports the diet type; no protein-linked bloat mechanism is reported.
+    - source: *id002
+      value:
+        type: invertivore
+        bloatSensitive: false
+      note: Invertebrate-dominated contents with some seeds and detritus.
+    - source: *id013
+      value:
+        type: omnivore
+        bloatSensitive: false
+      note: Metadata label; disease narrative links bloat to maintenance disruption rather than dietary
+        protein.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: "All four proposals select level 2 for a sufficiently large adult group: a visible hierarchy\
+      \ and regular chasing, with limited injuries under suitable conditions. NCS describes stronger aggression,\
+      \ while Glaser emphasizes very rare bite injuries. Newman records torn fins and occasional lost\
+      \ scales during reproductive activity. Breeding, restricted space and small groups explain part\
+      \ of the apparent disagreement; sustained exclusion of a subordinate is not acceptable normal housing."
+    sources:
+    - *id002
+    - *id010
+    - *id027
+    - *id009
+    - *id011
+    - *id014
+    - *id013
+    evidence:
+    - source: *id002
+      value: 2
+      note: Hierarchy and concentration of harassment in small groups
+    - source: *id010
+      value: 2
+      note: Usually limited injuries with stronger nesting aggression
+    - source: *id002
+      value: 2
+      note: "dominance hierarchy, harassment of weaker fish in small groups"
+    - source: *id011
+      value: 1
+      note: bite injuries very rare
+    - source: *id002
+      value: 2
+    - source: *id009
+      value: 3
+      note: Stronger general aggression description.
+    - source: *id014
+      value: 1
+      note: Injuries reported as unusual.
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "Generator and checker-c proposed level 2; checker-a and checker-b proposed level 1 to\
+      \ emphasize behavior outside breeding. Level 2 is retained because the rubric includes territorial\
+      \ chasing in an otherwise suitable aquarium, and the detailed breeding accounts describe active\
+      \ exclusion from a substantial nesting area. This does not imply routine attacks throughout the\
+      \ aquarium. Glaser describes very peaceful nonbreeding behavior, retained in evidence."
+    sources:
+    - *id002
+    - *id010
+    - *id009
+    - *id027
+    - *id011
+    - *id012
+    - *id013
+    - *id014
+    evidence:
+    - source: *id002
+      value: 2
+      note: Breeding defense contrasts with peaceful behavior at other times
+    - source: *id002
+      value: 1
+      note: peaceful unless breeding
+    - source: *id011
+      value: 0
+      note: "peaceful, shy"
+    - source: *id002
+      value: 1
+    - source: *id002
+      value: 2
+    - source: *id014
+      value: 0
+      note: Peaceful account outside spawning.
+  territory:
+    value:
+      size: large
+      breedingOnly: true
+    confidence: high
+    rationale: "All proposals specify a large territory only during breeding. Published accounts describe\
+      \ defended excavations, Glaser gives about 50 cm across, and Seriously Fish describes much larger\
+      \ pits when space permits. These observations meet the large category without implying that nonbreeding\
+      \ group members each require a permanent exclusive territory."
+    sources:
+    - *id002
+    - *id010
+    - *id027
+    - *id011
+    - *id013
+    - *id014
+    evidence:
+    - source: *id027
+      value:
+        size: large
+        breedingOnly: true
+      note: Nest about 50 cm across
+    - source: *id002
+      value:
+        size: large
+        breedingOnly: true
+      note: Much larger excavated areas possible in spacious habitats
+    - source: *id002
+      value:
+        size: large
+        breedingOnly: true
+      note: pit up to 2 x 1 m in large tanks
+    - source: *id011
+      value:
+        size: large
+        breedingOnly: true
+      note: pit about 50 cm across
+    - source: *id002
+      value:
+        size: large
+        breedingOnly: true
+    - source: *id014
+      value:
+        size: large
+        breedingOnly: true
+      note: Nest diameter around 50 cm.
+  habitatZones:
+    value:
+    - sand
+    - wood
+    confidence: high
+    rationale: "All complete runs select sand and wood. Fine sediment supports feeding, while branches\
+      \ and shoreline roots provide structure and retreat. CRC emphasizes main river channels; Seriously\
+      \ Fish and the detailed husbandry account also describe quieter margins and floodplain waters. Regional\
+      \ community papers provide habitat context rather than proving that every sampled habitat was occupied\
+      \ by identified daemon."
+    sources:
+    - *id002
+    - *id010
+    - *id018
+    - *id017
+    - *id036
+    - kind: literature
+      title: "Montana et al. (2008): Comparison of fish assemblages in two littoral habitats in a Neotropical\
+        \ morichal stream in Venezuela"
+      url: "https://doi.org/10.1590/s1679-62252008000400005"
+      archived: doi.org/10.1590_s1679-62252008000400005/2026-10-13T092231Z
+      accessed: '2026-10-15'
+    - *id037
+    - *id013
+    evidence:
+    - source: *id002
+      value:
+      - sand
+      - wood
+    - source: *id010
+      value:
+      - sand
+      - wood
+    - source: *id002
+      value:
+      - sand
+      - wood
+      note: "sand, leaf litter, branches"
+    - source: *id017
+      value:
+      - sand
+      - wood
+      note: Regional lagoons and creeks; species presence not established by this table.
+  social:
+    value:
+      structure: group
+      minGroup: 5
+    confidence: high
+    rationale: "All complete runs recommend a group with at least five individuals. Seriously Fish recommends\
+      \ beginning with 5 to 8 and describes hierarchy and loose aggregations; Glaser also favors groups.\
+      \ CRC describes monogamous mating, which concerns breeding pairs and does not supersede the normal\
+      \ group recommendation. Minimum tank dimensions refer to this adult social unit."
+    sources:
+    - *id002
+    - *id027
+    - *id018
+    - *id010
+    - *id013
+    - *id014
+    evidence:
+    - source: *id002
+      value:
+        structure: group
+        minGroup: 5
+    - source: *id002
+      value:
+        structure: group
+        minGroup: 5
+      note: 5-8 minimum
+    - source: *id018
+      value:
+        structure: pair
+      note: "Mating system, not a recommendation to isolate a pair permanently."
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: The unanimous decision is false. Seriously Fish and Newman describe compatible peaceful
+      communities under matching conditions. Newman prefers a dedicated aquarium to reduce waste and simplify
+      maintenance; that personal preference does not establish an obligatory species-only rule. Extra
+      fish require additional capacity and feeding access.
+    sources:
+    - *id002
+    - *id010
+    - *id011
+    - *id012
+    - *id013
+    - *id014
+    evidence:
+    - source: *id002
+      value: false
+    - source: *id010
+      value: false
+      note: Suitable communities discussed despite a personal preference for a dedicated tank
+    - source: *id002
+      value: false
+      note: many suitable tankmates
+    - source: *id010
+      value: false
+    - source: *id013
+      value: false
+      note: Describes compatible cichlids while personally preferring a dedicated tank.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: medium
+    rationale: "All four votes select an empty list. No read source reports a named cross involving daemon,\
+      \ and no curated group includes it. The existing jurupari pair groups do not establish crossability\
+      \ with daemon. Taxonomic proximity to lilith is not itself a breeding report. The cichlids.com archive\
+      \ search for the full scientific name found no posts; an epithet-only search yielded an unrelated\
+      \ discussion. Absence of a group is not proof that hybridization is biologically impossible."
+    sources:
+    - &id038
+      kind: database
+      title: "cichlids.com curated hybrid groups: data/species/hybrid-groups.yaml"
+    - *id002
+    - *id018
+    - &id039
+      kind: database
+      title: "Curated hybrid groups: data/species/hybrid-groups.yaml"
+      accessed: '2026-10-15'
+    - &id057
+      kind: database
+      title: "data/species/hybrid-groups.yaml: curated groups"
+      accessed: '2026-10-15'
+    evidence:
+    - source: *id038
+      value: []
+    - source: *id002
+      value: []
+      note: No daemon cross reported; absence of a report does not establish reproductive isolation
+    - source: *id002
+      value: []
+      note: no hybrids mentioned for this species
+    - source: *id039
+      value: []
+    - source: *id002
+      value: []
+      note: Describes distinct lineages but reports no cross; absence of evidence is not proof of reproductive
+        isolation.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value: &id067
+      baseColors:
+      - silver
+      - brown
+      - black
+      - red
+      pattern: spots
+    confidence: medium
+    rationale: "The spotted pattern is unanimous, while proposed palettes differ: generator silver/brown/black/red;\
+      \ checker-a silver/grey/brown; checker-b silver/brown/black; checker-c grey/silver/blue/black/red.\
+      \ The generator palette is retained as a compact planning description of the metallic brownish body,\
+      \ dark marks and reddish highlights. Grey shading and blue iridescence are also reported and vary\
+      \ with lighting and condition. The two flank marks and tail-base ocellus are more dependable than\
+      \ an exhaustive color list."
+    sources:
+    - *id002
+    - *id010
+    - *id027
+    - *id012
+    - &id040
+      kind: model-knowledge
+      title: Explicitly uncertain estimate for adult cichlids of this size
+      accessed: '2026-10-15'
+    - *id035
+    evidence:
+    - source: *id002
+      value:
+        baseColors:
+        - silver
+        - brown
+        - black
+        - red
+        pattern: spots
+      note: Adult photographs and species diagnostic markings
+    - source: *id002
+      value:
+        baseColors:
+        - silver
+        - grey
+        - brown
+        pattern: spots
+      note: two dark blotches and caudal ocellus
+    - source: *id002
+      value:
+        pattern: spots
+    - source: *id035
+      value:
+        baseColors:
+        - grey
+        - blue
+        - black
+        - red
+        pattern: spots
+  feedingSpeed:
+    value: slow
+    confidence: medium
+    rationale: "All complete runs select slow. Newman reports competition losses with active characins,\
+      \ and the species browses small food items from the bottom. The category describes access to food\
+      \ beside faster companions, not an inability to rise into the water column at feeding time."
+    sources:
+    - *id010
+    - *id002
+    - *id011
+    - *id012
+    - *id013
+    evidence:
+    - source: *id010
+      value: slow
+    - source: *id002
+      value: slow
+      note: browses in small portions
+    - source: *id013
+      value: slow
+  minTank:
+    value: &id068
+      volumeL: 756
+      lengthCm: 210
+      depthCm: 60
+    confidence: medium
+    rationale: "The medians are 756 L, 210 cm length and 60 cm depth: generator, checker-a and checker-c\
+      \ proposed those values, while checker-b rounded the volume to 750 L with the same footprint. Seriously\
+      \ Fish directly specifies the adopted dimensions and approximate volume for group housing, so no\
+      \ upward extrapolation beyond that source is required. NCS gives a smaller 540 L and 160 cm, and\
+      \ Newman an older 300 L and 120 cm recommendation while describing maintenance in 720 L. The adopted\
+      \ minimum accommodates at least five adults, feeding floor and spawning defense; it is not a minimum\
+      \ for a large mixed community."
+    sources:
+    - *id002
+    - *id009
+    - *id010
+    - *id013
+    - *id035
+    evidence:
+    - source: *id002
+      value:
+        volumeL: 756
+        lengthCm: 210
+        depthCm: 60
+    - source: *id002
+      value:
+        volumeL: 756
+        lengthCm: 210
+        depthCm: 60
+      note: about 756 L
+    - source: *id010
+      value:
+        volumeL: 300
+        lengthCm: 120
+      note: Older recommendation with no width stated.
+    - source: *id009
+      value:
+        volumeL: 540
+        lengthCm: 160
+      note: Width not stated.
+    - source: *id013
+      value:
+        volumeL: 300
+        lengthCm: 120
+      note: Older recommendation; width not stated.
+  lifespanYears:
+    value: &id069
+      min: 8
+      max: 12
+    confidence: low
+    rationale: "The proposal medians are 8 to 12 years: generator and checker-b 8 to 12, checker-a 8 to\
+      \ 15, and checker-c 8 to 10. Aquario states eight years without a traceable cohort or longevity\
+      \ record. No read source establishes a 12-year species maximum. The upper endpoint remains an explicit\
+      \ model-derived planning allowance for a large cichlid that reaches reproductive condition over\
+      \ multiple years, rather than treating an unreferenced eight-year figure as a fixed ceiling. This\
+      \ extrapolation beyond the only numerical website claim has low confidence and needs species-specific\
+      \ longevity records."
+    sources:
+    - &id055
+      kind: model-knowledge
+      title: "General cichlid husbandry estimate, not a measured species lifespan"
+    - &id041
+      kind: model-knowledge
+      title: General knowledge of large geophagine cichlids
+    - *id040
+    - *id035
+    - *id034
+    - &id042
+      kind: model-knowledge
+      title: Adjudicator planning estimate beyond the unverified eight-year website claim
+      accessed: '2026-10-15'
+    evidence:
+    - source: *id041
+      value:
+        min: 8
+        max: 15
+      note: estimate
+    - source: *id035
+      value:
+        min: 8
+        max: 8
+    - source: *id034
+      value:
+        min: 8
+        max: 10
+      note: "Upper endpoint inferred, not documented."
+    - source: *id042
+      value:
+        min: 8
+        max: 12
+      note: Median proposal retained as a low-confidence estimate; no read longevity series supports a
+        12-year maximum.
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: "All complete runs select open substrate spawning, supported independently by FishBase,\
+      \ CRC, Seriously Fish and Newman. Parents place and cover the eggs at an excavated site and care\
+      \ for the brood; the mouthbrooding behavior of other Satanoperca must not be transferred to this\
+      \ species."
+    sources:
+    - *id002
+    - *id003
+    - *id018
+    - *id010
+    - *id027
+    - *id009
+    - *id011
+    - *id013
+    - *id014
+    evidence:
+    - source: *id018
+      value: open-substrate-spawner
+    - source: *id003
+      value: open-substrate-spawner
+    - source: *id010
+      value: open-substrate-spawner
+    - source: *id002
+      value: open-substrate-spawner
+      note: biparental substrate spawner
+    - source: *id003
+      value: open-substrate-spawner
+      note: eggs in a pit covered with coarser substrate
+    - source: *id018
+      value: open-substrate-spawner
+      note: "breeding: substrate open"
+  beginnerSuitability:
+    value: demanding
+    confidence: high
+    rationale: "All complete runs select demanding. CRC explicitly places the species with advanced aquarists,\
+      \ supported by the detailed needs for stable chemistry, waste control, group space and feeding access.\
+      \ NCS gives a more permissive moderate rating, retained in evidence; its shorter care table does\
+      \ not remove the constraints described by the detailed accounts."
+    sources:
+    - *id018
+    - *id002
+    - *id010
+    - *id009
+    - *id027
+    - *id011
+    - *id013
+    evidence:
+    - source: *id002
+      value: demanding
+      note: difficult
+    - source: *id011
+      value: demanding
+      note: only for experienced keepers
+    - source: *id018
+      value: demanding
+      note: advanced aquarists
+    - source: *id018
+      value: demanding
+    - source: *id009
+      value: moderate
+      note: NCS care difficulty differs from the advanced classification used in the final profile.
+partners:
+  suitable:
+  - species: Mesonauta insignis
+    reason: Peaceful upper-water cichlid suggested by the species account and compatible with warm soft
+      water.
+    condition: An enlarged aquarium with visual barriers and enough feeding access for both species.
+  - species: Pterophyllum scalare
+    reason: Newman recommends Pterophyllum as less bottom-focused companions.
+    condition: Adults adapted to matching warm soft water; extra height and space beyond the daemon group
+      minimum.
+  - species: Uaru amphiacanthoides
+    reason: Newman identifies this species as a possible companion with a different feeding zone.
+    condition: A substantially larger tank for its own social group and distributed feeding.
+  unsuitable:
+  - species: Maylandia zebra
+    reason: "Its alkaline lake-water requirements conflict with the acidic blackwater target, and its\
+      \ assertiveness adds stress."
+  - species: Parachromis managuensis
+    reason: A much more predatory and aggressive cichlid that can injure or suppress this gentle sand
+      feeder.
+  - species: Potamotrygon motoro
+    reason: A large stingray can prey on resting eartheaters; reported mixed stingray setups include disappearing
+      cichlids.
+profile:
+  overview:
+    text: "A group of Satanoperca daemon brings almost continuous bottom browsing to a spacious aquarium.\
+      \ Its two flank marks and tail-base ocellus distinguish the threespot eartheater from similar congeners.\
+      \ Adults usually tolerate quiet companions, yet the combination of adult size, social hierarchy\
+      \ and sensitivity to poor conditions makes this a demanding species. Plan around a group of at least\
+      \ five and an established aquarium rather than the size of juveniles offered for sale."
+    sources:
+    - *id002
+    - *id018
+    - *id027
+    - *id001
+  habitat:
+    text: "This species occupies parts of the Negro, Casiquiare and upper Orinoco drainages in Brazil,\
+      \ Colombia and Venezuela. Sand, submerged timber and seasonal access to sheltered marginal waters\
+      \ shape its feeding habitat. CRC emphasizes main channels, while detailed accounts also describe\
+      \ floodplain margins and lagoons. The natural planning bands are 27 to 31 C, pH 3.5 to 5.8, GH 0\
+      \ to 1 dGH and KH 0 to 1 dKH. They summarize typical regional conditions rather than complete measurements\
+      \ for all populations. Regional studies report surface temperatures into the mid-30s; a secondary\
+      \ Orinoco collecting account reports seasonal temperatures from 25.5 to 32.5 C. Those broader observations\
+      \ remain relevant context rather than permanent aquarium targets. Very low measured calcium, magnesium\
+      \ and bicarbonate support the dilute blackwater chemistry; a zero hardness endpoint means practical\
+      \ near-zero values. Other retained regional publications concern community ecology, water treatment\
+      \ or different study organisms and supply context only; the dolphin survey concerns another basin.\
+      \ The former Cichlid-Forum article URL now shows an unrelated index, and the archived cichlids.com\
+      \ thread found by an epithet search is unrelated to this species."
+    sources:
+    - *id002
+    - *id019
+    - *id004
+    - *id033
+    - *id022
+    - *id031
+    - *id043
+    - *id044
+    - *id017
+    - kind: literature
+      title: Ecophysiological interactions and water-related physicochemical parameters among freshwater
+        stingrays (2016)
+      url: "https://doi.org/10.1590/1519-6984.01816"
+      archived: doi.org/10.1590_1519-6984.01816/2026-10-13T181221Z
+      accessed: '2026-10-15'
+    - kind: literature
+      title: Santos et al. (2020). The use of Moringa oleifera seeds in the treatment of water from the
+        Negro River
+      url: "https://doi.org/10.22161/ijaers.712.46"
+      archived: doi.org/10.22161_ijaers.712.46/2026-10-13T131646Z
+      accessed: '2026-10-15'
+    - *id001
+    - *id045
+    - *id003
+    - *id018
+    - *id005
+    - *id006
+    - *id037
+    - *id007
+    - *id008
+    - *id020
+    - *id010
+    - *id021
+    - *id013
+    - *id023
+    - *id046
+    - *id047
+    - *id048
+    - *id049
+    - *id024
+    - *id025
+    - *id012
+    - *id026
+    - *id050
+    - *id051
+    - *id036
+    - *id052
+    - *id053
+    - *id054
+    - *id032
+  sizeAndGrowth:
+    text: "Use about 25 cm for adult planning for either sex. Some sources report 30 cm total length,\
+      \ and standard-length figures elsewhere exclude the tail, making direct comparisons unreliable.\
+      \ A smaller female limit is not established. Newman followed juveniles from approximately 5.5 to\
+      \ 15 cm over eighteen months, so growth and reproductive condition require sustained care. The profile\
+      \ longevity estimate of 8 to 12 years has low confidence: an unreferenced care page states eight\
+      \ years and no dependable species lifespan series establishes the upper endpoint."
+    sources:
+    - *id002
+    - *id003
+    - *id010
+    - *id009
+    - *id027
+    - *id011
+    - *id013
+    - *id014
+    - *id055
+    - *id041
+    - *id040
+    - *id035
+    - *id034
+    - *id042
+  husbandry:
+    text: "For five or more adults, provide at least a 210 by 60 cm base and approximately 756 L. Preserve\
+      \ broad sand feeding areas between stable pieces of wood and sheltered retreats. Mature biological\
+      \ filtration, effective collection of suspended particles and well-oxygenated water are central\
+      \ requirements; direct strong filter returns away from browsing fish. Seriously Fish recommends\
+      \ replacing 50 to 70 percent of the water weekly, with replacements prepared to match conditions.\
+      \ The decided husbandry envelopes are 24 to 31 C, pH 3.5 to 6.3, GH 0 to 5 dGH and KH 0 to 3 dKH.\
+      \ Warm, soft, acidic water around 28 to 30 C is the better-supported starting point; the cool end\
+      \ is disputed. Glaser reports success in moderately hard, slightly alkaline water, and a breeding\
+      \ diary records GH 10, so the adopted upper limits must not be mistaken for demonstrated failure\
+      \ thresholds. Monitor stability carefully when buffering is low."
+    sources:
+    - *id002
+    - *id010
+    - *id027
+    - *id009
+    - *id013
+    - *id035
+    - *id004
+    - *id003
+    - *id005
+    - *id006
+    - *id037
+    - *id007
+    - *id008
+    - *id011
+    - *id012
+    - *id014
+    - *id015
+    - *id016
+    - *id019
+    - *id022
+    - *id031
+    - *id017
+    - *id020
+    - *id021
+    - *id023
+    - *id001
+    - *id018
+    - *id046
+    - *id047
+    - *id048
+    - *id049
+    - *id024
+    - *id025
+    - *id026
+    - *id050
+    - *id051
+    - *id036
+    - *id052
+    - *id053
+    - *id054
+    - *id028
+    - *id029
+    - *id030
+    - *id043
+    - *id044
+    - *id032
+    - *id033
+    - *id034
+  socialBehavior:
+    text: "Keep an adult group of at least five with enough feeding area and shelter for subordinate fish\
+      \ to move away and resume browsing. A hierarchy with displays and chasing is expected, but an individual\
+      \ repeatedly excluded from food or confined near the surface needs intervention. Breeding pairs\
+      \ defend a broad area and may displace both conspecifics and other fishes. The territorial flag\
+      \ applies during reproduction; it does not describe permanent solitary territories. Monogamous pair\
+      \ formation is compatible with normal group housing."
+    sources:
+    - *id002
+    - *id010
+    - *id027
+    - *id018
+    - *id009
+    - *id013
+    - *id014
+    - *id011
+    - *id012
+  diet:
+    text: "Supply several small meals that reach the bottom and allow every fish time to feed. Fine prepared\
+      \ sinking foods, small insect larvae and Artemia can provide variety, with vegetable-containing\
+      \ foods also included. Natural feeding emphasizes small invertebrates extracted from sediment, together\
+      \ with some seeds and detritus. Faster companions may take a disproportionate share, so watch individual\
+      \ body condition. The protein-related bloat flag is false because the read evidence does not establish\
+      \ that mechanism; serious abdominal swelling is nevertheless reported and balanced feeding and water\
+      \ quality remain essential."
+    sources:
+    - *id002
+    - *id018
+    - *id010
+    - *id027
+    - *id011
+    - *id056
+    - *id012
+    - *id013
+  breeding:
+    text: "Both parents participate in open substrate spawning. They excavate a site, deposit and fertilize\
+      \ eggs, then cover the brood with bottom material and defend it. This species is not a mouthbrooder.\
+      \ Successful rearing is less consistently reported than spawning attempts. Experienced accounts\
+      \ describe coarse material at the nesting site as relevant to brood development, while ordinary\
+      \ feeding areas still need fine sand. Extra nesting space and the ability to separate displaced\
+      \ fish matter. Newly free-swimming fry accept very small foods such as Artemia nauplii, with particular\
+      \ care needed to prevent waste accumulation."
+    sources:
+    - *id002
+    - *id003
+    - *id018
+    - *id010
+    - *id027
+    - *id009
+  sexing:
+    text: "Reliable external sex differences are limited. A mature female carrying eggs can appear fuller,\
+      \ but body shape, color and fin development do not reliably identify juveniles. The ovipositor and\
+      \ observed egg laying provide stronger information during reproduction. Group formation allows natural\
+      \ partner selection; courtship alone cannot prove that the two fish are of different sexes. No consistent\
+      \ sex-specific maximum length was established by the reviewed sources."
+    sources:
+    - *id002
+    - *id010
+    - *id009
+  compatibility:
+    text: "Quiet upper-water companions can work when water requirements overlap and the aquarium has\
+      \ capacity beyond the daemon group minimum. Mesonauta insignis, Pterophyllum scalare and Uaru amphiacanthoides\
+      \ are conditional examples from the husbandry accounts, with additional room for their own needs.\
+      \ Avoid aggressive bottom competitors and fish that consistently monopolize food. Alkaline African\
+      \ lake communities are a poor match to the decided water targets. Potamotrygon mixed setups carry\
+      \ a reported risk of nighttime loss of cichlids. Predation level 0 allows incidental loss of extremely\
+      \ small fry; it does not guarantee fry survival. No hybrid group is assigned because a named cross\
+      \ involving daemon was not established."
+    sources:
+    - *id002
+    - *id010
+    - *id027
+    - *id038
+    - *id018
+    - *id039
+    - *id057
+    - *id011
+    - *id012
+    - *id013
+    - *id014
+  problems:
+    text: "Declining appetite, poor body condition, persistent social exclusion and deteriorating water\
+      \ warrant prompt attention. Published accounts report head and lateral-line erosion and episodes\
+      \ of abdominal swelling, including losses following disturbed maintenance. These observations do\
+      \ not establish a single cause or a treatment protocol. The reported swelling is not evidence by\
+      \ itself for protein-induced bloat. Maintain stable replacement-water preparation, keep filters\
+      \ effective and avoid overloading the aquarium. Persistent illness requires a qualified diagnosis\
+      \ rather than assuming that a pH adjustment will resolve it."
+    sources:
+    - *id002
+    - *id010
+    - *id027
+provenance:
+  runs:
+  - role: generator
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: claude-sonnet-5-5
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  disagreements:
+  - field: features.origin
+    proposals:
+    - by: generator
+      value:
+        continent: South America
+        region: "Upper Rio Negro, Casiquiare and Orinoco basins"
+        waterbody: null
+        localities:
+        - Rio Uaupes
+        - Rio Atabapo
+        - Rio Inirida
+        - Rio Cinaruco
+    - by: checker-a
+      value:
+        continent: South America
+        region: "Rio Negro basin (Amazon), Casiquiare and upper Orinoco"
+        waterbody: null
+        localities:
+        - Rio Negro at Maribitanos
+        - Rio Cinaruco
+        - Rio Inirida
+        - Rio Uaupes
+        - Rio Atabapo
+    - by: checker-b
+      value:
+        continent: South America
+        region: "Rio Negro, Casiquiare and Orinoco drainages"
+        localities:
+        - Brazil
+        - Colombia
+        - Venezuela
+    - by: checker-c
+      value:
+        continent: South America
+        region: "Rio Negro, Casiquiare and upper Orinoco basins"
+        localities:
+        - Uaupes
+        - Atabapo
+        - Cinaruco
+    decision: *id058
+    rationale: "All four complete runs identify the connected Negro, Casiquiare and Orinoco systems in\
+      \ Brazil, Colombia and Venezuela. The locality lists describe the same distribution at different\
+      \ scales; the final list combines named river localities rather than treating country names as collecting\
+      \ sites. Catalog taxonomy and Seriously Fish support this restriction; distant Amazon reports can\
+      \ involve misidentification. No lake-table override applies."
+  - field: features.temperatureC
+    proposals:
+    - by: generator
+      value:
+        min: 28
+        max: 31
+    - by: checker-a
+      value:
+        min: 27
+        max: 31
+    - by: checker-b
+      value:
+        min: 27
+        max: 31
+    - by: checker-c
+      value:
+        min: 27
+        max: 31
+    decision: *id059
+    rationale: "The unanimous tally selects 27 to 31 C from generator 28 to 31 and checker-a, checker-b\
+      \ and checker-c 27 to 31. This is a regional planning envelope, with low confidence because collection-site\
+      \ seasonal coverage is incomplete. FishBase gives 27 to 30 C. Wider regional source ranges remain\
+      \ evidence: Oliveira and Ferreira measured 28.4 to 34.7 C; Fonseca and colleagues 28.0 to 34.6 C;\
+      \ the Amazon review gives 28 to 32 C; drought-recovery observations give 30.20 to 35.35 C. The Krib\
+      \ reproduces seasonal collecting-area observations of 25.5 to 32.5 C. These surveys differ in location,\
+      \ season and exposure, and do not establish that every extreme is a routine temperature for every\
+      \ population. Their extremes are retained without extending the tallied typical range."
+  - field: features.ph
+    proposals:
+    - by: generator
+      value:
+        min: 4
+        max: 5.5
+    - by: checker-a
+      value:
+        min: 4.3
+        max: 6.5
+    - by: checker-b
+      value:
+        min: 3.5
+        max: 5.3
+    - by: checker-c
+      value:
+        min: 3.5
+        max: 6
+    - by: tiebreaker-1
+      value:
+        min: 3.5
+        max: 6
+    - by: tiebreaker-2
+      value:
+        min: 3.5
+        max: 5.5
+    decision: *id060
+    rationale: "The median tally selects 3.5 to 5.8, with low confidence and no qualified majority. Proposals\
+      \ were generator 4.0 to 5.5, checker-a 4.3 to 6.5, checker-b 3.5 to 5.3, checker-c 3.5 to 6.0, tiebreaker-1\
+      \ 3.5 to 6.0 and tiebreaker-2 3.5 to 5.5. The lower endpoint relies partly on Newman relaying Goulding,\
+      \ whose original book was not read. Negro field observations and the Orinoco seasonal collecting\
+      \ account support strongly acidic regional water. Kuchler and colleagues report a wider basin range\
+      \ of 3.89 to 6.07, with the upper endpoint in chemically distinct Branco water; the blackwater subset\
+      \ reaches 5.80. Silva and colleagues include tributary values to 6.70. The broader Amazonian blackwater\
+      \ context of 2.8 to 5.0 is not a daemon locality series. These wider values remain evidence rather\
+      \ than redefining the characteristic habitat. FishBase states only a lower bound of 6.0 and no upper\
+      \ bound or field station. Some Cinaruco full texts were unavailable as open access; no unseen numerical\
+      \ readings from them were used."
+  - field: features.ph.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 3.5
+        max: 7
+    - by: checker-a
+      value:
+        min: 4.0
+        max: 7.5
+    - by: checker-b
+      value:
+        min: 3.5
+        max: 6.0
+    - by: checker-c
+      value:
+        min: 3.5
+        max: 6.5
+    - by: tiebreaker-1
+      value:
+        min: 3.5
+        max: 6
+    - by: tiebreaker-2
+      value:
+        min: 3.5
+        max: 6
+    decision: *id061
+    rationale: "The median decision is 3.5 to 6.3, with low confidence. Proposals were generator 3.5 to\
+      \ 7.0, checker-a 4.0 to 7.5, checker-b 3.5 to 6.0, checker-c 3.5 to 6.5, tiebreaker-1 3.5 to 6.0\
+      \ and tiebreaker-2 3.5 to 6.0. The six upper endpoints have a median of 6.25, rounded to 6.3; the\
+      \ lower median is 3.5. Seriously Fish gives 3.5 to 6.0. Wider recommendations remain explicit: NCS\
+      \ 3.5 to 7.0, AquaInfo metadata 6.0 to 6.5 and LICG 5.5 to 6.5. Newman describes keeping at 4.3\
+      \ and relays spawning at 4.5; a Finnish diary records spawning at 5.5 to 6.0 and subsequent fry\
+      \ growth at 6.5. Glaser reports successful slightly alkaline care and breeding without measured\
+      \ endpoints or duration. Checker-a numeric alkaline extensions are interpretations, not measurements\
+      \ supplied by Glaser or FishBase. The median contains the natural range and is an operational husbandry\
+      \ estimate; 6.3 is not a demonstrated disease or survival boundary."
+  - field: features.ghDgh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 8
+    - by: checker-a
+      value:
+        min: 0
+        max: 12
+    - by: checker-b
+      value:
+        min: 0
+        max: 5
+    - by: checker-c
+      value:
+        min: 0
+        max: 5
+    - by: tiebreaker-1
+      value:
+        min: 0
+        max: 5
+    - by: tiebreaker-2
+      value:
+        min: 0
+        max: 5
+    decision: *id062
+    rationale: "The qualified-majority tally selects 0 to 5 dGH, with medium confidence: generator proposed\
+      \ 0 to 8, checker-a 0 to 12, and checker-b, checker-c, tiebreaker-1 and tiebreaker-2 0 to 5. Seriously\
+      \ Fish states 1 to 5 dGH; near-zero native hardness and Newman very-soft-water keeping widen its\
+      \ lower endpoint to zero. Wider source figures are preserved: AquaInfo metadata 5 to 8, LICG 1 to\
+      \ 8, FishBase 5 to 10, and the Finnish breeding diary GH 10 at spawning by approximately three-year-old\
+      \ parents. Mikolji recommends below about 1.1 dGH. Glaser reports success in moderately hard water\
+      \ but supplies no numerical GH or observation period, so checker-a 5 to 12 is an extrapolation.\
+      \ The tally follows the explicit higher-trust care range for a general long-term recommendation;\
+      \ 5 dGH is not a proven physiological ceiling, and sustained adult outcomes in the wider ranges\
+      \ remain insufficiently documented."
+  - field: features.khDkh
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 0.5
+    - by: checker-a
+      value:
+        min: 0
+        max: 1
+    - by: checker-b
+      value:
+        min: 0
+        max: 0.1
+    - by: checker-c
+      value:
+        min: 0
+        max: 1
+    decision: *id063
+    rationale: "The settled tally selects a rounded 0 to 1 dKH with medium confidence. Generator proposed\
+      \ 0 to 0.5, checker-a and checker-c 0 to 1, and checker-b 0 to 0.1. Measured Negro bicarbonate of\
+      \ 0 to 0.01 mg/L corresponds to about 0 to 0.00046 dKH; a different regional alkalinity series gives\
+      \ approximately 0.056 to 0.280 dKH equivalent. These are different analytical quantities in humic\
+      \ water. Near-zero carbonate buffering and regional variation support the rounded planning band,\
+      \ not an observed 1 dKH maximum. Organic acid buffering is not carbonate hardness, and GH does not\
+      \ determine KH. This natural KH fact carries no verification object."
+  - field: features.khDkh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 3
+    - by: checker-a
+      value:
+        min: 0
+        max: 6
+    - by: checker-b
+      value:
+        min: 0
+        max: 2
+    - by: checker-c
+      value:
+        min: 0
+        max: 3
+    - by: tiebreaker-1
+      value:
+        min: 0
+        max: 3
+    - by: tiebreaker-2
+      value:
+        min: 0
+        max: 3
+    decision: *id064
+    rationale: "The qualified-majority tally selects 0 to 3 dKH with low confidence. Generator, checker-c,\
+      \ tiebreaker-1 and tiebreaker-2 proposed 0 to 3, checker-a 0 to 6 and checker-b 0 to 2; five proposals\
+      \ agree under the two-degree comparison rule. Mikolji recommends below 30 ppm as CaCO3, approximately\
+      \ 1.7 dKH, while the Finnish breeding diary measured 2 to 3 dKH during successful spawning. The\
+      \ Orinoco collecting account supports inclusion of near-zero buffering. The wider checker-a range\
+      \ to 6 and its inferred Glaser band of 2 to 6 are retained as proposals, but Glaser supplies no\
+      \ KH measurement. Neither pH nor GH can establish an exact KH tolerance. The selected allowance\
+      \ extends beyond the decided natural band, informed by care advice and breeding practice, with no\
+      \ measured long-term health threshold."
+  - field: features.maxSizeCm
+    proposals:
+    - by: generator
+      value:
+        male: 25
+        female: 25
+    - by: checker-a
+      value:
+        male: 25
+        female: 22
+    - by: checker-b
+      value:
+        male: 25
+        female: 25
+    - by: checker-c
+      value:
+        male: 25
+        female: 25
+    decision: *id065
+    rationale: "The component-wise median is 25 cm for both sexes: generator, checker-b and checker-c\
+      \ proposed 25/25 cm and checker-a 25/22 cm. Newman describes captive adults around 25 cm and NCS\
+      \ lists 25 cm, whereas FishBase and Glaser include 30 cm total-length maxima. Seriously Fish uses\
+      \ 25 cm standard length, so its measurement is not interchangeable with total length. No read source\
+      \ establishes a 22 cm female maximum or a dependable sex difference in adult length. Equal planning\
+      \ sizes reflect that uncertainty rather than a sex-specific growth study."
+  - field: features.diet
+    proposals:
+    - by: generator
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - Small sinking prepared foods
+        - Artemia
+        - Small insect larvae
+        - Fine vegetable-containing foods
+    - by: checker-a
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - fine prepared foods
+        - bloodworm
+        - Artemia
+        - mosquito larvae
+        - vegetable-rich flakes
+    - by: checker-b
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - small insect larvae
+        - small crustaceans
+        - fine sinking foods
+        - some plant material
+    - by: checker-c
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - small insect larvae
+        - small crustaceans
+        - fine prepared foods
+        - some plant material
+    decision: *id066
+    rationale: "The unanimous tally retains invertivore with bloatSensitive false and the generator food\
+      \ list. CRC and Seriously Fish support feeding dominated by small invertebrates obtained from sediment,\
+      \ alongside some plant material. The comparative feeding study supports benthic feeding at the genus\
+      \ level; no missing table percentages are inferred. AquaInfo metadata instead label the diet omnivorous,\
+      \ and that dissent remains in evidence. Newman reports serious abdominal swelling associated with\
+      \ disrupted maintenance and stress, without establishing a high-protein dietary trigger. False therefore\
+      \ describes the rubric-specific causal flag, not freedom from bloat or permission for an unbalanced\
+      \ diet."
+  - field: features.aggressionHeterospecific
+    proposals:
+    - by: generator
+      value: 2
+    - by: checker-a
+      value: 1
+    - by: checker-b
+      value: 1
+    - by: checker-c
+      value: 2
+    decision: 2
+    rationale: "Generator and checker-c proposed level 2; checker-a and checker-b proposed level 1 to\
+      \ emphasize behavior outside breeding. Level 2 is retained because the rubric includes territorial\
+      \ chasing in an otherwise suitable aquarium, and the detailed breeding accounts describe active\
+      \ exclusion from a substantial nesting area. This does not imply routine attacks throughout the\
+      \ aquarium. Glaser describes very peaceful nonbreeding behavior, retained in evidence."
+  - field: features.coloration
+    proposals:
+    - by: generator
+      value:
+        baseColors:
+        - silver
+        - brown
+        - black
+        - red
+        pattern: spots
+    - by: checker-a
+      value:
+        baseColors:
+        - silver
+        - grey
+        - brown
+        pattern: spots
+    - by: checker-b
+      value:
+        baseColors:
+        - silver
+        - brown
+        - black
+        pattern: spots
+    - by: checker-c
+      value:
+        baseColors:
+        - grey
+        - silver
+        - blue
+        - black
+        - red
+        pattern: spots
+    decision: *id067
+    rationale: "The spotted pattern is unanimous, while proposed palettes differ: generator silver/brown/black/red;\
+      \ checker-a silver/grey/brown; checker-b silver/brown/black; checker-c grey/silver/blue/black/red.\
+      \ The generator palette is retained as a compact planning description of the metallic brownish body,\
+      \ dark marks and reddish highlights. Grey shading and blue iridescence are also reported and vary\
+      \ with lighting and condition. The two flank marks and tail-base ocellus are more dependable than\
+      \ an exhaustive color list."
+  - field: features.minTank
+    proposals:
+    - by: generator
+      value:
+        volumeL: 756
+        lengthCm: 210
+        depthCm: 60
+    - by: checker-a
+      value:
+        volumeL: 756
+        lengthCm: 210
+        depthCm: 60
+    - by: checker-b
+      value:
+        volumeL: 750
+        lengthCm: 210
+        depthCm: 60
+    - by: checker-c
+      value:
+        volumeL: 756
+        lengthCm: 210
+        depthCm: 60
+    decision: *id068
+    rationale: "The medians are 756 L, 210 cm length and 60 cm depth: generator, checker-a and checker-c\
+      \ proposed those values, while checker-b rounded the volume to 750 L with the same footprint. Seriously\
+      \ Fish directly specifies the adopted dimensions and approximate volume for group housing, so no\
+      \ upward extrapolation beyond that source is required. NCS gives a smaller 540 L and 160 cm, and\
+      \ Newman an older 300 L and 120 cm recommendation while describing maintenance in 720 L. The adopted\
+      \ minimum accommodates at least five adults, feeding floor and spawning defense; it is not a minimum\
+      \ for a large mixed community."
+  - field: features.lifespanYears
+    proposals:
+    - by: generator
+      value:
+        min: 8
+        max: 12
+    - by: checker-a
+      value:
+        min: 8
+        max: 15
+    - by: checker-b
+      value:
+        min: 8
+        max: 12
+    - by: checker-c
+      value:
+        min: 8
+        max: 10
+    decision: *id069
+    rationale: "The proposal medians are 8 to 12 years: generator and checker-b 8 to 12, checker-a 8 to\
+      \ 15, and checker-c 8 to 10. Aquario states eight years without a traceable cohort or longevity\
+      \ record. No read source establishes a 12-year species maximum. The upper endpoint remains an explicit\
+      \ model-derived planning allowance for a large cichlid that reaches reproductive condition over\
+      \ multiple years, rather than treating an unreferenced eight-year figure as a fixed ceiling. This\
+      \ extrapolation beyond the only numerical website claim has low confidence and needs species-specific\
+      \ longevity records."
