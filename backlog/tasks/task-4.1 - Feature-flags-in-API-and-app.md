@@ -1,9 +1,10 @@
 ---
 id: TASK-4.1
 title: Feature flags in API and app
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-15 08:46'
+updated_date: '2026-10-15 08:47'
 labels: []
 dependencies: []
 parent_task_id: TASK-4

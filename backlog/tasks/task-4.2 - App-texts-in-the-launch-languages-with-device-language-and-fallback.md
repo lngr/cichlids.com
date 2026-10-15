@@ -1,9 +1,10 @@
 ---
 id: TASK-4.2
 title: App texts in the launch languages with device language and fallback
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-15 08:46'
+updated_date: '2026-10-15 08:47'
 labels: []
 dependencies: []
 parent_task_id: TASK-4
