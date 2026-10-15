@@ -1,0 +1,3237 @@
+schemaVersion: 1
+id: "pseudotropheus-williamsi"
+legacyIds:
+  - 492
+status: "described"
+taxonomy:
+  validName: "Pseudotropheus williamsi"
+  genus: "Pseudotropheus"
+  species: "williamsi"
+  author: "(Günther, 1894)"
+  source: &a1
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Pseudotropheus"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ps\
+      eudotropheus"
+    archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-54fb6171/2026-10-14T1\
+      01559Z"
+    accessed: "2026-10-15"
+  synonyms:
+    - name: "Chromis williamsi"
+      note: "Original combination."
+    - name: "Tilapia williamsi"
+      note: "Historical combination recorded by FishBase nomenclature and the Nordic species register."
+  legacyNames:
+    - "Pseudotropheus williamsi"
+  note: "The Catalog of Fishes retains Pseudotropheus williamsi (Günther, 1894). FishBase nomenclature also
+    records Tilapia williamsi; the double-i spelling williamsii is marked as a misspelling. CRC lists
+    Pseudotropheus sp. 'williamsi north' separately as an undescribed taxon. Northern Blue Lips trade reports
+    therefore support this profile only by cautious comparison, not by an assumption that the trade form and
+    described species are identical."
+names:
+  trade:
+    en:
+      - "Red Top Williamsi"
+      - "Williams Mbuna"
+      - "Blue Lips Cichlid"
+    de:
+      - "Blue Lips"
+variants:
+  - name: "Maingano Island"
+    kind: "locality"
+    note: "Locality label used by Malawi.si within the williamsi complex; locality provenance matters for
+      identification."
+  - name: "North Makonde (Blue Lips)"
+    kind: "locality"
+    note: "Trade label retained as an identification warning. CRC lists williamsi north separately as undescribed;
+      it is not a confirmed locality variant of the described species."
+features:
+  origin:
+    value:
+      continent: "Africa"
+      region: "Lake Malawi"
+      waterbody: "lake-malawi"
+      localities:
+        - "Deep Bay"
+        - "Vua"
+        - "Nkhata Bay"
+        - "Likoma Island"
+        - "Chisumulu Island"
+        - "Mbenji Island"
+        - "Maleri Islands"
+        - "southeast arm"
+    confidence: "high"
+    rationale: "The Catalog of Fishes, FishBase and CRC place the species in Lake Malawi. FishBase supplies the
+      named bays and islands. Chisumulu and Chizumulu are alternative spellings in the inputs, and southeast
+      arm describes the same broad region; the normalized waterbody identifier is lake-malawi."
+    sources:
+      - *a1
+      - &a2
+        kind: "database"
+        title: "FishBase species summary: Pseudotropheus williamsi"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-williamsi.html"
+        archived: "fishbase.se/summary/pseudotropheus-williamsi.html/2026-10-15T044943Z"
+        accessed: "2026-10-15"
+      - &a51
+        kind: "website"
+        title: "Lake Malawi cichlids: Pseudotropheus williamsi Maingano Island"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20williamsi/slides/Pseudotropheus%20williams\
+          i%20Maingano%20Island.html"
+        archived: "malawi.si/malawi/pseudotropheus/pseudotropheus_williamsi/slides/pseudotropheus_williamsi_maingano_\
+          island.html/2026-10-15T045025Z"
+        accessed: "2026-10-15"
+      - &a3
+        kind: "database"
+        title: "FishBase: Pseudotropheus williamsi (Red top williamsi)"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-williamsi.html"
+        archived: "fishbase.se/summary/pseudotropheus-williamsi.html/2026-10-15T044943Z"
+        accessed: "2026-10-15"
+      - &a4
+        kind: "database"
+        title: "Cichlid Room Companion: Pseudotropheus williamsi (public part)"
+        url: "https://cichlidae.com/species.php?id=9Ser1p2xr5Myj1cOQA8TmA"
+        archived: "cichlidae.com/species.php/q-0589de00/2026-10-15T045016Z"
+        accessed: "2026-10-15"
+      - &a5
+        kind: "database"
+        title: "FishBase species summary: Pseudotropheus williamsi"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-williamsi.html"
+        accessed: "2026-10-15"
+        archived: "fishbase.se/summary/pseudotropheus-williamsi.html/2026-10-15T044943Z"
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes, Pseudotropheus species list"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ps\
+          eudotropheus"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-54fb6171/2026-10-14T1\
+          01559Z"
+      - &a6
+        kind: "database"
+        title: "FishBase species summary, Pseudotropheus williamsi"
+        url: "https://fishbase.se/summary/Pseudotropheus-williamsi.html"
+        accessed: "2026-10-15"
+        archived: "fishbase.se/summary/pseudotropheus-williamsi.html/2026-10-15T044958Z"
+      - kind: "database"
+        title: "Faunafri, CLOFFA taxon record for Pseudotropheus williamsi"
+        url: "https://faunafri.africamuseum.be/cloffa/table/taxon2/view?idtaxon%3Aint=4097"
+        accessed: "2026-10-15"
+        archived: "faunafri.africamuseum.be/cloffa/table/taxon2/view/q-0994ac4c/2026-10-15T044958Z"
+      - &a7
+        kind: "database"
+        title: "Cichlid Room Companion species profile for Pseudotropheus williamsi"
+        url: "https://cichlidae.com/species.php?id=9Ser1p2xr5Myj1cOQA8TmA"
+        accessed: "2026-10-15"
+        archived: "cichlidae.com/species.php/q-0589de00/2026-10-15T045016Z"
+      - &a55
+        kind: "website"
+        title: "Aquarist Atlas profile, Pseudotropheus williamsi"
+        url: "https://www.aquaristatlas.com/species/pseudotropheus-williamsi/"
+        accessed: "2026-10-15"
+        archived: "aquaristatlas.com/species/pseudotropheus-williamsi/2026-10-15T044956Z"
+      - &a8
+        kind: "database"
+        title: "FishBase nomenclature for Pseudotropheus williamsi"
+        url: "https://www.fishbase.se/Nomenclature/8344"
+        archived: "fishbase.se/nomenclature/8344/2026-10-15T044956Z"
+        accessed: "2026-10-15"
+    evidence:
+      - source: *a1
+        value: "Lake Malawi"
+      - source: *a2
+        value: "Lake Malawi endemic; Deep Bay, Vua, Nkhata Bay, Likoma, Chisumulu, Mbenji, Maleri and southeast arm"
+      - source: *a1
+        value: "Lake Malawi"
+        note: "Distribution: Eastern Africa, Lake Malawi"
+      - source: *a3
+        value: "Lake Malawi"
+        note: "Endemic; lists Deep Bay, Vua, Nkhata Bay, Likoma, Chizumulu, Mbenji and Maleri islands and the
+          south-east arm"
+      - source: *a4
+        value: "Lake Malawi"
+        note: "Endemic range in Malawi, rocky lake habitat"
+      - source: *a5
+        value: "Lake Malawi, including Deep Bay, Vua, Nkhata Bay, Likoma, Chisumulu, Mbenji, Maleri, and southeast
+          arm."
+      - source: *a6
+        value: "Lake Malawi"
+        note: "Endemic; several northern, island and southern localities listed."
+      - source: *a7
+        value: "Lake Malawi"
+      - source: *a8
+        value: "Pseudotropheus williamsi"
+        note: "Nomenclature confirms the original and historical combinations; williamsii is marked as a misspelling."
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: "high"
+    rationale: "The settled natural interval is 21-29 C for Lake Malawi, with waterbody verification. The lake
+      studies combine seasonal and regional conditions rather than a single preferred aquarium temperature.
+      FAO reports a narrower 23-25 C surface sample interval, Vollmer describes roughly 23.5-28 C seasonal
+      upper water, and the inherited Eccles abstract-based entry is 21-27 C. Eccles could not be rechecked:
+      the DOI returned HTTP 403 and fetch-oa classified the work as not open access. Its inherited evidence
+      remains explicitly limited to the earlier abstract reading."
+    sources:
+      - &a9
+        kind: "literature"
+        title: "Vollmer et al. (2005), Deep-water warming trend in Lake Malawi"
+        url: "https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view"
+        archived: "dora.lib4ri.ch/empa/dload/empa_1253/pdf/view/2026-10-14T094508Z"
+        accessed: "2026-10-15"
+      - &a10
+        kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990), FAO source book for inland fishery resources of Africa, Lake
+          Malawi water measurements"
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        archived: "fao.org/4/t0473e/t0473e05.htm/2026-10-14T094507Z"
+        accessed: "2026-10-15"
+      - &a27
+        kind: "literature"
+        title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian
+          Northern Basin. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf"
+        archived: "hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf/2026-10-14T094507Z"
+        accessed: "2026-10-15"
+      - &a28
+        kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+          Africa, Vol. 1, CIFA Technical Paper 18/1, FAO (Lake Malawi/Nyasa physical and chemical data)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        archived: "fao.org/4/t0473e/t0473e05.htm/2026-10-14T094507Z"
+        accessed: "2026-10-15"
+      - &a11
+        kind: "literature"
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and
+          Oceanography 19(5), 730-742 (abstract)."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-15"
+        offline: true
+      - &a12
+        kind: "literature"
+        title: "Vollmer, M. K. et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and
+          Oceanography 50(2), 727-732."
+        url: "https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view"
+        archived: "dora.lib4ri.ch/empa/dload/empa_1253/pdf/view/2026-10-14T094508Z"
+        accessed: "2026-10-15"
+      - &a13
+        kind: "literature"
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D.
+          H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and
+          Oceanography 50(2), 727-732."
+        url: "https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view"
+        archived: "dora.lib4ri.ch/empa/dload/empa_1253/pdf/view/2026-10-14T094508Z"
+        accessed: "2026-10-15"
+      - *a6
+      - &a29
+        kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.
+          (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:
+          local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf"
+        archived: "hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf/2026-10-14T094507Z"
+        accessed: "2026-10-15"
+      - &a15
+        kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+          Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after
+          Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        archived: "fao.org/4/t0473e/t0473e05.htm/2026-10-14T094507Z"
+        accessed: "2026-10-15"
+      - &a30
+        kind: "literature"
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In:
+          Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa
+          Biodiversity Conservation Project, chapter 4."
+        url: "https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf"
+        archived: "sites.uwm.edu/hbootsma/files/2020/11/ch4-lake-internal-mixing.pdf/2026-10-14T094509Z"
+        accessed: "2026-10-15"
+      - &a31
+        kind: "literature"
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of
+          Wisconsin-Milwaukee."
+        url: "https://minds.wisconsin.edu/handle/1793/91765"
+        archived: "minds.wisconsin.edu/handle/1793/91765/2026-10-14T094513Z"
+        accessed: "2026-10-15"
+      - &a14
+        kind: "literature"
+        title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        archived: "doi.org/10.4319_lo.2005.50.2.0727/2026-10-13T071601Z"
+        accessed: "2026-10-15"
+    evidence:
+      - source: *a9
+        value:
+          min: 21
+          max: 29
+        note: "Seasonal and littoral lake temperature range compiled in the waterbody table. This inherited entry is
+          the combined lake interval; Vollmer reports seasonal upper-water values around 23.5-28 C."
+      - source: *a10
+        value:
+          min: 21
+          max: 29
+        note: "Lake-wide seasonal measurements as summarized in the waterbody table. This inherited entry is a
+          lake-wide synthesis; the FAO page itself reports 23-25 C."
+      - source: *a11
+        value:
+          min: 21
+          max: 27
+        note: "upper 60 m in May and inshore cool season"
+      - source: *a12
+        value:
+          min: 23.5
+          max: 28
+        note: "winter epilimnion to summer surface"
+      - source: *a13
+        value:
+          min: 21
+          max: 29
+        note: "Lake Malawi natural range. Retained rounded lake synthesis attributed to its underlying lake study;
+          these endpoints are a combined inference rather than measurements all supplied by this one source."
+      - source: *a13
+        value:
+          min: 21
+          max: 29
+        note: "Required lake interval for endemic species. Retained rounded lake synthesis attributed to its
+          underlying lake study; these endpoints are a combined inference rather than measurements all
+          supplied by this one source."
+      - source: *a6
+        value:
+          min: 24
+          max: 26
+        note: "Species habitat interval; does not replace the lake interval."
+      - source: *a14
+        value:
+          min: 23.5
+          max: 28
+        note: "Approximate winter epilimnion and summer surface values; contributes to the regional seasonal
+          synthesis."
+      - source: *a15
+        value:
+          min: 23
+          max: 25
+        note: "Surface measurements compiled from Jackson and colleagues; this is not the full seasonal lake
+          interval."
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+    tolerance:
+      value:
+        min: 21
+        max: 30
+      confidence: "low"
+      rationale: "The tally decides 21-30 C with unanimous verification under its one-degree agreement threshold and
+        low confidence. Generator proposed 21-29, checker-a 21-30, checker-b 20-30 and checker-c 21-30 C; the
+        median endpoints of these agreeing proposals give 21-30. Species care advice mainly spans 23-28 C,
+        FishBase and FishFish give 24-26, and the Tropaq northern trade-form page gives 25-30 C. The natural
+        21-29 C interval is contained. The 20 C proposal has no direct species-specific chronic-limit
+        evidence, while the 30 C endpoint has only weak trade-form support; the result is a husbandry
+        estimate, not a demonstrated failure boundary."
+      sources:
+        - &a16
+          kind: "database"
+          title: "Fédération Française d'Aquariophilie species sheet: Pseudotropheus williamsi"
+          url: "https://www.fedeaqua.org/pratique/fiches-faune-flore/3353-pseudotropheus-williamsi-2"
+          archived: "fedeaqua.org/pratique/fiches-faune-flore/3353-pseudotropheus-williamsi-2/2026-10-15T045034Z"
+          accessed: "2026-10-15"
+        - *a2
+        - &a17
+          kind: "website"
+          title: "Aquahaus Gau: Pseudotropheus williamsi north Makonde"
+          url: "https://www.aquahaus-gaus.de/p/pseudotropheus-williamsi-north-makonde-blue-lips"
+          archived: "aquahaus-gaus.de/p/pseudotropheus-williamsi-north-makonde-blue-lips/2026-10-15T045037Z"
+          accessed: "2026-10-15"
+        - &a49
+          kind: "website"
+          title: "Aquariumpro: Red Top Williamsi (Pseudotropheus williamsi)"
+          url: "https://aquarium-pro.com/species/pseudotropheus-williamsi"
+          archived: "aquarium-pro.com/species/pseudotropheus-williamsi/2026-10-15T044950Z"
+          accessed: "2026-10-15"
+        - *a3
+        - &a18
+          kind: "website"
+          title: "cichlid-forum.com: Pseudotropheus williamsi (Chizimulu) species sheet"
+          url: "https://www.cichlid-forum.com/threads/pseudotropheus-williamsi-chizimulu.457399/"
+          archived: "cichlid-forum.com/threads/pseudotropheus-williamsi-chizimulu.457399/2026-10-15T045009Z"
+          accessed: "2026-10-15"
+        - &a19
+          kind: "website"
+          title: "Imperial Tropicals: Pseudotropheus sp. Williamsi Blue Lips"
+          url: "https://imperialtropicals.com/products/pseudotropheus-sp-williamsi-blue-lips"
+          archived: "imperialtropicals.com/products/pseudotropheus-sp-williamsi-blue-lips/2026-10-15T045046Z"
+          accessed: "2026-10-15"
+        - &a20
+          kind: "website"
+          title: "Tropaq: Pseudotropheus sp. Williamsi North Blue Lips"
+          url: "https://tropaq.com/index.php?route=product/product&product_id=117"
+          archived: "tropaq.com/index.php/q-4e9ba605/2026-10-15T045048Z"
+          accessed: "2026-10-15"
+        - &a21
+          kind: "website"
+          title: "Quinn's Fins: Blue Lips Cichlid, Pseudotropheus williamsi"
+          url: "https://quinnsfins.com/product/blue-lips-cichlid-psuedotropheus-williamsi-small/"
+          archived: "quinnsfins.com/product/blue-lips-cichlid-psuedotropheus-williamsi-small/2026-10-15T045051Z"
+          accessed: "2026-10-15"
+        - *a5
+        - &a22
+          kind: "database"
+          title: "Fishipedia: The red top williamsi"
+          url: "https://www.fishi-pedia.com/fishes/pseudotropheus-williamsi"
+          accessed: "2026-10-15"
+          archived: "fishi-pedia.com/fishes/pseudotropheus-williamsi/2026-10-15T045002Z"
+        - &a23
+          kind: "database"
+          title: "FishFish: Pseudotropheus williamsi"
+          url: "https://www.fishfish.fr/poisson/pseudotropheus-williamsi"
+          accessed: "2026-10-15"
+          archived: "fishfish.fr/poisson/pseudotropheus-williamsi/2026-10-15T045023Z"
+        - &a24
+          kind: "website"
+          title: "Aquarium Pro: Red Top Williamsi"
+          url: "https://aquarium-pro.com/species/pseudotropheus-williamsi"
+          accessed: "2026-10-15"
+          archived: "aquarium-pro.com/species/pseudotropheus-williamsi/2026-10-15T044950Z"
+        - &a25
+          kind: "database"
+          title: "FishFish species care record, Pseudotropheus williamsi"
+          url: "https://www.fishfish.fr/poisson/pseudotropheus-williamsi"
+          accessed: "2026-10-15"
+          archived: "fishfish.fr/poisson/pseudotropheus-williamsi/2026-10-15T045023Z"
+        - &a26
+          kind: "website"
+          title: "Nordiska Ciklidsällskapet species register, Pseudotropheus williamsi"
+          url: "https://www.ciklid.org/artregister/art.php?ID=1957"
+          accessed: "2026-10-15"
+          archived: "ciklid.org/artregister/art.php/q-a1cf8530/2026-10-15T045025Z"
+      evidence:
+        - source: *a16
+          value:
+            min: 23
+            max: 28
+        - source: *a2
+          value:
+            min: 24
+            max: 26
+          note: "FishBase habitat temperature, not an aquarium tolerance trial."
+        - source: *a17
+          value:
+            min: 24
+            max: 26
+          note: "Breeder care recommendation for the northern trade form."
+        - source: *a3
+          value:
+            min: 24
+            max: 26
+        - source: *a18
+          value:
+            min: 25.6
+            max: 27.8
+          note: "78 to 82 F, species sheet"
+        - source: *a19
+          value:
+            min: 23.3
+            max: 27.8
+          note: "74 to 82 F, dealer"
+        - source: *a20
+          value:
+            min: 25
+            max: 30
+          note: "dealer"
+        - source: *a21
+          value:
+            min: 24
+            max: 27
+          note: "dealer"
+        - source: *a22
+          value:
+            min: 23
+            max: 28
+          note: "Species sheet presents this as natural environment and aquarium advice."
+        - source: *a23
+          value:
+            min: 24
+            max: 26
+          note: "Aquarium maintenance range."
+        - source: *a24
+          value:
+            min: 23.9
+            max: 27.8
+          note: "Aquarium care range converted from 75 to 82 F."
+        - source: *a13
+          value:
+            min: 21
+            max: 29
+          note: "Required natural range included in estimate. Retained rounded lake synthesis attributed to its
+            underlying lake study; these endpoints are a combined inference rather than measurements all
+            supplied by this one source."
+        - source: *a25
+          value:
+            min: 24
+            max: 26
+          note: "Aquarium recommendation."
+        - source: *a26
+          value:
+            min: 23
+            max: 28
+          note: "Aquarium range as displayed by the association register."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: "high"
+    rationale: "The settled Lake Malawi surface interval is pH 7.7-8.6, supported by the Jackson measurements
+      compiled by FAO. Branchu discusses the wider water column at pH 7.5-8.5, including lower deep-water
+      readings; those do not set the preferred range for this shallow rocky-shore fish. FishBase gives
+      7.8-8.3, a narrower species environment field. Surface lake measurements govern this natural value."
+    sources:
+      - *a10
+      - &a32
+        kind: "literature"
+        title: "Branchu et al. (2010), Hydrochemistry of Lake Malawi"
+        url: "https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf"
+        archived: "hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf/2026-10-14T094507Z"
+        accessed: "2026-10-15"
+      - *a27
+      - *a28
+      - *a11
+      - *a12
+      - *a15
+      - *a6
+      - *a29
+      - *a13
+      - *a30
+      - *a31
+      - &a33
+        kind: "literature"
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        archived: "doi.org/10.5194_hessd-7-4371-2010/2026-10-13T071931Z"
+        accessed: "2026-10-15"
+    evidence:
+      - source: *a10
+        value:
+          min: 7.7
+          max: 8.6
+        note: "Surface range reported in the Malawi waterbody table."
+      - source: *a32
+        value:
+          min: 7.7
+          max: 8.6
+        note: "Lake water source used by the table; the lower deep-water readings are excluded. This inherited entry
+          is the chosen surface synthesis; Branchu discusses 7.5-8.5 for the water column."
+      - source: *a28
+        value:
+          min: 7.7
+          max: 8.6
+        note: "surface water, Jackson et al. 1963"
+      - source: *a27
+        value:
+          min: 7.5
+          max: 8.5
+        note: "whole water column, deep water lower"
+      - source: *a15
+        value:
+          min: 7.7
+          max: 8.6
+        note: "Lake Malawi natural range. Retained rounded lake synthesis attributed to its underlying lake study;
+          these endpoints are a combined inference rather than measurements all supplied by this one source."
+      - source: *a15
+        value:
+          min: 7.7
+          max: 8.6
+        note: "Required lake interval. Retained rounded lake synthesis attributed to its underlying lake study; these
+          endpoints are a combined inference rather than measurements all supplied by this one source."
+      - source: *a6
+        value:
+          min: 7.8
+          max: 8.3
+        note: "Species habitat interval."
+      - source: *a33
+        value:
+          min: 7.5
+          max: 8.5
+        note: "Water-column discussion includes deeper water; the surface interval remains 7.7-8.6."
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.6
+      confidence: "medium"
+      rationale: "The tally selects pH 7.5-8.6 by qualified majority, five of six agreeing under the 0.3 pH
+        threshold, with medium confidence. Generator and both tiebreakers proposed 7.5-8.6, checker-a 7.0-8.6,
+        checker-b 7.5-8.7 and checker-c 7.5-8.8. Federation and Nordic species advice support 7.5-8.5, widened
+        to contain natural pH 8.6. The wider Tropaq recommendation of pH 6-8 concerns a northern trade form
+        and has little support for its acidic end; JBL Malawi Rocks gives the wider group range 7.5-9.0.
+        Neither establishes chronic boundaries for this species. Seachem 7.8-8.4 and the UK lake guide 7.8-8.5
+        are management targets. The species evidence favors the tallied interval over the speculative 7.0
+        lower endpoint and 8.7-8.8 upper extensions."
+      sources:
+        - *a16
+        - *a17
+        - &a34
+          kind: "website"
+          title: "Aquarist Atlas: Pseudotropheus williamsi"
+          url: "https://www.cichlidatlas.com/species/pseudotropheus-williamsi/"
+          archived: "cichlidatlas.com/species/pseudotropheus-williamsi/2026-10-15T044950Z"
+          accessed: "2026-10-15"
+        - *a3
+        - *a18
+        - *a19
+        - *a20
+        - *a21
+        - *a5
+        - *a22
+        - *a23
+        - *a24
+        - *a26
+        - *a25
+        - &a35
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Pseudotropheus williamsi"
+          url: "https://ciklid.org/artregister/art.php?ID=1957"
+          accessed: "2026-10-15"
+          archived: "ciklid.org/artregister/art.php/q-a1cf8530/2026-10-15T045600Z"
+        - &a36
+          kind: "database"
+          title: "Zoopet species register: Pseudotropheus williamsi"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=1312"
+          accessed: "2026-10-15"
+          archived: "zoopet.com/fiskar/fisk.php/q-ca09adcf/2026-10-15T045558Z"
+        - &a37
+          kind: "database"
+          title: "Fischlexikon: Pseudotropheus williamsi"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000002460"
+          accessed: "2026-10-15"
+          archived: "fischlexikon.eu/fischlexikon/fische-suchen.php/q-874a7dc6/2026-10-15T045558Z"
+        - &a38
+          kind: "website"
+          title: "e-Evcil: Pseudotropheus williamsi care account"
+          url: "https://e-evcil.com/pedidetay/pseudotropheus-williamsi-866"
+          accessed: "2026-10-15"
+          archived: "e-evcil.com/pedidetay/pseudotropheus-williamsi-866/2026-10-15T045630Z"
+        - &a39
+          kind: "website"
+          title: "Seachem: Malawi/Victoria Buffer"
+          url: "https://www.seachem.com/malawi-victoria-buffer.php"
+          accessed: "2026-10-15"
+          archived: "seachem.com/malawi-victoria-buffer.php/2026-10-14T130539Z"
+        - &a50
+          kind: "literature"
+          title: "Gay, J. The mbuna keeper's survival guide. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/the-mbuna-keepers-survival-guide/"
+          accessed: "2026-10-15"
+          archived: "practicalfishkeeping.co.uk/features/the-mbuna-keepers-survival-guide/2026-10-14T095109Z"
+        - *a15
+        - &a40
+          kind: "website"
+          title: "Malawi Cichlids: Lake Malawi aquarium water targets"
+          url: "https://www.malawicichlids.co.uk/the-african-great-lakes/lake-malawi/"
+          accessed: "2026-10-15"
+          archived: "malawicichlids.co.uk/the-african-great-lakes/lake-malawi/2026-10-14T094802Z"
+        - &a41
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register for Pseudotropheus williamsi"
+          url: "https://ciklid.org/artregister/art.php?ID=1957"
+          accessed: "2026-10-15"
+          archived: "ciklid.org/artregister/art.php/q-a1cf8530/2026-10-15T045600Z"
+        - &a42
+          kind: "database"
+          title: "Zoopet species account for Pseudotropheus williamsi"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=1312"
+          accessed: "2026-10-15"
+          archived: "zoopet.com/fiskar/fisk.php/q-ca09adcf/2026-10-15T045558Z"
+        - &a43
+          kind: "website"
+          title: "Cichlid Atlas species account for Pseudotropheus williamsi"
+          url: "https://www.cichlidatlas.com/species/pseudotropheus-williamsi/"
+          accessed: "2026-10-15"
+          archived: "cichlidatlas.com/species/pseudotropheus-williamsi/2026-10-15T044950Z"
+        - &a44
+          kind: "database"
+          title: "FishBase species summary for Pseudotropheus williamsi"
+          url: "https://www.fishbase.se/summary/Pseudotropheus-williamsi.html"
+          accessed: "2026-10-15"
+          archived: "fishbase.se/summary/pseudotropheus-williamsi.html/2026-10-15T044943Z"
+        - &a45
+          kind: "literature"
+          title: "JBL Research Team. Cichlid feeding and husbandry brochure, Malawi sections."
+          url: "https://s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/JBL-Correct-Feeding-of-Cichlids.pdf"
+          accessed: "2026-10-15"
+          archived: "s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/jbl-correct-feeding-of-cichlids.pdf/2026-10-\
+            14T131039Z"
+        - &a46
+          kind: "website"
+          title: "JBL Malawi Rocks aquarium guidance"
+          url: "https://www.jbl.de/de/areas/section/37/felsenriff-aquarientyp-jbl-malawi-rocks?country=de"
+          accessed: "2026-10-15"
+          archived: "jbl.de/de/areas/section/37/felsenriff-aquarientyp-jbl-malawi-rocks/q-462eab50/2026-10-14T094742Z"
+        - &a47
+          kind: "website"
+          title: "Malawi Cichlids UK guidance for Lake Malawi"
+          url: "https://www.malawicichlids.co.uk/the-african-great-lakes/lake-malawi/"
+          accessed: "2026-10-15"
+          archived: "malawicichlids.co.uk/the-african-great-lakes/lake-malawi/2026-10-14T094802Z"
+      evidence:
+        - source: *a16
+          value:
+            min: 7.5
+            max: 8.5
+        - source: *a17
+          value:
+            min: 7.5
+            max: 8.5
+          note: "Recommendation for the northern trade form."
+        - source: *a34
+          value:
+            min: 7.8
+            max: 8.6
+        - source: *a3
+          value:
+            min: 7.8
+            max: 8.3
+        - source: *a18
+          value:
+            min: 7.8
+            max: 8.6
+          note: "species sheet"
+        - source: *a19
+          value:
+            min: 7.5
+            max: 8.4
+          note: "dealer"
+        - source: *a20
+          value:
+            min: 6
+            max: 8
+          note: "dealer"
+        - source: *a21
+          value:
+            min: 7.8
+            max: 8.6
+          note: "dealer"
+        - source: *a22
+          value:
+            min: 7.5
+            max: 8.5
+          note: "Natural environment and care values."
+        - source: *a23
+          value:
+            min: 7.8
+            max: 8.5
+          note: "Aquarium maintenance range."
+        - source: *a24
+          value:
+            min: 7.8
+            max: 8.6
+          note: "Aquarium care range."
+        - source: *a15
+          value:
+            min: 7.7
+            max: 8.6
+          note: "Required natural range included in estimate. Retained rounded lake synthesis attributed to its
+            underlying lake study; these endpoints are a combined inference rather than measurements all
+            supplied by this one source."
+        - source: *a26
+          value:
+            min: 7.5
+            max: 8.5
+          note: "Aquarium recommendation."
+        - source: *a25
+          value:
+            min: 7.8
+            max: 8.5
+          note: "Aquarium maintenance values."
+        - source: *a35
+          value:
+            min: 7.5
+            max: 8.5
+          note: "Species-specific aquarium recommendation."
+        - source: *a36
+          value:
+            min: 7.5
+            max: 8.5
+          note: "Species-specific aquarium recommendation; possible shared origin with the Nordic account."
+        - source: *a37
+          value:
+            min: 7.5
+            max: 8.5
+          note: "Aquarium care range."
+        - source: *a5
+          value:
+            min: 7.8
+            max: 8.3
+          note: "Species summary range, not a demonstrated tolerance experiment."
+        - source: *a38
+          value:
+            min: 7.8
+            max: 8.6
+          note: "Aquarium recommendation."
+        - source: *a39
+          value:
+            min: 7.8
+            max: 8.4
+          note: "General Malawi aquarium buffer target, not species-specific tolerance."
+        - source: *a40
+          value:
+            min: 7.8
+            max: 8.5
+          note: "General Malawi aquarium target."
+        - source: *a15
+          value:
+            min: 7.7
+            max: 8.6
+          note: "Natural lake range; constrains inclusion, not an aquarium tolerance measurement. Retained rounded lake
+            synthesis attributed to its underlying lake study; these endpoints are a combined inference rather
+            than measurements all supplied by this one source."
+        - source: *a41
+          value:
+            min: 7.5
+            max: 8.5
+          note: "Species husbandry recommendation."
+        - source: *a42
+          value:
+            min: 7.5
+            max: 8.5
+          note: "Species husbandry recommendation; likely shares material with the species register."
+        - source: *a43
+          value:
+            min: 7.8
+            max: 8.6
+          note: "Species aquarium recommendation."
+        - source: *a44
+          value:
+            min: 7.8
+            max: 8.3
+          note: "Environmental range, not an aquarium tolerance trial."
+        - source: *a45
+          value:
+            min: 7.5
+            max: 8.5
+          note: "General Malawi husbandry guidance."
+        - source: *a46
+          value:
+            min: 7.5
+            max: 9
+          note: "General Malawi aquarium setup, not a species-specific upper boundary."
+        - source: *a47
+          value:
+            min: 7.8
+            max: 8.5
+          note: "General Malawi aquarium target."
+        - source: *a15
+          value:
+            min: 7.7
+            max: 8.6
+          note: "Mandatory natural habitat range contained by the tolerance. Retained rounded lake synthesis attributed
+            to its underlying lake study; these endpoints are a combined inference rather than measurements
+            all supplied by this one source."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 5
+          total: 6
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: "high"
+    rationale: "The settled natural range is 3-5 dGH. Calcium and magnesium measurements yield about 4.2-4.6 dGH
+      in Branchu and about 3.2-4.9 dGH from the measurements compiled by FAO. The rounded regional interval
+      describes low general hardness despite alkaline pH. FishBase and aquarium recommendations of 10-20 dH
+      remain in evidence but do not replace measured lake chemistry."
+    sources:
+      - *a10
+      - *a32
+      - *a27
+      - *a28
+      - *a11
+      - *a12
+      - *a15
+      - *a6
+      - *a26
+      - *a29
+      - *a13
+      - *a30
+      - *a31
+      - *a33
+    evidence:
+      - source: *a10
+        value:
+          min: 3
+          max: 5
+        note: "Calcium and magnesium measurements converted to dGH in the waterbody table."
+      - source: *a32
+        value:
+          min: 3
+          max: 5
+        note: "Major-ion measurements converted to dGH in the waterbody table."
+      - source: *a27
+        value:
+          min: 4.2
+          max: 4.6
+        note: "calcium and magnesium, north basin"
+      - source: *a28
+        value:
+          min: 3.2
+          max: 4.9
+        note: "1960s titrations"
+      - source: *a15
+        value:
+          min: 3
+          max: 5
+        note: "Lake Malawi natural range. Retained rounded lake synthesis attributed to its underlying lake study;
+          these endpoints are a combined inference rather than measurements all supplied by this one source."
+      - source: *a15
+        value:
+          min: 3
+          max: 5
+        note: "Required lake interval calculated from measured Ca and Mg. Retained rounded lake synthesis attributed
+          to its underlying lake study; these endpoints are a combined inference rather than measurements all
+          supplied by this one source."
+      - source: *a6
+        value:
+          min: 10
+          max: 20
+        note: "FishBase environment field labels this as dH; retained as a conflicting habitat field, though it
+          conflicts with lake total-hardness measurements."
+      - source: *a33
+        value:
+          min: 4.2
+          max: 4.6
+        note: "Upper 50 m calcium and magnesium converted to dGH."
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+    tolerance:
+      value:
+        min: 3
+        max: 20
+      confidence: "low"
+      rationale: "All four proposals are 3-20 dGH, so the tally is unanimous with low confidence. The low endpoint
+        contains the measured natural 3-5 dGH. Fedeaqua and Fischlexikon give 5-20 dGH, FishFish gives 10-20,
+        and Fishipedia gives 8-15. Aquarium Pro states the wider 10-30 dGH range, retained in evidence; its 30
+        dGH endpoint is weakly supported and is not adopted. The inherited Cichlid Atlas attribution of 10-30
+        was not confirmed: its archived text gives 10-20 dH. No source establishes an experimental long-term
+        upper failure limit."
+      sources:
+        - *a16
+        - *a2
+        - *a34
+        - *a3
+        - *a21
+        - *a20
+        - *a19
+        - *a5
+        - *a22
+        - *a23
+        - *a24
+        - *a25
+        - *a26
+        - *a6
+        - &a48
+          kind: "website"
+          title: "Cichlid Atlas: Pseudotropheus williamsi"
+          url: "https://www.cichlidatlas.com/species/pseudotropheus-williamsi/"
+          accessed: "2026-10-15"
+          archived: "cichlidatlas.com/species/pseudotropheus-williamsi/2026-10-15T044950Z"
+        - *a37
+      evidence:
+        - source: *a16
+          value:
+            min: 5
+            max: 20
+        - source: *a2
+          value:
+            min: 10
+            max: 20
+          note: "Habitat hardness as listed by FishBase, with source-specific units reported as dH."
+        - source: *a34
+          value:
+            min: 10
+            max: 30
+          note: "Aquarium care range; the 30 dGH upper value is broader than other source recommendations. The archived
+            account actually gives 10-20 dH; 10-30 dGH is stated by Aquarium Pro. This inherited attribution
+            is retained but not used as confirmation."
+        - source: *a3
+          value:
+            min: 10
+            max: 20
+        - source: *a21
+          value:
+            min: 10
+            max: 15
+          note: "dealer"
+        - source: *a20
+          value:
+            min: 6
+            max: 14
+          note: "dealer"
+        - source: *a19
+          value: "hard"
+          note: "dealer, no number"
+        - source: *a5
+          value:
+            min: 10
+            max: 20
+          note: "FishBase species environment dH range, not a tolerance experiment."
+        - source: *a22
+          value:
+            min: 8
+            max: 15
+          note: "Habitat / care range."
+        - source: *a23
+          value:
+            min: 10
+            max: 20
+          note: "Aquarium maintenance range."
+        - source: *a24
+          value:
+            min: 10
+            max: 30
+          note: "Aquarium care recommendation."
+        - source: *a15
+          value:
+            min: 3
+            max: 5
+          note: "Required natural range included in estimate. Retained rounded lake synthesis attributed to its
+            underlying lake study; these endpoints are a combined inference rather than measurements all
+            supplied by this one source."
+        - source: *a25
+          value:
+            min: 10
+            max: 20
+          note: "Aquarium maintenance hardness."
+        - source: *a26
+          value:
+            min: 0
+            max: 18
+          note: "Association register reports hardness up to 18 degrees without specifying whether the scale is GH or
+            KH."
+        - source: *a6
+          value:
+            min: 10
+            max: 20
+          note: "Environment field uses dH, not explicitly dGH."
+        - source: *a24
+          value:
+            min: 10
+            max: 30
+          note: "Explicit wider aquarium GH recommendation retained beyond the selected upper endpoint."
+        - source: *a48
+          value:
+            min: 10
+            max: 20
+          note: "Rechecked numerical care advice; the inherited 10-30 attribution to this source was not confirmed."
+        - source: *a37
+          value:
+            min: 5
+            max: 20
+          note: "General-hardness care interval; the page also suggests an optimal 5-12 dH subset."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: "high"
+    rationale: "The settled natural range is 5-8 dKH, without a verification object on this plain fact. FAO
+      alkalinity measurements convert to about 5.6-7.3 dKH and Branchu gives about 6.5-6.9 dKH. The rounded
+      lake interval covers their variation. Bicarbonate associated partly with sodium explains why
+      alkalinity-derived KH exceeds calcium-magnesium GH."
+    sources:
+      - *a10
+      - *a32
+      - *a27
+      - *a28
+      - *a11
+      - *a12
+      - *a15
+      - *a29
+      - *a13
+      - *a30
+      - *a31
+      - *a33
+    evidence:
+      - source: *a10
+        value:
+          min: 5
+          max: 8
+        note: "Alkalinity converted to dKH in the waterbody table."
+      - source: *a32
+        value:
+          min: 5
+          max: 8
+        note: "Bicarbonate alkalinity converted to dKH in the waterbody table."
+      - source: *a27
+        value:
+          min: 6.5
+          max: 6.9
+        note: "alkalinity 2.33 to 2.46 meq/L"
+      - source: *a28
+        value:
+          min: 5.6
+          max: 7.3
+        note: "alkalinity 2.00 to 2.59 meq/L"
+      - source: *a15
+        value:
+          min: 5
+          max: 8
+        note: "Lake Malawi natural range. Retained rounded lake synthesis attributed to its underlying lake study;
+          these endpoints are a combined inference rather than measurements all supplied by this one source."
+      - source: *a15
+        value:
+          min: 5
+          max: 8
+        note: "Required lake interval derived from alkalinity. Retained rounded lake synthesis attributed to its
+          underlying lake study; these endpoints are a combined inference rather than measurements all
+          supplied by this one source."
+      - source: *a33
+        value:
+          min: 6.5
+          max: 6.9
+        note: "Measured alkalinity converted from meq/L to dKH."
+    tolerance:
+      value:
+        min: 5
+        max: 14
+      confidence: "low"
+      rationale: "The tally uses median verification and low confidence because six votes split evenly. Generator,
+        checker-b and tiebreaker-1 proposed 5-12 dKH; checker-a, checker-c and tiebreaker-2 proposed 5-15. The
+        median minimum is 5 and median maximum is 13.5, rounded to 14, giving 5-14 dKH and containing natural
+        5-8. The JBL brochure gives the wider general Malawi recommendation 5-15 dKH, while JBL Malawi Rocks
+        gives 5-10 and Malawi Cichlids UK gives 6-12. These support a buffered aquarium estimate but no
+        species-specific physiological boundary. The median is not a directly measured 14 dKH threshold, and
+        GH numbers are not converted to KH. The two JBL test-product responses contain notification
+        information only; the Malawi-Guru homepage supplies no numerical KH evidence."
+      sources:
+        - *a16
+        - *a17
+        - *a34
+        - *a49
+        - *a3
+        - *a21
+        - *a15
+        - *a23
+        - *a24
+        - *a25
+        - *a26
+        - *a40
+        - *a39
+        - *a50
+        - *a5
+        - kind: "website"
+          title: "Malawi-Guru homepage, contextual search only"
+          url: "https://www.malawi-guru.de/"
+          accessed: "2026-10-15"
+          archived: "malawi-guru.de/_root/2026-10-14T214826Z"
+        - kind: "website"
+          title: "JBL KH Test, archived response contains notification information only"
+          url: "https://www.jbl.de/en/products/detail/2436/jbl-kh-test?country=rs"
+          accessed: "2026-10-15"
+          archived: "jbl.de/en/products/detail/2436/jbl-kh-test/q-1edbdd1b/2026-10-14T171134Z"
+        - kind: "website"
+          title: "JBL ProAquaTest KH, archived response contains notification information only"
+          url: "https://www.jbl.de/en/products/detail/8652/jbl-proaquatest-kh-carbonate-hardness"
+          accessed: "2026-10-15"
+          archived: "jbl.de/en/products/detail/8652/jbl-proaquatest-kh-carbonate-hardness/2026-10-14T140557Z"
+        - *a45
+        - *a46
+        - *a47
+        - *a41
+      evidence:
+        - source: *a16
+          value: "pH 7.5-8.5 and GH 5-20 dGH; no KH stated"
+        - source: *a17
+          value: "pH 7.5-8.5; no KH stated"
+        - source: *a34
+          value: "pH 7.8-8.6 and GH 10-30 dGH; no KH stated"
+        - source: *a3
+          value:
+            min: 10
+            max: 20
+          note: "FishBase gives dH only; used as a pointer to buffered hard water"
+        - source: *a21
+          value:
+            min: 10
+            max: 15
+          note: "general hardness only, no dKH"
+        - source: *a15
+          value:
+            min: 5
+            max: 8
+          note: "Natural carbonate hardness; tolerance beyond this is inferred. Retained rounded lake synthesis
+            attributed to its underlying lake study; these endpoints are a combined inference rather than
+            measurements all supplied by this one source."
+        - source: *a25
+          value:
+            min: 5
+            max: 8
+          note: "Natural alkalinity baseline from the required lake table; the wider tolerance is derived from related
+            pH and GH husbandry advice. This is an inherited natural-lake baseline inference, not a KH range
+            stated by this husbandry page."
+        - source: *a26
+          value:
+            min: 5
+            max: 8
+          note: "Natural alkalinity baseline; this register gives pH and hardness advice but no KH range. This is an
+            inherited natural-lake baseline inference, not a KH range stated by this husbandry page."
+        - source: *a40
+          value:
+            min: 6
+            max: 12
+          note: "Explicit general Malawi aquarium target; extrapolated to this species, not a tolerance trial."
+        - source: *a15
+          value:
+            min: 5
+            max: 8
+          note: "Natural lake carbonate hardness; supports inclusion of this interval only. Retained rounded lake
+            synthesis attributed to its underlying lake study; these endpoints are a combined inference rather
+            than measurements all supplied by this one source."
+        - source: *a45
+          value:
+            min: 5
+            max: 15
+          note: "Malawi group recommendation; applied to this species by inference."
+        - source: *a46
+          value:
+            min: 5
+            max: 10
+          note: "Malawi aquarium target, not a measured tolerance limit."
+        - source: *a47
+          value:
+            min: 6
+            max: 12
+          note: "General Malawi aquarium target."
+        - source: *a15
+          value:
+            min: 5
+            max: 8
+          note: "Natural range only, not the full aquarium tolerance. Retained rounded lake synthesis attributed to its
+            underlying lake study; these endpoints are a combined inference rather than measurements all
+            supplied by this one source."
+      verification:
+        method: "median"
+        votes:
+          agree: 3
+          total: 6
+  maxSizeCm:
+    value:
+      male: 16.5
+      female: 13
+    confidence: "medium"
+    rationale: "The component medians are male 16.5 cm from proposals 16, 17, 16.5 and 16.5, and female 13 cm from
+      13, 13, 13 and 14. FishBase gives 16.5 cm TL for male or unsexed fish, not a female maximum. Fedeaqua
+      reports the wider sexed ranges 16-18 cm for males and 12-14 cm for females, directly supporting a 13 cm
+      female planning value. Nordic gives an unsexed 18 cm maximum, Fishipedia gives males up to 17 cm and a
+      13 cm average, and FishFish lists both sexes at 16 cm. These differing size definitions do not justify
+      assigning the unsexed maximum to females. The selected values describe typical well-grown aquarium
+      adults, with uncertainty especially for females. Northern trade-form retailer sizes are secondary;
+      Quinn's Fins also misidentifies the lake and is given little weight."
+    sources:
+      - *a2
+      - *a16
+      - *a51
+      - *a49
+      - *a3
+      - &a52
+        kind: "website"
+        title: "Fishi-pedia: Pseudotropheus williamsi fish sheet"
+        url: "https://www.fishi-pedia.com/fishes/pseudotropheus-williamsi"
+        archived: "fishi-pedia.com/fishes/pseudotropheus-williamsi/2026-10-15T045002Z"
+        accessed: "2026-10-15"
+      - *a19
+      - *a18
+      - &a53
+        kind: "website"
+        title: "Quality Marine: Williamsi North Blue Lip Cichlid (Pseudotropheus cf williamsi)"
+        url: "https://www.qualitymarine.com/news/williamsi-north-blue-lip-cichlid-pseudotropheus-cf-williamsi/"
+        archived: "qualitymarine.com/news/williamsi-north-blue-lip-cichlid-pseudotropheus-cf-williamsi/2026-10-15T045\
+          003Z"
+        accessed: "2026-10-15"
+      - *a5
+      - *a22
+      - *a48
+      - *a6
+      - *a26
+      - &a54
+        kind: "website"
+        title: "Malawi.si account for Pseudotropheus williamsi 'Maingano Island'"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20williamsi/slides/Pseudotropheus%20williams\
+          i%20Maingano%20Island.html"
+        accessed: "2026-10-15"
+        archived: "malawi.si/malawi/pseudotropheus/pseudotropheus_williamsi/slides/pseudotropheus_williamsi_maingano_\
+          island.html/2026-10-15T045025Z"
+      - *a23
+    evidence:
+      - source: *a2
+        value:
+          male: 16.5
+          female: 16.5
+        note: "Maximum total length, male or unsexed; no female maximum supplied."
+      - source: *a16
+        value:
+          male: 16
+          female: 13
+        note: "Midpoints of the published sex-specific ranges. The retained 16 cm male interpretation is not the
+          midpoint of the actual 16-18 cm source range; that midpoint is 17 cm."
+      - source: *a51
+        value: "at least 15 cm total length"
+        note: "Typical adult size reported for the Maingano locality form."
+      - source: *a3
+        value:
+          male: 16.5
+          female: null
+      - source: *a52
+        value:
+          male: 17
+          female: 13
+        note: "average 13 cm, dominant males 17 cm"
+      - source: *a19
+        value:
+          male: 17.8
+          female: null
+        note: "7 inches, dealer"
+      - source: *a18
+        value:
+          male: 14
+          female: null
+        note: "5.5 inches, Chizimulu form"
+      - source: *a53
+        value:
+          male: 15
+          female: null
+        note: "over six inches"
+      - source: *a5
+        value:
+          male: 16.5
+        note: "FishBase reports male or unsexed maximum, not a separate female value."
+      - source: *a22
+        value:
+          male: 17
+        note: "Page reports dominant male maximum; female maximum is not stated."
+      - source: *a6
+        value:
+          male: 16.5
+          female: 16.5
+        note: "TL value recorded for male/unsexed, with no female maximum supplied."
+      - source: *a26
+        value:
+          male: 18
+          female: 18
+        note: "Register gives a combined species maximum, without sex separation."
+      - source: *a54
+        value:
+          male: 15
+          female: 15
+        note: "Lower bound of typical wild adult size, not a maximum."
+      - source: *a55
+        value:
+          male: 16.5
+          female: 16.5
+        note: "Gives 16.5 cm total length without separating sexes."
+      - source: *a16
+        value:
+          male: 18
+          female: 14
+        note: "Upper endpoints of the stated 16-18 cm male and 12-14 cm female ranges."
+      - source: *a23
+        value:
+          male: 16
+          female: 16
+        note: "Sex-specific entries on the collaborative care sheet; conflicts with the smaller female estimate."
+  predation:
+    value: 0
+    confidence: "medium"
+    rationale: "The tally selects level 0 by qualified majority, five of six votes, with medium confidence.
+      Generator, checker-b, checker-c and both tiebreakers proposed 0; checker-a proposed 1 from general mbuna
+      fry-taking and body size. FishBase and CRC independently describe plankton, insects, other invertebrates
+      and some rock biocover, without a species-specific report of deliberate fish capture. The Genner and
+      Turner review includes fry feeding among mbuna generally, which does not establish level 1 here. Level 0
+      still allows incidental fry taken by chance. There is no direct prey-size experiment, and the archive
+      thread is only a request for information."
+    sources:
+      - *a2
+      - &a56
+        kind: "database"
+        title: "Cichlid Room Companion: Pseudotropheus williamsi"
+        url: "https://cichlidae.com/species.php?id=9Ser1p2xr5Myj1cOQA8TmA"
+        archived: "cichlidae.com/species.php/q-0589de00/2026-10-15T045016Z"
+        accessed: "2026-10-15"
+      - *a34
+      - *a3
+      - &a57
+        kind: "literature"
+        title: "Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for rapid
+          speciation and adaptive radiation. Fish and Fisheries 6(1), 1-34."
+        url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+        archived: "doi.org/10.1111_j.1467-2679.2005.00173.x/2026-10-12T202949Z"
+        accessed: "2026-10-15"
+      - *a52
+      - *a4
+      - &a58
+        kind: "database"
+        title: "FishBase ecology: Pseudotropheus williamsi"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=8344&GenusName=Pseudotropheus&SpeciesN\
+          ame=williamsi"
+        accessed: "2026-10-15"
+        archived: "fishbase.se/ecology/fishecologysummary.php/q-f7c398cb/2026-10-15T045105Z"
+      - &a61
+        kind: "database"
+        title: "Cichlid Room Companion: Pseudotropheus williamsi"
+        url: "https://cichlidae.com/species.php?id=9Ser1p2xr5Myj1cOQA8TmA"
+        accessed: "2026-10-15"
+        archived: "cichlidae.com/species.php/q-0589de00/2026-10-15T045016Z"
+      - *a7
+      - *a54
+      - *a5
+      - &a59
+        kind: "database"
+        title: "Tawil, P. Pseudotropheus williamsi. Cichlid Room Companion, public account"
+        url: "https://cichlidae.com/species.php?id=9Ser1p2xr5Myj1cOQA8TmA"
+        accessed: "2026-10-15"
+        archived: "cichlidae.com/species.php/q-0589de00/2026-10-15T045016Z"
+      - *a35
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Pseudotropheus species"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ps\
+          eudotropheus"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-54fb6171/2026-10-14T1\
+          01559Z"
+      - &a62
+        kind: "literature"
+        title: "Genner and Turner (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation and adaptive
+          radiation"
+        url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+        accessed: "2026-10-15"
+        archived: "doi.org/10.1111_j.1467-2679.2005.00173.x/2026-10-12T202949Z"
+      - &a64
+        kind: "archive"
+        title: "cichlids.com forum thread 66176"
+        url: "https://www.cichlids.com/disc/read.php?2,66176"
+        accessed: "2026-10-15"
+      - *a44
+      - &a60
+        kind: "database"
+        title: "Cichlid Room Companion public profile for Pseudotropheus williamsi"
+        url: "https://cichlidae.com/species.php?id=9Ser1p2xr5Myj1cOQA8TmA"
+        accessed: "2026-10-15"
+        archived: "cichlidae.com/species.php/q-0589de00/2026-10-15T045016Z"
+      - *a41
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes, species of Pseudotropheus"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ps\
+          eudotropheus"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-54fb6171/2026-10-14T1\
+          01559Z"
+      - &a63
+        kind: "literature"
+        title: "Genner and Turner (2005). Review of mbuna ecology and adaptive radiation."
+        url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+        accessed: "2026-10-15"
+        archived: "doi.org/10.1111_j.1467-2679.2005.00173.x/2026-10-12T202949Z"
+    evidence:
+      - source: *a2
+        value: "plankton, insect larvae, other invertebrates and rock biocover"
+      - source: *a56
+        value: "insectivorous and omnivorous"
+      - source: *a34
+        value: "plankton, insect larvae, invertebrates and rock biofilm"
+      - source: *a3
+        value: 0
+        note: "diet lists plankton, insect larvae and invertebrates, no fish"
+      - source: *a57
+        value: 1
+        note: "most mbuna take algae, plankton, tiny invertebrates or fish fry"
+      - source: *a52
+        value: 1
+        note: "omnivorous with carnivorous tendency"
+      - source: *a4
+        value: 0
+        note: "feeding: insectivorous, omnivorous"
+      - source: *a58
+        value: 0
+        note: "Food records are plankton and invertebrates, plus rock biocover; no fish diet stated."
+      - source: *a7
+        value: 0
+        note: "Insects and omnivory reported; no fish prey."
+      - source: *a54
+        value: 0
+        note: "Reported foods are algae film, zooplankton and insects."
+      - source: *a5
+        value: 0
+        note: "Rubric inference from the reported plankton, invertebrate and biocover diet; the source does not
+          explicitly assign a predation level."
+      - source: *a59
+        value: 0
+        note: "Rubric inference from insectivorous and omnivorous feeding categories; no explicit exclusion of
+          occasional fish prey."
+      - source: *a35
+        value: 0
+        note: "Reported foods are plankton and small invertebrates; level 0 is inferred, not an observed test with
+          small fish."
+      - source: *a44
+        value: 0
+        note: "Inferred rubric level from the reported prey spectrum; no fish prey is listed."
+      - source: *a60
+        value: 0
+        note: "Inferred from insectivorous and omnivorous feeding categories; not an explicit experiment excluding
+          fish predation."
+      - source: *a41
+        value: 0
+        note: "Plankton and small invertebrates support this level indirectly; fish predation is not reported."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: "omnivore"
+      bloatSensitive: false
+      foods:
+        - "plankton"
+        - "insect larvae"
+        - "small invertebrates"
+        - "aufwuchs"
+    confidence: "low"
+    rationale: "The tally selects omnivore with bloatSensitive false by qualified majority, four of six, and low
+      confidence. All six propose omnivore; generator, checker-c and both tiebreakers set the flag false,
+      while checker-a and checker-b set it true. FishBase and CRC independently support mixed animal and
+      biofilm feeding. Fedeaqua instead labels the species plant-eating and Fischlexikon uses an aufwuchs
+      label, although it also recommends animal foods. Cichlid Atlas and e-Evcil warn about protein-related
+      bloat; Practical Fishkeeping and the JBL brochure supply broader mbuna guidance. These warnings are
+      retained, but do not establish unusual sensitivity in the described species. The Nordic and Zoopet
+      feeding accounts overlap and are not treated as independent clinical evidence. False is a provisional
+      absence of demonstrated special sensitivity, not proof of immunity or advice to feed unrestricted rich
+      food. The exact decided food list is retained from the tally."
+    sources:
+      - *a56
+      - *a2
+      - *a16
+      - *a34
+      - *a49
+      - *a3
+      - *a4
+      - *a57
+      - *a52
+      - &a65
+        kind: "website"
+        title: "Coburg Aquarium: Pseudotropheus Williamsi Blue Lip"
+        url: "https://coburgaquarium.com.au/products/pseudotropheus-williamsi-blue-lip-2"
+        archived: "coburgaquarium.com.au/products/pseudotropheus-williamsi-blue-lip-2/2026-10-15T045052Z"
+        accessed: "2026-10-15"
+      - *a19
+      - *a18
+      - *a58
+      - *a61
+      - *a48
+      - *a7
+      - *a54
+      - *a6
+      - *a55
+      - *a5
+      - *a59
+      - *a35
+      - *a36
+      - *a37
+      - *a38
+      - *a50
+      - *a62
+      - *a44
+      - *a60
+      - *a41
+      - *a42
+      - *a43
+      - *a45
+      - *a63
+      - *a64
+    evidence:
+      - source: *a56
+        value: "omnivorous and insectivorous"
+      - source: *a2
+        value: "plankton, insect larvae, other invertebrates; also feeds on rock biocover"
+      - source: *a16
+        value: "phytophagous"
+        note: "Conflicts with the more detailed descriptions of animal prey."
+      - source: *a34
+        value: "omnivore, with plankton, insects and biofilm"
+      - source: *a3
+        value: "omnivore"
+        note: "plankton, insect larvae, invertebrates, biocover"
+      - source: *a4
+        value: "omnivore"
+        note: "insectivorous, omnivorous"
+      - source: *a52
+        value: "omnivore"
+        note: "omnivorous with carnivorous tendency"
+      - source: *a18
+        value: "omnivore"
+        note: "species sheet"
+      - source: *a65
+        value: "omnivore"
+        note: "vegetable-rich diet advised, meaty treats occasionally"
+      - source: *a19
+        value: "omnivore"
+        note: "low-protein flake food advised"
+      - source: *a58
+        value:
+          type: "omnivore"
+          bloatSensitive: true
+          foods:
+            - "plankton"
+            - "insect larvae"
+            - "other invertebrates"
+            - "rock biocover"
+        note: "The true bloat flag here is an inherited checker inference, not a FishBase statement about
+          sensitivity."
+      - source: *a61
+        value:
+          type: "omnivore"
+        note: "Public profile classifies feeding as insectivorous and omnivorous."
+      - source: *a48
+        value:
+          type: "omnivore"
+          bloatSensitive: true
+        note: "Care advice favors plant matter and warns against regular high-protein feeding."
+      - source: *a7
+        value: "omnivore"
+        note: "CRC also lists insectivorous feeding."
+      - source: *a54
+        value: "omnivore"
+        note: "Mixed algal, planktonic and insect foods."
+      - source: *a6
+        value: "omnivore"
+        note: "Food composition gives plant/detritus and animal foods."
+      - source: *a55
+        value: "omnivore"
+        note: "Describes both water-column animal foods and rock biofilm grazing."
+      - source: *a5
+        value:
+          type: "omnivore"
+        note: "Animal foods and rock biocover are reported; bloat susceptibility is not stated."
+      - source: *a59
+        value:
+          type: "omnivore"
+        note: "Public feeding categories include omnivory and insectivory; no bloat flag is stated."
+      - source: *a35
+        value:
+          type: "omnivore"
+        note: "Omnivore classification and varied frozen plus dry aquarium food; no protein restriction or bloat
+          statement."
+      - source: *a36
+        value:
+          type: "omnivore"
+        note: "Omnivore classification; its feeding wording closely matches the Nordic account, so independence is
+          uncertain."
+      - source: *a37
+        value:
+          type: "aufwuchs"
+        note: "Uses the aufwuchs label, while also listing animal foods and advising against mosquito larvae; no
+          explicit protein-related bloat diagnosis."
+      - source: *a38
+        value:
+          type: "omnivore"
+          bloatSensitive: true
+        note: "Describes mixed feeding but explicitly associates excessive dietary protein with digestive swelling and
+          bloat."
+      - source: *a50
+        value:
+          type: "aufwuchs"
+          bloatSensitive: true
+        note: "General mbuna advice associates rich feeding with bloat and recommends predominantly plant food; not a
+          species-specific observation."
+      - source: *a44
+        value:
+          type: "omnivore"
+        note: "Animal prey plus rock biocover; no bloat-sensitivity claim."
+      - source: *a60
+        value:
+          type: "omnivore"
+        note: "Public feeding categories include omnivory and insect feeding; no bloat claim."
+      - source: *a41
+        value:
+          type: "omnivore"
+        note: "Recommends mixed frozen and dry aquarium foods; false bloat flag is an inference, not a stated medical
+          finding."
+      - source: *a42
+        value:
+          type: "omnivore"
+        note: "Similar dietary wording to the species register; not independent evidence."
+      - source: *a43
+        value:
+          type: "omnivore"
+          bloatSensitive: true
+        note: "Interpreted from its recommendation to restrict animal food because of bloat; conflicts with the
+          provisional decision."
+      - source: *a45
+        value:
+          type: "aufwuchs"
+        note: "Genus-level grouping as grazers, not a species-specific diet assessment."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 4
+        total: 6
+  aggressionConspecific:
+    value: 3
+    confidence: "medium"
+    rationale: "All four profiles propose level 3. Malawi.si describes strong conspecific aggression and the
+      Nordic register reports males excluding rivals from large territories. Fishipedia mentions potentially
+      fatal male fights, while one northern-trade keeper reports much milder behavior. Persistent chasing with
+      risks under inadequate space, cover or social ratios fits level 3 for the recommended adult harem;
+      isolated severe outcomes do not establish routine level 4 behavior in that setup."
+    sources:
+      - *a51
+      - *a16
+      - *a17
+      - &a66
+        kind: "forum"
+        title: "cichlid-forum.com thread: Pseudotropheus sp. Williamsi Blue Lips in 75G"
+        url: "https://www.cichlid-forum.com/threads/pseudotropheus-sp-williamsi-blue-lips-in-75g.287338/"
+        archived: "cichlid-forum.com/threads/pseudotropheus-sp-williamsi-blue-lips-in-75g.287338/2026-10-15T045005Z"
+        accessed: "2026-10-15"
+      - &a67
+        kind: "forum"
+        title: "cichlid-forum.com thread: Pseudotropheus sp. \"Williamsi North\""
+        url: "https://www.cichlid-forum.com/threads/pseudotropheus-sp-williamsi-north.266297/"
+        archived: "cichlid-forum.com/threads/pseudotropheus-sp-williamsi-north.266297/2026-10-15T045007Z"
+        accessed: "2026-10-15"
+      - *a52
+      - *a65
+      - *a18
+      - *a22
+      - *a23
+      - *a61
+      - *a48
+      - *a54
+      - *a26
+    evidence:
+      - source: *a51
+        value: "highly aggressive towards conspecifics in aquaria"
+      - source: *a16
+        value: "territorial"
+      - source: *a17
+        value: "strongly territorial; recommends a large group to spread aggression"
+      - source: *a66
+        value: 3
+        note: "males tough on females, ratio 1:4 to 1:7 advised"
+      - source: *a67
+        value: 1
+        note: "one keeper saw no real conspecific aggression, only male displays"
+      - source: *a52
+        value: 4
+        note: "fights between dominant males can be violent and fatal"
+      - source: *a65
+        value: 3
+        note: "males very territorial towards males of their own species"
+      - source: *a18
+        value: 3
+        note: "species sheet: aggressive towards conspecifics"
+      - source: *a22
+        value: 3
+        note: "Reports persistent male rivalry with potentially serious injury."
+      - source: *a23
+        value: 3
+        note: "Recommends at least four together and one male with several females."
+      - source: *a54
+        value: 3
+        note: "Aggressive toward conspecifics is stated at species-complex locality level."
+      - source: *a26
+        value: 3
+        note: "Males maintain large territories and drive away other males."
+  aggressionHeterospecific:
+    value: 2
+    confidence: "medium"
+    rationale: "All four profiles propose level 2. Species accounts support territorial exclusion with possible
+      mixed Malawi keeping. Dissenting evidence spans little interest in other species through aggressive
+      dominance in northern trade-form tanks. It does not establish attacks throughout a suitably structured
+      aquarium as the regular behavior of the described species."
+    sources:
+      - *a51
+      - *a16
+      - *a34
+      - *a66
+      - *a67
+      - *a65
+      - *a18
+      - &a68
+        kind: "forum"
+        title: "aquariumforum.com thread: Pseudotropheus Williamsi in 75G"
+        url: "https://www.aquariumforum.com/threads/pseudotropheus-williamsi-in-75g.66761/"
+        archived: "aquariumforum.com/threads/pseudotropheus-williamsi-in-75g.66761/2026-10-15T045052Z"
+        accessed: "2026-10-15"
+      - *a22
+      - *a23
+      - *a24
+      - *a54
+      - *a26
+    evidence:
+      - source: *a51
+        value: "may be intrusive towards other species"
+      - source: *a16
+        value: "territorial toward other species"
+      - source: *a34
+        value: "semi-aggressive; recommend robust Malawi tankmates"
+      - source: *a65
+        value: 1
+        note: "leaves other species alone"
+      - source: *a66
+        value: 2
+        note: "dominant, but aggression mostly against own kind"
+      - source: *a67
+        value: 2
+        note: "larger Cynotilapia pushed around; fierce at feeding"
+      - source: *a18
+        value: 3
+        note: "species sheet temperament aggressive"
+      - source: *a68
+        value: 3
+        note: "large aggressive fish, intervention may be needed"
+      - source: *a22
+        value: 2
+        note: "Territorial near its area; can coexist with selected neighbors when space allows."
+      - source: *a24
+        value: 2
+        note: "Describes territorial males and recommends robust compatible tankmates."
+      - source: *a54
+        value: 2
+        note: "Locality account says territorial fish can intrude on other species."
+      - source: *a26
+        value: 2
+        note: "Describes large male territories but does not quantify aggression to other species."
+  territory:
+    value:
+      size: "large"
+      breedingOnly: false
+    confidence: "medium"
+    rationale: "Generator and checker-b propose a small permanent territory; checker-a and checker-c propose a
+      large permanent territory. The Nordic register explicitly describes large male holdings, and Malawi.si
+      calls for about 2 m when multiple males need separate areas. These observations are more informative
+      than inferring a small cave territory from rocky habitat alone. No source measures the area in
+      centimetres, so the large classification is approximate; territoriality is not described as restricted
+      to spawning."
+    sources:
+      - *a51
+      - *a17
+      - *a56
+      - *a57
+      - *a66
+      - *a67
+      - *a52
+      - *a53
+      - *a58
+      - *a22
+      - *a61
+      - *a26
+      - *a54
+    evidence:
+      - source: *a51
+        value: "rocky territories and shelters"
+      - source: *a17
+        value: "males defend sites within the rock structure"
+      - source: *a56
+        value: "sediment-free rocky habitat"
+      - source: *a57
+        value: "territorial"
+        note: "males of most mbuna hold territories on rocky shores"
+      - source: *a52
+        value: "territorial"
+      - source: *a53
+        value: "large"
+        note: "high in the pecking order, needs large aquarium with large rocks"
+      - source: *a67
+        value: "large"
+        note: "very dominant, pushes around larger fish"
+      - source: *a22
+        value:
+          size: "small"
+          breedingOnly: false
+        note: "Reports territorial behavior, including defense against nearby intruders."
+      - source: *a48
+        value:
+          size: "small"
+          breedingOnly: false
+        note: "Describes males defending a small rocky spawning site."
+      - source: *a26
+        value:
+          size: "large"
+          breedingOnly: false
+        note: "Males reported to hold large territories."
+      - source: *a54
+        value:
+          size: "large"
+          breedingOnly: false
+        note: "Space for multiple males' separate territories is emphasized."
+  habitatZones:
+    value:
+      - "rock"
+      - "openWater"
+    confidence: "high"
+    rationale: "Generator, checker-b and checker-c include rock and openWater; checker-a includes rock alone.
+      FishBase describes shallow exposed rocks together with substantial feeding in the water column, and CRC
+      independently identifies sediment-free rocks. OpenWater represents feeding space adjoining the rock
+      habitat rather than a pelagic lifestyle."
+    sources:
+      - *a2
+      - *a56
+      - *a34
+      - *a3
+      - *a4
+      - *a53
+      - *a58
+      - *a61
+      - *a7
+      - *a54
+    evidence:
+      - source: *a2
+        value:
+          - "rock"
+          - "openWater"
+        note: "Shallow rocky habitat and water-column feeding."
+      - source: *a56
+        value:
+          - "rock"
+        note: "Public summary describes sediment-free rocky habitat."
+      - source: *a34
+        value:
+          - "rock"
+          - "openWater"
+      - source: *a3
+        value:
+          - "rock"
+        note: "very shallow rocky biotopes, upper 2 m"
+      - source: *a4
+        value:
+          - "rock"
+        note: "sediment-free rocky lake habitat"
+      - source: *a53
+        value:
+          - "rock"
+        note: "tank filled densely with large rocks"
+      - source: *a58
+        value:
+          - "rock"
+          - "openWater"
+        note: "Rocky shallow habitat and water-column feeding."
+      - source: *a7
+        value:
+          - "rock"
+        note: "Sediment-free rocky lake habitat."
+      - source: *a54
+        value:
+          - "rock"
+          - "openWater"
+        note: "Rocky habitat with water-column feeding."
+  social:
+    value:
+      structure: "harem"
+      ratio: 3
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c propose one male with three females; checker-a proposes four
+      females. Fishipedia explicitly recommends three per male and Fedeaqua supports harem keeping. Northern
+      trade-form advice ranges from three or four to four through seven females, while Aquahaus recommends a
+      distinct ten-fish 5:5 group. These concern different stocking approaches and sometimes a separately
+      listed northern taxon. One male with three females is the chosen minimum social unit, with space and
+      cover to limit repeated chasing. CRC polygynandry is a wild mating description rather than a captive
+      ratio. The legacy forum mentions a planned 1:3 group without establishing its success."
+    sources:
+      - *a16
+      - *a17
+      - *a51
+      - *a64
+      - *a65
+      - *a66
+      - *a67
+      - *a52
+      - *a4
+      - *a23
+      - *a22
+      - *a61
+      - *a7
+      - *a54
+    evidence:
+      - source: *a16
+        value: "harem"
+      - source: *a17
+        value:
+          structure: "group"
+          ratio: 1
+        note: "Breeder's unusually male-heavy 5:5 group recommendation to spread aggression."
+      - source: *a51
+        value: "harem; one male with several females is an aquarium option"
+      - source: *a64
+        value: "one male and three females in a 300 litre Malawi aquarium"
+        note: "A keeper's stocking question, not a report of a successful outcome."
+      - source: *a65
+        value:
+          ratio: 3.5
+        note: "3 to 4 females per male"
+      - source: *a66
+        value:
+          ratio: 5.5
+        note: "1:4 to 1:7"
+      - source: *a67
+        value:
+          ratio: 4
+        note: "1 male 4 females; long term 2 males 6 females"
+      - source: *a52
+        value: "harem"
+        note: "dominant males polygamous"
+      - source: *a4
+        value: "harem"
+        note: "mating: polygynandrous"
+      - source: *a22
+        value:
+          structure: "harem"
+          ratio: 3
+      - source: *a23
+        value:
+          structure: "harem"
+        note: "Four individuals minimum; ratio not specified."
+      - source: *a7
+        value: "harem"
+        note: "Polygynandrous mating; not a specific aquarium ratio."
+      - source: *a54
+        value: "harem"
+  speciesOnly:
+    value: false
+    confidence: "medium"
+    rationale: "The tally is unanimous, four of four votes, for false with medium confidence. The Nordic register
+      and species-specific care accounts discuss keeping with other substantial Malawi cichlids. This supports
+      a carefully planned mixed aquarium for the recommended adult social unit, while leaving territorial
+      aggression and individual incompatibility as separate concerns. Some direct keeper observations concern
+      the northern trade form."
+    sources:
+      - *a51
+      - *a34
+      - *a66
+      - *a67
+      - *a19
+      - *a65
+      - *a22
+      - *a24
+      - *a48
+      - *a54
+      - *a26
+    evidence:
+      - source: *a51
+        value: false
+        note: "Describes mixed Malawi stocking as possible with size and temperament matched."
+      - source: *a34
+        value: false
+      - source: *a66
+        value: false
+        note: "kept with Cynotilapia and Metriaclima, avoid similar colours"
+      - source: *a67
+        value: false
+        note: "kept with Haps and Demasoni"
+      - source: *a19
+        value: false
+        note: "compatible with other mbuna of different look"
+      - source: *a65
+        value: false
+        note: "lists Labidochromis and Maingano as tankmates"
+      - source: *a22
+        value: false
+        note: "Allows peaceful or mildly territorial neighbors in an adequately sized aquarium."
+      - source: *a48
+        value: false
+        note: "Recommends compatible mbuna tankmates in a large community aquarium."
+      - source: *a54
+        value: false
+        note: "Source includes group housing and separate space for multiple males."
+      - source: *a26
+        value: false
+        note: "Mbuna care profile, not species-only recommendation."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: "low"
+    rationale: "All four votes propose an empty list, giving unanimous verification with low confidence. No
+      curated group includes this species, and the reviewed accounts supply no named cross involving it. The
+      forum discussions raise general mbuna crossing concerns without reporting such offspring. The Catalog
+      and CRC identify the taxon but their silence about crossing is not proof of reproductive isolation. The
+      empty list records the present evidence gap, not a guarantee that crosses cannot occur."
+    sources:
+      - *a1
+      - *a56
+      - &a69
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Maylandia (williamsi is not listed)"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ma\
+          ylandia"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-47330f77/2026-10-14T0\
+          95140Z"
+        accessed: "2026-10-15"
+      - *a67
+      - *a66
+      - *a61
+      - *a22
+      - &a70
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Pseudotropheus"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ps\
+          eudotropheus"
+        accessed: "2026-10-15"
+        archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-54fb6171/2026-10-14T1\
+          01559Z"
+      - *a7
+    evidence:
+      - source: *a1
+        value: []
+        note: "The current genus list does not report hybrid groups."
+      - source: *a56
+        value: []
+        note: "Public species summary reports no hybrid group or cross."
+      - source: *a67
+        value: []
+        note: "general remark that mbuna may hybridize, no named cross"
+      - source: *a66
+        value: []
+        note: "advises against look-alike species, no named cross"
+      - source: *a69
+        value: []
+        note: "williamsi is not a Maylandia species"
+      - source: *a61
+        value: []
+        note: "Public profile provides no named hybrid cross."
+      - source: *a70
+        value: []
+        note: "Valid taxon listed; no cross evidence in the catalog."
+      - source: *a7
+        value: []
+        note: "Public profile identifies species and genus but reports no crosses."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+        - "blue"
+        - "orange"
+        - "black"
+      pattern: "plain"
+    confidence: "medium"
+    rationale: "Generator proposes blue, orange, white and black with mixed pattern; checker-a blue and yellow
+      with bars; checker-b blue, yellow, black and orange with bars; checker-c blue, orange and black with
+      plain pattern. The rubric concerns the adult male, so the predominantly plain blue male and dark fin
+      edging reported by Malawi.si and the Chizumulu account take priority over female spot rows and the
+      yellow-orange, blue-lipped northern trade form. Orange is retained for reported fin coloration, while
+      white lips are a localized marking rather than a dominant base color. The Nordic account emphasizes
+      orange and spots, illustrating population and trade-name ambiguity. Plain describes the dominant male
+      body, not an absence of contrasting fin marks."
+    sources:
+      - *a2
+      - *a51
+      - *a34
+      - *a18
+      - *a53
+      - *a19
+      - *a65
+      - *a52
+      - *a22
+      - *a24
+      - *a48
+      - *a54
+      - *a26
+    evidence:
+      - source: *a51
+        value:
+          baseColors:
+            - "blue"
+            - "orange"
+            - "black"
+          pattern: "mixed"
+        note: "Dominant males plain blue with dark fin bands; females carry two rows of dark spots."
+      - source: *a34
+        value:
+          baseColors:
+            - "blue"
+            - "orange"
+            - "white"
+            - "black"
+          pattern: "mixed"
+      - source: *a2
+        value: "blue body with red-orange dorsal colour and pale lips"
+      - source: *a18
+        value:
+          - "blue"
+        note: "Chizimulu form: mostly blue, black submarginal dorsal band"
+      - source: *a53
+        value:
+          - "yellow"
+          - "blue"
+        note: "golden body, dark blue accents, blue lips"
+      - source: *a19
+        value:
+          - "yellow"
+          - "blue"
+        note: "males solid yellow with blue tail and lips"
+      - source: *a65
+        value:
+          - "yellow"
+          - "orange"
+        note: "males yellow-orange with dark vertical lines"
+      - source: *a52
+        value:
+          - "yellow"
+          - "blue"
+          - "black"
+        note: "predominantly yellow, blue and black"
+      - source: *a22
+        value:
+          baseColors:
+            - "blue"
+            - "yellow"
+            - "black"
+          pattern: "bars"
+        note: "General description reports these body colors and visible black bars."
+      - source: *a24
+        value:
+          baseColors:
+            - "blue"
+            - "orange"
+          pattern: "bars"
+        note: "Male coloration description."
+      - source: *a48
+        value:
+          baseColors:
+            - "blue"
+            - "white"
+            - "orange"
+            - "yellow"
+            - "grey"
+            - "black"
+          pattern: "mixed"
+        note: "Describes blue and pale lips with orange dorsal fin in males, and pale spotted bars in females."
+      - source: *a54
+        value:
+          baseColors:
+            - "blue"
+            - "orange"
+            - "black"
+          pattern: "plain"
+      - source: *a26
+        value:
+          baseColors:
+            - "blue"
+            - "orange"
+          pattern: "spots"
+        note: "Its sexual dimorphism summary mentions rows of spots, especially on females."
+  feedingSpeed:
+    value: "normal"
+    confidence: "low"
+    rationale: "Generator, checker-b and checker-c propose normal; checker-a proposes hasty. The direct account of
+      rapid feeding and food exclusion explicitly concerns williamsi north, which CRC lists separately as
+      undescribed. Species-specific sources for the described fish describe food capture but do not measure
+      feeding pace. Normal remains a low-confidence inference for this taxon; the northern keeper observations
+      are retained and justify checking that companions receive food."
+    sources:
+      - *a2
+      - *a34
+      - *a67
+      - *a66
+      - *a58
+      - *a54
+    evidence:
+      - source: *a2
+        value: "takes plankton and invertebrates from open water and picks at rock biocover"
+      - source: *a34
+        value: "takes food in the water column and from rock surfaces"
+      - source: *a67
+        value: "hasty"
+        note: "ferocious at feeding time; peacocks barely got to eat"
+      - source: *a66
+        value: "hasty"
+        note: "dominant in the tank"
+      - source: *a58
+        value: "normal"
+        note: "Speed inferred from the described water-column feeding mode."
+      - source: *a54
+        value: "normal"
+        note: "Wide food acceptance reported, but no pace data."
+  minTank:
+    value:
+      volumeL: 450
+      lengthCm: 150
+      depthCm: 55
+    confidence: "medium"
+    rationale: "Starting from all four proposals gives medians of 450 L from 400, 200, 500 and 500 L; 150 cm
+      length from 150, 120, 180 and 150 cm; and 55 cm depth from 60, 40, 60 and 50 cm. The adopted minimum is
+      for one male and three females. Malawi.si prefers over 400 L, FishFish specifies 500 L for four fish,
+      Fishipedia recommends 500 L in a community, and Nordic gives a smaller 250 L and 120 cm minimum. The
+      selected 450 L is within those source recommendations and the 150 cm length permits substantial
+      territories. A 55 cm depth is a practical midpoint for rockwork and escape routes, between the roughly
+      50 cm and 60 cm footprints discussed by hobby sources, not a measured species threshold. The Atlas text
+      has mixed metric and imperial footprint notation, so it cannot establish a precise centimetre boundary.
+      Dealer advice down to 160-200 L and reports about four-foot northern-trade tanks remain in evidence but
+      do not provide equally strong assurance for adult housing. Multiple males require more length, with
+      Malawi.si suggesting about 200 cm."
+    sources:
+      - *a51
+      - *a34
+      - *a65
+      - *a21
+      - *a66
+      - *a67
+      - *a22
+      - *a23
+      - *a48
+      - *a25
+      - *a26
+      - *a54
+      - *a55
+    evidence:
+      - source: *a51
+        value:
+          volumeL: 400
+          lengthCm: 200
+          depthCm: 60
+        note: "Over 400 L preferred; about 200 cm when keeping several dominant males."
+      - source: *a34
+        value:
+          volumeL: 208
+          lengthCm: 120
+          depthCm: 45
+        note: "Generic care sheet minimum; lower than specialist locality-site advice. Rechecking found no 208 L
+          minimum in this account; retain as the generator interpretation, not an independently confirmed
+          minimum."
+      - source: *a65
+        value:
+          volumeL: 160
+        note: "dealer minimum"
+      - source: *a21
+        value:
+          volumeL: 200
+          lengthCm: null
+          depthCm: null
+        note: "55 gallons for a group"
+      - source: *a66
+        value:
+          volumeL: 284
+          lengthCm: 120
+        note: "75 gallon 4-foot tank for 1 male 4 females is tight"
+      - source: *a67
+        value:
+          volumeL: 360
+          lengthCm: 120
+        note: "95 gallon 4-foot tank for 1 male 4 females"
+      - source: *a22
+        value:
+          volumeL: 500
+        note: "500 L is stated; footprint inferred."
+      - source: *a23
+        value:
+          volumeL: 500
+        note: "500 L for four fish; footprint inferred."
+      - source: *a48
+        value:
+          lengthCm: 152
+          depthCm: 50
+        note: "Recommends at least a five-foot tank and approximately 50 cm of usable footprint for a harem; converted
+          from inches."
+      - source: *a25
+        value:
+          volumeL: 500
+        note: "Recommended volume for four fish; length and depth are not stated on this record."
+      - source: *a26
+        value:
+          volumeL: 250
+          lengthCm: 120
+        note: "Lower tank volume and length recommendation; depth not stated."
+      - source: *a54
+        value:
+          volumeL: 400
+        note: "Locality variant recommends over 400 L; around 2 m length is suggested for separate territories when
+          keeping several males."
+      - source: *a55
+        value:
+          volumeL: 473
+          lengthCm: 150
+          depthCm: 50
+        note: "One male with three to four females; dimensions converted from 5 ft by 19.5 in."
+      - source: *a26
+        value:
+          volumeL: 250
+          lengthCm: 120
+        note: "Association minimum; no tank depth specified."
+  lifespanYears:
+    value:
+      min: 5.5
+      max: 8
+    confidence: "low"
+    rationale: "The proposal minima 6, 8, 5 and 5 years have median 5.5; the maxima 8, 10, 8 and 8 have median 8.
+      Fedeaqua reports 6-8 years, Aquarium Pro 5-8 and Fishipedia about 8. Retailer ranges of 8-10 years are
+      wider at the upper end and often concern northern Blue Lips stock; they lack an independently documented
+      longevity series. The resulting 5.5-8 years is a rough planning estimate, not a precise biological lower
+      boundary."
+    sources:
+      - *a16
+      - *a65
+      - *a52
+      - *a21
+      - *a24
+      - *a22
+      - &a71
+        kind: "website"
+        title: "Aquariumpro care page, Red Top Williamsi"
+        url: "https://aquarium-pro.com/species/pseudotropheus-williamsi"
+        accessed: "2026-10-15"
+        archived: "aquarium-pro.com/species/pseudotropheus-williamsi/2026-10-15T044950Z"
+    evidence:
+      - source: *a16
+        value:
+          min: 6
+          max: 8
+      - source: *a65
+        value:
+          min: 8
+          max: 10
+      - source: *a52
+        value:
+          min: 8
+          max: 8
+        note: "longevity 8 years"
+      - source: *a21
+        value:
+          min: 8
+          max: 10
+      - source: *a24
+        value:
+          min: 5
+          max: 8
+      - source: *a22
+        value:
+          min: 8
+          max: 8
+      - source: *a71
+        value:
+          min: 5
+          max: 8
+  breeding:
+    value: "maternal-mouthbrooder"
+    confidence: "high"
+    rationale: "All four profiles agree. CRC explicitly identifies maternal mouthbrooding, and federation, Nordic
+      and locality accounts support it. Genner and Turner independently describe this reproductive mode across
+      mbuna. Egg deposition on a surface before pickup does not change which parent incubates the brood."
+    sources:
+      - *a56
+      - *a16
+      - *a34
+      - *a57
+      - *a4
+      - *a18
+      - *a53
+      - *a61
+      - *a22
+      - *a7
+      - *a54
+      - &a72
+        kind: "literature"
+        title: "The mbuna cichlids of Lake Malawi: a model for rapid speciation and adaptive radiation"
+        url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+        accessed: "2026-10-15"
+        archived: "doi.org/10.1111_j.1467-2679.2005.00173.x/2026-10-12T202949Z"
+    evidence:
+      - source: *a56
+        value: "maternal mouthbrooder"
+      - source: *a16
+        value: "maternal mouth incubation; also lists open substrate for egg deposition"
+      - source: *a34
+        value: "maternal mouthbrooder"
+      - source: *a57
+        value: "maternal-mouthbrooder"
+        note: "all haplochromine mbuna studied"
+      - source: *a4
+        value: "maternal-mouthbrooder"
+        note: "mouth-brooder: maternal"
+      - source: *a18
+        value: "maternal-mouthbrooder"
+      - source: *a53
+        value: "maternal-mouthbrooder"
+      - source: *a61
+        value: "maternal-mouthbrooder"
+      - source: *a22
+        value: "maternal-mouthbrooder"
+      - source: *a7
+        value: "maternal-mouthbrooder"
+      - source: *a54
+        value: "maternal-mouthbrooder"
+      - source: *a72
+        value: "maternal-mouthbrooder"
+        note: "Review states all mbuna are maternal mouthbrooders."
+  beginnerSuitability:
+    value: "moderate"
+    confidence: "medium"
+    rationale: "All four profiles choose moderate. CRC gives an intermediate aquarium level, consistent with the
+      Nordic medium rating and the fish's size, territory requirements and need for careful stocking. A lower
+      difficulty score on one hobby sheet does not remove those management demands."
+    sources:
+      - *a56
+      - *a51
+      - *a34
+      - *a18
+      - *a20
+      - *a66
+      - *a61
+      - *a23
+      - *a22
+      - *a7
+      - *a26
+    evidence:
+      - source: *a56
+        value: "intermediate aquarists"
+      - source: *a51
+        value: "large territorial mbuna requiring space and visual barriers"
+      - source: *a34
+        value: "not for complete beginners"
+      - source: *a18
+        value: "easy"
+        note: "difficulty 2 on the sheet scale, aggressive"
+      - source: *a20
+        value: "moderate"
+        note: "care level medium, slightly aggressive"
+      - source: *a66
+        value: "moderate"
+        note: "needs 4-foot tank with large harem, tough on females"
+      - source: *a61
+        value: "moderate"
+        note: "CRC labels the aquarium level intermediate."
+      - source: *a23
+        value: "moderate"
+        note: "Participatory sheet says maintenance difficulty is medium."
+      - source: *a7
+        value: "moderate"
+      - source: *a26
+        value: "moderate"
+partners:
+  suitable:
+    - species: "Robust Lake Malawi mbuna with dissimilar adult coloration"
+      reason: "Species accounts allow substantial Malawi companions when territories and food access are maintained."
+      condition: "The selected minimum houses the williamsi harem; mixed stocking may require substantially more
+        space and separate refuges."
+  unsuitable:
+    - species: "Aulonocara baenschi"
+      reason: "Timid peacock cichlids can be displaced from feeding and shelter by territorial mbuna; this is a
+        behavior-based caution rather than a verified pair trial."
+    - species: "Similar-looking male mbuna"
+      reason: "Colour and shape resemblance can intensify challenges to perceived rivals."
+profile:
+  overview:
+    text: "Pseudotropheus williamsi is a substantial Lake Malawi mbuna associated with shallow rocks and feeding
+      space above them. Males and females differ in colour, and fish from different localities or trade lines
+      can look quite different. Red Top Williamsi and Blue Lips are used in the hobby, but Blue Lips often
+      denotes northern stock that CRC treats separately as undescribed. A locality label and reliable stock
+      history are therefore useful when identifying fish. Its territorial behavior and adult size call for
+      prior experience with Malawi cichlids."
+    sources:
+      - *a1
+      - *a2
+      - *a56
+      - *a51
+      - *a3
+      - *a4
+      - *a54
+  habitat:
+    text: "The species is endemic to Lake Malawi, with records from northern bays, several islands and the
+      southeast arm. It inhabits shallow exposed rock habitat, often in the upper few metres, and catches
+      drifting animal food as well as feeding from rock surfaces. The regional natural ranges are 21-29 C, pH
+      7.7-8.6, 3-5 dGH and 5-8 dKH. The lake is alkaline without having high calcium-magnesium hardness;
+      alkalinity and general hardness describe different aspects of its chemistry."
+    sources:
+      - *a2
+      - *a56
+      - *a51
+      - *a10
+      - *a32
+      - *a3
+      - *a4
+      - *a54
+      - *a15
+      - *a33
+      - *a14
+  sizeAndGrowth:
+    text: "Use about 16.5 cm for an adult male and 13 cm for an adult female when planning space. These are
+      typical aquarium planning maxima rather than record limits. Fedeaqua gives broader sexed ranges of 16-18
+      cm and 12-14 cm, while FishBase provides an unsexed or male maximum of 16.5 cm. Female measurements are
+      less consistent across accounts. The selected lifespan estimate is roughly 5.5-8 years, with low
+      confidence because the available figures come from care accounts rather than tracked longevity studies."
+    sources:
+      - *a2
+      - *a16
+      - *a51
+      - *a3
+      - *a52
+  husbandry:
+    text: "Plan at least 450 litres with a 150 cm length and 55 cm depth for one male and three females. Build
+      stable rock cover with several routes between shelters and interrupted sight lines, while preserving
+      swimming and feeding space above the rocks. Multiple adult males need substantially more room; a
+      locality account suggests about 200 cm to separate their territories. Maintain clean, well-oxygenated
+      water and avoid rapid chemistry changes. The selected long-term estimates are 21-30 C, pH 7.5-8.6, 3-20
+      dGH and 5-14 dKH. The outer endpoints are uncertain husbandry estimates rather than experimentally
+      demonstrated limits or daily operating targets. A secure cover is sensible for fish that can take
+      insects at the surface."
+    sources:
+      - *a16
+      - *a17
+      - *a34
+      - *a51
+      - *a54
+      - *a26
+      - *a52
+      - *a23
+  socialBehavior:
+    text: "The recommended starting unit is one male with three females. Males may chase rivals or females
+      persistently, and their defended area can occupy a substantial part of the aquarium. Other robust Malawi
+      cichlids can be considered when sufficient space and escape cover are available. Additional females or
+      an alternative group arrangement cannot compensate for inadequate territory space. Some reports of
+      unusually mild behavior, intense food competition or large mixed-sex groups concern northern Blue Lips
+      stock, so they should not be assumed to predict every group of the described species."
+    sources:
+      - *a16
+      - *a17
+      - *a51
+      - *a34
+      - *a26
+      - *a54
+      - *a52
+      - *a4
+  diet:
+    text: "The best-supported classification is omnivore. Natural food descriptions include plankton, insect
+      larvae and other small invertebrates, together with material taken from rock biocover. Offer a varied
+      suitable cichlid staple with both plant ingredients and modest animal-food components. Some care pages
+      favor strongly plant-based feeding and warn about protein-related bloat. Special sensitivity is not
+      established for this species, so the false sensitivity flag remains provisional and does not imply
+      immunity. Avoid chronic overfeeding and check that all fish obtain food."
+    sources:
+      - *a56
+      - *a2
+      - *a16
+      - *a34
+      - *a3
+      - *a4
+      - *a26
+      - *a48
+  breeding:
+    text: "Females incubate the eggs and developing young in their mouths. Males court within defended rocky areas
+      and do not provide the same incubation care. Egg placement on a surface followed by mouth pickup is
+      compatible with maternal mouthbrooding. Quiet shelter helps a holding female avoid repeated attention.
+      Published hobby accounts provide incubation and brood-size estimates, but locality and stock identity
+      are not always clear enough to treat them as fixed species limits."
+    sources:
+      - *a56
+      - *a16
+      - *a34
+      - *a4
+      - *a26
+      - *a54
+  sexing:
+    text: "Dominant males of the described locality complex are often largely blue with contrasting dark fin
+      markings; orange fin colour and pale lip markings are reported in care accounts. Females are generally
+      less conspicuous and show two rows of dark flank spots. Northern fish sold as Blue Lips are commonly
+      yellow or orange with blue lips, and they may represent the separately listed undescribed northern
+      taxon. Colour, fin development and body size should be considered together; juveniles and subordinate
+      males can obscure the adult contrast."
+    sources:
+      - *a51
+      - *a34
+      - *a2
+      - *a54
+      - *a26
+      - *a48
+  compatibility:
+    text: "Use adult size, territorial behavior, feeding access and colour resemblance together when selecting
+      companions. Substantial, differently patterned Malawi mbuna may work in a spacious tank with separate
+      refuges. Small or timid fish can lose access to food or shelter, and similar-looking males may attract
+      repeated challenges. The current predation level is 0, which still permits incidental loss of fry. No
+      supported named hybrid group was located; the empty list does not establish that mixed-species breeding
+      is impossible. Watch the actual group and separate individuals that cannot feed or leave shelter
+      safely."
+    sources:
+      - *a51
+      - *a34
+      - *a16
+      - *a64
+      - *a54
+      - *a26
+      - *a3
+      - *a4
+  problems:
+    text: "Repeated chasing, inadequate refuge space, poor feeding access and unstable water are the main
+      management concerns described by the sources. A fish remaining hidden or missing meals needs prompt
+      attention to the social arrangement. Surface feeding also creates an escape risk in an uncovered tank.
+      Diet and bloat advice are inconsistent, with several warnings based on mbuna generally rather than
+      verified illness in this species. Keep the diet varied and water quality stable without treating the
+      provisional sensitivity flag as a health guarantee."
+    sources:
+      - *a16
+      - *a17
+      - *a2
+      - *a34
+      - *a49
+      - *a64
+      - *a54
+      - *a3
+      - *a48
+      - *a26
+provenance:
+  runs:
+    - role: "generator"
+      model: "gpt-6-luna"
+      date: "2026-10-15"
+    - role: "checker"
+      model: "claude-sonnet-5-5"
+      date: "2026-10-15"
+    - role: "checker"
+      model: "gpt-6-luna"
+      date: "2026-10-15"
+    - role: "checker"
+      model: "gpt-6-luna"
+      date: "2026-10-15"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-15"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-15"
+    - role: "adjudicator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-15"
+  disagreements:
+    - field: "taxonomy.synonyms"
+      proposals:
+        - by: "generator"
+          value:
+            - "Chromis williamsi"
+        - by: "checker-a"
+          value:
+            - "Chromis williamsi"
+            - "Tilapia williamsi"
+        - by: "checker-b"
+          value:
+            - "Chromis williamsi"
+        - by: "checker-c"
+          value:
+            - "Chromis williamsi"
+            - "Tilapia williamsi"
+      decision:
+        - "Chromis williamsi"
+        - "Tilapia williamsi"
+      rationale: "Generator and checker-b retain only the original Chromis combination; checker-a and checker-c also
+        include Tilapia. FishBase nomenclature and Nordic register independently confirm the historical
+        Tilapia combination. All four agree on the valid Pseudotropheus name and authorship; williamsii is a
+        misspelling."
+    - field: "features.origin"
+      proposals:
+        - by: "generator"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+            localities:
+              - "Deep Bay"
+              - "Vua"
+              - "Nkhata Bay"
+              - "Likoma Island"
+              - "Chisumulu Island"
+              - "Mbenji Island"
+              - "Maleri Islands"
+              - "southeast arm"
+        - by: "checker-a"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+            localities:
+              - "Deep Bay"
+              - "Vua"
+              - "Nkhata Bay"
+              - "Likoma Island"
+              - "Chizumulu Island"
+              - "Mbenji Island"
+              - "Maleri Island"
+              - "south-east arm of the lake"
+        - by: "checker-b"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+            localities:
+              - "Deep Bay"
+              - "Vua"
+              - "Nkhata Bay"
+              - "Likoma Island"
+              - "Chisumulu Island"
+              - "Mbenji Island"
+              - "Maleri Islands"
+              - "southeast arm"
+        - by: "checker-c"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "Lake Malawi"
+            localities:
+              - "Deep Bay"
+              - "Vua"
+              - "Nkhata Bay"
+              - "Likoma Island"
+              - "Chizumulu Island"
+              - "Mbenji Island"
+              - "Maleri Islands"
+              - "southeastern arm"
+      decision:
+        continent: "Africa"
+        region: "Lake Malawi"
+        waterbody: "lake-malawi"
+        localities:
+          - "Deep Bay"
+          - "Vua"
+          - "Nkhata Bay"
+          - "Likoma Island"
+          - "Chisumulu Island"
+          - "Mbenji Island"
+          - "Maleri Islands"
+          - "southeast arm"
+      rationale: "The Catalog of Fishes, FishBase and CRC place the species in Lake Malawi. FishBase supplies the
+        named bays and islands. Chisumulu and Chizumulu are alternative spellings in the inputs, and southeast
+        arm describes the same broad region; the normalized waterbody identifier is lake-malawi."
+    - field: "features.temperatureC.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 21
+            max: 29
+        - by: "checker-a"
+          value:
+            min: 21
+            max: 30
+        - by: "checker-b"
+          value:
+            min: 20
+            max: 30
+        - by: "checker-c"
+          value:
+            min: 21
+            max: 30
+      decision:
+        min: 21
+        max: 30
+      rationale: "The tally decides 21-30 C with unanimous verification under its one-degree agreement threshold and
+        low confidence. Generator proposed 21-29, checker-a 21-30, checker-b 20-30 and checker-c 21-30 C; the
+        median endpoints of these agreeing proposals give 21-30. Species care advice mainly spans 23-28 C,
+        FishBase and FishFish give 24-26, and the Tropaq northern trade-form page gives 25-30 C. The natural
+        21-29 C interval is contained. The 20 C proposal has no direct species-specific chronic-limit
+        evidence, while the 30 C endpoint has only weak trade-form support; the result is a husbandry
+        estimate, not a demonstrated failure boundary."
+    - field: "features.ph.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 7.5
+            max: 8.6
+        - by: "checker-a"
+          value:
+            min: 7
+            max: 8.6
+        - by: "checker-b"
+          value:
+            min: 7.5
+            max: 8.7
+        - by: "checker-c"
+          value:
+            min: 7.5
+            max: 8.8
+        - by: "tiebreaker-1"
+          value:
+            min: 7.5
+            max: 8.6
+        - by: "tiebreaker-2"
+          value:
+            min: 7.5
+            max: 8.6
+      decision:
+        min: 7.5
+        max: 8.6
+      rationale: "The tally selects pH 7.5-8.6 by qualified majority, five of six agreeing under the 0.3 pH
+        threshold, with medium confidence. Generator and both tiebreakers proposed 7.5-8.6, checker-a 7.0-8.6,
+        checker-b 7.5-8.7 and checker-c 7.5-8.8. Federation and Nordic species advice support 7.5-8.5, widened
+        to contain natural pH 8.6. The wider Tropaq recommendation of pH 6-8 concerns a northern trade form
+        and has little support for its acidic end; JBL Malawi Rocks gives the wider group range 7.5-9.0.
+        Neither establishes chronic boundaries for this species. Seachem 7.8-8.4 and the UK lake guide 7.8-8.5
+        are management targets. The species evidence favors the tallied interval over the speculative 7.0
+        lower endpoint and 8.7-8.8 upper extensions."
+    - field: "features.khDkh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 5
+            max: 12
+        - by: "checker-a"
+          value:
+            min: 5
+            max: 15
+        - by: "checker-b"
+          value:
+            min: 5
+            max: 12
+        - by: "checker-c"
+          value:
+            min: 5
+            max: 15
+        - by: "tiebreaker-1"
+          value:
+            min: 5
+            max: 12
+        - by: "tiebreaker-2"
+          value:
+            min: 5
+            max: 15
+      decision:
+        min: 5
+        max: 14
+      rationale: "The tally uses median verification and low confidence because six votes split evenly. Generator,
+        checker-b and tiebreaker-1 proposed 5-12 dKH; checker-a, checker-c and tiebreaker-2 proposed 5-15. The
+        median minimum is 5 and median maximum is 13.5, rounded to 14, giving 5-14 dKH and containing natural
+        5-8. The JBL brochure gives the wider general Malawi recommendation 5-15 dKH, while JBL Malawi Rocks
+        gives 5-10 and Malawi Cichlids UK gives 6-12. These support a buffered aquarium estimate but no
+        species-specific physiological boundary. The median is not a directly measured 14 dKH threshold, and
+        GH numbers are not converted to KH. The two JBL test-product responses contain notification
+        information only; the Malawi-Guru homepage supplies no numerical KH evidence."
+    - field: "features.maxSizeCm"
+      proposals:
+        - by: "generator"
+          value:
+            male: 16
+            female: 13
+        - by: "checker-a"
+          value:
+            male: 17
+            female: 13
+        - by: "checker-b"
+          value:
+            male: 16.5
+            female: 13
+        - by: "checker-c"
+          value:
+            male: 16.5
+            female: 14
+      decision:
+        male: 16.5
+        female: 13
+      rationale: "The component medians are male 16.5 cm from proposals 16, 17, 16.5 and 16.5, and female 13 cm from
+        13, 13, 13 and 14. FishBase gives 16.5 cm TL for male or unsexed fish, not a female maximum. Fedeaqua
+        reports the wider sexed ranges 16-18 cm for males and 12-14 cm for females, directly supporting a 13
+        cm female planning value. Nordic gives an unsexed 18 cm maximum, Fishipedia gives males up to 17 cm
+        and a 13 cm average, and FishFish lists both sexes at 16 cm. These differing size definitions do not
+        justify assigning the unsexed maximum to females. The selected values describe typical well-grown
+        aquarium adults, with uncertainty especially for females. Northern trade-form retailer sizes are
+        secondary; Quinn's Fins also misidentifies the lake and is given little weight."
+    - field: "features.predation"
+      proposals:
+        - by: "generator"
+          value: 0
+        - by: "checker-a"
+          value: 1
+        - by: "checker-b"
+          value: 0
+        - by: "checker-c"
+          value: 0
+        - by: "tiebreaker-1"
+          value: 0
+        - by: "tiebreaker-2"
+          value: 0
+      decision: 0
+      rationale: "The tally selects level 0 by qualified majority, five of six votes, with medium confidence.
+        Generator, checker-b, checker-c and both tiebreakers proposed 0; checker-a proposed 1 from general
+        mbuna fry-taking and body size. FishBase and CRC independently describe plankton, insects, other
+        invertebrates and some rock biocover, without a species-specific report of deliberate fish capture.
+        The Genner and Turner review includes fry feeding among mbuna generally, which does not establish
+        level 1 here. Level 0 still allows incidental fry taken by chance. There is no direct prey-size
+        experiment, and the archive thread is only a request for information."
+    - field: "features.diet"
+      proposals:
+        - by: "generator"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "plankton"
+              - "insect larvae"
+              - "small invertebrates"
+              - "aufwuchs"
+        - by: "checker-a"
+          value:
+            type: "omnivore"
+            bloatSensitive: true
+            foods:
+              - "spirulina flakes"
+              - "vegetable-based pellets"
+              - "blanched vegetables"
+              - "zooplankton"
+              - "insect larvae"
+              - "small amounts of meaty food"
+        - by: "checker-b"
+          value:
+            type: "omnivore"
+            bloatSensitive: true
+            foods:
+              - "plankton"
+              - "insect larvae"
+              - "other invertebrates"
+              - "rock biocover"
+        - by: "checker-c"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "aufwuchs"
+              - "zooplankton"
+              - "insects"
+              - "insect larvae"
+        - by: "tiebreaker-1"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+        - by: "tiebreaker-2"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+      decision:
+        type: "omnivore"
+        bloatSensitive: false
+        foods:
+          - "plankton"
+          - "insect larvae"
+          - "small invertebrates"
+          - "aufwuchs"
+      rationale: "The tally selects omnivore with bloatSensitive false by qualified majority, four of six, and low
+        confidence. All six propose omnivore; generator, checker-c and both tiebreakers set the flag false,
+        while checker-a and checker-b set it true. FishBase and CRC independently support mixed animal and
+        biofilm feeding. Fedeaqua instead labels the species plant-eating and Fischlexikon uses an aufwuchs
+        label, although it also recommends animal foods. Cichlid Atlas and e-Evcil warn about protein-related
+        bloat; Practical Fishkeeping and the JBL brochure supply broader mbuna guidance. These warnings are
+        retained, but do not establish unusual sensitivity in the described species. The Nordic and Zoopet
+        feeding accounts overlap and are not treated as independent clinical evidence. False is a provisional
+        absence of demonstrated special sensitivity, not proof of immunity or advice to feed unrestricted rich
+        food. The exact decided food list is retained from the tally."
+    - field: "features.territory"
+      proposals:
+        - by: "generator"
+          value:
+            size: "small"
+            breedingOnly: false
+        - by: "checker-a"
+          value:
+            size: "large"
+            breedingOnly: false
+        - by: "checker-b"
+          value:
+            size: "small"
+            breedingOnly: false
+        - by: "checker-c"
+          value:
+            size: "large"
+            breedingOnly: false
+      decision:
+        size: "large"
+        breedingOnly: false
+      rationale: "Generator and checker-b propose a small permanent territory; checker-a and checker-c propose a
+        large permanent territory. The Nordic register explicitly describes large male holdings, and Malawi.si
+        calls for about 2 m when multiple males need separate areas. These observations are more informative
+        than inferring a small cave territory from rocky habitat alone. No source measures the area in
+        centimetres, so the large classification is approximate; territoriality is not described as restricted
+        to spawning."
+    - field: "features.habitatZones"
+      proposals:
+        - by: "generator"
+          value:
+            - "rock"
+            - "openWater"
+        - by: "checker-a"
+          value:
+            - "rock"
+        - by: "checker-b"
+          value:
+            - "rock"
+            - "openWater"
+        - by: "checker-c"
+          value:
+            - "rock"
+            - "openWater"
+      decision:
+        - "rock"
+        - "openWater"
+      rationale: "Generator, checker-b and checker-c include rock and openWater; checker-a includes rock alone.
+        FishBase describes shallow exposed rocks together with substantial feeding in the water column, and
+        CRC independently identifies sediment-free rocks. OpenWater represents feeding space adjoining the
+        rock habitat rather than a pelagic lifestyle."
+    - field: "features.social"
+      proposals:
+        - by: "generator"
+          value:
+            structure: "harem"
+            ratio: 3
+        - by: "checker-a"
+          value:
+            structure: "harem"
+            ratio: 4
+        - by: "checker-b"
+          value:
+            structure: "harem"
+            ratio: 3
+        - by: "checker-c"
+          value:
+            structure: "harem"
+            ratio: 3
+      decision:
+        structure: "harem"
+        ratio: 3
+      rationale: "Generator, checker-b and checker-c propose one male with three females; checker-a proposes four
+        females. Fishipedia explicitly recommends three per male and Fedeaqua supports harem keeping. Northern
+        trade-form advice ranges from three or four to four through seven females, while Aquahaus recommends a
+        distinct ten-fish 5:5 group. These concern different stocking approaches and sometimes a separately
+        listed northern taxon. One male with three females is the chosen minimum social unit, with space and
+        cover to limit repeated chasing. CRC polygynandry is a wild mating description rather than a captive
+        ratio. The legacy forum mentions a planned 1:3 group without establishing its success."
+    - field: "features.coloration"
+      proposals:
+        - by: "generator"
+          value:
+            baseColors:
+              - "blue"
+              - "orange"
+              - "white"
+              - "black"
+            pattern: "mixed"
+        - by: "checker-a"
+          value:
+            baseColors:
+              - "blue"
+              - "yellow"
+            pattern: "bars"
+        - by: "checker-b"
+          value:
+            baseColors:
+              - "blue"
+              - "yellow"
+              - "black"
+              - "orange"
+            pattern: "bars"
+        - by: "checker-c"
+          value:
+            baseColors:
+              - "blue"
+              - "orange"
+              - "black"
+            pattern: "plain"
+      decision:
+        baseColors:
+          - "blue"
+          - "orange"
+          - "black"
+        pattern: "plain"
+      rationale: "Generator proposes blue, orange, white and black with mixed pattern; checker-a blue and yellow
+        with bars; checker-b blue, yellow, black and orange with bars; checker-c blue, orange and black with
+        plain pattern. The rubric concerns the adult male, so the predominantly plain blue male and dark fin
+        edging reported by Malawi.si and the Chizumulu account take priority over female spot rows and the
+        yellow-orange, blue-lipped northern trade form. Orange is retained for reported fin coloration, while
+        white lips are a localized marking rather than a dominant base color. The Nordic account emphasizes
+        orange and spots, illustrating population and trade-name ambiguity. Plain describes the dominant male
+        body, not an absence of contrasting fin marks."
+    - field: "features.feedingSpeed"
+      proposals:
+        - by: "generator"
+          value: "normal"
+        - by: "checker-a"
+          value: "hasty"
+        - by: "checker-b"
+          value: "normal"
+        - by: "checker-c"
+          value: "normal"
+      decision: "normal"
+      rationale: "Generator, checker-b and checker-c propose normal; checker-a proposes hasty. The direct account of
+        rapid feeding and food exclusion explicitly concerns williamsi north, which CRC lists separately as
+        undescribed. Species-specific sources for the described fish describe food capture but do not measure
+        feeding pace. Normal remains a low-confidence inference for this taxon; the northern keeper
+        observations are retained and justify checking that companions receive food."
+    - field: "features.minTank"
+      proposals:
+        - by: "generator"
+          value:
+            volumeL: 400
+            lengthCm: 150
+            depthCm: 60
+        - by: "checker-a"
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 40
+        - by: "checker-b"
+          value:
+            volumeL: 500
+            lengthCm: 180
+            depthCm: 60
+        - by: "checker-c"
+          value:
+            volumeL: 500
+            lengthCm: 150
+            depthCm: 50
+      decision:
+        volumeL: 450
+        lengthCm: 150
+        depthCm: 55
+      rationale: "Starting from all four proposals gives medians of 450 L from 400, 200, 500 and 500 L; 150 cm
+        length from 150, 120, 180 and 150 cm; and 55 cm depth from 60, 40, 60 and 50 cm. The adopted minimum
+        is for one male and three females. Malawi.si prefers over 400 L, FishFish specifies 500 L for four
+        fish, Fishipedia recommends 500 L in a community, and Nordic gives a smaller 250 L and 120 cm minimum.
+        The selected 450 L is within those source recommendations and the 150 cm length permits substantial
+        territories. A 55 cm depth is a practical midpoint for rockwork and escape routes, between the roughly
+        50 cm and 60 cm footprints discussed by hobby sources, not a measured species threshold. The Atlas
+        text has mixed metric and imperial footprint notation, so it cannot establish a precise centimetre
+        boundary. Dealer advice down to 160-200 L and reports about four-foot northern-trade tanks remain in
+        evidence but do not provide equally strong assurance for adult housing. Multiple males require more
+        length, with Malawi.si suggesting about 200 cm."
+    - field: "features.lifespanYears"
+      proposals:
+        - by: "generator"
+          value:
+            min: 6
+            max: 8
+        - by: "checker-a"
+          value:
+            min: 8
+            max: 10
+        - by: "checker-b"
+          value:
+            min: 5
+            max: 8
+        - by: "checker-c"
+          value:
+            min: 5
+            max: 8
+      decision:
+        min: 5.5
+        max: 8
+      rationale: "The proposal minima 6, 8, 5 and 5 years have median 5.5; the maxima 8, 10, 8 and 8 have median 8.
+        Fedeaqua reports 6-8 years, Aquarium Pro 5-8 and Fishipedia about 8. Retailer ranges of 8-10 years are
+        wider at the upper end and often concern northern Blue Lips stock; they lack an independently
+        documented longevity series. The resulting 5.5-8 years is a rough planning estimate, not a precise
+        biological lower boundary."
