@@ -43,17 +43,8 @@ export TZ
 # Ensure /workspaces is writable for git worktrees
 sudo chown "$(id -u):$(id -g)" /workspaces 2>/dev/null || true
 
-# Match the device's numeric group, including hosts where that GID already has a name.
-if [ -c /dev/kvm ]; then
-  kvm_gid="$(stat -c '%g' /dev/kvm)"
-  kvm_group="$(getent group "$kvm_gid" | cut -d: -f1 || true)"
-  if [ -z "$kvm_group" ]; then
-    kvm_group="kvm-device-$kvm_gid"
-    sudo groupadd --gid "$kvm_gid" "$kvm_group"
-  fi
-  sudo usermod --append --groups "$kvm_group" "$(id -un)"
-  echo "KVM group configured. Reconnect the devcontainer to refresh process group membership."
-fi
+# KVM access for the Android emulator (also run on every start, see postStartCommand.sh).
+bash "$(dirname "$0")/configure-kvm.sh" || echo "WARNING: KVM access could not be configured" >&2
 
 # Setup timezone
 if [ -f "/usr/share/zoneinfo/$TZ" ]; then

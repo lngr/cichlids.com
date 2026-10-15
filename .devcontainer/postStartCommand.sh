@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # postStartCommand – runs on every devcontainer start.
-# Sets up localhost port forwards and calls personal overlay hook.
+# Sets up KVM access and localhost port forwards and calls personal overlay hook.
 
 if [ -f /etc/profile ]; then
   # Profile snippets may expand unset variables (e.g. snapd's apps-bin-path.sh
@@ -15,6 +15,9 @@ if [ -f /etc/profile ]; then
 fi
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${PATH:-}"
 export PATH="$HOME/.local/bin:$PATH"
+
+# KVM access for the Android emulator; idempotent, so it also covers containers created earlier.
+bash "$(dirname "$0")/configure-kvm.sh" || echo "WARNING: KVM access could not be configured" >&2
 
 # Start the Backlog.md web UI as a background service (see docs/adr/0015).
 # Coding agents use the MCP server; the web UI is the human board and is reachable
