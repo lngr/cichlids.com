@@ -11,7 +11,7 @@ namespace Cichlids.Api.Features.Discover;
 public sealed record DiscoverItemDto(long Id, string? Title, string? Slug, ImageUrlsDto? Image, double Score, int RatingCount);
 public sealed record DiscoverRegionDto(TankRegion Region, IReadOnlyList<DiscoverItemDto> Tanks,
     IReadOnlyList<DiscoverItemDto> Pictures, DiscoverItemDto? TankOfTheWeek, IReadOnlyList<DiscoverItemDto> TimeLapses);
-public sealed record DiscoverDto(IReadOnlyList<DiscoverRegionDto> Regions);
+public sealed record DiscoverDto(IReadOnlyList<DiscoverRegionDto> Regions, IReadOnlyList<DiscoverItemDto> GlobalPictures);
 
 public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLapseQueryService series,
     IObjectStore objectStore, IMemoryCache cache, TimeProvider clock)
@@ -41,9 +41,23 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
         var regionalTanks = tankRows.Where(t => selected.Any(r => DiscoverRanking.InRegion(t.Region, r))).ToList();
         var ratedPostIds = pr.Where(r => r.Count >= DiscoverRanking.MinimumRatings).Select(r => r.Id).ToList();
         var tankIds = regionalTanks.Select(t => t.Id).ToList();
-        var pictureRows = await posts.Where(p => ratedPostIds.Contains(p.Id) && p.TankId != null && tankIds.Contains(p.TankId.Value)).ToListAsync(cancellationToken);
-        var postIds = pictureRows.Select(p => p.Id).ToList();
+        var pictureRows = await posts.Where(p => ratedPostIds.Contains(p.Id))
+            .Select(p => new Picture(p.Id, p.Title, p.TankId)).ToListAsync(cancellationToken);
         var tankRegions = tankRows.ToDictionary(t => t.Id, t => t.Region);
+        var speciesCategories = await (from ps in context.PostSpecies
+            join species in context.Species on ps.SpeciesId equals species.Id
+            where ratedPostIds.Contains(ps.PostId)
+            select new { ps.PostId, species.Category }).ToListAsync(cancellationToken);
+        var speciesRegions = speciesCategories.GroupBy(s => s.PostId).ToDictionary(g => g.Key,
+            g => g.Select(s => DiscoverRanking.SpeciesRegion(s.Category)).Distinct().ToArray());
+        bool InPictureRegion(Picture picture, TankRegion region) => picture.TankId is { } id
+            ? DiscoverRanking.InRegion(tankRegions.GetValueOrDefault(id), region)
+            : speciesRegions.TryGetValue(picture.Id, out var origins) && origins.Any(origin => DiscoverRanking.InRegion(origin, region));
+        var rankedPictures = pictureRows.OrderByDescending(p => DiscoverRanking.Score(pictureStats[p.Id].Sum, pictureStats[p.Id].Count, picturePrior))
+            .ThenBy(p => p.Id).ToList();
+        var globalPictures = rankedPictures.Take(20).ToList();
+        var postIds = selected.SelectMany(region => rankedPictures.Where(p => InPictureRegion(p, region)).Take(20))
+            .Concat(globalPictures).Select(p => p.Id).Distinct().ToList();
         var pictureSlugs = await context.SlugAliases.Where(s => postIds.Contains(s.PostId) && s.IsCanonical)
             .ToDictionaryAsync(s => s.PostId, s => s.Value, cancellationToken);
         var postMedia = await context.PostMedia.Where(pm => postIds.Contains(pm.PostId) && context.MediaItems.Any(m => m.Id == pm.MediaItemId && m.Kind == MediaKind.Photo)).OrderBy(pm => pm.Sort).ThenBy(pm => pm.Id).ToListAsync(cancellationToken);
@@ -67,27 +81,27 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
             return new(t.Id, t.Title, null, imageId is { } id ? images.GetValueOrDefault(id) : null,
                 DiscoverRanking.Score(stats.Sum, stats.Count, tankPrior), stats.Count);
         }
+        DiscoverItemDto PictureCard(Picture picture) => new(picture.Id, picture.Title, pictureSlugs.GetValueOrDefault(picture.Id),
+            postMedia.FirstOrDefault(pm => pm.PostId == picture.Id) is { } pm ? images.GetValueOrDefault(pm.MediaItemId) : null,
+            DiscoverRanking.Score(pictureStats[picture.Id].Sum, pictureStats[picture.Id].Count, picturePrior), pictureStats[picture.Id].Count);
         var result = selected.Select(region =>
         {
             var ranked = regionalTanks.Where(t => DiscoverRanking.InRegion(t.Region, region)).Select(TankCard)
                 .OrderByDescending(t => t.Score).ThenBy(t => t.Id).ToList();
             var hall = ranked.Where(t => t.RatingCount >= DiscoverRanking.MinimumRatings).Take(20).ToList();
-            var pictures = pictureRows.Where(p => p.TankId is { } id && DiscoverRanking.InRegion(tankRegions.GetValueOrDefault(id), region))
-                .Select(p => new DiscoverItemDto(p.Id, p.Title, pictureSlugs.GetValueOrDefault(p.Id),
-                    postMedia.FirstOrDefault(pm => pm.PostId == p.Id) is { } pm ? images.GetValueOrDefault(pm.MediaItemId) : null,
-                    DiscoverRanking.Score(pictureStats[p.Id].Sum, pictureStats[p.Id].Count, picturePrior), pictureStats[p.Id].Count))
-                .OrderByDescending(p => p.Score).ThenBy(p => p.Id).Take(20).ToList();
+            var pictures = rankedPictures.Where(p => InPictureRegion(p, region)).Take(20).Select(PictureCard).ToList();
             var timeLapses = ranked.Where(t => showcases.ContainsKey(t.Id)).Take(20).Select(t => t with
             {
                 Image = t.Image ?? showcases[t.Id].Photos[0].Image
             }).ToList();
             return new DiscoverRegionDto(region, hall, pictures, hall.Count == 0 ? null : hall[DiscoverRanking.WeeklyIndex(now, hall.Count)], timeLapses);
         }).ToList();
-        var response = new DiscoverDto(result);
+        var response = new DiscoverDto(result, globalPictures.Select(PictureCard).ToList());
         cache.Set(key, response, TimeSpan.FromSeconds(30));
         return response;
     }
 
     private static double Prior(IReadOnlyCollection<Stats> stats) => stats.Count == 0 ? 0 : (double)stats.Sum(s => s.Sum) / stats.Sum(s => s.Count);
+    private sealed record Picture(long Id, string? Title, long? TankId);
     private sealed record Stats(long Id, int Count, long Sum);
 }

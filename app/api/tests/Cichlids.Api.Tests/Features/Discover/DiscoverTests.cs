@@ -79,6 +79,52 @@ public class DiscoverTests(ApiFixture fixture)
         Assert.All(response.TimeLapses, t => Assert.NotNull(t.Image));
     }
 
+    [Fact]
+    public async Task Pictures_UseSpeciesWithoutTankTankPrecedenceAndCrossRegionHall()
+    {
+        await using var db = fixture.CreateDbContext();
+        using var scope = fixture.Services.CreateScope();
+        using var cache = new Microsoft.Extensions.Caching.Memory.MemoryCache(new Microsoft.Extensions.Caching.Memory.MemoryCacheOptions());
+        var objectStore = scope.ServiceProvider.GetRequiredService<Cichlids.Infrastructure.Storage.IObjectStore>();
+        var service = new Cichlids.Api.Features.Discover.DiscoverQueryService(db,
+            new Cichlids.Api.Features.Tanks.TankTimeLapseQueryService(db, objectStore), objectStore, cache, TimeProvider.System);
+        var tank = new Tank { ProfileId = fixture.Seed.Alice.Id, Title = "Tank precedence", Region = TankRegion.Mixed, State = TankState.Published };
+        db.Tanks.Add(tank);
+        await db.SaveChangesAsync();
+        var ids = new List<long>();
+        foreach (var category in new string?[] { "lake malawi", "lake tanganyika", "african", "american", null, "american" })
+        {
+            var post = new Post { AuthorProfileId = fixture.Seed.Alice.Id, State = PostState.Published,
+                TankId = ids.Count == 5 ? tank.Id : null, Title = $"Species fallback {ids.Count}" };
+            var photo = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
+            db.AddRange(post, photo);
+            await db.SaveChangesAsync();
+            db.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = photo.Id });
+            if (category != null)
+            {
+                var species = new Cichlids.Domain.Entities.Species { Genus = Guid.NewGuid().ToString(), Name = "test", Category = category };
+                db.Species.Add(species);
+                await db.SaveChangesAsync();
+                db.PostSpecies.Add(new PostSpecies { PostId = post.Id, SpeciesId = species.Id });
+            }
+            for (var i = 0; i < 100; i++) db.Ratings.Add(new Rating { PostId = post.Id, Stars = 5 });
+            await db.SaveChangesAsync();
+            ids.Add(post.Id);
+        }
+        var archive = await service.GetAsync(Cichlids.Api.Features.Discover.DiscoverQueryService.SelectableRegions, default);
+        var expected = new[] { TankRegion.LakeMalawi, TankRegion.LakeTanganyika, TankRegion.AfricaOther, TankRegion.CentralAmerica };
+        for (var i = 0; i < expected.Length; i++)
+            Assert.Contains(archive.Regions.Single(r => r.Region == expected[i]).Pictures, p => p.Id == ids[i]);
+        Assert.Contains(archive.Regions.Single(r => r.Region == TankRegion.SouthAmerica).Pictures, p => p.Id == ids[3]);
+        Assert.Contains(archive.Regions.Single(r => r.Region == TankRegion.Mixed).Pictures, p => p.Id == ids[5]);
+        Assert.DoesNotContain(archive.Regions.Where(r => r.Region != TankRegion.Mixed).SelectMany(r => r.Pictures), p => p.Id == ids[5]);
+        Assert.DoesNotContain(archive.Regions.SelectMany(r => r.Pictures), p => p.Id == ids[4]);
+        var body = JsonSerializer.SerializeToElement(archive, new JsonSerializerOptions(JsonSerializerDefaults.Web));
+        Assert.True(body.TryGetProperty("globalPictures", out var global));
+        Assert.InRange(global.GetArrayLength(), 6, 20);
+        Assert.Contains(global.EnumerateArray(), p => p.GetProperty("id").GetInt64() == ids[4]);
+    }
+
     [Theory]
     [InlineData("americas_unassigned")]
     [InlineData("unknown")]
@@ -152,6 +198,8 @@ public class DiscoverTests(ApiFixture fixture)
         for (var i = 0; i < 10; i++) db.Ratings.Add(new Rating { TankId = noRegion.Id, Stars = 1 });
         await db.SaveChangesAsync();
         var first = await service.GetAsync([TankRegion.LakeVictoria], default);
+        Assert.DoesNotContain(first.GlobalPictures, p => excludedPosts.Contains(p.Id));
+        Assert.InRange(first.GlobalPictures.Count, 1, 20);
         var region = Assert.Single(first.Regions);
         Assert.Equal(20, region.Tanks.Count);
         Assert.Equal(20, region.Pictures.Count);

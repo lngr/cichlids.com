@@ -2472,7 +2472,8 @@
       },
       "DiscoverDto": {
         "required": [
-          "regions"
+          "regions",
+          "globalPictures"
         ],
         "type": "object",
         "properties": {
@@ -2480,6 +2481,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/DiscoverRegionDto"
+            }
+          },
+          "globalPictures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DiscoverItemDto"
             }
           }
         }

@@ -10,6 +10,15 @@ public static class DiscoverRanking
     public static bool InRegion(TankRegion? actual, TankRegion selected) => actual == selected
         || actual == TankRegion.AmericasUnassigned && selected is TankRegion.CentralAmerica or TankRegion.SouthAmerica;
 
+    public static TankRegion? SpeciesRegion(string? category) => category?.Trim().ToLowerInvariant() switch
+    {
+        "lake malawi" => TankRegion.LakeMalawi,
+        "lake tanganyika" => TankRegion.LakeTanganyika,
+        "african" => TankRegion.AfricaOther,
+        "american" => TankRegion.AmericasUnassigned,
+        _ => null,
+    };
+
     public static int WeeklyIndex(DateTimeOffset now, int count)
     {
         if (count == 0) return 0;

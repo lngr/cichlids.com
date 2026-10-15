@@ -4,7 +4,7 @@ import { createCichlidsClient } from "./client";
 describe("Discover archive", () => {
   it("requests the region set through the generated SDK", async () => {
     let requested = "";
-    const archive = { regions: [] };
+    const archive = { regions: [], globalPictures: [] };
     const client = createCichlidsClient({ baseUrl: "https://api.test", fetch: async input => {
       requested = (input as Request).url;
       return Response.json(archive);

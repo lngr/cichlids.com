@@ -125,6 +125,7 @@ export type DimensionUnit = 'cm' | 'inch';
 
 export type DiscoverDto = {
     regions: Array<DiscoverRegionDto>;
+    globalPictures: Array<DiscoverItemDto>;
 };
 
 export type DiscoverItemDto = {
