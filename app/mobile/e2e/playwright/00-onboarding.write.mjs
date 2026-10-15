@@ -63,6 +63,14 @@ try {
   assert.equal(sql(`SELECT count(*) FROM public.tank WHERE legacy_id = 987654`), "1");
   await returning.screenshot({ path: "/tmp/task-4.5-returned-light.png" });
   await byTestId(returning, "onboarding-done").click();
+  const refineId = sql(`INSERT INTO public.tank (legacy_id, profile_id, title, category, region, state, created_at) VALUES (987655, ${Number(legacyMe.profile.id)}, 'Refine on tank page', 'american', 'americas_unassigned', 'published', now()) RETURNING id`).split("\n")[0];
+  await returning.goto(`${WEB_URL}/tanks/${refineId}`, { waitUntil: "networkidle" });
+  await byTestId(returning, "refine-central_america").click();
+  await byTestId(returning, "tank-region").getByText("Central America", { exact: true }).waitFor();
+  assert.equal((await (await fetch(`${API_URL}/api/tanks/${refineId}`)).json()).region, "central_america");
+  const refinedProfile = await (await fetch(`${API_URL}/api/me`, { headers: { Authorization: `Bearer ${legacyToken}` } })).json();
+  assert.deepEqual(refinedProfile.profile.interests, ["central_america", "south_america"]);
+  await returning.goto(`${WEB_URL}/me`, { waitUntil: "networkidle" });
   await signOutThroughKeycloak(returning);
   console.log("TASK-4.5: standard 55 gallon tank with dimensions and reward; legacy takeover with region refinement and Returned badge");
 } finally { await browser.close(); }

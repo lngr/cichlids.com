@@ -191,7 +191,36 @@ public sealed class OnboardingTests(ApiFixture fixture) : IAsyncLifetime
         Assert.Equal(HttpStatusCode.OK, (await SendAsync($"/api/tanks/{tank.Id}/region", new { region = "central_america" }, token, HttpMethod.Put)).StatusCode);
         await db.Entry(tank).ReloadAsync();
         Assert.Equal(TankRegion.CentralAmerica, tank.Region);
+        Assert.Contains("central_america", (await db.Profiles.SingleAsync(p => p.Id == profileId)).Interests);
         Assert.True(await db.OutboxEvents.AnyAsync(e => e.EventType == "tank.region_refined" && e.AggregateId == tank.Id.ToString()));
         Assert.Equal(HttpStatusCode.BadRequest, (await SendAsync($"/api/tanks/{tank.Id}/region", new { region = "south_america" }, token, HttpMethod.Put)).StatusCode);
     }
+    [Fact]
+    public async Task PreviouslyResolvedProfilesPreserveInterestsFromAnotherCompletedRequest()
+    {
+        await using var db = fixture.CreateDbContext();
+        var profile = new Profile { Username = $"parallel-{Guid.NewGuid():N}", CreatedAt = DateTimeOffset.UtcNow };
+        db.Profiles.Add(profile);
+        await db.SaveChangesAsync();
+        try
+        {
+            await using var first = fixture.CreateDbContext();
+            await using var second = fixture.CreateDbContext();
+            await first.Profiles.SingleAsync(p => p.Id == profile.Id);
+            await second.Profiles.SingleAsync(p => p.Id == profile.Id);
+            await new OnboardingWriteService(first, new TanksWriteService(first)).CompleteAsync(profile.Id,
+                new OnboardingRequest(Tank: new CreateTankRequest(titlePrefix + "First request", null, null, TankRegion.LakeMalawi)), CancellationToken.None);
+            await new OnboardingWriteService(second, new TanksWriteService(second)).CompleteAsync(profile.Id,
+                new OnboardingRequest(Tank: new CreateTankRequest(titlePrefix + "Second request", null, null, TankRegion.SouthAmerica)), CancellationToken.None);
+            await db.Entry(profile).ReloadAsync();
+            Assert.Equal(new[] { "lake_malawi", "south_america" }, profile.Interests);
+            Assert.Single(profile.Badges);
+        }
+        finally
+        {
+            await db.Tanks.Where(t => t.ProfileId == profile.Id).ExecuteDeleteAsync();
+            await db.Profiles.Where(p => p.Id == profile.Id).ExecuteDeleteAsync();
+        }
+    }
+
 }

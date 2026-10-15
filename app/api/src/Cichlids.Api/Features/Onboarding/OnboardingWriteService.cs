@@ -34,6 +34,7 @@ public sealed class OnboardingWriteService(CichlidsDbContext context, TanksWrite
     {
         await using var transaction = await context.Database.BeginTransactionAsync(ct);
         var profile = await context.Profiles.FromSqlInterpolated($"SELECT * FROM public.profile WHERE id = {profileId} FOR UPDATE").SingleAsync(ct);
+        await context.Entry(profile).ReloadAsync(ct);
         Tank? tank = null;
         string? badge = null;
         if (request.LegacyTankId is { } id)
@@ -80,10 +81,14 @@ public sealed class OnboardingWriteService(CichlidsDbContext context, TanksWrite
     {
         if (region is not (TankRegion.CentralAmerica or TankRegion.SouthAmerica)) return "tank_region_invalid";
         await using var transaction = await context.Database.BeginTransactionAsync(ct);
+        var profile = await context.Profiles.FromSqlInterpolated($"SELECT * FROM public.profile WHERE id = {profileId} FOR UPDATE").SingleAsync(ct);
+        await context.Entry(profile).ReloadAsync(ct);
         var tank = await context.Tanks.FromSqlInterpolated($"SELECT * FROM public.tank WHERE id = {id} FOR UPDATE").SingleOrDefaultAsync(ct);
         if (tank is null || tank.ProfileId != profileId || tank.DeletedAt != null) return "legacy_tank_not_found";
         if (tank.Region != TankRegion.AmericasUnassigned) return "tank_region_invalid";
         tank.Region = region;
+        profile.Interests = profile.Interests.Append(TankRegions.Key(region)).Distinct().Order().ToArray();
+        AddEvent("profile.interests_updated", "profile", profileId, new { profileId, interests = profile.Interests });
         AddEvent("tank.region_refined", "tank", id, new { tankId = id, profileId, region = TankRegions.Key(region) });
         await context.SaveChangesAsync(ct);
         await transaction.CommitAsync(ct);
