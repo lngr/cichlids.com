@@ -40,6 +40,11 @@ not undo a state that the operator reached on purpose.
   A new realm starts with registration closed, and the account import opens it after it has
   created every legacy account. Re-applying the files cannot close a registration that the
   operator opened, and no file can open it early.
+- **The cluster applies the files after every sync.** The realm files hold the configuration
+  without secrets. A job applies them together with the secrets of the environment (outgoing
+  mail, identity provider credentials) idempotently and without deleting anything, and it fails
+  when a secret placeholder stays unresolved. Members and the registration flag are runtime state
+  and stay untouched. Removing a setting from a running realm is a deliberate operator step.
 - **A CI check guards the files.** It fails when a local development setting appears in a
   deployed realm file, with a self-test that proves each rule can fail.
 - **Services refuse unsafe authentication settings.** Outside the Development environment the
@@ -77,7 +82,9 @@ guarantees the order of both steps and survives repeated applies from Git.
   with TLS required for all addresses rejects every login when the proxy in front of Keycloak
   passes wrong forwarding headers, so the deployment has to configure the proxy headers and an
   HTTPS hostname. Outgoing mail is required for email verification and password resets.
-- **To be decided later:** The mechanism that applies the realm files to a running Keycloak.
+- **Applying without deleting:** a setting removed from a file stays in the running realm until
+  the operator deletes it, and a selective sync that skips the apply job leaves the realm
+  unchanged.
 
 ## References
 
