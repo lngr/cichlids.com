@@ -4,7 +4,7 @@ title: Restrict staging and previews to a self-hosted tailnet with Headscale
 status: In Review
 assignee: []
 created_date: '2026-10-15 06:45'
-updated_date: '2026-10-15 07:27'
+updated_date: '2026-10-15 08:09'
 labels: []
 dependencies:
   - TASK-2.8
@@ -84,4 +84,7 @@ username and password protection, no hosted coordination service.
 
 ### Open
 - Proposed ADR-0010/0014 text (project owner).
+
+- ADR-0028 "Private Access to Non-Production Environments" (Accepted) records the decision;
+  ADR-0010 links it.
 <!-- SECTION:NOTES:END -->

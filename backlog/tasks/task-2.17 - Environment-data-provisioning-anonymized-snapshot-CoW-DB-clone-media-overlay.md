@@ -3,15 +3,18 @@ id: TASK-2.17
 title: >-
   Environment data provisioning: anonymized snapshot, CoW DB clone, media
   overlay
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-06-08 13:14'
-updated_date: '2026-10-15 06:42'
+updated_date: '2026-10-15 08:09'
 labels:
   - infra
 milestone: m-0
 dependencies:
   - TASK-2.16
+references:
+  - tools/golden-snapshot/README.md
+  - .github/workflows/ci.yml
 parent_task_id: TASK-2
 ordinal: 19000
 ---
@@ -81,3 +84,28 @@ terabyte-scale media corpus per environment.
   volume snapshot; choose the simplest robust variant on single-node k3s).
 - Media overlay: read-only base prefix of the subset plus a per-preview write prefix.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- `tools/golden-snapshot/` (Python and SQL): reads the isolated source read-only, copies into an
+  empty target, masks and verifies in one transaction (pseudonyms `member-<n>` and `guest-<n>`
+  through an HMAC with a run-time key, generated texts of equal length, removed columns and
+  tables, slugs from ids, media subset of up to 2,000 public pictures with generated file names
+  and storage keys under `golden/<version>/media/`); unknown schema objects block the export.
+- Verification: e-mail patterns, URLs in text columns (the species catalog is excluded, it holds
+  no personal data), the original names as an in-memory denylist, emptied tables; counts only.
+- Publishing: pg_dump and manifest to `golden/<version>/`; staging and previews restore the
+  dump into their own volume (PostSync job checks checksum, migration and row counts); on
+  local-path storage every environment holds a full copy (ADR-0018 keeps copy-on-write as
+  target).
+- API: stored keys name the real location (golden or the environment prefix
+  `ObjectStorage:WritePrefix`); writes and deletes under `golden/` are refused; URL building
+  issues no storage requests.
+- CI job `golden-snapshot` with synthetic fixtures; ADR-0013 and ADR-0018 updated.
+
+### Verified by the agents (Codex) and the main session
+- 15 tool tests, planted leak fails, restore tests; .NET Infrastructure 323, Api 430, Etl 342;
+  manifests 301 valid. Not verified: a real run at the operator, bucket permissions, deployment.
+<!-- SECTION:NOTES:END -->
