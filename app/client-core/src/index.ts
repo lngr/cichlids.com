@@ -28,6 +28,7 @@ export type {
   Comment,
   CommentCreated,
   CreateCommentRequest,
+  CreateTankRequest,
   Me,
   Draft,
   UploadFile,

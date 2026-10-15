@@ -314,3 +314,15 @@ describe("createCichlidsClient", () => {
     await expect(client.posts.discard(999)).rejects.toMatchObject({ status: 409, code: undefined });
   });
 });
+
+it("sends original tank measurements with authentication and preserves both response forms", async () => {
+  const input = { title: "US tank", dimensions: { width: 48.125, height: 20, depth: 12, unit: "inch" as const }, volume: { value: 55, unit: "us_gallon" as const } };
+  server.use(http.post(`${baseUrl}/api/tanks`, async ({ request }) => {
+    expect(request.headers.get("Authorization")).toBe("Bearer test-token");
+    expect(await request.json()).toEqual(input);
+    return HttpResponse.json({ id: 5, title: input.title, volume: { liters: 208.19764812, inputValue: 55, inputUnit: "us_gallon" } }, { status: 201 });
+  }));
+  const client = createCichlidsClient({ baseUrl, getAccessToken: async () => "test-token" });
+  const tank = await client.tanks.create(input);
+  expect(tank.volume).toEqual({ liters: 208.19764812, inputValue: 55, inputUnit: "us_gallon" });
+});

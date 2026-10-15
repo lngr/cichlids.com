@@ -101,6 +101,10 @@ export type DimensionsDto = {
     height: null | number | string;
     depth: null | number | string;
     unit: null | DimensionUnit;
+    inputWidth: null | number | string;
+    inputHeight: null | number | string;
+    inputDepth: null | number | string;
+    inputUnit: null | DimensionUnit;
 };
 
 export type DimensionUnit = 'cm' | 'inch';
@@ -325,6 +329,7 @@ export type TankDetailDto = {
     sections: TankSectionsDto;
     inhabitants: Array<InhabitantDto>;
     author: AuthorDto;
+    volume: null | VolumeDto;
 };
 
 export type TankListItemDto = {
@@ -369,6 +374,32 @@ export type WebhookDto = {
     active: boolean;
     createdAt: string;
 };
+
+export type CreateTankRequest = {
+    title: string;
+    dimensions: null | DimensionInputDto;
+    volume: null | VolumeInputDto;
+};
+
+export type DimensionInputDto = {
+    width: null | number | string;
+    height: null | number | string;
+    depth: null | number | string;
+    unit: DimensionUnit;
+};
+
+export type VolumeDto = {
+    liters: number | string;
+    inputValue: null | number | string;
+    inputUnit: null | VolumeUnit;
+};
+
+export type VolumeInputDto = {
+    value: number | string;
+    unit: VolumeUnit;
+};
+
+export type VolumeUnit = 'liter' | 'us_gallon';
 
 export type GetHealthData = {
     body?: never;
@@ -938,6 +969,35 @@ export type ListTanksResponses = {
 };
 
 export type ListTanksResponse = ListTanksResponses[keyof ListTanksResponses];
+
+export type CreateTankData = {
+    body: CreateTankRequest;
+    path?: never;
+    query?: never;
+    url: '/api/tanks';
+};
+
+export type CreateTankErrors = {
+    /**
+     * Bad Request
+     */
+    400: string;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type CreateTankError = CreateTankErrors[keyof CreateTankErrors];
+
+export type CreateTankResponses = {
+    /**
+     * Created
+     */
+    201: TankDetailDto;
+};
+
+export type CreateTankResponse = CreateTankResponses[keyof CreateTankResponses];
 
 export type GetTankData = {
     body?: never;

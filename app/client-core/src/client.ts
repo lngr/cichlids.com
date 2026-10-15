@@ -3,6 +3,7 @@ import type { Client } from "./generated/client/index.js";
 import {
   createPictureComment,
   createTankComment,
+  createTank,
   discardPost,
   getCommunityThread,
   getFeatureFlags,
@@ -33,6 +34,7 @@ import type {
   CommunityThreadDetailDto,
   CommunityThreadListItemDto,
   CreateCommentRequest,
+  CreateTankRequest,
   DimensionsDto,
   DraftDto,
   InhabitantDto,
@@ -69,7 +71,7 @@ export type CommunityAttachment = CommunityAttachmentDto;
 export type SpeciesLink = SpeciesLinkDto;
 export type Comment = CommentDto;
 export type CommentCreated = CommentCreatedDto;
-export type { CreateCommentRequest, PublishPostRequest };
+export type { CreateTankRequest, CreateCommentRequest, PublishPostRequest };
 export type Me = MeDto;
 export type Draft = DraftDto;
 export type PagedResponse<T> = { total: number; items: T[] };
@@ -183,6 +185,7 @@ export interface CichlidsClient {
     createComment(slug: string, request: CreateCommentRequest): Promise<CommentCreated>;
   };
   tanks: {
+    create(request: CreateTankRequest): Promise<TankDetail>;
     list(params?: TanksListParams): Promise<PagedResponse<TankListItem>>;
     get(id: number): Promise<TankDetail>;
     listComments(id: number, params?: PageParams): Promise<PagedResponse<Comment>>;
@@ -263,6 +266,10 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
     },
     tanks: {
+      async create(request) {
+        const result = await createTank({ client, body: request });
+        return unwrap(result);
+      },
       async list(params) {
         const result = await listTanks({ client, query: params ?? {} });
         return unwrapPaged(result);
