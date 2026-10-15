@@ -7,6 +7,7 @@ import { useTheme } from "../theme";
 import { useUnits } from "../units/useUnits";
 import { translateApiError } from "../lib/apiErrors";
 import { amountDraft, parseCareAmount, formatCareAmount, type AmountUnit } from "./careAmount";
+import { CarePlanView } from "./CarePlanView";
 import { MeasurementForm } from "./MeasurementForm";
 import { MeasurementGraphs } from "./MeasurementGraphs";
 import { measurementLines } from "./measurementFormat";
@@ -34,6 +35,7 @@ export function CareStreamView({ stream }: { stream: CareStream }) {
         <Button testID="care-undo" variant="secondary" label={t("care.undo")} onPress={() => send({ type: "UNDO" })} />
       </View> : null}
       {state.context.error && !editing ? <Text accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>{translateApiError(state.context.error, t, "common.loadError")}</Text> : null}
+      <CarePlanView tankId={stream.tankId} revision={stream.revision} />
       <MeasurementGraphs tankId={stream.tankId} revision={stream.revision} />
       {list.loading ? <Text style={[theme.type.body, text]}>{t("common.loading")}</Text> : null}
       {list.error ? <>
