@@ -1,9 +1,10 @@
 ---
 id: TASK-4.4
 title: Localized units with the input unit stored
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-15 08:46'
+updated_date: '2026-10-15 09:14'
 labels: []
 dependencies: []
 parent_task_id: TASK-4

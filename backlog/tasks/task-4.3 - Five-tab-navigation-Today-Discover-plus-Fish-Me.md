@@ -1,9 +1,10 @@
 ---
 id: TASK-4.3
 title: Five-tab navigation Today Discover plus Fish Me
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-15 08:46'
+updated_date: '2026-10-15 09:14'
 labels: []
 dependencies: []
 parent_task_id: TASK-4
