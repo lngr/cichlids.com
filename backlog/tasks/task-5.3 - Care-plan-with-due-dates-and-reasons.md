@@ -4,6 +4,7 @@ title: Care plan with due dates and reasons
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
+updated_date: '2026-10-15 18:52'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -31,3 +32,10 @@ Each tank has a care plan with a rhythm per care type and a reason; the plan der
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Default rhythm (decided by the project owner, 2026-10-15)
+- Until species data justify a rhythm (slice 4), a water change is due every 7 days; the plan states the reason as the usual recommendation for cichlid tanks. The member can change the rhythm per tank.
+<!-- SECTION:NOTES:END -->
