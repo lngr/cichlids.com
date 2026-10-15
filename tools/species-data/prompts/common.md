@@ -179,4 +179,5 @@ Keep downloads and notes in `data/species/work/<your work directory>/tmp-<your r
 read another role's temporary files; the shared scratchpad of the session is off limits.
 
 Write YAML that validates against the schema, with comments only where a value needs an explanation
-beyond its rationale. Use the date of today for access dates and runs.
+beyond its rationale. Write every value out in full, without anchors and aliases, so that each entry
+reads on its own. Use the date of today for access dates and runs.
