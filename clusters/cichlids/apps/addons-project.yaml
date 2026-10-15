@@ -15,6 +15,8 @@ spec:
     namespace: kube-system
   - server: https://kubernetes.default.svc
     namespace: cnpg-system
+  - server: https://kubernetes.default.svc
+    namespace: headscale
   clusterResourceWhitelist:
   - group: ''
     kind: Namespace
@@ -30,6 +32,10 @@ spec:
     kind: MutatingWebhookConfiguration
   - group: cert-manager.io
     kind: ClusterIssuer
+  - group: ""
+    kind: PersistentVolume
+  - group: storage.k8s.io
+    kind: StorageClass
   namespaceResourceWhitelist:
   - group: helm.cattle.io
     kind: HelmChartConfig
@@ -51,5 +57,11 @@ spec:
     kind: Issuer
   - group: cert-manager.io
     kind: Certificate
+  - group: apps
+    kind: StatefulSet
+  - group: ""
+    kind: PersistentVolumeClaim
+  - group: networking.k8s.io
+    kind: Ingress
   orphanedResources:
     warn: true

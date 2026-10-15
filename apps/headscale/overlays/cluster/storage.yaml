@@ -1,0 +1,52 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: headscale-node
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+provisioner: kubernetes.io/no-provisioner
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: headscale
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: headscale-node
+  claimRef:
+    namespace: headscale
+    name: headscale
+  local:
+    path: /var/lib/cichlids-headscale
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: cichlids.com/headscale-state
+          operator: In
+          values:
+          - 'true'
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: headscale
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+spec:
+  storageClassName: headscale-node
+  volumeName: headscale
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

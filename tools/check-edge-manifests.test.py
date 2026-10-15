@@ -40,22 +40,25 @@ class EdgeDelivery(unittest.TestCase):
         project = resource(topology, 'AppProject', 'cichlids-addons')['spec']
         self.assertEqual(project['sourceRepos'], [check.REPO])
         self.assertEqual({d['namespace'] for d in project['destinations']},
-                         {'cert-manager', 'kube-system', 'cnpg-system'})
+                         {'cert-manager', 'kube-system', 'cnpg-system', 'headscale'})
         self.assertTrue(all(d['server'] == 'https://kubernetes.default.svc'
                             for d in project['destinations']))
         allowed = {(d['group'], d['kind']) for d in project['clusterResourceWhitelist']}
         self.assertNotIn(('*', '*'), allowed)
         namespaced = {(d['group'], d['kind']) for d in project['namespaceResourceWhitelist']}
-        for service in ['traefik', 'cert-manager', 'cloudnative-pg', 'barman-cloud']:
+        for service in ['traefik', 'cert-manager', 'cloudnative-pg', 'barman-cloud', 'headscale']:
             owners = [d for d in topology if d['kind'] == 'Application' and
                       d['spec']['source']['path'] == f'apps/{service}/overlays/cluster']
             self.assertEqual(len(owners), 1)
             self.assertEqual(owners[0]['spec']['project'], 'cichlids-addons')
             self.assertIn('ServerSideApply=true', owners[0]['spec']['syncPolicy']['syncOptions'])
             self.assertFalse(owners[0]['spec']['syncPolicy']['automated']['prune'])
-            self.assertNotIn(check.FINALIZER, owners[0]['metadata'].get('finalizers', []))
+            if service == 'headscale':
+                self.assertIn(check.FINALIZER, owners[0]['metadata'].get('finalizers', []))
+            else:
+                self.assertNotIn(check.FINALIZER, owners[0]['metadata'].get('finalizers', []))
             self.assertIn('RespectIgnoreDifferences=true', owners[0]['spec']['syncPolicy']['syncOptions'])
-            if service != 'traefik':
+            if service not in {'traefik', 'headscale'}:
                 self.assertTrue(all(rule['jqPathExpressions'] == ['.webhooks[]?.clientConfig.caBundle']
                                     for rule in owners[0]['spec']['ignoreDifferences']))
             else:
@@ -225,7 +228,7 @@ class EdgeDelivery(unittest.TestCase):
     def test_dns_hosts_reference_platform_node_with_destroy_protection(self):
         text = (ROOT / 'infra/platform/dns.tf').read_text()
         self.assertIn('resource "hcloud_zone_rrset" "ingress"', text)
-        self.assertRegex(text, r'for_each\s*=\s*toset\(\["@", "staging", "\*\.dev", "auth", "auth\.staging"\]\)')
+        self.assertRegex(text, r'for_each\s*=\s*toset\(\["@", "staging", "\*\.dev", "auth", "auth\.staging", "headscale"\]\)')
         self.assertIn('name    = each.value', text)
         self.assertIn('value = hcloud_server.node.ipv4_address', text)
         self.assertIn('prevent_destroy = true', text.split('resource "hcloud_zone_rrset" "ingress"')[1])

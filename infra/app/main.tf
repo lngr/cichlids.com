@@ -10,6 +10,7 @@ locals {
 
 resource "terraform_data" "k3s" {
   triggers_replace = [
+    filesha256("${path.module}/main.tf"),
     var.k3s_version,
     var.database_volume_id,
     filesha256("${path.module}/scripts/mount-database.sh"),
@@ -48,8 +49,9 @@ resource "terraform_data" "k3s" {
   provisioner "remote-exec" {
     inline = [
       "bash ${local.remote_dir}/mount-database.sh '${var.database_volume_id}'",
+      "install -d -m 700 -o 65532 -g 65532 /var/lib/cichlids-headscale",
       "bash ${local.remote_dir}/install-k3s.sh '${var.k3s_version}'",
-      "KUBECONFIG=/etc/rancher/k3s/k3s.yaml kubectl label node --all cichlids.com/database-volume=true --overwrite",
+      "KUBECONFIG=/etc/rancher/k3s/k3s.yaml kubectl label node --all cichlids.com/database-volume=true cichlids.com/headscale-state=true --overwrite",
       "KUBECONFIG=/etc/rancher/k3s/k3s.yaml kubectl apply -f ${local.remote_dir}/storage.yaml",
     ]
   }

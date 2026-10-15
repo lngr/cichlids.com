@@ -17,7 +17,7 @@ resource "hcloud_zone" "primary" {
 # Web and authentication hosts use the node IPv4 address.
 # The *.dev wildcard resolves preview hosts for every pull request.
 resource "hcloud_zone_rrset" "ingress" {
-  for_each = toset(["@", "staging", "*.dev", "auth", "auth.staging"])
+  for_each = toset(["@", "staging", "*.dev", "auth", "auth.staging", "headscale"])
 
   zone    = hcloud_zone.primary.id
   name    = each.value

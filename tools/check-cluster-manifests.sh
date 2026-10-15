@@ -7,6 +7,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 python3 tools/check-keycloak-manifests.test.py
 python3 tools/check-postgres-manifests.test.py
+python3 tools/check-headscale-backup.test.py
 python3 tools/check-edge-manifests.test.py
 python3 tools/check-app-workloads.test.py
 python3 tools/check-app-images.test.py

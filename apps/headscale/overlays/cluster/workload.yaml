@@ -1,0 +1,114 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: headscale
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+spec:
+  serviceName: headscale
+  replicas: 1
+  selector:
+    matchLabels:
+      app: headscale
+  template:
+    metadata:
+      labels:
+        app: headscale
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+      - name: config
+        image: busybox:1.37.0-musl@sha256:5cec3fc171c87218698e85a52af7087de727372aae264a787b8112901a5b0092
+        command: [sh, -ec]
+        args:
+        - umask 077; cp /template/config.yaml /var/lib/headscale/config.yaml
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: [ALL]
+        resources:
+          requests:
+            cpu: 10m
+            memory: 16Mi
+          limits:
+            cpu: 100m
+            memory: 32Mi
+        volumeMounts:
+        - name: template
+          mountPath: /template
+          readOnly: true
+        - name: state
+          mountPath: /var/lib/headscale
+      containers:
+      - name: headscale
+        image: headscale/headscale:0.29.5@sha256:780ed2f9e85719a2211277433f2c8afb45105d0d25031949a6848a485f9e216d
+        args: [serve, --config, /var/lib/headscale/config.yaml]
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: [ALL]
+        ports:
+        - name: http
+          containerPort: 8080
+        - name: stun
+          containerPort: 3478
+          protocol: UDP
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: http
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 30
+        resources:
+          requests:
+            cpu: 50m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        volumeMounts:
+        - name: state
+          mountPath: /var/lib/headscale
+      - name: backup
+        image: python:3.14.8-alpine@sha256:f6a589d43c42b9e7f7dc67a12d37132491f362859a5d750607710cc56da3bc72
+        command: [python3, -B, /template/backup.py]
+        env:
+        - name: PYTHONUNBUFFERED
+          value: '1'
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: [ALL]
+        resources:
+          requests:
+            cpu: 10m
+            memory: 32Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi
+        volumeMounts:
+        - name: state
+          mountPath: /var/lib/headscale
+        - name: template
+          mountPath: /template
+          readOnly: true
+      volumes:
+      - name: state
+        persistentVolumeClaim:
+          claimName: headscale
+      - name: template
+        configMap:
+          name: headscale

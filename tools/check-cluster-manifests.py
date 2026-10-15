@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 REPO = 'https://github.com/lngr/cichlids.com.git'
 FINALIZER = 'resources-finalizer.argocd.argoproj.io'
 EXPECTED = {'staging', 'prod', 'preview', 'preview-environments'}
-CRITICAL = {'PersistentVolumeClaim', 'Namespace', 'Cluster', 'StatefulSet', 'Database'}
+CRITICAL = {'PersistentVolume', 'StorageClass', 'PersistentVolumeClaim', 'Namespace', 'Cluster', 'StatefulSet', 'Database'}
 
 
 def run(*args):
@@ -108,13 +108,16 @@ def check_application(app):
     if spec['project'] == 'cichlids-addons':
         require(spec['source']['path'] in {'apps/traefik/overlays/cluster',
                                           'apps/cert-manager/overlays/cluster', 'apps/cloudnative-pg/overlays/cluster',
-                                          'apps/barman-cloud/overlays/cluster'}, 'Add-on source restriction')
-        require(spec['destination']['namespace'] in {'kube-system', 'cert-manager', 'cnpg-system'},
+                                          'apps/barman-cloud/overlays/cluster', 'apps/headscale/overlays/cluster'}, 'Add-on source restriction')
+        require(spec['destination']['namespace'] in {'kube-system', 'cert-manager', 'cnpg-system', 'headscale'},
                 'Add-on namespace restriction')
         require(spec['syncPolicy']['automated']['prune'] is False, 'Add-ons require deliberate pruning')
         require('Prune=false' in spec['syncPolicy']['syncOptions'], 'Add-ons have Prune=false')
         require('ServerSideApply=true' in spec['syncPolicy']['syncOptions'], 'CRDs use server-side apply')
-        require(FINALIZER not in app['metadata'].get('finalizers', []), 'Add-on deletion preserves resources')
+        if app['metadata']['name'] == 'headscale':
+            require(FINALIZER in app['metadata'].get('finalizers', []), 'Stateful add-on finalizer')
+        else:
+            require(FINALIZER not in app['metadata'].get('finalizers', []), 'Add-on deletion preserves resources')
         return
     require(spec['project'] == 'cichlids', 'Generated apps use constrained project')
     if app['metadata'].get('labels', {}).get('cichlids.com/stateful') == 'true':
