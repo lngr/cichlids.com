@@ -175,6 +175,9 @@ def self_test():
 
 
 def main(argv):
+    tailnet = subprocess.run([sys.executable, os.path.join(HERE, "scripts/install-tailscale.test.py")])
+    if tailnet.returncode:
+        return tailnet.returncode
     mount = subprocess.run([sys.executable, os.path.join(HERE, "scripts/mount-database.test.py")])
     if mount.returncode:
         return mount.returncode

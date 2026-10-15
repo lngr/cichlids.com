@@ -1,6 +1,11 @@
 variable "node_ipv4" {
   description = "Public IPv4 address of the foundation node."
   type        = string
+
+  validation {
+    condition     = can(regex("^[0-9.]+$", var.node_ipv4)) && can(cidrnetmask("${var.node_ipv4}/32"))
+    error_message = "node_ipv4 must be a valid IPv4 address."
+  }
 }
 
 variable "node_host_key" {
@@ -40,4 +45,11 @@ variable "database_volume_id" {
     condition     = can(regex("^[1-9][0-9]*$", var.database_volume_id))
     error_message = "database_volume_id must be a positive numeric volume ID."
   }
+}
+
+variable "tailscale_auth_key" {
+  description = "Headscale pre-auth key for optional node enrollment. Empty skips enrollment."
+  type        = string
+  sensitive   = true
+  default     = ""
 }
