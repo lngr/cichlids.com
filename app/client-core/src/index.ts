@@ -2,7 +2,14 @@ export { createCichlidsClient, ApiError } from "./client.js";
 export type {
   CareEntry,
   CareAmountRequest,
+  CareDue,
+  CareDueState,
+  CareKind,
   CareParameter,
+  CarePlan,
+  CarePlanChange,
+  CarePlanRule,
+  CareReason,
   CareSeries,
   CareSeriesRange,
   LogCareRequest,
@@ -12,6 +19,8 @@ export type {
   MeasurementValueRequest,
   DiscoverArchive,
   DiscoverItem,
+  DueCareItem,
+  LocalTime,
   CichlidsClient,
   CichlidsClientOptions,
   PicturesListParams,
@@ -57,6 +66,8 @@ export type { NavigationTab, NavigationEvent, NavigationContext } from "./naviga
 export { tankStoryMachine } from "./tankStory.js";
 
 export { careMachine } from "./care.js";
+export { MAX_RHYTHM_DAYS, MIN_RHYTHM_DAYS, RHYTHM_CHOICES, dueSummary, isValidRhythm, parseRhythm } from "./carePlan.js";
+export type { DueSummary } from "./carePlan.js";
 export {
   COMMON_PARAMETERS, MEASUREMENT_ORIGINS, MEASUREMENT_PARAMETERS, createDraft, editDraft, fromCanonical, inputUnit,
   measurementMachine, PPM_PER_GERMAN_DEGREE, scaleSeries, seriesForDisplay, setField, setOrigin, showMore, validateDraft, valueInSystem, visibleParameters,

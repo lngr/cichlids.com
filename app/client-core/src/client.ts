@@ -13,7 +13,10 @@ import {
   setMyInterests,
   refineTankRegion,
   discardPost,
+  getCarePlan,
   getCareSeries,
+  listDueCare,
+  updateCarePlanRule,
   getCommunityThread,
   getFeatureFlags,
   getDiscover,
@@ -38,7 +41,14 @@ import {
   uploadPhoto,
 } from "./generated/sdk.gen.js";
 import type {
+  CareDueDto,
+  CareDueState,
   CareEntryDto,
+  CareReasonDto,
+  DueCareItemDto,
+  CareKind,
+  CarePlanDto,
+  DueCareDto,
   CareAmountRequest,
   CareParameter,
   CareSeriesDto,
@@ -83,6 +93,17 @@ import type {
 
 export type CareEntry = CareEntryDto;
 export type CareSeries = CareSeriesDto;
+export type { CareDueState, CareKind };
+export type CareReason = { code: string; parameters: Record<string, string> | null };
+export type CareDue = { state: CareDueState; days: number; dueDate: string | null };
+export type CarePlanRule = {
+  kind: CareKind; rhythmDays: number | null; enabled: boolean; isDefault: boolean; reason: CareReason | null; due: CareDue | null;
+};
+export type CarePlan = { tankId: number; rules: CarePlanRule[] };
+export type DueCareItem = { tankId: number; tankTitle: string; kind: CareKind; rhythmDays: number; reason: CareReason; due: CareDue };
+export type CarePlanChange = { rhythmDays?: number; enabled?: boolean };
+/** The member's local calendar date (YYYY-MM-DD) and, optionally, the offset of the clock from UTC in minutes. */
+export type LocalTime = { date: string; utcOffsetMinutes?: number };
 export type MeasurementValue = MeasurementValueDto;
 export type { CareAmountRequest, CareParameter, LogCareRequest, MeasurementOrigin, MeasurementUnit, MeasurementValueRequest };
 export type CareSeriesRange = { from?: string; to?: string };
@@ -213,6 +234,20 @@ function unwrapPaged<T>(result: { data?: { total: number | string; items: T[] };
   return { total: Number(body.total), items: body.items };
 }
 
+const toDue = (due: CareDueDto): CareDue => ({ state: due.state, days: Number(due.days), dueDate: due.dueDate });
+const toReason = (reason: CareReasonDto): CareReason => ({ code: reason.code, parameters: reason.parameters });
+const toPlan = (plan: CarePlanDto): CarePlan => ({
+  tankId: Number(plan.tankId),
+  rules: plan.rules.map(rule => ({
+    kind: rule.kind, rhythmDays: rule.rhythmDays === null ? null : Number(rule.rhythmDays), enabled: rule.enabled,
+    isDefault: rule.isDefault, reason: rule.reason && toReason(rule.reason), due: rule.due && toDue(rule.due),
+  })),
+});
+const toDueItem = (item: DueCareItemDto): DueCareItem => ({
+  tankId: Number(item.tankId), tankTitle: item.tankTitle, kind: item.kind, rhythmDays: Number(item.rhythmDays),
+  reason: toReason(item.reason), due: toDue(item.due),
+});
+
 export interface CichlidsClient {
   care: {
     list(tankId: number, params?: PageParams): Promise<PagedResponse<CareEntry>>;
@@ -221,6 +256,9 @@ export interface CichlidsClient {
     updateValues(tankId: number, id: number, values: MeasurementValueRequest[]): Promise<CareEntry>;
     series(tankId: number, parameter: CareParameter, range?: CareSeriesRange): Promise<CareSeries>;
     remove(tankId: number, id: number): Promise<CareEntry>;
+    plan(tankId: number, local: LocalTime): Promise<CarePlan>;
+    changeRule(tankId: number, kind: CareKind, change: CarePlanChange, local: LocalTime): Promise<CarePlan>;
+    due(local: LocalTime): Promise<DueCareItem[]>;
   };
   discover: {
     get(regions?: TankRegion[]): Promise<DiscoverArchive>;
@@ -305,6 +343,11 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       async updateValues(tankId, id, values) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount: null, values } })); },
       async series(tankId, parameter, range) { return unwrap(await getCareSeries({ client, path: { tankId }, query: { parameter, ...range } })); },
       async remove(tankId, id) { return unwrap(await deleteCareEntry({ client, path: { tankId, id } })); },
+      async plan(tankId, local) { return toPlan(unwrap(await getCarePlan({ client, path: { tankId }, query: local }))); },
+      async changeRule(tankId, kind, change, local) {
+        return toPlan(unwrap(await updateCarePlanRule({ client, path: { tankId, kind }, query: local, body: change })));
+      },
+      async due(local) { return unwrap<DueCareDto>(await listDueCare({ client, query: local })).items.map(toDueItem); },
     },
     discover: {
       async get(regions) {
