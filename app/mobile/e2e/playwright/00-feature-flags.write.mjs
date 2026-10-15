@@ -14,7 +14,7 @@ try {
   const response = await fetch(`${API_URL}/api/feature-flags`);
   assert.equal(response.status, 200);
   assert.deepEqual(await response.json(), { "discover-activity": false });
-  await page.goto(`${WEB_URL}/gallery?lang=en`, { waitUntil: "networkidle" });
+  await page.goto(`${WEB_URL}/discover?lang=en`, { waitUntil: "networkidle" });
   assert.equal(await byTestId(page, "discover-activity").count(), 0);
 
   switched = true;

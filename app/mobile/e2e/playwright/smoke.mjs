@@ -33,7 +33,7 @@ try {
   page.on("pageerror", (err) => pageErrors.push(String(err)));
 
   // Gallery: infinite grid of real pictures, English (the untouched default locale).
-  await page.goto(`${BASE_URL}/`, { waitUntil: "networkidle", timeout: 60000 });
+  await page.goto(`${BASE_URL}/gallery`, { waitUntil: "networkidle", timeout: 60000 });
   await page.waitForSelector('[data-testid="picture-card"]', { timeout: 20000 });
   await page.waitForTimeout(1000);
   const pictureCount = await page.locator('[data-testid="picture-card"]').count();
@@ -50,7 +50,7 @@ try {
   console.log(`Picture detail reached: ${page.url()}`);
   await shot(page, "02-picture-detail.png");
 
-  // Tanks tab: list, then detail with datasheet and section galleries.
+  // Tanks overview: list, then detail with datasheet and section galleries.
   await page.goto(`${BASE_URL}/tanks`, { waitUntil: "networkidle", timeout: 30000 });
   await page.waitForSelector('[data-testid="tank-card"]', { timeout: 20000 });
   await page.waitForTimeout(800);
@@ -62,7 +62,7 @@ try {
   console.log(`Tank detail reached: ${page.url()}`);
   await shot(page, "04-tank-detail.png");
 
-  // Community tab: category/thread list, then a thread with real posts.
+  // Forum archive: category/thread list, then a thread with real posts.
   await page.goto(`${BASE_URL}/community`, { waitUntil: "networkidle", timeout: 30000 });
   await page.waitForSelector('[data-testid="thread-row"]', { timeout: 20000 });
   await page.waitForTimeout(500);
@@ -76,7 +76,7 @@ try {
 
   // i18n: fresh gallery load in English (default) and one forced to German
   // via the `?lang=de` dev override, each asserting real translated text.
-  await page.goto(`${BASE_URL}/`, { waitUntil: "networkidle", timeout: 30000 });
+  await page.goto(`${BASE_URL}/gallery`, { waitUntil: "networkidle", timeout: 30000 });
   await page.waitForSelector('[data-testid="picture-card"]', { timeout: 20000 });
   await page.waitForSelector("text=Gallery", { timeout: 5000 });
   await page.waitForSelector("text=Most viewed", { timeout: 5000 });
@@ -84,7 +84,7 @@ try {
   console.log("English gallery labels confirmed (Gallery, Newest, Most viewed)");
   await shot(page, "11-gallery-en.png");
 
-  await page.goto(`${BASE_URL}/?lang=de`, { waitUntil: "networkidle", timeout: 30000 });
+  await page.goto(`${BASE_URL}/gallery?lang=de`, { waitUntil: "networkidle", timeout: 30000 });
   await page.waitForSelector('[data-testid="picture-card"]', { timeout: 20000 });
   await page.waitForSelector("text=Galerie", { timeout: 5000 });
   await page.waitForSelector("text=Meiste Aufrufe", { timeout: 5000 });

@@ -70,7 +70,8 @@ try {
   const photo = { name: "e2e-photo.jpg", mimeType: "image/jpeg", buffer: jpeg };
 
   async function openUploadScreen() {
-    await byTestId(page, "tab-gallery").click({ timeout: 20000 });
+    await byTestId(page, "tab-discover").click({ timeout: 20000 });
+    await byTestId(page, "discover-gallery").click();
     await page.waitForURL(/\/gallery$/, { timeout: 10000 });
     await byTestId(page, "upload-button").click({ timeout: 20000 });
     await page.waitForURL(/\/upload$/, { timeout: 10000 });
@@ -115,7 +116,7 @@ try {
     return response.json();
   }
 
-  await page.goto(`${WEB_URL}/`, { waitUntil: "networkidle", timeout: 60000 });
+  await page.goto(`${WEB_URL}/gallery`, { waitUntil: "networkidle", timeout: 60000 });
   // Anonymous, the upload button leads to the Me tab and its login.
   await byTestId(page, "upload-button").click({ timeout: 20000 });
   await page.waitForURL(/\/me$/, { timeout: 10000 });
@@ -184,8 +185,9 @@ try {
   if (resumedShownTitle !== resumedTitle) throw new Error(`Expected the detail title "${resumedTitle}", got "${resumedShownTitle}"`);
   const resumedSlug = new URL(page.url()).pathname.split("/").pop();
   await expectNoDrafts("after publishing the resumed draft");
-  // The detail opens in the gallery tab; pressing that tab returns its stack to the list.
-  await byTestId(page, "tab-gallery").click();
+  // Opening the gallery from Discover returns to its list.
+  await byTestId(page, "tab-discover").click();
+  await byTestId(page, "discover-gallery").click();
   await page.waitForURL(/\/gallery$/, { timeout: 10000 });
   await openMeTab();
   await expectDraftItems(0, "after publishing the resumed draft");
@@ -267,7 +269,8 @@ try {
   if (detail.topic !== "tanks") throw new Error(`Expected the topic "tanks", got "${detail.topic}"`);
   console.log(`Published, detail page /gallery/${slug} shows the title and description, topic tanks`);
 
-  await byTestId(page, "tab-gallery").click();
+  await byTestId(page, "tab-discover").click();
+  await byTestId(page, "discover-gallery").click();
   await page.waitForURL(/\/gallery$/, { timeout: 10000 });
   const firstCard = byTestId(page, "picture-card").first();
   await page.waitForFunction(

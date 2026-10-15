@@ -4,8 +4,10 @@ tags:
 ---
 - launchApp:
     clearState: true
-- assertVisible:
-    id: "tab-gallery"
+- tapOn:
+    id: "tab-discover"
+- tapOn:
+    id: "discover-gallery"
 - tapOn:
     id: "picture-card"
     index: 0

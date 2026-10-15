@@ -44,7 +44,7 @@ adb reverse tcp:8180 tcp:8180
 adb shell 'echo "chrome --disable-fre --no-default-browser-check --no-first-run" > /data/local/tmp/chrome-command-line'
 adb logcat -c
 failed=0
-for flow in browse-gallery tank-detail community-thread login-upload comment-rating; do
+for flow in browse-gallery tank-detail community-thread five-tab-navigation login-upload comment-rating; do
   adb shell am force-stop "$app_id"
   adb shell pm clear com.android.chrome >/dev/null
   # Each flow has its own report; failures do not prevent the remaining flows from running.

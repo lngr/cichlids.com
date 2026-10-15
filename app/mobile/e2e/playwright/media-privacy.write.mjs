@@ -54,7 +54,8 @@ try {
   console.log(`Logged in as "${await logInThroughKeycloak(page)}"`);
 
   // The photo with GPS tags is uploaded through the upload screen; its preview loads from a variant.
-  await byTestId(page, "tab-gallery").click({ timeout: 20000 });
+  await byTestId(page, "tab-discover").click({ timeout: 20000 });
+  await byTestId(page, "discover-gallery").click();
   await page.waitForURL(/\/gallery$/, { timeout: 10000 });
   await byTestId(page, "upload-button").click({ timeout: 20000 });
   await page.waitForURL(/\/upload$/, { timeout: 10000 });

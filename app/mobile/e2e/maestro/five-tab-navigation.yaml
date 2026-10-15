@@ -1,0 +1,67 @@
+appId: com.cichlids.app
+tags:
+  - TASK-4.3
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "tab-me"
+- tapOn:
+    id: "login-button"
+- tapOn:
+    text: "Username or email|Benutzername oder E-Mail"
+- inputText: "dev-user"
+- tapOn:
+    text: "Password|Passwort"
+- inputText: "dev-password" # gitleaks:allow
+- tapOn:
+    text: "Sign In|Anmelden"
+- assertVisible:
+    id: "me-profile-button"
+- tapOn:
+    id: "tab-today"
+- assertVisible:
+    id: "today-placeholder"
+- assertVisible:
+    id: "tab-discover"
+- assertVisible:
+    id: "tab-create"
+- assertVisible:
+    id: "tab-fish"
+- assertVisible:
+    id: "tab-me"
+- tapOn:
+    id: "tab-discover"
+- tapOn:
+    id: "discover-gallery"
+- assertVisible:
+    id: "picture-card"
+- tapOn:
+    id: "tab-discover"
+- tapOn:
+    id: "discover-tanks"
+- assertVisible:
+    id: "tank-card"
+- tapOn:
+    id: "tab-discover"
+- tapOn:
+    id: "discover-community"
+- assertVisible:
+    id: "thread-row"
+- tapOn:
+    id: "tab-fish"
+- assertVisible:
+    id: "fish-species-list"
+- tapOn:
+    id: "tab-create"
+- assertVisible:
+    id: "create-photo"
+- back
+- assertVisible:
+    id: "fish-species-list"
+- tapOn:
+    id: "tab-me"
+- assertVisible:
+    id: "me-tab-pictures"
+- tapOn:
+    id: "logout-button"

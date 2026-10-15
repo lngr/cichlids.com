@@ -10,7 +10,9 @@ tags:
 
 # Keycloak runs in the Android browser; its fields use accessible labels.
 - tapOn:
-    id: "upload-button"
+    id: "tab-create"
+- tapOn:
+    id: "create-photo"
 - tapOn:
     id: "login-button"
 - tapOn:
@@ -25,7 +27,9 @@ tags:
     id: "me-profile-button"
 
 - tapOn:
-    id: "tab-gallery"
+    id: "tab-discover"
+- tapOn:
+    id: "discover-gallery"
 - tapOn:
     id: "upload-button"
 - tapOn:
@@ -57,7 +61,9 @@ tags:
     text: ${output.title}
 
 - tapOn:
-    id: "tab-gallery"
+    id: "tab-discover"
+- tapOn:
+    id: "discover-gallery"
 - assertVisible:
     id: "picture-card"
     index: 0

@@ -47,13 +47,13 @@ try {
 
   for (const width of [390, 320]) {
     await page.setViewportSize({ width, height: 844 });
-    for (const route of ["gallery", "tanks", "community", "species", "me"]) {
+    for (const route of ["today", "discover", "fish", "me"]) {
       await page.goto(`${WEB_URL}/${route}?rtl=1`, { waitUntil: "networkidle" });
       assert.equal(await page.locator("html").getAttribute("dir"), "rtl");
       assert.equal(await page.locator("html").getAttribute("lang"), "pt-BR");
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
       assert.equal(overflow, false, `${route} at ${width} overflows`);
-      for (const tab of ["gallery", "tanks", "community", "species", "me"]) {
+      for (const tab of ["today", "discover", "create", "fish", "me"]) {
         const bounds = await byTestId(page, `tab-${tab}`).boundingBox();
         assert.ok(bounds && bounds.x >= -1 && bounds.x + bounds.width <= width + 1, `${tab} is clipped`);
         const clippedLabels = await byTestId(page, `tab-${tab}`).evaluate((element) =>
@@ -72,9 +72,9 @@ try {
         return false;
       }).length);
       assert.equal(mirroredPhotos, 0, "Photos retain their original orientation in RTL");
-      const gallery = await byTestId(page, "tab-gallery").boundingBox();
+      const today = await byTestId(page, "tab-today").boundingBox();
       const me = await byTestId(page, "tab-me").boundingBox();
-      assert.ok(gallery.x > me.x, "RTL tab order follows reading direction");
+      assert.ok(today.x > me.x, "RTL tab order follows reading direction");
     }
   }
   await page.route(`${API_URL}/api/species/rtl-check`, (route) => route.fulfill({

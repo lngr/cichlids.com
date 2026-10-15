@@ -67,7 +67,7 @@ try {
     });
   });
 
-  await page.goto(`${WEB_URL}/`, { waitUntil: "networkidle", timeout: 60000 });
+  await page.goto(`${WEB_URL}/gallery`, { waitUntil: "networkidle", timeout: 60000 });
   await page.waitForSelector('[data-testid="picture-card"]', { timeout: 20000 });
 
   for (let i = 0; i < 20 && !requests.some((r) => r.sort === "newest" && r.offset === PAGE_SIZE); i++) {
