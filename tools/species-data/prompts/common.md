@@ -129,6 +129,8 @@ search and one page per species are enough. Member content is not accessible and
   verbatim: no sentence, part of a sentence, list or definition from Seriously Fish, forums or any
   other source, not even short and not even in quotation marks. Write all prose and rationales in
   your own words and your own order, and never follow the structure of a source.
+- Prose states facts in the present tense without time references: no words such as currently,
+  still, now, no longer, anymore or again, so that a text stays true as it ages.
 
 ## Values
 
