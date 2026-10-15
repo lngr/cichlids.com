@@ -35,6 +35,7 @@ Umgesetzt und in `main` gemergt. TASK-3.29 ist Done, die übrigen stehen in Revi
 - [ ] TASK-2.7 Argo CD app-of-apps und Umgebungen: umgesetzt, abnehmen
 - [ ] TASK-2.8 Ingress (Traefik aus k3s), TLS per HTTP-01 und Platzhalter-Workload: umgesetzt, abnehmen
 - [ ] TASK-2.31 API und Web-App als Workload in Staging (Web-App und API unter derselben Origin): umgesetzt, abnehmen
+- [ ] TASK-2.32 Staging und Previews nur über ein selbst betriebenes Tailnet (Headscale), Zertifikate weiter per HTTP-01
 - [ ] TASK-2.9 CloudNativePG mit PITR: umgesetzt (auf dem geschützten Volume, Backup-Schlüssel nur mit Schreib- und Leserecht, Wächter-Job gegen öffentliche Buckets), abnehmen
 - [ ] TASK-2.10 Erste getestete Restore-Übung: umgesetzt, lokal nachgewiesen (Restore in 52 s), abnehmen
 - [ ] TASK-2.11 CI-Grün-Gate und Delivery-Pipeline: umgesetzt, abnehmen
