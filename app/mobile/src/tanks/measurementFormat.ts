@@ -1,4 +1,4 @@
-import type { MeasurementUnit, ScaledPoint } from "@cichlids/client-core";
+import { valueInSystem, type CareEntry, type MeasurementUnit, type ScaledPoint, type UnitSystem } from "@cichlids/client-core";
 import { TRANSLATIONS } from "../i18n/catalogues";
 import { resolveLanguage } from "../i18n/locales";
 
@@ -31,5 +31,22 @@ export function chartSegments(points: ScaledPoint[]): ChartSegment[] {
       length,
       angle: Math.atan2(end.y - start.y, end.x - start.x),
     };
+  });
+}
+
+function fill(template: string, values: Record<string, string>): string {
+  return template.replace(/{{\s*(\w+)\s*}}/g, (_, key: string) => values[key] ?? "");
+}
+
+/** One text line per value of a measurement, in the member's unit system. */
+export function measurementLines(entry: CareEntry, system: UnitSystem, language: string): string[] {
+  const measure = TRANSLATIONS[resolveLanguage(language)].care.measure;
+  return (entry.values ?? []).map(stored => {
+    const shown = valueInSystem(stored, system);
+    return fill(stored.origin ? measure.lineWithOrigin : measure.line, {
+      parameter: measure.parameters[stored.parameter],
+      value: formatMeasurementValue(shown.value, shown.unit, language),
+      origin: stored.origin ? measure.origins[stored.origin] : "",
+    });
   });
 }

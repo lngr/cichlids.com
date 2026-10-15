@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { API_ERROR_CODES } from "../lib/apiErrors";
 import { TRANSLATIONS } from "../i18n/catalogues";
 import { SUPPORTED_LANGUAGES } from "../i18n/locales";
-import { chartSegments, formatMeasurementValue, measurementUnitSymbol } from "./measurementFormat";
+import { chartSegments, formatMeasurementValue, measurementLines, measurementUnitSymbol } from "./measurementFormat";
 
 describe("measurement formatting", () => {
   it("formats values with the unit symbol of the language", () => {
@@ -48,5 +48,22 @@ describe("chart segments", () => {
   it("has no segment for fewer than two points", () => {
     expect(chartSegments([])).toEqual([]);
     expect(chartSegments([{ entryId: 1, x: 5, y: 5 }])).toEqual([]);
+  });
+});
+
+describe("measurement lines", () => {
+  const entry = {
+    id: 1, tankId: 1, authorProfileId: 1, kind: "measurement" as const, occurredAt: "2026-10-01T10:00:00Z", recordedAt: "2026-10-01T10:00:00Z", amount: null,
+    values: [
+      { parameter: "ph" as const, value: 7.2, unit: "none" as const, normalizedValue: 7.2, canonicalUnit: "none" as const, origin: "test_kit" as const },
+      { parameter: "temperature" as const, value: 25, unit: "celsius" as const, normalizedValue: 25, canonicalUnit: "celsius" as const, origin: null },
+    ],
+  };
+  it("lists each value in the member's system with its parameter name and origin", () => {
+    expect(measurementLines(entry, "us", "en")).toEqual(["pH: 7.2 (Test kit)", "Temperature: 77 °F"]);
+    expect(measurementLines(entry, "metric", "de")).toEqual(["pH-Wert: 7,2 (Testset)", "Temperatur: 25 °C"]);
+  });
+  it("has no lines for an entry without values", () => {
+    expect(measurementLines({ ...entry, values: null }, "us", "en")).toEqual([]);
   });
 });
