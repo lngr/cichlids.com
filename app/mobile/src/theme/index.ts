@@ -1,4 +1,5 @@
-import { useColorScheme } from "react-native";
+import { Appearance } from "react-native";
+import { useSyncExternalStore } from "react";
 import { darkColors, lightColors } from "./colors.generated";
 
 // Mirrors design-system/tokens.json radius/space/type scales (not generated:
@@ -40,8 +41,12 @@ function buildTheme(scheme: "light" | "dark"): Theme {
 export const lightTheme = buildTheme("light");
 export const darkTheme = buildTheme("dark");
 
+function subscribeAppearance(listener: () => void) {
+  const subscription = Appearance.addChangeListener(listener);
+  return () => subscription.remove();
+}
 /** Resolves the active theme from the OS color scheme (falls back to light). */
 export function useTheme(): Theme {
-  const scheme = useColorScheme();
+  const scheme = useSyncExternalStore(subscribeAppearance, Appearance.getColorScheme, () => "light");
   return scheme === "dark" ? darkTheme : lightTheme;
 }

@@ -1,7 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
 import type { ReactElement } from "react";
 const state = vi.hoisted(() => ({ enabled: false, scheme: "light" }));
-vi.mock("react-native", () => ({ Text: "Text", View: "View", useColorScheme: () => state.scheme }));
+vi.mock("react-native", () => ({ Text: "Text", View: "View" }));
+vi.mock("../theme", async (importOriginal) => {
+  const theme = await importOriginal<typeof import("../theme")>();
+  return { ...theme, useTheme: () => state.scheme === "dark" ? theme.darkTheme : theme.lightTheme };
+});
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 vi.mock("./FeatureFlagsProvider", () => ({ useFeatureFlag: (name: string) => {
   expect(name).toBe("discover-activity");

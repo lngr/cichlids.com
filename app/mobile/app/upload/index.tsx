@@ -1,7 +1,8 @@
+import { useMachineRouter } from "../../src/navigation/NavigationProvider";
 import { useEffect, useRef, useState } from "react";
 import { ActivityIndicator, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { Image } from "expo-image";
-import { Redirect, useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import { useTranslation } from "react-i18next";
 import type { Draft, UploadFile } from "@cichlids/client-core";
 import { apiClient } from "../../src/api/client";
@@ -29,7 +30,7 @@ export default function UploadScreen() {
   const params = useLocalSearchParams<{ draft?: string | string[] }>();
 
   if (status === "loading") return <LoadingView />;
-  if (status === "anonymous") return <Redirect href="/me" />;
+  if (status === "anonymous") return <RequireLogin />;
   return <UploadFlow draftId={draftParam(params.draft)} accountId={accountId} />;
 }
 
@@ -48,7 +49,7 @@ type FailedAction = "load" | "missing" | "pick" | "upload" | "publish" | "discar
  */
 function UploadFlow({ draftId, accountId }: { draftId: string | null; accountId: string | null }) {
   const theme = useTheme();
-  const router = useRouter();
+  const router = useMachineRouter();
   const { t } = useTranslation();
 
   const [phase, setPhase] = useState<Phase>(draftId ? "loading" : "picking");
@@ -158,8 +159,6 @@ function UploadFlow({ draftId, accountId }: { draftId: string | null; accountId:
       draftRef.current = null;
       if (accountId) void savedUploadInput.forgetDraft(accountId, String(current.id));
       publishSignal.notifyPublished();
-      // dismissTo closes the upload screen and opens the picture inside the existing tabs; a
-      // replace would put a second tab navigator on the root stack.
       if (mountedRef.current) router.dismissTo(`/gallery/${picture.slug}`);
     } catch (err) {
       if (!mountedRef.current) return;
@@ -182,7 +181,7 @@ function UploadFlow({ draftId, accountId }: { draftId: string | null; accountId:
       if (accountId) void savedUploadInput.forgetDraft(accountId, String(current.id));
       if (!mountedRef.current) return;
       if (router.canGoBack()) router.back();
-      else router.replace("/gallery");
+      else router.replace("/discover");
     } catch (err) {
       if (!mountedRef.current) return;
       setError({ message: uploadErrorMessage(err, t("upload.discardError"), t), action: "discard" });
@@ -359,3 +358,9 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
 });
+
+function RequireLogin() {
+  const router = useMachineRouter();
+  useEffect(() => { router.replace("/me"); }, [router]);
+  return null;
+}

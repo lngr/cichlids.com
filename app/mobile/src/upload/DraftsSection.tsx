@@ -1,8 +1,9 @@
+import { useMachineRouter } from "../navigation/NavigationProvider";
 import { useCallback, useRef, useState, type ReactNode } from "react";
 import { ActivityIndicator, Alert, Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useFocusEffect, useRouter } from "expo-router";
+import { useFocusEffect } from "expo-router";
 import { useTranslation } from "react-i18next";
 import type { Draft } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
@@ -21,7 +22,7 @@ const THUMBNAIL_SIZE = 64;
  */
 export function DraftsSection() {
   const theme = useTheme();
-  const router = useRouter();
+  const router = useMachineRouter();
   const { t, i18n } = useTranslation();
   const { accountId } = useAuth();
 

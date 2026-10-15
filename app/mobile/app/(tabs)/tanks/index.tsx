@@ -1,6 +1,7 @@
+import { useMachineRouter } from "../../../src/navigation/NavigationProvider";
 import { useCallback, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import { useRouter } from "expo-router";
+
 import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
@@ -23,7 +24,7 @@ const CATEGORIES: { value: string | undefined; labelKey: string }[] = [
 
 export default function TanksScreen() {
   const theme = useTheme();
-  const router = useRouter();
+  const router = useMachineRouter();
   const { t } = useTranslation();
   const [category, setCategory] = useState<string | undefined>(undefined);
 

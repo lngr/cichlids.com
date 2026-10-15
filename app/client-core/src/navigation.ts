@@ -3,14 +3,14 @@ import { assign, setup } from "xstate";
 export type NavigationTab = "today" | "discover" | "fish" | "me";
 export type NavigationEvent =
   | { type: "TAB"; tab: NavigationTab }
-  | { type: "OPEN" | "REPLACE" | "EXTERNAL"; path: string }
+  | { type: "OPEN" | "REPLACE" | "DISMISS" | "EXTERNAL"; path: string }
   | { type: "BACK" | "HOME" | "CREATE" }
   | { type: "PHOTO"; authenticated: boolean };
 export type NavigationContext = {
   path: string;
   history: string[];
   revision: number;
-  mode: "push" | "replace" | "back" | "external";
+  mode: "push" | "replace" | "dismiss" | "back" | "external";
 };
 
 export function canonicalPath(path: string): string {
@@ -38,8 +38,13 @@ export const navigationMachine = setup({
     open: assign(({ context, event }) => {
       const path = canonicalPath(event.type === "TAB" ? `/${event.tab}` : event.type === "HOME" ? "/today" : event.type === "PHOTO" ? event.authenticated ? "/upload" : "/me" : "path" in event ? event.path : context.path);
       const external = event.type === "EXTERNAL";
-      const replace = event.type === "REPLACE" || event.type === "HOME";
-      return { path, history: external || event.type === "HOME" ? [] : replace ? context.history : path === context.path ? context.history : [...context.history, context.path], revision: context.revision + 1, mode: external ? "external" as const : replace ? "replace" as const : "push" as const };
+      const replace = event.type === "REPLACE" || event.type === "DISMISS" || event.type === "HOME";
+      return {
+        path,
+        history: external || event.type === "HOME" ? [] : replace || path === context.path ? context.history : [...context.history, context.path],
+        revision: context.revision + 1,
+        mode: external ? "external" as const : event.type === "DISMISS" ? "dismiss" as const : replace ? "replace" as const : "push" as const,
+      };
     }),
     back: assign(({ context }) => ({
       path: context.history.at(-1) ?? parentPath(context.path),
@@ -56,6 +61,7 @@ export const navigationMachine = setup({
     TAB: { target: ".viewing.routing", actions: "open" },
     OPEN: { target: ".viewing.routing", actions: "open" },
     REPLACE: { target: ".viewing.routing", actions: "open" },
+    DISMISS: { target: ".viewing.routing", actions: "open" },
     EXTERNAL: { target: ".viewing.routing", actions: "open" },
     HOME: { target: ".viewing.routing", actions: "open" },
   },

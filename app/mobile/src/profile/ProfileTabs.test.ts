@@ -3,7 +3,11 @@ import type { ReactElement } from "react";
 import en from "../i18n/en.json";
 import de from "../i18n/de.json";
 const { language, scheme } = vi.hoisted(() => ({ language: { current: "en" }, scheme: { current: "light" } }));
-vi.mock("react-native", () => ({ Pressable: "Pressable", Text: "Text", View: "View", useColorScheme: () => scheme.current }));
+vi.mock("react-native", () => ({ Pressable: "Pressable", Text: "Text", View: "View" }));
+vi.mock("../theme", async (importOriginal) => {
+  const theme = await importOriginal<typeof import("../theme")>();
+  return { ...theme, useTheme: () => scheme.current === "dark" ? theme.darkTheme : theme.lightTheme };
+});
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => {
   const resource = language.current === "en" ? en : de;
   return key.split(".").reduce<any>((value, part) => value[part], resource);

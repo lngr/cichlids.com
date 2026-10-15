@@ -1,7 +1,8 @@
+import { useMachineRouter } from "../../../src/navigation/NavigationProvider";
 import { LanguageSettings } from "../../../src/i18n/LanguageSettings";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import { useFocusEffect, useRouter } from "expo-router";
+import { useFocusEffect } from "expo-router";
 import { useTranslation } from "react-i18next";
 import type { Me } from "@cichlids/client-core";
 import { apiClient } from "../../../src/api/client";
@@ -84,7 +85,7 @@ function MemberContent({ profile }: { profile: Me["profile"] }) {
   const theme = useTheme();
   const { t } = useTranslation();
   const { logout } = useAuth();
-  const router = useRouter();
+  const router = useMachineRouter();
   const [section, setSection] = useState<ProfileSection>("pictures");
   const { pictures, tanks } = useProfileLists(Number(profile.id));
   const firstFocus = useRef(true);

@@ -1,9 +1,10 @@
 import { TankMeasurements } from "../../../src/units/TankMeasurements";
+import { useMachineRouter } from "../../../src/navigation/NavigationProvider";
 import { translateApiError } from "../../../src/lib/apiErrors";
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
-import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
+import { useLocalSearchParams, useNavigation } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
@@ -22,7 +23,7 @@ export default function TankDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const tankId = Number(id);
   const theme = useTheme();
-  const router = useRouter();
+  const router = useMachineRouter();
   const navigation = useNavigation();
   const { t } = useTranslation();
 

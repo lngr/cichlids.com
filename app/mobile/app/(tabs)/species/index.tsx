@@ -1,6 +1,7 @@
+import { useMachineRouter } from "../../../src/navigation/NavigationProvider";
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import { useRouter } from "expo-router";
+
 import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
@@ -12,7 +13,7 @@ import type { SpeciesListItem } from "@cichlids/client-core";
 
 export default function SpeciesScreen() {
   const theme = useTheme();
-  const router = useRouter();
+  const router = useMachineRouter();
   const { t } = useTranslation();
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");

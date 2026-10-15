@@ -1,8 +1,9 @@
+import { useMachineRouter } from "../../../src/navigation/NavigationProvider";
 import { translateApiError } from "../../../src/lib/apiErrors";
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
-import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
+import { useLocalSearchParams, useNavigation } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
@@ -19,7 +20,7 @@ const commentKey = (comment: Comment) => comment.id;
 export default function PictureDetailScreen() {
   const { slug } = useLocalSearchParams<{ slug: string }>();
   const theme = useTheme();
-  const router = useRouter();
+  const router = useMachineRouter();
   const navigation = useNavigation();
   const { t, i18n } = useTranslation();
 

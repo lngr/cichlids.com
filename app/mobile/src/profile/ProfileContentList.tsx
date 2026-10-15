@@ -1,6 +1,7 @@
+import { useMachineRouter } from "../navigation/NavigationProvider";
 import type { ReactElement } from "react";
 import { FlatList } from "react-native";
-import { useRouter } from "expo-router";
+
 import { useTranslation } from "react-i18next";
 import type { PictureListItem, TankListItem } from "@cichlids/client-core";
 import type { UsePagedListState } from "../hooks/usePagedList";
@@ -16,7 +17,7 @@ export function ProfileContentList({ section, pictures, tanks, header }: {
   header: ReactElement | null;
 }) {
   const theme = useTheme();
-  const router = useRouter();
+  const router = useMachineRouter();
   const { t } = useTranslation();
   const list = section === "pictures" ? pictures : tanks;
   const empty = list.loading ? <LoadingView /> : list.error ? <ErrorView message={list.error} onRetry={list.reload} /> :

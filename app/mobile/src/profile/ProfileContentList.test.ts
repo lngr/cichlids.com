@@ -7,7 +7,7 @@ vi.mock("react-native", () => ({ FlatList: "FlatList", View: "View" }));
 vi.mock("../theme", () => ({ useTheme: () => ({ colors: { bg: "background" }, space: { 6: 24 } }) }));
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 const push = vi.hoisted(() => vi.fn());
-vi.mock("expo-router", () => ({ useRouter: () => ({ push }) }));
+vi.mock("../navigation/NavigationProvider", () => ({ useMachineRouter: () => ({ push }) }));
 vi.mock("../components/PictureCard", () => ({ PictureCard: "PictureCard" }));
 vi.mock("../components/TankCard", () => ({ TankCard: "TankCard" }));
 vi.mock("../components/StatusView", () => ({ LoadingView: "LoadingView", ErrorView: "ErrorView", EmptyView: "EmptyView" }));

@@ -1,7 +1,8 @@
+import { useMachineRouter } from "../../../src/navigation/NavigationProvider";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from "expo-router";
+import { Stack, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useAuth } from "../../../src/auth/AuthProvider";
@@ -12,7 +13,7 @@ import { Chip } from "../../../src/components/Chip";
 import { PictureCard } from "../../../src/components/PictureCard";
 import { EmptyView, ErrorView, LoadingView } from "../../../src/components/StatusView";
 import type { PictureListItem } from "@cichlids/client-core";
-import { DiscoverActivity } from "../../../src/featureFlags/DiscoverActivity";
+
 
 const SORTS: { value: "newest" | "views" | "rating"; labelKey: string }[] = [
   { value: "newest", labelKey: "gallery.sort.newest" },
@@ -30,7 +31,7 @@ const TOPICS: { value: string | undefined; labelKey: string }[] = [
 
 export default function GalleryScreen() {
   const theme = useTheme();
-  const router = useRouter();
+  const router = useMachineRouter();
   const { t } = useTranslation();
   const params = useLocalSearchParams<{ species?: string }>();
   const [sort, setSort] = useState<"newest" | "views" | "rating">("newest");
@@ -78,7 +79,6 @@ export default function GalleryScreen() {
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.bg }]}>
       <Stack.Screen options={{ headerRight: () => <UploadHeaderButton onPress={openUpload} /> }} />
-      <DiscoverActivity />
       {species ? (
         <View style={styles.filterRow}>
           <Chip label={t("gallery.speciesFilter", { species })} active onPress={() => setSpecies(undefined)} />

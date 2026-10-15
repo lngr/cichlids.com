@@ -38,7 +38,9 @@ describe("navigation", () => {
     for (const path of ["/tanks", "/tanks/12", "/profile/7"]) actor.send({ type: "OPEN", path });
     actor.send({ type: "BACK" });
     expect(actor.getSnapshot().context.path).toBe("/tanks/12");
-    actor.send({ type: "REPLACE", path: "/gallery/published" });
+    actor.send({ type: "DISMISS", path: "/gallery/published" });
+    expect(actor.getSnapshot().context.path).toBe("/gallery/published");
+    expect(actor.getSnapshot().context.mode).toBe("dismiss");
     actor.send({ type: "BACK" });
     expect(actor.getSnapshot().context.path).toBe("/tanks");
     actor.send({ type: "HOME" });

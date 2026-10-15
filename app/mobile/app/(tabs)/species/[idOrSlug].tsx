@@ -1,9 +1,10 @@
+import { useMachineRouter } from "../../../src/navigation/NavigationProvider";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { getDirection, subscribeDirection } from "../../../src/i18n";
 import { translateApiError } from "../../../src/lib/apiErrors";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
+import { useLocalSearchParams, useNavigation } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
@@ -15,7 +16,7 @@ export default function SpeciesDetailScreen() {
   const { idOrSlug } = useLocalSearchParams<{ idOrSlug: string }>();
   const theme = useTheme();
   const rtl = useSyncExternalStore(subscribeDirection, getDirection, () => false);
-  const router = useRouter();
+  const router = useMachineRouter();
   const navigation = useNavigation();
   const { t } = useTranslation();
 
