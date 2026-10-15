@@ -46,6 +46,45 @@
         }
       }
     },
+    "/api/discover": {
+      "get": {
+        "tags": [
+          "Discover"
+        ],
+        "operationId": "GetDiscover",
+        "parameters": [
+          {
+            "name": "regions",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiscoverDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/comments/{id}": {
       "delete": {
         "tags": [
@@ -2431,6 +2470,122 @@
           "inch"
         ]
       },
+      "DiscoverDto": {
+        "required": [
+          "regions"
+        ],
+        "type": "object",
+        "properties": {
+          "regions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DiscoverRegionDto"
+            }
+          }
+        }
+      },
+      "DiscoverItemDto": {
+        "required": [
+          "id",
+          "title",
+          "slug",
+          "image",
+          "score",
+          "ratingCount"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "slug": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "image": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ImageUrlsDto"
+              }
+            ]
+          },
+          "score": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "ratingCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "DiscoverRegionDto": {
+        "required": [
+          "region",
+          "tanks",
+          "pictures",
+          "tankOfTheWeek",
+          "timeLapses"
+        ],
+        "type": "object",
+        "properties": {
+          "region": {
+            "$ref": "#/components/schemas/TankRegion"
+          },
+          "tanks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DiscoverItemDto"
+            }
+          },
+          "pictures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DiscoverItemDto"
+            }
+          },
+          "tankOfTheWeek": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/DiscoverItemDto"
+              }
+            ]
+          },
+          "timeLapses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DiscoverItemDto"
+            }
+          }
+        }
+      },
       "DiscussionCategory": {
         "enum": [
           "cichlids",
@@ -3863,8 +4018,7 @@
           "central_america",
           "south_america",
           "mixed",
-          "americas_unassigned",
-          null
+          "americas_unassigned"
         ]
       },
       "TankSectionsDto": {
@@ -4195,6 +4349,9 @@
     },
     {
       "name": "FeatureFlags"
+    },
+    {
+      "name": "Discover"
     },
     {
       "name": "Comments"

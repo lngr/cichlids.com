@@ -1,5 +1,7 @@
 export { createCichlidsClient, ApiError } from "./client.js";
 export type {
+  DiscoverArchive,
+  DiscoverItem,
   CichlidsClient,
   CichlidsClientOptions,
   PicturesListParams,

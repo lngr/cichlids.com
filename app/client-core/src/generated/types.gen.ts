@@ -123,6 +123,27 @@ export type DimensionsDto = {
 
 export type DimensionUnit = 'cm' | 'inch';
 
+export type DiscoverDto = {
+    regions: Array<DiscoverRegionDto>;
+};
+
+export type DiscoverItemDto = {
+    id: number | string;
+    title: null | string;
+    slug: null | string;
+    image: null | ImageUrlsDto;
+    score: number | string;
+    ratingCount: number | string;
+};
+
+export type DiscoverRegionDto = {
+    region: TankRegion;
+    tanks: Array<DiscoverItemDto>;
+    pictures: Array<DiscoverItemDto>;
+    tankOfTheWeek: null | DiscoverItemDto;
+    timeLapses: Array<DiscoverItemDto>;
+};
+
 export type DiscussionCategory = 'cichlids' | 'african' | 'market_place';
 
 export type DiscussionThreadState = 'archived' | 'open';
@@ -490,6 +511,33 @@ export type GetFeatureFlagsResponses = {
 };
 
 export type GetFeatureFlagsResponse = GetFeatureFlagsResponses[keyof GetFeatureFlagsResponses];
+
+export type GetDiscoverData = {
+    body?: never;
+    path?: never;
+    query?: {
+        regions?: string;
+    };
+    url: '/api/discover';
+};
+
+export type GetDiscoverErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+};
+
+export type GetDiscoverError = GetDiscoverErrors[keyof GetDiscoverErrors];
+
+export type GetDiscoverResponses = {
+    /**
+     * OK
+     */
+    200: DiscoverDto;
+};
+
+export type GetDiscoverResponse = GetDiscoverResponses[keyof GetDiscoverResponses];
 
 export type DeleteCommentData = {
     body: DeleteCommentRequest;

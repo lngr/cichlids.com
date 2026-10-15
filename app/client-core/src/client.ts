@@ -11,6 +11,7 @@ import {
   discardPost,
   getCommunityThread,
   getFeatureFlags,
+  getDiscover,
   getMe,
   getPicture,
   getProfile,
@@ -31,6 +32,8 @@ import {
   uploadPhoto,
 } from "./generated/sdk.gen.js";
 import type {
+  DiscoverDto,
+  DiscoverItemDto,
   CommentCreatedDto,
   CommentDto,
   CommunityAttachmentDto,
@@ -62,6 +65,8 @@ import type {
   WaterValuesDto,
 } from "./generated/types.gen.js";
 
+export type DiscoverArchive = DiscoverDto;
+export type DiscoverItem = DiscoverItemDto;
 export type PictureListItem = PictureListItemDto;
 export type PictureDetail = PictureDetailDto;
 export type TankListItem = TankListItemDto;
@@ -187,6 +192,9 @@ function unwrapPaged<T>(result: { data?: { total: number | string; items: T[] };
 }
 
 export interface CichlidsClient {
+  discover: {
+    get(regions?: TankRegion[]): Promise<DiscoverArchive>;
+  };
   featureFlags: {
     get(): Promise<Record<string, boolean>>;
   };
@@ -259,6 +267,11 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
   }
 
   return {
+    discover: {
+      async get(regions) {
+        return unwrap(await getDiscover({ client, query: regions ? { regions: regions.join(",") } : {} }));
+      },
+    },
     featureFlags: {
       async get() {
         return unwrap(await getFeatureFlags({ client, cache: "no-cache" }));
