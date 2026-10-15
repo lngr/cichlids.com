@@ -2,7 +2,7 @@ import { createActor, waitFor } from "xstate";
 import { describe, expect, it, vi } from "vitest";
 import {
   COMMON_PARAMETERS, MEASUREMENT_PARAMETERS, createDraft, editDraft, fromCanonical, inputUnit, measurementMachine,
-  scaleSeries, seriesForDisplay, setField, setOrigin, showMore, validateDraft, visibleParameters,
+  scaleSeries, seriesForDisplay, setField, setOrigin, showMore, validateDraft, valueInSystem, visibleParameters,
 } from "./measurement.js";
 import type { CareEntry } from "./client.js";
 
@@ -25,6 +25,19 @@ describe("units follow the member's system", () => {
     expect(fromCanonical("kh", 3, "ppm")).toBeCloseTo(53.544, 6);
     expect(fromCanonical("gh", 3, "dgh")).toBe(3);
     expect(fromCanonical("no3", 12.5, "mg_per_liter")).toBe(12.5);
+  });
+});
+
+describe("value in the member's system", () => {
+  const stored = (parameter: "temperature" | "kh", value: number, unit: "celsius" | "fahrenheit" | "dkh" | "ppm", normalizedValue: number) =>
+    ({ parameter, value, unit, normalizedValue, canonicalUnit: parameter === "kh" ? "dkh" as const : "celsius" as const, origin: null });
+  it("keeps the entered number when its unit is the member's unit", () => {
+    expect(valueInSystem(stored("temperature", 77, "fahrenheit", 25), "us")).toEqual({ value: 77, unit: "fahrenheit" });
+    expect(valueInSystem(stored("kh", 3.25, "dkh", 3.25), "metric")).toEqual({ value: 3.25, unit: "dkh" });
+  });
+  it("converts the normalized value when the entry unit differs", () => {
+    expect(valueInSystem(stored("temperature", 77, "fahrenheit", 25), "metric")).toEqual({ value: 25, unit: "celsius" });
+    expect(valueInSystem(stored("kh", 3, "dkh", 3), "us")).toEqual({ value: 53.544, unit: "ppm" });
   });
 });
 

@@ -1,5 +1,5 @@
 import { assign, fromPromise, setup } from "xstate";
-import type { CareEntry, CareParameter, CareSeries, MeasurementOrigin, MeasurementUnit, MeasurementValueRequest } from "./client.js";
+import type { CareEntry, CareParameter, CareSeries, MeasurementOrigin, MeasurementUnit, MeasurementValue, MeasurementValueRequest } from "./client.js";
 
 export type UnitSystem = "metric" | "us";
 
@@ -45,6 +45,12 @@ function toCanonical(parameter: CareParameter, value: number, unit: MeasurementU
   return value;
 }
 
+/** A stored value as the member's system shows it: the entered number when its unit already matches, else the converted normalized value. */
+export function valueInSystem(value: MeasurementValue, system: UnitSystem): { value: number; unit: MeasurementUnit } {
+  const unit = inputUnit(value.parameter, system);
+  return { value: value.unit === unit ? Number(value.value) : fromCanonical(value.parameter, Number(value.normalizedValue), unit), unit };
+}
+
 export type MeasurementDraft = {
   system: UnitSystem;
   expanded: boolean;
@@ -65,8 +71,7 @@ export function editDraft(system: UnitSystem, entry: CareEntry): MeasurementDraf
   const values = entry.values ?? [];
   const fields: MeasurementDraft["fields"] = {};
   for (const value of values) {
-    const unit = inputUnit(value.parameter, system);
-    fields[value.parameter] = String(value.unit === unit ? Number(value.value) : fromCanonical(value.parameter, Number(value.normalizedValue), unit));
+    fields[value.parameter] = String(valueInSystem(value, system).value);
   }
   return {
     system, fields, origin: values.find(value => value.origin)?.origin ?? null,
