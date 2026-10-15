@@ -1,0 +1,2851 @@
+schemaVersion: 1
+id: "thorichthys-maculipinnis"
+legacyIds:
+  - 787
+status: "described"
+taxonomy:
+  validName: "Thorichthys maculipinnis"
+  genus: "Thorichthys"
+  species: "maculipinnis"
+  author: "(Steindachner, 1864)"
+  source: &a1
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: Thorichthys"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Th\
+      orichthys"
+    archived: "researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-118e07ca/2026-10-14T0\
+      94242Z"
+    accessed: "2026-10-15"
+  synonyms:
+    - name: "Heros maculipinnis"
+      note: "Original combination of the valid species."
+    - name: "Astronotus maculipinnis"
+      note: "Historical combination recorded by CRC and NCS."
+    - name: "Thorichthys ellioti"
+      note: "Meek 1904; junior synonym under the current Catalog of Fishes treatment."
+    - name: "Cichlasoma ellioti"
+      note: "Historical combination of the junior synonym."
+  legacyNames:
+    - "Thorichthys ellioti"
+  note: "The current Catalog of Fishes accepts Thorichthys maculipinnis and places T. ellioti in its synonymy.
+    FishBase retains an older identity and prevailing-usage caution. Both the legacy and valid genus are
+    Thorichthys, so the same genus query covers both names. CRC and NCS support the historical combinations
+    retained here."
+names:
+  trade:
+    en:
+      - "Spotcheek cichlid"
+      - "Elliot's cichlid"
+      - "Ellioti"
+    de:
+      - "Elliots Buntbarsch"
+    es:
+      - "Chescla"
+    pt-BR:
+      - "Ciclídeo de Ellioti"
+variants:
+  - name: "San Juan Evangelista"
+    kind: "locality"
+    note: "CRC reports a more yellow-orange belly than in northern populations; retain collection provenance."
+  - name: "La Antigua"
+    kind: "locality"
+    note: "Collected near Santa Rosa and documented with blue markings and a red underside; not a separate taxon."
+  - name: "Otapa"
+    kind: "locality"
+    note: "Native locality documented by CRC; no distinct formal color-morph status implied."
+features:
+  origin:
+    value: &a38
+      continent: "Central America"
+      region: "Atlantic lowlands of Veracruz and Oaxaca, Mexico, from the Actopan to the Papaloapan drainage"
+      waterbody: null
+      localities:
+        - "Actopan River"
+        - "La Antigua River"
+        - "Jamapa River"
+        - "Otapa River"
+        - "Motzorongo"
+        - "San Juan Evangelista River"
+        - "Rio de la Lana"
+        - "Rio Dos Canos"
+    confidence: "high"
+    rationale: "All four full profiles identify the Mexican Atlantic slope and Papaloapan core, with different
+      selections of neighboring rivers. The Catalog supplies the accepted range framework and CRC and the DCG
+      collecting account establish additional occupied Veracruz drainages. The Aqua-Pedia Coatzacoalcos claim
+      and retailer claims extending into Guatemala are not adopted as established native range. CRC regards
+      northern Cazones populations as likely introductions; the 2024 overview also distinguishes introduced
+      Morelos populations. The dryland-stream study concerns upper-basin stations without demonstrated
+      occupation by this fish and cannot set its water chemistry."
+    sources:
+      - *a1
+      - &a2
+        kind: "database"
+        title: "Artigas Azas (2021). Thorichthys maculipinnis. Cichlid Room Companion"
+        url: "https://cichlidae.com/species.php?id=PIytXahTlmEdI_8EvZ_oKw"
+        archived: "cichlidae.com/species.php/q-410c4ac9/2026-10-15T083537Z"
+        accessed: "2026-10-15"
+      - &a3
+        kind: "database"
+        title: "FishBase: Thorichthys maculipinnis"
+        url: "https://www.fishbase.se/summary/Thorichthys-maculipinnis.html"
+        archived: "fishbase.se/summary/thorichthys-maculipinnis.html/2026-10-15T083438Z"
+        accessed: "2026-10-15"
+      - &a20
+        kind: "database"
+        title: "Aqua-Pedia: Ciclideo de Ellioti"
+        url: "https://www.aqua-pedia.com/pt/species/thorichthys-ellioti-ellioti-cichlid"
+        archived: "aqua-pedia.com/pt/species/thorichthys-ellioti-ellioti-cichlid/2026-10-15T083623Z"
+        accessed: "2026-10-15"
+      - &a4
+        kind: "literature"
+        title: "Stawikowski (1999). Thorichthys ellioti. DCG-Informationen 30(12), Cichliden von A bis Z"
+        url: "https://www.dcg-encyclopedia.de/wp-content/uploads/2012/04/1999-12-S-Cichl-A-Z.pdf"
+        accessed: "2026-10-15"
+        archived: "dcg-encyclopedia.de/wp-content/uploads/2012/04/1999-12-s-cichl-a-z.pdf/2026-10-15T083452Z"
+      - &a19
+        kind: "website"
+        title: "Zierfische-Direkt, Thorichthys maculipinnis / ellioti"
+        url: "https://www.zierfische-direkt.de/elliotts-feuermaul-buntbarsch-thorichthys-maculipinnis-ellioti/"
+        accessed: "2026-10-15"
+        archived: "zierfische-direkt.de/elliotts-feuermaul-buntbarsch-thorichthys-maculipinnis-ellioti/2026-10-15T083\
+          641Z"
+      - &a35
+        kind: "database"
+        title: "Cichlid Room Companion: Thorichthys maculipinnis, numeric URL"
+        url: "https://cichlidae.com/species.php?id=247"
+        archived: "cichlidae.com/species.php/q-540bd9c3/2026-10-15T083554Z"
+        accessed: "2026-10-15"
+      - &a24
+        kind: "literature"
+        title: "Lopez-Segovia et al. (2024). Los Boca de Fuego: tesoros subacuaticos de Mexico. Herreriana 6(2),
+          17-22"
+        url: "https://doi.org/10.29057/h.v6i2.12095"
+        archived: "doi.org/10.29057_h.v6i2.12095/2026-10-15T083534Z"
+        accessed: "2026-10-15"
+      - &a21
+        kind: "literature"
+        title: "Water Quality and Macroinvertebrate Community in Dryland Streams: The Case of the Tehuacan-Cuicatlan
+          Biosphere Reserve (Mexico) Facing Climate Change (2019)"
+        url: "https://doi.org/10.3390/w11071376"
+        archived: "doi.org/10.3390_w11071376/2026-10-15T083510Z"
+        accessed: "2026-10-15"
+    evidence:
+      - source: *a1
+        value: "Papaloapan, Atlantic slope, Mexico, endemic"
+      - source: *a2
+        value: "lowlands from the Actopan to the Papaloapan drainage, Veracruz and Oaxaca"
+      - source: *a3
+        value: "Papaloapan basin, Mexico"
+      - source: *a1
+        value:
+          continent: "Central America"
+          region: "Papaloapan basin, Mexico"
+      - source: *a2
+        value:
+          continent: "Central America"
+          region: "Actopan south to Papaloapan, Veracruz and Oaxaca"
+  temperatureC:
+    value: &a39
+      min: 22
+      max: 30
+    confidence: "medium"
+    rationale: "The qualified majority is 22 to 30 C: generator, checker-b, checker-c, tiebreaker-1 and
+      tiebreaker-2 proposed this range, while checker-a proposed 24 to 30 C. CRC records an Otapa low near 22
+      C and dry-season water near 30 C; DCG reports regional collecting-site temperatures of 25 to 30 C. The
+      single cool reading is interpreted within the wider regional seasonal account. FishBase and AquaInfo
+      give 25 to 28 C, Fishipedia gives 23 to 28 C, the La Antigua collector measured 25.6 C, and the
+      lower-basin crustacean survey gives 27.5 to 28.9 C. A keeper repeats a single Tonto confluence reading
+      of 31 C, which remains evidence without defining the typical upper endpoint. These observations do not
+      establish years of safe aquarium exposure at either extreme."
+    sources:
+      - *a2
+      - &a5
+        kind: "website"
+        title: "Fish Collecting in Mexico in 2001. Bermuda Rover (2021)"
+        url: "https://bermudarover.wordpress.com/2021/01/31/fish-collecting-in-mexico-in-2001/"
+        archived: "bermudarover.wordpress.com/2021/01/31/fish-collecting-in-mexico-in-2001/2026-10-14T100106Z"
+        accessed: "2026-10-15"
+      - *a3
+      - &a6
+        kind: "literature"
+        title: "Smits and Beerlink. Thorichthys maculipinnis. AquaInfo"
+        url: "https://aquainfo.nl/en/article/thorichthys-maculipinnis/"
+        archived: "aquainfo.nl/en/article/thorichthys-maculipinnis/2026-10-15T083453Z"
+        accessed: "2026-10-15"
+      - &a7
+        kind: "database"
+        title: "Fishipedia: Thorichthys maculipinnis"
+        url: "https://www.fishipedia.es/pez/thorichthys-maculipinnis"
+        archived: "fishipedia.es/pez/thorichthys-maculipinnis/2026-10-15T083623Z"
+        accessed: "2026-10-15"
+      - &a8
+        kind: "literature"
+        title: "Diversidad de crustaceos en la cuenca baja del rio Papaloapan, Veracruz, Mexico (Hidrobiologica 26(3),
+          2016)"
+        url: "https://doi.org/10.24275/uam/izt/dcbs/hidro/2016v26n3/barba"
+        archived: "doi.org/10.24275_uam_izt_dcbs_hidro_2016v26n3_barba/2026-10-14T225810Z"
+        accessed: "2026-10-15"
+      - *a4
+      - &a9
+        kind: "website"
+        title: "Fische und Orchideen: Thorichthys ellioti keeping and breeding account"
+        url: "https://fische-orchideen.jimdofree.com/fische/fischarten/thorichthys-ellioti/"
+        archived: "fische-orchideen.jimdofree.com/fische/fischarten/thorichthys-ellioti/2026-10-15T083523Z"
+        accessed: "2026-10-15"
+    evidence:
+      - source: *a2
+        value:
+          min: 22
+          max: 30
+        note: "Otapa minimum and dry-season upper values; San Juan Evangelista 25 to 30 C reported secondhand."
+      - source: *a5
+        value:
+          min: 25.6
+          max: 25.6
+        note: "La Antigua at Santa Rosa, February 2001, 78 F."
+      - source: *a3
+        value:
+          min: 25
+          max: 28
+        note: "Database environmental summary."
+      - source: *a6
+        value:
+          min: 25
+          max: 28
+        note: "Habitat summary without measurement dates."
+      - source: *a7
+        value:
+          min: 23
+          max: 28
+        note: "General habitat summary without named field measurements."
+      - source: *a8
+        value:
+          min: 27.5
+          max: 28.9
+        note: "lower Papaloapan tributaries, dry and rainy season 2013"
+      - source: *a2
+        value:
+          min: 25
+          max: 30
+        note: "San Juan Evangelista River after Stawikowski and Werner; author notes a minimum near 22 C and a maximum
+          near 30 C"
+      - source: *a2
+        value:
+          min: 22
+          max: 30
+        note: "Habitat observations by the profile author"
+      - source: *a4
+        value:
+          min: 25
+          max: 30
+        note: "Several collecting sites in the native drainage"
+      - source: *a3
+        value:
+          min: 25
+          max: 28
+        note: "Compiled species environment range"
+      - source: *a2
+        value:
+          min: 22
+          max: 30
+        note: "Field observations in the native range; San Juan records are quoted from Stawikowski and Werner
+          (1998)."
+      - source: *a3
+        value:
+          min: 25
+          max: 28
+        note: "Environmental summary, not an experimental tolerance."
+      - source: *a9
+        value:
+          min: 25
+          max: 30
+        note: "Reported San Juan field interval."
+      - source: *a9
+        value:
+          min: 31
+          max: 31
+        note: "Single Rio Tonto confluence measurement; not a seasonal range."
+      - source: *a2
+        value:
+          min: 22
+          max: 30
+        note: "Author field observations across the native range, including the Otapa minimum; San Juan Evangelista is
+          separately reported as 25 to 30 C."
+      - source: *a6
+        value:
+          min: 25
+          max: 28
+        note: "Range stated in the natural-habitat section, without dates or individual station measurements."
+      - source: *a3
+        value:
+          min: 25
+          max: 28
+        note: "Environment summary with reference 7335; not identified on the page as a direct field series."
+      - source: *a2
+        value:
+          min: 22
+          max: 30
+        note: "Regional field envelope; cooler observation from Otapa and dry-season maximum around 30 C. The cited
+          book reports 25 to 30 C in San Juan Evangelista."
+      - source: *a6
+        value:
+          min: 25
+          max: 28
+        note: "Range stated in the natural-habitat section; no collection method given."
+      - source: *a3
+        value:
+          min: 25
+          max: 28
+        note: "Species environment summary citing reference 7335; measurement context is unspecified."
+    tolerance:
+      value: &a40
+        min: 22
+        max: 30
+      confidence: "low"
+      rationale: "The qualified majority retains 22 to 30 C, proposed by generator, checker-a, checker-c and both
+        tiebreakers; checker-b proposed the wider 20 to 30 C based on Heimrich advice of 20 to 27 C. AquaInfo
+        and NCS recommend 22 to 28 C, Fishkeeper recommends 24 to 30 C, Aqualog 24 to 29 C and Garnelio 22 to
+        28 C. The shared 22 to 30 C decision combines husbandry advice with required containment of the
+        seasonal natural range. It has low confidence because CRC explicitly warns against sustained aquarium
+        temperatures above 28 C. Aim around 24 to 26 C with strong gas exchange; 30 C is a disputed upper
+        boundary rather than a proven permanent maintenance temperature. Successful breeding at 28 C and
+        experimental holding at 26 to 28 C do not resolve long-term limits. Matching the natural endpoints
+        does not establish injury immediately outside them."
+      sources:
+        - *a6
+        - *a2
+        - &a10
+          kind: "literature"
+          title: "Gay (2019). Thoroughly adorable Thorichthys maculipinnis. Fishkeeping News"
+          url: "https://fishkeepingnews.com/2019/03/02/thoroughly-adorable-thorichthys/"
+          archived: "fishkeepingnews.com/2019/03/02/thoroughly-adorable-thorichthys/2026-10-15T083456Z"
+          accessed: "2026-10-15"
+        - &a11
+          kind: "website"
+          title: "Fishkeeper (Maidenhead Aquatics): Ellioti cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/ellioti-cichlid"
+          archived: "fishkeeper.co.uk/fish/freshwater/cichlids/ellioti-cichlid/2026-10-15T083458Z"
+          accessed: "2026-10-15"
+        - &a12
+          kind: "website"
+          title: "Aqualog: Thorichthys ellioti (= synonym of T. maculipinnis)"
+          url: "https://www.aqualog.de/?p=1129555"
+          archived: "aqualog.de/_root/q-2d3c41be/2026-10-15T083747Z"
+          accessed: "2026-10-15"
+        - &a13
+          kind: "website"
+          title: "Garnelio: Elliot's cichlid DNZ, Thorichthys maculipinnis (ellioti)"
+          url: "https://www.garnelio.de/en/elliots-cichlid-dnz-thorichthys-maculipinnis-ellioti"
+          archived: "garnelio.de/en/elliots-cichlid-dnz-thorichthys-maculipinnis-ellioti/2026-10-15T083748Z"
+          accessed: "2026-10-15"
+        - *a3
+        - &a14
+          kind: "website"
+          title: "Heimrich species information, Thorichthys ellioti XXL"
+          url: "https://www.heimrich.de/zierfische/fische/mittelamerikan.-cichliden/1421-thorichthys-ellioti-xxl-elliot\
+            s-buntbarsch"
+          accessed: "2026-10-15"
+          archived: "heimrich.de/zierfische/fische/mittelamerikan.-cichliden/1421-thorichthys-ellioti-xxl-elliots-buntb\
+            arsch/2026-10-15T083640Z"
+        - &a15
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register, Thorichthys maculipinnis"
+          url: "https://www.ciklid.org/artregister/art.php?ID=534"
+          accessed: "2026-10-15"
+          archived: "ciklid.org/artregister/art.php/q-28e1ba4b/2026-10-15T083454Z"
+        - *a4
+        - &a16
+          kind: "literature"
+          title: "Smits and Beerlink. Thorichthys maculipinnis. AquaInfo"
+          url: "https://aquainfo.nl/en/thorichthys-maculipinnis/"
+          archived: "aquainfo.nl/en/thorichthys-maculipinnis/2026-10-15T083523Z"
+          accessed: "2026-10-15"
+        - *a9
+        - &a17
+          kind: "website"
+          title: "LiveAquaria. Ellioti Cichlid"
+          url: "https://www.liveaquaria.com/products/ellioti-cichlid"
+          archived: "liveaquaria.com/products/ellioti-cichlid/2026-10-15T084227Z"
+          accessed: "2026-10-15"
+        - &a18
+          kind: "literature"
+          title: "Morphology and Efficiency of a Specialized Foraging Behavior, Sediment Sifting, in Neotropical Cichlid
+            Fishes (2014)"
+          url: "https://doi.org/10.1371/journal.pone.0089832"
+          archived: "doi.org/10.1371_journal.pone.0089832/2026-10-13T092411Z"
+          accessed: "2026-10-15"
+        - &a32
+          kind: "archive"
+          title: "cichlids.com forum thread 65428"
+          url: "https://www.cichlids.com/disc/read.php?2,65428"
+          accessed: "2026-10-15"
+      evidence:
+        - source: *a6
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium recommendation."
+        - source: *a2
+          value:
+            min: 22
+            max: 28
+          note: "Lower endpoint inferred from natural range; explicit aquarium warning above 28 C."
+        - source: *a10
+          value:
+            min: 28
+            max: 28
+          note: "Successful breeding at about 28 C, not a long-term thermal trial."
+        - source: *a11
+          value:
+            min: 24
+            max: 30
+          note: "care sheet"
+        - source: *a12
+          value:
+            min: 24
+            max: 29
+          note: "care sheet"
+        - source: *a13
+          value:
+            min: 22
+            max: 28
+          note: "shop listing"
+        - source: *a3
+          value:
+            min: 25
+            max: 28
+          note: "aquarium range"
+        - source: *a14
+          value:
+            min: 20
+            max: 27
+          note: "Aquarium recommendation"
+        - source: *a15
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium recommendation"
+        - source: *a6
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium recommendation"
+        - source: *a2
+          value:
+            min: 22
+            max: 28
+          note: "Author recommends cool oxygenated water and cautions above 28 C; lower boundary follows the habitat
+            discussion"
+        - source: *a16
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium care interval."
+        - source: *a11
+          value:
+            min: 24
+            max: 30
+          note: "Aquarium care interval, conflicts with CRC above 28 C."
+        - source: *a2
+          value:
+            min: 22
+            max: 28
+          note: "Lower bound from habitat context; upper bound is the stated long-term keeping ceiling, not an
+            experimentally measured limit."
+        - source: *a9
+          value:
+            min: 25
+            max: 26
+          note: "Reported successful aquarium maintenance."
+        - source: *a6
+          value:
+            min: 22
+            max: 28
+          note: "Species-specific aquarium guidance."
+        - source: *a15
+          value:
+            min: 22
+            max: 28
+          note: "Species-specific register recommendation."
+        - source: *a2
+          value:
+            min: 22
+            max: 28
+          note: "Interpretation of keeping within native parameters together with an explicit warning above 28 C; 22 C
+            derives from its field minimum, not a thermal-limit experiment."
+        - source: *a17
+          value:
+            min: 23.9
+            max: 26.7
+          note: "Header gives 75 to 80 F; overview instead gives 77 to 82 F, equivalent to 25 to 27.8 C."
+        - source: *a18
+          value:
+            min: 26
+            max: 28
+          note: "Holding and experimental room temperatures for captive-reared fish; no thermal-tolerance test."
+        - source: *a3
+          value:
+            min: 25
+            max: 28
+          note: "Environmental summary only, not an independently established long-term aquarium limit."
+        - source: *a6
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium profile range."
+        - source: *a11
+          value:
+            min: 24
+            max: 30
+          note: "Aquarium care recommendation."
+        - source: *a2
+          value:
+            min: 22
+            max: 28
+          note: "Derived maintenance range: author recommends cool water within natural parameters and warns about
+            aquarium temperatures above 28 C; 22 C comes from the field account. Not a measured lower
+            tolerance threshold."
+        - source: *a3
+          value:
+            min: 25
+            max: 28
+          note: "Environment range only, not evidence of a tested long-term aquarium tolerance."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 5
+          total: 6
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  ph:
+    value: &a41
+      min: 7
+      max: 8
+    confidence: "medium"
+    rationale: "Generator, checker-a, checker-b and both tiebreakers proposed 7 to 8, giving the
+      qualified-majority decision. Checker-c proposed the wider 6.7 to 8.5 after combining a reported single
+      Tonto reading of 6.75 with the FishBase 7 to 8.5 summary. The localized San Juan and regional DCG
+      collecting records support the typical 7 to 8 range. La Antigua measured 7.8 and the lower Papaloapan
+      survey recorded 7.2 to 7.8, consistent with it. Fishipedia gives 7 to 7.6 without a field series. The
+      single lower reading and the broader database range remain evidence, but neither establishes a typical
+      seasonal extension of the better-localized interval."
+    sources:
+      - *a2
+      - *a5
+      - *a3
+      - *a6
+      - *a7
+      - *a8
+      - *a4
+      - *a9
+    evidence:
+      - source: *a2
+        value:
+          min: 7
+          max: 8
+        note: "San Juan Evangelista field values reported through CRC."
+      - source: *a5
+        value:
+          min: 7.8
+          max: 7.8
+        note: "Santa Rosa dip-strip reading."
+      - source: *a3
+        value:
+          min: 7
+          max: 8.5
+        note: "General environmental summary."
+      - source: *a6
+        value:
+          min: 7.5
+          max: 8
+        note: "Habitat summary."
+      - source: *a7
+        value:
+          min: 7
+          max: 7.6
+        note: "General habitat summary without named field measurements."
+      - source: *a8
+        value:
+          min: 7.2
+          max: 7.8
+        note: "lower Papaloapan tributaries 2013"
+      - source: *a2
+        value:
+          min: 7
+          max: 8
+        note: "San Juan Evangelista River after Stawikowski and Werner"
+      - source: *a4
+        value:
+          min: 7
+          max: 8
+        note: "Native collecting sites"
+      - source: *a2
+        value:
+          min: 7
+          max: 8
+        note: "San Juan Evangelista, citing the 1998 monograph"
+      - source: *a3
+        value:
+          min: 7
+          max: 8.5
+        note: "Compiled environment range"
+      - source: *a6
+        value:
+          min: 7.5
+          max: 8
+        note: "Habitat summary without a measurement protocol"
+      - source: *a2
+        value:
+          min: 7
+          max: 8
+        note: "San Juan Evangelista field chemistry, relayed from Stawikowski and Werner (1998)."
+      - source: *a3
+        value:
+          min: 7
+          max: 8.5
+        note: "Environmental database interval."
+      - source: *a9
+        value:
+          min: 6.75
+          max: 6.75
+        note: "Single Tonto confluence field reading."
+      - source: *a9
+        value:
+          min: 7
+          max: 8
+        note: "San Juan field interval; probably shares the book source cited by CRC."
+      - source: *a2
+        value:
+          min: 7
+          max: 8
+        note: "San Juan Evangelista river chemistry attributed to Stawikowski and Werner (1998), read through CRC
+          rather than the original book."
+      - source: *a6
+        value:
+          min: 7.5
+          max: 8
+        note: "Natural-habitat paragraph; the separate general water recommendation is 7 to 8.5."
+      - source: *a3
+        value:
+          min: 7
+          max: 8.5
+        note: "Species environment range, without supporting station measurements on the summary page."
+      - source: *a2
+        value:
+          min: 7
+          max: 8
+        note: "San Juan Evangelista River field chemistry reported from Stawikowski and Werner (1998), page 494;
+          original book was not directly consulted."
+      - source: *a6
+        value:
+          min: 7.5
+          max: 8
+        note: "Natural-habitat paragraph; no sampling details."
+      - source: *a3
+        value:
+          min: 7
+          max: 8.5
+        note: "Species environment summary; field provenance of endpoints is not given."
+    tolerance:
+      value: &a42
+        min: 6.9
+        max: 8.5
+      confidence: "medium"
+      rationale: "The tally labels the four votes unanimous under its range-agreement rule and takes the rounded
+        midpoint of their endpoints: generator and checker-a proposed 7 to 8.5, checker-b 6.5 to 8.5, and
+        checker-c 6.7 to 8.5, producing 6.9 to 8.5. The 6.9 boundary is therefore an aggregation, not a
+        measured health threshold. Heimrich gives the wider 6.5 to 8 range; AquaInfo and other retailers
+        generally give 7 to 8.5, Fishkeeper and NCS prefer 7.5 to 8, and Fishipedia gives 6.8 to 7.2. The
+        published breeding account in acidic water has no numeric pH measurement and cannot fix a lower
+        endpoint. Neutral to moderately alkaline, stable water has the strongest support. LiveAquaria has a
+        wider header interval of 6 to 8 but recommends 7 to 8 in its overview; the inconsistent lower value is
+        retained without displacing the tally."
+      sources:
+        - *a6
+        - *a10
+        - *a2
+        - *a7
+        - *a3
+        - *a11
+        - *a12
+        - *a13
+        - *a14
+        - *a15
+        - *a19
+        - *a16
+        - *a9
+        - *a17
+      evidence:
+        - source: *a6
+          value:
+            min: 7
+            max: 8.5
+          note: "Aquarium recommendation."
+        - source: *a2
+          value:
+            min: 7
+            max: 8
+          note: "Keeping advice refers to natural chemistry; no separate numerical tolerance."
+        - source: *a7
+          value:
+            min: 6.8
+            max: 7.2
+          note: "General aquarium advice; its breeding paragraph separately gives pH 7.5."
+        - source: *a3
+          value:
+            min: 7
+            max: 8.5
+        - source: *a11
+          value:
+            min: 7.5
+            max: 8
+          note: "care sheet"
+        - source: *a12
+          value:
+            min: 7
+            max: 8
+          note: "care sheet"
+        - source: *a13
+          value:
+            min: 7
+            max: 8.5
+          note: "shop listing"
+        - source: *a14
+          value:
+            min: 6.5
+            max: 8
+          note: "Aquarium recommendation"
+        - source: *a6
+          value:
+            min: 7
+            max: 8.5
+          note: "Aquarium recommendation"
+        - source: *a15
+          value:
+            min: 7.5
+            max: 8
+          note: "Aquarium recommendation"
+        - source: *a19
+          value:
+            min: 7
+            max: 8.5
+          note: "Aquarium recommendation"
+        - source: *a16
+          value:
+            min: 7
+            max: 8.5
+          note: "Care-sheet interval."
+        - source: *a11
+          value:
+            min: 7.5
+            max: 8
+          note: "Preferred aquarium conditions."
+        - source: *a9
+          value:
+            min: 7
+            max: 7
+          note: "Successful aquarium maintenance; approximate value."
+        - source: *a2
+          value:
+            min: 7
+            max: 8
+          note: "Natural parameters also recommended qualitatively for keeping."
+        - source: *a17
+          value:
+            min: 6
+            max: 8
+          note: "Retailer header; its overview instead recommends 7 to 8."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  ghDgh:
+    value:
+      min: 4
+      max: 11
+    confidence: "medium"
+    rationale: "All four full profiles propose 4 to 11 dGH. CRC relays the San Juan field interval and DCG reports
+      that interval across named regional collecting sites; these are partly linked observations rather than
+      independent seasonal replications. La Antigua measured 150 mg/L total hardness as CaCO3, approximately
+      8.4 dGH, and the reported Tonto reading is 5 dGH. Fishipedia gives a wider unsited 5 to 20 dGH range,
+      while FishBase reports only a lower value of 8 and leaves the maximum unknown. Those summaries do not
+      supersede localized collecting measurements. Conductivity in the crustacean study is retained as
+      regional context and is not converted into GH."
+    sources:
+      - *a2
+      - *a5
+      - *a3
+      - *a6
+      - *a7
+      - *a8
+      - *a4
+      - *a9
+    evidence:
+      - source: *a2
+        value:
+          min: 4
+          max: 11
+        note: "Reported field hardness; original book not directly read."
+      - source: *a5
+        value:
+          min: 8.4
+          max: 8.4
+        note: "150 ppm total hardness measured with dip strips at Santa Rosa."
+      - source: *a3
+        value:
+          min: 8
+        note: "Only a lower dH value is supplied; upper bound absent."
+      - source: *a6
+        value:
+          min: 8
+          max: 8
+        note: "Approximate habitat hardness."
+      - source: *a7
+        value:
+          min: 5
+          max: 20
+        note: "General habitat summary without named field measurements."
+      - source: *a2
+        value:
+          min: 4
+          max: 11
+        note: "San Juan Evangelista River after Stawikowski and Werner"
+      - source: *a8
+        value: "conductivity 206 to 919 uS/cm"
+        note: "lower Papaloapan tributaries; consistent with moderate hardness"
+      - source: *a4
+        value:
+          min: 4
+          max: 11
+        note: "Reported field general hardness"
+      - source: *a2
+        value:
+          min: 4
+          max: 11
+        note: "Regional field chemistry attributed to Stawikowski and Werner"
+      - source: *a3
+        value:
+          min: 8
+          max: null
+        note: "FishBase leaves the upper hardness boundary unknown"
+      - source: *a2
+        value:
+          min: 4
+          max: 11
+        note: "San Juan Evangelista collecting measurements, quoted book data."
+      - source: *a9
+        value:
+          min: 4
+          max: 11
+        note: "San Juan habitat values, likely the same underlying book measurements."
+      - source: *a9
+        value:
+          min: 5
+          max: 5
+        note: "Single Tonto confluence measurement."
+      - source: *a3
+        value:
+          min: 8
+          max: null
+        note: "Environmental entry leaves the upper dH limit unspecified; null is not a zero or a measured endpoint."
+    tolerance:
+      value: &a43
+        min: 4
+        max: 19
+      confidence: "low"
+      rationale: "The unanimous decision under the tally agreement rule is 4 to 19 dGH. Generator and checker-b
+        proposed 4 to 20, while checker-a and checker-c proposed 4 to 18; the upper decision is the midpoint
+        of 18 and 20. This is a low-confidence working envelope rather than a tested physiological boundary.
+        Heimrich and Zierfische-Direkt publish wider advice reaching 20 dGH, Fishkeeper gives a maximum of 18,
+        and AquaInfo and Garnelio give 8 to 12. A keeper maintained and bred the fish at about 14 dGH. The
+        minimum includes the occupied 4 dGH habitat water. The retained checker-a FishBase evidence entry
+        combines its incomplete lower-bound value with another care sheet maximum of 18; FishBase itself does
+        not publish that upper endpoint."
+      sources:
+        - *a6
+        - *a20
+        - *a2
+        - *a10
+        - *a3
+        - *a11
+        - *a13
+        - *a14
+        - *a19
+        - *a4
+        - *a16
+        - *a9
+      evidence:
+        - source: *a6
+          value:
+            min: 8
+            max: 12
+          note: "Care range."
+        - source: *a20
+          value:
+            min: 8
+            max: 20
+          note: "Care range from a low-trust aggregator."
+        - source: *a2
+          value:
+            min: 4
+            max: 11
+          note: "Measured habitat supports lower endpoint, not a tolerance trial."
+        - source: *a3
+          value:
+            min: 8
+            max: 18
+          note: "dH from 8; upper limit taken from the care sheet This combined agent interpretation is retained for
+            audit; FishBase itself leaves the upper value unknown."
+        - source: *a11
+          value:
+            min: 4
+            max: 18
+          note: "up to 18 dGH stated The lower bound was supplied by the agent from habitat evidence; the page itself
+            states only a maximum of 18."
+        - source: *a13
+          value:
+            min: 8
+            max: 12
+          note: "shop listing"
+        - source: *a14
+          value:
+            min: 5
+            max: 20
+          note: "Aquarium recommendation"
+        - source: *a19
+          value:
+            min: 8
+            max: 20
+          note: "Aquarium recommendation"
+        - source: *a6
+          value:
+            min: 8
+            max: 12
+          note: "Aquarium recommendation"
+        - source: *a4
+          value:
+            min: 4
+            max: 11
+          note: "Natural population evidence used to include the lower end"
+        - source: *a11
+          value:
+            min: null
+            max: 18
+          note: "Care-sheet maximum; no lower limit supplied."
+        - source: *a16
+          value:
+            min: 8
+            max: 12
+          note: "Aquarium care interval."
+        - source: *a9
+          value:
+            min: 14
+            max: 14
+          note: "Successful maintenance and breeding in tap water."
+        - source: *a2
+          value:
+            min: 4
+            max: 11
+          note: "Native chemistry; keeping within natural parameters is advised."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  khDkh:
+    value:
+      min: 5
+      max: 13
+    confidence: "medium"
+    rationale: "All four full profiles propose 5 to 13 dKH, matching explicitly distinguished carbonate-hardness
+      measurements in the DCG collecting account and the San Juan values relayed by CRC. La Antigua alkalinity
+      of 180 mg/L as CaCO3 is approximately 10.1 dKH equivalent and falls inside this interval. The evidence
+      is regional and partly shares its underlying book source, so confidence remains medium. The upper-basin
+      dryland study is not transferred to occupied lowland sites. Neither GH nor conductivity is used to
+      calculate KH. Natural KH deliberately has no verification object."
+    sources:
+      - *a2
+      - *a5
+      - *a4
+      - *a21
+    evidence:
+      - source: *a2
+        value:
+          min: 5
+          max: 13
+        note: "San Juan Evangelista field measurements reported secondhand."
+      - source: *a5
+        value:
+          min: 10.1
+          max: 10.1
+        note: "180 ppm total alkalinity at Santa Rosa; carbonate-equivalent conversion."
+      - source: *a2
+        value:
+          min: 5
+          max: 13
+        note: "San Juan Evangelista River after Stawikowski and Werner"
+      - source: *a4
+        value:
+          min: 5
+          max: 13
+        note: "Field carbonate hardness"
+      - source: *a2
+        value:
+          min: 5
+          max: 13
+        note: "Regional carbonate hardness from the 1998 monograph"
+      - source: *a2
+        value:
+          min: 5
+          max: 13
+        note: "San Juan Evangelista field measurements as reported in the 1998 book and relayed by CRC."
+    tolerance:
+      value: &a44
+        min: 3
+        max: 15
+      confidence: "low"
+      rationale: "The tally agreement rule returns 3 to 15 dKH from generator, checker-a and checker-c proposals of
+        3 to 15 and checker-b of 5 to 15. Zierfische-Direkt states 5 to 15 dKH, Aqua-Pedia 6 to 12 and
+        Garnelio 2 to 8. The wider lower limit of 2 in Garnelio is retained in evidence; the chosen 3 is an
+        inferred buffering margin supported only indirectly by the pH and GH keeping advice, not a measured
+        health threshold. The magazine account used supply water with zero KH during breeding and later added
+        limestone, so that observation does not establish safe permanent zero-KH maintenance. Natural 5 to 13
+        is contained, but GH, pH and KH are not interchangeable. LiveAquaria also labels a wider upper range
+        of 9 to 20 dKH without a supporting trial; it does not change the fixed tally endpoint of 15."
+      sources:
+        - *a2
+        - *a6
+        - *a20
+        - *a10
+        - &a22
+          kind: "model-knowledge"
+          title: "Generator inference from the cited species husbandry observations"
+        - *a13
+        - *a11
+        - *a19
+        - *a4
+        - *a16
+        - *a9
+        - *a17
+      evidence:
+        - source: *a20
+          value:
+            min: 6
+            max: 12
+          note: "Published care interval."
+        - source: *a10
+          value:
+            min: 0
+            max: 0
+          note: "Supply-water KH during a short breeding account, later buffered with limestone."
+        - source: *a22
+          value:
+            min: 3
+            max: 15
+          note: "Inferred working tolerance, not an experimentally measured physiological limit."
+        - source: *a13
+          value:
+            min: 2
+            max: 8
+          note: "shop listing"
+        - source: *a11
+          value: "pH 7.5 to 8.0 and up to 18 dGH implies well-buffered water"
+          note: "indirect"
+        - source: *a19
+          value:
+            min: 5
+            max: 15
+          note: "Direct aquarium KH recommendation"
+        - source: *a4
+          value:
+            min: 5
+            max: 13
+          note: "Native field interval included in the tolerance"
+        - source: *a2
+          value:
+            min: 5
+            max: 13
+          note: "Measured natural KH provides context only, not tolerance endpoints."
+        - source: *a16
+          value:
+            ph:
+              min: 7
+              max: 8.5
+            ghDgh:
+              min: 8
+              max: 12
+          note: "Related aquarium chemistry used to infer buffering flexibility; no KH is stated."
+        - source: *a9
+          value:
+            ph: 7
+            ghDgh: 14
+          note: "Successful keeping chemistry; KH unreported."
+        - source: *a17
+          value:
+            min: 9
+            max: 20
+          note: "Retailer header labels this interval dKH; no test method or long-term study is provided."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+  maxSizeCm:
+    value: &a45
+      male: 15
+      female: 12
+    confidence: "medium"
+    rationale: "The component medians of proposals are 15 cm male and 12 cm female: generator, checker-b and
+      checker-c proposed 15 and 12, while checker-a proposed 14 and 12. AquaInfo and independent keeping
+      accounts support males near 15 cm; the keeper gives females about 10 to 12 cm. DCG reports males a
+      little over 14 cm total length, CRC distinguishes about 14 to 15 cm total length, and FishBase reports
+      15 cm standard length without a sex-specific female maximum. Standard length is not silently treated as
+      total length. Aqualog gives the wider 13 to 16 cm size interval and legacy estimates reach about 18 cm
+      without standardized measurement; those do not set typical aquarium planning maxima. The female value is
+      an approximate upper working size rather than a verified record."
+    sources:
+      - *a6
+      - *a10
+      - *a3
+      - *a2
+      - &a33
+        kind: "archive"
+        title: "cichlids.com forum thread 48796"
+        url: "https://www.cichlids.com/disc/read.php?1,48796"
+        accessed: "2026-10-15"
+      - &a27
+        kind: "archive"
+        title: "cichlids.com forum thread 67892"
+        url: "https://www.cichlids.com/disc/read.php?1,67892"
+        accessed: "2026-10-15"
+      - *a11
+      - *a12
+      - *a4
+      - *a15
+      - &a31
+        kind: "model-knowledge"
+        title: "Explicit inference where sex-specific dimensions or a numeric threshold are unreported"
+      - *a16
+      - *a9
+    evidence:
+      - source: *a6
+        value:
+          male: 15
+        note: "Male maximum; female smaller without a number."
+      - source: *a10
+        value:
+          male: 11
+          female: 7.5
+        note: "Observed breeding pair, not maxima."
+      - source: *a2
+        value: "about 14 cm total length in nature, 15 cm maximum in the literature"
+      - source: *a3
+        value: "15 cm SL male or unsexed"
+      - source: *a11
+        value: "15 cm; males larger"
+      - source: *a12
+        value: "13 to 16 cm"
+      - source: *a4
+        value:
+          male: 14
+          female: null
+        note: "Aquarium total length; females smaller without a number"
+      - source: *a6
+        value:
+          male: 15
+          female: null
+        note: "Females slightly smaller"
+      - source: *a9
+        value:
+          male: 15
+          female: 12
+        note: "Female upper end of the stated 10 to 12 cm interval."
+      - source: *a11
+        value:
+          male: 15
+        note: "Sex-unspecified maximum; females described as smaller."
+  predation:
+    value: 1
+    confidence: "medium"
+    rationale: "All four full-profile votes choose level 1. CRC and AquaInfo warn that small companions may be
+      swallowed while describing bottom feeding on small animal prey. This supports opportunistic fry and
+      tiny-fish predation rather than habitual fish hunting. The approximately 2 cm prey boundary comes from
+      the rubric, not a measured gape study. A keeper reports peaceful coexistence with small characins and
+      its level-0 interpretation remains evidence; lack of observed losses does not remove the reported
+      predation risk."
+    sources:
+      - *a2
+      - *a6
+      - *a18
+      - *a11
+      - *a16
+      - *a9
+      - &a23
+        kind: "archive"
+        title: "cichlids.com forum thread 67985"
+        url: "https://www.cichlids.com/disc/read.php?1,67985"
+        accessed: "2026-10-15"
+    evidence:
+      - source: *a2
+        value: 1
+        note: "Small dither fish may be eaten; field feeding is substrate picking."
+      - source: *a6
+        value: 1
+        note: "Tiny tankmates are at risk; no evidence of regular piscivory."
+      - source: *a2
+        value: 1
+        note: "feeding type insectivorous, substrate picker"
+      - source: *a11
+        value: 1
+        note: "keep without small or slow tankmates"
+      - source: *a2
+        value: 1
+        note: "Small dither fish can be consumed; inferred rubric level"
+      - source: *a6
+        value: 1
+        note: "Occasional swallowing of very small companions; inferred rubric level"
+      - source: *a23
+        value: 1
+        note: "General community-tank discussion mentions mouth-size risks; it does not establish a species-specific
+          prey threshold."
+      - source: *a2
+        value: 1
+        note: "Adult fish may consume small dither fish; rubric mapping, prey length not measured."
+      - source: *a16
+        value: 1
+        note: "Occasional swallowing of very small tankmates; rubric mapping."
+      - source: *a9
+        value: 0
+        note: "Keeper observed peaceful coexistence with small characins and livebearers, without reporting
+          predation."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value: &a46
+      type: "invertivore"
+      bloatSensitive: true
+    confidence: "low"
+    rationale: "All six runs classify the fish as invertivore. Generator, checker-b and tiebreaker-1 proposed
+      bloatSensitive false; checker-a, checker-c and tiebreaker-2 proposed true. The 3 versus 3 split produces
+      the conservative decision invertivore with bloatSensitive true and low confidence. CRC describes
+      insect-focused substrate feeding, and the experimental paper directly demonstrates retrieval of buried
+      chironomid larvae. AquaInfo, NCS, Fishipedia and retailers also use omnivore labels for broad food
+      acceptance, and the 2024 genus overview includes algae and detritus without a species-specific gut
+      analysis. Fishkeeper and a keeper account warn against excessive protein; a forum warning concerns
+      Thorichthys generally. CRC restricts its dietary warning to terrestrial animal protein, so it does not
+      establish intolerance of suitable aquatic invertebrates. The false proposals make that narrower
+      distinction and remain plausible dissent. The retained flag is precautionary, not experimental proof or
+      an instruction to replace aquatic prey with a plant-only diet."
+    sources:
+      - *a2
+      - *a18
+      - *a6
+      - *a7
+      - *a11
+      - *a13
+      - *a15
+      - *a4
+      - *a19
+      - *a16
+      - *a9
+      - *a24
+      - *a17
+      - &a25
+        kind: "forum"
+        title: "MonsterFishKeepers: Thorichthys group size? (2015)"
+        url: "https://www.monsterfishkeepers.com/forums/threads/thorichthys-group-size.655225/"
+        archived: "monsterfishkeepers.com/forums/threads/thorichthys-group-size.655225/2026-10-15T084153Z"
+        accessed: "2026-10-15"
+    evidence:
+      - source: *a2
+        value:
+          type: "invertivore"
+          bloatSensitive: false
+        note: "Insectivorous; false is an inference because a general high-protein syndrome is not established."
+      - source: *a18
+        value:
+          type: "invertivore"
+        note: "Benthic larvae consumption tested; not a complete wild gut-content study."
+      - source: *a6
+        value:
+          type: "omnivore"
+        note: "Broad prepared and animal food acceptance."
+      - source: *a7
+        value:
+          type: "omnivore"
+        note: "Animal-leaning omnivore classification."
+      - source: *a2
+        value: "invertivore"
+        note: "insectivorous, substrate picker"
+      - source: *a13
+        value: "invertivore"
+        note: "small crustaceans, insect larvae, worms"
+      - source: *a11
+        value: "omnivore"
+        note: "warns against too much protein"
+      - source: *a2
+        value:
+          type: "invertivore"
+          bloatSensitive: false
+        note: "Animal-prey specialist; terrestrial protein caution is not evidence of a plant-based requirement"
+      - source: *a18
+        value:
+          type: "invertivore"
+          bloatSensitive: false
+        note: "Experimental chironomid feeding supports prey capture, not a bloat trial"
+      - source: *a15
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Also describes a preference for small animal foods"
+      - source: *a6
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Broad food acceptance in captivity"
+      - source: *a2
+        value:
+          type: "invertivore"
+          bloatSensitive: true
+        note: "Field feeding observations emphasize animal prey; keeping section warns about dietary delicacy and
+          terrestrial animal proteins."
+      - source: *a11
+        value:
+          type: "omnivore"
+          bloatSensitive: true
+        note: "Care sheet recommends mixed foods and warns against excessive protein."
+      - source: *a16
+        value:
+          type: "omnivore"
+        note: "Broad mixed-food recommendation; no explicit protein-related bloat claim."
+      - source: *a9
+        value:
+          type: "omnivore"
+          bloatSensitive: true
+        note: "Mixed diet and a warning about protein-related digestive problems; own fish remained healthy."
+      - source: *a24
+        value:
+          type: "omnivore"
+        note: "Genus-level ecological overview includes detritus, algae and aquatic invertebrates, not a
+          species-specific stomach-content analysis."
+      - source: *a2
+        value:
+          type: "invertivore"
+        note: "Natural insect feeding and animal prey selection; aquarium warning concerns terrestrial animal proteins
+          specifically, not a measured total-protein threshold."
+      - source: *a18
+        value:
+          type: "invertivore"
+        note: "Fish identified as T. ellioti extracted and consumed chironomid larvae in controlled trials; this is
+          feeding-performance evidence, not a complete wild diet analysis or bloat experiment."
+      - source: *a15
+        value:
+          type: "invertivore"
+        note: "Describes small-invertebrate feeding together with broad food acceptance; also uses an omnivore
+          description."
+      - source: *a6
+        value:
+          type: "omnivore"
+        note: "Database label is omnivore; husbandry text recommends aquatic crustaceans and prepared foods and
+          cautions about potentially contaminated bloodworms."
+      - source: *a17
+        value:
+          type: "omnivore"
+        note: "Broad food category with aquatic worms, plankton and prepared foods; no protein-induced bloat claim."
+      - source: *a2
+        value:
+          type: "invertivore"
+          bloatSensitive: true
+        note: "Insect-feeding substrate picker; sensitivity warning concerns terrestrial animal protein. The boolean
+          is a rubric interpretation of that restricted warning, not a claim that all animal protein causes
+          illness."
+      - source: *a11
+        value:
+          type: "omnivore"
+          bloatSensitive: true
+        note: "Explicit caution about too much protein and digestive problems; recommends both animal and vegetable
+          foods."
+      - source: *a6
+        value:
+          type: "omnivore"
+        note: "General diet label is omnivore. Recommends aquatic crustaceans and prepared foods; its bloodworm
+          caution concerns contamination rather than protein content."
+      - source: *a25
+        value:
+          bloatSensitive: true
+        note: "Keeper warning for Thorichthys generally, linking excessive protein to bloat; not a controlled report
+          for this species alone."
+    verification:
+      method: "conservative"
+      votes:
+        agree: 3
+        total: 6
+  aggressionConspecific:
+    value: 3
+    confidence: "medium"
+    rationale: "Generator, checker-a and checker-b proposed level 3; checker-c proposed 2 for a well-spaced group.
+      CRC reports conspecific deaths in cramped aquaria and NCS notes occasional serious within-species
+      problems. The magazine records exclusion of an extra female, and the aggression forum includes both
+      uneventful groups and fatalities after transfer. AquaInfo and Fishkeeper emphasize display and
+      comparatively mild disputes. Level 3 reflects persistent pressure on subordinate adults and the need for
+      retreats and intervention during pair formation, while these dissenting observations explain why injury
+      is not inevitable in the recommended spacious group."
+    sources:
+      - *a2
+      - *a10
+      - *a6
+      - *a11
+      - &a26
+        kind: "forum"
+        title: "MonsterFishKeepers forum: Aggressive Thorichthys maculipinnis (ellioti)"
+        url: "https://www.monsterfishkeepers.com/forums/goto/post?id=8574262"
+        archived: "monsterfishkeepers.com/forums/goto/post/q-bd26d2bb/2026-10-15T083807Z"
+        accessed: "2026-10-15"
+      - *a15
+      - *a16
+      - *a9
+    evidence:
+      - source: *a10
+        value: 3
+        note: "Stable pair alongside a reported fatal attack on an extra female."
+      - source: *a6
+        value: 2
+        note: "Describes loose groups and comparatively mild behavior."
+      - source: *a11
+        value: 2
+        note: "bluff, aggressive only when breeding"
+      - source: *a26
+        value: 3
+        note: "forum reports of conspecifics killed by breeding pairs; other keepers saw no problems"
+      - source: *a2
+        value: 3
+        note: "Rubric interpretation of aggression and cramped-tank deaths"
+      - source: *a15
+        value: 3
+        note: "Occasional serious within-species conflict"
+      - source: *a6
+        value: 2
+        note: "More peaceful account"
+  aggressionHeterospecific:
+    value: 2
+    confidence: "medium"
+    rationale: "Nest defense includes chasing intruders. Gay saw defensive lunges toward swordtails without
+      contact; AquaInfo describes displays and brief exclusion. Large aggressive cichlids can instead
+      intimidate this species."
+    sources:
+      - *a10
+      - *a6
+      - *a2
+      - *a11
+      - *a26
+      - *a16
+      - *a9
+    evidence:
+      - source: *a11
+        value: 1
+        note: "shy, peaceful outside breeding"
+      - source: *a26
+        value: 3
+        note: "single male harassed tankmates"
+      - source: *a6
+        value: 2
+        note: "Territory defense includes chasing without usual injury"
+      - source: *a2
+        value: 2
+        note: "Intruders excluded by the breeding pair"
+  territory:
+    value:
+      size: "small"
+      breedingOnly: true
+    confidence: "medium"
+    rationale: "All full profiles choose a small territory associated with breeding. AquaInfo describes a nest
+      area around 30 cm, DCG observes small breeding territories, and CRC records males defending sites before
+      pairing. The breedingOnly flag includes courtship; it does not imply that all nonbreeding displays
+      disappear. Wild fry-herding excursions extend beyond the immediate nest area."
+    sources:
+      - *a6
+      - *a2
+      - *a11
+      - *a13
+      - *a4
+      - *a16
+      - *a9
+    evidence:
+      - source: *a11
+        value: "territorial when breeding"
+      - source: *a13
+        value: "males mark territories among wood, stones and caves"
+      - source: *a6
+        value:
+          size: "small"
+          breedingOnly: true
+      - source: *a4
+        value:
+          size: "small"
+          breedingOnly: true
+  habitatZones:
+    value:
+      - "sand"
+      - "rock"
+      - "wood"
+    confidence: "high"
+    rationale: "Field observations and the collecting report place fish over fine sediment with stones and
+      submerged woody cover. Plants are often sparse and are optional aquarium shelter."
+    sources:
+      - *a2
+      - *a5
+      - *a10
+      - *a18
+      - *a11
+      - *a4
+      - *a3
+      - *a15
+      - *a16
+      - *a24
+    evidence:
+      - source: *a2
+        value:
+          - "sand"
+          - "rock"
+          - "wood"
+        note: "mud, sand, gravel and rocks with roots and branches"
+      - source: *a11
+        value:
+          - "sand"
+          - "wood"
+          - "rock"
+        note: "sand, driftwood, smooth rocks"
+      - source: *a2
+        value:
+          - "sand"
+          - "rock"
+          - "wood"
+      - source: *a3
+        value:
+          - "sand"
+          - "rock"
+  social:
+    value: &a47
+      structure: "group"
+      minGroup: 6
+    confidence: "medium"
+    rationale: "Generator and checker-a proposed an adult pair; checker-b and checker-c proposed a group of six.
+      CRC describes loose feeding groups and recommends group housing, AquaInfo prefers groups while allowing
+      pairs, and NCS recommends five or six individuals. DCG recommends the larger group of eight to ten, and
+      one keeper maintained eight successfully; retailers suggest three to five. Select six as a practical
+      small-group unit, without treating it as an experimentally proven aggression threshold. Bonded pairs
+      temporarily occupy breeding areas and can be housed separately, but the stated minimum tank is for the
+      group."
+    sources:
+      - *a2
+      - *a10
+      - *a6
+      - *a13
+      - *a12
+      - *a15
+      - *a4
+      - *a19
+      - *a11
+      - *a16
+      - *a9
+    evidence:
+      - source: *a2
+        value: "pair"
+        note: "mating monogamous"
+      - source: *a13
+        value: "pair"
+        note: "keep a group so pairs form"
+      - source: *a12
+        value: "pair"
+        note: "keep in pairs"
+      - source: *a15
+        value:
+          structure: "group"
+          minGroup: 5
+        note: "Recommendation is five to six"
+      - source: *a4
+        value:
+          structure: "group"
+          minGroup: 8
+        note: "Recommendation is eight to ten"
+      - source: *a19
+        value:
+          structure: "group"
+          minGroup: 3
+        note: "Recommendation is three to five"
+      - source: *a2
+        value:
+          structure: "group"
+        note: "Loose foraging groups and an explicit aquarium group recommendation."
+      - source: *a16
+        value:
+          structure: "group"
+        note: "Groups preferred; established pairs also possible."
+      - source: *a9
+        value:
+          structure: "group"
+          minGroup: 8
+        note: "One successful observed aquarium group had eight fish; this is not a tested minimum."
+  speciesOnly:
+    value: false
+    confidence: "high"
+    rationale: "All four full profiles propose false. CRC recommends large livebearer companions, AquaInfo permits
+      calm schooling fish, and the magazine author reports swordtails with a breeding pair. Retailer and
+      independent keeper accounts support mixed housing. Very small fish, fin nippers and aggressive cichlids
+      still require exclusion; community suitability is conditional on space and temperament. Broader archive
+      discussions provide context rather than controlled species-specific trials."
+    sources:
+      - *a2
+      - *a6
+      - *a10
+      - &a28
+        kind: "archive"
+        title: "cichlids.com forum thread 67599"
+        url: "https://www.cichlids.com/disc/read.php?1,67599"
+        accessed: "2026-10-15"
+      - &a34
+        kind: "archive"
+        title: "cichlids.com forum thread 67979"
+        url: "https://www.cichlids.com/disc/read.php?1,67979"
+        accessed: "2026-10-15"
+      - *a23
+      - *a11
+      - *a13
+      - *a27
+      - *a16
+      - *a9
+    evidence:
+      - source: *a2
+        value: false
+        note: "Large livebearers recommended."
+      - source: *a10
+        value: false
+        note: "Green swordtails kept with a breeding pair."
+      - source: *a6
+        value: false
+        note: "Calm schooling companions permitted."
+      - source: *a11
+        value: false
+        note: "kept with dither fish and placid cichlids"
+      - source: *a13
+        value: false
+        note: "peaceful larger fish as company"
+      - source: *a2
+        value: false
+        note: "Large livebearers used successfully"
+      - source: *a6
+        value: false
+        note: "Peaceful companions recommended"
+      - source: *a28
+        value: false
+        note: "Mixed-tank recommendation for an Ellioti pair"
+      - source: *a2
+        value: false
+        note: "Successful aquarium association with large Poecilia."
+      - source: *a11
+        value: false
+        note: "Multiple compatible robust companion groups given."
+      - source: *a16
+        value: false
+        note: "Peaceful community companions allowed."
+      - source: *a28
+        value: false
+        note: "Legacy community discussion recommends a pair in a mixed tank."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: &a48
+      - "thorichthys-meeki-maculipinnis"
+    confidence: "medium"
+    rationale: "The qualified majority retains the existing thorichthys-meeki-maculipinnis group: generator,
+      checker-a, checker-c and tiebreaker-2 proposed only that group. Checker-b and tiebreaker-1 additionally
+      proposed thorichthys-helleri-group with T. aureus, T. callolepis, T. helleri, T. maculipinnis and T.
+      socolofi, based on an explicit collective crossing warning in NCS. That is substantive dissent and is
+      retained in evidence; it is more than a taxonomic group label. The decided pair rests on a 2016 forum
+      account of a female firemouth and an Ellioti male producing surviving young, plus hobby and archive
+      warnings. Conspecific partner availability and independent parentage confirmation are unspecified, so
+      its existing presumed basis is appropriate. The Practical Fishkeeping incident concerns a firemouth and
+      a convict, not an additional maculipinnis cross. Sources with no crossing claim remain contextual
+      evidence rather than support for a new group."
+    sources:
+      - &a29
+        kind: "forum"
+        title: "Firemouth X Ellioti Hybrids (2016). MonsterFishKeepers"
+        url: "https://www.monsterfishkeepers.com/forums/threads/firemouth-x-ellioti-hybrids.672431/"
+        archived: "monsterfishkeepers.com/forums/threads/firemouth-x-ellioti-hybrids.672431/2026-10-14T103440Z"
+        accessed: "2026-10-15"
+      - *a6
+      - *a28
+      - &a36
+        kind: "database"
+        title: "Curated hybrid groups: thorichthys-meeki-maculipinnis (data/species/hybrid-groups.yaml)"
+      - *a13
+      - *a15
+      - *a16
+      - &a30
+        kind: "literature"
+        title: "Parha and Reclos. Keeping and breeding Thorichthys meeki. AquaInfo"
+        url: "https://aquainfo.nl/en/keeping-and-breeding-thorichthys-meeki/"
+        archived: "aquainfo.nl/en/keeping-and-breeding-thorichthys-meeki/2026-10-14T103431Z"
+        accessed: "2026-10-15"
+      - *a1
+      - &a37
+        kind: "literature"
+        title: "Horvath. Caring for Firemouth cichlids. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/caring-for-firemouth-cichlids/"
+        archived: "practicalfishkeeping.co.uk/features/caring-for-firemouth-cichlids/2026-10-14T094241Z"
+        accessed: "2026-10-15"
+      - *a2
+    evidence:
+      - source: *a29
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "Named cross reported, parental identity and mate choice unverified."
+      - source: *a6
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "General Thorichthys hybridization warning supports this listed pair."
+      - source: *a28
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "Independent warning to avoid the Ellioti and firemouth combination."
+      - source: *a13
+        value: "no cross stated"
+        note: "shop text says nothing about crosses"
+      - source: *a26
+        value: "no cross stated"
+        note: "thread concerns aggression only"
+      - source: *a29
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "Reported aquarium offspring without documented same-species mate choice"
+      - source: *a28
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "Community warning about mixing firemouth and Ellioti"
+      - source: *a15
+        value:
+          - "thorichthys-helleri-group"
+        note: "Proposed presumed five-member group based on an explicit collective warning"
+      - source: *a29
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "Reported tank spawning and surviving fry; partner choice not documented."
+      - source: *a16
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "General Thorichthys crossing warning supports caution, without a named observed pair."
+      - source: *a28
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "Specific warning against mixing Ellioti and firemouth."
+      - source: *a15
+        value:
+          - "thorichthys-helleri-group"
+        note: "Explicit warning covering the five species named in the rationale; presumed group rather than verified
+          crosses for every pair."
+      - source: *a29
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "Reported tank spawning and surviving young; access to conspecific mates is unknown."
+      - source: *a6
+        value:
+          - "thorichthys-meeki-maculipinnis"
+          - "thorichthys-helleri-group"
+        note: "General warning against mixed Thorichthys breeding; supports risk but does not enumerate or document
+          these pairs."
+      - source: *a30
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "General warning that meeki crosses with congeners; does not name maculipinnis as an observed partner."
+      - source: *a28
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "Community caution specifically against combining firemouth and Ellioti because of possible crossing."
+      - source: *a29
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "Reported mixed-tank spawning and surviving offspring of the named pair; conspecific mate choice is
+          unspecified."
+      - source: *a6
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "General warning about interbreeding when Thorichthys species are housed together; supports presumed
+          risk but does not identify an additional pair."
+      - source: *a30
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "Independent breeding account warns that meeki can hybridize with other Thorichthys; no particular cross
+          is described."
+      - source: *a28
+        value:
+          - "thorichthys-meeki-maculipinnis"
+        note: "Community advice specifically warns against mixing Ellioti and firemouths because they might cross."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 4
+        total: 6
+  coloration:
+    value: &a49
+      baseColors:
+        - "grey"
+        - "blue"
+        - "red"
+        - "orange"
+      pattern: "mixed"
+    confidence: "high"
+    rationale: "Generator and checker-b proposed grey, blue, red and orange; checker-a omitted orange, and
+      checker-c additionally included black. The sources describe a subdued body with blue reflective markings
+      and variable red to orange lower coloration. Black flank and opercular marks and reproductive bars
+      belong to the mixed pattern rather than an additional dominant base color. Geographic and social
+      variation explains the warmer-color differences."
+    sources:
+      - *a2
+      - *a10
+      - *a6
+      - *a13
+      - *a15
+      - *a16
+      - *a9
+    evidence:
+      - source: *a13
+        value:
+          baseColors:
+            - "grey"
+            - "red"
+            - "blue"
+          pattern: "mixed"
+      - source: *a6
+        value:
+          baseColors:
+            - "blue"
+            - "red"
+            - "black"
+          pattern: "mixed"
+      - source: *a2
+        value:
+          baseColors:
+            - "blue"
+            - "orange"
+          pattern: "mixed"
+        note: "Population-dependent ventral coloration"
+  feedingSpeed:
+    value: "normal"
+    confidence: "medium"
+    rationale: "All four full profiles choose normal. CRC describes healthy fish feeding readily, aquarium
+      accounts show repeated bottom searching and the experiment measures prey extraction. DCG warns that very
+      active companions can dominate feeding, retained as slow relative-competition evidence, but no source
+      establishes an intrinsically slow or hasty feeding category for every suitable community."
+    sources:
+      - *a2
+      - *a10
+      - *a6
+      - *a11
+      - *a4
+      - *a18
+      - *a16
+      - *a9
+    evidence:
+      - source: *a11
+        value: "normal"
+        note: "substrate sifter, no remark on speed"
+      - source: *a2
+        value: "normal"
+        note: "Interpretation of enthusiastic but selective feeding"
+      - source: *a4
+        value: "slow"
+        note: "Relative vulnerability to active companions"
+  minTank:
+    value: &a50
+      volumeL: 300
+      lengthCm: 150
+      depthCm: 50
+    confidence: "medium"
+    rationale: "The starting medians are 275 L, 135 cm length and 47.5 cm depth, from generator 200/100/40,
+      checker-a 250/120/45, checker-b 300/150/50 and checker-c 350/150/50. These mix pair and group units and
+      therefore cannot be used unchanged for the selected six adults. CRC specifies at least 300 L for a group
+      and DCG and AquaInfo give 150 cm group length. The keeper recommends the larger 350 L and 150 cm option;
+      NCS lists the smaller 200 L and 120 cm alternative. Select the directly supported 300 L and 150 cm group
+      minimum, with 50 cm depth as an explicit layout inference for retreats and several small territories. It
+      is not a quoted source dimension. The additional volume for a large community is not included in this
+      minimum."
+    sources:
+      - *a6
+      - *a20
+      - *a2
+      - *a7
+      - *a13
+      - *a11
+      - *a12
+      - *a4
+      - *a15
+      - *a31
+      - *a16
+      - *a9
+    evidence:
+      - source: *a13
+        value:
+          volumeL: 250
+          lengthCm: 120
+          depthCm: 45
+        note: "pair The depth is an agent layout inference, not a dimension stated by the retailer."
+      - source: *a11
+        value:
+          lengthCm: 150
+        note: "preferably 5 to 6 ft"
+      - source: *a12
+        value:
+          lengthCm: 100
+        note: "100 to 200 cm"
+      - source: *a2
+        value:
+          volumeL: 300
+        note: "Group minimum"
+      - source: *a4
+        value:
+          lengthCm: 150
+        note: "Group aquarium"
+      - source: *a15
+        value:
+          volumeL: 200
+          lengthCm: 120
+        note: "Lower association recommendation"
+      - source: *a2
+        value:
+          volumeL: 300
+        note: "Minimum stated group volume; footprint not given."
+      - source: *a9
+        value:
+          volumeL: 350
+          lengthCm: 150
+        note: "Group-housing recommendation."
+      - source: *a16
+        value:
+          lengthCm: 150
+        note: "Small group; pair option 100 to 120 cm."
+      - source: *a11
+        value:
+          lengthCm: 152.4
+        note: "Lower end of adult preference of five to six feet, converted to cm."
+  lifespanYears:
+    value: &a51
+      min: 7
+      max: 8
+    confidence: "medium"
+    rationale: "The component medians of the four proposals are seven and eight years: generator, checker-b and
+      checker-c proposed 7 to 8, while checker-a proposed the wider 7 to 12. CRC gives a species-specific
+      expectation of about seven to eight years and Fishipedia lists seven. Garnelio and Zierfische-Direkt
+      advertise up to twelve without a documented longevity series. That larger source value stays cited but
+      does not define typical life expectancy."
+    sources:
+      - *a2
+      - *a7
+      - *a13
+      - *a19
+    evidence:
+      - source: *a2
+        value:
+          min: 7
+          max: 8
+      - source: *a13
+        value:
+          min: 7
+          max: 12
+        note: "up to 12 years The retailer states an upper age near twelve, not a measured seven-year minimum."
+      - source: *a19
+        value:
+          min: 12
+          max: 12
+        note: "Higher dealer estimate retained as disagreement"
+      - source: *a2
+        value:
+          min: 7
+          max: 8
+        note: "Specialist lifespan estimate."
+  breeding:
+    value: "open-substrate-spawner"
+    confidence: "high"
+    rationale: "CRC and aquarium accounts describe adhesive eggs on rock or wood, with both parents guarding
+      larvae and fry. Shelter or flowerpots may be used but enclosed caves are not obligatory."
+    sources:
+      - *a2
+      - *a10
+      - *a6
+      - *a11
+      - *a13
+      - *a4
+      - *a15
+      - *a16
+      - *a9
+    evidence:
+      - source: *a2
+        value: "open-substrate-spawner"
+        note: "substrate open"
+      - source: *a11
+        value: "open-substrate-spawner"
+        note: "eggs on flat rock"
+      - source: *a13
+        value: "open-substrate-spawner"
+        note: "open breeder"
+      - source: *a4
+        value: "open-substrate-spawner"
+      - source: *a15
+        value: "open-substrate-spawner"
+      - source: *a2
+        value: "open-substrate-spawner"
+  beginnerSuitability:
+    value: "moderate"
+    confidence: "medium"
+    rationale: "All full profiles choose moderate. CRC rates the fish for intermediate keepers, whereas NCS,
+      AquaInfo and the legacy archive consider it an approachable Central American cichlid. Maintaining oxygen
+      supply, managing group hierarchy and recognizing dietary sensitivity justify moderate despite its
+      readiness to breed."
+    sources:
+      - *a2
+      - *a6
+      - *a10
+      - *a32
+      - *a11
+      - *a15
+      - *a4
+      - *a33
+      - *a16
+      - *a34
+    evidence:
+      - source: *a2
+        value: "moderate"
+        note: "intermediate aquarists"
+      - source: *a11
+        value: "moderate"
+      - source: *a2
+        value: "moderate"
+      - source: *a15
+        value: "easy"
+      - source: *a6
+        value: "easy"
+      - source: *a32
+        value: "easy"
+partners:
+  suitable:
+    - species: "Xiphophorus hellerii"
+      reason: "Adults occur with this cichlid and have been kept with a breeding pair."
+      condition: "Provide additional community space and cover; swordtail fry remain vulnerable."
+    - species: "Poecilia mexicana"
+      reason: "A large native livebearer consistent with CRC observations of suitable Poecilia companions."
+      condition: "Use adults with overlapping water needs and enough space beyond the group minimum."
+    - species: "Astyanax mexicanus"
+      reason: "A robust schooling companion inferred from the guidance on calm, substantial midwater fish."
+      condition: "This particular combination is inferred rather than verified. Provide additional space for a
+        school; cichlid brood loss is possible."
+  unsuitable:
+    - species: "Thorichthys meeki"
+      reason: "A keeper reports an aquarium cross with Ellioti; conspecific mate availability and independent
+        parentage verification are unknown."
+    - species: "Parachromis dovii"
+      reason: "Its much larger adult size and predatory territorial behavior conflict with this smaller cichlid."
+    - species: "Paracheirodon innesi"
+      reason: "Small individuals risk being swallowed, and breeding pairs can harass diminutive companions."
+profile:
+  overview:
+    text: "Often traded as Ellioti, this Mexican cichlid is accepted here as Thorichthys maculipinnis. Adults
+      combine blue reflective markings with a red or orange underside. Its interest extends beyond color:
+      loose feeding associations give way to territorial pairs during reproduction. This profile recommends a
+      small adult group and allows for substantial differences between individual fish. Clean water, usable
+      floor space and a way to protect excluded fish are central to successful keeping."
+    sources:
+      - *a1
+      - *a10
+      - *a2
+      - *a3
+      - *a20
+      - *a4
+      - *a19
+      - *a35
+      - *a24
+      - *a21
+      - *a6
+      - *a13
+      - *a12
+      - *a15
+      - *a11
+      - *a16
+      - *a9
+  habitat:
+    text: "Occupied lowland waters extend from the Actopan area through neighboring Veracruz drainages to the
+      Papaloapan system. Shallow margins contain fine sediment, stones, fallen leaves and submerged wood, with
+      variable clarity and little obligatory aquatic vegetation. Regional field accounts support approximately
+      22 to 30 C, pH 7 to 8, GH 4 to 11 and KH 5 to 13. A keeper reports a single Tonto confluence reading of
+      31 C, pH 6.75 and GH 5; it is retained as an isolated observation rather than a typical habitat range.
+      Mineralized upper-basin dryland streams lack demonstrated species occurrence at the studied stations."
+    sources:
+      - *a2
+      - *a5
+      - *a3
+      - *a1
+      - *a20
+      - *a4
+      - *a19
+      - *a35
+      - *a24
+      - *a21
+      - *a6
+      - *a7
+      - *a8
+      - *a9
+  sizeAndGrowth:
+    text: "Allow for males around 15 cm and females around 12 cm in total length. Breeding can begin well before
+      these sizes, and a reproductive pair should not be mistaken for fully grown fish. Female upper size
+      remains an approximation. Published standard-length records use a different measurement and are not
+      aquarium total-length targets. A typical expectation of seven to eight years is better supported than
+      retailer claims reaching twelve."
+    sources:
+      - *a6
+      - *a10
+      - *a2
+      - *a7
+      - *a3
+      - *a33
+      - *a27
+      - *a11
+      - *a12
+      - *a4
+      - *a15
+      - *a31
+      - *a16
+      - *a9
+      - *a13
+      - *a19
+  husbandry:
+    text: "For the recommended six adults, provide at least 300 litres and a footprint of 150 by 50 cm. Arrange
+      fine smooth sand with secure wood and stones that divide sight lines while leaving feeding areas
+      accessible. Cover should offer more than one escape route. Maintain effective filtration and gas
+      exchange, and keep routine temperature around 24 to 26 C. The reported tolerance reaches 30 C, but
+      long-term keeping above 28 C is disputed by CRC. Larger communities need additional room. An established
+      pair can be housed separately under the smaller pair recommendations."
+    sources:
+      - *a6
+      - *a2
+      - *a20
+      - *a7
+      - *a13
+      - *a11
+      - *a12
+      - *a4
+      - *a15
+      - *a31
+      - *a16
+      - *a9
+      - *a5
+      - *a3
+      - *a8
+  socialBehavior:
+    text: "Group members forage near one another, but a developing pair changes the distribution of space. Nest
+      defense is usually local, with displays and chases; subordinate conspecifics can nevertheless face
+      persistent exclusion. Assess access to food and shelter for every fish. Cornering, repeated injury or
+      inability to leave cover requires intervention. Sources range from peaceful group accounts to deaths in
+      cramped or newly changed setups, so the recommended group size does not guarantee harmony."
+    sources:
+      - *a10
+      - *a2
+      - *a6
+      - *a13
+      - *a12
+      - *a15
+      - *a4
+      - *a19
+      - *a11
+      - *a16
+      - *a9
+      - *a26
+  diet:
+    text: "Use a varied menu of small aquatic-invertebrate foods and suitable sinking prepared food, with some
+      plant-containing food as part of that variety. Bottom foraging is an essential opportunity to provide:
+      experiments with fish named T. ellioti demonstrated retrieval of buried insect larvae. The conservative
+      bloat-sensitive flag reflects disputed digestive warnings, particularly about excessive feeding and
+      unsuitable animal protein. It does not mean that normal aquatic invertebrates are inappropriate or that
+      the fish requires an algae-based diet. Avoid terrestrial meat and monitor appetite and condition."
+    sources:
+      - *a18
+      - *a2
+      - *a6
+      - *a7
+      - *a11
+      - *a13
+      - *a15
+      - *a4
+      - *a19
+      - *a16
+      - *a9
+      - *a24
+      - *a17
+      - *a25
+      - *a10
+  breeding:
+    text: "Pairs attach eggs to a firm surface and both parents protect the brood. Exposed stones and wood can be
+      used, as can sheltered pottery. Newly hatched larvae may be moved among shallow pits before the young
+      swim with their parents. A vanished clutch can therefore reflect relocation. Provide food small enough
+      for the young and protect filter intakes. Reproductive territories include courtship before eggs appear;
+      repeated spawning also requires adequate space for the resulting juveniles."
+    sources:
+      - *a10
+      - *a2
+      - *a6
+      - *a11
+      - *a13
+      - *a4
+      - *a15
+      - *a16
+      - *a9
+  sexing:
+    text: "Compare mature fish of similar age rather than relying on color alone. Males generally grow larger and
+      develop longer fin extensions; females may have a rounder abdomen and a dark dorsal-fin mark. These
+      clues vary with population, maturity and reproductive state. Behavior can help reveal a pair, but two
+      fish judged to be opposite sexes may still be incompatible. Continue watching both partners after
+      spawning begins."
+    sources:
+      - *a2
+      - *a6
+      - *a10
+      - *a3
+      - *a33
+      - *a27
+      - *a11
+      - *a12
+      - *a4
+      - *a15
+      - *a31
+      - *a16
+      - *a9
+      - *a13
+  compatibility:
+    text: "Adult swordtails and substantial mollies are supported companion options where water requirements
+      overlap and the aquarium has extra community space. Their fry remain at risk. Calm, robust schooling
+      fish may also work, while very small fish, fin nippers and assertive large cichlids create avoidable
+      problems. A reported firemouth and Ellioti cross supports the presumed hybrid caution. NCS additionally
+      warns about five members of the Helleri group; that dissenting proposal remains in evidence although the
+      final vote retains only the existing firemouth pair group."
+    sources:
+      - *a2
+      - *a10
+      - *a6
+      - *a29
+      - *a28
+      - *a34
+      - *a23
+      - *a11
+      - *a13
+      - *a27
+      - *a16
+      - *a9
+      - *a36
+      - *a15
+      - *a30
+      - *a1
+      - *a37
+      - *a18
+  problems:
+    text: "Investigate persistent hiding alongside group relationships and water conditions. Damaged fish may have
+      lost access to safe space, while heat and weak gas exchange can compound oxygen stress. Rough substrate
+      impairs safe bottom foraging and uneaten food degrades the same area where the fish feeds. Digestive
+      swelling and appetite loss have several possible causes; the precautionary diet flag is not a diagnosis.
+      Quarantine arrivals and respond to continuing aggression before injuries accumulate."
+    sources:
+      - *a2
+      - *a6
+      - *a10
+      - *a18
+      - *a7
+      - *a11
+      - *a13
+      - *a15
+      - *a4
+      - *a19
+      - *a16
+      - *a9
+      - *a24
+      - *a17
+      - *a25
+      - *a5
+      - *a3
+      - *a8
+      - *a26
+provenance:
+  runs:
+    - role: "generator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-15"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-15"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-15"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-15"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-15"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-15"
+    - role: "adjudicator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-15"
+  disagreements:
+    - field: "features.origin"
+      proposals:
+        - by: "generator"
+          value:
+            continent: "Central America"
+            region: "Atlantic lowlands of Veracruz and Oaxaca, Mexico, principally the Papaloapan basin"
+            waterbody: null
+            localities:
+              - "Motzorongo"
+              - "San Juan Evangelista River"
+              - "Otapa River"
+              - "Jamapa River"
+              - "La Antigua River"
+        - by: "checker-a"
+          value:
+            continent: "Central America"
+            region: "Atlantic slope of Veracruz and Oaxaca, Mexico: Papaloapan drainage and neighbouring rivers from the
+              Actopan to the Papaloapan"
+            waterbody: null
+            localities:
+              - "Motzorongo"
+              - "Jamapa River"
+              - "Otapa River"
+              - "San Juan Evangelista River"
+        - by: "checker-b"
+          value:
+            continent: "Central America"
+            region: "Atlantic slope of Mexico, Papaloapan basin and adjacent Veracruz coastal drainages"
+            localities:
+              - "Papaloapan"
+              - "San Juan Evangelista"
+              - "Rio de la Lana"
+              - "Rio Dos Canos"
+              - "Jamapa"
+              - "Otapa"
+              - "Actopan"
+        - by: "checker-c"
+          value:
+            continent: "Central America"
+            region: "Atlantic slope of Veracruz and Oaxaca, Mexico, principally the Papaloapan drainage"
+            localities:
+              - "Motzorongo"
+              - "Rio San Juan Evangelista"
+              - "Rio Otapa"
+              - "Rio Jamapa"
+              - "Rio Actopan"
+      decision: *a38
+      rationale: "All four full profiles identify the Mexican Atlantic slope and Papaloapan core, with different
+        selections of neighboring rivers. The Catalog supplies the accepted range framework and CRC and the
+        DCG collecting account establish additional occupied Veracruz drainages. The Aqua-Pedia Coatzacoalcos
+        claim and retailer claims extending into Guatemala are not adopted as established native range. CRC
+        regards northern Cazones populations as likely introductions; the 2024 overview also distinguishes
+        introduced Morelos populations. The dryland-stream study concerns upper-basin stations without
+        demonstrated occupation by this fish and cannot set its water chemistry."
+    - field: "features.temperatureC"
+      proposals:
+        - by: "generator"
+          value:
+            min: 22
+            max: 30
+        - by: "checker-a"
+          value:
+            min: 24
+            max: 30
+        - by: "checker-b"
+          value:
+            min: 22
+            max: 30
+        - by: "checker-c"
+          value:
+            min: 22
+            max: 30
+        - by: "tiebreaker-1"
+          value:
+            min: 22
+            max: 30
+        - by: "tiebreaker-2"
+          value:
+            min: 22
+            max: 30
+      decision: *a39
+      rationale: "Tally method qualified-majority, 5 of 6 votes. The qualified majority is 22 to 30 C: generator,
+        checker-b, checker-c, tiebreaker-1 and tiebreaker-2 proposed this range, while checker-a proposed 24
+        to 30 C. CRC records an Otapa low near 22 C and dry-season water near 30 C; DCG reports regional
+        collecting-site temperatures of 25 to 30 C. The single cool reading is interpreted within the wider
+        regional seasonal account. FishBase and AquaInfo give 25 to 28 C, Fishipedia gives 23 to 28 C, the La
+        Antigua collector measured 25.6 C, and the lower-basin crustacean survey gives 27.5 to 28.9 C. A
+        keeper repeats a single Tonto confluence reading of 31 C, which remains evidence without defining the
+        typical upper endpoint. These observations do not establish years of safe aquarium exposure at either
+        extreme."
+    - field: "features.temperatureC.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 22
+            max: 30
+        - by: "checker-a"
+          value:
+            min: 22
+            max: 30
+        - by: "checker-b"
+          value:
+            min: 20
+            max: 30
+        - by: "checker-c"
+          value:
+            min: 22
+            max: 30
+        - by: "tiebreaker-1"
+          value:
+            min: 22
+            max: 30
+        - by: "tiebreaker-2"
+          value:
+            min: 22
+            max: 30
+      decision: *a40
+      rationale: "Tally method qualified-majority, 5 of 6 votes. The qualified majority retains 22 to 30 C, proposed
+        by generator, checker-a, checker-c and both tiebreakers; checker-b proposed the wider 20 to 30 C based
+        on Heimrich advice of 20 to 27 C. AquaInfo and NCS recommend 22 to 28 C, Fishkeeper recommends 24 to
+        30 C, Aqualog 24 to 29 C and Garnelio 22 to 28 C. The shared 22 to 30 C decision combines husbandry
+        advice with required containment of the seasonal natural range. It has low confidence because CRC
+        explicitly warns against sustained aquarium temperatures above 28 C. Aim around 24 to 26 C with strong
+        gas exchange; 30 C is a disputed upper boundary rather than a proven permanent maintenance
+        temperature. Successful breeding at 28 C and experimental holding at 26 to 28 C do not resolve
+        long-term limits. Matching the natural endpoints does not establish injury immediately outside them."
+    - field: "features.ph"
+      proposals:
+        - by: "generator"
+          value:
+            min: 7
+            max: 8
+        - by: "checker-a"
+          value:
+            min: 7
+            max: 8
+        - by: "checker-b"
+          value:
+            min: 7
+            max: 8
+        - by: "checker-c"
+          value:
+            min: 6.7
+            max: 8.5
+        - by: "tiebreaker-1"
+          value:
+            min: 7
+            max: 8
+        - by: "tiebreaker-2"
+          value:
+            min: 7
+            max: 8
+      decision: *a41
+      rationale: "Tally method qualified-majority, 5 of 6 votes. Generator, checker-a, checker-b and both
+        tiebreakers proposed 7 to 8, giving the qualified-majority decision. Checker-c proposed the wider 6.7
+        to 8.5 after combining a reported single Tonto reading of 6.75 with the FishBase 7 to 8.5 summary. The
+        localized San Juan and regional DCG collecting records support the typical 7 to 8 range. La Antigua
+        measured 7.8 and the lower Papaloapan survey recorded 7.2 to 7.8, consistent with it. Fishipedia gives
+        7 to 7.6 without a field series. The single lower reading and the broader database range remain
+        evidence, but neither establishes a typical seasonal extension of the better-localized interval."
+    - field: "features.ph.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 7
+            max: 8.5
+        - by: "checker-a"
+          value:
+            min: 7
+            max: 8.5
+        - by: "checker-b"
+          value:
+            min: 6.5
+            max: 8.5
+        - by: "checker-c"
+          value:
+            min: 6.7
+            max: 8.5
+      decision: *a42
+      rationale: "Tally method unanimous, 4 of 4 votes. The tally labels the four votes unanimous under its
+        range-agreement rule and takes the rounded midpoint of their endpoints: generator and checker-a
+        proposed 7 to 8.5, checker-b 6.5 to 8.5, and checker-c 6.7 to 8.5, producing 6.9 to 8.5. The 6.9
+        boundary is therefore an aggregation, not a measured health threshold. Heimrich gives the wider 6.5 to
+        8 range; AquaInfo and other retailers generally give 7 to 8.5, Fishkeeper and NCS prefer 7.5 to 8, and
+        Fishipedia gives 6.8 to 7.2. The published breeding account in acidic water has no numeric pH
+        measurement and cannot fix a lower endpoint. Neutral to moderately alkaline, stable water has the
+        strongest support. LiveAquaria has a wider header interval of 6 to 8 but recommends 7 to 8 in its
+        overview; the inconsistent lower value is retained without displacing the tally."
+    - field: "features.ghDgh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 4
+            max: 20
+        - by: "checker-a"
+          value:
+            min: 4
+            max: 18
+        - by: "checker-b"
+          value:
+            min: 4
+            max: 20
+        - by: "checker-c"
+          value:
+            min: 4
+            max: 18
+      decision: *a43
+      rationale: "Tally method unanimous, 4 of 4 votes. The unanimous decision under the tally agreement rule is 4
+        to 19 dGH. Generator and checker-b proposed 4 to 20, while checker-a and checker-c proposed 4 to 18;
+        the upper decision is the midpoint of 18 and 20. This is a low-confidence working envelope rather than
+        a tested physiological boundary. Heimrich and Zierfische-Direkt publish wider advice reaching 20 dGH,
+        Fishkeeper gives a maximum of 18, and AquaInfo and Garnelio give 8 to 12. A keeper maintained and bred
+        the fish at about 14 dGH. The minimum includes the occupied 4 dGH habitat water. The retained
+        checker-a FishBase evidence entry combines its incomplete lower-bound value with another care sheet
+        maximum of 18; FishBase itself does not publish that upper endpoint."
+    - field: "features.khDkh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 3
+            max: 15
+        - by: "checker-a"
+          value:
+            min: 3
+            max: 15
+        - by: "checker-b"
+          value:
+            min: 5
+            max: 15
+        - by: "checker-c"
+          value:
+            min: 3
+            max: 15
+      decision: *a44
+      rationale: "Tally method unanimous, 4 of 4 votes. The tally agreement rule returns 3 to 15 dKH from generator,
+        checker-a and checker-c proposals of 3 to 15 and checker-b of 5 to 15. Zierfische-Direkt states 5 to
+        15 dKH, Aqua-Pedia 6 to 12 and Garnelio 2 to 8. The wider lower limit of 2 in Garnelio is retained in
+        evidence; the chosen 3 is an inferred buffering margin supported only indirectly by the pH and GH
+        keeping advice, not a measured health threshold. The magazine account used supply water with zero KH
+        during breeding and later added limestone, so that observation does not establish safe permanent
+        zero-KH maintenance. Natural 5 to 13 is contained, but GH, pH and KH are not interchangeable.
+        LiveAquaria also labels a wider upper range of 9 to 20 dKH without a supporting trial; it does not
+        change the fixed tally endpoint of 15."
+    - field: "features.maxSizeCm"
+      proposals:
+        - by: "generator"
+          value:
+            male: 15
+            female: 12
+        - by: "checker-a"
+          value:
+            male: 14
+            female: 12
+        - by: "checker-b"
+          value:
+            male: 15
+            female: 12
+        - by: "checker-c"
+          value:
+            male: 15
+            female: 12
+      decision: *a45
+      rationale: "The component medians of proposals are 15 cm male and 12 cm female: generator, checker-b and
+        checker-c proposed 15 and 12, while checker-a proposed 14 and 12. AquaInfo and independent keeping
+        accounts support males near 15 cm; the keeper gives females about 10 to 12 cm. DCG reports males a
+        little over 14 cm total length, CRC distinguishes about 14 to 15 cm total length, and FishBase reports
+        15 cm standard length without a sex-specific female maximum. Standard length is not silently treated
+        as total length. Aqualog gives the wider 13 to 16 cm size interval and legacy estimates reach about 18
+        cm without standardized measurement; those do not set typical aquarium planning maxima. The female
+        value is an approximate upper working size rather than a verified record."
+    - field: "features.diet"
+      proposals:
+        - by: "generator"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "Small sinking aquatic-invertebrate pellets"
+              - "Artemia"
+              - "Mysis"
+              - "Daphnia"
+              - "Occasional plant-containing prepared foods"
+        - by: "checker-a"
+          value:
+            type: "invertivore"
+            bloatSensitive: true
+            foods:
+              - "insect larvae"
+              - "small crustaceans"
+              - "worms"
+              - "cichlid pellets"
+              - "flake"
+              - "vegetable matter"
+        - by: "checker-b"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "Aquatic insect larvae"
+              - "Small crustaceans"
+              - "Worms"
+              - "Balanced sinking prepared food"
+        - by: "checker-c"
+          value:
+            type: "invertivore"
+            bloatSensitive: true
+            foods:
+              - "aquatic insect larvae"
+              - "small crustaceans"
+              - "small molluscs"
+              - "sinking prepared foods"
+              - "limited vegetable supplements"
+        - by: "tiebreaker-1"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+        - by: "tiebreaker-2"
+          value:
+            type: "invertivore"
+            bloatSensitive: true
+      decision: *a46
+      rationale: "Tally method conservative, 3 of 6 votes. All six runs classify the fish as invertivore. Generator,
+        checker-b and tiebreaker-1 proposed bloatSensitive false; checker-a, checker-c and tiebreaker-2
+        proposed true. The 3 versus 3 split produces the conservative decision invertivore with bloatSensitive
+        true and low confidence. CRC describes insect-focused substrate feeding, and the experimental paper
+        directly demonstrates retrieval of buried chironomid larvae. AquaInfo, NCS, Fishipedia and retailers
+        also use omnivore labels for broad food acceptance, and the 2024 genus overview includes algae and
+        detritus without a species-specific gut analysis. Fishkeeper and a keeper account warn against
+        excessive protein; a forum warning concerns Thorichthys generally. CRC restricts its dietary warning
+        to terrestrial animal protein, so it does not establish intolerance of suitable aquatic invertebrates.
+        The false proposals make that narrower distinction and remain plausible dissent. The retained flag is
+        precautionary, not experimental proof or an instruction to replace aquatic prey with a plant-only
+        diet."
+    - field: "features.aggressionConspecific"
+      proposals:
+        - by: "generator"
+          value: 3
+        - by: "checker-a"
+          value: 3
+        - by: "checker-b"
+          value: 3
+        - by: "checker-c"
+          value: 2
+      decision: 3
+      rationale: "Generator, checker-a and checker-b proposed level 3; checker-c proposed 2 for a well-spaced group.
+        CRC reports conspecific deaths in cramped aquaria and NCS notes occasional serious within-species
+        problems. The magazine records exclusion of an extra female, and the aggression forum includes both
+        uneventful groups and fatalities after transfer. AquaInfo and Fishkeeper emphasize display and
+        comparatively mild disputes. Level 3 reflects persistent pressure on subordinate adults and the need
+        for retreats and intervention during pair formation, while these dissenting observations explain why
+        injury is not inevitable in the recommended spacious group."
+    - field: "features.social"
+      proposals:
+        - by: "generator"
+          value:
+            structure: "pair"
+        - by: "checker-a"
+          value:
+            structure: "pair"
+        - by: "checker-b"
+          value:
+            structure: "group"
+            minGroup: 6
+        - by: "checker-c"
+          value:
+            structure: "group"
+            minGroup: 6
+      decision: *a47
+      rationale: "Generator and checker-a proposed an adult pair; checker-b and checker-c proposed a group of six.
+        CRC describes loose feeding groups and recommends group housing, AquaInfo prefers groups while
+        allowing pairs, and NCS recommends five or six individuals. DCG recommends the larger group of eight
+        to ten, and one keeper maintained eight successfully; retailers suggest three to five. Select six as a
+        practical small-group unit, without treating it as an experimentally proven aggression threshold.
+        Bonded pairs temporarily occupy breeding areas and can be housed separately, but the stated minimum
+        tank is for the group."
+    - field: "features.hybridGroups"
+      proposals:
+        - by: "generator"
+          value:
+            - "thorichthys-meeki-maculipinnis"
+        - by: "checker-a"
+          value:
+            - "thorichthys-meeki-maculipinnis"
+        - by: "checker-b"
+          value:
+            - "thorichthys-meeki-maculipinnis"
+            - "thorichthys-helleri-group"
+        - by: "checker-c"
+          value:
+            - "thorichthys-meeki-maculipinnis"
+        - by: "tiebreaker-1"
+          value:
+            - "thorichthys-meeki-maculipinnis"
+            - "thorichthys-helleri-group"
+        - by: "tiebreaker-2"
+          value:
+            - "thorichthys-meeki-maculipinnis"
+      decision: *a48
+      rationale: "Tally method qualified-majority, 4 of 6 votes. The qualified majority retains the existing
+        thorichthys-meeki-maculipinnis group: generator, checker-a, checker-c and tiebreaker-2 proposed only
+        that group. Checker-b and tiebreaker-1 additionally proposed thorichthys-helleri-group with T. aureus,
+        T. callolepis, T. helleri, T. maculipinnis and T. socolofi, based on an explicit collective crossing
+        warning in NCS. That is substantive dissent and is retained in evidence; it is more than a taxonomic
+        group label. The decided pair rests on a 2016 forum account of a female firemouth and an Ellioti male
+        producing surviving young, plus hobby and archive warnings. Conspecific partner availability and
+        independent parentage confirmation are unspecified, so its existing presumed basis is appropriate. The
+        Practical Fishkeeping incident concerns a firemouth and a convict, not an additional maculipinnis
+        cross. Sources with no crossing claim remain contextual evidence rather than support for a new group."
+    - field: "features.coloration"
+      proposals:
+        - by: "generator"
+          value:
+            baseColors:
+              - "grey"
+              - "blue"
+              - "red"
+              - "orange"
+            pattern: "mixed"
+        - by: "checker-a"
+          value:
+            baseColors:
+              - "grey"
+              - "red"
+              - "blue"
+            pattern: "mixed"
+        - by: "checker-b"
+          value:
+            baseColors:
+              - "grey"
+              - "blue"
+              - "red"
+              - "orange"
+            pattern: "mixed"
+        - by: "checker-c"
+          value:
+            baseColors:
+              - "grey"
+              - "blue"
+              - "orange"
+              - "red"
+              - "black"
+            pattern: "mixed"
+      decision: *a49
+      rationale: "Generator and checker-b proposed grey, blue, red and orange; checker-a omitted orange, and
+        checker-c additionally included black. The sources describe a subdued body with blue reflective
+        markings and variable red to orange lower coloration. Black flank and opercular marks and reproductive
+        bars belong to the mixed pattern rather than an additional dominant base color. Geographic and social
+        variation explains the warmer-color differences."
+    - field: "features.minTank"
+      proposals:
+        - by: "generator"
+          value:
+            volumeL: 200
+            lengthCm: 100
+            depthCm: 40
+        - by: "checker-a"
+          value:
+            volumeL: 250
+            lengthCm: 120
+            depthCm: 45
+        - by: "checker-b"
+          value:
+            volumeL: 300
+            lengthCm: 150
+            depthCm: 50
+        - by: "checker-c"
+          value:
+            volumeL: 350
+            lengthCm: 150
+            depthCm: 50
+      decision: *a50
+      rationale: "The starting medians are 275 L, 135 cm length and 47.5 cm depth, from generator 200/100/40,
+        checker-a 250/120/45, checker-b 300/150/50 and checker-c 350/150/50. These mix pair and group units
+        and therefore cannot be used unchanged for the selected six adults. CRC specifies at least 300 L for a
+        group and DCG and AquaInfo give 150 cm group length. The keeper recommends the larger 350 L and 150 cm
+        option; NCS lists the smaller 200 L and 120 cm alternative. Select the directly supported 300 L and
+        150 cm group minimum, with 50 cm depth as an explicit layout inference for retreats and several small
+        territories. It is not a quoted source dimension. The additional volume for a large community is not
+        included in this minimum."
+    - field: "features.lifespanYears"
+      proposals:
+        - by: "generator"
+          value:
+            min: 7
+            max: 8
+        - by: "checker-a"
+          value:
+            min: 7
+            max: 12
+        - by: "checker-b"
+          value:
+            min: 7
+            max: 8
+        - by: "checker-c"
+          value:
+            min: 7
+            max: 8
+      decision: *a51
+      rationale: "The component medians of the four proposals are seven and eight years: generator, checker-b and
+        checker-c proposed 7 to 8, while checker-a proposed the wider 7 to 12. CRC gives a species-specific
+        expectation of about seven to eight years and Fishipedia lists seven. Garnelio and Zierfische-Direkt
+        advertise up to twelve without a documented longevity series. That larger source value stays cited but
+        does not define typical life expectancy."
+    - field: "taxonomy.synonyms"
+      proposals:
+        - by: "generator"
+          value:
+            - "Heros maculipinnis"
+            - "Thorichthys ellioti"
+            - "Cichlasoma ellioti"
+        - by: "checker-a"
+          value:
+            - "Thorichthys ellioti"
+            - "Heros maculipinnis"
+        - by: "checker-b"
+          value:
+            - "Heros maculipinnis"
+            - "Thorichthys ellioti"
+            - "Cichlasoma ellioti"
+        - by: "checker-c"
+          value:
+            - "Thorichthys ellioti"
+            - "Cichlasoma ellioti"
+            - "Heros maculipinnis"
+            - "Astronotus maculipinnis"
+      decision:
+        - "Heros maculipinnis"
+        - "Astronotus maculipinnis"
+        - "Thorichthys ellioti"
+        - "Cichlasoma ellioti"
+      rationale: "All full profiles agree on the valid species and authority. Generator and checker-b list Heros
+        maculipinnis, Thorichthys ellioti and Cichlasoma ellioti; checker-a omits the Cichlasoma combination
+        and checker-c additionally lists Astronotus maculipinnis. Keep the union of verified historical
+        combinations. CRC and NCS explicitly record Astronotus; the current Catalog determines synonym
+        status."
