@@ -161,7 +161,7 @@ search and one page per species are enough. Member content is not accessible and
   of a group of two species joins the kebab-case names of both members in alphabetical order and
   writes a shared genus once (`amatitlania-nigrofasciata-sajica`,
   `altolamprologus-calvus-julidochromis-transcriptus`), so that independent agents name the same
-  pair alike. Each listed
+  pair alike. A group of a whole genus has the genus name as its id (`aulonocara`, `lethrinops`). Each listed
   group has a `basis`: `documented` when a cross between named members is reported from the wild or
   from a tank where the fish could choose partners of their own species, `presumed` when only
   general warnings or a very close relationship exist. The basis decides how hard the conflict of
