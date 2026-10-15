@@ -1,9 +1,6 @@
-import { TankMeasurements } from "../../../src/units/TankMeasurements";
-import { useMachineRouter } from "../../../src/navigation/NavigationProvider";
 import { translateApiError } from "../../../src/lib/apiErrors";
 import { useCallback, useEffect, useState } from "react";
-import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
-import { Image } from "expo-image";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
@@ -12,10 +9,10 @@ import { listEmptyState } from "../../../src/hooks/pagedListState";
 import { usePagedList } from "../../../src/hooks/usePagedList";
 import { CommentComposer } from "../../../src/components/CommentComposer";
 import { CommentItem } from "../../../src/components/CommentItem";
-import { DataRow } from "../../../src/components/DataRow";
-import { MediaStrip } from "../../../src/components/MediaStrip";
+import { Button } from "../../../src/components/Button";
 import { EmptyView, ErrorView, LoadingView } from "../../../src/components/StatusView";
-import type { Comment, CommentCreated, CreateCommentRequest, TankDetail } from "@cichlids/client-core";
+import { TankExperience } from "../../../src/tanks/TankExperience";
+import type { Comment, CommentCreated, CreateCommentRequest, TankDetail, TankTimeLapse } from "@cichlids/client-core";
 
 const commentKey = (comment: Comment) => comment.id;
 
@@ -23,125 +20,50 @@ export default function TankDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const tankId = Number(id);
   const theme = useTheme();
-  const router = useMachineRouter();
   const navigation = useNavigation();
   const { t } = useTranslation();
-
-  const [tank, setTank] = useState<TankDetail | null>(null);
+  const [detail, setDetail] = useState<{ tank: TankDetail; series: TankTimeLapse } | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const [attempt, setAttempt] = useState(0);
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
     setError(null);
-    apiClient.tanks
-      .get(tankId)
-      .then((detail) => {
+    Promise.all([apiClient.tanks.get(tankId), apiClient.tanks.timeLapse(tankId)])
+      .then(([tank, series]) => {
         if (cancelled) return;
-        setTank(detail);
-        navigation.setOptions({ title: detail.title });
+        setDetail({ tank, series });
+        navigation.setOptions({ title: tank.title });
       })
-      .catch((err) => !cancelled && setError(translateApiError(err, t, "common.loadError")))
+      .catch(err => !cancelled && setError(translateApiError(err, t, "common.loadError")))
       .finally(() => !cancelled && setLoading(false));
-    return () => {
-      cancelled = true;
-    };
-  }, [tankId, navigation, t]);
-
+    return () => { cancelled = true; };
+  }, [tankId, navigation, t, attempt]);
   const fetchComments = useCallback((offset: number, limit: number) => apiClient.tanks.listComments(tankId, { offset, limit }), [tankId]);
   const comments = usePagedList<Comment>(fetchComments, [tankId], commentKey);
-
   const submitComment = useCallback((request: CreateCommentRequest) => apiClient.tanks.createComment(tankId, request), [tankId]);
-  // The tank detail shows no rating or comment count, so a post only adds the comment to the list.
-  const onCommentPosted = useCallback(
-    (created: CommentCreated) => {
-      if (created.comment) comments.prepend(created.comment);
-    },
-    [comments.prepend],
-  );
-
+  const onCommentPosted = useCallback((created: CommentCreated) => {
+    if (created.comment) comments.prepend(created.comment);
+  }, [comments.prepend]);
   const emptyState = listEmptyState(comments);
-
   if (loading) return <LoadingView label={t("tanks.detail.loading")} />;
-  if (error || !tank) return <ErrorView message={error ?? t("tanks.detail.notFound")} />;
-
-  const water = tank.waterValues;
-  const waterSummary = water
-    ? [water.ph && t("tanks.detail.waterValue", { label: t("species.detail.ph"), value: water.ph }), water.kh && t("tanks.detail.waterValue", { label: t("species.detail.kh"), value: water.kh }), water.gh && t("tanks.detail.waterValue", { label: t("species.detail.gh"), value: water.gh })].filter(Boolean).join(" · ")
-    : null;
-
-  return (
-    <FlatList
-      style={{ backgroundColor: theme.colors.bg }}
-      data={comments.items}
-      keyExtractor={(item) => String(item.id)}
-      renderItem={({ item }) => <CommentItem comment={item} />}
-      onEndReachedThreshold={0.4}
-      onEndReached={comments.loadMore}
-      ListHeaderComponent={
-        <View>
-          <Image
-            source={tank.mainImage?.large ?? tank.mainImage?.medium ?? undefined}
-            style={[styles.heroImage, { backgroundColor: theme.colors.placeholder }]}
-            contentFit="cover"
-          />
-          <View style={styles.body}>
-            <Text style={[theme.type.h1, { color: theme.colors.fg }]}>{tank.title}</Text>
-            <Pressable onPress={() => router.push(`/profile/${tank.author.id}`)}>
-              <Text style={[theme.type.bodyStrong, { color: theme.colors.accent, marginTop: 4 }]}>
-                {tank.author.displayName ?? tank.author.username}
-              </Text>
-            </Pressable>
-            {tank.description ? (
-              <Text style={[theme.type.body, { color: theme.colors.fg, marginTop: 10 }]}>{tank.description}</Text>
-            ) : null}
-
-            <Text testID="tank-datasheet" style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20, marginBottom: 4 }]}>{t("tanks.detail.datasheet")}</Text>
-            <TankMeasurements tank={tank} />
-            <DataRow label={t("tanks.detail.waterValues")} value={waterSummary} />
-            <DataRow label={t("tanks.detail.substrate")} value={tank.gravel} />
-            <DataRow label={t("tanks.detail.planting")} value={tank.plants} />
-            <DataRow label={t("tanks.detail.decoration")} value={tank.decoration} />
-            <DataRow label={t("tanks.detail.light")} value={tank.light} />
-            <DataRow label={t("tanks.detail.filtration")} value={tank.filtration} />
-            <DataRow label={t("tanks.detail.technic")} value={tank.technic} />
-            <DataRow label={t("tanks.detail.food")} value={tank.food} />
-            <DataRow label={t("tanks.detail.notes")} value={tank.notes} />
-
-            <MediaStrip title={t("tanks.detail.sectionOverview")} items={tank.sections.showcase} />
-            <MediaStrip title={t("tanks.detail.sectionDecoration")} items={tank.sections.decoration} />
-            <MediaStrip title={t("tanks.detail.sectionTechnic")} items={tank.sections.technic} />
-
-            <Text style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20 }]}>{t("tanks.detail.comments")}</Text>
-            <CommentComposer submit={submitComment} onPosted={onCommentPosted} ownerId={tank.author.id} />
-          </View>
-        </View>
-      }
-      ListEmptyComponent={
-        emptyState === "loading" ? (
-          <LoadingView label={t("tanks.detail.commentsLoading")} />
-        ) : emptyState === "error" ? (
-          <ErrorView message={t("tanks.detail.commentsError")} onRetry={comments.reload} />
-        ) : (
-          <EmptyView message={t("tanks.detail.commentsEmpty")} />
-        )
-      }
-      ListFooterComponent={comments.loadingMore ? <LoadingView /> : null}
-      contentContainerStyle={styles.listContent}
-    />
-  );
+  if (error || !detail) return <ErrorView message={error ?? t("tanks.detail.notFound")} onRetry={() => setAttempt(value => value + 1)} />;
+  return <ScrollView style={{ backgroundColor: theme.colors.bg }} contentContainerStyle={styles.content}>
+    <View style={styles.page}>
+      <TankExperience key={`${tankId}-${attempt}`} tank={detail.tank} series={detail.series}>
+        <Text accessibilityRole="header" style={[theme.type.h2, { color: theme.colors.fg }]}>{t("tanks.detail.comments")}</Text>
+        <CommentComposer submit={submitComment} onPosted={onCommentPosted} ownerId={detail.tank.author.id} />
+        {comments.items.map(comment => <CommentItem key={String(comment.id)} comment={comment} />)}
+        {emptyState === "loading" ? <LoadingView label={t("tanks.detail.commentsLoading")} />
+          : emptyState === "error" ? <ErrorView message={t("tanks.detail.commentsError")} onRetry={comments.reload} />
+          : comments.items.length === 0 ? <EmptyView message={t("tanks.detail.commentsEmpty")} /> : null}
+        {comments.hasMore ? <Button label={t("tankStory.moreComments")} variant="secondary" busy={comments.loadingMore} onPress={comments.loadMore} /> : null}
+      </TankExperience>
+    </View>
+  </ScrollView>;
 }
-
 const styles = StyleSheet.create({
-  heroImage: {
-    width: "100%",
-    aspectRatio: 4 / 3,
-  },
-  body: {
-    padding: 16,
-  },
-  listContent: {
-    paddingBottom: 32,
-  },
+  content: { paddingBottom: 32 },
+  page: { width: "100%", maxWidth: 880, alignSelf: "center" },
 });

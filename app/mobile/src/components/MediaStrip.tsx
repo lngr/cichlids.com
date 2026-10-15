@@ -15,6 +15,7 @@ export function MediaStrip({ title, items }: { title: string; items: TankMediaIt
             key={item.mediaItemId}
             source={item.image.small ?? item.image.thumb ?? undefined}
             style={[styles.image, { backgroundColor: theme.colors.placeholder, borderRadius: theme.radius.md }]}
+            accessibilityLabel={title}
             contentFit="cover"
           />
         ))}

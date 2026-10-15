@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Text, View } from "react-native";
+import { useTheme } from "../theme";
 import { useTranslation } from "react-i18next";
 import type { TankDetail } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
@@ -7,7 +9,8 @@ import { DataRow } from "../components/DataRow";
 import { formatMeasurement, type MeasurementInput, type UnitSystem } from "./format";
 import { useUnits } from "./useUnits";
 
-export function TankMeasurements({ tank }: { tank: TankDetail }) {
+export function TankMeasurements({ tank, layout = "rows" }: { tank: TankDetail; layout?: "rows" | "summary" }) {
+  const theme = useTheme();
   const { t, i18n } = useTranslation();
   const preference = useUnits();
   const { status, accountId } = useAuth();
@@ -39,8 +42,15 @@ export function TankMeasurements({ tank }: { tank: TankDetail }) {
   const volume = tank.volume;
   const volumeInput: MeasurementInput | undefined = volume?.inputValue != null && volume.inputUnit
     ? { value: Number(volume.inputValue), system: volume.inputUnit === "us_gallon" ? "us" : "metric" } : undefined;
+  const volumeText = volume ? formatMeasurement(Number(volume.liters), "volume", preference, i18n.language, volumeInput, owner) : null;
+  if (layout === "summary") return <>
+    {[[volumeText, t("tanks.detail.volume")], [dimensionText, t("tanks.detail.dimensions")]].map(([value, label]) => <View key={label} style={{ flex: 1, minWidth: 0, padding: theme.space[2], borderWidth: 1, borderColor: theme.colors.border, borderRadius: theme.radius.md, backgroundColor: theme.colors.surface, alignItems: "center", justifyContent: "center", gap: theme.space[1] }}>
+      <Text style={[theme.type.bodyStrong, { color: theme.colors.fg, textAlign: "center" }]}>{value ?? t("common.unknownValue")}</Text>
+      <Text style={[theme.type.meta, { color: theme.colors.muted, textAlign: "center" }]}>{label}</Text>
+    </View>)}
+  </>;
   return <>
     <DataRow label={t("tanks.detail.dimensions")} value={dimensionText} />
-    <DataRow label={t("tanks.detail.volume")} value={volume ? formatMeasurement(Number(volume.liters), "volume", preference, i18n.language, volumeInput, owner) : null} />
+    <DataRow label={t("tanks.detail.volume")} value={volumeText} />
   </>;
 }
