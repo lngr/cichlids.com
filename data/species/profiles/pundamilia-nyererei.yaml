@@ -2236,6 +2236,7 @@ features:
         total: 4
   hybridGroups:
     value:
+      - astatotilapia-calliptera-pundamilia-nyererei
       - "haplochromis-chilotes-pundamilia-nyererei"
       - "pundamilia-azurea-nyererei"
       - "pundamilia-igneopinnis-nyererei"
@@ -2256,7 +2257,9 @@ features:
       the 2019 study uses the distinct nyererei-like lineage; this identity discrepancy remains unresolved and
       exclusion by the tally support rule must not be read as proof of incompatibility. The presumed
       pundamilia-nyererei-sp-crimson-tide group rests on aquarium warnings and uncertain keeper reports, and is
-      defined in the curated hybrid group file. Crossing is not transitive."
+      defined in the curated hybrid group file. The curated file data/species/hybrid-groups.yaml also defines
+      astatotilapia-calliptera-pundamilia-nyererei as presumed from controlled laboratory offspring reported by
+      Stelkens and colleagues, which support experimental compatibility without free partner choice. Crossing is not transitive."
     sources:
       - kind: "literature"
         title: "Meier et al. (2017). Demographic modelling with whole-genome data reveals parallel origin of similar
@@ -3065,6 +3068,9 @@ partners:
     - species: "Haplochromis chilotes"
       reason: "Fertile forced laboratory F1 and F2 crosses support a presumed pairwise risk. The older
         Paralabidochromis chilotes recommendation is removed from suitable partners."
+    - species: "Astatotilapia calliptera"
+      reason: "Controlled laboratory offspring support a presumed crossing risk, although free partner choice
+        in an aquarium is unconfirmed."
     - species: "Pundamilia sp. 'crimson tide'"
       reason: "Aquarium warnings and uncertain keeper reports support a presumed crossing risk; parental identity
         and free partner choice are unconfirmed."

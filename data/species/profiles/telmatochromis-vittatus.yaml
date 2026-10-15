@@ -3267,6 +3267,7 @@ features:
   hybridGroups:
     value: &a11
       - julidochromis-dickfeldi-telmatochromis-vittatus
+      - telmatochromis-brichardi-vittatus
     confidence: medium
     rationale: "The qualified majority retains only julidochromis-dickfeldi-telmatochromis-vittatus. The
       generator, checker-b, checker-c, tiebreaker-1 and tiebreaker-2 propose that pairwise group;
@@ -3277,7 +3278,10 @@ features:
       genetic confirmation or an observed fertilization. Aquarist Atlas retells that event and is not
       independent confirmation. The 2024 taxonomic abstract and the 2007 phylogeny do not refute this
       aquarium report or demonstrate other crossing pairs. Broader warnings about related genera do not
-      justify a group containing all of them; archive searches yield no relevant vittatus account."
+      justify a group containing all of them; archive searches yield no relevant vittatus account. The curated
+      file data/species/hybrid-groups.yaml defines telmatochromis-brichardi-vittatus as presumed from hobby
+      warnings about the named pair and literature describing close morphological affinity, without verified
+      offspring or partner-choice observations."
     sources:
       - kind: literature
         title: "Audrey Marquis, Telmatochromis vittatus Boulenger, 1898, Cichlid Room Companion, 2003"
@@ -3355,6 +3359,21 @@ features:
           us=Telmatochromis"
         accessed: 2026-10-15
         archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-f469e491/2026-10-14T171406Z
+      - kind: website
+        title: "Cichlid Atlas: Telmatochromis brichardi"
+        url: https://www.cichlidatlas.com/species/telmatochromis-brichardi/
+        accessed: '2026-10-15'
+        archived: cichlidatlas.com/species/telmatochromis-brichardi/2026-10-15T111938Z
+      - kind: website
+        title: "FishFish: Telmatochromis brichardi"
+        url: https://www.fishfish.fr/poisson/telmatochromis-brichardi
+        accessed: '2026-10-15'
+        archived: fishfish.fr/poisson/telmatochromis-brichardi/2026-10-15T112909Z
+      - kind: website
+        title: "Telmatochromis brichardi, PetsHome.ro"
+        url: https://www.petshome.ro/ROMANA/PESTI/RASE%20DE%20PESTI%20DE%20APA%20DULCE/TELMATOCHROMIS%20BRICHARDI.html
+        accessed: '2026-10-15'
+        archived: petshome.ro/romana/pesti/rase_de_pesti_de_apa_dulce/telmatochromis_brichardi.html/2026-10-15T112002Z
     evidence:
       - source:
           kind: literature
@@ -3383,8 +3402,9 @@ features:
           url: "https://doi.org/10.1111/jfb.16042"
           accessed: 2026-10-15
           archived: doi.org/10.1111_jfb.16042/2026-10-15T103151Z
-        value: []
-        note: no hybrids mentioned for T. vittatus
+        value:
+          - telmatochromis-brichardi-vittatus
+        note: Places brichardi and vittatus in the same slender-bodied species complex, supporting morphological affinity but not a reported cross.
       - source:
           kind: database
           title: "Seriously Fish: Telmatochromis vittatus"
@@ -3471,6 +3491,33 @@ features:
           - julidochromis-dickfeldi-telmatochromis-vittatus
         note: Secondary account of the same vittatus and dickfeldi aquarium cross; no independent reproduction or
           parentage test.
+      - source:
+          kind: website
+          title: "Cichlid Atlas: Telmatochromis brichardi"
+          url: https://www.cichlidatlas.com/species/telmatochromis-brichardi/
+          accessed: '2026-10-15'
+          archived: cichlidatlas.com/species/telmatochromis-brichardi/2026-10-15T111938Z
+        value:
+          - telmatochromis-brichardi-vittatus
+        note: Hobby warning names possible aquarium hybridisation between the pair.
+      - source:
+          kind: website
+          title: "FishFish: Telmatochromis brichardi"
+          url: https://www.fishfish.fr/poisson/telmatochromis-brichardi
+          accessed: '2026-10-15'
+          archived: fishfish.fr/poisson/telmatochromis-brichardi/2026-10-15T112909Z
+        value:
+          - telmatochromis-brichardi-vittatus
+        note: Community species sheet warns of possible aquarium hybridisation between the pair.
+      - source:
+          kind: website
+          title: "Telmatochromis brichardi, PetsHome.ro"
+          url: https://www.petshome.ro/ROMANA/PESTI/RASE%20DE%20PESTI%20DE%20APA%20DULCE/TELMATOCHROMIS%20BRICHARDI.html
+          accessed: '2026-10-15'
+          archived: petshome.ro/romana/pesti/rase_de_pesti_de_apa_dulce/telmatochromis_brichardi.html/2026-10-15T112002Z
+        value:
+          - telmatochromis-brichardi-vittatus
+        note: Species page contributes to the named-congener hobby warning.
     verification:
       method: qualified-majority
       votes:

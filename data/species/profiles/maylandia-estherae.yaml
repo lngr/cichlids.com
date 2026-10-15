@@ -1034,7 +1034,7 @@ features:
         agree: 3
         total: 3
   hybridGroups:
-    value: [chindongo-saulosi-maylandia-estherae, maylandia]
+    value: [astatotilapia-calliptera-maylandia-estherae, chindongo-saulosi-maylandia-estherae, maylandia]
     confidence: high
     rationale: >-
       The species belongs to the genus group maylandia, which is presumed: Fishkeeper and Aquarium
@@ -1046,6 +1046,9 @@ features:
       on a presumed basis from a published abstract reporting experimental F1 offspring and a
       related Dryad dataset identifying a Chindongo saulosi mother and a Maylandia estherae father,
       with shared researchers and recordings and unverified access to same-species mates or hybrid fertility.
+      The curated file data/species/hybrid-groups.yaml also defines astatotilapia-calliptera-maylandia-estherae
+      as presumed from controlled laboratory offspring reported by Stelkens and colleagues, which show
+      experimental compatibility without establishing free partner choice in an aquarium.
     sources:
       - *a1
       - *a2
@@ -1099,6 +1102,10 @@ features:
       - source: *a38
         value: maylandia
         note: viable laboratory hybrids of M. estherae with A. calliptera
+      - source: *a38
+        value:
+          - astatotilapia-calliptera-maylandia-estherae
+        note: Controlled laboratory offspring support experimental compatibility; aquarium partner choice is untested.
       - source: *a39
         value: maylandia
         note: forum report of a red zebra crossing with a Maylandia aurora

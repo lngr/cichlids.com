@@ -876,14 +876,17 @@ features:
       votes: {agree: 3, total: 3}
 
   hybridGroups:
-    value: [protomelas-taeniolatus-complex]
+    value: [astatotilapia-calliptera-protomelas-taeniolatus, protomelas-taeniolatus-complex]
     confidence: low
     rationale: >-
       The group protomelas-taeniolatus-complex has the basis presumed: Seriously Fish warns on the
       pages of P. taeniolatus and P. fenestratus that these species and the Taiwan Reef fish may
       hybridise, and FishBase stresses how closely P. taeniolatus resembles P. fenestratus. A shop
       page reports Taiwan Reef stock crossed with Red Empress, but names no setting, and no cross
-      from the wild or from a tank with free choice of partners is documented.
+      from the wild or from a tank with free choice of partners is documented. The curated file
+      data/species/hybrid-groups.yaml defines astatotilapia-calliptera-protomelas-taeniolatus as
+      presumed from published controlled crosses producing laboratory offspring, evidence of
+      experimental compatibility without unrestricted partner choice in an aquarium.
     sources:
       - *sf
       - &sffen
@@ -929,6 +932,33 @@ features:
       - source: *hyb20
         value: protomelas-taeniolatus-complex
         note: "claims that trade stock of the Taiwan Reef fish is crossed with P. taeniolatus; names no setting"
+      - source:
+          kind: literature
+          title: Stelkens et al. (2009). Phenotypic novelty in experimental hybrids is predicted by the genetic distance between species of cichlid fish
+          url: https://doi.org/10.1186/1471-2148-9-283
+          accessed: '2026-10-15'
+          archived: doi.org/10.1186_1471-2148-9-283/2026-10-13T155103Z
+        value:
+          - astatotilapia-calliptera-protomelas-taeniolatus
+        note: Controlled crosses produced laboratory offspring of the named pair.
+      - source:
+          kind: literature
+          title: Selz et al. (2014; online 2013). Relaxed trait covariance in interspecific cichlid hybrids predicts morphological diversity in adaptive radiations
+          url: https://doi.org/10.1111/jeb.12283
+          accessed: '2026-10-15'
+          archived: doi.org/10.1111_jeb.12283/2026-10-15T112356Z
+        value:
+          - astatotilapia-calliptera-protomelas-taeniolatus
+        note: Laboratory hybrid study includes offspring of the named pair.
+      - source:
+          kind: literature
+          title: Feller et al. (2020). Rapid generation of ecologically relevant behavioral novelty in experimental cichlid hybrids
+          url: https://doi.org/10.1002/ece3.6471
+          accessed: '2026-10-15'
+          archived: doi.org/10.1002_ece3.6471/2026-10-15T112208Z
+        value:
+          - astatotilapia-calliptera-protomelas-taeniolatus
+        note: Experimental hybrid research includes laboratory offspring of the named pair.
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}
