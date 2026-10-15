@@ -141,12 +141,20 @@ class DatabaseTests(unittest.TestCase):
                 self.assertRegex(filename, r'^media-[0-9]+\.jpg$')
                 self.assertIsNone(checksum)
             self.assertEqual(conn.execute("select count(*) from slug_alias where value not like 'post-%'").fetchone()[0], 0)
+            conn.execute('savepoint taxonomy_urls')
+            conn.execute("update species_link set url='https://taxonomy.example.invalid/species/1' where id=1")
+            conn.execute("update species set description='https://taxonomy.example.invalid' where id=1")
+            conn.execute("update species_common_name set name='https://taxonomy.example.invalid/name' where id=1")
+            self.assertEqual(snapshot.verify(conn, denylist), 0)
+            conn.execute('rollback to savepoint taxonomy_urls')
             for statement in (
                 "update comment set body='planted@example.invalid' where id=1",
                 "update tank set notes='https://personal.invalid' where id=1",
                 "update post set title='SyntheticAlice' where id=1",
                 "alter table profile alter column city set default 'planted@example.invalid'",
-                "update species_link set url='https://planted.example.invalid' where id=1",
+                "update comment set body='https://personal.invalid' where id=1",
+                "update species_link set url='https://reference.invalid/SyntheticAlice' where id=1",
+                "update species_common_name set name='planted@example.invalid' where id=1",
                 "update post set title='sYnThEtIc DiSpLaY' where id=1",
                 "insert into profile_identity (profile_id,provider,subject,created_at) values (1,'test','test',now())",
             ):

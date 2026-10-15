@@ -47,10 +47,10 @@ Verification scans text, arrays and JSON for email patterns, HTTP(S) URLs and
 case-insensitive occurrences of original usernames, display names, guest names
 and original file names. Defaults, constraint definitions and index definitions are
 checked for the same patterns. The denylist exists only in process memory. Output
-contains counts only; database and S3 errors are suppressed. Species data is preserved, including reference links. HTTP(S) links in those
-columns therefore fail verification and block publication. The operator needs an
-explicit masking-policy decision for such references before publishing a source
-that contains them. The synthetic taxonomy fixture uses a URN. Short identifiers can cause conservative false positives.
+contains counts only; database and S3 errors are suppressed. The URL pattern check
+excludes `species`, `species_common_name` and `species_link`: the species catalog
+contains public reference material. Email and denylist checks apply to every table.
+Short identifiers can cause conservative false positives.
 
 A failed transaction leaves the isolated target with the raw copied contents.
 Destroy that target after either outcome. Keep its volumes, PostgreSQL statement

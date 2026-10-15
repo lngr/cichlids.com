@@ -32,6 +32,7 @@ LABELS = ('thumb', 'small', 'medium', 'large')
 MEDIA_KEY = re.compile(r'variants/(thumb|small|medium|large)/media-[0-9]+\.jpg\Z')
 EMAIL = re.compile(r'[\w.+-]+@[\w.-]+\.[a-z]{2,}', re.I)
 URL = re.compile(r'https?://', re.I)
+URL_EXEMPT_TABLES = {'public.species', 'public.species_common_name', 'public.species_link'}
 
 
 def ident(table):
@@ -147,7 +148,7 @@ def verify(conn, originals):
             with conn.cursor(name='verify_' + uuid.uuid4().hex) as cursor:
                 cursor.execute(sql.SQL('select {}::text from {} where {} is not null').format(sql.Identifier(column), ident(table), sql.Identifier(column)))
                 for (value,) in cursor:
-                    if EMAIL.search(value) or URL.search(value) or (original_pattern and original_pattern.search(value)):
+                    if EMAIL.search(value) or (table not in URL_EXEMPT_TABLES and URL.search(value)) or (original_pattern and original_pattern.search(value)):
                         leaks += 1
     for column in ('city', 'external_avatar_url', 'last_login_at', 'suspended_until', 'avatar_media_id', 'profile_image_media_id'):
         leaks += conn.execute(sql.SQL('select count(*) from profile where {} is not null').format(sql.Identifier(column))).fetchone()[0]
