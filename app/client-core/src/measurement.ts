@@ -10,7 +10,7 @@ export const COMMON_PARAMETERS: CareParameter[] = ["ph", "no3", "temperature"];
 export const MEASUREMENT_ORIGINS: MeasurementOrigin[] = ["test_kit", "meter", "probe"];
 
 // Aquarium hobby convention: 1 German degree is 17.848 ppm as CaCO3, for general and carbonate hardness.
-const PPM_PER_GERMAN_DEGREE = 17.848;
+export const PPM_PER_GERMAN_DEGREE = 17.848;
 const CANONICAL_UNIT: Record<CareParameter, MeasurementUnit> = {
   temperature: "celsius", ph: "none", kh: "dkh", gh: "dgh", no2: "mg_per_liter", no3: "mg_per_liter",
   nh4: "mg_per_liter", po4: "mg_per_liter", conductivity: "microsiemens_per_cm", tds: "ppm",

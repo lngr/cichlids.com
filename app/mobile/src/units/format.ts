@@ -1,3 +1,4 @@
+import { PPM_PER_GERMAN_DEGREE } from "@cichlids/client-core";
 import { TRANSLATIONS } from "../i18n/catalogues";
 import { resolveLanguage } from "../i18n/locales";
 
@@ -10,9 +11,6 @@ export type MeasurementInput = { value: number; system: UnitSystem };
 // https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors
 const LITERS_PER_US_GALLON = 3.785411784;
 const CENTIMETERS_PER_INCH = 2.54;
-// Aquarium hobby convention: 1 German degree = 17.848 ppm as CaCO3.
-// https://www.horiba.com/sgp/water-quality/applications/aquarium/aquarium-water-testing/
-const PPM_PER_GERMAN_DEGREE = 17.848;
 
 export function unitsForRegion(region: string | null | undefined): UnitSystem {
   return region?.toUpperCase() === "US" ? "us" : "metric";
