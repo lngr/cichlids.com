@@ -13,7 +13,7 @@ try {
   await page.goto(`${WEB_URL}/me?lang=en`, { waitUntil: "networkidle" });
   await logInThroughKeycloak(page);
   await page.goto(WEB_URL, { waitUntil: "networkidle" });
-  await byTestId(page, "today-placeholder").waitFor({ timeout: 5000 });
+  await byTestId(page, "today-member").waitFor({ timeout: 5000 });
   const tabs = page.locator('[data-testid^="tab-"]');
   assert.deepEqual(await tabs.evaluateAll(nodes => nodes.map(node => node.dataset.testid)), ["tab-today", "tab-discover", "tab-create", "tab-fish", "tab-me"]);
   for (const tab of ["today", "discover", "create", "fish", "me"]) {

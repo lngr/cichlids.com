@@ -11,6 +11,7 @@ export const API_ERROR_CODES = [
   "tank_title_invalid",
   "tank_not_found",
   "discover_invalid_regions",
+  "today_invalid_date",
   "tank_dimensions_invalid",
   "tank_volume_invalid",
   "tank_region_invalid",
