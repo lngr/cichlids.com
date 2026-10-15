@@ -960,8 +960,8 @@ features:
     value: [amatitlania-nigrofasciata-blood-parrot, amatitlania-nigrofasciata-complex,
       amatitlania-nigrofasciata-hypsophrys-nicaraguensis,
       amatitlania-nigrofasciata-sajica, amatitlania-nigrofasciata-thorichthys-meeki,
-      cryptoheros-spilurus-amatitlania-nigrofasciata,
-      nandopsis-tetracanthus-amatitlania-nigrofasciata]
+      amatitlania-nigrofasciata-cryptoheros-spilurus,
+      amatitlania-nigrofasciata-nandopsis-tetracanthus]
     confidence: low
     rationale: >-
       The convict cichlid is a member of the presumed group of the four Amatitlania species
@@ -974,12 +974,12 @@ features:
       spawned with a convict male and raised young, and a 1982 paper describes hybrids of the two
       species, though only its title could be read.
       The curated data/species/hybrid-groups.yaml file defines
-      cryptoheros-spilurus-amatitlania-nigrofasciata as presumed, based on a specialist article
+      amatitlania-nigrofasciata-cryptoheros-spilurus as presumed, based on a specialist article
       citing older reports of fertile offspring and a forum archive thread repeating a crossing
       claim, both without known parental origin or partner choice. The historical spilurus label
       may refer to C. chetumalensis or C. cutteri, leaving the parental identity uncertain.
       The curated data/species/hybrid-groups.yaml file defines
-      nandopsis-tetracanthus-amatitlania-nigrofasciata as a presumed pairwise crossing group
+      amatitlania-nigrofasciata-nandopsis-tetracanthus as a presumed pairwise crossing group
       based on unverified hobby reports of captive offspring labelled as Cuban cichlid and
       convict crosses, with uncertain convict species identity, parentage and access to
       conspecific mates.
@@ -1156,16 +1156,16 @@ features:
         value: amatitlania-nigrofasciata-thorichthys-meeki
         note: "lists Cichlasoma meeki as a former combination of Thorichthys meeki; states nothing about crosses"
       - source: *hyb36
-        value: [cryptoheros-spilurus-amatitlania-nigrofasciata]
+        value: [amatitlania-nigrofasciata-cryptoheros-spilurus]
         note: Reports literature accounts of fertile convict offspring under historical names, without parental origin or mating circumstances.
       - source: *hyb37
-        value: [cryptoheros-spilurus-amatitlania-nigrofasciata]
+        value: [amatitlania-nigrofasciata-cryptoheros-spilurus]
         note: Repeats a crossing claim under the historical spilurum label, without verified parentage or partner choice.
       - source: *hyb38
-        value: [cryptoheros-spilurus-amatitlania-nigrofasciata]
+        value: [amatitlania-nigrofasciata-cryptoheros-spilurus]
         note: Keeper warning about crossing with convicts, without a described or verified spawning event.
       - source: *cubanCross
-        value: [nandopsis-tetracanthus-amatitlania-nigrofasciata]
+        value: [amatitlania-nigrofasciata-nandopsis-tetracanthus]
         note: Labels captive Cuban and convict offspring; convict identity, parentage and mate choice are unverified.
       - source: *bloodParrotTfh
         value: [amatitlania-nigrofasciata-blood-parrot]

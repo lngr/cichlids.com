@@ -959,14 +959,14 @@ features:
         value: false
         note: A pair lived without problems in a community with barbs, rainbowfish and catfish.
   hybridGroups:
-    value: [amatitlania-nigrofasciata-thorichthys-meeki, thorichthys, thorichthys-meeki-maculipinnis, thorichthys-meeki-pasionis]
+    value: [amatitlania-nigrofasciata-thorichthys-meeki, thorichthys, thorichthys-maculipinnis-meeki, thorichthys-meeki-pasionis]
     confidence: low
     verification:
       method: conservative
       votes: {agree: 2, total: 6}
     rationale: >-
       The votes split, so the tally took the union of all groups named by at least two votes. The
-      proposals were thorichthys-meeki-maculipinnis (generator),
+      proposals were thorichthys-maculipinnis-meeki (generator),
       amatitlania-nigrofasciata-thorichthys-meeki (checker-a), no group (checker-b), a genus-wide
       group thorichthys together with amatitlania-nigrofasciata-thorichthys-meeki (checker-c), and
       both two-member groups (tiebreaker-1, tiebreaker-2). The genus group was named only once and
@@ -1047,16 +1047,16 @@ features:
         value: [amatitlania-nigrofasciata-thorichthys-meeki]
         note: Swedish version of the same account; its hybrid mishap is the convict cross.
       - source: *parha
-        value: [thorichthys-meeki-maculipinnis]
+        value: [thorichthys-maculipinnis-meeki]
         note: General warning that firemouths cross with other Thorichthys; no named case.
       - source: *beerlink
-        value: [thorichthys-meeki-maculipinnis]
+        value: [thorichthys-maculipinnis-meeki]
         note: General warning that Thorichthys species cross easily in aquaria; no named case.
       - source: *cof
-        value: [thorichthys-meeki-maculipinnis]
+        value: [thorichthys-maculipinnis-meeki]
         note: T. ellioti is a synonym of T. maculipinnis; nothing about crosses.
       - source: *mfk
-        value: [thorichthys-meeki-maculipinnis]
+        value: [thorichthys-maculipinnis-meeki]
         note: Female firemouth spawned with a male Ellioti cichlid in a mixed tank; fry raised.
       - source: *mfkconvict
         value: [amatitlania-nigrofasciata-thorichthys-meeki]
@@ -1529,13 +1529,13 @@ provenance:
       rationale: Conservative decision of the tally; invertivore is the stricter of the proposed types and bloatSensitive is true because one vote set it. The stomach studies support invertivore; the bloat flag is a precaution based on a care sheet warning about excess protein.
     - field: features.hybridGroups
       proposals:
-        - {by: generator, value: [thorichthys-meeki-maculipinnis]}
+        - {by: generator, value: [thorichthys-maculipinnis-meeki]}
         - {by: checker-a, value: [amatitlania-nigrofasciata-thorichthys-meeki]}
         - {by: checker-b, value: []}
         - {by: checker-c, value: [thorichthys, amatitlania-nigrofasciata-thorichthys-meeki]}
-        - {by: tiebreaker-1, value: [amatitlania-nigrofasciata-thorichthys-meeki, thorichthys-meeki-maculipinnis]}
-        - {by: tiebreaker-2, value: [thorichthys-meeki-maculipinnis, amatitlania-nigrofasciata-thorichthys-meeki]}
-      decision: [amatitlania-nigrofasciata-thorichthys-meeki, thorichthys-meeki-maculipinnis]
+        - {by: tiebreaker-1, value: [amatitlania-nigrofasciata-thorichthys-meeki, thorichthys-maculipinnis-meeki]}
+        - {by: tiebreaker-2, value: [thorichthys-maculipinnis-meeki, amatitlania-nigrofasciata-thorichthys-meeki]}
+      decision: [amatitlania-nigrofasciata-thorichthys-meeki, thorichthys-maculipinnis-meeki]
       rationale: Conservative decision of the tally, the union of the groups named by at least two votes; the genus group thorichthys was named once and is not part of the decision. Both groups are new and presumed, since no report shows free choice of partners.
     - field: features.maxSizeCm
       proposals:

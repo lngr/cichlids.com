@@ -933,14 +933,14 @@ features:
         note: compatibility depends on tank size
 
   hybridGroups:
-    value: [parachromis-dovii-mesoheros-festae, mesoheros-festae-parachromis-motaguensis, vieja-melanurus-mesoheros-festae]
+    value: [mesoheros-festae-parachromis-dovii, mesoheros-festae-parachromis-motaguensis, mesoheros-festae-vieja-melanurus]
     confidence: medium
     verification: {method: unanimous, votes: {agree: 3, total: 3}}
     rationale: >-
       No cross with its congeners or with the look-alike Mayaheros urophthalmus is documented, and
       the congeners are not in the trade, so no group applies.
-      The curated hybrid-groups.yaml file defines parachromis-dovii-mesoheros-festae as a presumed pairwise crossing group based on hobby photographs labelled as captive offspring, without verified parentage or documented access to conspecific mates.
-      The curated hybrid-groups.yaml file defines vieja-melanurus-mesoheros-festae as a presumed pairwise crossing group based on unverified hobby photographs of captive offspring labelled with the melanurus or synspilum name, with catalog taxonomy supporting the name rather than the cross.
+      The curated hybrid-groups.yaml file defines mesoheros-festae-parachromis-dovii as a presumed pairwise crossing group based on hobby photographs labelled as captive offspring, without verified parentage or documented access to conspecific mates.
+      The curated hybrid-groups.yaml file defines mesoheros-festae-vieja-melanurus as a presumed pairwise crossing group based on unverified hobby photographs of captive offspring labelled with the melanurus or synspilum name, with catalog taxonomy supporting the name rather than the cross.
       The curated data/species/hybrid-groups.yaml file defines mesoheros-festae-parachromis-motaguensis as a presumed pairwise group based on labelled captive-offspring reports in a hobby compilation without verified parentage or evidence of access to same-species mates.
     sources:
       - *cof
@@ -980,7 +980,7 @@ features:
           archived: binnspedia.com/parachromis/dovii-parachromis-dovii/2026-10-14T094405Z
           accessed: 2026-10-13
         value:
-          - parachromis-dovii-mesoheros-festae
+          - mesoheros-festae-parachromis-dovii
         note: Hobby photographs label captive crosses; parentage and access to conspecific mates are
           unverified.
       - source:
@@ -990,7 +990,7 @@ features:
           archived: binnspedia.com/vieja/synspilum/2026-10-14T101616Z
           accessed: 2026-10-13
         value:
-          - vieja-melanurus-mesoheros-festae
+          - mesoheros-festae-vieja-melanurus
         note: Hobby photographs label captive crosses; parentage and access to conspecific mates are
           unverified.
       - source:
@@ -1000,7 +1000,7 @@ features:
           archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-2ce1eaf7/2026-10-14T094904Z
           accessed: 2026-10-13
         value:
-          - vieja-melanurus-mesoheros-festae
+          - mesoheros-festae-vieja-melanurus
         note: Catalog taxonomy identifies Vieja melanurus and its synspilum name; it does not verify
           crossing.
       - source:

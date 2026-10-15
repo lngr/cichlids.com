@@ -746,10 +746,10 @@ features:
       method: unanimous
       votes: {agree: 3, total: 3}
   hybridGroups:
-    value: [placidochromis-electra-complex]
+    value: [placidochromis-electra-phenochilus]
     confidence: low
     rationale: >-
-      The two-member group placidochromis-electra-complex has the basis presumed. It rests on
+      The two-member group placidochromis-electra-phenochilus has the basis presumed. It rests on
       Rizzo's advice not to keep P. phenochilus and P. electra together because they hybridise and
       on their close relationship, which led Konings to place phenochilus in Placidochromis
       (Oliver); no actual cross between the two is documented.
@@ -761,10 +761,10 @@ features:
       - *oliver
     evidence:
       - source: *rizzo
-        value: placidochromis-electra-complex
+        value: placidochromis-electra-phenochilus
         note: close relatives, once one species; should not share a tank because they hybridise
       - source: *cof
-        value: placidochromis-electra-complex
+        value: placidochromis-electra-phenochilus
         note: both valid species of Placidochromis; supports the membership, not the crossing
       - source: *sfelectra
         value: null
@@ -773,7 +773,7 @@ features:
         value: null
         note: no hybridisation noted
       - source: *oliver
-        value: placidochromis-electra-complex
+        value: placidochromis-electra-phenochilus
         note: generic placement based on the resemblance to P. electra; no statement on crosses
     verification:
       method: conservative
@@ -920,7 +920,7 @@ partners:
     - species: Melanochromis auratus
       reason: Very quarrelsome mbuna that harasses calm haplochromines in the whole tank.
     - species: Placidochromis electra
-      reason: Close relative and look-alike; the hobby warns that the two hybridise, and both belong to the hybrid group placidochromis-electra-complex.
+      reason: Close relative and look-alike; the hobby warns that the two hybridise, and both belong to the hybrid group placidochromis-electra-phenochilus.
     - species: Tropheus moorii
       reason: Lake Tanganyika algae grazer that needs a plant-based diet, harder water and a species tank.
 profile:
@@ -1187,16 +1187,16 @@ provenance:
     - field: features.hybridGroups
       proposals:
         - by: generator
-          value: [placidochromis-electra-complex]
+          value: [placidochromis-electra-phenochilus]
         - by: checker-a
           value: []
         - by: checker-b
           value: []
         - by: tiebreaker-1
-          value: [placidochromis-electra-complex]
+          value: [placidochromis-electra-phenochilus]
         - by: tiebreaker-2
-          value: [placidochromis-electra-complex]
-      decision: [placidochromis-electra-complex]
+          value: [placidochromis-electra-phenochilus]
+      decision: [placidochromis-electra-phenochilus]
       rationale: >-
         Conservative decision of the vote count (3 of 5): the most common named group. It rests on
         Rizzo's warning that the two species hybridise and on their close relationship; no cross is

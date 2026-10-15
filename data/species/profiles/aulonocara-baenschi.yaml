@@ -793,7 +793,7 @@ features:
       votes: {agree: 3, total: 3}
 
   hybridGroups:
-    value: [aulonocara, sciaenochromis-fryeri-aulonocara, tramitichromis-intermedius-aulonocara-baenschi]
+    value: [aulonocara, sciaenochromis-fryeri-aulonocara, aulonocara-baenschi-tramitichromis-intermedius]
     confidence: high
     rationale: >-
       A. baenschi belongs to the presumed genus group aulonocara, which rests on the warnings of
@@ -802,7 +802,7 @@ features:
       sciaenochromis-fryeri-aulonocara, because Seriously Fish and Fishkeeper report S. fryeri males
       breeding with Aulonocara females without naming a species.
       The curated group file data/species/hybrid-groups.yaml defines
-      tramitichromis-intermedius-aulonocara-baenschi with basis presumed, supported by laboratory
+      aulonocara-baenschi-tramitichromis-intermedius with basis presumed, supported by laboratory
       crosses and partly shared F2 pedigrees demonstrating F1 fertility while aquarium mate choice
       remains uncertain.
     sources:
@@ -876,16 +876,16 @@ features:
         value: sciaenochromis-fryeri-aulonocara
         note: "advises against Aulonocara because males may remove the peacock male to breed with its females"
       - source: *hyb8
-        value: [tramitichromis-intermedius-aulonocara-baenschi]
+        value: [aulonocara-baenschi-tramitichromis-intermedius]
         note: laboratory offspring from T. intermedius males and A. baenschi females
       - source: *hyb9
-        value: [tramitichromis-intermedius-aulonocara-baenschi]
+        value: [aulonocara-baenschi-tramitichromis-intermedius]
         note: F2 descendants demonstrate F1 fertility in experimental pedigrees
       - source: *hyb10
-        value: [tramitichromis-intermedius-aulonocara-baenschi]
+        value: [aulonocara-baenschi-tramitichromis-intermedius]
         note: F2 descendants in related experimental pedigrees support interfertility
       - source: *hyb11
-        value: [tramitichromis-intermedius-aulonocara-baenschi]
+        value: [aulonocara-baenschi-tramitichromis-intermedius]
         note: F2 descendants support F1 fertility; aquarium mate choice is not established
     verification:
       method: unanimous
