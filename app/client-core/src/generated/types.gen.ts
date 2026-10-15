@@ -34,9 +34,27 @@ export type CareEntryDto = {
     occurredAt: string;
     recordedAt: string;
     amount: null | CareAmountDto;
+    values?: null | Array<MeasurementValueDto>;
 };
 
-export type CareKind = 'water_change';
+export type CareKind = 'water_change' | 'measurement';
+
+export type CareParameter = 'temperature' | 'ph' | 'kh' | 'gh' | 'no2' | 'no3' | 'nh4' | 'po4' | 'conductivity' | 'tds';
+
+export type CareSeriesDto = {
+    parameter: CareParameter;
+    unit: MeasurementUnit;
+    points: Array<CareSeriesPointDto>;
+};
+
+export type CareSeriesPointDto = {
+    entryId: number | string;
+    occurredAt: string;
+    value: number | string;
+    inputValue: number | string;
+    inputUnit: MeasurementUnit;
+    origin: null | MeasurementOrigin;
+};
 
 export type CommentCreatedDto = {
     comment: null | CommentDto;
@@ -220,6 +238,27 @@ export type LogCareRequest = {
     occurredAt?: null | string;
     amount?: null | CareAmountRequest;
     kind?: string;
+    values?: null | Array<MeasurementValueRequest>;
+};
+
+export type MeasurementOrigin = 'test_kit' | 'meter' | 'probe';
+
+export type MeasurementUnit = 'none' | 'celsius' | 'fahrenheit' | 'dgh' | 'dkh' | 'ppm' | 'mg_per_liter' | 'microsiemens_per_cm';
+
+export type MeasurementValueDto = {
+    parameter: CareParameter;
+    value: number | string;
+    unit: MeasurementUnit;
+    normalizedValue: number | string;
+    canonicalUnit: MeasurementUnit;
+    origin: null | MeasurementOrigin;
+};
+
+export type MeasurementValueRequest = {
+    parameter: string;
+    value: number | string;
+    unit?: null | string;
+    origin?: null | string;
 };
 
 export type MeDto = {
@@ -517,6 +556,7 @@ export type TodayWeeklyTankDto = {
 
 export type UpdateCareRequest = {
     amount: null | CareAmountRequest;
+    values?: null | Array<MeasurementValueRequest>;
 };
 
 export type VolumeDto = {
@@ -1453,6 +1493,41 @@ export type LogCareEntryResponses = {
 };
 
 export type LogCareEntryResponse = LogCareEntryResponses[keyof LogCareEntryResponses];
+
+export type GetCareSeriesData = {
+    body?: never;
+    path: {
+        tankId: number;
+    };
+    query?: {
+        parameter?: string;
+        from?: string;
+        to?: string;
+    };
+    url: '/api/tanks/{tankId}/care/series';
+};
+
+export type GetCareSeriesErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetCareSeriesError = GetCareSeriesErrors[keyof GetCareSeriesErrors];
+
+export type GetCareSeriesResponses = {
+    /**
+     * OK
+     */
+    200: CareSeriesDto;
+};
+
+export type GetCareSeriesResponse = GetCareSeriesResponses[keyof GetCareSeriesResponses];
 
 export type DeleteCareEntryData = {
     body?: never;

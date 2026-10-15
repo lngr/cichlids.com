@@ -1558,6 +1558,81 @@
         }
       }
     },
+    "/api/tanks/{tankId}/care/series": {
+      "get": {
+        "tags": [
+          "Care"
+        ],
+        "operationId": "GetCareSeries",
+        "parameters": [
+          {
+            "name": "tankId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "parameter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareSeriesDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/tanks/{tankId}/care/{id}": {
       "patch": {
         "tags": [
@@ -2341,13 +2416,113 @@
                 "$ref": "#/components/schemas/CareAmountDto"
               }
             ]
+          },
+          "values": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/MeasurementValueDto"
+            }
           }
         }
       },
       "CareKind": {
         "enum": [
-          "water_change"
+          "water_change",
+          "measurement"
         ]
+      },
+      "CareParameter": {
+        "enum": [
+          "temperature",
+          "ph",
+          "kh",
+          "gh",
+          "no2",
+          "no3",
+          "nh4",
+          "po4",
+          "conductivity",
+          "tds"
+        ]
+      },
+      "CareSeriesDto": {
+        "required": [
+          "parameter",
+          "unit",
+          "points"
+        ],
+        "type": "object",
+        "properties": {
+          "parameter": {
+            "$ref": "#/components/schemas/CareParameter"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/MeasurementUnit"
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CareSeriesPointDto"
+            }
+          }
+        }
+      },
+      "CareSeriesPointDto": {
+        "required": [
+          "entryId",
+          "occurredAt",
+          "value",
+          "inputValue",
+          "inputUnit",
+          "origin"
+        ],
+        "type": "object",
+        "properties": {
+          "entryId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "occurredAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "value": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "inputValue": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "inputUnit": {
+            "$ref": "#/components/schemas/MeasurementUnit"
+          },
+          "origin": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/MeasurementOrigin"
+              }
+            ]
+          }
+        }
       },
       "CommentCreatedDto": {
         "required": [
@@ -3301,6 +3476,115 @@
           "kind": {
             "type": "string",
             "default": "water_change"
+          },
+          "values": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/MeasurementValueRequest"
+            }
+          }
+        }
+      },
+      "MeasurementOrigin": {
+        "enum": [
+          "test_kit",
+          "meter",
+          "probe",
+          null
+        ]
+      },
+      "MeasurementUnit": {
+        "enum": [
+          "none",
+          "celsius",
+          "fahrenheit",
+          "dgh",
+          "dkh",
+          "ppm",
+          "mg_per_liter",
+          "microsiemens_per_cm"
+        ]
+      },
+      "MeasurementValueDto": {
+        "required": [
+          "parameter",
+          "value",
+          "unit",
+          "normalizedValue",
+          "canonicalUnit",
+          "origin"
+        ],
+        "type": "object",
+        "properties": {
+          "parameter": {
+            "$ref": "#/components/schemas/CareParameter"
+          },
+          "value": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/MeasurementUnit"
+          },
+          "normalizedValue": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "canonicalUnit": {
+            "$ref": "#/components/schemas/MeasurementUnit"
+          },
+          "origin": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/MeasurementOrigin"
+              }
+            ]
+          }
+        }
+      },
+      "MeasurementValueRequest": {
+        "required": [
+          "parameter",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "parameter": {
+            "type": "string"
+          },
+          "value": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "unit": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "origin": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
@@ -4889,6 +5173,15 @@
                 "$ref": "#/components/schemas/CareAmountRequest"
               }
             ]
+          },
+          "values": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/MeasurementValueRequest"
+            }
           }
         }
       },
