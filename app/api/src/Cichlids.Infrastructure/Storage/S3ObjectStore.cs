@@ -20,6 +20,13 @@ public sealed class S3ObjectStore : IObjectStore
     {
         _client = client;
         _options = options.Value;
+        if (!string.IsNullOrEmpty(_options.ReadFallbackPrefix)
+            && !string.IsNullOrEmpty(_options.WritePrefix)
+            && (IsGoldenKey(_options.WritePrefix.TrimEnd('/') + "/")
+                || _options.ReadFallbackPrefix.StartsWith(_options.WritePrefix.TrimEnd('/') + "/", StringComparison.Ordinal)))
+        {
+            throw new InvalidOperationException("Environment and golden prefixes must be disjoint.");
+        }
     }
 
     public string Bucket => _options.Bucket;
@@ -34,6 +41,7 @@ public sealed class S3ObjectStore : IObjectStore
         IReadOnlyDictionary<string, string> metadata,
         CancellationToken cancellationToken = default)
     {
+        EnsureWritable(key);
         if (content.CanSeek)
         {
             content.Position = 0;
@@ -42,7 +50,7 @@ public sealed class S3ObjectStore : IObjectStore
         var request = new PutObjectRequest
         {
             BucketName = _options.Bucket,
-            Key = key,
+            Key = OwnKey(key),
             InputStream = content,
             ContentType = contentType,
             AutoCloseStream = false,
@@ -57,6 +65,14 @@ public sealed class S3ObjectStore : IObjectStore
     }
 
     public async Task<ObjectHead?> HeadAsync(string key, CancellationToken cancellationToken = default)
+    {
+        var head = await HeadKeyAsync(OwnKey(key), cancellationToken).ConfigureAwait(false);
+        return head ?? (FallbackKey(key) is { } fallback
+            ? await HeadKeyAsync(fallback, cancellationToken).ConfigureAwait(false)
+            : null);
+    }
+
+    private async Task<ObjectHead?> HeadKeyAsync(string key, CancellationToken cancellationToken)
     {
         var request = new GetObjectMetadataRequest
         {
@@ -83,6 +99,14 @@ public sealed class S3ObjectStore : IObjectStore
     }
 
     public async Task<Stream?> GetAsync(string key, CancellationToken cancellationToken = default)
+    {
+        var body = await GetKeyAsync(OwnKey(key), cancellationToken).ConfigureAwait(false);
+        return body ?? (FallbackKey(key) is { } fallback
+            ? await GetKeyAsync(fallback, cancellationToken).ConfigureAwait(false)
+            : null);
+    }
+
+    private async Task<Stream?> GetKeyAsync(string key, CancellationToken cancellationToken)
     {
         var request = new GetObjectRequest
         {
@@ -111,50 +135,19 @@ public sealed class S3ObjectStore : IObjectStore
         return new CappedReadStream(response.ResponseStream, key, _options.MaxDownloadBytes, response);
     }
 
-    public async Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default)
-    {
-        var request = new GetObjectMetadataRequest
-        {
-            BucketName = _options.Bucket,
-            Key = key,
-        };
+    public async Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default) =>
+        await HeadAsync(key, cancellationToken).ConfigureAwait(false) is not null;
 
-        try
-        {
-            await _client.GetObjectMetadataAsync(request, cancellationToken).ConfigureAwait(false);
-            return true;
-        }
-        catch (AmazonS3Exception ex) when (ex.StatusCode == HttpStatusCode.NotFound)
-        {
-            return false;
-        }
-    }
-
-    public async Task<long?> GetSizeAsync(string key, CancellationToken cancellationToken = default)
-    {
-        var request = new GetObjectMetadataRequest
-        {
-            BucketName = _options.Bucket,
-            Key = key,
-        };
-
-        try
-        {
-            var response = await _client.GetObjectMetadataAsync(request, cancellationToken).ConfigureAwait(false);
-            return response.ContentLength;
-        }
-        catch (AmazonS3Exception ex) when (ex.StatusCode == HttpStatusCode.NotFound)
-        {
-            return null;
-        }
-    }
+    public async Task<long?> GetSizeAsync(string key, CancellationToken cancellationToken = default) =>
+        (await HeadAsync(key, cancellationToken).ConfigureAwait(false))?.Size;
 
     public async Task DeleteAsync(string key, CancellationToken cancellationToken = default)
     {
+        EnsureWritable(key);
         var request = new DeleteObjectRequest
         {
             BucketName = _options.Bucket,
-            Key = key,
+            Key = OwnKey(key),
         };
 
         await _client.DeleteObjectAsync(request, cancellationToken).ConfigureAwait(false);
@@ -169,7 +162,7 @@ public sealed class S3ObjectStore : IObjectStore
             var request = new ListObjectsV2Request
             {
                 BucketName = _options.Bucket,
-                Prefix = prefix,
+                Prefix = OwnKey(prefix),
                 ContinuationToken = continuationToken,
                 MaxKeys = _options.ListPageSize,
             };
@@ -181,7 +174,10 @@ public sealed class S3ObjectStore : IObjectStore
             // providers omit it entirely for a prefix with zero matching objects.
             foreach (var entry in response.S3Objects ?? [])
             {
-                yield return entry.Key;
+                if (!IsGoldenKey(entry.Key))
+                {
+                    yield return entry.Key[(_options.WritePrefix.Length == 0 ? 0 : _options.WritePrefix.TrimEnd('/').Length + 1)..];
+                }
             }
 
             continuationToken = response.IsTruncated == true ? response.NextContinuationToken : null;
@@ -191,8 +187,37 @@ public sealed class S3ObjectStore : IObjectStore
 
     public string GetPublicUrl(string key)
     {
-        var encodedKey = string.Join('/', key.Split('/').Select(Uri.EscapeDataString));
+        var resolvedKey = OwnKey(key);
+        if (FallbackKey(key) is { } fallback
+            && HeadKeyAsync(resolvedKey, CancellationToken.None).GetAwaiter().GetResult() is null
+            && HeadKeyAsync(fallback, CancellationToken.None).GetAwaiter().GetResult() is not null)
+        {
+            resolvedKey = fallback;
+        }
+
+        var encodedKey = string.Join('/', resolvedKey.Split('/').Select(Uri.EscapeDataString));
         return $"{_options.PublicBaseUrl.TrimEnd('/')}/{encodedKey}";
+    }
+
+    private string OwnKey(string key) =>
+        string.IsNullOrEmpty(_options.WritePrefix) ? key : $"{_options.WritePrefix.TrimEnd('/')}/{key}";
+
+    private string? FallbackKey(string key) =>
+        string.IsNullOrEmpty(_options.ReadFallbackPrefix) || IsGoldenKey(key)
+            ? null
+            : $"{_options.ReadFallbackPrefix.TrimEnd('/')}/{key}";
+
+    private bool IsGoldenKey(string key) =>
+        !string.IsNullOrEmpty(_options.ReadFallbackPrefix)
+        && (key.StartsWith("golden/", StringComparison.Ordinal)
+            || key.StartsWith(_options.ReadFallbackPrefix.TrimEnd('/') + "/", StringComparison.Ordinal));
+
+    private void EnsureWritable(string key)
+    {
+        if (IsGoldenKey(key))
+        {
+            throw new InvalidOperationException("The golden media prefix is read-only.");
+        }
     }
 
     /// <summary>

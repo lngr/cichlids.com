@@ -4,6 +4,7 @@ using Amazon.S3.Model;
 using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Containers;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 using Cichlids.Infrastructure.Storage;
 
 namespace Cichlids.Infrastructure.Tests;
@@ -40,7 +41,7 @@ public sealed class RustFsFixture : IAsyncLifetime
     /// Creates a store for a freshly named bucket and ensures the bucket exists, so each test
     /// gets an isolated namespace inside the shared container.
     /// </summary>
-    public S3ObjectStore CreateStoreForNewBucket(int? listPageSize = null, long? maxDownloadBytes = null)
+    public S3ObjectStore CreateStoreForNewBucket(int? listPageSize = null, long? maxDownloadBytes = null, string readFallbackPrefix = "", string writePrefix = "")
     {
         var options = new S3ObjectStoreOptions
         {
@@ -58,6 +59,12 @@ public sealed class RustFsFixture : IAsyncLifetime
             options.MaxDownloadBytes = cap;
         }
 
+        new ConfigurationBuilder().AddInMemoryCollection(new Dictionary<string, string?>
+        {
+            ["ReadFallbackPrefix"] = readFallbackPrefix,
+            ["WritePrefix"] = writePrefix,
+        }).Build().Bind(options);
+
         var client = new AmazonS3Client(
             new BasicAWSCredentials(options.AccessKey, options.SecretKey),
             new AmazonS3Config { ServiceURL = options.ServiceUrl, ForcePathStyle = options.ForcePathStyle, AuthenticationRegion = options.Region });
@@ -66,6 +73,10 @@ public sealed class RustFsFixture : IAsyncLifetime
         store.EnsureBucketAsync().GetAwaiter().GetResult();
         return store;
     }
+
+    public AmazonS3Client CreateClient() => new(
+        new BasicAWSCredentials(AccessKey, SecretKey),
+        new AmazonS3Config { ServiceURL = ServiceUrl, ForcePathStyle = true, AuthenticationRegion = "us-east-1" });
 
     // The container port opens before rustfs finishes initializing its S3 API. Retrying a cheap
     // call absorbs that gap instead of racing every test against container startup.
