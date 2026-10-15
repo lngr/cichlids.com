@@ -1,9 +1,10 @@
 ---
 id: TASK-5.1
 title: Care event stream with one-tap water change
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-15 12:26'
+updated_date: '2026-10-15 12:27'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
