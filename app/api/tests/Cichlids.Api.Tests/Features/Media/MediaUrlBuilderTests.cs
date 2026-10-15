@@ -1,4 +1,9 @@
+using Amazon.Runtime;
+using Amazon.S3;
+using Amazon.S3.Model;
 using Cichlids.Api.Features.Media;
+using Cichlids.Infrastructure.Storage;
+using Microsoft.Extensions.Options;
 
 namespace Cichlids.Api.Tests.Features.Media;
 
@@ -7,6 +12,37 @@ public class MediaUrlBuilderTests
     private const string BaseUrl = "https://media.test";
 
     private readonly MediaUrlBuilder _builder = new(new UrlOnlyObjectStore(BaseUrl));
+
+    [Fact]
+    public void Given_golden_keys_when_building_gallery_urls_then_no_storage_requests_are_issued()
+    {
+        using var client = new RequestCountingClient();
+        var store = new S3ObjectStore(client,
+            Microsoft.Extensions.Options.Options.Create(new S3ObjectStoreOptions
+            {
+                PublicBaseUrl = BaseUrl,
+                WritePrefix = "environments/staging/",
+            }));
+        var builder = new MediaUrlBuilder(store);
+        for (var id = 1; id <= 40; id++)
+        {
+            var key = $"golden/v1/media/variants/thumb/media-{id}.jpg";
+            Assert.Equal($"{BaseUrl}/{key}", builder.BuildThumbnail(key, null));
+            Assert.Equal($"{BaseUrl}/{key}", builder.BuildBest(new Dictionary<string, string> { ["thumb"] = key }));
+            Assert.Equal($"{BaseUrl}/{key}", builder.Build(new Dictionary<string, string> { ["thumb"] = key }).Thumb);
+        }
+        Assert.Equal(0, client.Requests);
+    }
+
+    [Theory]
+    [InlineData("golden/v1/media/originals/a.jpg")]
+    [InlineData("golden/v1/media/forum_attachments/a.jpg")]
+    [InlineData("golden/v1/media/variants/copy/a.jpg")]
+    [InlineData("golden/../media/variants/thumb/media-1.jpg")]
+    public void Golden_private_or_invalid_keys_are_refused(string key)
+    {
+        Assert.Throws<InvalidOperationException>(() => _builder.BuildThumbnail(key, null));
+    }
 
     [Fact]
     public void Build_resolves_each_variant_label_and_leaves_missing_ones_null()
@@ -111,5 +147,19 @@ public class MediaUrlBuilderTests
     {
         Assert.Throws<InvalidOperationException>(() => _builder.BuildThumbnail("originals/a.jpg", null));
         Assert.Throws<InvalidOperationException>(() => _builder.BuildThumbnail(null, "originals/a.jpg"));
+    }
+
+    private sealed class RequestCountingClient() : AmazonS3Client(
+        new BasicAWSCredentials("unused", "unused"),
+        new AmazonS3Config { ServiceURL = "http://unused" })
+    {
+        public int Requests { get; private set; }
+
+        public override Task<GetObjectMetadataResponse> GetObjectMetadataAsync(
+            GetObjectMetadataRequest request, CancellationToken cancellationToken = default)
+        {
+            Requests++;
+            throw new InvalidOperationException("URL building must not query storage.");
+        }
     }
 }

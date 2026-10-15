@@ -13,7 +13,6 @@ data:
   ObjectStorage__Region: nbg1
   ObjectStorage__Bucket: REPLACE_WITH_STAGING_MEDIA_BUCKET
   ObjectStorage__PublicBaseUrl: https://REPLACE_WITH_STAGING_MEDIA_BUCKET.nbg1.your-objectstorage.com
-  ObjectStorage__ReadFallbackPrefix: golden/unpublished/media/
   ObjectStorage__WritePrefix: environments/staging/
   ObjectStorage__ForcePathStyle: 'false'
   OutboxDispatcher__Enabled: 'false'

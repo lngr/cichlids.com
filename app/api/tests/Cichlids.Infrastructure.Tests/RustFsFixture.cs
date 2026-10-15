@@ -41,7 +41,7 @@ public sealed class RustFsFixture : IAsyncLifetime
     /// Creates a store for a freshly named bucket and ensures the bucket exists, so each test
     /// gets an isolated namespace inside the shared container.
     /// </summary>
-    public S3ObjectStore CreateStoreForNewBucket(int? listPageSize = null, long? maxDownloadBytes = null, string readFallbackPrefix = "", string writePrefix = "")
+    public S3ObjectStore CreateStoreForNewBucket(int? listPageSize = null, long? maxDownloadBytes = null, string writePrefix = "")
     {
         var options = new S3ObjectStoreOptions
         {
@@ -61,7 +61,6 @@ public sealed class RustFsFixture : IAsyncLifetime
 
         new ConfigurationBuilder().AddInMemoryCollection(new Dictionary<string, string?>
         {
-            ["ReadFallbackPrefix"] = readFallbackPrefix,
             ["WritePrefix"] = writePrefix,
         }).Build().Bind(options);
 

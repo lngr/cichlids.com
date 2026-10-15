@@ -147,9 +147,23 @@ public sealed class UploadsFixture : IAsyncLifetime
             builder.ConfigureAppConfiguration((_, configuration) =>
                 configuration.AddInMemoryCollection(new Dictionary<string, string?>
                 {
-                    ["ObjectStorage:ReadFallbackPrefix"] = "golden/v1/media/",
                     ["ObjectStorage:WritePrefix"] = writePrefix,
                 })));
+
+    public async Task SeedGoldenAsync(string key, byte[] bytes)
+    {
+        var options = _factory.Services.GetRequiredService<Microsoft.Extensions.Options.IOptions<S3ObjectStoreOptions>>().Value;
+        using var client = new Amazon.S3.AmazonS3Client(
+            new Amazon.Runtime.BasicAWSCredentials(options.AccessKey, options.SecretKey),
+            new Amazon.S3.AmazonS3Config { ServiceURL = options.ServiceUrl, ForcePathStyle = true, AuthenticationRegion = options.Region });
+        await client.PutObjectAsync(new Amazon.S3.Model.PutObjectRequest
+        {
+            BucketName = options.Bucket,
+            Key = key,
+            InputStream = new MemoryStream(bytes),
+            ContentType = "image/jpeg",
+        });
+    }
 
     public CichlidsDbContext CreateDbContext()
     {

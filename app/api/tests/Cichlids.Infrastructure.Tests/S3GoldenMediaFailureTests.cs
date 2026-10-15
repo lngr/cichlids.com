@@ -7,25 +7,24 @@ using Microsoft.Extensions.Options;
 
 namespace Cichlids.Infrastructure.Tests;
 
-public class S3ReadFallbackFailureTests
+public class S3GoldenMediaFailureTests
 {
     [Theory]
     [InlineData(HttpStatusCode.Forbidden)]
     [InlineData(HttpStatusCode.InternalServerError)]
-    public async Task Provider_errors_propagate_without_fallback(HttpStatusCode status)
+    public async Task Provider_errors_propagate(HttpStatusCode status)
     {
         using var client = new FailingClient(status);
         var store = new S3ObjectStore(client, Options.Create(new S3ObjectStoreOptions
         {
-            ReadFallbackPrefix = "golden/v1/media/",
             WritePrefix = "environments/test/",
         }));
         await Assert.ThrowsAsync<AmazonS3Exception>(() => store.GetAsync("variants/a.jpg"));
         await Assert.ThrowsAsync<AmazonS3Exception>(() => store.HeadAsync("variants/a.jpg"));
         await Assert.ThrowsAsync<AmazonS3Exception>(() => store.ExistsAsync("variants/a.jpg"));
         await Assert.ThrowsAsync<AmazonS3Exception>(() => store.GetSizeAsync("variants/a.jpg"));
-        Assert.Throws<AmazonS3Exception>(() => store.GetPublicUrl("variants/a.jpg"));
-        Assert.Equal(5, client.Keys.Count);
+        Assert.EndsWith("/environments/test/variants/a.jpg", store.GetPublicUrl("variants/a.jpg"));
+        Assert.Equal(4, client.Keys.Count);
         Assert.All(client.Keys, key => Assert.Equal("environments/test/variants/a.jpg", key));
     }
 
@@ -38,9 +37,21 @@ public class S3ReadFallbackFailureTests
         using var client = new FailingClient(HttpStatusCode.Forbidden);
         Assert.Throws<InvalidOperationException>(() => new S3ObjectStore(client, Options.Create(new S3ObjectStoreOptions
         {
-            ReadFallbackPrefix = "golden/v1/media/",
             WritePrefix = writePrefix,
         })));
+        Assert.Empty(client.Keys);
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData("environments/staging/")]
+    public async Task Given_golden_keys_when_writing_or_deleting_then_no_provider_call_is_allowed(string prefix)
+    {
+        using var client = new FailingClient(HttpStatusCode.Forbidden);
+        var store = new S3ObjectStore(client, Options.Create(new S3ObjectStoreOptions { WritePrefix = prefix }));
+        await Assert.ThrowsAsync<InvalidOperationException>(() => store.PutAsync("golden/v1/media/a", new MemoryStream([1]), "image/jpeg"));
+        await Assert.ThrowsAsync<InvalidOperationException>(() => store.PutAsync("golden/v1/media/a", new MemoryStream([1]), "image/jpeg", new Dictionary<string, string> { ["source"] = "synthetic" }));
+        await Assert.ThrowsAsync<InvalidOperationException>(() => store.DeleteAsync("golden/v1/media/a"));
         Assert.Empty(client.Keys);
     }
 
@@ -48,6 +59,18 @@ public class S3ReadFallbackFailureTests
         new BasicAWSCredentials("unused", "unused"), new AmazonS3Config { ServiceURL = "http://unused" })
     {
         public List<string> Keys { get; } = [];
+
+        public override Task<PutObjectResponse> PutObjectAsync(PutObjectRequest request, CancellationToken cancellationToken = default)
+        {
+            Keys.Add(request.Key);
+            throw new InvalidOperationException("Unexpected write.");
+        }
+
+        public override Task<DeleteObjectResponse> DeleteObjectAsync(DeleteObjectRequest request, CancellationToken cancellationToken = default)
+        {
+            Keys.Add(request.Key);
+            throw new InvalidOperationException("Unexpected delete.");
+        }
 
         public override Task<GetObjectMetadataResponse> GetObjectMetadataAsync(GetObjectMetadataRequest request, CancellationToken cancellationToken = default)
         {

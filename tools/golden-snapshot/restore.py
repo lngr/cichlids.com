@@ -87,7 +87,7 @@ def main():
             client.download_file(bucket, f'golden/{version}/snapshot.dump', str(dump))
             # Head requests avoid downloading the shared media into each environment.
             for media in manifest['media']:
-                head = client.head_object(Bucket=bucket, Key=f'golden/{version}/media/{media["key"]}')
+                head = client.head_object(Bucket=bucket, Key=media['key'])
                 if head.get('Metadata', {}).get('sha256') != media['sha256']:
                     raise ValueError('published media checksum metadata mismatch')
             dsn = os.environ['GOLDEN_TARGET_DSN']

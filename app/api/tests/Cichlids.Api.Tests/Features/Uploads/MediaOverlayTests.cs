@@ -20,20 +20,19 @@ public class MediaOverlayTests(UploadsFixture fixture)
         using var host = fixture.CreateOverlayHost(writePrefix);
         using var client = host.CreateClient();
         var store = host.Services.GetRequiredService<IObjectStore>();
-        var key = $"variants/thumb/media-{Guid.NewGuid():N}.jpg";
+        var key = $"variants/thumb/media-{Random.Shared.NextInt64(1, long.MaxValue)}.jpg";
         var goldenKey = "golden/v1/media/" + key;
-        await fixture.ObjectStore.PutAsync(goldenKey, new MemoryStream([1, 2, 3]), "image/jpeg");
-        Assert.True(await store.ExistsAsync(key));
-        Assert.Equal(3, (await store.HeadAsync(key))!.Size);
-        Assert.Equal(3, await store.GetSizeAsync(key));
-        await using (var body = await store.GetAsync(key))
+        await fixture.SeedGoldenAsync(goldenKey, [1, 2, 3]);
+        Assert.True(await store.ExistsAsync(goldenKey));
+        Assert.Equal(3, (await store.HeadAsync(goldenKey))!.Size);
+        Assert.Equal(3, await store.GetSizeAsync(goldenKey));
+        await using (var body = await store.GetAsync(goldenKey))
         {
             Assert.Equal(1, body!.ReadByte());
         }
         var urls = new MediaUrlBuilder(store);
-        Assert.Equal(fixture.PublicBaseUrl + "/" + goldenKey, urls.BuildThumbnail(key, null));
-        Assert.Equal(fixture.PublicBaseUrl + "/" + goldenKey, urls.BuildBest(new Dictionary<string, string> { ["thumb"] = key }));
-        var goldenBefore = await GoldenKeysAsync();
+        Assert.Equal(fixture.PublicBaseUrl + "/" + goldenKey, urls.BuildThumbnail(goldenKey, null));
+        Assert.Equal(fixture.PublicBaseUrl + "/" + goldenKey, urls.BuildBest(new Dictionary<string, string> { ["thumb"] = goldenKey }));
 
         var token = NewToken();
         var draft = await UploadDraftAsync(client, token, Jpeg(300, 200));
@@ -52,7 +51,7 @@ public class MediaOverlayTests(UploadsFixture fixture)
 
         // A golden variant with the same logical key must survive draft removal.
         var shared = "golden/v1/media/" + keys[0];
-        await fixture.ObjectStore.PutAsync(shared, new MemoryStream([7, 8]), "image/jpeg");
+        await fixture.SeedGoldenAsync(shared, [7, 8]);
         if (cleanup)
         {
             await db.Posts.Where(p => p.Id == draft.Id).ExecuteUpdateAsync(
@@ -69,14 +68,37 @@ public class MediaOverlayTests(UploadsFixture fixture)
             Assert.False(await fixture.ObjectStore.ExistsAsync(writePrefix + uploadedKey));
         }
         Assert.Equal(2, await fixture.ObjectStore.GetSizeAsync(shared));
-        Assert.Equal(goldenBefore.Append(shared).Order(), (await GoldenKeysAsync()).Order());
+        Assert.Equal(3, await store.GetSizeAsync(goldenKey));
         Assert.False(await db.Posts.AnyAsync(p => p.Id == draft.Id));
     }
 
-    private async Task<List<string>> GoldenKeysAsync()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task Given_golden_references_in_a_draft_when_discarded_or_cleaned_then_shared_objects_survive(bool cleanup)
     {
-        var keys = new List<string>();
-        await foreach (var key in fixture.ObjectStore.ListKeysAsync("golden/")) keys.Add(key);
-        return keys;
+        using var host = fixture.CreateOverlayHost($"environments/{Guid.NewGuid():N}/");
+        using var client = host.CreateClient();
+        var token = NewToken();
+        var draft = await UploadDraftAsync(client, token, Jpeg(300, 200));
+        await using var db = fixture.CreateDbContext();
+        var mediaId = await db.PostMedia.Where(m => m.PostId == draft.Id).Select(m => m.MediaItemId).SingleAsync();
+        var goldenKey = $"golden/v1/media/variants/thumb/media-{mediaId}.jpg";
+        await fixture.SeedGoldenAsync(goldenKey, [1, 2, 3]);
+        await db.MediaItems.Where(m => m.Id == mediaId).ExecuteUpdateAsync(s => s.SetProperty(m => m.StorageKey, goldenKey));
+        await db.MediaVariants.Where(v => v.MediaItemId == mediaId).ExecuteUpdateAsync(s => s.SetProperty(v => v.StorageKey, goldenKey));
+        if (cleanup)
+        {
+            await db.Posts.Where(p => p.Id == draft.Id).ExecuteUpdateAsync(
+                s => s.SetProperty(p => p.UpdatedAt, DateTimeOffset.UtcNow.AddDays(-40)));
+            using var scope = host.Services.CreateScope();
+            Assert.True(await scope.ServiceProvider.GetRequiredService<DraftCleanupService>().RunOnceAsync(CancellationToken.None) >= 1);
+        }
+        else
+        {
+            Assert.Equal(HttpStatusCode.NoContent, (await DiscardAsync(client, token, draft.Id)).StatusCode);
+        }
+        Assert.False(await db.Posts.AnyAsync(p => p.Id == draft.Id));
+        Assert.Equal(3, await fixture.ObjectStore.GetSizeAsync(goldenKey));
     }
 }

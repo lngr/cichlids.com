@@ -29,7 +29,7 @@ FREE_TEXT = {
                     'food', 'notes', 'delete_reason'),
 }
 LABELS = ('thumb', 'small', 'medium', 'large')
-MEDIA_KEY = re.compile(r'variants/(thumb|small|medium|large)/media-[0-9]+\.jpg\Z')
+MEDIA_KEY = re.compile(r'golden/[a-zA-Z0-9][a-zA-Z0-9._-]{0,63}/media/variants/(thumb|small|medium|large)/media-[0-9]+\.jpg\Z')
 EMAIL = re.compile(r'[\w.+-]+@[\w.-]+\.[a-z]{2,}', re.I)
 URL = re.compile(r'https?://', re.I)
 URL_EXEMPT_TABLES = {'public.species', 'public.species_common_name', 'public.species_link'}
@@ -118,7 +118,7 @@ def fingerprint(dsn):
         return {table: conn.execute(sql.SQL("select md5(coalesce(string_agg(row_to_json(t)::text, '' order by row_to_json(t)::text), '')) from {} t").format(ident(table))).fetchone()[0] for table in SCHEMA}
 
 
-def verify(conn, originals):
+def verify(conn, originals, version):
     check_schema(conn)
     leaks = 0
     original_pattern = re.compile('|'.join(re.escape(v) for v in sorted(originals, key=len, reverse=True)), re.I) if originals else None
@@ -153,9 +153,9 @@ def verify(conn, originals):
     for column in ('city', 'external_avatar_url', 'last_login_at', 'suspended_until', 'avatar_media_id', 'profile_image_media_id'):
         leaks += conn.execute(sql.SQL('select count(*) from profile where {} is not null').format(sql.Identifier(column))).fetchone()[0]
     leaks += conn.execute("select count(*) from profile where username !~ '^member-[0-9]+$' or display_name is distinct from username").fetchone()[0]
-    leaks += conn.execute("select count(*) from media_item where checksum_sha256 is not null or original_filename <> 'media-' || id || '.jpg' or storage_key <> 'variants/thumb/media-' || id || '.jpg'").fetchone()[0]
+    leaks += conn.execute("select count(*) from media_item where checksum_sha256 is not null or original_filename <> 'media-' || id || '.jpg' or storage_key <> %s || 'variants/thumb/media-' || id || '.jpg'", (f'golden/{version}/media/',)).fetchone()[0]
     for (key,) in conn.execute('select storage_key from media_variant'):
-        if not MEDIA_KEY.fullmatch(key):
+        if not MEDIA_KEY.fullmatch(key) or not key.startswith(f'golden/{version}/media/'):
             leaks += 1
     print(f'VERIFICATION: leaks={leaks}')
     return leaks
@@ -184,7 +184,7 @@ def copy_database(source, target):
             raise RuntimeError('database copy failed')
 
 
-def select_media(conn, key, limit, post_ids):
+def select_media(conn, key, limit, post_ids, version):
     rows = conn.execute("""
         select p.id, m.id, v.id, v.label, v.storage_key
         from post p join post_media pm on pm.post_id=p.id
@@ -210,7 +210,7 @@ def select_media(conn, key, limit, post_ids):
             selected.setdefault(post, media)
     media_ids = set(selected.values())
     mapping = [{'post_id': post, 'media_id': media, 'variant_id': variant, 'source_key': old_key,
-                'key': f'variants/{label}/media-{media}.jpg', 'label': label}
+                'key': f'golden/{version}/media/variants/{label}/media-{media}.jpg', 'label': label}
                for post, media, variant, label, old_key in rows
                if post in chosen and media == selected[post] and media in media_ids
                and old_key.startswith(f'variants/{label}/') and old_key.endswith('.jpg')]
@@ -248,8 +248,8 @@ def mask(conn, key, mapping):
         conn.execute(sql.SQL('delete from {} where not (media_item_id=any(%s))').format(sql.Identifier(table)), (media_ids,))
     conn.execute('update tank set main_media_id=null where not (main_media_id=any(%s))', (media_ids,))
     conn.execute('delete from media_item where not (id=any(%s))', (media_ids,))
-    for media_id in media_ids:
-        conn.execute("update media_item set storage_key='variants/thumb/media-' || id || '.jpg', original_filename='media-' || id || '.jpg', content_type='image/jpeg' where id=%s", (media_id,))
+    for media in {m['media_id']: m for m in mapping if m['label'] == 'thumb'}.values():
+        conn.execute("update media_item set storage_key=%s, original_filename='media-' || id || '.jpg', content_type='image/jpeg' where id=%s", (media['key'], media['media_id']))
     for media in {m['variant_id']: m for m in mapping}.values():
         conn.execute('update media_variant set storage_key=%s where id=%s', (media['key'], media['variant_id']))
 
@@ -265,7 +265,7 @@ def validate_manifest(manifest, version):
     if not re.fullmatch(r'[0-9a-f]{64}', manifest['dump_sha256']) or not manifest['migration_id']:
         raise ValueError('invalid snapshot manifest')
     for media in manifest['media']:
-        if not MEDIA_KEY.fullmatch(media['key']) or not re.fullmatch(r'[0-9a-f]{64}', media['sha256']):
+        if not MEDIA_KEY.fullmatch(media['key']) or not media['key'].startswith(f'golden/{version}/media/') or not re.fullmatch(r'[0-9a-f]{64}', media['sha256']):
             raise ValueError('invalid media manifest')
 
 
@@ -288,12 +288,12 @@ def build(source_dsn, target_dsn, key, output, version, limit=2000, post_ids=Non
         originals = denylist(source)
         if any(v.casefold() in version.casefold() for v in originals):
             raise ValueError('version contains an original identifier')
-        post_list, mapping = select_media(source, key, limit, post_ids)
+        post_list, mapping = select_media(source, key, limit, post_ids, version)
         target.commit()
         copy_database(source, target)
         check_schema(target)
         mask(target, key, mapping)
-        if verify(target, originals):
+        if verify(target, originals, version):
             raise ValueError('privacy verification failed')
         row_counts = counts(target)
         migration = target.execute('select "MigrationId" from "__EFMigrationsHistory" order by "MigrationId" desc limit 1').fetchone()[0]
@@ -303,7 +303,7 @@ def build(source_dsn, target_dsn, key, output, version, limit=2000, post_ids=Non
             media_manifest = []
             if media_store:
                 for media in {m['key']: m for m in mapping}.values():
-                    digest = media_store(media['source_key'], f'golden/{version}/media/{media["key"]}')
+                    digest = media_store(media['source_key'], media['key'])
                     media_manifest.append({'key': media['key'], 'sha256': digest})
             dump_path = output / 'snapshot.dump'
             with dump_path.open('xb') as stream:
@@ -353,10 +353,12 @@ def main():
     os.umask(0o077)
     try:
         if args.verify_only:
+            if not args.version or not re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9._-]{0,63}', args.version):
+                raise ValueError('valid version required')
             with psycopg.connect(os.environ['GOLDEN_SOURCE_DSN']) as source, psycopg.connect(os.environ['GOLDEN_TARGET_DSN']) as target:
                 source.execute('set transaction read only')
                 target.execute('set transaction read only')
-                return 1 if verify(target, denylist(source)) else 0
+                return 1 if verify(target, denylist(source), args.version) else 0
         if not args.output or not args.version:
             raise ValueError('output and version required')
         store = None

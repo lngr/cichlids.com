@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Storage;
 
@@ -64,7 +65,8 @@ public sealed class MediaUrlBuilder(IObjectStore objectStore)
 
     private string PublicUrl(string storageKey)
     {
-        if (!MediaStorageKeys.PublicPrefixes.Any(prefix => storageKey.StartsWith(prefix, StringComparison.Ordinal)))
+        if (!MediaStorageKeys.PublicPrefixes.Any(prefix => storageKey.StartsWith(prefix, StringComparison.Ordinal))
+            && !Regex.IsMatch(storageKey, @"\Agolden/[a-zA-Z0-9][a-zA-Z0-9._-]{0,63}/media/variants/(thumb|small|medium|large)/media-[0-9]+\.jpg\z", RegexOptions.CultureInvariant))
         {
             throw new InvalidOperationException(
                 $"Storage key '{storageKey}' is outside the public prefixes and has no public URL.");

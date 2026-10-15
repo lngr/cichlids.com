@@ -15,6 +15,7 @@ SELECT n,1,'photo','originals/SyntheticAlice/photo-' || n || '.jpg','SyntheticAl
 UPDATE media_item SET kind='video', content_type='video/mp4' WHERE id=5;
 INSERT INTO post_media(post_id,media_item_id) SELECT n,n FROM generate_series(1,5) n;
 INSERT INTO media_variant(media_item_id,label,storage_key,width) SELECT n,'thumb','variants/thumb/originals/SyntheticAlice/photo-' || n || '.jpg.jpg',200 FROM generate_series(1,5) n;
+INSERT INTO media_variant(media_item_id,label,storage_key,width) SELECT n,'medium','variants/medium/originals/SyntheticAlice/photo-' || n || '.jpg.jpg',800 FROM generate_series(1,5) n;
 INSERT INTO media_variant(media_item_id,label,storage_key) VALUES (1,'copy','variants/copy/originals/SyntheticAlice.bmp'),(2,'large','originals/private.jpg');
 UPDATE profile SET avatar_media_id=5, profile_image_media_id=5;
 UPDATE tank SET main_media_id=5;

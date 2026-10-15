@@ -112,10 +112,10 @@ requires no separate webhook Secret.
    for `staging.cichlids.com` and `auth.staging.cichlids.com` reaches Traefik.
 3. Configure the shared non-production media bucket and its tailnet gateway URL
    in `apps/api/overlays/staging/settings.yaml`. Confirm endpoint and region match
-   the provisioned media store. Set `ObjectStorage__ReadFallbackPrefix` to
-   `golden/<version>/media/`, using the database restore Job's `GOLDEN_VERSION`
-   and `GOLDEN_BUCKET`. The `unpublished` value requires a published version.
-   `ObjectStorage__WritePrefix=environments/staging/` isolates staging writes.
+   the provisioned media store and `ObjectStorage__Bucket` matches the restore
+   Job's `GOLDEN_BUCKET`. Snapshot media keys include their published golden
+   version. `ObjectStorage__WritePrefix=environments/staging/` isolates staging
+   writes.
    See the [golden snapshot procedure](../../tools/golden-snapshot/README.md).
 4. Set each `images[].digest` in the API and web staging kustomizations to a
    published `sha256` digest. Set `images[].newName` if the registry repository
@@ -182,13 +182,16 @@ production and preview Applications are unaffected. Only one Ingress may own
 
 ## Media overlay configuration
 
-`ObjectStorage:ReadFallbackPrefix` enables read-only fallback in the configured
-bucket. Reads, HEAD, existence and size checks use the environment object first,
-then the golden object on a missing key. Public URLs include the resolved prefix;
-URL construction performs metadata requests when fallback is enabled. Provider
-errors propagate. `ObjectStorage:WritePrefix` scopes uploads, deletes and listings
-to the environment; discards and expired draft cleanup use this same scope.
-Both options default to empty. Production uses those defaults.
+The snapshot database stores full golden media keys under
+`golden/<version>/media/variants/`. Reads use those keys directly. Public URL
+construction encodes keys and performs no storage requests. The snapshot publisher
+and restore Job select the version through `GOLDEN_VERSION`.
+
+`ObjectStorage:WritePrefix` scopes environment uploads, reads, URLs, deletes and
+listings. Discards and expired draft cleanup use this scope. The option defaults
+to empty, as used in production. Writes and deletes under `golden/` are refused
+regardless of configuration, and a golden write prefix is invalid. Database
+references to golden objects can be discarded while the shared objects stay intact.
 
 Provision the API credential with reads on the selected golden media prefix and
 reads/writes/deletes on `environments/staging/` only. List permissions must allow

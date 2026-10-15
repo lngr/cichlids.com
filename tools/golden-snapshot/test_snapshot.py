@@ -45,9 +45,9 @@ class GenerationTests(unittest.TestCase):
     def test_manifest_rejects_tampering_and_unsafe_media_keys(self):
         manifest = {'format': 1, 'version': 'v1', 'migration_id': 'test',
                     'dump_sha256': '0' * 64, 'row_counts': {}, 'post_ids': [1],
-                    'media': [{'key': 'variants/thumb/media-1.jpg', 'sha256': '0' * 64}]}
+                    'media': [{'key': 'golden/v1/media/variants/thumb/media-1.jpg', 'sha256': '0' * 64}]}
         snapshot.validate_manifest(manifest, 'v1')
-        for key in ('originals/a.jpg', 'variants/../secret', 'forum_attachments/a.jpg'):
+        for key in ('originals/a.jpg', 'variants/../secret', 'forum_attachments/a.jpg', 'golden/v2/media/variants/thumb/media-1.jpg', 'variants/thumb/media-1.jpg'):
             bad = copy.deepcopy(manifest)
             bad['media'][0]['key'] = key
             with self.assertRaises(ValueError):
@@ -85,7 +85,13 @@ class DatabaseTests(unittest.TestCase):
     def test_end_to_end_masks_every_rule_and_verifies_dump(self):
         output = Path(self.output.name) / 'snapshot'
         before = snapshot.fingerprint(self.source)
-        manifest = snapshot.build(self.source, self.target, KEY, output, 'synthetic-v1', limit=2, media_store=lambda source, target: '0' * 64)
+        transfers = []
+
+        def publish(source, target):
+            transfers.append((source, target))
+            return '0' * 64
+
+        manifest = snapshot.build(self.source, self.target, KEY, output, 'synthetic-v1', limit=2, media_store=publish)
         self.assertEqual(before, snapshot.fingerprint(self.source))
         self.assertEqual(manifest, json.loads((output / 'manifest.json').read_text()))
         self.assertEqual(manifest['migration_id'], '20261013120319_EncryptWebSessionTokens')
@@ -94,7 +100,7 @@ class DatabaseTests(unittest.TestCase):
         self.assertTrue((output / 'snapshot.dump').read_bytes().startswith(b'PGDMP'))
         with psycopg.connect(self.target) as conn, psycopg.connect(self.source) as source:
             denylist = snapshot.denylist(source)
-            self.assertEqual(snapshot.verify(conn, denylist), 0)
+            self.assertEqual(snapshot.verify(conn, denylist, 'synthetic-v1'), 0)
             for table in snapshot.EMPTY_TABLES:
                 self.assertEqual(conn.execute(sql.SQL('select count(*) from {}').format(snapshot.ident(table))).fetchone()[0], 0)
             profiles = conn.execute('select username, display_name, city, external_avatar_url, last_login_at, suspended_until, country_code, avatar_media_id, profile_image_media_id from profile order by id').fetchall()
@@ -135,9 +141,16 @@ class DatabaseTests(unittest.TestCase):
                     self.assertEqual(old, new)
             for table in ('comment', 'discussion_post'):
                 self.assertTrue(conn.execute(sql.SQL("select poster_name from {} where poster_name is not null").format(sql.Identifier(table))).fetchone()[0].startswith('guest-'))
+            exported = set(manifest['media_keys'])
+            self.assertEqual(exported, {target for _, target in transfers})
+            self.assertEqual(exported, {r[0] for r in conn.execute('select storage_key from media_variant')})
+            self.assertTrue(all(k.startswith('golden/synthetic-v1/media/variants/') for k in exported))
+            self.assertEqual({r[0] for r in conn.execute('select id from media_variant')},
+                             {m['variant_id'] for m in snapshot.select_media(source, KEY, 2, None, 'synthetic-v1')[1]})
             self.assertEqual(conn.execute('select count(*) from media_item').fetchone()[0], 2)
             for key, filename, checksum in conn.execute('select storage_key, original_filename, checksum_sha256 from media_item'):
-                self.assertRegex(key, r'^variants/thumb/media-[0-9]+\.jpg$')
+                self.assertIn(key, exported)
+                self.assertRegex(key, r'^golden/synthetic-v1/media/variants/thumb/media-[0-9]+\.jpg$')
                 self.assertRegex(filename, r'^media-[0-9]+\.jpg$')
                 self.assertIsNone(checksum)
             self.assertEqual(conn.execute("select count(*) from slug_alias where value not like 'post-%'").fetchone()[0], 0)
@@ -145,7 +158,7 @@ class DatabaseTests(unittest.TestCase):
             conn.execute("update species_link set url='https://taxonomy.example.invalid/species/1' where id=1")
             conn.execute("update species set description='https://taxonomy.example.invalid' where id=1")
             conn.execute("update species_common_name set name='https://taxonomy.example.invalid/name' where id=1")
-            self.assertEqual(snapshot.verify(conn, denylist), 0)
+            self.assertEqual(snapshot.verify(conn, denylist, 'synthetic-v1'), 0)
             conn.execute('rollback to savepoint taxonomy_urls')
             for statement in (
                 "update comment set body='planted@example.invalid' where id=1",
@@ -163,7 +176,7 @@ class DatabaseTests(unittest.TestCase):
                     conn.execute(statement)
                     capture = io.StringIO()
                     with contextlib.redirect_stdout(capture):
-                        self.assertGreater(snapshot.verify(conn, denylist), 0)
+                        self.assertGreater(snapshot.verify(conn, denylist, 'synthetic-v1'), 0)
                     self.assertNotIn('SyntheticAlice', capture.getvalue())
                     self.assertNotIn('@', capture.getvalue())
                     conn.execute('rollback to savepoint leak')
@@ -172,13 +185,15 @@ class DatabaseTests(unittest.TestCase):
                 cols = [d.name for d in source.execute(sql.SQL('select * from {} limit 0').format(snapshot.ident(table))).description]
                 conn.execute('savepoint leak_table')
                 conn.execute(sql.SQL('insert into {} ({}) overriding system value values ({})').format(snapshot.ident(table), sql.SQL(',').join(map(sql.Identifier, cols)), sql.SQL(',').join(sql.Placeholder() for _ in cols)), [Jsonb(v) if isinstance(v, dict) else v for v in data])
-                self.assertGreater(snapshot.verify(conn, denylist), 0)
+                self.assertGreater(snapshot.verify(conn, denylist, 'synthetic-v1'), 0)
                 conn.execute('rollback to savepoint leak_table')
         clone = make_conninfo(self.dsn, dbname='synthetic_clone_' + self.suffix)
         with self.assertRaisesRegex(ValueError, 'checksum mismatch'):
             restore.restore_database(clone, output / 'snapshot.dump', {**manifest, 'dump_sha256': '1' * 64}, 'pr-17')
         restore.restore_database(clone, output / 'snapshot.dump', manifest, 'pr-17')
         with psycopg.connect(clone) as conn:
+            self.assertEqual(set(manifest['media_keys']), {r[0] for r in conn.execute('select storage_key from media_variant')})
+            self.assertTrue({r[0] for r in conn.execute('select storage_key from media_item')} <= set(manifest['media_keys']))
             conn.execute("update post set title='environment upload' where id=1")
         restore.restore_database(clone, output / 'snapshot.dump', manifest, 'pr-17')
         with psycopg.connect(clone) as conn:
@@ -187,7 +202,7 @@ class DatabaseTests(unittest.TestCase):
         with psycopg.connect(clone) as conn:
             self.assertEqual(snapshot.counts(conn), manifest['row_counts'])
             conn.execute("update comment set body='planted@example.invalid' where id=1")
-        result = subprocess.run([sys.executable, str(HERE / 'snapshot.py'), '--verify-only'],
+        result = subprocess.run([sys.executable, str(HERE / 'snapshot.py'), '--verify-only', '--version', 'synthetic-v1'],
                                 env={**os.environ, 'GOLDEN_SOURCE_DSN': self.source, 'GOLDEN_TARGET_DSN': clone}, capture_output=True, text=True)
         self.assertEqual(result.returncode, 1)
         self.assertEqual(result.stdout.strip(), 'VERIFICATION: leaks=1')
@@ -201,16 +216,16 @@ class DatabaseTests(unittest.TestCase):
 
     def test_curated_selection_and_deterministic_sampling(self):
         with psycopg.connect(self.source) as source:
-            first = snapshot.select_media(source, KEY, 2, None)
-            self.assertEqual(first, snapshot.select_media(source, KEY, 2, None))
-            selected, media = snapshot.select_media(source, KEY, 2000, [1])
+            first = snapshot.select_media(source, KEY, 2, None, 'synthetic-v1')
+            self.assertEqual(first, snapshot.select_media(source, KEY, 2, None, 'synthetic-v1'))
+            selected, media = snapshot.select_media(source, KEY, 2000, [1], 'v1')
             self.assertEqual(selected, [1])
-            self.assertEqual(len(media), 1)
+            self.assertEqual(len(media), 2)
             self.assertTrue(media[0]['source_key'].startswith('variants/thumb/'))
-            self.assertEqual(media[0]['key'], 'variants/thumb/media-1.jpg')
+            self.assertEqual({m['key'] for m in media}, {'golden/v1/media/variants/thumb/media-1.jpg', 'golden/v1/media/variants/medium/media-1.jpg'})
             for invalid in ([4], [5], [999]):
                 with self.assertRaises(ValueError):
-                    snapshot.select_media(source, KEY, 2000, invalid)
+                    snapshot.select_media(source, KEY, 2000, invalid, 'v1')
 
     def test_failure_rolls_back_masking_and_emits_no_artifact(self):
         target = make_conninfo(self.dsn, dbname='synthetic_leak_' + self.suffix)

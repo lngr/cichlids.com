@@ -25,7 +25,7 @@ The same image supplies matching PostgreSQL 18 clients for creation and restores
 | Species, species names and reference links | Preserved. |
 | Ratings, votes, follows, inhabitants, collections and post/species relationships | Preserved, including IDs, numeric values, ordering and timestamps. |
 | Media | One photo per selected public post, up to 2,000 posts by deterministic HMAC sampling, or explicit post IDs. Only generated `thumb`, `small`, `medium`, `large` JPEG variants qualify. Originals, videos, public-copy fallbacks and forum attachments are excluded. |
-| Original file names, media keys and checksums | File name `media-<id>.jpg`, variant key `variants/<label>/media-<id>.jpg`. The media item's key resolves to its thumb; the original checksum is NULL. Variant objects receive only content type and a generated checksum metadata field. |
+| Original file names, media keys and checksums | File name `media-<id>.jpg`, variant key `golden/<version>/media/variants/<label>/media-<id>.jpg`. The media item's key resolves to its thumb; the original checksum is NULL. Variant objects receive only content type and a generated checksum metadata field. |
 | Media relationships | Links to excluded media are removed; excluded tank main-media references are NULL. Posts, comments and their interaction counts are preserved even when their photos are outside the subset. |
 
 `schema.json` specifies every supported column and PostgreSQL type. A schema
@@ -111,7 +111,7 @@ belongs exclusively to the operator's isolated restore process (ADR-0013).
    An independent verification of the isolated target uses:
 
    ```sh
-   "$GOLDEN_VENV/bin/python" tools/golden-snapshot/snapshot.py --verify-only
+   "$GOLDEN_VENV/bin/python" tools/golden-snapshot/snapshot.py --verify-only --version "$GOLDEN_VERSION"
    ```
 
 5. Destroy the isolated raw source and target through the operator cleanup
@@ -192,39 +192,38 @@ Operator activation order:
 
 The API uses one shared non-production bucket. The publisher stores the curated
 subset under `golden/<version>/media/`; each environment writes its own prefix.
-The database stores logical keys such as `variants/thumb/media-1.jpg`.
+The snapshot database stores the exact published keys, such as
+`golden/<version>/media/variants/thumb/media-1.jpg`. Both `media_item.storage_key`
+and exported `media_variant.storage_key` values use this prefix. Excluded media,
+variants and their relationships are removed by masking. The manifest's `media`
+and `media_keys` entries contain these same full keys; publication and restore
+verification use them directly. Restores require full versioned media keys in the
+manifest and a complete published subset.
 
 | Setting | Meaning |
 | --- | --- |
 | `ObjectStorage:Bucket` | Bucket containing the golden subset and environment objects |
-| `ObjectStorage:ReadFallbackPrefix` | `golden/<version>/media/`; empty by default |
 | `ObjectStorage:WritePrefix` | `environments/staging/` or `environments/pr-<number>/`; empty by default |
 | `ObjectStorage:PublicBaseUrl` | Tailnet-only media gateway base URL for this bucket |
 
-Reads, HEAD, existence and size checks consult the environment key first. A
-missing object permits a lookup under the golden prefix. Authorization and
-provider failures propagate. Public URL generation uses the same lookup order
-and URL-encodes the resolved key. With fallback enabled the synchronous URL
-builder performs metadata requests; with the default empty value it composes
-the URL without querying S3. If both objects are missing it returns the environment
-URL, whose delivery path reports the missing object.
+Golden reads use the stored key directly. URL generation encodes that key and
+performs no storage requests. Environment keys use `WritePrefix` for uploads,
+reads, URLs, deletes and listings. Listings return environment-relative keys and
+exclude golden objects. A missing environment object returns the ordinary
+missing-object result.
 
-Uploads and deletes use the environment prefix. Discard and draft cleanup delete
-only environment objects, including when a golden object has the same logical
-key. Listings return logical keys from the environment and exclude golden keys.
-Direct writes and deletes to `golden/` and the configured fallback prefix are
-rejected when fallback is enabled. Deleting an environment object exposes any
-matching golden object; hiding a shared object requires database visibility rules.
+Writes and deletes under `golden/` are refused for every configuration. A golden
+write prefix is invalid. Discard and draft cleanup may remove database references
+to shared media; the shared objects are protected by the object store guard.
 
-Set staging's fallback version to the same `GOLDEN_VERSION` used by the database
-restore Job. The checked-in `golden/unpublished/media/` requires a published
-version before activation. Configure `ObjectStorage:Bucket` to match
-`GOLDEN_BUCKET`. Production leaves both prefix options empty.
+Configure `ObjectStorage:Bucket` to match `GOLDEN_BUCKET`. The snapshot version is
+selected by the publisher and database restore Job's `GOLDEN_VERSION`. Production
+uses the default empty `WritePrefix`.
 
 The operator provisions bucket permissions: the API identity may read its own
 prefix and the selected golden media prefix, and may put/delete only under its
 own environment prefix. Bucket listing must be scoped to the environment prefix.
-The publisher has separate credentials. The media gateway must serve both resolved
+The publisher has separate credentials. The media gateway must serve both media
 prefixes through the tailnet and preserve private bucket access. Bucket creation
 and anonymous public-read policy setup belong to operator provisioning; the API
 does not invoke them. Each preview teardown removes only its environment prefix.

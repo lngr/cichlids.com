@@ -42,17 +42,10 @@ public sealed class S3ObjectStoreOptions
 
     /// <summary>
     /// Base URL under which stored objects are publicly reachable, for example through a CDN in
-    /// front of the bucket. Public URLs append the resolved key and are not presigned.
-    /// Fallback resolution queries object metadata when ReadFallbackPrefix is set.
+    /// front of the bucket. Public URLs encode the key without querying the provider.
     /// </summary>
     [Required]
     public string PublicBaseUrl { get; set; } = string.Empty;
-
-    /// <summary>
-    /// Read-only base key prefix in the same bucket, for example golden/v1/media/.
-    /// An empty value disables fallback. Environment objects take precedence.
-    /// </summary>
-    public string ReadFallbackPrefix { get; set; } = string.Empty;
 
     /// <summary>
     /// Prefix for the environment's objects in a shared bucket. Empty uses keys directly.

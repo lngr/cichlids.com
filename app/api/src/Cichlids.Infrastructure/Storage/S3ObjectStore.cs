@@ -20,10 +20,7 @@ public sealed class S3ObjectStore : IObjectStore
     {
         _client = client;
         _options = options.Value;
-        if (!string.IsNullOrEmpty(_options.ReadFallbackPrefix)
-            && !string.IsNullOrEmpty(_options.WritePrefix)
-            && (IsGoldenKey(_options.WritePrefix.TrimEnd('/') + "/")
-                || _options.ReadFallbackPrefix.StartsWith(_options.WritePrefix.TrimEnd('/') + "/", StringComparison.Ordinal)))
+        if (IsGoldenKey(_options.WritePrefix.TrimEnd('/') + "/"))
         {
             throw new InvalidOperationException("Environment and golden prefixes must be disjoint.");
         }
@@ -66,18 +63,10 @@ public sealed class S3ObjectStore : IObjectStore
 
     public async Task<ObjectHead?> HeadAsync(string key, CancellationToken cancellationToken = default)
     {
-        var head = await HeadKeyAsync(OwnKey(key), cancellationToken).ConfigureAwait(false);
-        return head ?? (FallbackKey(key) is { } fallback
-            ? await HeadKeyAsync(fallback, cancellationToken).ConfigureAwait(false)
-            : null);
-    }
-
-    private async Task<ObjectHead?> HeadKeyAsync(string key, CancellationToken cancellationToken)
-    {
         var request = new GetObjectMetadataRequest
         {
             BucketName = _options.Bucket,
-            Key = key,
+            Key = ReadKey(key),
         };
 
         try
@@ -100,18 +89,10 @@ public sealed class S3ObjectStore : IObjectStore
 
     public async Task<Stream?> GetAsync(string key, CancellationToken cancellationToken = default)
     {
-        var body = await GetKeyAsync(OwnKey(key), cancellationToken).ConfigureAwait(false);
-        return body ?? (FallbackKey(key) is { } fallback
-            ? await GetKeyAsync(fallback, cancellationToken).ConfigureAwait(false)
-            : null);
-    }
-
-    private async Task<Stream?> GetKeyAsync(string key, CancellationToken cancellationToken)
-    {
         var request = new GetObjectRequest
         {
             BucketName = _options.Bucket,
-            Key = key,
+            Key = ReadKey(key),
         };
 
         GetObjectResponse response;
@@ -187,30 +168,16 @@ public sealed class S3ObjectStore : IObjectStore
 
     public string GetPublicUrl(string key)
     {
-        var resolvedKey = OwnKey(key);
-        if (FallbackKey(key) is { } fallback
-            && HeadKeyAsync(resolvedKey, CancellationToken.None).GetAwaiter().GetResult() is null
-            && HeadKeyAsync(fallback, CancellationToken.None).GetAwaiter().GetResult() is not null)
-        {
-            resolvedKey = fallback;
-        }
-
-        var encodedKey = string.Join('/', resolvedKey.Split('/').Select(Uri.EscapeDataString));
+        var encodedKey = string.Join('/', ReadKey(key).Split('/').Select(Uri.EscapeDataString));
         return $"{_options.PublicBaseUrl.TrimEnd('/')}/{encodedKey}";
     }
 
     private string OwnKey(string key) =>
         string.IsNullOrEmpty(_options.WritePrefix) ? key : $"{_options.WritePrefix.TrimEnd('/')}/{key}";
 
-    private string? FallbackKey(string key) =>
-        string.IsNullOrEmpty(_options.ReadFallbackPrefix) || IsGoldenKey(key)
-            ? null
-            : $"{_options.ReadFallbackPrefix.TrimEnd('/')}/{key}";
+    private string ReadKey(string key) => IsGoldenKey(key) ? key : OwnKey(key);
 
-    private bool IsGoldenKey(string key) =>
-        !string.IsNullOrEmpty(_options.ReadFallbackPrefix)
-        && (key.StartsWith("golden/", StringComparison.Ordinal)
-            || key.StartsWith(_options.ReadFallbackPrefix.TrimEnd('/') + "/", StringComparison.Ordinal));
+    private static bool IsGoldenKey(string key) => key.StartsWith("golden/", StringComparison.Ordinal);
 
     private void EnsureWritable(string key)
     {
