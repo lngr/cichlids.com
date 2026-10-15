@@ -1,0 +1,3091 @@
+schemaVersion: 1
+id: talamancaheros-sieboldii
+legacyIds:
+- 793
+- 710
+status: described
+taxonomy:
+  validName: Talamancaheros sieboldii
+  genus: Talamancaheros
+  species: sieboldii
+  author: "(Kner, 1863)"
+  source: &id001
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: Talamancaheros"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Talamancaheros"
+    archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-44d36178/2026-10-15T090935Z
+    accessed: '2026-10-15'
+  synonyms:
+  - name: Heros sieboldii
+    note: Original combination.
+  - name: Cichlasoma sieboldii
+    note: Former combination.
+  - name: Theraps sieboldii
+    note: Former combination.
+  - name: Tomocichla sieboldii
+    note: Former combination.
+  - name: Cichlasoma frontale
+    note: Catalog synonym.
+  - name: Cichlasoma punctatum
+    note: Catalog synonym.
+  - name: Theraps terrabae
+    note: Replacement name listed as a synonym in the Catalog.
+  legacyNames:
+  - Tomocichla sieboldii
+  - Cichlasoma sieboldii
+  note: "The name and synonym list follow the Catalog of Fishes, which accepts Talamancaheros sieboldii and T. underwoodi\
+    \ separately but retains Pacific Costa Rica and Panama for sieboldii. CRC still includes underwoodi in its synonymy,\
+    \ whereas NVC treats the Costa Rican fish as underwoodi. Historical locality and ecological records are retained\
+    \ with that limitation. The former genus Tomocichla now includes the distinct Caribbean-slope tuba and asfraci;\
+    \ no Caribbean occurrence is accepted for sieboldii. The Bussing (1975) and Rican et al. (2016) OA results exposed\
+    \ abstracts and bibliographic material only, so no full-text details are inferred from them. The cichlids.com\
+    \ archive search for sieboldii returned no posts. GCCA access was blocked in the input research and supplies\
+    \ no evidence."
+names:
+  trade:
+    en:
+    - Siebold's cichlid
+variants:
+- name: Rio Chorcha
+  kind: locality
+  note: Panamanian aquarium locality named by NVC; no separate species or fixed color morph implied.
+- name: Rio Gariche
+  kind: locality
+  note: Panamanian aquarium stock locality; keep collection origin with offspring.
+- name: Rio Chiriqui
+  kind: locality
+  note: "Locality designation reported in the aquarium literature, not a domestic line."
+features:
+  origin:
+    value:
+      continent: Central America
+      region: "Pacific-slope rivers of Costa Rica and Panama in the Catalog of Fishes, with unresolved application\
+        \ of older Costa Rican records after the underwoodi split"
+      waterbody: null
+      localities:
+      - "Rio Gaitu, Panama"
+      - "Rio San Pablo, Panama"
+      - "Quebrada El Nance, Panama"
+      - "Rio Chorcha, Panama"
+    confidence: medium
+    rationale: "All four full profiles propose a Pacific-slope distribution. Generator and checker-b qualify Costa\
+      \ Rican records after the underwoodi split; checker-a includes the Terraba, Rincon, Tusubres and Culebra records\
+      \ directly; checker-c includes Costa Rica and western Panama. Retain the Catalog distribution and explicitly\
+      \ qualify the older Costa Rican localities. NVC assigns those fish to underwoodi, while CRC retains the broader\
+      \ concept. Stalsberg provides explicit Panamanian capture records, which anchor the decided chemistry. Neither\
+      \ Catalog genus page supports a Caribbean distribution for sieboldii; Caribbean tuba and asfraci are separate\
+      \ species."
+    sources:
+    - *id001
+    - &id009
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: Tomocichla"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Tomocichla"
+      archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-33f8d190/2026-10-14T171447Z
+      accessed: '2026-10-15'
+    - &id007
+      kind: database
+      title: "FishBase: Talamancaheros sieboldii"
+      url: "https://www.fishbase.se/summary/Talamancaheros-sieboldii.html"
+      archived: fishbase.se/summary/talamancaheros-sieboldii.html/2026-10-15T090947Z
+      accessed: '2026-10-15'
+    - &id005
+      kind: website
+      title: "Rene Beerlink: Talamancaheros sieboldii, Nederlandse Vereniging van Cichlidenliefhebbers"
+      url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/talamancaheros-sieboldii-kner-1863"
+      archived: nvcweb.nl/visbeschrijvingen/midden-amerika/talamancaheros-sieboldii-kner-1863/2026-10-15T090951Z
+      accessed: '2026-10-15'
+    - &id010
+      kind: database
+      title: "Cichlid Room Companion: Talamancaheros sieboldii, public species summary"
+      url: "https://cichlidae.com/species.php?id=dCbngxUJR_T_MCwN4z5gfw"
+      archived: cichlidae.com/species.php/q-c951aad3/2026-10-15T091010Z
+      accessed: '2026-10-15'
+    - &id011
+      kind: literature
+      title: Bussing (1975). Taxonomy and biological aspects of the Central American cichlid fishes Cichlasoma sieboldii
+        and C. tuba. Abstract only.
+      url: "https://doi.org/10.15517/rbt.v23i2.25999"
+      archived: doi.org/10.15517_rbt.v23i2.25999/2026-10-15T090959Z
+      accessed: '2026-10-15'
+    - &id012
+      kind: literature
+      title: Rican et al. (2016). Diversity and evolution of the Middle American cichlid fishes with revised classification.
+        Abstract only.
+      url: "https://doi.org/10.3897/vz.66.e31534"
+      archived: doi.org/10.3897_vz.66.e31534/2026-10-13T000529Z
+      accessed: '2026-10-15'
+    - &id006
+      kind: website
+      title: "Alf Stalsberg: Collecting in Panama, trips in 1996 and 2001"
+      url: "https://www.lem.net/alf/panama-eng.htm"
+      archived: lem.net/alf/panama-eng.htm/2026-10-14T174603Z
+      accessed: '2026-10-15'
+    - &id002
+      kind: database
+      title: FishBase species summary Talamancaheros sieboldii
+      url: "https://www.fishbase.se/summary/Tomocichla-sieboldii.html"
+      accessed: '2026-10-15'
+      archived: fishbase.se/summary/tomocichla-sieboldii.html/2026-10-15T090942Z
+    - &id003
+      kind: literature
+      title: "Diversidad y abundancia ictiofaunistica del rio Grande de Terraba, sur de Costa Rica (Rojas & Rodriguez\
+        \ 2008)"
+      url: "https://tropicalstudies.org/rbt/attachments/volumes/vol56-3/Rodrigo-Diversidad.pdf"
+      accessed: '2026-10-15'
+      archived: tropicalstudies.org/rbt/attachments/volumes/vol56-3/rodrigo-diversidad.pdf/2026-10-15T091127Z
+    - &id004
+      kind: literature
+      title: "Fishes from the Tusubres River basin, Pacific coast, Costa Rica (Angulo et al. 2015)"
+      url: "https://doi.org/10.15560/11.3.1666"
+      accessed: '2026-10-15'
+      archived: doi.org/10.15560_11.3.1666/2026-10-15T091000Z
+    - &id020
+      kind: website
+      title: "Aquarist Atlas: Talamancaheros sieboldii"
+      url: "https://www.cichlidatlas.com/species/talamancaheros-sieboldii/"
+      archived: cichlidatlas.com/species/talamancaheros-sieboldii/2026-10-15T091233Z
+      accessed: '2026-10-15'
+    - &id008
+      kind: literature
+      title: "Arscott, Eldridge and Sweeney (2010): A Preliminary Water Quality Study of the Rio Sierpe and its\
+        \ tributaries, Stroud Water Research Center report 2010001"
+      url: "https://stroudcenter.org/wp-content/uploads/Report_RioSierpeWaterQuality_SWRC2010-001.pdf"
+      archived: stroudcenter.org/wp-content/uploads/report_riosierpewaterquality_swrc2010-001.pdf/2026-10-15T091024Z
+      accessed: '2026-10-15'
+    - &id044
+      kind: literature
+      title: "Rojas and Rodriguez (2008): Diversidad y abundancia ictiofaunistica del rio Grande de Terraba, sur\
+        \ de Costa Rica"
+      url: "https://doi.org/10.15517/rbt.v56i3.5720"
+      archived: doi.org/10.15517_rbt.v56i3.5720/2026-10-14T134521Z
+      accessed: '2026-10-15'
+    - &id045
+      kind: literature
+      title: "Robles and Vega (2004), Ecological study of the middle and lower Santa Maria River, abstract only"
+      url: "https://revistas.up.ac.pa/index.php/tecnociencia/article/view/662"
+      archived: revistas.up.ac.pa/index.php/tecnociencia/article/view/662/2026-10-15T091109Z
+      accessed: '2026-10-15'
+    - kind: literature
+      title: Umana-Villalobos and Springer (2006). Environmental variation in the Grande de Terraba river and tributaries.
+        Abstract and bibliographic page only.
+      url: "https://doi.org/10.15517/rbt.v54i1.26850"
+      accessed: '2026-10-15'
+      archived: doi.org/10.15517_rbt.v54i1.26850/2026-10-14T134736Z
+    evidence:
+    - source: *id001
+      value: Pacific coast of Costa Rica and Panama
+    - source: *id002
+      value: Esparza (Costa Rica) to Rio Santa Maria (Panama)
+    - source: *id003
+      value: recorded in the Terraba at 10 to 840 m altitude
+    - source: *id004
+      value: listed for the Tusubres basin
+    - source: &id036
+        kind: forum
+        title: "MonsterFishKeepers thread: Tomocichla sieboldii fry offered by a breeder (size, colour)"
+        url: "https://www.monsterfishkeepers.com/forums/goto/post?id=5743170"
+        accessed: '2026-10-15'
+        archived: monsterfishkeepers.com/forums/goto/post/q-b8a2480f/2026-10-15T091244Z
+      value: "stock from Rio Culebra, Costa Rica"
+      note: hobby breeder
+    - source: *id001
+      value:
+        continent: Central America
+        region: Pacific coast of Costa Rica and Panama
+    - source: *id005
+      value:
+        continent: Central America
+        region: Pacific Panama
+  temperatureC:
+    value:
+      min: 24
+      max: 30
+    confidence: medium
+    rationale: "The qualified-majority tally decides 24 to 30 C with medium confidence, from five agreeing votes\
+      \ out of six under the 1 C agreement rule. Proposals were generator 25 to 30, checker-a 23 to 29, checker-b\
+      \ 24 to 30, checker-c 24 to 28, tiebreaker-1 24 to 30 and tiebreaker-2 24 to 30 C. Stalsberg recorded 25.2\
+      \ to 29.8 C at capture sites and 24.5 C in nearby Santa Maria water; the monitoring tables give 24 to 28 and\
+      \ 24.5 to 27.6 C. The narrower typical interval does not encompass the full regional records: Rincon 22 to\
+      \ 32.5 C, Terraba 20.7 to 31.8 C, Golfo Dulce rivers 26 to 33 C and Sierpe 27.4 to 30.3 C. Those Costa Rican\
+      \ series have uncertain applicability after the taxonomic split and are not species-wide aquarium targets.\
+      \ The 20.57 to 21.4 C upper Gariche station lacks established species occupancy. NVC reports an exceptional\
+      \ 38 C Caldera spring population, which remains habitat context and is excluded from the natural target and\
+      \ tolerance."
+    sources:
+    - *id006
+    - *id007
+    - *id005
+    - &id013
+      kind: website
+      title: "Cichlidamerique: Talamancaheros sieboldii"
+      url: "https://cichlidamerique.fr/blog/talamancaheros-sieboldii"
+      archived: cichlidamerique.fr/blog/talamancaheros-sieboldii/2026-10-15T091002Z
+      accessed: '2026-10-15'
+    - &id014
+      kind: literature
+      title: "Fisico-quimica de las aguas superficiales de la Cuenca del rio Rincon, Peninsula de Osa, Costa Rica"
+      url: "https://doi.org/10.22458/urj.v2i2.156"
+      accessed: '2026-10-15'
+      archived: doi.org/10.22458_urj.v2i2.156/2026-10-14T134650Z
+    - *id003
+    - *id002
+    - *id008
+    - &id015
+      kind: literature
+      title: "INEC and IDAAN, Table VI.7.5, raw water measurements of Rio Chiriqui Viejo at Progreso, 1998 to 2002,\
+        \ archived copy"
+      url: "https://www.inec.gob.pa/Archivos/P288145.pdf"
+      archived: web.archive.org/web/20250000000000id_/https_/www.inec.gob.pa/archivos/p288145.pdf/2026-10-15T091230Z
+      accessed: '2026-10-15'
+      offline: true
+    - &id016
+      kind: literature
+      title: "INEC and IDAAN, Table VI.7.15, raw water measurements of Rio Santa Maria at Santiago, 1998 to 2002,\
+        \ archived copy"
+      url: "https://www.inec.gob.pa/Archivos/P288150.pdf"
+      archived: web.archive.org/web/20250000000000id_/https_/www.inec.gob.pa/archivos/p288150.pdf/2026-10-15T091320Z
+      accessed: '2026-10-15'
+      offline: true
+    - *id001
+    - *id009
+    - *id010
+    - *id011
+    - *id012
+    - &id017
+      kind: literature
+      title: "ANAM (2009): Informe de Monitoreo de la Calidad del Agua en las Cuencas Hidrograficas de Panama, 2002\
+        \ to 2008, Table 18"
+      url: "https://v1.panamacompra.gob.pa/documentosconvertidos/2009-1-08-0-08-lp-008343-et.pdf"
+      accessed: '2026-10-15'
+      archived: v1.panamacompra.gob.pa/documentosconvertidos/2009-1-08-0-08-lp-008343-et.pdf/2026-10-15T092102Z
+    - &id018
+      kind: literature
+      title: "Him, Arena and Bosquez (2019): Physicochemical and microbiological quality of the Santa Maria River\
+        \ near the Santiago water intake"
+      url: "https://portal.amelica.org/ameli/journal/224/224979002/"
+      accessed: '2026-10-15'
+      archived: portal.amelica.org/ameli/journal/224/224979002/2026-10-15T091944Z
+    - &id019
+      kind: literature
+      title: "Umana (1998): Characterization of some Golfo Dulce drainage basin rivers, Costa Rica"
+      url: "https://doi.org/10.15517/rbt.v46i6.29651"
+      accessed: '2026-10-15'
+      archived: doi.org/10.15517_rbt.v46i6.29651/2026-10-14T135151Z
+    evidence:
+    - source: *id006
+      value:
+        min: 25.2
+        max: 29.8
+      note: Capture-site readings at five Pacific Panamanian sites; Rio Grande is beyond the conventional Santa
+        Maria boundary and is not needed to set the rounded range.
+    - source: *id007
+      value:
+        min: 24
+        max: 29
+      note: Environment summary; original measurement details unavailable.
+    - source: *id013
+      value:
+        min: 22
+        max: 29
+      note: Claimed seasonal habitat range without a traceable sampling table.
+    - source: *id005
+      value:
+        min: 38
+        max: 38
+      note: Exceptional Caldera hot-spring observation; excluded from normal habitat and tolerance.
+    - source: *id014
+      value:
+        min: 22
+        max: 32.5
+      note: "annual range, mean 26.8 C"
+    - source: *id003
+      value:
+        min: 20.7
+        max: 31.8
+      note: "monthly water temperature at El Brujo, Terraba"
+    - source: *id002
+      value:
+        min: 24
+        max: 29
+      note: "environment line, source is an aquarium reference"
+    - source: *id006
+      value:
+        min: 25.2
+        max: 29.8
+      note: Five named Panamanian collecting sites with the species; nearby Santa Maria was 24.5 C.
+    - source: *id007
+      value:
+        min: 24
+        max: 29
+      note: General environmental range; reference 36880.
+    - source: *id008
+      value:
+        min: 24
+        max: 29
+      note: Table 5 compiles collection temperatures from Bussing; older broad species concept.
+    - source: *id005
+      value:
+        min: 38
+        max: 38
+      note: Exceptional Caldera hot-spring population; excluded from the typical range.
+    - source: *id013
+      value:
+        min: 22
+        max: 29
+      note: Unlocated seasonal field claim without a sampling protocol.
+    - source: *id015
+      value:
+        min: 24
+        max: 28
+      note: "Raw river water, Table VI.7.5"
+    - source: *id016
+      value:
+        min: 24.5
+        max: 27.6
+      note: "Raw river water, Table VI.7.15"
+    - source: *id007
+      value:
+        min: 24
+        max: 29
+      note: "Database environment range, based on handbook reference 36880"
+    - source: *id008
+      value:
+        min: 24
+        max: 29
+      note: "Table 5 collection-temperature compilation, pre-split species concept"
+    - source: *id005
+      value:
+        min: 38
+        max: 38
+      note: "Exceptional Caldera hot-spring observation, excluded from typical range"
+    - source: *id006
+      value:
+        min: 24.5
+        max: 29.8
+      note: "Multiple Pacific Panama sites; 24.5 C is the adjacent Santa Maria reading, while the coolest explicit\
+        \ capture site is Rio Grande at 25.2 C."
+    - source: *id008
+      value:
+        min: 24
+        max: 29
+      note: Table 5 compiles collecting temperatures under the pre-split Costa Rican species concept.
+    - source: *id007
+      value:
+        min: 24
+        max: 29
+      note: General species-summary range; no site-level measurements are given.
+    - source: *id013
+      value:
+        min: 22
+        max: 29
+      note: Its habitat section claims a seasonal field range without dated sampling details; the aquarium section
+        instead gives 24 to 29 C.
+    - source: *id005
+      value:
+        min: 38
+        max: 38
+      note: Exceptional Caldera spring breeding observation; excluded as a potentially locally adapted population.
+    - source: *id007
+      value:
+        min: 24
+        max: 29
+      note: Species environment summary; not a station-by-station field dataset.
+    - source: *id008
+      value:
+        min: 24
+        max: 29
+      note: Table 5 compiling Bussing collecting temperatures for the species.
+    - source: *id008
+      value:
+        min: 27.4
+        max: 30.3
+      note: Table 3 freshwater regional readings; not all stations were confirmed occupied by the species.
+    - source: *id017
+      value:
+        min: 25.39
+        max: 28.2
+      note: "Table 18, lower Gariche stations 2 and 3, 2007 to 2008."
+    - source: *id017
+      value:
+        min: 20.57
+        max: 21.4
+      note: Upper Gariche station 1; excluded from typical occupied lowland conditions.
+    - source: *id018
+      value:
+        min: 27.1
+        max: 28
+      note: Range of seasonal site means in 2014 to 2015.
+    - source: *id019
+      value:
+        min: 26
+        max: 33
+      note: "Regional river readings, not species-linked collection limits."
+    - source: *id005
+      value:
+        min: 38
+        max: 38
+      note: "Exceptional spring population, explicitly excluded from the typical range."
+    - source: *id013
+      value:
+        min: 22
+        max: 29
+      note: Claims seasonal habitat values without identifiable measurement dates or stations.
+    tolerance:
+      value:
+        min: 22
+        max: 30
+      confidence: medium
+      rationale: "The qualified-majority tally decides 22 to 30 C at medium confidence, with five of six votes agreeing\
+        \ within 1 C. Generator, checker-b, tiebreaker-1 and tiebreaker-2 proposed 22 to 30 C; checker-a proposed\
+        \ the wider 20 to 30 C and checker-c 22 to 29 C. NCS recommends 22 to 28 C, French breeding advice reaches\
+        \ 29 C and the natural capture readings reach 29.8 C, supporting inclusion of 30 C. NVC recommends a warmer\
+        \ minimum of 26 C. The wider 20.7 to 31.8 C Terraba field series retained by checker-a does not demonstrate\
+        \ chronic aquarium tolerance, especially under the older species concept. This working interval contains\
+        \ the natural range but its endpoints are less well documented than the central husbandry temperatures.\
+        \ The exceptional 38 C spring report is not generalized."
+      sources:
+      - &id021
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Talamancaheros sieboldii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=546"
+        archived: ciklid.org/artregister/art.php/q-209a3ede/2026-10-15T091018Z
+        accessed: '2026-10-15'
+      - *id005
+      - *id007
+      - *id013
+      - *id006
+      - *id002
+      - &id022
+        kind: website
+        title: "Siebold's Cichlid Talamancaheros sieboldii, dealer care notes"
+        url: "https://simstropicalfish.co.uk/product/siebolds-cichlid-talamancaheros-sieboldii-5cm/"
+        accessed: '2026-10-15'
+        archived: simstropicalfish.co.uk/product/siebolds-cichlid-talamancaheros-sieboldii-5cm/2026-10-15T091127Z
+      - *id014
+      - *id003
+      - *id020
+      - &id023
+        kind: database
+        title: "Nordiska Ciklidsallskapet species register, Talamancaheros sieboldii"
+        url: "https://ciklid.org/artregister/art.php?ID=546"
+        archived: ciklid.org/artregister/art.php/q-209a3ede/2026-10-15T091031Z
+        accessed: '2026-10-15'
+      - &id024
+        kind: website
+        title: "Fischlexikon: Siebolds Buntbarsch, Talamancaheros sieboldii"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001677"
+        accessed: '2026-10-15'
+        archived: fischlexikon.eu/fischlexikon/fische-suchen.php/q-c1eb6af2/2026-10-15T092018Z
+      - &id025
+        kind: website
+        title: "Swell UK: Siebold's Cichlid"
+        url: "https://www.swelluk.com/siebold-s-cichlid-talamancaheros-sieboldii"
+        accessed: '2026-10-15'
+        archived: swelluk.com/siebold-s-cichlid-talamancaheros-sieboldii/2026-10-15T092115Z
+      - &id026
+        kind: website
+        title: "WetWebMedia: Neotropical cichlid health, sieboldii correspondence of 31 March 2014"
+        url: "http://www.wetwebmedia.com/FWSubWebIndex/NeotropCichDisF3.htm"
+        accessed: '2026-10-15'
+        archived: wetwebmedia.com/fwsubwebindex/neotropcichdisf3.htm/2026-10-15T092214Z
+      - *id008
+      evidence:
+      - source: *id021
+        value:
+          min: 22
+          max: 28
+        note: Aquarium recommendation.
+      - source: *id013
+        value:
+          min: 23
+          max: 29
+        note: Breeding recommendation.
+      - source: *id006
+        value:
+          min: 25.2
+          max: 29.8
+        note: Field range included in the tolerance; does not prove long-term aquarium limits.
+      - source: *id022
+        value:
+          min: 22
+          max: 26
+        note: dealer recommendation
+      - source: *id002
+        value:
+          min: 24
+          max: 29
+        note: aquarium reference
+      - source: *id003
+        value:
+          min: 20.7
+          max: 31.8
+        note: river range survived by wild fish
+      - source: *id021
+        value:
+          min: 22
+          max: 28
+        note: Aquarium species-register recommendation.
+      - source: *id020
+        value:
+          min: 24
+          max: 29
+        note: Aquarium recommendation.
+      - source: *id006
+        value:
+          min: 25.2
+          max: 29.8
+        note: Native observations require the tolerance to include the warm end.
+      - source: *id023
+        value:
+          min: 22
+          max: 28
+        note: Aquarium recommendation
+      - source: *id013
+        value:
+          min: 23
+          max: 29
+        note: Breeding and maintenance recommendation
+      - source: *id005
+        value:
+          min: 26
+          max: 26
+        note: "Stated lower recommendation only, no upper limit supplied"
+      - source: *id021
+        value:
+          min: 22
+          max: 28
+        note: Species-register maintenance range.
+      - source: *id007
+        value:
+          min: 24
+          max: 29
+        note: "General species-summary range, used as husbandry context rather than a chronic experiment."
+      - source: *id005
+        value:
+          min: 26
+          max: 26
+        note: Only a lower maintenance recommendation is supplied here; 26 C is not an upper limit.
+      - source: *id013
+        value:
+          min: 24
+          max: 29
+        note: General aquarium recommendation; its reproduction section gives 23 to 29 C.
+      - source: *id024
+        value:
+          min: 24
+          max: 29
+        note: Aquarium temperature recommendation.
+      - source: *id006
+        value:
+          min: 25.2
+          max: 29.8
+        note: "Capture-site readings support inclusion of water close to 30 C, but do not establish long-term aquarium\
+          \ survival."
+      - source: *id023
+        value:
+          min: 22
+          max: 28
+        note: Aquarium recommendation.
+      - source: *id025
+        value:
+          min: 22
+          max: 26
+        note: Dealer aquarium recommendation.
+      - source: *id013
+        value:
+          min: 23
+          max: 29
+        note: Breeding and maintenance section; elsewhere gives 24 to 29 C.
+      - source: *id024
+        value:
+          min: 24
+          max: 29
+        note: Aquarium recommendation.
+      - source: *id005
+        value:
+          min: 28
+          max: 28
+        note: Successful egg development at 28 C; also advises temperatures of at least 26 C without an upper limit.
+      - source: *id026
+        value:
+          min: 27
+          max: 27
+        note: Reported aquarium temperature accepted by the responding specialist.
+      - source: *id008
+        value:
+          min: 27.4
+          max: 30.3
+        note: Regional field context for the rounded upper endpoint; not a long-term aquarium trial.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  ph:
+    value:
+      min: 7
+      max: 8.5
+    confidence: medium
+    rationale: "The qualified-majority decision is pH 7 to 8.5 at medium confidence, supported by four of six votes.\
+      \ Generator, checker-b and both tiebreakers proposed 7 to 8.5; checker-a proposed 6.8 to 8 and checker-c 6.9\
+      \ to 7.7. Stalsberg measured 7 to 8.5 at occupied Panamanian sites. Independent Santa Maria sampling reaches\
+      \ 8.5, and lower Gariche stations give 7.45 to 8.41. These direct observations justify the upper endpoint\
+      \ beyond the general FishBase 7 to 8 summary. The decided range is narrower than Sierpe regional freshwater\
+      \ pH 6.51 to 8.78 and excludes the acidic end of the Rincon 6.62 to 8.17 series. These are regional Costa\
+      \ Rican measurements with unresolved post-split species applicability. Upper Gariche pH 5.69 to 7.03 lacks\
+      \ established occupancy, and basin chemistry alone cannot establish a typical species range."
+    sources:
+    - *id006
+    - *id007
+    - *id013
+    - *id003
+    - *id014
+    - *id002
+    - *id015
+    - *id016
+    - *id008
+    - *id001
+    - *id005
+    - *id017
+    - *id018
+    - &id027
+      kind: literature
+      title: "Beerlink: Amphilophus lyonsi, AquaInfo, including shared habitat measurements attributed to Werner\
+        \ (2002)"
+      url: "https://aquainfo.nl/artikel/amphilophus-lyonsi/"
+      accessed: '2026-10-15'
+      archived: aquainfo.nl/artikel/amphilophus-lyonsi/2026-10-14T212212Z
+    - *id019
+    evidence:
+    - source: *id006
+      value:
+        min: 7
+        max: 8.5
+      note: Multiple capture sites in Pacific Panama.
+    - source: *id007
+      value:
+        min: 7
+        max: 8
+      note: Environment summary.
+    - source: *id013
+      value:
+        min: 7
+        max: 8
+      note: Habitat summary without linked measurements.
+    - source: *id003
+      value:
+        min: 7.6
+        max: 7.6
+      note: annual mean at El Brujo
+    - source: *id014
+      value:
+        min: 6.62
+        max: 8.17
+      note: all stations and seasons
+    - source: *id002
+      value:
+        min: 7.0
+        max: 8.0
+    - source: *id006
+      value:
+        min: 7
+        max: 8.5
+      note: Measurements at five Panamanian collecting sites.
+    - source: *id007
+      value:
+        min: 7
+        max: 8
+      note: General database environmental range.
+    - source: *id013
+      value:
+        min: 7
+        max: 8
+      note: Unlocated field claim and care recommendation.
+    - source: *id015
+      value:
+        min: 7
+        max: 7.6
+      note: Table VI.7.5
+    - source: *id016
+      value:
+        min: 6.9
+        max: 7.7
+      note: Table VI.7.15
+    - source: *id007
+      value:
+        min: 7
+        max: 8
+      note: General environment range
+    - source: *id013
+      value:
+        min: 7
+        max: 8
+      note: "Claimed habitat readings, sampling details absent"
+    - source: *id008
+      value:
+        min: 6.51
+        max: 8.78
+      note: "Table 3 across river sites, broader historical species concept"
+    - source: *id006
+      value:
+        min: 7
+        max: 8.5
+      note: Multiple localities with explicit sieboldii captures; the high reading is El Nance.
+    - source: *id007
+      value:
+        min: 7
+        max: 8
+      note: General environment summary without locality-specific measurements.
+    - source: *id013
+      value:
+        min: 7
+        max: 8
+      note: Claims a habitat range without a dated measurement series.
+    - source: *id008
+      value:
+        min: 6.51
+        max: 8.78
+      note: Table 3 freshwater regional stations span headwaters to Terraba; not a species-specific occupied-site
+        pH envelope and not used as such.
+    - source: *id017
+      value:
+        min: 7.45
+        max: 8.41
+      note: Gariche stations 2 and 3.
+    - source: *id017
+      value:
+        min: 5.69
+        max: 7.03
+      note: "Upper Gariche station 1, not evidence of species presence at the station."
+    - source: *id018
+      value:
+        min: 7.4
+        max: 8.5
+      note: "Wet-season site means 7.4 to 7.9, dry-season means 7.6 to 8.5."
+    - source: *id007
+      value:
+        min: 7
+        max: 8
+      note: "Species database environment range, without locality-level measurements."
+    - source: *id027
+      value:
+        min: 7.2
+        max: 7.2
+      note: Shared habitat account attributed to Werner.
+    - source: *id019
+      value:
+        min: 7.75
+        max: 8
+      note: Measured regional Pacific rivers.
+    - source: *id014
+      value:
+        min: 6.62
+        max: 8.17
+      note: "Regional basin measurements, including a lagoon; not a species-linked range."
+    - source: *id008
+      value:
+        min: 6.51
+        max: 8.78
+      note: Table 3 regional freshwater measurements; low headwater and high Terraba readings are not used as typical
+        species endpoints.
+    - source: *id002
+      value:
+        min: 7
+        max: 8
+    tolerance:
+      value:
+        min: 7
+        max: 8.5
+      confidence: low
+      rationale: "The tally uses the median method because only three of six proposals agree on one range, below\
+        \ the required four. Generator, checker-b and tiebreaker-1 proposed pH 7 to 8.5; checker-a proposed 6.5\
+        \ to 8.2; checker-c 6.9 to 8; and tiebreaker-2 the wider 6.5 to 8.5. The median minima are 6.9 and 7, averaging\
+        \ 6.95 and rounding to 7.0; the median maxima are both 8.5. The decided 7 to 8.5 contains the natural range\
+        \ and retains low confidence rather than allowing one narrow recommendation to set an intersection. NCS\
+        \ and NVC recommend 7 to 8, Fischlexikon explicitly gives 7 to 8.5, and WetWebMedia accepts pH 8. Fischlexikon\
+        \ has unrelated-species editing errors, so its advice is weak evidence. Equality with the natural range\
+        \ follows an explicit keeping recommendation rather than evidence of harm just outside it. The wider inferred\
+        \ 6.5 to 8.5 proposal and regional Sierpe 6.51 to 8.78 readings remain evidence but do not establish chronic\
+        \ health limits."
+      sources:
+      - *id005
+      - *id021
+      - *id006
+      - *id022
+      - *id002
+      - *id014
+      - *id023
+      - &id028
+        kind: website
+        title: "WetWebMedia, Neotropical cichlid health correspondence, sieboldii entry dated 31 March 2014"
+        url: "http://wetwebmedia.com/FWSubWebIndex/NeotropCichDisF3.htm"
+        archived: wetwebmedia.com/fwsubwebindex/neotropcichdisf3.htm/2026-10-15T091242Z
+        accessed: '2026-10-15'
+      - *id016
+      - *id024
+      - *id007
+      - *id013
+      - *id026
+      - *id008
+      - *id018
+      - &id029
+        kind: model-knowledge
+        title: Inferred mild-acidity tolerance from regional chemistry and neutral-water husbandry
+      evidence:
+      - source: *id005
+        value:
+          min: 7
+          max: 8
+        note: Aquarium recommendation.
+      - source: *id021
+        value:
+          min: 7
+          max: 8
+        note: Aquarium recommendation.
+      - source: *id006
+        value:
+          min: 8.5
+          max: 8.5
+        note: El Nance capture site; requires widening the aquarium recommendation.
+      - source: *id022
+        value:
+          min: 7.0
+          max: 8.0
+        note: dealer recommendation
+      - source: *id014
+        value:
+          min: 6.62
+          max: 8.17
+        note: wild river extremes
+      - source: *id006
+        value:
+          min: 7
+          max: 8.5
+        note: Native measurements widen the recommended upper endpoint.
+      - source: *id005
+        value:
+          min: 7
+          max: 8
+      - source: *id023
+        value:
+          min: 7
+          max: 8
+      - source: *id028
+        value:
+          min: 8
+          max: 8
+        note: Aquarium observation assessed as suitable by the responder
+      - source: *id016
+        value:
+          min: 6.9
+          max: 7.7
+        note: Natural occurrence bounds the lower endpoint
+      - source: *id021
+        value:
+          min: 7
+          max: 8
+        note: Species-register maintenance recommendation.
+      - source: *id024
+        value:
+          min: 7
+          max: 8.5
+        note: Explicit aquarium pH range; the page contains unrelated Stomatepia text elsewhere.
+      - source: *id007
+        value:
+          min: 7
+          max: 8
+        note: General summary range.
+      - source: *id013
+        value:
+          min: 7
+          max: 8
+        note: Aquarium and breeding recommendation.
+      - source: *id006
+        value:
+          min: 7
+          max: 8.5
+        note: Wild capture-site observations support containing this range but are not chronic aquarium trials.
+      - source: *id023
+        value:
+          min: 7
+          max: 8
+        note: Care recommendation.
+      - source: *id005
+        value:
+          min: 7
+          max: 8
+        note: Care recommendation.
+      - source: *id013
+        value:
+          min: 7
+          max: 8
+        note: Care recommendation.
+      - source: *id024
+        value:
+          min: 7
+          max: 8.5
+        note: "Care recommendation, from a page with copy-editing errors."
+      - source: *id026
+        value:
+          min: 8
+          max: 8
+        note: Specialist accepted reported aquarium chemistry.
+      - source: *id014
+        value:
+          min: 6.62
+          max: 8.17
+        note: "Regional field context only, not proof of chronic aquarium tolerance."
+      - source: *id018
+        value:
+          min: 7.4
+          max: 8.5
+        note: Field context for the upper endpoint.
+      - source: *id029
+        value:
+          min: 6.5
+          max: 8.5
+        note: Explicitly inferred working limits; the lower endpoint lacks a species-specific long-term trial.
+      - source: *id022
+        value:
+          min: 7
+          max: 8
+        note: dealer recommendation
+      verification:
+        method: median
+        votes:
+          agree: 3
+          total: 6
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  ghDgh:
+    value:
+      min: 1
+      max: 2
+    confidence: medium
+    rationale: "The qualified-majority tally decides 1 to 2 dGH at medium confidence with four of six proposals\
+      \ agreeing within 2 dGH. Generator, checker-b and tiebreaker-1 proposed 1 to 2; checker-a 1 to 7; checker-c\
+      \ 0.8 to 4; and tiebreaker-2 1 to 12. Stalsberg directly measured 1 or 2 dH at four identified occupied Panamanian\
+      \ sites. These species-linked readings anchor the decision, but one collector and unspecified test resolution\
+      \ limit precision. The decided range is narrower than the official river monitoring envelopes: Chiriqui Viejo\
+      \ 1.57 to 3.81 and Santa Maria 0.90 to 2.19 dGH. It is also narrower than Rincon 2.38 to 6.88, regional Golfo\
+      \ Dulce 4.80 to 11.99 and Sierpe freshwater 2.74 to 9.56 dGH. Those broader samples are not measurements beside\
+      \ taxonomically verified adults, and the Costa Rican studies predate the underwoodi split. FishBase 9 to 19\
+      \ and Cichlidamerique 10 to 20 lack comparable site metadata. All are retained as dissenting evidence. The\
+      \ decision describes the provisional occupied-site core rather than a demonstrated boundary for every population;\
+      \ the much broader tolerance prevents treating harder aquarium water as automatically unsuitable."
+    sources:
+    - *id006
+    - *id007
+    - *id013
+    - &id030
+      kind: literature
+      title: Variacion ambiental en el rio Grande de Terraba y algunos de sus afluentes (Umana & Springer 2006)
+      url: "https://tropicalstudies.org/rbt/attachments/suppls/sup54-1%20EACR%20IV/Umana-Variacion%20ambiental.pdf"
+      accessed: '2026-10-15'
+      archived: tropicalstudies.org/rbt/attachments/suppls/sup54-1_eacr_iv/umana-variacion_ambiental.pdf/2026-10-15T091117Z
+    - *id014
+    - *id008
+    - &id046
+      kind: database
+      title: "FishBase reference 36880: Bussing (1998), Freshwater fishes of Costa Rica"
+      url: "https://www.fishbase.se/references/FBRefSummary.php?ID=36880"
+      archived: fishbase.se/references/fbrefsummary.php/q-94e70c73/2026-10-14T100647Z
+      accessed: '2026-10-15'
+    - *id015
+    - *id016
+    - *id001
+    - *id005
+    - *id027
+    - *id019
+    evidence:
+    - source: *id006
+      value:
+        min: 1
+        max: 2
+      note: Direct dH readings at four identified capture sites; treated as German total hardness.
+    - source: *id007
+      value:
+        min: 9
+        max: 19
+      note: Unlocalized environmental summary; conflicts with collector measurements.
+    - source: *id013
+      value:
+        min: 10
+        max: 20
+      note: Claimed field range without identifiable measurement records; not selected.
+    - source: *id030
+      value:
+        min: 1.1
+        max: 2.9
+      note: 36 +/- 16 mg CaCO3/L converted
+    - source: *id014
+      value:
+        min: 2.4
+        max: 6.9
+      note: 42.4 to 122.8 mg CaCO3/L converted
+    - source: *id006
+      value:
+        min: 1
+        max: 2
+      note: "Direct dH tests at Gaitu, San Pablo, El Nance and Chorcha."
+    - source: *id007
+      value:
+        min: 9
+        max: 19
+      note: General environmental range attributed to Bussing 1998.
+    - source: *id013
+      value:
+        min: 10
+        max: 20
+      note: Field claim without a named measurement series.
+    - source: *id015
+      value:
+        min: 1.57
+        max: 3.81
+      note: Measured total hardness 28 to 68 mg/L as CaCO3 divided by 17.848
+    - source: *id016
+      value:
+        min: 0.9
+        max: 2.19
+      note: Measured total hardness 16 to 39 mg/L as CaCO3 divided by 17.848
+    - source: *id007
+      value:
+        min: 9
+        max: 19
+      note: General environment dH range without primary sampling details
+    - source: *id013
+      value:
+        min: 10
+        max: 20
+      note: "Claimed habitat readings, sampling details absent"
+    - source: *id008
+      value:
+        min: 2.74
+        max: 9.56
+      note: "Calculated as Ca/7.14 + Mg/4.34, excluding brackish site 3"
+    - source: *id006
+      value:
+        min: 1
+        max: 2
+      note: "Explicit dH readings at Gaitu, San Pablo, El Nance and Chorcha; not inferred from conductivity."
+    - source: *id007
+      value:
+        min: 9
+        max: 19
+      note: "General species-summary hardness, with no field locality or method supplied."
+    - source: *id013
+      value:
+        min: 10
+        max: 20
+      note: Undetailed habitat claim; another section repeats the FishBase 9 to 19 range.
+    - source: *id008
+      value:
+        min: 2.7
+        max: 9.6
+      note: "Calculated from Table 3 freshwater sites excluding the saline village sample: dGH = Ca/7.14 + Mg/4.34.\
+        \ Regional Costa Rican chemistry, not assigned to the target Panama populations."
+    - source: *id027
+      value:
+        min: 1.5
+        max: 1.5
+      note: "Shared habitat point, attributed to Werner (2002)."
+    - source: *id014
+      value:
+        min: 2.38
+        max: 6.88
+      note: Measured total hardness divided by 17.848 mg/L CaCO3 per dGH.
+    - source: *id019
+      value:
+        min: 4.8
+        max: 11.99
+      note: Measured regional total hardness divided by 17.848.
+    - source: *id008
+      value:
+        min: 2.74
+        max: 9.56
+      note: "Calculated from freshwater Table 3 Ca and Mg pairs, excluding the saline village station; dGH = Ca/7.14\
+        \ + Mg/4.34."
+    - source: *id007
+      value:
+        min: 9
+        max: 19
+      note: Generic species environment range without a traceable field station series.
+    - source: *id013
+      value:
+        min: 10
+        max: 20
+      note: Claims habitat hardness but does not identify sampling details.
+    tolerance:
+      value:
+        min: 1
+        max: 20
+      confidence: low
+      rationale: "The tally treats all four proposals as agreeing within 2 dGH and decides 1 to 20 dGH by its unanimous\
+        \ method, retaining low confidence. Generator and checker-a proposed 1 to 20; checker-b 1 to 19; checker-c\
+        \ 0.8 to 19. The unrounded median upper bound is 19.5, rounded to 20. The wider checker-c lower bound of\
+        \ 0.8 and Santa Maria field minimum of about 0.9 remain evidence. French breeding advice gives 5 to 19 dGH,\
+        \ FishBase gives 9 to 19, retailers give 8 to 20 and WetWebMedia accepts a tank at 10. Native capture sites\
+        \ at 1 to 2 require inclusion of very soft water. Together these support a broad provisional keeping interval\
+        \ rather than a controlled long-term tolerance series. Higher hardness is not required, and the exact endpoints\
+        \ remain uncertain."
+      sources:
+      - *id006
+      - *id013
+      - *id007
+      - *id005
+      - *id002
+      - *id022
+      - *id030
+      - *id014
+      - *id020
+      - *id028
+      - *id015
+      - *id016
+      evidence:
+      - source: *id006
+        value:
+          min: 1
+          max: 2
+        note: Natural soft water; establishes inclusion rather than an aquarium trial.
+      - source: *id013
+        value:
+          min: 5
+          max: 19
+        note: "Breeding recommendation, with 10 to 20 also claimed for habitat."
+      - source: *id007
+        value:
+          min: 9
+          max: 19
+        note: Supporting mineralized-water reference; not a demonstrated tolerance experiment.
+      - source: *id002
+        value:
+          min: 9
+          max: 19
+        note: aquarium reference
+      - source: *id022
+        value:
+          min: 8
+          max: 20
+        note: dealer recommendation
+      - source: *id014
+        value:
+          min: 2.4
+          max: 6.9
+        note: habitat
+      - source: *id013
+        value:
+          min: 5
+          max: 19
+        note: Breeding advice; the same page also gives 9 to 19 for general keeping.
+      - source: *id006
+        value:
+          min: 1
+          max: 2
+        note: Native measurements require inclusion of soft water.
+      - source: *id020
+        value:
+          min: 9
+          max: 19
+        note: Aquarium context repeats the FishBase hardness range.
+      - source: *id013
+        value:
+          min: 5
+          max: 19
+        note: Aquarium breeding recommendation
+      - source: *id028
+        value:
+          min: 10
+          max: 10
+        note: Aquarium observation
+      - source: *id016
+        value:
+          min: 0.9
+          max: 2.19
+        note: Field softness motivates the lower extension
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  khDkh:
+    value:
+      min: 1
+      max: 3
+    confidence: medium
+    rationale: "The settled tally decides 1 to 3 dKH at medium confidence, with four of six proposals agreeing under\
+      \ the 2 dKH rule. Generator, checker-b and tiebreaker-1 proposed 1 to 3; checker-a 2 to 7; checker-c 1.4 to\
+      \ 3.5; and tiebreaker-2 2 to 14. Stalsberg directly recorded KH 1 to 3 at occupied Panamanian sites. Official\
+      \ Panamanian alkalinity measurements convert to 1.40 to 3.47 dKH in Chiriqui Viejo and 1.68 to 2.30 in Santa\
+      \ Maria, extending slightly above the decided upper endpoint. The decided range is much narrower than regional\
+      \ Rincon bicarbonate-equivalent 2.49 to 7.38 and Golfo Dulce alkalinity-equivalent 4.79 to 13.91 dKH. These\
+      \ Costa Rican basin proxies do not establish the chemistry of the identified Panamanian capture sites and\
+      \ have uncertain applicability after the species split. Retain their wider ranges without treating GH or conductivity\
+      \ as KH. The chosen core is provisional rather than proof that every population occupies only this alkalinity.\
+      \ Natural KH intentionally has no verification object."
+    sources:
+    - *id006
+    - *id014
+    - *id030
+    - *id015
+    - *id016
+    - *id007
+    - *id005
+    - *id019
+    - &id031
+      kind: website
+      title: "Biotope Aquarium Design Contest 2020: Rio Jesus Maria aquarium, 576 litres"
+      url: "http://biotope-aquarium.info/aquariums/rio-jesus-maria-costa-rica-on-the-edge-of-the-river-576-l/"
+      accessed: '2026-10-15'
+      archived: biotope-aquarium.info/aquariums/rio-jesus-maria-costa-rica-on-the-edge-of-the-river-576-l/2026-10-15T092227Z
+    - *id026
+    - *id001
+    evidence:
+    - source: *id006
+      value:
+        min: 1
+        max: 3
+      note: Measured carbonate hardness in the field at four occupied sites.
+    - source: *id014
+      value:
+        min: 2.5
+        max: 7.4
+      note: bicarbonate converted (1 dKH = 21.8 mg HCO3/L)
+    - source: *id006
+      value:
+        min: 1
+        max: 3
+      note: Five Panamanian collecting sites with the fish.
+    - source: *id015
+      value:
+        min: 1.4
+        max: 3.47
+      note: Alkalinity 25 to 62 mg/L as CaCO3 divided by 17.848
+    - source: *id016
+      value:
+        min: 1.68
+        max: 2.3
+      note: Alkalinity 30 to 41 mg/L as CaCO3 divided by 17.848
+    - source: *id006
+      value:
+        min: 1
+        max: 3
+      note: Direct kH readings at five explicitly occupied sites; El Nance supplies 3 and Chorcha 2.
+    - source: *id014
+      value:
+        min: 2.49
+        max: 7.38
+      note: Regional field bicarbonate converted to alkalinity-equivalent dKH.
+    - source: *id019
+      value:
+        min: 4.79
+        max: 13.91
+      note: Regional field alkalinity in mg/L CaCO3 divided by 17.848.
+    tolerance:
+      value:
+        min: 1
+        max: 8
+      confidence: low
+      rationale: "The qualified-majority tally decides 1 to 8 dKH at low confidence, with four of six proposals\
+        \ agreeing within 2 dKH. Generator, checker-b and tiebreaker-1 proposed 1 to 8; checker-a 2 to 14; checker-c\
+        \ 1 to 10; and tiebreaker-2 the wider 1 to 16. No read source establishes numerical chronic KH limits. The\
+        \ decision is an explicitly inferred working interval from neutral to alkaline pH advice, soft native water\
+        \ and keeping practice, with allowance beyond the natural 1 to 3 dKH. WetWebMedia accepts a reported tank\
+        \ at KH 7. The contest aquarium at KH 12 supports a wider proposal but reports neither longitudinal health\
+        \ nor secure identity under the modern species concept, and its habitat chemistry was not measured. The\
+        \ wider Rincon 2.49 to 7.38 and regional Golfo Dulce 4.79 to 13.91 dKH records are field context, not tolerance\
+        \ trials for identified Panamanian stock. The exact 8 dKH ceiling is an estimate rather than a demonstrated\
+        \ injury threshold."
+      sources:
+      - *id005
+      - *id021
+      - *id006
+      - &id032
+        kind: model-knowledge
+        title: Explicit husbandry inference where species-specific measurements or trials are unavailable
+        accessed: '2026-10-15'
+      - *id002
+      - *id014
+      - &id033
+        kind: model-knowledge
+        title: Checker inference from general Central American cichlid keeping
+      - *id028
+      - &id034
+        kind: model-knowledge
+        title: Independent checker inference from the cited habitat and husbandry evidence
+        accessed: '2026-10-15'
+      - *id007
+      - *id026
+      - *id031
+      - *id023
+      - *id019
+      - &id035
+        kind: model-knowledge
+        title: Inferred KH working tolerance from husbandry and regional alkalinity
+      evidence:
+      - source: *id006
+        value:
+          min: 1
+          max: 3
+        note: "Observed natural alkalinity, not the complete tolerance."
+      - source: *id032
+        value:
+          min: 1
+          max: 8
+        note: Inferred aquarium planning range using pH 7 to 8.5 and broad mineral tolerance; needs confirmation.
+      - source: *id014
+        value:
+          min: 2.5
+          max: 7.4
+        note: habitat
+      - source: *id002
+        value:
+          min: 9
+          max: 19
+        note: GH advice used to infer buffered water
+      - source: *id006
+        value:
+          min: 1
+          max: 3
+        note: Measured habitat KH.
+      - source: *id033
+        value:
+          min: 1
+          max: 8
+        note: Inferred buffering envelope; direct long-term KH evidence is absent.
+      - source: *id028
+        value:
+          min: 7
+          max: 7
+        note: "Aquarium observation, fish had lip lesions attributed to mechanical injury rather than water chemistry"
+      - source: *id034
+        value:
+          min: 1
+          max: 10
+        note: Inferred working range from pH recommendations and keeping practice
+      - source: *id006
+        value:
+          min: 1
+          max: 3
+        note: Measured natural KH provides a lower-bound context only; not a chronic aquarium tolerance.
+      - source: *id005
+        value:
+          min: 1
+          max: 8
+        note: Derived estimate from its pH 7 to 8 and relatively soft-water husbandry advice; this source does not
+          state numerical KH limits.
+      - source: *id026
+        value:
+          min: 7
+          max: 7
+        note: "Reported KH in an aquarium whose water chemistry was accepted by the responding specialist; the health\
+          \ complaint concerned lips, not demonstrated KH intolerance."
+      - source: *id031
+        value:
+          min: 12
+          max: 12
+        note: "Aquarium display value, not a field reading or a longitudinal health study; the page itself lacks\
+          \ measured habitat parameters."
+      - source: *id035
+        value:
+          min: 1
+          max: 16
+        note: "Endpoints are inferred, not stated physiological or chronic-health limits."
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+  maxSizeCm:
+    value:
+      male: 20
+      female: 15
+    confidence: medium
+    rationale: "The proposal medians are male 20 and female 15 cm: generator, checker-b and checker-c proposed 20/15,\
+      \ while checker-a proposed 23/18. NVC explicitly reports usual aquarium adults near 20/15, matching the medians.\
+      \ FishBase gives a 25 cm standard-length record and NCS an unsexed 25 cm maximum, which are not sex-specific\
+      \ typical aquarium sizes. Cichlidamerique claims males over 30 and females 20 cm but also describes a 20 cm\
+      \ male elsewhere. The larger conflicting claims and breeder estimates of 8 to 9 inches remain evidence; they\
+      \ do not replace the clearer typical adult sizes."
+    sources:
+    - *id005
+    - *id007
+    - *id021
+    - *id002
+    - *id036
+    - &id037
+      kind: forum
+      title: "MonsterFishKeepers thread: lyonsi with Tomocichla sieboldii (tank size, adult size)"
+      url: "https://www.monsterfishkeepers.com/forums/goto/post?id=5385755"
+      accessed: '2026-10-15'
+      archived: monsterfishkeepers.com/forums/goto/post/q-ef756e5c/2026-10-15T091236Z
+    - *id013
+    - *id023
+    evidence:
+    - source: *id005
+      value:
+        male: 20
+        female: 15
+      note: Typical aquarium sizes separated by sex.
+    - source: *id007
+      value:
+        male: 25
+        female: null
+      note: "Maximum standard length, male or unsexed; not a typical aquarium total length."
+    - source: *id002
+      value:
+        male: 25
+        female: null
+      note: maximum standard length
+    - source: *id036
+      value:
+        male: 22
+        female: null
+      note: "8 to 9 inches, females smaller"
+    - source: *id037
+      value:
+        male: 25
+        female: null
+      note: 10 inches
+    - source: *id005
+      value:
+        male: 20
+        female: 15
+      note: Usual adult aquarium sizes.
+    - source: *id013
+      value:
+        male: 30
+        female: 20
+      note: Male stated as exceeding 30 cm; conflicting larger aquarium claim.
+    - source: *id005
+      value:
+        male: 20
+        female: 15
+    - source: *id007
+      value:
+        male: 25
+      note: "Unsexed maximum SL, female size not supplied"
+  predation:
+    value: 1
+    confidence: medium
+    rationale: "Keep the qualified-majority tally decision of level 1 at medium confidence: generator, checker-b,\
+      \ checker-c and both tiebreakers proposed 1, while checker-a proposed 0. NCS explicitly includes small fish\
+      \ among secondary foods, supporting occasional consumption of fry or very small fish. FishBase, CRC and the\
+      \ older Terraba study emphasize adult grazing and were mapped to 0 in dissenting evidence, but a plant-dominated\
+      \ diet does not exclude occasional fish consumption. Cichlidamerique repeats the small-fish observation and\
+      \ may share material with NCS, so it is not counted as an independent feeding study. Level 1 is a rubric interpretation;\
+      \ no source measures its 2 cm prey boundary."
+    sources:
+    - *id021
+    - *id013
+    - *id007
+    - *id002
+    - *id003
+    - *id010
+    - &id038
+      kind: forum
+      title: "MonsterFishKeepers thread: Tomocichla sieboldii (keeper experience with aggression and current)"
+      url: "https://www.monsterfishkeepers.com/forums/goto/post?id=6951707"
+      accessed: '2026-10-15'
+      archived: monsterfishkeepers.com/forums/goto/post/q-135c3a40/2026-10-15T091231Z
+    - &id039
+      kind: database
+      title: "FishBase: Food items reported for Talamancaheros sieboldii"
+      url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=20970&genus=Talamancaheros&species=sieboldii"
+      archived: fishbase.se/trophiceco/fooditemslist.php/q-769d5e56/2026-10-15T091130Z
+      accessed: '2026-10-15'
+    - &id040
+      kind: database
+      title: "FishBase: Ecology of Talamancaheros sieboldii"
+      url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=20970&GenusName=Talamancaheros&SpeciesName=sieboldii"
+      archived: fishbase.se/ecology/fishecologysummary.php/q-e9dadaa0/2026-10-15T091127Z
+      accessed: '2026-10-15'
+    - *id023
+    evidence:
+    - source: *id021
+      value: 1
+      note: "Small fish occur among supplementary foods; rubric mapping, not a measured prey-size threshold."
+    - source: *id013
+      value: 1
+      note: Reports small fish in a predominantly grazing diet.
+    - source: *id002
+      value: 0
+      note: "juveniles insects, adults vegetable matter"
+    - source: *id003
+      value: 0
+      note: "herbivore as adult, carnivorous (insects) as juvenile"
+    - source: *id010
+      value: 0
+      note: algae scraper
+    - source: *id038
+      value: 0
+      note: "keeper: not overly aggressive towards non-cichlids"
+    - source: *id021
+      value: 1
+      note: Small fish supplement the predominantly plant-based diet; level is inferred from that description.
+    - source: *id039
+      value: 0
+      note: "The listed adult items are algae and periphyton, without recorded fish prey."
+    - source: *id023
+      value: 1
+      note: Small fish are a minor item alongside predominantly algal feeding
+    - source: *id007
+      value: 0
+      note: "Adult diet description contains vegetable matter, without documented fish prey"
+    - source: *id021
+      value: 1
+      note: "Small fish supplement algae and invertebrates; mapped to occasional predation, with no measured prey\
+        \ length."
+    - source: *id013
+      value: 1
+      note: Reports small fish as a supplementary food; the account may repeat the Nordic material.
+    - source: *id023
+      value: 1
+      note: Small fish occur alongside grazing and invertebrate feeding; assigned to the opportunistic rubric category.
+    - source: *id013
+      value: 1
+      note: "Also reports small fish, without their lengths or frequency."
+    - source: *id007
+      value: 0
+      note: "Describes adults eating plant-associated material and algae; supports a non-piscivorous baseline, but\
+        \ does not exclude occasional fish consumption."
+    - source: *id010
+      value: 0
+      note: "Public feeding classification is an algae scraper; zero is an interpretation of that baseline, not\
+        \ an explicit exclusion of fish prey."
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods:
+      - Algae and biofilm on rounded stones
+      - Vegetable-based cichlid pellets or flakes
+      - Leafy vegetables
+      - Small supplementary portions of Daphnia or Artemia
+    confidence: medium
+    rationale: "Keep the qualified-majority tally decision of aufwuchs with bloatSensitive true at medium confidence.\
+      \ Generator, checker-b, checker-c and both tiebreakers proposed this combination; checker-a proposed aufwuchs\
+      \ with the flag false. Food lists differ in wording but all include plant material and limited animal foods.\
+      \ FishBase and CRC support adult algal grazing, while juveniles rely more on aquatic insects. NVC recommends\
+      \ vegetable-dominated adult feeding and warns of intestinal problems with rich animal foods. The sensitivity\
+      \ flag interprets this species-specific caution; it is less certain than the diet type and is not a diagnosed\
+      \ or experimentally established protein-induced bloat syndrome. Omnivore labels from retailers, Fischlexikon,\
+      \ Cichlidamerique and the FishBase ecology table are retained as evidence of broader food acceptance, which\
+      \ does not establish an animal-rich adult staple."
+    sources:
+    - *id007
+    - *id010
+    - *id005
+    - *id021
+    - *id013
+    - *id002
+    - *id003
+    - *id022
+    - *id039
+    - *id040
+    - *id020
+    - *id023
+    - *id028
+    - *id024
+    - *id008
+    - *id025
+    - *id026
+    - *id011
+    - *id012
+    evidence:
+    - source: *id007
+      value:
+        type: aufwuchs
+      note: Adult vegetable and algae diet is explicit; the source does not establish the bloat flag.
+    - source: *id010
+      value:
+        type: aufwuchs
+      note: Public feeding classification identifies algae scraping; no bloat claim.
+    - source: *id005
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+      note: Plant-based adult food and species-specific digestive cautions; flag inferred from those cautions.
+    - source: *id002
+      value: aufwuchs
+      note: "adults vegetable matter, aufwuchs and algae"
+    - source: *id003
+      value: aufwuchs
+      note: herbivorous adults
+    - source: *id010
+      value: aufwuchs
+      note: algae scrapers
+    - source: *id022
+      value: omnivore
+      note: dealer
+    - source: *id010
+      value:
+        type: aufwuchs
+      note: Adult feeding type; CRC does not assess bloat.
+    - source: *id039
+      value:
+        type: aufwuchs
+      note: Adult algae and periphyton; this table does not assess bloat.
+    - source: *id005
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+      note: Plant-dominant adult diet and warnings about intestinal problems with rich animal foods.
+    - source: *id040
+      value:
+        type: omnivore
+      note: Ecology table uses a mixed plant and animal category; no bloat assessment is provided.
+    - source: *id007
+      value:
+        type: aufwuchs
+      note: Adult algal diet; no sensitivity value stated
+    - source: *id010
+      value:
+        type: aufwuchs
+      note: Public algae-scraping classification; no sensitivity value stated
+    - source: *id005
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+      note: Plant-based adult diet and digestive-risk advice
+    - source: *id007
+      value:
+        type: aufwuchs
+      note: Adult food is attached algal growth and plant material; juvenile food is primarily aquatic insects.
+        No bloat flag is stated.
+    - source: *id010
+      value:
+        type: aufwuchs
+      note: Public feeding classification identifies algal scraping; no statement about protein intolerance.
+    - source: *id005
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+      note: "The flag is an interpretation of the adult vegetable-diet advice and intestinal-risk warning, not an\
+        \ explicit clinical bloat claim."
+    - source: *id021
+      value:
+        type: aufwuchs
+      note: "Algae dominate; insects, snails and small fish can supplement them."
+    - source: *id013
+      value:
+        type: omnivore
+      note: Its aquarium advice permits varied food with a substantial vegetable component; it also describes adult
+        algal grazing.
+    - source: *id024
+      value:
+        type: omnivore
+      note: "Aquarium feeding label allows live, frozen and vegetable food; the wild-diet section separately describes\
+        \ adult algal grazing."
+    - source: *id008
+      value:
+        type: aufwuchs
+      note: Table 5 assigns the historical Costa Rican sieboldii concept to the herbivore guild. This is regional
+        context because it predates recognition of underwoodi.
+    - source: *id007
+      value:
+        type: aufwuchs
+      note: "Adult grazing, contrasted with aquatic-insect feeding by juveniles."
+    - source: *id010
+      value:
+        type: aufwuchs
+      note: Public feeding category identifies an algae scraper; no bloat claim.
+    - source: *id023
+      value:
+        type: aufwuchs
+      note: Plant-dominated adult feeding with some animal items; no bloat claim.
+    - source: *id005
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+      note: "Bloat flag is inferred from species-specific intestinal-risk warnings, not an explicit bloat diagnosis."
+    - source: *id013
+      value:
+        type: aufwuchs
+      note: Recommends substantial plant food with limited animal supplements.
+    - source: *id008
+      value:
+        type: aufwuchs
+      note: Table 5 assigns herbivory to the legacy species.
+    - source: *id025
+      value:
+        type: omnivore
+      note: Dealer recommends mixed animal and vegetable foods.
+    - source: *id024
+      value:
+        type: omnivore
+      note: Aquarium feeding label is omnivorous; natural-history text describes adult algae grazing.
+    - source: *id026
+      value:
+        type: aufwuchs
+      note: Keeper observed grazing together with acceptance of frozen invertebrates; no diet-induced bloat established.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: "All four profiles propose level 3. NVC describes intolerance after acclimation, and keeper reports\
+      \ include serious attacks on partners and deaths in smaller juvenile groups. The rubric assumes a compatible\
+      \ pair with adequate space, so those crowded-group outcomes do not establish level 4 as normal husbandry behavior.\
+      \ Persistent chasing and injury risk with poor pairing or insufficient retreats fit level 3."
+    sources:
+    - *id005
+    - *id021
+    - *id013
+    - *id038
+    - *id037
+    - *id023
+    evidence:
+    - source: *id038
+      value: 3
+      note: dominant fish killed group mates in a 75 gallon tank
+    - source: *id037
+      value: 3
+      note: keeper plans a pair in a 120 gallon tank
+    - source: *id005
+      value: 3
+      note: Behaviour mapped to rubric
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: Generator and checker-b propose 3; checker-a and checker-c propose 2. NCS describes perimeter defence
+      and WetWebMedia accepts robust mixed tankmates. NVC warns of increased intolerance without establishing attacks
+      beyond the defended area in a suitable aquarium. Territorial chasing at level 2 is the better-supported baseline;
+      the level 3 warning remains evidence and individuals or breeding pairs can require separation.
+    sources:
+    - *id005
+    - *id021
+    - *id013
+    - *id038
+    - *id022
+    - *id037
+    - *id020
+    - *id023
+    - *id028
+    evidence:
+    - source: *id038
+      value: 2
+      note: "not overly aggressive with non-cichlids, wary with cichlids"
+    - source: *id022
+      value: 2
+      note: "semi-aggressive, territorial while breeding"
+    - source: *id023
+      value: 2
+      note: Nest-area defence mapped to rubric
+    - source: *id005
+      value: 3
+      note: "General warning of increased intolerance, severity incompletely specified"
+  territory:
+    value:
+      size: large
+      breedingOnly: false
+    confidence: medium
+    rationale: "All proposals use a large territory. Generator, checker-a and checker-b set breedingOnly false;\
+      \ checker-c sets true because the clearest observation concerns brood defence. NVC also describes intolerance\
+      \ after acclimation without restricting it to spawning, and keeper accounts report adult exclusion outside\
+      \ a described brood. Retain a large defended area outside reproduction, with stronger defence during breeding.\
+      \ No measured territorial diameter is available."
+    sources:
+    - *id005
+    - *id021
+    - *id013
+    - *id022
+    - *id038
+    - *id020
+    - *id023
+    evidence:
+    - source: *id022
+      value: "territorial, especially breeding pairs"
+    - source: *id038
+      value: large territory behaviour inferred from killing tank mates
+    - source: *id023
+      value:
+        size: large
+        breedingOnly: true
+      note: Outer brood-defence area mapped to rubric
+  habitatZones:
+    value:
+    - rock
+    - sand
+    - wood
+    confidence: medium
+    rationale: "Generator and checker-a propose rock and sand; checker-b and checker-c also include wood. Capture\
+      \ reports establish boulders and mixed sand-rock beds. NCS describes submerged branches as cover and feeding\
+      \ or spawning structure, so wood is retained as a documented usable zone. It is an available shelter option\
+      \ rather than a requirement that every aquarium contain timber."
+    sources:
+    - *id006
+    - *id005
+    - *id010
+    - *id002
+    - *id021
+    - *id023
+    evidence:
+    - source: *id006
+      value:
+      - rock
+      - sand
+      note: Occupied collecting sites.
+    - source: *id005
+      value:
+      - rock
+      - sand
+      note: Recommended aquarium furnishings.
+    - source: *id002
+      value:
+      - rock
+      - sand
+      note: moderate to fast flowing waters
+    - source: *id010
+      value:
+      - rock
+      - sand
+      note: "river main channels, substrate cave breeding"
+    - source: *id006
+      value:
+      - rock
+      - sand
+      note: Gaitu boulders and San Pablo sand with rocks.
+    - source: *id021
+      value:
+      - rock
+      - wood
+      note: Rock grazing and shelter associated with submerged branches.
+    - source: *id005
+      value:
+      - rock
+      - sand
+    - source: *id023
+      value:
+      - rock
+      - wood
+  social:
+    value:
+      structure: pair
+    confidence: high
+    rationale: "All four profiles propose a pair. CRC identifies monogamous mating, and the association accounts\
+      \ describe paired spawning and care by both parents. Weak or changing pair bonds mean that an arbitrary male\
+      \ and female may still be incompatible. Juvenile groups used for pair formation are not the recommended permanent\
+      \ adult unit."
+    sources:
+    - *id010
+    - *id021
+    - *id005
+    - *id038
+    - *id037
+    - *id023
+    evidence:
+    - source: *id010
+      value:
+        structure: pair
+      note: Public mating summary.
+    - source: *id021
+      value:
+        structure: pair
+      note: Pair formation and biparental brood care.
+    - source: *id010
+      value: pair
+      note: monogamous
+    - source: *id038
+      value: pair
+      note: group mates killed each other
+    - source: *id010
+      value:
+        structure: pair
+    - source: *id021
+      value:
+        structure: pair
+    - source: *id023
+      value:
+        structure: pair
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: "The unanimous tally keeps false with four agreeing proposals and medium confidence. NVC warns of\
+      \ aggression without requiring permanent species-only housing; WetWebMedia accepts named robust mixed tankmates\
+      \ and other sources permit larger river-fish communities. Cichlidamerique also recommends dedicated housing\
+      \ in another passage, retained as contrary evidence. A pair aquarium is a useful management choice, while\
+      \ mixed housing remains conditional on extra space and compatible individuals."
+    sources:
+    - *id005
+    - *id013
+    - *id021
+    - *id022
+    - *id038
+    - *id037
+    - *id020
+    - *id028
+    - *id023
+    evidence:
+    - source: *id013
+      value: false
+      note: Allows robust cichlid communities in one passage.
+    - source: *id013
+      value: true
+      note: Elsewhere recommends a species tank because of aggression; advice is internally inconsistent.
+    - source: *id022
+      value: false
+      note: suggests large robust tank mates
+    - source: *id037
+      value: false
+      note: planned with another large river cichlid
+    - source: *id020
+      value: false
+      note: Similar-sized robust river fish are offered as companions.
+    - source: *id013
+      value: true
+      note: "One passage favors a dedicated aquarium, while another permits other large cichlids."
+    - source: *id028
+      value: false
+      note: Responder accepts named mixed-species tankmates
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: low
+    rationale: "All four full-profile proposals are the empty list, retained by the unanimous tally with low confidence.\
+      \ The entire curated group file contains no applicable membership, and the read accounts identify no verified\
+      \ named crossing pair. Searches of the cichlids.com archive for sieboldii returned no posts. Empty membership\
+      \ records the available evidence and does not establish reproductive isolation. Uncertain identification of\
+      \ older Costa Rican stocks is an additional reason to retain collection information rather than infer a crossing\
+      \ group."
+    sources:
+    - &id041
+      kind: database
+      title: "cichlids.com curated hybrid groups: data/species/hybrid-groups.yaml"
+      accessed: '2026-10-15'
+    - *id005
+    - *id001
+    - *id002
+    - *id010
+    - &id042
+      kind: database
+      title: "cichlids.com curated hybrid groups, data/species/hybrid-groups.yaml"
+    - *id033
+    evidence:
+    - source: *id041
+      value: []
+      note: Membership audit found no applicable curated group.
+    - source: *id001
+      value: []
+      note: no cross reported
+    - source: *id002
+      value: []
+      note: no cross reported
+    - source: *id042
+      value: []
+      note: No listed group includes this species.
+    - source: *id033
+      value: []
+      note: No defensible new named crossing pair identified in this independent search.
+    - source: *id042
+      value: []
+      note: No matching curated membership
+    - source: *id010
+      value: []
+      note: No cross identified in the accessible public summary
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+      - grey
+      - brown
+      - black
+      pattern: mixed
+    confidence: medium
+    rationale: All profiles propose mixed markings but differ in base colors. Generator lists grey/silver/black/white;
+      checker-a brown/black/white; checker-b grey/green/black; checker-c grey/brown/black/white. Grey to brown with
+      dark bars and a lateral marking best describes the ordinary adult ground color across the accounts. Silvery
+      or greenish highlights vary with lighting and locality; strong white contrast is especially associated with
+      female breeding dress rather than the typical adult male. Those alternative descriptions remain evidence.
+    sources:
+    - *id005
+    - *id021
+    - *id013
+    - *id036
+    - *id022
+    - *id020
+    - *id023
+    evidence:
+    - source: *id036
+      value: "brown, black, white"
+      note: "brown normally, black and white breeding dress"
+    - source: *id022
+      value: earth tones with iridescent blue or green
+    - source: *id013
+      value:
+        baseColors:
+        - grey
+        - black
+        - white
+        pattern: mixed
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: "Generator and checker-b propose hasty, whereas checker-a and checker-c propose normal. The French\
+      \ account describes strong appetite, but accepting many foods does not establish persistent competitive rushing.\
+      \ FishBase describes grazing and WetWebMedia reports selective acceptance. Normal is the provisional compatibility\
+      \ category; no comparative feeding-speed study was found and settled individuals may feed eagerly."
+    sources:
+    - *id013
+    - *id005
+    - *id002
+    - *id007
+    - *id028
+    - *id034
+    evidence:
+    - source: *id002
+      value: normal
+      note: inferred from grazing diet
+    - source: *id013
+      value: hasty
+      note: Inferred from the account of eager unrestricted food acceptance.
+    - source: *id034
+      value: normal
+      note: Inference from grazing and selective acceptance
+  minTank:
+    value:
+      volumeL: 540
+      lengthCm: 180
+      depthCm: 60
+    confidence: medium
+    rationale: "The proposal medians are 540 litres, 180 cm length and 60 cm depth: generator, checker-b and checker-c\
+      \ propose these values, while checker-a proposes 300 litres and 120 by 50 cm. NCS explicitly gives 540 litres\
+      \ and 160 cm; NVC recommends 180 cm for active adults and aggression management. Keep the 540 litre median\
+      \ and longer cited length for one compatible adult pair. The 60 cm depth is a practical footprint inference,\
+      \ also matched by the cited contest aquarium, rather than a measured species threshold. Retailer advice starts\
+      \ at about 284 litres but explicitly requires more for pairs; a planned 454 litre forum community is not a\
+      \ successful adult maintenance trial. French advice varies from 200 to about 500 litres and Aquarist Atlas\
+      \ gives roughly 400 litres, so the consistent association guidance has greater weight. Extra tankmates require\
+      \ additional space."
+    sources:
+    - *id005
+    - *id021
+    - *id013
+    - *id032
+    - *id022
+    - *id037
+    - *id020
+    - *id023
+    evidence:
+    - source: *id022
+      value:
+        volumeL: 284
+        lengthCm: null
+        depthCm: null
+      note: 75 gallons minimum
+    - source: *id037
+      value:
+        volumeL: 454
+        lengthCm: 150
+        depthCm: null
+      note: 120 gallon 5 ft tank for 5 fish
+    - source: *id021
+      value:
+        volumeL: 540
+        lengthCm: 160
+      note: "The register states volume and length, without depth."
+    - source: *id005
+      value:
+        lengthCm: 180
+      note: "The account supplies length, without volume or depth."
+    - source: *id023
+      value:
+        volumeL: 540
+        lengthCm: 160
+      note: Source supplies volume and length only
+    - source: *id005
+      value:
+        lengthCm: 180
+      note: Source supplies recommended length only
+  lifespanYears:
+    value:
+      min: 8
+      max: 12
+    confidence: low
+    rationale: "Every full-profile proposal is 8 to 12 years, so the median retains that estimate. No read source\
+      \ establishes a species-specific longevity series, and the French and German accounts call maximum age unknown.\
+      \ The range is inferred from similarly sized Central American cichlids and needs confirmation; agreement among\
+      \ agents is not independent lifespan evidence."
+    sources:
+    - *id032
+    - &id043
+      kind: model-knowledge
+      title: General knowledge of large Central American cichlids
+    - *id013
+    - *id033
+    - *id034
+    evidence:
+    - source: *id043
+      value:
+        min: 8
+        max: 12
+    - source: *id033
+      value:
+        min: 8
+        max: 12
+      note: "General keeping inference, not an observed lifespan series."
+    - source: *id034
+      value:
+        min: 8
+        max: 12
+      note: Group-level estimate only
+  breeding:
+    value: cave-spawner
+    confidence: high
+    rationale: "All four profiles agree. CRC identifies sheltered substrate spawning in cavities, and NVC and NCS\
+      \ describe recesses with female egg attendance and male perimeter defence. The broader term substrate spawning\
+      \ in other accounts is compatible with this cave preference."
+    sources:
+    - *id010
+    - *id021
+    - *id005
+    - *id036
+    - *id023
+    evidence:
+    - source: *id010
+      value: cave-spawner
+      note: Public breeding classification.
+    - source: *id021
+      value: cave-spawner
+      note: Preference for cavities when available.
+    - source: *id010
+      value: cave-spawner
+      note: substrate cave
+    - source: *id036
+      value: cave-spawner
+      note: pair raised fry
+    - source: *id010
+      value: cave-spawner
+    - source: *id021
+      value: cave-spawner
+    - source: *id023
+      value: cave-spawner
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: "Generator proposes demanding; checker-a, checker-b and checker-c propose moderate. CRC explicitly\
+      \ places the species with intermediate keepers and NCS gives medium difficulty. Large space, reliable oxygenation,\
+      \ a suitable diet and pair management require experience, but these needs do not establish the highest difficulty\
+      \ category. Moderate follows the explicit specialist classifications."
+    sources:
+    - *id010
+    - *id021
+    - *id005
+    - *id038
+    - *id023
+    evidence:
+    - source: *id010
+      value: moderate
+      note: intermediate aquarists
+    - source: *id038
+      value: demanding
+      note: keeper could not stop group members killing each other
+    - source: *id010
+      value: moderate
+    - source: *id023
+      value: moderate
+partners:
+  suitable:
+  - species: Cribroheros altifrons
+    reason: A similarly sized regional cichlid is a possible companion when it can keep a separate territory; reported
+      shared habitat is not an aquarium trial.
+    condition: "A substantially larger aquarium than the pair minimum, compatible individuals and a removal plan."
+  - species: Andinoacara coeruleopunctatus
+    reason: A robust regional cichlid found with sieboldii in collecting reports; supplementary animal food must
+      be delivered separately from the grazing staple.
+    condition: Large adults in a substantially larger community aquarium; monitor breeding defence.
+  - species: Hypostomus panamensis
+    reason: "A robust armored bottom fish reported from the regional assemblage; vegetable foods can suit both,\
+      \ but nest access may provoke conflict."
+    condition: A sufficiently grown individual with its own refuge in a larger aquarium; protect the cichlid nest.
+  unsuitable:
+  - species: Paracheirodon innesi
+    reason: Tiny size exposes it to opportunistic predation and territorial attacks.
+  - species: Symphysodon aequifasciatus
+    reason: Deliberate feeding and quiet resting requirements conflict with an assertive current-loving grazing
+      cichlid.
+  - species: Talamancaheros underwoodi
+    reason: A similar close relative creates identification and territorial problems in breeding stocks; no specific
+      hybrid cross is asserted.
+profile:
+  overview:
+    text: Talamancaheros sieboldii is a river cichlid whose understated everyday colors change strikingly when a
+      pair starts breeding. Adults spend much of their time around stones and graze the growth on hard surfaces.
+      Plan for a substantial aquarium and an established pair rather than a collection of rival adults. The older
+      names Tomocichla sieboldii and Cichlasoma sieboldii remain common in aquarium literature. Identification deserves
+      care because Costa Rican fish were historically included under this name and some modern sources separate
+      them as Talamancaheros underwoodi.
+    sources:
+    - *id001
+    - *id005
+    - *id007
+    - *id010
+    - *id012
+  habitat:
+    text: "This is a Pacific-slope river cichlid associated especially with stones, sand and flowing water. Panamanian\
+      \ collecting records include boulder channels and mixed sand-rock beds; association accounts also describe\
+      \ sheltered water and woody cover. The decided natural planning ranges are 24 to 30 C, pH 7 to 8.5, GH 1 to\
+      \ 2 and KH 1 to 3. These are provisional typical values anchored by capture-site observations. Wider official\
+      \ river and Costa Rican regional measurements remain evidence, but do not all coincide with identified adults\
+      \ under the current species concept. NVC reports breeding fish in the Caldera springs at 38 C, an exceptional\
+      \ thermal habitat that is excluded from routine aquarium targets. Older Costa Rican records need care because\
+      \ some modern references assign those populations to underwoodi."
+    sources:
+    - *id006
+    - *id007
+    - *id013
+    - *id005
+    - *id001
+    - *id009
+    - *id010
+    - *id011
+    - *id012
+    - *id002
+    - *id003
+    - *id004
+    - *id020
+    - *id008
+    - *id044
+    - *id045
+    - *id014
+    - *id015
+    - *id016
+    - *id017
+    - *id018
+    - *id019
+    - *id027
+    - *id030
+    - *id046
+    - *id031
+    - *id026
+  sizeAndGrowth:
+    text: "For aquarium planning, expect males around 20 cm and females around 15 cm when fully grown. Larger maxima\
+      \ occur in reference works, including a FishBase record of 25 cm standard length, which excludes the tail.\
+      \ That record is a different measure from a typical adult aquarium length. Juvenile size is therefore a poor\
+      \ guide to the space eventually needed. Sexual maturity can arrive well before maximum size. A lifespan of\
+      \ roughly eight to twelve years is only an estimate here because a documented species-specific longevity series\
+      \ was not found."
+    sources:
+    - *id005
+    - *id007
+    - *id021
+    - *id032
+  husbandry:
+    text: "Plan at least 540 litres with a 180 by 60 cm footprint for a compatible adult pair. Secure rounded stones,\
+      \ provide sheltered spawning sites and leave routes between retreats. Sand permits normal digging, while branches\
+      \ can add shelter. Use effective filtration, strong surface movement and regular water changes, with calmer\
+      \ resting places outside the main flow. The working tolerances are 22 to 30 C, pH 7 to 8.5, GH 1 to 20 and\
+      \ KH 1 to 8. These are practical ranges with uncertain endpoints, especially for hardness, rather than experimental\
+      \ failure thresholds. Very soft native water shows that high GH is unnecessary. Let shy arrivals settle quietly\
+      \ and check water quality and social pressure when feeding is poor."
+    sources:
+    - *id005
+    - *id021
+    - *id013
+    - *id007
+    - *id006
+    - *id002
+    - *id022
+    - *id014
+    - *id003
+    - *id020
+    - *id023
+    - *id024
+    - *id025
+    - *id026
+    - *id008
+    - *id028
+    - *id016
+    - *id018
+    - *id029
+    - *id030
+    - *id015
+    - *id032
+    - *id033
+    - *id034
+    - *id031
+    - *id019
+    - *id035
+    - *id037
+  socialBehavior:
+    text: "A settled pair is the recommended adult social unit. These fish may initially hide and later become much\
+      \ more assertive, so quiet behavior during the first week does not predict adult compatibility. Rival adults\
+      \ and unwanted partners can receive persistent attention. Arrange shelters with several exits and break sight\
+      \ lines across the aquarium. During reproduction the defended area becomes especially difficult for neighbors\
+      \ to use. Watch for a fish that cannot leave cover, feed or rest, and have a divider or a separate aquarium\
+      \ ready. Pair formation should be observed rather than assumed from sex alone."
+    sources:
+    - *id005
+    - *id021
+    - *id013
+  diet:
+    text: "Make vegetable-based prepared foods and grazing opportunities the foundation of the adult menu. Smooth\
+      \ stones with algae and biofilm offer useful feeding surfaces. Adults also take small animal foods, and young\
+      \ fish rely more heavily on aquatic insects in nature. Small supplementary portions of Daphnia or Artemia\
+      \ can provide variety without replacing the plant component. Their willingness to accept rich foods does not\
+      \ make those foods appropriate as the staple. Avoid mammal meat and repeated heavy feeds of worms. Digestive\
+      \ cautions in husbandry accounts support restraint, although the frequency and causes of bloat have not been\
+      \ measured."
+    sources:
+    - *id007
+    - *id010
+    - *id005
+    - *id021
+  breeding:
+    text: "Pairs typically select a sheltered hard surface, often inside a cavity, and clean it before spawning.\
+      \ Provide enough room for both adults to retreat from each other. The female tends the immediate nest while\
+      \ the male commonly patrols farther away, and both take part in protecting mobile young. Accounts describe\
+      \ clutches around 300 eggs, hatching after roughly two to three days under warm conditions. Development depends\
+      \ on temperature, so treat these as approximate timings. Free-swimming fry can receive appropriately sized\
+      \ Artemia and finely divided food. Other fish may need removal when brood defence intensifies."
+    sources:
+    - *id010
+    - *id021
+    - *id005
+    - *id013
+  sexing:
+    text: "Adult size is helpful because males generally grow noticeably larger than females. NCS also describes\
+      \ greater fin extension in males. During breeding the female commonly develops a sharply contrasting pale\
+      \ body with dark head and throat markings, but color changes with mood and locality and should not be used\
+      \ alone. Juveniles are harder to separate reliably, and a small individual is not automatically female. Photographs\
+      \ of older stocks may depict the broader historical species concept. Keep collection information with breeding\
+      \ fish instead of assigning a modern species name from a single color pattern."
+    sources:
+    - *id005
+    - *id021
+    - *id001
+  compatibility:
+    text: "Adults defend substantial areas and intensify that defence around a brood. A pair aquarium makes this\
+      \ easier to manage, while robust mixed communities are possible in larger space. Cribroheros altifrons, Andinoacara\
+      \ coeruleopunctatus and grown Hypostomus panamensis are conditional candidates suggested by habitat and husbandry\
+      \ context, not guaranteed aquarium combinations. Provide each companion with retreat space beyond the pair\
+      \ minimum and ensure the cichlid receives its vegetable-rich ration. Small fish and fry can be eaten, and\
+      \ delicate fish may lose access to food or shelter. No hybrid group is assigned on the available evidence;\
+      \ keep collection information with Talamancaheros breeding stocks because older names and identifications\
+      \ overlap."
+    sources:
+    - *id005
+    - *id013
+    - *id021
+    - *id032
+    - *id022
+    - *id038
+    - *id037
+    - *id020
+    - *id028
+    - *id023
+  problems:
+    text: "Common problems begin with crowding, an incompatible pair or water that becomes dirty despite looking\
+      \ clear. Chasing and panic flights can damage the skin; sharp decoration adds another route to injury. Husbandry\
+      \ accounts describe persistent sores in poorly suited aquarium conditions, so changes in skin condition deserve\
+      \ prompt attention. Reduced appetite can reflect adjustment, social pressure, water problems or illness and\
+      \ cannot identify a disease on its own. Check the environment and seek qualified help for persistent symptoms.\
+      \ Avoid overfeeding and a meat-heavy adult diet, and do not copy extreme hot-spring temperatures into routine\
+      \ care."
+    sources:
+    - *id005
+    - *id013
+provenance:
+  runs:
+  - role: generator
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: '2026-10-15'
+  disagreements:
+  - field: features.origin
+    proposals:
+    - by: generator
+      value:
+        continent: Central America
+        region: Pacific-slope rivers of Costa Rica and Panama in the Catalog of Fishes; Panamanian populations are
+          the secure basis of this profile
+        localities:
+        - Rio San Pablo
+        - Rio Chorcha
+        - Rio Gaitu
+        - Quebrada El Nance
+    - by: checker-a
+      value:
+        continent: Central America
+        region: Pacific slope of Costa Rica and western Panama (Rio Esparza to Rio Santa Maria)
+        waterbody: null
+        localities:
+        - Rio Grande de Terraba basin
+        - "Rio Rincon, Osa Peninsula"
+        - Tusubres River basin
+        - Rio Culebra
+    - by: checker-b
+      value:
+        continent: Central America
+        region: "Pacific slope rivers of Costa Rica and Panama, with taxonomic uncertainty over Costa Rican populations"
+        waterbody: null
+        localities:
+        - "Rio Grande, Panama"
+        - "Rio Gaitu, Panama"
+        - "Rio San Pablo, Panama"
+        - "Quebrada El Nance, Panama"
+        - "Rio Chorcha, Panama"
+    - by: checker-c
+      value:
+        continent: Central America
+        region: Pacific-slope rivers of Costa Rica and western Panama
+        localities:
+        - Rio Chiriqui Viejo
+        - Rio Gariche
+        - Rio Chorcha
+        - Rio Santa Maria
+    decision:
+      continent: Central America
+      region: "Pacific-slope rivers of Costa Rica and Panama in the Catalog of Fishes, with unresolved application\
+        \ of older Costa Rican records after the underwoodi split"
+      waterbody: null
+      localities:
+      - "Rio Gaitu, Panama"
+      - "Rio San Pablo, Panama"
+      - "Quebrada El Nance, Panama"
+      - "Rio Chorcha, Panama"
+    rationale: "All four full profiles propose a Pacific-slope distribution. Generator and checker-b qualify Costa\
+      \ Rican records after the underwoodi split; checker-a includes the Terraba, Rincon, Tusubres and Culebra records\
+      \ directly; checker-c includes Costa Rica and western Panama. Retain the Catalog distribution and explicitly\
+      \ qualify the older Costa Rican localities. NVC assigns those fish to underwoodi, while CRC retains the broader\
+      \ concept. Stalsberg provides explicit Panamanian capture records, which anchor the decided chemistry. Neither\
+      \ Catalog genus page supports a Caribbean distribution for sieboldii; Caribbean tuba and asfraci are separate\
+      \ species."
+  - field: features.temperatureC
+    proposals:
+    - by: generator
+      value:
+        min: 25
+        max: 30
+    - by: checker-a
+      value:
+        min: 23
+        max: 29
+    - by: checker-b
+      value:
+        min: 24
+        max: 30
+    - by: checker-c
+      value:
+        min: 24
+        max: 28
+    - by: tiebreaker-1
+      value:
+        min: 24
+        max: 30
+    - by: tiebreaker-2
+      value:
+        min: 24
+        max: 30
+    decision:
+      min: 24
+      max: 30
+    rationale: "The tally method is qualified-majority. The qualified-majority tally decides 24 to 30 C with medium\
+      \ confidence, from five agreeing votes out of six under the 1 C agreement rule. Proposals were generator 25\
+      \ to 30, checker-a 23 to 29, checker-b 24 to 30, checker-c 24 to 28, tiebreaker-1 24 to 30 and tiebreaker-2\
+      \ 24 to 30 C. Stalsberg recorded 25.2 to 29.8 C at capture sites and 24.5 C in nearby Santa Maria water; the\
+      \ monitoring tables give 24 to 28 and 24.5 to 27.6 C. The narrower typical interval does not encompass the\
+      \ full regional records: Rincon 22 to 32.5 C, Terraba 20.7 to 31.8 C, Golfo Dulce rivers 26 to 33 C and Sierpe\
+      \ 27.4 to 30.3 C. Those Costa Rican series have uncertain applicability after the taxonomic split and are\
+      \ not species-wide aquarium targets. The 20.57 to 21.4 C upper Gariche station lacks established species occupancy.\
+      \ NVC reports an exceptional 38 C Caldera spring population, which remains habitat context and is excluded\
+      \ from the natural target and tolerance."
+  - field: features.temperatureC.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 22
+        max: 30
+    - by: checker-a
+      value:
+        min: 20
+        max: 30
+    - by: checker-b
+      value:
+        min: 22
+        max: 30
+    - by: checker-c
+      value:
+        min: 22
+        max: 29
+    - by: tiebreaker-1
+      value:
+        min: 22
+        max: 30
+    - by: tiebreaker-2
+      value:
+        min: 22
+        max: 30
+    decision:
+      min: 22
+      max: 30
+    rationale: "The tally method is qualified-majority. The qualified-majority tally decides 22 to 30 C at medium\
+      \ confidence, with five of six votes agreeing within 1 C. Generator, checker-b, tiebreaker-1 and tiebreaker-2\
+      \ proposed 22 to 30 C; checker-a proposed the wider 20 to 30 C and checker-c 22 to 29 C. NCS recommends 22\
+      \ to 28 C, French breeding advice reaches 29 C and the natural capture readings reach 29.8 C, supporting inclusion\
+      \ of 30 C. NVC recommends a warmer minimum of 26 C. The wider 20.7 to 31.8 C Terraba field series retained\
+      \ by checker-a does not demonstrate chronic aquarium tolerance, especially under the older species concept.\
+      \ This working interval contains the natural range but its endpoints are less well documented than the central\
+      \ husbandry temperatures. The exceptional 38 C spring report is not generalized."
+  - field: features.ph
+    proposals:
+    - by: generator
+      value:
+        min: 7
+        max: 8.5
+    - by: checker-a
+      value:
+        min: 6.8
+        max: 8.0
+    - by: checker-b
+      value:
+        min: 7
+        max: 8.5
+    - by: checker-c
+      value:
+        min: 6.9
+        max: 7.7
+    - by: tiebreaker-1
+      value:
+        min: 7
+        max: 8.5
+    - by: tiebreaker-2
+      value:
+        min: 7
+        max: 8.5
+    decision:
+      min: 7
+      max: 8.5
+    rationale: "The tally method is qualified-majority. The qualified-majority decision is pH 7 to 8.5 at medium\
+      \ confidence, supported by four of six votes. Generator, checker-b and both tiebreakers proposed 7 to 8.5;\
+      \ checker-a proposed 6.8 to 8 and checker-c 6.9 to 7.7. Stalsberg measured 7 to 8.5 at occupied Panamanian\
+      \ sites. Independent Santa Maria sampling reaches 8.5, and lower Gariche stations give 7.45 to 8.41. These\
+      \ direct observations justify the upper endpoint beyond the general FishBase 7 to 8 summary. The decided range\
+      \ is narrower than Sierpe regional freshwater pH 6.51 to 8.78 and excludes the acidic end of the Rincon 6.62\
+      \ to 8.17 series. These are regional Costa Rican measurements with unresolved post-split species applicability.\
+      \ Upper Gariche pH 5.69 to 7.03 lacks established occupancy, and basin chemistry alone cannot establish a\
+      \ typical species range."
+  - field: features.ph.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 7
+        max: 8.5
+    - by: checker-a
+      value:
+        min: 6.5
+        max: 8.2
+    - by: checker-b
+      value:
+        min: 7
+        max: 8.5
+    - by: checker-c
+      value:
+        min: 6.9
+        max: 8
+    - by: tiebreaker-1
+      value:
+        min: 7
+        max: 8.5
+    - by: tiebreaker-2
+      value:
+        min: 6.5
+        max: 8.5
+    decision:
+      min: 7
+      max: 8.5
+    rationale: "The tally method is median. The tally uses the median method because only three of six proposals\
+      \ agree on one range, below the required four. Generator, checker-b and tiebreaker-1 proposed pH 7 to 8.5;\
+      \ checker-a proposed 6.5 to 8.2; checker-c 6.9 to 8; and tiebreaker-2 the wider 6.5 to 8.5. The median minima\
+      \ are 6.9 and 7, averaging 6.95 and rounding to 7.0; the median maxima are both 8.5. The decided 7 to 8.5\
+      \ contains the natural range and retains low confidence rather than allowing one narrow recommendation to\
+      \ set an intersection. NCS and NVC recommend 7 to 8, Fischlexikon explicitly gives 7 to 8.5, and WetWebMedia\
+      \ accepts pH 8. Fischlexikon has unrelated-species editing errors, so its advice is weak evidence. Equality\
+      \ with the natural range follows an explicit keeping recommendation rather than evidence of harm just outside\
+      \ it. The wider inferred 6.5 to 8.5 proposal and regional Sierpe 6.51 to 8.78 readings remain evidence but\
+      \ do not establish chronic health limits."
+  - field: features.ghDgh
+    proposals:
+    - by: generator
+      value:
+        min: 1
+        max: 2
+    - by: checker-a
+      value:
+        min: 1
+        max: 7
+    - by: checker-b
+      value:
+        min: 1
+        max: 2
+    - by: checker-c
+      value:
+        min: 0.8
+        max: 4
+    - by: tiebreaker-1
+      value:
+        min: 1
+        max: 2
+    - by: tiebreaker-2
+      value:
+        min: 1
+        max: 12
+    decision:
+      min: 1
+      max: 2
+    rationale: "The tally method is qualified-majority. The qualified-majority tally decides 1 to 2 dGH at medium\
+      \ confidence with four of six proposals agreeing within 2 dGH. Generator, checker-b and tiebreaker-1 proposed\
+      \ 1 to 2; checker-a 1 to 7; checker-c 0.8 to 4; and tiebreaker-2 1 to 12. Stalsberg directly measured 1 or\
+      \ 2 dH at four identified occupied Panamanian sites. These species-linked readings anchor the decision, but\
+      \ one collector and unspecified test resolution limit precision. The decided range is narrower than the official\
+      \ river monitoring envelopes: Chiriqui Viejo 1.57 to 3.81 and Santa Maria 0.90 to 2.19 dGH. It is also narrower\
+      \ than Rincon 2.38 to 6.88, regional Golfo Dulce 4.80 to 11.99 and Sierpe freshwater 2.74 to 9.56 dGH. Those\
+      \ broader samples are not measurements beside taxonomically verified adults, and the Costa Rican studies predate\
+      \ the underwoodi split. FishBase 9 to 19 and Cichlidamerique 10 to 20 lack comparable site metadata. All are\
+      \ retained as dissenting evidence. The decision describes the provisional occupied-site core rather than a\
+      \ demonstrated boundary for every population; the much broader tolerance prevents treating harder aquarium\
+      \ water as automatically unsuitable."
+  - field: features.ghDgh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 1
+        max: 20
+    - by: checker-a
+      value:
+        min: 1
+        max: 20
+    - by: checker-b
+      value:
+        min: 1
+        max: 19
+    - by: checker-c
+      value:
+        min: 0.8
+        max: 19
+    decision:
+      min: 1
+      max: 20
+    rationale: "The tally method is unanimous. The tally treats all four proposals as agreeing within 2 dGH and\
+      \ decides 1 to 20 dGH by its unanimous method, retaining low confidence. Generator and checker-a proposed\
+      \ 1 to 20; checker-b 1 to 19; checker-c 0.8 to 19. The unrounded median upper bound is 19.5, rounded to 20.\
+      \ The wider checker-c lower bound of 0.8 and Santa Maria field minimum of about 0.9 remain evidence. French\
+      \ breeding advice gives 5 to 19 dGH, FishBase gives 9 to 19, retailers give 8 to 20 and WetWebMedia accepts\
+      \ a tank at 10. Native capture sites at 1 to 2 require inclusion of very soft water. Together these support\
+      \ a broad provisional keeping interval rather than a controlled long-term tolerance series. Higher hardness\
+      \ is not required, and the exact endpoints remain uncertain."
+  - field: features.khDkh
+    proposals:
+    - by: generator
+      value:
+        min: 1
+        max: 3
+    - by: checker-a
+      value:
+        min: 2
+        max: 7
+    - by: checker-b
+      value:
+        min: 1
+        max: 3
+    - by: checker-c
+      value:
+        min: 1.4
+        max: 3.5
+    - by: tiebreaker-1
+      value:
+        min: 1
+        max: 3
+    - by: tiebreaker-2
+      value:
+        min: 2
+        max: 14
+    decision:
+      min: 1
+      max: 3
+    rationale: "The tally method is qualified-majority. The settled tally decides 1 to 3 dKH at medium confidence,\
+      \ with four of six proposals agreeing under the 2 dKH rule. Generator, checker-b and tiebreaker-1 proposed\
+      \ 1 to 3; checker-a 2 to 7; checker-c 1.4 to 3.5; and tiebreaker-2 2 to 14. Stalsberg directly recorded KH\
+      \ 1 to 3 at occupied Panamanian sites. Official Panamanian alkalinity measurements convert to 1.40 to 3.47\
+      \ dKH in Chiriqui Viejo and 1.68 to 2.30 in Santa Maria, extending slightly above the decided upper endpoint.\
+      \ The decided range is much narrower than regional Rincon bicarbonate-equivalent 2.49 to 7.38 and Golfo Dulce\
+      \ alkalinity-equivalent 4.79 to 13.91 dKH. These Costa Rican basin proxies do not establish the chemistry\
+      \ of the identified Panamanian capture sites and have uncertain applicability after the species split. Retain\
+      \ their wider ranges without treating GH or conductivity as KH. The chosen core is provisional rather than\
+      \ proof that every population occupies only this alkalinity. Natural KH intentionally has no verification\
+      \ object."
+  - field: features.khDkh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 1
+        max: 8
+    - by: checker-a
+      value:
+        min: 2
+        max: 14
+    - by: checker-b
+      value:
+        min: 1
+        max: 8
+    - by: checker-c
+      value:
+        min: 1
+        max: 10
+    - by: tiebreaker-1
+      value:
+        min: 1
+        max: 8
+    - by: tiebreaker-2
+      value:
+        min: 1
+        max: 16
+    decision:
+      min: 1
+      max: 8
+    rationale: "The tally method is qualified-majority. The qualified-majority tally decides 1 to 8 dKH at low confidence,\
+      \ with four of six proposals agreeing within 2 dKH. Generator, checker-b and tiebreaker-1 proposed 1 to 8;\
+      \ checker-a 2 to 14; checker-c 1 to 10; and tiebreaker-2 the wider 1 to 16. No read source establishes numerical\
+      \ chronic KH limits. The decision is an explicitly inferred working interval from neutral to alkaline pH advice,\
+      \ soft native water and keeping practice, with allowance beyond the natural 1 to 3 dKH. WetWebMedia accepts\
+      \ a reported tank at KH 7. The contest aquarium at KH 12 supports a wider proposal but reports neither longitudinal\
+      \ health nor secure identity under the modern species concept, and its habitat chemistry was not measured.\
+      \ The wider Rincon 2.49 to 7.38 and regional Golfo Dulce 4.79 to 13.91 dKH records are field context, not\
+      \ tolerance trials for identified Panamanian stock. The exact 8 dKH ceiling is an estimate rather than a demonstrated\
+      \ injury threshold."
+  - field: features.maxSizeCm
+    proposals:
+    - by: generator
+      value:
+        male: 20
+        female: 15
+    - by: checker-a
+      value:
+        male: 23
+        female: 18
+    - by: checker-b
+      value:
+        male: 20
+        female: 15
+    - by: checker-c
+      value:
+        male: 20
+        female: 15
+    decision:
+      male: 20
+      female: 15
+    rationale: "The proposal medians are male 20 and female 15 cm: generator, checker-b and checker-c proposed 20/15,\
+      \ while checker-a proposed 23/18. NVC explicitly reports usual aquarium adults near 20/15, matching the medians.\
+      \ FishBase gives a 25 cm standard-length record and NCS an unsexed 25 cm maximum, which are not sex-specific\
+      \ typical aquarium sizes. Cichlidamerique claims males over 30 and females 20 cm but also describes a 20 cm\
+      \ male elsewhere. The larger conflicting claims and breeder estimates of 8 to 9 inches remain evidence; they\
+      \ do not replace the clearer typical adult sizes."
+  - field: features.predation
+    proposals:
+    - by: generator
+      value: 1
+    - by: checker-a
+      value: 0
+    - by: checker-b
+      value: 1
+    - by: checker-c
+      value: 1
+    - by: tiebreaker-1
+      value: 1
+    - by: tiebreaker-2
+      value: 1
+    decision: 1
+    rationale: "The tally method is qualified-majority. Keep the qualified-majority tally decision of level 1 at\
+      \ medium confidence: generator, checker-b, checker-c and both tiebreakers proposed 1, while checker-a proposed\
+      \ 0. NCS explicitly includes small fish among secondary foods, supporting occasional consumption of fry or\
+      \ very small fish. FishBase, CRC and the older Terraba study emphasize adult grazing and were mapped to 0\
+      \ in dissenting evidence, but a plant-dominated diet does not exclude occasional fish consumption. Cichlidamerique\
+      \ repeats the small-fish observation and may share material with NCS, so it is not counted as an independent\
+      \ feeding study. Level 1 is a rubric interpretation; no source measures its 2 cm prey boundary."
+  - field: features.diet
+    proposals:
+    - by: generator
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+        foods:
+        - Algae and biofilm on rounded stones
+        - Vegetable-based cichlid pellets or flakes
+        - Leafy vegetables
+        - Small supplementary portions of Daphnia or Artemia
+    - by: checker-a
+      value:
+        type: aufwuchs
+        bloatSensitive: false
+        foods:
+        - algae
+        - aufwuchs
+        - plant matter
+        - aquatic insects
+        - pellets
+    - by: checker-b
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+        foods:
+        - Attached algae
+        - Periphyton
+        - Vegetable-rich prepared foods
+        - "Small aquatic invertebrates, especially for juveniles"
+    - by: checker-c
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+        foods:
+        - algae and biofilm
+        - vegetable-based cichlid pellets
+        - spirulina foods
+        - small portions of aquatic invertebrates
+    - by: tiebreaker-1
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+    - by: tiebreaker-2
+      value:
+        type: aufwuchs
+        bloatSensitive: true
+    decision:
+      type: aufwuchs
+      bloatSensitive: true
+      foods:
+      - Algae and biofilm on rounded stones
+      - Vegetable-based cichlid pellets or flakes
+      - Leafy vegetables
+      - Small supplementary portions of Daphnia or Artemia
+    rationale: "The tally method is qualified-majority. Keep the qualified-majority tally decision of aufwuchs with\
+      \ bloatSensitive true at medium confidence. Generator, checker-b, checker-c and both tiebreakers proposed\
+      \ this combination; checker-a proposed aufwuchs with the flag false. Food lists differ in wording but all\
+      \ include plant material and limited animal foods. FishBase and CRC support adult algal grazing, while juveniles\
+      \ rely more on aquatic insects. NVC recommends vegetable-dominated adult feeding and warns of intestinal problems\
+      \ with rich animal foods. The sensitivity flag interprets this species-specific caution; it is less certain\
+      \ than the diet type and is not a diagnosed or experimentally established protein-induced bloat syndrome.\
+      \ Omnivore labels from retailers, Fischlexikon, Cichlidamerique and the FishBase ecology table are retained\
+      \ as evidence of broader food acceptance, which does not establish an animal-rich adult staple."
+  - field: features.aggressionHeterospecific
+    proposals:
+    - by: generator
+      value: 3
+    - by: checker-a
+      value: 2
+    - by: checker-b
+      value: 3
+    - by: checker-c
+      value: 2
+    decision: 2
+    rationale: Generator and checker-b propose 3; checker-a and checker-c propose 2. NCS describes perimeter defence
+      and WetWebMedia accepts robust mixed tankmates. NVC warns of increased intolerance without establishing attacks
+      beyond the defended area in a suitable aquarium. Territorial chasing at level 2 is the better-supported baseline;
+      the level 3 warning remains evidence and individuals or breeding pairs can require separation.
+  - field: features.territory
+    proposals:
+    - by: generator
+      value:
+        size: large
+        breedingOnly: false
+    - by: checker-a
+      value:
+        size: large
+        breedingOnly: false
+    - by: checker-b
+      value:
+        size: large
+        breedingOnly: false
+    - by: checker-c
+      value:
+        size: large
+        breedingOnly: true
+    decision:
+      size: large
+      breedingOnly: false
+    rationale: "All proposals use a large territory. Generator, checker-a and checker-b set breedingOnly false;\
+      \ checker-c sets true because the clearest observation concerns brood defence. NVC also describes intolerance\
+      \ after acclimation without restricting it to spawning, and keeper accounts report adult exclusion outside\
+      \ a described brood. Retain a large defended area outside reproduction, with stronger defence during breeding.\
+      \ No measured territorial diameter is available."
+  - field: features.habitatZones
+    proposals:
+    - by: generator
+      value:
+      - rock
+      - sand
+    - by: checker-a
+      value:
+      - rock
+      - sand
+    - by: checker-b
+      value:
+      - rock
+      - sand
+      - wood
+    - by: checker-c
+      value:
+      - rock
+      - sand
+      - wood
+    decision:
+    - rock
+    - sand
+    - wood
+    rationale: "Generator and checker-a propose rock and sand; checker-b and checker-c also include wood. Capture\
+      \ reports establish boulders and mixed sand-rock beds. NCS describes submerged branches as cover and feeding\
+      \ or spawning structure, so wood is retained as a documented usable zone. It is an available shelter option\
+      \ rather than a requirement that every aquarium contain timber."
+  - field: features.coloration
+    proposals:
+    - by: generator
+      value:
+        baseColors:
+        - grey
+        - silver
+        - black
+        - white
+        pattern: mixed
+    - by: checker-a
+      value:
+        baseColors:
+        - brown
+        - black
+        - white
+        pattern: mixed
+    - by: checker-b
+      value:
+        baseColors:
+        - grey
+        - green
+        - black
+        pattern: mixed
+    - by: checker-c
+      value:
+        baseColors:
+        - grey
+        - brown
+        - black
+        - white
+        pattern: mixed
+    decision:
+      baseColors:
+      - grey
+      - brown
+      - black
+      pattern: mixed
+    rationale: All profiles propose mixed markings but differ in base colors. Generator lists grey/silver/black/white;
+      checker-a brown/black/white; checker-b grey/green/black; checker-c grey/brown/black/white. Grey to brown with
+      dark bars and a lateral marking best describes the ordinary adult ground color across the accounts. Silvery
+      or greenish highlights vary with lighting and locality; strong white contrast is especially associated with
+      female breeding dress rather than the typical adult male. Those alternative descriptions remain evidence.
+  - field: features.feedingSpeed
+    proposals:
+    - by: generator
+      value: hasty
+    - by: checker-a
+      value: normal
+    - by: checker-b
+      value: hasty
+    - by: checker-c
+      value: normal
+    decision: normal
+    rationale: "Generator and checker-b propose hasty, whereas checker-a and checker-c propose normal. The French\
+      \ account describes strong appetite, but accepting many foods does not establish persistent competitive rushing.\
+      \ FishBase describes grazing and WetWebMedia reports selective acceptance. Normal is the provisional compatibility\
+      \ category; no comparative feeding-speed study was found and settled individuals may feed eagerly."
+  - field: features.minTank
+    proposals:
+    - by: generator
+      value:
+        volumeL: 540
+        lengthCm: 180
+        depthCm: 60
+    - by: checker-a
+      value:
+        volumeL: 300
+        lengthCm: 120
+        depthCm: 50
+    - by: checker-b
+      value:
+        volumeL: 540
+        lengthCm: 180
+        depthCm: 60
+    - by: checker-c
+      value:
+        volumeL: 540
+        lengthCm: 180
+        depthCm: 60
+    decision:
+      volumeL: 540
+      lengthCm: 180
+      depthCm: 60
+    rationale: "The proposal medians are 540 litres, 180 cm length and 60 cm depth: generator, checker-b and checker-c\
+      \ propose these values, while checker-a proposes 300 litres and 120 by 50 cm. NCS explicitly gives 540 litres\
+      \ and 160 cm; NVC recommends 180 cm for active adults and aggression management. Keep the 540 litre median\
+      \ and longer cited length for one compatible adult pair. The 60 cm depth is a practical footprint inference,\
+      \ also matched by the cited contest aquarium, rather than a measured species threshold. Retailer advice starts\
+      \ at about 284 litres but explicitly requires more for pairs; a planned 454 litre forum community is not a\
+      \ successful adult maintenance trial. French advice varies from 200 to about 500 litres and Aquarist Atlas\
+      \ gives roughly 400 litres, so the consistent association guidance has greater weight. Extra tankmates require\
+      \ additional space."
+  - field: features.beginnerSuitability
+    proposals:
+    - by: generator
+      value: demanding
+    - by: checker-a
+      value: moderate
+    - by: checker-b
+      value: moderate
+    - by: checker-c
+      value: moderate
+    decision: moderate
+    rationale: "Generator proposes demanding; checker-a, checker-b and checker-c propose moderate. CRC explicitly\
+      \ places the species with intermediate keepers and NCS gives medium difficulty. Large space, reliable oxygenation,\
+      \ a suitable diet and pair management require experience, but these needs do not establish the highest difficulty\
+      \ category. Moderate follows the explicit specialist classifications."
