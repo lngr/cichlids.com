@@ -1,0 +1,3603 @@
+schemaVersion: 1
+id: nandopsis-haitiensis
+legacyIds:
+  - 759
+  - 761
+status: described
+taxonomy:
+  validName: Nandopsis haitiensis
+  genus: Nandopsis
+  species: haitiensis
+  author: "(Tee-Van, 1935)"
+  source: &id001
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: Nandopsis species and synonyms"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Nandopsis"
+    accessed: "2026-10-15"
+    archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-ee194369/2026-10-14T101657Z
+  synonyms:
+    - name: Cichlasoma haitiensis
+      note: Original combination described by Tee-Van in 1935.
+    - name: Cichlasoma haitiense
+      note: Grammatically corrected spelling of the original combination.
+    - name: Cichlosoma vombergi
+      note: Original spelling and combination of the junior synonym described by Ladiges in 1938.
+    - name: Cichlosoma vombergae
+      note: Emended spelling used in the public CRC synonym record.
+    - name: Cichlasoma vombergae
+      note: Later combination of the emended junior synonym.
+    - name: Nandopsis vombergae
+      note: Former species combination now treated as a synonym in Catalog of Fishes.
+    - name: Nandopsis vombergi
+      note: Legacy catalog combination of the junior synonym.
+  legacyNames:
+    - Nandopsis haitiensis
+    - Nandopsis vombergi
+  note: "Catalog of Fishes accepts Nandopsis haitiensis (Tee-Van, 1935) and places the 1938 vombergi name,\
+    \ later emended to vombergae, in synonymy following Chakrabarty (2006). Both legacy entries 759 and 761\
+    \ therefore map to this profile. The legacy and accepted genera are both Nandopsis, covered by one genus\
+    \ query. The public CRC synonym record agrees. Atlas states that the catalog still treats vombergae as\
+    \ valid; reading the catalog contradicts that claim. The expanded synonym list unites original spellings,\
+    \ corrected spellings and historical combinations rather than treating them as separate species."
+names:
+  trade:
+    en:
+      - Haitian cichlid
+      - Black nasty
+      - Odo
+    de:
+      - Haitibuntbarsch
+variants:
+  - name: Rio Yaque del Sur
+    kind: locality
+    note: Historical type area of the junior synonym vombergi/vombergae; not a separate species or a standardized
+      colour strain.
+  - name: Etang Saumatre
+    kind: locality
+    note: Type locality of haitiensis; lagoon-origin fish should retain reliable locality information.
+features:
+  origin:
+    value:
+      continent: Central America
+      region: "Hispaniola, Haiti and the Dominican Republic"
+      waterbody: null
+      localities:
+        - Etang Saumatre
+        - Lake Miragoane
+        - Rio Guayamouco
+        - Rio Yaque del Sur
+        - Rio Yaque del Norte
+        - Rio Nizao
+        - Rio Acapulco
+        - Rio Jaina tributary
+    confidence: high
+    rationale: "All runs agree on Hispaniolan endemism in Haiti and the Dominican Republic; their locality\
+      \ lists describe different documented parts of the distribution. Catalog of Fishes establishes Etang\
+      \ Saumatre as the type locality and Rio Yaque del Sur as the origin of the junior synonym. The Yaque\
+      \ survey, Stalsberg and Ferdenzi document Dominican freshwater sites, Beerlink records Haitian and northern\
+      \ Dominican rivers, and Citizen Conservation records Miragoane. The merged list is illustrative rather\
+      \ than exhaustive. Central America is the schema's regional category for the Greater Antilles. No named\
+      \ African-lake preset applies. Rican's accessible abstract and the biogeography paper provide lineage\
+      \ context; the two Limia abstracts provide lake context, not species-specific water limits."
+    sources:
+      - *id001
+      - &id003
+        kind: database
+        title: "FishBase: Nandopsis haitiensis species summary"
+        url: "https://www.fishbase.se/summary/Nandopsis-haitiensis.html"
+        accessed: "2026-10-15"
+        archived: fishbase.se/summary/nandopsis-haitiensis.html/2026-10-15T053217Z
+      - &id018
+        kind: literature
+        title: "Beerlink: Nandopsis haitiensis, Nederlandse Vereniging van Cichlidenliefhebbers"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/nandopsis-haitiensis-tee-van-1935"
+        accessed: "2026-10-15"
+        archived: nvcweb.nl/visbeschrijvingen/midden-amerika/nandopsis-haitiensis-tee-van-1935/2026-10-15T053321Z
+      - &id066
+        kind: literature
+        title: "Rican et al. (2016): Diversity and evolution of Middle American cichlids, repository abstract\
+          \ only"
+        url: "https://doi.org/10.3897/vz.66.e31534"
+        accessed: "2026-10-15"
+        archived: doi.org/10.3897_vz.66.e31534/2026-10-13T000529Z
+      - &id002
+        kind: literature
+        title: Peces de la cuenca del rio Yaque del Sur de la Republica Dominicana
+        url: "https://doi.org/10.22206/cys.2002.v27i1.pp92-116"
+        accessed: "2026-10-15"
+        archived: doi.org/10.22206_cys.2002.v27i1.pp92-116/2026-10-15T053712Z
+      - &id004
+        kind: literature
+        title: "Stalsberg: Oh, Island in the Sun. The Dominican Republic. Collecting observations from July\
+          \ 1994"
+        url: "https://web.archive.org/web/20250000000000/https://cichlidae.com/article.php?id=55"
+        accessed: "2026-10-15"
+        archived: web.archive.org/web/20250000000000/https_/cichlidae.com/article.php/q-697761c4/2026-10-15T053533Z
+      - &id019
+        kind: database
+        title: "Beerlink: Nandopsis haitiensis. AquaInfo and Nederlandse Vereniging van Cichlidenliefhebbers"
+        url: "https://aquainfo.nl/en/nandopsis-haitiensis/"
+        accessed: "2026-10-15"
+        archived: aquainfo.nl/en/nandopsis-haitiensis/2026-10-15T053311Z
+      - kind: database
+        title: "Cichlid Room Companion: archived public nomenclatural section for Nandopsis haitiensis"
+        url: "https://web.archive.org/web/20250000000000/https://cichlidae.com/species.php?id=218"
+        accessed: "2026-10-15"
+        archived: web.archive.org/web/20250000000000/https_/cichlidae.com/species.php/q-647831f7/2026-10-15T053604Z
+      - &id049
+        kind: database
+        title: "Smithsonian STRI: Nandopsis haitiensis"
+        url: "https://biogeodb.stri.si.edu/caribbean/en/thefishes/species/4711"
+        accessed: "2026-10-15"
+        archived: biogeodb.stri.si.edu/caribbean/en/thefishes/species/4711/2026-10-15T053354Z
+      - &id020
+        kind: literature
+        title: Beerlink. Nandopsis haitiensis. NVC article republished by AquaInfo.
+        url: "https://aquainfo.nl/en/nandopsis-haitiensis/"
+        accessed: "2026-10-15"
+        archived: aquainfo.nl/en/nandopsis-haitiensis/2026-10-15T053311Z
+      - &id005
+        kind: literature
+        title: "Citizen Conservation (2024). Limia islai husbandry guidelines: Lake Miragoane habitat measurements\
+          \ and accompanying fishes."
+        url: "https://citizen-conservation.org/wp-content/uploads/2024/08/CC-Breeding-Guidelines_Limia-islai_07-2024-1.pdf"
+        accessed: "2026-10-15"
+        archived: citizen-conservation.org/wp-content/uploads/2024/08/cc-breeding-guidelines_limia-islai_07-2024-1.pdf/2026-10-15T053226Z
+      - kind: literature
+        title: Biogeography of Greater Antillean freshwater fishes (2024). OpenAlex text is the preprint version.
+        url: "https://doi.org/10.1111/brv.13050"
+        accessed: "2026-10-15"
+        archived: doi.org/10.1111_brv.13050/2026-10-15T053448Z
+      - kind: literature
+        title: Rodriguez-Silva et al. (2020). Limia mandibularis from Lake Miragoane. Abstract and references
+          only.
+        url: "https://doi.org/10.11646/zootaxa.4768.3.6"
+        accessed: "2026-10-15"
+        archived: doi.org/10.11646_zootaxa.4768.3.6/2026-10-15T053310Z
+      - kind: literature
+        title: Rodriguez-Silva et al. (2021). Annotated list of livebearing fishes from Lake Miragoane. Abstract
+          and references only.
+        url: "https://doi.org/10.33800/nc.vi17.249"
+        accessed: "2026-10-15"
+        archived: doi.org/10.33800_nc.vi17.249/2026-10-15T053310Z
+      - &id044
+        kind: archive
+        title: cichlids.com forum thread 26222
+        url: "https://www.cichlids.com/disc/read.php?1,26222"
+        accessed: "2026-10-15"
+      - &id058
+        kind: archive
+        title: cichlids.com forum thread 965
+        url: "https://www.cichlids.com/disc/read.php?1,965"
+        accessed: "2026-10-15"
+      - &id056
+        kind: archive
+        title: cichlids.com forum thread 11864
+        url: "https://www.cichlids.com/disc/read.php?1,11864"
+        accessed: "2026-10-15"
+      - kind: archive
+        title: cichlids.com forum thread 35701
+        url: "https://www.cichlids.com/disc/read.php?1,35701"
+        accessed: "2026-10-15"
+      - kind: archive
+        title: cichlids.com forum thread 54656
+        url: "https://www.cichlids.com/disc/read.php?1,54656"
+        accessed: "2026-10-15"
+    evidence:
+      - source:
+          kind: catalog-of-fishes
+          title: "Eschmeyer's Catalog of Fishes, species list of the genus Nandopsis"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Nandopsis"
+          accessed: "2026-10-15"
+          archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-ee194369/2026-10-14T101657Z
+        value: "Hispaniola, Dominican Republic and Haiti"
+      - source: &id010
+          kind: database
+          title: "FishBase: Nandopsis haitiensis summary"
+          url: "https://www.fishbase.se/summary/Nandopsis-haitiensis.html"
+          accessed: "2026-10-15"
+          archived: fishbase.se/summary/nandopsis-haitiensis.html/2026-10-15T053217Z
+        value: "Hispaniola, lakes and streams"
+      - source: *id002
+        value: found in 13 of 20 stations of the Yaque del Sur basin
+  temperatureC:
+    value:
+      min: 24
+      max: 33
+    confidence: medium
+    rationale: "The qualified-majority tally retains 24-33 C, with five of six agreeing votes. generator proposed\
+      \ {\"min\": 24, \"max\": 32.5}; checker-a proposed {\"min\": 24, \"max\": 30}; checker-b proposed {\"\
+      min\": 24, \"max\": 33}; checker-c proposed {\"min\": 25, \"max\": 33}; tiebreaker-1 proposed {\"min\"\
+      : 24, \"max\": 33}; tiebreaker-2 proposed {\"min\": 24, \"max\": 33}. Ferdenzi reports 33 C at the Rio\
+      \ Jaina collecting creek. Stalsberg measured 26-32.5 C at occupied freshwater sites and 24 C at a nearby\
+      \ Galvan pool of the same regional water type. Citizen Conservation adds 25-26 C at Miragoane. FishBase\
+      \ lists 24-27 C without a locality-resolved series. Direct collecting measurements outweigh that general\
+      \ interval. The result describes different places and sampling times, with limited seasonal coverage;\
+      \ the hot endpoints are not established year-round aquarium targets. Enriquillo hypersaline-lake data\
+      \ remain contrary regional context and do not set either endpoint. The Yaque survey mean and standard\
+      \ deviation are not observed minimum and maximum temperatures."
+    sources:
+      - &id006
+        kind: literature
+        title: "Stalsberg (1994, published 1997): Oh, Island in the Sun. The Dominican Republic, collecting\
+          \ report"
+        url: "https://cichlidae.com/article.php?id=8eOTftQ8gHUFyWvdj3Xtew"
+        accessed: "2026-10-15"
+        archived: cichlidae.com/article.php/q-5c710445/2026-10-15T054225Z
+      - &id007
+        kind: literature
+        title: "Citizen Conservation (2024): Basic Information and Husbandry Guidelines for Limia islai, section\
+          \ 3.3 habitat measurements"
+        url: "https://citizen-conservation.org/wp-content/uploads/2024/11/CC-Breeding-Guidelines_Limia-islai_07-2024.pdf"
+        accessed: "2026-10-15"
+        archived: citizen-conservation.org/wp-content/uploads/2024/11/cc-breeding-guidelines_limia-islai_07-2024.pdf/2026-10-15T053322Z
+      - *id003
+      - *id002
+      - &id008
+        kind: literature
+        title: Elevational gradients do not affect thermal tolerance at local scale in populations of livebearing
+          fishes of the genus Limia
+        url: "https://doi.org/10.33800/nc.vi18.264"
+        accessed: "2026-10-15"
+        archived: doi.org/10.33800_nc.vi18.264/2026-10-15T053717Z
+      - &id009
+        kind: literature
+        title: Physicochemical analysis of Lake Enriquillo in Dominican Republic
+        url: "https://doi.org/10.23954/osj.v1i4.638"
+        accessed: "2026-10-15"
+        archived: doi.org/10.23954_osj.v1i4.638/2026-10-15T053627Z
+      - *id004
+      - &id011
+        kind: literature
+        title: "Ferdenzi (1989): A spawning of Nandopsis haitiensis. Buntbarsche Bulletin 133, reproduced by\
+          \ AquaInfo"
+        url: "https://aquainfo.nl/en/a-spawning-of-nandopsis-haitiensis/"
+        accessed: "2026-10-15"
+        archived: aquainfo.nl/en/a-spawning-of-nandopsis-haitiensis/2026-10-15T053247Z
+      - *id005
+      - &id012
+        kind: literature
+        title: Ferdenzi (1989). Breeding Nandopsis haitiensis. Buntbarsche Bulletin 133. Spanish republication
+          by AquaInfo.
+        url: "https://aquainfo.nl/es/la-cria-de-nandopsis-haitiensis/"
+        accessed: "2026-10-15"
+        archived: aquainfo.nl/es/la-cria-de-nandopsis-haitiensis/2026-10-15T053224Z
+      - &id013
+        kind: database
+        title: "Fishipedia: Nandopsis haitiensis"
+        url: "https://www.fishipedia.fr/fr/poissons/nandopsis-haitiensis"
+        accessed: "2026-10-15"
+        archived: fishipedia.fr/fr/poissons/nandopsis-haitiensis/2026-10-15T053244Z
+      - &id016
+        kind: literature
+        title: "Citizen Conservation (2024). Basic Information and Husbandry Guidelines for Limia islai, section\
+          \ 3.3, Lake Miragoane habitat measurements."
+        url: "https://citizen-conservation.org/wp-content/uploads/2024/08/CC-Breeding-Guidelines_Limia-islai_07-2024.pdf"
+        accessed: "2026-10-15"
+        archived: citizen-conservation.org/wp-content/uploads/2024/08/cc-breeding-guidelines_limia-islai_07-2024.pdf/2026-10-15T054555Z
+      - &id017
+        kind: database
+        title: "Fishipedia, Haitian cichlid species record, content marked provisional"
+        url: "https://www.fishi-pedia.com/fishes/nandopsis-haitiensis"
+        accessed: "2026-10-15"
+        archived: fishi-pedia.com/fishes/nandopsis-haitiensis/2026-10-15T054641Z
+    evidence:
+      - source: *id006
+        value:
+          min: 24
+          max: 32.5
+        note: "July 1994: occupied stream west of Santo Domingo 32.5 C, Rio Nizao 29 to 30 C, Palo Leche 30\
+          \ C, Rio Acapulco 26 C; regional Galvan pond 24 C."
+      - source: *id007
+        value:
+          min: 25
+          max: 26
+        note: "Lake Miragoane shore observations, not Limia aquarium recommendations."
+      - source: *id003
+        value:
+          min: 24
+          max: 27
+        note: "Environment database range, not a site-specific field series."
+      - source: *id002
+        value:
+          min: 23
+          max: 28
+        note: "mean 25.5 C, SD 2.6, all stations of the survey"
+      - source: *id008
+        value:
+          min: 25
+          max: 27
+        note: "usual origin temperature of Hispaniolan Limia, same region"
+      - source: *id009
+        value:
+          min: 27.9
+          max: 31.7
+        note: "hypersaline lake, annual mean range"
+      - source: *id010
+        value:
+          min: 24
+          max: 27
+        note: stated range for the species
+      - source: *id004
+        value:
+          min: 26
+          max: 32.5
+        note: Sites explicitly reporting this cichlid; the regional Galvan pond was 24 C.
+      - source: *id011
+        value:
+          min: 33
+          max: 33
+        note: Rio Jaina tributary collection site.
+      - source: *id003
+        value:
+          min: 24
+          max: 27
+        note: General database temperature range; not identified as a field series.
+      - source: *id005
+        value:
+          min: 25
+          max: 26
+        note: Miragoane shore measurements
+      - source: *id012
+        value:
+          min: 33
+          max: 33
+        note: Single field measurement in a Rio Jaina tributary
+      - source: &id015
+          kind: database
+          title: "FishBase: Nandopsis haitiensis"
+          url: "https://www.fishbase.se/summary/Nandopsis-haitiensis.html"
+          accessed: "2026-10-15"
+          archived: fishbase.se/summary/nandopsis-haitiensis.html/2026-10-15T053217Z
+        value:
+          min: 24
+          max: 27
+        note: "Database climatic range, not a demonstrated field series"
+      - source: *id013
+        value:
+          min: 24
+          max: 30
+        note: Habitat summary without a named measuring station
+      - source: &id014
+          kind: literature
+          title: "Stalsberg (1994, published online 1997): Oh, Island in the Sun. The Dominican Republic"
+          url: "https://cichlidae.com/article.php?id=8eOTftQ8gHUFyWvdj3Xtew"
+          accessed: "2026-10-15"
+          archived: cichlidae.com/article.php/q-5c710445/2026-10-15T054225Z
+        value:
+          min: 26
+          max: 32.5
+        note: Measured sites explicitly yielding Nandopsis haitiensis; nearby Galvan spring pool separately
+          measured 24 C.
+      - source: *id014
+        value:
+          min: 24
+          max: 24
+        note: "Regional Galvan spring pool; cichlid presence reported in a nearby pond, not explicitly in this\
+          \ measured pool."
+      - source: &id033
+          kind: literature
+          title: "Ferdenzi (1989): A spawning of Nandopsis haitiensis, Buntbarsche Bulletin 133, reproduced\
+            \ by AquaInfo"
+          url: "https://aquainfo.nl/en/a-spawning-of-nandopsis-haitiensis/"
+          accessed: "2026-10-15"
+          archived: aquainfo.nl/en/a-spawning-of-nandopsis-haitiensis/2026-10-15T053247Z
+        value:
+          min: 33
+          max: 33
+        note: Collection creek entering Rio Jaina.
+      - source: &id032
+          kind: literature
+          title: "Citizen Conservation (2024): Basic Information and Husbandry Guidelines for Limia islai,\
+            \ section 3.3"
+          url: "https://citizen-conservation.org/wp-content/uploads/2024/11/CC-Breeding-Guidelines_Limia-islai_07-2024.pdf"
+          accessed: "2026-10-15"
+          archived: citizen-conservation.org/wp-content/uploads/2024/11/cc-breeding-guidelines_limia-islai_07-2024.pdf/2026-10-15T053322Z
+        value:
+          min: 25
+          max: 26
+        note: "Lake Miragoane shore measurements, with this cichlid listed among native accompanying fish."
+      - source: *id015
+        value:
+          min: 24
+          max: 27
+        note: "Database temperature interval, without site-level measurements on the summary page."
+      - source: &id034
+          kind: literature
+          title: "Stalsberg, A. (1997). Oh, Island in the Sun. The Dominican Republic. Field observations from\
+            \ July 1994. Cichlid Room Companion."
+          url: "https://cichlidae.com/article.php?id=8eOTftQ8gHUFyWvdj3Xtew"
+          accessed: "2026-10-15"
+          archived: cichlidae.com/article.php/q-5c710445/2026-10-15T054225Z
+        value:
+          min: 24
+          max: 32.5
+        note: "Regional freshwater measurements; confirmed species sites include 26, 29, 30 and 32.5 C. The\
+          \ 24 C reading is a nearby Galvan pond."
+      - source: &id035
+          kind: literature
+          title: "Ferdenzi, J. (1989). A spawning of Heros haitiensis. Buntbarsche Bulletin 133, 12-17. Reproduced\
+            \ by AquaInfo."
+          url: "https://aquainfo.nl/en/a-spawning-of-nandopsis-haitiensis/"
+          accessed: "2026-10-15"
+          archived: aquainfo.nl/en/a-spawning-of-nandopsis-haitiensis/2026-10-15T053247Z
+        value:
+          min: 33
+          max: 33
+        note: "Single field reading in the creek entering Rio Jaina, not an independently measured range."
+      - source: *id016
+        value:
+          min: 25
+          max: 26
+        note: Lake Miragoane shoreline temperatures; the report explicitly lists this cichlid among native
+          accompanying fish.
+      - source:
+          kind: database
+          title: "FishBase species summary, Nandopsis haitiensis"
+          url: "https://www.fishbase.se/summary/Nandopsis-haitiensis.html"
+          accessed: "2026-10-15"
+          archived: fishbase.se/summary/nandopsis-haitiensis.html/2026-10-15T053217Z
+        value:
+          min: 24
+          max: 27
+        note: "Species environment summary, not a locality-resolved measurement dataset."
+      - source: *id017
+        value:
+          min: 24
+          max: 30
+        note: General habitat summary without traceable local water measurements.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+    tolerance:
+      value:
+        min: 24
+        max: 33
+      confidence: low
+      rationale: "The tally classifies the four proposals as unanimous within the one-degree agreement threshold\
+        \ and decides 24-33 C after containing the natural range. generator proposed {\"min\": 24, \"max\"\
+        : 33}; checker-a proposed {\"min\": 22, \"max\": 32}; checker-b proposed {\"min\": 23, \"max\": 33};\
+        \ checker-c proposed {\"min\": 24, \"max\": 33}. Beerlink recommends 27-29 C, the Nordic register 24-29\
+        \ C and Aqua-Fish 23-28 C. Ferdenzi bred fish around 24.4 and 27.8 C and reared fry near 28.9 C. A\
+        \ forum keeper reports a pair maintained for five years in the high eighties Fahrenheit, approximately\
+        \ 30-32 C. The broader forum care interval of 28.8-33 C is retained, as is the conflicting Bay Bridge\
+        \ dealer advice of 20-22.8 C. The upper bound is required to include the observed habitat envelope\
+        \ and has no demonstrated multiyear safety margin. Limia critical temperatures of 12-41.2 C concern\
+        \ a different fish family and acute experiments, so they do not establish this cichlid's chronic tolerance.\
+        \ Routine maintenance around 27-29 C has better support than either decided edge; confidence stays\
+        \ low."
+      sources:
+        - *id018
+        - &id021
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Nandopsis haitiensis"
+          url: "https://ciklid.org/artregister/art.php?ID=444"
+          accessed: "2026-10-15"
+          archived: ciklid.org/artregister/art.php/q-a70ff909/2026-10-15T053227Z
+        - &id022
+          kind: database
+          title: "Aqua-Fish: Haitian cichlid husbandry"
+          url: "https://en.aqua-fish.net/fish/haitian-cichlid"
+          accessed: "2026-10-15"
+          archived: en.aqua-fish.net/fish/haitian-cichlid/2026-10-15T053242Z
+        - *id006
+        - &id023
+          kind: website
+          title: "Riverpark Aquatics: guide to keeping Black Nasty cichlid"
+          url: "https://riverparkaquatics.co.uk/black-nasty-cichlid-nandopsis-haitiensis/"
+          accessed: "2026-10-15"
+          archived: riverparkaquatics.co.uk/black-nasty-cichlid-nandopsis-haitiensis/2026-10-15T053757Z
+        - &id024
+          kind: website
+          title: "That Pet Place: Black Nasty, Nandopsis haitiensis"
+          url: "https://www.thatpetplace.com/Nandopsis-haitiensis-black-nasty-217354"
+          accessed: "2026-10-15"
+          archived: thatpetplace.com/nandopsis-haitiensis-black-nasty-217354/2026-10-15T053800Z
+        - &id025
+          kind: forum
+          title: "Monster Fish Keepers: Black Nasty care guide"
+          url: "https://www.monsterfishkeepers.com/forums/goto/post?id=8102954"
+          accessed: "2026-10-15"
+          archived: monsterfishkeepers.com/forums/goto/post/q-1eff057e/2026-10-15T053800Z
+        - *id008
+        - &id026
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Nandopsis haitiensis"
+          url: "https://www.ciklid.org/artregister/art.php?ID=444"
+          accessed: "2026-10-15"
+          archived: ciklid.org/artregister/art.php/q-a70ff909/2026-10-15T053258Z
+        - *id019
+        - *id011
+        - *id004
+        - *id012
+        - *id020
+        - &id027
+          kind: forum
+          title: "Black Nasty Growth and Diet: aquarium observations"
+          url: "https://www.monsterfishkeepers.com/forums/threads/black-nasty-growth-diet.702398/"
+          accessed: "2026-10-15"
+          archived: monsterfishkeepers.com/forums/threads/black-nasty-growth-diet.702398/2026-10-15T053618Z
+        - &id028
+          kind: forum
+          title: "What tank size for a pair of black nasty: aquarium observations"
+          url: "https://www.monsterfishkeepers.com/forums/threads/what-tank-size-for-a-pair-of-black-nasty.708782/"
+          accessed: "2026-10-15"
+          archived: monsterfishkeepers.com/forums/threads/what-tank-size-for-a-pair-of-black-nasty.708782/2026-10-15T053620Z
+        - &id029
+          kind: website
+          title: "Bay Bridge Aquarium: Black Nasty Cichlid"
+          url: "https://www.baybridgeaquarium.com/products/black-nasty-cichlid"
+          accessed: "2026-10-15"
+          archived: baybridgeaquarium.com/products/black-nasty-cichlid/2026-10-15T053620Z
+      evidence:
+        - source: *id018
+          value:
+            min: 27
+            max: 29
+          note: Species-specific keeping recommendation.
+        - source: *id021
+          value:
+            min: 24
+            max: 29
+          note: Association keeping range.
+        - source: *id022
+          value:
+            min: 23
+            max: 28
+          note: Conflicting cooler recommendation.
+        - source: *id023
+          value:
+            min: 24
+            max: 28
+          note: aquarium recommendation
+        - source: *id024
+          value:
+            min: 24.4
+            max: 27.8
+          note: "aquarium recommendation, 76 to 82 F"
+        - source: *id025
+          value:
+            min: 28.8
+            max: 33
+          note: "forum guide, warm side"
+        - source: *id008
+          value:
+            min: 12
+            max: 41.2
+          note: "critical limits of related Limia, laboratory"
+        - source: *id026
+          value:
+            min: 24
+            max: 29
+          note: Aquarium recommendation.
+        - source: *id019
+          value:
+            min: 27
+            max: 29
+          note: Husbandry recommendation.
+        - source: *id022
+          value:
+            min: 23
+            max: 28
+          note: Aquarium recommendation.
+        - source: *id011
+          value:
+            min: 24.4
+            max: 28.9
+          note: "Breeding and fry observations, not experimental tolerance limits."
+        - source: *id004
+          value:
+            min: 26
+            max: 32.5
+          note: Natural observations used only to ensure containment.
+        - source: *id012
+          value:
+            min: 25
+            max: 28
+          note: Recorded aquarium spawning temperatures
+        - source: *id020
+          value:
+            min: 27
+            max: 29
+          note: Keeping recommendation
+        - source: *id026
+          value:
+            min: 24
+            max: 29
+          note: Keeping recommendation
+        - source: *id027
+          value:
+            min: 28.9
+            max: 30
+          note: Aquarium held at 84 to 86 F
+        - source: *id028
+          value:
+            min: 30
+            max: 32
+          note: Approximate conversion of high-eighties F for a pair maintained five years
+        - source: *id029
+          value:
+            min: 20
+            max: 22.8
+          note: "Dealer advice, judged inconsistent with stronger practical evidence"
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ph:
+    value:
+      min: 6.9
+      max: 9
+    confidence: low
+    rationale: "The settled tally uses the median method because no four-vote qualified majority exists under\
+      \ the pH agreement threshold; confidence is low. generator proposed {\"min\": 6.9, \"max\": 9}; checker-a\
+      \ proposed {\"min\": 7.4, \"max\": 8.4}; checker-b proposed {\"min\": 7.3, \"max\": 9}; checker-c proposed\
+      \ {\"min\": 6.9, \"max\": 7.4}; tiebreaker-1 proposed {\"min\": 6.9, \"max\": 9}; tiebreaker-2 proposed\
+      \ {\"min\": 6.9, \"max\": 9}. The median of proposal minima is 6.9 and of maxima is 9.0, so 6.9-9.0 is\
+      \ retained without replacing it. It is plausible as a spatial freshwater envelope: Citizen Conservation\
+      \ reports 6.9 and 7.1 at Miragoane, Ferdenzi 7.35 at Rio Jaina, and Stalsberg 8.0-9.0 at occupied Dominican\
+      \ river and canal sites, plus 7.3 at a regional Galvan pool. The Miragoane report pairs a 2015 reference\
+      \ with a 2021 observation date, weakening its chronology. The narrow 6.9-7.4 proposal omits directly\
+      \ measured occupied alkaline sites; the 7.4-8.4 proposal emphasizes regional studies rather than the\
+      \ full collecting evidence. Hypersaline-lake readings and pH inferred from calcium-bicarbonate water\
+      \ type do not set the range. Neither endpoint is a demonstrated constant optimum."
+    sources:
+      - *id006
+      - *id007
+      - *id009
+      - &id030
+        kind: literature
+        title: Modelos econometricos para determinar la calidad del agua en los rios Yaque del Norte y Yaque
+          del Sur
+        url: "https://doi.org/10.22206/cac.2024.v7i2.3411"
+        accessed: "2026-10-15"
+        archived: doi.org/10.22206_cac.2024.v7i2.3411/2026-10-15T053715Z
+      - &id031
+        kind: literature
+        title: Reconnaissance of the Diquini and Mariani springs and the Massif de la Selle karst aquifer of
+          Haiti
+        url: "https://doi.org/10.1007/s10040-022-02487-4"
+        accessed: "2026-10-15"
+        archived: doi.org/10.1007_s10040-022-02487-4/2026-10-15T053719Z
+      - *id004
+      - *id011
+      - *id005
+      - *id012
+      - *id013
+      - &id042
+        kind: literature
+        title: Physicochemical and microbiological quality of the waters of the Yaque Norte River (2022). The
+          Biologist 20(2). Tables not recovered in accessible text.
+        url: "https://doi.org/10.24039/rtb20222021353"
+        accessed: "2026-10-15"
+        archived: doi.org/10.24039_rtb20222021353/2026-10-15T053514Z
+      - *id016
+      - *id017
+      - &id036
+        kind: database
+        title: "Aquarist Atlas, Nandopsis haitiensis species and husbandry account"
+        url: "https://cichlidatlas.com/species/nandopsis-haitiensis/"
+        accessed: "2026-10-15"
+        archived: cichlidatlas.com/species/nandopsis-haitiensis/2026-10-15T054508Z
+    evidence:
+      - source: *id006
+        value:
+          min: 7.3
+          max: 9
+        note: Occupied Dominican sites span pH 8 to 9; the 7.3 reading is from a regional pond near Galvan
+          without confirmed Nandopsis occupancy.
+      - source: *id007
+        value:
+          min: 6.9
+          max: 7.1
+        note: North and south shores of Lake Miragoane; associated Nandopsis explicitly recorded.
+      - source: *id009
+        value:
+          min: 7.8
+          max: 8.4
+        note: "lake margin, 1977 to 2012"
+      - source: *id030
+        value:
+          min: 7.9
+          max: 8.4
+        note: "stations of Yaque del Sur with a reading (Rio Los Banos, Rio San Juan), some polluted"
+      - source: *id031
+        value:
+          min: 7
+          max: 8
+        note: "qualitative: Ca-HCO3 karst water, no pH value read"
+      - source: *id004
+        value:
+          min: 8
+          max: 9
+        note: Confirmed collection sites; regional Galvan pond pH 7.3.
+      - source: *id011
+        value:
+          min: 7.35
+          max: 7.35
+        note: Rio Jaina collection site.
+      - source: *id005
+        value:
+          min: 6.9
+          max: 7.1
+        note: Two Miragoane shores
+      - source: *id012
+        value:
+          min: 7.35
+          max: 7.35
+        note: Rio Jaina tributary
+      - source: *id013
+        value:
+          min: 7.2
+          max: 8
+        note: Habitat summary without station data
+      - source: *id032
+        value:
+          min: 6.9
+          max: 7.1
+        note: Miragoane north and south shores; publication has an inconsistent Meyer year and sampling-date
+          citation.
+      - source: *id033
+        value:
+          min: 7.35
+          max: 7.35
+        note: Rio Jaina collection creek.
+      - source: *id014
+        value:
+          min: 8
+          max: 9
+        note: "Sites explicitly yielding Haitian cichlids, including Rio Acapulco, Palo Leche and Rio Nizao."
+      - source: *id014
+        value:
+          min: 7.3
+          max: 7.3
+        note: Regional Galvan spring pool; nearby freshwater habitat measurement.
+      - source: *id034
+        value:
+          min: 7.3
+          max: 9
+        note: "Freshwater regional readings; direct cichlid sites span 8.0 to 9.0, with the lower value from\
+          \ a nearby Galvan pond."
+      - source: *id035
+        value:
+          min: 7.35
+          max: 7.35
+        note: Single field measurement from the Rio Jaina source creek.
+      - source: *id016
+        value:
+          min: 6.9
+          max: 7.1
+        note: North and south Miragoane shoreline readings; the stated observation and reference years are
+          inconsistent.
+      - source: *id017
+        value:
+          min: 7.2
+          max: 8
+        note: Generic habitat summary lacking locality-resolved measurements.
+      - source: *id036
+        value:
+          min: 7
+          max: 7.5
+        note: "Aquarium-oriented values discussed in its habitat section, not field measurements."
+    verification:
+      method: median
+      votes:
+        agree: 3
+        total: 6
+    tolerance:
+      value:
+        min: 6.5
+        max: 9
+      confidence: low
+      rationale: "The qualified-majority tally decides 6.5-9.0 from five agreeing votes out of six, with low\
+        \ confidence. generator proposed {\"min\": 6.5, \"max\": 9}; checker-a proposed {\"min\": 6.8, \"max\"\
+        : 8.8}; checker-b proposed {\"min\": 7, \"max\": 9}; checker-c proposed {\"min\": 6.9, \"max\": 8};\
+        \ tiebreaker-1 proposed {\"min\": 6.5, \"max\": 9}; tiebreaker-2 proposed {\"min\": 6.5, \"max\": 9}.\
+        \ Successful spawning at pH 7.2 and association guidance of 7-8 anchor the central part. Aqua-Fish\
+        \ gives 7.2-8, Beerlink and Atlas 7-7.5, and the Aquarium Wiki and Bay Bridge extend their advice to\
+        \ 6.5. MidasCichlid and Aquariumpro give the wider acidic recommendation of 6-8; that pH 6 endpoint\
+        \ is weaker than the corroborated 6.5 advice and is not adopted. J and K and a forum guide permit 7-9.\
+        \ The upper limit contains the natural pH 9 observation. Published advice and field occurrence do not\
+        \ establish safe lifetime exposure at either extreme, so these remain provisional boundaries."
+      sources:
+        - *id021
+        - *id022
+        - &id037
+          kind: website
+          title: "MidasCichlid: Black nasty cichlid tank mates and care"
+          url: "https://midascichlid.com/black-nasty-cichlid-tank-mates.php"
+          accessed: "2026-10-15"
+          archived: midascichlid.com/black-nasty-cichlid-tank-mates.php/2026-10-15T053321Z
+        - *id006
+        - *id007
+        - *id023
+        - *id024
+        - *id025
+        - *id011
+        - *id026
+        - &id038
+          kind: website
+          title: "J and K Aquatics: Black Nasty species information"
+          url: "https://jnk-aquatics.co.uk/products/livestock/black-nasty-nandopsis-haitiensis-3cm"
+          accessed: "2026-10-15"
+          archived: jnk-aquatics.co.uk/products/livestock/black-nasty-nandopsis-haitiensis-3cm/2026-10-15T053540Z
+        - *id019
+        - *id020
+        - *id012
+        - *id029
+        - &id039
+          kind: literature
+          title: "Beerlink: Nandopsis haitiensis, AquaInfo and NVC species account"
+          url: "https://aquainfo.nl/en/article/nandopsis-haitiensis/"
+          accessed: "2026-10-15"
+          archived: aquainfo.nl/en/article/nandopsis-haitiensis/2026-10-15T054506Z
+        - &id040
+          kind: website
+          title: "The Aquarium Wiki: Haitian Cichlid"
+          url: "https://www.theaquariumwiki.com/wiki/Nandopsis_haitiensis"
+          accessed: "2026-10-15"
+          archived: theaquariumwiki.com/wiki/nandopsis_haitiensis/2026-10-15T054601Z
+        - &id041
+          kind: database
+          title: "Aquariumpro: Haitian Cichlid"
+          url: "https://aquarium-pro.com/species/nandopsis-haitiensis"
+          accessed: "2026-10-15"
+          archived: aquarium-pro.com/species/nandopsis-haitiensis/2026-10-15T054601Z
+        - *id036
+        - *id016
+      evidence:
+        - source: *id021
+          value:
+            min: 7
+            max: 8
+          note: Aquarium recommendation.
+        - source: *id022
+          value:
+            min: 7.2
+            max: 8
+          note: Aquarium recommendation.
+        - source: *id037
+          value:
+            min: 6
+            max: 8
+          note: Lower-trust conflicting recommendation.
+        - source: *id023
+          value:
+            min: 7
+            max: 8
+          note: aquarium recommendation
+        - source: *id024
+          value:
+            min: 7
+            max: 8
+          note: aquarium recommendation
+        - source: *id025
+          value:
+            min: 7
+            max: 9
+          note: forum guide
+        - source: *id011
+          value:
+            min: 7.2
+            max: 7.2
+          note: Measured spawning-tank pH.
+        - source: *id026
+          value:
+            min: 7
+            max: 8
+          note: Aquarium recommendation.
+        - source: *id038
+          value:
+            min: 7
+            max: 9
+          note: Dealer recommendation.
+        - source: *id019
+          value:
+            min: 7
+            max: 7.5
+          note: Narrower aquarium table.
+        - source: *id026
+          value:
+            min: 7
+            max: 8
+          note: Aquarium guidance
+        - source: *id020
+          value:
+            min: 7
+            max: 7.5
+          note: Care table
+        - source: *id012
+          value:
+            min: 7.2
+            max: 7.2
+          note: Successful aquarium spawning
+        - source: *id029
+          value:
+            min: 6.5
+            max: 8
+          note: Dealer care range
+        - source: *id039
+          value:
+            min: 7
+            max: 7.5
+          note: Aquarium recommendation.
+        - source: *id033
+          value:
+            min: 7.2
+            max: 7.2
+          note: Measured spawning aquarium pH.
+        - source: &id046
+            kind: database
+            title: "Aqua-Fish: Haitian cichlid"
+            url: "https://en.aqua-fish.net/fish/haitian-cichlid"
+            accessed: "2026-10-15"
+            archived: en.aqua-fish.net/fish/haitian-cichlid/2026-10-15T053242Z
+          value:
+            min: 7.2
+            max: 8
+          note: Aquarium recommendation.
+        - source: *id040
+          value:
+            min: 6.5
+            max: 7.8
+          note: Aquarium recommendation; low-trust lower endpoint.
+        - source: *id041
+          value:
+            min: 6
+            max: 8
+          note: Broader aquarium advice; pH 6.0 is weakly supported and not selected.
+        - source: *id014
+          value:
+            min: 8
+            max: 9
+          note: "Occupied freshwater habitats; inclusion evidence, not a chronic captive exposure trial."
+        - source: *id032
+          value:
+            min: 6.9
+            max: 7.1
+          note: Native Miragoane shores; natural range must remain included.
+        - source: *id035
+          value:
+            min: 7.2
+            max: 7.2
+          note: "Measured successful aquarium spawning pH, not a full tolerance experiment."
+        - source: &id051
+            kind: database
+            title: "Nordiska Ciklidsallskapet species register, Nandopsis haitiensis"
+            url: "https://ciklid.org/artregister/art.php?ID=444"
+            accessed: "2026-10-15"
+            archived: ciklid.org/artregister/art.php/q-a70ff909/2026-10-15T053227Z
+          value:
+            min: 7
+            max: 8
+          note: Aquarium recommendation.
+        - source: *id036
+          value:
+            min: 7
+            max: 7.5
+          note: Aquarium recommendation.
+        - source: &id047
+            kind: database
+            title: "Aqua-Fish, Haitian cichlid care account"
+            url: "https://en.aqua-fish.net/fish/haitian-cichlid"
+            accessed: "2026-10-15"
+            archived: en.aqua-fish.net/fish/haitian-cichlid/2026-10-15T053242Z
+          value:
+            min: 7.2
+            max: 8
+          note: Aquarium recommendation.
+        - source: &id048
+            kind: database
+            title: "Aquariumpro, Haitian Cichlid species and husbandry account"
+            url: "https://aquarium-pro.com/species/nandopsis-haitiensis"
+            accessed: "2026-10-15"
+            archived: aquarium-pro.com/species/nandopsis-haitiensis/2026-10-15T054601Z
+          value:
+            min: 6
+            max: 8
+          note: Lower-trust aquarium recommendation; the pH 6 endpoint is not adopted.
+        - source: &id060
+            kind: website
+            title: "Bay Bridge Aquarium, Black Nasty Cichlid care listing"
+            url: "https://www.baybridgeaquarium.com/products/black-nasty-cichlid"
+            accessed: "2026-10-15"
+            archived: baybridgeaquarium.com/products/black-nasty-cichlid/2026-10-15T053620Z
+          value:
+            min: 6.5
+            max: 8
+          note: Lower-trust aquarium recommendation; used cautiously for the acidic extension.
+        - source: *id034
+          value:
+            min: 8
+            max: 9
+          note: "Observed occupied-site pH supports including 9, but does not independently prove multi-year\
+            \ captive tolerance."
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  ghDgh:
+    value:
+      min: 6
+      max: 16
+    confidence: low
+    rationale: "The tally decides 6-16 dGH and calls the four votes unanimous under its two-degree range-agreement\
+      \ rule; this is threshold agreement rather than identical proposals. generator proposed {\"min\": 5,\
+      \ \"max\": 17}; checker-a proposed {\"min\": 7, \"max\": 15}; checker-b proposed {\"min\": 5, \"max\"\
+      : 17}; checker-c proposed {\"min\": 9, \"max\": 13}. The tally value and low confidence are retained\
+      \ exactly. Stalsberg's directly measured occupied-site range is wider, 5-17 dGH, including 5 at Rio Acapulco,\
+      \ 11-12 at Rio Nizao, 12 at Palo Leche and 17 in the stream west of Santo Domingo. Those observations\
+      \ remain evidence outside the decided interval, and 6-16 must not be read as the full measured field\
+      \ envelope. Miragoane supplies one 9 dGH reading; the regional FAO Rio Yaque calcium and magnesium analysis\
+      \ converts to about 12.1 dGH without identifying the exact river station. The 7-15 proposal relied on\
+      \ estimates from dissolved solids, and 9-13 emphasized Miragoane and that regional chemical analysis.\
+      \ TDS, conductivity, pH and salinity alone do not determine GH, so the retained numerical inferences\
+      \ of 7-10, 12-40 and 10-25 dGH are not independent measurements. Exceptional hypersaline waters above\
+      \ 60 dGH are excluded."
+    sources:
+      - *id006
+      - *id007
+      - *id031
+      - *id030
+      - *id025
+      - *id004
+      - *id005
+      - &id043
+        kind: literature
+        title: "Ayers and Westcot (1985). Water quality for agriculture. FAO Paper 29 Rev. 1. Annex I, analysis\
+          \ 106, Rio Yaque, Dominican Republic, after Pla (1984)."
+        url: "https://www.fao.org/4/t0234e/T0234E10.htm"
+        accessed: "2026-10-15"
+        archived: fao.org/4/t0234e/t0234e10.htm/2026-10-15T053555Z
+      - *id042
+      - *id013
+    evidence:
+      - source: *id006
+        value:
+          min: 5
+          max: 17
+        note: "Occupied sites: Rio Acapulco 5, Rio Nizao 11 to 12, Palo Leche 12, stream west of Santo Domingo\
+          \ 17 dGH."
+      - source: *id007
+        value:
+          min: 9
+          max: 9
+        note: "Single north-shore reading, widened using the independent regional collecting sites."
+      - source: *id031
+        value:
+          min: 7
+          max: 10
+        note: "derived from TDS about 200 mg/L, Ca-HCO3 karst springs"
+      - source: *id030
+        value:
+          min: 12
+          max: 40
+        note: derived from TDS 410 to 2720 mg/L at polluted stations; upper values not typical habitat
+      - source: *id025
+        value:
+          min: 10
+          max: 25
+        note: "forum guide says the fish likes hard water, no number"
+      - source: *id004
+        value:
+          min: 5
+          max: 17
+        note: "Occupied freshwater sites, with regional intermediate values confirming the water type."
+      - source: *id005
+        value:
+          min: 9
+          max: 9
+        note: Single Miragoane north-shore reading
+      - source: *id043
+        value:
+          min: 12.1
+          max: 12.1
+        note: "Regional river analysis, converted from Ca and Mg equivalents"
+      - source: *id013
+        value:
+          min: 6
+          max: 16
+        note: "Unlocated habitat summary, not used as field measurements"
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+    tolerance:
+      value:
+        min: 4
+        max: 20
+      confidence: low
+      rationale: "The qualified-majority tally chooses 4-20 dGH from five agreeing votes out of six, with low\
+        \ confidence. generator proposed {\"min\": 4, \"max\": 20}; checker-a proposed {\"min\": 5, \"max\"\
+        : 20}; checker-b proposed {\"min\": 4, \"max\": 30}; checker-c proposed {\"min\": 6, \"max\": 18};\
+        \ tiebreaker-1 proposed {\"min\": 4, \"max\": 20}; tiebreaker-2 proposed {\"min\": 4, \"max\": 20}.\
+        \ Aqua-Fish recommends 4-16, Beerlink and Atlas 12-16, the Aquarium Wiki 6-16, and Aquariumpro 4-20\
+        \ dGH. The decided interval contains both the tallied natural 6-16 range and Stalsberg's wider measured\
+        \ 5-17 freshwater range. J and K gives a wider upper recommendation of 30 dGH, which underlies checker-b's\
+        \ 4-30 proposal; that dealer ceiling lacks supporting multiyear observations and is not adopted. Forum-derived\
+        \ 10-25 figures and Riverpark-derived 5-20 figures were agent interpretations of qualitative advice,\
+        \ not measured limits. The chosen edges are a provisional husbandry synthesis, not experimentally established\
+        \ thresholds. Brackish occurrence does not convert salinity into GH."
+      sources:
+        - *id022
+        - *id018
+        - *id037
+        - *id006
+        - &id045
+          kind: model-knowledge
+          title: Generator inference from the cited husbandry and field evidence
+          accessed: "2026-10-15"
+        - *id025
+        - *id023
+        - *id019
+        - *id038
+        - *id004
+        - *id020
+        - *id013
+        - *id005
+        - *id043
+        - *id039
+        - *id040
+        - *id041
+        - *id032
+        - *id036
+        - *id016
+        - *id044
+        - *id017
+      evidence:
+        - source: *id022
+          value:
+            min: 4
+            max: 16
+          note: Numerical aquarium recommendation.
+        - source: *id006
+          value:
+            min: 5
+            max: 17
+          note: Natural freshwater measurements that the tolerance must contain.
+        - source: *id045
+          value:
+            min: 4
+            max: 20
+          note: "Derived working range, with an untested upper endpoint."
+        - source: *id025
+          value:
+            min: 10
+            max: 25
+          note: described as liking hard water
+        - source: *id023
+          value:
+            min: 5
+            max: 20
+          note: "no value given; slightly alkaline water recommended, interpreted broadly"
+        - source: *id019
+          value:
+            min: 12
+            max: 16
+          note: Aquarium recommendation.
+        - source: *id022
+          value:
+            min: 4
+            max: 16
+          note: Aquarium recommendation.
+        - source: *id038
+          value:
+            max: 30
+          note: Only an upper bound is specified; the source gives no minimum.
+        - source: *id004
+          value:
+            min: 5
+            max: 17
+          note: Natural range that the tolerance must contain.
+        - source: *id020
+          value:
+            min: 12
+            max: 16
+          note: Aquarium recommendation
+        - source: *id013
+          value:
+            min: 6
+            max: 16
+          note: "Habitat summary, indirect support for lower mineralisation"
+        - source: *id005
+          value:
+            min: 9
+            max: 9
+          note: Field occurrence rather than a lifetime trial
+        - source: *id046
+          value:
+            min: 4
+            max: 16
+          note: "Recommended aquarium general hardness, converted from German degrees."
+        - source: *id039
+          value:
+            min: 12
+            max: 16
+          note: Aquarium GH recommendation.
+        - source: *id040
+          value:
+            min: 6
+            max: 16
+          note: Aquarium hardness recommendation.
+        - source: *id041
+          value:
+            min: 4
+            max: 20
+          note: Broad aquarium hardness recommendation from an unlisted low-trust database.
+        - source: *id014
+          value:
+            min: 5
+            max: 17
+          note: "Measured native freshwater GH, supporting habitat inclusion rather than a measured captive\
+            \ limit."
+        - source: *id032
+          value:
+            min: 9
+            max: 9
+          note: Miragoane north-shore GH measurement.
+        - source: *id047
+          value:
+            min: 4
+            max: 16
+          note: Aquarium total-hardness recommendation.
+        - source: *id036
+          value:
+            min: 12
+            max: 16
+          note: Aquarium total-hardness recommendation.
+        - source: *id048
+          value:
+            min: 4
+            max: 20
+          note: Aquarium total-hardness recommendation; unlisted host and no documented long-term trial.
+        - source: *id034
+          value:
+            min: 5
+            max: 17
+          note: "Field GH at confirmed freshwater cichlid sites, used to ensure the tolerance contains ordinary\
+            \ natural waters."
+        - source: *id016
+          value:
+            min: 9
+            max: 9
+          note: Single Miragoane north-shore GH measurement.
+        - source: *id017
+          value:
+            min: 6
+            max: 16
+          note: Generic habitat hardness summary without direct measurement provenance.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  khDkh:
+    value:
+      min: 5
+      max: 17
+    confidence: medium
+    rationale: "The tally decides 5-17 dKH, with medium confidence, by four agreeing votes out of six. generator\
+      \ proposed {\"min\": 5, \"max\": 17}; checker-a proposed {\"min\": 6, \"max\": 12}; checker-b proposed\
+      \ {\"min\": 5, \"max\": 17}; checker-c proposed {\"min\": 7, \"max\": 11}; tiebreaker-1 proposed {\"\
+      min\": 5, \"max\": 17}; tiebreaker-2 proposed {\"min\": 5, \"max\": 17}. As required for natural KH,\
+      \ this fact has no verification object. Stalsberg reports KH separately from GH at occupied sites: 5\
+      \ at Rio Acapulco, 9 and 11 at Rio Nizao, 13 at Palo Leche and 17 in the stream west of Santo Domingo.\
+      \ Miragoane adds one 7 dKH observation. FAO's regional Rio Yaque bicarbonate analysis converts to about\
+      \ 10.1 dKH but lacks an exact station. The 6-12 proposal inferred buffering from water type and pH, while\
+      \ 7-11 combined Miragoane with the FAO analysis. Direct freshwater measurements take priority over those\
+      \ narrower inferences. The 17 dKH stream was affected by livestock, so it is qualified as a spot observation\
+      \ rather than a seasonal optimum. No salinity or conductivity conversion is used."
+    sources:
+      - *id006
+      - *id007
+      - *id031
+      - *id009
+      - *id004
+      - *id005
+      - *id043
+      - *id016
+    evidence:
+      - source: *id006
+        value:
+          min: 5
+          max: 17
+        note: "Occupied sites: Rio Acapulco 5, Rio Nizao 9 to 11, Palo Leche 13, stream west of Santo Domingo\
+          \ 17 dKH."
+      - source: *id007
+        value:
+          min: 7
+          max: 7
+        note: One north-shore measurement; not a measured range.
+      - source: *id031
+        value:
+          min: 6
+          max: 9
+        note: derived from Ca-HCO3 water of 200 mg/L TDS
+      - source: *id009
+        value:
+          min: 6
+          max: 12
+        note: alkaline pH 7.8 to 8.4 implies carbonate buffering; indirect
+      - source: *id004
+        value:
+          min: 5
+          max: 17
+        note: Direct reported carbonate-hardness readings.
+      - source: *id005
+        value:
+          min: 7
+          max: 7
+        note: Single Miragoane north-shore reading
+      - source: *id043
+        value:
+          min: 10.1
+          max: 10.1
+        note: Bicarbonate alkalinity converted using 2.804 dKH per meq/L
+      - source: *id014
+        value:
+          min: 5
+          max: 17
+        note: Direct KH readings at occupied freshwater collection sites; 17 dKH site was affected by nearby
+          livestock.
+      - source: *id032
+        value:
+          min: 7
+          max: 7
+        note: "North shore of Lake Miragoane; a single KH reading, not a lake-wide range."
+      - source: *id034
+        value:
+          min: 5
+          max: 17
+        note: "Measured KH across occupied Dominican freshwater collection sites; individual values include\
+          \ 5, 9, 11, 13 and 17 dKH."
+      - source: *id016
+        value:
+          min: 7
+          max: 7
+        note: Single Miragoane north-shore KH reading; no equivalent south-shore KH measurement is given.
+    tolerance:
+      value:
+        min: 4
+        max: 20
+      confidence: low
+      rationale: "The tally classifies the four votes as unanimous within its two-degree threshold and decides\
+        \ 4-20 dKH, with low confidence. generator proposed {\"min\": 3, \"max\": 20}; checker-a proposed {\"\
+        min\": 4, \"max\": 18}; checker-b proposed {\"min\": 3, \"max\": 20}; checker-c proposed {\"min\":\
+        \ 4, \"max\": 20}. No controlled chronic KH study was read. Bay Bridge gives 9-20 dKH, while successful\
+        \ breeding in bicarbonate-buffered water and neutral to alkaline pH advice support a broader lower\
+        \ allowance. The lower edge of 4 is an inference, not a published physiological threshold. The wider\
+        \ 3-20 proposals of generator and checker-b likewise infer a lower edge from keeping practice; checker-a\
+        \ proposed 4-18 and checker-c 4-20. These proposal differences remain visible and do not mean the species\
+        \ fails below 4 or above 20. The decided interval contains the directly measured natural 5-17 dKH and\
+        \ is deliberately broader than it."
+      sources:
+        - *id018
+        - *id021
+        - *id022
+        - *id006
+        - *id045
+        - *id023
+        - *id025
+        - *id019
+        - *id011
+        - *id004
+        - *id029
+        - *id020
+        - *id012
+        - *id005
+      evidence:
+        - source: *id006
+          value:
+            min: 5
+            max: 17
+          note: "Habitat anchor only, not an aquarium tolerance."
+        - source: *id045
+          value:
+            min: 3
+            max: 20
+          note: Inferred from stable neutral to alkaline keeping practice; no direct long-term KH study.
+        - source: *id023
+          value:
+            min: 4
+            max: 18
+          note: "pH 7 to 8 advice, KH inferred"
+        - source: *id025
+          value:
+            min: 4
+            max: 18
+          note: "pH 7 to 9 and hard water, KH inferred"
+        - source: *id019
+          value:
+            min: 3
+            max: 20
+          note: "Checker inference from alkaline, hard-water husbandry advice; the source supplies no numeric\
+            \ KH limits."
+        - source: *id011
+          value:
+            min: 3
+            max: 20
+          note: Checker inference from successful bicarbonate-buffered keeping; no KH was measured.
+        - source: *id004
+          value:
+            min: 5
+            max: 17
+          note: "Measured natural KH, not aquarium tolerance."
+        - source: *id029
+          value:
+            min: 9
+            max: 20
+          note: Dealer KH recommendation
+        - source: *id005
+          value:
+            min: 7
+            max: 7
+          note: Natural occurrence supports inclusion below dealer minimum
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  maxSizeCm:
+    value:
+      male: 31
+      female: 25
+    confidence: medium
+    rationale: "The proposals were generator 32/25 cm, checker-a 30/24, checker-b 35/25 and checker-c 30/25\
+      \ for male/female. Their medians are 31/25 cm, retained as approximate typical adult aquarium total lengths.\
+      \ Beerlink's usual 25-30 cm, the Nordic 27 cm figure and MidasCichlid's practical approximately 30.5-35.6\
+      \ cm estimates bracket this decision. The 38.1 cm males and 25.4-30.5 cm females in forum accounts are\
+      \ larger individuals, while 40 cm and the dealer's 48 cm are not selected as typical outcomes. Aqua-Fish's\
+      \ 20-23 cm, Fishipedia's 25 cm, Smithsonian's 15 cm and the larger retail estimates remain contrary evidence.\
+      \ FishBase's 21.5 cm is unsexed standard length, not a directly comparable total-length maximum; checker-a's\
+      \ approximate 26 cm conversion is retained as an inference rather than an established conversion factor.\
+      \ Sex-specific maxima are poorly sampled, especially for females."
+    sources:
+      - *id021
+      - *id018
+      - *id037
+      - *id022
+      - *id003
+      - *id023
+      - *id025
+      - *id024
+      - *id019
+      - *id026
+      - *id038
+      - *id020
+      - *id049
+      - *id013
+      - *id027
+      - *id028
+      - *id029
+    evidence:
+      - source: *id010
+        value:
+          male: 26
+          female: 26
+        note: "21.5 cm SL, unsexed, converted to approx. total length"
+      - source: *id023
+        value:
+          male: 30
+          female: 30
+        note: adult length about 30 cm
+      - source: *id025
+        value:
+          male: 38
+          female: 30
+        note: "14 to 16 inches, forum guide"
+      - source: *id024
+        value:
+          male: 38
+          female: 38
+        note: up to 15 inches
+      - source: &id054
+          kind: website
+          title: Black nasty cichlid tank mates and husbandry
+          url: "https://midascichlid.com/black-nasty-cichlid-tank-mates.php"
+          accessed: "2026-10-15"
+          archived: midascichlid.com/black-nasty-cichlid-tank-mates.php/2026-10-15T053321Z
+        value:
+          male: 35.6
+          female: 25
+        note: Male endpoint follows the stated practical upper range; female size is inferred.
+      - source: *id003
+        value:
+          male: 21.5
+          female: 21.5
+        note: "Scientific maximum is standard length, unsexed, not a sex-specific aquarium maximum."
+      - source: *id020
+        value:
+          male: 30
+          female: 25
+        note: Care table gives 25 to 30 cm without sex allocation; allocation inferred
+      - source: *id027
+        value:
+          male: 38.1
+          female: 25.4
+        note: Reported adult aquarium fish
+      - source: *id028
+        value:
+          male: 38.1
+          female: 30.5
+        note: A larger pair report
+      - source: *id026
+        value: 27
+      - source: *id015
+        value: 21.5
+        note: "Standard length, not comparable to total length without conversion"
+      - source: *id049
+        value: 15
+        note: Database length conflicts with adult aquarium reports
+      - source: *id013
+        value: 25
+      - source: *id029
+        value: 38.1
+  predation:
+    value: 2
+    confidence: medium
+    rationale: "The qualified-majority tally selects level 2 with five of six votes: generator, checker-b,\
+      \ checker-c and both tiebreakers proposed 2; checker-a proposed 1. Ferdenzi observed repeated guppy pursuit\
+      \ and consumption by wild-caught fish about 6-8 cm long, supporting active fish predation beyond accidental\
+      \ fry feeding. Guppy lengths were not reported, so the adult mouth-size mapping remains an interpretation.\
+      \ FishBase records plants and snails, which supports a mixed diet but does not impose a 2 cm prey ceiling.\
+      \ The Nordic association's adult fish-dominated diet would imply level 3; that source remains contrary\
+      \ evidence, but quantitative adult diets across populations were not found. Tankmate killing alone indicates\
+      \ aggression, not consumption."
+    sources:
+      - *id021
+      - *id003
+      - *id018
+      - *id007
+      - *id023
+      - &id050
+        kind: archive
+        title: cichlids.com forum thread 62467
+        url: "https://www.cichlids.com/disc/read.php?1,62467"
+        accessed: "2026-10-15"
+      - *id011
+      - *id026
+      - &id052
+        kind: database
+        title: "FishBase: reported food items of Nandopsis haitiensis"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=12645&genus=Nandopsis&species=haitiensis"
+        accessed: "2026-10-15"
+        archived: fishbase.se/trophiceco/fooditemslist.php/q-2dc31fbe/2026-10-15T053359Z
+      - &id053
+        kind: database
+        title: "FishBase: ecology of Nandopsis haitiensis"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=12645&GenusName=Nandopsis&SpeciesName=haitiensis"
+        accessed: "2026-10-15"
+        archived: fishbase.se/ecology/fishecologysummary.php/q-e7bec23f/2026-10-15T053402Z
+      - *id012
+      - *id049
+      - *id013
+      - *id039
+      - *id036
+      - *id017
+    evidence:
+      - source: *id021
+        value: 3
+        note: Adult diet described as predominantly fish.
+      - source: *id007
+        value: 2
+        note: Identifies the species as a strong predator among native livebearers.
+      - source: *id010
+        value: 1
+        note: "feeds on algae, plants and snails; no fish listed"
+      - source: *id023
+        value: 1
+        note: omnivore; small feeder fish accepted
+      - source: *id050
+        value: 1
+        note: "killed other cichlids, which points to aggression rather than predation"
+      - source: *id011
+        value: 2
+        note: Repeated active guppy capture in captivity.
+      - source: *id026
+        value: 3
+        note: Adult diet described as mainly fish.
+      - source: *id012
+        value: 2
+        note: Wild-caught fish hunted offered guppies
+      - source: *id026
+        value: 3
+        note: Association describes mainly fish in adult wild diet
+      - source: *id013
+        value: 2
+        note: Opportunistic attacks on smaller animals
+      - source: *id033
+        value: 2
+        note: Level inferred from repeated active hunting of guppies; guppy sizes were not measured.
+      - source: *id032
+        value: 2
+        note: Qualitative field predator assessment in a lake containing small livebearers; no measured prey-size
+          threshold.
+      - source: *id035
+        value: 2
+        note: Wild-caught fish about 6 to 8 cm long repeatedly pursued and ate feeder guppies; prey lengths
+          were not reported.
+      - source: *id051
+        value: 3
+        note: "The adult diet is described as chiefly fish, especially livebearers; plant and snail feeding\
+          \ is assigned to juveniles."
+      - source: *id036
+        value: 2
+        note: Small aquarium companions are described as prey despite an otherwise mixed diet.
+      - source: *id017
+        value: 2
+        note: Describes opportunistic capture of smaller animals; the account is explicitly provisional.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: true
+      foods:
+        - Plant-rich complete cichlid pellets
+        - Algae-based foods
+        - Small portions of aquatic invertebrates
+        - Vegetable supplements
+    confidence: medium
+    rationale: "All four diet votes agree on omnivore and bloatSensitive true; the tally retains the generator's\
+      \ food suggestions. The proposed food lists differ in emphasis: generator lists plant-rich prepared foods\
+      \ and small invertebrate portions; checker-a algae, plants, snails, pellets and vegetables; checker-b\
+      \ plant material, snails, invertebrates and occasional small fish; checker-c algae-rich prepared food,\
+      \ vegetables, molluscs, invertebrates and occasional fish flesh. FishBase food records and ecology, Smithsonian\
+      \ and Beerlink support both plant and animal feeding. The Nordic account instead describes adult piscivory,\
+      \ and Fishipedia uses an unquantified carnivore label; neither makes fish the necessary staple. Beerlink,\
+      \ hobby accounts and archive thread 60750 report digestive losses, supporting the sensitivity flag without\
+      \ proving that excess protein alone causes every case. The two FishBase ecology URLs use different stock-code\
+      \ parameters, but both readable responses identify Nandopsis haitiensis and describe mixed feeding; they\
+      \ are retained without counting them as independent dietary studies."
+    sources:
+      - *id003
+      - *id018
+      - *id021
+      - *id022
+      - *id037
+      - *id023
+      - *id024
+      - *id025
+      - *id052
+      - *id053
+      - kind: database
+        title: "FishBase: ecology of Nandopsis haitiensis, initial query"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=10035&GenusName=Nandopsis&SpeciesName=haitiensis"
+        accessed: "2026-10-15"
+        archived: fishbase.se/ecology/fishecologysummary.php/q-ee18fb9e/2026-10-15T053313Z
+      - *id019
+      - *id026
+      - &id055
+        kind: archive
+        title: cichlids.com forum thread 60750
+        url: "https://www.cichlids.com/disc/read.php?1,60750"
+        accessed: "2026-10-15"
+      - *id049
+      - *id020
+      - *id012
+      - *id027
+      - *id028
+      - *id029
+      - *id013
+    evidence:
+      - source: *id003
+        value:
+          type: omnivore
+        note: Plants and snails support omnivory; no bloat assessment is given.
+      - source: *id018
+        value:
+          type: omnivore
+          bloatSensitive: true
+        note: Mixed natural foods and recurring aquarium losses; recommends fibre-rich feeding.
+      - source: *id022
+        value:
+          type: omnivore
+        note: Animal-biased mixed diet; no species-specific bloat assessment.
+      - source: *id010
+        value: omnivore
+        note: "algae, plants, turret shells"
+      - source: *id023
+        value: omnivore
+        note: "pellets, vegetables, occasional live food"
+      - source: *id024
+        value: omnivore
+      - source: *id025
+        value: "omnivore, bloat-prone"
+        note: low-protein diet advised
+      - source: *id052
+        value:
+          type: omnivore
+        note: Algae and turret snails reported for juvenile and adult stages.
+      - source: *id053
+        value:
+          type: omnivore
+        note: Mixed plant and animal feeding classification.
+      - source: *id026
+        value:
+          type: piscivore
+        note: Contradictory adult-diet account retained.
+      - source: *id019
+        value:
+          type: omnivore
+          bloatSensitive: true
+        note: Mixed diet with explicit bloat concerns and restrained-protein advice.
+      - source: *id054
+        value:
+          bloatSensitive: true
+        note: Explicit concern over rich animal-protein feeding.
+      - source: *id055
+        value:
+          bloatSensitive: true
+        note: Keeper reports losses attributed to bloat; no diagnosis or controlled diet trial.
+      - source: *id015
+        value:
+          type: omnivore
+        note: Plants and snails listed; bloat susceptibility not addressed
+      - source: *id049
+        value:
+          type: omnivore
+        note: Plants and molluscs
+      - source: *id020
+        value:
+          type: omnivore
+          bloatSensitive: true
+        note: Bloat losses and fibre-rich lower-protein husbandry
+      - source: *id026
+        value:
+          type: piscivore
+        note: Adult fish feeding; younger fish also graze plants and snails
+      - source: *id013
+        value: carnivore
+        note: "The database does not quantify fish versus invertebrates, so this is not a piscivore assignment"
+      - source: *id029
+        value:
+          type: omnivore
+      - source: *id027
+        value:
+          type: omnivore
+          bloatSensitive: true
+        note: Aquarium losses and mixed feeding
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 4
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c proposed level 4; checker-a proposed 3. Aqua-Fish explicitly\
+      \ describes fatal partner attacks, Beerlink notes female attacks around eggs, and Ferdenzi used physical\
+      \ partitions throughout breeding. These observations meet the rubric's level requiring experienced management\
+      \ and separation even within a putative pair. The lower proposal relies on successful pairing and the\
+      \ general solitary-or-pair habit, which do not exclude lethal partner aggression."
+    sources:
+      - *id022
+      - *id018
+      - *id037
+      - *id010
+      - *id024
+      - *id025
+      - *id011
+      - *id019
+      - *id012
+      - *id020
+      - *id027
+      - *id028
+    evidence:
+      - source: *id022
+        value: 4
+        note: Pair introductions can result in injury or death.
+      - source: *id010
+        value: 3
+        note: mostly solitary or in pairs in the wild
+      - source: *id024
+        value: 3
+        note: "pairs only with enough space, established early"
+      - source: *id025
+        value: 3
+        note: pairs possible in a large tank
+      - source: *id022
+        value: 4
+        note: Partner injury and death risk.
+      - source: *id011
+        value: 4
+        note: Mapped from preventive lifelong separation in the reported breeding setup.
+      - source: *id027
+        value: 4
+      - source: *id012
+        value: 4
+        note: Adults bred across protective partitions
+  aggressionHeterospecific:
+    value: 4
+    confidence: medium
+    rationale: "All four proposals are level 4. Specialist care accounts and direct aquarium reports describe\
+      \ injury or death and adult exclusion of tankmates. Permissive retailer and community advice remains\
+      \ evidence, including one level-3 interpretation, but robust companions requiring exceptional space and\
+      \ separation are still consistent with level 4 under the rubric."
+    sources:
+      - *id018
+      - *id022
+      - *id037
+      - *id056
+      - &id059
+        kind: archive
+        title: cichlids.com forum thread 28715
+        url: "https://www.cichlids.com/disc/read.php?1,28715"
+        accessed: "2026-10-15"
+      - *id024
+      - *id025
+      - *id050
+      - *id023
+      - *id019
+      - *id038
+      - *id028
+      - *id020
+      - *id029
+      - *id013
+    evidence:
+      - source: *id022
+        value: 4
+        note: "Species aquarium advised, with immediate separation required if mixing fails."
+      - source: *id024
+        value: 4
+        note: cannot be housed with other fish
+      - source: *id025
+        value: 4
+        note: only with fish that can fend for themselves
+      - source: *id050
+        value: 4
+        note: juvenile killed four other cichlids
+      - source: *id023
+        value: 3
+        note: may live with large robust cichlids
+      - source: *id022
+        value: 4
+        note: Isolation or unusually robust companions with separation available.
+      - source: *id038
+        value: 4
+        note: Very aggressive species with only robust tankmates considered.
+      - source: *id050
+        value: 4
+        note: Reports of multiple cichlid deaths
+      - source: *id028
+        value: 4
+        note: Adult pair excluded tankmates
+  territory:
+    value:
+      size: large
+      breedingOnly: false
+    confidence: medium
+    rationale: All proposals describe a large territory not restricted to breeding. Adults exclude neighbours
+      and rearrange substrate outside spawning as well as during brood care. This is an inference from space
+      use and husbandry reports rather than a measured area in centimetres.
+    sources:
+      - *id022
+      - *id037
+      - &id067
+        kind: archive
+        title: cichlids.com forum thread 1856
+        url: "https://www.cichlids.com/disc/read.php?1,1856"
+        accessed: "2026-10-15"
+        offline: true
+      - *id025
+      - *id023
+      - *id024
+      - *id019
+      - *id028
+      - *id013
+    evidence:
+      - source: *id025
+        value:
+          size: large
+          breedingOnly: false
+        note: 180 gallon minimum for a single adult or a pair
+      - source: *id023
+        value:
+          size: large
+          breedingOnly: false
+        note: "aggressive, especially when breeding"
+      - source: *id024
+        value:
+          size: large
+          breedingOnly: false
+        note: 150 gallon minimum
+      - source: *id028
+        value:
+          size: large
+          breedingOnly: false
+  habitatZones:
+    value:
+      - rock
+      - sand
+      - openWater
+      - plants
+      - wood
+    confidence: high
+    rationale: "Generator, checker-b and checker-c proposed rock, sand, openWater, plants and wood; checker-a\
+      \ proposed rock, sand and plants while its own FishBase evidence also includes open water. FishBase describes\
+      \ adults using open areas with rock and debris refuges and juveniles sheltering in vegetation. Ferdenzi\
+      \ records sand, gravel, silt, leaf litter and marginal roots. Those observations support all five zones.\
+      \ Wood represents submerged roots and debris as cover, not a requirement for dense timber or a fully\
+      \ planted aquarium."
+    sources:
+      - *id003
+      - *id021
+      - *id023
+      - *id025
+      - *id011
+      - *id004
+      - *id053
+      - *id012
+      - *id026
+    evidence:
+      - source: *id010
+        value:
+          - rock
+          - plants
+          - openWater
+        note: "crevices, vegetation for young"
+      - source: *id023
+        value:
+          - rock
+          - wood
+          - plants
+        note: "caves, driftwood, plants"
+      - source: *id025
+        value:
+          - rock
+          - wood
+          - plants
+      - source: *id003
+        value:
+          - rock
+          - openWater
+          - plants
+          - wood
+        note: "Rock and debris refuges, open-water adults and vegetated juvenile habitat."
+      - source: *id011
+        value:
+          - sand
+          - plants
+          - wood
+        note: Sandy and silty creek substrate with marginal roots and vegetation.
+      - source: *id015
+        value:
+          - rock
+          - openWater
+          - plants
+          - wood
+      - source: *id012
+        value:
+          - sand
+          - plants
+          - wood
+  social:
+    value:
+      structure: pair
+    confidence: high
+    rationale: "All four proposals select a pair. FishBase describes solitary adults and pairs as common, and\
+      \ CRC's public mating summary identifies monogamy. A compatible adult pair is the unit for the minimum\
+      \ tank, with isolation for unpaired or incompatible adults. Occasional wild groups do not support a routine\
+      \ adult group in an aquarium."
+    sources:
+      - *id003
+      - &id057
+        kind: database
+        title: "Cichlid Room Companion: Nandopsis haitiensis, public summary only"
+        url: "https://cichlidae.com/species.php?id=0V0lhTbXgkoqkFHU-VVZTQ"
+        accessed: "2026-10-15"
+        archived: cichlidae.com/species.php/q-4f93c2d0/2026-10-15T053727Z
+      - *id022
+      - *id024
+      - *id019
+      - *id011
+      - *id020
+      - *id028
+    evidence:
+      - source: *id003
+        value:
+          structure: pair
+        note: Pairs and solitary adults are more usual than groups.
+      - source: *id057
+        value:
+          structure: pair
+        note: Public mating summary only; subscriber text was not accessed.
+      - source: *id010
+        value: pair
+        note: "solitary or pairs, rarely groups of 6 to 8"
+      - source: &id061
+          kind: database
+          title: "Cichlid Room Companion: Nandopsis haitiensis"
+          url: "https://cichlidae.com/species.php?id=0V0lhTbXgkoqkFHU-VVZTQ"
+          accessed: "2026-10-15"
+          archived: cichlidae.com/species.php/q-4f93c2d0/2026-10-15T053727Z
+        value: pair
+        note: monogamous
+      - source: *id024
+        value: pair
+        note: pairs with enough space
+      - source: *id019
+        value:
+          structure: pair
+        note: Recommended aquarium social unit.
+      - source: *id003
+        value:
+          structure: pair
+        note: Solitary fish and pairs predominate in observations.
+      - source: *id015
+        value:
+          structure: pair
+        note: Wild fish also occur singly
+      - source: *id028
+        value:
+          structure: pair
+        note: Pair maintained and bred for five years
+  speciesOnly:
+    value: true
+    confidence: medium
+    rationale: "The qualified-majority tally selects true with five votes of six: generator, checker-b, checker-c\
+      \ and both tiebreakers proposed true; checker-a proposed false. Beerlink and Aqua-Fish favour a dedicated\
+      \ setup, and a five-year pair account reports exclusion of other fish. The flag describes the recommended\
+      \ normal arrangement, rather than claiming all mixed tanks fail. Riverpark, Atlas, Aquariumpro, Bay Bridge\
+      \ and a crowded legacy stocking report allow or describe robust companions; these conflicting observations\
+      \ remain evidence but do not demonstrate safe adult pair cohabitation under the selected minimum. Beerlink's\
+      \ proposed island immune-system explanation is untested and is not used as established physiology."
+    sources:
+      - *id018
+      - *id022
+      - *id037
+      - *id056
+      - *id023
+      - *id024
+      - *id025
+      - *id019
+      - *id038
+      - *id020
+      - *id028
+      - *id050
+      - *id029
+      - *id039
+      - *id040
+      - *id041
+      - *id033
+      - kind: database
+        title: "Cichlid Room Companion: Nandopsis haitiensis, public species summary"
+        url: "https://cichlidae.com/species.php?id=0V0lhTbXgkoqkFHU-VVZTQ"
+        accessed: "2026-10-15"
+        archived: cichlidae.com/species.php/q-4f93c2d0/2026-10-15T053727Z
+      - *id058
+      - kind: archive
+        title: cichlids.com forum thread 1856
+        url: "https://www.cichlids.com/disc/read.php?1,1856"
+        accessed: "2026-10-15"
+      - &id068
+        kind: archive
+        title: cichlids.com forum thread 24987
+        url: "https://www.cichlids.com/disc/read.php?1,24987"
+        accessed: "2026-10-15"
+      - *id044
+      - *id059
+      - *id036
+      - *id051
+    evidence:
+      - source: *id018
+        value: true
+        note: Advises against keeping other cichlids with this fish.
+      - source: *id022
+        value: true
+        note: Recommends a single fish or managed pair in a species aquarium.
+      - source: *id037
+        value: false
+        note: Offers several large cichlids as possible companions.
+      - source: *id056
+        value: false
+        note: A mixed-stock account with no demonstrated long-term adult outcome.
+      - source: *id023
+        value: false
+        note: species-only or large robust cichlids
+      - source: *id024
+        value: true
+        note: cannot be housed with other fish
+      - source: *id025
+        value: false
+        note: only with fish that handle themselves
+      - source: *id019
+        value: true
+        note: Recommends no other cichlids.
+      - source: *id022
+        value: true
+        note: Dedicated setup preferred.
+      - source: *id038
+        value: true
+        note: "Species tank preferred, although robust companions are mentioned."
+      - source: *id054
+        value: false
+        note: Mixed keeping is proposed; this conflicts with the preferred dedicated setup.
+      - source: *id020
+        value: true
+      - source: *id028
+        value: true
+      - source: *id029
+        value: false
+        note: Dealer allows equally robust companions
+      - source: *id039
+        value: true
+        note: Explicit recommendation to exclude other cichlids.
+      - source: *id046
+        value: true
+        note: Single-species housing preferred; exceptional robust tankmates discussed.
+      - source: *id040
+        value: true
+        note: Recommends single-species tanks with a lone fish or bonded pair.
+      - source: *id041
+        value: false
+        note: Allows robust tankmates as an alternative to keeping alone.
+      - source: *id056
+        value: false
+        note: Unverified heavily mixed aquarium report; no duration or adult outcome given.
+      - source: *id047
+        value: true
+        note: Explicitly recommends a single specimen or conspecific pair as the preferred arrangement.
+      - source: *id036
+        value: true
+        note: Interpreted preferred single-fish or bonded-pair arrangement; large robust heterospecifics are
+          also allowed in very large tanks.
+      - source: *id060
+        value: false
+        note: Allows other similarly aggressive fish of equal or larger size.
+      - source: *id051
+        value: false
+        note: Excludes very small companions but does not restrict companions to conspecifics.
+      - source: *id048
+        value: false
+        note: Allows robust tankmates in its FAQ; no firm species-only rule.
+      - source: *id056
+        value: false
+        note: A keeper reports a mixed large-cichlid tank including this species; duration and adult outcome
+          are unknown.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  hybridGroups:
+    value:
+      - nandopsis-haitiensis-rocio-octofasciata
+      - nandopsis-tetracanthus-nandopsis-haitiensis
+    confidence: low
+    rationale: "The tally uses the conservative method, with three of six votes agreeing on the most common\
+      \ complete list, and confidence low. generator proposed [\"nandopsis-tetracanthus-nandopsis-haitiensis\"\
+      ]; checker-a proposed []; checker-b proposed [\"nandopsis-tetracanthus-nandopsis-haitiensis\"]; checker-c\
+      \ proposed [\"nandopsis-tetracanthus-nandopsis-haitiensis\"]; tiebreaker-1 proposed [\"nandopsis-tetracanthus-nandopsis-haitiensis\"\
+      , \"blood-parrot-cichlid-nandopsis-haitiensis\", \"nandopsis-haitiensis-rocio-octofasciata\", \"nandopsis-haitiensis-parachromis-motaguensis\"\
+      , \"nandopsis-haitiensis-thorichthys-meeki\"]; tiebreaker-2 proposed [\"nandopsis-tetracanthus-nandopsis-haitiensis\"\
+      , \"nandopsis-haitiensis-rocio-octofasciata\"]. No complete-list proposal meets the qualified-majority\
+      \ requirement. The conservative rule retains groups named by at least two votes: the existing Cuban pair\
+      \ occurs in five votes and the Jack Dempsey pair in both tiebreakers. Only tiebreaker-1 names the blood\
+      \ parrot, Parachromis motaguensis and Thorichthys meeki pairs, so those reports remain evidence without\
+      \ entering the decided list. Binns Hybrid Encyclopedia labels photographed captive offspring for the\
+      \ two retained pairs, and repeats the Jack Dempsey pairing in two galleries from the same compilation.\
+      \ Neither parentage nor access to conspecific partners is verified, so both groups have basis presumed.\
+      \ CRC and FishBase not mentioning hybrids is not positive evidence of reproductive isolation. The existing\
+      \ Cuban-pair id is retained exactly as tallied and curated, without creating a duplicate name for its\
+      \ members; no transitive group is inferred. Atlas's claim that Catalog of Fishes still accepts vombergae\
+      \ as valid conflicts with the actual catalog and is not followed. The accessible Rican abstract establishes\
+      \ evolutionary context, not either named cross."
+    sources:
+      - &id062
+        kind: website
+        title: "Binns Hybrid Encyclopedia: Cuban cross examples"
+        url: "https://www.binnspedia.com/nandopsis/cuban"
+        accessed: "2026-10-15"
+        archived: binnspedia.com/nandopsis/cuban/2026-10-14T094244Z
+      - *id061
+      - *id010
+      - &id063
+        kind: database
+        title: "Curated hybrid groups, data/species/hybrid-groups.yaml"
+        accessed: "2026-10-15"
+      - &id064
+        kind: website
+        title: "Binns Hybrid Encyclopedia: Black Nasty cross examples"
+        url: "https://www.binnspedia.com/nandopsis/black-nasty"
+        accessed: "2026-10-15"
+        archived: binnspedia.com/nandopsis/black-nasty/2026-10-15T054529Z
+      - &id065
+        kind: website
+        title: "Binns Hybrid Encyclopedia: Jack Dempsey cross examples"
+        url: "https://www.binnspedia.com/jack-dempsey"
+        accessed: "2026-10-15"
+        archived: binnspedia.com/jack-dempsey/2026-10-14T101709Z
+      - *id039
+      - kind: literature
+        title: "Rican et al. (2016): Diversity and evolution of the Middle American cichlid fishes with revised\
+          \ classification, abstract only"
+        url: "https://doi.org/10.3897/vz.66.e31534"
+        accessed: "2026-10-15"
+        archived: doi.org/10.3897_vz.66.e31534/2026-10-13T000529Z
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Nandopsis, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Nandopsis"
+        accessed: "2026-10-15"
+        archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-ee194369/2026-10-14T101657Z
+      - *id035
+      - *id036
+    evidence:
+      - source: *id062
+        value:
+          - nandopsis-tetracanthus-nandopsis-haitiensis
+        note: "Photograph labels only; presumed crossing risk, not independently verified parentage."
+      - source: *id061
+        value: []
+        note: no hybrid mentioned on the public page
+      - source: *id010
+        value: []
+        note: no hybrid mentioned
+      - source: *id063
+        value:
+          - nandopsis-tetracanthus-nandopsis-haitiensis
+        note: "Existing group membership, basis presumed."
+      - source: *id062
+        value:
+          - nandopsis-tetracanthus-nandopsis-haitiensis
+        note: Two labelled captive-cross examples without verified parentage.
+      - source: *id062
+        value:
+          - nandopsis-tetracanthus-nandopsis-haitiensis
+        note: Reported cross with the Cuban cichlid; not a confirmed free-choice breeding experiment
+      - source: *id062
+        value:
+          - nandopsis-tetracanthus-nandopsis-haitiensis
+        note: Labels captive Cuban and Haitian offspring; mate-choice conditions unknown.
+      - source: *id064
+        value:
+          - nandopsis-tetracanthus-nandopsis-haitiensis
+          - blood-parrot-cichlid-nandopsis-haitiensis
+          - nandopsis-haitiensis-rocio-octofasciata
+          - nandopsis-haitiensis-parachromis-motaguensis
+          - nandopsis-haitiensis-thorichthys-meeki
+        note: "Five named pairwise captive-cross claims, all without verified parentage or free conspecific\
+          \ mate choice."
+      - source: *id065
+        value:
+          - nandopsis-haitiensis-rocio-octofasciata
+        note: Repeats the Haitian and Jack Dempsey cross within the same compilation.
+      - source:
+          kind: website
+          title: "Binns Hybrid Encyclopedia, Cuban cross examples"
+          url: "https://www.binnspedia.com/nandopsis/cuban"
+          accessed: "2026-10-15"
+          archived: binnspedia.com/nandopsis/cuban/2026-10-14T094244Z
+        value:
+          - nandopsis-tetracanthus-nandopsis-haitiensis
+        note: "Named captive-offspring labels; parentage, fertility and conspecific partner availability are\
+          \ unverified."
+      - source:
+          kind: website
+          title: "Binns Hybrid Encyclopedia, Jack Dempsey cross examples"
+          url: "https://www.binnspedia.com/jack-dempsey"
+          accessed: "2026-10-15"
+          archived: binnspedia.com/jack-dempsey/2026-10-14T101709Z
+        value:
+          - nandopsis-haitiensis-rocio-octofasciata
+        note: "Proposed pairwise group from named captive-offspring labels; basis presumed, not a free-choice\
+          \ crossing observation."
+    verification:
+      method: conservative
+      votes:
+        agree: 3
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - white
+        - grey
+        - black
+        - brown
+      pattern: mixed
+    confidence: high
+    rationale: "Generator and checker-b proposed white, grey and black with a mixed pattern; checker-a black\
+      \ and grey with a plain pattern; checker-c grey, white, black and brown with a mixed pattern. Smithsonian\
+      \ and Ferdenzi describe brown or beige shading as well as dark markings, and the association describes\
+      \ grey fish with bars and spots. The combined palette and mixed pattern therefore better describe adult\
+      \ males than a plain dark body. Female brood darkening is directly documented; the Nordic account also\
+      \ reports dark breeding males. Mood, sex and reproductive state can change appearance, so black is not\
+      \ treated as the sole male base colour."
+    sources:
+      - *id021
+      - *id018
+      - *id022
+      - *id025
+      - *id019
+      - *id011
+      - *id026
+      - *id054
+      - *id049
+      - *id020
+    evidence:
+      - source: *id025
+        value:
+          baseColors:
+            - white
+            - grey
+          pattern: plain
+        note: "males lighter, females mostly black"
+      - source: *id049
+        value:
+          baseColors:
+            - grey
+            - brown
+            - black
+          pattern: mixed
+  feedingSpeed:
+    value: hasty
+    confidence: medium
+    rationale: "All four proposals are hasty. Ferdenzi's first-hand observations of vigorous guppy capture\
+      \ and strong acceptance of prepared foods support that rubric mapping. It is a qualitative aquarium observation,\
+      \ not a measured comparative feeding rate."
+    sources:
+      - *id037
+      - *id025
+      - *id023
+      - *id011
+      - *id012
+    evidence:
+      - source: *id037
+        value: hasty
+        note: "Eager acceptance interpreted as the rubric level, not a timed observation."
+      - source: *id025
+        value: hasty
+        note: "boisterous, active"
+      - source: *id023
+        value: hasty
+        note: messy eater
+      - source: *id011
+        value: hasty
+        note: Mapped from first-hand feeding observations.
+      - source: *id012
+        value: hasty
+  minTank:
+    value:
+      volumeL: 700
+      lengthCm: 200
+      depthCm: 60
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c proposed 700 L, 200 cm length and 60 cm depth; checker-a\
+      \ proposed 570 L, 180 cm and 50 cm. The component medians are 700 L, 200 cm and 60 cm. The Nordic association\
+      \ explicitly supplies 700 L and 200 cm, and Aqua-Fish gives a wider pair recommendation of 500-700 L.\
+      \ These apply to the recommended adult pair rather than a small juvenile. The 60 cm depth is a practical\
+      \ turning-room and refuge-route inference for an approximately 31 cm male, not an association measurement.\
+      \ Smaller pair reports include 454 and 568 L; a forum guide proposes 681 L with a 183 by 61 cm footprint,\
+      \ while J and K recommends 800 L and 200 cm. Retail 284 L and 568 L figures are retained with their inconsistent\
+      \ or unspecified social units. A divider and independent accommodation remain necessary if the pair fails."
+    sources:
+      - *id021
+      - *id022
+      - *id037
+      - *id023
+      - *id024
+      - *id025
+      - *id026
+      - *id038
+      - *id027
+      - *id028
+      - *id029
+    evidence:
+      - source: *id021
+        value:
+          volumeL: 700
+          lengthCm: 200
+        note: Source supplies volume and length only.
+      - source: *id022
+        value:
+          volumeL: 500
+        note: Lower end of pair volume recommendation; source supplies no footprint.
+      - source: *id023
+        value:
+          volumeL: 284
+          lengthCm: 120
+          depthCm: 45
+        note: 75 gallons for a single fish or pair
+      - source: *id024
+        value:
+          volumeL: 568
+          lengthCm: 150
+          depthCm: 50
+        note: 150 gallons
+      - source: *id025
+        value:
+          volumeL: 681
+          lengthCm: 183
+          depthCm: 61
+        note: 180 gallons for one adult or a pair
+      - source: *id026
+        value:
+          volumeL: 700
+          lengthCm: 200
+          depthCm: 60
+        note: Volume and length are explicit; depth is inferred.
+      - source: *id038
+        value:
+          volumeL: 800
+          lengthCm: 200
+          depthCm: 60
+        note: Dealer volume and length; depth is inferred.
+      - source: *id026
+        value:
+          volumeL: 700
+          lengthCm: 200
+        note: Depth not stated
+      - source: *id027
+        value:
+          volumeL: 454
+        note: 120 US gallons for a pair
+      - source: *id028
+        value:
+          volumeL: 568
+        note: 150 US gallons used for five years
+      - source: *id029
+        value:
+          volumeL: 284
+        note: "Dealer minimum of 75 US gallons, social unit unspecified"
+  lifespanYears:
+    value:
+      min: 9
+      max: 12
+    confidence: low
+    rationale: "Generator and checker-b proposed 8-12 years, checker-a 10-15 and checker-c 10-12. The component\
+      \ medians are 9-12 years, retained as a provisional aquarium estimate. Aqua-Fish gives 8-12, Fishipedia\
+      \ 12, Riverpark the wider 10-15, and MidasCichlid estimates 8-10 from related fishes. Bay Bridge gives\
+      \ 5-10; the Aquarium Wiki and Aquariumpro give 5-8, and J and K says over 10. There is no verified cohort\
+      \ or lifetime series to resolve those differences. The median does not establish a nine-year minimum\
+      \ life expectancy."
+    sources:
+      - *id022
+      - *id037
+      - *id023
+      - *id038
+      - *id013
+      - *id029
+      - *id040
+      - *id041
+    evidence:
+      - source: *id022
+        value:
+          min: 8
+          max: 12
+        note: Aquarium estimate.
+      - source: *id037
+        value:
+          min: 8
+          max: 10
+        note: Explicitly an estimate from related species.
+      - source: *id023
+        value:
+          min: 10
+          max: 15
+      - source: *id022
+        value:
+          min: 8
+          max: 12
+        note: Husbandry estimate.
+      - source: *id054
+        value:
+          min: 8
+          max: 10
+        note: Explicitly an estimate from related fishes.
+      - source: *id013
+        value:
+          min: 12
+          max: 12
+      - source: *id029
+        value:
+          min: 5
+          max: 10
+      - source: *id040
+        value:
+          min: 5
+          max: 8
+        note: General hobby estimate read during adjudication; no individual age record.
+      - source: *id041
+        value:
+          min: 5
+          max: 8
+        note: General hobby estimate read during adjudication; no individual age record.
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: "All four proposals select open-substrate spawning, supported by FishBase, the Nordic association\
+      \ and CRC's public summary. Ferdenzi's fish also laid eggs inside a flowerpot and reproduced across a\
+      \ partition. The retained cave-spawner evidence records that particular sheltered spawning surface; it\
+      \ does not establish obligatory cave spawning."
+    sources:
+      - *id003
+      - *id057
+      - *id021
+      - *id025
+      - *id019
+      - *id011
+      - *id026
+      - *id012
+      - *id020
+      - *id013
+    evidence:
+      - source: *id003
+        value: open-substrate-spawner
+        note: Eggs attached to a cleaned stone.
+      - source: *id057
+        value: open-substrate-spawner
+        note: Public breeding summary only.
+      - source: *id010
+        value: open-substrate-spawner
+        note: "cleaned stone, 150 to 200 eggs"
+      - source: *id061
+        value: open-substrate-spawner
+        note: substrate open
+      - source: *id025
+        value: open-substrate-spawner
+        note: flat surface
+      - source: *id003
+        value: open-substrate-spawner
+        note: Stone-cleaning and egg deposition.
+      - source: *id019
+        value: open-substrate-spawner
+        note: Explicit spawning mode.
+      - source: *id015
+        value: open-substrate-spawner
+      - source: *id012
+        value: cave-spawner
+        note: Observed spawning inside a flowerpot does not establish obligatory cave spawning
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: "All four proposals are demanding. Large adult housing, hazardous pair formation and repeated\
+      \ reports of digestive losses require experience and ready separation. The Nordic moderate rating, the\
+      \ Bay Bridge easy rating and Ferdenzi's successful report of straightforward care remain contrary evidence,\
+      \ but do not remove the demonstrated aggression-management burden."
+    sources:
+      - *id021
+      - *id018
+      - *id022
+      - *id024
+      - *id025
+      - *id050
+      - *id019
+      - *id011
+      - *id026
+      - *id038
+      - *id020
+      - *id027
+      - *id028
+      - *id012
+      - *id029
+    evidence:
+      - source: *id024
+        value: moderate
+        note: "retailer: easy to moderate"
+      - source: *id025
+        value: demanding
+        note: "180 gallons, very aggressive"
+      - source: *id050
+        value: demanding
+        note: kills tankmates
+      - source: *id020
+        value: demanding
+      - source: *id026
+        value: moderate
+      - source: *id029
+        value: easy
+      - source: *id012
+        value: easy
+        note: Successful breeder considered the fish robust
+partners:
+  suitable:
+    - species: Nandopsis haitiensis
+      reason: Only a compatible opposite-sex conspecific is recommended for shared adult housing.
+      condition: "Established pair in at least 700 L with 200 cm length and approximately 60 cm depth; secure\
+        \ refuges, a divider and separate accommodation remain available."
+  unsuitable:
+    - species: Poecilia reticulata
+      reason: Small adults are potential prey and vulnerable to territorial attacks.
+    - species: Nandopsis tetracanthus
+      reason: Serious aggression risk and a presumed crossing risk supported by unverified captive-offspring
+        labels.
+    - species: Rocio octofasciata
+      reason: The dedicated-species recommendation and serious aggression make routine mixing unsuitable; labelled
+        captive offspring also indicate a presumed crossing risk.
+    - species: Symphysodon aequifasciatus
+      reason: Its quieter feeding and social behaviour do not withstand the territorial pressure of this species.
+    - species: Thorichthys meeki
+      reason: "A permissive hobby page names it as a companion, but its smaller size and lower fighting capacity\
+        \ make adult cohabitation unreliable."
+    - species: Dajaus monticola
+      reason: Recorded natural association under Agonostomus monticola does not establish safe captive cohabitation;
+        no direct aquarium compatibility evidence was found.
+    - species: Pterygoplichthys gibbiceps
+      reason: Armour does not establish safety from a large aggressive cichlid; no direct evidence justifies
+        listing it as a suitable shared-space companion.
+profile:
+  overview:
+    text: "A large aquarium devoted to the Haitian cichlid can hold an impressive pale male with dark markings\
+      \ and a strongly contrasting breeding female. The species is native to Hispaniola, shared by Haiti and\
+      \ the Dominican Republic, and is also traded as Odo or Black nasty. Its powerful appearance should not\
+      \ obscure the care challenge: partner aggression can be severe, and digestive losses are repeatedly reported.\
+      \ Older stock labelled vombergi or vombergae belongs to the same accepted species, although keeping reliable\
+      \ locality records remains useful."
+    sources:
+      - *id001
+      - *id003
+      - *id022
+      - *id037
+      - *id066
+  sizeAndGrowth:
+    text: "Allow for approximately 31 cm total length in a large male and 25 cm in a female. These are practical\
+      \ adult estimates rather than fixed biological limits, and the female figure is particularly uncertain.\
+      \ Some hobbyists report substantially larger adults, but exceptional fish do not set the typical maximum.\
+      \ FishBase's 21.5 cm standard length excludes the tail and is not directly interchangeable with total\
+      \ length. Breeding can begin while fish are still small, so an early spawn is no reason to postpone adult\
+      \ housing. The provisional longevity estimate is about 9-12 years, with published hobby estimates varying\
+      \ much more widely."
+    sources:
+      - *id003
+      - *id021
+      - *id018
+      - *id037
+      - *id022
+      - *id023
+      - *id019
+      - *id026
+      - *id049
+      - *id013
+      - *id027
+      - *id028
+      - *id029
+      - *id040
+      - *id041
+  husbandry:
+    text: "Plan at least 700 litres with a 200 cm length and roughly 60 cm front-to-back space for a compatible\
+      \ adult pair. Keep open swimming room between secure rockwork and several refuges. Place heavy structures\
+      \ so digging cannot undermine them, and protect vulnerable equipment. Maintain efficient biological filtration,\
+      \ oxygenation and steady water quality. Husbandry reports give the strongest routine support around 27-29\
+      \ C with stable near-neutral to alkaline water. The wider listed tolerances have uncertain endpoints,\
+      \ especially 33 C and pH 9, and are not targets to pursue. Match replacement water carefully and keep\
+      \ a secure divider and separate accommodation available throughout the fish's life. Freshwater keeping\
+      \ is established; brackish occurrence alone does not establish a universal salt requirement."
+    sources:
+      - *id021
+      - *id022
+      - *id037
+      - *id067
+      - *id011
+      - *id026
+      - *id019
+      - *id028
+  socialBehavior:
+    text: "A compatible pair is the recommended adult social unit. Two fish of opposite sex may remain incompatible,\
+      \ and an established partner can still become dangerous. Controlled introductions, clear escape routes\
+      \ and close observation are essential; permanent separation may be necessary. Aggression can come from\
+      \ either sex and often intensifies around a spawning surface. Continuous hiding, exclusion from food\
+      \ or repeated attacks signal an arrangement that needs intervention. Occasional small groups in nature\
+      \ do not justify a normal aquarium group of adults."
+    sources:
+      - *id003
+      - *id022
+      - *id018
+      - *id057
+      - *id011
+      - *id028
+  diet:
+    text: "Provide a complete food with a substantial plant component, supplemented with varied vegetable foods\
+      \ and modest portions of aquatic invertebrates. Plants and snails occur in wild food records, while captive\
+      \ fish readily hunt small fish. That combination supports omnivory without making fish flesh the staple.\
+      \ Offer controlled portions and watch appetite and body condition. Reports link rich feeding, temperature,\
+      \ stress and water quality with digestive losses, but they do not isolate a single cause of bloat. Feeding\
+      \ adjustments should accompany suitable water conditions and relief from aggression."
+    sources:
+      - *id003
+      - *id021
+      - *id018
+      - *id022
+      - *id052
+      - *id053
+      - *id055
+      - *id049
+  breeding:
+    text: "The pair attaches eggs to a prepared solid surface and guards the developing brood. Exposed stones\
+      \ are suitable, although sheltered surfaces can also be used. A published breeding account obtained fertile\
+      \ eggs even while the adults remained separated by a grid, illustrating the value of physical protection\
+      \ during reproduction. Either parent may tend free-swimming young, and the female can become particularly\
+      \ intolerant around eggs. Development times vary with temperature. Newly swimming fry can take newly\
+      \ hatched Artemia and suitably fine prepared food, with clean water and sufficient rearing space prepared\
+      \ in advance."
+    sources:
+      - *id003
+      - *id021
+      - *id018
+      - *id022
+      - *id057
+      - *id011
+  sexing:
+    text: "Adult males generally grow larger and may have more pointed dorsal and anal fins or a prominent\
+      \ forehead swelling. Females tend to remain smaller and can darken markedly while guarding young. Neither\
+      \ a hump nor a single colour mark is a reliable universal test, and reports differ over which sex becomes\
+      \ darkest during breeding. Ground colour may include cream, grey or brownish tones with dark bars, spots\
+      \ or reticulation. Juveniles are difficult to sex visually; comparisons between mature fish of similar\
+      \ age and known origin are more informative."
+    sources:
+      - *id018
+      - *id021
+      - *id037
+      - *id022
+      - *id011
+      - *id049
+  compatibility:
+    text: "Use a dedicated aquarium for a carefully managed pair or a single fish. Small tankmates may be eaten,\
+      \ and comparable-sized cichlids can suffer serious attacks. Some dealers and keepers describe robust\
+      \ companions, but those reports do not establish a dependable adult community at the selected minimum.\
+      \ The only listed suitable companion is a compatible conspecific partner. Reported captive crosses with\
+      \ the Cuban cichlid and Jack Dempsey add presumed hybrid risks to the fighting risk. These reports come\
+      \ from labelled offspring in one hobby compilation, without verified pedigrees or established choice\
+      \ of conspecific partners. Wild association with livebearers or mountain mullet does not establish aquarium\
+      \ compatibility."
+    sources:
+      - *id003
+      - *id018
+      - *id022
+      - *id037
+      - *id062
+      - *id056
+      - *id058
+      - *id068
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Agonostomus, companion name check"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Agonostomus"
+        accessed: "2026-10-15"
+        archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-9e18fe2f/2026-10-15T054103Z
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Dajaus, companion name check"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Dajaus"
+        accessed: "2026-10-15"
+        archived: researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-c768e96e/2026-10-15T054127Z
+      - *id064
+      - *id065
+      - *id011
+      - *id028
+  problems:
+    text: "Aggression, cramped adult housing and unexplained digestive losses are the main practical concerns.\
+      \ Young fish are repeatedly reported to deteriorate during growth, but abdominal swelling is not a diagnosis\
+      \ and the sources do not show one cause for every loss. Monitor feeding, breathing, injuries and access\
+      \ to refuge, and check water quality and social pressure when behaviour changes. Keep new stock separate\
+      \ during acclimation and maintain a usable separation option for established adults. Stable replacement-water\
+      \ conditions and restrained feeding reduce avoidable stress without substituting for investigation of\
+      \ a sick fish."
+    sources:
+      - *id018
+      - *id022
+      - *id037
+      - *id055
+      - *id027
+      - *id028
+  habitat:
+    text: "Populations occupy Hispaniolan lakes, rivers, canals and small streams, including fresh and brackish\
+      \ water. Adults use open areas and nearby rock or debris refuges; vegetation and trailing roots shelter\
+      \ young fish. Collecting accounts measured occupied freshwater sites at 26-33 C and pH 7.35-9.0, while\
+      \ Miragoane shores add 25-26 C and pH 6.9-7.1. A nearby regional Galvan pool measured 24 C. Stalsberg\
+      \ reported GH and KH of 5-17 degrees across occupied freshwater sites; the tallied 6-16 dGH field parameter\
+      \ is a narrower synthesis, not the complete observed GH range. Miragoane provides single readings of\
+      \ 9 dGH and 7 dKH, with an unresolved mismatch between its observation and reference dates. Oviedo had\
+      \ GH above 60, pH 8.5 and water near 30 C, but the expedition did not collect this cichlid there. Estimated\
+      \ Enriquillo open-water temperatures of 33-34 C and its hypersaline chemistry also do not determine this\
+      \ profile's freshwater parameters."
+    sources:
+      - *id003
+      - *id018
+      - *id007
+      - *id006
+      - *id044
+      - *id002
+      - *id009
+      - *id004
+      - *id011
+      - *id005
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6.1-sol
+      date: "2026-10-15"
+    - role: checker
+      model: claude-sonnet-5-5
+      date: "2026-10-15"
+    - role: checker
+      model: gpt-6.1-sol
+      date: "2026-10-15"
+    - role: checker
+      model: gpt-6.1-sol
+      date: "2026-10-15"
+    - role: checker
+      model: gpt-6.1-sol
+      date: "2026-10-15"
+    - role: checker
+      model: gpt-6.1-sol
+      date: "2026-10-15"
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: "2026-10-15"
+  disagreements:
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Central America
+            region: "Hispaniola, Haiti and the Dominican Republic"
+            waterbody: null
+            localities:
+              - Etang Saumatre
+              - Lake Miragoane
+              - Rio Yaque del Sur
+              - Rio Yaque del Norte
+        - by: checker-a
+          value:
+            continent: Central America
+            region: "Hispaniola (Haiti and Dominican Republic), Greater Antilles"
+            waterbody: null
+            localities:
+              - "Etang Saumatre (type locality), Haiti"
+              - "Rio Yaque del Sur basin, Dominican Republic"
+        - by: checker-b
+          value:
+            continent: Central America
+            region: "Hispaniola, Haiti and the Dominican Republic"
+            localities:
+              - Etang Saumatre
+              - Rio Guayamouco
+              - Rio Nizao
+              - Rio Yaque del Sur
+              - Rio Acapulco
+        - by: checker-c
+          value:
+            continent: Central America
+            region: "Hispaniola, Haiti and Dominican Republic"
+            waterbody: null
+            localities:
+              - Lake Miragoane
+              - Etang Saumatre
+              - Rio Jaina tributary
+              - Yaque river systems
+      decision:
+        continent: Central America
+        region: "Hispaniola, Haiti and the Dominican Republic"
+        waterbody: null
+        localities:
+          - Etang Saumatre
+          - Lake Miragoane
+          - Rio Guayamouco
+          - Rio Yaque del Sur
+          - Rio Yaque del Norte
+          - Rio Nizao
+          - Rio Acapulco
+          - Rio Jaina tributary
+      rationale: "All runs agree on Hispaniolan endemism in Haiti and the Dominican Republic; their locality\
+        \ lists describe different documented parts of the distribution. Catalog of Fishes establishes Etang\
+        \ Saumatre as the type locality and Rio Yaque del Sur as the origin of the junior synonym. The Yaque\
+        \ survey, Stalsberg and Ferdenzi document Dominican freshwater sites, Beerlink records Haitian and\
+        \ northern Dominican rivers, and Citizen Conservation records Miragoane. The merged list is illustrative\
+        \ rather than exhaustive. Central America is the schema's regional category for the Greater Antilles.\
+        \ No named African-lake preset applies. Rican's accessible abstract and the biogeography paper provide\
+        \ lineage context; the two Limia abstracts provide lake context, not species-specific water limits."
+    - field: features.temperatureC
+      proposals:
+        - by: generator
+          value:
+            min: 24
+            max: 32.5
+        - by: checker-a
+          value:
+            min: 24
+            max: 30
+        - by: checker-b
+          value:
+            min: 24
+            max: 33
+        - by: checker-c
+          value:
+            min: 25
+            max: 33
+        - by: tiebreaker-1
+          value:
+            min: 24
+            max: 33
+        - by: tiebreaker-2
+          value:
+            min: 24
+            max: 33
+      decision:
+        min: 24
+        max: 33
+      rationale: "The qualified-majority tally retains 24-33 C, with five of six agreeing votes. generator\
+        \ proposed {\"min\": 24, \"max\": 32.5}; checker-a proposed {\"min\": 24, \"max\": 30}; checker-b proposed\
+        \ {\"min\": 24, \"max\": 33}; checker-c proposed {\"min\": 25, \"max\": 33}; tiebreaker-1 proposed\
+        \ {\"min\": 24, \"max\": 33}; tiebreaker-2 proposed {\"min\": 24, \"max\": 33}. Ferdenzi reports 33\
+        \ C at the Rio Jaina collecting creek. Stalsberg measured 26-32.5 C at occupied freshwater sites and\
+        \ 24 C at a nearby Galvan pool of the same regional water type. Citizen Conservation adds 25-26 C at\
+        \ Miragoane. FishBase lists 24-27 C without a locality-resolved series. Direct collecting measurements\
+        \ outweigh that general interval. The result describes different places and sampling times, with limited\
+        \ seasonal coverage; the hot endpoints are not established year-round aquarium targets. Enriquillo\
+        \ hypersaline-lake data remain contrary regional context and do not set either endpoint. The Yaque\
+        \ survey mean and standard deviation are not observed minimum and maximum temperatures."
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 24
+            max: 33
+        - by: checker-a
+          value:
+            min: 22
+            max: 32
+        - by: checker-b
+          value:
+            min: 23
+            max: 33
+        - by: checker-c
+          value:
+            min: 24
+            max: 33
+      decision:
+        min: 24
+        max: 33
+      rationale: "The tally classifies the four proposals as unanimous within the one-degree agreement threshold\
+        \ and decides 24-33 C after containing the natural range. generator proposed {\"min\": 24, \"max\"\
+        : 33}; checker-a proposed {\"min\": 22, \"max\": 32}; checker-b proposed {\"min\": 23, \"max\": 33};\
+        \ checker-c proposed {\"min\": 24, \"max\": 33}. Beerlink recommends 27-29 C, the Nordic register 24-29\
+        \ C and Aqua-Fish 23-28 C. Ferdenzi bred fish around 24.4 and 27.8 C and reared fry near 28.9 C. A\
+        \ forum keeper reports a pair maintained for five years in the high eighties Fahrenheit, approximately\
+        \ 30-32 C. The broader forum care interval of 28.8-33 C is retained, as is the conflicting Bay Bridge\
+        \ dealer advice of 20-22.8 C. The upper bound is required to include the observed habitat envelope\
+        \ and has no demonstrated multiyear safety margin. Limia critical temperatures of 12-41.2 C concern\
+        \ a different fish family and acute experiments, so they do not establish this cichlid's chronic tolerance.\
+        \ Routine maintenance around 27-29 C has better support than either decided edge; confidence stays\
+        \ low."
+    - field: features.ph
+      proposals:
+        - by: generator
+          value:
+            min: 6.9
+            max: 9
+        - by: checker-a
+          value:
+            min: 7.4
+            max: 8.4
+        - by: checker-b
+          value:
+            min: 7.3
+            max: 9
+        - by: checker-c
+          value:
+            min: 6.9
+            max: 7.4
+        - by: tiebreaker-1
+          value:
+            min: 6.9
+            max: 9
+        - by: tiebreaker-2
+          value:
+            min: 6.9
+            max: 9
+      decision:
+        min: 6.9
+        max: 9
+      rationale: "The settled tally uses the median method because no four-vote qualified majority exists under\
+        \ the pH agreement threshold; confidence is low. generator proposed {\"min\": 6.9, \"max\": 9}; checker-a\
+        \ proposed {\"min\": 7.4, \"max\": 8.4}; checker-b proposed {\"min\": 7.3, \"max\": 9}; checker-c proposed\
+        \ {\"min\": 6.9, \"max\": 7.4}; tiebreaker-1 proposed {\"min\": 6.9, \"max\": 9}; tiebreaker-2 proposed\
+        \ {\"min\": 6.9, \"max\": 9}. The median of proposal minima is 6.9 and of maxima is 9.0, so 6.9-9.0\
+        \ is retained without replacing it. It is plausible as a spatial freshwater envelope: Citizen Conservation\
+        \ reports 6.9 and 7.1 at Miragoane, Ferdenzi 7.35 at Rio Jaina, and Stalsberg 8.0-9.0 at occupied Dominican\
+        \ river and canal sites, plus 7.3 at a regional Galvan pool. The Miragoane report pairs a 2015 reference\
+        \ with a 2021 observation date, weakening its chronology. The narrow 6.9-7.4 proposal omits directly\
+        \ measured occupied alkaline sites; the 7.4-8.4 proposal emphasizes regional studies rather than the\
+        \ full collecting evidence. Hypersaline-lake readings and pH inferred from calcium-bicarbonate water\
+        \ type do not set the range. Neither endpoint is a demonstrated constant optimum."
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 6.5
+            max: 9
+        - by: checker-a
+          value:
+            min: 6.8
+            max: 8.8
+        - by: checker-b
+          value:
+            min: 7
+            max: 9
+        - by: checker-c
+          value:
+            min: 6.9
+            max: 8
+        - by: tiebreaker-1
+          value:
+            min: 6.5
+            max: 9
+        - by: tiebreaker-2
+          value:
+            min: 6.5
+            max: 9
+      decision:
+        min: 6.5
+        max: 9
+      rationale: "The qualified-majority tally decides 6.5-9.0 from five agreeing votes out of six, with low\
+        \ confidence. generator proposed {\"min\": 6.5, \"max\": 9}; checker-a proposed {\"min\": 6.8, \"max\"\
+        : 8.8}; checker-b proposed {\"min\": 7, \"max\": 9}; checker-c proposed {\"min\": 6.9, \"max\": 8};\
+        \ tiebreaker-1 proposed {\"min\": 6.5, \"max\": 9}; tiebreaker-2 proposed {\"min\": 6.5, \"max\": 9}.\
+        \ Successful spawning at pH 7.2 and association guidance of 7-8 anchor the central part. Aqua-Fish\
+        \ gives 7.2-8, Beerlink and Atlas 7-7.5, and the Aquarium Wiki and Bay Bridge extend their advice to\
+        \ 6.5. MidasCichlid and Aquariumpro give the wider acidic recommendation of 6-8; that pH 6 endpoint\
+        \ is weaker than the corroborated 6.5 advice and is not adopted. J and K and a forum guide permit 7-9.\
+        \ The upper limit contains the natural pH 9 observation. Published advice and field occurrence do not\
+        \ establish safe lifetime exposure at either extreme, so these remain provisional boundaries."
+    - field: features.ghDgh
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 17
+        - by: checker-a
+          value:
+            min: 7
+            max: 15
+        - by: checker-b
+          value:
+            min: 5
+            max: 17
+        - by: checker-c
+          value:
+            min: 9
+            max: 13
+      decision:
+        min: 6
+        max: 16
+      rationale: "The tally decides 6-16 dGH and calls the four votes unanimous under its two-degree range-agreement\
+        \ rule; this is threshold agreement rather than identical proposals. generator proposed {\"min\": 5,\
+        \ \"max\": 17}; checker-a proposed {\"min\": 7, \"max\": 15}; checker-b proposed {\"min\": 5, \"max\"\
+        : 17}; checker-c proposed {\"min\": 9, \"max\": 13}. The tally value and low confidence are retained\
+        \ exactly. Stalsberg's directly measured occupied-site range is wider, 5-17 dGH, including 5 at Rio\
+        \ Acapulco, 11-12 at Rio Nizao, 12 at Palo Leche and 17 in the stream west of Santo Domingo. Those\
+        \ observations remain evidence outside the decided interval, and 6-16 must not be read as the full\
+        \ measured field envelope. Miragoane supplies one 9 dGH reading; the regional FAO Rio Yaque calcium\
+        \ and magnesium analysis converts to about 12.1 dGH without identifying the exact river station. The\
+        \ 7-15 proposal relied on estimates from dissolved solids, and 9-13 emphasized Miragoane and that regional\
+        \ chemical analysis. TDS, conductivity, pH and salinity alone do not determine GH, so the retained\
+        \ numerical inferences of 7-10, 12-40 and 10-25 dGH are not independent measurements. Exceptional hypersaline\
+        \ waters above 60 dGH are excluded."
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 4
+            max: 20
+        - by: checker-a
+          value:
+            min: 5
+            max: 20
+        - by: checker-b
+          value:
+            min: 4
+            max: 30
+        - by: checker-c
+          value:
+            min: 6
+            max: 18
+        - by: tiebreaker-1
+          value:
+            min: 4
+            max: 20
+        - by: tiebreaker-2
+          value:
+            min: 4
+            max: 20
+      decision:
+        min: 4
+        max: 20
+      rationale: "The qualified-majority tally chooses 4-20 dGH from five agreeing votes out of six, with low\
+        \ confidence. generator proposed {\"min\": 4, \"max\": 20}; checker-a proposed {\"min\": 5, \"max\"\
+        : 20}; checker-b proposed {\"min\": 4, \"max\": 30}; checker-c proposed {\"min\": 6, \"max\": 18};\
+        \ tiebreaker-1 proposed {\"min\": 4, \"max\": 20}; tiebreaker-2 proposed {\"min\": 4, \"max\": 20}.\
+        \ Aqua-Fish recommends 4-16, Beerlink and Atlas 12-16, the Aquarium Wiki 6-16, and Aquariumpro 4-20\
+        \ dGH. The decided interval contains both the tallied natural 6-16 range and Stalsberg's wider measured\
+        \ 5-17 freshwater range. J and K gives a wider upper recommendation of 30 dGH, which underlies checker-b's\
+        \ 4-30 proposal; that dealer ceiling lacks supporting multiyear observations and is not adopted. Forum-derived\
+        \ 10-25 figures and Riverpark-derived 5-20 figures were agent interpretations of qualitative advice,\
+        \ not measured limits. The chosen edges are a provisional husbandry synthesis, not experimentally established\
+        \ thresholds. Brackish occurrence does not convert salinity into GH."
+    - field: features.khDkh
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 17
+        - by: checker-a
+          value:
+            min: 6
+            max: 12
+        - by: checker-b
+          value:
+            min: 5
+            max: 17
+        - by: checker-c
+          value:
+            min: 7
+            max: 11
+        - by: tiebreaker-1
+          value:
+            min: 5
+            max: 17
+        - by: tiebreaker-2
+          value:
+            min: 5
+            max: 17
+      decision:
+        min: 5
+        max: 17
+      rationale: "The tally decides 5-17 dKH, with medium confidence, by four agreeing votes out of six. generator\
+        \ proposed {\"min\": 5, \"max\": 17}; checker-a proposed {\"min\": 6, \"max\": 12}; checker-b proposed\
+        \ {\"min\": 5, \"max\": 17}; checker-c proposed {\"min\": 7, \"max\": 11}; tiebreaker-1 proposed {\"\
+        min\": 5, \"max\": 17}; tiebreaker-2 proposed {\"min\": 5, \"max\": 17}. As required for natural KH,\
+        \ this fact has no verification object. Stalsberg reports KH separately from GH at occupied sites:\
+        \ 5 at Rio Acapulco, 9 and 11 at Rio Nizao, 13 at Palo Leche and 17 in the stream west of Santo Domingo.\
+        \ Miragoane adds one 7 dKH observation. FAO's regional Rio Yaque bicarbonate analysis converts to about\
+        \ 10.1 dKH but lacks an exact station. The 6-12 proposal inferred buffering from water type and pH,\
+        \ while 7-11 combined Miragoane with the FAO analysis. Direct freshwater measurements take priority\
+        \ over those narrower inferences. The 17 dKH stream was affected by livestock, so it is qualified as\
+        \ a spot observation rather than a seasonal optimum. No salinity or conductivity conversion is used."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 3
+            max: 20
+        - by: checker-a
+          value:
+            min: 4
+            max: 18
+        - by: checker-b
+          value:
+            min: 3
+            max: 20
+        - by: checker-c
+          value:
+            min: 4
+            max: 20
+      decision:
+        min: 4
+        max: 20
+      rationale: "The tally classifies the four votes as unanimous within its two-degree threshold and decides\
+        \ 4-20 dKH, with low confidence. generator proposed {\"min\": 3, \"max\": 20}; checker-a proposed {\"\
+        min\": 4, \"max\": 18}; checker-b proposed {\"min\": 3, \"max\": 20}; checker-c proposed {\"min\":\
+        \ 4, \"max\": 20}. No controlled chronic KH study was read. Bay Bridge gives 9-20 dKH, while successful\
+        \ breeding in bicarbonate-buffered water and neutral to alkaline pH advice support a broader lower\
+        \ allowance. The lower edge of 4 is an inference, not a published physiological threshold. The wider\
+        \ 3-20 proposals of generator and checker-b likewise infer a lower edge from keeping practice; checker-a\
+        \ proposed 4-18 and checker-c 4-20. These proposal differences remain visible and do not mean the species\
+        \ fails below 4 or above 20. The decided interval contains the directly measured natural 5-17 dKH and\
+        \ is deliberately broader than it."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 32
+            female: 25
+        - by: checker-a
+          value:
+            male: 30
+            female: 24
+        - by: checker-b
+          value:
+            male: 35
+            female: 25
+        - by: checker-c
+          value:
+            male: 30
+            female: 25
+      decision:
+        male: 31
+        female: 25
+      rationale: "The proposals were generator 32/25 cm, checker-a 30/24, checker-b 35/25 and checker-c 30/25\
+        \ for male/female. Their medians are 31/25 cm, retained as approximate typical adult aquarium total\
+        \ lengths. Beerlink's usual 25-30 cm, the Nordic 27 cm figure and MidasCichlid's practical approximately\
+        \ 30.5-35.6 cm estimates bracket this decision. The 38.1 cm males and 25.4-30.5 cm females in forum\
+        \ accounts are larger individuals, while 40 cm and the dealer's 48 cm are not selected as typical outcomes.\
+        \ Aqua-Fish's 20-23 cm, Fishipedia's 25 cm, Smithsonian's 15 cm and the larger retail estimates remain\
+        \ contrary evidence. FishBase's 21.5 cm is unsexed standard length, not a directly comparable total-length\
+        \ maximum; checker-a's approximate 26 cm conversion is retained as an inference rather than an established\
+        \ conversion factor. Sex-specific maxima are poorly sampled, especially for females."
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 2
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 2
+        - by: checker-c
+          value: 2
+        - by: tiebreaker-1
+          value: 2
+        - by: tiebreaker-2
+          value: 2
+      decision: 2
+      rationale: "The qualified-majority tally selects level 2 with five of six votes: generator, checker-b,\
+        \ checker-c and both tiebreakers proposed 2; checker-a proposed 1. Ferdenzi observed repeated guppy\
+        \ pursuit and consumption by wild-caught fish about 6-8 cm long, supporting active fish predation beyond\
+        \ accidental fry feeding. Guppy lengths were not reported, so the adult mouth-size mapping remains\
+        \ an interpretation. FishBase records plants and snails, which supports a mixed diet but does not impose\
+        \ a 2 cm prey ceiling. The Nordic association's adult fish-dominated diet would imply level 3; that\
+        \ source remains contrary evidence, but quantitative adult diets across populations were not found.\
+        \ Tankmate killing alone indicates aggression, not consumption."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: omnivore
+            bloatSensitive: true
+            foods:
+              - Plant-rich complete cichlid pellets
+              - Algae-based foods
+              - Small portions of aquatic invertebrates
+              - Vegetable supplements
+        - by: checker-a
+          value:
+            type: omnivore
+            bloatSensitive: true
+            foods:
+              - algae
+              - aquatic plants
+              - snails
+              - pellets
+              - vegetables
+        - by: checker-b
+          value:
+            type: omnivore
+            bloatSensitive: true
+            foods:
+              - algae
+              - aquatic plant material
+              - snails
+              - aquatic invertebrates
+              - occasional small fish
+        - by: checker-c
+          value:
+            type: omnivore
+            bloatSensitive: true
+            foods:
+              - Algae-rich prepared foods
+              - Vegetable matter
+              - Molluscs
+              - Aquatic invertebrates
+              - Occasional fish flesh
+      decision:
+        type: omnivore
+        bloatSensitive: true
+        foods:
+          - Plant-rich complete cichlid pellets
+          - Algae-based foods
+          - Small portions of aquatic invertebrates
+          - Vegetable supplements
+      rationale: "All four diet votes agree on omnivore and bloatSensitive true; the tally retains the generator's\
+        \ food suggestions. The proposed food lists differ in emphasis: generator lists plant-rich prepared\
+        \ foods and small invertebrate portions; checker-a algae, plants, snails, pellets and vegetables; checker-b\
+        \ plant material, snails, invertebrates and occasional small fish; checker-c algae-rich prepared food,\
+        \ vegetables, molluscs, invertebrates and occasional fish flesh. FishBase food records and ecology,\
+        \ Smithsonian and Beerlink support both plant and animal feeding. The Nordic account instead describes\
+        \ adult piscivory, and Fishipedia uses an unquantified carnivore label; neither makes fish the necessary\
+        \ staple. Beerlink, hobby accounts and archive thread 60750 report digestive losses, supporting the\
+        \ sensitivity flag without proving that excess protein alone causes every case. The two FishBase ecology\
+        \ URLs use different stock-code parameters, but both readable responses identify Nandopsis haitiensis\
+        \ and describe mixed feeding; they are retained without counting them as independent dietary studies."
+    - field: features.aggressionConspecific
+      proposals:
+        - by: generator
+          value: 4
+        - by: checker-a
+          value: 3
+        - by: checker-b
+          value: 4
+        - by: checker-c
+          value: 4
+      decision: 4
+      rationale: "Generator, checker-b and checker-c proposed level 4; checker-a proposed 3. Aqua-Fish explicitly\
+        \ describes fatal partner attacks, Beerlink notes female attacks around eggs, and Ferdenzi used physical\
+        \ partitions throughout breeding. These observations meet the rubric's level requiring experienced\
+        \ management and separation even within a putative pair. The lower proposal relies on successful pairing\
+        \ and the general solitary-or-pair habit, which do not exclude lethal partner aggression."
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value:
+            - rock
+            - sand
+            - openWater
+            - plants
+            - wood
+        - by: checker-a
+          value:
+            - rock
+            - sand
+            - plants
+        - by: checker-b
+          value:
+            - rock
+            - sand
+            - openWater
+            - plants
+            - wood
+        - by: checker-c
+          value:
+            - rock
+            - sand
+            - openWater
+            - plants
+            - wood
+      decision:
+        - rock
+        - sand
+        - openWater
+        - plants
+        - wood
+      rationale: "Generator, checker-b and checker-c proposed rock, sand, openWater, plants and wood; checker-a\
+        \ proposed rock, sand and plants while its own FishBase evidence also includes open water. FishBase\
+        \ describes adults using open areas with rock and debris refuges and juveniles sheltering in vegetation.\
+        \ Ferdenzi records sand, gravel, silt, leaf litter and marginal roots. Those observations support all\
+        \ five zones. Wood represents submerged roots and debris as cover, not a requirement for dense timber\
+        \ or a fully planted aquarium."
+    - field: features.speciesOnly
+      proposals:
+        - by: generator
+          value: true
+        - by: checker-a
+          value: false
+        - by: checker-b
+          value: true
+        - by: checker-c
+          value: true
+        - by: tiebreaker-1
+          value: true
+        - by: tiebreaker-2
+          value: true
+      decision: true
+      rationale: "The qualified-majority tally selects true with five votes of six: generator, checker-b, checker-c\
+        \ and both tiebreakers proposed true; checker-a proposed false. Beerlink and Aqua-Fish favour a dedicated\
+        \ setup, and a five-year pair account reports exclusion of other fish. The flag describes the recommended\
+        \ normal arrangement, rather than claiming all mixed tanks fail. Riverpark, Atlas, Aquariumpro, Bay\
+        \ Bridge and a crowded legacy stocking report allow or describe robust companions; these conflicting\
+        \ observations remain evidence but do not demonstrate safe adult pair cohabitation under the selected\
+        \ minimum. Beerlink's proposed island immune-system explanation is untested and is not used as established\
+        \ physiology."
+    - field: features.hybridGroups
+      proposals:
+        - by: generator
+          value:
+            - nandopsis-tetracanthus-nandopsis-haitiensis
+        - by: checker-a
+          value: []
+        - by: checker-b
+          value:
+            - nandopsis-tetracanthus-nandopsis-haitiensis
+        - by: checker-c
+          value:
+            - nandopsis-tetracanthus-nandopsis-haitiensis
+        - by: tiebreaker-1
+          value:
+            - nandopsis-tetracanthus-nandopsis-haitiensis
+            - blood-parrot-cichlid-nandopsis-haitiensis
+            - nandopsis-haitiensis-rocio-octofasciata
+            - nandopsis-haitiensis-parachromis-motaguensis
+            - nandopsis-haitiensis-thorichthys-meeki
+        - by: tiebreaker-2
+          value:
+            - nandopsis-tetracanthus-nandopsis-haitiensis
+            - nandopsis-haitiensis-rocio-octofasciata
+      decision:
+        - nandopsis-haitiensis-rocio-octofasciata
+        - nandopsis-tetracanthus-nandopsis-haitiensis
+      rationale: "The tally uses the conservative method, with three of six votes agreeing on the most common\
+        \ complete list, and confidence low. generator proposed [\"nandopsis-tetracanthus-nandopsis-haitiensis\"\
+        ]; checker-a proposed []; checker-b proposed [\"nandopsis-tetracanthus-nandopsis-haitiensis\"]; checker-c\
+        \ proposed [\"nandopsis-tetracanthus-nandopsis-haitiensis\"]; tiebreaker-1 proposed [\"nandopsis-tetracanthus-nandopsis-haitiensis\"\
+        , \"blood-parrot-cichlid-nandopsis-haitiensis\", \"nandopsis-haitiensis-rocio-octofasciata\", \"nandopsis-haitiensis-parachromis-motaguensis\"\
+        , \"nandopsis-haitiensis-thorichthys-meeki\"]; tiebreaker-2 proposed [\"nandopsis-tetracanthus-nandopsis-haitiensis\"\
+        , \"nandopsis-haitiensis-rocio-octofasciata\"]. No complete-list proposal meets the qualified-majority\
+        \ requirement. The conservative rule retains groups named by at least two votes: the existing Cuban\
+        \ pair occurs in five votes and the Jack Dempsey pair in both tiebreakers. Only tiebreaker-1 names\
+        \ the blood parrot, Parachromis motaguensis and Thorichthys meeki pairs, so those reports remain evidence\
+        \ without entering the decided list. Binns Hybrid Encyclopedia labels photographed captive offspring\
+        \ for the two retained pairs, and repeats the Jack Dempsey pairing in two galleries from the same compilation.\
+        \ Neither parentage nor access to conspecific partners is verified, so both groups have basis presumed.\
+        \ CRC and FishBase not mentioning hybrids is not positive evidence of reproductive isolation. The existing\
+        \ Cuban-pair id is retained exactly as tallied and curated, without creating a duplicate name for its\
+        \ members; no transitive group is inferred. Atlas's claim that Catalog of Fishes still accepts vombergae\
+        \ as valid conflicts with the actual catalog and is not followed. The accessible Rican abstract establishes\
+        \ evolutionary context, not either named cross."
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - white
+              - grey
+              - black
+            pattern: mixed
+        - by: checker-a
+          value:
+            baseColors:
+              - black
+              - grey
+            pattern: plain
+        - by: checker-b
+          value:
+            baseColors:
+              - white
+              - grey
+              - black
+            pattern: mixed
+        - by: checker-c
+          value:
+            baseColors:
+              - grey
+              - white
+              - black
+              - brown
+            pattern: mixed
+      decision:
+        baseColors:
+          - white
+          - grey
+          - black
+          - brown
+        pattern: mixed
+      rationale: "Generator and checker-b proposed white, grey and black with a mixed pattern; checker-a black\
+        \ and grey with a plain pattern; checker-c grey, white, black and brown with a mixed pattern. Smithsonian\
+        \ and Ferdenzi describe brown or beige shading as well as dark markings, and the association describes\
+        \ grey fish with bars and spots. The combined palette and mixed pattern therefore better describe adult\
+        \ males than a plain dark body. Female brood darkening is directly documented; the Nordic account also\
+        \ reports dark breeding males. Mood, sex and reproductive state can change appearance, so black is\
+        \ not treated as the sole male base colour."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 700
+            lengthCm: 200
+            depthCm: 60
+        - by: checker-a
+          value:
+            volumeL: 570
+            lengthCm: 180
+            depthCm: 50
+        - by: checker-b
+          value:
+            volumeL: 700
+            lengthCm: 200
+            depthCm: 60
+        - by: checker-c
+          value:
+            volumeL: 700
+            lengthCm: 200
+            depthCm: 60
+      decision:
+        volumeL: 700
+        lengthCm: 200
+        depthCm: 60
+      rationale: "Generator, checker-b and checker-c proposed 700 L, 200 cm length and 60 cm depth; checker-a\
+        \ proposed 570 L, 180 cm and 50 cm. The component medians are 700 L, 200 cm and 60 cm. The Nordic association\
+        \ explicitly supplies 700 L and 200 cm, and Aqua-Fish gives a wider pair recommendation of 500-700\
+        \ L. These apply to the recommended adult pair rather than a small juvenile. The 60 cm depth is a practical\
+        \ turning-room and refuge-route inference for an approximately 31 cm male, not an association measurement.\
+        \ Smaller pair reports include 454 and 568 L; a forum guide proposes 681 L with a 183 by 61 cm footprint,\
+        \ while J and K recommends 800 L and 200 cm. Retail 284 L and 568 L figures are retained with their\
+        \ inconsistent or unspecified social units. A divider and independent accommodation remain necessary\
+        \ if the pair fails."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 8
+            max: 12
+        - by: checker-a
+          value:
+            min: 10
+            max: 15
+        - by: checker-b
+          value:
+            min: 8
+            max: 12
+        - by: checker-c
+          value:
+            min: 10
+            max: 12
+      decision:
+        min: 9
+        max: 12
+      rationale: "Generator and checker-b proposed 8-12 years, checker-a 10-15 and checker-c 10-12. The component\
+        \ medians are 9-12 years, retained as a provisional aquarium estimate. Aqua-Fish gives 8-12, Fishipedia\
+        \ 12, Riverpark the wider 10-15, and MidasCichlid estimates 8-10 from related fishes. Bay Bridge gives\
+        \ 5-10; the Aquarium Wiki and Aquariumpro give 5-8, and J and K says over 10. There is no verified\
+        \ cohort or lifetime series to resolve those differences. The median does not establish a nine-year\
+        \ minimum life expectancy."
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value:
+            - Cichlasoma haitiensis
+            - Cichlosoma vombergi
+            - Cichlasoma vombergae
+            - Nandopsis vombergae
+        - by: checker-a
+          value:
+            - Cichlasoma haitiensis
+            - Cichlosoma vombergi
+        - by: checker-b
+          value:
+            - Cichlasoma haitiensis
+            - Cichlasoma haitiense
+            - Cichlosoma vombergi
+            - Cichlasoma vombergae
+            - Nandopsis vombergae
+            - Nandopsis vombergi
+        - by: checker-c
+          value:
+            - Cichlasoma haitiensis
+            - Cichlasoma haitiense
+            - Cichlosoma vombergi
+            - Nandopsis vombergae
+      decision:
+        - Cichlasoma haitiensis
+        - Cichlasoma haitiense
+        - Cichlosoma vombergi
+        - Cichlosoma vombergae
+        - Cichlasoma vombergae
+        - Nandopsis vombergae
+        - Nandopsis vombergi
+      rationale: "Catalog of Fishes accepts Nandopsis haitiensis (Tee-Van, 1935) and places the 1938 vombergi\
+        \ name, later emended to vombergae, in synonymy following Chakrabarty (2006). Both legacy entries 759\
+        \ and 761 therefore map to this profile. The legacy and accepted genera are both Nandopsis, covered\
+        \ by one genus query. The public CRC synonym record agrees. Atlas states that the catalog still treats\
+        \ vombergae as valid; reading the catalog contradicts that claim. The expanded synonym list unites\
+        \ original spellings, corrected spellings and historical combinations rather than treating them as\
+        \ separate species."
+    - field: partners.suitable
+      proposals:
+        - by: generator
+          value:
+            - species: Nandopsis haitiensis
+              reason: A compatible opposite-sex partner is the only normal shared-space recommendation.
+              condition: "Established pair in at least 700 litres and 200 cm length, with refuges and a divider\
+                \ ready."
+            - species: Dajaus monticola
+              reason: FishBase records natural association under Agonostomus monticola; Catalog of Fishes now
+                accepts Dajaus monticola. Natural association is not evidence of safe aquarium cohabitation.
+              condition: Conditional specialist display only with a permanent secure divider and a separately
+                adequate compartment; no free-contact recommendation.
+            - species: Pterygoplichthys gibbiceps
+              reason: "A large armoured catfish is a conditional display alternative, not a documented safe\
+                \ companion; attacks remain possible."
+              condition: "Permanent secure divider and sufficient independent floor space; inferred option\
+                \ only, never added to the adult pair minimum."
+      decision:
+        - species: Nandopsis haitiensis
+          reason: Only a compatible opposite-sex conspecific is recommended for shared adult housing.
+          condition: "Established pair in at least 700 L with 200 cm length and approximately 60 cm depth;\
+            \ secure refuges, a divider and separate accommodation remain available."
+      rationale: "The decided speciesOnly true recommendation supports only a compatible conspecific. The generator's\
+        \ Dajaus and Pterygoplichthys suggestions depended on permanent physical separation rather than demonstrated\
+        \ shared-space compatibility, so they are removed from suitable and retained as unsuitable with their\
+        \ evidence limitations. Their underlying catalog and habitat citations remain in the profile."
