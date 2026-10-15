@@ -4,7 +4,7 @@ title: Discover cold start from 20 years of cichlids.com
 status: In Progress
 assignee: []
 created_date: '2026-10-15 08:46'
-updated_date: '2026-10-15 11:27'
+updated_date: '2026-10-15 11:34'
 labels: []
 dependencies: []
 parent_task_id: TASK-4
@@ -54,4 +54,9 @@ feature flag.
   different months; the best rated of those.
 - View counts do not count (distorted by crawlers in the legacy data); tanks and pictures of
   deleted or suspended members are excluded.
+
+### Region of a picture (decided by the project owner, 2026-10-15)
+- No rated picture of the archive is linked to a tank; 21,704 of 53,338 pictures with at least 10 ratings carry an identified species.
+- A picture belongs to the region of its linked tank, otherwise to the region of its identified species (species category: lake malawi, lake tanganyika, african to Africa other, american to both American regions).
+- Pictures without tank and species appear in no regional list. Discover additionally shows a cross-region top 20 of pictures in which every eligible picture counts.
 <!-- SECTION:NOTES:END -->
