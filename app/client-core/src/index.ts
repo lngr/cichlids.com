@@ -4,7 +4,7 @@ export { HEATMAP_WEEKS, heatmapIntensity, heatmapListItems, layoutHeatmap } from
 export type { CareHeatmap, CareHeatmapDay, HeatmapCell, HeatmapKind, HeatmapLayout } from "./careHeatmap.js";
 export { checkVacationDates } from "./vacation.js";
 export { activeDecommissioning, operatingTime } from "./decommission.js";
-export type { DecommissionScope, Decommissioning, TankOperation } from "./decommission.js";
+export type { DecommissionImage, DecommissionScope, Decommissioning, TankOperation } from "./decommission.js";
 export { proofCameraMachine } from "./proofCamera.js";
 export {
   activeVacation, daysUntilDeadline, hasStreakHistory, seriesPhotoKeepsStreak, toVacationShare,

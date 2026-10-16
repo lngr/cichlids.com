@@ -3,11 +3,11 @@ import { formatLocalDate } from "../streaks/streakText";
 
 type Translate = (key: string, options?: Record<string, unknown>) => string;
 
-/** One sentence group a screen reader reads for the whole grid: the care days and the last water change. */
+/** One sentence group a screen reader reads for the whole grid: the care days, the last water change and the decommissioned days. */
 export function heatmapSummary(heatmap: CareHeatmap, t: Translate, language: string): string {
-  if (heatmap.activeDays === 0) return t("careHeatmap.none");
-  const parts = [t("careHeatmap.summary", { count: heatmap.activeDays })];
-  if (heatmap.lastWaterChange) parts.push(t("careHeatmap.lastWaterChange", { date: formatLocalDate(heatmap.lastWaterChange, language) }));
+  const parts = heatmap.activeDays === 0 ? [t("careHeatmap.none")] : [t("careHeatmap.summary", { count: heatmap.activeDays })];
+  if (heatmap.activeDays > 0 && heatmap.lastWaterChange) parts.push(t("careHeatmap.lastWaterChange", { date: formatLocalDate(heatmap.lastWaterChange, language) }));
+  if (heatmap.decommissionedDays.length > 0) parts.push(t("careHeatmap.rest", { count: heatmap.decommissionedDays.length }));
   return parts.join(". ");
 }
 

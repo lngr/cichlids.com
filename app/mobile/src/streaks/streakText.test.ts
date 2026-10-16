@@ -63,7 +63,7 @@ describe("water change wording", () => {
     expect(waterChangeStatus(water({ deadline: "2026-10-15" }), "2026-10-15", en, "en")).toBe("Next water change: today at the latest");
   });
   it("explains a paused, empty or ended streak calmly", () => {
-    expect(waterChangeStatus(water({ state: "paused", deadline: null }), "2026-10-15", en, "en")).toBe("Paused while you are on vacation.");
+    expect(waterChangeStatus(water({ state: "paused", deadline: null }), "2026-10-15", en, "en")).toBe("Paused while you are on vacation or the tank is decommissioned.");
     expect(waterChangeStatus(water({ state: "no_history", current: 0, deadline: null }), "2026-10-15", en, "en")).toBe("Your streak starts with your next water change.");
     expect(waterChangeStatus(water({ state: "broken", current: 0, deadline: null }), "2026-10-15", en, "en")).toBe("The last streak ended. Your next water change starts a new one.");
   });

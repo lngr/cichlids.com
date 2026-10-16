@@ -87,6 +87,16 @@ export const API_ERROR_CODES = [
   "vacation_active",
   "vacation_overlap",
   "vacation_would_repair",
+  "decommission_photo_invalid",
+  "decommission_photo_not_in_app",
+  "decommission_photo_time",
+  "decommission_photo_reused",
+  "decommission_scope_invalid",
+  "decommission_active",
+  "decommission_not_active",
+  "decommission_date_invalid",
+  "decommission_request_invalid",
+  "decommission_auth_required",
 ] as const;
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];

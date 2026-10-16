@@ -124,7 +124,8 @@
       "consent": "If you make the tank public, other members and visitors can see it and follow it.",
       "save": "Save visibility",
       "saved": "Visibility saved"
-    }
+    },
+    "decommissioned": "Decommissioned"
   },
   "species": {
     "tabTitle": "Species",
@@ -334,7 +335,17 @@
     "vacation_dates_invalid": "Choose days that are not in the future, with the last day on or after the first day.",
     "vacation_active": "A vacation is already active.",
     "vacation_overlap": "This vacation overlaps another one.",
-    "vacation_would_repair": "A vacation that began more than a few days ago cannot repair a period or week that has already ended."
+    "vacation_would_repair": "A vacation that began more than a few days ago cannot repair a period or week that has already ended.",
+    "decommission_photo_invalid": "The photo could not be read. Please take a new one.",
+    "decommission_photo_not_in_app": "The photo has to be taken with the camera of the app.",
+    "decommission_photo_time": "The capture time of the photo does not match the moment it was sent. Please take a new photo.",
+    "decommission_photo_reused": "This photo has already served as proof. Please take a new one.",
+    "decommission_scope_invalid": "Choose what the decommissioning pauses.",
+    "decommission_active": "This tank is already decommissioned.",
+    "decommission_not_active": "This tank is not decommissioned.",
+    "decommission_date_invalid": "Your device date could not be read.",
+    "decommission_request_invalid": "Check the photo and your choice.",
+    "decommission_auth_required": "Sign in to decommission a tank."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -639,7 +650,8 @@
       "choicesLabel": "Rhythm in days",
       "customLabel": "Your own rhythm in days (1 to 90)",
       "saveCustom": "Use this rhythm",
-      "customInvalid": "Enter a whole number from 1 to 90."
+      "customInvalid": "Enter a whole number from 1 to 90.",
+      "paused": "Paused while the tank is decommissioned"
     },
     "photo": {
       "add": "Add photo",
@@ -922,7 +934,8 @@
       "deadline": "Next water change by {{date}}",
       "deadlineToday": "Next water change: today at the latest",
       "freezes": "Freezes left in this tank year: {{count}}",
-      "freezesHint": "A freeze keeps a period when a water change was not verified by the guided mode."
+      "freezesHint": "A freeze keeps a period when a water change was not verified by the guided mode.",
+      "paused": "Paused while you are on vacation or the tank is decommissioned."
     },
     "vacation": {
       "title": "Vacation",
@@ -958,6 +971,46 @@
     "more": "More",
     "measurementMarker": "Measurement logged",
     "showList": "Show as list",
-    "hideList": "Hide list"
+    "hideList": "Hide list",
+    "rest_one": "Decommissioned days: {{count}}",
+    "rest_other": "Decommissioned days: {{count}}",
+    "restMarker": "Decommissioned"
+  },
+  "decommission": {
+    "title": "Decommissioning",
+    "cardTitle": "Operating time",
+    "days_one": "In operation for {{count}} day",
+    "days_other": "In operation for {{count}} days",
+    "months_one": "In operation for {{count}} month",
+    "months_other": "In operation for {{count}} months",
+    "years_one": "In operation for {{count}} year",
+    "years_other": "In operation for {{count}} years",
+    "rest_one": "Decommissioned time: {{count}} day",
+    "rest_other": "Decommissioned time: {{count}} days",
+    "since": "Decommissioned since {{date}}",
+    "statusAll": "All care is paused.",
+    "statusWater": "The water change and its streak are paused. Measurements stay due.",
+    "history": "Decommissionings",
+    "pastLine": "{{from}} to {{to}}",
+    "emptyPhoto": "Empty tank, {{date}}",
+    "filledPhoto": "Filled tank, {{date}}",
+    "start": "Decommission this tank",
+    "end": "Put back into operation",
+    "intro": "A decommissioned tank stays in your profile. Its days of rest do not count as operating time, and its water change streak neither grows nor breaks. Everyone who sees the care stream of this tank sees the decommissioning with its photos.",
+    "scopeTitle": "What should pause?",
+    "choiceAll": "All care",
+    "choiceAllHint": "Nothing is due, the tank leaves Today, no reminders are sent and the care heatmap marks the time as decommissioned.",
+    "choiceWater": "Only the water change",
+    "choiceWaterHint": "The water change and its streak pause. Measurements stay due with their reminders.",
+    "emptyHint": "Take a photo of the empty tank with the camera now. Everyone who sees the care stream of this tank can see it.",
+    "filledHint": "Take a photo of the filled tank with the camera now. Everyone who sees the care stream of this tank can see it.",
+    "explainTitle": "Camera access",
+    "explain": "The photo has to come from the camera of the app and be taken now, so that others can trust it.",
+    "denied": "Without the camera the photo cannot be taken. To use the camera, allow it in the settings of your device.",
+    "deniedWeb": "Without the camera the photo cannot be taken. To use the camera, allow it for this site in your browser.",
+    "unavailable": "This device offers no camera right now, so the photo cannot be taken.",
+    "reviewEmpty": "Your photo of the empty tank",
+    "reviewFilled": "Your photo of the filled tank",
+    "sendError": "The photo could not be sent. Please try again."
   }
 }

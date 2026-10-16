@@ -129,7 +129,8 @@
       "consent": "Se você tornar o aquário público, outros membros e visitantes poderão vê-lo e segui-lo.",
       "save": "Salvar visibilidade",
       "saved": "Visibilidade salva"
-    }
+    },
+    "decommissioned": "Desativado"
   },
   "species": {
     "tabTitle": "Espécies",
@@ -342,7 +343,17 @@
     "vacation_dates_invalid": "Escolha dias que não estejam no futuro, com o último dia igual ou posterior ao primeiro.",
     "vacation_active": "Já há férias ativas.",
     "vacation_overlap": "Estas férias se sobrepõem a outras.",
-    "vacation_would_repair": "Férias que começaram há mais de alguns dias não podem reparar um período ou uma semana que já terminou."
+    "vacation_would_repair": "Férias que começaram há mais de alguns dias não podem reparar um período ou uma semana que já terminou.",
+    "decommission_photo_invalid": "Não foi possível ler a foto. Tire uma nova.",
+    "decommission_photo_not_in_app": "A foto precisa ser tirada com a câmera do app.",
+    "decommission_photo_time": "O horário de captura da foto não corresponde ao momento do envio. Tire uma foto nova.",
+    "decommission_photo_reused": "Esta foto já serviu como comprovação. Tire uma nova.",
+    "decommission_scope_invalid": "Escolha o que a desativação coloca em pausa.",
+    "decommission_active": "Este aquário já está desativado.",
+    "decommission_not_active": "Este aquário não está desativado.",
+    "decommission_date_invalid": "Não foi possível ler a data do seu dispositivo.",
+    "decommission_request_invalid": "Confira a foto e a sua escolha.",
+    "decommission_auth_required": "Entre para desativar um aquário."
   },
   "featureFlags": {
     "activityTitle": "Atividade da comunidade",
@@ -652,7 +663,8 @@
       "choicesLabel": "Ritmo em dias",
       "customLabel": "Seu próprio ritmo em dias (1 a 90)",
       "saveCustom": "Usar este ritmo",
-      "customInvalid": "Informe um número inteiro de 1 a 90."
+      "customInvalid": "Informe um número inteiro de 1 a 90.",
+      "paused": "Em pausa enquanto o aquário está desativado"
     },
     "photo": {
       "add": "Adicionar foto",
@@ -936,7 +948,8 @@
       "deadline": "Próxima troca de água até {{date}}",
       "deadlineToday": "Próxima troca de água: hoje, no máximo",
       "freezes": "Congelamentos restantes neste ano do aquário: {{count}}",
-      "freezesHint": "Um congelamento mantém um período quando uma troca de água não foi verificada pelo modo guiado."
+      "freezesHint": "Um congelamento mantém um período quando uma troca de água não foi verificada pelo modo guiado.",
+      "paused": "Pausada enquanto você está de férias ou o aquário está desativado."
     },
     "vacation": {
       "title": "Férias",
@@ -972,6 +985,51 @@
     "more": "Mais",
     "measurementMarker": "Medição registrada",
     "showList": "Mostrar como lista",
-    "hideList": "Ocultar lista"
+    "hideList": "Ocultar lista",
+    "rest_one": "Dias desativado: {{count}}",
+    "rest_many": "Dias desativado: {{count}}",
+    "rest_other": "Dias desativado: {{count}}",
+    "restMarker": "Desativado"
+  },
+  "decommission": {
+    "title": "Desativação",
+    "cardTitle": "Tempo em operação",
+    "days_one": "Em operação há {{count}} dia",
+    "days_many": "Em operação há {{count}} dias",
+    "days_other": "Em operação há {{count}} dias",
+    "months_one": "Em operação há {{count}} mês",
+    "months_many": "Em operação há {{count}} meses",
+    "months_other": "Em operação há {{count}} meses",
+    "years_one": "Em operação há {{count}} ano",
+    "years_many": "Em operação há {{count}} anos",
+    "years_other": "Em operação há {{count}} anos",
+    "rest_one": "Tempo desativado: {{count}} dia",
+    "rest_many": "Tempo desativado: {{count}} dias",
+    "rest_other": "Tempo desativado: {{count}} dias",
+    "since": "Desativado desde {{date}}",
+    "statusAll": "Todos os cuidados estão em pausa.",
+    "statusWater": "A troca de água e a sequência dela estão em pausa. As medições continuam pendentes.",
+    "history": "Desativações",
+    "pastLine": "{{from}} a {{to}}",
+    "emptyPhoto": "Aquário vazio, {{date}}",
+    "filledPhoto": "Aquário cheio, {{date}}",
+    "start": "Desativar este aquário",
+    "end": "Voltar a operar",
+    "intro": "Um aquário desativado continua no seu perfil. Os dias de descanso não contam como tempo em operação, e a sequência de trocas de água não cresce nem se quebra. Todas as pessoas que veem o histórico de cuidados deste aquário veem a desativação com as fotos.",
+    "scopeTitle": "O que deve ficar em pausa?",
+    "choiceAll": "Todos os cuidados",
+    "choiceAllHint": "Nada fica pendente, o aquário não aparece em Hoje, nenhum lembrete é enviado e o mapa de calor dos cuidados marca o período como desativado.",
+    "choiceWater": "Só a troca de água",
+    "choiceWaterHint": "A troca de água e a sequência dela ficam em pausa. As medições continuam pendentes, com os lembretes.",
+    "emptyHint": "Tire agora, com a câmera, uma foto do aquário vazio. Todas as pessoas que veem o histórico de cuidados deste aquário podem vê-la.",
+    "filledHint": "Tire agora, com a câmera, uma foto do aquário cheio. Todas as pessoas que veem o histórico de cuidados deste aquário podem vê-la.",
+    "explainTitle": "Acesso à câmera",
+    "explain": "A foto precisa vir da câmera do app e ser tirada agora, para que outras pessoas possam confiar nela.",
+    "denied": "Sem a câmera não dá para tirar a foto. Para usá-la, permita o acesso nos ajustes do seu dispositivo.",
+    "deniedWeb": "Sem a câmera não dá para tirar a foto. Para usá-la, permita o acesso para este site no navegador.",
+    "unavailable": "Este dispositivo não oferece câmera agora, então não dá para tirar a foto.",
+    "reviewEmpty": "Sua foto do aquário vazio",
+    "reviewFilled": "Sua foto do aquário cheio",
+    "sendError": "Não foi possível enviar a foto. Tente de novo."
   }
 }

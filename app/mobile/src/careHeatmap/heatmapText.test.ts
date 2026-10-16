@@ -5,7 +5,7 @@ import { TRANSLATIONS } from "../i18n/catalogues";
 import { heatmapItemText, heatmapSummary } from "./heatmapText";
 
 const heatmap = (patch: Partial<CareHeatmap> = {}): CareHeatmap => ({
-  start: "2026-06-29", end: "2026-10-15", weeks: 16, days: [], activeDays: 0, lastWaterChange: null, lastMeasurement: null, ...patch,
+  start: "2026-06-29", end: "2026-10-15", weeks: 16, days: [], activeDays: 0, lastWaterChange: null, lastMeasurement: null, decommissionedDays: [], ...patch,
 });
 let en: TFunction;
 let de: TFunction;
@@ -15,6 +15,13 @@ beforeAll(async () => {
 });
 
 describe("heatmap summary for a screen reader", () => {
+  it("names the decommissioned days after the care days", () => {
+    expect(heatmapSummary(heatmap({ decommissionedDays: ["2026-10-01", "2026-10-02"] }), en, "en"))
+      .toBe("No care logged in the last 16 weeks. Decommissioned days: 2");
+    expect(heatmapSummary(heatmap({ activeDays: 3, lastWaterChange: "2026-10-01", decommissionedDays: ["2026-10-05"] }), de, "de"))
+      .toContain("Stillgelegte Tage: 1");
+  });
+
   it("names the care days and the last water change", () => {
     const summary = heatmapSummary(heatmap({ activeDays: 12, lastWaterChange: "2026-10-01" }), en, "en");
     expect(summary).toBe("Care days in the last 16 weeks: 12. Last water change: Oct 1, 2026");

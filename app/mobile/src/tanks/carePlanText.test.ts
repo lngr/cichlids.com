@@ -7,7 +7,7 @@ import { dueNote, dueText, ruleText } from "./carePlanText";
 
 const rule = (overrides: Partial<CarePlanRule>): CarePlanRule => ({
   kind: "water_change", rhythmDays: 7, enabled: true, isDefault: true,
-  reason: { code: "cichlid_default", parameters: null }, due: null, ...overrides,
+  reason: { code: "cichlid_default", parameters: null }, due: null, paused: false, ...overrides,
 });
 let en: TFunction;
 let de: TFunction;

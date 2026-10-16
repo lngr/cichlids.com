@@ -23,6 +23,7 @@ export function TankCard({ tank, onPress }: { tank: TankListItem; onPress: () =>
       />
       <View style={styles.body}>
         <Text numberOfLines={1} style={[theme.type.bodyStrong, { color: theme.colors.fg }]}>{tank.title}</Text>
+        {tank.decommissioned ? <Text testID="tank-card-decommissioned" style={[theme.type.meta, { color: theme.colors.muted, marginTop: 2 }]}>{t("tanks.decommissioned")}</Text> : null}
         <Text style={[theme.type.meta, { color: theme.colors.muted, marginTop: 2 }]}>
           {tank.author.displayName ?? tank.author.username}
           {tank.category ? ` · ${t(`tanks.categories.${tank.category}`)}` : ""} · {t("tanks.pictures", { count: imageCount })}

@@ -129,7 +129,8 @@
       "consent": "Se rendi pubblico l'acquario, gli altri membri e i visitatori possono vederlo e seguirlo.",
       "save": "Salva visibilità",
       "saved": "Visibilità salvata"
-    }
+    },
+    "decommissioned": "Fuori servizio"
   },
   "species": {
     "tabTitle": "Specie",
@@ -342,7 +343,17 @@
     "vacation_dates_invalid": "Scegli giorni non nel futuro, con l’ultimo giorno uguale o successivo al primo.",
     "vacation_active": "Una vacanza è già attiva.",
     "vacation_overlap": "Questa vacanza si sovrappone a un’altra.",
-    "vacation_would_repair": "Una vacanza iniziata più di qualche giorno fa non può riparare un periodo o una settimana già conclusi."
+    "vacation_would_repair": "Una vacanza iniziata più di qualche giorno fa non può riparare un periodo o una settimana già conclusi.",
+    "decommission_photo_invalid": "Impossibile leggere la foto. Scattane una nuova.",
+    "decommission_photo_not_in_app": "La foto deve essere scattata con la fotocamera dell’app.",
+    "decommission_photo_time": "L’ora di scatto della foto non corrisponde al momento dell’invio. Scatta una foto nuova.",
+    "decommission_photo_reused": "Questa foto ha già fatto da prova. Scattane una nuova.",
+    "decommission_scope_invalid": "Scegli cosa mette in pausa la messa fuori servizio.",
+    "decommission_active": "Questo acquario è già fuori servizio.",
+    "decommission_not_active": "Questo acquario non è fuori servizio.",
+    "decommission_date_invalid": "Impossibile leggere la data del tuo dispositivo.",
+    "decommission_request_invalid": "Controlla la foto e la tua scelta.",
+    "decommission_auth_required": "Accedi per mettere un acquario fuori servizio."
   },
   "featureFlags": {
     "activityTitle": "Attività della comunità",
@@ -652,7 +663,8 @@
       "choicesLabel": "Ritmo in giorni",
       "customLabel": "Il tuo ritmo in giorni (da 1 a 90)",
       "saveCustom": "Usa questo ritmo",
-      "customInvalid": "Inserisci un numero intero da 1 a 90."
+      "customInvalid": "Inserisci un numero intero da 1 a 90.",
+      "paused": "In pausa finché l’acquario è fuori servizio"
     },
     "photo": {
       "add": "Aggiungi foto",
@@ -936,7 +948,8 @@
       "deadline": "Prossimo cambio d’acqua entro il {{date}}",
       "deadlineToday": "Prossimo cambio d’acqua: oggi al più tardi",
       "freezes": "Congelamenti rimasti in quest’anno della vasca: {{count}}",
-      "freezesHint": "Un congelamento mantiene un periodo quando un cambio d’acqua non è stato verificato dalla modalità guidata."
+      "freezesHint": "Un congelamento mantiene un periodo quando un cambio d’acqua non è stato verificato dalla modalità guidata.",
+      "paused": "In pausa mentre sei in vacanza o l’acquario è fuori servizio."
     },
     "vacation": {
       "title": "Vacanza",
@@ -972,6 +985,51 @@
     "more": "Più",
     "measurementMarker": "Misurazione registrata",
     "showList": "Mostra come elenco",
-    "hideList": "Nascondi elenco"
+    "hideList": "Nascondi elenco",
+    "rest_one": "Giorni fuori servizio: {{count}}",
+    "rest_many": "Giorni fuori servizio: {{count}}",
+    "rest_other": "Giorni fuori servizio: {{count}}",
+    "restMarker": "Fuori servizio"
+  },
+  "decommission": {
+    "title": "Messa fuori servizio",
+    "cardTitle": "Tempo in funzione",
+    "days_one": "In funzione da {{count}} giorno",
+    "days_many": "In funzione da {{count}} giorni",
+    "days_other": "In funzione da {{count}} giorni",
+    "months_one": "In funzione da {{count}} mese",
+    "months_many": "In funzione da {{count}} mesi",
+    "months_other": "In funzione da {{count}} mesi",
+    "years_one": "In funzione da {{count}} anno",
+    "years_many": "In funzione da {{count}} anni",
+    "years_other": "In funzione da {{count}} anni",
+    "rest_one": "Tempo fuori servizio: {{count}} giorno",
+    "rest_many": "Tempo fuori servizio: {{count}} giorni",
+    "rest_other": "Tempo fuori servizio: {{count}} giorni",
+    "since": "Fuori servizio dal {{date}}",
+    "statusAll": "Tutte le cure sono in pausa.",
+    "statusWater": "Il cambio d’acqua e la sua serie sono in pausa. Le misurazioni restano da fare.",
+    "history": "Messe fuori servizio",
+    "pastLine": "dal {{from}} al {{to}}",
+    "emptyPhoto": "Acquario vuoto, {{date}}",
+    "filledPhoto": "Acquario pieno, {{date}}",
+    "start": "Metti fuori servizio questo acquario",
+    "end": "Rimetti in funzione",
+    "intro": "Un acquario fuori servizio resta nel tuo profilo. I giorni di riposo non contano come tempo in funzione, e la serie dei cambi d’acqua non cresce e non si interrompe. Chi vede il diario delle cure di questo acquario vede la messa fuori servizio con le sue foto.",
+    "scopeTitle": "Cosa deve andare in pausa?",
+    "choiceAll": "Tutte le cure",
+    "choiceAllHint": "Nulla è in scadenza, l’acquario non compare in Oggi, non arrivano promemoria e la mappa di calore delle cure segna il periodo come fuori servizio.",
+    "choiceWater": "Solo il cambio d’acqua",
+    "choiceWaterHint": "Il cambio d’acqua e la sua serie vanno in pausa. Le misurazioni restano da fare, con i loro promemoria.",
+    "emptyHint": "Scatta ora con la fotocamera una foto dell’acquario vuoto. Chi vede il diario delle cure di questo acquario può vederla.",
+    "filledHint": "Scatta ora con la fotocamera una foto dell’acquario pieno. Chi vede il diario delle cure di questo acquario può vederla.",
+    "explainTitle": "Accesso alla fotocamera",
+    "explain": "La foto deve arrivare dalla fotocamera dell’app ed essere scattata adesso, così gli altri possono fidarsi.",
+    "denied": "Senza la fotocamera la foto non si può scattare. Per usarla, consentila nelle impostazioni del dispositivo.",
+    "deniedWeb": "Senza la fotocamera la foto non si può scattare. Per usarla, consentila per questo sito nel browser.",
+    "unavailable": "Questo dispositivo non offre una fotocamera in questo momento, quindi la foto non si può scattare.",
+    "reviewEmpty": "La tua foto dell’acquario vuoto",
+    "reviewFilled": "La tua foto dell’acquario pieno",
+    "sendError": "Impossibile inviare la foto. Riprova."
   }
 }

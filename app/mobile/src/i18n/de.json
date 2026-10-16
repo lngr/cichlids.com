@@ -124,7 +124,8 @@
       "consent": "Wenn du das Becken öffentlich machst, können andere Mitglieder und Besucher es sehen und ihm folgen.",
       "save": "Sichtbarkeit speichern",
       "saved": "Sichtbarkeit gespeichert"
-    }
+    },
+    "decommissioned": "Stillgelegt"
   },
   "species": {
     "tabTitle": "Arten",
@@ -334,7 +335,17 @@
     "vacation_dates_invalid": "Wähle Tage, die nicht in der Zukunft liegen; der letzte Tag liegt am oder nach dem ersten Tag.",
     "vacation_active": "Es ist bereits ein Urlaub aktiv.",
     "vacation_overlap": "Dieser Urlaub überschneidet sich mit einem anderen.",
-    "vacation_would_repair": "Ein Urlaub, der vor mehr als ein paar Tagen begann, kann keinen bereits abgelaufenen Zeitraum und keine abgelaufene Woche reparieren."
+    "vacation_would_repair": "Ein Urlaub, der vor mehr als ein paar Tagen begann, kann keinen bereits abgelaufenen Zeitraum und keine abgelaufene Woche reparieren.",
+    "decommission_photo_invalid": "Das Foto konnte nicht gelesen werden. Bitte nimm ein neues auf.",
+    "decommission_photo_not_in_app": "Das Foto muss mit der Kamera der App aufgenommen werden.",
+    "decommission_photo_time": "Die Aufnahmezeit des Fotos passt nicht zum Zeitpunkt des Sendens. Bitte nimm ein neues Foto auf.",
+    "decommission_photo_reused": "Dieses Foto hat schon als Nachweis gedient. Bitte nimm ein neues auf.",
+    "decommission_scope_invalid": "Wähle, was die Stilllegung pausiert.",
+    "decommission_active": "Dieses Becken ist bereits stillgelegt.",
+    "decommission_not_active": "Dieses Becken ist nicht stillgelegt.",
+    "decommission_date_invalid": "Das Datum deines Geräts konnte nicht gelesen werden.",
+    "decommission_request_invalid": "Prüfe das Foto und deine Auswahl.",
+    "decommission_auth_required": "Melde dich an, um ein Becken stillzulegen."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -639,7 +650,8 @@
       "choicesLabel": "Rhythmus in Tagen",
       "customLabel": "Eigener Rhythmus in Tagen (1 bis 90)",
       "saveCustom": "Diesen Rhythmus verwenden",
-      "customInvalid": "Gib eine ganze Zahl von 1 bis 90 ein."
+      "customInvalid": "Gib eine ganze Zahl von 1 bis 90 ein.",
+      "paused": "Pausiert, solange das Becken stillgelegt ist"
     },
     "photo": {
       "add": "Foto hinzufügen",
@@ -922,7 +934,8 @@
       "deadline": "Nächster Wasserwechsel bis {{date}}",
       "deadlineToday": "Nächster Wasserwechsel: spätestens heute",
       "freezes": "Übrige Freezes in diesem Beckenjahr: {{count}}",
-      "freezesHint": "Ein Freeze rettet einen Zeitraum, wenn ein Wasserwechsel nicht durch den geführten Modus bestätigt wurde."
+      "freezesHint": "Ein Freeze rettet einen Zeitraum, wenn ein Wasserwechsel nicht durch den geführten Modus bestätigt wurde.",
+      "paused": "Pausiert, solange du im Urlaub bist oder das Becken stillgelegt ist."
     },
     "vacation": {
       "title": "Urlaub",
@@ -958,6 +971,46 @@
     "more": "Mehr",
     "measurementMarker": "Messung eingetragen",
     "showList": "Als Liste anzeigen",
-    "hideList": "Liste ausblenden"
+    "hideList": "Liste ausblenden",
+    "rest_one": "Stillgelegte Tage: {{count}}",
+    "rest_other": "Stillgelegte Tage: {{count}}",
+    "restMarker": "Stillgelegt"
+  },
+  "decommission": {
+    "title": "Stilllegung",
+    "cardTitle": "Betriebszeit",
+    "days_one": "{{count}} Tag in Betrieb",
+    "days_other": "{{count}} Tage in Betrieb",
+    "months_one": "{{count}} Monat in Betrieb",
+    "months_other": "{{count}} Monate in Betrieb",
+    "years_one": "{{count}} Jahr in Betrieb",
+    "years_other": "{{count}} Jahre in Betrieb",
+    "rest_one": "Stillgelegt: {{count}} Tag",
+    "rest_other": "Stillgelegt: {{count}} Tage",
+    "since": "Stillgelegt seit {{date}}",
+    "statusAll": "Die gesamte Pflege ist pausiert.",
+    "statusWater": "Wasserwechsel und Serie sind pausiert. Messungen bleiben fällig.",
+    "history": "Stilllegungen",
+    "pastLine": "{{from}} bis {{to}}",
+    "emptyPhoto": "Leeres Becken, {{date}}",
+    "filledPhoto": "Befülltes Becken, {{date}}",
+    "start": "Becken stilllegen",
+    "end": "Wieder in Betrieb nehmen",
+    "intro": "Ein stillgelegtes Becken bleibt in deinem Profil. Die Ruhetage zählen nicht zur Betriebszeit, und die Wasserwechsel-Serie zählt nicht weiter und reißt nicht ab. Alle, die den Pflegeverlauf dieses Beckens sehen, sehen die Stilllegung mit ihren Fotos.",
+    "scopeTitle": "Was soll pausieren?",
+    "choiceAll": "Die gesamte Pflege",
+    "choiceAllHint": "Nichts ist fällig, das Becken taucht unter Heute nicht auf, es kommen keine Erinnerungen, und die Pflege-Heatmap markiert die Zeit als stillgelegt.",
+    "choiceWater": "Nur der Wasserwechsel",
+    "choiceWaterHint": "Wasserwechsel und Serie pausieren. Messungen bleiben mit ihren Erinnerungen fällig.",
+    "emptyHint": "Nimm jetzt mit der Kamera ein Foto vom leeren Becken auf. Alle, die den Pflegeverlauf dieses Beckens sehen, können es sehen.",
+    "filledHint": "Nimm jetzt mit der Kamera ein Foto vom befüllten Becken auf. Alle, die den Pflegeverlauf dieses Beckens sehen, können es sehen.",
+    "explainTitle": "Kamerazugriff",
+    "explain": "Das Foto muss mit der Kamera der App und jetzt aufgenommen werden, damit andere ihm vertrauen können.",
+    "denied": "Ohne Kamera lässt sich das Foto nicht aufnehmen. Erlaube die Kamera in den Einstellungen deines Geräts.",
+    "deniedWeb": "Ohne Kamera lässt sich das Foto nicht aufnehmen. Erlaube die Kamera für diese Seite in deinem Browser.",
+    "unavailable": "Dieses Gerät bietet gerade keine Kamera an, daher lässt sich das Foto nicht aufnehmen.",
+    "reviewEmpty": "Dein Foto vom leeren Becken",
+    "reviewFilled": "Dein Foto vom befüllten Becken",
+    "sendError": "Das Foto konnte nicht gesendet werden. Bitte versuche es erneut."
   }
 }

@@ -129,7 +129,8 @@
       "consent": "Si haces público el acuario, otros miembros y visitantes podrán verlo y seguirlo.",
       "save": "Guardar visibilidad",
       "saved": "Visibilidad guardada"
-    }
+    },
+    "decommissioned": "De baja"
   },
   "species": {
     "tabTitle": "Especies",
@@ -342,7 +343,17 @@
     "vacation_dates_invalid": "Elige días que no estén en el futuro, con el último día igual o posterior al primero.",
     "vacation_active": "Ya hay unas vacaciones activas.",
     "vacation_overlap": "Estas vacaciones se solapan con otras.",
-    "vacation_would_repair": "Unas vacaciones que empezaron hace más de unos días no pueden reparar un período o una semana que ya terminó."
+    "vacation_would_repair": "Unas vacaciones que empezaron hace más de unos días no pueden reparar un período o una semana que ya terminó.",
+    "decommission_photo_invalid": "No se pudo leer la foto. Toma una nueva.",
+    "decommission_photo_not_in_app": "La foto tiene que tomarse con la cámara de la app.",
+    "decommission_photo_time": "La hora de captura de la foto no coincide con el momento del envío. Toma una foto nueva.",
+    "decommission_photo_reused": "Esta foto ya sirvió como prueba. Toma una nueva.",
+    "decommission_scope_invalid": "Elige qué pausa la baja temporal.",
+    "decommission_active": "Este acuario ya está de baja.",
+    "decommission_not_active": "Este acuario no está de baja.",
+    "decommission_date_invalid": "No se pudo leer la fecha de tu dispositivo.",
+    "decommission_request_invalid": "Revisa la foto y tu elección.",
+    "decommission_auth_required": "Inicia sesión para dar de baja un acuario."
   },
   "featureFlags": {
     "activityTitle": "Actividad de la comunidad",
@@ -652,7 +663,8 @@
       "choicesLabel": "Ritmo en días",
       "customLabel": "Tu propio ritmo en días (1 a 90)",
       "saveCustom": "Usar este ritmo",
-      "customInvalid": "Ingresa un número entero de 1 a 90."
+      "customInvalid": "Ingresa un número entero de 1 a 90.",
+      "paused": "En pausa mientras el acuario está de baja"
     },
     "photo": {
       "add": "Agregar foto",
@@ -936,7 +948,8 @@
       "deadline": "Próximo cambio de agua antes del {{date}}",
       "deadlineToday": "Próximo cambio de agua: hoy a más tardar",
       "freezes": "Congelaciones restantes en este año del acuario: {{count}}",
-      "freezesHint": "Una congelación mantiene un período cuando un cambio de agua no fue verificado por el modo guiado."
+      "freezesHint": "Una congelación mantiene un período cuando un cambio de agua no fue verificado por el modo guiado.",
+      "paused": "En pausa mientras estás de vacaciones o el acuario está de baja."
     },
     "vacation": {
       "title": "Vacaciones",
@@ -972,6 +985,51 @@
     "more": "Más",
     "measurementMarker": "Medición registrada",
     "showList": "Mostrar como lista",
-    "hideList": "Ocultar lista"
+    "hideList": "Ocultar lista",
+    "rest_one": "Días de baja: {{count}}",
+    "rest_many": "Días de baja: {{count}}",
+    "rest_other": "Días de baja: {{count}}",
+    "restMarker": "De baja"
+  },
+  "decommission": {
+    "title": "Baja temporal",
+    "cardTitle": "Tiempo en funcionamiento",
+    "days_one": "En funcionamiento desde hace {{count}} día",
+    "days_many": "En funcionamiento desde hace {{count}} días",
+    "days_other": "En funcionamiento desde hace {{count}} días",
+    "months_one": "En funcionamiento desde hace {{count}} mes",
+    "months_many": "En funcionamiento desde hace {{count}} meses",
+    "months_other": "En funcionamiento desde hace {{count}} meses",
+    "years_one": "En funcionamiento desde hace {{count}} año",
+    "years_many": "En funcionamiento desde hace {{count}} años",
+    "years_other": "En funcionamiento desde hace {{count}} años",
+    "rest_one": "Tiempo de baja: {{count}} día",
+    "rest_many": "Tiempo de baja: {{count}} días",
+    "rest_other": "Tiempo de baja: {{count}} días",
+    "since": "De baja desde el {{date}}",
+    "statusAll": "Todos los cuidados están en pausa.",
+    "statusWater": "El cambio de agua y su racha están en pausa. Las mediciones siguen pendientes.",
+    "history": "Bajas temporales",
+    "pastLine": "{{from}} a {{to}}",
+    "emptyPhoto": "Acuario vacío, {{date}}",
+    "filledPhoto": "Acuario lleno, {{date}}",
+    "start": "Dar de baja este acuario",
+    "end": "Volver a ponerlo en marcha",
+    "intro": "Un acuario de baja sigue en tu perfil. Sus días de descanso no cuentan como tiempo en funcionamiento, y la racha de cambios de agua ni crece ni se rompe. Todas las personas que ven el seguimiento de cuidados de este acuario ven la baja con sus fotos.",
+    "scopeTitle": "¿Qué debe pausarse?",
+    "choiceAll": "Todos los cuidados",
+    "choiceAllHint": "No hay nada pendiente, el acuario no aparece en Hoy, no se envían recordatorios y el mapa de calor de cuidados marca ese tiempo como baja.",
+    "choiceWater": "Solo el cambio de agua",
+    "choiceWaterHint": "El cambio de agua y su racha se pausan. Las mediciones siguen pendientes con sus recordatorios.",
+    "emptyHint": "Toma ahora con la cámara una foto del acuario vacío. Todas las personas que ven el seguimiento de cuidados de este acuario pueden verla.",
+    "filledHint": "Toma ahora con la cámara una foto del acuario lleno. Todas las personas que ven el seguimiento de cuidados de este acuario pueden verla.",
+    "explainTitle": "Acceso a la cámara",
+    "explain": "La foto tiene que venir de la cámara de la app y tomarse ahora, para que otras personas puedan confiar en ella.",
+    "denied": "Sin la cámara no se puede tomar la foto. Para usarla, permítela en los ajustes de tu dispositivo.",
+    "deniedWeb": "Sin la cámara no se puede tomar la foto. Para usarla, permítela para este sitio en tu navegador.",
+    "unavailable": "Este dispositivo no ofrece ninguna cámara ahora, así que no se puede tomar la foto.",
+    "reviewEmpty": "Tu foto del acuario vacío",
+    "reviewFilled": "Tu foto del acuario lleno",
+    "sendError": "No se pudo enviar la foto. Inténtalo de nuevo."
   }
 }

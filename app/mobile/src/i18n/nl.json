@@ -124,7 +124,8 @@
       "consent": "Als je het aquarium openbaar maakt, kunnen andere leden en bezoekers het zien en volgen.",
       "save": "Zichtbaarheid opslaan",
       "saved": "Zichtbaarheid opgeslagen"
-    }
+    },
+    "decommissioned": "Buiten gebruik"
   },
   "species": {
     "tabTitle": "Soorten",
@@ -334,7 +335,17 @@
     "vacation_dates_invalid": "Kies dagen die niet in de toekomst liggen, met de laatste dag op of na de eerste dag.",
     "vacation_active": "Er is al een vakantie actief.",
     "vacation_overlap": "Deze vakantie overlapt met een andere.",
-    "vacation_would_repair": "Een vakantie die meer dan een paar dagen geleden begon, kan geen periode of week herstellen die al voorbij is."
+    "vacation_would_repair": "Een vakantie die meer dan een paar dagen geleden begon, kan geen periode of week herstellen die al voorbij is.",
+    "decommission_photo_invalid": "De foto kon niet worden gelezen. Maak een nieuwe.",
+    "decommission_photo_not_in_app": "De foto moet met de camera van de app gemaakt worden.",
+    "decommission_photo_time": "De opnametijd van de foto komt niet overeen met het moment van versturen. Maak een nieuwe foto.",
+    "decommission_photo_reused": "Deze foto heeft al als bewijs gediend. Maak een nieuwe.",
+    "decommission_scope_invalid": "Kies wat de buitengebruikstelling op pauze zet.",
+    "decommission_active": "Dit aquarium is al buiten gebruik.",
+    "decommission_not_active": "Dit aquarium is niet buiten gebruik.",
+    "decommission_date_invalid": "De datum van je apparaat kon niet worden gelezen.",
+    "decommission_request_invalid": "Controleer de foto en je keuze.",
+    "decommission_auth_required": "Log in om een aquarium buiten gebruik te stellen."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -639,7 +650,8 @@
       "choicesLabel": "Ritme in dagen",
       "customLabel": "Eigen ritme in dagen (1 tot 90)",
       "saveCustom": "Dit ritme gebruiken",
-      "customInvalid": "Voer een geheel getal van 1 tot 90 in."
+      "customInvalid": "Voer een geheel getal van 1 tot 90 in.",
+      "paused": "Op pauze zolang het aquarium buiten gebruik is"
     },
     "photo": {
       "add": "Foto toevoegen",
@@ -922,7 +934,8 @@
       "deadline": "Volgende waterverversing vóór {{date}}",
       "deadlineToday": "Volgende waterverversing: uiterlijk vandaag",
       "freezes": "Resterende freezes in dit aquariumjaar: {{count}}",
-      "freezesHint": "Een freeze houdt een periode in stand als een waterverversing niet door de begeleide modus is bevestigd."
+      "freezesHint": "Een freeze houdt een periode in stand als een waterverversing niet door de begeleide modus is bevestigd.",
+      "paused": "Gepauzeerd zolang je op vakantie bent of het aquarium buiten gebruik is."
     },
     "vacation": {
       "title": "Vakantie",
@@ -958,6 +971,46 @@
     "more": "Meer",
     "measurementMarker": "Meting vastgelegd",
     "showList": "Toon als lijst",
-    "hideList": "Verberg lijst"
+    "hideList": "Verberg lijst",
+    "rest_one": "Dagen buiten gebruik: {{count}}",
+    "rest_other": "Dagen buiten gebruik: {{count}}",
+    "restMarker": "Buiten gebruik"
+  },
+  "decommission": {
+    "title": "Buiten gebruik",
+    "cardTitle": "Gebruiksduur",
+    "days_one": "{{count}} dag in gebruik",
+    "days_other": "{{count}} dagen in gebruik",
+    "months_one": "{{count}} maand in gebruik",
+    "months_other": "{{count}} maanden in gebruik",
+    "years_one": "{{count}} jaar in gebruik",
+    "years_other": "{{count}} jaar in gebruik",
+    "rest_one": "Tijd buiten gebruik: {{count}} dag",
+    "rest_other": "Tijd buiten gebruik: {{count}} dagen",
+    "since": "Buiten gebruik sinds {{date}}",
+    "statusAll": "Alle verzorging staat op pauze.",
+    "statusWater": "De waterverversing en de reeks staan op pauze. Metingen blijven openstaan.",
+    "history": "Buitengebruikstellingen",
+    "pastLine": "{{from}} tot {{to}}",
+    "emptyPhoto": "Leeg aquarium, {{date}}",
+    "filledPhoto": "Gevuld aquarium, {{date}}",
+    "start": "Dit aquarium buiten gebruik stellen",
+    "end": "Weer in gebruik nemen",
+    "intro": "Een aquarium dat buiten gebruik is, blijft in je profiel. De rustdagen tellen niet mee als gebruiksduur en de reeks waterverversingen groeit niet en breekt niet. Iedereen die de verzorging van dit aquarium ziet, ziet de buitengebruikstelling met de foto's.",
+    "scopeTitle": "Wat moet er op pauze?",
+    "choiceAll": "Alle verzorging",
+    "choiceAllHint": "Er staat niets open, het aquarium verschijnt niet onder Vandaag, er komen geen herinneringen en de verzorgingsheatmap markeert de tijd als buiten gebruik.",
+    "choiceWater": "Alleen de waterverversing",
+    "choiceWaterHint": "De waterverversing en de reeks gaan op pauze. Metingen blijven openstaan, met hun herinneringen.",
+    "emptyHint": "Maak nu met de camera een foto van het lege aquarium. Iedereen die de verzorging van dit aquarium ziet, kan hem zien.",
+    "filledHint": "Maak nu met de camera een foto van het gevulde aquarium. Iedereen die de verzorging van dit aquarium ziet, kan hem zien.",
+    "explainTitle": "Toegang tot de camera",
+    "explain": "De foto moet van de camera van de app komen en nu gemaakt zijn, zodat anderen erop kunnen vertrouwen.",
+    "denied": "Zonder camera kan de foto niet gemaakt worden. Sta de camera toe in de instellingen van je apparaat om hem te gebruiken.",
+    "deniedWeb": "Zonder camera kan de foto niet gemaakt worden. Sta de camera toe voor deze site in je browser om hem te gebruiken.",
+    "unavailable": "Dit apparaat biedt nu geen camera, dus de foto kan niet gemaakt worden.",
+    "reviewEmpty": "Je foto van het lege aquarium",
+    "reviewFilled": "Je foto van het gevulde aquarium",
+    "sendError": "De foto kon niet worden verstuurd. Probeer het opnieuw."
   }
 }

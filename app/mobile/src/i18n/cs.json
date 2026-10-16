@@ -134,7 +134,8 @@
       "consent": "Pokud akvárium zveřejníte, ostatní členové a návštěvníci ho uvidí a mohou ho sledovat.",
       "save": "Uložit viditelnost",
       "saved": "Viditelnost uložena"
-    }
+    },
+    "decommissioned": "Mimo provoz"
   },
   "species": {
     "tabTitle": "Druhy",
@@ -350,7 +351,17 @@
     "vacation_dates_invalid": "Vyber dny, které nejsou v budoucnosti; poslední den nesmí být před prvním.",
     "vacation_active": "Dovolená už je aktivní.",
     "vacation_overlap": "Tato dovolená se překrývá s jinou.",
-    "vacation_would_repair": "Dovolená, která začala před více než několika dny, nemůže napravit období ani týden, které už skončily."
+    "vacation_would_repair": "Dovolená, která začala před více než několika dny, nemůže napravit období ani týden, které už skončily.",
+    "decommission_photo_invalid": "Fotku se nepodařilo přečíst. Pořiď novou.",
+    "decommission_photo_not_in_app": "Fotka musí být pořízena fotoaparátem aplikace.",
+    "decommission_photo_time": "Čas pořízení fotky neodpovídá okamžiku odeslání. Pořiď novou fotku.",
+    "decommission_photo_reused": "Tato fotka už posloužila jako důkaz. Pořiď novou.",
+    "decommission_scope_invalid": "Vyber, co vyřazení z provozu pozastaví.",
+    "decommission_active": "Toto akvárium je už vyřazeno z provozu.",
+    "decommission_not_active": "Toto akvárium není vyřazeno z provozu.",
+    "decommission_date_invalid": "Datum tvého zařízení se nepodařilo přečíst.",
+    "decommission_request_invalid": "Zkontroluj fotku a svou volbu.",
+    "decommission_auth_required": "Přihlas se, abys mohl vyřadit akvárium z provozu."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -665,7 +676,8 @@
       "choicesLabel": "Rytmus ve dnech",
       "customLabel": "Vlastní rytmus ve dnech (1 až 90)",
       "saveCustom": "Použít tento rytmus",
-      "customInvalid": "Zadej celé číslo od 1 do 90."
+      "customInvalid": "Zadej celé číslo od 1 do 90.",
+      "paused": "Pozastaveno, dokud je akvárium mimo provoz"
     },
     "photo": {
       "add": "Přidat fotku",
@@ -950,7 +962,8 @@
       "deadline": "Další výměna vody do {{date}}",
       "deadlineToday": "Další výměna vody: nejpozději dnes",
       "freezes": "Zbývající zmrazení v tomto roce akvária: {{count}}",
-      "freezesHint": "Zmrazení zachrání období, když výměna vody nebyla potvrzena vedeným režimem."
+      "freezesHint": "Zmrazení zachrání období, když výměna vody nebyla potvrzena vedeným režimem.",
+      "paused": "Pozastaveno, dokud jsi na dovolené nebo je akvárium mimo provoz."
     },
     "vacation": {
       "title": "Dovolená",
@@ -986,6 +999,56 @@
     "more": "Více",
     "measurementMarker": "Zapsané měření",
     "showList": "Zobrazit jako seznam",
-    "hideList": "Skrýt seznam"
+    "hideList": "Skrýt seznam",
+    "rest_one": "Dny mimo provoz: {{count}}",
+    "rest_few": "Dny mimo provoz: {{count}}",
+    "rest_many": "Dny mimo provoz: {{count}}",
+    "rest_other": "Dny mimo provoz: {{count}}",
+    "restMarker": "Mimo provoz"
+  },
+  "decommission": {
+    "title": "Vyřazení z provozu",
+    "cardTitle": "Doba provozu",
+    "days_one": "V provozu {{count}} den",
+    "days_few": "V provozu {{count}} dny",
+    "days_many": "V provozu {{count}} dne",
+    "days_other": "V provozu {{count}} dní",
+    "months_one": "V provozu {{count}} měsíc",
+    "months_few": "V provozu {{count}} měsíce",
+    "months_many": "V provozu {{count}} měsíce",
+    "months_other": "V provozu {{count}} měsíců",
+    "years_one": "V provozu {{count}} rok",
+    "years_few": "V provozu {{count}} roky",
+    "years_many": "V provozu {{count}} roku",
+    "years_other": "V provozu {{count}} let",
+    "rest_one": "Doba mimo provoz: {{count}} den",
+    "rest_few": "Doba mimo provoz: {{count}} dny",
+    "rest_many": "Doba mimo provoz: {{count}} dne",
+    "rest_other": "Doba mimo provoz: {{count}} dní",
+    "since": "Mimo provoz od {{date}}",
+    "statusAll": "Veškerá péče je pozastavena.",
+    "statusWater": "Výměna vody a její série jsou pozastaveny. Měření zůstávají na řadě.",
+    "history": "Vyřazení z provozu",
+    "pastLine": "od {{from}} do {{to}}",
+    "emptyPhoto": "Prázdné akvárium, {{date}}",
+    "filledPhoto": "Naplněné akvárium, {{date}}",
+    "start": "Vyřadit toto akvárium z provozu",
+    "end": "Znovu uvést do provozu",
+    "intro": "Vyřazené akvárium zůstává ve tvém profilu. Dny klidu se nepočítají do doby provozu a série výměn vody neroste ani se nepřeruší. Každý, kdo vidí záznam péče o toto akvárium, vidí vyřazení z provozu i s fotkami.",
+    "scopeTitle": "Co se má pozastavit?",
+    "choiceAll": "Veškerá péče",
+    "choiceAllHint": "Nic nečeká na splnění, akvárium se nezobrazí v části Dnes, nechodí žádné připomínky a teplotní mapa péče označí tuto dobu jako vyřazení z provozu.",
+    "choiceWater": "Jen výměna vody",
+    "choiceWaterHint": "Výměna vody a její série se pozastaví. Měření zůstávají na řadě i s připomínkami.",
+    "emptyHint": "Vyfoť teď fotoaparátem prázdné akvárium. Uvidí ji každý, kdo vidí záznam péče o toto akvárium.",
+    "filledHint": "Vyfoť teď fotoaparátem naplněné akvárium. Uvidí ji každý, kdo vidí záznam péče o toto akvárium.",
+    "explainTitle": "Přístup k fotoaparátu",
+    "explain": "Fotka musí pocházet z fotoaparátu aplikace a být pořízená teď, aby jí ostatní mohli věřit.",
+    "denied": "Bez fotoaparátu se fotka pořídit nedá. Abys ho mohl použít, povol ho v nastavení zařízení.",
+    "deniedWeb": "Bez fotoaparátu se fotka pořídit nedá. Abys ho mohl použít, povol ho pro tento web v prohlížeči.",
+    "unavailable": "Toto zařízení teď nenabízí žádný fotoaparát, takže fotku nelze pořídit.",
+    "reviewEmpty": "Tvoje fotka prázdného akvária",
+    "reviewFilled": "Tvoje fotka naplněného akvária",
+    "sendError": "Fotku se nepodařilo odeslat. Zkus to prosím znovu."
   }
 }

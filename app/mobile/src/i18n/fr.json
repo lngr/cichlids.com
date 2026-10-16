@@ -129,7 +129,8 @@
       "consent": "Si vous rendez l'aquarium public, les autres membres et visiteurs peuvent le voir et le suivre.",
       "save": "Enregistrer la visibilité",
       "saved": "Visibilité enregistrée"
-    }
+    },
+    "decommissioned": "Hors service"
   },
   "species": {
     "tabTitle": "Espèces",
@@ -342,7 +343,17 @@
     "vacation_dates_invalid": "Choisis des jours qui ne sont pas dans le futur, le dernier jour étant le même que le premier ou après lui.",
     "vacation_active": "Des vacances sont déjà actives.",
     "vacation_overlap": "Ces vacances chevauchent d’autres vacances.",
-    "vacation_would_repair": "Des vacances commencées il y a plus de quelques jours ne peuvent pas réparer une période ou une semaine déjà terminée."
+    "vacation_would_repair": "Des vacances commencées il y a plus de quelques jours ne peuvent pas réparer une période ou une semaine déjà terminée.",
+    "decommission_photo_invalid": "La photo n’a pas pu être lue. Prends-en une nouvelle.",
+    "decommission_photo_not_in_app": "La photo doit être prise avec l’appareil photo de l’application.",
+    "decommission_photo_time": "L’heure de prise de vue de la photo ne correspond pas au moment de l’envoi. Prends une nouvelle photo.",
+    "decommission_photo_reused": "Cette photo a déjà servi de preuve. Prends-en une nouvelle.",
+    "decommission_scope_invalid": "Choisis ce que la mise hors service met en pause.",
+    "decommission_active": "Cet aquarium est déjà hors service.",
+    "decommission_not_active": "Cet aquarium n’est pas hors service.",
+    "decommission_date_invalid": "La date de ton appareil n’a pas pu être lue.",
+    "decommission_request_invalid": "Vérifie la photo et ton choix.",
+    "decommission_auth_required": "Connecte-toi pour mettre un aquarium hors service."
   },
   "featureFlags": {
     "activityTitle": "Activité de la communauté",
@@ -652,7 +663,8 @@
       "choicesLabel": "Rythme en jours",
       "customLabel": "Ton propre rythme en jours (1 à 90)",
       "saveCustom": "Utiliser ce rythme",
-      "customInvalid": "Saisis un nombre entier de 1 à 90."
+      "customInvalid": "Saisis un nombre entier de 1 à 90.",
+      "paused": "En pause tant que l’aquarium est hors service"
     },
     "photo": {
       "add": "Ajouter une photo",
@@ -936,7 +948,8 @@
       "deadline": "Prochain changement d’eau avant le {{date}}",
       "deadlineToday": "Prochain changement d’eau : aujourd’hui au plus tard",
       "freezes": "Gels restants cette année du bac : {{count}}",
-      "freezesHint": "Un gel maintient une période lorsqu’un changement d’eau n’a pas été confirmé par le mode guidé."
+      "freezesHint": "Un gel maintient une période lorsqu’un changement d’eau n’a pas été confirmé par le mode guidé.",
+      "paused": "En pause pendant tes vacances ou tant que l’aquarium est hors service."
     },
     "vacation": {
       "title": "Vacances",
@@ -972,6 +985,51 @@
     "more": "Plus",
     "measurementMarker": "Mesure enregistrée",
     "showList": "Afficher en liste",
-    "hideList": "Masquer la liste"
+    "hideList": "Masquer la liste",
+    "rest_one": "Jours hors service : {{count}}",
+    "rest_many": "Jours hors service : {{count}}",
+    "rest_other": "Jours hors service : {{count}}",
+    "restMarker": "Hors service"
+  },
+  "decommission": {
+    "title": "Mise hors service",
+    "cardTitle": "Durée de fonctionnement",
+    "days_one": "En service depuis {{count}} jour",
+    "days_many": "En service depuis {{count}} jours",
+    "days_other": "En service depuis {{count}} jours",
+    "months_one": "En service depuis {{count}} mois",
+    "months_many": "En service depuis {{count}} mois",
+    "months_other": "En service depuis {{count}} mois",
+    "years_one": "En service depuis {{count}} an",
+    "years_many": "En service depuis {{count}} ans",
+    "years_other": "En service depuis {{count}} ans",
+    "rest_one": "Temps hors service : {{count}} jour",
+    "rest_many": "Temps hors service : {{count}} jours",
+    "rest_other": "Temps hors service : {{count}} jours",
+    "since": "Hors service depuis le {{date}}",
+    "statusAll": "Tous les soins sont en pause.",
+    "statusWater": "Le changement d’eau et sa série sont en pause. Les mesures restent à faire.",
+    "history": "Mises hors service",
+    "pastLine": "{{from}} au {{to}}",
+    "emptyPhoto": "Aquarium vide, {{date}}",
+    "filledPhoto": "Aquarium rempli, {{date}}",
+    "start": "Mettre cet aquarium hors service",
+    "end": "Remettre en service",
+    "intro": "Un aquarium hors service reste dans ton profil. Ses jours de repos ne comptent pas dans la durée de fonctionnement, et la série de changements d’eau ne progresse pas et ne s’interrompt pas. Toute personne qui voit l’entretien de cet aquarium voit la mise hors service avec ses photos.",
+    "scopeTitle": "Qu’est-ce qui doit être mis en pause ?",
+    "choiceAll": "Tous les soins",
+    "choiceAllHint": "Rien n’est à faire, l’aquarium n’apparaît pas dans Aujourd’hui, aucun rappel n’est envoyé et la carte de chaleur des soins marque cette période comme hors service.",
+    "choiceWater": "Seulement le changement d’eau",
+    "choiceWaterHint": "Le changement d’eau et sa série sont en pause. Les mesures restent à faire, avec leurs rappels.",
+    "emptyHint": "Prends maintenant avec l’appareil photo de l’application une photo de l’aquarium vide. Toute personne qui voit l’entretien de cet aquarium peut la voir.",
+    "filledHint": "Prends maintenant avec l’appareil photo de l’application une photo de l’aquarium rempli. Toute personne qui voit l’entretien de cet aquarium peut la voir.",
+    "explainTitle": "Accès à l’appareil photo",
+    "explain": "La photo doit venir de l’appareil photo de l’application et être prise maintenant, pour que les autres puissent s’y fier.",
+    "denied": "Sans l’appareil photo, la photo ne peut pas être prise. Pour l’utiliser, autorise-le dans les réglages de ton appareil.",
+    "deniedWeb": "Sans l’appareil photo, la photo ne peut pas être prise. Pour l’utiliser, autorise-le pour ce site dans ton navigateur.",
+    "unavailable": "Cet appareil n’offre pas d’appareil photo pour le moment, la photo ne peut donc pas être prise.",
+    "reviewEmpty": "Ta photo de l’aquarium vide",
+    "reviewFilled": "Ta photo de l’aquarium rempli",
+    "sendError": "La photo n’a pas pu être envoyée. Réessaie."
   }
 }

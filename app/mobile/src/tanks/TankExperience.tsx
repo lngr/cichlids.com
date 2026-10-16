@@ -22,6 +22,7 @@ import { useLocalSearchParams } from "expo-router";
 import { TankRegionSlot } from "./TankRegionSlot";
 import { CareHeatmapView } from "../careHeatmap/CareHeatmapView";
 import { TankStreaksCard } from "../streaks/TankStreaksCard";
+import { TankOperationCard } from "../decommission/TankOperationCard";
 import { TankVisibilitySettings } from "./TankVisibilitySettings";
 import { VideoCard } from "../video/VideoCard";
 import { TankVideosSection } from "../video/TankVideosSection";
@@ -116,6 +117,7 @@ export function TankExperience({ tank, series, children, onVisibilityChanged }: 
     </View>
     <View style={styles.body}>
       <TankStreaksCard tankId={Number(tank.id)} />
+      <TankOperationCard tankId={Number(tank.id)} owner={stream.owner} />
       <View testID="tank-datasheet" style={styles.metrics}>
         <TankMeasurements tank={tank} layout="summary" />
         <View style={[styles.speciesMetric, card]}>

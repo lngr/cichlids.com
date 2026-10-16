@@ -20,8 +20,18 @@ function Swatch({ level, dot = false, theme }: { level: number; dot?: boolean; t
   </View>;
 }
 
+/** A day of rest: an outlined cell with a bar and no accent cover, so it reads without color. */
+function restStyle(theme: Theme) {
+  return { borderRadius: 3, borderWidth: 1, borderStyle: "dashed" as const, borderColor: theme.colors.muted, alignItems: "center" as const, justifyContent: "center" as const };
+}
+
 function Cell({ cell, theme }: { cell: HeatmapCell; theme: Theme }) {
   const marked = cell.level > 0;
+  if (cell.decommissioned && cell.inWindow && !marked) {
+    return <View testID={`care-heatmap-rest-${cell.date}`} style={[{ flex: 1, aspectRatio: 1 }, restStyle(theme)]}>
+      <View style={{ width: "50%", height: 2, backgroundColor: theme.colors.muted }} />
+    </View>;
+  }
   return <View testID={marked ? `care-heatmap-marked-${cell.date}` : `care-heatmap-cell-${cell.date}`}
     style={{ flex: 1, aspectRatio: 1, borderRadius: 3, overflow: "hidden", alignItems: "center", justifyContent: "center",
       backgroundColor: cell.inWindow ? theme.colors.placeholder : "transparent" }}>
@@ -33,7 +43,8 @@ function Cell({ cell, theme }: { cell: HeatmapCell; theme: Theme }) {
 /**
  * The care of the last 16 weeks as a grid of week columns and weekday rows: the intensity of a day follows
  * the number of entries, a dot marks a day with a measurement. The grid reads as one summary for a screen
- * reader, and a button shows the same days as a list. Absent while the heatmap is unread or not visible to
+ * reader, and a button shows the same days as a list. Days on which a decommissioning pauses all care are outlined
+ * with a bar. Absent while the heatmap is unread or not visible to
  * the viewer. Without a tank id it shows the own tanks summed. Framed puts it on a card.
  */
 export function CareHeatmapView({ tankId, framed = false }: { tankId?: number; framed?: boolean }) {
@@ -61,6 +72,10 @@ export function CareHeatmapView({ tankId, framed = false }: { tankId?: number; f
       <Text style={[theme.type.meta, text]}>{t("careHeatmap.more")}</Text>
       <Swatch level={0} dot theme={theme} />
       <Text style={[theme.type.meta, text]}>{t("careHeatmap.measurementMarker")}</Text>
+      {heatmap.decommissionedDays.length > 0 ? <>
+        <View testID="care-heatmap-rest-legend" style={[{ width: 14, height: 14 }, restStyle(theme)]}><View style={{ width: 7, height: 2, backgroundColor: theme.colors.muted }} /></View>
+        <Text style={[theme.type.meta, text]}>{t("careHeatmap.restMarker")}</Text>
+      </> : null}
     </View>
     {items.length > 0 ? <Pressable testID="care-heatmap-toggle" accessibilityRole="button" accessibilityState={{ expanded: list }}
       onPress={() => setList(value => !value)}

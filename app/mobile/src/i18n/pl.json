@@ -134,7 +134,8 @@
       "consent": "Jeśli uczynisz akwarium publicznym, inni członkowie i goście zobaczą je i będą mogli je obserwować.",
       "save": "Zapisz widoczność",
       "saved": "Widoczność zapisana"
-    }
+    },
+    "decommissioned": "Wyłączone z użytku"
   },
   "species": {
     "tabTitle": "Gatunki",
@@ -350,7 +351,17 @@
     "vacation_dates_invalid": "Wybierz dni, które nie leżą w przyszłości; ostatni dzień nie może być przed pierwszym.",
     "vacation_active": "Urlop jest już aktywny.",
     "vacation_overlap": "Ten urlop nakłada się na inny.",
-    "vacation_would_repair": "Urlop rozpoczęty kilka dni temu lub wcześniej nie może naprawić okresu ani tygodnia, który już się zakończył."
+    "vacation_would_repair": "Urlop rozpoczęty kilka dni temu lub wcześniej nie może naprawić okresu ani tygodnia, który już się zakończył.",
+    "decommission_photo_invalid": "Nie udało się odczytać zdjęcia. Zrób nowe.",
+    "decommission_photo_not_in_app": "Zdjęcie musi zostać zrobione aparatem aplikacji.",
+    "decommission_photo_time": "Czas wykonania zdjęcia nie pasuje do chwili wysłania. Zrób nowe zdjęcie.",
+    "decommission_photo_reused": "To zdjęcie posłużyło już jako dowód. Zrób nowe.",
+    "decommission_scope_invalid": "Wybierz, co wstrzymuje wyłączenie z użytku.",
+    "decommission_active": "To akwarium jest już wyłączone z użytku.",
+    "decommission_not_active": "To akwarium nie jest wyłączone z użytku.",
+    "decommission_date_invalid": "Nie udało się odczytać daty urządzenia.",
+    "decommission_request_invalid": "Sprawdź zdjęcie i swój wybór.",
+    "decommission_auth_required": "Zaloguj się, aby wyłączyć akwarium z użytku."
   },
   "featureFlags": {
     "activityTitle": "Aktywność społeczności",
@@ -665,7 +676,8 @@
       "choicesLabel": "Rytm w dniach",
       "customLabel": "Własny rytm w dniach (od 1 do 90)",
       "saveCustom": "Użyj tego rytmu",
-      "customInvalid": "Wpisz liczbę całkowitą od 1 do 90."
+      "customInvalid": "Wpisz liczbę całkowitą od 1 do 90.",
+      "paused": "Wstrzymane, dopóki akwarium jest wyłączone z użytku"
     },
     "photo": {
       "add": "Dodaj zdjęcie",
@@ -950,7 +962,8 @@
       "deadline": "Następna podmiana wody do {{date}}",
       "deadlineToday": "Następna podmiana wody: najpóźniej dziś",
       "freezes": "Pozostałe zamrożenia w tym roku akwarium: {{count}}",
-      "freezesHint": "Zamrożenie podtrzymuje okres, gdy podmiana wody nie została potwierdzona w trybie prowadzonym."
+      "freezesHint": "Zamrożenie podtrzymuje okres, gdy podmiana wody nie została potwierdzona w trybie prowadzonym.",
+      "paused": "Wstrzymane na czas urlopu lub wyłączenia akwarium z użytku."
     },
     "vacation": {
       "title": "Urlop",
@@ -986,6 +999,56 @@
     "more": "Więcej",
     "measurementMarker": "Zapisany pomiar",
     "showList": "Pokaż jako listę",
-    "hideList": "Ukryj listę"
+    "hideList": "Ukryj listę",
+    "rest_one": "Dni wyłączenia: {{count}}",
+    "rest_few": "Dni wyłączenia: {{count}}",
+    "rest_many": "Dni wyłączenia: {{count}}",
+    "rest_other": "Dni wyłączenia: {{count}}",
+    "restMarker": "Wyłączone z użytku"
+  },
+  "decommission": {
+    "title": "Wyłączenie z użytku",
+    "cardTitle": "Czas użytkowania",
+    "days_one": "W użytku od {{count}} dnia",
+    "days_few": "W użytku od {{count}} dni",
+    "days_many": "W użytku od {{count}} dni",
+    "days_other": "W użytku od {{count}} dnia",
+    "months_one": "W użytku od {{count}} miesiąca",
+    "months_few": "W użytku od {{count}} miesięcy",
+    "months_many": "W użytku od {{count}} miesięcy",
+    "months_other": "W użytku od {{count}} miesiąca",
+    "years_one": "W użytku od {{count}} roku",
+    "years_few": "W użytku od {{count}} lat",
+    "years_many": "W użytku od {{count}} lat",
+    "years_other": "W użytku od {{count}} roku",
+    "rest_one": "Czas wyłączenia: {{count}} dzień",
+    "rest_few": "Czas wyłączenia: {{count}} dni",
+    "rest_many": "Czas wyłączenia: {{count}} dni",
+    "rest_other": "Czas wyłączenia: {{count}} dnia",
+    "since": "Wyłączone z użytku od {{date}}",
+    "statusAll": "Cała pielęgnacja jest wstrzymana.",
+    "statusWater": "Podmiana wody i jej seria są wstrzymane. Pomiary nadal czekają.",
+    "history": "Wyłączenia z użytku",
+    "pastLine": "od {{from}} do {{to}}",
+    "emptyPhoto": "Puste akwarium, {{date}}",
+    "filledPhoto": "Napełnione akwarium, {{date}}",
+    "start": "Wyłącz to akwarium z użytku",
+    "end": "Przywróć do użytku",
+    "intro": "Wyłączone akwarium zostaje w Twoim profilu. Dni przerwy nie liczą się do czasu użytkowania, a seria podmian wody nie rośnie i nie zostaje przerwana. Każdy, kto widzi dziennik pielęgnacji tego akwarium, widzi wyłączenie wraz ze zdjęciami.",
+    "scopeTitle": "Co ma zostać wstrzymane?",
+    "choiceAll": "Cała pielęgnacja",
+    "choiceAllHint": "Nic nie jest do zrobienia, akwarium nie pojawia się w widoku Dzisiaj, nie wysyłamy przypomnień, a mapa cieplna pielęgnacji oznacza ten czas jako wyłączenie.",
+    "choiceWater": "Tylko podmiana wody",
+    "choiceWaterHint": "Podmiana wody i jej seria są wstrzymane. Pomiary nadal czekają, razem z przypomnieniami.",
+    "emptyHint": "Zrób teraz aparatem aplikacji zdjęcie pustego akwarium. Zobaczy je każdy, kto widzi dziennik pielęgnacji tego akwarium.",
+    "filledHint": "Zrób teraz aparatem aplikacji zdjęcie napełnionego akwarium. Zobaczy je każdy, kto widzi dziennik pielęgnacji tego akwarium.",
+    "explainTitle": "Dostęp do aparatu",
+    "explain": "Zdjęcie musi pochodzić z aparatu aplikacji i być zrobione teraz, aby inni mogli mu zaufać.",
+    "denied": "Bez aparatu nie da się zrobić zdjęcia. Aby go użyć, zezwól na niego w ustawieniach urządzenia.",
+    "deniedWeb": "Bez aparatu nie da się zrobić zdjęcia. Aby go użyć, zezwól na niego dla tej strony w przeglądarce.",
+    "unavailable": "To urządzenie nie ma teraz dostępnego aparatu, więc nie da się zrobić zdjęcia.",
+    "reviewEmpty": "Twoje zdjęcie pustego akwarium",
+    "reviewFilled": "Twoje zdjęcie napełnionego akwarium",
+    "sendError": "Nie udało się wysłać zdjęcia. Spróbuj ponownie."
   }
 }

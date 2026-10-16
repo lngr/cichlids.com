@@ -124,7 +124,8 @@
       "consent": "Akvaryumu herkese açık yaparsanız diğer üyeler ve ziyaretçiler onu görebilir ve takip edebilir.",
       "save": "Görünürlüğü kaydet",
       "saved": "Görünürlük kaydedildi"
-    }
+    },
+    "decommissioned": "Devre dışı"
   },
   "species": {
     "tabTitle": "Türler",
@@ -334,7 +335,17 @@
     "vacation_dates_invalid": "Gelecekte olmayan günler seç; son gün ilk günden önce olmasın.",
     "vacation_active": "Zaten etkin bir tatil var.",
     "vacation_overlap": "Bu tatil başka bir tatille çakışıyor.",
-    "vacation_would_repair": "Birkaç günden daha önce başlayan bir tatil, zaten sona ermiş bir dönemi veya haftayı onaramaz."
+    "vacation_would_repair": "Birkaç günden daha önce başlayan bir tatil, zaten sona ermiş bir dönemi veya haftayı onaramaz.",
+    "decommission_photo_invalid": "Fotoğraf okunamadı. Yenisini çek.",
+    "decommission_photo_not_in_app": "Fotoğraf uygulamanın kamerasıyla çekilmeli.",
+    "decommission_photo_time": "Fotoğrafın çekilme zamanı gönderildiği ana uymuyor. Yeni bir fotoğraf çek.",
+    "decommission_photo_reused": "Bu fotoğraf daha önce kanıt olarak kullanıldı. Yenisini çek.",
+    "decommission_scope_invalid": "Devre dışı bırakmanın neyi duraklatacağını seç.",
+    "decommission_active": "Bu akvaryum zaten devre dışı.",
+    "decommission_not_active": "Bu akvaryum devre dışı değil.",
+    "decommission_date_invalid": "Cihazının tarihi okunamadı.",
+    "decommission_request_invalid": "Fotoğrafı ve seçimini kontrol et.",
+    "decommission_auth_required": "Akvaryumu devre dışı bırakmak için giriş yap."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -639,7 +650,8 @@
       "choicesLabel": "Gün olarak ritim",
       "customLabel": "Kendi ritmin, gün olarak (1 ile 90)",
       "saveCustom": "Bu ritmi kullan",
-      "customInvalid": "1 ile 90 arasında bir tam sayı gir."
+      "customInvalid": "1 ile 90 arasında bir tam sayı gir.",
+      "paused": "Akvaryum devre dışı olduğu sürece duraklatıldı"
     },
     "photo": {
       "add": "Fotoğraf ekle",
@@ -922,7 +934,8 @@
       "deadline": "Bir sonraki su değişimi en geç {{date}}",
       "deadlineToday": "Bir sonraki su değişimi: en geç bugün",
       "freezes": "Bu akvaryum yılında kalan dondurma hakkı: {{count}}",
-      "freezesHint": "Bir su değişimi rehberli modla doğrulanmadığında dondurma hakkı o dönemi korur."
+      "freezesHint": "Bir su değişimi rehberli modla doğrulanmadığında dondurma hakkı o dönemi korur.",
+      "paused": "Tatildeyken veya akvaryum devre dışıyken duraklatıldı."
     },
     "vacation": {
       "title": "Tatil",
@@ -958,6 +971,46 @@
     "more": "Daha çok",
     "measurementMarker": "Ölçüm kaydedildi",
     "showList": "Liste olarak göster",
-    "hideList": "Listeyi gizle"
+    "hideList": "Listeyi gizle",
+    "rest_one": "Devre dışı günler: {{count}}",
+    "rest_other": "Devre dışı günler: {{count}}",
+    "restMarker": "Devre dışı"
+  },
+  "decommission": {
+    "title": "Devre dışı bırakma",
+    "cardTitle": "Kullanım süresi",
+    "days_one": "{{count}} gündür kullanımda",
+    "days_other": "{{count}} gündür kullanımda",
+    "months_one": "{{count}} aydır kullanımda",
+    "months_other": "{{count}} aydır kullanımda",
+    "years_one": "{{count}} yıldır kullanımda",
+    "years_other": "{{count}} yıldır kullanımda",
+    "rest_one": "Devre dışı süre: {{count}} gün",
+    "rest_other": "Devre dışı süre: {{count}} gün",
+    "since": "{{date}} tarihinden beri devre dışı",
+    "statusAll": "Tüm bakım duraklatıldı.",
+    "statusWater": "Su değişimi ve serisi duraklatıldı. Ölçümler yine de beklemeye devam eder.",
+    "history": "Devre dışı bırakmalar",
+    "pastLine": "{{from}} - {{to}}",
+    "emptyPhoto": "Boş akvaryum, {{date}}",
+    "filledPhoto": "Dolu akvaryum, {{date}}",
+    "start": "Bu akvaryumu devre dışı bırak",
+    "end": "Yeniden kullanıma al",
+    "intro": "Devre dışı bırakılan akvaryum profilinde kalır. Dinlenme günleri kullanım süresine sayılmaz; su değişimi serisi ne büyür ne kopar. Bu akvaryumun bakım akışını görenlerin hepsi devre dışı bırakmayı fotoğraflarıyla görür.",
+    "scopeTitle": "Neler duraklatılsın?",
+    "choiceAll": "Tüm bakım",
+    "choiceAllHint": "Hiçbir şey zamanı gelmiş sayılmaz, akvaryum Bugün sayfasında görünmez, hatırlatma gönderilmez ve bakım ısı haritası o süreyi devre dışı olarak işaretler.",
+    "choiceWater": "Yalnızca su değişimi",
+    "choiceWaterHint": "Su değişimi ve serisi duraklar. Ölçümler hatırlatmalarıyla birlikte beklemeye devam eder.",
+    "emptyHint": "Şimdi kamerayla boş akvaryumun fotoğrafını çek. Bu akvaryumun bakım akışını gören herkes onu görebilir.",
+    "filledHint": "Şimdi kamerayla dolu akvaryumun fotoğrafını çek. Bu akvaryumun bakım akışını gören herkes onu görebilir.",
+    "explainTitle": "Kamera erişimi",
+    "explain": "Fotoğraf uygulamanın kamerasından gelmeli ve şimdi çekilmeli ki başkaları ona güvenebilsin.",
+    "denied": "Kamera olmadan fotoğraf çekilemez. Kamerayı kullanmak için cihazının ayarlarından izin ver.",
+    "deniedWeb": "Kamera olmadan fotoğraf çekilemez. Kamerayı kullanmak için tarayıcında bu site için izin ver.",
+    "unavailable": "Bu cihaz şu anda kamera sunmuyor, bu yüzden fotoğraf çekilemez.",
+    "reviewEmpty": "Boş akvaryum fotoğrafın",
+    "reviewFilled": "Dolu akvaryum fotoğrafın",
+    "sendError": "Fotoğraf gönderilemedi. Lütfen tekrar dene."
   }
 }

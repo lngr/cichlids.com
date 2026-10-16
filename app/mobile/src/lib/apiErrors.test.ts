@@ -48,6 +48,13 @@ describe("apiErrorKey", () => {
     }
   });
 
+  it.each(["decommission_photo_invalid", "decommission_photo_not_in_app", "decommission_photo_time", "decommission_photo_reused", "decommission_scope_invalid", "decommission_active", "decommission_not_active", "decommission_date_invalid", "decommission_request_invalid", "decommission_auth_required"])("translates %s", (code) => {
+    expect(apiErrorKey(new ApiError("Refused", 400, code))).toBe(`errors.${code}`);
+    for (const resource of Object.values(TRANSLATIONS)) {
+      expect((resource.errors as Record<string, string>)[code], code).toBeTruthy();
+    }
+  });
+
   it("returns null for unknown codes, missing codes and non-objects", () => {
     expect(apiErrorKey({ code: "something_new" })).toBeNull();
     expect(apiErrorKey(new Error("Failed to fetch"))).toBeNull();

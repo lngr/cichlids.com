@@ -147,7 +147,7 @@ try {
   assert.deepEqual(hidden.vacations, [], "an active vacation is not exposed");
   await page.goto(`${WEB_URL}/?lang=en`, { waitUntil: "networkidle" });
   await byTestId(page, "today-streaks-vacation").waitFor({ timeout: 30000 });
-  assert.match(await text(page, `${prefix}-water-change`), /Paused while you are on vacation\./);
+  assert.match(await text(page, `${prefix}-water-change`), /Paused while you are on vacation or the tank is decommissioned\./);
   await page.screenshot({ path: "/tmp/task-5.5-today-vacation-light.png" });
 
   // Ending it makes the past vacation visible next to the streaks.

@@ -124,7 +124,8 @@
       "consent": "Jika Anda menjadikan akuarium publik, anggota lain dan pengunjung dapat melihat dan mengikutinya.",
       "save": "Simpan visibilitas",
       "saved": "Visibilitas disimpan"
-    }
+    },
+    "decommissioned": "Nonaktif"
   },
   "species": {
     "tabTitle": "Spesies",
@@ -334,7 +335,17 @@
     "vacation_dates_invalid": "Pilih hari yang tidak berada di masa depan, dengan hari terakhir sama dengan atau setelah hari pertama.",
     "vacation_active": "Sudah ada liburan yang aktif.",
     "vacation_overlap": "Liburan ini tumpang tindih dengan liburan lain.",
-    "vacation_would_repair": "Liburan yang dimulai lebih dari beberapa hari lalu tidak dapat memperbaiki periode atau minggu yang sudah berakhir."
+    "vacation_would_repair": "Liburan yang dimulai lebih dari beberapa hari lalu tidak dapat memperbaiki periode atau minggu yang sudah berakhir.",
+    "decommission_photo_invalid": "Foto tidak bisa dibaca. Ambil foto baru.",
+    "decommission_photo_not_in_app": "Foto harus diambil dengan kamera aplikasi.",
+    "decommission_photo_time": "Waktu pengambilan foto tidak cocok dengan saat pengiriman. Ambil foto baru.",
+    "decommission_photo_reused": "Foto ini sudah pernah dipakai sebagai bukti. Ambil foto baru.",
+    "decommission_scope_invalid": "Pilih apa yang dijeda oleh penonaktifan.",
+    "decommission_active": "Akuarium ini sudah dinonaktifkan.",
+    "decommission_not_active": "Akuarium ini tidak dinonaktifkan.",
+    "decommission_date_invalid": "Tanggal perangkatmu tidak bisa dibaca.",
+    "decommission_request_invalid": "Periksa foto dan pilihanmu.",
+    "decommission_auth_required": "Masuk untuk menonaktifkan akuarium."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -634,7 +645,8 @@
       "choicesLabel": "Ritme dalam hari",
       "customLabel": "Ritme sendiri dalam hari (1 sampai 90)",
       "saveCustom": "Pakai ritme ini",
-      "customInvalid": "Masukkan bilangan bulat dari 1 sampai 90."
+      "customInvalid": "Masukkan bilangan bulat dari 1 sampai 90.",
+      "paused": "Dijeda selama akuarium dinonaktifkan"
     },
     "photo": {
       "add": "Tambah foto",
@@ -916,7 +928,8 @@
       "deadline": "Penggantian air berikutnya sebelum {{date}}",
       "deadlineToday": "Penggantian air berikutnya: paling lambat hari ini",
       "freezes": "Freeze tersisa di tahun akuarium ini: {{count}}",
-      "freezesHint": "Freeze menjaga satu periode ketika penggantian air tidak terverifikasi oleh mode terpandu."
+      "freezesHint": "Freeze menjaga satu periode ketika penggantian air tidak terverifikasi oleh mode terpandu.",
+      "paused": "Dijeda selama kamu berlibur atau akuarium dinonaktifkan."
     },
     "vacation": {
       "title": "Liburan",
@@ -952,6 +965,41 @@
     "more": "Lebih banyak",
     "measurementMarker": "Pengukuran dicatat",
     "showList": "Tampilkan sebagai daftar",
-    "hideList": "Sembunyikan daftar"
+    "hideList": "Sembunyikan daftar",
+    "rest_other": "Hari nonaktif: {{count}}",
+    "restMarker": "Nonaktif"
+  },
+  "decommission": {
+    "title": "Penonaktifan",
+    "cardTitle": "Lama beroperasi",
+    "days_other": "Beroperasi selama {{count}} hari",
+    "months_other": "Beroperasi selama {{count}} bulan",
+    "years_other": "Beroperasi selama {{count}} tahun",
+    "rest_other": "Waktu nonaktif: {{count}} hari",
+    "since": "Dinonaktifkan sejak {{date}}",
+    "statusAll": "Semua perawatan dijeda.",
+    "statusWater": "Penggantian air dan rangkaiannya dijeda. Pengukuran tetap harus dilakukan.",
+    "history": "Penonaktifan",
+    "pastLine": "{{from}} sampai {{to}}",
+    "emptyPhoto": "Akuarium kosong, {{date}}",
+    "filledPhoto": "Akuarium terisi, {{date}}",
+    "start": "Nonaktifkan akuarium ini",
+    "end": "Aktifkan kembali",
+    "intro": "Akuarium yang dinonaktifkan tetap ada di profilmu. Hari-hari istirahatnya tidak dihitung sebagai lama beroperasi, dan rangkaian penggantian airnya tidak bertambah dan tidak putus. Semua orang yang melihat catatan perawatan akuarium ini melihat penonaktifan beserta fotonya.",
+    "scopeTitle": "Apa yang perlu dijeda?",
+    "choiceAll": "Semua perawatan",
+    "choiceAllHint": "Tidak ada yang jatuh tempo, akuarium tidak muncul di Hari ini, tidak ada pengingat yang dikirim, dan peta panas perawatan menandai waktu itu sebagai nonaktif.",
+    "choiceWater": "Hanya penggantian air",
+    "choiceWaterHint": "Penggantian air dan rangkaiannya dijeda. Pengukuran tetap jatuh tempo beserta pengingatnya.",
+    "emptyHint": "Ambil foto akuarium yang kosong dengan kamera sekarang. Semua orang yang melihat catatan perawatan akuarium ini bisa melihatnya.",
+    "filledHint": "Ambil foto akuarium yang terisi dengan kamera sekarang. Semua orang yang melihat catatan perawatan akuarium ini bisa melihatnya.",
+    "explainTitle": "Akses kamera",
+    "explain": "Foto harus berasal dari kamera aplikasi dan diambil sekarang, supaya orang lain bisa memercayainya.",
+    "denied": "Tanpa kamera, foto tidak bisa diambil. Untuk memakai kamera, izinkan di pengaturan perangkatmu.",
+    "deniedWeb": "Tanpa kamera, foto tidak bisa diambil. Untuk memakai kamera, izinkan untuk situs ini di browsermu.",
+    "unavailable": "Perangkat ini tidak menyediakan kamera saat ini, jadi foto tidak bisa diambil.",
+    "reviewEmpty": "Fotomu tentang akuarium kosong",
+    "reviewFilled": "Fotomu tentang akuarium terisi",
+    "sendError": "Foto tidak bisa dikirim. Coba lagi."
   }
 }

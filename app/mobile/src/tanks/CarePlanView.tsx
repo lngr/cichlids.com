@@ -44,6 +44,8 @@ function RuleCard({ rule, busy, editing, onEdit, onChange, onToggle }: {
     <Text accessibilityRole="header" style={[theme.type.bodyStrong, text]}>{t(`care.plan.kind.${kind}`)}</Text>
     {rule.rhythmDays === null
       ? <Text testID={`care-plan-state-${kind}`} style={[theme.type.body, muted]}>{t("care.plan.noRule")}</Text>
+      : rule.paused && rule.enabled
+        ? <Text testID={`care-plan-paused-${kind}`} accessibilityLiveRegion="polite" style={[theme.type.bodyStrong, text]}>{t("care.plan.paused")}</Text>
       : rule.due
         ? <Text testID={`care-plan-due-${kind}`} accessibilityLiveRegion="polite" style={[theme.type.bodyStrong, text]}>{dueText(rule.due, t)}</Text>
         : <Text testID={`care-plan-state-${kind}`} style={[theme.type.body, muted]}>{t("care.plan.switchedOff")}</Text>}

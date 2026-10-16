@@ -44,7 +44,7 @@ export function verifiedText(streak: WaterChangeStreak, t: Translate): string | 
 /** The state of the streak in calm wording: pause, start, end or the next deadline; null when a viewer sees no deadline. */
 export function waterChangeStatus(streak: WaterChangeStreak, today: string, t: Translate, language: string): string | null {
   switch (streak.state) {
-    case "paused": return t("streaks.paused");
+    case "paused": return t("streaks.waterChange.paused");
     case "no_history": return t("streaks.waterChange.noHistory");
     case "broken": return t("streaks.waterChange.broken");
     default:
