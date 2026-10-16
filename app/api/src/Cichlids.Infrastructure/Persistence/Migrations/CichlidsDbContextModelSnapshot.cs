@@ -1937,7 +1937,7 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     b.ToTable("tank_media", "public", t =>
                         {
-                            t.HasCheckConstraint("ck_tank_media_section", "section IN ('showcase', 'decoration', 'technic')");
+                            t.HasCheckConstraint("ck_tank_media_section", "section IN ('showcase', 'decoration', 'technic', 'time_lapse')");
                         });
                 });
 

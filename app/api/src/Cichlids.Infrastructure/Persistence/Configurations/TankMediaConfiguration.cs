@@ -31,6 +31,6 @@ public class TankMediaConfiguration : IEntityTypeConfiguration<TankMedia>
 
         builder.ToTable("tank_media", tb => tb.HasCheckConstraint(
             "ck_tank_media_section",
-            "section IN ('showcase', 'decoration', 'technic')"));
+            "section IN ('showcase', 'decoration', 'technic', 'time_lapse')"));
     }
 }

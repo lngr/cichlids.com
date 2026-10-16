@@ -3,7 +3,7 @@ using Cichlids.Domain.Enums;
 namespace Cichlids.Domain.Entities;
 
 /// <summary>
-/// A media item attached to a section of a tank (showcase, decoration or technic), ordered
+/// A media item attached to a section of a tank (showcase, decoration, technic or the time-lapse series), ordered
 /// within that section.
 /// </summary>
 public class TankMedia
