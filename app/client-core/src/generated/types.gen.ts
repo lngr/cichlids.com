@@ -765,6 +765,51 @@ export type GetFeatureFlagsResponses = {
 
 export type GetFeatureFlagsResponse = GetFeatureFlagsResponses[keyof GetFeatureFlagsResponses];
 
+export type AddTankSeriesPhotoData = {
+    body: {
+        file?: IFormFile;
+    };
+    path: {
+        tankId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/time-lapse/photos';
+};
+
+export type AddTankSeriesPhotoErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Payload Too Large
+     */
+    413: unknown;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type AddTankSeriesPhotoError = AddTankSeriesPhotoErrors[keyof AddTankSeriesPhotoErrors];
+
+export type AddTankSeriesPhotoResponses = {
+    /**
+     * Created
+     */
+    201: TankTimeLapsePhotoDto;
+};
+
+export type AddTankSeriesPhotoResponse = AddTankSeriesPhotoResponses[keyof AddTankSeriesPhotoResponses];
+
 export type GetCarePhotoData = {
     body?: never;
     path: {
