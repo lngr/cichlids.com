@@ -21,6 +21,9 @@ import {
   refineTankRegion,
   discardPost,
   getCarePlan,
+  getWebPushConfig,
+  subscribeWebPush,
+  unsubscribeWebPush,
   getCareSeries,
   listDueCare,
   updateCarePlan,
@@ -123,6 +126,15 @@ export type DueCareItem = { tankId: number; tankTitle: string; kind: CareKind; r
 export type CarePlanChange = { rhythmDays?: number; enabled?: boolean };
 /** The member's local calendar date (YYYY-MM-DD) and, optionally, the offset of the clock from UTC in minutes. */
 export type LocalTime = { date: string; utcOffsetMinutes?: number };
+
+/** Whether the server sends Web Push messages and the VAPID public key a browser subscribes with. */
+export type WebPushConfig = { available: boolean; publicKey: string | null };
+
+/** The subscription a browser holds for Web Push, with the IANA time zone in which its reminders fall due. */
+export type WebPushSubscriptionRequest = { endpoint: string; keys: { p256dh: string; auth: string }; timeZone: string };
+
+/** A subscription stored on the server. */
+export type WebPushSubscriptionRecord = { id: number; timeZone: string };
 export type MeasurementValue = MeasurementValueDto;
 export type { CareAmountRequest, CareParameter, LogCareRequest, MeasurementOrigin, MeasurementUnit, MeasurementValueRequest };
 export type CareSeriesRange = { from?: string; to?: string };
@@ -289,6 +301,13 @@ export interface CichlidsClient {
     setReminders(tankId: number, enabled: boolean, local: LocalTime): Promise<CarePlan>;
     due(local: LocalTime): Promise<DueCareItem[]>;
   };
+  webPush: {
+    config(): Promise<WebPushConfig>;
+    /** Stores the subscription of this browser, or updates the one stored for its endpoint. */
+    subscribe(subscription: WebPushSubscriptionRequest): Promise<WebPushSubscriptionRecord>;
+    /** Deletes the subscription of the endpoint; an unknown endpoint changes nothing. */
+    unsubscribe(endpoint: string): Promise<void>;
+  };
   todos: {
     list(params?: TodoListParams): Promise<PagedResponse<TodoListItem>>;
     /** Adds a to-do that belongs to a tank only. */
@@ -401,6 +420,17 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
         return toPlan(unwrap(await updateCarePlan({ client, path: { tankId }, query: local, body: { remindersEnabled: enabled } })));
       },
       async due(local) { return unwrap<DueCareDto>(await listDueCare({ client, query: local })).items.map(toDueItem); },
+    },
+    webPush: {
+      async config() {
+        const config = unwrap(await getWebPushConfig({ client }));
+        return { available: config.available, publicKey: config.publicKey ?? null };
+      },
+      async subscribe(subscription) {
+        const stored = unwrap(await subscribeWebPush({ client, body: subscription }));
+        return { id: Number(stored.id), timeZone: stored.timeZone };
+      },
+      async unsubscribe(endpoint) { unwrap(await unsubscribeWebPush({ client, body: { endpoint } })); },
     },
     todos: {
       async list(params) { return unwrapPaged(await listMyTodos({ client, query: params ?? {} })); },
