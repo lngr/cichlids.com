@@ -13,5 +13,11 @@ public class CareEntry
     public decimal? AmountInputValue { get; set; }
     public CareAmountUnit? AmountInputUnit { get; set; }
     public decimal? AmountLiters { get; set; }
+
+    /// <summary>
+    /// A free text of up to 2000 characters the author attached to the entry; null when there is none.
+    /// </summary>
+    public string? Note { get; set; }
+
     public List<CareMeasurementValue> Values { get; set; } = [];
 }

@@ -123,6 +123,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("kind");
 
+                    b.Property<string>("Note")
+                        .HasColumnType("text")
+                        .HasColumnName("note");
+
                     b.Property<DateTimeOffset>("OccurredAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("occurred_at");
@@ -150,6 +154,8 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                             t.HasCheckConstraint("ck_care_amount", "(amount_input_value IS NULL AND amount_input_unit IS NULL AND amount_liters IS NULL)\nOR (amount_input_value IS NOT NULL AND amount_input_value > 0 AND amount_input_value <= 1000000\n    AND amount_input_unit IS NOT NULL AND (\n        (amount_input_unit = 'percent' AND amount_input_value <= 100 AND amount_liters IS NULL)\n        OR (amount_input_unit = 'liter' AND amount_liters IS NOT NULL AND amount_liters = amount_input_value)\n        OR (amount_input_unit = 'us_gallon' AND amount_liters IS NOT NULL AND amount_liters > 0)))");
 
                             t.HasCheckConstraint("ck_care_kind", "kind IN ('water_change', 'measurement')");
+
+                            t.HasCheckConstraint("ck_care_note", "note IS NULL OR char_length(note) BETWEEN 1 AND 2000");
 
                             t.HasCheckConstraint("ck_care_time", "occurred_at <= recorded_at + interval '2 minutes'");
                         });

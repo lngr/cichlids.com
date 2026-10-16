@@ -11,6 +11,10 @@ namespace Cichlids.Api.Features.Care;
 public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clock)
 {
     private const int MaxMeasurementValues = 10;
+    private const int MaxNoteLength = 2000;
+
+    // A blank note removes the note.
+    private static string? NormalizeNote(string note) => note.Trim() is { Length: > 0 } trimmed ? trimmed : null;
 
     public static string? ValidateAmount(CareAmountRequest? amount)
     {
@@ -92,18 +96,25 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
         if (entry is null) return (null, "care_not_found");
         if (request is not null)
         {
-            if (entry.Kind == CareKind.Measurement)
-            {
-                if (request.Amount is not null) return (null, "care_request_invalid");
-                var (values, valuesError) = BuildValues(request.Values);
-                if (valuesError is not null) return (null, valuesError);
-                ReplaceValues(entry, values!);
-            }
+            var noteChange = request.Note is null ? null : NormalizeNote(request.Note);
+            if (noteChange?.Length > MaxNoteLength) return (null, "care_note_invalid");
+            if (request is { Amount: null, Values: null, Note: not null }) entry.Note = noteChange;
             else
             {
-                if (request.Values is not null) return (null, "care_measurement_invalid");
-                if (ValidateAmount(request.Amount) is { } error) return (null, error);
-                SetAmount(entry, request.Amount);
+                if (entry.Kind == CareKind.Measurement)
+                {
+                    if (request.Amount is not null) return (null, "care_request_invalid");
+                    var (values, valuesError) = BuildValues(request.Values);
+                    if (valuesError is not null) return (null, valuesError);
+                    ReplaceValues(entry, values!);
+                }
+                else
+                {
+                    if (request.Values is not null) return (null, "care_measurement_invalid");
+                    if (ValidateAmount(request.Amount) is { } error) return (null, error);
+                    SetAmount(entry, request.Amount);
+                }
+                if (request.Note is not null) entry.Note = noteChange;
             }
         }
         var dto = CareEntryDto.From(entry);
@@ -156,6 +167,7 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
         {
             ["careEntryId"] = entry.Id, ["tankId"] = entry.TankId, ["authorProfileId"] = entry.AuthorProfileId,
             ["kind"] = SnakeCaseEnum.ToSnakeCase(entry.Kind), ["occurredAt"] = entry.OccurredAt, ["recordedAt"] = entry.RecordedAt,
+            ["note"] = entry.Note,
             ["amount"] = entry.AmountInputValue is { } value ? new { value, unit = SnakeCaseEnum.ToSnakeCase(entry.AmountInputUnit!.Value), liters = entry.AmountLiters } : null,
         };
         if (entry.Kind == CareKind.Measurement)

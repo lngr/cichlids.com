@@ -141,6 +141,7 @@ public static partial class CareEndpoints
             "care_unit_invalid" => "This unit does not apply to the parameter.",
             "care_value_invalid" => "The value is outside the plausible range of the parameter.",
             "care_origin_invalid" => "Choose test_kit, meter or probe.",
+            "care_note_invalid" => "A note has up to 2000 characters.",
             "care_range_invalid" => "The start of the range must not be after its end.",
             "care_plan_invalid" => "Choose a rhythm of 1 to 90 days or switch the rule on or off; a measurement rule needs a rhythm.",
             "care_date_invalid" => "Send your local calendar date as YYYY-MM-DD and, optionally, the offset of your clock from UTC in minutes (-840 to 840).",

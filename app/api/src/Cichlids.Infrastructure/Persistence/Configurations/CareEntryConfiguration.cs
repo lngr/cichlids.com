@@ -20,6 +20,7 @@ public sealed class CareEntryConfiguration : IEntityTypeConfiguration<CareEntry>
         builder.ToTable("care_entry", table =>
         {
             table.HasCheckConstraint("ck_care_kind", "kind IN ('water_change', 'measurement')");
+            table.HasCheckConstraint("ck_care_note", "note IS NULL OR char_length(note) BETWEEN 1 AND 2000");
             table.HasCheckConstraint("ck_care_time", "occurred_at <= recorded_at + interval '2 minutes'");
             table.HasCheckConstraint("ck_care_amount", """
                 (amount_input_value IS NULL AND amount_input_unit IS NULL AND amount_liters IS NULL)
