@@ -10,10 +10,12 @@ public static class MediaStorageKeys
     private const string OriginalsPrefix = "originals/";
     private const string ForumAttachmentsPrefix = "forum_attachments/";
     private const string VariantsPrefix = "variants/";
+    private const string PrivatePrefix = "private/";
 
     /// <summary>
     /// The key prefixes whose objects anyone may read without credentials: the derived variants
-    /// and the forum attachments. Originals live outside these prefixes and stay private.
+    /// and the forum attachments. Originals and everything under the private prefix live outside
+    /// these prefixes and stay private.
     /// </summary>
     public static IReadOnlyList<string> PublicPrefixes { get; } = [VariantsPrefix, ForumAttachmentsPrefix];
 
@@ -28,6 +30,29 @@ public static class MediaStorageKeys
     {
         EnsureOriginalKey(originalStorageKey);
         return $"{VariantsPrefix}{label}/{originalStorageKey}.jpg";
+    }
+
+    /// <summary>
+    /// Builds the storage key of a private original: private/, the area, the owner's profile id and
+    /// the file name. Objects under the private prefix are never reachable without credentials.
+    /// </summary>
+    public static string BuildPrivateOriginalKey(string area, long ownerProfileId, string fileName) =>
+        $"{PrivatePrefix}{area}/{ownerProfileId}/{fileName}";
+
+    /// <summary>
+    /// Builds the storage key of one variant of a private original: private/variants/, the label,
+    /// then the original's own full storage key with .jpg appended. The key stays under the private
+    /// prefix, so the variant is as private as its original.
+    /// </summary>
+    public static string BuildPrivateVariantKey(string privateOriginalStorageKey, string label)
+    {
+        if (!privateOriginalStorageKey.StartsWith(PrivatePrefix, StringComparison.Ordinal))
+        {
+            throw new ArgumentException(
+                $"Storage key '{privateOriginalStorageKey}' is not a private original.", nameof(privateOriginalStorageKey));
+        }
+
+        return $"{PrivatePrefix}variants/{label}/{privateOriginalStorageKey}.jpg";
     }
 
     /// <summary>

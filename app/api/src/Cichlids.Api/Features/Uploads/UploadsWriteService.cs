@@ -45,10 +45,19 @@ public sealed class UploadsWriteService(
             return UploadRefusal.DraftLimitReached;
         }
 
+        return await CheckHourlyQuotaAsync(ownerProfileId, cancellationToken);
+    }
+
+    /// <summary>
+    /// Checks only the owner's hourly upload limit and returns RateLimited when it is reached, else
+    /// null.
+    /// </summary>
+    public async Task<UploadRefusal?> CheckHourlyQuotaAsync(long ownerProfileId, CancellationToken cancellationToken)
+    {
         var since = timeProvider.GetUtcNow().AddHours(-1);
         var recentUploads = await context.MediaItems.CountAsync(
             m => m.OwnerProfileId == ownerProfileId && m.CreatedAt > since, cancellationToken);
-        return recentUploads >= limits.MaxUploadsPerHour ? UploadRefusal.RateLimited : null;
+        return recentUploads >= limitOptions.Value.MaxUploadsPerHour ? UploadRefusal.RateLimited : null;
     }
 
     /// <summary>
@@ -63,15 +72,66 @@ public sealed class UploadsWriteService(
     public async Task<DraftDto> CreateDraftAsync(
         Profile owner, byte[] bytes, UploadImageFormat format, string? originalFilename, CancellationToken cancellationToken)
     {
+        var stored = await StoreImageAsync(owner.Id, bytes, format, originalFilename, isPrivate: false, cancellationToken);
+        try
+        {
+            var now = stored.Item.CreatedAt;
+            await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
+
+            context.MediaItems.Add(stored.Item);
+
+            var post = new Post
+            {
+                AuthorProfileId = owner.Id,
+                Kind = PostKind.Single,
+                Topic = PostTopic.Cichlids,
+                State = PostState.Draft,
+                CreatedAt = now,
+                UpdatedAt = now,
+            };
+            context.Posts.Add(post);
+            await context.SaveChangesAsync(cancellationToken);
+
+            context.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = stored.Item.Id, Sort = 0 });
+            await context.SaveChangesAsync(cancellationToken);
+            await transaction.CommitAsync(cancellationToken);
+
+            var image = _mediaUrlBuilder.Build(stored.Item.Variants.ToDictionary(v => v.Label, v => v.StorageKey));
+            return new DraftDto(post.Id, post.State, post.Topic, post.Title, post.Description, post.CreatedAt, image);
+        }
+        catch
+        {
+            await DeleteObjectsAsync(stored.WrittenKeys);
+            throw;
+        }
+    }
+
+    /// <summary>
+    /// Processes a photo into its variants and writes the sanitized original and the variants to
+    /// the object store. A public photo lives under the public variant prefix; a private photo
+    /// lives entirely under the private prefix, so none of its objects has a public URL. Returns the
+    /// media item with its variants, not yet saved, and the keys written so a failing caller can
+    /// delete them. Throws the image exceptions of CreateDraftAsync before anything is stored; a
+    /// failing write deletes the objects already written.
+    /// </summary>
+    public async Task<StoredImage> StoreImageAsync(
+        long ownerProfileId, byte[] bytes, UploadImageFormat format, string? originalFilename, bool isPrivate,
+        CancellationToken cancellationToken)
+    {
         var processed = ImageProcessor.Process(bytes);
         var (width, height) = (processed.Width, processed.Height);
         var original = MediaMetadataSanitizer.Sanitize(bytes);
         var sourceSha256 = Convert.ToHexStringLower(SHA256.HashData(bytes));
         var originalSha256 = Convert.ToHexStringLower(SHA256.HashData(original));
 
-        var originalKey = $"originals/uploads/{owner.Id}/{Guid.CreateVersion7()}.{format.Extension}";
+        var fileName = $"{Guid.CreateVersion7()}.{format.Extension}";
+        var originalKey = isPrivate
+            ? MediaStorageKeys.BuildPrivateOriginalKey("care", ownerProfileId, fileName)
+            : $"originals/uploads/{ownerProfileId}/{fileName}";
         var variants = processed.Variants
-            .Select(v => (v.Label, v.Width, Key: MediaStorageKeys.BuildVariantKey(originalKey, v.Label), v.Bytes))
+            .Select(v => (v.Label, v.Width, Key: isPrivate
+                ? MediaStorageKeys.BuildPrivateVariantKey(originalKey, v.Label)
+                : MediaStorageKeys.BuildVariantKey(originalKey, v.Label), v.Bytes))
             .ToList();
 
         var writtenKeys = new List<string>();
@@ -95,52 +155,30 @@ public sealed class UploadsWriteService(
                     cancellationToken);
                 writtenKeys.Add(variant.Key);
             }
-
-            var now = DateTimeOffset.UtcNow;
-            await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
-
-            var mediaItem = new MediaItem
-            {
-                OwnerProfileId = owner.Id,
-                Kind = MediaKind.Photo,
-                StorageKey = originalKey,
-                OriginalFilename = originalFilename,
-                ContentType = format.ContentType,
-                ByteSize = original.LongLength,
-                Width = width,
-                Height = height,
-                ChecksumSha256 = originalSha256,
-                CreatedAt = now,
-                Variants = variants
-                    .Select(v => new MediaVariant { Label = v.Label, Width = v.Width, StorageKey = v.Key, ByteSize = v.Bytes.LongLength })
-                    .ToList(),
-            };
-            context.MediaItems.Add(mediaItem);
-
-            var post = new Post
-            {
-                AuthorProfileId = owner.Id,
-                Kind = PostKind.Single,
-                Topic = PostTopic.Cichlids,
-                State = PostState.Draft,
-                CreatedAt = now,
-                UpdatedAt = now,
-            };
-            context.Posts.Add(post);
-            await context.SaveChangesAsync(cancellationToken);
-
-            context.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = mediaItem.Id, Sort = 0 });
-            await context.SaveChangesAsync(cancellationToken);
-            await transaction.CommitAsync(cancellationToken);
-
-            var image = _mediaUrlBuilder.Build(variants.ToDictionary(v => v.Label, v => v.Key));
-            return new DraftDto(post.Id, post.State, post.Topic, post.Title, post.Description, post.CreatedAt, image);
         }
         catch
         {
             await DeleteObjectsAsync(writtenKeys);
             throw;
         }
+
+        var item = new MediaItem
+        {
+            OwnerProfileId = ownerProfileId,
+            Kind = MediaKind.Photo,
+            StorageKey = originalKey,
+            OriginalFilename = originalFilename,
+            ContentType = format.ContentType,
+            ByteSize = original.LongLength,
+            Width = width,
+            Height = height,
+            ChecksumSha256 = originalSha256,
+            CreatedAt = DateTimeOffset.UtcNow,
+            Variants = variants
+                .Select(v => new MediaVariant { Label = v.Label, Width = v.Width, StorageKey = v.Key, ByteSize = v.Bytes.LongLength })
+                .ToList(),
+        };
+        return new StoredImage(item, writtenKeys);
     }
 
     /// <summary>
@@ -209,7 +247,7 @@ public sealed class UploadsWriteService(
 
     // Runs without the request's cancellation token: cleanup that stops halfway because the
     // client went away would leave exactly the orphans it exists to prevent.
-    private async Task DeleteObjectsAsync(IEnumerable<string> keys)
+    public async Task DeleteObjectsAsync(IEnumerable<string> keys)
     {
         foreach (var key in keys)
         {
@@ -224,3 +262,9 @@ public sealed class UploadsWriteService(
         }
     }
 }
+
+/// <summary>
+/// A processed photo: its media item with the variants (not yet saved) and the keys of the objects
+/// written for it.
+/// </summary>
+public sealed record StoredImage(MediaItem Item, IReadOnlyList<string> WrittenKeys);

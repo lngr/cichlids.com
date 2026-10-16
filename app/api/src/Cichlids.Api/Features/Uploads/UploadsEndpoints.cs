@@ -18,7 +18,7 @@ public static class UploadsEndpoints
 
     // Request body limit for an upload: the largest accepted file plus room for the multipart
     // boundaries and part headers, so a file at the limit reaches the size check in the handler.
-    private const long MaxRequestBytes = MaxFileBytes + (1024 * 1024);
+    public const long MaxRequestBytes = MaxFileBytes + (1024 * 1024);
 
     private const int MaxTitleLength = 200;
     private const int MaxDescriptionLength = 5000;
@@ -130,31 +130,10 @@ public static class UploadsEndpoints
         IFormFile? file,
         CancellationToken cancellationToken)
     {
-        if (file is null || file.Length == 0)
+        var (image, readError) = await UploadedImageReader.ReadAsync(file, cancellationToken);
+        if (image is null)
         {
-            return TypedResults.BadRequest("A non-empty file field is required.");
-        }
-
-        if (file.Length > MaxFileBytes)
-        {
-            return TypedResults.BadRequest($"The file exceeds the limit of {MaxFileBytes / (1024 * 1024)} MB.");
-        }
-
-        var format = UploadImageFormat.FromContentType(file.ContentType);
-        if (format is null)
-        {
-            return TypedResults.BadRequest("The file must be image/jpeg, image/png or image/webp.");
-        }
-
-        var bytes = new byte[file.Length];
-        await using (var stream = file.OpenReadStream())
-        {
-            await stream.ReadExactlyAsync(bytes, cancellationToken);
-        }
-
-        if (!format.MatchesSignature(bytes))
-        {
-            return TypedResults.BadRequest($"The file content is not {format.ContentType}.");
+            return TypedResults.BadRequest(readError!);
         }
 
         var owner = await currentProfileService.ResolveAsync(user, cancellationToken);
@@ -168,7 +147,7 @@ public static class UploadsEndpoints
         try
         {
             var draft = await uploadsWriteService.CreateDraftAsync(
-                owner, bytes, format, Path.GetFileName(file.FileName), cancellationToken);
+                owner, image.Bytes, image.Format, Path.GetFileName(file!.FileName), cancellationToken);
             return TypedResults.Created((string?)null, draft);
         }
         catch (ImageProcessor.ImageTooLargeException ex)

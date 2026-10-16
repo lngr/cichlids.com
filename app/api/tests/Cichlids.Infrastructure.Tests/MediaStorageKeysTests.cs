@@ -85,4 +85,22 @@ public sealed class MediaStorageKeysTests
     {
         Assert.Throws<ArgumentException>(() => MediaStorageKeys.BuildPublicCopyKey("variants/thumb/x.jpg"));
     }
+
+    [Fact]
+    public void BuildsAPrivateVariantKeyOutsideEveryPublicPrefix()
+    {
+        var original = MediaStorageKeys.BuildPrivateOriginalKey("care", 42, "0190a1b2.jpg");
+        var variant = MediaStorageKeys.BuildPrivateVariantKey(original, "thumb");
+
+        Assert.Equal("private/care/42/0190a1b2.jpg", original);
+        Assert.Equal("private/variants/thumb/private/care/42/0190a1b2.jpg.jpg", variant);
+        Assert.All(new[] { original, variant }, key =>
+            Assert.DoesNotContain(MediaStorageKeys.PublicPrefixes, prefix => key.StartsWith(prefix, StringComparison.Ordinal)));
+    }
+
+    [Fact]
+    public void ThrowsWhenAPrivateVariantKeyIsBuiltFromAPublicOriginal()
+    {
+        Assert.Throws<ArgumentException>(() => MediaStorageKeys.BuildPrivateVariantKey("originals/x.jpg", "thumb"));
+    }
 }
