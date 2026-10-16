@@ -13,7 +13,7 @@ jobs:
   golden-snapshot:
     name: golden-snapshot
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 30
     permissions:
       contents: read
     services:
@@ -56,6 +56,28 @@ jobs:
         run: |
           python -m pip install PyYAML==6.0.3
           python tools/golden-snapshot/test_provisioning.py
+      - name: Install the pinned .NET SDK
+        run: |
+          bash tools/install-dotnet.sh
+          echo "$HOME/.dotnet" >> "$GITHUB_PATH"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          echo "DOTNET_ROOT=$HOME/.dotnet" >> "$GITHUB_ENV"
+      - name: Snapshot schema matches the EF migrations
+        env:
+          DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+        run: |
+          docker run --rm --network host --entrypoint psql \
+            -e PGPASSWORD=synthetic-only \
+            golden-snapshot:test -h 127.0.0.1 -U postgres -d synthetic_golden \
+            -v ON_ERROR_STOP=1 -c "create database synthetic_migrated"
+          (cd app/api && dotnet tool restore && dotnet ef database update \
+            --project src/Cichlids.Infrastructure \
+            --connection "Host=127.0.0.1;Port=5432;Database=synthetic_migrated;Username=postgres;Password=synthetic-only")
+          docker run --rm --network host \
+            --entrypoint python \
+            -e GOLDEN_MIGRATED_DSN="host=127.0.0.1 port=5432 dbname=synthetic_migrated user=postgres password=synthetic-only" \
+            -v "$PWD/tools/golden-snapshot:/tests:ro" \
+            golden-snapshot:test -m unittest discover -s /tests -p test_migrated_schema.py -v
 
   adr-index:
     name: adr-index
