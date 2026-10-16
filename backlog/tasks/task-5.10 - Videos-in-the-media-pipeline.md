@@ -4,6 +4,7 @@ title: Videos in the media pipeline
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
+updated_date: '2026-10-16 05:01'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -31,3 +32,12 @@ Videos upload resumably, are transcoded to HLS with ffmpeg, get a poster frame a
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Limits (decided by the project owner, 2026-10-16)
+- Videos up to 3 minutes; HLS renditions up to 1080p (for example 480p, 720p and 1080p, never above the source resolution).
+- The original stays stored privately after the transcoding, so videos can be transcoded again later.
+- Transcoding runs one video after the other in a queue, so it does not starve the other workloads of the node.
+<!-- SECTION:NOTES:END -->
