@@ -15,6 +15,7 @@ Tooling around the species catalog in `data/species/`.
 - `agent-runner.mjs`: starts one agent role with Codex (`codex exec`) or Claude (`claude -p`), picks the model per runner and role, retries transient failures with fallback models and recognises an empty account. `agent-runner.test.mjs` holds its tests.
 - `pipeline-prompts.mjs`: builds the prompts of the pipeline roles and of the group sync step. `pipeline-prompts.test.mjs` holds its tests.
 - `pipeline.mjs`: the pipeline driver and its command line (`run`, `groupsync`, `next`, `status`). `pipeline.test.mjs` holds its tests.
+- `yaml-unalias.mjs`: expands YAML anchors and aliases (on list items and mapping values) in the given files while keeping the text layout, and rewrites a file only when the expanded text parses to the same value. `yaml-unalias.test.mjs` holds its tests.
 - `check-seriously-fish.mjs`: checks accepted names and catalog synonyms for archived Seriously Fish care pages and writes resumable decisions to `data/species/seriously-fish.yaml`.
 - `build-directory.mjs`: builds the accepted-species directory and legacy mapping from archived catalog and FishBase inputs. `build-directory.test.mjs` holds its tests.
 - `validate.mjs`: validator for profile files and the species directory. `validate.test.mjs` holds its tests.
