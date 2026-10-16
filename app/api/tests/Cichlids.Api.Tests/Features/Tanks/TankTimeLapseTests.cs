@@ -59,6 +59,105 @@ public class TankTimeLapseTests(ApiFixture fixture)
     }
 
     [Fact]
+    public async Task Series_OrdersByCaptureTimeAndFallsBackToTheUploadDatePerPhoto()
+    {
+        await using var db = fixture.CreateDbContext();
+        var tank = new Tank { ProfileId = fixture.Seed.Alice.Id, Title = "Captured series", State = TankState.Published };
+        db.Tanks.Add(tank);
+        await db.SaveChangesAsync();
+        var uploadedLate = Add(new DateTimeOffset(2025, 6, 1, 0, 0, 0, TimeSpan.Zero), new DateTime(2019, 3, 1, 9, 0, 0), null);
+        var uploadedEarly = Add(new DateTimeOffset(2020, 1, 1, 0, 0, 0, TimeSpan.Zero), null, null);
+        var nearYearEnd = Add(new DateTimeOffset(2025, 9, 1, 0, 0, 0, TimeSpan.Zero), new DateTime(2023, 12, 31, 23, 30, 0), 120);
+        var unknownZone = Add(new DateTimeOffset(2025, 9, 2, 0, 0, 0, TimeSpan.Zero), new DateTime(2022, 7, 4, 10, 0, 0), null);
+        await db.SaveChangesAsync();
+        foreach (var media in new[] { uploadedLate, uploadedEarly, nearYearEnd, unknownZone })
+        {
+            db.TankMedia.Add(new TankMedia { TankId = tank.Id, MediaItemId = media.Id });
+            db.MediaVariants.Add(new MediaVariant { MediaItemId = media.Id, Label = "large", StorageKey = $"variants/large/{media.Id}.jpg" });
+        }
+        await db.SaveChangesAsync();
+
+        using var json = JsonDocument.Parse(await fixture.Client.GetStringAsync($"/api/tanks/{tank.Id}/time-lapse"));
+
+        var photos = json.RootElement.GetProperty("photos").EnumerateArray().ToArray();
+        Assert.Equal([uploadedLate.Id, uploadedEarly.Id, unknownZone.Id, nearYearEnd.Id], photos.Select(p => p.GetProperty("mediaItemId").GetInt64()));
+        Assert.Equal(JsonValueKind.Null, photos[1].GetProperty("takenAt").ValueKind);
+        Assert.Equal(new DateTimeOffset(2019, 3, 1, 9, 0, 0, TimeSpan.Zero), photos[0].GetProperty("takenAt").GetDateTimeOffset());
+        Assert.Equal(new DateTimeOffset(2023, 12, 31, 23, 30, 0, TimeSpan.FromHours(2)), photos[3].GetProperty("takenAt").GetDateTimeOffset());
+        Assert.Equal(TimeSpan.FromHours(2), photos[3].GetProperty("takenAt").GetDateTimeOffset().Offset);
+
+        MediaItem Add(DateTimeOffset uploaded, DateTime? taken, short? offsetMinutes)
+        {
+            var media = new MediaItem
+            {
+                StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo, CreatedAt = uploaded,
+                TakenAtLocal = taken, TakenAtOffsetMinutes = offsetMinutes,
+            };
+            db.MediaItems.Add(media);
+            return media;
+        }
+    }
+
+    [Theory]
+    [InlineData(true, true)]
+    [InlineData(false, false)]
+    public async Task Series_AppliesTheShowcaseRuleToCaptureTimesInsteadOfUploadDates(bool capturedAcrossMonths, bool expected)
+    {
+        await using var db = fixture.CreateDbContext();
+        var tank = new Tank { ProfileId = fixture.Seed.Alice.Id, Title = "Showcase by capture", State = TankState.Published };
+        db.Tanks.Add(tank);
+        await db.SaveChangesAsync();
+        for (var i = 0; i < 8; i++)
+        {
+            // Eight photos uploaded within a single month; the capture times decide.
+            var media = new MediaItem
+            {
+                StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo,
+                CreatedAt = new DateTimeOffset(2026, 1, 1 + i, 0, 0, 0, TimeSpan.Zero),
+                TakenAtLocal = capturedAcrossMonths
+                    ? new DateTime(2022, 1, 15).AddMonths(i == 7 ? 14 : i)
+                    : new DateTime(2022, 1, 5).AddDays(i),
+            };
+            db.MediaItems.Add(media);
+            await db.SaveChangesAsync();
+            db.TankMedia.Add(new TankMedia { TankId = tank.Id, MediaItemId = media.Id });
+            db.MediaVariants.Add(new MediaVariant { MediaItemId = media.Id, Label = "large", StorageKey = $"variants/large/{media.Id}.jpg" });
+        }
+        await db.SaveChangesAsync();
+
+        using var json = JsonDocument.Parse(await fixture.Client.GetStringAsync($"/api/tanks/{tank.Id}/time-lapse"));
+
+        Assert.Equal(expected, json.RootElement.GetProperty("isShowcase").GetBoolean());
+    }
+
+    [Fact]
+    public async Task Series_ReportsNoShowcaseWhenUploadsSpanMonthsButCaptureTimesDoNot()
+    {
+        await using var db = fixture.CreateDbContext();
+        var tank = new Tank { ProfileId = fixture.Seed.Alice.Id, Title = "Uploaded across months", State = TankState.Published };
+        db.Tanks.Add(tank);
+        await db.SaveChangesAsync();
+        for (var i = 0; i < 8; i++)
+        {
+            var media = new MediaItem
+            {
+                StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo,
+                CreatedAt = new DateTimeOffset(2020, 1, 15, 0, 0, 0, TimeSpan.Zero).AddMonths(i == 7 ? 14 : i),
+                TakenAtLocal = new DateTime(2019, 5, 1 + i),
+            };
+            db.MediaItems.Add(media);
+            await db.SaveChangesAsync();
+            db.TankMedia.Add(new TankMedia { TankId = tank.Id, MediaItemId = media.Id });
+            db.MediaVariants.Add(new MediaVariant { MediaItemId = media.Id, Label = "large", StorageKey = $"variants/large/{media.Id}.jpg" });
+        }
+        await db.SaveChangesAsync();
+
+        using var json = JsonDocument.Parse(await fixture.Client.GetStringAsync($"/api/tanks/{tank.Id}/time-lapse"));
+
+        Assert.False(json.RootElement.GetProperty("isShowcase").GetBoolean());
+    }
+
+    [Fact]
     public async Task Series_DeduplicatesPhotosIncludesPublishedPostsAndExcludesVideoDraftsAndSuspendedOwners()
     {
         await using var db = fixture.CreateDbContext();

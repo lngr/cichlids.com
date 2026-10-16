@@ -95,6 +95,26 @@ public class TodayTests(ApiFixture fixture)
     }
 
     [Fact]
+    public async Task AnniversaryUsesTheCaptureDateOfThePhotoInsteadOfThePublicationDate()
+    {
+        var (member, token) = await MemberAsync(true);
+        var captured = await PhotoAsync(member.Id, new DateTimeOffset(2024, 3, 1, 12, 0, 0, TimeSpan.Zero), takenAtLocal: new DateTime(2021, 10, 15, 23, 40, 0));
+        using var json = await GetAsync(token);
+        var memory = json.RootElement.GetProperty("onThisDay");
+        Assert.Equal(captured.PostId, memory.GetProperty("postId").GetInt64());
+        Assert.Equal(5, memory.GetProperty("yearsAgo").GetInt32());
+    }
+
+    [Fact]
+    public async Task AnniversaryIgnoresAPhotoPublishedOnTheDayWhenItWasCapturedOnAnotherDay()
+    {
+        var (member, token) = await MemberAsync(true);
+        await PhotoAsync(member.Id, Date(2020), takenAtLocal: new DateTime(2019, 6, 1, 8, 0, 0));
+        using var json = await GetAsync(token);
+        Assert.False(json.RootElement.TryGetProperty("onThisDay", out _));
+    }
+
+    [Fact]
     public async Task LeapDayOnlyMatchesFebruary29()
     {
         var (member, token) = await MemberAsync(true);
@@ -171,10 +191,10 @@ public class TodayTests(ApiFixture fixture)
         return (profile, TestTokens.Create(subject, subject));
     }
 
-    private async Task<(long PostId, long MediaId)> PhotoAsync(long owner, DateTimeOffset date, long? tank = null, PostState state = PostState.Published, bool deleted = false, MediaKind kind = MediaKind.Photo)
+    private async Task<(long PostId, long MediaId)> PhotoAsync(long owner, DateTimeOffset date, long? tank = null, PostState state = PostState.Published, bool deleted = false, MediaKind kind = MediaKind.Photo, DateTime? takenAtLocal = null)
     {
         await using var db = fixture.CreateDbContext();
-        var media = new MediaItem { OwnerProfileId = owner, Kind = kind, StorageKey = Guid.NewGuid().ToString(), CreatedAt = date };
+        var media = new MediaItem { OwnerProfileId = owner, Kind = kind, StorageKey = Guid.NewGuid().ToString(), CreatedAt = date, TakenAtLocal = takenAtLocal };
         var post = new Post { AuthorProfileId = owner, TankId = tank, Title = "Today photo", State = state, CreatedAt = date, UpdatedAt = date, PublishedAt = state == PostState.Published ? date : null, DeletedAt = deleted ? date : null };
         db.AddRange(media, post);
         await db.SaveChangesAsync();

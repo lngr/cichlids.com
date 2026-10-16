@@ -48,21 +48,28 @@ public sealed class TodayQueryService(CichlidsDbContext context, TankTimeLapseQu
     private async Task<TodayMemoryDto?> MemoryAsync(long profileId, DateOnly date, CancellationToken cancellationToken)
     {
         var earlierThan = new DateTimeOffset(date.Year, 1, 1, 0, 0, 0, TimeSpan.Zero);
+        var earlierThanLocal = new DateTime(date.Year, 1, 1);
+
+        // A photo with a capture time counts on the calendar day it was taken (the wall-clock day
+        // of the camera); a photo without one counts on the day its post was published.
         var match = await (from post in context.Posts.AsNoTracking()
             join link in context.PostMedia on post.Id equals link.PostId
             join media in context.MediaItems on link.MediaItemId equals media.Id
+            let published = post.PublishedAt ?? post.CreatedAt
             where post.AuthorProfileId == profileId && post.State == PostState.Published && post.DeletedAt == null
                 && media.Kind == MediaKind.Photo && (media.OwnerProfileId == null || media.OwnerProfileId == profileId)
-                && (post.PublishedAt ?? post.CreatedAt) < earlierThan
-                && (post.PublishedAt ?? post.CreatedAt).Month == date.Month
-                && (post.PublishedAt ?? post.CreatedAt).Day == date.Day
-            orderby (post.PublishedAt ?? post.CreatedAt) descending, post.Id descending, link.Sort, link.Id
-            select new { post.Id, post.Title, Date = post.PublishedAt ?? post.CreatedAt, MediaId = media.Id }).FirstOrDefaultAsync(cancellationToken);
+                && (media.TakenAtLocal != null
+                    ? media.TakenAtLocal < earlierThanLocal
+                        && media.TakenAtLocal.Value.Month == date.Month && media.TakenAtLocal.Value.Day == date.Day
+                    : published < earlierThan && published.Month == date.Month && published.Day == date.Day)
+            let year = media.TakenAtLocal != null ? media.TakenAtLocal.Value.Year : published.Year
+            orderby year descending, published descending, post.Id descending, link.Sort, link.Id
+            select new { post.Id, post.Title, Year = year, MediaId = media.Id }).FirstOrDefaultAsync(cancellationToken);
         if (match == null) return null;
         var variants = await context.MediaVariants.Where(v => v.MediaItemId == match.MediaId)
             .ToDictionaryAsync(v => v.Label, v => v.StorageKey, cancellationToken);
         var slug = await context.SlugAliases.Where(s => s.PostId == match.Id && s.IsCanonical)
             .Select(s => s.Value).FirstOrDefaultAsync(cancellationToken);
-        return new TodayMemoryDto(match.Id, slug, match.Title, date.Year - match.Date.Year, new MediaUrlBuilder(objectStore).Build(variants));
+        return new TodayMemoryDto(match.Id, slug, match.Title, date.Year - match.Year, new MediaUrlBuilder(objectStore).Build(variants));
     }
 }

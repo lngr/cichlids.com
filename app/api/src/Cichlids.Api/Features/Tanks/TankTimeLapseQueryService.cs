@@ -6,6 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Api.Features.Tanks;
 
+/// <summary>
+/// One photo of a tank series. TakenAt is the capture time from the photo's EXIF data as the camera
+/// recorded it: the wall-clock time with the recorded offset, or with offset +00:00 when the camera
+/// recorded none (the value is then a local time, not a UTC instant). It is null without a
+/// plausible capture time.
+/// </summary>
 public sealed record TankTimeLapsePhotoDto(long MediaItemId, ImageUrlsDto Image, DateTimeOffset? TakenAt, DateTimeOffset PublishedAt);
 public sealed record TankStoryPostDto(long Id, string? Slug, string? Title, string? Description, DateTimeOffset PublishedAt, IReadOnlyList<long> MediaItemIds);
 public sealed record TankTimeLapseDto(bool IsShowcase, IReadOnlyList<TankTimeLapsePhotoDto> Photos, IReadOnlyList<TankStoryPostDto> Posts);
@@ -50,9 +56,9 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
             g => g.Min(pm => postDates[pm.PostId]));
         var photos = media.Where(m => images.TryGetValue(m.Id, out var image)
                 && (image.Large ?? image.Medium ?? image.Small ?? image.Thumb) != null)
-            .Select(m => new TankTimeLapsePhotoDto(m.Id, images[m.Id], null,
+            .Select(m => new TankTimeLapsePhotoDto(m.Id, images[m.Id], m.TakenAt,
                 publicationDates.GetValueOrDefault(m.Id, m.CreatedAt)))
-            .OrderBy(p => p.PublishedAt).ThenBy(p => p.MediaItemId).ToList();
+            .OrderBy(EffectiveDate).ThenBy(p => p.MediaItemId).ToList();
         var slugs = await context.SlugAliases.Where(s => postIds.Contains(s.PostId) && s.IsCanonical)
             .ToDictionaryAsync(s => s.PostId, s => s.Value, cancellationToken);
         var story = posts.Select(p => new TankStoryPostDto(p.Id, slugs.GetValueOrDefault(p.Id), p.Title,
@@ -71,16 +77,23 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
             {
                 PublishedAt = postMedia.Where(pm => pm.MediaItemId == p.MediaItemId && ownPosts.Contains(pm.PostId))
                     .Select(pm => postDates[pm.PostId]).DefaultIfEmpty(media.First(m => m.Id == p.MediaItemId).CreatedAt).Min()
-            }).OrderBy(p => p.PublishedAt).ThenBy(p => p.MediaItemId).ToList();
+            }).OrderBy(EffectiveDate).ThenBy(p => p.MediaItemId).ToList();
             result[tank.Id] = new TankTimeLapseDto(IsShowcase(ownPhotos, members.Contains(tank.ProfileId)), ownPhotos,
                 story.Where(p => ownPosts.Contains(p.Id)).ToList());
         }
         return result;
     }
 
+    /// <summary>
+    /// The date a photo is placed at in the series: its capture time when it has one, otherwise
+    /// its publication or upload date. A capture time without a recorded offset carries offset
+    /// zero, so its wall-clock time is compared as if it were UTC.
+    /// </summary>
+    public static DateTimeOffset EffectiveDate(TankTimeLapsePhotoDto photo) => photo.TakenAt ?? photo.PublishedAt;
+
     public static bool IsShowcase(IReadOnlyCollection<TankTimeLapsePhotoDto> photos, bool member)
     {
-        var dates = photos.Select(p => p.TakenAt ?? p.PublishedAt).ToList();
+        var dates = photos.Select(EffectiveDate).ToList();
         return member && dates.Count >= 8 && dates.Max() >= dates.Min().AddYears(1)
             && dates.Select(d => (d.Year, d.Month)).Distinct().Count() >= 8;
     }
