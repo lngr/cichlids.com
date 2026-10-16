@@ -69,11 +69,24 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "properties": {
-                  "file": {
-                    "$ref": "#/components/schemas/IFormFile"
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "file": {
+                        "$ref": "#/components/schemas/IFormFile"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "capturedInApp": {
+                        "type": "boolean"
+                      }
+                    }
                   }
-                }
+                ]
               }
             }
           },
@@ -431,6 +444,148 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DueCareDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tanks/{tankId}/streaks": {
+      "get": {
+        "tags": [
+          "Streaks"
+        ],
+        "operationId": "GetTankStreaks",
+        "parameters": [
+          {
+            "name": "tankId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "utcOffsetMinutes",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TankStreaksDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/me/streaks": {
+      "get": {
+        "tags": [
+          "Streaks"
+        ],
+        "operationId": "GetMyStreaks",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "utcOffsetMinutes",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeStreaksDto"
                 }
               }
             }
@@ -3599,6 +3754,198 @@
         }
       }
     },
+    "/api/me/vacations": {
+      "get": {
+        "tags": [
+          "Streaks"
+        ],
+        "operationId": "ListMyVacations",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VacationListDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Streaks"
+        ],
+        "operationId": "StartVacation",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/StartVacationRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VacationDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/me/vacations/active/end": {
+      "post": {
+        "tags": [
+          "Streaks"
+        ],
+        "operationId": "EndVacation",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VacationDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/me/web-push": {
       "get": {
         "tags": [
@@ -6514,6 +6861,36 @@
           }
         }
       },
+      "MeStreaksDto": {
+        "required": [
+          "freezesPerYear",
+          "vacations",
+          "tanks"
+        ],
+        "type": "object",
+        "properties": {
+          "freezesPerYear": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "vacations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VacationDto"
+            }
+          },
+          "tanks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OwnTankStreaksDto"
+            }
+          }
+        }
+      },
       "OnboardingRequest": {
         "type": "object",
         "properties": {
@@ -6674,6 +7051,34 @@
               "string"
             ],
             "format": "int32"
+          }
+        }
+      },
+      "OwnTankStreaksDto": {
+        "required": [
+          "tankId",
+          "title",
+          "waterChange",
+          "timeLapse"
+        ],
+        "type": "object",
+        "properties": {
+          "tankId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "waterChange": {
+            "$ref": "#/components/schemas/WaterChangeStreakDto"
+          },
+          "timeLapse": {
+            "$ref": "#/components/schemas/TimeLapseStreakDto"
           }
         }
       },
@@ -7201,6 +7606,16 @@
             "items": {
               "type": "string"
             }
+          },
+          "vacationShare": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/VacationShareDto"
+              }
+            ]
           }
         }
       },
@@ -7539,6 +7954,23 @@
             "type": "string"
           },
           "category": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "StartVacationRequest": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "endDate": {
             "type": [
               "null",
               "string"
@@ -7939,6 +8371,51 @@
           }
         }
       },
+      "TankStreaksDto": {
+        "required": [
+          "tankId",
+          "waterChange",
+          "timeLapse",
+          "vacations"
+        ],
+        "type": "object",
+        "properties": {
+          "tankId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "waterChange": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/WaterChangeStreakDto"
+              }
+            ]
+          },
+          "timeLapse": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TimeLapseStreakDto"
+              }
+            ]
+          },
+          "vacations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VacationDto"
+            }
+          }
+        }
+      },
       "TankTimeLapseDto": {
         "required": [
           "isShowcase",
@@ -8047,6 +8524,69 @@
               "null",
               "string"
             ]
+          }
+        }
+      },
+      "TimeLapseStreakDto": {
+        "required": [
+          "current",
+          "longest",
+          "thisWeekHasPhoto",
+          "thisWeekOpen",
+          "weekStart",
+          "weekEnd",
+          "paused",
+          "keepingPhotoIds"
+        ],
+        "type": "object",
+        "properties": {
+          "current": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "longest": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "thisWeekHasPhoto": {
+            "type": "boolean"
+          },
+          "thisWeekOpen": {
+            "type": "boolean"
+          },
+          "weekStart": {
+            "type": "string"
+          },
+          "weekEnd": {
+            "type": "string"
+          },
+          "paused": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "keepingPhotoIds": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int64"
+            }
           }
         }
       },
@@ -8390,6 +8930,94 @@
               "null",
               "string"
             ]
+          }
+        }
+      },
+      "VacationDto": {
+        "required": [
+          "id",
+          "startDate",
+          "endDate",
+          "active"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "active": {
+            "type": "boolean"
+          }
+        }
+      },
+      "VacationListDto": {
+        "required": [
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VacationDto"
+            }
+          }
+        }
+      },
+      "VacationShareDto": {
+        "required": [
+          "vacationDays",
+          "windowDays",
+          "fraction",
+          "pastVacationCount"
+        ],
+        "type": "object",
+        "properties": {
+          "vacationDays": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "windowDays": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "fraction": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "pastVacationCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
           }
         }
       },
@@ -8807,6 +9435,86 @@
           "skipped"
         ]
       },
+      "WaterChangeStreakDto": {
+        "required": [
+          "state",
+          "current",
+          "currentVerified",
+          "longest",
+          "lastWaterChange",
+          "deadline",
+          "freezesLeft",
+          "freezesPerYear"
+        ],
+        "type": "object",
+        "properties": {
+          "state": {
+            "$ref": "#/components/schemas/WaterChangeStreakState"
+          },
+          "current": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "currentVerified": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "longest": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "lastWaterChange": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "deadline": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "freezesLeft": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "freezesPerYear": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "WaterChangeStreakState": {
+        "enum": [
+          "no_history",
+          "running",
+          "paused",
+          "broken"
+        ]
+      },
       "WaterValuesDto": {
         "required": [
           "ph",
@@ -8980,6 +9688,9 @@
     },
     {
       "name": "Todos"
+    },
+    {
+      "name": "Streaks"
     },
     {
       "name": "Discover"

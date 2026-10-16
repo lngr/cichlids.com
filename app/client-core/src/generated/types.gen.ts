@@ -360,6 +360,12 @@ export type MeDto = {
     roles: Array<string>;
 };
 
+export type MeStreaksDto = {
+    freezesPerYear: number | string;
+    vacations: Array<VacationDto>;
+    tanks: Array<OwnTankStreaksDto>;
+};
+
 export type OnboardingRequest = {
     tank?: null | CreateTankRequest;
     legacyTankId?: null | number | string;
@@ -389,6 +395,13 @@ export type OutboxEventDto = {
 
 export type OutboxRedeliveryDto = {
     count: number | string;
+};
+
+export type OwnTankStreaksDto = {
+    tankId: number | string;
+    title: string;
+    waterChange: WaterChangeStreakDto;
+    timeLapse: TimeLapseStreakDto;
 };
 
 export type PagedResponseOfCareEntryDto = {
@@ -487,6 +500,7 @@ export type ProfileDetailDto = {
     onboardingCompletedAt?: null | string;
     interests?: null | Array<string>;
     badges?: null | Array<string>;
+    vacationShare?: null | VacationShareDto;
 };
 
 export type ProfileStatsDto = {
@@ -559,6 +573,11 @@ export type SpeciesListItemDto = {
     category: null | string;
 };
 
+export type StartVacationRequest = {
+    startDate?: null | string;
+    endDate?: null | string;
+};
+
 export type SubscribeWebPushRequest = {
     endpoint: null | string;
     keys: null | WebPushKeysRequest;
@@ -625,6 +644,13 @@ export type TankStoryPostDto = {
     mediaItemIds: Array<number | string>;
 };
 
+export type TankStreaksDto = {
+    tankId: number | string;
+    waterChange: null | WaterChangeStreakDto;
+    timeLapse: null | TimeLapseStreakDto;
+    vacations: Array<VacationDto>;
+};
+
 export type TankTimeLapseDto = {
     isShowcase: boolean;
     photos: Array<TankTimeLapsePhotoDto>;
@@ -649,6 +675,17 @@ export type TankVisibilityDto = {
 export type ThreadStartedByDto = {
     profileRef: null | AuthorDto;
     posterName: null | string;
+};
+
+export type TimeLapseStreakDto = {
+    current: number | string;
+    longest: number | string;
+    thisWeekHasPhoto: boolean;
+    thisWeekOpen: boolean;
+    weekStart: string;
+    weekEnd: string;
+    paused: null | boolean;
+    keepingPhotoIds: null | Array<number | string>;
 };
 
 export type TodayDto = {
@@ -720,6 +757,24 @@ export type UpdateTankVisibilityRequest = {
 export type UpdateTodoRequest = {
     done?: null | boolean;
     text?: null | string;
+};
+
+export type VacationDto = {
+    id: number | string;
+    startDate: string;
+    endDate: null | string;
+    active: boolean;
+};
+
+export type VacationListDto = {
+    items: Array<VacationDto>;
+};
+
+export type VacationShareDto = {
+    vacationDays: number | string;
+    windowDays: number | string;
+    fraction: number | string;
+    pastVacationCount: number | string;
 };
 
 export type VideoDto = {
@@ -805,6 +860,19 @@ export type WaterChangeStepRequest = {
 
 export type WaterChangeStepState = 'done' | 'skipped';
 
+export type WaterChangeStreakDto = {
+    state: WaterChangeStreakState;
+    current: number | string;
+    currentVerified: number | string;
+    longest: number | string;
+    lastWaterChange: null | string;
+    deadline: null | string;
+    freezesLeft: null | number | string;
+    freezesPerYear: null | number | string;
+};
+
+export type WaterChangeStreakState = 'no_history' | 'running' | 'paused' | 'broken';
+
 export type WaterValuesDto = {
     ph: null | string;
     kh: null | string;
@@ -874,6 +942,8 @@ export type GetFeatureFlagsResponse = GetFeatureFlagsResponses[keyof GetFeatureF
 export type AddTankSeriesPhotoData = {
     body: {
         file?: IFormFile;
+    } & {
+        capturedInApp?: boolean;
     };
     path: {
         tankId: number;
@@ -1098,6 +1168,76 @@ export type ListDueCareResponses = {
 };
 
 export type ListDueCareResponse = ListDueCareResponses[keyof ListDueCareResponses];
+
+export type GetTankStreaksData = {
+    body?: never;
+    path: {
+        tankId: number;
+    };
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/tanks/{tankId}/streaks';
+};
+
+export type GetTankStreaksErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetTankStreaksError = GetTankStreaksErrors[keyof GetTankStreaksErrors];
+
+export type GetTankStreaksResponses = {
+    /**
+     * OK
+     */
+    200: TankStreaksDto;
+};
+
+export type GetTankStreaksResponse = GetTankStreaksResponses[keyof GetTankStreaksResponses];
+
+export type GetMyStreaksData = {
+    body?: never;
+    path?: never;
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/me/streaks';
+};
+
+export type GetMyStreaksErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type GetMyStreaksError = GetMyStreaksErrors[keyof GetMyStreaksErrors];
+
+export type GetMyStreaksResponses = {
+    /**
+     * OK
+     */
+    200: MeStreaksDto;
+};
+
+export type GetMyStreaksResponse = GetMyStreaksResponses[keyof GetMyStreaksResponses];
 
 export type SnoozeCareReminderData = {
     body: SnoozeReminderRequest;
@@ -2727,6 +2867,113 @@ export type UpdateTodoResponses = {
 };
 
 export type UpdateTodoResponse = UpdateTodoResponses[keyof UpdateTodoResponses];
+
+export type ListMyVacationsData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/me/vacations';
+};
+
+export type ListMyVacationsErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type ListMyVacationsError = ListMyVacationsErrors[keyof ListMyVacationsErrors];
+
+export type ListMyVacationsResponses = {
+    /**
+     * OK
+     */
+    200: VacationListDto;
+};
+
+export type ListMyVacationsResponse = ListMyVacationsResponses[keyof ListMyVacationsResponses];
+
+export type StartVacationData = {
+    body?: null | StartVacationRequest;
+    path?: never;
+    query?: {
+        date?: string;
+    };
+    url: '/api/me/vacations';
+};
+
+export type StartVacationErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type StartVacationError = StartVacationErrors[keyof StartVacationErrors];
+
+export type StartVacationResponses = {
+    /**
+     * Created
+     */
+    201: VacationDto;
+};
+
+export type StartVacationResponse = StartVacationResponses[keyof StartVacationResponses];
+
+export type EndVacationData = {
+    body?: never;
+    path?: never;
+    query?: {
+        date?: string;
+    };
+    url: '/api/me/vacations/active/end';
+};
+
+export type EndVacationErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type EndVacationError = EndVacationErrors[keyof EndVacationErrors];
+
+export type EndVacationResponses = {
+    /**
+     * OK
+     */
+    200: VacationDto;
+};
+
+export type EndVacationResponse = EndVacationResponses[keyof EndVacationResponses];
 
 export type GetWebPushConfigData = {
     body?: never;
