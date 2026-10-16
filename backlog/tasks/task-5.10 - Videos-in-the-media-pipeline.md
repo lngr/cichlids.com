@@ -4,7 +4,7 @@ title: Videos in the media pipeline
 status: In Progress
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 05:44'
+updated_date: '2026-10-16 05:53'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -44,4 +44,7 @@ Videos upload resumably, are transcoded to HLS with ffmpeg, get a poster frame a
 ### Open: length by reputation (project owner, 2026-10-16)
 - Long videos (up to 3 minutes) are meant only for members with a certain reputation; what reputation is, how it is earned and which length applies to everyone else is to be worked out (PROJECT-STATUS O6). Points and leaderboards are excluded from the app.
 - The pipeline resolves the maximum length per member through one policy, so the reputation rule plugs in without changing the upload or transcoding.
+
+### Length rule placeholder (decided by the project owner, 2026-10-16)
+- Members whose account is older than 1 year and who have more than 20 public pictures may upload videos up to 3 minutes; every other member gets the short limit (a separate configuration value, 60 seconds pending confirmation). DRAFT-13 replaces this placeholder with the reputation concept.
 <!-- SECTION:NOTES:END -->
