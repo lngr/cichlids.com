@@ -4,7 +4,7 @@ title: Visibility per care entry
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 05:31'
+updated_date: '2026-10-16 06:55'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -58,4 +58,7 @@ Each care entry has a visibility; private entries never leave the owner, public 
 - Without an account (decided by the project owner, 2026-10-16): public tanks with their stream are visible without an account; following, kudos and comments need an account. The teaser cut of the web stays its own planning.
 
 - Implementation hint: tank photos (including the time-lapse section of TASK-5.11) use public variant URLs; photos of tanks that are not public must move to the private storage prefix with owner- or audience-checked delivery, as the care photos of TASK-5.6 do.
+
+- The open note above is resolved by the decided concept and details; the story is ready.
+- Story cut: TASK-5.7 covers the levels public and private for profile and stream, only me per entry, the question on creating a tank, the enforcement in every read path and the private delivery of photos of tanks that are not public; the levels followers (approved follow requests) and selected members are TASK-5.15.
 <!-- SECTION:NOTES:END -->
