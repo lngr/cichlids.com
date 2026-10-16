@@ -10,9 +10,12 @@ public sealed record LogCareRequest(DateTimeOffset? OccurredAt = null, CareAmoun
     IReadOnlyList<MeasurementValueRequest>? Values = null);
 /// <summary>
 /// The change of a care entry. A request that carries a note and neither an amount nor values changes only the note; an
-/// empty or blank note removes it. Any other request replaces the amount or the values of the entry, and a note in it applies as well.
+/// empty or blank note removes it. A request that carries an occurred time and neither an amount nor values changes only the time (and
+/// the note when it has one). Any other request replaces the amount or the values of the entry, and a note or an occurred time in it
+/// applies as well.
 /// </summary>
-public sealed record UpdateCareRequest(CareAmountRequest? Amount, IReadOnlyList<MeasurementValueRequest>? Values = null, string? Note = null);
+public sealed record UpdateCareRequest(CareAmountRequest? Amount, IReadOnlyList<MeasurementValueRequest>? Values = null, string? Note = null,
+    DateTimeOffset? OccurredAt = null);
 public sealed record CareAmountDto(decimal Value, CareAmountUnit Unit, decimal? Liters);
 public sealed record MeasurementValueDto(CareParameter Parameter, decimal Value, MeasurementUnit Unit,
     decimal NormalizedValue, MeasurementUnit CanonicalUnit, MeasurementOrigin? Origin)
