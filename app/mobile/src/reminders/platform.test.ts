@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { DueCareItem } from "@cichlids/client-core";
 
 const mocks = vi.hoisted(() => {
@@ -44,6 +44,7 @@ vi.mock("expo-notifications", () => ({
 }));
 
 const platform = await import("./platform");
+const Notifications = await import("expo-notifications");
 
 const item = (tankId: number, dueDate: string, remindersEnabled = true, streak: DueCareItem["streak"] = null): DueCareItem => ({
   tankId, tankTitle: `Tank ${tankId}`, kind: "water_change", rhythmDays: 7, reason: { code: "cichlid_default", parameters: null },
@@ -58,6 +59,7 @@ beforeEach(() => {
   mocks.lastResponse = null;
   mocks.scheduleNotificationAsync.mockClear();
   mocks.cancelScheduledNotificationAsync.mockClear();
+  vi.mocked(Notifications.clearLastNotificationResponseAsync).mockClear();
 });
 
 describe("syncReminders", () => {
@@ -109,11 +111,13 @@ describe("syncReminders", () => {
 });
 
 describe("reminder responses", () => {
+  afterEach(() => { vi.useRealTimers(); });
   const response = (actionIdentifier: string) => ({
     actionIdentifier,
     notification: { request: { content: { data: { tankId: 4, tankTitle: "Tank 4", kind: "water_change", dueDate: "2026-10-15" } } } },
   });
-  const flush = () => new Promise(resolve => setTimeout(resolve, 0));
+  // Every handled response ends with clearing the last notification response.
+  const flush = () => vi.waitFor(() => expect(Notifications.clearLastNotificationResponseAsync).toHaveBeenCalledTimes(1));
 
   it("opens the care view of the tank when the notification is tapped", async () => {
     const open = vi.fn();
@@ -132,16 +136,17 @@ describe("reminder responses", () => {
   });
 
   it("moves a snoozed reminder to 09:00 the next day and keeps it for the next rescheduling", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(2026, 9, 15, 23, 59, 59));
     const open = vi.fn();
     platform.startReminderListeners(open);
     mocks.listener.current?.(response("snooze"));
     await flush();
+    vi.useRealTimers();
     expect(open).not.toHaveBeenCalled();
     const call = mocks.scheduleNotificationAsync.mock.calls.at(-1) as unknown as [{ identifier: string; trigger: { date: Date } }];
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    expect(call[0].identifier).toBe(`care-reminder:4:water_change:${tomorrow.getFullYear()}-${String(tomorrow.getMonth() + 1).padStart(2, "0")}-${String(tomorrow.getDate()).padStart(2, "0")}`);
-    expect(call[0].trigger.date).toEqual(new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate(), 9, 0));
+    expect(call[0].identifier).toBe("care-reminder:4:water_change:2026-10-16");
+    expect(call[0].trigger.date).toEqual(new Date(2026, 9, 16, 9, 0));
     expect(JSON.parse(mocks.store.get("cichlids.careReminderSnoozes")!)).toHaveLength(1);
   });
 
