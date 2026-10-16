@@ -3,6 +3,7 @@ import { createActor } from "xstate";
 import { waterChangeMachine, type WaterChangeEffects } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
 import { localStore } from "../lib/localStore";
+import { reminderRefresh } from "../reminders/refreshSignal";
 import { parseStoredWaterChange, waterChangeStorageKey } from "./waterChangeStorage";
 
 /**
@@ -16,7 +17,11 @@ export function useWaterChange(tankId: number) {
       start: () => apiClient.waterChange.start(tankId),
       markStep: (id, step, state) => apiClient.waterChange.markStep(tankId, id, step, state),
       addPhoto: (id, file, capturedInApp) => apiClient.waterChange.addPhoto(tankId, id, file, capturedInApp),
-      finish: (id, amount) => apiClient.waterChange.finish(tankId, id, amount),
+      finish: async (id, amount) => {
+        const finished = await apiClient.waterChange.finish(tankId, id, amount);
+        reminderRefresh.request();
+        return finished;
+      },
       cancel: id => apiClient.waterChange.cancel(tankId, id),
       storage: {
         load: async () => parseStoredWaterChange(await localStore.getItem(key)),

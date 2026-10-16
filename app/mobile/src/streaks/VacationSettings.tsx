@@ -6,6 +6,7 @@ import { activeVacation, checkVacationDates, type Vacation } from "@cichlids/cli
 import { apiClient } from "../api/client";
 import { Button } from "../components/Button";
 import { translateApiError } from "../lib/apiErrors";
+import { reminderRefresh } from "../reminders/refreshSignal";
 import { localCalendarDate, localTime } from "../today/localDate";
 import { minTouchTarget, useTheme } from "../theme";
 import { formatLocalDate, pastVacationLines } from "./streakText";
@@ -42,6 +43,7 @@ export function VacationSettings() {
     setError(null);
     try {
       await action();
+      reminderRefresh.request();
       setRecording(false);
       setFrom("");
       setTo("");
