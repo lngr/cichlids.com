@@ -44,8 +44,8 @@ try {
     "-U", "cichlids", "-d", "cichlids_e2e", "-v", "ON_ERROR_STOP=1", "-c",
     `UPDATE tank SET legacy_id = 460006, water_ph = '8.2', water_notes = 'Weekly water changes', filtration = 'External filter' WHERE id = ${tank.id};
      ${postIds.map((id, i) => `UPDATE post SET tank_id = ${tank.id}, published_at = '2020-01-01'::timestamptz + interval '${i === 7 ? 12 : i} months' WHERE id = ${id};`).join("\n")}
-     ${postIds.map((id, i) => `UPDATE media_item SET taken_at_local = '2018-03-01 09:00'::timestamp + interval '${i === 0 ? 12 : 7 - i} months', taken_at_offset_minutes = 120 WHERE id IN (SELECT media_item_id FROM post_media WHERE post_id = ${id});`).join("\n")}
-     INSERT INTO tank_media (tank_id, media_item_id, section, sort) SELECT ${tank.id}, media_item_id, 'showcase', 0 FROM post_media WHERE post_id = ${postIds[0]};`], { stdio: "pipe" });
+     ${postIds.map((id, i) => `UPDATE media_item SET taken_at_local = '2018-03-01 09:00'::timestamp + interval '${i === 0 ? 12 : 7 - i} months', taken_at_offset_minutes = 120 WHERE id IN (SELECT media_item_id FROM media_link WHERE post_id = ${id});`).join("\n")}
+     INSERT INTO media_link (tank_id, media_item_id, context_type, role, position) SELECT ${tank.id}, media_item_id, 'tank', 'showcase', 0 FROM media_link WHERE post_id = ${postIds[0]};`], { stdio: "pipe" });
   const series = await fetch(`${API_URL}/api/tanks/${tank.id}/time-lapse`);
   assert.equal(series.status, 200);
   const data = await series.json();

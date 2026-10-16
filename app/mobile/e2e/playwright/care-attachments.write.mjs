@@ -90,8 +90,8 @@ try {
   assert.equal(stored.todos[0].done, false);
   assert.ok(!JSON.stringify(stored).includes(`/${BUCKET}/`), "The entry names a bucket URL");
   const keys = sql(
-    `SELECT media_item.storage_key FROM care_photo JOIN media_item ON media_item.id = care_photo.media_item_id WHERE care_photo.care_entry_id = ${entry.id}
-     UNION ALL SELECT media_variant.storage_key FROM care_photo JOIN media_variant ON media_variant.media_item_id = care_photo.media_item_id WHERE care_photo.care_entry_id = ${entry.id}`,
+    `SELECT media_item.storage_key FROM media_link JOIN media_item ON media_item.id = media_link.media_item_id WHERE media_link.care_entry_id = ${entry.id} AND media_link.role = 'photo'
+     UNION ALL SELECT media_variant.storage_key FROM media_link JOIN media_variant ON media_variant.media_item_id = media_link.media_item_id WHERE media_link.care_entry_id = ${entry.id} AND media_link.role = 'photo'`,
   ).split("\n");
   assert.ok(keys.length >= 2 && keys.every(key => key.startsWith("private/")), `Unexpected storage keys ${keys}`);
   for (const key of keys) {

@@ -171,7 +171,7 @@ try {
   assert.equal(streak.current, 1);
   await log(all, 0);
   assert.equal((await streakOf(all)).current, 2, "the next water change continues the streak");
-  assert.equal(sql(`select count(*) from tank_media where tank_id = ${all.id} and section in ('decommission', 'recommission') and captured_in_app`), "2");
+  assert.equal(sql(`select count(*) from media_link l join media_item m on m.id = l.media_item_id where l.tank_id = ${all.id} and l.role in ('decommission', 'recommission') and m.captured_in_app`), "2");
 
   // Six months of operation, one month decommissioned, one more month of operation: seven months.
   const [year, month, day] = today.split("-").map(Number);

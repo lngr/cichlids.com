@@ -88,8 +88,8 @@ try {
   const thumbMatch = /^(.*\/cichlids-e2e\/)variants\/thumb\/(originals\/.+)\.jpg$/.exec(thumbUrl ?? "");
   if (!thumbMatch) throw new Error(`Unexpected thumbnail URL "${thumbUrl}"`);
   const storedKey = sql(
-    `SELECT media_item.storage_key FROM post_media JOIN media_item ON media_item.id = post_media.media_item_id
-     WHERE post_media.post_id = ${draft.id}`,
+    `SELECT media_item.storage_key FROM media_link JOIN media_item ON media_item.id = media_link.media_item_id
+     WHERE media_link.post_id = ${draft.id}`,
   );
   if (storedKey !== thumbMatch[2]) {
     throw new Error(`The thumbnail names the original "${thumbMatch[2]}", the database records "${storedKey}"`);
@@ -118,7 +118,7 @@ try {
      copy AS (
        INSERT INTO media_variant (media_item_id, label, width, storage_key, byte_size)
        SELECT id, 'copy', 64, '${LEGACY_COPY_KEY}', ${copySize} FROM item)
-     UPDATE post_media SET media_item_id = (SELECT id FROM item) WHERE post_id = ${draft.id}`,
+     UPDATE media_link SET media_item_id = (SELECT id FROM item) WHERE post_id = ${draft.id}`,
   );
 
   const detail = await (await fetch(`${API_URL}/api/pictures/${slug}`)).json();

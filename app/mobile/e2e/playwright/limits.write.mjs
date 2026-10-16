@@ -71,7 +71,7 @@ function removeEmptyDrafts(profileId) {
   if (!/^\d+$/.test(profileId)) throw new Error("Unexpected profile id");
   psql(
     `DELETE FROM post WHERE author_profile_id = ${profileId} AND state = 'draft' ` +
-      `AND NOT EXISTS (SELECT 1 FROM post_media pm WHERE pm.post_id = post.id)`,
+      `AND NOT EXISTS (SELECT 1 FROM media_link pm WHERE pm.post_id = post.id)`,
   );
 }
 

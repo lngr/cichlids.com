@@ -57,9 +57,9 @@ try {
     INSERT INTO rating (tank_id, stars, created_at) SELECT t.id, 5, now() FROM tank t, generate_series(1, 12) WHERE title = 'Discover American archive';
     INSERT INTO rating (post_id, stars, created_at) SELECT ${draft.id}, 5, now() FROM generate_series(1, 12);
     ${seriesDrafts.map((id, i) => `UPDATE media_item SET created_at = '2020-01-01'::timestamptz + interval '${i === 6 ? 12 : i + 1} months'
-      WHERE id = (SELECT media_item_id FROM post_media WHERE post_id = ${id} LIMIT 1);`).join("\n")}
-    INSERT INTO tank_media (tank_id, media_item_id, section, sort)
-      SELECT t.id, pm.media_item_id, 'showcase', 0 FROM tank t, post_media pm
+      WHERE id = (SELECT media_item_id FROM media_link WHERE post_id = ${id} LIMIT 1);`).join("\n")}
+    INSERT INTO media_link (tank_id, media_item_id, context_type, role, position)
+      SELECT t.id, pm.media_item_id, 'tank', 'showcase', 0 FROM tank t, media_link pm
       WHERE t.title = 'Discover American archive' AND pm.post_id IN (${seriesDrafts.join(",")});
     UPDATE profile SET interests = ARRAY['south_america'] WHERE id = (SELECT author_profile_id FROM post WHERE id = ${draft.id});
   `);

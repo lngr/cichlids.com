@@ -41,8 +41,8 @@ const waterChange = (daysAgo, verified) => psql(verified
   ? `WITH s AS (INSERT INTO water_change_session (tank_id, profile_id, started_at, finished_at, duration_seconds) VALUES (${tank.id}, ${profileId}, '${at(daysAgo, 11)}', '${at(daysAgo)}', 3600) RETURNING id)
      INSERT INTO care_entry (tank_id, author_profile_id, kind, occurred_at, recorded_at, evidence, water_change_session_id, duration_seconds) SELECT ${tank.id}, ${profileId}, 'water_change', '${at(daysAgo)}', '${at(daysAgo)}', 'verified', id, 3600 FROM s`
   : `INSERT INTO care_entry (tank_id, author_profile_id, kind, occurred_at, recorded_at) VALUES (${tank.id}, ${profileId}, 'water_change', '${at(daysAgo)}', '${at(daysAgo)}')`);
-const seriesPhoto = (daysAgo, inApp) => psql(`WITH m AS (INSERT INTO media_item (owner_profile_id, kind, storage_key, created_at) VALUES (${profileId}, 'photo', 'seed-${daysAgo}-${Math.random()}', '${at(daysAgo)}') RETURNING id)
-  INSERT INTO tank_media (tank_id, media_item_id, section, sort, captured_in_app) SELECT ${tank.id}, id, 'time_lapse', 0, ${inApp} FROM m`);
+const seriesPhoto = (daysAgo, inApp) => psql(`WITH m AS (INSERT INTO media_item (owner_profile_id, kind, storage_key, created_at, captured_in_app) VALUES (${profileId}, 'photo', 'seed-${daysAgo}-${Math.random()}', '${at(daysAgo)}', ${inApp}) RETURNING id)
+  INSERT INTO media_link (tank_id, media_item_id, context_type, role, position) SELECT ${tank.id}, id, 'tank', 'time_lapse', 0 FROM m`);
 
 // Water changes 22 and 15 days ago verified, 8 days ago without evidence (kept by a freeze), 1 day ago verified.
 waterChange(22, true); waterChange(15, true); waterChange(8, false); waterChange(1, true);
@@ -122,7 +122,7 @@ try {
   assert.match(await text(page, "tank-streak-time-lapse"), /This week's photo is in\./);
   series = (await ownerStreaks()).timeLapse;
   assert.equal(series.thisWeekHasPhoto, true);
-  assert.equal(psql(`SELECT captured_in_app FROM tank_media WHERE tank_id = ${tank.id} ORDER BY id DESC LIMIT 1`), "t");
+  assert.equal(psql(`SELECT m.captured_in_app FROM media_link l JOIN media_item m ON m.id = l.media_item_id WHERE l.tank_id = ${tank.id} ORDER BY l.id DESC LIMIT 1`), "t");
 
   // A guest sees the counts of the public tank without the deadline and the freezes of the owner.
   const guest = await browser.newContext({ locale: "en-US", timezoneId: "UTC", viewport: { width: 390, height: 844 } });
