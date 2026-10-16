@@ -391,6 +391,25 @@ memory of each API instance; IPv6 addresses count per /64 network. A challenge l
 differ from the time of the API by `DeviceAuth:TimestampWindow` (default two minutes). Challenges are
 stored in the database, so a challenge is accepted once across all instances.
 
+## Provisional accounts
+
+A caller with a device token acts for a provisional profile. It reads what a visitor reads and
+keeps its own tanks, care, photos, videos, reminders, streaks, vacations and media library, all of
+it private. Every route that reaches other people answers 403 with the code `registration_required`:
+follows and follow requests, selected members, comments and ratings, stories (including the upload
+for a story and the quick share), avatar and header, onboarding, interests, Web Push and a tank
+level other than private. Routes of this kind are declared with the authorization policy
+`registered`, and a test lists every authenticated route so that a new one has to be classified.
+
+Provisional profiles have lower limits, configured next to the limits of members:
+
+| Setting | Default | Meaning |
+| --- | --- | --- |
+| `UploadLimits:ProvisionalMaxUploadsPerHour` | 10 | Photos and videos one provisional profile may upload within an hour (members: `UploadLimits:MaxUploadsPerHour`, 30) |
+| `VideoLimits:ProvisionalMaxDuration` | `00:00:30` | Longest video of a provisional profile; the size limit follows from it and `VideoLimits:MaxBitrate` |
+| `VideoLimits:ProvisionalMaxOpenUploads` | 1 | Unfinished video uploads at the same time (members: `VideoLimits:MaxOpenUploads`, 3) |
+| `VideoLimits:ProvisionalMaxVideos` | 10 | Videos in the media library of a provisional profile |
+
 ## Webhooks and the outbox
 
 The API delivers outbox events as signed webhooks only to hosts on the allowlist
