@@ -14,6 +14,8 @@ public class OpenApiDocumentTests(ApiFixture fixture)
     [InlineData("/api/tanks")]
     [InlineData("/api/tanks/{id}")]
     [InlineData("/api/tanks/{id}/comments")]
+    [InlineData("/api/tank-media/{token}")]
+    [InlineData("/api/tank-videos/{token}/{path}")]
     [InlineData("/api/profiles/{id}")]
     [InlineData("/api/profiles/{id}/pictures")]
     [InlineData("/api/profiles/{id}/tanks")]
@@ -58,6 +60,7 @@ public class OpenApiDocumentTests(ApiFixture fixture)
     [InlineData("post", "/api/pictures/{slug}/comments")]
     [InlineData("post", "/api/tanks/{id}/comments")]
     [InlineData("post", "/api/tanks")]
+    [InlineData("put", "/api/tanks/{id}/visibility")]
     [InlineData("delete", "/api/comments/{id}")]
     public async Task Document_ListsForbiddenResponseForEveryEndpointThatResolvesTheProfile(string method, string path)
     {

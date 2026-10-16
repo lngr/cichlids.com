@@ -24,6 +24,7 @@ public static class TanksEndpoints
         group.MapPut("/{id:long}/visibility", SetVisibilityAsync).WithName("SetTankVisibility").RequireAuthorization()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status401Unauthorized)
+            .ProducesProblem(StatusCodes.Status403Forbidden)
             .ProducesProblem(StatusCodes.Status404NotFound);
         group.MapGet("/{id:long}/comments", ListCommentsAsync).WithName("ListTankComments");
         group.MapPost("/{id:long}/comments", CreateCommentAsync).WithName("CreateTankComment")
