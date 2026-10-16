@@ -210,6 +210,9 @@ class DatabaseTests(unittest.TestCase):
                 self.assertEqual(count(conn, f'select count(*) from {table}'), 0, table)
                 self.assertGreater(count(source, f'select count(*) from {table}'), 0, table)
             self.assertEqual(count(conn, "select count(*) from media_item where taken_at_local is not null or taken_at_offset_minutes is not null or capture_checked_at is not null or received_at <> created_at or captured_in_app"), 0)
+            self.assertEqual(sorted(conn.execute('select id, quick_share_story_id from media_item where quick_share_story_id is not null').fetchall()),
+                             sorted(source.execute('select id, quick_share_story_id from media_item where quick_share_story_id is not null and id=any(%s)', (list(retained),)).fetchall()))
+            self.assertGreater(count(conn, 'select count(*) from media_item where quick_share_story_id is not null'), 0)
             placement = "select count(*) from media_item where not placed_public or placement_pending or placement_attempts <> 0 or placement_next_attempt_at is not null or visibility_generation <> 0"
             self.assertEqual(count(conn, placement), 0)
             self.assertEqual(count(source, placement), count(source, 'select count(*) from media_item'))

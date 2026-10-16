@@ -123,7 +123,7 @@ COLUMN_HANDLING = {
         'kept': 'count id sort species_id tank_id',
     },
     'public.media_item': {
-        'kept': 'byte_size created_at duration_ms height id kind legacy_id owner_profile_id width',
+        'kept': 'byte_size created_at duration_ms height id kind legacy_id owner_profile_id quick_share_story_id width',
         'media': (
             'captured_in_app checksum_sha256 content_type original_filename placed_public placement_attempts '
             'placement_pending received_at storage_key visibility_generation'),
