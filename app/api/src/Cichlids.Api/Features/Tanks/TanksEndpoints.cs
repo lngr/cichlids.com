@@ -25,6 +25,8 @@ public static class TanksEndpoints
             .RequireAuthorization()
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
+        app.MapTankSeriesPhotoEndpoints();
+
         return app;
     }
 

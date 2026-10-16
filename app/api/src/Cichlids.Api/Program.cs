@@ -132,6 +132,8 @@ builder.Services.AddProblemDetails(options => options.CustomizeProblemDetails = 
         context.ProblemDetails.Extensions.TryAdd("code", "care_request_invalid");
     else if (WebPushEndpoints.IsWebPushPath(context.HttpContext.Request.Path))
         context.ProblemDetails.Extensions.TryAdd("code", "web_push_request_invalid");
+    else if (TankSeriesPhotoEndpoints.IsSeriesPhotoPath(context.HttpContext.Request.Path))
+        context.ProblemDetails.Extensions.TryAdd("code", "tank_photo_invalid");
 });
 builder.Services.AddExceptionHandler<NonMemberLoginExceptionHandler>();
 
@@ -145,6 +147,7 @@ builder.Services.AddMemoryCache();
 builder.Services.AddScoped<TanksWriteService>();
 builder.Services.AddScoped<CareWriteService>();
 builder.Services.AddScoped<CarePhotoService>();
+builder.Services.AddScoped<TankSeriesPhotoService>();
 builder.Services.AddScoped<CareTodoService>();
 builder.Services.AddScoped<CareEntryMapper>();
 builder.Services.AddSingleton<CarePhotoUrlSigner>();
@@ -226,6 +229,14 @@ app.UseWhen(context => CareEndpoints.IsCarePath(context.Request.Path), branch =>
         var status = context.HttpContext.Response.StatusCode;
         await Cichlids.Api.Features.Common.ApiProblems.WithCode(status, "Care request refused", "The care request could not be completed.",
             status == 401 ? "care_auth_required" : "care_request_invalid").ExecuteAsync(context.HttpContext);
+    }));
+
+app.UseWhen(context => TankSeriesPhotoEndpoints.IsSeriesPhotoPath(context.Request.Path), branch =>
+    branch.UseStatusCodePages(async context =>
+    {
+        var status = context.HttpContext.Response.StatusCode;
+        await Cichlids.Api.Features.Common.ApiProblems.WithCode(status, "Tank photo refused", "The tank photo could not be added.",
+            status == 401 ? "tank_photo_auth_required" : "tank_photo_invalid").ExecuteAsync(context.HttpContext);
     }));
 
 app.UseWhen(context => WebPushEndpoints.IsWebPushPath(context.Request.Path), branch =>
