@@ -4,7 +4,7 @@ title: Guided water change mode
 status: In Progress
 assignee: []
 created_date: '2026-10-16 06:27'
-updated_date: '2026-10-16 07:10'
+updated_date: '2026-10-16 07:13'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -42,4 +42,6 @@ A wizard guides a water change step by step and produces the evidence for the wa
 - Evidence rule (decided by the project owner, 2026-10-16): verified means the guided mode was started and finished in the app with at least 10 minutes between the start of draining and the finish; photos are optional and do not change the evidence state.
 
 - Evidence (decided by the project owner, 2026-10-16): photos are taken with the app camera during the water change; several photos per session are allowed (drained tank, water running in, refilled tank); at least one in-app photo received by the server while the session runs, together with the timer rule, makes it verified. No checks against manipulated clients beyond the server receive time.
+
+- Correction of the note above: the server checks the evidence photos for (1) receipt while the session runs, (2) an EXIF capture time within the session window when present, and (3) single use of the same photo as evidence; the project owner did not ask to drop any of these checks.
 <!-- SECTION:NOTES:END -->
