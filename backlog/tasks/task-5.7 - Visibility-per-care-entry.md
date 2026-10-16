@@ -1,10 +1,10 @@
 ---
 id: TASK-5.7
 title: Visibility per care entry
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 08:22'
+updated_date: '2026-10-16 08:42'
 labels: []
 dependencies: []
 references:
@@ -76,4 +76,7 @@ Each care entry has a visibility; private entries never leave the owner, public 
 - Verification: .NET 542/1061 (1 opt-in benchmark skipped)/349 with 0 warnings, client-core 198, mobile 382, both typechecks, all 34 write e2e specs green.
 - Tests: app/api/tests/Cichlids.Api.Tests/Features/Tanks/TankVisibility*Tests.cs, TankMediaPlacementTests.cs, TankMediaFailClosedTests.cs, Features/Care/CareOnlyMeTests.cs, Features/Discover/DiscoverVisibilityTests.cs, Features/Me/TodayVisibilityTests.cs, app/mobile/e2e/playwright/visibility.write.mjs.
 - Still in progress: the legacy takeover keeps archive tanks public without the question.
+
+- Legacy takeover done: the onboarding shows a member's archive tanks right after yes without the question; the adopted tank stays public in profile and stream without a consent row; the question appears when a new tank is chosen.
+- Verification after the follow-ups: .NET 542/1062 (1 opt-in benchmark skipped)/349 with 0 warnings, client-core 198, mobile 384, both typechecks, all 34 write e2e specs green. A single run of visibility.write.mjs once timed out at care-only-me-badge and passed on rerun (small flake to watch).
 <!-- SECTION:NOTES:END -->

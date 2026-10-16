@@ -1,10 +1,10 @@
 ---
 id: TASK-5.16
 title: Record measurements and care afterwards
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-16 07:10'
-updated_date: '2026-10-16 07:43'
+updated_date: '2026-10-16 08:42'
 labels: []
 dependencies: []
 references:
@@ -51,4 +51,6 @@ Members often note water values and enter them a day or two later. The measureme
 - Not verified: the picker on native platforms; the due-care quick log on Today still logs now.
 
 - Decided by the project owner (2026-10-16): the time of an entry from the guided water change mode is fixed; only its note, amount and photos stay editable. Plain entries and measurements stay freely correctable. To implement after TASK-5.7 (same files): the API refuses a time change of a guided entry with a coded problem, the edit view hides the time choice for it.
+
+- Guided entries: a PATCH that changes the time of an entry with a water change session is refused with care_time_fixed (same time, note or amount stay allowed); the edit view hides the time choice with a short note. Tests: WaterChangeTests (GivenGuidedEntry...), app/client-core careTime.test.ts, care-when.write.mjs. Verification: see TASK-5.7.
 <!-- SECTION:NOTES:END -->
