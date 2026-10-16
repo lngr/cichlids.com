@@ -1,10 +1,10 @@
 ---
 id: TASK-5.5
 title: Weekly streak with vacation freeze and heatmap
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 07:10'
+updated_date: '2026-10-16 08:42'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -77,4 +77,12 @@ A streak counts weeks with completed care, survives vacations through a freeze, 
 - This supersedes the earlier notes that photos are optional for the evidence and that a week without evidence never breaks the streak.
 
 - Confirmed by the project owner (2026-10-16): the grace is one third of the rhythm rounded up (7 days: up to day 10, 14 days: up to day 19). A missing photo with no freeze left breaks the streak like a missed period. Manipulated clients are out of scope; device attestation is not wanted (dependency on platform services) unless it becomes cheap.
+
+### Current rules (consolidated 2026-10-16; these replace every earlier rule above)
+- Two streaks per tank, side by side; the care heatmap is separate and independent.
+- Time-lapse streak: one photo per ISO week taken with the app camera into the time-lapse series of the tank (TASK-5.11); library pictures do not count. Deleting a photo that keeps the streak asks first.
+- Water change streak: counts in periods of the tank's care plan rhythm. A period is kept by a water change at the latest rhythm plus grace after the previous one (grace = one third of the rhythm rounded up to whole days: 7 days up to day 10, 14 days up to day 19); each water change starts the next period. A kept period is verified when the water change comes from the guided mode with verified evidence (TASK-5.13, at least one qualifying in-app photo). A water change without verified evidence keeps the period only by using a freeze; without a freeze left the streak breaks like a missed period.
+- Freezes: 2 per calendar year (a configuration value); earning extra freezes is worked out later.
+- Vacation: activated in advance or recorded afterwards; it pauses both streaks for any length without breaking them, and vacation periods never extend a streak. An active vacation is never visible to others; after the return the past vacation becomes visible; the profile shows the vacation share.
+- No freeze-free bridging other than vacation. Leaderboards, reputation and ranking are later (DRAFT-14).
 <!-- SECTION:NOTES:END -->
