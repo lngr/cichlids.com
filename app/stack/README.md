@@ -60,7 +60,7 @@ production import starts from. It runs in this order:
 4. The `cichlids` realm is deleted and imported from `keycloak/cichlids-realm.json`, which holds
    `dev-user` and `dev-mod`.
 5. `etl all` imports the legacy data into the empty database and verifies it.
-6. `etl media` seeds the media.
+6. `etl media` seeds the media and reads the capture time of the archive photos.
 7. `etl keycloak-import --open-registration` imports the legacy accounts and opens
    self-registration once every account exists.
 8. `etl verify` checks the finished stand against the legacy source.
@@ -271,6 +271,33 @@ exiftool -DateTimeOriginal -Orientation -ICC_Profile:ProfileDescription -Model o
 undecodable original (`broken`), rejected sources with the reason (`rejected`: files over
 `ObjectStorage:MaxDownloadBytes`, images beyond the size limits and TIFF files whose metadata
 cannot be removed) and the undecodable originals that have a public copy (`copies`).
+
+## Capture times of photos
+
+`media_item` stores the capture time of a photo as `taken_at_local` (the wall-clock time the
+camera recorded, EXIF `DateTimeOriginal`, a `timestamp` without time zone) and
+`taken_at_offset_minutes` (EXIF `OffsetTimeOriginal` in minutes from UTC). A null offset means the
+camera recorded none and the wall-clock time has no known zone; it is not UTC. The API returns the
+value as `takenAt` with the offset, or with `+00:00` when none is recorded. Dates before 1990,
+dates more than a day in the future, the zero date and malformed dates are not stored. No other EXIF
+field, in particular no GPS data, is read or kept in the database.
+
+Uploads and care photos read the capture time from the uploaded file. `etl media` and the
+read-only `etl media-dates` read it from the legacy originals of the archive photos:
+
+```sh
+cd app/api && DOTNET_ENVIRONMENT=Development \
+  ~/.dotnet/dotnet run --project src/Cichlids.Etl -- media-dates [--limit N] [--workers P]
+```
+
+The command examines archive photos that have neither a capture time nor a check timestamp
+(`capture_checked_at`). It opens the legacy files for reading only and reads the leading 256 KB of
+each file, or the whole file when the header does not parse within them. Every row whose original
+was read gets the check timestamp, so a rerun skips it; a row whose original is missing stays a
+candidate. The legacy image tree comes from `Etl:LegacyImagesRoot` or
+`CICHLIDS_ETL_LEGACY_IMAGES_ROOT`. The report lists candidates, examined, found, no date, implausible, unreadable,
+source missing and the bytes read. Set `CICHLIDS_ETL_TARGET_CONNECTION` for a database other than
+the one in `appsettings.json`.
 
 ## Start the API and the app
 

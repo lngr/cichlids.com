@@ -56,6 +56,7 @@ public sealed class EtlCommandLineTests
     [InlineData("migrate")]
     [InlineData("media")]
     [InlineData("media-verify")]
+    [InlineData("media-dates")]
     [InlineData("keycloak-import")]
     public void AcceptsTheGuardedAndReadOnlyCommandsInProduction(string command)
     {
@@ -84,6 +85,24 @@ public sealed class EtlCommandLineTests
         Assert.Equal(25, commandLine.Limit);
         Assert.Equal(4, commandLine.Workers);
         Assert.Equal("missing.tsv", commandLine.MissingOutPath);
+    }
+
+    [Fact]
+    public void ParsesTheMediaDatesOptions()
+    {
+        var result = EtlCommandLine.Parse(["media-dates", "--limit", "500", "--workers", "3"], "Production");
+
+        Assert.Null(result.Error);
+        Assert.Equal("media-dates", result.CommandLine!.Command);
+        Assert.Equal(500, result.CommandLine.Limit);
+        Assert.Equal(3, result.CommandLine.Workers);
+        Assert.False(result.CommandLine.IsSingleStep);
+    }
+
+    [Fact]
+    public void RejectsTheMissingOutOptionForMediaDates()
+    {
+        Assert.NotNull(EtlCommandLine.Parse(["media-dates", "--missing-out", "x.json"], "Development").Error);
     }
 
     [Fact]

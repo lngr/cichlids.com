@@ -23,6 +23,7 @@ public sealed record EtlCommandLine
     public const string Reset = "reset";
     public const string Media = "media";
     public const string MediaVerify = "media-verify";
+    public const string MediaDates = "media-dates";
     public const string KeycloakImport = "keycloak-import";
 
     private const string OutOption = "--out";
@@ -43,6 +44,7 @@ public sealed record EtlCommandLine
         [Reset] = [],
         [Media] = [LimitOption, WorkersOption, MissingOutOption],
         [MediaVerify] = [OutOption],
+        [MediaDates] = [LimitOption, WorkersOption],
         [KeycloakImport] = [OpenRegistrationOption],
     };
 
@@ -56,7 +58,10 @@ public sealed record EtlCommandLine
         + "  migrate                   applies the schema migrations\n"
         + "  reset                     empties the target and the realm users (Development and Staging only)\n"
         + "  media [--limit N] [--workers P] [--missing-out <path>]\n"
+        + "                            seeds the object store, then reads the capture times like media-dates\n"
         + "  media-verify [--out <path>]\n"
+        + "  media-dates [--limit N] [--workers P]\n"
+        + "                            reads the capture time of archive photos not yet examined from their legacy originals\n"
         + "  keycloak-import [--open-registration]\n"
         + "                            imports the Auth0 export (Etl:Auth0ExportPath) into Keycloak (Keycloak:*);\n"
         + "                            --open-registration allows self-registration once every account exists\n"

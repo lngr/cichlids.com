@@ -82,9 +82,32 @@ if (command == EtlCommandLine.Media)
     // Legacy files are held to the same size limit as object downloads.
     var maxSourceBytes = configuration.GetSection(S3ObjectStoreOptions.SectionName).Get<S3ObjectStoreOptions>()!.MaxDownloadBytes;
 
-    return await MediaSeedCommand.RunAsync(
+    var seedExitCode = await MediaSeedCommand.RunAsync(
         legacyConnectionString, targetConnectionString, mediaObjectStore, legacyImagesRoot,
         commandLine.Limit, commandLine.Workers, commandLine.MissingOutPath, maxSourceBytes, cts.Token);
+    if (seedExitCode != 0)
+    {
+        return seedExitCode;
+    }
+
+    return await MediaCaptureTimeCommand.RunAsync(
+        legacyConnectionString, targetConnectionString, legacyImagesRoot,
+        commandLine.Limit, commandLine.Workers, maxSourceBytes, cts.Token);
+}
+
+if (command == EtlCommandLine.MediaDates)
+{
+    var datesImagesRoot =
+        Environment.GetEnvironmentVariable("CICHLIDS_ETL_LEGACY_IMAGES_ROOT")
+        ?? configuration["Etl:LegacyImagesRoot"]
+        ?? throw new InvalidOperationException(
+            "Missing legacy images root (Etl:LegacyImagesRoot in appsettings.json or CICHLIDS_ETL_LEGACY_IMAGES_ROOT).");
+    var datesMaxSourceBytes = configuration.GetSection(S3ObjectStoreOptions.SectionName).Get<S3ObjectStoreOptions>()?.MaxDownloadBytes
+        ?? new S3ObjectStoreOptions().MaxDownloadBytes;
+
+    return await MediaCaptureTimeCommand.RunAsync(
+        legacyConnectionString, targetConnectionString, datesImagesRoot,
+        commandLine.Limit, commandLine.Workers, datesMaxSourceBytes, cts.Token);
 }
 
 if (command == EtlCommandLine.MediaVerify)

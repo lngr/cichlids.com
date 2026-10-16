@@ -575,7 +575,7 @@ public static class MediaSeedCommand
 
     // === loading ======================================================================================
 
-    private static async Task<Dictionary<int, string>> LoadLegacyImagePathsAsync(string legacyConnectionString, CancellationToken cancellationToken)
+    internal static async Task<Dictionary<int, string>> LoadLegacyImagePathsAsync(string legacyConnectionString, CancellationToken cancellationToken)
     {
         await using var connection = new MySqlConnection(legacyConnectionString);
         await connection.OpenAsync(cancellationToken);
