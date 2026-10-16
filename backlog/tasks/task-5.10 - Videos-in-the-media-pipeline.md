@@ -4,7 +4,7 @@ title: Videos in the media pipeline
 status: In Progress
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 05:53'
+updated_date: '2026-10-16 05:57'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -47,4 +47,6 @@ Videos upload resumably, are transcoded to HLS with ffmpeg, get a poster frame a
 
 ### Length rule placeholder (decided by the project owner, 2026-10-16)
 - Members whose account is older than 1 year and who have more than 20 public pictures may upload videos up to 3 minutes; every other member gets the short limit (a separate configuration value, 60 seconds pending confirmation). DRAFT-13 replaces this placeholder with the reputation concept.
+
+- Short limit confirmed by the project owner (2026-10-16): 60 seconds for every member outside the placeholder rule.
 <!-- SECTION:NOTES:END -->

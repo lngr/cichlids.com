@@ -4,7 +4,7 @@ title: Weekly streak with vacation freeze and heatmap
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-15 20:37'
+updated_date: '2026-10-16 05:57'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -46,4 +46,7 @@ A streak counts weeks with completed care, survives vacations through a freeze, 
 - Do not implement this story before that decision; TASK-5.4 shows due care first and adds the streak afterwards.
 
 - Scope includes the streak on Today: TASK-5.4 leaves an empty StreakSlot in app/mobile/app/(tabs)/today.tsx for it.
+
+### Rethink (project owner, 2026-10-16)
+- A streak built on self-reported care entries can be faked, unlike Strava (recorded activity) or Duolingo (completed lessons); a private streak with freeze is rejected. The streak should depend on verifiable factors, for example a current photo taken in the app each time, which also feeds the timeline; but any other subject could be photographed and would pollute the timeline. The concept is being reworked with the project owner; do not implement before.
 <!-- SECTION:NOTES:END -->
