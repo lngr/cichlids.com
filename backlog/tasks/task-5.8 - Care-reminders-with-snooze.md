@@ -1,7 +1,7 @@
 ---
 id: TASK-5.8
 title: Care reminders with snooze
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-15 12:26'
 updated_date: '2026-10-16 04:37'
@@ -43,4 +43,6 @@ On the due day the member receives one push notification per due care, which the
 - Web app (decided by the project owner, 2026-10-16): Web Push with our own VAPID key pair (RFC 8292) and encrypted payloads (RFC 8291), only after the member allows notifications in the browser; no additional service provider. The private VAPID key lives only on the server (SOPS secret in the cluster, a local file in development); the operator generates the key pair. On iOS, Web Push works only for a web app added to the home screen.
 
 - Consent (decided by the project owner, 2026-10-16): Web Push stays off by default. Before the browser asks for permission, the web app explains that the push service of the browser maker (Google, Mozilla or Apple) learns that this browser receives notifications from cichlids.com and when, but not their content; the member agrees explicitly. The member can switch it off at any time, which deletes the subscription on the server.
+
+- Story cut: TASK-5.8 covers the reminders of the mobile app (local notifications) and the per-tank reminder switch shared by all devices; Web Push for the web app is TASK-5.12.
 <!-- SECTION:NOTES:END -->
