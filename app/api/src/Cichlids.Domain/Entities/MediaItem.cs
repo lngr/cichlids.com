@@ -19,6 +19,11 @@ public class MediaItem
     public int? Width { get; set; }
     public int? Height { get; set; }
     public string? ChecksumSha256 { get; set; }
+
+    /// <summary>
+    /// The length of a video in milliseconds, or null for a photo.
+    /// </summary>
+    public int? DurationMs { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>

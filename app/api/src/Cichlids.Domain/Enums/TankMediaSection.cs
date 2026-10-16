@@ -9,4 +9,5 @@ public enum TankMediaSection
     Decoration,
     Technic,
     TimeLapse,
+    Video,
 }

@@ -418,6 +418,36 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.CareVideo", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("CareEntryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("care_entry_id");
+
+                    b.Property<long>("MediaItemId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("media_item_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_care_video");
+
+                    b.HasIndex("CareEntryId")
+                        .HasDatabaseName("ix_care_video_care_entry_id");
+
+                    b.HasIndex("MediaItemId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_care_video_media_item_id");
+
+                    b.ToTable("care_video", "public");
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
                 {
                     b.Property<long>("Id")
@@ -890,6 +920,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
+
+                    b.Property<int?>("DurationMs")
+                        .HasColumnType("integer")
+                        .HasColumnName("duration_ms");
 
                     b.Property<int?>("Height")
                         .HasColumnType("integer")
@@ -1937,7 +1971,160 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     b.ToTable("tank_media", "public", t =>
                         {
-                            t.HasCheckConstraint("ck_tank_media_section", "section IN ('showcase', 'decoration', 'technic', 'time_lapse')");
+                            t.HasCheckConstraint("ck_tank_media_section", "section IN ('showcase', 'decoration', 'technic', 'time_lapse', 'video')");
+                        });
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.VideoJob", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<int>("Attempts")
+                        .HasColumnType("integer")
+                        .HasColumnName("attempts");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("ErrorCode")
+                        .HasColumnType("text")
+                        .HasColumnName("error_code");
+
+                    b.Property<DateTimeOffset?>("FinishedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("finished_at");
+
+                    b.Property<bool>("IsPrivate")
+                        .HasColumnType("boolean")
+                        .HasColumnName("is_private");
+
+                    b.Property<DateTimeOffset?>("LockedUntil")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("locked_until");
+
+                    b.Property<long>("MediaItemId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("media_item_id");
+
+                    b.Property<DateTimeOffset>("RunAfter")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("run_after");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("status");
+
+                    b.HasKey("Id")
+                        .HasName("pk_video_job");
+
+                    b.HasIndex("MediaItemId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_video_job_media_item_id");
+
+                    b.HasIndex("Status", "RunAfter")
+                        .HasDatabaseName("ix_video_job_status_run_after");
+
+                    b.ToTable("video_job", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_video_job_attempts", "attempts >= 0");
+
+                            t.HasCheckConstraint("ck_video_job_status", "status IN ('queued', 'running', 'done', 'failed')");
+                        });
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.VideoUpload", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("ByteSize")
+                        .HasColumnType("bigint")
+                        .HasColumnName("byte_size");
+
+                    b.Property<long?>("CareEntryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("care_entry_id");
+
+                    b.Property<int>("ChunkSize")
+                        .HasColumnType("integer")
+                        .HasColumnName("chunk_size");
+
+                    b.Property<string>("Container")
+                        .HasColumnType("text")
+                        .HasColumnName("container");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateTimeOffset>("ExpiresAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("expires_at");
+
+                    b.Property<string>("MultipartUploadId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("multipart_upload_id");
+
+                    b.Property<long>("Offset")
+                        .HasColumnType("bigint")
+                        .HasColumnName("offset");
+
+                    b.Property<string>("OriginalFilename")
+                        .HasColumnType("text")
+                        .HasColumnName("original_filename");
+
+                    b.Property<long>("OwnerProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("owner_profile_id");
+
+                    b.PrimitiveCollection<List<string>>("PartETags")
+                        .IsRequired()
+                        .HasColumnType("text[]")
+                        .HasColumnName("part_e_tags");
+
+                    b.Property<string>("StorageKey")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("storage_key");
+
+                    b.Property<long>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.Property<string>("Target")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("target");
+
+                    b.HasKey("Id")
+                        .HasName("pk_video_upload");
+
+                    b.HasIndex("ExpiresAt")
+                        .HasDatabaseName("ix_video_upload_expires_at");
+
+                    b.HasIndex("OwnerProfileId")
+                        .HasDatabaseName("ix_video_upload_owner_profile_id");
+
+                    b.HasIndex("TankId")
+                        .HasDatabaseName("ix_video_upload_tank_id");
+
+                    b.ToTable("video_upload", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_video_upload_offset", "\"offset\" >= 0 AND \"offset\" <= byte_size AND byte_size > 0 AND chunk_size > 0");
+
+                            t.HasCheckConstraint("ck_video_upload_target", "target IN ('tank', 'care_entry')");
                         });
                 });
 
@@ -2257,6 +2444,25 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_care_todo_tanks_tank_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.CareVideo", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.CareEntry", null)
+                        .WithMany("Videos")
+                        .HasForeignKey("CareEntryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_video_care_entry_care_entry_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.MediaItem", "MediaItem")
+                        .WithMany()
+                        .HasForeignKey("MediaItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_video_media_items_media_item_id");
+
+                    b.Navigation("MediaItem");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
@@ -2591,6 +2797,33 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasConstraintName("fk_tank_media_tanks_tank_id");
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.VideoJob", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
+                        .WithMany()
+                        .HasForeignKey("MediaItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_video_job_media_item_media_item_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.VideoUpload", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("OwnerProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_video_upload_profile_owner_profile_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_video_upload_tank_tank_id");
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.WebPushReminderSent", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.WebPushSubscription", null)
@@ -2625,6 +2858,8 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.Navigation("Todos");
 
                     b.Navigation("Values");
+
+                    b.Navigation("Videos");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>

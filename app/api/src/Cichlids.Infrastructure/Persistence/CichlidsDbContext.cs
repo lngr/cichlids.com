@@ -24,6 +24,9 @@ public class CichlidsDbContext : DbContext
     public DbSet<CareEntry> CareEntries => Set<CareEntry>();
     public DbSet<CareMeasurementValue> CareMeasurementValues => Set<CareMeasurementValue>();
     public DbSet<CarePhoto> CarePhotos => Set<CarePhoto>();
+    public DbSet<CareVideo> CareVideos => Set<CareVideo>();
+    public DbSet<VideoJob> VideoJobs => Set<VideoJob>();
+    public DbSet<VideoUpload> VideoUploads => Set<VideoUpload>();
     public DbSet<CareTodo> CareTodos => Set<CareTodo>();
     public DbSet<CarePlanRule> CarePlanRules => Set<CarePlanRule>();
     public DbSet<Tank> Tanks => Set<Tank>();
