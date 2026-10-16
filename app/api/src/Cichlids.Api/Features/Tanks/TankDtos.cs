@@ -4,9 +4,13 @@ using Cichlids.Domain.Enums;
 
 namespace Cichlids.Api.Features.Tanks;
 
+/// <summary>
+/// A tank in a list. Decommissioned tells whether the tank is decommissioned at the moment; it is false
+/// for viewers who do not see the care stream of the tank.
+/// </summary>
 public sealed record TankListItemDto(
     long Id, string Title, TankCategory? Category, ImageUrlsDto? MainImage, int ImageCount, AuthorDto Author, TankRegion? Region = null,
-    TankVisibility ProfileVisibility = TankVisibility.Public);
+    TankVisibility ProfileVisibility = TankVisibility.Public, bool Decommissioned = false);
 
 public sealed record WaterValuesDto(string? Ph, string? Kh, string? Gh, string? No2, string? No3, string? Po4, string? Notes);
 

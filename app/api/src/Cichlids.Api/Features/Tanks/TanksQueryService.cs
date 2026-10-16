@@ -51,7 +51,8 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
         var authorIds = page.Select(t => t.ProfileId).Distinct().ToList();
 
         var imageCounts = await context.TankMedia
-            .Where(tm => tankIds.Contains(tm.TankId) && tm.Section != TankMediaSection.Video)
+            .Where(tm => tankIds.Contains(tm.TankId) && tm.Section != TankMediaSection.Video
+                && tm.Section != TankMediaSection.Decommission && tm.Section != TankMediaSection.Recommission)
             .GroupBy(tm => tm.TankId)
             .Select(g => new { TankId = g.Key, Count = g.Count() })
             .ToDictionaryAsync(x => x.TankId, x => x.Count, cancellationToken);
@@ -66,13 +67,19 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
 
         var authors = await AuthorBatchLoader.LoadAsync(context, authorIds, cancellationToken);
 
+        // A decommissioning is part of the care stream, so only its viewers see the mark.
+        var streamVisible = context.Tanks.Where(TankVisibilityRules.StreamVisibleTo(viewerProfileId)).Select(t => t.Id);
+        var decommissioned = await context.TankDecommissionings
+            .Where(d => tankIds.Contains(d.TankId) && d.EndedAt == null && streamVisible.Contains(d.TankId))
+            .Select(d => d.TankId).ToListAsync(cancellationToken);
+
         var items = page.Select(t => new TankListItemDto(
                 t.Id,
                 t.Title,
                 t.Category,
                 mainMediaItemByTank.TryGetValue(t.Id, out var mediaItemId) ? images[mediaItemId] : null,
                 imageCounts.GetValueOrDefault(t.Id, 0),
-                authors[t.ProfileId].ToDto(objectStore), t.Region, t.ProfileVisibility))
+                authors[t.ProfileId].ToDto(objectStore), t.Region, t.ProfileVisibility, decommissioned.Contains(t.Id)))
             .ToList();
 
         return new PagedResponse<TankListItemDto>(total, items);
@@ -93,7 +100,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
         }
 
         var mediaRows = await context.TankMedia
-            .Where(tm => tm.TankId == id)
+            .Where(tm => tm.TankId == id && tm.Section != TankMediaSection.Decommission && tm.Section != TankMediaSection.Recommission)
             .OrderBy(tm => tm.Sort)
             .Select(tm => new TankMediaRow(tm.MediaItemId, tm.Section))
             .ToListAsync(cancellationToken);

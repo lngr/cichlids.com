@@ -143,7 +143,8 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
         var images = variants.GroupBy(v => v.MediaItemId).ToDictionary(g => g.Key, g => builder.Build(g, allowSigned: false));
         var visiblePhotos = context.MediaItems.Where(m => m.Kind == MediaKind.Photo
             && (m.OwnerProfileId == null || members.Any(p => p.Id == m.OwnerProfileId)));
-        var photoLinks = context.TankMedia.Select(tm => new { tm.TankId, tm.MediaItemId })
+        var photoLinks = context.TankMedia.Where(tm => tm.Section != TankMediaSection.Decommission && tm.Section != TankMediaSection.Recommission)
+            .Select(tm => new { tm.TankId, tm.MediaItemId })
             .Union(context.Tanks.Where(t => t.MainMediaId != null)
                 .Select(t => new { TankId = t.Id, MediaItemId = t.MainMediaId!.Value }))
             .Union(from p in posts

@@ -20,6 +20,15 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
     private static readonly CareKind[] Kinds = [CareKind.WaterChange, CareKind.Measurement];
 
     /// <summary>
+    /// What the decommissionings of a tank do to its plan on a day: the kinds of care that are paused
+    /// and, per kind, the instant the tank was last put back into operation.
+    /// </summary>
+    private sealed record Rest(IReadOnlySet<CareKind> Paused, IReadOnlyDictionary<CareKind, DateTimeOffset> Restarts)
+    {
+        public static Rest None { get; } = new(new HashSet<CareKind>(), new Dictionary<CareKind, DateTimeOffset>());
+    }
+
+    /// <summary>
     /// Reads the local calendar date (YYYY-MM-DD) and the optional offset of the member's clock
     /// from UTC in minutes; null when either is not valid.
     /// </summary>
@@ -39,7 +48,8 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
         var stored = await context.CarePlanRules.AsNoTracking().Where(r => r.TankId == tankId).ToListAsync(ct);
         var last = await LastOccurrencesAsync(context.CareEntries.Where(e => e.TankId == tankId && (includeOnlyMe || !e.OnlyMe)), ct);
         var reminders = await context.Tanks.AsNoTracking().Where(t => t.Id == tankId).Select(t => t.CareRemindersEnabled).SingleOrDefaultAsync(ct);
-        return BuildPlan(tankId, stored, last.ToDictionary(l => l.Kind, l => l.Last), today, utcOffsetMinutes, reminders);
+        var rest = (await LoadRestsAsync([tankId], today, ct)).GetValueOrDefault(tankId, Rest.None);
+        return BuildPlan(tankId, stored, last.ToDictionary(l => l.Kind, l => l.Last), today, utcOffsetMinutes, reminders, rest);
     }
 
     /// <summary>
@@ -128,11 +138,13 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
         var ids = tanks.Select(t => t.Id).ToList();
         var stored = await context.CarePlanRules.AsNoTracking().Where(r => ids.Contains(r.TankId)).ToListAsync(ct);
         var last = await LastOccurrencesAsync(context.CareEntries.Where(e => ids.Contains(e.TankId)), ct);
+        var rests = await LoadRestsAsync(ids, today, ct);
         var items = new List<DueCareItemDto>();
         foreach (var tank in tanks)
         {
             var plan = BuildPlan(tank.Id, stored.Where(r => r.TankId == tank.Id).ToList(),
-                last.Where(l => l.TankId == tank.Id).ToDictionary(l => l.Kind, l => l.Last), today, utcOffsetMinutes, tank.CareRemindersEnabled);
+                last.Where(l => l.TankId == tank.Id).ToDictionary(l => l.Kind, l => l.Last), today, utcOffsetMinutes, tank.CareRemindersEnabled,
+                rests.GetValueOrDefault(tank.Id, Rest.None));
             items.AddRange(plan.Rules.Where(r => r is { Enabled: true, Due: not null, RhythmDays: not null, Reason: not null })
                 .Select(r => new DueCareItemDto(tank.Id, tank.Title, r.Kind, r.RhythmDays!.Value, r.Reason!, r.Due!, tank.CareRemindersEnabled)));
         }
@@ -157,8 +169,28 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
         return rows.Select(r => (r.TankId, r.Kind, r.Last)).ToList();
     }
 
+    private async Task<Dictionary<long, Rest>> LoadRestsAsync(IReadOnlyCollection<long> tankIds, DateOnly today, CancellationToken ct)
+    {
+        var rows = await context.TankDecommissionings.AsNoTracking().Where(d => tankIds.Contains(d.TankId)).ToListAsync(ct);
+        var result = new Dictionary<long, Rest>();
+        foreach (var group in rows.GroupBy(r => r.TankId))
+        {
+            var paused = new HashSet<CareKind>();
+            var restarts = new Dictionary<CareKind, DateTimeOffset>();
+            foreach (var kind in Kinds)
+            {
+                var own = group.Where(r => Decommissions.Pauses(r.Scope, kind)).ToList();
+                if (own.Any(r => r.StartDate <= today && (r.EndDate is not { } end || today < end))) paused.Add(kind);
+                var ended = own.Where(r => r.EndedAt is not null).Select(r => r.EndedAt!.Value).ToList();
+                if (ended.Count > 0) restarts[kind] = ended.Max();
+            }
+            result[group.Key] = new Rest(paused, restarts);
+        }
+        return result;
+    }
+
     private static CarePlanDto BuildPlan(long tankId, IReadOnlyCollection<CarePlanRule> stored,
-        IReadOnlyDictionary<CareKind, DateTimeOffset> last, DateOnly today, int utcOffsetMinutes, bool remindersEnabled)
+        IReadOnlyDictionary<CareKind, DateTimeOffset> last, DateOnly today, int utcOffsetMinutes, bool remindersEnabled, Rest rest)
     {
         var rules = new List<CarePlanRuleDto>();
         foreach (var kind in Kinds)
@@ -170,10 +202,13 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
                 rules.Add(new CarePlanRuleDto(kind, null, false, true, null, null));
                 continue;
             }
-            var due = CarePlans.DueFor(rule, last.TryGetValue(kind, out var at) ? at : null, today, utcOffsetMinutes);
+            var paused = rest.Paused.Contains(kind);
+            DateTimeOffset? lastAt = last.TryGetValue(kind, out var at) ? at : null;
+            if (lastAt is { } logged && rest.Restarts.TryGetValue(kind, out var restart) && restart > logged) lastAt = restart;
+            var due = paused ? null : CarePlans.DueFor(rule, lastAt, today, utcOffsetMinutes);
             rules.Add(new CarePlanRuleDto(kind, rule.RhythmDays, rule.Enabled, row is null,
                 new CareReasonDto(rule.ReasonCode, rule.ReasonParameters),
-                due is { } d ? new CareDueDto(d.State, d.Days, d.DueDate?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)) : null));
+                due is { } d ? new CareDueDto(d.State, d.Days, d.DueDate?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)) : null, paused));
         }
         return new CarePlanDto(tankId, rules, remindersEnabled);
     }

@@ -1,3 +1,5 @@
+using Cichlids.Domain.Enums;
+
 namespace Cichlids.Domain;
 
 /// <summary>
@@ -17,6 +19,11 @@ public readonly record struct TankOperation(int OperatingDays, int Decommissione
 /// </summary>
 public static class Decommissions
 {
+    /// <summary>
+    /// Whether a decommissioning of the scope pauses the kind of care.
+    /// </summary>
+    public static bool Pauses(DecommissionScope scope, CareKind kind) => scope == DecommissionScope.AllCare || kind == CareKind.WaterChange;
+
     /// <summary>
     /// Whether a decommissioning covers the day.
     /// </summary>

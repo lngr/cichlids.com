@@ -301,6 +301,29 @@ public sealed class TankDecommissioningTests(UploadsFixture fixture)
     }
 
     [Fact]
+    public async Task GivenTheProofPhotos_WhenOpeningTheTimeLapseTheTankPageOrTheList_ThenTheyAreNotPartOfTheTankGallery()
+    {
+        var (token, tank) = await OwnTankAsync(fixture.Client);
+        using var started = await StartAsync(fixture.Client, token, tank, Jpeg(692, 480));
+        Assert.Equal(HttpStatusCode.Created, started.StatusCode);
+        using var ended = await EndAsync(fixture.Client, token, tank, Jpeg(693, 480));
+        Assert.Equal(HttpStatusCode.OK, ended.StatusCode);
+
+        using var series = JsonDocument.Parse(await fixture.Client.GetStringAsync($"/api/tanks/{tank}/time-lapse"));
+        Assert.Equal(0, series.RootElement.GetProperty("photos").GetArrayLength());
+        using var detail = JsonDocument.Parse(await fixture.Client.GetStringAsync($"/api/tanks/{tank}"));
+        Assert.All(new[] { "showcase", "decoration", "technic" }, section => Assert.Equal(0, detail.RootElement.GetProperty("sections").GetProperty(section).GetArrayLength()));
+        using var list = JsonDocument.Parse(await fixture.Client.GetStringAsync($"/api/tanks?userId={await OwnerAsync(tank)}"));
+        Assert.Equal(0, list.RootElement.GetProperty("items").EnumerateArray().Single(i => i.GetProperty("id").GetInt64() == tank).GetProperty("imageCount").GetInt32());
+    }
+
+    private async Task<long> OwnerAsync(long tank)
+    {
+        await using var db = fixture.CreateDbContext();
+        return await db.Tanks.Where(t => t.Id == tank).Select(t => t.ProfileId).SingleAsync();
+    }
+
+    [Fact]
     public async Task GivenAPrivateTank_WhenAVisitorOpensTheDecommissioning_ThenItIsUnavailable()
     {
         var token = NewMemberToken();

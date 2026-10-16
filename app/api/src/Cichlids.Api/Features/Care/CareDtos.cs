@@ -34,7 +34,10 @@ public sealed record CareSeriesPointDto(long EntryId, DateTimeOffset OccurredAt,
 public sealed record CareSeriesDto(CareParameter Parameter, MeasurementUnit Unit, IReadOnlyList<CareSeriesPointDto> Points);
 public sealed record CareReasonDto(string Code, IReadOnlyDictionary<string, string>? Parameters);
 public sealed record CareDueDto(CareDueState State, int Days, string? DueDate);
-public sealed record CarePlanRuleDto(CareKind Kind, int? RhythmDays, bool Enabled, bool IsDefault, CareReasonDto? Reason, CareDueDto? Due);
+/// <summary>
+/// A rule of a care plan. Paused tells whether a decommissioning of the tank pauses this kind of care; a paused rule has no due state.
+/// </summary>
+public sealed record CarePlanRuleDto(CareKind Kind, int? RhythmDays, bool Enabled, bool IsDefault, CareReasonDto? Reason, CareDueDto? Due, bool Paused = false);
 public sealed record CarePlanDto(long TankId, IReadOnlyList<CarePlanRuleDto> Rules, bool RemindersEnabled);
 public sealed record UpdateCarePlanRequest(bool? RemindersEnabled = null);
 public sealed record UpdateCarePlanRuleRequest(int? RhythmDays = null, bool? Enabled = null);
@@ -61,7 +64,8 @@ public sealed record CareHeatmapDayDto(string Date, int WaterChanges, int Measur
 /// <summary>
 /// The care days of the last Weeks ISO weeks, from Start (a Monday) to End (today), in the local dates of
 /// the reader. Days lists only days with care. LastWaterChange and LastMeasurement are the newest days of
-/// their kind in the window, null when there is none.
+/// their kind in the window, null when there is none. DecommissionedDays lists the days of the window on which
+/// all care of the tank was paused by a decommissioning (on which every tank, for the own heatmap).
 /// </summary>
 public sealed record CareHeatmapDto(string Start, string End, int Weeks, IReadOnlyList<CareHeatmapDayDto> Days, int ActiveDays,
-    string? LastWaterChange, string? LastMeasurement);
+    string? LastWaterChange, string? LastMeasurement, IReadOnlyList<string> DecommissionedDays);
