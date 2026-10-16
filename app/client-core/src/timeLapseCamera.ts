@@ -5,11 +5,12 @@ import type { TankTimeLapse, TankTimeLapsePhoto, UploadFile } from "./client.js"
 export const DEFAULT_OVERLAY_OPACITY = 0.4;
 
 type CameraContext = {
-  upload: (file: UploadFile) => Promise<TankTimeLapsePhoto>;
+  upload: (file: UploadFile, capturedInApp: boolean) => Promise<TankTimeLapsePhoto>;
   previous: string | null;
   opacity: number;
   overlayVisible: boolean;
   shot: UploadFile | null;
+  shotInApp: boolean;
   added: TankTimeLapsePhoto | null;
   error: unknown;
 };
@@ -37,8 +38,9 @@ export function latestSeriesPhotoUrl(series: TankTimeLapse): string | null {
 /**
  * The guided time-lapse camera: the member frames the tank with the previous photo drawn over the
  * viewfinder, takes or picks a shot, reviews it and uploads it to the series. The overlay opacity
- * and visibility belong to the member while the camera is open and survive a retake. A failed
- * upload returns to the review with the error.
+ * and visibility belong to the member while the camera is open and survive a retake. A shot taken
+ * with the camera of the app is uploaded as captured in the app; a shot picked from the library is
+ * not. A failed upload returns to the review with the error.
  */
 export const timeLapseCameraMachine = setup({
   types: {
@@ -47,13 +49,14 @@ export const timeLapseCameraMachine = setup({
     events: {} as
       | { type: "SET_OPACITY"; value: number }
       | { type: "TOGGLE_OVERLAY" }
-      | { type: "SHOT"; file: UploadFile }
+      | { type: "SHOT"; file: UploadFile; capturedInApp?: boolean }
       | { type: "RETAKE" }
       | { type: "USE" },
     output: {} as TankTimeLapsePhoto,
   },
   actors: {
-    send: fromPromise(async ({ input }: { input: { upload: CameraContext["upload"]; file: UploadFile } }) => input.upload(input.file)),
+    send: fromPromise(async ({ input }: { input: { upload: CameraContext["upload"]; file: UploadFile; capturedInApp: boolean } }) =>
+      input.upload(input.file, input.capturedInApp)),
   },
   actions: {
     setOpacity: assign({
@@ -61,8 +64,12 @@ export const timeLapseCameraMachine = setup({
         event.type === "SET_OPACITY" && Number.isFinite(event.value) ? Math.min(1, Math.max(0, event.value)) : context.opacity,
     }),
     toggleOverlay: assign({ overlayVisible: ({ context }) => context.previous !== null && !context.overlayVisible }),
-    keepShot: assign({ shot: ({ event }) => (event.type === "SHOT" ? event.file : null), error: null }),
-    dropShot: assign({ shot: null }),
+    keepShot: assign({
+      shot: ({ event }) => (event.type === "SHOT" ? event.file : null),
+      shotInApp: ({ event }) => event.type === "SHOT" && event.capturedInApp === true,
+      error: null,
+    }),
+    dropShot: assign({ shot: null, shotInApp: false }),
     clearError: assign({ error: null }),
     keepAdded: assign({ added: ({ event }) => (event as unknown as { output: TankTimeLapsePhoto }).output }),
     keepError: assign({ error: ({ event }) => (event as { error?: unknown }).error }),
@@ -71,7 +78,7 @@ export const timeLapseCameraMachine = setup({
   id: "timeLapseCamera",
   context: ({ input }) => ({
     upload: input.upload, previous: input.previous, opacity: DEFAULT_OVERLAY_OPACITY,
-    overlayVisible: input.previous !== null, shot: null, added: null, error: null,
+    overlayVisible: input.previous !== null, shot: null, shotInApp: false, added: null, error: null,
   }),
   initial: "framing",
   on: {
@@ -90,7 +97,7 @@ export const timeLapseCameraMachine = setup({
     uploading: {
       invoke: {
         src: "send",
-        input: ({ context }) => ({ upload: context.upload, file: context.shot! }),
+        input: ({ context }) => ({ upload: context.upload, file: context.shot!, capturedInApp: context.shotInApp }),
         onDone: { target: "done", actions: "keepAdded" },
         onError: { target: "reviewing", actions: "keepError" },
       },

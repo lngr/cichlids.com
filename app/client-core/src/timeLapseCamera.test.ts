@@ -64,8 +64,23 @@ it("uploads the used shot once and finishes with the added photo", async () => {
   actor.send({ type: "USE" });
   await waitFor(actor, s => s.status === "done");
   expect(upload).toHaveBeenCalledTimes(1);
-  expect(upload).toHaveBeenCalledWith(shot);
+  expect(upload).toHaveBeenCalledWith(shot, false);
   expect(actor.getSnapshot().output).toBe(added);
+});
+
+it("passes on whether the camera of the app took the shot and forgets it on a retake", async () => {
+  const { actor, upload } = start(null);
+  actor.send({ type: "SHOT", file: shot, capturedInApp: true });
+  expect(actor.getSnapshot().context.shotInApp).toBe(true);
+  actor.send({ type: "SHOT", file: shot });
+  expect(actor.getSnapshot().context.shotInApp).toBe(false);
+  actor.send({ type: "SHOT", file: shot, capturedInApp: true });
+  actor.send({ type: "RETAKE" });
+  expect(actor.getSnapshot().context.shotInApp).toBe(false);
+  actor.send({ type: "SHOT", file: shot, capturedInApp: true });
+  actor.send({ type: "USE" });
+  await waitFor(actor, s => s.status === "done");
+  expect(upload).toHaveBeenCalledWith(shot, true);
 });
 
 it("returns to the review with the error when the upload fails and allows another try", async () => {

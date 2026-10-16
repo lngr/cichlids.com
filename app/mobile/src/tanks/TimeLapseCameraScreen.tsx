@@ -51,7 +51,7 @@ function CameraFlow({ tankId, previous }: { tankId: number; previous: string | n
   const theme = useTheme();
   const router = useMachineRouter();
   const [actor] = useState(() => createActor(timeLapseCameraMachine, {
-    input: { previous, upload: (file: UploadFile) => apiClient.tanks.addTimeLapsePhoto(tankId, file) },
+    input: { previous, upload: (file: UploadFile, capturedInApp: boolean) => apiClient.tanks.addTimeLapsePhoto(tankId, file, capturedInApp) },
   }).start());
   useEffect(() => () => { actor.stop(); }, [actor]);
   const state = useSyncExternalStore(callback => {
@@ -97,7 +97,7 @@ function CameraFlow({ tankId, previous }: { tankId: number; previous: string | n
     setCameraProblem(null);
     try {
       const picture = await camera.current.takePictureAsync({ quality: 0.9, imageType: "jpg" });
-      actor.send({ type: "SHOT", file: await shotToUploadFile(picture) });
+      actor.send({ type: "SHOT", file: await shotToUploadFile(picture), capturedInApp: true });
     } catch {
       setCameraProblem("capture");
     } finally {
