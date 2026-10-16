@@ -4,6 +4,7 @@ import { ApiError } from "@cichlids/client-core";
 export const API_ERROR_CODES = [
   "care_not_found",
   "care_time_invalid",
+  "care_time_fixed",
   "care_kind_invalid",
   "care_amount_invalid",
   "care_request_invalid",

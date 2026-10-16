@@ -123,6 +123,32 @@ try {
   assert.equal(afterEntries.length, before + 1);
   assert.ok(afterEntries.some(entry => entry.kind === "water_change" && entry.id !== waterChange.id && near(entry.occurredAt, twoDaysAgo)));
 
+  // The time of an entry from the guided water change is fixed; its amount stays editable.
+  const started = await fetch(`${API_URL}/api/tanks/${tank.id}/water-changes`, { method: "POST", headers });
+  assert.equal(started.status, 201);
+  const session = await started.json();
+  const drained = await fetch(`${API_URL}/api/tanks/${tank.id}/water-changes/${session.id}/steps/draining_started`, { method: "PUT", headers, body: JSON.stringify({ state: "done" }) });
+  assert.equal(drained.status, 200);
+  const finished = await fetch(`${API_URL}/api/tanks/${tank.id}/water-changes/${session.id}/finish`, { method: "POST", headers, body: JSON.stringify({ amount: { value: 30, unit: "percent" } }) });
+  assert.equal(finished.status, 200);
+  const guided = (await finished.json()).entry;
+  await page.goto(`${WEB_URL}/tanks/${tank.id}`, { waitUntil: "networkidle" });
+  await byTestId(page, "tank-view-care").click();
+  await byTestId(page, `care-edit-${guided.id}`).click();
+  await byTestId(page, "care-time-fixed").waitFor();
+  assert.equal(await byTestId(page, "care-edit-when").count(), 0, "the guided entry offers no time choice");
+  assert.equal(await byTestId(page, "care-time-save").count(), 0);
+  await page.screenshot({ path: "/tmp/task-5.16-fixed-light.png" });
+  await byTestId(page, "care-amount-input").fill("35");
+  await byTestId(page, "care-amount-save").click();
+  await page.locator('[aria-modal="true"]').waitFor({ state: "hidden" });
+  const amended = (await listEntries()).find(entry => entry.id === guided.id);
+  assert.equal(Number(amended.amount.value), 35);
+  assert.equal(amended.occurredAt, guided.occurredAt, "the time of the guided entry stays");
+  const refused = await fetch(`${API_URL}/api/tanks/${tank.id}/care/${guided.id}`, { method: "PATCH", headers, body: JSON.stringify({ occurredAt: new Date(Date.now() - 2 * DAY).toISOString() }) });
+  assert.equal(refused.status, 400);
+  assert.equal((await refused.json()).code, "care_time_fixed");
+
   // The API refuses a future time on a correction with a coded problem.
   const future = await fetch(`${API_URL}/api/tanks/${tank.id}/care/${measured.id}`, { method: "PATCH", headers, body: JSON.stringify({ occurredAt: new Date(Date.now() + 3600 * 1000).toISOString() }) });
   assert.equal(future.status, 400);

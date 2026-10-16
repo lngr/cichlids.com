@@ -14,6 +14,7 @@ import { CareEntryExtras } from "./CareEntryExtras";
 import { CarePlanView } from "./CarePlanView";
 import { MeasurementForm } from "./MeasurementForm";
 import { MeasurementGraphs } from "./MeasurementGraphs";
+import { isTimeFixed } from "./careTime";
 import { WhenPicker } from "./WhenPicker";
 import { measurementLines } from "./measurementFormat";
 import type { CareStream } from "./useCareStream";
@@ -108,7 +109,8 @@ function AmountEditor({ entry, stream }: { entry: CareEntry; stream: CareStream 
   const busy = !state.matches("editing");
   const parsed = parseCareAmount(draft.value, draft.unit);
   const [when, setWhen] = useState<WhenChoice>({ kind: "keep" });
-  const chosen = resolveWhen(when, new Date(), deviceTimeZone());
+  const fixed = isTimeFixed(entry);
+  const chosen = resolveWhen(fixed ? { kind: "keep" } : when, new Date(), deviceTimeZone());
   return <>
     <Text accessibilityRole="header" style={[theme.type.h2, { color: theme.colors.fg }]}>{t("care.editAmount")}</Text>
     <Text style={[theme.type.body, { color: theme.colors.fg }]}>{t("care.amount")}</Text>
@@ -120,7 +122,8 @@ function AmountEditor({ entry, stream }: { entry: CareEntry; stream: CareStream 
         <Button testID={`care-unit-${unit}`} variant={draft.unit === unit ? "primary" : "secondary"} disabled={busy} label={t(`care.${unit}`)} onPress={() => setDraft(current => ({ ...current, unit }))} />
       </View>)}
     </View>
-    <WhenPicker testIDPrefix="care-edit-when" existing value={when} onChange={setWhen} prefill={new Date(entry.occurredAt)} disabled={busy} />
+    {fixed ? <Text testID="care-time-fixed" style={[theme.type.meta, { color: theme.colors.muted }]}>{t("care.when.fixed")}</Text>
+      : <WhenPicker testIDPrefix="care-edit-when" existing value={when} onChange={setWhen} prefill={new Date(entry.occurredAt)} disabled={busy} />}
     {state.context.error ? <Text accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>{translateApiError(state.context.error, t, "common.loadError")}</Text> : null}
     <Button testID="care-amount-save" label={t("care.save")} busy={state.matches("saving")} disabled={!parsed || busy || chosen.error !== null}
       onPress={() => parsed && send({ type: "SAVE", amount: parsed, ...(chosen.occurredAt ? { occurredAt: chosen.occurredAt } : {}) })} />
