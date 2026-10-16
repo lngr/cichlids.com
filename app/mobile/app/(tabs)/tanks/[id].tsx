@@ -60,7 +60,7 @@ export default function TankDetailScreen() {
   if (error || !detail) return <ErrorView message={error ?? t("tanks.detail.notFound")} onRetry={() => setAttempt(value => value + 1)} />;
   return <ScrollView style={{ backgroundColor: theme.colors.bg }} contentContainerStyle={styles.content}>
     <View style={styles.page}>
-      <TankExperience key={`${tankId}-${attempt}-${accountId}-${status}`} tank={detail.tank} series={detail.series}>
+      <TankExperience key={`${tankId}-${attempt}-${accountId}-${status}`} tank={detail.tank} series={detail.series} onVisibilityChanged={() => setAttempt(value => value + 1)}>
         <Text accessibilityRole="header" style={[theme.type.h2, { color: theme.colors.fg }]}>{t("tanks.detail.comments")}</Text>
         <CommentComposer submit={submitComment} onPosted={onCommentPosted} ownerId={detail.tank.author.id} />
         {comments.items.map(comment => <CommentItem key={String(comment.id)} comment={comment} />)}
