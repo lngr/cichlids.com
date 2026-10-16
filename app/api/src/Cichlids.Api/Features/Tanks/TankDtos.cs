@@ -33,11 +33,13 @@ public sealed record CreateTankRequest(
 
 /// <summary>
 /// The audience levels of a tank: its profile and its care stream, which is never wider than the profile.
+/// The levels in order of breadth are public, followers, selected and private.
 /// </summary>
 public sealed record TankVisibilityDto(TankVisibility Profile, TankVisibility Stream);
 
 /// <summary>
-/// The new levels of a tank, as the lower snake_case names public and private. Both are required.
+/// The new levels of a tank, as the lower snake_case names public, followers, selected and private. Both
+/// are required.
 /// </summary>
 public sealed record UpdateTankVisibilityRequest(string? Profile, string? Stream);
 
@@ -74,4 +76,6 @@ public sealed record TankDetailDto(
     AuthorDto Author,
     VolumeDto? Volume,
     TankVisibilityDto Visibility,
-    TankRegion? Region = null);
+    TankRegion? Region = null,
+    TankFollowDto? Follow = null,
+    TankAudienceDto? Audience = null);

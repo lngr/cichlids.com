@@ -153,6 +153,8 @@ builder.Services.AddScoped<SpeciesQueryService>();
 builder.Services.AddScoped<PicturesQueryService>();
 builder.Services.AddScoped<TanksQueryService>();
 builder.Services.AddScoped<TankAccessService>();
+builder.Services.AddScoped<TankFollowService>();
+builder.Services.AddScoped<TankSelectedMemberService>();
 builder.Services.AddOptions<MediaPlacementOptions>()
     .Bind(builder.Configuration.GetSection(MediaPlacementOptions.SectionName))
     .Validate(o => o.PollInterval > TimeSpan.Zero && o.Lease > TimeSpan.Zero && o.RetryDelay >= TimeSpan.Zero

@@ -36,6 +36,7 @@ public static class TanksEndpoints
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
         app.MapTankSeriesPhotoEndpoints();
+        app.MapTankFollowEndpoints();
 
         return app;
     }
@@ -88,10 +89,22 @@ public static class TanksEndpoints
     }
 
     private static async Task<Results<Ok<TankDetailDto>, ProblemHttpResult>> GetByIdAsync(
-        TanksQueryService queryService, TankAccessService access, ClaimsPrincipal viewer, long id, CancellationToken cancellationToken)
+        TanksQueryService queryService, TankFollowService followService, TankAccessService access, ClaimsPrincipal viewer, long id,
+        CancellationToken cancellationToken)
     {
-        var detail = await queryService.GetByIdAsync(id, await access.ViewerProfileIdAsync(viewer, cancellationToken), cancellationToken);
-        return detail is null ? NotFoundProblem() : TypedResults.Ok(detail);
+        var viewerProfileId = await access.ViewerProfileIdAsync(viewer, cancellationToken);
+        var detail = await queryService.GetByIdAsync(id, viewerProfileId, cancellationToken);
+        if (detail is null)
+        {
+            return NotFoundProblem();
+        }
+
+        var isOwner = viewerProfileId == detail.Author.Id;
+        return TypedResults.Ok(detail with
+        {
+            Follow = await followService.GetAsync(id, viewerProfileId, cancellationToken),
+            Audience = isOwner ? await followService.AudienceAsync(id, cancellationToken) : null,
+        });
     }
 
     private static async Task<Results<Ok<TankVisibilityDto>, ProblemHttpResult>> SetVisibilityAsync(
@@ -113,7 +126,7 @@ public static class TanksEndpoints
             TanksWriteService.StreamWiderCode => ApiProblems.WithCode(StatusCodes.Status400BadRequest, "Visibility refused",
                 "The care stream cannot be visible to more people than the tank profile.", error),
             _ => ApiProblems.WithCode(StatusCodes.Status400BadRequest, "Visibility refused",
-                "Send the profile and the stream level as public or private.", error),
+                "Send the profile and the stream level as public, followers, selected or private.", error),
         };
     }
 

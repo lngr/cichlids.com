@@ -27,7 +27,8 @@ public sealed record TankAccess(long TankId, long OwnerProfileId, TankVisibility
 public sealed class TankAccessService(CichlidsDbContext context)
 {
     /// <summary>
-    /// The profile id of the authenticated caller, or null when the caller is anonymous.
+    /// The profile id of the authenticated caller, or null when the caller is anonymous. A suspended profile
+    /// is anonymous, so a follow or a selection never keeps a suspended member in an audience.
     /// </summary>
     public async Task<long?> ViewerProfileIdAsync(ClaimsPrincipal user, CancellationToken cancellationToken)
     {
@@ -37,9 +38,12 @@ public sealed class TankAccessService(CichlidsDbContext context)
             return null;
         }
 
+        var now = DateTimeOffset.UtcNow;
         return await context.ProfileIdentities.AsNoTracking()
             .Where(i => i.Provider == "oidc" && i.Subject == subject)
-            .Select(i => (long?)i.ProfileId).FirstOrDefaultAsync(cancellationToken);
+            .Join(context.Profiles, i => i.ProfileId, p => p.Id, (i, p) => p)
+            .Where(p => p.SuspendedUntil == null || p.SuspendedUntil <= now)
+            .Select(p => (long?)p.Id).FirstOrDefaultAsync(cancellationToken);
     }
 
     /// <summary>

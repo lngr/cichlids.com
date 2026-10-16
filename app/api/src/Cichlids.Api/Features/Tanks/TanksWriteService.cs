@@ -107,7 +107,8 @@ public sealed class TanksWriteService(CichlidsDbContext context)
     /// Sets the profile and stream levels of the owner's tank. The error is a problem code:
     /// tank_visibility_invalid for a missing or unknown level, tank_not_found when the tank is not the
     /// caller's, and tank_stream_wider_than_profile for a stream wider than the profile. A change of
-    /// the profile level between public and not public is stored as a consent answer. A change of either
+    /// the profile level between public and not public is stored as a consent answer, and open follow requests
+    /// are approved when the profile becomes public. A change of either
     /// level changes the visibility generation of the media items of the tank and marks them for placement
     /// in the same transaction, and every change commits with its tank.visibility_changed event.
     /// </summary>
@@ -140,7 +141,7 @@ public sealed class TanksWriteService(CichlidsDbContext context)
 
         var now = DateTimeOffset.UtcNow;
         var previous = new TankVisibilityDto(tank.ProfileVisibility, tank.StreamVisibility);
-        if (tank.ProfileVisibility != profile)
+        if ((tank.ProfileVisibility == TankVisibility.Public) != (profile == TankVisibility.Public))
         {
             context.TankVisibilityConsents.Add(new TankVisibilityConsent
             {
@@ -151,6 +152,11 @@ public sealed class TanksWriteService(CichlidsDbContext context)
 
         tank.ProfileVisibility = profile;
         tank.StreamVisibility = stream;
+        if (profile == TankVisibility.Public)
+        {
+            await ApprovePendingFollowsAsync(tank, now, cancellationToken);
+        }
+
         context.OutboxEvents.Add(OutboxEvent.Create(
             "tank.visibility_changed", "tank", tank.Id.ToString(),
             JsonSerializer.Serialize(new
@@ -164,6 +170,20 @@ public sealed class TanksWriteService(CichlidsDbContext context)
         await context.SaveChangesAsync(cancellationToken);
         await transaction.CommitAsync(cancellationToken);
         return (new TankVisibilityDto(profile, stream), null);
+    }
+
+    // A public tank takes followers without approval, so its open follow requests become follows.
+    private async Task ApprovePendingFollowsAsync(Tank tank, DateTimeOffset now, CancellationToken cancellationToken)
+    {
+        var pending = await context.Follows.Where(f => f.TargetTankId == tank.Id && f.Status == FollowStatus.Pending).ToListAsync(cancellationToken);
+        foreach (var follow in pending)
+        {
+            follow.Status = FollowStatus.Approved;
+            follow.DecidedAt = now;
+            context.OutboxEvents.Add(OutboxEvent.Create(
+                "tank.follow_approved", "tank", tank.Id.ToString(),
+                JsonSerializer.Serialize(new { tankId = tank.Id, ownerProfileId = tank.ProfileId, memberProfileId = follow.FollowerProfileId }, PayloadOptions), now));
+        }
     }
 
     private static bool ValidMeasurement(decimal? value) => value is null || value is > 0 and <= 1000000m;
