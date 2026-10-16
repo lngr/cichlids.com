@@ -24,7 +24,7 @@ public sealed class UploadsWriteService(
     IObjectStore objectStore,
     IOptions<UploadLimitsOptions> limitOptions,
     TimeProvider timeProvider,
-    ILogger<UploadsWriteService> logger)
+    StoredObjectDeleter deleter)
 {
     private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore);
 
@@ -101,7 +101,7 @@ public sealed class UploadsWriteService(
         }
         catch
         {
-            await DeleteObjectsAsync(stored.WrittenKeys);
+            await deleter.DeleteAsync(stored.WrittenKeys);
             throw;
         }
     }
@@ -158,7 +158,7 @@ public sealed class UploadsWriteService(
         }
         catch
         {
-            await DeleteObjectsAsync(writtenKeys);
+            await deleter.DeleteAsync(writtenKeys);
             throw;
         }
 
@@ -241,25 +241,8 @@ public sealed class UploadsWriteService(
             await transaction.CommitAsync(cancellationToken);
         }
 
-        await DeleteObjectsAsync(storedKeys);
+        await deleter.DeleteAsync(storedKeys);
         return DraftActionOutcome.Succeeded;
-    }
-
-    // Runs without the request's cancellation token: cleanup that stops halfway because the
-    // client went away would leave exactly the orphans it exists to prevent.
-    public async Task DeleteObjectsAsync(IEnumerable<string> keys)
-    {
-        foreach (var key in keys)
-        {
-            try
-            {
-                await objectStore.DeleteAsync(key, CancellationToken.None);
-            }
-            catch (Exception ex)
-            {
-                logger.LogWarning(ex, "Could not delete stored object {StorageKey}.", key);
-            }
-        }
     }
 }
 

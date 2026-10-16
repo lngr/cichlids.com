@@ -25,7 +25,7 @@ public sealed class CareTransactionTests(ApiFixture fixture)
         var eventsBefore = await db.OutboxEvents.CountAsync();
         await using (var write = fixture.CreateDbContext(new RefuseOutbox()))
         {
-            var service = new CareWriteService(write, TimeProvider.System);
+            var service = CareTestSupport.CreateWriteService(write);
             await Assert.ThrowsAsync<InvalidOperationException>(async () =>
             {
                 if (operation == "log") await service.LogAsync(tank.Id, tank.ProfileId, new(), CancellationToken.None);
@@ -53,7 +53,7 @@ public sealed class CareTransactionTests(ApiFixture fixture)
     {
         await using var db = fixture.CreateDbContext();
         var tank = await db.Tanks.FirstAsync(t => t.DeletedAt == null);
-        var service = new CareWriteService(db, TimeProvider.System);
+        var service = CareTestSupport.CreateWriteService(db);
         var (entry, error) = await service.LogAsync(tank.Id, tank.ProfileId, new(), CancellationToken.None);
         Assert.Null(error);
         #pragma warning disable EF1002 // Assignments are fixed test cases; the entry ID is parameterized.
@@ -83,7 +83,7 @@ public sealed class CareTransactionTests(ApiFixture fixture)
         var ph = new MeasurementValueRequest("ph", 8);
         await using (var write = fixture.CreateDbContext(new RefuseOutbox()))
         {
-            var service = new CareWriteService(write, TimeProvider.System);
+            var service = CareTestSupport.CreateWriteService(write);
             await Assert.ThrowsAsync<InvalidOperationException>(async () =>
             {
                 if (operation == "log") await service.LogAsync(tank.Id, tank.ProfileId, new(Kind: "measurement", Values: [ph]), CancellationToken.None);
@@ -109,7 +109,7 @@ public sealed class CareTransactionTests(ApiFixture fixture)
     {
         await using var db = fixture.CreateDbContext();
         var tank = await db.Tanks.FirstAsync(t => t.DeletedAt == null);
-        var service = new CareWriteService(db, TimeProvider.System);
+        var service = CareTestSupport.CreateWriteService(db);
         var (entry, error) = await service.LogAsync(tank.Id, tank.ProfileId, new(Kind: "measurement", Values: [new("ph", 7)]), CancellationToken.None);
         Assert.Null(error);
         #pragma warning disable EF1002 // Assignments are fixed test cases; the entry ID is parameterized.

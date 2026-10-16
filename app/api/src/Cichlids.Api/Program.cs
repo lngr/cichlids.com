@@ -137,6 +137,9 @@ builder.Services.AddScoped<TodayQueryService>();
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<TanksWriteService>();
 builder.Services.AddScoped<CareWriteService>();
+builder.Services.AddScoped<CarePhotoService>();
+builder.Services.AddScoped<CareEntryMapper>();
+builder.Services.AddSingleton<CarePhotoUrlSigner>();
 builder.Services.AddScoped<CarePlanService>();
 builder.Services.AddScoped<OnboardingWriteService>();
 builder.Services.AddScoped<ProfilesQueryService>();
@@ -156,6 +159,7 @@ builder.Services.AddOptions<DraftCleanupOptions>()
         "DraftCleanup durations and batch size must be positive.")
     .ValidateOnStart();
 builder.Services.TryAddSingleton(TimeProvider.System);
+builder.Services.AddScoped<StoredObjectDeleter>();
 builder.Services.AddScoped<UploadsWriteService>();
 builder.Services.AddScoped<DraftCleanupService>();
 builder.Services.AddHostedService<DraftCleanupHostedService>();

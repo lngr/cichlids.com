@@ -1,7 +1,11 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
+using Cichlids.Api.Features.Care;
+using Cichlids.Api.Features.Uploads;
 using Cichlids.Infrastructure.Persistence;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Api.Tests.Features.Care;
@@ -12,11 +16,36 @@ namespace Cichlids.Api.Tests.Features.Care;
 /// </summary>
 internal static class CareTestSupport
 {
-    public static string NewToken() => TestTokens.Create(Guid.NewGuid().ToString(), $"care-{Guid.NewGuid():N}"[..24]);
+    /// <summary>
+    /// A write service on the given context, for tests that act at a precise point of a save. Its
+    /// object store never serves a request, since these tests write entries without photos.
+    /// </summary>
+    public static CareWriteService CreateWriteService(CichlidsDbContext context) => new(context, TimeProvider.System,
+        new CareEntryMapper(new CarePhotoUrlSigner(DataProtectionProvider.Create("care-tests"))),
+        new StoredObjectDeleter(new UrlOnlyObjectStore("http://objects.test"), NullLogger<StoredObjectDeleter>.Instance));
+
+    /// <summary>
+    /// Removes the given tanks with their care entries and outbox events, so tests that share the
+    /// seeded database leave no tank behind.
+    /// </summary>
+    public static async Task RemoveTanksAsync(CichlidsDbContext db, IReadOnlyCollection<long> tanks)
+    {
+        var events = await db.OutboxEvents.Where(e => e.AggregateType == "care" || e.AggregateType == "tank" || e.AggregateType == "todo").ToListAsync();
+        db.OutboxEvents.RemoveRange(events.Where(e =>
+        {
+            using var payload = JsonDocument.Parse(e.Payload);
+            return payload.RootElement.TryGetProperty("tankId", out var id) && tanks.Contains(id.GetInt64());
+        }));
+        await db.SaveChangesAsync();
+        await db.CareEntries.Where(e => tanks.Contains(e.TankId)).ExecuteDeleteAsync();
+        await db.Tanks.Where(t => tanks.Contains(t.Id)).ExecuteDeleteAsync();
+    }
+
+    public static string NewMemberToken() => TestTokens.Create(Guid.NewGuid().ToString(), $"care-{Guid.NewGuid():N}"[..24]);
 
     public static async Task<(string Token, long Tank)> OwnTankAsync(HttpClient client)
     {
-        var token = NewToken();
+        var token = NewMemberToken();
         return (token, await CreateTankAsync(client, token));
     }
 

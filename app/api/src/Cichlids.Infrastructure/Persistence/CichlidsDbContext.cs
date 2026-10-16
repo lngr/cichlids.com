@@ -23,6 +23,7 @@ public class CichlidsDbContext : DbContext
     public DbSet<SpeciesLink> SpeciesLinks => Set<SpeciesLink>();
     public DbSet<CareEntry> CareEntries => Set<CareEntry>();
     public DbSet<CareMeasurementValue> CareMeasurementValues => Set<CareMeasurementValue>();
+    public DbSet<CarePhoto> CarePhotos => Set<CarePhoto>();
     public DbSet<CarePlanRule> CarePlanRules => Set<CarePlanRule>();
     public DbSet<Tank> Tanks => Set<Tank>();
     public DbSet<Inhabitant> Inhabitants => Set<Inhabitant>();

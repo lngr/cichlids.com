@@ -1,5 +1,5 @@
-using System.Text.Json;
 using Cichlids.Api.Features.Common;
+using Cichlids.Api.Features.Uploads;
 using Cichlids.Domain;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Api.Features.Care;
 
-public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clock)
+public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clock, CareEntryMapper mapper, StoredObjectDeleter deleter)
 {
     private const int MaxMeasurementValues = 10;
     private const int MaxNoteLength = 2000;
@@ -80,10 +80,10 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
         }
         context.CareEntries.Add(entry);
         await context.SaveChangesAsync(ct);
-        AddEvent("care.logged", entry, now);
+        CareEvents.Add(context, "care.logged", entry, now);
         await context.SaveChangesAsync(ct);
         await transaction.CommitAsync(ct);
-        return (CareEntryDto.From(entry), null);
+        return (mapper.ToDto(entry), null);
     }
 
     public async Task<(CareEntryDto? Entry, string? Error)> ChangeAsync(long tankId, long id, long profileId,
@@ -91,7 +91,7 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
     {
         await using var transaction = await context.Database.BeginTransactionAsync(ct);
         if (!await LockOwnTankAsync(tankId, profileId, ct)) return (null, "care_not_found");
-        var entry = await context.CareEntries.Include(e => e.Values)
+        var entry = await CareEntryMapper.WithDetails(context.CareEntries)
             .SingleOrDefaultAsync(e => e.Id == id && e.TankId == tankId && e.AuthorProfileId == profileId, ct);
         if (entry is null) return (null, "care_not_found");
         if (request is not null)
@@ -117,12 +117,21 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
                 if (request.Note is not null) entry.Note = noteChange;
             }
         }
-        var dto = CareEntryDto.From(entry);
-        AddEvent(request is null ? "care.deleted" : "care.updated", entry, clock.GetUtcNow());
-        if (request is null) context.CareEntries.Remove(entry);
+        var dto = mapper.ToDto(entry);
+        CareEvents.Add(context, request is null ? "care.deleted" : "care.updated", entry, clock.GetUtcNow());
+        var storedKeys = new List<string>();
+        if (request is null)
+        {
+            var photos = entry.Photos.Select(p => p.MediaItem).ToList();
+            storedKeys.AddRange(photos.SelectMany(m => m.Variants.Select(v => v.StorageKey).Append(m.StorageKey)));
+            context.CareEntries.Remove(entry);
+            await context.SaveChangesAsync(ct);
+            context.MediaItems.RemoveRange(photos);
+        }
         await context.SaveChangesAsync(ct);
         await transaction.CommitAsync(ct);
-        return (request is null ? dto : CareEntryDto.From(entry), null);
+        await deleter.DeleteAsync(storedKeys);
+        return (request is null ? dto : mapper.ToDto(entry), null);
     }
 
     private Task<bool> LockOwnTankAsync(long tankId, long profileId, CancellationToken ct) =>
@@ -159,24 +168,5 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
         {
             "liter" => amount.Value, "us_gallon" => amount.Value * TankMeasurements.LitersPerUsGallon, _ => null,
         };
-    }
-
-    private void AddEvent(string type, CareEntry entry, DateTimeOffset now)
-    {
-        var payload = new Dictionary<string, object?>
-        {
-            ["careEntryId"] = entry.Id, ["tankId"] = entry.TankId, ["authorProfileId"] = entry.AuthorProfileId,
-            ["kind"] = SnakeCaseEnum.ToSnakeCase(entry.Kind), ["occurredAt"] = entry.OccurredAt, ["recordedAt"] = entry.RecordedAt,
-            ["note"] = entry.Note,
-            ["amount"] = entry.AmountInputValue is { } value ? new { value, unit = SnakeCaseEnum.ToSnakeCase(entry.AmountInputUnit!.Value), liters = entry.AmountLiters } : null,
-        };
-        if (entry.Kind == CareKind.Measurement)
-            payload["values"] = entry.Values.OrderBy(v => v.Parameter).Select(v => new
-            {
-                parameter = SnakeCaseEnum.ToSnakeCase(v.Parameter), value = v.InputValue, unit = SnakeCaseEnum.ToSnakeCase(v.InputUnit),
-                normalizedValue = v.NormalizedValue, canonicalUnit = SnakeCaseEnum.ToSnakeCase(CareMeasurements.RuleFor(v.Parameter).CanonicalUnit),
-                origin = v.Origin is { } origin ? SnakeCaseEnum.ToSnakeCase(origin) : null,
-            }).ToList();
-        context.OutboxEvents.Add(OutboxEvent.Create(type, "care", entry.Id.ToString(), JsonSerializer.Serialize(payload), now));
     }
 }

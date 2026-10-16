@@ -213,6 +213,44 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.CarePhoto", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("CareEntryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("care_entry_id");
+
+                    b.Property<long>("MediaItemId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("media_item_id");
+
+                    b.Property<int>("Position")
+                        .HasColumnType("integer")
+                        .HasColumnName("position");
+
+                    b.HasKey("Id")
+                        .HasName("pk_care_photo");
+
+                    b.HasIndex("MediaItemId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_care_photo_media_item_id");
+
+                    b.HasIndex("CareEntryId", "Position")
+                        .IsUnique()
+                        .HasDatabaseName("ix_care_photo_care_entry_id_position");
+
+                    b.ToTable("care_photo", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_care_photo_position", "position BETWEEN 0 AND 5");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.CarePlanRule", b =>
                 {
                     b.Property<long>("Id")
@@ -1906,6 +1944,25 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasConstraintName("fk_care_measurement_value_care_entry_care_entry_id");
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.CarePhoto", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.CareEntry", null)
+                        .WithMany("Photos")
+                        .HasForeignKey("CareEntryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_photo_care_entry_care_entry_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.MediaItem", "MediaItem")
+                        .WithMany()
+                        .HasForeignKey("MediaItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_photo_media_items_media_item_id");
+
+                    b.Navigation("MediaItem");
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.CarePlanRule", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.Tank", null)
@@ -2250,6 +2307,8 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Cichlids.Domain.Entities.CareEntry", b =>
                 {
+                    b.Navigation("Photos");
+
                     b.Navigation("Values");
                 });
 

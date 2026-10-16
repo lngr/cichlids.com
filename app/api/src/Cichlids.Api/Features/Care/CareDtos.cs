@@ -20,17 +20,11 @@ public sealed record MeasurementValueDto(CareParameter Parameter, decimal Value,
     public static MeasurementValueDto From(CareMeasurementValue value) => new(value.Parameter, value.InputValue, value.InputUnit,
         value.NormalizedValue, CareMeasurements.RuleFor(value.Parameter).CanonicalUnit, value.Origin);
 }
+public sealed record CarePhotoUrlsDto(string? Thumb, string? Small, string? Medium, string? Large);
+public sealed record CarePhotoDto(long Id, int? Width, int? Height, CarePhotoUrlsDto Urls);
 public sealed record CareEntryDto(long Id, long TankId, long AuthorProfileId, CareKind Kind,
-    DateTimeOffset OccurredAt, DateTimeOffset RecordedAt, CareAmountDto? Amount, IReadOnlyList<MeasurementValueDto>? Values = null,
-    string? Note = null)
-{
-    public static CareEntryDto From(CareEntry entry) => new(entry.Id, entry.TankId, entry.AuthorProfileId,
-        entry.Kind, entry.OccurredAt, entry.RecordedAt, entry.AmountInputValue is { } value
-            ? new(value, entry.AmountInputUnit!.Value, entry.AmountLiters) : null,
-        entry.Kind == CareKind.Measurement
-            ? entry.Values.OrderBy(v => v.Parameter).Select(MeasurementValueDto.From).ToList() : null,
-        entry.Note);
-}
+    DateTimeOffset OccurredAt, DateTimeOffset RecordedAt, CareAmountDto? Amount, IReadOnlyList<MeasurementValueDto>? Values,
+    string? Note, IReadOnlyList<CarePhotoDto> Photos);
 public sealed record CareSeriesPointDto(long EntryId, DateTimeOffset OccurredAt, decimal Value, decimal InputValue,
     MeasurementUnit InputUnit, MeasurementOrigin? Origin);
 public sealed record CareSeriesDto(CareParameter Parameter, MeasurementUnit Unit, IReadOnlyList<CareSeriesPointDto> Points);

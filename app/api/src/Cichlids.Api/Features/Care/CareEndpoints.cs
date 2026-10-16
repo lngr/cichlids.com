@@ -19,7 +19,7 @@ public static partial class CareEndpoints
     /// </summary>
     public static bool IsCarePath(PathString path) => path.HasValue && CarePath().IsMatch(path.Value!);
 
-    [GeneratedRegex("^(/api/tanks/[0-9]+/care(/[0-9]+|/series|/plan|/plan/[a-z_]+)?|/api/me/care/due)/?$", RegexOptions.CultureInvariant)]
+    [GeneratedRegex("^(/api/tanks/[0-9]+/care(/[0-9]+(/photos(/[0-9]+)?)?|/series|/plan|/plan/[a-z_]+)?|/api/me/care/due|/api/care-photos/[^/]+)/?$", RegexOptions.CultureInvariant)]
     private static partial Regex CarePath();
 
     public static IEndpointRouteBuilder MapCareEndpoints(this IEndpointRouteBuilder app)
@@ -36,6 +36,7 @@ public static partial class CareEndpoints
         group.MapGet("/plan", PlanAsync).WithName("GetCarePlan").ProducesProblem(400).ProducesProblem(404);
         group.MapPatch("/plan/{kind}", ChangeRuleAsync).WithName("UpdateCarePlanRule").RequireAuthorization()
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
+        app.MapCarePhotoEndpoints();
         app.MapGet("/api/me/care/due", DueAsync).WithName("ListDueCare").WithTags("Care").RequireAuthorization()
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403);
         return app;
@@ -49,15 +50,15 @@ public static partial class CareEndpoints
     }
 
     private static async Task<Results<Ok<PagedResponse<CareEntryDto>>, ProblemHttpResult>> ListAsync(
-        long tankId, int? offset, int? limit, ClaimsPrincipal user, CichlidsDbContext db, CancellationToken ct)
+        long tankId, int? offset, int? limit, ClaimsPrincipal user, CichlidsDbContext db, CareEntryMapper mapper, CancellationToken ct)
     {
         if (!await OwnsTankAsync(tankId, user, db, ct)) return Problem("care_not_found");
         var (skip, take) = Pagination.Normalize(offset, limit);
         var query = db.CareEntries.AsNoTracking().Where(e => e.TankId == tankId);
         var total = await query.CountAsync(ct);
-        var entries = await query.OrderByDescending(e => e.OccurredAt).ThenByDescending(e => e.Id).Skip(skip).Take(take)
-            .Include(e => e.Values).ToListAsync(ct);
-        return TypedResults.Ok(new PagedResponse<CareEntryDto>(total, entries.Select(CareEntryDto.From).ToList()));
+        var entries = await CareEntryMapper.WithDetails(query.OrderByDescending(e => e.OccurredAt).ThenByDescending(e => e.Id).Skip(skip).Take(take))
+            .ToListAsync(ct);
+        return TypedResults.Ok(new PagedResponse<CareEntryDto>(total, entries.Select(mapper.ToDto).ToList()));
     }
 
     private static async Task<Results<Ok<CarePlanDto>, ProblemHttpResult>> PlanAsync(
@@ -129,10 +130,14 @@ public static partial class CareEndpoints
         return error is not null ? Problem(error) : TypedResults.Ok(entry!);
     }
 
-    private static ProblemHttpResult Problem(string code) => ApiProblems.WithCode(code == "care_not_found" ? 404 : 400,
+    internal static ProblemHttpResult Problem(string code) => ApiProblems.WithCode(
+        code is "care_not_found" or "care_photo_not_found" ? 404 : code == "care_photo_limit_reached" ? 409 : 400,
         "Care request refused", code switch
         {
             "care_not_found" => "This care entry or tank is unavailable.",
+            "care_photo_not_found" => "This photo is unavailable or its link has expired.",
+            "care_photo_invalid" => "Send one JPEG, PNG or WebP photo of up to 25 MB that can be decoded.",
+            "care_photo_limit_reached" => "A care entry holds up to 6 photos.",
             "care_time_invalid" => "The time must not be more than two minutes in the future.",
             "care_kind_invalid" => "Choose water_change or measurement.",
             "care_amount_invalid" => "Enter a positive amount, up to 100 percent or 1000000 volume units.",

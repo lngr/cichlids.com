@@ -20,4 +20,5 @@ public class CareEntry
     public string? Note { get; set; }
 
     public List<CareMeasurementValue> Values { get; set; } = [];
+    public List<CarePhoto> Photos { get; set; } = [];
 }

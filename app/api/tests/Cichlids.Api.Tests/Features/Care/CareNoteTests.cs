@@ -6,12 +6,29 @@ using static Cichlids.Api.Tests.Features.Care.CareTestSupport;
 namespace Cichlids.Api.Tests.Features.Care;
 
 [Collection(ApiCollection.Name)]
-public sealed class CareNoteTests(ApiFixture fixture)
+public sealed class CareNoteTests(ApiFixture fixture) : IAsyncLifetime
 {
+    private readonly List<long> _tanks = [];
+
+    public Task InitializeAsync() => Task.CompletedTask;
+
+    public async Task DisposeAsync()
+    {
+        await using var db = fixture.CreateDbContext();
+        await RemoveTanksAsync(db, _tanks);
+    }
+
+    private async Task<(string Token, long Tank)> OwnTankAsync()
+    {
+        var own = await CareTestSupport.OwnTankAsync(fixture.Client);
+        _tanks.Add(own.Tank);
+        return own;
+    }
+
     [Fact]
     public async Task GivenEntryWithAmount_WhenOnlyANoteIsSent_ThenNoteIsTrimmedAndAmountStays()
     {
-        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var (token, tank) = await OwnTankAsync();
         var id = await LogAsync(fixture.Client, token, tank, new { amount = new { value = 20, unit = "liter" } });
         using var response = await SendAsync(fixture.Client, HttpMethod.Patch, $"/api/tanks/{tank}/care/{id}", token, new { note = "  Added conditioner \n" });
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -25,7 +42,7 @@ public sealed class CareNoteTests(ApiFixture fixture)
     [Fact]
     public async Task GivenNote_WhenChangedAndRemoved_ThenCareUpdatedEventsCarryTheNewNote()
     {
-        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var (token, tank) = await OwnTankAsync();
         var id = await LogAsync(fixture.Client, token, tank);
         using var set = await SendAsync(fixture.Client, HttpMethod.Patch, $"/api/tanks/{tank}/care/{id}", token, new { note = "first" });
         using var changed = await SendAsync(fixture.Client, HttpMethod.Patch, $"/api/tanks/{tank}/care/{id}", token, new { note = "second" });
@@ -42,7 +59,7 @@ public sealed class CareNoteTests(ApiFixture fixture)
     [InlineData(2001, false)]
     public async Task GivenNoteLength_WhenSaving_ThenTheLimitIs2000Characters(int length, bool accepted)
     {
-        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var (token, tank) = await OwnTankAsync();
         var id = await LogAsync(fixture.Client, token, tank);
         await using var db = fixture.CreateDbContext();
         var before = await db.OutboxEvents.CountAsync(e => e.AggregateType == "care" && e.AggregateId == id.ToString());
@@ -58,7 +75,7 @@ public sealed class CareNoteTests(ApiFixture fixture)
     [Fact]
     public async Task GivenMeasurement_WhenNoteIsAdded_ThenValuesStayAndNoteIsListed()
     {
-        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var (token, tank) = await OwnTankAsync();
         var id = await LogAsync(fixture.Client, token, tank, new { kind = "measurement", values = new[] { new { parameter = "ph", value = 7.1 } } });
         using var response = await SendAsync(fixture.Client, HttpMethod.Patch, $"/api/tanks/{tank}/care/{id}", token, new { note = "after feeding" });
         var entry = await BodyAsync(response);
@@ -69,7 +86,7 @@ public sealed class CareNoteTests(ApiFixture fixture)
     [Fact]
     public async Task GivenAmountAndNote_WhenSentTogether_ThenBothApply()
     {
-        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var (token, tank) = await OwnTankAsync();
         var id = await LogAsync(fixture.Client, token, tank);
         using var response = await SendAsync(fixture.Client, HttpMethod.Patch, $"/api/tanks/{tank}/care/{id}", token,
             new { amount = new { value = 30, unit = "percent" }, note = "big one" });
@@ -81,9 +98,9 @@ public sealed class CareNoteTests(ApiFixture fixture)
     [Fact]
     public async Task GivenOtherMember_WhenWritingANote_ThenCodedNotFoundAndNoEvent()
     {
-        var (owner, tank) = await OwnTankAsync(fixture.Client);
+        var (owner, tank) = await OwnTankAsync();
         var id = await LogAsync(fixture.Client, owner, tank);
-        using var response = await SendAsync(fixture.Client, HttpMethod.Patch, $"/api/tanks/{tank}/care/{id}", NewToken(), new { note = "mine now" });
+        using var response = await SendAsync(fixture.Client, HttpMethod.Patch, $"/api/tanks/{tank}/care/{id}", NewMemberToken(), new { note = "mine now" });
         await AssertProblemAsync(response, HttpStatusCode.NotFound, "care_not_found");
         await using var db = fixture.CreateDbContext();
         Assert.Single(await EventsAsync(db, "care", id));
