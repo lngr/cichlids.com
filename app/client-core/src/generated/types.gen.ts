@@ -4,6 +4,10 @@ export type ClientOptions = {
     baseUrl: 'http://localhost:5045/' | (string & {});
 };
 
+export type AddSelectedMemberRequest = {
+    handle: null | string;
+};
+
 export type AggressionLevel = 'unspecified' | 'low' | 'moderate' | 'high';
 
 export type AuthorDto = {
@@ -485,6 +489,11 @@ export type PagedResponseOfTankListItemDto = {
     items: Array<TankListItemDto>;
 };
 
+export type PagedResponseOfTankMemberDto = {
+    total: number | string;
+    items: Array<TankMemberDto>;
+};
+
 export type PagedResponseOfTodoListItemDto = {
     total: number | string;
     items: Array<TodoListItemDto>;
@@ -630,6 +639,12 @@ export type SubscribeWebPushRequest = {
     timeZone: null | string;
 };
 
+export type TankAudienceDto = {
+    followers: number | string;
+    pendingRequests: number | string;
+    selectedMembers: number | string;
+};
+
 export type TankCategory = 'tanganyika' | 'malawi' | 'american' | 'african' | 'community' | 'central_american' | 'south_american';
 
 export type TankDetailDto = {
@@ -655,6 +670,22 @@ export type TankDetailDto = {
     volume: null | VolumeDto;
     visibility: TankVisibilityDto;
     region?: null | TankRegion;
+    follow?: null | TankFollowDto;
+    audience?: null | TankAudienceDto;
+};
+
+export type TankFollowDto = {
+    state: TankFollowState;
+    canFollow: boolean;
+    teaser?: null | TankFollowTeaserDto;
+};
+
+export type TankFollowState = 'none' | 'requested' | 'following';
+
+export type TankFollowTeaserDto = {
+    title: string;
+    author: AuthorDto;
+    profileVisibility: TankVisibility;
 };
 
 export type TankListItemDto = {
@@ -672,6 +703,11 @@ export type TankListItemDto = {
 export type TankMediaItemDto = {
     mediaItemId: number | string;
     image: ImageUrlsDto;
+};
+
+export type TankMemberDto = {
+    member: AuthorDto;
+    since: string;
 };
 
 export type TankOperationDto = {
@@ -721,7 +757,7 @@ export type TankTimeLapsePhotoDto = {
     publishedAt: string;
 };
 
-export type TankVisibility = 'private' | 'public';
+export type TankVisibility = 'private' | 'selected' | 'followers' | 'public';
 
 export type TankVisibilityDto = {
     profile: TankVisibility;
@@ -2410,6 +2446,365 @@ export type CreateTankCommentResponses = {
 };
 
 export type CreateTankCommentResponse = CreateTankCommentResponses[keyof CreateTankCommentResponses];
+
+export type UnfollowTankData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{id}/follow';
+};
+
+export type UnfollowTankErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type UnfollowTankError = UnfollowTankErrors[keyof UnfollowTankErrors];
+
+export type UnfollowTankResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type UnfollowTankResponse = UnfollowTankResponses[keyof UnfollowTankResponses];
+
+export type GetTankFollowData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{id}/follow';
+};
+
+export type GetTankFollowErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetTankFollowError = GetTankFollowErrors[keyof GetTankFollowErrors];
+
+export type GetTankFollowResponses = {
+    /**
+     * OK
+     */
+    200: TankFollowDto;
+};
+
+export type GetTankFollowResponse = GetTankFollowResponses[keyof GetTankFollowResponses];
+
+export type FollowTankData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{id}/follow';
+};
+
+export type FollowTankErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type FollowTankError = FollowTankErrors[keyof FollowTankErrors];
+
+export type FollowTankResponses = {
+    /**
+     * OK
+     */
+    200: TankFollowDto;
+};
+
+export type FollowTankResponse = FollowTankResponses[keyof FollowTankResponses];
+
+export type ListTankFollowersData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: {
+        offset?: number | string;
+        limit?: number | string;
+    };
+    url: '/api/tanks/{id}/followers';
+};
+
+export type ListTankFollowersErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type ListTankFollowersError = ListTankFollowersErrors[keyof ListTankFollowersErrors];
+
+export type ListTankFollowersResponses = {
+    /**
+     * OK
+     */
+    200: PagedResponseOfTankMemberDto;
+};
+
+export type ListTankFollowersResponse = ListTankFollowersResponses[keyof ListTankFollowersResponses];
+
+export type RemoveTankFollowerData = {
+    body?: never;
+    path: {
+        id: number;
+        profileId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{id}/followers/{profileId}';
+};
+
+export type RemoveTankFollowerErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type RemoveTankFollowerError = RemoveTankFollowerErrors[keyof RemoveTankFollowerErrors];
+
+export type RemoveTankFollowerResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type RemoveTankFollowerResponse = RemoveTankFollowerResponses[keyof RemoveTankFollowerResponses];
+
+export type ListTankFollowRequestsData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: {
+        offset?: number | string;
+        limit?: number | string;
+    };
+    url: '/api/tanks/{id}/follow-requests';
+};
+
+export type ListTankFollowRequestsErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type ListTankFollowRequestsError = ListTankFollowRequestsErrors[keyof ListTankFollowRequestsErrors];
+
+export type ListTankFollowRequestsResponses = {
+    /**
+     * OK
+     */
+    200: PagedResponseOfTankMemberDto;
+};
+
+export type ListTankFollowRequestsResponse = ListTankFollowRequestsResponses[keyof ListTankFollowRequestsResponses];
+
+export type ApproveTankFollowRequestData = {
+    body?: never;
+    path: {
+        id: number;
+        profileId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{id}/follow-requests/{profileId}/approve';
+};
+
+export type ApproveTankFollowRequestErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type ApproveTankFollowRequestError = ApproveTankFollowRequestErrors[keyof ApproveTankFollowRequestErrors];
+
+export type ApproveTankFollowRequestResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type ApproveTankFollowRequestResponse = ApproveTankFollowRequestResponses[keyof ApproveTankFollowRequestResponses];
+
+export type DeclineTankFollowRequestData = {
+    body?: never;
+    path: {
+        id: number;
+        profileId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{id}/follow-requests/{profileId}/decline';
+};
+
+export type DeclineTankFollowRequestErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type DeclineTankFollowRequestError = DeclineTankFollowRequestErrors[keyof DeclineTankFollowRequestErrors];
+
+export type DeclineTankFollowRequestResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type DeclineTankFollowRequestResponse = DeclineTankFollowRequestResponses[keyof DeclineTankFollowRequestResponses];
+
+export type ListTankSelectedMembersData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{id}/selected-members';
+};
+
+export type ListTankSelectedMembersErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type ListTankSelectedMembersError = ListTankSelectedMembersErrors[keyof ListTankSelectedMembersErrors];
+
+export type ListTankSelectedMembersResponses = {
+    /**
+     * OK
+     */
+    200: Array<TankMemberDto>;
+};
+
+export type ListTankSelectedMembersResponse = ListTankSelectedMembersResponses[keyof ListTankSelectedMembersResponses];
+
+export type AddTankSelectedMemberData = {
+    body?: null | AddSelectedMemberRequest;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{id}/selected-members';
+};
+
+export type AddTankSelectedMemberErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type AddTankSelectedMemberError = AddTankSelectedMemberErrors[keyof AddTankSelectedMemberErrors];
+
+export type AddTankSelectedMemberResponses = {
+    /**
+     * OK
+     */
+    200: TankMemberDto;
+};
+
+export type AddTankSelectedMemberResponse = AddTankSelectedMemberResponses[keyof AddTankSelectedMemberResponses];
+
+export type RemoveTankSelectedMemberData = {
+    body?: never;
+    path: {
+        id: number;
+        profileId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{id}/selected-members/{profileId}';
+};
+
+export type RemoveTankSelectedMemberErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type RemoveTankSelectedMemberError = RemoveTankSelectedMemberErrors[keyof RemoveTankSelectedMemberErrors];
+
+export type RemoveTankSelectedMemberResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type RemoveTankSelectedMemberResponse = RemoveTankSelectedMemberResponses[keyof RemoveTankSelectedMemberResponses];
 
 export type ListCareEntriesData = {
     body?: never;

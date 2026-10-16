@@ -30,6 +30,17 @@ import {
   createTankComment,
   createTank,
   setTankVisibility,
+  getTankFollow,
+  followTank,
+  unfollowTank,
+  listTankFollowers,
+  removeTankFollower,
+  listTankFollowRequests,
+  approveTankFollowRequest,
+  declineTankFollowRequest,
+  listTankSelectedMembers,
+  addTankSelectedMember,
+  removeTankSelectedMember,
   completeOnboarding,
   listMyLegacyTanks,
   setMyInterests,
@@ -124,6 +135,10 @@ import type {
   CreateTankRequest,
   TankVisibility,
   TankVisibilityDto,
+  TankFollowDto,
+  TankFollowState,
+  TankAudienceDto,
+  TankMemberDto,
   OnboardingRequest,
   OnboardingResultDto,
   LegacyTankDto,
@@ -223,6 +238,10 @@ export type SpeciesLink = SpeciesLinkDto;
 export type Comment = CommentDto;
 export type CommentCreated = CommentCreatedDto;
 export type { CreateTankRequest, CreateCommentRequest, PublishPostRequest, TankVisibility, TankVisibilityDto };
+export type TankFollow = TankFollowDto;
+export type TankAudience = TankAudienceDto;
+export type TankMember = TankMemberDto;
+export type { TankFollowState };
 export type { OnboardingRequest, OnboardingResultDto, LegacyTankDto, TankRegion };
 export type Me = MeDto;
 /** The settings of the member; streaksEnabled tells whether the streaks are shown to the member and to other viewers. */
@@ -438,6 +457,25 @@ export interface CichlidsClient {
     refineRegion(id: number, region: TankRegion): Promise<void>;
     /** Sets the profile and stream level of an own tank; the stream is never wider than the profile. */
     setVisibility(id: number, levels: TankVisibilityDto): Promise<TankVisibilityDto>;
+    /** The follow relation of the caller to a tank, with the teaser of a tank for followers that the caller does not see yet. */
+    follow(id: number): Promise<TankFollow>;
+    /** Follows a public tank at once, or sends a follow request to a tank for followers. */
+    requestFollow(id: number): Promise<TankFollow>;
+    /** Stops following a tank or withdraws the open follow request. */
+    unfollow(id: number): Promise<void>;
+    /** The approved followers of an own tank. */
+    followers(id: number, params?: PageParams): Promise<PagedResponse<TankMember>>;
+    /** Removes an approved follower from an own tank. */
+    removeFollower(id: number, profileId: number): Promise<void>;
+    /** The open follow requests of an own tank. */
+    followRequests(id: number, params?: PageParams): Promise<PagedResponse<TankMember>>;
+    approveFollowRequest(id: number, profileId: number): Promise<void>;
+    declineFollowRequest(id: number, profileId: number): Promise<void>;
+    /** The selected members of an own tank. */
+    selectedMembers(id: number): Promise<TankMember[]>;
+    /** Selects the member with the handle (the username) for an own tank. */
+    addSelectedMember(id: number, handle: string): Promise<TankMember>;
+    removeSelectedMember(id: number, profileId: number): Promise<void>;
     list(params?: TanksListParams): Promise<PagedResponse<TankListItem>>;
     get(id: number): Promise<TankDetail>;
     timeLapse(id: number): Promise<TankTimeLapse>;
@@ -716,6 +754,39 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async setVisibility(id, levels) {
         return unwrap(await setTankVisibility({ client, path: { id }, body: levels }));
+      },
+      async follow(id) {
+        return absolutizeMedia(unwrap(await getTankFollow({ client, path: { id } })), options.baseUrl);
+      },
+      async requestFollow(id) {
+        return unwrap(await followTank({ client, path: { id } }));
+      },
+      async unfollow(id) {
+        unwrap(await unfollowTank({ client, path: { id } }));
+      },
+      async followers(id, params) {
+        return absolutizeMedia(unwrapPaged(await listTankFollowers({ client, path: { id }, query: params ?? {} })), options.baseUrl);
+      },
+      async removeFollower(id, profileId) {
+        unwrap(await removeTankFollower({ client, path: { id, profileId } }));
+      },
+      async followRequests(id, params) {
+        return absolutizeMedia(unwrapPaged(await listTankFollowRequests({ client, path: { id }, query: params ?? {} })), options.baseUrl);
+      },
+      async approveFollowRequest(id, profileId) {
+        unwrap(await approveTankFollowRequest({ client, path: { id, profileId } }));
+      },
+      async declineFollowRequest(id, profileId) {
+        unwrap(await declineTankFollowRequest({ client, path: { id, profileId } }));
+      },
+      async selectedMembers(id) {
+        return absolutizeMedia(unwrap(await listTankSelectedMembers({ client, path: { id } })), options.baseUrl);
+      },
+      async addSelectedMember(id, handle) {
+        return absolutizeMedia(unwrap(await addTankSelectedMember({ client, path: { id }, body: { handle } })), options.baseUrl);
+      },
+      async removeSelectedMember(id, profileId) {
+        unwrap(await removeTankSelectedMember({ client, path: { id, profileId } }));
       },
       async refineRegion(id, region) {
         unwrap(await refineTankRegion({ client, path: { id }, body: { region } }));
