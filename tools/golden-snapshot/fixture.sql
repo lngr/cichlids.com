@@ -81,3 +81,5 @@ INSERT INTO tank_decommissioning(tank_id,scope,started_at,start_date,start_media
 INSERT INTO tank_visibility_consent(tank_id,context,answer,answered_at) VALUES (4,'settings',true,'2020-01-01'),(5,'settings',true,'2020-01-01');
 INSERT INTO inhabitant(tank_id,species_id,count) VALUES (4,1,2),(5,1,3);
 INSERT INTO media_link(media_item_id,context_type,tank_id,role,position,created_at) VALUES (1,'tank',5,'showcase',0,'2020-01-01'),(2,'tank',4,'showcase',0,'2020-01-01');
+INSERT INTO comment(id,tank_id,author_profile_id,body,created_at) VALUES (2,1,2,'public tank comment','2020-01-01'),(3,5,1,'private tank comment','2020-01-01'),(4,4,1,'stream private tank comment','2020-01-01');
+INSERT INTO rating(tank_id,profile_id,stars,created_at) VALUES (1,2,5,'2020-01-01'),(5,1,4,'2020-01-01'),(4,2,3,'2020-01-01');

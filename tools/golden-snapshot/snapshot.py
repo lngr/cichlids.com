@@ -44,6 +44,8 @@ PRIVATE_SCOPE_CHECKS = (
     ('public.tank_visibility_consent', PRIVATE_TANK),
     ('public.inhabitant', "tank_id in (select id from tank where profile_visibility <> 'public')"),
     ('public.media_link', "tank_id in (select id from tank where profile_visibility <> 'public')"),
+    ('public.comment', "tank_id in (select id from tank where profile_visibility <> 'public')"),
+    ('public.rating', "tank_id in (select id from tank where profile_visibility <> 'public')"),
     ('public.collection_entry', "collection_id in (select id from collection where not is_public)"),
 )
 LABELS = ('thumb', 'small', 'medium', 'large')

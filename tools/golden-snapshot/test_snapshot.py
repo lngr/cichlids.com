@@ -126,7 +126,7 @@ class DatabaseTests(unittest.TestCase):
                 for column in columns:
                     query = sql.SQL('select id, {} from {} order by id').format(sql.Identifier(column), snapshot.ident(table))
                     old, new = source.execute(query).fetchall(), conn.execute(query).fetchall()
-                    if table in ('public.media_link', 'public.care_entry'):
+                    if table in ('public.media_link', 'public.care_entry', 'public.comment'):
                         self.assertTrue({r[0] for r in new} <= {r[0] for r in old})
                         old = [r for r in old if r[0] in {n[0] for n in new}]
                     else:
@@ -134,7 +134,7 @@ class DatabaseTests(unittest.TestCase):
                     self.assertEqual([r[0] for r in old], [r[0] for r in new])
                     for (row_id, a), (_, b) in zip(old, new):
                         self.assertEqual(b, snapshot.generated_text(KEY, f'{table}.{column}:{row_id}', a))
-            for table in ('species', 'species_link', 'species_common_name', 'rating', 'follow', 'post_species'):
+            for table in ('species', 'species_link', 'species_common_name', 'follow', 'post_species'):
                 query = sql.SQL('select * from {} order by id').format(sql.Identifier(table))
                 self.assertEqual(source.execute(query).fetchall(), conn.execute(query).fetchall())
             changed = {table: set(columns) for table, columns in snapshot.FREE_TEXT.items()}
@@ -144,7 +144,7 @@ class DatabaseTests(unittest.TestCase):
             changed['public.media_variant'] = {'storage_key'}
             changed['public.comment'].add('poster_name')
             changed['public.discussion_post'].add('poster_name')
-            subset_tables = {'public.media_item', 'public.media_variant', 'public.media_link', 'public.tank_decommissioning', 'public.care_entry', 'public.care_measurement_value', 'public.care_plan_rule', 'public.care_plan_rule_change', 'public.water_change_session', 'public.water_change_session_step', 'public.streak_freeze', 'public.tank_visibility_consent', 'public.inhabitant', 'public.collection_entry'}
+            subset_tables = {'public.media_item', 'public.media_variant', 'public.media_link', 'public.tank_decommissioning', 'public.care_entry', 'public.care_measurement_value', 'public.care_plan_rule', 'public.care_plan_rule_change', 'public.water_change_session', 'public.water_change_session_step', 'public.streak_freeze', 'public.tank_visibility_consent', 'public.inhabitant', 'public.collection_entry', 'public.comment', 'public.rating'}
             for table, columns in snapshot.SCHEMA.items():
                 if table in snapshot.EMPTY_TABLES or table == 'public.__EFMigrationsHistory':
                     continue
@@ -191,6 +191,10 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(count(conn, 'select count(*) from media_link where tank_id=5'), 0)
             self.assertEqual(sorted(r[0] for r in conn.execute('select id from collection_entry')), [r[0] for r in source.execute('select id from collection_entry where collection_id=1')])
             self.assertEqual(count(conn, 'select count(*) from collection'), 2)
+            self.assertEqual(sorted(r[0] for r in conn.execute('select id from comment where tank_id is not null')), [2, 4])
+            self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from rating where tank_id is not null')), [1, 4])
+            self.assertEqual(count(conn, 'select count(*) from rating where post_id is not null'), count(source, 'select count(*) from rating where post_id is not null'))
+            self.assertEqual(count(conn, 'select count(*) from comment where post_id is not null'), count(source, 'select count(*) from comment where post_id is not null'))
             for table in ('vacation', 'care_reminder_snooze', 'care_todo', 'comment_vote'):
                 self.assertEqual(count(conn, f'select count(*) from {table}'), 0, table)
                 self.assertGreater(count(source, f'select count(*) from {table}'), 0, table)
@@ -223,6 +227,9 @@ class DatabaseTests(unittest.TestCase):
                 "update tank set stream_visibility='private' where id=1",
                 "update tank set stream_visibility='private', profile_visibility='private' where id=1",
                 "update collection set is_public=false where id=1",
+                "update tank set profile_visibility='private', stream_visibility='private' where id=4",
+                "update comment set tank_id=5, post_id=null where id=2",
+                "insert into rating (tank_id,profile_id,stars,created_at) values (5,3,3,now())",
                 "update media_item set captured_in_app=true",
                 "update media_item set taken_at_local='2020-01-01 12:00'",
                 "update media_item set received_at=created_at + interval '1 day'",

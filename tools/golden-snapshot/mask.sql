@@ -14,6 +14,8 @@ DELETE FROM public.tank_decommissioning WHERE tank_id IN (SELECT id FROM public.
 DELETE FROM public.tank_visibility_consent WHERE tank_id IN (SELECT id FROM public.tank WHERE stream_visibility <> 'public');
 DELETE FROM public.inhabitant WHERE tank_id IN (SELECT id FROM public.tank WHERE profile_visibility <> 'public');
 DELETE FROM public.media_link WHERE tank_id IN (SELECT id FROM public.tank WHERE profile_visibility <> 'public');
+DELETE FROM public.comment WHERE tank_id IN (SELECT id FROM public.tank WHERE profile_visibility <> 'public');
+DELETE FROM public.rating WHERE tank_id IN (SELECT id FROM public.tank WHERE profile_visibility <> 'public');
 DELETE FROM public.collection_entry WHERE collection_id IN (SELECT id FROM public.collection WHERE NOT is_public);
 UPDATE public.profile SET city = NULL, external_avatar_url = NULL,
     last_login_at = NULL, suspended_until = NULL;
