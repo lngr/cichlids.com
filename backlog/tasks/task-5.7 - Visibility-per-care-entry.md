@@ -50,4 +50,6 @@ Each care entry has a visibility; private entries never leave the owner, public 
 - Open details, asked one by one: legacy tanks of returning members (the archive was public), tanks created before this question existed, hiding single entries of a public stream, following without an account.
 
 - Legacy tanks (decided by the project owner, 2026-10-16): archive tanks stay public by default, including following; the legacy site only knew public tanks and had no care stream.
+
+- Tanks created before the visibility question existed (decided by the project owner, 2026-10-16): they stay public; the question applies to newly created tanks.
 <!-- SECTION:NOTES:END -->
