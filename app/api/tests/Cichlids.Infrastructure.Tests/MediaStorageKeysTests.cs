@@ -103,4 +103,47 @@ public sealed class MediaStorageKeysTests
     {
         Assert.Throws<ArgumentException>(() => MediaStorageKeys.BuildPrivateVariantKey("originals/x.jpg", "thumb"));
     }
+
+    [Fact]
+    public void BuildsThePrivateOriginalKeyOfAVideoBelowThePrivatePrefix()
+    {
+        Assert.Equal("private/video/7/abc.mp4", MediaStorageKeys.BuildPrivateVideoKey(7, "abc.mp4"));
+    }
+
+    [Fact]
+    public void BuildsPublicAndPrivateHlsDirectoriesFromTheOriginalKey()
+    {
+        const string original = "private/video/7/abc.mp4";
+
+        Assert.Equal("variants/video/7/abc/", MediaStorageKeys.BuildVideoDirectory(original, isPrivate: false));
+        Assert.Equal("private/variants/video/7/abc/", MediaStorageKeys.BuildVideoDirectory(original, isPrivate: true));
+        Assert.Throws<ArgumentException>(() => MediaStorageKeys.BuildVideoDirectory("originals/uploads/7/a.jpg", isPrivate: false));
+    }
+
+    [Theory]
+    [InlineData("master.m3u8", "application/vnd.apple.mpegurl")]
+    [InlineData("480p/index.m3u8", "application/vnd.apple.mpegurl")]
+    [InlineData("480p/seg_00001.m4s", "video/mp4")]
+    [InlineData("480p/init_0.mp4", "video/mp4")]
+    [InlineData("poster.jpg", "image/jpeg")]
+    public void ResolvesTheContentTypeOfHlsFiles(string path, string expected) =>
+        Assert.Equal(expected, MediaStorageKeys.ResolveHlsContentType(path));
+
+    [Theory]
+    [InlineData("master.m3u8", true)]
+    [InlineData("poster.jpg", true)]
+    [InlineData("480p/index.m3u8", true)]
+    [InlineData("1080p/init_2.mp4", true)]
+    [InlineData("720p/init.mp4", true)]
+    [InlineData("720p/seg_00012.m4s", true)]
+    [InlineData("../master.m3u8", false)]
+    [InlineData("480p/../../x", false)]
+    [InlineData("480p/seg_1.m4s", false)]
+    [InlineData("/master.m3u8", false)]
+    [InlineData("master.m3u8/", false)]
+    [InlineData("480p\\index.m3u8", false)]
+    [InlineData("a/b/c.m3u8", false)]
+    [InlineData("", false)]
+    public void RecognizesTheFilesOfAnHlsDirectory(string path, bool expected) =>
+        Assert.Equal(expected, MediaStorageKeys.IsHlsFile(path));
 }
