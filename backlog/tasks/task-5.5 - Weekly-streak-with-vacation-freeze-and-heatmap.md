@@ -4,7 +4,7 @@ title: Weekly streak with vacation freeze and heatmap
 status: In Review
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 09:22'
+updated_date: '2026-10-16 12:35'
 labels: []
 dependencies: []
 references:
@@ -98,4 +98,12 @@ A streak counts weeks with completed care, survives vacations through a freeze, 
 - Not built: the 16-week care heatmap (TASK-5.17) and a switch to turn streaks off (open); a confirmation before deleting a series photo that keeps the streak waits for a delete path (hook keepingPhotoIds).
 - Verification: .NET 553/1182 (1 opt-in benchmark skipped)/349 with 0 warnings, client-core 225, mobile 396, both typechecks, all 35 write e2e specs green.
 - Tests: app/api/tests/Cichlids.Api.Tests/Features/Streaks/*, app/api/tests/Cichlids.Infrastructure.Tests/Persistence/StreakConstraintTests.cs, app/client-core/src/streaks.test.ts, vacation.test.ts, app/mobile/src/streaks/streakText.test.ts, app/mobile/e2e/playwright/streaks.write.mjs.
+
+### Decisions of the project owner (2026-10-16)
+- Freezes: 2 per tank and tank year. The first tank year starts on the local date the tank was created, every further one on its anniversary (a tank created on February 29 has its anniversary on February 28 in years without that day), so a leap year has one day more. This replaces the calendar year that is built.
+- Retroactive vacation: a vacation starting at most 7 days before it is entered may repair the streak, as built; reminders before the break point to it (TASK-5.18).
+- Only-me entries count in the streak every viewer sees, as built.
+- Several water changes on one local day are one streak step, as built.
+- A needed freeze is recorded when the owner reads the streak, as built.
+- Streaks can be turned off per member (TASK-5.19).
 <!-- SECTION:NOTES:END -->
