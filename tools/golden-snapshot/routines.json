@@ -1,19 +1,25 @@
 {
   "functions": {
     "public.care_entry_changes_media_visibility()": "723751779d210884e3dd07780cc89fbfb43b060690631a80c3f3ac27532114fd",
+    "public.follow_changes_media_visibility()": "ebaba30ca74f21f023e640272eaa3181670c953440a03142e747165595ed91c8",
     "public.media_item_change_visibility(item_ids bigint[])": "4f5d9236e05a15d8ad05ff6163f9229cfd445916203acd8f5daaf7a54530ee43",
     "public.media_item_ids_of_tank(p_tank_id bigint)": "cc214bfc626dd02c00c9bdeb6ff1f9a3571cf8a9f1f036576f4430f30c7e6102",
     "public.media_link_changes_visibility()": "94c96a7b1ba6966ee116d7778fcfa9c964619e5b4356cfa3ebdca4aa75fd600d",
     "public.post_changes_media_visibility()": "732288bd3498bc790b557dbc725065b68ff01eb8cfda7c109cd7cedeaf2a901f",
     "public.profile_changes_media_visibility()": "7fc950be37211bd450ae3907e40cf9e7f63c1ae4ef7654fd52d4faec5b5a7ada",
-    "public.tank_changes_media_visibility()": "3d6d316cae92dc706473d5c8a419a549d4edb8ce623201aa0fe996992ce765ef"
+    "public.tank_changes_media_visibility()": "3d6d316cae92dc706473d5c8a419a549d4edb8ce623201aa0fe996992ce765ef",
+    "public.tank_selected_member_changes_media_visibility()": "868391485236793cbeb46dfc34d04a6430f43575fa05fb2c494b3f05c3d29496"
   },
   "triggers": {
     "public.care_entry.care_entry_changes_media_visibility": "e5319e921ccd9ae3e09c6253fb2a046f9887749eb2b015162b19cc2ce7352f01",
     "public.care_entry.care_entry_updates_media_visibility": "f0a59aceb2be466d2599ec5dd43d230eef25c4f957914aaf443479b715595d74",
+    "public.follow.follow_deletes_media_visibility": "3a41e1bcc62c81d2bf40b2bce5f852a6762fbf4398a7488aacaf642453fb268d",
+    "public.follow.follow_inserts_media_visibility": "a7d08693ab2af8c694407b40045e4a619a16e12d340772f7a361e116a39e16dd",
+    "public.follow.follow_updates_media_visibility": "a4f7ce371ef0a169dd6bc548baf79aa3338aac5fd898cf60b41f8aafdf4ce14e",
     "public.media_link.media_link_changes_visibility": "d5def52a848707261a30d4135be9c11d607b158d078a7ce4447afb08cfc4894a",
     "public.post.post_changes_media_visibility": "9b3155c3185c8a9a028dc01f0b695e9bba90c4553e1864c883eafec9419bc350",
     "public.profile.profile_changes_media_visibility": "f863605620e91850aa50c59461aeef3684b5635fb4fc99d45c10a61c882b7606",
-    "public.tank.tank_changes_media_visibility": "a3d5b62f07ced8096e80280ea91929e0d40892873b85ceb8c32ce3761e72e8cd"
+    "public.tank.tank_changes_media_visibility": "a3d5b62f07ced8096e80280ea91929e0d40892873b85ceb8c32ce3761e72e8cd",
+    "public.tank_selected_member.tank_selected_member_changes_media_visibility": "491ab8f24e4297eda325ed1032467d8926470931310e7a07f163cbe755c1b452"
   }
 }

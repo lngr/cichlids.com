@@ -84,3 +84,25 @@ INSERT INTO media_link(media_item_id,context_type,tank_id,role,position,created_
 INSERT INTO comment(id,tank_id,author_profile_id,body,created_at) VALUES (2,1,2,'public tank comment','2020-01-01'),(3,5,1,'private tank comment','2020-01-01'),(4,4,1,'stream private tank comment','2020-01-01');
 INSERT INTO rating(tank_id,profile_id,stars,created_at) VALUES (1,2,5,'2020-01-01'),(5,1,4,'2020-01-01'),(4,2,3,'2020-01-01');
 UPDATE media_item SET placed_public=false, placement_pending=true, placement_attempts=2, placement_next_attempt_at='2020-01-05', visibility_generation=7;
+INSERT INTO tank(id,profile_id,title,state,created_at,care_reminders_enabled,stream_visibility,profile_visibility) VALUES
+ (6,3,'Selected tank','published','2020-01-01',true,'selected','selected'),
+ (7,1,'Followers tank','published','2020-01-01',true,'followers','followers'),
+ (8,2,'Stream followers tank','published','2020-01-01',true,'followers','public');
+INSERT INTO care_entry(id,tank_id,author_profile_id,kind,occurred_at,recorded_at,note,only_me) VALUES
+ (8,6,3,'measurement','2020-03-02 10:00+00','2020-03-02 10:00+00','SyntheticAlice selected tank',false),
+ (9,7,1,'measurement','2020-03-02 10:00+00','2020-03-02 10:00+00','SyntheticAlice followers tank',false),
+ (10,8,2,'measurement','2020-03-02 10:00+00','2020-03-02 10:00+00','SyntheticAlice stream followers tank',false);
+INSERT INTO care_plan_rule(tank_id,kind,rhythm_days,enabled,reason_code,updated_at) VALUES (6,'water_change',7,true,'cichlid_default','2020-03-01'),(7,'water_change',7,true,'cichlid_default','2020-03-01'),(8,'water_change',7,true,'cichlid_default','2020-03-01');
+INSERT INTO inhabitant(tank_id,species_id,count) VALUES (6,1,1),(7,1,1),(8,1,4);
+INSERT INTO comment(id,tank_id,author_profile_id,body,created_at) VALUES (5,6,1,'selected tank comment','2020-01-01'),(6,7,2,'followers tank comment','2020-01-01'),(7,8,1,'stream followers tank comment','2020-01-01');
+INSERT INTO rating(tank_id,profile_id,stars,created_at) VALUES (6,2,4,'2020-01-01'),(7,3,4,'2020-01-01'),(8,3,5,'2020-01-01');
+INSERT INTO media_link(media_item_id,context_type,tank_id,role,position,created_at) VALUES (3,'tank',6,'showcase',0,'2020-01-01'),(3,'tank',7,'showcase',0,'2020-01-01');
+INSERT INTO follow(follower_profile_id,target_tank_id,status,decided_at,created_at) VALUES
+ (2,1,'approved','2020-01-02','2020-01-01'),
+ (3,1,'pending',NULL,'2020-01-01'),
+ (1,6,'approved','2020-01-02','2020-01-01'),
+ (2,7,'approved','2020-01-02','2020-01-01'),
+ (3,5,'approved','2020-01-02','2020-01-01'),
+ (1,8,'approved','2020-01-02','2020-01-01'),
+ (3,4,'pending',NULL,'2020-01-01');
+INSERT INTO tank_selected_member(tank_id,member_profile_id,added_at) VALUES (6,1,'2020-01-01'),(7,2,'2020-01-01'),(1,3,'2020-01-01');

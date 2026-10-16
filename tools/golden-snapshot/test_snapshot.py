@@ -135,7 +135,7 @@ class DatabaseTests(unittest.TestCase):
                     self.assertEqual([r[0] for r in old], [r[0] for r in new])
                     for (row_id, a), (_, b) in zip(old, new):
                         self.assertEqual(b, snapshot.generated_text(KEY, f'{table}.{column}:{row_id}', a))
-            for table in ('species', 'species_link', 'species_common_name', 'follow', 'post_species'):
+            for table in ('species', 'species_link', 'species_common_name', 'post_species'):
                 query = sql.SQL('select * from {} order by id').format(sql.Identifier(table))
                 self.assertEqual(source.execute(query).fetchall(), conn.execute(query).fetchall())
             changed = {table: set(columns) for table, columns in snapshot.FREE_TEXT.items()}
@@ -145,7 +145,7 @@ class DatabaseTests(unittest.TestCase):
             changed['public.media_variant'] = {'storage_key'}
             changed['public.comment'].add('poster_name')
             changed['public.discussion_post'].add('poster_name')
-            subset_tables = {'public.media_item', 'public.media_variant', 'public.media_link', 'public.tank_decommissioning', 'public.care_entry', 'public.care_measurement_value', 'public.care_plan_rule', 'public.care_plan_rule_change', 'public.water_change_session', 'public.water_change_session_step', 'public.streak_freeze', 'public.tank_visibility_consent', 'public.inhabitant', 'public.collection_entry', 'public.comment', 'public.rating'}
+            subset_tables = {'public.media_item', 'public.media_variant', 'public.media_link', 'public.tank_decommissioning', 'public.care_entry', 'public.care_measurement_value', 'public.care_plan_rule', 'public.care_plan_rule_change', 'public.water_change_session', 'public.water_change_session_step', 'public.streak_freeze', 'public.tank_visibility_consent', 'public.inhabitant', 'public.collection_entry', 'public.comment', 'public.rating', 'public.follow'}
             for table, columns in snapshot.SCHEMA.items():
                 if table in snapshot.EMPTY_TABLES or table == 'public.__EFMigrationsHistory':
                     continue
@@ -179,23 +179,29 @@ class DatabaseTests(unittest.TestCase):
                 self.assertGreater(conn.execute(sql.SQL('select count(*) from {}').format(sql.Identifier(table))).fetchone()[0], 0, table)
             count = lambda db, query: db.execute(query).fetchone()[0]
             # private scopes are gone, public scopes remain
-            self.assertEqual(count(conn, "select count(*) from care_entry where only_me or tank_id in (4, 5)"), 0)
+            self.assertEqual(count(conn, "select count(*) from care_entry where only_me or tank_id in (4, 5, 6, 7, 8)"), 0)
             self.assertEqual(sorted(r[0] for r in conn.execute('select id from care_entry')), [1, 3])
             self.assertEqual(sorted(r[0] for r in conn.execute('select id from water_change_session')), [1])
             self.assertEqual(sorted(r[0] for r in conn.execute('select id from care_measurement_value order by id')), [r[0] for r in source.execute('select id from care_measurement_value where care_entry_id=3')])
             for table in ('care_plan_rule', 'care_plan_rule_change', 'streak_freeze', 'tank_visibility_consent', 'tank_decommissioning'):
-                self.assertEqual(count(conn, f'select count(*) from {table} where tank_id in (4, 5)'), 0, table)
-                self.assertGreater(count(source, f'select count(*) from {table} where tank_id in (4, 5)'), 0, table)
+                self.assertEqual(count(conn, f'select count(*) from {table} where tank_id in (4, 5, 6, 7, 8)'), 0, table)
+                self.assertGreater(count(source, f'select count(*) from {table} where tank_id in (4, 5, 6, 7, 8)'), 0, table)
             for table in ('care_plan_rule', 'care_plan_rule_change', 'streak_freeze', 'tank_visibility_consent'):
                 self.assertGreater(count(conn, f'select count(*) from {table} where tank_id in (1)'), 0, table)
-            self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from inhabitant order by tank_id')), [1, 4])
-            self.assertEqual(count(conn, 'select count(*) from media_link where tank_id=5'), 0)
+            self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from inhabitant order by tank_id')), [1, 4, 8])
+            self.assertEqual(count(conn, 'select count(*) from media_link where tank_id in (5, 6, 7)'), 0)
             self.assertEqual(sorted(r[0] for r in conn.execute('select id from collection_entry')), [r[0] for r in source.execute('select id from collection_entry where collection_id=1')])
             self.assertEqual(count(conn, 'select count(*) from collection'), 2)
-            self.assertEqual(sorted(r[0] for r in conn.execute('select id from comment where tank_id is not null')), [2, 4])
-            self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from rating where tank_id is not null')), [1, 4])
+            self.assertEqual(sorted(r[0] for r in conn.execute('select id from comment where tank_id is not null')), [2, 4, 7])
+            self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from rating where tank_id is not null')), [1, 4, 8])
             self.assertEqual(count(conn, 'select count(*) from rating where post_id is not null'), count(source, 'select count(*) from rating where post_id is not null'))
             self.assertEqual(count(conn, 'select count(*) from comment where post_id is not null'), count(source, 'select count(*) from comment where post_id is not null'))
+            self.assertEqual(sorted(r[0] for r in conn.execute('select target_tank_id from follow where target_tank_id is not null')), [1, 8])
+            self.assertEqual(count(conn, "select count(*) from follow where status <> 'approved'"), 0)
+            self.assertGreater(count(source, "select count(*) from follow where status = 'pending'"), 0)
+            self.assertEqual(count(conn, 'select count(*) from follow where target_tank_id is null'), count(source, 'select count(*) from follow where target_tank_id is null'))
+            self.assertEqual(count(conn, 'select count(*) from tank_selected_member'), 0)
+            self.assertGreater(count(source, 'select count(*) from tank_selected_member'), 0)
             for table in ('vacation', 'care_reminder_snooze', 'care_todo', 'comment_vote'):
                 self.assertEqual(count(conn, f'select count(*) from {table}'), 0, table)
                 self.assertGreater(count(source, f'select count(*) from {table}'), 0, table)
@@ -231,6 +237,12 @@ class DatabaseTests(unittest.TestCase):
                 "update tank set stream_visibility='private' where id=1",
                 "update tank set stream_visibility='private', profile_visibility='private' where id=1",
                 "update collection set is_public=false where id=1",
+                "update tank set profile_visibility='followers', stream_visibility='followers' where id=4",
+                "update tank set profile_visibility='selected', stream_visibility='selected' where id=1",
+                "update comment set tank_id=6, post_id=null where id=2",
+                "insert into follow (follower_profile_id,target_tank_id,status,created_at) values (3,2,'pending',now())",
+                "update follow set status='pending', decided_at=null where follower_profile_id=2 and target_tank_id=1",
+                "insert into follow (follower_profile_id,target_tank_id,status,created_at) values (1,5,'approved',now())",
                 "update tank set profile_visibility='private', stream_visibility='private' where id=4",
                 "update comment set tank_id=5, post_id=null where id=2",
                 "insert into rating (tank_id,profile_id,stars,created_at) values (5,3,3,now())",

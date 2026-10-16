@@ -136,8 +136,10 @@
   },
   "public.follow": {
     "created_at": "timestamp with time zone",
+    "decided_at": "timestamp with time zone",
     "follower_profile_id": "bigint",
     "id": "bigint",
+    "status": "text",
     "target_profile_id": "bigint",
     "target_tank_id": "bigint"
   },
@@ -377,6 +379,12 @@
     "start_date": "date",
     "start_media_item_id": "bigint",
     "started_at": "timestamp with time zone",
+    "tank_id": "bigint"
+  },
+  "public.tank_selected_member": {
+    "added_at": "timestamp with time zone",
+    "id": "bigint",
+    "member_profile_id": "bigint",
     "tank_id": "bigint"
   },
   "public.tank_visibility_consent": {

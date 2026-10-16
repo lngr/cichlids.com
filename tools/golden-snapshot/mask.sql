@@ -2,7 +2,10 @@ TRUNCATE public.profile_identity, public.web_session,
          archive.legacy_comment, public.outbox_event, public.webhook_subscription,
          public.web_push_subscription, public.web_push_reminder_sent,
          public.video_upload, public.video_job, public.vacation,
-         public.care_reminder_snooze, public.care_todo, public.comment_vote;
+         public.care_reminder_snooze, public.care_todo, public.comment_vote,
+         public.tank_selected_member;
+DELETE FROM public.follow WHERE status <> 'approved'
+    OR target_tank_id IN (SELECT id FROM public.tank WHERE profile_visibility <> 'public');
 WITH gone AS (DELETE FROM public.care_entry WHERE only_me RETURNING water_change_session_id)
 DELETE FROM public.water_change_session WHERE id IN (SELECT water_change_session_id FROM gone);
 DELETE FROM public.care_entry WHERE tank_id IN (SELECT id FROM public.tank WHERE stream_visibility <> 'public');

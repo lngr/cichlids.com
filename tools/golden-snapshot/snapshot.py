@@ -20,7 +20,8 @@ EMPTY_TABLES = ('public.profile_identity', 'public.web_session', 'archive.legacy
                 'public.outbox_event', 'public.webhook_subscription',
                 'public.web_push_subscription', 'public.web_push_reminder_sent',
                 'public.video_upload', 'public.video_job', 'public.vacation',
-                'public.care_reminder_snooze', 'public.care_todo', 'public.comment_vote')
+                'public.care_reminder_snooze', 'public.care_todo', 'public.comment_vote',
+                'public.tank_selected_member')
 FREE_TEXT = {
     'public.comment': ('body', 'delete_reason'),
     'public.discussion_post': ('body',),
@@ -47,6 +48,7 @@ PRIVATE_SCOPE_CHECKS = (
     ('public.media_link', "tank_id in (select id from tank where profile_visibility <> 'public')"),
     ('public.comment', "tank_id in (select id from tank where profile_visibility <> 'public')"),
     ('public.rating', "tank_id in (select id from tank where profile_visibility <> 'public')"),
+    ('public.follow', "status <> 'approved' or target_tank_id in (select id from tank where profile_visibility <> 'public')"),
     ('public.collection_entry', "collection_id in (select id from collection where not is_public)"),
 )
 LABELS = ('thumb', 'small', 'medium', 'large')
@@ -113,7 +115,7 @@ COLUMN_HANDLING = {
         'kept': 'category created_at id last_post_at legacy_id post_count state',
     },
     'public.follow': {
-        'kept': 'created_at follower_profile_id id target_profile_id target_tank_id',
+        'kept': 'created_at decided_at follower_profile_id id status target_profile_id target_tank_id',
     },
     'public.inhabitant': {
         'kept': 'count id sort species_id tank_id',
@@ -191,6 +193,9 @@ COLUMN_HANDLING = {
     },
     'public.tank_decommissioning': {
         'kept': 'end_date end_media_item_id ended_at id scope start_date start_media_item_id started_at tank_id',
+    },
+    'public.tank_selected_member': {
+        'empty': 'added_at id member_profile_id tank_id',
     },
     'public.tank_visibility_consent': {
         'kept': 'answer answered_at context id tank_id',
