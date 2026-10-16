@@ -1,5 +1,6 @@
 import { createClient, createConfig } from "./generated/client/index.js";
 import type { Client } from "./generated/client/index.js";
+import type { DeviceAuth } from "./deviceAuth.js";
 import type { VideoUploadTransport } from "./videoUpload.js";
 import { toCareHeatmap } from "./careHeatmap.js";
 import type { CareHeatmap } from "./careHeatmap.js";
@@ -296,6 +297,12 @@ export interface CichlidsClientOptions {
   getAccessToken?: () => string | undefined | Promise<string | undefined>;
   /** Override fetch, e.g. for React Native or test environments. */
   fetch?: typeof fetch;
+  /**
+   * The token source of an installation without an account. A request that has no access token
+   * from getAccessToken carries the device token instead; omit it for clients that never run
+   * without a sign-in.
+   */
+  deviceAuth?: Pick<DeviceAuth, "getAccessToken">;
 }
 
 export interface StoriesListParams {
@@ -636,9 +643,9 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
     }),
   );
 
-  if (options.getAccessToken) {
+  if (options.getAccessToken || options.deviceAuth) {
     client.interceptors.request.use(async (request) => {
-      const token = await options.getAccessToken!();
+      const token = (await options.getAccessToken?.()) ?? (await options.deviceAuth?.getAccessToken());
       if (token) {
         request.headers.set("Authorization", `Bearer ${token}`);
       }

@@ -139,3 +139,7 @@ export { DEFAULT_OVERLAY_OPACITY, latestSeriesPhotoUrl, overlayOpacity, timeLaps
 
 export { PAIRING_WINDOW_MS, layoutChart, loadWaterChanges, pairWaterChanges } from "./waterChangeMarks.js";
 export type { ChartLayout, ChartLayoutOptions, LoadedWaterChange, PlacedMarker, WaterChangeLoadOptions, WaterChangeMark, WaterChangePair } from "./waterChangeMarks.js";
+
+export { DeviceAuthError, createDeviceAuth, deviceSignatureMessage, toBase64Url } from "./deviceAuth.js";
+export type { DeviceAuth, DeviceAuthOptions, DeviceCredential, DeviceCredentialStore, DeviceKeyProvider, DeviceToken } from "./deviceAuth.js";
+export { createWebCryptoKeyProvider } from "./deviceAuthWebCrypto.js";
