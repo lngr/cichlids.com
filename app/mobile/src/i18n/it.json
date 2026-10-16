@@ -680,7 +680,7 @@
     },
     "reminders": {
       "title": "Promemoria",
-      "stateOn": "I promemoria sono attivi per questa vasca. Ricevi un avviso alle {{time}} nel giorno in cui la cura è in programma.",
+      "stateOn": "I promemoria sono attivi per questa vasca. Ricevi un avviso alle {{time}} nel giorno in cui la cura è in programma. Finché una serie di cambi d'acqua è in corso, ne ricevi uno ogni giorno fino a quando si interrompe.",
       "stateOnElsewhere": "I promemoria sono attivi per questa vasca. L'app sul tuo telefono ti avvisa nel giorno in cui la cura è in programma.",
       "stateOff": "I promemoria sono disattivati per questa vasca.",
       "switchOn": "Attiva i promemoria",
@@ -694,7 +694,11 @@
       "snooze": "Ricordamelo domani",
       "notification": {
         "water_change": "Oggi è in programma un cambio d'acqua.",
-        "measurement": "Oggi è in programma una misurazione dell'acqua."
+        "measurement": "Oggi è in programma una misurazione dell'acqua.",
+        "streakToday": "La tua serie di cambi d’acqua si interrompe oggi. Fai il cambio d’acqua ora o inizia una vacanza se sei via.",
+        "streakBreaks_one": "La tua serie di cambi d’acqua si interrompe tra {{count}} giorno. Fai il cambio d’acqua o inizia una vacanza se sei via.",
+        "streakBreaks_many": "La tua serie di cambi d’acqua si interrompe tra {{count}} giorni. Fai il cambio d’acqua o inizia una vacanza se sei via.",
+        "streakBreaks_other": "La tua serie di cambi d’acqua si interrompe tra {{count}} giorni. Fai il cambio d’acqua o inizia una vacanza se sei via."
       }
     },
     "marks": {
@@ -752,7 +756,7 @@
   "webPush": {
     "title": "Promemoria in questo browser",
     "stateOff": "Disattivati. Questo browser non mostra promemoria di cura.",
-    "stateOn": "Attivati. Questo browser mostra una notifica alle {{time}} nel giorno in cui è in programma una cura.",
+    "stateOn": "Attivati. Questo browser mostra una notifica alle {{time}} nel giorno in cui è in programma una cura. Finché una serie di cambi d'acqua è in corso, ne ricevi uno ogni giorno fino a quando si interrompe.",
     "switchOn": "Attiva i promemoria in questo browser",
     "switchOff": "Disattiva i promemoria in questo browser",
     "explain": "Per ricordarti le cure, cichlids invia un messaggio tramite il servizio push del produttore del tuo browser (Google, Mozilla, Microsoft o Apple). Quel servizio viene a sapere che questo browser riceve notifiche da cichlids.com e quando, ma non cosa dicono. Puoi disattivarlo in qualsiasi momento: l'iscrizione sul nostro server viene cancellata. Subito dopo il browser chiede il permesso.",

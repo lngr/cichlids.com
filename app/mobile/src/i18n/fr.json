@@ -680,7 +680,7 @@
     },
     "reminders": {
       "title": "Rappels",
-      "stateOn": "Les rappels sont activés pour ce bac. Tu reçois un message à {{time}} le jour où le soin est prévu.",
+      "stateOn": "Les rappels sont activés pour ce bac. Tu reçois un message à {{time}} le jour où le soin est prévu. Tant qu'une série de changements d'eau est en cours, tu en reçois un chaque jour jusqu'à ce qu'elle s'arrête.",
       "stateOnElsewhere": "Les rappels sont activés pour ce bac. L'appli sur ton téléphone te prévient le jour où le soin est prévu.",
       "stateOff": "Les rappels sont désactivés pour ce bac.",
       "switchOn": "Activer les rappels",
@@ -694,7 +694,11 @@
       "snooze": "Me le rappeler demain",
       "notification": {
         "water_change": "Un changement d'eau est prévu aujourd'hui.",
-        "measurement": "Une mesure de l'eau est prévue aujourd'hui."
+        "measurement": "Une mesure de l'eau est prévue aujourd'hui.",
+        "streakToday": "Ta série de changements d’eau s’arrête aujourd’hui. Change l’eau maintenant ou commence des vacances si tu es en déplacement.",
+        "streakBreaks_one": "Ta série de changements d’eau s’arrête dans {{count}} jour. Change l’eau ou commence des vacances si tu es en déplacement.",
+        "streakBreaks_many": "Ta série de changements d’eau s’arrête dans {{count}} jours. Change l’eau ou commence des vacances si tu es en déplacement.",
+        "streakBreaks_other": "Ta série de changements d’eau s’arrête dans {{count}} jours. Change l’eau ou commence des vacances si tu es en déplacement."
       }
     },
     "marks": {
@@ -752,7 +756,7 @@
   "webPush": {
     "title": "Rappels dans ce navigateur",
     "stateOff": "Désactivés. Ce navigateur n'affiche aucun rappel de soin.",
-    "stateOn": "Activés. Ce navigateur affiche une notification à {{time}} le jour où un soin est prévu.",
+    "stateOn": "Activés. Ce navigateur affiche une notification à {{time}} le jour où un soin est prévu. Tant qu'une série de changements d'eau est en cours, tu en reçois un chaque jour jusqu'à ce qu'elle s'arrête.",
     "switchOn": "Activer les rappels dans ce navigateur",
     "switchOff": "Désactiver les rappels dans ce navigateur",
     "explain": "Pour te rappeler un soin, cichlids envoie un message via le service push du fabricant de ton navigateur (Google, Mozilla, Microsoft ou Apple). Ce service apprend que ce navigateur reçoit des notifications de cichlids.com, et quand, mais pas ce qu'elles disent. Tu peux le désactiver à tout moment ; l'inscription est alors supprimée sur notre serveur. Ensuite, ton navigateur te demande l'autorisation.",

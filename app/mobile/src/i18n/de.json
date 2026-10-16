@@ -667,7 +667,7 @@
     },
     "reminders": {
       "title": "Erinnerungen",
-      "stateOn": "Erinnerungen sind für dieses Becken eingeschaltet. Du bekommst am Tag der Fälligkeit um {{time}} eine Nachricht.",
+      "stateOn": "Erinnerungen sind für dieses Becken eingeschaltet. Du bekommst am Tag der Fälligkeit um {{time}} eine Nachricht. Solange eine Wasserwechsel-Serie läuft, bekommst du jeden Tag eine, bis sie abreißen würde.",
       "stateOnElsewhere": "Erinnerungen sind für dieses Becken eingeschaltet. Die App auf deinem Handy erinnert dich am Tag der Fälligkeit.",
       "stateOff": "Erinnerungen sind für dieses Becken ausgeschaltet.",
       "switchOn": "Erinnerungen einschalten",
@@ -681,7 +681,10 @@
       "snooze": "Morgen erinnern",
       "notification": {
         "water_change": "Heute ist ein Wasserwechsel fällig.",
-        "measurement": "Heute ist eine Wassermessung fällig."
+        "measurement": "Heute ist eine Wassermessung fällig.",
+        "streakToday": "Deine Wasserwechsel-Serie reißt heute ab. Wechsle jetzt das Wasser oder starte einen Urlaub, falls du verreist bist.",
+        "streakBreaks_one": "Deine Wasserwechsel-Serie reißt in {{count}} Tag ab. Wechsle das Wasser oder starte einen Urlaub, falls du verreist bist.",
+        "streakBreaks_other": "Deine Wasserwechsel-Serie reißt in {{count}} Tagen ab. Wechsle das Wasser oder starte einen Urlaub, falls du verreist bist."
       }
     },
     "marks": {
@@ -739,7 +742,7 @@
   "webPush": {
     "title": "Erinnerungen in diesem Browser",
     "stateOff": "Aus. Dieser Browser zeigt keine Pflege-Erinnerungen.",
-    "stateOn": "Ein. Dieser Browser zeigt am Tag der Fälligkeit um {{time}} eine Benachrichtigung.",
+    "stateOn": "Ein. Dieser Browser zeigt am Tag der Fälligkeit um {{time}} eine Benachrichtigung. Solange eine Wasserwechsel-Serie läuft, bekommst du jeden Tag eine, bis sie abreißen würde.",
     "switchOn": "Erinnerungen in diesem Browser einschalten",
     "switchOff": "Erinnerungen in diesem Browser ausschalten",
     "explain": "Damit cichlids dich erinnern kann, schickt es eine Nachricht über den Push-Dienst des Browser-Herstellers (Google, Mozilla, Microsoft oder Apple). Dieser Dienst erfährt, dass dieser Browser Benachrichtigungen von cichlids.com erhält und wann, aber nicht, was darin steht. Du kannst das jederzeit ausschalten, dann löschen wir die Anmeldung auf unserem Server. Als Nächstes fragt dein Browser nach der Erlaubnis.",

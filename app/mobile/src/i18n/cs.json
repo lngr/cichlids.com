@@ -693,7 +693,7 @@
     },
     "reminders": {
       "title": "Připomenutí",
-      "stateOn": "Připomenutí jsou pro toto akvárium zapnutá. V den termínu dostaneš v {{time}} jednu zprávu.",
+      "stateOn": "Připomenutí jsou pro toto akvárium zapnutá. V den termínu dostaneš v {{time}} zprávu. Dokud trvá série výměn vody, dostáváš ji každý den, než by se přerušila.",
       "stateOnElsewhere": "Připomenutí jsou pro toto akvárium zapnutá. Aplikace v telefonu ti v den termínu připomene péči.",
       "stateOff": "Připomenutí jsou pro toto akvárium vypnutá.",
       "switchOn": "Zapnout připomenutí",
@@ -707,7 +707,12 @@
       "snooze": "Připomenout zítra",
       "notification": {
         "water_change": "Dnes je na řadě výměna vody.",
-        "measurement": "Dnes je na řadě měření vody."
+        "measurement": "Dnes je na řadě měření vody.",
+        "streakToday": "Tvoje série výměn vody se dnes přeruší. Vyměň vodu hned, nebo začni dovolenou, pokud jsi pryč.",
+        "streakBreaks_one": "Tvoje série výměn vody se přeruší za {{count}} den. Vyměň vodu, nebo začni dovolenou, pokud jsi pryč.",
+        "streakBreaks_few": "Tvoje série výměn vody se přeruší za {{count}} dny. Vyměň vodu, nebo začni dovolenou, pokud jsi pryč.",
+        "streakBreaks_many": "Tvoje série výměn vody se přeruší za {{count}} dne. Vyměň vodu, nebo začni dovolenou, pokud jsi pryč.",
+        "streakBreaks_other": "Tvoje série výměn vody se přeruší za {{count}} dní. Vyměň vodu, nebo začni dovolenou, pokud jsi pryč."
       }
     },
     "marks": {
@@ -765,7 +770,7 @@
   "webPush": {
     "title": "Připomenutí v tomto prohlížeči",
     "stateOff": "Vypnutá. Tento prohlížeč nezobrazuje připomenutí péče.",
-    "stateOn": "Zapnutá. Tento prohlížeč zobrazí v {{time}} oznámení v den, kdy je na řadě péče.",
+    "stateOn": "Zapnutá. Tento prohlížeč zobrazí v {{time}} oznámení v den, kdy je na řadě péče. Dokud trvá série výměn vody, dostáváš ji každý den, než by se přerušila.",
     "switchOn": "Zapnout připomenutí v tomto prohlížeči",
     "switchOff": "Vypnout připomenutí v tomto prohlížeči",
     "explain": "Aby ti cichlids mohl péči připomenout, posílá zprávu přes push službu výrobce tvého prohlížeče (Google, Mozilla, Microsoft nebo Apple). Tato služba se dozví, že tento prohlížeč dostává oznámení z cichlids.com a kdy, ale ne, co v nich stojí. Můžeš to kdykoli vypnout, přihlášení na našem serveru se pak smaže. Poté se tě prohlížeč zeptá na povolení.",

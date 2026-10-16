@@ -8,6 +8,7 @@ import {
 import { localStore } from "../lib/localStore";
 import { localTime } from "../today/localDate";
 import { parseReminderData, reminderData, careViewPath } from "./notificationData";
+import { reminderBody } from "./reminderText";
 import type { NotificationPermission } from "./permissionPrompt";
 import { parseSnoozes, serializeSnoozes } from "./snoozeStorage";
 
@@ -67,9 +68,10 @@ async function schedule(reminder: PlannedReminder): Promise<void> {
     identifier: reminder.id,
     content: {
       title: reminder.tankTitle,
-      body: i18next.t(`care.reminders.notification.${reminder.kind}`),
+      body: reminderBody(reminder, (key, options) => i18next.t(key, options)),
       data: reminderData(reminder),
-      categoryIdentifier: CATEGORY_ID,
+      // The snooze dismisses the reminder of today; on the last day of a running streak no reminder follows.
+      ...(reminder.daysLeft === 0 ? {} : { categoryIdentifier: CATEGORY_ID }),
     },
     trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: new Date(year, month - 1, day, reminder.hour, reminder.minute), channelId: CHANNEL_ID },
   });
@@ -101,7 +103,9 @@ export async function clearReminders(): Promise<void> {
 async function handleResponse(response: Notifications.NotificationResponse, open: (path: string) => void): Promise<void> {
   const reminder = parseReminderData(response.notification.request.content.data);
   if (!reminder) return;
-  if (response.actionIdentifier === SNOOZE_ACTION_ID) {
+  if (response.actionIdentifier === SNOOZE_ACTION_ID && reminder.daysLeft !== null) {
+    return;
+  } else if (response.actionIdentifier === SNOOZE_ACTION_ID) {
     const now = new Date();
     const snooze = snoozeReminder(reminder, now, localTime(now).utcOffsetMinutes);
     const others = (await readSnoozes(now)).filter(s => !(s.tankId === snooze.tankId && s.kind === snooze.kind));

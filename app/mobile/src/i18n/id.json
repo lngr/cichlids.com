@@ -662,7 +662,7 @@
     },
     "reminders": {
       "title": "Pengingat",
-      "stateOn": "Pengingat aktif untuk akuarium ini. Kamu mendapat satu pemberitahuan pukul {{time}} pada hari perawatan jatuh tempo.",
+      "stateOn": "Pengingat aktif untuk akuarium ini. Kamu mendapat pemberitahuan pukul {{time}} pada hari perawatan jatuh tempo. Selama rentetan penggantian air berjalan, kamu mendapatkannya setiap hari sampai rentetan itu putus.",
       "stateOnElsewhere": "Pengingat aktif untuk akuarium ini. Aplikasi di ponselmu mengingatkanmu pada hari perawatan jatuh tempo.",
       "stateOff": "Pengingat nonaktif untuk akuarium ini.",
       "switchOn": "Aktifkan pengingat",
@@ -676,7 +676,9 @@
       "snooze": "Ingatkan besok",
       "notification": {
         "water_change": "Hari ini jadwal ganti air.",
-        "measurement": "Hari ini jadwal pengukuran air."
+        "measurement": "Hari ini jadwal pengukuran air.",
+        "streakToday": "Rentetan penggantian airmu putus hari ini. Ganti air sekarang atau mulai liburan jika kamu sedang pergi.",
+        "streakBreaks_other": "Rentetan penggantian airmu putus dalam {{count}} hari. Ganti air atau mulai liburan jika kamu sedang pergi."
       }
     },
     "marks": {
@@ -734,7 +736,7 @@
   "webPush": {
     "title": "Pengingat di browser ini",
     "stateOff": "Nonaktif. Browser ini tidak menampilkan pengingat perawatan.",
-    "stateOn": "Aktif. Browser ini menampilkan notifikasi pukul {{time}} pada hari tugas perawatan jatuh tempo.",
+    "stateOn": "Aktif. Browser ini menampilkan notifikasi pukul {{time}} pada hari tugas perawatan jatuh tempo. Selama rentetan penggantian air berjalan, kamu mendapatkannya setiap hari sampai rentetan itu putus.",
     "switchOn": "Aktifkan pengingat di browser ini",
     "switchOff": "Nonaktifkan pengingat di browser ini",
     "explain": "Untuk mengingatkanmu, cichlids mengirim pesan lewat layanan push dari pembuat browsermu (Google, Mozilla, Microsoft, atau Apple). Layanan itu tahu bahwa browser ini menerima notifikasi dari cichlids.com dan kapan, tetapi tidak tahu isinya. Kamu bisa menonaktifkannya kapan saja, lalu langganan di server kami dihapus. Setelah itu browser meminta izin.",

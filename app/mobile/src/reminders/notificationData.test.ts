@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { careViewPath, parseReminderData, reminderData } from "./notificationData";
 
 describe("notificationData", () => {
-  const reminder = { tankId: 4, tankTitle: "Mbuna", kind: "water_change" as const, dueDate: "2026-10-15" };
+  const reminder = { tankId: 4, tankTitle: "Mbuna", kind: "water_change" as const, dueDate: "2026-10-15", daysLeft: null };
   it("round-trips the data of a reminder", () => {
     expect(parseReminderData(reminderData(reminder))).toEqual(reminder);
   });

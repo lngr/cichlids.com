@@ -680,7 +680,7 @@
     },
     "reminders": {
       "title": "Recordatorios",
-      "stateOn": "Los recordatorios están activados para este acuario. Recibes un aviso a las {{time}} el día en que toca el cuidado.",
+      "stateOn": "Los recordatorios están activados para este acuario. Recibes un aviso a las {{time}} el día en que toca el cuidado. Mientras una racha de cambios de agua está en curso, recibes uno cada día hasta que se rompa.",
       "stateOnElsewhere": "Los recordatorios están activados para este acuario. La app de tu teléfono te avisa el día en que toca el cuidado.",
       "stateOff": "Los recordatorios están desactivados para este acuario.",
       "switchOn": "Activar recordatorios",
@@ -694,7 +694,11 @@
       "snooze": "Recordarme mañana",
       "notification": {
         "water_change": "Hoy toca un cambio de agua.",
-        "measurement": "Hoy toca una medición del agua."
+        "measurement": "Hoy toca una medición del agua.",
+        "streakToday": "Tu racha de cambios de agua se rompe hoy. Haz el cambio de agua ahora o inicia unas vacaciones si estás de viaje.",
+        "streakBreaks_one": "Tu racha de cambios de agua se rompe en {{count}} día. Haz el cambio de agua o inicia unas vacaciones si estás de viaje.",
+        "streakBreaks_many": "Tu racha de cambios de agua se rompe en {{count}} días. Haz el cambio de agua o inicia unas vacaciones si estás de viaje.",
+        "streakBreaks_other": "Tu racha de cambios de agua se rompe en {{count}} días. Haz el cambio de agua o inicia unas vacaciones si estás de viaje."
       }
     },
     "marks": {
@@ -752,7 +756,7 @@
   "webPush": {
     "title": "Recordatorios en este navegador",
     "stateOff": "Desactivados. Este navegador no muestra recordatorios de cuidado.",
-    "stateOn": "Activados. Este navegador muestra una notificación a las {{time}} el día en que toca una tarea de cuidado.",
+    "stateOn": "Activados. Este navegador muestra una notificación a las {{time}} el día en que toca una tarea de cuidado. Mientras una racha de cambios de agua está en curso, recibes uno cada día hasta que se rompa.",
     "switchOn": "Activar recordatorios en este navegador",
     "switchOff": "Desactivar recordatorios en este navegador",
     "explain": "Para recordarte algo, cichlids envía un mensaje a través del servicio push del fabricante de tu navegador (Google, Mozilla, Microsoft o Apple). Ese servicio se entera de que este navegador recibe notificaciones de cichlids.com y de cuándo, pero no de lo que dicen. Puedes desactivarlo cuando quieras; así se borra la suscripción en nuestro servidor. A continuación, tu navegador te pedirá permiso.",

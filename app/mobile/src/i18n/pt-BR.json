@@ -680,7 +680,7 @@
     },
     "reminders": {
       "title": "Lembretes",
-      "stateOn": "Os lembretes estão ativados para este aquário. Você recebe um aviso às {{time}} no dia em que o cuidado vence.",
+      "stateOn": "Os lembretes estão ativados para este aquário. Você recebe um aviso às {{time}} no dia em que o cuidado vence. Enquanto uma sequência de trocas de água está em andamento, você recebe um por dia até ela quebrar.",
       "stateOnElsewhere": "Os lembretes estão ativados para este aquário. O app no seu celular avisa você no dia em que o cuidado vence.",
       "stateOff": "Os lembretes estão desativados para este aquário.",
       "switchOn": "Ativar lembretes",
@@ -694,7 +694,11 @@
       "snooze": "Lembrar amanhã",
       "notification": {
         "water_change": "Hoje vence uma troca de água.",
-        "measurement": "Hoje vence uma medição da água."
+        "measurement": "Hoje vence uma medição da água.",
+        "streakToday": "Sua sequência de trocas de água quebra hoje. Faça a troca de água agora ou inicie férias se estiver fora.",
+        "streakBreaks_one": "Sua sequência de trocas de água quebra em {{count}} dia. Faça a troca de água ou inicie férias se estiver fora.",
+        "streakBreaks_many": "Sua sequência de trocas de água quebra em {{count}} dias. Faça a troca de água ou inicie férias se estiver fora.",
+        "streakBreaks_other": "Sua sequência de trocas de água quebra em {{count}} dias. Faça a troca de água ou inicie férias se estiver fora."
       }
     },
     "marks": {
@@ -752,7 +756,7 @@
   "webPush": {
     "title": "Lembretes neste navegador",
     "stateOff": "Desativados. Este navegador não mostra lembretes de cuidado.",
-    "stateOn": "Ativados. Este navegador mostra uma notificação às {{time}} no dia em que uma tarefa de cuidado vence.",
+    "stateOn": "Ativados. Este navegador mostra uma notificação às {{time}} no dia em que uma tarefa de cuidado vence. Enquanto uma sequência de trocas de água está em andamento, você recebe um por dia até ela quebrar.",
     "switchOn": "Ativar lembretes neste navegador",
     "switchOff": "Desativar lembretes neste navegador",
     "explain": "Para lembrar você, o cichlids envia uma mensagem pelo serviço push do fabricante do seu navegador (Google, Mozilla, Microsoft ou Apple). Esse serviço fica sabendo que este navegador recebe notificações do cichlids.com e quando, mas não o que elas dizem. Você pode desativar isso quando quiser, e a inscrição é apagada no nosso servidor. Em seguida, o navegador pede permissão.",

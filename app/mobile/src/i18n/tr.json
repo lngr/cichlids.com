@@ -667,7 +667,7 @@
     },
     "reminders": {
       "title": "Hatırlatmalar",
-      "stateOn": "Bu akvaryum için hatırlatmalar açık. Bakımın zamanı geldiği gün saat {{time}} için bir bildirim alırsın.",
+      "stateOn": "Bu akvaryum için hatırlatmalar açık. Bakımın zamanı geldiği gün saat {{time}} için bir bildirim alırsın. Bir su değişimi serisi sürerken, seri bozulana kadar her gün bir bildirim alırsın.",
       "stateOnElsewhere": "Bu akvaryum için hatırlatmalar açık. Telefonundaki uygulama bakımın zamanı geldiği gün seni uyarır.",
       "stateOff": "Bu akvaryum için hatırlatmalar kapalı.",
       "switchOn": "Hatırlatmaları aç",
@@ -681,7 +681,10 @@
       "snooze": "Yarın hatırlat",
       "notification": {
         "water_change": "Bugün su değişimi zamanı.",
-        "measurement": "Bugün su ölçümü zamanı."
+        "measurement": "Bugün su ölçümü zamanı.",
+        "streakToday": "Su değişimi serin bugün bozuluyor. Suyu şimdi değiştir ya da yola çıktıysan tatil başlat.",
+        "streakBreaks_one": "Su değişimi serin {{count}} gün içinde bozulacak. Suyu değiştir ya da yola çıktıysan tatil başlat.",
+        "streakBreaks_other": "Su değişimi serin {{count}} gün içinde bozulacak. Suyu değiştir ya da yola çıktıysan tatil başlat."
       }
     },
     "marks": {
@@ -739,7 +742,7 @@
   "webPush": {
     "title": "Bu tarayıcıdaki hatırlatmalar",
     "stateOff": "Kapalı. Bu tarayıcı bakım hatırlatmaları göstermiyor.",
-    "stateOn": "Açık. Bu tarayıcı, bakım görevinin zamanı geldiği gün saat {{time}} için bildirim gösterir.",
+    "stateOn": "Açık. Bu tarayıcı, bakım görevinin zamanı geldiği gün saat {{time}} için bildirim gösterir. Bir su değişimi serisi sürerken, seri bozulana kadar her gün bir bildirim alırsın.",
     "switchOn": "Bu tarayıcıda hatırlatmaları aç",
     "switchOff": "Bu tarayıcıda hatırlatmaları kapat",
     "explain": "Seni uyarabilmek için cichlids, tarayıcını yapan şirketin (Google, Mozilla, Microsoft veya Apple) push hizmeti üzerinden bir mesaj gönderir. Bu hizmet, bu tarayıcının cichlids.com'dan bildirim aldığını ve ne zaman aldığını öğrenir, ancak içeriğini öğrenmez. Bunu istediğin zaman kapatabilirsin; bu durumda sunucumuzdaki kaydın silinir. Ardından tarayıcın izin ister.",

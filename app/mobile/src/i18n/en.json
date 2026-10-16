@@ -667,7 +667,7 @@
     },
     "reminders": {
       "title": "Reminders",
-      "stateOn": "Reminders are on for this tank. You get one note at {{time}} on the day care is due.",
+      "stateOn": "Reminders are on for this tank. You get a note at {{time}} on the day care is due. While a water change streak runs, you get one every day until it would break.",
       "stateOnElsewhere": "Reminders are on for this tank. The app on your phone reminds you on the day care is due.",
       "stateOff": "Reminders are off for this tank.",
       "switchOn": "Switch reminders on",
@@ -681,7 +681,10 @@
       "snooze": "Remind me tomorrow",
       "notification": {
         "water_change": "A water change is due today.",
-        "measurement": "A water measurement is due today."
+        "measurement": "A water measurement is due today.",
+        "streakToday": "Your water change streak breaks today. Do the water change now or enter a vacation if you are away.",
+        "streakBreaks_one": "Your water change streak breaks in {{count}} day. Do the water change or enter a vacation if you are away.",
+        "streakBreaks_other": "Your water change streak breaks in {{count}} days. Do the water change or enter a vacation if you are away."
       }
     },
     "marks": {
@@ -739,7 +742,7 @@
   "webPush": {
     "title": "Reminders in this browser",
     "stateOff": "Off. This browser shows no care reminders.",
-    "stateOn": "On. This browser shows a notification at {{time}} on the day care is due.",
+    "stateOn": "On. This browser shows a notification at {{time}} on the day care is due. While a water change streak runs, you get one every day until it would break.",
     "switchOn": "Switch on reminders in this browser",
     "switchOff": "Switch off reminders in this browser",
     "explain": "To remind you, cichlids sends a message through the push service of your browser's maker (Google, Mozilla, Microsoft or Apple). That service learns that this browser receives notifications from cichlids.com, and when, but not what they say. You can switch this off at any time, which deletes the subscription on our server. Your browser asks for permission next.",

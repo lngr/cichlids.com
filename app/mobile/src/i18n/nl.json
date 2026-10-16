@@ -667,7 +667,7 @@
     },
     "reminders": {
       "title": "Herinneringen",
-      "stateOn": "Herinneringen staan aan voor dit aquarium. Op de dag dat de verzorging aan de beurt is, krijg je om {{time}} een melding.",
+      "stateOn": "Herinneringen staan aan voor dit aquarium. Op de dag dat de verzorging aan de beurt is, krijg je om {{time}} een melding. Zolang een reeks waterverversingen loopt, krijg je er elke dag een, tot de reeks zou eindigen.",
       "stateOnElsewhere": "Herinneringen staan aan voor dit aquarium. De app op je telefoon herinnert je op de dag dat de verzorging aan de beurt is.",
       "stateOff": "Herinneringen staan uit voor dit aquarium.",
       "switchOn": "Herinneringen aanzetten",
@@ -681,7 +681,10 @@
       "snooze": "Herinner me morgen",
       "notification": {
         "water_change": "Vandaag is een waterverversing aan de beurt.",
-        "measurement": "Vandaag is een watermeting aan de beurt."
+        "measurement": "Vandaag is een watermeting aan de beurt.",
+        "streakToday": "Je reeks waterverversingen eindigt vandaag. Ververs het water nu of start een vakantie als je weg bent.",
+        "streakBreaks_one": "Je reeks waterverversingen eindigt over {{count}} dag. Ververs het water of start een vakantie als je weg bent.",
+        "streakBreaks_other": "Je reeks waterverversingen eindigt over {{count}} dagen. Ververs het water of start een vakantie als je weg bent."
       }
     },
     "marks": {
@@ -739,7 +742,7 @@
   "webPush": {
     "title": "Herinneringen in deze browser",
     "stateOff": "Uit. Deze browser toont geen verzorgingsherinneringen.",
-    "stateOn": "Aan. Deze browser toont om {{time}} een melding op de dag dat een verzorgingstaak aan de beurt is.",
+    "stateOn": "Aan. Deze browser toont om {{time}} een melding op de dag dat een verzorgingstaak aan de beurt is. Zolang een reeks waterverversingen loopt, krijg je er elke dag een, tot de reeks zou eindigen.",
     "switchOn": "Herinneringen in deze browser aanzetten",
     "switchOff": "Herinneringen in deze browser uitzetten",
     "explain": "Om je te herinneren stuurt cichlids een bericht via de pushdienst van de maker van je browser (Google, Mozilla, Microsoft of Apple). Die dienst weet dan dat deze browser meldingen van cichlids.com krijgt, en wanneer, maar niet wat erin staat. Je kunt dit altijd uitzetten; dan wordt de aanmelding op onze server verwijderd. Daarna vraagt je browser om toestemming.",

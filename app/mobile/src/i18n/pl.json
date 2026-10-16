@@ -693,7 +693,7 @@
     },
     "reminders": {
       "title": "Przypomnienia",
-      "stateOn": "Przypomnienia są włączone dla tego akwarium. W dniu terminu dostajesz jedno powiadomienie o {{time}}.",
+      "stateOn": "Przypomnienia są włączone dla tego akwarium. W dniu terminu dostajesz powiadomienie o {{time}}. Dopóki trwa seria podmian wody, dostajesz je codziennie, aż się przerwie.",
       "stateOnElsewhere": "Przypomnienia są włączone dla tego akwarium. Aplikacja w telefonie przypomina Ci w dniu terminu.",
       "stateOff": "Przypomnienia są wyłączone dla tego akwarium.",
       "switchOn": "Włącz przypomnienia",
@@ -707,7 +707,12 @@
       "snooze": "Przypomnij jutro",
       "notification": {
         "water_change": "Dziś przypada podmiana wody.",
-        "measurement": "Dziś przypada pomiar wody."
+        "measurement": "Dziś przypada pomiar wody.",
+        "streakToday": "Twoja seria podmian wody kończy się dziś. Zrób podmianę wody teraz albo rozpocznij urlop, jeśli cię nie ma.",
+        "streakBreaks_one": "Twoja seria podmian wody kończy się za {{count}} dzień. Zrób podmianę wody albo rozpocznij urlop, jeśli cię nie ma.",
+        "streakBreaks_few": "Twoja seria podmian wody kończy się za {{count}} dni. Zrób podmianę wody albo rozpocznij urlop, jeśli cię nie ma.",
+        "streakBreaks_many": "Twoja seria podmian wody kończy się za {{count}} dni. Zrób podmianę wody albo rozpocznij urlop, jeśli cię nie ma.",
+        "streakBreaks_other": "Twoja seria podmian wody kończy się za {{count}} dnia. Zrób podmianę wody albo rozpocznij urlop, jeśli cię nie ma."
       }
     },
     "marks": {
@@ -765,7 +770,7 @@
   "webPush": {
     "title": "Przypomnienia w tej przeglądarce",
     "stateOff": "Wyłączone. Ta przeglądarka nie pokazuje przypomnień o pielęgnacji.",
-    "stateOn": "Włączone. Ta przeglądarka pokazuje powiadomienie o {{time}} w dniu, w którym przypada czynność pielęgnacyjna.",
+    "stateOn": "Włączone. Ta przeglądarka pokazuje powiadomienie o {{time}} w dniu, w którym przypada czynność pielęgnacyjna. Dopóki trwa seria podmian wody, dostajesz je codziennie, aż się przerwie.",
     "switchOn": "Włącz przypomnienia w tej przeglądarce",
     "switchOff": "Wyłącz przypomnienia w tej przeglądarce",
     "explain": "Aby Ci przypominać, cichlids wysyła wiadomość przez usługę push producenta Twojej przeglądarki (Google, Mozilla, Microsoft lub Apple). Ta usługa dowiaduje się, że ta przeglądarka dostaje powiadomienia z cichlids.com i kiedy, ale nie dowiaduje się, co w nich jest. Możesz to wyłączyć w każdej chwili, a zapis na naszym serwerze zostanie usunięty. Następnie przeglądarka zapyta o zgodę.",
