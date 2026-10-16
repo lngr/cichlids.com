@@ -3,6 +3,7 @@ using Cichlids.Api.Features.Streaks;
 using Cichlids.Api.Features.Discover;
 using System.Text.Json.Serialization;
 using Cichlids.Api.Features.Auth;
+using Cichlids.Api.Features.Auth.Devices;
 using Cichlids.Api.Features.Auth.WebSessions;
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Comments;
@@ -76,6 +77,12 @@ builder.Services.AddHostedService<OutboxDispatcherHostedService>();
 // without an HTTPS authority or an audience refuses to start.
 var authenticationSettings = AuthenticationSettings.Resolve(builder.Configuration, builder.Environment.EnvironmentName);
 builder.Services.AddSingleton(authenticationSettings);
+// Resolved before the host is built so a deployment outside Development without the signing keys
+// of the device tokens refuses to start.
+var deviceTokenSettings = DeviceTokenSettings.Resolve(
+    builder.Configuration, builder.Environment.EnvironmentName, builder.Environment.ContentRootPath, authenticationSettings.Authority);
+builder.Services.AddSingleton(deviceTokenSettings);
+builder.Services.AddSingleton<DeviceTokenIssuer>();
 // Resolved before the host is built so a deployment outside Development with web session cookies
 // or a callback that are not HTTPS refuses to start.
 var webSessionSettings = WebSessionSettings.Resolve(builder.Configuration, builder.Environment.EnvironmentName);
@@ -103,14 +110,27 @@ builder.Services.AddOptions<WebSessionCleanupOptions>()
 builder.Services.AddScoped<WebSessionCleanupService>();
 builder.Services.AddHostedService<WebSessionCleanupHostedService>();
 
+builder.Services.AddOptions<DeviceAuthOptions>()
+    .Bind(builder.Configuration.GetSection(DeviceAuthOptions.SectionName))
+    .Validate(
+        o => o.ChallengeLifetime > TimeSpan.Zero && o.TimestampWindow > TimeSpan.Zero
+            && o.MaxRegistrationsPerAddressPerHour > 0 && o.MaxTokenRequestsPerAddressPerMinute > 0,
+        "DeviceAuth durations and limits must be positive.")
+    .ValidateOnStart();
+builder.Services.AddScoped<DeviceAuthService>();
+builder.Services.AddDeviceAuthRateLimits();
+
 // The native app authenticates with a bearer token, the web app with its session cookie. A
-// request with an Authorization header always uses the bearer token.
+// request with an Authorization header always uses the bearer token: a token of the device token
+// issuer is validated as a device token, every other one as a Keycloak token.
 const string bearerOrWebSessionScheme = "BearerOrWebSession";
 builder.Services.AddAuthentication(bearerOrWebSessionScheme)
     .AddPolicyScheme(bearerOrWebSessionScheme, displayName: null, options =>
         options.ForwardDefaultSelector = context => WebSessionAuthenticationHandler.Applies(context, webSessionSettings)
             ? WebSessionAuthenticationHandler.SchemeName
-            : JwtBearerDefaults.AuthenticationScheme)
+            : DeviceTokenAuthentication.Applies(context, deviceTokenSettings)
+                ? DeviceTokenAuthentication.SchemeName
+                : JwtBearerDefaults.AuthenticationScheme)
     .AddScheme<AuthenticationSchemeOptions, WebSessionAuthenticationHandler>(WebSessionAuthenticationHandler.SchemeName, configureOptions: null)
     .AddJwtBearer(options =>
     {
@@ -125,7 +145,8 @@ builder.Services.AddAuthentication(bearerOrWebSessionScheme)
             NameClaimType = "preferred_username",
         };
         options.Events = new JwtBearerEvents { OnTokenValidated = KeycloakRealmRoles.PromoteToRoleClaims };
-    });
+    })
+    .AddJwtBearer(DeviceTokenAuthentication.SchemeName, options => DeviceTokenAuthentication.Configure(options, deviceTokenSettings));
 
 builder.Services.AddAuthorization(options =>
 {
@@ -149,6 +170,7 @@ builder.Services.AddProblemDetails(options => options.CustomizeProblemDetails = 
         context.ProblemDetails.Extensions.TryAdd("code", VideoProblem.RequestInvalid);
 });
 builder.Services.AddExceptionHandler<NonMemberLoginExceptionHandler>();
+builder.Services.AddExceptionHandler<RegistrationRequiredExceptionHandler>();
 
 builder.Services.AddScoped<SpeciesQueryService>();
 builder.Services.AddScoped<StoriesQueryService>();
@@ -353,6 +375,7 @@ app.UseWhen(context => WebPushEndpoints.IsWebPushPath(context.Request.Path), bra
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseRateLimiter();
 
 app.MapGet("/healthz", () => Results.Ok(new { status = "ok" }))
     .WithName("GetHealth");
@@ -374,6 +397,7 @@ app.MapMediaLibraryEndpoints();
 app.MapProfileMediaEndpoints();
 app.MapOnboardingEndpoints();
 app.MapWebSessionEndpoints();
+app.MapDeviceAuthEndpoints();
 app.MapCommunityEndpoints();
 app.MapLegacyRedirectsEndpoints();
 app.MapUploadsEndpoints();

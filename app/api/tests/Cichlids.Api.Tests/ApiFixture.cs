@@ -1,3 +1,4 @@
+using Cichlids.Api.Tests.Features.Auth.Devices;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
@@ -62,6 +63,11 @@ public sealed class ApiFixture : IAsyncLifetime
             builder.UseSetting("WebPush:Subject", "mailto:operator@example.test");
             builder.UseSetting("WebPush:AllowedPushHosts:0", "push.example.test");
             builder.UseSetting("WebPushSender:Enabled", "false");
+            // The signing keys of the device tokens are known to the tests, so they can forge tokens
+            // with a trusted or an unknown key. The request limits leave room for the whole suite.
+            builder.UseSetting("DeviceTokens:KeySet", DeviceTestKeys.KeySetJson);
+            builder.UseSetting("DeviceAuth:MaxRegistrationsPerAddressPerHour", "100000");
+            builder.UseSetting("DeviceAuth:MaxTokenRequestsPerAddressPerMinute", "100000");
             builder.ConfigureAppConfiguration((_, configBuilder) =>
                 configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                 {

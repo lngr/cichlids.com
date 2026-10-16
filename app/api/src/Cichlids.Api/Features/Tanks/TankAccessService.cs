@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Cichlids.Api.Features.Auth.Devices;
 using Cichlids.Domain;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Persistence;
@@ -28,11 +29,12 @@ public sealed class TankAccessService(CichlidsDbContext context)
 {
     /// <summary>
     /// The profile id of the authenticated caller, or null when the caller is anonymous. A suspended profile
-    /// is anonymous, so a follow or a selection never keeps a suspended member in an audience.
+    /// is anonymous, so a follow or a selection never keeps a suspended member in an audience. A provisional
+    /// caller (device token) is anonymous here: no audience of members includes a provisional profile.
     /// </summary>
     public async Task<long?> ViewerProfileIdAsync(ClaimsPrincipal user, CancellationToken cancellationToken)
     {
-        var subject = user.FindFirst("sub")?.Value;
+        var subject = user.KeycloakSubject();
         if (user.Identity?.IsAuthenticated != true || subject is null)
         {
             return null;

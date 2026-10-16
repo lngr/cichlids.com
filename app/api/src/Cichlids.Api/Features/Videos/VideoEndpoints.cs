@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
 using Cichlids.Api.Features.Auth;
+using Cichlids.Api.Features.Auth.Devices;
 using Cichlids.Api.Features.Care;
 using Cichlids.Api.Features.Common;
 using Cichlids.Infrastructure.Media;
@@ -110,7 +111,7 @@ public static partial class VideoEndpoints
     private static async Task<Results<Ok<IReadOnlyList<VideoDto>>, ProblemHttpResult>> ListAsync(
         long tankId, ClaimsPrincipal user, CichlidsDbContext db, VideoQueryService videos, CancellationToken ct)
     {
-        var subject = user.FindFirst("sub")?.Value;
+        var subject = user.KeycloakSubject();
         long? viewer = user.Identity?.IsAuthenticated == true && subject is not null
             ? await db.ProfileIdentities.AsNoTracking().Where(i => i.Provider == "oidc" && i.Subject == subject)
                 .Select(i => (long?)i.ProfileId).FirstOrDefaultAsync(ct)

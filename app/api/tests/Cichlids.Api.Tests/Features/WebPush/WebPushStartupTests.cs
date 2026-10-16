@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
+using Cichlids.Api.Features.Auth.Devices;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 
@@ -24,6 +25,7 @@ public sealed class WebPushStartupTests : IDisposable
             builder.UseSetting("Slugs:Secret", "staging-startup-test-secret");
             builder.UseSetting("Authentication:Authority", "https://auth.example.test/realms/cichlids");
             builder.UseSetting("DataProtection:KeyRingPath", _keyRing.FullName);
+            builder.UseSetting("DeviceTokens:KeySet", DeviceTokenKeySet.Generate().ToJson());
             builder.UseSetting("WebPush:Enabled", "true");
             builder.ConfigureAppConfiguration((_, configBuilder) =>
                 configBuilder.AddInMemoryCollection(new Dictionary<string, string?>

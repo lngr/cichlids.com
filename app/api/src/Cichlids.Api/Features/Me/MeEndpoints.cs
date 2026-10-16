@@ -2,6 +2,7 @@ using System.Security.Claims;
 using System.Globalization;
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Auth;
+using Cichlids.Api.Features.Auth.Devices;
 using Cichlids.Api.Features.Profiles;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -77,15 +78,15 @@ public static class MeEndpoints
         ProfilesQueryService profilesQueryService,
         CancellationToken cancellationToken)
     {
-        var profile = await currentProfileService.ResolveAsync(user, cancellationToken);
+        var profile = await currentProfileService.ResolveCallerAsync(user, cancellationToken);
 
-        var detail = await profilesQueryService.GetByIdAsync(profile.Id, profile.Id, cancellationToken)
+        var detail = await profilesQueryService.GetOwnAsync(profile, cancellationToken)
             ?? throw new InvalidOperationException($"The resolved profile {profile.Id} has no public detail view.");
 
         var roles = user.Identity is ClaimsIdentity identity
             ? identity.FindAll(identity.RoleClaimType).Select(c => c.Value).Distinct().ToList()
             : [];
 
-        return TypedResults.Ok(new MeDto(detail, roles));
+        return TypedResults.Ok(new MeDto(detail, roles, user.IsProvisional()));
     }
 }

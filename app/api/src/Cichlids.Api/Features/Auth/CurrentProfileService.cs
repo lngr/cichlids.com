@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Cichlids.Api.Features.Auth.Devices;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Identity;
@@ -16,7 +17,8 @@ namespace Cichlids.Api.Features.Auth;
 /// oidc identity in a single save, so a profile never exists without its identity. When a
 /// parallel first call wins the race for the same subject, the call returns the profile that won;
 /// when another account takes the chosen username first, the call retries with a fresh
-/// candidate. A subject bound to a profile of another kind than member is refused with a
+/// candidate. A provisional caller (device token) has no oidc identity: ResolveAsync refuses it
+/// and ResolveCallerAsync returns its provisional profile. A subject bound to a profile of another kind than member is refused with a
 /// NonMemberLoginException. A fresh profile never shows an email address or the name of a system
 /// profile: the token's username and name become its handle and display name only when they are
 /// neither email-like nor reserved.
@@ -29,8 +31,16 @@ public sealed class CurrentProfileService(
     private const string OidcProvider = "oidc";
     private const int MaxCreateAttempts = 3;
 
+    /// <summary>
+    /// The profile of a registered member. A provisional caller raises a RegistrationRequiredException.
+    /// </summary>
     public async Task<Profile> ResolveAsync(ClaimsPrincipal user, CancellationToken cancellationToken)
     {
+        if (user.IsProvisional())
+        {
+            throw new RegistrationRequiredException();
+        }
+
         var subject = user.FindFirst("sub")?.Value
             ?? throw new InvalidOperationException("The authenticated principal has no sub claim.");
 
@@ -57,6 +67,20 @@ public sealed class CurrentProfileService(
 
         throw new InvalidOperationException(
             $"The profile for a first login could not be created after {MaxCreateAttempts} attempts.");
+    }
+
+    /// <summary>
+    /// The profile of the caller, a registered member or the provisional profile of a device token.
+    /// </summary>
+    public async Task<Profile> ResolveCallerAsync(ClaimsPrincipal user, CancellationToken cancellationToken)
+    {
+        if (user.ProvisionalProfileId() is not { } profileId)
+        {
+            return await ResolveAsync(user, cancellationToken);
+        }
+
+        return await context.Profiles.FirstOrDefaultAsync(p => p.Id == profileId && p.Kind == ProfileKind.Provisional, cancellationToken)
+            ?? throw new InvalidOperationException($"The device token names profile {profileId}, which is not a provisional profile.");
     }
 
     private Profile RequireMember(Profile profile, string subject)

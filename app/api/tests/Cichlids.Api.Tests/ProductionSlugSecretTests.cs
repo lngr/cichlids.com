@@ -1,5 +1,6 @@
 using Cichlids.Infrastructure.Slugs;
 using Microsoft.AspNetCore.Hosting;
+using Cichlids.Api.Features.Auth.Devices;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 
@@ -30,6 +31,7 @@ public sealed class ProductionSlugSecretTests
                 // reached.
                 builder.UseSetting("Authentication:Authority", "https://issuer.test");
                 builder.UseSetting("DataProtection:KeyRingPath", Path.GetTempPath());
+                builder.UseSetting("DeviceTokens:KeySet", DeviceTokenKeySet.Generate().ToJson());
                 builder.ConfigureAppConfiguration((_, configBuilder) =>
                     configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                     {

@@ -25,10 +25,21 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
         var profile = await context.Profiles
             .FirstOrDefaultAsync(p => p.Id == id && p.Kind == ProfileKind.Member, cancellationToken);
 
-        if (profile is null)
-        {
-            return null;
-        }
+        return profile is null ? null : await BuildAsync(profile, viewerProfileId, cancellationToken);
+    }
+
+    /// <summary>
+    /// The detail view of the caller's own profile, a member or a provisional profile; the only
+    /// path that shows a provisional profile.
+    /// </summary>
+    public async Task<ProfileDetailDto?> GetOwnAsync(Profile profile, CancellationToken cancellationToken) =>
+        profile.Kind is ProfileKind.Member or ProfileKind.Provisional
+            ? await BuildAsync(profile, profile.Id, cancellationToken)
+            : null;
+
+    private async Task<ProfileDetailDto> BuildAsync(Profile profile, long? viewerProfileId, CancellationToken cancellationToken)
+    {
+        var id = profile.Id;
 
         var avatarMediaId = await context.MediaLinks.ProfileLinks(MediaLinkRole.Avatar)
             .Where(l => l.ProfileId == id).Select(l => (long?)l.MediaItemId).SingleOrDefaultAsync(cancellationToken);
