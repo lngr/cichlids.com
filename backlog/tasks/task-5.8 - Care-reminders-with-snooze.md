@@ -4,7 +4,7 @@ title: Care reminders with snooze
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 04:31'
+updated_date: '2026-10-16 04:33'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -39,4 +39,6 @@ On the due day the member receives one push notification per due care, which the
 ### Delivery (decided by the project owner, 2026-10-16)
 - The mobile app schedules the care reminders as local notifications on the device (no server push, no third party); it reschedules them whenever the plan or the entries change and when the app opens. Server push is decided later for kudos and answers.
 - The way web app users are reminded is still open.
+
+- Web app (decided by the project owner, 2026-10-16): Web Push with our own VAPID key pair (RFC 8292) and encrypted payloads (RFC 8291), only after the member allows notifications in the browser; no additional service provider. The private VAPID key lives only on the server (SOPS secret in the cluster, a local file in development); the operator generates the key pair. On iOS, Web Push works only for a web app added to the home screen.
 <!-- SECTION:NOTES:END -->
