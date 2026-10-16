@@ -205,7 +205,8 @@
       "cancel": "Anuluj",
       "deleteError": "Nie udało się usunąć szkicu. Spróbuj ponownie."
     },
-    "loginUnavailable": "Logowanie jest niedostępne, ponieważ nie można połączyć się z usługą logowania. Spróbuj ponownie."
+    "loginUnavailable": "Logowanie jest niedostępne, ponieważ nie można połączyć się z usługą logowania. Spróbuj ponownie.",
+    "todos": "Zadania"
   },
   "upload": {
     "title": "Prześlij zdjęcie",
@@ -277,7 +278,14 @@
     "care_origin_invalid": "Wybierz zestaw testowy, miernik lub sondę.",
     "care_range_invalid": "Początek zakresu musi być przed jego końcem.",
     "care_plan_invalid": "Wybierz rytm od 1 do 90 dni albo włącz lub wyłącz regułę.",
-    "care_date_invalid": "Nie udało się odczytać daty z urządzenia."
+    "care_date_invalid": "Nie udało się odczytać daty z urządzenia.",
+    "care_note_invalid": "Notatka ma do 2000 znaków.",
+    "care_photo_not_found": "To zdjęcie jest niedostępne albo jego link wygasł.",
+    "care_photo_invalid": "Wybierz zdjęcie JPEG, PNG lub WebP do 25 MB.",
+    "care_photo_limit_reached": "Wpis ma do 6 zdjęć.",
+    "todo_not_found": "To zadanie jest niedostępne.",
+    "todo_text_invalid": "Zadanie ma od 1 do 200 znaków.",
+    "todo_request_invalid": "Nie udało się odczytać tej zmiany zadania."
   },
   "featureFlags": {
     "activityTitle": "Aktywność społeczności",
@@ -443,7 +451,8 @@
       "logWaterChange": "Zapisz podmianę wody",
       "logWaterChangeFor": "Zapisz podmianę wody w {{tank}}",
       "measureFor": "Zmierz w {{tank}}"
-    }
+    },
+    "todos": "Zadania do zrobienia: {{total}}"
   },
   "care": {
     "waterChange": "Podmiana wody",
@@ -551,6 +560,45 @@
       "customLabel": "Własny rytm w dniach (od 1 do 90)",
       "saveCustom": "Użyj tego rytmu",
       "customInvalid": "Wpisz liczbę całkowitą od 1 do 90."
+    },
+    "photo": {
+      "add": "Dodaj zdjęcie",
+      "open": "Otwórz zdjęcie {{index}} z {{count}}",
+      "viewerTitle": "Zdjęcie",
+      "close": "Zamknij",
+      "remove": "Usuń zdjęcie",
+      "limit": "Wpis ma do 6 zdjęć."
+    },
+    "note": {
+      "add": "Dodaj notatkę",
+      "edit": "Edytuj notatkę",
+      "title": "Notatka",
+      "save": "Zapisz notatkę",
+      "remove": "Usuń notatkę"
+    },
+    "todo": {
+      "add": "Dodaj zadanie",
+      "title": "Nowe zadanie",
+      "hint": "Na przykład: kupić uzdatniacz do wody",
+      "save": "Dodaj zadanie",
+      "done": "Zrobione: {{text}}",
+      "open": "Do zrobienia: {{text}}",
+      "heading": "Zadania"
     }
+  },
+  "todos": {
+    "title": "Zadania",
+    "open": "Do zrobienia",
+    "doneHeading": "Zrobione",
+    "empty": "Na razie nie ma nic do zrobienia.",
+    "doneEmpty": "Nic jeszcze nie jest zrobione.",
+    "newLabel": "Nowe zadanie",
+    "add": "Dodaj",
+    "tank": "Akwarium",
+    "noTanks": "Załóż akwarium, aby dodawać zadania.",
+    "check": "Oznacz jako zrobione: {{text}}",
+    "reopen": "Otwórz ponownie: {{text}}",
+    "remove": "Usuń: {{text}}",
+    "signIn": "Zaloguj się, aby zobaczyć swoje zadania."
   }
 }

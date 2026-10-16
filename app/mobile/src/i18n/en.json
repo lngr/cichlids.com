@@ -191,7 +191,8 @@
       "cancel": "Cancel",
       "deleteError": "Deleting the draft failed. Please try again."
     },
-    "loginUnavailable": "Login is unavailable right now because the login service cannot be reached. Please try again."
+    "loginUnavailable": "Login is unavailable right now because the login service cannot be reached. Please try again.",
+    "todos": "To-dos"
   },
   "upload": {
     "title": "Upload photo",
@@ -261,7 +262,14 @@
     "care_origin_invalid": "Choose test kit, meter or probe.",
     "care_range_invalid": "The start of the time range must come before its end.",
     "care_plan_invalid": "Choose a rhythm of 1 to 90 days, or switch the rule on or off.",
-    "care_date_invalid": "Your device date could not be read."
+    "care_date_invalid": "Your device date could not be read.",
+    "care_note_invalid": "A note has up to 2000 characters.",
+    "care_photo_not_found": "This photo is unavailable or its link has expired.",
+    "care_photo_invalid": "Choose a JPEG, PNG or WebP photo of up to 25 MB.",
+    "care_photo_limit_reached": "An entry holds up to 6 photos.",
+    "todo_not_found": "This to-do is unavailable.",
+    "todo_text_invalid": "A to-do has 1 to 200 characters.",
+    "todo_request_invalid": "This to-do change could not be read."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -423,7 +431,8 @@
       "logWaterChange": "Log water change",
       "logWaterChangeFor": "Log water change for {{tank}}",
       "measureFor": "Measure for {{tank}}"
-    }
+    },
+    "todos": "Open to-dos: {{total}}"
   },
   "care": {
     "waterChange": "Water change",
@@ -525,6 +534,45 @@
       "customLabel": "Your own rhythm in days (1 to 90)",
       "saveCustom": "Use this rhythm",
       "customInvalid": "Enter a whole number from 1 to 90."
+    },
+    "photo": {
+      "add": "Add photo",
+      "open": "Open photo {{index}} of {{count}}",
+      "viewerTitle": "Photo",
+      "close": "Close",
+      "remove": "Remove photo",
+      "limit": "An entry holds up to 6 photos."
+    },
+    "note": {
+      "add": "Add note",
+      "edit": "Edit note",
+      "title": "Note",
+      "save": "Save note",
+      "remove": "Remove note"
+    },
+    "todo": {
+      "add": "Add to-do",
+      "title": "New to-do",
+      "hint": "For example: buy water conditioner",
+      "save": "Add to-do",
+      "done": "Done: {{text}}",
+      "open": "Open: {{text}}",
+      "heading": "To-dos"
     }
+  },
+  "todos": {
+    "title": "To-dos",
+    "open": "Open",
+    "doneHeading": "Done",
+    "empty": "Nothing to do right now.",
+    "doneEmpty": "Nothing is done yet.",
+    "newLabel": "New to-do",
+    "add": "Add",
+    "tank": "Tank",
+    "noTanks": "Create a tank to add to-dos.",
+    "check": "Mark as done: {{text}}",
+    "reopen": "Reopen: {{text}}",
+    "remove": "Delete: {{text}}",
+    "signIn": "Sign in to see your to-dos."
   }
 }

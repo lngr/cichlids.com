@@ -191,7 +191,8 @@
       "cancel": "Annuleren",
       "deleteError": "Verwijderen van het concept mislukt. Probeer het opnieuw."
     },
-    "loginUnavailable": "Inloggen is niet beschikbaar omdat de aanmeldservice onbereikbaar is. Probeer het opnieuw."
+    "loginUnavailable": "Inloggen is niet beschikbaar omdat de aanmeldservice onbereikbaar is. Probeer het opnieuw.",
+    "todos": "Taken"
   },
   "upload": {
     "title": "Foto uploaden",
@@ -261,7 +262,14 @@
     "care_origin_invalid": "Kies testset, meter of sonde.",
     "care_range_invalid": "Het begin van de periode moet voor het einde liggen.",
     "care_plan_invalid": "Kies een ritme van 1 tot 90 dagen of schakel de regel in of uit.",
-    "care_date_invalid": "De datum van je apparaat kon niet worden gelezen."
+    "care_date_invalid": "De datum van je apparaat kon niet worden gelezen.",
+    "care_note_invalid": "Een notitie bevat maximaal 2000 tekens.",
+    "care_photo_not_found": "Deze foto is niet beschikbaar of de link is verlopen.",
+    "care_photo_invalid": "Kies een JPEG-, PNG- of WebP-foto van maximaal 25 MB.",
+    "care_photo_limit_reached": "Een item bevat maximaal 6 foto's.",
+    "todo_not_found": "Deze taak is niet beschikbaar.",
+    "todo_text_invalid": "Een taak bevat 1 tot 200 tekens.",
+    "todo_request_invalid": "Deze wijziging van de taak kon niet worden gelezen."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -423,7 +431,8 @@
       "logWaterChange": "Water verversen vastleggen",
       "logWaterChangeFor": "Water verversen vastleggen voor {{tank}}",
       "measureFor": "Meten voor {{tank}}"
-    }
+    },
+    "todos": "Openstaande taken: {{total}}"
   },
   "care": {
     "waterChange": "Water verversen",
@@ -525,6 +534,45 @@
       "customLabel": "Eigen ritme in dagen (1 tot 90)",
       "saveCustom": "Dit ritme gebruiken",
       "customInvalid": "Voer een geheel getal van 1 tot 90 in."
+    },
+    "photo": {
+      "add": "Foto toevoegen",
+      "open": "Foto {{index}} van {{count}} openen",
+      "viewerTitle": "Foto",
+      "close": "Sluiten",
+      "remove": "Foto verwijderen",
+      "limit": "Een item bevat maximaal 6 foto's."
+    },
+    "note": {
+      "add": "Notitie toevoegen",
+      "edit": "Notitie bewerken",
+      "title": "Notitie",
+      "save": "Notitie opslaan",
+      "remove": "Notitie verwijderen"
+    },
+    "todo": {
+      "add": "Taak toevoegen",
+      "title": "Nieuwe taak",
+      "hint": "Bijvoorbeeld: waterconditioner kopen",
+      "save": "Taak toevoegen",
+      "done": "Klaar: {{text}}",
+      "open": "Open: {{text}}",
+      "heading": "Taken"
     }
+  },
+  "todos": {
+    "title": "Taken",
+    "open": "Open",
+    "doneHeading": "Klaar",
+    "empty": "Op dit moment is er niets te doen.",
+    "doneEmpty": "Nog niets afgerond.",
+    "newLabel": "Nieuwe taak",
+    "add": "Toevoegen",
+    "tank": "Aquarium",
+    "noTanks": "Maak een aquarium aan om taken toe te voegen.",
+    "check": "Markeren als klaar: {{text}}",
+    "reopen": "Heropenen: {{text}}",
+    "remove": "Verwijderen: {{text}}",
+    "signIn": "Log in om je taken te zien."
   }
 }

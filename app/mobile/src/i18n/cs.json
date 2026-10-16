@@ -205,7 +205,8 @@
       "cancel": "Zrušit",
       "deleteError": "Smazání konceptu se nezdařilo. Zkuste to znovu."
     },
-    "loginUnavailable": "Přihlášení není dostupné, protože se nelze připojit k přihlašovací službě. Zkuste to znovu."
+    "loginUnavailable": "Přihlášení není dostupné, protože se nelze připojit k přihlašovací službě. Zkuste to znovu.",
+    "todos": "Úkoly"
   },
   "upload": {
     "title": "Nahrát fotografii",
@@ -277,7 +278,14 @@
     "care_origin_invalid": "Vyber test, měřicí přístroj nebo sondu.",
     "care_range_invalid": "Začátek období musí být před jeho koncem.",
     "care_plan_invalid": "Vyber rytmus od 1 do 90 dní nebo pravidlo zapni či vypni.",
-    "care_date_invalid": "Datum zařízení se nepodařilo přečíst."
+    "care_date_invalid": "Datum zařízení se nepodařilo přečíst.",
+    "care_note_invalid": "Poznámka má až 2000 znaků.",
+    "care_photo_not_found": "Tato fotka není dostupná nebo její odkaz vypršel.",
+    "care_photo_invalid": "Vyber fotku JPEG, PNG nebo WebP do 25 MB.",
+    "care_photo_limit_reached": "Záznam má až 6 fotek.",
+    "todo_not_found": "Tento úkol není dostupný.",
+    "todo_text_invalid": "Úkol má 1 až 200 znaků.",
+    "todo_request_invalid": "Tuto změnu úkolu se nepodařilo přečíst."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -443,7 +451,8 @@
       "logWaterChange": "Zaznamenat výměnu vody",
       "logWaterChangeFor": "Zaznamenat výměnu vody pro {{tank}}",
       "measureFor": "Změřit pro {{tank}}"
-    }
+    },
+    "todos": "Otevřené úkoly: {{total}}"
   },
   "care": {
     "waterChange": "Výměna vody",
@@ -551,6 +560,45 @@
       "customLabel": "Vlastní rytmus ve dnech (1 až 90)",
       "saveCustom": "Použít tento rytmus",
       "customInvalid": "Zadej celé číslo od 1 do 90."
+    },
+    "photo": {
+      "add": "Přidat fotku",
+      "open": "Otevřít fotku {{index}} z {{count}}",
+      "viewerTitle": "Fotka",
+      "close": "Zavřít",
+      "remove": "Odstranit fotku",
+      "limit": "Záznam má až 6 fotek."
+    },
+    "note": {
+      "add": "Přidat poznámku",
+      "edit": "Upravit poznámku",
+      "title": "Poznámka",
+      "save": "Uložit poznámku",
+      "remove": "Odstranit poznámku"
+    },
+    "todo": {
+      "add": "Přidat úkol",
+      "title": "Nový úkol",
+      "hint": "Například: koupit úpravnu vody",
+      "save": "Přidat úkol",
+      "done": "Hotovo: {{text}}",
+      "open": "Otevřené: {{text}}",
+      "heading": "Úkoly"
     }
+  },
+  "todos": {
+    "title": "Úkoly",
+    "open": "Otevřené",
+    "doneHeading": "Hotové",
+    "empty": "Zatím není co dělat.",
+    "doneEmpty": "Zatím nic není hotové.",
+    "newLabel": "Nový úkol",
+    "add": "Přidat",
+    "tank": "Akvárium",
+    "noTanks": "Vytvoř akvárium, abys mohl přidávat úkoly.",
+    "check": "Označit jako hotové: {{text}}",
+    "reopen": "Znovu otevřít: {{text}}",
+    "remove": "Smazat: {{text}}",
+    "signIn": "Přihlas se, abys viděl své úkoly."
   }
 }

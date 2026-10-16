@@ -198,7 +198,8 @@
       "cancel": "Annulla",
       "deleteError": "Eliminazione della bozza non riuscita. Riprova."
     },
-    "loginUnavailable": "L'accesso non è disponibile perché il servizio di autenticazione è irraggiungibile. Riprova."
+    "loginUnavailable": "L'accesso non è disponibile perché il servizio di autenticazione è irraggiungibile. Riprova.",
+    "todos": "Attività"
   },
   "upload": {
     "title": "Carica foto",
@@ -269,7 +270,14 @@
     "care_origin_invalid": "Scegli kit di test, misuratore o sonda.",
     "care_range_invalid": "L'inizio dell'intervallo deve precedere la sua fine.",
     "care_plan_invalid": "Scegli un ritmo da 1 a 90 giorni oppure attiva o disattiva la regola.",
-    "care_date_invalid": "Non è stato possibile leggere la data del tuo dispositivo."
+    "care_date_invalid": "Non è stato possibile leggere la data del tuo dispositivo.",
+    "care_note_invalid": "Una nota contiene fino a 2000 caratteri.",
+    "care_photo_not_found": "Questa foto non è disponibile o il suo link è scaduto.",
+    "care_photo_invalid": "Scegli una foto JPEG, PNG o WebP fino a 25 MB.",
+    "care_photo_limit_reached": "Una voce contiene fino a 6 foto.",
+    "todo_not_found": "Questa attività non è disponibile.",
+    "todo_text_invalid": "Un'attività ha da 1 a 200 caratteri.",
+    "todo_request_invalid": "Non è stato possibile leggere questa modifica dell'attività."
   },
   "featureFlags": {
     "activityTitle": "Attività della comunità",
@@ -433,7 +441,8 @@
       "logWaterChange": "Registra il cambio d’acqua",
       "logWaterChangeFor": "Registra il cambio d’acqua per {{tank}}",
       "measureFor": "Misura per {{tank}}"
-    }
+    },
+    "todos": "Attività da fare: {{total}}"
   },
   "care": {
     "waterChange": "Cambio d’acqua",
@@ -538,6 +547,45 @@
       "customLabel": "Il tuo ritmo in giorni (da 1 a 90)",
       "saveCustom": "Usa questo ritmo",
       "customInvalid": "Inserisci un numero intero da 1 a 90."
+    },
+    "photo": {
+      "add": "Aggiungi foto",
+      "open": "Apri foto {{index}} di {{count}}",
+      "viewerTitle": "Foto",
+      "close": "Chiudi",
+      "remove": "Rimuovi foto",
+      "limit": "Una voce contiene fino a 6 foto."
+    },
+    "note": {
+      "add": "Aggiungi nota",
+      "edit": "Modifica nota",
+      "title": "Nota",
+      "save": "Salva nota",
+      "remove": "Rimuovi nota"
+    },
+    "todo": {
+      "add": "Aggiungi attività",
+      "title": "Nuova attività",
+      "hint": "Per esempio: comprare il biocondizionatore",
+      "save": "Aggiungi attività",
+      "done": "Fatta: {{text}}",
+      "open": "Da fare: {{text}}",
+      "heading": "Attività"
     }
+  },
+  "todos": {
+    "title": "Attività",
+    "open": "Da fare",
+    "doneHeading": "Fatte",
+    "empty": "Per ora non c'è nulla da fare.",
+    "doneEmpty": "Ancora nulla di fatto.",
+    "newLabel": "Nuova attività",
+    "add": "Aggiungi",
+    "tank": "Vasca",
+    "noTanks": "Crea una vasca per aggiungere attività.",
+    "check": "Segna come fatta: {{text}}",
+    "reopen": "Riapri: {{text}}",
+    "remove": "Elimina: {{text}}",
+    "signIn": "Accedi per vedere le tue attività."
   }
 }

@@ -191,7 +191,8 @@
       "cancel": "İptal",
       "deleteError": "Taslak silinemedi. Lütfen tekrar deneyin."
     },
-    "loginUnavailable": "Giriş hizmetine ulaşılamadığı için giriş yapılamıyor. Lütfen tekrar deneyin."
+    "loginUnavailable": "Giriş hizmetine ulaşılamadığı için giriş yapılamıyor. Lütfen tekrar deneyin.",
+    "todos": "Görevler"
   },
   "upload": {
     "title": "Fotoğraf yükle",
@@ -261,7 +262,14 @@
     "care_origin_invalid": "Test kiti, ölçüm cihazı veya prob seç.",
     "care_range_invalid": "Zaman aralığının başlangıcı bitişinden önce olmalı.",
     "care_plan_invalid": "1 ile 90 gün arasında bir ritim seç ya da kuralı aç veya kapat.",
-    "care_date_invalid": "Cihazının tarihi okunamadı."
+    "care_date_invalid": "Cihazının tarihi okunamadı.",
+    "care_note_invalid": "Bir not en fazla 2000 karakter içerir.",
+    "care_photo_not_found": "Bu fotoğraf kullanılamıyor veya bağlantısının süresi doldu.",
+    "care_photo_invalid": "25 MB'a kadar bir JPEG, PNG veya WebP fotoğrafı seç.",
+    "care_photo_limit_reached": "Bir kayıt en fazla 6 fotoğraf içerir.",
+    "todo_not_found": "Bu görev kullanılamıyor.",
+    "todo_text_invalid": "Bir görev 1 ile 200 karakter içerir.",
+    "todo_request_invalid": "Görevin bu değişikliği okunamadı."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -423,7 +431,8 @@
       "logWaterChange": "Su değişimini kaydet",
       "logWaterChangeFor": "{{tank}} için su değişimini kaydet",
       "measureFor": "{{tank}} için ölç"
-    }
+    },
+    "todos": "Açık görevler: {{total}}"
   },
   "care": {
     "waterChange": "Su değişimi",
@@ -525,6 +534,45 @@
       "customLabel": "Kendi ritmin, gün olarak (1 ile 90)",
       "saveCustom": "Bu ritmi kullan",
       "customInvalid": "1 ile 90 arasında bir tam sayı gir."
+    },
+    "photo": {
+      "add": "Fotoğraf ekle",
+      "open": "{{count}} fotoğraftan {{index}}. fotoğrafı aç",
+      "viewerTitle": "Fotoğraf",
+      "close": "Kapat",
+      "remove": "Fotoğrafı kaldır",
+      "limit": "Bir kayıt en fazla 6 fotoğraf içerir."
+    },
+    "note": {
+      "add": "Not ekle",
+      "edit": "Notu düzenle",
+      "title": "Not",
+      "save": "Notu kaydet",
+      "remove": "Notu kaldır"
+    },
+    "todo": {
+      "add": "Görev ekle",
+      "title": "Yeni görev",
+      "hint": "Örneğin: su düzenleyici al",
+      "save": "Görev ekle",
+      "done": "Yapıldı: {{text}}",
+      "open": "Açık: {{text}}",
+      "heading": "Görevler"
     }
+  },
+  "todos": {
+    "title": "Görevler",
+    "open": "Açık",
+    "doneHeading": "Yapıldı",
+    "empty": "Şu anda yapılacak bir şey yok.",
+    "doneEmpty": "Henüz yapılan bir şey yok.",
+    "newLabel": "Yeni görev",
+    "add": "Ekle",
+    "tank": "Akvaryum",
+    "noTanks": "Görev eklemek için bir akvaryum oluştur.",
+    "check": "Yapıldı olarak işaretle: {{text}}",
+    "reopen": "Yeniden aç: {{text}}",
+    "remove": "Sil: {{text}}",
+    "signIn": "Görevlerini görmek için giriş yap."
   }
 }

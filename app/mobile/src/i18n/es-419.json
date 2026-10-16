@@ -198,7 +198,8 @@
       "cancel": "Cancelar",
       "deleteError": "No se pudo eliminar el borrador. Inténtalo de nuevo."
     },
-    "loginUnavailable": "No se puede iniciar sesión porque el servicio de acceso no está disponible. Inténtalo de nuevo."
+    "loginUnavailable": "No se puede iniciar sesión porque el servicio de acceso no está disponible. Inténtalo de nuevo.",
+    "todos": "Tareas"
   },
   "upload": {
     "title": "Subir foto",
@@ -269,7 +270,14 @@
     "care_origin_invalid": "Elige kit de pruebas, medidor o sonda.",
     "care_range_invalid": "El inicio del intervalo debe ser anterior a su final.",
     "care_plan_invalid": "Elige un ritmo de 1 a 90 días o activa o desactiva la regla.",
-    "care_date_invalid": "No se pudo leer la fecha de tu dispositivo."
+    "care_date_invalid": "No se pudo leer la fecha de tu dispositivo.",
+    "care_note_invalid": "Una nota admite hasta 2000 caracteres.",
+    "care_photo_not_found": "Esta foto no está disponible o su enlace venció.",
+    "care_photo_invalid": "Elige una foto JPEG, PNG o WebP de hasta 25 MB.",
+    "care_photo_limit_reached": "Una entrada admite hasta 6 fotos.",
+    "todo_not_found": "Esta tarea no está disponible.",
+    "todo_text_invalid": "Una tarea tiene de 1 a 200 caracteres.",
+    "todo_request_invalid": "No se pudo leer este cambio de la tarea."
   },
   "featureFlags": {
     "activityTitle": "Actividad de la comunidad",
@@ -433,7 +441,8 @@
       "logWaterChange": "Registrar cambio de agua",
       "logWaterChangeFor": "Registrar cambio de agua de {{tank}}",
       "measureFor": "Medir en {{tank}}"
-    }
+    },
+    "todos": "Tareas pendientes: {{total}}"
   },
   "care": {
     "waterChange": "Cambio de agua",
@@ -538,6 +547,45 @@
       "customLabel": "Tu propio ritmo en días (1 a 90)",
       "saveCustom": "Usar este ritmo",
       "customInvalid": "Ingresa un número entero de 1 a 90."
+    },
+    "photo": {
+      "add": "Agregar foto",
+      "open": "Abrir foto {{index}} de {{count}}",
+      "viewerTitle": "Foto",
+      "close": "Cerrar",
+      "remove": "Quitar foto",
+      "limit": "Una entrada admite hasta 6 fotos."
+    },
+    "note": {
+      "add": "Agregar nota",
+      "edit": "Editar nota",
+      "title": "Nota",
+      "save": "Guardar nota",
+      "remove": "Quitar nota"
+    },
+    "todo": {
+      "add": "Agregar tarea",
+      "title": "Nueva tarea",
+      "hint": "Por ejemplo: comprar acondicionador de agua",
+      "save": "Agregar tarea",
+      "done": "Hecha: {{text}}",
+      "open": "Pendiente: {{text}}",
+      "heading": "Tareas"
     }
+  },
+  "todos": {
+    "title": "Tareas",
+    "open": "Pendientes",
+    "doneHeading": "Hechas",
+    "empty": "Por ahora no hay nada pendiente.",
+    "doneEmpty": "Todavía no hay tareas hechas.",
+    "newLabel": "Nueva tarea",
+    "add": "Agregar",
+    "tank": "Acuario",
+    "noTanks": "Crea un acuario para agregar tareas.",
+    "check": "Marcar como hecha: {{text}}",
+    "reopen": "Reabrir: {{text}}",
+    "remove": "Eliminar: {{text}}",
+    "signIn": "Inicia sesión para ver tus tareas."
   }
 }

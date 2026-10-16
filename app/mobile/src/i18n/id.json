@@ -191,7 +191,8 @@
       "cancel": "Batal",
       "deleteError": "Gagal menghapus draf. Silakan coba lagi."
     },
-    "loginUnavailable": "Tidak dapat masuk karena layanan masuk tidak dapat dihubungi. Silakan coba lagi."
+    "loginUnavailable": "Tidak dapat masuk karena layanan masuk tidak dapat dihubungi. Silakan coba lagi.",
+    "todos": "Tugas"
   },
   "upload": {
     "title": "Unggah foto",
@@ -261,7 +262,14 @@
     "care_origin_invalid": "Pilih kit uji, alat ukur, atau probe.",
     "care_range_invalid": "Awal rentang waktu harus sebelum akhirnya.",
     "care_plan_invalid": "Pilih ritme 1 sampai 90 hari atau nyalakan atau matikan aturan.",
-    "care_date_invalid": "Tanggal perangkatmu tidak bisa dibaca."
+    "care_date_invalid": "Tanggal perangkatmu tidak bisa dibaca.",
+    "care_note_invalid": "Satu catatan memuat hingga 2000 karakter.",
+    "care_photo_not_found": "Foto ini tidak tersedia atau tautannya sudah kedaluwarsa.",
+    "care_photo_invalid": "Pilih foto JPEG, PNG, atau WebP hingga 25 MB.",
+    "care_photo_limit_reached": "Satu catatan perawatan memuat hingga 6 foto.",
+    "todo_not_found": "Tugas ini tidak tersedia.",
+    "todo_text_invalid": "Satu tugas terdiri dari 1 hingga 200 karakter.",
+    "todo_request_invalid": "Perubahan tugas ini tidak dapat dibaca."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -421,7 +429,8 @@
       "logWaterChange": "Catat ganti air",
       "logWaterChangeFor": "Catat ganti air untuk {{tank}}",
       "measureFor": "Ukur untuk {{tank}}"
-    }
+    },
+    "todos": "Tugas terbuka: {{total}}"
   },
   "care": {
     "waterChange": "Ganti air",
@@ -520,6 +529,45 @@
       "customLabel": "Ritme sendiri dalam hari (1 sampai 90)",
       "saveCustom": "Pakai ritme ini",
       "customInvalid": "Masukkan bilangan bulat dari 1 sampai 90."
+    },
+    "photo": {
+      "add": "Tambah foto",
+      "open": "Buka foto {{index}} dari {{count}}",
+      "viewerTitle": "Foto",
+      "close": "Tutup",
+      "remove": "Hapus foto",
+      "limit": "Satu catatan perawatan memuat hingga 6 foto."
+    },
+    "note": {
+      "add": "Tambah catatan",
+      "edit": "Ubah catatan",
+      "title": "Catatan",
+      "save": "Simpan catatan",
+      "remove": "Hapus catatan"
+    },
+    "todo": {
+      "add": "Tambah tugas",
+      "title": "Tugas baru",
+      "hint": "Misalnya: beli pengondisi air",
+      "save": "Tambah tugas",
+      "done": "Selesai: {{text}}",
+      "open": "Terbuka: {{text}}",
+      "heading": "Tugas"
     }
+  },
+  "todos": {
+    "title": "Tugas",
+    "open": "Terbuka",
+    "doneHeading": "Selesai",
+    "empty": "Saat ini tidak ada yang perlu dikerjakan.",
+    "doneEmpty": "Belum ada yang selesai.",
+    "newLabel": "Tugas baru",
+    "add": "Tambah",
+    "tank": "Akuarium",
+    "noTanks": "Buat akuarium untuk menambah tugas.",
+    "check": "Tandai selesai: {{text}}",
+    "reopen": "Buka lagi: {{text}}",
+    "remove": "Hapus: {{text}}",
+    "signIn": "Masuk untuk melihat tugasmu."
   }
 }

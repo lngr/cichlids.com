@@ -198,7 +198,8 @@
       "cancel": "Annuler",
       "deleteError": "Échec de la suppression du brouillon. Veuillez réessayer."
     },
-    "loginUnavailable": "La connexion est indisponible car le service d'authentification est inaccessible. Veuillez réessayer."
+    "loginUnavailable": "La connexion est indisponible car le service d'authentification est inaccessible. Veuillez réessayer.",
+    "todos": "Tâches"
   },
   "upload": {
     "title": "Importer une photo",
@@ -269,7 +270,14 @@
     "care_origin_invalid": "Choisis kit de test, appareil de mesure ou sonde.",
     "care_range_invalid": "Le début de la période doit précéder sa fin.",
     "care_plan_invalid": "Choisis un rythme de 1 à 90 jours ou active ou désactive la règle.",
-    "care_date_invalid": "La date de ton appareil n’a pas pu être lue."
+    "care_date_invalid": "La date de ton appareil n’a pas pu être lue.",
+    "care_note_invalid": "Une note contient jusqu'à 2000 caractères.",
+    "care_photo_not_found": "Cette photo n'est pas disponible ou son lien a expiré.",
+    "care_photo_invalid": "Choisis une photo JPEG, PNG ou WebP de 25 Mo maximum.",
+    "care_photo_limit_reached": "Une entrée contient jusqu'à 6 photos.",
+    "todo_not_found": "Cette tâche n'est pas disponible.",
+    "todo_text_invalid": "Une tâche contient de 1 à 200 caractères.",
+    "todo_request_invalid": "Cette modification de la tâche n'a pas pu être lue."
   },
   "featureFlags": {
     "activityTitle": "Activité de la communauté",
@@ -433,7 +441,8 @@
       "logWaterChange": "Enregistrer un changement d’eau",
       "logWaterChangeFor": "Enregistrer un changement d’eau pour {{tank}}",
       "measureFor": "Mesurer pour {{tank}}"
-    }
+    },
+    "todos": "Tâches à faire : {{total}}"
   },
   "care": {
     "waterChange": "Changement d’eau",
@@ -538,6 +547,45 @@
       "customLabel": "Ton propre rythme en jours (1 à 90)",
       "saveCustom": "Utiliser ce rythme",
       "customInvalid": "Saisis un nombre entier de 1 à 90."
+    },
+    "photo": {
+      "add": "Ajouter une photo",
+      "open": "Ouvrir la photo {{index}} sur {{count}}",
+      "viewerTitle": "Photo",
+      "close": "Fermer",
+      "remove": "Supprimer la photo",
+      "limit": "Une entrée contient jusqu'à 6 photos."
+    },
+    "note": {
+      "add": "Ajouter une note",
+      "edit": "Modifier la note",
+      "title": "Note",
+      "save": "Enregistrer la note",
+      "remove": "Supprimer la note"
+    },
+    "todo": {
+      "add": "Ajouter une tâche",
+      "title": "Nouvelle tâche",
+      "hint": "Par exemple : acheter du conditionneur d'eau",
+      "save": "Ajouter la tâche",
+      "done": "Faite : {{text}}",
+      "open": "À faire : {{text}}",
+      "heading": "Tâches"
     }
+  },
+  "todos": {
+    "title": "Tâches",
+    "open": "À faire",
+    "doneHeading": "Faites",
+    "empty": "Rien à faire pour le moment.",
+    "doneEmpty": "Aucune tâche faite pour l'instant.",
+    "newLabel": "Nouvelle tâche",
+    "add": "Ajouter",
+    "tank": "Bac",
+    "noTanks": "Crée un bac pour ajouter des tâches.",
+    "check": "Marquer comme faite : {{text}}",
+    "reopen": "Rouvrir : {{text}}",
+    "remove": "Supprimer : {{text}}",
+    "signIn": "Connecte-toi pour voir tes tâches."
   }
 }

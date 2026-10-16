@@ -191,7 +191,8 @@
       "cancel": "Abbrechen",
       "deleteError": "Der Entwurf konnte nicht gelöscht werden. Bitte versuche es erneut."
     },
-    "loginUnavailable": "Die Anmeldung ist gerade nicht möglich, weil der Anmeldedienst nicht erreichbar ist. Bitte versuche es erneut."
+    "loginUnavailable": "Die Anmeldung ist gerade nicht möglich, weil der Anmeldedienst nicht erreichbar ist. Bitte versuche es erneut.",
+    "todos": "To-dos"
   },
   "upload": {
     "title": "Foto hochladen",
@@ -261,7 +262,14 @@
     "care_origin_invalid": "Wähle Testset, Messgerät oder Sonde.",
     "care_range_invalid": "Der Beginn des Zeitraums muss vor seinem Ende liegen.",
     "care_plan_invalid": "Wähle einen Rhythmus von 1 bis 90 Tagen oder schalte die Regel an oder aus.",
-    "care_date_invalid": "Das Datum deines Geräts konnte nicht gelesen werden."
+    "care_date_invalid": "Das Datum deines Geräts konnte nicht gelesen werden.",
+    "care_note_invalid": "Eine Notiz hat bis zu 2000 Zeichen.",
+    "care_photo_not_found": "Dieses Foto ist nicht verfügbar oder sein Link ist abgelaufen.",
+    "care_photo_invalid": "Wähle ein JPEG-, PNG- oder WebP-Foto bis 25 MB.",
+    "care_photo_limit_reached": "Ein Eintrag hat bis zu 6 Fotos.",
+    "todo_not_found": "Dieses To-do ist nicht verfügbar.",
+    "todo_text_invalid": "Ein To-do hat 1 bis 200 Zeichen.",
+    "todo_request_invalid": "Diese Änderung des To-dos konnte nicht gelesen werden."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -423,7 +431,8 @@
       "logWaterChange": "Wasserwechsel erfassen",
       "logWaterChangeFor": "Wasserwechsel erfassen für {{tank}}",
       "measureFor": "Messen für {{tank}}"
-    }
+    },
+    "todos": "Offene To-dos: {{total}}"
   },
   "care": {
     "waterChange": "Wasserwechsel",
@@ -525,6 +534,45 @@
       "customLabel": "Eigener Rhythmus in Tagen (1 bis 90)",
       "saveCustom": "Diesen Rhythmus verwenden",
       "customInvalid": "Gib eine ganze Zahl von 1 bis 90 ein."
+    },
+    "photo": {
+      "add": "Foto hinzufügen",
+      "open": "Foto {{index}} von {{count}} öffnen",
+      "viewerTitle": "Foto",
+      "close": "Schließen",
+      "remove": "Foto entfernen",
+      "limit": "Ein Eintrag hat bis zu 6 Fotos."
+    },
+    "note": {
+      "add": "Notiz hinzufügen",
+      "edit": "Notiz bearbeiten",
+      "title": "Notiz",
+      "save": "Notiz speichern",
+      "remove": "Notiz entfernen"
+    },
+    "todo": {
+      "add": "To-do hinzufügen",
+      "title": "Neues To-do",
+      "hint": "Zum Beispiel: Wasseraufbereiter kaufen",
+      "save": "To-do hinzufügen",
+      "done": "Erledigt: {{text}}",
+      "open": "Offen: {{text}}",
+      "heading": "To-dos"
     }
+  },
+  "todos": {
+    "title": "To-dos",
+    "open": "Offen",
+    "doneHeading": "Erledigt",
+    "empty": "Gerade ist nichts zu tun.",
+    "doneEmpty": "Noch nichts erledigt.",
+    "newLabel": "Neues To-do",
+    "add": "Hinzufügen",
+    "tank": "Becken",
+    "noTanks": "Lege ein Becken an, um To-dos hinzuzufügen.",
+    "check": "Als erledigt markieren: {{text}}",
+    "reopen": "Wieder öffnen: {{text}}",
+    "remove": "Löschen: {{text}}",
+    "signIn": "Melde dich an, um deine To-dos zu sehen."
   }
 }
