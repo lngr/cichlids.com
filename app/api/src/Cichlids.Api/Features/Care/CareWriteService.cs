@@ -8,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Api.Features.Care;
 
-public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clock, CareEntryMapper mapper, StoredObjectDeleter deleter)
+public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clock, CareEntryMapper mapper, StoredObjectDeleter deleter,
+    Videos.VideoRemovalService? videoRemoval = null)
 {
     private const int MaxMeasurementValues = 10;
     private const int MaxNoteLength = 2000;
@@ -120,6 +121,7 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
         var dto = mapper.ToDto(entry);
         CareEvents.Add(context, request is null ? "care.deleted" : "care.updated", entry, clock.GetUtcNow());
         var storedKeys = new List<string>();
+        var removedVideos = new List<MediaItem>();
         if (request is null)
         {
             var photos = entry.Photos.Select(p => p.MediaItem).ToList();
@@ -132,10 +134,17 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
             context.CareEntries.Remove(entry);
             await context.SaveChangesAsync(ct);
             context.MediaItems.RemoveRange(photos);
+            removedVideos = entry.Videos.Select(v => v.MediaItem).ToList();
+            context.MediaItems.RemoveRange(removedVideos);
         }
         await context.SaveChangesAsync(ct);
         await transaction.CommitAsync(ct);
         await deleter.DeleteAsync(storedKeys);
+        if (videoRemoval is not null)
+        {
+            await videoRemoval.DeleteObjectsAsync(removedVideos);
+        }
+
         return (request is null ? dto : mapper.ToDto(entry), null);
     }
 

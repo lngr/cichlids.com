@@ -3,6 +3,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using Cichlids.Api.Features.Care;
 using Cichlids.Api.Features.Uploads;
+using Cichlids.Api.Features.Videos;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -21,7 +22,7 @@ internal static class CareTestSupport
     /// object store never serves a request, since these tests write entries without photos.
     /// </summary>
     public static CareWriteService CreateWriteService(CichlidsDbContext context) => new(context, TimeProvider.System,
-        new CareEntryMapper(new CarePhotoUrlSigner(DataProtectionProvider.Create("care-tests"))),
+        new CareEntryMapper(new CarePhotoUrlSigner(DataProtectionProvider.Create("care-tests")), new CareVideoUrlSigner(DataProtectionProvider.Create("care-tests"))),
         new StoredObjectDeleter(new UrlOnlyObjectStore("http://objects.test"), NullLogger<StoredObjectDeleter>.Instance));
 
     /// <summary>

@@ -60,6 +60,14 @@ public sealed class UploadsFixture : IAsyncLifetime
     private WebApplicationFactory<Program> _factoryWithTwoUploadsPerHour = null!;
 
     /// <summary>
+    /// A client for a fourth API host on the same database and object store whose videos may be
+    /// one second long at most, for every member.
+    /// </summary>
+    public HttpClient ClientWithOneSecondVideoLimit { get; private set; } = null!;
+
+    private WebApplicationFactory<Program> _factoryWithOneSecondVideoLimit = null!;
+
+    /// <summary>
     /// The services of the API host, for resolving the services a test runs directly.
     /// </summary>
     public IServiceProvider Services => _factory.Services;
@@ -97,6 +105,9 @@ public sealed class UploadsFixture : IAsyncLifetime
                     ["OutboxDispatcher:Enabled"] = "false",
                     // Tests run cleanup passes directly instead of racing a timer.
                     ["DraftCleanup:Enabled"] = "false",
+                    // Tests run the transcoding queue and the upload cleanup directly.
+                    ["VideoTranscoding:Enabled"] = "false",
+                    ["VideoLimits:CleanupEnabled"] = "false",
                 }));
 
             builder.ConfigureServices(services =>
@@ -119,6 +130,15 @@ public sealed class UploadsFixture : IAsyncLifetime
                 configBuilder.AddInMemoryCollection(new Dictionary<string, string?> { ["UploadLimits:MaxUploadsPerHour"] = "2" })));
         ClientWithTwoUploadsPerHour = _factoryWithTwoUploadsPerHour.CreateClient();
 
+        _factoryWithOneSecondVideoLimit = _factory.WithWebHostBuilder(builder =>
+            builder.ConfigureAppConfiguration((_, configBuilder) =>
+                configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
+                {
+                    ["VideoLimits:ShortMaxDuration"] = "00:00:01",
+                    ["VideoLimits:MaxDuration"] = "00:00:01",
+                })));
+        ClientWithOneSecondVideoLimit = _factoryWithOneSecondVideoLimit.CreateClient();
+
         await using (var context = CreateDbContext())
         {
             await context.Database.MigrateAsync();
@@ -135,6 +155,8 @@ public sealed class UploadsFixture : IAsyncLifetime
         Client.Dispose();
         ClientWithoutSlugSecret.Dispose();
         ClientWithTwoUploadsPerHour.Dispose();
+        ClientWithOneSecondVideoLimit.Dispose();
+        await _factoryWithOneSecondVideoLimit.DisposeAsync();
         await _factoryWithTwoUploadsPerHour.DisposeAsync();
         await _factoryWithoutSlugSecret.DisposeAsync();
         await _factory.DisposeAsync();
@@ -164,6 +186,16 @@ public sealed class UploadsFixture : IAsyncLifetime
             ContentType = "image/jpeg",
         });
     }
+
+    /// <summary>
+    /// The services of the second API host that limits videos to one second.
+    /// </summary>
+    public IServiceProvider ServicesWithOneSecondVideoLimit => _factoryWithOneSecondVideoLimit.Services;
+
+    /// <summary>
+    /// The services of the third API host that allows two uploads per hour.
+    /// </summary>
+    public IServiceProvider ServicesWithTwoUploadsPerHour => _factoryWithTwoUploadsPerHour.Services;
 
     public CichlidsDbContext CreateDbContext()
     {

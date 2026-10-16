@@ -15,6 +15,7 @@ using Cichlids.Api.Features.Profiles;
 using Cichlids.Api.Features.Species;
 using Cichlids.Api.Features.Tanks;
 using Cichlids.Api.Features.Uploads;
+using Cichlids.Api.Features.Videos;
 using Cichlids.Api.Features.WebPush;
 using Cichlids.Api.Features.Webhooks;
 using Cichlids.Infrastructure.Identity;
@@ -22,6 +23,7 @@ using Cichlids.Infrastructure.Outbox;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Slugs;
 using Cichlids.Infrastructure.Storage;
+using Cichlids.Infrastructure.Video;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
@@ -134,6 +136,8 @@ builder.Services.AddProblemDetails(options => options.CustomizeProblemDetails = 
         context.ProblemDetails.Extensions.TryAdd("code", "web_push_request_invalid");
     else if (TankSeriesPhotoEndpoints.IsSeriesPhotoPath(context.HttpContext.Request.Path))
         context.ProblemDetails.Extensions.TryAdd("code", "tank_photo_invalid");
+    else if (VideoEndpoints.IsVideoPath(context.HttpContext.Request.Path))
+        context.ProblemDetails.Extensions.TryAdd("code", VideoProblem.RequestInvalid);
 });
 builder.Services.AddExceptionHandler<NonMemberLoginExceptionHandler>();
 
@@ -185,6 +189,41 @@ builder.Services.AddOptions<DraftCleanupOptions>()
         "DraftCleanup durations and batch size must be positive.")
     .ValidateOnStart();
 builder.Services.TryAddSingleton(TimeProvider.System);
+builder.Services.AddOptions<VideoLimitOptions>()
+    .Bind(builder.Configuration.GetSection(VideoLimitOptions.SectionName))
+    .Validate(
+        o => o.MaxDuration > TimeSpan.Zero && o.ShortMaxDuration > TimeSpan.Zero && o.ShortMaxDuration <= o.MaxDuration
+            && o.MinAccountAge >= TimeSpan.Zero && o.MinPublicPictures >= 0 && o.MaxBitrate > 0 && o.MaxOpenUploads > 0
+            && o.ChunkSize >= 5 * 1024 * 1024 && o.UploadLifetime > TimeSpan.Zero && o.CleanupInterval > TimeSpan.Zero,
+        "VideoLimits values must be positive, the short length must not exceed the long one and the chunk size must be at least 5 MiB.")
+    .ValidateOnStart();
+builder.Services.AddOptions<VideoProcessingOptions>()
+    .Bind(builder.Configuration.GetSection(VideoProcessingOptions.SectionName))
+    .Validate(
+        o => o.PollInterval > TimeSpan.Zero && o.MaxAttempts > 0 && o.RetryDelay >= TimeSpan.Zero && o.Lease > TimeSpan.Zero,
+        "VideoTranscoding values must be positive.")
+    .ValidateOnStart();
+var videoTools = builder.Configuration.GetSection(VideoToolOptions.SectionName).Get<VideoToolOptions>() ?? new VideoToolOptions();
+if (videoTools.Threads < 1 || videoTools.Nice is < 0 or > 19 || videoTools.TranscodeTimeout <= TimeSpan.Zero || videoTools.ProbeTimeout <= TimeSpan.Zero)
+{
+    throw new InvalidOperationException("VideoTools needs at least one thread, a niceness from 0 to 19 and positive timeouts.");
+}
+
+builder.Services.AddSingleton(videoTools);
+builder.Services.AddSingleton<IProcessRunner, ProcessRunner>();
+builder.Services.AddSingleton<FfprobeClient>();
+builder.Services.AddSingleton<PosterFrameSelector>();
+builder.Services.AddSingleton<HlsTranscoder>();
+builder.Services.AddSingleton<CareVideoUrlSigner>();
+builder.Services.AddScoped<VideoLimitPolicy>();
+builder.Services.AddScoped<VideoUploadService>();
+builder.Services.AddScoped<VideoUploadCleanupService>();
+builder.Services.AddHostedService<VideoUploadCleanupHostedService>();
+builder.Services.AddScoped<VideoJobQueue>();
+builder.Services.AddScoped<VideoTranscodingService>();
+builder.Services.AddHostedService<VideoTranscodingHostedService>();
+builder.Services.AddScoped<VideoQueryService>();
+builder.Services.AddScoped<VideoRemovalService>();
 builder.Services.AddScoped<StoredObjectDeleter>();
 builder.Services.AddScoped<UploadsWriteService>();
 builder.Services.AddScoped<DraftCleanupService>();
@@ -239,6 +278,14 @@ app.UseWhen(context => TankSeriesPhotoEndpoints.IsSeriesPhotoPath(context.Reques
             status == 401 ? "tank_photo_auth_required" : "tank_photo_invalid").ExecuteAsync(context.HttpContext);
     }));
 
+app.UseWhen(context => VideoEndpoints.IsVideoPath(context.Request.Path), branch =>
+    branch.UseStatusCodePages(async context =>
+    {
+        var status = context.HttpContext.Response.StatusCode;
+        await Cichlids.Api.Features.Common.ApiProblems.WithCode(status, "Video request refused", "The video request could not be completed.",
+            status == 401 ? VideoProblem.AuthRequired : VideoProblem.RequestInvalid).ExecuteAsync(context.HttpContext);
+    }));
+
 app.UseWhen(context => WebPushEndpoints.IsWebPushPath(context.Request.Path), branch =>
     branch.UseStatusCodePages(async context =>
     {
@@ -268,6 +315,7 @@ app.MapWebSessionEndpoints();
 app.MapCommunityEndpoints();
 app.MapLegacyRedirectsEndpoints();
 app.MapUploadsEndpoints();
+app.MapVideoEndpoints();
 app.MapWebhookAdminEndpoints();
 app.MapOutboxAdminEndpoints();
 

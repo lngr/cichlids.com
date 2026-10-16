@@ -49,7 +49,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
         var authorIds = page.Select(t => t.ProfileId).Distinct().ToList();
 
         var imageCounts = await context.TankMedia
-            .Where(tm => tankIds.Contains(tm.TankId))
+            .Where(tm => tankIds.Contains(tm.TankId) && tm.Section != TankMediaSection.Video)
             .GroupBy(tm => tm.TankId)
             .Select(g => new { TankId = g.Key, Count = g.Count() })
             .ToDictionaryAsync(x => x.TankId, x => x.Count, cancellationToken);

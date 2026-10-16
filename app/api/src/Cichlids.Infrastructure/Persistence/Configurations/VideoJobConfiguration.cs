@@ -12,7 +12,7 @@ public sealed class VideoJobConfiguration : IEntityTypeConfiguration<VideoJob>
     {
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Status).HasConversion<SnakeCaseEnumConverter<VideoJobStatus>>().IsRequired();
-        builder.HasOne<MediaItem>().WithMany().HasForeignKey(x => x.MediaItemId).OnDelete(DeleteBehavior.Cascade);
+        builder.HasOne<MediaItem>().WithOne(m => m.VideoJob).HasForeignKey<VideoJob>(x => x.MediaItemId).OnDelete(DeleteBehavior.Cascade);
         builder.HasIndex(x => x.MediaItemId).IsUnique();
         builder.HasIndex(x => new { x.Status, x.RunAfter });
         builder.ToTable("video_job", table =>

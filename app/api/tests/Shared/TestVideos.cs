@@ -11,7 +11,8 @@ namespace Cichlids.Tests.Shared;
 internal static class TestVideos
 {
     public static async Task<byte[]> CreateAsync(
-        int width = 320, int height = 180, double seconds = 2, bool audio = true, int rotationDegrees = 0, string codec = "libx264")
+        int width = 320, int height = 180, double seconds = 2, bool audio = true, int rotationDegrees = 0, string codec = "libx264",
+        long padToBytes = 0)
     {
         var directory = Directory.CreateTempSubdirectory("test-video-").FullName;
         try
@@ -43,15 +44,30 @@ internal static class TestVideos
                     "-nostdin", "-hide_banner", "-loglevel", "error", "-y", "-display_rotation:v:0",
                     rotationDegrees.ToString(CultureInfo.InvariantCulture), "-i", path, "-c", "copy", rotated,
                 ]);
-                return await File.ReadAllBytesAsync(rotated);
+                return Pad(await File.ReadAllBytesAsync(rotated), padToBytes);
             }
 
-            return await File.ReadAllBytesAsync(path);
+            return Pad(await File.ReadAllBytesAsync(path), padToBytes);
         }
         finally
         {
             Directory.Delete(directory, recursive: true);
         }
+    }
+
+    // A free box at the end is valid MP4 and lets a tiny video reach a size that needs several upload chunks.
+    private static byte[] Pad(byte[] video, long toBytes)
+    {
+        if (toBytes <= video.Length + 8)
+        {
+            return video;
+        }
+
+        var padded = new byte[toBytes];
+        video.CopyTo(padded, 0);
+        System.Buffers.Binary.BinaryPrimitives.WriteUInt32BigEndian(padded.AsSpan(video.Length), (uint)(toBytes - video.Length));
+        "free"u8.CopyTo(padded.AsSpan(video.Length + 4));
+        return padded;
     }
 
     /// <summary>

@@ -56,4 +56,9 @@ public class MediaItem
         : null;
 
     public List<MediaVariant> Variants { get; set; } = [];
+
+    /// <summary>
+    /// The transcoding job of a video; null for a photo.
+    /// </summary>
+    public VideoJob? VideoJob { get; set; }
 }
