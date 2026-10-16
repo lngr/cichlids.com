@@ -26,6 +26,10 @@ DOTNET="${DOTNET:-$HOME/.dotnet/dotnet}"
 DB_NAME="cichlids_e2e"
 BUCKET_NAME="cichlids-e2e"
 
+# The guided water change counts as verified from this many seconds between the start of draining and
+# the refill step; the write API gets the value, so a spec proves the rule within seconds.
+WATER_CHANGE_MIN_SECONDS=3
+
 API_PORT=5046
 WEB_PORT=8082
 API_URL="http://localhost:${API_PORT}"
@@ -154,6 +158,7 @@ start_api() {
     DataProtection__KeyRingPath="$KEY_RING_DIR" \
     WebPush__VapidKeyFile="$VAPID_KEY_FILE" \
     WebPushSender__Enabled=false \
+    WaterChange__MinDuration="00:00:0${WATER_CHANGE_MIN_SECONDS}" \
     nohup "$DOTNET" "$API_BUILD_DIR/Cichlids.Api.dll" "--FeatureFlags:discover-activity=${CICHLIDS_WRITE_DISCOVER_ACTIVITY:-false}" >"$API_LOG" 2>&1 &
     echo $! >"$API_PID_FILE"
   )
@@ -237,6 +242,7 @@ cmd_run() {
   E2E_WEB_URL="$WEB_URL" \
   E2E_KEYCLOAK_URL="$KEYCLOAK_URL" \
   E2E_DB="$DB_NAME" \
+  E2E_WATER_CHANGE_MIN_SECONDS="$WATER_CHANGE_MIN_SECONDS" \
   "$@"
 }
 
