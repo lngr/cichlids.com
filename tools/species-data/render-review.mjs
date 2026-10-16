@@ -7,10 +7,11 @@
 //   node tools/species-data/render-review.mjs <out.html> [profile.yaml ...]
 //
 // Without profile paths it renders all of data/species/profiles/*.yaml.
-import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
+import { safeWriteFile } from './safe-write.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const [out, ...args] = process.argv.slice(2);
@@ -376,5 +377,5 @@ ${articles.map(articlePanel).join('\n')}
 <script>${js}</script>
 </body></html>`;
 
-writeFileSync(out, html);
+safeWriteFile(out, html, dirname(resolve(out)));
 console.log(`${out}: ${profiles.length} profiles (${files.map((f) => basename(f)).join(', ')})`);

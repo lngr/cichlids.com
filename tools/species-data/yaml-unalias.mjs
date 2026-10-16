@@ -8,10 +8,12 @@
 // Each file is rewritten only when the expanded text parses to the same value as the original.
 // A mismatch or a failure leaves the file unchanged and makes the exit code 1. The files that
 // changed are printed.
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { pathToFileURL } from "node:url";
 import { parse } from "yaml";
+import { safeWriteFile } from "./safe-write.mjs";
 
 const NAME = "[^\\s,\\[\\]{}]+";
 // indent, optional "- ", optional "key:", anchor name, optional inline value
@@ -151,7 +153,7 @@ function main(paths) {
       if (!isDeepStrictEqual(parse(expanded), parse(original))) {
         throw new Error("expanded text parses differently from the original");
       }
-      writeFileSync(path, expanded);
+      safeWriteFile(path, expanded, dirname(resolve(path)));
       console.log(path);
     } catch (error) {
       failed = true;

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync, existsSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, realpathSync, symlinkSync, writeFileSync, rmSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { parse } from 'yaml';
@@ -66,4 +66,15 @@ test('Flow mappings with trailing commas retain the comma and stay valid', () =>
   const result = insertArchiveRefs(input, refs);
   assert.equal(result, `source: {kind: website, url: https://example.org/fish,  archived: ${ref}}\n`);
   assert.equal(parse(result).source.archived, ref);
+});
+
+test('Given an agent-planted symlink as a profile, the backfill refuses to write through it', async t => {
+  const dir = realpathSync(mkdtempSync(join(tmpdir(), 'cichlids-backfill-link-')));
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  const speciesDir = join(dir, 'data', 'species');
+  mkdirSync(join(speciesDir, 'profiles'), { recursive: true });
+  writeFileSync(join(dir, 'target.yaml'), cases[0][1]);
+  symlinkSync(join(dir, 'target.yaml'), join(speciesDir, 'profiles', 'fish.yaml'));
+  await assert.rejects(backfill({ speciesDir, archive: async () => ({ ref }) }), /refusing to write through the symlink/);
+  assert.equal(readFileSync(join(dir, 'target.yaml'), 'utf8'), cases[0][1]);
 });

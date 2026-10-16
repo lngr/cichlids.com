@@ -1,11 +1,17 @@
 import assert from "node:assert/strict";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import {
+  chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, realpathSync, rmSync, statSync,
+  symlinkSync, writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 import { EventEmitter } from "node:events";
 import { spawnSync } from "node:child_process";
-import { main, nextSpecies, nextTiebreakerNumbers, parseGroupsyncWarnings, prepareWorkdir, runGroupsync, runPipeline, statusRows } from "./pipeline.mjs";
+import {
+  main, nextSpecies, nextTiebreakerNumbers, parseGroupsyncWarnings, prepareWorkdir, runGroupsync, runPipeline, statusRows,
+  workRootOf,
+} from "./pipeline.mjs";
 
 const tmp = () => mkdtempSync(join(tmpdir(), "pipeline-test-"));
 // The pid of a finished child process stands for a dead process.
@@ -40,6 +46,16 @@ test("prepareWorkdir moves role files for a differing manifest and keeps .litera
   assert.ok(existsSync(join(wd, previous, "logs", "status")));
   assert.ok(existsSync(join(wd, ".literature", "paper.txt")));
   assert.equal(JSON.parse(readFileSync(join(wd, "run.json"), "utf8")).hint, "other");
+});
+
+test("prepareWorkdir refuses a run.json that is a symlink", () => {
+  const dir = tmp();
+  const wd = join(dir, "wd");
+  mkdirSync(wd);
+  writeFileSync(join(dir, "elsewhere.json"), "keep");
+  symlinkSync(join(dir, "elsewhere.json"), join(wd, "run.json"));
+  assert.throws(() => prepareWorkdir({ wd, manifest, now: stamp }), /refusing to write through the symlink/);
+  assert.equal(readFileSync(join(dir, "elsewhere.json"), "utf8"), "keep");
 });
 
 test("prepareWorkdir moves role files with --fresh and when the manifest is missing", () => {
@@ -153,6 +169,27 @@ test("statusRows marks running and stale work directories", () => {
   assert.deepEqual(row({}), []);
 });
 
+test("statusRows adds the summed cost and the billing of the latest claude attempt", () => {
+  const root = makeSpeciesRoot({ runningStatus: "08:00 DONE\n" });
+  const logs = join(root, "data", "species", "work", "legacy-3", "logs");
+  writeFileSync(join(logs, "generator.log"),
+    "=== attempt 1 gpt-6.1-sol 2026-10-16T08:00:00.000Z\n=== exit 0\n");
+  assert.deepEqual(statusRows({ root }), ["3 Name 3 | 08:00 DONE"]);
+  writeFileSync(join(logs, "checker-a.log"),
+    "=== attempt 1 claude-sonnet-5-5 2026-10-16T08:01:00.000Z billing subscription\n=== exit 0\n=== cost 0.5 USD\n");
+  writeFileSync(join(logs, "checker-b.log"),
+    "=== attempt 1 claude-sonnet-5-5 2026-10-16T08:02:00.000Z billing api-key\n=== exit 1\n=== cost 0.25 USD\n" +
+    "=== attempt 2 claude-sonnet-5-5 2026-10-16T08:03:00.000Z billing api-key\n=== exit 0\n=== cost 0.5 USD\n");
+  assert.deepEqual(statusRows({ root }), ["3 Name 3 | 08:00 DONE | cost 1.2500 USD | billing api-key"]);
+});
+
+test("statusRows shows the billing alone when no attempt reported a cost", () => {
+  const root = makeSpeciesRoot({ runningStatus: "08:00 DONE\n" });
+  writeFileSync(join(root, "data", "species", "work", "legacy-3", "logs", "checker-a.log"),
+    "=== attempt 1 claude-sonnet-5-5 2026-10-16T08:01:00.000Z billing subscription\nnoise\n=== exit 1\n");
+  assert.deepEqual(statusRows({ root }), ["3 Name 3 | 08:00 DONE | billing subscription"]);
+});
+
 // Fakes for runPipeline. The fake agent writes the role file like a real agent would; the fake
 // adjudicator writes data/species/profiles/fish.yaml with legacyIds [7] (or, with
 // adjudicatorWrites "existing", adjudicator-profile.yaml and a PROFILE EXISTS report, or with
@@ -206,7 +243,12 @@ function pipelineRoot() {
   return root;
 }
 
-const base = { runner: "codex", legacyId: "7", name: "Fish", hint: "hint" };
+// No test depends on the git state of the machine.
+const noGit = () => {
+  throw new Error("not a git repository");
+};
+
+const base = { runner: "codex", legacyId: "7", name: "Fish", hint: "hint", gitExec: noGit };
 
 test("runPipeline runs all roles, a tie-break round and ends with DONE", async () => {
   const root = pipelineRoot();
@@ -227,6 +269,165 @@ test("runPipeline runs all roles, a tie-break round and ends with DONE", async (
   assert.match(lines.at(-1), /^\d\d:\d\d DONE$/);
   assert.ok(lines.some((l) => l.endsWith("generator finished (model-generator)")));
   assert.ok(existsSync(join(root, "data/species/work/legacy-7/logs/generator.prompt")));
+});
+
+test("runPipeline ends with exit 1 when an agent replaced the log directory by a symlink", async () => {
+  const root = pipelineRoot();
+  const wd = join(root, "data", "species", "work", "legacy-7");
+  const elsewhere = join(tmp(), "elsewhere");
+  mkdirSync(elsewhere);
+  mkdirSync(wd, { recursive: true });
+  symlinkSync(elsewhere, join(wd, "logs"));
+  const errors = [];
+  const fakes = makeFakes({ root });
+  assert.equal(await runPipeline({ ...base, root, ...fakes, err: (t) => errors.push(t) }), 1);
+  assert.match(errors.join("\n"), /FAILED: crashed \(refusing to write through the symlink/);
+  assert.deepEqual(readdirSync(elsewhere), []);
+});
+
+test("workRootOf: a symlinked data/species is refused and nothing is created behind it", () => {
+  const root = realpathSync(tmp());
+  mkdirSync(join(root, "data"));
+  const target = realpathSync(tmp());
+  symlinkSync(target, join(root, "data", "species"));
+  assert.throws(() => workRootOf(root, noGit), /refusing to write through the symlink .*species/);
+  assert.deepEqual(readdirSync(target), []);
+});
+
+test("workRootOf: a missing work directory is created below data and returned as a real path", () => {
+  const root = realpathSync(tmp());
+  const created = workRootOf(root, noGit);
+  assert.equal(created, join(root, "data", "species", "work"));
+  assert.ok(statSync(created).isDirectory());
+});
+
+test("workRootOf: a dangling work link is refused without creating its target", () => {
+  const root = realpathSync(pipelineRoot());
+  const target = join(tmp(), "gone");
+  symlinkSync(target, join(root, "data", "species", "work"));
+  assert.throws(() => workRootOf(root, noGit), /refusing to write through the symlink .*work/);
+  assert.ok(!existsSync(target));
+});
+
+// A worktree root whose data/species/work is a symlink to the work directory of a main checkout,
+// and a git that names that checkout. Returns { root, main, work, gitExec }.
+function linkedRoot() {
+  const main = realpathSync(tmp());
+  const work = join(main, "data", "species", "work");
+  mkdirSync(work, { recursive: true });
+  mkdirSync(join(main, ".git"));
+  const root = realpathSync(pipelineRoot());
+  symlinkSync(work, join(root, "data", "species", "work"));
+  const gitExec = (cmd, args) => `${args[1] === "--git-common-dir" ? join(main, ".git") : join(main, ".git", "worktrees", "w")}\n`;
+  return { root, main, work, gitExec };
+}
+
+test("workRootOf: the real work directory, the one of the main checkout, a created one; a retargeted link fails", () => {
+  const plain = realpathSync(pipelineRoot());
+  assert.equal(workRootOf(plain, noGit), join(plain, "data", "species", "work"));
+  assert.ok(existsSync(join(plain, "data", "species", "work")));
+  assert.equal(workRootOf(plain, noGit), join(plain, "data", "species", "work"));
+  const linked = linkedRoot();
+  assert.equal(workRootOf(linked.root, linked.gitExec), linked.work);
+  for (const target of [tmp(), linked.root, linked.main, join(linked.main, "data")]) {
+    const wrong = realpathSync(pipelineRoot());
+    symlinkSync(target, join(wrong, "data", "species", "work"));
+    assert.throws(() => workRootOf(wrong, noGit), /data\/species\/work resolves to .* it must be /);
+  }
+});
+
+test("runPipeline builds every path from the real work directory and writes below it as a trusted base", async () => {
+  const linked = linkedRoot();
+  const seen = [];
+  const calls = [];
+  const fakes = makeFakes({ root: linked.root, calls });
+  const wd = join(linked.work, "legacy-7");
+  const runAgentImpl = async (options) => {
+    seen.push({ logDir: options.logDir, logBase: options.logBase, promptPath: options.promptPath });
+    return fakes.runAgentImpl(options);
+  };
+  const execNode = async (args) => {
+    seen.push({ node: args[1] });
+    return fakes.execNode(args);
+  };
+  assert.equal(await runPipeline({ ...base, root: linked.root, gitExec: linked.gitExec, ...fakes, runAgentImpl, execNode }), 0);
+  for (const entry of seen.filter((e) => e.logDir)) {
+    assert.equal(entry.logDir, join(wd, "logs"));
+    assert.equal(entry.logBase, linked.work);
+    assert.ok(entry.promptPath.startsWith(`${wd}/`));
+  }
+  assert.ok(seen.filter((e) => e.node).every((e) => e.node.startsWith(linked.work) || e.node.includes(".yaml")));
+  assert.ok(existsSync(join(wd, "logs", "status")));
+});
+
+test("runPipeline refuses to start when data/species/work was retargeted, and starts no agent", async () => {
+  const root = realpathSync(pipelineRoot());
+  const elsewhere = realpathSync(tmp());
+  symlinkSync(elsewhere, join(root, "data", "species", "work"));
+  const errors = [];
+  const fakes = makeFakes({ root });
+  assert.equal(await runPipeline({ ...base, root, ...fakes, err: (t) => errors.push(t) }), 1);
+  assert.match(errors.join("\n"), /^legacy-7 cannot start: .*data\/species\/work resolves to /);
+  assert.deepEqual(readdirSync(elsewhere), []);
+});
+
+test("runPipeline refuses to start when the work directory of the species is a symlink", async () => {
+  const root = realpathSync(pipelineRoot());
+  const elsewhere = realpathSync(tmp());
+  mkdirSync(join(root, "data", "species", "work"));
+  symlinkSync(elsewhere, join(root, "data", "species", "work", "legacy-7"));
+  const errors = [];
+  assert.equal(await runPipeline({ ...base, root, ...makeFakes({ root }), err: (t) => errors.push(t) }), 1);
+  assert.match(errors.join("\n"), /^legacy-7 cannot start: refusing to write through the symlink/);
+  assert.deepEqual(readdirSync(elsewhere), []);
+});
+
+test("runPipeline: a role directory that an agent replaced by a symlink ends the run and creates nothing behind it", async () => {
+  const root = realpathSync(pipelineRoot());
+  const wd = join(root, "data", "species", "work", "legacy-7");
+  const elsewhere = realpathSync(tmp());
+  mkdirSync(wd, { recursive: true });
+  symlinkSync(elsewhere, join(wd, "tmp-generator"));
+  const errors = [];
+  assert.equal(await runPipeline({ ...base, root, ...makeFakes({ root }), err: (t) => errors.push(t) }), 1);
+  assert.match(readFileSync(join(wd, "logs", "status"), "utf8"), /FAILED: crashed \(refusing to write through the symlink/);
+  assert.deepEqual(readdirSync(elsewhere), []);
+});
+
+test("runGroupsync: the agent files lie below the real work directory, which is the trusted base", async () => {
+  const linked = linkedRoot();
+  const seen = [];
+  const code = await runGroupsync({
+    root: linked.root, runner: "claude", gitExec: linked.gitExec,
+    execNode: async () => ({ code: 0, stdout: "WARNING data/species/profiles/a.yaml hybrid groups naming x are missing: g1", stderr: "" }),
+    execGit: async () => ({ stdout: "" }), out: () => {},
+    runAgentImpl: async (options) => {
+      seen.push(options);
+      writeFileSync(join(options.logDir, "groupsync.last"), "synced");
+      return { status: "ok", model: "m", attempts: 1 };
+    },
+  });
+  assert.equal(code, 0);
+  assert.equal(seen[0].logDir, join(linked.work, "groupsync", "logs"));
+  assert.equal(seen[0].logBase, linked.work);
+});
+
+test("runGroupsync: a retargeted work directory or a symlinked groupsync directory fails with a message", async () => {
+  const root = realpathSync(pipelineRoot());
+  const elsewhere = realpathSync(tmp());
+  mkdirSync(join(root, "data", "species", "work"));
+  symlinkSync(elsewhere, join(root, "data", "species", "work", "groupsync"));
+  const execNode = async () => ({ code: 0, stdout: "WARNING data/species/profiles/a.yaml hybrid groups naming x are missing: g1", stderr: "" });
+  const runAgentImpl = async () => assert.fail("no agent starts");
+  const first = [];
+  assert.equal(await runGroupsync({ root, runner: "claude", gitExec: noGit, execNode, runAgentImpl, err: (t) => first.push(t) }), 1);
+  assert.match(first[0], /^groupsync cannot start: refusing to write through the symlink/);
+  assert.deepEqual(readdirSync(elsewhere), []);
+  const wrong = realpathSync(pipelineRoot());
+  symlinkSync(elsewhere, join(wrong, "data", "species", "work"));
+  const errors = [];
+  assert.equal(await runGroupsync({ root: wrong, runner: "claude", gitExec: noGit, execNode, runAgentImpl, err: (t) => errors.push(t) }), 1);
+  assert.match(errors[0], /^groupsync cannot start: .*resolves to /);
 });
 
 test("runPipeline skips role files that exist", async () => {
@@ -281,6 +482,91 @@ test("runPipeline ends a tie-break round that runs out of credits with the FAILE
   const lines = readFileSync(join(root, "data/species/work/legacy-7/logs/status"), "utf8").trim().split("\n");
   assert.match(lines.at(-1), /FAILED: tiebreaker-1 out of credits$/);
   assert.ok(lines.some((l) => l.endsWith("tiebreaker-2 finished (model-tiebreaker-2)")));
+});
+
+test("runPipeline ends with exit 1 and a FAILED line when an API key is rejected", async () => {
+  const root = pipelineRoot();
+  const calls = [];
+  const fakes = makeFakes({ root, calls });
+  const runAgentImpl = async (args) => (["checker-a", "checker-c"].includes(args.role)
+    ? { status: "auth-failed", model: "m", attempts: 1, billing: "api-key" }
+    : fakes.runAgentImpl(args));
+  assert.equal(await runPipeline({ ...base, root, ...fakes, runAgentImpl }), 1);
+  assert.ok(!calls.some((c) => c.node === "tally.mjs"));
+  const lines = readFileSync(join(root, "data/species/work/legacy-7/logs/status"), "utf8").trim().split("\n");
+  assert.match(lines.at(-1), /^\d\d:\d\d FAILED: checker-a, checker-c authentication failed \(check the API key file\)$/);
+});
+
+test("runPipeline ends with exit 1 and a FAILED line that names the hits of a failed audit", async () => {
+  const root = pipelineRoot();
+  const fakes = makeFakes({ root, credits: ["checker-c"] });
+  const runAgentImpl = async (args) => (args.role === "checker-a"
+    ? { status: "audit-failed", model: "m", attempts: 1, billing: "api-key", detail: "/r/data/.claude (created), /r/data/x (symlink to /home)" }
+    : fakes.runAgentImpl(args));
+  // An audit failure outranks a role that ran out of credits in the same step.
+  assert.equal(await runPipeline({ ...base, root, ...fakes, runAgentImpl }), 1);
+  const lines = readFileSync(join(root, "data/species/work/legacy-7/logs/status"), "utf8").trim().split("\n");
+  assert.match(lines.at(-1), /^\d\d:\d\d FAILED: checker-a audit failed \(\/r\/data\/\.claude \(created\), \/r\/data\/x \(symlink to \/home\)\)$/);
+});
+
+test("runPipeline reports the hits of a failed audit to err when another role crashes the run", async () => {
+  const root = pipelineRoot();
+  const wd = join(root, "data", "species", "work", "legacy-7");
+  const elsewhere = join(tmp(), "status-target");
+  writeFileSync(elsewhere, "keep");
+  const fakes = makeFakes({ root });
+  const runAgentImpl = async (args) => {
+    if (args.role !== "checker-a") return fakes.runAgentImpl(args);
+    // The agent replaces the status file by a symlink, so that the status line of every other role is refused.
+    rmSync(join(wd, "logs", "status"));
+    symlinkSync(elsewhere, join(wd, "logs", "status"));
+    return { status: "audit-failed", model: "m", attempts: 1, billing: "api-key", detail: "/r/data/.claude (created)" };
+  };
+  const errors = [];
+  assert.equal(await runPipeline({ ...base, root, ...fakes, runAgentImpl, err: (t) => errors.push(t) }), 1);
+  assert.equal(errors.length, 2);
+  assert.match(errors[0], /^FAILED: crashed \(refusing to write through the symlink/);
+  assert.equal(errors[1], "FAILED: checker-a audit failed (/r/data/.claude (created))");
+  assert.equal(readFileSync(elsewhere, "utf8"), "keep");
+});
+
+test("runPipeline reports the hits of a failed audit to err when the status file refuses the final line", async () => {
+  const root = pipelineRoot();
+  const wd = join(root, "data", "species", "work", "legacy-7");
+  mkdirSync(wd, { recursive: true });
+  for (const role of ["generator", "checker-a", "checker-b", "checker-c"]) writeFileSync(join(wd, `${role}.yaml`), "ok");
+  writeFileSync(join(wd, "run.json"), JSON.stringify({ legacyId: "7", name: "Fish", hint: "hint", lake: "", legacyIds: "", adjudicatorNote: "" }));
+  const elsewhere = join(tmp(), "status-target");
+  writeFileSync(elsewhere, "keep");
+  const fakes = makeFakes({ root });
+  const runAgentImpl = async (args) => {
+    assert.equal(args.role, "adjudicator");
+    rmSync(join(wd, "logs", "status"));
+    symlinkSync(elsewhere, join(wd, "logs", "status"));
+    return { status: "audit-failed", model: "m", attempts: 1, billing: "api-key", detail: "/r/data/CLAUDE.md (created)" };
+  };
+  const errors = [];
+  assert.equal(await runPipeline({ ...base, root, ...fakes, runAgentImpl, err: (t) => errors.push(t) }), 1);
+  assert.deepEqual(errors, ["FAILED: adjudicator audit failed (/r/data/CLAUDE.md (created))"]);
+  assert.equal(readFileSync(elsewhere, "utf8"), "keep");
+});
+
+test("runPipeline words the authentication hint by billing", async () => {
+  const root = pipelineRoot();
+  const fakes = makeFakes({ root });
+  const runAgentImpl = async (args) => (args.role === "checker-a"
+    ? { status: "auth-failed", model: "m", attempts: 1, billing: "subscription" }
+    : fakes.runAgentImpl(args));
+  assert.equal(await runPipeline({ ...base, root, ...fakes, runAgentImpl }), 1);
+  const lines = readFileSync(join(root, "data/species/work/legacy-7/logs/status"), "utf8").trim().split("\n");
+  assert.match(lines.at(-1), /FAILED: checker-a authentication failed \(check the claude login\)$/);
+});
+
+test("runPipeline reports out of credits before a rejected key", async () => {
+  const root = pipelineRoot();
+  const fakes = makeFakes({ root, credits: ["checker-c"] });
+  const runAgentImpl = async (args) => (args.role === "checker-a" ? { status: "auth-failed", model: "m", attempts: 1 } : fakes.runAgentImpl(args));
+  assert.equal(await runPipeline({ ...base, root, ...fakes, runAgentImpl }), 3);
 });
 
 test("runPipeline logs a role whose attempts all failed as failed", async () => {
@@ -570,8 +856,22 @@ test("runGroupsync fails with a message when the agent leaves no last message", 
   }
 });
 
-test("runGroupsync reports a failed agent and an account out of credits", async () => {
-  for (const [status, expected] of [["failed", 1], ["out-of-credits", 3]]) {
+test("runGroupsync reports a failed audit with the hits", async () => {
+  const errors = [];
+  const code = await runGroupsync({
+    root: pipelineRoot(),
+    runner: "claude",
+    execNode: async () => ({ code: 0, stdout: "WARNING data/species/profiles/a-b.yaml /f: hybrid groups naming X are missing: g1\n", stderr: "" }),
+    runAgentImpl: async () => ({ status: "audit-failed", model: "m", attempts: 1, detail: "/r/data/.git (created)" }),
+    out: () => {},
+    err: (t) => errors.push(t),
+  });
+  assert.equal(code, 1);
+  assert.match(errors[0], /^groupsync: audit failed \(\/r\/data\/\.git \(created\)\) \(.*groupsync\.log\)$/);
+});
+
+test("runGroupsync reports a failed agent, an account out of credits and a rejected key", async () => {
+  for (const [status, expected] of [["failed", 1], ["out-of-credits", 3], ["auth-failed", 1]]) {
     const root = pipelineRoot();
     const errors = [];
     const code = await runGroupsync({
@@ -587,18 +887,136 @@ test("runGroupsync reports a failed agent and an account out of credits", async 
   }
 });
 
+test("main requires --billing for run and groupsync before anything starts", async (t) => {
+  const errors = [];
+  t.mock.method(console, "error", (text) => errors.push(String(text)));
+  const dir = tmp();
+  const empty = join(dir, "empty.key");
+  writeFileSync(empty, "");
+  const blank = join(dir, "blank.key");
+  writeFileSync(blank, " \n");
+  const keyDir = join(dir, "keydir");
+  mkdirSync(keyDir);
+  const present = join(dir, "present.key");
+  writeFileSync(present, "dummy-key");
+  const locked = join(dir, "locked.key");
+  writeFileSync(locked, "dummy-key");
+  chmodSync(locked, 0o000);
+  const run = ["run", "--runner", "codex", "--id", "7", "--name", "Fish", "--hint", "h"];
+  const group = ["groupsync", "--runner", "claude"];
+  const bad = [
+    [run, {}, /^missing --billing/],
+    [group, {}, /^missing --billing/],
+    [[...run, "--billing", "both"], {}, /^--billing must be one of/],
+    [[...group, "--billing", ""], {}, /^(missing --billing|--billing must be one of)/],
+    [[...run, "--billing", "api-key"], { CICHLIDS_ANTHROPIC_KEY_FILE: join(dir, "absent.key") }, /absent\.key does not exist/],
+    [[...group, "--billing", "api-key"], { CICHLIDS_ANTHROPIC_KEY_FILE: empty }, /empty\.key is empty/],
+    [[...run, "--billing", "api-key"], { CICHLIDS_ANTHROPIC_KEY_FILE: blank }, /blank\.key is empty/],
+    [[...run, "--billing", "api-key"], { CICHLIDS_ANTHROPIC_KEY_FILE: keyDir }, /keydir is not a regular file/],
+    ...(process.getuid?.() === 0 ? [] : [[[...run, "--billing", "api-key"], { CICHLIDS_ANTHROPIC_KEY_FILE: locked }, /locked\.key is not readable/]]),
+  ];
+  const credentialsFile = join(dir, "credentials.json");
+  writeFileSync(credentialsFile, JSON.stringify({ claudeAiOauth: { accessToken: "dummy-access", expiresAt: Date.now() + 3_600_000 } }));
+  const calls = [];
+  const impls = { credentialsFile, runPipelineImpl: async (o) => { calls.push(o); return 0; }, runGroupsyncImpl: async (o) => { calls.push(o); return 0; } };
+  for (const [argv, env, message] of bad) {
+    errors.length = 0;
+    assert.equal(await main(argv, { env, ...impls }), 2, JSON.stringify(argv));
+    assert.match(errors[0], message);
+    assert.ok(errors.some((e) => e.startsWith("Usage:")));
+  }
+  assert.deepEqual(calls, []);
+  // Valid choices reach the implementation with the billing.
+  assert.equal(await main([...run, "--billing", "subscription"], { env: {}, ...impls }), 0);
+  assert.equal(await main([...group, "--billing", "api-key"], { env: { CICHLIDS_ANTHROPIC_KEY_FILE: present }, ...impls }), 0);
+  assert.deepEqual(calls.map((c) => [c.runner, c.billing]), [["codex", "subscription"], ["claude", "api-key"]]);
+});
+
+test("main: subscription billing needs a login file with an access token that has not expired", async (t) => {
+  const errors = [];
+  t.mock.method(console, "error", (text) => errors.push(String(text)));
+  const dir = tmp();
+  const credentialsFile = join(dir, "credentials.json");
+  const calls = [];
+  const impls = { runPipelineImpl: async (o) => { calls.push(o); return 0; } };
+  const run = ["run", "--runner", "claude", "--billing", "subscription", "--id", "7", "--name", "Fish", "--hint", "h"];
+  assert.equal(await main(run, { env: {}, credentialsFile, ...impls }), 2);
+  assert.match(errors[0], /needs a usable claude login: .*credentials\.json does not exist/);
+  writeFileSync(credentialsFile, JSON.stringify({ claudeAiOauth: { accessToken: "dummy-access", expiresAt: Date.now() - 1000 } }));
+  errors.length = 0;
+  assert.equal(await main(run, { env: {}, credentialsFile, ...impls }), 2);
+  assert.match(errors[0], /has an expired access token/);
+  assert.deepEqual(calls, []);
+});
+
+test("runPipeline and runGroupsync hand the billing to every agent", async () => {
+  const root = pipelineRoot();
+  const seen = [];
+  const fakes = makeFakes({ root });
+  const runAgentImpl = async (args) => { seen.push(args.billing); return fakes.runAgentImpl(args); };
+  assert.equal(await runPipeline({ ...base, root, ...fakes, runAgentImpl, billing: "api-key" }), 0);
+  assert.ok(seen.length > 0 && seen.every((b) => b === "api-key"));
+  const groupSeen = [];
+  await runGroupsync({
+    root: pipelineRoot(), runner: "claude", billing: "subscription",
+    execNode: async () => ({ code: 0, stdout: "WARNING data/species/profiles/a-b.yaml /f: hybrid groups naming X are missing: g1\n", stderr: "" }),
+    runAgentImpl: async (a) => { groupSeen.push(a.billing); return { status: "failed", model: "m", attempts: 1 }; },
+    out: () => {}, err: () => {},
+  });
+  assert.deepEqual(groupSeen, ["subscription"]);
+});
+
+test("main refuses managed settings that select credentials before anything starts", async (t) => {
+  const errors = [];
+  t.mock.method(console, "error", (text) => errors.push(String(text)));
+  const dir = tmp();
+  const managed = join(dir, "managed.json");
+  writeFileSync(managed, JSON.stringify({ env: { ANTHROPIC_API_KEY: "x" } }));
+  const calls = [];
+  const credentialsFile = join(dir, "credentials.json");
+  writeFileSync(credentialsFile, JSON.stringify({ claudeAiOauth: { accessToken: "dummy-access", expiresAt: Date.now() + 3_600_000 } }));
+  const code = await main(["groupsync", "--runner", "claude", "--billing", "subscription"], {
+    env: {}, credentialsFile, managedFile: managed, runGroupsyncImpl: async (o) => { calls.push(o); return 0; },
+  });
+  assert.equal(code, 2);
+  assert.match(errors[0], /sets ANTHROPIC_API_KEY in env/);
+  assert.deepEqual(calls, []);
+});
+
+test("next and status take no --billing or --runner option", async (t) => {
+  const errors = [];
+  t.mock.method(console, "error", (text) => errors.push(String(text)));
+  for (const argv of [["next", "--billing", "api-key"], ["status", "--billing", "subscription"], ["next", "--runner", "claude"], ["status", "--runner", "codex"]]) {
+    errors.length = 0;
+    assert.equal(await main(argv), 2, JSON.stringify(argv));
+    assert.match(errors[0], /takes no --(billing|runner) option/);
+  }
+});
+
+test("runGroupsync reports a runner that throws and exits with 1", async () => {
+  const errors = [];
+  const code = await runGroupsync({
+    root: pipelineRoot(), runner: "claude", billing: "api-key",
+    execNode: async () => ({ code: 0, stdout: "WARNING data/species/profiles/a-b.yaml /f: hybrid groups naming X are missing: g1\n", stderr: "" }),
+    runAgentImpl: async () => { throw new Error("api-key billing needs a usable key file: /k is empty"); },
+    out: () => {}, err: (t) => errors.push(t),
+  });
+  assert.equal(code, 1);
+  assert.match(errors[0], /^groupsync: the agent could not start \(api-key billing needs a usable key file/);
+});
+
 test("main exits with 2 and the usage on invalid arguments", async (t) => {
   const errors = [];
   t.mock.method(console, "error", (text) => errors.push(String(text)));
-  const run = ["run", "--runner", "codex", "--name", "Fish", "--hint", "h"];
+  const run = ["run", "--runner", "codex", "--billing", "subscription", "--name", "Fish", "--hint", "h"];
   const cases = [
     [...run],
     [...run, "--id", "7x"],
     [...run, "--id", "../legacy-7"],
     [...run, "--id", "-1"],
     [...run, "--id", ""],
-    ["run", "--runner", "gemini", "--id", "7", "--name", "Fish", "--hint", "h"],
-    ["groupsync"],
+    ["run", "--runner", "gemini", "--billing", "subscription", "--id", "7", "--name", "Fish", "--hint", "h"],
+    ["groupsync", "--billing", "subscription"],
     ["next", "--count", "0"],
     ["run", "--unknown"],
     ["poet"],

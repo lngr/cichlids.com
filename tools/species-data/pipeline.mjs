@@ -3,33 +3,46 @@
 // around it.
 //
 // Usage:
-//   node tools/species-data/pipeline.mjs run --runner <codex|claude> --id <legacyId> --name "<legacy name>"
-//        --hint "<hint>" [--lake <lake>] [--legacy-ids "a, b"] [--adjudicator-note "..."] [--fresh]
+//   node tools/species-data/pipeline.mjs run --runner <codex|claude>
+//        --billing <api-key|subscription>
+//        --id <legacyId> --name "<legacy name>" --hint "<hint>" [--lake <lake>]
+//        [--legacy-ids "a, b"] [--adjudicator-note "..."] [--fresh]
 //   node tools/species-data/pipeline.mjs groupsync --runner <codex|claude>
+//        --billing <api-key|subscription>
 //   node tools/species-data/pipeline.mjs next [--count N]
 //   node tools/species-data/pipeline.mjs status
 //
 // A run writes everything to data/species/work/legacy-<id>/ (logs in logs/, status lines in
 // logs/status) and holds run.lock there while it runs. Exit codes of run: 0 done, 1 failed or
-// locked by another process, 2 usage, 3 an agent account is out of credits.
-// data/species/work is a symlink into another checkout, so all paths below it are absolute.
+// locked by another process (also an agent whose credential is rejected or whose audit fails), 2
+// usage, 3 an agent account is out of credits.
+// data/species/work is a symlink into another checkout in a worktree. The run validates it once
+// (see workRootOf) and builds every path below it from the real path, and every write below it
+// refuses a symlink (see safe-write.mjs), because the agents can write there.
 import { spawn } from "node:child_process";
 import { createHash } from "node:crypto";
-import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from "node:fs";
+import {
+  existsSync, readFileSync, readdirSync, realpathSync, renameSync, rmSync, statSync,
+} from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { parse } from "yaml";
-import { RUNNERS, resolveModel, runAgent } from "./agent-runner.mjs";
+import { gitInfo, validateWorkDir } from "./agent-cage.mjs";
+import {
+  RUNNERS, billingError, defaultApiKeyFile, defaultCredentialsFile, resolveModel, runAgent,
+} from "./agent-runner.mjs";
 import { LOCK_FILE, acquireLock, lockState, releaseLock } from "./pipeline-lock.mjs";
 import { buildGroupsyncPrompt, buildPrompt, pendingFeatures } from "./pipeline-prompts.mjs";
+import { safeAppendFile, safeMkdir, safeWriteFile } from "./safe-write.mjs";
 
 const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 
 const USAGE = `Usage:
-  pipeline.mjs run --runner <codex|claude> --id <legacyId> --name "<legacy name>" --hint "<hint>"
-               [--lake <lake>] [--legacy-ids "a, b"] [--adjudicator-note "..."] [--fresh]
-  pipeline.mjs groupsync --runner <codex|claude>
+  pipeline.mjs run --runner <codex|claude> --billing <api-key|subscription> --id <legacyId>
+               --name "<legacy name>" --hint "<hint>" [--lake <lake>] [--legacy-ids "a, b"]
+               [--adjudicator-note "..."] [--fresh]
+  pipeline.mjs groupsync --runner <codex|claude> --billing <api-key|subscription>
   pipeline.mjs next [--count N]
   pipeline.mjs status`;
 
@@ -38,7 +51,25 @@ const VOTING_ROLES = ["generator", "checker-a", "checker-b", "checker-c"];
 const TALLY_ROUNDS = 3;
 
 const pad = (n) => String(n).padStart(2, "0");
-const workDirOf = (root, legacyId) => join(root, "data", "species", "work", `legacy-${legacyId}`);
+const workDirOf = (workRoot, legacyId) => join(workRoot, `legacy-${legacyId}`);
+
+/**
+ * Returns the validated real path of <root>/data/species/work and creates the directory when it
+ * does not exist. The path is a real directory of the checkout or a symlink into the main
+ * checkout; any other target throws (see validateWorkDir). A missing directory is created below
+ * <root>/data (a directory of the read-only repository bind, so a trusted base) without following
+ * a symlink, and the result is validated. exec is injectable for the git calls.
+ */
+export function workRootOf(root, exec) {
+  const realRoot = realpathSync(root);
+  const git = gitInfo(realRoot, exec);
+  const real = validateWorkDir(realRoot, git);
+  if (real) return real;
+  safeMkdir(join(realRoot, "data", "species", "work"), join(realRoot, "data"));
+  const created = validateWorkDir(realRoot, git);
+  if (!created) throw new Error(`${join(realRoot, "data", "species", "work")} cannot be created`);
+  return created;
+}
 
 // Run manifest: the inputs of a run. The research identity (every field except adjudicatorNote)
 // decides whether existing role files belong to the same run; the adjudicator note affects the
@@ -61,28 +92,35 @@ const researchIdentity = (m) =>
  * Prepares the work directory and writes run.json. Role files of a different run (missing
  * manifest, differing research identity, or fresh) move with everything else except .literature
  * and the run lock files (run.lock*) into previous-<YYYYMMDD-HHMMSS>/. Returns the name of that
- * directory or null.
+ * directory or null. Writes refuse a symlink below base (default: the directory of wd).
  */
-export function prepareWorkdir({ wd, manifest, fresh = false, now = new Date() }) {
-  mkdirSync(wd, { recursive: true });
+export function prepareWorkdir({
+  wd, manifest, fresh = false, now = new Date(), base = dirname(wd),
+}) {
+  safeMkdir(wd, base);
   const manifestPath = join(wd, "run.json");
   const entries = readdirSync(wd);
   let previous = null;
   if (entries.some((e) => ROLE_FILE.test(e))) {
     let same = false;
     try {
-      same = researchIdentity(JSON.parse(readFileSync(manifestPath, "utf8"))) === researchIdentity(manifest);
+      const stored = JSON.parse(readFileSync(manifestPath, "utf8"));
+      same = researchIdentity(stored) === researchIdentity(manifest);
     } catch {
       same = false;
     }
     if (fresh || !same) {
       const stamp = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
       previous = `previous-${stamp}`;
-      mkdirSync(join(wd, previous));
-      for (const e of entries) if (e !== ".literature" && !e.startsWith(LOCK_FILE)) renameSync(join(wd, e), join(wd, previous, e));
+      safeMkdir(join(wd, previous), base);
+      for (const e of entries) {
+        if (e !== ".literature" && !e.startsWith(LOCK_FILE)) {
+          renameSync(join(wd, e), join(wd, previous, e));
+        }
+      }
     }
   }
-  writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
+  safeWriteFile(manifestPath, JSON.stringify(manifest, null, 2) + "\n", base);
   return previous;
 }
 
@@ -129,7 +167,10 @@ function readManifest(wd) {
   }
 }
 
-/** Unprofiled species targets by legacy photo count, as "<profile id> | <category> | <legacy entries>" rows. */
+/**
+ * Unprofiled species targets by legacy photo count, as "<profile id> | <category> | <legacy entries>"
+ * rows.
+ */
 export function nextSpecies({ root = REPO_ROOT, count = 4 } = {}) {
   const species = join(root, "data", "species");
   const mappings = [...parse(readFileSync(join(species, "legacy-mapping.yaml"), "utf8")).mappings];
@@ -166,10 +207,38 @@ const isFinal = (line) => {
   return text === "DONE" || text.startsWith("FAILED");
 };
 
+// Cost and billing from the role logs of a work directory: the sum of the "=== cost" lines and
+// the billing of the latest claude attempt (by the ISO time in its header). Either is null when
+// the logs have none.
+function logTotals(wd) {
+  const logDir = join(wd, "logs");
+  let files = [];
+  try {
+    files = readdirSync(logDir).filter((f) => f.endsWith(".log"));
+  } catch {
+    return { cost: null, billing: null };
+  }
+  let cost = null;
+  let latest = null;
+  for (const file of files) {
+    const text = readOrEmpty(join(logDir, file));
+    for (const m of text.matchAll(/^=== cost (\S+) USD$/gm)) {
+      const value = Number(m[1]);
+      if (Number.isFinite(value)) cost = (cost ?? 0) + value;
+    }
+    for (const m of text.matchAll(/^=== attempt \d+ \S+ (\S+) billing (\S+)$/gm)) {
+      if (latest === null || m[1] > latest.time) latest = { time: m[1], billing: m[2] };
+    }
+  }
+  return { cost, billing: latest?.billing ?? null };
+}
+
 /**
  * The last status line of every work directory as "<id> <name> | <line>". A live lock appends
  * "(running)". A lock of a dead process, or a last line other than DONE or FAILED without a
- * lock, appends "(stale)": the run ended without writing its final line.
+ * lock, appends "(stale)": the run ended without writing its final line. The summed agent cost
+ * of the role logs follows as " | cost <x.xxxx> USD" and the billing of the latest claude attempt
+ * as " | billing <api-key|subscription>", each only when the logs have it.
  */
 export function statusRows({ root = REPO_ROOT } = {}) {
   const rows = [];
@@ -181,7 +250,10 @@ export function statusRows({ root = REPO_ROOT } = {}) {
     const id = wd.slice(wd.lastIndexOf("legacy-") + 7);
     const last = lines.at(-1) ?? "";
     const mark = lock === "running" ? " (running)" : lock === "stale" || !isFinal(last) ? " (stale)" : "";
-    rows.push(`${id}${manifest ? ` ${manifest.name}` : ""} | ${last}${mark}`);
+    const { cost, billing } = logTotals(wd);
+    const costPart = cost === null ? "" : ` | cost ${cost.toFixed(4)} USD`;
+    const billingPart = billing === null ? "" : ` | billing ${billing}`;
+    rows.push(`${id}${manifest ? ` ${manifest.name}` : ""} | ${last}${mark}${costPart}${billingPart}`);
   }
   return rows;
 }
@@ -251,7 +323,7 @@ function namesLegacyId(file, legacyId) {
  * exists, its files exist and adjudicator.last is not empty; runSteps removes the record when the
  * note changes or a voting role or tie-breaker runs. Returns an exit code or null.
  */
-async function adjudicate({ root, wd, logDir, legacyId, status, runRoles }) {
+async function adjudicate({ root, wd, workRoot, logDir, legacyId, status, runRoles }) {
   const donePath = join(wd, ADJUDICATOR_DONE);
   const lastPath = join(logDir, "adjudicator.last");
   const warnExists = () => status("WARN: profile exists, see adjudicator-profile.yaml");
@@ -293,22 +365,29 @@ async function adjudicate({ root, wd, logDir, legacyId, status, runRoles }) {
   }
   const profileExists = last.trimStart().startsWith("PROFILE EXISTS") || outputs.includes(candidate);
   if (profileExists) warnExists();
-  writeFileSync(donePath, JSON.stringify({ outputs, profileExists }, null, 2) + "\n");
+  safeWriteFile(donePath, JSON.stringify({ outputs, profileExists }, null, 2) + "\n", workRoot);
   return null;
 }
+
+// The hint after an authentication failure depends on what the agent used to log in.
+const authHint = (billing) =>
+  (billing === "api-key" ? "check the API key file" : "check the claude login");
 
 const firstLine = (error) => String(error?.message ?? error).split("\n")[0];
 
 /**
- * Runs the pipeline for one species and returns the exit code (0 done, 1 failed, 3 out of
- * credits). The run holds <wd>/run.lock from before the set-aside step until it ends; a lock of a
- * live process refuses the run with exit 1. A thrown error ends the run with
- * "FAILED: crashed (<message>)", SIGINT and SIGTERM with "FAILED: crashed (<signal>)", the end of
- * all running agents and exit(1). runAgentImpl, execNode, signals and exit are injectable for tests.
+ * Runs the pipeline for one species and returns the exit code (0 done, 1 failed, a credential
+ * rejected or an audit failed, 3 out of credits, and 1 with a message when data/species/work does
+ * not pass the validation of workRootOf). The run holds <wd>/run.lock from before the set-aside
+ * step until it ends; a lock of a live process refuses the run with exit 1. A thrown error ends
+ * the run with "FAILED: crashed (<message>)", SIGINT and SIGTERM with "FAILED: crashed
+ * (<signal>)", the end of all running agents and exit(1). runAgentImpl, execNode, gitExec,
+ * signals and exit are injectable for tests.
  */
 export async function runPipeline({
   root = REPO_ROOT,
   runner,
+  billing,
   legacyId,
   name,
   hint,
@@ -323,9 +402,23 @@ export async function runPipeline({
   signals = process,
   exit = (code) => process.exit(code),
   err = (text) => console.error(text),
+  gitExec,
 }) {
-  const wd = workDirOf(root, legacyId);
-  const lock = acquireLock(wd, pid);
+  let workRoot;
+  try {
+    workRoot = workRootOf(root, gitExec);
+  } catch (error) {
+    err(`legacy-${legacyId} cannot start: ${firstLine(error)}`);
+    return 1;
+  }
+  const wd = workDirOf(workRoot, legacyId);
+  let lock;
+  try {
+    lock = acquireLock(wd, pid, workRoot);
+  } catch (error) {
+    err(`legacy-${legacyId} cannot start: ${firstLine(error)}`);
+    return 1;
+  }
   if (!lock.acquired) {
     err(`legacy-${legacyId} is running in process ${lock.pid} (lock ${join(wd, LOCK_FILE)})`);
     return 1;
@@ -338,11 +431,23 @@ export async function runPipeline({
     if (ended) return;
     if (text === "DONE" || text.startsWith("FAILED")) ended = true;
     const t = now();
-    mkdirSync(logDir, { recursive: true });
-    appendFileSync(join(logDir, "status"), `${pad(t.getHours())}:${pad(t.getMinutes())} ${text}\n`);
+    safeMkdir(logDir, workRoot);
+    const line = `${pad(t.getHours())}:${pad(t.getMinutes())} ${text}\n`;
+    safeAppendFile(join(logDir, "status"), line, workRoot);
+  };
+  // A final line that cannot be written to the status file (for example a symlinked log
+  // directory) goes to err.
+  const finalLine = (text) => {
+    try {
+      status(text);
+    } catch {
+      err(text);
+    }
   };
   const abort = new AbortController();
   const active = new Set();
+  // The audit hits per role whose audit failed.
+  const audits = {};
   const stopAgents = async () => {
     abort.abort();
     await Promise.allSettled([...active]);
@@ -351,7 +456,7 @@ export async function runPipeline({
   const onSignal = (signal) => {
     if (stopping) return;
     stopping = true;
-    status(`FAILED: crashed (${signal})`);
+    finalLine(`FAILED: crashed (${signal})`);
     stopAgents().finally(() => {
       releaseLock(wd, pid);
       exit(1);
@@ -361,12 +466,17 @@ export async function runPipeline({
   signals.on("SIGTERM", onSignal);
   try {
     return await runSteps({
-      root, runner, legacyId, name, hint, lake, legacyIds, adjudicatorNote, fresh,
-      runAgentImpl, execNode, now, wd, logDir, status, abortSignal: abort.signal, active, lock,
+      root, runner, billing, legacyId, name, hint, lake, legacyIds, adjudicatorNote, fresh,
+      runAgentImpl, execNode, now, wd, workRoot, logDir, status, finalLine,
+      abortSignal: abort.signal, active, lock, audits,
     });
   } catch (error) {
-    status(`FAILED: crashed (${firstLine(error)})`);
+    finalLine(`FAILED: crashed (${firstLine(error)})`);
     await stopAgents();
+    // The hits of a role whose audit failed are not lost when another role crashed the run.
+    for (const [role, hits] of Object.entries(audits)) {
+      err(`FAILED: ${role} audit failed (${hits})`);
+    }
     return 1;
   } finally {
     signals.off("SIGINT", onSignal);
@@ -377,8 +487,9 @@ export async function runPipeline({
 
 // The steps of a run inside the lock. Returns the exit code.
 async function runSteps({
-  root, runner, legacyId, name, hint, lake, legacyIds, adjudicatorNote, fresh,
-  runAgentImpl, execNode, now, wd, logDir, status, abortSignal, active, lock,
+  root, runner, billing, legacyId, name, hint, lake, legacyIds, adjudicatorNote, fresh,
+  runAgentImpl, execNode, now, wd, workRoot, logDir, status, finalLine, abortSignal, active, lock,
+  audits,
 }) {
   // A changed note invalidates the adjudicator record before run.json takes the note, so a run
   // that stops at any later point reruns the adjudicator on resume.
@@ -391,11 +502,12 @@ async function runSteps({
     manifest: buildManifest({ legacyId, name, hint, lake, legacyIds, adjudicatorNote }),
     fresh,
     now: now(),
+    base: workRoot,
   });
-  mkdirSync(logDir, { recursive: true });
+  safeMkdir(logDir, workRoot);
   const exec = async (args, logName) => {
     const r = await execNode(args);
-    writeFileSync(join(logDir, `${logName}.txt`), r.stdout + r.stderr);
+    safeWriteFile(join(logDir, `${logName}.txt`), r.stdout + r.stderr, workRoot);
     return r;
   };
   if (previous) status(`previous role files moved to ${previous}`);
@@ -403,9 +515,11 @@ async function runSteps({
   status("start");
   if (recordDropped && previous === null) status("adjudicator note changed");
 
+  // The billing of every role that ran, for the hint of an authentication failure.
+  const billings = {};
   // Runs one role and returns the runAgent status.
   const runRole = async (role, pending) => {
-    mkdirSync(join(wd, `tmp-${role}`), { recursive: true });
+    safeMkdir(join(wd, `tmp-${role}`), workRoot);
     const resolved = resolveModel({ runner, role, lake });
     const prompt = buildPrompt({
       role,
@@ -421,8 +535,10 @@ async function runSteps({
       pending,
     });
     const promptPath = join(logDir, `${role}.prompt`);
-    writeFileSync(promptPath, prompt);
-    const running = runAgentImpl({ runner, role, lake, promptPath, logDir, cwd: root, abortSignal });
+    safeWriteFile(promptPath, prompt, workRoot);
+    const running = runAgentImpl({
+      runner, billing, role, lake, promptPath, logDir, logBase: workRoot, cwd: root, abortSignal,
+    });
     active.add(running);
     let result;
     try {
@@ -430,23 +546,39 @@ async function runSteps({
     } finally {
       active.delete(running);
     }
+    billings[role] = result.billing;
+    if (result.status === "audit-failed") audits[role] = result.detail;
     if (result.status === "ok") status(`${role} finished (${result.model})`);
-    else if (result.status === "failed") status(`${role} failed (${result.model})`);
+    else if (result.status === "failed") {
+      status(`${role} failed (${result.model})${result.detail ? `: ${result.detail}` : ""}`);
+    }
     return result.status;
   };
-  // Runs several roles in parallel. Returns 3 when one of them ran out of credits, 1 when the run
-  // was aborted, otherwise null. The FAILED line follows the lines of all parallel roles, so that
-  // it is the last status line of the run.
+  // Runs several roles in parallel. Returns 3 when one of them ran out of credits, 1 when a
+  // credential was rejected, an audit failed or the run was aborted, otherwise null. The FAILED
+  // line follows the lines of all parallel roles, so that it is the last status line of the run.
   // statuses, when given, receives the runAgent status per role.
   const runRoles = async (roles, pending, statuses = {}) => {
     const results = await Promise.all(roles.map((r) => runRole(r, pending)));
     roles.forEach((r, i) => {
       statuses[r] = results[i];
     });
+    const audited = roles.filter((_, i) => results[i] === "audit-failed");
+    if (audited.length > 0) {
+      // The line names the audit hits, so it reaches err when the status file refuses the write.
+      finalLine(`FAILED: ${audited.map((r) => `${r} audit failed (${audits[r]})`).join("; ")}`);
+      return 1;
+    }
     const broke = roles.filter((_, i) => results[i] === "out-of-credits");
     if (broke.length > 0) {
       status(`FAILED: ${broke.join(", ")} out of credits`);
       return 3;
+    }
+    const rejected = roles.filter((_, i) => results[i] === "auth-failed");
+    if (rejected.length > 0) {
+      const hint = authHint(billings[rejected[0]]);
+      status(`FAILED: ${rejected.join(", ")} authentication failed (${hint})`);
+      return 1;
     }
     return abortSignal.aborted ? 1 : null;
   };
@@ -487,7 +619,7 @@ async function runSteps({
     if (broken !== null) return broken;
   }
 
-  const adjudicated = await adjudicate({ root, wd, logDir, legacyId, status, runRoles });
+  const adjudicated = await adjudicate({ root, wd, workRoot, logDir, legacyId, status, runRoles });
   if (adjudicated !== null) return adjudicated;
   const build = await exec(["tools/species-data/build-directory.mjs"], "build-directory");
   if (build.code !== 0) status("WARN: build-directory failed");
@@ -503,16 +635,19 @@ async function runSteps({
 /**
  * Collects the validator warnings about missing hybrid groups and lets an agent sync them.
  * Returns 0 when synced or nothing to sync, 1 when the agent failed or left no last message,
- * 3 when the agent account is out of credits.
+ * 3 when the agent account is out of credits. The agent files go to
+ * <data/species/work>/groupsync/logs, below the validated real path of the work directory.
  */
 export async function runGroupsync({
   root = REPO_ROOT,
   runner,
+  billing,
   runAgentImpl = runAgent,
   execNode = (args) => execIn(root, process.execPath, args),
   execGit = (args) => execIn(root, "git", args),
   out = (text) => console.log(text),
   err = (text) => console.error(text),
+  gitExec,
 }) {
   const report = await execNode(["tools/species-data/validate.mjs", ...profileFiles(root)]);
   const list = parseGroupsyncWarnings(report.stdout);
@@ -520,14 +655,44 @@ export async function runGroupsync({
     out("nothing to sync");
     return 0;
   }
-  const logDir = join(root, "data", "species", "work", "groupsync", "logs");
-  mkdirSync(logDir, { recursive: true });
+  let workRoot;
+  try {
+    workRoot = workRootOf(root, gitExec);
+  } catch (error) {
+    err(`groupsync cannot start: ${firstLine(error)}`);
+    return 1;
+  }
+  const logDir = join(workRoot, "groupsync", "logs");
   const promptPath = join(logDir, "groupsync.prompt");
-  writeFileSync(promptPath, buildGroupsyncPrompt({ root, list }));
-  const result = await runAgentImpl({ runner, role: "groupsync", lake: "", promptPath, logDir, cwd: root, timeoutMs: 2_400_000 });
+  try {
+    safeMkdir(logDir, workRoot);
+    safeWriteFile(promptPath, buildGroupsyncPrompt({ root, list }), workRoot);
+  } catch (error) {
+    err(`groupsync cannot start: ${firstLine(error)}`);
+    return 1;
+  }
+  let result;
+  try {
+    result = await runAgentImpl({
+      runner, billing, role: "groupsync", lake: "", promptPath, logDir, logBase: workRoot,
+      cwd: root, timeoutMs: 2_400_000,
+    });
+  } catch (error) {
+    err(`groupsync: the agent could not start (${firstLine(error)})`);
+    return 1;
+  }
   if (result.status === "out-of-credits") {
     err(`groupsync: the agent account is out of credits (${join(logDir, "groupsync.log")})`);
     return 3;
+  }
+  if (result.status === "audit-failed") {
+    err(`groupsync: audit failed (${result.detail}) (${join(logDir, "groupsync.log")})`);
+    return 1;
+  }
+  if (result.status === "auth-failed") {
+    const hint = authHint(result.billing);
+    err(`groupsync: authentication failed, ${hint} (${join(logDir, "groupsync.log")})`);
+    return 1;
   }
   if (result.status !== "ok") {
     err(`groupsync: the agent failed (${join(logDir, "groupsync.log")})`);
@@ -550,7 +715,10 @@ function usage(message) {
 }
 
 /** Runs the command line argv (without node and script) and returns the exit code. */
-export async function main(argv) {
+export async function main(argv, {
+  env = process.env, credentialsFile = defaultCredentialsFile(), managedFile,
+  runPipelineImpl = runPipeline, runGroupsyncImpl = runGroupsync,
+} = {}) {
   const [command, ...rest] = argv;
   let values;
   try {
@@ -558,6 +726,7 @@ export async function main(argv) {
       args: rest,
       options: {
         runner: { type: "string" },
+        billing: { type: "string" },
         id: { type: "string" },
         name: { type: "string" },
         hint: { type: "string" },
@@ -572,6 +741,13 @@ export async function main(argv) {
     return usage(e.message);
   }
   const needRunner = () => (RUNNERS.includes(values.runner) ? null : usage(`--runner must be one of: ${RUNNERS.join(", ")}`));
+  // The billing of the Claude agents is an explicit choice; nothing starts before it is valid.
+  const needBilling = () => {
+    const problem = billingError(values.billing, {
+      apiKeyFile: defaultApiKeyFile(env), credentialsFile, managedFile,
+    });
+    return problem === null ? null : usage(problem);
+  };
 
   if (command === "run") {
     for (const key of ["runner", "id", "name", "hint"]) if (!values[key]) return usage(`missing --${key}`);
@@ -579,8 +755,11 @@ export async function main(argv) {
     if (bad !== null) return bad;
     // The id names the work directory legacy-<id>, so it is a plain legacy catalog number.
     if (!/^\d+$/.test(values.id)) return usage("--id must be a legacy catalog number");
-    return runPipeline({
+    const noBilling = needBilling();
+    if (noBilling !== null) return noBilling;
+    return runPipelineImpl({
       runner: values.runner,
+      billing: values.billing,
       legacyId: values.id,
       name: values.name,
       hint: values.hint,
@@ -593,7 +772,12 @@ export async function main(argv) {
   if (command === "groupsync") {
     const bad = needRunner();
     if (bad !== null) return bad;
-    return runGroupsync({ runner: values.runner });
+    const noBilling = needBilling();
+    if (noBilling !== null) return noBilling;
+    return runGroupsyncImpl({ runner: values.runner, billing: values.billing });
+  }
+  if (command === "next" || command === "status") {
+    for (const option of ["billing", "runner"]) if (values[option] !== undefined) return usage(`${command} takes no --${option} option`);
   }
   if (command === "next") {
     const count = values.count === undefined ? 4 : Number(values.count);

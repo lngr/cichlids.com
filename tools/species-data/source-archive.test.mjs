@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { mkdtempSync, readFileSync, existsSync, rmSync } from 'node:fs';
+import { mkdtempSync, readFileSync, readdirSync, existsSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,7 +8,7 @@ import { createHash } from 'node:crypto';
 import { createServer } from 'node:http';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { archivePath, archiveUrl, storeSnapshot, findSnapshot, validArchiveRef, contentIssue, USER_AGENT } from './source-archive.mjs';
+import { archivePath, archiveUrl, storeSnapshot, findSnapshot, validArchiveRef, contentIssue, recordFailure, USER_AGENT } from './source-archive.mjs';
 const run = promisify(execFile);
 const prose = 'Cichlids occupy rocky habitats and feed on invertebrates. '.repeat(12);
 const html = `<html><title>Fish ecology</title><script>secret()</script><style>hidden</style><body><article><p>${prose}</p></article></body></html>`;
@@ -211,4 +211,23 @@ test('Given a Parquet payload, the archive preserves binary bytes and resolves i
   assert.equal((await findSnapshot('https://example.org/species.parquet', {root})).ref, snap.ref);
   assert.throws(() => resolveSnapshot('../outside', {root}), /reference/i);
   await assert.rejects(storeSnapshot({url:'https://example.org/fake.parquet', contentType:'application/octet-stream', body:Buffer.from('<title>Access denied</title>')}, {root}));
+});
+
+test('Given an agent-planted symlink in the archive root, snapshots, failures and the index refuse it', async t => {
+  const root = sandbox(t);
+  const elsewhere = sandbox(t);
+  writeFileSync(join(elsewhere, 'target.jsonl'), 'keep');
+  symlinkSync(join(elsewhere, 'target.jsonl'), join(root, 'failures.jsonl'));
+  assert.throws(() => recordFailure('https://example.org/x', 'boom', { root }), /refusing to write through the symlink/);
+  assert.equal(readFileSync(join(elsewhere, 'target.jsonl'), 'utf8'), 'keep');
+  symlinkSync(elsewhere, join(root, 'example.org'));
+  await assert.rejects(storeSnapshot({ url: 'https://example.org/page', contentType: 'text/html', body: html }, { root }), /refusing to write through the symlink/);
+  assert.deepEqual(readdirSync(elsewhere), ['target.jsonl']);
+  const clean = sandbox(t);
+  const stored = await storeSnapshot({ url: 'https://example.org/page', contentType: 'text/html', body: html }, { root: clean });
+  assert.ok(existsSync(join(clean, stored.ref, 'meta.json')));
+  rmSync(join(clean, 'index.jsonl'));
+  symlinkSync(join(elsewhere, 'target.jsonl'), join(clean, 'index.jsonl'));
+  await assert.rejects(storeSnapshot({ url: 'https://example.org/other', contentType: 'text/html', body: html }, { root: clean }), /refusing to write through the symlink/);
+  assert.equal(readFileSync(join(elsewhere, 'target.jsonl'), 'utf8'), 'keep');
 });

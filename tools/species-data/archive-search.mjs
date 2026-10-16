@@ -1,43 +1,95 @@
 #!/usr/bin/env node
 // Searches the cichlids.com forum archive for the species research agents and prints each matching
 // thread with its citation: the legacy thread id, which is stable across imports, and the legacy
-// forum URL, which the platform redirects to the thread. Reads the local dev database read-only
-// and prints post text only, never member names.
+// forum URL, which the platform redirects to the thread. Prints post text only, never member names.
 //
 //   node tools/species-data/archive-search.mjs "<term>" [limit]
-import { execFileSync } from 'node:child_process';
+//
+// Where CICHLIDS_ARCHIVE_SEARCH_SOCKET is set (a caged agent has no docker access), the search
+// runs in the archive search service behind that unix socket (archive-service.mjs). Otherwise the
+// search reads the local dev database read-only through "docker exec".
+import net from 'node:net';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import {
+  QUERY_TIMEOUT_MS, ArchiveError, createDockerQuery, dockerEnv, formatResults, publicMessage,
+  validateRequest,
+} from './archive-query.mjs';
 
-// Forum ids of the legacy Phorum installation, as resolved by the legacy redirects of the API.
-const FORUM_ID = { cichlids: 1, african: 2, market_place: 3 };
+const USAGE = 'Usage: node tools/species-data/archive-search.mjs "<term>" [limit]';
 
-const [term, limitArg] = process.argv.slice(2);
-if (!term) {
-  console.error('Usage: node tools/species-data/archive-search.mjs "<term>" [limit]');
-  process.exit(2);
+// The service takes its own query timeout; the client waits a little longer for the answer.
+const ANSWER_TIMEOUT_MS = QUERY_TIMEOUT_MS + 10_000;
+
+/**
+ * Sends one search request to the service on the unix socket socketPath and resolves with its
+ * answer text. Rejects with an Error when the service cannot be reached, closes the connection
+ * without an answer or stays silent for timeoutMs.
+ */
+export function askService(socketPath, request, timeoutMs = ANSWER_TIMEOUT_MS) {
+  return new Promise((done, fail) => {
+    const socket = net.connect(socketPath);
+    const chunks = [];
+    socket.setTimeout(
+      timeoutMs, () => socket.destroy(new Error('the service did not answer in time')),
+    );
+    socket.on('connect', () => socket.write(`${JSON.stringify(request)}\n`));
+    socket.on('data', (chunk) => chunks.push(chunk));
+    socket.on('error', fail);
+    socket.on('close', (hadError) => {
+      const text = Buffer.concat(chunks).toString('utf8');
+      if (!hadError && text !== '') done(text);
+      else if (!hadError) fail(new Error('the service closed the connection without an answer'));
+    });
+  });
 }
-const limit = Number.parseInt(limitArg ?? '30', 10);
 
-const sql = `
-SELECT t.legacy_id, t.category, p.id, replace(replace(left(p.body, 600), E'\\n', ' '), E'\\t', ' ')
-FROM discussion_post p JOIN discussion_thread t ON t.id = p.thread_id
-WHERE p.body ILIKE '%' || :'term' || '%' AND t.legacy_id IS NOT NULL
-ORDER BY t.legacy_id, p.id
-LIMIT ${limit}`;
-
-const out = execFileSync(
-  'docker',
-  ['exec', '-i', 'stack-postgres-1', 'psql', '-U', 'cichlids', '-d', 'cichlids', '-AtF', '\t', '-v', `term=${term}`],
-  { input: sql, encoding: 'utf8' },
-);
-
-const rows = out.split('\n').filter(Boolean).map((line) => line.split('\t'));
-if (rows.length === 0) console.log('No posts found.');
-let current = null;
-for (const [legacyId, category, , excerpt] of rows) {
-  if (legacyId !== current) {
-    current = legacyId;
-    console.log(`\n== cichlids.com forum thread ${legacyId}`);
-    console.log(`   url: https://www.cichlids.com/disc/read.php?${FORUM_ID[category] ?? 1},${legacyId}`);
+/**
+ * Runs the command line argv (without node and script) and resolves with the exit code. env selects
+ * the service (CICHLIDS_ARCHIVE_SEARCH_SOCKET) or the docker query; query (default: docker with the
+ * docker variables of env) and ask (default askService) are injectable. The answer of the service
+ * goes to stdout unchanged, except that an error line goes to stderr with exit code 1.
+ */
+export async function main(argv, {
+  env = process.env, stdout = process.stdout, stderr = process.stderr,
+  query = createDockerQuery({ env: dockerEnv(env) }), ask = askService,
+} = {}) {
+  const [term, limitArg] = argv;
+  if (!term) {
+    stderr.write(`${USAGE}\n`);
+    return 2;
   }
-  console.log(`   - ${excerpt}`);
+  let request;
+  try {
+    // A limit that is not a plain number stays a string and fails the validation.
+    const limit = /^\d+$/.test(limitArg ?? '0') ? Number(limitArg) : limitArg;
+    request = validateRequest({ term, ...(limitArg === undefined ? {} : { limit }) });
+  } catch (error) {
+    stderr.write(`error: ${publicMessage(error)}\n`);
+    return 2;
+  }
+  let text;
+  try {
+    if (env.CICHLIDS_ARCHIVE_SEARCH_SOCKET) {
+      text = await ask(env.CICHLIDS_ARCHIVE_SEARCH_SOCKET, request);
+    } else {
+      const raw = await query({ ...request, signal: AbortSignal.timeout(QUERY_TIMEOUT_MS) });
+      text = formatResults(raw);
+    }
+  } catch (error) {
+    const reason = error instanceof ArchiveError
+      ? publicMessage(error) : `cannot reach the archive search service (${error.message})`;
+    stderr.write(`error: ${reason}\n`);
+    return 1;
+  }
+  if (text.startsWith('error: ')) {
+    stderr.write(text);
+    return 1;
+  }
+  stdout.write(text);
+  return 0;
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  process.exitCode = await main(process.argv.slice(2));
 }

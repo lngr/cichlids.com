@@ -1,6 +1,11 @@
 // Tests for the vote tally. Fixtures are small in-memory feature sets per agent file.
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { tally } from "./tally.mjs";
 
@@ -507,4 +512,31 @@ test("tolerance votes use trust for source support and confidence", () => {
     if (!method) assert.equal(f.reason, "insufficient-sources");
     assert.deepEqual(f.sources, sources);
   }
+});
+
+test("the command refuses a tally.yaml or a work directory that is a symlink and writes nothing behind it", () => {
+  const dir = realpathSync(mkdtempSync(join(tmpdir(), "tally-safe-")));
+  const elsewhere = join(dir, "elsewhere");
+  mkdirSync(elsewhere);
+  const script = fileURLToPath(new URL("./tally.mjs", import.meta.url));
+  const seed = (wd) => {
+    mkdirSync(wd, { recursive: true });
+    for (const name of ["generator", "checker-a", "checker-b"]) writeFileSync(join(wd, `${name}.yaml`), "id: x\n");
+  };
+  const tallyIn = (wd) => spawnSync(process.execPath, [script, wd], { encoding: "utf8" });
+  const wd = join(dir, "work", "legacy-1");
+  seed(wd);
+  assert.equal(tallyIn(wd).status, 0);
+  assert.ok(existsSync(join(wd, "tally.yaml")));
+  rmSync(join(wd, "tally.yaml"));
+  writeFileSync(join(elsewhere, "target.yaml"), "keep");
+  symlinkSync(join(elsewhere, "target.yaml"), join(wd, "tally.yaml"));
+  const linked = tallyIn(wd);
+  assert.equal(linked.status, 1);
+  assert.match(linked.stderr, /^tally: refusing to write through the symlink .*tally\.yaml/);
+  assert.equal(readFileSync(join(elsewhere, "target.yaml"), "utf8"), "keep");
+  seed(elsewhere);
+  symlinkSync(elsewhere, join(dir, "work", "legacy-2"));
+  assert.equal(tallyIn(join(dir, "work", "legacy-2")).status, 1);
+  assert.ok(!existsSync(join(elsewhere, "tally.yaml")));
 });

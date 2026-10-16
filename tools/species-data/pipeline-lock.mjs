@@ -1,9 +1,12 @@
 // Run lock of a pipeline work directory: <wd>/run.lock holds the pid of the process that runs the
 // species. A lock whose pid is alive marks a running species; a lock of a dead pid is stale (the
-// process ended without cleanup, for example by SIGKILL) and the next run replaces it.
+// process ended without cleanup, for example by SIGKILL) and the next run replaces it. The work
+// directory lies in a tree that agents write, so the lock creates the directory and its files with
+// the symlink checks of safe-write.mjs.
 import { randomUUID } from "node:crypto";
-import { existsSync, linkSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, linkSync, readFileSync, renameSync, rmSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { safeMkdir, safeWriteFile } from "./safe-write.mjs";
 
 export const LOCK_FILE = "run.lock";
 
@@ -73,12 +76,13 @@ export function takeOverStaleLock(wd, expected, pid = process.pid) {
  * run.lock with its content in one exclusive step, so no process sees an empty lock. Returns
  * { acquired: true, replaced } where replaced is the pid (or null for an unreadable lock) of a
  * stale lock that was removed, or { acquired: false, pid } when the lock names a live process.
+ * A symlink at wd or below base (default: the directory of wd) is refused with an error.
  */
-export function acquireLock(wd, pid = process.pid) {
-  mkdirSync(wd, { recursive: true });
+export function acquireLock(wd, pid = process.pid, base = dirname(wd)) {
+  safeMkdir(wd, base);
   const path = join(wd, LOCK_FILE);
   const own = join(wd, `${LOCK_FILE}.${pid}`);
-  writeFileSync(own, `${pid}\n`);
+  safeWriteFile(own, `${pid}\n`, base);
   let replaced;
   try {
     for (let attempt = 0; attempt < 3; attempt++) {

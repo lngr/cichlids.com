@@ -1,7 +1,7 @@
 // Tests for the run lock. A finished child process provides the pid of a dead process.
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, realpathSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
@@ -78,4 +78,25 @@ test("takeOverStaleLock removes the lock of the expected dead pid", () => {
   assert.equal(takeOverStaleLock(wd, dead, 4242), true);
   assert.deepEqual(readdirSync(wd), []);
   assert.equal(takeOverStaleLock(wd, dead, 4242), true);
+});
+
+test("acquireLock refuses a work directory that is a symlink and one below a symlinked component, and writes nothing there", () => {
+  const dir = realpathSync(tmp());
+  const elsewhere = join(dir, "elsewhere");
+  mkdirSync(elsewhere);
+  mkdirSync(join(dir, "work"));
+  symlinkSync(elsewhere, join(dir, "work", "legacy-7"));
+  assert.throws(() => acquireLock(join(dir, "work", "legacy-7"), process.pid), /refusing to write through the symlink/);
+  symlinkSync(elsewhere, join(dir, "work", "group"));
+  assert.throws(() => acquireLock(join(dir, "work", "group", "legacy-8"), process.pid, join(dir, "work")), /refusing to write through the symlink/);
+  assert.deepEqual(readdirSync(elsewhere), []);
+});
+
+test("acquireLock with a base creates the work directory below it and trusts the base even when it is a symlink", () => {
+  const dir = realpathSync(tmp());
+  mkdirSync(join(dir, "real"));
+  symlinkSync(join(dir, "real"), join(dir, "work"));
+  assert.deepEqual(acquireLock(join(dir, "work", "legacy-7"), process.pid, join(dir, "work")), { acquired: true });
+  assert.equal(readFileSync(join(dir, "real", "legacy-7", LOCK_FILE), "utf8"), `${process.pid}\n`);
+  assert.deepEqual(readdirSync(join(dir, "real", "legacy-7")), [LOCK_FILE]);
 });

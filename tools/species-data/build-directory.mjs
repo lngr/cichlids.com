@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // Accepted catalog species and legacy aliases share immutable archived source inputs.
-import {existsSync, readFileSync, readdirSync, writeFileSync} from 'node:fs';
+import {existsSync, readFileSync, readdirSync} from 'node:fs';
 import {dirname, join, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {Document, parse, parseDocument, stringify} from 'yaml';
 import {asyncBufferFromFile, parquetMetadataAsync, parquetReadObjects, parquetSchema} from 'hyparquet';
+import {safeWriteFile} from './safe-write.mjs';
 import {resolveSnapshot} from './source-archive.mjs';
 
 export const CATALOG_REF = 'researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp/q-b612c649/2026-10-14T110429Z';
@@ -141,6 +142,10 @@ export function impliedTradeForms(profiles) {
   })).sort((a,b)=>compare(a.id,b.id));
 }
 
+// The files of the species directory lie in a tree that agents write: the data directory above it
+// is the trusted base of the writes, and a symlink below it is refused.
+const writeBase = path => dirname(dirname(path));
+
 export function writeMapping(path, mappings) {
   const doc=existsSync(path) ? parseDocument(readFileSync(path,'utf8')) : parseDocument('mappings: []\n');
   if (doc.errors.length) throw new Error(`Invalid mapping YAML: ${doc.errors[0].message}`);
@@ -149,7 +154,7 @@ export function writeMapping(path, mappings) {
   sequence.commentBefore=doc.get('mappings')?.commentBefore;
   sequence.comment=doc.get('mappings')?.comment;
   doc.set('mappings',sequence);
-  writeFileSync(path,doc.toString({lineWidth:0}));
+  safeWriteFile(path,doc.toString({lineWidth:0}),writeBase(path));
 }
 
 export async function readFishbase(path) {
@@ -188,13 +193,13 @@ export async function build({speciesDir=SPECIES_DIR,root,catalogRef=CATALOG_REF,
   const forms=existsSync(formsPath) ? parse(readFileSync(formsPath,'utf8')).forms : [];
   const ids=new Set(forms.map(x=>x.id));
   const additions=impliedTradeForms(profiles).filter(x=>!ids.has(x.id));
-  writeFileSync(join(speciesDir,'directory.yaml'),yaml({sources,species}));
+  safeWriteFile(join(speciesDir,'directory.yaml'),yaml({sources,species}),writeBase(mappingPath));
   if(!directoryOnly) writeMapping(mappingPath,mappings);
   if (!directoryOnly && (!existsSync(formsPath) || additions.length)) {
     // A missing file starts as a block sequence, so that curated entries keep one field per line.
     const doc=existsSync(formsPath) ? parseDocument(readFileSync(formsPath,'utf8')) : new Document({forms: []});
     for (const form of additions) doc.get('forms').add(doc.createNode(form, {flow: false}));
-    writeFileSync(formsPath,doc.toString({lineWidth:0}));
+    safeWriteFile(formsPath,doc.toString({lineWidth:0}),writeBase(formsPath));
   }
   const familyCode=table.rows.find(x=>x.Genus==='Geophagus')?.FamCode;
   const cichlids=familyCode === undefined ? [] : table.rows.filter(x=>x.FamCode===familyCode);

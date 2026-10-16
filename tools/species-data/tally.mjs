@@ -11,11 +11,12 @@
 // of data/species/waterbodies.yaml are taken from that table and are not voted on.
 // The tolerance range of each water feature is voted on as its own entry named
 // "<feature>.tolerance", also for lake species.
-import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse, stringify } from "yaml";
 import { findWaterbody, loadWaterbodies } from "./waterbodies.mjs";
+import { safeWriteFile } from "./safe-write.mjs";
 import { loadSourceTrust, trustOf } from "./source-trust.mjs";
 
 const SOURCE_TRUST = loadSourceTrust();
@@ -363,7 +364,13 @@ function main() {
     process.exit(2);
   }
   const result = tally(files, waterbodies);
-  writeFileSync(join(resolve(dir), "tally.yaml"), stringify(result, { lineWidth: 100 }));
+  // The work directory lies in a tree that agents write; its parent is the trusted base.
+  try {
+    safeWriteFile(join(resolve(dir), "tally.yaml"), stringify(result, { lineWidth: 100 }), dirname(resolve(dir)));
+  } catch (e) {
+    console.error(`tally: ${e.message}`);
+    process.exit(1);
+  }
   console.log(summary(result));
 }
 

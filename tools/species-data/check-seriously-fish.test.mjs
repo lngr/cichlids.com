@@ -88,3 +88,14 @@ test('Given quotation marks around a genus or epithet, title identity ignores th
     assert.equal(pageDecision({html,names:['One alpha'],url:'https://www.seriouslyfish.com/species/one-alpha'}),'found');
   }
 });
+
+test('Given an agent-planted symlink as output, the check refuses to write through it',async t=>{
+  const {symlinkSync,mkdirSync,writeFileSync,realpathSync}=await import('node:fs');
+  const dir=realpathSync(mkdtempSync(join(tmpdir(),'seriously-fish-link-')));t.after(()=>rmSync(dir,{recursive:true,force:true}));
+  const output=join(dir,'data','species','seriously-fish.yaml');
+  mkdirSync(join(dir,'data','species'),{recursive:true});
+  writeFileSync(join(dir,'target.yaml'),'species: {}\n');
+  symlinkSync(join(dir,'target.yaml'),output);
+  await assert.rejects(runCheck({species:[species],output,log:()=>{},fetchPage:async()=>{throw new Error('HTTP 404');}}),/refusing to write through the symlink/);
+  assert.equal(readFileSync(join(dir,'target.yaml'),'utf8'),'species: {}\n');
+});

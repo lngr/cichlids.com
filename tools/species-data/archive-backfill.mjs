@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 // Source ranges permit insertions without reserializing or reformatting the YAML document.
-import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { isMap, isSeq, isScalar, parseDocument } from 'yaml';
+import { safeWriteFile } from './safe-write.mjs';
 import { archiveUrl, validArchiveRef } from './source-archive.mjs';
 const SPECIES_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../data/species');
 
@@ -65,7 +66,8 @@ export async function backfill({ speciesDir = SPECIES_DIR, root, dryRun = false,
   }
   for (const { file, yaml } of documents) {
     const updated = insertArchiveRefs(yaml, refs);
-    if (updated !== yaml) writeFileSync(file, updated);
+    // The data directory above the species directory is the trusted base of the writes.
+    if (updated !== yaml) safeWriteFile(file, updated, dirname(speciesDir));
   }
   return { urls, refs, failures };
 }

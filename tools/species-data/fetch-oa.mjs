@@ -25,9 +25,18 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { BLOCK_PAGE_MARKERS, teiToText, looksBlocked, looksLikeLoginOrPaywall, extractHtmlText, pdfText } from './source-content.mjs';
 export { teiToText, looksBlocked, looksLikeLoginOrPaywall, extractHtmlText } from './source-content.mjs';
+import { browserProxyOptions } from './browser-proxy.mjs';
+import { safeMkdir, safeWriteFile } from './safe-write.mjs';
 import { USER_AGENT, publicFetch, storeSnapshot, findSnapshot, contentIssue, recordFailure } from './source-archive.mjs';
 
 export const LIBRARY_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'data', 'species', 'work', '.literature');
+// The library lies in a tree that agents write. Its parent (data/species/work) is the trusted base
+// of the writes into it, and a symlink below it is refused.
+// The base of these writes is the plain path <repo>/data/species/work. The tool runs inside the
+// agent cage, where that path leads to the work directory that the cage binds after its
+// validation. Outside the cage nothing validates the path (in a worktree it is a symlink that an
+// agent can retarget), so a manual run there needs a check of the link first.
+const writeLibraryFile = (path, content) => safeWriteFile(path, content, dirname(dirname(path)));
 const LOCK_DIR = join(tmpdir(), 'cichlids-oa.lock');
 const LAST_CALL_FILE = join(tmpdir(), 'cichlids-oa.last');
 const MIN_INTERVAL_MS = 10000;
@@ -186,6 +195,7 @@ async function browserFetch(url, kind) {
       executablePath: chromiumPath(),
       headless: false,
       args: ['--disable-blink-features=AutomationControlled'],
+      ...browserProxyOptions(),
     });
     try {
       const context = await browser.newContext({ acceptDownloads: true });
@@ -346,7 +356,7 @@ async function archiveLibraryEntry(base, meta, options) {
   const got = { format, data: readFileSync(`${base}.${format}`), text: readFileSync(`${base}.txt`, 'utf8'), url: meta.url };
   const snapshot = await archiveFullText(got, meta, options);
   const updated = { ...meta, archived: snapshot.ref };
-  writeFileSync(`${base}.json`, `${JSON.stringify(updated, null, 2)}\n`);
+  writeLibraryFile(`${base}.json`, `${JSON.stringify(updated, null, 2)}\n`);
   return updated;
 }
 
@@ -368,7 +378,7 @@ export async function migrateLibrary({ libraryDir = LIBRARY_DIR, ...options } = 
         const text = format === 'pdf' ? await pdfText(data) : format === 'xml' ? teiToText(data.toString('utf8')) : extractHtmlText(data.toString('utf8')).text;
         const snapshot = await archiveFullText({ format, data, text }, meta, options);
         const updated = { ...meta, archived: snapshot.ref };
-        writeFileSync(`${base}.json`, `${JSON.stringify(updated, null, 2)}\n`);
+        writeLibraryFile(`${base}.json`, `${JSON.stringify(updated, null, 2)}\n`);
         snapshots.push({ base, ref: snapshot.ref });
       } else {
         const updated = await archiveLibraryEntry(base, meta, options);
@@ -419,10 +429,10 @@ export async function main(argv, { libraryDir = LIBRARY_DIR, ...archiveOptions }
     const meta = { ...assessment.metadata, url, format: got.format, route: got.route, fetchedAt: new Date().toISOString() };
     const snapshot = await archiveFullText(got, meta, archiveOptions);
     meta.archived = snapshot.ref;
-    mkdirSync(libraryDir, { recursive: true });
-    writeFileSync(`${base}.${got.format}`, got.data);
-    writeFileSync(`${base}.txt`, got.text);
-    writeFileSync(`${base}.json`, `${JSON.stringify(meta, null, 2)}\n`);
+    safeMkdir(libraryDir, dirname(libraryDir));
+    writeLibraryFile(`${base}.${got.format}`, got.data);
+    writeLibraryFile(`${base}.txt`, got.text);
+    writeLibraryFile(`${base}.json`, `${JSON.stringify(meta, null, 2)}\n`);
     report(meta, `${base}.txt`);
   };
   for (const route of openAlexKey() ? pickOpenAlexContent(work) : []) {

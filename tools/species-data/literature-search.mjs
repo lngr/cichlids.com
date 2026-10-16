@@ -16,6 +16,7 @@ import { existsSync, mkdirSync, readFileSync, rmdirSync, statSync, writeFileSync
 import { homedir, tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { safeMkdir, safeWriteFile } from './safe-write.mjs';
 
 const [query, limitArg] = process.argv.slice(2);
 if (!query) {
@@ -68,6 +69,10 @@ async function getJson(url, service) {
 
 const limit = Math.min(Number.parseInt(limitArg ?? '8', 10) || 8, 25);
 
+// The base of these writes is the plain path <repo>/data/species/work. The tool runs inside the
+// agent cage, where that path leads to the work directory that the cage binds after its
+// validation. Outside the cage nothing validates the path (in a worktree it is a symlink that an
+// agent can retarget), so a manual run there needs a check of the link first.
 const CACHE_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'data', 'species', 'work', '.literature', 'search');
 const CACHE_MAX_AGE_MS = 30 * 24 * 3600 * 1000;
 const cacheFile = join(CACHE_DIR, `${createHash('sha1').update(`${query}\n${limit}`).digest('hex')}.txt`);
@@ -173,6 +178,8 @@ for (const w of works) {
 if (lines.length > 0) {
   const printed = `${lines.join('\n')}\n`;
   process.stdout.write(printed);
-  mkdirSync(CACHE_DIR, { recursive: true });
-  writeFileSync(cacheFile, printed);
+  // data/species/work is the trusted base of the cache writes; a symlink below it is refused.
+  const workDir = dirname(dirname(CACHE_DIR));
+  safeMkdir(CACHE_DIR, workDir);
+  safeWriteFile(cacheFile, printed, workDir);
 }

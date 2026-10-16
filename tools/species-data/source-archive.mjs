@@ -1,13 +1,16 @@
-// Internal immutable research snapshots. Public fetches share a per-host process lock.
+// Internal immutable research snapshots. Public fetches share a per-host process lock. The archive
+// root is a write root of the agent cage, so every write below it refuses a symlink (safe-write.mjs).
 import { createHash, randomUUID } from 'node:crypto';
-import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
+import { safeAppendFile, safeMkdir, safeWriteFile } from './safe-write.mjs';
 import { extractHtmlText, looksBlocked, looksLikeLoginOrPaywall, pdfText, teiToText } from './source-content.mjs';
 
 export const USER_AGENT = 'cichlids.com-species-research/1.0';
 export const VERSION = '1.0';
-export const archiveRoot = () => resolve(process.env.CICHLIDS_SOURCE_ARCHIVE || '/workspaces/cichlids-source-archive');
+export const DEFAULT_ARCHIVE_ROOT = '/workspaces/cichlids-source-archive';
+export const archiveRoot = (env = process.env) => resolve(env.CICHLIDS_SOURCE_ARCHIVE || DEFAULT_ARCHIVE_ROOT);
 const hash = data => createHash('sha256').update(data).digest('hex');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -106,8 +109,8 @@ export function contentIssue({ url, finalUrl = url, httpStatus = 200, contentTyp
 }
 
 export function recordFailure(url, reason, { root = archiveRoot() } = {}) {
-  mkdirSync(root, { recursive: true });
-  appendFileSync(join(root, 'failures.jsonl'), `${JSON.stringify({ url, time: new Date().toISOString(), reason })}\n`);
+  safeMkdir(root, root);
+  safeAppendFile(join(root, 'failures.jsonl'), `${JSON.stringify({ url, time: new Date().toISOString(), reason })}\n`, root);
 }
 function extension(type) {
   if (/pdf/i.test(type)) return 'pdf';
@@ -172,19 +175,19 @@ export async function storeSnapshot(input, { root = archiveRoot(), pathSegments 
     const fetchedAt = new Date(input.fetchedAt ?? Date.now()).toISOString();
     const base = archivePath(url, pathSegments);
     return await withFileLock(`snapshot:${resolve(root)}:${base}`, async () => {
-      mkdirSync(join(root, base), { recursive: true });
+      safeMkdir(join(root, base), root);
       let date = new Date(fetchedAt);
       while (existsSync(join(root, base, timestamp(date)))) date = new Date(+date + 1000);
       const ref = `${base}/${timestamp(date)}`;
       const temp = join(root, base, `.writing-${randomUUID()}`);
       const meta = { url, finalUrl, fetchedAt, httpStatus, contentType, sha256: hash(body), bytes: body.length, tool, version };
-      mkdirSync(temp);
+      safeMkdir(temp, root);
       try {
-        writeFileSync(join(temp, `original.${extension(contentType)}`), body);
-        writeFileSync(join(temp, 'text.txt'), text);
-        writeFileSync(join(temp, 'meta.json'), `${JSON.stringify(meta, null, 2)}\n`);
+        safeWriteFile(join(temp, `original.${extension(contentType)}`), body, root);
+        safeWriteFile(join(temp, 'text.txt'), text, root);
+        safeWriteFile(join(temp, 'meta.json'), `${JSON.stringify(meta, null, 2)}\n`, root);
         renameSync(temp, join(root, ref));
-        appendFileSync(join(root, 'index.jsonl'), `${JSON.stringify({ ref, url, fetchedAt, httpStatus })}\n`);
+        safeAppendFile(join(root, 'index.jsonl'), `${JSON.stringify({ ref, url, fetchedAt, httpStatus })}\n`, root);
       } finally { rmSync(temp, { recursive: true, force: true }); }
       return { ref, textPath: join(root, ref, 'text.txt'), meta };
     });

@@ -17,6 +17,8 @@ import { homedir, tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
+import { browserProxyOptions } from './browser-proxy.mjs';
+import { safeMkdir, safeWriteFile } from './safe-write.mjs';
 import { findSnapshot, storeSnapshot } from './source-archive.mjs';
 
 const BASE = 'https://cichlidae.com';
@@ -24,6 +26,10 @@ const LOCK_DIR = join(tmpdir(), 'cichlids-crc.lock');
 const LAST_CALL_FILE = join(tmpdir(), 'cichlids-crc.last');
 const MIN_INTERVAL_MS = 15000;
 const STALE_LOCK_MS = 180000;
+// The base of these writes is the plain path <repo>/data/species/work. The tool runs inside the
+// agent cage, where that path leads to the work directory that the cage binds after its
+// validation. Outside the cage nothing validates the path (in a worktree it is a symlink that an
+// agent can retarget), so a manual run there needs a check of the link first.
 const CACHE_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'data', 'species', 'work', '.crc-cache');
 const CACHE_MAX_AGE_MS = 30 * 24 * 3600 * 1000;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -139,6 +145,7 @@ async function fetchOnce() {
     executablePath: chromiumPath(),
     headless: false,
     args: ['--disable-blink-features=AutomationControlled'],
+    ...browserProxyOptions(),
   });
   try {
     const page = await browser.newPage();
@@ -180,8 +187,9 @@ if (cached !== null) {
   for (let attempt = 0; ; attempt++) {
     try {
       const text = await withLock(fetchOnce);
-      mkdirSync(CACHE_DIR, { recursive: true });
-      writeFileSync(cachePath(command, arg), text);
+      // data/species/work is the trusted base of the cache writes; a symlink below it is refused.
+      safeMkdir(CACHE_DIR, dirname(CACHE_DIR));
+      safeWriteFile(cachePath(command, arg), text, dirname(CACHE_DIR));
       console.log(text);
       await archive();
       break;

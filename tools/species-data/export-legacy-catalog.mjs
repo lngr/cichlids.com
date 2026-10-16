@@ -4,9 +4,9 @@
 // The export holds catalog data only (names, category, photo counts), no member data. It reads the
 // restored legacy MySQL database read-only through its running container.
 import { execFileSync } from "node:child_process";
-import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { safeMkdir, safeWriteFile } from "./safe-write.mjs";
 
 const CONTAINER = "cichlids-legacy-db-1";
 const OUTPUT = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "species", "legacy-catalog.json");
@@ -58,6 +58,7 @@ const species = stdout
   })
   .sort((a, b) => b.photos - a.photos || a.legacyId - b.legacyId);
 
-mkdirSync(dirname(OUTPUT), { recursive: true });
-writeFileSync(OUTPUT, JSON.stringify(species, null, 2) + "\n", "utf8");
+const dataDir = dirname(dirname(dirname(OUTPUT)));
+safeMkdir(dirname(OUTPUT), dataDir);
+safeWriteFile(OUTPUT, JSON.stringify(species, null, 2) + "\n", dataDir);
 console.error(`${species.length} species written to ${OUTPUT}`);

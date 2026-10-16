@@ -232,3 +232,26 @@ test('Given an OA publisher response, fetch-oa archives the exact full text befo
   assert.equal(archiveMeta.contentType, 'text/html; charset=utf-8');
   assert.deepEqual(readFileSync(join(libraryDir, '10.1234_publisher.html')), original);
 });
+
+test('Given an agent-planted symlink in the library, fetch-oa refuses to write through it', async t => {
+  const { main } = await import('./fetch-oa.mjs');
+  const { mkdtempSync, mkdirSync, symlinkSync, writeFileSync, readFileSync, readdirSync, realpathSync, rmSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const work = realpathSync(mkdtempSync(join(tmpdir(), 'cichlids-oa-link-')));
+  t.after(() => rmSync(work, { recursive: true, force: true }));
+  const elsewhere = join(work, 'elsewhere');
+  mkdirSync(elsewhere);
+  writeFileSync(join(elsewhere, 'meta.json'), 'keep');
+  const libraryDir = join(work, '.literature');
+  mkdirSync(libraryDir);
+  const text = 'Cichlid feeding ecology. '.repeat(50);
+  writeFileSync(join(libraryDir, '10.1234_linked.html'), `<article>${text}</article>`);
+  writeFileSync(join(libraryDir, '10.1234_linked.txt'), text);
+  symlinkSync(join(elsewhere, 'meta.json'), join(libraryDir, '10.1234_linked.json'));
+  t.mock.method(console, 'error', () => {});
+  t.mock.method(globalThis, 'fetch', () => { throw new Error('network must not be used'); });
+  assert.equal(await main(['10.1234/linked'], { libraryDir, root: join(work, 'archive') }), 1);
+  assert.equal(readFileSync(join(elsewhere, 'meta.json'), 'utf8'), 'keep');
+  assert.deepEqual(readdirSync(elsewhere), ['meta.json']);
+});

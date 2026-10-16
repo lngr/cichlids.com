@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 // Species pages provide positive evidence of aquarium keeping; HTTP absence settles negative checks.
-import {existsSync, readFileSync, renameSync, writeFileSync} from 'node:fs';
+import {existsSync, readFileSync} from 'node:fs';
 import {dirname, join, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {parse, stringify} from 'yaml';
+import {safeWriteFile} from './safe-write.mjs';
 import {archiveUrl, resolveSnapshot} from './source-archive.mjs';
 import {extractHtmlText} from './source-content.mjs';
 
@@ -71,9 +72,7 @@ export async function runCheck({species,output=join(SPECIES_DIR,'seriously-fish.
     if(result!==undefined) {
       doc.species[entry.id]=result;
       doc.species=Object.fromEntries(Object.entries(doc.species).sort(([a],[b])=>a.localeCompare(b,'en')));
-      const temp=`${output}.tmp`;
-      writeFileSync(temp,stringify(doc,{lineWidth:0}));
-      renameSync(temp,output);
+      safeWriteFile(output,stringify(doc,{lineWidth:0}),dirname(dirname(output)));
     }
     log(JSON.stringify({id:entry.id,result:result?.url ?? (result ? 'absent' : 'undecided'),decided:Object.keys(doc.species).length,total:species.length}));
   }

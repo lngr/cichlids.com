@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync} from 'node:fs';
+import {mkdtempSync, mkdirSync, readFileSync, readdirSync, realpathSync, symlinkSync, writeFileSync, rmSync} from 'node:fs';
 import {join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {parse, stringify} from 'yaml';
@@ -177,4 +177,21 @@ test('Given a Seriously Fish file, the build adds its derived source and directo
   assert.equal(doc.species.find(x=>x.id==='geophagus-abalios').trade,false);
   assert.equal(readFileSync(join(speciesDir,'legacy-mapping.yaml'),'utf8'),'mappings: []\n# curated\n');
   assert.equal(readFileSync(join(speciesDir,'trade-forms.yaml'),'utf8'),'forms: []\n# curated\n');
+});
+
+test('Given an agent-planted symlink, the mapping and the directory writes refuse it and leave its target alone',t => {
+  const dir=realpathSync(sandbox(t));
+  const speciesDir=join(dir,'data','species');
+  mkdirSync(speciesDir,{recursive:true});
+  const target=join(dir,'elsewhere.yaml');
+  writeFileSync(target,'mappings: []\n');
+  const mapping=join(speciesDir,'legacy-mapping.yaml');
+  symlinkSync(target,mapping);
+  assert.throws(()=>writeMapping(mapping,[{legacyId:2,legacyName:'Other sp.',target:null,match:'open'}]),/refusing to write through the symlink/);
+  assert.equal(readFileSync(target,'utf8'),'mappings: []\n');
+  rmSync(mapping);
+  symlinkSync(join(dir,'elsewhere-dir'),join(dir,'data','linked'));
+  mkdirSync(join(dir,'elsewhere-dir'));
+  assert.throws(()=>writeMapping(join(dir,'data','linked','legacy-mapping.yaml'),[]),/refusing to write through the symlink/);
+  assert.deepEqual(readdirSync(join(dir,'elsewhere-dir')),[]);
 });
