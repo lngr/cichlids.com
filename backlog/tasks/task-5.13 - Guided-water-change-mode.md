@@ -1,9 +1,10 @@
 ---
 id: TASK-5.13
 title: Guided water change mode
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-16 06:27'
+updated_date: '2026-10-16 06:29'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
