@@ -1,15 +1,11 @@
 // Story: TASK-5.4
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
-import { API_URL, WEB_URL, byTestId, passwordGrantToken, logInThroughKeycloak, signOutThroughKeycloak } from "./support.mjs";
+import { API_URL, WEB_URL, byTestId, passwordGrantToken, logInThroughKeycloak, signOutThroughKeycloak, ZONE, localDate } from "./support.mjs";
 
 const token = await passwordGrantToken();
 const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 const day = 24 * 3600 * 1000;
-const localDate = date => {
-  const pad = value => String(value).padStart(2, "0");
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-};
 async function createTank(title) {
   const response = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title, isPublic: true }) });
   assert.equal(response.status, 201);
@@ -41,7 +37,7 @@ const browser = await chromium.launch();
 const errors = [];
 let page;
 try {
-  page = await browser.newPage({ locale: "en-US", colorScheme: "light", viewport: { width: 390, height: 844 } });
+  page = await browser.newPage({ locale: "en-US", timezoneId: ZONE, colorScheme: "light", viewport: { width: 390, height: 844 } });
   page.on("pageerror", error => errors.push(String(error)));
   await page.goto(`${WEB_URL}/me?lang=en`, { waitUntil: "networkidle" });
   await logInThroughKeycloak(page);

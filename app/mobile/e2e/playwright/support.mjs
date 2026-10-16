@@ -81,3 +81,16 @@ export async function logInThroughKeycloak(page) {
   }
   return loggedInName;
 }
+
+/**
+ * The time zone every browser context of a spec runs in. The app sends the local date of its browser
+ * as the date of the member, so a spec that computes dates builds them in this zone and gives each
+ * context this zone as its timezoneId.
+ */
+export const ZONE = "UTC";
+
+/** The calendar date (YYYY-MM-DD) in ZONE of the instant, moved by the given number of days. */
+export function localDate(instant = new Date(), days = 0) {
+  return new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "2-digit", day: "2-digit", timeZone: ZONE })
+    .format(new Date(instant.getTime() + days * 24 * 3600 * 1000));
+}
