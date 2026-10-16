@@ -91,10 +91,10 @@ def main():
                     time.sleep(1)
             else:
                 raise AssertionError('Staging API did not start')
-            with urllib.request.urlopen(base + '/api/pictures') as response:
+            with urllib.request.urlopen(base + '/api/stories') as response:
                 assert response.status == 200
             assert 'Hosting environment: Staging' in run('docker', 'logs', api)
-            print('api: Hosting environment: Staging; /healthz 200 {"status":"ok"}; /api/pictures 200')
+            print('api: Hosting environment: Staging; /healthz 200 {"status":"ok"}; /api/stories 200')
             failed = prefix + '-without-slug'
             containers.append(failed)
             result = subprocess.run(['docker', 'run', '--name', failed, *common, '-v', f'{keys}:/keys:ro',

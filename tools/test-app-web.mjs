@@ -16,7 +16,7 @@ try {
     const response = await route.fetch({ url: upstream + url.pathname + url.search });
     await route.fulfill({ response });
   });
-  const pictures = page.waitForResponse(response => response.url().startsWith('https://staging.cichlids.com/api/pictures'));
+  const pictures = page.waitForResponse(response => response.url().startsWith('https://staging.cichlids.com/api/stories'));
   await page.goto('https://staging.cichlids.com/', { waitUntil: 'networkidle' });
   assert.equal((await pictures).status(), 200);
   await page.getByText('Newest', { exact: true }).waitFor();
@@ -25,7 +25,7 @@ try {
   assert.equal((await session).status(), 200);
   await page.getByText('Log in', { exact: true }).first().waitFor();
   assert.deepEqual(errors, []);
-  console.log('browser: staging web loads; same-origin /api/pictures and /api/auth/session return 200; sign-in screen renders');
+  console.log('browser: staging web loads; same-origin /api/stories and /api/auth/session return 200; sign-in screen renders');
 } finally {
   await browser.close();
 }
