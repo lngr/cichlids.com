@@ -9,7 +9,7 @@ const place = (patch: Partial<LibraryPlace>): LibraryPlace => ({
   kind: "tank", name: null, tankId: null, careEntryId: null, storyId: null, storySlug: null, section: null, careKind: null, at: null, ...patch,
 });
 const item = (patch: Partial<LibraryItem>): LibraryItem => ({
-  id: 1, kind: "photo", createdAt: "2026-10-16T10:00:00Z", width: 800, height: 600, video: null, placeCount: 0, placeKinds: [],
+  id: 1, kind: "photo", createdAt: "2026-10-16T10:00:00Z", width: 800, height: 600, video: null, placeCount: 0, placeKinds: [], quickShare: null,
   image: { thumb: "t", small: "s", medium: "m", large: "l" }, ...patch,
 });
 

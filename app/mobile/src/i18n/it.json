@@ -275,7 +275,8 @@
     "loginUnavailable": "L'accesso non è disponibile perché il servizio di autenticazione è irraggiungibile. Riprova.",
     "todos": "Attività",
     "media": "I miei media",
-    "profileImages": "Avatar e copertina"
+    "profileImages": "Avatar e copertina",
+    "stories": "Le mie storie"
   },
   "upload": {
     "title": "Carica foto",
@@ -422,7 +423,22 @@
     "library_filter_invalid": "Questo filtro non è disponibile.",
     "profile_media_invalid": "Scegli una foto dalla tua libreria multimediale.",
     "profile_media_not_photo": "Solo una foto può essere avatar o copertina.",
-    "profile_photo_invalid": "Non è stato possibile leggere la foto. Invia una foto JPEG, PNG o WebP fino a 25 MB."
+    "profile_photo_invalid": "Non è stato possibile leggere la foto. Invia una foto JPEG, PNG o WebP fino a 25 MB.",
+    "story_not_found": "Questa storia non esiste.",
+    "media_not_ready": "Il video è ancora in preparazione. Riprova tra un momento.",
+    "media_already_shared": "Questo file è già nella galleria. Aggiungilo a una storia.",
+    "story_item_exists": "La storia mostra già questo file.",
+    "story_item_limit": "Una storia ha al massimo 30 elementi.",
+    "story_item_not_found": "La storia non ha questo elemento.",
+    "story_subject_exists": "La storia rimanda già a questo.",
+    "story_subject_limit": "Una storia ha al massimo 20 soggetti.",
+    "story_subject_not_found": "Questo soggetto non è disponibile.",
+    "story_order_invalid": "L'ordine non è valido. Ricarica la storia e riprova.",
+    "story_cover_invalid": "La copertina deve essere un elemento della storia.",
+    "story_needs_item": "Una storia pubblicata mantiene almeno un elemento. Riportala a bozza o eliminala.",
+    "story_not_published": "Solo una storia pubblicata può essere ritirata.",
+    "story_text_invalid": "Inserisci un titolo di al massimo 200 caratteri.",
+    "story_caption_invalid": "Una didascalia ha al massimo 500 caratteri."
   },
   "featureFlags": {
     "activityTitle": "Attività della comunità",
@@ -1198,6 +1214,96 @@
       "empty": "La tua libreria non contiene ancora foto. Carica una foto.",
       "cancel": "Annulla",
       "photo": "Foto del {{date}}"
+    }
+  },
+  "share": {
+    "action": "Condividi nella galleria",
+    "inGallery": "Nella galleria",
+    "inDraft": "Condivisa come bozza",
+    "formTitle": "Condividi nella galleria",
+    "titleLabel": "Titolo",
+    "publish": "Pubblica",
+    "cancel": "Annulla",
+    "error": "Condivisione non riuscita. Riprova.",
+    "addToStory": "Aggiungi a una storia",
+    "pickTitle": "Scegli una storia",
+    "pickEmpty": "Non hai ancora storie.",
+    "pickError": "Non è stato possibile caricare le tue storie.",
+    "newStory": "Nuova storia con questo file",
+    "added": "Aggiunto alla storia.",
+    "topic": {
+      "cichlids": "Ciclidi",
+      "tanks": "Acquari",
+      "offtopic": "Fuori tema"
+    }
+  },
+  "stories": {
+    "title": "Le mie storie",
+    "editorTitle": "Modifica storia",
+    "intro": "Le tue storie della galleria, bozze e pubblicate. Una storia mostra foto e video della tua libreria nell'ordine che scegli.",
+    "new": "Nuova storia",
+    "empty": "Non hai ancora storie.",
+    "untitled": "Storia senza titolo",
+    "createError": "Non è stato possibile creare la storia. Riprova.",
+    "signIn": "Accedi per vedere le tue storie.",
+    "itemCount": "Elementi: {{count}}",
+    "state": {
+      "draft": "Bozza",
+      "published": "Pubblicata"
+    },
+    "loadError": "Non è stato possibile caricare la storia. Riprova.",
+    "saveError": "Non è stato possibile salvare la modifica. Riprova.",
+    "publishedNote": "Questa storia è pubblica nella galleria. Le modifiche si vedono subito.",
+    "draftNote": "Questa storia è una bozza. Solo tu la vedi finché non la pubblichi.",
+    "viewInGallery": "Vedi nella galleria",
+    "titleLabel": "Titolo",
+    "descriptionLabel": "Testo",
+    "saveText": "Salva testo",
+    "sequence": "Sequenza",
+    "sequenceEmpty": "Ancora nessun elemento. Aggiungi foto o video dalla tua libreria.",
+    "itemLabel": "{{kind}} {{position}} di {{total}}",
+    "isCover": "Copertina",
+    "captionLabel": "Didascalia",
+    "saveCaption": "Salva didascalia",
+    "makeCover": "Usa come copertina",
+    "clearCover": "Rimuovi la copertina scelta",
+    "remove": "Rimuovi",
+    "moveUp": "Sposta su",
+    "moveDown": "Sposta giù",
+    "coverHint": "Senza copertina scelta, il primo elemento è la copertina.",
+    "addFromLibrary": "Aggiungi dalla libreria",
+    "addSubject": "Aggiungi acquario o specie",
+    "references": "Riferimenti",
+    "unavailable": "Non disponibile per te",
+    "makeReference": "Mostra come riferimento",
+    "makeCard": "Mostra come scheda nella sequenza",
+    "withdraw": "Riporta a bozza",
+    "publish": "Pubblica",
+    "delete": "Elimina storia",
+    "deletePublishedText": "La storia scompare dalla galleria. I tuoi file restano nella libreria.",
+    "deleteDraftText": "La bozza viene eliminata. I tuoi file restano nella libreria.",
+    "deleteYes": "Elimina storia",
+    "deleteNo": "Tieni la storia",
+    "subject": {
+      "tank": "Acquario: {{title}}",
+      "species": "Specie: {{name}}",
+      "inhabitant": "Abitante: {{name}} in {{tank}}"
+    },
+    "picker": {
+      "subjectTitle": "Aggiungi un soggetto",
+      "libraryTitle": "Scegli un file",
+      "tab": {
+        "mine": "I miei acquari",
+        "tanks": "Acquari",
+        "species": "Specie"
+      },
+      "search": "Cerca",
+      "asCard": "Aggiungi come scheda",
+      "asReference": "Aggiungi come riferimento",
+      "none": "Nessun risultato.",
+      "error": "Non è stato possibile caricare l'elenco. Riprova.",
+      "close": "Chiudi",
+      "taken": "Già nella storia"
     }
   }
 }

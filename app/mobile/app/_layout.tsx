@@ -53,6 +53,8 @@ export default function RootLayout() {
                 <Stack.Screen name="todos" options={{ title: t("todos.title") }} />
                 <Stack.Screen name="media" options={{ title: t("library.title") }} />
                 <Stack.Screen name="profile-images" options={{ title: t("profileImages.title") }} />
+                <Stack.Screen name="stories/index" options={{ title: t("stories.title") }} />
+                <Stack.Screen name="stories/[id]" options={{ title: t("stories.editorTitle") }} />
                 <Stack.Screen name="upload/index" options={{ title: t("upload.title") }} />
               </Stack>
               <OnboardingGate />

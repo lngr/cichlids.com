@@ -282,7 +282,8 @@
     "loginUnavailable": "Přihlášení není dostupné, protože se nelze připojit k přihlašovací službě. Zkuste to znovu.",
     "todos": "Úkoly",
     "media": "Moje média",
-    "profileImages": "Avatar a záhlaví"
+    "profileImages": "Avatar a záhlaví",
+    "stories": "Moje příběhy"
   },
   "upload": {
     "title": "Nahrát fotografii",
@@ -430,7 +431,22 @@
     "library_filter_invalid": "Tento filtr není k dispozici.",
     "profile_media_invalid": "Vyber fotku ze své knihovny médií.",
     "profile_media_not_photo": "Avatarem nebo záhlavím může být jen fotka.",
-    "profile_photo_invalid": "Fotku se nepodařilo přečíst. Pošli fotku JPEG, PNG nebo WebP do 25 MB."
+    "profile_photo_invalid": "Fotku se nepodařilo přečíst. Pošli fotku JPEG, PNG nebo WebP do 25 MB.",
+    "story_not_found": "Tento příběh neexistuje.",
+    "media_not_ready": "Video se ještě připravuje. Zkuste to za chvíli.",
+    "media_already_shared": "Tento soubor už je v galerii. Přidejte ho raději do příběhu.",
+    "story_item_exists": "Příběh už tento soubor ukazuje.",
+    "story_item_limit": "Příběh má nejvýše 30 položek.",
+    "story_item_not_found": "Příběh tuto položku nemá.",
+    "story_subject_exists": "Příběh už na to odkazuje.",
+    "story_subject_limit": "Příběh má nejvýše 20 témat.",
+    "story_subject_not_found": "Toto téma není dostupné.",
+    "story_order_invalid": "Pořadí není platné. Načtěte příběh znovu a zkuste to ještě jednou.",
+    "story_cover_invalid": "Titulním obrázkem musí být položka příběhu.",
+    "story_needs_item": "Zveřejněný příběh si ponechá aspoň jednu položku. Vraťte ho do konceptu nebo ho smažte.",
+    "story_not_published": "Stáhnout lze jen zveřejněný příběh.",
+    "story_text_invalid": "Zadejte název nejvýše o 200 znacích.",
+    "story_caption_invalid": "Popisek má nejvýše 500 znaků."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -1217,6 +1233,96 @@
       "empty": "Tvoje knihovna zatím neobsahuje žádné fotky. Nahraj fotku.",
       "cancel": "Zrušit",
       "photo": "Fotka z {{date}}"
+    }
+  },
+  "share": {
+    "action": "Sdílet v galerii",
+    "inGallery": "V galerii",
+    "inDraft": "Sdíleno jako koncept",
+    "formTitle": "Sdílet v galerii",
+    "titleLabel": "Název",
+    "publish": "Zveřejnit",
+    "cancel": "Zrušit",
+    "error": "Sdílení se nepovedlo. Zkuste to znovu.",
+    "addToStory": "Přidat do příběhu",
+    "pickTitle": "Vyberte příběh",
+    "pickEmpty": "Zatím nemáte žádné příběhy.",
+    "pickError": "Vaše příběhy se nepodařilo načíst.",
+    "newStory": "Nový příběh s tímto souborem",
+    "added": "Přidáno do příběhu.",
+    "topic": {
+      "cichlids": "Cichlidy",
+      "tanks": "Akvária",
+      "offtopic": "Mimo téma"
+    }
+  },
+  "stories": {
+    "title": "Moje příběhy",
+    "editorTitle": "Upravit příběh",
+    "intro": "Vaše příběhy v galerii, koncepty i zveřejněné. Příběh ukazuje fotky a videa z vaší knihovny v pořadí, které zvolíte.",
+    "new": "Nový příběh",
+    "empty": "Zatím nemáte žádné příběhy.",
+    "untitled": "Příběh bez názvu",
+    "createError": "Příběh se nepodařilo vytvořit. Zkuste to znovu.",
+    "signIn": "Přihlaste se, abyste viděli své příběhy.",
+    "itemCount": "Položky: {{count}}",
+    "state": {
+      "draft": "Koncept",
+      "published": "Zveřejněno"
+    },
+    "loadError": "Příběh se nepodařilo načíst. Zkuste to znovu.",
+    "saveError": "Změnu se nepodařilo uložit. Zkuste to znovu.",
+    "publishedNote": "Tento příběh je veřejný v galerii. Změny se projeví hned.",
+    "draftNote": "Tento příběh je koncept. Vidíte ho jen vy, dokud ho nezveřejníte.",
+    "viewInGallery": "Zobrazit v galerii",
+    "titleLabel": "Název",
+    "descriptionLabel": "Text",
+    "saveText": "Uložit text",
+    "sequence": "Pořadí",
+    "sequenceEmpty": "Zatím žádné položky. Přidejte fotky nebo videa z knihovny.",
+    "itemLabel": "{{kind}} {{position}} z {{total}}",
+    "isCover": "Titulní obrázek",
+    "captionLabel": "Popisek",
+    "saveCaption": "Uložit popisek",
+    "makeCover": "Použít jako titulní obrázek",
+    "clearCover": "Zrušit výběr titulního obrázku",
+    "remove": "Odebrat",
+    "moveUp": "Posunout nahoru",
+    "moveDown": "Posunout dolů",
+    "coverHint": "Bez zvoleného titulního obrázku je titulním obrázkem první položka.",
+    "addFromLibrary": "Přidat z knihovny",
+    "addSubject": "Přidat akvárium nebo druh",
+    "references": "Odkazy",
+    "unavailable": "Pro vás nedostupné",
+    "makeReference": "Zobrazit jako odkaz",
+    "makeCard": "Zobrazit jako kartu v pořadí",
+    "withdraw": "Vrátit do konceptu",
+    "publish": "Zveřejnit",
+    "delete": "Smazat příběh",
+    "deletePublishedText": "Příběh zmizí z galerie. Vaše soubory zůstanou v knihovně.",
+    "deleteDraftText": "Koncept bude smazán. Vaše soubory zůstanou v knihovně.",
+    "deleteYes": "Smazat příběh",
+    "deleteNo": "Ponechat příběh",
+    "subject": {
+      "tank": "Akvárium: {{title}}",
+      "species": "Druh: {{name}}",
+      "inhabitant": "Obyvatel: {{name}} v {{tank}}"
+    },
+    "picker": {
+      "subjectTitle": "Přidat téma",
+      "libraryTitle": "Vyberte soubor",
+      "tab": {
+        "mine": "Má akvária",
+        "tanks": "Akvária",
+        "species": "Druhy"
+      },
+      "search": "Hledat",
+      "asCard": "Přidat jako kartu",
+      "asReference": "Přidat jako odkaz",
+      "none": "Nic nenalezeno.",
+      "error": "Seznam se nepodařilo načíst. Zkuste to znovu.",
+      "close": "Zavřít",
+      "taken": "Už v příběhu"
     }
   }
 }

@@ -112,6 +112,7 @@ function MemberContent({ profile, onStreaksChanged }: { profile: Me["profile"]; 
         <Button testID="me-todos" variant="secondary" label={t("me.todos")} onPress={() => router.push("/todos")} />
         <Button testID="me-media" variant="secondary" label={t("me.media")} onPress={() => router.push("/media")} />
         <Button testID="me-profile-images" variant="secondary" label={t("me.profileImages")} onPress={() => router.push("/profile-images")} />
+        <Button testID="me-stories" variant="secondary" label={t("me.stories")} onPress={() => router.push("/stories")} />
         <Button testID="logout-button" variant="secondary" label={t("me.logout")} onPress={() => void logout()} />
       </View>
       <LanguageSettings />

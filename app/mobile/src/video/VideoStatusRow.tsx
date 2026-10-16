@@ -1,3 +1,4 @@
+import { ShareActions } from "../stories/ShareActions";
 import { ActivityIndicator, Text, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import type { Video } from "@cichlids/client-core";
@@ -23,6 +24,7 @@ export function VideoStatusRow({ video, posterUrl, playlistUrl, testID, onRemove
       <Text style={[theme.type.body, { color: theme.colors.fg, flexShrink: 1 }]}>{t("video.processing")}</Text>
     </View> : null}
     {state === "failed" ? <Text testID={`${testID}-failed`} accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.fg }]}>{t("video.failed")}</Text> : null}
+    {state === "ready" && onRemove ? <ShareActions mediaItemId={Number(video.id)} /> : null}
     {state !== "processing" && onRemove ? <Button testID={`${testID}-remove`} variant="secondary" label={t("video.remove")} onPress={onRemove} /> : null}
   </View>;
 }

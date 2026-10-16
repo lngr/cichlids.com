@@ -9,6 +9,7 @@ import { Button } from "../components/Button";
 import { TextEntryModal } from "../components/TextEntryModal";
 import { translateApiError } from "../lib/apiErrors";
 import { minTouchTarget, useTheme } from "../theme";
+import { ShareActions } from "../stories/ShareActions";
 import { PhotoPickButton } from "../upload/PhotoPickButton";
 import { CareEntryVideos } from "../video/CareEntryVideos";
 import { canAddPhoto, photoPath } from "./carePhotos";
@@ -84,6 +85,7 @@ export function CareEntryExtras({ entry, stream, readOnly = false }: { entry: Ca
           {viewedPath ? <Image testID="care-photo-viewer-image" source={apiClient.care.photoUrl(viewedPath)} contentFit="contain"
             accessibilityLabel={t("care.photo.viewerTitle")} style={{ width: "100%", aspectRatio: 4 / 3, minHeight: minTouchTarget, backgroundColor: theme.colors.placeholder }} /> : null}
           {error ? <Text accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>{error}</Text> : null}
+          {readOnly || !viewed ? null : <ShareActions mediaItemId={Number(viewed.mediaItemId)} onNavigate={() => setViewing(null)} />}
           {readOnly ? null : <Button testID="care-photo-remove" variant="secondary" label={t("care.photo.remove")} busy={working}
             onPress={() => viewed && send({ type: "REMOVE_PHOTO", entryId: id, photoId: Number(viewed.id) })} />}
           <Button testID="care-photo-close" label={t("care.photo.close")} disabled={working} onPress={() => setViewing(null)} />

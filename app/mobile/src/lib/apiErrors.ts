@@ -108,6 +108,21 @@ export const API_ERROR_CODES = [
   "selected_member_profile_not_found",
   "selected_member_is_owner",
   "selected_member_limit",
+  "story_not_found",
+  "media_not_ready",
+  "media_already_shared",
+  "story_item_exists",
+  "story_item_limit",
+  "story_item_not_found",
+  "story_subject_exists",
+  "story_subject_limit",
+  "story_subject_not_found",
+  "story_order_invalid",
+  "story_cover_invalid",
+  "story_needs_item",
+  "story_not_published",
+  "story_text_invalid",
+  "story_caption_invalid",
 ] as const;
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];

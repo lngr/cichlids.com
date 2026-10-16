@@ -268,7 +268,8 @@
     "loginUnavailable": "Die Anmeldung ist gerade nicht möglich, weil der Anmeldedienst nicht erreichbar ist. Bitte versuche es erneut.",
     "todos": "To-dos",
     "media": "Meine Medien",
-    "profileImages": "Avatar und Titelbild"
+    "profileImages": "Avatar und Titelbild",
+    "stories": "Meine Geschichten"
   },
   "upload": {
     "title": "Foto hochladen",
@@ -414,7 +415,22 @@
     "library_filter_invalid": "Dieser Filter ist nicht verfügbar.",
     "profile_media_invalid": "Wähle ein Foto aus deiner Mediathek.",
     "profile_media_not_photo": "Nur ein Foto kann Avatar oder Titelbild sein.",
-    "profile_photo_invalid": "Das Foto konnte nicht gelesen werden. Bitte sende ein JPEG-, PNG- oder WebP-Foto bis 25 MB."
+    "profile_photo_invalid": "Das Foto konnte nicht gelesen werden. Bitte sende ein JPEG-, PNG- oder WebP-Foto bis 25 MB.",
+    "story_not_found": "Diese Geschichte gibt es nicht.",
+    "media_not_ready": "Das Video wird noch vorbereitet. Versuche es gleich noch einmal.",
+    "media_already_shared": "Diese Datei ist schon in der Galerie. Füge sie stattdessen zu einer Geschichte hinzu.",
+    "story_item_exists": "Die Geschichte zeigt diese Datei bereits.",
+    "story_item_limit": "Eine Geschichte hat höchstens 30 Einträge.",
+    "story_item_not_found": "Die Geschichte hat diesen Eintrag nicht.",
+    "story_subject_exists": "Die Geschichte verweist schon darauf.",
+    "story_subject_limit": "Eine Geschichte hat höchstens 20 Themen.",
+    "story_subject_not_found": "Dieses Thema ist nicht verfügbar.",
+    "story_order_invalid": "Die Reihenfolge ist ungültig. Lade die Geschichte neu und versuche es erneut.",
+    "story_cover_invalid": "Das Titelbild muss ein Eintrag der Geschichte sein.",
+    "story_needs_item": "Eine veröffentlichte Geschichte behält mindestens einen Eintrag. Ziehe sie zurück oder lösche sie.",
+    "story_not_published": "Nur eine veröffentlichte Geschichte kann zurückgezogen werden.",
+    "story_text_invalid": "Bitte gib einen Titel mit höchstens 200 Zeichen ein.",
+    "story_caption_invalid": "Eine Bildunterschrift hat höchstens 500 Zeichen."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -1179,6 +1195,96 @@
       "empty": "Deine Mediathek enthält noch keine Fotos. Lade stattdessen ein Foto hoch.",
       "cancel": "Abbrechen",
       "photo": "Foto vom {{date}}"
+    }
+  },
+  "share": {
+    "action": "In die Galerie teilen",
+    "inGallery": "In der Galerie",
+    "inDraft": "Als Entwurf geteilt",
+    "formTitle": "In die Galerie teilen",
+    "titleLabel": "Titel",
+    "publish": "Veröffentlichen",
+    "cancel": "Abbrechen",
+    "error": "Das Teilen ist fehlgeschlagen. Bitte versuche es erneut.",
+    "addToStory": "Zu einer Geschichte hinzufügen",
+    "pickTitle": "Geschichte wählen",
+    "pickEmpty": "Du hast noch keine Geschichten.",
+    "pickError": "Deine Geschichten konnten nicht geladen werden.",
+    "newStory": "Neue Geschichte mit dieser Datei",
+    "added": "Zur Geschichte hinzugefügt.",
+    "topic": {
+      "cichlids": "Buntbarsche",
+      "tanks": "Becken",
+      "offtopic": "Offtopic"
+    }
+  },
+  "stories": {
+    "title": "Meine Geschichten",
+    "editorTitle": "Geschichte bearbeiten",
+    "intro": "Deine Galerie-Geschichten, Entwürfe und veröffentlichte. Eine Geschichte zeigt Fotos und Videos aus deiner Bibliothek in der Reihenfolge, die du wählst.",
+    "new": "Neue Geschichte",
+    "empty": "Du hast noch keine Geschichten.",
+    "untitled": "Geschichte ohne Titel",
+    "createError": "Die Geschichte konnte nicht angelegt werden. Bitte versuche es erneut.",
+    "signIn": "Melde dich an, um deine Geschichten zu sehen.",
+    "itemCount": "Einträge: {{count}}",
+    "state": {
+      "draft": "Entwurf",
+      "published": "Veröffentlicht"
+    },
+    "loadError": "Die Geschichte konnte nicht geladen werden. Bitte versuche es erneut.",
+    "saveError": "Die Änderung konnte nicht gespeichert werden. Bitte versuche es erneut.",
+    "publishedNote": "Diese Geschichte ist öffentlich in der Galerie. Änderungen erscheinen sofort.",
+    "draftNote": "Diese Geschichte ist ein Entwurf. Nur du siehst sie, bis du sie veröffentlichst.",
+    "viewInGallery": "In der Galerie ansehen",
+    "titleLabel": "Titel",
+    "descriptionLabel": "Text",
+    "saveText": "Text speichern",
+    "sequence": "Reihenfolge",
+    "sequenceEmpty": "Noch keine Einträge. Füge Fotos oder Videos aus deiner Bibliothek hinzu.",
+    "itemLabel": "{{kind}} {{position}} von {{total}}",
+    "isCover": "Titelbild",
+    "captionLabel": "Bildunterschrift",
+    "saveCaption": "Bildunterschrift speichern",
+    "makeCover": "Als Titelbild verwenden",
+    "clearCover": "Titelbild-Wahl entfernen",
+    "remove": "Entfernen",
+    "moveUp": "Nach oben",
+    "moveDown": "Nach unten",
+    "coverHint": "Ohne gewähltes Titelbild ist der erste Eintrag das Titelbild.",
+    "addFromLibrary": "Aus Bibliothek hinzufügen",
+    "addSubject": "Becken oder Art hinzufügen",
+    "references": "Verweise",
+    "unavailable": "Für dich nicht verfügbar",
+    "makeReference": "Als Verweis zeigen",
+    "makeCard": "Als Karte in der Reihenfolge zeigen",
+    "withdraw": "Zurück zum Entwurf",
+    "publish": "Veröffentlichen",
+    "delete": "Geschichte löschen",
+    "deletePublishedText": "Die Geschichte verschwindet aus der Galerie. Deine Dateien bleiben in deiner Bibliothek.",
+    "deleteDraftText": "Der Entwurf wird gelöscht. Deine Dateien bleiben in deiner Bibliothek.",
+    "deleteYes": "Geschichte löschen",
+    "deleteNo": "Geschichte behalten",
+    "subject": {
+      "tank": "Becken: {{title}}",
+      "species": "Art: {{name}}",
+      "inhabitant": "Bewohner: {{name}} in {{tank}}"
+    },
+    "picker": {
+      "subjectTitle": "Thema hinzufügen",
+      "libraryTitle": "Datei wählen",
+      "tab": {
+        "mine": "Meine Becken",
+        "tanks": "Becken",
+        "species": "Arten"
+      },
+      "search": "Suchen",
+      "asCard": "Als Karte hinzufügen",
+      "asReference": "Als Verweis hinzufügen",
+      "none": "Nichts gefunden.",
+      "error": "Die Liste konnte nicht geladen werden. Bitte versuche es erneut.",
+      "close": "Schließen",
+      "taken": "Schon in der Geschichte"
     }
   }
 }

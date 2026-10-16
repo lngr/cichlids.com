@@ -275,7 +275,8 @@
     "loginUnavailable": "La connexion est indisponible car le service d'authentification est inaccessible. Veuillez réessayer.",
     "todos": "Tâches",
     "media": "Mes médias",
-    "profileImages": "Avatar et bannière"
+    "profileImages": "Avatar et bannière",
+    "stories": "Mes histoires"
   },
   "upload": {
     "title": "Importer une photo",
@@ -422,7 +423,22 @@
     "library_filter_invalid": "Ce filtre n'est pas disponible.",
     "profile_media_invalid": "Choisissez une photo de votre médiathèque.",
     "profile_media_not_photo": "Seule une photo peut servir d'avatar ou de bannière.",
-    "profile_photo_invalid": "La photo n'a pas pu être lue. Envoyez une photo JPEG, PNG ou WebP de 25 Mo au plus."
+    "profile_photo_invalid": "La photo n'a pas pu être lue. Envoyez une photo JPEG, PNG ou WebP de 25 Mo au plus.",
+    "story_not_found": "Cette histoire n'existe pas.",
+    "media_not_ready": "La vidéo est encore en préparation. Réessayez dans un instant.",
+    "media_already_shared": "Ce fichier est déjà dans la galerie. Ajoutez-le plutôt à une histoire.",
+    "story_item_exists": "L'histoire montre déjà ce fichier.",
+    "story_item_limit": "Une histoire compte 30 éléments au maximum.",
+    "story_item_not_found": "L'histoire n'a pas cet élément.",
+    "story_subject_exists": "L'histoire pointe déjà vers cela.",
+    "story_subject_limit": "Une histoire compte 20 sujets au maximum.",
+    "story_subject_not_found": "Ce sujet n'est pas disponible.",
+    "story_order_invalid": "L'ordre n'est pas valide. Rechargez l'histoire et réessayez.",
+    "story_cover_invalid": "La couverture doit être un élément de l'histoire.",
+    "story_needs_item": "Une histoire publiée garde au moins un élément. Repassez-la en brouillon ou supprimez-la.",
+    "story_not_published": "Seule une histoire publiée peut être retirée.",
+    "story_text_invalid": "Saisissez un titre de 200 caractères au plus.",
+    "story_caption_invalid": "Une légende compte 500 caractères au maximum."
   },
   "featureFlags": {
     "activityTitle": "Activité de la communauté",
@@ -1198,6 +1214,96 @@
       "empty": "Votre médiathèque ne contient pas encore de photo. Importez-en une.",
       "cancel": "Annuler",
       "photo": "Photo du {{date}}"
+    }
+  },
+  "share": {
+    "action": "Partager dans la galerie",
+    "inGallery": "Dans la galerie",
+    "inDraft": "Partagée comme brouillon",
+    "formTitle": "Partager dans la galerie",
+    "titleLabel": "Titre",
+    "publish": "Publier",
+    "cancel": "Annuler",
+    "error": "Le partage a échoué. Réessayez.",
+    "addToStory": "Ajouter à une histoire",
+    "pickTitle": "Choisir une histoire",
+    "pickEmpty": "Vous n'avez pas encore d'histoires.",
+    "pickError": "Vos histoires n'ont pas pu être chargées.",
+    "newStory": "Nouvelle histoire avec ce fichier",
+    "added": "Ajouté à l'histoire.",
+    "topic": {
+      "cichlids": "Cichlidés",
+      "tanks": "Aquariums",
+      "offtopic": "Hors sujet"
+    }
+  },
+  "stories": {
+    "title": "Mes histoires",
+    "editorTitle": "Modifier l'histoire",
+    "intro": "Vos histoires de la galerie, brouillons et publiées. Une histoire montre des photos et vidéos de votre bibliothèque dans l'ordre que vous choisissez.",
+    "new": "Nouvelle histoire",
+    "empty": "Vous n'avez pas encore d'histoires.",
+    "untitled": "Histoire sans titre",
+    "createError": "L'histoire n'a pas pu être créée. Réessayez.",
+    "signIn": "Connectez-vous pour voir vos histoires.",
+    "itemCount": "Éléments : {{count}}",
+    "state": {
+      "draft": "Brouillon",
+      "published": "Publiée"
+    },
+    "loadError": "L'histoire n'a pas pu être chargée. Réessayez.",
+    "saveError": "La modification n'a pas pu être enregistrée. Réessayez.",
+    "publishedNote": "Cette histoire est publique dans la galerie. Les modifications apparaissent aussitôt.",
+    "draftNote": "Cette histoire est un brouillon. Vous seul la voyez jusqu'à sa publication.",
+    "viewInGallery": "Voir dans la galerie",
+    "titleLabel": "Titre",
+    "descriptionLabel": "Texte",
+    "saveText": "Enregistrer le texte",
+    "sequence": "Séquence",
+    "sequenceEmpty": "Aucun élément pour l'instant. Ajoutez des photos ou vidéos de votre bibliothèque.",
+    "itemLabel": "{{kind}} {{position}} sur {{total}}",
+    "isCover": "Couverture",
+    "captionLabel": "Légende",
+    "saveCaption": "Enregistrer la légende",
+    "makeCover": "Utiliser comme couverture",
+    "clearCover": "Retirer le choix de couverture",
+    "remove": "Retirer",
+    "moveUp": "Monter",
+    "moveDown": "Descendre",
+    "coverHint": "Sans couverture choisie, le premier élément sert de couverture.",
+    "addFromLibrary": "Ajouter depuis la bibliothèque",
+    "addSubject": "Ajouter un aquarium ou une espèce",
+    "references": "Références",
+    "unavailable": "Indisponible pour vous",
+    "makeReference": "Afficher comme référence",
+    "makeCard": "Afficher comme carte dans la séquence",
+    "withdraw": "Repasser en brouillon",
+    "publish": "Publier",
+    "delete": "Supprimer l'histoire",
+    "deletePublishedText": "L'histoire disparaît de la galerie. Vos fichiers restent dans votre bibliothèque.",
+    "deleteDraftText": "Le brouillon est supprimé. Vos fichiers restent dans votre bibliothèque.",
+    "deleteYes": "Supprimer l'histoire",
+    "deleteNo": "Garder l'histoire",
+    "subject": {
+      "tank": "Aquarium : {{title}}",
+      "species": "Espèce : {{name}}",
+      "inhabitant": "Habitant : {{name}} dans {{tank}}"
+    },
+    "picker": {
+      "subjectTitle": "Ajouter un sujet",
+      "libraryTitle": "Choisir un fichier",
+      "tab": {
+        "mine": "Mes aquariums",
+        "tanks": "Aquariums",
+        "species": "Espèces"
+      },
+      "search": "Rechercher",
+      "asCard": "Ajouter comme carte",
+      "asReference": "Ajouter comme référence",
+      "none": "Aucun résultat.",
+      "error": "La liste n'a pas pu être chargée. Réessayez.",
+      "close": "Fermer",
+      "taken": "Déjà dans l'histoire"
     }
   }
 }

@@ -268,7 +268,8 @@
     "loginUnavailable": "Giriş hizmetine ulaşılamadığı için giriş yapılamıyor. Lütfen tekrar deneyin.",
     "todos": "Görevler",
     "media": "Medyam",
-    "profileImages": "Avatar ve başlık"
+    "profileImages": "Avatar ve başlık",
+    "stories": "Hikayelerim"
   },
   "upload": {
     "title": "Fotoğraf yükle",
@@ -414,7 +415,22 @@
     "library_filter_invalid": "Bu filtre kullanılamıyor.",
     "profile_media_invalid": "Medya kitaplığından bir fotoğraf seç.",
     "profile_media_not_photo": "Yalnızca bir fotoğraf avatar veya başlık olabilir.",
-    "profile_photo_invalid": "Fotoğraf okunamadı. En fazla 25 MB'lık bir JPEG, PNG veya WebP fotoğraf gönder."
+    "profile_photo_invalid": "Fotoğraf okunamadı. En fazla 25 MB'lık bir JPEG, PNG veya WebP fotoğraf gönder.",
+    "story_not_found": "Bu hikaye yok.",
+    "media_not_ready": "Video hâlâ hazırlanıyor. Biraz sonra tekrar deneyin.",
+    "media_already_shared": "Bu dosya zaten galeride. Onu bir hikayeye ekleyin.",
+    "story_item_exists": "Hikaye bu dosyayı zaten gösteriyor.",
+    "story_item_limit": "Bir hikayede en fazla 30 öğe olur.",
+    "story_item_not_found": "Hikayede böyle bir öğe yok.",
+    "story_subject_exists": "Hikaye zaten buna işaret ediyor.",
+    "story_subject_limit": "Bir hikayede en fazla 20 konu olur.",
+    "story_subject_not_found": "Bu konu kullanılamıyor.",
+    "story_order_invalid": "Sıra geçersiz. Hikayeyi yeniden yükleyip tekrar deneyin.",
+    "story_cover_invalid": "Kapak hikayenin bir öğesi olmalı.",
+    "story_needs_item": "Yayımlanmış hikaye en az bir öğe tutar. Taslağa geri alın veya silin.",
+    "story_not_published": "Yalnızca yayımlanmış hikaye geri çekilebilir.",
+    "story_text_invalid": "En fazla 200 karakterlik bir başlık girin.",
+    "story_caption_invalid": "Bir açıklama en fazla 500 karakterdir."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -1179,6 +1195,96 @@
       "empty": "Kitaplığında henüz fotoğraf yok. Bir fotoğraf yükle.",
       "cancel": "İptal",
       "photo": "{{date}} tarihli fotoğraf"
+    }
+  },
+  "share": {
+    "action": "Galeride paylaş",
+    "inGallery": "Galeride",
+    "inDraft": "Taslak olarak paylaşıldı",
+    "formTitle": "Galeride paylaş",
+    "titleLabel": "Başlık",
+    "publish": "Yayımla",
+    "cancel": "İptal",
+    "error": "Paylaşım başarısız oldu. Lütfen tekrar deneyin.",
+    "addToStory": "Bir hikayeye ekle",
+    "pickTitle": "Hikaye seçin",
+    "pickEmpty": "Henüz hikayeniz yok.",
+    "pickError": "Hikayeleriniz yüklenemedi.",
+    "newStory": "Bu dosyayla yeni hikaye",
+    "added": "Hikayeye eklendi.",
+    "topic": {
+      "cichlids": "Çiklitler",
+      "tanks": "Akvaryumlar",
+      "offtopic": "Konu dışı"
+    }
+  },
+  "stories": {
+    "title": "Hikayelerim",
+    "editorTitle": "Hikayeyi düzenle",
+    "intro": "Galeri hikayeleriniz, taslaklar ve yayımlananlar. Hikaye, kitaplığınızdaki fotoğraf ve videoları seçtiğiniz sırayla gösterir.",
+    "new": "Yeni hikaye",
+    "empty": "Henüz hikayeniz yok.",
+    "untitled": "Başlıksız hikaye",
+    "createError": "Hikaye oluşturulamadı. Lütfen tekrar deneyin.",
+    "signIn": "Hikayelerinizi görmek için giriş yapın.",
+    "itemCount": "Öğe: {{count}}",
+    "state": {
+      "draft": "Taslak",
+      "published": "Yayımlandı"
+    },
+    "loadError": "Hikaye yüklenemedi. Lütfen tekrar deneyin.",
+    "saveError": "Değişiklik kaydedilemedi. Lütfen tekrar deneyin.",
+    "publishedNote": "Bu hikaye galeride herkese açık. Değişiklikler hemen görünür.",
+    "draftNote": "Bu hikaye bir taslak. Yayımlayana kadar yalnızca siz görürsünüz.",
+    "viewInGallery": "Galeride gör",
+    "titleLabel": "Başlık",
+    "descriptionLabel": "Metin",
+    "saveText": "Metni kaydet",
+    "sequence": "Sıra",
+    "sequenceEmpty": "Henüz öğe yok. Kitaplığınızdan fotoğraf veya video ekleyin.",
+    "itemLabel": "{{kind}} {{position}} / {{total}}",
+    "isCover": "Kapak",
+    "captionLabel": "Açıklama",
+    "saveCaption": "Açıklamayı kaydet",
+    "makeCover": "Kapak yap",
+    "clearCover": "Kapak seçimini kaldır",
+    "remove": "Kaldır",
+    "moveUp": "Yukarı taşı",
+    "moveDown": "Aşağı taşı",
+    "coverHint": "Kapak seçilmezse ilk öğe kapaktır.",
+    "addFromLibrary": "Kitaplıktan ekle",
+    "addSubject": "Akvaryum veya tür ekle",
+    "references": "Bağlantılar",
+    "unavailable": "Sizin için kullanılamıyor",
+    "makeReference": "Bağlantı olarak göster",
+    "makeCard": "Sırada kart olarak göster",
+    "withdraw": "Taslağa geri al",
+    "publish": "Yayımla",
+    "delete": "Hikayeyi sil",
+    "deletePublishedText": "Hikaye galeriden kalkar. Dosyalarınız kitaplığınızda kalır.",
+    "deleteDraftText": "Taslak silinir. Dosyalarınız kitaplığınızda kalır.",
+    "deleteYes": "Hikayeyi sil",
+    "deleteNo": "Hikayeyi koru",
+    "subject": {
+      "tank": "Akvaryum: {{title}}",
+      "species": "Tür: {{name}}",
+      "inhabitant": "Sakin: {{name}}, {{tank}} içinde"
+    },
+    "picker": {
+      "subjectTitle": "Konu ekle",
+      "libraryTitle": "Dosya seçin",
+      "tab": {
+        "mine": "Akvaryumlarım",
+        "tanks": "Akvaryumlar",
+        "species": "Türler"
+      },
+      "search": "Ara",
+      "asCard": "Kart olarak ekle",
+      "asReference": "Bağlantı olarak ekle",
+      "none": "Bir şey bulunamadı.",
+      "error": "Liste yüklenemedi. Lütfen tekrar deneyin.",
+      "close": "Kapat",
+      "taken": "Zaten hikayede"
     }
   }
 }

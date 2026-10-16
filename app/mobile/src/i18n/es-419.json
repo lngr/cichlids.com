@@ -275,7 +275,8 @@
     "loginUnavailable": "No se puede iniciar sesión porque el servicio de acceso no está disponible. Inténtalo de nuevo.",
     "todos": "Tareas",
     "media": "Mi contenido multimedia",
-    "profileImages": "Avatar y portada"
+    "profileImages": "Avatar y portada",
+    "stories": "Mis historias"
   },
   "upload": {
     "title": "Subir foto",
@@ -422,7 +423,22 @@
     "library_filter_invalid": "Este filtro no está disponible.",
     "profile_media_invalid": "Elige una foto de tu biblioteca de medios.",
     "profile_media_not_photo": "Solo una foto puede ser avatar o portada.",
-    "profile_photo_invalid": "No se pudo leer la foto. Envía una foto JPEG, PNG o WebP de hasta 25 MB."
+    "profile_photo_invalid": "No se pudo leer la foto. Envía una foto JPEG, PNG o WebP de hasta 25 MB.",
+    "story_not_found": "Esta historia no existe.",
+    "media_not_ready": "El video aún se está preparando. Inténtalo en un momento.",
+    "media_already_shared": "Este archivo ya está en la galería. Agrégalo a una historia.",
+    "story_item_exists": "La historia ya muestra este archivo.",
+    "story_item_limit": "Una historia tiene como máximo 30 elementos.",
+    "story_item_not_found": "La historia no tiene ese elemento.",
+    "story_subject_exists": "La historia ya apunta a esto.",
+    "story_subject_limit": "Una historia tiene como máximo 20 temas.",
+    "story_subject_not_found": "Este tema no está disponible.",
+    "story_order_invalid": "El orden no es válido. Recarga la historia e inténtalo de nuevo.",
+    "story_cover_invalid": "La portada debe ser un elemento de la historia.",
+    "story_needs_item": "Una historia publicada conserva al menos un elemento. Vuélvela borrador o elimínala.",
+    "story_not_published": "Solo se puede retirar una historia publicada.",
+    "story_text_invalid": "Escribe un título de hasta 200 caracteres.",
+    "story_caption_invalid": "Una descripción tiene como máximo 500 caracteres."
   },
   "featureFlags": {
     "activityTitle": "Actividad de la comunidad",
@@ -1198,6 +1214,96 @@
       "empty": "Tu biblioteca todavía no tiene fotos. Sube una foto.",
       "cancel": "Cancelar",
       "photo": "Foto del {{date}}"
+    }
+  },
+  "share": {
+    "action": "Compartir en la galería",
+    "inGallery": "En la galería",
+    "inDraft": "Compartida como borrador",
+    "formTitle": "Compartir en la galería",
+    "titleLabel": "Título",
+    "publish": "Publicar",
+    "cancel": "Cancelar",
+    "error": "No se pudo compartir. Inténtalo de nuevo.",
+    "addToStory": "Agregar a una historia",
+    "pickTitle": "Elige una historia",
+    "pickEmpty": "Todavía no tienes historias.",
+    "pickError": "No se pudieron cargar tus historias.",
+    "newStory": "Nueva historia con este archivo",
+    "added": "Agregado a la historia.",
+    "topic": {
+      "cichlids": "Cíclidos",
+      "tanks": "Acuarios",
+      "offtopic": "Fuera de tema"
+    }
+  },
+  "stories": {
+    "title": "Mis historias",
+    "editorTitle": "Editar historia",
+    "intro": "Tus historias de la galería, borradores y publicadas. Una historia muestra fotos y videos de tu biblioteca en el orden que elijas.",
+    "new": "Nueva historia",
+    "empty": "Todavía no tienes historias.",
+    "untitled": "Historia sin título",
+    "createError": "No se pudo crear la historia. Inténtalo de nuevo.",
+    "signIn": "Inicia sesión para ver tus historias.",
+    "itemCount": "Elementos: {{count}}",
+    "state": {
+      "draft": "Borrador",
+      "published": "Publicada"
+    },
+    "loadError": "No se pudo cargar la historia. Inténtalo de nuevo.",
+    "saveError": "No se pudo guardar el cambio. Inténtalo de nuevo.",
+    "publishedNote": "Esta historia es pública en la galería. Los cambios se ven al instante.",
+    "draftNote": "Esta historia es un borrador. Solo tú la ves hasta que la publiques.",
+    "viewInGallery": "Ver en la galería",
+    "titleLabel": "Título",
+    "descriptionLabel": "Texto",
+    "saveText": "Guardar texto",
+    "sequence": "Secuencia",
+    "sequenceEmpty": "Aún no hay elementos. Agrega fotos o videos de tu biblioteca.",
+    "itemLabel": "{{kind}} {{position}} de {{total}}",
+    "isCover": "Portada",
+    "captionLabel": "Leyenda",
+    "saveCaption": "Guardar leyenda",
+    "makeCover": "Usar como portada",
+    "clearCover": "Quitar la portada elegida",
+    "remove": "Quitar",
+    "moveUp": "Subir",
+    "moveDown": "Bajar",
+    "coverHint": "Sin portada elegida, el primer elemento es la portada.",
+    "addFromLibrary": "Agregar desde la biblioteca",
+    "addSubject": "Agregar acuario o especie",
+    "references": "Referencias",
+    "unavailable": "No disponible para ti",
+    "makeReference": "Mostrar como referencia",
+    "makeCard": "Mostrar como tarjeta en la secuencia",
+    "withdraw": "Volver a borrador",
+    "publish": "Publicar",
+    "delete": "Eliminar historia",
+    "deletePublishedText": "La historia desaparece de la galería. Tus archivos siguen en tu biblioteca.",
+    "deleteDraftText": "El borrador se elimina. Tus archivos siguen en tu biblioteca.",
+    "deleteYes": "Eliminar historia",
+    "deleteNo": "Conservar historia",
+    "subject": {
+      "tank": "Acuario: {{title}}",
+      "species": "Especie: {{name}}",
+      "inhabitant": "Habitante: {{name}} en {{tank}}"
+    },
+    "picker": {
+      "subjectTitle": "Agregar un tema",
+      "libraryTitle": "Elige un archivo",
+      "tab": {
+        "mine": "Mis acuarios",
+        "tanks": "Acuarios",
+        "species": "Especies"
+      },
+      "search": "Buscar",
+      "asCard": "Agregar como tarjeta",
+      "asReference": "Agregar como referencia",
+      "none": "No se encontró nada.",
+      "error": "No se pudo cargar la lista. Inténtalo de nuevo.",
+      "close": "Cerrar",
+      "taken": "Ya está en la historia"
     }
   }
 }

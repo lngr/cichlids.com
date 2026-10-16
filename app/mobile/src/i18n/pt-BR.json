@@ -275,7 +275,8 @@
     "loginUnavailable": "Não é possível entrar porque o serviço de autenticação está inacessível. Tente novamente.",
     "todos": "Tarefas",
     "media": "Minhas mídias",
-    "profileImages": "Avatar e capa"
+    "profileImages": "Avatar e capa",
+    "stories": "Minhas histórias"
   },
   "upload": {
     "title": "Enviar foto",
@@ -422,7 +423,22 @@
     "library_filter_invalid": "Este filtro não está disponível.",
     "profile_media_invalid": "Escolha uma foto da sua biblioteca de mídia.",
     "profile_media_not_photo": "Só uma foto pode ser avatar ou capa.",
-    "profile_photo_invalid": "Não foi possível ler a foto. Envie uma foto JPEG, PNG ou WebP de até 25 MB."
+    "profile_photo_invalid": "Não foi possível ler a foto. Envie uma foto JPEG, PNG ou WebP de até 25 MB.",
+    "story_not_found": "Esta história não existe.",
+    "media_not_ready": "O vídeo ainda está sendo preparado. Tente novamente em instantes.",
+    "media_already_shared": "Este arquivo já está na galeria. Adicione-o a uma história.",
+    "story_item_exists": "A história já mostra este arquivo.",
+    "story_item_limit": "Uma história tem no máximo 30 itens.",
+    "story_item_not_found": "A história não tem esse item.",
+    "story_subject_exists": "A história já aponta para isto.",
+    "story_subject_limit": "Uma história tem no máximo 20 assuntos.",
+    "story_subject_not_found": "Este assunto não está disponível.",
+    "story_order_invalid": "A ordem não é válida. Recarregue a história e tente novamente.",
+    "story_cover_invalid": "A capa precisa ser um item da história.",
+    "story_needs_item": "Uma história publicada mantém pelo menos um item. Volte-a para rascunho ou exclua-a.",
+    "story_not_published": "Só uma história publicada pode ser retirada.",
+    "story_text_invalid": "Digite um título de até 200 caracteres.",
+    "story_caption_invalid": "Uma legenda tem no máximo 500 caracteres."
   },
   "featureFlags": {
     "activityTitle": "Atividade da comunidade",
@@ -1198,6 +1214,96 @@
       "empty": "Sua biblioteca ainda não tem fotos. Envie uma foto.",
       "cancel": "Cancelar",
       "photo": "Foto de {{date}}"
+    }
+  },
+  "share": {
+    "action": "Compartilhar na galeria",
+    "inGallery": "Na galeria",
+    "inDraft": "Compartilhada como rascunho",
+    "formTitle": "Compartilhar na galeria",
+    "titleLabel": "Título",
+    "publish": "Publicar",
+    "cancel": "Cancelar",
+    "error": "Não foi possível compartilhar. Tente novamente.",
+    "addToStory": "Adicionar a uma história",
+    "pickTitle": "Escolha uma história",
+    "pickEmpty": "Você ainda não tem histórias.",
+    "pickError": "Não foi possível carregar suas histórias.",
+    "newStory": "Nova história com este arquivo",
+    "added": "Adicionado à história.",
+    "topic": {
+      "cichlids": "Ciclídeos",
+      "tanks": "Aquários",
+      "offtopic": "Fora do tema"
+    }
+  },
+  "stories": {
+    "title": "Minhas histórias",
+    "editorTitle": "Editar história",
+    "intro": "Suas histórias da galeria, rascunhos e publicadas. Uma história mostra fotos e vídeos da sua biblioteca na ordem que você escolher.",
+    "new": "Nova história",
+    "empty": "Você ainda não tem histórias.",
+    "untitled": "História sem título",
+    "createError": "Não foi possível criar a história. Tente novamente.",
+    "signIn": "Entre para ver suas histórias.",
+    "itemCount": "Itens: {{count}}",
+    "state": {
+      "draft": "Rascunho",
+      "published": "Publicada"
+    },
+    "loadError": "Não foi possível carregar a história. Tente novamente.",
+    "saveError": "Não foi possível salvar a alteração. Tente novamente.",
+    "publishedNote": "Esta história é pública na galeria. As alterações aparecem na hora.",
+    "draftNote": "Esta história é um rascunho. Só você a vê até publicá-la.",
+    "viewInGallery": "Ver na galeria",
+    "titleLabel": "Título",
+    "descriptionLabel": "Texto",
+    "saveText": "Salvar texto",
+    "sequence": "Sequência",
+    "sequenceEmpty": "Ainda não há itens. Adicione fotos ou vídeos da sua biblioteca.",
+    "itemLabel": "{{kind}} {{position}} de {{total}}",
+    "isCover": "Capa",
+    "captionLabel": "Legenda",
+    "saveCaption": "Salvar legenda",
+    "makeCover": "Usar como capa",
+    "clearCover": "Remover a capa escolhida",
+    "remove": "Remover",
+    "moveUp": "Mover para cima",
+    "moveDown": "Mover para baixo",
+    "coverHint": "Sem capa escolhida, o primeiro item é a capa.",
+    "addFromLibrary": "Adicionar da biblioteca",
+    "addSubject": "Adicionar aquário ou espécie",
+    "references": "Referências",
+    "unavailable": "Indisponível para você",
+    "makeReference": "Mostrar como referência",
+    "makeCard": "Mostrar como cartão na sequência",
+    "withdraw": "Voltar para rascunho",
+    "publish": "Publicar",
+    "delete": "Excluir história",
+    "deletePublishedText": "A história some da galeria. Seus arquivos continuam na sua biblioteca.",
+    "deleteDraftText": "O rascunho é excluído. Seus arquivos continuam na sua biblioteca.",
+    "deleteYes": "Excluir história",
+    "deleteNo": "Manter história",
+    "subject": {
+      "tank": "Aquário: {{title}}",
+      "species": "Espécie: {{name}}",
+      "inhabitant": "Habitante: {{name}} em {{tank}}"
+    },
+    "picker": {
+      "subjectTitle": "Adicionar um assunto",
+      "libraryTitle": "Escolha um arquivo",
+      "tab": {
+        "mine": "Meus aquários",
+        "tanks": "Aquários",
+        "species": "Espécies"
+      },
+      "search": "Pesquisar",
+      "asCard": "Adicionar como cartão",
+      "asReference": "Adicionar como referência",
+      "none": "Nada encontrado.",
+      "error": "Não foi possível carregar a lista. Tente novamente.",
+      "close": "Fechar",
+      "taken": "Já está na história"
     }
   }
 }

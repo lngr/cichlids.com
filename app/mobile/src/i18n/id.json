@@ -268,7 +268,8 @@
     "loginUnavailable": "Tidak dapat masuk karena layanan masuk tidak dapat dihubungi. Silakan coba lagi.",
     "todos": "Tugas",
     "media": "Media saya",
-    "profileImages": "Avatar dan header"
+    "profileImages": "Avatar dan header",
+    "stories": "Cerita saya"
   },
   "upload": {
     "title": "Unggah foto",
@@ -414,7 +415,22 @@
     "library_filter_invalid": "Filter ini tidak tersedia.",
     "profile_media_invalid": "Pilih foto dari pustaka mediamu.",
     "profile_media_not_photo": "Hanya foto yang bisa menjadi avatar atau header.",
-    "profile_photo_invalid": "Foto tidak dapat dibaca. Kirim foto JPEG, PNG, atau WebP hingga 25 MB."
+    "profile_photo_invalid": "Foto tidak dapat dibaca. Kirim foto JPEG, PNG, atau WebP hingga 25 MB.",
+    "story_not_found": "Cerita ini tidak ada.",
+    "media_not_ready": "Video masih disiapkan. Coba lagi sebentar lagi.",
+    "media_already_shared": "Berkas ini sudah ada di galeri. Tambahkan ke cerita.",
+    "story_item_exists": "Cerita sudah menampilkan berkas ini.",
+    "story_item_limit": "Sebuah cerita punya paling banyak 30 item.",
+    "story_item_not_found": "Cerita tidak punya item itu.",
+    "story_subject_exists": "Cerita sudah merujuk ke ini.",
+    "story_subject_limit": "Sebuah cerita punya paling banyak 20 subjek.",
+    "story_subject_not_found": "Subjek ini tidak tersedia.",
+    "story_order_invalid": "Urutan tidak valid. Muat ulang cerita dan coba lagi.",
+    "story_cover_invalid": "Sampul harus berupa item cerita.",
+    "story_needs_item": "Cerita yang diterbitkan menyimpan minimal satu item. Kembalikan ke draf atau hapus.",
+    "story_not_published": "Hanya cerita yang diterbitkan yang dapat ditarik.",
+    "story_text_invalid": "Masukkan judul paling banyak 200 karakter.",
+    "story_caption_invalid": "Keterangan paling banyak 500 karakter."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -1168,6 +1184,96 @@
       "empty": "Pustakamu belum punya foto. Unggah sebuah foto.",
       "cancel": "Batal",
       "photo": "Foto tanggal {{date}}"
+    }
+  },
+  "share": {
+    "action": "Bagikan ke galeri",
+    "inGallery": "Di galeri",
+    "inDraft": "Dibagikan sebagai draf",
+    "formTitle": "Bagikan ke galeri",
+    "titleLabel": "Judul",
+    "publish": "Terbitkan",
+    "cancel": "Batal",
+    "error": "Gagal membagikan. Coba lagi.",
+    "addToStory": "Tambahkan ke cerita",
+    "pickTitle": "Pilih cerita",
+    "pickEmpty": "Anda belum punya cerita.",
+    "pickError": "Cerita Anda tidak dapat dimuat.",
+    "newStory": "Cerita baru dengan berkas ini",
+    "added": "Ditambahkan ke cerita.",
+    "topic": {
+      "cichlids": "Cichlid",
+      "tanks": "Akuarium",
+      "offtopic": "Di luar topik"
+    }
+  },
+  "stories": {
+    "title": "Cerita saya",
+    "editorTitle": "Ubah cerita",
+    "intro": "Cerita galeri Anda, draf dan yang diterbitkan. Cerita menampilkan foto dan video dari perpustakaan Anda dengan urutan pilihan Anda.",
+    "new": "Cerita baru",
+    "empty": "Anda belum punya cerita.",
+    "untitled": "Cerita tanpa judul",
+    "createError": "Cerita tidak dapat dibuat. Coba lagi.",
+    "signIn": "Masuk untuk melihat cerita Anda.",
+    "itemCount": "Item: {{count}}",
+    "state": {
+      "draft": "Draf",
+      "published": "Diterbitkan"
+    },
+    "loadError": "Cerita tidak dapat dimuat. Coba lagi.",
+    "saveError": "Perubahan tidak dapat disimpan. Coba lagi.",
+    "publishedNote": "Cerita ini publik di galeri. Perubahan langsung terlihat.",
+    "draftNote": "Cerita ini adalah draf. Hanya Anda yang melihatnya sampai diterbitkan.",
+    "viewInGallery": "Lihat di galeri",
+    "titleLabel": "Judul",
+    "descriptionLabel": "Teks",
+    "saveText": "Simpan teks",
+    "sequence": "Urutan",
+    "sequenceEmpty": "Belum ada item. Tambahkan foto atau video dari perpustakaan.",
+    "itemLabel": "{{kind}} {{position}} dari {{total}}",
+    "isCover": "Sampul",
+    "captionLabel": "Keterangan",
+    "saveCaption": "Simpan keterangan",
+    "makeCover": "Jadikan sampul",
+    "clearCover": "Hapus pilihan sampul",
+    "remove": "Hapus",
+    "moveUp": "Naikkan",
+    "moveDown": "Turunkan",
+    "coverHint": "Tanpa sampul pilihan, item pertama menjadi sampul.",
+    "addFromLibrary": "Tambah dari perpustakaan",
+    "addSubject": "Tambah akuarium atau spesies",
+    "references": "Rujukan",
+    "unavailable": "Tidak tersedia untuk Anda",
+    "makeReference": "Tampilkan sebagai rujukan",
+    "makeCard": "Tampilkan sebagai kartu dalam urutan",
+    "withdraw": "Kembalikan ke draf",
+    "publish": "Terbitkan",
+    "delete": "Hapus cerita",
+    "deletePublishedText": "Cerita hilang dari galeri. Berkas Anda tetap ada di perpustakaan.",
+    "deleteDraftText": "Draf dihapus. Berkas Anda tetap ada di perpustakaan.",
+    "deleteYes": "Hapus cerita",
+    "deleteNo": "Pertahankan cerita",
+    "subject": {
+      "tank": "Akuarium: {{title}}",
+      "species": "Spesies: {{name}}",
+      "inhabitant": "Penghuni: {{name}} di {{tank}}"
+    },
+    "picker": {
+      "subjectTitle": "Tambah subjek",
+      "libraryTitle": "Pilih berkas",
+      "tab": {
+        "mine": "Akuarium saya",
+        "tanks": "Akuarium",
+        "species": "Spesies"
+      },
+      "search": "Cari",
+      "asCard": "Tambah sebagai kartu",
+      "asReference": "Tambah sebagai rujukan",
+      "none": "Tidak ditemukan.",
+      "error": "Daftar tidak dapat dimuat. Coba lagi.",
+      "close": "Tutup",
+      "taken": "Sudah ada di cerita"
     }
   }
 }

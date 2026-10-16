@@ -268,7 +268,8 @@
     "loginUnavailable": "Login is unavailable right now because the login service cannot be reached. Please try again.",
     "todos": "To-dos",
     "media": "My media",
-    "profileImages": "Avatar and header"
+    "profileImages": "Avatar and header",
+    "stories": "My stories"
   },
   "upload": {
     "title": "Upload photo",
@@ -414,7 +415,22 @@
     "library_filter_invalid": "This filter is not available.",
     "profile_media_invalid": "Choose the id of a photo from your media library.",
     "profile_media_not_photo": "Only a photo can be an avatar or a header.",
-    "profile_photo_invalid": "The photo could not be read. Please send a JPEG, PNG or WebP photo of up to 25 MB."
+    "profile_photo_invalid": "The photo could not be read. Please send a JPEG, PNG or WebP photo of up to 25 MB.",
+    "story_not_found": "This story does not exist.",
+    "media_not_ready": "The video is still being prepared. Try again in a moment.",
+    "media_already_shared": "This file is already in the gallery. Add it to a story instead.",
+    "story_item_exists": "The story shows this file already.",
+    "story_item_limit": "A story has at most 30 items.",
+    "story_item_not_found": "The story has no such item.",
+    "story_subject_exists": "The story points to this already.",
+    "story_subject_limit": "A story has at most 20 subjects.",
+    "story_subject_not_found": "This subject is not available.",
+    "story_order_invalid": "The order is not valid. Reload the story and try again.",
+    "story_cover_invalid": "The cover must be an item of the story.",
+    "story_needs_item": "A published story keeps at least one item. Withdraw or delete the story instead.",
+    "story_not_published": "Only a published story can be withdrawn.",
+    "story_text_invalid": "Please enter a title of up to 200 characters.",
+    "story_caption_invalid": "A caption has at most 500 characters."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -1179,6 +1195,96 @@
       "empty": "Your library has no photos yet. Upload a photo instead.",
       "cancel": "Cancel",
       "photo": "Photo from {{date}}"
+    }
+  },
+  "share": {
+    "action": "Share to the gallery",
+    "inGallery": "In the gallery",
+    "inDraft": "Shared as a draft story",
+    "formTitle": "Share to the gallery",
+    "titleLabel": "Title",
+    "publish": "Publish",
+    "cancel": "Cancel",
+    "error": "Sharing failed. Please try again.",
+    "addToStory": "Add to a story",
+    "pickTitle": "Choose a story",
+    "pickEmpty": "You have no stories yet.",
+    "pickError": "Your stories could not be loaded.",
+    "newStory": "New story with this file",
+    "added": "Added to the story.",
+    "topic": {
+      "cichlids": "Cichlids",
+      "tanks": "Tanks",
+      "offtopic": "Off topic"
+    }
+  },
+  "stories": {
+    "title": "My stories",
+    "editorTitle": "Edit story",
+    "intro": "Your gallery stories, drafts and published ones. A story shows photos and videos from your library in the order you choose.",
+    "new": "New story",
+    "empty": "You have no stories yet.",
+    "untitled": "Untitled story",
+    "createError": "The story could not be created. Please try again.",
+    "signIn": "Sign in to see your stories.",
+    "itemCount": "Items: {{count}}",
+    "state": {
+      "draft": "Draft",
+      "published": "Published"
+    },
+    "loadError": "The story could not be loaded. Please try again.",
+    "saveError": "The change could not be saved. Please try again.",
+    "publishedNote": "This story is public in the gallery. Changes show at once.",
+    "draftNote": "This story is a draft. Only you can see it until you publish it.",
+    "viewInGallery": "View in gallery",
+    "titleLabel": "Title",
+    "descriptionLabel": "Text",
+    "saveText": "Save text",
+    "sequence": "Sequence",
+    "sequenceEmpty": "No items yet. Add photos or videos from your library.",
+    "itemLabel": "{{kind}} {{position}} of {{total}}",
+    "isCover": "Cover",
+    "captionLabel": "Caption",
+    "saveCaption": "Save caption",
+    "makeCover": "Use as cover",
+    "clearCover": "Remove cover choice",
+    "remove": "Remove",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "coverHint": "Without a chosen cover the first item is the cover.",
+    "addFromLibrary": "Add from library",
+    "addSubject": "Add tank or species",
+    "references": "References",
+    "unavailable": "Not available to you",
+    "makeReference": "Show as reference",
+    "makeCard": "Show as card in the sequence",
+    "withdraw": "Withdraw to draft",
+    "publish": "Publish",
+    "delete": "Delete story",
+    "deletePublishedText": "The story disappears from the gallery. Your files stay in your library.",
+    "deleteDraftText": "The draft is deleted. Your files stay in your library.",
+    "deleteYes": "Delete story",
+    "deleteNo": "Keep story",
+    "subject": {
+      "tank": "Tank: {{title}}",
+      "species": "Species: {{name}}",
+      "inhabitant": "Inhabitant: {{name}} in {{tank}}"
+    },
+    "picker": {
+      "subjectTitle": "Add a subject",
+      "libraryTitle": "Choose a file",
+      "tab": {
+        "mine": "My tanks",
+        "tanks": "Tanks",
+        "species": "Species"
+      },
+      "search": "Search",
+      "asCard": "Add as card",
+      "asReference": "Add as reference",
+      "none": "Nothing found.",
+      "error": "The list could not be loaded. Please try again.",
+      "close": "Close",
+      "taken": "Already in the story"
     }
   }
 }

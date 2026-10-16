@@ -9,6 +9,7 @@ import { useMachineRouter } from "../navigation/NavigationProvider";
 import { TankMeasurements } from "../units/TankMeasurements";
 import { DataRow } from "../components/DataRow";
 import { MediaStrip } from "../components/MediaStrip";
+import { ShareActions } from "../stories/ShareActions";
 import { Button } from "../components/Button";
 import { formatDate } from "../lib/format";
 import { TimeLapsePhoto, useReducedMotion } from "./TimeLapsePhoto";
@@ -158,8 +159,8 @@ export function TankExperience({ tank, series, children, onVisibilityChanged }: 
           <DataRow label={t("tanks.detail.technic")} value={tank.technic} />
           <DataRow label={t("tanks.detail.food")} value={tank.food} />
           <DataRow label={t("tanks.detail.notes")} value={tank.notes} />
-          <MediaStrip title={t("tanks.detail.sectionDecoration")} items={tank.sections.decoration} />
-          <MediaStrip title={t("tanks.detail.sectionTechnic")} items={tank.sections.technic} />
+          <MediaStrip title={t("tanks.detail.sectionDecoration")} items={tank.sections.decoration} own={stream.owner} />
+          <MediaStrip title={t("tanks.detail.sectionTechnic")} items={tank.sections.technic} own={stream.owner} />
         </View>
       </> : <>
         <View style={[styles.card, card]}>
@@ -221,6 +222,7 @@ export function TankExperience({ tank, series, children, onVisibilityChanged }: 
           {photo ? <TimeLapsePhoto uri={photoUrl(photo.image)} label={t("tankStory.frame", { title: tank.title, date: date(photo.takenAt ?? photo.publishedAt) })} reduced={reduced} /> : null}
           <Text testID="tank-time-machine-position" style={[theme.type.bodyStrong, text]}>{t("tankStory.position", { current: new Intl.NumberFormat(i18n.language).format(index + 1), total: new Intl.NumberFormat(i18n.language).format(series.photos.length) })}</Text>
           <Text style={[theme.type.bodyStrong, text]}>{photo ? date(photo.takenAt ?? photo.publishedAt) : ""}</Text>
+          {stream.owner && photo ? <ShareActions key={String(photo.mediaItemId)} mediaItemId={Number(photo.mediaItemId)} onNavigate={() => send({ type: "CLOSE" })} /> : null}
           <TimeLapseScrubber index={index} count={series.photos.length} onSeek={value => send({ type: "SEEK", index: value })} />
           <View style={styles.controls}>
             <View style={{ flex: 1 }}><Button testID="tank-time-machine-previous" label={t("tankStory.previous")} variant="secondary" onPress={() => send({ type: "SEEK", index: index - 1 })} /></View>

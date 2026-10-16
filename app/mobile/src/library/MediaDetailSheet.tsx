@@ -9,6 +9,7 @@ import { translateApiError } from "../lib/apiErrors";
 import { formatDate } from "../lib/format";
 import { localTime } from "../today/localDate";
 import { minTouchTarget, useTheme } from "../theme";
+import { ShareActions } from "../stories/ShareActions";
 import { describePlace, formatClock, previewImage } from "./libraryView";
 
 /**
@@ -97,6 +98,8 @@ function SheetContent({ item, onClose, onDeleted }: { item: LibraryItem; onClose
       </View> : null}
 
       {detail && !confirming ? streakLines.map((line, index) => <Text key={index} testID="library-streak-note" style={[theme.type.body, { color: theme.colors.warn }]}>{line}</Text>) : null}
+
+      {detail && !confirming ? <ShareActions mediaItemId={item.id} onNavigate={onClose} /> : null}
 
       {detail && !detail.canDelete ? <Text testID="library-proof-note" style={[theme.type.body, { color: theme.colors.muted }]}>{t("library.proofNote")}</Text> : null}
 

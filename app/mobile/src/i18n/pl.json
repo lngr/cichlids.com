@@ -282,7 +282,8 @@
     "loginUnavailable": "Logowanie jest niedostępne, ponieważ nie można połączyć się z usługą logowania. Spróbuj ponownie.",
     "todos": "Zadania",
     "media": "Moje media",
-    "profileImages": "Awatar i nagłówek"
+    "profileImages": "Awatar i nagłówek",
+    "stories": "Moje historie"
   },
   "upload": {
     "title": "Prześlij zdjęcie",
@@ -430,7 +431,22 @@
     "library_filter_invalid": "Ten filtr jest niedostępny.",
     "profile_media_invalid": "Wybierz zdjęcie z biblioteki multimediów.",
     "profile_media_not_photo": "Tylko zdjęcie może być awatarem lub nagłówkiem.",
-    "profile_photo_invalid": "Nie udało się odczytać zdjęcia. Prześlij zdjęcie JPEG, PNG lub WebP do 25 MB."
+    "profile_photo_invalid": "Nie udało się odczytać zdjęcia. Prześlij zdjęcie JPEG, PNG lub WebP do 25 MB.",
+    "story_not_found": "Ta historia nie istnieje.",
+    "media_not_ready": "Film jest jeszcze przygotowywany. Spróbuj za chwilę.",
+    "media_already_shared": "Ten plik jest już w galerii. Dodaj go raczej do historii.",
+    "story_item_exists": "Historia już pokazuje ten plik.",
+    "story_item_limit": "Historia ma najwyżej 30 elementów.",
+    "story_item_not_found": "Historia nie ma takiego elementu.",
+    "story_subject_exists": "Historia już na to wskazuje.",
+    "story_subject_limit": "Historia ma najwyżej 20 tematów.",
+    "story_subject_not_found": "Ten temat jest niedostępny.",
+    "story_order_invalid": "Kolejność jest nieprawidłowa. Wczytaj historię ponownie i spróbuj jeszcze raz.",
+    "story_cover_invalid": "Okładką musi być element historii.",
+    "story_needs_item": "Opublikowana historia zachowuje co najmniej jeden element. Wycofaj ją do szkicu lub usuń.",
+    "story_not_published": "Wycofać można tylko opublikowaną historię.",
+    "story_text_invalid": "Wpisz tytuł do 200 znaków.",
+    "story_caption_invalid": "Podpis ma najwyżej 500 znaków."
   },
   "featureFlags": {
     "activityTitle": "Aktywność społeczności",
@@ -1217,6 +1233,96 @@
       "empty": "Twoja biblioteka nie ma jeszcze zdjęć. Prześlij zdjęcie.",
       "cancel": "Anuluj",
       "photo": "Zdjęcie z dnia {{date}}"
+    }
+  },
+  "share": {
+    "action": "Udostępnij w galerii",
+    "inGallery": "W galerii",
+    "inDraft": "Udostępniona jako szkic",
+    "formTitle": "Udostępnij w galerii",
+    "titleLabel": "Tytuł",
+    "publish": "Opublikuj",
+    "cancel": "Anuluj",
+    "error": "Udostępnianie się nie powiodło. Spróbuj ponownie.",
+    "addToStory": "Dodaj do historii",
+    "pickTitle": "Wybierz historię",
+    "pickEmpty": "Nie masz jeszcze historii.",
+    "pickError": "Nie udało się wczytać Twoich historii.",
+    "newStory": "Nowa historia z tym plikiem",
+    "added": "Dodano do historii.",
+    "topic": {
+      "cichlids": "Pielęgnice",
+      "tanks": "Akwaria",
+      "offtopic": "Offtopic"
+    }
+  },
+  "stories": {
+    "title": "Moje historie",
+    "editorTitle": "Edytuj historię",
+    "intro": "Twoje historie w galerii, szkice i opublikowane. Historia pokazuje zdjęcia i filmy z Twojej biblioteki w wybranej kolejności.",
+    "new": "Nowa historia",
+    "empty": "Nie masz jeszcze historii.",
+    "untitled": "Historia bez tytułu",
+    "createError": "Nie udało się utworzyć historii. Spróbuj ponownie.",
+    "signIn": "Zaloguj się, aby zobaczyć swoje historie.",
+    "itemCount": "Elementy: {{count}}",
+    "state": {
+      "draft": "Szkic",
+      "published": "Opublikowana"
+    },
+    "loadError": "Nie udało się wczytać historii. Spróbuj ponownie.",
+    "saveError": "Nie udało się zapisać zmiany. Spróbuj ponownie.",
+    "publishedNote": "Ta historia jest publiczna w galerii. Zmiany widać od razu.",
+    "draftNote": "Ta historia jest szkicem. Widzisz ją tylko Ty, dopóki jej nie opublikujesz.",
+    "viewInGallery": "Zobacz w galerii",
+    "titleLabel": "Tytuł",
+    "descriptionLabel": "Tekst",
+    "saveText": "Zapisz tekst",
+    "sequence": "Kolejność",
+    "sequenceEmpty": "Na razie brak elementów. Dodaj zdjęcia lub filmy z biblioteki.",
+    "itemLabel": "{{kind}} {{position}} z {{total}}",
+    "isCover": "Okładka",
+    "captionLabel": "Podpis",
+    "saveCaption": "Zapisz podpis",
+    "makeCover": "Użyj jako okładki",
+    "clearCover": "Usuń wybór okładki",
+    "remove": "Usuń",
+    "moveUp": "Przesuń w górę",
+    "moveDown": "Przesuń w dół",
+    "coverHint": "Bez wybranej okładki okładką jest pierwszy element.",
+    "addFromLibrary": "Dodaj z biblioteki",
+    "addSubject": "Dodaj akwarium lub gatunek",
+    "references": "Odniesienia",
+    "unavailable": "Niedostępne dla Ciebie",
+    "makeReference": "Pokaż jako odniesienie",
+    "makeCard": "Pokaż jako kartę w kolejności",
+    "withdraw": "Wycofaj do szkicu",
+    "publish": "Opublikuj",
+    "delete": "Usuń historię",
+    "deletePublishedText": "Historia znika z galerii. Twoje pliki zostają w bibliotece.",
+    "deleteDraftText": "Szkic zostanie usunięty. Twoje pliki zostają w bibliotece.",
+    "deleteYes": "Usuń historię",
+    "deleteNo": "Zachowaj historię",
+    "subject": {
+      "tank": "Akwarium: {{title}}",
+      "species": "Gatunek: {{name}}",
+      "inhabitant": "Mieszkaniec: {{name}} w {{tank}}"
+    },
+    "picker": {
+      "subjectTitle": "Dodaj temat",
+      "libraryTitle": "Wybierz plik",
+      "tab": {
+        "mine": "Moje akwaria",
+        "tanks": "Akwaria",
+        "species": "Gatunki"
+      },
+      "search": "Szukaj",
+      "asCard": "Dodaj jako kartę",
+      "asReference": "Dodaj jako odniesienie",
+      "none": "Nic nie znaleziono.",
+      "error": "Nie udało się wczytać listy. Spróbuj ponownie.",
+      "close": "Zamknij",
+      "taken": "Już w historii"
     }
   }
 }

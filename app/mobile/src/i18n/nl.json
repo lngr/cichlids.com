@@ -268,7 +268,8 @@
     "loginUnavailable": "Inloggen is niet beschikbaar omdat de aanmeldservice onbereikbaar is. Probeer het opnieuw.",
     "todos": "Taken",
     "media": "Mijn media",
-    "profileImages": "Avatar en omslag"
+    "profileImages": "Avatar en omslag",
+    "stories": "Mijn verhalen"
   },
   "upload": {
     "title": "Foto uploaden",
@@ -414,7 +415,22 @@
     "library_filter_invalid": "Dit filter is niet beschikbaar.",
     "profile_media_invalid": "Kies een foto uit je mediabibliotheek.",
     "profile_media_not_photo": "Alleen een foto kan avatar of omslag zijn.",
-    "profile_photo_invalid": "De foto kon niet worden gelezen. Stuur een JPEG-, PNG- of WebP-foto van maximaal 25 MB."
+    "profile_photo_invalid": "De foto kon niet worden gelezen. Stuur een JPEG-, PNG- of WebP-foto van maximaal 25 MB.",
+    "story_not_found": "Dit verhaal bestaat niet.",
+    "media_not_ready": "De video wordt nog voorbereid. Probeer het zo opnieuw.",
+    "media_already_shared": "Dit bestand staat al in de galerij. Voeg het toe aan een verhaal.",
+    "story_item_exists": "Het verhaal toont dit bestand al.",
+    "story_item_limit": "Een verhaal heeft maximaal 30 onderdelen.",
+    "story_item_not_found": "Het verhaal heeft dit onderdeel niet.",
+    "story_subject_exists": "Het verhaal verwijst hier al naar.",
+    "story_subject_limit": "Een verhaal heeft maximaal 20 onderwerpen.",
+    "story_subject_not_found": "Dit onderwerp is niet beschikbaar.",
+    "story_order_invalid": "De volgorde is ongeldig. Laad het verhaal opnieuw en probeer het nog eens.",
+    "story_cover_invalid": "Het omslag moet een onderdeel van het verhaal zijn.",
+    "story_needs_item": "Een gepubliceerd verhaal houdt minstens één onderdeel. Zet het terug naar concept of verwijder het.",
+    "story_not_published": "Alleen een gepubliceerd verhaal kan worden ingetrokken.",
+    "story_text_invalid": "Voer een titel van maximaal 200 tekens in.",
+    "story_caption_invalid": "Een bijschrift heeft maximaal 500 tekens."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -1179,6 +1195,96 @@
       "empty": "Je bibliotheek heeft nog geen foto's. Upload een foto.",
       "cancel": "Annuleren",
       "photo": "Foto van {{date}}"
+    }
+  },
+  "share": {
+    "action": "Delen in de galerij",
+    "inGallery": "In de galerij",
+    "inDraft": "Gedeeld als concept",
+    "formTitle": "Delen in de galerij",
+    "titleLabel": "Titel",
+    "publish": "Publiceren",
+    "cancel": "Annuleren",
+    "error": "Delen mislukt. Probeer het opnieuw.",
+    "addToStory": "Aan een verhaal toevoegen",
+    "pickTitle": "Kies een verhaal",
+    "pickEmpty": "Je hebt nog geen verhalen.",
+    "pickError": "Je verhalen konden niet worden geladen.",
+    "newStory": "Nieuw verhaal met dit bestand",
+    "added": "Aan het verhaal toegevoegd.",
+    "topic": {
+      "cichlids": "Cichliden",
+      "tanks": "Aquaria",
+      "offtopic": "Offtopic"
+    }
+  },
+  "stories": {
+    "title": "Mijn verhalen",
+    "editorTitle": "Verhaal bewerken",
+    "intro": "Je galerijverhalen, concepten en gepubliceerde. Een verhaal toont foto's en video's uit je bibliotheek in de volgorde die jij kiest.",
+    "new": "Nieuw verhaal",
+    "empty": "Je hebt nog geen verhalen.",
+    "untitled": "Verhaal zonder titel",
+    "createError": "Het verhaal kon niet worden gemaakt. Probeer het opnieuw.",
+    "signIn": "Log in om je verhalen te zien.",
+    "itemCount": "Onderdelen: {{count}}",
+    "state": {
+      "draft": "Concept",
+      "published": "Gepubliceerd"
+    },
+    "loadError": "Het verhaal kon niet worden geladen. Probeer het opnieuw.",
+    "saveError": "De wijziging kon niet worden opgeslagen. Probeer het opnieuw.",
+    "publishedNote": "Dit verhaal is openbaar in de galerij. Wijzigingen zijn direct zichtbaar.",
+    "draftNote": "Dit verhaal is een concept. Alleen jij ziet het tot je het publiceert.",
+    "viewInGallery": "Bekijk in de galerij",
+    "titleLabel": "Titel",
+    "descriptionLabel": "Tekst",
+    "saveText": "Tekst opslaan",
+    "sequence": "Volgorde",
+    "sequenceEmpty": "Nog geen onderdelen. Voeg foto's of video's uit je bibliotheek toe.",
+    "itemLabel": "{{kind}} {{position}} van {{total}}",
+    "isCover": "Omslag",
+    "captionLabel": "Bijschrift",
+    "saveCaption": "Bijschrift opslaan",
+    "makeCover": "Als omslag gebruiken",
+    "clearCover": "Omslagkeuze wissen",
+    "remove": "Verwijderen",
+    "moveUp": "Omhoog",
+    "moveDown": "Omlaag",
+    "coverHint": "Zonder gekozen omslag is het eerste onderdeel het omslag.",
+    "addFromLibrary": "Toevoegen uit bibliotheek",
+    "addSubject": "Aquarium of soort toevoegen",
+    "references": "Verwijzingen",
+    "unavailable": "Niet beschikbaar voor jou",
+    "makeReference": "Tonen als verwijzing",
+    "makeCard": "Tonen als kaart in de volgorde",
+    "withdraw": "Terug naar concept",
+    "publish": "Publiceren",
+    "delete": "Verhaal verwijderen",
+    "deletePublishedText": "Het verhaal verdwijnt uit de galerij. Je bestanden blijven in je bibliotheek.",
+    "deleteDraftText": "Het concept wordt verwijderd. Je bestanden blijven in je bibliotheek.",
+    "deleteYes": "Verhaal verwijderen",
+    "deleteNo": "Verhaal bewaren",
+    "subject": {
+      "tank": "Aquarium: {{title}}",
+      "species": "Soort: {{name}}",
+      "inhabitant": "Bewoner: {{name}} in {{tank}}"
+    },
+    "picker": {
+      "subjectTitle": "Onderwerp toevoegen",
+      "libraryTitle": "Kies een bestand",
+      "tab": {
+        "mine": "Mijn aquaria",
+        "tanks": "Aquaria",
+        "species": "Soorten"
+      },
+      "search": "Zoeken",
+      "asCard": "Toevoegen als kaart",
+      "asReference": "Toevoegen als verwijzing",
+      "none": "Niets gevonden.",
+      "error": "De lijst kon niet worden geladen. Probeer het opnieuw.",
+      "close": "Sluiten",
+      "taken": "Al in het verhaal"
     }
   }
 }

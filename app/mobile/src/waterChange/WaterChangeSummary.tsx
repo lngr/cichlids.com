@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { formatElapsed, type WaterChangeFinished } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
 import { Button } from "../components/Button";
+import { ShareActions } from "../stories/ShareActions";
 import { useTheme } from "../theme";
 import { formatCareAmount } from "../tanks/careAmount";
 import { evidenceKey, missingKey } from "./waterChangeText";
@@ -44,6 +45,10 @@ export function WaterChangeSummary({ finished, minMinutes, onClose }: { finished
     {photos.length > 0 ? <>
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: theme.space[3] }}>{photos}</View>
       <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("waterChange.summary.private")}</Text>
+      {session.photos.map((value, index) => <View key={String(value.mediaItemId)} style={{ gap: theme.space[1] }}>
+        <Text style={[theme.type.bodyStrong, { color: theme.colors.fg }]}>{t("waterChange.summary.photo", { number: index + 1 })}</Text>
+        <ShareActions mediaItemId={Number(value.mediaItemId)} onNavigate={onClose} />
+      </View>)}
     </> : null}
     <Button testID="water-change-close" label={t("waterChange.summary.close")} onPress={onClose} />
   </View>;
