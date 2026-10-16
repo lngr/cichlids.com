@@ -50,6 +50,7 @@ export type CareEntryDto = {
     durationSeconds?: null | number | string;
     waterChangeSessionId?: null | number | string;
     evidence?: null | WaterChangeEvidenceDto;
+    onlyMe?: boolean;
 };
 
 export type CareKind = 'water_change' | 'measurement';
@@ -195,6 +196,7 @@ export type CreateTankRequest = {
     dimensions: null | DimensionInputDto;
     volume: null | VolumeInputDto;
     region?: null | TankRegion;
+    isPublic?: null | boolean;
 };
 
 export type CreateTodoRequest = {
@@ -330,6 +332,7 @@ export type LogCareRequest = {
     amount?: null | CareAmountRequest;
     kind?: string;
     values?: null | Array<MeasurementValueRequest>;
+    onlyMe?: boolean;
 };
 
 export type MeasurementOrigin = 'test_kit' | 'meter' | 'probe';
@@ -585,6 +588,7 @@ export type TankDetailDto = {
     inhabitants: Array<InhabitantDto>;
     author: AuthorDto;
     volume: null | VolumeDto;
+    visibility: TankVisibilityDto;
     region?: null | TankRegion;
 };
 
@@ -596,6 +600,7 @@ export type TankListItemDto = {
     imageCount: number | string;
     author: AuthorDto;
     region?: null | TankRegion;
+    profileVisibility?: TankVisibility;
 };
 
 export type TankMediaItemDto = {
@@ -632,6 +637,13 @@ export type TankTimeLapsePhotoDto = {
     image: ImageUrlsDto;
     takenAt: null | string;
     publishedAt: string;
+};
+
+export type TankVisibility = 'private' | 'public';
+
+export type TankVisibilityDto = {
+    profile: TankVisibility;
+    stream: TankVisibility;
 };
 
 export type ThreadStartedByDto = {
@@ -697,6 +709,12 @@ export type UpdateCareRequest = {
     values?: null | Array<MeasurementValueRequest>;
     note?: null | string;
     occurredAt?: null | string;
+    onlyMe?: null | boolean;
+};
+
+export type UpdateTankVisibilityRequest = {
+    profile: null | string;
+    stream: null | string;
 };
 
 export type UpdateTodoRequest = {
@@ -897,6 +915,57 @@ export type AddTankSeriesPhotoResponses = {
 };
 
 export type AddTankSeriesPhotoResponse = AddTankSeriesPhotoResponses[keyof AddTankSeriesPhotoResponses];
+
+export type GetTankMediaData = {
+    body?: never;
+    path: {
+        token: string;
+    };
+    query?: never;
+    url: '/api/tank-media/{token}';
+};
+
+export type GetTankMediaErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetTankMediaError = GetTankMediaErrors[keyof GetTankMediaErrors];
+
+export type GetTankMediaResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type GetTankVideoFileData = {
+    body?: never;
+    path: {
+        token: string;
+        path: string;
+    };
+    query?: never;
+    url: '/api/tank-videos/{token}/{path}';
+};
+
+export type GetTankVideoFileErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetTankVideoFileError = GetTankVideoFileErrors[keyof GetTankVideoFileErrors];
+
+export type GetTankVideoFileResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
 
 export type GetCarePhotoData = {
     body?: never;
@@ -1854,8 +1923,10 @@ export type GetTankErrors = {
     /**
      * Not Found
      */
-    404: unknown;
+    404: ProblemDetails;
 };
+
+export type GetTankError = GetTankErrors[keyof GetTankErrors];
 
 export type GetTankResponses = {
     /**
@@ -1865,6 +1936,45 @@ export type GetTankResponses = {
 };
 
 export type GetTankResponse = GetTankResponses[keyof GetTankResponses];
+
+export type SetTankVisibilityData = {
+    body: UpdateTankVisibilityRequest;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{id}/visibility';
+};
+
+export type SetTankVisibilityErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type SetTankVisibilityError = SetTankVisibilityErrors[keyof SetTankVisibilityErrors];
+
+export type SetTankVisibilityResponses = {
+    /**
+     * OK
+     */
+    200: TankVisibilityDto;
+};
+
+export type SetTankVisibilityResponse = SetTankVisibilityResponses[keyof SetTankVisibilityResponses];
 
 export type ListTankCommentsData = {
     body?: never;
@@ -1876,13 +1986,6 @@ export type ListTankCommentsData = {
         limit?: number | string;
     };
     url: '/api/tanks/{id}/comments';
-};
-
-export type ListTankCommentsErrors = {
-    /**
-     * Not Found
-     */
-    404: unknown;
 };
 
 export type ListTankCommentsResponses = {
@@ -1912,10 +2015,6 @@ export type CreateTankCommentErrors = {
      * Forbidden
      */
     403: ProblemDetails;
-    /**
-     * Not Found
-     */
-    404: unknown;
 };
 
 export type CreateTankCommentError = CreateTankCommentErrors[keyof CreateTankCommentErrors];

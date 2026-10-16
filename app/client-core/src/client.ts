@@ -22,6 +22,7 @@ import {
   updateTodo,
   createTankComment,
   createTank,
+  setTankVisibility,
   completeOnboarding,
   listMyLegacyTanks,
   setMyInterests,
@@ -102,6 +103,8 @@ import type {
   CommunityThreadListItemDto,
   CreateCommentRequest,
   CreateTankRequest,
+  TankVisibility,
+  TankVisibilityDto,
   OnboardingRequest,
   OnboardingResultDto,
   LegacyTankDto,
@@ -188,7 +191,7 @@ export type CommunityAttachment = CommunityAttachmentDto;
 export type SpeciesLink = SpeciesLinkDto;
 export type Comment = CommentDto;
 export type CommentCreated = CommentCreatedDto;
-export type { CreateTankRequest, CreateCommentRequest, PublishPostRequest };
+export type { CreateTankRequest, CreateCommentRequest, PublishPostRequest, TankVisibility, TankVisibilityDto };
 export type { OnboardingRequest, OnboardingResultDto, LegacyTankDto, TankRegion };
 export type Me = MeDto;
 export type Today = TodayDto;
@@ -321,6 +324,8 @@ export interface CichlidsClient {
     remove(tankId: number, id: number): Promise<CareEntry>;
     /** Sets the note of an entry; null or blank removes it. */
     setNote(tankId: number, id: number, note: string | null): Promise<CareEntry>;
+    /** Marks an entry as seen by the owner alone, or shows it to the audience of the care stream again. */
+    setOnlyMe(tankId: number, id: number, onlyMe: boolean): Promise<CareEntry>;
     addPhoto(tankId: number, id: number, file: UploadFile): Promise<CareEntry>;
     removePhoto(tankId: number, id: number, photoId: number): Promise<CareEntry>;
     addTodo(tankId: number, id: number, text: string): Promise<CareTodo>;
@@ -372,6 +377,8 @@ export interface CichlidsClient {
   tanks: {
     create(request: CreateTankRequest): Promise<TankDetail>;
     refineRegion(id: number, region: TankRegion): Promise<void>;
+    /** Sets the profile and stream level of an own tank; the stream is never wider than the profile. */
+    setVisibility(id: number, levels: TankVisibilityDto): Promise<TankVisibilityDto>;
     list(params?: TanksListParams): Promise<PagedResponse<TankListItem>>;
     get(id: number): Promise<TankDetail>;
     timeLapse(id: number): Promise<TankTimeLapse>;
@@ -457,6 +464,7 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async series(tankId, parameter, range) { return unwrap(await getCareSeries({ client, path: { tankId }, query: { parameter, ...range } })); },
       async remove(tankId, id) { return unwrap(await deleteCareEntry({ client, path: { tankId, id } })); },
+      async setOnlyMe(tankId, id, onlyMe) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount: null, onlyMe } })); },
       async setNote(tankId, id, note) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount: null, note: note?.trim() ?? "" } })); },
       async addPhoto(tankId, id, file) {
         return unwrap(await addCarePhoto({
@@ -588,6 +596,9 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
             return formData;
           },
         }));
+      },
+      async setVisibility(id, levels) {
+        return unwrap(await setTankVisibility({ client, path: { id }, body: levels }));
       },
       async refineRegion(id, region) {
         unwrap(await refineTankRegion({ client, path: { id }, body: { region } }));

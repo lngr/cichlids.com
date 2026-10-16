@@ -136,6 +136,80 @@
         }
       }
     },
+    "/api/tank-media/{token}": {
+      "get": {
+        "tags": [
+          "Tanks"
+        ],
+        "operationId": "GetTankMedia",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tank-videos/{token}/{path}": {
+      "get": {
+        "tags": [
+          "Tanks"
+        ],
+        "operationId": "GetTankVideoFile",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/care-photos/{token}": {
       "get": {
         "tags": [
@@ -1816,7 +1890,96 @@
             }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tanks/{id}/visibility": {
+      "put": {
+        "tags": [
+          "Tanks"
+        ],
+        "operationId": "SetTankVisibility",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTankVisibilityRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TankVisibilityDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -1873,9 +2036,6 @@
                 }
               }
             }
-          },
-          "404": {
-            "description": "Not Found"
           }
         }
       },
@@ -1936,9 +2096,6 @@
                 }
               }
             }
-          },
-          "404": {
-            "description": "Not Found"
           }
         }
       }
@@ -4796,6 +4953,10 @@
                 "$ref": "#/components/schemas/WaterChangeEvidenceDto"
               }
             ]
+          },
+          "onlyMe": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -5540,6 +5701,12 @@
                 "$ref": "#/components/schemas/TankRegion"
               }
             ]
+          },
+          "isPublic": {
+            "type": [
+              "null",
+              "boolean"
+            ]
           }
         }
       },
@@ -6222,6 +6389,10 @@
             "items": {
               "$ref": "#/components/schemas/MeasurementValueRequest"
             }
+          },
+          "onlyMe": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -7440,7 +7611,8 @@
           "sections",
           "inhabitants",
           "author",
-          "volume"
+          "volume",
+          "visibility"
         ],
         "type": "object",
         "properties": {
@@ -7570,6 +7742,9 @@
               }
             ]
           },
+          "visibility": {
+            "$ref": "#/components/schemas/TankVisibilityDto"
+          },
           "region": {
             "oneOf": [
               {
@@ -7644,6 +7819,9 @@
                 "$ref": "#/components/schemas/TankRegion"
               }
             ]
+          },
+          "profileVisibility": {
+            "$ref": "#/components/schemas/TankVisibility"
           }
         }
       },
@@ -7823,6 +8001,27 @@
           "publishedAt": {
             "type": "string",
             "format": "date-time"
+          }
+        }
+      },
+      "TankVisibility": {
+        "enum": [
+          "private",
+          "public"
+        ]
+      },
+      "TankVisibilityDto": {
+        "required": [
+          "profile",
+          "stream"
+        ],
+        "type": "object",
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/TankVisibility"
+          },
+          "stream": {
+            "$ref": "#/components/schemas/TankVisibility"
           }
         }
       },
@@ -8147,6 +8346,33 @@
               "string"
             ],
             "format": "date-time"
+          },
+          "onlyMe": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          }
+        }
+      },
+      "UpdateTankVisibilityRequest": {
+        "required": [
+          "profile",
+          "stream"
+        ],
+        "type": "object",
+        "properties": {
+          "profile": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "stream": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },

@@ -96,3 +96,33 @@ it("sends the occurred time with a log, a value correction and an amount change"
   await client.care.update(42, 1, null, "2026-10-14T07:30:00.000Z");
   expect(await requests[2].json()).toEqual({ amount: null, occurredAt: "2026-10-14T07:30:00.000Z" });
 });
+it("marks an entry only me and sets the visibility of a tank", async () => {
+  const requests: Request[] = [];
+  const client = createCichlidsClient({ baseUrl: "http://care.test", getAccessToken: async () => "care-token", fetch: async request => {
+    const req = request as Request; requests.push(req);
+    if (req.url.endsWith("/visibility")) {
+      if (req.headers.get("X-Refuse")) return Response.json({ code: "tank_stream_wider_than_profile", detail: "Wider" }, { status: 400 });
+      return Response.json({ profile: "private", stream: "private" });
+    }
+    return Response.json({ id: 1, onlyMe: true });
+  } });
+  const entry = await client.care.setOnlyMe(42, 1, true);
+  expect(requests[0].method).toBe("PATCH");
+  expect(requests[0].url).toBe("http://care.test/api/tanks/42/care/1");
+  expect(await requests[0].json()).toEqual({ amount: null, onlyMe: true });
+  expect(entry.onlyMe).toBe(true);
+  const visibility = await client.tanks.setVisibility(42, { profile: "private", stream: "private" });
+  expect(requests[1].method).toBe("PUT");
+  expect(requests[1].url).toBe("http://care.test/api/tanks/42/visibility");
+  expect(await requests[1].json()).toEqual({ profile: "private", stream: "private" });
+  expect(visibility).toEqual({ profile: "private", stream: "private" });
+});
+it("sends the answer to the public question when creating a tank", async () => {
+  const requests: Request[] = [];
+  const client = createCichlidsClient({ baseUrl: "http://care.test", getAccessToken: async () => "care-token", fetch: async request => {
+    requests.push(request as Request);
+    return Response.json({ id: 7 });
+  } });
+  await client.tanks.create({ title: "Answered", isPublic: false });
+  expect(await requests[0].json()).toEqual({ title: "Answered", isPublic: false });
+});
