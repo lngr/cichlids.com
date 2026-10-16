@@ -18,6 +18,9 @@ public enum DeviceRegistrationOutcome
     KeyRetired,
 }
 
+/// <summary>The credential and the provisional profile of a verified signed challenge.</summary>
+public sealed record DeviceProof(Guid CredentialId, long ProfileId);
+
 public sealed record DeviceRegistration(DeviceRegistrationOutcome Outcome, DeviceCredentialDto? Credential);
 
 /// <summary>
@@ -131,19 +134,44 @@ public sealed class DeviceAuthService(
     /// </summary>
     public async Task<IssuedDeviceToken?> ExchangeAsync(DeviceTokenRequest request, CancellationToken cancellationToken)
     {
+        if (await VerifyProofAsync(request, cancellationToken) is not { } proof)
+        {
+            return null;
+        }
+
+        // A credential removed together with its abandoned profile since the check above updates no row.
+        var now = clock.GetUtcNow();
+        var recorded = await context.DeviceCredentials.Where(c => c.Id == proof.CredentialId)
+            .ExecuteUpdateAsync(s => s.SetProperty(c => c.LastSignedRequestAt, now), cancellationToken);
+        if (recorded != 1)
+        {
+            return Refuse("credential");
+        }
+
+        return issuer.Issue(proof.CredentialId, proof.ProfileId, now);
+    }
+
+    /// <summary>
+    /// Checks a signed challenge and returns the credential and the provisional profile it belongs
+    /// to, or null when the proof is refused. The shape of the request and its timestamp are checked
+    /// first, then the challenge is consumed, so each challenge allows one attempt, and the signature
+    /// is verified against the public key of an active credential of a provisional profile.
+    /// </summary>
+    public async Task<DeviceProof?> VerifyProofAsync(DeviceTokenRequest request, CancellationToken cancellationToken)
+    {
         if (request.Challenge is not { Length: > 0 } challenge || request.CredentialId is not { } credentialId
             || request.Timestamp is not { } timestamp || request.Signature is not { Length: > 0 } signatureText
             || !TryDecodeCanonical(challenge, out var challengeBytes) || challengeBytes.Length != ChallengeBytes
             || !TryDecode(signatureText, out var signature) || signature.Length != SignatureBytes)
         {
-            return Refuse("malformed");
+            return RefuseProof("malformed");
         }
 
         var now = clock.GetUtcNow();
         if (Math.Abs((now - DateTimeOffset.FromUnixTimeSeconds(Math.Clamp(timestamp, 0, 253_402_300_799))).TotalSeconds)
             > options.Value.TimestampWindow.TotalSeconds)
         {
-            return Refuse("timestamp");
+            return RefuseProof("timestamp");
         }
 
         // Deleting the row is the use of the challenge: of parallel requests with the same
@@ -154,7 +182,7 @@ public sealed class DeviceAuthService(
             .ExecuteDeleteAsync(cancellationToken);
         if (consumed != 1)
         {
-            return Refuse("challenge");
+            return RefuseProof("challenge");
         }
 
         var credential = await context.DeviceCredentials.AsNoTracking()
@@ -164,24 +192,19 @@ public sealed class DeviceAuthService(
             .SingleOrDefaultAsync(cancellationToken);
         if (credential is null)
         {
-            return Refuse("credential");
+            return RefuseProof("credential");
         }
 
         var message = DeviceSignatureMessage.Build(challenge, credentialId, timestamp);
-        if (!Verify(credential.PublicKey, message, signature))
-        {
-            return Refuse("signature");
-        }
+        return Verify(credential.PublicKey, message, signature)
+            ? new DeviceProof(credentialId, credential.ProfileId)
+            : RefuseProof("signature");
+    }
 
-        // A credential removed together with its abandoned profile since the check above updates no row.
-        var recorded = await context.DeviceCredentials.Where(c => c.Id == credentialId)
-            .ExecuteUpdateAsync(s => s.SetProperty(c => c.LastSignedRequestAt, now), cancellationToken);
-        if (recorded != 1)
-        {
-            return Refuse("credential");
-        }
-
-        return issuer.Issue(credentialId, credential.ProfileId, now);
+    private DeviceProof? RefuseProof(string reason)
+    {
+        logger.LogInformation("A device token request was refused: {Reason}.", reason);
+        return null;
     }
 
     private IssuedDeviceToken? Refuse(string reason)

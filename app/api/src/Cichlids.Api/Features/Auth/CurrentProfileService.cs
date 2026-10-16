@@ -83,6 +83,24 @@ public sealed class CurrentProfileService(
             ?? throw new InvalidOperationException($"The device token names profile {profileId}, which is not a provisional profile.");
     }
 
+    /// <summary>
+    /// The member profile of the Keycloak account behind the principal, or null when the account has
+    /// no profile yet. Nothing is created. A provisional caller raises a RegistrationRequiredException
+    /// and an account bound to a profile of another kind than member a NonMemberLoginException.
+    /// </summary>
+    public async Task<Profile?> FindMemberAsync(ClaimsPrincipal user, CancellationToken cancellationToken)
+    {
+        if (user.IsProvisional())
+        {
+            throw new RegistrationRequiredException();
+        }
+
+        var subject = user.FindFirst("sub")?.Value
+            ?? throw new InvalidOperationException("The authenticated principal has no sub claim.");
+        var existing = await FindBySubjectAsync(subject, cancellationToken);
+        return existing is null ? null : RequireMember(existing, subject);
+    }
+
     private Profile RequireMember(Profile profile, string subject)
     {
         if (profile.Kind == ProfileKind.Member)
@@ -111,16 +129,15 @@ public sealed class CurrentProfileService(
     private async Task<Profile?> TryCreateProfileAsync(
         ClaimsPrincipal user, string subject, CancellationToken cancellationToken)
     {
-        var username = await ResolveFreeUsernameAsync(
-            user.FindFirst("preferred_username")?.Value, subject, cancellationToken);
-        var name = user.FindFirst("name")?.Value;
+        var (username, displayName) = await MemberNames.ResolveAsync(
+            context, generatedNames.Value, user, subject, cancellationToken);
         var createdAt = DateTimeOffset.UtcNow;
 
         var identity = new ProfileIdentity { Provider = OidcProvider, Subject = subject, CreatedAt = createdAt };
         var profile = new Profile
         {
             Username = username,
-            DisplayName = PublicHandle.IsUsable(name) && !ReservedUsernames.IsReserved(name) ? name! : username,
+            DisplayName = displayName,
             Kind = ProfileKind.Member,
             CreatedAt = createdAt,
             Identities = [identity],
@@ -139,40 +156,5 @@ public sealed class CurrentProfileService(
             context.Entry(profile).State = EntityState.Detached;
             return null;
         }
-    }
-
-    /// <summary>
-    /// Picks the first free handle. A usable preferred username is taken as-is, then with a
-    /// numeric suffix counting up from 2. A blank, email-like or reserved preferred username
-    /// yields the generated handles keyed by the subject instead.
-    /// </summary>
-    private Task<string> ResolveFreeUsernameAsync(
-        string? preferredUsername, string subject, CancellationToken cancellationToken) =>
-        FirstFreeAsync(
-            PublicHandle.IsUsable(preferredUsername) && !ReservedUsernames.IsReserved(preferredUsername)
-                ? SuffixedCandidates(preferredUsername!.Trim())
-                : generatedNames.Value.Candidates(GeneratedNames.HandleInput(subject)),
-            cancellationToken);
-
-    private static IEnumerable<string> SuffixedCandidates(string baseUsername)
-    {
-        yield return baseUsername;
-        for (var suffix = 2; ; suffix++)
-        {
-            yield return $"{baseUsername}-{suffix}";
-        }
-    }
-
-    private async Task<string> FirstFreeAsync(IEnumerable<string> candidates, CancellationToken cancellationToken)
-    {
-        foreach (var candidate in candidates)
-        {
-            if (!await context.Profiles.AnyAsync(p => p.Username == candidate, cancellationToken))
-            {
-                return candidate;
-            }
-        }
-
-        throw new InvalidOperationException("The candidate sequence ended without a free username.");
     }
 }
