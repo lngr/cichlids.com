@@ -1,9 +1,10 @@
 ---
 id: TASK-5.16
 title: Record measurements and care afterwards
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-16 07:10'
+updated_date: '2026-10-16 07:10'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
