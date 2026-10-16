@@ -3,12 +3,14 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using Cichlids.Api.Features.Care;
+using Cichlids.Api.Features.Streaks;
 using Cichlids.Api.Features.WebPush;
 using Cichlids.Domain.Entities;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Time.Testing;
 using static Cichlids.Api.Tests.Features.Care.CareTestSupport;
 
@@ -51,7 +53,7 @@ public sealed class WebPushReminderServiceTests(ApiFixture fixture) : IAsyncLife
     private WebPushSettings Settings => fixture.Services.GetRequiredService<WebPushSettings>();
 
     private WebPushReminderService Service(Cichlids.Infrastructure.Persistence.CichlidsDbContext db, FakeTimeProvider clock) =>
-        new(db, new CarePlanService(db, clock), new WebPushTransport(new HttpClient(_push), Settings), Settings, clock,
+        new(db, new CarePlanService(db, clock, new StreakService(db, clock, Options.Create(new StreakOptions()))), new WebPushTransport(new HttpClient(_push), Settings), Settings, clock,
             NullLogger<WebPushReminderService>.Instance);
 
     private async Task<WebPushPass> RunAsync(FakeTimeProvider clock)
@@ -99,11 +101,12 @@ public sealed class WebPushReminderServiceTests(ApiFixture fixture) : IAsyncLife
         var request = Assert.Single(_push.RequestsFor(browser.Endpoint));
         Assert.Equal("aes128gcm", request.Headers["Content-Encoding"]);
         var payload = JsonDocument.Parse(browser.Decrypt(request.Body)).RootElement;
-        Assert.Equal(["dueDate", "kind", "tankId", "tankTitle", "url"], payload.EnumerateObject().Select(p => p.Name).Order(StringComparer.Ordinal));
+        Assert.Equal(["daysLeft", "dueDate", "kind", "tankId", "tankTitle", "url"], payload.EnumerateObject().Select(p => p.Name).Order(StringComparer.Ordinal));
         Assert.Equal(tank, payload.GetProperty("tankId").GetInt64());
         Assert.Equal("Malawi 240", payload.GetProperty("tankTitle").GetString());
         Assert.Equal("water_change", payload.GetProperty("kind").GetString());
         Assert.Equal("2026-06-16", payload.GetProperty("dueDate").GetString());
+        Assert.Equal(3, payload.GetProperty("daysLeft").GetInt32());
         Assert.Equal($"/care?tank={tank}", payload.GetProperty("url").GetString());
     }
 
@@ -194,7 +197,7 @@ public sealed class WebPushReminderServiceTests(ApiFixture fixture) : IAsyncLife
     [Fact]
     public async Task GivenOverdueNeverLoggedOrSwitchedOffCare_WhenThePassRuns_ThenNothingIsSent()
     {
-        var (overdueToken, _) = await TankAsync(LastWaterChange.AddDays(-3));
+        var (overdueToken, _) = await TankAsync(LastWaterChange.AddDays(-5));
         var (neverToken, _) = await TankAsync();
         var (offToken, offTank) = await TankAsync(LastWaterChange);
         using var off = await SendAsync(fixture.Client, HttpMethod.Patch, $"/api/tanks/{offTank}/care/plan?date=2026-06-16", offToken, new { remindersEnabled = false });
@@ -235,6 +238,77 @@ public sealed class WebPushReminderServiceTests(ApiFixture fixture) : IAsyncLife
         var requests = _push.RequestsFor(browser.Endpoint);
         Assert.Equal(2, requests.Count);
         Assert.Equal("2026-06-16", JsonDocument.Parse(browser.Decrypt(requests[1].Body)).RootElement.GetProperty("dueDate").GetString());
+    }
+
+    private static readonly DateTimeOffset[] GraceMornings =
+    [
+        DateTimeOffset.Parse("2026-06-16T07:30:00Z"), DateTimeOffset.Parse("2026-06-17T07:30:00Z"),
+        DateTimeOffset.Parse("2026-06-18T07:30:00Z"), DateTimeOffset.Parse("2026-06-19T07:30:00Z"),
+    ];
+
+    private static int[] DaysLeftOf(FakeBrowser browser, IReadOnlyList<PushRequest> requests) =>
+        requests.Select(r => JsonDocument.Parse(browser.Decrypt(r.Body)).RootElement.GetProperty("daysLeft").GetInt32()).ToArray();
+
+    [Fact]
+    public async Task GivenARunningStreakOnAWeeklyPlan_WhenTheWaterChangeIsNotLogged_ThenOneMessagePerDayFromDaySevenToDayTenSaysHowManyDaysAreLeft()
+    {
+        var (token, _) = await TankAsync(LastWaterChange);
+        var browser = await SubscribeAsync(token);
+        var clock = ClockAt(GraceMornings[0]);
+
+        foreach (var morning in GraceMornings)
+        {
+            clock.SetUtcNow(morning);
+            Assert.Equal(1, (await RunAsync(clock)).Sent);
+            Assert.Equal(0, (await RunAsync(clock)).Sent);
+        }
+
+        Assert.Equal([3, 2, 1, 0], DaysLeftOf(browser, _push.RequestsFor(browser.Endpoint)));
+        clock.SetUtcNow(DateTimeOffset.Parse("2026-06-20T07:30:00Z"));
+        Assert.Equal(0, (await RunAsync(clock)).Sent);
+        Assert.Equal(4, _push.RequestsFor(browser.Endpoint).Count);
+    }
+
+    [Fact]
+    public async Task GivenReminderDaysOfAPeriod_WhenTheWaterChangeIsLogged_ThenNoFurtherMessageOfThatPeriodIsSent()
+    {
+        var (token, tank) = await TankAsync(LastWaterChange);
+        var browser = await SubscribeAsync(token);
+        var clock = ClockAt(GraceMornings[0]);
+        await RunAsync(clock);
+
+        await LogAsync(fixture.Client, token, tank, new { kind = "water_change", occurredAt = DateTimeOffset.Parse("2026-06-16T09:00:00Z") });
+        foreach (var morning in GraceMornings.Skip(1))
+        {
+            clock.SetUtcNow(morning);
+            await RunAsync(clock);
+        }
+
+        Assert.Single(_push.RequestsFor(browser.Endpoint));
+    }
+
+    [Fact]
+    public async Task GivenReminderDaysOfAPeriod_WhenTheMemberEntersAVacation_ThenNoFurtherMessageIsSent()
+    {
+        var (token, tank) = await TankAsync(LastWaterChange);
+        var browser = await SubscribeAsync(token);
+        var clock = ClockAt(GraceMornings[0]);
+        await RunAsync(clock);
+
+        await using (var db = fixture.CreateDbContext())
+        {
+            var profile = await db.Tanks.Where(t => t.Id == tank).Select(t => t.ProfileId).SingleAsync();
+            db.Vacations.Add(new Vacation { ProfileId = profile, StartDate = new DateOnly(2026, 6, 17), EndDate = null, CreatedAt = GraceMornings[0] });
+            await db.SaveChangesAsync();
+        }
+
+        foreach (var morning in GraceMornings.Skip(1))
+        {
+            clock.SetUtcNow(morning);
+            await RunAsync(clock);
+        }
+
+        Assert.Single(_push.RequestsFor(browser.Endpoint));
     }
 
     [Theory]

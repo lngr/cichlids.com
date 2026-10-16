@@ -1,5 +1,6 @@
 using Cichlids.Api.Features.Care;
 using Cichlids.Api.Features.WebPush;
+using Cichlids.Domain;
 using Cichlids.Domain.Enums;
 
 namespace Cichlids.Api.Tests.Features.WebPush;
@@ -118,5 +119,66 @@ public sealed class WebReminderSelectionTests
         var snooze = new ReminderSnoozeRecord(1, CareKind.WaterChange, new DateOnly(2026, 10, 9), new DateOnly(2026, 10, 10));
 
         Assert.Single(Select(DateTimeOffset.Parse("2026-10-16T08:00:00Z"), Berlin, [Item(CareDueState.DueToday, "2026-10-16")], [snooze]));
+    }
+
+    private static DueCareItemDto StreakItem(CareDueState state, string dueDate, string? from, string? deadline, WaterChangeStreakState streak = WaterChangeStreakState.Running,
+        bool remindersEnabled = true) =>
+        Item(state, dueDate, remindersEnabled) with { Streak = new DueStreakDto(streak, from, deadline) };
+
+    [Theory]
+    [InlineData("2026-10-15T08:00:00Z", false, 0)]
+    [InlineData("2026-10-16T08:00:00Z", true, 3)]
+    [InlineData("2026-10-17T08:00:00Z", true, 2)]
+    [InlineData("2026-10-18T08:00:00Z", true, 1)]
+    [InlineData("2026-10-19T08:00:00Z", true, 0)]
+    [InlineData("2026-10-20T08:00:00Z", false, 0)]
+    public void A_running_streak_yields_a_reminder_on_every_day_from_the_first_reminder_day_through_the_deadline(string instant, bool selected, int daysLeft)
+    {
+        var state = DateOnly.Parse(instant[..10]) > new DateOnly(2026, 10, 16) ? CareDueState.Overdue : CareDueState.DueToday;
+        var items = new[] { StreakItem(state, "2026-10-16", "2026-10-16", "2026-10-19") };
+
+        var reminders = Select(DateTimeOffset.Parse(instant), Berlin, items);
+
+        Assert.Equal(selected, reminders.Count == 1);
+        if (selected) Assert.Equal(daysLeft, reminders[0].DaysLeft);
+    }
+
+    [Fact]
+    public void A_reminder_of_a_running_streak_keeps_the_due_date_of_the_rule_and_falls_on_the_local_day()
+    {
+        var items = new[] { StreakItem(CareDueState.Overdue, "2026-10-16", "2026-10-16", "2026-10-19") };
+
+        var reminder = Assert.Single(Select(DateTimeOffset.Parse("2026-10-18T07:00:00Z"), Berlin, items));
+
+        Assert.Equal(new WebReminder(1, "Tank 1", CareKind.WaterChange, new DateOnly(2026, 10, 16), new DateOnly(2026, 10, 18), 1), reminder);
+        Assert.Empty(Select(DateTimeOffset.Parse("2026-10-18T06:59:00Z"), Berlin, items));
+    }
+
+    [Fact]
+    public void A_streak_paused_by_a_vacation_and_a_tank_with_reminders_off_yield_no_reminder()
+    {
+        var paused = StreakItem(CareDueState.DueToday, "2026-10-16", null, null, WaterChangeStreakState.Paused);
+        var off = StreakItem(CareDueState.DueToday, "2026-10-16", "2026-10-16", "2026-10-19", remindersEnabled: false);
+
+        Assert.Empty(Select(DateTimeOffset.Parse("2026-10-16T08:00:00Z"), Berlin, [paused, off]));
+    }
+
+    [Fact]
+    public void A_snooze_does_not_change_the_daily_reminders_of_a_running_streak()
+    {
+        var snooze = new ReminderSnoozeRecord(1, CareKind.WaterChange, new DateOnly(2026, 10, 16), new DateOnly(2026, 10, 17));
+        var items = new[] { StreakItem(CareDueState.Overdue, "2026-10-16", "2026-10-16", "2026-10-19") };
+
+        Assert.Single(Select(DateTimeOffset.Parse("2026-10-17T08:00:00Z"), Berlin, items, [snooze]));
+        Assert.Single(Select(DateTimeOffset.Parse("2026-10-18T08:00:00Z"), Berlin, items, [snooze]));
+    }
+
+    [Fact]
+    public void Care_other_than_the_water_change_keeps_the_single_reminder_on_the_due_day()
+    {
+        var items = new[] { Item(CareDueState.DueToday, "2026-10-16", kind: CareKind.Measurement) };
+
+        Assert.Null(Assert.Single(Select(DateTimeOffset.Parse("2026-10-16T08:00:00Z"), Berlin, items)).DaysLeft);
+        Assert.Empty(Select(DateTimeOffset.Parse("2026-10-17T08:00:00Z"), Berlin, [Item(CareDueState.Overdue, "2026-10-16", kind: CareKind.Measurement)]));
     }
 }

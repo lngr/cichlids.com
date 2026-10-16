@@ -9,15 +9,19 @@ public sealed record ReminderSnoozeRecord(long TankId, CareKind Kind, DateOnly D
 
 /// <summary>
 /// A reminder to send: the rule of a tank, the due date it belongs to, and the local date on which
-/// it falls (the due date, or the until date of a snooze).
+/// it falls (the due date, or the until date of a snooze). DaysLeft is the number of days until the
+/// water change streak breaks, 0 on its last day; it is null for a reminder outside a running streak.
 /// </summary>
-public sealed record WebReminder(long TankId, string TankTitle, CareKind Kind, DateOnly DueDate, DateOnly FireDate);
+public sealed record WebReminder(long TankId, string TankTitle, CareKind Kind, DateOnly DueDate, DateOnly FireDate, int? DaysLeft = null);
 
 /// <summary>
 /// Chooses the care reminders a browser receives at a moment of its own clock. A reminder falls at
 /// 09:00 on the due day of an enabled rule whose care has been logged before; care that is overdue
 /// gets none unless the member snoozed it, and a snooze moves the reminder of its due date to 09:00
-/// on its until date. A tank with reminders switched off gets none.
+/// on its until date. A tank with reminders switched off gets none. While the water change streak of
+/// a tank runs, a reminder falls at 09:00 on every day from the first reminder day through the
+/// deadline of the streak and says how many days are left; the snooze of such a reminder is the
+/// reminder of the next day, and a streak paused by a vacation gets none.
 /// </summary>
 public static class WebReminderSelection
 {
@@ -40,11 +44,30 @@ public static class WebReminderSelection
                 continue;
             }
 
+            if (item.Streak is { } streak)
+            {
+                if (StreakReminder(item, streak, dueDate, now.Date) is { } daily) reminders.Add(daily);
+                continue;
+            }
+
             var snooze = snoozes.FirstOrDefault(s => s.TankId == item.TankId && s.Kind == item.Kind && s.DueDate == dueDate);
             DateOnly? fireDate = snooze?.UntilDate ?? (item.Due.State == CareDueState.DueToday ? dueDate : null);
             if (fireDate == now.Date) reminders.Add(new WebReminder(item.TankId, item.TankTitle, item.Kind, dueDate, now.Date));
         }
 
         return reminders.OrderBy(r => r.TankId).ThenBy(r => r.Kind).ToList();
+    }
+
+    private static WebReminder? StreakReminder(DueCareItemDto item, DueStreakDto streak, DateOnly dueDate, DateOnly today)
+    {
+        if (streak.State != Cichlids.Domain.WaterChangeStreakState.Running
+            || !DateOnly.TryParseExact(streak.ReminderFrom, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var from)
+            || !DateOnly.TryParseExact(streak.Deadline, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var deadline)
+            || today < from || today > deadline)
+        {
+            return null;
+        }
+
+        return new WebReminder(item.TankId, item.TankTitle, item.Kind, dueDate, today, deadline.DayNumber - today.DayNumber);
     }
 }

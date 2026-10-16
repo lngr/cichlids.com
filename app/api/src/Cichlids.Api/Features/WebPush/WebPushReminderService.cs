@@ -12,7 +12,7 @@ public sealed record WebPushPass(int Sent, int Removed, int Failed);
 
 /// <summary>
 /// One pass of the Web Push reminder sender: for each subscription whose own clock has reached
-/// 09:00 it sends the reminders that fall on the local day, once per rule, due date and
+/// 09:00 it sends the reminders that fall on the local day, once per rule, due date, day and
 /// subscription. A record in web_push_reminder_sent is created before the send and its unique key
 /// lets exactly one instance send a reminder. A subscription the push service does not know is
 /// deleted; other failures release the record and delay the next attempt of the subscription
@@ -115,14 +115,19 @@ public sealed class WebPushReminderService(
         return requested > exponential ? requested : exponential;
     }
 
-    private static string Payload(WebReminder reminder) => JsonSerializer.Serialize(new Dictionary<string, object?>
+    private static string Payload(WebReminder reminder)
     {
-        ["tankId"] = reminder.TankId,
-        ["tankTitle"] = reminder.TankTitle,
-        ["kind"] = SnakeCaseEnum.ToSnakeCase(reminder.Kind),
-        ["dueDate"] = reminder.DueDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture),
-        ["url"] = $"/care?tank={reminder.TankId}",
-    });
+        var payload = new Dictionary<string, object?>
+        {
+            ["tankId"] = reminder.TankId,
+            ["tankTitle"] = reminder.TankTitle,
+            ["kind"] = SnakeCaseEnum.ToSnakeCase(reminder.Kind),
+            ["dueDate"] = reminder.DueDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture),
+            ["url"] = $"/care?tank={reminder.TankId}",
+        };
+        if (reminder.DaysLeft is { } daysLeft) payload["daysLeft"] = daysLeft;
+        return JsonSerializer.Serialize(payload);
+    }
 
     /// <summary>Creates the record of a reminder for a subscription; false when another pass already holds it.</summary>
     private async Task<bool> ClaimAsync(WebPushSubscription subscription, WebReminder reminder, DateTimeOffset now, CancellationToken ct)
