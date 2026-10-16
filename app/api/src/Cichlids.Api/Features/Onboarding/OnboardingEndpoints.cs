@@ -13,10 +13,10 @@ public static class OnboardingEndpoints
 {
     public static IEndpointRouteBuilder MapOnboardingEndpoints(this IEndpointRouteBuilder app)
     {
-        app.MapPost("/api/me/onboarding", CompleteAsync).WithName("CompleteOnboarding").WithTags("Me").RequireAuthorization();
-        app.MapGet("/api/me/legacy-tanks", LegacyAsync).WithName("ListMyLegacyTanks").WithTags("Me").RequireAuthorization();
-        app.MapPut("/api/me/interests", InterestsAsync).WithName("SetMyInterests").WithTags("Me").RequireAuthorization();
-        app.MapPut("/api/tanks/{id:long}/region", RefineAsync).WithName("RefineTankRegion").WithTags("Tanks").RequireAuthorization();
+        app.MapPost("/api/me/onboarding", CompleteAsync).WithName("CompleteOnboarding").WithTags("Me").RequireRegistered();
+        app.MapGet("/api/me/legacy-tanks", LegacyAsync).WithName("ListMyLegacyTanks").WithTags("Me").RequireRegistered();
+        app.MapPut("/api/me/interests", InterestsAsync).WithName("SetMyInterests").WithTags("Me").RequireRegistered();
+        app.MapPut("/api/tanks/{id:long}/region", RefineAsync).WithName("RefineTankRegion").WithTags("Tanks").RequireRegistered();
         return app;
     }
 

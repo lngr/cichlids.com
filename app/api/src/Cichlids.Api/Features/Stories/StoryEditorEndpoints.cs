@@ -15,7 +15,7 @@ public static class StoryEditorEndpoints
 {
     public static IEndpointRouteBuilder MapStoryEditorEndpoints(this IEndpointRouteBuilder app)
     {
-        var me = app.MapGroup("/api/me/stories").WithTags("Stories").RequireAuthorization();
+        var me = app.MapGroup("/api/me/stories").WithTags("Stories").RequireRegistered();
         me.MapGet("/", ListAsync).WithName("ListMyStories");
         me.MapPost("/", CreateAsync).WithName("CreateMyStory").ProducesProblem(StatusCodes.Status409Conflict);
         me.MapGet("/{id:long}", GetAsync).WithName("GetMyStory").ProducesProblem(StatusCodes.Status404NotFound);
@@ -31,7 +31,7 @@ public static class StoryEditorEndpoints
         me.MapPut("/{id:long}/subjects/{subjectId:long}", PlaceSubjectAsync).WithName("PlaceMyStorySubject").ProducesProblem(StatusCodes.Status404NotFound);
         me.MapDelete("/{id:long}/subjects/{subjectId:long}", RemoveSubjectAsync).WithName("RemoveMyStorySubject").ProducesProblem(StatusCodes.Status404NotFound);
 
-        app.MapPost("/api/me/media/{id:long}/share", ShareAsync).WithName("ShareMyMedia").WithTags("Me").RequireAuthorization()
+        app.MapPost("/api/me/media/{id:long}/share", ShareAsync).WithName("ShareMyMedia").WithTags("Me").RequireRegistered()
             .ProducesProblem(StatusCodes.Status400BadRequest).ProducesProblem(StatusCodes.Status404NotFound).ProducesProblem(StatusCodes.Status409Conflict);
         return app;
     }

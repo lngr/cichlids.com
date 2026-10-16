@@ -58,7 +58,7 @@ public static partial class TankDecommissioningEndpoints
         ClaimsPrincipal user, CurrentProfileService profiles, StreakService streaks, TankDecommissioningService decommissioning, CancellationToken ct)
     {
         if (streaks.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem(TankDecommissioningService.DateInvalidCode);
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (operation, error) = await decommissioning.StartAsync(tankId, profile.Id, file, capturedInApp ?? false, scope, today, offset, ct);
         return error is not null ? Problem(error) : TypedResults.Created($"/api/tanks/{tankId}/decommissioning", operation!);
     }
@@ -68,7 +68,7 @@ public static partial class TankDecommissioningEndpoints
         ClaimsPrincipal user, CurrentProfileService profiles, StreakService streaks, TankDecommissioningService decommissioning, CancellationToken ct)
     {
         if (streaks.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem(TankDecommissioningService.DateInvalidCode);
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (operation, error) = await decommissioning.EndAsync(tankId, profile.Id, file, capturedInApp ?? false, today, offset, ct);
         return error is not null ? Problem(error) : TypedResults.Ok(operation!);
     }

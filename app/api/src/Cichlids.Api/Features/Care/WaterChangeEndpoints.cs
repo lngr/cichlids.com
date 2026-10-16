@@ -33,7 +33,7 @@ public static class WaterChangeEndpoints
     private static async Task<Results<Ok<WaterChangeSessionDto>, Created<WaterChangeSessionDto>, ProblemHttpResult>> StartAsync(
         long tankId, ClaimsPrincipal user, CurrentProfileService profiles, WaterChangeService service, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (start, error) = await service.StartAsync(tankId, profile.Id, ct);
         if (error is not null) return CareEndpoints.Problem(error);
         return start!.Created
@@ -44,7 +44,7 @@ public static class WaterChangeEndpoints
     private static async Task<Results<Ok<WaterChangeSessionDto>, ProblemHttpResult>> CurrentAsync(
         long tankId, ClaimsPrincipal user, CurrentProfileService profiles, WaterChangeService service, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (session, error) = await service.CurrentAsync(tankId, profile.Id, ct);
         return error is not null ? CareEndpoints.Problem(error) : TypedResults.Ok(session!);
     }
@@ -53,7 +53,7 @@ public static class WaterChangeEndpoints
         long tankId, long id, string step, WaterChangeStepRequest request, ClaimsPrincipal user, CurrentProfileService profiles,
         WaterChangeService service, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (session, error) = await service.MarkStepAsync(tankId, id, profile.Id, step, request.State, ct);
         return error is not null ? CareEndpoints.Problem(error) : TypedResults.Ok(session!);
     }
@@ -62,7 +62,7 @@ public static class WaterChangeEndpoints
         long tankId, long id, IFormFile? file, [FromForm] bool? capturedInApp, ClaimsPrincipal user,
         CurrentProfileService profiles, WaterChangeService service, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (session, error) = await service.AddPhotoAsync(tankId, id, profile.Id, file, capturedInApp ?? false, ct);
         if (error == "upload_rate_limited") return UploadsEndpoints.RateLimitProblem();
         return error is not null ? CareEndpoints.Problem(error) : TypedResults.Ok(session!);
@@ -72,7 +72,7 @@ public static class WaterChangeEndpoints
         long tankId, long id, FinishWaterChangeRequest? request, ClaimsPrincipal user, CurrentProfileService profiles,
         WaterChangeService service, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (finished, error) = await service.FinishAsync(tankId, id, profile.Id, request?.Amount, ct);
         return error is not null ? CareEndpoints.Problem(error) : TypedResults.Ok(finished!);
     }
@@ -80,7 +80,7 @@ public static class WaterChangeEndpoints
     private static async Task<Results<NoContent, ProblemHttpResult>> CancelAsync(
         long tankId, long id, ClaimsPrincipal user, CurrentProfileService profiles, WaterChangeService service, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var error = await service.CancelAsync(tankId, id, profile.Id, ct);
         return error is not null ? CareEndpoints.Problem(error) : TypedResults.NoContent();
     }

@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Cichlids.Api.Features.Auth;
 using Cichlids.Api.Features.Common;
 using Cichlids.Domain;
 using Cichlids.Domain.Entities;
@@ -13,7 +14,8 @@ namespace Cichlids.Api.Features.Tanks;
 /// Creates tanks with metric measurements, original inputs, the visibility answer of the owner and a
 /// tank.created outbox event in one transaction. A tank is created only with an explicit answer to
 /// the question whether it should be public: yes makes profile and stream public, no makes both
-/// private, and either answer is stored with its time.
+/// private, and either answer is stored with its time. The tanks of a provisional profile are private:
+/// a public answer or a wider level raises a RegistrationRequiredException.
 /// </summary>
 public sealed class TanksWriteService(CichlidsDbContext context)
 {
@@ -56,8 +58,13 @@ public sealed class TanksWriteService(CichlidsDbContext context)
             throw new ArgumentException(error.Detail, nameof(request));
         }
 
-        var now = DateTimeOffset.UtcNow;
         var level = request.IsPublic == true ? TankVisibility.Public : TankVisibility.Private;
+        if (level != TankVisibility.Private && await IsProvisionalAsync(profileId, cancellationToken))
+        {
+            throw new RegistrationRequiredException();
+        }
+
+        var now = DateTimeOffset.UtcNow;
         var tank = new Tank
         {
             ProfileId = profileId,
@@ -106,7 +113,8 @@ public sealed class TanksWriteService(CichlidsDbContext context)
     /// <summary>
     /// Sets the profile and stream levels of the owner's tank. The error is a problem code:
     /// tank_visibility_invalid for a missing or unknown level, tank_not_found when the tank is not the
-    /// caller's, and tank_stream_wider_than_profile for a stream wider than the profile. A change of
+    /// caller's, and tank_stream_wider_than_profile for a stream wider than the profile. A level other
+    /// than private for a provisional profile raises a RegistrationRequiredException. A change of
     /// the profile level between public and not public is stored as a consent answer, and open follow requests
     /// are approved when the profile becomes public. A change of either
     /// level changes the visibility generation of the media items of the tank and marks them for placement
@@ -132,6 +140,11 @@ public sealed class TanksWriteService(CichlidsDbContext context)
         if (!TankVisibilityRules.IsStreamWithinProfile(profile, stream))
         {
             return (null, StreamWiderCode);
+        }
+
+        if ((profile != TankVisibility.Private || stream != TankVisibility.Private) && await IsProvisionalAsync(profileId, cancellationToken))
+        {
+            throw new RegistrationRequiredException();
         }
 
         if (tank.ProfileVisibility == profile && tank.StreamVisibility == stream)
@@ -171,6 +184,9 @@ public sealed class TanksWriteService(CichlidsDbContext context)
         await transaction.CommitAsync(cancellationToken);
         return (new TankVisibilityDto(profile, stream), null);
     }
+
+    private Task<bool> IsProvisionalAsync(long profileId, CancellationToken cancellationToken) =>
+        context.Profiles.AsNoTracking().AnyAsync(p => p.Id == profileId && p.Kind == ProfileKind.Provisional, cancellationToken);
 
     // A public tank takes followers without approval, so its open follow requests become follows.
     private async Task ApprovePendingFollowsAsync(Tank tank, DateTimeOffset now, CancellationToken cancellationToken)

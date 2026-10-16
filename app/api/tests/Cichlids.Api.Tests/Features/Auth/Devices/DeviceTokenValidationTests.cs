@@ -233,7 +233,7 @@ public sealed class DeviceTokenValidationTests(ApiFixture fixture)
         var profiles = await db.Profiles.CountAsync();
         var identities = await db.ProfileIdentities.CountAsync();
 
-        var response = await fixture.Client.SendAsync(TestDevice.Get("/api/me/settings", token));
+        var response = await fixture.Client.SendAsync(TestDevice.Get("/api/me/drafts", token));
 
         Assert.Equal(HttpStatusCode.Forbidden, response.StatusCode);
         using var body = System.Text.Json.JsonDocument.Parse(await response.Content.ReadAsStringAsync());
@@ -245,7 +245,7 @@ public sealed class DeviceTokenValidationTests(ApiFixture fixture)
     [Theory]
     [InlineData("/api/me/drafts")]
     [InlineData("/api/me/legacy-tanks")]
-    [InlineData("/api/me/vacations")]
+    [InlineData("/api/me/web-push")]
     public async Task Endpoints_for_members_refuse_a_device_token_without_creating_anything(string url)
     {
         using var device = new TestDevice(fixture.Client);
@@ -281,7 +281,7 @@ public sealed class DeviceTokenValidationTests(ApiFixture fixture)
     }
 
     [Fact]
-    public async Task A_provisional_caller_is_anonymous_for_the_audiences_of_members()
+    public async Task A_provisional_caller_is_the_viewer_of_its_own_profile_and_a_member_of_no_audience()
     {
         using var device = new TestDevice(fixture.Client);
         await device.RegisterAsync();
@@ -293,7 +293,7 @@ public sealed class DeviceTokenValidationTests(ApiFixture fixture)
 
         var viewer = await access.ViewerProfileIdAsync(principal, CancellationToken.None);
 
-        Assert.Null(viewer);
+        Assert.Equal(device.ProfileId, viewer);
         Assert.True(principal.IsProvisional());
         Assert.False(principal.IsRegistered());
         Assert.Null(principal.KeycloakSubject());

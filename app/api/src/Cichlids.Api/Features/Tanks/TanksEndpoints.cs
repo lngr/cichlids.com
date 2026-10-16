@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using Cichlids.Api.Features.Auth;
+using Cichlids.Api.Features.Auth.Devices;
 using Cichlids.Api.Features.Comments;
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Media;
@@ -32,7 +33,7 @@ public static class TanksEndpoints
             .ProducesProblem(StatusCodes.Status404NotFound);
         group.MapGet("/{id:long}/comments", ListCommentsAsync).WithName("ListTankComments");
         group.MapPost("/{id:long}/comments", CreateCommentAsync).WithName("CreateTankComment")
-            .RequireAuthorization()
+            .RequireRegistered()
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
         app.MapTankSeriesPhotoEndpoints();
@@ -49,12 +50,23 @@ public static class TanksEndpoints
         ClaimsPrincipal user,
         CancellationToken cancellationToken)
     {
+        if (user.IsProvisional())
+        {
+            // The tank of a provisional profile is private; the question about publishing is not asked.
+            if (request.IsPublic == true)
+            {
+                throw new RegistrationRequiredException();
+            }
+
+            request = request with { IsPublic = false };
+        }
+
         if (TanksWriteService.Validate(request) is { } error)
         {
             return ApiProblems.WithCode(StatusCodes.Status400BadRequest, "Invalid tank", error.Detail, error.Code);
         }
 
-        var author = await currentProfileService.ResolveAsync(user, cancellationToken);
+        var author = await currentProfileService.ResolveCallerAsync(user, cancellationToken);
         var tank = await writeService.CreateAsync(request, author.Id, cancellationToken);
         var detail = await queryService.GetByIdAsync(tank.Id, author.Id, cancellationToken);
         return TypedResults.Created($"/api/tanks/{tank.Id}", detail!);
@@ -111,7 +123,7 @@ public static class TanksEndpoints
         long id, UpdateTankVisibilityRequest request, CurrentProfileService currentProfileService, TanksWriteService writeService,
         MediaPlacementTrigger placement, CichlidsDbContext db, ClaimsPrincipal user, CancellationToken cancellationToken)
     {
-        var profile = await currentProfileService.ResolveAsync(user, cancellationToken);
+        var profile = await currentProfileService.ResolveCallerAsync(user, cancellationToken);
         var (visibility, error) = await writeService.SetVisibilityAsync(id, profile.Id, request, cancellationToken);
         if (error is null)
         {

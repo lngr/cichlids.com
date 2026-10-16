@@ -20,13 +20,13 @@ public static partial class WebPushEndpoints
 
     public static IEndpointRouteBuilder MapWebPushEndpoints(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("/api/me/web-push").WithTags("Web Push").RequireAuthorization();
+        var group = app.MapGroup("/api/me/web-push").WithTags("Web Push").RequireRegistered();
         group.MapGet("", Config).WithName("GetWebPushConfig").ProducesProblem(401).ProducesProblem(403);
         group.MapPost("/subscriptions", SubscribeAsync).WithName("SubscribeWebPush")
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404).ProducesProblem(409);
         group.MapDelete("/subscriptions", UnsubscribeAsync).WithName("UnsubscribeWebPush")
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403);
-        app.MapPost("/api/me/care/reminders/snooze", SnoozeAsync).WithName("SnoozeCareReminder").WithTags("Care").RequireAuthorization()
+        app.MapPost("/api/me/care/reminders/snooze", SnoozeAsync).WithName("SnoozeCareReminder").WithTags("Care").RequireRegistered()
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
         return app;
     }

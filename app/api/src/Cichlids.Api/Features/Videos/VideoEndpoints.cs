@@ -58,7 +58,7 @@ public static partial class VideoEndpoints
     private static async Task<Results<Created<VideoUploadDto>, ProblemHttpResult>> CreateAsync(
         CreateVideoUploadRequest request, ClaimsPrincipal user, CurrentProfileService profiles, VideoUploadService uploads, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (session, problem) = await uploads.CreateAsync(profile.Id, request, ct);
         return problem is not null ? problem.ToResult() : TypedResults.Created($"/api/video-uploads/{session!.Id}", session);
     }
@@ -66,7 +66,7 @@ public static partial class VideoEndpoints
     private static async Task<Results<Ok<VideoUploadDto>, ProblemHttpResult>> GetAsync(
         long id, ClaimsPrincipal user, CurrentProfileService profiles, VideoUploadService uploads, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (session, problem) = await uploads.GetAsync(profile.Id, id, ct);
         return problem is not null ? problem.ToResult() : TypedResults.Ok(session!);
     }
@@ -81,7 +81,7 @@ public static partial class VideoEndpoints
             feature.MaxRequestBodySize = null;
         }
 
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         long? offset = long.TryParse(http.Request.Headers[OffsetHeader], NumberStyles.None, CultureInfo.InvariantCulture, out var parsed) ? parsed : null;
         var (next, problem) = await uploads.AppendAsync(profile.Id, id, offset, http.Request.ContentLength, http.Request.Body, ct);
         if (problem is not null)
@@ -96,7 +96,7 @@ public static partial class VideoEndpoints
     private static async Task<Results<Created<VideoDto>, ProblemHttpResult>> CompleteAsync(
         long id, ClaimsPrincipal user, CurrentProfileService profiles, VideoUploadService uploads, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (video, problem) = await uploads.CompleteAsync(profile.Id, id, ct);
         return problem is not null ? problem.ToResult() : TypedResults.Created($"/api/tanks/videos/{video!.Id}", video);
     }
@@ -104,7 +104,7 @@ public static partial class VideoEndpoints
     private static async Task<Results<NoContent, ProblemHttpResult>> CancelAsync(
         long id, ClaimsPrincipal user, CurrentProfileService profiles, VideoUploadService uploads, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         return await uploads.CancelAsync(profile.Id, id, ct) is { } problem ? problem.ToResult() : TypedResults.NoContent();
     }
 
@@ -112,10 +112,11 @@ public static partial class VideoEndpoints
         long tankId, ClaimsPrincipal user, CichlidsDbContext db, VideoQueryService videos, CancellationToken ct)
     {
         var subject = user.KeycloakSubject();
-        long? viewer = user.Identity?.IsAuthenticated == true && subject is not null
-            ? await db.ProfileIdentities.AsNoTracking().Where(i => i.Provider == "oidc" && i.Subject == subject)
-                .Select(i => (long?)i.ProfileId).FirstOrDefaultAsync(ct)
-            : null;
+        long? viewer = user.ProvisionalProfileId()
+            ?? (user.Identity?.IsAuthenticated == true && subject is not null
+                ? await db.ProfileIdentities.AsNoTracking().Where(i => i.Provider == "oidc" && i.Subject == subject)
+                    .Select(i => (long?)i.ProfileId).FirstOrDefaultAsync(ct)
+                : null);
         var list = await videos.ListForTankAsync(tankId, viewer, ct);
         return list is null
             ? ApiProblems.WithCode(StatusCodes.Status404NotFound, "Tank unavailable", "This tank is unavailable.", "tank_not_found")
@@ -125,7 +126,7 @@ public static partial class VideoEndpoints
     private static async Task<Results<NoContent, ProblemHttpResult>> RemoveFromTankAsync(
         long tankId, long mediaItemId, ClaimsPrincipal user, CurrentProfileService profiles, VideoRemovalService removal, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         return await removal.RemoveFromTankAsync(tankId, mediaItemId, profile.Id, ct)
             ? TypedResults.NoContent()
             : new VideoProblem(StatusCodes.Status404NotFound, VideoProblem.NotFound, "The video is unavailable.").ToResult();
@@ -134,7 +135,7 @@ public static partial class VideoEndpoints
     private static async Task<Results<Ok<CareEntryDto>, ProblemHttpResult>> RemoveFromCareEntryAsync(
         long tankId, long id, long mediaItemId, ClaimsPrincipal user, CurrentProfileService profiles, VideoRemovalService removal, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         return await removal.RemoveFromCareEntryAsync(tankId, id, mediaItemId, profile.Id, ct) is { } entry
             ? TypedResults.Ok(entry)
             : CareEndpoints.Problem("care_not_found");

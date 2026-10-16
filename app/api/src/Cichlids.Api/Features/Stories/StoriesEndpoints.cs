@@ -20,7 +20,7 @@ public static class StoriesEndpoints
         group.MapGet("/{slug}", GetBySlugAsync).WithName("GetStory");
         group.MapGet("/{slug}/comments", ListCommentsAsync).WithName("ListStoryComments");
         group.MapPost("/{slug}/comments", CreateCommentAsync).WithName("CreateStoryComment")
-            .RequireAuthorization()
+            .RequireRegistered()
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
         return app;

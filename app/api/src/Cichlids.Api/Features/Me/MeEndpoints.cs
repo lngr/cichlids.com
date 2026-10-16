@@ -46,7 +46,7 @@ public static class MeEndpoints
     private static async Task<Ok<MeSettingsDto>> GetSettingsAsync(
         ClaimsPrincipal user, CurrentProfileService profiles, CancellationToken cancellationToken)
     {
-        var profile = await profiles.ResolveAsync(user, cancellationToken);
+        var profile = await profiles.ResolveCallerAsync(user, cancellationToken);
         return TypedResults.Ok(new MeSettingsDto(profile.StreaksEnabled));
     }
 
@@ -56,7 +56,7 @@ public static class MeEndpoints
     {
         if (request?.StreaksEnabled is not { } streaksEnabled)
             return ApiProblems.WithCode(400, "Invalid settings", "Send streaksEnabled as true or false.", "settings_invalid");
-        var profile = await profiles.ResolveAsync(user, cancellationToken);
+        var profile = await profiles.ResolveCallerAsync(user, cancellationToken);
         await context.Profiles.Where(p => p.Id == profile.Id)
             .ExecuteUpdateAsync(s => s.SetProperty(p => p.StreaksEnabled, streaksEnabled), cancellationToken);
         return TypedResults.Ok(new MeSettingsDto(streaksEnabled));
@@ -68,7 +68,7 @@ public static class MeEndpoints
     {
         if (!DateOnly.TryParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var localDate))
             return ApiProblems.WithCode(400, "Invalid date", "Send your local calendar date as YYYY-MM-DD.", "today_invalid_date");
-        var profile = await profiles.ResolveAsync(user, cancellationToken);
+        var profile = await profiles.ResolveCallerAsync(user, cancellationToken);
         return TypedResults.Ok(await today.GetAsync(profile, localDate, cancellationToken));
     }
 

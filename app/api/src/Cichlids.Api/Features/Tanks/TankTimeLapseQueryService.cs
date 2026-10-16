@@ -63,7 +63,7 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
             .Concat(storyMedia.Select(pm => pm.MediaItemId)).Distinct().ToList();
         var media = await context.MediaItems.AsNoTracking()
             .Where(m => ids.Contains(m.Id) && m.Kind == MediaKind.Photo
-                && (m.OwnerProfileId == null || visibleProfiles.Any(p => p.Id == m.OwnerProfileId && p.Kind == ProfileKind.Member)))
+                && (m.OwnerProfileId == null || visibleProfiles.Any(p => p.Id == m.OwnerProfileId && (p.Kind == ProfileKind.Member || p.Kind == ProfileKind.Provisional))))
             .ToListAsync(cancellationToken);
         var photoIds = media.Select(m => m.Id).ToList();
         var variants = await context.MediaVariants.AsNoTracking().Where(v => photoIds.Contains(v.MediaItemId)).ToListAsync(cancellationToken);
@@ -89,7 +89,7 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
         var videoIds = directMedia.Where(m => m.Role == MediaLinkRole.Video).Select(m => m.MediaItemId).ToList();
         var videoItems = await VideoQueryService.WithDetails(context.MediaItems.AsNoTracking()
                 .Where(m => videoIds.Contains(m.Id) && m.Kind == MediaKind.Video
-                    && visibleProfiles.Any(p => p.Id == m.OwnerProfileId && p.Kind == ProfileKind.Member)))
+                    && visibleProfiles.Any(p => p.Id == m.OwnerProfileId && (p.Kind == ProfileKind.Member || p.Kind == ProfileKind.Provisional))))
             .ToListAsync(cancellationToken);
         var readyVideos = videoItems.Select(m => (Item: m, Dto: VideoQueryService.ToPublicDto(m, objectStore, signer, allowSigned,
                 anonymousVisible.Contains(m.Id), generations.TryGetValue(m.Id, out var videoGeneration) ? videoGeneration : null)))

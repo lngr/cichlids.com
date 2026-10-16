@@ -23,7 +23,7 @@ public static class TodoEndpoints
     private static async Task<Results<Created<CareTodoDto>, ProblemHttpResult>> CreateOnEntryAsync(
         long tankId, long id, CreateTodoRequest request, ClaimsPrincipal user, CurrentProfileService profiles, CareTodoService todos, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (todo, error) = await todos.CreateAsync(tankId, id, profile.Id, request.Text, ct);
         return error is not null ? CareEndpoints.Problem(error) : TypedResults.Created($"/api/me/todos?state=all", todo!);
     }
@@ -31,7 +31,7 @@ public static class TodoEndpoints
     private static async Task<Results<Created<CareTodoDto>, ProblemHttpResult>> CreateOnTankAsync(
         long tankId, CreateTodoRequest request, ClaimsPrincipal user, CurrentProfileService profiles, CareTodoService todos, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (todo, error) = await todos.CreateAsync(tankId, null, profile.Id, request.Text, ct);
         return error is not null ? CareEndpoints.Problem(error) : TypedResults.Created($"/api/me/todos?state=all", todo!);
     }
@@ -40,7 +40,7 @@ public static class TodoEndpoints
         string? state, int? offset, int? limit, ClaimsPrincipal user, CurrentProfileService profiles, CareTodoService todos, CancellationToken ct)
     {
         if (!SnakeCaseEnum.TryParse<CareTodoService.TodoState>(state ?? "open", out var parsed)) return CareEndpoints.Problem("todo_request_invalid");
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (skip, take) = Pagination.Normalize(offset, limit);
         return TypedResults.Ok(await todos.ListAsync(profile.Id, parsed, skip, take, ct));
     }
@@ -48,7 +48,7 @@ public static class TodoEndpoints
     private static async Task<Results<Ok<CareTodoDto>, ProblemHttpResult>> ChangeAsync(
         long id, UpdateTodoRequest request, ClaimsPrincipal user, CurrentProfileService profiles, CareTodoService todos, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (todo, error) = await todos.ChangeAsync(id, profile.Id, request, ct);
         return error is not null ? CareEndpoints.Problem(error) : TypedResults.Ok(todo!);
     }
@@ -56,7 +56,7 @@ public static class TodoEndpoints
     private static async Task<Results<Ok<CareTodoDto>, ProblemHttpResult>> RemoveAsync(
         long id, ClaimsPrincipal user, CurrentProfileService profiles, CareTodoService todos, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (todo, error) = await todos.RemoveAsync(id, profile.Id, ct);
         return error is not null ? CareEndpoints.Problem(error) : TypedResults.Ok(todo!);
     }

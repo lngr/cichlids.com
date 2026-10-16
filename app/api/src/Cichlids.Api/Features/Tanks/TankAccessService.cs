@@ -23,17 +23,24 @@ public sealed record TankAccess(long TankId, long OwnerProfileId, TankVisibility
 /// <summary>
 /// Resolves who a caller is for the tank visibility rules and what that caller may see of a tank.
 /// A caller without a profile of their own, whether without an account or with an account that has
-/// no profile yet, is anonymous.
+/// no profile yet, is anonymous. A provisional caller is the owner of its own tanks and anonymous for
+/// every other tank: no follow and no selection names a provisional profile.
 /// </summary>
 public sealed class TankAccessService(CichlidsDbContext context)
 {
     /// <summary>
     /// The profile id of the authenticated caller, or null when the caller is anonymous. A suspended profile
     /// is anonymous, so a follow or a selection never keeps a suspended member in an audience. A provisional
-    /// caller (device token) is anonymous here: no audience of members includes a provisional profile.
+    /// caller (device token) is identified by its provisional profile: it owns its own tanks, and no audience
+    /// of members includes it.
     /// </summary>
     public async Task<long?> ViewerProfileIdAsync(ClaimsPrincipal user, CancellationToken cancellationToken)
     {
+        if (user.ProvisionalProfileId() is { } provisionalProfileId)
+        {
+            return provisionalProfileId;
+        }
+
         var subject = user.KeycloakSubject();
         if (user.Identity?.IsAuthenticated != true || subject is null)
         {

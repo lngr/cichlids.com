@@ -31,6 +31,8 @@ using Cichlids.Infrastructure.Storage;
 using Cichlids.Infrastructure.Video;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Policy;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
@@ -152,7 +154,11 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy(AuthorizationPolicies.Moderator, policy => policy.RequireRole("moderator", "admin"));
     options.AddPolicy(AuthorizationPolicies.Admin, policy => policy.RequireRole("admin"));
+    options.AddPolicy(AuthorizationPolicies.Registered, policy =>
+        policy.RequireAuthenticatedUser().AddRequirements(new RegisteredRequirement()));
 });
+builder.Services.AddSingleton<IAuthorizationHandler, RegisteredAuthorizationHandler>();
+builder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler, RegistrationRequiredAuthorizationResultHandler>();
 
 builder.Services.AddProblemDetails(options => options.CustomizeProblemDetails = context =>
 {

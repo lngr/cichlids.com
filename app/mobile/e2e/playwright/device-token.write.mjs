@@ -76,7 +76,7 @@ assert.equal(forged.status, 401);
 assert.equal(forged.body.code, "device_auth_refused");
 
 assert.equal((await get("/api/me", `${token}x`)).status, 401);
-const memberOnly = await get("/api/me/settings", token);
+const memberOnly = await get("/api/me/drafts", token);
 assert.equal(memberOnly.status, 403);
 assert.equal(memberOnly.body.code, "registration_required");
 assert.equal((await get(`/api/profiles/${profileId}`)).status, 404);

@@ -55,7 +55,7 @@ public static class MediaLibraryEndpoints
         };
         if (filter is not null && linked is null) return FilterProblem();
 
-        var profile = await profiles.ResolveAsync(user, cancellationToken);
+        var profile = await profiles.ResolveCallerAsync(user, cancellationToken);
         var (skip, take) = Pagination.Normalize(offset, limit);
         return TypedResults.Ok(await library.ListAsync(profile.Id, wantedKind, linked, skip, take, cancellationToken));
     }
@@ -74,7 +74,7 @@ public static class MediaLibraryEndpoints
             (today, offset) = (local, localOffset);
         }
 
-        var profile = await profiles.ResolveAsync(user, cancellationToken);
+        var profile = await profiles.ResolveCallerAsync(user, cancellationToken);
         var detail = await library.GetAsync(profile.Id, id, today, offset, cancellationToken);
         return detail is null ? NotFound() : TypedResults.Ok(detail);
     }
@@ -82,7 +82,7 @@ public static class MediaLibraryEndpoints
     private static async Task<Results<Ok<MediaLibraryDeletedDto>, ProblemHttpResult>> DeleteAsync(
         long id, ClaimsPrincipal user, CurrentProfileService profiles, MediaLibraryService library, CancellationToken cancellationToken)
     {
-        var profile = await profiles.ResolveAsync(user, cancellationToken);
+        var profile = await profiles.ResolveCallerAsync(user, cancellationToken);
         var (places, error) = await library.DeleteAsync(profile.Id, id, cancellationToken);
         return error switch
         {
@@ -96,7 +96,7 @@ public static class MediaLibraryEndpoints
     private static async Task<Results<Created<MediaLibraryItemDto>, ProblemHttpResult>> UploadPhotoAsync(
         IFormFile? file, ClaimsPrincipal user, CurrentProfileService profiles, MediaLibraryService library, CancellationToken cancellationToken)
     {
-        var profile = await profiles.ResolveAsync(user, cancellationToken);
+        var profile = await profiles.ResolveCallerAsync(user, cancellationToken);
         var (item, error) = await library.AddPhotoAsync(profile.Id, file, cancellationToken);
         return error switch
         {

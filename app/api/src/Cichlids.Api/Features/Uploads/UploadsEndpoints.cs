@@ -32,7 +32,7 @@ public static class UploadsEndpoints
         app.MapPost("/api/uploads", UploadAsync)
             .WithName("UploadPhoto")
             .WithTags("Uploads")
-            .RequireAuthorization()
+            .RequireRegistered()
             .DisableAntiforgery()
             .WithMetadata(new RequestSizeLimitAttribute(MaxRequestBytes))
             .WithFormOptions(multipartBodyLengthLimit: MaxRequestBytes)
@@ -44,19 +44,19 @@ public static class UploadsEndpoints
         app.MapGet("/api/me/drafts", ListDraftsAsync)
             .WithName("ListMyDrafts")
             .WithTags("Me")
-            .RequireAuthorization()
+            .RequireRegistered()
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
         app.MapPost("/api/stories/{id:long}/publish", PublishAsync)
             .WithName("PublishStory")
             .WithTags("Stories")
-            .RequireAuthorization()
+            .RequireRegistered()
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
         app.MapDelete("/api/stories/{id:long}", DiscardAsync)
             .WithName("DiscardStory")
             .WithTags("Stories")
-            .RequireAuthorization()
+            .RequireRegistered()
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
         return app;

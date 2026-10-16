@@ -26,20 +26,31 @@ public static class ProfilesEndpoints
         return detail is null ? TypedResults.NotFound() : TypedResults.Ok(detail);
     }
 
-    private static async Task<Ok<PagedResponse<StoryListItemDto>>> ListStoriesAsync(
-        StoriesQueryService queryService, long id, string? sort, int? offset, int? limit, CancellationToken cancellationToken)
+    private static async Task<Results<Ok<PagedResponse<StoryListItemDto>>, NotFound>> ListStoriesAsync(
+        StoriesQueryService queryService, ProfilesQueryService profiles, TankAccessService access, ClaimsPrincipal viewer, long id,
+        string? sort, int? offset, int? limit, CancellationToken cancellationToken)
     {
+        if (await profiles.IsForeignProvisionalAsync(id, await access.ViewerProfileIdAsync(viewer, cancellationToken), cancellationToken))
+        {
+            return TypedResults.NotFound();
+        }
+
         var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
         var result = await queryService.ListAsync(sort, topic: null, userId: id, species: null, normalizedOffset, normalizedLimit, cancellationToken);
         return TypedResults.Ok(result);
     }
 
-    private static async Task<Ok<PagedResponse<TankListItemDto>>> ListTanksAsync(
-        TanksQueryService queryService, TankAccessService access, ClaimsPrincipal viewer, long id, int? offset, int? limit,
-        CancellationToken cancellationToken)
+    private static async Task<Results<Ok<PagedResponse<TankListItemDto>>, NotFound>> ListTanksAsync(
+        TanksQueryService queryService, ProfilesQueryService profiles, TankAccessService access, ClaimsPrincipal viewer, long id,
+        int? offset, int? limit, CancellationToken cancellationToken)
     {
-        var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
         var viewerProfileId = await access.ViewerProfileIdAsync(viewer, cancellationToken);
+        if (await profiles.IsForeignProvisionalAsync(id, viewerProfileId, cancellationToken))
+        {
+            return TypedResults.NotFound();
+        }
+
+        var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
         var result = await queryService.ListAsync(
             userId: id, category: null, viewerProfileId, normalizedOffset, normalizedLimit, cancellationToken);
         return TypedResults.Ok(result);

@@ -50,14 +50,14 @@ public static partial class StreakEndpoints
         string? date, int? utcOffsetMinutes, ClaimsPrincipal user, CurrentProfileService profiles, StreakService streaks, CancellationToken ct)
     {
         if (streaks.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem(DateInvalidCode);
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         return TypedResults.Ok(await streaks.GetOwnAsync(profile.Id, today, offset, ct));
     }
 
     private static async Task<Ok<VacationListDto>> ListVacationsAsync(
         ClaimsPrincipal user, CurrentProfileService profiles, VacationService vacations, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         return TypedResults.Ok(new VacationListDto(await vacations.ListAsync(profile.Id, ct)));
     }
 
@@ -66,7 +66,7 @@ public static partial class StreakEndpoints
         VacationService vacations, CancellationToken ct)
     {
         if (streaks.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem(DateInvalidCode);
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (vacation, error) = await vacations.StartAsync(profile.Id, request, today, offset, ct);
         return error is not null ? Problem(error) : TypedResults.Created("/api/me/vacations", vacation!);
     }
@@ -75,7 +75,7 @@ public static partial class StreakEndpoints
         string? date, ClaimsPrincipal user, CurrentProfileService profiles, StreakService streaks, VacationService vacations, CancellationToken ct)
     {
         if (streaks.ParseLocalTime(date, null) is not var (today, _)) return Problem(DateInvalidCode);
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (vacation, error) = await vacations.EndAsync(profile.Id, today, ct);
         return error is not null ? Problem(error) : TypedResults.Ok(vacation!);
     }

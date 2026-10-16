@@ -31,13 +31,13 @@ public static class ProfileMediaEndpoints
         app.MapPut($"/api/me/{route}", (SetProfileMediaRequest? request, ClaimsPrincipal user, CurrentProfileService profiles,
                 ProfileMediaService service, ProfilesQueryService query, CancellationToken ct) =>
                 SetAsync(role, request, user, profiles, service, query, ct))
-            .WithName($"SetMy{name}").WithTags("Me").RequireAuthorization()
+            .WithName($"SetMy{name}").WithTags("Me").RequireRegistered()
             .ProducesProblem(StatusCodes.Status400BadRequest).ProducesProblem(StatusCodes.Status404NotFound);
         // Callers authenticate with a bearer token, never a cookie, so antiforgery validation has nothing to protect.
         app.MapPost($"/api/me/{route}/photo", ([FromForm] IFormFile? file, ClaimsPrincipal user, CurrentProfileService profiles,
                 ProfileMediaService service, ProfilesQueryService query, CancellationToken ct) =>
                 UploadAsync(role, file, user, profiles, service, query, ct))
-            .WithName($"UploadMy{name}").WithTags("Me").RequireAuthorization()
+            .WithName($"UploadMy{name}").WithTags("Me").RequireRegistered()
             .DisableAntiforgery()
             .WithMetadata(new RequestSizeLimitAttribute(UploadsEndpoints.MaxRequestBytes))
             .WithFormOptions(multipartBodyLengthLimit: UploadsEndpoints.MaxRequestBytes)
@@ -45,7 +45,7 @@ public static class ProfileMediaEndpoints
             .ProducesProblem(StatusCodes.Status400BadRequest).ProducesProblem(StatusCodes.Status429TooManyRequests);
         app.MapDelete($"/api/me/{route}", (ClaimsPrincipal user, CurrentProfileService profiles, ProfileMediaService service,
                 ProfilesQueryService query, CancellationToken ct) => RemoveAsync(role, user, profiles, service, query, ct))
-            .WithName($"RemoveMy{name}").WithTags("Me").RequireAuthorization();
+            .WithName($"RemoveMy{name}").WithTags("Me").RequireRegistered();
     }
 
     private static async Task<Results<Ok<ProfileDetailDto>, ProblemHttpResult>> SetAsync(

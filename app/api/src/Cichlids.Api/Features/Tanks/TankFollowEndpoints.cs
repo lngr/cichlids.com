@@ -18,37 +18,37 @@ public static class TankFollowEndpoints
 
         group.MapGet("/{id:long}/follow", GetFollowAsync).WithName("GetTankFollow")
             .ProducesProblem(StatusCodes.Status404NotFound);
-        group.MapPut("/{id:long}/follow", FollowAsync).WithName("FollowTank").RequireAuthorization()
+        group.MapPut("/{id:long}/follow", FollowAsync).WithName("FollowTank").RequireRegistered()
             .ProducesProblem(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .ProducesProblem(StatusCodes.Status409Conflict);
-        group.MapDelete("/{id:long}/follow", UnfollowAsync).WithName("UnfollowTank").RequireAuthorization()
+        group.MapDelete("/{id:long}/follow", UnfollowAsync).WithName("UnfollowTank").RequireRegistered()
             .ProducesProblem(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status404NotFound);
-        group.MapGet("/{id:long}/followers", ListFollowersAsync).WithName("ListTankFollowers").RequireAuthorization()
+        group.MapGet("/{id:long}/followers", ListFollowersAsync).WithName("ListTankFollowers").RequireRegistered()
             .ProducesProblem(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status404NotFound);
-        group.MapDelete("/{id:long}/followers/{profileId:long}", RemoveFollowerAsync).WithName("RemoveTankFollower").RequireAuthorization()
+        group.MapDelete("/{id:long}/followers/{profileId:long}", RemoveFollowerAsync).WithName("RemoveTankFollower").RequireRegistered()
             .ProducesProblem(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status404NotFound);
-        group.MapGet("/{id:long}/follow-requests", ListRequestsAsync).WithName("ListTankFollowRequests").RequireAuthorization()
+        group.MapGet("/{id:long}/follow-requests", ListRequestsAsync).WithName("ListTankFollowRequests").RequireRegistered()
             .ProducesProblem(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status404NotFound);
-        group.MapPost("/{id:long}/follow-requests/{profileId:long}/approve", ApproveAsync).WithName("ApproveTankFollowRequest").RequireAuthorization()
+        group.MapPost("/{id:long}/follow-requests/{profileId:long}/approve", ApproveAsync).WithName("ApproveTankFollowRequest").RequireRegistered()
             .ProducesProblem(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status404NotFound);
-        group.MapPost("/{id:long}/follow-requests/{profileId:long}/decline", DeclineAsync).WithName("DeclineTankFollowRequest").RequireAuthorization()
+        group.MapPost("/{id:long}/follow-requests/{profileId:long}/decline", DeclineAsync).WithName("DeclineTankFollowRequest").RequireRegistered()
             .ProducesProblem(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status404NotFound);
-        group.MapGet("/{id:long}/selected-members", ListSelectedAsync).WithName("ListTankSelectedMembers").RequireAuthorization()
+        group.MapGet("/{id:long}/selected-members", ListSelectedAsync).WithName("ListTankSelectedMembers").RequireRegistered()
             .ProducesProblem(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status404NotFound);
-        group.MapPost("/{id:long}/selected-members", AddSelectedAsync).WithName("AddTankSelectedMember").RequireAuthorization()
+        group.MapPost("/{id:long}/selected-members", AddSelectedAsync).WithName("AddTankSelectedMember").RequireRegistered()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .ProducesProblem(StatusCodes.Status409Conflict);
-        group.MapDelete("/{id:long}/selected-members/{profileId:long}", RemoveSelectedAsync).WithName("RemoveTankSelectedMember").RequireAuthorization()
+        group.MapDelete("/{id:long}/selected-members/{profileId:long}", RemoveSelectedAsync).WithName("RemoveTankSelectedMember").RequireRegistered()
             .ProducesProblem(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status404NotFound);
         return app;

@@ -29,6 +29,15 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
     }
 
     /// <summary>
+    /// Whether the profile is the provisional profile of an app installation that the viewer is not.
+    /// A provisional profile appears on no profile route for anyone else.
+    /// </summary>
+    public Task<bool> IsForeignProvisionalAsync(long id, long? viewerProfileId, CancellationToken cancellationToken) =>
+        viewerProfileId == id
+            ? Task.FromResult(false)
+            : context.Profiles.AsNoTracking().AnyAsync(p => p.Id == id && p.Kind == ProfileKind.Provisional, cancellationToken);
+
+    /// <summary>
     /// The detail view of the caller's own profile, a member or a provisional profile; the only
     /// path that shows a provisional profile.
     /// </summary>

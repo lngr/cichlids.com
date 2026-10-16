@@ -85,7 +85,7 @@ public static partial class CareEndpoints
         ClaimsPrincipal user, CurrentProfileService profiles, CarePlanService plans, CancellationToken ct)
     {
         if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (plan, error) = await plans.ChangeRuleAsync(tankId, profile.Id, kind, request, today, offset, ct);
         return error is not null ? Problem(error) : TypedResults.Ok(plan!);
     }
@@ -95,7 +95,7 @@ public static partial class CareEndpoints
         ClaimsPrincipal user, CurrentProfileService profiles, CarePlanService plans, CancellationToken ct)
     {
         if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (plan, error) = await plans.ChangeRemindersAsync(tankId, profile.Id, request, today, offset, ct);
         return error is not null ? Problem(error) : TypedResults.Ok(plan!);
     }
@@ -104,7 +104,7 @@ public static partial class CareEndpoints
         string? date, int? utcOffsetMinutes, ClaimsPrincipal user, CurrentProfileService profiles, CarePlanService plans, CancellationToken ct)
     {
         if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         return TypedResults.Ok(await plans.ListDueAsync(profile.Id, today, offset, ct));
     }
 
@@ -120,7 +120,7 @@ public static partial class CareEndpoints
         string? date, int? utcOffsetMinutes, ClaimsPrincipal user, CurrentProfileService profiles, CareHeatmapService heatmaps, CancellationToken ct)
     {
         if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         return TypedResults.Ok(await heatmaps.GetOwnAsync(profile.Id, today, offset, ct));
     }
 
@@ -171,7 +171,7 @@ public static partial class CareEndpoints
     private static async Task<Results<Created<CareEntryDto>, ProblemHttpResult>> LogAsync(
         long tankId, LogCareRequest request, ClaimsPrincipal user, CurrentProfileService profiles, CareWriteService writes, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (entry, error) = await writes.LogAsync(tankId, profile.Id, request, ct);
         return error is not null ? Problem(error) : TypedResults.Created($"/api/tanks/{tankId}/care/{entry!.Id}", entry);
     }
@@ -179,7 +179,7 @@ public static partial class CareEndpoints
     private static async Task<Results<Ok<CareEntryDto>, ProblemHttpResult>> UpdateAsync(
         long tankId, long id, UpdateCareRequest request, ClaimsPrincipal user, CurrentProfileService profiles, CareWriteService writes, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (entry, error) = await writes.ChangeAsync(tankId, id, profile.Id, request, ct);
         return error is not null ? Problem(error) : TypedResults.Ok(entry!);
     }
@@ -187,7 +187,7 @@ public static partial class CareEndpoints
     private static async Task<Results<Ok<CareEntryDto>, ProblemHttpResult>> DeleteAsync(
         long tankId, long id, ClaimsPrincipal user, CurrentProfileService profiles, CareWriteService writes, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (entry, error) = await writes.ChangeAsync(tankId, id, profile.Id, null, ct);
         return error is not null ? Problem(error) : TypedResults.Ok(entry!);
     }

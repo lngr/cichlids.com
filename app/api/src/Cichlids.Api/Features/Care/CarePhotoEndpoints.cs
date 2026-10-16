@@ -29,7 +29,7 @@ public static class CarePhotoEndpoints
     private static async Task<Results<Created<CareEntryDto>, ProblemHttpResult>> AddAsync(
         long tankId, long id, IFormFile? file, ClaimsPrincipal user, CurrentProfileService profiles, CarePhotoService photos, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (entry, error) = await photos.AddAsync(tankId, id, profile.Id, file, ct);
         if (error == "upload_rate_limited") return UploadsEndpoints.RateLimitProblem();
         return error is not null ? CareEndpoints.Problem(error) : TypedResults.Created($"/api/tanks/{tankId}/care/{id}", entry!);
@@ -38,7 +38,7 @@ public static class CarePhotoEndpoints
     private static async Task<Results<Ok<CareEntryDto>, ProblemHttpResult>> RemoveAsync(
         long tankId, long id, long photoId, ClaimsPrincipal user, CurrentProfileService profiles, CarePhotoService photos, CancellationToken ct)
     {
-        var profile = await profiles.ResolveAsync(user, ct);
+        var profile = await profiles.ResolveCallerAsync(user, ct);
         var (entry, error) = await photos.RemoveAsync(tankId, id, photoId, profile.Id, ct);
         return error is not null ? CareEndpoints.Problem(error) : TypedResults.Ok(entry!);
     }
