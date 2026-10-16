@@ -1,6 +1,8 @@
 import { createClient, createConfig } from "./generated/client/index.js";
 import type { Client } from "./generated/client/index.js";
 import type { VideoUploadTransport } from "./videoUpload.js";
+import { toMeStreaks, toTankStreaks, toVacation } from "./streaks.js";
+import type { MeStreaks, TankStreaks, Vacation } from "./streaks.js";
 import {
   logCareEntry,
   updateCareEntry,
@@ -29,6 +31,11 @@ import {
   refineTankRegion,
   discardPost,
   getCarePlan,
+  getTankStreaks,
+  getMyStreaks,
+  listMyVacations,
+  startVacation,
+  endVacation,
   getWebPushConfig,
   subscribeWebPush,
   unsubscribeWebPush,
@@ -400,7 +407,10 @@ export interface CichlidsClient {
     get(id: number): Promise<TankDetail>;
     timeLapse(id: number): Promise<TankTimeLapse>;
     /** Adds a photo to the time-lapse series of an own tank. */
-    addTimeLapsePhoto(id: number, file: UploadFile): Promise<TankTimeLapsePhoto>;
+    /** Adds a photo to the series; capturedInApp tells that the camera of the app took it, which the time-lapse streak requires. */
+    addTimeLapsePhoto(id: number, file: UploadFile, capturedInApp?: boolean): Promise<TankTimeLapsePhoto>;
+    /** The streaks of a tank a viewer may see; local is the date of the viewer. */
+    streaks(id: number, local: LocalTime): Promise<TankStreaks>;
     listComments(id: number, params?: PageParams): Promise<PagedResponse<Comment>>;
     createComment(id: number, request: CreateCommentRequest): Promise<CommentCreated>;
   };
@@ -425,6 +435,16 @@ export interface CichlidsClient {
     legacyTanks(): Promise<LegacyTankDto[]>;
     setInterests(interests: string[]): Promise<string[]>;
     drafts(): Promise<Draft[]>;
+    /** The streaks of every tank of the member with the vacations of the member. */
+    streaks(local: LocalTime): Promise<MeStreaks>;
+    /** The vacations of the member, the newest first. */
+    vacations(): Promise<Vacation[]>;
+    /** Starts an active vacation on the local date of today, or on startDate when it lies earlier. */
+    startVacation(date: string, startDate?: string): Promise<Vacation>;
+    /** Records an ended vacation afterwards; both dates lie on or before the local date of today. */
+    recordVacation(date: string, startDate: string, endDate: string): Promise<Vacation>;
+    /** Ends the active vacation on the local date of today. */
+    endVacation(date: string): Promise<Vacation>;
   };
   uploads: {
     create(file: UploadFile): Promise<Draft>;
@@ -604,15 +624,19 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       async timeLapse(id) {
         return absolutizeTankMedia(unwrap(await getTankTimeLapse({ client, path: { id } })), options.baseUrl);
       },
-      async addTimeLapsePhoto(id, file) {
+      async addTimeLapsePhoto(id, file, capturedInApp = false) {
         return absolutizeTankMedia(unwrap(await addTankSeriesPhoto({
-          client, path: { tankId: id }, body: { file: file as never },
+          client, path: { tankId: id }, body: { file: file as never, capturedInApp },
           bodySerializer: () => {
             const formData = new FormData();
             formData.append("file", file as never);
+            formData.append("capturedInApp", capturedInApp ? "true" : "false");
             return formData;
           },
         })), options.baseUrl);
+      },
+      async streaks(id, local) {
+        return toTankStreaks(unwrap(await getTankStreaks({ client, path: { tankId: id }, query: local })));
       },
       async setVisibility(id, levels) {
         return unwrap(await setTankVisibility({ client, path: { id }, body: levels }));
@@ -682,6 +706,21 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
     me: {
       async today(date) {
         return absolutizeTankMedia(unwrap(await getToday({ client, query: { date } })), options.baseUrl);
+      },
+      async streaks(local) {
+        return toMeStreaks(unwrap(await getMyStreaks({ client, query: local })));
+      },
+      async vacations() {
+        return unwrap(await listMyVacations({ client })).items.map(toVacation);
+      },
+      async startVacation(date, startDate) {
+        return toVacation(unwrap(await startVacation({ client, query: { date }, body: startDate ? { startDate } : {} })));
+      },
+      async recordVacation(date, startDate, endDate) {
+        return toVacation(unwrap(await startVacation({ client, query: { date }, body: { startDate, endDate } })));
+      },
+      async endVacation(date) {
+        return toVacation(unwrap(await endVacation({ client, query: { date } })));
       },
       async completeOnboarding(request) {
         return unwrap(await completeOnboarding({ client, body: request }));

@@ -1,5 +1,11 @@
 export { createCichlidsClient, ApiError } from "./client.js";
 export { uploadVideo } from "./videoUpload.js";
+export {
+  activeVacation, daysUntilDeadline, hasStreakHistory, seriesPhotoKeepsStreak, toVacationShare,
+} from "./streaks.js";
+export type {
+  MeStreaks, OwnTankStreaks, TankStreaks, TimeLapseStreak, Vacation, VacationShare, WaterChangeStreak, WaterChangeStreakState,
+} from "./streaks.js";
 export type { CreateVideoUploadRequest } from "./generated/types.gen.js";
 export type { UploadVideoOptions, VideoUploadSession, VideoUploadSource, VideoUploadTransport } from "./videoUpload.js";
 export type {
