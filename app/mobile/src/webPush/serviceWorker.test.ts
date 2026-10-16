@@ -68,6 +68,54 @@ describe("the service worker of the web app", () => {
     expect(worker.shown[0].options.data).toEqual(payload);
   });
 
+  describe("a reminder of a running streak", () => {
+    const streak = (daysLeft: number) => ({ ...payload, daysLeft });
+    const settings = { apiUrl: ORIGIN, texts: { water_change: "x", measurement: "y", snooze: "Morgen erinnern", streakToday: "Heute reißt die Serie ab.",
+      streakBreaks: { "3": "In 3 Tagen reißt die Serie ab." } } };
+
+    it("shows the text for the days left, or the text for the last day", async () => {
+      const worker = load({ settings });
+      await worker.dispatch("push", pushEvent(streak(3)));
+      await worker.dispatch("push", pushEvent(streak(0)));
+      expect(worker.shown.map(n => n.options.body)).toEqual(["In 3 Tagen reißt die Serie ab.", "Heute reißt die Serie ab."]);
+      expect(worker.shown[0].options.data).toEqual(streak(3));
+    });
+
+    it("offers the snooze except on the last day, when no reminder follows", async () => {
+      const worker = load({ settings });
+      await worker.dispatch("push", pushEvent(streak(2)));
+      await worker.dispatch("push", pushEvent(streak(0)));
+      expect(worker.shown[0].options.actions).toEqual([{ action: "snooze", title: "Morgen erinnern" }]);
+      expect(worker.shown[1].options.actions).toBeUndefined();
+    });
+
+    it("dismisses the reminder on snooze without a request, since the next day brings the next reminder", async () => {
+      const worker = load({ settings });
+      await worker.dispatch("notificationclick", clickEvent("snooze", streak(2)));
+      expect(worker.fetched).toEqual([]);
+      expect(worker.opened).toEqual([]);
+    });
+
+    it("falls back to English when the page stored no text for the days left", async () => {
+      const worker = load({});
+      await worker.dispatch("push", pushEvent(streak(2)));
+      await worker.dispatch("push", pushEvent(streak(1)));
+      await worker.dispatch("push", pushEvent(streak(0)));
+      expect(worker.shown.map(n => n.options.body)).toEqual([
+        "Your water change streak breaks in 2 days. Do the water change or enter a vacation if you are away.",
+        "Your water change streak breaks in 1 day. Do the water change or enter a vacation if you are away.",
+        "Your water change streak breaks today. Do the water change now or enter a vacation if you are away.",
+      ]);
+    });
+
+    it("ignores a message whose days left are not a number of days", async () => {
+      const worker = load({ settings });
+      await worker.dispatch("push", pushEvent({ ...payload, daysLeft: -1 }));
+      await worker.dispatch("push", pushEvent({ ...payload, daysLeft: "3" }));
+      expect(worker.shown).toHaveLength(0);
+    });
+  });
+
   it("falls back to English texts when the page stored none", async () => {
     const worker = load({});
     await worker.dispatch("push", pushEvent({ ...payload, kind: "measurement" }));
