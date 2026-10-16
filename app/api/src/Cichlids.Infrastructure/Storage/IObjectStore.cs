@@ -38,6 +38,40 @@ public interface IObjectStore
     Task<Stream?> GetAsync(string key, CancellationToken cancellationToken = default);
 
     /// <summary>
+    /// Copies the object stored under the given key into the destination stream, for objects such
+    /// as videos that are processed from a local file. The caller names the largest size it
+    /// accepts: an object that declares more fails before any byte is copied and a body that
+    /// delivers more stops the copy, both with ObjectTooLargeException. Returns false when no
+    /// object exists for that key.
+    /// </summary>
+    Task<bool> DownloadAsync(string key, Stream destination, long maxBytes, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Starts a multipart upload under the given key and returns its upload id. The object appears
+    /// under the key only when the upload is completed.
+    /// </summary>
+    Task<string> BeginMultipartUploadAsync(string key, string contentType, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Uploads one part of a multipart upload and returns its entity tag. Every part except the
+    /// last must be at least 5 MiB; a part is at most 64 MiB and its number between 1 and 10000. Uploading a part number again replaces that part.
+    /// </summary>
+    Task<string> UploadPartAsync(
+        string key, string uploadId, int partNumber, ReadOnlyMemory<byte> content, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Completes a multipart upload from its parts, in ascending part number order.
+    /// </summary>
+    Task CompleteMultipartUploadAsync(
+        string key, string uploadId, IReadOnlyList<MultipartPart> parts, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Discards a multipart upload and its uploaded parts. Aborting an upload that does not exist
+    /// is not an error.
+    /// </summary>
+    Task AbortMultipartUploadAsync(string key, string uploadId, CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Returns whether an object exists under the given key.
     /// </summary>
     Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default);
@@ -72,3 +106,8 @@ public interface IObjectStore
 /// Size and user metadata of a stored object, as returned without downloading its content.
 /// </summary>
 public sealed record ObjectHead(long Size, IReadOnlyDictionary<string, string> Metadata);
+
+/// <summary>
+/// One uploaded part of a multipart upload: its number, starting at 1, and its entity tag.
+/// </summary>
+public sealed record MultipartPart(int PartNumber, string ETag);

@@ -24,6 +24,23 @@ internal sealed class UrlOnlyObjectStore(string baseUrl) : IObjectStore
     public Task<Stream?> GetAsync(string key, CancellationToken cancellationToken = default) =>
         throw new NotSupportedException();
 
+    public Task<bool> DownloadAsync(string key, Stream destination, long maxBytes, CancellationToken cancellationToken = default) =>
+        throw new NotSupportedException();
+
+    public Task<string> BeginMultipartUploadAsync(string key, string contentType, CancellationToken cancellationToken = default) =>
+        throw new NotSupportedException();
+
+    public Task<string> UploadPartAsync(
+        string key, string uploadId, int partNumber, ReadOnlyMemory<byte> content, CancellationToken cancellationToken = default) =>
+        throw new NotSupportedException();
+
+    public Task CompleteMultipartUploadAsync(
+        string key, string uploadId, IReadOnlyList<MultipartPart> parts, CancellationToken cancellationToken = default) =>
+        throw new NotSupportedException();
+
+    public Task AbortMultipartUploadAsync(string key, string uploadId, CancellationToken cancellationToken = default) =>
+        throw new NotSupportedException();
+
     public Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default) =>
         throw new NotSupportedException();
 

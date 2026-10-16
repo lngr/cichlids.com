@@ -65,6 +65,29 @@ internal sealed class RecordingObjectStore(IObjectStore inner) : IObjectStore
         return VanishOnGet.Contains(key) ? Task.FromResult<Stream?>(null) : inner.GetAsync(key, cancellationToken);
     }
 
+    public Task<bool> DownloadAsync(string key, Stream destination, long maxBytes, CancellationToken cancellationToken = default)
+    {
+        _gets.Enqueue(key);
+        return inner.DownloadAsync(key, destination, maxBytes, cancellationToken);
+    }
+
+    public Task<string> BeginMultipartUploadAsync(string key, string contentType, CancellationToken cancellationToken = default)
+    {
+        _puts.Enqueue(key);
+        return inner.BeginMultipartUploadAsync(key, contentType, cancellationToken);
+    }
+
+    public Task<string> UploadPartAsync(
+        string key, string uploadId, int partNumber, ReadOnlyMemory<byte> content, CancellationToken cancellationToken = default) =>
+        inner.UploadPartAsync(key, uploadId, partNumber, content, cancellationToken);
+
+    public Task CompleteMultipartUploadAsync(
+        string key, string uploadId, IReadOnlyList<MultipartPart> parts, CancellationToken cancellationToken = default) =>
+        inner.CompleteMultipartUploadAsync(key, uploadId, parts, cancellationToken);
+
+    public Task AbortMultipartUploadAsync(string key, string uploadId, CancellationToken cancellationToken = default) =>
+        inner.AbortMultipartUploadAsync(key, uploadId, cancellationToken);
+
     public Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default) =>
         inner.ExistsAsync(key, cancellationToken);
 

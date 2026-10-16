@@ -26,6 +26,16 @@ public sealed class S3ObjectStore : IObjectStore
         }
     }
 
+    /// <summary>
+    /// The largest part of a multipart upload this store sends, 64 MiB.
+    /// </summary>
+    public const int MaxPartBytes = 64 * 1024 * 1024;
+
+    /// <summary>
+    /// The highest part number of a multipart upload, as S3 allows.
+    /// </summary>
+    public const int MaxParts = 10_000;
+
     public string Bucket => _options.Bucket;
 
     public Task PutAsync(string key, Stream content, string contentType, CancellationToken cancellationToken = default) =>
@@ -114,6 +124,83 @@ public sealed class S3ObjectStore : IObjectStore
         // The declared length passed the check; the capped stream also bounds what the body
         // actually delivers.
         return new CappedReadStream(response.ResponseStream, key, _options.MaxDownloadBytes, response);
+    }
+
+    public async Task<bool> DownloadAsync(string key, Stream destination, long maxBytes, CancellationToken cancellationToken = default)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(maxBytes);
+        try
+        {
+            using var response = await _client.GetObjectAsync(
+                new GetObjectRequest { BucketName = _options.Bucket, Key = ReadKey(key) }, cancellationToken).ConfigureAwait(false);
+            if (response.ContentLength > maxBytes)
+            {
+                throw new ObjectTooLargeException(key, maxBytes);
+            }
+
+            await using var capped = new CappedReadStream(response.ResponseStream, key, maxBytes);
+            await capped.CopyToAsync(destination, cancellationToken).ConfigureAwait(false);
+            return true;
+        }
+        catch (AmazonS3Exception ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+        {
+            return false;
+        }
+    }
+
+    public async Task<string> BeginMultipartUploadAsync(string key, string contentType, CancellationToken cancellationToken = default)
+    {
+        EnsureWritable(key);
+        var response = await _client.InitiateMultipartUploadAsync(
+            new InitiateMultipartUploadRequest { BucketName = _options.Bucket, Key = OwnKey(key), ContentType = contentType },
+            cancellationToken).ConfigureAwait(false);
+        return response.UploadId;
+    }
+
+    public async Task<string> UploadPartAsync(
+        string key, string uploadId, int partNumber, ReadOnlyMemory<byte> content, CancellationToken cancellationToken = default)
+    {
+        EnsureWritable(key);
+        ArgumentOutOfRangeException.ThrowIfLessThan(partNumber, 1);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(partNumber, MaxParts);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(content.Length, MaxPartBytes);
+        using var stream = new MemoryStream(content.ToArray(), writable: false);
+        var response = await _client.UploadPartAsync(
+            new UploadPartRequest
+            {
+                BucketName = _options.Bucket,
+                Key = OwnKey(key),
+                UploadId = uploadId,
+                PartNumber = partNumber,
+                InputStream = stream,
+                PartSize = content.Length,
+            },
+            cancellationToken).ConfigureAwait(false);
+        return response.ETag;
+    }
+
+    public async Task CompleteMultipartUploadAsync(
+        string key, string uploadId, IReadOnlyList<MultipartPart> parts, CancellationToken cancellationToken = default)
+    {
+        EnsureWritable(key);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(parts.Count, MaxParts);
+        var request = new CompleteMultipartUploadRequest { BucketName = _options.Bucket, Key = OwnKey(key), UploadId = uploadId };
+        request.AddPartETags(parts.Select(p => new PartETag(p.PartNumber, p.ETag)));
+        await _client.CompleteMultipartUploadAsync(request, cancellationToken).ConfigureAwait(false);
+    }
+
+    public async Task AbortMultipartUploadAsync(string key, string uploadId, CancellationToken cancellationToken = default)
+    {
+        EnsureWritable(key);
+        try
+        {
+            await _client.AbortMultipartUploadAsync(
+                new AbortMultipartUploadRequest { BucketName = _options.Bucket, Key = OwnKey(key), UploadId = uploadId },
+                cancellationToken).ConfigureAwait(false);
+        }
+        catch (AmazonS3Exception ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+        {
+        }
     }
 
     public async Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default) =>
