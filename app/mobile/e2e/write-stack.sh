@@ -41,6 +41,7 @@ WEB_LOG="$STATE_DIR/web.log"
 API_BUILD_DIR="$STATE_DIR/api-build"
 WEB_EXPORT_DIR="$STATE_DIR/web-e2e"
 KEY_RING_DIR="$STATE_DIR/data-protection-keys"
+VAPID_KEY_FILE="$STATE_DIR/web-push-vapid-keys.json"
 
 log() { printf '[write-stack] %s\n' "$1"; }
 
@@ -117,8 +118,16 @@ build_api() {
   (cd "$API_DIR" && "$DOTNET" build src/Cichlids.Api -c Release -o "$API_BUILD_DIR")
 }
 
+# The Web Push key pair of the isolated API, created once per stack in the state directory.
+ensure_vapid_keys() {
+  if [[ ! -f "$VAPID_KEY_FILE" ]]; then
+    (cd "$REPO_ROOT" && "$DOTNET" run tools/create-vapid-keys.cs -- json "$VAPID_KEY_FILE" >/dev/null)
+  fi
+}
+
 start_api() {
   build_api
+  ensure_vapid_keys
 
   log "Starting the write-stack API on $API_URL"
   (
@@ -130,7 +139,8 @@ start_api() {
     # the webhook spec observes retries, a given-up event and its redelivery within seconds. The
     # web login returns from Keycloak to this API's callback, a sign-out to the Me tab of this web
     # build. The key ring that encrypts the stored web session tokens lives in the state directory
-    # and goes with the database on down.
+    # and goes with the database on down. The Web Push key pair lives there as well; the sender loop
+    # stays off so that no message goes to a push service of a browser maker.
     ASPNETCORE_URLS="http://0.0.0.0:${API_PORT}" \
     ASPNETCORE_ENVIRONMENT=Development \
     ConnectionStrings__Cichlids="$DB_CONNECTION" \
@@ -142,6 +152,8 @@ start_api() {
     WebSession__CallbackUrl="${API_URL}/api/auth/callback" \
     WebSession__PostLogoutRedirectUrl="${WEB_URL}/me" \
     DataProtection__KeyRingPath="$KEY_RING_DIR" \
+    WebPush__VapidKeyFile="$VAPID_KEY_FILE" \
+    WebPushSender__Enabled=false \
     nohup "$DOTNET" "$API_BUILD_DIR/Cichlids.Api.dll" "--FeatureFlags:discover-activity=${CICHLIDS_WRITE_DISCOVER_ACTIVITY:-false}" >"$API_LOG" 2>&1 &
     echo $! >"$API_PID_FILE"
   )
@@ -206,7 +218,7 @@ cmd_down() {
   mkdir -p "$STATE_DIR"
   stop_pid_file "$WEB_PID_FILE" "static-server.mjs"
   stop_pid_file "$API_PID_FILE" "Cichlids.Api.dll"
-  rm -rf "$WEB_EXPORT_DIR" "$API_BUILD_DIR" "$KEY_RING_DIR"
+  rm -rf "$WEB_EXPORT_DIR" "$API_BUILD_DIR" "$KEY_RING_DIR" "$VAPID_KEY_FILE"
   bucket_tool delete "$BUCKET_NAME"
   drop_database
   log "Write stack down."
