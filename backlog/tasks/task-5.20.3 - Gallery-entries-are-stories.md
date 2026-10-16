@@ -44,7 +44,7 @@ Every gallery entry is a story: an ordered sequence of items (media links with r
 - Rename post to story in the domain and the database (post_media items are media links already, post.tank_id and post_species become story_subject rows, post kind goes away); comments, ratings, collection entries, slug aliases and outbox events refer to the story.
 - story_subject: story, subject type (tank, inhabitant, species) with typed nullable keys and an exactly-one check, optional position; items and subjects share one position sequence per story, kept by the application in one transaction.
 - Cover: nullable reference from the story to one of its item links.
-- API: list and detail return the cover, the items with captions and URLs and the visible subjects; the HTTP route names are decided before the build (see the epic).
+- API: list and detail return the cover, the items with captions and URLs and the visible subjects; the routes are named after stories (/api/stories and matching operation ids, decided by the project owner, 2026-10-16), the app follows in the same change, and public slug addresses stay.
 - ETL and VerifyStep write and verify the story shape.
 - App: gallery card with cover, story view with swipeable items, captions and cards.
 <!-- SECTION:PLAN:END -->
