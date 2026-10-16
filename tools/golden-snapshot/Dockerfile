@@ -3,7 +3,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends python3 python3
     && rm -rf /var/lib/apt/lists/*
 COPY requirements.txt /opt/golden/requirements.txt
 RUN python3 -m venv /opt/venv && /opt/venv/bin/pip install --no-cache-dir -r /opt/golden/requirements.txt
-COPY snapshot.py restore.py mask.sql schema.json /opt/golden/
+COPY snapshot.py restore.py mask.sql schema.json routines.json /opt/golden/
 ENV PATH="/opt/venv/bin:${PATH}" PYTHONDONTWRITEBYTECODE=1
 USER 999:999
 WORKDIR /opt/golden

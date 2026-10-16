@@ -3,6 +3,7 @@ import copy
 import io
 import json
 import os
+import re
 import subprocess
 import sys
 
@@ -107,7 +108,7 @@ class DatabaseTests(unittest.TestCase):
         manifest = snapshot.build(self.source, self.target, KEY, output, 'synthetic-v1', limit=2, media_store=publish)
         self.assertEqual(before, snapshot.fingerprint(self.source))
         self.assertEqual(manifest, json.loads((output / 'manifest.json').read_text()))
-        self.assertEqual(manifest['migration_id'], '20261016155023_MediaLinks')
+        self.assertEqual(manifest['migration_id'], re.search(r"VALUES \('([0-9]{14}_[A-Za-z0-9]+)'", (HERE / 'fixture-schema.sql').read_text()).group(1))
         self.assertEqual(len(manifest['post_ids']), 2)
         self.assertLessEqual(set(manifest['post_ids']), {1, 2, 3})
         self.assertTrue((output / 'snapshot.dump').read_bytes().startswith(b'PGDMP'))
@@ -140,7 +141,7 @@ class DatabaseTests(unittest.TestCase):
             changed = {table: set(columns) for table, columns in snapshot.FREE_TEXT.items()}
             changed['public.profile'] = {'username', 'display_name', 'city', 'external_avatar_url', 'last_login_at', 'suspended_until'}
             changed['public.slug_alias'] = {'value'}
-            changed['public.media_item'] = {'storage_key', 'original_filename', 'content_type', 'checksum_sha256', 'taken_at_local', 'taken_at_offset_minutes', 'capture_checked_at', 'received_at', 'captured_in_app'}
+            changed['public.media_item'] = {'storage_key', 'original_filename', 'content_type', 'checksum_sha256', 'taken_at_local', 'taken_at_offset_minutes', 'capture_checked_at', 'received_at', 'captured_in_app', 'placed_public', 'placement_attempts', 'placement_pending', 'placement_next_attempt_at', 'visibility_generation'}
             changed['public.media_variant'] = {'storage_key'}
             changed['public.comment'].add('poster_name')
             changed['public.discussion_post'].add('poster_name')
@@ -199,6 +200,9 @@ class DatabaseTests(unittest.TestCase):
                 self.assertEqual(count(conn, f'select count(*) from {table}'), 0, table)
                 self.assertGreater(count(source, f'select count(*) from {table}'), 0, table)
             self.assertEqual(count(conn, "select count(*) from media_item where taken_at_local is not null or taken_at_offset_minutes is not null or capture_checked_at is not null or received_at <> created_at or captured_in_app"), 0)
+            placement = "select count(*) from media_item where not placed_public or placement_pending or placement_attempts <> 0 or placement_next_attempt_at is not null or visibility_generation <> 0"
+            self.assertEqual(count(conn, placement), 0)
+            self.assertEqual(count(source, placement), count(source, 'select count(*) from media_item'))
             self.assertGreater(count(source, 'select count(*) from media_item where captured_in_app and taken_at_local is not null and received_at <> created_at'), 0)
             self.assertEqual(source.execute('select bool_and(streaks_enabled) from profile').fetchone(), conn.execute('select bool_and(streaks_enabled) from profile').fetchone())
             for key, filename, checksum in conn.execute('select storage_key, original_filename, checksum_sha256 from media_item'):
@@ -231,6 +235,11 @@ class DatabaseTests(unittest.TestCase):
                 "update comment set tank_id=5, post_id=null where id=2",
                 "insert into rating (tank_id,profile_id,stars,created_at) values (5,3,3,now())",
                 "update media_item set captured_in_app=true",
+                "update media_item set placement_pending=true where id=(select min(id) from media_item)",
+                "update media_item set visibility_generation=1 where id=(select min(id) from media_item)",
+                "update media_item set placed_public=false where id=(select min(id) from media_item)",
+                "update media_item set placement_attempts=1 where id=(select min(id) from media_item)",
+                "update media_item set placement_next_attempt_at=now() where id=(select min(id) from media_item)",
                 "update media_item set taken_at_local='2020-01-01 12:00'",
                 "update media_item set received_at=created_at + interval '1 day'",
             ):
@@ -325,10 +334,15 @@ class DatabaseTests(unittest.TestCase):
             "create function public.personal_function() returns text language sql as $$select 'leak@example.invalid'::text$$",
             "select lo_from_bytea(0, convert_to('leak@example.invalid','UTF8'))",
             "create schema personal_schema",
+            "create trigger personal_trigger after update on public.tank for each row execute function public.tank_changes_media_visibility()",
+            "create or replace function public.post_changes_media_visibility() returns trigger language plpgsql as $$ begin return null; end $$",
+            "drop trigger post_changes_media_visibility on public.post",
+            "drop function public.media_item_ids_of_tank(bigint) cascade",
+            "create function public.media_item_ids_of_tank(p_tank_id text) returns text language sql as $$select 'x'::text$$",
             "create schema pgleak; create view pgleak.personal_view as select 'leak@example.invalid' as body",
         )
         for statement in statements:
-            with self.subTest(object=statement.split()[1]), psycopg.connect(self.source) as conn:
+            with self.subTest(object=statement), psycopg.connect(self.source) as conn:
                 conn.execute(statement)
                 with self.assertRaises(ValueError):
                     snapshot.check_schema(conn)

@@ -59,7 +59,7 @@ INSERT INTO tank_visibility_consent(tank_id,context,answer,answered_at) VALUES (
 INSERT INTO web_push_subscription(id,profile_id,endpoint,p256dh,auth,time_zone,created_at,failure_count) VALUES (1,1,'https://push.example.invalid/SyntheticAlice','synthetic-p256dh','synthetic-auth','Europe/Berlin','2020-01-01',0);
 INSERT INTO web_push_reminder_sent(subscription_id,tank_id,kind,due_date,fire_date,sent_at) VALUES (1,1,'water_change','2020-03-08','2020-03-08','2020-03-08 08:00+00');
 INSERT INTO video_upload(owner_profile_id,target,tank_id,original_filename,byte_size,chunk_size,"offset",storage_key,multipart_upload_id,part_e_tags,created_at,expires_at) VALUES (1,'tank',1,'SyntheticAlice.mp4',10,5,5,'private/synthetic/upload','synthetic-multipart',ARRAY['synthetic-etag'],'2020-01-01','2027-01-01');
-INSERT INTO video_job(media_item_id,status,is_private,attempts,run_after,created_at) VALUES (5,'queued',false,0,'2020-01-01','2020-01-01');
+INSERT INTO video_job(media_item_id,status,attempts,run_after,created_at) VALUES (5,'queued',0,'2020-01-01','2020-01-01');
 UPDATE media_item SET captured_in_app=true, taken_at_local='2020-01-01 12:00', taken_at_offset_minutes=60, capture_checked_at='2020-01-02', received_at='2020-01-03';
 INSERT INTO tank(id,profile_id,title,state,created_at,care_reminders_enabled,stream_visibility,profile_visibility) VALUES
  (4,1,'Stream private tank','published','2020-01-01',true,'private','public'),
@@ -83,3 +83,4 @@ INSERT INTO inhabitant(tank_id,species_id,count) VALUES (4,1,2),(5,1,3);
 INSERT INTO media_link(media_item_id,context_type,tank_id,role,position,created_at) VALUES (1,'tank',5,'showcase',0,'2020-01-01'),(2,'tank',4,'showcase',0,'2020-01-01');
 INSERT INTO comment(id,tank_id,author_profile_id,body,created_at) VALUES (2,1,2,'public tank comment','2020-01-01'),(3,5,1,'private tank comment','2020-01-01'),(4,4,1,'stream private tank comment','2020-01-01');
 INSERT INTO rating(tank_id,profile_id,stars,created_at) VALUES (1,2,5,'2020-01-01'),(5,1,4,'2020-01-01'),(4,2,3,'2020-01-01');
+UPDATE media_item SET placed_public=false, placement_pending=true, placement_attempts=2, placement_next_attempt_at='2020-01-05', visibility_generation=7;

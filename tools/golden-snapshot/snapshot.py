@@ -15,6 +15,7 @@ from psycopg import sql
 
 HERE = Path(__file__).parent
 SCHEMA = json.loads((HERE / 'schema.json').read_text())
+ROUTINES = json.loads((HERE / 'routines.json').read_text())
 EMPTY_TABLES = ('public.profile_identity', 'public.web_session', 'archive.legacy_comment',
                 'public.outbox_event', 'public.webhook_subscription',
                 'public.web_push_subscription', 'public.web_push_reminder_sent',
@@ -119,8 +120,10 @@ COLUMN_HANDLING = {
     },
     'public.media_item': {
         'kept': 'byte_size created_at duration_ms height id kind legacy_id owner_profile_id width',
-        'media': 'captured_in_app checksum_sha256 content_type original_filename received_at storage_key',
-        'null': 'capture_checked_at taken_at_local taken_at_offset_minutes',
+        'media': (
+            'captured_in_app checksum_sha256 content_type original_filename placed_public placement_attempts '
+            'placement_pending received_at storage_key visibility_generation'),
+        'null': 'capture_checked_at placement_next_attempt_at taken_at_local taken_at_offset_minutes',
     },
     'public.media_link': {
         'generated': 'caption',
@@ -182,7 +185,7 @@ COLUMN_HANDLING = {
         'kept': (
             'adopted_at care_reminders_enabled category created_at deleted_at deleted_by_profile_id '
             'depth_input_value depth_value dimension_unit height_input_value height_value id legacy_id '
-            'media_move_attempts media_move_next_attempt_at media_move_pending media_placed_public profile_id '
+            'profile_id '
             'profile_visibility published_at region state stream_visibility volume_input_unit volume_input_value '
             'volume_liters width_input_value width_value'),
     },
@@ -196,7 +199,7 @@ COLUMN_HANDLING = {
         'empty': 'created_at end_date id profile_id start_date',
     },
     'public.video_job': {
-        'empty': 'attempts created_at error_code finished_at id is_private locked_until media_item_id run_after status',
+        'empty': 'attempts created_at error_code finished_at id locked_until media_item_id run_after status',
     },
     'public.video_upload': {
         'empty': (
@@ -254,6 +257,20 @@ def generated_text(key, context, value):
     return (sentence * (len(value) // len(sentence) + 1))[:len(value)]
 
 
+def routine_inventory(conn):
+    functions = {f'{schema}.{name}({arguments})': hashlib.sha256(definition.encode()).hexdigest()
+                 for schema, name, arguments, definition in conn.execute("""
+        select n.nspname, p.proname, pg_get_function_identity_arguments(p.oid), pg_get_functiondef(p.oid)
+        from pg_proc p join pg_namespace n on n.oid=p.pronamespace
+        where n.nspname !~ '^pg_' and n.nspname <> 'information_schema' and p.prokind = 'f'""")}
+    triggers = {f'{schema}.{table}.{name}': hashlib.sha256(definition.encode()).hexdigest()
+                for schema, table, name, definition in conn.execute("""
+        select n.nspname, c.relname, t.tgname, pg_get_triggerdef(t.oid, true)
+        from pg_trigger t join pg_class c on c.oid=t.tgrelid join pg_namespace n on n.oid=c.relnamespace
+        where not t.tgisinternal""")}
+    return {'functions': dict(sorted(functions.items())), 'triggers': dict(sorted(triggers.items()))}
+
+
 def check_schema(conn):
     unsupported = conn.execute("""
         select
@@ -263,7 +280,7 @@ def check_schema(conn):
              where n.nspname !~ '^pg_' and n.nspname <> 'information_schema'
                and c.relkind not in ('r','p','i','I','S'))
         + (select count(*) from pg_proc p join pg_namespace n on n.oid=p.pronamespace
-             where n.nspname !~ '^pg_' and n.nspname <> 'information_schema')
+             where n.nspname !~ '^pg_' and n.nspname <> 'information_schema' and p.prokind <> 'f')
         + (select count(*) from pg_type t join pg_namespace n on n.oid=t.typnamespace
              where n.nspname !~ '^pg_' and n.nspname <> 'information_schema'
                and t.typtype in ('e','d','r','m'))
@@ -274,7 +291,6 @@ def check_schema(conn):
         + (select count(*) from pg_rewrite r join pg_class c on c.oid=r.ev_class
              join pg_namespace n on n.oid=c.relnamespace where n.nspname !~ '^pg_'
                and n.nspname <> 'information_schema')
-        + (select count(*) from pg_trigger where not tgisinternal)
         + (select count(*) from pg_event_trigger)
         + (select count(*) from pg_publication)
         + (select count(*) from pg_subscription)
@@ -282,6 +298,8 @@ def check_schema(conn):
     """).fetchone()[0]
     if unsupported:
         raise ValueError('unsupported database objects; masking review required')
+    if routine_inventory(conn) != ROUTINES:
+        raise ValueError('unexpected functions or triggers; masking review required')
     actual = {}
     for schema, table, column, typ in conn.execute("""
         select n.nspname, c.relname, a.attname, format_type(a.atttypid,a.atttypmod)
@@ -351,6 +369,7 @@ def verify(conn, originals, version):
                         leaks += 1
     for table, scope in PRIVATE_SCOPE_CHECKS:
         leaks += conn.execute(sql.SQL('select count(*) from {} where {}').format(ident(table), sql.SQL(scope))).fetchone()[0]
+    leaks += conn.execute("select count(*) from media_item where not placed_public or placement_pending or placement_attempts <> 0 or placement_next_attempt_at is not null or visibility_generation <> 0").fetchone()[0]
     leaks += conn.execute("select count(*) from media_item where taken_at_local is not null or taken_at_offset_minutes is not null or capture_checked_at is not null or received_at <> created_at or captured_in_app").fetchone()[0]
     for column in ('city', 'external_avatar_url', 'last_login_at', 'suspended_until'):
         leaks += conn.execute(sql.SQL('select count(*) from profile where {} is not null').format(sql.Identifier(column))).fetchone()[0]
@@ -448,13 +467,15 @@ def mask(conn, key, mapping):
     variant_ids = list({m['variant_id'] for m in mapping})
     conn.execute('delete from media_variant where not (id=any(%s))', (variant_ids,))
     conn.execute('delete from tank_decommissioning where not (start_media_item_id=any(%s)) or not (coalesce(end_media_item_id, start_media_item_id)=any(%s))', (media_ids, media_ids))
-    conn.execute('delete from media_link where not (media_item_id=any(%s))', (media_ids,))
     conn.execute("delete from media_link where context_type='profile'")
     conn.execute('delete from media_item where not (id=any(%s))', (media_ids,))
     for media in {m['media_id']: m for m in mapping if m['label'] == 'thumb'}.values():
         conn.execute("update media_item set storage_key=%s, original_filename='media-' || id || '.jpg', content_type='image/jpeg' where id=%s", (media['key'], media['media_id']))
     for media in {m['variant_id']: m for m in mapping}.values():
         conn.execute('update media_variant set storage_key=%s where id=%s', (media['key'], media['variant_id']))
+    # The retained variants are public objects of the shared golden prefix and nothing is due for moving.
+    # The deletes above fired the visibility triggers, so the placement state is set last.
+    conn.execute('update media_item set placed_public=true, placement_pending=false, placement_attempts=0, placement_next_attempt_at=null, visibility_generation=0')
 
 
 def sha256(path):
