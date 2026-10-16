@@ -17,7 +17,7 @@ import { ProfileHeader } from "../../../src/profile/ProfileHeader";
 import { ProfileTabs, type ProfileSection } from "../../../src/profile/ProfileTabs";
 import { ProfileContentList } from "../../../src/profile/ProfileContentList";
 import { useProfileLists } from "../../../src/profile/useProfileLists";
-import { VacationSettings } from "../../../src/streaks/VacationSettings";
+import { StreakSettings } from "../../../src/streaks/StreakSettings";
 import { VacationShareLine } from "../../../src/streaks/VacationShareLine";
 import { DraftsSection } from "../../../src/upload/DraftsSection";
 import { WebPushSettings } from "../../../src/webPush/WebPushSettings";
@@ -82,10 +82,10 @@ function ProfileView() {
   }
   if (!me) return <LoadingView label={t("me.loading")} />;
 
-  return <MemberContent key={String(me.profile.id)} profile={me.profile} />;
+  return <MemberContent key={String(me.profile.id)} profile={me.profile} onStreaksChanged={() => setAttempt((n) => n + 1)} />;
 }
 
-function MemberContent({ profile }: { profile: Me["profile"] }) {
+function MemberContent({ profile, onStreaksChanged }: { profile: Me["profile"]; onStreaksChanged: () => void }) {
   const theme = useTheme();
   const { t } = useTranslation();
   const { logout } = useAuth();
@@ -114,7 +114,7 @@ function MemberContent({ profile }: { profile: Me["profile"] }) {
       </View>
       <LanguageSettings />
       <View style={{ paddingHorizontal: theme.space[4] }}><WebPushSettings /></View>
-      <View style={{ paddingHorizontal: theme.space[4] }}><VacationSettings /></View>
+      <View style={{ paddingHorizontal: theme.space[4] }}><StreakSettings onChanged={onStreaksChanged} /></View>
       <OnboardingProfile profile={profile} />
       <ProfileTabs section={section} onSelect={setSection} own />
     </View>
