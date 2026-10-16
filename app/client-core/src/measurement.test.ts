@@ -1,7 +1,7 @@
 import { createActor, waitFor } from "xstate";
 import { describe, expect, it, vi } from "vitest";
 import {
-  COMMON_PARAMETERS, MEASUREMENT_PARAMETERS, createDraft, editDraft, fromCanonical, inputUnit, measurementMachine,
+  COMMON_PARAMETERS, MEASUREMENT_PARAMETERS, createDraft, draftWhen, editDraft, fromCanonical, inputUnit, measurementMachine,
   scaleSeries, seriesForDisplay, setField, setOrigin, showMore, validateDraft, valueInSystem, visibleParameters,
 } from "./measurement.js";
 import type { CareEntry } from "./client.js";
@@ -174,6 +174,65 @@ describe("measurement machine", () => {
     actor.send({ type: "DELETE" });
     await waitFor(actor, s => s.matches("idle"));
     expect(fx.remove).toHaveBeenCalledWith(5);
+    actor.stop();
+  });
+});
+
+describe("the time of a measurement", () => {
+  const berlin = "Europe/Berlin";
+  const saved = { id: 9 } as CareEntry;
+  const clock = { now: () => new Date("2026-10-16T10:30:00Z"), timeZone: () => berlin };
+  const effects = () => ({ log: vi.fn(async () => saved), update: vi.fn(async () => saved), remove: vi.fn(async () => saved), clock });
+  it("starts on now for a new measurement and on keeping the time for an existing one", () => {
+    expect(createDraft("metric").when).toEqual({ kind: "now" });
+    expect(editDraft("metric", { id: 5, kind: "measurement", values: [] } as unknown as CareEntry).when).toEqual({ kind: "keep" });
+  });
+  it("logs a measurement from two days ago at that time", async () => {
+    const fx = effects();
+    const actor = createActor(measurementMachine, { input: fx }).start();
+    actor.send({ type: "OPEN", system: "metric" });
+    actor.send({ type: "CHANGE", parameter: "no3", text: "25" });
+    actor.send({ type: "WHEN", when: { kind: "twoDaysAgo" } });
+    actor.send({ type: "SAVE" });
+    await waitFor(actor, s => s.matches("idle"));
+    expect(fx.log).toHaveBeenCalledWith([{ parameter: "no3", value: 25, unit: "mg_per_liter", origin: null }], "2026-10-14T10:30:00.000Z");
+    actor.stop();
+  });
+  it("logs without a time on now", async () => {
+    const fx = effects();
+    const actor = createActor(measurementMachine, { input: fx }).start();
+    actor.send({ type: "OPEN", system: "metric" });
+    actor.send({ type: "CHANGE", parameter: "no3", text: "25" });
+    actor.send({ type: "SAVE" });
+    await waitFor(actor, s => s.matches("idle"));
+    expect(fx.log).toHaveBeenCalledWith([{ parameter: "no3", value: 25, unit: "mg_per_liter", origin: null }]);
+    actor.stop();
+  });
+  it("does not save a chosen time in the future", () => {
+    const fx = effects();
+    const actor = createActor(measurementMachine, { input: fx }).start();
+    actor.send({ type: "OPEN", system: "metric" });
+    actor.send({ type: "CHANGE", parameter: "no3", text: "25" });
+    actor.send({ type: "WHEN", when: { kind: "custom", date: "2026-10-17", time: "08:00" } });
+    expect(draftWhen(actor.getSnapshot().context.draft, clock)).toEqual({ occurredAt: null, error: "future" });
+    actor.send({ type: "SAVE" });
+    expect(actor.getSnapshot().matches("editing")).toBe(true);
+    expect(fx.log).not.toHaveBeenCalled();
+    actor.stop();
+  });
+  it("corrects the time of an existing measurement together with its values", async () => {
+    const fx = effects();
+    const actor = createActor(measurementMachine, { input: fx }).start();
+    const entry = { id: 5, kind: "measurement", values: [{ parameter: "ph", value: 7, unit: "none", normalizedValue: 7, canonicalUnit: "none", origin: null }] } as unknown as CareEntry;
+    actor.send({ type: "OPEN", system: "metric", entry });
+    actor.send({ type: "SAVE" });
+    await waitFor(actor, s => s.matches("idle"));
+    expect(fx.update).toHaveBeenCalledWith(5, [{ parameter: "ph", value: 7, unit: "none", origin: null }]);
+    actor.send({ type: "OPEN", system: "metric", entry });
+    actor.send({ type: "WHEN", when: { kind: "custom", date: "2026-10-14", time: "09:30" } });
+    actor.send({ type: "SAVE" });
+    await waitFor(actor, s => s.matches("idle"));
+    expect(fx.update).toHaveBeenLastCalledWith(5, [{ parameter: "ph", value: 7, unit: "none", origin: null }], "2026-10-14T07:30:00.000Z");
     actor.stop();
   });
 });

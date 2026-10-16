@@ -50,3 +50,23 @@ it("keeps a failed undo in the confirmation so the member can retry it", async (
   expect(remove).toHaveBeenCalledTimes(2);
   actor.stop();
 });
+it("logs at the chosen time and saves an amount with a corrected time", async () => {
+  const log = vi.fn(async () => entry), update = vi.fn(async () => entry);
+  const actor = createActor(careMachine, { input: { log, update, remove: vi.fn() } }).start();
+  actor.send({ type: "LOG", occurredAt: "2026-10-14T07:30:00.000Z" });
+  await waitFor(actor, s => s.matches("confirmed"));
+  expect(log).toHaveBeenCalledWith("2026-10-14T07:30:00.000Z");
+  actor.send({ type: "EDIT", entry });
+  actor.send({ type: "SAVE", amount: { value: 30, unit: "percent" }, occurredAt: "2026-10-13T07:30:00.000Z" });
+  await waitFor(actor, s => s.matches("idle"));
+  expect(update).toHaveBeenLastCalledWith(7, { value: 30, unit: "percent" }, "2026-10-13T07:30:00.000Z");
+  actor.stop();
+});
+it("logs without a time when none is chosen", async () => {
+  const log = vi.fn(async () => entry);
+  const actor = createActor(careMachine, { input: { log, update: vi.fn(), remove: vi.fn() } }).start();
+  actor.send({ type: "LOG" });
+  await waitFor(actor, s => s.matches("confirmed"));
+  expect(log).toHaveBeenCalledWith(undefined);
+  actor.stop();
+});

@@ -1,4 +1,5 @@
 import { assign, fromPromise, setup } from "xstate";
+import { deviceTimeZone, resolveWhen, type ResolvedWhen, type WhenChoice, whenFromEntry } from "./occurredAt.js";
 import type { CareEntry, CareParameter, CareSeries, MeasurementOrigin, MeasurementUnit, MeasurementValue, MeasurementValueRequest } from "./client.js";
 
 export type UnitSystem = "metric" | "us";
@@ -56,14 +57,16 @@ export type MeasurementDraft = {
   expanded: boolean;
   origin: MeasurementOrigin | null;
   fields: Partial<Record<CareParameter, string>>;
+  when: WhenChoice;
 };
 export type DraftErrors = Partial<Record<CareParameter, "invalid" | "range">>;
 
-export const createDraft = (system: UnitSystem): MeasurementDraft => ({ system, expanded: false, origin: null, fields: {} });
+export const createDraft = (system: UnitSystem): MeasurementDraft => ({ system, expanded: false, origin: null, fields: {}, when: { kind: "now" } });
 export const showMore = (draft: MeasurementDraft): MeasurementDraft => ({ ...draft, expanded: true });
 export const setOrigin = (draft: MeasurementDraft, origin: MeasurementOrigin | null): MeasurementDraft => ({ ...draft, origin });
 export const setField = (draft: MeasurementDraft, parameter: CareParameter, text: string): MeasurementDraft =>
   ({ ...draft, fields: { ...draft.fields, [parameter]: text } });
+export const setWhen = (draft: MeasurementDraft, when: WhenChoice): MeasurementDraft => ({ ...draft, when });
 export const visibleParameters = (draft: MeasurementDraft): CareParameter[] => draft.expanded ? MEASUREMENT_PARAMETERS : COMMON_PARAMETERS;
 
 /** The form of an existing measurement, with each value in the member's unit and every filled parameter visible. */
@@ -74,7 +77,7 @@ export function editDraft(system: UnitSystem, entry: CareEntry): MeasurementDraf
     fields[value.parameter] = String(valueInSystem(value, system).value);
   }
   return {
-    system, fields, origin: values.find(value => value.origin)?.origin ?? null,
+    system, fields, when: whenFromEntry(), origin: values.find(value => value.origin)?.origin ?? null,
     expanded: values.some(value => !COMMON_PARAMETERS.includes(value.parameter)),
   };
 }
@@ -101,6 +104,13 @@ export function validateDraft(draft: MeasurementDraft): { values: MeasurementVal
   }
   return { values: values.length > 0 && Object.keys(errors).length === 0 ? values : null, errors };
 }
+
+/** The clock the chosen time is judged against: the current instant and the time zone of the member. */
+export type Clock = { now: () => Date; timeZone: () => string };
+const deviceClock: Clock = { now: () => new Date(), timeZone: deviceTimeZone };
+
+/** The occurred time the draft sends and the problem with the chosen time, if any. */
+export const draftWhen = (draft: MeasurementDraft, clock: Clock = deviceClock): ResolvedWhen => resolveWhen(draft.when, clock.now(), clock.timeZone());
 
 export type DisplayPoint = { entryId: number | string; occurredAt: string; value: number };
 export type DisplaySeries = { parameter: CareParameter; unit: MeasurementUnit; points: DisplayPoint[] };
@@ -131,9 +141,10 @@ export function scaleSeries(points: DisplayPoint[], width: number, height: numbe
 }
 
 type Effects = {
-  log: (values: MeasurementValueRequest[]) => Promise<CareEntry>;
-  update: (id: number, values: MeasurementValueRequest[]) => Promise<CareEntry>;
+  log: (values: MeasurementValueRequest[], occurredAt?: string) => Promise<CareEntry>;
+  update: (id: number, values: MeasurementValueRequest[], occurredAt?: string) => Promise<CareEntry>;
   remove: (id: number) => Promise<CareEntry>;
+  clock?: Clock;
 };
 type Context = { effects: Effects; draft: MeasurementDraft; entry: CareEntry | null; error: unknown; revision: number };
 
@@ -144,15 +155,18 @@ export const measurementMachine = setup({
     events: {} as { type: "OPEN"; system: UnitSystem; entry?: CareEntry }
       | { type: "CHANGE"; parameter: CareParameter; text: string }
       | { type: "ORIGIN"; origin: MeasurementOrigin | null }
+      | { type: "WHEN"; when: WhenChoice }
       | { type: "MORE" | "SAVE" | "DELETE" | "CANCEL" },
   },
   actors: {
-    save: fromPromise(({ input }: { input: { effects: Effects; entry: CareEntry | null; values: MeasurementValueRequest[] } }) =>
-      input.entry ? input.effects.update(Number(input.entry.id), input.values) : input.effects.log(input.values)),
+    save: fromPromise(({ input }: { input: { effects: Effects; entry: CareEntry | null; values: MeasurementValueRequest[]; occurredAt: string | null } }) => {
+      const at = input.occurredAt ? [input.occurredAt] as const : [] as const;
+      return input.entry ? input.effects.update(Number(input.entry.id), input.values, ...at) : input.effects.log(input.values, ...at);
+    }),
     remove: fromPromise(({ input }: { input: { effects: Effects; id: number } }) => input.effects.remove(input.id)),
   },
   guards: {
-    valid: ({ context }) => validateDraft(context.draft).values !== null,
+    valid: ({ context }) => validateDraft(context.draft).values !== null && draftWhen(context.draft, context.effects.clock).error === null,
     existing: ({ context }) => context.entry !== null,
   },
   actions: {
@@ -161,6 +175,7 @@ export const measurementMachine = setup({
       : {}),
     change: assign({ draft: ({ context, event }) => event.type === "CHANGE" ? setField(context.draft, event.parameter, event.text) : context.draft }),
     origin: assign({ draft: ({ context, event }) => event.type === "ORIGIN" ? setOrigin(context.draft, event.origin) : context.draft }),
+    when: assign({ draft: ({ context, event }) => event.type === "WHEN" ? setWhen(context.draft, event.when) : context.draft }),
     more: assign({ draft: ({ context }) => showMore(context.draft) }),
     finished: assign({ entry: null, error: null, revision: ({ context }) => context.revision + 1 }),
     failed: assign({ error: ({ event }) => (event as { error?: unknown }).error }),
@@ -173,7 +188,7 @@ export const measurementMachine = setup({
     idle: { on: { OPEN: { target: "editing", actions: "open" } } },
     editing: {
       on: {
-        CHANGE: { actions: "change" }, ORIGIN: { actions: "origin" }, MORE: { actions: "more" },
+        CHANGE: { actions: "change" }, ORIGIN: { actions: "origin" }, WHEN: { actions: "when" }, MORE: { actions: "more" },
         SAVE: { guard: "valid", target: "saving" },
         DELETE: { guard: "existing", target: "deleting" },
         CANCEL: "idle",
@@ -182,7 +197,8 @@ export const measurementMachine = setup({
     saving: {
       invoke: {
         src: "save",
-        input: ({ context }) => ({ effects: context.effects, entry: context.entry, values: validateDraft(context.draft).values! }),
+        input: ({ context }) => ({ effects: context.effects, entry: context.entry, values: validateDraft(context.draft).values!,
+          occurredAt: draftWhen(context.draft, context.effects.clock).occurredAt }),
         onDone: { target: "idle", actions: "finished" },
         onError: { target: "editing", actions: "failed" },
       },

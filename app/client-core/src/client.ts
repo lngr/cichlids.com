@@ -315,8 +315,9 @@ export interface CichlidsClient {
   care: {
     list(tankId: number, params?: PageParams): Promise<PagedResponse<CareEntry>>;
     log(tankId: number, request?: LogCareRequest): Promise<CareEntry>;
-    update(tankId: number, id: number, amount: CareAmountRequest | null): Promise<CareEntry>;
-    updateValues(tankId: number, id: number, values: MeasurementValueRequest[]): Promise<CareEntry>;
+    /** Replaces or clears the amount and, when given, moves the occurred time; clearing the amount and moving the time are two requests. */
+    update(tankId: number, id: number, amount: CareAmountRequest | null, occurredAt?: string): Promise<CareEntry>;
+    updateValues(tankId: number, id: number, values: MeasurementValueRequest[], occurredAt?: string): Promise<CareEntry>;
     series(tankId: number, parameter: CareParameter, range?: CareSeriesRange): Promise<CareSeries>;
     remove(tankId: number, id: number): Promise<CareEntry>;
     /** Sets the note of an entry; null or blank removes it. */
@@ -449,8 +450,16 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
     care: {
       async list(tankId, params) { return unwrapPaged(await listCareEntries({ client, path: { tankId }, query: params ?? {} })); },
       async log(tankId, request) { return unwrap(await logCareEntry({ client, path: { tankId }, body: request ?? {} })); },
-      async update(tankId, id, amount) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount } })); },
-      async updateValues(tankId, id, values) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount: null, values } })); },
+      async update(tankId, id, amount, occurredAt) {
+        if (occurredAt && amount === null) {
+          await unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount } }));
+          return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount: null, occurredAt } }));
+        }
+        return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: occurredAt ? { amount, occurredAt } : { amount } }));
+      },
+      async updateValues(tankId, id, values, occurredAt) {
+        return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: occurredAt ? { amount: null, values, occurredAt } : { amount: null, values } }));
+      },
       async series(tankId, parameter, range) { return unwrap(await getCareSeries({ client, path: { tankId }, query: { parameter, ...range } })); },
       async remove(tankId, id) { return unwrap(await deleteCareEntry({ client, path: { tankId, id } })); },
       async setNote(tankId, id, note) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount: null, note: note?.trim() ?? "" } })); },

@@ -93,10 +93,12 @@ export {
 } from "./careReminders.js";
 export type { PlannedReminder, ReminderInput, ReminderSnooze } from "./careReminders.js";
 export {
-  COMMON_PARAMETERS, MEASUREMENT_ORIGINS, MEASUREMENT_PARAMETERS, createDraft, editDraft, fromCanonical, inputUnit,
+  COMMON_PARAMETERS, MEASUREMENT_ORIGINS, MEASUREMENT_PARAMETERS, createDraft, draftWhen, setWhen, editDraft, fromCanonical, inputUnit,
   measurementMachine, PPM_PER_GERMAN_DEGREE, scaleSeries, seriesForDisplay, setField, setOrigin, showMore, validateDraft, valueInSystem, visibleParameters,
 } from "./measurement.js";
-export type { DisplayPoint, DisplaySeries, DraftErrors, MeasurementDraft, ScaledPoint, UnitSystem } from "./measurement.js";
+export { customFromInstant, deviceTimeZone, localToUtc, resolveWhen, whenFromEntry } from "./occurredAt.js";
+export type { LocalDateTime, ResolvedWhen, WhenChoice, WhenError } from "./occurredAt.js";
+export type { Clock, DisplayPoint, DisplaySeries, DraftErrors, MeasurementDraft, ScaledPoint, UnitSystem } from "./measurement.js";
 export {
   WATER_CHANGE_STAGES, drainingSeconds, formatElapsed, nextWaterChangeStage, totalSeconds, waterChangeMachine,
 } from "./waterChange.js";
