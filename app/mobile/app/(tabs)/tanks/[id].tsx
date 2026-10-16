@@ -1,10 +1,11 @@
 import { useAuth } from "../../../src/auth/AuthProvider";
 import { translateApiError } from "../../../src/lib/apiErrors";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { useLocalSearchParams, useNavigation } from "expo-router";
+import { useFocusEffect, useLocalSearchParams, useNavigation } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
+import { tankSeriesSignal } from "../../../src/lib/tankSeriesSignal";
 import { useTheme } from "../../../src/theme";
 import { listEmptyState } from "../../../src/hooks/pagedListState";
 import { usePagedList } from "../../../src/hooks/usePagedList";
@@ -28,6 +29,12 @@ export default function TankDetailScreen() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [attempt, setAttempt] = useState(0);
+  const seenSeriesVersion = useRef(tankSeriesSignal.version());
+  useFocusEffect(useCallback(() => {
+    if (!tankSeriesSignal.changedSince(seenSeriesVersion.current)) return;
+    seenSeriesVersion.current = tankSeriesSignal.version();
+    setAttempt(value => value + 1);
+  }, []));
   useEffect(() => {
     let cancelled = false;
     setLoading(true);

@@ -152,6 +152,9 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
               <Text style={[theme.type.bodyStrong, { color: theme.colors.onAccent }]}>{t("tankStory.play")}</Text>
             </View>
           </Pressable> : <Text style={[theme.type.body, text]}>{t("tankStory.photosEmpty")}</Text>}
+          {stream.owner ? <View style={{ marginTop: theme.space[3] }}>
+            <Button testID="tank-time-lapse-photo" variant="secondary" label={t("timeLapseCamera.action")} onPress={() => router.push(`/tanks/${tank.id}/camera`)} />
+          </View> : null}
         </View>
         {tank.description ? <Text style={[theme.type.body, text]}>{tank.description}</Text> : null}
         <View style={styles.card}>

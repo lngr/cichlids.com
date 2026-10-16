@@ -23,12 +23,13 @@ describe("shotToUploadFile", () => {
       uri: "file:///cache/a.jpg", name: "time-lapse-1700000000000.jpg", type: "image/jpeg",
     });
   });
-  it("turns the data address of a browser picture into a JPEG file", async () => {
+  it("turns the data address of a browser picture into a file of the declared image type", async () => {
     const file = await shotToUploadFile({ uri: "data:image/jpeg;base64,/9j/4AAQ" }, 5);
     expect(file).toBeInstanceOf(Blob);
     const blob = file as Blob;
     expect(blob.type).toBe("image/jpeg");
     expect([...new Uint8Array(await blob.arrayBuffer())].slice(0, 3)).toEqual([0xff, 0xd8, 0xff]);
+    expect(((await shotToUploadFile({ uri: "data:image/png;base64,iVBORw0KGgo=" })) as Blob).type).toBe("image/png");
   });
 });
 
