@@ -1,4 +1,4 @@
-import { valueInSystem, type CareEntry, type MeasurementUnit, type ScaledPoint, type UnitSystem } from "@cichlids/client-core";
+import { valueInSystem, type CareEntry, type MeasurementUnit, type ScaledPoint, type UnitSystem, type WaterChangePair } from "@cichlids/client-core";
 import { TRANSLATIONS } from "../i18n/catalogues";
 import { resolveLanguage } from "../i18n/locales";
 
@@ -48,5 +48,26 @@ export function measurementLines(entry: CareEntry, system: UnitSystem, language:
       value: formatMeasurementValue(shown.value, shown.unit, language),
       origin: stored.origin ? measure.origins[stored.origin] : "",
     });
+  });
+}
+
+/** The date and time of a chart entry in the language. */
+export function formatEntryTime(iso: string, language: string): string {
+  return new Intl.DateTimeFormat(language, { dateStyle: "medium", timeStyle: "short" }).format(new Date(iso));
+}
+
+/**
+ * The sentence for the values around a water change, such as nitrate 40 to 20 mg/l after it;
+ * null when no measurement lies on either side.
+ */
+export function waterChangePairLine(pair: WaterChangePair, parameterName: string, language: string): string | null {
+  if (!pair.before && !pair.after) return null;
+  const marks = TRANSLATIONS[resolveLanguage(language)].care.marks;
+  const template = pair.before && pair.after ? marks.pairBoth : pair.before ? marks.pairBefore : marks.pairAfter;
+  return fill(template, {
+    parameter: parameterName,
+    before: pair.before ? formatMeasurementValue(pair.before.value, pair.unit, language) : "",
+    after: pair.after ? formatMeasurementValue(pair.after.value, pair.unit, language) : "",
+    date: formatEntryTime(pair.occurredAt, language),
   });
 }

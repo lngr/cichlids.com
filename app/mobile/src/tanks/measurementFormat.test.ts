@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { API_ERROR_CODES } from "../lib/apiErrors";
 import { TRANSLATIONS } from "../i18n/catalogues";
 import { SUPPORTED_LANGUAGES } from "../i18n/locales";
-import { chartSegments, formatMeasurementValue, measurementLines, measurementUnitSymbol } from "./measurementFormat";
+import { chartSegments, formatMeasurementValue, measurementLines, measurementUnitSymbol, waterChangePairLine } from "./measurementFormat";
 
 describe("measurement formatting", () => {
   it("formats values with the unit symbol of the language", () => {
@@ -65,5 +65,32 @@ describe("measurement lines", () => {
   });
   it("has no lines for an entry without values", () => {
     expect(measurementLines({ ...entry, values: null }, "us", "en")).toEqual([]);
+  });
+});
+
+describe("water change pair lines", () => {
+  const point = (value: number) => ({ entryId: 1, occurredAt: "2026-10-01T10:00:00Z", value });
+  const pair = (before: number | null, after: number | null) => ({
+    waterChangeId: 9, occurredAt: "2026-10-02T10:00:00Z", unit: "mg_per_liter" as const,
+    before: before === null ? null : point(before), after: after === null ? null : point(after),
+  });
+  const on = (language: string) => new Intl.DateTimeFormat(language, { dateStyle: "medium", timeStyle: "short" }).format(new Date("2026-10-02T10:00:00Z"));
+  it("states the change from the value before to the value after", () => {
+    expect(waterChangePairLine(pair(40, 20), "Nitrate (NO3)", "en")).toBe(`Nitrate (NO3) 40 mg/l to 20 mg/l after the water change on ${on("en")}`);
+  });
+  it("states a single side when the other has no measurement", () => {
+    expect(waterChangePairLine(pair(40, null), "Nitrate (NO3)", "en")).toBe(`Nitrate (NO3) 40 mg/l before the water change on ${on("en")}`);
+    expect(waterChangePairLine(pair(null, 20), "Nitrate (NO3)", "en")).toBe(`Nitrate (NO3) 20 mg/l after the water change on ${on("en")}`);
+  });
+  it("has no line without a measurement on either side", () => {
+    expect(waterChangePairLine(pair(null, null), "Nitrate (NO3)", "en")).toBeNull();
+  });
+  it("formats numbers and dates in the language", () => {
+    expect(waterChangePairLine(pair(7.5, 7.2), "pH", "de")).toContain("7,5 mg/l auf 7,2 mg/l nach dem Teilwasserwechsel am ");
+  });
+  it("has every marker text in every language", () => {
+    for (const language of SUPPORTED_LANGUAGES) {
+      for (const [key, text] of Object.entries(TRANSLATIONS[language].care.marks)) expect(text, `${language} ${key}`).toBeTruthy();
+    }
   });
 });
