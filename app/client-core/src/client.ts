@@ -10,6 +10,12 @@ import {
   addCarePhoto,
   createCareEntryTodo,
   createTankTodo,
+  startWaterChange,
+  getCurrentWaterChange,
+  markWaterChangeStep,
+  setWaterChangePhoto,
+  finishWaterChange,
+  cancelWaterChange,
   deleteTodo,
   listMyTodos,
   removeCarePhoto,
@@ -65,6 +71,10 @@ import type {
   CareDueDto,
   CarePhotoDto,
   CareTodoDto,
+  WaterChangeFinishedDto,
+  WaterChangeSessionDto,
+  WaterChangeStep,
+  WaterChangeStepState,
   TodoListItemDto,
   CareDueState,
   CareEntryDto,
@@ -121,6 +131,11 @@ import type {
 export type CareEntry = CareEntryDto;
 export type CarePhoto = CarePhotoDto;
 export type CareTodo = CareTodoDto;
+export type WaterChangeSession = WaterChangeSessionDto;
+export type WaterChangeFinished = WaterChangeFinishedDto;
+export type { WaterChangeStep, WaterChangeStepState };
+/** Which photo of a guided water change: the partly drained tank or the refilled tank. */
+export type WaterChangePhotoSlot = "drained" | "refilled";
 export type TodoListItem = TodoListItemDto;
 /** Which to-dos a list shows: those still open, those marked done, or both. */
 export type TodoState = "open" | "done" | "all";
@@ -317,6 +332,17 @@ export interface CichlidsClient {
     setReminders(tankId: number, enabled: boolean, local: LocalTime): Promise<CarePlan>;
     due(local: LocalTime): Promise<DueCareItem[]>;
   };
+  waterChange: {
+    /** Starts a guided water change on an own tank, or returns the open one. */
+    start(tankId: number): Promise<WaterChangeSession>;
+    /** The open session of a tank; null when none is open. */
+    current(tankId: number): Promise<WaterChangeSession | null>;
+    markStep(tankId: number, id: number, step: WaterChangeStep, state: WaterChangeStepState): Promise<WaterChangeSession>;
+    /** Stores the photo of a slot; capturedInApp tells that the camera of the app took it. */
+    setPhoto(tankId: number, id: number, slot: WaterChangePhotoSlot, file: UploadFile, capturedInApp: boolean): Promise<WaterChangeSession>;
+    finish(tankId: number, id: number, amount: CareAmountRequest | null): Promise<WaterChangeFinished>;
+    cancel(tankId: number, id: number): Promise<void>;
+  };
   webPush: {
     config(): Promise<WebPushConfig>;
     /** Stores the subscription of this browser, or updates the one stored for its endpoint. */
@@ -449,6 +475,31 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
         return toPlan(unwrap(await updateCarePlan({ client, path: { tankId }, query: local, body: { remindersEnabled: enabled } })));
       },
       async due(local) { return unwrap<DueCareDto>(await listDueCare({ client, query: local })).items.map(toDueItem); },
+    },
+    waterChange: {
+      async start(tankId) { return unwrap(await startWaterChange({ client, path: { tankId } })); },
+      async current(tankId) {
+        try {
+          return unwrap(await getCurrentWaterChange({ client, path: { tankId } }));
+        } catch (error) {
+          if (error instanceof ApiError && error.status === 404 && error.code === "water_change_not_found") return null;
+          throw error;
+        }
+      },
+      async markStep(tankId, id, step, state) { return unwrap(await markWaterChangeStep({ client, path: { tankId, id, step }, body: { state } })); },
+      async setPhoto(tankId, id, slot, file, capturedInApp) {
+        return unwrap(await setWaterChangePhoto({
+          client, path: { tankId, id, slot }, body: { file: file as never },
+          bodySerializer: () => {
+            const formData = new FormData();
+            formData.append("file", file as never);
+            formData.append("capturedInApp", String(capturedInApp));
+            return formData;
+          },
+        }));
+      },
+      async finish(tankId, id, amount) { return unwrap(await finishWaterChange({ client, path: { tankId, id }, body: amount ? { amount } : {} })); },
+      async cancel(tankId, id) { unwrap(await cancelWaterChange({ client, path: { tankId, id } })); },
     },
     webPush: {
       async config() {
