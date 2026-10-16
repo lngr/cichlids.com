@@ -41,6 +41,13 @@ export const API_ERROR_CODES = [
   "onboarding_invalid",
   "interests_invalid",
   "legacy_tank_not_found",
+  "web_push_unavailable",
+  "web_push_limit_reached",
+  "web_push_endpoint_not_allowed",
+  "web_push_subscription_invalid",
+  "web_push_request_invalid",
+  "web_push_auth_required",
+  "web_push_snooze_invalid",
 ] as const;
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];

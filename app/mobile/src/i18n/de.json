@@ -271,7 +271,14 @@
     "care_photo_limit_reached": "Ein Eintrag hat bis zu 6 Fotos.",
     "todo_not_found": "Dieses To-do ist nicht verfügbar.",
     "todo_text_invalid": "Ein To-do hat 1 bis 200 Zeichen.",
-    "todo_request_invalid": "Diese Änderung des To-dos konnte nicht gelesen werden."
+    "todo_request_invalid": "Diese Änderung des To-dos konnte nicht gelesen werden.",
+    "web_push_unavailable": "Dieser Server sendet keine Browser-Benachrichtigungen.",
+    "web_push_limit_reached": "Du hast schon Erinnerungen in 10 Browsern. Schalte sie in einem Browser aus, den du nicht mehr nutzt.",
+    "web_push_endpoint_not_allowed": "Der Benachrichtigungsdienst dieses Browsers wird nicht unterstützt.",
+    "web_push_subscription_invalid": "Der Browser hat unbrauchbare Benachrichtigungsdaten gesendet. Bitte versuche es erneut.",
+    "web_push_request_invalid": "Die Anfrage konnte nicht verarbeitet werden. Bitte versuche es erneut.",
+    "web_push_auth_required": "Melde dich an, um Erinnerungen in diesem Browser einzuschalten.",
+    "web_push_snooze_invalid": "Diese Erinnerung lässt sich nicht mehr verschieben."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -626,5 +633,19 @@
     "reopen": "Wieder öffnen: {{text}}",
     "remove": "Löschen: {{text}}",
     "signIn": "Melde dich an, um deine To-dos zu sehen."
+  },
+  "webPush": {
+    "title": "Erinnerungen in diesem Browser",
+    "stateOff": "Aus. Dieser Browser zeigt keine Pflege-Erinnerungen.",
+    "stateOn": "Ein. Dieser Browser zeigt am Tag der Fälligkeit um {{time}} eine Benachrichtigung.",
+    "switchOn": "Erinnerungen in diesem Browser einschalten",
+    "switchOff": "Erinnerungen in diesem Browser ausschalten",
+    "explain": "Damit cichlids dich erinnern kann, schickt es eine Nachricht über den Push-Dienst des Browser-Herstellers (Google, Mozilla, Microsoft oder Apple). Dieser Dienst erfährt, dass dieser Browser Benachrichtigungen von cichlids.com erhält und wann, aber nicht, was darin steht. Du kannst das jederzeit ausschalten, dann löschen wir die Anmeldung auf unserem Server. Als Nächstes fragt dein Browser nach der Erlaubnis.",
+    "agree": "Einverstanden, weiter",
+    "notNow": "Jetzt nicht",
+    "denied": "Benachrichtigungen sind für cichlids in diesem Browser gesperrt. Erlaube sie in den Website-Einstellungen deines Browsers, um Erinnerungen zu bekommen.",
+    "unsupported": "Dieser Browser kann keine Erinnerungen von Websites anzeigen.",
+    "needsHomeScreen": "Auf iPhone und iPad funktionieren Erinnerungen, wenn du cichlids zum Home-Bildschirm hinzufügst und von dort öffnest.",
+    "failed": "Die Erinnerungen dieses Browsers ließen sich nicht ändern. Bitte versuche es erneut."
   }
 }

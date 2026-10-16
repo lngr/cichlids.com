@@ -34,6 +34,13 @@ describe("apiErrorKey", () => {
     }
   });
 
+  it.each(["web_push_unavailable", "web_push_limit_reached", "web_push_endpoint_not_allowed", "web_push_subscription_invalid", "web_push_request_invalid", "web_push_auth_required", "web_push_snooze_invalid"])("translates %s", (code) => {
+    expect(apiErrorKey(new ApiError("Refused", 400, code))).toBe(`errors.${code}`);
+    for (const resource of Object.values(TRANSLATIONS)) {
+      expect((resource.errors as Record<string, string>)[code], code).toBeTruthy();
+    }
+  });
+
   it("returns null for unknown codes, missing codes and non-objects", () => {
     expect(apiErrorKey({ code: "something_new" })).toBeNull();
     expect(apiErrorKey(new Error("Failed to fetch"))).toBeNull();

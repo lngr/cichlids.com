@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react
 import { API_BASE_URL, setWebSessionCsrfToken, setWebSessionEndedListener } from "../api/client";
 import { AuthContext, type AuthContextValue, type AuthStatus } from "./authContext";
 import { endWebSession, readWebSession, startWebLogin, takeSignInFailure } from "./webSession";
+import { switchOffWebPush } from "../webPush/switchOff";
 
 export { useAuth, type AuthContextValue, type AuthStatus } from "./authContext";
 
@@ -74,6 +75,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // The page leaves for Keycloak, which ends the Keycloak sign-in of this browser and returns to
   // the app signed out.
   const logout = useCallback(async () => {
+    // The browser stops receiving the reminders of the member who signs out.
+    await switchOffWebPush().catch(() => {});
     setWebSessionCsrfToken(null);
     setCsrfToken(null);
     setAccountId(null);

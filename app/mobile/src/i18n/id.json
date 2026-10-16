@@ -271,7 +271,14 @@
     "care_photo_limit_reached": "Satu catatan perawatan memuat hingga 6 foto.",
     "todo_not_found": "Tugas ini tidak tersedia.",
     "todo_text_invalid": "Satu tugas terdiri dari 1 hingga 200 karakter.",
-    "todo_request_invalid": "Perubahan tugas ini tidak dapat dibaca."
+    "todo_request_invalid": "Perubahan tugas ini tidak dapat dibaca.",
+    "web_push_unavailable": "Server ini tidak mengirim notifikasi browser.",
+    "web_push_limit_reached": "Kamu sudah punya pengingat di 10 browser. Nonaktifkan di browser yang tidak lagi kamu pakai.",
+    "web_push_endpoint_not_allowed": "Layanan notifikasi browser ini tidak didukung.",
+    "web_push_subscription_invalid": "Browser mengirim data notifikasi yang tidak dapat dipakai. Coba lagi.",
+    "web_push_request_invalid": "Permintaan tidak dapat diproses. Coba lagi.",
+    "web_push_auth_required": "Masuk untuk mengaktifkan pengingat di browser ini.",
+    "web_push_snooze_invalid": "Pengingat ini tidak dapat ditunda lagi."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -621,5 +628,19 @@
     "reopen": "Buka lagi: {{text}}",
     "remove": "Hapus: {{text}}",
     "signIn": "Masuk untuk melihat tugasmu."
+  },
+  "webPush": {
+    "title": "Pengingat di browser ini",
+    "stateOff": "Nonaktif. Browser ini tidak menampilkan pengingat perawatan.",
+    "stateOn": "Aktif. Browser ini menampilkan notifikasi pukul {{time}} pada hari tugas perawatan jatuh tempo.",
+    "switchOn": "Aktifkan pengingat di browser ini",
+    "switchOff": "Nonaktifkan pengingat di browser ini",
+    "explain": "Untuk mengingatkanmu, cichlids mengirim pesan lewat layanan push dari pembuat browsermu (Google, Mozilla, Microsoft, atau Apple). Layanan itu tahu bahwa browser ini menerima notifikasi dari cichlids.com dan kapan, tetapi tidak tahu isinya. Kamu bisa menonaktifkannya kapan saja, lalu langganan di server kami dihapus. Setelah itu browser meminta izin.",
+    "agree": "Setuju, lanjutkan",
+    "notNow": "Nanti saja",
+    "denied": "Notifikasi cichlids diblokir di browser ini. Izinkan di pengaturan situs browsermu untuk menerima pengingat.",
+    "unsupported": "Browser ini tidak dapat menampilkan pengingat dari situs web.",
+    "needsHomeScreen": "Di iPhone dan iPad, pengingat berfungsi setelah kamu menambahkan cichlids ke Layar Utama dan membukanya dari sana.",
+    "failed": "Pengingat di browser ini gagal diubah. Coba lagi."
   }
 }

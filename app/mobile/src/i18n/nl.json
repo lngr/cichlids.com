@@ -271,7 +271,14 @@
     "care_photo_limit_reached": "Een item bevat maximaal 6 foto's.",
     "todo_not_found": "Deze taak is niet beschikbaar.",
     "todo_text_invalid": "Een taak bevat 1 tot 200 tekens.",
-    "todo_request_invalid": "Deze wijziging van de taak kon niet worden gelezen."
+    "todo_request_invalid": "Deze wijziging van de taak kon niet worden gelezen.",
+    "web_push_unavailable": "Deze server stuurt geen browsermeldingen.",
+    "web_push_limit_reached": "Je hebt al herinneringen in 10 browsers. Zet ze uit in een browser die je niet meer gebruikt.",
+    "web_push_endpoint_not_allowed": "De meldingsdienst van deze browser wordt niet ondersteund.",
+    "web_push_subscription_invalid": "De browser stuurde onbruikbare meldingsgegevens. Probeer het opnieuw.",
+    "web_push_request_invalid": "Het verzoek kon niet worden verwerkt. Probeer het opnieuw.",
+    "web_push_auth_required": "Log in om herinneringen in deze browser aan te zetten.",
+    "web_push_snooze_invalid": "Deze herinnering kan niet meer worden uitgesteld."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -626,5 +633,19 @@
     "reopen": "Heropenen: {{text}}",
     "remove": "Verwijderen: {{text}}",
     "signIn": "Log in om je taken te zien."
+  },
+  "webPush": {
+    "title": "Herinneringen in deze browser",
+    "stateOff": "Uit. Deze browser toont geen verzorgingsherinneringen.",
+    "stateOn": "Aan. Deze browser toont om {{time}} een melding op de dag dat een verzorgingstaak aan de beurt is.",
+    "switchOn": "Herinneringen in deze browser aanzetten",
+    "switchOff": "Herinneringen in deze browser uitzetten",
+    "explain": "Om je te herinneren stuurt cichlids een bericht via de pushdienst van de maker van je browser (Google, Mozilla, Microsoft of Apple). Die dienst weet dan dat deze browser meldingen van cichlids.com krijgt, en wanneer, maar niet wat erin staat. Je kunt dit altijd uitzetten; dan wordt de aanmelding op onze server verwijderd. Daarna vraagt je browser om toestemming.",
+    "agree": "Akkoord, doorgaan",
+    "notNow": "Nu niet",
+    "denied": "Meldingen van cichlids zijn geblokkeerd in deze browser. Sta ze toe in de siteinstellingen van je browser om herinneringen te krijgen.",
+    "unsupported": "Deze browser kan geen herinneringen van websites tonen.",
+    "needsHomeScreen": "Op iPhone en iPad werken herinneringen nadat je cichlids aan het beginscherm hebt toegevoegd en vanaf daar opent.",
+    "failed": "De herinneringen van deze browser konden niet worden gewijzigd. Probeer het opnieuw."
   }
 }

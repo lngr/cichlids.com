@@ -287,7 +287,14 @@
     "care_photo_limit_reached": "Záznam má až 6 fotek.",
     "todo_not_found": "Tento úkol není dostupný.",
     "todo_text_invalid": "Úkol má 1 až 200 znaků.",
-    "todo_request_invalid": "Tuto změnu úkolu se nepodařilo přečíst."
+    "todo_request_invalid": "Tuto změnu úkolu se nepodařilo přečíst.",
+    "web_push_unavailable": "Tento server neposílá oznámení prohlížeče.",
+    "web_push_limit_reached": "Připomenutí už máš v 10 prohlížečích. Vypni je v prohlížeči, který už nepoužíváš.",
+    "web_push_endpoint_not_allowed": "Oznamovací služba tohoto prohlížeče není podporovaná.",
+    "web_push_subscription_invalid": "Prohlížeč poslal nepoužitelná data oznámení. Zkus to znovu.",
+    "web_push_request_invalid": "Požadavek se nepodařilo zpracovat. Zkus to znovu.",
+    "web_push_auth_required": "Pro zapnutí připomenutí v tomto prohlížeči se přihlas.",
+    "web_push_snooze_invalid": "Toto připomenutí už nelze odložit."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -652,5 +659,19 @@
     "reopen": "Znovu otevřít: {{text}}",
     "remove": "Smazat: {{text}}",
     "signIn": "Přihlas se, abys viděl své úkoly."
+  },
+  "webPush": {
+    "title": "Připomenutí v tomto prohlížeči",
+    "stateOff": "Vypnutá. Tento prohlížeč nezobrazuje připomenutí péče.",
+    "stateOn": "Zapnutá. Tento prohlížeč zobrazí v {{time}} oznámení v den, kdy je na řadě péče.",
+    "switchOn": "Zapnout připomenutí v tomto prohlížeči",
+    "switchOff": "Vypnout připomenutí v tomto prohlížeči",
+    "explain": "Aby ti cichlids mohl péči připomenout, posílá zprávu přes push službu výrobce tvého prohlížeče (Google, Mozilla, Microsoft nebo Apple). Tato služba se dozví, že tento prohlížeč dostává oznámení z cichlids.com a kdy, ale ne, co v nich stojí. Můžeš to kdykoli vypnout, přihlášení na našem serveru se pak smaže. Poté se tě prohlížeč zeptá na povolení.",
+    "agree": "Souhlasím, pokračovat",
+    "notNow": "Teď ne",
+    "denied": "Oznámení cichlids jsou v tomto prohlížeči zablokovaná. Povol je v nastavení webu v prohlížeči, aby ti chodila připomenutí.",
+    "unsupported": "Tento prohlížeč neumí zobrazovat připomenutí z webových stránek.",
+    "needsHomeScreen": "Na iPhonu a iPadu připomenutí fungují, když si cichlids přidáš na plochu a otevřeš ho odtud.",
+    "failed": "Připomenutí v tomto prohlížeči se nepodařilo změnit. Zkus to znovu."
   }
 }

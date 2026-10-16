@@ -279,7 +279,14 @@
     "care_photo_limit_reached": "Una voce contiene fino a 6 foto.",
     "todo_not_found": "Questa attività non è disponibile.",
     "todo_text_invalid": "Un'attività ha da 1 a 200 caratteri.",
-    "todo_request_invalid": "Non è stato possibile leggere questa modifica dell'attività."
+    "todo_request_invalid": "Non è stato possibile leggere questa modifica dell'attività.",
+    "web_push_unavailable": "Questo server non invia notifiche del browser.",
+    "web_push_limit_reached": "Hai già promemoria in 10 browser. Disattivali in un browser che non usi più.",
+    "web_push_endpoint_not_allowed": "Il servizio di notifiche di questo browser non è supportato.",
+    "web_push_subscription_invalid": "Il browser ha inviato dati di notifica inutilizzabili. Riprova.",
+    "web_push_request_invalid": "Non è stato possibile elaborare la richiesta. Riprova.",
+    "web_push_auth_required": "Accedi per attivare i promemoria in questo browser.",
+    "web_push_snooze_invalid": "Questo promemoria non può più essere rimandato."
   },
   "featureFlags": {
     "activityTitle": "Attività della comunità",
@@ -639,5 +646,19 @@
     "reopen": "Riapri: {{text}}",
     "remove": "Elimina: {{text}}",
     "signIn": "Accedi per vedere le tue attività."
+  },
+  "webPush": {
+    "title": "Promemoria in questo browser",
+    "stateOff": "Disattivati. Questo browser non mostra promemoria di cura.",
+    "stateOn": "Attivati. Questo browser mostra una notifica alle {{time}} nel giorno in cui è in programma una cura.",
+    "switchOn": "Attiva i promemoria in questo browser",
+    "switchOff": "Disattiva i promemoria in questo browser",
+    "explain": "Per ricordarti le cure, cichlids invia un messaggio tramite il servizio push del produttore del tuo browser (Google, Mozilla, Microsoft o Apple). Quel servizio viene a sapere che questo browser riceve notifiche da cichlids.com e quando, ma non cosa dicono. Puoi disattivarlo in qualsiasi momento: l'iscrizione sul nostro server viene cancellata. Subito dopo il browser chiede il permesso.",
+    "agree": "Sono d'accordo, continua",
+    "notNow": "Non ora",
+    "denied": "Le notifiche di cichlids sono bloccate in questo browser. Consentile nelle impostazioni del sito del tuo browser per ricevere i promemoria.",
+    "unsupported": "Questo browser non può mostrare promemoria dei siti web.",
+    "needsHomeScreen": "Su iPhone e iPad i promemoria funzionano dopo aver aggiunto cichlids alla schermata Home e averlo aperto da lì.",
+    "failed": "Non è stato possibile modificare i promemoria di questo browser. Riprova."
   }
 }

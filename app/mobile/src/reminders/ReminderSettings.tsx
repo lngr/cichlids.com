@@ -2,6 +2,7 @@ import { Text, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { REMINDER_HOUR, REMINDER_MINUTE } from "@cichlids/client-core";
 import { Button } from "../components/Button";
+import { WebPushSettings } from "../webPush/WebPushSettings";
 import { useTheme } from "../theme";
 import { remindersSupported } from "./platform";
 import { useReminderPermission } from "./useReminderPermission";
@@ -31,5 +32,6 @@ export function ReminderSettings({ enabled, busy, onToggle }: { enabled: boolean
       <Text style={[theme.type.body, { color: theme.colors.muted }]}>{t("care.reminders.denied")}</Text>
       <Button testID="care-reminders-settings" variant="secondary" label={t("care.reminders.openSettings")} onPress={openSettings} />
     </View> : null}
+    <WebPushSettings />
   </View>;
 }

@@ -271,7 +271,14 @@
     "care_photo_limit_reached": "Bir kayıt en fazla 6 fotoğraf içerir.",
     "todo_not_found": "Bu görev kullanılamıyor.",
     "todo_text_invalid": "Bir görev 1 ile 200 karakter içerir.",
-    "todo_request_invalid": "Görevin bu değişikliği okunamadı."
+    "todo_request_invalid": "Görevin bu değişikliği okunamadı.",
+    "web_push_unavailable": "Bu sunucu tarayıcı bildirimleri göndermiyor.",
+    "web_push_limit_reached": "Zaten 10 tarayıcıda hatırlatmaların var. Artık kullanmadığın bir tarayıcıda kapat.",
+    "web_push_endpoint_not_allowed": "Bu tarayıcının bildirim hizmeti desteklenmiyor.",
+    "web_push_subscription_invalid": "Tarayıcı kullanılamayan bildirim verileri gönderdi. Lütfen tekrar dene.",
+    "web_push_request_invalid": "İstek işlenemedi. Lütfen tekrar dene.",
+    "web_push_auth_required": "Bu tarayıcıda hatırlatmaları açmak için giriş yap.",
+    "web_push_snooze_invalid": "Bu hatırlatma artık ertelenemez."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -626,5 +633,19 @@
     "reopen": "Yeniden aç: {{text}}",
     "remove": "Sil: {{text}}",
     "signIn": "Görevlerini görmek için giriş yap."
+  },
+  "webPush": {
+    "title": "Bu tarayıcıdaki hatırlatmalar",
+    "stateOff": "Kapalı. Bu tarayıcı bakım hatırlatmaları göstermiyor.",
+    "stateOn": "Açık. Bu tarayıcı, bakım görevinin zamanı geldiği gün saat {{time}} için bildirim gösterir.",
+    "switchOn": "Bu tarayıcıda hatırlatmaları aç",
+    "switchOff": "Bu tarayıcıda hatırlatmaları kapat",
+    "explain": "Seni uyarabilmek için cichlids, tarayıcını yapan şirketin (Google, Mozilla, Microsoft veya Apple) push hizmeti üzerinden bir mesaj gönderir. Bu hizmet, bu tarayıcının cichlids.com'dan bildirim aldığını ve ne zaman aldığını öğrenir, ancak içeriğini öğrenmez. Bunu istediğin zaman kapatabilirsin; bu durumda sunucumuzdaki kaydın silinir. Ardından tarayıcın izin ister.",
+    "agree": "Kabul ediyorum, devam et",
+    "notNow": "Şimdi değil",
+    "denied": "cichlids bildirimleri bu tarayıcıda engellenmiş. Hatırlatma almak için tarayıcının site ayarlarından izin ver.",
+    "unsupported": "Bu tarayıcı web sitelerinden hatırlatma gösteremez.",
+    "needsHomeScreen": "iPhone ve iPad'de hatırlatmalar, cichlids'i Ana Ekrana ekleyip oradan açtıktan sonra çalışır.",
+    "failed": "Bu tarayıcının hatırlatmaları değiştirilemedi. Lütfen tekrar dene."
   }
 }

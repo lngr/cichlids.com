@@ -279,7 +279,14 @@
     "care_photo_limit_reached": "Une entrée contient jusqu'à 6 photos.",
     "todo_not_found": "Cette tâche n'est pas disponible.",
     "todo_text_invalid": "Une tâche contient de 1 à 200 caractères.",
-    "todo_request_invalid": "Cette modification de la tâche n'a pas pu être lue."
+    "todo_request_invalid": "Cette modification de la tâche n'a pas pu être lue.",
+    "web_push_unavailable": "Ce serveur n'envoie pas de notifications de navigateur.",
+    "web_push_limit_reached": "Tu as déjà des rappels dans 10 navigateurs. Désactive-les dans un navigateur que tu n'utilises plus.",
+    "web_push_endpoint_not_allowed": "Le service de notifications de ce navigateur n'est pas pris en charge.",
+    "web_push_subscription_invalid": "Le navigateur a envoyé des données de notification inutilisables. Réessaie.",
+    "web_push_request_invalid": "La requête n'a pas pu être traitée. Réessaie.",
+    "web_push_auth_required": "Connecte-toi pour activer les rappels dans ce navigateur.",
+    "web_push_snooze_invalid": "Ce rappel ne peut plus être reporté."
   },
   "featureFlags": {
     "activityTitle": "Activité de la communauté",
@@ -639,5 +646,19 @@
     "reopen": "Rouvrir : {{text}}",
     "remove": "Supprimer : {{text}}",
     "signIn": "Connecte-toi pour voir tes tâches."
+  },
+  "webPush": {
+    "title": "Rappels dans ce navigateur",
+    "stateOff": "Désactivés. Ce navigateur n'affiche aucun rappel de soin.",
+    "stateOn": "Activés. Ce navigateur affiche une notification à {{time}} le jour où un soin est prévu.",
+    "switchOn": "Activer les rappels dans ce navigateur",
+    "switchOff": "Désactiver les rappels dans ce navigateur",
+    "explain": "Pour te rappeler un soin, cichlids envoie un message via le service push du fabricant de ton navigateur (Google, Mozilla, Microsoft ou Apple). Ce service apprend que ce navigateur reçoit des notifications de cichlids.com, et quand, mais pas ce qu'elles disent. Tu peux le désactiver à tout moment ; l'inscription est alors supprimée sur notre serveur. Ensuite, ton navigateur te demande l'autorisation.",
+    "agree": "D'accord, continuer",
+    "notNow": "Pas maintenant",
+    "denied": "Les notifications de cichlids sont bloquées dans ce navigateur. Autorise-les dans les paramètres du site de ton navigateur pour recevoir des rappels.",
+    "unsupported": "Ce navigateur ne peut pas afficher de rappels de sites web.",
+    "needsHomeScreen": "Sur iPhone et iPad, les rappels fonctionnent une fois cichlids ajouté à l'écran d'accueil et ouvert depuis celui-ci.",
+    "failed": "Les rappels de ce navigateur n'ont pas pu être modifiés. Réessaie."
   }
 }

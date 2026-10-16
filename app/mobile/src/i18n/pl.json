@@ -287,7 +287,14 @@
     "care_photo_limit_reached": "Wpis ma do 6 zdjęć.",
     "todo_not_found": "To zadanie jest niedostępne.",
     "todo_text_invalid": "Zadanie ma od 1 do 200 znaków.",
-    "todo_request_invalid": "Nie udało się odczytać tej zmiany zadania."
+    "todo_request_invalid": "Nie udało się odczytać tej zmiany zadania.",
+    "web_push_unavailable": "Ten serwer nie wysyła powiadomień przeglądarki.",
+    "web_push_limit_reached": "Masz już przypomnienia w 10 przeglądarkach. Wyłącz je w przeglądarce, z której już nie korzystasz.",
+    "web_push_endpoint_not_allowed": "Usługa powiadomień tej przeglądarki nie jest obsługiwana.",
+    "web_push_subscription_invalid": "Przeglądarka wysłała nieużyteczne dane powiadomień. Spróbuj ponownie.",
+    "web_push_request_invalid": "Nie udało się przetworzyć żądania. Spróbuj ponownie.",
+    "web_push_auth_required": "Zaloguj się, aby włączyć przypomnienia w tej przeglądarce.",
+    "web_push_snooze_invalid": "Tego przypomnienia nie można już odłożyć."
   },
   "featureFlags": {
     "activityTitle": "Aktywność społeczności",
@@ -652,5 +659,19 @@
     "reopen": "Otwórz ponownie: {{text}}",
     "remove": "Usuń: {{text}}",
     "signIn": "Zaloguj się, aby zobaczyć swoje zadania."
+  },
+  "webPush": {
+    "title": "Przypomnienia w tej przeglądarce",
+    "stateOff": "Wyłączone. Ta przeglądarka nie pokazuje przypomnień o pielęgnacji.",
+    "stateOn": "Włączone. Ta przeglądarka pokazuje powiadomienie o {{time}} w dniu, w którym przypada czynność pielęgnacyjna.",
+    "switchOn": "Włącz przypomnienia w tej przeglądarce",
+    "switchOff": "Wyłącz przypomnienia w tej przeglądarce",
+    "explain": "Aby Ci przypominać, cichlids wysyła wiadomość przez usługę push producenta Twojej przeglądarki (Google, Mozilla, Microsoft lub Apple). Ta usługa dowiaduje się, że ta przeglądarka dostaje powiadomienia z cichlids.com i kiedy, ale nie dowiaduje się, co w nich jest. Możesz to wyłączyć w każdej chwili, a zapis na naszym serwerze zostanie usunięty. Następnie przeglądarka zapyta o zgodę.",
+    "agree": "Zgadzam się, dalej",
+    "notNow": "Nie teraz",
+    "denied": "Powiadomienia cichlids są zablokowane w tej przeglądarce. Zezwól na nie w ustawieniach witryny w przeglądarce, aby dostawać przypomnienia.",
+    "unsupported": "Ta przeglądarka nie potrafi pokazywać przypomnień ze stron internetowych.",
+    "needsHomeScreen": "Na iPhonie i iPadzie przypomnienia działają po dodaniu cichlids do ekranu początkowego i otwarciu stamtąd.",
+    "failed": "Nie udało się zmienić przypomnień w tej przeglądarce. Spróbuj ponownie."
   }
 }

@@ -271,7 +271,14 @@
     "care_photo_limit_reached": "An entry holds up to 6 photos.",
     "todo_not_found": "This to-do is unavailable.",
     "todo_text_invalid": "A to-do has 1 to 200 characters.",
-    "todo_request_invalid": "This to-do change could not be read."
+    "todo_request_invalid": "This to-do change could not be read.",
+    "web_push_unavailable": "This server does not send browser notifications.",
+    "web_push_limit_reached": "You already have reminders in 10 browsers. Switch them off in a browser you no longer use.",
+    "web_push_endpoint_not_allowed": "The notification service of this browser is not supported.",
+    "web_push_subscription_invalid": "The browser sent unusable notification data. Please try again.",
+    "web_push_request_invalid": "The request could not be processed. Please try again.",
+    "web_push_auth_required": "Log in to switch on reminders in this browser.",
+    "web_push_snooze_invalid": "This reminder can no longer be snoozed."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -626,5 +633,19 @@
     "reopen": "Reopen: {{text}}",
     "remove": "Delete: {{text}}",
     "signIn": "Sign in to see your to-dos."
+  },
+  "webPush": {
+    "title": "Reminders in this browser",
+    "stateOff": "Off. This browser shows no care reminders.",
+    "stateOn": "On. This browser shows a notification at {{time}} on the day care is due.",
+    "switchOn": "Switch on reminders in this browser",
+    "switchOff": "Switch off reminders in this browser",
+    "explain": "To remind you, cichlids sends a message through the push service of your browser's maker (Google, Mozilla, Microsoft or Apple). That service learns that this browser receives notifications from cichlids.com, and when, but not what they say. You can switch this off at any time, which deletes the subscription on our server. Your browser asks for permission next.",
+    "agree": "Agree and continue",
+    "notNow": "Not now",
+    "denied": "Notifications are blocked for cichlids in this browser. Allow them in the site settings of your browser to get reminders.",
+    "unsupported": "This browser cannot show reminders from websites.",
+    "needsHomeScreen": "On iPhone and iPad, reminders work after you add cichlids to your Home Screen and open it from there.",
+    "failed": "Changing the reminders of this browser failed. Please try again."
   }
 }

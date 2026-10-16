@@ -279,7 +279,14 @@
     "care_photo_limit_reached": "Um registro aceita até 6 fotos.",
     "todo_not_found": "Esta tarefa não está disponível.",
     "todo_text_invalid": "Uma tarefa tem de 1 a 200 caracteres.",
-    "todo_request_invalid": "Não foi possível ler esta alteração da tarefa."
+    "todo_request_invalid": "Não foi possível ler esta alteração da tarefa.",
+    "web_push_unavailable": "Este servidor não envia notificações do navegador.",
+    "web_push_limit_reached": "Você já tem lembretes em 10 navegadores. Desative-os em um navegador que não usa mais.",
+    "web_push_endpoint_not_allowed": "O serviço de notificações deste navegador não é compatível.",
+    "web_push_subscription_invalid": "O navegador enviou dados de notificação inutilizáveis. Tente novamente.",
+    "web_push_request_invalid": "Não foi possível processar a solicitação. Tente novamente.",
+    "web_push_auth_required": "Entre na sua conta para ativar os lembretes neste navegador.",
+    "web_push_snooze_invalid": "Este lembrete não pode mais ser adiado."
   },
   "featureFlags": {
     "activityTitle": "Atividade da comunidade",
@@ -639,5 +646,19 @@
     "reopen": "Reabrir: {{text}}",
     "remove": "Excluir: {{text}}",
     "signIn": "Entre para ver suas tarefas."
+  },
+  "webPush": {
+    "title": "Lembretes neste navegador",
+    "stateOff": "Desativados. Este navegador não mostra lembretes de cuidado.",
+    "stateOn": "Ativados. Este navegador mostra uma notificação às {{time}} no dia em que uma tarefa de cuidado vence.",
+    "switchOn": "Ativar lembretes neste navegador",
+    "switchOff": "Desativar lembretes neste navegador",
+    "explain": "Para lembrar você, o cichlids envia uma mensagem pelo serviço push do fabricante do seu navegador (Google, Mozilla, Microsoft ou Apple). Esse serviço fica sabendo que este navegador recebe notificações do cichlids.com e quando, mas não o que elas dizem. Você pode desativar isso quando quiser, e a inscrição é apagada no nosso servidor. Em seguida, o navegador pede permissão.",
+    "agree": "Concordo, continuar",
+    "notNow": "Agora não",
+    "denied": "As notificações do cichlids estão bloqueadas neste navegador. Permita-as nas configurações do site no seu navegador para receber lembretes.",
+    "unsupported": "Este navegador não consegue mostrar lembretes de sites.",
+    "needsHomeScreen": "No iPhone e no iPad, os lembretes funcionam depois que você adiciona o cichlids à Tela de Início e o abre por lá.",
+    "failed": "Não foi possível alterar os lembretes deste navegador. Tente novamente."
   }
 }

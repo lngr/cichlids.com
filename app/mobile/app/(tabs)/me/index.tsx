@@ -18,6 +18,7 @@ import { ProfileTabs, type ProfileSection } from "../../../src/profile/ProfileTa
 import { ProfileContentList } from "../../../src/profile/ProfileContentList";
 import { useProfileLists } from "../../../src/profile/useProfileLists";
 import { DraftsSection } from "../../../src/upload/DraftsSection";
+import { WebPushSettings } from "../../../src/webPush/WebPushSettings";
 
 export default function MeScreen() {
   const { status, accountId } = useAuth();
@@ -109,6 +110,7 @@ function MemberContent({ profile }: { profile: Me["profile"] }) {
         <Button testID="logout-button" variant="secondary" label={t("me.logout")} onPress={() => void logout()} />
       </View>
       <LanguageSettings />
+      <View style={{ paddingHorizontal: theme.space[4] }}><WebPushSettings /></View>
       <OnboardingProfile profile={profile} />
       <ProfileTabs section={section} onSelect={setSection} own />
     </View>
