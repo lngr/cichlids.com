@@ -4,7 +4,7 @@ title: Water changes marked on the measurement charts
 status: In Progress
 assignee: []
 created_date: '2026-10-16 06:28'
-updated_date: '2026-10-16 06:29'
+updated_date: '2026-10-16 06:54'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -35,3 +35,9 @@ The measurement charts of TASK-5.2 show the water changes of the tank as markers
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Pairing rule (decided by the project owner, 2026-10-16): a measurement counts as before or after a water change only when no other water change lies between them; otherwise that side stays empty. A measurement between two water changes is the after value of the first and the before value of the second.
+<!-- SECTION:NOTES:END -->
