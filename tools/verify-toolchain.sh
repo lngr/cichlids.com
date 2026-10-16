@@ -6,7 +6,7 @@
 #
 # Scopes let callers verify only the subset they need:
 #   core     infrastructure, GitOps and policy tooling (default for the toolchain gate)
-#   backend  the .NET build/test toolchain
+#   backend  the .NET build/test toolchain and ffmpeg
 #   e2e      the native Android + Maestro driving toolchain
 #   all      every scope (default when no scope is given)
 #
@@ -86,6 +86,8 @@ check_core() {
 check_backend() {
   echo "backend (.NET):"
   check dotnet "$DOTNET_MIN" dotnet --version
+  check ffmpeg "$FFMPEG_MIN" ffmpeg -version
+  check ffprobe "$FFMPEG_MIN" ffprobe -version
 }
 
 check_e2e() {

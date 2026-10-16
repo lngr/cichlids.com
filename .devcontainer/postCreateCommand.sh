@@ -77,6 +77,13 @@ if [ -f "tools/install-dotnet.sh" ]; then
     || echo "WARNING: .NET SDK install failed (network?). Re-run later: bash tools/install-dotnet.sh"
 fi
 
+# Provide ffmpeg and ffprobe for the video transcoding of the API and its tests.
+if [ -f "tools/install-ffmpeg.sh" ]; then
+  echo "=== Installing ffmpeg ==="
+  bash tools/install-ffmpeg.sh \
+    || echo "WARNING: ffmpeg install failed (network?). Re-run later: bash tools/install-ffmpeg.sh"
+fi
+
 # Provide the app workspace dependencies and the Chromium build the Playwright web smoke
 # (app/mobile/e2e/playwright) launches.
 if [ -f "app/pnpm-workspace.yaml" ] && command -v pnpm >/dev/null 2>&1; then

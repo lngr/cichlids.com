@@ -273,6 +273,8 @@ jobs:
           echo "$HOME/.dotnet" >> "$GITHUB_PATH"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
           echo "DOTNET_ROOT=$HOME/.dotnet" >> "$GITHUB_ENV"
+      - name: Install the pinned ffmpeg
+        run: bash tools/install-ffmpeg.sh
       - name: Verify backend toolchain
         run: ./tools/verify-toolchain.sh backend
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
@@ -437,6 +439,8 @@ jobs:
           echo "$HOME/.dotnet" >> "$GITHUB_PATH"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
           echo "DOTNET_ROOT=$HOME/.dotnet" >> "$GITHUB_ENV"
+      - name: Install the pinned ffmpeg
+        run: bash tools/install-ffmpeg.sh
       - name: Verify backend toolchain
         run: ./tools/verify-toolchain.sh backend
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6

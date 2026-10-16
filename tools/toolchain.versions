@@ -23,6 +23,8 @@ NODE_MIN=24.0.0
 
 # --- backend: .NET API build/test ---
 DOTNET_MIN=10.0.100
+# ffmpeg and ffprobe transcode uploaded videos to HLS; tools/install-ffmpeg.sh installs the pinned build.
+FFMPEG_MIN=7.1.0
 
 # --- e2e: native Android app driving and the Maestro driver ---
 JAVA_MIN=21
