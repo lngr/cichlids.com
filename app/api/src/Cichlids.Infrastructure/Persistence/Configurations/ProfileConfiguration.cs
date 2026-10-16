@@ -18,6 +18,7 @@ public class ProfileConfiguration : IEntityTypeConfiguration<Profile>
 
         builder.Property(x => x.Interests).HasDefaultValueSql("ARRAY[]::text[]");
         builder.Property(x => x.Badges).HasDefaultValueSql("ARRAY[]::text[]");
+        builder.Property(x => x.StreaksEnabled).HasDefaultValue(true);
 
         builder.HasIndex(x => x.LegacyId).IsUnique();
         builder.HasIndex(x => x.Username).IsUnique();

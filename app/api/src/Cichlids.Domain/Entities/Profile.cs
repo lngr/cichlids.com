@@ -26,5 +26,10 @@ public class Profile
     public string[] Interests { get; set; } = [];
     public string[] Badges { get; set; } = [];
 
+    /// <summary>
+    /// Whether the water change and time-lapse streaks of the member are shown to the member and to other viewers. The streaks are evaluated either way.
+    /// </summary>
+    public bool StreaksEnabled { get; set; } = true;
+
     public List<ProfileIdentity> Identities { get; set; } = [];
 }

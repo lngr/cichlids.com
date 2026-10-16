@@ -1434,6 +1434,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("profile_image_media_id");
 
+                    b.Property<bool>("StreaksEnabled")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true)
+                        .HasColumnName("streaks_enabled");
+
                     b.Property<DateTimeOffset?>("SuspendedUntil")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("suspended_until");
