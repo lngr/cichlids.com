@@ -1,11 +1,14 @@
 ---
 id: TASK-5.23
 title: Load all measurement series of a tank in one request
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-16 15:48'
+updated_date: '2026-10-16 15:56'
 labels: []
 dependencies: []
+references:
+  - app/mobile/e2e/playwright/measurement-series.write.mjs
 parent_task_id: TASK-5
 priority: low
 ordinal: 109000
@@ -35,3 +38,12 @@ The measurement charts of a tank load the series of all parameters with one requ
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implementation (2026-10-16)
+- API: GET /api/tanks/{id}/care/series/all (optional from and to) returns every parameter with points, up to 1000 newest points each, with the access rules of the single series; the single-parameter route stays for direct readers.
+- Client: care.allSeries; MeasurementGraphs makes one call.
+- Verification: .NET 559/1351 (1 skipped)/349, client-core 253, mobile 430, typechecks; measurement-series, measurement, water-change-marks, care-heatmap and care specs green.
+<!-- SECTION:NOTES:END -->
