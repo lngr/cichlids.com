@@ -3,6 +3,7 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using Cichlids.Api.Features.Care;
 using Cichlids.Api.Tests.Features.Uploads;
+using Cichlids.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using static Cichlids.Api.Tests.Features.Care.CareTestSupport;
@@ -118,7 +119,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
     }
 
     [Fact]
-    public async Task GivenGuidedModeOfAtLeastTenMinutes_WhenFinishingWithoutPhotos_ThenTheEntryIsVerifiedWithTheDuration()
+    public async Task GivenGuidedModeOfAtLeastTenMinutes_WhenFinishingWithAnInAppPhoto_ThenTheEntryIsVerifiedWithTheDuration()
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);
         var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
@@ -127,6 +128,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
             using var marked = await StepAsync(token, tank, id, name, "done");
             Assert.Equal(HttpStatusCode.OK, marked.StatusCode);
         }
+        (await PhotoAsync(token, tank, id, "drained", Jpeg(800, 600))).Dispose();
         await using (var db = fixture.CreateDbContext())
             await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE water_change_session_step SET at = at + interval '12 minutes' WHERE session_id = {id} AND step IN ('refill_started', 'heater_filter_on')");
         await AgeAsync(id, TimeSpan.FromMinutes(14));
@@ -141,7 +143,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
         Assert.Equal("verified", entry.GetProperty("evidence").GetProperty("state").GetString());
         Assert.Empty(entry.GetProperty("evidence").GetProperty("missing").EnumerateArray());
         Assert.Equal(30, entry.GetProperty("amount").GetProperty("value").GetDecimal());
-        Assert.Empty(entry.GetProperty("photos").EnumerateArray());
+        Assert.Equal(1, entry.GetProperty("photos").GetArrayLength());
         var session = body.GetProperty("session");
         Assert.NotEqual(JsonValueKind.Null, session.GetProperty("finishedAt").ValueKind);
         Assert.Equal(entry.GetProperty("durationSeconds").GetInt32(), session.GetProperty("durationSeconds").GetInt32());
@@ -184,7 +186,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
         {
             var evidence = (await BodyAsync(finish)).GetProperty("entry").GetProperty("evidence");
             Assert.Equal("partial", evidence.GetProperty("state").GetString());
-            Assert.Equal(["draining_missing"], evidence.GetProperty("missing").EnumerateArray().Select(e => e.GetString()));
+            Assert.Equal(["draining_missing", "photo_missing"], evidence.GetProperty("missing").EnumerateArray().Select(e => e.GetString()));
         }
         var quick = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
         using (var drain = await StepAsync(token, tank, quick, "draining_started", "done")) Assert.Equal(HttpStatusCode.OK, drain.StatusCode);
@@ -192,8 +194,53 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
         {
             var evidence = (await BodyAsync(finish)).GetProperty("entry").GetProperty("evidence");
             Assert.Equal("partial", evidence.GetProperty("state").GetString());
-            Assert.Equal(["duration_too_short"], evidence.GetProperty("missing").EnumerateArray().Select(e => e.GetString()));
+            Assert.Equal(["duration_too_short", "photo_missing"], evidence.GetProperty("missing").EnumerateArray().Select(e => e.GetString()));
         }
+    }
+
+    [Fact]
+    public async Task GivenLongGuidedModeWithoutAnInAppPhoto_WhenFinishing_ThenTheEvidenceIsPartialWithThePhotoFinding()
+    {
+        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var withoutPhoto = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
+        await FinishLongAsync(token, tank, withoutPhoto);
+        var libraryOnly = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
+        (await PhotoAsync(token, tank, libraryOnly, "drained", Jpeg(800, 600), inApp: false)).Dispose();
+        (await PhotoAsync(token, tank, libraryOnly, "refilled", Jpeg(800, 600), inApp: false)).Dispose();
+        await FinishLongAsync(token, tank, libraryOnly);
+        foreach (var id in new[] { withoutPhoto, libraryOnly })
+        {
+            await using var db = fixture.CreateDbContext();
+            var entry = await db.CareEntries.AsNoTracking().SingleAsync(e => e.WaterChangeSessionId == id);
+            Assert.Equal(WaterChangeEvidenceState.Partial, entry.Evidence);
+            Assert.Equal(["photo_missing"], entry.EvidenceMissing);
+        }
+    }
+
+    [Fact]
+    public async Task GivenLongGuidedModeWithARefilledInAppPhoto_WhenFinishing_ThenTheEntryIsVerified()
+    {
+        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
+        (await PhotoAsync(token, tank, id, "drained", Jpeg(800, 600), inApp: false)).Dispose();
+        (await PhotoAsync(token, tank, id, "refilled", Jpeg(800, 600))).Dispose();
+        var evidence = await FinishLongAsync(token, tank, id);
+        Assert.Equal("verified", evidence.GetProperty("state").GetString());
+        Assert.Empty(evidence.GetProperty("missing").EnumerateArray());
+    }
+
+    private async Task<JsonElement> FinishLongAsync(string token, long tank, long id)
+    {
+        foreach (var name in new[] { "heater_filter_off", "draining_started", "refill_started", "heater_filter_on" })
+        {
+            using var marked = await StepAsync(token, tank, id, name, "done");
+            Assert.Equal(HttpStatusCode.OK, marked.StatusCode);
+        }
+        await using (var db = fixture.CreateDbContext())
+            await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE water_change_session_step SET at = at + interval '12 minutes' WHERE session_id = {id} AND step IN ('refill_started', 'heater_filter_on')");
+        await AgeAsync(id, TimeSpan.FromMinutes(14));
+        using var finished = await FinishAsync(token, tank, id);
+        return (await BodyAsync(finished)).GetProperty("entry").GetProperty("evidence").Clone();
     }
 
     [Fact]
@@ -258,7 +305,9 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
         var photos = body.GetProperty("entry").GetProperty("photos");
         Assert.Equal(2, photos.GetArrayLength());
         Assert.Equal(1200, photos[0].GetProperty("width").GetInt32());
-        Assert.Equal("partial", body.GetProperty("entry").GetProperty("evidence").GetProperty("state").GetString());
+        var photoEvidence = body.GetProperty("entry").GetProperty("evidence");
+        Assert.Equal("partial", photoEvidence.GetProperty("state").GetString());
+        Assert.Equal(["draining_missing"], photoEvidence.GetProperty("missing").EnumerateArray().Select(e => e.GetString()));
         Assert.False(body.GetProperty("session").GetProperty("refilledPhoto").GetProperty("capturedInApp").GetBoolean());
 
         var next = await StartAsync(token, tank);

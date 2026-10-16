@@ -12,7 +12,7 @@ using Microsoft.Extensions.Options;
 namespace Cichlids.Api.Features.Care;
 
 /// <summary>
-/// The lifecycle of guided water change sessions: start, step marks, the two optional photos,
+/// The lifecycle of guided water change sessions: start, step marks, the two photos,
 /// finish and cancel. A tank has at most one open session; an open session older than the
 /// configured lifetime is removed with its photos. Finishing creates the water change care entry
 /// with the duration, the evidence and the photos, and records the care and session events in the
@@ -172,7 +172,10 @@ public sealed class WaterChangeService(
         var now = CareWriteService.AtMicrosecondPrecision(Now());
         DateTimeOffset? AtOf(WaterChangeStep step) =>
             session.Steps.SingleOrDefault(s => s.Step == step && s.State == WaterChangeStepState.Done)?.At;
-        var evidence = WaterChangeEvidences.Evaluate(AtOf(WaterChangeStep.DrainingStarted), AtOf(WaterChangeStep.RefillStarted), now, Settings.MinDuration);
+        var evidence = WaterChangeEvidences.Evaluate(AtOf(WaterChangeStep.DrainingStarted), AtOf(WaterChangeStep.RefillStarted), now, Settings.MinDuration,
+            WaterChangeEvidences.CountInAppPhotos(
+                session.DrainedMediaItemId is null ? null : session.DrainedCapturedInApp,
+                session.RefilledMediaItemId is null ? null : session.RefilledCapturedInApp));
         var duration = (int)Math.Max(0, (now - session.StartedAt).TotalSeconds);
         var entry = new CareEntry
         {
