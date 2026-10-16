@@ -169,4 +169,97 @@ public sealed class StreakSecurityTests(ApiFixture fixture) : IAsyncLifetime
         await using var db = fixture.CreateDbContext();
         Assert.False(await db.TankMedia.AnyAsync(m => m.TankId == tank));
     }
+
+    [Fact]
+    public async Task GivenNoLoginAndInvalidDates_WhenStartingAVacation_ThenTheLoginIsCheckedFirst()
+    {
+        using var response = await SendAsync(fixture, HttpMethod.Post, "/api/me/vacations?date=not-a-date", null, new { startDate = "x" });
+        await AssertProblemAsync(response, HttpStatusCode.Unauthorized, "streak_auth_required");
+    }
+
+    [Fact]
+    public async Task GivenInvalidDatesAndAnOverlap_WhenRecording_ThenTheDatesAreRefusedBeforeTheOverlap()
+    {
+        var member = await NewMemberAsync(fixture);
+        await AddVacationAsync(fixture, member.ProfileId, new DateOnly(2026, 9, 1), new DateOnly(2026, 9, 14));
+        using var response = await SendAsync(fixture, HttpMethod.Post, $"/api/me/vacations?date={Today}", member.Token, new { startDate = "2026-09-10", endDate = "2026-09-05" });
+        await AssertProblemAsync(response, HttpStatusCode.BadRequest, "vacation_dates_invalid");
+    }
+
+    [Fact]
+    public async Task GivenAnOverlapThatWouldAlsoRepair_WhenRecording_ThenTheOverlapIsReportedBeforeTheRepairRule()
+    {
+        var (member, _) = await BrokenPeriodAsync();
+        await AddVacationAsync(fixture, member.ProfileId, new DateOnly(2026, 9, 20), new DateOnly(2026, 9, 25));
+        using var response = await SendAsync(fixture, HttpMethod.Post, "/api/me/vacations?date=2026-10-15", member.Token, new { startDate = "2026-09-10", endDate = "2026-10-09" });
+        await AssertProblemAsync(response, HttpStatusCode.Conflict, "vacation_overlap");
+    }
+
+    [Fact]
+    public async Task GivenAnActiveVacationAndARepair_WhenStartingAnother_ThenTheActiveVacationIsReportedFirst()
+    {
+        var (member, _) = await BrokenPeriodAsync();
+        await AddVacationAsync(fixture, member.ProfileId, new DateOnly(2026, 10, 14), null);
+        using var response = await SendAsync(fixture, HttpMethod.Post, "/api/me/vacations?date=2026-10-15", member.Token, new { startDate = "2026-09-10" });
+        await AssertProblemAsync(response, HttpStatusCode.Conflict, "vacation_active");
+    }
+
+    [Fact]
+    public async Task GivenTwoSimultaneousStarts_WhenBothArrive_ThenExactlyOneVacationIsActive()
+    {
+        var member = await NewMemberAsync(fixture);
+        var responses = await Task.WhenAll(Enumerable.Range(0, 6).Select(_ =>
+            SendAsync(fixture, HttpMethod.Post, $"/api/me/vacations?date={Today}", member.Token, new { })));
+        try
+        {
+            Assert.Equal(1, responses.Count(r => r.StatusCode == HttpStatusCode.Created));
+            Assert.Equal(5, responses.Count(r => r.StatusCode == HttpStatusCode.Conflict));
+        }
+        finally { foreach (var r in responses) r.Dispose(); }
+        await using var db = fixture.CreateDbContext();
+        Assert.Equal(1, await db.Vacations.CountAsync(v => v.ProfileId == member.ProfileId));
+    }
+
+    [Fact]
+    public async Task GivenTwoSimultaneousOverlappingRecords_WhenBothArrive_ThenOnlyOneIsStored()
+    {
+        var member = await NewMemberAsync(fixture);
+        var bodies = new[] { new { startDate = "2026-09-01", endDate = "2026-09-10" }, new { startDate = "2026-09-05", endDate = "2026-09-15" },
+            new { startDate = "2026-09-08", endDate = "2026-09-12" }, new { startDate = "2026-09-09", endDate = "2026-09-20" } };
+        var responses = await Task.WhenAll(bodies.Select(b => SendAsync(fixture, HttpMethod.Post, "/api/me/vacations?date=2026-10-15", member.Token, b)));
+        try { Assert.Equal(1, responses.Count(r => r.StatusCode == HttpStatusCode.Created)); }
+        finally { foreach (var r in responses) r.Dispose(); }
+        await using var db = fixture.CreateDbContext();
+        Assert.Equal(1, await db.Vacations.CountAsync(v => v.ProfileId == member.ProfileId));
+    }
+
+    [Fact]
+    public async Task GivenAnActiveVacation_WhenEndingBeforeItsStart_ThenItIsRefusedAndStaysUnchanged()
+    {
+        var member = await NewMemberAsync(fixture);
+        await AddVacationAsync(fixture, member.ProfileId, new DateOnly(2026, 10, 10), null);
+        using var response = await SendAsync(fixture, HttpMethod.Post, "/api/me/vacations/active/end?date=2026-10-09", member.Token);
+        await AssertProblemAsync(response, HttpStatusCode.BadRequest, "vacation_dates_invalid");
+        using var ended = await SendAsync(fixture, HttpMethod.Post, "/api/me/vacations/active/end?date=2026-10-12", member.Token, new { startDate = "2026-01-01" });
+        Assert.Equal(HttpStatusCode.OK, ended.StatusCode);
+        await using var db = fixture.CreateDbContext();
+        var stored = await db.Vacations.SingleAsync(v => v.ProfileId == member.ProfileId);
+        Assert.Equal(new DateOnly(2026, 10, 10), stored.StartDate);
+        Assert.Equal(new DateOnly(2026, 10, 12), stored.EndDate);
+    }
+
+    [Fact]
+    public async Task GivenTwoSimultaneousEnds_WhenBothArrive_ThenOneEndsAndTheOtherFindsNoActiveVacation()
+    {
+        var member = await NewMemberAsync(fixture);
+        await AddVacationAsync(fixture, member.ProfileId, new DateOnly(2026, 10, 10), null);
+        var responses = await Task.WhenAll(Enumerable.Range(0, 4).Select(_ =>
+            SendAsync(fixture, HttpMethod.Post, "/api/me/vacations/active/end?date=2026-10-12", member.Token)));
+        try
+        {
+            Assert.Equal(1, responses.Count(r => r.StatusCode == HttpStatusCode.OK));
+            Assert.Equal(3, responses.Count(r => r.StatusCode == HttpStatusCode.NotFound));
+        }
+        finally { foreach (var r in responses) r.Dispose(); }
+    }
 }

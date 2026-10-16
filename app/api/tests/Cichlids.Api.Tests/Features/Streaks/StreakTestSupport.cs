@@ -54,9 +54,18 @@ internal static class StreakTestSupport
         await db.SaveChangesAsync();
     }
 
+    /// <summary>
+    /// Removes the outbox events of the given aggregate types and the tanks of the members the streak
+    /// tests created, so tests that count tanks of the shared database see none of them.
+    /// </summary>
     public static async Task RemoveEventsAsync(ApiFixture fixture, params string[] aggregateTypes)
     {
         await using var db = fixture.CreateDbContext();
         await db.OutboxEvents.Where(e => aggregateTypes.Contains(e.AggregateType)).ExecuteDeleteAsync();
+        var tanks = await db.Tanks.Where(t => db.Profiles.Any(p => p.Id == t.ProfileId && p.Username.StartsWith("vis-"))).Select(t => t.Id).ToListAsync();
+        await db.OutboxEvents.Where(e => e.AggregateType == "tank" && tanks.Select(id => id.ToString()).Contains(e.AggregateId)).ExecuteDeleteAsync();
+        await db.CarePlanRules.Where(r => tanks.Contains(r.TankId)).ExecuteDeleteAsync();
+        await db.CareEntries.Where(e => tanks.Contains(e.TankId)).ExecuteDeleteAsync();
+        await db.Tanks.Where(t => tanks.Contains(t.Id)).ExecuteDeleteAsync();
     }
 }
