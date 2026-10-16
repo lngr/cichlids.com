@@ -20,6 +20,11 @@ public class CareEntry
     public string? Note { get; set; }
 
     /// <summary>
+    /// Whether only the owner of the tank sees the entry, whatever the level of the care stream.
+    /// </summary>
+    public bool OnlyMe { get; set; }
+
+    /// <summary>
     /// The guided water change that created the entry; null for an entry logged without the mode.
     /// </summary>
     public long? WaterChangeSessionId { get; set; }

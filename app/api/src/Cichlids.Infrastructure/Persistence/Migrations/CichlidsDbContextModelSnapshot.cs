@@ -146,6 +146,11 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("occurred_at");
 
+                    b.Property<bool>("OnlyMe")
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("only_me");
+
                     b.Property<DateTimeOffset>("RecordedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("recorded_at");
@@ -1845,6 +1850,25 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("main_media_id");
 
+                    b.Property<int>("MediaMoveAttempts")
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("media_move_attempts");
+
+                    b.Property<DateTimeOffset?>("MediaMoveNextAttemptAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("media_move_next_attempt_at");
+
+                    b.Property<bool>("MediaMovePending")
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("media_move_pending");
+
+                    b.Property<bool>("MediaPlacedPublic")
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true)
+                        .HasColumnName("media_placed_public");
+
                     b.Property<string>("Notes")
                         .HasColumnType("text")
                         .HasColumnName("notes");
@@ -1856,6 +1880,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.Property<long>("ProfileId")
                         .HasColumnType("bigint")
                         .HasColumnName("profile_id");
+
+                    b.Property<string>("ProfileVisibility")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasDefaultValue("public")
+                        .HasColumnName("profile_visibility");
 
                     b.Property<DateTimeOffset?>("PublishedAt")
                         .HasColumnType("timestamp with time zone")
@@ -1869,6 +1899,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("state");
+
+                    b.Property<string>("StreamVisibility")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasDefaultValue("public")
+                        .HasColumnName("stream_visibility");
 
                     b.Property<string>("Technic")
                         .HasColumnType("text")
@@ -1940,6 +1976,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.HasIndex("MainMediaId")
                         .HasDatabaseName("ix_tank_main_media_id");
 
+                    b.HasIndex("MediaMoveNextAttemptAt")
+                        .HasDatabaseName("ix_tank_media_move_next_attempt_at")
+                        .HasFilter("media_move_pending");
+
                     b.HasIndex("ProfileId")
                         .HasDatabaseName("ix_tank_profile_id");
 
@@ -1949,9 +1989,17 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                             t.HasCheckConstraint("ck_tank_dimension_unit", "dimension_unit IS NULL OR dimension_unit IN ('cm', 'inch')");
 
+                            t.HasCheckConstraint("ck_tank_media_move_attempts", "media_move_attempts >= 0");
+
+                            t.HasCheckConstraint("ck_tank_profile_visibility", "profile_visibility IN ('private', 'public')");
+
                             t.HasCheckConstraint("ck_tank_region", "region IS NULL OR region IN ('lake_malawi', 'lake_tanganyika', 'lake_victoria', 'africa_other', 'central_america', 'south_america', 'mixed', 'americas_unassigned')");
 
                             t.HasCheckConstraint("ck_tank_state", "state IN ('draft', 'published')");
+
+                            t.HasCheckConstraint("ck_tank_stream_visibility", "stream_visibility IN ('private', 'public')");
+
+                            t.HasCheckConstraint("ck_tank_stream_within_profile", "stream_visibility = 'private' OR profile_visibility = 'public'");
 
                             t.HasCheckConstraint("ck_tank_volume_input_unit", "volume_input_unit IS NULL OR volume_input_unit IN ('liter', 'us_gallon')");
                         });
@@ -1998,6 +2046,44 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.ToTable("tank_media", "public", t =>
                         {
                             t.HasCheckConstraint("ck_tank_media_section", "section IN ('showcase', 'decoration', 'technic', 'time_lapse', 'video')");
+                        });
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.TankVisibilityConsent", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Answer")
+                        .HasColumnType("boolean")
+                        .HasColumnName("answer");
+
+                    b.Property<DateTimeOffset>("AnsweredAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("answered_at");
+
+                    b.Property<string>("Context")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("context");
+
+                    b.Property<long>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_tank_visibility_consent");
+
+                    b.HasIndex("TankId", "AnsweredAt", "Id")
+                        .HasDatabaseName("ix_tank_visibility_consent_tank_id_answered_at_id");
+
+                    b.ToTable("tank_visibility_consent", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_tank_visibility_consent_context", "context IN ('creation', 'settings')");
                         });
                 });
 
@@ -2961,6 +3047,16 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_tank_media_tanks_tank_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.TankVisibilityConsent", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_tank_visibility_consent_tank_tank_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.VideoJob", b =>

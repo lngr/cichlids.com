@@ -20,6 +20,14 @@ public class TankConfiguration : IEntityTypeConfiguration<Tank>
         builder.Property(x => x.State).HasConversion<SnakeCaseEnumConverter<TankState>>().IsRequired();
         builder.Property(x => x.CreatedAt).IsRequired();
         builder.Property(x => x.CareRemindersEnabled).IsRequired();
+        builder.Property(x => x.ProfileVisibility).HasConversion<SnakeCaseEnumConverter<TankVisibility>>().HasDefaultValue(TankVisibility.Public)
+            .ValueGeneratedNever().IsRequired();
+        builder.Property(x => x.StreamVisibility).HasConversion<SnakeCaseEnumConverter<TankVisibility>>().HasDefaultValue(TankVisibility.Public)
+            .ValueGeneratedNever().IsRequired();
+        builder.Property(x => x.MediaPlacedPublic).HasDefaultValue(true).ValueGeneratedNever().IsRequired();
+        builder.Property(x => x.MediaMovePending).HasDefaultValue(false).ValueGeneratedNever().IsRequired();
+        builder.Property(x => x.MediaMoveAttempts).HasDefaultValue(0).ValueGeneratedNever().IsRequired();
+        builder.HasIndex(x => x.MediaMoveNextAttemptAt).HasFilter("media_move_pending");
 
         builder.HasIndex(x => x.LegacyId).IsUnique();
 
@@ -54,6 +62,12 @@ public class TankConfiguration : IEntityTypeConfiguration<Tank>
             tb.HasCheckConstraint(
                 "ck_tank_state",
                 "state IN ('draft', 'published')");
+            tb.HasCheckConstraint("ck_tank_profile_visibility", "profile_visibility IN ('private', 'public')");
+            tb.HasCheckConstraint("ck_tank_stream_visibility", "stream_visibility IN ('private', 'public')");
+            tb.HasCheckConstraint(
+                "ck_tank_stream_within_profile",
+                "stream_visibility = 'private' OR profile_visibility = 'public'");
+            tb.HasCheckConstraint("ck_tank_media_move_attempts", "media_move_attempts >= 0");
         });
     }
 }

@@ -16,6 +16,7 @@ public sealed class CareEntryConfiguration : IEntityTypeConfiguration<CareEntry>
         builder.Property(x => x.AmountInputUnit).HasConversion<SnakeCaseEnumConverter<CareAmountUnit>>();
         builder.HasOne<Tank>().WithMany().HasForeignKey(x => x.TankId).OnDelete(DeleteBehavior.Restrict);
         builder.HasOne<Profile>().WithMany().HasForeignKey(x => x.AuthorProfileId).OnDelete(DeleteBehavior.Restrict);
+        builder.Property(x => x.OnlyMe).HasDefaultValue(false).ValueGeneratedNever().IsRequired();
         builder.Property(x => x.Evidence).HasConversion<SnakeCaseEnumConverter<WaterChangeEvidenceState>>();
         builder.Property(x => x.EvidenceMissing).HasColumnType("text[]").HasDefaultValueSql("'{}'");
         builder.HasOne<WaterChangeSession>().WithMany().HasForeignKey(x => x.WaterChangeSessionId).OnDelete(DeleteBehavior.SetNull);
