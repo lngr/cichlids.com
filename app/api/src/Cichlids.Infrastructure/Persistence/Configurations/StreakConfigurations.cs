@@ -52,3 +52,25 @@ public sealed class CarePlanRuleChangeConfiguration : IEntityTypeConfiguration<C
         });
     }
 }
+
+public sealed class TankDecommissioningConfiguration : IEntityTypeConfiguration<TankDecommissioning>
+{
+    public void Configure(EntityTypeBuilder<TankDecommissioning> builder)
+    {
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Scope).HasConversion<SnakeCaseEnumConverter<DecommissionScope>>().IsRequired();
+        builder.HasOne<Tank>().WithMany().HasForeignKey(x => x.TankId).OnDelete(DeleteBehavior.Cascade);
+        builder.HasOne<MediaItem>().WithMany().HasForeignKey(x => x.StartMediaItemId).OnDelete(DeleteBehavior.Restrict);
+        builder.HasOne<MediaItem>().WithMany().HasForeignKey(x => x.EndMediaItemId).OnDelete(DeleteBehavior.Restrict);
+        builder.HasIndex(x => new { x.TankId, x.StartedAt });
+        // One active decommissioning per tank.
+        builder.HasIndex(x => x.TankId).IsUnique().HasDatabaseName("ux_tank_decommissioning_active").HasFilter("ended_at IS NULL");
+        builder.ToTable("tank_decommissioning", table =>
+        {
+            table.HasCheckConstraint("ck_tank_decommissioning_scope", "scope IN ('all_care', 'water_change')");
+            table.HasCheckConstraint("ck_tank_decommissioning_end",
+                "(ended_at IS NULL AND end_date IS NULL AND end_media_item_id IS NULL) "
+                + "OR (ended_at IS NOT NULL AND end_date IS NOT NULL AND end_media_item_id IS NOT NULL AND end_date >= start_date)");
+        });
+    }
+}

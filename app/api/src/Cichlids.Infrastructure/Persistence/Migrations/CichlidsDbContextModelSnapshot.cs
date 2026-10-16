@@ -2100,6 +2100,73 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.TankDecommissioning", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateOnly?>("EndDate")
+                        .HasColumnType("date")
+                        .HasColumnName("end_date");
+
+                    b.Property<long?>("EndMediaItemId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("end_media_item_id");
+
+                    b.Property<DateTimeOffset?>("EndedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ended_at");
+
+                    b.Property<string>("Scope")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("scope");
+
+                    b.Property<DateOnly>("StartDate")
+                        .HasColumnType("date")
+                        .HasColumnName("start_date");
+
+                    b.Property<long>("StartMediaItemId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("start_media_item_id");
+
+                    b.Property<DateTimeOffset>("StartedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("started_at");
+
+                    b.Property<long>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_tank_decommissioning");
+
+                    b.HasIndex("EndMediaItemId")
+                        .HasDatabaseName("ix_tank_decommissioning_end_media_item_id");
+
+                    b.HasIndex("StartMediaItemId")
+                        .HasDatabaseName("ix_tank_decommissioning_start_media_item_id");
+
+                    b.HasIndex("TankId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_tank_decommissioning_active")
+                        .HasFilter("ended_at IS NULL");
+
+                    b.HasIndex("TankId", "StartedAt")
+                        .HasDatabaseName("ix_tank_decommissioning_tank_id_started_at");
+
+                    b.ToTable("tank_decommissioning", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_tank_decommissioning_end", "(ended_at IS NULL AND end_date IS NULL AND end_media_item_id IS NULL) OR (ended_at IS NOT NULL AND end_date IS NOT NULL AND end_media_item_id IS NOT NULL AND end_date >= start_date)");
+
+                            t.HasCheckConstraint("ck_tank_decommissioning_scope", "scope IN ('all_care', 'water_change')");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.TankMedia", b =>
                 {
                     b.Property<long>("Id")
@@ -2146,7 +2213,7 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     b.ToTable("tank_media", "public", t =>
                         {
-                            t.HasCheckConstraint("ck_tank_media_section", "section IN ('showcase', 'decoration', 'technic', 'time_lapse', 'video')");
+                            t.HasCheckConstraint("ck_tank_media_section", "section IN ('showcase', 'decoration', 'technic', 'time_lapse', 'video', 'decommission', 'recommission')");
                         });
                 });
 
@@ -3200,6 +3267,29 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_tank_profile_profile_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.TankDecommissioning", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
+                        .WithMany()
+                        .HasForeignKey("EndMediaItemId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("fk_tank_decommissioning_media_item_end_media_item_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
+                        .WithMany()
+                        .HasForeignKey("StartMediaItemId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_tank_decommissioning_media_item_start_media_item_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_tank_decommissioning_tank_tank_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.TankMedia", b =>
