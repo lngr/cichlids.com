@@ -11,9 +11,9 @@ The same image supplies matching PostgreSQL 18 clients for creation and restores
 
 ## Masking contract
 
-The result is pseudonymized. Row IDs, legacy IDs, post IDs and creation times stay
+The result is pseudonymized. Row IDs, legacy IDs, story IDs and creation times stay
 stable, and public production routes address these IDs, so a snapshot row can be
-matched to a public profile, tank or post. Free text, names, contact data and the
+matched to a public profile, tank or story. Free text, names, contact data and the
 private scopes listed below are removed or replaced. Handle snapshot access as access
 to pseudonymized personal data. IDs are not renumbered.
 
@@ -24,21 +24,21 @@ to pseudonymized personal data. IDs are not renumbered.
 | Media links with context `profile` (roles `avatar`, `header`) | Removed to exclude profile pictures. |
 | `profile_identity`, `web_session` | Empty, including subjects and encrypted tokens. Test logins are provisioned separately. |
 | Comment and discussion guest names | `guest-<n>`, HMAC per table row ID. |
-| All comment bodies and delete reasons, discussion bodies and thread titles, post titles/descriptions/delete reasons, collection titles, care entry notes, media link captions | Generated text with exactly the original character count; NULL and empty strings preserved. HMAC of table, column and row ID chooses words. |
+| All comment bodies and delete reasons, discussion bodies and thread titles, story titles/descriptions/delete reasons, collection titles, care entry notes, media link captions | Generated text with exactly the original character count; NULL and empty strings preserved. HMAC of table, column and row ID chooses words. |
 | Tank title, description, gravel, plants, decoration, light, light duration, filtration, technic, all water text fields, food, notes, delete reason | Same generated text rule, including water values stored as strings. |
-| `slug_alias.value` | `post-<post-id>-alias-<alias-id>`, retaining aliases and canonical flags. |
+| `slug_alias.value` | `story-<story-id>-alias-<alias-id>`, retaining aliases and canonical flags. |
 | `archive.legacy_comment`, `outbox_event`, `webhook_subscription` | Empty. |
 | `web_push_subscription`, `web_push_reminder_sent`, `video_upload`, `video_job` | Empty. Endpoints, keys, upload names, storage keys and job state are removed. Videos are excluded from the media subset. |
 | Species, species names and reference links | Preserved. |
-| Ratings, approved follows of public tanks and of members, inhabitants, collections and post/species relationships | Preserved, including IDs, numeric values, ordering and timestamps, except the private scopes below. |
+| Ratings, approved follows of public tanks and of members, inhabitants, collections, story species subjects and story covers | Preserved, including IDs, numeric values, ordering and timestamps, except the private scopes below. |
 | Care entries (kind, times, amounts, evidence state and finding codes), measurement values, plan rules and rule history, water change sessions and steps, streak freezes, visibility consents, profile streak setting | Preserved for tanks with a public care stream, including IDs, values, kinds and times. Only notes are replaced. |
-| Private scopes | Removed: `vacation`, `care_reminder_snooze`, `care_todo`, `comment_vote` and `tank_selected_member` (empty); pending follows; follows of tanks whose profile visibility is not public, because the follow list of a restricted tank reveals who is allowed to see it; care entries marked only-me, with their measurement values, streak freezes, links and the water change session behind them; care entries, plan rules and rule history, water change sessions with steps and links, streak freezes, decommissionings and visibility consents of tanks whose stream visibility is not public (the levels `private`, `selected` and `followers` all count as not public); inhabitants, tank media links, tank comments and tank ratings of tanks whose profile visibility is not public; collection entries of non-public collections. |
+| Private scopes | Removed: `vacation`, `care_reminder_snooze`, `care_todo`, `comment_vote` and `tank_selected_member` (empty); pending follows; follows of tanks whose profile visibility is not public, because the follow list of a restricted tank reveals who is allowed to see it; care entries marked only-me, with their measurement values, streak freezes, links and the water change session behind them; care entries, plan rules and rule history, water change sessions with steps and links, streak freezes, decommissionings and visibility consents of tanks whose stream visibility is not public (the levels `private`, `selected` and `followers` all count as not public); inhabitants, story subjects that point to such tanks or their inhabitants, tank media links, tank comments and tank ratings of tanks whose profile visibility is not public; collection entries of non-public collections. |
 | Media placement state | Every retained media item is placed public (its variants are public objects of the shared golden prefix), has no placement due, zero attempts, no next attempt time and visibility generation 0. A restored environment moves no files and issues its own signed links. |
 | Media capture metadata | Capture time, capture offset and capture check time are NULL, the receive time equals the creation time and the in-app flag is false, so photo series cannot be correlated with a member. |
 | Tank decommissionings | Preserved when the start photo and the end photo, if any, remain in the media subset. A decommissioning with a photo outside the subset is removed, because its photo references cannot be emptied. |
-| Media | One photo per selected public post (the first media link of role `item` by position), up to 2,000 posts by deterministic HMAC sampling, or explicit post IDs. Only generated `thumb`, `small`, `medium`, `large` JPEG variants qualify. Originals, videos, public-copy fallbacks and forum attachments are excluded. |
+| Media | One photo per selected published story (the first media link of role `item` by position), up to 2,000 stories by deterministic HMAC sampling, or explicit story IDs. Only generated `thumb`, `small`, `medium`, `large` JPEG variants qualify. Originals, videos, public-copy fallbacks and forum attachments are excluded. |
 | Original file names, media keys and checksums | File name `media-<id>.jpg`, variant key `golden/<version>/media/variants/<label>/media-<id>.jpg`. The media item's key resolves to its thumb; the original checksum is NULL. Variant objects receive only content type and a generated checksum metadata field. |
-| Media relationships | Media links to excluded media are removed, whatever their context (tank, inhabitant, care entry, water change session including evidence photos, post, discussion post). Links of retained media in other contexts are preserved with a generated caption. Posts, comments and their interaction counts are preserved even when their photos are outside the subset. |
+| Media relationships | Media links to excluded media are removed, whatever their context (tank, inhabitant, care entry, water change session including evidence photos, post, discussion post). Links of retained media in other contexts are preserved with a generated caption. A story cover whose media link is removed becomes NULL; the verification checks that no cover points to a removed link. Posts, comments and their interaction counts are preserved even when their photos are outside the subset. |
 
 `schema.json` specifies every supported column and PostgreSQL type. A schema
 mismatch aborts before copying. Extra schemas, views, materialized views,
@@ -128,7 +128,7 @@ belongs exclusively to the operator's isolated restore process (ADR-0013).
 
 3. Review photo selection and content outside agent/CI access. The default samples
    about 2,000 eligible pictures. For an explicit selection, supply a JSON array of
-   numeric post IDs using `--post-ids "$GOLDEN_POST_IDS"`. Publish:
+   numeric story IDs using `--story-ids "$GOLDEN_STORY_IDS"`. Publish:
 
    ```sh
    "$GOLDEN_VENV/bin/python" tools/golden-snapshot/snapshot.py \
@@ -142,7 +142,7 @@ belongs exclusively to the operator's isolated restore process (ADR-0013).
    have embedded metadata stripped; the operator reviews the pixels for personal
    information. S3 metadata is replaced during upload. Original object keys never
    enter the manifest. `snapshot.dump` uses PostgreSQL custom format. The manifest
-   includes the schema migration ID, table row counts, selected post IDs, variant
+   includes the schema migration ID, table row counts, selected story IDs, variant
    keys, object/dump SHA256 checksums and format/version fields. Running without
    publishing produces an inspection dump with `media_complete: false`; restores
    reject this incomplete artifact.
