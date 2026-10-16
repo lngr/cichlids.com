@@ -84,7 +84,7 @@ try {
   const water = await text(page, `${prefix}-water-change`);
   assert.match(water, /Verified by the guided mode: 2 of 3/);
   assert.ok(water.includes(`Next water change by ${formatDate(-9)}`), water);
-  assert.match(water, /Freezes left this year: 1/);
+  assert.match(water, /Freezes left in this tank year: 1/);
   const timeLapse = await text(page, `${prefix}-time-lapse`);
   assert.match(timeLapse, /A photo by .* keeps it going\./);
   await page.screenshot({ path: "/tmp/task-5.5-today-light.png" });

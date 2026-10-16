@@ -71,7 +71,7 @@ describe("water change wording", () => {
     expect(waterChangeStatus(water({ deadline: null, freezesLeft: null }), "2026-10-15", en, "en")).toBeNull();
   });
   it("tells the owner how many freezes are left", () => {
-    expect(freezesText(water(), en)).toBe("Freezes left this year: 2");
+    expect(freezesText(water(), en)).toBe("Freezes left in this tank year: 2");
     expect(freezesText(water({ freezesLeft: null }), en)).toBeNull();
   });
 });

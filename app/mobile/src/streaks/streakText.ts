@@ -55,7 +55,7 @@ export function waterChangeStatus(streak: WaterChangeStreak, today: string, t: T
   }
 }
 
-/** The freezes the owner has left this year; null for a viewer. */
+/** The freezes the owner has left in the current tank year; null for a viewer. */
 export function freezesText(streak: WaterChangeStreak, t: Translate): string | null {
   return streak.freezesLeft === null ? null : t("streaks.waterChange.freezes", { count: streak.freezesLeft });
 }
