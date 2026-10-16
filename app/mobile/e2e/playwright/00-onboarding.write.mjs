@@ -57,14 +57,16 @@ try {
   await returning.goto(`${WEB_URL}/me`, { waitUntil: "networkidle" });
   await submitKeycloakLogin(returning, byTestId(returning, "login-button"), "dev-mod");
   await byTestId(returning, "onboarding-yes").click();
-  await byTestId(returning, "onboarding-visibility-public").click();
   await byTestId(returning, `legacy-tank-${legacyId}`).click();
+  assert.equal(await byTestId(returning, "onboarding-visibility-public").count(), 0, "taking over a legacy tank asks no visibility question");
   await byTestId(returning, "region-south_america").click();
   await byTestId(returning, "onboarding-save").click();
   await byTestId(returning, "onboarding-reward").waitFor();
   assert.match(await byTestId(returning, "onboarding-reward").textContent(), /Returned/);
   const adopted = await (await fetch(`${API_URL}/api/tanks/${legacyId}`)).json();
   assert.equal(adopted.region, "south_america");
+  assert.deepEqual(adopted.visibility, { profile: "public", stream: "public" });
+  assert.equal(sql(`SELECT count(*) FROM public.tank_visibility_consent WHERE tank_id = ${Number(legacyId)}`), "0");
   assert.equal(sql(`SELECT count(*) FROM public.tank WHERE legacy_id = 987654`), "1");
   await returning.screenshot({ path: "/tmp/task-4.5-returned-light.png" });
   await byTestId(returning, "onboarding-done").click();
