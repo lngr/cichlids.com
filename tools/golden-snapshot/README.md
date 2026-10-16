@@ -33,6 +33,7 @@ to pseudonymized personal data. IDs are not renumbered.
 | Ratings, follows, inhabitants, collections and post/species relationships | Preserved, including IDs, numeric values, ordering and timestamps, except the private scopes below. |
 | Care entries (kind, times, amounts, evidence state and finding codes), measurement values, plan rules and rule history, water change sessions and steps, streak freezes, visibility consents, profile streak setting | Preserved for tanks with a public care stream, including IDs, values, kinds and times. Only notes are replaced. |
 | Private scopes | Removed: `vacation`, `care_reminder_snooze`, `care_todo` and `comment_vote` (empty); care entries marked only-me, with their measurement values, streak freezes, links and the water change session behind them; care entries, plan rules and rule history, water change sessions with steps and links, streak freezes, decommissionings and visibility consents of tanks whose stream visibility is not public; inhabitants, tank media links, tank comments and tank ratings of tanks whose profile visibility is not public; collection entries of non-public collections. |
+| Media placement state | Every retained media item is placed public (its variants are public objects of the shared golden prefix), has no placement due, zero attempts, no next attempt time and visibility generation 0. A restored environment moves no files and issues its own signed links. |
 | Media capture metadata | Capture time, capture offset and capture check time are NULL, the receive time equals the creation time and the in-app flag is false, so photo series cannot be correlated with a member. |
 | Tank decommissionings | Preserved when the start photo and the end photo, if any, remain in the media subset. A decommissioning with a photo outside the subset is removed, because its photo references cannot be emptied. |
 | Media | One photo per selected public post (the first media link of role `item` by position), up to 2,000 posts by deterministic HMAC sampling, or explicit post IDs. Only generated `thumb`, `small`, `medium`, `large` JPEG variants qualify. Originals, videos, public-copy fallbacks and forum attachments are excluded. |
@@ -41,10 +42,19 @@ to pseudonymized personal data. IDs are not renumbered.
 
 `schema.json` specifies every supported column and PostgreSQL type. A schema
 mismatch aborts before copying. Extra schemas, views, materialized views,
-functions, large objects, foreign servers, custom types, extensions, event triggers
-rules, policies and logical replication objects also abort. `fixture-schema.sql` is generated from the EF
-model (`dotnet ef dbcontext script`) and includes its foreign keys, checks and indexes. It ends with the
-migration history table and the latest migration ID, which `schema.json` and the manifest follow.
+large objects, foreign servers, custom types, extensions, event triggers,
+rules, policies and logical replication objects also abort. Functions and triggers
+are allowed only as listed in `routines.json`: each entry names the function (with
+argument types) or the trigger (with its table) and holds the SHA-256 of its definition
+text (`pg_get_functiondef`, `pg_get_triggerdef`). Any other function or trigger, a changed
+definition and a missing entry abort. The listed ones are the media visibility functions and
+triggers of the EF migrations; they bump the visibility generation of media items and mark
+their placement as due. `fixture-schema.sql` is generated from the EF
+model (`dotnet ef dbcontext script`) and includes its foreign keys, checks and indexes, followed by
+the functions and triggers of the migrations, the migration history table and the latest migration
+ID, which `schema.json` and the manifest follow. The triggers fire during masking, so masking
+resets the placement state as its last step. `pg_restore` creates triggers after loading the data,
+so a restore keeps the stored state and a restored environment has no placement due.
 Review schema and masking coverage together when migrations change.
 
 `COLUMN_HANDLING` in `snapshot.py` states for every column of `schema.json` how it is
@@ -59,8 +69,8 @@ rule.
 | --- | --- |
 | Generated text of the same length | Comment body, delete reason; discussion post body; discussion thread title; post title, description, delete reason; collection title; tank title, description, equipment, water and food fields, notes, delete reason; care entry note; media link caption |
 | Pseudonym | Profile username and display name; comment and discussion post guest name |
-| NULL | Profile city, external avatar URL, last login and suspension; media item capture time, offset and check time |
-| Rewritten | Slug alias value; media item storage key, original file name, content type, checksum, receive time and in-app flag; media variant storage key |
+| NULL | Profile city, external avatar URL, last login and suspension; media item capture time, offset, check time and next placement attempt |
+| Rewritten | Slug alias value; media item storage key, original file name, content type, checksum, receive time, in-app flag and placement state; media variant storage key |
 | Empty table | `archive.legacy_comment`, `profile_identity`, `web_session`, `outbox_event`, `webhook_subscription`, `web_push_subscription`, `web_push_reminder_sent`, `video_upload`, `video_job`, `vacation`, `care_reminder_snooze`, `care_todo`, `comment_vote` |
 | Kept | IDs, numbers, flags and times; kinds, states, categories, regions, visibility levels, units, parameters, origins, roles, context types, scopes and step names; evidence state and finding codes; plan reason code and parameters; profile country code, kind, interests and badges; species catalog; migration history |
 
