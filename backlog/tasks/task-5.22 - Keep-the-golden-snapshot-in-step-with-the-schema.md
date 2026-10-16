@@ -4,7 +4,7 @@ title: Keep the golden snapshot in step with the schema
 status: In Review
 assignee: []
 created_date: '2026-10-16 15:16'
-updated_date: '2026-10-16 16:15'
+updated_date: '2026-10-16 16:27'
 labels: []
 dependencies: []
 references:
@@ -57,4 +57,6 @@ The golden snapshot tooling (tools/golden-snapshot: fixture-schema.sql, schema.j
 - Masking beyond the story: media_link.caption as generated text; decommissionings whose proof photos fall outside the media subset are removed (required restrict keys); avatar and header links are removed; other links of retained photos stay with masked captions; photo selection takes the first item link by position.
 - Fixed: the migration history columns are migration_id and product_version (snake case); fixture.sql sets tank.care_reminders_enabled explicitly because the EF model lacks the default true of the migration.
 - Verification: golden-snapshot python tests green in its image against a throwaway postgres; actionlint clean; the CI step itself not run on GitHub.
+
+- Privacy review fixes: private scopes removed (vacations, snoozes, to-dos, comment votes, only-me entries with their sessions, care, sessions, freezes, plans, decommissionings and consents of tanks with a non-public stream, inhabitants and tank media links of tanks with a non-public profile, entries of non-public collections, comments and ratings of tanks with a non-public profile); media capture metadata nulled; COLUMN_HANDLING covers every column and a test fails for a column without a rule; README describes the result as pseudonymized (stable ids). Open for the project owner: renumbering ids.
 <!-- SECTION:NOTES:END -->
