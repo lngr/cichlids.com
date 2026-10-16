@@ -440,9 +440,9 @@ export interface CichlidsClient {
     /** The vacations of the member, the newest first. */
     vacations(): Promise<Vacation[]>;
     /** Starts an active vacation on the local date of today, or on startDate when it lies earlier. */
-    startVacation(date: string, startDate?: string): Promise<Vacation>;
+    startVacation(local: LocalTime, startDate?: string): Promise<Vacation>;
     /** Records an ended vacation afterwards; both dates lie on or before the local date of today. */
-    recordVacation(date: string, startDate: string, endDate: string): Promise<Vacation>;
+    recordVacation(local: LocalTime, startDate: string, endDate: string): Promise<Vacation>;
     /** Ends the active vacation on the local date of today. */
     endVacation(date: string): Promise<Vacation>;
   };
@@ -713,11 +713,11 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       async vacations() {
         return unwrap(await listMyVacations({ client })).items.map(toVacation);
       },
-      async startVacation(date, startDate) {
-        return toVacation(unwrap(await startVacation({ client, query: { date }, body: startDate ? { startDate } : {} })));
+      async startVacation(local, startDate) {
+        return toVacation(unwrap(await startVacation({ client, query: local, body: startDate ? { startDate } : {} })));
       },
-      async recordVacation(date, startDate, endDate) {
-        return toVacation(unwrap(await startVacation({ client, query: { date }, body: { startDate, endDate } })));
+      async recordVacation(local, startDate, endDate) {
+        return toVacation(unwrap(await startVacation({ client, query: local, body: { startDate, endDate } })));
       },
       async endVacation(date) {
         return toVacation(unwrap(await endVacation({ client, query: { date } })));

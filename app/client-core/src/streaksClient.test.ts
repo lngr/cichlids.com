@@ -28,12 +28,12 @@ it("starts, records and ends vacations", async () => {
     return req.method === "GET" ? Response.json({ items: [vacation] }) : Response.json(vacation, { status: req.url.includes("/end") ? 200 : 201 });
   } });
   expect(await client.me.vacations()).toEqual([vacation]);
-  await client.me.startVacation("2026-10-15");
-  expect(requests[1].url).toBe("http://streaks.test/api/me/vacations?date=2026-10-15");
+  await client.me.startVacation({ date: "2026-10-15", utcOffsetMinutes: 60 });
+  expect(requests[1].url).toBe("http://streaks.test/api/me/vacations?date=2026-10-15&utcOffsetMinutes=60");
   expect(await requests[1].json()).toEqual({});
-  await client.me.startVacation("2026-10-15", "2026-10-13");
+  await client.me.startVacation({ date: "2026-10-15" }, "2026-10-13");
   expect(await requests[2].json()).toEqual({ startDate: "2026-10-13" });
-  await client.me.recordVacation("2026-10-15", "2026-09-01", "2026-09-10");
+  await client.me.recordVacation({ date: "2026-10-15" }, "2026-09-01", "2026-09-10");
   expect(await requests[3].json()).toEqual({ startDate: "2026-09-01", endDate: "2026-09-10" });
   await client.me.endVacation("2026-10-20");
   expect(requests[4].method).toBe("POST");
@@ -53,5 +53,5 @@ it("sends whether the camera of the app took a series photo", async () => {
 
 it("passes the coded refusals on", async () => {
   const client = createCichlidsClient({ baseUrl: "http://streaks.test", fetch: async () => Response.json({ code: "vacation_overlap" }, { status: 409 }) });
-  await expect(client.me.startVacation("2026-10-15")).rejects.toEqual(new ApiError("", 409, "vacation_overlap"));
+  await expect(client.me.startVacation({ date: "2026-10-15" })).rejects.toEqual(new ApiError("", 409, "vacation_overlap"));
 });

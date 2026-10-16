@@ -86,6 +86,7 @@ export const API_ERROR_CODES = [
   "vacation_dates_invalid",
   "vacation_active",
   "vacation_overlap",
+  "vacation_would_repair",
 ] as const;
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];

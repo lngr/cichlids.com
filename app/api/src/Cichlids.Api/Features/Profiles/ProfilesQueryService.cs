@@ -87,7 +87,8 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
             .Select(v => new VacationSpan(v.StartDate, v.EndDate)).ToList();
         var today = DateOnly.FromDateTime(clock.GetUtcNow().UtcDateTime);
         var firstDay = DateOnly.FromDateTime(profile.CreatedAt.UtcDateTime);
-        if (spans.Count > 0 && spans.Min(s => s.Start) < firstDay) firstDay = spans.Min(s => s.Start);
+        var ended = Vacations.Past(spans);
+        if (ended.Count > 0 && ended.Min(s => s.Start) < firstDay) firstDay = ended.Min(s => s.Start);
         var share = Vacations.Share(spans, today, VacationShareWindowDays, firstDay);
         return new VacationShareDto(share.VacationDays, share.WindowDays, share.Fraction, Vacations.Past(spans).Count);
     }

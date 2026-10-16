@@ -2902,6 +2902,7 @@ export type StartVacationData = {
     path?: never;
     query?: {
         date?: string;
+        utcOffsetMinutes?: number | string;
     };
     url: '/api/me/vacations';
 };

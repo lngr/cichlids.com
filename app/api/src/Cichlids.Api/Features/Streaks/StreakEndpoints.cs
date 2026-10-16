@@ -42,14 +42,14 @@ public static partial class StreakEndpoints
         long tankId, string? date, int? utcOffsetMinutes, ClaimsPrincipal user, TankAccessService access, StreakService streaks, CancellationToken ct)
     {
         if (await access.FindAsync(tankId, user, ct) is not { CanSeeProfile: true } found) return Problem(StreakService.NotFoundCode);
-        if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem(DateInvalidCode);
+        if (streaks.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem(DateInvalidCode);
         return TypedResults.Ok(await streaks.GetTankAsync(found, today, offset, ct));
     }
 
     private static async Task<Results<Ok<MeStreaksDto>, ProblemHttpResult>> OwnAsync(
         string? date, int? utcOffsetMinutes, ClaimsPrincipal user, CurrentProfileService profiles, StreakService streaks, CancellationToken ct)
     {
-        if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem(DateInvalidCode);
+        if (streaks.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem(DateInvalidCode);
         var profile = await profiles.ResolveAsync(user, ct);
         return TypedResults.Ok(await streaks.GetOwnAsync(profile.Id, today, offset, ct));
     }
@@ -62,18 +62,19 @@ public static partial class StreakEndpoints
     }
 
     private static async Task<Results<Created<VacationDto>, ProblemHttpResult>> StartVacationAsync(
-        StartVacationRequest? request, string? date, ClaimsPrincipal user, CurrentProfileService profiles, VacationService vacations, CancellationToken ct)
+        StartVacationRequest? request, string? date, int? utcOffsetMinutes, ClaimsPrincipal user, CurrentProfileService profiles, StreakService streaks,
+        VacationService vacations, CancellationToken ct)
     {
-        if (CarePlanService.ParseLocalTime(date, null) is not var (today, _)) return Problem(DateInvalidCode);
+        if (streaks.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem(DateInvalidCode);
         var profile = await profiles.ResolveAsync(user, ct);
-        var (vacation, error) = await vacations.StartAsync(profile.Id, request, today, ct);
+        var (vacation, error) = await vacations.StartAsync(profile.Id, request, today, offset, ct);
         return error is not null ? Problem(error) : TypedResults.Created("/api/me/vacations", vacation!);
     }
 
     private static async Task<Results<Ok<VacationDto>, ProblemHttpResult>> EndVacationAsync(
-        string? date, ClaimsPrincipal user, CurrentProfileService profiles, VacationService vacations, CancellationToken ct)
+        string? date, ClaimsPrincipal user, CurrentProfileService profiles, StreakService streaks, VacationService vacations, CancellationToken ct)
     {
-        if (CarePlanService.ParseLocalTime(date, null) is not var (today, _)) return Problem(DateInvalidCode);
+        if (streaks.ParseLocalTime(date, null) is not var (today, _)) return Problem(DateInvalidCode);
         var profile = await profiles.ResolveAsync(user, ct);
         var (vacation, error) = await vacations.EndAsync(profile.Id, today, ct);
         return error is not null ? Problem(error) : TypedResults.Ok(vacation!);
@@ -83,7 +84,7 @@ public static partial class StreakEndpoints
         code switch
         {
             StreakService.NotFoundCode or VacationService.NotFoundCode => 404,
-            VacationService.ActiveCode or VacationService.OverlapCode => 409,
+            VacationService.ActiveCode or VacationService.OverlapCode or VacationService.WouldRepairCode => 409,
             _ => 400,
         },
         "Streak request refused", code switch
@@ -91,9 +92,10 @@ public static partial class StreakEndpoints
             StreakService.NotFoundCode => "This tank is unavailable.",
             DateInvalidCode => "Send your local calendar date as YYYY-MM-DD and, optionally, the offset of your clock from UTC in minutes (-840 to 840).",
             VacationService.NotFoundCode => "There is no active vacation.",
-            VacationService.DatesInvalidCode => "A vacation starts and ends on or before today, and it does not end before it starts; a vacation recorded afterwards needs both dates.",
+            VacationService.DatesInvalidCode => "A vacation starts and ends on or before today, and it does not end before it starts; a vacation recorded afterwards needs both dates and lasts up to a year.",
             VacationService.ActiveCode => "A vacation is already active.",
             VacationService.OverlapCode => "This vacation overlaps another vacation.",
+            VacationService.WouldRepairCode => "A vacation that started more than a few days ago cannot repair a period or a week that has already ended.",
             _ => "Check the streak or vacation request.",
         }, code);
 }

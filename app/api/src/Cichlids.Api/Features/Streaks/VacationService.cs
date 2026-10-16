@@ -12,12 +12,13 @@ namespace Cichlids.Api.Features.Streaks;
 /// member. A member has at most one active vacation and no two vacations overlap. The outbox events
 /// vacation.started and vacation.ended commit with the change.
 /// </summary>
-public sealed class VacationService(CichlidsDbContext context, TimeProvider clock)
+public sealed class VacationService(CichlidsDbContext context, TimeProvider clock, StreakService streaks, Microsoft.Extensions.Options.IOptions<StreakOptions> options)
 {
     public const string NotFoundCode = "vacation_not_found";
     public const string DatesInvalidCode = "vacation_dates_invalid";
     public const string ActiveCode = "vacation_active";
     public const string OverlapCode = "vacation_overlap";
+    public const string WouldRepairCode = "vacation_would_repair";
 
     public async Task<IReadOnlyList<VacationDto>> ListAsync(long profileId, CancellationToken ct) =>
         (await context.Vacations.AsNoTracking().Where(v => v.ProfileId == profileId).OrderByDescending(v => v.StartDate).ThenByDescending(v => v.Id)
@@ -27,15 +28,17 @@ public sealed class VacationService(CichlidsDbContext context, TimeProvider cloc
     /// Starts an active vacation, or records an ended one when the request has an end date. Neither
     /// date lies after today.
     /// </summary>
-    public async Task<(VacationDto? Vacation, string? Error)> StartAsync(long profileId, StartVacationRequest? request, DateOnly today, CancellationToken ct)
+    public async Task<(VacationDto? Vacation, string? Error)> StartAsync(long profileId, StartVacationRequest? request, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
     {
         var (start, end, error) = ParseDates(request, today);
         if (error is not null) return (null, error);
+        if (end is { } last && last.DayNumber - start.DayNumber + 1 > options.Value.MaxVacationDays) return (null, DatesInvalidCode);
         await using var transaction = await context.Database.BeginTransactionAsync(ct);
         await LockProfileAsync(profileId, ct);
         var existing = await context.Vacations.Where(v => v.ProfileId == profileId).ToListAsync(ct);
         if (end is null && existing.Any(v => v.EndDate is null)) return (null, ActiveCode);
         if (existing.Any(v => v.StartDate <= (end ?? DateOnly.MaxValue) && start <= (v.EndDate ?? DateOnly.MaxValue))) return (null, OverlapCode);
+        if (await streaks.WouldRepairAsync(profileId, new VacationSpan(start, end), today, utcOffsetMinutes, ct)) return (null, WouldRepairCode);
         var now = clock.GetUtcNow();
         var vacation = new Vacation { ProfileId = profileId, StartDate = start, EndDate = end, CreatedAt = now };
         context.Vacations.Add(vacation);
@@ -48,7 +51,8 @@ public sealed class VacationService(CichlidsDbContext context, TimeProvider cloc
     }
 
     /// <summary>
-    /// Ends the active vacation on the given local date, which is not before its start.
+    /// Ends the active vacation on the given local date, which is not before its start. A vacation that
+    /// has run longer than the maximum ends on its last permitted day.
     /// </summary>
     public async Task<(VacationDto? Vacation, string? Error)> EndAsync(long profileId, DateOnly today, CancellationToken ct)
     {
@@ -57,7 +61,8 @@ public sealed class VacationService(CichlidsDbContext context, TimeProvider cloc
         var vacation = await context.Vacations.SingleOrDefaultAsync(v => v.ProfileId == profileId && v.EndDate == null, ct);
         if (vacation is null) return (null, NotFoundCode);
         if (today < vacation.StartDate) return (null, DatesInvalidCode);
-        vacation.EndDate = today;
+        var longest = vacation.StartDate.AddDays(options.Value.MaxVacationDays - 1);
+        vacation.EndDate = today < longest ? today : longest;
         AddEvent("vacation.ended", vacation, clock.GetUtcNow());
         await context.SaveChangesAsync(ct);
         await transaction.CommitAsync(ct);

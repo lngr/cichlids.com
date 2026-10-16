@@ -79,6 +79,8 @@ public sealed class ApiFixture : IAsyncLifetime
                     ["OutboxDispatcher:Enabled"] = "false",
                     // Tests run the media placement directly instead of racing the worker.
                     ["TankMediaPlacement:Enabled"] = "false",
+                    // The streak tests read dates in 2026; a dedicated test narrows the allowed difference to the server date.
+                    ["Streaks:MaxClientDateSkewDays"] = "36500",
                     ["TankMediaPlacement:ImmediateBudget"] = "00:00:00",
                 }));
 
@@ -122,6 +124,8 @@ public sealed class ApiFixture : IAsyncLifetime
     /// same configured service the API uses.
     /// </summary>
     public IServiceProvider Services => _factory.Services;
+
+    public WebApplicationFactory<Program> Factory => _factory;
 
     public CichlidsDbContext CreateDbContext() => CreateDbContext([]);
 

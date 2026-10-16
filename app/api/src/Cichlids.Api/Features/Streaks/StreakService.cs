@@ -15,7 +15,8 @@ namespace Cichlids.Api.Features.Streaks;
 /// Reads the streaks of tanks from their water changes, series photos and plan history together with the
 /// vacations of the owner. The streaks count every water change of the tank, also the ones marked only me,
 /// so all viewers see the same numbers. A read by the owner records the freezes the evaluation consumed,
-/// once per water change.
+/// once per water change. Viewers other than the owner get counts only: no pause, no deadline, no date of the
+/// last water change and no active vacation.
 /// </summary>
 public sealed class StreakService(CichlidsDbContext context, TimeProvider clock, IOptions<StreakOptions> options)
 {
@@ -25,6 +26,47 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
     private sealed record TankHistory(List<WaterChangeRecord> Changes, List<RhythmChange> Rhythm, HashSet<long> Recorded, List<SeriesPhoto> Photos);
 
     private int Freezes => options.Value.FreezesPerYear;
+
+    /// <summary>
+    /// Reads the local date and the optional UTC offset a client sends. Null when the date is not a
+    /// calendar date, the offset is outside the range of clocks, or the date differs from the date of
+    /// the server by more than the allowed skew.
+    /// </summary>
+    public (DateOnly Date, int UtcOffsetMinutes)? ParseLocalTime(string? date, int? utcOffsetMinutes)
+    {
+        if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (local, offset)) return null;
+        var serverToday = DateOnly.FromDateTime(clock.GetUtcNow().UtcDateTime);
+        return Math.Abs(local.DayNumber - serverToday.DayNumber) <= options.Value.MaxClientDateSkewDays ? (local, offset) : null;
+    }
+
+    /// <summary>
+    /// Whether adding a vacation would repair what has already ended: a period of a water change
+    /// streak that was missed or unverified without a freeze, or a week of a time-lapse streak without
+    /// a photo, in any live tank of the member. A vacation that starts within the repair window never
+    /// counts, since the days just passed are still the member's to pause.
+    /// </summary>
+    public async Task<bool> WouldRepairAsync(long profileId, VacationSpan candidate, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
+    {
+        if (candidate.Start >= today.AddDays(-options.Value.RepairWindowDays)) return false;
+        var tankIds = await context.Tanks.AsNoTracking().Where(t => t.ProfileId == profileId && t.DeletedAt == null).Select(t => t.Id).ToListAsync(ct);
+        var histories = await LoadAsync(tankIds, ct);
+        var before = (await LoadVacationsAsync(profileId, ct)).Select(v => v.Span).ToList();
+        var after = before.Append(candidate).ToList();
+        foreach (var history in histories.Values)
+        {
+            var water = (Before: EvaluateWater(history, before, today, utcOffsetMinutes), After: EvaluateWater(history, after, today, utcOffsetMinutes));
+            if (water.Before.State == WaterChangeStreakState.Broken && water.After.State != WaterChangeStreakState.Broken) return true;
+            for (var i = 0; i < water.Before.Periods.Count; i++)
+            {
+                var was = water.Before.Periods[i].Outcome;
+                if (was is PeriodOutcome.Missed or PeriodOutcome.Unverified && water.After.Periods[i].Outcome != was) return true;
+            }
+            var lapseBefore = TimeLapseStreaks.Evaluate(history.Photos, utcOffsetMinutes, before, today);
+            var lapseAfter = TimeLapseStreaks.Evaluate(history.Photos, utcOffsetMinutes, after, today);
+            if (lapseAfter.Current > lapseBefore.Current || lapseAfter.Longest > lapseBefore.Longest) return true;
+        }
+        return false;
+    }
 
     /// <summary>
     /// The streaks of a tank for a viewer who sees at least the tank profile.
@@ -131,7 +173,7 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
     {
         var state = !owner && streak.State == WaterChangeStreakState.Paused ? WaterChangeStreakState.Running : streak.State;
         return new WaterChangeStreakDto(state, streak.Current, streak.CurrentVerified, streak.Longest,
-            streak.LastWaterChange is { } last ? Format(last) : null,
+            owner && streak.LastWaterChange is { } last ? Format(last) : null,
             owner && streak.Deadline is { } deadline ? Format(deadline) : null,
             owner ? streak.FreezesLeft : null, owner ? Freezes : null);
     }
