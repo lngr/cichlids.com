@@ -12,6 +12,9 @@ Tooling around the species catalog in `data/species/`.
 - `crc.mjs`: reads the public part of the Cichlid Room Companion for the agents and keeps each page read in the source archive. The site blocks curl and headless browsers through a Cloudflare bot check, so the tool drives a headed Chromium on a virtual display.
 - `export-legacy-catalog.mjs`: exports the legacy species catalog with photo counts to `data/species/legacy-catalog.json`. It reads the restored legacy MySQL database read-only through its running container and holds catalog data only.
 - `prompts/`: prompts of the agent pipeline (generator, checker, tie-breaker, adjudicator and the shared rules) that produce species profiles.
+- `agent-runner.mjs`: starts one agent role with Codex (`codex exec`) or Claude (`claude -p`), picks the model per runner and role, retries transient failures with fallback models and recognises an empty account. `agent-runner.test.mjs` holds its tests.
+- `pipeline-prompts.mjs`: builds the prompts of the pipeline roles and of the group sync step. `pipeline-prompts.test.mjs` holds its tests.
+- `pipeline.mjs`: the pipeline driver and its command line (`run`, `groupsync`, `next`, `status`). `pipeline.test.mjs` holds its tests.
 - `check-seriously-fish.mjs`: checks accepted names and catalog synonyms for archived Seriously Fish care pages and writes resumable decisions to `data/species/seriously-fish.yaml`.
 - `build-directory.mjs`: builds the accepted-species directory and legacy mapping from archived catalog and FishBase inputs. `build-directory.test.mjs` holds its tests.
 - `validate.mjs`: validator for profile files and the species directory. `validate.test.mjs` holds its tests.
@@ -357,6 +360,55 @@ node tools/species-data/render-review.mjs out.html [profile.yaml ...]
 ```
 
 Writes a self-contained, read-only HTML page. Water cards show the tolerance below the natural value with its verification badge and its list of evidence. Hard feature cards show the verification method (einstimmig, qualifizierte Mehrheit, vorsichtigster Wert, Seewerte) and the votes as "4 von 5".
+
+## Pipeline
+
+```
+node tools/species-data/pipeline.mjs run --runner codex --id 201 --name "Xenotilapia flavipinnis" --hint "Lake Tanganyika sand cichlid" --lake Tanganyika
+node tools/species-data/pipeline.mjs run --runner claude --id 405 --name "Nimbochromis linni" --hint "Malawi peacock" --lake Malawi --legacy-ids "405, 289" --adjudicator-note "Cyrtocara linni is a synonym."
+node tools/species-data/pipeline.mjs next --count 4
+node tools/species-data/pipeline.mjs status
+node tools/species-data/pipeline.mjs groupsync --runner claude
+```
+
+One `run` produces the profile of one legacy catalog entry:
+
+1. The roles generator, checker A, checker B and checker C research the species in parallel and each write a file (`generator.yaml`, `checker-a.yaml`, ...) to the work directory `data/species/work/legacy-<id>/`.
+2. `validate.mjs` checks each of the four files.
+3. `tally.mjs` counts the votes. Open features go to two tie-breakers (`tiebreaker-N.yaml`, numbered on from the highest existing file). The tally runs at most three rounds; features open after the third round end the run as failed.
+4. The adjudicator writes the final profile to `data/species/profiles/`. Its prompt forbids changing an existing profile of the same species: in that case it writes `adjudicator-profile.yaml` to the work directory and starts its report with `PROFILE EXISTS`, and the run logs `WARN: profile exists, see adjudicator-profile.yaml`. The run fails with `FAILED: adjudicator failed` when every attempt of the adjudicator failed transiently, and with `FAILED: adjudicator wrote no profile` when `logs/adjudicator.last` is empty or when neither a profile in `data/species/profiles/` whose top-level `legacyIds` contain `--id` nor `adjudicator-profile.yaml` was created or changed during the adjudicator step (profiles of other species that parallel runs write do not count). A passed check is recorded in `adjudicator.done` in the work directory.
+5. `build-directory.mjs` rebuilds the directory and `validate.mjs` checks all profiles.
+
+`--id` is the legacy catalog number (digits only). `--lake` selects the lake model row for species of a lake in `waterbodies.yaml`. `--legacy-ids` lists further legacy entries that map to the species and defaults to `--id`. `--adjudicator-note` is added to the adjudicator prompt.
+
+`next` lists the unprofiled species with the most legacy photos as `<profile id> | <category> | <legacy entries>`. It skips trade forms with parents and species with a run in progress, that is a work directory whose `run.lock` names a live process. `status` prints the last status line of every work directory as `<id> <name> | <line>`, followed by `(running)` when the lock names a live process and by `(stale)` when the lock names a dead process or when the last line is neither `DONE` nor `FAILED: ...` and no lock exists.
+
+`groupsync` collects the validator warnings about profiles that a group of `hybrid-groups.yaml` names as a member while the profile does not list that group. The agent edits exactly those profiles (group ids, rationale and sources in `features.hybridGroups`, and a hybrid caution where a profile names a group member as a suitable partner) and does not touch `hybrid-groups.yaml`, because other runs write that file at the same time. It prints `nothing to sync` when no warning exists, otherwise the last message of the agent and `git diff --stat`. Its prompt, log and last message are in `data/species/work/groupsync/logs/`. Exit codes of `groupsync`: 0 synced or nothing to sync, 1 the agent failed or left no last message, 2 usage error, 3 the agent account is out of credits.
+
+Models per runner (`MODEL_TABLE` in `agent-runner.mjs`). Checker A always runs with Claude, so two model families vote in a Codex run. Each role tries its model three times, then the fallbacks once each.
+
+| Role | Codex | Claude |
+| --- | --- | --- |
+| generator, checker B (lake species) | gpt-6-luna, high | claude-sonnet-5-5, high |
+| generator, checker B (other species) | gpt-6.1-sol, medium | claude-sonnet-5-5, high |
+| checker C (lake species) | gpt-6-luna, high | claude-opus-5-5, high |
+| checker C (other species) | gpt-6.1-sol, medium | claude-opus-5-5, high |
+| checker A | claude-sonnet-5-5, high | claude-sonnet-5-5, high |
+| tie-breakers | gpt-6.1-sol, medium | claude-sonnet-5-5, high |
+| adjudicator | gpt-6.1-sol, high | claude-opus-5-5, high |
+| group sync | gpt-6-luna, high | claude-sonnet-5-5, high |
+
+Codex falls back to gpt-6-sol twice.
+
+Logs live in `data/species/work/legacy-<id>/logs/`: per role `<role>.prompt`, `<role>.log` (every attempt under a line `=== attempt <n> <model> <ISO time>`, closed by a line `=== exit <code>` with the signal and the timeout when they apply) and `<role>.last` (the last message of the latest attempt), the output of the validator, tally and directory build as `<name>.txt`, and `status` with one line `HH:MM <text>` per step (`start`, `previous role files moved to previous-<stamp>`, `stale lock of process <pid> replaced`, `adjudicator note changed`, `<role> finished (<model>)`, `<role> failed (<model>)` when every attempt failed transiently, `adjudicator skipped (adjudicator.done)`, `DONE`, `FAILED: ...`, `WARN: ...`). `DONE` or a `FAILED: ...` line is always the last line of a run: a role that runs in parallel to a failure appends nothing after it. A thrown error ends the run with `FAILED: crashed (<message>)`; SIGINT and SIGTERM end it with `FAILED: crashed (<signal>)` after all running agents have ended, with exit code 1. The work directory also holds `run.json` with the inputs of the run.
+
+A run holds the lock `run.lock` (the pid of the run) in its work directory from the start until it ends. The lock appears with its content in one step (a hard link of `run.lock.<pid>`), and a stale lock is renamed and checked before it is removed, so two runs that start together never both hold it. A second `run` of the same species while that process lives prints an error and exits with 1; a lock of a dead process (for example after SIGKILL) is replaced. Each agent attempt runs at most one hour (40 minutes for group sync); a timed-out agent gets SIGTERM and, when it has not ended 10 s later, SIGKILL.
+
+A run resumes where it stopped: roles whose `<role>.yaml` exists are skipped, and tie-breakers continue after the highest existing number. The adjudicator is skipped when all of these hold: `adjudicator.done` exists and the files it names exist, `logs/adjudicator.last` is not empty, and the inputs of the adjudicator are unchanged. A changed `--adjudicator-note` removes `adjudicator.done` before `run.json` stores the note, and every voting role or tie-breaker removes it before the agent starts, so a run that stops after such a change reruns the adjudicator on resume. A rerun with different inputs, or with `--fresh`, moves all entries of the work directory except `.literature` and the lock files `run.lock*` into `previous-<YYYYMMDD-HHMMSS>/` and starts over. The inputs that decide this are `--id`, `--name`, `--hint`, `--lake` and `--legacy-ids`. A rerun that differs only in `--adjudicator-note` keeps the research files, stores the note in `run.json`, logs `adjudicator note changed` when an earlier adjudicator record exists, and runs the adjudicator. The profile of the earlier run exists at that point, so the adjudicator prompt makes the adjudicator leave it untouched and write its candidate to `adjudicator-profile.yaml`; the run logs the `WARN: profile exists, see adjudicator-profile.yaml` line. The operator reviews the candidate and moves it over the profile; the pipeline never moves a profile itself. A work directory with role files and no `run.json` is moved the same way.
+
+Exit codes of `run`: 0 done, 1 failed (the status file names the step) or another process runs the species, 2 usage error, 3 an agent account is out of credits. Run at most four species in parallel.
+
+The rules for the agents (sources, fetching, copyright, no state-changing git commands) are in the prompts of `prompts/` and `pipeline-prompts.mjs`. The agents run with write access to the checkout, so the container is the isolation boundary. Claude agents get the tools Bash, Read, Write, Edit, Glob, Grep and WebSearch and no MCP tools (`--strict-mcp-config`), because agents fetch pages only through `archive-fetch.mjs` and use no external connectors. Agent processes start without the session variables of a parent Claude Code session (`CLAUDECODE`, `CLAUDE_CODE_*` session and messaging variables, `CLAUDE_PID`, `CLAUDE_EFFORT`).
 
 ## Knowledge articles
 
