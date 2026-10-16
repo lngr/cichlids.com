@@ -1,12 +1,15 @@
 ---
 id: TASK-5.16
 title: Record measurements and care afterwards
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-16 07:10'
-updated_date: '2026-10-16 07:10'
+updated_date: '2026-10-16 07:36'
 labels: []
 dependencies: []
+references:
+  - app/mobile/e2e/playwright/care-when.write.mjs
+  - app/api/tests/Cichlids.Api.Tests/Features/Care/CareTimeTests.cs
 parent_task_id: TASK-5
 priority: high
 ordinal: 96000
@@ -35,3 +38,15 @@ Members often note water values and enter them a day or two later. The measureme
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implementation (2026-10-16)
+- API: PATCH of a care entry takes occurredAt; a request with only occurredAt (and optionally a note) moves the time; more than two minutes in the future is refused with care_time_invalid; care.updated in the same transaction.
+- App: a When picker (now, yesterday, two days ago, or a typed date and time; never in the future) in the measurement form and the water change quick log (care view and + tab); the edit view corrects the time; local time converts to UTC through the IANA zone. The care plan, Today and the charts follow the chosen time.
+- Open decision: the time of an entry from the guided water change mode can be corrected too, which could move a verified water change into another streak period; proposal of the main session: the time of guided entries is fixed, only note, amount and photos stay editable (asked 2026-10-16).
+- Verification: see TASK-5.13 (combined state).
+- Tests: app/api/tests/Cichlids.Api.Tests/Features/Care/CareTimeTests.cs, CarePlanEndpointsTests.cs, app/client-core/src/occurredAt.test.ts, app/mobile/src/tanks/whenText.test.ts, app/mobile/e2e/playwright/care-when.write.mjs.
+- Not verified: the picker on native platforms; the due-care quick log on Today still logs now.
+<!-- SECTION:NOTES:END -->
