@@ -2289,6 +2289,35 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.UsedChecksum", b =>
+                {
+                    b.Property<long>("ProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("profile_id");
+
+                    b.Property<string>("ChecksumSha256")
+                        .HasColumnType("text")
+                        .HasColumnName("checksum_sha256");
+
+                    b.Property<string>("Kind")
+                        .HasColumnType("text")
+                        .HasColumnName("kind");
+
+                    b.Property<DateTimeOffset>("FirstUsedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("first_used_at")
+                        .HasDefaultValueSql("now()");
+
+                    b.HasKey("ProfileId", "ChecksumSha256", "Kind")
+                        .HasName("pk_used_checksum");
+
+                    b.ToTable("used_checksum", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_used_checksum_kind", "kind IN ('water_change_evidence', 'proof')");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.Vacation", b =>
                 {
                     b.Property<long>("Id")
@@ -3274,6 +3303,16 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_tank_visibility_consent_tank_tank_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.UsedChecksum", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_used_checksum_profile_profile_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Vacation", b =>
