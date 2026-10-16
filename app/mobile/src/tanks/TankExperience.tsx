@@ -69,7 +69,7 @@ export function TankExperience({ tank, series, children, onVisibilityChanged }: 
   }, [playing, send]);
   const text = { color: theme.colors.fg };
   const card = { backgroundColor: theme.colors.surface, borderColor: theme.colors.border, borderRadius: theme.radius.lg };
-  const postMedia = new Set(series.posts.flatMap(post => post.mediaItemIds.map(String)));
+  const storyMedia = new Set(series.stories.flatMap(story => story.mediaItemIds.map(String)));
   const timeline = [
     ...stream.entries.map(entry => ({
       key: `care-${entry.id}`, date: entry.occurredAt,
@@ -77,14 +77,14 @@ export function TankExperience({ tank, series, children, onVisibilityChanged }: 
       description: entry.kind === "measurement" ? measurementLines(entry, system, i18n.language).join("\n") : entry.amount ? formatCareAmount(entry.amount, i18n.language) : null,
       image: undefined, slug: null, video: null,
     })),
-    ...series.photos.filter(item => !postMedia.has(String(item.mediaItemId))).map(item => ({
+    ...series.photos.filter(item => !storyMedia.has(String(item.mediaItemId))).map(item => ({
       key: `photo-${item.mediaItemId}`, date: item.takenAt ?? item.publishedAt,
       title: t("tankStory.photo"), description: null, image: item.image, slug: null, video: null,
     })),
-    ...series.posts.map(post => ({
-      key: `post-${post.id}`, date: post.publishedAt, title: post.title ?? t("tankStory.post"), description: post.description,
-      image: series.photos.find(item => post.mediaItemIds.some(id => String(id) === String(item.mediaItemId)))?.image,
-      slug: post.slug, video: null,
+    ...series.stories.map(story => ({
+      key: `story-${story.id}`, date: story.publishedAt, title: story.title ?? t("tankStory.post"), description: story.description,
+      image: series.photos.find(item => story.mediaItemIds.some(id => String(id) === String(item.mediaItemId)))?.image,
+      slug: story.slug, video: null,
     })),
     ...(stream.owner ? ownVideos.videos.filter(video => videoStateOf(video) === "ready") : series.videos).map(video => ({
       key: `video-${video.id}`, date: video.createdAt, title: t("video.timeline"), description: null, image: undefined, slug: null, video,

@@ -10,9 +10,9 @@ import { minTouchTarget, useTheme } from "../../../src/theme";
 import { usePagedList } from "../../../src/hooks/usePagedList";
 import { publishSignal } from "../../../src/lib/publishSignal";
 import { Chip } from "../../../src/components/Chip";
-import { PictureCard } from "../../../src/components/PictureCard";
+import { StoryCard } from "../../../src/components/StoryCard";
 import { EmptyView, ErrorView, LoadingView } from "../../../src/components/StatusView";
-import type { PictureListItem } from "@cichlids/client-core";
+import type { StoryListItem } from "@cichlids/client-core";
 
 
 const SORTS: { value: "newest" | "views" | "rating"; labelKey: string }[] = [
@@ -46,11 +46,11 @@ export default function GalleryScreen() {
   }, [params.species]);
 
   const fetchPage = useCallback(
-    (offset: number, limit: number) => apiClient.pictures.list({ sort, topic, species, offset, limit }),
+    (offset: number, limit: number) => apiClient.stories.list({ sort, topic, species, offset, limit }),
     [sort, topic, species],
   );
 
-  const { items, loading, loadingMore, error, loadMore, reload, total } = usePagedList<PictureListItem>(fetchPage, [sort, topic, species]);
+  const { items, loading, loadingMore, error, loadMore, reload, total } = usePagedList<StoryListItem>(fetchPage, [sort, topic, species]);
 
   // Returning to the list refetches it only when a picture was published since it loaded, so the
   // new picture shows first; otherwise the loaded pages and the scroll position stay as they are.
@@ -114,7 +114,7 @@ export default function GalleryScreen() {
           numColumns={2}
           contentContainerStyle={styles.listContent}
           renderItem={({ item }) => (
-            <PictureCard picture={item} onPress={() => router.push(`/gallery/${item.slug}`)} />
+            <StoryCard story={item} onPress={() => router.push(`/gallery/${item.slug}`)} />
           )}
           onEndReachedThreshold={0.4}
           onEndReached={loadMore}

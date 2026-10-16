@@ -3,16 +3,16 @@ import type { ReactElement } from "react";
 import { FlatList } from "react-native";
 
 import { useTranslation } from "react-i18next";
-import type { PictureListItem, TankListItem } from "@cichlids/client-core";
+import type { StoryListItem, TankListItem } from "@cichlids/client-core";
 import type { UsePagedListState } from "../hooks/usePagedList";
-import { PictureCard } from "../components/PictureCard";
+import { StoryCard } from "../components/StoryCard";
 import { TankCard } from "../components/TankCard";
 import { EmptyView, ErrorView, LoadingView } from "../components/StatusView";
 import { useTheme } from "../theme";
 
 export function ProfileContentList({ section, pictures, tanks, header }: {
   section: "pictures" | "tanks";
-  pictures: UsePagedListState<PictureListItem>;
+  pictures: UsePagedListState<StoryListItem>;
   tanks: UsePagedListState<TankListItem>;
   header: ReactElement | null;
 }) {
@@ -37,7 +37,7 @@ export function ProfileContentList({ section, pictures, tanks, header }: {
   };
   if (section === "pictures") {
     return <FlatList {...common} key="pictures-grid" data={pictures.items} keyExtractor={(item) => item.slug} numColumns={2}
-      renderItem={({ item }) => <PictureCard picture={item} onPress={() => router.push(`/gallery/${item.slug}`)} />} />;
+      renderItem={({ item }) => <StoryCard story={item} onPress={() => router.push(`/gallery/${item.slug}`)} />} />;
   }
   return <FlatList {...common} key="tanks-list" data={tanks.items} keyExtractor={(item) => String(item.id)}
     renderItem={({ item }) => <TankCard tank={item} onPress={() => router.push(`/tanks/${item.id}`)} />} />;

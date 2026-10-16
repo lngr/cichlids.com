@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
-const { listPictures, listTanks, usePagedList } = vi.hoisted(() => ({ listPictures: vi.fn(), listTanks: vi.fn(), usePagedList: vi.fn() }));
+const { listStories, listTanks, usePagedList } = vi.hoisted(() => ({ listStories: vi.fn(), listTanks: vi.fn(), usePagedList: vi.fn() }));
 vi.mock("react", () => ({ useCallback: (fn: unknown) => fn }));
-vi.mock("../api/client", () => ({ apiClient: { profiles: { listPictures, listTanks } } }));
+vi.mock("../api/client", () => ({ apiClient: { profiles: { listStories, listTanks } } }));
 vi.mock("../hooks/usePagedList", () => ({ usePagedList }));
 import { useProfileLists } from "./useProfileLists";
 
@@ -13,7 +13,7 @@ describe("profile lists", () => {
     const [fetchTanks, tankDeps] = usePagedList.mock.calls[1];
     await fetchPictures(20, 20);
     await fetchTanks(40, 20);
-    expect(listPictures).toHaveBeenCalledWith(28, { offset: 20, limit: 20 });
+    expect(listStories).toHaveBeenCalledWith(28, { offset: 20, limit: 20 });
     expect(listTanks).toHaveBeenCalledWith(28, { offset: 40, limit: 20 });
     expect(pictureDeps).toEqual([28]);
     expect(tankDeps).toEqual([28]);

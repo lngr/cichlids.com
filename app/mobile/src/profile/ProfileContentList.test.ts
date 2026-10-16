@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import type { ReactElement } from "react";
-import type { PictureListItem, TankListItem } from "@cichlids/client-core";
+import type { StoryListItem, TankListItem } from "@cichlids/client-core";
 import type { UsePagedListState } from "../hooks/usePagedList";
 
 vi.mock("react-native", () => ({ FlatList: "FlatList", View: "View" }));
@@ -8,7 +8,7 @@ vi.mock("../theme", () => ({ useTheme: () => ({ colors: { bg: "background" }, sp
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 const push = vi.hoisted(() => vi.fn());
 vi.mock("../navigation/NavigationProvider", () => ({ useMachineRouter: () => ({ push }) }));
-vi.mock("../components/PictureCard", () => ({ PictureCard: "PictureCard" }));
+vi.mock("../components/StoryCard", () => ({ StoryCard: "StoryCard" }));
 vi.mock("../components/TankCard", () => ({ TankCard: "TankCard" }));
 vi.mock("../components/StatusView", () => ({ LoadingView: "LoadingView", ErrorView: "ErrorView", EmptyView: "EmptyView" }));
 import { ProfileContentList } from "./ProfileContentList";
@@ -41,7 +41,7 @@ describe("profile content lists", () => {
     }
   });
   it("pages the active section and opens the selected picture or tank", () => {
-    const pictures = state<PictureListItem>();
+    const pictures = state<StoryListItem>();
     const tanks = state<TankListItem>();
     const header = null;
     const pictureList = propsOf(ProfileContentList({ section: "pictures", pictures, tanks, header }));
@@ -58,7 +58,7 @@ describe("profile content lists", () => {
   });
   it("keeps loaded cards visible with a retry after a later page fails", () => {
     const reload = vi.fn();
-    const pictures = state<PictureListItem>({ items: [{ slug: "fish" } as PictureListItem], error: "Offline", reload });
+    const pictures = state<StoryListItem>({ items: [{ slug: "fish" } as StoryListItem], error: "Offline", reload });
     const list = propsOf(ProfileContentList({ section: "pictures", pictures, tanks: state(), header: null }));
     expect(list.data).toBe(pictures.items);
     expect(list.ListFooterComponent.type).toBe("ErrorView");

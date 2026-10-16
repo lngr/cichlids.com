@@ -64,7 +64,7 @@ export function DraftsSection() {
     setDeleteFailed(false);
     setDeleting((current) => new Set(current).add(id));
     try {
-      await apiClient.posts.discard(Number(draft.id));
+      await apiClient.stories.discard(Number(draft.id));
       if (accountId) void savedUploadInput.forgetDraft(accountId, id);
       setDrafts((current) => current?.filter((candidate) => String(candidate.id) !== id) ?? current);
     } catch {

@@ -1,8 +1,7 @@
 import { useMachineRouter } from "../../../src/navigation/NavigationProvider";
 import { translateApiError } from "../../../src/lib/apiErrors";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
-import { Image } from "expo-image";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
@@ -13,18 +12,21 @@ import { CommentComposer } from "../../../src/components/CommentComposer";
 import { CommentItem } from "../../../src/components/CommentItem";
 import { EmptyView, ErrorView, LoadingView } from "../../../src/components/StatusView";
 import { formatDate } from "../../../src/lib/format";
-import type { Comment, CommentCreated, CreateCommentRequest, PictureDetail } from "@cichlids/client-core";
+import { StorySequence } from "../../../src/gallery/StorySequence";
+import { SubjectCard } from "../../../src/gallery/SubjectCard";
+import { buildSequence, referencesOf } from "../../../src/gallery/storySequence";
+import type { Comment, CommentCreated, CreateCommentRequest, StoryDetail } from "@cichlids/client-core";
 
 const commentKey = (comment: Comment) => comment.id;
 
-export default function PictureDetailScreen() {
+export default function StoryDetailScreen() {
   const { slug } = useLocalSearchParams<{ slug: string }>();
   const theme = useTheme();
   const router = useMachineRouter();
   const navigation = useNavigation();
   const { t, i18n } = useTranslation();
 
-  const [picture, setPicture] = useState<PictureDetail | null>(null);
+  const [story, setStory] = useState<StoryDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -32,11 +34,11 @@ export default function PictureDetailScreen() {
     let cancelled = false;
     setLoading(true);
     setError(null);
-    apiClient.pictures
+    apiClient.stories
       .get(slug)
       .then((detail) => {
         if (cancelled) return;
-        setPicture(detail);
+        setStory(detail);
         navigation.setOptions({ title: detail.title ?? t("gallery.untitled") });
       })
       .catch((err) => !cancelled && setError(translateApiError(err, t, "common.loadError")))
@@ -46,18 +48,18 @@ export default function PictureDetailScreen() {
     };
   }, [slug, navigation, t]);
 
-  const fetchComments = useCallback((offset: number, limit: number) => apiClient.pictures.listComments(slug, { offset, limit }), [slug]);
+  const fetchComments = useCallback((offset: number, limit: number) => apiClient.stories.listComments(slug, { offset, limit }), [slug]);
   const comments = usePagedList<Comment>(fetchComments, [slug], commentKey);
 
-  const submitComment = useCallback((request: CreateCommentRequest) => apiClient.pictures.createComment(slug, request), [slug]);
-  // A new rating changes the picture's average and count, a new comment its comment count. The
-  // refetch replaces the shown picture without the loading state; on failure the shown values stay.
+  const submitComment = useCallback((request: CreateCommentRequest) => apiClient.stories.createComment(slug, request), [slug]);
+  // A new rating changes the story's average and count, a new comment its comment count. The
+  // refetch replaces the shown story without the loading state; on failure the shown values stay.
   const onCommentPosted = useCallback(
     (created: CommentCreated) => {
       if (created.comment) comments.prepend(created.comment);
-      apiClient.pictures
+      apiClient.stories
         .get(slug)
-        .then(setPicture)
+        .then(setStory)
         .catch(() => undefined);
     },
     [slug, comments.prepend],
@@ -65,8 +67,11 @@ export default function PictureDetailScreen() {
 
   const emptyState = listEmptyState(comments);
 
+  const sequence = useMemo(() => (story ? buildSequence(story) : []), [story]);
+  const references = useMemo(() => (story ? referencesOf(story) : []), [story]);
+
   if (loading) return <LoadingView label={t("gallery.detail.loading")} />;
-  if (error || !picture) return <ErrorView message={error ?? t("gallery.detail.notFound")} />;
+  if (error || !story) return <ErrorView message={error ?? t("gallery.detail.notFound")} />;
 
   return (
     <FlatList
@@ -78,32 +83,39 @@ export default function PictureDetailScreen() {
       onEndReached={comments.loadMore}
       ListHeaderComponent={
         <View>
-          <Image
-            source={picture.image?.large ?? picture.image?.medium ?? undefined}
-            style={[styles.heroImage, { backgroundColor: theme.colors.placeholder }]}
-            contentFit="cover"
-          />
+          <StorySequence pages={sequence} onOpenSubject={(route) => router.push(route as never)} />
           <View style={styles.body}>
-            <Text testID="picture-title" style={[theme.type.h1, { color: theme.colors.fg }]}>{picture.title ?? t("gallery.untitled")}</Text>
-            <Pressable onPress={() => router.push(`/profile/${picture.author.id}`)}>
+            <Text testID="picture-title" style={[theme.type.h1, { color: theme.colors.fg }]}>{story.title ?? t("gallery.untitled")}</Text>
+            <Pressable onPress={() => router.push(`/profile/${story.author.id}`)}>
               <Text style={[theme.type.bodyStrong, { color: theme.colors.accent, marginTop: 4 }]}>
-                {picture.author.displayName ?? picture.author.username}
+                {story.author.displayName ?? story.author.username}
               </Text>
             </Pressable>
             <Text testID="picture-meta" style={[theme.type.meta, { color: theme.colors.muted, marginTop: 2 }]}>
-              {formatDate(picture.publishedAt, i18n.language)} · {new Intl.NumberFormat(i18n.language).format(Number(picture.viewCount))} {t("gallery.views", { count: Number(picture.viewCount) })}
-              {picture.ratingAverage ? ` · ${"★".repeat(Math.round(Number(picture.ratingAverage)))} (${new Intl.NumberFormat(i18n.language).format(Number(picture.ratingCount))})` : ""}
+              {formatDate(story.publishedAt, i18n.language)} · {new Intl.NumberFormat(i18n.language).format(Number(story.viewCount))} {t("gallery.views", { count: Number(story.viewCount) })}
+              {story.ratingAverage ? ` · ${"★".repeat(Math.round(Number(story.ratingAverage)))} (${new Intl.NumberFormat(i18n.language).format(Number(story.ratingCount))})` : ""}
             </Text>
-            {picture.description ? (
+            {story.description ? (
               <Text testID="picture-description" style={[theme.type.body, { color: theme.colors.fg, marginTop: 10 }]}>
-                {picture.description}
+                {story.description}
               </Text>
             ) : null}
 
             <Text style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20 }]}>
-              {t("gallery.detail.comments", { count: Number(picture.commentCount) })}
+              {t("gallery.detail.comments", { count: Number(story.commentCount) })}
             </Text>
-            <CommentComposer submit={submitComment} onPosted={onCommentPosted} ownerId={picture.author.id} />
+            {references.length > 0 ? (
+              <View testID="story-references" style={styles.references}>
+                <Text style={[theme.type.eyebrow, { color: theme.colors.muted, marginBottom: 8 }]}>{t("gallery.story.references")}</Text>
+                {references.map((subject) => (
+                  <View key={subject.id} style={styles.reference}>
+                    <SubjectCard subject={subject} onOpen={(route) => router.push(route as never)} />
+                  </View>
+                ))}
+              </View>
+            ) : null}
+
+            <CommentComposer submit={submitComment} onPosted={onCommentPosted} ownerId={story.author.id} />
           </View>
         </View>
       }
@@ -123,9 +135,11 @@ export default function PictureDetailScreen() {
 }
 
 const styles = StyleSheet.create({
-  heroImage: {
-    width: "100%",
-    aspectRatio: 4 / 3,
+  references: {
+    marginTop: 20,
+  },
+  reference: {
+    marginBottom: 8,
   },
   body: {
     padding: 16,

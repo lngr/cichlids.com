@@ -155,7 +155,7 @@ function UploadFlow({ draftId, accountId }: { draftId: string | null; accountId:
     setError(null);
     setPhase("publishing");
     try {
-      const picture = await apiClient.posts.publish(Number(current.id), toPublishRequest(form));
+      const picture = await apiClient.stories.publish(Number(current.id), toPublishRequest(form));
       draftRef.current = null;
       if (accountId) void savedUploadInput.forgetDraft(accountId, String(current.id));
       publishSignal.notifyPublished();
@@ -176,7 +176,7 @@ function UploadFlow({ draftId, accountId }: { draftId: string | null; accountId:
     setError(null);
     setPhase("discarding");
     try {
-      await apiClient.posts.discard(Number(current.id));
+      await apiClient.stories.discard(Number(current.id));
       draftRef.current = null;
       if (accountId) void savedUploadInput.forgetDraft(accountId, String(current.id));
       if (!mountedRef.current) return;

@@ -51,7 +51,7 @@ export default function ProfileScreen() {
       <ProfileHeader profile={profile} />
       <VacationShareLine share={profile.vacationShare} />
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: theme.space[4], paddingHorizontal: theme.space[4] }}>
-        <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("profile.pictures", { count: Number(profile.stats.pictureCount) })}</Text>
+        <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("profile.pictures", { count: Number(profile.stats.storyCount) })}</Text>
         <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("profile.tanks", { count: Number(profile.stats.tankCount) })}</Text>
         <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("profile.comments", { count: Number(profile.stats.commentCount) })}</Text>
       </View>

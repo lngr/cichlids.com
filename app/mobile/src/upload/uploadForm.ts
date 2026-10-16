@@ -1,4 +1,4 @@
-import type { PublishPostRequest, UploadFile } from "@cichlids/client-core";
+import type { PublishStoryRequest, UploadFile } from "@cichlids/client-core";
 import { apiErrorKey } from "../lib/apiErrors";
 
 /** Longest accepted title, matching the API's publish validation. */
@@ -28,7 +28,7 @@ export function canPublish(form: UploadFormState): boolean {
 }
 
 /** The publish request body: trimmed title, trimmed description or null when blank, the topic. */
-export function toPublishRequest(form: UploadFormState): PublishPostRequest {
+export function toPublishRequest(form: UploadFormState): PublishStoryRequest {
   const description = form.description.trim();
   return {
     title: form.title.trim(),

@@ -90,7 +90,7 @@ function MemberToday() {
       </View> : null}
       {memory ? <View testID="today-memory" style={{ gap: theme.space[3] }}>
         {heading(t("today.onThisDay", { count: Number(memory.yearsAgo) }))}
-        {card("today-memory-photo", memory.title || t("common.untitled"), memory.image, `/gallery/${memory.slug ?? memory.postId}`)}
+        {card("today-memory-photo", memory.title || t("common.untitled"), memory.image, `/gallery/${memory.slug ?? memory.storyId}`)}
       </View> : null}
       {weekly ? <View testID="today-week" style={{ gap: theme.space[3] }}>
         {heading(t("discover.week"))}

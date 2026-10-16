@@ -44,7 +44,7 @@ export default function SpeciesDetailScreen() {
   if (loading) return <LoadingView label={t("species.detail.loading")} />;
   if (error || !species) return <ErrorView message={error ?? t("species.detail.notFound")} />;
 
-  const pictureCount = Number(species.pictureCount);
+  const storyCount = Number(species.storyCount);
 
   return (
     <ScrollView style={{ backgroundColor: theme.colors.bg }} contentContainerStyle={styles.content}>
@@ -72,12 +72,12 @@ export default function SpeciesDetailScreen() {
       <Pressable
         style={[styles.pictureLink, { backgroundColor: theme.colors.accentWeak, borderRadius: theme.radius.md }]}
         onPress={() => species.slug && router.push(`/gallery?species=${species.slug}`)}
-        disabled={!species.slug || pictureCount === 0}
+        disabled={!species.slug || storyCount === 0}
         accessibilityRole="button"
-        accessibilityLabel={t("species.detail.viewPictures", { count: pictureCount })}
+        accessibilityLabel={t("species.detail.viewPictures", { count: storyCount })}
       >
         <Text style={[theme.type.bodyStrong, { color: theme.colors.accent }]}>
-          {t("species.detail.viewPictures", { count: pictureCount })}
+          {t("species.detail.viewPictures", { count: storyCount })}
         </Text>
         <MaterialCommunityIcons testID="species-gallery-arrow" name={rtl ? "arrow-left" : "arrow-right"} size={20} color={theme.colors.accent} accessible={false} />
       </Pressable>
