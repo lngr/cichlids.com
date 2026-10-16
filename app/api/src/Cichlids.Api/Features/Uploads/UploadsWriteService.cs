@@ -108,8 +108,10 @@ public sealed class UploadsWriteService(
 
     /// <summary>
     /// Processes a photo into its variants and writes the sanitized original and the variants to
-    /// the object store. A public photo lives under the public variant prefix; a private photo
-    /// lives entirely under the private prefix, so none of its objects has a public URL. Returns the
+    /// the object store, and reads the capture time from the uploaded bytes (EXIF DateTimeOriginal
+    /// and OffsetTimeOriginal; nothing else of the EXIF block is read). A public photo lives under
+    /// the public variant prefix; a private photo lives entirely under the private prefix, so none
+    /// of its objects has a public URL. Returns the
     /// media item with its variants, not yet saved, and the keys written so a failing caller can
     /// delete them. Throws the image exceptions of CreateDraftAsync before anything is stored; a
     /// failing write deletes the objects already written.
@@ -119,6 +121,7 @@ public sealed class UploadsWriteService(
         CancellationToken cancellationToken)
     {
         var processed = ImageProcessor.Process(bytes);
+        var captured = CaptureTimeReader.Read(bytes, timeProvider.GetUtcNow()).Time;
         var (width, height) = (processed.Width, processed.Height);
         var original = MediaMetadataSanitizer.Sanitize(bytes);
         var sourceSha256 = Convert.ToHexStringLower(SHA256.HashData(bytes));
@@ -162,6 +165,7 @@ public sealed class UploadsWriteService(
             throw;
         }
 
+        var createdAt = DateTimeOffset.UtcNow;
         var item = new MediaItem
         {
             OwnerProfileId = ownerProfileId,
@@ -173,7 +177,10 @@ public sealed class UploadsWriteService(
             Width = width,
             Height = height,
             ChecksumSha256 = originalSha256,
-            CreatedAt = DateTimeOffset.UtcNow,
+            CreatedAt = createdAt,
+            TakenAtLocal = captured?.LocalTime,
+            TakenAtOffsetMinutes = captured?.Offset is { } offset ? (short)offset.TotalMinutes : null,
+            CaptureCheckedAt = createdAt,
             Variants = variants
                 .Select(v => new MediaVariant { Label = v.Label, Width = v.Width, StorageKey = v.Key, ByteSize = v.Bytes.LongLength })
                 .ToList(),

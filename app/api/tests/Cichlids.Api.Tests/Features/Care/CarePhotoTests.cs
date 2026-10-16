@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using Cichlids.Api.Tests.Features.Uploads;
+using Cichlids.Tests.Shared;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +38,21 @@ public sealed class CarePhotoTests(UploadsFixture fixture)
         Assert.Equal(4, item.Variants.Count);
         Assert.All(item.Variants, v => Assert.StartsWith("private/", v.StorageKey));
         Assert.True(await fixture.ObjectStore.ExistsAsync(item.StorageKey));
+    }
+
+    [Fact]
+    public async Task GivenPhotoWithExifDate_WhenAddingItToAnEntry_ThenTheMediaItemStoresTheCaptureTime()
+    {
+        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var id = await LogAsync(fixture.Client, token, tank);
+        using var response = await AddPhotoAsync(token, tank, id, PhotoFixtures.PhoneJpeg(1200, 800));
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        var profileId = (await BodyAsync(response)).GetProperty("authorProfileId").GetInt64();
+
+        await using var db = fixture.CreateDbContext();
+        var item = await db.MediaItems.SingleAsync(m => m.OwnerProfileId == profileId);
+        Assert.Equal(new DateTime(2024, 5, 1, 10, 20, 30), item.TakenAtLocal);
+        Assert.Equal((short)120, item.TakenAtOffsetMinutes);
     }
 
     [Fact]

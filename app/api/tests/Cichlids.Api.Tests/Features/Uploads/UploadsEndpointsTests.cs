@@ -260,6 +260,46 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     }
 
     [Fact]
+    public async Task Upload_StoresTheCaptureTimeOfThePhotoWithItsOffset()
+    {
+        var draft = await UploadDraftAsync(fixture.Client, NewToken(), PhotoFixtures.PhoneJpeg(1000, 700));
+
+        await using var db = fixture.CreateDbContext();
+        var mediaItem = await LoadMediaItemAsync(db, draft.Id);
+        Assert.Equal(new DateTime(2024, 5, 1, 10, 20, 30), mediaItem.TakenAtLocal);
+        Assert.Equal((short)120, mediaItem.TakenAtOffsetMinutes);
+        Assert.Equal(mediaItem.CreatedAt, mediaItem.CaptureCheckedAt);
+    }
+
+    [Fact]
+    public async Task Upload_StoresACaptureTimeWithoutOffsetAsWallClockTimeWithoutOffset()
+    {
+        var draft = await UploadDraftAsync(fixture.Client, NewToken(), PhotoFixtures.JpegWithCaptureTime("2019:08:17 21:05:09"));
+
+        await using var db = fixture.CreateDbContext();
+        var mediaItem = await LoadMediaItemAsync(db, draft.Id);
+        Assert.Equal(new DateTime(2019, 8, 17, 21, 5, 9), mediaItem.TakenAtLocal);
+        Assert.Null(mediaItem.TakenAtOffsetMinutes);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("0000:00:00 00:00:00")]
+    [InlineData("1985:01:01 00:00:00")]
+    public async Task Upload_StoresNoCaptureTimeForAMissingOrImplausibleDate(string? date)
+    {
+        var bytes = date is null ? Jpeg(300, 200) : PhotoFixtures.JpegWithCaptureTime(date, width: 300, height: 200);
+
+        var draft = await UploadDraftAsync(fixture.Client, NewToken(), bytes);
+
+        await using var db = fixture.CreateDbContext();
+        var mediaItem = await LoadMediaItemAsync(db, draft.Id);
+        Assert.Null(mediaItem.TakenAtLocal);
+        Assert.Null(mediaItem.TakenAtOffsetMinutes);
+        Assert.NotNull(mediaItem.CaptureCheckedAt);
+    }
+
+    [Fact]
     public async Task Upload_StoresTheOriginalAndItsVariantsWithTheObjectMetadataContract()
     {
         var bytes = PhotoFixtures.PhoneJpeg(1000, 700);
