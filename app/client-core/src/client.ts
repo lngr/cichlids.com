@@ -1,6 +1,8 @@
 import { createClient, createConfig } from "./generated/client/index.js";
 import type { Client } from "./generated/client/index.js";
 import type { VideoUploadTransport } from "./videoUpload.js";
+import { toCareHeatmap } from "./careHeatmap.js";
+import type { CareHeatmap } from "./careHeatmap.js";
 import { toMeStreaks, toTankStreaks, toVacation } from "./streaks.js";
 import type { MeStreaks, TankStreaks, Vacation } from "./streaks.js";
 import {
@@ -41,6 +43,8 @@ import {
   unsubscribeWebPush,
   getCareSeries,
   listDueCare,
+  getCareHeatmap,
+  getMyCareHeatmap,
   updateCarePlan,
   updateCarePlanRule,
   getCommunityThread,
@@ -360,6 +364,10 @@ export interface CichlidsClient {
     /** Switches the care reminders of a tank on or off for every device of the member. */
     setReminders(tankId: number, enabled: boolean, local: LocalTime): Promise<CarePlan>;
     due(local: LocalTime): Promise<DueCareItem[]>;
+    /** The care days of the last 16 weeks of a tank whose care stream the viewer sees; local is the date of the viewer. */
+    heatmap(tankId: number, local: LocalTime): Promise<CareHeatmap>;
+    /** The care days of the last 16 weeks of the own tanks, summed. */
+    ownHeatmap(local: LocalTime): Promise<CareHeatmap>;
   };
   waterChange: {
     /** Starts a guided water change on an own tank, or returns the open one. */
@@ -524,6 +532,8 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
         return toPlan(unwrap(await updateCarePlan({ client, path: { tankId }, query: local, body: { remindersEnabled: enabled } })));
       },
       async due(local) { return unwrap<DueCareDto>(await listDueCare({ client, query: local })).items.map(toDueItem); },
+      async heatmap(tankId, local) { return toCareHeatmap(unwrap(await getCareHeatmap({ client, path: { tankId }, query: local }))); },
+      async ownHeatmap(local) { return toCareHeatmap(unwrap(await getMyCareHeatmap({ client, query: local }))); },
     },
     waterChange: {
       async start(tankId) { return unwrap(await startWaterChange({ client, path: { tankId } })); },

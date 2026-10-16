@@ -1,5 +1,7 @@
 export { createCichlidsClient, ApiError } from "./client.js";
 export { uploadVideo } from "./videoUpload.js";
+export { HEATMAP_WEEKS, heatmapIntensity, heatmapListItems, layoutHeatmap } from "./careHeatmap.js";
+export type { CareHeatmap, CareHeatmapDay, HeatmapCell, HeatmapKind, HeatmapLayout } from "./careHeatmap.js";
 export { checkVacationDates } from "./vacation.js";
 export {
   activeVacation, daysUntilDeadline, hasStreakHistory, seriesPhotoKeepsStreak, toVacationShare,
