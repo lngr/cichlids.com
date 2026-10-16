@@ -5,6 +5,10 @@ import { toUploadFile } from "./uploadForm";
 
 export interface PhotoPickButtonProps {
   label: string;
+  /** Test id of the button; the web variant names its file input with the suffix -input. */
+  testID?: string;
+  /** The look of the button, primary by default. */
+  variant?: "primary" | "secondary";
   disabled?: boolean;
   onPicked(file: UploadFile): void;
   onError(error: unknown): void;
@@ -14,7 +18,7 @@ export interface PhotoPickButtonProps {
  * Opens the photo library and hands the chosen image to onPicked. A quality below 1 makes the
  * picker return JPEG, so formats the API rejects (such as HEIC) never reach the upload.
  */
-export function PhotoPickButton({ label, disabled, onPicked, onError }: PhotoPickButtonProps) {
+export function PhotoPickButton({ label, testID, variant, disabled, onPicked, onError }: PhotoPickButtonProps) {
   const pick = async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
@@ -29,5 +33,5 @@ export function PhotoPickButton({ label, disabled, onPicked, onError }: PhotoPic
     }
   };
 
-  return <Button testID="upload-pick" label={label} onPress={() => void pick()} disabled={disabled} />;
+  return <Button testID={testID ?? "upload-pick"} variant={variant} label={label} onPress={() => void pick()} disabled={disabled} />;
 }

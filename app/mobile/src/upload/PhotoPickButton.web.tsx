@@ -7,7 +7,7 @@ import type { PhotoPickButtonProps } from "./PhotoPickButton";
  * chosen File to onPicked as is. The input is always rendered, so it is a stable handle for
  * browser tests to set files on.
  */
-export function PhotoPickButton({ label, disabled, onPicked }: PhotoPickButtonProps) {
+export function PhotoPickButton({ label, testID, variant, disabled, onPicked }: PhotoPickButtonProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -16,7 +16,7 @@ export function PhotoPickButton({ label, disabled, onPicked }: PhotoPickButtonPr
         ref={inputRef}
         type="file"
         accept="image/jpeg,image/png,image/webp"
-        data-testid="upload-file-input"
+        data-testid={testID ? `${testID}-input` : "upload-file-input"}
         style={{ display: "none" }}
         onChange={(event) => {
           const file = event.target.files?.[0];
@@ -25,7 +25,7 @@ export function PhotoPickButton({ label, disabled, onPicked }: PhotoPickButtonPr
           if (file) onPicked(file);
         }}
       />
-      <Button testID="upload-pick" label={label} onPress={() => inputRef.current?.click()} disabled={disabled} />
+      <Button testID={testID ?? "upload-pick"} variant={variant} label={label} onPress={() => inputRef.current?.click()} disabled={disabled} />
     </>
   );
 }

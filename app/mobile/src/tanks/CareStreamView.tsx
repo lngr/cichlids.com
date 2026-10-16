@@ -7,6 +7,7 @@ import { useTheme } from "../theme";
 import { useUnits } from "../units/useUnits";
 import { translateApiError } from "../lib/apiErrors";
 import { amountDraft, parseCareAmount, formatCareAmount, type AmountUnit } from "./careAmount";
+import { CareEntryExtras } from "./CareEntryExtras";
 import { CarePlanView } from "./CarePlanView";
 import { MeasurementForm } from "./MeasurementForm";
 import { MeasurementGraphs } from "./MeasurementGraphs";
@@ -50,6 +51,7 @@ export function CareStreamView({ stream }: { stream: CareStream }) {
         {entry.kind === "measurement"
           ? <Button testID={`care-edit-${entry.id}`} variant="secondary" label={t("care.measure.editTitle")} disabled={busy || editing || measuring} onPress={() => stream.measure.send({ type: "OPEN", system, entry })} />
           : <Button testID={`care-edit-${entry.id}`} variant="secondary" label={t(entry.amount ? "care.editAmount" : "care.addAmount")} disabled={busy || editing || measuring} onPress={() => send({ type: "EDIT", entry })} />}
+        <CareEntryExtras entry={entry} stream={stream} />
       </View>)}
       {list.hasMore ? <Button testID="care-more" variant="secondary" label={t("care.more")} busy={list.loadingMore} onPress={list.loadMore} /> : null}
       <Modal visible={editing} transparent animationType="slide" onRequestClose={() => send({ type: "CANCEL" })}>
