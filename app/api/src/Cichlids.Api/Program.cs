@@ -7,6 +7,7 @@ using Cichlids.Api.Features.Auth.WebSessions;
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Comments;
 using Cichlids.Api.Features.Community;
+using Cichlids.Api.Features.Decommissioning;
 using Cichlids.Api.Features.FeatureFlags;
 using Cichlids.Api.Features.LegacyRedirects;
 using Cichlids.Api.Features.Me;
@@ -140,6 +141,8 @@ builder.Services.AddProblemDetails(options => options.CustomizeProblemDetails = 
         context.ProblemDetails.Extensions.TryAdd("code", "web_push_request_invalid");
     else if (TankSeriesPhotoEndpoints.IsSeriesPhotoPath(context.HttpContext.Request.Path))
         context.ProblemDetails.Extensions.TryAdd("code", "tank_photo_invalid");
+    else if (TankDecommissioningEndpoints.IsDecommissioningPath(context.HttpContext.Request.Path))
+        context.ProblemDetails.Extensions.TryAdd("code", TankDecommissioningEndpoints.RequestInvalidCode);
     else if (VideoEndpoints.IsVideoPath(context.HttpContext.Request.Path))
         context.ProblemDetails.Extensions.TryAdd("code", VideoProblem.RequestInvalid);
 });
@@ -173,6 +176,7 @@ builder.Services.AddOptions<WaterChangeOptions>()
 builder.Services.AddScoped<WaterChangeService>();
 builder.Services.AddHostedService<WaterChangeCleanupHostedService>();
 builder.Services.AddScoped<TankSeriesPhotoService>();
+builder.Services.AddScoped<TankDecommissioningService>();
 builder.Services.AddOptions<StreakOptions>()
     .Bind(builder.Configuration.GetSection(StreakOptions.SectionName))
     .Validate(o => o.FreezesPerYear is >= 0 and <= 12, "Streaks:FreezesPerYear must be between 0 and 12.")
@@ -314,6 +318,14 @@ app.UseWhen(context => TankSeriesPhotoEndpoints.IsSeriesPhotoPath(context.Reques
             status == 401 ? "tank_photo_auth_required" : "tank_photo_invalid").ExecuteAsync(context.HttpContext);
     }));
 
+app.UseWhen(context => TankDecommissioningEndpoints.IsDecommissioningPath(context.Request.Path), branch =>
+    branch.UseStatusCodePages(async context =>
+    {
+        var status = context.HttpContext.Response.StatusCode;
+        await Cichlids.Api.Features.Common.ApiProblems.WithCode(status, "Decommissioning request refused", "The decommissioning request could not be completed.",
+            status == 401 ? TankDecommissioningEndpoints.AuthRequiredCode : TankDecommissioningEndpoints.RequestInvalidCode).ExecuteAsync(context.HttpContext);
+    }));
+
 app.UseWhen(context => VideoEndpoints.IsVideoPath(context.Request.Path), branch =>
     branch.UseStatusCodePages(async context =>
     {
@@ -342,6 +354,7 @@ app.MapPicturesEndpoints();
 app.MapTanksEndpoints();
 app.MapCareEndpoints();
 app.MapStreakEndpoints();
+app.MapTankDecommissioningEndpoints();
 app.MapWebPushEndpoints();
 app.MapDiscoverEndpoints();
 app.MapProfilesEndpoints();
