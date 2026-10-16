@@ -120,6 +120,7 @@ builder.Services.AddOptions<DeviceAuthOptions>()
         "DeviceAuth durations and limits must be positive.")
     .ValidateOnStart();
 builder.Services.AddScoped<DeviceAuthService>();
+builder.Services.AddScoped<ProvisionalRegistrationService>();
 builder.Services.AddDeviceAuthRateLimits();
 
 // The native app authenticates with a bearer token, the web app with its session cookie. A
@@ -413,6 +414,7 @@ app.MapProfileMediaEndpoints();
 app.MapOnboardingEndpoints();
 app.MapWebSessionEndpoints();
 app.MapDeviceAuthEndpoints();
+app.MapProvisionalRegistrationEndpoints();
 app.MapCommunityEndpoints();
 app.MapLegacyRedirectsEndpoints();
 app.MapUploadsEndpoints();

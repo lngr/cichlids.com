@@ -71,6 +71,9 @@ public sealed class ProvisionalGatedEndpointsTests(ApiFixture fixture)
         { "POST", "/api/me/web-push/subscriptions" },
         { "DELETE", "/api/me/web-push/subscriptions" },
         { "POST", "/api/me/care/reminders/snooze" },
+        { "POST", "/api/me/provisional/preview" },
+        { "POST", "/api/me/provisional/upgrade" },
+        { "POST", "/api/me/provisional/move" },
     };
 
     [Theory]
