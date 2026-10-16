@@ -21,6 +21,9 @@ public sealed class ApiFixture : IAsyncLifetime
 {
     private const string ObjectStorePublicBaseUrl = "http://objects.test/cichlids-media";
 
+    /// <summary>The VAPID key pair of the test API, generated once per test run.</summary>
+    public static (string PublicKey, string PrivateKey) VapidKeyPair { get; } = Cichlids.Api.Features.WebPush.VapidKeys.Generate();
+
     private readonly PostgreSqlContainer _postgres = new PostgreSqlBuilder("postgres:17")
         .WithDatabase("cichlids")
         .WithUsername("cichlids")
@@ -51,6 +54,14 @@ public sealed class ApiFixture : IAsyncLifetime
             // that list is set here.
             builder.UseSetting("Webhooks:AllowedTargetHosts:0", "example.test");
             builder.UseSetting("Webhooks:AllowedTargetHosts:1", "localhost");
+            // Web Push is configured while the application is being built, like the allowlist above.
+            // The sender loop stays off; tests run its passes directly.
+            builder.UseSetting("WebPush:Enabled", "true");
+            builder.UseSetting("WebPush:VapidPublicKey", VapidKeyPair.PublicKey);
+            builder.UseSetting("WebPush:VapidPrivateKey", VapidKeyPair.PrivateKey);
+            builder.UseSetting("WebPush:Subject", "mailto:operator@example.test");
+            builder.UseSetting("WebPush:AllowedPushHosts:0", "push.example.test");
+            builder.UseSetting("WebPushSender:Enabled", "false");
             builder.ConfigureAppConfiguration((_, configBuilder) =>
                 configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                 {

@@ -47,6 +47,7 @@ public class CichlidsDbContext : DbContext
     public DbSet<OutboxEvent> OutboxEvents => Set<OutboxEvent>();
     public DbSet<WebhookSubscription> WebhookSubscriptions => Set<WebhookSubscription>();
     public DbSet<WebSession> WebSessions => Set<WebSession>();
+    public DbSet<WebPushSubscription> WebPushSubscriptions => Set<WebPushSubscription>();
 
     /// <summary>
     /// Vaulted legacy comments that could not be migrated into the domain model. Mapped into a

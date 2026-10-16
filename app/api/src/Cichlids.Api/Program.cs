@@ -130,6 +130,8 @@ builder.Services.AddProblemDetails(options => options.CustomizeProblemDetails = 
 {
     if (CareEndpoints.IsCarePath(context.HttpContext.Request.Path))
         context.ProblemDetails.Extensions.TryAdd("code", "care_request_invalid");
+    else if (WebPushEndpoints.IsWebPushPath(context.HttpContext.Request.Path))
+        context.ProblemDetails.Extensions.TryAdd("code", "web_push_request_invalid");
 });
 builder.Services.AddExceptionHandler<NonMemberLoginExceptionHandler>();
 
@@ -147,6 +149,7 @@ builder.Services.AddScoped<CareTodoService>();
 builder.Services.AddScoped<CareEntryMapper>();
 builder.Services.AddSingleton<CarePhotoUrlSigner>();
 builder.Services.AddScoped<CarePlanService>();
+builder.Services.AddScoped<WebPushSubscriptionService>();
 builder.Services.AddScoped<OnboardingWriteService>();
 builder.Services.AddScoped<ProfilesQueryService>();
 builder.Services.AddScoped<CommentsQueryService>();
@@ -211,6 +214,14 @@ app.UseWhen(context => CareEndpoints.IsCarePath(context.Request.Path), branch =>
             status == 401 ? "care_auth_required" : "care_request_invalid").ExecuteAsync(context.HttpContext);
     }));
 
+app.UseWhen(context => WebPushEndpoints.IsWebPushPath(context.Request.Path), branch =>
+    branch.UseStatusCodePages(async context =>
+    {
+        var status = context.HttpContext.Response.StatusCode;
+        await Cichlids.Api.Features.Common.ApiProblems.WithCode(status, "Web Push request refused", "The Web Push request could not be completed.",
+            status == 401 ? "web_push_auth_required" : "web_push_request_invalid").ExecuteAsync(context.HttpContext);
+    }));
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -222,6 +233,7 @@ app.MapSpeciesEndpoints();
 app.MapPicturesEndpoints();
 app.MapTanksEndpoints();
 app.MapCareEndpoints();
+app.MapWebPushEndpoints();
 app.MapDiscoverEndpoints();
 app.MapProfilesEndpoints();
 app.MapCommentsEndpoints();
