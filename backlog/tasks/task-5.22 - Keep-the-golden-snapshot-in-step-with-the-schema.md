@@ -1,11 +1,15 @@
 ---
 id: TASK-5.22
 title: Keep the golden snapshot in step with the schema
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-16 15:16'
+updated_date: '2026-10-16 16:15'
 labels: []
 dependencies: []
+references:
+  - tools/golden-snapshot/test_migrated_schema.py
+  - tools/golden-snapshot/test_snapshot.py
 parent_task_id: TASK-5
 priority: high
 ordinal: 108000
@@ -43,3 +47,14 @@ The golden snapshot tooling (tools/golden-snapshot: fixture-schema.sql, schema.j
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implementation (2026-10-16)
+- fixture-schema.sql regenerated from the EF model and pinned to 20261016155023_MediaLinks; schema.json from the migrated database (42 tables); a CI step migrates a synthetic database and compares schema, fixture tables and pinned migration.
+- TEXT_HANDLING in snapshot.py lists every text, array and JSON column with its rule; a test fails for a text column without a rule.
+- Masking beyond the story: media_link.caption as generated text; decommissionings whose proof photos fall outside the media subset are removed (required restrict keys); avatar and header links are removed; other links of retained photos stay with masked captions; photo selection takes the first item link by position.
+- Fixed: the migration history columns are migration_id and product_version (snake case); fixture.sql sets tank.care_reminders_enabled explicitly because the EF model lacks the default true of the migration.
+- Verification: golden-snapshot python tests green in its image against a throwaway postgres; actionlint clean; the CI step itself not run on GitHub.
+<!-- SECTION:NOTES:END -->
