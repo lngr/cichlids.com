@@ -80,3 +80,17 @@ it("routes Water change from the create sheet through tank selection", () => {
   expect(actor.getSnapshot().context.path).toBe("/tanks/7?view=care");
   actor.stop();
 });
+
+it("opens the to-do list as its own view of the Me tab and returns to where it was opened", () => {
+  const actor = createActor(navigationMachine).start();
+  actor.send({ type: "OPEN", path: "/todos" });
+  expect(actor.getSnapshot().context.path).toBe("/todos");
+  expect(actor.getSnapshot().matches({ viewing: "todos" })).toBe(true);
+  expect(selectedTab("/todos")).toBe("me");
+  actor.send({ type: "BACK" });
+  expect(actor.getSnapshot().context.path).toBe("/today");
+  actor.send({ type: "EXTERNAL", path: "/todos" });
+  actor.send({ type: "BACK" });
+  expect(actor.getSnapshot().context.path).toBe("/me");
+  actor.stop();
+});
