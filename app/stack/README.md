@@ -358,6 +358,39 @@ without personal data) and refuses to start with `WebPush:Enabled` true and no k
 the host and its subdomains, and the default covers the services of Chrome, Edge, Firefox and
 Safari.
 
+## Device tokens
+
+Installations of the app that registered no account authenticate with a device token. The API
+issues these tokens itself (ES256, fifteen minutes, no refresh token) under the issuer
+`cichlids-device-tokens` and the audience `cichlids-api-device`, after the installation has signed
+a one-time challenge with the private key it registered. The signing keys are a JSON key set: the
+current key with its private part and the public parts of the keys it replaced. The API loads the
+set from `DeviceTokens:KeySet` (the JSON itself, for an environment variable) or from the file named
+by `DeviceTokens:KeySetFile`, a relative path resolved against the content root.
+
+Development needs no setup: without a configured key set the API generates a key in memory, and
+with a `DeviceTokens:KeySetFile` that does not exist yet it writes the file, readable by its owner
+only. Outside Development the API refuses to start without a key set. `tools/create-device-token-key.cs`
+creates it:
+
+```sh
+dotnet run tools/create-device-token-key.cs -- new <file>      # a key set with one new key
+dotnet run tools/create-device-token-key.cs -- rotate <file>   # a new current key, the former one stays as a previous key
+```
+
+The file is the content of the secret that the deployed API mounts read-only, like the Data
+Protection key ring. A rotation replaces the secret with the rotated file. Tokens that the former
+key signed validate until they expire, at most fifteen minutes after the API instances read the
+rotated file. Every instance of the API has to read the same set. The repository and the images
+never hold a key set; local and test keys are generated at run time.
+
+The limits `DeviceAuth:MaxRegistrationsPerAddressPerHour` (default 30) and
+`DeviceAuth:MaxTokenRequestsPerAddressPerMinute` (default 120) count per network address in the
+memory of each API instance; IPv6 addresses count per /64 network. A challenge lives
+`DeviceAuth:ChallengeLifetime` (default two minutes), and the timestamp of a signed challenge may
+differ from the time of the API by `DeviceAuth:TimestampWindow` (default two minutes). Challenges are
+stored in the database, so a challenge is accepted once across all instances.
+
 ## Webhooks and the outbox
 
 The API delivers outbox events as signed webhooks only to hosts on the allowlist
@@ -419,7 +452,8 @@ the already-running Postgres, RustFS and Keycloak containers above:
 - a second `Cichlids.Api` instance built in Release to a temp directory and run on
   `http://localhost:5046`, pointed at that database and bucket, with the outbox dispatcher
   polling every second and giving events up after fifteen seconds, its own Data Protection key
-  ring and its own VAPID key pair in the state directory (removed on `down`), the sender loop of
+  ring, its own VAPID key pair and its own device token key set in the state directory (removed
+  on `down`), the sender loop of
   Web Push reminders switched off and the Me tab of the write web build as the return address
   after a web sign-out;
 - a static export of the Expo web app (`expo export --platform web`), built against that API and
