@@ -154,7 +154,7 @@ public static partial class VideoEndpoints
         }
 
         var master = await db.MediaVariants.AsNoTracking()
-            .Where(v => v.MediaItemId == mediaItemId && v.Label == VideoStorage.HlsLabel && db.CareVideos.Any(c => c.MediaItemId == mediaItemId))
+            .Where(v => v.MediaItemId == mediaItemId && v.Label == VideoStorage.HlsLabel && db.MediaLinks.Any(l => l.CareEntryId != null && l.MediaItemId == mediaItemId))
             .Select(v => v.StorageKey).SingleOrDefaultAsync(ct);
         var stream = master is null ? null : await store.GetAsync(master[..(master.LastIndexOf('/') + 1)] + path, ct);
         if (stream is null)

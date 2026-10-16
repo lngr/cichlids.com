@@ -37,11 +37,6 @@ public class TankConfiguration : IEntityTypeConfiguration<Tank>
             .IsRequired()
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.HasOne<MediaItem>()
-            .WithMany()
-            .HasForeignKey(x => x.MainMediaId)
-            .OnDelete(DeleteBehavior.SetNull);
-
         builder.HasOne<Profile>()
             .WithMany()
             .HasForeignKey(x => x.DeletedByProfileId)

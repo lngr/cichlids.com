@@ -103,13 +103,13 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
 
             // Thread B: the attachment thread.
             var threadB = await db.DiscussionThreads
-                .Include(t => t.Posts).ThenInclude(p => p.Media)
+                .Include(t => t.Posts).ThenInclude(p => p.MediaLinks)
                 .SingleAsync(t => t.LegacyId == 90010);
             Assert.Equal(DiscussionCategory.African, threadB.Category);
             Assert.Single(threadB.Posts);
 
             var attachmentPost = threadB.Posts[0];
-            var media = Assert.Single(attachmentPost.Media);
+            var media = Assert.Single(attachmentPost.MediaLinks);
             var mediaItem = await db.MediaItems.SingleAsync(m => m.Id == media.MediaItemId);
             Assert.Equal("forum_attachments/9001_attach.jpg", mediaItem.StorageKey);
             Assert.Equal("attach.jpg", mediaItem.OriginalFilename);
@@ -159,7 +159,9 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
             Assert.Equal(2, await db.DiscussionThreads.CountAsync(t => t.LegacyId == 90001 || t.LegacyId == 90010));
             Assert.Equal(8, await db.DiscussionPosts.CountAsync(p => p.LegacyId >= 90000 && p.LegacyId < 91000));
             Assert.Equal(1, await db.MediaItems.CountAsync(m => m.StorageKey.StartsWith("forum_attachments/")));
-            Assert.Equal(1, await db.DiscussionPostMedia.CountAsync());
+            var attachment = await db.MediaLinks.SingleAsync(l => l.DiscussionPostId != null);
+            Assert.Equal(MediaLinkRole.Attachment, attachment.Role);
+            Assert.Equal(0, attachment.Position);
 
             var threadA = await db.DiscussionThreads.SingleAsync(t => t.LegacyId == 90001);
             Assert.Equal(5, threadA.PostCount);
@@ -190,7 +192,7 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
         // After a database reset the media_item rows are gone while the object stays in the store.
         await using (var db = fixture.CreateTargetContext())
         {
-            await db.Database.ExecuteSqlRawAsync("DELETE FROM discussion_post_media");
+            await db.Database.ExecuteSqlRawAsync("DELETE FROM media_link WHERE discussion_post_id IS NOT NULL");
             await db.Database.ExecuteSqlRawAsync("DELETE FROM media_item WHERE storage_key LIKE 'forum_attachments/%'");
         }
 
@@ -330,7 +332,7 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
     // (90007), attributed to thread A because its own thread column resolves there, with an
     // attachment media item of its own. This seeds that state directly, then asserts that running
     // the fixed step against it converges: the stale thread rows, the stale post, its
-    // discussion_post_media row and its now-unreferenced media_item all disappear, while the real
+    // media link and its unreferenced media_item all disappear, while the real
     // threads, posts and thread A's own attachment survive the same cleanup pass.
     [Fact]
     public async Task ReRunRemovesStaleThreadsAndPosts()
@@ -392,7 +394,7 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
                 await db.SaveChangesAsync();
                 staleMediaItemId = staleMediaItem.Id;
 
-                db.DiscussionPostMedia.Add(new DiscussionPostMedia { DiscussionPostId = stalePost.Id, MediaItemId = staleMediaItem.Id, Sort = 0 });
+                db.MediaLinks.Add(MediaLink.ForDiscussionPost(stalePost.Id, staleMediaItem.Id));
                 await db.SaveChangesAsync();
             }
         });
@@ -403,7 +405,7 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
         Assert.False(await readback.DiscussionThreads.AnyAsync(t => t.LegacyId == 90007));
         Assert.False(await readback.DiscussionThreads.AnyAsync(t => t.LegacyId == 90008));
         Assert.False(await readback.DiscussionPosts.AnyAsync(p => p.LegacyId == 90007));
-        Assert.False(await readback.DiscussionPostMedia.AnyAsync(m => m.MediaItemId == staleMediaItemId));
+        Assert.False(await readback.MediaLinks.AnyAsync(l => l.MediaItemId == staleMediaItemId));
         Assert.False(await readback.MediaItems.AnyAsync(m => m.Id == staleMediaItemId));
 
         // Real roots, posts and thread A's own attachment survive the same cleanup pass.
@@ -474,7 +476,7 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
         await using (var db = fixture.CreateTargetContext())
         {
             await db.Database.ExecuteSqlInterpolatedAsync(
-                $"DELETE FROM discussion_post_media WHERE media_item_id IN (SELECT id FROM media_item WHERE storage_key = {storageKey})");
+                $"DELETE FROM media_link WHERE media_item_id IN (SELECT id FROM media_item WHERE storage_key = {storageKey})");
             await db.Database.ExecuteSqlInterpolatedAsync($"DELETE FROM media_item WHERE storage_key = {storageKey}");
         }
 

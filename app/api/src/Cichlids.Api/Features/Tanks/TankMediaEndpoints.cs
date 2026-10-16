@@ -13,7 +13,7 @@ namespace Cichlids.Api.Features.Tanks;
 /// <summary>
 /// Serves the media of tanks whose files live under the private storage prefix. The token in the path
 /// is the credential: it is issued only to a viewer who sees the tank, names one photo variant or one
-/// video and expires. A token resolves only while the media item still belongs to a tank, so removed
+/// video and expires. A token resolves only while the media item has a link to a tank, so removed
 /// media stop resolving.
 /// </summary>
 public static class TankMediaEndpoints
@@ -34,8 +34,7 @@ public static class TankMediaEndpoints
     {
         if (signer.TryReadPhoto(token) is not { } variantId) return NotFound();
         var key = await db.MediaVariants.AsNoTracking()
-            .Where(v => v.Id == variantId && (db.TankMedia.Any(m => m.MediaItemId == v.MediaItemId && m.Section != TankMediaSection.Video)
-                || db.Tanks.Any(t => t.MainMediaId == v.MediaItemId)))
+            .Where(v => v.Id == variantId && db.MediaLinks.Any(l => l.MediaItemId == v.MediaItemId && l.TankId != null && l.Role != MediaLinkRole.Video))
             .Select(v => v.StorageKey).SingleOrDefaultAsync(ct);
         var stream = key is null ? null : await store.GetAsync(key, ct);
         if (stream is null) return NotFound();
@@ -50,7 +49,7 @@ public static class TankMediaEndpoints
         if (signer.TryReadVideo(token) is not { } mediaItemId || !MediaStorageKeys.IsHlsFile(path)) return NotFound();
         var master = await db.MediaVariants.AsNoTracking()
             .Where(v => v.MediaItemId == mediaItemId && v.Label == VideoStorage.HlsLabel
-                && db.TankMedia.Any(m => m.MediaItemId == mediaItemId && m.Section == TankMediaSection.Video))
+                && db.MediaLinks.Any(l => l.MediaItemId == mediaItemId && l.TankId != null && l.Role == MediaLinkRole.Video))
             .Select(v => v.StorageKey).SingleOrDefaultAsync(ct);
         var stream = master is null ? null : await store.GetAsync(master[..(master.LastIndexOf('/') + 1)] + path, ct);
         if (stream is null) return NotFound();

@@ -63,7 +63,6 @@ public class Tank
     /// Failed placement attempts since the last successful one.
     /// </summary>
     public int MediaMoveAttempts { get; set; }
-    public long? MainMediaId { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset? PublishedAt { get; set; }
     public DateTimeOffset? DeletedAt { get; set; }
@@ -71,5 +70,5 @@ public class Tank
     public long? DeletedByProfileId { get; set; }
 
     public List<Inhabitant> Inhabitants { get; set; } = [];
-    public List<TankMedia> Media { get; set; } = [];
+    public List<MediaLink> MediaLinks { get; set; } = [];
 }

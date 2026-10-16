@@ -12,15 +12,15 @@ public sealed class SchemaMigrationTests
     [
         "profile", "profile_identity",
         "species", "species_common_name", "species_link",
-        "tank", "inhabitant", "tank_media",
-        "media_item", "media_variant",
-        "post", "post_media", "post_species",
+        "tank", "inhabitant",
+        "media_item", "media_variant", "media_link",
+        "post", "post_species",
         "comment", "rating", "comment_vote",
         "collection", "collection_entry",
         "follow", "slug_alias",
         "outbox_event", "webhook_subscription",
         "web_session",
-        "discussion_thread", "discussion_post", "discussion_post_media",
+        "discussion_thread", "discussion_post",
     ];
 
     // legacy_id carries a unique index on every migrated aggregate; this checks a sample that

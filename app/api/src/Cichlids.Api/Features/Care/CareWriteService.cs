@@ -133,7 +133,7 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
         var removedVideos = new List<MediaItem>();
         if (request is null)
         {
-            var photos = entry.Photos.Select(p => p.MediaItem).ToList();
+            var photos = entry.MediaLinks.Where(l => l.Role == MediaLinkRole.Photo).Select(l => l.MediaItem).ToList();
             storedKeys.AddRange(photos.SelectMany(m => m.Variants.Select(v => v.StorageKey).Append(m.StorageKey)));
             foreach (var todo in entry.Todos)
             {
@@ -143,7 +143,7 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
             context.CareEntries.Remove(entry);
             await context.SaveChangesAsync(ct);
             context.MediaItems.RemoveRange(photos);
-            removedVideos = entry.Videos.Select(v => v.MediaItem).ToList();
+            removedVideos = entry.MediaLinks.Where(l => l.Role == MediaLinkRole.Video).Select(l => l.MediaItem).ToList();
             context.MediaItems.RemoveRange(removedVideos);
         }
         await context.SaveChangesAsync(ct);

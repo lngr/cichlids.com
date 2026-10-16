@@ -50,7 +50,7 @@ public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore st
             return null;
         }
 
-        var ids = context.TankMedia.Where(m => m.TankId == tankId && m.Section == TankMediaSection.Video).Select(m => m.MediaItemId);
+        var ids = context.MediaLinks.Where(l => l.TankId == tankId && l.Role == MediaLinkRole.Video).Select(l => l.MediaItemId);
         var items = await WithDetails(context.MediaItems.AsNoTracking().Where(m => ids.Contains(m.Id) && m.Kind == MediaKind.Video))
             .OrderByDescending(m => m.CreatedAt).ThenByDescending(m => m.Id).ToListAsync(cancellationToken);
         var forcePrivate = !TankVisibilityRules.MediaBelongsInPublicStorage(tank.ProfileVisibility);

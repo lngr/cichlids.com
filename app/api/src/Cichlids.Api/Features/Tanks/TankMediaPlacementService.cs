@@ -222,11 +222,9 @@ public sealed class TankMediaPlacementService(
 
     private async Task<List<MediaItem>> MovableItemsAsync(long tankId, CancellationToken cancellationToken)
     {
-        var tankItems = context.TankMedia.Where(m => m.TankId == tankId).Select(m => m.MediaItemId);
-        var mainItem = context.Tanks.Where(t => t.Id == tankId && t.MainMediaId != null).Select(t => t.MainMediaId!.Value);
+        var tankItems = context.MediaLinks.Where(l => l.TankId == tankId).Select(l => l.MediaItemId);
         return await context.MediaItems.Include(m => m.Variants)
-            .Where(m => (tankItems.Contains(m.Id) || mainItem.Contains(m.Id))
-                && !context.PostMedia.Any(pm => pm.MediaItemId == m.Id))
+            .Where(m => tankItems.Contains(m.Id) && !context.MediaLinks.Any(l => l.PostId != null && l.MediaItemId == m.Id))
             .OrderBy(m => m.Id).ToListAsync(cancellationToken);
     }
 

@@ -58,7 +58,7 @@ public sealed class VideoUploadService(
         }
 
         if (request.CareEntryId is { } careEntry
-            && await context.CareVideos.CountAsync(v => v.CareEntryId == careEntry, cancellationToken) >= CareVideo.MaxPerEntry)
+            && await context.MediaLinks.CountAsync(l => l.CareEntryId == careEntry && l.Role == MediaLinkRole.Video, cancellationToken) >= MediaLinkLimits.CareVideosPerEntry)
         {
             return (null, new VideoProblem(StatusCodes.Status409Conflict, VideoProblem.CareVideoLimitReached, "The care entry holds the most videos it can."));
         }
@@ -313,7 +313,7 @@ public sealed class VideoUploadService(
         }
 
         if (upload.CareEntryId is { } careEntry
-            && await context.CareVideos.CountAsync(v => v.CareEntryId == careEntry, cancellationToken) >= CareVideo.MaxPerEntry)
+            && await context.MediaLinks.CountAsync(l => l.CareEntryId == careEntry && l.Role == MediaLinkRole.Video, cancellationToken) >= MediaLinkLimits.CareVideosPerEntry)
         {
             await deleter.DeleteAsync([upload.StorageKey]);
             return (null, new VideoProblem(StatusCodes.Status409Conflict, VideoProblem.CareVideoLimitReached, "The care entry holds the most videos it can."));
@@ -335,6 +335,7 @@ public sealed class VideoUploadService(
             DurationMs = (int)info.Duration.TotalMilliseconds,
             ChecksumSha256 = sha256,
             CreatedAt = now,
+            ReceivedAt = now,
             VideoJob = new VideoJob
             {
                 Status = VideoJobStatus.Queued, IsPrivate = isPrivate, RunAfter = now, CreatedAt = now,
@@ -345,13 +346,15 @@ public sealed class VideoUploadService(
 
         if (upload.CareEntryId is { } attachTo)
         {
-            context.CareVideos.Add(new CareVideo { CareEntryId = attachTo, MediaItemId = item.Id });
+            var nextCarePosition = (await context.MediaLinks.Where(l => l.CareEntryId == attachTo && l.Role == MediaLinkRole.Video)
+                .MaxAsync(l => (int?)l.Position, cancellationToken) ?? -1) + 1;
+            context.MediaLinks.Add(MediaLink.ForCareEntry(attachTo, item.Id, MediaLinkRole.Video, nextCarePosition));
         }
         else
         {
-            var nextSort = (await context.TankMedia.Where(m => m.TankId == upload.TankId && m.Section == TankMediaSection.Video)
-                .MaxAsync(m => (int?)m.Sort, cancellationToken) ?? -1) + 1;
-            context.TankMedia.Add(new TankMedia { TankId = upload.TankId, MediaItemId = item.Id, Section = TankMediaSection.Video, Sort = nextSort });
+            var nextPosition = (await context.MediaLinks.Where(l => l.TankId == upload.TankId && l.Role == MediaLinkRole.Video)
+                .MaxAsync(l => (int?)l.Position, cancellationToken) ?? -1) + 1;
+            context.MediaLinks.Add(MediaLink.ForTank(upload.TankId, item.Id, MediaLinkRole.Video, nextPosition));
         }
 
         VideoEvents.Add(context, VideoEvents.UploadCompleted, item.Id, upload.OwnerProfileId, now,

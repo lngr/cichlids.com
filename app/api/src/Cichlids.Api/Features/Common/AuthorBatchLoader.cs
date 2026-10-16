@@ -1,3 +1,4 @@
+using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -18,18 +19,16 @@ public static class AuthorBatchLoader
                 pr.Id,
                 pr.Username,
                 pr.DisplayName,
-                pr.AvatarMediaId != null
-                    ? context.MediaVariants
-                        .Where(v => v.MediaItemId == pr.AvatarMediaId && v.Label == "thumb")
-                        .Select(v => v.StorageKey)
-                        .FirstOrDefault()
-                    : null,
-                pr.AvatarMediaId != null
-                    ? context.MediaVariants
-                        .Where(v => v.MediaItemId == pr.AvatarMediaId && v.Label == MediaVariantSpec.PublicCopyLabel)
-                        .Select(v => v.StorageKey)
-                        .FirstOrDefault()
-                    : null,
+                context.MediaVariants
+                    .Where(v => v.Label == "thumb"
+                        && context.MediaLinks.Any(l => l.ProfileId == pr.Id && l.Role == MediaLinkRole.Avatar && l.MediaItemId == v.MediaItemId))
+                    .Select(v => v.StorageKey)
+                    .FirstOrDefault(),
+                context.MediaVariants
+                    .Where(v => v.Label == MediaVariantSpec.PublicCopyLabel
+                        && context.MediaLinks.Any(l => l.ProfileId == pr.Id && l.Role == MediaLinkRole.Avatar && l.MediaItemId == v.MediaItemId))
+                    .Select(v => v.StorageKey)
+                    .FirstOrDefault(),
                 pr.ExternalAvatarUrl))
             .ToDictionaryAsync(a => a.Id, cancellationToken);
 }

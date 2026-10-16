@@ -19,8 +19,6 @@ public class Profile
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset? LastLoginAt { get; set; }
     public DateTimeOffset? SuspendedUntil { get; set; }
-    public long? ProfileImageMediaId { get; set; }
-    public long? AvatarMediaId { get; set; }
 
     public DateTimeOffset? OnboardingCompletedAt { get; set; }
     public string[] Interests { get; set; } = [];

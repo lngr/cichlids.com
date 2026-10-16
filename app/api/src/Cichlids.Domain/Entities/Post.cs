@@ -34,6 +34,6 @@ public class Post
     public string? DeleteReason { get; set; }
     public long? DeletedByProfileId { get; set; }
 
-    public List<PostMedia> Media { get; set; } = [];
+    public List<MediaLink> MediaLinks { get; set; } = [];
     public List<PostSpecies> Species { get; set; } = [];
 }

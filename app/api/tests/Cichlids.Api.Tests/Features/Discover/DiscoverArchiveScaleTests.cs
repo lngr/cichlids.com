@@ -34,7 +34,7 @@ public class DiscoverArchiveScaleTests(ITestOutputHelper output)
                 'Synthetic picture ' || n, 'single', 'tanks', 'published',
                 '2020-01-01'::timestamptz + (n % 40) * interval '1 month', now()
             FROM generate_series(1, 50000) n;
-            INSERT INTO post_media (post_id, media_item_id) SELECT n, n FROM generate_series(1, 50000) n;
+            INSERT INTO media_link (post_id, media_item_id, context_type, role) SELECT n, n, 'post', 'item' FROM generate_series(1, 50000) n;
             INSERT INTO rating (tank_id, stars, created_at)
             SELECT 1 + (n-1) % 5000, (1 + n % 5)::smallint, now() FROM generate_series(1, 7570) n;
             INSERT INTO rating (post_id, stars, created_at)

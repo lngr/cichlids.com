@@ -65,9 +65,12 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
             Assert.Equal(3, post2001.RatingCount);
             Assert.Equal(4.5, post2001.RatingAverage);
 
-            var postMedia2001 = await db.PostMedia.SingleAsync(pm => pm.PostId == post2001.Id);
+            var postMedia2001 = await db.MediaLinks.SingleAsync(l => l.PostId == post2001.Id);
             Assert.Equal(media2001.Id, postMedia2001.MediaItemId);
-            Assert.Equal(0, postMedia2001.Sort);
+            Assert.Equal(MediaLinkContext.Post, postMedia2001.ContextType);
+            Assert.Equal(MediaLinkRole.Item, postMedia2001.Role);
+            Assert.Equal(0, postMedia2001.Position);
+            Assert.Equal(media2001.CreatedAt, media2001.ReceivedAt);
 
             var alias2001 = await db.SlugAliases.SingleAsync(a => a.PostId == post2001.Id);
             Assert.Equal("pic-one", alias2001.Value);
@@ -118,8 +121,9 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
             var profile300 = await db.Profiles.SingleAsync(p => p.LegacyId == 300);
             var media2008 = await db.MediaItems.SingleAsync(m => m.LegacyId == 2008);
             var media2009 = await db.MediaItems.SingleAsync(m => m.LegacyId == 2009);
-            Assert.Equal(media2008.Id, profile300.ProfileImageMediaId);
-            Assert.Equal(media2009.Id, profile300.AvatarMediaId);
+            var profileLinks = await db.MediaLinks.Where(l => l.ProfileId == profile300.Id).ToListAsync();
+            Assert.Equal(media2008.Id, Assert.Single(profileLinks, l => l.Role == MediaLinkRole.Header).MediaItemId);
+            Assert.Equal(media2009.Id, Assert.Single(profileLinks, l => l.Role == MediaLinkRole.Avatar).MediaItemId);
 
             // uid 2010/2011 share the same realurl alias text; 2010 (the lower uniqalias uid)
             // keeps it, 2011 loses it and falls back to a generated slug.
@@ -169,12 +173,12 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
             // skips the dangling uid 2099, decoration carries the placeholder-owned picture.
             var media2003 = await db.MediaItems.SingleAsync(m => m.LegacyId == 2003);
             var tank300 = await db.Tanks
-                .Include(t => t.Media)
+                .Include(t => t.MediaLinks)
                 .SingleAsync(t => t.LegacyId == 300);
-            Assert.Equal(media2001.Id, tank300.MainMediaId);
-            Assert.Single(tank300.Media, m => m.Section == TankMediaSection.Showcase && m.MediaItemId == media2006.Id);
-            Assert.Single(tank300.Media, m => m.Section == TankMediaSection.Decoration && m.MediaItemId == media2003.Id);
-            Assert.DoesNotContain(tank300.Media, m => m.Section == TankMediaSection.Technic);
+            Assert.Equal(media2001.Id, Assert.Single(tank300.MediaLinks, l => l.Role == MediaLinkRole.Main).MediaItemId);
+            Assert.Single(tank300.MediaLinks, l => l.Role == MediaLinkRole.Showcase && l.MediaItemId == media2006.Id);
+            Assert.Single(tank300.MediaLinks, l => l.Role == MediaLinkRole.Decoration && l.MediaItemId == media2003.Id);
+            Assert.DoesNotContain(tank300.MediaLinks, l => l.Role == MediaLinkRole.Technic);
         }
 
         var stats2 = await RunStepAsync();
@@ -193,10 +197,10 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
         {
             Assert.Equal(16, await db.MediaItems.CountAsync(m => m.LegacyId >= 2000 && m.LegacyId < 3000));
             Assert.Equal(12, await db.Posts.CountAsync(p => p.LegacyId >= 2000 && p.LegacyId < 3000));
-            // Every post gets exactly one post_media row (all 12 posts from this class's fixture).
-            Assert.Equal(12, await db.PostMedia.CountAsync());
-            var tank300 = await db.Tanks.Include(t => t.Media).SingleAsync(t => t.LegacyId == 300);
-            Assert.Equal(2, tank300.Media.Count);
+            // Every post gets exactly one media link (all 12 posts from this class's fixture).
+            Assert.Equal(12, await db.MediaLinks.CountAsync(l => l.PostId != null));
+            var tank300 = await db.Tanks.Include(t => t.MediaLinks).SingleAsync(t => t.LegacyId == 300);
+            Assert.Equal(3, tank300.MediaLinks.Count);
 
             var media2013Second = await db.MediaItems.SingleAsync(m => m.LegacyId == 2013);
             var media2014Second = await db.MediaItems.SingleAsync(m => m.LegacyId == 2014);

@@ -169,8 +169,9 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
             .OrderBy(d => d.StartDate).Select(d => new { d.TankId, d.StartDate, d.EndDate }).ToListAsync(ct);
         foreach (var decommissioning in decommissions) result[decommissioning.TankId].Decommissions.Add(new DecommissionSpan(decommissioning.StartDate, decommissioning.EndDate));
         if (!includePhotos) return result;
-        var photos = await context.TankMedia.AsNoTracking().Where(m => tankIds.Contains(m.TankId) && m.Section == TankMediaSection.TimeLapse && m.CapturedInApp)
-            .Join(context.MediaItems, m => m.MediaItemId, i => i.Id, (m, i) => new { m.TankId, i.Id, i.CreatedAt }).ToListAsync(ct);
+        var photos = await context.MediaLinks.AsNoTracking()
+            .Where(l => l.TankId != null && tankIds.Contains(l.TankId.Value) && l.Role == MediaLinkRole.TimeLapse && l.MediaItem.CapturedInApp)
+            .Select(l => new { TankId = l.TankId!.Value, Id = l.MediaItemId, l.MediaItem.CreatedAt }).ToListAsync(ct);
         foreach (var photo in photos) result[photo.TankId].Photos.Add(new SeriesPhoto(photo.Id, photo.CreatedAt));
         return result;
     }

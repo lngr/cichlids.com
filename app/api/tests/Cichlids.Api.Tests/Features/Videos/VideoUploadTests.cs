@@ -87,7 +87,7 @@ public sealed class VideoUploadTests(UploadsFixture fixture)
         using var original = await anonymous.GetAsync($"{fixture.PublicBaseUrl}/{item.StorageKey}");
         Assert.Equal(HttpStatusCode.Forbidden, original.StatusCode);
         Assert.Equal(VideoJobStatus.Done, (await db.VideoJobs.SingleAsync(j => j.MediaItemId == mediaItemId)).Status);
-        Assert.Equal(TankMediaSection.Video, (await db.TankMedia.SingleAsync(m => m.MediaItemId == mediaItemId)).Section);
+        Assert.Equal(MediaLinkRole.Video, (await db.MediaLinks.SingleAsync(l => l.MediaItemId == mediaItemId && l.TankId != null)).Role);
         var events = await db.OutboxEvents.Where(e => e.AggregateType == "video" && e.AggregateId == mediaItemId.ToString())
             .Select(e => e.EventType).ToListAsync();
         Assert.Equal([VideoEvents.Processed, VideoEvents.UploadCompleted], events.Order());
@@ -107,7 +107,7 @@ public sealed class VideoUploadTests(UploadsFixture fixture)
         await ProblemAsync(completed, HttpStatusCode.UnprocessableEntity, "video_too_long");
         await using var db = fixture.CreateDbContext();
         Assert.False(await db.VideoUploads.AnyAsync(u => u.Id == id));
-        Assert.False(await db.TankMedia.AnyAsync(m => m.TankId == tank));
+        Assert.False(await db.MediaLinks.AnyAsync(l => l.TankId == tank));
         using var gone = await SendAsync(fixture.ClientWithOneSecondVideoLimit, HttpMethod.Get, $"/api/video-uploads/{id}", token);
         Assert.Equal(HttpStatusCode.NotFound, gone.StatusCode);
     }

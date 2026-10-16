@@ -46,7 +46,7 @@ public class UploadPublishFlowTests(UploadsFixture fixture)
         Assert.NotNull(detail.Image.Medium);
 
         await using var db = fixture.CreateDbContext();
-        var mediaItemId = await db.PostMedia.Where(pm => pm.PostId == draft.Id).Select(pm => pm.MediaItemId).SingleAsync();
+        var mediaItemId = await db.MediaLinks.Where(l => l.PostId == draft.Id).Select(l => l.MediaItemId).SingleAsync();
         var mediaItem = await db.MediaItems.SingleAsync(m => m.Id == mediaItemId);
         var variantKeys = await db.MediaVariants.Where(v => v.MediaItemId == mediaItemId).Select(v => v.StorageKey).ToListAsync();
 

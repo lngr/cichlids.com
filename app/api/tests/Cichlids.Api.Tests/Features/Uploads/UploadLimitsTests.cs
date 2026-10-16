@@ -145,7 +145,7 @@ public class UploadLimitsTests(UploadsFixture fixture)
         Assert.True(removed >= 1);
         await using var db = fixture.CreateDbContext();
         Assert.False(await db.Posts.AnyAsync(p => p.Id == stale.Id));
-        Assert.False(await db.PostMedia.AnyAsync(pm => pm.PostId == stale.Id));
+        Assert.False(await db.MediaLinks.AnyAsync(l => l.PostId == stale.Id));
         Assert.False(await db.MediaItems.AnyAsync(m => m.OwnerProfileId == profileId && staleKeys.Contains(m.StorageKey)));
         foreach (var key in staleKeys)
         {
@@ -264,7 +264,7 @@ public class UploadLimitsTests(UploadsFixture fixture)
     private async Task<List<string>> StoredKeysOfAsync(long postId)
     {
         await using var db = fixture.CreateDbContext();
-        var mediaItemIds = await db.PostMedia.Where(pm => pm.PostId == postId).Select(pm => pm.MediaItemId).ToListAsync();
+        var mediaItemIds = await db.MediaLinks.Where(l => l.PostId == postId).Select(l => l.MediaItemId).ToListAsync();
         return await db.MediaItems.Where(m => mediaItemIds.Contains(m.Id)).Select(m => m.StorageKey)
             .Concat(db.MediaVariants.Where(v => mediaItemIds.Contains(v.MediaItemId)).Select(v => v.StorageKey))
             .ToListAsync();

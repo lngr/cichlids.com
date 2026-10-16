@@ -17,7 +17,8 @@ public static class PgBulkInsert
     /// returns the total number of rows actually inserted across all chunks. columnCasts
     /// optionally names an explicit target type (for example jsonb)
     /// for a column whose value would otherwise be sent as a type PostgreSQL has no implicit
-    /// conversion from, keyed by column name.
+    /// conversion from, keyed by column name. conflictPredicate names the predicate of a partial
+    /// unique index when the conflict columns identify one.
     /// </summary>
     public static async Task<int> InsertOnConflictDoNothingAsync(
         NpgsqlConnection connection,
@@ -27,14 +28,15 @@ public static class PgBulkInsert
         IReadOnlyList<string> columns,
         IReadOnlyList<IReadOnlyList<object?>> rows,
         CancellationToken cancellationToken,
-        IReadOnlyDictionary<string, string>? columnCasts = null)
+        IReadOnlyDictionary<string, string>? columnCasts = null,
+        string? conflictPredicate = null)
     {
         var inserted = 0;
         for (var offset = 0; offset < rows.Count; offset += ChunkSize)
         {
             var chunk = rows.Skip(offset).Take(ChunkSize).ToList();
             inserted += await InsertChunkAsync(
-                connection, transaction, table, conflictColumns, columns, chunk, columnCasts, cancellationToken);
+                connection, transaction, table, conflictColumns, columns, chunk, columnCasts, conflictPredicate, cancellationToken);
         }
 
         return inserted;
@@ -48,6 +50,7 @@ public static class PgBulkInsert
         IReadOnlyList<string> columns,
         IReadOnlyList<IReadOnlyList<object?>> rows,
         IReadOnlyDictionary<string, string>? columnCasts,
+        string? conflictPredicate,
         CancellationToken cancellationToken)
     {
         if (rows.Count == 0)
@@ -79,7 +82,7 @@ public static class PgBulkInsert
         command.CommandText = $"""
             INSERT INTO {table} ({string.Join(", ", columns)})
             VALUES {string.Join(", ", valuesSql)}
-            ON CONFLICT ({string.Join(", ", conflictColumns)}) DO NOTHING
+            ON CONFLICT ({string.Join(", ", conflictColumns)}){(conflictPredicate is null ? string.Empty : $" WHERE {conflictPredicate}")} DO NOTHING
             RETURNING 1
             """;
 

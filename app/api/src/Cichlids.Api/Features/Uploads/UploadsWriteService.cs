@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using Cichlids.Api.Features.Media;
+using Cichlids.Domain;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Media;
@@ -92,7 +93,7 @@ public sealed class UploadsWriteService(
             context.Posts.Add(post);
             await context.SaveChangesAsync(cancellationToken);
 
-            context.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = stored.Item.Id, Sort = 0 });
+            context.MediaLinks.Add(MediaLink.ForPost(post.Id, stored.Item.Id));
             await context.SaveChangesAsync(cancellationToken);
             await transaction.CommitAsync(cancellationToken);
 
@@ -113,12 +114,13 @@ public sealed class UploadsWriteService(
     /// the public variant prefix; a private photo lives entirely under the private prefix, so none
     /// of its objects has a public URL; the area names the folder of the private original. Returns the
     /// media item with its variants, not yet saved, and the keys written so a failing caller can
-    /// delete them. Throws the image exceptions of CreateDraftAsync before anything is stored; a
-    /// failing write deletes the objects already written.
+    /// delete them. CapturedInApp records whether the camera of the app took the photo. Throws the
+    /// image exceptions of CreateDraftAsync before anything is stored; a failing write deletes the
+    /// objects already written.
     /// </summary>
     public async Task<StoredImage> StoreImageAsync(
         long ownerProfileId, byte[] bytes, UploadImageFormat format, string? originalFilename, bool isPrivate,
-        CancellationToken cancellationToken, string privateArea = "care")
+        CancellationToken cancellationToken, string privateArea = "care", bool capturedInApp = false)
     {
         var processed = ImageProcessor.Process(bytes);
         var captured = CaptureTimeReader.Read(bytes, timeProvider.GetUtcNow()).Time;
@@ -181,6 +183,8 @@ public sealed class UploadsWriteService(
             TakenAtLocal = captured?.LocalTime,
             TakenAtOffsetMinutes = captured?.Offset is { } offset ? (short)offset.TotalMinutes : null,
             CaptureCheckedAt = createdAt,
+            CapturedInApp = capturedInApp,
+            ReceivedAt = timeProvider.GetUtcNow(),
             Variants = variants
                 .Select(v => new MediaVariant { Label = v.Label, Width = v.Width, StorageKey = v.Key, ByteSize = v.Bytes.LongLength })
                 .ToList(),
@@ -189,7 +193,7 @@ public sealed class UploadsWriteService(
     }
 
     /// <summary>
-    /// Discards the author's draft: deletes the post, its post_media rows, its media items and
+    /// Discards the author's draft: deletes the post, its media links, its media items and
     /// their variants, then the stored original and variant objects. Object deletion runs after
     /// the commit, so a failure there leaves unreferenced objects behind (logged) and never rows
     /// that point at missing objects.
@@ -217,9 +221,9 @@ public sealed class UploadsWriteService(
 
         await using (var transaction = await context.Database.BeginTransactionAsync(cancellationToken))
         {
-            var mediaItemIds = await context.PostMedia
-                .Where(pm => pm.PostId == postId)
-                .Select(pm => pm.MediaItemId)
+            var mediaItemIds = await context.MediaLinks.PostLinks()
+                .Where(l => l.PostId == postId)
+                .Select(l => l.MediaItemId)
                 .ToListAsync(cancellationToken);
 
             storedKeys = await context.MediaItems

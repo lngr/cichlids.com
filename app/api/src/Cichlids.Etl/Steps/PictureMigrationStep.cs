@@ -12,10 +12,10 @@ namespace Cichlids.Etl.Steps;
 /// <summary>
 /// Migrates legacy pictures (user_cichlids_pictures) into media_item and, for the
 /// legacy "pid" values that represent a gallery listing rather than a technical/decoration
-/// upload, into a matching post plus its post_media and slug_alias rows.
-/// Also backfills profile.profile_image_media_id/avatar_media_id and
-/// tank.main_media_id/tank_media once every picture has its own media item, since
-/// those legacy image references only resolve after this step has run.
+/// upload, into a matching post plus its media link and slug_alias rows.
+/// Also links the profile image and avatar of each profile and the main image and the
+/// showcase, decoration and technic images of each tank once every picture has its own
+/// media item, since those legacy image references only resolve after this step has run.
 /// </summary>
 public sealed class PictureMigrationStep : IEtlStep
 {
@@ -46,7 +46,7 @@ public sealed class PictureMigrationStep : IEtlStep
     private static readonly ValueConverter<PostKind, string> PostKindConverter = new SnakeCaseEnumConverter<PostKind>();
     private static readonly ValueConverter<PostTopic, string> PostTopicConverter = new SnakeCaseEnumConverter<PostTopic>();
     private static readonly ValueConverter<PostState, string> PostStateConverter = new SnakeCaseEnumConverter<PostState>();
-    private static readonly ValueConverter<TankMediaSection, string> SectionConverter = new SnakeCaseEnumConverter<TankMediaSection>();
+    private static readonly ValueConverter<MediaLinkRole, string> RoleConverter = new SnakeCaseEnumConverter<MediaLinkRole>();
 
     public string Name => "pictures";
 
@@ -133,13 +133,13 @@ public sealed class PictureMigrationStep : IEtlStep
 
         await BackfillMediaLinkAsync(
             context, profileByLegacyId, mediaIdByLegacyId,
-            "user_cichlids_profile_image", "profile_image_media_id",
+            "user_cichlids_profile_image", MediaLinkRole.Header,
             "profile_image_backfill_no_profile", "profile_image_backfill_no_media",
             stats, cancellationToken);
 
         await BackfillMediaLinkAsync(
             context, profileByLegacyId, mediaIdByLegacyId,
-            "user_cichlids_avatar_image", "avatar_media_id",
+            "user_cichlids_avatar_image", MediaLinkRole.Avatar,
             "avatar_backfill_no_profile", "avatar_backfill_no_media",
             stats, cancellationToken);
 
@@ -172,6 +172,7 @@ public sealed class PictureMigrationStep : IEtlStep
                 storageKey,
                 StorageKeyNormalizer.GetOriginalFilename(picture.Image),
                 picture.CreatedAt,
+                picture.CreatedAt,
             });
         }
 
@@ -180,7 +181,7 @@ public sealed class PictureMigrationStep : IEtlStep
             context.Transaction,
             "media_item",
             "legacy_id",
-            ["legacy_id", "owner_profile_id", "kind", "storage_key", "original_filename", "created_at"],
+            ["legacy_id", "owner_profile_id", "kind", "storage_key", "original_filename", "created_at", "received_at"],
             mediaRows,
             cancellationToken);
 
@@ -376,22 +377,21 @@ public sealed class PictureMigrationStep : IEtlStep
             var mediaParam = $"p{paramIndex++}";
             command.Parameters.AddWithValue(postParam, postId);
             command.Parameters.AddWithValue(mediaParam, mediaItemId);
-            valuesSql.Add($"(@{postParam}, @{mediaParam}, 0)");
+            valuesSql.Add($"(@{postParam}, @{mediaParam}, 'post', 'item', 0)");
         }
 
         command.CommandText = $"""
-            INSERT INTO post_media (post_id, media_item_id, sort)
+            INSERT INTO media_link (post_id, media_item_id, context_type, role, position)
             VALUES {string.Join(", ", valuesSql)}
-            ON CONFLICT (post_id, media_item_id) DO NOTHING
+            ON CONFLICT (post_id, role, media_item_id) WHERE post_id IS NOT NULL DO NOTHING
             """;
 
         await command.ExecuteNonQueryAsync(cancellationToken);
     }
 
     /// <summary>
-    /// Backfills one profile media reference column (profile_image_media_id or
-    /// avatar_media_id) from the matching legacy fe_users column, for existing
-    /// profiles and migrated media items only: this never creates a placeholder profile, since a
+    /// Links the avatar or the header image of a profile from the matching legacy fe_users column,
+    /// for existing profiles and migrated media items only: this never creates a placeholder profile, since a
     /// legacy user with no migrated profile at all has nothing to attach an image to.
     /// </summary>
     private static async Task BackfillMediaLinkAsync(
@@ -399,7 +399,7 @@ public sealed class PictureMigrationStep : IEtlStep
         IReadOnlyDictionary<int, (long Id, ProfileKind Kind)> profileByLegacyId,
         IReadOnlyDictionary<int, long> mediaIdByLegacyId,
         string legacyColumn,
-        string targetColumn,
+        MediaLinkRole role,
         string noProfileSkipReason,
         string noMediaSkipReason,
         StepStatistics stats,
@@ -436,20 +436,26 @@ public sealed class PictureMigrationStep : IEtlStep
                 continue;
             }
 
-            await using var update = new NpgsqlCommand(
-                $"UPDATE profile SET {targetColumn} = @mediaId WHERE id = @profileId", context.Target, context.Transaction);
-            update.Parameters.AddWithValue("mediaId", mediaId);
-            update.Parameters.AddWithValue("profileId", profile.Id);
-            await update.ExecuteNonQueryAsync(cancellationToken);
+            await using var upsert = new NpgsqlCommand(
+                """
+                INSERT INTO media_link (media_item_id, context_type, role, position, profile_id)
+                VALUES (@mediaId, 'profile', @role, 0, @profileId)
+                ON CONFLICT (profile_id, role) WHERE profile_id IS NOT NULL DO UPDATE SET media_item_id = EXCLUDED.media_item_id
+                """,
+                context.Target, context.Transaction);
+            upsert.Parameters.AddWithValue("mediaId", mediaId);
+            upsert.Parameters.AddWithValue("role", RoleConverter.ConvertToProvider(role)!);
+            upsert.Parameters.AddWithValue("profileId", profile.Id);
+            await upsert.ExecuteNonQueryAsync(cancellationToken);
         }
     }
 
     /// <summary>
-    /// Attaches tank.main_media_id and replaces each tank's tank_media rows from
-    /// the legacy image/tank_images/deco_images/tec_images columns, now that every migrated
-    /// picture has a media item to point at. All writes run as set-based statements over the
-    /// whole tank population (one main-image update pair, one delete, chunked inserts): a round
-    /// trip per tank would dominate this phase's run time.
+    /// Replaces the main, showcase, decoration and technic links of each tank from the legacy
+    /// image/tank_images/deco_images/tec_images columns, once every migrated picture has a
+    /// media item to point at. All writes run as set-based statements over the whole tank
+    /// population (one delete, chunked inserts): a round trip per tank would dominate this
+    /// phase's run time.
     /// </summary>
     private static async Task PopulateTankMediaAsync(
         EtlContext context, Dictionary<int, long> mediaIdByLegacyId, StepStatistics stats, CancellationToken cancellationToken)
@@ -472,9 +478,6 @@ public sealed class PictureMigrationStep : IEtlStep
             ORDER BY uid
             """;
 
-        var mainImageTankIds = new List<long>();
-        var mainImageMediaIds = new List<long>();
-        var noMainImageTankIds = new List<long>();
         var allTankIds = new List<long>();
         var tankMediaRows = new List<IReadOnlyList<object?>>();
 
@@ -505,50 +508,21 @@ public sealed class PictureMigrationStep : IEtlStep
                     }
                 }
 
-                if (mainMediaId is not null)
+                if (mainMediaId is { } main)
                 {
-                    mainImageTankIds.Add(tankId);
-                    mainImageMediaIds.Add(mainMediaId.Value);
-                }
-                else
-                {
-                    noMainImageTankIds.Add(tankId);
+                    tankMediaRows.Add(new object?[] { tankId, main, "tank", RoleConverter.ConvertToProvider(MediaLinkRole.Main), 0 });
                 }
 
                 var perTankRows = new List<IReadOnlyList<object?>>();
-                AppendTankMediaSection(reader.GetStringOrEmpty("tank_images"), TankMediaSection.Showcase, mediaIdByLegacyId, perTankRows, stats);
-                AppendTankMediaSection(reader.GetStringOrEmpty("deco_images"), TankMediaSection.Decoration, mediaIdByLegacyId, perTankRows, stats);
-                AppendTankMediaSection(reader.GetStringOrEmpty("tec_images"), TankMediaSection.Technic, mediaIdByLegacyId, perTankRows, stats);
+                AppendTankMediaSection(reader.GetStringOrEmpty("tank_images"), MediaLinkRole.Showcase, mediaIdByLegacyId, perTankRows, stats);
+                AppendTankMediaSection(reader.GetStringOrEmpty("deco_images"), MediaLinkRole.Decoration, mediaIdByLegacyId, perTankRows, stats);
+                AppendTankMediaSection(reader.GetStringOrEmpty("tec_images"), MediaLinkRole.Technic, mediaIdByLegacyId, perTankRows, stats);
 
                 foreach (var row in perTankRows)
                 {
-                    tankMediaRows.Add(new object?[] { tankId, row[0], row[1], row[2] });
+                    tankMediaRows.Add(new object?[] { tankId, row[0], "tank", row[1], row[2] });
                 }
             }
-        }
-
-        if (mainImageTankIds.Count > 0)
-        {
-            await using var update = new NpgsqlCommand(
-                """
-                UPDATE tank AS t SET main_media_id = u.media_id
-                FROM (SELECT unnest(@tankIds) AS tank_id, unnest(@mediaIds) AS media_id) AS u
-                WHERE t.id = u.tank_id
-                """,
-                context.Target, context.Transaction);
-            update.Parameters.AddWithValue("tankIds", mainImageTankIds.ToArray());
-            update.Parameters.AddWithValue("mediaIds", mainImageMediaIds.ToArray());
-            await update.ExecuteNonQueryAsync(cancellationToken);
-        }
-
-        // A tank whose legacy image reference is empty or unresolvable converges to no main
-        // image, so a re-run against source data that dropped the reference clears the column.
-        if (noMainImageTankIds.Count > 0)
-        {
-            await using var clear = new NpgsqlCommand(
-                "UPDATE tank SET main_media_id = NULL WHERE id = ANY(@tankIds)", context.Target, context.Transaction);
-            clear.Parameters.AddWithValue("tankIds", noMainImageTankIds.ToArray());
-            await clear.ExecuteNonQueryAsync(cancellationToken);
         }
 
         // Empty in the full run; a single step run in Development or a step test replaces the
@@ -556,22 +530,23 @@ public sealed class PictureMigrationStep : IEtlStep
         if (allTankIds.Count > 0)
         {
             await using var delete = new NpgsqlCommand(
-                "DELETE FROM tank_media WHERE tank_id = ANY(@tankIds)", context.Target, context.Transaction);
+                "DELETE FROM media_link WHERE tank_id = ANY(@tankIds) AND role IN ('main', 'showcase', 'decoration', 'technic')",
+                context.Target, context.Transaction);
             delete.Parameters.AddWithValue("tankIds", allTankIds.ToArray());
             await delete.ExecuteNonQueryAsync(cancellationToken);
         }
 
         await BulkInsertAsync(
-            context, "tank_media", ["tank_id", "media_item_id", "section", "sort"], tankMediaRows, cancellationToken);
+            context, "media_link", ["tank_id", "media_item_id", "context_type", "role", "position"], tankMediaRows, cancellationToken);
     }
 
     // The legacy CSV columns are dirty in the same way tanks.fish is: leading commas, empty
     // tokens and literal "0" placeholders for removed entries, which are silently skipped rather
     // than counted; only a nonzero token that fails to resolve to a media item is a real anomaly.
-    // sort is the dense position among the entries actually kept, not the raw CSV index.
+    // position is the dense position among the entries actually kept, not the raw CSV index.
     private static void AppendTankMediaSection(
         string csv,
-        TankMediaSection section,
+        MediaLinkRole role,
         Dictionary<int, long> mediaIdByLegacyId,
         List<IReadOnlyList<object?>> rows,
         StepStatistics stats)
@@ -582,7 +557,7 @@ public sealed class PictureMigrationStep : IEtlStep
         }
 
         var seenMediaIds = new HashSet<long>();
-        var sort = 0;
+        var position = 0;
         foreach (var rawToken in csv.Split(','))
         {
             var token = rawToken.Trim();
@@ -602,8 +577,8 @@ public sealed class PictureMigrationStep : IEtlStep
                 continue;
             }
 
-            rows.Add(new object?[] { mediaId, SectionConverter.ConvertToProvider(section), sort });
-            sort++;
+            rows.Add(new object?[] { mediaId, RoleConverter.ConvertToProvider(role), position });
+            position++;
         }
     }
 

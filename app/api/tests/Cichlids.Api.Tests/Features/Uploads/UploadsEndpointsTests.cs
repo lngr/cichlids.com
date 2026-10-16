@@ -201,8 +201,9 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         Assert.Equal(PostTopic.Cichlids, post.Topic);
         Assert.Null(post.PublishedAt);
 
-        var postMedia = await db.PostMedia.SingleAsync(pm => pm.PostId == post.Id);
-        Assert.Equal(0, postMedia.Sort);
+        var postMedia = await db.MediaLinks.SingleAsync(l => l.PostId == post.Id);
+        Assert.Equal(MediaLinkRole.Item, postMedia.Role);
+        Assert.Equal(0, postMedia.Position);
 
         var mediaItem = await db.MediaItems.SingleAsync(m => m.Id == postMedia.MediaItemId);
         Assert.Equal(profileId, mediaItem.OwnerProfileId);
@@ -612,7 +613,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         await using (var db = fixture.CreateDbContext())
         {
             Assert.False(await db.Posts.AnyAsync(p => p.Id == draft.Id));
-            Assert.False(await db.PostMedia.AnyAsync(pm => pm.PostId == draft.Id));
+            Assert.False(await db.MediaLinks.AnyAsync(l => l.PostId == draft.Id));
             Assert.False(await db.MediaItems.AnyAsync(m => m.Id == mediaItemId));
             Assert.False(await db.MediaVariants.AnyAsync(v => v.MediaItemId == mediaItemId));
         }
@@ -716,7 +717,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     private static async Task<Cichlids.Domain.Entities.MediaItem> LoadMediaItemAsync(
         Cichlids.Infrastructure.Persistence.CichlidsDbContext db, long postId)
     {
-        var mediaItemId = await db.PostMedia.Where(pm => pm.PostId == postId).Select(pm => pm.MediaItemId).SingleAsync();
+        var mediaItemId = await db.MediaLinks.Where(l => l.PostId == postId).Select(l => l.MediaItemId).SingleAsync();
         return await db.MediaItems.SingleAsync(m => m.Id == mediaItemId);
     }
 

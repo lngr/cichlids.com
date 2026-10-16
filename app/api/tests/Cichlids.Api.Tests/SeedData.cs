@@ -96,8 +96,9 @@ public sealed record SeedData(
             });
         await context.SaveChangesAsync();
 
-        alice.AvatarMediaId = aliceAvatarMedia.Id;
-        bob.ProfileImageMediaId = bobProfileImageMedia.Id;
+        context.MediaLinks.AddRange(
+            MediaLink.ForProfile(alice.Id, aliceAvatarMedia.Id, MediaLinkRole.Avatar),
+            MediaLink.ForProfile(bob.Id, bobProfileImageMedia.Id, MediaLinkRole.Header));
         await context.SaveChangesAsync();
 
         var tropheus = new Species
@@ -197,9 +198,9 @@ public sealed record SeedData(
         context.Posts.AddRange(pictureA, pictureB, pictureC, offtopicPicture, draftPicture, archivedPicture, deletedPicture);
         await context.SaveChangesAsync();
 
-        context.PostMedia.AddRange(
-            new PostMedia { PostId = pictureA.Id, MediaItemId = pictureAMedia.Id, Sort = 0 },
-            new PostMedia { PostId = pictureB.Id, MediaItemId = pictureBMedia.Id, Sort = 0 });
+        context.MediaLinks.AddRange(
+            MediaLink.ForPost(pictureA.Id, pictureAMedia.Id),
+            MediaLink.ForPost(pictureB.Id, pictureBMedia.Id));
         await context.SaveChangesAsync();
 
         // pictureA and pictureC (both published) depict tropheus, so its public picture count is
@@ -285,13 +286,11 @@ public sealed record SeedData(
         context.Tanks.AddRange(publishedTank, publishedTankWithExplicitMainImage, draftTank);
         await context.SaveChangesAsync();
 
-        publishedTankWithExplicitMainImage.MainMediaId = tank2MainMedia.Id;
-        await context.SaveChangesAsync();
-
-        context.TankMedia.AddRange(
-            new TankMedia { TankId = publishedTank.Id, MediaItemId = tankShowcase1Media.Id, Section = TankMediaSection.Showcase, Sort = 0 },
-            new TankMedia { TankId = publishedTank.Id, MediaItemId = tankShowcase2Media.Id, Section = TankMediaSection.Showcase, Sort = 1 },
-            new TankMedia { TankId = publishedTank.Id, MediaItemId = tankDecorationMedia.Id, Section = TankMediaSection.Decoration, Sort = 0 });
+        context.MediaLinks.AddRange(
+            MediaLink.ForTank(publishedTankWithExplicitMainImage.Id, tank2MainMedia.Id, MediaLinkRole.Main),
+            MediaLink.ForTank(publishedTank.Id, tankShowcase1Media.Id, MediaLinkRole.Showcase, 0),
+            MediaLink.ForTank(publishedTank.Id, tankShowcase2Media.Id, MediaLinkRole.Showcase, 1),
+            MediaLink.ForTank(publishedTank.Id, tankDecorationMedia.Id, MediaLinkRole.Decoration, 0));
         await context.SaveChangesAsync();
 
         context.Inhabitants.AddRange(
@@ -382,10 +381,7 @@ public sealed record SeedData(
             communityCichlidsThreadBPlaceholderPost, communityAfricanThreadAPost);
         await context.SaveChangesAsync();
 
-        context.DiscussionPostMedia.Add(new DiscussionPostMedia
-        {
-            DiscussionPostId = communityCichlidsThreadAGuestPost.Id, MediaItemId = forumAttachmentMedia.Id, Sort = 0,
-        });
+        context.MediaLinks.Add(MediaLink.ForDiscussionPost(communityCichlidsThreadAGuestPost.Id, forumAttachmentMedia.Id));
         await context.SaveChangesAsync();
 
         return new SeedData(

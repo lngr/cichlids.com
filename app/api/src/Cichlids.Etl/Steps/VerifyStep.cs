@@ -755,7 +755,7 @@ public sealed class VerifyStep : IEtlStep
     {
         var postsWithoutMedia = await PgScalarAsync(
             context,
-            "SELECT COUNT(*) FROM post p LEFT JOIN post_media pm ON pm.post_id = p.id WHERE pm.id IS NULL",
+            "SELECT COUNT(*) FROM post p LEFT JOIN media_link l ON l.post_id = p.id WHERE l.id IS NULL",
             cancellationToken);
         report.Add(VerificationRow.Compare("post_without_media", 0, postsWithoutMedia, MigrationRules.PostMedia));
 

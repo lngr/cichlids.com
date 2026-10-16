@@ -37,7 +37,7 @@ public class MediaOverlayTests(UploadsFixture fixture)
         var token = NewToken();
         var draft = await UploadDraftAsync(client, token, Jpeg(300, 200));
         await using var db = fixture.CreateDbContext();
-        var mediaId = await db.PostMedia.Where(m => m.PostId == draft.Id).Select(m => m.MediaItemId).SingleAsync();
+        var mediaId = await db.MediaLinks.Where(l => l.PostId == draft.Id).Select(l => l.MediaItemId).SingleAsync();
         var original = await db.MediaItems.Where(m => m.Id == mediaId).Select(m => m.StorageKey).SingleAsync();
         var keys = await db.MediaVariants.Where(v => v.MediaItemId == mediaId).Select(v => v.StorageKey).ToListAsync();
         keys.Add(original);
@@ -82,7 +82,7 @@ public class MediaOverlayTests(UploadsFixture fixture)
         var token = NewToken();
         var draft = await UploadDraftAsync(client, token, Jpeg(300, 200));
         await using var db = fixture.CreateDbContext();
-        var mediaId = await db.PostMedia.Where(m => m.PostId == draft.Id).Select(m => m.MediaItemId).SingleAsync();
+        var mediaId = await db.MediaLinks.Where(l => l.PostId == draft.Id).Select(l => l.MediaItemId).SingleAsync();
         var goldenKey = $"golden/v1/media/variants/thumb/media-{mediaId}.jpg";
         await fixture.SeedGoldenAsync(goldenKey, [1, 2, 3]);
         await db.MediaItems.Where(m => m.Id == mediaId).ExecuteUpdateAsync(s => s.SetProperty(m => m.StorageKey, goldenKey));

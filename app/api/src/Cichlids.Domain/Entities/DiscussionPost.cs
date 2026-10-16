@@ -16,5 +16,5 @@ public class DiscussionPost
     public DateTimeOffset CreatedAt { get; set; }
     public int Sort { get; set; }
 
-    public List<DiscussionPostMedia> Media { get; set; } = [];
+    public List<MediaLink> MediaLinks { get; set; } = [];
 }

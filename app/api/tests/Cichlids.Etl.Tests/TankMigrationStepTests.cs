@@ -18,8 +18,8 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
 
         // uid 1 and 2 are soft-deleted in the fixture and never read by this step; uid 10-14 are
         // five active tanks owned by this test class, and uid 300 is PictureMigrationStepTests'
-        // tank_media fixture (read unconditionally by this step too, since it scans the whole
-        // table, though this step never sets its media fields). Whether uid 300 itself lands as
+        // media link fixture (read unconditionally by this step too, since it scans the whole
+        // table, though this step never creates its media links). Whether uid 300 itself lands as
         // an insert or an update here depends on whether PictureMigrationStepTests' own
         // prerequisite happened to seed that same legacy id into the target first, so only the
         // total is asserted rather than the exact split; every other row in this run's own count
@@ -53,7 +53,7 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
             Assert.Equal(40, reef.DepthValue);
             Assert.Equal(DimensionUnit.Cm, reef.DimensionUnit);
             Assert.Equal(100m, reef.WidthInputValue);
-            Assert.Null(reef.MainMediaId);
+            Assert.False(await db.MediaLinks.AnyAsync(l => l.TankId == reef.Id));
 
             // Position 0 resolves to species legacy id 101; position 1 ("0") drops entirely
             // because it has neither a species nor a count; positions 2 and 3 keep a count-only

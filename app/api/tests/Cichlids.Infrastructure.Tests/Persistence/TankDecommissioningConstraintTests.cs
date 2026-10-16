@@ -79,14 +79,14 @@ public sealed class TankDecommissioningConstraintTests(PostgresFixture fixture)
     }
 
     [Fact]
-    public async Task The_photos_of_a_decommissioning_are_tank_media_of_their_own_sections()
+    public async Task The_photos_of_a_decommissioning_are_media_links_of_their_own_roles()
     {
         var (tank, photo) = await TankAsync();
         await using var context = fixture.CreateContext();
-        context.TankMedia.Add(new TankMedia { TankId = tank, MediaItemId = photo, Section = TankMediaSection.Decommission, CapturedInApp = true });
-        context.TankMedia.Add(new TankMedia { TankId = tank, MediaItemId = photo, Section = TankMediaSection.Recommission, CapturedInApp = true });
+        context.MediaLinks.Add(MediaLink.ForTank(tank, photo, MediaLinkRole.Decommission));
+        context.MediaLinks.Add(MediaLink.ForTank(tank, photo, MediaLinkRole.Recommission));
         await context.SaveChangesAsync();
-        Assert.Equal(2, await context.TankMedia.CountAsync(m => m.TankId == tank));
+        Assert.Equal(2, await context.MediaLinks.CountAsync(l => l.TankId == tank));
     }
 
     [Fact]

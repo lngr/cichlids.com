@@ -52,11 +52,12 @@ public sealed class RoundtripTests
                 Title = "Roundtrip Tank",
                 Category = TankCategory.Tanganyika,
                 State = TankState.Published,
-                MainMediaId = mediaItem.Id,
                 CreatedAt = DateTimeOffset.UtcNow,
                 PublishedAt = DateTimeOffset.UtcNow,
             };
             writeContext.Tanks.Add(tank);
+            await writeContext.SaveChangesAsync();
+            writeContext.MediaLinks.Add(MediaLink.ForTank(tank.Id, mediaItem.Id, MediaLinkRole.Main));
             await writeContext.SaveChangesAsync();
 
             var post = new Post
@@ -109,7 +110,7 @@ public sealed class RoundtripTests
 
         var readTank = await readContext.Tanks.SingleAsync(x => x.Id == tankId);
         Assert.Equal(profileId, readTank.ProfileId);
-        Assert.Equal(mediaItemId, readTank.MainMediaId);
+        Assert.Equal(mediaItemId, (await readContext.MediaLinks.SingleAsync(x => x.TankId == tankId && x.Role == MediaLinkRole.Main)).MediaItemId);
         Assert.Equal(TankCategory.Tanganyika, readTank.Category);
         Assert.Equal(TankState.Published, readTank.State);
 
@@ -176,11 +177,7 @@ public sealed class RoundtripTests
             writeContext.DiscussionPosts.Add(post);
             await writeContext.SaveChangesAsync();
 
-            writeContext.DiscussionPostMedia.Add(new DiscussionPostMedia
-            {
-                DiscussionPostId = post.Id,
-                MediaItemId = mediaItem.Id,
-            });
+            writeContext.MediaLinks.Add(MediaLink.ForDiscussionPost(post.Id, mediaItem.Id));
             await writeContext.SaveChangesAsync();
 
             threadId = thread.Id;
@@ -198,7 +195,7 @@ public sealed class RoundtripTests
         Assert.Equal(threadId, readPost.ThreadId);
         Assert.Equal("Roundtrip post body", readPost.Body);
 
-        var readMedia = await readContext.DiscussionPostMedia.SingleAsync(x => x.DiscussionPostId == postId);
+        var readMedia = await readContext.MediaLinks.SingleAsync(x => x.DiscussionPostId == postId);
         Assert.Equal(mediaItemId, readMedia.MediaItemId);
     }
 }

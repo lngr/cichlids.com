@@ -137,7 +137,7 @@ public class TodayTests(ApiFixture fixture)
         var post = new Post { AuthorProfileId = member.Id, State = PostState.Published, PublishedAt = Date(2025), CreatedAt = Date(2025) };
         db.Posts.Add(post);
         await db.SaveChangesAsync();
-        db.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = foreign.MediaId });
+        db.MediaLinks.Add(MediaLink.ForPost(post.Id, foreign.MediaId));
         await db.SaveChangesAsync();
         using var json = await GetAsync(token);
         Assert.False(json.RootElement.TryGetProperty("onThisDay", out _));
@@ -198,7 +198,7 @@ public class TodayTests(ApiFixture fixture)
         var post = new Post { AuthorProfileId = owner, TankId = tank, Title = "Today photo", State = state, CreatedAt = date, UpdatedAt = date, PublishedAt = state == PostState.Published ? date : null, DeletedAt = deleted ? date : null };
         db.AddRange(media, post);
         await db.SaveChangesAsync();
-        db.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = media.Id });
+        db.MediaLinks.Add(MediaLink.ForPost(post.Id, media.Id));
         db.MediaVariants.Add(new MediaVariant { MediaItemId = media.Id, Label = "medium", Width = 800, StorageKey = $"variants/{media.Id}.jpg" });
         db.SlugAliases.Add(new SlugAlias { PostId = post.Id, Value = $"today-{post.Id}", IsCanonical = true, CreatedAt = date });
         await db.SaveChangesAsync();

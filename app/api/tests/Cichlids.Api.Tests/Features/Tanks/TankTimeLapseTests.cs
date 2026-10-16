@@ -26,7 +26,7 @@ public class TankTimeLapseTests(ApiFixture fixture)
             var media = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo, CreatedAt = start.AddMonths(i == count - 1 ? spanMonths : sameMonth ? 0 : i) };
             db.MediaItems.Add(media);
             await db.SaveChangesAsync();
-            db.TankMedia.Add(new TankMedia { TankId = tank.Id, MediaItemId = media.Id, Sort = count - i });
+            db.MediaLinks.Add(MediaLink.ForTank(tank.Id, media.Id, MediaLinkRole.Showcase, count - i));
             db.MediaVariants.Add(new MediaVariant { MediaItemId = media.Id, Label = "large", StorageKey = $"variants/large/{media.Id}.jpg" });
         }
         await db.SaveChangesAsync();
@@ -72,7 +72,7 @@ public class TankTimeLapseTests(ApiFixture fixture)
         await db.SaveChangesAsync();
         foreach (var media in new[] { uploadedLate, uploadedEarly, nearYearEnd, unknownZone })
         {
-            db.TankMedia.Add(new TankMedia { TankId = tank.Id, MediaItemId = media.Id });
+            db.MediaLinks.Add(MediaLink.ForTank(tank.Id, media.Id, MediaLinkRole.Showcase));
             db.MediaVariants.Add(new MediaVariant { MediaItemId = media.Id, Label = "large", StorageKey = $"variants/large/{media.Id}.jpg" });
         }
         await db.SaveChangesAsync();
@@ -120,7 +120,7 @@ public class TankTimeLapseTests(ApiFixture fixture)
             };
             db.MediaItems.Add(media);
             await db.SaveChangesAsync();
-            db.TankMedia.Add(new TankMedia { TankId = tank.Id, MediaItemId = media.Id });
+            db.MediaLinks.Add(MediaLink.ForTank(tank.Id, media.Id, MediaLinkRole.Showcase));
             db.MediaVariants.Add(new MediaVariant { MediaItemId = media.Id, Label = "large", StorageKey = $"variants/large/{media.Id}.jpg" });
         }
         await db.SaveChangesAsync();
@@ -147,7 +147,7 @@ public class TankTimeLapseTests(ApiFixture fixture)
             };
             db.MediaItems.Add(media);
             await db.SaveChangesAsync();
-            db.TankMedia.Add(new TankMedia { TankId = tank.Id, MediaItemId = media.Id });
+            db.MediaLinks.Add(MediaLink.ForTank(tank.Id, media.Id, MediaLinkRole.Showcase));
             db.MediaVariants.Add(new MediaVariant { MediaItemId = media.Id, Label = "large", StorageKey = $"variants/large/{media.Id}.jpg" });
         }
         await db.SaveChangesAsync();
@@ -169,15 +169,15 @@ public class TankTimeLapseTests(ApiFixture fixture)
         var video = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Video, CreatedAt = date };
         db.MediaItems.AddRange(photo, video);
         await db.SaveChangesAsync();
-        db.TankMedia.Add(new TankMedia { TankId = tank.Id, MediaItemId = photo.Id });
-        db.TankMedia.Add(new TankMedia { TankId = tank.Id, MediaItemId = video.Id });
+        db.MediaLinks.Add(MediaLink.ForTank(tank.Id, photo.Id, MediaLinkRole.Showcase));
+        db.MediaLinks.Add(MediaLink.ForTank(tank.Id, video.Id, MediaLinkRole.Showcase));
         db.MediaVariants.Add(new MediaVariant { MediaItemId = photo.Id, Label = "large", StorageKey = "variants/large/series.jpg" });
         foreach (var state in new[] { PostState.Published, PostState.Draft })
         {
             var post = new Post { TankId = tank.Id, AuthorProfileId = fixture.Seed.Alice.Id, Title = state.ToString(), State = state, PublishedAt = date.AddYears(1) };
             db.Posts.Add(post);
             await db.SaveChangesAsync();
-            db.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = photo.Id });
+            db.MediaLinks.Add(MediaLink.ForPost(post.Id, photo.Id));
         }
         await db.SaveChangesAsync();
         using var response = await fixture.Client.GetAsync($"/api/tanks/{tank.Id}/time-lapse");

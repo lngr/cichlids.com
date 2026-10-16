@@ -35,9 +35,9 @@ public sealed class TankSeriesPhotoTests(UploadsFixture fixture)
         Assert.Equal(3, item.Variants.Count);
         Assert.All(item.Variants, v => Assert.StartsWith("variants/", v.StorageKey));
         Assert.True(await fixture.ObjectStore.ExistsAsync(item.StorageKey));
-        var media = await db.TankMedia.SingleAsync(m => m.TankId == tank);
+        var media = await db.MediaLinks.SingleAsync(l => l.TankId == tank);
         Assert.Equal(mediaItemId, media.MediaItemId);
-        Assert.Equal(TankMediaSection.TimeLapse, media.Section);
+        Assert.Equal(MediaLinkRole.TimeLapse, media.Role);
         Assert.False(await db.Posts.AnyAsync(p => p.AuthorProfileId == item.OwnerProfileId));
 
         using var series = JsonDocument.Parse(await fixture.Client.GetStringAsync($"/api/tanks/{tank}/time-lapse"));
@@ -88,7 +88,7 @@ public sealed class TankSeriesPhotoTests(UploadsFixture fixture)
         await AssertProblemAsync(anonymous, HttpStatusCode.Unauthorized, "tank_photo_auth_required");
 
         await using var db = fixture.CreateDbContext();
-        Assert.False(await db.TankMedia.AnyAsync(m => m.TankId == tank));
+        Assert.False(await db.MediaLinks.AnyAsync(l => l.TankId == tank));
         Assert.DoesNotContain(await EventsAsync(db, "tank", tank), e => e.Type == "tank.photo_added");
     }
 
@@ -106,7 +106,7 @@ public sealed class TankSeriesPhotoTests(UploadsFixture fixture)
         await AssertProblemAsync(huge, HttpStatusCode.BadRequest, "tank_photo_invalid");
 
         await using var db = fixture.CreateDbContext();
-        Assert.False(await db.TankMedia.AnyAsync(m => m.TankId == tank));
+        Assert.False(await db.MediaLinks.AnyAsync(l => l.TankId == tank));
     }
 
     [Fact]
@@ -122,7 +122,7 @@ public sealed class TankSeriesPhotoTests(UploadsFixture fixture)
         await AssertProblemAsync(third, HttpStatusCode.TooManyRequests, "upload_rate_limited");
 
         await using var db = fixture.CreateDbContext();
-        Assert.Equal(2, await db.TankMedia.CountAsync(m => m.TankId == tank));
+        Assert.Equal(2, await db.MediaLinks.CountAsync(l => l.TankId == tank));
         Assert.Equal(2, (await EventsAsync(db, "tank", tank)).Count(e => e.Type == "tank.photo_added"));
     }
 
@@ -136,7 +136,7 @@ public sealed class TankSeriesPhotoTests(UploadsFixture fixture)
         using var response = await AddAsync(fixture.Client, token, tank, PhotoFixtures.PhoneJpeg(600, 400), capturedInApp: field);
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
         await using var db = fixture.CreateDbContext();
-        Assert.Equal(expected, (await db.TankMedia.SingleAsync(m => m.TankId == tank)).CapturedInApp);
+        Assert.Equal(expected, (await db.MediaLinks.Include(l => l.MediaItem).SingleAsync(l => l.TankId == tank)).MediaItem.CapturedInApp);
     }
 
     private static async Task<HttpResponseMessage> AddAsync(

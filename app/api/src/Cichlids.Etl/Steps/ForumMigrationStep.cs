@@ -141,8 +141,8 @@ public sealed class ForumMigrationStep : IEtlStep
 
     /// <summary>
     /// Deletes every discussion_post row whose legacy id is not among this run's migrated
-    /// messages, together with its discussion_post_media rows through the foreign key cascade, and
-    /// any forum-attachment media_item row left with no discussion_post_media referencing it. In
+    /// messages, together with its media links through the foreign key cascade, and
+    /// any forum-attachment media_item row left with no media link. In
     /// the full run the table starts empty and nothing is deleted; a single step run in
     /// Development or a step test over earlier rows ends with the migrated set.
     /// </summary>
@@ -164,7 +164,7 @@ public sealed class ForumMigrationStep : IEtlStep
             """
             DELETE FROM media_item
             WHERE storage_key LIKE 'forum_attachments/%'
-              AND NOT EXISTS (SELECT 1 FROM discussion_post_media WHERE discussion_post_media.media_item_id = media_item.id)
+              AND NOT EXISTS (SELECT 1 FROM media_link WHERE media_link.media_item_id = media_item.id)
             """,
             context.Target, context.Transaction);
         await deleteOrphanedMedia.ExecuteNonQueryAsync(cancellationToken);
@@ -360,7 +360,7 @@ public sealed class ForumMigrationStep : IEtlStep
     /// stored byte for byte. Idempotent per file id through the deterministic storage key: an
     /// attachment whose stored object carries the checksum of the legacy bytes and the current
     /// original pipeline version is skipped by the upload, and the media_item and
-    /// discussion_post_media rows are kept in sync with the legacy data in every case. Size and
+    /// media links are kept in sync with the legacy data in every case. Size and
     /// checksum on media_item describe the stored bytes.
     /// </summary>
     private static async Task MigrateAttachmentsAsync(
@@ -494,17 +494,18 @@ public sealed class ForumMigrationStep : IEtlStep
         var postMediaRows = new List<IReadOnlyList<object?>>(attachments.Count);
         foreach (var (storageKey, postLegacyId, sort) in attachments)
         {
-            postMediaRows.Add(new object?[] { postIdByLegacyId[postLegacyId], mediaIdByStorageKey[storageKey], sort });
+            postMediaRows.Add(new object?[] { postIdByLegacyId[postLegacyId], mediaIdByStorageKey[storageKey], "discussion_post", "attachment", sort });
         }
 
         await PgBulkInsert.InsertOnConflictDoNothingAsync(
             context.Target,
             context.Transaction,
-            "discussion_post_media",
-            ["discussion_post_id", "media_item_id"],
-            ["discussion_post_id", "media_item_id", "sort"],
+            "media_link",
+            ["discussion_post_id", "role", "media_item_id"],
+            ["discussion_post_id", "media_item_id", "context_type", "role", "position"],
             postMediaRows,
-            cancellationToken);
+            cancellationToken,
+            conflictPredicate: "discussion_post_id IS NOT NULL");
     }
 
     private static async Task<Dictionary<string, (long Id, bool Inserted)>> UpsertMediaItemsByStorageKeyAsync(
@@ -526,6 +527,7 @@ public sealed class ForumMigrationStep : IEtlStep
                 ("byte_size", row[4]),
                 ("checksum_sha256", row[5]),
                 ("created_at", row[6]),
+                ("received_at", row[6]),
             };
 
             var (id, inserted) = await PgUpsert.UpsertAsync(context.Target, context.Transaction, "media_item", "storage_key", values, cancellationToken);

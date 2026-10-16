@@ -68,7 +68,7 @@ public static class MigrationRules
         "A legacy species link migrates once per post and species when both the picture and the species migrated.";
 
     public const string PostMedia =
-        "Every post has its picture as media.";
+        "Every post has its picture as a media link.";
 
     public const string SlugAliases =
         "Every legacy picture alias migrates as a unique slug alias of its post, with exactly one canonical alias per post.";

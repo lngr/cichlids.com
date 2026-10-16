@@ -260,7 +260,7 @@ public sealed class CarePhotoTests(UploadsFixture fixture)
     private async Task<int> CountPhotoRowsAsync(long entryId)
     {
         await using var db = fixture.CreateDbContext();
-        return await db.Database.SqlQuery<int>($"SELECT count(*)::int AS \"Value\" FROM care_photo WHERE care_entry_id = {entryId}").SingleAsync();
+        return await db.Database.SqlQuery<int>($"SELECT count(*)::int AS \"Value\" FROM media_link WHERE care_entry_id = {entryId} AND role = 'photo'").SingleAsync();
     }
 
     private async Task<HttpResponseMessage> AddPhotoAsync(string? token, long tank, long entry, byte[] bytes,

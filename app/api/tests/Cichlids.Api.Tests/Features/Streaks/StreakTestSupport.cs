@@ -39,10 +39,14 @@ internal static class StreakTestSupport
     public static async Task<long> AddSeriesPhotoAsync(ApiFixture fixture, long tank, long profile, DateTimeOffset receivedAt, bool capturedInApp = true)
     {
         await using var db = fixture.CreateDbContext();
-        var item = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo, OwnerProfileId = profile, CreatedAt = receivedAt };
+        var item = new MediaItem
+        {
+            StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo, OwnerProfileId = profile, CreatedAt = receivedAt, ReceivedAt = receivedAt,
+            CapturedInApp = capturedInApp,
+        };
         db.MediaItems.Add(item);
         await db.SaveChangesAsync();
-        db.TankMedia.Add(new TankMedia { TankId = tank, MediaItemId = item.Id, Section = TankMediaSection.TimeLapse, CapturedInApp = capturedInApp });
+        db.MediaLinks.Add(MediaLink.ForTank(tank, item.Id, MediaLinkRole.TimeLapse));
         await db.SaveChangesAsync();
         return item.Id;
     }

@@ -38,7 +38,7 @@ public sealed class WaterChangeService(
             if (!await CareTanks.LockOwnAsync(context, tankId, profileId, ct)) return (null, "water_change_not_found");
             var now = Now();
             removedKeys = await RemoveExpiredAsync(context.WaterChangeSessions.Where(s => s.TankId == tankId), now, ct);
-            var open = await context.WaterChangeSessions.Include(s => s.Steps).Include(s => s.Photos).SingleOrDefaultAsync(s => s.TankId == tankId && s.FinishedAt == null, ct);
+            var open = await context.WaterChangeSessions.Include(s => s.Steps).Include(s => s.MediaLinks).SingleOrDefaultAsync(s => s.TankId == tankId && s.FinishedAt == null, ct);
             if (open is null)
             {
                 open = new WaterChangeSession { TankId = tankId, ProfileId = profileId, StartedAt = now };
@@ -67,7 +67,7 @@ public sealed class WaterChangeService(
         {
             if (!await CareTanks.LockOwnAsync(context, tankId, profileId, ct)) return (null, "water_change_not_found");
             removedKeys = await RemoveExpiredAsync(context.WaterChangeSessions.Where(s => s.TankId == tankId), Now(), ct);
-            open = await context.WaterChangeSessions.Include(s => s.Steps).Include(s => s.Photos).SingleOrDefaultAsync(s => s.TankId == tankId && s.FinishedAt == null, ct);
+            open = await context.WaterChangeSessions.Include(s => s.Steps).Include(s => s.MediaLinks).SingleOrDefaultAsync(s => s.TankId == tankId && s.FinishedAt == null, ct);
             await transaction.CommitAsync(ct);
         }
 
@@ -109,7 +109,7 @@ public sealed class WaterChangeService(
         StoredImage stored;
         try
         {
-            stored = await uploads.StoreImageAsync(profileId, image.Bytes, image.Format, Path.GetFileName(file!.FileName), isPrivate: true, ct);
+            stored = await uploads.StoreImageAsync(profileId, image.Bytes, image.Format, Path.GetFileName(file!.FileName), isPrivate: true, ct, capturedInApp: capturedInApp);
         }
         catch (Exception ex) when (ex is ImageProcessor.ImageTooLargeException or ImageProcessor.UnsupportedImageFormatException
             or ImageProcessor.BrokenImageException)
@@ -122,7 +122,7 @@ public sealed class WaterChangeService(
         {
             await using var transaction = await context.Database.BeginTransactionAsync(ct);
             session = await LockOpenAsync(tankId, id, profileId, ct);
-            if (session is null || session.Photos.Count >= WaterChangeSession.MaxPhotos)
+            if (session is null || session.MediaLinks.Count >= MediaLinkLimits.EvidencePhotosPerSession)
             {
                 await deleter.DeleteAsync(stored.WrittenKeys);
                 return (null, session is null ? "water_change_not_found" : "water_change_photo_limit");
@@ -130,11 +130,8 @@ public sealed class WaterChangeService(
 
             context.MediaItems.Add(stored.Item);
             await context.SaveChangesAsync(ct);
-            session.Photos.Add(new WaterChangeSessionPhoto
-            {
-                MediaItemId = stored.Item.Id, Position = session.Photos.Count == 0 ? 0 : session.Photos.Max(p => p.Position) + 1,
-                CapturedInApp = capturedInApp, ReceivedAt = Now(),
-            });
+            session.MediaLinks.Add(MediaLink.ForWaterChangeSession(session.Id, stored.Item.Id,
+                session.MediaLinks.Count == 0 ? 0 : session.MediaLinks.Max(l => l.Position) + 1));
             await context.SaveChangesAsync(ct);
             await transaction.CommitAsync(ct);
         }
@@ -171,8 +168,11 @@ public sealed class WaterChangeService(
             WaterChangeSessionId = session.Id, DurationSeconds = duration, Evidence = evidence.State, EvidenceMissing = [.. evidence.Missing],
         };
         CareWriteService.SetAmount(entry, amount);
-        foreach (var photo in session.Photos.OrderBy(p => p.Position))
-            entry.Photos.Add(new CarePhoto { MediaItemId = photo.MediaItemId, Position = entry.Photos.Count });
+        foreach (var link in session.MediaLinks.OrderBy(l => l.Position))
+            entry.MediaLinks.Add(new MediaLink
+            {
+                ContextType = MediaLinkContext.CareEntry, Role = MediaLinkRole.Photo, MediaItemId = link.MediaItemId, Position = entry.MediaLinks.Count,
+            });
         context.CareEntries.Add(entry);
         session.FinishedAt = now;
         session.DurationSeconds = duration;
@@ -182,7 +182,7 @@ public sealed class WaterChangeService(
         {
             ["finishedAt"] = now, ["durationSeconds"] = duration, ["careEntryId"] = entry.Id,
             ["evidence"] = new { state = SnakeCaseEnum.ToSnakeCase(evidence.State), missing = evidence.Missing },
-            ["photoCount"] = session.Photos.Count,
+            ["photoCount"] = session.MediaLinks.Count,
         });
         await context.SaveChangesAsync(ct);
         await transaction.CommitAsync(ct);
@@ -234,21 +234,22 @@ public sealed class WaterChangeService(
         }
     }
 
-    // A picture counts as used before when a finished water change of the member holds a photo with
-    // the same checksum.
+    // A picture counts as used before when an evidence link of another finished session of the member
+    // holds a photo with the same checksum. The capture source and the receive time are those of the media item.
     private async Task<List<EvidencePhoto>> EvidencePhotosOfAsync(WaterChangeSession session, long profileId, CancellationToken ct)
     {
-        var ids = session.Photos.Select(p => p.MediaItemId).ToList();
+        var ids = session.MediaLinks.Select(l => l.MediaItemId).ToList();
         var items = await context.MediaItems.AsNoTracking().Where(m => ids.Contains(m.Id)).ToDictionaryAsync(m => m.Id, ct);
         var checksums = items.Values.Select(m => m.ChecksumSha256).OfType<string>().Distinct().ToList();
-        var used = await context.CarePhotos.AsNoTracking()
-            .Where(p => context.CareEntries.Any(e => e.Id == p.CareEntryId && e.WaterChangeSessionId != null && e.WaterChangeSessionId != session.Id)
-                && p.MediaItem.OwnerProfileId == profileId && p.MediaItem.ChecksumSha256 != null && checksums.Contains(p.MediaItem.ChecksumSha256))
-            .Select(p => p.MediaItem.ChecksumSha256!).Distinct().ToListAsync(ct);
-        return session.Photos.Where(p => items.ContainsKey(p.MediaItemId)).Select(p =>
+        var used = await context.MediaLinks.AsNoTracking()
+            .Where(l => l.ContextType == MediaLinkContext.WaterChangeSession && l.WaterChangeSessionId != session.Id
+                && context.WaterChangeSessions.Any(s => s.Id == l.WaterChangeSessionId && s.FinishedAt != null)
+                && l.MediaItem.OwnerProfileId == profileId && l.MediaItem.ChecksumSha256 != null && checksums.Contains(l.MediaItem.ChecksumSha256))
+            .Select(l => l.MediaItem.ChecksumSha256!).Distinct().ToListAsync(ct);
+        return session.MediaLinks.Where(l => items.ContainsKey(l.MediaItemId)).Select(l =>
         {
-            var item = items[p.MediaItemId];
-            return new EvidencePhoto(p.CapturedInApp, p.ReceivedAt, item.TakenAt, item.TakenAtOffsetMinutes is not null,
+            var item = items[l.MediaItemId];
+            return new EvidencePhoto(item.CapturedInApp, item.ReceivedAt, item.TakenAt, item.TakenAtOffsetMinutes is not null,
                 item.ChecksumSha256 is { } sum && used.Contains(sum));
         }).ToList();
     }
@@ -265,7 +266,7 @@ public sealed class WaterChangeService(
     {
         if (!await CareTanks.LockOwnAsync(context, tankId, profileId, ct)) return null;
         var cutoff = Now() - Settings.SessionLifetime;
-        return await context.WaterChangeSessions.Include(s => s.Steps).Include(s => s.Photos)
+        return await context.WaterChangeSessions.Include(s => s.Steps).Include(s => s.MediaLinks)
             .SingleOrDefaultAsync(s => s.Id == id && s.TankId == tankId && s.ProfileId == profileId && s.FinishedAt == null && s.StartedAt > cutoff, ct);
     }
 
@@ -280,7 +281,7 @@ public sealed class WaterChangeService(
     private async Task<List<string>> RemoveAsync(IReadOnlyCollection<WaterChangeSession> sessions, CancellationToken ct)
     {
         var sessionIds = sessions.Select(s => s.Id).ToList();
-        var ids = await context.WaterChangeSessionPhotos.Where(p => sessionIds.Contains(p.SessionId)).Select(p => p.MediaItemId).ToListAsync(ct);
+        var ids = await context.MediaLinks.EvidenceLinks().Where(l => sessionIds.Contains(l.WaterChangeSessionId!.Value)).Select(l => l.MediaItemId).ToListAsync(ct);
         var items = await context.MediaItems.Include(m => m.Variants).Where(m => ids.Contains(m.Id)).ToListAsync(ct);
         var keys = items.SelectMany(m => m.Variants.Select(v => v.StorageKey).Append(m.StorageKey)).ToList();
         context.WaterChangeSessions.RemoveRange(sessions);
@@ -301,19 +302,19 @@ public sealed class WaterChangeService(
 
     private async Task<WaterChangeSessionDto> ToDtoAsync(WaterChangeSession session, CancellationToken ct)
     {
-        var photos = session.Photos.OrderBy(p => p.Position).ToList();
-        var ids = photos.Select(p => p.MediaItemId).ToList();
+        var photos = session.MediaLinks.OrderBy(l => l.Position).ToList();
+        var ids = photos.Select(l => l.MediaItemId).ToList();
         var items = await context.MediaItems.AsNoTracking().Include(m => m.Variants).Where(m => ids.Contains(m.Id)).ToDictionaryAsync(m => m.Id, ct);
 
         var previousSessionId = await context.WaterChangeSessions.AsNoTracking()
-            .Where(p => p.TankId == session.TankId && p.Id != session.Id && p.FinishedAt != null && p.Photos.Any()
+            .Where(p => p.TankId == session.TankId && p.Id != session.Id && p.FinishedAt != null && p.MediaLinks.Any()
                 && (session.FinishedAt == null || p.FinishedAt < session.FinishedAt))
             .OrderByDescending(p => p.FinishedAt).Select(p => (long?)p.Id).FirstOrDefaultAsync(ct);
         List<CarePhotoUrlsDto> previous = [];
         if (previousSessionId is { } previousKey)
         {
-            var previousIds = await context.WaterChangeSessionPhotos.AsNoTracking().Where(p => p.SessionId == previousKey)
-                .OrderBy(p => p.Position).Select(p => p.MediaItemId).ToListAsync(ct);
+            var previousIds = await context.MediaLinks.AsNoTracking().EvidenceLinks().Where(l => l.WaterChangeSessionId == previousKey)
+                .OrderBy(l => l.Position).Select(l => l.MediaItemId).ToListAsync(ct);
             var previousItems = await context.MediaItems.AsNoTracking().Include(m => m.Variants).Where(m => previousIds.Contains(m.Id)).ToDictionaryAsync(m => m.Id, ct);
             previous = previousIds.Where(previousItems.ContainsKey).Select(key => mapper.UrlsOf(previousItems[key])).ToList();
         }
@@ -321,8 +322,9 @@ public sealed class WaterChangeService(
         return new WaterChangeSessionDto(session.Id, session.TankId, session.StartedAt, session.StartedAt + Settings.SessionLifetime,
             session.FinishedAt, session.DurationSeconds,
             session.Steps.OrderBy(s => s.At).ThenBy(s => s.Id).Select(s => new WaterChangeStepDto(s.Step, s.State, s.At)).ToList(),
-            photos.Where(p => items.ContainsKey(p.MediaItemId)).Select(p => new WaterChangePhotoDto(mapper.UrlsOf(items[p.MediaItemId]),
-                items[p.MediaItemId].Width, items[p.MediaItemId].Height, p.CapturedInApp, p.ReceivedAt, items[p.MediaItemId].TakenAt)).ToList(),
+            photos.Where(l => items.ContainsKey(l.MediaItemId)).Select(l => new WaterChangePhotoDto(mapper.UrlsOf(items[l.MediaItemId]),
+                items[l.MediaItemId].Width, items[l.MediaItemId].Height, items[l.MediaItemId].CapturedInApp, items[l.MediaItemId].ReceivedAt,
+                items[l.MediaItemId].TakenAt)).ToList(),
             previous, (int)Settings.MinDuration.TotalSeconds);
     }
 }

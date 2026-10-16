@@ -69,7 +69,7 @@ public sealed class TankMediaFailClosedTests(UploadsFixture fixture)
     private async Task<List<string>> VariantKeysAsync(long tank)
     {
         await using var db = fixture.CreateDbContext();
-        var ids = db.TankMedia.Where(m => m.TankId == tank).Select(m => m.MediaItemId);
+        var ids = db.MediaLinks.Where(l => l.TankId == tank).Select(l => l.MediaItemId);
         return await db.MediaVariants.Where(v => ids.Contains(v.MediaItemId)).Select(v => v.StorageKey).ToListAsync();
     }
 

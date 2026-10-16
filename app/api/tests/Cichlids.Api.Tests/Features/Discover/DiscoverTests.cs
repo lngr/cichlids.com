@@ -23,7 +23,7 @@ public class DiscoverTests(ApiFixture fixture)
         var media = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
         db.MediaItems.Add(media);
         await db.SaveChangesAsync();
-        db.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = media.Id });
+        db.MediaLinks.Add(MediaLink.ForPost(post.Id, media.Id));
         for (var i = 0; i < 10; i++)
         {
             db.Ratings.Add(new Rating { TankId = tank.Id, Stars = 4 });
@@ -65,7 +65,7 @@ public class DiscoverTests(ApiFixture fixture)
                     CreatedAt = DateTimeOffset.Parse("2020-01-01T00:00:00Z").AddMonths(i == count - 1 ? 12 : i) };
                 db.MediaItems.Add(media);
                 await db.SaveChangesAsync();
-                db.TankMedia.Add(new TankMedia { TankId = tank.Id, MediaItemId = media.Id });
+                db.MediaLinks.Add(MediaLink.ForTank(tank.Id, media.Id, MediaLinkRole.Showcase));
                 db.MediaVariants.Add(new MediaVariant { MediaItemId = media.Id, Label = "large", StorageKey = $"variants/large/showcase/{media.Id}.jpg" });
             }
             await db.SaveChangesAsync();
@@ -99,7 +99,7 @@ public class DiscoverTests(ApiFixture fixture)
             var photo = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
             db.AddRange(post, photo);
             await db.SaveChangesAsync();
-            db.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = photo.Id });
+            db.MediaLinks.Add(MediaLink.ForPost(post.Id, photo.Id));
             if (category != null)
             {
                 var species = new Cichlids.Domain.Entities.Species { Genus = Guid.NewGuid().ToString(), Name = "test", Category = category };
@@ -148,7 +148,7 @@ public class DiscoverTests(ApiFixture fixture)
             var photo = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
             db.AddRange(post, photo);
             await db.SaveChangesAsync();
-            db.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = photo.Id });
+            db.MediaLinks.Add(MediaLink.ForPost(post.Id, photo.Id));
             for (var i = 0; i < 50; i++) db.Ratings.Add(new Rating { PostId = post.Id, Stars = 5 });
             posts.Add(post);
         }
@@ -162,7 +162,7 @@ public class DiscoverTests(ApiFixture fixture)
         {
             var postIds = posts.Select(p => p.Id).ToList();
             await db.Ratings.Where(r => r.TankId == tank.Id || (r.PostId != null && postIds.Contains(r.PostId.Value))).ExecuteDeleteAsync();
-            await db.PostMedia.Where(pm => postIds.Contains(pm.PostId)).ExecuteDeleteAsync();
+            await db.MediaLinks.Where(l => l.PostId != null && postIds.Contains(l.PostId.Value)).ExecuteDeleteAsync();
             await db.Posts.Where(p => postIds.Contains(p.Id)).ExecuteDeleteAsync();
             await db.Tanks.Where(t => t.Id == tank.Id).ExecuteDeleteAsync();
         }
@@ -230,7 +230,7 @@ public class DiscoverTests(ApiFixture fixture)
             var photo = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
             db.MediaItems.Add(photo);
             await db.SaveChangesAsync();
-            db.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = photo.Id });
+            db.MediaLinks.Add(MediaLink.ForPost(post.Id, photo.Id));
             for (var i = 0; i < votes; i++)
             {
                 db.Ratings.Add(new Rating { TankId = tank.Id, Stars = stars });

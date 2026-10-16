@@ -10,8 +10,8 @@ namespace Cichlids.Etl.Steps;
 
 /// <summary>
 /// Migrates legacy aquarium setups (user_cichlids_tanks) into tank and their
-/// stocking lists into inhabitant. Tank media (tank_media, tank.main_media_id)
-/// is attached later by PictureMigrationStep, once the pictures the legacy image
+/// stocking lists into inhabitant. The media links of a tank (main image, showcase, decoration and technic)
+/// are created later by PictureMigrationStep, once the pictures the legacy image
 /// columns reference have their own migrated media items to point at.
 /// </summary>
 public sealed class TankMigrationStep : IEtlStep

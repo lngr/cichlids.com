@@ -53,7 +53,7 @@ public sealed class TankDecommissioningTests(UploadsFixture fixture)
         PostAsync(client, token, Url(tank, "/end"), photo, capturedInApp);
 
     [Fact]
-    public async Task GivenAnAppPhotoOfTheEmptyTank_WhenDecommissioning_ThenTheDecommissioningIsActiveAndThePhotoIsTankMediaOfTheDecommissionSection()
+    public async Task GivenAnAppPhotoOfTheEmptyTank_WhenDecommissioning_ThenTheDecommissioningIsActiveAndThePhotoIsLinkedToTheTankInTheDecommissionRole()
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);
         using var response = await StartAsync(fixture.Client, token, tank, Jpeg(640, 480), "water_change");
@@ -72,9 +72,9 @@ public sealed class TankDecommissioningTests(UploadsFixture fixture)
         var row = await db.TankDecommissionings.SingleAsync(d => d.TankId == tank);
         Assert.Equal(DecommissionScope.WaterChange, row.Scope);
         Assert.Null(row.EndedAt);
-        var media = await db.TankMedia.SingleAsync(m => m.TankId == tank);
-        Assert.Equal(TankMediaSection.Decommission, media.Section);
-        Assert.True(media.CapturedInApp);
+        var media = await db.MediaLinks.SingleAsync(l => l.TankId == tank);
+        Assert.Equal(MediaLinkRole.Decommission, media.Role);
+        Assert.True((await db.MediaItems.SingleAsync(i => i.Id == media.MediaItemId)).CapturedInApp);
         Assert.Equal(media.MediaItemId, row.StartMediaItemId);
         var recorded = Assert.Single(await EventsAsync(db, "tank", tank), e => e.Type == "tank.decommissioned");
         Assert.Equal(tank, recorded.Payload.GetProperty("tankId").GetInt64());
@@ -93,7 +93,7 @@ public sealed class TankDecommissioningTests(UploadsFixture fixture)
 
         await using var db = fixture.CreateDbContext();
         Assert.False(await db.TankDecommissionings.AnyAsync(d => d.TankId == tank));
-        Assert.False(await db.TankMedia.AnyAsync(m => m.TankId == tank));
+        Assert.False(await db.MediaLinks.AnyAsync(l => l.TankId == tank));
         Assert.DoesNotContain(await EventsAsync(db, "tank", tank), e => e.Type == "tank.decommissioned");
     }
 
@@ -165,7 +165,7 @@ public sealed class TankDecommissioningTests(UploadsFixture fixture)
         using var second = await StartAsync(fixture.Client, token, tank, Jpeg(653, 480));
         await AssertProblemAsync(second, HttpStatusCode.Conflict, "decommission_active");
         await using var db = fixture.CreateDbContext();
-        Assert.Equal(1, await db.TankMedia.CountAsync(m => m.TankId == tank));
+        Assert.Equal(1, await db.MediaLinks.CountAsync(l => l.TankId == tank));
     }
 
     [Fact]
@@ -202,9 +202,9 @@ public sealed class TankDecommissioningTests(UploadsFixture fixture)
         await using var db = fixture.CreateDbContext();
         var row = await db.TankDecommissionings.SingleAsync(d => d.TankId == tank);
         Assert.NotNull(row.EndedAt);
-        var media = await db.TankMedia.Where(m => m.TankId == tank).OrderBy(m => m.Id).ToListAsync();
-        Assert.Equal([TankMediaSection.Decommission, TankMediaSection.Recommission], media.Select(m => m.Section));
-        Assert.All(media, m => Assert.True(m.CapturedInApp));
+        var media = await db.MediaLinks.Where(l => l.TankId == tank).OrderBy(l => l.Id).ToListAsync();
+        Assert.Equal([MediaLinkRole.Decommission, MediaLinkRole.Recommission], media.Select(l => l.Role));
+        Assert.Equal(2, await db.MediaItems.CountAsync(i => media.Select(m => m.MediaItemId).Contains(i.Id) && i.CapturedInApp));
         Assert.Equal(media[1].MediaItemId, row.EndMediaItemId);
         var ending = Assert.Single(await EventsAsync(db, "tank", tank), e => e.Type == "tank.recommissioned");
         Assert.Equal(media[1].MediaItemId, ending.Payload.GetProperty("mediaItemId").GetInt64());
@@ -228,7 +228,7 @@ public sealed class TankDecommissioningTests(UploadsFixture fixture)
         await AssertProblemAsync(response, HttpStatusCode.BadRequest, "decommission_photo_not_in_app");
         await using var db = fixture.CreateDbContext();
         Assert.Null((await db.TankDecommissionings.SingleAsync(d => d.TankId == tank)).EndedAt);
-        Assert.Equal(1, await db.TankMedia.CountAsync(m => m.TankId == tank));
+        Assert.Equal(1, await db.MediaLinks.CountAsync(l => l.TankId == tank));
     }
 
     [Fact]

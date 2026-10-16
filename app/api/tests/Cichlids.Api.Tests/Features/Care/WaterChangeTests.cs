@@ -398,7 +398,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
             await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE water_change_session_step SET at = at + interval '12 minutes' WHERE session_id = {id} AND step = 'refill_started'");
             if (captureTimeUtc is { } captured)
             {
-                await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE media_item SET taken_at_local = {captured}, taken_at_offset_minutes = 0 WHERE id IN (SELECT media_item_id FROM water_change_session_photo WHERE session_id = {id})");
+                await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE media_item SET taken_at_local = {captured}, taken_at_offset_minutes = 0 WHERE id IN (SELECT media_item_id FROM media_link WHERE water_change_session_id = {id})");
             }
         }
         using var finished = await FinishAsync(token, tank, id);

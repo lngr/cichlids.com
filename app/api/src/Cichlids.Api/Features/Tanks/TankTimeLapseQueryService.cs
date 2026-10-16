@@ -48,13 +48,13 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
             .OrderByDescending(p => p.PublishedAt ?? p.CreatedAt).ThenByDescending(p => p.Id)
             .ToListAsync(cancellationToken);
         var postIds = posts.Select(p => p.Id).ToList();
-        var postMedia = await context.PostMedia.Where(pm => postIds.Contains(pm.PostId))
-            .OrderBy(pm => pm.Sort).ToListAsync(cancellationToken);
-        // The proof photos of a decommissioning belong to the decommissioning and are left out of the series.
-        var directMedia = await context.TankMedia
-            .Where(tm => idsOfTanks.Contains(tm.TankId) && tm.Section != TankMediaSection.Decommission && tm.Section != TankMediaSection.Recommission)
-            .ToListAsync(cancellationToken);
-        var ids = directMedia.Select(tm => tm.MediaItemId).Concat(tanks.Where(t => t.MainMediaId != null).Select(t => t.MainMediaId!.Value))
+        var postMedia = await context.MediaLinks.PostLinks().Where(l => postIds.Contains(l.PostId!.Value))
+            .OrderBy(l => l.Position).Select(l => new PostItem(l.PostId!.Value, l.MediaItemId)).ToListAsync(cancellationToken);
+        var directMedia = await context.MediaLinks.TankSectionLinks().Where(l => idsOfTanks.Contains(l.TankId!.Value))
+            .Select(l => new TankItem(l.TankId!.Value, l.MediaItemId, l.Role)).ToListAsync(cancellationToken);
+        var mainMedia = await context.MediaLinks.TankMainLinks().Where(l => idsOfTanks.Contains(l.TankId!.Value))
+            .ToDictionaryAsync(l => l.TankId!.Value, l => l.MediaItemId, cancellationToken);
+        var ids = directMedia.Select(tm => tm.MediaItemId).Concat(mainMedia.Values)
             .Concat(postMedia.Select(pm => pm.MediaItemId)).Distinct().ToList();
         var media = await context.MediaItems.AsNoTracking()
             .Where(m => ids.Contains(m.Id) && m.Kind == MediaKind.Photo
@@ -68,7 +68,7 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
         var nonPublicTanks = tanks.Where(t => !TankVisibilityRules.MediaBelongsInPublicStorage(t.ProfileVisibility)).Select(t => t.Id).ToHashSet();
         var postMediaIds = postMedia.Select(pm => pm.MediaItemId).ToHashSet();
         var privateMediaIds = directMedia.Where(m => nonPublicTanks.Contains(m.TankId)).Select(m => m.MediaItemId)
-            .Concat(tanks.Where(t => nonPublicTanks.Contains(t.Id) && t.MainMediaId != null).Select(t => t.MainMediaId!.Value))
+            .Concat(mainMedia.Where(m => nonPublicTanks.Contains(m.Key)).Select(m => m.Value))
             .Where(id => !postMediaIds.Contains(id)).ToHashSet();
         var images = variants.GroupBy(v => v.MediaItemId).ToDictionary(g => g.Key, g => builder.Build(g, allowSigned, privateMediaIds.Contains(g.Key)));
         var postDates = posts.ToDictionary(p => p.Id, p => p.PublishedAt ?? p.CreatedAt);
@@ -84,7 +84,7 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
         var story = posts.Select(p => new TankStoryPostDto(p.Id, slugs.GetValueOrDefault(p.Id), p.Title,
             p.Description, p.PublishedAt ?? p.CreatedAt, postMedia.Where(pm => pm.PostId == p.Id)
                 .Select(pm => pm.MediaItemId).Where(photoIds.Contains).ToList())).ToList();
-        var videoIds = directMedia.Where(m => m.Section == TankMediaSection.Video).Select(m => m.MediaItemId).ToList();
+        var videoIds = directMedia.Where(m => m.Role == MediaLinkRole.Video).Select(m => m.MediaItemId).ToList();
         var videoItems = await VideoQueryService.WithDetails(context.MediaItems.AsNoTracking()
                 .Where(m => videoIds.Contains(m.Id) && m.Kind == MediaKind.Video
                     && visibleProfiles.Any(p => p.Id == m.OwnerProfileId && p.Kind == ProfileKind.Member)))
@@ -100,7 +100,7 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
             var ownPosts = posts.Where(p => p.TankId == tank.Id).Select(p => p.Id).ToHashSet();
             var ownIds = directMedia.Where(m => m.TankId == tank.Id).Select(m => m.MediaItemId)
                 .Concat(postMedia.Where(pm => ownPosts.Contains(pm.PostId)).Select(pm => pm.MediaItemId)).ToHashSet();
-            if (tank.MainMediaId is { } main) ownIds.Add(main);
+            if (mainMedia.TryGetValue(tank.Id, out var main)) ownIds.Add(main);
             var ownPhotos = photos.Where(p => ownIds.Contains(p.MediaItemId)).Select(p => p with
             {
                 PublishedAt = postMedia.Where(pm => pm.MediaItemId == p.MediaItemId && ownPosts.Contains(pm.PostId))
@@ -113,6 +113,9 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
         }
         return result;
     }
+
+    private sealed record PostItem(long PostId, long MediaItemId);
+    private sealed record TankItem(long TankId, long MediaItemId, MediaLinkRole Role);
 
     /// <summary>
     /// The date a photo is placed at in the series: its capture time when it has one, otherwise

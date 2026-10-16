@@ -27,6 +27,17 @@ public class MediaItem
     public DateTimeOffset CreatedAt { get; set; }
 
     /// <summary>
+    /// Whether the camera of the app took the photo. Only such photos count as evidence of a guided
+    /// water change and for the time-lapse streak.
+    /// </summary>
+    public bool CapturedInApp { get; set; }
+
+    /// <summary>
+    /// The moment the server stored the upload.
+    /// </summary>
+    public DateTimeOffset ReceivedAt { get; set; }
+
+    /// <summary>
     /// The wall-clock time the camera recorded as the capture time (EXIF DateTimeOriginal), with
     /// DateTimeKind Unspecified, or null when the photo has no plausible capture time. It is not
     /// UTC: TakenAtOffsetMinutes says which offset applies, and is null when the camera recorded none.

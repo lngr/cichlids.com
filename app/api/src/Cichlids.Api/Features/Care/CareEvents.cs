@@ -21,7 +21,8 @@ public static class CareEvents
             ["kind"] = SnakeCaseEnum.ToSnakeCase(entry.Kind), ["occurredAt"] = entry.OccurredAt, ["recordedAt"] = entry.RecordedAt,
             ["note"] = entry.Note, ["onlyMe"] = entry.OnlyMe,
             ["amount"] = entry.AmountInputValue is { } value ? new { value, unit = SnakeCaseEnum.ToSnakeCase(entry.AmountInputUnit!.Value), liters = entry.AmountLiters } : null,
-            ["photos"] = entry.Photos.OrderBy(p => p.Position).Select(p => new { id = p.Id, mediaItemId = p.MediaItemId, position = p.Position }).ToList(),
+            ["photos"] = entry.MediaLinks.Where(l => l.Role == MediaLinkRole.Photo).OrderBy(l => l.Position)
+                .Select(l => new { id = l.Id, mediaItemId = l.MediaItemId, position = l.Position }).ToList(),
         };
         if (entry.WaterChangeSessionId is { } sessionId)
         {

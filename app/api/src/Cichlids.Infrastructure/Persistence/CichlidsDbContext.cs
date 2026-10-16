@@ -23,14 +23,11 @@ public class CichlidsDbContext : DbContext
     public DbSet<SpeciesLink> SpeciesLinks => Set<SpeciesLink>();
     public DbSet<CareEntry> CareEntries => Set<CareEntry>();
     public DbSet<CareMeasurementValue> CareMeasurementValues => Set<CareMeasurementValue>();
-    public DbSet<CarePhoto> CarePhotos => Set<CarePhoto>();
-    public DbSet<CareVideo> CareVideos => Set<CareVideo>();
     public DbSet<VideoJob> VideoJobs => Set<VideoJob>();
     public DbSet<VideoUpload> VideoUploads => Set<VideoUpload>();
     public DbSet<CareTodo> CareTodos => Set<CareTodo>();
     public DbSet<WaterChangeSession> WaterChangeSessions => Set<WaterChangeSession>();
     public DbSet<WaterChangeSessionStep> WaterChangeSessionSteps => Set<WaterChangeSessionStep>();
-    public DbSet<WaterChangeSessionPhoto> WaterChangeSessionPhotos => Set<WaterChangeSessionPhoto>();
     public DbSet<CarePlanRule> CarePlanRules => Set<CarePlanRule>();
     public DbSet<CarePlanRuleChange> CarePlanRuleChanges => Set<CarePlanRuleChange>();
     public DbSet<Vacation> Vacations => Set<Vacation>();
@@ -38,12 +35,11 @@ public class CichlidsDbContext : DbContext
     public DbSet<TankDecommissioning> TankDecommissionings => Set<TankDecommissioning>();
     public DbSet<Tank> Tanks => Set<Tank>();
     public DbSet<Inhabitant> Inhabitants => Set<Inhabitant>();
-    public DbSet<TankMedia> TankMedia => Set<TankMedia>();
     public DbSet<TankVisibilityConsent> TankVisibilityConsents => Set<TankVisibilityConsent>();
     public DbSet<MediaItem> MediaItems => Set<MediaItem>();
     public DbSet<MediaVariant> MediaVariants => Set<MediaVariant>();
+    public DbSet<MediaLink> MediaLinks => Set<MediaLink>();
     public DbSet<Post> Posts => Set<Post>();
-    public DbSet<PostMedia> PostMedia => Set<PostMedia>();
     public DbSet<PostSpecies> PostSpecies => Set<PostSpecies>();
     public DbSet<Comment> Comments => Set<Comment>();
     public DbSet<Rating> Ratings => Set<Rating>();
@@ -54,7 +50,6 @@ public class CichlidsDbContext : DbContext
     public DbSet<SlugAlias> SlugAliases => Set<SlugAlias>();
     public DbSet<DiscussionThread> DiscussionThreads => Set<DiscussionThread>();
     public DbSet<DiscussionPost> DiscussionPosts => Set<DiscussionPost>();
-    public DbSet<DiscussionPostMedia> DiscussionPostMedia => Set<DiscussionPostMedia>();
     public DbSet<OutboxEvent> OutboxEvents => Set<OutboxEvent>();
     public DbSet<WebhookSubscription> WebhookSubscriptions => Set<WebhookSubscription>();
     public DbSet<WebSession> WebSessions => Set<WebSession>();

@@ -100,7 +100,7 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
         var tanks = PublicTanks(members).AsNoTracking();
         var posts = OfPublicTanks(context.Posts.AsNoTracking().Where(p => p.State == PostState.Published && p.DeletedAt == null
             && members.Any(a => a.Id == p.AuthorProfileId)
-            && context.PostMedia.Any(pm => pm.PostId == p.Id && context.MediaItems.Any(m => m.Id == pm.MediaItemId && m.Kind == MediaKind.Photo))), tanks);
+            && context.MediaLinks.Any(l => l.PostId == p.Id && context.MediaItems.Any(m => m.Id == l.MediaItemId && m.Kind == MediaKind.Photo))), tanks);
         var tankRatings = context.Ratings.Where(r => tanks.Any(t => t.Id == r.TankId && (r.ProfileId == null || r.ProfileId != t.ProfileId)));
         var pictureRatings = context.Ratings.Where(r => posts.Any(p => p.Id == r.PostId && (r.ProfileId == null || r.ProfileId != p.AuthorProfileId)));
         var tr = await tankRatings.GroupBy(r => r.TankId!.Value).Select(g => new Stats(g.Key, g.Count(), g.Sum(r => (long)r.Stars))).ToListAsync(cancellationToken);
@@ -132,25 +132,26 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
             .Concat(globalPictures).Select(p => p.Id).Distinct().ToList();
         var pictureSlugs = await context.SlugAliases.Where(s => postIds.Contains(s.PostId) && s.IsCanonical)
             .ToDictionaryAsync(s => s.PostId, s => s.Value, cancellationToken);
-        var postMedia = await context.PostMedia.Where(pm => postIds.Contains(pm.PostId) && context.MediaItems.Any(m => m.Id == pm.MediaItemId && m.Kind == MediaKind.Photo)).OrderBy(pm => pm.Sort).ThenBy(pm => pm.Id).ToListAsync(cancellationToken);
-        var tankMedia = await context.TankMedia.Where(tm => tankIds.Contains(tm.TankId) && tm.Section == TankMediaSection.Showcase)
-            .OrderBy(tm => tm.Sort).ThenBy(tm => tm.Id).ToListAsync(cancellationToken);
+        var postMedia = await context.MediaLinks.PostLinks()
+            .Where(l => postIds.Contains(l.PostId!.Value) && context.MediaItems.Any(m => m.Id == l.MediaItemId && m.Kind == MediaKind.Photo))
+            .OrderBy(l => l.Position).ThenBy(l => l.Id).Select(l => new PostLink(l.PostId!.Value, l.MediaItemId)).ToListAsync(cancellationToken);
+        var tankMedia = await context.MediaLinks.Where(l => l.TankId != null && tankIds.Contains(l.TankId.Value) && l.Role == MediaLinkRole.Showcase)
+            .OrderBy(l => l.Position).ThenBy(l => l.Id).Select(l => new TankLink(l.TankId!.Value, l.MediaItemId)).ToListAsync(cancellationToken);
+        var mainMedia = await context.MediaLinks.TankMainLinks().Where(l => tankIds.Contains(l.TankId!.Value))
+            .ToDictionaryAsync(l => l.TankId!.Value, l => l.MediaItemId, cancellationToken);
         var mediaIds = postMedia.Select(pm => pm.MediaItemId).Concat(tankMedia.Select(tm => tm.MediaItemId))
-            .Concat(regionalTanks.Where(t => t.MainMediaId != null).Select(t => t.MainMediaId!.Value)).Distinct().ToList();
+            .Concat(mainMedia.Values).Distinct().ToList();
         var variants = await context.MediaVariants.AsNoTracking().Where(v => mediaIds.Contains(v.MediaItemId)).ToListAsync(cancellationToken);
         // The result is cached across viewers, so it holds public URLs only and no signed path.
         var builder = new MediaUrlBuilder(objectStore);
         var images = variants.GroupBy(v => v.MediaItemId).ToDictionary(g => g.Key, g => builder.Build(g, allowSigned: false));
         var visiblePhotos = context.MediaItems.Where(m => m.Kind == MediaKind.Photo
             && (m.OwnerProfileId == null || members.Any(p => p.Id == m.OwnerProfileId)));
-        var photoLinks = context.TankMedia.Where(tm => tm.Section != TankMediaSection.Decommission && tm.Section != TankMediaSection.Recommission)
-            .Select(tm => new { tm.TankId, tm.MediaItemId })
-            .Union(context.Tanks.Where(t => t.MainMediaId != null)
-                .Select(t => new { TankId = t.Id, MediaItemId = t.MainMediaId!.Value }))
+        var photoLinks = context.MediaLinks.Where(l => l.TankId != null && l.Role != MediaLinkRole.Decommission && l.Role != MediaLinkRole.Recommission).Select(l => new { TankId = l.TankId!.Value, l.MediaItemId })
             .Union(from p in posts
-                join pm in context.PostMedia on p.Id equals pm.PostId
+                join l in context.MediaLinks on (long?)p.Id equals l.PostId
                 where p.TankId != null
-                select new { TankId = p.TankId!.Value, pm.MediaItemId });
+                select new { TankId = p.TankId!.Value, l.MediaItemId });
         var candidateIds = await photoLinks.Where(link => tankIds.Contains(link.TankId)
                 && visiblePhotos.Any(m => m.Id == link.MediaItemId))
             .GroupBy(link => link.TankId).Where(g => g.Count() >= 8)
@@ -164,7 +165,7 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
         DiscoverItemDto TankCard(Cichlids.Domain.Entities.Tank t)
         {
             var stats = tankStats.GetValueOrDefault(t.Id) ?? new Stats(t.Id, 0, 0);
-            var imageId = t.MainMediaId ?? tankMedia.FirstOrDefault(tm => tm.TankId == t.Id)?.MediaItemId;
+            var imageId = mainMedia.TryGetValue(t.Id, out var mainItem) ? mainItem : tankMedia.FirstOrDefault(tm => tm.TankId == t.Id)?.MediaItemId;
             return new(t.Id, t.Title, null, imageId is { } id ? images.GetValueOrDefault(id) : null,
                 DiscoverRanking.Score(stats.Sum, stats.Count, tankPrior), stats.Count);
         }
@@ -188,5 +189,7 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
 
     private static double Prior(IReadOnlyCollection<Stats> stats) => stats.Count == 0 ? 0 : (double)stats.Sum(s => s.Sum) / stats.Sum(s => s.Count);
     private sealed record Picture(long Id, string? Title, long? TankId);
+    private sealed record PostLink(long PostId, long MediaItemId);
+    private sealed record TankLink(long TankId, long MediaItemId);
     private sealed record Stats(long Id, int Count, long Sum);
 }

@@ -213,7 +213,7 @@ public sealed class TankMediaPlacementTests(UploadsFixture fixture)
             var post = new Post { AuthorProfileId = owner, State = PostState.Published, TankId = tank, Title = "Picture" };
             db.Posts.Add(post);
             await db.SaveChangesAsync();
-            db.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = mediaItemId });
+            db.MediaLinks.Add(MediaLink.ForPost(post.Id, mediaItemId));
             await db.SaveChangesAsync();
         }
 

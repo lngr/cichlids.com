@@ -1,4 +1,5 @@
 using Cichlids.Api.Features.Media;
+using Cichlids.Domain;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
@@ -26,9 +27,9 @@ public sealed class DraftsQueryService(CichlidsDbContext context, IObjectStore o
 
         var postIds = drafts.Select(d => d.Id).ToList();
 
-        var mediaItemIdByPost = (await context.PostMedia
-                .Where(pm => postIds.Contains(pm.PostId))
-                .Select(pm => new { pm.PostId, pm.MediaItemId, pm.Sort })
+        var mediaItemIdByPost = (await context.MediaLinks.PostLinks()
+                .Where(l => postIds.Contains(l.PostId!.Value))
+                .Select(l => new { PostId = l.PostId!.Value, l.MediaItemId, Sort = l.Position })
                 .ToListAsync(cancellationToken))
             .GroupBy(pm => pm.PostId)
             .ToDictionary(g => g.Key, g => g.OrderBy(pm => pm.Sort).First().MediaItemId);

@@ -1,5 +1,6 @@
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Media;
+using Cichlids.Domain;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
@@ -143,18 +144,16 @@ public sealed class CommunityQueryService(CichlidsDbContext context, IObjectStor
                 p.Username,
                 p.DisplayName,
                 p.Kind,
-                p.AvatarMediaId != null
-                    ? context.MediaVariants
-                        .Where(v => v.MediaItemId == p.AvatarMediaId && v.Label == "thumb")
-                        .Select(v => v.StorageKey)
-                        .FirstOrDefault()
-                    : null,
-                p.AvatarMediaId != null
-                    ? context.MediaVariants
-                        .Where(v => v.MediaItemId == p.AvatarMediaId && v.Label == MediaVariantSpec.PublicCopyLabel)
-                        .Select(v => v.StorageKey)
-                        .FirstOrDefault()
-                    : null,
+                context.MediaVariants
+                    .Where(v => v.Label == "thumb"
+                        && context.MediaLinks.Any(l => l.ProfileId == p.Id && l.Role == MediaLinkRole.Avatar && l.MediaItemId == v.MediaItemId))
+                    .Select(v => v.StorageKey)
+                    .FirstOrDefault(),
+                context.MediaVariants
+                    .Where(v => v.Label == MediaVariantSpec.PublicCopyLabel
+                        && context.MediaLinks.Any(l => l.ProfileId == p.Id && l.Role == MediaLinkRole.Avatar && l.MediaItemId == v.MediaItemId))
+                    .Select(v => v.StorageKey)
+                    .FirstOrDefault(),
                 p.ExternalAvatarUrl))
             .ToDictionaryAsync(p => p.Id, cancellationToken);
 
@@ -187,10 +186,10 @@ public sealed class CommunityQueryService(CichlidsDbContext context, IObjectStor
     private async Task<Dictionary<long, List<CommunityAttachmentDto>>> LoadAttachmentsAsync(
         List<long> postIds, CancellationToken cancellationToken)
     {
-        var mediaRows = await context.DiscussionPostMedia
-            .Where(m => postIds.Contains(m.DiscussionPostId))
-            .OrderBy(m => m.Sort)
-            .Select(m => new { m.DiscussionPostId, m.MediaItemId })
+        var mediaRows = await context.MediaLinks.DiscussionPostLinks()
+            .Where(l => postIds.Contains(l.DiscussionPostId!.Value))
+            .OrderBy(l => l.Position)
+            .Select(l => new { DiscussionPostId = l.DiscussionPostId!.Value, l.MediaItemId })
             .ToListAsync(cancellationToken);
 
         if (mediaRows.Count == 0)

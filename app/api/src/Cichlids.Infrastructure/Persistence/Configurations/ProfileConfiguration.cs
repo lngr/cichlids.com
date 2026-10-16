@@ -23,16 +23,6 @@ public class ProfileConfiguration : IEntityTypeConfiguration<Profile>
         builder.HasIndex(x => x.LegacyId).IsUnique();
         builder.HasIndex(x => x.Username).IsUnique();
 
-        builder.HasOne<MediaItem>()
-            .WithMany()
-            .HasForeignKey(x => x.ProfileImageMediaId)
-            .OnDelete(DeleteBehavior.SetNull);
-
-        builder.HasOne<MediaItem>()
-            .WithMany()
-            .HasForeignKey(x => x.AvatarMediaId)
-            .OnDelete(DeleteBehavior.SetNull);
-
         builder.ToTable("profile", tb => tb.HasCheckConstraint(
             "ck_profile_kind",
             "kind IN ('member', 'archived', 'system')"));

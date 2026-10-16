@@ -30,9 +30,11 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
             return null;
         }
 
-        var avatarKeysByLabel = profile.AvatarMediaId is { } avatarMediaId
+        var avatarMediaId = await context.MediaLinks.ProfileLinks(MediaLinkRole.Avatar)
+            .Where(l => l.ProfileId == id).Select(l => (long?)l.MediaItemId).SingleOrDefaultAsync(cancellationToken);
+        var avatarKeysByLabel = avatarMediaId is { } avatarItemId
             ? await context.MediaVariants
-                .Where(v => v.MediaItemId == avatarMediaId && (v.Label == "thumb" || v.Label == MediaVariantSpec.PublicCopyLabel))
+                .Where(v => v.MediaItemId == avatarItemId && (v.Label == "thumb" || v.Label == MediaVariantSpec.PublicCopyLabel))
                 .ToDictionaryAsync(v => v.Label, v => v.StorageKey, cancellationToken)
             : [];
 
@@ -43,10 +45,12 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
             profile.ExternalAvatarUrl);
 
         string? profileImageUrl = null;
-        if (profile.ProfileImageMediaId is { } profileImageMediaId)
+        var profileImageMediaId = await context.MediaLinks.ProfileLinks(MediaLinkRole.Header)
+            .Where(l => l.ProfileId == id).Select(l => (long?)l.MediaItemId).SingleOrDefaultAsync(cancellationToken);
+        if (profileImageMediaId is { } profileImageItemId)
         {
             var variantStorageKeysByLabel = await context.MediaVariants
-                .Where(v => v.MediaItemId == profileImageMediaId)
+                .Where(v => v.MediaItemId == profileImageItemId)
                 .ToDictionaryAsync(v => v.Label, v => v.StorageKey, cancellationToken);
 
             profileImageUrl = new MediaUrlBuilder(objectStore).BuildBest(variantStorageKeysByLabel);

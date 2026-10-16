@@ -53,7 +53,7 @@ public sealed class TodayQueryService(CichlidsDbContext context, TankTimeLapseQu
         // A photo with a capture time counts on the calendar day it was taken (the wall-clock day
         // of the camera); a photo without one counts on the day its post was published.
         var match = await (from post in context.Posts.AsNoTracking()
-            join link in context.PostMedia on post.Id equals link.PostId
+            join link in context.MediaLinks on (long?)post.Id equals link.PostId
             join media in context.MediaItems on link.MediaItemId equals media.Id
             let published = post.PublishedAt ?? post.CreatedAt
             where post.AuthorProfileId == profileId && post.State == PostState.Published && post.DeletedAt == null
@@ -63,7 +63,7 @@ public sealed class TodayQueryService(CichlidsDbContext context, TankTimeLapseQu
                         && media.TakenAtLocal.Value.Month == date.Month && media.TakenAtLocal.Value.Day == date.Day
                     : published < earlierThan && published.Month == date.Month && published.Day == date.Day)
             let year = media.TakenAtLocal != null ? media.TakenAtLocal.Value.Year : published.Year
-            orderby year descending, published descending, post.Id descending, link.Sort, link.Id
+            orderby year descending, published descending, post.Id descending, link.Position, link.Id
             select new { post.Id, post.Title, Year = year, MediaId = media.Id }).FirstOrDefaultAsync(cancellationToken);
         if (match == null) return null;
         var variants = await context.MediaVariants.Where(v => v.MediaItemId == match.MediaId)

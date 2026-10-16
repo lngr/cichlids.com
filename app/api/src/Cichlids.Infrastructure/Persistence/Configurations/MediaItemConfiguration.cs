@@ -15,6 +15,8 @@ public class MediaItemConfiguration : IEntityTypeConfiguration<MediaItem>
         builder.Property(x => x.Kind).HasConversion<SnakeCaseEnumConverter<MediaKind>>().IsRequired();
         builder.Property(x => x.StorageKey).IsRequired();
         builder.Property(x => x.CreatedAt).IsRequired();
+        builder.Property(x => x.CapturedInApp).IsRequired().HasDefaultValue(false);
+        builder.Property(x => x.ReceivedAt).IsRequired().HasDefaultValueSql("now()");
         builder.Property(x => x.TakenAtLocal).HasColumnType("timestamp without time zone");
         builder.Ignore(x => x.TakenAt);
 

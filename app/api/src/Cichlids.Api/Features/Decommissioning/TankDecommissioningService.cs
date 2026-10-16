@@ -19,10 +19,10 @@ namespace Cichlids.Api.Features.Decommissioning;
 /// <summary>
 /// Decommissions a tank of a member and puts it back into operation, each with a photo that proves the
 /// state of the tank, and reads the operating time with the history of the decommissionings. A photo goes
-/// through the upload pipeline and is stored as tank media of the decommission or recommission section;
+/// through the upload pipeline and is linked to the tank in the decommission or recommission role;
 /// it counts when it comes from the camera of the app, its capture time lies near the moment the server
 /// receives it and the same picture has not served as proof before. The row of the decommissioning, the
-/// media row and the outbox event commit in one transaction.
+/// media link and the outbox event commit in one transaction.
 /// </summary>
 public sealed class TankDecommissioningService(
     CichlidsDbContext context, UploadsWriteService uploads, StoredObjectDeleter deleter, IObjectStore objectStore, TimeProvider clock,
@@ -184,7 +184,7 @@ public sealed class TankDecommissioningService(
         try
         {
             stored = await uploads.StoreImageAsync(profileId, image.Bytes, image.Format, Path.GetFileName(file!.FileName),
-                isPrivate: !TankVisibilityRules.MediaBelongsInPublicStorage(level), ct, privateArea: "tank");
+                isPrivate: !TankVisibilityRules.MediaBelongsInPublicStorage(level), ct, privateArea: "tank", capturedInApp: capturedInApp);
         }
         catch (Exception ex) when (ex is ImageProcessor.ImageTooLargeException or ImageProcessor.UnsupportedImageFormatException
             or ImageProcessor.BrokenImageException)
@@ -217,9 +217,9 @@ public sealed class TankDecommissioningService(
     private async Task<bool> WasProofBeforeAsync(long profileId, string? checksum, CancellationToken ct)
     {
         if (checksum is null) return false;
-        return await context.TankMedia.AsNoTracking().AnyAsync(m => (m.Section == TankMediaSection.Decommission || m.Section == TankMediaSection.Recommission)
-                && context.MediaItems.Any(i => i.Id == m.MediaItemId && i.OwnerProfileId == profileId && i.ChecksumSha256 == checksum), ct)
-            || await context.CarePhotos.AsNoTracking().AnyAsync(p => p.MediaItem.OwnerProfileId == profileId && p.MediaItem.ChecksumSha256 == checksum, ct);
+        return await context.MediaLinks.AsNoTracking().AnyAsync(l => l.MediaItem.OwnerProfileId == profileId && l.MediaItem.ChecksumSha256 == checksum
+            && (l.TankId != null && (l.Role == MediaLinkRole.Decommission || l.Role == MediaLinkRole.Recommission)
+                || l.CareEntryId != null && l.Role == MediaLinkRole.Photo), ct);
     }
 
     // Adds the media item to the tank in the given section. A change of the profile level since the
@@ -235,10 +235,8 @@ public sealed class TankDecommissioningService(
         }
         context.MediaItems.Add(stored.Item);
         await context.SaveChangesAsync(ct);
-        var nextSort = (await context.TankMedia.Where(m => m.TankId == tankId && m.Section == section).MaxAsync(m => (int?)m.Sort, ct) ?? -1) + 1;
-        context.TankMedia.Add(new TankMedia
-        {
-            TankId = tankId, MediaItemId = stored.Item.Id, Section = section, Sort = nextSort, CapturedInApp = true,
-        });
+        var role = MediaLinkRoles.Of(section);
+        var nextPosition = (await context.MediaLinks.Where(l => l.TankId == tankId && l.Role == role).MaxAsync(l => (int?)l.Position, ct) ?? -1) + 1;
+        context.MediaLinks.Add(MediaLink.ForTank(tankId, stored.Item.Id, role, nextPosition));
     }
 }

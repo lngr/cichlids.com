@@ -1,5 +1,6 @@
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Media;
+using Cichlids.Domain;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
@@ -165,9 +166,9 @@ public sealed class PicturesQueryService(CichlidsDbContext context, IObjectStore
             .Select(g => new { PostId = g.Key, Count = g.Count() })
             .ToDictionaryAsync(x => x.PostId, x => x.Count, cancellationToken);
 
-        var mediaRows = await context.PostMedia
-            .Where(pm => postIds.Contains(pm.PostId))
-            .Select(pm => new { pm.PostId, pm.MediaItemId, pm.Sort })
+        var mediaRows = await context.MediaLinks.PostLinks()
+            .Where(l => postIds.Contains(l.PostId!.Value))
+            .Select(l => new { PostId = l.PostId!.Value, l.MediaItemId, Sort = l.Position })
             .ToListAsync(cancellationToken);
 
         var firstMediaItemIdByPost = mediaRows

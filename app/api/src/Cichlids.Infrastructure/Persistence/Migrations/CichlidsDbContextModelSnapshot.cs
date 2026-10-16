@@ -244,44 +244,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Cichlids.Domain.Entities.CarePhoto", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("CareEntryId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("care_entry_id");
-
-                    b.Property<long>("MediaItemId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("media_item_id");
-
-                    b.Property<int>("Position")
-                        .HasColumnType("integer")
-                        .HasColumnName("position");
-
-                    b.HasKey("Id")
-                        .HasName("pk_care_photo");
-
-                    b.HasIndex("MediaItemId")
-                        .IsUnique()
-                        .HasDatabaseName("ix_care_photo_media_item_id");
-
-                    b.HasIndex("CareEntryId", "Position")
-                        .IsUnique()
-                        .HasDatabaseName("ix_care_photo_care_entry_id_position");
-
-                    b.ToTable("care_photo", "public", t =>
-                        {
-                            t.HasCheckConstraint("ck_care_photo_position", "position BETWEEN 0 AND 5");
-                        });
-                });
-
             modelBuilder.Entity("Cichlids.Domain.Entities.CarePlanRule", b =>
                 {
                     b.Property<long>("Id")
@@ -491,36 +453,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         {
                             t.HasCheckConstraint("ck_care_todo_text", "char_length(text) BETWEEN 1 AND 200");
                         });
-                });
-
-            modelBuilder.Entity("Cichlids.Domain.Entities.CareVideo", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("CareEntryId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("care_entry_id");
-
-                    b.Property<long>("MediaItemId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("media_item_id");
-
-                    b.HasKey("Id")
-                        .HasName("pk_care_video");
-
-                    b.HasIndex("CareEntryId")
-                        .HasDatabaseName("ix_care_video_care_entry_id");
-
-                    b.HasIndex("MediaItemId")
-                        .IsUnique()
-                        .HasDatabaseName("ix_care_video_media_item_id");
-
-                    b.ToTable("care_video", "public");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
@@ -787,42 +719,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Cichlids.Domain.Entities.DiscussionPostMedia", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("DiscussionPostId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("discussion_post_id");
-
-                    b.Property<long>("MediaItemId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("media_item_id");
-
-                    b.Property<int>("Sort")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasDefaultValue(0)
-                        .HasColumnName("sort");
-
-                    b.HasKey("Id")
-                        .HasName("pk_discussion_post_media");
-
-                    b.HasIndex("MediaItemId")
-                        .HasDatabaseName("ix_discussion_post_media_media_item_id");
-
-                    b.HasIndex("DiscussionPostId", "MediaItemId")
-                        .IsUnique()
-                        .HasDatabaseName("ix_discussion_post_media_discussion_post_id_media_item_id");
-
-                    b.ToTable("discussion_post_media", "public");
-                });
-
             modelBuilder.Entity("Cichlids.Domain.Entities.DiscussionThread", b =>
                 {
                     b.Property<long>("Id")
@@ -984,6 +880,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("capture_checked_at");
 
+                    b.Property<bool>("CapturedInApp")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("captured_in_app");
+
                     b.Property<string>("ChecksumSha256")
                         .HasColumnType("text")
                         .HasColumnName("checksum_sha256");
@@ -1021,6 +923,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("owner_profile_id");
 
+                    b.Property<DateTimeOffset>("ReceivedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("received_at")
+                        .HasDefaultValueSql("now()");
+
                     b.Property<string>("StorageKey")
                         .IsRequired()
                         .HasColumnType("text")
@@ -1057,6 +965,141 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                             t.HasCheckConstraint("ck_media_item_kind", "kind IN ('photo', 'video')");
 
                             t.HasCheckConstraint("ck_media_item_taken_at_offset", "taken_at_offset_minutes IS NULL OR (taken_at_local IS NOT NULL AND taken_at_offset_minutes BETWEEN -840 AND 840)");
+                        });
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.MediaLink", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Caption")
+                        .HasColumnType("text")
+                        .HasColumnName("caption");
+
+                    b.Property<long?>("CareEntryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("care_entry_id");
+
+                    b.Property<string>("ContextType")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("context_type");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at")
+                        .HasDefaultValueSql("now()");
+
+                    b.Property<long?>("DiscussionPostId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("discussion_post_id");
+
+                    b.Property<long?>("InhabitantId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("inhabitant_id");
+
+                    b.Property<long>("MediaItemId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("media_item_id");
+
+                    b.Property<int>("Position")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("position");
+
+                    b.Property<long?>("PostId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("post_id");
+
+                    b.Property<long?>("ProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("profile_id");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("role");
+
+                    b.Property<long?>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.Property<long?>("WaterChangeSessionId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("water_change_session_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_media_link");
+
+                    b.HasIndex("MediaItemId")
+                        .HasDatabaseName("ix_media_link_media_item_id");
+
+                    b.HasIndex("TankId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_media_link_tank_main")
+                        .HasFilter("role = 'main' AND tank_id IS NOT NULL");
+
+                    b.HasIndex("ProfileId", "Role")
+                        .IsUnique()
+                        .HasDatabaseName("ux_media_link_profile_role")
+                        .HasFilter("profile_id IS NOT NULL");
+
+                    b.HasIndex("CareEntryId", "Role", "MediaItemId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_media_link_care_entry_role_item")
+                        .HasFilter("care_entry_id IS NOT NULL");
+
+                    b.HasIndex("CareEntryId", "Role", "Position")
+                        .IsUnique()
+                        .HasDatabaseName("ux_media_link_care_entry_role_position")
+                        .HasFilter("care_entry_id IS NOT NULL");
+
+                    b.HasIndex("DiscussionPostId", "Role", "MediaItemId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_media_link_discussion_post_role_item")
+                        .HasFilter("discussion_post_id IS NOT NULL");
+
+                    b.HasIndex("InhabitantId", "Role", "MediaItemId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_media_link_inhabitant_role_item")
+                        .HasFilter("inhabitant_id IS NOT NULL");
+
+                    b.HasIndex("PostId", "Role", "MediaItemId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_media_link_post_role_item")
+                        .HasFilter("post_id IS NOT NULL");
+
+                    b.HasIndex("TankId", "Role", "MediaItemId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_media_link_tank_role_item")
+                        .HasFilter("tank_id IS NOT NULL");
+
+                    b.HasIndex("WaterChangeSessionId", "Role", "MediaItemId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_media_link_session_role_item")
+                        .HasFilter("water_change_session_id IS NOT NULL");
+
+                    b.HasIndex("WaterChangeSessionId", "Role", "Position")
+                        .IsUnique()
+                        .HasDatabaseName("ux_media_link_session_role_position")
+                        .HasFilter("water_change_session_id IS NOT NULL");
+
+                    b.ToTable("media_link", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_media_link_context_key", "num_nonnulls(tank_id, inhabitant_id, care_entry_id, water_change_session_id, post_id, discussion_post_id, profile_id) = 1 AND (\n    (context_type = 'tank' AND tank_id IS NOT NULL)\n    OR (context_type = 'inhabitant' AND inhabitant_id IS NOT NULL)\n    OR (context_type = 'care_entry' AND care_entry_id IS NOT NULL)\n    OR (context_type = 'water_change_session' AND water_change_session_id IS NOT NULL)\n    OR (context_type = 'post' AND post_id IS NOT NULL)\n    OR (context_type = 'discussion_post' AND discussion_post_id IS NOT NULL)\n    OR (context_type = 'profile' AND profile_id IS NOT NULL))");
+
+                            t.HasCheckConstraint("ck_media_link_context_type", "context_type IN ('tank', 'inhabitant', 'care_entry', 'water_change_session', 'post', 'discussion_post', 'profile')");
+
+                            t.HasCheckConstraint("ck_media_link_position", "position >= 0\nAND (NOT (context_type = 'care_entry' AND role = 'photo') OR position < 6)\nAND (context_type <> 'water_change_session' OR position < 6)");
+
+                            t.HasCheckConstraint("ck_media_link_role", "(context_type = 'tank' AND role IN ('main', 'showcase', 'decoration', 'technic', 'time_lapse', 'video', 'decommission', 'recommission'))\nOR (context_type = 'care_entry' AND role IN ('photo', 'video'))\nOR (context_type = 'water_change_session' AND role = 'evidence')\nOR (context_type = 'post' AND role = 'item')\nOR (context_type = 'discussion_post' AND role = 'attachment')\nOR (context_type = 'profile' AND role IN ('avatar', 'header'))");
                         });
                 });
 
@@ -1294,42 +1337,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Cichlids.Domain.Entities.PostMedia", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("MediaItemId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("media_item_id");
-
-                    b.Property<long>("PostId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("post_id");
-
-                    b.Property<int>("Sort")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasDefaultValue(0)
-                        .HasColumnName("sort");
-
-                    b.HasKey("Id")
-                        .HasName("pk_post_media");
-
-                    b.HasIndex("MediaItemId")
-                        .HasDatabaseName("ix_post_media_media_item_id");
-
-                    b.HasIndex("PostId", "MediaItemId")
-                        .IsUnique()
-                        .HasDatabaseName("ix_post_media_post_id_media_item_id");
-
-                    b.ToTable("post_media", "public");
-                });
-
             modelBuilder.Entity("Cichlids.Domain.Entities.PostSpecies", b =>
                 {
                     b.Property<long>("Id")
@@ -1374,10 +1381,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<long?>("AvatarMediaId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("avatar_media_id");
 
                     b.PrimitiveCollection<string[]>("Badges")
                         .IsRequired()
@@ -1430,10 +1433,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("onboarding_completed_at");
 
-                    b.Property<long?>("ProfileImageMediaId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("profile_image_media_id");
-
                     b.Property<bool>("StreaksEnabled")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("boolean")
@@ -1452,15 +1451,9 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.HasKey("Id")
                         .HasName("pk_profile");
 
-                    b.HasIndex("AvatarMediaId")
-                        .HasDatabaseName("ix_profile_avatar_media_id");
-
                     b.HasIndex("LegacyId")
                         .IsUnique()
                         .HasDatabaseName("ix_profile_legacy_id");
-
-                    b.HasIndex("ProfileImageMediaId")
-                        .HasDatabaseName("ix_profile_profile_image_media_id");
 
                     b.HasIndex("Username")
                         .IsUnique()
@@ -1947,10 +1940,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("light_duration");
 
-                    b.Property<long?>("MainMediaId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("main_media_id");
-
                     b.Property<int>("MediaMoveAttempts")
                         .HasColumnType("integer")
                         .HasDefaultValue(0)
@@ -2074,9 +2063,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_tank_legacy_id");
 
-                    b.HasIndex("MainMediaId")
-                        .HasDatabaseName("ix_tank_main_media_id");
-
                     b.HasIndex("MediaMoveNextAttemptAt")
                         .HasDatabaseName("ix_tank_media_move_next_attempt_at")
                         .HasFilter("media_move_pending");
@@ -2170,56 +2156,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                             t.HasCheckConstraint("ck_tank_decommissioning_end", "(ended_at IS NULL AND end_date IS NULL AND end_media_item_id IS NULL) OR (ended_at IS NOT NULL AND end_date IS NOT NULL AND end_media_item_id IS NOT NULL AND end_date >= start_date)");
 
                             t.HasCheckConstraint("ck_tank_decommissioning_scope", "scope IN ('all_care', 'water_change')");
-                        });
-                });
-
-            modelBuilder.Entity("Cichlids.Domain.Entities.TankMedia", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<bool>("CapturedInApp")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("captured_in_app");
-
-                    b.Property<long>("MediaItemId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("media_item_id");
-
-                    b.Property<string>("Section")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("section");
-
-                    b.Property<int>("Sort")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasDefaultValue(0)
-                        .HasColumnName("sort");
-
-                    b.Property<long>("TankId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("tank_id");
-
-                    b.HasKey("Id")
-                        .HasName("pk_tank_media");
-
-                    b.HasIndex("MediaItemId")
-                        .HasDatabaseName("ix_tank_media_media_item_id");
-
-                    b.HasIndex("TankId", "MediaItemId", "Section")
-                        .IsUnique()
-                        .HasDatabaseName("ix_tank_media_tank_id_media_item_id_section");
-
-                    b.ToTable("tank_media", "public", t =>
-                        {
-                            t.HasCheckConstraint("ck_tank_media_section", "section IN ('showcase', 'decoration', 'technic', 'time_lapse', 'video', 'decommission', 'recommission')");
                         });
                 });
 
@@ -2502,51 +2438,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.ToTable("water_change_session", "public", t =>
                         {
                             t.HasCheckConstraint("ck_water_change_session_finish", "(finished_at IS NULL AND duration_seconds IS NULL)\nOR (finished_at IS NOT NULL AND duration_seconds IS NOT NULL AND duration_seconds >= 0)");
-                        });
-                });
-
-            modelBuilder.Entity("Cichlids.Domain.Entities.WaterChangeSessionPhoto", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<bool>("CapturedInApp")
-                        .HasColumnType("boolean")
-                        .HasColumnName("captured_in_app");
-
-                    b.Property<long>("MediaItemId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("media_item_id");
-
-                    b.Property<int>("Position")
-                        .HasColumnType("integer")
-                        .HasColumnName("position");
-
-                    b.Property<DateTimeOffset>("ReceivedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("received_at");
-
-                    b.Property<long>("SessionId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("session_id");
-
-                    b.HasKey("Id")
-                        .HasName("pk_water_change_session_photo");
-
-                    b.HasIndex("MediaItemId")
-                        .HasDatabaseName("ix_water_change_session_photo_media_item_id");
-
-                    b.HasIndex("SessionId", "Position")
-                        .IsUnique()
-                        .HasDatabaseName("ix_water_change_session_photo_session_id_position");
-
-                    b.ToTable("water_change_session_photo", "public", t =>
-                        {
-                            t.HasCheckConstraint("ck_water_change_session_photo_position", "position >= 0 AND position < 6");
                         });
                 });
 
@@ -2845,25 +2736,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasConstraintName("fk_care_measurement_value_care_entry_care_entry_id");
                 });
 
-            modelBuilder.Entity("Cichlids.Domain.Entities.CarePhoto", b =>
-                {
-                    b.HasOne("Cichlids.Domain.Entities.CareEntry", null)
-                        .WithMany("Photos")
-                        .HasForeignKey("CareEntryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_care_photo_care_entry_care_entry_id");
-
-                    b.HasOne("Cichlids.Domain.Entities.MediaItem", "MediaItem")
-                        .WithMany()
-                        .HasForeignKey("MediaItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_care_photo_media_items_media_item_id");
-
-                    b.Navigation("MediaItem");
-                });
-
             modelBuilder.Entity("Cichlids.Domain.Entities.CarePlanRule", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.Tank", null)
@@ -2922,25 +2794,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_care_todo_tanks_tank_id");
-                });
-
-            modelBuilder.Entity("Cichlids.Domain.Entities.CareVideo", b =>
-                {
-                    b.HasOne("Cichlids.Domain.Entities.CareEntry", null)
-                        .WithMany("Videos")
-                        .HasForeignKey("CareEntryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_care_video_care_entry_care_entry_id");
-
-                    b.HasOne("Cichlids.Domain.Entities.MediaItem", "MediaItem")
-                        .WithMany()
-                        .HasForeignKey("MediaItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_care_video_media_items_media_item_id");
-
-                    b.Navigation("MediaItem");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
@@ -3030,23 +2883,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasConstraintName("fk_discussion_post_discussion_threads_thread_id");
                 });
 
-            modelBuilder.Entity("Cichlids.Domain.Entities.DiscussionPostMedia", b =>
-                {
-                    b.HasOne("Cichlids.Domain.Entities.DiscussionPost", null)
-                        .WithMany("Media")
-                        .HasForeignKey("DiscussionPostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_discussion_post_media_discussion_posts_discussion_post_id");
-
-                    b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
-                        .WithMany()
-                        .HasForeignKey("MediaItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_discussion_post_media_media_items_media_item_id");
-                });
-
             modelBuilder.Entity("Cichlids.Domain.Entities.Follow", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.Profile", null)
@@ -3094,6 +2930,60 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasConstraintName("fk_media_item_profiles_owner_profile_id");
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.MediaLink", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.CareEntry", null)
+                        .WithMany("MediaLinks")
+                        .HasForeignKey("CareEntryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_media_link_care_entry_care_entry_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.DiscussionPost", null)
+                        .WithMany("MediaLinks")
+                        .HasForeignKey("DiscussionPostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_media_link_discussion_post_discussion_post_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Inhabitant", null)
+                        .WithMany()
+                        .HasForeignKey("InhabitantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_media_link_inhabitant_inhabitant_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.MediaItem", "MediaItem")
+                        .WithMany()
+                        .HasForeignKey("MediaItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_media_link_media_item_media_item_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Post", null)
+                        .WithMany("MediaLinks")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_media_link_posts_post_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_media_link_profiles_profile_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany("MediaLinks")
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_media_link_tanks_tank_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.WaterChangeSession", null)
+                        .WithMany("MediaLinks")
+                        .HasForeignKey("WaterChangeSessionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_media_link_water_change_sessions_water_change_session_id");
+
+                    b.Navigation("MediaItem");
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.MediaVariant", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
@@ -3126,23 +3016,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasConstraintName("fk_post_tanks_tank_id");
                 });
 
-            modelBuilder.Entity("Cichlids.Domain.Entities.PostMedia", b =>
-                {
-                    b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
-                        .WithMany()
-                        .HasForeignKey("MediaItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_post_media_media_item_media_item_id");
-
-                    b.HasOne("Cichlids.Domain.Entities.Post", null)
-                        .WithMany("Media")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_post_media_posts_post_id");
-                });
-
             modelBuilder.Entity("Cichlids.Domain.Entities.PostSpecies", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.Post", null)
@@ -3158,21 +3031,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_post_species_species_species_id");
-                });
-
-            modelBuilder.Entity("Cichlids.Domain.Entities.Profile", b =>
-                {
-                    b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
-                        .WithMany()
-                        .HasForeignKey("AvatarMediaId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .HasConstraintName("fk_profile_media_item_avatar_media_id");
-
-                    b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
-                        .WithMany()
-                        .HasForeignKey("ProfileImageMediaId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .HasConstraintName("fk_profile_media_item_profile_image_media_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.ProfileIdentity", b =>
@@ -3261,12 +3119,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .HasConstraintName("fk_tank_profile_deleted_by_profile_id");
 
-                    b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
-                        .WithMany()
-                        .HasForeignKey("MainMediaId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .HasConstraintName("fk_tank_media_item_main_media_id");
-
                     b.HasOne("Cichlids.Domain.Entities.Profile", null)
                         .WithMany()
                         .HasForeignKey("ProfileId")
@@ -3296,23 +3148,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_tank_decommissioning_tank_tank_id");
-                });
-
-            modelBuilder.Entity("Cichlids.Domain.Entities.TankMedia", b =>
-                {
-                    b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
-                        .WithMany()
-                        .HasForeignKey("MediaItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_tank_media_media_item_media_item_id");
-
-                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
-                        .WithMany("Media")
-                        .HasForeignKey("TankId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_tank_media_tanks_tank_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.TankVisibilityConsent", b =>
@@ -3379,23 +3214,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasConstraintName("fk_water_change_session_tank_tank_id");
                 });
 
-            modelBuilder.Entity("Cichlids.Domain.Entities.WaterChangeSessionPhoto", b =>
-                {
-                    b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
-                        .WithMany()
-                        .HasForeignKey("MediaItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_water_change_session_photo_media_item_media_item_id");
-
-                    b.HasOne("Cichlids.Domain.Entities.WaterChangeSession", null)
-                        .WithMany("Photos")
-                        .HasForeignKey("SessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_water_change_session_photo_water_change_session_session_id");
-                });
-
             modelBuilder.Entity("Cichlids.Domain.Entities.WaterChangeSessionStep", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.WaterChangeSession", null)
@@ -3435,13 +3253,11 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Cichlids.Domain.Entities.CareEntry", b =>
                 {
-                    b.Navigation("Photos");
+                    b.Navigation("MediaLinks");
 
                     b.Navigation("Todos");
 
                     b.Navigation("Values");
-
-                    b.Navigation("Videos");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
@@ -3456,7 +3272,7 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Cichlids.Domain.Entities.DiscussionPost", b =>
                 {
-                    b.Navigation("Media");
+                    b.Navigation("MediaLinks");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.DiscussionThread", b =>
@@ -3473,7 +3289,7 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Post", b =>
                 {
-                    b.Navigation("Media");
+                    b.Navigation("MediaLinks");
 
                     b.Navigation("Species");
                 });
@@ -3494,12 +3310,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                 {
                     b.Navigation("Inhabitants");
 
-                    b.Navigation("Media");
+                    b.Navigation("MediaLinks");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.WaterChangeSession", b =>
                 {
-                    b.Navigation("Photos");
+                    b.Navigation("MediaLinks");
 
                     b.Navigation("Steps");
                 });

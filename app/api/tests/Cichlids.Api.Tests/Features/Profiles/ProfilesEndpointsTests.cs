@@ -61,9 +61,11 @@ public class ProfilesEndpointsTests(ApiFixture fixture)
             });
             var carol = new Profile
             {
-                Username = $"carol-{Guid.NewGuid():N}"[..20], Kind = ProfileKind.Member, AvatarMediaId = avatar.Id, CreatedAt = now,
+                Username = $"carol-{Guid.NewGuid():N}"[..20], Kind = ProfileKind.Member, CreatedAt = now,
             };
             db.Profiles.Add(carol);
+            await db.SaveChangesAsync();
+            db.MediaLinks.Add(MediaLink.ForProfile(carol.Id, avatar.Id, MediaLinkRole.Avatar));
             await db.SaveChangesAsync();
             profileId = carol.Id;
         }

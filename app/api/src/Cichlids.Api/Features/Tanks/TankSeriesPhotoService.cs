@@ -14,10 +14,10 @@ namespace Cichlids.Api.Features.Tanks;
 
 /// <summary>
 /// Adds photos to the time-lapse series of a tank. A photo goes through the upload pipeline (same
-/// formats, limits and capture time as other tank photos) and is stored as tank media of the time-lapse
-/// section without a post. The variants live under the public prefix when the profile of the tank is
+/// formats, limits and capture time as other tank photos) and is linked to the tank in the time-lapse
+/// role without a post. The variants live under the public prefix when the profile of the tank is
 /// public and under the private prefix otherwise. A change of the profile level between the upload and
-/// the commit queues the placement of the media of the tank. The media rows and the tank.photo_added
+/// the commit queues the placement of the media of the tank. The media item, its link and the tank.photo_added
 /// event commit in one transaction.
 /// </summary>
 public sealed class TankSeriesPhotoService(
@@ -47,7 +47,7 @@ public sealed class TankSeriesPhotoService(
         var currentVisibility = level;
         try
         {
-            stored = await uploads.StoreImageAsync(profileId, image.Bytes, image.Format, Path.GetFileName(file!.FileName), isPrivate: !storedPublic, ct, privateArea: "tank");
+            stored = await uploads.StoreImageAsync(profileId, image.Bytes, image.Format, Path.GetFileName(file!.FileName), isPrivate: !storedPublic, ct, privateArea: "tank", capturedInApp: capturedInApp);
         }
         catch (Exception ex) when (ex is ImageProcessor.ImageTooLargeException or ImageProcessor.UnsupportedImageFormatException
             or ImageProcessor.BrokenImageException)
@@ -74,12 +74,9 @@ public sealed class TankSeriesPhotoService(
 
             context.MediaItems.Add(stored.Item);
             await context.SaveChangesAsync(ct);
-            var nextSort = (await context.TankMedia.Where(m => m.TankId == tankId && m.Section == TankMediaSection.TimeLapse)
-                .MaxAsync(m => (int?)m.Sort, ct) ?? -1) + 1;
-            context.TankMedia.Add(new TankMedia
-            {
-                TankId = tankId, MediaItemId = stored.Item.Id, Section = TankMediaSection.TimeLapse, Sort = nextSort, CapturedInApp = capturedInApp,
-            });
+            var nextPosition = (await context.MediaLinks.Where(l => l.TankId == tankId && l.Role == MediaLinkRole.TimeLapse)
+                .MaxAsync(l => (int?)l.Position, ct) ?? -1) + 1;
+            context.MediaLinks.Add(MediaLink.ForTank(tankId, stored.Item.Id, MediaLinkRole.TimeLapse, nextPosition));
             context.OutboxEvents.Add(OutboxEvent.Create(
                 "tank.photo_added", "tank", tankId.ToString(),
                 JsonSerializer.Serialize(new { tankId, mediaItemId = stored.Item.Id, profileId, capturedInApp }, PayloadOptions), clock.GetUtcNow()));

@@ -17,9 +17,8 @@ public sealed class CareEntryMapper(CarePhotoUrlSigner signer, CareVideoUrlSigne
     /// photos and videos with the variants of their media items.
     /// </summary>
     public static IQueryable<CareEntry> WithDetails(IQueryable<CareEntry> entries) =>
-        entries.Include(e => e.Values).Include(e => e.Todos).Include(e => e.Photos).ThenInclude(p => p.MediaItem).ThenInclude(m => m.Variants)
-            .Include(e => e.Videos).ThenInclude(v => v.MediaItem).ThenInclude(m => m.Variants)
-            .Include(e => e.Videos).ThenInclude(v => v.MediaItem).ThenInclude(m => m.VideoJob).AsSplitQuery();
+        entries.Include(e => e.Values).Include(e => e.Todos).Include(e => e.MediaLinks).ThenInclude(l => l.MediaItem).ThenInclude(m => m.Variants)
+            .Include(e => e.MediaLinks).ThenInclude(l => l.MediaItem).ThenInclude(m => m.VideoJob).AsSplitQuery();
 
     /// <summary>
     /// The representation of an entry for its owner, or, when the reader is not the owner, without the
@@ -34,8 +33,8 @@ public sealed class CareEntryMapper(CarePhotoUrlSigner signer, CareVideoUrlSigne
         entry.Kind == CareKind.Measurement
             ? entry.Values.OrderBy(v => v.Parameter).Select(MeasurementValueDto.From).ToList() : null,
         entry.Note,
-        entry.Photos.OrderBy(p => p.Position).Select(ToDto).ToList(),
-        entry.Videos.OrderBy(v => v.Id).Select(v => VideoQueryService.ToCareDto(v.MediaItem, videoSigner)).ToList(),
+        entry.MediaLinks.Where(l => l.Role == MediaLinkRole.Photo).OrderBy(l => l.Position).Select(ToDto).ToList(),
+        entry.MediaLinks.Where(l => l.Role == MediaLinkRole.Video).OrderBy(l => l.Position).Select(l => VideoQueryService.ToCareDto(l.MediaItem, videoSigner)).ToList(),
         entry.Todos.OrderBy(t => t.CreatedAt).ThenBy(t => t.Id).Select(CareTodoDto.From).ToList(),
         entry.DurationSeconds, entry.WaterChangeSessionId, EvidenceOf(entry), entry.OnlyMe);
 
@@ -43,7 +42,7 @@ public sealed class CareEntryMapper(CarePhotoUrlSigner signer, CareVideoUrlSigne
     private static WaterChangeEvidenceDto? EvidenceOf(CareEntry entry) => entry.Kind != CareKind.WaterChange ? null
         : entry.Evidence is { } state ? new(state, entry.EvidenceMissing) : WaterChangeEvidenceDto.From(WaterChangeEvidence.NoGuidedMode);
 
-    private CarePhotoDto ToDto(CarePhoto photo) => new(photo.Id, photo.MediaItem.Width, photo.MediaItem.Height, UrlsOf(photo.MediaItem));
+    private CarePhotoDto ToDto(MediaLink link) => new(link.Id, link.MediaItem.Width, link.MediaItem.Height, UrlsOf(link.MediaItem));
 
     /// <summary>
     /// The signed URLs of the variants of a photo media item whose variants are loaded.

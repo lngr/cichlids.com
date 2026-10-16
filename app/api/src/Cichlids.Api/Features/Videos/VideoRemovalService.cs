@@ -48,7 +48,7 @@ public sealed class VideoRemovalService(
 
             var found = await context.MediaItems.Include(m => m.Variants).SingleOrDefaultAsync(
                 m => m.Id == mediaItemId && m.Kind == MediaKind.Video && m.OwnerProfileId == profileId
-                    && context.TankMedia.Any(t => t.TankId == tankId && t.MediaItemId == m.Id && t.Section == TankMediaSection.Video),
+                    && context.MediaLinks.Any(l => l.TankId == tankId && l.MediaItemId == m.Id && l.Role == MediaLinkRole.Video),
                 cancellationToken);
             if (found is null)
             {
@@ -82,14 +82,14 @@ public sealed class VideoRemovalService(
 
             var entry = await CareEntryMapper.WithDetails(context.CareEntries)
                 .SingleOrDefaultAsync(e => e.Id == entryId && e.TankId == tankId && e.AuthorProfileId == profileId, cancellationToken);
-            var video = entry?.Videos.SingleOrDefault(v => v.MediaItemId == mediaItemId);
+            var video = entry?.MediaLinks.SingleOrDefault(l => l.Role == MediaLinkRole.Video && l.MediaItemId == mediaItemId);
             if (entry is null || video is null)
             {
                 return null;
             }
 
             item = video.MediaItem;
-            entry.Videos.Remove(video);
+            entry.MediaLinks.Remove(video);
             context.MediaItems.Remove(item);
             CareEvents.Add(context, "care.updated", entry, clock.GetUtcNow());
             await context.SaveChangesAsync(cancellationToken);

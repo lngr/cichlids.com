@@ -39,7 +39,9 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
         var page = await filtered
             .OrderByDescending(t => t.PublishedAt ?? DateTimeOffset.MinValue).ThenByDescending(t => t.Id)
             .Skip(offset).Take(limit)
-            .Select(t => new TankProjection(t.Id, t.Title, t.Category, t.MainMediaId, t.ProfileId, t.Region, t.ProfileVisibility))
+            .Select(t => new TankProjection(t.Id, t.Title, t.Category,
+                context.MediaLinks.Where(l => l.TankId == t.Id && l.Role == MediaLinkRole.Main).Select(l => (long?)l.MediaItemId).FirstOrDefault(),
+                t.ProfileId, t.Region, t.ProfileVisibility))
             .ToListAsync(cancellationToken);
 
         if (page.Count == 0)
@@ -50,10 +52,9 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
         var tankIds = page.Select(t => t.Id).ToList();
         var authorIds = page.Select(t => t.ProfileId).Distinct().ToList();
 
-        var imageCounts = await context.TankMedia
-            .Where(tm => tankIds.Contains(tm.TankId) && tm.Section != TankMediaSection.Video
-                && tm.Section != TankMediaSection.Decommission && tm.Section != TankMediaSection.Recommission)
-            .GroupBy(tm => tm.TankId)
+        var imageCounts = await context.MediaLinks.TankSectionLinks()
+            .Where(l => tankIds.Contains(l.TankId!.Value) && l.Role != MediaLinkRole.Video)
+            .GroupBy(l => l.TankId!.Value)
             .Select(g => new { TankId = g.Key, Count = g.Count() })
             .ToDictionaryAsync(x => x.TankId, x => x.Count, cancellationToken);
 
@@ -99,14 +100,16 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             return null;
         }
 
-        var mediaRows = await context.TankMedia
-            .Where(tm => tm.TankId == id && tm.Section != TankMediaSection.Decommission && tm.Section != TankMediaSection.Recommission)
-            .OrderBy(tm => tm.Sort)
-            .Select(tm => new TankMediaRow(tm.MediaItemId, tm.Section))
+        var mediaRows = await context.MediaLinks.TankSectionLinks()
+            .Where(l => l.TankId == id)
+            .OrderBy(l => l.Position).ThenBy(l => l.Id)
+            .Select(l => new TankMediaRow(l.MediaItemId, l.Role))
             .ToListAsync(cancellationToken);
 
+        var mainMediaId = await context.MediaLinks.TankMainLinks().Where(l => l.TankId == id)
+            .Select(l => (long?)l.MediaItemId).SingleOrDefaultAsync(cancellationToken);
         var mainMediaItemByTank = await ResolveMainMediaItemsAsync(
-            [new TankProjection(tank.Id, tank.Title, tank.Category, tank.MainMediaId, tank.ProfileId, tank.Region, tank.ProfileVisibility)], cancellationToken);
+            [new TankProjection(tank.Id, tank.Title, tank.Category, mainMediaId, tank.ProfileId, tank.Region, tank.ProfileVisibility)], cancellationToken);
 
         IEnumerable<long> sectionMediaItemIds = mediaRows.Select(m => m.MediaItemId);
         var allMediaItemIds = sectionMediaItemIds.Concat(mainMediaItemByTank.Values).Distinct().ToList();
@@ -114,9 +117,9 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             allMediaItemIds, forcePrivate: !TankVisibilityRules.MediaBelongsInPublicStorage(tank.ProfileVisibility), cancellationToken);
 
         var sections = new TankSectionsDto(
-            BuildSection(mediaRows, TankMediaSection.Showcase, images),
-            BuildSection(mediaRows, TankMediaSection.Decoration, images),
-            BuildSection(mediaRows, TankMediaSection.Technic, images));
+            BuildSection(mediaRows, MediaLinkRole.Showcase, images),
+            BuildSection(mediaRows, MediaLinkRole.Decoration, images),
+            BuildSection(mediaRows, MediaLinkRole.Technic, images));
 
         var inhabitants = await LoadInhabitantsAsync(id, cancellationToken);
         var authors = await AuthorBatchLoader.LoadAsync(context, [tank.ProfileId], cancellationToken);
@@ -151,14 +154,14 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
     }
 
     private static List<TankMediaItemDto> BuildSection(
-        IEnumerable<TankMediaRow> mediaRows, TankMediaSection section, IReadOnlyDictionary<long, ImageUrlsDto> images) =>
+        IEnumerable<TankMediaRow> mediaRows, MediaLinkRole role, IReadOnlyDictionary<long, ImageUrlsDto> images) =>
         mediaRows
-            .Where(m => m.Section == section)
+            .Where(m => m.Role == role)
             .Select(m => new TankMediaItemDto(m.MediaItemId, images[m.MediaItemId]))
             .ToList();
 
     /// <summary>
-    /// Resolves each tank's main image: its own main_media_id when set, otherwise the first
+    /// Resolves each tank's main image: the link with the main role when there is one, otherwise the first
     /// showcase photo in section order.
     /// </summary>
     private async Task<Dictionary<long, long>> ResolveMainMediaItemsAsync(
@@ -184,9 +187,9 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             return result;
         }
 
-        var fallbackRows = await context.TankMedia
-            .Where(tm => tanksNeedingFallback.Contains(tm.TankId) && tm.Section == TankMediaSection.Showcase)
-            .Select(tm => new { tm.TankId, tm.MediaItemId, tm.Sort })
+        var fallbackRows = await context.MediaLinks
+            .Where(l => l.TankId != null && tanksNeedingFallback.Contains(l.TankId.Value) && l.Role == MediaLinkRole.Showcase)
+            .Select(l => new { TankId = l.TankId!.Value, l.MediaItemId, Sort = l.Position })
             .ToListAsync(cancellationToken);
 
         foreach (var group in fallbackRows.GroupBy(r => r.TankId))
@@ -238,5 +241,5 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
     private sealed record TankProjection(
         long Id, string Title, TankCategory? Category, long? MainMediaId, long ProfileId, TankRegion? Region, TankVisibility ProfileVisibility);
 
-    private sealed record TankMediaRow(long MediaItemId, TankMediaSection Section);
+    private sealed record TankMediaRow(long MediaItemId, MediaLinkRole Role);
 }

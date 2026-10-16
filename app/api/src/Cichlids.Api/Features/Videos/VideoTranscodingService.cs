@@ -97,7 +97,7 @@ public sealed class VideoTranscodingService(
         // The files were written for the placement chosen when the job was queued; a tank whose
         // profile level has changed since is queued for the placement of its media.
         await context.Tanks
-            .Where(t => context.TankMedia.Any(m => m.TankId == t.Id && m.MediaItemId == item.Id)
+            .Where(t => context.MediaLinks.Any(l => l.TankId == t.Id && l.MediaItemId == item.Id)
                 && (t.ProfileVisibility == TankVisibility.Public) == job.IsPrivate)
             .ExecuteUpdateAsync(s => s.SetProperty(t => t.MediaMovePending, true).SetProperty(t => t.MediaMoveAttempts, 0)
                 .SetProperty(t => t.MediaMoveNextAttemptAt, now), cancellationToken);

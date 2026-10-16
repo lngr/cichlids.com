@@ -40,7 +40,7 @@ public sealed class DiscoverVisibilityTests(ApiFixture fixture)
             };
             db.Context.MediaItems.Add(media);
             await db.Context.SaveChangesAsync();
-            db.Context.TankMedia.Add(new TankMedia { TankId = tank.Id, MediaItemId = media.Id, Section = TankMediaSection.Showcase, Sort = i });
+            db.Context.MediaLinks.Add(MediaLink.ForTank(tank.Id, media.Id, MediaLinkRole.Showcase, i));
             db.Context.MediaVariants.Add(new MediaVariant
             {
                 MediaItemId = media.Id, Label = "large", StorageKey = $"variants/large/{marker}/{media.Id}.jpg",
@@ -53,7 +53,7 @@ public sealed class DiscoverVisibilityTests(ApiFixture fixture)
         var postMedia = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
         db.Context.MediaItems.Add(postMedia);
         await db.Context.SaveChangesAsync();
-        db.Context.PostMedia.Add(new PostMedia { PostId = post.Id, MediaItemId = postMedia.Id });
+        db.Context.MediaLinks.Add(MediaLink.ForPost(post.Id, postMedia.Id));
         db.Context.MediaVariants.Add(new MediaVariant
         {
             MediaItemId = postMedia.Id, Label = "large", StorageKey = $"variants/large/{marker}/post-{postMedia.Id}.jpg",

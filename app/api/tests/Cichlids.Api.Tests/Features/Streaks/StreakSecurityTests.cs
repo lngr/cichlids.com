@@ -167,7 +167,7 @@ public sealed class StreakSecurityTests(ApiFixture fixture) : IAsyncLifetime
         using var response = await fixture.Client.SendAsync(request);
         Assert.True(response.StatusCode is HttpStatusCode.BadRequest or HttpStatusCode.NotFound);
         await using var db = fixture.CreateDbContext();
-        Assert.False(await db.TankMedia.AnyAsync(m => m.TankId == tank));
+        Assert.False(await db.MediaLinks.AnyAsync(l => l.TankId == tank));
     }
 
     [Fact]
