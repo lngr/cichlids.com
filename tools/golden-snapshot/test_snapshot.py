@@ -58,7 +58,7 @@ class GenerationTests(unittest.TestCase):
 
     def test_manifest_rejects_tampering_and_unsafe_media_keys(self):
         manifest = {'format': 1, 'version': 'v1', 'migration_id': 'test',
-                    'dump_sha256': '0' * 64, 'row_counts': {}, 'post_ids': [1],
+                    'dump_sha256': '0' * 64, 'row_counts': {}, 'story_ids': [1],
                     'media': [{'key': 'golden/v1/media/variants/thumb/media-1.jpg', 'sha256': '0' * 64}]}
         snapshot.validate_manifest(manifest, 'v1')
         for key in ('originals/a.jpg', 'variants/../secret', 'forum_attachments/a.jpg', 'golden/v2/media/variants/thumb/media-1.jpg', 'variants/thumb/media-1.jpg'):
@@ -109,8 +109,8 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(before, snapshot.fingerprint(self.source))
         self.assertEqual(manifest, json.loads((output / 'manifest.json').read_text()))
         self.assertEqual(manifest['migration_id'], re.search(r"VALUES \('([0-9]{14}_[A-Za-z0-9]+)'", (HERE / 'fixture-schema.sql').read_text()).group(1))
-        self.assertEqual(len(manifest['post_ids']), 2)
-        self.assertLessEqual(set(manifest['post_ids']), {1, 2, 3})
+        self.assertEqual(len(manifest['story_ids']), 2)
+        self.assertLessEqual(set(manifest['story_ids']), {1, 2, 3})
         self.assertTrue((output / 'snapshot.dump').read_bytes().startswith(b'PGDMP'))
         with psycopg.connect(self.target) as conn, psycopg.connect(self.source) as source:
             denylist = snapshot.denylist(source)
@@ -135,7 +135,7 @@ class DatabaseTests(unittest.TestCase):
                     self.assertEqual([r[0] for r in old], [r[0] for r in new])
                     for (row_id, a), (_, b) in zip(old, new):
                         self.assertEqual(b, snapshot.generated_text(KEY, f'{table}.{column}:{row_id}', a))
-            for table in ('species', 'species_link', 'species_common_name', 'post_species'):
+            for table in ('species', 'species_link', 'species_common_name'):
                 query = sql.SQL('select * from {} order by id').format(sql.Identifier(table))
                 self.assertEqual(source.execute(query).fetchall(), conn.execute(query).fetchall())
             changed = {table: set(columns) for table, columns in snapshot.FREE_TEXT.items()}
@@ -143,9 +143,10 @@ class DatabaseTests(unittest.TestCase):
             changed['public.slug_alias'] = {'value'}
             changed['public.media_item'] = {'storage_key', 'original_filename', 'content_type', 'checksum_sha256', 'taken_at_local', 'taken_at_offset_minutes', 'capture_checked_at', 'received_at', 'captured_in_app', 'placed_public', 'placement_attempts', 'placement_pending', 'placement_next_attempt_at', 'visibility_generation'}
             changed['public.media_variant'] = {'storage_key'}
+            changed['public.story'].add('cover_media_link_id')
             changed['public.comment'].add('poster_name')
             changed['public.discussion_post'].add('poster_name')
-            subset_tables = {'public.media_item', 'public.media_variant', 'public.media_link', 'public.tank_decommissioning', 'public.care_entry', 'public.care_measurement_value', 'public.care_plan_rule', 'public.care_plan_rule_change', 'public.water_change_session', 'public.water_change_session_step', 'public.streak_freeze', 'public.tank_visibility_consent', 'public.inhabitant', 'public.collection_entry', 'public.comment', 'public.rating', 'public.follow'}
+            subset_tables = {'public.media_item', 'public.media_variant', 'public.media_link', 'public.tank_decommissioning', 'public.care_entry', 'public.care_measurement_value', 'public.care_plan_rule', 'public.care_plan_rule_change', 'public.water_change_session', 'public.water_change_session_step', 'public.streak_freeze', 'public.tank_visibility_consent', 'public.inhabitant', 'public.collection_entry', 'public.comment', 'public.rating', 'public.follow', 'public.story_subject'}
             for table, columns in snapshot.SCHEMA.items():
                 if table in snapshot.EMPTY_TABLES or table == 'public.__EFMigrationsHistory':
                     continue
@@ -170,8 +171,8 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual({r[0] for r in conn.execute('select distinct media_item_id from media_link')} - retained, set())
             self.assertEqual(conn.execute("select count(*) from media_link where context_type='profile'").fetchone()[0], 0)
             self.assertGreater(source.execute("select count(*) from media_link where context_type='profile'").fetchone()[0], 0)
-            self.assertEqual(conn.execute("select count(*) from media_link where context_type='post' and role='item' and media_item_id=any(%s)", (list(retained),)).fetchone()[0],
-                             source.execute("select count(*) from media_link where context_type='post' and role='item' and media_item_id=any(%s)", (list(retained),)).fetchone()[0])
+            self.assertEqual(conn.execute("select count(*) from media_link where context_type='story' and role='item' and media_item_id=any(%s)", (list(retained),)).fetchone()[0],
+                             source.execute("select count(*) from media_link where context_type='story' and role='item' and media_item_id=any(%s)", (list(retained),)).fetchone()[0])
             kept = [r[0] for r in source.execute('select d.id from tank_decommissioning d join tank t on t.id=d.tank_id where t.stream_visibility=\'public\' and d.start_media_item_id=any(%s) and coalesce(d.end_media_item_id, d.start_media_item_id)=any(%s) order by d.id', (list(retained), list(retained)))]
             self.assertEqual(kept, [r[0] for r in conn.execute('select id from tank_decommissioning order by id')])
             self.assertLess(len(kept), source.execute('select count(*) from tank_decommissioning').fetchone()[0])
@@ -194,12 +195,15 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(count(conn, 'select count(*) from collection'), 2)
             self.assertEqual(sorted(r[0] for r in conn.execute('select id from comment where tank_id is not null')), [2, 4, 7])
             self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from rating where tank_id is not null')), [1, 4, 8])
-            self.assertEqual(count(conn, 'select count(*) from rating where post_id is not null'), count(source, 'select count(*) from rating where post_id is not null'))
-            self.assertEqual(count(conn, 'select count(*) from comment where post_id is not null'), count(source, 'select count(*) from comment where post_id is not null'))
+            self.assertEqual(count(conn, 'select count(*) from rating where story_id is not null'), count(source, 'select count(*) from rating where story_id is not null'))
+            self.assertEqual(count(conn, 'select count(*) from comment where story_id is not null'), count(source, 'select count(*) from comment where story_id is not null'))
             self.assertEqual(sorted(r[0] for r in conn.execute('select target_tank_id from follow where target_tank_id is not null')), [1, 8])
             self.assertEqual(count(conn, "select count(*) from follow where status <> 'approved'"), 0)
             self.assertGreater(count(source, "select count(*) from follow where status = 'pending'"), 0)
             self.assertEqual(count(conn, 'select count(*) from follow where target_tank_id is null'), count(source, 'select count(*) from follow where target_tank_id is null'))
+            self.assertEqual(sorted((r[0], r[1]) for r in conn.execute('select story_id, subject_type from story_subject')), [(1, 'inhabitant'), (1, 'species'), (1, 'tank'), (2, 'species'), (3, 'inhabitant'), (3, 'tank')])
+            self.assertEqual(count(conn, "select count(*) from story where cover_media_link_id is not null and cover_media_link_id not in (select id from media_link)"), 0)
+            self.assertEqual(count(source, 'select count(*) from story where cover_media_link_id is not null'), 3)
             self.assertEqual(count(conn, 'select count(*) from tank_selected_member'), 0)
             self.assertGreater(count(source, 'select count(*) from tank_selected_member'), 0)
             for table in ('vacation', 'care_reminder_snooze', 'care_todo', 'comment_vote'):
@@ -216,7 +220,7 @@ class DatabaseTests(unittest.TestCase):
                 self.assertRegex(key, r'^golden/synthetic-v1/media/variants/thumb/media-[0-9]+\.jpg$')
                 self.assertRegex(filename, r'^media-[0-9]+\.jpg$')
                 self.assertIsNone(checksum)
-            self.assertEqual(conn.execute("select count(*) from slug_alias where value not like 'post-%'").fetchone()[0], 0)
+            self.assertEqual(conn.execute("select count(*) from slug_alias where value not like 'story-%'").fetchone()[0], 0)
             conn.execute('savepoint taxonomy_urls')
             conn.execute("update species_link set url='https://taxonomy.example.invalid/species/1' where id=1")
             conn.execute("update species set description='https://taxonomy.example.invalid' where id=1")
@@ -226,25 +230,27 @@ class DatabaseTests(unittest.TestCase):
             for statement in (
                 "update comment set body='planted@example.invalid' where id=1",
                 "update tank set notes='https://personal.invalid' where id=1",
-                "update post set title='SyntheticAlice' where id=1",
+                "update story set title='SyntheticAlice' where id=1",
                 "alter table profile alter column city set default 'planted@example.invalid'",
                 "update comment set body='https://personal.invalid' where id=1",
                 "update species_link set url='https://reference.invalid/SyntheticAlice' where id=1",
                 "update species_common_name set name='planted@example.invalid' where id=1",
-                "update post set title='sYnThEtIc DiSpLaY' where id=1",
+                "update story set title='sYnThEtIc DiSpLaY' where id=1",
                 "insert into profile_identity (profile_id,provider,subject,created_at) values (1,'test','test',now())",
                 "update care_entry set only_me=true where id=1",
                 "update tank set stream_visibility='private' where id=1",
                 "update tank set stream_visibility='private', profile_visibility='private' where id=1",
                 "update collection set is_public=false where id=1",
+                "insert into story_subject (story_id,subject_type,tank_id,position) values (1,'tank',5,5)",
+                "update tank set profile_visibility='followers', stream_visibility='followers' where id=1",
                 "update tank set profile_visibility='followers', stream_visibility='followers' where id=4",
                 "update tank set profile_visibility='selected', stream_visibility='selected' where id=1",
-                "update comment set tank_id=6, post_id=null where id=2",
+                "update comment set tank_id=6, story_id=null where id=2",
                 "insert into follow (follower_profile_id,target_tank_id,status,created_at) values (3,2,'pending',now())",
                 "update follow set status='pending', decided_at=null where follower_profile_id=2 and target_tank_id=1",
                 "insert into follow (follower_profile_id,target_tank_id,status,created_at) values (1,5,'approved',now())",
                 "update tank set profile_visibility='private', stream_visibility='private' where id=4",
-                "update comment set tank_id=5, post_id=null where id=2",
+                "update comment set tank_id=5, story_id=null where id=2",
                 "insert into rating (tank_id,profile_id,stars,created_at) values (5,3,3,now())",
                 "update media_item set captured_in_app=true",
                 "update media_item set placement_pending=true where id=(select min(id) from media_item)",
@@ -291,10 +297,10 @@ class DatabaseTests(unittest.TestCase):
         with psycopg.connect(clone) as conn:
             self.assertEqual(set(manifest['media_keys']), {r[0] for r in conn.execute('select storage_key from media_variant')})
             self.assertTrue({r[0] for r in conn.execute('select storage_key from media_item')} <= set(manifest['media_keys']))
-            conn.execute("update post set title='environment upload' where id=1")
+            conn.execute("update story set title='environment upload' where id=1")
         restore.restore_database(clone, output / 'snapshot.dump', manifest, 'pr-17')
         with psycopg.connect(clone) as conn:
-            self.assertEqual(conn.execute('select title from post where id=1').fetchone()[0], 'environment upload')
+            self.assertEqual(conn.execute('select title from story where id=1').fetchone()[0], 'environment upload')
         restore.restore_database(clone, output / 'snapshot.dump', manifest, 'staging', refresh=True)
         with psycopg.connect(clone) as conn:
             self.assertEqual(snapshot.counts(conn), manifest['row_counts'])
@@ -347,8 +353,8 @@ class DatabaseTests(unittest.TestCase):
             "select lo_from_bytea(0, convert_to('leak@example.invalid','UTF8'))",
             "create schema personal_schema",
             "create trigger personal_trigger after update on public.tank for each row execute function public.tank_changes_media_visibility()",
-            "create or replace function public.post_changes_media_visibility() returns trigger language plpgsql as $$ begin return null; end $$",
-            "drop trigger post_changes_media_visibility on public.post",
+            "create or replace function public.story_changes_media_visibility() returns trigger language plpgsql as $$ begin return null; end $$",
+            "drop trigger story_changes_media_visibility on public.story",
             "drop function public.media_item_ids_of_tank(bigint) cascade",
             "create function public.media_item_ids_of_tank(p_tank_id text) returns text language sql as $$select 'x'::text$$",
             "create schema pgleak; create view pgleak.personal_view as select 'leak@example.invalid' as body",

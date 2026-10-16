@@ -7,13 +7,13 @@ INSERT INTO species_common_name(species_id,name) VALUES (1,'Synthetic fish');
 INSERT INTO species_link(species_id,url,label) VALUES (1,'urn:synthetic:taxonomy-reference','Reference');
 INSERT INTO tank(id,profile_id,title,description,state,created_at,care_reminders_enabled) VALUES (1,1,'SyntheticAlice tank','mail@example.invalid','published','2020-01-01',true),(2,2,'Second tank',NULL,'published','2020-01-01',true),(3,3,'Third tank',NULL,'published','2020-01-01',false);
 INSERT INTO inhabitant(tank_id,species_id,count) VALUES (1,1,5);
-INSERT INTO post(id,author_profile_id,tank_id,kind,topic,title,description,state,view_count,rating_count,created_at,updated_at,published_at,delete_reason)
-SELECT n,1,1,'single','unknown','SyntheticAlice title','https://personal.example.invalid','published',15,1,'2020-01-01','2020-01-02','2020-01-02','mail@example.invalid' FROM generate_series(1,5) n;
-UPDATE post SET state='draft' WHERE id=4;
+INSERT INTO story(id,author_profile_id,topic,title,description,state,view_count,rating_count,created_at,updated_at,published_at,delete_reason)
+SELECT n,1,'unknown','SyntheticAlice title','https://personal.example.invalid','published',15,1,'2020-01-01','2020-01-02','2020-01-02','mail@example.invalid' FROM generate_series(1,5) n;
+UPDATE story SET state='draft' WHERE id=4;
 INSERT INTO media_item(id,owner_profile_id,kind,storage_key,original_filename,content_type,checksum_sha256,created_at)
 SELECT n,1,'photo','originals/SyntheticAlice/photo-' || n || '.jpg','SyntheticAlice.jpg','image/jpeg',repeat('a',64),'2020-01-01' FROM generate_series(1,5) n;
 UPDATE media_item SET kind='video', content_type='video/mp4' WHERE id=5;
-INSERT INTO media_link(media_item_id,context_type,post_id,role,position,caption,created_at) SELECT n,'post',n,'item',0,'SyntheticAlice caption mail@example.invalid','2020-01-01' FROM generate_series(1,5) n;
+INSERT INTO media_link(media_item_id,context_type,story_id,role,position,caption,created_at) SELECT n,'story',n,'item',0,'SyntheticAlice caption mail@example.invalid','2020-01-01' FROM generate_series(1,5) n;
 INSERT INTO media_variant(media_item_id,label,storage_key,width) SELECT n,'thumb','variants/thumb/originals/SyntheticAlice/photo-' || n || '.jpg.jpg',200 FROM generate_series(1,5) n;
 INSERT INTO media_variant(media_item_id,label,storage_key,width) SELECT n,'medium','variants/medium/originals/SyntheticAlice/photo-' || n || '.jpg.jpg',800 FROM generate_series(1,5) n;
 INSERT INTO media_variant(media_item_id,label,storage_key) VALUES (1,'copy','variants/copy/originals/SyntheticAlice.bmp'),(2,'large','originals/private.jpg');
@@ -23,14 +23,13 @@ INSERT INTO tank_decommissioning(tank_id,scope,started_at,start_date,start_media
  (1,'all_care','2020-02-01','2020-02-01',5,NULL,NULL,NULL),
  (2,'water_change','2020-02-01','2020-02-01',1,NULL,NULL,NULL),
  (3,'all_care','2020-02-01','2020-02-01',2,'2020-03-01','2020-03-01',3);
-INSERT INTO comment(id,post_id,author_profile_id,poster_name,body,delete_reason,created_at) VALUES (1,1,NULL,'Synthetic Guest','SyntheticAlice mail@example.invalid','https://personal.example.invalid','2020-01-01');
+INSERT INTO comment(id,story_id,author_profile_id,poster_name,body,delete_reason,created_at) VALUES (1,1,NULL,'Synthetic Guest','SyntheticAlice mail@example.invalid','https://personal.example.invalid','2020-01-01');
 INSERT INTO comment_vote(comment_id,profile_id,value,created_at) VALUES (1,2,1,'2020-01-01');
-INSERT INTO rating(post_id,profile_id,stars,created_at) VALUES (1,2,4,'2020-01-01');
+INSERT INTO rating(story_id,profile_id,stars,created_at) VALUES (1,2,4,'2020-01-01');
 INSERT INTO follow(follower_profile_id,target_profile_id,created_at) VALUES (2,1,'2020-01-01');
-INSERT INTO post_species(post_id,species_id) VALUES (1,1);
 INSERT INTO collection(id,profile_id,title,is_public,created_at) VALUES (1,1,'SyntheticAlice collection',true,'2020-01-01'),(2,2,'Private collection',false,'2020-01-01');
-INSERT INTO collection_entry(collection_id,post_id) VALUES (1,1),(2,2);
-INSERT INTO slug_alias(post_id,value,is_canonical,created_at) VALUES (1,'SyntheticAlice-title',true,'2020-01-01');
+INSERT INTO collection_entry(collection_id,story_id) VALUES (1,1),(2,2);
+INSERT INTO slug_alias(story_id,value,is_canonical,created_at) VALUES (1,'SyntheticAlice-title',true,'2020-01-01');
 INSERT INTO discussion_thread(id,category,title,state,post_count,created_at) VALUES (1,'cichlids','SyntheticAlice forum','open',2,'2020-01-01');
 INSERT INTO discussion_post(id,thread_id,poster_name,body,created_at) VALUES (1,1,'Synthetic Guest','https://personal.example.invalid','2020-01-01');
 INSERT INTO discussion_post(id,thread_id,author_profile_id,body,created_at) VALUES (2,1,1,'mail@example.invalid','2020-01-01');
@@ -106,3 +105,14 @@ INSERT INTO follow(follower_profile_id,target_tank_id,status,decided_at,created_
  (1,8,'approved','2020-01-02','2020-01-01'),
  (3,4,'pending',NULL,'2020-01-01');
 INSERT INTO tank_selected_member(tank_id,member_profile_id,added_at) VALUES (6,1,'2020-01-01'),(7,2,'2020-01-01'),(1,3,'2020-01-01');
+INSERT INTO story_subject(story_id,subject_type,tank_id,inhabitant_id,species_id,position) VALUES
+ (1,'tank',1,NULL,NULL,0),
+ (1,'inhabitant',NULL,(SELECT id FROM inhabitant WHERE tank_id=1),NULL,1),
+ (1,'species',NULL,NULL,1,2),
+ (2,'tank',5,NULL,NULL,0),
+ (2,'inhabitant',NULL,(SELECT id FROM inhabitant WHERE tank_id=5),NULL,1),
+ (2,'species',NULL,NULL,1,2),
+ (3,'tank',6,NULL,NULL,0),
+ (3,'tank',4,NULL,NULL,1),
+ (3,'inhabitant',NULL,(SELECT id FROM inhabitant WHERE tank_id=8),NULL,2);
+UPDATE story SET cover_media_link_id=(SELECT id FROM media_link WHERE story_id=story.id AND role='item') WHERE id IN (1,2,3);

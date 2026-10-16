@@ -90,8 +90,8 @@
   "public.collection_entry": {
     "collection_id": "bigint",
     "id": "bigint",
-    "post_id": "bigint",
-    "sort": "integer"
+    "sort": "integer",
+    "story_id": "bigint"
   },
   "public.comment": {
     "author_profile_id": "bigint",
@@ -102,9 +102,9 @@
     "deleted_by_profile_id": "bigint",
     "id": "bigint",
     "legacy_id": "integer",
-    "post_id": "bigint",
     "poster_name": "text",
     "score": "integer",
+    "story_id": "bigint",
     "tank_id": "bigint"
   },
   "public.comment_vote": {
@@ -185,9 +185,9 @@
     "inhabitant_id": "bigint",
     "media_item_id": "bigint",
     "position": "integer",
-    "post_id": "bigint",
     "profile_id": "bigint",
     "role": "text",
+    "story_id": "bigint",
     "tank_id": "bigint",
     "water_change_session_id": "bigint"
   },
@@ -214,32 +214,6 @@
     "occurred_at": "timestamp with time zone",
     "payload": "jsonb",
     "redelivered_at": "timestamp with time zone"
-  },
-  "public.post": {
-    "author_profile_id": "bigint",
-    "created_at": "timestamp with time zone",
-    "delete_reason": "text",
-    "deleted_at": "timestamp with time zone",
-    "deleted_by_profile_id": "bigint",
-    "description": "text",
-    "id": "bigint",
-    "kind": "text",
-    "legacy_id": "integer",
-    "published_at": "timestamp with time zone",
-    "rating_average": "double precision",
-    "rating_count": "integer",
-    "state": "text",
-    "tank_id": "bigint",
-    "title": "text",
-    "topic": "text",
-    "updated_at": "timestamp with time zone",
-    "view_count": "bigint"
-  },
-  "public.post_species": {
-    "id": "bigint",
-    "post_id": "bigint",
-    "sort": "integer",
-    "species_id": "bigint"
   },
   "public.profile": {
     "badges": "text[]",
@@ -269,16 +243,16 @@
     "created_at": "timestamp with time zone",
     "id": "bigint",
     "legacy_comment_id": "integer",
-    "post_id": "bigint",
     "profile_id": "bigint",
     "stars": "smallint",
+    "story_id": "bigint",
     "tank_id": "bigint"
   },
   "public.slug_alias": {
     "created_at": "timestamp with time zone",
     "id": "bigint",
     "is_canonical": "boolean",
-    "post_id": "bigint",
+    "story_id": "bigint",
     "value": "text"
   },
   "public.species": {
@@ -315,6 +289,34 @@
     "sort": "integer",
     "species_id": "bigint",
     "url": "text"
+  },
+  "public.story": {
+    "author_profile_id": "bigint",
+    "cover_media_link_id": "bigint",
+    "created_at": "timestamp with time zone",
+    "delete_reason": "text",
+    "deleted_at": "timestamp with time zone",
+    "deleted_by_profile_id": "bigint",
+    "description": "text",
+    "id": "bigint",
+    "legacy_id": "integer",
+    "published_at": "timestamp with time zone",
+    "rating_average": "double precision",
+    "rating_count": "integer",
+    "state": "text",
+    "title": "text",
+    "topic": "text",
+    "updated_at": "timestamp with time zone",
+    "view_count": "bigint"
+  },
+  "public.story_subject": {
+    "id": "bigint",
+    "inhabitant_id": "bigint",
+    "position": "integer",
+    "species_id": "bigint",
+    "story_id": "bigint",
+    "subject_type": "text",
+    "tank_id": "bigint"
   },
   "public.streak_freeze": {
     "care_entry_id": "bigint",

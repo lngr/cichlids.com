@@ -26,7 +26,7 @@ FREE_TEXT = {
     'public.comment': ('body', 'delete_reason'),
     'public.discussion_post': ('body',),
     'public.discussion_thread': ('title',),
-    'public.post': ('title', 'description', 'delete_reason'),
+    'public.story': ('title', 'description', 'delete_reason'),
     'public.collection': ('title',),
     'public.care_entry': ('note',),
     'public.media_link': ('caption',),
@@ -46,6 +46,8 @@ PRIVATE_SCOPE_CHECKS = (
     ('public.tank_visibility_consent', PRIVATE_TANK),
     ('public.inhabitant', "tank_id in (select id from tank where profile_visibility <> 'public')"),
     ('public.media_link', "tank_id in (select id from tank where profile_visibility <> 'public')"),
+    ('public.story_subject', "tank_id in (select id from tank where profile_visibility <> 'public') or inhabitant_id in (select id from inhabitant where tank_id in (select id from tank where profile_visibility <> 'public'))"),
+    ('public.story', "cover_media_link_id is not null and cover_media_link_id not in (select id from media_link)"),
     ('public.comment', "tank_id in (select id from tank where profile_visibility <> 'public')"),
     ('public.rating', "tank_id in (select id from tank where profile_visibility <> 'public')"),
     ('public.follow', "status <> 'approved' or target_tank_id in (select id from tank where profile_visibility <> 'public')"),
@@ -54,7 +56,7 @@ PRIVATE_SCOPE_CHECKS = (
 LABELS = ('thumb', 'small', 'medium', 'large')
 
 # Handling of every column. generated: replaced by generated text of the same length (FREE_TEXT).
-# pseudonym: replaced by an HMAC pseudonym. null: set to NULL. alias: rewritten from the post and alias
+# pseudonym: replaced by an HMAC pseudonym. null: set to NULL. alias: rewritten from the story and alias
 # IDs. media: rewritten to the published media keys or to fixed values. empty: the table is emptied.
 # kept: copied unchanged. Kept text columns hold fixed vocabularies (kinds, states, units, roles, finding
 # codes), system values (reason codes and parameters, migration IDs) or the public species catalog; the
@@ -95,11 +97,11 @@ COLUMN_HANDLING = {
         'kept': 'created_at id is_public legacy_id profile_id',
     },
     'public.collection_entry': {
-        'kept': 'collection_id id post_id sort',
+        'kept': 'collection_id id story_id sort',
     },
     'public.comment': {
         'generated': 'body delete_reason',
-        'kept': 'author_profile_id created_at deleted_at deleted_by_profile_id id legacy_id post_id score tank_id',
+        'kept': 'author_profile_id created_at deleted_at deleted_by_profile_id id legacy_id story_id score tank_id',
         'pseudonym': 'poster_name',
     },
     'public.comment_vote': {
@@ -131,7 +133,7 @@ COLUMN_HANDLING = {
         'generated': 'caption',
         'kept': (
             'care_entry_id context_type created_at discussion_post_id id inhabitant_id media_item_id position '
-            'post_id profile_id role tank_id water_change_session_id'),
+            'story_id profile_id role tank_id water_change_session_id'),
     },
     'public.media_variant': {
         'kept': 'byte_size id label media_item_id width',
@@ -142,15 +144,6 @@ COLUMN_HANDLING = {
             'acknowledged_subscription_ids aggregate_id aggregate_type attempt_count dispatched_at event_type '
             'given_up_at id last_attempt_at last_error next_attempt_at occurred_at payload redelivered_at'),
     },
-    'public.post': {
-        'generated': 'delete_reason description title',
-        'kept': (
-            'author_profile_id created_at deleted_at deleted_by_profile_id id kind legacy_id published_at '
-            'rating_average rating_count state tank_id topic updated_at view_count'),
-    },
-    'public.post_species': {
-        'kept': 'id post_id sort species_id',
-    },
     'public.profile': {
         'kept': 'badges country_code created_at id interests kind legacy_id onboarding_completed_at streaks_enabled',
         'null': 'city external_avatar_url last_login_at suspended_until',
@@ -160,11 +153,11 @@ COLUMN_HANDLING = {
         'empty': 'created_at id profile_id provider subject',
     },
     'public.rating': {
-        'kept': 'created_at id legacy_comment_id post_id profile_id stars tank_id',
+        'kept': 'created_at id legacy_comment_id story_id profile_id stars tank_id',
     },
     'public.slug_alias': {
         'alias': 'value',
-        'kept': 'created_at id is_canonical post_id',
+        'kept': 'created_at id is_canonical story_id',
     },
     'public.species': {
         'kept': (
@@ -179,6 +172,15 @@ COLUMN_HANDLING = {
     },
     'public.streak_freeze': {
         'kept': 'care_entry_id created_at id period_end period_start tank_id tank_year',
+    },
+    'public.story': {
+        'generated': 'delete_reason description title',
+        'kept': (
+            'author_profile_id cover_media_link_id created_at deleted_at deleted_by_profile_id id legacy_id '
+            'published_at rating_average rating_count state topic updated_at view_count'),
+    },
+    'public.story_subject': {
+        'kept': 'id inhabitant_id position species_id story_id subject_type tank_id',
     },
     'public.tank': {
         'generated': (
@@ -411,10 +413,10 @@ def copy_database(source, target):
             raise RuntimeError('database copy failed')
 
 
-def select_media(conn, key, limit, post_ids, version):
+def select_media(conn, key, limit, story_ids, version):
     rows = conn.execute("""
         select p.id, m.id, v.id, v.label, v.storage_key
-        from post p join media_link ml on ml.post_id=p.id and ml.context_type='post' and ml.role='item'
+        from story p join media_link ml on ml.story_id=p.id and ml.context_type='story' and ml.role='item'
         join media_item m on m.id=ml.media_item_id
         join media_variant v on v.media_item_id=m.id
         where p.state='published' and p.deleted_at is null and m.kind='photo'
@@ -422,24 +424,24 @@ def select_media(conn, key, limit, post_ids, version):
         order by p.id,ml.position,m.id,v.id
     """, (list(LABELS),)).fetchall()
     candidates = {r[0] for r in rows if r[3] == 'thumb'}
-    if post_ids is not None:
-        if not set(post_ids) <= candidates:
-            raise ValueError('requested posts have no eligible public pictures')
-        chosen = set(post_ids)
+    if story_ids is not None:
+        if not set(story_ids) <= candidates:
+            raise ValueError('requested stories have no eligible public pictures')
+        chosen = set(story_ids)
     else:
         chosen = set(sorted(candidates, key=lambda i: hmac.digest(key, f'picture:{i}'.encode(), 'sha256'))[:limit])
     if not chosen:
         raise ValueError('no eligible public pictures')
-    # One photo per post bounds the picture subset even for multi-photo stories.
+    # One photo per story bounds the picture subset.
     selected = {}
-    for post, media, variant, label, old_key in rows:
-        if post in chosen and label == 'thumb':
-            selected.setdefault(post, media)
+    for story, media, variant, label, old_key in rows:
+        if story in chosen and label == 'thumb':
+            selected.setdefault(story, media)
     media_ids = set(selected.values())
-    mapping = [{'post_id': post, 'media_id': media, 'variant_id': variant, 'source_key': old_key,
+    mapping = [{'story_id': story, 'media_id': media, 'variant_id': variant, 'source_key': old_key,
                 'key': f'golden/{version}/media/variants/{label}/media-{media}.jpg', 'label': label}
-               for post, media, variant, label, old_key in rows
-               if post in chosen and media == selected[post] and media in media_ids
+               for story, media, variant, label, old_key in rows
+               if story in chosen and media == selected[story] and media in media_ids
                and old_key.startswith(f'variants/{label}/') and old_key.endswith('.jpg')]
     if {r['media_id'] for r in mapping if r['label'] == 'thumb'} != media_ids:
         raise ValueError('invalid public variant layout')
@@ -467,7 +469,7 @@ def mask(conn, key, mapping):
             cur.executemany(sql.SQL('update {} set poster_name=%s where id=%s').format(sql.Identifier(table)),
                             [(name, row_id) for row_id, name in pseudonyms(hmac.digest(key, table.encode(), 'sha256'), guest_ids, 'guest').items()])
     conn.execute("update slug_alias set value='snapshot-' || %s || '-' || id::text", (uuid.uuid4().hex,))
-    conn.execute("update slug_alias set value='post-' || post_id || '-alias-' || id")
+    conn.execute("update slug_alias set value='story-' || story_id || '-alias-' || id")
     media_ids = list({m['media_id'] for m in mapping})
     variant_ids = list({m['variant_id'] for m in mapping})
     conn.execute('delete from media_variant where not (id=any(%s))', (variant_ids,))
@@ -498,7 +500,7 @@ def validate_manifest(manifest, version):
             raise ValueError('invalid media manifest')
 
 
-def build(source_dsn, target_dsn, key, output, version, limit=2000, post_ids=None, media_store=None):
+def build(source_dsn, target_dsn, key, output, version, limit=2000, story_ids=None, media_store=None):
     if len(key) < 32 or limit < 1 or not re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9._-]{0,63}', version):
         raise ValueError('key, sample size or version invalid')
     output = Path(output)
@@ -517,7 +519,7 @@ def build(source_dsn, target_dsn, key, output, version, limit=2000, post_ids=Non
         originals = denylist(source)
         if any(v.casefold() in version.casefold() for v in originals):
             raise ValueError('version contains an original identifier')
-        post_list, mapping = select_media(source, key, limit, post_ids, version)
+        story_list, mapping = select_media(source, key, limit, story_ids, version)
         target.commit()
         copy_database(source, target)
         check_schema(target)
@@ -541,11 +543,11 @@ def build(source_dsn, target_dsn, key, output, version, limit=2000, post_ids=Non
             if result.returncode:
                 raise RuntimeError('anonymized dump failed')
             manifest = {'format': 1, 'version': version, 'migration_id': migration, 'row_counts': row_counts,
-                        'post_ids': post_list, 'media': media_manifest,
+                        'story_ids': story_list, 'media': media_manifest,
                         'media_keys': sorted({m['key'] for m in mapping}),
                         'media_complete': bool(media_store), 'dump_sha256': sha256(dump_path)}
             (output / 'manifest.json').write_text(json.dumps(manifest, indent=2, sort_keys=True) + '\n')
-            print(f'SNAPSHOT: tables={len(row_counts)} pictures={len(post_list)} variants={len(manifest["media_keys"])}')
+            print(f'SNAPSHOT: tables={len(row_counts)} pictures={len(story_list)} variants={len(manifest["media_keys"])}')
             return manifest
         except BaseException:
             for file in output.iterdir():
@@ -575,7 +577,7 @@ def main():
     parser.add_argument('--verify-only', action='store_true')
     parser.add_argument('--version')
     parser.add_argument('--limit', type=int, default=2000)
-    parser.add_argument('--post-ids', type=Path)
+    parser.add_argument('--story-ids', type=Path)
     parser.add_argument('--publish-bucket')
     parser.add_argument('--media-source-bucket')
     args = parser.parse_args()
@@ -606,7 +608,7 @@ def main():
 
         manifest = build(os.environ['GOLDEN_SOURCE_DSN'], os.environ['GOLDEN_TARGET_DSN'],
                          bytes.fromhex(os.environ['GOLDEN_HMAC_KEY']), args.output, args.version,
-                         args.limit, json.loads(args.post_ids.read_text()) if args.post_ids else None, store)
+                         args.limit, json.loads(args.story_ids.read_text()) if args.story_ids else None, store)
         if args.publish_bucket:
             validate_manifest(manifest, args.version)
             # Publishing the manifest last makes it the completion marker.

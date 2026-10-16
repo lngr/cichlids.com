@@ -15,6 +15,8 @@ DELETE FROM public.care_plan_rule WHERE tank_id IN (SELECT id FROM public.tank W
 DELETE FROM public.streak_freeze WHERE tank_id IN (SELECT id FROM public.tank WHERE stream_visibility <> 'public');
 DELETE FROM public.tank_decommissioning WHERE tank_id IN (SELECT id FROM public.tank WHERE stream_visibility <> 'public');
 DELETE FROM public.tank_visibility_consent WHERE tank_id IN (SELECT id FROM public.tank WHERE stream_visibility <> 'public');
+DELETE FROM public.story_subject WHERE tank_id IN (SELECT id FROM public.tank WHERE profile_visibility <> 'public')
+    OR inhabitant_id IN (SELECT id FROM public.inhabitant WHERE tank_id IN (SELECT id FROM public.tank WHERE profile_visibility <> 'public'));
 DELETE FROM public.inhabitant WHERE tank_id IN (SELECT id FROM public.tank WHERE profile_visibility <> 'public');
 DELETE FROM public.media_link WHERE tank_id IN (SELECT id FROM public.tank WHERE profile_visibility <> 'public');
 DELETE FROM public.comment WHERE tank_id IN (SELECT id FROM public.tank WHERE profile_visibility <> 'public');
