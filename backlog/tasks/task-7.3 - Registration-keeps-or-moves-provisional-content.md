@@ -1,12 +1,15 @@
 ---
 id: TASK-7.3
 title: Registration keeps or moves provisional content
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-16 20:28'
+updated_date: '2026-10-16 21:57'
 labels: []
 dependencies:
   - TASK-7.1
+references:
+  - app/mobile/e2e/playwright/provisional-registration.write.mjs
 parent_task_id: TASK-7
 priority: high
 ordinal: 113000
@@ -41,3 +44,14 @@ Registering or signing in from the app while the device token is valid keeps eve
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implementation (2026-10-16)
+- POST /api/me/provisional/preview, /upgrade, /move (registered-only; Keycloak bearer plus a signed device challenge in the body); upgrade turns the provisional profile into a member with a handle from the shared member naming and links the oidc identity; move transfers tanks with care, streak and plan data, to-dos, snoozes, sessions, uploads, collections, used checksums and media into the existing member profile in one transaction and removes the provisional profile through the shared removal; all device credentials are retired.
+- Locking in the order of the cleanup; races end with one winner (409 account_has_profile, account_has_no_profile; 403 account_suspended, device_auth_refused).
+- Vacations: overlapping ones and ones that would repair a period of the member's tanks and start more than 7 days before the move are dropped and counted (vacationsDropped, vacationsDroppedRepair); preview and move take the local date.
+- Events profile.registered and profile.provisional_content_moved with ids and counts.
+- Verification (branch): .NET 643/2391 (1 skipped)/350, client-core 311, mobile 451, the new spec green; full suite on main follows.
+<!-- SECTION:NOTES:END -->
