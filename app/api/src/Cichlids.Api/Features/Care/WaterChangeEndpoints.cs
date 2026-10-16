@@ -18,7 +18,7 @@ public static class WaterChangeEndpoints
         group.MapPut("/{id:long}/steps/{step}", StepAsync).WithName("MarkWaterChangeStep")
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(404);
         // Callers authenticate with a bearer token, never a cookie, so antiforgery validation has nothing to protect.
-        group.MapPut("/{id:long}/photos/{slot}", PhotoAsync).WithName("SetWaterChangePhoto").DisableAntiforgery()
+        group.MapPost("/{id:long}/photos", PhotoAsync).WithName("AddWaterChangePhoto").DisableAntiforgery()
             .WithMetadata(new RequestSizeLimitAttribute(UploadsEndpoints.MaxRequestBytes))
             .WithFormOptions(multipartBodyLengthLimit: UploadsEndpoints.MaxRequestBytes)
             .Produces(StatusCodes.Status413PayloadTooLarge)
@@ -59,11 +59,11 @@ public static class WaterChangeEndpoints
     }
 
     private static async Task<Results<Ok<WaterChangeSessionDto>, ProblemHttpResult>> PhotoAsync(
-        long tankId, long id, string slot, IFormFile? file, [FromForm] bool? capturedInApp, ClaimsPrincipal user,
+        long tankId, long id, IFormFile? file, [FromForm] bool? capturedInApp, ClaimsPrincipal user,
         CurrentProfileService profiles, WaterChangeService service, CancellationToken ct)
     {
         var profile = await profiles.ResolveAsync(user, ct);
-        var (session, error) = await service.SetPhotoAsync(tankId, id, profile.Id, slot, file, capturedInApp ?? false, ct);
+        var (session, error) = await service.AddPhotoAsync(tankId, id, profile.Id, file, capturedInApp ?? false, ct);
         if (error == "upload_rate_limited") return UploadsEndpoints.RateLimitProblem();
         return error is not null ? CareEndpoints.Problem(error) : TypedResults.Ok(session!);
     }

@@ -154,7 +154,8 @@ builder.Services.AddScoped<CareWriteService>();
 builder.Services.AddScoped<CarePhotoService>();
 builder.Services.AddOptions<WaterChangeOptions>()
     .Bind(builder.Configuration.GetSection(WaterChangeOptions.SectionName))
-    .Validate(o => o.MinDuration >= TimeSpan.Zero && o.SessionLifetime > TimeSpan.Zero && o.CleanupInterval > TimeSpan.Zero,
+    .Validate(o => o.MinDuration >= TimeSpan.Zero && o.SessionLifetime > TimeSpan.Zero && o.CleanupInterval > TimeSpan.Zero
+        && o.ClockTolerance >= TimeSpan.Zero,
         "WaterChange durations must be positive.")
     .ValidateOnStart();
 builder.Services.AddScoped<WaterChangeService>();

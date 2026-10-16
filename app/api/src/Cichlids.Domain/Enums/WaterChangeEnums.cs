@@ -17,8 +17,3 @@ public enum WaterChangeStep
 }
 
 public enum WaterChangeStepState { Done, Skipped }
-
-/// <summary>
-/// The moment of a guided water change a photo documents.
-/// </summary>
-public enum WaterChangePhotoSlot { Drained, Refilled }

@@ -14,6 +14,13 @@ public sealed class WaterChangeOptions
     public TimeSpan MinDuration { get; set; } = TimeSpan.FromMinutes(10);
 
     /// <summary>
+    /// How far the EXIF capture time of an evidence photo may lie outside the session, from its start
+    /// to its finish, to count for the evidence. It absorbs the clock difference between the phone
+    /// and the server.
+    /// </summary>
+    public TimeSpan ClockTolerance { get; set; } = TimeSpan.FromMinutes(10);
+
+    /// <summary>
     /// The age after which an open session is removed with its photos.
     /// </summary>
     public TimeSpan SessionLifetime { get; set; } = TimeSpan.FromHours(24);

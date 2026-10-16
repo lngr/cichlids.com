@@ -26,14 +26,14 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
     private async Task<HttpResponseMessage> StepAsync(string? token, long tank, long id, string step, string state) =>
         await SendAsync(fixture.Client, HttpMethod.Put, $"{Base(tank)}/{id}/steps/{step}", token, new { state });
 
-    private async Task<HttpResponseMessage> PhotoAsync(string? token, long tank, long id, string slot, byte[] bytes, bool inApp = true)
+    private async Task<HttpResponseMessage> PhotoAsync(string? token, long tank, long id, byte[] bytes, bool inApp = true)
     {
         using var content = new MultipartFormDataContent();
         var file = new ByteArrayContent(bytes);
         file.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
         content.Add(file, "file", "photo.jpg");
         content.Add(new StringContent(inApp ? "true" : "false"), "capturedInApp");
-        using var request = new HttpRequestMessage(HttpMethod.Put, $"{Base(tank)}/{id}/photos/{slot}") { Content = content };
+        using var request = new HttpRequestMessage(HttpMethod.Post, $"{Base(tank)}/{id}/photos") { Content = content };
         if (token is not null) request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
         return await fixture.Client.SendAsync(request);
     }
@@ -89,7 +89,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
             await AssertProblemAsync(current, HttpStatusCode.NotFound, "water_change_not_found");
         using (var step = await StepAsync(stranger, tank, session, "heater_filter_off", "done"))
             await AssertProblemAsync(step, HttpStatusCode.NotFound, "water_change_not_found");
-        using (var photo = await PhotoAsync(stranger, tank, session, "drained", Jpeg(800, 600)))
+        using (var photo = await PhotoAsync(stranger, tank, session, Jpeg(800, 600)))
             await AssertProblemAsync(photo, HttpStatusCode.NotFound, "water_change_not_found");
         using (var finish = await FinishAsync(stranger, tank, session))
             await AssertProblemAsync(finish, HttpStatusCode.NotFound, "water_change_not_found");
@@ -128,7 +128,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
             using var marked = await StepAsync(token, tank, id, name, "done");
             Assert.Equal(HttpStatusCode.OK, marked.StatusCode);
         }
-        (await PhotoAsync(token, tank, id, "drained", Jpeg(800, 600))).Dispose();
+        (await PhotoAsync(token, tank, id, Jpeg(800, 600))).Dispose();
         await using (var db = fixture.CreateDbContext())
             await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE water_change_session_step SET at = at + interval '12 minutes' WHERE session_id = {id} AND step IN ('refill_started', 'heater_filter_on')");
         await AgeAsync(id, TimeSpan.FromMinutes(14));
@@ -205,8 +205,8 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
         var withoutPhoto = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
         await FinishLongAsync(token, tank, withoutPhoto);
         var libraryOnly = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
-        (await PhotoAsync(token, tank, libraryOnly, "drained", Jpeg(800, 600), inApp: false)).Dispose();
-        (await PhotoAsync(token, tank, libraryOnly, "refilled", Jpeg(800, 600), inApp: false)).Dispose();
+        (await PhotoAsync(token, tank, libraryOnly, Jpeg(800, 600), inApp: false)).Dispose();
+        (await PhotoAsync(token, tank, libraryOnly, Jpeg(800, 600), inApp: false)).Dispose();
         await FinishLongAsync(token, tank, libraryOnly);
         foreach (var id in new[] { withoutPhoto, libraryOnly })
         {
@@ -222,8 +222,8 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);
         var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
-        (await PhotoAsync(token, tank, id, "drained", Jpeg(800, 600), inApp: false)).Dispose();
-        (await PhotoAsync(token, tank, id, "refilled", Jpeg(800, 600))).Dispose();
+        (await PhotoAsync(token, tank, id, Jpeg(800, 600), inApp: false)).Dispose();
+        (await PhotoAsync(token, tank, id, Jpeg(800, 600))).Dispose();
         var evidence = await FinishLongAsync(token, tank, id);
         Assert.Equal("verified", evidence.GetProperty("state").GetString());
         Assert.Empty(evidence.GetProperty("missing").EnumerateArray());
@@ -256,17 +256,17 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
     }
 
     [Fact]
-    public async Task GivenPhotos_WhenAddingAndReplacing_ThenTheyStayPrivateAndTheOldObjectsAreDeleted()
+    public async Task GivenPhotos_WhenAdding_ThenTheyStayPrivateInOrderUpToTheLimit()
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);
         var session = await StartAsync(token, tank);
         var id = session.GetProperty("id").GetInt64();
-        using var first = await PhotoAsync(token, tank, id, "drained", Jpeg(1200, 800));
+        using var first = await PhotoAsync(token, tank, id, Jpeg(1200, 800));
         Assert.Equal(HttpStatusCode.OK, first.StatusCode);
-        var drained = (await BodyAsync(first)).GetProperty("drainedPhoto");
-        Assert.True(drained.GetProperty("capturedInApp").GetBoolean());
-        Assert.StartsWith("/api/care-photos/", drained.GetProperty("urls").GetProperty("thumb").GetString());
-        using var served = await fixture.Client.GetAsync(drained.GetProperty("urls").GetProperty("thumb").GetString());
+        var photo = (await BodyAsync(first)).GetProperty("photos")[0];
+        Assert.True(photo.GetProperty("capturedInApp").GetBoolean());
+        Assert.StartsWith("/api/care-photos/", photo.GetProperty("urls").GetProperty("thumb").GetString());
+        using var served = await fixture.Client.GetAsync(photo.GetProperty("urls").GetProperty("thumb").GetString());
         Assert.Equal(HttpStatusCode.OK, served.StatusCode);
         Assert.Contains("private", served.Headers.CacheControl?.ToString());
 
@@ -275,43 +275,139 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
         var item = await db.MediaItems.Include(m => m.Variants).SingleAsync(m => m.OwnerProfileId == profileId);
         Assert.StartsWith("private/", item.StorageKey);
         Assert.All(item.Variants, v => Assert.StartsWith("private/", v.StorageKey));
-        var before = await CountKeysAsync(profileId);
-        Assert.Equal(1, before);
 
-        using var retake = await PhotoAsync(token, tank, id, "drained", Jpeg(1000, 700), inApp: false);
-        Assert.Equal(HttpStatusCode.OK, retake.StatusCode);
-        Assert.False((await BodyAsync(retake)).GetProperty("drainedPhoto").GetProperty("capturedInApp").GetBoolean());
-        Assert.Equal(1, await CountKeysAsync(profileId));
-        Assert.False(await fixture.ObjectStore.ExistsAsync(item.StorageKey));
-
-        using var refilled = await PhotoAsync(token, tank, id, "refilled", Jpeg(900, 600));
-        Assert.Equal(HttpStatusCode.OK, refilled.StatusCode);
-        Assert.Equal(2, await CountKeysAsync(profileId));
-        using var broken = await PhotoAsync(token, tank, id, "refilled", UndecodableJpeg());
+        using var library = await PhotoAsync(token, tank, id, Jpeg(1000, 700), inApp: false);
+        Assert.Equal(HttpStatusCode.OK, library.StatusCode);
+        var photos = (await BodyAsync(library)).GetProperty("photos");
+        Assert.Equal(2, photos.GetArrayLength());
+        Assert.True(photos[0].GetProperty("capturedInApp").GetBoolean());
+        Assert.False(photos[1].GetProperty("capturedInApp").GetBoolean());
+        for (var count = 3; count <= 6; count++)
+        {
+            using var more = await PhotoAsync(token, tank, id, Jpeg(900, 600));
+            Assert.Equal(HttpStatusCode.OK, more.StatusCode);
+        }
+        Assert.Equal(6, await CountKeysAsync(profileId));
+        using var seventh = await PhotoAsync(token, tank, id, Jpeg(900, 600));
+        await AssertProblemAsync(seventh, HttpStatusCode.BadRequest, "water_change_photo_limit");
+        Assert.Equal(6, await CountKeysAsync(profileId));
+        using var broken = await PhotoAsync(token, tank, id, UndecodableJpeg());
         await AssertProblemAsync(broken, HttpStatusCode.BadRequest, "care_photo_invalid");
-        using var badSlot = await PhotoAsync(token, tank, id, "sideways", Jpeg(300, 200));
-        await AssertProblemAsync(badSlot, HttpStatusCode.BadRequest, "water_change_request_invalid");
     }
 
     [Fact]
-    public async Task GivenBothPhotos_WhenFinishing_ThenTheEntryHoldsThemAndTheNextSessionOffersTheDrainedOneAsOverlay()
+    public async Task GivenSeveralPhotos_WhenFinishing_ThenTheEntryHoldsThemInOrderAndTheNextSessionOffersThemAsOverlays()
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);
         var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
-        (await PhotoAsync(token, tank, id, "drained", Jpeg(1200, 800))).Dispose();
-        (await PhotoAsync(token, tank, id, "refilled", Jpeg(1100, 800), inApp: false)).Dispose();
+        (await PhotoAsync(token, tank, id, Jpeg(1200, 800))).Dispose();
+        (await PhotoAsync(token, tank, id, Jpeg(1100, 800), inApp: false)).Dispose();
+        (await PhotoAsync(token, tank, id, Jpeg(1000, 800))).Dispose();
         using var finished = await FinishAsync(token, tank, id);
         var body = await BodyAsync(finished);
         var photos = body.GetProperty("entry").GetProperty("photos");
-        Assert.Equal(2, photos.GetArrayLength());
-        Assert.Equal(1200, photos[0].GetProperty("width").GetInt32());
-        var photoEvidence = body.GetProperty("entry").GetProperty("evidence");
-        Assert.Equal("partial", photoEvidence.GetProperty("state").GetString());
-        Assert.Equal(["draining_missing"], photoEvidence.GetProperty("missing").EnumerateArray().Select(e => e.GetString()));
-        Assert.False(body.GetProperty("session").GetProperty("refilledPhoto").GetProperty("capturedInApp").GetBoolean());
+        Assert.Equal(3, photos.GetArrayLength());
+        Assert.Equal([1200, 1100, 1000], photos.EnumerateArray().Select(p => p.GetProperty("width").GetInt32()));
+        var evidence = body.GetProperty("entry").GetProperty("evidence");
+        Assert.Equal("partial", evidence.GetProperty("state").GetString());
+        Assert.Equal(["draining_missing"], evidence.GetProperty("missing").EnumerateArray().Select(e => e.GetString()));
+        Assert.False(body.GetProperty("session").GetProperty("photos")[1].GetProperty("capturedInApp").GetBoolean());
 
         var next = await StartAsync(token, tank);
-        Assert.StartsWith("/api/care-photos/", next.GetProperty("previousDrainedPhoto").GetProperty("thumb").GetString());
+        var previous = next.GetProperty("previousPhotos");
+        Assert.Equal(3, previous.GetArrayLength());
+        Assert.StartsWith("/api/care-photos/", previous[0].GetProperty("thumb").GetString());
+    }
+
+    [Fact]
+    public async Task GivenAnInAppPhotoBeforeDrainingStarted_WhenFinishing_ThenItDoesNotCountAsEvidence()
+    {
+        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
+        (await PhotoAsync(token, tank, id, Jpeg(800, 600))).Dispose();
+        using (var drain = await StepAsync(token, tank, id, "draining_started", "done")) Assert.Equal(HttpStatusCode.OK, drain.StatusCode);
+        using (var refill = await StepAsync(token, tank, id, "refill_started", "done")) Assert.Equal(HttpStatusCode.OK, refill.StatusCode);
+        await using (var db = fixture.CreateDbContext())
+            await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE water_change_session_step SET at = at + interval '12 minutes' WHERE session_id = {id} AND step = 'refill_started'");
+        using var finished = await FinishAsync(token, tank, id);
+        var entry = (await BodyAsync(finished)).GetProperty("entry");
+        Assert.Equal("partial", entry.GetProperty("evidence").GetProperty("state").GetString());
+        Assert.Equal(["photo_outside_session"], entry.GetProperty("evidence").GetProperty("missing").EnumerateArray().Select(e => e.GetString()));
+        Assert.Equal(1, entry.GetProperty("photos").GetArrayLength());
+    }
+
+    [Fact]
+    public async Task GivenSeveralPhotosOfWhichOneIsInTheSpan_WhenFinishing_ThenTheEntryIsVerified()
+    {
+        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
+        (await PhotoAsync(token, tank, id, Jpeg(800, 600))).Dispose();
+        (await PhotoAsync(token, tank, id, Jpeg(810, 600), inApp: false)).Dispose();
+        using (var drain = await StepAsync(token, tank, id, "draining_started", "done")) Assert.Equal(HttpStatusCode.OK, drain.StatusCode);
+        (await PhotoAsync(token, tank, id, Jpeg(820, 600))).Dispose();
+        using (var refill = await StepAsync(token, tank, id, "refill_started", "done")) Assert.Equal(HttpStatusCode.OK, refill.StatusCode);
+        await using (var db = fixture.CreateDbContext())
+            await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE water_change_session_step SET at = at + interval '12 minutes' WHERE session_id = {id} AND step = 'refill_started'");
+        using var finished = await FinishAsync(token, tank, id);
+        var entry = (await BodyAsync(finished)).GetProperty("entry");
+        Assert.Equal("verified", entry.GetProperty("evidence").GetProperty("state").GetString());
+        Assert.Equal(3, entry.GetProperty("photos").GetArrayLength());
+    }
+
+    // Runs a session whose draining span is long enough with one app photo received during draining;
+    // setCaptureTime sets the EXIF capture time of the stored photo before the finish.
+    private async Task<JsonElement> RunWithPhotoAsync(string token, long tank, byte[] bytes, string? setCaptureTimeSql = null)
+    {
+        var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
+        using (var drain = await StepAsync(token, tank, id, "draining_started", "done")) Assert.Equal(HttpStatusCode.OK, drain.StatusCode);
+        (await PhotoAsync(token, tank, id, bytes)).Dispose();
+        using (var refill = await StepAsync(token, tank, id, "refill_started", "done")) Assert.Equal(HttpStatusCode.OK, refill.StatusCode);
+        await using (var db = fixture.CreateDbContext())
+        {
+            await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE water_change_session_step SET at = at + interval '12 minutes' WHERE session_id = {id} AND step = 'refill_started'");
+            if (setCaptureTimeSql is not null)
+                await db.Database.ExecuteSqlRawAsync($"UPDATE media_item SET taken_at_local = {setCaptureTimeSql}, taken_at_offset_minutes = 0 WHERE id IN (SELECT media_item_id FROM water_change_session_photo WHERE session_id = {id})");
+        }
+        using var finished = await FinishAsync(token, tank, id);
+        return (await BodyAsync(finished)).GetProperty("entry").GetProperty("evidence").Clone();
+    }
+
+    private static string[] MissingOf(JsonElement evidence) => [.. evidence.GetProperty("missing").EnumerateArray().Select(e => e.GetString()!)];
+
+    [Fact]
+    public async Task GivenACaptureTimeFarFromTheSession_WhenFinishing_ThenThePhotoDoesNotCount()
+    {
+        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var old = await RunWithPhotoAsync(token, tank, Jpeg(800, 600), "TIMESTAMP '2020-01-01 10:00:00'");
+        Assert.Equal("partial", old.GetProperty("state").GetString());
+        Assert.Equal(["photo_outside_session"], MissingOf(old));
+        var future = await RunWithPhotoAsync(token, tank, Jpeg(810, 600), "(now() AT TIME ZONE 'utc') + interval '2 hours'");
+        Assert.Equal(["photo_outside_session"], MissingOf(future));
+    }
+
+    [Fact]
+    public async Task GivenACaptureTimeInsideTheSessionOrNone_WhenFinishing_ThenThePhotoCounts()
+    {
+        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var inside = await RunWithPhotoAsync(token, tank, Jpeg(800, 600), "(now() AT TIME ZONE 'utc') - interval '1 minute'");
+        Assert.Equal("verified", inside.GetProperty("state").GetString());
+        var none = await RunWithPhotoAsync(token, tank, Jpeg(810, 600));
+        Assert.Equal("verified", none.GetProperty("state").GetString());
+    }
+
+    [Fact]
+    public async Task GivenTheSamePictureForASecondWaterChange_WhenFinishing_ThenItIsReusedAndAnotherMemberStillCounts()
+    {
+        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var first = await RunWithPhotoAsync(token, tank, Jpeg(800, 600));
+        Assert.Equal("verified", first.GetProperty("state").GetString());
+        var second = await RunWithPhotoAsync(token, tank, Jpeg(800, 600));
+        Assert.Equal("partial", second.GetProperty("state").GetString());
+        Assert.Equal(["photo_reused"], MissingOf(second));
+        var third = await RunWithPhotoAsync(token, tank, Jpeg(820, 600));
+        Assert.Equal("verified", third.GetProperty("state").GetString());
+        var (otherToken, otherTank) = await OwnTankAsync(fixture.Client);
+        Assert.Equal("verified", (await RunWithPhotoAsync(otherToken, otherTank, Jpeg(800, 600))).GetProperty("state").GetString());
     }
 
     [Fact]
@@ -332,7 +428,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);
         var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
-        (await PhotoAsync(token, tank, id, "drained", Jpeg(800, 600))).Dispose();
+        (await PhotoAsync(token, tank, id, Jpeg(800, 600))).Dispose();
         await using var db = fixture.CreateDbContext();
         var profileId = await db.WaterChangeSessions.Where(s => s.Id == id).Select(s => s.ProfileId).SingleAsync();
         Assert.Equal(1, await CountKeysAsync(profileId));
@@ -367,7 +463,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);
         var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
-        (await PhotoAsync(token, tank, id, "refilled", Jpeg(800, 600))).Dispose();
+        (await PhotoAsync(token, tank, id, Jpeg(800, 600))).Dispose();
         await using var db = fixture.CreateDbContext();
         var profileId = await db.WaterChangeSessions.Where(s => s.Id == id).Select(s => s.ProfileId).SingleAsync();
         using var cancel = await SendAsync(fixture.Client, HttpMethod.Delete, $"{Base(tank)}/{id}", token);

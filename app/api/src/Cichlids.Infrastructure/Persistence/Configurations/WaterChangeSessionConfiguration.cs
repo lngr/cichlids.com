@@ -13,8 +13,7 @@ public sealed class WaterChangeSessionConfiguration : IEntityTypeConfiguration<W
         builder.HasKey(x => x.Id);
         builder.HasOne<Tank>().WithMany().HasForeignKey(x => x.TankId).OnDelete(DeleteBehavior.Cascade);
         builder.HasOne<Profile>().WithMany().HasForeignKey(x => x.ProfileId).OnDelete(DeleteBehavior.Cascade);
-        builder.HasOne<MediaItem>().WithMany().HasForeignKey(x => x.DrainedMediaItemId).OnDelete(DeleteBehavior.SetNull);
-        builder.HasOne<MediaItem>().WithMany().HasForeignKey(x => x.RefilledMediaItemId).OnDelete(DeleteBehavior.SetNull);
+        builder.HasMany(x => x.Photos).WithOne().HasForeignKey(x => x.SessionId).OnDelete(DeleteBehavior.Cascade);
         builder.HasMany(x => x.Steps).WithOne().HasForeignKey(x => x.SessionId).OnDelete(DeleteBehavior.Cascade);
         // One open session per tank.
         builder.HasIndex(x => x.TankId).IsUnique().HasDatabaseName("ux_water_change_session_open").HasFilter("finished_at IS NULL");
@@ -24,10 +23,6 @@ public sealed class WaterChangeSessionConfiguration : IEntityTypeConfiguration<W
             table.HasCheckConstraint("ck_water_change_session_finish", """
                 (finished_at IS NULL AND duration_seconds IS NULL)
                 OR (finished_at IS NOT NULL AND duration_seconds IS NOT NULL AND duration_seconds >= 0)
-                """);
-            table.HasCheckConstraint("ck_water_change_session_photos", """
-                ((drained_photo_at IS NULL) = (drained_captured_in_app IS NULL))
-                AND ((refilled_photo_at IS NULL) = (refilled_captured_in_app IS NULL))
                 """);
         });
     }
@@ -43,5 +38,18 @@ public sealed class WaterChangeSessionStepConfiguration : IEntityTypeConfigurati
         builder.HasIndex(x => new { x.SessionId, x.Step }).IsUnique();
         builder.ToTable("water_change_session_step", table =>
             table.HasCheckConstraint("ck_water_change_session_step_state", "state IN ('done', 'skipped')"));
+    }
+}
+
+public sealed class WaterChangeSessionPhotoConfiguration : IEntityTypeConfiguration<WaterChangeSessionPhoto>
+{
+    public void Configure(EntityTypeBuilder<WaterChangeSessionPhoto> builder)
+    {
+        builder.HasKey(x => x.Id);
+        builder.HasOne<MediaItem>().WithMany().HasForeignKey(x => x.MediaItemId).OnDelete(DeleteBehavior.Cascade);
+        builder.HasIndex(x => new { x.SessionId, x.Position }).IsUnique();
+        builder.HasIndex(x => x.MediaItemId);
+        builder.ToTable("water_change_session_photo", table =>
+            table.HasCheckConstraint("ck_water_change_session_photo_position", "position >= 0 AND position < 6"));
     }
 }

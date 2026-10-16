@@ -52,7 +52,7 @@ public static class CarePhotoEndpoints
         if (signer.TryRead(token) is not { } variantId) return CareEndpoints.Problem("care_photo_not_found");
         var key = await db.MediaVariants.AsNoTracking()
             .Where(v => v.Id == variantId && (db.CarePhotos.Any(p => p.MediaItemId == v.MediaItemId)
-                || db.WaterChangeSessions.Any(s => s.DrainedMediaItemId == v.MediaItemId || s.RefilledMediaItemId == v.MediaItemId)))
+                || db.WaterChangeSessionPhotos.Any(p => p.MediaItemId == v.MediaItemId)))
             .Select(v => v.StorageKey).SingleOrDefaultAsync(ct);
         var stream = key is null ? null : await store.GetAsync(key, ct);
         if (stream is null) return CareEndpoints.Problem("care_photo_not_found");

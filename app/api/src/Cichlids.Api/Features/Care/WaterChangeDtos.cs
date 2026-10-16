@@ -18,13 +18,13 @@ public sealed record WaterChangeEvidenceDto(WaterChangeEvidenceState State, IRea
 }
 
 /// <summary>
-/// A guided water change session. PreviousDrainedPhoto holds the URLs of the drained photo of the
-/// last finished session of the tank, for the overlay of the camera. MinDurationSeconds is the
-/// duration that counts as verified.
+/// A guided water change session with its photos in the order of taking. PreviousPhotos holds the
+/// URLs of the photos of the last finished session of the tank, for the overlay of the camera.
+/// MinDurationSeconds is the duration that counts as verified.
 /// </summary>
 public sealed record WaterChangeSessionDto(long Id, long TankId, DateTimeOffset StartedAt, DateTimeOffset ExpiresAt,
     DateTimeOffset? FinishedAt, int? DurationSeconds, IReadOnlyList<WaterChangeStepDto> Steps,
-    WaterChangePhotoDto? DrainedPhoto, WaterChangePhotoDto? RefilledPhoto, CarePhotoUrlsDto? PreviousDrainedPhoto, int MinDurationSeconds);
+    IReadOnlyList<WaterChangePhotoDto> Photos, IReadOnlyList<CarePhotoUrlsDto> PreviousPhotos, int MinDurationSeconds);
 
 public sealed record WaterChangeFinishedDto(WaterChangeSessionDto Session, CareEntryDto Entry);
 
