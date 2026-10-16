@@ -44,12 +44,17 @@ try {
     "-U", "cichlids", "-d", "cichlids_e2e", "-v", "ON_ERROR_STOP=1", "-c",
     `UPDATE tank SET legacy_id = 460006, water_ph = '8.2', water_notes = 'Weekly water changes', filtration = 'External filter' WHERE id = ${tank.id};
      ${postIds.map((id, i) => `UPDATE post SET tank_id = ${tank.id}, published_at = '2020-01-01'::timestamptz + interval '${i === 7 ? 12 : i} months' WHERE id = ${id};`).join("\n")}
+     ${postIds.map((id, i) => `UPDATE media_item SET taken_at_local = '2018-03-01 09:00'::timestamp + interval '${i === 0 ? 12 : 7 - i} months', taken_at_offset_minutes = 120 WHERE id IN (SELECT media_item_id FROM post_media WHERE post_id = ${id});`).join("\n")}
      INSERT INTO tank_media (tank_id, media_item_id, section, sort) SELECT ${tank.id}, media_item_id, 'showcase', 0 FROM post_media WHERE post_id = ${postIds[0]};`], { stdio: "pipe" });
   const series = await fetch(`${API_URL}/api/tanks/${tank.id}/time-lapse`);
   assert.equal(series.status, 200);
   const data = await series.json();
   assert.equal(data.isShowcase, true);
   assert.equal(data.photos.length, 8);
+  // The capture times run opposite to the publication dates and decide the order.
+  const taken = data.photos.map(photo => Date.parse(photo.takenAt));
+  assert.ok(taken.every(Number.isFinite) && taken.every((value, i) => i === 0 || value > taken[i - 1]), "photos ordered by capture time");
+  assert.match(data.photos[0].takenAt, /^2018-03-01T09:00:00\+02:00$/);
   for (const scheme of ["light", "dark"]) {
     const context = await browser.newContext({ locale: "en-US", colorScheme: scheme, viewport: { width: 390, height: 844 } });
     const page = await context.newPage();
@@ -92,7 +97,7 @@ try {
     assert.equal(await byTestId(page, "tank-time-machine-frame").evaluate(element => getComputedStyle(element).opacity), "1");
     await context.close();
   }
-  console.log("TASK-4.6: seeded legacy series, showcase, playback, pause, keyboard scrub, care, light/dark and reduced motion passed.");
+  console.log("TASK-4.6: seeded legacy series ordered by capture time, showcase, playback, pause, keyboard scrub, care, light/dark and reduced motion passed.");
 } finally {
   await browser.close();
 }
