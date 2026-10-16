@@ -4,7 +4,7 @@ title: Keep the golden snapshot in step with the schema
 status: In Review
 assignee: []
 created_date: '2026-10-16 15:16'
-updated_date: '2026-10-16 16:27'
+updated_date: '2026-10-16 17:11'
 labels: []
 dependencies: []
 references:
@@ -59,4 +59,6 @@ The golden snapshot tooling (tools/golden-snapshot: fixture-schema.sql, schema.j
 - Verification: golden-snapshot python tests green in its image against a throwaway postgres; actionlint clean; the CI step itself not run on GitHub.
 
 - Privacy review fixes: private scopes removed (vacations, snoozes, to-dos, comment votes, only-me entries with their sessions, care, sessions, freezes, plans, decommissionings and consents of tanks with a non-public stream, inhabitants and tank media links of tanks with a non-public profile, entries of non-public collections, comments and ratings of tanks with a non-public profile); media capture metadata nulled; COLUMN_HANDLING covers every column and a test fails for a column without a rule; README describes the result as pseudonymized (stable ids). Open for the project owner: renumbering ids.
+
+- Follows TASK-5.20.2: pin 20261016164952_MediaVisibilityTriggers; routines.json allow-lists the media visibility functions and triggers by name and definition hash (PostgreSQL 18 output); masking keeps the triggers active and resets the placement state of retained items (placed public, no pending move, generation 0).
 <!-- SECTION:NOTES:END -->
