@@ -441,6 +441,39 @@ order the cleanup uses, so a registration and a cleanup of the same profile excl
 Registrations emit the outbox events `profile.registered` and `profile.provisional_content_moved`,
 which hold ids and counts only.
 
+### The app of a provisional account
+
+The native app creates the device key at its first start without a Keycloak session. The private
+key is an ECDSA P-256 key in the secure store of the operating system (Keychain on iOS,
+Keystore-encrypted storage on Android, readable by the app on that device only). Signing uses the
+audited `@noble/curves` library, since the Expo runtime has no ECDSA primitive. The key is never
+logged or exported. A key that lives inside the secure hardware (Secure Enclave, StrongBox) needs
+a native module and is a provider of its own behind the same `DeviceKeyProvider` interface.
+
+The app registers the public key, keeps the credential and signs a challenge whenever the device
+token expires. A start without a network does not block the app: it works as a visitor and retries
+the registration after 5 seconds, 15 seconds, one minute and then every five minutes, and when it
+returns to the foreground. The API client sends the device token while no Keycloak session exists.
+
+Before the first tank the app shows a note that the account lives on this device until the
+registration, once. Actions that reach other people open a registration sheet with the reason;
+every `registration_required` answer to a write opens the same sheet. After the Keycloak sign-in
+the app holds the member back (status loading) until the handover of the content is done, so no
+request creates a profile for the account first. It then asks `preview`: an account without a
+profile is upgraded; for an account with a profile the member decides whether to take the tanks,
+entries and photos along. On yes the content moves and the vacations that were dropped are shown.
+On no the device account stays on the device, hidden while the member is signed in. The Me tab
+offers to take it along later, and signing out brings the device account back. An installation
+without content moves without a question. After a handover the credential and the key are
+deleted.
+
+The web app has no provisional accounts. The web build of the write E2E stack contains a WebCrypto
+test key provider (non-extractable keys in IndexedDB) because `write-stack.sh` sets
+`EXPO_PUBLIC_DEVICE_TEST_KEYS=1` for its export. A browser enables the provider with the entry
+`cichlids.deviceAccount.testKeys` set to `1` in its localStorage, so only specs that opt in see
+device accounts. No other build sets the variable, and `resolveAppConfig` rejects it for every
+variant but development.
+
 ## Webhooks and the outbox
 
 The API delivers outbox events as signed webhooks only to hosts on the allowlist
