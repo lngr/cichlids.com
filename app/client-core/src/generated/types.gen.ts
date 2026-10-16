@@ -45,6 +45,7 @@ export type CareEntryDto = {
     values: null | Array<MeasurementValueDto>;
     note: null | string;
     photos: Array<CarePhotoDto>;
+    videos: Array<VideoDto>;
     todos: Array<CareTodoDto>;
 };
 
@@ -195,6 +196,14 @@ export type CreateTankRequest = {
 
 export type CreateTodoRequest = {
     text?: null | string;
+};
+
+export type CreateVideoUploadRequest = {
+    target: null | string;
+    tankId: null | number | string;
+    careEntryId: null | number | string;
+    size: null | number | string;
+    fileName: null | string;
 };
 
 export type CreateWebhookRequest = {
@@ -608,6 +617,7 @@ export type TankTimeLapseDto = {
     isShowcase: boolean;
     photos: Array<TankTimeLapsePhotoDto>;
     posts: Array<TankStoryPostDto>;
+    videos: Array<VideoDto>;
 };
 
 export type TankTimeLapsePhotoDto = {
@@ -684,6 +694,28 @@ export type UpdateCareRequest = {
 export type UpdateTodoRequest = {
     done?: null | boolean;
     text?: null | string;
+};
+
+export type VideoDto = {
+    id: number | string;
+    state: VideoState;
+    durationSeconds: null | number | string;
+    width: null | number | string;
+    height: null | number | string;
+    posterUrl: null | string;
+    playlistUrl: null | string;
+    createdAt: string;
+    errorCode: null | string;
+};
+
+export type VideoState = 'processing' | 'ready' | 'failed';
+
+export type VideoUploadDto = {
+    id: number | string;
+    offset: number | string;
+    size: number | string;
+    chunkSize: number | string;
+    expiresAt: string;
 };
 
 export type VolumeDto = {
@@ -1442,6 +1474,65 @@ export type DiscardPostResponses = {
 };
 
 export type DiscardPostResponse = DiscardPostResponses[keyof DiscardPostResponses];
+
+export type RemoveCareVideoData = {
+    body?: never;
+    path: {
+        tankId: number;
+        id: number;
+        mediaItemId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/care/{id}/videos/{mediaItemId}';
+};
+
+export type RemoveCareVideoErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type RemoveCareVideoError = RemoveCareVideoErrors[keyof RemoveCareVideoErrors];
+
+export type RemoveCareVideoResponses = {
+    /**
+     * OK
+     */
+    200: CareEntryDto;
+};
+
+export type RemoveCareVideoResponse = RemoveCareVideoResponses[keyof RemoveCareVideoResponses];
+
+export type GetCareVideoFileData = {
+    body?: never;
+    path: {
+        token: string;
+        path: string;
+    };
+    query?: never;
+    url: '/api/care-videos/{token}/{path}';
+};
+
+export type GetCareVideoFileErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetCareVideoFileError = GetCareVideoFileErrors[keyof GetCareVideoFileErrors];
+
+export type GetCareVideoFileResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
 
 export type ListSpeciesData = {
     body?: never;
@@ -2508,6 +2599,258 @@ export type GetCommunityThreadResponses = {
 };
 
 export type GetCommunityThreadResponse = GetCommunityThreadResponses[keyof GetCommunityThreadResponses];
+
+export type CreateVideoUploadData = {
+    body: CreateVideoUploadRequest;
+    path?: never;
+    query?: never;
+    url: '/api/video-uploads';
+};
+
+export type CreateVideoUploadErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+    /**
+     * Payload Too Large
+     */
+    413: ProblemDetails;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type CreateVideoUploadError = CreateVideoUploadErrors[keyof CreateVideoUploadErrors];
+
+export type CreateVideoUploadResponses = {
+    /**
+     * Created
+     */
+    201: VideoUploadDto;
+};
+
+export type CreateVideoUploadResponse = CreateVideoUploadResponses[keyof CreateVideoUploadResponses];
+
+export type CancelVideoUploadData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/video-uploads/{id}';
+};
+
+export type CancelVideoUploadErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type CancelVideoUploadError = CancelVideoUploadErrors[keyof CancelVideoUploadErrors];
+
+export type CancelVideoUploadResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type CancelVideoUploadResponse = CancelVideoUploadResponses[keyof CancelVideoUploadResponses];
+
+export type GetVideoUploadData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/video-uploads/{id}';
+};
+
+export type GetVideoUploadErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetVideoUploadError = GetVideoUploadErrors[keyof GetVideoUploadErrors];
+
+export type GetVideoUploadResponses = {
+    /**
+     * OK
+     */
+    200: VideoUploadDto;
+};
+
+export type GetVideoUploadResponse = GetVideoUploadResponses[keyof GetVideoUploadResponses];
+
+export type AppendVideoUploadChunkData = {
+    body: string;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/video-uploads/{id}';
+};
+
+export type AppendVideoUploadChunkErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+    /**
+     * Gone
+     */
+    410: ProblemDetails;
+    /**
+     * Payload Too Large
+     */
+    413: ProblemDetails;
+};
+
+export type AppendVideoUploadChunkError = AppendVideoUploadChunkErrors[keyof AppendVideoUploadChunkErrors];
+
+export type AppendVideoUploadChunkResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type AppendVideoUploadChunkResponse = AppendVideoUploadChunkResponses[keyof AppendVideoUploadChunkResponses];
+
+export type CompleteVideoUploadData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/video-uploads/{id}/complete';
+};
+
+export type CompleteVideoUploadErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+    /**
+     * Unprocessable Entity
+     */
+    422: ProblemDetails;
+};
+
+export type CompleteVideoUploadError = CompleteVideoUploadErrors[keyof CompleteVideoUploadErrors];
+
+export type CompleteVideoUploadResponses = {
+    /**
+     * Created
+     */
+    201: VideoDto;
+};
+
+export type CompleteVideoUploadResponse = CompleteVideoUploadResponses[keyof CompleteVideoUploadResponses];
+
+export type ListTankVideosData = {
+    body?: never;
+    path: {
+        tankId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/videos';
+};
+
+export type ListTankVideosErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type ListTankVideosError = ListTankVideosErrors[keyof ListTankVideosErrors];
+
+export type ListTankVideosResponses = {
+    /**
+     * OK
+     */
+    200: Array<VideoDto>;
+};
+
+export type ListTankVideosResponse = ListTankVideosResponses[keyof ListTankVideosResponses];
+
+export type RemoveTankVideoData = {
+    body?: never;
+    path: {
+        tankId: number;
+        mediaItemId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/videos/{mediaItemId}';
+};
+
+export type RemoveTankVideoErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type RemoveTankVideoError = RemoveTankVideoErrors[keyof RemoveTankVideoErrors];
+
+export type RemoveTankVideoResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type RemoveTankVideoResponse = RemoveTankVideoResponses[keyof RemoveTankVideoResponses];
 
 export type ListWebhookSubscriptionsData = {
     body?: never;
