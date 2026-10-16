@@ -165,6 +165,7 @@ start_api() {
     WebPush__VapidKeyFile="$VAPID_KEY_FILE" \
     DeviceTokens__KeySetFile="$DEVICE_TOKEN_KEY_FILE" \
     WebPushSender__Enabled=false \
+    ProvisionalAccountCleanup__Interval=00:00:02 \
     WaterChange__MinDuration="00:00:0${WATER_CHANGE_MIN_SECONDS}" \
     UploadLimits__MaxUploadsPerHour="${UPLOADS_PER_HOUR}" \
     nohup "$DOTNET" "$API_BUILD_DIR/Cichlids.Api.dll" "--FeatureFlags:discover-activity=${CICHLIDS_WRITE_DISCOVER_ACTIVITY:-false}" >"$API_LOG" 2>&1 &
