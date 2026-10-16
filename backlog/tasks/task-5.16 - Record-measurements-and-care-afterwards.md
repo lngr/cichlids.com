@@ -1,10 +1,10 @@
 ---
 id: TASK-5.16
 title: Record measurements and care afterwards
-status: In Review
+status: In Progress
 assignee: []
 created_date: '2026-10-16 07:10'
-updated_date: '2026-10-16 07:36'
+updated_date: '2026-10-16 07:43'
 labels: []
 dependencies: []
 references:
@@ -49,4 +49,6 @@ Members often note water values and enter them a day or two later. The measureme
 - Verification: see TASK-5.13 (combined state).
 - Tests: app/api/tests/Cichlids.Api.Tests/Features/Care/CareTimeTests.cs, CarePlanEndpointsTests.cs, app/client-core/src/occurredAt.test.ts, app/mobile/src/tanks/whenText.test.ts, app/mobile/e2e/playwright/care-when.write.mjs.
 - Not verified: the picker on native platforms; the due-care quick log on Today still logs now.
+
+- Decided by the project owner (2026-10-16): the time of an entry from the guided water change mode is fixed; only its note, amount and photos stay editable. Plain entries and measurements stay freely correctable. To implement after TASK-5.7 (same files): the API refuses a time change of a guided entry with a coded problem, the edit view hides the time choice for it.
 <!-- SECTION:NOTES:END -->
