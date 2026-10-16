@@ -54,6 +54,8 @@ public class CichlidsDbContext : DbContext
     public DbSet<DiscussionPost> DiscussionPosts => Set<DiscussionPost>();
     public DbSet<OutboxEvent> OutboxEvents => Set<OutboxEvent>();
     public DbSet<WebhookSubscription> WebhookSubscriptions => Set<WebhookSubscription>();
+    public DbSet<DeviceCredential> DeviceCredentials => Set<DeviceCredential>();
+    public DbSet<DeviceChallenge> DeviceChallenges => Set<DeviceChallenge>();
     public DbSet<WebSession> WebSessions => Set<WebSession>();
     public DbSet<WebPushSubscription> WebPushSubscriptions => Set<WebPushSubscription>();
     public DbSet<CareReminderSnooze> CareReminderSnoozes => Set<CareReminderSnooze>();

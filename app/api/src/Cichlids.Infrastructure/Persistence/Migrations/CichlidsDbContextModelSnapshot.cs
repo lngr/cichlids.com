@@ -660,6 +660,99 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.DeviceChallenge", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<byte[]>("ChallengeHash")
+                        .IsRequired()
+                        .HasColumnType("bytea")
+                        .HasColumnName("challenge_hash");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateTimeOffset>("ExpiresAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("expires_at");
+
+                    b.HasKey("Id")
+                        .HasName("pk_device_challenge");
+
+                    b.HasIndex("ChallengeHash")
+                        .IsUnique()
+                        .HasDatabaseName("ix_device_challenge_challenge_hash");
+
+                    b.HasIndex("ExpiresAt")
+                        .HasDatabaseName("ix_device_challenge_expires_at");
+
+                    b.ToTable("device_challenge", "public");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.DeviceCredential", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Algorithm")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("algorithm");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateTimeOffset>("LastSignedRequestAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("last_signed_request_at");
+
+                    b.Property<long>("ProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("profile_id");
+
+                    b.Property<byte[]>("PublicKey")
+                        .IsRequired()
+                        .HasColumnType("bytea")
+                        .HasColumnName("public_key");
+
+                    b.Property<DateTimeOffset?>("RetiredAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("retired_at");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("state");
+
+                    b.HasKey("Id")
+                        .HasName("pk_device_credential");
+
+                    b.HasIndex("LastSignedRequestAt")
+                        .HasDatabaseName("ix_device_credential_last_signed_request_at");
+
+                    b.HasIndex("ProfileId")
+                        .HasDatabaseName("ix_device_credential_profile_id");
+
+                    b.HasIndex("PublicKey")
+                        .IsUnique()
+                        .HasDatabaseName("ix_device_credential_public_key");
+
+                    b.ToTable("device_credential", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_device_credential_algorithm", "algorithm IN ('ES256')");
+
+                            t.HasCheckConstraint("ck_device_credential_state", "state IN ('active', 'retired')");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.DiscussionPost", b =>
                 {
                     b.Property<long>("Id")
@@ -1371,7 +1464,7 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     b.ToTable("profile", "public", t =>
                         {
-                            t.HasCheckConstraint("ck_profile_kind", "kind IN ('member', 'archived', 'system')");
+                            t.HasCheckConstraint("ck_profile_kind", "kind IN ('member', 'archived', 'system', 'provisional')");
                         });
                 });
 
@@ -2991,6 +3084,16 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_comment_vote_profiles_profile_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.DeviceCredential", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_device_credential_profiles_profile_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.DiscussionPost", b =>

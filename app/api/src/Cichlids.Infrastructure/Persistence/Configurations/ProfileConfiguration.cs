@@ -25,6 +25,6 @@ public class ProfileConfiguration : IEntityTypeConfiguration<Profile>
 
         builder.ToTable("profile", tb => tb.HasCheckConstraint(
             "ck_profile_kind",
-            "kind IN ('member', 'archived', 'system')"));
+            "kind IN ('member', 'archived', 'system', 'provisional')"));
     }
 }
