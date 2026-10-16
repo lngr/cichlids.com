@@ -4,7 +4,7 @@ title: Weekly streak with vacation freeze and heatmap
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 06:59'
+updated_date: '2026-10-16 07:10'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -75,4 +75,6 @@ A streak counts weeks with completed care, survives vacations through a freeze, 
 - The plan is a latest date, not a rigid rhythm: each water change starts the next period; a grace of one third of the rhythm, rounded up to whole days, is allowed (14 days: up to 19 days). Two water changes right after each other are not needed.
 - Evidence: a photo taken in the app during the guided mode is required for a verified period. A water change without a photo (guided mode without photo, or logged outside the mode, for example while getting used to the app) can keep the streak only by using a freeze. About 2 freezes per year; earning extra freezes through a year of good photo evidence is to be worked out. Vacation (pause) stays separate from freezes.
 - This supersedes the earlier notes that photos are optional for the evidence and that a week without evidence never breaks the streak.
+
+- Confirmed by the project owner (2026-10-16): the grace is one third of the rhythm rounded up (7 days: up to day 10, 14 days: up to day 19). A missing photo with no freeze left breaks the streak like a missed period. Manipulated clients are out of scope; device attestation is not wanted (dependency on platform services) unless it becomes cheap.
 <!-- SECTION:NOTES:END -->
