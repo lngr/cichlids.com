@@ -4,7 +4,7 @@ title: Keep the golden snapshot in step with the schema
 status: In Review
 assignee: []
 created_date: '2026-10-16 15:16'
-updated_date: '2026-10-16 19:20'
+updated_date: '2026-10-16 20:04'
 labels: []
 dependencies: []
 references:
@@ -67,4 +67,6 @@ The golden snapshot tooling (tools/golden-snapshot: fixture-schema.sql, schema.j
 - Follows TASK-5.20.3: pin 20261016181720_GalleryStories; photo selection through item links of published stories; slug aliases story-<id>-alias-<id>; manifest field story_ids and CLI option --story-ids; tank and inhabitant subjects of tanks without a public profile removed, species subjects kept; covers of removed links are null.
 
 - Follows TASK-5.20.4: pin 20261016183440_UsedChecksums; used_checksum emptied.
+
+- Follows TASK-5.20.5: pin 20261016192230_QuickShareStory; media_item.quick_share_story_id kept (stories stay in the snapshot).
 <!-- SECTION:NOTES:END -->
