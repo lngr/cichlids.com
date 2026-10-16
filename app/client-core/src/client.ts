@@ -1,7 +1,7 @@
 import { createClient, createConfig } from "./generated/client/index.js";
 import type { Client } from "./generated/client/index.js";
 import type { DeviceAuth } from "./deviceAuth.js";
-import { toRegistrationMove, toRegistrationPreview } from "./registration.js";
+import { REGISTRATION_REQUIRED_CODE, toRegistrationMove, toRegistrationPreview } from "./registration.js";
 import type { RegistrationMove, RegistrationPreview } from "./registration.js";
 import type { VideoUploadTransport } from "./videoUpload.js";
 import { toCareHeatmap } from "./careHeatmap.js";
@@ -304,10 +304,28 @@ export interface CichlidsClientOptions {
   fetch?: typeof fetch;
   /**
    * The token source of an installation without an account. A request that has no access token
-   * from getAccessToken carries the device token instead; omit it for clients that never run
-   * without a sign-in.
+   * from getAccessToken carries the device token; a source that yields no token (undefined)
+   * leaves the request without one. Omit it for clients that never run without a sign-in.
    */
-  deviceAuth?: Pick<DeviceAuth, "getAccessToken"> & Partial<Pick<DeviceAuth, "signProof">>;
+  deviceAuth?: DeviceTokenSource;
+  /**
+   * Whether a session of the account authenticates the requests without a bearer token, as the
+   * cookie session of the web app does. A registration call needs either this or an access token.
+   */
+  accountSession?: () => boolean | Promise<boolean>;
+  /**
+   * Called when the API answers a write with registration_required, the answer to an action only
+   * a registered account may take.
+   */
+  onRegistrationRequired?: () => void;
+}
+
+/** What the client needs from the device authentication of an installation. */
+export interface DeviceTokenSource {
+  getAccessToken(): Promise<string | undefined>;
+  signProof?: DeviceAuth["signProof"];
+  /** Drops the cached token; called when the API answers 401 to a request that carried it. */
+  invalidate?: DeviceAuth["invalidate"];
 }
 
 export interface StoriesListParams {
@@ -662,13 +680,29 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
     }),
   );
 
+  // The requests that carry a device token, so a 401 answer drops exactly that token.
+  const deviceTokenRequests = new WeakSet<Request>();
   if (options.getAccessToken || options.deviceAuth) {
     client.interceptors.request.use(async (request) => {
-      const token = (await options.getAccessToken?.()) ?? (await options.deviceAuth?.getAccessToken());
+      let token = await options.getAccessToken?.();
+      if (!token) {
+        token = await options.deviceAuth?.getAccessToken();
+        if (token) deviceTokenRequests.add(request);
+      }
       if (token) {
         request.headers.set("Authorization", `Bearer ${token}`);
       }
       return request;
+    });
+  }
+  if (options.deviceAuth?.invalidate || options.onRegistrationRequired) {
+    client.interceptors.response.use(async (response, request) => {
+      if (response.status === 401 && deviceTokenRequests.has(request)) options.deviceAuth?.invalidate?.();
+      if (response.status === 403 && options.onRegistrationRequired && request.method !== "GET" && request.method !== "HEAD") {
+        const body = (await response.clone().json().catch(() => null)) as { code?: unknown } | null;
+        if (body?.code === REGISTRATION_REQUIRED_CODE) options.onRegistrationRequired();
+      }
+      return response;
     });
   }
 
@@ -679,7 +713,7 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
   const registrationProof = async () => {
     const signProof = options.deviceAuth?.signProof;
     if (!signProof) throw new Error("Handing content to an account needs the device authentication of the installation.");
-    if (!(await options.getAccessToken?.())) throw new ApiError("Sign in with the account first.", 401, "keycloak_session_required");
+    if (!(await options.getAccessToken?.()) && !(await options.accountSession?.())) throw new ApiError("Sign in with the account first.", 401, "keycloak_session_required");
     return signProof();
   };
 

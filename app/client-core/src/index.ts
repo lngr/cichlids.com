@@ -63,6 +63,7 @@ export type {
   Video,
   VideoState,
   CichlidsClientOptions,
+  DeviceTokenSource,
   StoriesListParams,
   TanksListParams,
   SpeciesListParams,
@@ -142,5 +143,10 @@ export type { ChartLayout, ChartLayoutOptions, LoadedWaterChange, PlacedMarker, 
 
 export { DeviceAuthError, createDeviceAuth, deviceSignatureMessage, toBase64Url } from "./deviceAuth.js";
 export type { DeviceAuth, DeviceAuthOptions, DeviceCredential, DeviceCredentialStore, DeviceKeyProvider, DeviceProof, DeviceToken } from "./deviceAuth.js";
+export { REGISTRATION_REQUIRED_CODE } from "./registration.js";
 export type { ProvisionalContent, RegistrationMode, RegistrationMove, RegistrationPreview } from "./registration.js";
 export { createWebCryptoKeyProvider } from "./deviceAuthWebCrypto.js";
+export {
+  REGISTRATION_REASONS, completeRegistration, droppedVacations, hasProvisionalContent, isRegistrationRequired,
+} from "./registrationFlow.js";
+export type { RegistrationOutcome, RegistrationReason } from "./registrationFlow.js";

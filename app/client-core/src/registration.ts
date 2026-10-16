@@ -1,5 +1,8 @@
 import type { MeDto, ProvisionalContentCounts, ProvisionalMoveDto, ProvisionalPreviewDto } from "./generated/types.gen.js";
 
+/** The error code of an action that only a registered account may take. */
+export const REGISTRATION_REQUIRED_CODE = "registration_required";
+
 /**
  * How the content of the installation reaches the signed-in account: upgrade when the account has no
  * profile yet and the profile of the installation becomes it, move when the account has a profile
