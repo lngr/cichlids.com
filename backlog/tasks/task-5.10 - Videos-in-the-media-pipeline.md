@@ -1,10 +1,10 @@
 ---
 id: TASK-5.10
 title: Videos in the media pipeline
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 05:02'
+updated_date: '2026-10-16 05:44'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
