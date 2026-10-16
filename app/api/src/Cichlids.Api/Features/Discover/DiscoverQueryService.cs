@@ -57,7 +57,7 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
     /// its tanks from this one query.
     /// </summary>
     private IQueryable<Cichlids.Domain.Entities.Tank> PublicTanks(IQueryable<Cichlids.Domain.Entities.Profile> members) =>
-        context.Tanks.Where(TankVisibilityRules.ProfileVisibleTo(null))
+        context.TanksVisibleTo(null)
             .Where(t => t.State == TankState.Published && t.DeletedAt == null && members.Any(p => p.Id == t.ProfileId));
 
     /// <summary>

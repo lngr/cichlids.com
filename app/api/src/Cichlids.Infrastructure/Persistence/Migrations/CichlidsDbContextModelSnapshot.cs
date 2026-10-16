@@ -789,9 +789,19 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
+                    b.Property<DateTimeOffset?>("DecidedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("decided_at");
+
                     b.Property<long>("FollowerProfileId")
                         .HasColumnType("bigint")
                         .HasColumnName("follower_profile_id");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasDefaultValue("approved")
+                        .HasColumnName("status");
 
                     b.Property<long?>("TargetProfileId")
                         .HasColumnType("bigint")
@@ -807,9 +817,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.HasIndex("TargetProfileId")
                         .HasDatabaseName("ix_follow_target_profile_id");
 
-                    b.HasIndex("TargetTankId")
-                        .HasDatabaseName("ix_follow_target_tank_id");
-
                     b.HasIndex("FollowerProfileId", "TargetProfileId")
                         .IsUnique()
                         .HasDatabaseName("ix_follow_follower_profile_id_target_profile_id");
@@ -818,9 +825,16 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_follow_follower_profile_id_target_tank_id");
 
+                    b.HasIndex("TargetTankId", "Status")
+                        .HasDatabaseName("ix_follow_target_tank_id_status");
+
                     b.ToTable("follow", "public", t =>
                         {
                             t.HasCheckConstraint("ck_follow_exactly_one_target", "(target_profile_id IS NULL) <> (target_tank_id IS NULL)");
+
+                            t.HasCheckConstraint("ck_follow_pending_tank", "status = 'approved' OR target_tank_id IS NOT NULL");
+
+                            t.HasCheckConstraint("ck_follow_status", "status IN ('pending', 'approved')");
                         });
                 });
 
@@ -2083,15 +2097,15 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                             t.HasCheckConstraint("ck_tank_media_move_attempts", "media_move_attempts >= 0");
 
-                            t.HasCheckConstraint("ck_tank_profile_visibility", "profile_visibility IN ('private', 'public')");
+                            t.HasCheckConstraint("ck_tank_profile_visibility", "profile_visibility IN ('private', 'selected', 'followers', 'public')");
 
                             t.HasCheckConstraint("ck_tank_region", "region IS NULL OR region IN ('lake_malawi', 'lake_tanganyika', 'lake_victoria', 'africa_other', 'central_america', 'south_america', 'mixed', 'americas_unassigned')");
 
                             t.HasCheckConstraint("ck_tank_state", "state IN ('draft', 'published')");
 
-                            t.HasCheckConstraint("ck_tank_stream_visibility", "stream_visibility IN ('private', 'public')");
+                            t.HasCheckConstraint("ck_tank_stream_visibility", "stream_visibility IN ('private', 'selected', 'followers', 'public')");
 
-                            t.HasCheckConstraint("ck_tank_stream_within_profile", "stream_visibility = 'private' OR profile_visibility = 'public'");
+                            t.HasCheckConstraint("ck_tank_stream_within_profile", "(CASE stream_visibility WHEN 'private' THEN 0 WHEN 'selected' THEN 1 WHEN 'followers' THEN 2 ELSE 3 END) <= (CASE profile_visibility WHEN 'private' THEN 0 WHEN 'selected' THEN 1 WHEN 'followers' THEN 2 ELSE 3 END)");
 
                             t.HasCheckConstraint("ck_tank_volume_input_unit", "volume_input_unit IS NULL OR volume_input_unit IN ('liter', 'us_gallon')");
                         });
@@ -2162,6 +2176,40 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                             t.HasCheckConstraint("ck_tank_decommissioning_scope", "scope IN ('all_care', 'water_change')");
                         });
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.TankSelectedMember", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTimeOffset>("AddedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("added_at");
+
+                    b.Property<long>("MemberProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("member_profile_id");
+
+                    b.Property<long>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_tank_selected_member");
+
+                    b.HasIndex("MemberProfileId")
+                        .HasDatabaseName("ix_tank_selected_member_member_profile_id");
+
+                    b.HasIndex("TankId", "MemberProfileId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_tank_selected_member_tank_id_member_profile_id");
+
+                    b.ToTable("tank_selected_member", "public");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.TankVisibilityConsent", b =>
@@ -3149,6 +3197,23 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_tank_decommissioning_tank_tank_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.TankSelectedMember", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("MemberProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_tank_selected_member_profile_member_profile_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_tank_selected_member_tank_tank_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.TankVisibilityConsent", b =>

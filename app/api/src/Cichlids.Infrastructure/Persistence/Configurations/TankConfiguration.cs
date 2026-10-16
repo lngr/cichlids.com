@@ -53,11 +53,12 @@ public class TankConfiguration : IEntityTypeConfiguration<Tank>
             tb.HasCheckConstraint(
                 "ck_tank_state",
                 "state IN ('draft', 'published')");
-            tb.HasCheckConstraint("ck_tank_profile_visibility", "profile_visibility IN ('private', 'public')");
-            tb.HasCheckConstraint("ck_tank_stream_visibility", "stream_visibility IN ('private', 'public')");
+            tb.HasCheckConstraint("ck_tank_profile_visibility", "profile_visibility IN ('private', 'selected', 'followers', 'public')");
+            tb.HasCheckConstraint("ck_tank_stream_visibility", "stream_visibility IN ('private', 'selected', 'followers', 'public')");
             tb.HasCheckConstraint(
                 "ck_tank_stream_within_profile",
-                "stream_visibility = 'private' OR profile_visibility = 'public'");
+                "(CASE stream_visibility WHEN 'private' THEN 0 WHEN 'selected' THEN 1 WHEN 'followers' THEN 2 ELSE 3 END) <= " +
+                "(CASE profile_visibility WHEN 'private' THEN 0 WHEN 'selected' THEN 1 WHEN 'followers' THEN 2 ELSE 3 END)");
             tb.HasCheckConstraint("ck_tank_media_move_attempts", "media_move_attempts >= 0");
         });
     }

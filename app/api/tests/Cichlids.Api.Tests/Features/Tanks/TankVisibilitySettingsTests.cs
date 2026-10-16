@@ -142,7 +142,7 @@ public sealed class TankVisibilitySettingsTests(ApiFixture fixture) : IAsyncLife
     }
 
     [Theory]
-    [InlineData("{\"profile\":\"followers\",\"stream\":\"private\"}")]
+    [InlineData("{\"profile\":\"friends\",\"stream\":\"private\"}")]
     [InlineData("{\"profile\":\"public\",\"stream\":\"selected_members\"}")]
     [InlineData("{\"profile\":\"public\"}")]
     [InlineData("{\"stream\":\"public\"}")]

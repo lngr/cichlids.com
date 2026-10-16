@@ -38,9 +38,12 @@ public sealed class TankVisibilityMigrationTests(PostgresFixture fixture)
     }
 
     [Theory]
-    [InlineData("followers", "private", "ck_tank_profile_visibility")]
+    [InlineData("friends", "private", "ck_tank_profile_visibility")]
     [InlineData("public", "selected_members", "ck_tank_stream_visibility")]
     [InlineData("private", "public", "ck_tank_stream_within_profile")]
+    [InlineData("selected", "followers", "ck_tank_stream_within_profile")]
+    [InlineData("followers", "public", "ck_tank_stream_within_profile")]
+    [InlineData("private", "selected", "ck_tank_stream_within_profile")]
     public async Task TheDatabaseRefusesUnknownLevelsAndAStreamWiderThanTheProfile(string profile, string stream, string constraint)
     {
         await using var context = fixture.CreateContext();
@@ -56,6 +59,12 @@ public sealed class TankVisibilityMigrationTests(PostgresFixture fixture)
     [InlineData("public", "public")]
     [InlineData("public", "private")]
     [InlineData("private", "private")]
+    [InlineData("followers", "followers")]
+    [InlineData("followers", "selected")]
+    [InlineData("selected", "selected")]
+    [InlineData("selected", "private")]
+    [InlineData("public", "followers")]
+    [InlineData("public", "selected")]
     public async Task TheDatabaseAcceptsEveryLevelPairWithAStreamWithinTheProfile(string profile, string stream)
     {
         await using var context = fixture.CreateContext();

@@ -10,7 +10,9 @@ namespace Cichlids.Infrastructure.Media;
 /// The one rule that decides who sees a media item: a viewer sees the item when at least one of its
 /// links is visible to them, and the owner always sees the own files. A file without links is visible
 /// to its owner only. The visibility of a link follows from its context:
-/// a tank link from the profile level of a published tank, the proof photos of a decommissioning
+/// a tank link from the profile level of a published tank (the approved followers and the selected members
+/// of a tank reach the levels that name them; such media live in the private area and are served through
+/// signed links), the proof photos of a decommissioning
 /// (decommission and recommission roles) from the history level of the tank, a care entry link from the
 /// history level of the tank and the only me mark of the entry, a water change session link like the
 /// care entry that finishes the session (an open session is the owner's alone), an inhabitant link from
@@ -90,31 +92,28 @@ public static class MediaVisibility
     public static Expression<Func<MediaLink, bool>> LinkVisibleTo(CichlidsDbContext db, long? viewerProfileId, DateTimeOffset now)
     {
         var viewer = viewerProfileId;
+        // Tanks whose profile or stream level reaches the viewer, through the approved follows and the
+        // selected members of the viewer; the owner reaches both.
+        var profileTanks = db.TanksVisibleTo(viewer);
+        var streamTanks = db.TanksStreamVisibleTo(viewer);
         return l =>
             (l.ContextType == MediaLinkContext.Tank
                 && ((l.Role == MediaLinkRole.Decommission || l.Role == MediaLinkRole.Recommission)
-                    ? db.Tanks.Any(t => t.Id == l.TankId
-                        && ((t.State == TankState.Published && t.DeletedAt == null
-                            && t.ProfileVisibility == TankVisibility.Public && t.StreamVisibility == TankVisibility.Public)
-                            || t.ProfileId == viewer))
-                    : db.Tanks.Any(t => t.Id == l.TankId
-                        && ((t.State == TankState.Published && t.DeletedAt == null && t.ProfileVisibility == TankVisibility.Public)
-                            || t.ProfileId == viewer))))
+                    ? streamTanks.Any(t => t.Id == l.TankId
+                        && (t.ProfileId == viewer || (t.State == TankState.Published && t.DeletedAt == null)))
+                    : profileTanks.Any(t => t.Id == l.TankId
+                        && (t.ProfileId == viewer || (t.State == TankState.Published && t.DeletedAt == null)))))
             || (l.ContextType == MediaLinkContext.Inhabitant
-                && db.Inhabitants.Any(i => i.Id == l.InhabitantId && db.Tanks.Any(t => t.Id == i.TankId
-                    && ((t.State == TankState.Published && t.DeletedAt == null && t.ProfileVisibility == TankVisibility.Public)
-                        || t.ProfileId == viewer))))
+                && db.Inhabitants.Any(i => i.Id == l.InhabitantId && profileTanks.Any(t => t.Id == i.TankId
+                    && (t.ProfileId == viewer || (t.State == TankState.Published && t.DeletedAt == null)))))
             || (l.ContextType == MediaLinkContext.CareEntry
-                && db.CareEntries.Any(e => e.Id == l.CareEntryId && db.Tanks.Any(t => t.Id == e.TankId
-                    && ((!e.OnlyMe && t.State == TankState.Published && t.DeletedAt == null
-                        && t.ProfileVisibility == TankVisibility.Public && t.StreamVisibility == TankVisibility.Public)
-                        || t.ProfileId == viewer))))
+                && db.CareEntries.Any(e => e.Id == l.CareEntryId && streamTanks.Any(t => t.Id == e.TankId
+                    && (t.ProfileId == viewer || (!e.OnlyMe && t.State == TankState.Published && t.DeletedAt == null)))))
             || (l.ContextType == MediaLinkContext.WaterChangeSession
-                && db.WaterChangeSessions.Any(s => s.Id == l.WaterChangeSessionId && db.Tanks.Any(t => t.Id == s.TankId
-                    && ((db.CareEntries.Any(e => e.WaterChangeSessionId == s.Id && !e.OnlyMe)
-                        && t.State == TankState.Published && t.DeletedAt == null
-                        && t.ProfileVisibility == TankVisibility.Public && t.StreamVisibility == TankVisibility.Public)
-                        || t.ProfileId == viewer))))
+                && db.WaterChangeSessions.Any(s => s.Id == l.WaterChangeSessionId && streamTanks.Any(t => t.Id == s.TankId
+                    && (t.ProfileId == viewer
+                        || (db.CareEntries.Any(e => e.WaterChangeSessionId == s.Id && !e.OnlyMe)
+                            && t.State == TankState.Published && t.DeletedAt == null)))))
             || (l.ContextType == MediaLinkContext.Post
                 && db.Posts.Any(p => p.Id == l.PostId && p.DeletedAt == null
                     && (p.State == PostState.Published || (p.State == PostState.Draft && p.AuthorProfileId == viewer))))

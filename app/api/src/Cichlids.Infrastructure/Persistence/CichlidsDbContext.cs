@@ -47,6 +47,7 @@ public class CichlidsDbContext : DbContext
     public DbSet<Collection> Collections => Set<Collection>();
     public DbSet<CollectionEntry> CollectionEntries => Set<CollectionEntry>();
     public DbSet<Follow> Follows => Set<Follow>();
+    public DbSet<TankSelectedMember> TankSelectedMembers => Set<TankSelectedMember>();
     public DbSet<SlugAlias> SlugAliases => Set<SlugAlias>();
     public DbSet<DiscussionThread> DiscussionThreads => Set<DiscussionThread>();
     public DbSet<DiscussionPost> DiscussionPosts => Set<DiscussionPost>();

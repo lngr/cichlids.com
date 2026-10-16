@@ -59,7 +59,7 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
         var pictureCount = await context.Posts
             .CountAsync(p => p.AuthorProfileId == id && p.State == PostState.Published && p.DeletedAt == null, cancellationToken);
 
-        var tankCount = await context.Tanks.Where(TankVisibilityRules.ProfileVisibleTo(viewerProfileId))
+        var tankCount = await context.TanksVisibleTo(viewerProfileId)
             .CountAsync(t => t.ProfileId == id && t.State == TankState.Published && t.DeletedAt == null, cancellationToken);
 
         var commentCount = await context.Comments
@@ -85,7 +85,7 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
     {
         if (!profile.StreaksEnabled) return null;
         var visible = viewerProfileId == profile.Id
-            || await context.Tanks.Where(TankVisibilityRules.ProfileVisibleTo(viewerProfileId))
+            || await context.TanksVisibleTo(viewerProfileId)
                 .AnyAsync(t => t.ProfileId == profile.Id && t.DeletedAt == null, cancellationToken);
         if (!visible) return null;
         var spans = (await context.Vacations.Where(v => v.ProfileId == profile.Id).ToListAsync(cancellationToken))

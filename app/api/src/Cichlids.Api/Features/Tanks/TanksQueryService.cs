@@ -22,8 +22,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
     public async Task<PagedResponse<TankListItemDto>> ListAsync(
         long? userId, TankCategory? category, long? viewerProfileId, int offset, int limit, CancellationToken cancellationToken)
     {
-        var filtered = context.Tanks.Where(t => t.State == TankState.Published && t.DeletedAt == null)
-            .Where(TankVisibilityRules.ProfileVisibleTo(viewerProfileId));
+        var filtered = context.TanksVisibleTo(viewerProfileId).Where(t => t.State == TankState.Published && t.DeletedAt == null);
 
         if (userId is { } uid)
         {
@@ -65,7 +64,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
         var authors = await AuthorBatchLoader.LoadAsync(context, authorIds, cancellationToken);
 
         // A decommissioning is part of the care stream, so only its viewers see the mark.
-        var streamVisible = context.Tanks.Where(TankVisibilityRules.StreamVisibleTo(viewerProfileId)).Select(t => t.Id);
+        var streamVisible = context.TanksStreamVisibleTo(viewerProfileId).Select(t => t.Id);
         var decommissioned = await context.TankDecommissionings
             .Where(d => tankIds.Contains(d.TankId) && d.EndedAt == null && streamVisible.Contains(d.TankId))
             .Select(d => d.TankId).ToListAsync(cancellationToken);
@@ -83,12 +82,12 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
     }
 
     public Task<bool> IsVisibleAsync(long id, long? viewerProfileId, CancellationToken cancellationToken) =>
-        context.Tanks.Where(TankVisibilityRules.ProfileVisibleTo(viewerProfileId))
+        context.TanksVisibleTo(viewerProfileId)
             .AnyAsync(t => t.Id == id && t.State == TankState.Published && t.DeletedAt == null, cancellationToken);
 
     public async Task<TankDetailDto?> GetByIdAsync(long id, long? viewerProfileId, CancellationToken cancellationToken)
     {
-        var tank = await context.Tanks.Where(TankVisibilityRules.ProfileVisibleTo(viewerProfileId))
+        var tank = await context.TanksVisibleTo(viewerProfileId)
             .FirstOrDefaultAsync(t => t.Id == id && t.State == TankState.Published && t.DeletedAt == null, cancellationToken);
 
         if (tank is null)

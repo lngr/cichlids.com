@@ -37,7 +37,7 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
     {
         var now = DateTimeOffset.UtcNow;
         var visibleProfiles = context.Profiles.Where(p => p.SuspendedUntil == null || p.SuspendedUntil <= now);
-        var tanks = await context.Tanks.AsNoTracking().Where(TankVisibilityRules.ProfileVisibleTo(viewerProfileId))
+        var tanks = await context.TanksVisibleTo(viewerProfileId).AsNoTracking()
             .Where(t => tankIds.Contains(t.Id) && t.State == TankState.Published && t.DeletedAt == null
                 && visibleProfiles.Any(p => p.Id == t.ProfileId))
             .ToListAsync(cancellationToken);

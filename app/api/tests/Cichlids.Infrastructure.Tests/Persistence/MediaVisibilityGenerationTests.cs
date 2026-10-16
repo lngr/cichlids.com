@@ -255,4 +255,76 @@ public sealed class MediaVisibilityGenerationTests(PostgresFixture fixture)
         var final = (await StateAsync(s.EntryItem)).Generation;
         Assert.All(issued, generation => Assert.True(generation < final));
     }
+
+    [Fact]
+    public async Task GivenATank_WhenAFollowIsApprovedOrRemoved_ThenItsItemsChange()
+    {
+        var s = await NewSetupAsync();
+        await using var setup = fixture.CreateContext();
+        var follower = await TestDataBuilder.CreateProfileAsync(setup);
+        var requester = await TestDataBuilder.CreateProfileAsync(setup);
+
+        await AssertChangedAsync(s.TankItem, async db =>
+        {
+            db.Follows.Add(new Follow { FollowerProfileId = follower.Id, TargetTankId = s.Tank.Id, Status = FollowStatus.Approved, CreatedAt = Now });
+            await db.SaveChangesAsync();
+        });
+        foreach (var item in new[] { s.EntryItem, s.SessionItem }) Assert.True((await StateAsync(item)).Pending);
+        await SettleAsync(s.TankItem, s.EntryItem, s.SessionItem);
+
+        await AssertUnchangedAsync(s.TankItem, async db =>
+        {
+            db.Follows.Add(new Follow { FollowerProfileId = requester.Id, TargetTankId = s.Tank.Id, Status = FollowStatus.Pending, CreatedAt = Now });
+            await db.SaveChangesAsync();
+        });
+        await AssertChangedAsync(s.TankItem, db => db.Follows.Where(f => f.FollowerProfileId == requester.Id)
+            .ExecuteUpdateAsync(x => x.SetProperty(f => f.Status, FollowStatus.Approved)));
+        await SettleAsync(s.TankItem);
+        await AssertChangedAsync(s.TankItem, db => db.Follows.Where(f => f.FollowerProfileId == follower.Id).ExecuteDeleteAsync());
+        await SettleAsync(s.TankItem);
+        await AssertChangedAsync(s.TankItem, db => db.Follows.Where(f => f.FollowerProfileId == requester.Id).ExecuteDeleteAsync());
+    }
+
+    [Fact]
+    public async Task GivenAPendingFollow_WhenItIsDeleted_ThenNothingChanges()
+    {
+        var s = await NewSetupAsync();
+        await using var setup = fixture.CreateContext();
+        var requester = await TestDataBuilder.CreateProfileAsync(setup);
+        setup.Follows.Add(new Follow { FollowerProfileId = requester.Id, TargetTankId = s.Tank.Id, Status = FollowStatus.Pending, CreatedAt = Now });
+        await setup.SaveChangesAsync();
+        await SettleAsync(s.TankItem);
+        await AssertUnchangedAsync(s.TankItem, db => db.Follows.Where(f => f.FollowerProfileId == requester.Id).ExecuteDeleteAsync());
+    }
+
+    [Fact]
+    public async Task GivenAProfileFollow_ThenNoTankItemChanges()
+    {
+        var s = await NewSetupAsync();
+        await using var setup = fixture.CreateContext();
+        var follower = await TestDataBuilder.CreateProfileAsync(setup);
+        await AssertUnchangedAsync(s.TankItem, async db =>
+        {
+            db.Follows.Add(new Follow { FollowerProfileId = follower.Id, TargetProfileId = s.Owner.Id, CreatedAt = Now });
+            await db.SaveChangesAsync();
+        });
+    }
+
+    [Fact]
+    public async Task GivenATank_WhenASelectedMemberIsAddedOrRemoved_ThenItsItemsChange()
+    {
+        var s = await NewSetupAsync();
+        await using var setup = fixture.CreateContext();
+        var member = await TestDataBuilder.CreateProfileAsync(setup);
+
+        await AssertChangedAsync(s.TankItem, async db =>
+        {
+            db.TankSelectedMembers.Add(new TankSelectedMember { TankId = s.Tank.Id, MemberProfileId = member.Id, AddedAt = Now });
+            await db.SaveChangesAsync();
+        });
+        foreach (var item in new[] { s.EntryItem, s.SessionItem }) Assert.True((await StateAsync(item)).Pending);
+        await SettleAsync(s.TankItem);
+        await AssertChangedAsync(s.TankItem, db => db.TankSelectedMembers.Where(m => m.MemberProfileId == member.Id).ExecuteDeleteAsync());
+    }
 }
+

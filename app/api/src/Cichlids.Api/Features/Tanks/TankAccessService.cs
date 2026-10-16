@@ -7,7 +7,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Api.Features.Tanks;
 
 /// <summary>
-/// What a viewer may see of one tank: the levels of the tank and how the viewer relates to its owner.
+/// What a viewer may see of one tank: the levels of the tank and how the viewer relates to the tank (owner,
+/// selected member, approved follower or other member).
 /// </summary>
 public sealed record TankAccess(long TankId, long OwnerProfileId, TankVisibility Profile, TankVisibility Stream, TankViewer Viewer)
 {
@@ -50,9 +51,15 @@ public sealed class TankAccessService(CichlidsDbContext context)
     {
         var tank = await context.Tanks.AsNoTracking().Where(t => t.Id == tankId && t.DeletedAt == null)
             .Select(t => new { t.ProfileId, t.ProfileVisibility, t.StreamVisibility }).SingleOrDefaultAsync(cancellationToken);
-        return tank is null ? null : new TankAccess(
+        if (tank is null)
+        {
+            return null;
+        }
+
+        var (isFollower, isSelected) = await context.RelationToTankAsync(tankId, viewerProfileId, cancellationToken);
+        return new TankAccess(
             tankId, tank.ProfileId, tank.ProfileVisibility, tank.StreamVisibility,
-            TankVisibilityRules.ViewerOf(viewerProfileId, tank.ProfileId));
+            TankVisibilityRules.ViewerOf(viewerProfileId, tank.ProfileId, isFollower, isSelected));
     }
 
     /// <summary>

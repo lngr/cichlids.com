@@ -45,8 +45,10 @@ public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore st
             })
             .SingleOrDefaultAsync(cancellationToken);
         var isOwner = tank is not null && viewerProfileId == tank.ProfileId;
+        var (isFollower, isSelected) = await context.RelationToTankAsync(tankId, viewerProfileId, cancellationToken);
         if (tank is null || (!isOwner && (tank.State != TankState.Published || !tank.OwnerVisible
-                || !TankVisibilityRules.CanSeeProfile(TankVisibilityRules.ViewerOf(viewerProfileId, tank.ProfileId), tank.ProfileVisibility))))
+                || !TankVisibilityRules.CanSeeProfile(
+                    TankVisibilityRules.ViewerOf(viewerProfileId, tank.ProfileId, isFollower, isSelected), tank.ProfileVisibility))))
         {
             return null;
         }

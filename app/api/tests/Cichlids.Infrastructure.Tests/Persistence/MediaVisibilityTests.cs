@@ -308,4 +308,56 @@ public sealed class MediaVisibilityTests(PostgresFixture fixture)
 
         Assert.Equal(visible.Order(), seen.Order());
     }
+
+    [Fact]
+    public async Task GivenAFollowersTank_ThenApprovedFollowersAndSelectedMembersSeeTheMediaAndAnonymousViewersDoNot()
+    {
+        var w = await NewWorldAsync();
+        var follower = await TestDataBuilder.CreateProfileAsync(w.Db);
+        var requester = await TestDataBuilder.CreateProfileAsync(w.Db);
+        var selected = await TestDataBuilder.CreateProfileAsync(w.Db);
+        var tank = await w.TankAsync(TankVisibility.Followers, TankVisibility.Selected);
+        var tankItem = await w.ItemAsync();
+        await w.LinkAsync(MediaLink.ForTank(tank.Id, tankItem.Id, MediaLinkRole.Showcase));
+        var entryItem = await w.ItemAsync();
+        var entry = await w.EntryAsync(tank);
+        await w.LinkAsync(MediaLink.ForCareEntry(entry.Id, entryItem.Id, MediaLinkRole.Photo));
+        w.Db.Follows.AddRange(
+            new Follow { FollowerProfileId = follower.Id, TargetTankId = tank.Id, Status = FollowStatus.Approved, CreatedAt = Now },
+            new Follow { FollowerProfileId = requester.Id, TargetTankId = tank.Id, Status = FollowStatus.Pending, CreatedAt = Now });
+        w.Db.TankSelectedMembers.Add(new TankSelectedMember { TankId = tank.Id, MemberProfileId = selected.Id, AddedAt = Now });
+        await w.Db.SaveChangesAsync();
+
+        // The profile level followers reaches follower and selected member; the stream level selected only the selected member.
+        Assert.True(await w.SeesAsync(tankItem, w.Owner));
+        Assert.True(await w.SeesAsync(tankItem, follower));
+        Assert.True(await w.SeesAsync(tankItem, selected));
+        Assert.False(await w.SeesAsync(tankItem, requester));
+        Assert.False(await w.SeesAsync(tankItem, w.Member));
+        Assert.False(await w.SeesAsync(tankItem, null));
+        Assert.False(await w.AnonymousSeesAsync(tankItem));
+        Assert.True(await w.SeesAsync(entryItem, w.Owner));
+        Assert.True(await w.SeesAsync(entryItem, selected));
+        Assert.False(await w.SeesAsync(entryItem, follower));
+        Assert.False(await w.SeesAsync(entryItem, requester));
+        Assert.False(await w.AnonymousSeesAsync(entryItem));
+    }
+
+    [Fact]
+    public async Task GivenASelectedTank_ThenOnlyTheSelectedMemberSeesTheMedia()
+    {
+        var w = await NewWorldAsync();
+        var follower = await TestDataBuilder.CreateProfileAsync(w.Db);
+        var tank = await w.TankAsync(TankVisibility.Selected, TankVisibility.Selected);
+        var item = await w.ItemAsync();
+        await w.LinkAsync(MediaLink.ForTank(tank.Id, item.Id, MediaLinkRole.Showcase));
+        w.Db.Follows.Add(new Follow { FollowerProfileId = follower.Id, TargetTankId = tank.Id, Status = FollowStatus.Approved, CreatedAt = Now });
+        w.Db.TankSelectedMembers.Add(new TankSelectedMember { TankId = tank.Id, MemberProfileId = w.Member.Id, AddedAt = Now });
+        await w.Db.SaveChangesAsync();
+
+        Assert.True(await w.SeesAsync(item, w.Member));
+        Assert.False(await w.SeesAsync(item, follower));
+        Assert.False(await w.AnonymousSeesAsync(item));
+    }
 }
+
