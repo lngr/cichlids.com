@@ -271,6 +271,30 @@ export type DeleteCommentRequest = {
     reason: null | string;
 };
 
+export type DeviceChallengeDto = {
+    challenge: string;
+    expiresAt: string;
+};
+
+export type DeviceCredentialDto = {
+    credentialId: string;
+    profileId: number | string;
+    displayName: string;
+};
+
+export type DeviceTokenDto = {
+    accessToken: string;
+    tokenType: string;
+    expiresAt: string;
+};
+
+export type DeviceTokenRequest = {
+    challenge: null | string;
+    credentialId: null | string;
+    timestamp: null | number | string;
+    signature: null | string;
+};
+
 export type DimensionInputDto = {
     width: null | number | string;
     height: null | number | string;
@@ -472,6 +496,7 @@ export type MediaStreakWeekDto = {
 export type MeDto = {
     profile: ProfileDetailDto;
     roles: Array<string>;
+    provisional?: boolean;
 };
 
 export type MeSettingsDto = {
@@ -627,6 +652,10 @@ export type PublishStoryRequest = {
 
 export type RefineRegionRequest = {
     region: TankRegion;
+};
+
+export type RegisterDeviceKeyRequest = {
+    publicKey: null | string;
 };
 
 export type ReminderSnoozeDto = {
@@ -4769,6 +4798,97 @@ export type ListProfileTanksResponses = {
 };
 
 export type ListProfileTanksResponse = ListProfileTanksResponses[keyof ListProfileTanksResponses];
+
+export type RegisterDeviceKeyData = {
+    body?: null | RegisterDeviceKeyRequest;
+    path?: never;
+    query?: never;
+    url: '/api/auth/device/credentials';
+};
+
+export type RegisterDeviceKeyErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type RegisterDeviceKeyError = RegisterDeviceKeyErrors[keyof RegisterDeviceKeyErrors];
+
+export type RegisterDeviceKeyResponses = {
+    /**
+     * OK
+     */
+    200: DeviceCredentialDto;
+    /**
+     * Created
+     */
+    201: DeviceCredentialDto;
+};
+
+export type RegisterDeviceKeyResponse = RegisterDeviceKeyResponses[keyof RegisterDeviceKeyResponses];
+
+export type CreateDeviceChallengeData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/auth/device/challenges';
+};
+
+export type CreateDeviceChallengeErrors = {
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type CreateDeviceChallengeError = CreateDeviceChallengeErrors[keyof CreateDeviceChallengeErrors];
+
+export type CreateDeviceChallengeResponses = {
+    /**
+     * OK
+     */
+    200: DeviceChallengeDto;
+};
+
+export type CreateDeviceChallengeResponse = CreateDeviceChallengeResponses[keyof CreateDeviceChallengeResponses];
+
+export type CreateDeviceTokenData = {
+    body?: null | DeviceTokenRequest;
+    path?: never;
+    query?: never;
+    url: '/api/auth/device/tokens';
+};
+
+export type CreateDeviceTokenErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type CreateDeviceTokenError = CreateDeviceTokenErrors[keyof CreateDeviceTokenErrors];
+
+export type CreateDeviceTokenResponses = {
+    /**
+     * OK
+     */
+    200: DeviceTokenDto;
+};
+
+export type CreateDeviceTokenResponse = CreateDeviceTokenResponses[keyof CreateDeviceTokenResponses];
 
 export type ListCommunityCategoriesData = {
     body?: never;

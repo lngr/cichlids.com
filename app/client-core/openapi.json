@@ -6850,6 +6850,168 @@
         }
       }
     },
+    "/api/auth/device/credentials": {
+      "post": {
+        "tags": [
+          "DeviceAuth"
+        ],
+        "operationId": "RegisterDeviceKey",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RegisterDeviceKeyRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceCredentialDto"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceCredentialDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/device/challenges": {
+      "post": {
+        "tags": [
+          "DeviceAuth"
+        ],
+        "operationId": "CreateDeviceChallenge",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceChallengeDto"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/device/tokens": {
+      "post": {
+        "tags": [
+          "DeviceAuth"
+        ],
+        "operationId": "CreateDeviceToken",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/DeviceTokenRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceTokenDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/community/categories": {
       "get": {
         "tags": [
@@ -8974,6 +9136,106 @@
           }
         }
       },
+      "DeviceChallengeDto": {
+        "required": [
+          "challenge",
+          "expiresAt"
+        ],
+        "type": "object",
+        "properties": {
+          "challenge": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "DeviceCredentialDto": {
+        "required": [
+          "credentialId",
+          "profileId",
+          "displayName"
+        ],
+        "type": "object",
+        "properties": {
+          "credentialId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "profileId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "displayName": {
+            "type": "string"
+          }
+        }
+      },
+      "DeviceTokenDto": {
+        "required": [
+          "accessToken",
+          "tokenType",
+          "expiresAt"
+        ],
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          },
+          "tokenType": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "DeviceTokenRequest": {
+        "required": [
+          "challenge",
+          "credentialId",
+          "timestamp",
+          "signature"
+        ],
+        "type": "object",
+        "properties": {
+          "challenge": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "credentialId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "timestamp": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "signature": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
       "DimensionInputDto": {
         "required": [
           "width",
@@ -10030,6 +10292,10 @@
             "items": {
               "type": "string"
             }
+          },
+          "provisional": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -10792,6 +11058,20 @@
         "properties": {
           "region": {
             "$ref": "#/components/schemas/TankRegion"
+          }
+        }
+      },
+      "RegisterDeviceKeyRequest": {
+        "required": [
+          "publicKey"
+        ],
+        "type": "object",
+        "properties": {
+          "publicKey": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
@@ -13785,6 +14065,9 @@
     },
     {
       "name": "Profiles"
+    },
+    {
+      "name": "DeviceAuth"
     },
     {
       "name": "Community"
