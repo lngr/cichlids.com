@@ -24,6 +24,12 @@ describe("follow control of a tank", () => {
   it("hides the control when the tank does not take followers from the member", () => {
     expect(followControlOf({ state: "none", canFollow: false }, "selected", false, true)).toBe("hidden");
   });
+  it("offers the follow of a public tank to a provisional account, since the registration is what it needs", () => {
+    expect(followControlOf(null, "public", false, true, true)).toBe("follow");
+    expect(followControlOf({ state: "none", canFollow: false }, "public", false, true, true)).toBe("follow");
+    expect(followControlOf({ state: "none", canFollow: false }, "followers", false, true, true)).toBe("hidden");
+    expect(followControlOf(null, "public", true, true, true)).toBe("hidden");
+  });
   it("withdraws or stops on a second press", () => {
     expect(undoesFollow("requested")).toBe(true);
     expect(undoesFollow("following")).toBe(true);

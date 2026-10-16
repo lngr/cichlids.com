@@ -269,7 +269,14 @@
     "todos": "To-dos",
     "media": "Meine Medien",
     "profileImages": "Avatar und Titelbild",
-    "stories": "Meine Geschichten"
+    "stories": "Meine Geschichten",
+    "device": {
+      "title": "Konto auf diesem Gerät",
+      "text": "Deine Becken und Einträge sind privat und auf diesem Gerät gespeichert, bis du dich registrierst. Mit dem Deinstallieren der App oder dem Zurücksetzen des Geräts gehen sie verloren.",
+      "leftBehindTitle": "Inhalt auf diesem Gerät",
+      "leftBehindText": "Die Becken des Gerätekontos bleiben auf diesem Gerät und gehören nicht zu deinem Konto. Nach zwölf Monaten ohne Nutzung werden sie gelöscht.",
+      "takeAlong": "In mein Konto übernehmen"
+    }
   },
   "upload": {
     "title": "Foto hochladen",
@@ -430,7 +437,13 @@
     "story_needs_item": "Eine veröffentlichte Geschichte behält mindestens einen Eintrag. Ziehe sie zurück oder lösche sie.",
     "story_not_published": "Nur eine veröffentlichte Geschichte kann zurückgezogen werden.",
     "story_text_invalid": "Bitte gib einen Titel mit höchstens 200 Zeichen ein.",
-    "story_caption_invalid": "Eine Bildunterschrift hat höchstens 500 Zeichen."
+    "story_caption_invalid": "Eine Bildunterschrift hat höchstens 500 Zeichen.",
+    "registration_required": "Dafür brauchst du ein Konto. Registriere dich oder melde dich an.",
+    "account_has_profile": "Dieses Konto hat schon ein Profil. Bitte versuche es erneut.",
+    "account_has_no_profile": "Dieses Konto hat noch kein Profil. Bitte versuche es erneut.",
+    "account_suspended": "Dieses Konto ist gesperrt.",
+    "device_auth_refused": "Dieses Gerät konnte sein Konto nicht nachweisen. Bitte versuche es erneut.",
+    "keycloak_session_required": "Melde dich zuerst an."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -1285,6 +1298,55 @@
       "error": "Die Liste konnte nicht geladen werden. Bitte versuche es erneut.",
       "close": "Schließen",
       "taken": "Schon in der Geschichte"
+    }
+  },
+  "registration": {
+    "title": "Konto anlegen",
+    "keep": "Alles, was du auf diesem Gerät angelegt hast, kommt mit: deine Becken, Einträge und Fotos.",
+    "register": "Registrieren oder anmelden",
+    "later": "Jetzt nicht",
+    "working": "Dein Inhalt wird in dein Konto übernommen",
+    "reason": {
+      "follow": "Um einem Becken zu folgen, brauchst du ein Konto.",
+      "comment": "Um zu kommentieren, brauchst du ein Konto.",
+      "rate": "Um zu bewerten, brauchst du ein Konto.",
+      "story": "Geschichten werden unter einem Konto veröffentlicht.",
+      "publish": "Um ein Foto zu veröffentlichen, brauchst du ein Konto.",
+      "visibility": "Um ein Becken anderen zu zeigen, brauchst du ein Konto.",
+      "profileImages": "Für ein Avatarbild und ein Titelbild brauchst du ein Konto.",
+      "audience": "Um festzulegen, wer ein Becken sehen darf, brauchst du ein Konto.",
+      "register": "Lege ein Konto an, damit deine Becken über dieses Gerät hinaus erhalten bleiben und du sie teilen kannst.",
+      "generic": "Dafür brauchst du ein Konto."
+    },
+    "counts": {
+      "tanks": "Becken",
+      "entries": "Pflegeeinträge",
+      "photos": "Fotos und Videos"
+    },
+    "dropped": "Nicht übernommene Urlaube: {{number}}",
+    "droppedHelp": "Sie überschneiden sich mit Urlauben deines Kontos oder würden Zeiträume ändern, die schon abgeschlossen sind.",
+    "decision": {
+      "title": "Inhalte mitnehmen?",
+      "text": "Dein Konto hat schon ein Profil. Möchtest du den Inhalt dieses Geräts dorthin verschieben?",
+      "yes": "Ja, mitnehmen",
+      "no": "Nein, auf diesem Gerät behalten"
+    },
+    "done": {
+      "upgradedTitle": "Dein Konto ist bereit",
+      "upgradedText": "Deine Becken, Einträge und Fotos gehören zu deinem Konto.",
+      "movedTitle": "Inhalt übernommen",
+      "movedText": "Deine Becken, Einträge und Fotos sind in deinem Konto.",
+      "declinedTitle": "Der Inhalt bleibt auf diesem Gerät",
+      "declinedText": "Du bist bei deinem bestehenden Konto angemeldet. Das Gerätekonto mit seinen Becken bleibt auf diesem Gerät und ist verborgen, solange du angemeldet bist. Nach dem Abmelden ist es wieder da, und unter Ich kannst du es mitnehmen.",
+      "close": "Schließen"
+    },
+    "error": "Der Inhalt konnte nicht verschoben werden. Bitte versuche es erneut.",
+    "note": {
+      "title": "Dein Konto lebt auf diesem Gerät",
+      "text": "Du kannst ohne Registrierung starten. Deine Becken und Einträge bleiben privat und werden auf diesem Gerät gespeichert, bis du dich registrierst.",
+      "loss": "Wenn du die App deinstallierst oder das Gerät zurücksetzt, gehen sie verloren. Eine Registrierung bewahrt alles.",
+      "continue": "Ohne Registrierung fortfahren",
+      "register": "Jetzt registrieren"
     }
   }
 }

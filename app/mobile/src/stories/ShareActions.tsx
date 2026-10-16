@@ -8,6 +8,7 @@ import { Chip } from "../components/Chip";
 import { useMachineRouter } from "../navigation/NavigationProvider";
 import { translateApiError } from "../lib/apiErrors";
 import { localTime } from "../today/localDate";
+import { useRegistrationGate } from "../registration/RegistrationProvider";
 import { useTheme } from "../theme";
 
 type Panel = "share" | "story" | null;
@@ -21,6 +22,7 @@ export function ShareActions({ mediaItemId, onNavigate }: { mediaItemId: number;
   const { t } = useTranslation();
   const theme = useTheme();
   const router = useMachineRouter();
+  const gate = useRegistrationGate();
   const [item, setItem] = useState<LibraryItem | null>(null);
   const [panel, setPanel] = useState<Panel>(null);
   const [message, setMessage] = useState<string | null>(null);
@@ -39,8 +41,8 @@ export function ShareActions({ mediaItemId, onNavigate }: { mediaItemId: number;
     {share
       ? <Button testID={`share-link-${mediaItemId}`} variant="secondary" label={t(share.slug ? "share.inGallery" : "share.inDraft")}
         onPress={() => open(share.slug ? `/gallery/${share.slug}` : `/stories/${share.storyId}`)} />
-      : <Button testID={`share-open-${mediaItemId}`} variant="secondary" label={t("share.action")} onPress={() => { setMessage(null); setPanel(panel === "share" ? null : "share"); }} />}
-    <Button testID={`share-add-story-${mediaItemId}`} variant="secondary" label={t("share.addToStory")} onPress={() => { setMessage(null); setPanel(panel === "story" ? null : "story"); }} />
+      : <Button testID={`share-open-${mediaItemId}`} variant="secondary" label={t("share.action")} onPress={() => { if (gate("publish")) return; setMessage(null); setPanel(panel === "share" ? null : "share"); }} />}
+    <Button testID={`share-add-story-${mediaItemId}`} variant="secondary" label={t("share.addToStory")} onPress={() => { if (gate("story")) return; setMessage(null); setPanel(panel === "story" ? null : "story"); }} />
     {message ? <Text testID={`share-message-${mediaItemId}`} accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.fg }]}>{message}</Text> : null}
     {panel === "share" ? <ShareForm mediaItemId={mediaItemId} onCancel={() => setPanel(null)}
       onShared={quickShare => { setItem({ ...item, quickShare }); setPanel(null); }} /> : null}

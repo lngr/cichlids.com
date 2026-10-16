@@ -5,6 +5,7 @@ import type { TankAudience, TankVisibilityDto } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
 import { Button } from "../components/Button";
 import { translateApiError } from "../lib/apiErrors";
+import { useRegistrationGate } from "../registration/RegistrationProvider";
 import { useTheme } from "../theme";
 import { badgeFor, draftAfterProfileChange, draftAfterStreamChange, isDraftChanged, isWider, LEVELS, requiresConsentText, type Level, type Levels } from "./tankVisibility";
 
@@ -18,6 +19,7 @@ export function TankVisibilitySettings({ tankId, visibility, audience, onChanged
 }) {
   const { t } = useTranslation();
   const theme = useTheme();
+  const gate = useRegistrationGate();
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState<Levels>({ profile: visibility.profile, stream: visibility.stream });
   const [busy, setBusy] = useState(false);
@@ -45,9 +47,9 @@ export function TankVisibilitySettings({ tankId, visibility, audience, onChanged
       <Text testID="tank-visibility-profile" style={[theme.type.body, { color: theme.colors.fg }]}>{`${t("tanks.visibility.profileTitle")}: ${t(`tanks.visibility.${visibility.profile}`)}`}</Text>
       <Text testID="tank-visibility-stream" style={[theme.type.body, { color: theme.colors.fg }]}>{`${t("tanks.visibility.streamTitle")}: ${t(`tanks.visibility.${visibility.stream}`)}`}</Text>
     </View>
-    <Button testID="tank-audience-open" variant="secondary" label={t("tanks.visibility.audienceOpen")} onPress={onOpenAudience} />
+    <Button testID="tank-audience-open" variant="secondary" label={t("tanks.visibility.audienceOpen")} onPress={() => { if (!gate("audience")) onOpenAudience(); }} />
     {audience && Number(audience.pendingRequests) > 0 ? <Text testID="tank-audience-pending" accessibilityLiveRegion="polite" style={[theme.type.bodyStrong, { color: theme.colors.fg }]}>{t("tanks.visibility.openRequests", { number: Number(audience.pendingRequests) })}</Text> : null}
-    <Button testID="tank-visibility-open" variant="secondary" label={t(open ? "navigation.cancel" : "tanks.visibility.title")} onPress={() => { setOpen(value => !value); setDraft({ profile: visibility.profile, stream: visibility.stream }); setError(null); setSaved(false); }} />
+    <Button testID="tank-visibility-open" variant="secondary" label={t(open ? "navigation.cancel" : "tanks.visibility.title")} onPress={() => { if (gate("visibility")) return; setOpen(value => !value); setDraft({ profile: visibility.profile, stream: visibility.stream }); setError(null); setSaved(false); }} />
     {open ? <>
       <LevelGroup testID="tank-visibility-profile-choice" title={t("tanks.visibility.profileTitle")} help={t("tanks.visibility.profileHelp")} value={draft.profile}
         onChange={level => setDraft(current => draftAfterProfileChange(current, level))} />

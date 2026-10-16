@@ -3,6 +3,7 @@ import { API_BASE_URL, setWebSessionCsrfToken, setWebSessionEndedListener } from
 import { AuthContext, type AuthContextValue, type AuthStatus } from "./authContext";
 import { endWebSession, readWebSession, startWebLogin, takeSignInFailure } from "./webSession";
 import { switchOffWebPush } from "../webPush/switchOff";
+import { useAccountStatus } from "../deviceAccount/useAccountStatus";
 
 export { useAuth, type AuthContextValue, type AuthStatus } from "./authContext";
 
@@ -25,11 +26,13 @@ const browserFetch: typeof fetch = (input, init) => fetch(input, init);
  * answer of the API ends the session in the app as well. Signing out ends the session at the API
  * and then passes the page through Keycloak's end session address. A login that returned without a session
  * carries a flag in the address; it is removed from the address and reported as signInFailed.
+ * The web app has no device account, except in the build of the write E2E stack (see useAccountStatus).
  */
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [status, setStatus] = useState<AuthStatus>("loading");
+  const [sessionStatus, setStatus] = useState<AuthStatus>("loading");
   const [csrfToken, setCsrfToken] = useState<string | null>(null);
-  const [accountId, setAccountId] = useState<string | null>(null);
+  const [sessionAccountId, setAccountId] = useState<string | null>(null);
+  const { status, accountId, provisional, registrationPending, leftBehind } = useAccountStatus(sessionStatus, sessionAccountId);
   const [signInFailed, setSignInFailed] = useState(() => takeSignInFailure(window.location.href).failed);
 
   useEffect(() => {
@@ -93,8 +96,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const getAccessToken = useCallback(async () => undefined, []);
 
   const value = useMemo<AuthContextValue>(
-    () => ({ status, accountId, login, signInFailed, logout, getAccessToken }),
-    [status, accountId, login, signInFailed, logout, getAccessToken],
+    () => ({ status, accountId, provisional, registrationPending, deviceContentLeftBehind: leftBehind, login, signInFailed, logout, getAccessToken }),
+    [status, accountId, provisional, registrationPending, leftBehind, login, signInFailed, logout, getAccessToken],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

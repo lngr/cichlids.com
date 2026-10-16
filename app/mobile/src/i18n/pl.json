@@ -283,7 +283,14 @@
     "todos": "Zadania",
     "media": "Moje media",
     "profileImages": "Awatar i nagłówek",
-    "stories": "Moje historie"
+    "stories": "Moje historie",
+    "device": {
+      "title": "Konto na tym urządzeniu",
+      "text": "Twoje akwaria i wpisy są prywatne i zapisane na tym urządzeniu do czasu rejestracji. Odinstalowanie aplikacji lub wyczyszczenie urządzenia je usuwa.",
+      "leftBehindTitle": "Treści na tym urządzeniu",
+      "leftBehindText": "Akwaria konta urządzenia zostają na tym urządzeniu i nie należą do Twojego konta. Po dwunastu miesiącach bez użycia są usuwane.",
+      "takeAlong": "Przenieś na moje konto"
+    }
   },
   "upload": {
     "title": "Prześlij zdjęcie",
@@ -446,7 +453,13 @@
     "story_needs_item": "Opublikowana historia zachowuje co najmniej jeden element. Wycofaj ją do szkicu lub usuń.",
     "story_not_published": "Wycofać można tylko opublikowaną historię.",
     "story_text_invalid": "Wpisz tytuł do 200 znaków.",
-    "story_caption_invalid": "Podpis ma najwyżej 500 znaków."
+    "story_caption_invalid": "Podpis ma najwyżej 500 znaków.",
+    "registration_required": "To wymaga konta. Zarejestruj się lub zaloguj.",
+    "account_has_profile": "To konto ma już profil. Spróbuj ponownie.",
+    "account_has_no_profile": "To konto nie ma jeszcze profilu. Spróbuj ponownie.",
+    "account_suspended": "To konto jest zawieszone.",
+    "device_auth_refused": "To urządzenie nie mogło potwierdzić swojego konta. Spróbuj ponownie.",
+    "keycloak_session_required": "Najpierw się zaloguj."
   },
   "featureFlags": {
     "activityTitle": "Aktywność społeczności",
@@ -1323,6 +1336,55 @@
       "error": "Nie udało się wczytać listy. Spróbuj ponownie.",
       "close": "Zamknij",
       "taken": "Już w historii"
+    }
+  },
+  "registration": {
+    "title": "Załóż konto",
+    "keep": "Wszystko, co utworzyłeś na tym urządzeniu, zostaje: akwaria, wpisy i zdjęcia.",
+    "register": "Zarejestruj się lub zaloguj",
+    "later": "Nie teraz",
+    "working": "Przenoszenie treści na Twoje konto",
+    "reason": {
+      "follow": "Obserwowanie akwarium wymaga konta.",
+      "comment": "Komentowanie wymaga konta.",
+      "rate": "Ocenianie wymaga konta.",
+      "story": "Historie są publikowane z poziomu konta.",
+      "publish": "Opublikowanie zdjęcia wymaga konta.",
+      "visibility": "Pokazanie akwarium innym wymaga konta.",
+      "profileImages": "Awatar i obraz nagłówka wymagają konta.",
+      "audience": "Wybranie, kto może widzieć akwarium, wymaga konta.",
+      "register": "Załóż konto, aby zachować akwaria poza tym urządzeniem i móc je udostępniać.",
+      "generic": "To wymaga konta."
+    },
+    "counts": {
+      "tanks": "Akwaria",
+      "entries": "Wpisy pielęgnacyjne",
+      "photos": "Zdjęcia i filmy"
+    },
+    "dropped": "Urlopy, które nie zostały przejęte: {{number}}",
+    "droppedHelp": "Nakładają się na urlopy Twojego konta albo zmieniłyby okresy, które są już zamknięte.",
+    "decision": {
+      "title": "Zabrać treści ze sobą?",
+      "text": "Twoje konto ma już profil. Czy chcesz przenieść do niego treści z tego urządzenia?",
+      "yes": "Tak, zabierz je",
+      "no": "Nie, zostaw je na tym urządzeniu"
+    },
+    "done": {
+      "upgradedTitle": "Twoje konto jest gotowe",
+      "upgradedText": "Twoje akwaria, wpisy i zdjęcia należą do Twojego konta.",
+      "movedTitle": "Treści przeniesione",
+      "movedText": "Twoje akwaria, wpisy i zdjęcia są na Twoim koncie.",
+      "declinedTitle": "Treści zostają na tym urządzeniu",
+      "declinedText": "Jesteś zalogowany na istniejące konto. Konto urządzenia z akwariami zostaje na tym urządzeniu i jest ukryte, dopóki jesteś zalogowany. Po wylogowaniu wraca, a w zakładce Ja możesz je przenieść.",
+      "close": "Zamknij"
+    },
+    "error": "Nie udało się przenieść treści. Spróbuj ponownie.",
+    "note": {
+      "title": "Twoje konto działa na tym urządzeniu",
+      "text": "Możesz zacząć bez rejestracji. Twoje akwaria i wpisy pozostają prywatne i są zapisane na tym urządzeniu do czasu rejestracji.",
+      "loss": "Jeśli odinstalujesz aplikację lub wyczyścisz urządzenie, przepadną. Rejestracja zachowuje wszystko.",
+      "continue": "Kontynuuj bez rejestracji",
+      "register": "Zarejestruj się teraz"
     }
   }
 }

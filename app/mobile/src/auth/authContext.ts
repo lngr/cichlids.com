@@ -3,9 +3,21 @@ import { createContext, useContext } from "react";
 export type AuthStatus = "loading" | "anonymous" | "authenticated";
 
 export interface AuthContextValue {
+  /**
+   * "authenticated" when the app acts for a member: a signed-in account or, on a device without
+   * a session, the provisional account of the installation. "loading" also covers the wait for
+   * the first registration of the device account and for the handover of its content to an
+   * account that just signed in. "anonymous" is a visitor.
+   */
   status: AuthStatus;
-  /** The Keycloak account id of the signed-in member; null while loading and when anonymous. */
+  /** The Keycloak account id of the signed-in member, "device:" and the profile id for the provisional account; null while loading and when anonymous. */
   accountId: string | null;
+  /** True when the app acts for the provisional account of this installation, which may not take actions that reach other people. */
+  provisional: boolean;
+  /** True while a signed-in account waits for the device account to hand over its content; status is loading then. */
+  registrationPending: boolean;
+  /** True when the member signed in and the content of the device account stayed on the device. */
+  deviceContentLeftBehind: boolean;
   /**
    * Opens the Keycloak login; resolves false when the user cancels it or when the login only
    * became ready (the discovery document was loaded by this call, a further call opens the login),

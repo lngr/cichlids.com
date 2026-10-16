@@ -276,7 +276,14 @@
     "todos": "Tarefas",
     "media": "Minhas mídias",
     "profileImages": "Avatar e capa",
-    "stories": "Minhas histórias"
+    "stories": "Minhas histórias",
+    "device": {
+      "title": "Conta neste dispositivo",
+      "text": "Seus aquários e registros são privados e ficam salvos neste dispositivo até você se cadastrar. Desinstalar o app ou apagar o dispositivo os perde.",
+      "leftBehindTitle": "Conteúdo neste dispositivo",
+      "leftBehindText": "Os aquários da conta do dispositivo ficam neste dispositivo e não fazem parte da sua conta. Eles são removidos após doze meses sem uso.",
+      "takeAlong": "Levar para a minha conta"
+    }
   },
   "upload": {
     "title": "Enviar foto",
@@ -438,7 +445,13 @@
     "story_needs_item": "Uma história publicada mantém pelo menos um item. Volte-a para rascunho ou exclua-a.",
     "story_not_published": "Só uma história publicada pode ser retirada.",
     "story_text_invalid": "Digite um título de até 200 caracteres.",
-    "story_caption_invalid": "Uma legenda tem no máximo 500 caracteres."
+    "story_caption_invalid": "Uma legenda tem no máximo 500 caracteres.",
+    "registration_required": "Isso exige uma conta. Cadastre-se ou entre.",
+    "account_has_profile": "Esta conta já tem um perfil. Tente novamente.",
+    "account_has_no_profile": "Esta conta ainda não tem um perfil. Tente novamente.",
+    "account_suspended": "Esta conta está suspensa.",
+    "device_auth_refused": "Este dispositivo não conseguiu comprovar sua conta. Tente novamente.",
+    "keycloak_session_required": "Entre primeiro."
   },
   "featureFlags": {
     "activityTitle": "Atividade da comunidade",
@@ -1304,6 +1317,55 @@
       "error": "Não foi possível carregar a lista. Tente novamente.",
       "close": "Fechar",
       "taken": "Já está na história"
+    }
+  },
+  "registration": {
+    "title": "Crie sua conta",
+    "keep": "Tudo o que você criou neste dispositivo é mantido: seus aquários, registros e fotos.",
+    "register": "Cadastrar-se ou entrar",
+    "later": "Agora não",
+    "working": "Passando seu conteúdo para a sua conta",
+    "reason": {
+      "follow": "Seguir um aquário exige uma conta.",
+      "comment": "Comentar exige uma conta.",
+      "rate": "Avaliar exige uma conta.",
+      "story": "Histórias são publicadas com uma conta.",
+      "publish": "Publicar uma foto exige uma conta.",
+      "visibility": "Mostrar um aquário para outras pessoas exige uma conta.",
+      "profileImages": "Um avatar e uma imagem de cabeçalho exigem uma conta.",
+      "audience": "Escolher quem pode ver um aquário exige uma conta.",
+      "register": "Crie uma conta para manter seus aquários além deste dispositivo e para compartilhá-los.",
+      "generic": "Isso exige uma conta."
+    },
+    "counts": {
+      "tanks": "Aquários",
+      "entries": "Registros de cuidados",
+      "photos": "Fotos e vídeos"
+    },
+    "dropped": "Férias não aproveitadas: {{number}}",
+    "droppedHelp": "Elas se sobrepõem a férias da sua conta ou alterariam períodos já encerrados.",
+    "decision": {
+      "title": "Levar seu conteúdo?",
+      "text": "Sua conta já tem um perfil. Quer passar o conteúdo deste dispositivo para ele?",
+      "yes": "Sim, levar",
+      "no": "Não, manter neste dispositivo"
+    },
+    "done": {
+      "upgradedTitle": "Sua conta está pronta",
+      "upgradedText": "Seus aquários, registros e fotos pertencem à sua conta.",
+      "movedTitle": "Conteúdo incluído",
+      "movedText": "Seus aquários, registros e fotos estão na sua conta.",
+      "declinedTitle": "O conteúdo fica neste dispositivo",
+      "declinedText": "Você entrou na sua conta existente. A conta do dispositivo com seus aquários fica neste dispositivo e permanece oculta enquanto você estiver conectado. Ao sair, ela volta, e em Eu você pode levá-la junto.",
+      "close": "Fechar"
+    },
+    "error": "Não foi possível passar o conteúdo. Tente novamente.",
+    "note": {
+      "title": "Sua conta vive neste dispositivo",
+      "text": "Você pode começar sem se cadastrar. Seus aquários e registros ficam privados e são salvos neste dispositivo até você se cadastrar.",
+      "loss": "Se você desinstalar o app ou apagar o dispositivo, eles se perdem. Um cadastro mantém tudo.",
+      "continue": "Continuar sem me cadastrar",
+      "register": "Cadastrar agora"
     }
   }
 }

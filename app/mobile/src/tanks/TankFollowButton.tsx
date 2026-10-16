@@ -8,6 +8,7 @@ import { useLoginAction } from "../auth/useLoginAction";
 import { Button } from "../components/Button";
 import { translateApiError } from "../lib/apiErrors";
 import { useTheme } from "../theme";
+import { useRegistrationGate } from "../registration/RegistrationProvider";
 import { followControlOf, undoesFollow } from "./tankFollow";
 
 /**
@@ -20,13 +21,15 @@ export function TankFollowButton({ tankId, title, profile, follow, isOwner, onCh
 }) {
   const { t } = useTranslation();
   const theme = useTheme();
-  const { status } = useAuth();
+  const { status, provisional } = useAuth();
   const login = useLoginAction();
+  const gate = useRegistrationGate();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const control = followControlOf(follow, profile, isOwner, status === "authenticated");
+  const control = followControlOf(follow, profile, isOwner, status === "authenticated", provisional);
   if (control === "hidden" || status === "loading") return null;
   async function press() {
+    if (gate("follow")) return;
     setBusy(true); setError(null);
     try {
       if (undoesFollow(control)) await apiClient.tanks.unfollow(tankId);

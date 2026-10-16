@@ -283,7 +283,14 @@
     "todos": "Úkoly",
     "media": "Moje média",
     "profileImages": "Avatar a záhlaví",
-    "stories": "Moje příběhy"
+    "stories": "Moje příběhy",
+    "device": {
+      "title": "Účet na tomto zařízení",
+      "text": "Vaše akvária a záznamy jsou soukromé a uložené na tomto zařízení, dokud se nezaregistrujete. Odinstalováním aplikace nebo vymazáním zařízení o ně přijdete.",
+      "leftBehindTitle": "Obsah na tomto zařízení",
+      "leftBehindText": "Akvária účtu zařízení zůstávají na tomto zařízení a nejsou součástí vašeho účtu. Po dvanácti měsících bez použití se odstraní.",
+      "takeAlong": "Vzít do mého účtu"
+    }
   },
   "upload": {
     "title": "Nahrát fotografii",
@@ -446,7 +453,13 @@
     "story_needs_item": "Zveřejněný příběh si ponechá aspoň jednu položku. Vraťte ho do konceptu nebo ho smažte.",
     "story_not_published": "Stáhnout lze jen zveřejněný příběh.",
     "story_text_invalid": "Zadejte název nejvýše o 200 znacích.",
-    "story_caption_invalid": "Popisek má nejvýše 500 znaků."
+    "story_caption_invalid": "Popisek má nejvýše 500 znaků.",
+    "registration_required": "To vyžaduje účet. Zaregistrujte se nebo se přihlaste.",
+    "account_has_profile": "Tento účet už má profil. Zkuste to prosím znovu.",
+    "account_has_no_profile": "Tento účet ještě nemá profil. Zkuste to prosím znovu.",
+    "account_suspended": "Tento účet je pozastaven.",
+    "device_auth_refused": "Toto zařízení nemohlo prokázat svůj účet. Zkuste to prosím znovu.",
+    "keycloak_session_required": "Nejdřív se přihlaste."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -1323,6 +1336,55 @@
       "error": "Seznam se nepodařilo načíst. Zkuste to znovu.",
       "close": "Zavřít",
       "taken": "Už v příběhu"
+    }
+  },
+  "registration": {
+    "title": "Vytvořte si účet",
+    "keep": "Vše, co jste na tomto zařízení vytvořili, zůstane: vaše akvária, záznamy a fotky.",
+    "register": "Zaregistrovat se nebo se přihlásit",
+    "later": "Teď ne",
+    "working": "Obsah se přesouvá do vašeho účtu",
+    "reason": {
+      "follow": "Sledování akvária vyžaduje účet.",
+      "comment": "Komentování vyžaduje účet.",
+      "rate": "Hodnocení vyžaduje účet.",
+      "story": "Příběhy se zveřejňují pod účtem.",
+      "publish": "Zveřejnění fotky vyžaduje účet.",
+      "visibility": "Zobrazení akvária ostatním vyžaduje účet.",
+      "profileImages": "Avatar a záhlavní obrázek vyžadují účet.",
+      "audience": "Volba, kdo smí akvárium vidět, vyžaduje účet.",
+      "register": "Vytvořte si účet, abyste si akvária uchovali i mimo toto zařízení a mohli je sdílet.",
+      "generic": "To vyžaduje účet."
+    },
+    "counts": {
+      "tanks": "Akvária",
+      "entries": "Záznamy péče",
+      "photos": "Fotky a videa"
+    },
+    "dropped": "Nepřevzaté dovolené: {{number}}",
+    "droppedHelp": "Překrývají se s dovolenými vašeho účtu nebo by změnily období, která jsou již uzavřená.",
+    "decision": {
+      "title": "Vzít obsah s sebou?",
+      "text": "Váš účet už má profil. Chcete do něj přesunout obsah tohoto zařízení?",
+      "yes": "Ano, vzít s sebou",
+      "no": "Ne, nechat na tomto zařízení"
+    },
+    "done": {
+      "upgradedTitle": "Váš účet je připraven",
+      "upgradedText": "Vaše akvária, záznamy a fotky patří k vašemu účtu.",
+      "movedTitle": "Obsah převzat",
+      "movedText": "Vaše akvária, záznamy a fotky jsou ve vašem účtu.",
+      "declinedTitle": "Obsah zůstává na tomto zařízení",
+      "declinedText": "Jste přihlášeni ke svému existujícímu účtu. Účet zařízení s jeho akvárii zůstává na tomto zařízení a je skrytý, dokud jste přihlášeni. Po odhlášení se vrátí a v části Já ho můžete vzít s sebou.",
+      "close": "Zavřít"
+    },
+    "error": "Obsah se nepodařilo přesunout. Zkuste to prosím znovu.",
+    "note": {
+      "title": "Váš účet žije na tomto zařízení",
+      "text": "Můžete začít bez registrace. Vaše akvária a záznamy zůstávají soukromé a ukládají se na toto zařízení, dokud se nezaregistrujete.",
+      "loss": "Když aplikaci odinstalujete nebo zařízení vymažete, přijdete o ně. Registrace uchová vše.",
+      "continue": "Pokračovat bez registrace",
+      "register": "Zaregistrovat se teď"
     }
   }
 }

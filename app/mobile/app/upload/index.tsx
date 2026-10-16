@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import type { Draft, UploadFile } from "@cichlids/client-core";
 import { apiClient } from "../../src/api/client";
 import { useAuth } from "../../src/auth/AuthProvider";
+import { NeedsRegistration } from "../../src/registration/NeedsRegistration";
 import { Button } from "../../src/components/Button";
 import { Chip } from "../../src/components/Chip";
 import { LoadingView } from "../../src/components/StatusView";
@@ -26,11 +27,12 @@ import {
 } from "../../src/upload/uploadForm";
 
 export default function UploadScreen() {
-  const { status, accountId } = useAuth();
+  const { status, accountId, provisional } = useAuth();
   const params = useLocalSearchParams<{ draft?: string | string[] }>();
 
   if (status === "loading") return <LoadingView />;
   if (status === "anonymous") return <RequireLogin />;
+  if (provisional) return <NeedsRegistration reason="publish" />;
   return <UploadFlow draftId={draftParam(params.draft)} accountId={accountId} />;
 }
 

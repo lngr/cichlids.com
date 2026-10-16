@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import { minTouchTarget, useTheme } from "../theme";
 
 export type ProfileSection = "pictures" | "tanks" | "drafts";
-export function ProfileTabs({ section, onSelect, own = false }: { section: ProfileSection; onSelect: (section: ProfileSection) => void; own?: boolean }) {
+export function ProfileTabs({ section, onSelect, own = false, drafts = own }: { section: ProfileSection; onSelect: (section: ProfileSection) => void; own?: boolean; drafts?: boolean }) {
   const theme = useTheme();
   const { t } = useTranslation();
-  const sections: ProfileSection[] = own ? ["pictures", "tanks", "drafts"] : ["pictures", "tanks"];
+  const sections: ProfileSection[] = drafts ? ["pictures", "tanks", "drafts"] : ["pictures", "tanks"];
   return (
     <View accessibilityRole="tablist" style={{ flexDirection: "row", gap: theme.space[2], padding: theme.space[4] }}>
       {sections.map((candidate) => {

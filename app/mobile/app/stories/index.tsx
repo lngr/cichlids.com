@@ -4,12 +4,14 @@ import { useAuth } from "../../src/auth/AuthProvider";
 import { useLoginAction } from "../../src/auth/useLoginAction";
 import { Button } from "../../src/components/Button";
 import { LoadingView } from "../../src/components/StatusView";
+import { NeedsRegistration } from "../../src/registration/NeedsRegistration";
 import { StoriesView } from "../../src/stories/StoriesView";
 import { useTheme } from "../../src/theme";
 
 export default function StoriesScreen() {
-  const { status, accountId } = useAuth();
+  const { status, accountId, provisional } = useAuth();
   if (status === "loading") return <LoadingView />;
+  if (provisional) return <NeedsRegistration reason="story" />;
   return status === "authenticated" ? <StoriesView key={accountId} /> : <SignIn />;
 }
 

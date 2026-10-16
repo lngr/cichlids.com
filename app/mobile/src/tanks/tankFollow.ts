@@ -8,8 +8,11 @@ import type { TankFollow, TankVisibility } from "@cichlids/client-core";
 export type FollowControl = "hidden" | "login" | "follow" | "request" | "requested" | "following";
 
 export function followControlOf(
-  follow: TankFollow | null | undefined, profile: TankVisibility, isOwner: boolean, signedIn: boolean,
+  follow: TankFollow | null | undefined, profile: TankVisibility, isOwner: boolean, signedIn: boolean, provisional = false,
 ): FollowControl {
+  // The API takes no follows from a device account and reports none, so the app offers the follow
+  // of a public tank and lets the press lead to the registration.
+  if (provisional) return !isOwner && profile === "public" ? "follow" : "hidden";
   if (isOwner || !follow) return "hidden";
   if (!signedIn) return profile === "public" ? "login" : "hidden";
   if (follow.state === "requested") return "requested";

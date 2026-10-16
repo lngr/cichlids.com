@@ -7,6 +7,7 @@ import { apiClient } from "../api/client";
 import { useAuth } from "../auth/AuthProvider";
 import { useLoginAction } from "../auth/useLoginAction";
 import { translateApiError } from "../lib/apiErrors";
+import { useRegistrationGate } from "../registration/RegistrationProvider";
 import { minTouchTarget, useTheme } from "../theme";
 import { Button } from "./Button";
 import {
@@ -75,6 +76,7 @@ function ComposerForm({
 }) {
   const theme = useTheme();
   const { t } = useTranslation();
+  const gate = useRegistrationGate();
   const [myProfileId, setMyProfileId] = useState<number | string | null>(null);
   const [draft, setDraft] = useState<CommentDraft>(emptyCommentDraft);
   const [sending, setSending] = useState(false);
@@ -106,6 +108,7 @@ function ComposerForm({
 
   const send = async () => {
     if (sendingRef.current || !canSubmit(effectiveDraft)) return;
+    if (gate(effectiveDraft.stars === null ? "comment" : "rate")) return;
     sendingRef.current = true;
     setSending(true);
     setFailure(null);

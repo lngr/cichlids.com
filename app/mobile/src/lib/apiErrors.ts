@@ -123,6 +123,12 @@ export const API_ERROR_CODES = [
   "story_not_published",
   "story_text_invalid",
   "story_caption_invalid",
+  "registration_required",
+  "account_has_profile",
+  "account_has_no_profile",
+  "account_suspended",
+  "device_auth_refused",
+  "keycloak_session_required",
 ] as const;
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];

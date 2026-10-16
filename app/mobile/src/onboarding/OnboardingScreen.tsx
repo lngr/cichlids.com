@@ -2,34 +2,45 @@ import { useEffect, useRef, useState } from "react";
 import { AccessibilityInfo, Animated, Pressable, ScrollView, Text, TextInput, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
-import type { LegacyTankDto, OnboardingRequest, OnboardingResultDto } from "@cichlids/client-core";
+import type { CreateTankRequest, LegacyTankDto, OnboardingRequest, OnboardingResultDto } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
 import { useAuth } from "../auth/AuthProvider";
 import { Button } from "../components/Button";
 import { ErrorView, LoadingView } from "../components/StatusView";
 import { translateApiError } from "../lib/apiErrors";
 import { useMachineRouter } from "../navigation/NavigationProvider";
+import { DeviceAccountNote, useDeviceNote } from "../registration/DeviceAccountNote";
 import { useTheme } from "../theme";
 import { useUnits } from "../units/useUnits";
 import { RegionChoices } from "./RegionChoices";
 import { interestRegions, standardTanks, standardTankRequest, type SelectableRegion } from "./standardTanks";
 
 export default function OnboardingScreen() {
-  const { status } = useAuth();
+  const { status, provisional } = useAuth();
   const router = useMachineRouter();
   const { t } = useTranslation();
   useEffect(() => { if (status === "anonymous") router.replace("/me"); }, [status, router]);
-  return status === "authenticated" ? <OnboardingFlow /> : <LoadingView label={t("me.loading")} />;
+  if (status !== "authenticated") return <LoadingView label={t("me.loading")} />;
+  return provisional ? <ProvisionalOnboarding /> : <OnboardingFlow provisional={false} />;
 }
 
-function OnboardingFlow() {
+// A provisional account sees the note about the device account once, then creates its first tank.
+function ProvisionalOnboarding() {
+  const { t } = useTranslation();
+  const note = useDeviceNote();
+  if (note.seen === null) return <LoadingView label={t("me.loading")} />;
+  return note.seen ? <OnboardingFlow provisional /> : <DeviceAccountNote onContinue={note.remember} />;
+}
+
+// A provisional account creates private tanks only: no visibility question, no interests, no legacy tanks.
+function OnboardingFlow({ provisional }: { provisional: boolean }) {
   const { t, i18n } = useTranslation();
   const theme = useTheme();
   const units = useUnits();
   const router = useMachineRouter();
   const [path, setPath] = useState<"question" | "visibility" | "yes" | "no">("question");
-  const [isPublic, setIsPublic] = useState<boolean | null>(null);
-  const [legacy, setLegacy] = useState<LegacyTankDto[] | null>(null);
+  const [isPublic, setIsPublic] = useState<boolean | null>(provisional ? false : null);
+  const [legacy, setLegacy] = useState<LegacyTankDto[] | null>(provisional ? [] : null);
   const [loadAttempt, setLoadAttempt] = useState(0);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [legacyTank, setLegacyTank] = useState<LegacyTankDto | null>(null);
@@ -49,12 +60,13 @@ function OnboardingFlow() {
   const chooseNewTank = (choose: () => void) => { choose(); if (isPublic === null) setPath("visibility"); };
   const number = (value: string) => Number(value.trim().replace(",", "."));
   useEffect(() => {
+    if (provisional) return;
     let cancelled = false;
     setLoadError(null);
     void apiClient.me.legacyTanks().then(tanks => { if (!cancelled) setLegacy(tanks); })
       .catch(err => { if (!cancelled) setLoadError(translateApiError(err, t, "common.loadError")); });
     return () => { cancelled = true; };
-  }, [loadAttempt, t]);
+  }, [loadAttempt, t, provisional]);
 
   async function save(skip = false) {
     if (saving.current) return;
@@ -73,6 +85,11 @@ function OnboardingFlow() {
     saving.current = true;
     setBusy(true); setError(null);
     try {
+      if (provisional) {
+        if (skip || !("tank" in request) || !request.tank) router.replace("/me");
+        else router.replace(`/tanks/${(await apiClient.tanks.create({ ...(request.tank as CreateTankRequest), isPublic: false })).id}`);
+        return;
+      }
       const result = await apiClient.me.completeOnboarding(request);
       if (result.tankId) setReward(result);
       else router.replace("/me");
@@ -91,14 +108,14 @@ function OnboardingFlow() {
       {path === "question" ? <>
         <Text style={textStyle}>{t("onboarding.intro")}</Text>
         <Button testID="onboarding-yes" label={t("onboarding.yes")} disabled={!legacyKnown} onPress={() => setPath(isPublic === null && !hasLegacy ? "visibility" : "yes")} />
-        <Button testID="onboarding-no" variant="secondary" label={t("onboarding.no")} onPress={() => setPath("no")} />
+        {provisional ? null : <Button testID="onboarding-no" variant="secondary" label={t("onboarding.no")} onPress={() => setPath("no")} />}
       </> : path === "visibility" ? <>
         <Text style={textStyle}>{t("onboarding.visibility.explain")}</Text>
         <Button testID="onboarding-visibility-public" variant="secondary" label={t("onboarding.visibility.yes")} onPress={() => { setIsPublic(true); setPath("yes"); }} />
         <Button testID="onboarding-visibility-private" variant="secondary" label={t("onboarding.visibility.no")} onPress={() => { setIsPublic(false); setPath("yes"); }} />
         <Button variant="secondary" label={t("navigation.back")} onPress={() => setPath(hasLegacy ? "yes" : "question")} />
       </> : path === "no" ? <RegionChoices multiple regions={interestRegions} selected={interests} onChange={value => setInterests(values => values.includes(value) ? values.filter(v => v !== value) : [...values, value])} /> : <>
-        {!legacyTank && isPublic !== null ? <View style={{ gap: theme.space[2] }}>
+        {!provisional && !legacyTank && isPublic !== null ? <View style={{ gap: theme.space[2] }}>
           <Text testID="onboarding-visibility-summary" style={textStyle}>{t(isPublic ? "onboarding.visibility.summaryPublic" : "onboarding.visibility.summaryPrivate")}</Text>
           <Button testID="onboarding-visibility-change" variant="secondary" label={t("onboarding.visibility.change")} onPress={() => setPath("visibility")} />
         </View> : null}

@@ -276,7 +276,14 @@
     "todos": "Tareas",
     "media": "Mi contenido multimedia",
     "profileImages": "Avatar y portada",
-    "stories": "Mis historias"
+    "stories": "Mis historias",
+    "device": {
+      "title": "Cuenta en este dispositivo",
+      "text": "Tus acuarios y entradas son privados y se guardan en este dispositivo hasta que te registres. Si desinstalas la app o borras el dispositivo, se pierden.",
+      "leftBehindTitle": "Contenido en este dispositivo",
+      "leftBehindText": "Los acuarios de la cuenta del dispositivo se quedan en este dispositivo y no forman parte de tu cuenta. Se eliminan tras doce meses sin uso.",
+      "takeAlong": "Pasarlos a mi cuenta"
+    }
   },
   "upload": {
     "title": "Subir foto",
@@ -438,7 +445,13 @@
     "story_needs_item": "Una historia publicada conserva al menos un elemento. Vuélvela borrador o elimínala.",
     "story_not_published": "Solo se puede retirar una historia publicada.",
     "story_text_invalid": "Escribe un título de hasta 200 caracteres.",
-    "story_caption_invalid": "Una descripción tiene como máximo 500 caracteres."
+    "story_caption_invalid": "Una descripción tiene como máximo 500 caracteres.",
+    "registration_required": "Esto requiere una cuenta. Regístrate o inicia sesión.",
+    "account_has_profile": "Esta cuenta ya tiene un perfil. Inténtalo de nuevo.",
+    "account_has_no_profile": "Esta cuenta aún no tiene un perfil. Inténtalo de nuevo.",
+    "account_suspended": "Esta cuenta está suspendida.",
+    "device_auth_refused": "Este dispositivo no pudo demostrar su cuenta. Inténtalo de nuevo.",
+    "keycloak_session_required": "Inicia sesión primero."
   },
   "featureFlags": {
     "activityTitle": "Actividad de la comunidad",
@@ -1304,6 +1317,55 @@
       "error": "No se pudo cargar la lista. Inténtalo de nuevo.",
       "close": "Cerrar",
       "taken": "Ya está en la historia"
+    }
+  },
+  "registration": {
+    "title": "Crea tu cuenta",
+    "keep": "Todo lo que creaste en este dispositivo se conserva: tus acuarios, entradas y fotos.",
+    "register": "Registrarse o iniciar sesión",
+    "later": "Ahora no",
+    "working": "Pasando tu contenido a tu cuenta",
+    "reason": {
+      "follow": "Seguir un acuario requiere una cuenta.",
+      "comment": "Comentar requiere una cuenta.",
+      "rate": "Calificar requiere una cuenta.",
+      "story": "Las historias se publican con una cuenta.",
+      "publish": "Publicar una foto requiere una cuenta.",
+      "visibility": "Mostrar un acuario a otros requiere una cuenta.",
+      "profileImages": "Un avatar y una imagen de encabezado requieren una cuenta.",
+      "audience": "Elegir quién puede ver un acuario requiere una cuenta.",
+      "register": "Crea una cuenta para conservar tus acuarios más allá de este dispositivo y para compartirlos.",
+      "generic": "Esto requiere una cuenta."
+    },
+    "counts": {
+      "tanks": "Acuarios",
+      "entries": "Entradas de cuidado",
+      "photos": "Fotos y videos"
+    },
+    "dropped": "Vacaciones no incluidas: {{number}}",
+    "droppedHelp": "Se superponen con vacaciones de tu cuenta o cambiarían períodos que ya están cerrados.",
+    "decision": {
+      "title": "¿Llevar tu contenido?",
+      "text": "Tu cuenta ya tiene un perfil. ¿Quieres pasar a él el contenido de este dispositivo?",
+      "yes": "Sí, llevarlo",
+      "no": "No, dejarlo en este dispositivo"
+    },
+    "done": {
+      "upgradedTitle": "Tu cuenta está lista",
+      "upgradedText": "Tus acuarios, entradas y fotos pertenecen a tu cuenta.",
+      "movedTitle": "Contenido incluido",
+      "movedText": "Tus acuarios, entradas y fotos están en tu cuenta.",
+      "declinedTitle": "El contenido se queda en este dispositivo",
+      "declinedText": "Iniciaste sesión en tu cuenta existente. La cuenta del dispositivo con sus acuarios se queda en este dispositivo y está oculta mientras tengas la sesión iniciada. Al cerrar sesión vuelve, y en Yo puedes llevarla contigo.",
+      "close": "Cerrar"
+    },
+    "error": "No se pudo pasar el contenido. Inténtalo de nuevo.",
+    "note": {
+      "title": "Tu cuenta vive en este dispositivo",
+      "text": "Puedes empezar sin registrarte. Tus acuarios y entradas son privados y se guardan en este dispositivo hasta que te registres.",
+      "loss": "Si desinstalas la app o borras el dispositivo, se pierden. Un registro lo conserva todo.",
+      "continue": "Continuar sin registrarme",
+      "register": "Registrarme ahora"
     }
   }
 }

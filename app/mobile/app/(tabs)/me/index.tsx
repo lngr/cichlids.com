@@ -17,6 +17,7 @@ import { ProfileHeader } from "../../../src/profile/ProfileHeader";
 import { ProfileTabs, type ProfileSection } from "../../../src/profile/ProfileTabs";
 import { ProfileContentList } from "../../../src/profile/ProfileContentList";
 import { useProfileLists } from "../../../src/profile/useProfileLists";
+import { DeviceAccountCard } from "../../../src/registration/DeviceAccountCard";
 import { StreakSettings } from "../../../src/streaks/StreakSettings";
 import { VacationShareLine } from "../../../src/streaks/VacationShareLine";
 import { DraftsSection } from "../../../src/upload/DraftsSection";
@@ -53,7 +54,7 @@ function AnonymousView() {
 function ProfileView() {
   const theme = useTheme();
   const { t } = useTranslation();
-  const { logout } = useAuth();
+  const { logout, provisional } = useAuth();
   const [me, setMe] = useState<Me | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [attempt, setAttempt] = useState(0);
@@ -74,9 +75,9 @@ function ProfileView() {
     return (
       <View style={[styles.fill, { backgroundColor: theme.colors.bg }]}>
         <ErrorView message={error} onRetry={() => setAttempt((n) => n + 1)} />
-        <View style={{ padding: theme.space[4] }}>
+        {provisional ? null : <View style={{ padding: theme.space[4] }}>
           <Button testID="logout-button" variant="secondary" label={t("me.logout")} onPress={() => void logout()} />
-        </View>
+        </View>}
       </View>
     );
   }
@@ -88,7 +89,7 @@ function ProfileView() {
 function MemberContent({ profile, onStreaksChanged }: { profile: Me["profile"]; onStreaksChanged: () => void }) {
   const theme = useTheme();
   const { t } = useTranslation();
-  const { logout } = useAuth();
+  const { logout, provisional } = useAuth();
   const router = useMachineRouter();
   const [section, setSection] = useState<ProfileSection>("pictures");
   const { pictures, tanks } = useProfileLists(Number(profile.id));
@@ -103,23 +104,28 @@ function MemberContent({ profile, onStreaksChanged }: { profile: Me["profile"]; 
   }, [pictures.reload, tanks.reload]));
   const header = (
     <View>
-      <Pressable testID="me-profile-link" accessibilityRole="link" accessibilityLabel={t("me.openProfile")} onPress={() => router.push(`/profile/${profile.id}`)}>
-        <ProfileHeader profile={profile} own />
-      </Pressable>
+      {provisional ? <ProfileHeader profile={profile} own handle={false} /> : (
+        <Pressable testID="me-profile-link" accessibilityRole="link" accessibilityLabel={t("me.openProfile")} onPress={() => router.push(`/profile/${profile.id}`)}>
+          <ProfileHeader profile={profile} own />
+        </Pressable>
+      )}
+      <DeviceAccountCard />
       <VacationShareLine share={profile.vacationShare} />
       <View style={{ paddingHorizontal: theme.space[4], gap: theme.space[3] }}>
-        <Button testID="me-profile-button" variant="secondary" label={t("me.openProfile")} onPress={() => router.push(`/profile/${profile.id}`)} />
+        {provisional ? null : <Button testID="me-profile-button" variant="secondary" label={t("me.openProfile")} onPress={() => router.push(`/profile/${profile.id}`)} />}
         <Button testID="me-todos" variant="secondary" label={t("me.todos")} onPress={() => router.push("/todos")} />
         <Button testID="me-media" variant="secondary" label={t("me.media")} onPress={() => router.push("/media")} />
-        <Button testID="me-profile-images" variant="secondary" label={t("me.profileImages")} onPress={() => router.push("/profile-images")} />
-        <Button testID="me-stories" variant="secondary" label={t("me.stories")} onPress={() => router.push("/stories")} />
-        <Button testID="logout-button" variant="secondary" label={t("me.logout")} onPress={() => void logout()} />
+        {provisional ? null : <>
+          <Button testID="me-profile-images" variant="secondary" label={t("me.profileImages")} onPress={() => router.push("/profile-images")} />
+          <Button testID="me-stories" variant="secondary" label={t("me.stories")} onPress={() => router.push("/stories")} />
+          <Button testID="logout-button" variant="secondary" label={t("me.logout")} onPress={() => void logout()} />
+        </>}
       </View>
       <LanguageSettings />
-      <View style={{ paddingHorizontal: theme.space[4] }}><WebPushSettings /></View>
+      {provisional ? null : <View style={{ paddingHorizontal: theme.space[4] }}><WebPushSettings /></View>}
       <View style={{ paddingHorizontal: theme.space[4] }}><StreakSettings onChanged={onStreaksChanged} /></View>
-      <OnboardingProfile profile={profile} />
-      <ProfileTabs section={section} onSelect={setSection} own />
+      {provisional ? null : <OnboardingProfile profile={profile} />}
+      <ProfileTabs section={section} onSelect={setSection} own drafts={!provisional} />
     </View>
   );
   if (section === "drafts") {

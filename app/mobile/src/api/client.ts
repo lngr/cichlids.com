@@ -14,7 +14,7 @@ type AccessTokenProvider = () => Promise<string | undefined>;
 let accessTokenProvider: AccessTokenProvider | null = null;
 let webSessionCsrfToken: string | null = null;
 let webSessionEndedListener: (() => void) | null = null;
-let deviceAuth: DeviceAuth | null = null;
+let deviceAuthSource: (() => DeviceAuth) | null = null;
 let deviceTokensActive = false;
 let deviceRefusedListener: (() => void) | null = null;
 let registrationRequiredListener: (() => void) | null = null;
@@ -35,13 +35,13 @@ export function setWebSessionEndedListener(listener: (() => void) | null): void 
 }
 
 /**
- * Sets the device authentication of the installation. With useTokens, requests that have no
- * access token carry the device token; without it the authentication only signs the proof of a
- * registration. Null removes it.
+ * Sets where the API client finds the device authentication of the installation. With useTokens,
+ * requests that have no access token carry the device token; without it the authentication only
+ * signs the proof of a registration. Null removes it.
  */
-export function setDeviceAuth(auth: DeviceAuth | null, useTokens: boolean): void {
-  deviceAuth = auth;
-  deviceTokensActive = auth !== null && useTokens;
+export function setDeviceAuth(source: (() => DeviceAuth) | null, useTokens: boolean): void {
+  deviceAuthSource = source;
+  deviceTokensActive = source !== null && useTokens;
 }
 
 /** Sets the function called when the API refuses the credential of the installation. */
@@ -70,7 +70,7 @@ export const apiClient = createCichlidsClient({
   getAccessToken: () => accessTokenProvider?.(),
   fetch: webFetch,
   deviceAuth: createDeviceTokenGate({
-    getAuth: () => deviceAuth,
+    getAuth: () => deviceAuthSource?.() ?? null,
     isActive: () => deviceTokensActive,
     onRefused: () => deviceRefusedListener?.(),
   }),

@@ -12,6 +12,8 @@ import { useTheme } from "../src/theme";
 import { AuthProvider } from "../src/auth/AuthProvider";
 import { initializeLocalization, subscribeDirection, getDirection, refreshDeviceLanguage } from "../src/i18n";
 import { FeatureFlagsProvider } from "../src/featureFlags/FeatureFlagsProvider";
+import { RegistrationProvider } from "../src/registration/RegistrationProvider";
+import { RegistrationSheet } from "../src/registration/RegistrationSheet";
 import { RemindersHost } from "../src/reminders/RemindersHost";
 
 export default function RootLayout() {
@@ -35,6 +37,7 @@ export default function RootLayout() {
       <GestureHandlerRootView style={{ flex: 1 }}>
       <View {...(Platform.OS === "web" ? { dir: direction } : {})} style={{ flex: 1, direction }}>
         <AuthProvider>
+          <RegistrationProvider>
           <FeatureFlagsProvider>
             <NavigationProvider>
               <StatusBar style={theme.scheme === "dark" ? "light" : "dark"} />
@@ -60,8 +63,10 @@ export default function RootLayout() {
               <OnboardingGate />
               <RemindersHost />
               <CreateSheet />
+              <RegistrationSheet />
             </NavigationProvider>
           </FeatureFlagsProvider>
+          </RegistrationProvider>
         </AuthProvider>
       </View>
       </GestureHandlerRootView>

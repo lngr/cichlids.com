@@ -276,7 +276,14 @@
     "todos": "Attività",
     "media": "I miei media",
     "profileImages": "Avatar e copertina",
-    "stories": "Le mie storie"
+    "stories": "Le mie storie",
+    "device": {
+      "title": "Account su questo dispositivo",
+      "text": "I tuoi acquari e le voci sono privati e salvati su questo dispositivo finché non ti registri. Disinstallare l'app o cancellare il dispositivo li fa perdere.",
+      "leftBehindTitle": "Contenuto su questo dispositivo",
+      "leftBehindText": "Gli acquari dell'account del dispositivo restano su questo dispositivo e non fanno parte del tuo account. Vengono eliminati dopo dodici mesi senza utilizzo.",
+      "takeAlong": "Portali nel mio account"
+    }
   },
   "upload": {
     "title": "Carica foto",
@@ -438,7 +445,13 @@
     "story_needs_item": "Una storia pubblicata mantiene almeno un elemento. Riportala a bozza o eliminala.",
     "story_not_published": "Solo una storia pubblicata può essere ritirata.",
     "story_text_invalid": "Inserisci un titolo di al massimo 200 caratteri.",
-    "story_caption_invalid": "Una didascalia ha al massimo 500 caratteri."
+    "story_caption_invalid": "Una didascalia ha al massimo 500 caratteri.",
+    "registration_required": "Serve un account. Registrati o accedi.",
+    "account_has_profile": "Questo account ha già un profilo. Riprova.",
+    "account_has_no_profile": "Questo account non ha ancora un profilo. Riprova.",
+    "account_suspended": "Questo account è sospeso.",
+    "device_auth_refused": "Questo dispositivo non ha potuto dimostrare il suo account. Riprova.",
+    "keycloak_session_required": "Accedi prima."
   },
   "featureFlags": {
     "activityTitle": "Attività della comunità",
@@ -1304,6 +1317,55 @@
       "error": "Non è stato possibile caricare l'elenco. Riprova.",
       "close": "Chiudi",
       "taken": "Già nella storia"
+    }
+  },
+  "registration": {
+    "title": "Crea il tuo account",
+    "keep": "Tutto ciò che hai creato su questo dispositivo viene conservato: i tuoi acquari, le voci e le foto.",
+    "register": "Registrati o accedi",
+    "later": "Non ora",
+    "working": "Il tuo contenuto passa al tuo account",
+    "reason": {
+      "follow": "Seguire un acquario richiede un account.",
+      "comment": "Commentare richiede un account.",
+      "rate": "Valutare richiede un account.",
+      "story": "Le storie vengono pubblicate con un account.",
+      "publish": "Pubblicare una foto richiede un account.",
+      "visibility": "Mostrare un acquario ad altri richiede un account.",
+      "profileImages": "Un avatar e un'immagine di intestazione richiedono un account.",
+      "audience": "Scegliere chi può vedere un acquario richiede un account.",
+      "register": "Crea un account per conservare i tuoi acquari oltre questo dispositivo e per condividerli.",
+      "generic": "Serve un account."
+    },
+    "counts": {
+      "tanks": "Acquari",
+      "entries": "Voci di cura",
+      "photos": "Foto e video"
+    },
+    "dropped": "Vacanze non riprese: {{number}}",
+    "droppedHelp": "Si sovrappongono a vacanze del tuo account o modificherebbero periodi già chiusi.",
+    "decision": {
+      "title": "Portare con te il contenuto?",
+      "text": "Il tuo account ha già un profilo. Vuoi spostarvi il contenuto di questo dispositivo?",
+      "yes": "Sì, portalo con te",
+      "no": "No, tienilo su questo dispositivo"
+    },
+    "done": {
+      "upgradedTitle": "Il tuo account è pronto",
+      "upgradedText": "I tuoi acquari, le voci e le foto appartengono al tuo account.",
+      "movedTitle": "Contenuto ripreso",
+      "movedText": "I tuoi acquari, le voci e le foto sono nel tuo account.",
+      "declinedTitle": "Il contenuto resta su questo dispositivo",
+      "declinedText": "Hai effettuato l'accesso al tuo account esistente. L'account del dispositivo con i suoi acquari resta su questo dispositivo ed è nascosto finché sei connesso. Dopo la disconnessione torna disponibile, e in Io puoi portarlo con te.",
+      "close": "Chiudi"
+    },
+    "error": "Non è stato possibile spostare il contenuto. Riprova.",
+    "note": {
+      "title": "Il tuo account vive su questo dispositivo",
+      "text": "Puoi iniziare senza registrarti. I tuoi acquari e le voci restano privati e vengono salvati su questo dispositivo finché non ti registri.",
+      "loss": "Se disinstalli l'app o cancelli il dispositivo, vanno persi. Una registrazione conserva tutto.",
+      "continue": "Continua senza registrarti",
+      "register": "Registrati ora"
     }
   }
 }

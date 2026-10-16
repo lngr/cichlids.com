@@ -269,7 +269,14 @@
     "todos": "Görevler",
     "media": "Medyam",
     "profileImages": "Avatar ve başlık",
-    "stories": "Hikayelerim"
+    "stories": "Hikayelerim",
+    "device": {
+      "title": "Bu cihazdaki hesap",
+      "text": "Akvaryumların ve kayıtların özeldir ve sen kaydolana kadar bu cihazda saklanır. Uygulamayı kaldırmak veya cihazı sıfırlamak onları siler.",
+      "leftBehindTitle": "Bu cihazdaki içerik",
+      "leftBehindText": "Cihaz hesabının akvaryumları bu cihazda kalır ve hesabının parçası değildir. On iki ay kullanılmazsa silinir.",
+      "takeAlong": "Hesabıma taşı"
+    }
   },
   "upload": {
     "title": "Fotoğraf yükle",
@@ -430,7 +437,13 @@
     "story_needs_item": "Yayımlanmış hikaye en az bir öğe tutar. Taslağa geri alın veya silin.",
     "story_not_published": "Yalnızca yayımlanmış hikaye geri çekilebilir.",
     "story_text_invalid": "En fazla 200 karakterlik bir başlık girin.",
-    "story_caption_invalid": "Bir açıklama en fazla 500 karakterdir."
+    "story_caption_invalid": "Bir açıklama en fazla 500 karakterdir.",
+    "registration_required": "Bunun için hesap gerekir. Kaydol veya giriş yap.",
+    "account_has_profile": "Bu hesabın zaten bir profili var. Lütfen tekrar dene.",
+    "account_has_no_profile": "Bu hesabın henüz bir profili yok. Lütfen tekrar dene.",
+    "account_suspended": "Bu hesap askıya alındı.",
+    "device_auth_refused": "Bu cihaz hesabını kanıtlayamadı. Lütfen tekrar dene.",
+    "keycloak_session_required": "Önce giriş yap."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -1285,6 +1298,55 @@
       "error": "Liste yüklenemedi. Lütfen tekrar deneyin.",
       "close": "Kapat",
       "taken": "Zaten hikayede"
+    }
+  },
+  "registration": {
+    "title": "Hesabını oluştur",
+    "keep": "Bu cihazda oluşturduğun her şey seninle gelir: akvaryumların, kayıtların ve fotoğrafların.",
+    "register": "Kaydol veya giriş yap",
+    "later": "Şimdi değil",
+    "working": "İçeriğin hesabına taşınıyor",
+    "reason": {
+      "follow": "Bir akvaryumu takip etmek için hesap gerekir.",
+      "comment": "Yorum yapmak için hesap gerekir.",
+      "rate": "Puan vermek için hesap gerekir.",
+      "story": "Hikâyeler bir hesapla yayımlanır.",
+      "publish": "Fotoğraf yayımlamak için hesap gerekir.",
+      "visibility": "Bir akvaryumu başkalarına göstermek için hesap gerekir.",
+      "profileImages": "Avatar ve başlık görseli için hesap gerekir.",
+      "audience": "Bir akvaryumu kimlerin görebileceğini seçmek için hesap gerekir.",
+      "register": "Akvaryumlarını bu cihazın ötesinde korumak ve paylaşmak için bir hesap oluştur.",
+      "generic": "Bunun için hesap gerekir."
+    },
+    "counts": {
+      "tanks": "Akvaryumlar",
+      "entries": "Bakım kayıtları",
+      "photos": "Fotoğraflar ve videolar"
+    },
+    "dropped": "Alınmayan tatiller: {{number}}",
+    "droppedHelp": "Hesabındaki tatillerle çakışıyor veya zaten kapanmış dönemleri değiştirecek.",
+    "decision": {
+      "title": "İçeriğin seninle gelsin mi?",
+      "text": "Hesabının zaten bir profili var. Bu cihazın içeriğini oraya taşımak ister misin?",
+      "yes": "Evet, getir",
+      "no": "Hayır, bu cihazda kalsın"
+    },
+    "done": {
+      "upgradedTitle": "Hesabın hazır",
+      "upgradedText": "Akvaryumların, kayıtların ve fotoğrafların hesabına ait.",
+      "movedTitle": "İçerik taşındı",
+      "movedText": "Akvaryumların, kayıtların ve fotoğrafların hesabında.",
+      "declinedTitle": "İçerik bu cihazda kalıyor",
+      "declinedText": "Mevcut hesabınla giriş yaptın. Cihaz hesabı ve akvaryumları bu cihazda kalır ve giriş yaptığın sürece gizlidir. Çıkış yapınca geri gelir, Ben bölümünden de yanında getirebilirsin.",
+      "close": "Kapat"
+    },
+    "error": "İçerik taşınamadı. Lütfen tekrar dene.",
+    "note": {
+      "title": "Hesabın bu cihazda yaşıyor",
+      "text": "Kaydolmadan başlayabilirsin. Akvaryumların ve kayıtların özel kalır ve sen kaydolana kadar bu cihazda saklanır.",
+      "loss": "Uygulamayı kaldırırsan veya cihazı sıfırlarsan kaybolurlar. Kayıt her şeyi korur.",
+      "continue": "Kaydolmadan devam et",
+      "register": "Şimdi kaydol"
     }
   }
 }

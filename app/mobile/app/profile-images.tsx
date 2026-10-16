@@ -4,12 +4,14 @@ import { useAuth } from "../src/auth/AuthProvider";
 import { useLoginAction } from "../src/auth/useLoginAction";
 import { Button } from "../src/components/Button";
 import { LoadingView } from "../src/components/StatusView";
+import { NeedsRegistration } from "../src/registration/NeedsRegistration";
 import { ProfileImagesView } from "../src/profile/ProfileImagesView";
 import { useTheme } from "../src/theme";
 
 export default function ProfileImagesScreen() {
-  const { status, accountId } = useAuth();
+  const { status, accountId, provisional } = useAuth();
   if (status === "loading") return <LoadingView />;
+  if (provisional) return <NeedsRegistration reason="profileImages" />;
   return status === "authenticated" ? <ProfileImagesView key={accountId} /> : <SignIn />;
 }
 

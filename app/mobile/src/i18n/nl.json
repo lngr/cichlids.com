@@ -269,7 +269,14 @@
     "todos": "Taken",
     "media": "Mijn media",
     "profileImages": "Avatar en omslag",
-    "stories": "Mijn verhalen"
+    "stories": "Mijn verhalen",
+    "device": {
+      "title": "Account op dit apparaat",
+      "text": "Je aquaria en items zijn privé en worden op dit apparaat bewaard totdat je je registreert. Als je de app verwijdert of het apparaat wist, gaan ze verloren.",
+      "leftBehindTitle": "Inhoud op dit apparaat",
+      "leftBehindText": "De aquaria van het apparaataccount blijven op dit apparaat en horen niet bij je account. Na twaalf maanden zonder gebruik worden ze verwijderd.",
+      "takeAlong": "Naar mijn account verplaatsen"
+    }
   },
   "upload": {
     "title": "Foto uploaden",
@@ -430,7 +437,13 @@
     "story_needs_item": "Een gepubliceerd verhaal houdt minstens één onderdeel. Zet het terug naar concept of verwijder het.",
     "story_not_published": "Alleen een gepubliceerd verhaal kan worden ingetrokken.",
     "story_text_invalid": "Voer een titel van maximaal 200 tekens in.",
-    "story_caption_invalid": "Een bijschrift heeft maximaal 500 tekens."
+    "story_caption_invalid": "Een bijschrift heeft maximaal 500 tekens.",
+    "registration_required": "Hiervoor is een account nodig. Registreer of log in.",
+    "account_has_profile": "Dit account heeft al een profiel. Probeer het opnieuw.",
+    "account_has_no_profile": "Dit account heeft nog geen profiel. Probeer het opnieuw.",
+    "account_suspended": "Dit account is geblokkeerd.",
+    "device_auth_refused": "Dit apparaat kon zijn account niet aantonen. Probeer het opnieuw.",
+    "keycloak_session_required": "Log eerst in."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -1285,6 +1298,55 @@
       "error": "De lijst kon niet worden geladen. Probeer het opnieuw.",
       "close": "Sluiten",
       "taken": "Al in het verhaal"
+    }
+  },
+  "registration": {
+    "title": "Maak je account aan",
+    "keep": "Alles wat je op dit apparaat hebt gemaakt, gaat mee: je aquaria, items en foto's.",
+    "register": "Registreren of inloggen",
+    "later": "Nu niet",
+    "working": "Je inhoud wordt naar je account verplaatst",
+    "reason": {
+      "follow": "Een aquarium volgen vraagt om een account.",
+      "comment": "Reageren vraagt om een account.",
+      "rate": "Beoordelen vraagt om een account.",
+      "story": "Verhalen worden onder een account gepubliceerd.",
+      "publish": "Een foto publiceren vraagt om een account.",
+      "visibility": "Een aquarium aan anderen tonen vraagt om een account.",
+      "profileImages": "Een avatar en een headerafbeelding vragen om een account.",
+      "audience": "Kiezen wie een aquarium mag zien, vraagt om een account.",
+      "register": "Maak een account aan om je aquaria ook buiten dit apparaat te bewaren en om ze te delen.",
+      "generic": "Hiervoor is een account nodig."
+    },
+    "counts": {
+      "tanks": "Aquaria",
+      "entries": "Verzorgingsitems",
+      "photos": "Foto's en video's"
+    },
+    "dropped": "Niet overgenomen vakanties: {{number}}",
+    "droppedHelp": "Ze overlappen vakanties van je account of zouden periodes wijzigen die al zijn afgesloten.",
+    "decision": {
+      "title": "Je inhoud meenemen?",
+      "text": "Je account heeft al een profiel. Wil je de inhoud van dit apparaat daarheen verplaatsen?",
+      "yes": "Ja, meenemen",
+      "no": "Nee, op dit apparaat houden"
+    },
+    "done": {
+      "upgradedTitle": "Je account is klaar",
+      "upgradedText": "Je aquaria, items en foto's horen bij je account.",
+      "movedTitle": "Inhoud overgenomen",
+      "movedText": "Je aquaria, items en foto's staan in je account.",
+      "declinedTitle": "De inhoud blijft op dit apparaat",
+      "declinedText": "Je bent ingelogd op je bestaande account. Het apparaataccount met zijn aquaria blijft op dit apparaat en is verborgen zolang je bent ingelogd. Na uitloggen is het er weer, en bij Ik kun je het alsnog meenemen.",
+      "close": "Sluiten"
+    },
+    "error": "De inhoud kon niet worden verplaatst. Probeer het opnieuw.",
+    "note": {
+      "title": "Je account leeft op dit apparaat",
+      "text": "Je kunt zonder registratie beginnen. Je aquaria en items blijven privé en worden op dit apparaat bewaard totdat je je registreert.",
+      "loss": "Als je de app verwijdert of het apparaat wist, gaan ze verloren. Een registratie bewaart alles.",
+      "continue": "Doorgaan zonder registratie",
+      "register": "Nu registreren"
     }
   }
 }

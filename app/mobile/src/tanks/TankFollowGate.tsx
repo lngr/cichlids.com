@@ -5,6 +5,7 @@ import type { TankFollow } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
 import { Button } from "../components/Button";
 import { translateApiError } from "../lib/apiErrors";
+import { useRegistrationGate } from "../registration/RegistrationProvider";
 import { useTheme } from "../theme";
 
 /**
@@ -14,11 +15,13 @@ import { useTheme } from "../theme";
 export function TankFollowGate({ tankId, follow, onChanged }: { tankId: number; follow: TankFollow; onChanged: () => void }) {
   const { t } = useTranslation();
   const theme = useTheme();
+  const gate = useRegistrationGate();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const owner = follow.teaser?.author.displayName ?? follow.teaser?.author.username ?? "";
   const requested = follow.state === "requested";
   async function press() {
+    if (gate("follow")) return;
     setBusy(true); setError(null);
     try {
       if (requested) await apiClient.tanks.unfollow(tankId); else await apiClient.tanks.requestFollow(tankId);

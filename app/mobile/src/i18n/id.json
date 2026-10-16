@@ -269,7 +269,14 @@
     "todos": "Tugas",
     "media": "Media saya",
     "profileImages": "Avatar dan header",
-    "stories": "Cerita saya"
+    "stories": "Cerita saya",
+    "device": {
+      "title": "Akun di perangkat ini",
+      "text": "Akuarium dan catatan Anda bersifat pribadi dan disimpan di perangkat ini sampai Anda mendaftar. Menghapus aplikasi atau mengosongkan perangkat membuatnya hilang.",
+      "leftBehindTitle": "Konten di perangkat ini",
+      "leftBehindText": "Akuarium milik akun perangkat tetap di perangkat ini dan bukan bagian dari akun Anda. Semuanya dihapus setelah dua belas bulan tanpa penggunaan.",
+      "takeAlong": "Pindahkan ke akun saya"
+    }
   },
   "upload": {
     "title": "Unggah foto",
@@ -430,7 +437,13 @@
     "story_needs_item": "Cerita yang diterbitkan menyimpan minimal satu item. Kembalikan ke draf atau hapus.",
     "story_not_published": "Hanya cerita yang diterbitkan yang dapat ditarik.",
     "story_text_invalid": "Masukkan judul paling banyak 200 karakter.",
-    "story_caption_invalid": "Keterangan paling banyak 500 karakter."
+    "story_caption_invalid": "Keterangan paling banyak 500 karakter.",
+    "registration_required": "Ini memerlukan akun. Daftar atau masuk.",
+    "account_has_profile": "Akun ini sudah memiliki profil. Silakan coba lagi.",
+    "account_has_no_profile": "Akun ini belum memiliki profil. Silakan coba lagi.",
+    "account_suspended": "Akun ini ditangguhkan.",
+    "device_auth_refused": "Perangkat ini tidak dapat membuktikan akunnya. Silakan coba lagi.",
+    "keycloak_session_required": "Masuk dulu."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -1274,6 +1287,55 @@
       "error": "Daftar tidak dapat dimuat. Coba lagi.",
       "close": "Tutup",
       "taken": "Sudah ada di cerita"
+    }
+  },
+  "registration": {
+    "title": "Buat akun Anda",
+    "keep": "Semua yang Anda buat di perangkat ini ikut terbawa: akuarium, catatan, dan foto Anda.",
+    "register": "Daftar atau masuk",
+    "later": "Nanti saja",
+    "working": "Memindahkan konten Anda ke akun Anda",
+    "reason": {
+      "follow": "Mengikuti akuarium memerlukan akun.",
+      "comment": "Berkomentar memerlukan akun.",
+      "rate": "Memberi penilaian memerlukan akun.",
+      "story": "Cerita diterbitkan dengan akun.",
+      "publish": "Menerbitkan foto memerlukan akun.",
+      "visibility": "Menampilkan akuarium kepada orang lain memerlukan akun.",
+      "profileImages": "Avatar dan gambar header memerlukan akun.",
+      "audience": "Memilih siapa yang boleh melihat akuarium memerlukan akun.",
+      "register": "Buat akun agar akuarium Anda tersimpan di luar perangkat ini dan bisa dibagikan.",
+      "generic": "Ini memerlukan akun."
+    },
+    "counts": {
+      "tanks": "Akuarium",
+      "entries": "Catatan perawatan",
+      "photos": "Foto dan video"
+    },
+    "dropped": "Liburan yang tidak dipindahkan: {{number}}",
+    "droppedHelp": "Liburan itu tumpang tindih dengan liburan di akun Anda atau akan mengubah periode yang sudah ditutup.",
+    "decision": {
+      "title": "Bawa konten Anda?",
+      "text": "Akun Anda sudah memiliki profil. Pindahkan konten perangkat ini ke sana?",
+      "yes": "Ya, bawa",
+      "no": "Tidak, simpan di perangkat ini"
+    },
+    "done": {
+      "upgradedTitle": "Akun Anda siap",
+      "upgradedText": "Akuarium, catatan, dan foto Anda menjadi milik akun Anda.",
+      "movedTitle": "Konten dipindahkan",
+      "movedText": "Akuarium, catatan, dan foto Anda ada di akun Anda.",
+      "declinedTitle": "Konten tetap di perangkat ini",
+      "declinedText": "Anda masuk ke akun Anda yang sudah ada. Akun perangkat beserta akuariumnya tetap di perangkat ini dan tersembunyi selama Anda masuk. Setelah keluar, akun itu kembali, dan di Saya Anda bisa membawanya.",
+      "close": "Tutup"
+    },
+    "error": "Konten tidak dapat dipindahkan. Silakan coba lagi.",
+    "note": {
+      "title": "Akun Anda tinggal di perangkat ini",
+      "text": "Anda dapat mulai tanpa mendaftar. Akuarium dan catatan Anda tetap pribadi dan disimpan di perangkat ini sampai Anda mendaftar.",
+      "loss": "Jika Anda menghapus aplikasi atau mengosongkan perangkat, semuanya hilang. Pendaftaran menyimpan semuanya.",
+      "continue": "Lanjutkan tanpa mendaftar",
+      "register": "Daftar sekarang"
     }
   }
 }

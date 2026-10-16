@@ -269,7 +269,14 @@
     "todos": "To-dos",
     "media": "My media",
     "profileImages": "Avatar and header",
-    "stories": "My stories"
+    "stories": "My stories",
+    "device": {
+      "title": "Account on this device",
+      "text": "Your tanks and entries are private and saved on this device until you register. Uninstalling the app or wiping the device loses them.",
+      "leftBehindTitle": "Content on this device",
+      "leftBehindText": "The tanks of the device account stay on this device and are not part of your account. They are removed after twelve months without use.",
+      "takeAlong": "Take them into my account"
+    }
   },
   "upload": {
     "title": "Upload photo",
@@ -430,7 +437,13 @@
     "story_needs_item": "A published story keeps at least one item. Withdraw or delete the story instead.",
     "story_not_published": "Only a published story can be withdrawn.",
     "story_text_invalid": "Please enter a title of up to 200 characters.",
-    "story_caption_invalid": "A caption has at most 500 characters."
+    "story_caption_invalid": "A caption has at most 500 characters.",
+    "registration_required": "This needs an account. Register or sign in.",
+    "account_has_profile": "This account already has a profile. Please try again.",
+    "account_has_no_profile": "This account has no profile yet. Please try again.",
+    "account_suspended": "This account is suspended.",
+    "device_auth_refused": "This device could not prove its account. Please try again.",
+    "keycloak_session_required": "Sign in first."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -1285,6 +1298,55 @@
       "error": "The list could not be loaded. Please try again.",
       "close": "Close",
       "taken": "Already in the story"
+    }
+  },
+  "registration": {
+    "title": "Create your account",
+    "keep": "Everything you created on this device comes along: your tanks, entries and photos.",
+    "register": "Register or sign in",
+    "later": "Not now",
+    "working": "Moving your content into your account",
+    "reason": {
+      "follow": "Following a tank needs an account.",
+      "comment": "Commenting needs an account.",
+      "rate": "Rating needs an account.",
+      "story": "Stories are published under an account.",
+      "publish": "Publishing a photo needs an account.",
+      "visibility": "Showing a tank to others needs an account.",
+      "profileImages": "An avatar and a header image need an account.",
+      "audience": "Choosing who may see a tank needs an account.",
+      "register": "Create an account to keep your tanks beyond this device and to share them.",
+      "generic": "This needs an account."
+    },
+    "counts": {
+      "tanks": "Tanks",
+      "entries": "Care entries",
+      "photos": "Photos and videos"
+    },
+    "dropped": "Vacations not taken over: {{number}}",
+    "droppedHelp": "They overlap vacations of your account or would change periods that are already closed.",
+    "decision": {
+      "title": "Take your content along?",
+      "text": "Your account already has a profile. Do you want to move the content of this device into it?",
+      "yes": "Yes, take it along",
+      "no": "No, keep it on this device"
+    },
+    "done": {
+      "upgradedTitle": "Your account is ready",
+      "upgradedText": "Your tanks, entries and photos belong to your account.",
+      "movedTitle": "Content taken over",
+      "movedText": "Your tanks, entries and photos are in your account.",
+      "declinedTitle": "Content stays on this device",
+      "declinedText": "You are signed in to your existing account. The device account with its tanks stays on this device and is hidden while you are signed in. Signing out brings it back, and Me offers to take it along.",
+      "close": "Close"
+    },
+    "error": "The content could not be moved. Please try again.",
+    "note": {
+      "title": "Your account lives on this device",
+      "text": "You can start without registering. Your tanks and entries stay private and are saved on this device until you register.",
+      "loss": "If you uninstall the app or wipe the device, they are lost. A registration keeps everything.",
+      "continue": "Continue without registering",
+      "register": "Register now"
     }
   }
 }

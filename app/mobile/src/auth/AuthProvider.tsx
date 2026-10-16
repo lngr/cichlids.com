@@ -19,6 +19,7 @@ import { accountIdOf, toTokenSet } from "./tokenLogic";
 import { requestTokenRefresh } from "./tokenRefresh";
 import { createTokenSession } from "./tokenSession";
 import { tokenStorage } from "./tokenStorage";
+import { useAccountStatus } from "../deviceAccount/useAccountStatus";
 
 export { useAuth, type AuthContextValue, type AuthStatus } from "./authContext";
 
@@ -33,6 +34,7 @@ const FOREGROUND_RENEW_INTERVAL_MS = 5 * 60 * 1000;
  * Holds the Keycloak offline session of the native app user and supplies its access token to the
  * API client; the web build uses AuthProvider.web.tsx. The session lasts until the member signs out or Keycloak refuses to renew it; opening
  * the app renews it once, so a suspended or deleted account is signed out on the next start.
+ * Without a session the app acts for the device account of the installation (see useAccountStatus).
  */
 export function AuthProvider({ children }: { children: ReactNode }) {
   const autoDiscovery = useAutoDiscovery(authConfig.issuer);
@@ -61,8 +63,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     discovery,
   );
 
-  const [status, setStatus] = useState<AuthStatus>("loading");
-  const [accountId, setAccountId] = useState<string | null>(null);
+  const [sessionStatus, setStatus] = useState<AuthStatus>("loading");
+  const [sessionAccountId, setAccountId] = useState<string | null>(null);
+  const { status, accountId, provisional, registrationPending, leftBehind } = useAccountStatus(sessionStatus, sessionAccountId);
   const discoveryRef = useRef(discovery);
   discoveryRef.current = discovery;
 
@@ -167,8 +170,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [getAccessToken]);
 
   const value = useMemo<AuthContextValue>(
-    () => ({ status, accountId, login, signInFailed: false, logout, getAccessToken }),
-    [status, accountId, login, logout, getAccessToken],
+    () => ({ status, accountId, provisional, registrationPending, deviceContentLeftBehind: leftBehind, login, signInFailed: false, logout, getAccessToken }),
+    [status, accountId, provisional, registrationPending, leftBehind, login, logout, getAccessToken],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
