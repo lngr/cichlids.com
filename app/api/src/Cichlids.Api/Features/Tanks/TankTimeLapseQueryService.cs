@@ -60,7 +60,14 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
         var photoIds = media.Select(m => m.Id).ToList();
         var variants = await context.MediaVariants.AsNoTracking().Where(v => photoIds.Contains(v.MediaItemId)).ToListAsync(cancellationToken);
         var builder = new MediaUrlBuilder(objectStore, signer);
-        var images = variants.GroupBy(v => v.MediaItemId).ToDictionary(g => g.Key, g => builder.Build(g, allowSigned));
+        // The kind of URL follows the tank. Media that only a tank that is not public holds get no public URL,
+        // wherever their objects lie; media a published post also uses keep their own public URLs.
+        var nonPublicTanks = tanks.Where(t => !TankVisibilityRules.MediaBelongsInPublicStorage(t.ProfileVisibility)).Select(t => t.Id).ToHashSet();
+        var postMediaIds = postMedia.Select(pm => pm.MediaItemId).ToHashSet();
+        var privateMediaIds = directMedia.Where(m => nonPublicTanks.Contains(m.TankId)).Select(m => m.MediaItemId)
+            .Concat(tanks.Where(t => nonPublicTanks.Contains(t.Id) && t.MainMediaId != null).Select(t => t.MainMediaId!.Value))
+            .Where(id => !postMediaIds.Contains(id)).ToHashSet();
+        var images = variants.GroupBy(v => v.MediaItemId).ToDictionary(g => g.Key, g => builder.Build(g, allowSigned, privateMediaIds.Contains(g.Key)));
         var postDates = posts.ToDictionary(p => p.Id, p => p.PublishedAt ?? p.CreatedAt);
         var publicationDates = postMedia.GroupBy(pm => pm.MediaItemId).ToDictionary(g => g.Key,
             g => g.Min(pm => postDates[pm.PostId]));
@@ -79,7 +86,8 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
                 .Where(m => videoIds.Contains(m.Id) && m.Kind == MediaKind.Video
                     && visibleProfiles.Any(p => p.Id == m.OwnerProfileId && p.Kind == ProfileKind.Member)))
             .ToListAsync(cancellationToken);
-        var readyVideos = videoItems.Select(m => (Item: m, Dto: VideoQueryService.ToPublicDto(m, objectStore, signer, allowSigned)))
+        var readyVideos = videoItems.Select(m => (Item: m, Dto: VideoQueryService.ToPublicDto(m, objectStore, signer, allowSigned,
+                forcePrivate: directMedia.Any(d => d.MediaItemId == m.Id && nonPublicTanks.Contains(d.TankId)))))
             .Where(v => v.Dto.State == VideoState.Ready).ToList();
         var members = await visibleProfiles.Where(p => p.Kind == ProfileKind.Member && tanks.Select(t => t.ProfileId).Contains(p.Id))
             .Select(p => p.Id).ToListAsync(cancellationToken);

@@ -33,6 +33,30 @@ public static class MediaStorageKeys
     }
 
     /// <summary>
+    /// Whether a key is a public variant key: a variant or HLS file under the public variant prefix.
+    /// </summary>
+    public static bool IsPublicVariantKey(string key) => key.StartsWith(VariantsPrefix, StringComparison.Ordinal);
+
+    /// <summary>
+    /// Whether a key is a private variant key: a variant or HLS file under the private variant prefix.
+    /// </summary>
+    public static bool IsPrivateVariantKey(string key) => key.StartsWith(PrivatePrefix + VariantsPrefix, StringComparison.Ordinal);
+
+    /// <summary>
+    /// The private counterpart of a public variant key: the same path below the private prefix.
+    /// </summary>
+    public static string ToPrivateVariantKey(string publicVariantKey) => IsPublicVariantKey(publicVariantKey)
+        ? PrivatePrefix + publicVariantKey
+        : throw new ArgumentException($"Storage key '{publicVariantKey}' is not a public variant key.", nameof(publicVariantKey));
+
+    /// <summary>
+    /// The public counterpart of a private variant key: the same path without the private prefix.
+    /// </summary>
+    public static string ToPublicVariantKey(string privateVariantKey) => IsPrivateVariantKey(privateVariantKey)
+        ? privateVariantKey[PrivatePrefix.Length..]
+        : throw new ArgumentException($"Storage key '{privateVariantKey}' is not a private variant key.", nameof(privateVariantKey));
+
+    /// <summary>
     /// Builds the storage key of a private original: private/, the area, the owner's profile id and
     /// the file name. Objects under the private prefix are never reachable without credentials.
     /// </summary>

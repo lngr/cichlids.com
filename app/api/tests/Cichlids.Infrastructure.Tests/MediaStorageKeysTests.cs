@@ -5,6 +5,38 @@ namespace Cichlids.Infrastructure.Tests;
 public sealed class MediaStorageKeysTests
 {
     [Fact]
+    public void MapsAPublicVariantKeyToItsPrivateCounterpartAndBack()
+    {
+        var publicKey = "variants/thumb/originals/uploads/1/a.jpg.jpg";
+        var privateKey = MediaStorageKeys.ToPrivateVariantKey(publicKey);
+
+        Assert.Equal("private/variants/thumb/originals/uploads/1/a.jpg.jpg", privateKey);
+        Assert.True(MediaStorageKeys.IsPrivateVariantKey(privateKey));
+        Assert.False(MediaStorageKeys.IsPublicVariantKey(privateKey));
+        Assert.Equal(publicKey, MediaStorageKeys.ToPublicVariantKey(privateKey));
+    }
+
+    [Fact]
+    public void TheMappingOfAPrivateTankPhotoVariantEqualsItsPrivateVariantKey()
+    {
+        var original = MediaStorageKeys.BuildPrivateOriginalKey("tank", 7, "a.jpg");
+
+        Assert.Equal(
+            MediaStorageKeys.BuildPrivateVariantKey(original, "small"),
+            MediaStorageKeys.ToPrivateVariantKey($"variants/small/{original}.jpg"));
+    }
+
+    [Theory]
+    [InlineData("originals/a.jpg")]
+    [InlineData("private/care/1/a.jpg")]
+    [InlineData("private/variants/thumb/x.jpg")]
+    public void RefusesToMapAKeyThatIsNotAPublicVariantKeyToItsPrivateCounterpart(string key)
+    {
+        if (MediaStorageKeys.IsPublicVariantKey(key)) return;
+        Assert.Throws<ArgumentException>(() => MediaStorageKeys.ToPrivateVariantKey(key));
+    }
+
+    [Fact]
     public void BuildsAVariantKeyUnderAnOriginalsPrefix()
     {
         var key = MediaStorageKeys.BuildVariantKey("originals/user_pics/1550/foo.JPG", "thumb");

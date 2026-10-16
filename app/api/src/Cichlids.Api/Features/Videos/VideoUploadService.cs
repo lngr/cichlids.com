@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using Cichlids.Api.Features.Care;
 using Cichlids.Api.Features.Uploads;
+using Cichlids.Domain;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Media;
@@ -318,6 +319,9 @@ public sealed class VideoUploadService(
             return (null, new VideoProblem(StatusCodes.Status409Conflict, VideoProblem.CareVideoLimitReached, "The care entry holds the most videos it can."));
         }
 
+        var isPrivate = upload.Target == VideoUploadTarget.CareEntry
+            || !TankVisibilityRules.MediaBelongsInPublicStorage(
+                await context.Tanks.Where(t => t.Id == upload.TankId).Select(t => t.ProfileVisibility).SingleAsync(cancellationToken));
         var item = new MediaItem
         {
             OwnerProfileId = upload.OwnerProfileId,
@@ -333,7 +337,7 @@ public sealed class VideoUploadService(
             CreatedAt = now,
             VideoJob = new VideoJob
             {
-                Status = VideoJobStatus.Queued, IsPrivate = upload.Target == VideoUploadTarget.CareEntry, RunAfter = now, CreatedAt = now,
+                Status = VideoJobStatus.Queued, IsPrivate = isPrivate, RunAfter = now, CreatedAt = now,
             },
         };
         context.MediaItems.Add(item);

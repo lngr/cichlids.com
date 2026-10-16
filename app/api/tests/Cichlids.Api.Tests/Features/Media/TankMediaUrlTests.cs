@@ -52,6 +52,21 @@ public sealed class TankMediaUrlTests
     }
 
     [Fact]
+    public void ForTheMediaOfATankThatIsNotPublicAPublicKeyStillResolvesToASignedPathOrToNothing()
+    {
+        var builder = new MediaUrlBuilder(new UrlOnlyObjectStore(BaseUrl), Signer);
+        MediaVariant[] variants = [Variant(1, "thumb", "variants/thumb/originals/a.jpg"), Variant(2, "small", "private/variants/small/x.jpg")];
+
+        var signed = builder.Build(variants, allowSigned: true, forcePrivate: true);
+        var cached = builder.Build(variants, allowSigned: false, forcePrivate: true);
+
+        Assert.Equal(1, Signer.TryReadPhoto(signed.Thumb![TankMediaUrlSigner.PhotoRoute.Length..]));
+        Assert.StartsWith("/api/tank-media/", signed.Small);
+        Assert.Null(cached.Thumb);
+        Assert.Null(cached.Small);
+    }
+
+    [Fact]
     public void AnUndecodablePhotoPublicCopyAnswersEverySize()
     {
         var builder = new MediaUrlBuilder(new UrlOnlyObjectStore(BaseUrl), Signer);

@@ -103,6 +103,9 @@ public sealed class UploadsFixture : IAsyncLifetime
                     ["ObjectStorage:ForcePathStyle"] = "true",
                     ["ObjectStorage:PublicBaseUrl"] = $"{serviceUrl}/{ObjectStoreBucket}",
                     ["OutboxDispatcher:Enabled"] = "false",
+                    // Tests run the media placement directly instead of racing the worker.
+                    ["TankMediaPlacement:Enabled"] = "false",
+                    ["TankMediaPlacement:ImmediateBudget"] = "00:00:00",
                     // Tests run cleanup passes directly instead of racing a timer.
                     ["DraftCleanup:Enabled"] = "false",
                     // Tests run the transcoding queue and the upload cleanup directly.
@@ -163,6 +166,17 @@ public sealed class UploadsFixture : IAsyncLifetime
         await _postgres.DisposeAsync();
         await _rustfs.DisposeAsync();
     }
+
+    /// <summary>
+    /// An API host on the same database and object store with the given configuration and service
+    /// changes, for tests that change the behavior of one dependency or one setting.
+    /// </summary>
+    public WebApplicationFactory<Program> CreateHost(Dictionary<string, string?>? settings, Action<IServiceCollection>? configure) =>
+        _factory.WithWebHostBuilder(builder =>
+        {
+            if (settings is not null) builder.ConfigureAppConfiguration((_, configuration) => configuration.AddInMemoryCollection(settings));
+            if (configure is not null) builder.ConfigureServices(configure);
+        });
 
     public WebApplicationFactory<Program> CreateOverlayHost(string writePrefix) =>
         _factory.WithWebHostBuilder(builder =>

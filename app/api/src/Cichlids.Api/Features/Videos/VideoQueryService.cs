@@ -15,7 +15,8 @@ namespace Cichlids.Api.Features.Videos;
 /// playlist and the poster for a tank video, signed paths for the video of a care entry and for the
 /// video of a tank whose files live under the private prefix. A video is ready when its job is done,
 /// failed when its job failed and processing otherwise; a ready video whose files are private and
-/// whose caller allows no signed path is processing.
+/// whose caller allows no signed path is processing. The kind of URL follows the tank: a video of a tank that
+/// is not public (forcePrivate) never gets a public URL, even while its files still lie under the public prefix.
 /// </summary>
 public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore store, TankMediaUrlSigner? signer = null)
 {
@@ -52,14 +53,16 @@ public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore st
         var ids = context.TankMedia.Where(m => m.TankId == tankId && m.Section == TankMediaSection.Video).Select(m => m.MediaItemId);
         var items = await WithDetails(context.MediaItems.AsNoTracking().Where(m => ids.Contains(m.Id) && m.Kind == MediaKind.Video))
             .OrderByDescending(m => m.CreatedAt).ThenByDescending(m => m.Id).ToListAsync(cancellationToken);
-        var videos = items.Select(i => ToPublicDto(i, store, signer, allowSigned: true));
+        var forcePrivate = !TankVisibilityRules.MediaBelongsInPublicStorage(tank.ProfileVisibility);
+        var videos = items.Select(i => ToPublicDto(i, store, signer, allowSigned: true, forcePrivate));
         return (isOwner ? videos : videos.Where(v => v.State == VideoState.Ready)).ToList();
     }
 
     /// <summary>
     /// The representation of a tank video, with public URLs once it is ready.
     /// </summary>
-    public static VideoDto ToPublicDto(MediaItem item, IObjectStore store, TankMediaUrlSigner? signer = null, bool allowSigned = false)
+    public static VideoDto ToPublicDto(
+        MediaItem item, IObjectStore store, TankMediaUrlSigner? signer = null, bool allowSigned = false, bool forcePrivate = false)
     {
         var state = StateOf(item);
         var hls = Variant(item, VideoStorage.HlsLabel);
@@ -70,7 +73,7 @@ public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore st
             return Build(item, state, null, null);
         }
 
-        if (VideoStorage.IsPrivate(item))
+        if (forcePrivate || VideoStorage.IsPrivate(item))
         {
             return allowSigned && signer is not null
                 ? Build(item, state, signer.VideoPathFor(item.Id, PosterFile), signer.VideoPathFor(item.Id, MasterFile))

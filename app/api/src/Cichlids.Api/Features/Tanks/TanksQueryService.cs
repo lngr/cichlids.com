@@ -57,7 +57,13 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             .ToDictionaryAsync(x => x.TankId, x => x.Count, cancellationToken);
 
         var mainMediaItemByTank = await ResolveMainMediaItemsAsync(page, cancellationToken);
-        var images = await LoadImagesAsync(mainMediaItemByTank.Values, cancellationToken);
+        var images = new Dictionary<long, ImageUrlsDto>();
+        foreach (var group in page.GroupBy(t => TankVisibilityRules.MediaBelongsInPublicStorage(t.ProfileVisibility)))
+        {
+            var groupIds = group.Where(t => mainMediaItemByTank.ContainsKey(t.Id)).Select(t => mainMediaItemByTank[t.Id]);
+            foreach (var (id, urls) in await LoadImagesAsync(groupIds, forcePrivate: !group.Key, cancellationToken)) images[id] = urls;
+        }
+
         var authors = await AuthorBatchLoader.LoadAsync(context, authorIds, cancellationToken);
 
         var items = page.Select(t => new TankListItemDto(
@@ -97,7 +103,8 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
 
         IEnumerable<long> sectionMediaItemIds = mediaRows.Select(m => m.MediaItemId);
         var allMediaItemIds = sectionMediaItemIds.Concat(mainMediaItemByTank.Values).Distinct().ToList();
-        var images = await LoadImagesAsync(allMediaItemIds, cancellationToken);
+        var images = await LoadImagesAsync(
+            allMediaItemIds, forcePrivate: !TankVisibilityRules.MediaBelongsInPublicStorage(tank.ProfileVisibility), cancellationToken);
 
         var sections = new TankSectionsDto(
             BuildSection(mediaRows, TankMediaSection.Showcase, images),
@@ -184,7 +191,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
     }
 
     private async Task<Dictionary<long, ImageUrlsDto>> LoadImagesAsync(
-        IEnumerable<long> mediaItemIds, CancellationToken cancellationToken)
+        IEnumerable<long> mediaItemIds, bool forcePrivate, CancellationToken cancellationToken)
     {
         var ids = mediaItemIds.Distinct().ToList();
         if (ids.Count == 0)
@@ -197,7 +204,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
                 .ToListAsync(cancellationToken))
             .ToLookup(v => v.MediaItemId);
 
-        return ids.ToDictionary(id => id, id => _mediaUrlBuilder.Build(variantsByMediaItem[id], allowSigned: true));
+        return ids.ToDictionary(id => id, id => _mediaUrlBuilder.Build(variantsByMediaItem[id], allowSigned: true, forcePrivate));
     }
 
     private async Task<List<InhabitantDto>> LoadInhabitantsAsync(long tankId, CancellationToken cancellationToken)

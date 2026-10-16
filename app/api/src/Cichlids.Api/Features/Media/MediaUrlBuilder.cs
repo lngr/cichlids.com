@@ -42,12 +42,14 @@ public sealed class MediaUrlBuilder(IObjectStore objectStore, TankMediaUrlSigner
     /// variant under a public prefix resolves to its public URL. A variant under the private prefix
     /// resolves to a signed path when signed paths are allowed and the builder has a signer, and to
     /// null otherwise. Callers allow signed paths only for a viewer who sees the tank, and never for
-    /// a response that is cached across viewers.
+    /// a response that is cached across viewers. The kind of URL follows the tank, not the place of the
+    /// object: for media of a tank that is not public (forcePrivate) no variant resolves to a public URL,
+    /// even while its object still lies under the public prefix.
     /// </summary>
-    public ImageUrlsDto Build(IEnumerable<MediaVariant> variants, bool allowSigned)
+    public ImageUrlsDto Build(IEnumerable<MediaVariant> variants, bool allowSigned, bool forcePrivate = false)
     {
         var byLabel = variants.ToDictionary(v => v.Label);
-        string? ByLabel(string label) => byLabel.TryGetValue(label, out var variant) ? UrlOf(variant, allowSigned) : null;
+        string? ByLabel(string label) => byLabel.TryGetValue(label, out var variant) ? UrlOf(variant, allowSigned, forcePrivate) : null;
         if (!LabelsLargestFirst.Any(byLabel.ContainsKey) && ByLabel(MediaVariantSpec.PublicCopyLabel) is { } copy)
         {
             return new ImageUrlsDto(copy, copy, copy, copy);
@@ -56,8 +58,8 @@ public sealed class MediaUrlBuilder(IObjectStore objectStore, TankMediaUrlSigner
         return new ImageUrlsDto(ByLabel("thumb"), ByLabel("small"), ByLabel("medium"), ByLabel("large"));
     }
 
-    private string? UrlOf(MediaVariant variant, bool allowSigned) =>
-        variant.StorageKey.StartsWith(PrivatePrefix, StringComparison.Ordinal)
+    private string? UrlOf(MediaVariant variant, bool allowSigned, bool forcePrivate) =>
+        forcePrivate || variant.StorageKey.StartsWith(PrivatePrefix, StringComparison.Ordinal)
             ? allowSigned && privateSigner is not null ? privateSigner.PhotoPathFor(variant.Id) : null
             : PublicUrl(variant.StorageKey);
 

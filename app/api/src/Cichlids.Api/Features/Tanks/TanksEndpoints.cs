@@ -31,6 +31,7 @@ public static class TanksEndpoints
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
         app.MapTankSeriesPhotoEndpoints();
+        app.MapTankMediaEndpoints();
 
         return app;
     }
@@ -91,10 +92,17 @@ public static class TanksEndpoints
 
     private static async Task<Results<Ok<TankVisibilityDto>, ProblemHttpResult>> SetVisibilityAsync(
         long id, UpdateTankVisibilityRequest request, CurrentProfileService currentProfileService, TanksWriteService writeService,
+        TankMediaPlacementService placement, Microsoft.Extensions.Options.IOptions<TankMediaPlacementOptions> placementOptions,
         ClaimsPrincipal user, CancellationToken cancellationToken)
     {
         var profile = await currentProfileService.ResolveAsync(user, cancellationToken);
         var (visibility, error) = await writeService.SetVisibilityAsync(id, profile.Id, request, cancellationToken);
+        if (error is null && visibility!.Profile != TankVisibility.Public && placementOptions.Value.ImmediateBudget > TimeSpan.Zero)
+        {
+            // The media of a tank that turned private leave the public prefix before the answer, within the budget.
+            await placement.PlaceNowAsync(id, placementOptions.Value.ImmediateBudget);
+        }
+
         return error switch
         {
             null => TypedResults.Ok(visibility!),

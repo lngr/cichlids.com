@@ -111,14 +111,14 @@ public sealed class UploadsWriteService(
     /// the object store, and reads the capture time from the uploaded bytes (EXIF DateTimeOriginal
     /// and OffsetTimeOriginal; nothing else of the EXIF block is read). A public photo lives under
     /// the public variant prefix; a private photo lives entirely under the private prefix, so none
-    /// of its objects has a public URL. Returns the
+    /// of its objects has a public URL; the area names the folder of the private original. Returns the
     /// media item with its variants, not yet saved, and the keys written so a failing caller can
     /// delete them. Throws the image exceptions of CreateDraftAsync before anything is stored; a
     /// failing write deletes the objects already written.
     /// </summary>
     public async Task<StoredImage> StoreImageAsync(
         long ownerProfileId, byte[] bytes, UploadImageFormat format, string? originalFilename, bool isPrivate,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken, string privateArea = "care")
     {
         var processed = ImageProcessor.Process(bytes);
         var captured = CaptureTimeReader.Read(bytes, timeProvider.GetUtcNow()).Time;
@@ -129,7 +129,7 @@ public sealed class UploadsWriteService(
 
         var fileName = $"{Guid.CreateVersion7()}.{format.Extension}";
         var originalKey = isPrivate
-            ? MediaStorageKeys.BuildPrivateOriginalKey("care", ownerProfileId, fileName)
+            ? MediaStorageKeys.BuildPrivateOriginalKey(privateArea, ownerProfileId, fileName)
             : $"originals/uploads/{ownerProfileId}/{fileName}";
         var variants = processed.Variants
             .Select(v => (v.Label, v.Width, Key: isPrivate

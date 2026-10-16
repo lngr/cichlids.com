@@ -94,6 +94,13 @@ public sealed class VideoTranscodingService(
         var top = result.Renditions[^1];
         var now = clock.GetUtcNow();
         await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
+        // The files were written for the placement chosen when the job was queued; a tank whose
+        // profile level has changed since is queued for the placement of its media.
+        await context.Tanks
+            .Where(t => context.TankMedia.Any(m => m.TankId == t.Id && m.MediaItemId == item.Id)
+                && (t.ProfileVisibility == TankVisibility.Public) == job.IsPrivate)
+            .ExecuteUpdateAsync(s => s.SetProperty(t => t.MediaMovePending, true).SetProperty(t => t.MediaMoveAttempts, 0)
+                .SetProperty(t => t.MediaMoveNextAttemptAt, now), cancellationToken);
         item.Width = info.DisplayWidth;
         item.Height = info.DisplayHeight;
         item.DurationMs = (int)info.Duration.TotalMilliseconds;

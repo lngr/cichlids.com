@@ -44,15 +44,15 @@ internal static class CareTestSupport
 
     public static string NewMemberToken() => TestTokens.Create(Guid.NewGuid().ToString(), $"care-{Guid.NewGuid():N}"[..24]);
 
-    public static async Task<(string Token, long Tank)> OwnTankAsync(HttpClient client)
+    public static async Task<(string Token, long Tank)> OwnTankAsync(HttpClient client, bool isPublic = true)
     {
         var token = NewMemberToken();
-        return (token, await CreateTankAsync(client, token));
+        return (token, await CreateTankAsync(client, token, isPublic));
     }
 
-    public static async Task<long> CreateTankAsync(HttpClient client, string token)
+    public static async Task<long> CreateTankAsync(HttpClient client, string token, bool isPublic = true)
     {
-        using var response = await SendAsync(client, HttpMethod.Post, "/api/tanks", token, new { title = "Care test", isPublic = true });
+        using var response = await SendAsync(client, HttpMethod.Post, "/api/tanks", token, new { title = "Care test", isPublic });
         response.EnsureSuccessStatusCode();
         return (await BodyAsync(response)).GetProperty("id").GetInt64();
     }
