@@ -1,5 +1,5 @@
 import type {
-  CareKind, ImageUrlsDto, MediaKind, MediaLibraryDetailDto, MediaLibraryItemDto, MediaPlaceDto, MediaPlaceKind, TankMediaSection, VideoDto,
+  CareKind, ImageUrlsDto, MediaKind, MediaLibraryDetailDto, MediaLibraryItemDto, MediaPlaceDto, MediaPlaceKind, StoryState, TankMediaSection, VideoDto,
 } from "./generated/types.gen.js";
 
 export type { MediaKind as LibraryKind, MediaPlaceKind as LibraryPlaceKind };
@@ -20,7 +20,10 @@ export type LibraryPlace = {
   at: string | null;
 };
 
-/** A file of the media library with the number and kinds of places that show it. */
+/** The story that the quick share of a file created; slug is null while that story is a draft. */
+export type LibraryQuickShare = { storyId: number; slug: string | null; state: StoryState };
+
+/** A file of the media library with the number and kinds of places that show it. quickShare is set once the file was shared to the gallery. */
 export type LibraryItem = {
   id: number;
   kind: MediaKind;
@@ -31,6 +34,7 @@ export type LibraryItem = {
   video: VideoDto | null;
   placeCount: number;
   placeKinds: MediaPlaceKind[];
+  quickShare: LibraryQuickShare | null;
 };
 
 /** A time-lapse week of a tank that a file keeps: the file is the only in-app photo of that ISO week (weekStart is its Monday). */
@@ -84,6 +88,7 @@ export const toLibraryItem = (item: MediaLibraryItemDto): LibraryItem => ({
   video: item.video,
   placeCount: Number(item.placeCount),
   placeKinds: item.placeKinds,
+  quickShare: item.quickShare && { storyId: Number(item.quickShare.storyId), slug: item.quickShare.slug, state: item.quickShare.state },
 });
 
 export const toLibraryDetail = (detail: MediaLibraryDetailDto): LibraryDetail => ({

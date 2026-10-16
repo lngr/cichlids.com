@@ -7,9 +7,26 @@ import { toTankOperation } from "./decommission.js";
 import type { DecommissionScope, TankOperation } from "./decommission.js";
 import { toLibraryDetail, toLibraryItem, toLibraryPlace, libraryQuery } from "./library.js";
 import type { LibraryDetail, LibraryItem, LibraryListParams, LibraryPlace } from "./library.js";
+import { toMyStory, toStoryEditor } from "./storyEditor.js";
+import type { EditorEntry, MyStory, StoryEditor, StorySubjectRequest, StoryTextRequest } from "./storyEditor.js";
 import { toMeStreaks, toTankStreaks, toVacation } from "./streaks.js";
 import type { MeStreaks, TankStreaks, Vacation } from "./streaks.js";
 import {
+  addMyStoryItem,
+  addMyStorySubject,
+  createMyStory,
+  deleteMyStory,
+  getMyStory,
+  listMyStories,
+  placeMyStorySubject,
+  removeMyStoryItem,
+  removeMyStorySubject,
+  reorderMyStory,
+  setMyStoryCover,
+  setMyStoryItemCaption,
+  shareMyMedia,
+  updateMyStory,
+  withdrawMyStory,
   logCareEntry,
   updateCareEntry,
   deleteCareEntry,
@@ -157,6 +174,7 @@ import type {
   MeDto,
   TodayDto,
   StoryDetailDto,
+  StoryEditorDto,
   StoryItemDto,
   StoryListItemDto,
   StorySubjectDto,
@@ -565,6 +583,32 @@ export interface CichlidsClient {
     remove(id: number): Promise<LibraryPlace[]>;
     /** Stores a photo in the library without a place. */
     uploadPhoto(file: UploadFile): Promise<LibraryItem>;
+    /** Shares an own photo or video to the gallery: creates and publishes a story with the file as its only item. A file has one such story. */
+    share(id: number, request: PublishStoryRequest): Promise<StoryDetail>;
+  };
+  /** The stories of the member and the editor that builds them. */
+  storyEditor: {
+    /** The stories of the member, the most recently changed first. */
+    list(params?: PageParams): Promise<PagedResponse<MyStory>>;
+    create(request?: StoryTextRequest): Promise<StoryEditor>;
+    get(id: number): Promise<StoryEditor>;
+    updateText(id: number, request: StoryTextRequest): Promise<StoryEditor>;
+    /** Deletes a draft with its links or removes a published story from the gallery; the files stay in the library. */
+    remove(id: number): Promise<void>;
+    /** Makes a published story a draft again. */
+    withdraw(id: number): Promise<StoryEditor>;
+    /** Adds an own file as the last entry; the caption belongs to this story only. */
+    addItem(id: number, mediaItemId: number, caption?: string | null): Promise<StoryEditor>;
+    setCaption(id: number, itemId: number, caption: string | null): Promise<StoryEditor>;
+    /** Removes the item from the story; the file stays in the library. */
+    removeItem(id: number, itemId: number): Promise<StoryEditor>;
+    /** Sets the sequence: every item and every positioned subject exactly once. */
+    reorder(id: number, entries: EditorEntry[]): Promise<StoryEditor>;
+    /** Chooses the cover among the items; null makes the first item the cover. */
+    setCover(id: number, itemId: number | null): Promise<StoryEditor>;
+    addSubject(id: number, request: StorySubjectRequest): Promise<StoryEditor>;
+    placeSubject(id: number, subjectId: number, positioned: boolean): Promise<StoryEditor>;
+    removeSubject(id: number, subjectId: number): Promise<StoryEditor>;
   };
   videos: {
     /** The videos of a tank: the ready ones for everybody, every state for the owner. */
@@ -601,6 +645,9 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       return request;
     });
   }
+
+  const editorOf = (result: { data?: StoryEditorDto; error?: unknown; response?: Response }): StoryEditor =>
+    absolutizeMedia(toStoryEditor(unwrap(result)), options.baseUrl);
 
   return {
     care: {
@@ -974,6 +1021,54 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
           },
         });
         return absolutizeMedia(toLibraryItem(unwrap(result)), options.baseUrl);
+      },
+      async share(id, request) {
+        return absolutizeMedia(unwrap(await shareMyMedia({ client, path: { id }, body: request })), options.baseUrl);
+      },
+    },
+    storyEditor: {
+      async list(params) {
+        const body = unwrap(await listMyStories({ client, query: params ?? {} }));
+        return absolutizeMedia({ total: Number(body.total), items: body.items.map(toMyStory) }, options.baseUrl);
+      },
+      async create(request = { title: null, description: null, topic: null }) {
+        return editorOf(await createMyStory({ client, body: request }));
+      },
+      async get(id) {
+        return editorOf(await getMyStory({ client, path: { id } }));
+      },
+      async updateText(id, request) {
+        return editorOf(await updateMyStory({ client, path: { id }, body: request }));
+      },
+      async remove(id) {
+        unwrap(await deleteMyStory({ client, path: { id } }));
+      },
+      async withdraw(id) {
+        return editorOf(await withdrawMyStory({ client, path: { id } }));
+      },
+      async addItem(id, mediaItemId, caption = null) {
+        return editorOf(await addMyStoryItem({ client, path: { id }, body: { mediaItemId, caption } }));
+      },
+      async setCaption(id, itemId, caption) {
+        return editorOf(await setMyStoryItemCaption({ client, path: { id, itemId }, body: { caption } }));
+      },
+      async removeItem(id, itemId) {
+        return editorOf(await removeMyStoryItem({ client, path: { id, itemId } }));
+      },
+      async reorder(id, entries) {
+        return editorOf(await reorderMyStory({ client, path: { id }, body: { entries } }));
+      },
+      async setCover(id, itemId) {
+        return editorOf(await setMyStoryCover({ client, path: { id }, body: { itemId } }));
+      },
+      async addSubject(id, request) {
+        return editorOf(await addMyStorySubject({ client, path: { id }, body: request }));
+      },
+      async placeSubject(id, subjectId, positioned) {
+        return editorOf(await placeMyStorySubject({ client, path: { id, subjectId }, body: { positioned } }));
+      },
+      async removeSubject(id, subjectId) {
+        return editorOf(await removeMyStorySubject({ client, path: { id, subjectId } }));
       },
     },
     uploads: {

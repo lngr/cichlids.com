@@ -1,6 +1,15 @@
 export { createCichlidsClient, ApiError } from "./client.js";
 export { uploadVideo } from "./videoUpload.js";
-export type { LibraryDetail, LibraryItem, LibraryKind, LibraryListParams, LibraryPlace, LibraryPlaceKind, LibraryStreakWeek } from "./library.js";
+export type {
+  LibraryDetail, LibraryItem, LibraryKind, LibraryListParams, LibraryPlace, LibraryPlaceKind, LibraryQuickShare, LibraryStreakWeek,
+} from "./library.js";
+export {
+  STORY_CAPTION_MAX_LENGTH, STORY_DESCRIPTION_MAX_LENGTH, STORY_TITLE_MAX_LENGTH, STORY_TOPICS,
+  canPublishStory, isValidCaption, moveEntry, normalizeCaption, storySequence,
+} from "./storyEditor.js";
+export type {
+  EditorEntry, EditorItem, EditorSubject, MyStory, PublishableStoryTopic, StoryEditor, StorySubjectRequest, StoryTextRequest,
+} from "./storyEditor.js";
 export { HEATMAP_WEEKS, heatmapIntensity, heatmapListItems, layoutHeatmap } from "./careHeatmap.js";
 export type { CareHeatmap, CareHeatmapDay, HeatmapCell, HeatmapKind, HeatmapLayout } from "./careHeatmap.js";
 export { checkVacationDates } from "./vacation.js";
