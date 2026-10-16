@@ -325,7 +325,15 @@
     "tank_visibility_answer_required": "Beantworte, ob dein Becken öffentlich sein soll.",
     "tank_visibility_invalid": "Wähle öffentlich oder privat für Profil und Stream.",
     "tank_stream_wider_than_profile": "Der Pflege-Stream kann nicht für mehr Menschen sichtbar sein als das Becken-Profil.",
-    "tank_media_not_found": "Diese Mediendatei ist nicht verfügbar oder ihr Link ist abgelaufen."
+    "tank_media_not_found": "Diese Mediendatei ist nicht verfügbar oder ihr Link ist abgelaufen.",
+    "streak_not_found": "Dieses Becken ist nicht verfügbar.",
+    "streak_date_invalid": "Das Datum deines Geräts konnte nicht gelesen werden.",
+    "streak_request_invalid": "Die Anfrage zu deinen Serien konnte nicht verarbeitet werden. Bitte versuche es erneut.",
+    "streak_auth_required": "Melde dich an, um deine Serien zu sehen und Urlaub einzutragen.",
+    "vacation_not_found": "Es ist kein Urlaub aktiv.",
+    "vacation_dates_invalid": "Wähle Tage, die nicht in der Zukunft liegen; der letzte Tag liegt am oder nach dem ersten Tag.",
+    "vacation_active": "Es ist bereits ein Urlaub aktiv.",
+    "vacation_overlap": "Dieser Urlaub überschneidet sich mit einem anderen."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -885,6 +893,53 @@
     },
     "entry": {
       "line": "Geführt, {{time}}, {{evidence}}"
+    }
+  },
+  "streaks": {
+    "title": "Serien",
+    "yourTitle": "Deine Serien",
+    "none": "Noch keine Serie",
+    "paused": "Pausiert, solange du im Urlaub bist.",
+    "longest": "Bisher am längsten: {{count}}",
+    "timeLapse": {
+      "title": "Zeitraffer-Wochen",
+      "headline": "Wochen in Folge: {{count}}",
+      "done": "Das Foto dieser Woche ist drin.",
+      "openKeep": "Ein Foto bis {{date}} hält die Serie am Laufen.",
+      "openStart": "Ein Foto bis {{date}} startet eine Serie.",
+      "hint": "Es zählen nur Fotos, die mit der Kamera der App aufgenommen wurden."
+    },
+    "waterChange": {
+      "title": "Wasserwechsel-Rhythmus",
+      "headline": "Zeiträume in Folge: {{count}}",
+      "verified": "Durch den geführten Modus bestätigt: {{verified}} von {{count}}",
+      "noHistory": "Deine Serie startet mit dem nächsten Wasserwechsel.",
+      "broken": "Die letzte Serie ist zu Ende. Mit dem nächsten Wasserwechsel startet eine neue.",
+      "deadline": "Nächster Wasserwechsel bis {{date}}",
+      "deadlineToday": "Nächster Wasserwechsel: spätestens heute",
+      "freezes": "Übrige Freezes in diesem Jahr: {{count}}",
+      "freezesHint": "Ein Freeze rettet einen Zeitraum, wenn ein Wasserwechsel nicht durch den geführten Modus bestätigt wurde."
+    },
+    "vacation": {
+      "title": "Urlaub",
+      "intro": "Ein Urlaub pausiert deine Serien, ohne sie zu unterbrechen. Urlaubstage verlängern eine Serie nie.",
+      "privacy": "Ein aktiver Urlaub bleibt privat. Nach dem Ende wird er bei deinen Serien angezeigt, und dein Profil zeigt, wie viel Zeit du im Urlaub warst.",
+      "active": "Im Urlaub seit {{date}}",
+      "none": "Es ist kein Urlaub aktiv.",
+      "start": "Urlaub jetzt starten",
+      "end": "Ich bin zurück, Urlaub beenden",
+      "record": "Vergangenen Urlaub nachtragen",
+      "from": "Erster Tag",
+      "to": "Letzter Tag",
+      "save": "Urlaub speichern",
+      "cancel": "Abbrechen",
+      "errorInvalid": "Gib beide Tage im angezeigten Format ein.",
+      "errorOrder": "Der letzte Tag darf nicht vor dem ersten Tag liegen.",
+      "errorFuture": "Ein Urlaub kann nicht in der Zukunft liegen.",
+      "past": "Vergangene Urlaube",
+      "pastLine": "{{from}} bis {{to}}",
+      "shareYear": "Zeit im Urlaub, letzte 12 Monate: {{percent}}",
+      "shareSinceJoining": "Zeit im Urlaub seit dem Beitritt: {{percent}}"
     }
   }
 }

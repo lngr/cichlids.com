@@ -325,7 +325,15 @@
     "tank_visibility_answer_required": "Jawab apakah akuarium Anda harus publik.",
     "tank_visibility_invalid": "Pilih publik atau pribadi untuk profil dan catatan.",
     "tank_stream_wider_than_profile": "Catatan perawatan tidak boleh terlihat oleh lebih banyak orang daripada profil akuarium.",
-    "tank_media_not_found": "Berkas ini tidak tersedia atau tautannya telah kedaluwarsa."
+    "tank_media_not_found": "Berkas ini tidak tersedia atau tautannya telah kedaluwarsa.",
+    "streak_not_found": "Akuarium ini tidak tersedia.",
+    "streak_date_invalid": "Tanggal perangkatmu tidak dapat dibaca.",
+    "streak_request_invalid": "Permintaan rentetan tidak dapat diproses. Silakan coba lagi.",
+    "streak_auth_required": "Masuk untuk melihat rentetanmu dan mengelola liburan.",
+    "vacation_not_found": "Tidak ada liburan yang aktif.",
+    "vacation_dates_invalid": "Pilih hari yang tidak berada di masa depan, dengan hari terakhir sama dengan atau setelah hari pertama.",
+    "vacation_active": "Sudah ada liburan yang aktif.",
+    "vacation_overlap": "Liburan ini tumpang tindih dengan liburan lain."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -880,6 +888,53 @@
     },
     "entry": {
       "line": "Terpandu, {{time}}, {{evidence}}"
+    }
+  },
+  "streaks": {
+    "title": "Rentetan",
+    "yourTitle": "Rentetanmu",
+    "none": "Belum ada rentetan",
+    "paused": "Dijeda selama kamu berlibur.",
+    "longest": "Terbaik sejauh ini: {{count}}",
+    "timeLapse": {
+      "title": "Minggu time-lapse",
+      "headline": "Minggu berturut-turut: {{count}}",
+      "done": "Foto minggu ini sudah masuk.",
+      "openKeep": "Satu foto sebelum {{date}} menjaga rentetan tetap berjalan.",
+      "openStart": "Satu foto sebelum {{date}} memulai rentetan.",
+      "hint": "Hanya foto yang diambil dengan kamera aplikasi yang dihitung."
+    },
+    "waterChange": {
+      "title": "Ritme penggantian air",
+      "headline": "Periode berturut-turut: {{count}}",
+      "verified": "Terverifikasi oleh mode terpandu: {{verified}} dari {{count}}",
+      "noHistory": "Rentetanmu dimulai dengan penggantian air berikutnya.",
+      "broken": "Rentetan terakhir sudah berakhir. Penggantian air berikutnya memulai yang baru.",
+      "deadline": "Penggantian air berikutnya sebelum {{date}}",
+      "deadlineToday": "Penggantian air berikutnya: paling lambat hari ini",
+      "freezes": "Freeze tersisa tahun ini: {{count}}",
+      "freezesHint": "Freeze menjaga satu periode ketika penggantian air tidak terverifikasi oleh mode terpandu."
+    },
+    "vacation": {
+      "title": "Liburan",
+      "intro": "Liburan menjeda rentetanmu tanpa memutusnya. Hari liburan tidak pernah menambah rentetan.",
+      "privacy": "Liburan yang aktif tetap privat. Setelah berakhir, liburan ditampilkan bersama rentetanmu, dan profilmu menunjukkan berapa lama kamu berlibur.",
+      "active": "Berlibur sejak {{date}}",
+      "none": "Tidak ada liburan yang aktif.",
+      "start": "Mulai liburan sekarang",
+      "end": "Aku sudah kembali, akhiri liburan",
+      "record": "Catat liburan yang sudah lewat",
+      "from": "Hari pertama",
+      "to": "Hari terakhir",
+      "save": "Simpan liburan",
+      "cancel": "Batal",
+      "errorInvalid": "Masukkan kedua hari dengan format yang ditampilkan.",
+      "errorOrder": "Hari terakhir tidak boleh sebelum hari pertama.",
+      "errorFuture": "Liburan tidak boleh berada di masa depan.",
+      "past": "Liburan sebelumnya",
+      "pastLine": "{{from}} sampai {{to}}",
+      "shareYear": "Waktu berlibur, 12 bulan terakhir: {{percent}}",
+      "shareSinceJoining": "Waktu berlibur sejak bergabung: {{percent}}"
     }
   }
 }

@@ -1,5 +1,6 @@
 export { createCichlidsClient, ApiError } from "./client.js";
 export { uploadVideo } from "./videoUpload.js";
+export { checkVacationDates } from "./vacation.js";
 export {
   activeVacation, daysUntilDeadline, hasStreakHistory, seriesPhotoKeepsStreak, toVacationShare,
 } from "./streaks.js";

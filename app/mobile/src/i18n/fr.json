@@ -333,7 +333,15 @@
     "tank_visibility_answer_required": "Indiquez si votre aquarium doit être public.",
     "tank_visibility_invalid": "Choisissez public ou privé pour le profil et le journal.",
     "tank_stream_wider_than_profile": "Le journal d'entretien ne peut pas être visible par plus de personnes que le profil de l'aquarium.",
-    "tank_media_not_found": "Ce média est indisponible ou son lien a expiré."
+    "tank_media_not_found": "Ce média est indisponible ou son lien a expiré.",
+    "streak_not_found": "Cet aquarium n’est pas disponible.",
+    "streak_date_invalid": "La date de ton appareil n’a pas pu être lue.",
+    "streak_request_invalid": "La demande de séries n’a pas pu être traitée. Réessaie.",
+    "streak_auth_required": "Connecte-toi pour voir tes séries et gérer tes vacances.",
+    "vacation_not_found": "Aucune vacance n’est active.",
+    "vacation_dates_invalid": "Choisis des jours qui ne sont pas dans le futur, le dernier jour étant le même que le premier ou après lui.",
+    "vacation_active": "Des vacances sont déjà actives.",
+    "vacation_overlap": "Ces vacances chevauchent d’autres vacances."
   },
   "featureFlags": {
     "activityTitle": "Activité de la communauté",
@@ -898,6 +906,53 @@
     },
     "entry": {
       "line": "Guidé, {{time}}, {{evidence}}"
+    }
+  },
+  "streaks": {
+    "title": "Séries",
+    "yourTitle": "Tes séries",
+    "none": "Pas encore de série",
+    "paused": "En pause pendant tes vacances.",
+    "longest": "Meilleure série : {{count}}",
+    "timeLapse": {
+      "title": "Semaines de time-lapse",
+      "headline": "Semaines d’affilée : {{count}}",
+      "done": "La photo de cette semaine est là.",
+      "openKeep": "Une photo avant le {{date}} maintient la série.",
+      "openStart": "Une photo avant le {{date}} lance une série.",
+      "hint": "Seules comptent les photos prises avec l’appareil photo de l’app."
+    },
+    "waterChange": {
+      "title": "Rythme des changements d’eau",
+      "headline": "Périodes d’affilée : {{count}}",
+      "verified": "Confirmées par le mode guidé : {{verified}} sur {{count}}",
+      "noHistory": "Ta série commence avec ton prochain changement d’eau.",
+      "broken": "La dernière série est terminée. Ton prochain changement d’eau en lance une nouvelle.",
+      "deadline": "Prochain changement d’eau avant le {{date}}",
+      "deadlineToday": "Prochain changement d’eau : aujourd’hui au plus tard",
+      "freezes": "Gels restants cette année : {{count}}",
+      "freezesHint": "Un gel maintient une période lorsqu’un changement d’eau n’a pas été confirmé par le mode guidé."
+    },
+    "vacation": {
+      "title": "Vacances",
+      "intro": "Des vacances mettent tes séries en pause sans les interrompre. Les jours de vacances ne prolongent jamais une série.",
+      "privacy": "Des vacances en cours restent privées. Une fois terminées, elles s’affichent avec tes séries, et ton profil montre combien de temps tu as passé en vacances.",
+      "active": "En vacances depuis le {{date}}",
+      "none": "Aucune vacance n’est active.",
+      "start": "Commencer les vacances maintenant",
+      "end": "Je suis de retour, terminer les vacances",
+      "record": "Ajouter des vacances passées",
+      "from": "Premier jour",
+      "to": "Dernier jour",
+      "save": "Enregistrer les vacances",
+      "cancel": "Annuler",
+      "errorInvalid": "Saisis les deux jours au format indiqué.",
+      "errorOrder": "Le dernier jour ne peut pas précéder le premier.",
+      "errorFuture": "Des vacances ne peuvent pas être dans le futur.",
+      "past": "Vacances passées",
+      "pastLine": "{{from}} au {{to}}",
+      "shareYear": "Temps en vacances, 12 derniers mois : {{percent}}",
+      "shareSinceJoining": "Temps en vacances depuis l’inscription : {{percent}}"
     }
   }
 }

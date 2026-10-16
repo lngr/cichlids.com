@@ -333,7 +333,15 @@
     "tank_visibility_answer_required": "Responde si tu acuario debe ser público.",
     "tank_visibility_invalid": "Elige público o privado para el perfil y el registro.",
     "tank_stream_wider_than_profile": "El registro de cuidados no puede ser visible para más personas que el perfil del acuario.",
-    "tank_media_not_found": "Este archivo no está disponible o su enlace caducó."
+    "tank_media_not_found": "Este archivo no está disponible o su enlace caducó.",
+    "streak_not_found": "Este acuario no está disponible.",
+    "streak_date_invalid": "No se pudo leer la fecha de tu dispositivo.",
+    "streak_request_invalid": "No se pudo procesar la solicitud de rachas. Inténtalo de nuevo.",
+    "streak_auth_required": "Inicia sesión para ver tus rachas y gestionar las vacaciones.",
+    "vacation_not_found": "No hay vacaciones activas.",
+    "vacation_dates_invalid": "Elige días que no estén en el futuro, con el último día igual o posterior al primero.",
+    "vacation_active": "Ya hay unas vacaciones activas.",
+    "vacation_overlap": "Estas vacaciones se solapan con otras."
   },
   "featureFlags": {
     "activityTitle": "Actividad de la comunidad",
@@ -898,6 +906,53 @@
     },
     "entry": {
       "line": "Guiado, {{time}}, {{evidence}}"
+    }
+  },
+  "streaks": {
+    "title": "Rachas",
+    "yourTitle": "Tus rachas",
+    "none": "Aún sin racha",
+    "paused": "En pausa mientras estás de vacaciones.",
+    "longest": "Tu mejor racha: {{count}}",
+    "timeLapse": {
+      "title": "Semanas de time-lapse",
+      "headline": "Semanas seguidas: {{count}}",
+      "done": "La foto de esta semana ya está.",
+      "openKeep": "Una foto antes del {{date}} mantiene la racha.",
+      "openStart": "Una foto antes del {{date}} inicia una racha.",
+      "hint": "Solo cuentan las fotos tomadas con la cámara de la app."
+    },
+    "waterChange": {
+      "title": "Ritmo de cambio de agua",
+      "headline": "Períodos seguidos: {{count}}",
+      "verified": "Verificados por el modo guiado: {{verified}} de {{count}}",
+      "noHistory": "Tu racha empieza con tu próximo cambio de agua.",
+      "broken": "La última racha terminó. Tu próximo cambio de agua inicia una nueva.",
+      "deadline": "Próximo cambio de agua antes del {{date}}",
+      "deadlineToday": "Próximo cambio de agua: hoy a más tardar",
+      "freezes": "Congelaciones restantes este año: {{count}}",
+      "freezesHint": "Una congelación mantiene un período cuando un cambio de agua no fue verificado por el modo guiado."
+    },
+    "vacation": {
+      "title": "Vacaciones",
+      "intro": "Las vacaciones pausan tus rachas sin romperlas. Los días de vacaciones nunca suman a una racha.",
+      "privacy": "Unas vacaciones activas son privadas. Al terminar, se muestran junto a tus rachas, y tu perfil muestra cuánto tiempo pasaste de vacaciones.",
+      "active": "De vacaciones desde el {{date}}",
+      "none": "No hay vacaciones activas.",
+      "start": "Iniciar vacaciones ahora",
+      "end": "Ya volví, terminar vacaciones",
+      "record": "Registrar unas vacaciones pasadas",
+      "from": "Primer día",
+      "to": "Último día",
+      "save": "Guardar vacaciones",
+      "cancel": "Cancelar",
+      "errorInvalid": "Ingresa ambos días con el formato indicado.",
+      "errorOrder": "El último día no puede ser anterior al primero.",
+      "errorFuture": "Las vacaciones no pueden estar en el futuro.",
+      "past": "Vacaciones pasadas",
+      "pastLine": "{{from}} a {{to}}",
+      "shareYear": "Tiempo de vacaciones, últimos 12 meses: {{percent}}",
+      "shareSinceJoining": "Tiempo de vacaciones desde que te uniste: {{percent}}"
     }
   }
 }

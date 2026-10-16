@@ -341,7 +341,15 @@
     "tank_visibility_answer_required": "Odpovězte, zda má být vaše akvárium veřejné.",
     "tank_visibility_invalid": "Zvolte veřejné nebo soukromé pro profil a deník.",
     "tank_stream_wider_than_profile": "Deník péče nemůže být viditelný pro více lidí než profil akvária.",
-    "tank_media_not_found": "Tento soubor není dostupný nebo jeho odkaz vypršel."
+    "tank_media_not_found": "Tento soubor není dostupný nebo jeho odkaz vypršel.",
+    "streak_not_found": "Toto akvárium není dostupné.",
+    "streak_date_invalid": "Datum zařízení se nepodařilo přečíst.",
+    "streak_request_invalid": "Požadavek na série se nepodařilo zpracovat. Zkus to prosím znovu.",
+    "streak_auth_required": "Přihlas se, uvidíš své série a můžeš spravovat dovolenou.",
+    "vacation_not_found": "Žádná dovolená není aktivní.",
+    "vacation_dates_invalid": "Vyber dny, které nejsou v budoucnosti; poslední den nesmí být před prvním.",
+    "vacation_active": "Dovolená už je aktivní.",
+    "vacation_overlap": "Tato dovolená se překrývá s jinou."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -911,6 +919,53 @@
     },
     "entry": {
       "line": "Vedená, {{time}}, {{evidence}}"
+    }
+  },
+  "streaks": {
+    "title": "Série",
+    "yourTitle": "Tvoje série",
+    "none": "Zatím žádná série",
+    "paused": "Pozastaveno, dokud jsi na dovolené.",
+    "longest": "Dosud nejdelší: {{count}}",
+    "timeLapse": {
+      "title": "Týdny časosběru",
+      "headline": "Týdny v řadě: {{count}}",
+      "done": "Fotka tohoto týdne je tady.",
+      "openKeep": "Fotka do {{date}} drží sérii při životě.",
+      "openStart": "Fotka do {{date}} začne sérii.",
+      "hint": "Počítají se jen fotky pořízené fotoaparátem aplikace."
+    },
+    "waterChange": {
+      "title": "Rytmus výměn vody",
+      "headline": "Období v řadě: {{count}}",
+      "verified": "Potvrzeno vedeným režimem: {{verified}} z {{count}}",
+      "noHistory": "Tvoje série začne další výměnou vody.",
+      "broken": "Poslední série skončila. Další výměna vody začne novou.",
+      "deadline": "Další výměna vody do {{date}}",
+      "deadlineToday": "Další výměna vody: nejpozději dnes",
+      "freezes": "Zbývající zmrazení v tomto roce: {{count}}",
+      "freezesHint": "Zmrazení zachrání období, když výměna vody nebyla potvrzena vedeným režimem."
+    },
+    "vacation": {
+      "title": "Dovolená",
+      "intro": "Dovolená pozastaví tvoje série, aniž by je přerušila. Dny dovolené sérii nikdy neprodlužují.",
+      "privacy": "Aktivní dovolená zůstává soukromá. Po skončení se zobrazí u tvých sérií a tvůj profil ukáže, kolik času trávíš na dovolené.",
+      "active": "Na dovolené od {{date}}",
+      "none": "Žádná dovolená není aktivní.",
+      "start": "Začít dovolenou teď",
+      "end": "Jsem zpátky, ukončit dovolenou",
+      "record": "Zapsat minulou dovolenou",
+      "from": "První den",
+      "to": "Poslední den",
+      "save": "Uložit dovolenou",
+      "cancel": "Zrušit",
+      "errorInvalid": "Zadej oba dny v uvedeném formátu.",
+      "errorOrder": "Poslední den nesmí být před prvním dnem.",
+      "errorFuture": "Dovolená nemůže být v budoucnosti.",
+      "past": "Minulé dovolené",
+      "pastLine": "od {{from}} do {{to}}",
+      "shareYear": "Čas na dovolené, posledních 12 měsíců: {{percent}}",
+      "shareSinceJoining": "Čas na dovolené od registrace: {{percent}}"
     }
   }
 }

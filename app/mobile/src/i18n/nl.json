@@ -325,7 +325,15 @@
     "tank_visibility_answer_required": "Geef aan of je aquarium openbaar moet zijn.",
     "tank_visibility_invalid": "Kies openbaar of privé voor het profiel en het logboek.",
     "tank_stream_wider_than_profile": "Het verzorgingslogboek kan voor niet meer mensen zichtbaar zijn dan het aquariumprofiel.",
-    "tank_media_not_found": "Dit bestand is niet beschikbaar of de link is verlopen."
+    "tank_media_not_found": "Dit bestand is niet beschikbaar of de link is verlopen.",
+    "streak_not_found": "Dit aquarium is niet beschikbaar.",
+    "streak_date_invalid": "De datum van je apparaat kon niet worden gelezen.",
+    "streak_request_invalid": "De aanvraag voor reeksen kon niet worden verwerkt. Probeer het opnieuw.",
+    "streak_auth_required": "Log in om je reeksen te zien en vakanties te beheren.",
+    "vacation_not_found": "Er is geen vakantie actief.",
+    "vacation_dates_invalid": "Kies dagen die niet in de toekomst liggen, met de laatste dag op of na de eerste dag.",
+    "vacation_active": "Er is al een vakantie actief.",
+    "vacation_overlap": "Deze vakantie overlapt met een andere."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -885,6 +893,53 @@
     },
     "entry": {
       "line": "Begeleid, {{time}}, {{evidence}}"
+    }
+  },
+  "streaks": {
+    "title": "Reeksen",
+    "yourTitle": "Jouw reeksen",
+    "none": "Nog geen reeks",
+    "paused": "Gepauzeerd zolang je op vakantie bent.",
+    "longest": "Beste tot nu toe: {{count}}",
+    "timeLapse": {
+      "title": "Timelapse-weken",
+      "headline": "Weken achter elkaar: {{count}}",
+      "done": "De foto van deze week is binnen.",
+      "openKeep": "Een foto vóór {{date}} houdt de reeks gaande.",
+      "openStart": "Een foto vóór {{date}} start een reeks.",
+      "hint": "Alleen foto’s die met de camera van de app zijn gemaakt tellen mee."
+    },
+    "waterChange": {
+      "title": "Ritme van waterverversing",
+      "headline": "Periodes achter elkaar: {{count}}",
+      "verified": "Bevestigd door de begeleide modus: {{verified}} van {{count}}",
+      "noHistory": "Je reeks begint met je volgende waterverversing.",
+      "broken": "De laatste reeks is afgelopen. Je volgende waterverversing start een nieuwe.",
+      "deadline": "Volgende waterverversing vóór {{date}}",
+      "deadlineToday": "Volgende waterverversing: uiterlijk vandaag",
+      "freezes": "Resterende freezes dit jaar: {{count}}",
+      "freezesHint": "Een freeze houdt een periode in stand als een waterverversing niet door de begeleide modus is bevestigd."
+    },
+    "vacation": {
+      "title": "Vakantie",
+      "intro": "Een vakantie pauzeert je reeksen zonder ze te onderbreken. Vakantiedagen verlengen een reeks nooit.",
+      "privacy": "Een actieve vakantie blijft privé. Als ze voorbij is, wordt ze bij je reeksen getoond en laat je profiel zien hoeveel tijd je op vakantie was.",
+      "active": "Op vakantie sinds {{date}}",
+      "none": "Er is geen vakantie actief.",
+      "start": "Vakantie nu starten",
+      "end": "Ik ben terug, vakantie beëindigen",
+      "record": "Een vakantie uit het verleden vastleggen",
+      "from": "Eerste dag",
+      "to": "Laatste dag",
+      "save": "Vakantie opslaan",
+      "cancel": "Annuleren",
+      "errorInvalid": "Vul beide dagen in met de getoonde notatie.",
+      "errorOrder": "De laatste dag mag niet voor de eerste dag liggen.",
+      "errorFuture": "Een vakantie kan niet in de toekomst liggen.",
+      "past": "Eerdere vakanties",
+      "pastLine": "{{from}} tot {{to}}",
+      "shareYear": "Tijd op vakantie, laatste 12 maanden: {{percent}}",
+      "shareSinceJoining": "Tijd op vakantie sinds je aanmelding: {{percent}}"
     }
   }
 }

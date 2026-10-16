@@ -341,7 +341,15 @@
     "tank_visibility_answer_required": "Odpowiedz, czy Twoje akwarium ma być publiczne.",
     "tank_visibility_invalid": "Wybierz publiczne lub prywatne dla profilu i dziennika.",
     "tank_stream_wider_than_profile": "Dziennik pielęgnacji nie może być widoczny dla większej liczby osób niż profil akwarium.",
-    "tank_media_not_found": "Ten plik jest niedostępny albo jego link wygasł."
+    "tank_media_not_found": "Ten plik jest niedostępny albo jego link wygasł.",
+    "streak_not_found": "To akwarium jest niedostępne.",
+    "streak_date_invalid": "Nie udało się odczytać daty z urządzenia.",
+    "streak_request_invalid": "Nie udało się przetworzyć prośby o serie. Spróbuj ponownie.",
+    "streak_auth_required": "Zaloguj się, aby zobaczyć swoje serie i zarządzać urlopem.",
+    "vacation_not_found": "Żaden urlop nie jest aktywny.",
+    "vacation_dates_invalid": "Wybierz dni, które nie leżą w przyszłości; ostatni dzień nie może być przed pierwszym.",
+    "vacation_active": "Urlop jest już aktywny.",
+    "vacation_overlap": "Ten urlop nakłada się na inny."
   },
   "featureFlags": {
     "activityTitle": "Aktywność społeczności",
@@ -911,6 +919,53 @@
     },
     "entry": {
       "line": "Prowadzona, {{time}}, {{evidence}}"
+    }
+  },
+  "streaks": {
+    "title": "Serie",
+    "yourTitle": "Twoje serie",
+    "none": "Jeszcze bez serii",
+    "paused": "Wstrzymane na czas urlopu.",
+    "longest": "Najlepsza dotąd: {{count}}",
+    "timeLapse": {
+      "title": "Tygodnie timelapse",
+      "headline": "Tygodnie z rzędu: {{count}}",
+      "done": "Zdjęcie z tego tygodnia jest.",
+      "openKeep": "Zdjęcie do {{date}} podtrzymuje serię.",
+      "openStart": "Zdjęcie do {{date}} rozpoczyna serię.",
+      "hint": "Liczą się tylko zdjęcia zrobione aparatem aplikacji."
+    },
+    "waterChange": {
+      "title": "Rytm podmian wody",
+      "headline": "Okresy z rzędu: {{count}}",
+      "verified": "Potwierdzone w trybie prowadzonym: {{verified}} z {{count}}",
+      "noHistory": "Twoja seria zacznie się od następnej podmiany wody.",
+      "broken": "Ostatnia seria się skończyła. Następna podmiana wody rozpocznie nową.",
+      "deadline": "Następna podmiana wody do {{date}}",
+      "deadlineToday": "Następna podmiana wody: najpóźniej dziś",
+      "freezes": "Pozostałe zamrożenia w tym roku: {{count}}",
+      "freezesHint": "Zamrożenie podtrzymuje okres, gdy podmiana wody nie została potwierdzona w trybie prowadzonym."
+    },
+    "vacation": {
+      "title": "Urlop",
+      "intro": "Urlop wstrzymuje twoje serie bez ich przerywania. Dni urlopu nigdy nie wydłużają serii.",
+      "privacy": "Aktywny urlop pozostaje prywatny. Po zakończeniu pojawia się przy twoich seriach, a twój profil pokazuje, jaką część czasu spędzasz na urlopie.",
+      "active": "Na urlopie od {{date}}",
+      "none": "Żaden urlop nie jest aktywny.",
+      "start": "Rozpocznij urlop teraz",
+      "end": "Jestem z powrotem, zakończ urlop",
+      "record": "Zapisz miniony urlop",
+      "from": "Pierwszy dzień",
+      "to": "Ostatni dzień",
+      "save": "Zapisz urlop",
+      "cancel": "Anuluj",
+      "errorInvalid": "Wpisz oba dni w podanym formacie.",
+      "errorOrder": "Ostatni dzień nie może być przed pierwszym.",
+      "errorFuture": "Urlop nie może leżeć w przyszłości.",
+      "past": "Minione urlopy",
+      "pastLine": "od {{from}} do {{to}}",
+      "shareYear": "Czas na urlopie, ostatnie 12 miesięcy: {{percent}}",
+      "shareSinceJoining": "Czas na urlopie od dołączenia: {{percent}}"
     }
   }
 }

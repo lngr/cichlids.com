@@ -333,7 +333,15 @@
     "tank_visibility_answer_required": "Responda se seu aquário deve ser público.",
     "tank_visibility_invalid": "Escolha público ou privado para o perfil e o registro.",
     "tank_stream_wider_than_profile": "O registro de cuidados não pode ficar visível para mais pessoas do que o perfil do aquário.",
-    "tank_media_not_found": "Este arquivo não está disponível ou o link expirou."
+    "tank_media_not_found": "Este arquivo não está disponível ou o link expirou.",
+    "streak_not_found": "Este aquário não está disponível.",
+    "streak_date_invalid": "Não foi possível ler a data do seu dispositivo.",
+    "streak_request_invalid": "Não foi possível processar a solicitação das sequências. Tente novamente.",
+    "streak_auth_required": "Entre para ver suas sequências e gerenciar as férias.",
+    "vacation_not_found": "Não há férias ativas.",
+    "vacation_dates_invalid": "Escolha dias que não estejam no futuro, com o último dia igual ou posterior ao primeiro.",
+    "vacation_active": "Já há férias ativas.",
+    "vacation_overlap": "Estas férias se sobrepõem a outras."
   },
   "featureFlags": {
     "activityTitle": "Atividade da comunidade",
@@ -898,6 +906,53 @@
     },
     "entry": {
       "line": "Guiada, {{time}}, {{evidence}}"
+    }
+  },
+  "streaks": {
+    "title": "Sequências",
+    "yourTitle": "Suas sequências",
+    "none": "Ainda sem sequência",
+    "paused": "Pausada enquanto você está de férias.",
+    "longest": "Seu recorde: {{count}}",
+    "timeLapse": {
+      "title": "Semanas de time-lapse",
+      "headline": "Semanas seguidas: {{count}}",
+      "done": "A foto desta semana já está aqui.",
+      "openKeep": "Uma foto até {{date}} mantém a sequência.",
+      "openStart": "Uma foto até {{date}} inicia uma sequência.",
+      "hint": "Só contam as fotos tiradas com a câmera do app."
+    },
+    "waterChange": {
+      "title": "Ritmo de troca de água",
+      "headline": "Períodos seguidos: {{count}}",
+      "verified": "Verificados pelo modo guiado: {{verified}} de {{count}}",
+      "noHistory": "Sua sequência começa com a próxima troca de água.",
+      "broken": "A última sequência terminou. A próxima troca de água inicia uma nova.",
+      "deadline": "Próxima troca de água até {{date}}",
+      "deadlineToday": "Próxima troca de água: hoje, no máximo",
+      "freezes": "Congelamentos restantes neste ano: {{count}}",
+      "freezesHint": "Um congelamento mantém um período quando uma troca de água não foi verificada pelo modo guiado."
+    },
+    "vacation": {
+      "title": "Férias",
+      "intro": "As férias pausam suas sequências sem quebrá-las. Dias de férias nunca aumentam uma sequência.",
+      "privacy": "Férias ativas ficam privadas. Depois que terminam, aparecem junto das suas sequências, e seu perfil mostra quanto tempo você passou de férias.",
+      "active": "De férias desde {{date}}",
+      "none": "Não há férias ativas.",
+      "start": "Iniciar férias agora",
+      "end": "Voltei, encerrar férias",
+      "record": "Registrar férias passadas",
+      "from": "Primeiro dia",
+      "to": "Último dia",
+      "save": "Salvar férias",
+      "cancel": "Cancelar",
+      "errorInvalid": "Informe os dois dias no formato indicado.",
+      "errorOrder": "O último dia não pode ser anterior ao primeiro.",
+      "errorFuture": "As férias não podem estar no futuro.",
+      "past": "Férias passadas",
+      "pastLine": "{{from}} a {{to}}",
+      "shareYear": "Tempo de férias, últimos 12 meses: {{percent}}",
+      "shareSinceJoining": "Tempo de férias desde a entrada: {{percent}}"
     }
   }
 }

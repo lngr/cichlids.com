@@ -78,6 +78,14 @@ export const API_ERROR_CODES = [
   "care_video_not_found",
   "water_change_not_found",
   "water_change_request_invalid",
+  "streak_not_found",
+  "streak_date_invalid",
+  "streak_request_invalid",
+  "streak_auth_required",
+  "vacation_not_found",
+  "vacation_dates_invalid",
+  "vacation_active",
+  "vacation_overlap",
 ] as const;
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];

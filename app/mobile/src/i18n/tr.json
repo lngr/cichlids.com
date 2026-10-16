@@ -325,7 +325,15 @@
     "tank_visibility_answer_required": "Akvaryumunuzun herkese açık olup olmayacağını yanıtlayın.",
     "tank_visibility_invalid": "Profil ve akış için herkese açık veya gizli seçin.",
     "tank_stream_wider_than_profile": "Bakım akışı, akvaryum profilinden daha fazla kişiye görünür olamaz.",
-    "tank_media_not_found": "Bu dosya kullanılamıyor veya bağlantısının süresi doldu."
+    "tank_media_not_found": "Bu dosya kullanılamıyor veya bağlantısının süresi doldu.",
+    "streak_not_found": "Bu akvaryum kullanılamıyor.",
+    "streak_date_invalid": "Cihazının tarihi okunamadı.",
+    "streak_request_invalid": "Seri isteği işlenemedi. Lütfen tekrar dene.",
+    "streak_auth_required": "Serilerini görmek ve tatili yönetmek için giriş yap.",
+    "vacation_not_found": "Etkin bir tatil yok.",
+    "vacation_dates_invalid": "Gelecekte olmayan günler seç; son gün ilk günden önce olmasın.",
+    "vacation_active": "Zaten etkin bir tatil var.",
+    "vacation_overlap": "Bu tatil başka bir tatille çakışıyor."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -885,6 +893,53 @@
     },
     "entry": {
       "line": "Rehberli, {{time}}, {{evidence}}"
+    }
+  },
+  "streaks": {
+    "title": "Seriler",
+    "yourTitle": "Serilerin",
+    "none": "Henüz seri yok",
+    "paused": "Tatildeyken duraklatıldı.",
+    "longest": "Şimdiye kadarki en iyi: {{count}}",
+    "timeLapse": {
+      "title": "Zaman atlamalı haftalar",
+      "headline": "Üst üste haftalar: {{count}}",
+      "done": "Bu haftanın fotoğrafı tamam.",
+      "openKeep": "{{date}} tarihine kadar bir fotoğraf seriyi sürdürür.",
+      "openStart": "{{date}} tarihine kadar bir fotoğraf seri başlatır.",
+      "hint": "Yalnızca uygulamanın kamerasıyla çekilen fotoğraflar sayılır."
+    },
+    "waterChange": {
+      "title": "Su değişimi ritmi",
+      "headline": "Üst üste dönemler: {{count}}",
+      "verified": "Rehberli modla doğrulanan: {{verified}} / {{count}}",
+      "noHistory": "Serin bir sonraki su değişimiyle başlar.",
+      "broken": "Son seri sona erdi. Bir sonraki su değişimi yenisini başlatır.",
+      "deadline": "Bir sonraki su değişimi en geç {{date}}",
+      "deadlineToday": "Bir sonraki su değişimi: en geç bugün",
+      "freezes": "Bu yıl kalan dondurma hakkı: {{count}}",
+      "freezesHint": "Bir su değişimi rehberli modla doğrulanmadığında dondurma hakkı o dönemi korur."
+    },
+    "vacation": {
+      "title": "Tatil",
+      "intro": "Tatil, serilerini bozmadan duraklatır. Tatil günleri bir seriyi asla uzatmaz.",
+      "privacy": "Etkin tatil gizli kalır. Sona erdikten sonra serilerinle birlikte gösterilir ve profilin tatilde ne kadar zaman geçirdiğini gösterir.",
+      "active": "{{date}} tarihinden beri tatilde",
+      "none": "Etkin bir tatil yok.",
+      "start": "Tatili şimdi başlat",
+      "end": "Döndüm, tatili bitir",
+      "record": "Geçmiş bir tatili kaydet",
+      "from": "İlk gün",
+      "to": "Son gün",
+      "save": "Tatili kaydet",
+      "cancel": "Vazgeç",
+      "errorInvalid": "İki günü de gösterilen biçimde gir.",
+      "errorOrder": "Son gün ilk günden önce olamaz.",
+      "errorFuture": "Tatil gelecekte olamaz.",
+      "past": "Geçmiş tatiller",
+      "pastLine": "{{from}} - {{to}}",
+      "shareYear": "Tatilde geçen süre, son 12 ay: {{percent}}",
+      "shareSinceJoining": "Katıldığından beri tatilde geçen süre: {{percent}}"
     }
   }
 }

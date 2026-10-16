@@ -325,7 +325,15 @@
     "tank_visibility_answer_required": "Answer whether your tank should be public.",
     "tank_visibility_invalid": "Choose public or private for the profile and the stream.",
     "tank_stream_wider_than_profile": "The care stream cannot be visible to more people than the tank profile.",
-    "tank_media_not_found": "This media item is unavailable or its link has expired."
+    "tank_media_not_found": "This media item is unavailable or its link has expired.",
+    "streak_not_found": "This tank is unavailable.",
+    "streak_date_invalid": "Your device date could not be read.",
+    "streak_request_invalid": "The streak request could not be processed. Please try again.",
+    "streak_auth_required": "Sign in to see your streaks and manage vacations.",
+    "vacation_not_found": "There is no active vacation.",
+    "vacation_dates_invalid": "Choose days that are not in the future, with the last day on or after the first day.",
+    "vacation_active": "A vacation is already active.",
+    "vacation_overlap": "This vacation overlaps another one."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -885,6 +893,53 @@
     },
     "entry": {
       "line": "Guided, {{time}}, {{evidence}}"
+    }
+  },
+  "streaks": {
+    "title": "Streaks",
+    "yourTitle": "Your streaks",
+    "none": "No streak yet",
+    "paused": "Paused while you are on vacation.",
+    "longest": "Best so far: {{count}}",
+    "timeLapse": {
+      "title": "Time-lapse weeks",
+      "headline": "Weeks in a row: {{count}}",
+      "done": "This week's photo is in.",
+      "openKeep": "A photo by {{date}} keeps it going.",
+      "openStart": "A photo by {{date}} starts a streak.",
+      "hint": "Only photos taken with the camera of the app count."
+    },
+    "waterChange": {
+      "title": "Water change rhythm",
+      "headline": "Periods in a row: {{count}}",
+      "verified": "Verified by the guided mode: {{verified}} of {{count}}",
+      "noHistory": "Your streak starts with your next water change.",
+      "broken": "The last streak ended. Your next water change starts a new one.",
+      "deadline": "Next water change by {{date}}",
+      "deadlineToday": "Next water change: today at the latest",
+      "freezes": "Freezes left this year: {{count}}",
+      "freezesHint": "A freeze keeps a period when a water change was not verified by the guided mode."
+    },
+    "vacation": {
+      "title": "Vacation",
+      "intro": "A vacation pauses your streaks without breaking them. Vacation days never add to a streak.",
+      "privacy": "An active vacation stays private. Once it has ended, it is shown with your streaks, and your profile shows how much time you spent on vacation.",
+      "active": "On vacation since {{date}}",
+      "none": "No vacation is active.",
+      "start": "Start vacation now",
+      "end": "I am back, end vacation",
+      "record": "Record a past vacation",
+      "from": "First day",
+      "to": "Last day",
+      "save": "Save vacation",
+      "cancel": "Cancel",
+      "errorInvalid": "Enter both days in the format shown.",
+      "errorOrder": "The last day must not come before the first day.",
+      "errorFuture": "A vacation cannot lie in the future.",
+      "past": "Past vacations",
+      "pastLine": "{{from}} to {{to}}",
+      "shareYear": "Time on vacation, last 12 months: {{percent}}",
+      "shareSinceJoining": "Time on vacation since joining: {{percent}}"
     }
   }
 }
