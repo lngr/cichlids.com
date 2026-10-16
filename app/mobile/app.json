@@ -33,6 +33,14 @@
       "expo-secure-store",
       "expo-notifications",
       [
+        "expo-camera",
+        {
+          "cameraPermission": "Allows cichlids to show your last tank photo over the camera so new photos line up.",
+          "microphonePermission": false,
+          "recordAudioAndroid": false
+        }
+      ],
+      [
         "expo-image-picker",
         {
           "photosPermission": "Allows cichlids to upload photos from your library.",
