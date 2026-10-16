@@ -41,6 +41,7 @@ export type {
   DiscoverArchive,
   DiscoverItem,
   DueCareItem,
+  DueStreak,
   LocalTime,
   WebPushConfig,
   WebPushSubscriptionRecord,

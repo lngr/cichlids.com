@@ -13,9 +13,14 @@ const DAY_MS = 86_400_000;
 /** A reminder moved to a later local day; it belongs to one due date of one rule. */
 export type ReminderSnooze = { tankId: number; kind: CareKind; dueDate: string; until: string };
 
-/** One local notification: the local calendar date and the wall-clock time at which it fires. */
+/**
+ * One local notification: the local calendar date and the wall-clock time at which it fires.
+ * daysLeft is the number of days until the water change streak breaks, 0 on its last day; it is
+ * null for a reminder outside a running streak.
+ */
 export type PlannedReminder = {
   id: string; tankId: number; tankTitle: string; kind: CareKind; dueDate: string; date: string; hour: number; minute: number;
+  daysLeft: number | null;
 };
 
 export type ReminderInput = {
@@ -26,9 +31,9 @@ export type ReminderInput = {
   utcOffsetMinutes: number;
 };
 
-/** The identifier of the notification of a rule; a rule has at most one scheduled reminder. */
-export function reminderId(tankId: number, kind: CareKind): string {
-  return `${ID_PREFIX}${tankId}:${kind}`;
+/** The identifier of the notification of a rule on a local day; a rule has at most one scheduled reminder per day. */
+export function reminderId(tankId: number, kind: CareKind, date: string): string {
+  return `${ID_PREFIX}${tankId}:${kind}:${date}`;
 }
 
 export function isReminderId(id: string): boolean {
@@ -49,11 +54,28 @@ export function localDateOf(now: Date | number, utcOffsetMinutes: number): strin
   return dateText(wallClock(now, utcOffsetMinutes));
 }
 
+/** The daily reminders of a running streak whose time is still ahead. */
+function streakReminders(item: DueCareItem, dueDate: string, localNow: number): PlannedReminder[] {
+  const { streak } = item;
+  if (streak?.state !== "running" || streak.reminderFrom === null || streak.deadline === null) return [];
+  const deadline = Date.parse(`${streak.deadline}T00:00:00Z`);
+  const reminders: PlannedReminder[] = [];
+  for (let day = Date.parse(`${streak.reminderFrom}T00:00:00Z`); day <= deadline; day += DAY_MS) {
+    const date = dateText(day);
+    if (reminderWallMs(date) <= localNow) continue;
+    reminders.push({ id: reminderId(item.tankId, item.kind, date), tankId: item.tankId, tankTitle: item.tankTitle, kind: item.kind, dueDate, date,
+      hour: REMINDER_HOUR, minute: REMINDER_MINUTE, daysLeft: Math.round((deadline - day) / DAY_MS) });
+  }
+  return reminders;
+}
+
 /**
  * The notifications to schedule: one at 09:00 local time on the due day of each rule whose tank
  * has reminders on and whose care has been logged before. Care that is overdue gets no reminder
- * unless the member snoozed it, and a reminder whose time has passed is left out. At most
- * MAX_SCHEDULED_REMINDERS are kept, the nearest first.
+ * unless the member snoozed it, and a reminder whose time has passed is left out. A water change
+ * with a running streak gets one reminder on every day from the first reminder day through the
+ * deadline of the streak, each with the days left, and none while a vacation pauses the streak;
+ * a snooze does not change these days. At most MAX_SCHEDULED_REMINDERS are kept, the nearest first.
  */
 export function planReminders({ items, snoozes, now, utcOffsetMinutes }: ReminderInput): PlannedReminder[] {
   const localNow = wallClock(now, utcOffsetMinutes);
@@ -61,11 +83,15 @@ export function planReminders({ items, snoozes, now, utcOffsetMinutes }: Reminde
   for (const item of items) {
     const dueDate = item.due.dueDate;
     if (!item.remindersEnabled || item.due.state === "never_logged" || dueDate === null) continue;
+    if (item.kind === "water_change" && item.streak) {
+      planned.push(...streakReminders(item, dueDate, localNow));
+      continue;
+    }
     const snooze = snoozes.find(s => s.tankId === item.tankId && s.kind === item.kind && s.dueDate === dueDate);
     const date = snooze?.until ?? (item.due.state === "overdue" ? null : dueDate);
     if (date === null || reminderWallMs(date) <= localNow) continue;
-    planned.push({ id: reminderId(item.tankId, item.kind), tankId: item.tankId, tankTitle: item.tankTitle, kind: item.kind,
-      dueDate, date, hour: REMINDER_HOUR, minute: REMINDER_MINUTE });
+    planned.push({ id: reminderId(item.tankId, item.kind, date), tankId: item.tankId, tankTitle: item.tankTitle, kind: item.kind,
+      dueDate, date, hour: REMINDER_HOUR, minute: REMINDER_MINUTE, daysLeft: null });
   }
   return planned
     .sort((a, b) => a.date.localeCompare(b.date) || a.tankId - b.tankId || a.kind.localeCompare(b.kind))
@@ -79,8 +105,8 @@ export function snoozeReminder(reminder: { tankId: number; kind: CareKind; dueDa
 
 /** The reminder a snooze plans: the rule of the snooze at 09:00 on its day. */
 export function reminderFromSnooze(tank: { tankTitle: string }, snooze: ReminderSnooze): PlannedReminder {
-  return { id: reminderId(snooze.tankId, snooze.kind), tankId: snooze.tankId, tankTitle: tank.tankTitle, kind: snooze.kind,
-    dueDate: snooze.dueDate, date: snooze.until, hour: REMINDER_HOUR, minute: REMINDER_MINUTE };
+  return { id: reminderId(snooze.tankId, snooze.kind, snooze.until), tankId: snooze.tankId, tankTitle: tank.tankTitle, kind: snooze.kind,
+    dueDate: snooze.dueDate, date: snooze.until, hour: REMINDER_HOUR, minute: REMINDER_MINUTE, daysLeft: null };
 }
 
 /** The snoozes whose day has not passed yet. */

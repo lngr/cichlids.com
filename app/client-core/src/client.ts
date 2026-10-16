@@ -92,6 +92,7 @@ import type {
   CareEntryDto,
   CareReasonDto,
   DueCareItemDto,
+  DueStreakDto,
   CareKind,
   CarePlanDto,
   DueCareDto,
@@ -163,7 +164,17 @@ export type CarePlanRule = {
   kind: CareKind; rhythmDays: number | null; enabled: boolean; isDefault: boolean; reason: CareReason | null; due: CareDue | null;
 };
 export type CarePlan = { tankId: number; rules: CarePlanRule[]; remindersEnabled: boolean };
-export type DueCareItem = { tankId: number; tankTitle: string; kind: CareKind; rhythmDays: number; reason: CareReason; due: CareDue; remindersEnabled: boolean };
+/**
+ * The water change streak of a due water change as the reminders need it. While the streak runs,
+ * reminderFrom and deadline are the first and the last local date of the daily reminders; a streak
+ * paused by a vacation has no reminder days.
+ */
+export type DueStreak = { state: "running" | "paused"; reminderFrom: string | null; deadline: string | null };
+export type DueCareItem = {
+  tankId: number; tankTitle: string; kind: CareKind; rhythmDays: number; reason: CareReason; due: CareDue; remindersEnabled: boolean;
+  /** Set for a water change whose streak runs or is paused; null otherwise. */
+  streak?: DueStreak | null;
+};
 export type CarePlanChange = { rhythmDays?: number; enabled?: boolean };
 /** The member's local calendar date (YYYY-MM-DD) and, optionally, the offset of the clock from UTC in minutes. */
 export type LocalTime = { date: string; utcOffsetMinutes?: number };
@@ -336,9 +347,13 @@ const toPlan = (plan: CarePlanDto): CarePlan => ({
   })),
   remindersEnabled: plan.remindersEnabled,
 });
+const toDueStreak = (streak: DueStreakDto): DueStreak => ({
+  state: streak.state === "paused" ? "paused" : "running", reminderFrom: streak.reminderFrom ?? null, deadline: streak.deadline ?? null,
+});
 const toDueItem = (item: DueCareItemDto): DueCareItem => ({
   tankId: Number(item.tankId), tankTitle: item.tankTitle, kind: item.kind, rhythmDays: Number(item.rhythmDays),
   reason: toReason(item.reason), due: toDue(item.due), remindersEnabled: item.remindersEnabled,
+  streak: item.streak ? toDueStreak(item.streak) : null,
 });
 
 export interface CichlidsClient {
