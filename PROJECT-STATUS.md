@@ -621,6 +621,10 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
   Umgang mit dem Freeze. Einträge beruhen auf Selbstauskunft; der Freeze verhindert erfundene
   Einträge im Urlaub. Zur Wahl stehen eine nur private Serie mit Freeze, eine öffentliche Serie
   mit Freeze, eine Serie ohne Freeze oder keine Serie. TASK-5.5 wartet auf diese Entscheidung.
+- [ ] **O5** Sichtbarkeit der Pflege-Einträge (TASK-5.7): Der Standard muss zum Feed-Gedanken
+  passen. Abzuwägen sind Abwesenheitsmuster aus genauen Zeitstempeln, Datenschutz durch
+  Voreinstellung (DSGVO Art. 25 Abs. 2) und lebendige Timelines. Bis zur Entscheidung sieht nur
+  der Besitzer seine Pflege-Einträge. TASK-5.7 wartet auf diese Entscheidung.
 
 ---
 
