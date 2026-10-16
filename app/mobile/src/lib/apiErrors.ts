@@ -28,6 +28,8 @@ export const API_ERROR_CODES = [
   "comment_too_long",
   "draft_limit_reached",
   "upload_rate_limited",
+  "tank_photo_invalid",
+  "tank_photo_auth_required",
   "request_too_large",
   "tank_title_invalid",
   "tank_not_found",

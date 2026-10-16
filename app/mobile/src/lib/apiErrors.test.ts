@@ -20,6 +20,13 @@ describe("apiErrorKey", () => {
     }
   });
 
+  it.each(["tank_photo_invalid", "tank_photo_auth_required"])("translates %s", (code) => {
+    expect(apiErrorKey(new ApiError("Refused", 400, code))).toBe(`errors.${code}`);
+    for (const resource of Object.values(TRANSLATIONS)) {
+      expect((resource.errors as Record<string, string>)[code], code).toBeTruthy();
+    }
+  });
+
   it.each(["care_note_invalid", "care_photo_not_found", "care_photo_invalid", "care_photo_limit_reached", "todo_not_found", "todo_text_invalid", "todo_request_invalid"])("translates %s", (code) => {
     expect(apiErrorKey(new ApiError("Refused", 400, code))).toBe(`errors.${code}`);
     for (const resource of Object.values(TRANSLATIONS)) {
