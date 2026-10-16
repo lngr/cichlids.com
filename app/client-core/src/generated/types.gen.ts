@@ -42,12 +42,29 @@ export type CareEntryDto = {
     occurredAt: string;
     recordedAt: string;
     amount: null | CareAmountDto;
-    values?: null | Array<MeasurementValueDto>;
+    values: null | Array<MeasurementValueDto>;
+    note: null | string;
+    photos: Array<CarePhotoDto>;
+    todos: Array<CareTodoDto>;
 };
 
 export type CareKind = 'water_change' | 'measurement';
 
 export type CareParameter = 'temperature' | 'ph' | 'kh' | 'gh' | 'no2' | 'no3' | 'nh4' | 'po4' | 'conductivity' | 'tds';
+
+export type CarePhotoDto = {
+    id: number | string;
+    width: null | number | string;
+    height: null | number | string;
+    urls: CarePhotoUrlsDto;
+};
+
+export type CarePhotoUrlsDto = {
+    thumb: null | string;
+    small: null | string;
+    medium: null | string;
+    large: null | string;
+};
 
 export type CarePlanDto = {
     tankId: number | string;
@@ -83,6 +100,16 @@ export type CareSeriesPointDto = {
     inputValue: number | string;
     inputUnit: MeasurementUnit;
     origin: null | MeasurementOrigin;
+};
+
+export type CareTodoDto = {
+    id: number | string;
+    tankId: number | string;
+    careEntryId: null | number | string;
+    text: string;
+    done: boolean;
+    doneAt: null | string;
+    createdAt: string;
 };
 
 export type CommentCreatedDto = {
@@ -163,6 +190,10 @@ export type CreateTankRequest = {
     dimensions: null | DimensionInputDto;
     volume: null | VolumeInputDto;
     region?: null | TankRegion;
+};
+
+export type CreateTodoRequest = {
+    text?: null | string;
 };
 
 export type CreateWebhookRequest = {
@@ -372,6 +403,11 @@ export type PagedResponseOfSpeciesListItemDto = {
 export type PagedResponseOfTankListItemDto = {
     total: number | string;
     items: Array<TankListItemDto>;
+};
+
+export type PagedResponseOfTodoListItemDto = {
+    total: number | string;
+    items: Array<TodoListItemDto>;
 };
 
 export type PictureDetailDto = {
@@ -596,6 +632,17 @@ export type TodayWeeklyTankDto = {
     tank: DiscoverItemDto;
 };
 
+export type TodoListItemDto = {
+    id: number | string;
+    tankId: number | string;
+    tankTitle: string;
+    careEntryId: null | number | string;
+    text: string;
+    done: boolean;
+    doneAt: null | string;
+    createdAt: string;
+};
+
 export type UpdateCarePlanRuleRequest = {
     rhythmDays?: null | number | string;
     enabled?: null | boolean;
@@ -604,6 +651,12 @@ export type UpdateCarePlanRuleRequest = {
 export type UpdateCareRequest = {
     amount: null | CareAmountRequest;
     values?: null | Array<MeasurementValueRequest>;
+    note?: null | string;
+};
+
+export type UpdateTodoRequest = {
+    done?: null | boolean;
+    text?: null | string;
 };
 
 export type VolumeDto = {
@@ -668,6 +721,102 @@ export type GetFeatureFlagsResponses = {
 };
 
 export type GetFeatureFlagsResponse = GetFeatureFlagsResponses[keyof GetFeatureFlagsResponses];
+
+export type GetCarePhotoData = {
+    body?: never;
+    path: {
+        token: string;
+    };
+    query?: never;
+    url: '/api/care-photos/{token}';
+};
+
+export type GetCarePhotoErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetCarePhotoError = GetCarePhotoErrors[keyof GetCarePhotoErrors];
+
+export type GetCarePhotoResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type CreateCareEntryTodoData = {
+    body: CreateTodoRequest;
+    path: {
+        tankId: number;
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/care/{id}/todos';
+};
+
+export type CreateCareEntryTodoErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type CreateCareEntryTodoError = CreateCareEntryTodoErrors[keyof CreateCareEntryTodoErrors];
+
+export type CreateCareEntryTodoResponses = {
+    /**
+     * Created
+     */
+    201: CareTodoDto;
+};
+
+export type CreateCareEntryTodoResponse = CreateCareEntryTodoResponses[keyof CreateCareEntryTodoResponses];
+
+export type CreateTankTodoData = {
+    body: CreateTodoRequest;
+    path: {
+        tankId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/todos';
+};
+
+export type CreateTankTodoErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type CreateTankTodoError = CreateTankTodoErrors[keyof CreateTankTodoErrors];
+
+export type CreateTankTodoResponses = {
+    /**
+     * Created
+     */
+    201: CareTodoDto;
+};
+
+export type CreateTankTodoResponse = CreateTankTodoResponses[keyof CreateTankTodoResponses];
 
 export type ListDueCareData = {
     body?: never;
@@ -1764,6 +1913,188 @@ export type UpdateCarePlanRuleResponses = {
 };
 
 export type UpdateCarePlanRuleResponse = UpdateCarePlanRuleResponses[keyof UpdateCarePlanRuleResponses];
+
+export type AddCarePhotoData = {
+    body: {
+        file?: IFormFile;
+    };
+    path: {
+        tankId: number;
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/care/{id}/photos';
+};
+
+export type AddCarePhotoErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+    /**
+     * Payload Too Large
+     */
+    413: unknown;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type AddCarePhotoError = AddCarePhotoErrors[keyof AddCarePhotoErrors];
+
+export type AddCarePhotoResponses = {
+    /**
+     * Created
+     */
+    201: CareEntryDto;
+};
+
+export type AddCarePhotoResponse = AddCarePhotoResponses[keyof AddCarePhotoResponses];
+
+export type RemoveCarePhotoData = {
+    body?: never;
+    path: {
+        tankId: number;
+        id: number;
+        photoId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/care/{id}/photos/{photoId}';
+};
+
+export type RemoveCarePhotoErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type RemoveCarePhotoError = RemoveCarePhotoErrors[keyof RemoveCarePhotoErrors];
+
+export type RemoveCarePhotoResponses = {
+    /**
+     * OK
+     */
+    200: CareEntryDto;
+};
+
+export type RemoveCarePhotoResponse = RemoveCarePhotoResponses[keyof RemoveCarePhotoResponses];
+
+export type ListMyTodosData = {
+    body?: never;
+    path?: never;
+    query?: {
+        state?: string;
+        offset?: number | string;
+        limit?: number | string;
+    };
+    url: '/api/me/todos';
+};
+
+export type ListMyTodosErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+};
+
+export type ListMyTodosError = ListMyTodosErrors[keyof ListMyTodosErrors];
+
+export type ListMyTodosResponses = {
+    /**
+     * OK
+     */
+    200: PagedResponseOfTodoListItemDto;
+};
+
+export type ListMyTodosResponse = ListMyTodosResponses[keyof ListMyTodosResponses];
+
+export type DeleteTodoData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/todos/{id}';
+};
+
+export type DeleteTodoErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type DeleteTodoError = DeleteTodoErrors[keyof DeleteTodoErrors];
+
+export type DeleteTodoResponses = {
+    /**
+     * OK
+     */
+    200: CareTodoDto;
+};
+
+export type DeleteTodoResponse = DeleteTodoResponses[keyof DeleteTodoResponses];
+
+export type UpdateTodoData = {
+    body: UpdateTodoRequest;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/todos/{id}';
+};
+
+export type UpdateTodoErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type UpdateTodoError = UpdateTodoErrors[keyof UpdateTodoErrors];
+
+export type UpdateTodoResponses = {
+    /**
+     * OK
+     */
+    200: CareTodoDto;
+};
+
+export type UpdateTodoResponse = UpdateTodoResponses[keyof UpdateTodoResponses];
 
 export type GetProfileData = {
     body?: never;

@@ -2,7 +2,7 @@
 
 import { client } from './client.gen.js';
 import { type Client, type ClientMeta, formDataBodySerializer, type Options as Options2, type RequestResult, type TDataShape } from './client/index.js';
-import type { CompleteOnboardingData, CompleteOnboardingResponses, CreatePictureCommentData, CreatePictureCommentErrors, CreatePictureCommentResponses, CreateTankCommentData, CreateTankCommentErrors, CreateTankCommentResponses, CreateTankData, CreateTankErrors, CreateTankResponses, CreateWebhookSubscriptionData, CreateWebhookSubscriptionErrors, CreateWebhookSubscriptionResponses, DeleteCareEntryData, DeleteCareEntryErrors, DeleteCareEntryResponses, DeleteCommentData, DeleteCommentErrors, DeleteCommentResponses, DiscardPostData, DiscardPostErrors, DiscardPostResponses, GetCarePlanData, GetCarePlanErrors, GetCarePlanResponses, GetCareSeriesData, GetCareSeriesErrors, GetCareSeriesResponses, GetCommunityThreadData, GetCommunityThreadErrors, GetCommunityThreadResponses, GetDiscoverData, GetDiscoverErrors, GetDiscoverResponses, GetFeatureFlagsData, GetFeatureFlagsResponses, GetHealthData, GetHealthResponses, GetMeData, GetMeErrors, GetMeResponses, GetPictureData, GetPictureErrors, GetPictureResponses, GetProfileData, GetProfileErrors, GetProfileResponses, GetSpeciesData, GetSpeciesErrors, GetSpeciesResponses, GetTankData, GetTankErrors, GetTankResponses, GetTankTimeLapseData, GetTankTimeLapseErrors, GetTankTimeLapseResponses, GetTodayData, GetTodayErrors, GetTodayResponses, LegacyDiscussionListRedirectData, LegacyDiscussionListRedirectResponses, LegacyDiscussionReadRedirectData, LegacyDiscussionReadRedirectResponses, LegacyMemberRedirectData, LegacyMemberRedirectResponses, LegacyMemberRedirectWithRestData, LegacyMemberRedirectWithRestResponses, LegacyPictureRedirectData, LegacyPictureRedirectHtmlData, LegacyPictureRedirectHtmlResponses, LegacyPictureRedirectResponses, LegacySpeciesRedirectData, LegacySpeciesRedirectResponses, LegacyTankRedirectData, LegacyTankRedirectResponses, LegacyWikiRedirectData, LegacyWikiRedirectResponses, ListCareEntriesData, ListCareEntriesErrors, ListCareEntriesResponses, ListCommunityCategoriesData, ListCommunityCategoriesResponses, ListCommunityThreadsData, ListCommunityThreadsErrors, ListCommunityThreadsResponses, ListDueCareData, ListDueCareErrors, ListDueCareResponses, ListMyDraftsData, ListMyDraftsErrors, ListMyDraftsResponses, ListMyLegacyTanksData, ListMyLegacyTanksResponses, ListOutboxEventsData, ListOutboxEventsErrors, ListOutboxEventsResponses, ListPictureCommentsData, ListPictureCommentsErrors, ListPictureCommentsResponses, ListPicturesData, ListPicturesErrors, ListPicturesResponses, ListProfilePicturesData, ListProfilePicturesResponses, ListProfileTanksData, ListProfileTanksResponses, ListSpeciesData, ListSpeciesResponses, ListTankCommentsData, ListTankCommentsErrors, ListTankCommentsResponses, ListTanksData, ListTanksErrors, ListTanksResponses, ListWebhookSubscriptionsData, ListWebhookSubscriptionsResponses, LogCareEntryData, LogCareEntryErrors, LogCareEntryResponses, PublishPostData, PublishPostErrors, PublishPostResponses, RedeliverGivenUpOutboxEventsData, RedeliverGivenUpOutboxEventsResponses, RedeliverOutboxEventData, RedeliverOutboxEventErrors, RedeliverOutboxEventResponses, RefineTankRegionData, RefineTankRegionResponses, SetMyInterestsData, SetMyInterestsResponses, UpdateCareEntryData, UpdateCareEntryErrors, UpdateCareEntryResponses, UpdateCarePlanRuleData, UpdateCarePlanRuleErrors, UpdateCarePlanRuleResponses, UploadPhotoData, UploadPhotoErrors, UploadPhotoResponses } from './types.gen.js';
+import type { AddCarePhotoData, AddCarePhotoErrors, AddCarePhotoResponses, CompleteOnboardingData, CompleteOnboardingResponses, CreateCareEntryTodoData, CreateCareEntryTodoErrors, CreateCareEntryTodoResponses, CreatePictureCommentData, CreatePictureCommentErrors, CreatePictureCommentResponses, CreateTankCommentData, CreateTankCommentErrors, CreateTankCommentResponses, CreateTankData, CreateTankErrors, CreateTankResponses, CreateTankTodoData, CreateTankTodoErrors, CreateTankTodoResponses, CreateWebhookSubscriptionData, CreateWebhookSubscriptionErrors, CreateWebhookSubscriptionResponses, DeleteCareEntryData, DeleteCareEntryErrors, DeleteCareEntryResponses, DeleteCommentData, DeleteCommentErrors, DeleteCommentResponses, DeleteTodoData, DeleteTodoErrors, DeleteTodoResponses, DiscardPostData, DiscardPostErrors, DiscardPostResponses, GetCarePhotoData, GetCarePhotoErrors, GetCarePhotoResponses, GetCarePlanData, GetCarePlanErrors, GetCarePlanResponses, GetCareSeriesData, GetCareSeriesErrors, GetCareSeriesResponses, GetCommunityThreadData, GetCommunityThreadErrors, GetCommunityThreadResponses, GetDiscoverData, GetDiscoverErrors, GetDiscoverResponses, GetFeatureFlagsData, GetFeatureFlagsResponses, GetHealthData, GetHealthResponses, GetMeData, GetMeErrors, GetMeResponses, GetPictureData, GetPictureErrors, GetPictureResponses, GetProfileData, GetProfileErrors, GetProfileResponses, GetSpeciesData, GetSpeciesErrors, GetSpeciesResponses, GetTankData, GetTankErrors, GetTankResponses, GetTankTimeLapseData, GetTankTimeLapseErrors, GetTankTimeLapseResponses, GetTodayData, GetTodayErrors, GetTodayResponses, LegacyDiscussionListRedirectData, LegacyDiscussionListRedirectResponses, LegacyDiscussionReadRedirectData, LegacyDiscussionReadRedirectResponses, LegacyMemberRedirectData, LegacyMemberRedirectResponses, LegacyMemberRedirectWithRestData, LegacyMemberRedirectWithRestResponses, LegacyPictureRedirectData, LegacyPictureRedirectHtmlData, LegacyPictureRedirectHtmlResponses, LegacyPictureRedirectResponses, LegacySpeciesRedirectData, LegacySpeciesRedirectResponses, LegacyTankRedirectData, LegacyTankRedirectResponses, LegacyWikiRedirectData, LegacyWikiRedirectResponses, ListCareEntriesData, ListCareEntriesErrors, ListCareEntriesResponses, ListCommunityCategoriesData, ListCommunityCategoriesResponses, ListCommunityThreadsData, ListCommunityThreadsErrors, ListCommunityThreadsResponses, ListDueCareData, ListDueCareErrors, ListDueCareResponses, ListMyDraftsData, ListMyDraftsErrors, ListMyDraftsResponses, ListMyLegacyTanksData, ListMyLegacyTanksResponses, ListMyTodosData, ListMyTodosErrors, ListMyTodosResponses, ListOutboxEventsData, ListOutboxEventsErrors, ListOutboxEventsResponses, ListPictureCommentsData, ListPictureCommentsErrors, ListPictureCommentsResponses, ListPicturesData, ListPicturesErrors, ListPicturesResponses, ListProfilePicturesData, ListProfilePicturesResponses, ListProfileTanksData, ListProfileTanksResponses, ListSpeciesData, ListSpeciesResponses, ListTankCommentsData, ListTankCommentsErrors, ListTankCommentsResponses, ListTanksData, ListTanksErrors, ListTanksResponses, ListWebhookSubscriptionsData, ListWebhookSubscriptionsResponses, LogCareEntryData, LogCareEntryErrors, LogCareEntryResponses, PublishPostData, PublishPostErrors, PublishPostResponses, RedeliverGivenUpOutboxEventsData, RedeliverGivenUpOutboxEventsResponses, RedeliverOutboxEventData, RedeliverOutboxEventErrors, RedeliverOutboxEventResponses, RefineTankRegionData, RefineTankRegionResponses, RemoveCarePhotoData, RemoveCarePhotoErrors, RemoveCarePhotoResponses, SetMyInterestsData, SetMyInterestsResponses, UpdateCareEntryData, UpdateCareEntryErrors, UpdateCareEntryResponses, UpdateCarePlanRuleData, UpdateCarePlanRuleErrors, UpdateCarePlanRuleResponses, UpdateTodoData, UpdateTodoErrors, UpdateTodoResponses, UploadPhotoData, UploadPhotoErrors, UploadPhotoResponses } from './types.gen.js';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -21,6 +21,26 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 export const getHealth = <ThrowOnError extends boolean = false>(options?: Options<GetHealthData, ThrowOnError>): RequestResult<GetHealthResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetHealthResponses, unknown, ThrowOnError>({ url: '/healthz', ...options });
 
 export const getFeatureFlags = <ThrowOnError extends boolean = false>(options?: Options<GetFeatureFlagsData, ThrowOnError>): RequestResult<GetFeatureFlagsResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetFeatureFlagsResponses, unknown, ThrowOnError>({ url: '/api/feature-flags', ...options });
+
+export const getCarePhoto = <ThrowOnError extends boolean = false>(options: Options<GetCarePhotoData, ThrowOnError>): RequestResult<GetCarePhotoResponses, GetCarePhotoErrors, ThrowOnError> => (options.client ?? client).get<GetCarePhotoResponses, GetCarePhotoErrors, ThrowOnError>({ url: '/api/care-photos/{token}', ...options });
+
+export const createCareEntryTodo = <ThrowOnError extends boolean = false>(options: Options<CreateCareEntryTodoData, ThrowOnError>): RequestResult<CreateCareEntryTodoResponses, CreateCareEntryTodoErrors, ThrowOnError> => (options.client ?? client).post<CreateCareEntryTodoResponses, CreateCareEntryTodoErrors, ThrowOnError>({
+    url: '/api/tanks/{tankId}/care/{id}/todos',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+export const createTankTodo = <ThrowOnError extends boolean = false>(options: Options<CreateTankTodoData, ThrowOnError>): RequestResult<CreateTankTodoResponses, CreateTankTodoErrors, ThrowOnError> => (options.client ?? client).post<CreateTankTodoResponses, CreateTankTodoErrors, ThrowOnError>({
+    url: '/api/tanks/{tankId}/todos',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
 
 export const listDueCare = <ThrowOnError extends boolean = false>(options?: Options<ListDueCareData, ThrowOnError>): RequestResult<ListDueCareResponses, ListDueCareErrors, ThrowOnError> => (options?.client ?? client).get<ListDueCareResponses, ListDueCareErrors, ThrowOnError>({ url: '/api/me/care/due', ...options });
 
@@ -182,6 +202,31 @@ export const getCarePlan = <ThrowOnError extends boolean = false>(options: Optio
 
 export const updateCarePlanRule = <ThrowOnError extends boolean = false>(options: Options<UpdateCarePlanRuleData, ThrowOnError>): RequestResult<UpdateCarePlanRuleResponses, UpdateCarePlanRuleErrors, ThrowOnError> => (options.client ?? client).patch<UpdateCarePlanRuleResponses, UpdateCarePlanRuleErrors, ThrowOnError>({
     url: '/api/tanks/{tankId}/care/plan/{kind}',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+export const addCarePhoto = <ThrowOnError extends boolean = false>(options: Options<AddCarePhotoData, ThrowOnError>): RequestResult<AddCarePhotoResponses, AddCarePhotoErrors, ThrowOnError> => (options.client ?? client).post<AddCarePhotoResponses, AddCarePhotoErrors, ThrowOnError>({
+    ...formDataBodySerializer,
+    url: '/api/tanks/{tankId}/care/{id}/photos',
+    ...options,
+    headers: {
+        'Content-Type': null,
+        ...options.headers
+    }
+});
+
+export const removeCarePhoto = <ThrowOnError extends boolean = false>(options: Options<RemoveCarePhotoData, ThrowOnError>): RequestResult<RemoveCarePhotoResponses, RemoveCarePhotoErrors, ThrowOnError> => (options.client ?? client).delete<RemoveCarePhotoResponses, RemoveCarePhotoErrors, ThrowOnError>({ url: '/api/tanks/{tankId}/care/{id}/photos/{photoId}', ...options });
+
+export const listMyTodos = <ThrowOnError extends boolean = false>(options?: Options<ListMyTodosData, ThrowOnError>): RequestResult<ListMyTodosResponses, ListMyTodosErrors, ThrowOnError> => (options?.client ?? client).get<ListMyTodosResponses, ListMyTodosErrors, ThrowOnError>({ url: '/api/me/todos', ...options });
+
+export const deleteTodo = <ThrowOnError extends boolean = false>(options: Options<DeleteTodoData, ThrowOnError>): RequestResult<DeleteTodoResponses, DeleteTodoErrors, ThrowOnError> => (options.client ?? client).delete<DeleteTodoResponses, DeleteTodoErrors, ThrowOnError>({ url: '/api/me/todos/{id}', ...options });
+
+export const updateTodo = <ThrowOnError extends boolean = false>(options: Options<UpdateTodoData, ThrowOnError>): RequestResult<UpdateTodoResponses, UpdateTodoErrors, ThrowOnError> => (options.client ?? client).patch<UpdateTodoResponses, UpdateTodoErrors, ThrowOnError>({
+    url: '/api/me/todos/{id}',
     ...options,
     headers: {
         'Content-Type': 'application/json',

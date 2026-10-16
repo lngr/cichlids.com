@@ -1,6 +1,11 @@
 export { createCichlidsClient, ApiError } from "./client.js";
 export type {
   CareEntry,
+  CarePhoto,
+  CareTodo,
+  TodoListItem,
+  TodoListParams,
+  TodoState,
   CareAmountRequest,
   CareDue,
   CareDueState,
@@ -66,6 +71,7 @@ export type { NavigationTab, NavigationEvent, NavigationContext } from "./naviga
 export { tankStoryMachine } from "./tankStory.js";
 
 export { careMachine } from "./care.js";
+export { MAX_PHOTOS, NOTE_MAX_LENGTH, TODO_MAX_LENGTH, careAttachmentsMachine, isValidNote, normalizeNote, normalizeTodoText, todoListMachine } from "./careAttachments.js";
 export { MAX_RHYTHM_DAYS, MIN_RHYTHM_DAYS, RHYTHM_CHOICES, TODAY_DUE_HORIZON_DAYS, dueCareForToday, dueSummary, isValidRhythm, parseRhythm } from "./carePlan.js";
 export type { DueSummary } from "./carePlan.js";
 export {

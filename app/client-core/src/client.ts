@@ -6,6 +6,13 @@ import {
   deleteCareEntry,
   listCareEntries,
   createPictureComment,
+  addCarePhoto,
+  createCareEntryTodo,
+  createTankTodo,
+  deleteTodo,
+  listMyTodos,
+  removeCarePhoto,
+  updateTodo,
   createTankComment,
   createTank,
   completeOnboarding,
@@ -42,6 +49,9 @@ import {
 } from "./generated/sdk.gen.js";
 import type {
   CareDueDto,
+  CarePhotoDto,
+  CareTodoDto,
+  TodoListItemDto,
   CareDueState,
   CareEntryDto,
   CareReasonDto,
@@ -92,6 +102,14 @@ import type {
 } from "./generated/types.gen.js";
 
 export type CareEntry = CareEntryDto;
+export type CarePhoto = CarePhotoDto;
+export type CareTodo = CareTodoDto;
+export type TodoListItem = TodoListItemDto;
+/** Which to-dos a list shows: those still open, those marked done, or both. */
+export type TodoState = "open" | "done" | "all";
+export interface TodoListParams extends PageParams {
+  state?: TodoState;
+}
 export type CareSeries = CareSeriesDto;
 export type { CareDueState, CareKind };
 export type CareReason = { code: string; parameters: Record<string, string> | null };
@@ -256,9 +274,23 @@ export interface CichlidsClient {
     updateValues(tankId: number, id: number, values: MeasurementValueRequest[]): Promise<CareEntry>;
     series(tankId: number, parameter: CareParameter, range?: CareSeriesRange): Promise<CareSeries>;
     remove(tankId: number, id: number): Promise<CareEntry>;
+    /** Sets the note of an entry; null or blank removes it. */
+    setNote(tankId: number, id: number, note: string | null): Promise<CareEntry>;
+    addPhoto(tankId: number, id: number, file: UploadFile): Promise<CareEntry>;
+    removePhoto(tankId: number, id: number, photoId: number): Promise<CareEntry>;
+    addTodo(tankId: number, id: number, text: string): Promise<CareTodo>;
+    /** The absolute URL for a photo path of a care entry. */
+    photoUrl(path: string): string;
     plan(tankId: number, local: LocalTime): Promise<CarePlan>;
     changeRule(tankId: number, kind: CareKind, change: CarePlanChange, local: LocalTime): Promise<CarePlan>;
     due(local: LocalTime): Promise<DueCareItem[]>;
+  };
+  todos: {
+    list(params?: TodoListParams): Promise<PagedResponse<TodoListItem>>;
+    /** Adds a to-do that belongs to a tank only. */
+    add(tankId: number, text: string): Promise<CareTodo>;
+    setDone(id: number, done: boolean): Promise<CareTodo>;
+    remove(id: number): Promise<CareTodo>;
   };
   discover: {
     get(regions?: TankRegion[]): Promise<DiscoverArchive>;
@@ -343,11 +375,31 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       async updateValues(tankId, id, values) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount: null, values } })); },
       async series(tankId, parameter, range) { return unwrap(await getCareSeries({ client, path: { tankId }, query: { parameter, ...range } })); },
       async remove(tankId, id) { return unwrap(await deleteCareEntry({ client, path: { tankId, id } })); },
+      async setNote(tankId, id, note) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount: null, note: note?.trim() ?? "" } })); },
+      async addPhoto(tankId, id, file) {
+        return unwrap(await addCarePhoto({
+          client, path: { tankId, id }, body: { file: file as never },
+          bodySerializer: () => {
+            const formData = new FormData();
+            formData.append("file", file as never);
+            return formData;
+          },
+        }));
+      },
+      async removePhoto(tankId, id, photoId) { return unwrap(await removeCarePhoto({ client, path: { tankId, id, photoId } })); },
+      async addTodo(tankId, id, text) { return unwrap(await createCareEntryTodo({ client, path: { tankId, id }, body: { text } })); },
+      photoUrl(path) { return `${options.baseUrl.replace(/\/+$/, "")}${path}`; },
       async plan(tankId, local) { return toPlan(unwrap(await getCarePlan({ client, path: { tankId }, query: local }))); },
       async changeRule(tankId, kind, change, local) {
         return toPlan(unwrap(await updateCarePlanRule({ client, path: { tankId, kind }, query: local, body: change })));
       },
       async due(local) { return unwrap<DueCareDto>(await listDueCare({ client, query: local })).items.map(toDueItem); },
+    },
+    todos: {
+      async list(params) { return unwrapPaged(await listMyTodos({ client, query: params ?? {} })); },
+      async add(tankId, text) { return unwrap(await createTankTodo({ client, path: { tankId }, body: { text } })); },
+      async setDone(id, done) { return unwrap(await updateTodo({ client, path: { id }, body: { done } })); },
+      async remove(id) { return unwrap(await deleteTodo({ client, path: { id } })); },
     },
     discover: {
       async get(regions) {
