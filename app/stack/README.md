@@ -9,6 +9,7 @@ storage), Keycloak.
   `~/.dotnet/dotnet`.
 - [pnpm](https://pnpm.io) for the app (`app/mobile`, `app/client-core`).
 - Docker with the Compose plugin.
+- `ffmpeg` and `ffprobe` on the PATH for video transcoding and the video tests; `tools/install-ffmpeg.sh` installs the pinned build into `~/.local/bin`.
 - The legacy MySQL stack (`workspace-legacy/legacy-stack`) reachable on port 3306, and the legacy
   image originals available on disk (default `/workspaces/legacy-data/images/userpics`, see
   `app/api/src/Cichlids.Etl/appsettings.json`).
