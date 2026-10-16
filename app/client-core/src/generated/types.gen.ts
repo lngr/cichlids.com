@@ -8,6 +8,17 @@ export type AddSelectedMemberRequest = {
     handle: null | string;
 };
 
+export type AddStoryItemRequest = {
+    mediaItemId: number | string;
+    caption: null | string;
+};
+
+export type AddStorySubjectRequest = {
+    type: StorySubjectType;
+    id: number | string;
+    positioned: boolean;
+};
+
 export type AggressionLevel = 'unspecified' | 'low' | 'moderate' | 'high';
 
 export type AuthorDto = {
@@ -428,6 +439,7 @@ export type MediaLibraryItemDto = {
     video: null | VideoDto;
     placeCount: number | string;
     placeKinds: Array<MediaPlaceKind>;
+    quickShare: null | MediaQuickShareDto;
 };
 
 export type MediaPlaceDto = {
@@ -443,6 +455,12 @@ export type MediaPlaceDto = {
 };
 
 export type MediaPlaceKind = 'tank' | 'tank_main' | 'decommission_proof' | 'inhabitant' | 'care_entry' | 'water_change' | 'story' | 'discussion_post' | 'profile_avatar' | 'profile_header';
+
+export type MediaQuickShareDto = {
+    storyId: number | string;
+    slug: null | string;
+    state: StoryState;
+};
 
 export type MediaStreakWeekDto = {
     tankId: number | string;
@@ -464,6 +482,17 @@ export type MeStreaksDto = {
     freezesPerYear: number | string;
     vacations: Array<VacationDto>;
     tanks: Array<OwnTankStreaksDto>;
+};
+
+export type MyStoryDto = {
+    id: number | string;
+    state: StoryState;
+    slug: null | string;
+    title: null | string;
+    topic: StoryTopic;
+    itemCount: number | string;
+    cover: null | ImageUrlsDto;
+    updatedAt: string;
 };
 
 export type OnboardingRequest = {
@@ -522,6 +551,11 @@ export type PagedResponseOfCommunityThreadListItemDto = {
 export type PagedResponseOfMediaLibraryItemDto = {
     total: number | string;
     items: Array<MediaLibraryItemDto>;
+};
+
+export type PagedResponseOfMyStoryDto = {
+    total: number | string;
+    items: Array<MyStoryDto>;
 };
 
 export type PagedResponseOfOutboxEventDto = {
@@ -657,6 +691,14 @@ export type StartVacationRequest = {
     endDate?: null | string;
 };
 
+export type StoryCaptionRequest = {
+    caption: null | string;
+};
+
+export type StoryCoverRequest = {
+    itemId: null | number | string;
+};
+
 export type StoryDetailDto = {
     id: number | string;
     slug: string;
@@ -675,6 +717,24 @@ export type StoryDetailDto = {
     items: Array<StoryItemDto>;
     subjects: Array<StorySubjectDto>;
 };
+
+export type StoryEditorDto = {
+    id: number | string;
+    state: StoryState;
+    slug: null | string;
+    title: null | string;
+    description: null | string;
+    topic: StoryTopic;
+    coverItemId: null | number | string;
+    cover: null | ImageUrlsDto;
+    items: Array<StoryItemDto>;
+    subjects: Array<StorySubjectDto>;
+    unavailableSubjectIds: Array<number | string>;
+    quickShareMediaItemId: null | number | string;
+    updatedAt: string;
+};
+
+export type StoryEntryKind = 'item' | 'subject';
 
 export type StoryItemDto = {
     id: number | string;
@@ -702,6 +762,15 @@ export type StoryListItemDto = {
     itemCount: number | string;
 };
 
+export type StoryOrderEntry = {
+    kind: StoryEntryKind;
+    id: number | string;
+};
+
+export type StoryOrderRequest = {
+    entries: null | Array<StoryOrderEntry>;
+};
+
 export type StoryState = 'draft' | 'published' | 'archived';
 
 export type StorySubjectDto = {
@@ -721,6 +790,10 @@ export type StorySubjectInhabitantDto = {
     count: null | number | string;
 };
 
+export type StorySubjectPlacementRequest = {
+    positioned: boolean;
+};
+
 export type StorySubjectSpeciesDto = {
     id: number | string;
     slug: null | string;
@@ -737,6 +810,12 @@ export type StorySubjectTankDto = {
 };
 
 export type StorySubjectType = 'tank' | 'inhabitant' | 'species';
+
+export type StoryTextRequest = {
+    title: null | string;
+    description: null | string;
+    topic: null | string;
+};
 
 export type StoryTopic = 'cichlids' | 'tanks' | 'offtopic' | 'contest' | 'unknown';
 
@@ -1141,6 +1220,41 @@ export type GetFeatureFlagsResponses = {
 };
 
 export type GetFeatureFlagsResponse = GetFeatureFlagsResponses[keyof GetFeatureFlagsResponses];
+
+export type ShareMyMediaData = {
+    body: PublishStoryRequest;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/media/{id}/share';
+};
+
+export type ShareMyMediaErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type ShareMyMediaError = ShareMyMediaErrors[keyof ShareMyMediaErrors];
+
+export type ShareMyMediaResponses = {
+    /**
+     * Created
+     */
+    201: StoryDetailDto;
+};
+
+export type ShareMyMediaResponse = ShareMyMediaResponses[keyof ShareMyMediaResponses];
 
 export type AddTankSeriesPhotoData = {
     body: {
@@ -2639,6 +2753,406 @@ export type CreateStoryCommentResponses = {
 };
 
 export type CreateStoryCommentResponse = CreateStoryCommentResponses[keyof CreateStoryCommentResponses];
+
+export type ListMyStoriesData = {
+    body?: never;
+    path?: never;
+    query?: {
+        offset?: number | string;
+        limit?: number | string;
+    };
+    url: '/api/me/stories';
+};
+
+export type ListMyStoriesResponses = {
+    /**
+     * OK
+     */
+    200: PagedResponseOfMyStoryDto;
+};
+
+export type ListMyStoriesResponse = ListMyStoriesResponses[keyof ListMyStoriesResponses];
+
+export type CreateMyStoryData = {
+    body: StoryTextRequest;
+    path?: never;
+    query?: never;
+    url: '/api/me/stories';
+};
+
+export type CreateMyStoryErrors = {
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type CreateMyStoryError = CreateMyStoryErrors[keyof CreateMyStoryErrors];
+
+export type CreateMyStoryResponses = {
+    /**
+     * Created
+     */
+    201: StoryEditorDto;
+};
+
+export type CreateMyStoryResponse = CreateMyStoryResponses[keyof CreateMyStoryResponses];
+
+export type DeleteMyStoryData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/stories/{id}';
+};
+
+export type DeleteMyStoryErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type DeleteMyStoryError = DeleteMyStoryErrors[keyof DeleteMyStoryErrors];
+
+export type DeleteMyStoryResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type DeleteMyStoryResponse = DeleteMyStoryResponses[keyof DeleteMyStoryResponses];
+
+export type GetMyStoryData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/stories/{id}';
+};
+
+export type GetMyStoryErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetMyStoryError = GetMyStoryErrors[keyof GetMyStoryErrors];
+
+export type GetMyStoryResponses = {
+    /**
+     * OK
+     */
+    200: StoryEditorDto;
+};
+
+export type GetMyStoryResponse = GetMyStoryResponses[keyof GetMyStoryResponses];
+
+export type UpdateMyStoryData = {
+    body: StoryTextRequest;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/stories/{id}';
+};
+
+export type UpdateMyStoryErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type UpdateMyStoryError = UpdateMyStoryErrors[keyof UpdateMyStoryErrors];
+
+export type UpdateMyStoryResponses = {
+    /**
+     * OK
+     */
+    200: StoryEditorDto;
+};
+
+export type UpdateMyStoryResponse = UpdateMyStoryResponses[keyof UpdateMyStoryResponses];
+
+export type WithdrawMyStoryData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/stories/{id}/withdraw';
+};
+
+export type WithdrawMyStoryErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type WithdrawMyStoryError = WithdrawMyStoryErrors[keyof WithdrawMyStoryErrors];
+
+export type WithdrawMyStoryResponses = {
+    /**
+     * OK
+     */
+    200: StoryEditorDto;
+};
+
+export type WithdrawMyStoryResponse = WithdrawMyStoryResponses[keyof WithdrawMyStoryResponses];
+
+export type AddMyStoryItemData = {
+    body: AddStoryItemRequest;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/stories/{id}/items';
+};
+
+export type AddMyStoryItemErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type AddMyStoryItemError = AddMyStoryItemErrors[keyof AddMyStoryItemErrors];
+
+export type AddMyStoryItemResponses = {
+    /**
+     * OK
+     */
+    200: StoryEditorDto;
+};
+
+export type AddMyStoryItemResponse = AddMyStoryItemResponses[keyof AddMyStoryItemResponses];
+
+export type RemoveMyStoryItemData = {
+    body?: never;
+    path: {
+        id: number;
+        itemId: number;
+    };
+    query?: never;
+    url: '/api/me/stories/{id}/items/{itemId}';
+};
+
+export type RemoveMyStoryItemErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type RemoveMyStoryItemError = RemoveMyStoryItemErrors[keyof RemoveMyStoryItemErrors];
+
+export type RemoveMyStoryItemResponses = {
+    /**
+     * OK
+     */
+    200: StoryEditorDto;
+};
+
+export type RemoveMyStoryItemResponse = RemoveMyStoryItemResponses[keyof RemoveMyStoryItemResponses];
+
+export type SetMyStoryItemCaptionData = {
+    body: StoryCaptionRequest;
+    path: {
+        id: number;
+        itemId: number;
+    };
+    query?: never;
+    url: '/api/me/stories/{id}/items/{itemId}';
+};
+
+export type SetMyStoryItemCaptionErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type SetMyStoryItemCaptionError = SetMyStoryItemCaptionErrors[keyof SetMyStoryItemCaptionErrors];
+
+export type SetMyStoryItemCaptionResponses = {
+    /**
+     * OK
+     */
+    200: StoryEditorDto;
+};
+
+export type SetMyStoryItemCaptionResponse = SetMyStoryItemCaptionResponses[keyof SetMyStoryItemCaptionResponses];
+
+export type ReorderMyStoryData = {
+    body: StoryOrderRequest;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/stories/{id}/order';
+};
+
+export type ReorderMyStoryErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type ReorderMyStoryError = ReorderMyStoryErrors[keyof ReorderMyStoryErrors];
+
+export type ReorderMyStoryResponses = {
+    /**
+     * OK
+     */
+    200: StoryEditorDto;
+};
+
+export type ReorderMyStoryResponse = ReorderMyStoryResponses[keyof ReorderMyStoryResponses];
+
+export type SetMyStoryCoverData = {
+    body: StoryCoverRequest;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/stories/{id}/cover';
+};
+
+export type SetMyStoryCoverErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type SetMyStoryCoverError = SetMyStoryCoverErrors[keyof SetMyStoryCoverErrors];
+
+export type SetMyStoryCoverResponses = {
+    /**
+     * OK
+     */
+    200: StoryEditorDto;
+};
+
+export type SetMyStoryCoverResponse = SetMyStoryCoverResponses[keyof SetMyStoryCoverResponses];
+
+export type AddMyStorySubjectData = {
+    body: AddStorySubjectRequest;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/stories/{id}/subjects';
+};
+
+export type AddMyStorySubjectErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type AddMyStorySubjectError = AddMyStorySubjectErrors[keyof AddMyStorySubjectErrors];
+
+export type AddMyStorySubjectResponses = {
+    /**
+     * OK
+     */
+    200: StoryEditorDto;
+};
+
+export type AddMyStorySubjectResponse = AddMyStorySubjectResponses[keyof AddMyStorySubjectResponses];
+
+export type RemoveMyStorySubjectData = {
+    body?: never;
+    path: {
+        id: number;
+        subjectId: number;
+    };
+    query?: never;
+    url: '/api/me/stories/{id}/subjects/{subjectId}';
+};
+
+export type RemoveMyStorySubjectErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type RemoveMyStorySubjectError = RemoveMyStorySubjectErrors[keyof RemoveMyStorySubjectErrors];
+
+export type RemoveMyStorySubjectResponses = {
+    /**
+     * OK
+     */
+    200: StoryEditorDto;
+};
+
+export type RemoveMyStorySubjectResponse = RemoveMyStorySubjectResponses[keyof RemoveMyStorySubjectResponses];
+
+export type PlaceMyStorySubjectData = {
+    body: StorySubjectPlacementRequest;
+    path: {
+        id: number;
+        subjectId: number;
+    };
+    query?: never;
+    url: '/api/me/stories/{id}/subjects/{subjectId}';
+};
+
+export type PlaceMyStorySubjectErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type PlaceMyStorySubjectError = PlaceMyStorySubjectErrors[keyof PlaceMyStorySubjectErrors];
+
+export type PlaceMyStorySubjectResponses = {
+    /**
+     * OK
+     */
+    200: StoryEditorDto;
+};
+
+export type PlaceMyStorySubjectResponse = PlaceMyStorySubjectResponses[keyof PlaceMyStorySubjectResponses];
 
 export type ListTanksData = {
     body?: never;
