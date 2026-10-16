@@ -956,6 +956,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasDefaultValue(false)
                         .HasColumnName("placement_pending");
 
+                    b.Property<long?>("QuickShareStoryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("quick_share_story_id");
+
                     b.Property<DateTimeOffset>("ReceivedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
@@ -997,6 +1001,11 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.HasIndex("PlacementNextAttemptAt")
                         .HasDatabaseName("ix_media_item_placement_due")
                         .HasFilter("placement_pending");
+
+                    b.HasIndex("QuickShareStoryId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_media_item_quick_share_story")
+                        .HasFilter("quick_share_story_id IS NOT NULL");
 
                     b.HasIndex("StorageKey")
                         .IsUnique()
@@ -3045,6 +3054,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasForeignKey("OwnerProfileId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .HasConstraintName("fk_media_item_profiles_owner_profile_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Story", null)
+                        .WithMany()
+                        .HasForeignKey("QuickShareStoryId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_media_item_stories_quick_share_story_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.MediaLink", b =>

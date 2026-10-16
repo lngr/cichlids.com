@@ -28,6 +28,14 @@ public class MediaItemConfiguration : IEntityTypeConfiguration<MediaItem>
         builder.HasIndex(x => x.StorageKey).IsUnique();
         builder.HasIndex(x => x.PlacementNextAttemptAt).HasFilter("placement_pending").HasDatabaseName("ix_media_item_placement_due");
 
+        builder.HasIndex(x => x.QuickShareStoryId).IsUnique().HasFilter("quick_share_story_id IS NOT NULL")
+            .HasDatabaseName("ux_media_item_quick_share_story");
+
+        builder.HasOne<Story>()
+            .WithMany()
+            .HasForeignKey(x => x.QuickShareStoryId)
+            .OnDelete(DeleteBehavior.SetNull);
+
         builder.HasOne<Profile>()
             .WithMany()
             .HasForeignKey(x => x.OwnerProfileId)

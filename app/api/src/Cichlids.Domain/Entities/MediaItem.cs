@@ -96,6 +96,12 @@ public class MediaItem
     /// </summary>
     public int PlacementAttempts { get; set; }
 
+    /// <summary>
+    /// The story that the quick share of this item created, or null when the item was not shared that
+    /// way. An item has at most one such story, and the marker clears when that story is deleted.
+    /// </summary>
+    public long? QuickShareStoryId { get; set; }
+
     public List<MediaVariant> Variants { get; set; } = [];
 
     /// <summary>
