@@ -22,7 +22,7 @@ export function selectedTab(path: string): NavigationTab {
   const root = path.split(/[/?]/)[1];
   if (["discover", "gallery", "tanks", "community"].includes(root)) return "discover";
   if (["fish", "species"].includes(root)) return "fish";
-  if (["me", "profile", "upload", "onboarding", "care", "todos"].includes(root)) return "me";
+  if (["me", "profile", "upload", "onboarding", "care", "todos", "media"].includes(root)) return "me";
   return "today";
 }
 function parentPath(path: string): string {
@@ -31,7 +31,7 @@ function parentPath(path: string): string {
   const tab = selectedTab(path);
   return path.split("?")[0] === `/${tab}` ? "/today" : `/${tab}`;
 }
-const viewNames = ["today", "discover", "fish", "me", "gallery", "tanks", "community", "species", "profile", "upload", "onboarding", "care", "todos"] as const;
+const viewNames = ["today", "discover", "fish", "me", "gallery", "tanks", "community", "species", "profile", "upload", "onboarding", "care", "todos", "media"] as const;
 export const navigationMachine = setup({
   types: { context: {} as NavigationContext, events: {} as NavigationEvent },
   actions: {
@@ -79,7 +79,7 @@ export const navigationMachine = setup({
             { target: "unknown" },
           ],
         },
-        today: {}, discover: {}, fish: {}, me: {}, gallery: {}, tanks: {}, community: {}, species: {}, profile: {}, upload: {}, onboarding: {}, care: {}, todos: {}, unknown: {},
+        today: {}, discover: {}, fish: {}, me: {}, gallery: {}, tanks: {}, community: {}, species: {}, profile: {}, upload: {}, onboarding: {}, care: {}, todos: {}, media: {}, unknown: {},
       },
     },
     creating: {

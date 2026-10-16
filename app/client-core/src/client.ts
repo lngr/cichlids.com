@@ -5,6 +5,8 @@ import { toCareHeatmap } from "./careHeatmap.js";
 import type { CareHeatmap } from "./careHeatmap.js";
 import { toTankOperation } from "./decommission.js";
 import type { DecommissionScope, TankOperation } from "./decommission.js";
+import { toLibraryDetail, toLibraryItem, toLibraryPlace, libraryQuery } from "./library.js";
+import type { LibraryDetail, LibraryItem, LibraryListParams, LibraryPlace } from "./library.js";
 import { toMeStreaks, toTankStreaks, toVacation } from "./streaks.js";
 import type { MeStreaks, TankStreaks, Vacation } from "./streaks.js";
 import {
@@ -87,6 +89,10 @@ import {
   listCommunityCategories,
   listCommunityThreads,
   listMyDrafts,
+  listMyMedia,
+  getMyMedia,
+  deleteMyMedia,
+  uploadMyMediaPhoto,
   listStoryComments,
   listStories,
   listProfileStories,
@@ -541,6 +547,17 @@ export interface CichlidsClient {
   uploads: {
     create(file: UploadFile): Promise<Draft>;
   };
+  /** The media library of the member: every file the member owns, with or without a place that shows it. */
+  library: {
+    /** The files newest first, narrowed by kind and by whether a place shows them. */
+    list(params?: LibraryListParams): Promise<PagedResponse<LibraryItem>>;
+    /** A file with its provenance, the places that show it and the streak weeks it keeps on the local date. */
+    get(id: number, local?: LocalTime): Promise<LibraryDetail>;
+    /** Deletes the file with its renditions and all its links; resolves with the places it was shown in. */
+    remove(id: number): Promise<LibraryPlace[]>;
+    /** Stores a photo in the library without a place. */
+    uploadPhoto(file: UploadFile): Promise<LibraryItem>;
+  };
   videos: {
     /** The videos of a tank: the ready ones for everybody, every state for the owner. */
     listForTank(tankId: number): Promise<Video[]>;
@@ -905,6 +922,30 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       async drafts() {
         const result = await listMyDrafts({ client });
         return absolutizeMedia(unwrap(result), options.baseUrl);
+      },
+    },
+    library: {
+      async list(params = {}) {
+        const body = unwrap(await listMyMedia({ client, query: libraryQuery(params) }));
+        return absolutizeMedia({ total: Number(body.total), items: body.items.map(toLibraryItem) }, options.baseUrl);
+      },
+      async get(id, local) {
+        return absolutizeMedia(toLibraryDetail(unwrap(await getMyMedia({ client, path: { id }, query: local }))), options.baseUrl);
+      },
+      async remove(id) {
+        return unwrap(await deleteMyMedia({ client, path: { id } })).places.map(toLibraryPlace);
+      },
+      async uploadPhoto(file) {
+        const result = await uploadMyMediaPhoto({
+          client,
+          body: { file: file as never },
+          bodySerializer: () => {
+            const formData = new FormData();
+            formData.append("file", file as never);
+            return formData;
+          },
+        });
+        return absolutizeMedia(toLibraryItem(unwrap(result)), options.baseUrl);
       },
     },
     uploads: {

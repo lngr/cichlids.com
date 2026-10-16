@@ -94,3 +94,17 @@ it("opens the to-do list as its own view of the Me tab and returns to where it w
   expect(actor.getSnapshot().context.path).toBe("/me");
   actor.stop();
 });
+
+it("opens the media library as its own view of the Me tab and returns to where it was opened", () => {
+  const actor = createActor(navigationMachine).start();
+  actor.send({ type: "OPEN", path: "/media" });
+  expect(actor.getSnapshot().context.path).toBe("/media");
+  expect(actor.getSnapshot().matches({ viewing: "media" })).toBe(true);
+  expect(selectedTab("/media")).toBe("me");
+  actor.send({ type: "BACK" });
+  expect(actor.getSnapshot().context.path).toBe("/today");
+  actor.send({ type: "EXTERNAL", path: "/media" });
+  actor.send({ type: "BACK" });
+  expect(actor.getSnapshot().context.path).toBe("/me");
+  actor.stop();
+});
