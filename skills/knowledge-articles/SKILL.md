@@ -76,7 +76,8 @@ articles" von `tools/species-data/README.md`.
 Der Hauptagent der Session steuert den Ablauf. Die Rollen sind Subagenten, die je ihren Prompt
 aus `tools/species-data/prompts/articles/` lesen. Jede Rolle hat ein eigenes Verzeichnis
 `data/knowledge/work/<id>/tmp-<rolle>/` für Downloads und Notizen und liest keine
-Zwischendateien anderer Rollen.
+Zwischendateien anderer Rollen. Wie die Subagenten starten, regelt der Abschnitt "Subagenten
+und Abrechnung" in `AGENTS.md`.
 
 1. **Thema festlegen:** id (Slug), Titel und die Punkte, die der Artikel abdecken muss. Die
    Vorgabe nennt Fakten, die zu prüfen sind; der Autor darf und soll sie korrigieren, wenn die

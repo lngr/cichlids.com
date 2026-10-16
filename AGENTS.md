@@ -128,6 +128,52 @@ und Konventionen im Skill `backlog-workflow`.
 - Web-UI auf `http://localhost:6480` (läuft als Devcontainer-Service, vom Host erreichbar).
 - `backlog board` (Kanban-TUI), `backlog task list`, `backlog task create "Title" --ac "Given … When … Then …"`.
 
+## Subagenten und Abrechnung
+
+Die Claude-Agenten der Werkzeuge in `tools/species-data/` (Pipeline-Rollen, Gruppenabgleich,
+`claude-agent.mjs`) rechnen genau so ab, wie es die Pflichtoption `--billing` sagt:
+
+- `--billing api-key`: über den Anthropic-API-Key in `~/.config/cichlids/anthropic.key` (Modus
+  600, nie im Repo; `CICHLIDS_ANTHROPIC_KEY_FILE` setzt einen anderen Pfad). Fehlt die Datei, ist
+  sie leer oder unlesbar, bricht das Kommando vor dem ersten Agenten ab.
+- `--billing subscription`: über die claude.ai-Anmeldung. Gesetzte API-Key-Variablen der Umgebung
+  erreichen die Agenten nicht.
+
+Die Agenten laden keine Einstellungsdateien von User, Projekt oder lokal (also auch keine Hooks
+und Plugins), damit keine solche Datei die Abrechnung umstellt.
+
+Die Wahl trifft der User. Ein Hauptagent fragt sie zu Beginn jeder Session ab, bevor er den
+ersten Agenten startet, und gibt sie bei jedem Aufruf mit. Bei `api-key` startet er auch seine
+eigenen Subagenten (Recherche, Review, Code, Rollen der Wissensartikel) über
+`node tools/species-data/claude-agent.mjs --billing api-key`, im Hintergrund und mit der
+vollständigen Aufgabe in einer Prompt-Datei. Das eingebaute Subagent-Werkzeug der
+Agent-Umgebung (in Claude Code das Agent-Tool) rechnet immer über die Anmeldung der laufenden
+Session ab und kommt nur bei `subscription` zum Einsatz.
+
+Außerhalb des Repos sieht ein Agent nur, was der Aufruf freigibt: Eingabedateien liegen in einem
+Verzeichnis für `--read`, Ergebnisdateien schreibt er in ein Verzeichnis für `--write`. Sein
+Schlussbericht steht in `<out-dir>/<name>.last`, Abrechnungsart und Kosten in der Abschlusszeile
+und im Log. Details stehen in den Abschnitten "API key file", "Agent cage" und "Agent CLI" von
+[`tools/species-data/README.md`](tools/species-data/README.md).
+
+Jeder Claude-Agent läuft ohne Rückfragen in einem bubblewrap-Käfig hinter einem Proxy für die
+Zugangsdaten (Details im Abschnitt "Agent cage" der README):
+
+- Den API-Key und die claude.ai-Anmeldung sieht der Agent nie; der Proxy außerhalb des Käfigs
+  setzt sie in die API-Aufrufe ein. Home-Verzeichnis, `/workspaces` (bis auf den Worktree und die
+  Schreibbereiche), `/run` mit dem Docker-Socket und die Prozesse des Hosts sind im Käfig nicht
+  sichtbar. Die Umgebung enthält nur freigegebene Variablen.
+- Schreiben: nur unter `data/`, im Arbeitsverzeichnis der Artendaten und im Quellenarchiv; das
+  übrige Repo ist schreibgeschützt. `claude-agent.mjs --write <dir>` gibt für Code-Aufgaben
+  weitere Verzeichnisse frei. Nach jedem Versuch prüft ein Audit die Schreibbereiche auf neue
+  Symlinks nach außen und auf Dateien wie `.claude` oder `CLAUDE.md`.
+- Committen können die Agenten nicht. Der Hauptagent liest ihre Änderungen, prüft `git status`
+  auf unerwartete Dateien und committet selbst.
+- Netz: Der Käfig hat ein eigenes Netz. Ein Proxy außerhalb lässt nur öffentliche Ziele auf den
+  Ports 80 und 443 durch; Dienste des Containers (Datenbanken, phpMyAdmin, Backlog, Keycloak)
+  und das X-Display sind nicht erreichbar.
+- Ohne bubblewrap bricht ein Lauf ab. Codex-Agenten laufen in der Sandbox von Codex.
+
 ## Commit & Dokumentation
 
 Vor Commits und beim Schreiben von Code-Kommentaren/Doku die globalen Regeln beachten
