@@ -1,11 +1,16 @@
 ---
 id: TASK-5.20.1
 title: Move all media attachments onto media links
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-16 14:10'
+updated_date: '2026-10-16 16:04'
 labels: []
 dependencies: []
+references:
+  - app/mobile/e2e/playwright/media-links.write.mjs
+  - >-
+    app/api/tests/Cichlids.Infrastructure.Tests/Persistence/MediaLinkMigrationTests.cs
 parent_task_id: TASK-5.20
 priority: high
 ordinal: 101000
@@ -63,3 +68,14 @@ One table media_link attaches media items to tanks, inhabitants, care entries, w
 - HTTP contracts stay unchanged. Care photo deletion addresses the link id where it addressed the care_photo id.
 - Tests: SeedData, ApiFixture, UploadsFixture, CareTestSupport, TestDataBuilder build links; a migration test covers every context.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implementation (2026-10-16)
+- media_link with typed nullable keys, context type, exactly-one check, role check per context, position, caption; unique indexes per context rule, one main image per tank, one avatar and one header per profile; media_item.captured_in_app and received_at.
+- Migration 20261016155023_MediaLinks moves tank sections, main images, decommission and recommission proofs, post items, care photos and videos, water change evidence, discussion attachments and profile avatar and header; Down restores them.
+- Evidence reuse: same checksum in an evidence link of another finished session or an earlier proof of the member. Care photo deletion addresses the link id; HTTP contracts unchanged.
+- Interpretations: tank and care videos share the role video; received_at backfilled from created_at (evidence photos from the recorded session time); captured_in_app true when any former attachment was flagged; no database cap for care videos.
+- Verification (branch on main): .NET 570/1336 (1 skipped)/349, client-core 253, mobile 430, 41 write e2e specs green. Golden snapshot follows in TASK-5.22.
+<!-- SECTION:NOTES:END -->
