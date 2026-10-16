@@ -4,7 +4,7 @@ namespace Cichlids.Domain;
 
 /// <summary>
 /// A decommissioning of a tank in the local calendar dates of its owner. The start day belongs to the
-/// decommissioning and the end day to the operating time again; a span without an end is active.
+/// decommissioning and the end day to the operating time; a span without an end is active.
 /// </summary>
 public readonly record struct DecommissionSpan(DateOnly Start, DateOnly? End);
 

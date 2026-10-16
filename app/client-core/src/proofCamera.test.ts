@@ -32,7 +32,7 @@ it("treats a picked shot as not taken with the camera of the app", async () => {
   expect(upload).toHaveBeenCalledWith(shot, false);
 });
 
-it("returns to the review with the error when the upload fails and sends again on a second use", async () => {
+it("returns to the review with the error when the upload fails and sends the shot on a second use", async () => {
   const upload = vi.fn().mockRejectedValueOnce(new Error("refused")).mockResolvedValue(done);
   const { actor } = start(upload);
   actor.send({ type: "SHOT", file: shot, capturedInApp: true });

@@ -50,7 +50,7 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
         var postIds = posts.Select(p => p.Id).ToList();
         var postMedia = await context.PostMedia.Where(pm => postIds.Contains(pm.PostId))
             .OrderBy(pm => pm.Sort).ToListAsync(cancellationToken);
-        // The photos that prove a decommissioning belong to the decommissioning, not to the series.
+        // The proof photos of a decommissioning belong to the decommissioning and are left out of the series.
         var directMedia = await context.TankMedia
             .Where(tm => idsOfTanks.Contains(tm.TankId) && tm.Section != TankMediaSection.Decommission && tm.Section != TankMediaSection.Recommission)
             .ToListAsync(cancellationToken);

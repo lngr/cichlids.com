@@ -6,7 +6,7 @@ namespace Cichlids.Domain.Entities;
 /// A time in which a tank stays in the profile of its owner but is not in use. StartedAt and EndedAt are
 /// the instants the owner decommissioned and recommissioned the tank, StartDate and EndDate the local
 /// calendar dates of the owner at those instants. The first day belongs to the decommissioning and the
-/// end day to the operating time again. A decommissioning without an end is active. The start photo shows
+/// end day to the operating time. A decommissioning without an end is active. The start photo shows
 /// the empty tank and the end photo the filled tank; both are media items that are also attached to the
 /// tank as media of the decommission and recommission sections.
 /// </summary>
