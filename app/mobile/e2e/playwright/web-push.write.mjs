@@ -153,7 +153,7 @@ try {
   await byTestId(page, "web-push-toggle").click();
   await byTestId(page, "web-push-agree").click();
   await page.waitForFunction(() => document.querySelector('[data-testid="web-push-state"]')?.textContent?.startsWith("On."));
-  assert.equal(await state.innerText(), "On. This browser shows a notification at 9:00 AM on the day care is due.");
+  assert.equal(await state.innerText(), "On. This browser shows a notification at 9:00 AM on the day care is due. While a water change streak runs, you get one every day until it would break.");
   assert.equal(await byTestId(page, "web-push-toggle").innerText(), "Switch off reminders in this browser");
   assert.deepEqual(await counters(page), { permissionRequests: 1, subscribeCalls: 1, unsubscribeCalls: 0 });
   assert.equal(rows(`profile_id = ${profileId}`), 1);
