@@ -77,6 +77,12 @@ export function snoozeReminder(reminder: { tankId: number; kind: CareKind; dueDa
   return { tankId: reminder.tankId, kind: reminder.kind, dueDate: reminder.dueDate, until: dateText(wallClock(now, utcOffsetMinutes) + DAY_MS) };
 }
 
+/** The reminder a snooze plans: the rule of the snooze at 09:00 on its day. */
+export function reminderFromSnooze(tank: { tankTitle: string }, snooze: ReminderSnooze): PlannedReminder {
+  return { id: reminderId(snooze.tankId, snooze.kind), tankId: snooze.tankId, tankTitle: tank.tankTitle, kind: snooze.kind,
+    dueDate: snooze.dueDate, date: snooze.until, hour: REMINDER_HOUR, minute: REMINDER_MINUTE };
+}
+
 /** The snoozes whose day has not passed yet. */
 export function activeSnoozes(snoozes: ReminderSnooze[], now: Date | number, utcOffsetMinutes: number): ReminderSnooze[] {
   const today = localDateOf(now, utcOffsetMinutes);

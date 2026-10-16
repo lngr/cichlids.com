@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { CareKind, DueCareItem } from "./client.js";
 import {
-  MAX_SCHEDULED_REMINDERS, REMINDER_HOUR, REMINDER_MINUTE, activeSnoozes, planReminders, reconcileReminders, reminderId, snoozeReminder,
+  MAX_SCHEDULED_REMINDERS, REMINDER_HOUR, REMINDER_MINUTE, activeSnoozes, planReminders, reconcileReminders, reminderFromSnooze, reminderId, snoozeReminder,
   type ReminderSnooze,
 } from "./careReminders.js";
 
@@ -106,6 +106,10 @@ describe("planReminders", () => {
       expect(plan([item(4, "water_change", "overdue", "2026-10-15")], at("2026-10-16T09:30"), 0, snoozes)).toEqual([]);
       expect(plan([item(4, "water_change", "overdue", "2026-10-15", false)], at("2026-10-16T06:00"), 0, snoozes)).toEqual([]);
       expect(plan([item(4, "water_change", "never_logged", null)], at("2026-10-16T06:00"), 0, snoozes)).toEqual([]);
+    });
+    it("turns a snooze into the reminder of its day at 09:00", () => {
+      expect(reminderFromSnooze({ tankTitle: "Mbuna" }, snooze("2026-10-15", "2026-10-16"))).toEqual({ id: "care-reminder:4:water_change", tankId: 4,
+        tankTitle: "Mbuna", kind: "water_change", dueDate: "2026-10-15", date: "2026-10-16", hour: 9, minute: 0 });
     });
     it("drops snoozes whose day is over", () => {
       const snoozes = [snooze("2026-10-14", "2026-10-15"), snooze("2026-10-15", "2026-10-16")];

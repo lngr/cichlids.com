@@ -75,7 +75,7 @@ export { MAX_PHOTOS, NOTE_MAX_LENGTH, TODO_MAX_LENGTH, careAttachmentsMachine, i
 export { MAX_RHYTHM_DAYS, MIN_RHYTHM_DAYS, RHYTHM_CHOICES, TODAY_DUE_HORIZON_DAYS, dueCareForToday, dueSummary, isValidRhythm, parseRhythm } from "./carePlan.js";
 export type { DueSummary } from "./carePlan.js";
 export {
-  MAX_SCHEDULED_REMINDERS, REMINDER_HOUR, REMINDER_MINUTE, activeSnoozes, isReminderId, localDateOf, planReminders, reconcileReminders, reminderId, snoozeReminder,
+  MAX_SCHEDULED_REMINDERS, REMINDER_HOUR, REMINDER_MINUTE, activeSnoozes, isReminderId, localDateOf, planReminders, reconcileReminders, reminderFromSnooze, reminderId, snoozeReminder,
 } from "./careReminders.js";
 export type { PlannedReminder, ReminderInput, ReminderSnooze } from "./careReminders.js";
 export {
