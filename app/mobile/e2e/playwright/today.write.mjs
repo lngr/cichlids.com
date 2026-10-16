@@ -58,6 +58,7 @@ try {
     const ids = await page.locator('[data-testid="today-member"] > div').evaluateAll(nodes => nodes.map(n => n.dataset.testid).filter(Boolean));
     assert.ok(ids.indexOf("today-tanks") < ids.indexOf("today-drafts"));
     const ownTank = byTestId(page, `today-tank-${tank.id}`);
+    await ownTank.scrollIntoViewIfNeeded();
     await ownTank.locator("img").waitFor();
     await page.waitForFunction(id => {
       const image = document.querySelector(`[data-testid="${id}"] img`);

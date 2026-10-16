@@ -17,6 +17,8 @@ import { ProfileHeader } from "../../../src/profile/ProfileHeader";
 import { ProfileTabs, type ProfileSection } from "../../../src/profile/ProfileTabs";
 import { ProfileContentList } from "../../../src/profile/ProfileContentList";
 import { useProfileLists } from "../../../src/profile/useProfileLists";
+import { VacationSettings } from "../../../src/streaks/VacationSettings";
+import { VacationShareLine } from "../../../src/streaks/VacationShareLine";
 import { DraftsSection } from "../../../src/upload/DraftsSection";
 import { WebPushSettings } from "../../../src/webPush/WebPushSettings";
 
@@ -104,6 +106,7 @@ function MemberContent({ profile }: { profile: Me["profile"] }) {
       <Pressable testID="me-profile-link" accessibilityRole="link" accessibilityLabel={t("me.openProfile")} onPress={() => router.push(`/profile/${profile.id}`)}>
         <ProfileHeader profile={profile} own />
       </Pressable>
+      <VacationShareLine share={profile.vacationShare} />
       <View style={{ paddingHorizontal: theme.space[4], gap: theme.space[3] }}>
         <Button testID="me-profile-button" variant="secondary" label={t("me.openProfile")} onPress={() => router.push(`/profile/${profile.id}`)} />
         <Button testID="me-todos" variant="secondary" label={t("me.todos")} onPress={() => router.push("/todos")} />
@@ -111,6 +114,7 @@ function MemberContent({ profile }: { profile: Me["profile"] }) {
       </View>
       <LanguageSettings />
       <View style={{ paddingHorizontal: theme.space[4] }}><WebPushSettings /></View>
+      <View style={{ paddingHorizontal: theme.space[4] }}><VacationSettings /></View>
       <OnboardingProfile profile={profile} />
       <ProfileTabs section={section} onSelect={setSection} own />
     </View>

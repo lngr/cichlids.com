@@ -7,6 +7,7 @@ import { apiClient } from "../../src/api/client";
 import { useTheme } from "../../src/theme";
 import { ErrorView, LoadingView } from "../../src/components/StatusView";
 import { ProfileHeader } from "../../src/profile/ProfileHeader";
+import { VacationShareLine } from "../../src/streaks/VacationShareLine";
 import { ProfileTabs, type ProfileSection } from "../../src/profile/ProfileTabs";
 import { ProfileContentList } from "../../src/profile/ProfileContentList";
 import { useProfileLists } from "../../src/profile/useProfileLists";
@@ -48,6 +49,7 @@ export default function ProfileScreen() {
   const header = (
     <View>
       <ProfileHeader profile={profile} />
+      <VacationShareLine share={profile.vacationShare} />
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: theme.space[4], paddingHorizontal: theme.space[4] }}>
         <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("profile.pictures", { count: Number(profile.stats.pictureCount) })}</Text>
         <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("profile.tanks", { count: Number(profile.stats.tankCount) })}</Text>

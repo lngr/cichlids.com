@@ -20,6 +20,7 @@ import { measurementLines } from "./measurementFormat";
 import { useUnits } from "../units/useUnits";
 import { useLocalSearchParams } from "expo-router";
 import { TankRegionSlot } from "./TankRegionSlot";
+import { TankStreaksCard } from "../streaks/TankStreaksCard";
 import { TankVisibilitySettings } from "./TankVisibilitySettings";
 import { VideoCard } from "../video/VideoCard";
 import { TankVideosSection } from "../video/TankVideosSection";
@@ -113,6 +114,7 @@ export function TankExperience({ tank, series, children, onVisibilityChanged }: 
       </Pressable>)}
     </View>
     <View style={styles.body}>
+      <TankStreaksCard tankId={Number(tank.id)} />
       <View testID="tank-datasheet" style={styles.metrics}>
         <TankMeasurements tank={tank} layout="summary" />
         <View style={[styles.speciesMetric, card]}>
