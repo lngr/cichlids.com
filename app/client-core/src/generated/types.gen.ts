@@ -696,6 +696,7 @@ export type UpdateCareRequest = {
     amount: null | CareAmountRequest;
     values?: null | Array<MeasurementValueRequest>;
     note?: null | string;
+    occurredAt?: null | string;
 };
 
 export type UpdateTodoRequest = {
