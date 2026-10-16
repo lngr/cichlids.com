@@ -14,7 +14,7 @@ RUN cd mobile && pnpm exec expo export --platform web --output-dir /out
 
 FROM busybox:1.37.0-musl@sha256:5cec3fc171c87218698e85a52af7087de727372aae264a787b8112901a5b0092
 COPY --from=build /out /www
-RUN printf 'E404:/www/index.html\n' > /etc/httpd.conf
+RUN printf 'E404:/www/index.html\n.webmanifest:application/manifest+json\n' > /etc/httpd.conf
 USER 65534:65534
 EXPOSE 8080
 ENTRYPOINT ["/bin/httpd", "-f", "-p", "8080", "-h", "/www", "-c", "/etc/httpd.conf"]
