@@ -47,6 +47,9 @@ export type CareEntryDto = {
     photos: Array<CarePhotoDto>;
     videos: Array<VideoDto>;
     todos: Array<CareTodoDto>;
+    durationSeconds?: null | number | string;
+    waterChangeSessionId?: null | number | string;
+    evidence?: null | WaterChangeEvidenceDto;
 };
 
 export type CareKind = 'water_change' | 'measurement';
@@ -284,6 +287,10 @@ export type DueCareItemDto = {
     reason: CareReasonDto;
     due: CareDueDto;
     remindersEnabled: boolean;
+};
+
+export type FinishWaterChangeRequest = {
+    amount?: null | CareAmountRequest;
 };
 
 export type IFormFile = Blob | File;
@@ -730,6 +737,55 @@ export type VolumeInputDto = {
 };
 
 export type VolumeUnit = 'liter' | 'us_gallon';
+
+export type WaterChangeEvidenceDto = {
+    state: WaterChangeEvidenceState;
+    missing: Array<string>;
+};
+
+export type WaterChangeEvidenceState = 'none' | 'partial' | 'verified';
+
+export type WaterChangeFinishedDto = {
+    session: WaterChangeSessionDto;
+    entry: CareEntryDto;
+};
+
+export type WaterChangePhotoDto = {
+    urls: CarePhotoUrlsDto;
+    width: null | number | string;
+    height: null | number | string;
+    capturedInApp: boolean;
+    receivedAt: string;
+    takenAt: null | string;
+};
+
+export type WaterChangeSessionDto = {
+    id: number | string;
+    tankId: number | string;
+    startedAt: string;
+    expiresAt: string;
+    finishedAt: null | string;
+    durationSeconds: null | number | string;
+    steps: Array<WaterChangeStepDto>;
+    drainedPhoto: null | WaterChangePhotoDto;
+    refilledPhoto: null | WaterChangePhotoDto;
+    previousDrainedPhoto: null | CarePhotoUrlsDto;
+    minDurationSeconds: number | string;
+};
+
+export type WaterChangeStep = 'heater_filter_off' | 'draining_started' | 'drained_photo' | 'conditioner' | 'temperature_matched' | 'refill_started' | 'refilled_photo' | 'heater_filter_on';
+
+export type WaterChangeStepDto = {
+    step: WaterChangeStep;
+    state: WaterChangeStepState;
+    at: string;
+};
+
+export type WaterChangeStepRequest = {
+    state: string;
+};
+
+export type WaterChangeStepState = 'done' | 'skipped';
 
 export type WaterValuesDto = {
     ph: null | string;
@@ -2254,6 +2310,226 @@ export type RemoveCarePhotoResponses = {
 };
 
 export type RemoveCarePhotoResponse = RemoveCarePhotoResponses[keyof RemoveCarePhotoResponses];
+
+export type StartWaterChangeData = {
+    body?: never;
+    path: {
+        tankId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/water-changes';
+};
+
+export type StartWaterChangeErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type StartWaterChangeError = StartWaterChangeErrors[keyof StartWaterChangeErrors];
+
+export type StartWaterChangeResponses = {
+    /**
+     * OK
+     */
+    200: WaterChangeSessionDto;
+    /**
+     * Created
+     */
+    201: WaterChangeSessionDto;
+};
+
+export type StartWaterChangeResponse = StartWaterChangeResponses[keyof StartWaterChangeResponses];
+
+export type GetCurrentWaterChangeData = {
+    body?: never;
+    path: {
+        tankId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/water-changes/current';
+};
+
+export type GetCurrentWaterChangeErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetCurrentWaterChangeError = GetCurrentWaterChangeErrors[keyof GetCurrentWaterChangeErrors];
+
+export type GetCurrentWaterChangeResponses = {
+    /**
+     * OK
+     */
+    200: WaterChangeSessionDto;
+};
+
+export type GetCurrentWaterChangeResponse = GetCurrentWaterChangeResponses[keyof GetCurrentWaterChangeResponses];
+
+export type MarkWaterChangeStepData = {
+    body: WaterChangeStepRequest;
+    path: {
+        tankId: number;
+        id: number;
+        step: string;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/water-changes/{id}/steps/{step}';
+};
+
+export type MarkWaterChangeStepErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type MarkWaterChangeStepError = MarkWaterChangeStepErrors[keyof MarkWaterChangeStepErrors];
+
+export type MarkWaterChangeStepResponses = {
+    /**
+     * OK
+     */
+    200: WaterChangeSessionDto;
+};
+
+export type MarkWaterChangeStepResponse = MarkWaterChangeStepResponses[keyof MarkWaterChangeStepResponses];
+
+export type SetWaterChangePhotoData = {
+    body: {
+        file?: IFormFile;
+    } & {
+        capturedInApp?: boolean;
+    };
+    path: {
+        tankId: number;
+        id: number;
+        slot: string;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/water-changes/{id}/photos/{slot}';
+};
+
+export type SetWaterChangePhotoErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Payload Too Large
+     */
+    413: unknown;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type SetWaterChangePhotoError = SetWaterChangePhotoErrors[keyof SetWaterChangePhotoErrors];
+
+export type SetWaterChangePhotoResponses = {
+    /**
+     * OK
+     */
+    200: WaterChangeSessionDto;
+};
+
+export type SetWaterChangePhotoResponse = SetWaterChangePhotoResponses[keyof SetWaterChangePhotoResponses];
+
+export type FinishWaterChangeData = {
+    body?: null | FinishWaterChangeRequest;
+    path: {
+        tankId: number;
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/water-changes/{id}/finish';
+};
+
+export type FinishWaterChangeErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type FinishWaterChangeError = FinishWaterChangeErrors[keyof FinishWaterChangeErrors];
+
+export type FinishWaterChangeResponses = {
+    /**
+     * OK
+     */
+    200: WaterChangeFinishedDto;
+};
+
+export type FinishWaterChangeResponse = FinishWaterChangeResponses[keyof FinishWaterChangeResponses];
+
+export type CancelWaterChangeData = {
+    body?: never;
+    path: {
+        tankId: number;
+        id: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/water-changes/{id}';
+};
+
+export type CancelWaterChangeErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type CancelWaterChangeError = CancelWaterChangeErrors[keyof CancelWaterChangeErrors];
+
+export type CancelWaterChangeResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type CancelWaterChangeResponse = CancelWaterChangeResponses[keyof CancelWaterChangeResponses];
 
 export type ListMyTodosData = {
     body?: never;
