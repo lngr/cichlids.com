@@ -93,6 +93,11 @@ public sealed class OnboardingTests(ApiFixture fixture) : IAsyncLifetime
             Assert.Equal("returned", json.RootElement.GetProperty("badge").GetString());
             using var detail = JsonDocument.Parse(await (await fixture.Client.GetAsync($"/api/tanks/{tank.Id}")).Content.ReadAsStringAsync());
             Assert.Equal("south_america", detail.RootElement.GetProperty("region").GetString());
+            var visibility = detail.RootElement.GetProperty("visibility");
+            Assert.Equal("public", visibility.GetProperty("profile").GetString());
+            Assert.Equal("public", visibility.GetProperty("stream").GetString());
+            await using var check = fixture.CreateDbContext();
+            Assert.False(await check.Set<TankVisibilityConsent>().AnyAsync(c => c.TankId == tank.Id));
         }
         finally { await db.Tanks.Where(t => t.Id == tank.Id).ExecuteDeleteAsync(); }
     }
