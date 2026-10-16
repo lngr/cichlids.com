@@ -309,7 +309,9 @@
     "video_codec_unsupported": "Ce format vidéo n'est pas pris en charge. Choisis une vidéo H.264 ou HEVC.",
     "video_dimensions_unsupported": "La taille d'image ou la rotation de cette vidéo n'est pas prise en charge.",
     "video_processing_failed": "Cette vidéo n'a pas pu être préparée.",
-    "care_video_not_found": "Cette vidéo n'est pas disponible."
+    "care_video_not_found": "Cette vidéo n'est pas disponible.",
+    "water_change_not_found": "Ce changement d'eau est indisponible ou n'est plus ouvert.",
+    "water_change_request_invalid": "Choisissez une étape connue avec l'état fait ou passé, ou l'emplacement de photo vidé ou rempli."
   },
   "featureFlags": {
     "activityTitle": "Activité de la communauté",
@@ -712,5 +714,122 @@
     "unsupported": "Ce navigateur ne peut pas lire la vidéo.",
     "timeline": "Vidéo",
     "pickError": "La vidéo n'a pas pu être lue. Essaie un autre fichier."
+  },
+  "waterChange": {
+    "start": "Démarrer un changement d'eau guidé",
+    "startFor": "Démarrer un changement d'eau guidé pour {{tank}}",
+    "loading": "Préparation de votre changement d'eau…",
+    "startError": "Le changement d'eau n'a pas pu démarrer.",
+    "stepOf": "Étape {{current}} sur {{total}}",
+    "timerTotal": "Durée du changement d'eau",
+    "timerDrain": "Depuis le début de la vidange",
+    "timerLabel": "{{label}} : {{time}}",
+    "skip": "Passer cette étape",
+    "stage": {
+      "heaterFilterOff": {
+        "title": "Éteignez le chauffage et le filtre",
+        "body": "Éteignez les deux avant que le niveau d'eau baisse, pour que le chauffage ne tourne jamais à sec.",
+        "done": "Le chauffage et le filtre sont éteints"
+      },
+      "draining": {
+        "title": "Videz l'eau",
+        "body": "Appuyez sur le bouton quand vous commencez à retirer l'eau. Le minuteur tourne dès cet instant.",
+        "done": "Commencer la vidange"
+      },
+      "drainedPhoto": {
+        "title": "Photo de l'aquarium vidé",
+        "body": "Continuez de vider pendant la photo. La photo est facultative et reste privée."
+      },
+      "tips": {
+        "title": "Deux conseils pour l'eau fraîche",
+        "body": "Les deux sont facultatifs. Cochez ce que vous avez fait.",
+        "done": "Continuer",
+        "skip": "Passer les conseils"
+      },
+      "refill": {
+        "title": "Remplissez l'aquarium",
+        "body": "Appuyez sur le bouton quand vous commencez à remplir.",
+        "done": "Commencer le remplissage"
+      },
+      "heaterFilterOn": {
+        "title": "Rallumez le chauffage et le filtre",
+        "body": "Rallumez les deux quand le niveau d'eau est revenu à la normale.",
+        "done": "Le chauffage et le filtre sont allumés"
+      },
+      "refilledPhoto": {
+        "title": "Photo de l'aquarium rempli",
+        "body": "La photo est facultative et reste privée."
+      },
+      "amount": {
+        "title": "Quelle quantité d'eau avez-vous changée ?",
+        "body": "Facultatif. Le pourcentage est le moyen le plus rapide de la noter."
+      }
+    },
+    "tip": {
+      "conditioner": "J'ai ajouté un conditionneur d'eau",
+      "temperature_matched": "J'ai égalisé la température de l'eau fraîche",
+      "checked": "{{tip}}, sélectionné",
+      "unchecked": "{{tip}}, non sélectionné"
+    },
+    "camera": {
+      "capture": "Prendre la photo",
+      "viewfinder": "Viseur de l'appareil photo",
+      "overlayLabel": "Photo de votre dernier changement d'eau, affichée en transparence sur l'image",
+      "showOverlay": "Afficher la dernière photo",
+      "hideOverlay": "Masquer la dernière photo",
+      "explainTitle": "Accès à l'appareil photo",
+      "explain": "L'appareil photo de l'app prend cette photo, ce qui distingue le changement d'eau d'une image d'autre chose.",
+      "allow": "Autoriser l'appareil photo",
+      "notAllowedYet": "L'appareil photo n'est pas encore autorisé.",
+      "deniedTitle": "L'appareil photo est désactivé",
+      "denied": "Vous pouvez continuer sans photo. Pour utiliser l'appareil photo, autorisez-le dans les réglages de votre appareil.",
+      "deniedWeb": "Vous pouvez continuer sans photo. Pour utiliser l'appareil photo, autorisez-le pour ce site dans votre navigateur.",
+      "openSettings": "Ouvrir les réglages",
+      "unavailableTitle": "Aucun appareil photo trouvé",
+      "unavailable": "Cet appareil n'offre pas d'appareil photo pour le moment. Vous pouvez continuer sans photo.",
+      "captureError": "La photo n'a pas pu être prise. Veuillez réessayer.",
+      "reviewTitle": "Utiliser cette photo ?",
+      "reviewLabel": "Votre nouvelle photo avec la précédente en transparence",
+      "use": "Utiliser la photo",
+      "retake": "Reprendre",
+      "uploading": "Envoi en cours…",
+      "uploadError": "La photo n'a pas pu être ajoutée. Veuillez réessayer.",
+      "skip": "Continuer sans photo"
+    },
+    "amount": {
+      "invalid": "Saisissez un nombre positif, jusqu'à 100 pour un pourcentage.",
+      "tankVolume": "Votre aquarium contient {{volume}}.",
+      "about": "Environ {{volume}}",
+      "finish": "Terminer le changement d'eau",
+      "finishing": "Fin en cours…",
+      "finishError": "Le changement d'eau n'a pas pu être terminé. Veuillez réessayer."
+    },
+    "cancel": {
+      "action": "Arrêter ce changement d'eau",
+      "confirm": "Abandonner ce changement d'eau et ses photos ?",
+      "yes": "Oui, abandonner",
+      "no": "Non, continuer"
+    },
+    "summary": {
+      "title": "Changement d'eau terminé",
+      "duration": "Durée : {{time}}",
+      "amount": "Quantité : {{amount}}",
+      "drained": "Vidé",
+      "refilled": "Rempli",
+      "private": "Vos photos restent privées.",
+      "close": "Retour à votre aquarium"
+    },
+    "evidence": {
+      "verified": "Compté comme changement d'eau vérifié.",
+      "partial": "Enregistré. Celui-ci n'est pas compté comme vérifié.",
+      "none": "Enregistré sans le mode guidé."
+    },
+    "missing": {
+      "draining_missing": "L'étape de vidange a été passée.",
+      "duration_too_short": "La vidange et le remplissage ont duré moins de {{minutes}} minutes."
+    },
+    "entry": {
+      "line": "Guidé, {{time}}, {{evidence}}"
+    }
   }
 }

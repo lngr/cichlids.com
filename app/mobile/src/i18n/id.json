@@ -301,7 +301,9 @@
     "video_codec_unsupported": "Format video ini tidak didukung. Pilih video H.264 atau HEVC.",
     "video_dimensions_unsupported": "Ukuran gambar atau rotasi video ini tidak didukung.",
     "video_processing_failed": "Video ini tidak dapat disiapkan.",
-    "care_video_not_found": "Video ini tidak tersedia."
+    "care_video_not_found": "Video ini tidak tersedia.",
+    "water_change_not_found": "Penggantian air ini tidak tersedia atau sudah tidak terbuka.",
+    "water_change_request_invalid": "Pilih langkah yang dikenal dengan status selesai atau dilewati, atau tempat foto dikuras atau terisi."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -694,5 +696,122 @@
     "unsupported": "Peramban ini tidak dapat memutar video.",
     "timeline": "Video",
     "pickError": "Video tidak dapat dibaca. Coba berkas lain."
+  },
+  "waterChange": {
+    "start": "Mulai penggantian air terpandu",
+    "startFor": "Mulai penggantian air terpandu untuk {{tank}}",
+    "loading": "Menyiapkan penggantian air Anda…",
+    "startError": "Penggantian air tidak dapat dimulai.",
+    "stepOf": "Langkah {{current}} dari {{total}}",
+    "timerTotal": "Lama penggantian air",
+    "timerDrain": "Sejak pengurasan dimulai",
+    "timerLabel": "{{label}}: {{time}}",
+    "skip": "Lewati langkah ini",
+    "stage": {
+      "heaterFilterOff": {
+        "title": "Matikan pemanas dan filter",
+        "body": "Matikan keduanya sebelum permukaan air turun, agar pemanas tidak pernah bekerja tanpa air.",
+        "done": "Pemanas dan filter sudah mati"
+      },
+      "draining": {
+        "title": "Kuras airnya",
+        "body": "Ketuk tombol saat Anda mulai mengambil air. Pengatur waktu berjalan sejak saat itu.",
+        "done": "Mulai menguras"
+      },
+      "drainedPhoto": {
+        "title": "Foto akuarium yang dikuras",
+        "body": "Teruskan menguras sambil mengambil foto. Foto bersifat opsional dan tetap pribadi."
+      },
+      "tips": {
+        "title": "Dua tips untuk air baru",
+        "body": "Keduanya opsional. Centang yang sudah Anda lakukan.",
+        "done": "Lanjut",
+        "skip": "Lewati tips"
+      },
+      "refill": {
+        "title": "Isi kembali akuarium",
+        "body": "Ketuk tombol saat Anda mulai mengisi.",
+        "done": "Mulai mengisi"
+      },
+      "heaterFilterOn": {
+        "title": "Nyalakan pemanas dan filter",
+        "body": "Nyalakan keduanya setelah permukaan air kembali normal.",
+        "done": "Pemanas dan filter sudah menyala"
+      },
+      "refilledPhoto": {
+        "title": "Foto akuarium yang terisi",
+        "body": "Foto bersifat opsional dan tetap pribadi."
+      },
+      "amount": {
+        "title": "Berapa banyak air yang Anda ganti?",
+        "body": "Opsional. Persen adalah cara tercepat untuk mencatatnya."
+      }
+    },
+    "tip": {
+      "conditioner": "Saya menambahkan penetral air",
+      "temperature_matched": "Saya menyamakan suhu air baru",
+      "checked": "{{tip}}, dipilih",
+      "unchecked": "{{tip}}, tidak dipilih"
+    },
+    "camera": {
+      "capture": "Ambil foto",
+      "viewfinder": "Jendela bidik kamera",
+      "overlayLabel": "Foto penggantian air terakhir Anda, tampak samar di atas gambar",
+      "showOverlay": "Tampilkan foto terakhir",
+      "hideOverlay": "Sembunyikan foto terakhir",
+      "explainTitle": "Akses kamera",
+      "explain": "Kamera aplikasi mengambil foto ini, sehingga penggantian air bisa dibedakan dari gambar hal lain.",
+      "allow": "Izinkan kamera",
+      "notAllowedYet": "Kamera belum diizinkan.",
+      "deniedTitle": "Kamera dimatikan",
+      "denied": "Anda dapat melanjutkan tanpa foto. Untuk memakai kamera, izinkan di pengaturan perangkat Anda.",
+      "deniedWeb": "Anda dapat melanjutkan tanpa foto. Untuk memakai kamera, izinkan untuk situs ini di browser Anda.",
+      "openSettings": "Buka pengaturan",
+      "unavailableTitle": "Kamera tidak ditemukan",
+      "unavailable": "Perangkat ini tidak menyediakan kamera saat ini. Anda dapat melanjutkan tanpa foto.",
+      "captureError": "Foto tidak dapat diambil. Silakan coba lagi.",
+      "reviewTitle": "Pakai foto ini?",
+      "reviewLabel": "Foto baru Anda dengan foto terakhir samar di atasnya",
+      "use": "Pakai foto",
+      "retake": "Ambil ulang",
+      "uploading": "Mengunggah…",
+      "uploadError": "Foto tidak dapat ditambahkan. Silakan coba lagi.",
+      "skip": "Lanjut tanpa foto"
+    },
+    "amount": {
+      "invalid": "Masukkan angka positif, untuk persen paling banyak 100.",
+      "tankVolume": "Akuarium Anda berisi {{volume}}.",
+      "about": "Sekitar {{volume}}",
+      "finish": "Selesaikan penggantian air",
+      "finishing": "Menyelesaikan…",
+      "finishError": "Penggantian air tidak dapat diselesaikan. Silakan coba lagi."
+    },
+    "cancel": {
+      "action": "Hentikan penggantian air ini",
+      "confirm": "Buang penggantian air ini beserta fotonya?",
+      "yes": "Ya, buang",
+      "no": "Tidak, lanjutkan"
+    },
+    "summary": {
+      "title": "Penggantian air selesai",
+      "duration": "Lama: {{time}}",
+      "amount": "Jumlah: {{amount}}",
+      "drained": "Dikuras",
+      "refilled": "Terisi",
+      "private": "Foto Anda tetap pribadi.",
+      "close": "Kembali ke akuarium Anda"
+    },
+    "evidence": {
+      "verified": "Dihitung sebagai penggantian air terverifikasi.",
+      "partial": "Tercatat. Yang ini tidak dihitung sebagai terverifikasi.",
+      "none": "Tercatat tanpa mode terpandu."
+    },
+    "missing": {
+      "draining_missing": "Langkah pengurasan dilewati.",
+      "duration_too_short": "Menguras dan mengisi memakan waktu kurang dari {{minutes}} menit."
+    },
+    "entry": {
+      "line": "Terpandu, {{time}}, {{evidence}}"
+    }
   }
 }

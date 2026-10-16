@@ -309,7 +309,9 @@
     "video_codec_unsupported": "Este formato de vídeo não é compatível. Escolha um vídeo H.264 ou HEVC.",
     "video_dimensions_unsupported": "O tamanho da imagem ou a rotação deste vídeo não são compatíveis.",
     "video_processing_failed": "Não foi possível preparar este vídeo.",
-    "care_video_not_found": "Este vídeo não está disponível."
+    "care_video_not_found": "Este vídeo não está disponível.",
+    "water_change_not_found": "Esta troca de água não está disponível ou não está mais aberta.",
+    "water_change_request_invalid": "Escolha um passo conhecido com o estado feito ou pulado, ou o espaço de foto esvaziado ou cheio."
   },
   "featureFlags": {
     "activityTitle": "Atividade da comunidade",
@@ -712,5 +714,122 @@
     "unsupported": "Este navegador não consegue reproduzir o vídeo.",
     "timeline": "Vídeo",
     "pickError": "Não foi possível ler o vídeo. Tente outro arquivo."
+  },
+  "waterChange": {
+    "start": "Iniciar troca de água guiada",
+    "startFor": "Iniciar troca de água guiada para {{tank}}",
+    "loading": "Preparando sua troca de água…",
+    "startError": "Não foi possível iniciar a troca de água.",
+    "stepOf": "Passo {{current}} de {{total}}",
+    "timerTotal": "Tempo da troca de água",
+    "timerDrain": "Desde o início do esvaziamento",
+    "timerLabel": "{{label}}: {{time}}",
+    "skip": "Pular este passo",
+    "stage": {
+      "heaterFilterOff": {
+        "title": "Desligue o aquecedor e o filtro",
+        "body": "Desligue os dois antes que o nível da água baixe, para o aquecedor nunca ficar a seco.",
+        "done": "Aquecedor e filtro desligados"
+      },
+      "draining": {
+        "title": "Esvazie a água",
+        "body": "Toque no botão quando começar a retirar água. O cronômetro corre a partir daí.",
+        "done": "Começar a esvaziar"
+      },
+      "drainedPhoto": {
+        "title": "Foto do aquário esvaziado",
+        "body": "Continue esvaziando enquanto tira a foto. A foto é opcional e fica privada."
+      },
+      "tips": {
+        "title": "Duas dicas para a água nova",
+        "body": "As duas são opcionais. Marque o que você fez.",
+        "done": "Continuar",
+        "skip": "Pular as dicas"
+      },
+      "refill": {
+        "title": "Encha o aquário de novo",
+        "body": "Toque no botão quando começar a encher.",
+        "done": "Começar a encher"
+      },
+      "heaterFilterOn": {
+        "title": "Ligue o aquecedor e o filtro",
+        "body": "Ligue os dois quando o nível da água voltar ao normal.",
+        "done": "Aquecedor e filtro ligados"
+      },
+      "refilledPhoto": {
+        "title": "Foto do aquário cheio",
+        "body": "A foto é opcional e fica privada."
+      },
+      "amount": {
+        "title": "Quanta água você trocou?",
+        "body": "Opcional. A porcentagem é a forma mais rápida de anotar."
+      }
+    },
+    "tip": {
+      "conditioner": "Adicionei condicionador de água",
+      "temperature_matched": "Igualei a temperatura da água nova",
+      "checked": "{{tip}}, selecionado",
+      "unchecked": "{{tip}}, não selecionado"
+    },
+    "camera": {
+      "capture": "Tirar foto",
+      "viewfinder": "Visor da câmera",
+      "overlayLabel": "Foto da sua última troca de água, exibida de leve sobre a imagem",
+      "showOverlay": "Mostrar a última foto",
+      "hideOverlay": "Ocultar a última foto",
+      "explainTitle": "Acesso à câmera",
+      "explain": "A câmera do app tira esta foto, assim a troca de água se distingue de uma imagem de outra coisa.",
+      "allow": "Permitir câmera",
+      "notAllowedYet": "A câmera ainda não foi permitida.",
+      "deniedTitle": "A câmera está desligada",
+      "denied": "Você pode continuar sem foto. Para usar a câmera, permita-a nos ajustes do seu dispositivo.",
+      "deniedWeb": "Você pode continuar sem foto. Para usar a câmera, permita-a para este site no navegador.",
+      "openSettings": "Abrir ajustes",
+      "unavailableTitle": "Nenhuma câmera encontrada",
+      "unavailable": "Este dispositivo não oferece câmera agora. Você pode continuar sem foto.",
+      "captureError": "Não foi possível tirar a foto. Tente novamente.",
+      "reviewTitle": "Usar esta foto?",
+      "reviewLabel": "Sua nova foto com a anterior de leve por cima",
+      "use": "Usar foto",
+      "retake": "Tirar de novo",
+      "uploading": "Enviando…",
+      "uploadError": "Não foi possível adicionar a foto. Tente novamente.",
+      "skip": "Continuar sem foto"
+    },
+    "amount": {
+      "invalid": "Informe um número positivo, até 100 para porcentagem.",
+      "tankVolume": "Seu aquário comporta {{volume}}.",
+      "about": "Cerca de {{volume}}",
+      "finish": "Concluir troca de água",
+      "finishing": "Concluindo…",
+      "finishError": "Não foi possível concluir a troca de água. Tente novamente."
+    },
+    "cancel": {
+      "action": "Interromper esta troca de água",
+      "confirm": "Descartar esta troca de água e suas fotos?",
+      "yes": "Sim, descartar",
+      "no": "Não, continuar"
+    },
+    "summary": {
+      "title": "Troca de água concluída",
+      "duration": "Duração: {{time}}",
+      "amount": "Quantidade: {{amount}}",
+      "drained": "Esvaziado",
+      "refilled": "Cheio",
+      "private": "Suas fotos ficam privadas.",
+      "close": "Voltar ao seu aquário"
+    },
+    "evidence": {
+      "verified": "Conta como troca de água verificada.",
+      "partial": "Registrada. Esta não conta como verificada.",
+      "none": "Registrada sem o modo guiado."
+    },
+    "missing": {
+      "draining_missing": "O passo de esvaziamento foi pulado.",
+      "duration_too_short": "Esvaziar e encher levou menos de {{minutes}} minutos."
+    },
+    "entry": {
+      "line": "Guiada, {{time}}, {{evidence}}"
+    }
   }
 }

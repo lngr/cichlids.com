@@ -301,7 +301,9 @@
     "video_codec_unsupported": "Bu video biçimi desteklenmiyor. H.264 veya HEVC video seç.",
     "video_dimensions_unsupported": "Bu videonun görüntü boyutu veya dönüşü desteklenmiyor.",
     "video_processing_failed": "Bu video hazırlanamadı.",
-    "care_video_not_found": "Bu video kullanılamıyor."
+    "care_video_not_found": "Bu video kullanılamıyor.",
+    "water_change_not_found": "Bu su değişimi kullanılamıyor veya artık açık değil.",
+    "water_change_request_invalid": "Yapıldı veya atlandı durumlu bilinen bir adım ya da boşaltılmış veya doldurulmuş fotoğraf yeri seçin."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -699,5 +701,122 @@
     "unsupported": "Bu tarayıcı videoyu oynatamıyor.",
     "timeline": "Video",
     "pickError": "Video okunamadı. Başka bir dosya dene."
+  },
+  "waterChange": {
+    "start": "Rehberli su değişimini başlat",
+    "startFor": "{{tank}} için rehberli su değişimini başlat",
+    "loading": "Su değişiminiz hazırlanıyor…",
+    "startError": "Su değişimi başlatılamadı.",
+    "stepOf": "Adım {{current}} / {{total}}",
+    "timerTotal": "Su değişimi süresi",
+    "timerDrain": "Boşaltma başladığından beri",
+    "timerLabel": "{{label}}: {{time}}",
+    "skip": "Bu adımı atla",
+    "stage": {
+      "heaterFilterOff": {
+        "title": "Isıtıcıyı ve filtreyi kapatın",
+        "body": "Su seviyesi düşmeden önce ikisini de kapatın; böylece ısıtıcı asla susuz çalışmaz.",
+        "done": "Isıtıcı ve filtre kapalı"
+      },
+      "draining": {
+        "title": "Suyu boşaltın",
+        "body": "Su almaya başladığınızda düğmeye dokunun. Zamanlayıcı o andan itibaren çalışır.",
+        "done": "Boşaltmaya başla"
+      },
+      "drainedPhoto": {
+        "title": "Boşaltılmış akvaryumun fotoğrafı",
+        "body": "Fotoğraf çekerken boşaltmaya devam edin. Fotoğraf isteğe bağlıdır ve gizli kalır."
+      },
+      "tips": {
+        "title": "Taze su için iki ipucu",
+        "body": "İkisi de isteğe bağlıdır. Yaptığınızı işaretleyin.",
+        "done": "Devam",
+        "skip": "İpuçlarını atla"
+      },
+      "refill": {
+        "title": "Akvaryumu yeniden doldurun",
+        "body": "Doldurmaya başladığınızda düğmeye dokunun.",
+        "done": "Doldurmaya başla"
+      },
+      "heaterFilterOn": {
+        "title": "Isıtıcıyı ve filtreyi açın",
+        "body": "Su seviyesi normale dönünce ikisini de açın.",
+        "done": "Isıtıcı ve filtre açık"
+      },
+      "refilledPhoto": {
+        "title": "Doldurulmuş akvaryumun fotoğrafı",
+        "body": "Fotoğraf isteğe bağlıdır ve gizli kalır."
+      },
+      "amount": {
+        "title": "Ne kadar su değiştirdiniz?",
+        "body": "İsteğe bağlı. Yüzde, not etmenin en hızlı yoludur."
+      }
+    },
+    "tip": {
+      "conditioner": "Su düzenleyici ekledim",
+      "temperature_matched": "Taze suyun sıcaklığını eşitledim",
+      "checked": "{{tip}}, seçili",
+      "unchecked": "{{tip}}, seçili değil"
+    },
+    "camera": {
+      "capture": "Fotoğraf çek",
+      "viewfinder": "Kamera vizörü",
+      "overlayLabel": "Son su değişiminizin fotoğrafı, görüntünün üzerinde soluk gösteriliyor",
+      "showOverlay": "Son fotoğrafı göster",
+      "hideOverlay": "Son fotoğrafı gizle",
+      "explainTitle": "Kamera erişimi",
+      "explain": "Bu fotoğrafı uygulamanın kamerası çeker; böylece su değişimi başka bir şeyin görüntüsünden ayırt edilebilir.",
+      "allow": "Kameraya izin ver",
+      "notAllowedYet": "Kameraya henüz izin verilmedi.",
+      "deniedTitle": "Kamera kapalı",
+      "denied": "Fotoğrafsız devam edebilirsiniz. Kamerayı kullanmak için cihazınızın ayarlarından izin verin.",
+      "deniedWeb": "Fotoğrafsız devam edebilirsiniz. Kamerayı kullanmak için tarayıcınızda bu site için izin verin.",
+      "openSettings": "Ayarları aç",
+      "unavailableTitle": "Kamera bulunamadı",
+      "unavailable": "Bu cihaz şu anda kamera sunmuyor. Fotoğrafsız devam edebilirsiniz.",
+      "captureError": "Fotoğraf çekilemedi. Lütfen tekrar deneyin.",
+      "reviewTitle": "Bu fotoğraf kullanılsın mı?",
+      "reviewLabel": "Yeni fotoğrafınız, üzerinde sonuncusu soluk olarak",
+      "use": "Fotoğrafı kullan",
+      "retake": "Yeniden çek",
+      "uploading": "Yükleniyor…",
+      "uploadError": "Fotoğraf eklenemedi. Lütfen tekrar deneyin.",
+      "skip": "Fotoğrafsız devam et"
+    },
+    "amount": {
+      "invalid": "Pozitif bir sayı girin; yüzde için en çok 100.",
+      "tankVolume": "Akvaryumunuz {{volume}} alıyor.",
+      "about": "Yaklaşık {{volume}}",
+      "finish": "Su değişimini bitir",
+      "finishing": "Bitiriliyor…",
+      "finishError": "Su değişimi bitirilemedi. Lütfen tekrar deneyin."
+    },
+    "cancel": {
+      "action": "Bu su değişimini durdur",
+      "confirm": "Bu su değişimi ve fotoğrafları atılsın mı?",
+      "yes": "Evet, at",
+      "no": "Hayır, devam et"
+    },
+    "summary": {
+      "title": "Su değişimi tamamlandı",
+      "duration": "Süre: {{time}}",
+      "amount": "Miktar: {{amount}}",
+      "drained": "Boşaltılmış",
+      "refilled": "Doldurulmuş",
+      "private": "Fotoğraflarınız gizli kalır.",
+      "close": "Akvaryumunuza dön"
+    },
+    "evidence": {
+      "verified": "Doğrulanmış su değişimi olarak sayılır.",
+      "partial": "Kaydedildi. Bu, doğrulanmış sayılmaz.",
+      "none": "Rehberli mod olmadan kaydedildi."
+    },
+    "missing": {
+      "draining_missing": "Boşaltma adımı atlandı.",
+      "duration_too_short": "Boşaltma ve doldurma {{minutes}} dakikadan kısa sürdü."
+    },
+    "entry": {
+      "line": "Rehberli, {{time}}, {{evidence}}"
+    }
   }
 }

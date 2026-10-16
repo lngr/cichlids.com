@@ -301,7 +301,9 @@
     "video_codec_unsupported": "Dieses Videoformat wird nicht unterstützt. Wähle ein H.264- oder HEVC-Video.",
     "video_dimensions_unsupported": "Bildgröße oder Drehung dieses Videos werden nicht unterstützt.",
     "video_processing_failed": "Dieses Video konnte nicht aufbereitet werden.",
-    "care_video_not_found": "Dieses Video ist nicht verfügbar."
+    "care_video_not_found": "Dieses Video ist nicht verfügbar.",
+    "water_change_not_found": "Dieser Wasserwechsel ist nicht verfügbar oder nicht mehr offen.",
+    "water_change_request_invalid": "Wähle einen bekannten Schritt mit dem Status erledigt oder übersprungen oder den Fotoplatz abgelassen oder befüllt."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -699,5 +701,122 @@
     "unsupported": "Dieser Browser kann das Video nicht abspielen.",
     "timeline": "Video",
     "pickError": "Das Video konnte nicht gelesen werden. Bitte versuche eine andere Datei."
+  },
+  "waterChange": {
+    "start": "Geführten Wasserwechsel starten",
+    "startFor": "Geführten Wasserwechsel für {{tank}} starten",
+    "loading": "Dein Wasserwechsel wird vorbereitet…",
+    "startError": "Der Wasserwechsel konnte nicht gestartet werden.",
+    "stepOf": "Schritt {{current}} von {{total}}",
+    "timerTotal": "Dauer des Wasserwechsels",
+    "timerDrain": "Seit Beginn des Ablassens",
+    "timerLabel": "{{label}}: {{time}}",
+    "skip": "Diesen Schritt überspringen",
+    "stage": {
+      "heaterFilterOff": {
+        "title": "Heizer und Filter ausschalten",
+        "body": "Schalte beide aus, bevor der Wasserstand sinkt, damit der Heizer nie trocken läuft.",
+        "done": "Heizer und Filter sind aus"
+      },
+      "draining": {
+        "title": "Wasser ablassen",
+        "body": "Tippe auf den Knopf, sobald du Wasser entnimmst. Ab jetzt läuft der Timer.",
+        "done": "Ablassen starten"
+      },
+      "drainedPhoto": {
+        "title": "Foto des abgelassenen Beckens",
+        "body": "Lass weiter ab, während du das Foto machst. Das Foto ist freiwillig und bleibt privat."
+      },
+      "tips": {
+        "title": "Zwei Tipps für das frische Wasser",
+        "body": "Beide sind freiwillig. Hake ab, was du gemacht hast.",
+        "done": "Weiter",
+        "skip": "Tipps überspringen"
+      },
+      "refill": {
+        "title": "Becken wieder befüllen",
+        "body": "Tippe auf den Knopf, sobald du mit dem Befüllen beginnst.",
+        "done": "Befüllen starten"
+      },
+      "heaterFilterOn": {
+        "title": "Heizer und Filter einschalten",
+        "body": "Schalte beide wieder ein, wenn der Wasserstand normal ist.",
+        "done": "Heizer und Filter sind an"
+      },
+      "refilledPhoto": {
+        "title": "Foto des befüllten Beckens",
+        "body": "Das Foto ist freiwillig und bleibt privat."
+      },
+      "amount": {
+        "title": "Wie viel Wasser hast du gewechselt?",
+        "body": "Freiwillig. Prozent ist der schnellste Weg, es zu notieren."
+      }
+    },
+    "tip": {
+      "conditioner": "Ich habe Wasseraufbereiter zugegeben",
+      "temperature_matched": "Ich habe die Temperatur des frischen Wassers angeglichen",
+      "checked": "{{tip}}, ausgewählt",
+      "unchecked": "{{tip}}, nicht ausgewählt"
+    },
+    "camera": {
+      "capture": "Foto aufnehmen",
+      "viewfinder": "Kamera-Sucher",
+      "overlayLabel": "Foto deines letzten Wasserwechsels, blass über dem Bild eingeblendet",
+      "showOverlay": "Letztes Foto zeigen",
+      "hideOverlay": "Letztes Foto ausblenden",
+      "explainTitle": "Kamerazugriff",
+      "explain": "Die Kamera der App nimmt dieses Foto auf, damit sich der Wasserwechsel von einem Bild von etwas anderem unterscheiden lässt.",
+      "allow": "Kamera erlauben",
+      "notAllowedYet": "Die Kamera ist noch nicht erlaubt.",
+      "deniedTitle": "Die Kamera ist ausgeschaltet",
+      "denied": "Du kannst ohne Foto weitermachen. Um die Kamera zu nutzen, erlaube sie in den Einstellungen deines Geräts.",
+      "deniedWeb": "Du kannst ohne Foto weitermachen. Um die Kamera zu nutzen, erlaube sie für diese Seite in deinem Browser.",
+      "openSettings": "Einstellungen öffnen",
+      "unavailableTitle": "Keine Kamera gefunden",
+      "unavailable": "Dieses Gerät bietet gerade keine Kamera. Du kannst ohne Foto weitermachen.",
+      "captureError": "Das Foto konnte nicht aufgenommen werden. Bitte versuche es erneut.",
+      "reviewTitle": "Dieses Foto verwenden?",
+      "reviewLabel": "Dein neues Foto mit dem letzten blass darüber",
+      "use": "Foto verwenden",
+      "retake": "Neu aufnehmen",
+      "uploading": "Wird hochgeladen…",
+      "uploadError": "Das Foto konnte nicht hinzugefügt werden. Bitte versuche es erneut.",
+      "skip": "Ohne Foto weiter"
+    },
+    "amount": {
+      "invalid": "Gib eine positive Zahl ein, bei Prozent bis 100.",
+      "tankVolume": "Dein Becken fasst {{volume}}.",
+      "about": "Etwa {{volume}}",
+      "finish": "Wasserwechsel abschließen",
+      "finishing": "Wird abgeschlossen…",
+      "finishError": "Der Wasserwechsel konnte nicht abgeschlossen werden. Bitte versuche es erneut."
+    },
+    "cancel": {
+      "action": "Diesen Wasserwechsel beenden",
+      "confirm": "Diesen Wasserwechsel und seine Fotos verwerfen?",
+      "yes": "Ja, verwerfen",
+      "no": "Nein, weitermachen"
+    },
+    "summary": {
+      "title": "Wasserwechsel erledigt",
+      "duration": "Dauer: {{time}}",
+      "amount": "Menge: {{amount}}",
+      "drained": "Abgelassen",
+      "refilled": "Befüllt",
+      "private": "Deine Fotos bleiben privat.",
+      "close": "Zurück zu deinem Becken"
+    },
+    "evidence": {
+      "verified": "Als bestätigter Wasserwechsel gezählt.",
+      "partial": "Eingetragen. Dieser Wasserwechsel zählt nicht als bestätigt.",
+      "none": "Ohne geführten Modus eingetragen."
+    },
+    "missing": {
+      "draining_missing": "Der Schritt Ablassen wurde übersprungen.",
+      "duration_too_short": "Ablassen und Befüllen dauerten weniger als {{minutes}} Minuten."
+    },
+    "entry": {
+      "line": "Geführt, {{time}}, {{evidence}}"
+    }
   }
 }

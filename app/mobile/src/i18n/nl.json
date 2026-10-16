@@ -301,7 +301,9 @@
     "video_codec_unsupported": "Dit videoformaat wordt niet ondersteund. Kies een H.264- of HEVC-video.",
     "video_dimensions_unsupported": "De beeldgrootte of draaiing van deze video wordt niet ondersteund.",
     "video_processing_failed": "Deze video kon niet worden voorbereid.",
-    "care_video_not_found": "Deze video is niet beschikbaar."
+    "care_video_not_found": "Deze video is niet beschikbaar.",
+    "water_change_not_found": "Deze waterverversing is niet beschikbaar of niet meer open.",
+    "water_change_request_invalid": "Kies een bekende stap met de status klaar of overgeslagen, of de fotoplek afgetapt of gevuld."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -699,5 +701,122 @@
     "unsupported": "Deze browser kan de video niet afspelen.",
     "timeline": "Video",
     "pickError": "De video kon niet worden gelezen. Probeer een ander bestand."
+  },
+  "waterChange": {
+    "start": "Begeleide waterverversing starten",
+    "startFor": "Begeleide waterverversing starten voor {{tank}}",
+    "loading": "Je waterverversing wordt voorbereid…",
+    "startError": "De waterverversing kon niet worden gestart.",
+    "stepOf": "Stap {{current}} van {{total}}",
+    "timerTotal": "Duur van de waterverversing",
+    "timerDrain": "Sinds het aftappen begon",
+    "timerLabel": "{{label}}: {{time}}",
+    "skip": "Deze stap overslaan",
+    "stage": {
+      "heaterFilterOff": {
+        "title": "Zet verwarming en filter uit",
+        "body": "Zet beide uit voordat het waterpeil zakt, zodat de verwarming nooit droog draait.",
+        "done": "Verwarming en filter staan uit"
+      },
+      "draining": {
+        "title": "Tap het water af",
+        "body": "Tik op de knop zodra je water begint af te nemen. Vanaf dat moment loopt de timer.",
+        "done": "Beginnen met aftappen"
+      },
+      "drainedPhoto": {
+        "title": "Foto van het afgetapte aquarium",
+        "body": "Tap door terwijl je de foto maakt. De foto is optioneel en blijft privé."
+      },
+      "tips": {
+        "title": "Twee tips voor het verse water",
+        "body": "Beide zijn optioneel. Vink aan wat je deed.",
+        "done": "Verder",
+        "skip": "Tips overslaan"
+      },
+      "refill": {
+        "title": "Vul het aquarium weer",
+        "body": "Tik op de knop zodra je begint met bijvullen.",
+        "done": "Beginnen met vullen"
+      },
+      "heaterFilterOn": {
+        "title": "Zet verwarming en filter aan",
+        "body": "Zet beide weer aan zodra het waterpeil weer normaal is.",
+        "done": "Verwarming en filter staan aan"
+      },
+      "refilledPhoto": {
+        "title": "Foto van het gevulde aquarium",
+        "body": "De foto is optioneel en blijft privé."
+      },
+      "amount": {
+        "title": "Hoeveel water heb je ververst?",
+        "body": "Optioneel. Procenten is de snelste manier om het te noteren."
+      }
+    },
+    "tip": {
+      "conditioner": "Ik heb waterverbeteraar toegevoegd",
+      "temperature_matched": "Ik heb de temperatuur van het verse water gelijkgemaakt",
+      "checked": "{{tip}}, geselecteerd",
+      "unchecked": "{{tip}}, niet geselecteerd"
+    },
+    "camera": {
+      "capture": "Foto maken",
+      "viewfinder": "Zoeker van de camera",
+      "overlayLabel": "Foto van je laatste waterverversing, vaag over het beeld getoond",
+      "showOverlay": "Laatste foto tonen",
+      "hideOverlay": "Laatste foto verbergen",
+      "explainTitle": "Cameratoegang",
+      "explain": "De camera van de app maakt deze foto, zodat de waterverversing te onderscheiden is van een beeld van iets anders.",
+      "allow": "Camera toestaan",
+      "notAllowedYet": "De camera is nog niet toegestaan.",
+      "deniedTitle": "De camera staat uit",
+      "denied": "Je kunt doorgaan zonder foto. Sta de camera toe in de instellingen van je apparaat om hem te gebruiken.",
+      "deniedWeb": "Je kunt doorgaan zonder foto. Sta de camera toe voor deze site in je browser om hem te gebruiken.",
+      "openSettings": "Instellingen openen",
+      "unavailableTitle": "Geen camera gevonden",
+      "unavailable": "Dit apparaat biedt nu geen camera. Je kunt doorgaan zonder foto.",
+      "captureError": "De foto kon niet worden gemaakt. Probeer het opnieuw.",
+      "reviewTitle": "Deze foto gebruiken?",
+      "reviewLabel": "Je nieuwe foto met de laatste vaag erboven",
+      "use": "Foto gebruiken",
+      "retake": "Opnieuw maken",
+      "uploading": "Uploaden…",
+      "uploadError": "De foto kon niet worden toegevoegd. Probeer het opnieuw.",
+      "skip": "Doorgaan zonder foto"
+    },
+    "amount": {
+      "invalid": "Voer een positief getal in, bij procenten tot 100.",
+      "tankVolume": "Je aquarium bevat {{volume}}.",
+      "about": "Ongeveer {{volume}}",
+      "finish": "Waterverversing afronden",
+      "finishing": "Afronden…",
+      "finishError": "De waterverversing kon niet worden afgerond. Probeer het opnieuw."
+    },
+    "cancel": {
+      "action": "Deze waterverversing stoppen",
+      "confirm": "Deze waterverversing en de foto's weggooien?",
+      "yes": "Ja, weggooien",
+      "no": "Nee, doorgaan"
+    },
+    "summary": {
+      "title": "Waterverversing klaar",
+      "duration": "Duur: {{time}}",
+      "amount": "Hoeveelheid: {{amount}}",
+      "drained": "Afgetapt",
+      "refilled": "Gevuld",
+      "private": "Je foto's blijven privé.",
+      "close": "Terug naar je aquarium"
+    },
+    "evidence": {
+      "verified": "Telt als geverifieerde waterverversing.",
+      "partial": "Vastgelegd. Deze telt niet als geverifieerd.",
+      "none": "Vastgelegd zonder de begeleide modus."
+    },
+    "missing": {
+      "draining_missing": "De stap aftappen is overgeslagen.",
+      "duration_too_short": "Aftappen en vullen duurden minder dan {{minutes}} minuten."
+    },
+    "entry": {
+      "line": "Begeleid, {{time}}, {{evidence}}"
+    }
   }
 }

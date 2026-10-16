@@ -301,7 +301,9 @@
     "video_codec_unsupported": "This video format is not supported. Choose an H.264 or HEVC video.",
     "video_dimensions_unsupported": "The picture size or rotation of this video is not supported.",
     "video_processing_failed": "This video could not be prepared.",
-    "care_video_not_found": "This video is unavailable."
+    "care_video_not_found": "This video is unavailable.",
+    "water_change_not_found": "This water change is unavailable or no longer open.",
+    "water_change_request_invalid": "Choose a known step with the state done or skipped, or the photo slot drained or refilled."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -699,5 +701,122 @@
     "unsupported": "This browser cannot play the video.",
     "timeline": "Video",
     "pickError": "The video could not be read. Please try another file."
+  },
+  "waterChange": {
+    "start": "Start guided water change",
+    "startFor": "Start guided water change for {{tank}}",
+    "loading": "Preparing your water change…",
+    "startError": "The water change could not be started.",
+    "stepOf": "Step {{current}} of {{total}}",
+    "timerTotal": "Water change time",
+    "timerDrain": "Since draining started",
+    "timerLabel": "{{label}}: {{time}}",
+    "skip": "Skip this step",
+    "stage": {
+      "heaterFilterOff": {
+        "title": "Switch off heater and filter",
+        "body": "Switch both off before the water level drops, so the heater never runs dry.",
+        "done": "Heater and filter are off"
+      },
+      "draining": {
+        "title": "Drain the water",
+        "body": "Press the button when you begin to take water out. The timer runs from this moment.",
+        "done": "Start draining"
+      },
+      "drainedPhoto": {
+        "title": "Photo of the drained tank",
+        "body": "Keep draining while you take the photo. The photo is optional and stays private."
+      },
+      "tips": {
+        "title": "Two tips for the fresh water",
+        "body": "Both are optional. Tick what you did.",
+        "done": "Continue",
+        "skip": "Skip the tips"
+      },
+      "refill": {
+        "title": "Refill the tank",
+        "body": "Press the button when you begin to refill.",
+        "done": "Start refilling"
+      },
+      "heaterFilterOn": {
+        "title": "Switch heater and filter on",
+        "body": "Switch both on once the water level is back to normal.",
+        "done": "Heater and filter are on"
+      },
+      "refilledPhoto": {
+        "title": "Photo of the refilled tank",
+        "body": "The photo is optional and stays private."
+      },
+      "amount": {
+        "title": "How much water did you change?",
+        "body": "Optional. Percent is the quickest way to note it."
+      }
+    },
+    "tip": {
+      "conditioner": "I added water conditioner",
+      "temperature_matched": "I matched the temperature of the fresh water",
+      "checked": "{{tip}}, selected",
+      "unchecked": "{{tip}}, not selected"
+    },
+    "camera": {
+      "capture": "Take photo",
+      "viewfinder": "Camera viewfinder",
+      "overlayLabel": "Photo of your last water change, shown faintly over the image",
+      "showOverlay": "Show last photo",
+      "hideOverlay": "Hide last photo",
+      "explainTitle": "Camera access",
+      "explain": "The camera of the app takes this photo, so the water change can be told from a picture of something else.",
+      "allow": "Allow camera",
+      "notAllowedYet": "The camera is not allowed yet.",
+      "deniedTitle": "The camera is switched off",
+      "denied": "You can continue without a photo. To use the camera, allow it in the settings of your device.",
+      "deniedWeb": "You can continue without a photo. To use the camera, allow it for this site in your browser.",
+      "openSettings": "Open settings",
+      "unavailableTitle": "No camera found",
+      "unavailable": "This device offers no camera right now. You can continue without a photo.",
+      "captureError": "The photo could not be taken. Please try again.",
+      "reviewTitle": "Use this photo?",
+      "reviewLabel": "Your new photo with the last one faintly on top",
+      "use": "Use photo",
+      "retake": "Retake",
+      "uploading": "Uploading…",
+      "uploadError": "The photo could not be added. Please try again.",
+      "skip": "Continue without a photo"
+    },
+    "amount": {
+      "invalid": "Enter a positive number, up to 100 for percent.",
+      "tankVolume": "Your tank holds {{volume}}.",
+      "about": "About {{volume}}",
+      "finish": "Finish water change",
+      "finishing": "Finishing…",
+      "finishError": "The water change could not be finished. Please try again."
+    },
+    "cancel": {
+      "action": "Stop this water change",
+      "confirm": "Discard this water change and its photos?",
+      "yes": "Yes, discard it",
+      "no": "No, keep going"
+    },
+    "summary": {
+      "title": "Water change done",
+      "duration": "Duration: {{time}}",
+      "amount": "Amount: {{amount}}",
+      "drained": "Drained",
+      "refilled": "Refilled",
+      "private": "Your photos stay private.",
+      "close": "Back to your tank"
+    },
+    "evidence": {
+      "verified": "Counted as a verified water change.",
+      "partial": "Logged. This one is not counted as verified.",
+      "none": "Logged without the guided mode."
+    },
+    "missing": {
+      "draining_missing": "The draining step was skipped.",
+      "duration_too_short": "Draining and refilling took less than {{minutes}} minutes."
+    },
+    "entry": {
+      "line": "Guided, {{time}}, {{evidence}}"
+    }
   }
 }

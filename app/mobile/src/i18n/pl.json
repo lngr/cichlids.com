@@ -317,7 +317,9 @@
     "video_codec_unsupported": "Ten format wideo nie jest obsługiwany. Wybierz film H.264 lub HEVC.",
     "video_dimensions_unsupported": "Rozmiar obrazu lub obrót tego filmu nie jest obsługiwany.",
     "video_processing_failed": "Nie udało się przygotować tego filmu.",
-    "care_video_not_found": "Ten film jest niedostępny."
+    "care_video_not_found": "Ten film jest niedostępny.",
+    "water_change_not_found": "Ta podmiana wody jest niedostępna albo już nie jest otwarta.",
+    "water_change_request_invalid": "Wybierz znany krok ze stanem wykonany lub pominięty albo miejsce na zdjęcie: spuszczone lub napełnione."
   },
   "featureFlags": {
     "activityTitle": "Aktywność społeczności",
@@ -725,5 +727,122 @@
     "unsupported": "Ta przeglądarka nie może odtworzyć filmu.",
     "timeline": "Film",
     "pickError": "Nie udało się odczytać filmu. Spróbuj innego pliku."
+  },
+  "waterChange": {
+    "start": "Rozpocznij prowadzoną podmianę wody",
+    "startFor": "Rozpocznij prowadzoną podmianę wody dla {{tank}}",
+    "loading": "Przygotowuję podmianę wody…",
+    "startError": "Nie udało się rozpocząć podmiany wody.",
+    "stepOf": "Krok {{current}} z {{total}}",
+    "timerTotal": "Czas podmiany wody",
+    "timerDrain": "Od początku spuszczania",
+    "timerLabel": "{{label}}: {{time}}",
+    "skip": "Pomiń ten krok",
+    "stage": {
+      "heaterFilterOff": {
+        "title": "Wyłącz grzałkę i filtr",
+        "body": "Wyłącz oba, zanim poziom wody spadnie, żeby grzałka nigdy nie pracowała na sucho.",
+        "done": "Grzałka i filtr są wyłączone"
+      },
+      "draining": {
+        "title": "Spuść wodę",
+        "body": "Dotknij przycisku, gdy zaczniesz wylewać wodę. Od tej chwili biegnie stoper.",
+        "done": "Zacznij spuszczać"
+      },
+      "drainedPhoto": {
+        "title": "Zdjęcie akwarium po spuszczeniu wody",
+        "body": "Spuszczaj dalej, gdy robisz zdjęcie. Zdjęcie jest opcjonalne i pozostaje prywatne."
+      },
+      "tips": {
+        "title": "Dwie wskazówki dla świeżej wody",
+        "body": "Obie są opcjonalne. Zaznacz, co zrobiono.",
+        "done": "Dalej",
+        "skip": "Pomiń wskazówki"
+      },
+      "refill": {
+        "title": "Napełnij akwarium",
+        "body": "Dotknij przycisku, gdy zaczniesz napełniać.",
+        "done": "Zacznij napełniać"
+      },
+      "heaterFilterOn": {
+        "title": "Włącz grzałkę i filtr",
+        "body": "Włącz oba, gdy poziom wody wróci do normy.",
+        "done": "Grzałka i filtr są włączone"
+      },
+      "refilledPhoto": {
+        "title": "Zdjęcie napełnionego akwarium",
+        "body": "Zdjęcie jest opcjonalne i pozostaje prywatne."
+      },
+      "amount": {
+        "title": "Ile wody wymieniono?",
+        "body": "Opcjonalnie. Procent to najszybszy sposób zapisu."
+      }
+    },
+    "tip": {
+      "conditioner": "Dodano środek do uzdatniania wody",
+      "temperature_matched": "Wyrównano temperaturę świeżej wody",
+      "checked": "{{tip}}, zaznaczone",
+      "unchecked": "{{tip}}, niezaznaczone"
+    },
+    "camera": {
+      "capture": "Zrób zdjęcie",
+      "viewfinder": "Wizjer aparatu",
+      "overlayLabel": "Zdjęcie ostatniej podmiany wody, widoczne blado na obrazie",
+      "showOverlay": "Pokaż ostatnie zdjęcie",
+      "hideOverlay": "Ukryj ostatnie zdjęcie",
+      "explainTitle": "Dostęp do aparatu",
+      "explain": "Aparat aplikacji robi to zdjęcie, dzięki czemu podmianę wody można odróżnić od zdjęcia czegoś innego.",
+      "allow": "Zezwól na aparat",
+      "notAllowedYet": "Aparat nie jest jeszcze dozwolony.",
+      "deniedTitle": "Aparat jest wyłączony",
+      "denied": "Możesz kontynuować bez zdjęcia. Aby użyć aparatu, zezwól na niego w ustawieniach urządzenia.",
+      "deniedWeb": "Możesz kontynuować bez zdjęcia. Aby użyć aparatu, zezwól na niego dla tej strony w przeglądarce.",
+      "openSettings": "Otwórz ustawienia",
+      "unavailableTitle": "Nie znaleziono aparatu",
+      "unavailable": "To urządzenie nie ma teraz aparatu. Możesz kontynuować bez zdjęcia.",
+      "captureError": "Nie udało się zrobić zdjęcia. Spróbuj ponownie.",
+      "reviewTitle": "Użyć tego zdjęcia?",
+      "reviewLabel": "Twoje nowe zdjęcie z ostatnim blado na wierzchu",
+      "use": "Użyj zdjęcia",
+      "retake": "Zrób ponownie",
+      "uploading": "Przesyłanie…",
+      "uploadError": "Nie udało się dodać zdjęcia. Spróbuj ponownie.",
+      "skip": "Kontynuuj bez zdjęcia"
+    },
+    "amount": {
+      "invalid": "Podaj liczbę dodatnią, dla procentów do 100.",
+      "tankVolume": "Twoje akwarium ma {{volume}}.",
+      "about": "Około {{volume}}",
+      "finish": "Zakończ podmianę wody",
+      "finishing": "Kończenie…",
+      "finishError": "Nie udało się zakończyć podmiany wody. Spróbuj ponownie."
+    },
+    "cancel": {
+      "action": "Przerwij tę podmianę wody",
+      "confirm": "Odrzucić tę podmianę wody i jej zdjęcia?",
+      "yes": "Tak, odrzuć",
+      "no": "Nie, kontynuuj"
+    },
+    "summary": {
+      "title": "Podmiana wody zakończona",
+      "duration": "Czas: {{time}}",
+      "amount": "Ilość: {{amount}}",
+      "drained": "Spuszczone",
+      "refilled": "Napełnione",
+      "private": "Twoje zdjęcia pozostają prywatne.",
+      "close": "Wróć do akwarium"
+    },
+    "evidence": {
+      "verified": "Liczy się jako zweryfikowana podmiana wody.",
+      "partial": "Zapisano. Ta nie liczy się jako zweryfikowana.",
+      "none": "Zapisano bez trybu prowadzonego."
+    },
+    "missing": {
+      "draining_missing": "Krok spuszczania wody został pominięty.",
+      "duration_too_short": "Spuszczanie i napełnianie trwały krócej niż {{minutes}} min."
+    },
+    "entry": {
+      "line": "Prowadzona, {{time}}, {{evidence}}"
+    }
   }
 }

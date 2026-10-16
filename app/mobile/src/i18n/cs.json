@@ -317,7 +317,9 @@
     "video_codec_unsupported": "Tento formát videa není podporován. Vyber video H.264 nebo HEVC.",
     "video_dimensions_unsupported": "Velikost obrazu nebo otočení tohoto videa není podporováno.",
     "video_processing_failed": "Toto video se nepodařilo připravit.",
-    "care_video_not_found": "Toto video není dostupné."
+    "care_video_not_found": "Toto video není dostupné.",
+    "water_change_not_found": "Tato výměna vody není dostupná nebo už není otevřená.",
+    "water_change_request_invalid": "Zvolte známý krok se stavem hotovo nebo přeskočeno, nebo místo pro fotku vypuštěno či napuštěno."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -725,5 +727,122 @@
     "unsupported": "Tento prohlížeč video nepřehraje.",
     "timeline": "Video",
     "pickError": "Video se nepodařilo přečíst. Zkus jiný soubor."
+  },
+  "waterChange": {
+    "start": "Zahájit vedenou výměnu vody",
+    "startFor": "Zahájit vedenou výměnu vody pro {{tank}}",
+    "loading": "Připravuji výměnu vody…",
+    "startError": "Výměnu vody se nepodařilo zahájit.",
+    "stepOf": "Krok {{current}} z {{total}}",
+    "timerTotal": "Doba výměny vody",
+    "timerDrain": "Od začátku vypouštění",
+    "timerLabel": "{{label}}: {{time}}",
+    "skip": "Přeskočit tento krok",
+    "stage": {
+      "heaterFilterOff": {
+        "title": "Vypněte topení a filtr",
+        "body": "Vypněte obojí dřív, než hladina klesne, aby topení nikdy nepracovalo nasucho.",
+        "done": "Topení a filtr jsou vypnuté"
+      },
+      "draining": {
+        "title": "Vypusťte vodu",
+        "body": "Klepněte na tlačítko, jakmile začnete odebírat vodu. Od té chvíle běží časovač.",
+        "done": "Začít vypouštět"
+      },
+      "drainedPhoto": {
+        "title": "Fotka vypuštěné nádrže",
+        "body": "Při focení dál vypouštějte. Fotka je volitelná a zůstává soukromá."
+      },
+      "tips": {
+        "title": "Dva tipy pro čerstvou vodu",
+        "body": "Oba jsou volitelné. Zaškrtněte, co jste udělali.",
+        "done": "Pokračovat",
+        "skip": "Přeskočit tipy"
+      },
+      "refill": {
+        "title": "Napusťte nádrž",
+        "body": "Klepněte na tlačítko, jakmile začnete napouštět.",
+        "done": "Začít napouštět"
+      },
+      "heaterFilterOn": {
+        "title": "Zapněte topení a filtr",
+        "body": "Zapněte obojí, až se hladina vrátí k normálu.",
+        "done": "Topení a filtr jsou zapnuté"
+      },
+      "refilledPhoto": {
+        "title": "Fotka napuštěné nádrže",
+        "body": "Fotka je volitelná a zůstává soukromá."
+      },
+      "amount": {
+        "title": "Kolik vody jste vyměnili?",
+        "body": "Volitelné. Procenta jsou nejrychlejší způsob zápisu."
+      }
+    },
+    "tip": {
+      "conditioner": "Přidal(a) jsem kondicionér vody",
+      "temperature_matched": "Vyrovnal(a) jsem teplotu čerstvé vody",
+      "checked": "{{tip}}, vybráno",
+      "unchecked": "{{tip}}, nevybráno"
+    },
+    "camera": {
+      "capture": "Vyfotit",
+      "viewfinder": "Hledáček fotoaparátu",
+      "overlayLabel": "Fotka vaší poslední výměny vody, slabě zobrazená přes obraz",
+      "showOverlay": "Zobrazit poslední fotku",
+      "hideOverlay": "Skrýt poslední fotku",
+      "explainTitle": "Přístup k fotoaparátu",
+      "explain": "Tuto fotku pořídí fotoaparát aplikace, aby se výměna vody dala odlišit od obrázku něčeho jiného.",
+      "allow": "Povolit fotoaparát",
+      "notAllowedYet": "Fotoaparát zatím není povolen.",
+      "deniedTitle": "Fotoaparát je vypnutý",
+      "denied": "Můžete pokračovat bez fotky. Chcete-li použít fotoaparát, povolte ho v nastavení zařízení.",
+      "deniedWeb": "Můžete pokračovat bez fotky. Chcete-li použít fotoaparát, povolte ho pro tento web v prohlížeči.",
+      "openSettings": "Otevřít nastavení",
+      "unavailableTitle": "Fotoaparát nenalezen",
+      "unavailable": "Toto zařízení teď nenabízí fotoaparát. Můžete pokračovat bez fotky.",
+      "captureError": "Fotku se nepodařilo pořídit. Zkuste to prosím znovu.",
+      "reviewTitle": "Použít tuto fotku?",
+      "reviewLabel": "Vaše nová fotka s poslední slabě navrchu",
+      "use": "Použít fotku",
+      "retake": "Vyfotit znovu",
+      "uploading": "Nahrávání…",
+      "uploadError": "Fotku se nepodařilo přidat. Zkuste to prosím znovu.",
+      "skip": "Pokračovat bez fotky"
+    },
+    "amount": {
+      "invalid": "Zadejte kladné číslo, u procent nejvýše 100.",
+      "tankVolume": "Vaše nádrž pojme {{volume}}.",
+      "about": "Asi {{volume}}",
+      "finish": "Dokončit výměnu vody",
+      "finishing": "Dokončuji…",
+      "finishError": "Výměnu vody se nepodařilo dokončit. Zkuste to prosím znovu."
+    },
+    "cancel": {
+      "action": "Ukončit tuto výměnu vody",
+      "confirm": "Zahodit tuto výměnu vody a její fotky?",
+      "yes": "Ano, zahodit",
+      "no": "Ne, pokračovat"
+    },
+    "summary": {
+      "title": "Výměna vody hotová",
+      "duration": "Doba: {{time}}",
+      "amount": "Množství: {{amount}}",
+      "drained": "Vypuštěno",
+      "refilled": "Napuštěno",
+      "private": "Vaše fotky zůstávají soukromé.",
+      "close": "Zpět k nádrži"
+    },
+    "evidence": {
+      "verified": "Počítá se jako ověřená výměna vody.",
+      "partial": "Zapsáno. Tato se nepočítá jako ověřená.",
+      "none": "Zapsáno bez vedeného režimu."
+    },
+    "missing": {
+      "draining_missing": "Krok vypouštění byl přeskočen.",
+      "duration_too_short": "Vypouštění a napouštění trvalo méně než {{minutes}} min."
+    },
+    "entry": {
+      "line": "Vedená, {{time}}, {{evidence}}"
+    }
   }
 }

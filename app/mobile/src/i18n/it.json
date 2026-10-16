@@ -309,7 +309,9 @@
     "video_codec_unsupported": "Questo formato video non è supportato. Scegli un video H.264 o HEVC.",
     "video_dimensions_unsupported": "La dimensione dell'immagine o la rotazione di questo video non sono supportate.",
     "video_processing_failed": "Non è stato possibile preparare questo video.",
-    "care_video_not_found": "Questo video non è disponibile."
+    "care_video_not_found": "Questo video non è disponibile.",
+    "water_change_not_found": "Questo cambio d'acqua non è disponibile o non è più aperto.",
+    "water_change_request_invalid": "Scegli un passo noto con lo stato fatto o saltato, oppure lo spazio foto svuotata o riempita."
   },
   "featureFlags": {
     "activityTitle": "Attività della comunità",
@@ -712,5 +714,122 @@
     "unsupported": "Questo browser non può riprodurre il video.",
     "timeline": "Video",
     "pickError": "Non è stato possibile leggere il video. Prova con un altro file."
+  },
+  "waterChange": {
+    "start": "Avvia cambio d'acqua guidato",
+    "startFor": "Avvia cambio d'acqua guidato per {{tank}}",
+    "loading": "Preparazione del cambio d'acqua…",
+    "startError": "Non è stato possibile avviare il cambio d'acqua.",
+    "stepOf": "Passo {{current}} di {{total}}",
+    "timerTotal": "Durata del cambio d'acqua",
+    "timerDrain": "Dall'inizio dello svuotamento",
+    "timerLabel": "{{label}}: {{time}}",
+    "skip": "Salta questo passo",
+    "stage": {
+      "heaterFilterOff": {
+        "title": "Spegni riscaldatore e filtro",
+        "body": "Spegni entrambi prima che il livello dell'acqua scenda, così il riscaldatore non resta mai a secco.",
+        "done": "Riscaldatore e filtro sono spenti"
+      },
+      "draining": {
+        "title": "Svuota l'acqua",
+        "body": "Tocca il pulsante quando inizi a togliere l'acqua. Da quel momento il timer corre.",
+        "done": "Inizia a svuotare"
+      },
+      "drainedPhoto": {
+        "title": "Foto della vasca svuotata",
+        "body": "Continua a svuotare mentre scatti la foto. La foto è facoltativa e resta privata."
+      },
+      "tips": {
+        "title": "Due consigli per l'acqua nuova",
+        "body": "Entrambi sono facoltativi. Spunta ciò che hai fatto.",
+        "done": "Continua",
+        "skip": "Salta i consigli"
+      },
+      "refill": {
+        "title": "Riempi la vasca",
+        "body": "Tocca il pulsante quando inizi a riempire.",
+        "done": "Inizia a riempire"
+      },
+      "heaterFilterOn": {
+        "title": "Riaccendi riscaldatore e filtro",
+        "body": "Riaccendi entrambi quando il livello dell'acqua è tornato normale.",
+        "done": "Riscaldatore e filtro sono accesi"
+      },
+      "refilledPhoto": {
+        "title": "Foto della vasca riempita",
+        "body": "La foto è facoltativa e resta privata."
+      },
+      "amount": {
+        "title": "Quanta acqua hai cambiato?",
+        "body": "Facoltativo. La percentuale è il modo più rapido per annotarlo."
+      }
+    },
+    "tip": {
+      "conditioner": "Ho aggiunto il biocondizionatore",
+      "temperature_matched": "Ho portato l'acqua nuova alla stessa temperatura",
+      "checked": "{{tip}}, selezionato",
+      "unchecked": "{{tip}}, non selezionato"
+    },
+    "camera": {
+      "capture": "Scatta foto",
+      "viewfinder": "Mirino della fotocamera",
+      "overlayLabel": "Foto del tuo ultimo cambio d'acqua, mostrata in trasparenza sull'immagine",
+      "showOverlay": "Mostra l'ultima foto",
+      "hideOverlay": "Nascondi l'ultima foto",
+      "explainTitle": "Accesso alla fotocamera",
+      "explain": "La fotocamera dell'app scatta questa foto, così il cambio d'acqua si distingue da un'immagine di altro.",
+      "allow": "Consenti la fotocamera",
+      "notAllowedYet": "La fotocamera non è ancora consentita.",
+      "deniedTitle": "La fotocamera è disattivata",
+      "denied": "Puoi continuare senza foto. Per usare la fotocamera, consentila nelle impostazioni del dispositivo.",
+      "deniedWeb": "Puoi continuare senza foto. Per usare la fotocamera, consentila per questo sito nel browser.",
+      "openSettings": "Apri le impostazioni",
+      "unavailableTitle": "Nessuna fotocamera trovata",
+      "unavailable": "Questo dispositivo ora non offre una fotocamera. Puoi continuare senza foto.",
+      "captureError": "Non è stato possibile scattare la foto. Riprova.",
+      "reviewTitle": "Usare questa foto?",
+      "reviewLabel": "La tua nuova foto con l'ultima in trasparenza sopra",
+      "use": "Usa foto",
+      "retake": "Scatta di nuovo",
+      "uploading": "Caricamento…",
+      "uploadError": "Non è stato possibile aggiungere la foto. Riprova.",
+      "skip": "Continua senza foto"
+    },
+    "amount": {
+      "invalid": "Inserisci un numero positivo, fino a 100 per la percentuale.",
+      "tankVolume": "La tua vasca contiene {{volume}}.",
+      "about": "Circa {{volume}}",
+      "finish": "Termina il cambio d'acqua",
+      "finishing": "Chiusura…",
+      "finishError": "Non è stato possibile terminare il cambio d'acqua. Riprova."
+    },
+    "cancel": {
+      "action": "Interrompi questo cambio d'acqua",
+      "confirm": "Scartare questo cambio d'acqua e le sue foto?",
+      "yes": "Sì, scarta",
+      "no": "No, continua"
+    },
+    "summary": {
+      "title": "Cambio d'acqua completato",
+      "duration": "Durata: {{time}}",
+      "amount": "Quantità: {{amount}}",
+      "drained": "Svuotata",
+      "refilled": "Riempita",
+      "private": "Le tue foto restano private.",
+      "close": "Torna alla tua vasca"
+    },
+    "evidence": {
+      "verified": "Conta come cambio d'acqua verificato.",
+      "partial": "Registrato. Questo non conta come verificato.",
+      "none": "Registrato senza la modalità guidata."
+    },
+    "missing": {
+      "draining_missing": "Il passo dello svuotamento è stato saltato.",
+      "duration_too_short": "Svuotare e riempire ha richiesto meno di {{minutes}} minuti."
+    },
+    "entry": {
+      "line": "Guidato, {{time}}, {{evidence}}"
+    }
   }
 }
