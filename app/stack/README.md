@@ -410,6 +410,37 @@ Provisional profiles have lower limits, configured next to the limits of members
 | `VideoLimits:ProvisionalMaxOpenUploads` | 1 | Unfinished video uploads at the same time (members: `VideoLimits:MaxOpenUploads`, 3) |
 | `VideoLimits:ProvisionalMaxVideos` | 10 | Videos in the media library of a provisional profile |
 
+### Registration of a provisional account
+
+The three routes under `/api/me/provisional` (`preview`, `upgrade`, `move`) hand the content of an
+installation to a Keycloak account. Each call carries the Keycloak token as bearer and a signed
+challenge of the device (the body of the token exchange) and refuses either alone: a missing or
+invalid proof answers 403 with `device_auth_refused`, a device token as bearer answers
+`registration_required`, and no bearer answers 401.
+
+- `upgrade` applies to an account without a profile. The provisional profile becomes the profile of
+  the account with its first public handle (the preferred username of the token, else a generated
+  handle) and keeps all content. Its device credentials are retired. An account that has a profile
+  answers 409 `account_has_profile`.
+- `move` applies to an account with a member profile. In one transaction the tanks with their care,
+  plans, streak data and decommissionings, the media items, to-dos, reminder snoozes, water change
+  sessions, video uploads and used checksums move into that profile, the retired credentials move
+  with them, and the provisional profile is deleted. A vacation moves like one the member enters now:
+  it is dropped when it overlaps a vacation of the member, or when it starts more than seven days
+  before the local date of the call and would repair a period of a live tank the member already has
+  (`vacationsDropped` and `vacationsDroppedRepair` count the two kinds). The moved tanks are not part
+  of that judgement. `preview` and `move` take the query parameters `date` and `utcOffsetMinutes` of
+  the vacation routes. The settings and the handle of the member stay. An account without
+  a profile answers 409 `account_has_no_profile`, a suspended account 403 `account_suspended`.
+- `preview` answers the mode and the amounts a registration would bring over without changing
+  anything.
+
+A proof that names a retired credential, a credential of another kind of profile or a profile the
+cleanup has removed is refused like any other bad proof. The provisional profile row is locked in the
+order the cleanup uses, so a registration and a cleanup of the same profile exclude each other.
+Registrations emit the outbox events `profile.registered` and `profile.provisional_content_moved`,
+which hold ids and counts only.
+
 ## Webhooks and the outbox
 
 The API delivers outbox events as signed webhooks only to hosts on the allowlist
