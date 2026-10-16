@@ -35,14 +35,14 @@ try {
   const photoUpload = await fetch(`${API_URL}/api/uploads`, { method: "POST", headers: authorization, body });
   assert.equal(photoUpload.status, 201);
   const photo = await photoUpload.json();
-  const published = await fetch(`${API_URL}/api/posts/${photo.id}/publish`, { method: "POST",
+  const published = await fetch(`${API_URL}/api/stories/${photo.id}/publish`, { method: "POST",
     headers: { ...authorization, "Content-Type": "application/json" },
     body: JSON.stringify({ title: "Today tank photo", topic: "tanks" }) });
   assert.equal(published.status, 200);
   assert.ok([tank.id, photo.id].every(id => Number.isSafeInteger(Number(id))));
   execFileSync("docker", ["compose", "-f", "../stack/compose.yaml", "exec", "-T", "postgres", "psql",
     "-U", "cichlids", "-d", "cichlids_e2e", "-v", "ON_ERROR_STOP=1", "-c",
-    `UPDATE post SET tank_id = ${Number(tank.id)} WHERE id = ${Number(photo.id)}`], { stdio: "pipe" });
+    `INSERT INTO story_subject (story_id, subject_type, tank_id) VALUES (${Number(photo.id)}, 'tank', ${Number(tank.id)})`], { stdio: "pipe" });
   for (const colorScheme of ["light", "dark"]) {
     const context = await browser.newContext({ locale: "en-US", colorScheme, viewport: { width: 390, height: 844 } });
     const page = await context.newPage();
@@ -99,7 +99,7 @@ try {
 } finally {
   await browser.close();
   if (draftId != null) {
-    const discarded = await fetch(`${API_URL}/api/posts/${draftId}`, { method: "DELETE", headers: { Authorization: `Bearer ${token}` } });
+    const discarded = await fetch(`${API_URL}/api/stories/${draftId}`, { method: "DELETE", headers: { Authorization: `Bearer ${token}` } });
     assert.equal(discarded.status, 204, "The Today spec discards its draft.");
   }
 }

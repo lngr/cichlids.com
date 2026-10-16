@@ -39,12 +39,12 @@ async function seedPublishedPicture(title) {
   if (!upload.ok) throw new Error(`POST /api/uploads returned ${upload.status}: ${await upload.text()}`);
   const draft = await upload.json();
 
-  const publish = await fetch(`${API_URL}/api/posts/${draft.id}/publish`, {
+  const publish = await fetch(`${API_URL}/api/stories/${draft.id}/publish`, {
     method: "POST",
     headers: { ...headers, "Content-Type": "application/json" },
     body: JSON.stringify({ title }),
   });
-  if (!publish.ok) throw new Error(`POST /api/posts/${draft.id}/publish returned ${publish.status}: ${await publish.text()}`);
+  if (!publish.ok) throw new Error(`POST /api/stories/${draft.id}/publish returned ${publish.status}: ${await publish.text()}`);
   return (await publish.json()).slug;
 }
 
@@ -61,8 +61,8 @@ function psql(sql) {
 function seedEmptyDrafts(profileId, count) {
   if (!/^\d+$/.test(profileId) || !Number.isInteger(count)) throw new Error("Unexpected draft seed values");
   psql(
-    `INSERT INTO post (author_profile_id, kind, topic, state, created_at, updated_at, view_count, rating_count) ` +
-      `SELECT ${profileId}, 'single', 'cichlids', 'draft', now(), now(), 0, 0 FROM generate_series(1, ${count})`,
+    `INSERT INTO story (author_profile_id, topic, state, created_at, updated_at, view_count, rating_count) ` +
+      `SELECT ${profileId}, 'cichlids', 'draft', now(), now(), 0, 0 FROM generate_series(1, ${count})`,
   );
 }
 
@@ -70,8 +70,8 @@ function seedEmptyDrafts(profileId, count) {
 function removeEmptyDrafts(profileId) {
   if (!/^\d+$/.test(profileId)) throw new Error("Unexpected profile id");
   psql(
-    `DELETE FROM post WHERE author_profile_id = ${profileId} AND state = 'draft' ` +
-      `AND NOT EXISTS (SELECT 1 FROM media_link pm WHERE pm.post_id = post.id)`,
+    `DELETE FROM story WHERE author_profile_id = ${profileId} AND state = 'draft' ` +
+      `AND NOT EXISTS (SELECT 1 FROM media_link pm WHERE pm.story_id = story.id)`,
   );
 }
 
@@ -105,7 +105,7 @@ try {
 
   // The API refuses the same comment with the code comment_too_long.
   const token = await tokenOf(USERNAME);
-  const refused = await fetch(`${API_URL}/api/pictures/${slug}/comments`, {
+  const refused = await fetch(`${API_URL}/api/stories/${slug}/comments`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
     body: JSON.stringify({ body: "a".repeat(COMMENT_LIMIT + 1) }),

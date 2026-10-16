@@ -48,12 +48,12 @@ async function publishPicture(token, title) {
   if (!upload.ok) throw new Error(`POST /api/uploads returned ${upload.status}: ${await upload.text()}`);
   const draft = await upload.json();
 
-  const publish = await fetch(`${API_URL}/api/posts/${draft.id}/publish`, {
+  const publish = await fetch(`${API_URL}/api/stories/${draft.id}/publish`, {
     method: "POST",
     headers: { ...headers, "Content-Type": "application/json" },
     body: JSON.stringify({ title }),
   });
-  if (!publish.ok) throw new Error(`POST /api/posts/${draft.id}/publish returned ${publish.status}: ${await publish.text()}`);
+  if (!publish.ok) throw new Error(`POST /api/stories/${draft.id}/publish returned ${publish.status}: ${await publish.text()}`);
   return publish.json();
 }
 
@@ -77,10 +77,10 @@ async function expectGone(urlPath) {
 
 const token = await passwordGrantToken(USERNAME);
 const picture = await publishPicture(token, `Legacy redirect ${crypto.randomUUID()}`);
-const postId = String(picture.id);
-if (!/^\d+$/.test(postId)) throw new Error(`Unexpected post id ${postId}`);
+const storyId = String(picture.id);
+if (!/^\d+$/.test(storyId)) throw new Error(`Unexpected post id ${storyId}`);
 const slug = picture.canonicalSlug;
-const profileId = sql(`SELECT author_profile_id FROM post WHERE id = ${postId}`);
+const profileId = sql(`SELECT author_profile_id FROM story WHERE id = ${storyId}`);
 
 await expectRedirect(`/pictures/pic/${slug}.html`, `/pictures/${slug}`);
 console.log(`The legacy URL of the published picture redirects to /pictures/${slug}`);
@@ -89,11 +89,11 @@ await expectGone("/pictures/pic/%25.html");
 await expectGone(`/pictures/pic/${slug.slice(0, -1) + "_"}.html`);
 console.log("Wildcard characters in a legacy picture alias answer 410");
 
-sql(`UPDATE post SET state = 'archived' WHERE id = ${postId}`);
+sql(`UPDATE story SET state = 'archived' WHERE id = ${storyId}`);
 await expectGone(`/pictures/pic/${slug}.html`);
 console.log("The legacy URL of the archived picture answers 410");
 
-sql(`UPDATE post SET state = 'published' WHERE id = ${postId}`);
+sql(`UPDATE story SET state = 'published' WHERE id = ${storyId}`);
 await expectRedirect(`/pictures/pic/${slug}.html`, `/pictures/${slug}`);
 console.log("After the picture is published again its legacy URL redirects again");
 

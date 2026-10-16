@@ -21,9 +21,9 @@ const COMPOSE_FILE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 
 
 // Sets the title, description and topic of a draft directly in the write database, the way
 // migrated legacy drafts carry them; the API has no endpoint that saves them on a draft.
-function setDraftTexts(postId, title, description, topic) {
+function setDraftTexts(storyId, title, description, topic) {
   if (process.env.E2E_DB !== "cichlids_e2e") throw new Error("Refusing to write outside the cichlids_e2e database");
-  if (!/^\d+$/.test(postId) || !/^[a-z0-9 ]+$/i.test(title + description) || !/^[a-z_]+$/.test(topic)) {
+  if (!/^\d+$/.test(storyId) || !/^[a-z0-9 ]+$/i.test(title + description) || !/^[a-z_]+$/.test(topic)) {
     throw new Error("Unexpected draft values");
   }
   execFileSync(
@@ -31,7 +31,7 @@ function setDraftTexts(postId, title, description, topic) {
     [
       "compose", "-f", COMPOSE_FILE, "exec", "-T", "postgres", "psql", "-U", "cichlids", "-d", "cichlids_e2e",
       "-v", "ON_ERROR_STOP=1", "-c",
-      `UPDATE post SET title = '${title}', description = '${description}', topic = '${topic}' WHERE id = ${postId} AND state = 'draft'`,
+      `UPDATE story SET title = '${title}', description = '${description}', topic = '${topic}' WHERE id = ${storyId} AND state = 'draft'`,
     ],
     { stdio: "pipe" },
   );
@@ -42,7 +42,7 @@ try {
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
   let pictureListRequests = 0;
   page.on("request", (request) => {
-    if (new URL(request.url()).pathname === "/api/pictures") pictureListRequests += 1;
+    if (new URL(request.url()).pathname === "/api/stories") pictureListRequests += 1;
   });
   const pageErrors = [];
   page.on("pageerror", (err) => pageErrors.push(String(err)));
@@ -222,7 +222,7 @@ try {
   await publishButton.click();
   await page.waitForURL(/\/gallery\/[^/]+$/, { timeout: 30000 });
   const seededSlug = new URL(page.url()).pathname.split("/").pop();
-  const seededDetail = await (await fetch(`${API_URL}/api/pictures/${seededSlug}`)).json();
+  const seededDetail = await (await fetch(`${API_URL}/api/stories/${seededSlug}`)).json();
   if (seededDetail.title !== seededTitle || seededDetail.description !== seededDescription || seededDetail.topic !== "tanks") {
     throw new Error(`The published prefilled draft has title "${seededDetail.title}", description "${seededDetail.description}", topic "${seededDetail.topic}"`);
   }
@@ -265,7 +265,7 @@ try {
   if (shownDescription !== description) throw new Error(`Expected the detail description "${description}", got "${shownDescription}"`);
   // The detail screen does not render the topic, so the API's detail response is checked instead.
   const slug = new URL(page.url()).pathname.split("/").pop();
-  const detail = await (await fetch(`${API_URL}/api/pictures/${slug}`)).json();
+  const detail = await (await fetch(`${API_URL}/api/stories/${slug}`)).json();
   if (detail.topic !== "tanks") throw new Error(`Expected the topic "tanks", got "${detail.topic}"`);
   console.log(`Published, detail page /gallery/${slug} shows the title and description, topic tanks`);
 

@@ -88,7 +88,7 @@ try {
   if (!thumbPath?.startsWith("/api/media/photos/")) throw new Error(`Unexpected thumbnail path "${thumbPath}"`);
   const storedKey = sql(
     `SELECT media_item.storage_key FROM media_link JOIN media_item ON media_item.id = media_link.media_item_id
-     WHERE media_link.post_id = ${draft.id}`,
+     WHERE media_link.story_id = ${draft.id}`,
   );
   if (!storedKey.startsWith("private/gallery/")) throw new Error(`The draft's original "${storedKey}" is not private`);
   const signedStatus = (await fetch(`${API_URL}${thumbPath}`)).status;
@@ -96,15 +96,15 @@ try {
   console.log("The signed thumbnail of the draft answers");
 
   // Publishing moves the variants into the public area; the original stays private.
-  const published = await fetch(`${API_URL}/api/posts/${draft.id}/publish`, {
+  const published = await fetch(`${API_URL}/api/stories/${draft.id}/publish`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
     body: JSON.stringify({ title: `E2E legacy copy ${Date.now()}`, description: null, topic: "cichlids" }),
   });
   if (!published.ok) throw new Error(`Publishing the draft returned ${published.status}`);
   const { slug } = await published.json();
-  const publishedDetail = await (await fetch(`${API_URL}/api/pictures/${slug}`)).json();
-  const thumbUrl = publishedDetail.image?.thumb;
+  const publishedDetail = await (await fetch(`${API_URL}/api/stories/${slug}`)).json();
+  const thumbUrl = publishedDetail.cover?.thumb;
   const thumbMatch = /^(.*\/cichlids-e2e\/)variants\/thumb\/(private\/gallery\/.+)\.jpg$/.exec(thumbUrl ?? "");
   if (!thumbMatch || thumbMatch[2] !== storedKey) throw new Error(`Unexpected public thumbnail URL "${thumbUrl}"`);
   const originalUrl = `${thumbMatch[1]}${storedKey}`;
@@ -124,13 +124,13 @@ try {
      copy AS (
        INSERT INTO media_variant (media_item_id, label, width, storage_key, byte_size)
        SELECT id, 'copy', 64, '${LEGACY_COPY_KEY}', ${copySize} FROM item)
-     UPDATE media_link SET media_item_id = (SELECT id FROM item) WHERE post_id = ${draft.id}`,
+     UPDATE media_link SET media_item_id = (SELECT id FROM item) WHERE story_id = ${draft.id}`,
   );
 
-  const detail = await (await fetch(`${API_URL}/api/pictures/${slug}`)).json();
+  const detail = await (await fetch(`${API_URL}/api/stories/${slug}`)).json();
   for (const size of ["thumb", "small", "medium", "large"]) {
-    if (!detail.image?.[size]?.endsWith(`/${LEGACY_COPY_KEY}`)) {
-      throw new Error(`Expected the ${size} URL to be the public copy, got "${detail.image?.[size]}"`);
+    if (!detail.cover?.[size]?.endsWith(`/${LEGACY_COPY_KEY}`)) {
+      throw new Error(`Expected the ${size} URL to be the public copy, got "${detail.cover?.[size]}"`);
     }
   }
 

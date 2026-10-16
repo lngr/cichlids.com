@@ -171,7 +171,7 @@ start_api() {
   # Properties/launchSettings.json, so the dev API's applicationUrl cannot override ASPNETCORE_URLS
   # here; no --no-launch-profile equivalent is needed.
 
-  wait_for_http "$API_URL/api/pictures" "the write-stack API (see $API_LOG)"
+  wait_for_http "$API_URL/api/stories" "the write-stack API (see $API_LOG)"
 }
 
 build_web_export() {

@@ -2,7 +2,7 @@
 // Registers a webhook subscriber as the local admin and follows two published pictures through the
 // outbox dispatcher of the write-stack API. Registrations for an ftp URL and for a host outside the
 // allowlist are rejected. The subscriber is a local HTTP listener on 127.0.0.1: it fails the first
-// two deliveries and then receives the post.published event with a valid signature. It then fails
+// two deliveries and then receives the story.published event with a valid signature. It then fails
 // every delivery until the next event is given up, and after the administrator triggers the
 // redelivery it receives that event with the same id. The write stack runs the dispatcher with a
 // one-second poll interval and a fifteen-second give-up period. No browser is involved; the specs
@@ -37,12 +37,12 @@ async function publishPicture(token, title) {
   if (!upload.ok) throw new Error(`POST /api/uploads returned ${upload.status}: ${await upload.text()}`);
   const draft = await upload.json();
 
-  const publish = await fetch(`${API_URL}/api/posts/${draft.id}/publish`, {
+  const publish = await fetch(`${API_URL}/api/stories/${draft.id}/publish`, {
     method: "POST",
     headers: { ...headers, "Content-Type": "application/json" },
     body: JSON.stringify({ title }),
   });
-  if (!publish.ok) throw new Error(`POST /api/posts/${draft.id}/publish returned ${publish.status}: ${await publish.text()}`);
+  if (!publish.ok) throw new Error(`POST /api/stories/${draft.id}/publish returned ${publish.status}: ${await publish.text()}`);
   return draft.id;
 }
 
@@ -50,7 +50,7 @@ function registerWebhook(adminToken, url) {
   return fetch(`${API_URL}/api/admin/webhooks`, {
     method: "POST",
     headers: { Authorization: `Bearer ${adminToken}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ url, secret: SECRET, eventTypes: ["post.published"] }),
+    body: JSON.stringify({ url, secret: SECRET, eventTypes: ["story.published"] }),
   });
 }
 
@@ -84,8 +84,8 @@ const listener = http.createServer((request, response) => {
 await new Promise((resolve) => listener.listen(0, "127.0.0.1", resolve));
 const listenerUrl = `http://127.0.0.1:${listener.address().port}/hook`;
 
-function deliveriesFor(postId) {
-  return deliveries.filter((d) => d.envelope.eventType === "post.published" && d.envelope.payload?.postId === postId);
+function deliveriesFor(storyId) {
+  return deliveries.filter((d) => d.envelope.eventType === "story.published" && d.envelope.payload?.storyId === storyId);
 }
 
 try {
@@ -111,7 +111,7 @@ try {
   if (failedBefore !== 2) throw new Error(`Expected two failed deliveries before the accepted one, got ${failedBefore}`);
   const expectedSignature = crypto.createHmac("sha256", SECRET).update(accepted.body).digest("hex");
   if (accepted.signature !== expectedSignature) throw new Error("The accepted delivery has an invalid signature");
-  console.log(`After two failed deliveries the subscriber received post.published ${accepted.envelope.id} with a valid signature`);
+  console.log(`After two failed deliveries the subscriber received story.published ${accepted.envelope.id} with a valid signature`);
 
   // A subscriber that keeps failing: the event is given up and listed for the administrator.
   mode = "down";

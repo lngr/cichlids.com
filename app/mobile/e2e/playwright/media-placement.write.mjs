@@ -74,15 +74,15 @@ try {
 
   // A published picture shows the same photo: it moves to the public area and the tank stays hidden.
   const draft = await (await fetch(`${API_URL}/api/uploads`, { method: "POST", headers: auth, body: await photo(200) })).json();
-  const publish = await call("POST", `/api/posts/${draft.id}/publish`, { title: "Placement story", topic: "tanks" });
+  const publish = await call("POST", `/api/stories/${draft.id}/publish`, { title: "Placement story", topic: "tanks" });
   assert.equal(publish.status, 200, await publish.clone().text());
   const story = await publish.json();
-  sql(`UPDATE media_link SET media_item_id = ${tankPhoto.mediaItemId} WHERE post_id = ${draft.id};
+  sql(`UPDATE media_link SET media_item_id = ${tankPhoto.mediaItemId} WHERE story_id = ${draft.id};
        UPDATE media_item SET placement_pending = true, placement_next_attempt_at = NULL WHERE id = ${tankPhoto.mediaItemId}`);
   await until("the photo to move into the public area", () => sql(`SELECT placed_public AND NOT placement_pending FROM media_item WHERE id = ${tankPhoto.mediaItemId}`) === "t");
-  const detail = await (await fetch(`${API_URL}/api/pictures/${story.slug}`)).json();
-  assert.ok(detail.image.thumb.startsWith("http") && detail.image.thumb.includes("/variants/"), detail.image.thumb);
-  assert.equal((await fetch(detail.image.thumb)).status, 200);
+  const detail = await (await fetch(`${API_URL}/api/stories/${story.slug}`)).json();
+  assert.ok(detail.cover.thumb.startsWith("http") && detail.cover.thumb.includes("/variants/"), detail.cover.thumb);
+  assert.equal((await fetch(detail.cover.thumb)).status, 200);
   assert.equal((await fetch(`${API_URL}/api/tanks/${privateTank.id}`)).status, 404);
   assert.equal((await fetch(`${API_URL}/api/tanks/${privateTank.id}/time-lapse`)).status, 404);
 

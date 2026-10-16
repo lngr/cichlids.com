@@ -34,12 +34,12 @@ async function seedPublishedPicture(title) {
   if (!upload.ok) throw new Error(`POST /api/uploads returned ${upload.status}: ${await upload.text()}`);
   const draft = await upload.json();
 
-  const publish = await fetch(`${API_URL}/api/posts/${draft.id}/publish`, {
+  const publish = await fetch(`${API_URL}/api/stories/${draft.id}/publish`, {
     method: "POST",
     headers: { ...headers, "Content-Type": "application/json" },
     body: JSON.stringify({ title }),
   });
-  if (!publish.ok) throw new Error(`POST /api/posts/${draft.id}/publish returned ${publish.status}: ${await publish.text()}`);
+  if (!publish.ok) throw new Error(`POST /api/stories/${draft.id}/publish returned ${publish.status}: ${await publish.text()}`);
   return (await publish.json()).slug;
 }
 
@@ -81,7 +81,7 @@ try {
 
   // The first post fails on the network; the draft stays and the retry posts it.
   let failNextPost = true;
-  await page.route(`${API_URL}/api/pictures/${slug}/comments`, (route) => {
+  await page.route(`${API_URL}/api/stories/${slug}/comments`, (route) => {
     if (route.request().method() === "POST" && failNextPost) {
       failNextPost = false;
       return route.fulfill({ status: 500, body: "" });

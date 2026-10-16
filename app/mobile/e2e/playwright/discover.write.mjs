@@ -29,7 +29,7 @@ try {
   assert.equal(upload.status, 201);
   const draft = await upload.json();
   assert.ok(Number.isSafeInteger(Number(draft.id)));
-  const publish = await fetch(`${API_URL}/api/posts/${draft.id}/publish`, { method: "POST",
+  const publish = await fetch(`${API_URL}/api/stories/${draft.id}/publish`, { method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
     body: JSON.stringify({ title: "Discover archive picture", topic: "tanks" }) });
   assert.equal(publish.status, 200);
@@ -44,24 +44,25 @@ try {
     seriesDrafts.push(Number(photo.id));
   }
   for (const [index, id] of seriesDrafts.entries()) {
-    const published = await fetch(`${API_URL}/api/posts/${id}/publish`, { method: "POST",
+    const published = await fetch(`${API_URL}/api/stories/${id}/publish`, { method: "POST",
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       body: JSON.stringify({ title: index === 0 ? "Discover global archive picture" : `Discover archive frame ${index}`, topic: "cichlids" }) });
     assert.equal(published.status, 200);
   }
   sql(`
-    INSERT INTO rating (post_id, stars, created_at) SELECT ${seriesDrafts[0]}, 5, now() FROM generate_series(1, 20);
+    INSERT INTO rating (story_id, stars, created_at) SELECT ${seriesDrafts[0]}, 5, now() FROM generate_series(1, 20);
     INSERT INTO tank (profile_id, title, state, region, created_at)
-      SELECT author_profile_id, 'Discover American archive', 'published', 'americas_unassigned', now() FROM post WHERE id = ${draft.id};
-    UPDATE post SET tank_id = (SELECT id FROM tank WHERE title = 'Discover American archive'), published_at = '2020-01-01' WHERE id = ${draft.id};
+      SELECT author_profile_id, 'Discover American archive', 'published', 'americas_unassigned', now() FROM story WHERE id = ${draft.id};
+    UPDATE story SET published_at = '2020-01-01' WHERE id = ${draft.id};
+    INSERT INTO story_subject (story_id, subject_type, tank_id) SELECT ${draft.id}, 'tank', id FROM tank WHERE title = 'Discover American archive';
     INSERT INTO rating (tank_id, stars, created_at) SELECT t.id, 5, now() FROM tank t, generate_series(1, 12) WHERE title = 'Discover American archive';
-    INSERT INTO rating (post_id, stars, created_at) SELECT ${draft.id}, 5, now() FROM generate_series(1, 12);
+    INSERT INTO rating (story_id, stars, created_at) SELECT ${draft.id}, 5, now() FROM generate_series(1, 12);
     ${seriesDrafts.map((id, i) => `UPDATE media_item SET created_at = '2020-01-01'::timestamptz + interval '${i === 6 ? 12 : i + 1} months'
-      WHERE id = (SELECT media_item_id FROM media_link WHERE post_id = ${id} LIMIT 1);`).join("\n")}
+      WHERE id = (SELECT media_item_id FROM media_link WHERE story_id = ${id} LIMIT 1);`).join("\n")}
     INSERT INTO media_link (tank_id, media_item_id, context_type, role, position)
       SELECT t.id, pm.media_item_id, 'tank', 'showcase', 0 FROM tank t, media_link pm
-      WHERE t.title = 'Discover American archive' AND pm.post_id IN (${seriesDrafts.join(",")});
-    UPDATE profile SET interests = ARRAY['south_america'] WHERE id = (SELECT author_profile_id FROM post WHERE id = ${draft.id});
+      WHERE t.title = 'Discover American archive' AND pm.story_id IN (${seriesDrafts.join(",")});
+    UPDATE profile SET interests = ARRAY['south_america'] WHERE id = (SELECT author_profile_id FROM story WHERE id = ${draft.id});
   `);
   const tankId = Number(sql("SELECT id FROM tank WHERE title = 'Discover American archive'"));
   // A fresh test API builds its shared archive snapshot from these seeded records.

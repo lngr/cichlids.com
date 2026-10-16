@@ -26,7 +26,7 @@ const file = fs.readFileSync(new URL("../fixtures/upload-photo.jpg", import.meta
 const form = new FormData();
 form.append("file", new Blob([file], { type: "image/jpeg" }), "maestro-fixture.jpg");
 const draft = await json(`${apiUrl}/api/uploads`, { method: "POST", headers, body: form });
-await json(`${apiUrl}/api/posts/${draft.id}/publish`, {
+await json(`${apiUrl}/api/stories/${draft.id}/publish`, {
   method: "POST",
   headers: { ...headers, "Content-Type": "application/json" },
   body: JSON.stringify({ title: "Maestro rating target" }),

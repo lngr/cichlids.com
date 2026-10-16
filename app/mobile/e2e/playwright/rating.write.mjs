@@ -32,18 +32,18 @@ async function seedPublishedPicture(username, title) {
   if (!upload.ok) throw new Error(`POST /api/uploads returned ${upload.status}: ${await upload.text()}`);
   const draft = await upload.json();
 
-  const publish = await fetch(`${API_URL}/api/posts/${draft.id}/publish`, {
+  const publish = await fetch(`${API_URL}/api/stories/${draft.id}/publish`, {
     method: "POST",
     headers: { ...headers, "Content-Type": "application/json" },
     body: JSON.stringify({ title }),
   });
-  if (!publish.ok) throw new Error(`POST /api/posts/${draft.id}/publish returned ${publish.status}: ${await publish.text()}`);
+  if (!publish.ok) throw new Error(`POST /api/stories/${draft.id}/publish returned ${publish.status}: ${await publish.text()}`);
   return (await publish.json()).slug;
 }
 
 async function getPicture(slug) {
-  const response = await fetch(`${API_URL}/api/pictures/${slug}`);
-  if (!response.ok) throw new Error(`GET /api/pictures/${slug} returned ${response.status}`);
+  const response = await fetch(`${API_URL}/api/stories/${slug}`);
+  if (!response.ok) throw new Error(`GET /api/stories/${slug} returned ${response.status}`);
   return response.json();
 }
 
@@ -102,7 +102,7 @@ try {
   if ((await byTestId(ownItem, "comment-item-stars").count()) !== 0) throw new Error("The comment on the own picture shows stars");
   console.log("The own picture offers no stars and takes a comment without stars");
 
-  const refused = await fetch(`${API_URL}/api/pictures/${ownSlug}/comments`, {
+  const refused = await fetch(`${API_URL}/api/stories/${ownSlug}/comments`, {
     method: "POST",
     headers: { Authorization: `Bearer ${await tokenOf(USERNAME)}`, "Content-Type": "application/json" },
     body: JSON.stringify({ body: null, stars: 5 }),

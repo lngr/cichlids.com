@@ -14,7 +14,7 @@ try {
   assert.equal(created.status, 201);
   const tank = await created.json();
   const canvasPage = await browser.newPage();
-  const postIds = [];
+  const storyIds = [];
   for (let i = 0; i < 8; i++) {
     const bytes = await canvasPage.evaluate(async (index) => {
       const canvas = document.createElement("canvas");
@@ -34,18 +34,18 @@ try {
     const uploaded = await fetch(`${API_URL}/api/uploads`, { method: "POST", headers: { Authorization: `Bearer ${token}` }, body });
     assert.equal(uploaded.status, 201, await uploaded.clone().text());
     const draft = await uploaded.json();
-    const published = await fetch(`${API_URL}/api/posts/${draft.id}/publish`, { method: "POST", headers,
+    const published = await fetch(`${API_URL}/api/stories/${draft.id}/publish`, { method: "POST", headers,
       body: JSON.stringify({ title: `Archive month ${i + 1}`, description: `Tank stage ${i + 1}`, topic: "tanks" }) });
     assert.equal(published.status, 200, await published.clone().text());
-    postIds.push(Number(draft.id));
+    storyIds.push(Number(draft.id));
   }
-  assert.ok(Number.isSafeInteger(Number(tank.id)) && postIds.every(Number.isSafeInteger));
+  assert.ok(Number.isSafeInteger(Number(tank.id)) && storyIds.every(Number.isSafeInteger));
   execFileSync("docker", ["compose", "-f", "../stack/compose.yaml", "exec", "-T", "postgres", "psql",
     "-U", "cichlids", "-d", "cichlids_e2e", "-v", "ON_ERROR_STOP=1", "-c",
     `UPDATE tank SET legacy_id = 460006, water_ph = '8.2', water_notes = 'Weekly water changes', filtration = 'External filter' WHERE id = ${tank.id};
-     ${postIds.map((id, i) => `UPDATE post SET tank_id = ${tank.id}, published_at = '2020-01-01'::timestamptz + interval '${i === 7 ? 12 : i} months' WHERE id = ${id};`).join("\n")}
-     ${postIds.map((id, i) => `UPDATE media_item SET taken_at_local = '2018-03-01 09:00'::timestamp + interval '${i === 0 ? 12 : 7 - i} months', taken_at_offset_minutes = 120 WHERE id IN (SELECT media_item_id FROM media_link WHERE post_id = ${id});`).join("\n")}
-     INSERT INTO media_link (tank_id, media_item_id, context_type, role, position) SELECT ${tank.id}, media_item_id, 'tank', 'showcase', 0 FROM media_link WHERE post_id = ${postIds[0]};`], { stdio: "pipe" });
+     ${storyIds.map((id, i) => `UPDATE story SET published_at = '2020-01-01'::timestamptz + interval '${i === 7 ? 12 : i} months' WHERE id = ${id}; INSERT INTO story_subject (story_id, subject_type, tank_id) VALUES (${id}, 'tank', ${tank.id});`).join("\n")}
+     ${storyIds.map((id, i) => `UPDATE media_item SET taken_at_local = '2018-03-01 09:00'::timestamp + interval '${i === 0 ? 12 : 7 - i} months', taken_at_offset_minutes = 120 WHERE id IN (SELECT media_item_id FROM media_link WHERE story_id = ${id});`).join("\n")}
+     INSERT INTO media_link (tank_id, media_item_id, context_type, role, position) SELECT ${tank.id}, media_item_id, 'tank', 'showcase', 0 FROM media_link WHERE story_id = ${storyIds[0]};`], { stdio: "pipe" });
   const series = await fetch(`${API_URL}/api/tanks/${tank.id}/time-lapse`);
   assert.equal(series.status, 200);
   const data = await series.json();

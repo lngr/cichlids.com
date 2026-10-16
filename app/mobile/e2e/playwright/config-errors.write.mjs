@@ -25,7 +25,8 @@ function pictureItem(sort, index) {
     commentCount: 0,
     topic: "cichlids",
     author: { id: 1, username: "seed", displayName: null, avatarUrl: null },
-    image: null,
+    cover: null,
+    itemCount: 1,
   };
 }
 
@@ -51,7 +52,7 @@ try {
   const requests = [];
   let releaseHeldPage;
   const held = new Promise((resolve) => (releaseHeldPage = resolve));
-  await page.route(`${API_URL}/api/pictures?*`, async (route) => {
+  await page.route(`${API_URL}/api/stories?*`, async (route) => {
     const url = new URL(route.request().url());
     const sort = url.searchParams.get("sort") ?? "newest";
     const offset = Number(url.searchParams.get("offset") ?? 0);
@@ -91,7 +92,7 @@ try {
   }
   await page.locator('[data-testid="picture-card"]', { hasText: `views-${PAGE_SIZE}` }).first().waitFor({ timeout: 20000 });
   console.log("After a sort change during a load-more, scrolling to the end loads further pages");
-  await page.unroute(`${API_URL}/api/pictures?*`);
+  await page.unroute(`${API_URL}/api/stories?*`);
 
   // Login while the sign-in service is unreachable: the API cannot start the login.
   let keycloakReachable = false;

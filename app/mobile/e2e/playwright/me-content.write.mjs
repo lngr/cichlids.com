@@ -28,12 +28,12 @@ const browser = await chromium.launch();
 try {
   sql(`UPDATE profile SET legacy_id = 928000028 WHERE id = ${profileId};
     WITH seeded AS (
-      INSERT INTO post (author_profile_id, kind, topic, state, title, created_at, updated_at, published_at, view_count, rating_count)
-      SELECT ${profileId}, 'single', 'cichlids', 'published', 'Me story picture ' || n, now(), now(), now(), 0, 0 FROM generate_series(1, 23) n RETURNING id
-    ) INSERT INTO slug_alias (post_id, value, is_canonical, created_at) SELECT id, 'me-story-' || id, true, now() FROM seeded;
+      INSERT INTO story (author_profile_id, topic, state, title, created_at, updated_at, published_at, view_count, rating_count)
+      SELECT ${profileId}, 'cichlids', 'published', 'Me story picture ' || n, now(), now(), now(), 0, 0 FROM generate_series(1, 23) n RETURNING id
+    ) INSERT INTO slug_alias (story_id, value, is_canonical, created_at) SELECT id, 'me-story-' || id, true, now() FROM seeded;
     INSERT INTO tank (profile_id, title, state, created_at) SELECT ${profileId}, 'Me story tank ' || n, 'published', now() FROM generate_series(1, 21) n;
-    INSERT INTO post (author_profile_id, kind, topic, state, title, created_at, updated_at, view_count, rating_count)
-    VALUES (${profileId}, 'single', 'cichlids', 'draft', 'Me story draft', now(), now(), 0, 0)`);
+    INSERT INTO story (author_profile_id, topic, state, title, created_at, updated_at, view_count, rating_count)
+    VALUES (${profileId}, 'cichlids', 'draft', 'Me story draft', now(), now(), 0, 0)`);
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
   const errors = [];
   page.on("pageerror", (error) => errors.push(String(error)));
@@ -44,7 +44,7 @@ try {
   assert.equal(await byTestId(page, "drafts-section").count(), 0);
 
   async function compareCards(kind, cardId) {
-    const expected = await get(`profiles/${profileId}/${kind}?limit=100`);
+    const expected = await get(`profiles/${profileId}/${kind === "pictures" ? "stories" : kind}?limit=100`);
     assert.ok(expected.total > 20);
     await page.mouse.move(195, 650);
     for (let attempt = 0; attempt < 40; attempt++) {
@@ -79,7 +79,7 @@ try {
   await byTestId(page, "picture-card").first().waitFor();
 
   for (const kind of ["pictures", "tanks"]) {
-    const route = `**/api/profiles/${profileId}/${kind}?*`;
+    const route = `**/api/profiles/${profileId}/${kind === "pictures" ? "stories" : kind}?*`;
     await page.route(route, (request) => request.abort("connectionfailed"));
     await page.goto(`${WEB_URL}/me`, { waitUntil: "networkidle" });
     await byTestId(page, `me-tab-${kind}`).click();
@@ -95,5 +95,5 @@ try {
   console.log("Me pictures and tanks match the profile API across pages; drafts match the private API; details, profile link, retry and logout pass.");
 } finally {
   await browser.close();
-  sql(`DELETE FROM slug_alias WHERE post_id IN (SELECT id FROM post WHERE author_profile_id = ${profileId} AND title LIKE 'Me story %'); DELETE FROM post WHERE author_profile_id = ${profileId} AND title LIKE 'Me story %'; DELETE FROM tank WHERE profile_id = ${profileId} AND title LIKE 'Me story %'; UPDATE profile SET legacy_id = ${legacyId} WHERE id = ${profileId}`);
+  sql(`DELETE FROM slug_alias WHERE story_id IN (SELECT id FROM story WHERE author_profile_id = ${profileId} AND title LIKE 'Me story %'); DELETE FROM story WHERE author_profile_id = ${profileId} AND title LIKE 'Me story %'; DELETE FROM tank WHERE profile_id = ${profileId} AND title LIKE 'Me story %'; UPDATE profile SET legacy_id = ${legacyId} WHERE id = ${profileId}`);
 }

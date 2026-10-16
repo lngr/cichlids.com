@@ -112,18 +112,18 @@ try {
   const draftResponse = await fetch(`${API_URL}/api/uploads`, { method: "POST", headers: auth, body: await photo(180) });
   assert.equal(draftResponse.status, 201, await draftResponse.clone().text());
   const draft = await draftResponse.json();
-  const publish = await call("POST", `/api/posts/${draft.id}/publish`, { title: "Media links picture", topic: "tanks" });
+  const publish = await call("POST", `/api/stories/${draft.id}/publish`, { title: "Media links picture", topic: "tanks" });
   assert.equal(publish.status, 200, await publish.clone().text());
   const picture = await publish.json();
-  const listed = await (await fetch(`${API_URL}/api/pictures?limit=50`)).json();
-  assert.ok(listed.items.some(item => item.id === draft.id && item.image?.thumb), "the gallery lists the picture with its image");
+  const listed = await (await fetch(`${API_URL}/api/stories?limit=50`)).json();
+  assert.ok(listed.items.some(item => item.id === draft.id && item.cover?.thumb), "the gallery lists the picture with its image");
 
   // The links in the database: one per photo with its context, role and position.
   const links = sql(`SELECT context_type || ':' || role || ':' || position FROM media_link
       WHERE tank_id = ${tank.id} OR care_entry_id IN (${entry.id}, ${finished.entry.id})
-        OR water_change_session_id = ${session.id} OR post_id = ${draft.id} ORDER BY 1`).split("\n");
+        OR water_change_session_id = ${session.id} OR story_id = ${draft.id} ORDER BY 1`).split("\n");
   assert.deepEqual(links, [
-    "care_entry:photo:0", "care_entry:photo:0", "post:item:0", "tank:time_lapse:0", "tank:time_lapse:1", "water_change_session:evidence:0",
+    "care_entry:photo:0", "care_entry:photo:0", "story:item:0", "tank:time_lapse:0", "tank:time_lapse:1", "water_change_session:evidence:0",
   ]);
   // The finished water change shows the photo of its session as a care photo of its entry.
   assert.equal(sql(`SELECT count(DISTINCT media_item_id) FROM media_link WHERE water_change_session_id = ${session.id} OR care_entry_id = ${finished.entry.id}`), "1");
@@ -131,7 +131,7 @@ try {
   assert.equal(sql(`SELECT count(*) FROM media_item m JOIN media_link l ON l.media_item_id = m.id
       WHERE (l.tank_id = ${tank.id} OR l.water_change_session_id = ${session.id}) AND m.captured_in_app AND m.received_at IS NOT NULL`), "3");
   assert.equal(sql(`SELECT count(*) FROM media_item m JOIN media_link l ON l.media_item_id = m.id
-      WHERE (l.care_entry_id = ${entry.id} OR l.post_id = ${draft.id}) AND NOT m.captured_in_app`), "2");
+      WHERE (l.care_entry_id = ${entry.id} OR l.story_id = ${draft.id}) AND NOT m.captured_in_app`), "2");
   assert.equal(sql(`SELECT count(*) FROM pg_tables WHERE schemaname = 'public' AND tablename IN
       ('tank_media', 'post_media', 'care_photo', 'care_video', 'water_change_session_photo', 'discussion_post_media')`), "0");
 
