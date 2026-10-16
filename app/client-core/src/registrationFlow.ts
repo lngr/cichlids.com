@@ -36,11 +36,11 @@ export function droppedVacations(result: { vacationsDropped: number; vacationsDr
 
 /**
  * How a registration ended. "upgraded": the profile of the installation became the profile of the
- * account. "moved": the content went into the existing profile of the account. "declined": the
+ * account, with the content it kept. "moved": the content went into the existing profile of the account. "declined": the
  * member kept the content on the device; the preview names what stays behind.
  */
 export type RegistrationOutcome =
-  | { kind: "upgraded"; me: Awaited<ReturnType<CichlidsClient["registration"]["upgrade"]>> }
+  | { kind: "upgraded"; me: Awaited<ReturnType<CichlidsClient["registration"]["upgrade"]>>; content: ProvisionalContent }
   | ({ kind: "moved" } & RegistrationMove)
   | { kind: "declined"; preview: RegistrationPreview };
 
@@ -55,7 +55,7 @@ export async function completeRegistration(
   decide: (preview: RegistrationPreview) => Promise<boolean>,
 ): Promise<RegistrationOutcome> {
   const preview = await registration.preview(local);
-  if (preview.mode === "upgrade") return { kind: "upgraded", me: await registration.upgrade() };
+  if (preview.mode === "upgrade") return { kind: "upgraded", me: await registration.upgrade(), content: preview.content };
   if (hasProvisionalContent(preview.content) && !(await decide(preview))) return { kind: "declined", preview };
   return { kind: "moved", ...(await registration.move(local)) };
 }

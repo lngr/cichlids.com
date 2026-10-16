@@ -49,7 +49,7 @@ describe("completeRegistration", () => {
     const registration = api({ mode: "upgrade" });
     const decide = vi.fn(async () => true);
     const outcome = await completeRegistration(registration, local, decide);
-    expect(outcome).toEqual({ kind: "upgraded", me });
+    expect(outcome).toEqual({ kind: "upgraded", me, content });
     expect(registration.upgrade).toHaveBeenCalledTimes(1);
     expect(registration.move).not.toHaveBeenCalled();
     expect(decide).not.toHaveBeenCalled();
