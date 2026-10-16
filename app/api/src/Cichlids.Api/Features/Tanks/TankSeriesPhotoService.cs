@@ -14,7 +14,7 @@ namespace Cichlids.Api.Features.Tanks;
 /// <summary>
 /// Adds photos to the time-lapse series of a tank. A photo goes through the upload pipeline (same
 /// formats, limits and capture time as other tank photos) and is linked to the tank in the time-lapse
-/// role without a post. The variants are stored under the public prefix when the profile of the tank is
+/// role without a story. The variants are stored under the public prefix when the profile of the tank is
 /// public and under the private prefix otherwise; the link marks the media item for placement, which
 /// moves the variants when the visibility rule asks for the other area. The media item, its link and the
 /// tank.photo_added event commit in one transaction.

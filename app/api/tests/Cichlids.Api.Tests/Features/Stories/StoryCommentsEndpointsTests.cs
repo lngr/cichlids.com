@@ -3,15 +3,15 @@ using System.Text.Json;
 using Cichlids.Api.Features.Comments;
 using Cichlids.Api.Features.Common;
 
-namespace Cichlids.Api.Tests.Features.Pictures;
+namespace Cichlids.Api.Tests.Features.Stories;
 
 [Collection(ApiCollection.Name)]
-public class PictureCommentsEndpointsTests(ApiFixture fixture)
+public class StoryCommentsEndpointsTests(ApiFixture fixture)
 {
     [Fact]
     public async Task List_ReturnsOnlyVisibleCommentsOldestFirstWithAuthorOrPosterName()
     {
-        var response = await fixture.Client.GetAsync($"/api/pictures/{fixture.Seed.PublishedPictureACanonicalSlug}/comments");
+        var response = await fixture.Client.GetAsync($"/api/stories/{fixture.Seed.PublishedPictureACanonicalSlug}/comments");
         response.EnsureSuccessStatusCode();
 
         var body = JsonSerializer.Deserialize<PagedResponse<CommentDto>>(
@@ -36,14 +36,14 @@ public class PictureCommentsEndpointsTests(ApiFixture fixture)
     [Fact]
     public async Task List_UnknownSlugReturnsNotFound()
     {
-        var response = await fixture.Client.GetAsync("/api/pictures/does-not-exist/comments");
+        var response = await fixture.Client.GetAsync("/api/stories/does-not-exist/comments");
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
 
     [Fact]
     public async Task List_NonPublicPostReturnsNotFound()
     {
-        var response = await fixture.Client.GetAsync($"/api/pictures/{fixture.Seed.DraftPictureSlug}/comments");
+        var response = await fixture.Client.GetAsync($"/api/stories/{fixture.Seed.DraftPictureSlug}/comments");
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
 }

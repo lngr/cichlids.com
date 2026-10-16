@@ -61,23 +61,24 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
             .Where(t => t.State == TankState.Published && t.DeletedAt == null && members.Any(p => p.Id == t.ProfileId));
 
     /// <summary>
-    /// Restricts posts to those Discover may show: a post linked to a tank needs that tank to be one of
-    /// the public tanks.
+    /// Restricts stories to those Discover may show: every tank a story points to needs to be one of the
+    /// public tanks.
     /// </summary>
-    private static IQueryable<Cichlids.Domain.Entities.Post> OfPublicTanks(
-        IQueryable<Cichlids.Domain.Entities.Post> posts, IQueryable<Cichlids.Domain.Entities.Tank> publicTanks) =>
-        posts.Where(p => p.TankId == null || publicTanks.Any(t => t.Id == p.TankId));
+    private IQueryable<Cichlids.Domain.Entities.Story> OfPublicTanks(
+        IQueryable<Cichlids.Domain.Entities.Story> stories, IQueryable<Cichlids.Domain.Entities.Tank> publicTanks) =>
+        stories.Where(p => !context.StorySubjects.Any(s => s.StoryId == p.Id && s.TankId != null
+            && !publicTanks.Any(t => t.Id == s.TankId)));
 
     private async Task<DiscoverDto> VisibleAsync(DiscoverDto archive, TankRegion[] selected, DateTimeOffset now, CancellationToken cancellationToken)
     {
         var regions = archive.Regions.Where(r => selected.Contains(r.Region)).ToList();
         var tankIds = regions.SelectMany(r => r.Tanks.Concat(r.TimeLapses)).Select(t => t.Id)
             .Concat(regions.Where(r => r.TankOfTheWeek != null).Select(r => r.TankOfTheWeek!.Id)).Distinct().ToList();
-        var postIds = regions.SelectMany(r => r.Pictures).Concat(archive.GlobalPictures).Select(p => p.Id).Distinct().ToList();
+        var storyIds = regions.SelectMany(r => r.Pictures).Concat(archive.GlobalPictures).Select(p => p.Id).Distinct().ToList();
         var members = context.Profiles.Where(p => p.Kind == ProfileKind.Member && (p.SuspendedUntil == null || p.SuspendedUntil <= now));
         var publicTanks = PublicTanks(members);
         var visibleTanks = (await publicTanks.Where(t => tankIds.Contains(t.Id)).Select(t => t.Id).ToListAsync(cancellationToken)).ToHashSet();
-        var visiblePosts = (await OfPublicTanks(context.Posts.Where(p => postIds.Contains(p.Id) && p.State == PostState.Published
+        var visibleStories = (await OfPublicTanks(context.Stories.Where(p => storyIds.Contains(p.Id) && p.State == StoryState.Published
                 && p.DeletedAt == null && members.Any(a => a.Id == p.AuthorProfileId)), publicTanks)
             .Select(p => p.Id).ToListAsync(cancellationToken)).ToHashSet();
         return new DiscoverDto(regions.Select(region =>
@@ -86,11 +87,11 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
             return region with
             {
                 Tanks = hall,
-                Pictures = region.Pictures.Where(p => visiblePosts.Contains(p.Id)).ToList(),
+                Pictures = region.Pictures.Where(p => visibleStories.Contains(p.Id)).ToList(),
                 TankOfTheWeek = hall.Count == 0 ? null : hall[DiscoverRanking.WeeklyIndex(now, hall.Count)],
                 TimeLapses = region.TimeLapses.Where(t => visibleTanks.Contains(t.Id)).ToList(),
             };
-        }).ToList(), archive.GlobalPictures.Where(p => visiblePosts.Contains(p.Id)).ToList());
+        }).ToList(), archive.GlobalPictures.Where(p => visibleStories.Contains(p.Id)).ToList());
     }
 
     private async Task<DiscoverDto> ComputeAsync(DateTimeOffset now, CancellationToken cancellationToken)
@@ -98,29 +99,31 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
         var selected = SelectableRegions;
         var members = context.Profiles.Where(p => p.Kind == ProfileKind.Member && (p.SuspendedUntil == null || p.SuspendedUntil <= now));
         var tanks = PublicTanks(members).AsNoTracking();
-        var posts = OfPublicTanks(context.Posts.AsNoTracking().Where(p => p.State == PostState.Published && p.DeletedAt == null
+        var stories = OfPublicTanks(context.Stories.AsNoTracking().Where(p => p.State == StoryState.Published && p.DeletedAt == null
             && members.Any(a => a.Id == p.AuthorProfileId)
-            && context.MediaLinks.Any(l => l.PostId == p.Id && context.MediaItems.Any(m => m.Id == l.MediaItemId && m.Kind == MediaKind.Photo))), tanks);
+            && context.MediaLinks.Any(l => l.StoryId == p.Id && context.MediaItems.Any(m => m.Id == l.MediaItemId && m.Kind == MediaKind.Photo))), tanks);
         var tankRatings = context.Ratings.Where(r => tanks.Any(t => t.Id == r.TankId && (r.ProfileId == null || r.ProfileId != t.ProfileId)));
-        var pictureRatings = context.Ratings.Where(r => posts.Any(p => p.Id == r.PostId && (r.ProfileId == null || r.ProfileId != p.AuthorProfileId)));
+        var pictureRatings = context.Ratings.Where(r => stories.Any(p => p.Id == r.StoryId && (r.ProfileId == null || r.ProfileId != p.AuthorProfileId)));
         var tr = await tankRatings.GroupBy(r => r.TankId!.Value).Select(g => new Stats(g.Key, g.Count(), g.Sum(r => (long)r.Stars))).ToListAsync(cancellationToken);
-        var pr = await pictureRatings.GroupBy(r => r.PostId!.Value).Select(g => new Stats(g.Key, g.Count(), g.Sum(r => (long)r.Stars))).ToListAsync(cancellationToken);
+        var pr = await pictureRatings.GroupBy(r => r.StoryId!.Value).Select(g => new Stats(g.Key, g.Count(), g.Sum(r => (long)r.Stars))).ToListAsync(cancellationToken);
         var tankPrior = Prior(tr);
         var picturePrior = Prior(pr);
         var tankStats = tr.ToDictionary(r => r.Id);
         var pictureStats = pr.ToDictionary(r => r.Id);
         var tankRows = await tanks.ToListAsync(cancellationToken);
         var regionalTanks = tankRows.Where(t => selected.Any(r => DiscoverRanking.InRegion(t.Region, r))).ToList();
-        var ratedPostIds = pr.Where(r => r.Count >= DiscoverRanking.MinimumRatings).Select(r => r.Id).ToList();
+        var ratedStoryIds = pr.Where(r => r.Count >= DiscoverRanking.MinimumRatings).Select(r => r.Id).ToList();
         var tankIds = regionalTanks.Select(t => t.Id).ToList();
-        var pictureRows = await posts.Where(p => ratedPostIds.Contains(p.Id))
-            .Select(p => new Picture(p.Id, p.Title, p.TankId)).ToListAsync(cancellationToken);
+        var pictureRows = await stories.Where(p => ratedStoryIds.Contains(p.Id))
+            .Select(p => new Picture(p.Id, p.Title,
+                context.StorySubjects.Where(s => s.StoryId == p.Id && s.TankId != null).OrderBy(s => s.Id).Select(s => s.TankId).FirstOrDefault()))
+            .ToListAsync(cancellationToken);
         var tankRegions = tankRows.ToDictionary(t => t.Id, t => t.Region);
-        var speciesCategories = await (from ps in context.PostSpecies
-            join species in context.Species on ps.SpeciesId equals species.Id
-            where ratedPostIds.Contains(ps.PostId)
-            select new { ps.PostId, species.Category }).ToListAsync(cancellationToken);
-        var speciesRegions = speciesCategories.GroupBy(s => s.PostId).ToDictionary(g => g.Key,
+        var speciesCategories = await (from ps in context.StorySubjects
+            join species in context.Species on ps.SpeciesId equals (long?)species.Id
+            where ratedStoryIds.Contains(ps.StoryId)
+            select new { ps.StoryId, species.Category }).ToListAsync(cancellationToken);
+        var speciesRegions = speciesCategories.GroupBy(s => s.StoryId).ToDictionary(g => g.Key,
             g => g.Select(s => DiscoverRanking.SpeciesRegion(s.Category)).Distinct().ToArray());
         bool InPictureRegion(Picture picture, TankRegion region) => picture.TankId is { } id
             ? DiscoverRanking.InRegion(tankRegions.GetValueOrDefault(id), region)
@@ -128,31 +131,34 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
         var rankedPictures = pictureRows.OrderByDescending(p => DiscoverRanking.Score(pictureStats[p.Id].Sum, pictureStats[p.Id].Count, picturePrior))
             .ThenBy(p => p.Id).ToList();
         var globalPictures = rankedPictures.Take(20).ToList();
-        var postIds = selected.SelectMany(region => rankedPictures.Where(p => InPictureRegion(p, region)).Take(20))
+        var storyIds = selected.SelectMany(region => rankedPictures.Where(p => InPictureRegion(p, region)).Take(20))
             .Concat(globalPictures).Select(p => p.Id).Distinct().ToList();
-        var pictureSlugs = await context.SlugAliases.Where(s => postIds.Contains(s.PostId) && s.IsCanonical)
-            .ToDictionaryAsync(s => s.PostId, s => s.Value, cancellationToken);
-        var postMedia = await context.MediaLinks.PostLinks()
-            .Where(l => postIds.Contains(l.PostId!.Value) && context.MediaItems.Any(m => m.Id == l.MediaItemId && m.Kind == MediaKind.Photo))
-            .OrderBy(l => l.Position).ThenBy(l => l.Id).Select(l => new PostLink(l.PostId!.Value, l.MediaItemId)).ToListAsync(cancellationToken);
+        var pictureSlugs = await context.SlugAliases.Where(s => storyIds.Contains(s.StoryId) && s.IsCanonical)
+            .ToDictionaryAsync(s => s.StoryId, s => s.Value, cancellationToken);
+        var storyMedia = await context.MediaLinks.StoryLinks()
+            .Where(l => storyIds.Contains(l.StoryId!.Value) && context.MediaItems.Any(m => m.Id == l.MediaItemId && m.Kind == MediaKind.Photo))
+            .OrderBy(l => l.Position).ThenBy(l => l.Id).Select(l => new StoryLink(l.StoryId!.Value, l.Id, l.MediaItemId)).ToListAsync(cancellationToken);
+        var coverLinkIds = await context.Stories.Where(p => storyIds.Contains(p.Id) && p.CoverMediaLinkId != null)
+            .ToDictionaryAsync(p => p.Id, p => p.CoverMediaLinkId!.Value, cancellationToken);
         var tankMedia = await context.MediaLinks.Where(l => l.TankId != null && tankIds.Contains(l.TankId.Value) && l.Role == MediaLinkRole.Showcase)
             .OrderBy(l => l.Position).ThenBy(l => l.Id).Select(l => new TankLink(l.TankId!.Value, l.MediaItemId)).ToListAsync(cancellationToken);
         var mainMedia = await context.MediaLinks.TankMainLinks().Where(l => tankIds.Contains(l.TankId!.Value))
             .ToDictionaryAsync(l => l.TankId!.Value, l => l.MediaItemId, cancellationToken);
-        var mediaIds = postMedia.Select(pm => pm.MediaItemId).Concat(tankMedia.Select(tm => tm.MediaItemId))
+        var mediaIds = storyMedia.Select(pm => pm.MediaItemId).Concat(tankMedia.Select(tm => tm.MediaItemId))
             .Concat(mainMedia.Values).Distinct().ToList();
         var variants = await context.MediaVariants.AsNoTracking().Where(v => mediaIds.Contains(v.MediaItemId)).ToListAsync(cancellationToken);
         // The result is cached across viewers, so it holds public URLs only and no signed path. Every item listed
-        // belongs to a public tank or a published post, so anonymous viewers see it.
+        // belongs to a public tank or a published story, so anonymous viewers see it.
         var builder = new MediaUrlBuilder(objectStore);
         var images = variants.GroupBy(v => v.MediaItemId).ToDictionary(g => g.Key, g => builder.Build(g, allowSigned: false, anonymousVisible: true, issuableGeneration: null));
         var visiblePhotos = context.MediaItems.Where(m => m.Kind == MediaKind.Photo
             && (m.OwnerProfileId == null || members.Any(p => p.Id == m.OwnerProfileId)));
         var photoLinks = context.MediaLinks.Where(l => l.TankId != null && l.Role != MediaLinkRole.Decommission && l.Role != MediaLinkRole.Recommission).Select(l => new { TankId = l.TankId!.Value, l.MediaItemId })
-            .Union(from p in posts
-                join l in context.MediaLinks on (long?)p.Id equals l.PostId
-                where p.TankId != null
-                select new { TankId = p.TankId!.Value, l.MediaItemId });
+            .Union(from p in stories
+                join l in context.MediaLinks on (long?)p.Id equals l.StoryId
+                join s in context.StorySubjects on p.Id equals s.StoryId
+                where s.TankId != null
+                select new { TankId = s.TankId!.Value, l.MediaItemId });
         var candidateIds = await photoLinks.Where(link => tankIds.Contains(link.TankId)
                 && visiblePhotos.Any(m => m.Id == link.MediaItemId))
             .GroupBy(link => link.TankId).Where(g => g.Count() >= 8)
@@ -170,8 +176,11 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
             return new(t.Id, t.Title, null, imageId is { } id ? images.GetValueOrDefault(id) : null,
                 DiscoverRanking.Score(stats.Sum, stats.Count, tankPrior), stats.Count);
         }
+        StoryLink? CoverOf(long storyId) =>
+            storyMedia.FirstOrDefault(pm => pm.StoryId == storyId && coverLinkIds.GetValueOrDefault(storyId) == pm.LinkId)
+            ?? storyMedia.FirstOrDefault(pm => pm.StoryId == storyId);
         DiscoverItemDto PictureCard(Picture picture) => new(picture.Id, picture.Title, pictureSlugs.GetValueOrDefault(picture.Id),
-            postMedia.FirstOrDefault(pm => pm.PostId == picture.Id) is { } pm ? images.GetValueOrDefault(pm.MediaItemId) : null,
+            CoverOf(picture.Id) is { } cover ? images.GetValueOrDefault(cover.MediaItemId) : null,
             DiscoverRanking.Score(pictureStats[picture.Id].Sum, pictureStats[picture.Id].Count, picturePrior), pictureStats[picture.Id].Count);
         var result = selected.Select(region =>
         {
@@ -190,7 +199,7 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
 
     private static double Prior(IReadOnlyCollection<Stats> stats) => stats.Count == 0 ? 0 : (double)stats.Sum(s => s.Sum) / stats.Sum(s => s.Count);
     private sealed record Picture(long Id, string? Title, long? TankId);
-    private sealed record PostLink(long PostId, long MediaItemId);
+    private sealed record StoryLink(long StoryId, long LinkId, long MediaItemId);
     private sealed record TankLink(long TankId, long MediaItemId);
     private sealed record Stats(long Id, int Count, long Sum);
 }

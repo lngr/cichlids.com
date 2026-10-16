@@ -18,10 +18,10 @@ namespace Cichlids.Api.Features.Comments;
 /// </summary>
 public sealed class CommentsQueryService(CichlidsDbContext context, IObjectStore objectStore)
 {
-    public Task<PagedResponse<CommentDto>> ListForPostAsync(long postId, int offset, int limit, CancellationToken cancellationToken) =>
+    public Task<PagedResponse<CommentDto>> ListForStoryAsync(long storyId, int offset, int limit, CancellationToken cancellationToken) =>
         ListAsync(
-            context.Comments.Where(c => c.PostId == postId),
-            context.Ratings.Where(r => r.PostId == postId),
+            context.Comments.Where(c => c.StoryId == storyId),
+            context.Ratings.Where(r => r.StoryId == storyId),
             offset, limit, cancellationToken);
 
     public Task<PagedResponse<CommentDto>> ListForTankAsync(long tankId, int offset, int limit, CancellationToken cancellationToken) =>

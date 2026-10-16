@@ -12,7 +12,7 @@ namespace Cichlids.Etl.Persistence;
 public static class PgBatchUpsert
 {
     // See PgUpsert: created_at is a property of a row's first insert and must survive every later
-    // upsert of that row unchanged, so it is never part of the DO UPDATE SET clause. post's rating
+    // upsert of that row unchanged, so it is never part of the DO UPDATE SET clause. story's rating
     // aggregate columns (rating_average, rating_count) follow the same rule for a different reason:
     // once a row exists, they are owned by CommentMigrationStep's recompute pass (derived from the
     // rating table), and a later run of this upsert must not clobber them back to the picture's

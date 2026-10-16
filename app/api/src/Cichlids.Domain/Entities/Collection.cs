@@ -1,7 +1,7 @@
 namespace Cichlids.Domain.Entities;
 
 /// <summary>
-/// A member-curated, ordered set of posts.
+/// A member-curated, ordered set of stories.
 /// </summary>
 public class Collection
 {

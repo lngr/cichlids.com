@@ -14,41 +14,41 @@ namespace Cichlids.Api.Features.LegacyRedirects;
 public sealed class LegacyRedirectsQueryService(CichlidsDbContext context)
 {
     /// <summary>
-    /// Resolves a picture alias against every slug a post ever had (exact match first, then a
+    /// Resolves a picture alias against every slug a story ever had (exact match first, then a
     /// case-insensitive match for links that got the casing slightly wrong; wildcard characters
-    /// are plain characters) and returns the post's current canonical slug. Returns null when the
-    /// post is not publicly visible (not published, or deleted).
+    /// are plain characters) and returns the story's current canonical slug. Returns null when the
+    /// story is not publicly visible (not published, or deleted).
     /// </summary>
     public async Task<string?> ResolvePictureCanonicalSlugAsync(string alias, CancellationToken cancellationToken)
     {
-        var postId = await context.SlugAliases
+        var storyId = await context.SlugAliases
             .Where(s => s.Value == alias)
-            .Select(s => (long?)s.PostId)
+            .Select(s => (long?)s.StoryId)
             .FirstOrDefaultAsync(cancellationToken);
 
-        if (postId is null)
+        if (storyId is null)
         {
             var escapedAlias = LikePattern.Escape(alias);
-            postId = await context.SlugAliases
+            storyId = await context.SlugAliases
                 .Where(s => EF.Functions.ILike(s.Value, escapedAlias))
-                .Select(s => (long?)s.PostId)
+                .Select(s => (long?)s.StoryId)
                 .FirstOrDefaultAsync(cancellationToken);
         }
 
-        if (postId is null)
+        if (storyId is null)
         {
             return null;
         }
 
-        var isVisible = await context.Posts
-            .AnyAsync(p => p.Id == postId && p.State == PostState.Published && p.DeletedAt == null, cancellationToken);
+        var isVisible = await context.Stories
+            .AnyAsync(p => p.Id == storyId && p.State == StoryState.Published && p.DeletedAt == null, cancellationToken);
         if (!isVisible)
         {
             return null;
         }
 
         return await context.SlugAliases
-            .Where(s => s.PostId == postId && s.IsCanonical)
+            .Where(s => s.StoryId == storyId && s.IsCanonical)
             .Select(s => s.Value)
             .FirstOrDefaultAsync(cancellationToken);
     }

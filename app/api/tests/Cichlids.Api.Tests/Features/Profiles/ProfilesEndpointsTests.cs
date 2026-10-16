@@ -1,7 +1,7 @@
 using System.Net;
 using System.Text.Json;
 using Cichlids.Api.Features.Common;
-using Cichlids.Api.Features.Pictures;
+using Cichlids.Api.Features.Stories;
 using Cichlids.Api.Features.Profiles;
 using Cichlids.Api.Features.Tanks;
 using Cichlids.Domain.Entities;
@@ -27,8 +27,8 @@ public class ProfilesEndpointsTests(ApiFixture fixture)
         Assert.Contains("avatars/alice", detail.AvatarUrl);
         Assert.Null(detail.ProfileImageUrl);
 
-        // Published posts (any topic) + published tanks + non-deleted comments authored by alice.
-        Assert.Equal(3, detail.Stats.PictureCount);
+        // Published stories (any topic) + published tanks + non-deleted comments authored by alice.
+        Assert.Equal(3, detail.Stats.StoryCount);
         Assert.Equal(1, detail.Stats.TankCount);
         Assert.Equal(1, detail.Stats.CommentCount);
     }
@@ -92,12 +92,12 @@ public class ProfilesEndpointsTests(ApiFixture fixture)
     }
 
     [Fact]
-    public async Task ListPictures_IsPreFilteredToTheProfile()
+    public async Task ListStories_IsPreFilteredToTheProfile()
     {
-        var response = await fixture.Client.GetAsync($"/api/profiles/{fixture.Seed.Alice.Id}/pictures");
+        var response = await fixture.Client.GetAsync($"/api/profiles/{fixture.Seed.Alice.Id}/stories");
         response.EnsureSuccessStatusCode();
 
-        var body = JsonSerializer.Deserialize<PagedResponse<PictureListItemDto>>(
+        var body = JsonSerializer.Deserialize<PagedResponse<StoryListItemDto>>(
             await response.Content.ReadAsStringAsync(), TestJson.Options)!;
 
         Assert.Equal(2, body.Total);

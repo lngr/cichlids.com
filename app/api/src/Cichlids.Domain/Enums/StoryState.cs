@@ -1,9 +1,9 @@
 namespace Cichlids.Domain.Enums;
 
 /// <summary>
-/// Publication and moderation state of a post.
+/// Publication and moderation state of a story.
 /// </summary>
-public enum PostState
+public enum StoryState
 {
     Draft,
     Published,

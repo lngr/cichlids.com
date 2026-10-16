@@ -58,32 +58,35 @@ public static class MigrationRules
     public const string ForumAttachments =
         "The attachments of migrated forum posts migrate into object storage.";
 
-    public const string Posts =
-        "Non-deleted pictures of the gallery and contest placements (legacy pid 21, 29, 109 and 131) become posts.";
+    public const string Stories =
+        "Non-deleted pictures of the gallery and contest placements (legacy pid 21, 29, 109 and 131) become stories.";
 
-    public const string PostStates =
-        "Gallery and contest pictures are published, unpublished uploads stay drafts, and posts of placeholder owners are archived.";
+    public const string StoryStates =
+        "Gallery and contest pictures are published, unpublished uploads stay drafts, and stories of placeholder owners are archived.";
 
-    public const string PostSpecies =
-        "A legacy species link migrates once per post and species when both the picture and the species migrated.";
+    public const string StorySubjects =
+        "A legacy species link migrates once per story and species as a reference subject when both the picture and the species migrated.";
 
-    public const string PostMedia =
-        "Every post has its picture as a media link.";
+    public const string StoryItems =
+        "Every story has its picture as a media link.";
+
+    public const string StoryCovers =
+        "The cover of a story, when set, is one of the item links of that story.";
 
     public const string SlugAliases =
-        "Every legacy picture alias migrates as a unique slug alias of its post, with exactly one canonical alias per post.";
+        "Every legacy picture alias migrates as a unique slug alias of its story, with exactly one canonical alias per story.";
 
     public const string Comments =
-        "A non-deleted legacy comment with text on a migrated post or tank becomes a comment.";
+        "A non-deleted legacy comment with text on a migrated story or tank becomes a comment.";
 
     public const string Ratings =
-        "A member keeps one rating per post or tank: the newest legacy rating wins, a tie goes to the higher legacy uid, self-ratings are dropped and anonymous ratings migrate unchanged.";
+        "A member keeps one rating per story or tank: the newest legacy rating wins, a tie goes to the higher legacy uid, self-ratings are dropped and anonymous ratings migrate unchanged.";
 
     public const string NewestRatings =
-        "Every migrated rating is an anonymous rating or the newest legacy rating of its member on its post or tank, a tie going to the higher legacy uid.";
+        "Every migrated rating is an anonymous rating or the newest legacy rating of its member on its story or tank, a tie going to the higher legacy uid.";
 
     public const string CollapsedRatings =
-        "An older legacy rating of a member on a post or tank collapses into the member's newest rating there.";
+        "An older legacy rating of a member on a story or tank collapses into the member's newest rating there.";
 
     public const string SelfRatings =
         "A legacy rating of a member on their own picture or tank is dropped, while its comment text migrates.";
@@ -98,7 +101,7 @@ public static class MigrationRules
         "Legacy vote timestamps are America/New_York wall-clock times converted to UTC, so no vote precedes its comment.";
 
     public const string Aggregates =
-        "Post rating counts and comment scores are recomputed from the migrated ratings and votes.";
+        "Story rating counts and comment scores are recomputed from the migrated ratings and votes.";
 
     public const string Collections =
         "Non-deleted legacy galleries with at least one picture become collections.";
@@ -107,5 +110,5 @@ public static class MigrationRules
         "A non-deleted legacy gallery that never got a picture is skipped.";
 
     public const string CollectionEntries =
-        "A gallery picture that migrated as a post becomes an entry of its collection, once per gallery and picture.";
+        "A gallery picture that migrated as a story becomes an entry of its collection, once per gallery and picture.";
 }

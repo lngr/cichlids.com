@@ -16,9 +16,9 @@ public class CommentConfiguration : IEntityTypeConfiguration<Comment>
 
         builder.HasIndex(x => x.LegacyId).IsUnique();
 
-        builder.HasOne<Post>()
+        builder.HasOne<Story>()
             .WithMany()
-            .HasForeignKey(x => x.PostId)
+            .HasForeignKey(x => x.StoryId)
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne<Tank>()
@@ -40,7 +40,7 @@ public class CommentConfiguration : IEntityTypeConfiguration<Comment>
         {
             tb.HasCheckConstraint(
                 "ck_comment_exactly_one_target",
-                "(post_id IS NULL) <> (tank_id IS NULL)");
+                "(story_id IS NULL) <> (tank_id IS NULL)");
             tb.HasCheckConstraint(
                 "ck_comment_body_not_empty",
                 "body <> ''");

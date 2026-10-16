@@ -14,10 +14,10 @@ namespace Cichlids.Etl.Steps;
 /// <summary>
 /// Migrates legacy comments and star ratings (user_cichlids_comments) into the separate comment
 /// and rating entities (ADR-0020), their up/down votes (user_cichlids_comments_rated) into
-/// comment_vote, and recomputes the denormalized aggregates the two feed (post.rating_average,
-/// post.rating_count and comment.score) from those base tables at the end of the run. A member
-/// keeps one rating per post or tank, the newest legacy one, and a rating of the member's own post
-/// or tank stays out while its comment text migrates. A legacy row whose target post or tank never
+/// comment_vote, and recomputes the denormalized aggregates the two feed (story.rating_average,
+/// story.rating_count and comment.score) from those base tables at the end of the run. A member
+/// keeps one rating per story or tank, the newest legacy one, and a rating of the member's own story
+/// or tank stays out while its comment text migrates. A legacy row whose target story or tank never
 /// migrated, or whose type is neither 1 (picture) nor 2 (tank), is preserved in
 /// archive.legacy_comment.
 /// </summary>
@@ -43,8 +43,8 @@ public sealed class CommentMigrationStep : IEtlStep
         var stats = context.Statistics.ForStep(Name);
 
         var profileByLegacyId = await LoadProfilesAsync(context, cancellationToken);
-        var postIdByLegacyId = await LoadLegacyIdMapAsync(
-            context, "SELECT legacy_id, id FROM post WHERE legacy_id IS NOT NULL", cancellationToken);
+        var storyIdByLegacyId = await LoadLegacyIdMapAsync(
+            context, "SELECT legacy_id, id FROM story WHERE legacy_id IS NOT NULL", cancellationToken);
         var tankIdByLegacyId = await LoadLegacyIdMapAsync(
             context, "SELECT legacy_id, id FROM tank WHERE legacy_id IS NOT NULL", cancellationToken);
         var allPictureUids = await LoadLegacyUidSetAsync(context, "user_cichlids_pictures", cancellationToken);
@@ -111,7 +111,7 @@ public sealed class CommentMigrationStep : IEtlStep
                 if (batch.Count >= BatchSize)
                 {
                     await ProcessBatchAsync(
-                        context, batch, profileByLegacyId, postIdByLegacyId, tankIdByLegacyId,
+                        context, batch, profileByLegacyId, storyIdByLegacyId, tankIdByLegacyId,
                         allPictureUids, allTankUids, commentIdByLegacyId, ratingSelection.Winners, guestNames, stats,
                         cancellationToken);
                     batch.Clear();
@@ -122,7 +122,7 @@ public sealed class CommentMigrationStep : IEtlStep
         if (batch.Count > 0)
         {
             await ProcessBatchAsync(
-                context, batch, profileByLegacyId, postIdByLegacyId, tankIdByLegacyId,
+                context, batch, profileByLegacyId, storyIdByLegacyId, tankIdByLegacyId,
                 allPictureUids, allTankUids, commentIdByLegacyId, ratingSelection.Winners, guestNames, stats,
                 cancellationToken);
         }
@@ -135,7 +135,7 @@ public sealed class CommentMigrationStep : IEtlStep
         EtlContext context,
         List<RawCommentRow> batch,
         Dictionary<int, (long Id, ProfileKind Kind)> profileByLegacyId,
-        Dictionary<int, long> postIdByLegacyId,
+        Dictionary<int, long> storyIdByLegacyId,
         Dictionary<int, long> tankIdByLegacyId,
         HashSet<int> allPictureUids,
         HashSet<int> allTankUids,
@@ -151,8 +151,8 @@ public sealed class CommentMigrationStep : IEtlStep
 
         foreach (var row in batch)
         {
-            var (postId, tankId, vaultReason, vaultTargetType) = ResolveTarget(
-                row.Type, row.Item, postIdByLegacyId, tankIdByLegacyId, allPictureUids, allTankUids);
+            var (storyId, tankId, vaultReason, vaultTargetType) = ResolveTarget(
+                row.Type, row.Item, storyIdByLegacyId, tankIdByLegacyId, allPictureUids, allTankUids);
 
             var createdAt = row.Crdate > 0
                 ? DateTimeOffset.FromUnixTimeSeconds(row.Crdate)
@@ -200,7 +200,7 @@ public sealed class CommentMigrationStep : IEtlStep
 
                 commentRows.Add(new object?[]
                 {
-                    row.LegacyId, postId, tankId, authorProfileId, posterName, row.Note, row.Score,
+                    row.LegacyId, storyId, tankId, authorProfileId, posterName, row.Note, row.Score,
                     createdAt, deletedAt, deleteReason, deletedByProfileId,
                 });
             }
@@ -208,7 +208,7 @@ public sealed class CommentMigrationStep : IEtlStep
             if (migratesRating)
             {
                 var stars = (short)Math.Min(5, Math.Max(1, row.Rating));
-                ratingRows.Add(new object?[] { row.LegacyId, postId, tankId, authorProfileId, stars, createdAt });
+                ratingRows.Add(new object?[] { row.LegacyId, storyId, tankId, authorProfileId, stars, createdAt });
 
                 if (!noteEmpty && moderated)
                 {
@@ -244,7 +244,7 @@ public sealed class CommentMigrationStep : IEtlStep
                 "comment",
                 "legacy_id",
                 [
-                    "legacy_id", "post_id", "tank_id", "author_profile_id", "poster_name", "body", "score",
+                    "legacy_id", "story_id", "tank_id", "author_profile_id", "poster_name", "body", "score",
                     "created_at", "deleted_at", "delete_reason", "deleted_by_profile_id",
                 ],
                 commentRows,
@@ -271,7 +271,7 @@ public sealed class CommentMigrationStep : IEtlStep
                 context.Transaction,
                 "rating",
                 "legacy_comment_id",
-                ["legacy_comment_id", "post_id", "tank_id", "profile_id", "stars", "created_at"],
+                ["legacy_comment_id", "story_id", "tank_id", "profile_id", "stars", "created_at"],
                 ratingRows,
                 cancellationToken);
 
@@ -290,9 +290,9 @@ public sealed class CommentMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Reads every non-deleted legacy rating on a migrated post or tank and selects the ones that
+    /// Reads every non-deleted legacy rating on a migrated story or tank and selects the ones that
     /// migrate with RatingSelection. A rating is a self-rating when the rater's profile is the
-    /// author profile of the rated post or the owner profile of the rated tank. Anonymous ratings
+    /// author profile of the rated story or the owner profile of the rated tank. Anonymous ratings
     /// have no rater profile.
     /// </summary>
     private static async Task<RatingSelectionResult> SelectRatingsAsync(
@@ -300,8 +300,8 @@ public sealed class CommentMigrationStep : IEtlStep
         Dictionary<int, (long Id, ProfileKind Kind)> profileByLegacyId,
         CancellationToken cancellationToken)
     {
-        var postAuthorByLegacyId = await LoadLegacyIdMapAsync(
-            context, "SELECT legacy_id, author_profile_id FROM post WHERE legacy_id IS NOT NULL", cancellationToken);
+        var storyAuthorByLegacyId = await LoadLegacyIdMapAsync(
+            context, "SELECT legacy_id, author_profile_id FROM story WHERE legacy_id IS NOT NULL", cancellationToken);
         var tankOwnerByLegacyId = await LoadLegacyIdMapAsync(
             context, "SELECT legacy_id, profile_id FROM tank WHERE legacy_id IS NOT NULL", cancellationToken);
 
@@ -317,7 +317,7 @@ public sealed class CommentMigrationStep : IEtlStep
                 var item = reader.GetNullableInt32("item") ?? 0;
                 var owners = type switch
                 {
-                    1 => postAuthorByLegacyId,
+                    1 => storyAuthorByLegacyId,
                     2 => tankOwnerByLegacyId,
                     _ => null,
                 };
@@ -342,25 +342,25 @@ public sealed class CommentMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Resolves a comment row's target post or tank. A resolved target returns exactly one of
-    /// PostId/TankId with a null VaultReason; an unresolvable target (the
+    /// Resolves a comment row's target story or tank. A resolved target returns exactly one of
+    /// StoryId/TankId with a null VaultReason; an unresolvable target (the
     /// legacy picture/tank was deleted or never migrated, the item id does not exist at all, or
     /// the legacy type is neither 1 nor 2) returns a reason instead, for the caller to vault the
     /// row rather than migrate it.
     /// </summary>
-    private static (long? PostId, long? TankId, string? VaultReason, LegacyTargetType VaultTargetType) ResolveTarget(
+    private static (long? StoryId, long? TankId, string? VaultReason, LegacyTargetType VaultTargetType) ResolveTarget(
         int type,
         int item,
-        Dictionary<int, long> postIdByLegacyId,
+        Dictionary<int, long> storyIdByLegacyId,
         Dictionary<int, long> tankIdByLegacyId,
         HashSet<int> allPictureUids,
         HashSet<int> allTankUids)
     {
         if (type == 1)
         {
-            if (postIdByLegacyId.TryGetValue(item, out var postId))
+            if (storyIdByLegacyId.TryGetValue(item, out var storyId))
             {
-                return (postId, null, null, default);
+                return (storyId, null, null, default);
             }
 
             var reason = allPictureUids.Contains(item) ? "target_deleted" : "target_missing";
@@ -567,18 +567,18 @@ public sealed class CommentMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Recomputes post.rating_average/rating_count and comment.score from the
+    /// Recomputes story.rating_average/rating_count and comment.score from the
     /// rating and comment_vote base tables (ADR-0020: derived aggregates are
     /// recomputed, never authored), unconditionally over the whole table rather than only the rows
     /// this run touched, so the aggregates stay correct however they drifted. Reports, purely as
-    /// information, how many posts' newly computed average differs from the legacy denormalized
+    /// information, how many stories' newly computed average differs from the legacy denormalized
     /// value PictureMigrationStep seeded from user_cichlids_pictures.rating by
     /// more than 0.05.
     /// </summary>
     private static async Task RecomputeAggregatesAsync(EtlContext context, StepStatistics stats, CancellationToken cancellationToken)
     {
         var previousAverages = new Dictionary<long, double?>();
-        await using (var select = new NpgsqlCommand("SELECT id, rating_average FROM post", context.Target, context.Transaction))
+        await using (var select = new NpgsqlCommand("SELECT id, rating_average FROM story", context.Target, context.Transaction))
         await using (var reader = await select.ExecuteReaderAsync(cancellationToken))
         {
             while (await reader.ReadAsync(cancellationToken))
@@ -587,30 +587,30 @@ public sealed class CommentMigrationStep : IEtlStep
             }
         }
 
-        await using (var resetPost = new NpgsqlCommand(
-            "UPDATE post SET rating_average = NULL, rating_count = 0", context.Target, context.Transaction))
+        await using (var resetStory = new NpgsqlCommand(
+            "UPDATE story SET rating_average = NULL, rating_count = 0", context.Target, context.Transaction))
         {
-            await resetPost.ExecuteNonQueryAsync(cancellationToken);
+            await resetStory.ExecuteNonQueryAsync(cancellationToken);
         }
 
-        await using (var applyPost = new NpgsqlCommand(
+        await using (var applyStory = new NpgsqlCommand(
             """
-            UPDATE post AS p SET rating_average = agg.avg_stars, rating_count = agg.cnt
+            UPDATE story AS p SET rating_average = agg.avg_stars, rating_count = agg.cnt
             FROM (
-                SELECT post_id, AVG(stars)::float8 AS avg_stars, COUNT(*) AS cnt
+                SELECT story_id, AVG(stars)::float8 AS avg_stars, COUNT(*) AS cnt
                 FROM rating
-                WHERE post_id IS NOT NULL
-                GROUP BY post_id
+                WHERE story_id IS NOT NULL
+                GROUP BY story_id
             ) AS agg
-            WHERE p.id = agg.post_id
+            WHERE p.id = agg.story_id
             """,
             context.Target, context.Transaction))
         {
-            await applyPost.ExecuteNonQueryAsync(cancellationToken);
+            await applyStory.ExecuteNonQueryAsync(cancellationToken);
         }
 
         var deviations = 0;
-        await using (var select = new NpgsqlCommand("SELECT id, rating_average FROM post", context.Target, context.Transaction))
+        await using (var select = new NpgsqlCommand("SELECT id, rating_average FROM story", context.Target, context.Transaction))
         await using (var reader = await select.ExecuteReaderAsync(cancellationToken))
         {
             while (await reader.ReadAsync(cancellationToken))
@@ -632,7 +632,7 @@ public sealed class CommentMigrationStep : IEtlStep
         }
 
         stats.AddWarning(
-            $"post rating_average recompute: {deviations} post(s) diverge from the legacy denormalized average by more than 0.05.");
+            $"story rating_average recompute: {deviations} story(s) diverge from the legacy denormalized average by more than 0.05.");
 
         await using (var resetComment = new NpgsqlCommand("UPDATE comment SET score = 0", context.Target, context.Transaction))
         {

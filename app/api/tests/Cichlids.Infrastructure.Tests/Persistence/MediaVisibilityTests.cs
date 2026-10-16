@@ -57,15 +57,15 @@ public sealed class MediaVisibilityTests(PostgresFixture fixture)
             return entry;
         }
 
-        public async Task<Post> PostAsync(PostState state, DateTimeOffset? deletedAt = null)
+        public async Task<Story> PostAsync(StoryState state, DateTimeOffset? deletedAt = null)
         {
-            var post = new Post
+            var story = new Story
             {
-                AuthorProfileId = Owner.Id, Kind = PostKind.Single, Topic = PostTopic.Cichlids, State = state, CreatedAt = Now, UpdatedAt = Now, DeletedAt = deletedAt,
+                AuthorProfileId = Owner.Id, Topic = StoryTopic.Cichlids, State = state, CreatedAt = Now, UpdatedAt = Now, DeletedAt = deletedAt,
             };
-            Db.Posts.Add(post);
+            Db.Stories.Add(story);
             await Db.SaveChangesAsync();
-            return post;
+            return story;
         }
 
         public async Task<bool> SeesAsync(MediaItem item, Profile? viewer) =>
@@ -213,17 +213,17 @@ public sealed class MediaVisibilityTests(PostgresFixture fixture)
     public async Task GivenAPostLink_ThenPublishedIsPublicDraftIsTheAuthorsAndRemovedIsNobodys()
     {
         var w = await NewWorldAsync();
-        var published = await w.PostAsync(PostState.Published);
-        var draft = await w.PostAsync(PostState.Draft);
-        var archived = await w.PostAsync(PostState.Archived);
-        var deleted = await w.PostAsync(PostState.Published, Now);
+        var published = await w.PostAsync(StoryState.Published);
+        var draft = await w.PostAsync(StoryState.Draft);
+        var archived = await w.PostAsync(StoryState.Archived);
+        var deleted = await w.PostAsync(StoryState.Published, Now);
         var uploader = await TestDataBuilder.CreateProfileAsync(w.Db);
         var items = new Dictionary<string, MediaItem>();
-        foreach (var (name, post) in new[] { ("published", published), ("draft", draft), ("archived", archived), ("deleted", deleted) })
+        foreach (var (name, story) in new[] { ("published", published), ("draft", draft), ("archived", archived), ("deleted", deleted) })
         {
-            // The files belong to another member, so the owner clause does not mask the post rule.
+            // The files belong to another member, so the owner clause does not mask the story rule.
             items[name] = await w.ItemAsync(uploader);
-            await w.LinkAsync(MediaLink.ForPost(post.Id, items[name].Id));
+            await w.LinkAsync(MediaLink.ForStory(story.Id, items[name].Id));
         }
 
         Assert.True(await w.AnonymousSeesAsync(items["published"]));
@@ -249,8 +249,8 @@ public sealed class MediaVisibilityTests(PostgresFixture fixture)
         await w.LinkAsync(MediaLink.ForTank(tank.Id, item.Id, MediaLinkRole.Showcase));
         Assert.False(await w.AnonymousSeesAsync(item));
 
-        var post = await w.PostAsync(PostState.Published);
-        await w.LinkAsync(MediaLink.ForPost(post.Id, item.Id));
+        var story = await w.PostAsync(StoryState.Published);
+        await w.LinkAsync(MediaLink.ForStory(story.Id, item.Id));
 
         Assert.True(await w.AnonymousSeesAsync(item));
         Assert.True(await w.SeesAsync(item, w.Member));
@@ -263,11 +263,11 @@ public sealed class MediaVisibilityTests(PostgresFixture fixture)
         var thread = new DiscussionThread { Title = "T", CreatedAt = Now, Category = DiscussionCategory.Cichlids };
         w.Db.DiscussionThreads.Add(thread);
         await w.Db.SaveChangesAsync();
-        var post = new DiscussionPost { ThreadId = thread.Id, Body = "b", CreatedAt = Now };
-        w.Db.DiscussionPosts.Add(post);
+        var story = new DiscussionPost { ThreadId = thread.Id, Body = "b", CreatedAt = Now };
+        w.Db.DiscussionPosts.Add(story);
         await w.Db.SaveChangesAsync();
         var item = await w.ItemAsync();
-        await w.LinkAsync(MediaLink.ForDiscussionPost(post.Id, item.Id));
+        await w.LinkAsync(MediaLink.ForDiscussionPost(story.Id, item.Id));
 
         Assert.True(await w.AnonymousSeesAsync(item));
     }

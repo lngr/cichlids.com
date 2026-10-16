@@ -25,17 +25,17 @@ public sealed class DraftCleanupService(
         var settings = options.Value;
         var cutoff = timeProvider.GetUtcNow() - settings.Retention;
 
-        var expiredIds = await context.Posts
-            .Where(p => p.State == PostState.Draft && p.DeletedAt == null && p.UpdatedAt < cutoff)
+        var expiredIds = await context.Stories
+            .Where(p => p.State == StoryState.Draft && p.DeletedAt == null && p.UpdatedAt < cutoff)
             .OrderBy(p => p.Id)
             .Select(p => p.Id)
             .Take(settings.BatchSize)
             .ToListAsync(cancellationToken);
 
         var deleted = 0;
-        foreach (var postId in expiredIds)
+        foreach (var storyId in expiredIds)
         {
-            if (await uploadsWriteService.DeleteExpiredDraftAsync(postId, cutoff, cancellationToken))
+            if (await uploadsWriteService.DeleteExpiredDraftAsync(storyId, cutoff, cancellationToken))
             {
                 deleted++;
             }

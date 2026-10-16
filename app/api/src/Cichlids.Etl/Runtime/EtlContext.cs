@@ -42,7 +42,7 @@ public sealed class EtlContext : IAsyncDisposable
     public EtlStatistics Statistics { get; } = new();
 
     /// <summary>
-    /// Derives short generated slugs for posts with no surviving legacy alias, keyed on the
+    /// Derives short generated slugs for stories with no surviving legacy alias, keyed on the
     /// secret this context was created with, falling back to DevDefaultSlugSecret above when the
     /// caller passes none.
     /// </summary>

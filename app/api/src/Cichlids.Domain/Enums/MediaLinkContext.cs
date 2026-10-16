@@ -10,7 +10,7 @@ public enum MediaLinkContext
     Inhabitant,
     CareEntry,
     WaterChangeSession,
-    Post,
+    Story,
     DiscussionPost,
     Profile,
 }

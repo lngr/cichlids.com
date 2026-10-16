@@ -10,7 +10,7 @@ namespace Cichlids.Etl.Tests;
 public sealed class SpeciesLinksStepTests(EtlFixture fixture)
 {
     [Fact]
-    public async Task MigratesPictureSpeciesLinksToPostSpeciesIdempotently()
+    public async Task MigratesPictureSpeciesLinksToStorySubjectsIdempotently()
     {
         await RunPrerequisiteStepsAsync();
 
@@ -19,23 +19,22 @@ public sealed class SpeciesLinksStepTests(EtlFixture fixture)
         Assert.Equal(5, stats1.Read);
         Assert.Equal(2, stats1.Inserted);
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("species_link_species_zero"));
-        Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("species_link_post_not_migrated"));
+        Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("species_link_story_not_migrated"));
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("species_link_duplicate"));
 
         await using (var db = fixture.CreateTargetContext())
         {
-            var post4801 = await db.Posts.SingleAsync(p => p.LegacyId == 4801);
+            var story4801 = await db.Stories.SingleAsync(p => p.LegacyId == 4801);
             var species4810 = await db.Species.SingleAsync(s => s.LegacyId == 4810);
             var species4811 = await db.Species.SingleAsync(s => s.LegacyId == 4811);
 
-            var links = await db.PostSpecies.Where(x => x.PostId == post4801.Id).ToListAsync();
-            Assert.Equal(2, links.Count);
-
-            var first = links.Single(x => x.Sort == 0);
-            Assert.Equal(species4810.Id, first.SpeciesId);
-
-            var second = links.Single(x => x.Sort == 1);
-            Assert.Equal(species4811.Id, second.SpeciesId);
+            var links = await db.StorySubjects.Where(x => x.StoryId == story4801.Id).OrderBy(x => x.Id).ToListAsync();
+            Assert.Equal([species4810.Id, species4811.Id], links.Select(x => x.SpeciesId!.Value));
+            Assert.All(links, x =>
+            {
+                Assert.Equal(StorySubjectType.Species, x.SubjectType);
+                Assert.Null(x.Position);
+            });
         }
 
         var stats2 = await RunStepAsync();
@@ -43,17 +42,17 @@ public sealed class SpeciesLinksStepTests(EtlFixture fixture)
         Assert.Equal(5, stats2.Read);
         Assert.Equal(2, stats2.Inserted);
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("species_link_species_zero"));
-        Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("species_link_post_not_migrated"));
+        Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("species_link_story_not_migrated"));
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("species_link_duplicate"));
 
         await using (var db = fixture.CreateTargetContext())
         {
-            var post4801 = await db.Posts.SingleAsync(p => p.LegacyId == 4801);
-            Assert.Equal(2, await db.PostSpecies.CountAsync(x => x.PostId == post4801.Id));
+            var story4801 = await db.Stories.SingleAsync(p => p.LegacyId == 4801);
+            Assert.Equal(2, await db.StorySubjects.CountAsync(x => x.StoryId == story4801.Id));
         }
     }
 
-    // Owner legacy id 480, post legacy ids 4801/4802 and species legacy ids 4810/4811 are their
+    // Owner legacy id 480, story legacy ids 4801/4802 and species legacy ids 4810/4811 are their
     // own range, disjoint from every other step test's fixtures. Seeded directly (idempotent
     // find-or-create), the same way the other step tests seed their own prerequisites, instead of
     // running ProfileMigrationStep/PictureMigrationStep/SpeciesCatalogStep.
@@ -77,28 +76,26 @@ public sealed class SpeciesLinksStepTests(EtlFixture fixture)
 
         var owner = await db.Profiles.SingleAsync(p => p.LegacyId == 480);
 
-        if (!await db.Posts.AnyAsync(p => p.LegacyId == 4801))
+        if (!await db.Stories.AnyAsync(p => p.LegacyId == 4801))
         {
-            db.Posts.Add(new Post
+            db.Stories.Add(new Story
             {
                 LegacyId = 4801,
                 AuthorProfileId = owner.Id,
-                Kind = PostKind.Single,
-                Topic = PostTopic.Cichlids,
-                State = PostState.Published,
+                Topic = StoryTopic.Cichlids,
+                State = StoryState.Published,
                 CreatedAt = DateTimeOffset.FromUnixTimeSeconds(1700000000),
             });
         }
 
-        if (!await db.Posts.AnyAsync(p => p.LegacyId == 4802))
+        if (!await db.Stories.AnyAsync(p => p.LegacyId == 4802))
         {
-            db.Posts.Add(new Post
+            db.Stories.Add(new Story
             {
                 LegacyId = 4802,
                 AuthorProfileId = owner.Id,
-                Kind = PostKind.Single,
-                Topic = PostTopic.Cichlids,
-                State = PostState.Published,
+                Topic = StoryTopic.Cichlids,
+                State = StoryState.Published,
                 CreatedAt = DateTimeOffset.FromUnixTimeSeconds(1700000000),
             });
         }

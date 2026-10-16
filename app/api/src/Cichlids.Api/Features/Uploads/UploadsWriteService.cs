@@ -14,7 +14,7 @@ namespace Cichlids.Api.Features.Uploads;
 /// <summary>
 /// Write logic behind the photo upload flow. An upload stores the original, with its personal
 /// metadata removed, and its variants in the object store, each with the media object metadata,
-/// and records the media item, its variants and a single-photo draft post in one transaction.
+/// and records the media item, its variants and a single-photo draft story in one transaction.
 /// Objects are written before the commit, so when the database write fails the stored keys are
 /// deleted (best effort, logged). Discarding removes a draft's rows and then its stored objects.
 /// Before an upload the owner's quota is checked: at most the configured number of open drafts
@@ -39,8 +39,8 @@ public sealed class UploadsWriteService(
     {
         var limits = limitOptions.Value;
 
-        var openDrafts = await context.Posts.CountAsync(
-            p => p.AuthorProfileId == ownerProfileId && p.State == PostState.Draft && p.DeletedAt == null,
+        var openDrafts = await context.Stories.CountAsync(
+            p => p.AuthorProfileId == ownerProfileId && p.State == StoryState.Draft && p.DeletedAt == null,
             cancellationToken);
         if (openDrafts >= limits.MaxOpenDrafts)
         {
@@ -63,7 +63,7 @@ public sealed class UploadsWriteService(
     }
 
     /// <summary>
-    /// Stores an uploaded photo and creates the owner's draft post for it. Throws
+    /// Stores an uploaded photo and creates the owner's draft story for it. Throws
     /// ImageProcessor.ImageTooLargeException when the photo declares more pixels than
     /// ImageProcessor.MaxPixels, a side longer than ImageProcessor.MaxSide or a long side more
     /// than ImageProcessor.MaxAspectRatio times its short side,
@@ -82,26 +82,25 @@ public sealed class UploadsWriteService(
 
             context.MediaItems.Add(stored.Item);
 
-            var post = new Post
+            var story = new Story
             {
                 AuthorProfileId = owner.Id,
-                Kind = PostKind.Single,
-                Topic = PostTopic.Cichlids,
-                State = PostState.Draft,
+                Topic = StoryTopic.Cichlids,
+                State = StoryState.Draft,
                 CreatedAt = now,
                 UpdatedAt = now,
             };
-            context.Posts.Add(post);
+            context.Stories.Add(story);
             await context.SaveChangesAsync(cancellationToken);
 
-            context.MediaLinks.Add(MediaLink.ForPost(post.Id, stored.Item.Id));
+            context.MediaLinks.Add(MediaLink.ForStory(story.Id, stored.Item.Id));
             await context.SaveChangesAsync(cancellationToken);
             await transaction.CommitAsync(cancellationToken);
 
             var generations = await context.VisibleMediaGenerationsAsync([stored.Item.Id], owner.Id, timeProvider.GetUtcNow(), cancellationToken);
             var image = _mediaUrlBuilder.Build(stored.Item.Variants, allowSigned: true, anonymousVisible: false,
                 generations.TryGetValue(stored.Item.Id, out var generation) ? generation : null);
-            return new DraftDto(post.Id, post.State, post.Topic, post.Title, post.Description, post.CreatedAt, image);
+            return new DraftDto(story.Id, story.State, story.Topic, story.Title, story.Description, story.CreatedAt, image);
         }
         catch
         {
@@ -197,14 +196,14 @@ public sealed class UploadsWriteService(
     }
 
     /// <summary>
-    /// Discards the author's draft: deletes the post, its media links, its media items and
+    /// Discards the author's draft: deletes the story, its media links, its media items and
     /// their variants, then the stored original and variant objects. Object deletion runs after
     /// the commit, so a failure there leaves unreferenced objects behind (logged) and never rows
     /// that point at missing objects.
     /// </summary>
-    public async Task<DraftActionOutcome> DiscardAsync(long postId, long authorProfileId, CancellationToken cancellationToken)
+    public async Task<DraftActionOutcome> DiscardAsync(long storyId, long authorProfileId, CancellationToken cancellationToken)
     {
-        return await RemoveDraftAsync(postId, authorProfileId, changedBefore: null, cancellationToken);
+        return await RemoveDraftAsync(storyId, authorProfileId, changedBefore: null, cancellationToken);
     }
 
     /// <summary>
@@ -212,21 +211,21 @@ public sealed class UploadsWriteService(
     /// and stored objects like a discard. Returns false when there is no such draft any more, as
     /// when a concurrent cleanup deleted it first or it was published in the meantime.
     /// </summary>
-    public async Task<bool> DeleteExpiredDraftAsync(long postId, DateTimeOffset changedBefore, CancellationToken cancellationToken)
+    public async Task<bool> DeleteExpiredDraftAsync(long storyId, DateTimeOffset changedBefore, CancellationToken cancellationToken)
     {
-        var outcome = await RemoveDraftAsync(postId, authorProfileId: null, changedBefore, cancellationToken);
+        var outcome = await RemoveDraftAsync(storyId, authorProfileId: null, changedBefore, cancellationToken);
         return outcome == DraftActionOutcome.Succeeded;
     }
 
     private async Task<DraftActionOutcome> RemoveDraftAsync(
-        long postId, long? authorProfileId, DateTimeOffset? changedBefore, CancellationToken cancellationToken)
+        long storyId, long? authorProfileId, DateTimeOffset? changedBefore, CancellationToken cancellationToken)
     {
         List<string> storedKeys;
 
         await using (var transaction = await context.Database.BeginTransactionAsync(cancellationToken))
         {
-            var mediaItemIds = await context.MediaLinks.PostLinks()
-                .Where(l => l.PostId == postId)
+            var mediaItemIds = await context.MediaLinks.StoryLinks()
+                .Where(l => l.StoryId == storyId)
                 .Select(l => l.MediaItemId)
                 .ToListAsync(cancellationToken);
 
@@ -236,14 +235,14 @@ public sealed class UploadsWriteService(
                 .Concat(context.MediaVariants.Where(v => mediaItemIds.Contains(v.MediaItemId)).Select(v => v.StorageKey))
                 .ToListAsync(cancellationToken);
 
-            var candidates = context.Posts
-                .Where(p => p.Id == postId && p.DeletedAt == null && (authorProfileId == null || p.AuthorProfileId == authorProfileId));
+            var candidates = context.Stories
+                .Where(p => p.Id == storyId && p.DeletedAt == null && (authorProfileId == null || p.AuthorProfileId == authorProfileId));
 
             // The state condition in the delete itself serializes a removal against a concurrent
-            // publish or removal of the same post on the row lock: whichever runs second sees the
+            // publish or removal of the same story on the row lock: whichever runs second sees the
             // committed outcome of the first and deletes nothing.
             var deleted = await candidates
-                .Where(p => p.State == PostState.Draft && (changedBefore == null || p.UpdatedAt < changedBefore))
+                .Where(p => p.State == StoryState.Draft && (changedBefore == null || p.UpdatedAt < changedBefore))
                 .ExecuteDeleteAsync(cancellationToken);
 
             if (deleted == 0)

@@ -178,7 +178,7 @@ public static class TanksEndpoints
             return NotFoundProblem();
         }
 
-        var created = await commentsWriteService.CreateAsync(postId: null, tankId: id, author, body, stars, cancellationToken);
+        var created = await commentsWriteService.CreateAsync(storyId: null, tankId: id, author, body, stars, cancellationToken);
         return created is null
             ? CommentsEndpoints.SelfRatingProblem()
             : TypedResults.Created($"/api/tanks/{id}/comments", created);

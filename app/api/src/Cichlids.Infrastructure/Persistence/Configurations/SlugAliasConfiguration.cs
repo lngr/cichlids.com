@@ -18,15 +18,15 @@ public class SlugAliasConfiguration : IEntityTypeConfiguration<SlugAlias>
 
         builder.HasIndex(x => x.Value).IsUnique();
 
-        // One canonical alias per post at most; every other alias for the post stays resolvable
+        // One canonical alias per story at most; every other alias for the story stays resolvable
         // without being unique on its own.
-        builder.HasIndex(x => x.PostId)
+        builder.HasIndex(x => x.StoryId)
             .IsUnique()
             .HasFilter("is_canonical = true");
 
-        builder.HasOne<Post>()
+        builder.HasOne<Story>()
             .WithMany()
-            .HasForeignKey(x => x.PostId)
+            .HasForeignKey(x => x.StoryId)
             .IsRequired()
             .OnDelete(DeleteBehavior.Restrict);
     }

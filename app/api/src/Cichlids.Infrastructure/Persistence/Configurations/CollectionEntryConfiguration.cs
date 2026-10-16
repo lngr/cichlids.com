@@ -14,7 +14,7 @@ public class CollectionEntryConfiguration : IEntityTypeConfiguration<CollectionE
 
         builder.Property(x => x.Sort).IsRequired().HasDefaultValue(0);
 
-        builder.HasIndex(x => new { x.CollectionId, x.PostId }).IsUnique();
+        builder.HasIndex(x => new { x.CollectionId, x.StoryId }).IsUnique();
 
         builder.HasOne<Collection>()
             .WithMany(x => x.Entries)
@@ -22,9 +22,9 @@ public class CollectionEntryConfiguration : IEntityTypeConfiguration<CollectionE
             .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasOne<Post>()
+        builder.HasOne<Story>()
             .WithMany()
-            .HasForeignKey(x => x.PostId)
+            .HasForeignKey(x => x.StoryId)
             .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
     }

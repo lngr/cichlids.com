@@ -23,11 +23,11 @@ public sealed class ConstraintEnforcementTests
         await using var context = _fixture.CreateContext();
         var profile = await TestDataBuilder.CreateProfileAsync(context);
         var tank = await TestDataBuilder.CreateTankAsync(context, profile.Id);
-        var post = await TestDataBuilder.CreatePostAsync(context, profile.Id);
+        var story = await TestDataBuilder.CreateStoryAsync(context, profile.Id);
 
         context.Comments.Add(new Comment
         {
-            PostId = post.Id,
+            StoryId = story.Id,
             TankId = tank.Id,
             Body = "both targets set",
             CreatedAt = DateTimeOffset.UtcNow,
@@ -55,11 +55,11 @@ public sealed class ConstraintEnforcementTests
     {
         await using var context = _fixture.CreateContext();
         var profile = await TestDataBuilder.CreateProfileAsync(context);
-        var post = await TestDataBuilder.CreatePostAsync(context, profile.Id);
+        var story = await TestDataBuilder.CreateStoryAsync(context, profile.Id);
 
         context.Ratings.Add(new Rating
         {
-            PostId = post.Id,
+            StoryId = story.Id,
             Stars = 6,
             CreatedAt = DateTimeOffset.UtcNow,
         });
@@ -72,13 +72,13 @@ public sealed class ConstraintEnforcementTests
     {
         await using var context = _fixture.CreateContext();
         var profile = await TestDataBuilder.CreateProfileAsync(context);
-        var post = await TestDataBuilder.CreatePostAsync(context, profile.Id);
+        var story = await TestDataBuilder.CreateStoryAsync(context, profile.Id);
         var rater = await TestDataBuilder.CreateProfileAsync(context);
 
-        context.Ratings.Add(new Rating { PostId = post.Id, ProfileId = rater.Id, Stars = 3, CreatedAt = DateTimeOffset.UtcNow });
+        context.Ratings.Add(new Rating { StoryId = story.Id, ProfileId = rater.Id, Stars = 3, CreatedAt = DateTimeOffset.UtcNow });
         await context.SaveChangesAsync();
 
-        context.Ratings.Add(new Rating { PostId = post.Id, ProfileId = rater.Id, Stars = 5, CreatedAt = DateTimeOffset.UtcNow });
+        context.Ratings.Add(new Rating { StoryId = story.Id, ProfileId = rater.Id, Stars = 5, CreatedAt = DateTimeOffset.UtcNow });
 
         await Assert.ThrowsAsync<DbUpdateException>(() => context.SaveChangesAsync());
     }
@@ -104,12 +104,12 @@ public sealed class ConstraintEnforcementTests
     {
         await using var context = _fixture.CreateContext();
         var owner = await TestDataBuilder.CreateProfileAsync(context);
-        var post = await TestDataBuilder.CreatePostAsync(context, owner.Id);
+        var story = await TestDataBuilder.CreateStoryAsync(context, owner.Id);
         var tank = await TestDataBuilder.CreateTankAsync(context, owner.Id);
 
         context.Ratings.AddRange(
-            new Rating { PostId = post.Id, Stars = 1, CreatedAt = DateTimeOffset.UtcNow },
-            new Rating { PostId = post.Id, Stars = 2, CreatedAt = DateTimeOffset.UtcNow },
+            new Rating { StoryId = story.Id, Stars = 1, CreatedAt = DateTimeOffset.UtcNow },
+            new Rating { StoryId = story.Id, Stars = 2, CreatedAt = DateTimeOffset.UtcNow },
             new Rating { TankId = tank.Id, Stars = 3, CreatedAt = DateTimeOffset.UtcNow },
             new Rating { TankId = tank.Id, Stars = 4, CreatedAt = DateTimeOffset.UtcNow });
 
@@ -121,14 +121,14 @@ public sealed class ConstraintEnforcementTests
     {
         await using var context = _fixture.CreateContext();
         var owner = await TestDataBuilder.CreateProfileAsync(context);
-        var firstPost = await TestDataBuilder.CreatePostAsync(context, owner.Id);
-        var secondPost = await TestDataBuilder.CreatePostAsync(context, owner.Id);
+        var firstStory = await TestDataBuilder.CreateStoryAsync(context, owner.Id);
+        var secondStory = await TestDataBuilder.CreateStoryAsync(context, owner.Id);
         var tank = await TestDataBuilder.CreateTankAsync(context, owner.Id);
         var rater = await TestDataBuilder.CreateProfileAsync(context);
 
         context.Ratings.AddRange(
-            new Rating { PostId = firstPost.Id, ProfileId = rater.Id, Stars = 1, CreatedAt = DateTimeOffset.UtcNow },
-            new Rating { PostId = secondPost.Id, ProfileId = rater.Id, Stars = 2, CreatedAt = DateTimeOffset.UtcNow },
+            new Rating { StoryId = firstStory.Id, ProfileId = rater.Id, Stars = 1, CreatedAt = DateTimeOffset.UtcNow },
+            new Rating { StoryId = secondStory.Id, ProfileId = rater.Id, Stars = 2, CreatedAt = DateTimeOffset.UtcNow },
             new Rating { TankId = tank.Id, ProfileId = rater.Id, Stars = 3, CreatedAt = DateTimeOffset.UtcNow });
 
         await context.SaveChangesAsync();
@@ -139,11 +139,11 @@ public sealed class ConstraintEnforcementTests
     {
         await using var context = _fixture.CreateContext();
         var profile = await TestDataBuilder.CreateProfileAsync(context);
-        var post = await TestDataBuilder.CreatePostAsync(context, profile.Id);
+        var story = await TestDataBuilder.CreateStoryAsync(context, profile.Id);
 
         context.SlugAliases.Add(new SlugAlias
         {
-            PostId = post.Id,
+            StoryId = story.Id,
             Value = $"first-{Guid.NewGuid():N}",
             IsCanonical = true,
             CreatedAt = DateTimeOffset.UtcNow,
@@ -152,7 +152,7 @@ public sealed class ConstraintEnforcementTests
 
         context.SlugAliases.Add(new SlugAlias
         {
-            PostId = post.Id,
+            StoryId = story.Id,
             Value = $"second-{Guid.NewGuid():N}",
             IsCanonical = true,
             CreatedAt = DateTimeOffset.UtcNow,
@@ -188,13 +188,13 @@ public sealed class ConstraintEnforcementTests
     {
         await using var context = _fixture.CreateContext();
         var profile = await TestDataBuilder.CreateProfileAsync(context);
-        var firstPost = await TestDataBuilder.CreatePostAsync(context, profile.Id);
-        var secondPost = await TestDataBuilder.CreatePostAsync(context, profile.Id);
+        var firstStory = await TestDataBuilder.CreateStoryAsync(context, profile.Id);
+        var secondStory = await TestDataBuilder.CreateStoryAsync(context, profile.Id);
         var value = $"alias-{Guid.NewGuid():N}";
 
         context.SlugAliases.Add(new SlugAlias
         {
-            PostId = firstPost.Id,
+            StoryId = firstStory.Id,
             Value = value,
             IsCanonical = true,
             CreatedAt = DateTimeOffset.UtcNow,
@@ -203,7 +203,7 @@ public sealed class ConstraintEnforcementTests
 
         context.SlugAliases.Add(new SlugAlias
         {
-            PostId = secondPost.Id,
+            StoryId = secondStory.Id,
             Value = value,
             IsCanonical = false,
             CreatedAt = DateTimeOffset.UtcNow,

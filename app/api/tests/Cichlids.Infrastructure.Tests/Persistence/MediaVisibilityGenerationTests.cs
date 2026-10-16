@@ -15,7 +15,7 @@ public sealed class MediaVisibilityGenerationTests(PostgresFixture fixture)
 {
     private static readonly DateTimeOffset Now = DateTimeOffset.UtcNow;
 
-    private sealed record Setup(Profile Owner, Tank Tank, CareEntry Entry, WaterChangeSession Session, Post Post, long TankItem, long EntryItem, long SessionItem, long PostItem);
+    private sealed record Setup(Profile Owner, Tank Tank, CareEntry Entry, WaterChangeSession Session, Story Story, long TankItem, long EntryItem, long SessionItem, long StoryItem);
 
     private async Task<Setup> NewSetupAsync()
     {
@@ -26,10 +26,10 @@ public sealed class MediaVisibilityGenerationTests(PostgresFixture fixture)
         await db.SaveChangesAsync();
         var entry = new CareEntry { TankId = tank.Id, AuthorProfileId = owner.Id, Kind = CareKind.WaterChange, OccurredAt = Now, RecordedAt = Now };
         var session = new WaterChangeSession { TankId = tank.Id, ProfileId = owner.Id, StartedAt = Now };
-        var post = new Post { AuthorProfileId = owner.Id, Kind = PostKind.Single, Topic = PostTopic.Cichlids, State = PostState.Published, CreatedAt = Now, UpdatedAt = Now };
+        var story = new Story { AuthorProfileId = owner.Id, Topic = StoryTopic.Cichlids, State = StoryState.Published, CreatedAt = Now, UpdatedAt = Now };
         db.CareEntries.Add(entry);
         db.WaterChangeSessions.Add(session);
-        db.Posts.Add(post);
+        db.Stories.Add(story);
         await db.SaveChangesAsync();
         long Item()
         {
@@ -39,13 +39,13 @@ public sealed class MediaVisibilityGenerationTests(PostgresFixture fixture)
             return item.Id;
         }
 
-        var (tankItem, entryItem, sessionItem, postItem) = (Item(), Item(), Item(), Item());
+        var (tankItem, entryItem, sessionItem, storyItem) = (Item(), Item(), Item(), Item());
         db.MediaLinks.AddRange(
             MediaLink.ForTank(tank.Id, tankItem, MediaLinkRole.Showcase), MediaLink.ForCareEntry(entry.Id, entryItem, MediaLinkRole.Photo),
-            MediaLink.ForWaterChangeSession(session.Id, sessionItem), MediaLink.ForPost(post.Id, postItem));
+            MediaLink.ForWaterChangeSession(session.Id, sessionItem), MediaLink.ForStory(story.Id, storyItem));
         await db.SaveChangesAsync();
-        await SettleAsync(tankItem, entryItem, sessionItem, postItem);
-        return new Setup(owner, tank, entry, session, post, tankItem, entryItem, sessionItem, postItem);
+        await SettleAsync(tankItem, entryItem, sessionItem, storyItem);
+        return new Setup(owner, tank, entry, session, story, tankItem, entryItem, sessionItem, storyItem);
     }
 
     private async Task SettleAsync(params long[] items)
@@ -150,11 +150,11 @@ public sealed class MediaVisibilityGenerationTests(PostgresFixture fixture)
     public async Task GivenAPost_WhenItIsWithdrawnArchivedOrRemoved_ThenItsItemsChange()
     {
         var s = await NewSetupAsync();
-        await AssertChangedAsync(s.PostItem, db => db.Posts.Where(p => p.Id == s.Post.Id).ExecuteUpdateAsync(x => x.SetProperty(p => p.State, PostState.Draft)));
-        await SettleAsync(s.PostItem);
-        await AssertChangedAsync(s.PostItem, db => db.Posts.Where(p => p.Id == s.Post.Id).ExecuteUpdateAsync(x => x.SetProperty(p => p.State, PostState.Archived)));
-        await SettleAsync(s.PostItem);
-        await AssertChangedAsync(s.PostItem, db => db.Posts.Where(p => p.Id == s.Post.Id).ExecuteUpdateAsync(x => x.SetProperty(p => p.DeletedAt, Now)));
+        await AssertChangedAsync(s.StoryItem, db => db.Stories.Where(p => p.Id == s.Story.Id).ExecuteUpdateAsync(x => x.SetProperty(p => p.State, StoryState.Draft)));
+        await SettleAsync(s.StoryItem);
+        await AssertChangedAsync(s.StoryItem, db => db.Stories.Where(p => p.Id == s.Story.Id).ExecuteUpdateAsync(x => x.SetProperty(p => p.State, StoryState.Archived)));
+        await SettleAsync(s.StoryItem);
+        await AssertChangedAsync(s.StoryItem, db => db.Stories.Where(p => p.Id == s.Story.Id).ExecuteUpdateAsync(x => x.SetProperty(p => p.DeletedAt, Now)));
     }
 
     [Fact]
@@ -180,16 +180,16 @@ public sealed class MediaVisibilityGenerationTests(PostgresFixture fixture)
     public async Task GivenALink_WhenItIsAddedOrRemovedByEntityRawSqlOrExecuteDelete_ThenTheItemChanges()
     {
         var s = await NewSetupAsync();
-        await AssertChangedAsync(s.PostItem, async db =>
+        await AssertChangedAsync(s.StoryItem, async db =>
         {
-            db.MediaLinks.Add(MediaLink.ForTank(s.Tank.Id, s.PostItem, MediaLinkRole.Decoration));
+            db.MediaLinks.Add(MediaLink.ForTank(s.Tank.Id, s.StoryItem, MediaLinkRole.Decoration));
             await db.SaveChangesAsync();
         });
-        await SettleAsync(s.PostItem);
-        await AssertChangedAsync(s.PostItem, db => db.MediaLinks.Where(l => l.MediaItemId == s.PostItem && l.TankId != null).ExecuteDeleteAsync());
-        await SettleAsync(s.PostItem);
-        await AssertChangedAsync(s.PostItem, db => db.Database.ExecuteSqlInterpolatedAsync(
-            $"INSERT INTO public.media_link (media_item_id, context_type, tank_id, role, position) VALUES ({s.PostItem}, 'tank', {s.Tank.Id}, 'technic', 0)"));
+        await SettleAsync(s.StoryItem);
+        await AssertChangedAsync(s.StoryItem, db => db.MediaLinks.Where(l => l.MediaItemId == s.StoryItem && l.TankId != null).ExecuteDeleteAsync());
+        await SettleAsync(s.StoryItem);
+        await AssertChangedAsync(s.StoryItem, db => db.Database.ExecuteSqlInterpolatedAsync(
+            $"INSERT INTO public.media_link (media_item_id, context_type, tank_id, role, position) VALUES ({s.StoryItem}, 'tank', {s.Tank.Id}, 'technic', 0)"));
     }
 
     [Fact]
@@ -197,7 +197,7 @@ public sealed class MediaVisibilityGenerationTests(PostgresFixture fixture)
     {
         var s = await NewSetupAsync();
         await AssertChangedAsync(s.EntryItem, db => db.CareEntries.Where(e => e.Id == s.Entry.Id).ExecuteDeleteAsync());
-        await AssertChangedAsync(s.PostItem, db => db.Posts.Where(p => p.Id == s.Post.Id).ExecuteDeleteAsync());
+        await AssertChangedAsync(s.StoryItem, db => db.Stories.Where(p => p.Id == s.Story.Id).ExecuteDeleteAsync());
         await AssertChangedAsync(s.TankItem, db => db.Tanks.Where(t => t.Id == s.Tank.Id).ExecuteDeleteAsync());
     }
 

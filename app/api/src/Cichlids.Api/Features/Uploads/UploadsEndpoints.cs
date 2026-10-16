@@ -1,7 +1,7 @@
 using System.Security.Claims;
 using Cichlids.Api.Features.Auth;
 using Cichlids.Api.Features.Common;
-using Cichlids.Api.Features.Pictures;
+using Cichlids.Api.Features.Stories;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Media;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -23,7 +23,7 @@ public static class UploadsEndpoints
     private const int MaxTitleLength = 200;
     private const int MaxDescriptionLength = 5000;
 
-    private static readonly PostTopic[] PublishableTopics = [PostTopic.Cichlids, PostTopic.Tanks, PostTopic.Offtopic];
+    private static readonly StoryTopic[] PublishableTopics = [StoryTopic.Cichlids, StoryTopic.Tanks, StoryTopic.Offtopic];
 
     public static IEndpointRouteBuilder MapUploadsEndpoints(this IEndpointRouteBuilder app)
     {
@@ -47,15 +47,15 @@ public static class UploadsEndpoints
             .RequireAuthorization()
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
-        app.MapPost("/api/posts/{id:long}/publish", PublishAsync)
-            .WithName("PublishPost")
-            .WithTags("Posts")
+        app.MapPost("/api/stories/{id:long}/publish", PublishAsync)
+            .WithName("PublishStory")
+            .WithTags("Stories")
             .RequireAuthorization()
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
-        app.MapDelete("/api/posts/{id:long}", DiscardAsync)
-            .WithName("DiscardPost")
-            .WithTags("Posts")
+        app.MapDelete("/api/stories/{id:long}", DiscardAsync)
+            .WithName("DiscardStory")
+            .WithTags("Stories")
             .RequireAuthorization()
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
@@ -69,11 +69,11 @@ public static class UploadsEndpoints
     /// error message for the 400 response.
     /// </summary>
     public static bool TryValidatePublish(
-        PublishPostRequest request, out string title, out string? description, out PostTopic topic, out string error)
+        PublishStoryRequest request, out string title, out string? description, out StoryTopic topic, out string error)
     {
         title = request.Title?.Trim() ?? string.Empty;
         description = string.IsNullOrWhiteSpace(request.Description) ? null : request.Description.Trim();
-        topic = PostTopic.Cichlids;
+        topic = StoryTopic.Cichlids;
         error = string.Empty;
 
         if (title.Length is 0 or > MaxTitleLength)
@@ -89,7 +89,7 @@ public static class UploadsEndpoints
         }
 
         if (request.Topic is not null
-            && (!SnakeCaseEnum.TryParse<PostTopic>(request.Topic, out topic) || !PublishableTopics.Contains(topic)))
+            && (!SnakeCaseEnum.TryParse<StoryTopic>(request.Topic, out topic) || !PublishableTopics.Contains(topic)))
         {
             error = "topic must be one of: cichlids, tanks, offtopic.";
             return false;
@@ -174,12 +174,12 @@ public static class UploadsEndpoints
         return TypedResults.Ok(await draftsQueryService.ListAsync(profile.Id, cancellationToken));
     }
 
-    private static async Task<Results<Ok<PictureDetailDto>, BadRequest<string>, NotFound, Conflict<string>>> PublishAsync(
-        PostPublishService postPublishService,
+    private static async Task<Results<Ok<StoryDetailDto>, BadRequest<string>, NotFound, Conflict<string>>> PublishAsync(
+        StoryPublishService storyPublishService,
         CurrentProfileService currentProfileService,
         ClaimsPrincipal user,
         long id,
-        PublishPostRequest request,
+        PublishStoryRequest request,
         CancellationToken cancellationToken)
     {
         if (!TryValidatePublish(request, out var title, out var description, out var topic, out var error))
@@ -188,7 +188,7 @@ public static class UploadsEndpoints
         }
 
         var author = await currentProfileService.ResolveAsync(user, cancellationToken);
-        var (outcome, detail) = await postPublishService.PublishAsync(id, author.Id, title, description, topic, cancellationToken);
+        var (outcome, detail) = await storyPublishService.PublishAsync(id, author.Id, title, description, topic, cancellationToken);
 
         return outcome switch
         {

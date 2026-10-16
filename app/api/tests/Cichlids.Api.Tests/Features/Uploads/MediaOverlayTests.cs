@@ -37,7 +37,7 @@ public class MediaOverlayTests(UploadsFixture fixture)
         var token = NewToken();
         var draft = await UploadDraftAsync(client, token, Jpeg(300, 200));
         await using var db = fixture.CreateDbContext();
-        var mediaId = await db.MediaLinks.Where(l => l.PostId == draft.Id).Select(l => l.MediaItemId).SingleAsync();
+        var mediaId = await db.MediaLinks.Where(l => l.StoryId == draft.Id).Select(l => l.MediaItemId).SingleAsync();
         var original = await db.MediaItems.Where(m => m.Id == mediaId).Select(m => m.StorageKey).SingleAsync();
         var keys = await db.MediaVariants.Where(v => v.MediaItemId == mediaId).Select(v => v.StorageKey).ToListAsync();
         keys.Add(original);
@@ -56,7 +56,7 @@ public class MediaOverlayTests(UploadsFixture fixture)
         await fixture.SeedGoldenAsync(shared, [7, 8]);
         if (cleanup)
         {
-            await db.Posts.Where(p => p.Id == draft.Id).ExecuteUpdateAsync(
+            await db.Stories.Where(p => p.Id == draft.Id).ExecuteUpdateAsync(
                 setters => setters.SetProperty(p => p.UpdatedAt, DateTimeOffset.UtcNow.AddDays(-40)));
             using var scope = host.Services.CreateScope();
             Assert.True(await scope.ServiceProvider.GetRequiredService<DraftCleanupService>().RunOnceAsync(CancellationToken.None) >= 1);
@@ -71,7 +71,7 @@ public class MediaOverlayTests(UploadsFixture fixture)
         }
         Assert.Equal(2, await fixture.ObjectStore.GetSizeAsync(shared));
         Assert.Equal(3, await store.GetSizeAsync(goldenKey));
-        Assert.False(await db.Posts.AnyAsync(p => p.Id == draft.Id));
+        Assert.False(await db.Stories.AnyAsync(p => p.Id == draft.Id));
     }
 
     [Theory]
@@ -84,14 +84,14 @@ public class MediaOverlayTests(UploadsFixture fixture)
         var token = NewToken();
         var draft = await UploadDraftAsync(client, token, Jpeg(300, 200));
         await using var db = fixture.CreateDbContext();
-        var mediaId = await db.MediaLinks.Where(l => l.PostId == draft.Id).Select(l => l.MediaItemId).SingleAsync();
+        var mediaId = await db.MediaLinks.Where(l => l.StoryId == draft.Id).Select(l => l.MediaItemId).SingleAsync();
         var goldenKey = $"golden/v1/media/variants/thumb/media-{mediaId}.jpg";
         await fixture.SeedGoldenAsync(goldenKey, [1, 2, 3]);
         await db.MediaItems.Where(m => m.Id == mediaId).ExecuteUpdateAsync(s => s.SetProperty(m => m.StorageKey, goldenKey));
         await db.MediaVariants.Where(v => v.MediaItemId == mediaId).ExecuteUpdateAsync(s => s.SetProperty(v => v.StorageKey, goldenKey));
         if (cleanup)
         {
-            await db.Posts.Where(p => p.Id == draft.Id).ExecuteUpdateAsync(
+            await db.Stories.Where(p => p.Id == draft.Id).ExecuteUpdateAsync(
                 s => s.SetProperty(p => p.UpdatedAt, DateTimeOffset.UtcNow.AddDays(-40)));
             using var scope = host.Services.CreateScope();
             Assert.True(await scope.ServiceProvider.GetRequiredService<DraftCleanupService>().RunOnceAsync(CancellationToken.None) >= 1);
@@ -100,7 +100,7 @@ public class MediaOverlayTests(UploadsFixture fixture)
         {
             Assert.Equal(HttpStatusCode.NoContent, (await DiscardAsync(client, token, draft.Id)).StatusCode);
         }
-        Assert.False(await db.Posts.AnyAsync(p => p.Id == draft.Id));
+        Assert.False(await db.Stories.AnyAsync(p => p.Id == draft.Id));
         Assert.Equal(3, await fixture.ObjectStore.GetSizeAsync(goldenKey));
     }
 }

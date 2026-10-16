@@ -2,7 +2,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text.Json;
 using Cichlids.Api.Features.Common;
-using Cichlids.Api.Features.Pictures;
+using Cichlids.Api.Features.Stories;
 using Cichlids.Api.Features.Uploads;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Media;
@@ -30,7 +30,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     [Fact]
     public async Task Publish_MalformedJsonBodyKeepsItsBadRequestStatus()
     {
-        using var request = new HttpRequestMessage(HttpMethod.Post, "/api/posts/1/publish")
+        using var request = new HttpRequestMessage(HttpMethod.Post, "/api/stories/1/publish")
         {
             Content = new StringContent("{ not json", System.Text.Encoding.UTF8, "application/json"),
         };
@@ -85,7 +85,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         var profileId = await ResolveProfileIdAsync(subject);
         await using var db = fixture.CreateDbContext();
         Assert.False(await db.MediaItems.AnyAsync(m => m.OwnerProfileId == profileId));
-        Assert.False(await db.Posts.AnyAsync(p => p.AuthorProfileId == profileId));
+        Assert.False(await db.Stories.AnyAsync(p => p.AuthorProfileId == profileId));
         Assert.Empty(await ListStoredKeysAsync($"originals/uploads/{profileId}/"));
     }
 
@@ -135,7 +135,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         var profileId = await ResolveProfileIdAsync(subject);
         await using var db = fixture.CreateDbContext();
         Assert.False(await db.MediaItems.AnyAsync(m => m.OwnerProfileId == profileId));
-        Assert.False(await db.Posts.AnyAsync(p => p.AuthorProfileId == profileId));
+        Assert.False(await db.Stories.AnyAsync(p => p.AuthorProfileId == profileId));
         Assert.Empty(await ListStoredKeysAsync($"originals/uploads/{profileId}/"));
         Assert.Empty(await ListStoredKeysAsync($"variants/thumb/originals/uploads/{profileId}/"));
     }
@@ -182,8 +182,8 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
 
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
         var draft = await ReadAsync<DraftDto>(response);
-        Assert.Equal(PostState.Draft, draft.State);
-        Assert.Equal(PostTopic.Cichlids, draft.Topic);
+        Assert.Equal(StoryState.Draft, draft.State);
+        Assert.Equal(StoryTopic.Cichlids, draft.Topic);
         Assert.Null(draft.Title);
         Assert.Null(draft.Description);
         Assert.NotNull(draft.Image.Thumb);
@@ -194,18 +194,19 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         var profileId = await ResolveProfileIdAsync(subject);
 
         await using var db = fixture.CreateDbContext();
-        var post = await db.Posts.SingleAsync(p => p.Id == draft.Id);
-        Assert.Equal(profileId, post.AuthorProfileId);
-        Assert.Equal(PostKind.Single, post.Kind);
-        Assert.Equal(PostState.Draft, post.State);
-        Assert.Equal(PostTopic.Cichlids, post.Topic);
-        Assert.Null(post.PublishedAt);
+        var story = await db.Stories.SingleAsync(p => p.Id == draft.Id);
+        Assert.Equal(profileId, story.AuthorProfileId);
+        Assert.Null(story.CoverMediaLinkId);
+        Assert.False(await db.StorySubjects.AnyAsync(s => s.StoryId == story.Id));
+        Assert.Equal(StoryState.Draft, story.State);
+        Assert.Equal(StoryTopic.Cichlids, story.Topic);
+        Assert.Null(story.PublishedAt);
 
-        var postMedia = await db.MediaLinks.SingleAsync(l => l.PostId == post.Id);
-        Assert.Equal(MediaLinkRole.Item, postMedia.Role);
-        Assert.Equal(0, postMedia.Position);
+        var storyMedia = await db.MediaLinks.SingleAsync(l => l.StoryId == story.Id);
+        Assert.Equal(MediaLinkRole.Item, storyMedia.Role);
+        Assert.Equal(0, storyMedia.Position);
 
-        var mediaItem = await db.MediaItems.SingleAsync(m => m.Id == postMedia.MediaItemId);
+        var mediaItem = await db.MediaItems.SingleAsync(m => m.Id == storyMedia.MediaItemId);
         Assert.Equal(profileId, mediaItem.OwnerProfileId);
         Assert.Equal(MediaKind.Photo, mediaItem.Kind);
         Assert.StartsWith($"private/gallery/{profileId}/", mediaItem.StorageKey);
@@ -346,7 +347,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         Assert.Equal(HttpStatusCode.Forbidden, originalOfDraft.StatusCode);
         Assert.Equal(HttpStatusCode.Forbidden, variantOfDraft.StatusCode);
 
-        using var published = await PublishAsync(fixture.Client, token, draft.Id, new PublishPostRequest("Reef", null, "cichlids"));
+        using var published = await PublishAsync(fixture.Client, token, draft.Id, new PublishStoryRequest("Reef", null, "cichlids"));
         published.EnsureSuccessStatusCode();
 
         await using var after = fixture.CreateDbContext();
@@ -435,7 +436,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         var untitled = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
         await using (var db = fixture.CreateDbContext())
         {
-            await db.Posts.Where(p => p.Id == draft.Id)
+            await db.Stories.Where(p => p.Id == draft.Id)
                 .ExecuteUpdateAsync(s => s.SetProperty(p => p.Title, "Tropheus moorii").SetProperty(p => p.Description, "Kaiser morph"));
         }
 
@@ -468,40 +469,40 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     }
 
     [Fact]
-    public async Task Publish_ListsThePostWithItsSlugAndRecordsTheOutboxEvent()
+    public async Task Publish_ListsTheStoryWithItsSlugAndRecordsTheOutboxEvent()
     {
         var (token, subject) = NewCaller();
         var draft = await UploadDraftAsync(fixture.Client, token, Jpeg(1000, 700));
 
         var response = await PublishAsync(
-            fixture.Client, token, draft.Id, new PublishPostRequest("  Tropheus moorii  ", "Kaiser morph", "tanks"));
+            fixture.Client, token, draft.Id, new PublishStoryRequest("  Tropheus moorii  ", "Kaiser morph", "tanks"));
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        var published = await ReadAsync<PictureDetailDto>(response);
+        var published = await ReadAsync<StoryDetailDto>(response);
         Assert.Equal(draft.Id, published.Id);
         Assert.Equal("Tropheus moorii", published.Title);
         Assert.Equal("Kaiser morph", published.Description);
-        Assert.Equal(PostTopic.Tanks, published.Topic);
+        Assert.Equal(StoryTopic.Tanks, published.Topic);
         Assert.NotNull(published.PublishedAt);
         Assert.Matches("^[0-9a-z]{8}$", published.Slug);
         Assert.Equal(published.Slug, published.CanonicalSlug);
-        Assert.NotNull(published.Image?.Medium);
+        Assert.NotNull(published.Cover?.Medium);
 
         var profileId = await ResolveProfileIdAsync(subject);
         await using (var db = fixture.CreateDbContext())
         {
-            var post = await db.Posts.SingleAsync(p => p.Id == draft.Id);
-            Assert.Equal(PostState.Published, post.State);
-            Assert.NotNull(post.PublishedAt);
+            var story = await db.Stories.SingleAsync(p => p.Id == draft.Id);
+            Assert.Equal(StoryState.Published, story.State);
+            Assert.NotNull(story.PublishedAt);
 
-            var alias = await db.SlugAliases.SingleAsync(s => s.PostId == draft.Id);
+            var alias = await db.SlugAliases.SingleAsync(s => s.StoryId == draft.Id);
             Assert.Equal(published.Slug, alias.Value);
             Assert.True(alias.IsCanonical);
 
             var outboxEvent = await db.OutboxEvents.SingleAsync(
-                e => e.EventType == "post.published" && e.AggregateType == "post" && e.AggregateId == draft.Id.ToString());
+                e => e.EventType == "story.published" && e.AggregateType == "story" && e.AggregateId == draft.Id.ToString());
             using var payload = JsonDocument.Parse(outboxEvent.Payload);
-            Assert.Equal(draft.Id, payload.RootElement.GetProperty("postId").GetInt64());
+            Assert.Equal(draft.Id, payload.RootElement.GetProperty("storyId").GetInt64());
             Assert.Equal(published.Slug, payload.RootElement.GetProperty("slug").GetString());
             Assert.Equal(profileId, payload.RootElement.GetProperty("authorProfileId").GetInt64());
             Assert.Equal(outboxEvent.OccurredAt, outboxEvent.NextAttemptAt);
@@ -510,7 +511,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         var gallery = await GetGalleryAsync();
         Assert.Contains(gallery.Items, p => p.Id == draft.Id && p.Slug == published.Slug);
 
-        var detailResponse = await fixture.Client.GetAsync($"/api/pictures/{published.Slug}");
+        var detailResponse = await fixture.Client.GetAsync($"/api/stories/{published.Slug}");
         Assert.Equal(HttpStatusCode.OK, detailResponse.StatusCode);
 
         var drafts = await ReadAsync<List<DraftDto>>(await ListDraftsAsync(fixture.Client, token));
@@ -518,16 +519,16 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     }
 
     [Fact]
-    public async Task Publish_WithoutTopicFilesThePostUnderCichlids()
+    public async Task Publish_WithoutTopicFilesTheStoryUnderCichlids()
     {
         var token = NewToken();
         var draft = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
 
-        var response = await PublishAsync(fixture.Client, token, draft.Id, new PublishPostRequest("Aulonocara", null, null));
+        var response = await PublishAsync(fixture.Client, token, draft.Id, new PublishStoryRequest("Aulonocara", null, null));
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        var published = await ReadAsync<PictureDetailDto>(response);
-        Assert.Equal(PostTopic.Cichlids, published.Topic);
+        var published = await ReadAsync<StoryDetailDto>(response);
+        Assert.Equal(StoryTopic.Cichlids, published.Topic);
         Assert.Null(published.Description);
     }
 
@@ -549,11 +550,11 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         var token = NewToken();
         var draft = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
 
-        var response = await PublishAsync(fixture.Client, token, draft.Id, new PublishPostRequest(title, description, topic));
+        var response = await PublishAsync(fixture.Client, token, draft.Id, new PublishStoryRequest(title, description, topic));
 
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         await using var db = fixture.CreateDbContext();
-        Assert.Equal(PostState.Draft, (await db.Posts.SingleAsync(p => p.Id == draft.Id)).State);
+        Assert.Equal(StoryState.Draft, (await db.Stories.SingleAsync(p => p.Id == draft.Id)).State);
     }
 
     [Fact]
@@ -561,15 +562,15 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     {
         var draft = await UploadDraftAsync(fixture.Client, NewToken(), Jpeg(300, 200));
 
-        var response = await PublishAsync(fixture.Client, NewToken(), draft.Id, new PublishPostRequest("Mine now", null, null));
+        var response = await PublishAsync(fixture.Client, NewToken(), draft.Id, new PublishStoryRequest("Mine now", null, null));
 
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
 
     [Fact]
-    public async Task Publish_UnknownPostReturnsNotFound()
+    public async Task Publish_UnknownStoryReturnsNotFound()
     {
-        var response = await PublishAsync(fixture.Client, NewToken(), long.MaxValue, new PublishPostRequest("Nothing", null, null));
+        var response = await PublishAsync(fixture.Client, NewToken(), long.MaxValue, new PublishStoryRequest("Nothing", null, null));
 
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
@@ -579,15 +580,15 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     {
         var token = NewToken();
         var draft = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
-        var first = await PublishAsync(fixture.Client, token, draft.Id, new PublishPostRequest("Once", null, null));
+        var first = await PublishAsync(fixture.Client, token, draft.Id, new PublishStoryRequest("Once", null, null));
         Assert.Equal(HttpStatusCode.OK, first.StatusCode);
 
-        var second = await PublishAsync(fixture.Client, token, draft.Id, new PublishPostRequest("Twice", null, null));
+        var second = await PublishAsync(fixture.Client, token, draft.Id, new PublishStoryRequest("Twice", null, null));
 
         Assert.Equal(HttpStatusCode.Conflict, second.StatusCode);
         await using var db = fixture.CreateDbContext();
-        Assert.Single(await db.SlugAliases.Where(s => s.PostId == draft.Id).ToListAsync());
-        Assert.Equal("Once", (await db.Posts.SingleAsync(p => p.Id == draft.Id)).Title);
+        Assert.Single(await db.SlugAliases.Where(s => s.StoryId == draft.Id).ToListAsync());
+        Assert.Equal("Once", (await db.Stories.SingleAsync(p => p.Id == draft.Id)).Title);
     }
 
     [Fact]
@@ -596,7 +597,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         var draft = await UploadDraftAsync(fixture.Client, NewToken(), Jpeg(300, 200));
 
         var response = await fixture.Client.PostAsync(
-            $"/api/posts/{draft.Id}/publish", System.Net.Http.Json.JsonContent.Create(new PublishPostRequest("Title", null, null)));
+            $"/api/stories/{draft.Id}/publish", System.Net.Http.Json.JsonContent.Create(new PublishStoryRequest("Title", null, null)));
 
         Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
     }
@@ -625,8 +626,8 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
 
         await using (var db = fixture.CreateDbContext())
         {
-            Assert.False(await db.Posts.AnyAsync(p => p.Id == draft.Id));
-            Assert.False(await db.MediaLinks.AnyAsync(l => l.PostId == draft.Id));
+            Assert.False(await db.Stories.AnyAsync(p => p.Id == draft.Id));
+            Assert.False(await db.MediaLinks.AnyAsync(l => l.StoryId == draft.Id));
             Assert.False(await db.MediaItems.AnyAsync(m => m.Id == mediaItemId));
             Assert.False(await db.MediaVariants.AnyAsync(v => v.MediaItemId == mediaItemId));
         }
@@ -646,11 +647,11 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
 
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
         await using var db = fixture.CreateDbContext();
-        Assert.True(await db.Posts.AnyAsync(p => p.Id == draft.Id));
+        Assert.True(await db.Stories.AnyAsync(p => p.Id == draft.Id));
     }
 
     [Fact]
-    public async Task Discard_UnknownPostReturnsNotFound()
+    public async Task Discard_UnknownStoryReturnsNotFound()
     {
         var response = await DiscardAsync(fixture.Client, NewToken(), long.MaxValue);
 
@@ -658,18 +659,18 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     }
 
     [Fact]
-    public async Task Discard_PublishedPostReturnsConflict()
+    public async Task Discard_PublishedStoryReturnsConflict()
     {
         var token = NewToken();
         var draft = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
-        var publish = await PublishAsync(fixture.Client, token, draft.Id, new PublishPostRequest("Keeper", null, null));
+        var publish = await PublishAsync(fixture.Client, token, draft.Id, new PublishStoryRequest("Keeper", null, null));
         Assert.Equal(HttpStatusCode.OK, publish.StatusCode);
 
         var response = await DiscardAsync(fixture.Client, token, draft.Id);
 
         Assert.Equal(HttpStatusCode.Conflict, response.StatusCode);
         await using var db = fixture.CreateDbContext();
-        Assert.True(await db.Posts.AnyAsync(p => p.Id == draft.Id));
+        Assert.True(await db.Stories.AnyAsync(p => p.Id == draft.Id));
     }
 
     [Fact]
@@ -699,23 +700,23 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
             var draft = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
 
             var responses = await Task.WhenAll(
-                PublishAsync(fixture.Client, token, draft.Id, new PublishPostRequest("Race", null, null)),
+                PublishAsync(fixture.Client, token, draft.Id, new PublishStoryRequest("Race", null, null)),
                 DiscardAsync(fixture.Client, token, draft.Id));
             var (publish, discard) = (responses[0].StatusCode, responses[1].StatusCode);
 
-            // Either the publish wins and the discard sees a published post, or the discard wins
-            // and the publish finds no post.
+            // Either the publish wins and the discard sees a published story, or the discard wins
+            // and the publish finds no story.
             Assert.True(
                 (publish, discard) is (HttpStatusCode.OK, HttpStatusCode.Conflict) or (HttpStatusCode.NotFound, HttpStatusCode.NoContent),
                 $"Unexpected outcome: publish {publish}, discard {discard}.");
         }
     }
 
-    private async Task<PagedResponse<PictureListItemDto>> GetGalleryAsync()
+    private async Task<PagedResponse<StoryListItemDto>> GetGalleryAsync()
     {
-        var response = await fixture.Client.GetAsync("/api/pictures?limit=50");
+        var response = await fixture.Client.GetAsync("/api/stories?limit=50");
         response.EnsureSuccessStatusCode();
-        return await ReadAsync<PagedResponse<PictureListItemDto>>(response);
+        return await ReadAsync<PagedResponse<StoryListItemDto>>(response);
     }
 
     private async Task<long> ResolveProfileIdAsync(string subject)
@@ -728,9 +729,9 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     }
 
     private static async Task<Cichlids.Domain.Entities.MediaItem> LoadMediaItemAsync(
-        Cichlids.Infrastructure.Persistence.CichlidsDbContext db, long postId)
+        Cichlids.Infrastructure.Persistence.CichlidsDbContext db, long storyId)
     {
-        var mediaItemId = await db.MediaLinks.Where(l => l.PostId == postId).Select(l => l.MediaItemId).SingleAsync();
+        var mediaItemId = await db.MediaLinks.Where(l => l.StoryId == storyId).Select(l => l.MediaItemId).SingleAsync();
         return await db.MediaItems.SingleAsync(m => m.Id == mediaItemId);
     }
 

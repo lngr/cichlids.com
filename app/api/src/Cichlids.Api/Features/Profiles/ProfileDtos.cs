@@ -1,6 +1,6 @@
 namespace Cichlids.Api.Features.Profiles;
 
-public sealed record ProfileStatsDto(int PictureCount, int TankCount, int CommentCount);
+public sealed record ProfileStatsDto(int StoryCount, int TankCount, int CommentCount);
 
 public sealed record ProfileDetailDto(
     long Id,

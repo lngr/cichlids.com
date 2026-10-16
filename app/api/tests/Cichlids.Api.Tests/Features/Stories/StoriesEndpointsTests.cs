@@ -1,24 +1,24 @@
 using System.Net;
 using System.Text.Json;
 using Cichlids.Api.Features.Common;
-using Cichlids.Api.Features.Pictures;
+using Cichlids.Api.Features.Stories;
 using Cichlids.Domain.Enums;
 
-namespace Cichlids.Api.Tests.Features.Pictures;
+namespace Cichlids.Api.Tests.Features.Stories;
 
 [Collection(ApiCollection.Name)]
-public class PicturesEndpointsTests(ApiFixture fixture)
+public class StoriesEndpointsTests(ApiFixture fixture)
 {
-    private async Task<PagedResponse<PictureListItemDto>> ListAsync(string query)
+    private async Task<PagedResponse<StoryListItemDto>> ListAsync(string query)
     {
-        var response = await fixture.Client.GetAsync($"/api/pictures{query}");
+        var response = await fixture.Client.GetAsync($"/api/stories{query}");
         response.EnsureSuccessStatusCode();
-        return JsonSerializer.Deserialize<PagedResponse<PictureListItemDto>>(
+        return JsonSerializer.Deserialize<PagedResponse<StoryListItemDto>>(
             await response.Content.ReadAsStringAsync(), TestJson.Options)!;
     }
 
     [Fact]
-    public async Task List_DefaultTopic_ExcludesOfftopicAndNonPublicPosts()
+    public async Task List_DefaultTopic_ExcludesOfftopicAndNonPublicStories()
     {
         var body = await ListAsync("");
 
@@ -126,14 +126,14 @@ public class PicturesEndpointsTests(ApiFixture fixture)
     [Fact]
     public async Task List_UnknownSortReturnsBadRequest()
     {
-        var response = await fixture.Client.GetAsync("/api/pictures?sort=popularity");
+        var response = await fixture.Client.GetAsync("/api/stories?sort=popularity");
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
     }
 
     [Fact]
     public async Task List_UnknownTopicReturnsBadRequest()
     {
-        var response = await fixture.Client.GetAsync("/api/pictures?topic=nonsense");
+        var response = await fixture.Client.GetAsync("/api/stories?topic=nonsense");
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
     }
 
@@ -143,38 +143,38 @@ public class PicturesEndpointsTests(ApiFixture fixture)
         var body = await ListAsync("");
         var pictureA = body.Items.Single(i => i.Slug == fixture.Seed.PublishedPictureACanonicalSlug);
 
-        Assert.Equal(PostTopic.Cichlids, pictureA.Topic);
+        Assert.Equal(StoryTopic.Cichlids, pictureA.Topic);
         Assert.Equal(fixture.Seed.Alice.Id, pictureA.Author.Id);
         Assert.Equal("alice", pictureA.Author.Username);
-        Assert.NotNull(pictureA.Image);
-        Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, pictureA.Image!.Thumb);
-        Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, pictureA.Image.Small);
-        Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, pictureA.Image.Medium);
-        Assert.Null(pictureA.Image.Large);
+        Assert.NotNull(pictureA.Cover);
+        Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, pictureA.Cover!.Thumb);
+        Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, pictureA.Cover.Small);
+        Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, pictureA.Cover.Medium);
+        Assert.Null(pictureA.Cover.Large);
     }
 
     [Fact]
     public async Task GetBySlug_ResolvesCanonicalSlugAndIncrementsViewCount()
     {
-        var first = await fixture.Client.GetAsync($"/api/pictures/{fixture.Seed.PublishedPictureACanonicalSlug}");
+        var first = await fixture.Client.GetAsync($"/api/stories/{fixture.Seed.PublishedPictureACanonicalSlug}");
         first.EnsureSuccessStatusCode();
-        var firstDetail = JsonSerializer.Deserialize<PictureDetailDto>(await first.Content.ReadAsStringAsync(), TestJson.Options)!;
+        var firstDetail = JsonSerializer.Deserialize<StoryDetailDto>(await first.Content.ReadAsStringAsync(), TestJson.Options)!;
 
-        var second = await fixture.Client.GetAsync($"/api/pictures/{fixture.Seed.PublishedPictureACanonicalSlug}");
+        var second = await fixture.Client.GetAsync($"/api/stories/{fixture.Seed.PublishedPictureACanonicalSlug}");
         second.EnsureSuccessStatusCode();
-        var secondDetail = JsonSerializer.Deserialize<PictureDetailDto>(await second.Content.ReadAsStringAsync(), TestJson.Options)!;
+        var secondDetail = JsonSerializer.Deserialize<StoryDetailDto>(await second.Content.ReadAsStringAsync(), TestJson.Options)!;
 
         Assert.Equal(fixture.Seed.PublishedPictureACanonicalSlug, firstDetail.CanonicalSlug);
         Assert.Equal(firstDetail.ViewCount + 1, secondDetail.ViewCount);
     }
 
     [Fact]
-    public async Task GetBySlug_NonCanonicalAliasResolvesToSamePostAndReportsCanonicalSlug()
+    public async Task GetBySlug_NonCanonicalAliasResolvesToSameStoryAndReportsCanonicalSlug()
     {
-        var response = await fixture.Client.GetAsync($"/api/pictures/{fixture.Seed.PublishedPictureAAltSlug}");
+        var response = await fixture.Client.GetAsync($"/api/stories/{fixture.Seed.PublishedPictureAAltSlug}");
         response.EnsureSuccessStatusCode();
 
-        var detail = JsonSerializer.Deserialize<PictureDetailDto>(await response.Content.ReadAsStringAsync(), TestJson.Options)!;
+        var detail = JsonSerializer.Deserialize<StoryDetailDto>(await response.Content.ReadAsStringAsync(), TestJson.Options)!;
 
         Assert.Equal(fixture.Seed.PublishedPictureA.Id, detail.Id);
         Assert.Equal(fixture.Seed.PublishedPictureACanonicalSlug, detail.CanonicalSlug);
@@ -184,7 +184,7 @@ public class PicturesEndpointsTests(ApiFixture fixture)
     [InlineData(nameof(SeedData.DraftPictureSlug))]
     [InlineData(nameof(SeedData.ArchivedPictureSlug))]
     [InlineData(nameof(SeedData.DeletedPictureSlug))]
-    public async Task GetBySlug_NonPublicPostReturnsNotFound(string seedSlugProperty)
+    public async Task GetBySlug_NonPublicStoryReturnsNotFound(string seedSlugProperty)
     {
         var slug = seedSlugProperty switch
         {
@@ -194,14 +194,14 @@ public class PicturesEndpointsTests(ApiFixture fixture)
             _ => throw new ArgumentOutOfRangeException(nameof(seedSlugProperty)),
         };
 
-        var response = await fixture.Client.GetAsync($"/api/pictures/{slug}");
+        var response = await fixture.Client.GetAsync($"/api/stories/{slug}");
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
 
     [Fact]
     public async Task GetBySlug_UnknownSlugReturnsNotFound()
     {
-        var response = await fixture.Client.GetAsync("/api/pictures/does-not-exist");
+        var response = await fixture.Client.GetAsync("/api/stories/does-not-exist");
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
 }

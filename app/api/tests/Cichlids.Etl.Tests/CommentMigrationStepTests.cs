@@ -36,7 +36,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         Assert.Equal(22, stats1.Inserted);
         Assert.Equal(0, stats1.Updated);
         Assert.Contains(stats1.Warnings, w => w.Contains("legacy user 402"));
-        Assert.Contains(stats1.Warnings, w => w.StartsWith("post rating_average recompute:", StringComparison.Ordinal));
+        Assert.Contains(stats1.Warnings, w => w.StartsWith("story rating_average recompute:", StringComparison.Ordinal));
         Assert.Equal(
             "anonymous comment votes (fe_user 0): 1 attributed to the community archive profile.",
             Assert.Single(stats1.Warnings, w => w.StartsWith("anonymous comment votes", StringComparison.Ordinal)));
@@ -46,12 +46,12 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         {
             var owner400 = await db.Profiles.SingleAsync(p => p.LegacyId == 400);
             var owner401 = await db.Profiles.SingleAsync(p => p.LegacyId == 401);
-            var post4001 = await db.Posts.SingleAsync(p => p.LegacyId == 4001);
+            var story4001 = await db.Stories.SingleAsync(p => p.LegacyId == 4001);
             var tank4101 = await db.Tanks.SingleAsync(t => t.LegacyId == 4101);
 
             // uid 5001: split into a comment and a rating.
             var comment5001 = await db.Comments.SingleAsync(c => c.LegacyId == 5001);
-            Assert.Equal(post4001.Id, comment5001.PostId);
+            Assert.Equal(story4001.Id, comment5001.StoryId);
             Assert.Null(comment5001.TankId);
             Assert.Equal(owner400.Id, comment5001.AuthorProfileId);
             Assert.Null(comment5001.PosterName);
@@ -62,7 +62,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             Assert.Equal(3, comment5001.Score);
 
             var rating5001 = await db.Ratings.SingleAsync(r => r.LegacyCommentId == 5001);
-            Assert.Equal(post4001.Id, rating5001.PostId);
+            Assert.Equal(story4001.Id, rating5001.StoryId);
             Assert.Equal(owner400.Id, rating5001.ProfileId);
             Assert.Equal((short)4, rating5001.Stars);
 
@@ -71,11 +71,11 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             var rating5002 = await db.Ratings.SingleAsync(r => r.LegacyCommentId == 5002);
             Assert.Equal((short)5, rating5002.Stars);
 
-            // uid 5016: an older rating of member 400 on the same post as 5001 collapses into it.
+            // uid 5016: an older rating of member 400 on the same story as 5001 collapses into it.
             Assert.False(await db.Ratings.AnyAsync(r => r.LegacyCommentId == 5016));
-            Assert.Equal(1, await db.Ratings.CountAsync(r => r.PostId == post4001.Id && r.ProfileId == owner400.Id));
+            Assert.Equal(1, await db.Ratings.CountAsync(r => r.StoryId == story4001.Id && r.ProfileId == owner400.Id));
 
-            // uid 5017: the owner's rating of their own post is dropped, the text stays.
+            // uid 5017: the owner's rating of their own story is dropped, the text stays.
             var ownerComment = await db.Comments.SingleAsync(c => c.LegacyId == 5017);
             Assert.Equal(owner401.Id, ownerComment.AuthorProfileId);
             Assert.Equal("owner note", ownerComment.Body);
@@ -116,7 +116,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             // uid 5010: tank-targeted split.
             var tankComment = await db.Comments.SingleAsync(c => c.LegacyId == 5010);
             Assert.Equal(tank4101.Id, tankComment.TankId);
-            Assert.Null(tankComment.PostId);
+            Assert.Null(tankComment.StoryId);
             var tankRating = await db.Ratings.SingleAsync(r => r.LegacyCommentId == 5010);
             Assert.Equal(tank4101.Id, tankRating.TankId);
 
@@ -164,13 +164,13 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
                 v => v.CommentId == comment5001.Id && v.ProfileId == owner401.Id);
             Assert.Equal(new DateTimeOffset(2024, 1, 1, 15, 0, 0, TimeSpan.Zero), vote401.CreatedAt);
 
-            // Aggregate recompute: post4001's rating_average/rating_count now reflect the three
+            // Aggregate recompute: story4001's rating_average/rating_count now reflect the three
             // migrated ratings against it (4, 5, 2), not the stale legacy denorm value (1.0/1)
             // this fixture seeded on purpose.
-            var post4001Reloaded = await db.Posts.SingleAsync(p => p.LegacyId == 4001);
-            Assert.Equal(3, post4001Reloaded.RatingCount);
-            Assert.NotNull(post4001Reloaded.RatingAverage);
-            Assert.True(Math.Abs(post4001Reloaded.RatingAverage!.Value - (11.0 / 3.0)) < 0.001);
+            var story4001Reloaded = await db.Stories.SingleAsync(p => p.LegacyId == 4001);
+            Assert.Equal(3, story4001Reloaded.RatingCount);
+            Assert.NotNull(story4001Reloaded.RatingAverage);
+            Assert.True(Math.Abs(story4001Reloaded.RatingAverage!.Value - (11.0 / 3.0)) < 0.001);
         }
 
         // A row holding a raw address gets its guest name on the rerun.
@@ -216,12 +216,12 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             Assert.Equal(SeedGuestNames.Second, (await db.Comments.SingleAsync(c => c.LegacyId == 5015)).PosterName);
             Assert.Equal("Guest Visitor", (await db.Comments.SingleAsync(c => c.LegacyId == 5007)).PosterName);
 
-            var post4001 = await db.Posts.SingleAsync(p => p.LegacyId == 4001);
-            Assert.Equal(3, post4001.RatingCount);
+            var story4001 = await db.Stories.SingleAsync(p => p.LegacyId == 4001);
+            Assert.Equal(3, story4001.RatingCount);
         }
     }
 
-    // Member legacy ids 400-404 and target legacy ids 4001 (post)/4101 (tank) are their own range,
+    // Member legacy ids 400-404 and target legacy ids 4001 (story)/4101 (tank) are their own range,
     // disjoint from every other step test's fixtures. Seeded directly (idempotent find-or-create),
     // the same way PictureMigrationStepTests/TankMigrationStepTests seed their own prerequisites,
     // instead of running ProfileMigrationStep/TankMigrationStep/PictureMigrationStep.
@@ -260,15 +260,14 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
 
         var owner401 = await db.Profiles.SingleAsync(p => p.LegacyId == 401);
 
-        if (!await db.Posts.AnyAsync(p => p.LegacyId == 4001))
+        if (!await db.Stories.AnyAsync(p => p.LegacyId == 4001))
         {
-            db.Posts.Add(new Post
+            db.Stories.Add(new Story
             {
                 LegacyId = 4001,
                 AuthorProfileId = owner401.Id,
-                Kind = PostKind.Single,
-                Topic = PostTopic.Cichlids,
-                State = PostState.Published,
+                Topic = StoryTopic.Cichlids,
+                State = StoryState.Published,
                 // A deliberately stale legacy-denorm average/count, so the recompute deviation
                 // counter this step reports has something real to find.
                 RatingAverage = 1.0,

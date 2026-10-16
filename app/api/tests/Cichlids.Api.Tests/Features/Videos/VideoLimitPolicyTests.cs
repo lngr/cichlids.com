@@ -21,21 +21,21 @@ public sealed class VideoLimitPolicyTests(ApiFixture fixture)
         var profile = new Profile { Username = $"video-limit-{Guid.NewGuid():N}"[..30], Kind = ProfileKind.Member, CreatedAt = createdAt };
         db.Profiles.Add(profile);
         await db.SaveChangesAsync();
-        void Add(int count, PostState state, DateTimeOffset? deletedAt = null)
+        void Add(int count, StoryState state, DateTimeOffset? deletedAt = null)
         {
             for (var i = 0; i < count; i++)
             {
-                db.Posts.Add(new Post
+                db.Stories.Add(new Story
                 {
-                    AuthorProfileId = profile.Id, Kind = PostKind.Single, State = state, DeletedAt = deletedAt,
-                    CreatedAt = Now, UpdatedAt = Now, PublishedAt = state == PostState.Published ? Now : null,
+                    AuthorProfileId = profile.Id, State = state, DeletedAt = deletedAt,
+                    CreatedAt = Now, UpdatedAt = Now, PublishedAt = state == StoryState.Published ? Now : null,
                 });
             }
         }
 
-        Add(publicPictures, PostState.Published);
-        Add(drafts, PostState.Draft);
-        Add(deleted, PostState.Published, Now);
+        Add(publicPictures, StoryState.Published);
+        Add(drafts, StoryState.Draft);
+        Add(deleted, StoryState.Published, Now);
         await db.SaveChangesAsync();
         return profile.Id;
     }
@@ -101,7 +101,7 @@ public sealed class VideoLimitPolicyTests(ApiFixture fixture)
     {
         var id = await MemberAsync(Now.AddYears(-3), publicPictures: 3);
         await using var db = fixture.CreateDbContext();
-        var options = new VideoLimitOptions { ShortMaxDuration = TimeSpan.FromSeconds(30), MaxDuration = TimeSpan.FromMinutes(2), MinPublicPictures = 2 };
+        var options = new VideoLimitOptions { ShortMaxDuration = TimeSpan.FromSeconds(30), MaxDuration = TimeSpan.FromMinutes(2), MinPublishedStories = 2 };
 
         var limits = await Policy(db, options).ResolveAsync(id, CancellationToken.None);
 
@@ -127,6 +127,6 @@ public sealed class VideoLimitPolicyTests(ApiFixture fixture)
         Assert.Equal(TimeSpan.FromMinutes(3), options.MaxDuration);
         Assert.Equal(TimeSpan.FromSeconds(60), options.ShortMaxDuration);
         Assert.Equal(TimeSpan.FromDays(365), options.MinAccountAge);
-        Assert.Equal(20, options.MinPublicPictures);
+        Assert.Equal(20, options.MinPublishedStories);
     }
 }

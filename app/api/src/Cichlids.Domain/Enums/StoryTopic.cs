@@ -1,9 +1,9 @@
 namespace Cichlids.Domain.Enums;
 
 /// <summary>
-/// Editorial topic a post is filed under.
+/// Editorial topic a story is filed under.
 /// </summary>
-public enum PostTopic
+public enum StoryTopic
 {
     Cichlids,
     Tanks,

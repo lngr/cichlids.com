@@ -67,10 +67,10 @@ public sealed class SpeciesQueryService(CichlidsDbContext context)
             .Select(l => new SpeciesLinkDto(l.Url, l.Label))
             .ToListAsync(cancellationToken);
 
-        var pictureCount = await (
-            from ps in context.PostSpecies
-            join p in context.Posts on ps.PostId equals p.Id
-            where ps.SpeciesId == species.Id && p.State == PostState.Published && p.DeletedAt == null
+        var storyCount = await (
+            from ps in context.StorySubjects
+            join p in context.Stories on ps.StoryId equals p.Id
+            where ps.SpeciesId == species.Id && p.State == StoryState.Published && p.DeletedAt == null
             select ps.Id
         ).CountAsync(cancellationToken);
 
@@ -78,6 +78,6 @@ public sealed class SpeciesQueryService(CichlidsDbContext context)
             species.Id, species.Slug, species.Genus, species.Name, species.DisplayName, species.Category,
             species.TemperatureRange, species.PhRange, species.GhRange, species.KhRange, species.MaxSize,
             species.Breeding, species.Aggression, species.IntraAggression, species.Diet,
-            commonNames, links, species.Description, species.Origin, species.Habitat, species.Morphs, pictureCount);
+            commonNames, links, species.Description, species.Origin, species.Habitat, species.Morphs, storyCount);
     }
 }

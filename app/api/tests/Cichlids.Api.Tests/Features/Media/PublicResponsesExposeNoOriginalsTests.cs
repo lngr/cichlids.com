@@ -1,5 +1,5 @@
 using System.Text.Json;
-using Cichlids.Api.Features.Pictures;
+using Cichlids.Api.Features.Stories;
 using Cichlids.Api.Features.Uploads;
 using Cichlids.Api.Tests.Features.Uploads;
 using static Cichlids.Api.Tests.Features.Uploads.UploadTestSupport;
@@ -19,8 +19,8 @@ public class PublicResponsesExposeNoOriginalsTests(ApiFixture fixture)
         var seed = fixture.Seed;
         string[] paths =
         [
-            "/api/pictures",
-            $"/api/pictures/{seed.PublishedPictureACanonicalSlug}",
+            "/api/stories",
+            $"/api/stories/{seed.PublishedPictureACanonicalSlug}",
             "/api/tanks",
             $"/api/tanks/{seed.PublishedTank.Id}",
             $"/api/community/threads/{seed.CommunityCichlidsThreadA.Id}",
@@ -61,12 +61,12 @@ public class UploadResponsesExposeNoOriginalsTests(UploadsFixture fixture)
         NoOriginalsAssert.Holds("drafts", await drafts.Content.ReadAsStringAsync(), fixture.PublicBaseUrl);
 
         var publish = await PublishAsync(
-            fixture.Client, token, draft.Id, new PublishPostRequest("Frontosa", null, "cichlids"));
+            fixture.Client, token, draft.Id, new PublishStoryRequest("Frontosa", null, "cichlids"));
         publish.EnsureSuccessStatusCode();
-        var published = await ReadAsync<PictureDetailDto>(publish);
-        Assert.StartsWith($"{fixture.PublicBaseUrl}/variants/", published.Image!.Thumb);
+        var published = await ReadAsync<StoryDetailDto>(publish);
+        Assert.StartsWith($"{fixture.PublicBaseUrl}/variants/", published.Cover!.Thumb);
 
-        var detail = await fixture.Client.GetAsync($"/api/pictures/{published.Slug}");
+        var detail = await fixture.Client.GetAsync($"/api/stories/{published.Slug}");
         detail.EnsureSuccessStatusCode();
         NoOriginalsAssert.Holds("picture detail", await detail.Content.ReadAsStringAsync(), fixture.PublicBaseUrl);
     }

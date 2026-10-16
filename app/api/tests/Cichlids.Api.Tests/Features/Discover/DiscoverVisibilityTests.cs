@@ -47,25 +47,25 @@ public sealed class DiscoverVisibilityTests(ApiFixture fixture)
             });
         }
 
-        var post = new Post { AuthorProfileId = fixture.Seed.Alice.Id, TankId = tank.Id, Title = "Picture of the tank", State = PostState.Published };
-        db.Context.Posts.Add(post);
+        var story = new Story { AuthorProfileId = fixture.Seed.Alice.Id, Subjects = [StorySubject.ForTank(tank.Id)], Title = "Picture of the tank", State = StoryState.Published };
+        db.Context.Stories.Add(story);
         await db.Context.SaveChangesAsync();
-        var postMedia = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
-        db.Context.MediaItems.Add(postMedia);
+        var storyMedia = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
+        db.Context.MediaItems.Add(storyMedia);
         await db.Context.SaveChangesAsync();
-        db.Context.MediaLinks.Add(MediaLink.ForPost(post.Id, postMedia.Id));
+        db.Context.MediaLinks.Add(MediaLink.ForStory(story.Id, storyMedia.Id));
         db.Context.MediaVariants.Add(new MediaVariant
         {
-            MediaItemId = postMedia.Id, Label = "large", StorageKey = $"variants/large/{marker}/post-{postMedia.Id}.jpg",
+            MediaItemId = storyMedia.Id, Label = "large", StorageKey = $"variants/large/{marker}/story-{storyMedia.Id}.jpg",
         });
         for (var i = 0; i < 12; i++)
         {
             db.Context.Ratings.Add(new Rating { TankId = tank.Id, Stars = 5 });
-            db.Context.Ratings.Add(new Rating { PostId = post.Id, Stars = 5 });
+            db.Context.Ratings.Add(new Rating { StoryId = story.Id, Stars = 5 });
         }
 
         await db.Context.SaveChangesAsync();
-        return new Seeded(tank.Id, post.Id, marker);
+        return new Seeded(tank.Id, story.Id, marker);
     }
 
     private sealed class CichlidsDbContextAccessor(Cichlids.Infrastructure.Persistence.CichlidsDbContext context)
@@ -162,8 +162,8 @@ public sealed class DiscoverVisibilityTests(ApiFixture fixture)
 
     private static async Task Cleanup(Cichlids.Infrastructure.Persistence.CichlidsDbContext db, Seeded seeded)
     {
-        await db.Ratings.Where(r => r.TankId == seeded.Tank || r.PostId == seeded.Picture).ExecuteDeleteAsync();
-        await db.Posts.Where(p => p.Id == seeded.Picture).ExecuteDeleteAsync();
+        await db.Ratings.Where(r => r.TankId == seeded.Tank || r.StoryId == seeded.Picture).ExecuteDeleteAsync();
+        await db.Stories.Where(p => p.Id == seeded.Picture).ExecuteDeleteAsync();
         await db.Tanks.Where(t => t.Id == seeded.Tank).ExecuteDeleteAsync();
     }
 }

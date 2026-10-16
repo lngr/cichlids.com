@@ -16,18 +16,18 @@ public class RatingConfiguration : IEntityTypeConfiguration<Rating>
         builder.HasIndex(x => x.LegacyCommentId).IsUnique();
 
         // A member has one rating per target. Anonymous ratings have no profile and stay unconstrained.
-        builder.HasIndex(x => new { x.ProfileId, x.PostId })
+        builder.HasIndex(x => new { x.ProfileId, x.StoryId })
             .IsUnique()
-            .HasDatabaseName("ux_rating_profile_post")
-            .HasFilter("profile_id IS NOT NULL AND post_id IS NOT NULL");
+            .HasDatabaseName("ux_rating_profile_story")
+            .HasFilter("profile_id IS NOT NULL AND story_id IS NOT NULL");
         builder.HasIndex(x => new { x.ProfileId, x.TankId })
             .IsUnique()
             .HasDatabaseName("ux_rating_profile_tank")
             .HasFilter("profile_id IS NOT NULL AND tank_id IS NOT NULL");
 
-        builder.HasOne<Post>()
+        builder.HasOne<Story>()
             .WithMany()
-            .HasForeignKey(x => x.PostId)
+            .HasForeignKey(x => x.StoryId)
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne<Tank>()
@@ -44,7 +44,7 @@ public class RatingConfiguration : IEntityTypeConfiguration<Rating>
         {
             tb.HasCheckConstraint(
                 "ck_rating_exactly_one_target",
-                "(post_id IS NULL) <> (tank_id IS NULL)");
+                "(story_id IS NULL) <> (tank_id IS NULL)");
             tb.HasCheckConstraint(
                 "ck_rating_stars_range",
                 "stars BETWEEN 1 AND 5");

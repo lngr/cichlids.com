@@ -5,12 +5,12 @@ using Npgsql;
 namespace Cichlids.Etl.Steps;
 
 /// <summary>
-/// Migrates legacy picture-species links (user_cichlids_species_pictures_mm) into post_species.
-/// Runs after PictureMigrationStep, whose post.legacy_id rows resolve each link's picture
-/// reference to its migrated post, and after SpeciesCatalogStep, whose species.legacy_id rows
-/// resolve its species reference. Owns the whole of post_species: every run recomputes the full
-/// set from the legacy source and replaces the target table wholesale, rather than touching one
-/// post at a time, since a delete-and-insert round trip per post over a source relation with well
+/// Migrates legacy picture-species links (user_cichlids_species_pictures_mm) into story_subject rows of type species, without a position.
+/// Runs after PictureMigrationStep, whose story.legacy_id rows resolve each link's picture
+/// reference to its migrated story, and after SpeciesCatalogStep, whose species.legacy_id rows
+/// resolve its species reference. Owns the species subjects of all stories: every run recomputes the full
+/// set from the legacy source and replaces them wholesale, rather than touching one
+/// story at a time, since a delete-and-insert round trip per story over a source relation with well
 /// over a hundred thousand rows would dominate the step's run time.
 /// </summary>
 public sealed class SpeciesLinksStep : IEtlStep
@@ -25,7 +25,7 @@ public sealed class SpeciesLinksStep : IEtlStep
     {
         var stats = context.Statistics.ForStep(Name);
 
-        var postIdByLegacyId = await LoadLegacyIdMapAsync(context, "post", cancellationToken);
+        var storyIdByLegacyId = await LoadLegacyIdMapAsync(context, "story", cancellationToken);
         var speciesIdByLegacyId = await LoadLegacyIdMapAsync(context, "species", cancellationToken);
 
         const string sql = """
@@ -35,10 +35,9 @@ public sealed class SpeciesLinksStep : IEtlStep
             """;
 
         // Rows are read in ascending sorting order within each uid_local, so the first occurrence
-        // of a (post, species) pair this loop keeps is always the one with the smallest legacy
+        // of a (story, species) pair this loop keeps is always the one with the smallest legacy
         // sorting value; every later occurrence of the same pair is a genuine duplicate to skip.
-        var seenPairs = new HashSet<(int PostLegacyId, int SpeciesLegacyId)>();
-        var nextSortByPostLegacyId = new Dictionary<int, int>();
+        var seenPairs = new HashSet<(int StoryLegacyId, int SpeciesLegacyId)>();
         var rows = new List<IReadOnlyList<object?>>();
 
         await using (var command = new MySqlCommand(sql, context.Legacy))
@@ -48,7 +47,7 @@ public sealed class SpeciesLinksStep : IEtlStep
             {
                 stats.AddRead();
 
-                var postLegacyId = reader.GetInt32(0);
+                var storyLegacyId = reader.GetInt32(0);
                 var speciesLegacyId = reader.GetInt32(1);
 
                 if (speciesLegacyId == 0)
@@ -57,9 +56,9 @@ public sealed class SpeciesLinksStep : IEtlStep
                     continue;
                 }
 
-                if (!postIdByLegacyId.TryGetValue(postLegacyId, out var postId))
+                if (!storyIdByLegacyId.TryGetValue(storyLegacyId, out var storyId))
                 {
-                    stats.AddSkip("species_link_post_not_migrated");
+                    stats.AddSkip("species_link_story_not_migrated");
                     continue;
                 }
 
@@ -69,22 +68,19 @@ public sealed class SpeciesLinksStep : IEtlStep
                     continue;
                 }
 
-                if (!seenPairs.Add((postLegacyId, speciesLegacyId)))
+                if (!seenPairs.Add((storyLegacyId, speciesLegacyId)))
                 {
                     stats.AddSkip("species_link_duplicate");
                     continue;
                 }
 
-                var sort = nextSortByPostLegacyId.GetValueOrDefault(postLegacyId);
-                nextSortByPostLegacyId[postLegacyId] = sort + 1;
-
-                rows.Add(new object?[] { postId, speciesId, sort });
+                rows.Add(new object?[] { storyId, speciesId });
             }
         }
 
         // Empty in the full run; a single step run in Development or a step test replaces the
         // rows of an earlier run.
-        await using (var delete = new NpgsqlCommand("DELETE FROM post_species", context.Target, context.Transaction))
+        await using (var delete = new NpgsqlCommand("DELETE FROM story_subject WHERE subject_type = 'species'", context.Target, context.Transaction))
         {
             await delete.ExecuteNonQueryAsync(cancellationToken);
         }
@@ -94,7 +90,7 @@ public sealed class SpeciesLinksStep : IEtlStep
     }
 
     // Chunked so one statement never exceeds the PostgreSQL protocol limit of 65535 bind
-    // parameters; 10000 rows of 3 columns stays well below it.
+    // parameters; 10000 rows of 2 columns stays well below it.
     private static async Task BulkInsertAsync(
         EtlContext context, IReadOnlyList<IReadOnlyList<object?>> rows, CancellationToken cancellationToken)
     {
@@ -107,20 +103,16 @@ public sealed class SpeciesLinksStep : IEtlStep
             var paramIndex = 0;
             foreach (var row in chunk)
             {
-                var placeholders = new List<string>(row.Count);
-                foreach (var value in row)
-                {
-                    var name = $"p{paramIndex}";
-                    placeholders.Add($"@{name}");
-                    insert.Parameters.AddWithValue(name, value ?? DBNull.Value);
-                    paramIndex++;
-                }
-
-                valuesSql.Add($"({string.Join(", ", placeholders)})");
+                var storyParam = $"s{paramIndex}";
+                var speciesParam = $"p{paramIndex}";
+                insert.Parameters.AddWithValue(storyParam, row[0]!);
+                insert.Parameters.AddWithValue(speciesParam, row[1]!);
+                valuesSql.Add($"(@{storyParam}, 'species', @{speciesParam})");
+                paramIndex++;
             }
 
             insert.CommandText =
-                $"INSERT INTO post_species (post_id, species_id, sort) VALUES {string.Join(", ", valuesSql)}";
+                $"INSERT INTO story_subject (story_id, subject_type, species_id) VALUES {string.Join(", ", valuesSql)}";
             await insert.ExecuteNonQueryAsync(cancellationToken);
         }
     }

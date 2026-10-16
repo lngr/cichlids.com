@@ -17,17 +17,17 @@ public class DiscoverTests(ApiFixture fixture)
         var tank = new Tank { ProfileId = fixture.Seed.Alice.Id, Title = "Regional archive", Region = TankRegion.AmericasUnassigned, State = TankState.Published };
         db.Tanks.Add(tank);
         await db.SaveChangesAsync();
-        var post = new Post { AuthorProfileId = fixture.Seed.Alice.Id, TankId = tank.Id, Title = "Archive picture", State = PostState.Published };
-        db.Posts.Add(post);
+        var story = new Story { AuthorProfileId = fixture.Seed.Alice.Id, Subjects = [StorySubject.ForTank(tank.Id)], Title = "Archive picture", State = StoryState.Published };
+        db.Stories.Add(story);
         await db.SaveChangesAsync();
         var media = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
         db.MediaItems.Add(media);
         await db.SaveChangesAsync();
-        db.MediaLinks.Add(MediaLink.ForPost(post.Id, media.Id));
+        db.MediaLinks.Add(MediaLink.ForStory(story.Id, media.Id));
         for (var i = 0; i < 10; i++)
         {
             db.Ratings.Add(new Rating { TankId = tank.Id, Stars = 4 });
-            db.Ratings.Add(new Rating { PostId = post.Id, Stars = 5 });
+            db.Ratings.Add(new Rating { StoryId = story.Id, Stars = 5 });
         }
         await db.SaveChangesAsync();
         var response = await fixture.Client.GetAsync("/api/discover");
@@ -39,7 +39,7 @@ public class DiscoverTests(ApiFixture fixture)
         {
             var american = region.GetProperty("region").GetString() is "central_america" or "south_america";
             Assert.Equal(american, region.GetProperty("tanks").EnumerateArray().Any(t => t.GetProperty("id").GetInt64() == tank.Id));
-            Assert.Equal(american, region.GetProperty("pictures").EnumerateArray().Any(t => t.GetProperty("id").GetInt64() == post.Id));
+            Assert.Equal(american, region.GetProperty("pictures").EnumerateArray().Any(t => t.GetProperty("id").GetInt64() == story.Id));
             if (american) Assert.Equal(tank.Id, region.GetProperty("tankOfTheWeek").GetProperty("id").GetInt64());
         }
     }
@@ -94,22 +94,22 @@ public class DiscoverTests(ApiFixture fixture)
         var ids = new List<long>();
         foreach (var category in new string?[] { "lake malawi", "lake tanganyika", "african", "american", null, "american" })
         {
-            var post = new Post { AuthorProfileId = fixture.Seed.Alice.Id, State = PostState.Published,
-                TankId = ids.Count == 5 ? tank.Id : null, Title = $"Species fallback {ids.Count}" };
+            var story = new Story { AuthorProfileId = fixture.Seed.Alice.Id, State = StoryState.Published,
+                Subjects = ids.Count == 5 ? [StorySubject.ForTank(tank.Id)] : [], Title = $"Species fallback {ids.Count}" };
             var photo = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
-            db.AddRange(post, photo);
+            db.AddRange(story, photo);
             await db.SaveChangesAsync();
-            db.MediaLinks.Add(MediaLink.ForPost(post.Id, photo.Id));
+            db.MediaLinks.Add(MediaLink.ForStory(story.Id, photo.Id));
             if (category != null)
             {
                 var species = new Cichlids.Domain.Entities.Species { Genus = Guid.NewGuid().ToString(), Name = "test", Category = category };
                 db.Species.Add(species);
                 await db.SaveChangesAsync();
-                db.PostSpecies.Add(new PostSpecies { PostId = post.Id, SpeciesId = species.Id });
+                db.StorySubjects.Add(new StorySubject { StoryId = story.Id, SubjectType = StorySubjectType.Species, SpeciesId = species.Id });
             }
-            for (var i = 0; i < 100; i++) db.Ratings.Add(new Rating { PostId = post.Id, Stars = 5 });
+            for (var i = 0; i < 100; i++) db.Ratings.Add(new Rating { StoryId = story.Id, Stars = 5 });
             await db.SaveChangesAsync();
-            ids.Add(post.Id);
+            ids.Add(story.Id);
         }
         var archive = await service.GetAsync(Cichlids.Api.Features.Discover.DiscoverQueryService.SelectableRegions, default);
         var expected = new[] { TankRegion.LakeMalawi, TankRegion.LakeTanganyika, TankRegion.AfricaOther, TankRegion.CentralAmerica };
@@ -141,43 +141,43 @@ public class DiscoverTests(ApiFixture fixture)
         var tank = new Tank { ProfileId = suspended.Id, Title = "Stale tank", Region = TankRegion.LakeVictoria, State = TankState.Published };
         db.Tanks.Add(tank);
         await db.SaveChangesAsync();
-        var posts = new List<Post>();
+        var stories = new List<Story>();
         foreach (var author in new[] { suspended, active })
         {
-            var post = new Post { AuthorProfileId = author.Id, TankId = tank.Id, Title = "Stale picture", State = PostState.Published };
+            var story = new Story { AuthorProfileId = author.Id, Subjects = [StorySubject.ForTank(tank.Id)], Title = "Stale picture", State = StoryState.Published };
             var photo = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
-            db.AddRange(post, photo);
+            db.AddRange(story, photo);
             await db.SaveChangesAsync();
-            db.MediaLinks.Add(MediaLink.ForPost(post.Id, photo.Id));
-            for (var i = 0; i < 50; i++) db.Ratings.Add(new Rating { PostId = post.Id, Stars = 5 });
-            posts.Add(post);
+            db.MediaLinks.Add(MediaLink.ForStory(story.Id, photo.Id));
+            for (var i = 0; i < 50; i++) db.Ratings.Add(new Rating { StoryId = story.Id, Stars = 5 });
+            stories.Add(story);
         }
         for (var i = 0; i < 50; i++) db.Ratings.Add(new Rating { TankId = tank.Id, Stars = 5 });
         await db.SaveChangesAsync();
         try
         {
-            await AssertCachedArchiveHidesAsync(db, service, suspended, tank, posts);
+            await AssertCachedArchiveHidesAsync(db, service, suspended, tank, stories);
         }
         finally
         {
-            var postIds = posts.Select(p => p.Id).ToList();
-            await db.Ratings.Where(r => r.TankId == tank.Id || (r.PostId != null && postIds.Contains(r.PostId.Value))).ExecuteDeleteAsync();
-            await db.MediaLinks.Where(l => l.PostId != null && postIds.Contains(l.PostId.Value)).ExecuteDeleteAsync();
-            await db.Posts.Where(p => postIds.Contains(p.Id)).ExecuteDeleteAsync();
+            var storyIds = stories.Select(p => p.Id).ToList();
+            await db.Ratings.Where(r => r.TankId == tank.Id || (r.StoryId != null && storyIds.Contains(r.StoryId.Value))).ExecuteDeleteAsync();
+            await db.MediaLinks.Where(l => l.StoryId != null && storyIds.Contains(l.StoryId.Value)).ExecuteDeleteAsync();
+            await db.Stories.Where(p => storyIds.Contains(p.Id)).ExecuteDeleteAsync();
             await db.Tanks.Where(t => t.Id == tank.Id).ExecuteDeleteAsync();
         }
     }
 
     private static async Task AssertCachedArchiveHidesAsync(Cichlids.Infrastructure.Persistence.CichlidsDbContext db,
-        Cichlids.Api.Features.Discover.DiscoverQueryService service, Profile suspended, Tank tank, List<Post> posts)
+        Cichlids.Api.Features.Discover.DiscoverQueryService service, Profile suspended, Tank tank, List<Story> stories)
     {
         var before = Assert.Single((await service.GetAsync([TankRegion.LakeVictoria], default)).Regions);
         Assert.Contains(before.Tanks, t => t.Id == tank.Id);
         Assert.Equal(tank.Id, before.TankOfTheWeek?.Id);
-        Assert.Contains(before.Pictures, p => p.Id == posts[1].Id);
+        Assert.Contains(before.Pictures, p => p.Id == stories[1].Id);
 
         suspended.SuspendedUntil = DateTimeOffset.UtcNow.AddDays(1);
-        posts[1].DeletedAt = DateTimeOffset.UtcNow;
+        stories[1].DeletedAt = DateTimeOffset.UtcNow;
         await db.SaveChangesAsync();
 
         var after = await service.GetAsync([TankRegion.LakeVictoria], default);
@@ -185,8 +185,8 @@ public class DiscoverTests(ApiFixture fixture)
         Assert.DoesNotContain(region.Tanks, t => t.Id == tank.Id);
         Assert.NotEqual(tank.Id, region.TankOfTheWeek?.Id);
         Assert.DoesNotContain(region.TimeLapses, t => t.Id == tank.Id);
-        Assert.DoesNotContain(region.Pictures, p => posts.Any(post => post.Id == p.Id));
-        Assert.DoesNotContain(after.GlobalPictures, p => posts.Any(post => post.Id == p.Id));
+        Assert.DoesNotContain(region.Pictures, p => stories.Any(story => story.Id == p.Id));
+        Assert.DoesNotContain(after.GlobalPictures, p => stories.Any(story => story.Id == p.Id));
     }
 
     [Theory]
@@ -212,7 +212,7 @@ public class DiscoverTests(ApiFixture fixture)
         var service = new Cichlids.Api.Features.Discover.DiscoverQueryService(db,
             new Cichlids.Api.Features.Tanks.TankTimeLapseQueryService(db, objectStore), objectStore, cache, clock);
         var excluded = new List<long>();
-        var excludedPosts = new List<long>();
+        var excludedStories = new List<long>();
         async Task<Tank> Add(string title, int votes, short stars, ProfileKind kind = ProfileKind.Member,
             bool suspended = false, bool deleted = false, bool draft = false)
         {
@@ -224,22 +224,22 @@ public class DiscoverTests(ApiFixture fixture)
                 State = draft ? TankState.Draft : TankState.Published, DeletedAt = deleted ? clock.GetUtcNow() : null };
             db.Tanks.Add(tank);
             await db.SaveChangesAsync();
-            var post = new Post { AuthorProfileId = owner.Id, TankId = tank.Id, Title = title,
-                State = draft ? PostState.Draft : PostState.Published, DeletedAt = tank.DeletedAt, ViewCount = long.MaxValue };
-            db.Posts.Add(post);
+            var story = new Story { AuthorProfileId = owner.Id, Subjects = [StorySubject.ForTank(tank.Id)], Title = title,
+                State = draft ? StoryState.Draft : StoryState.Published, DeletedAt = tank.DeletedAt, ViewCount = long.MaxValue };
+            db.Stories.Add(story);
             var photo = new MediaItem { StorageKey = Guid.NewGuid().ToString(), Kind = MediaKind.Photo };
             db.MediaItems.Add(photo);
             await db.SaveChangesAsync();
-            db.MediaLinks.Add(MediaLink.ForPost(post.Id, photo.Id));
+            db.MediaLinks.Add(MediaLink.ForStory(story.Id, photo.Id));
             for (var i = 0; i < votes; i++)
             {
                 db.Ratings.Add(new Rating { TankId = tank.Id, Stars = stars });
-                db.Ratings.Add(new Rating { PostId = post.Id, Stars = stars });
+                db.Ratings.Add(new Rating { StoryId = story.Id, Stars = stars });
             }
             if (kind != ProfileKind.Member || suspended || deleted || draft || votes < 10)
             {
                 excluded.Add(tank.Id);
-                excludedPosts.Add(post.Id);
+                excludedStories.Add(story.Id);
             }
             await db.SaveChangesAsync();
             return tank;
@@ -251,8 +251,8 @@ public class DiscoverTests(ApiFixture fixture)
         await Add("Draft", 10, 5, draft: true);
         var low = await Add("Nine votes", 9, 5);
         db.Ratings.Add(new Rating { TankId = low.Id, ProfileId = low.ProfileId, Stars = 5 });
-        var lowPost = await db.Posts.SingleAsync(p => p.TankId == low.Id);
-        db.Ratings.Add(new Rating { PostId = lowPost.Id, ProfileId = low.ProfileId, Stars = 5 });
+        var lowStory = await db.Stories.SingleAsync(p => p.Subjects.Any(s => s.TankId == low.Id));
+        db.Ratings.Add(new Rating { StoryId = lowStory.Id, ProfileId = low.ProfileId, Stars = 5 });
         var best = await Add("Reliable favourite", 100, 5);
         await Add("Minimum", 10, 5);
         for (var i = 0; i < 21; i++) await Add($"Candidate {i}", 10, 3);
@@ -262,7 +262,7 @@ public class DiscoverTests(ApiFixture fixture)
         for (var i = 0; i < 10; i++) db.Ratings.Add(new Rating { TankId = noRegion.Id, Stars = 1 });
         await db.SaveChangesAsync();
         var first = await service.GetAsync([TankRegion.LakeVictoria], default);
-        Assert.DoesNotContain(first.GlobalPictures, p => excludedPosts.Contains(p.Id));
+        Assert.DoesNotContain(first.GlobalPictures, p => excludedStories.Contains(p.Id));
         Assert.InRange(first.GlobalPictures.Count, 1, 20);
         var region = Assert.Single(first.Regions);
         Assert.Equal(20, region.Tanks.Count);
@@ -270,7 +270,7 @@ public class DiscoverTests(ApiFixture fixture)
         Assert.Equal(best.Id, region.Tanks[0].Id);
         Assert.Equal("Reliable favourite", region.Pictures[0].Title);
         Assert.DoesNotContain(region.Tanks, t => excluded.Contains(t.Id));
-        Assert.DoesNotContain(region.Pictures, p => excludedPosts.Contains(p.Id));
+        Assert.DoesNotContain(region.Pictures, p => excludedStories.Contains(p.Id));
         var eligible = db.Ratings.Where(r => r.TankId != null && db.Tanks.Any(t => t.Id == r.TankId && t.State == TankState.Published && t.DeletedAt == null
             && (r.ProfileId == null || r.ProfileId != t.ProfileId)
             && db.Profiles.Any(p => p.Id == t.ProfileId && p.Kind == ProfileKind.Member && p.SuspendedUntil == null)));

@@ -16,7 +16,7 @@ namespace Cichlids.Api.Tests.Features.Uploads;
 /// A Postgres container, a RustFS container and an API host wired to both, for the upload tests
 /// that assert on stored objects. The API's object store talks to the real S3 API of the RustFS
 /// container, so every stored original and variant can be checked for existence and size. The
-/// database starts empty apart from the migrations; each test creates the profiles and posts it
+/// database starts empty apart from the migrations; each test creates the profiles and stories it
 /// needs through the API itself.
 /// </summary>
 public sealed class UploadsFixture : IAsyncLifetime

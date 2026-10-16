@@ -67,8 +67,8 @@ public static class MediaLinkQueries
     public static IQueryable<MediaLink> TankMainLinks(this IQueryable<MediaLink> links) =>
         links.Where(l => l.ContextType == MediaLinkContext.Tank && l.Role == MediaLinkRole.Main);
 
-    public static IQueryable<MediaLink> PostLinks(this IQueryable<MediaLink> links) =>
-        links.Where(l => l.ContextType == MediaLinkContext.Post);
+    public static IQueryable<MediaLink> StoryLinks(this IQueryable<MediaLink> links) =>
+        links.Where(l => l.ContextType == MediaLinkContext.Story);
 
     public static IQueryable<MediaLink> CareEntryLinks(this IQueryable<MediaLink> links, MediaLinkRole role) =>
         links.Where(l => l.ContextType == MediaLinkContext.CareEntry && l.Role == role);

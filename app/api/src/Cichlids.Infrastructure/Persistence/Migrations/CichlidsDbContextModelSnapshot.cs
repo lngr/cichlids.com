@@ -513,25 +513,25 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("collection_id");
 
-                    b.Property<long>("PostId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("post_id");
-
                     b.Property<int>("Sort")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasDefaultValue(0)
                         .HasColumnName("sort");
 
+                    b.Property<long>("StoryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("story_id");
+
                     b.HasKey("Id")
                         .HasName("pk_collection_entry");
 
-                    b.HasIndex("PostId")
-                        .HasDatabaseName("ix_collection_entry_post_id");
+                    b.HasIndex("StoryId")
+                        .HasDatabaseName("ix_collection_entry_story_id");
 
-                    b.HasIndex("CollectionId", "PostId")
+                    b.HasIndex("CollectionId", "StoryId")
                         .IsUnique()
-                        .HasDatabaseName("ix_collection_entry_collection_id_post_id");
+                        .HasDatabaseName("ix_collection_entry_collection_id_story_id");
 
                     b.ToTable("collection_entry", "public");
                 });
@@ -574,10 +574,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("legacy_id");
 
-                    b.Property<long?>("PostId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("post_id");
-
                     b.Property<string>("PosterName")
                         .HasColumnType("text")
                         .HasColumnName("poster_name");
@@ -587,6 +583,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasDefaultValue(0)
                         .HasColumnName("score");
+
+                    b.Property<long?>("StoryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("story_id");
 
                     b.Property<long?>("TankId")
                         .HasColumnType("bigint")
@@ -605,8 +605,8 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_comment_legacy_id");
 
-                    b.HasIndex("PostId")
-                        .HasDatabaseName("ix_comment_post_id");
+                    b.HasIndex("StoryId")
+                        .HasDatabaseName("ix_comment_story_id");
 
                     b.HasIndex("TankId")
                         .HasDatabaseName("ix_comment_tank_id");
@@ -615,7 +615,7 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         {
                             t.HasCheckConstraint("ck_comment_body_not_empty", "body <> ''");
 
-                            t.HasCheckConstraint("ck_comment_exactly_one_target", "(post_id IS NULL) <> (tank_id IS NULL)");
+                            t.HasCheckConstraint("ck_comment_exactly_one_target", "(story_id IS NULL) <> (tank_id IS NULL)");
                         });
                 });
 
@@ -1056,10 +1056,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasDefaultValue(0)
                         .HasColumnName("position");
 
-                    b.Property<long?>("PostId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("post_id");
-
                     b.Property<long?>("ProfileId")
                         .HasColumnType("bigint")
                         .HasColumnName("profile_id");
@@ -1068,6 +1064,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("role");
+
+                    b.Property<long?>("StoryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("story_id");
 
                     b.Property<long?>("TankId")
                         .HasColumnType("bigint")
@@ -1093,6 +1093,11 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasDatabaseName("ux_media_link_profile_role")
                         .HasFilter("profile_id IS NOT NULL");
 
+                    b.HasIndex("StoryId", "Position")
+                        .IsUnique()
+                        .HasDatabaseName("ux_media_link_story_position")
+                        .HasFilter("story_id IS NOT NULL");
+
                     b.HasIndex("CareEntryId", "Role", "MediaItemId")
                         .IsUnique()
                         .HasDatabaseName("ux_media_link_care_entry_role_item")
@@ -1113,10 +1118,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasDatabaseName("ux_media_link_inhabitant_role_item")
                         .HasFilter("inhabitant_id IS NOT NULL");
 
-                    b.HasIndex("PostId", "Role", "MediaItemId")
+                    b.HasIndex("StoryId", "Role", "MediaItemId")
                         .IsUnique()
-                        .HasDatabaseName("ux_media_link_post_role_item")
-                        .HasFilter("post_id IS NOT NULL");
+                        .HasDatabaseName("ux_media_link_story_role_item")
+                        .HasFilter("story_id IS NOT NULL");
 
                     b.HasIndex("TankId", "Role", "MediaItemId")
                         .IsUnique()
@@ -1135,13 +1140,13 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     b.ToTable("media_link", "public", t =>
                         {
-                            t.HasCheckConstraint("ck_media_link_context_key", "num_nonnulls(tank_id, inhabitant_id, care_entry_id, water_change_session_id, post_id, discussion_post_id, profile_id) = 1 AND (\n    (context_type = 'tank' AND tank_id IS NOT NULL)\n    OR (context_type = 'inhabitant' AND inhabitant_id IS NOT NULL)\n    OR (context_type = 'care_entry' AND care_entry_id IS NOT NULL)\n    OR (context_type = 'water_change_session' AND water_change_session_id IS NOT NULL)\n    OR (context_type = 'post' AND post_id IS NOT NULL)\n    OR (context_type = 'discussion_post' AND discussion_post_id IS NOT NULL)\n    OR (context_type = 'profile' AND profile_id IS NOT NULL))");
+                            t.HasCheckConstraint("ck_media_link_context_key", "num_nonnulls(tank_id, inhabitant_id, care_entry_id, water_change_session_id, story_id, discussion_post_id, profile_id) = 1 AND (\n    (context_type = 'tank' AND tank_id IS NOT NULL)\n    OR (context_type = 'inhabitant' AND inhabitant_id IS NOT NULL)\n    OR (context_type = 'care_entry' AND care_entry_id IS NOT NULL)\n    OR (context_type = 'water_change_session' AND water_change_session_id IS NOT NULL)\n    OR (context_type = 'story' AND story_id IS NOT NULL)\n    OR (context_type = 'discussion_post' AND discussion_post_id IS NOT NULL)\n    OR (context_type = 'profile' AND profile_id IS NOT NULL))");
 
-                            t.HasCheckConstraint("ck_media_link_context_type", "context_type IN ('tank', 'inhabitant', 'care_entry', 'water_change_session', 'post', 'discussion_post', 'profile')");
+                            t.HasCheckConstraint("ck_media_link_context_type", "context_type IN ('tank', 'inhabitant', 'care_entry', 'water_change_session', 'story', 'discussion_post', 'profile')");
 
                             t.HasCheckConstraint("ck_media_link_position", "position >= 0\nAND (NOT (context_type = 'care_entry' AND role = 'photo') OR position < 6)\nAND (context_type <> 'water_change_session' OR position < 6)");
 
-                            t.HasCheckConstraint("ck_media_link_role", "(context_type = 'tank' AND role IN ('main', 'showcase', 'decoration', 'technic', 'time_lapse', 'video', 'decommission', 'recommission'))\nOR (context_type = 'care_entry' AND role IN ('photo', 'video'))\nOR (context_type = 'water_change_session' AND role = 'evidence')\nOR (context_type = 'post' AND role = 'item')\nOR (context_type = 'discussion_post' AND role = 'attachment')\nOR (context_type = 'profile' AND role IN ('avatar', 'header'))");
+                            t.HasCheckConstraint("ck_media_link_role", "(context_type = 'tank' AND role IN ('main', 'showcase', 'decoration', 'technic', 'time_lapse', 'video', 'decommission', 'recommission'))\nOR (context_type = 'care_entry' AND role IN ('photo', 'video'))\nOR (context_type = 'water_change_session' AND role = 'evidence')\nOR (context_type = 'story' AND role = 'item')\nOR (context_type = 'discussion_post' AND role = 'attachment')\nOR (context_type = 'profile' AND role IN ('avatar', 'header'))");
                         });
                 });
 
@@ -1267,152 +1272,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasFilter("dispatched_at IS NULL AND given_up_at IS NULL");
 
                     b.ToTable("outbox_event", "public");
-                });
-
-            modelBuilder.Entity("Cichlids.Domain.Entities.Post", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("AuthorProfileId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("author_profile_id");
-
-                    b.Property<DateTimeOffset>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_at");
-
-                    b.Property<string>("DeleteReason")
-                        .HasColumnType("text")
-                        .HasColumnName("delete_reason");
-
-                    b.Property<DateTimeOffset?>("DeletedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("deleted_at");
-
-                    b.Property<long?>("DeletedByProfileId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("deleted_by_profile_id");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text")
-                        .HasColumnName("description");
-
-                    b.Property<string>("Kind")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("kind");
-
-                    b.Property<int?>("LegacyId")
-                        .HasColumnType("integer")
-                        .HasColumnName("legacy_id");
-
-                    b.Property<DateTimeOffset?>("PublishedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("published_at");
-
-                    b.Property<double?>("RatingAverage")
-                        .HasColumnType("double precision")
-                        .HasColumnName("rating_average");
-
-                    b.Property<int>("RatingCount")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasDefaultValue(0)
-                        .HasColumnName("rating_count");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("state");
-
-                    b.Property<long?>("TankId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("tank_id");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("text")
-                        .HasColumnName("title");
-
-                    b.Property<string>("Topic")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("topic");
-
-                    b.Property<DateTimeOffset>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("updated_at");
-
-                    b.Property<long>("ViewCount")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasDefaultValue(0L)
-                        .HasColumnName("view_count");
-
-                    b.HasKey("Id")
-                        .HasName("pk_post");
-
-                    b.HasIndex("AuthorProfileId")
-                        .HasDatabaseName("ix_post_author_profile_id");
-
-                    b.HasIndex("DeletedByProfileId")
-                        .HasDatabaseName("ix_post_deleted_by_profile_id");
-
-                    b.HasIndex("LegacyId")
-                        .IsUnique()
-                        .HasDatabaseName("ix_post_legacy_id");
-
-                    b.HasIndex("TankId")
-                        .HasDatabaseName("ix_post_tank_id");
-
-                    b.ToTable("post", "public", t =>
-                        {
-                            t.HasCheckConstraint("ck_post_kind", "kind IN ('single', 'story')");
-
-                            t.HasCheckConstraint("ck_post_state", "state IN ('draft', 'published', 'archived')");
-
-                            t.HasCheckConstraint("ck_post_topic", "topic IN ('cichlids', 'tanks', 'offtopic', 'contest', 'unknown')");
-                        });
-                });
-
-            modelBuilder.Entity("Cichlids.Domain.Entities.PostSpecies", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("PostId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("post_id");
-
-                    b.Property<int>("Sort")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasDefaultValue(0)
-                        .HasColumnName("sort");
-
-                    b.Property<long>("SpeciesId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("species_id");
-
-                    b.HasKey("Id")
-                        .HasName("pk_post_species");
-
-                    b.HasIndex("SpeciesId")
-                        .HasDatabaseName("ix_post_species_species_id");
-
-                    b.HasIndex("PostId", "SpeciesId")
-                        .IsUnique()
-                        .HasDatabaseName("ix_post_species_post_id_species_id");
-
-                    b.ToTable("post_species", "public");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Profile", b =>
@@ -1564,10 +1423,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("legacy_comment_id");
 
-                    b.Property<long?>("PostId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("post_id");
-
                     b.Property<long?>("ProfileId")
                         .HasColumnType("bigint")
                         .HasColumnName("profile_id");
@@ -1575,6 +1430,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.Property<short>("Stars")
                         .HasColumnType("smallint")
                         .HasColumnName("stars");
+
+                    b.Property<long?>("StoryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("story_id");
 
                     b.Property<long?>("TankId")
                         .HasColumnType("bigint")
@@ -1587,16 +1446,16 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_rating_legacy_comment_id");
 
-                    b.HasIndex("PostId")
-                        .HasDatabaseName("ix_rating_post_id");
+                    b.HasIndex("StoryId")
+                        .HasDatabaseName("ix_rating_story_id");
 
                     b.HasIndex("TankId")
                         .HasDatabaseName("ix_rating_tank_id");
 
-                    b.HasIndex("ProfileId", "PostId")
+                    b.HasIndex("ProfileId", "StoryId")
                         .IsUnique()
-                        .HasDatabaseName("ux_rating_profile_post")
-                        .HasFilter("profile_id IS NOT NULL AND post_id IS NOT NULL");
+                        .HasDatabaseName("ux_rating_profile_story")
+                        .HasFilter("profile_id IS NOT NULL AND story_id IS NOT NULL");
 
                     b.HasIndex("ProfileId", "TankId")
                         .IsUnique()
@@ -1605,7 +1464,7 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     b.ToTable("rating", "public", t =>
                         {
-                            t.HasCheckConstraint("ck_rating_exactly_one_target", "(post_id IS NULL) <> (tank_id IS NULL)");
+                            t.HasCheckConstraint("ck_rating_exactly_one_target", "(story_id IS NULL) <> (tank_id IS NULL)");
 
                             t.HasCheckConstraint("ck_rating_stars_range", "stars BETWEEN 1 AND 5");
                         });
@@ -1630,9 +1489,9 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasDefaultValue(false)
                         .HasColumnName("is_canonical");
 
-                    b.Property<long>("PostId")
+                    b.Property<long>("StoryId")
                         .HasColumnType("bigint")
-                        .HasColumnName("post_id");
+                        .HasColumnName("story_id");
 
                     b.Property<string>("Value")
                         .IsRequired()
@@ -1642,9 +1501,9 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.HasKey("Id")
                         .HasName("pk_slug_alias");
 
-                    b.HasIndex("PostId")
+                    b.HasIndex("StoryId")
                         .IsUnique()
-                        .HasDatabaseName("ix_slug_alias_post_id")
+                        .HasDatabaseName("ix_slug_alias_story_id")
                         .HasFilter("is_canonical = true");
 
                     b.HasIndex("Value")
@@ -1840,6 +1699,188 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasDatabaseName("ix_species_link_species_id");
 
                     b.ToTable("species_link", "public");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.Story", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("AuthorProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("author_profile_id");
+
+                    b.Property<long?>("CoverMediaLinkId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("cover_media_link_id");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("DeleteReason")
+                        .HasColumnType("text")
+                        .HasColumnName("delete_reason");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("deleted_at");
+
+                    b.Property<long?>("DeletedByProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("deleted_by_profile_id");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
+                    b.Property<int?>("LegacyId")
+                        .HasColumnType("integer")
+                        .HasColumnName("legacy_id");
+
+                    b.Property<DateTimeOffset?>("PublishedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("published_at");
+
+                    b.Property<double?>("RatingAverage")
+                        .HasColumnType("double precision")
+                        .HasColumnName("rating_average");
+
+                    b.Property<int>("RatingCount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("rating_count");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("state");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text")
+                        .HasColumnName("title");
+
+                    b.Property<string>("Topic")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("topic");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<long>("ViewCount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasDefaultValue(0L)
+                        .HasColumnName("view_count");
+
+                    b.HasKey("Id")
+                        .HasName("pk_story");
+
+                    b.HasIndex("AuthorProfileId")
+                        .HasDatabaseName("ix_story_author_profile_id");
+
+                    b.HasIndex("CoverMediaLinkId")
+                        .HasDatabaseName("ix_story_cover_media_link_id");
+
+                    b.HasIndex("DeletedByProfileId")
+                        .HasDatabaseName("ix_story_deleted_by_profile_id");
+
+                    b.HasIndex("LegacyId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_story_legacy_id");
+
+                    b.ToTable("story", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_story_state", "state IN ('draft', 'published', 'archived')");
+
+                            t.HasCheckConstraint("ck_story_topic", "topic IN ('cichlids', 'tanks', 'offtopic', 'contest', 'unknown')");
+                        });
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.StorySubject", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long?>("InhabitantId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("inhabitant_id");
+
+                    b.Property<int?>("Position")
+                        .HasColumnType("integer")
+                        .HasColumnName("position");
+
+                    b.Property<long?>("SpeciesId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("species_id");
+
+                    b.Property<long>("StoryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("story_id");
+
+                    b.Property<string>("SubjectType")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("subject_type");
+
+                    b.Property<long?>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_story_subject");
+
+                    b.HasIndex("InhabitantId")
+                        .HasDatabaseName("ix_story_subject_inhabitant_id")
+                        .HasFilter("inhabitant_id IS NOT NULL");
+
+                    b.HasIndex("SpeciesId")
+                        .HasDatabaseName("ix_story_subject_species_id")
+                        .HasFilter("species_id IS NOT NULL");
+
+                    b.HasIndex("TankId")
+                        .HasDatabaseName("ix_story_subject_tank_id")
+                        .HasFilter("tank_id IS NOT NULL");
+
+                    b.HasIndex("StoryId", "InhabitantId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_story_subject_story_inhabitant")
+                        .HasFilter("inhabitant_id IS NOT NULL");
+
+                    b.HasIndex("StoryId", "Position")
+                        .IsUnique()
+                        .HasDatabaseName("ux_story_subject_story_position")
+                        .HasFilter("position IS NOT NULL");
+
+                    b.HasIndex("StoryId", "SpeciesId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_story_subject_story_species")
+                        .HasFilter("species_id IS NOT NULL");
+
+                    b.HasIndex("StoryId", "TankId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_story_subject_story_tank")
+                        .HasFilter("tank_id IS NOT NULL");
+
+                    b.ToTable("story_subject", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_story_subject_key", "num_nonnulls(tank_id, inhabitant_id, species_id) = 1 AND (\n    (subject_type = 'tank' AND tank_id IS NOT NULL)\n    OR (subject_type = 'inhabitant' AND inhabitant_id IS NOT NULL)\n    OR (subject_type = 'species' AND species_id IS NOT NULL))");
+
+                            t.HasCheckConstraint("ck_story_subject_position", "position IS NULL OR position >= 0");
+
+                            t.HasCheckConstraint("ck_story_subject_type", "subject_type IN ('tank', 'inhabitant', 'species')");
+                        });
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.StreakFreeze", b =>
@@ -2862,12 +2903,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_collection_entry_collection_collection_id");
 
-                    b.HasOne("Cichlids.Domain.Entities.Post", null)
+                    b.HasOne("Cichlids.Domain.Entities.Story", null)
                         .WithMany()
-                        .HasForeignKey("PostId")
+                        .HasForeignKey("StoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_collection_entry_posts_post_id");
+                        .HasConstraintName("fk_collection_entry_stories_story_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Comment", b =>
@@ -2884,11 +2925,11 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .HasConstraintName("fk_comment_profiles_deleted_by_profile_id");
 
-                    b.HasOne("Cichlids.Domain.Entities.Post", null)
+                    b.HasOne("Cichlids.Domain.Entities.Story", null)
                         .WithMany()
-                        .HasForeignKey("PostId")
+                        .HasForeignKey("StoryId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("fk_comment_posts_post_id");
+                        .HasConstraintName("fk_comment_stories_story_id");
 
                     b.HasOne("Cichlids.Domain.Entities.Tank", null)
                         .WithMany()
@@ -3004,17 +3045,17 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_media_link_media_item_media_item_id");
 
-                    b.HasOne("Cichlids.Domain.Entities.Post", null)
-                        .WithMany("MediaLinks")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .HasConstraintName("fk_media_link_posts_post_id");
-
                     b.HasOne("Cichlids.Domain.Entities.Profile", null)
                         .WithMany()
                         .HasForeignKey("ProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("fk_media_link_profiles_profile_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Story", null)
+                        .WithMany("MediaLinks")
+                        .HasForeignKey("StoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_media_link_stories_story_id");
 
                     b.HasOne("Cichlids.Domain.Entities.Tank", null)
                         .WithMany("MediaLinks")
@@ -3041,45 +3082,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasConstraintName("fk_media_variant_media_item_media_item_id");
                 });
 
-            modelBuilder.Entity("Cichlids.Domain.Entities.Post", b =>
-                {
-                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
-                        .WithMany()
-                        .HasForeignKey("AuthorProfileId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("fk_post_profiles_author_profile_id");
-
-                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
-                        .WithMany()
-                        .HasForeignKey("DeletedByProfileId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("fk_post_profiles_deleted_by_profile_id");
-
-                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
-                        .WithMany()
-                        .HasForeignKey("TankId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("fk_post_tanks_tank_id");
-                });
-
-            modelBuilder.Entity("Cichlids.Domain.Entities.PostSpecies", b =>
-                {
-                    b.HasOne("Cichlids.Domain.Entities.Post", null)
-                        .WithMany("Species")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_post_species_posts_post_id");
-
-                    b.HasOne("Cichlids.Domain.Entities.Species", null)
-                        .WithMany()
-                        .HasForeignKey("SpeciesId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("fk_post_species_species_species_id");
-                });
-
             modelBuilder.Entity("Cichlids.Domain.Entities.ProfileIdentity", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.Profile", null)
@@ -3092,17 +3094,17 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Rating", b =>
                 {
-                    b.HasOne("Cichlids.Domain.Entities.Post", null)
-                        .WithMany()
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("fk_rating_post_post_id");
-
                     b.HasOne("Cichlids.Domain.Entities.Profile", null)
                         .WithMany()
                         .HasForeignKey("ProfileId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .HasConstraintName("fk_rating_profile_profile_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Story", null)
+                        .WithMany()
+                        .HasForeignKey("StoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("fk_rating_stories_story_id");
 
                     b.HasOne("Cichlids.Domain.Entities.Tank", null)
                         .WithMany()
@@ -3113,12 +3115,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Cichlids.Domain.Entities.SlugAlias", b =>
                 {
-                    b.HasOne("Cichlids.Domain.Entities.Post", null)
+                    b.HasOne("Cichlids.Domain.Entities.Story", null)
                         .WithMany()
-                        .HasForeignKey("PostId")
+                        .HasForeignKey("StoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_slug_alias_post_post_id");
+                        .HasConstraintName("fk_slug_alias_stories_story_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.SpeciesCommonName", b =>
@@ -3139,6 +3141,56 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_species_link_species_species_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.Story", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("AuthorProfileId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_story_profile_author_profile_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.MediaLink", null)
+                        .WithMany()
+                        .HasForeignKey("CoverMediaLinkId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_story_media_link_cover_media_link_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("DeletedByProfileId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("fk_story_profile_deleted_by_profile_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.StorySubject", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Inhabitant", null)
+                        .WithMany()
+                        .HasForeignKey("InhabitantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_story_subject_inhabitant_inhabitant_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Species", null)
+                        .WithMany()
+                        .HasForeignKey("SpeciesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_story_subject_species_species_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Story", null)
+                        .WithMany("Subjects")
+                        .HasForeignKey("StoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_story_subject_story_story_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_story_subject_tanks_tank_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.StreakFreeze", b =>
@@ -3351,13 +3403,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.Navigation("VideoJob");
                 });
 
-            modelBuilder.Entity("Cichlids.Domain.Entities.Post", b =>
-                {
-                    b.Navigation("MediaLinks");
-
-                    b.Navigation("Species");
-                });
-
             modelBuilder.Entity("Cichlids.Domain.Entities.Profile", b =>
                 {
                     b.Navigation("Identities");
@@ -3368,6 +3413,13 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.Navigation("CommonNames");
 
                     b.Navigation("Links");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.Story", b =>
+                {
+                    b.Navigation("MediaLinks");
+
+                    b.Navigation("Subjects");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Tank", b =>

@@ -1,7 +1,7 @@
 using System.Net;
 using System.Net.Http.Headers;
 using Cichlids.Api.Features.Media;
-using Cichlids.Api.Features.Pictures;
+using Cichlids.Api.Features.Stories;
 using Cichlids.Api.Features.Uploads;
 using Cichlids.Api.Tests.Features.Uploads;
 using Cichlids.Domain.Entities;
@@ -19,7 +19,7 @@ namespace Cichlids.Api.Tests.Features.Media;
 
 /// <summary>
 /// One visibility rule decides who gets a signed link and which area holds the files: other members,
-/// anonymous viewers, entries set to only me, drafts, removed posts, expired links and deleted media items.
+/// anonymous viewers, entries set to only me, drafts, removed stories, expired links and deleted media items.
 /// </summary>
 [Collection(UploadsCollection.Name)]
 public sealed class MediaDeliverySecurityTests(UploadsFixture fixture) : IAsyncLifetime
@@ -83,20 +83,20 @@ public sealed class MediaDeliverySecurityTests(UploadsFixture fixture) : IAsyncL
         var draft = await UploadDraftAsync(client, token, Jpeg(300, 200));
         await using (var db = fixture.CreateDbContext())
         {
-            var postItem = await db.MediaLinks.Where(l => l.PostId == draft.Id).SingleAsync();
-            db.MediaLinks.Remove(postItem);
-            db.MediaLinks.Add(MediaLink.ForPost(draft.Id, itemId));
+            var storyItem = await db.MediaLinks.Where(l => l.StoryId == draft.Id).SingleAsync();
+            db.MediaLinks.Remove(storyItem);
+            db.MediaLinks.Add(MediaLink.ForStory(draft.Id, itemId));
             await db.SaveChangesAsync();
         }
 
-        using var publish = await PublishAsync(client, token, draft.Id, new PublishPostRequest("Story", null, "cichlids"));
+        using var publish = await PublishAsync(client, token, draft.Id, new PublishStoryRequest("Story", null, "cichlids"));
         publish.EnsureSuccessStatusCode();
         await PlaceAsync(itemId);
 
-        var detail = await client.GetAsync($"/api/pictures/{(await ReadAsync<PictureDetailDto>(publish)).Slug}");
+        var detail = await client.GetAsync($"/api/stories/{(await ReadAsync<StoryDetailDto>(publish)).Slug}");
         detail.EnsureSuccessStatusCode();
-        var picture = await ReadAsync<PictureDetailDto>(detail);
-        Assert.StartsWith($"{fixture.PublicBaseUrl}/variants/", picture.Image!.Thumb);
+        var picture = await ReadAsync<StoryDetailDto>(detail);
+        Assert.StartsWith($"{fixture.PublicBaseUrl}/variants/", picture.Cover!.Thumb);
         using var anonymousTank = await SendAsync(client, HttpMethod.Get, $"/api/tanks/{tank}", null);
         await AssertProblemAsync(anonymousTank, HttpStatusCode.NotFound, "tank_not_found");
         using var anonymousSeries = await SendAsync(client, HttpMethod.Get, $"/api/tanks/{tank}/time-lapse", null);
@@ -155,14 +155,14 @@ public sealed class MediaDeliverySecurityTests(UploadsFixture fixture) : IAsyncL
         var token = NewToken();
         var draft = await UploadDraftAsync(client, token, Jpeg(400, 300));
         await using var db = fixture.CreateDbContext();
-        var itemId = await db.MediaLinks.Where(l => l.PostId == draft.Id).Select(l => l.MediaItemId).SingleAsync();
+        var itemId = await db.MediaLinks.Where(l => l.StoryId == draft.Id).Select(l => l.MediaItemId).SingleAsync();
 
         foreach (var key in await VariantKeysAsync(itemId)) Assert.False(await PubliclyReadableAsync(key));
         using var others = await ListDraftsAsync(client, NewToken());
         Assert.DoesNotContain("/api/media/photos/", await others.Content.ReadAsStringAsync());
         using var anonymous = await ListDraftsAsync(client, null);
         Assert.Equal(HttpStatusCode.Unauthorized, anonymous.StatusCode);
-        using var anonymousDetail = await client.GetAsync($"/api/pictures/{draft.Id}");
+        using var anonymousDetail = await client.GetAsync($"/api/stories/{draft.Id}");
         Assert.Equal(HttpStatusCode.NotFound, anonymousDetail.StatusCode);
     }
 
@@ -171,15 +171,15 @@ public sealed class MediaDeliverySecurityTests(UploadsFixture fixture) : IAsyncL
     {
         var token = NewToken();
         var draft = await UploadDraftAsync(client, token, Jpeg(400, 300));
-        using var publish = await PublishAsync(client, token, draft.Id, new PublishPostRequest("Gone", null, "cichlids"));
+        using var publish = await PublishAsync(client, token, draft.Id, new PublishStoryRequest("Gone", null, "cichlids"));
         publish.EnsureSuccessStatusCode();
         await using var db = fixture.CreateDbContext();
-        var itemId = await db.MediaLinks.Where(l => l.PostId == draft.Id).Select(l => l.MediaItemId).SingleAsync();
+        var itemId = await db.MediaLinks.Where(l => l.StoryId == draft.Id).Select(l => l.MediaItemId).SingleAsync();
         await PlaceAsync(itemId);
         var publicKeys = await VariantKeysAsync(itemId);
         Assert.All(publicKeys, key => Assert.StartsWith("variants/", key));
 
-        await db.Posts.Where(p => p.Id == draft.Id).ExecuteUpdateAsync(s => s.SetProperty(p => p.State, PostState.Archived));
+        await db.Stories.Where(p => p.Id == draft.Id).ExecuteUpdateAsync(s => s.SetProperty(p => p.State, StoryState.Archived));
         using (var scope = _host.Services.CreateScope())
         {
             var placement = scope.ServiceProvider.GetRequiredService<MediaPlacementService>();
@@ -260,10 +260,10 @@ public sealed class MediaDeliverySecurityTests(UploadsFixture fixture) : IAsyncL
         long linkId;
         await using (var db = fixture.CreateDbContext())
         {
-            var other = await db.MediaLinks.Where(l => l.PostId == draft.Id).SingleAsync();
+            var other = await db.MediaLinks.Where(l => l.StoryId == draft.Id).SingleAsync();
             db.MediaLinks.Remove(other);
             await db.SaveChangesAsync();
-            var shown = MediaLink.ForPost(draft.Id, itemId);
+            var shown = MediaLink.ForStory(draft.Id, itemId);
             db.MediaLinks.Add(shown);
             await db.SaveChangesAsync();
             linkId = shown.Id;
@@ -273,8 +273,8 @@ public sealed class MediaDeliverySecurityTests(UploadsFixture fixture) : IAsyncL
         await AssertServedAsync(first, HttpStatusCode.OK);
         await using (var db = fixture.CreateDbContext())
         {
-            await db.Posts.Where(p => p.Id == draft.Id).ExecuteUpdateAsync(s => s.SetProperty(p => p.State, PostState.Archived));
-            await db.MarkForPlacementAsync(db.MediaItemIdsOfPost(draft.Id));
+            await db.Stories.Where(p => p.Id == draft.Id).ExecuteUpdateAsync(s => s.SetProperty(p => p.State, StoryState.Archived));
+            await db.MarkForPlacementAsync(db.MediaItemIdsOfStory(draft.Id));
         }
 
         await AssertServedAsync(first, HttpStatusCode.NotFound);

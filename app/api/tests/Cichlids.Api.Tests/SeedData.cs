@@ -16,20 +16,20 @@ public sealed record SeedData(
     Profile ArchivedProfile,
     Species Tropheus,
     Species Neolamprologus,
-    Post PublishedPictureA,
+    Story PublishedPictureA,
     string PublishedPictureACanonicalSlug,
     string PublishedPictureAAltSlug,
-    Post PublishedPictureB,
+    Story PublishedPictureB,
     string PublishedPictureBCanonicalSlug,
-    Post PublishedPictureCHighRatingLowCount,
+    Story PublishedPictureCHighRatingLowCount,
     string PublishedPictureCSlug,
-    Post OfftopicPicture,
+    Story OfftopicPicture,
     string OfftopicPictureSlug,
-    Post DraftPicture,
+    Story DraftPicture,
     string DraftPictureSlug,
-    Post ArchivedPicture,
+    Story ArchivedPicture,
     string ArchivedPictureSlug,
-    Post DeletedPicture,
+    Story DeletedPicture,
     string DeletedPictureSlug,
     Comment PictureCommentWithAuthor,
     Comment PictureCommentAnonymous,
@@ -156,94 +156,94 @@ public sealed record SeedData(
             new MediaVariant { MediaItemId = pictureBMedia.Id, Label = "thumb", Width = 200, StorageKey = "variants/thumb/pictures/picture-b.jpg" });
         await context.SaveChangesAsync();
 
-        var pictureA = new Post
+        var pictureA = new Story
         {
-            AuthorProfileId = alice.Id, Kind = PostKind.Single, Topic = PostTopic.Cichlids,
-            Title = "Reef Tank Beauty", Description = "A colorful cichlid", State = PostState.Published,
+            AuthorProfileId = alice.Id, Topic = StoryTopic.Cichlids,
+            Title = "Reef Tank Beauty", Description = "A colorful cichlid", State = StoryState.Published,
             ViewCount = 10, RatingAverage = 4.5, RatingCount = 20, CreatedAt = now.AddDays(-10), PublishedAt = now.AddDays(-1),
         };
-        var pictureB = new Post
+        var pictureB = new Story
         {
-            AuthorProfileId = bob.Id, Kind = PostKind.Single, Topic = PostTopic.Tanks,
-            Title = "Tank Story", State = PostState.Published,
+            AuthorProfileId = bob.Id, Topic = StoryTopic.Tanks,
+            Title = "Tank Story", State = StoryState.Published,
             ViewCount = 100, RatingAverage = 3.0, RatingCount = 5, CreatedAt = now.AddDays(-20), PublishedAt = now.AddDays(-2),
         };
-        var pictureC = new Post
+        var pictureC = new Story
         {
-            AuthorProfileId = alice.Id, Kind = PostKind.Single, Topic = PostTopic.Cichlids,
-            Title = "High Score Newcomer", State = PostState.Published,
+            AuthorProfileId = alice.Id, Topic = StoryTopic.Cichlids,
+            Title = "High Score Newcomer", State = StoryState.Published,
             ViewCount = 0, RatingAverage = 5.0, RatingCount = 1, CreatedAt = now.AddHours(-13), PublishedAt = now.AddHours(-12),
         };
-        var offtopicPicture = new Post
+        var offtopicPicture = new Story
         {
-            AuthorProfileId = alice.Id, Kind = PostKind.Single, Topic = PostTopic.Offtopic,
-            Title = "Off Topic Chat", State = PostState.Published, CreatedAt = now.AddDays(-30), PublishedAt = now.AddDays(-3),
+            AuthorProfileId = alice.Id, Topic = StoryTopic.Offtopic,
+            Title = "Off Topic Chat", State = StoryState.Published, CreatedAt = now.AddDays(-30), PublishedAt = now.AddDays(-3),
         };
-        var draftPicture = new Post
+        var draftPicture = new Story
         {
-            AuthorProfileId = alice.Id, Kind = PostKind.Single, Topic = PostTopic.Cichlids,
-            Title = "Unpublished Draft", State = PostState.Draft, CreatedAt = now.AddDays(-1), UpdatedAt = now.AddDays(-1),
+            AuthorProfileId = alice.Id, Topic = StoryTopic.Cichlids,
+            Title = "Unpublished Draft", State = StoryState.Draft, CreatedAt = now.AddDays(-1), UpdatedAt = now.AddDays(-1),
         };
-        var archivedPicture = new Post
+        var archivedPicture = new Story
         {
-            AuthorProfileId = alice.Id, Kind = PostKind.Single, Topic = PostTopic.Cichlids,
-            Title = "Old Archived Post", State = PostState.Archived, CreatedAt = now.AddDays(-100), PublishedAt = now.AddDays(-90),
+            AuthorProfileId = alice.Id, Topic = StoryTopic.Cichlids,
+            Title = "Old Archived Story", State = StoryState.Archived, CreatedAt = now.AddDays(-100), PublishedAt = now.AddDays(-90),
         };
-        var deletedPicture = new Post
+        var deletedPicture = new Story
         {
-            AuthorProfileId = alice.Id, Kind = PostKind.Single, Topic = PostTopic.Cichlids,
-            Title = "Removed Post", State = PostState.Published, CreatedAt = now.AddDays(-5), PublishedAt = now.AddDays(-4),
+            AuthorProfileId = alice.Id, Topic = StoryTopic.Cichlids,
+            Title = "Removed Story", State = StoryState.Published, CreatedAt = now.AddDays(-5), PublishedAt = now.AddDays(-4),
             DeletedAt = now.AddDays(-1), DeleteReason = "test cleanup",
         };
-        context.Posts.AddRange(pictureA, pictureB, pictureC, offtopicPicture, draftPicture, archivedPicture, deletedPicture);
+        context.Stories.AddRange(pictureA, pictureB, pictureC, offtopicPicture, draftPicture, archivedPicture, deletedPicture);
         await context.SaveChangesAsync();
 
         context.MediaLinks.AddRange(
-            MediaLink.ForPost(pictureA.Id, pictureAMedia.Id),
-            MediaLink.ForPost(pictureB.Id, pictureBMedia.Id));
+            MediaLink.ForStory(pictureA.Id, pictureAMedia.Id),
+            MediaLink.ForStory(pictureB.Id, pictureBMedia.Id));
         await context.SaveChangesAsync();
 
         // pictureA and pictureC (both published) depict tropheus, so its public picture count is
         // 2; draftPicture also depicts tropheus but must not count since it is never public.
         // pictureB depicts neolamprologus, keeping the two species filters distinguishable.
-        context.PostSpecies.AddRange(
-            new PostSpecies { PostId = pictureA.Id, SpeciesId = tropheus.Id, Sort = 0 },
-            new PostSpecies { PostId = pictureC.Id, SpeciesId = tropheus.Id, Sort = 0 },
-            new PostSpecies { PostId = draftPicture.Id, SpeciesId = tropheus.Id, Sort = 0 },
-            new PostSpecies { PostId = pictureB.Id, SpeciesId = neolamprologus.Id, Sort = 0 });
+        context.StorySubjects.AddRange(
+            new StorySubject { StoryId = pictureA.Id, SubjectType = StorySubjectType.Species, SpeciesId = tropheus.Id },
+            new StorySubject { StoryId = pictureC.Id, SubjectType = StorySubjectType.Species, SpeciesId = tropheus.Id },
+            new StorySubject { StoryId = draftPicture.Id, SubjectType = StorySubjectType.Species, SpeciesId = tropheus.Id },
+            new StorySubject { StoryId = pictureB.Id, SubjectType = StorySubjectType.Species, SpeciesId = neolamprologus.Id });
         await context.SaveChangesAsync();
 
         const string canonicalSlugA = "reef-tank-beauty";
         const string altSlugA = "old-reef-tank-beauty";
         const string canonicalSlugB = "tank-story";
         const string canonicalSlugC = "high-score-newcomer";
-        const string offtopicSlug = "offtopic-post";
-        const string draftSlug = "draft-post";
-        const string archivedSlug = "archived-post";
-        const string deletedSlug = "deleted-post";
+        const string offtopicSlug = "offtopic-story";
+        const string draftSlug = "draft-story";
+        const string archivedSlug = "archived-story";
+        const string deletedSlug = "deleted-story";
 
         context.SlugAliases.AddRange(
-            new SlugAlias { PostId = pictureA.Id, Value = canonicalSlugA, IsCanonical = true, CreatedAt = now },
-            new SlugAlias { PostId = pictureA.Id, Value = altSlugA, IsCanonical = false, CreatedAt = now.AddDays(-9) },
-            new SlugAlias { PostId = pictureB.Id, Value = canonicalSlugB, IsCanonical = true, CreatedAt = now },
-            new SlugAlias { PostId = pictureC.Id, Value = canonicalSlugC, IsCanonical = true, CreatedAt = now },
-            new SlugAlias { PostId = offtopicPicture.Id, Value = offtopicSlug, IsCanonical = true, CreatedAt = now },
-            new SlugAlias { PostId = draftPicture.Id, Value = draftSlug, IsCanonical = true, CreatedAt = now },
-            new SlugAlias { PostId = archivedPicture.Id, Value = archivedSlug, IsCanonical = true, CreatedAt = now },
-            new SlugAlias { PostId = deletedPicture.Id, Value = deletedSlug, IsCanonical = true, CreatedAt = now });
+            new SlugAlias { StoryId = pictureA.Id, Value = canonicalSlugA, IsCanonical = true, CreatedAt = now },
+            new SlugAlias { StoryId = pictureA.Id, Value = altSlugA, IsCanonical = false, CreatedAt = now.AddDays(-9) },
+            new SlugAlias { StoryId = pictureB.Id, Value = canonicalSlugB, IsCanonical = true, CreatedAt = now },
+            new SlugAlias { StoryId = pictureC.Id, Value = canonicalSlugC, IsCanonical = true, CreatedAt = now },
+            new SlugAlias { StoryId = offtopicPicture.Id, Value = offtopicSlug, IsCanonical = true, CreatedAt = now },
+            new SlugAlias { StoryId = draftPicture.Id, Value = draftSlug, IsCanonical = true, CreatedAt = now },
+            new SlugAlias { StoryId = archivedPicture.Id, Value = archivedSlug, IsCanonical = true, CreatedAt = now },
+            new SlugAlias { StoryId = deletedPicture.Id, Value = deletedSlug, IsCanonical = true, CreatedAt = now });
         await context.SaveChangesAsync();
 
         var pictureCommentWithAuthor = new Comment
         {
-            PostId = pictureA.Id, AuthorProfileId = bob.Id, Body = "Great fish!", Score = 2, CreatedAt = now.AddHours(-2),
+            StoryId = pictureA.Id, AuthorProfileId = bob.Id, Body = "Great fish!", Score = 2, CreatedAt = now.AddHours(-2),
         };
         var pictureCommentAnonymous = new Comment
         {
-            PostId = pictureA.Id, PosterName = "Guest123", Body = "Nice!", Score = 0, CreatedAt = now.AddHours(-1),
+            StoryId = pictureA.Id, PosterName = "Guest123", Body = "Nice!", Score = 0, CreatedAt = now.AddHours(-1),
         };
         var pictureCommentDeleted = new Comment
         {
-            PostId = pictureA.Id, AuthorProfileId = alice.Id, Body = "oops", Score = 0, CreatedAt = now.AddMinutes(-30),
+            StoryId = pictureA.Id, AuthorProfileId = alice.Id, Body = "oops", Score = 0, CreatedAt = now.AddMinutes(-30),
             DeletedAt = now, DeleteReason = "retracted",
         };
         context.Comments.AddRange(pictureCommentWithAuthor, pictureCommentAnonymous, pictureCommentDeleted);
@@ -326,9 +326,9 @@ public sealed record SeedData(
             LegacyId = 9001, Category = DiscussionCategory.Cichlids, Title = "Best filtration setup for a 200L tank",
             State = DiscussionThreadState.Archived, CreatedAt = now.AddDays(-10), LastPostAt = now.AddDays(-8), PostCount = 2,
         };
-        // Thread B: its only post is attributed to the unlisted placeholder profile created for a
+        // Thread B: its only story is attributed to the unlisted placeholder profile created for a
         // forum author with no matching member account (ADR-0021). Posted more recently than
-        // thread A, so the default last-post-at ordering places it first.
+        // thread A, so the default last-story-at ordering places it first.
         var communityCichlidsThreadB = new DiscussionThread
         {
             Category = DiscussionCategory.Cichlids, Title = "pH swings after water change",
@@ -339,13 +339,13 @@ public sealed record SeedData(
             Category = DiscussionCategory.African, Title = "Malawi vs Tanganyika biotope debate",
             State = DiscussionThreadState.Archived, CreatedAt = now.AddDays(-6), LastPostAt = now.AddDays(-6), PostCount = 1,
         };
-        // A thread with no posts and a null last-post-at, a shape the schema allows although
+        // A thread with no stories and a null last-story-at, a shape the schema allows although
         // ForumMigrationStep never produces it for a migrated Phorum root; created most recently of
         // all four so a naive "most recent first" ordering would put it first, but it must sort
-        // after every thread that has a post.
+        // after every thread that has a story.
         var communityMarketPlaceThreadWithNoPosts = new DiscussionThread
         {
-            Category = DiscussionCategory.MarketPlace, Title = "Empty thread with no posts",
+            Category = DiscussionCategory.MarketPlace, Title = "Empty thread with no stories",
             State = DiscussionThreadState.Archived, CreatedAt = now.AddDays(-1), LastPostAt = null, PostCount = 0,
         };
         context.DiscussionThreads.AddRange(

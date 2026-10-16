@@ -29,7 +29,7 @@ public class UploadLimitsTests(UploadsFixture fixture)
 
         await AssertProblemAsync(response, HttpStatusCode.Conflict, "draft_limit_reached");
         await using var db = fixture.CreateDbContext();
-        Assert.Equal(50, await db.Posts.CountAsync(p => p.AuthorProfileId == profileId));
+        Assert.Equal(50, await db.Stories.CountAsync(p => p.AuthorProfileId == profileId));
         Assert.False(await db.MediaItems.AnyAsync(m => m.OwnerProfileId == profileId));
     }
 
@@ -55,15 +55,15 @@ public class UploadLimitsTests(UploadsFixture fixture)
         await InsertDraftsAsync(profileId, 49, DateTimeOffset.UtcNow);
         await using (var db = fixture.CreateDbContext())
         {
-            db.Posts.Add(new Post
+            db.Stories.Add(new Story
             {
-                AuthorProfileId = profileId, Kind = PostKind.Single, Topic = PostTopic.Cichlids,
-                State = PostState.Published, CreatedAt = DateTimeOffset.UtcNow, UpdatedAt = DateTimeOffset.UtcNow, PublishedAt = DateTimeOffset.UtcNow,
+                AuthorProfileId = profileId, Topic = StoryTopic.Cichlids,
+                State = StoryState.Published, CreatedAt = DateTimeOffset.UtcNow, UpdatedAt = DateTimeOffset.UtcNow, PublishedAt = DateTimeOffset.UtcNow,
             });
-            db.Posts.Add(new Post
+            db.Stories.Add(new Story
             {
-                AuthorProfileId = profileId, Kind = PostKind.Single, Topic = PostTopic.Cichlids,
-                State = PostState.Draft, CreatedAt = DateTimeOffset.UtcNow, UpdatedAt = DateTimeOffset.UtcNow, DeletedAt = DateTimeOffset.UtcNow,
+                AuthorProfileId = profileId, Topic = StoryTopic.Cichlids,
+                State = StoryState.Draft, CreatedAt = DateTimeOffset.UtcNow, UpdatedAt = DateTimeOffset.UtcNow, DeletedAt = DateTimeOffset.UtcNow,
             });
             await db.SaveChangesAsync();
         }
@@ -126,7 +126,7 @@ public class UploadLimitsTests(UploadsFixture fixture)
         var stale = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
         var fresh = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
         var published = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
-        (await PublishAsync(fixture.Client, token, published.Id, new PublishPostRequest("Old but published", null, "cichlids")))
+        (await PublishAsync(fixture.Client, token, published.Id, new PublishStoryRequest("Old but published", null, "cichlids")))
             .EnsureSuccessStatusCode();
         var profileId = await ProfileIdAsync(subject);
 
@@ -144,16 +144,16 @@ public class UploadLimitsTests(UploadsFixture fixture)
 
         Assert.True(removed >= 1);
         await using var db = fixture.CreateDbContext();
-        Assert.False(await db.Posts.AnyAsync(p => p.Id == stale.Id));
-        Assert.False(await db.MediaLinks.AnyAsync(l => l.PostId == stale.Id));
+        Assert.False(await db.Stories.AnyAsync(p => p.Id == stale.Id));
+        Assert.False(await db.MediaLinks.AnyAsync(l => l.StoryId == stale.Id));
         Assert.False(await db.MediaItems.AnyAsync(m => m.OwnerProfileId == profileId && staleKeys.Contains(m.StorageKey)));
         foreach (var key in staleKeys)
         {
             Assert.False(await fixture.ObjectStore.ExistsAsync(key), $"Object '{key}' of the stale draft is still stored.");
         }
 
-        Assert.True(await db.Posts.AnyAsync(p => p.Id == fresh.Id));
-        Assert.True(await db.Posts.AnyAsync(p => p.Id == published.Id));
+        Assert.True(await db.Stories.AnyAsync(p => p.Id == fresh.Id));
+        Assert.True(await db.Stories.AnyAsync(p => p.Id == published.Id));
         foreach (var key in freshKeys.Concat(publishedKeys))
         {
             Assert.True(await fixture.ObjectStore.ExistsAsync(key), $"Object '{key}' was deleted.");
@@ -173,8 +173,8 @@ public class UploadLimitsTests(UploadsFixture fixture)
         await scope.ServiceProvider.GetRequiredService<DraftCleanupService>().RunOnceAsync(CancellationToken.None);
 
         await using var db = fixture.CreateDbContext();
-        Assert.True(await db.Posts.AnyAsync(p => p.Id == edited.Id));
-        Assert.False(await db.Posts.AnyAsync(p => p.Id == untouched.Id));
+        Assert.True(await db.Stories.AnyAsync(p => p.Id == edited.Id));
+        Assert.False(await db.Stories.AnyAsync(p => p.Id == untouched.Id));
     }
 
     [Fact]
@@ -184,8 +184,8 @@ public class UploadLimitsTests(UploadsFixture fixture)
         var draft = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
 
         await using var db = fixture.CreateDbContext();
-        var post = await db.Posts.SingleAsync(p => p.Id == draft.Id);
-        Assert.Equal(post.CreatedAt, post.UpdatedAt);
+        var story = await db.Stories.SingleAsync(p => p.Id == draft.Id);
+        Assert.Equal(story.CreatedAt, story.UpdatedAt);
     }
 
     [Fact]
@@ -195,12 +195,12 @@ public class UploadLimitsTests(UploadsFixture fixture)
         var draft = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
         await SetTimestampsAsync(draft.Id, DateTimeOffset.UtcNow.AddDays(-10), DateTimeOffset.UtcNow.AddDays(-10));
 
-        (await PublishAsync(fixture.Client, token, draft.Id, new PublishPostRequest("Title", null, "cichlids")))
+        (await PublishAsync(fixture.Client, token, draft.Id, new PublishStoryRequest("Title", null, "cichlids")))
             .EnsureSuccessStatusCode();
 
         await using var db = fixture.CreateDbContext();
-        var post = await db.Posts.SingleAsync(p => p.Id == draft.Id);
-        Assert.True(post.UpdatedAt > DateTimeOffset.UtcNow.AddMinutes(-5));
+        var story = await db.Stories.SingleAsync(p => p.Id == draft.Id);
+        Assert.True(story.UpdatedAt > DateTimeOffset.UtcNow.AddMinutes(-5));
     }
 
     [Fact]
@@ -220,7 +220,7 @@ public class UploadLimitsTests(UploadsFixture fixture)
 
         Assert.Equal(1, passes.Sum());
         await using var db = fixture.CreateDbContext();
-        Assert.False(await db.Posts.AnyAsync(p => p.Id == stale.Id));
+        Assert.False(await db.Stories.AnyAsync(p => p.Id == stale.Id));
     }
 
     private async Task<long> ProfileIdAsync(string subject)
@@ -237,34 +237,34 @@ public class UploadLimitsTests(UploadsFixture fixture)
         await using var db = fixture.CreateDbContext();
         for (var i = 0; i < count; i++)
         {
-            db.Posts.Add(new Post
+            db.Stories.Add(new Story
             {
-                AuthorProfileId = profileId, Kind = PostKind.Single, Topic = PostTopic.Cichlids,
-                State = PostState.Draft, CreatedAt = createdAt, UpdatedAt = createdAt,
+                AuthorProfileId = profileId, Topic = StoryTopic.Cichlids,
+                State = StoryState.Draft, CreatedAt = createdAt, UpdatedAt = createdAt,
             });
         }
 
         await db.SaveChangesAsync();
     }
 
-    private async Task SetCreatedAtAsync(long postId, DateTimeOffset createdAt)
+    private async Task SetCreatedAtAsync(long storyId, DateTimeOffset createdAt)
     {
         await using var db = fixture.CreateDbContext();
-        await db.Posts.Where(p => p.Id == postId).ExecuteUpdateAsync(
+        await db.Stories.Where(p => p.Id == storyId).ExecuteUpdateAsync(
             s => s.SetProperty(p => p.CreatedAt, createdAt).SetProperty(p => p.UpdatedAt, createdAt));
     }
 
-    private async Task SetTimestampsAsync(long postId, DateTimeOffset createdAt, DateTimeOffset updatedAt)
+    private async Task SetTimestampsAsync(long storyId, DateTimeOffset createdAt, DateTimeOffset updatedAt)
     {
         await using var db = fixture.CreateDbContext();
-        await db.Posts.Where(p => p.Id == postId).ExecuteUpdateAsync(
+        await db.Stories.Where(p => p.Id == storyId).ExecuteUpdateAsync(
             s => s.SetProperty(p => p.CreatedAt, createdAt).SetProperty(p => p.UpdatedAt, updatedAt));
     }
 
-    private async Task<List<string>> StoredKeysOfAsync(long postId)
+    private async Task<List<string>> StoredKeysOfAsync(long storyId)
     {
         await using var db = fixture.CreateDbContext();
-        var mediaItemIds = await db.MediaLinks.Where(l => l.PostId == postId).Select(l => l.MediaItemId).ToListAsync();
+        var mediaItemIds = await db.MediaLinks.Where(l => l.StoryId == storyId).Select(l => l.MediaItemId).ToListAsync();
         return await db.MediaItems.Where(m => mediaItemIds.Contains(m.Id)).Select(m => m.StorageKey)
             .Concat(db.MediaVariants.Where(v => mediaItemIds.Contains(v.MediaItemId)).Select(v => v.StorageKey))
             .ToListAsync();

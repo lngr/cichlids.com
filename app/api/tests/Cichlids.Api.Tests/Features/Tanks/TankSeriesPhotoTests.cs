@@ -38,7 +38,7 @@ public sealed class TankSeriesPhotoTests(UploadsFixture fixture)
         var media = await db.MediaLinks.SingleAsync(l => l.TankId == tank);
         Assert.Equal(mediaItemId, media.MediaItemId);
         Assert.Equal(MediaLinkRole.TimeLapse, media.Role);
-        Assert.False(await db.Posts.AnyAsync(p => p.AuthorProfileId == item.OwnerProfileId));
+        Assert.False(await db.Stories.AnyAsync(p => p.AuthorProfileId == item.OwnerProfileId));
 
         using var series = JsonDocument.Parse(await fixture.Client.GetStringAsync($"/api/tanks/{tank}/time-lapse"));
         var listed = Assert.Single(series.RootElement.GetProperty("photos").EnumerateArray());

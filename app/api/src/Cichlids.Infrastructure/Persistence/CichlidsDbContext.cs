@@ -39,8 +39,8 @@ public class CichlidsDbContext : DbContext
     public DbSet<MediaItem> MediaItems => Set<MediaItem>();
     public DbSet<MediaVariant> MediaVariants => Set<MediaVariant>();
     public DbSet<MediaLink> MediaLinks => Set<MediaLink>();
-    public DbSet<Post> Posts => Set<Post>();
-    public DbSet<PostSpecies> PostSpecies => Set<PostSpecies>();
+    public DbSet<Story> Stories => Set<Story>();
+    public DbSet<StorySubject> StorySubjects => Set<StorySubject>();
     public DbSet<Comment> Comments => Set<Comment>();
     public DbSet<Rating> Ratings => Set<Rating>();
     public DbSet<CommentVote> CommentVotes => Set<CommentVote>();

@@ -46,9 +46,9 @@ public class TodayTests(ApiFixture fixture)
         await db.SaveChangesAsync();
         var older = await PhotoAsync(member.Id, Date(2020), tanks[^1].Id);
         var newest = await PhotoAsync(member.Id, Date(2021), tanks[^1].Id);
-        for (var i = 0; i < 5; i++) await PhotoAsync(member.Id, Date(2025).AddDays(i), state: PostState.Draft);
-        await PhotoAsync(member.Id, Date(2025), state: PostState.Draft, deleted: true);
-        await PhotoAsync(fixture.Seed.Bob.Id, Date(2025), state: PostState.Draft);
+        for (var i = 0; i < 5; i++) await PhotoAsync(member.Id, Date(2025).AddDays(i), state: StoryState.Draft);
+        await PhotoAsync(member.Id, Date(2025), state: StoryState.Draft, deleted: true);
+        await PhotoAsync(fixture.Seed.Bob.Id, Date(2025), state: StoryState.Draft);
         using var json = await GetAsync(token);
         var root = json.RootElement;
         Assert.Equal(member.DisplayName, root.GetProperty("displayName").GetString());
@@ -84,13 +84,13 @@ public class TodayTests(ApiFixture fixture)
         var expected = await PhotoAsync(member.Id, Date(2020));
         await PhotoAsync(fixture.Seed.Bob.Id, Date(2025));
         await PhotoAsync(member.Id, Date(2026));
-        await PhotoAsync(member.Id, Date(2024), state: PostState.Draft);
+        await PhotoAsync(member.Id, Date(2024), state: StoryState.Draft);
         await PhotoAsync(member.Id, Date(2023), deleted: true);
         await PhotoAsync(member.Id, Date(2025), kind: MediaKind.Video);
         await PhotoAsync(member.Id, Date(2025).AddDays(-1));
         using var json = await GetAsync(token);
         var memory = json.RootElement.GetProperty("onThisDay");
-        Assert.Equal(expected.PostId, memory.GetProperty("postId").GetInt64());
+        Assert.Equal(expected.StoryId, memory.GetProperty("storyId").GetInt64());
         Assert.Equal(6, memory.GetProperty("yearsAgo").GetInt32());
     }
 
@@ -101,7 +101,7 @@ public class TodayTests(ApiFixture fixture)
         var captured = await PhotoAsync(member.Id, new DateTimeOffset(2024, 3, 1, 12, 0, 0, TimeSpan.Zero), takenAtLocal: new DateTime(2021, 10, 15, 23, 40, 0));
         using var json = await GetAsync(token);
         var memory = json.RootElement.GetProperty("onThisDay");
-        Assert.Equal(captured.PostId, memory.GetProperty("postId").GetInt64());
+        Assert.Equal(captured.StoryId, memory.GetProperty("storyId").GetInt64());
         Assert.Equal(5, memory.GetProperty("yearsAgo").GetInt32());
     }
 
@@ -129,15 +129,15 @@ public class TodayTests(ApiFixture fixture)
     }
 
     [Fact]
-    public async Task AnniversaryExcludesAnotherMembersMediaLinkedToAnOwnPost()
+    public async Task AnniversaryExcludesAnotherMembersMediaLinkedToAnOwnStory()
     {
         var (member, token) = await MemberAsync(true);
         var foreign = await PhotoAsync(fixture.Seed.Bob.Id, Date(2025));
         await using var db = fixture.CreateDbContext();
-        var post = new Post { AuthorProfileId = member.Id, State = PostState.Published, PublishedAt = Date(2025), CreatedAt = Date(2025) };
-        db.Posts.Add(post);
+        var story = new Story { AuthorProfileId = member.Id, State = StoryState.Published, PublishedAt = Date(2025), CreatedAt = Date(2025) };
+        db.Stories.Add(story);
         await db.SaveChangesAsync();
-        db.MediaLinks.Add(MediaLink.ForPost(post.Id, foreign.MediaId));
+        db.MediaLinks.Add(MediaLink.ForStory(story.Id, foreign.MediaId));
         await db.SaveChangesAsync();
         using var json = await GetAsync(token);
         Assert.False(json.RootElement.TryGetProperty("onThisDay", out _));
@@ -191,18 +191,18 @@ public class TodayTests(ApiFixture fixture)
         return (profile, TestTokens.Create(subject, subject));
     }
 
-    private async Task<(long PostId, long MediaId)> PhotoAsync(long owner, DateTimeOffset date, long? tank = null, PostState state = PostState.Published, bool deleted = false, MediaKind kind = MediaKind.Photo, DateTime? takenAtLocal = null)
+    private async Task<(long StoryId, long MediaId)> PhotoAsync(long owner, DateTimeOffset date, long? tank = null, StoryState state = StoryState.Published, bool deleted = false, MediaKind kind = MediaKind.Photo, DateTime? takenAtLocal = null)
     {
         await using var db = fixture.CreateDbContext();
         var media = new MediaItem { OwnerProfileId = owner, Kind = kind, StorageKey = Guid.NewGuid().ToString(), CreatedAt = date, TakenAtLocal = takenAtLocal };
-        var post = new Post { AuthorProfileId = owner, TankId = tank, Title = "Today photo", State = state, CreatedAt = date, UpdatedAt = date, PublishedAt = state == PostState.Published ? date : null, DeletedAt = deleted ? date : null };
-        db.AddRange(media, post);
+        var story = new Story { AuthorProfileId = owner, Subjects = tank is { } tankId ? [StorySubject.ForTank(tankId)] : [], Title = "Today photo", State = state, CreatedAt = date, UpdatedAt = date, PublishedAt = state == StoryState.Published ? date : null, DeletedAt = deleted ? date : null };
+        db.AddRange(media, story);
         await db.SaveChangesAsync();
-        db.MediaLinks.Add(MediaLink.ForPost(post.Id, media.Id));
+        db.MediaLinks.Add(MediaLink.ForStory(story.Id, media.Id));
         db.MediaVariants.Add(new MediaVariant { MediaItemId = media.Id, Label = "medium", Width = 800, StorageKey = $"variants/{media.Id}.jpg" });
-        db.SlugAliases.Add(new SlugAlias { PostId = post.Id, Value = $"today-{post.Id}", IsCanonical = true, CreatedAt = date });
+        db.SlugAliases.Add(new SlugAlias { StoryId = story.Id, Value = $"today-{story.Id}", IsCanonical = true, CreatedAt = date });
         await db.SaveChangesAsync();
-        return (post.Id, media.Id);
+        return (story.Id, media.Id);
     }
 
     private async Task<HttpResponseMessage> SendAsync(string token, string date)

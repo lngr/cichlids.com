@@ -10,7 +10,7 @@ namespace Cichlids.Infrastructure.Persistence.Configurations;
 public sealed class MediaLinkConfiguration : IEntityTypeConfiguration<MediaLink>
 {
     private const string ContextKeys =
-        "num_nonnulls(tank_id, inhabitant_id, care_entry_id, water_change_session_id, post_id, discussion_post_id, profile_id) = 1";
+        "num_nonnulls(tank_id, inhabitant_id, care_entry_id, water_change_session_id, story_id, discussion_post_id, profile_id) = 1";
 
     public void Configure(EntityTypeBuilder<MediaLink> builder)
     {
@@ -26,7 +26,7 @@ public sealed class MediaLinkConfiguration : IEntityTypeConfiguration<MediaLink>
         builder.HasOne<Inhabitant>().WithMany().HasForeignKey(x => x.InhabitantId).OnDelete(DeleteBehavior.Cascade);
         builder.HasOne<CareEntry>().WithMany(x => x.MediaLinks).HasForeignKey(x => x.CareEntryId).OnDelete(DeleteBehavior.Cascade);
         builder.HasOne<WaterChangeSession>().WithMany(x => x.MediaLinks).HasForeignKey(x => x.WaterChangeSessionId).OnDelete(DeleteBehavior.Cascade);
-        builder.HasOne<Post>().WithMany(x => x.MediaLinks).HasForeignKey(x => x.PostId).OnDelete(DeleteBehavior.Cascade);
+        builder.HasOne<Story>().WithMany(x => x.MediaLinks).HasForeignKey(x => x.StoryId).OnDelete(DeleteBehavior.Cascade);
         builder.HasOne<DiscussionPost>().WithMany(x => x.MediaLinks).HasForeignKey(x => x.DiscussionPostId).OnDelete(DeleteBehavior.Cascade);
         builder.HasOne<Profile>().WithMany().HasForeignKey(x => x.ProfileId).OnDelete(DeleteBehavior.Cascade);
 
@@ -45,8 +45,10 @@ public sealed class MediaLinkConfiguration : IEntityTypeConfiguration<MediaLink>
             .HasDatabaseName("ux_media_link_session_role_item");
         builder.HasIndex(x => new { x.WaterChangeSessionId, x.Role, x.Position }).IsUnique().HasFilter("water_change_session_id IS NOT NULL")
             .HasDatabaseName("ux_media_link_session_role_position");
-        builder.HasIndex(x => new { x.PostId, x.Role, x.MediaItemId }).IsUnique().HasFilter("post_id IS NOT NULL")
-            .HasDatabaseName("ux_media_link_post_role_item");
+        builder.HasIndex(x => new { x.StoryId, x.Role, x.MediaItemId }).IsUnique().HasFilter("story_id IS NOT NULL")
+            .HasDatabaseName("ux_media_link_story_role_item");
+        builder.HasIndex(x => new { x.StoryId, x.Position }).IsUnique().HasFilter("story_id IS NOT NULL")
+            .HasDatabaseName("ux_media_link_story_position");
         builder.HasIndex(x => new { x.DiscussionPostId, x.Role, x.MediaItemId }).IsUnique().HasFilter("discussion_post_id IS NOT NULL")
             .HasDatabaseName("ux_media_link_discussion_post_role_item");
         builder.HasIndex(x => new { x.ProfileId, x.Role }).IsUnique().HasFilter("profile_id IS NOT NULL")
@@ -55,14 +57,14 @@ public sealed class MediaLinkConfiguration : IEntityTypeConfiguration<MediaLink>
         builder.ToTable("media_link", table =>
         {
             table.HasCheckConstraint("ck_media_link_context_type",
-                "context_type IN ('tank', 'inhabitant', 'care_entry', 'water_change_session', 'post', 'discussion_post', 'profile')");
+                "context_type IN ('tank', 'inhabitant', 'care_entry', 'water_change_session', 'story', 'discussion_post', 'profile')");
             table.HasCheckConstraint("ck_media_link_context_key", $$"""
                 {{ContextKeys}} AND (
                     (context_type = 'tank' AND tank_id IS NOT NULL)
                     OR (context_type = 'inhabitant' AND inhabitant_id IS NOT NULL)
                     OR (context_type = 'care_entry' AND care_entry_id IS NOT NULL)
                     OR (context_type = 'water_change_session' AND water_change_session_id IS NOT NULL)
-                    OR (context_type = 'post' AND post_id IS NOT NULL)
+                    OR (context_type = 'story' AND story_id IS NOT NULL)
                     OR (context_type = 'discussion_post' AND discussion_post_id IS NOT NULL)
                     OR (context_type = 'profile' AND profile_id IS NOT NULL))
                 """);
@@ -70,7 +72,7 @@ public sealed class MediaLinkConfiguration : IEntityTypeConfiguration<MediaLink>
                 (context_type = 'tank' AND role IN ('main', 'showcase', 'decoration', 'technic', 'time_lapse', 'video', 'decommission', 'recommission'))
                 OR (context_type = 'care_entry' AND role IN ('photo', 'video'))
                 OR (context_type = 'water_change_session' AND role = 'evidence')
-                OR (context_type = 'post' AND role = 'item')
+                OR (context_type = 'story' AND role = 'item')
                 OR (context_type = 'discussion_post' AND role = 'attachment')
                 OR (context_type = 'profile' AND role IN ('avatar', 'header'))
                 """);

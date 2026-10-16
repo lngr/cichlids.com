@@ -10,7 +10,7 @@ namespace Cichlids.Etl.Tests;
 public sealed class PictureMigrationStepTests(EtlFixture fixture)
 {
     [Fact]
-    public async Task MigratesPicturesIntoMediaItemsAndPostsIdempotently()
+    public async Task MigratesPicturesIntoMediaItemsAndStoriesIdempotently()
     {
         await RunPrerequisiteStepsAsync();
 
@@ -46,7 +46,7 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
         {
             var owner301 = await db.Profiles.SingleAsync(p => p.LegacyId == 301);
 
-            // pid 21: a published post with view/rating counters and its legacy alias.
+            // pid 21: a published story with view/rating counters and its legacy alias.
             var media2001 = await db.MediaItems.SingleAsync(m => m.LegacyId == 2001);
             Assert.Equal(MediaKind.Photo, media2001.Kind);
             Assert.Equal("originals/user_pics/301/pic1.jpg", media2001.StorageKey);
@@ -54,35 +54,35 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
             Assert.Equal(owner301.Id, media2001.OwnerProfileId);
             Assert.Equal(DateTimeOffset.FromUnixTimeSeconds(2000000050), media2001.CreatedAt);
 
-            var post2001 = await db.Posts.SingleAsync(p => p.LegacyId == 2001);
-            Assert.Equal(PostTopic.Cichlids, post2001.Topic);
-            Assert.Equal(PostState.Published, post2001.State);
-            Assert.Equal(DateTimeOffset.FromUnixTimeSeconds(2000000100), post2001.PublishedAt);
-            Assert.Equal(owner301.Id, post2001.AuthorProfileId);
-            Assert.Equal("Pic One", post2001.Title);
-            Assert.Equal("Desc one", post2001.Description);
-            Assert.Equal(10, post2001.ViewCount);
-            Assert.Equal(3, post2001.RatingCount);
-            Assert.Equal(4.5, post2001.RatingAverage);
+            var story2001 = await db.Stories.SingleAsync(p => p.LegacyId == 2001);
+            Assert.Equal(StoryTopic.Cichlids, story2001.Topic);
+            Assert.Equal(StoryState.Published, story2001.State);
+            Assert.Equal(DateTimeOffset.FromUnixTimeSeconds(2000000100), story2001.PublishedAt);
+            Assert.Equal(owner301.Id, story2001.AuthorProfileId);
+            Assert.Equal("Pic One", story2001.Title);
+            Assert.Equal("Desc one", story2001.Description);
+            Assert.Equal(10, story2001.ViewCount);
+            Assert.Equal(3, story2001.RatingCount);
+            Assert.Equal(4.5, story2001.RatingAverage);
 
-            var postMedia2001 = await db.MediaLinks.SingleAsync(l => l.PostId == post2001.Id);
-            Assert.Equal(media2001.Id, postMedia2001.MediaItemId);
-            Assert.Equal(MediaLinkContext.Post, postMedia2001.ContextType);
-            Assert.Equal(MediaLinkRole.Item, postMedia2001.Role);
-            Assert.Equal(0, postMedia2001.Position);
+            var storyMedia2001 = await db.MediaLinks.SingleAsync(l => l.StoryId == story2001.Id);
+            Assert.Equal(media2001.Id, storyMedia2001.MediaItemId);
+            Assert.Equal(MediaLinkContext.Story, storyMedia2001.ContextType);
+            Assert.Equal(MediaLinkRole.Item, storyMedia2001.Role);
+            Assert.Equal(0, storyMedia2001.Position);
             Assert.Equal(media2001.CreatedAt, media2001.ReceivedAt);
 
-            var alias2001 = await db.SlugAliases.SingleAsync(a => a.PostId == post2001.Id);
+            var alias2001 = await db.SlugAliases.SingleAsync(a => a.StoryId == story2001.Id);
             Assert.Equal("pic-one", alias2001.Value);
             Assert.True(alias2001.IsCanonical);
 
-            // pid 29, hidden: a draft post with no legacy alias, so it gets a generated slug.
-            var post2002 = await db.Posts.SingleAsync(p => p.LegacyId == 2002);
-            Assert.Equal(PostTopic.Tanks, post2002.Topic);
-            Assert.Equal(PostState.Draft, post2002.State);
-            Assert.Null(post2002.PublishedAt);
-            Assert.Null(post2002.RatingAverage);
-            var alias2002 = await db.SlugAliases.SingleAsync(a => a.PostId == post2002.Id);
+            // pid 29, hidden: a draft story with no legacy alias, so it gets a generated slug.
+            var story2002 = await db.Stories.SingleAsync(p => p.LegacyId == 2002);
+            Assert.Equal(StoryTopic.Tanks, story2002.Topic);
+            Assert.Equal(StoryState.Draft, story2002.State);
+            Assert.Null(story2002.PublishedAt);
+            Assert.Null(story2002.RatingAverage);
+            var alias2002 = await db.SlugAliases.SingleAsync(a => a.StoryId == story2002.Id);
             Assert.True(alias2002.IsCanonical);
             Assert.NotEqual("pic-one", alias2002.Value);
             // A generated slug is a fixed-length keyed hash, not the freeform text a legacy alias
@@ -90,32 +90,32 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
             Assert.Matches("^[0-9a-z]{8}$", alias2002.Value);
 
             // pid 21, owner has no migrated profile: a placeholder profile is created and the
-            // post is archived regardless of the (unset) hidden flag.
+            // story is archived regardless of the (unset) hidden flag.
             var placeholder950 = await db.Profiles.SingleAsync(p => p.LegacyId == 950);
             Assert.Equal(ProfileKind.Archived, placeholder950.Kind);
-            var post2003 = await db.Posts.SingleAsync(p => p.LegacyId == 2003);
-            Assert.Equal(placeholder950.Id, post2003.AuthorProfileId);
-            Assert.Equal(PostState.Archived, post2003.State);
-            Assert.Null(post2003.PublishedAt);
+            var story2003 = await db.Stories.SingleAsync(p => p.LegacyId == 2003);
+            Assert.Equal(placeholder950.Id, story2003.AuthorProfileId);
+            Assert.Equal(StoryState.Archived, story2003.State);
+            Assert.Null(story2003.PublishedAt);
 
             // pid 21, fe_user 0: attributed to the community archive, also archived.
             var communityArchive = await db.Profiles.SingleAsync(p => p.Username == "community-archive");
-            var post2004 = await db.Posts.SingleAsync(p => p.LegacyId == 2004);
-            Assert.Equal(communityArchive.Id, post2004.AuthorProfileId);
-            Assert.Equal(PostState.Archived, post2004.State);
+            var story2004 = await db.Stories.SingleAsync(p => p.LegacyId == 2004);
+            Assert.Equal(communityArchive.Id, story2004.AuthorProfileId);
+            Assert.Equal(StoryState.Archived, story2004.State);
 
             // uid 2005 (deleted) must not exist anywhere in the target.
             Assert.False(await db.MediaItems.AnyAsync(m => m.LegacyId == 2005));
-            Assert.False(await db.Posts.AnyAsync(p => p.LegacyId == 2005));
+            Assert.False(await db.Stories.AnyAsync(p => p.LegacyId == 2005));
 
-            // pid 62: a video-extension, media-item-only picture (no post).
+            // pid 62: a video-extension, media-item-only picture (no story).
             var media2006 = await db.MediaItems.SingleAsync(m => m.LegacyId == 2006);
             Assert.Equal(MediaKind.Video, media2006.Kind);
-            Assert.False(await db.Posts.AnyAsync(p => p.LegacyId == 2006));
+            Assert.False(await db.Stories.AnyAsync(p => p.LegacyId == 2006));
 
             // pid 9999: media-item-only, counted by its own pid.
             Assert.True(await db.MediaItems.AnyAsync(m => m.LegacyId == 2007));
-            Assert.False(await db.Posts.AnyAsync(p => p.LegacyId == 2007));
+            Assert.False(await db.Stories.AnyAsync(p => p.LegacyId == 2007));
 
             // pid 138/139: profile image and avatar backfill onto legacy fe_users uid 300.
             var profile300 = await db.Profiles.SingleAsync(p => p.LegacyId == 300);
@@ -127,21 +127,21 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
 
             // uid 2010/2011 share the same realurl alias text; 2010 (the lower uniqalias uid)
             // keeps it, 2011 loses it and falls back to a generated slug.
-            var post2010 = await db.Posts.SingleAsync(p => p.LegacyId == 2010);
-            var alias2010 = await db.SlugAliases.SingleAsync(a => a.PostId == post2010.Id);
+            var story2010 = await db.Stories.SingleAsync(p => p.LegacyId == 2010);
+            var alias2010 = await db.SlugAliases.SingleAsync(a => a.StoryId == story2010.Id);
             Assert.Equal("shared-slug", alias2010.Value);
             Assert.True(alias2010.IsCanonical);
 
-            var post2011 = await db.Posts.SingleAsync(p => p.LegacyId == 2011);
-            var alias2011 = await db.SlugAliases.SingleAsync(a => a.PostId == post2011.Id);
+            var story2011 = await db.Stories.SingleAsync(p => p.LegacyId == 2011);
+            var alias2011 = await db.SlugAliases.SingleAsync(a => a.StoryId == story2011.Id);
             Assert.NotEqual("shared-slug", alias2011.Value);
             Assert.True(alias2011.IsCanonical);
             Assert.Matches("^[0-9a-z]{8}$", alias2011.Value);
             generatedSlug2011 = alias2011.Value;
 
             // uid 2012 has a hashid-looking alias and a normal-looking one; the normal one wins.
-            var post2012 = await db.Posts.SingleAsync(p => p.LegacyId == 2012);
-            var aliases2012 = await db.SlugAliases.Where(a => a.PostId == post2012.Id).ToListAsync();
+            var story2012 = await db.Stories.SingleAsync(p => p.LegacyId == 2012);
+            var aliases2012 = await db.SlugAliases.Where(a => a.StoryId == story2012.Id).ToListAsync();
             Assert.Equal(2, aliases2012.Count);
             var canonical2012 = aliases2012.Single(a => a.IsCanonical);
             Assert.Equal("nice-slug-name", canonical2012.Value);
@@ -165,9 +165,9 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
             Assert.Equal("originals/user_pics/unresolved/01_no_directory.jpg", media2016.StorageKey);
 
             // uid 2017: seeded with a nonzero legacy rating, which the INSERT path carries over.
-            var post2017 = await db.Posts.SingleAsync(p => p.LegacyId == 2017);
-            Assert.Equal(2.5, post2017.RatingAverage);
-            Assert.Equal(4, post2017.RatingCount);
+            var story2017 = await db.Stories.SingleAsync(p => p.LegacyId == 2017);
+            Assert.Equal(2.5, story2017.RatingAverage);
+            Assert.Equal(4, story2017.RatingCount);
 
             // Tank media wiring: main image resolves, showcase carries the resolvable entry and
             // skips the dangling uid 2099, decoration carries the placeholder-owned picture.
@@ -196,9 +196,9 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
         await using (var db = fixture.CreateTargetContext())
         {
             Assert.Equal(16, await db.MediaItems.CountAsync(m => m.LegacyId >= 2000 && m.LegacyId < 3000));
-            Assert.Equal(12, await db.Posts.CountAsync(p => p.LegacyId >= 2000 && p.LegacyId < 3000));
-            // Every post gets exactly one media link (all 12 posts from this class's fixture).
-            Assert.Equal(12, await db.MediaLinks.CountAsync(l => l.PostId != null));
+            Assert.Equal(12, await db.Stories.CountAsync(p => p.LegacyId >= 2000 && p.LegacyId < 3000));
+            // Every story gets exactly one media link (all 12 stories from this class's fixture).
+            Assert.Equal(12, await db.MediaLinks.CountAsync(l => l.StoryId != null));
             var tank300 = await db.Tanks.Include(t => t.MediaLinks).SingleAsync(t => t.LegacyId == 300);
             Assert.Equal(3, tank300.MediaLinks.Count);
 
@@ -207,20 +207,20 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
             Assert.Equal("originals/user_pics/dup/same.jpg", media2013Second.StorageKey);
             Assert.Equal("originals/user_pics/dup/same-2014.jpg", media2014Second.StorageKey);
 
-            var post2011Second = await db.Posts.SingleAsync(p => p.LegacyId == 2011);
-            var alias2011Second = await db.SlugAliases.SingleAsync(a => a.PostId == post2011Second.Id);
-            // The generated slug must survive a re-run byte for byte: the post's own slug from
+            var story2011Second = await db.Stories.SingleAsync(p => p.LegacyId == 2011);
+            var alias2011Second = await db.SlugAliases.SingleAsync(a => a.StoryId == story2011Second.Id);
+            // The generated slug must survive a re-run byte for byte: the story's own slug from
             // the previous run counts as available for it, not as a collision to retry past.
             Assert.Equal(generatedSlug2011, alias2011Second.Value);
 
             // A rerun must never re-seed the rating aggregate from the legacy row either: it stays
             // exactly what the first INSERT produced.
-            var post2017Second = await db.Posts.SingleAsync(p => p.LegacyId == 2017);
-            Assert.Equal(2.5, post2017Second.RatingAverage);
-            Assert.Equal(4, post2017Second.RatingCount);
+            var story2017Second = await db.Stories.SingleAsync(p => p.LegacyId == 2017);
+            Assert.Equal(2.5, story2017Second.RatingAverage);
+            Assert.Equal(4, story2017Second.RatingCount);
         }
 
-        // uid 2017's post now stands in for what CommentMigrationStep does later in the pipeline:
+        // uid 2017's story now stands in for what CommentMigrationStep does later in the pipeline:
         // it recomputes rating_average/rating_count from the rating table and expects them to stay
         // exactly as it left them. Simulate that here and rerun the pictures step once more: before
         // the PgBatchUpsert fix, this DO UPDATE clobbered both columns back to the legacy picture's
@@ -228,9 +228,9 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
         await fixture.RunExclusiveAsync(async () =>
         {
             await using var db = fixture.CreateTargetContext();
-            var post2017 = await db.Posts.SingleAsync(p => p.LegacyId == 2017);
-            post2017.RatingAverage = 1.25;
-            post2017.RatingCount = 999;
+            var story2017 = await db.Stories.SingleAsync(p => p.LegacyId == 2017);
+            story2017.RatingAverage = 1.25;
+            story2017.RatingCount = 999;
             await db.SaveChangesAsync();
         });
 
@@ -238,9 +238,9 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
 
         await using (var db = fixture.CreateTargetContext())
         {
-            var post2017Third = await db.Posts.SingleAsync(p => p.LegacyId == 2017);
-            Assert.Equal(1.25, post2017Third.RatingAverage);
-            Assert.Equal(999, post2017Third.RatingCount);
+            var story2017Third = await db.Stories.SingleAsync(p => p.LegacyId == 2017);
+            Assert.Equal(1.25, story2017Third.RatingAverage);
+            Assert.Equal(999, story2017Third.RatingCount);
         }
     }
 

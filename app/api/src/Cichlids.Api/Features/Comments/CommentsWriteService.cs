@@ -9,7 +9,7 @@ namespace Cichlids.Api.Features.Comments;
 
 /// <summary>
 /// Write logic shared by the picture and tank comment endpoints. A request splits into a comment
-/// row and a rating row exactly like the legacy migration split them, the target post's
+/// row and a rating row exactly like the legacy migration split them, the target story's
 /// denormalized rating aggregate is recomputed from the rating base table (derived aggregates are
 /// recomputed, never authored), and every write records its outbox event in the same transaction
 /// so a dispatcher can deliver it without ever seeing a half-committed change. A member has one
@@ -25,9 +25,9 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
     /// request carries stars for content owned by the author.
     /// </summary>
     public async Task<CommentCreatedDto?> CreateAsync(
-        long? postId, long? tankId, Profile author, string? body, short? stars, CancellationToken cancellationToken)
+        long? storyId, long? tankId, Profile author, string? body, short? stars, CancellationToken cancellationToken)
     {
-        if (stars is not null && await IsOwnTargetAsync(postId, tankId, author.Id, cancellationToken))
+        if (stars is not null && await IsOwnTargetAsync(storyId, tankId, author.Id, cancellationToken))
         {
             return null;
         }
@@ -45,7 +45,7 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
         {
             comment = new Comment
             {
-                PostId = postId,
+                StoryId = storyId,
                 TankId = tankId,
                 AuthorProfileId = author.Id,
                 Body = trimmedBody,
@@ -59,33 +59,33 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
         UpsertedRating? rating = null;
         if (stars is { } starsValue)
         {
-            rating = await UpsertRatingAsync(postId, tankId, author.Id, starsValue, now, cancellationToken);
+            rating = await UpsertRatingAsync(storyId, tankId, author.Id, starsValue, now, cancellationToken);
 
-            // Tanks have no denormalized rating aggregate columns, so only a post target is updated.
-            if (postId is { } ratedPostId)
+            // Tanks have no denormalized rating aggregate columns, so only a story target is updated.
+            if (storyId is { } ratedStoryId)
             {
                 await context.Database.ExecuteSqlInterpolatedAsync(
                     $"""
-                    UPDATE post SET rating_count = agg.cnt, rating_average = agg.avg_stars
+                    UPDATE story SET rating_count = agg.cnt, rating_average = agg.avg_stars
                     FROM (
                         SELECT COUNT(*) AS cnt, AVG(stars)::float8 AS avg_stars
-                        FROM rating WHERE post_id = {ratedPostId}
+                        FROM rating WHERE story_id = {ratedStoryId}
                     ) AS agg
-                    WHERE post.id = {ratedPostId}
+                    WHERE story.id = {ratedStoryId}
                     """,
                     cancellationToken);
             }
         }
 
-        var aggregateType = postId is not null ? "post" : "tank";
-        var aggregateId = (postId ?? tankId)!.Value.ToString();
+        var aggregateType = storyId is not null ? "story" : "tank";
+        var aggregateId = (storyId ?? tankId)!.Value.ToString();
 
         if (comment is not null)
         {
             AddOutboxEvent("comment.created", aggregateType, aggregateId, now, new
             {
                 commentId = comment.Id,
-                postId,
+                storyId,
                 tankId,
                 authorProfileId = author.Id,
             });
@@ -98,7 +98,7 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
                 AddOutboxEvent("rating.created", aggregateType, aggregateId, now, new
                 {
                     ratingId = rating.Id,
-                    postId,
+                    storyId,
                     tankId,
                     profileId = author.Id,
                     stars = rating.Stars,
@@ -109,7 +109,7 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
                 AddOutboxEvent("rating.updated", aggregateType, aggregateId, now, new
                 {
                     ratingId = rating.Id,
-                    postId,
+                    storyId,
                     tankId,
                     profileId = author.Id,
                     stars = rating.Stars,
@@ -150,9 +150,9 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
     }
 
     private async Task<bool> IsOwnTargetAsync(
-        long? postId, long? tankId, long profileId, CancellationToken cancellationToken) =>
-        postId is { } ownedPostId
-            ? await context.Posts.AnyAsync(p => p.Id == ownedPostId && p.AuthorProfileId == profileId, cancellationToken)
+        long? storyId, long? tankId, long profileId, CancellationToken cancellationToken) =>
+        storyId is { } ownedStoryId
+            ? await context.Stories.AnyAsync(p => p.Id == ownedStoryId && p.AuthorProfileId == profileId, cancellationToken)
             : await context.Tanks.AnyAsync(t => t.Id == tankId && t.ProfileId == profileId, cancellationToken);
 
     /// <summary>
@@ -163,18 +163,18 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
     /// The previous stars come from the statement snapshot taken before the replacement.
     /// </summary>
     private async Task<UpsertedRating> UpsertRatingAsync(
-        long? postId, long? tankId, long profileId, short stars, DateTimeOffset createdAt, CancellationToken cancellationToken)
+        long? storyId, long? tankId, long profileId, short stars, DateTimeOffset createdAt, CancellationToken cancellationToken)
     {
-        var rows = postId is { } ratedPostId
+        var rows = storyId is { } ratedStoryId
             ? await context.Database.SqlQuery<UpsertedRating>(
                 $"""
-                INSERT INTO rating (post_id, profile_id, stars, created_at)
-                VALUES ({ratedPostId}, {profileId}, {stars}, {createdAt})
-                ON CONFLICT (profile_id, post_id) WHERE profile_id IS NOT NULL AND post_id IS NOT NULL
+                INSERT INTO rating (story_id, profile_id, stars, created_at)
+                VALUES ({ratedStoryId}, {profileId}, {stars}, {createdAt})
+                ON CONFLICT (profile_id, story_id) WHERE profile_id IS NOT NULL AND story_id IS NOT NULL
                 DO UPDATE SET stars = EXCLUDED.stars, created_at = EXCLUDED.created_at, legacy_comment_id = NULL
                 RETURNING id, stars, (xmax = 0) AS inserted,
                     (SELECT previous.stars FROM rating previous
-                     WHERE previous.profile_id = {profileId} AND previous.post_id = {ratedPostId}) AS previous_stars
+                     WHERE previous.profile_id = {profileId} AND previous.story_id = {ratedStoryId}) AS previous_stars
                 """).ToListAsync(cancellationToken)
             : await context.Database.SqlQuery<UpsertedRating>(
                 $"""

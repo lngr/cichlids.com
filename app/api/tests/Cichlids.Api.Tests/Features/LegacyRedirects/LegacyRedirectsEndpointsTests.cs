@@ -226,7 +226,7 @@ public class LegacyRedirectsEndpointsTests(ApiFixture fixture)
         await using var context = fixture.CreateDbContext();
         var alias = new SlugAlias
         {
-            PostId = fixture.Seed.ArchivedPicture.Id, Value = "older-archived-post", IsCanonical = false, CreatedAt = DateTimeOffset.UtcNow,
+            StoryId = fixture.Seed.ArchivedPicture.Id, Value = "older-archived-story", IsCanonical = false, CreatedAt = DateTimeOffset.UtcNow,
         };
         context.SlugAliases.Add(alias);
         await context.SaveChangesAsync();
@@ -247,7 +247,7 @@ public class LegacyRedirectsEndpointsTests(ApiFixture fixture)
     public async Task Picture_RedirectsAgainWhenArchivedPictureBecomesVisible()
     {
         var archivedId = fixture.Seed.ArchivedPicture.Id;
-        await SetPostStateAsync(archivedId, PostState.Published);
+        await SetStoryStateAsync(archivedId, StoryState.Published);
         try
         {
             var response = await fixture.NoRedirectClient.GetAsync($"/pictures/pic/{fixture.Seed.ArchivedPictureSlug}.html");
@@ -256,7 +256,7 @@ public class LegacyRedirectsEndpointsTests(ApiFixture fixture)
         }
         finally
         {
-            await SetPostStateAsync(archivedId, PostState.Archived);
+            await SetStoryStateAsync(archivedId, StoryState.Archived);
         }
     }
 
@@ -304,9 +304,9 @@ public class LegacyRedirectsEndpointsTests(ApiFixture fixture)
         AssertGone(response);
     }
 
-    private async Task SetPostStateAsync(long postId, PostState state)
+    private async Task SetStoryStateAsync(long storyId, StoryState state)
     {
         await using var context = fixture.CreateDbContext();
-        await context.Posts.Where(p => p.Id == postId).ExecuteUpdateAsync(s => s.SetProperty(p => p.State, state));
+        await context.Stories.Where(p => p.Id == storyId).ExecuteUpdateAsync(s => s.SetProperty(p => p.State, state));
     }
 }

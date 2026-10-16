@@ -7,7 +7,7 @@ namespace Cichlids.Api.Features.Videos;
 
 /// <summary>
 /// The single place that decides how long a video of a member may be. A member whose account is
-/// older than the configured age and who has more than the configured number of public pictures
+/// older than the configured age and who has more than the configured number of published stories
 /// may upload the long maximum; every other member gets the short maximum. The size limit follows
 /// from the length.
 /// </summary>
@@ -20,14 +20,14 @@ public sealed class VideoLimitPolicy(CichlidsDbContext context, IOptions<VideoLi
             .Where(p => p.Id == profileId).Select(p => (DateTimeOffset?)p.CreatedAt).SingleOrDefaultAsync(cancellationToken);
 
         var oldEnough = createdAt is { } created && timeProvider.GetUtcNow() - created > settings.MinAccountAge;
-        var allowsLong = oldEnough && await HasMoreThanAsync(profileId, settings.MinPublicPictures, cancellationToken);
+        var allowsLong = oldEnough && await HasMoreThanAsync(profileId, settings.MinPublishedStories, cancellationToken);
         return VideoLimits.For(allowsLong ? settings.MaxDuration : settings.ShortMaxDuration, settings.MaxBitrate);
     }
 
     private async Task<bool> HasMoreThanAsync(long profileId, int minimum, CancellationToken cancellationToken)
     {
-        var count = await context.Posts.AsNoTracking().CountAsync(
-            p => p.AuthorProfileId == profileId && p.Kind == PostKind.Single && p.State == PostState.Published && p.DeletedAt == null,
+        var count = await context.Stories.AsNoTracking().CountAsync(
+            p => p.AuthorProfileId == profileId && p.State == StoryState.Published && p.DeletedAt == null,
             cancellationToken);
         return count > minimum;
     }

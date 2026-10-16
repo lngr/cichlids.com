@@ -16,7 +16,7 @@ namespace Cichlids.Infrastructure.Media;
 /// (decommission and recommission roles) from the history level of the tank, a care entry link from the
 /// history level of the tank and the only me mark of the entry, a water change session link like the
 /// care entry that finishes the session (an open session is the owner's alone), an inhabitant link from
-/// the profile level of its tank, a post link from the state of the post (published: everyone, draft: its
+/// the profile level of its tank, a story link from the state of the story (published: everyone, draft: its
 /// author, archived or deleted: nobody), a discussion post link always and a profile link while the
 /// profile is not suspended. The owner of a tank sees every link of the tank. A viewer without a profile
 /// is anonymous; the files anonymous viewers see belong in the public storage area.
@@ -114,9 +114,9 @@ public static class MediaVisibility
                     && (t.ProfileId == viewer
                         || (db.CareEntries.Any(e => e.WaterChangeSessionId == s.Id && !e.OnlyMe)
                             && t.State == TankState.Published && t.DeletedAt == null)))))
-            || (l.ContextType == MediaLinkContext.Post
-                && db.Posts.Any(p => p.Id == l.PostId && p.DeletedAt == null
-                    && (p.State == PostState.Published || (p.State == PostState.Draft && p.AuthorProfileId == viewer))))
+            || (l.ContextType == MediaLinkContext.Story
+                && db.Stories.Any(p => p.Id == l.StoryId && p.DeletedAt == null
+                    && (p.State == StoryState.Published || (p.State == StoryState.Draft && p.AuthorProfileId == viewer))))
             || l.ContextType == MediaLinkContext.DiscussionPost
             || (l.ContextType == MediaLinkContext.Profile
                 && (l.ProfileId == viewer

@@ -26,8 +26,8 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "discussion_post", 2, 2);
         AssertRow(report, "media_originals", 2, 2);
         AssertRow(report, "media_forum_attachments", 1, 1);
-        AssertRow(report, "post", 2, 2);
-        AssertRow(report, "post_species", 3, 3);
+        AssertRow(report, "story", 2, 2);
+        AssertRow(report, "story_subject_species", 3, 3);
         AssertRow(report, "comment", 3, 3);
         AssertRow(report, "rating", 2, 2);
         AssertRow(report, "rating_not_newest", 0, 0);
@@ -39,13 +39,13 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "collection", 1, 1);
         AssertInfoRow(report, "collection_skipped_empty", 1);
         AssertRow(report, "collection_entry", 2, 2);
-        AssertRow(report, "post_without_media", 0, 0);
-        AssertRow(report, "post_published_without_canonical_slug", 0, 0);
+        AssertRow(report, "story_without_media", 0, 0);
+        AssertRow(report, "story_published_without_canonical_slug", 0, 0);
         AssertRow(report, "slug_alias_one_canonical_per_post", 0, 0);
         AssertRow(report, "slug_alias_orphans", 0, 0);
         AssertRow(report, "slug_alias_unique_value", 0, 0);
-        AssertRow(report, "post_without_slug_alias", 0, 0);
-        AssertRow(report, "post_rating_count_consistency", 0, 0);
+        AssertRow(report, "story_without_slug_alias", 0, 0);
+        AssertRow(report, "story_rating_count_consistency", 0, 0);
         AssertRow(report, "comment_score_consistency", 0, 0);
         AssertRow(report, "discussion_thread_post_count_consistency", 0, 0);
         AssertRow(report, "profile_username_email_like", 0, 0);
@@ -103,25 +103,37 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
     }
 
     [Fact]
-    public async Task FlagsADeletedPostWithoutAdjustingTheCommentExpectations()
+    public async Task FlagsADeletedStoryWithoutAdjustingTheCommentExpectations()
     {
-        const string post = "(SELECT id FROM post WHERE legacy_id = 9101)";
+        const string story = "(SELECT id FROM story WHERE legacy_id = 9101)";
         var report = await fixture.VerifyInRolledBackTransactionAsync(async context =>
         {
             await VerifyEtlFixture.ExecuteAsync(
-                context, $"DELETE FROM comment_vote WHERE comment_id IN (SELECT id FROM comment WHERE post_id = {post})");
-            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM comment WHERE post_id = {post}");
-            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM rating WHERE post_id = {post}");
-            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM slug_alias WHERE post_id = {post}");
-            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM post_species WHERE post_id = {post}");
-            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM collection_entry WHERE post_id = {post}");
-            await VerifyEtlFixture.ExecuteAsync(context, "DELETE FROM post WHERE legacy_id = 9101");
+                context, $"DELETE FROM comment_vote WHERE comment_id IN (SELECT id FROM comment WHERE story_id = {story})");
+            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM comment WHERE story_id = {story}");
+            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM rating WHERE story_id = {story}");
+            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM slug_alias WHERE story_id = {story}");
+            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM story_subject WHERE story_id = {story}");
+            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM collection_entry WHERE story_id = {story}");
+            await VerifyEtlFixture.ExecuteAsync(context, "DELETE FROM story WHERE legacy_id = 9101");
         });
 
         Assert.False(report.Passed);
-        AssertMismatch(report, "post", 2, 1);
+        AssertMismatch(report, "story", 2, 1);
         AssertMismatch(report, "comment", 3, 1);
         AssertRow(report, "vault_legacy_comment", 3, 3);
+    }
+
+    [Fact]
+    public async Task FlagsAStoryWhoseCoverIsNotOneOfItsItems()
+    {
+        var report = await fixture.VerifyInRolledBackTransactionAsync(context => VerifyEtlFixture.ExecuteAsync(
+            context,
+            "UPDATE story SET cover_media_link_id = (SELECT l.id FROM media_link l WHERE l.story_id <> story.id AND l.role = 'item' LIMIT 1) "
+            + "WHERE legacy_id = 9101"));
+
+        Assert.False(report.Passed);
+        AssertMismatch(report, "story_cover_outside_items", 0, 1);
     }
 
     [Fact]

@@ -6,7 +6,7 @@ namespace Cichlids.Infrastructure.Media;
 /// <summary>
 /// Queries the media items of a context and marks media items for placement. A change that can alter
 /// whether anonymous viewers see an item (a link created or removed, a tank changing its visibility, an
-/// entry set to only me, a post published, withdrawn or removed, a profile suspended) marks the affected
+/// entry set to only me, a story published, withdrawn or removed, a profile suspended) marks the affected
 /// items in the transaction of the change by database triggers, whichever statement makes the change; the
 /// placement worker then moves their variants into the area that matches the answer.
 /// </summary>
@@ -36,10 +36,10 @@ public static class MediaPlacementMarks
             .Select(l => l.MediaItemId);
 
     /// <summary>
-    /// The media items linked to a post.
+    /// The media items linked to a story.
     /// </summary>
-    public static IQueryable<long> MediaItemIdsOfPost(this CichlidsDbContext db, long postId) =>
-        db.MediaLinks.Where(l => l.PostId == postId).Select(l => l.MediaItemId);
+    public static IQueryable<long> MediaItemIdsOfStory(this CichlidsDbContext db, long storyId) =>
+        db.MediaLinks.Where(l => l.StoryId == storyId).Select(l => l.MediaItemId);
 
     /// <summary>
     /// Marks the given media items as due for placement at once, resets their failed attempts and changes

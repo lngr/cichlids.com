@@ -4,7 +4,7 @@ namespace Cichlids.Domain.Entities;
 
 /// <summary>
 /// Attaches a media item to one context (a tank, an inhabitant, a care entry, a water change
-/// session, a post, a discussion post or a profile). ContextType names the context and exactly the
+/// session, a story, a discussion post or a profile). ContextType names the context and exactly the
 /// key column that matches it is set, which the database checks. A link has a role within its
 /// context, a position among the links of the same context and role and an optional caption that
 /// belongs to this link only. Deleting the context or the media item deletes the link.
@@ -19,7 +19,7 @@ public class MediaLink
     public long? InhabitantId { get; set; }
     public long? CareEntryId { get; set; }
     public long? WaterChangeSessionId { get; set; }
-    public long? PostId { get; set; }
+    public long? StoryId { get; set; }
     public long? DiscussionPostId { get; set; }
     public long? ProfileId { get; set; }
     public MediaLinkRole Role { get; set; }
@@ -36,8 +36,8 @@ public class MediaLink
     public static MediaLink ForWaterChangeSession(long sessionId, long mediaItemId, int position = 0) =>
         new() { ContextType = MediaLinkContext.WaterChangeSession, WaterChangeSessionId = sessionId, MediaItemId = mediaItemId, Role = MediaLinkRole.Evidence, Position = position };
 
-    public static MediaLink ForPost(long postId, long mediaItemId, int position = 0) =>
-        new() { ContextType = MediaLinkContext.Post, PostId = postId, MediaItemId = mediaItemId, Role = MediaLinkRole.Item, Position = position };
+    public static MediaLink ForStory(long storyId, long mediaItemId, int position = 0) =>
+        new() { ContextType = MediaLinkContext.Story, StoryId = storyId, MediaItemId = mediaItemId, Role = MediaLinkRole.Item, Position = position };
 
     public static MediaLink ForDiscussionPost(long discussionPostId, long mediaItemId, int position = 0) =>
         new() { ContextType = MediaLinkContext.DiscussionPost, DiscussionPostId = discussionPostId, MediaItemId = mediaItemId, Role = MediaLinkRole.Attachment, Position = position };

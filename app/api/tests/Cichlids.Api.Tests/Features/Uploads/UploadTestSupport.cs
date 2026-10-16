@@ -93,9 +93,9 @@ internal static class UploadTestSupport
         return await ReadAsync<DraftDto>(response);
     }
 
-    public static async Task<HttpResponseMessage> PublishAsync(HttpClient client, string token, long postId, PublishPostRequest body)
+    public static async Task<HttpResponseMessage> PublishAsync(HttpClient client, string token, long storyId, PublishStoryRequest body)
     {
-        using var request = new HttpRequestMessage(HttpMethod.Post, $"/api/posts/{postId}/publish")
+        using var request = new HttpRequestMessage(HttpMethod.Post, $"/api/stories/{storyId}/publish")
         {
             Content = JsonContent.Create(body),
         };
@@ -103,9 +103,9 @@ internal static class UploadTestSupport
         return await client.SendAsync(request);
     }
 
-    public static async Task<HttpResponseMessage> DiscardAsync(HttpClient client, string token, long postId)
+    public static async Task<HttpResponseMessage> DiscardAsync(HttpClient client, string token, long storyId)
     {
-        using var request = new HttpRequestMessage(HttpMethod.Delete, $"/api/posts/{postId}");
+        using var request = new HttpRequestMessage(HttpMethod.Delete, $"/api/stories/{storyId}");
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
         return await client.SendAsync(request);
     }

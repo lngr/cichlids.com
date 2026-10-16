@@ -35,7 +35,7 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
         const string secret = "matching-subscriber-secret"; // gitleaks:allow
         await CreateSubscriptionAsync(listener.Uri, secret, ["comment.created"]);
 
-        var (postId, slug) = await CreatePublishedPictureAsync();
+        var (storyId, slug) = await CreatePublishedPictureAsync();
         var commentId = await PostCommentAsync(slug);
 
         var dispatched = await fixture.CreateDispatchService().RunOnceAsync(CancellationToken.None);
@@ -50,12 +50,12 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
 
         using var envelope = JsonDocument.Parse(request.Body);
         Assert.Equal("comment.created", envelope.RootElement.GetProperty("eventType").GetString());
-        Assert.Equal("post", envelope.RootElement.GetProperty("aggregateType").GetString());
-        Assert.Equal(postId.ToString(), envelope.RootElement.GetProperty("aggregateId").GetString());
+        Assert.Equal("story", envelope.RootElement.GetProperty("aggregateType").GetString());
+        Assert.Equal(storyId.ToString(), envelope.RootElement.GetProperty("aggregateId").GetString());
         Assert.Equal(commentId, envelope.RootElement.GetProperty("payload").GetProperty("commentId").GetInt64());
 
         await using var db = fixture.CreateDbContext();
-        var outboxEvent = await db.OutboxEvents.SingleAsync(e => e.EventType == "comment.created" && e.AggregateId == postId.ToString());
+        var outboxEvent = await db.OutboxEvents.SingleAsync(e => e.EventType == "comment.created" && e.AggregateId == storyId.ToString());
         Assert.NotNull(outboxEvent.DispatchedAt);
         Assert.Equal(0, outboxEvent.AttemptCount);
     }
@@ -63,13 +63,13 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
     [Fact]
     public async Task RunOnceAsync_NoMatchingSubscriberStillMarksTheEventDispatched()
     {
-        var (postId, slug) = await CreatePublishedPictureAsync();
+        var (storyId, slug) = await CreatePublishedPictureAsync();
         await PostCommentAsync(slug);
 
         await fixture.CreateDispatchService().RunOnceAsync(CancellationToken.None);
 
         await using var db = fixture.CreateDbContext();
-        var outboxEvent = await db.OutboxEvents.SingleAsync(e => e.EventType == "comment.created" && e.AggregateId == postId.ToString());
+        var outboxEvent = await db.OutboxEvents.SingleAsync(e => e.EventType == "comment.created" && e.AggregateId == storyId.ToString());
         Assert.NotNull(outboxEvent.DispatchedAt);
     }
 
@@ -82,7 +82,7 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
 
         await CreateSubscriptionAsync(listener.Uri, "retry-secret", ["comment.created"]);
 
-        var (postId, slug) = await CreatePublishedPictureAsync();
+        var (storyId, slug) = await CreatePublishedPictureAsync();
         await PostCommentAsync(slug);
 
         var clock = new FakeTimeProvider(DateTimeOffset.UtcNow);
@@ -92,7 +92,7 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
         await using (var db = fixture.CreateDbContext())
         {
             var afterFirstAttempt = await db.OutboxEvents.SingleAsync(
-                e => e.EventType == "comment.created" && e.AggregateId == postId.ToString());
+                e => e.EventType == "comment.created" && e.AggregateId == storyId.ToString());
             Assert.Null(afterFirstAttempt.DispatchedAt);
             Assert.Equal(1, afterFirstAttempt.AttemptCount);
             Assert.Contains("responded 500", afterFirstAttempt.LastError);
@@ -104,7 +104,7 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
         await using (var db = fixture.CreateDbContext())
         {
             var afterRetry = await db.OutboxEvents.SingleAsync(
-                e => e.EventType == "comment.created" && e.AggregateId == postId.ToString());
+                e => e.EventType == "comment.created" && e.AggregateId == storyId.ToString());
             Assert.NotNull(afterRetry.DispatchedAt);
             Assert.Equal(1, afterRetry.AttemptCount);
             Assert.Null(afterRetry.LastError);
@@ -694,7 +694,7 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
 
         await CreateSubscriptionAsync(listener.Uri, "wildcard-secret", ["*"]);
 
-        var (postId, slug) = await CreatePublishedPictureAsync();
+        var (storyId, slug) = await CreatePublishedPictureAsync();
         await PostCommentAsync(slug);
 
         await fixture.CreateDispatchService().RunOnceAsync(CancellationToken.None);
@@ -702,7 +702,7 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
         Assert.Single(listener.Requests);
 
         await using var db = fixture.CreateDbContext();
-        var outboxEvent = await db.OutboxEvents.SingleAsync(e => e.EventType == "comment.created" && e.AggregateId == postId.ToString());
+        var outboxEvent = await db.OutboxEvents.SingleAsync(e => e.EventType == "comment.created" && e.AggregateId == storyId.ToString());
         Assert.NotNull(outboxEvent.DispatchedAt);
     }
 
@@ -734,7 +734,7 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
         await db.Database.ExecuteSqlAsync(
             $"""
             INSERT INTO outbox_event (id, occurred_at, event_type, aggregate_type, aggregate_id, payload, next_attempt_at)
-            VALUES ({id}, {occurredAt}, 'test.event', 'post', '1', {payload}::jsonb, {occurredAt})
+            VALUES ({id}, {occurredAt}, 'test.event', 'story', '1', {payload}::jsonb, {occurredAt})
             """);
         return id;
     }
@@ -746,7 +746,7 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
         DateTimeOffset? lastAttemptAt = null)
     {
         await using var db = fixture.CreateDbContext();
-        var outboxEvent = OutboxEvent.Create(eventType, "post", "1", """{"postId":1}""", occurredAt);
+        var outboxEvent = OutboxEvent.Create(eventType, "story", "1", """{"storyId":1}""", occurredAt);
         outboxEvent.NextAttemptAt = nextAttemptAt ?? occurredAt;
         outboxEvent.LastAttemptAt = lastAttemptAt;
         outboxEvent.AttemptCount = lastAttemptAt is null ? 0 : 1;
@@ -755,7 +755,7 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
         return outboxEvent.Id;
     }
 
-    private async Task<(long PostId, string Slug)> CreatePublishedPictureAsync()
+    private async Task<(long StoryId, string Slug)> CreatePublishedPictureAsync()
     {
         await using var db = fixture.CreateDbContext();
 
@@ -769,34 +769,34 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
         db.Profiles.Add(author);
         await db.SaveChangesAsync();
 
-        var post = new Post
+        var story = new Story
         {
             AuthorProfileId = author.Id,
-            Kind = PostKind.Single,
-            Topic = PostTopic.Cichlids,
+            
+            Topic = StoryTopic.Cichlids,
             Title = "Outbox Dispatch Target",
-            State = PostState.Published,
+            State = StoryState.Published,
             CreatedAt = DateTimeOffset.UtcNow.AddDays(-1),
             PublishedAt = DateTimeOffset.UtcNow.AddDays(-1),
         };
-        db.Posts.Add(post);
+        db.Stories.Add(story);
         await db.SaveChangesAsync();
 
         var slug = $"outbox-target-{Guid.NewGuid():N}"[..28];
         db.SlugAliases.Add(new SlugAlias
         {
-            PostId = post.Id, Value = slug, IsCanonical = true, CreatedAt = DateTimeOffset.UtcNow,
+            StoryId = story.Id, Value = slug, IsCanonical = true, CreatedAt = DateTimeOffset.UtcNow,
         });
         await db.SaveChangesAsync();
 
-        return (post.Id, slug);
+        return (story.Id, slug);
     }
 
     private async Task<long> PostCommentAsync(string slug)
     {
         var token = TestTokens.Create(Guid.NewGuid().ToString(), $"writer-{Guid.NewGuid():N}"[..24]);
 
-        using var request = new HttpRequestMessage(HttpMethod.Post, $"/api/pictures/{slug}/comments")
+        using var request = new HttpRequestMessage(HttpMethod.Post, $"/api/stories/{slug}/comments")
         {
             Content = JsonContent.Create(new CreateCommentRequest("Nice fish!", null)),
         };

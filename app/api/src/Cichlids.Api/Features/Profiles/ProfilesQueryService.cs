@@ -56,8 +56,8 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
             profileImageUrl = new MediaUrlBuilder(objectStore).BuildBest(variantStorageKeysByLabel);
         }
 
-        var pictureCount = await context.Posts
-            .CountAsync(p => p.AuthorProfileId == id && p.State == PostState.Published && p.DeletedAt == null, cancellationToken);
+        var storyCount = await context.Stories
+            .CountAsync(p => p.AuthorProfileId == id && p.State == StoryState.Published && p.DeletedAt == null, cancellationToken);
 
         var tankCount = await context.TanksVisibleTo(viewerProfileId)
             .CountAsync(t => t.ProfileId == id && t.State == TankState.Published && t.DeletedAt == null, cancellationToken);
@@ -74,7 +74,7 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
             profile.CreatedAt,
             avatarUrl,
             profileImageUrl,
-            new ProfileStatsDto(pictureCount, tankCount, commentCount),
+            new ProfileStatsDto(storyCount, tankCount, commentCount),
             profile.OnboardingCompletedAt, profile.Interests, profile.Badges,
             await VacationShareAsync(profile, viewerProfileId, cancellationToken));
     }

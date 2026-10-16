@@ -14,7 +14,7 @@ public sealed class SchemaMigrationTests
         "species", "species_common_name", "species_link",
         "tank", "inhabitant",
         "media_item", "media_variant", "media_link",
-        "post", "post_species",
+        "story", "story_subject",
         "comment", "rating", "comment_vote",
         "collection", "collection_entry",
         "follow", "slug_alias",
@@ -27,7 +27,7 @@ public sealed class SchemaMigrationTests
     // spans every area of the schema rather than every single table.
     private static readonly string[] TablesWithUniqueLegacyIdIndex =
     [
-        "profile", "post", "comment", "media_item", "tank", "species", "collection",
+        "profile", "story", "comment", "media_item", "tank", "species", "collection",
         "discussion_thread", "discussion_post",
     ];
 
@@ -161,11 +161,11 @@ public sealed class SchemaMigrationTests
         await migrator.MigrateAsync();
 
         var rows = await context.Database.SqlQueryRaw<int>(
-            "SELECT stars AS \"Value\" FROM rating WHERE profile_id = 2 AND post_id = 10").ToListAsync();
+            "SELECT stars AS \"Value\" FROM rating WHERE profile_id = 2 AND story_id = 10").ToListAsync();
         Assert.Equal([5], rows);
-        var count = await context.Database.SqlQueryRaw<int>("SELECT rating_count AS \"Value\" FROM post WHERE id = 10").SingleAsync();
+        var count = await context.Database.SqlQueryRaw<int>("SELECT rating_count AS \"Value\" FROM story WHERE id = 10").SingleAsync();
         Assert.Equal(2, count);
-        var average = await context.Database.SqlQueryRaw<double>("SELECT rating_average AS \"Value\" FROM post WHERE id = 10").SingleAsync();
+        var average = await context.Database.SqlQueryRaw<double>("SELECT rating_average AS \"Value\" FROM story WHERE id = 10").SingleAsync();
         Assert.Equal(4, average);
     }
 
@@ -192,7 +192,7 @@ public sealed class SchemaMigrationTests
         await migrator.MigrateAsync();
 
         var equal = await context.Database.SqlQueryRaw<bool>(
-            "SELECT updated_at = created_at AS \"Value\" FROM post WHERE id = 10").SingleAsync();
+            "SELECT updated_at = created_at AS \"Value\" FROM story WHERE id = 10").SingleAsync();
         Assert.True(equal);
     }
 

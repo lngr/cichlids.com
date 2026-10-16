@@ -207,7 +207,7 @@ public sealed class CareEndpointsTests(ApiFixture fixture) : IAsyncLifetime
     [Theory]
     [InlineData("/api/species/careful-unknown-species")]
     [InlineData("/api/tanks/1/careless")]
-    [InlineData("/api/pictures/care")]
+    [InlineData("/api/stories/care")]
     public async Task GivenOtherRouteContainingCare_WhenItFails_ThenNoCareProblemCode(string url)
     {
         using var response = await SendAsync(HttpMethod.Get, url, null);

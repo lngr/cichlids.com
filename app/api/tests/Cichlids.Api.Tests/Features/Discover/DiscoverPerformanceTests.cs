@@ -99,19 +99,19 @@ public class DiscoverPerformanceTests(ApiFixture fixture)
                 db.MediaVariants.Add(new MediaVariant { MediaItemId = photo.Id, Label = "large", StorageKey = $"variants/large/candidate/{photo.Id}.jpg" });
             foreach (var photo in photos.Skip(1))
             {
-                var post = new Post { AuthorProfileId = fixture.Seed.Alice.Id, TankId = tank.Id,
-                    State = PostState.Published, PublishedAt = photo.CreatedAt };
-                db.Posts.Add(post);
+                var story = new Story { AuthorProfileId = fixture.Seed.Alice.Id, Subjects = [StorySubject.ForTank(tank.Id)],
+                    State = StoryState.Published, PublishedAt = photo.CreatedAt };
+                db.Stories.Add(story);
                 await db.SaveChangesAsync();
-                db.MediaLinks.Add(MediaLink.ForPost(post.Id, photo.Id));
+                db.MediaLinks.Add(MediaLink.ForStory(story.Id, photo.Id));
             }
             var video = new MediaItem { Kind = MediaKind.Video, StorageKey = Guid.NewGuid().ToString() };
             var draftPhoto = new MediaItem { Kind = MediaKind.Photo, StorageKey = Guid.NewGuid().ToString() };
-            var draft = new Post { AuthorProfileId = fixture.Seed.Alice.Id, TankId = tank.Id, State = PostState.Draft };
+            var draft = new Story { AuthorProfileId = fixture.Seed.Alice.Id, Subjects = [StorySubject.ForTank(tank.Id)], State = StoryState.Draft };
             db.AddRange(video, draftPhoto, draft);
             await db.SaveChangesAsync();
             db.MediaLinks.Add(MediaLink.ForTank(tank.Id, video.Id, MediaLinkRole.Showcase));
-            db.MediaLinks.Add(MediaLink.ForPost(draft.Id, draftPhoto.Id));
+            db.MediaLinks.Add(MediaLink.ForStory(draft.Id, draftPhoto.Id));
             await db.SaveChangesAsync();
             (count == 8 ? candidateIds : excludedIds).Add(tank.Id);
         }

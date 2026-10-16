@@ -12,7 +12,7 @@ namespace Cichlids.Etl.Steps;
 /// <summary>
 /// Migrates legacy pictures (user_cichlids_pictures) into media_item and, for the
 /// legacy "pid" values that represent a gallery listing rather than a technical/decoration
-/// upload, into a matching post plus its media link and slug_alias rows.
+/// upload, into a matching story plus its media link and slug_alias rows.
 /// Also links the profile image and avatar of each profile and the main image and the
 /// showcase, decoration and technic images of each tank once every picture has its own
 /// media item, since those legacy image references only resolve after this step has run.
@@ -33,19 +33,18 @@ public sealed class PictureMigrationStep : IEtlStep
         "mp4", "mpg", "avi", "wmv", "flv", "webm", "mkv", "m4v", "mp2", "m2v", "mpeg", "3gp", "3g2", "mov",
     };
 
-    private static readonly Dictionary<int, PostTopic> PostTopicByPid = new()
+    private static readonly Dictionary<int, StoryTopic> StoryTopicByPid = new()
     {
-        [21] = PostTopic.Cichlids,
-        [29] = PostTopic.Tanks,
-        [109] = PostTopic.Offtopic,
-        [131] = PostTopic.Contest,
+        [21] = StoryTopic.Cichlids,
+        [29] = StoryTopic.Tanks,
+        [109] = StoryTopic.Offtopic,
+        [131] = StoryTopic.Contest,
     };
 
     private static readonly ValueConverter<ProfileKind, string> ProfileKindConverter = new SnakeCaseEnumConverter<ProfileKind>();
     private static readonly ValueConverter<MediaKind, string> MediaKindConverter = new SnakeCaseEnumConverter<MediaKind>();
-    private static readonly ValueConverter<PostKind, string> PostKindConverter = new SnakeCaseEnumConverter<PostKind>();
-    private static readonly ValueConverter<PostTopic, string> PostTopicConverter = new SnakeCaseEnumConverter<PostTopic>();
-    private static readonly ValueConverter<PostState, string> PostStateConverter = new SnakeCaseEnumConverter<PostState>();
+    private static readonly ValueConverter<StoryTopic, string> StoryTopicConverter = new SnakeCaseEnumConverter<StoryTopic>();
+    private static readonly ValueConverter<StoryState, string> StoryStateConverter = new SnakeCaseEnumConverter<StoryState>();
     private static readonly ValueConverter<MediaLinkRole, string> RoleConverter = new SnakeCaseEnumConverter<MediaLinkRole>();
 
     public string Name => "pictures";
@@ -59,7 +58,7 @@ public sealed class PictureMigrationStep : IEtlStep
         var profileByLegacyId = await LoadProfilesAsync(context, cancellationToken);
         var storageKeyOwners = await LoadStorageKeyOwnersAsync(context, cancellationToken);
         var mediaIdByLegacyId = new Dictionary<int, long>();
-        var postIdByLegacyId = new Dictionary<int, long>();
+        var storyIdByLegacyId = new Dictionary<int, long>();
         var anonymous = new AnonymousArchiveAttribution(context, stats, "pictures");
 
         const string sql = """
@@ -120,7 +119,7 @@ public sealed class PictureMigrationStep : IEtlStep
 
                 if (batch.Count >= BatchSize)
                 {
-                    await ProcessBatchAsync(context, batch, storageKeyOwners, mediaIdByLegacyId, postIdByLegacyId, stats, cancellationToken);
+                    await ProcessBatchAsync(context, batch, storageKeyOwners, mediaIdByLegacyId, storyIdByLegacyId, stats, cancellationToken);
                     batch.Clear();
                 }
             }
@@ -128,7 +127,7 @@ public sealed class PictureMigrationStep : IEtlStep
 
         if (batch.Count > 0)
         {
-            await ProcessBatchAsync(context, batch, storageKeyOwners, mediaIdByLegacyId, postIdByLegacyId, stats, cancellationToken);
+            await ProcessBatchAsync(context, batch, storageKeyOwners, mediaIdByLegacyId, storyIdByLegacyId, stats, cancellationToken);
         }
 
         await BackfillMediaLinkAsync(
@@ -144,7 +143,7 @@ public sealed class PictureMigrationStep : IEtlStep
             stats, cancellationToken);
 
         await PopulateTankMediaAsync(context, mediaIdByLegacyId, stats, cancellationToken);
-        await PopulateSlugAliasesAsync(context, postIdByLegacyId, stats, cancellationToken);
+        await PopulateSlugAliasesAsync(context, storyIdByLegacyId, stats, cancellationToken);
 
         anonymous.Report();
     }
@@ -154,7 +153,7 @@ public sealed class PictureMigrationStep : IEtlStep
         List<ActivePicture> batch,
         Dictionary<string, int> storageKeyOwners,
         Dictionary<int, long> mediaIdByLegacyId,
-        Dictionary<int, long> postIdByLegacyId,
+        Dictionary<int, long> storyIdByLegacyId,
         StepStatistics stats,
         CancellationToken cancellationToken)
     {
@@ -200,12 +199,12 @@ public sealed class PictureMigrationStep : IEtlStep
             }
         }
 
-        var postPictures = new List<ActivePicture>();
+        var storyPictures = new List<ActivePicture>();
         foreach (var picture in batch)
         {
-            if (PostTopicByPid.ContainsKey(picture.Pid))
+            if (StoryTopicByPid.ContainsKey(picture.Pid))
             {
-                postPictures.Add(picture);
+                storyPictures.Add(picture);
             }
             else if (picture.Pid is TanksTechnicPid or TanksDecorationPid or TanksUploadPid or ProfileImagePid or AvatarPid)
             {
@@ -218,31 +217,30 @@ public sealed class PictureMigrationStep : IEtlStep
             }
         }
 
-        if (postPictures.Count == 0)
+        if (storyPictures.Count == 0)
         {
             return;
         }
 
-        var postRows = new List<IReadOnlyList<object?>>(postPictures.Count);
-        foreach (var picture in postPictures)
+        var storyRows = new List<IReadOnlyList<object?>>(storyPictures.Count);
+        foreach (var picture in storyPictures)
         {
-            var topic = PostTopicByPid[picture.Pid];
+            var topic = StoryTopicByPid[picture.Pid];
             var isArchivedOwner = picture.OwnerKind is ProfileKind.Archived or ProfileKind.System;
             var state = isArchivedOwner
-                ? PostState.Archived
-                : picture.Hidden ? PostState.Draft : PostState.Published;
-            var publishedAt = state == PostState.Published
+                ? StoryState.Archived
+                : picture.Hidden ? StoryState.Draft : StoryState.Published;
+            var publishedAt = state == StoryState.Published
                 ? DateTimeOffset.FromUnixTimeSeconds(picture.Tstamp)
                 : (DateTimeOffset?)null;
             var ratingAverage = picture.Rating > 0 ? (double?)picture.Rating : null;
 
-            postRows.Add(new object?[]
+            storyRows.Add(new object?[]
             {
                 picture.LegacyId,
                 picture.OwnerProfileId,
-                PostKindConverter.ConvertToProvider(PostKind.Single),
-                PostTopicConverter.ConvertToProvider(topic),
-                PostStateConverter.ConvertToProvider(state),
+                StoryTopicConverter.ConvertToProvider(topic),
+                StoryStateConverter.ConvertToProvider(state),
                 publishedAt,
                 picture.Title,
                 picture.Description,
@@ -254,27 +252,27 @@ public sealed class PictureMigrationStep : IEtlStep
             });
         }
 
-        var postResults = await PgBatchUpsert.UpsertBatchAsync(
+        var storyResults = await PgBatchUpsert.UpsertBatchAsync(
             context.Target,
             context.Transaction,
-            "post",
+            "story",
             "legacy_id",
             [
-                "legacy_id", "author_profile_id", "kind", "topic", "state", "published_at",
+                "legacy_id", "author_profile_id", "topic", "state", "published_at",
                 "title", "description", "view_count", "rating_count", "rating_average", "created_at", "updated_at",
             ],
-            postRows,
+            storyRows,
             cancellationToken);
 
-        var postMediaRows = new List<(long PostId, long MediaItemId)>(postPictures.Count);
-        foreach (var picture in postPictures)
+        var storyMediaRows = new List<(long StoryId, long MediaItemId)>(storyPictures.Count);
+        foreach (var picture in storyPictures)
         {
-            var postId = postResults[picture.LegacyId].Id;
-            postIdByLegacyId[picture.LegacyId] = postId;
-            postMediaRows.Add((postId, mediaIdByLegacyId[picture.LegacyId]));
+            var storyId = storyResults[picture.LegacyId].Id;
+            storyIdByLegacyId[picture.LegacyId] = storyId;
+            storyMediaRows.Add((storyId, mediaIdByLegacyId[picture.LegacyId]));
         }
 
-        await InsertPostMediaAsync(context.Target, context.Transaction, postMediaRows, cancellationToken);
+        await InsertStoryMediaAsync(context.Target, context.Transaction, storyMediaRows, cancellationToken);
     }
 
     private static async Task<(long ProfileId, ProfileKind Kind)> ResolveOwnerAsync(
@@ -356,10 +354,10 @@ public sealed class PictureMigrationStep : IEtlStep
             : $"{directory}{filename[..lastDot]}-{legacyId}{filename[lastDot..]}";
     }
 
-    private static async Task InsertPostMediaAsync(
+    private static async Task InsertStoryMediaAsync(
         NpgsqlConnection connection,
         NpgsqlTransaction transaction,
-        IReadOnlyList<(long PostId, long MediaItemId)> rows,
+        IReadOnlyList<(long StoryId, long MediaItemId)> rows,
         CancellationToken cancellationToken)
     {
         if (rows.Count == 0)
@@ -371,19 +369,19 @@ public sealed class PictureMigrationStep : IEtlStep
         await using var command = new NpgsqlCommand { Connection = connection, Transaction = transaction };
 
         var paramIndex = 0;
-        foreach (var (postId, mediaItemId) in rows)
+        foreach (var (storyId, mediaItemId) in rows)
         {
-            var postParam = $"p{paramIndex++}";
+            var storyParam = $"p{paramIndex++}";
             var mediaParam = $"p{paramIndex++}";
-            command.Parameters.AddWithValue(postParam, postId);
+            command.Parameters.AddWithValue(storyParam, storyId);
             command.Parameters.AddWithValue(mediaParam, mediaItemId);
-            valuesSql.Add($"(@{postParam}, @{mediaParam}, 'post', 'item', 0)");
+            valuesSql.Add($"(@{storyParam}, @{mediaParam}, 'story', 'item', 0)");
         }
 
         command.CommandText = $"""
-            INSERT INTO media_link (post_id, media_item_id, context_type, role, position)
+            INSERT INTO media_link (story_id, media_item_id, context_type, role, position)
             VALUES {string.Join(", ", valuesSql)}
-            ON CONFLICT (post_id, role, media_item_id) WHERE post_id IS NOT NULL DO NOTHING
+            ON CONFLICT (story_id, role, media_item_id) WHERE story_id IS NOT NULL DO NOTHING
             """;
 
         await command.ExecuteNonQueryAsync(cancellationToken);
@@ -583,27 +581,27 @@ public sealed class PictureMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Builds each migrated post's slug_alias rows from its surviving legacy realurl aliases
+    /// Builds each migrated story's slug_alias rows from its surviving legacy realurl aliases
     /// (after the global value-text collision pass), or generates one deterministic short slug
-    /// for a post that ends up with none. Writes run as one set-based delete over all migrated
-    /// posts followed by chunked inserts: a delete-and-insert round trip per post (well over a
-    /// hundred thousand posts) would dominate the whole step's run time.
+    /// for a story that ends up with none. Writes run as one set-based delete over all migrated
+    /// stories followed by chunked inserts: a delete-and-insert round trip per story (well over a
+    /// hundred thousand stories) would dominate the whole step's run time.
     /// </summary>
     private static async Task PopulateSlugAliasesAsync(
-        EtlContext context, Dictionary<int, long> postIdByLegacyId, StepStatistics stats, CancellationToken cancellationToken)
+        EtlContext context, Dictionary<int, long> storyIdByLegacyId, StepStatistics stats, CancellationToken cancellationToken)
     {
         var aliasesByPictureLegacyId = await LoadPictureAliasesAsync(context, stats, cancellationToken);
 
-        // Every slug value's owning post, seeded from the persisted table so a re-run recognizes
-        // a post's own previously generated slug as its own rather than as a foreign collision
+        // Every slug value's owning story, seeded from the persisted table so a re-run recognizes
+        // a story's own previously generated slug as its own rather than as a foreign collision
         // (which would mint a fresh slug on every run), then updated with this run's legacy alias
         // values before any slug is generated so a generated slug can never land on a value a
         // legacy alias in this same run is about to claim.
         var slugValueOwners = await LoadSlugValueOwnersAsync(context, cancellationToken);
 
         var aliasRows = new List<IReadOnlyList<object?>>();
-        var postsNeedingGeneratedSlug = new List<(int PictureLegacyId, long PostId)>();
-        foreach (var (pictureLegacyId, postId) in postIdByLegacyId)
+        var storiesNeedingGeneratedSlug = new List<(int PictureLegacyId, long StoryId)>();
+        foreach (var (pictureLegacyId, storyId) in storyIdByLegacyId)
         {
             var surviving = aliasesByPictureLegacyId.TryGetValue(pictureLegacyId, out var list)
                 ? list
@@ -611,37 +609,37 @@ public sealed class PictureMigrationStep : IEtlStep
 
             if (surviving.Count == 0)
             {
-                postsNeedingGeneratedSlug.Add((pictureLegacyId, postId));
+                storiesNeedingGeneratedSlug.Add((pictureLegacyId, storyId));
             }
             else
             {
                 var canonicalUid = ChooseCanonicalUid(surviving);
                 foreach (var alias in surviving)
                 {
-                    aliasRows.Add(new object?[] { postId, alias.ValueAlias, alias.Uid == canonicalUid, DateTimeOffset.UtcNow });
-                    slugValueOwners[alias.ValueAlias] = postId;
+                    aliasRows.Add(new object?[] { storyId, alias.ValueAlias, alias.Uid == canonicalUid, DateTimeOffset.UtcNow });
+                    slugValueOwners[alias.ValueAlias] = storyId;
                 }
             }
         }
 
-        foreach (var (pictureLegacyId, postId) in postsNeedingGeneratedSlug)
+        foreach (var (pictureLegacyId, storyId) in storiesNeedingGeneratedSlug)
         {
-            var slug = GenerateShortSlug(context.SlugGenerator, pictureLegacyId, postId, slugValueOwners);
-            aliasRows.Add(new object?[] { postId, slug, true, DateTimeOffset.UtcNow });
+            var slug = GenerateShortSlug(context.SlugGenerator, pictureLegacyId, storyId, slugValueOwners);
+            aliasRows.Add(new object?[] { storyId, slug, true, DateTimeOffset.UtcNow });
         }
 
         // Empty in the full run; a single step run in Development or a step test replaces the
         // rows of an earlier run.
-        if (postIdByLegacyId.Count > 0)
+        if (storyIdByLegacyId.Count > 0)
         {
             await using var delete = new NpgsqlCommand(
-                "DELETE FROM slug_alias WHERE post_id = ANY(@postIds)", context.Target, context.Transaction);
-            delete.Parameters.AddWithValue("postIds", postIdByLegacyId.Values.ToArray());
+                "DELETE FROM slug_alias WHERE story_id = ANY(@storyIds)", context.Target, context.Transaction);
+            delete.Parameters.AddWithValue("storyIds", storyIdByLegacyId.Values.ToArray());
             await delete.ExecuteNonQueryAsync(cancellationToken);
         }
 
         await BulkInsertAsync(
-            context, "slug_alias", ["post_id", "value", "is_canonical", "created_at"], aliasRows, cancellationToken);
+            context, "slug_alias", ["story_id", "value", "is_canonical", "created_at"], aliasRows, cancellationToken);
     }
 
     // Chunked so one statement never exceeds the PostgreSQL protocol limit of 65535 bind
@@ -683,7 +681,7 @@ public sealed class PictureMigrationStep : IEtlStep
     }
 
     // A 5-character alphanumeric alias reads as an auto-generated hashid rather than a
-    // human-chosen slug, but only when the post has another surviving alias to prefer instead: a
+    // human-chosen slug, but only when the story has another surviving alias to prefer instead: a
     // lone 5-character alias with no sibling has nothing to lose to and stays the canonical pick.
     private static int ChooseCanonicalUid(List<(int Uid, string ValueAlias)> surviving)
     {
@@ -699,17 +697,18 @@ public sealed class PictureMigrationStep : IEtlStep
         (c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
 
     // Deterministic across runs: the same legacy id, hashed with the same fixed input under the
-    // same secret, always produces the same candidate slug. A value this post already owns (its
+    // same secret, always produces the same candidate slug. A value this story already owns (its
     // own slug from an earlier run) counts as available rather than as a collision, so the
-    // resolved slug is stable from run to run; a genuine collision against a different post
-    // retries through SlugGenerator's own counter-suffix mechanism.
+    // resolved slug is stable from run to run; a genuine collision against a different story
+    // retries through SlugGenerator's own counter-suffix mechanism. The hash input text is part of the
+    // derivation of every generated address and stays fixed.
     private static string GenerateShortSlug(
-        SlugGenerator slugGenerator, int legacyId, long postId, Dictionary<string, long> slugValueOwners)
+        SlugGenerator slugGenerator, int legacyId, long storyId, Dictionary<string, long> slugValueOwners)
     {
         var slug = slugGenerator.GenerateUnique(
             $"post:{legacyId}",
-            candidate => slugValueOwners.TryGetValue(candidate, out var owner) && owner != postId);
-        slugValueOwners[slug] = postId;
+            candidate => slugValueOwners.TryGetValue(candidate, out var owner) && owner != storyId);
+        slugValueOwners[slug] = storyId;
         return slug;
     }
 
@@ -770,7 +769,7 @@ public sealed class PictureMigrationStep : IEtlStep
         EtlContext context, CancellationToken cancellationToken)
     {
         await using var command = new NpgsqlCommand(
-            "SELECT value, post_id FROM slug_alias", context.Target, context.Transaction);
+            "SELECT value, story_id FROM slug_alias", context.Target, context.Transaction);
         await using var reader = await command.ExecuteReaderAsync(cancellationToken);
 
         var result = new Dictionary<string, long>(StringComparer.Ordinal);

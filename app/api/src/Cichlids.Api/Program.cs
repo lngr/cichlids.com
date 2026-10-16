@@ -13,7 +13,7 @@ using Cichlids.Api.Features.Media;
 using Cichlids.Api.Features.LegacyRedirects;
 using Cichlids.Api.Features.Me;
 using Cichlids.Api.Features.Onboarding;
-using Cichlids.Api.Features.Pictures;
+using Cichlids.Api.Features.Stories;
 using Cichlids.Api.Features.Profiles;
 using Cichlids.Api.Features.Species;
 using Cichlids.Api.Features.Tanks;
@@ -150,7 +150,7 @@ builder.Services.AddProblemDetails(options => options.CustomizeProblemDetails = 
 builder.Services.AddExceptionHandler<NonMemberLoginExceptionHandler>();
 
 builder.Services.AddScoped<SpeciesQueryService>();
-builder.Services.AddScoped<PicturesQueryService>();
+builder.Services.AddScoped<StoriesQueryService>();
 builder.Services.AddScoped<TanksQueryService>();
 builder.Services.AddScoped<TankAccessService>();
 builder.Services.AddScoped<TankFollowService>();
@@ -229,7 +229,7 @@ builder.Services.AddOptions<VideoLimitOptions>()
     .Bind(builder.Configuration.GetSection(VideoLimitOptions.SectionName))
     .Validate(
         o => o.MaxDuration > TimeSpan.Zero && o.ShortMaxDuration > TimeSpan.Zero && o.ShortMaxDuration <= o.MaxDuration
-            && o.MinAccountAge >= TimeSpan.Zero && o.MinPublicPictures >= 0 && o.MaxBitrate > 0 && o.MaxOpenUploads > 0
+            && o.MinAccountAge >= TimeSpan.Zero && o.MinPublishedStories >= 0 && o.MaxBitrate > 0 && o.MaxOpenUploads > 0
             && o.ChunkSize >= 5 * 1024 * 1024 && o.UploadLifetime > TimeSpan.Zero && o.CleanupInterval > TimeSpan.Zero,
         "VideoLimits values must be positive, the short length must not exceed the long one and the chunk size must be at least 5 MiB.")
     .ValidateOnStart();
@@ -264,7 +264,7 @@ builder.Services.AddScoped<UploadsWriteService>();
 builder.Services.AddScoped<DraftCleanupService>();
 builder.Services.AddHostedService<DraftCleanupHostedService>();
 builder.Services.AddScoped<DraftsQueryService>();
-builder.Services.AddScoped<PostPublishService>();
+builder.Services.AddScoped<StoryPublishService>();
 
 // Resolved once at startup so a deployment outside Development with no slug secret, or with the
 // development default, fails immediately instead of on the first request that mints a slug,
@@ -353,7 +353,7 @@ app.MapGet("/healthz", () => Results.Ok(new { status = "ok" }))
 
 app.MapFeatureFlagEndpoints();
 app.MapSpeciesEndpoints();
-app.MapPicturesEndpoints();
+app.MapStoriesEndpoints();
 app.MapTanksEndpoints();
 app.MapCareEndpoints();
 app.MapStreakEndpoints();

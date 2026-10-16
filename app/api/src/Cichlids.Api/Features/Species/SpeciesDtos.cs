@@ -28,4 +28,4 @@ public sealed record SpeciesDetailDto(
     string? Origin,
     string? Habitat,
     string? Morphs,
-    int PictureCount);
+    int StoryCount);

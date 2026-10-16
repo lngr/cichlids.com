@@ -22,7 +22,7 @@ public sealed class RoundtripTests
         long profileId;
         long tankId;
         long mediaItemId;
-        long postId;
+        long storyId;
 
         await using (var writeContext = _fixture.CreateContext())
         {
@@ -60,23 +60,22 @@ public sealed class RoundtripTests
             writeContext.MediaLinks.Add(MediaLink.ForTank(tank.Id, mediaItem.Id, MediaLinkRole.Main));
             await writeContext.SaveChangesAsync();
 
-            var post = new Post
+            var story = new Story
             {
                 AuthorProfileId = profile.Id,
-                TankId = tank.Id,
-                Kind = PostKind.Single,
-                Topic = PostTopic.Tanks,
-                Title = "Roundtrip Post",
-                State = PostState.Published,
+                Subjects = [StorySubject.ForTank(tank.Id)],
+                Topic = StoryTopic.Tanks,
+                Title = "Roundtrip Story",
+                State = StoryState.Published,
                 CreatedAt = DateTimeOffset.UtcNow,
                 PublishedAt = DateTimeOffset.UtcNow,
             };
-            writeContext.Posts.Add(post);
+            writeContext.Stories.Add(story);
             await writeContext.SaveChangesAsync();
 
             var comment = new Comment
             {
-                PostId = post.Id,
+                StoryId = story.Id,
                 AuthorProfileId = profile.Id,
                 Body = "Great tank!",
                 CreatedAt = DateTimeOffset.UtcNow,
@@ -85,7 +84,7 @@ public sealed class RoundtripTests
 
             var rating = new Rating
             {
-                PostId = post.Id,
+                StoryId = story.Id,
                 ProfileId = profile.Id,
                 Stars = 5,
                 CreatedAt = DateTimeOffset.UtcNow,
@@ -97,7 +96,7 @@ public sealed class RoundtripTests
             profileId = profile.Id;
             tankId = tank.Id;
             mediaItemId = mediaItem.Id;
-            postId = post.Id;
+            storyId = story.Id;
         }
 
         await using var readContext = _fixture.CreateContext();
@@ -114,15 +113,15 @@ public sealed class RoundtripTests
         Assert.Equal(TankCategory.Tanganyika, readTank.Category);
         Assert.Equal(TankState.Published, readTank.State);
 
-        var readPost = await readContext.Posts.SingleAsync(x => x.Id == postId);
-        Assert.Equal(tankId, readPost.TankId);
-        Assert.Equal(profileId, readPost.AuthorProfileId);
+        var readStory = await readContext.Stories.SingleAsync(x => x.Id == storyId);
+        Assert.Equal(tankId, (await readContext.StorySubjects.SingleAsync(x => x.StoryId == storyId)).TankId);
+        Assert.Equal(profileId, readStory.AuthorProfileId);
 
-        var readComment = await readContext.Comments.SingleAsync(x => x.PostId == postId);
+        var readComment = await readContext.Comments.SingleAsync(x => x.StoryId == storyId);
         Assert.Equal("Great tank!", readComment.Body);
         Assert.Equal(profileId, readComment.AuthorProfileId);
 
-        var readRating = await readContext.Ratings.SingleAsync(x => x.PostId == postId);
+        var readRating = await readContext.Ratings.SingleAsync(x => x.StoryId == storyId);
         Assert.Equal((short)5, readRating.Stars);
         Assert.Equal(profileId, readRating.ProfileId);
     }
@@ -132,7 +131,7 @@ public sealed class RoundtripTests
     {
         var username = $"roundtrip-forum-{Guid.NewGuid():N}";
         long threadId;
-        long postId;
+        long storyId;
         long mediaItemId;
 
         await using (var writeContext = _fixture.CreateContext())
@@ -167,21 +166,21 @@ public sealed class RoundtripTests
             writeContext.DiscussionThreads.Add(thread);
             await writeContext.SaveChangesAsync();
 
-            var post = new DiscussionPost
+            var story = new DiscussionPost
             {
                 ThreadId = thread.Id,
                 AuthorProfileId = profile.Id,
-                Body = "Roundtrip post body",
+                Body = "Roundtrip story body",
                 CreatedAt = DateTimeOffset.UtcNow,
             };
-            writeContext.DiscussionPosts.Add(post);
+            writeContext.DiscussionPosts.Add(story);
             await writeContext.SaveChangesAsync();
 
-            writeContext.MediaLinks.Add(MediaLink.ForDiscussionPost(post.Id, mediaItem.Id));
+            writeContext.MediaLinks.Add(MediaLink.ForDiscussionPost(story.Id, mediaItem.Id));
             await writeContext.SaveChangesAsync();
 
             threadId = thread.Id;
-            postId = post.Id;
+            storyId = story.Id;
             mediaItemId = mediaItem.Id;
         }
 
@@ -191,11 +190,11 @@ public sealed class RoundtripTests
         Assert.Equal(DiscussionCategory.African, readThread.Category);
         Assert.Equal(DiscussionThreadState.Archived, readThread.State);
 
-        var readPost = await readContext.DiscussionPosts.SingleAsync(x => x.Id == postId);
-        Assert.Equal(threadId, readPost.ThreadId);
-        Assert.Equal("Roundtrip post body", readPost.Body);
+        var readStory = await readContext.DiscussionPosts.SingleAsync(x => x.Id == storyId);
+        Assert.Equal(threadId, readStory.ThreadId);
+        Assert.Equal("Roundtrip story body", readStory.Body);
 
-        var readMedia = await readContext.MediaLinks.SingleAsync(x => x.DiscussionPostId == postId);
+        var readMedia = await readContext.MediaLinks.SingleAsync(x => x.DiscussionPostId == storyId);
         Assert.Equal(mediaItemId, readMedia.MediaItemId);
     }
 }

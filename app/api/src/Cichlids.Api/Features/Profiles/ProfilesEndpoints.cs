@@ -1,6 +1,6 @@
 using System.Security.Claims;
 using Cichlids.Api.Features.Common;
-using Cichlids.Api.Features.Pictures;
+using Cichlids.Api.Features.Stories;
 using Cichlids.Api.Features.Tanks;
 using Microsoft.AspNetCore.Http.HttpResults;
 
@@ -13,7 +13,7 @@ public static class ProfilesEndpoints
         var group = app.MapGroup("/api/profiles").WithTags("Profiles");
 
         group.MapGet("/{id:long}", GetByIdAsync).WithName("GetProfile");
-        group.MapGet("/{id:long}/pictures", ListPicturesAsync).WithName("ListProfilePictures");
+        group.MapGet("/{id:long}/stories", ListStoriesAsync).WithName("ListProfileStories");
         group.MapGet("/{id:long}/tanks", ListTanksAsync).WithName("ListProfileTanks");
 
         return app;
@@ -26,8 +26,8 @@ public static class ProfilesEndpoints
         return detail is null ? TypedResults.NotFound() : TypedResults.Ok(detail);
     }
 
-    private static async Task<Ok<PagedResponse<PictureListItemDto>>> ListPicturesAsync(
-        PicturesQueryService queryService, long id, string? sort, int? offset, int? limit, CancellationToken cancellationToken)
+    private static async Task<Ok<PagedResponse<StoryListItemDto>>> ListStoriesAsync(
+        StoriesQueryService queryService, long id, string? sort, int? offset, int? limit, CancellationToken cancellationToken)
     {
         var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
         var result = await queryService.ListAsync(sort, topic: null, userId: id, species: null, normalizedOffset, normalizedLimit, cancellationToken);

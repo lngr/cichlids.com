@@ -11,8 +11,8 @@ namespace Cichlids.Etl.Steps;
 /// their ordered listings (user_cichlids_gallery_pictures_mm) into collection_entry. A gallery
 /// that never had a picture assignment is skipped by rule and counted under the skip reason
 /// gallery_without_pictures. A gallery whose assigned pictures all failed to migrate still
-/// becomes an empty collection. Runs after PictureMigrationStep, whose post.legacy_id rows
-/// resolve each gallery entry's picture reference to its migrated post.
+/// becomes an empty collection. Runs after PictureMigrationStep, whose story.legacy_id rows
+/// resolve each gallery entry's picture reference to its migrated story.
 /// </summary>
 public sealed class GalleryMigrationStep : IEtlStep
 {
@@ -31,7 +31,7 @@ public sealed class GalleryMigrationStep : IEtlStep
         var stats = context.Statistics.ForStep(Name);
 
         var profileIdsByLegacyId = await LoadLegacyIdMapAsync(context, "profile", cancellationToken);
-        var postIdByLegacyId = await LoadLegacyIdMapAsync(context, "post", cancellationToken);
+        var storyIdByLegacyId = await LoadLegacyIdMapAsync(context, "story", cancellationToken);
         var entriesByGalleryUid = await LoadGalleryEntriesAsync(context, cancellationToken);
         var anonymous = new AnonymousArchiveAttribution(context, stats, "galleries");
 
@@ -90,7 +90,7 @@ public sealed class GalleryMigrationStep : IEtlStep
             }
 
             var pictureUidsInOrder = entriesByGalleryUid.TryGetValue(legacyId, out var list) ? list : [];
-            var entryRows = BuildEntryRows(pictureUidsInOrder, postIdByLegacyId, stats);
+            var entryRows = BuildEntryRows(pictureUidsInOrder, storyIdByLegacyId, stats);
 
             if (entryRows.Count == 0)
             {
@@ -103,7 +103,7 @@ public sealed class GalleryMigrationStep : IEtlStep
                 "collection_entry",
                 "collection_id",
                 collectionId,
-                ["post_id", "sort"],
+                ["story_id", "sort"],
                 entryRows,
                 cancellationToken);
         }
@@ -112,31 +112,31 @@ public sealed class GalleryMigrationStep : IEtlStep
     }
 
     // Duplicate picture references within the same gallery collapse to their first sorted
-    // occurrence (collection_entry has a unique (collection_id, post_id) index) and the sort
+    // occurrence (collection_entry has a unique (collection_id, story_id) index) and the sort
     // position is dense among the survivors, not the raw mm sorting value: dropped/unmigrated
     // entries must not leave gaps.
     private static List<IReadOnlyList<object?>> BuildEntryRows(
-        List<int> pictureUidsInOrder, Dictionary<int, long> postIdByLegacyId, StepStatistics stats)
+        List<int> pictureUidsInOrder, Dictionary<int, long> storyIdByLegacyId, StepStatistics stats)
     {
         var rows = new List<IReadOnlyList<object?>>();
-        var seenPostIds = new HashSet<long>();
+        var seenStoryIds = new HashSet<long>();
         var sort = 0;
 
         foreach (var pictureUid in pictureUidsInOrder)
         {
-            if (!postIdByLegacyId.TryGetValue(pictureUid, out var postId))
+            if (!storyIdByLegacyId.TryGetValue(pictureUid, out var storyId))
             {
                 stats.AddSkip("gallery_entry_picture_not_migrated");
                 continue;
             }
 
-            if (!seenPostIds.Add(postId))
+            if (!seenStoryIds.Add(storyId))
             {
                 stats.AddSkip("gallery_entry_duplicate_picture");
                 continue;
             }
 
-            rows.Add(new object?[] { postId, sort });
+            rows.Add(new object?[] { storyId, sort });
             sort++;
         }
 

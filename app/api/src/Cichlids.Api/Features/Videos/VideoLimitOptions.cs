@@ -3,7 +3,7 @@ namespace Cichlids.Api.Features.Videos;
 /// <summary>
 /// Limits on the videos a member uploads, bound from the "VideoLimits" configuration section.
 /// A member who meets the account rule (an account older than MinAccountAge with more than
-/// MinPublicPictures public pictures) may upload videos up to MaxDuration; every other member
+/// MinPublishedStories published stories) may upload videos up to MaxDuration; every other member
 /// is limited to ShortMaxDuration.
 /// </summary>
 public sealed class VideoLimitOptions
@@ -16,7 +16,7 @@ public sealed class VideoLimitOptions
 
     public TimeSpan MinAccountAge { get; set; } = TimeSpan.FromDays(365);
 
-    public int MinPublicPictures { get; set; } = 20;
+    public int MinPublishedStories { get; set; } = 20;
 
     /// <summary>
     /// The highest bitrate in bits per second a video file is expected to have. The size limit of

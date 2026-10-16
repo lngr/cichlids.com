@@ -26,8 +26,8 @@ public sealed class VerifyStep : IEtlStep
         var report = new VerificationReport();
 
         // pid 21/29/109/131 are the picture placements PictureMigrationStep's PostTopicByPid
-        // turns into a post, the same set this check mirrors independently.
-        var postOwnerByPictureUid = await LoadLegacyOwnerMapAsync(
+        // turns into a story, the same set this check mirrors independently.
+        var storyOwnerByPictureUid = await LoadLegacyOwnerMapAsync(
             context,
             """
             SELECT uid, fe_user FROM user_cichlids_pictures
@@ -45,14 +45,14 @@ public sealed class VerifyStep : IEtlStep
 
         var eligibleForumMessageIds = await AddDiscussionRowsAsync(context, report, cancellationToken);
         await AddMediaRowsAsync(context, report, eligibleForumMessageIds, cancellationToken);
-        await AddPostRowsAsync(context, report, postOwnerByPictureUid.Count, cancellationToken);
-        await AddPostSpeciesRowsAsync(context, report, postOwnerByPictureUid, speciesUids, cancellationToken);
+        await AddStoryRowsAsync(context, report, storyOwnerByPictureUid.Count, cancellationToken);
+        await AddStorySpeciesSubjectRowsAsync(context, report, storyOwnerByPictureUid, speciesUids, cancellationToken);
         await AddSlugAliasRowsAsync(context, report, cancellationToken);
         var migratedCommentLegacyIds = await AddCommentRatingVaultRowsAsync(
-            context, report, postOwnerByPictureUid, tankOwnerByTankUid, cancellationToken);
+            context, report, storyOwnerByPictureUid, tankOwnerByTankUid, cancellationToken);
         await AddCommentVoteRowAsync(context, report, migratedCommentLegacyIds, cancellationToken);
         await AddAggregateConsistencyRowsAsync(context, report, cancellationToken);
-        await AddCollectionRowsAsync(context, report, postOwnerByPictureUid, cancellationToken);
+        await AddCollectionRowsAsync(context, report, storyOwnerByPictureUid, cancellationToken);
         await AddReferenceCheckRowsAsync(context, report, cancellationToken);
 
         VerificationReportPrinter.PrintTable(report);
@@ -378,16 +378,16 @@ public sealed class VerifyStep : IEtlStep
         report.Add(VerificationRow.Compare("media_forum_attachments", expectedAttachments, actualAttachments, MigrationRules.ForumAttachments));
     }
 
-    // === post (blog posts derived from pictures) ===================================================
+    // === story (gallery entries derived from pictures) =============================================
 
-    private static async Task AddPostRowsAsync(
+    private static async Task AddStoryRowsAsync(
         EtlContext context, VerificationReport report, long expected, CancellationToken cancellationToken)
     {
-        var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM post", cancellationToken);
-        report.Add(VerificationRow.Compare("post", expected, actual, MigrationRules.Posts));
+        var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM story", cancellationToken);
+        report.Add(VerificationRow.Compare("story", expected, actual, MigrationRules.Stories));
 
         await using var command = new NpgsqlCommand(
-            "SELECT state, COUNT(*) FROM post GROUP BY state", context.Target, context.Transaction);
+            "SELECT state, COUNT(*) FROM story GROUP BY state", context.Target, context.Transaction);
         await using var reader = await command.ExecuteReaderAsync(cancellationToken);
         var byState = new Dictionary<string, long>(StringComparer.Ordinal);
         while (await reader.ReadAsync(cancellationToken))
@@ -395,23 +395,23 @@ public sealed class VerifyStep : IEtlStep
             byState[reader.GetString(0)] = reader.GetInt64(1);
         }
 
-        report.Add(VerificationRow.Info("post_state_published", byState.GetValueOrDefault("published"), MigrationRules.PostStates));
-        report.Add(VerificationRow.Info("post_state_draft", byState.GetValueOrDefault("draft"), MigrationRules.PostStates));
-        report.Add(VerificationRow.Info("post_state_archived", byState.GetValueOrDefault("archived"), MigrationRules.PostStates));
+        report.Add(VerificationRow.Info("story_state_published", byState.GetValueOrDefault("published"), MigrationRules.StoryStates));
+        report.Add(VerificationRow.Info("story_state_draft", byState.GetValueOrDefault("draft"), MigrationRules.StoryStates));
+        report.Add(VerificationRow.Info("story_state_archived", byState.GetValueOrDefault("archived"), MigrationRules.StoryStates));
     }
 
-    // === post_species (picture-species links) =======================================================
+    // === species subjects of stories (picture-species links) ===========================================
 
     /// <summary>
     /// Recomputes SpeciesLinksStep's eligibility formula (a link with a nonzero species reference
-    /// whose picture is eligible as a post and whose species is eligible for the catalog) as the
-    /// count of distinct (post, species) pairs directly from the legacy source, and checks it
-    /// against post_species.
+    /// whose picture is eligible as a story and whose species is eligible for the catalog) as the
+    /// count of distinct (story, species) pairs directly from the legacy source, and checks it
+    /// against the species subjects of story_subject.
     /// </summary>
-    private static async Task AddPostSpeciesRowsAsync(
+    private static async Task AddStorySpeciesSubjectRowsAsync(
         EtlContext context,
         VerificationReport report,
-        Dictionary<int, int> postOwnerByPictureUid,
+        Dictionary<int, int> storyOwnerByPictureUid,
         HashSet<int> speciesUids,
         CancellationToken cancellationToken)
     {
@@ -423,17 +423,17 @@ public sealed class VerifyStep : IEtlStep
         {
             while (await reader.ReadAsync(cancellationToken))
             {
-                var postLegacyId = reader.GetInt32(0);
+                var storyLegacyId = reader.GetInt32(0);
                 var speciesLegacyId = reader.GetInt32(1);
-                if (postOwnerByPictureUid.ContainsKey(postLegacyId) && speciesUids.Contains(speciesLegacyId))
+                if (storyOwnerByPictureUid.ContainsKey(storyLegacyId) && speciesUids.Contains(speciesLegacyId))
                 {
-                    distinctPairs.Add((postLegacyId, speciesLegacyId));
+                    distinctPairs.Add((storyLegacyId, speciesLegacyId));
                 }
             }
         }
 
-        var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM post_species", cancellationToken);
-        report.Add(VerificationRow.Compare("post_species", distinctPairs.Count, actual, MigrationRules.PostSpecies));
+        var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM story_subject WHERE subject_type = 'species'", cancellationToken);
+        report.Add(VerificationRow.Compare("story_subject_species", distinctPairs.Count, actual, MigrationRules.StorySubjects));
     }
 
     // === slug_alias (target-side consistency only) =================================================
@@ -444,8 +444,8 @@ public sealed class VerifyStep : IEtlStep
             context,
             """
             SELECT COUNT(*) FROM (
-                SELECT post_id FROM slug_alias
-                GROUP BY post_id
+                SELECT story_id FROM slug_alias
+                GROUP BY story_id
                 HAVING SUM(CASE WHEN is_canonical THEN 1 ELSE 0 END) <> 1
             ) x
             """,
@@ -457,7 +457,7 @@ public sealed class VerifyStep : IEtlStep
 
         var orphans = await PgScalarAsync(
             context,
-            "SELECT COUNT(*) FROM slug_alias sa LEFT JOIN post p ON p.id = sa.post_id WHERE p.id IS NULL",
+            "SELECT COUNT(*) FROM slug_alias sa LEFT JOIN story p ON p.id = sa.story_id WHERE p.id IS NULL",
             cancellationToken);
         report.Add(VerificationRow.Compare("slug_alias_orphans", 0, orphans, MigrationRules.SlugAliases));
 
@@ -467,18 +467,18 @@ public sealed class VerifyStep : IEtlStep
             cancellationToken);
         report.Add(VerificationRow.Compare("slug_alias_unique_value", 0, uniqueViolations, MigrationRules.SlugAliases));
 
-        var postsWithoutAlias = await PgScalarAsync(
+        var storiesWithoutAlias = await PgScalarAsync(
             context,
-            "SELECT COUNT(*) FROM post p LEFT JOIN slug_alias sa ON sa.post_id = p.id WHERE sa.id IS NULL",
+            "SELECT COUNT(*) FROM story p LEFT JOIN slug_alias sa ON sa.story_id = p.id WHERE sa.id IS NULL",
             cancellationToken);
-        report.Add(VerificationRow.Compare("post_without_slug_alias", 0, postsWithoutAlias, MigrationRules.SlugAliases));
+        report.Add(VerificationRow.Compare("story_without_slug_alias", 0, storiesWithoutAlias, MigrationRules.SlugAliases));
     }
 
     // === comment, rating and archive.legacy_comment (vault) =========================================
 
     /// <summary>
     /// Recomputes CommentMigrationStep's per-row classification (a target outside the eligible
-    /// posts and tanks vaults the row; an eligible target with no text and no rating is dropped;
+    /// stories and tanks vaults the row; an eligible target with no text and no rating is dropped;
     /// otherwise a non-empty note becomes a comment and a positive rating becomes a rating
     /// candidate, independently of each other) by streaming the whole legacy comments table, and
     /// checks the resulting counts against comment, rating and archive.legacy_comment. A rating
@@ -492,7 +492,7 @@ public sealed class VerifyStep : IEtlStep
     private static async Task<HashSet<int>> AddCommentRatingVaultRowsAsync(
         EtlContext context,
         VerificationReport report,
-        Dictionary<int, int> postOwnerByPictureUid,
+        Dictionary<int, int> storyOwnerByPictureUid,
         Dictionary<int, int> tankOwnerByTankUid,
         CancellationToken cancellationToken)
     {
@@ -528,7 +528,7 @@ public sealed class VerifyStep : IEtlStep
 
                 var owners = type switch
                 {
-                    1 => postOwnerByPictureUid,
+                    1 => storyOwnerByPictureUid,
                     2 => tankOwnerByTankUid,
                     _ => null,
                 };
@@ -679,13 +679,13 @@ public sealed class VerifyStep : IEtlStep
         var ratingCountMismatches = await PgScalarAsync(
             context,
             """
-            SELECT COUNT(*) FROM post p
-            LEFT JOIN (SELECT post_id, COUNT(*) AS c FROM rating WHERE post_id IS NOT NULL GROUP BY post_id) r
-                ON r.post_id = p.id
+            SELECT COUNT(*) FROM story p
+            LEFT JOIN (SELECT story_id, COUNT(*) AS c FROM rating WHERE story_id IS NOT NULL GROUP BY story_id) r
+                ON r.story_id = p.id
             WHERE COALESCE(r.c, 0) <> p.rating_count
             """,
             cancellationToken);
-        report.Add(VerificationRow.Compare("post_rating_count_consistency", 0, ratingCountMismatches, MigrationRules.Aggregates));
+        report.Add(VerificationRow.Compare("story_rating_count_consistency", 0, ratingCountMismatches, MigrationRules.Aggregates));
 
         var scoreMismatches = await PgScalarAsync(
             context,
@@ -702,7 +702,7 @@ public sealed class VerifyStep : IEtlStep
     // === collection and collection_entry (galleries) ================================================
 
     private static async Task AddCollectionRowsAsync(
-        EtlContext context, VerificationReport report, Dictionary<int, int> postOwnerByPictureUid, CancellationToken cancellationToken)
+        EtlContext context, VerificationReport report, Dictionary<int, int> storyOwnerByPictureUid, CancellationToken cancellationToken)
     {
         var expectedCollections = await MySqlScalarAsync(
             context,
@@ -738,7 +738,7 @@ public sealed class VerifyStep : IEtlStep
             while (await reader.ReadAsync(cancellationToken))
             {
                 var picture = reader.GetInt32(1);
-                if (postOwnerByPictureUid.ContainsKey(picture))
+                if (storyOwnerByPictureUid.ContainsKey(picture))
                 {
                     distinctEntries.Add((reader.GetInt32(0), picture));
                 }
@@ -753,31 +753,41 @@ public sealed class VerifyStep : IEtlStep
 
     private static async Task AddReferenceCheckRowsAsync(EtlContext context, VerificationReport report, CancellationToken cancellationToken)
     {
-        var postsWithoutMedia = await PgScalarAsync(
+        var storiesWithoutMedia = await PgScalarAsync(
             context,
-            "SELECT COUNT(*) FROM post p LEFT JOIN media_link l ON l.post_id = p.id WHERE l.id IS NULL",
+            "SELECT COUNT(*) FROM story p LEFT JOIN media_link l ON l.story_id = p.id WHERE l.id IS NULL",
             cancellationToken);
-        report.Add(VerificationRow.Compare("post_without_media", 0, postsWithoutMedia, MigrationRules.PostMedia));
+        report.Add(VerificationRow.Compare("story_without_media", 0, storiesWithoutMedia, MigrationRules.StoryItems));
+
+        var coversOutsideTheStory = await PgScalarAsync(
+            context,
+            """
+            SELECT COUNT(*) FROM story p
+            WHERE p.cover_media_link_id IS NOT NULL
+              AND NOT EXISTS (SELECT 1 FROM media_link l WHERE l.id = p.cover_media_link_id AND l.story_id = p.id AND l.role = 'item')
+            """,
+            cancellationToken);
+        report.Add(VerificationRow.Compare("story_cover_outside_items", 0, coversOutsideTheStory, MigrationRules.StoryCovers));
 
         var publishedWithoutCanonicalSlug = await PgScalarAsync(
             context,
             """
-            SELECT COUNT(*) FROM post p
+            SELECT COUNT(*) FROM story p
             WHERE p.state = 'published'
-              AND NOT EXISTS (SELECT 1 FROM slug_alias sa WHERE sa.post_id = p.id AND sa.is_canonical)
+              AND NOT EXISTS (SELECT 1 FROM slug_alias sa WHERE sa.story_id = p.id AND sa.is_canonical)
             """,
             cancellationToken);
-        report.Add(VerificationRow.Compare("post_published_without_canonical_slug", 0, publishedWithoutCanonicalSlug, MigrationRules.SlugAliases));
+        report.Add(VerificationRow.Compare("story_published_without_canonical_slug", 0, publishedWithoutCanonicalSlug, MigrationRules.SlugAliases));
 
         var archivedWithMemberAuthor = await PgScalarAsync(
             context,
             """
-            SELECT COUNT(*) FROM post p
+            SELECT COUNT(*) FROM story p
             JOIN profile pr ON pr.id = p.author_profile_id
             WHERE p.state = 'archived' AND pr.kind = 'member'
             """,
             cancellationToken);
-        report.Add(VerificationRow.Info("post_archived_author_member", archivedWithMemberAuthor, MigrationRules.PostStates));
+        report.Add(VerificationRow.Info("story_archived_author_member", archivedWithMemberAuthor, MigrationRules.StoryStates));
     }
 
     // === shared helpers ==============================================================================

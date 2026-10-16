@@ -32,8 +32,8 @@ public sealed class GalleryMigrationStepTests(EtlFixture fixture)
         await using (var db = fixture.CreateTargetContext())
         {
             var owner = await db.Profiles.SingleAsync(p => p.LegacyId == 450);
-            var post4501 = await db.Posts.SingleAsync(p => p.LegacyId == 4501);
-            var post4502 = await db.Posts.SingleAsync(p => p.LegacyId == 4502);
+            var story4501 = await db.Stories.SingleAsync(p => p.LegacyId == 4501);
+            var story4502 = await db.Stories.SingleAsync(p => p.LegacyId == 4502);
 
             // uid 6001: both pictures resolve, in mm sorting order.
             var collection6001 = await db.Collections
@@ -45,9 +45,9 @@ public sealed class GalleryMigrationStepTests(EtlFixture fixture)
             Assert.Equal(DateTimeOffset.FromUnixTimeSeconds(1700000000), collection6001.CreatedAt);
             Assert.Equal(2, collection6001.Entries.Count);
             var first = collection6001.Entries.Single(e => e.Sort == 0);
-            Assert.Equal(post4501.Id, first.PostId);
+            Assert.Equal(story4501.Id, first.StoryId);
             var second = collection6001.Entries.Single(e => e.Sort == 1);
-            Assert.Equal(post4502.Id, second.PostId);
+            Assert.Equal(story4502.Id, second.StoryId);
 
             // uid 6002: hidden, blank title, no tstamp; one of its two pictures never migrated.
             var collection6002 = await db.Collections
@@ -57,7 +57,7 @@ public sealed class GalleryMigrationStepTests(EtlFixture fixture)
             Assert.False(collection6002.IsPublic);
             Assert.Equal(new DateTimeOffset(2003, 1, 1, 0, 0, 0, TimeSpan.Zero), collection6002.CreatedAt);
             Assert.Single(collection6002.Entries);
-            Assert.Equal(post4501.Id, collection6002.Entries[0].PostId);
+            Assert.Equal(story4501.Id, collection6002.Entries[0].StoryId);
             Assert.Equal(0, collection6002.Entries[0].Sort);
 
             // uid 6003: every picture failed to migrate -- the collection still exists, empty.
@@ -101,7 +101,7 @@ public sealed class GalleryMigrationStepTests(EtlFixture fixture)
         }
     }
 
-    // Owner legacy id 450 and post legacy ids 4501/4502 are their own range, disjoint from every
+    // Owner legacy id 450 and story legacy ids 4501/4502 are their own range, disjoint from every
     // other step test's fixtures (including CommentMigrationStepTests' 400s/4000s). Seeded
     // directly (idempotent find-or-create), the same way the other step tests seed their own
     // prerequisites, instead of running ProfileMigrationStep/PictureMigrationStep.
@@ -125,28 +125,26 @@ public sealed class GalleryMigrationStepTests(EtlFixture fixture)
 
         var owner = await db.Profiles.SingleAsync(p => p.LegacyId == 450);
 
-        if (!await db.Posts.AnyAsync(p => p.LegacyId == 4501))
+        if (!await db.Stories.AnyAsync(p => p.LegacyId == 4501))
         {
-            db.Posts.Add(new Post
+            db.Stories.Add(new Story
             {
                 LegacyId = 4501,
                 AuthorProfileId = owner.Id,
-                Kind = PostKind.Single,
-                Topic = PostTopic.Cichlids,
-                State = PostState.Published,
+                Topic = StoryTopic.Cichlids,
+                State = StoryState.Published,
                 CreatedAt = DateTimeOffset.FromUnixTimeSeconds(1700000000),
             });
         }
 
-        if (!await db.Posts.AnyAsync(p => p.LegacyId == 4502))
+        if (!await db.Stories.AnyAsync(p => p.LegacyId == 4502))
         {
-            db.Posts.Add(new Post
+            db.Stories.Add(new Story
             {
                 LegacyId = 4502,
                 AuthorProfileId = owner.Id,
-                Kind = PostKind.Single,
-                Topic = PostTopic.Cichlids,
-                State = PostState.Published,
+                Topic = StoryTopic.Cichlids,
+                State = StoryState.Published,
                 CreatedAt = DateTimeOffset.FromUnixTimeSeconds(1700000000),
             });
         }

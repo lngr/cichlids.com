@@ -172,19 +172,19 @@ public class TankTimeLapseTests(ApiFixture fixture)
         db.MediaLinks.Add(MediaLink.ForTank(tank.Id, photo.Id, MediaLinkRole.Showcase));
         db.MediaLinks.Add(MediaLink.ForTank(tank.Id, video.Id, MediaLinkRole.Showcase));
         db.MediaVariants.Add(new MediaVariant { MediaItemId = photo.Id, Label = "large", StorageKey = "variants/large/series.jpg" });
-        foreach (var state in new[] { PostState.Published, PostState.Draft })
+        foreach (var state in new[] { StoryState.Published, StoryState.Draft })
         {
-            var post = new Post { TankId = tank.Id, AuthorProfileId = fixture.Seed.Alice.Id, Title = state.ToString(), State = state, PublishedAt = date.AddYears(1) };
-            db.Posts.Add(post);
+            var story = new Story { Subjects = [StorySubject.ForTank(tank.Id)], AuthorProfileId = fixture.Seed.Alice.Id, Title = state.ToString(), State = state, PublishedAt = date.AddYears(1) };
+            db.Stories.Add(story);
             await db.SaveChangesAsync();
-            db.MediaLinks.Add(MediaLink.ForPost(post.Id, photo.Id));
+            db.MediaLinks.Add(MediaLink.ForStory(story.Id, photo.Id));
         }
         await db.SaveChangesAsync();
         using var response = await fixture.Client.GetAsync($"/api/tanks/{tank.Id}/time-lapse");
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
         Assert.Single(json.RootElement.GetProperty("photos").EnumerateArray());
-        Assert.Single(json.RootElement.GetProperty("posts").EnumerateArray());
+        Assert.Single(json.RootElement.GetProperty("stories").EnumerateArray());
         var alice = await db.Profiles.FindAsync(fixture.Seed.Alice.Id);
         alice!.SuspendedUntil = DateTimeOffset.UtcNow.AddDays(1);
         await db.SaveChangesAsync();

@@ -40,19 +40,18 @@ internal static class TestDataBuilder
         return tank;
     }
 
-    public static async Task<Post> CreatePostAsync(CichlidsDbContext context, long authorProfileId)
+    public static async Task<Story> CreateStoryAsync(CichlidsDbContext context, long authorProfileId)
     {
-        var post = new Post
+        var story = new Story
         {
             AuthorProfileId = authorProfileId,
-            Kind = PostKind.Single,
-            Topic = PostTopic.Cichlids,
-            State = PostState.Draft,
+            Topic = StoryTopic.Cichlids,
+            State = StoryState.Draft,
             CreatedAt = DateTimeOffset.UtcNow,
         };
 
-        context.Posts.Add(post);
+        context.Stories.Add(story);
         await context.SaveChangesAsync();
-        return post;
+        return story;
     }
 }

@@ -17,7 +17,7 @@ namespace Cichlids.Api.Tests.Features.Media;
 /// <summary>
 /// The media of a tank that is not public live under the private storage prefix and are reachable only
 /// through signed paths; a change of the visibility moves the variants of each media item between the
-/// prefixes, and a media item that a published post also shows stays in the public area.
+/// prefixes, and a media item that a published story also shows stays in the public area.
 /// </summary>
 [Collection(UploadsCollection.Name)]
 public sealed class MediaPlacementTests(UploadsFixture fixture) : IAsyncLifetime
@@ -230,7 +230,7 @@ public sealed class MediaPlacementTests(UploadsFixture fixture) : IAsyncLifetime
     }
 
     [Fact]
-    public async Task GivenMediaThatAPublishedPostAlsoShows_WhenTheTankIsMadePrivate_ThenThatMediaStaysInThePublicArea()
+    public async Task GivenMediaThatAPublishedStoryAlsoShows_WhenTheTankIsMadePrivate_ThenThatMediaStaysInThePublicArea()
     {
         var (token, tank) = await OwnTankAsync(client);
         using var added = await AddPhotoAsync(client, token, tank, Jpeg(800, 600));
@@ -238,10 +238,10 @@ public sealed class MediaPlacementTests(UploadsFixture fixture) : IAsyncLifetime
         await using (var db = fixture.CreateDbContext())
         {
             var owner = (await db.MediaItems.SingleAsync(m => m.Id == mediaItemId)).OwnerProfileId!.Value;
-            var post = new Post { AuthorProfileId = owner, State = PostState.Published, TankId = tank, Title = "Picture" };
-            db.Posts.Add(post);
+            var story = new Story { AuthorProfileId = owner, State = StoryState.Published, Subjects = [StorySubject.ForTank(tank)], Title = "Picture" };
+            db.Stories.Add(story);
             await db.SaveChangesAsync();
-            db.MediaLinks.Add(MediaLink.ForPost(post.Id, mediaItemId));
+            db.MediaLinks.Add(MediaLink.ForStory(story.Id, mediaItemId));
             await db.SaveChangesAsync();
         }
 
