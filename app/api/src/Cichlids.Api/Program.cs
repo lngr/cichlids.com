@@ -150,6 +150,7 @@ builder.Services.AddScoped<CareEntryMapper>();
 builder.Services.AddSingleton<CarePhotoUrlSigner>();
 builder.Services.AddScoped<CarePlanService>();
 builder.Services.AddScoped<WebPushSubscriptionService>();
+builder.Services.AddScoped<ReminderSnoozeService>();
 builder.Services.AddScoped<OnboardingWriteService>();
 builder.Services.AddScoped<ProfilesQueryService>();
 builder.Services.AddScoped<CommentsQueryService>();

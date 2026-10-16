@@ -14,3 +14,9 @@ public sealed record WebPushConfigDto(bool Available, string? PublicKey);
 
 /// <summary>A stored subscription of the caller.</summary>
 public sealed record WebPushSubscriptionDto(long Id, string TimeZone, DateTimeOffset CreatedAt);
+
+/// <summary>The reminder to snooze: the rule of a tank, the due date it was sent for, and the IANA time zone of the browser.</summary>
+public sealed record SnoozeReminderRequest(long TankId, string? Kind, string? DueDate, string? TimeZone);
+
+/// <summary>The local date on which a snoozed reminder returns.</summary>
+public sealed record ReminderSnoozeDto(string UntilDate);

@@ -1,6 +1,5 @@
 using System.Security.Cryptography;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 using Cichlids.Domain.Entities;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.AspNetCore.WebUtilities;
@@ -14,14 +13,11 @@ namespace Cichlids.Api.Features.WebPush;
 /// a known time zone, and a member keeps a limited number of them. Every change records an outbox
 /// event in its transaction.
 /// </summary>
-public sealed partial class WebPushSubscriptionService(CichlidsDbContext context, WebPushSettings settings, TimeProvider clock)
+public sealed class WebPushSubscriptionService(CichlidsDbContext context, WebPushSettings settings, TimeProvider clock)
 {
     private const int MaxEndpointLength = 2048;
     private const int PublicKeyLength = 65;
     private const int AuthSecretLength = 16;
-
-    [GeneratedRegex("^[A-Za-z0-9_+\\-]+(/[A-Za-z0-9_+\\-]+)*$", RegexOptions.CultureInvariant)]
-    private static partial Regex TimeZoneId();
 
     /// <summary>
     /// Stores the subscription of a browser for the member, or updates the keys and time zone of the
@@ -112,7 +108,7 @@ public sealed partial class WebPushSubscriptionService(CichlidsDbContext context
 
         if (!settings.IsAllowedEndpoint(request.Endpoint)) return "web_push_endpoint_not_allowed";
         if (request.Keys is not { P256dh: { } p256dh, Auth: { } auth } || !IsPublicKey(p256dh) || !IsAuthSecret(auth)) return "web_push_subscription_invalid";
-        return IsTimeZone(request.TimeZone) ? null : "web_push_subscription_invalid";
+        return TimeZones.TryFind(request.TimeZone, out _) ? null : "web_push_subscription_invalid";
     }
 
     private static bool IsPublicKey(string value)
@@ -145,9 +141,6 @@ public sealed partial class WebPushSubscriptionService(CichlidsDbContext context
             return false;
         }
     }
-
-    private static bool IsTimeZone(string? value) =>
-        value is { Length: > 0 and <= 64 } && TimeZoneId().IsMatch(value) && TimeZoneInfo.TryFindSystemTimeZoneById(value, out _);
 
     private static OutboxEvent UnsubscribedEvent(WebPushSubscription subscription, DateTimeOffset now) =>
         OutboxEvent.Create("web_push.unsubscribed", "web_push_subscription", subscription.Id.ToString(),

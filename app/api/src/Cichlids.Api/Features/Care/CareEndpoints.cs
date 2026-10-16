@@ -19,7 +19,7 @@ public static partial class CareEndpoints
     /// </summary>
     public static bool IsCarePath(PathString path) => path.HasValue && CarePath().IsMatch(path.Value!);
 
-    [GeneratedRegex("^(/api/tanks/[0-9]+/care(/[0-9]+(/photos(/[0-9]+)?|/todos)?|/series|/plan|/plan/[a-z_]+)?|/api/tanks/[0-9]+/todos|/api/me/todos(/[0-9]+)?|/api/me/care/due|/api/care-photos/[^/]+)/?$", RegexOptions.CultureInvariant)]
+    [GeneratedRegex("^(/api/tanks/[0-9]+/care(/[0-9]+(/photos(/[0-9]+)?|/todos)?|/series|/plan|/plan/[a-z_]+)?|/api/tanks/[0-9]+/todos|/api/me/todos(/[0-9]+)?|/api/me/care/(due|reminders/snooze)|/api/care-photos/[^/]+)/?$", RegexOptions.CultureInvariant)]
     private static partial Regex CarePath();
 
     public static IEndpointRouteBuilder MapCareEndpoints(this IEndpointRouteBuilder app)

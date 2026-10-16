@@ -26,6 +26,8 @@ public static partial class WebPushEndpoints
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404).ProducesProblem(409);
         group.MapDelete("/subscriptions", UnsubscribeAsync).WithName("UnsubscribeWebPush")
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403);
+        app.MapPost("/api/me/care/reminders/snooze", SnoozeAsync).WithName("SnoozeCareReminder").WithTags("Care").RequireAuthorization()
+            .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
         return app;
     }
 
@@ -51,6 +53,15 @@ public static partial class WebPushEndpoints
         return TypedResults.NoContent();
     }
 
+    private static async Task<Results<Ok<ReminderSnoozeDto>, ProblemHttpResult>> SnoozeAsync(
+        SnoozeReminderRequest request, ClaimsPrincipal user, CurrentProfileService profiles, ReminderSnoozeService snoozes, CancellationToken ct)
+    {
+        var profile = await profiles.ResolveAsync(user, ct);
+        var (until, error) = await snoozes.SnoozeAsync(profile.Id, request, ct);
+        if (error is null) return TypedResults.Ok(new ReminderSnoozeDto(until!.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)));
+        return error.StartsWith("care_", StringComparison.Ordinal) ? Care.CareEndpoints.Problem(error) : Problem(error);
+    }
+
     internal static ProblemHttpResult Problem(string code) => ApiProblems.WithCode(
         code switch { "web_push_unavailable" => 404, "web_push_limit_reached" => 409, _ => 400 },
         "Web Push request refused", code switch
@@ -58,6 +69,7 @@ public static partial class WebPushEndpoints
             "web_push_unavailable" => "This server does not send browser notifications.",
             "web_push_limit_reached" => "A member keeps up to 10 browsers with reminders. Switch reminders off in a browser you no longer use.",
             "web_push_endpoint_not_allowed" => "The push service of this browser is not supported.",
+            "web_push_snooze_invalid" => "Send the tank, the kind and current due date of the reminder, and the IANA time zone of the browser.",
             _ => "Send the endpoint, the keys p256dh and auth of the browser subscription, and the IANA time zone of the browser.",
         }, code);
 }

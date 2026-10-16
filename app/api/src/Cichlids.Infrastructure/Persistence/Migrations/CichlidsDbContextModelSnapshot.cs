@@ -309,6 +309,56 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.CareReminderSnooze", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateOnly>("DueDate")
+                        .HasColumnType("date")
+                        .HasColumnName("due_date");
+
+                    b.Property<string>("Kind")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("kind");
+
+                    b.Property<long>("ProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("profile_id");
+
+                    b.Property<long>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.Property<DateOnly>("UntilDate")
+                        .HasColumnType("date")
+                        .HasColumnName("until_date");
+
+                    b.HasKey("Id")
+                        .HasName("pk_care_reminder_snooze");
+
+                    b.HasIndex("TankId")
+                        .HasDatabaseName("ix_care_reminder_snooze_tank_id");
+
+                    b.HasIndex("ProfileId", "TankId", "Kind", "DueDate")
+                        .IsUnique()
+                        .HasDatabaseName("ix_care_reminder_snooze_profile_id_tank_id_kind_due_date");
+
+                    b.ToTable("care_reminder_snooze", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_care_reminder_snooze_kind", "kind IN ('water_change', 'measurement')");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.CareTodo", b =>
                 {
                     b.Property<long>("Id")
@@ -2114,6 +2164,23 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_care_plan_rule_tanks_tank_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.CareReminderSnooze", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_reminder_snooze_profiles_profile_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_reminder_snooze_tanks_tank_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.CareTodo", b =>
