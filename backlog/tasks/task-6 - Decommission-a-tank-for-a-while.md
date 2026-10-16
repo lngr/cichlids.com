@@ -1,10 +1,10 @@
 ---
-id: DRAFT-18
+id: TASK-6
 title: Decommission a tank for a while
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-10-16 12:44'
-updated_date: '2026-10-16 14:19'
+updated_date: '2026-10-16 14:31'
 labels: []
 dependencies: []
 ---
@@ -27,6 +27,14 @@ Decommissioning is shown publicly on the profile of the tank with a photo that s
 ### Reference
 - TASK-5.5 (streaks, vacations, freezes per tank year), TASK-5.7 (visibility), TASK-5.11 (guided camera), DRAFT-17.
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Given a running water change streak, When the member decommissions the tank with an app camera photo of the empty tank, Then the streak neither counts nor breaks and visitors who see the streak see the decommissioning with the photo
+- [ ] #2 Given a decommissioned tank, When the member puts it back into operation with an app camera photo of the filled tank, Then the plan runs from that day and the streak continues with the next water change
+- [ ] #3 Given a tank run for six months, decommissioned for one and run for one more, When a visitor opens the tank page, Then it shows seven months of operation
+- [ ] #4 Given decommissioning, When the member chooses that all care pauses, Then the tank has no due care, is not on Today and gets no reminders
+<!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
