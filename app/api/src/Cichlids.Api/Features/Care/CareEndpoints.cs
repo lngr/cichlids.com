@@ -2,6 +2,7 @@ using System.Security.Claims;
 using System.Text.RegularExpressions;
 using Cichlids.Api.Features.Auth;
 using Cichlids.Api.Features.Common;
+using Cichlids.Api.Features.Tanks;
 using Cichlids.Domain;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Persistence;
@@ -46,31 +47,32 @@ public static partial class CareEndpoints
         return app;
     }
 
-    private static async Task<bool> OwnsTankAsync(long tankId, ClaimsPrincipal user, CichlidsDbContext db, CancellationToken ct)
-    {
-        var subject = user.FindFirst("sub")?.Value;
-        return user.Identity?.IsAuthenticated == true && await db.Tanks.AnyAsync(t => t.Id == tankId && t.DeletedAt == null &&
-            db.ProfileIdentities.Any(i => i.ProfileId == t.ProfileId && i.Provider == "oidc" && i.Subject == subject), ct);
-    }
+    /// <summary>
+    /// The access of the caller to the care stream of a tank, or null when the caller does not see
+    /// the stream or the tank does not exist; the two are not told apart.
+    /// </summary>
+    private static async Task<TankAccess?> StreamAccessAsync(long tankId, ClaimsPrincipal user, TankAccessService access, CancellationToken ct) =>
+        await access.FindAsync(tankId, user, ct) is { CanSeeStream: true } found ? found : null;
 
     private static async Task<Results<Ok<PagedResponse<CareEntryDto>>, ProblemHttpResult>> ListAsync(
-        long tankId, int? offset, int? limit, ClaimsPrincipal user, CichlidsDbContext db, CareEntryMapper mapper, CancellationToken ct)
+        long tankId, int? offset, int? limit, ClaimsPrincipal user, TankAccessService access, CichlidsDbContext db, CareEntryMapper mapper,
+        CancellationToken ct)
     {
-        if (!await OwnsTankAsync(tankId, user, db, ct)) return Problem("care_not_found");
+        if (await StreamAccessAsync(tankId, user, access, ct) is not { } stream) return Problem("care_not_found");
         var (skip, take) = Pagination.Normalize(offset, limit);
-        var query = db.CareEntries.AsNoTracking().Where(e => e.TankId == tankId);
+        var query = db.CareEntries.AsNoTracking().Where(e => e.TankId == tankId && (stream.IsOwner || !e.OnlyMe));
         var total = await query.CountAsync(ct);
         var entries = await CareEntryMapper.WithDetails(query.OrderByDescending(e => e.OccurredAt).ThenByDescending(e => e.Id).Skip(skip).Take(take))
             .ToListAsync(ct);
-        return TypedResults.Ok(new PagedResponse<CareEntryDto>(total, entries.Select(mapper.ToDto).ToList()));
+        return TypedResults.Ok(new PagedResponse<CareEntryDto>(total, entries.Select(e => mapper.ToDto(e, stream.IsOwner)).ToList()));
     }
 
     private static async Task<Results<Ok<CarePlanDto>, ProblemHttpResult>> PlanAsync(
-        long tankId, string? date, int? utcOffsetMinutes, ClaimsPrincipal user, CichlidsDbContext db, CarePlanService plans, CancellationToken ct)
+        long tankId, string? date, int? utcOffsetMinutes, ClaimsPrincipal user, TankAccessService access, CarePlanService plans, CancellationToken ct)
     {
-        if (!await OwnsTankAsync(tankId, user, db, ct)) return Problem("care_not_found");
+        if (await StreamAccessAsync(tankId, user, access, ct) is not { } stream) return Problem("care_not_found");
         if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
-        return TypedResults.Ok(await plans.GetPlanAsync(tankId, today, offset, ct));
+        return TypedResults.Ok(await plans.GetPlanAsync(tankId, today, offset, ct, includeOnlyMe: stream.IsOwner));
     }
 
     private static async Task<Results<Ok<CarePlanDto>, ProblemHttpResult>> ChangeRuleAsync(
@@ -105,13 +107,13 @@ public static partial class CareEndpoints
 
     private static async Task<Results<Ok<CareSeriesDto>, ProblemHttpResult>> SeriesAsync(
         long tankId, string? parameter, [FromQuery(Name = "from")] DateTimeOffset? start, [FromQuery(Name = "to")] DateTimeOffset? end,
-        ClaimsPrincipal user, CichlidsDbContext db, CancellationToken ct)
+        ClaimsPrincipal user, TankAccessService access, CichlidsDbContext db, CancellationToken ct)
     {
-        if (!await OwnsTankAsync(tankId, user, db, ct)) return Problem("care_not_found");
+        if (await StreamAccessAsync(tankId, user, access, ct) is not { } stream) return Problem("care_not_found");
         if (!SnakeCaseEnum.TryParse<CareParameter>(parameter, out var kind)) return Problem("care_parameter_invalid");
         if (start > end) return Problem("care_range_invalid");
         var points = db.CareMeasurementValues.AsNoTracking().Where(v => v.Parameter == kind)
-            .Join(db.CareEntries.Where(e => e.TankId == tankId && (start == null || e.OccurredAt >= start) && (end == null || e.OccurredAt <= end)),
+            .Join(db.CareEntries.Where(e => e.TankId == tankId && (stream.IsOwner || !e.OnlyMe) && (start == null || e.OccurredAt >= start) && (end == null || e.OccurredAt <= end)),
                 v => v.CareEntryId, e => e.Id, (v, e) => new { Value = v, Entry = e });
         var newest = await points.OrderByDescending(p => p.Entry.OccurredAt).ThenByDescending(p => p.Entry.Id).Take(MaxSeriesPoints)
             .Select(p => new CareSeriesPointDto(p.Entry.Id, p.Entry.OccurredAt, p.Value.NormalizedValue, p.Value.InputValue, p.Value.InputUnit, p.Value.Origin))

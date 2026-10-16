@@ -196,9 +196,9 @@ public sealed class CarePlanEndpointsTests(ApiFixture fixture) : IAsyncLifetime
         var (_, tank) = await OwnTankAsync();
         var (stranger, _) = await OwnTankAsync();
         using var read = await SendAsync(HttpMethod.Get, PlanUrl(tank), stranger);
-        await AssertProblemAsync(read, HttpStatusCode.NotFound, "care_not_found");
+        Assert.Equal(HttpStatusCode.OK, read.StatusCode);
         using var anonymousRead = await SendAsync(HttpMethod.Get, PlanUrl(tank), null);
-        await AssertProblemAsync(anonymousRead, HttpStatusCode.NotFound, "care_not_found");
+        Assert.Equal(HttpStatusCode.OK, anonymousRead.StatusCode);
         using var change = await SendAsync(HttpMethod.Patch, RuleUrl(tank, "water_change"), stranger, new { rhythmDays = 3 });
         await AssertProblemAsync(change, HttpStatusCode.NotFound, "care_not_found");
         using var anonymousChange = await SendAsync(HttpMethod.Patch, RuleUrl(tank, "water_change"), null, new { rhythmDays = 3 });

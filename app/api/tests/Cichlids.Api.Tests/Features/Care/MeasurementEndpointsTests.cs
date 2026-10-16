@@ -245,7 +245,7 @@ public sealed class MeasurementEndpointsTests(ApiFixture fixture) : IAsyncLifeti
         foreach (var token in new[] { other, null })
         {
             using var series = await SendAsync(HttpMethod.Get, $"/api/tanks/{tank}/care/series?parameter=ph", token);
-            await AssertProblemAsync(series, HttpStatusCode.NotFound, "care_not_found");
+            Assert.Equal(HttpStatusCode.OK, series.StatusCode);
         }
         var body = new { kind = "measurement", values = new[] { new { parameter = "ph", value = 7m } } };
         using var post = await SendAsync(HttpMethod.Post, $"/api/tanks/{tank}/care", other, body);

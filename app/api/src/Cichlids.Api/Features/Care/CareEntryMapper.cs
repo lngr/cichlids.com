@@ -21,6 +21,13 @@ public sealed class CareEntryMapper(CarePhotoUrlSigner signer, CareVideoUrlSigne
             .Include(e => e.Videos).ThenInclude(v => v.MediaItem).ThenInclude(m => m.Variants)
             .Include(e => e.Videos).ThenInclude(v => v.MediaItem).ThenInclude(m => m.VideoJob).AsSplitQuery();
 
+    /// <summary>
+    /// The representation of an entry for its owner, or, when the reader is not the owner, without the
+    /// to-dos the owner attached to it.
+    /// </summary>
+    public CareEntryDto ToDto(CareEntry entry, bool forOwner) =>
+        forOwner ? ToDto(entry) : ToDto(entry) with { Todos = [] };
+
     public CareEntryDto ToDto(CareEntry entry) => new(entry.Id, entry.TankId, entry.AuthorProfileId,
         entry.Kind, entry.OccurredAt, entry.RecordedAt, entry.AmountInputValue is { } value
             ? new(value, entry.AmountInputUnit!.Value, entry.AmountLiters) : null,
@@ -30,7 +37,7 @@ public sealed class CareEntryMapper(CarePhotoUrlSigner signer, CareVideoUrlSigne
         entry.Photos.OrderBy(p => p.Position).Select(ToDto).ToList(),
         entry.Videos.OrderBy(v => v.Id).Select(v => VideoQueryService.ToCareDto(v.MediaItem, videoSigner)).ToList(),
         entry.Todos.OrderBy(t => t.CreatedAt).ThenBy(t => t.Id).Select(CareTodoDto.From).ToList(),
-        entry.DurationSeconds, entry.WaterChangeSessionId, EvidenceOf(entry));
+        entry.DurationSeconds, entry.WaterChangeSessionId, EvidenceOf(entry), entry.OnlyMe);
 
     // A water change logged without the guided mode has the evidence state none; a measurement has no evidence.
     private static WaterChangeEvidenceDto? EvidenceOf(CareEntry entry) => entry.Kind != CareKind.WaterChange ? null

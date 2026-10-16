@@ -28,10 +28,14 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
             && CarePlans.IsValidUtcOffset(offset) ? (parsed, offset) : null;
     }
 
-    public async Task<CarePlanDto> GetPlanAsync(long tankId, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
+    /// <summary>
+    /// Reads the plan of a tank. The due state follows the entries the reader sees: a reader other than
+    /// the owner does not see entries marked only me, so they do not move a due date.
+    /// </summary>
+    public async Task<CarePlanDto> GetPlanAsync(long tankId, DateOnly today, int utcOffsetMinutes, CancellationToken ct, bool includeOnlyMe = true)
     {
         var stored = await context.CarePlanRules.AsNoTracking().Where(r => r.TankId == tankId).ToListAsync(ct);
-        var last = await LastOccurrencesAsync(context.CareEntries.Where(e => e.TankId == tankId), ct);
+        var last = await LastOccurrencesAsync(context.CareEntries.Where(e => e.TankId == tankId && (includeOnlyMe || !e.OnlyMe)), ct);
         var reminders = await context.Tanks.AsNoTracking().Where(t => t.Id == tankId).Select(t => t.CareRemindersEnabled).SingleOrDefaultAsync(ct);
         return BuildPlan(tankId, stored, last.ToDictionary(l => l.Kind, l => l.Last), today, utcOffsetMinutes, reminders);
     }

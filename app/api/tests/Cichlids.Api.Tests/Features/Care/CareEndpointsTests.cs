@@ -71,7 +71,7 @@ public sealed class CareEndpointsTests(ApiFixture fixture) : IAsyncLifetime
         foreach (var token in new[] { other, null })
         {
             using var read = await SendAsync(HttpMethod.Get, $"/api/tanks/{tank}/care", token);
-            await AssertProblemAsync(read, HttpStatusCode.NotFound, "care_not_found");
+            Assert.Equal(HttpStatusCode.OK, read.StatusCode);
         }
         await using var db = fixture.CreateDbContext();
         var count = await db.OutboxEvents.CountAsync(e => e.AggregateType == "care");

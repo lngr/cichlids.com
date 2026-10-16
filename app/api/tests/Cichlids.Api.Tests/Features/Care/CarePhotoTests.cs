@@ -94,7 +94,7 @@ public sealed class CarePhotoTests(UploadsFixture fixture)
         using var anonymousAdd = await AddPhotoAsync(null, tank, id, Jpeg(400, 300));
         await AssertProblemAsync(anonymousAdd, HttpStatusCode.Unauthorized, "care_auth_required");
         using var otherList = await SendAsync(fixture.Client, HttpMethod.Get, $"/api/tanks/{tank}/care", other);
-        await AssertProblemAsync(otherList, HttpStatusCode.NotFound, "care_not_found");
+        Assert.Equal(HttpStatusCode.OK, otherList.StatusCode);
         await using var db = fixture.CreateDbContext();
         Assert.Equal(2, (await EventsAsync(db, "care", id)).Count);
     }

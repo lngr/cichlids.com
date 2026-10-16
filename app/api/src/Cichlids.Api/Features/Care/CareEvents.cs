@@ -19,7 +19,7 @@ public static class CareEvents
         {
             ["careEntryId"] = entry.Id, ["tankId"] = entry.TankId, ["authorProfileId"] = entry.AuthorProfileId,
             ["kind"] = SnakeCaseEnum.ToSnakeCase(entry.Kind), ["occurredAt"] = entry.OccurredAt, ["recordedAt"] = entry.RecordedAt,
-            ["note"] = entry.Note,
+            ["note"] = entry.Note, ["onlyMe"] = entry.OnlyMe,
             ["amount"] = entry.AmountInputValue is { } value ? new { value, unit = SnakeCaseEnum.ToSnakeCase(entry.AmountInputUnit!.Value), liters = entry.AmountLiters } : null,
             ["photos"] = entry.Photos.OrderBy(p => p.Position).Select(p => new { id = p.Id, mediaItemId = p.MediaItemId, position = p.Position }).ToList(),
         };
