@@ -184,8 +184,10 @@ build_web_export() {
   # The app imports @cichlids/client-core from its compiled dist/ output, which is not checked in;
   # building it first keeps the export in step with the client-core sources.
   (cd "$MOBILE_DIR" && pnpm --filter @cichlids/client-core build)
-  (cd "$MOBILE_DIR" && EXPO_PUBLIC_API_URL="$API_URL" \
-    pnpm exec expo export --platform web --output-dir "$WEB_EXPORT_DIR")
+  # The web build contains the WebCrypto test key provider; no other build sets this flag. Metro's
+  # transform cache does not key on the value of EXPO_PUBLIC_* variables, so the export clears it.
+  (cd "$MOBILE_DIR" && EXPO_PUBLIC_API_URL="$API_URL" EXPO_PUBLIC_DEVICE_TEST_KEYS=1 \
+    pnpm exec expo export --clear --platform web --output-dir "$WEB_EXPORT_DIR")
 }
 
 start_web() {

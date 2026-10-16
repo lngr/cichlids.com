@@ -1,3 +1,5 @@
+import { TEST_KEYS_FLAG, testKeysBuilt } from "../deviceAccount/config.ts";
+
 export type AppVariant = string;
 
 export interface AppConfig {
@@ -25,13 +27,17 @@ function present(value: string | undefined): string | undefined {
  * Resolves the API and Keycloak addresses of a build from its environment. The variant comes from
  * APP_VARIANT or, on EAS, from EAS_BUILD_PROFILE; without either it is "development". Only
  * development falls back to localhost addresses: every other variant needs EXPO_PUBLIC_API_URL
- * and EXPO_PUBLIC_KEYCLOAK_URL and throws an error naming the missing ones.
+ * and EXPO_PUBLIC_KEYCLOAK_URL and throws an error naming the missing ones. A variant other than
+ * development refuses the build flag of the test key provider.
  */
 export function resolveAppConfig(env: Environment): AppConfig {
   const variant = present(env.APP_VARIANT) ?? present(env.EAS_BUILD_PROFILE) ?? DEVELOPMENT;
   const apiUrl = present(env[API_URL_VARIABLE]);
   const keycloakUrl = present(env[KEYCLOAK_URL_VARIABLE]);
 
+  if (variant !== DEVELOPMENT && testKeysBuilt(env[TEST_KEYS_FLAG])) {
+    throw new Error(`The ${variant} build must not set ${TEST_KEYS_FLAG}: the test key provider belongs to the write E2E stack only.`);
+  }
   if (variant === DEVELOPMENT) {
     return { variant, apiUrl: apiUrl ?? DEVELOPMENT_API_URL, keycloakUrl: keycloakUrl ?? DEVELOPMENT_KEYCLOAK_URL };
   }
