@@ -1,6 +1,6 @@
 # ADR-0030: Provisional Device Accounts
 
-- **Status:** Proposed
+- **Status:** Accepted
 - **Date:** 2026-10-16
 - **Deciders:** Alexander Langer
 
@@ -68,8 +68,9 @@ do, and how it becomes a full account.
   valid. The API links the Keycloak subject to the provisional profile, which becomes a full
   profile with its first public handle. The device credential is retired, and the device session
   continues as a Keycloak session.
-- When the Keycloak account already has a profile, the API moves the tanks, care data and media of
-  the provisional profile into that profile in one transaction and deletes the provisional profile.
+- When the Keycloak account already has a profile, the app asks the member whether to take the
+  provisional content along. On yes, the API moves the tanks, care data and media of the provisional
+  profile into that profile in one transaction and deletes the provisional profile.
   The move needs a signed challenge of the device and the Keycloak token of the account in the same
   request, so neither alone can claim the data of the other.
 
