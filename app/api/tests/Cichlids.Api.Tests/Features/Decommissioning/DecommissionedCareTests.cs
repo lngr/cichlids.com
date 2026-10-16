@@ -100,6 +100,17 @@ public sealed class DecommissionedCareTests(ApiFixture fixture) : IAsyncLifetime
     }
 
     [Fact]
+    public async Task GivenADecommissioningFromTheLocalDateOfTheMember_WhenReadingAtTheDayBoundary_ThenThePauseFollowsTheDateOfTheReader()
+    {
+        var (owner, tank) = await TankWithHistoryAsync();
+        await AddAsync(fixture, tank, owner.ProfileId, DecommissionScope.AllCare, new DateOnly(2026, 10, 17), null);
+
+        Assert.Contains(await DueAsync(owner.Token, "2026-10-16"), i => i.Tank == tank);
+        Assert.DoesNotContain(await DueAsync(owner.Token, "2026-10-17"), i => i.Tank == tank);
+        Assert.DoesNotContain(await DueAsync(owner.Token, "2026-10-18"), i => i.Tank == tank);
+    }
+
+    [Fact]
     public async Task GivenAWaterChangeOnlyDecommissioning_WhenItEnds_ThenOnlyTheWaterChangePlanRestarts()
     {
         var (owner, tank) = await TankWithHistoryAsync();

@@ -23,6 +23,7 @@ const sql = statement => execFileSync("docker", ["compose", "-f", COMPOSE_FILE, 
 
 const DAY = 24 * 3600 * 1000;
 const dateOf = offset => new Date(Date.now() + offset * DAY).toISOString().slice(0, 10);
+// The app sends the local date of the browser; the contexts run in UTC so it is the date the spec uses.
 const today = dateOf(0);
 const token = await passwordGrantToken();
 const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
@@ -88,7 +89,7 @@ try {
   assert.deepEqual((await dueOf(all)).map(item => item.kind).sort(), ["measurement", "water_change"]);
   assert.equal((await streakOf(all)).state, "running");
 
-  const context = await browser.newContext({ locale: "en-US", colorScheme: "light", viewport: { width: 390, height: 844 } });
+  const context = await browser.newContext({ locale: "en-US", timezoneId: "UTC", colorScheme: "light", viewport: { width: 390, height: 844 } });
   await context.grantPermissions(["camera"], { origin: new URL(WEB_URL).origin });
   // The fake camera shows the same first frame every time it opens, and a picture that served as
   // proof once is refused. A mark in a random color makes every shot a picture of its own.
@@ -141,7 +142,7 @@ try {
   assert.equal(await byTestId(page, `today-due-${all.id}-measurement`).count(), 0);
 
   // A visitor sees the decommissioning with the photo.
-  const visitor = await browser.newContext({ locale: "en-US", colorScheme: "light", viewport: { width: 390, height: 844 } });
+  const visitor = await browser.newContext({ locale: "en-US", timezoneId: "UTC", colorScheme: "light", viewport: { width: 390, height: 844 } });
   const visitorPage = await visitor.newPage();
   visitorPage.on("pageerror", error => errors.push(String(error)));
   await visitorPage.goto(`${WEB_URL}/tanks/${all.id}`, { waitUntil: "networkidle" });
