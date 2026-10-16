@@ -4,7 +4,7 @@ namespace Cichlids.Api.Features.Videos;
 /// Limits on the videos a member uploads, bound from the "VideoLimits" configuration section.
 /// A member who meets the account rule (an account older than MinAccountAge with more than
 /// MinPublishedStories published stories) may upload videos up to MaxDuration; every other member
-/// is limited to ShortMaxDuration.
+/// is limited to ShortMaxDuration. A provisional profile has the length, upload and video limits of its own.
 /// </summary>
 public sealed class VideoLimitOptions
 {
@@ -28,6 +28,21 @@ public sealed class VideoLimitOptions
     /// Number of unfinished uploads one member may hold at the same time.
     /// </summary>
     public int MaxOpenUploads { get; set; } = 3;
+
+    /// <summary>
+    /// The longest video a provisional profile may upload.
+    /// </summary>
+    public TimeSpan ProvisionalMaxDuration { get; set; } = TimeSpan.FromSeconds(30);
+
+    /// <summary>
+    /// Number of unfinished uploads a provisional profile may hold at the same time.
+    /// </summary>
+    public int ProvisionalMaxOpenUploads { get; set; } = 1;
+
+    /// <summary>
+    /// Number of videos a provisional profile may hold in its media library.
+    /// </summary>
+    public int ProvisionalMaxVideos { get; set; } = 10;
 
     /// <summary>
     /// Size of the chunks of an upload in bytes. Every chunk except the last has exactly this

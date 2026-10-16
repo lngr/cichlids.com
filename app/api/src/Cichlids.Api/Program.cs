@@ -245,7 +245,7 @@ builder.Services.AddScoped<CommunityQueryService>();
 builder.Services.AddScoped<LegacyRedirectsQueryService>();
 builder.Services.AddOptions<UploadLimitsOptions>()
     .Bind(builder.Configuration.GetSection(UploadLimitsOptions.SectionName))
-    .Validate(o => o.MaxUploadsPerHour > 0 && o.MaxOpenDrafts > 0, "UploadLimits values must be positive.")
+    .Validate(o => o.MaxUploadsPerHour > 0 && o.MaxOpenDrafts > 0 && o.ProvisionalMaxUploadsPerHour > 0, "UploadLimits values must be positive.")
     .ValidateOnStart();
 builder.Services.AddOptions<DraftCleanupOptions>()
     .Bind(builder.Configuration.GetSection(DraftCleanupOptions.SectionName))
@@ -259,6 +259,7 @@ builder.Services.AddOptions<VideoLimitOptions>()
     .Validate(
         o => o.MaxDuration > TimeSpan.Zero && o.ShortMaxDuration > TimeSpan.Zero && o.ShortMaxDuration <= o.MaxDuration
             && o.MinAccountAge >= TimeSpan.Zero && o.MinPublishedStories >= 0 && o.MaxBitrate > 0 && o.MaxOpenUploads > 0
+            && o.ProvisionalMaxDuration > TimeSpan.Zero && o.ProvisionalMaxOpenUploads > 0 && o.ProvisionalMaxVideos > 0
             && o.ChunkSize >= 5 * 1024 * 1024 && o.UploadLifetime > TimeSpan.Zero && o.CleanupInterval > TimeSpan.Zero,
         "VideoLimits values must be positive, the short length must not exceed the long one and the chunk size must be at least 5 MiB.")
     .ValidateOnStart();

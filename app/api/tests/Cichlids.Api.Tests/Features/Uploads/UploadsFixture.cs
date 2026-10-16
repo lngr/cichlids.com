@@ -112,6 +112,10 @@ public sealed class UploadsFixture : IAsyncLifetime
                     // Tests run the transcoding queue and the upload cleanup directly.
                     ["VideoTranscoding:Enabled"] = "false",
                     ["VideoLimits:CleanupEnabled"] = "false",
+                    // Provisional callers of the tests sign in with keys the tests know; the request limits leave room for the suite.
+                    ["DeviceTokens:KeySet"] = Auth.Devices.DeviceTestKeys.KeySetJson,
+                    ["DeviceAuth:MaxRegistrationsPerAddressPerHour"] = "100000",
+                    ["DeviceAuth:MaxTokenRequestsPerAddressPerMinute"] = "100000",
                 }));
 
             builder.ConfigureServices(services =>

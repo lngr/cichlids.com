@@ -52,14 +52,17 @@ public sealed class UploadsWriteService(
 
     /// <summary>
     /// Checks only the owner's hourly upload limit and returns RateLimited when it is reached, else
-    /// null.
+    /// null. A provisional profile has a limit of its own.
     /// </summary>
     public async Task<UploadRefusal?> CheckHourlyQuotaAsync(long ownerProfileId, CancellationToken cancellationToken)
     {
+        var provisional = await context.Profiles.AsNoTracking()
+            .AnyAsync(p => p.Id == ownerProfileId && p.Kind == ProfileKind.Provisional, cancellationToken);
+        var limit = provisional ? limitOptions.Value.ProvisionalMaxUploadsPerHour : limitOptions.Value.MaxUploadsPerHour;
         var since = timeProvider.GetUtcNow().AddHours(-1);
         var recentUploads = await context.MediaItems.CountAsync(
             m => m.OwnerProfileId == ownerProfileId && m.CreatedAt > since, cancellationToken);
-        return recentUploads >= limitOptions.Value.MaxUploadsPerHour ? UploadRefusal.RateLimited : null;
+        return recentUploads >= limit ? UploadRefusal.RateLimited : null;
     }
 
     /// <summary>

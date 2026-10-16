@@ -68,13 +68,19 @@ public sealed class VideoUploadService(
             return (null, new VideoProblem(StatusCodes.Status429TooManyRequests, UploadsEndpoints.UploadRateLimitedCode, "The hourly upload limit is reached."));
         }
 
+        var limits = await policy.ResolveAsync(profileId, cancellationToken);
         var now = clock.GetUtcNow();
-        if (await context.VideoUploads.CountAsync(u => u.OwnerProfileId == profileId && u.ExpiresAt > now, cancellationToken) >= settings.MaxOpenUploads)
+        if (await context.VideoUploads.CountAsync(u => u.OwnerProfileId == profileId && u.ExpiresAt > now, cancellationToken) >= limits.MaxOpenUploads)
         {
             return (null, new VideoProblem(StatusCodes.Status409Conflict, VideoProblem.UploadLimitReached, "Finish or discard an open video upload first."));
         }
 
-        var limits = await policy.ResolveAsync(profileId, cancellationToken);
+        if (limits.MaxVideos is { } maxVideos
+            && await context.MediaItems.CountAsync(m => m.OwnerProfileId == profileId && m.Kind == MediaKind.Video, cancellationToken) >= maxVideos)
+        {
+            return (null, new VideoProblem(StatusCodes.Status409Conflict, VideoProblem.VideoLimitReached, "The media library holds the most videos it can."));
+        }
+
         if (request.Size > limits.MaxBytes)
         {
             return (null, new VideoProblem(

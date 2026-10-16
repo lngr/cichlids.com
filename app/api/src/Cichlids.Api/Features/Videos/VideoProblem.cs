@@ -17,6 +17,7 @@ public sealed record VideoProblem(int Status, string Code, string Detail, IReadO
     public const string UploadIncomplete = "video_upload_incomplete";
     public const string UploadExpired = "video_upload_expired";
     public const string UploadLimitReached = "video_upload_limit_reached";
+    public const string VideoLimitReached = "video_limit_reached";
     public const string ChunkTooLarge = "video_chunk_too_large";
     public const string ChunkIncomplete = "video_chunk_incomplete";
     public const string FormatUnsupported = "video_format_unsupported";
