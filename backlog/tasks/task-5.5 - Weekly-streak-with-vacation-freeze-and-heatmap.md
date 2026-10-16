@@ -4,7 +4,7 @@ title: Weekly streak with vacation freeze and heatmap
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 06:32'
+updated_date: '2026-10-16 06:59'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -69,4 +69,10 @@ A streak counts weeks with completed care, survives vacations through a freeze, 
 
 - Week without evidence (decided by the project owner, 2026-10-16): a week with a water change but without evidence does not break the water change streak.
 - Evidence (decided by the project owner, 2026-10-16): the completed guided water change mode with its timer is the evidence; photos are an optional fun extra that creates content, not a requirement.
+
+### Decided by the project owner (2026-10-16), water change streak
+- The streak counts in the rhythm periods of the tank's own care plan, not in calendar weeks: a member with a 14-day plan keeps it with one water change per period.
+- The plan is a latest date, not a rigid rhythm: each water change starts the next period; a grace of one third of the rhythm, rounded up to whole days, is allowed (14 days: up to 19 days). Two water changes right after each other are not needed.
+- Evidence: a photo taken in the app during the guided mode is required for a verified period. A water change without a photo (guided mode without photo, or logged outside the mode, for example while getting used to the app) can keep the streak only by using a freeze. About 2 freezes per year; earning extra freezes through a year of good photo evidence is to be worked out. Vacation (pause) stays separate from freezes.
+- This supersedes the earlier notes that photos are optional for the evidence and that a week without evidence never breaks the streak.
 <!-- SECTION:NOTES:END -->
