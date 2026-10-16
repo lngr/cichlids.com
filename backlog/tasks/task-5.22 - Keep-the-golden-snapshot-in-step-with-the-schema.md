@@ -4,7 +4,7 @@ title: Keep the golden snapshot in step with the schema
 status: In Review
 assignee: []
 created_date: '2026-10-16 15:16'
-updated_date: '2026-10-16 20:04'
+updated_date: '2026-10-16 20:59'
 labels: []
 dependencies: []
 references:
@@ -69,4 +69,6 @@ The golden snapshot tooling (tools/golden-snapshot: fixture-schema.sql, schema.j
 - Follows TASK-5.20.4: pin 20261016183440_UsedChecksums; used_checksum emptied.
 
 - Follows TASK-5.20.5: pin 20261016192230_QuickShareStory; media_item.quick_share_story_id kept (stories stay in the snapshot).
+
+- Follows TASK-7.1: pin 20261016203147_DeviceCredentials; provisional profiles removed with all their content before the media subset is chosen; device_credential and device_challenge emptied.
 <!-- SECTION:NOTES:END -->
