@@ -13,6 +13,7 @@ import { translateApiError } from "../../src/lib/apiErrors";
 import { useMachineRouter } from "../../src/navigation/NavigationProvider";
 import { minTouchTarget, useTheme } from "../../src/theme";
 import { DueCareSection } from "../../src/today/DueCareSection";
+import { OpenTodosLink } from "../../src/today/OpenTodosLink";
 import { localCalendarDate } from "../../src/today/localDate";
 import { draftTitle } from "../../src/upload/drafts";
 
@@ -79,6 +80,7 @@ function MemberToday() {
       </View>
       <StreakSlot />
       <DueCareSection />
+      <OpenTodosLink />
       {today.tanks.length ? <View testID="today-tanks" style={{ gap: theme.space[3] }}>
         {heading(t("today.tanks"))}
         {today.tanks.map(tank => card(`today-tank-${tank.id}`, tank.title, tank.newestPhoto?.image, `/tanks/${tank.id}`))}
