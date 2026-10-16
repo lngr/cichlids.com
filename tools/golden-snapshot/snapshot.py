@@ -16,19 +16,216 @@ from psycopg import sql
 HERE = Path(__file__).parent
 SCHEMA = json.loads((HERE / 'schema.json').read_text())
 EMPTY_TABLES = ('public.profile_identity', 'public.web_session', 'archive.legacy_comment',
-                'public.outbox_event', 'public.webhook_subscription')
+                'public.outbox_event', 'public.webhook_subscription',
+                'public.web_push_subscription', 'public.web_push_reminder_sent',
+                'public.video_upload', 'public.video_job', 'public.vacation',
+                'public.care_reminder_snooze', 'public.care_todo', 'public.comment_vote')
 FREE_TEXT = {
     'public.comment': ('body', 'delete_reason'),
     'public.discussion_post': ('body',),
     'public.discussion_thread': ('title',),
     'public.post': ('title', 'description', 'delete_reason'),
     'public.collection': ('title',),
+    'public.care_entry': ('note',),
+    'public.media_link': ('caption',),
     'public.tank': ('title', 'description', 'gravel', 'plants', 'decoration', 'light',
                     'light_duration', 'filtration', 'technic', 'water_ph', 'water_kh',
                     'water_gh', 'water_no2', 'water_no3', 'water_po4', 'water_notes',
                     'food', 'notes', 'delete_reason'),
 }
+PRIVATE_TANK = "tank_id in (select id from tank where stream_visibility <> 'public')"
+PRIVATE_SCOPE_CHECKS = (
+    ('public.care_entry', 'only_me or ' + PRIVATE_TANK),
+    ('public.care_plan_rule', PRIVATE_TANK),
+    ('public.care_plan_rule_change', PRIVATE_TANK),
+    ('public.water_change_session', PRIVATE_TANK),
+    ('public.streak_freeze', PRIVATE_TANK),
+    ('public.tank_decommissioning', PRIVATE_TANK),
+    ('public.tank_visibility_consent', PRIVATE_TANK),
+    ('public.inhabitant', "tank_id in (select id from tank where profile_visibility <> 'public')"),
+    ('public.media_link', "tank_id in (select id from tank where profile_visibility <> 'public')"),
+    ('public.collection_entry', "collection_id in (select id from collection where not is_public)"),
+)
 LABELS = ('thumb', 'small', 'medium', 'large')
+
+# Handling of every column. generated: replaced by generated text of the same length (FREE_TEXT).
+# pseudonym: replaced by an HMAC pseudonym. null: set to NULL. alias: rewritten from the post and alias
+# IDs. media: rewritten to the published media keys or to fixed values. empty: the table is emptied.
+# kept: copied unchanged. Kept text columns hold fixed vocabularies (kinds, states, units, roles, finding
+# codes), system values (reason codes and parameters, migration IDs) or the public species catalog; the
+# verification scans them for emails, URLs and original identifiers. Rows of private scopes are removed
+# by mask.sql, which leaves the handling of the remaining columns unchanged.
+COLUMN_HANDLING = {
+    'archive.legacy_comment': {
+        'empty': (
+            'author_legacy_user_id body created_at_legacy id imported_at legacy_id legacy_target_id '
+            'legacy_target_type payload poster_name stars vault_reason'),
+    },
+    'public.__EFMigrationsHistory': {
+        'kept': 'migration_id product_version',
+    },
+    'public.care_entry': {
+        'generated': 'note',
+        'kept': (
+            'amount_input_unit amount_input_value amount_liters author_profile_id duration_seconds evidence '
+            'evidence_missing id kind occurred_at only_me recorded_at tank_id water_change_session_id'),
+    },
+    'public.care_measurement_value': {
+        'kept': 'care_entry_id id input_unit input_value normalized_value origin parameter',
+    },
+    'public.care_plan_rule': {
+        'kept': 'enabled id kind reason_code reason_parameters_json rhythm_days tank_id updated_at',
+    },
+    'public.care_plan_rule_change': {
+        'kept': 'at enabled id kind rhythm_days tank_id',
+    },
+    'public.care_reminder_snooze': {
+        'empty': 'created_at due_date id kind profile_id tank_id until_date',
+    },
+    'public.care_todo': {
+        'empty': 'care_entry_id created_at done_at id profile_id tank_id text',
+    },
+    'public.collection': {
+        'generated': 'title',
+        'kept': 'created_at id is_public legacy_id profile_id',
+    },
+    'public.collection_entry': {
+        'kept': 'collection_id id post_id sort',
+    },
+    'public.comment': {
+        'generated': 'body delete_reason',
+        'kept': 'author_profile_id created_at deleted_at deleted_by_profile_id id legacy_id post_id score tank_id',
+        'pseudonym': 'poster_name',
+    },
+    'public.comment_vote': {
+        'empty': 'comment_id created_at id profile_id value',
+    },
+    'public.discussion_post': {
+        'generated': 'body',
+        'kept': 'author_profile_id created_at id legacy_id sort thread_id',
+        'pseudonym': 'poster_name',
+    },
+    'public.discussion_thread': {
+        'generated': 'title',
+        'kept': 'category created_at id last_post_at legacy_id post_count state',
+    },
+    'public.follow': {
+        'kept': 'created_at follower_profile_id id target_profile_id target_tank_id',
+    },
+    'public.inhabitant': {
+        'kept': 'count id sort species_id tank_id',
+    },
+    'public.media_item': {
+        'kept': 'byte_size created_at duration_ms height id kind legacy_id owner_profile_id width',
+        'media': 'captured_in_app checksum_sha256 content_type original_filename received_at storage_key',
+        'null': 'capture_checked_at taken_at_local taken_at_offset_minutes',
+    },
+    'public.media_link': {
+        'generated': 'caption',
+        'kept': (
+            'care_entry_id context_type created_at discussion_post_id id inhabitant_id media_item_id position '
+            'post_id profile_id role tank_id water_change_session_id'),
+    },
+    'public.media_variant': {
+        'kept': 'byte_size id label media_item_id width',
+        'media': 'storage_key',
+    },
+    'public.outbox_event': {
+        'empty': (
+            'acknowledged_subscription_ids aggregate_id aggregate_type attempt_count dispatched_at event_type '
+            'given_up_at id last_attempt_at last_error next_attempt_at occurred_at payload redelivered_at'),
+    },
+    'public.post': {
+        'generated': 'delete_reason description title',
+        'kept': (
+            'author_profile_id created_at deleted_at deleted_by_profile_id id kind legacy_id published_at '
+            'rating_average rating_count state tank_id topic updated_at view_count'),
+    },
+    'public.post_species': {
+        'kept': 'id post_id sort species_id',
+    },
+    'public.profile': {
+        'kept': 'badges country_code created_at id interests kind legacy_id onboarding_completed_at streaks_enabled',
+        'null': 'city external_avatar_url last_login_at suspended_until',
+        'pseudonym': 'display_name username',
+    },
+    'public.profile_identity': {
+        'empty': 'created_at id profile_id provider subject',
+    },
+    'public.rating': {
+        'kept': 'created_at id legacy_comment_id post_id profile_id stars tank_id',
+    },
+    'public.slug_alias': {
+        'alias': 'value',
+        'kept': 'created_at id is_canonical post_id',
+    },
+    'public.species': {
+        'kept': (
+            'aggression breeding category created_at description diet display_name genus gh_range habitat id '
+            'intra_aggression kh_range legacy_id max_size morphs name origin ph_range slug temperature_range'),
+    },
+    'public.species_common_name': {
+        'kept': 'id name species_id',
+    },
+    'public.species_link': {
+        'kept': 'id label sort species_id url',
+    },
+    'public.streak_freeze': {
+        'kept': 'care_entry_id created_at id period_end period_start tank_id tank_year',
+    },
+    'public.tank': {
+        'generated': (
+            'decoration delete_reason description filtration food gravel light light_duration notes plants '
+            'technic title water_gh water_kh water_no2 water_no3 water_notes water_ph water_po4'),
+        'kept': (
+            'adopted_at care_reminders_enabled category created_at deleted_at deleted_by_profile_id '
+            'depth_input_value depth_value dimension_unit height_input_value height_value id legacy_id '
+            'media_move_attempts media_move_next_attempt_at media_move_pending media_placed_public profile_id '
+            'profile_visibility published_at region state stream_visibility volume_input_unit volume_input_value '
+            'volume_liters width_input_value width_value'),
+    },
+    'public.tank_decommissioning': {
+        'kept': 'end_date end_media_item_id ended_at id scope start_date start_media_item_id started_at tank_id',
+    },
+    'public.tank_visibility_consent': {
+        'kept': 'answer answered_at context id tank_id',
+    },
+    'public.vacation': {
+        'empty': 'created_at end_date id profile_id start_date',
+    },
+    'public.video_job': {
+        'empty': 'attempts created_at error_code finished_at id is_private locked_until media_item_id run_after status',
+    },
+    'public.video_upload': {
+        'empty': (
+            'byte_size care_entry_id chunk_size container created_at expires_at id multipart_upload_id offset '
+            'original_filename owner_profile_id part_e_tags storage_key tank_id target'),
+    },
+    'public.water_change_session': {
+        'kept': 'duration_seconds finished_at id profile_id started_at tank_id',
+    },
+    'public.water_change_session_step': {
+        'kept': 'at id session_id state step',
+    },
+    'public.web_push_reminder_sent': {
+        'empty': 'due_date fire_date id kind sent_at subscription_id tank_id',
+    },
+    'public.web_push_subscription': {
+        'empty': (
+            'auth created_at endpoint failure_count id last_success_at next_attempt_at p256dh profile_id '
+            'time_zone'),
+    },
+    'public.web_session': {
+        'empty': (
+            'access_token_expires_at created_at csrf_token encrypted_access_token encrypted_id_token '
+            'encrypted_refresh_token id last_seen_at session_id_hash subject'),
+    },
+    'public.webhook_subscription': {
+        'empty': 'active created_at event_types id secret url',
+    },
+}
+COLUMN_HANDLING = {table: {column: label for label, names in spec.items() for column in names.split()}
+                   for table, spec in COLUMN_HANDLING.items()}
 MEDIA_KEY = re.compile(r'golden/[a-zA-Z0-9][a-zA-Z0-9._-]{0,63}/media/variants/(thumb|small|medium|large)/media-[0-9]+\.jpg\Z')
 EMAIL = re.compile(r'[\w.+-]+@[\w.-]+\.[a-z]{2,}', re.I)
 URL = re.compile(r'https?://', re.I)
@@ -150,8 +347,12 @@ def verify(conn, originals, version):
                 for (value,) in cursor:
                     if EMAIL.search(value) or (table not in URL_EXEMPT_TABLES and URL.search(value)) or (original_pattern and original_pattern.search(value)):
                         leaks += 1
-    for column in ('city', 'external_avatar_url', 'last_login_at', 'suspended_until', 'avatar_media_id', 'profile_image_media_id'):
+    for table, scope in PRIVATE_SCOPE_CHECKS:
+        leaks += conn.execute(sql.SQL('select count(*) from {} where {}').format(ident(table), sql.SQL(scope))).fetchone()[0]
+    leaks += conn.execute("select count(*) from media_item where taken_at_local is not null or taken_at_offset_minutes is not null or capture_checked_at is not null or received_at <> created_at or captured_in_app").fetchone()[0]
+    for column in ('city', 'external_avatar_url', 'last_login_at', 'suspended_until'):
         leaks += conn.execute(sql.SQL('select count(*) from profile where {} is not null').format(sql.Identifier(column))).fetchone()[0]
+    leaks += conn.execute("select count(*) from media_link where context_type='profile'").fetchone()[0]
     leaks += conn.execute("select count(*) from profile where username !~ '^member-[0-9]+$' or display_name is distinct from username").fetchone()[0]
     leaks += conn.execute("select count(*) from media_item where checksum_sha256 is not null or original_filename <> 'media-' || id || '.jpg' or storage_key <> %s || 'variants/thumb/media-' || id || '.jpg'", (f'golden/{version}/media/',)).fetchone()[0]
     for (key,) in conn.execute('select storage_key from media_variant'):
@@ -187,12 +388,12 @@ def copy_database(source, target):
 def select_media(conn, key, limit, post_ids, version):
     rows = conn.execute("""
         select p.id, m.id, v.id, v.label, v.storage_key
-        from post p join post_media pm on pm.post_id=p.id
-        join media_item m on m.id=pm.media_item_id
+        from post p join media_link ml on ml.post_id=p.id and ml.context_type='post' and ml.role='item'
+        join media_item m on m.id=ml.media_item_id
         join media_variant v on v.media_item_id=m.id
         where p.state='published' and p.deleted_at is null and m.kind='photo'
           and v.label=any(%s) and v.storage_key like 'variants/%%'
-        order by p.id,m.id,v.id
+        order by p.id,ml.position,m.id,v.id
     """, (list(LABELS),)).fetchall()
     candidates = {r[0] for r in rows if r[3] == 'thumb'}
     if post_ids is not None:
@@ -244,9 +445,9 @@ def mask(conn, key, mapping):
     media_ids = list({m['media_id'] for m in mapping})
     variant_ids = list({m['variant_id'] for m in mapping})
     conn.execute('delete from media_variant where not (id=any(%s))', (variant_ids,))
-    for table in ('post_media', 'tank_media', 'discussion_post_media'):
-        conn.execute(sql.SQL('delete from {} where not (media_item_id=any(%s))').format(sql.Identifier(table)), (media_ids,))
-    conn.execute('update tank set main_media_id=null where not (main_media_id=any(%s))', (media_ids,))
+    conn.execute('delete from tank_decommissioning where not (start_media_item_id=any(%s)) or not (coalesce(end_media_item_id, start_media_item_id)=any(%s))', (media_ids, media_ids))
+    conn.execute('delete from media_link where not (media_item_id=any(%s))', (media_ids,))
+    conn.execute("delete from media_link where context_type='profile'")
     conn.execute('delete from media_item where not (id=any(%s))', (media_ids,))
     for media in {m['media_id']: m for m in mapping if m['label'] == 'thumb'}.values():
         conn.execute("update media_item set storage_key=%s, original_filename='media-' || id || '.jpg', content_type='image/jpeg' where id=%s", (media['key'], media['media_id']))
@@ -296,7 +497,7 @@ def build(source_dsn, target_dsn, key, output, version, limit=2000, post_ids=Non
         if verify(target, originals, version):
             raise ValueError('privacy verification failed')
         row_counts = counts(target)
-        migration = target.execute('select "MigrationId" from "__EFMigrationsHistory" order by "MigrationId" desc limit 1').fetchone()[0]
+        migration = target.execute('select migration_id from "__EFMigrationsHistory" order by migration_id desc limit 1').fetchone()[0]
         target.commit()
         output.mkdir(mode=0o700, parents=True)
         try:

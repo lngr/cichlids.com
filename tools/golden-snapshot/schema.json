@@ -14,8 +14,70 @@
     "vault_reason": "text"
   },
   "public.__EFMigrationsHistory": {
-    "MigrationId": "character varying(150)",
-    "ProductVersion": "character varying(32)"
+    "migration_id": "character varying(150)",
+    "product_version": "character varying(32)"
+  },
+  "public.care_entry": {
+    "amount_input_unit": "text",
+    "amount_input_value": "numeric",
+    "amount_liters": "numeric",
+    "author_profile_id": "bigint",
+    "duration_seconds": "integer",
+    "evidence": "text",
+    "evidence_missing": "text[]",
+    "id": "bigint",
+    "kind": "text",
+    "note": "text",
+    "occurred_at": "timestamp with time zone",
+    "only_me": "boolean",
+    "recorded_at": "timestamp with time zone",
+    "tank_id": "bigint",
+    "water_change_session_id": "bigint"
+  },
+  "public.care_measurement_value": {
+    "care_entry_id": "bigint",
+    "id": "bigint",
+    "input_unit": "text",
+    "input_value": "numeric",
+    "normalized_value": "numeric",
+    "origin": "text",
+    "parameter": "text"
+  },
+  "public.care_plan_rule": {
+    "enabled": "boolean",
+    "id": "bigint",
+    "kind": "text",
+    "reason_code": "text",
+    "reason_parameters_json": "jsonb",
+    "rhythm_days": "integer",
+    "tank_id": "bigint",
+    "updated_at": "timestamp with time zone"
+  },
+  "public.care_plan_rule_change": {
+    "at": "timestamp with time zone",
+    "enabled": "boolean",
+    "id": "bigint",
+    "kind": "text",
+    "rhythm_days": "integer",
+    "tank_id": "bigint"
+  },
+  "public.care_reminder_snooze": {
+    "created_at": "timestamp with time zone",
+    "due_date": "date",
+    "id": "bigint",
+    "kind": "text",
+    "profile_id": "bigint",
+    "tank_id": "bigint",
+    "until_date": "date"
+  },
+  "public.care_todo": {
+    "care_entry_id": "bigint",
+    "created_at": "timestamp with time zone",
+    "done_at": "timestamp with time zone",
+    "id": "bigint",
+    "profile_id": "bigint",
+    "tank_id": "bigint",
+    "text": "text"
   },
   "public.collection": {
     "created_at": "timestamp with time zone",
@@ -62,12 +124,6 @@
     "sort": "integer",
     "thread_id": "bigint"
   },
-  "public.discussion_post_media": {
-    "discussion_post_id": "bigint",
-    "id": "bigint",
-    "media_item_id": "bigint",
-    "sort": "integer"
-  },
   "public.discussion_thread": {
     "category": "text",
     "created_at": "timestamp with time zone",
@@ -94,17 +150,39 @@
   },
   "public.media_item": {
     "byte_size": "bigint",
+    "capture_checked_at": "timestamp with time zone",
+    "captured_in_app": "boolean",
     "checksum_sha256": "text",
     "content_type": "text",
     "created_at": "timestamp with time zone",
+    "duration_ms": "integer",
     "height": "integer",
     "id": "bigint",
     "kind": "text",
     "legacy_id": "integer",
     "original_filename": "text",
     "owner_profile_id": "bigint",
+    "received_at": "timestamp with time zone",
     "storage_key": "text",
+    "taken_at_local": "timestamp without time zone",
+    "taken_at_offset_minutes": "smallint",
     "width": "integer"
+  },
+  "public.media_link": {
+    "caption": "text",
+    "care_entry_id": "bigint",
+    "context_type": "text",
+    "created_at": "timestamp with time zone",
+    "discussion_post_id": "bigint",
+    "id": "bigint",
+    "inhabitant_id": "bigint",
+    "media_item_id": "bigint",
+    "position": "integer",
+    "post_id": "bigint",
+    "profile_id": "bigint",
+    "role": "text",
+    "tank_id": "bigint",
+    "water_change_session_id": "bigint"
   },
   "public.media_variant": {
     "byte_size": "bigint",
@@ -150,12 +228,6 @@
     "updated_at": "timestamp with time zone",
     "view_count": "bigint"
   },
-  "public.post_media": {
-    "id": "bigint",
-    "media_item_id": "bigint",
-    "post_id": "bigint",
-    "sort": "integer"
-  },
   "public.post_species": {
     "id": "bigint",
     "post_id": "bigint",
@@ -163,17 +235,19 @@
     "species_id": "bigint"
   },
   "public.profile": {
-    "avatar_media_id": "bigint",
+    "badges": "text[]",
     "city": "text",
     "country_code": "text",
     "created_at": "timestamp with time zone",
     "display_name": "text",
     "external_avatar_url": "text",
     "id": "bigint",
+    "interests": "text[]",
     "kind": "text",
     "last_login_at": "timestamp with time zone",
     "legacy_id": "integer",
-    "profile_image_media_id": "bigint",
+    "onboarding_completed_at": "timestamp with time zone",
+    "streaks_enabled": "boolean",
     "suspended_until": "timestamp with time zone",
     "username": "text"
   },
@@ -235,32 +309,54 @@
     "species_id": "bigint",
     "url": "text"
   },
+  "public.streak_freeze": {
+    "care_entry_id": "bigint",
+    "created_at": "timestamp with time zone",
+    "id": "bigint",
+    "period_end": "date",
+    "period_start": "date",
+    "tank_id": "bigint",
+    "tank_year": "integer"
+  },
   "public.tank": {
+    "adopted_at": "timestamp with time zone",
+    "care_reminders_enabled": "boolean",
     "category": "text",
     "created_at": "timestamp with time zone",
     "decoration": "text",
     "delete_reason": "text",
     "deleted_at": "timestamp with time zone",
     "deleted_by_profile_id": "bigint",
-    "depth_value": "integer",
+    "depth_input_value": "numeric",
+    "depth_value": "numeric",
     "description": "text",
     "dimension_unit": "text",
     "filtration": "text",
     "food": "text",
     "gravel": "text",
-    "height_value": "integer",
+    "height_input_value": "numeric",
+    "height_value": "numeric",
     "id": "bigint",
     "legacy_id": "integer",
     "light": "text",
     "light_duration": "text",
-    "main_media_id": "bigint",
+    "media_move_attempts": "integer",
+    "media_move_next_attempt_at": "timestamp with time zone",
+    "media_move_pending": "boolean",
+    "media_placed_public": "boolean",
     "notes": "text",
     "plants": "text",
     "profile_id": "bigint",
+    "profile_visibility": "text",
     "published_at": "timestamp with time zone",
+    "region": "text",
     "state": "text",
+    "stream_visibility": "text",
     "technic": "text",
     "title": "text",
+    "volume_input_unit": "text",
+    "volume_input_value": "numeric",
+    "volume_liters": "numeric",
     "water_gh": "text",
     "water_kh": "text",
     "water_no2": "text",
@@ -268,14 +364,98 @@
     "water_notes": "text",
     "water_ph": "text",
     "water_po4": "text",
-    "width_value": "integer"
+    "width_input_value": "numeric",
+    "width_value": "numeric"
   },
-  "public.tank_media": {
+  "public.tank_decommissioning": {
+    "end_date": "date",
+    "end_media_item_id": "bigint",
+    "ended_at": "timestamp with time zone",
     "id": "bigint",
-    "media_item_id": "bigint",
-    "section": "text",
-    "sort": "integer",
+    "scope": "text",
+    "start_date": "date",
+    "start_media_item_id": "bigint",
+    "started_at": "timestamp with time zone",
     "tank_id": "bigint"
+  },
+  "public.tank_visibility_consent": {
+    "answer": "boolean",
+    "answered_at": "timestamp with time zone",
+    "context": "text",
+    "id": "bigint",
+    "tank_id": "bigint"
+  },
+  "public.vacation": {
+    "created_at": "timestamp with time zone",
+    "end_date": "date",
+    "id": "bigint",
+    "profile_id": "bigint",
+    "start_date": "date"
+  },
+  "public.video_job": {
+    "attempts": "integer",
+    "created_at": "timestamp with time zone",
+    "error_code": "text",
+    "finished_at": "timestamp with time zone",
+    "id": "bigint",
+    "is_private": "boolean",
+    "locked_until": "timestamp with time zone",
+    "media_item_id": "bigint",
+    "run_after": "timestamp with time zone",
+    "status": "text"
+  },
+  "public.video_upload": {
+    "byte_size": "bigint",
+    "care_entry_id": "bigint",
+    "chunk_size": "integer",
+    "container": "text",
+    "created_at": "timestamp with time zone",
+    "expires_at": "timestamp with time zone",
+    "id": "bigint",
+    "multipart_upload_id": "text",
+    "offset": "bigint",
+    "original_filename": "text",
+    "owner_profile_id": "bigint",
+    "part_e_tags": "text[]",
+    "storage_key": "text",
+    "tank_id": "bigint",
+    "target": "text"
+  },
+  "public.water_change_session": {
+    "duration_seconds": "integer",
+    "finished_at": "timestamp with time zone",
+    "id": "bigint",
+    "profile_id": "bigint",
+    "started_at": "timestamp with time zone",
+    "tank_id": "bigint"
+  },
+  "public.water_change_session_step": {
+    "at": "timestamp with time zone",
+    "id": "bigint",
+    "session_id": "bigint",
+    "state": "text",
+    "step": "text"
+  },
+  "public.web_push_reminder_sent": {
+    "due_date": "date",
+    "fire_date": "date",
+    "id": "bigint",
+    "kind": "text",
+    "sent_at": "timestamp with time zone",
+    "subscription_id": "bigint",
+    "tank_id": "bigint"
+  },
+  "public.web_push_subscription": {
+    "auth": "text",
+    "created_at": "timestamp with time zone",
+    "endpoint": "text",
+    "failure_count": "integer",
+    "id": "bigint",
+    "last_success_at": "timestamp with time zone",
+    "next_attempt_at": "timestamp with time zone",
+    "p256dh": "text",
+    "profile_id": "bigint",
+    "time_zone": "character varying(64)"
   },
   "public.web_session": {
     "access_token_expires_at": "timestamp with time zone",

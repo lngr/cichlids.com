@@ -42,6 +42,19 @@ class GenerationTests(unittest.TestCase):
                 self.assertNotIn('@', result)
                 self.assertNotIn('SyntheticAlice', result)
 
+    def test_every_column_has_a_handling_rule(self):
+        self.assertEqual({table: set(columns) for table, columns in snapshot.SCHEMA.items()},
+                         {table: set(rules) for table, rules in snapshot.COLUMN_HANDLING.items()})
+        for table, rules in snapshot.COLUMN_HANDLING.items():
+            self.assertLessEqual(set(rules.values()), {'generated', 'pseudonym', 'null', 'alias', 'media', 'empty', 'kept'})
+            self.assertEqual({c for c, rule in rules.items() if rule == 'generated'}, set(snapshot.FREE_TEXT.get(table, ())))
+            if table in snapshot.EMPTY_TABLES:
+                self.assertEqual(set(rules.values()), {'empty'})
+            else:
+                self.assertNotIn('empty', rules.values())
+        for table in snapshot.EMPTY_TABLES:
+            self.assertIn(table, snapshot.COLUMN_HANDLING)
+
     def test_manifest_rejects_tampering_and_unsafe_media_keys(self):
         manifest = {'format': 1, 'version': 'v1', 'migration_id': 'test',
                     'dump_sha256': '0' * 64, 'row_counts': {}, 'post_ids': [1],
@@ -94,7 +107,7 @@ class DatabaseTests(unittest.TestCase):
         manifest = snapshot.build(self.source, self.target, KEY, output, 'synthetic-v1', limit=2, media_store=publish)
         self.assertEqual(before, snapshot.fingerprint(self.source))
         self.assertEqual(manifest, json.loads((output / 'manifest.json').read_text()))
-        self.assertEqual(manifest['migration_id'], '20261013120319_EncryptWebSessionTokens')
+        self.assertEqual(manifest['migration_id'], '20261016155023_MediaLinks')
         self.assertEqual(len(manifest['post_ids']), 2)
         self.assertLessEqual(set(manifest['post_ids']), {1, 2, 3})
         self.assertTrue((output / 'snapshot.dump').read_bytes().startswith(b'PGDMP'))
@@ -103,32 +116,35 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(snapshot.verify(conn, denylist, 'synthetic-v1'), 0)
             for table in snapshot.EMPTY_TABLES:
                 self.assertEqual(conn.execute(sql.SQL('select count(*) from {}').format(snapshot.ident(table))).fetchone()[0], 0)
-            profiles = conn.execute('select username, display_name, city, external_avatar_url, last_login_at, suspended_until, country_code, avatar_media_id, profile_image_media_id from profile order by id').fetchall()
+            profiles = conn.execute('select username, display_name, city, external_avatar_url, last_login_at, suspended_until, country_code from profile order by id').fetchall()
             self.assertEqual({r[0] for r in profiles}, set(snapshot.pseudonyms(KEY, [1, 2, 3], 'member').values()))
             for row in profiles:
                 self.assertEqual(row[0], row[1])
                 self.assertEqual(row[2:6], (None,) * 4)
                 self.assertEqual(row[6], 'DE')
-                self.assertEqual(row[7:], (None, None))
             for table, columns in snapshot.FREE_TEXT.items():
                 for column in columns:
                     query = sql.SQL('select id, {} from {} order by id').format(sql.Identifier(column), snapshot.ident(table))
                     old, new = source.execute(query).fetchall(), conn.execute(query).fetchall()
+                    if table in ('public.media_link', 'public.care_entry'):
+                        self.assertTrue({r[0] for r in new} <= {r[0] for r in old})
+                        old = [r for r in old if r[0] in {n[0] for n in new}]
+                    else:
+                        self.assertEqual([r[0] for r in old], [r[0] for r in new])
                     self.assertEqual([r[0] for r in old], [r[0] for r in new])
                     for (row_id, a), (_, b) in zip(old, new):
                         self.assertEqual(b, snapshot.generated_text(KEY, f'{table}.{column}:{row_id}', a))
-            for table in ('species', 'species_link', 'species_common_name', 'rating', 'comment_vote', 'follow', 'inhabitant', 'post_species'):
+            for table in ('species', 'species_link', 'species_common_name', 'rating', 'follow', 'post_species'):
                 query = sql.SQL('select * from {} order by id').format(sql.Identifier(table))
                 self.assertEqual(source.execute(query).fetchall(), conn.execute(query).fetchall())
             changed = {table: set(columns) for table, columns in snapshot.FREE_TEXT.items()}
-            changed['public.profile'] = {'username', 'display_name', 'city', 'external_avatar_url', 'last_login_at', 'suspended_until', 'avatar_media_id', 'profile_image_media_id'}
+            changed['public.profile'] = {'username', 'display_name', 'city', 'external_avatar_url', 'last_login_at', 'suspended_until'}
             changed['public.slug_alias'] = {'value'}
-            changed['public.media_item'] = {'storage_key', 'original_filename', 'content_type', 'checksum_sha256'}
+            changed['public.media_item'] = {'storage_key', 'original_filename', 'content_type', 'checksum_sha256', 'taken_at_local', 'taken_at_offset_minutes', 'capture_checked_at', 'received_at', 'captured_in_app'}
             changed['public.media_variant'] = {'storage_key'}
-            changed['public.tank'].add('main_media_id')
             changed['public.comment'].add('poster_name')
             changed['public.discussion_post'].add('poster_name')
-            subset_tables = {'public.media_item', 'public.media_variant', 'public.post_media', 'public.tank_media', 'public.discussion_post_media'}
+            subset_tables = {'public.media_item', 'public.media_variant', 'public.media_link', 'public.tank_decommissioning', 'public.care_entry', 'public.care_measurement_value', 'public.care_plan_rule', 'public.care_plan_rule_change', 'public.water_change_session', 'public.water_change_session_step', 'public.streak_freeze', 'public.tank_visibility_consent', 'public.inhabitant', 'public.collection_entry'}
             for table, columns in snapshot.SCHEMA.items():
                 if table in snapshot.EMPTY_TABLES or table == 'public.__EFMigrationsHistory':
                     continue
@@ -136,7 +152,8 @@ class DatabaseTests(unittest.TestCase):
                 query = sql.SQL('select {} from {} order by id').format(sql.SQL(',').join(map(sql.Identifier, stable)), snapshot.ident(table))
                 old, new = source.execute(query).fetchall(), conn.execute(query).fetchall()
                 if table in subset_tables:
-                    self.assertTrue(set(new) <= set(old))
+                    hashable = lambda rows: {tuple(repr(v) if isinstance(v, (list, dict)) else v for v in r) for r in rows}
+                    self.assertTrue(hashable(new) <= hashable(old))
                 else:
                     self.assertEqual(old, new)
             for table in ('comment', 'discussion_post'):
@@ -148,6 +165,38 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual({r[0] for r in conn.execute('select id from media_variant')},
                              {m['variant_id'] for m in snapshot.select_media(source, KEY, 2, None, 'synthetic-v1')[1]})
             self.assertEqual(conn.execute('select count(*) from media_item').fetchone()[0], 2)
+            retained = {r[0] for r in conn.execute('select id from media_item')}
+            self.assertEqual({r[0] for r in conn.execute('select distinct media_item_id from media_link')} - retained, set())
+            self.assertEqual(conn.execute("select count(*) from media_link where context_type='profile'").fetchone()[0], 0)
+            self.assertGreater(source.execute("select count(*) from media_link where context_type='profile'").fetchone()[0], 0)
+            self.assertEqual(conn.execute("select count(*) from media_link where context_type='post' and role='item' and media_item_id=any(%s)", (list(retained),)).fetchone()[0],
+                             source.execute("select count(*) from media_link where context_type='post' and role='item' and media_item_id=any(%s)", (list(retained),)).fetchone()[0])
+            kept = [r[0] for r in source.execute('select d.id from tank_decommissioning d join tank t on t.id=d.tank_id where t.stream_visibility=\'public\' and d.start_media_item_id=any(%s) and coalesce(d.end_media_item_id, d.start_media_item_id)=any(%s) order by d.id', (list(retained), list(retained)))]
+            self.assertEqual(kept, [r[0] for r in conn.execute('select id from tank_decommissioning order by id')])
+            self.assertLess(len(kept), source.execute('select count(*) from tank_decommissioning').fetchone()[0])
+            for table in ('streak_freeze', 'tank_visibility_consent', 'care_plan_rule', 'care_plan_rule_change', 'care_measurement_value', 'water_change_session', 'water_change_session_step', 'care_entry'):
+                self.assertGreater(conn.execute(sql.SQL('select count(*) from {}').format(sql.Identifier(table))).fetchone()[0], 0, table)
+            count = lambda db, query: db.execute(query).fetchone()[0]
+            # private scopes are gone, public scopes remain
+            self.assertEqual(count(conn, "select count(*) from care_entry where only_me or tank_id in (4, 5)"), 0)
+            self.assertEqual(sorted(r[0] for r in conn.execute('select id from care_entry')), [1, 3])
+            self.assertEqual(sorted(r[0] for r in conn.execute('select id from water_change_session')), [1])
+            self.assertEqual(sorted(r[0] for r in conn.execute('select id from care_measurement_value order by id')), [r[0] for r in source.execute('select id from care_measurement_value where care_entry_id=3')])
+            for table in ('care_plan_rule', 'care_plan_rule_change', 'streak_freeze', 'tank_visibility_consent', 'tank_decommissioning'):
+                self.assertEqual(count(conn, f'select count(*) from {table} where tank_id in (4, 5)'), 0, table)
+                self.assertGreater(count(source, f'select count(*) from {table} where tank_id in (4, 5)'), 0, table)
+            for table in ('care_plan_rule', 'care_plan_rule_change', 'streak_freeze', 'tank_visibility_consent'):
+                self.assertGreater(count(conn, f'select count(*) from {table} where tank_id in (1)'), 0, table)
+            self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from inhabitant order by tank_id')), [1, 4])
+            self.assertEqual(count(conn, 'select count(*) from media_link where tank_id=5'), 0)
+            self.assertEqual(sorted(r[0] for r in conn.execute('select id from collection_entry')), [r[0] for r in source.execute('select id from collection_entry where collection_id=1')])
+            self.assertEqual(count(conn, 'select count(*) from collection'), 2)
+            for table in ('vacation', 'care_reminder_snooze', 'care_todo', 'comment_vote'):
+                self.assertEqual(count(conn, f'select count(*) from {table}'), 0, table)
+                self.assertGreater(count(source, f'select count(*) from {table}'), 0, table)
+            self.assertEqual(count(conn, "select count(*) from media_item where taken_at_local is not null or taken_at_offset_minutes is not null or capture_checked_at is not null or received_at <> created_at or captured_in_app"), 0)
+            self.assertGreater(count(source, 'select count(*) from media_item where captured_in_app and taken_at_local is not null and received_at <> created_at'), 0)
+            self.assertEqual(source.execute('select bool_and(streaks_enabled) from profile').fetchone(), conn.execute('select bool_and(streaks_enabled) from profile').fetchone())
             for key, filename, checksum in conn.execute('select storage_key, original_filename, checksum_sha256 from media_item'):
                 self.assertIn(key, exported)
                 self.assertRegex(key, r'^golden/synthetic-v1/media/variants/thumb/media-[0-9]+\.jpg$')
@@ -170,8 +219,15 @@ class DatabaseTests(unittest.TestCase):
                 "update species_common_name set name='planted@example.invalid' where id=1",
                 "update post set title='sYnThEtIc DiSpLaY' where id=1",
                 "insert into profile_identity (profile_id,provider,subject,created_at) values (1,'test','test',now())",
+                "update care_entry set only_me=true where id=1",
+                "update tank set stream_visibility='private' where id=1",
+                "update tank set stream_visibility='private', profile_visibility='private' where id=1",
+                "update collection set is_public=false where id=1",
+                "update media_item set captured_in_app=true",
+                "update media_item set taken_at_local='2020-01-01 12:00'",
+                "update media_item set received_at=created_at + interval '1 day'",
             ):
-                with self.subTest(statement=statement.split()[1]):
+                with self.subTest(statement=statement):
                     conn.execute('savepoint leak')
                     conn.execute(statement)
                     capture = io.StringIO()
@@ -180,13 +236,26 @@ class DatabaseTests(unittest.TestCase):
                     self.assertNotIn('SyntheticAlice', capture.getvalue())
                     self.assertNotIn('@', capture.getvalue())
                     conn.execute('rollback to savepoint leak')
-            for table in snapshot.EMPTY_TABLES:
-                data = source.execute(sql.SQL('select * from {}').format(snapshot.ident(table))).fetchone()
+            parents = {'public.web_push_reminder_sent': ('public.web_push_subscription', 'subscription_id'), 'public.video_job': ('public.media_item', 'media_item_id')}
+
+            def copy_row(table, row_id=None):
+                data = source.execute(sql.SQL('select * from {} where %s::bigint is null or id=%s order by id').format(snapshot.ident(table)), (row_id, row_id)).fetchone()
                 cols = [d.name for d in source.execute(sql.SQL('select * from {} limit 0').format(snapshot.ident(table))).description]
-                conn.execute('savepoint leak_table')
                 conn.execute(sql.SQL('insert into {} ({}) overriding system value values ({})').format(snapshot.ident(table), sql.SQL(',').join(map(sql.Identifier, cols)), sql.SQL(',').join(sql.Placeholder() for _ in cols)), [Jsonb(v) if isinstance(v, dict) else v for v in data])
-                self.assertGreater(snapshot.verify(conn, denylist, 'synthetic-v1'), 0)
-                conn.execute('rollback to savepoint leak_table')
+
+            for table in snapshot.EMPTY_TABLES:
+                with self.subTest(table=table):
+                    conn.execute('savepoint leak_table')
+                    baseline = 0
+                    if table in parents:
+                        parent, column = parents[table]
+                        copy_row(parent, source.execute(sql.SQL('select {} from {} order by id').format(sql.Identifier(column), snapshot.ident(table))).fetchone()[0])
+                        with contextlib.redirect_stdout(io.StringIO()):
+                            baseline = snapshot.verify(conn, denylist, 'synthetic-v1')
+                    copy_row(table)
+                    with contextlib.redirect_stdout(io.StringIO()):
+                        self.assertGreater(snapshot.verify(conn, denylist, 'synthetic-v1'), baseline)
+                    conn.execute('rollback to savepoint leak_table')
         clone = make_conninfo(self.dsn, dbname='synthetic_clone_' + self.suffix)
         with self.assertRaisesRegex(ValueError, 'checksum mismatch'):
             restore.restore_database(clone, output / 'snapshot.dump', {**manifest, 'dump_sha256': '1' * 64}, 'pr-17')

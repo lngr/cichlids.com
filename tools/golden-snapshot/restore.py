@@ -56,7 +56,7 @@ def restore_database(dsn, dump, manifest, environment, refresh=False):
             result = subprocess.run(command, stdin=stream, env=pg_env(conn), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         if result.returncode:
             raise RuntimeError('restore failed')
-        migration = conn.execute('select "MigrationId" from "__EFMigrationsHistory" order by "MigrationId" desc limit 1').fetchone()[0]
+        migration = conn.execute('select migration_id from "__EFMigrationsHistory" order by migration_id desc limit 1').fetchone()[0]
         if counts(conn) != manifest['row_counts'] or migration != manifest['migration_id']:
             raise ValueError('restored data mismatch')
         conn.execute(sql.SQL('comment on database {} is {}').format(sql.Identifier(conn.info.dbname), sql.Literal(marker)))
