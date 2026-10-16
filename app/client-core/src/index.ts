@@ -6,6 +6,11 @@ export type {
   CareEntry,
   CarePhoto,
   CareTodo,
+  WaterChangeSession,
+  WaterChangeFinished,
+  WaterChangePhotoSlot,
+  WaterChangeStep,
+  WaterChangeStepState,
   TodoListItem,
   TodoListParams,
   TodoState,
@@ -92,6 +97,10 @@ export {
   measurementMachine, PPM_PER_GERMAN_DEGREE, scaleSeries, seriesForDisplay, setField, setOrigin, showMore, validateDraft, valueInSystem, visibleParameters,
 } from "./measurement.js";
 export type { DisplayPoint, DisplaySeries, DraftErrors, MeasurementDraft, ScaledPoint, UnitSystem } from "./measurement.js";
+export {
+  WATER_CHANGE_STAGES, drainingSeconds, formatElapsed, nextWaterChangeStage, totalSeconds, waterChangeMachine,
+} from "./waterChange.js";
+export type { StoredWaterChange, WaterChangeActor, WaterChangeEffects, WaterChangeStage, WaterChangeTip } from "./waterChange.js";
 export { DEFAULT_OVERLAY_OPACITY, latestSeriesPhotoUrl, overlayOpacity, timeLapseCameraMachine } from "./timeLapseCamera.js";
 
 export { PAIRING_WINDOW_MS, layoutChart, loadWaterChanges, pairWaterChanges } from "./waterChangeMarks.js";
