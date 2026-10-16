@@ -53,6 +53,22 @@ export type CareEntryDto = {
     onlyMe?: boolean;
 };
 
+export type CareHeatmapDayDto = {
+    date: string;
+    waterChanges: number | string;
+    measurements: number | string;
+};
+
+export type CareHeatmapDto = {
+    start: string;
+    end: string;
+    weeks: number | string;
+    days: Array<CareHeatmapDayDto>;
+    activeDays: number | string;
+    lastWaterChange: null | string;
+    lastMeasurement: null | string;
+};
+
 export type CareKind = 'water_change' | 'measurement';
 
 export type CareParameter = 'temperature' | 'ph' | 'kh' | 'gh' | 'no2' | 'no3' | 'nh4' | 'po4' | 'conductivity' | 'tds';
@@ -1168,6 +1184,42 @@ export type ListDueCareResponses = {
 };
 
 export type ListDueCareResponse = ListDueCareResponses[keyof ListDueCareResponses];
+
+export type GetMyCareHeatmapData = {
+    body?: never;
+    path?: never;
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/me/care/heatmap';
+};
+
+export type GetMyCareHeatmapErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type GetMyCareHeatmapError = GetMyCareHeatmapErrors[keyof GetMyCareHeatmapErrors];
+
+export type GetMyCareHeatmapResponses = {
+    /**
+     * OK
+     */
+    200: CareHeatmapDto;
+};
+
+export type GetMyCareHeatmapResponse = GetMyCareHeatmapResponses[keyof GetMyCareHeatmapResponses];
 
 export type GetTankStreaksData = {
     body?: never;
@@ -2347,6 +2399,40 @@ export type UpdateCareEntryResponses = {
 };
 
 export type UpdateCareEntryResponse = UpdateCareEntryResponses[keyof UpdateCareEntryResponses];
+
+export type GetCareHeatmapData = {
+    body?: never;
+    path: {
+        tankId: number;
+    };
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/tanks/{tankId}/care/heatmap';
+};
+
+export type GetCareHeatmapErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetCareHeatmapError = GetCareHeatmapErrors[keyof GetCareHeatmapErrors];
+
+export type GetCareHeatmapResponses = {
+    /**
+     * OK
+     */
+    200: CareHeatmapDto;
+};
+
+export type GetCareHeatmapResponse = GetCareHeatmapResponses[keyof GetCareHeatmapResponses];
 
 export type GetCarePlanData = {
     body?: never;
