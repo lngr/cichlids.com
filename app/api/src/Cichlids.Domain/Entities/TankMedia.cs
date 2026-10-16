@@ -13,4 +13,10 @@ public class TankMedia
     public long MediaItemId { get; set; }
     public TankMediaSection Section { get; set; }
     public int Sort { get; set; }
+
+    /// <summary>
+    /// Whether the photo was taken with the camera of the app. Only such photos of the time-lapse
+    /// section count for the time-lapse streak.
+    /// </summary>
+    public bool CapturedInApp { get; set; }
 }

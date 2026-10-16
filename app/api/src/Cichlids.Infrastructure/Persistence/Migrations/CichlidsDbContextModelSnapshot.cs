@@ -340,6 +340,50 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.CarePlanRuleChange", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTimeOffset>("At")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("at");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("boolean")
+                        .HasColumnName("enabled");
+
+                    b.Property<string>("Kind")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("kind");
+
+                    b.Property<int>("RhythmDays")
+                        .HasColumnType("integer")
+                        .HasColumnName("rhythm_days");
+
+                    b.Property<long>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_care_plan_rule_change");
+
+                    b.HasIndex("TankId", "Kind", "At")
+                        .HasDatabaseName("ix_care_plan_rule_change_tank_id_kind_at");
+
+                    b.ToTable("care_plan_rule_change", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_care_plan_rule_change_kind", "kind IN ('water_change', 'measurement')");
+
+                            t.HasCheckConstraint("ck_care_plan_rule_change_rhythm", "rhythm_days BETWEEN 1 AND 90");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.CareReminderSnooze", b =>
                 {
                     b.Property<long>("Id")
@@ -1757,6 +1801,57 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.ToTable("species_link", "public");
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.StreakFreeze", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("CareEntryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("care_entry_id");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateOnly>("PeriodEnd")
+                        .HasColumnType("date")
+                        .HasColumnName("period_end");
+
+                    b.Property<DateOnly>("PeriodStart")
+                        .HasColumnType("date")
+                        .HasColumnName("period_start");
+
+                    b.Property<long>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("integer")
+                        .HasColumnName("year");
+
+                    b.HasKey("Id")
+                        .HasName("pk_streak_freeze");
+
+                    b.HasIndex("CareEntryId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_streak_freeze_care_entry_id");
+
+                    b.HasIndex("TankId", "Year")
+                        .HasDatabaseName("ix_streak_freeze_tank_id_year");
+
+                    b.ToTable("streak_freeze", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_streak_freeze_period", "period_end >= period_start");
+
+                            t.HasCheckConstraint("ck_streak_freeze_year", "year = EXTRACT(YEAR FROM period_end)");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.Tank", b =>
                 {
                     b.Property<long>("Id")
@@ -2014,6 +2109,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
+                    b.Property<bool>("CapturedInApp")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("captured_in_app");
+
                     b.Property<long>("MediaItemId")
                         .HasColumnType("bigint")
                         .HasColumnName("media_item_id");
@@ -2084,6 +2185,48 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.ToTable("tank_visibility_consent", "public", t =>
                         {
                             t.HasCheckConstraint("ck_tank_visibility_consent_context", "context IN ('creation', 'settings')");
+                        });
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.Vacation", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateOnly?>("EndDate")
+                        .HasColumnType("date")
+                        .HasColumnName("end_date");
+
+                    b.Property<long>("ProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("profile_id");
+
+                    b.Property<DateOnly>("StartDate")
+                        .HasColumnType("date")
+                        .HasColumnName("start_date");
+
+                    b.HasKey("Id")
+                        .HasName("pk_vacation");
+
+                    b.HasIndex("ProfileId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_vacation_active")
+                        .HasFilter("end_date IS NULL");
+
+                    b.HasIndex("ProfileId", "StartDate")
+                        .HasDatabaseName("ix_vacation_profile_id_start_date");
+
+                    b.ToTable("vacation", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_vacation_dates", "end_date IS NULL OR end_date >= start_date");
                         });
                 });
 
@@ -2658,6 +2801,16 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasConstraintName("fk_care_plan_rule_tanks_tank_id");
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.CarePlanRuleChange", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_plan_rule_change_tanks_tank_id");
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.CareReminderSnooze", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.Profile", null)
@@ -3010,6 +3163,23 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasConstraintName("fk_species_link_species_species_id");
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.StreakFreeze", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.CareEntry", null)
+                        .WithMany()
+                        .HasForeignKey("CareEntryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_streak_freeze_care_entry_care_entry_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_streak_freeze_tanks_tank_id");
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.Tank", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.Profile", null)
@@ -3057,6 +3227,16 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_tank_visibility_consent_tank_tank_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.Vacation", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_vacation_profile_profile_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.VideoJob", b =>

@@ -14,6 +14,7 @@ public class TankMediaConfiguration : IEntityTypeConfiguration<TankMedia>
 
         builder.Property(x => x.Section).HasConversion<SnakeCaseEnumConverter<TankMediaSection>>().IsRequired();
         builder.Property(x => x.Sort).IsRequired().HasDefaultValue(0);
+        builder.Property(x => x.CapturedInApp).IsRequired().HasDefaultValue(false);
 
         builder.HasIndex(x => new { x.TankId, x.MediaItemId, x.Section }).IsUnique();
 
