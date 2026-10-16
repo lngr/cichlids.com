@@ -4,7 +4,7 @@ title: Weekly streak with vacation freeze and heatmap
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 06:15'
+updated_date: '2026-10-16 06:20'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -56,4 +56,8 @@ A streak counts weeks with completed care, survives vacations through a freeze, 
 - Care heatmap (water changes, measurements) stays independent of the streak.
 - No freeze: instead the member declares a vacation, which pauses the streak for a good reason (nobody can change water while away); frequent vacations become visible.
 - The care (water change) streak is still being designed: self-reported entries are too easy to fake or to cheat oneself with; the project owner asks for creative ways to make it verifiable.
+
+- Time-lapse streak, anti-fake (decided by the project owner, 2026-10-16): a photo taken with the camera of the app (not picked from the library) counts as sufficient proof; an image model that checks the subject comes later, when fakes become a problem and enough data exists to train it. Members want clean time-lapses, so a fake photo shows in their own time-lapse. Deleting a photo that keeps the streak asks first, because it breaks the streak.
+- Leaderboard and ranking are a later feature (DRAFT-14), not part of this story; the onboarding stays free of points and rankings.
+- Water change streak: test kits, test strips and sensors are owned by few members (often teenagers without any); evidence must work without extra hardware. A water change photo pair (the tank half drained, then refilled) is worth pursuing; open: how to tell that it was drained, and what happens when the member forgets the photo during the change.
 <!-- SECTION:NOTES:END -->
