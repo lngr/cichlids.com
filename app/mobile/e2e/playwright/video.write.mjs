@@ -24,7 +24,7 @@ execFileSync("ffmpeg", [
 
 const token = await passwordGrantToken();
 const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
-const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title: "Video tank" }) });
+const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title: "Video tank", isPublic: true }) });
 assert.equal(created.status, 201);
 const tank = await created.json();
 const videosOf = async () => (await (await fetch(`${API_URL}/api/tanks/${tank.id}/videos`, { headers })).json());

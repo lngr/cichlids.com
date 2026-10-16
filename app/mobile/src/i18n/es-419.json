@@ -112,7 +112,24 @@
       "waterValue": "{{label}} {{value}}",
       "volume": "Volumen"
     },
-    "pictures_many": "{{count}} fotos"
+    "pictures_many": "{{count}} fotos",
+    "visibility": {
+      "title": "Visibilidad",
+      "badgePrivate": "Acuario privado: solo tú lo ves",
+      "badgeStreamPrivate": "Registro de cuidados privado: solo tú ves las entradas",
+      "profileTitle": "Perfil del acuario",
+      "profileHelp": "Encabezado, fotos, timelapse e historia",
+      "streamTitle": "Registro de cuidados",
+      "streamHelp": "Cambios de agua, mediciones, fotos y videos de cuidados",
+      "public": "Público",
+      "private": "Privado",
+      "publicHelp": "Todos lo ven, con o sin cuenta, y los miembros pueden seguirlo.",
+      "privateHelp": "Solo tú.",
+      "streamBlocked": "El registro de cuidados no puede ser visible para más personas que el perfil del acuario.",
+      "consent": "Si haces público el acuario, otros miembros y visitantes podrán verlo y seguirlo.",
+      "save": "Guardar visibilidad",
+      "saved": "Visibilidad guardada"
+    }
   },
   "species": {
     "tabTitle": "Especies",
@@ -311,7 +328,11 @@
     "video_processing_failed": "No se pudo preparar este video.",
     "care_video_not_found": "Este video no está disponible.",
     "water_change_not_found": "Este cambio de agua no está disponible o ya no está abierto.",
-    "water_change_request_invalid": "Elige un paso conocido con el estado hecho u omitido, o el espacio de foto vaciado o llenado."
+    "water_change_request_invalid": "Elige un paso conocido con el estado hecho u omitido, o el espacio de foto vaciado o llenado.",
+    "tank_visibility_answer_required": "Responde si tu acuario debe ser público.",
+    "tank_visibility_invalid": "Elige público o privado para el perfil y el registro.",
+    "tank_stream_wider_than_profile": "El registro de cuidados no puede ser visible para más personas que el perfil del acuario.",
+    "tank_media_not_found": "Este archivo no está disponible o su enlace caducó."
   },
   "featureFlags": {
     "activityTitle": "Actividad de la comunidad",
@@ -399,7 +420,8 @@
     "photoCount": "Fotos: {{total}}",
     "position": "{{current}} / {{total}}",
     "range": "De {{start}} a {{end}}",
-    "photos": "Fotos"
+    "photos": "Fotos",
+    "logsPrivate": "El dueño mantiene privado el registro de cuidados."
   },
   "timeLapseCamera": {
     "action": "Foto de time-lapse",
@@ -458,7 +480,16 @@
     "depth": "Fondo",
     "height": "Alto",
     "customUnits": "Volumen en {{volumeUnit}}, medidas en {{lengthUnit}}",
-    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})"
+    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})",
+    "visibility": {
+      "title": "¿Tu acuario será público?",
+      "explain": "Si dices que sí, otros miembros y visitantes podrán ver tu acuario y seguirlo. Si dices que no, solo tú lo verás. Puedes cambiarlo más tarde en los ajustes del acuario.",
+      "yes": "Sí, hacerlo público",
+      "no": "No, mantenerlo privado",
+      "summaryPublic": "Público: otros pueden ver y seguir tu acuario.",
+      "summaryPrivate": "Privado: solo tú ves tu acuario.",
+      "change": "Cambiar respuesta"
+    }
   },
   "regions": {
     "lake_malawi": "Lago Malawi",
@@ -685,6 +716,11 @@
       "save": "Guardar hora",
       "datePlaceholder": "AAAA-MM-DD",
       "timePlaceholder": "HH:mm"
+    },
+    "onlyMe": {
+      "set": "Solo yo",
+      "unset": "Mostrar a otros de nuevo",
+      "badge": "Solo yo"
     }
   },
   "todos": {

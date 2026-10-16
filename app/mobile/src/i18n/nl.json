@@ -107,6 +107,23 @@
       "dimensionValue": "{{width}} × {{height}} × {{depth}} {{unit}}",
       "waterValue": "{{label}} {{value}}",
       "volume": "Volume"
+    },
+    "visibility": {
+      "title": "Zichtbaarheid",
+      "badgePrivate": "Privéaquarium: alleen jij ziet het",
+      "badgeStreamPrivate": "Verzorgingslogboek privé: alleen jij ziet de items",
+      "profileTitle": "Aquariumprofiel",
+      "profileHelp": "Kop, foto's, timelapse en verhaal",
+      "streamTitle": "Verzorgingslogboek",
+      "streamHelp": "Waterverversingen, metingen, verzorgingsfoto's en -video's",
+      "public": "Openbaar",
+      "private": "Privé",
+      "publicHelp": "Iedereen ziet het, met of zonder account, en leden kunnen het volgen.",
+      "privateHelp": "Alleen jij.",
+      "streamBlocked": "Het verzorgingslogboek kan voor niet meer mensen zichtbaar zijn dan het aquariumprofiel.",
+      "consent": "Als je het aquarium openbaar maakt, kunnen andere leden en bezoekers het zien en volgen.",
+      "save": "Zichtbaarheid opslaan",
+      "saved": "Zichtbaarheid opgeslagen"
     }
   },
   "species": {
@@ -303,7 +320,11 @@
     "video_processing_failed": "Deze video kon niet worden voorbereid.",
     "care_video_not_found": "Deze video is niet beschikbaar.",
     "water_change_not_found": "Deze waterverversing is niet beschikbaar of niet meer open.",
-    "water_change_request_invalid": "Kies een bekende stap met de status klaar of overgeslagen, of de fotoplek afgetapt of gevuld."
+    "water_change_request_invalid": "Kies een bekende stap met de status klaar of overgeslagen, of de fotoplek afgetapt of gevuld.",
+    "tank_visibility_answer_required": "Geef aan of je aquarium openbaar moet zijn.",
+    "tank_visibility_invalid": "Kies openbaar of privé voor het profiel en het logboek.",
+    "tank_stream_wider_than_profile": "Het verzorgingslogboek kan voor niet meer mensen zichtbaar zijn dan het aquariumprofiel.",
+    "tank_media_not_found": "Dit bestand is niet beschikbaar of de link is verlopen."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -391,7 +412,8 @@
     "photoCount": "Foto’s: {{total}}",
     "position": "{{current}} / {{total}}",
     "range": "{{start}} tot {{end}}",
-    "photos": "Foto’s"
+    "photos": "Foto’s",
+    "logsPrivate": "De eigenaar houdt het verzorgingslogboek privé."
   },
   "timeLapseCamera": {
     "action": "Timelapse-foto",
@@ -450,7 +472,16 @@
     "depth": "Diepte",
     "height": "Hoogte",
     "customUnits": "Volume in {{volumeUnit}}, afmetingen in {{lengthUnit}}",
-    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})"
+    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})",
+    "visibility": {
+      "title": "Moet je aquarium openbaar zijn?",
+      "explain": "Als je ja zegt, kunnen andere leden en bezoekers je aquarium zien en volgen. Als je nee zegt, ziet alleen jij het. Je kunt dit later wijzigen in de aquariuminstellingen.",
+      "yes": "Ja, maak het openbaar",
+      "no": "Nee, houd het privé",
+      "summaryPublic": "Openbaar: anderen kunnen je aquarium zien en volgen.",
+      "summaryPrivate": "Privé: alleen jij ziet je aquarium.",
+      "change": "Antwoord wijzigen"
+    }
   },
   "regions": {
     "lake_malawi": "Malawimeer",
@@ -672,6 +703,11 @@
       "save": "Tijd opslaan",
       "datePlaceholder": "JJJJ-MM-DD",
       "timePlaceholder": "UU:mm"
+    },
+    "onlyMe": {
+      "set": "Alleen ik",
+      "unset": "Weer aan anderen tonen",
+      "badge": "Alleen ik"
     }
   },
   "todos": {

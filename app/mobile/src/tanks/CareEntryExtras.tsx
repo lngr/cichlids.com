@@ -21,7 +21,7 @@ type Editor = "note" | "todo" | null;
  * to-dos, and the actions to add a photo, write the note and add a to-do. A sheet stays open until
  * its change has been saved.
  */
-export function CareEntryExtras({ entry, stream }: { entry: CareEntry; stream: CareStream }) {
+export function CareEntryExtras({ entry, stream, readOnly = false }: { entry: CareEntry; stream: CareStream; readOnly?: boolean }) {
   const { t } = useTranslation();
   const theme = useTheme();
   const { state, send } = stream.attach;
@@ -53,21 +53,21 @@ export function CareEntryExtras({ entry, stream }: { entry: CareEntry; stream: C
         </Pressable>;
       })}
     </View> : null}
-    <CareEntryVideos entry={entry} reload={stream.list.reload} />
+    <CareEntryVideos entry={entry} reload={stream.list.reload} readOnly={readOnly} />
     {entry.note ? <Text testID={`care-note-text-${entry.id}`} style={[theme.type.body, text]}>{entry.note}</Text> : null}
-    {entry.todos.map(todo => <View key={String(todo.id)} testID={`care-todo-${todo.id}`} accessible accessibilityLabel={t(todo.done ? "care.todo.done" : "care.todo.open", { text: todo.text })}
+    {readOnly ? null : entry.todos.map(todo => <View key={String(todo.id)} testID={`care-todo-${todo.id}`} accessible accessibilityLabel={t(todo.done ? "care.todo.done" : "care.todo.open", { text: todo.text })}
       style={{ flexDirection: "row", alignItems: "center", gap: theme.space[2] }}>
       <MaterialCommunityIcons name={todo.done ? "checkbox-marked-outline" : "checkbox-blank-outline"} size={20} color={theme.colors.muted} />
       <Text style={[theme.type.body, { flexShrink: 1, color: todo.done ? theme.colors.muted : theme.colors.fg, textDecorationLine: todo.done ? "line-through" : "none" }]}>{todo.text}</Text>
     </View>)}
-    <View style={{ gap: theme.space[2] }}>
+    {readOnly ? null : <View style={{ gap: theme.space[2] }}>
       {canAddPhoto(entry)
         ? <PhotoPickButton testID={`care-photo-add-${entry.id}`} variant="secondary" label={t("care.photo.add")} disabled={working}
           onPicked={file => send({ type: "ADD_PHOTO", entryId: id, file })} onError={() => undefined} />
         : <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("care.photo.limit")}</Text>}
       <Button testID={`care-note-${entry.id}`} variant="secondary" label={t(entry.note ? "care.note.edit" : "care.note.add")} disabled={working} onPress={() => setEditor("note")} />
       <Button testID={`care-todo-add-${entry.id}`} variant="secondary" label={t("care.todo.add")} disabled={working} onPress={() => setEditor("todo")} />
-    </View>
+    </View>}
     {error && editor === null && viewing === null ? <Text accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>{error}</Text> : null}
     <TextEntryModal visible={editor === "note"} title={t("care.note.title")} initial={entry.note ?? ""} multiline maxLength={NOTE_MAX_LENGTH} testID={`care-note-editor-${entry.id}`}
       saveLabel={t("care.note.save")} removeLabel={entry.note ? t("care.note.remove") : undefined} busy={working} error={error}
@@ -84,8 +84,8 @@ export function CareEntryExtras({ entry, stream }: { entry: CareEntry; stream: C
           {viewedPath ? <Image testID="care-photo-viewer-image" source={apiClient.care.photoUrl(viewedPath)} contentFit="contain"
             accessibilityLabel={t("care.photo.viewerTitle")} style={{ width: "100%", aspectRatio: 4 / 3, minHeight: minTouchTarget, backgroundColor: theme.colors.placeholder }} /> : null}
           {error ? <Text accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>{error}</Text> : null}
-          <Button testID="care-photo-remove" variant="secondary" label={t("care.photo.remove")} busy={working}
-            onPress={() => viewed && send({ type: "REMOVE_PHOTO", entryId: id, photoId: Number(viewed.id) })} />
+          {readOnly ? null : <Button testID="care-photo-remove" variant="secondary" label={t("care.photo.remove")} busy={working}
+            onPress={() => viewed && send({ type: "REMOVE_PHOTO", entryId: id, photoId: Number(viewed.id) })} />}
           <Button testID="care-photo-close" label={t("care.photo.close")} disabled={working} onPress={() => setViewing(null)} />
         </ScrollView>
       </View>

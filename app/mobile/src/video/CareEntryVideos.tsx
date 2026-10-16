@@ -15,7 +15,7 @@ const POLL_MILLISECONDS = 3000;
  * The videos of a care entry, served through signed paths, with the control to add one. The care
  * list is loaded again every few seconds while a video of the entry is being prepared.
  */
-export function CareEntryVideos({ entry, reload }: { entry: CareEntry; reload: () => void }) {
+export function CareEntryVideos({ entry, reload, readOnly = false }: { entry: CareEntry; reload: () => void; readOnly?: boolean }) {
   const theme = useTheme();
   const processing = hasProcessing(entry.videos);
   useEffect(() => {
@@ -28,8 +28,8 @@ export function CareEntryVideos({ entry, reload }: { entry: CareEntry; reload: (
   return <View style={{ gap: theme.space[2] }}>
     {entry.videos.map(video => <VideoStatusRow key={String(video.id)} testID={`care-video-${video.id}`} video={video}
       posterUrl={url(video.posterUrl)} playlistUrl={url(video.playlistUrl)}
-      onRemove={() => void apiClient.videos.removeFromCareEntry(tankId, Number(entry.id), Number(video.id)).then(reload, reload)} />)}
-    {entry.videos.length < MAX_CARE_VIDEOS
+      onRemove={readOnly ? undefined : () => void apiClient.videos.removeFromCareEntry(tankId, Number(entry.id), Number(video.id)).then(reload, reload)} />)}
+    {!readOnly && entry.videos.length < MAX_CARE_VIDEOS
       ? <VideoUploadControl testID={`care-video-add-${entry.id}`} target={{ target: "care_entry", tankId, careEntryId: Number(entry.id) }} onUploaded={reload} />
       : null}
   </View>;

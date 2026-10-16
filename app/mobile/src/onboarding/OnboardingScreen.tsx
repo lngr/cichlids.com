@@ -27,7 +27,8 @@ function OnboardingFlow() {
   const theme = useTheme();
   const units = useUnits();
   const router = useMachineRouter();
-  const [path, setPath] = useState<"question" | "yes" | "no">("question");
+  const [path, setPath] = useState<"question" | "visibility" | "yes" | "no">("question");
+  const [isPublic, setIsPublic] = useState<boolean | null>(null);
   const [legacy, setLegacy] = useState<LegacyTankDto[] | null>(null);
   const [loadAttempt, setLoadAttempt] = useState(0);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -59,9 +60,9 @@ function OnboardingFlow() {
     else if (path === "no") request = { interests };
     else if (legacyTank) request = { legacyTankId: legacyTank.id, region };
     else {
-      if (!region) return;
-      if (standard && !custom) request = { tank: standardTankRequest(standard, title, region) };
-      else request = { tank: { title, region,
+      if (!region || isPublic === null) return;
+      if (standard && !custom) request = { tank: { ...standardTankRequest(standard, title, region), isPublic } };
+      else request = { tank: { title, region, isPublic,
         volume: { value: number(measurements.volume), unit: units === "us" ? "us_gallon" : "liter" },
         dimensions: { width: number(measurements.width), depth: number(measurements.depth), height: number(measurements.height), unit: units === "us" ? "inch" : "cm" },
       } };
@@ -79,16 +80,24 @@ function OnboardingFlow() {
   const validCustom = Object.values(measurements).every(value => number(value) > 0 && number(value) <= 1000000);
   const canSave = path === "no" || (path === "yes" && (legacyTank
     ? legacyTank.region === "americas_unassigned" ? region === "central_america" || region === "south_america" : Boolean(legacyTank.region || region)
-    : title.trim().length > 0 && region && (custom ? validCustom : standard)));
+    : isPublic !== null && title.trim().length > 0 && region && (custom ? validCustom : standard)));
   const textStyle = [theme.type.body, { color: theme.colors.fg }];
   return <ScrollView style={{ backgroundColor: theme.colors.bg }} contentContainerStyle={{ padding: theme.space[4], gap: theme.space[4], flexGrow: 1 }} keyboardShouldPersistTaps="handled">
     {reward ? <Reward reward={reward} /> : <>
-      <Text accessibilityRole="header" style={[theme.type.h1, { color: theme.colors.fg }]}>{t(path === "question" ? "onboarding.question" : path === "yes" ? "onboarding.tankTitle" : "onboarding.interests")}</Text>
+      <Text accessibilityRole="header" style={[theme.type.h1, { color: theme.colors.fg }]}>{t(path === "question" ? "onboarding.question" : path === "visibility" ? "onboarding.visibility.title" : path === "yes" ? "onboarding.tankTitle" : "onboarding.interests")}</Text>
       {path === "question" ? <>
         <Text style={textStyle}>{t("onboarding.intro")}</Text>
-        <Button testID="onboarding-yes" label={t("onboarding.yes")} onPress={() => setPath("yes")} />
+        <Button testID="onboarding-yes" label={t("onboarding.yes")} onPress={() => setPath(isPublic === null ? "visibility" : "yes")} />
         <Button testID="onboarding-no" variant="secondary" label={t("onboarding.no")} onPress={() => setPath("no")} />
+      </> : path === "visibility" ? <>
+        <Text style={textStyle}>{t("onboarding.visibility.explain")}</Text>
+        <Button testID="onboarding-visibility-public" variant="secondary" label={t("onboarding.visibility.yes")} onPress={() => { setIsPublic(true); setPath("yes"); }} />
+        <Button testID="onboarding-visibility-private" variant="secondary" label={t("onboarding.visibility.no")} onPress={() => { setIsPublic(false); setPath("yes"); }} />
       </> : path === "no" ? <RegionChoices multiple regions={interestRegions} selected={interests} onChange={value => setInterests(values => values.includes(value) ? values.filter(v => v !== value) : [...values, value])} /> : <>
+        {!legacyTank && isPublic !== null ? <View style={{ gap: theme.space[2] }}>
+          <Text testID="onboarding-visibility-summary" style={textStyle}>{t(isPublic ? "onboarding.visibility.summaryPublic" : "onboarding.visibility.summaryPrivate")}</Text>
+          <Button testID="onboarding-visibility-change" variant="secondary" label={t("onboarding.visibility.change")} onPress={() => setPath("visibility")} />
+        </View> : null}
         {loadError ? <ErrorView message={loadError} onRetry={() => setLoadAttempt(value => value + 1)} /> : legacy === null ? <LoadingView /> : legacy.length > 0 ? <>
           <Text style={[theme.type.h2, { color: theme.colors.fg }]}>{t("onboarding.legacy")}</Text>
           {legacy.map(tank => <Choice key={String(tank.id)} testID={`legacy-tank-${tank.id}`} selected={legacyTank?.id === tank.id} label={tank.title} onPress={() => {
@@ -117,7 +126,7 @@ function OnboardingFlow() {
       {error ? <Text accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>{error}</Text> : null}
       {path !== "question" ? <>
         <Button testID="onboarding-save" label={t("onboarding.save")} busy={busy} disabled={!canSave} onPress={() => void save()} />
-        <Button variant="secondary" label={t("navigation.back")} disabled={busy} onPress={() => setPath("question")} />
+        <Button variant="secondary" label={t("navigation.back")} disabled={busy} onPress={() => setPath(path === "yes" ? "visibility" : "question")} />
       </> : null}
       <Button testID="onboarding-skip" variant="secondary" label={t("onboarding.skip")} busy={busy} onPress={() => void save(true)} />
     </>}

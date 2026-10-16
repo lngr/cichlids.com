@@ -107,6 +107,23 @@
       "dimensionValue": "{{width}} × {{height}} × {{depth}} {{unit}}",
       "waterValue": "{{label}} {{value}}",
       "volume": "Volume"
+    },
+    "visibility": {
+      "title": "Visibilitas",
+      "badgePrivate": "Akuarium pribadi: hanya Anda yang melihatnya",
+      "badgeStreamPrivate": "Catatan perawatan pribadi: hanya Anda yang melihat entrinya",
+      "profileTitle": "Profil akuarium",
+      "profileHelp": "Header, foto, timelapse, dan cerita",
+      "streamTitle": "Catatan perawatan",
+      "streamHelp": "Ganti air, pengukuran, foto dan video perawatan",
+      "public": "Publik",
+      "private": "Pribadi",
+      "publicHelp": "Semua orang dapat melihatnya, dengan atau tanpa akun, dan anggota dapat mengikutinya.",
+      "privateHelp": "Hanya Anda.",
+      "streamBlocked": "Catatan perawatan tidak boleh terlihat oleh lebih banyak orang daripada profil akuarium.",
+      "consent": "Jika Anda menjadikan akuarium publik, anggota lain dan pengunjung dapat melihat dan mengikutinya.",
+      "save": "Simpan visibilitas",
+      "saved": "Visibilitas disimpan"
     }
   },
   "species": {
@@ -303,7 +320,11 @@
     "video_processing_failed": "Video ini tidak dapat disiapkan.",
     "care_video_not_found": "Video ini tidak tersedia.",
     "water_change_not_found": "Penggantian air ini tidak tersedia atau sudah tidak terbuka.",
-    "water_change_request_invalid": "Pilih langkah yang dikenal dengan status selesai atau dilewati, atau tempat foto dikuras atau terisi."
+    "water_change_request_invalid": "Pilih langkah yang dikenal dengan status selesai atau dilewati, atau tempat foto dikuras atau terisi.",
+    "tank_visibility_answer_required": "Jawab apakah akuarium Anda harus publik.",
+    "tank_visibility_invalid": "Pilih publik atau pribadi untuk profil dan catatan.",
+    "tank_stream_wider_than_profile": "Catatan perawatan tidak boleh terlihat oleh lebih banyak orang daripada profil akuarium.",
+    "tank_media_not_found": "Berkas ini tidak tersedia atau tautannya telah kedaluwarsa."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -391,7 +412,8 @@
     "photoCount": "Foto: {{total}}",
     "position": "{{current}} / {{total}}",
     "range": "{{start}} hingga {{end}}",
-    "photos": "Foto"
+    "photos": "Foto",
+    "logsPrivate": "Pemilik menjaga catatan perawatan tetap pribadi."
   },
   "timeLapseCamera": {
     "action": "Foto time-lapse",
@@ -450,7 +472,16 @@
     "depth": "Kedalaman",
     "height": "Tinggi",
     "customUnits": "Volume dalam {{volumeUnit}}, ukuran dalam {{lengthUnit}}",
-    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})"
+    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})",
+    "visibility": {
+      "title": "Apakah akuarium Anda akan dibuat publik?",
+      "explain": "Jika Anda menjawab ya, anggota lain dan pengunjung dapat melihat akuarium Anda dan mengikutinya. Jika Anda menjawab tidak, hanya Anda yang dapat melihatnya. Anda dapat mengubahnya nanti di pengaturan akuarium.",
+      "yes": "Ya, jadikan publik",
+      "no": "Tidak, tetap pribadi",
+      "summaryPublic": "Publik: orang lain dapat melihat dan mengikuti akuarium Anda.",
+      "summaryPrivate": "Pribadi: hanya Anda yang melihat akuarium Anda.",
+      "change": "Ubah jawaban"
+    }
   },
   "regions": {
     "lake_malawi": "Danau Malawi",
@@ -667,6 +698,11 @@
       "save": "Simpan waktu",
       "datePlaceholder": "YYYY-MM-DD",
       "timePlaceholder": "HH:mm"
+    },
+    "onlyMe": {
+      "set": "Hanya saya",
+      "unset": "Tampilkan lagi ke orang lain",
+      "badge": "Hanya saya"
     }
   },
   "todos": {

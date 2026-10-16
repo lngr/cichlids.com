@@ -7,11 +7,11 @@ import { VideoCard } from "./VideoCard";
 import { videoStateOf } from "./videoState";
 
 /**
- * One video of the owner: the player card when ready, a calm note while it is being prepared and a
+ * One video of a tank or care entry; the owner gets the way to remove it: the player card when ready, a calm note while it is being prepared and a
  * calm note with the way out when preparing failed. Urls are absolute.
  */
 export function VideoStatusRow({ video, posterUrl, playlistUrl, testID, onRemove }: {
-  video: Video; posterUrl: string | null; playlistUrl: string | null; testID: string; onRemove: () => void;
+  video: Video; posterUrl: string | null; playlistUrl: string | null; testID: string; onRemove?: () => void;
 }) {
   const { t } = useTranslation();
   const theme = useTheme();
@@ -23,6 +23,6 @@ export function VideoStatusRow({ video, posterUrl, playlistUrl, testID, onRemove
       <Text style={[theme.type.body, { color: theme.colors.fg, flexShrink: 1 }]}>{t("video.processing")}</Text>
     </View> : null}
     {state === "failed" ? <Text testID={`${testID}-failed`} accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.fg }]}>{t("video.failed")}</Text> : null}
-    {state !== "processing" ? <Button testID={`${testID}-remove`} variant="secondary" label={t("video.remove")} onPress={onRemove} /> : null}
+    {state !== "processing" && onRemove ? <Button testID={`${testID}-remove`} variant="secondary" label={t("video.remove")} onPress={onRemove} /> : null}
   </View>;
 }

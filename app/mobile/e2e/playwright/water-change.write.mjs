@@ -20,7 +20,7 @@ assert.ok(minSeconds > 0 && minSeconds <= 10, "the write stack sets a short mini
 const token = await passwordGrantToken();
 const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 const createTank = async title => {
-  const response = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title, volume: { value: 200, unit: "liter" } }) });
+  const response = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title, isPublic: true, volume: { value: 200, unit: "liter" } }) });
   assert.equal(response.status, 201);
   return response.json();
 };

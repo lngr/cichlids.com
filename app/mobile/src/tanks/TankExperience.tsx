@@ -20,6 +20,7 @@ import { measurementLines } from "./measurementFormat";
 import { useUnits } from "../units/useUnits";
 import { useLocalSearchParams } from "expo-router";
 import { TankRegionSlot } from "./TankRegionSlot";
+import { TankVisibilitySettings } from "./TankVisibilitySettings";
 import { VideoCard } from "../video/VideoCard";
 import { TankVideosSection } from "../video/TankVideosSection";
 import { useTankVideos } from "../video/useTankVideos";
@@ -29,7 +30,7 @@ function photoUrl(image: TankTimeLapse["photos"][number]["image"]) {
   return image.large ?? image.medium ?? image.small ?? image.thumb ?? "";
 }
 
-export function TankExperience({ tank, series, children }: { tank: TankDetail; series: TankTimeLapse; children?: ReactNode }) {
+export function TankExperience({ tank, series, children, onVisibilityChanged }: { tank: TankDetail; series: TankTimeLapse; children?: ReactNode; onVisibilityChanged?: () => void }) {
   const { t, i18n } = useTranslation();
   const theme = useTheme();
   const stream = useCareStream(Number(tank.id), tank.author.id);
@@ -101,6 +102,9 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
         </Pressable>
       </View>
     </View>
+    {stream.owner ? <View style={styles.settings}>
+      <TankVisibilitySettings tankId={Number(tank.id)} visibility={tank.visibility} onChanged={() => onVisibilityChanged?.()} />
+    </View> : null}
     <View style={[styles.segment, { backgroundColor: theme.colors.accentWeak, borderRadius: theme.radius.md }]}>
       {(["story", "care"] as const).map(view => <Pressable key={view} testID={`tank-view-${view}`} accessibilityRole="tab"
         accessibilityState={{ selected: (view === "care") === care }} onPress={() => send({ type: view === "care" ? "CARE" : "STORY" })}
@@ -183,7 +187,7 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
               </View> : null}
             </View>
           </Pressable>)}
-          {stream.owner && stream.list.hasMore ? <Button testID="tank-story-care-more" variant="secondary" label={t("care.more")} busy={stream.list.loadingMore} onPress={stream.list.loadMore} /> : null}
+          {stream.list.hasMore ? <Button testID="tank-story-care-more" variant="secondary" label={t("care.more")} busy={stream.list.loadingMore} onPress={stream.list.loadMore} /> : null}
         </View>
         <View style={[styles.card, card]}>
           {heading(t("tankStory.inhabitants"))}
@@ -224,6 +228,7 @@ const styles = StyleSheet.create({
   heroInfo: { margin: 16, gap: 4 },
   owner: { minHeight: 48, flexDirection: "row", alignItems: "center", gap: 8 },
   avatar: { width: 24, height: 24, borderRadius: 12 },
+  settings: { marginHorizontal: 16, marginTop: 16 },
   segment: { flexDirection: "row", marginHorizontal: 16, marginTop: 16, padding: 4 },
   segmentButton: { flex: 1, minHeight: 48, alignItems: "center", justifyContent: "center" },
   body: { padding: 16, gap: 16 },

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useFocusEffect } from "expo-router";
-import type { CareEntry } from "@cichlids/client-core";
+import { ApiError, type CareEntry } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
 import { useAuth } from "../auth/AuthProvider";
 import { usePagedList } from "../hooks/usePagedList";
@@ -29,10 +29,23 @@ export function useCareStream(tankId: number, authorId: string | number) {
     loggedRevision.current = revision;
     reminderRefresh.request();
   }, [revision]);
-  const fetchPage = useCallback((offset: number, limit: number) => owner
-    ? apiClient.care.list(tankId, { offset, limit }) : Promise.resolve({ total: 0, items: [] }), [owner, tankId]);
+  // Everyone reads the care stream the tank shares; a stream the owner keeps private answers care_not_found.
+  const [hidden, setHidden] = useState(false);
+  const fetchPage = useCallback(async (offset: number, limit: number) => {
+    try {
+      const page = await apiClient.care.list(tankId, { offset, limit });
+      setHidden(false);
+      return page;
+    } catch (error) {
+      if (!owner && error instanceof ApiError && error.code === "care_not_found") {
+        setHidden(true);
+        return { total: 0, items: [] };
+      }
+      throw error;
+    }
+  }, [owner, tankId]);
   const list = usePagedList<CareEntry>(fetchPage, [owner, identity, tankId, revision], key);
   useFocusEffect(useCallback(() => { list.reload(); }, [list.reload]));
-  return { owner, tankId, state, send: actor.send, measure: { state: measureState, send: measureActor.send }, attach: { state: attachState, send: attachActor.send }, revision, list, entries: owner ? list.items : [] };
+  return { owner, tankId, state, send: actor.send, measure: { state: measureState, send: measureActor.send }, attach: { state: attachState, send: attachActor.send }, revision, list, entries: list.items, hidden };
 }
 export type CareStream = ReturnType<typeof useCareStream>;

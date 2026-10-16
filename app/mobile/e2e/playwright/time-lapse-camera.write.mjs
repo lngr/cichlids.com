@@ -17,7 +17,7 @@ assert.equal(process.env.E2E_DB, "cichlids_e2e");
 const PHOTO = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "fixtures", "upload-photo.jpg");
 const token = await passwordGrantToken();
 const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
-const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title: "Guided camera tank" }) });
+const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title: "Guided camera tank", isPublic: true }) });
 assert.equal(created.status, 201);
 const tank = await created.json();
 

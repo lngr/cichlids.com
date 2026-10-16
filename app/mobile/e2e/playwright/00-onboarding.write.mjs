@@ -15,6 +15,8 @@ try {
   await page.goto(`${WEB_URL}/me`, { waitUntil: "networkidle" });
   await submitKeycloakLogin(page, byTestId(page, "login-button"));
   await byTestId(page, "onboarding-yes").click();
+  await byTestId(page, "onboarding-visibility-public").waitFor();
+  await byTestId(page, "onboarding-visibility-public").click();
   await byTestId(page, "standard-us-55").click();
   await byTestId(page, "onboarding-title").fill("My first Malawi");
   await byTestId(page, "region-lake_malawi").click();
@@ -37,6 +39,8 @@ try {
   assert.equal(detail.dimensions.inputHeight, 21);
   assert.equal(detail.dimensions.inputDepth, 13);
   assert.equal(detail.region, "lake_malawi");
+  assert.deepEqual(detail.visibility, { profile: "public", stream: "public" });
+  assert.equal(sql(`SELECT answer FROM public.tank_visibility_consent WHERE tank_id = ${Number(tank.id)}`), "t");
   await page.screenshot({ path: "/tmp/task-4.5-reward-dark.png" });
   await byTestId(page, "onboarding-done").click();
   await byTestId(page, "badge-first_tank").waitFor();
@@ -53,6 +57,7 @@ try {
   await returning.goto(`${WEB_URL}/me`, { waitUntil: "networkidle" });
   await submitKeycloakLogin(returning, byTestId(returning, "login-button"), "dev-mod");
   await byTestId(returning, "onboarding-yes").click();
+  await byTestId(returning, "onboarding-visibility-public").click();
   await byTestId(returning, `legacy-tank-${legacyId}`).click();
   await byTestId(returning, "region-south_america").click();
   await byTestId(returning, "onboarding-save").click();

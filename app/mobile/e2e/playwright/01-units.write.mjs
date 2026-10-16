@@ -21,7 +21,7 @@ try {
   const response = await fetch(`${API_URL}/api/tanks`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ title: "Units round trip", volume: { value: 55, unit: "us_gallon" }, dimensions: { width: 48.125, height: 20, depth: 12, unit: "inch" } }),
+    body: JSON.stringify({ title: "Units round trip", isPublic: true, volume: { value: 55, unit: "us_gallon" }, dimensions: { width: 48.125, height: 20, depth: 12, unit: "inch" } }),
   });
   assert.equal(response.status, 201, await response.clone().text());
   const tank = await response.json();

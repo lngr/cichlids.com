@@ -10,7 +10,7 @@ try {
   const token = await passwordGrantToken();
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
   const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers,
-    body: JSON.stringify({ title: "Archive time machine", region: "lake_tanganyika", volume: { value: 240, unit: "liter" } }) });
+    body: JSON.stringify({ title: "Archive time machine", isPublic: true, region: "lake_tanganyika", volume: { value: 240, unit: "liter" } }) });
   assert.equal(created.status, 201);
   const tank = await created.json();
   const canvasPage = await browser.newPage();

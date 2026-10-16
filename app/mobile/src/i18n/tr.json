@@ -107,6 +107,23 @@
       "dimensionValue": "{{width}} × {{height}} × {{depth}} {{unit}}",
       "waterValue": "{{label}} {{value}}",
       "volume": "Hacim"
+    },
+    "visibility": {
+      "title": "Görünürlük",
+      "badgePrivate": "Gizli akvaryum: yalnızca siz görürsünüz",
+      "badgeStreamPrivate": "Bakım akışı gizli: kayıtları yalnızca siz görürsünüz",
+      "profileTitle": "Akvaryum profili",
+      "profileHelp": "Başlık, fotoğraflar, zaman atlamalı video ve hikaye",
+      "streamTitle": "Bakım akışı",
+      "streamHelp": "Su değişimleri, ölçümler, bakım fotoğrafları ve videoları",
+      "public": "Herkese açık",
+      "private": "Gizli",
+      "publicHelp": "Hesabı olsun olmasın herkes görür, üyeler takip edebilir.",
+      "privateHelp": "Yalnızca siz.",
+      "streamBlocked": "Bakım akışı, akvaryum profilinden daha fazla kişiye görünür olamaz.",
+      "consent": "Akvaryumu herkese açık yaparsanız diğer üyeler ve ziyaretçiler onu görebilir ve takip edebilir.",
+      "save": "Görünürlüğü kaydet",
+      "saved": "Görünürlük kaydedildi"
     }
   },
   "species": {
@@ -303,7 +320,11 @@
     "video_processing_failed": "Bu video hazırlanamadı.",
     "care_video_not_found": "Bu video kullanılamıyor.",
     "water_change_not_found": "Bu su değişimi kullanılamıyor veya artık açık değil.",
-    "water_change_request_invalid": "Yapıldı veya atlandı durumlu bilinen bir adım ya da boşaltılmış veya doldurulmuş fotoğraf yeri seçin."
+    "water_change_request_invalid": "Yapıldı veya atlandı durumlu bilinen bir adım ya da boşaltılmış veya doldurulmuş fotoğraf yeri seçin.",
+    "tank_visibility_answer_required": "Akvaryumunuzun herkese açık olup olmayacağını yanıtlayın.",
+    "tank_visibility_invalid": "Profil ve akış için herkese açık veya gizli seçin.",
+    "tank_stream_wider_than_profile": "Bakım akışı, akvaryum profilinden daha fazla kişiye görünür olamaz.",
+    "tank_media_not_found": "Bu dosya kullanılamıyor veya bağlantısının süresi doldu."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -391,7 +412,8 @@
     "photoCount": "Fotoğraflar: {{total}}",
     "position": "{{current}} / {{total}}",
     "range": "{{start}} ile {{end}}",
-    "photos": "Fotoğraflar"
+    "photos": "Fotoğraflar",
+    "logsPrivate": "Sahibi bakım akışını gizli tutuyor."
   },
   "timeLapseCamera": {
     "action": "Zaman atlamalı fotoğraf",
@@ -450,7 +472,16 @@
     "depth": "Derinlik",
     "height": "Yükseklik",
     "customUnits": "Hacim {{volumeUnit}}, ölçüler {{lengthUnit}}",
-    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})"
+    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})",
+    "visibility": {
+      "title": "Akvaryumunuz herkese açık olsun mu?",
+      "explain": "Evet derseniz diğer üyeler ve ziyaretçiler akvaryumunuzu görebilir ve takip edebilir. Hayır derseniz yalnızca siz görürsünüz. Bunu daha sonra akvaryum ayarlarından değiştirebilirsiniz.",
+      "yes": "Evet, herkese açık yap",
+      "no": "Hayır, gizli kalsın",
+      "summaryPublic": "Herkese açık: başkaları akvaryumunuzu görebilir ve takip edebilir.",
+      "summaryPrivate": "Gizli: akvaryumunuzu yalnızca siz görürsünüz.",
+      "change": "Yanıtı değiştir"
+    }
   },
   "regions": {
     "lake_malawi": "Malawi Gölü",
@@ -672,6 +703,11 @@
       "save": "Saati kaydet",
       "datePlaceholder": "YYYY-AA-GG",
       "timePlaceholder": "SS:dd"
+    },
+    "onlyMe": {
+      "set": "Yalnızca ben",
+      "unset": "Başkalarına tekrar göster",
+      "badge": "Yalnızca ben"
     }
   },
   "todos": {

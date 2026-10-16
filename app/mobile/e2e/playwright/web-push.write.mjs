@@ -86,7 +86,7 @@ const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application
 const me = await (await fetch(`${API_URL}/api/me`, { headers })).json();
 const profileId = Number(me.profile.id);
 const day = 24 * 3600 * 1000;
-const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title: "Push path", volume: { value: 200, unit: "liter" } }) });
+const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title: "Push path", isPublic: true, volume: { value: 200, unit: "liter" } }) });
 assert.equal(created.status, 201);
 const tank = await created.json();
 const logged = await fetch(`${API_URL}/api/tanks/${tank.id}/care`, {

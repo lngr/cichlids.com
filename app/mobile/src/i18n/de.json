@@ -107,6 +107,23 @@
       "dimensionValue": "{{width}} × {{height}} × {{depth}} {{unit}}",
       "waterValue": "{{label}} {{value}}",
       "volume": "Volumen"
+    },
+    "visibility": {
+      "title": "Sichtbarkeit",
+      "badgePrivate": "Privates Becken: nur du siehst es",
+      "badgeStreamPrivate": "Pflege-Stream privat: nur du siehst die Pflegeeinträge",
+      "profileTitle": "Becken-Profil",
+      "profileHelp": "Kopfbereich, Fotos, Zeitraffer und Geschichte",
+      "streamTitle": "Pflege-Stream",
+      "streamHelp": "Wasserwechsel, Messwerte, Pflegefotos und Videos",
+      "public": "Öffentlich",
+      "private": "Privat",
+      "publicHelp": "Alle sehen es, mit oder ohne Konto, und Mitglieder können folgen.",
+      "privateHelp": "Nur du.",
+      "streamBlocked": "Der Pflege-Stream kann nicht für mehr Menschen sichtbar sein als das Becken-Profil.",
+      "consent": "Wenn du das Becken öffentlich machst, können andere Mitglieder und Besucher es sehen und ihm folgen.",
+      "save": "Sichtbarkeit speichern",
+      "saved": "Sichtbarkeit gespeichert"
     }
   },
   "species": {
@@ -303,7 +320,11 @@
     "video_processing_failed": "Dieses Video konnte nicht aufbereitet werden.",
     "care_video_not_found": "Dieses Video ist nicht verfügbar.",
     "water_change_not_found": "Dieser Wasserwechsel ist nicht verfügbar oder nicht mehr offen.",
-    "water_change_request_invalid": "Wähle einen bekannten Schritt mit dem Status erledigt oder übersprungen oder den Fotoplatz abgelassen oder befüllt."
+    "water_change_request_invalid": "Wähle einen bekannten Schritt mit dem Status erledigt oder übersprungen oder den Fotoplatz abgelassen oder befüllt.",
+    "tank_visibility_answer_required": "Beantworte, ob dein Becken öffentlich sein soll.",
+    "tank_visibility_invalid": "Wähle öffentlich oder privat für Profil und Stream.",
+    "tank_stream_wider_than_profile": "Der Pflege-Stream kann nicht für mehr Menschen sichtbar sein als das Becken-Profil.",
+    "tank_media_not_found": "Diese Mediendatei ist nicht verfügbar oder ihr Link ist abgelaufen."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -391,7 +412,8 @@
     "photoCount": "Fotos: {{total}}",
     "position": "{{current}} / {{total}}",
     "range": "{{start}} bis {{end}}",
-    "photos": "Fotos"
+    "photos": "Fotos",
+    "logsPrivate": "Der Besitzer hält den Pflege-Stream privat."
   },
   "timeLapseCamera": {
     "action": "Zeitraffer-Foto",
@@ -450,7 +472,16 @@
     "depth": "Tiefe",
     "height": "Höhe",
     "customUnits": "Volumen in {{volumeUnit}}, Maße in {{lengthUnit}}",
-    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})"
+    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})",
+    "visibility": {
+      "title": "Soll dein Becken öffentlich sein?",
+      "explain": "Wenn du Ja sagst, können andere Mitglieder und Besucher dein Becken sehen und ihm folgen. Wenn du Nein sagst, siehst nur du es. Du kannst das später in den Becken-Einstellungen ändern.",
+      "yes": "Ja, öffentlich machen",
+      "no": "Nein, privat lassen",
+      "summaryPublic": "Öffentlich: Andere können dein Becken sehen und ihm folgen.",
+      "summaryPrivate": "Privat: Nur du siehst dein Becken.",
+      "change": "Antwort ändern"
+    }
   },
   "regions": {
     "lake_malawi": "Malawisee",
@@ -672,6 +703,11 @@
       "save": "Zeit speichern",
       "datePlaceholder": "JJJJ-MM-TT",
       "timePlaceholder": "HH:mm"
+    },
+    "onlyMe": {
+      "set": "Nur ich",
+      "unset": "Wieder für andere zeigen",
+      "badge": "Nur ich"
     }
   },
   "todos": {

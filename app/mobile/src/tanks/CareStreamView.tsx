@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Modal, ScrollView, Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { deviceTimeZone, formatElapsed, resolveWhen, type CareEntry, type WhenChoice } from "@cichlids/client-core";
+import { apiClient } from "../api/client";
 import { Button } from "../components/Button";
 import { useTheme } from "../theme";
 import { useUnits } from "../units/useUnits";
@@ -58,8 +59,11 @@ export function CareStreamView({ stream }: { stream: CareStream }) {
         <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{new Intl.DateTimeFormat(i18n.language, { dateStyle: "medium", timeStyle: "short" }).format(new Date(entry.occurredAt))}</Text>
         {entry.waterChangeSessionId !== null && entry.waterChangeSessionId !== undefined && entry.evidence ? <Text testID="care-entry-guided" style={[theme.type.meta, { color: theme.colors.muted }]}>
           {t("waterChange.entry.line", { time: formatElapsed(Number(entry.durationSeconds ?? 0)), evidence: t(evidenceKey(entry.evidence.state)) })}</Text> : null}
+        {entry.onlyMe ? <Text testID={`care-only-me-badge-${entry.id}`} style={[theme.type.bodyStrong, text]}>{t("care.onlyMe.badge")}</Text> : null}
         {entry.amount ? <Text testID="care-entry-amount" style={[theme.type.body, text]}>{formatCareAmount(entry.amount, i18n.language)}</Text> : null}
         {measurementLines(entry, system, i18n.language).map(line => <Text key={line} testID="care-entry-value" style={[theme.type.body, text]}>{line}</Text>)}
+        <Button testID={`care-only-me-${entry.id}`} variant="secondary" label={t(entry.onlyMe ? "care.onlyMe.unset" : "care.onlyMe.set")} disabled={busy || editing || measuring}
+          onPress={() => void apiClient.care.setOnlyMe(stream.tankId, Number(entry.id), !entry.onlyMe).then(list.reload, list.reload)} />
         {entry.kind === "measurement"
           ? <Button testID={`care-edit-${entry.id}`} variant="secondary" label={t("care.measure.editTitle")} disabled={busy || editing || measuring} onPress={() => stream.measure.send({ type: "OPEN", system, entry })} />
           : <Button testID={`care-edit-${entry.id}`} variant="secondary" label={t(entry.amount ? "care.editAmount" : "care.addAmount")} disabled={busy || editing || measuring} onPress={() => send({ type: "EDIT", entry })} />}
@@ -81,7 +85,18 @@ export function CareStreamView({ stream }: { stream: CareStream }) {
         </View>
       </Modal>
     </> : null}
-    {(!owner || !list.loading && !list.error && entries.length === 0) ? <Text testID="tank-care-empty" style={[theme.type.body, text]}>{t("tankStory.logsEmpty")}</Text> : null}
+    {!owner ? <>
+      {stream.hidden ? <Text testID="tank-care-private" style={[theme.type.body, text]}>{t("tankStory.logsPrivate")}</Text> : null}
+      {entries.map(entry => <View key={String(entry.id)} testID={`care-entry-${entry.id}`} style={{ paddingVertical: theme.space[3], gap: theme.space[2], borderBottomWidth: 1, borderColor: theme.colors.border }}>
+        <Text style={[theme.type.bodyStrong, text]}>{t(entry.kind === "measurement" ? "care.measure.entry" : "care.waterChange")}</Text>
+        <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{new Intl.DateTimeFormat(i18n.language, { dateStyle: "medium", timeStyle: "short" }).format(new Date(entry.occurredAt))}</Text>
+        {entry.amount ? <Text testID="care-entry-amount" style={[theme.type.body, text]}>{formatCareAmount(entry.amount, i18n.language)}</Text> : null}
+        {measurementLines(entry, system, i18n.language).map(line => <Text key={line} testID="care-entry-value" style={[theme.type.body, text]}>{line}</Text>)}
+        <CareEntryExtras entry={entry} stream={stream} readOnly />
+      </View>)}
+      {list.hasMore ? <Button testID="care-more" variant="secondary" label={t("care.more")} busy={list.loadingMore} onPress={list.loadMore} /> : null}
+    </> : null}
+    {((!owner && !stream.hidden && !list.loading && entries.length === 0) || (owner && !list.loading && !list.error && entries.length === 0)) ? <Text testID="tank-care-empty" style={[theme.type.body, text]}>{t("tankStory.logsEmpty")}</Text> : null}
   </View>;
 }
 function AmountEditor({ entry, stream }: { entry: CareEntry; stream: CareStream }) {

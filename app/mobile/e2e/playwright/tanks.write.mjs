@@ -34,9 +34,10 @@ try {
 
   const before = query("SELECT (SELECT count(*) FROM tank) || ':' || (SELECT count(*) FROM outbox_event)");
   for (const [body, code] of [
-    [{ title: " " }, "tank_title_invalid"],
-    [{ title: "Invalid", dimensions: { width: -1, unit: "cm" } }, "tank_dimensions_invalid"],
-    [{ title: "Invalid", volume: { value: 0, unit: "liter" } }, "tank_volume_invalid"],
+    [{ title: " ", isPublic: true }, "tank_title_invalid"],
+    [{ title: "No answer" }, "tank_visibility_answer_required"],
+    [{ title: "Invalid", isPublic: true, dimensions: { width: -1, unit: "cm" } }, "tank_dimensions_invalid"],
+    [{ title: "Invalid", isPublic: true, volume: { value: 0, unit: "liter" } }, "tank_volume_invalid"],
   ]) {
     const refused = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify(body) });
     assert.equal(refused.status, 400);
@@ -46,7 +47,7 @@ try {
   assert.equal(query("SELECT (SELECT count(*) FROM tank) || ':' || (SELECT count(*) FROM outbox_event)"), before);
 
   const response = await fetch(`${API_URL}/api/tanks`, {
-    method: "POST", headers, body: JSON.stringify({ title: "Tank event delivery" }),
+    method: "POST", headers, body: JSON.stringify({ title: "Tank event delivery", isPublic: true }),
   });
   assert.equal(response.status, 201);
   const tank = await response.json();

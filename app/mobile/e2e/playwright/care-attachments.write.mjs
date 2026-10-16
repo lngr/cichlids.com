@@ -31,7 +31,7 @@ function sql(statement) {
 
 const token = await passwordGrantToken();
 const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
-const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title: "Attachments care path" }) });
+const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title: "Attachments care path", isPublic: true }) });
 assert.equal(created.status, 201);
 const tank = await created.json();
 

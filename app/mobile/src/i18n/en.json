@@ -107,6 +107,23 @@
       "dimensionValue": "{{width}} × {{height}} × {{depth}} {{unit}}",
       "waterValue": "{{label}} {{value}}",
       "volume": "Volume"
+    },
+    "visibility": {
+      "title": "Visibility",
+      "badgePrivate": "Private tank: only you can see it",
+      "badgeStreamPrivate": "Care stream private: only you see the care entries",
+      "profileTitle": "Tank profile",
+      "profileHelp": "Header, photos, time-lapse and story",
+      "streamTitle": "Care stream",
+      "streamHelp": "Water changes, measurements, care photos and videos",
+      "public": "Public",
+      "private": "Private",
+      "publicHelp": "Everyone can see it, with or without an account, and members can follow it.",
+      "privateHelp": "Only you.",
+      "streamBlocked": "The care stream cannot be visible to more people than the tank profile.",
+      "consent": "If you make the tank public, other members and visitors can see it and follow it.",
+      "save": "Save visibility",
+      "saved": "Visibility saved"
     }
   },
   "species": {
@@ -303,7 +320,11 @@
     "video_processing_failed": "This video could not be prepared.",
     "care_video_not_found": "This video is unavailable.",
     "water_change_not_found": "This water change is unavailable or no longer open.",
-    "water_change_request_invalid": "Choose a known step with the state done or skipped, or the photo slot drained or refilled."
+    "water_change_request_invalid": "Choose a known step with the state done or skipped, or the photo slot drained or refilled.",
+    "tank_visibility_answer_required": "Answer whether your tank should be public.",
+    "tank_visibility_invalid": "Choose public or private for the profile and the stream.",
+    "tank_stream_wider_than_profile": "The care stream cannot be visible to more people than the tank profile.",
+    "tank_media_not_found": "This media item is unavailable or its link has expired."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -391,7 +412,8 @@
     "photoCount": "Photos: {{total}}",
     "position": "{{current}} / {{total}}",
     "range": "{{start}} to {{end}}",
-    "photos": "Photos"
+    "photos": "Photos",
+    "logsPrivate": "The owner keeps the care stream private."
   },
   "timeLapseCamera": {
     "action": "Time-lapse photo",
@@ -450,7 +472,16 @@
     "depth": "Depth",
     "height": "Height",
     "customUnits": "Volume in {{volumeUnit}}, dimensions in {{lengthUnit}}",
-    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})"
+    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})",
+    "visibility": {
+      "title": "Should your tank be public?",
+      "explain": "If you say yes, other members and visitors can see your tank and follow it. If you say no, only you can see it. You can change this later in the tank settings.",
+      "yes": "Yes, make it public",
+      "no": "No, keep it private",
+      "summaryPublic": "Public: others can see and follow your tank.",
+      "summaryPrivate": "Private: only you can see your tank.",
+      "change": "Change answer"
+    }
   },
   "regions": {
     "lake_malawi": "Lake Malawi",
@@ -672,6 +703,11 @@
       "save": "Save time",
       "datePlaceholder": "YYYY-MM-DD",
       "timePlaceholder": "HH:mm"
+    },
+    "onlyMe": {
+      "set": "Only me",
+      "unset": "Show to others again",
+      "badge": "Only me"
     }
   },
   "todos": {

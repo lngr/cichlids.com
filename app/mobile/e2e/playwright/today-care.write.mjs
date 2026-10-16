@@ -11,7 +11,7 @@ const localDate = date => {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 };
 async function createTank(title) {
-  const response = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title }) });
+  const response = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title, isPublic: true }) });
   assert.equal(response.status, 201);
   return response.json();
 }

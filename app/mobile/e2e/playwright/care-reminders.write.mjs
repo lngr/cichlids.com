@@ -5,7 +5,7 @@ import { API_URL, WEB_URL, byTestId, passwordGrantToken, logInThroughKeycloak, s
 
 const token = await passwordGrantToken();
 const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
-const create = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title: "Reminder path", volume: { value: 240, unit: "liter" } }) });
+const create = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title: "Reminder path", isPublic: true, volume: { value: 240, unit: "liter" } }) });
 assert.equal(create.status, 201);
 const tank = await create.json();
 const day = 24 * 3600 * 1000;

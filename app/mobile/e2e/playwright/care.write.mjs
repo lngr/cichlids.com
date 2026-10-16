@@ -6,7 +6,7 @@ import { API_URL, WEB_URL, byTestId, passwordGrantToken, logInThroughKeycloak, s
 const token = await passwordGrantToken();
 const response = await fetch(`${API_URL}/api/tanks`, {
   method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-  body: JSON.stringify({ title: "Water change care path", volume: { value: 55, unit: "us_gallon" } }),
+  body: JSON.stringify({ title: "Water change care path", isPublic: true, volume: { value: 55, unit: "us_gallon" } }),
 });
 assert.equal(response.status, 201);
 const tank = await response.json();

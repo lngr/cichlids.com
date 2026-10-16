@@ -13,7 +13,7 @@ try {
   token = await passwordGrantToken();
   const authorization = { Authorization: `Bearer ${token}` };
   const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers: { ...authorization, "Content-Type": "application/json" },
-    body: JSON.stringify({ title: "Today starting tank", region: "lake_malawi" }) });
+    body: JSON.stringify({ title: "Today starting tank", isPublic: true, region: "lake_malawi" }) });
   assert.equal(created.status, 201);
   const tank = await created.json();
   const imagePage = await browser.newPage();

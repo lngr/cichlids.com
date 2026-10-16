@@ -117,7 +117,24 @@
       "volume": "Objem"
     },
     "pictures_few": "{{count}} fotografie",
-    "pictures_many": "{{count}} fotografie"
+    "pictures_many": "{{count}} fotografie",
+    "visibility": {
+      "title": "Viditelnost",
+      "badgePrivate": "Soukromé akvárium: vidíte ho jen vy",
+      "badgeStreamPrivate": "Deník péče soukromý: záznamy vidíte jen vy",
+      "profileTitle": "Profil akvária",
+      "profileHelp": "Záhlaví, fotografie, timelapse a příběh",
+      "streamTitle": "Deník péče",
+      "streamHelp": "Výměny vody, měření, fotografie a videa z péče",
+      "public": "Veřejné",
+      "private": "Soukromé",
+      "publicHelp": "Vidí ho všichni, s účtem i bez, a členové ho mohou sledovat.",
+      "privateHelp": "Jen vy.",
+      "streamBlocked": "Deník péče nemůže být viditelný pro více lidí než profil akvária.",
+      "consent": "Pokud akvárium zveřejníte, ostatní členové a návštěvníci ho uvidí a mohou ho sledovat.",
+      "save": "Uložit viditelnost",
+      "saved": "Viditelnost uložena"
+    }
   },
   "species": {
     "tabTitle": "Druhy",
@@ -319,7 +336,11 @@
     "video_processing_failed": "Toto video se nepodařilo připravit.",
     "care_video_not_found": "Toto video není dostupné.",
     "water_change_not_found": "Tato výměna vody není dostupná nebo už není otevřená.",
-    "water_change_request_invalid": "Zvolte známý krok se stavem hotovo nebo přeskočeno, nebo místo pro fotku vypuštěno či napuštěno."
+    "water_change_request_invalid": "Zvolte známý krok se stavem hotovo nebo přeskočeno, nebo místo pro fotku vypuštěno či napuštěno.",
+    "tank_visibility_answer_required": "Odpovězte, zda má být vaše akvárium veřejné.",
+    "tank_visibility_invalid": "Zvolte veřejné nebo soukromé pro profil a deník.",
+    "tank_stream_wider_than_profile": "Deník péče nemůže být viditelný pro více lidí než profil akvária.",
+    "tank_media_not_found": "Tento soubor není dostupný nebo jeho odkaz vypršel."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -407,7 +428,8 @@
     "photoCount": "Fotografie: {{total}}",
     "position": "{{current}} / {{total}}",
     "range": "{{start}} až {{end}}",
-    "photos": "Fotografie"
+    "photos": "Fotografie",
+    "logsPrivate": "Majitel drží deník péče soukromý."
   },
   "timeLapseCamera": {
     "action": "Fotka pro časosběr",
@@ -466,7 +488,16 @@
     "depth": "Hloubka",
     "height": "Výška",
     "customUnits": "Objem v {{volumeUnit}}, rozměry v {{lengthUnit}}",
-    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})"
+    "size": "{{volume}} {{volumeUnit}} {{variant}} ({{width}} x {{depth}} x {{height}} {{lengthUnit}})",
+    "visibility": {
+      "title": "Má být vaše akvárium veřejné?",
+      "explain": "Pokud odpovíte ano, ostatní členové a návštěvníci uvidí vaše akvárium a mohou ho sledovat. Pokud odpovíte ne, uvidíte ho jen vy. Můžete to později změnit v nastavení akvária.",
+      "yes": "Ano, zveřejnit",
+      "no": "Ne, ponechat soukromé",
+      "summaryPublic": "Veřejné: ostatní mohou vaše akvárium vidět a sledovat.",
+      "summaryPrivate": "Soukromé: své akvárium vidíte jen vy.",
+      "change": "Změnit odpověď"
+    }
   },
   "regions": {
     "lake_malawi": "Jezero Malawi",
@@ -698,6 +729,11 @@
       "save": "Uložit čas",
       "datePlaceholder": "RRRR-MM-DD",
       "timePlaceholder": "HH:mm"
+    },
+    "onlyMe": {
+      "set": "Jen já",
+      "unset": "Znovu ukázat ostatním",
+      "badge": "Jen já"
     }
   },
   "todos": {

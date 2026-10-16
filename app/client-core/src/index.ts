@@ -69,6 +69,8 @@ export type {
   CommentCreated,
   CreateCommentRequest,
   CreateTankRequest,
+  TankVisibility,
+  TankVisibilityDto,
   OnboardingRequest,
   OnboardingResultDto,
   LegacyTankDto,
