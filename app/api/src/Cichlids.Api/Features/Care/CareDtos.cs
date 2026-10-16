@@ -31,7 +31,9 @@ public sealed record CareSeriesDto(CareParameter Parameter, MeasurementUnit Unit
 public sealed record CareReasonDto(string Code, IReadOnlyDictionary<string, string>? Parameters);
 public sealed record CareDueDto(CareDueState State, int Days, string? DueDate);
 public sealed record CarePlanRuleDto(CareKind Kind, int? RhythmDays, bool Enabled, bool IsDefault, CareReasonDto? Reason, CareDueDto? Due);
-public sealed record CarePlanDto(long TankId, IReadOnlyList<CarePlanRuleDto> Rules);
+public sealed record CarePlanDto(long TankId, IReadOnlyList<CarePlanRuleDto> Rules, bool RemindersEnabled);
+public sealed record UpdateCarePlanRequest(bool? RemindersEnabled = null);
 public sealed record UpdateCarePlanRuleRequest(int? RhythmDays = null, bool? Enabled = null);
-public sealed record DueCareItemDto(long TankId, string TankTitle, CareKind Kind, int RhythmDays, CareReasonDto Reason, CareDueDto Due);
+public sealed record DueCareItemDto(long TankId, string TankTitle, CareKind Kind, int RhythmDays, CareReasonDto Reason, CareDueDto Due,
+    bool RemindersEnabled);
 public sealed record DueCareDto(IReadOnlyList<DueCareItemDto> Items);

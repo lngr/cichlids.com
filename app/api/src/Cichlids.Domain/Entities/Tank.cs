@@ -4,6 +4,7 @@ namespace Cichlids.Domain.Entities;
 
 /// <summary>
 /// A tank owned by a profile: setup, water values and stocking, published as a page of its own.
+/// CareRemindersEnabled tells whether the member's devices remind them of the care due for this tank.
 /// </summary>
 public class Tank
 {
@@ -42,6 +43,7 @@ public class Tank
     public string? Food { get; set; }
     public string? Notes { get; set; }
     public TankState State { get; set; } = TankState.Draft;
+    public bool CareRemindersEnabled { get; set; } = true;
     public long? MainMediaId { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset? PublishedAt { get; set; }

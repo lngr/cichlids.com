@@ -32,7 +32,34 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
     {
         var stored = await context.CarePlanRules.AsNoTracking().Where(r => r.TankId == tankId).ToListAsync(ct);
         var last = await LastOccurrencesAsync(context.CareEntries.Where(e => e.TankId == tankId), ct);
-        return BuildPlan(tankId, stored, last.ToDictionary(l => l.Kind, l => l.Last), today, utcOffsetMinutes);
+        var reminders = await context.Tanks.AsNoTracking().Where(t => t.Id == tankId).Select(t => t.CareRemindersEnabled).SingleOrDefaultAsync(ct);
+        return BuildPlan(tankId, stored, last.ToDictionary(l => l.Kind, l => l.Last), today, utcOffsetMinutes, reminders);
+    }
+
+    /// <summary>
+    /// Switches the reminders of a tank on or off for every device of its owner. Switching to the
+    /// state the tank already has records nothing.
+    /// </summary>
+    public async Task<(CarePlanDto? Plan, string? Error)> ChangeRemindersAsync(long tankId, long profileId,
+        UpdateCarePlanRequest request, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
+    {
+        await using var transaction = await context.Database.BeginTransactionAsync(ct);
+        if (!await CareTanks.LockOwnAsync(context, tankId, profileId, ct)) return (null, "care_not_found");
+        if (request.RemindersEnabled is not { } enabled) return (null, "care_plan_invalid");
+        var tank = await context.Tanks.SingleAsync(t => t.Id == tankId, ct);
+        if (tank.CareRemindersEnabled != enabled)
+        {
+            var now = clock.GetUtcNow();
+            tank.CareRemindersEnabled = enabled;
+            context.OutboxEvents.Add(OutboxEvent.Create("tank.care_reminders_changed", "tank", tankId.ToString(),
+                JsonSerializer.Serialize(new Dictionary<string, object?>
+                {
+                    ["tankId"] = tankId, ["profileId"] = profileId, ["enabled"] = enabled, ["changedAt"] = now,
+                }), now));
+            await context.SaveChangesAsync(ct);
+        }
+        await transaction.CommitAsync(ct);
+        return (await GetPlanAsync(tankId, today, utcOffsetMinutes, ct), null);
     }
 
     public async Task<(CarePlanDto? Plan, string? Error)> ChangeRuleAsync(long tankId, long profileId, string kindName,
@@ -85,7 +112,7 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
     public async Task<DueCareDto> ListDueAsync(long profileId, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
     {
         var tanks = await context.Tanks.AsNoTracking().Where(t => t.ProfileId == profileId && t.DeletedAt == null)
-            .OrderBy(t => t.Id).Select(t => new { t.Id, t.Title }).ToListAsync(ct);
+            .OrderBy(t => t.Id).Select(t => new { t.Id, t.Title, t.CareRemindersEnabled }).ToListAsync(ct);
         var ids = tanks.Select(t => t.Id).ToList();
         var stored = await context.CarePlanRules.AsNoTracking().Where(r => ids.Contains(r.TankId)).ToListAsync(ct);
         var last = await LastOccurrencesAsync(context.CareEntries.Where(e => ids.Contains(e.TankId)), ct);
@@ -93,9 +120,9 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
         foreach (var tank in tanks)
         {
             var plan = BuildPlan(tank.Id, stored.Where(r => r.TankId == tank.Id).ToList(),
-                last.Where(l => l.TankId == tank.Id).ToDictionary(l => l.Kind, l => l.Last), today, utcOffsetMinutes);
+                last.Where(l => l.TankId == tank.Id).ToDictionary(l => l.Kind, l => l.Last), today, utcOffsetMinutes, tank.CareRemindersEnabled);
             items.AddRange(plan.Rules.Where(r => r is { Enabled: true, Due: not null, RhythmDays: not null, Reason: not null })
-                .Select(r => new DueCareItemDto(tank.Id, tank.Title, r.Kind, r.RhythmDays!.Value, r.Reason!, r.Due!)));
+                .Select(r => new DueCareItemDto(tank.Id, tank.Title, r.Kind, r.RhythmDays!.Value, r.Reason!, r.Due!, tank.CareRemindersEnabled)));
         }
         var ordered = items.OrderBy(i => i.Due.State switch
             {
@@ -115,7 +142,7 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
     }
 
     private static CarePlanDto BuildPlan(long tankId, IReadOnlyCollection<CarePlanRule> stored,
-        IReadOnlyDictionary<CareKind, DateTimeOffset> last, DateOnly today, int utcOffsetMinutes)
+        IReadOnlyDictionary<CareKind, DateTimeOffset> last, DateOnly today, int utcOffsetMinutes, bool remindersEnabled)
     {
         var rules = new List<CarePlanRuleDto>();
         foreach (var kind in Kinds)
@@ -132,7 +159,7 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
                 new CareReasonDto(rule.ReasonCode, rule.ReasonParameters),
                 due is { } d ? new CareDueDto(d.State, d.Days, d.DueDate?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)) : null));
         }
-        return new CarePlanDto(tankId, rules);
+        return new CarePlanDto(tankId, rules, remindersEnabled);
     }
 
     private static CareRule ToRule(CarePlanRule row) =>

@@ -19,6 +19,7 @@ public class TankConfiguration : IEntityTypeConfiguration<Tank>
         builder.Property(x => x.VolumeInputUnit).HasConversion<SnakeCaseEnumConverter<VolumeUnit>>();
         builder.Property(x => x.State).HasConversion<SnakeCaseEnumConverter<TankState>>().IsRequired();
         builder.Property(x => x.CreatedAt).IsRequired();
+        builder.Property(x => x.CareRemindersEnabled).IsRequired();
 
         builder.HasIndex(x => x.LegacyId).IsUnique();
 

@@ -1655,6 +1655,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("adopted_at");
 
+                    b.Property<bool>("CareRemindersEnabled")
+                        .HasColumnType("boolean")
+                        .HasColumnName("care_reminders_enabled");
+
                     b.Property<string>("Category")
                         .HasColumnType("text")
                         .HasColumnName("category");

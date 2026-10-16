@@ -36,6 +36,8 @@ public static partial class CareEndpoints
         group.MapGet("/plan", PlanAsync).WithName("GetCarePlan").ProducesProblem(400).ProducesProblem(404);
         group.MapPatch("/plan/{kind}", ChangeRuleAsync).WithName("UpdateCarePlanRule").RequireAuthorization()
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
+        group.MapPatch("/plan", ChangeRemindersAsync).WithName("UpdateCarePlan").RequireAuthorization()
+            .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
         app.MapCarePhotoEndpoints();
         app.MapTodoEndpoints();
         app.MapGet("/api/me/care/due", DueAsync).WithName("ListDueCare").WithTags("Care").RequireAuthorization()
@@ -77,6 +79,16 @@ public static partial class CareEndpoints
         if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
         var profile = await profiles.ResolveAsync(user, ct);
         var (plan, error) = await plans.ChangeRuleAsync(tankId, profile.Id, kind, request, today, offset, ct);
+        return error is not null ? Problem(error) : TypedResults.Ok(plan!);
+    }
+
+    private static async Task<Results<Ok<CarePlanDto>, ProblemHttpResult>> ChangeRemindersAsync(
+        long tankId, UpdateCarePlanRequest request, string? date, int? utcOffsetMinutes,
+        ClaimsPrincipal user, CurrentProfileService profiles, CarePlanService plans, CancellationToken ct)
+    {
+        if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
+        var profile = await profiles.ResolveAsync(user, ct);
+        var (plan, error) = await plans.ChangeRemindersAsync(tankId, profile.Id, request, today, offset, ct);
         return error is not null ? Problem(error) : TypedResults.Ok(plan!);
     }
 
@@ -152,7 +164,7 @@ public static partial class CareEndpoints
             "todo_request_invalid" => "Send done as true or false, or a new text, and list open, done or all to-dos.",
             "care_note_invalid" => "A note has up to 2000 characters.",
             "care_range_invalid" => "The start of the range must not be after its end.",
-            "care_plan_invalid" => "Choose a rhythm of 1 to 90 days or switch the rule on or off; a measurement rule needs a rhythm.",
+            "care_plan_invalid" => "Choose a rhythm of 1 to 90 days or switch the rule on or off, or send remindersEnabled as true or false; a measurement rule needs a rhythm.",
             "care_date_invalid" => "Send your local calendar date as YYYY-MM-DD and, optionally, the offset of your clock from UTC in minutes (-840 to 840).",
             _ => "Check the care request and its units.",
         }, code);
