@@ -28,7 +28,7 @@ public sealed class TodayQueryService(CichlidsDbContext context, TankTimeLapseQu
             .Where(t => t.ProfileId == profile.Id && t.State == TankState.Published && t.DeletedAt == null)
             .OrderByDescending(t => t.PublishedAt ?? t.CreatedAt).ThenByDescending(t => t.Id)
             .Take(10).Select(t => new { t.Id, t.Title }).ToListAsync(cancellationToken);
-        var photos = await series.GetManyAsync(tanks.Select(t => t.Id).ToArray(), cancellationToken);
+        var photos = await series.GetManyAsync(tanks.Select(t => t.Id).ToArray(), cancellationToken, profile.Id, allowSigned: true);
         var cards = tanks.Select(t => new TodayTankDto(t.Id, t.Title,
             photos.GetValueOrDefault(t.Id)?.Photos.OrderByDescending(p => p.PublishedAt).ThenByDescending(p => p.MediaItemId).FirstOrDefault())).ToList();
         var draftCount = await context.Posts.CountAsync(p => p.AuthorProfileId == profile.Id

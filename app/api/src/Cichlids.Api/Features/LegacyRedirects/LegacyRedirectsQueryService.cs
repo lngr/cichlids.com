@@ -59,7 +59,8 @@ public sealed class LegacyRedirectsQueryService(CichlidsDbContext context)
     /// </summary>
     public Task<long?> ResolveTankIdAsync(int legacyId, CancellationToken cancellationToken) =>
         context.Tanks
-            .Where(t => t.LegacyId == legacyId && t.State == TankState.Published && t.DeletedAt == null)
+            .Where(t => t.LegacyId == legacyId && t.State == TankState.Published && t.DeletedAt == null
+                && t.ProfileVisibility == TankVisibility.Public)
             .Select(t => (long?)t.Id)
             .FirstOrDefaultAsync(cancellationToken);
 
