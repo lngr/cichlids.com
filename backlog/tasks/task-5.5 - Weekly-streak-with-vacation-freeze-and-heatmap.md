@@ -4,7 +4,7 @@ title: Weekly streak with vacation freeze and heatmap
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 06:20'
+updated_date: '2026-10-16 06:27'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -60,4 +60,10 @@ A streak counts weeks with completed care, survives vacations through a freeze, 
 - Time-lapse streak, anti-fake (decided by the project owner, 2026-10-16): a photo taken with the camera of the app (not picked from the library) counts as sufficient proof; an image model that checks the subject comes later, when fakes become a problem and enough data exists to train it. Members want clean time-lapses, so a fake photo shows in their own time-lapse. Deleting a photo that keeps the streak asks first, because it breaks the streak.
 - Leaderboard and ranking are a later feature (DRAFT-14), not part of this story; the onboarding stays free of points and rankings.
 - Water change streak: test kits, test strips and sensors are owned by few members (often teenagers without any); evidence must work without extra hardware. A water change photo pair (the tank half drained, then refilled) is worth pursuing; open: how to tell that it was drained, and what happens when the member forgets the photo during the change.
+
+### Decided by the project owner (2026-10-16), continued
+- Water change streak: the evidence comes from the guided water change mode (TASK-5.13): checked steps, a timer of at least 10 to 15 minutes, two photos with the app camera (drained and refilled), private by default.
+- Vacation: either activated in advance (not public while active; published only after the return, which also avoids revealing absence) or recorded afterwards. Vacation skips any length of time without breaking a streak, but vacation weeks never extend it. The profile shows the vacation share, so implausible amounts are visible; there is no yearly vacation budget. Later leaderboards rank by how complete a streak is (DRAFT-14); a criterion against permanent vacation is worked out later.
+- Care sponsor (a neighbour or parent who takes the photo on behalf of a teenager): later feature, DRAFT-16.
+- Proposal of the main session, not yet confirmed: a week with a water change but without evidence neither extends nor breaks the streak; a week without any water change breaks it unless it is a vacation.
 <!-- SECTION:NOTES:END -->
