@@ -102,9 +102,15 @@ try {
   await otherPage.goto(`${WEB_URL}/me?lang=en`, { waitUntil: "networkidle" });
   await signOutThroughKeycloak(otherPage);
 
-  // A new tank asks the question first; no answer means no tank.
+  // A new tank asks the question before the form; no answer means no tank. A member with an archive
+  // tank sees it first, without a question, and meets the question on choosing a new tank.
+  const ownerProfile = (await (await fetch(`${API_URL}/api/me`, { headers: owner })).json()).profile.id;
+  const archiveId = sql(`INSERT INTO public.tank (legacy_id, profile_id, title, category, region, state, created_at) VALUES (${900000000 + Math.floor(Math.random() * 90000000)}, ${Number(ownerProfile)}, 'Archive beside a new tank', 'malawi', 'lake_malawi', 'published', now()) RETURNING id`).split("\n")[0];
   await ownerPage.goto(`${WEB_URL}/onboarding`, { waitUntil: "networkidle" });
   await byTestId(ownerPage, "onboarding-yes").click();
+  await byTestId(ownerPage, `legacy-tank-${archiveId}`).waitFor();
+  assert.equal(await byTestId(ownerPage, "onboarding-visibility-public").count(), 0, "the archive tank comes without the question");
+  await byTestId(ownerPage, "standard-us-55").click();
   const yes = byTestId(ownerPage, "onboarding-visibility-public");
   const no = byTestId(ownerPage, "onboarding-visibility-private");
   await yes.waitFor();
@@ -121,6 +127,7 @@ try {
   await byTestId(ownerPage, "onboarding-reward").waitFor();
   const answered = sql(`SELECT t.profile_visibility || '/' || t.stream_visibility || '/' || c.answer FROM public.tank t JOIN public.tank_visibility_consent c ON c.tank_id = t.id WHERE t.title = 'Private by answer'`);
   assert.equal(answered, "private/private/false");
+  sql(`DELETE FROM public.tank WHERE id = ${Number(archiveId)}`);
   await byTestId(ownerPage, "onboarding-done").click();
   await byTestId(ownerPage, "logout-button").waitFor();
   await signOutThroughKeycloak(ownerPage);
