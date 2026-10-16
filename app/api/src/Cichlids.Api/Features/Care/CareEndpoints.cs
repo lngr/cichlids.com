@@ -20,7 +20,7 @@ public static partial class CareEndpoints
     /// </summary>
     public static bool IsCarePath(PathString path) => path.HasValue && CarePath().IsMatch(path.Value!);
 
-    [GeneratedRegex("^(/api/tanks/[0-9]+/care(/[0-9]+(/photos(/[0-9]+)?|/videos/[0-9]+|/todos)?|/series|/plan|/plan/[a-z_]+)?|/api/tanks/[0-9]+/todos|/api/tanks/[0-9]+/water-changes(/current|/[0-9]+(/steps/[a-z_]+|/photos/[a-z_]+|/finish)?)?|/api/me/todos(/[0-9]+)?|/api/me/care/(due|reminders/snooze)|/api/care-photos/[^/]+|/api/care-videos/[^/]+/.+)/?$", RegexOptions.CultureInvariant)]
+    [GeneratedRegex("^(/api/tanks/[0-9]+/care(/[0-9]+(/photos(/[0-9]+)?|/videos/[0-9]+|/todos)?|/series|/heatmap|/plan|/plan/[a-z_]+)?|/api/tanks/[0-9]+/todos|/api/tanks/[0-9]+/water-changes(/current|/[0-9]+(/steps/[a-z_]+|/photos/[a-z_]+|/finish)?)?|/api/me/todos(/[0-9]+)?|/api/me/care/(due|heatmap|reminders/snooze)|/api/care-photos/[^/]+|/api/care-videos/[^/]+/.+)/?$", RegexOptions.CultureInvariant)]
     private static partial Regex CarePath();
 
     public static IEndpointRouteBuilder MapCareEndpoints(this IEndpointRouteBuilder app)
@@ -34,6 +34,7 @@ public static partial class CareEndpoints
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
         group.MapDelete("/{id:long}", DeleteAsync).WithName("DeleteCareEntry").RequireAuthorization()
             .ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
+        group.MapGet("/heatmap", HeatmapAsync).WithName("GetCareHeatmap").ProducesProblem(400).ProducesProblem(404);
         group.MapGet("/plan", PlanAsync).WithName("GetCarePlan").ProducesProblem(400).ProducesProblem(404);
         group.MapPatch("/plan/{kind}", ChangeRuleAsync).WithName("UpdateCarePlanRule").RequireAuthorization()
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
@@ -43,6 +44,8 @@ public static partial class CareEndpoints
         app.MapWaterChangeEndpoints();
         app.MapTodoEndpoints();
         app.MapGet("/api/me/care/due", DueAsync).WithName("ListDueCare").WithTags("Care").RequireAuthorization()
+            .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403);
+        app.MapGet("/api/me/care/heatmap", OwnHeatmapAsync).WithName("GetMyCareHeatmap").WithTags("Care").RequireAuthorization()
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403);
         return app;
     }
@@ -101,6 +104,22 @@ public static partial class CareEndpoints
         if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
         var profile = await profiles.ResolveAsync(user, ct);
         return TypedResults.Ok(await plans.ListDueAsync(profile.Id, today, offset, ct));
+    }
+
+    private static async Task<Results<Ok<CareHeatmapDto>, ProblemHttpResult>> HeatmapAsync(
+        long tankId, string? date, int? utcOffsetMinutes, ClaimsPrincipal user, TankAccessService access, CareHeatmapService heatmaps, CancellationToken ct)
+    {
+        if (await StreamAccessAsync(tankId, user, access, ct) is not { } stream) return Problem("care_not_found");
+        if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
+        return TypedResults.Ok(await heatmaps.GetTankAsync(tankId, stream.IsOwner, today, offset, ct));
+    }
+
+    private static async Task<Results<Ok<CareHeatmapDto>, ProblemHttpResult>> OwnHeatmapAsync(
+        string? date, int? utcOffsetMinutes, ClaimsPrincipal user, CurrentProfileService profiles, CareHeatmapService heatmaps, CancellationToken ct)
+    {
+        if (CarePlanService.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem("care_date_invalid");
+        var profile = await profiles.ResolveAsync(user, ct);
+        return TypedResults.Ok(await heatmaps.GetOwnAsync(profile.Id, today, offset, ct));
     }
 
     private const int MaxSeriesPoints = 1000;

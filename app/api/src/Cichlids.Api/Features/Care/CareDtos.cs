@@ -41,3 +41,16 @@ public sealed record UpdateCarePlanRuleRequest(int? RhythmDays = null, bool? Ena
 public sealed record DueCareItemDto(long TankId, string TankTitle, CareKind Kind, int RhythmDays, CareReasonDto Reason, CareDueDto Due,
     bool RemindersEnabled);
 public sealed record DueCareDto(IReadOnlyList<DueCareItemDto> Items);
+
+/// <summary>
+/// The care of one local calendar day: how many water changes and measurements were logged.
+/// </summary>
+public sealed record CareHeatmapDayDto(string Date, int WaterChanges, int Measurements);
+
+/// <summary>
+/// The care days of the last Weeks ISO weeks, from Start (a Monday) to End (today), in the local dates of
+/// the reader. Days lists only days with care. LastWaterChange and LastMeasurement are the newest days of
+/// their kind in the window, null when there is none.
+/// </summary>
+public sealed record CareHeatmapDto(string Start, string End, int Weeks, IReadOnlyList<CareHeatmapDayDto> Days, int ActiveDays,
+    string? LastWaterChange, string? LastMeasurement);

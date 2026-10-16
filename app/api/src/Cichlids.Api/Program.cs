@@ -183,6 +183,7 @@ builder.Services.AddScoped<CareTodoService>();
 builder.Services.AddScoped<CareEntryMapper>();
 builder.Services.AddSingleton<CarePhotoUrlSigner>();
 builder.Services.AddScoped<CarePlanService>();
+builder.Services.AddScoped<CareHeatmapService>();
 builder.Services.AddScoped<WebPushSubscriptionService>();
 builder.Services.AddScoped<ReminderSnoozeService>();
 builder.Services.AddOptions<WebPushSenderOptions>()
