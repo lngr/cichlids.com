@@ -115,3 +115,41 @@ export function clearVacations(profileId) {
   sql(`delete from outbox_event where event_type in ('vacation.started', 'vacation.ended') and payload->>'profileId' = '${profileId}'`);
   sql(`delete from vacation where profile_id = ${profileId}`);
 }
+
+async function keycloakAdminRequest(method, realmPath, body) {
+  const tokenResponse = await fetch(`${KEYCLOAK_URL}/realms/master/protocol/openid-connect/token`, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ client_id: "admin-cli", grant_type: "password", username: "admin", password: "admin" }), // gitleaks:allow
+  });
+  if (!tokenResponse.ok) throw new Error(`Admin token request returned ${tokenResponse.status}`);
+  const { access_token: token } = await tokenResponse.json();
+  const response = await fetch(`${KEYCLOAK_URL}/admin/realms/cichlids/${realmPath}`, {
+    method,
+    headers: { Authorization: `Bearer ${token}`, ...(body ? { "Content-Type": "application/json" } : {}) },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (!response.ok) throw new Error(`${method} ${realmPath} returned ${response.status}: ${await response.text()}`);
+  return response;
+}
+
+/** Creates a Keycloak account through the admin API of the local stack and resolves with its id. */
+export async function createKeycloakAccount(username, password) {
+  await keycloakAdminRequest("POST", "users", {
+    username,
+    enabled: true,
+    email: `${username}@example.org`,
+    emailVerified: true,
+    firstName: "Fresh",
+    lastName: "Member",
+    credentials: [{ type: "password", value: password, temporary: false }],
+  });
+  const users = await (await keycloakAdminRequest("GET", `users?username=${encodeURIComponent(username)}&exact=true`)).json();
+  if (users.length !== 1) throw new Error(`Expected one Keycloak user named ${username}, found ${users.length}`);
+  return users[0].id;
+}
+
+/** Deletes a Keycloak account created by createKeycloakAccount, which ends all its sessions. */
+export async function deleteKeycloakAccount(id) {
+  await keycloakAdminRequest("DELETE", `users/${id}`);
+}
