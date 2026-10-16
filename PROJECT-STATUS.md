@@ -630,6 +630,10 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
   Mitglieder mit einer gewissen Reputation hochladen dürfen. Was Reputation ist, wie sie entsteht
   und welche Länge für alle anderen gilt, ist auszuarbeiten; Punkte und Ranglisten sind für die
   App ausgeschlossen.
+- [ ] **O7** Vorläufige App-Konten und öffentliches Web als Funnel: Die Installation der App
+  ergibt ein anonymes, vorläufiges Konto; das Web zeigt indexierbare Profile und vom Verlauf nur
+  die letzten 2 bis 3 Einträge. Rechte vorläufiger Konten und die Architektur der
+  Geräte-Anmeldung sind auszuarbeiten (Draft im Backlog).
 
 ---
 
