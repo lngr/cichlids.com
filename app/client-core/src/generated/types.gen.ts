@@ -683,9 +683,7 @@ export type TankFollowDto = {
 export type TankFollowState = 'none' | 'requested' | 'following';
 
 export type TankFollowTeaserDto = {
-    title: string;
     author: AuthorDto;
-    profileVisibility: TankVisibility;
 };
 
 export type TankListItemDto = {

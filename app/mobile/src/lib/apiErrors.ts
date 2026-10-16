@@ -95,6 +95,13 @@ export const API_ERROR_CODES = [
   "decommission_date_invalid",
   "decommission_request_invalid",
   "decommission_auth_required",
+  "tank_follow_not_allowed",
+  "follow_request_not_found",
+  "follower_not_found",
+  "selected_member_handle_invalid",
+  "selected_member_profile_not_found",
+  "selected_member_is_owner",
+  "selected_member_limit",
 ] as const;
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];

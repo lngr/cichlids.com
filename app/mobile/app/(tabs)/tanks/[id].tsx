@@ -14,7 +14,8 @@ import { CommentItem } from "../../../src/components/CommentItem";
 import { Button } from "../../../src/components/Button";
 import { EmptyView, ErrorView, LoadingView } from "../../../src/components/StatusView";
 import { TankExperience } from "../../../src/tanks/TankExperience";
-import type { Comment, CommentCreated, CreateCommentRequest, TankDetail, TankTimeLapse } from "@cichlids/client-core";
+import { TankFollowGate } from "../../../src/tanks/TankFollowGate";
+import type { Comment, CommentCreated, CreateCommentRequest, TankDetail, TankFollow, TankTimeLapse } from "@cichlids/client-core";
 
 const commentKey = (comment: Comment) => comment.id;
 
@@ -26,6 +27,7 @@ export default function TankDetailScreen() {
   const navigation = useNavigation();
   const { t } = useTranslation();
   const [detail, setDetail] = useState<{ tank: TankDetail; series: TankTimeLapse } | null>(null);
+  const [gate, setGate] = useState<TankFollow | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [attempt, setAttempt] = useState(0);
@@ -39,13 +41,20 @@ export default function TankDetailScreen() {
     let cancelled = false;
     setLoading(true);
     setError(null);
+    setGate(null);
     Promise.all([apiClient.tanks.get(tankId), apiClient.tanks.timeLapse(tankId)])
       .then(([tank, series]) => {
         if (cancelled) return;
         setDetail({ tank, series });
         navigation.setOptions({ title: tank.title });
       })
-      .catch(err => !cancelled && setError(translateApiError(err, t, "common.loadError")))
+      .catch(async err => {
+        if (cancelled) return;
+        // A tank for followers that the member does not see yet offers the follow request instead of an error.
+        const follow = (err as { code?: string }).code === "tank_not_found" ? await apiClient.tanks.follow(tankId).catch(() => null) : null;
+        if (cancelled) return;
+        if (follow?.teaser) setGate(follow); else setError(translateApiError(err, t, "common.loadError"));
+      })
       .finally(() => !cancelled && setLoading(false));
     return () => { cancelled = true; };
   }, [tankId, navigation, t, attempt]);
@@ -57,6 +66,7 @@ export default function TankDetailScreen() {
   }, [comments.prepend]);
   const emptyState = listEmptyState(comments);
   if (loading) return <LoadingView label={t("tanks.detail.loading")} />;
+  if (gate) return <TankFollowGate tankId={tankId} follow={gate} onChanged={() => setAttempt(value => value + 1)} />;
   if (error || !detail) return <ErrorView message={error ?? t("tanks.detail.notFound")} onRetry={() => setAttempt(value => value + 1)} />;
   return <ScrollView style={{ backgroundColor: theme.colors.bg }} contentContainerStyle={styles.content}>
     <View style={styles.page}>

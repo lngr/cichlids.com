@@ -9766,20 +9766,12 @@
       },
       "TankFollowTeaserDto": {
         "required": [
-          "title",
-          "author",
-          "profileVisibility"
+          "author"
         ],
         "type": "object",
         "properties": {
-          "title": {
-            "type": "string"
-          },
           "author": {
             "$ref": "#/components/schemas/AuthorDto"
-          },
-          "profileVisibility": {
-            "$ref": "#/components/schemas/TankVisibility"
           }
         }
       },

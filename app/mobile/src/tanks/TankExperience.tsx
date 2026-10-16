@@ -24,6 +24,7 @@ import { CareHeatmapView } from "../careHeatmap/CareHeatmapView";
 import { TankStreaksCard } from "../streaks/TankStreaksCard";
 import { TankOperationCard } from "../decommission/TankOperationCard";
 import { TankVisibilitySettings } from "./TankVisibilitySettings";
+import { TankFollowButton } from "./TankFollowButton";
 import { VideoCard } from "../video/VideoCard";
 import { TankVideosSection } from "../video/TankVideosSection";
 import { useTankVideos } from "../video/useTankVideos";
@@ -106,8 +107,12 @@ export function TankExperience({ tank, series, children, onVisibilityChanged }: 
       </View>
     </View>
     {stream.owner ? <View style={styles.settings}>
-      <TankVisibilitySettings tankId={Number(tank.id)} visibility={tank.visibility} onChanged={() => onVisibilityChanged?.()} />
-    </View> : null}
+      <TankVisibilitySettings tankId={Number(tank.id)} visibility={tank.visibility} audience={tank.audience} onChanged={() => onVisibilityChanged?.()}
+        onOpenAudience={() => router.push(`/tanks/${tank.id}/audience`)} />
+    </View> : <View style={styles.settings}>
+      <TankFollowButton tankId={Number(tank.id)} title={tank.title} profile={tank.visibility.profile} follow={tank.follow} isOwner={stream.owner}
+        onChanged={() => onVisibilityChanged?.()} />
+    </View>}
     <View style={[styles.segment, { backgroundColor: theme.colors.accentWeak, borderRadius: theme.radius.md }]}>
       {(["story", "care"] as const).map(view => <Pressable key={view} testID={`tank-view-${view}`} accessibilityRole="tab"
         accessibilityState={{ selected: (view === "care") === care }} onPress={() => send({ type: view === "care" ? "CARE" : "STORY" })}
