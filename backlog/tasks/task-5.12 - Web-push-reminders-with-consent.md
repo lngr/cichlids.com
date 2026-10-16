@@ -1,9 +1,10 @@
 ---
 id: TASK-5.12
 title: Web push reminders with consent
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-16 04:37'
+updated_date: '2026-10-16 04:53'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
