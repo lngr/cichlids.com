@@ -71,6 +71,8 @@ export const API_ERROR_CODES = [
   "video_dimensions_unsupported",
   "video_processing_failed",
   "care_video_not_found",
+  "water_change_not_found",
+  "water_change_request_invalid",
 ] as const;
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];

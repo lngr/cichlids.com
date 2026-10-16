@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Modal, ScrollView, Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
-import type { CareEntry } from "@cichlids/client-core";
+import { formatElapsed, type CareEntry } from "@cichlids/client-core";
 import { Button } from "../components/Button";
 import { useTheme } from "../theme";
 import { useUnits } from "../units/useUnits";
 import { translateApiError } from "../lib/apiErrors";
+import { useMachineRouter } from "../navigation/NavigationProvider";
+import { evidenceKey } from "../waterChange/waterChangeText";
 import { amountDraft, parseCareAmount, formatCareAmount, type AmountUnit } from "./careAmount";
 import { CareEntryExtras } from "./CareEntryExtras";
 import { CarePlanView } from "./CarePlanView";
@@ -18,6 +20,7 @@ export function CareStreamView({ stream }: { stream: CareStream }) {
   const { t, i18n } = useTranslation();
   const theme = useTheme();
   const system = useUnits();
+  const router = useMachineRouter();
   const { state, send, list, entries, owner } = stream;
   const measure = stream.measure.state;
   const measuring = !measure.matches("idle");
@@ -28,6 +31,8 @@ export function CareStreamView({ stream }: { stream: CareStream }) {
     <Text accessibilityRole="header" style={[theme.type.h2, text]}>{t("tankStory.logs")}</Text>
     {owner ? <>
       <Button testID="care-water-change" label={t("care.waterChange")} busy={busy} disabled={editing || measuring} onPress={() => send({ type: "LOG" })} />
+      <Button testID="care-guided-water-change" variant="secondary" label={t("waterChange.start")} disabled={busy || editing || measuring}
+        onPress={() => router.push(`/tanks/${stream.tankId}/water-change`)} />
       <Button testID="care-measure" variant="secondary" label={t("care.measure.button")} disabled={busy || editing || measuring}
         onPress={() => stream.measure.send({ type: "OPEN", system })} />
       <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("care.oneTap")}</Text>
@@ -46,6 +51,8 @@ export function CareStreamView({ stream }: { stream: CareStream }) {
       {entries.map(entry => <View key={String(entry.id)} testID={`care-entry-${entry.id}`} style={{ paddingVertical: theme.space[3], gap: theme.space[2], borderBottomWidth: 1, borderColor: theme.colors.border }}>
         <Text style={[theme.type.bodyStrong, text]}>{t(entry.kind === "measurement" ? "care.measure.entry" : "care.waterChange")}</Text>
         <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{new Intl.DateTimeFormat(i18n.language, { dateStyle: "medium", timeStyle: "short" }).format(new Date(entry.occurredAt))}</Text>
+        {entry.waterChangeSessionId !== null && entry.waterChangeSessionId !== undefined && entry.evidence ? <Text testID="care-entry-guided" style={[theme.type.meta, { color: theme.colors.muted }]}>
+          {t("waterChange.entry.line", { time: formatElapsed(Number(entry.durationSeconds ?? 0)), evidence: t(evidenceKey(entry.evidence.state)) })}</Text> : null}
         {entry.amount ? <Text testID="care-entry-amount" style={[theme.type.body, text]}>{formatCareAmount(entry.amount, i18n.language)}</Text> : null}
         {measurementLines(entry, system, i18n.language).map(line => <Text key={line} testID="care-entry-value" style={[theme.type.body, text]}>{line}</Text>)}
         {entry.kind === "measurement"

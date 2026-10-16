@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import type { DueCareItem } from "@cichlids/client-core";
 import { Button } from "../components/Button";
 import { translateApiError } from "../lib/apiErrors";
+import { useMachineRouter } from "../navigation/NavigationProvider";
 import { MeasurementForm } from "../tanks/MeasurementForm";
 import { dueText } from "../tanks/carePlanText";
 import { useCareActors } from "../tanks/useCareActors";
@@ -20,6 +21,7 @@ export function DueCareSection() {
   const { t } = useTranslation();
   const theme = useTheme();
   const system = useUnits();
+  const router = useMachineRouter();
   const target = useRef(0);
   const { actor, state, measureActor, measureState } = useCareActors(() => target.current);
   const items = useDueCare(state.context.revision + measureState.context.revision);
@@ -51,6 +53,9 @@ export function DueCareSection() {
             label={t(water ? "today.due.logWaterChange" : "care.measure.button")}
             accessibilityLabel={t(water ? "today.due.logWaterChangeFor" : "today.due.measureFor", { tank: item.tankTitle || t("common.untitled") })}
             onPress={() => act(item)} />
+          {water ? <Button testID={`today-due-guided-${item.tankId}`} variant="secondary" disabled={busy} label={t("waterChange.start")}
+            accessibilityLabel={t("waterChange.startFor", { tank: item.tankTitle || t("common.untitled") })}
+            onPress={() => router.push(`/tanks/${item.tankId}/water-change`)} /> : null}
         </View>;
       })}
     </View> : null}
