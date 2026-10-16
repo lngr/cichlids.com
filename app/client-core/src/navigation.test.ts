@@ -108,3 +108,17 @@ it("opens the media library as its own view of the Me tab and returns to where i
   expect(actor.getSnapshot().context.path).toBe("/me");
   actor.stop();
 });
+
+it("opens the story list and the editor as views of the Me tab and returns to the list", () => {
+  const actor = createActor(navigationMachine).start();
+  actor.send({ type: "OPEN", path: "/stories" });
+  actor.send({ type: "OPEN", path: "/stories/12" });
+  expect(actor.getSnapshot().matches({ viewing: "stories" })).toBe(true);
+  expect(selectedTab("/stories/12")).toBe("me");
+  actor.send({ type: "BACK" });
+  expect(actor.getSnapshot().context.path).toBe("/stories");
+  actor.send({ type: "EXTERNAL", path: "/stories/12" });
+  actor.send({ type: "BACK" });
+  expect(actor.getSnapshot().context.path).toBe("/me");
+  actor.stop();
+});
