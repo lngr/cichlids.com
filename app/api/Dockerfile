@@ -6,9 +6,12 @@ RUN printf '{}\n' > src/Cichlids.Etl/appsettings.json \
     && dotnet publish src/Cichlids.Etl -c Release -o /out/migration /p:UseAppHost=false \
     && rm -f /out/api/appsettings.Development.json /out/migration/appsettings.json
 
+FROM mwader/static-ffmpeg:7.1.1@sha256:11a44711684c0b9f754c047dcd64235b8b52deab251bd0e0a86f22faa160749c AS ffmpeg
+
 FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:d5633778c754e89a386882eddf8dbee6942447a8a4b8267c19cf1e1158d0b0ac AS api
 WORKDIR /app
 COPY --from=build /out/api .
+COPY --from=ffmpeg /ffmpeg /ffprobe /usr/local/bin/
 ENV ASPNETCORE_HTTP_PORTS=8080 DOTNET_EnableDiagnostics=0
 USER 1654:1654
 EXPOSE 8080

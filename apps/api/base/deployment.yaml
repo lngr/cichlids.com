@@ -33,10 +33,10 @@ spec:
         resources:
           requests:
             cpu: 250m
-            memory: 256Mi
-          limits:
-            cpu: '1'
             memory: 512Mi
+          limits:
+            cpu: '2'
+            memory: 1536Mi
         readinessProbe:
           httpGet:
             path: /healthz
@@ -64,6 +64,8 @@ spec:
         env:
         - name: ConnectionStrings__Cichlids
           value: Host=postgres-rw;Port=5432;Database=cichlids;Username=cichlids;Passfile=/db/pgpass;GSS Encryption Mode=Disable
+        - name: TMPDIR
+          value: /video-work
         - name: CICHLIDS_SLUG_SECRET
           valueFrom:
             secretKeyRef:
@@ -97,6 +99,8 @@ spec:
           readOnly: true
         - name: tmp
           mountPath: /tmp
+        - name: video-work
+          mountPath: /video-work
         - name: database
           mountPath: /db
           readOnly: true
@@ -108,6 +112,9 @@ spec:
         emptyDir:
           medium: Memory
           sizeLimit: 64Mi
+      - name: video-work
+        emptyDir:
+          sizeLimit: 3Gi
       - name: database
         secret:
           secretName: postgres-app

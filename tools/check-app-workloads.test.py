@@ -75,6 +75,13 @@ class ApplicationWorkloads(unittest.TestCase):
                         else:
                             self.assertNotIn('WebSession__ClientSecret', env)
                             self.assertNotIn('WebSession__CallbackUrl', settings)
+                        # Transcoding works on files of up to a few hundred MB: they live on a size-limited
+                        # disk volume instead of the memory-backed /tmp, and ffmpeg runs inside the pod limits.
+                        self.assertEqual(env['TMPDIR']['value'], '/video-work')
+                        work = next(v for v in pod['volumes'] if v['name'] == 'video-work')
+                        self.assertEqual(work['emptyDir'], {'sizeLimit': '3Gi'})
+                        self.assertEqual(next(m for m in container['volumeMounts'] if m['name'] == 'video-work')['mountPath'], '/video-work')
+                        self.assertEqual(container['resources']['limits'], {'cpu': '2', 'memory': '1536Mi'})
                         keyring = next(v for v in pod['volumes'] if v['name'] == 'key-ring')
                         self.assertEqual(keyring['secret']['secretName'], 'api-data-protection')
                         self.assertTrue(next(v for v in container['volumeMounts'] if v['name'] == 'key-ring')['readOnly'])
