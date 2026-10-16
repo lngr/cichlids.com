@@ -1,12 +1,15 @@
 ---
 id: TASK-5.19
 title: Turn streaks off per member
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-16 12:38'
+updated_date: '2026-10-16 15:38'
 labels: []
 dependencies:
   - TASK-5.18
+references:
+  - app/mobile/e2e/playwright/streak-switch.write.mjs
 parent_task_id: TASK-5
 priority: medium
 ordinal: 99000
@@ -37,3 +40,11 @@ A member can turn the streaks off with one switch in their settings (decided by 
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implementation (2026-10-16)
+- profile.streaks_enabled (default true), GET/PUT /api/me/settings; with streaks off no streak, vacation share or reminder window reaches anyone, the evaluation still runs and records freezes; the app switch lives in the settings of Me and rebuilds the local reminders.
+- Verification (branch): .NET 554/1270 (1 skipped)/349, client-core 245, mobile 414, 39 write e2e specs green.
+<!-- SECTION:NOTES:END -->

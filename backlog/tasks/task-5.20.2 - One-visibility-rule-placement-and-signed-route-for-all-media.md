@@ -41,7 +41,7 @@ Whether a viewer may see a media item follows from one rule: the union of the vi
 ## Implementation Plan
 
 <!-- SECTION:PLAN:BEGIN -->
-- Visibility mapping per context: tank (profile visibility), care_entry and water_change_session (history visibility and only me), inhabitant (its tank), post (published: everyone, draft: author), discussion_post (not removed), profile (not suspended or deleted). Unlinked: owner only.
+- Visibility mapping per context: tank (profile visibility; the decommission and recommission proof photos of TASK-6 follow the history visibility like the streak they prove), care_entry and water_change_session (history visibility and only me), inhabitant (its tank), post (published: everyone, draft: author), discussion_post (not removed), profile (not suspended or deleted). Unlinked: owner only.
 - One query building block answers the visibility of many media items for one viewer, so lists stay fast; Discover keeps using public URLs only.
 - Placement: queue columns on media_item (pending, next attempt, attempts, placed public); every change that can alter the answer marks the affected items (link created or removed, tank or history visibility change, only me toggled, story published, withdrawn or removed); one hosted worker moves variants and HLS directories; originals stay where they are.
 - One signer (Data Protection purpose per media variant or HLS directory, photo 30 minutes, video 2 hours) and one route family for photos and HLS files; the old tank-media, tank-videos, care-photos and care-videos routes go away; client-core path handling and the e2e specs follow.
