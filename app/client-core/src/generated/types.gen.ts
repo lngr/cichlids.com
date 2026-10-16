@@ -95,6 +95,7 @@ export type CareParameter = 'temperature' | 'ph' | 'kh' | 'gh' | 'no2' | 'no3' |
 
 export type CarePhotoDto = {
     id: number | string;
+    mediaItemId: number | string;
     width: null | number | string;
     height: null | number | string;
     urls: CarePhotoUrlsDto;
@@ -1107,6 +1108,7 @@ export type WaterChangeFinishedDto = {
 };
 
 export type WaterChangePhotoDto = {
+    mediaItemId: number | string;
     urls: CarePhotoUrlsDto;
     width: null | number | string;
     height: null | number | string;
