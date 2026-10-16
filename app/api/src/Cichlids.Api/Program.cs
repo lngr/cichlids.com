@@ -151,6 +151,19 @@ builder.Services.AddSingleton<CarePhotoUrlSigner>();
 builder.Services.AddScoped<CarePlanService>();
 builder.Services.AddScoped<WebPushSubscriptionService>();
 builder.Services.AddScoped<ReminderSnoozeService>();
+builder.Services.AddOptions<WebPushSenderOptions>()
+    .Bind(builder.Configuration.GetSection(WebPushSenderOptions.SectionName))
+    .Validate(o => o.Interval > TimeSpan.Zero, "WebPushSender interval must be positive.")
+    .ValidateOnStart();
+// The push services are reached without following redirects, so a push service cannot send a
+// request to a host outside the allowlist.
+builder.Services.AddHttpClient(WebPushTransport.HttpClientName, client => client.Timeout = TimeSpan.FromSeconds(15))
+    .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false });
+builder.Services.AddSingleton<IWebPushTransport>(serviceProvider => webPushSettings.Available
+    ? new WebPushTransport(serviceProvider.GetRequiredService<IHttpClientFactory>().CreateClient(WebPushTransport.HttpClientName), webPushSettings)
+    : new UnavailableWebPushTransport());
+builder.Services.AddScoped<WebPushReminderService>();
+builder.Services.AddHostedService<WebPushSenderHostedService>();
 builder.Services.AddScoped<OnboardingWriteService>();
 builder.Services.AddScoped<ProfilesQueryService>();
 builder.Services.AddScoped<CommentsQueryService>();

@@ -55,7 +55,7 @@ public sealed class WebPushSubscriptionService(CichlidsDbContext context, WebPus
         if (existing is not null)
         {
             context.WebPushSubscriptions.Remove(existing);
-            context.OutboxEvents.Add(UnsubscribedEvent(existing, now));
+            context.OutboxEvents.Add(UnsubscribedEvent(existing, "moved", now));
         }
 
         if (await context.WebPushSubscriptions.CountAsync(s => s.ProfileId == profileId, ct) >= settings.MaxSubscriptionsPerMember)
@@ -91,7 +91,7 @@ public sealed class WebPushSubscriptionService(CichlidsDbContext context, WebPus
         if (existing is not null)
         {
             context.WebPushSubscriptions.Remove(existing);
-            context.OutboxEvents.Add(UnsubscribedEvent(existing, clock.GetUtcNow()));
+            context.OutboxEvents.Add(UnsubscribedEvent(existing, "member", clock.GetUtcNow()));
             await context.SaveChangesAsync(ct);
         }
 
@@ -142,11 +142,16 @@ public sealed class WebPushSubscriptionService(CichlidsDbContext context, WebPus
         }
     }
 
-    private static OutboxEvent UnsubscribedEvent(WebPushSubscription subscription, DateTimeOffset now) =>
+    /// <summary>
+    /// The event for a deleted subscription. The reason is member (the member switched reminders
+    /// off), moved (another member took the endpoint over), gone (the push service no longer knows
+    /// the subscription) or endpoint_not_allowed (the endpoint left the allowlist).
+    /// </summary>
+    public static OutboxEvent UnsubscribedEvent(WebPushSubscription subscription, string reason, DateTimeOffset now) =>
         OutboxEvent.Create("web_push.unsubscribed", "web_push_subscription", subscription.Id.ToString(),
             JsonSerializer.Serialize(new Dictionary<string, object?>
             {
-                ["subscriptionId"] = subscription.Id, ["profileId"] = subscription.ProfileId, ["unsubscribedAt"] = now,
+                ["subscriptionId"] = subscription.Id, ["profileId"] = subscription.ProfileId, ["reason"] = reason, ["unsubscribedAt"] = now,
             }), now);
 
     private static WebPushSubscriptionDto ToDto(WebPushSubscription subscription) =>

@@ -1941,6 +1941,59 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.WebPushReminderSent", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateOnly>("DueDate")
+                        .HasColumnType("date")
+                        .HasColumnName("due_date");
+
+                    b.Property<DateOnly>("FireDate")
+                        .HasColumnType("date")
+                        .HasColumnName("fire_date");
+
+                    b.Property<string>("Kind")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("kind");
+
+                    b.Property<DateTimeOffset>("SentAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("sent_at");
+
+                    b.Property<long>("SubscriptionId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("subscription_id");
+
+                    b.Property<long>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_web_push_reminder_sent");
+
+                    b.HasIndex("FireDate")
+                        .HasDatabaseName("ix_web_push_reminder_sent_fire_date");
+
+                    b.HasIndex("TankId")
+                        .HasDatabaseName("ix_web_push_reminder_sent_tank_id");
+
+                    b.HasIndex("SubscriptionId", "TankId", "Kind", "DueDate", "FireDate")
+                        .IsUnique()
+                        .HasDatabaseName("ix_web_push_reminder_sent_subscription_id_tank_id_kind_due_dat");
+
+                    b.ToTable("web_push_reminder_sent", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_web_push_reminder_sent_kind", "kind IN ('water_change', 'measurement')");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.WebPushSubscription", b =>
                 {
                     b.Property<long>("Id")
@@ -2536,6 +2589,23 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_tank_media_tanks_tank_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.WebPushReminderSent", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.WebPushSubscription", null)
+                        .WithMany()
+                        .HasForeignKey("SubscriptionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_web_push_reminder_sent_web_push_subscriptions_subscription_");
+
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_web_push_reminder_sent_tank_tank_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.WebPushSubscription", b =>
