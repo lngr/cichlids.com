@@ -1,12 +1,14 @@
 ---
 id: TASK-5.18
 title: Daily water change reminders until the streak breaks
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-16 12:35'
-updated_date: '2026-10-16 14:09'
+updated_date: '2026-10-16 14:36'
 labels: []
 dependencies: []
+references:
+  - app/mobile/e2e/playwright/streak-reminders.write.mjs
 parent_task_id: TASK-5
 priority: medium
 ordinal: 98000
@@ -50,4 +52,10 @@ While a water change streak is running, the member gets a reminder every day at 
 - The window starts at the deadline minus the grace, as built.
 - An active vacation stops all water change reminders of the tank, as built.
 - Streak reminders offer the familiar remind-me-tomorrow action; it dismisses the reminder of the day and the next planned one follows.
+
+### Implementation (2026-10-16)
+- API: GET /api/me/care/due carries a streak field for water changes (reminderFrom, deadline; paused without days); web push sends one reminder per day of the window with daysLeft.
+- App: one local notification per day (ids care-reminder:tank:kind:date), reconciled; rescheduled after vacation changes and guided water changes; snooze on every day but the last, dismissing only.
+- Texts: streakToday and streakBreaks with plurals in all 11 catalogs; reminder state texts describe the daily reminders.
+- Verification: .NET 554/1240/349, client-core 242, mobile 412, typechecks, 37 write e2e specs green; device delivery and a real push service are not verified.
 <!-- SECTION:NOTES:END -->

@@ -1,11 +1,16 @@
 ---
 id: TASK-5.21
 title: Water change due right after a vacation
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-16 14:16'
+updated_date: '2026-10-16 14:36'
 labels: []
 dependencies: []
+references:
+  - app/mobile/e2e/playwright/streak-vacation-deadline.write.mjs
+  - >-
+    app/api/tests/Cichlids.Api.Tests/Features/Streaks/WaterChangeVacationTests.cs
 parent_task_id: TASK-5
 priority: high
 ordinal: 102000
@@ -15,7 +20,7 @@ ordinal: 102000
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
 ### Goal
-The fish soil the water during a vacation as well, so vacation days count as normal days of a water change period (decided by the project owner, 2026-10-16). A vacation only helps when the deadline of the period falls into it: then the water change is due within the grace of the plan after the last vacation day. Formally the deadline of a period is the later of its regular deadline and the last vacation day plus the grace of the plan (one third of the interval rounded up). A vacation that ends before the regular deadline changes nothing. The water change that closes such a period counts like any other (verified or kept by a freeze) and starts a new period.
+The fish soil the water during a vacation as well, so vacation days count as normal days of a water change period (decided by the project owner, 2026-10-16). A vacation only helps when the deadline of the period falls into it: then the water change is due within the grace of the plan after the last vacation day. Formally the deadline of a period is the later of its regular deadline and the last vacation day plus the grace of the plan (one third of the interval rounded up). A vacation whose last day plus the grace lies before the regular deadline changes nothing. The water change that closes such a period counts like any other (verified or kept by a freeze) and starts a new period.
 
 ### Examples (weekly plan, grace 3 days, water change on day 0, regular deadline day 10)
 - Vacation from day 2 to day 6: deadline day 10.
@@ -46,3 +51,14 @@ The fish soil the water during a vacation as well, so vacation days count as nor
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implementation (2026-10-16)
+- Domain: the deadline of a period is the regular deadline, moved to the last day of a vacation plus the grace when later; a vacation counts when it starts on or before the current deadline and ends after the period start, applied until the deadline stops moving; an open vacation leaves the period without a deadline (Paused). Bridged arises only from a switched off rule.
+- Reminder window after a vacation starts on the day after it (FirstDayAfterVacation) or the regular start when later.
+- Texts: vacation intro in all 11 catalogs.
+- Verification: .NET 554/1260 (1 skipped)/349, 0 warnings; client-core 242, mobile 414, both typechecks; 38 write e2e specs green.
+- Tests: WaterChangeVacationTests.cs, CareDueStreakTests.cs, streak-vacation-deadline.write.mjs.
+<!-- SECTION:NOTES:END -->
