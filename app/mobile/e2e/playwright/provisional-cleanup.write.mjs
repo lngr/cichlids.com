@@ -47,10 +47,11 @@ const profileExists = (id) => Number(sql(`SELECT count(*) FROM profile WHERE id 
 
 const abandoned = await registerDevice();
 const inUse = await registerDevice();
-sql(`UPDATE device_credential SET last_signed_request_at = now() - interval '12 months 1 day' WHERE id = '${abandoned.credentialId}'`);
-sql(`UPDATE device_credential SET last_signed_request_at = now() - interval '1 day' WHERE id = '${inUse.credentialId}'`);
+// The tanks come first: the cleanup loop removes an account as soon as its last signed request is old enough.
 sql(`INSERT INTO tank (profile_id, title, state, created_at) VALUES (${abandoned.profileId}, 'Abandoned tank', 'draft', now() - interval '13 months')`);
 sql(`INSERT INTO tank (profile_id, title, state, created_at) VALUES (${inUse.profileId}, 'Tank in use', 'draft', now() - interval '2 days')`);
+sql(`UPDATE device_credential SET last_signed_request_at = now() - interval '12 months 1 day' WHERE id = '${abandoned.credentialId}'`);
+sql(`UPDATE device_credential SET last_signed_request_at = now() - interval '1 day' WHERE id = '${inUse.credentialId}'`);
 
 const memberToken = await passwordGrantToken();
 const created = await fetch(`${API_URL}/api/tanks`, {
