@@ -644,6 +644,31 @@ export type ProfileStatsDto = {
     commentCount: number | string;
 };
 
+export type ProvisionalContentCounts = {
+    tanks: number | string;
+    careEntries: number | string;
+    mediaItems: number | string;
+    todos: number | string;
+    vacations: number | string;
+};
+
+export type ProvisionalMoveDto = {
+    moved: ProvisionalContentCounts;
+    vacationsDropped: number | string;
+    vacationsDroppedRepair: number | string;
+    me: MeDto;
+};
+
+export type ProvisionalPreviewDto = {
+    mode: ProvisionalRegistrationMode;
+    content: ProvisionalContentCounts;
+    vacationsDropped: number | string;
+    vacationsDroppedRepair: number | string;
+    targetDisplayName: null | string;
+};
+
+export type ProvisionalRegistrationMode = 'upgrade' | 'move';
+
 export type PublishStoryRequest = {
     title: null | string;
     description: null | string;
@@ -4903,6 +4928,107 @@ export type CreateDeviceTokenResponses = {
 };
 
 export type CreateDeviceTokenResponse = CreateDeviceTokenResponses[keyof CreateDeviceTokenResponses];
+
+export type PreviewProvisionalRegistrationData = {
+    body?: null | DeviceTokenRequest;
+    path?: never;
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/me/provisional/preview';
+};
+
+export type PreviewProvisionalRegistrationErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type PreviewProvisionalRegistrationError = PreviewProvisionalRegistrationErrors[keyof PreviewProvisionalRegistrationErrors];
+
+export type PreviewProvisionalRegistrationResponses = {
+    /**
+     * OK
+     */
+    200: ProvisionalPreviewDto;
+};
+
+export type PreviewProvisionalRegistrationResponse = PreviewProvisionalRegistrationResponses[keyof PreviewProvisionalRegistrationResponses];
+
+export type UpgradeProvisionalProfileData = {
+    body?: null | DeviceTokenRequest;
+    path?: never;
+    query?: never;
+    url: '/api/me/provisional/upgrade';
+};
+
+export type UpgradeProvisionalProfileErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type UpgradeProvisionalProfileError = UpgradeProvisionalProfileErrors[keyof UpgradeProvisionalProfileErrors];
+
+export type UpgradeProvisionalProfileResponses = {
+    /**
+     * OK
+     */
+    200: MeDto;
+};
+
+export type UpgradeProvisionalProfileResponse = UpgradeProvisionalProfileResponses[keyof UpgradeProvisionalProfileResponses];
+
+export type MoveProvisionalContentData = {
+    body?: null | DeviceTokenRequest;
+    path?: never;
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/me/provisional/move';
+};
+
+export type MoveProvisionalContentErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type MoveProvisionalContentError = MoveProvisionalContentErrors[keyof MoveProvisionalContentErrors];
+
+export type MoveProvisionalContentResponses = {
+    /**
+     * OK
+     */
+    200: ProvisionalMoveDto;
+};
+
+export type MoveProvisionalContentResponse = MoveProvisionalContentResponses[keyof MoveProvisionalContentResponses];
 
 export type ListCommunityCategoriesData = {
     body?: never;
