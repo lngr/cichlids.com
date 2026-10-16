@@ -1,8 +1,8 @@
 // Story: TASK-3.29
-// Uploads a photo carrying GPS tags and checks that the app shows it from its public variants while
-// its original stays private: the draft response names no original, and an anonymous request for
-// the original object is refused while its thumbnail answers. A legacy picture libvips cannot
-// decode (a BMP) has only a public copy; its detail page loads the image from that copy.
+// Uploads a photo carrying GPS tags and checks that the app shows the draft through a signed path, that
+// the published photo loads from the public variants while its original stays private, and that the
+// draft response names no original. A legacy picture libvips cannot decode (a BMP) has only a public
+// copy; its detail page loads the image from that copy.
 //
 // The copy-only picture is set up directly in the write database and bucket, the way the media
 // seed leaves such a legacy picture. Runs on the isolated write stack only (see
@@ -64,7 +64,7 @@ try {
   await page.waitForFunction(
     () => {
       const image = document.querySelector('[data-testid="upload-preview"] img');
-      return Boolean(image?.complete && image.naturalWidth > 0 && image.src.includes("/variants/"));
+      return Boolean(image?.complete && image.naturalWidth > 0 && image.src.includes("/api/media/photos/"));
     },
     null,
     { timeout: 20000 },
@@ -80,28 +80,22 @@ try {
   if (!/^\d+$/.test(String(draft.id))) throw new Error("Unexpected draft id");
   if ("original" in draft.image) throw new Error("The draft's image names an original");
   if (JSON.stringify(draft).includes(`/${BUCKET}/originals/`)) throw new Error("The draft response contains an original URL");
-  console.log("The preview loads from a variant and the draft names no original");
+  console.log("The preview loads through a signed path and the draft names no original");
 
-  // The thumbnail key is variants/thumb/ followed by the original's key and .jpg; the key derived
-  // from it is the one the database records for the draft's photo.
-  const thumbUrl = draft.image.thumb;
-  const thumbMatch = /^(.*\/cichlids-e2e\/)variants\/thumb\/(originals\/.+)\.jpg$/.exec(thumbUrl ?? "");
-  if (!thumbMatch) throw new Error(`Unexpected thumbnail URL "${thumbUrl}"`);
+  // A draft is visible to its author only, so its files lie in the private area and the thumbnail is a
+  // signed path.
+  const thumbPath = draft.image.thumb;
+  if (!thumbPath?.startsWith("/api/media/photos/")) throw new Error(`Unexpected thumbnail path "${thumbPath}"`);
   const storedKey = sql(
     `SELECT media_item.storage_key FROM media_link JOIN media_item ON media_item.id = media_link.media_item_id
      WHERE media_link.post_id = ${draft.id}`,
   );
-  if (storedKey !== thumbMatch[2]) {
-    throw new Error(`The thumbnail names the original "${thumbMatch[2]}", the database records "${storedKey}"`);
-  }
-  const originalUrl = `${thumbMatch[1]}${storedKey}`;
-  const originalStatus = (await fetch(originalUrl)).status;
-  const thumbStatus = (await fetch(thumbUrl)).status;
-  if (originalStatus !== 403) throw new Error(`Expected 403 for the original at ${originalUrl}, got ${originalStatus}`);
-  if (thumbStatus !== 200) throw new Error(`Expected 200 for the thumbnail at ${thumbUrl}, got ${thumbStatus}`);
-  console.log("An anonymous request for the original is refused, the thumbnail answers");
+  if (!storedKey.startsWith("private/gallery/")) throw new Error(`The draft's original "${storedKey}" is not private`);
+  const signedStatus = (await fetch(`${API_URL}${thumbPath}`)).status;
+  if (signedStatus !== 200) throw new Error(`Expected 200 for the signed thumbnail, got ${signedStatus}`);
+  console.log("The signed thumbnail of the draft answers");
 
-  // The draft is published and its photo replaced by a legacy picture that has only a public copy.
+  // Publishing moves the variants into the public area; the original stays private.
   const published = await fetch(`${API_URL}/api/posts/${draft.id}/publish`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -109,6 +103,18 @@ try {
   });
   if (!published.ok) throw new Error(`Publishing the draft returned ${published.status}`);
   const { slug } = await published.json();
+  const publishedDetail = await (await fetch(`${API_URL}/api/pictures/${slug}`)).json();
+  const thumbUrl = publishedDetail.image?.thumb;
+  const thumbMatch = /^(.*\/cichlids-e2e\/)variants\/thumb\/(private\/gallery\/.+)\.jpg$/.exec(thumbUrl ?? "");
+  if (!thumbMatch || thumbMatch[2] !== storedKey) throw new Error(`Unexpected public thumbnail URL "${thumbUrl}"`);
+  const originalUrl = `${thumbMatch[1]}${storedKey}`;
+  const originalStatus = (await fetch(originalUrl)).status;
+  const thumbStatus = (await fetch(thumbUrl)).status;
+  if (originalStatus !== 403) throw new Error(`Expected 403 for the original at ${originalUrl}, got ${originalStatus}`);
+  if (thumbStatus !== 200) throw new Error(`Expected 200 for the thumbnail at ${thumbUrl}, got ${thumbStatus}`);
+  console.log("An anonymous request for the original is refused, the published thumbnail answers");
+
+  // The photo of the published post is replaced by a legacy picture that has only a public copy.
   putObject(LEGACY_COPY_KEY, LEGACY_BMP, "image/bmp");
   const copySize = fs.statSync(LEGACY_BMP).size;
   sql(

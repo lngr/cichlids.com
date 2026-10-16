@@ -61,7 +61,7 @@ try {
   await page.waitForFunction(
     id => {
       const image = document.querySelector(`[data-testid="care-photos-${id}"] img`);
-      return Boolean(image?.complete && image.naturalWidth > 0 && image.src.includes("/api/care-photos/"));
+      return Boolean(image?.complete && image.naturalWidth > 0 && image.src.includes("/api/media/photos/"));
     },
     entry.id,
     { timeout: 20000 },
@@ -102,7 +102,7 @@ try {
   assert.equal((await fetch(`${API_URL}${thumbPath}`)).status, 200);
   const tampered = await fetch(`${API_URL}${thumbPath.slice(0, -4)}AAAA`);
   assert.equal(tampered.status, 404);
-  assert.equal((await tampered.json()).code, "care_photo_not_found");
+  assert.equal((await tampered.json()).code, "media_not_found");
   const otherToken = await passwordGrantToken("dev-mod");
   const refused = await fetch(`${API_URL}/api/tanks/${tank.id}/care`, { headers: { Authorization: `Bearer ${otherToken}` } });
   assert.equal(refused.status, 200, "the care stream of a public tank is readable by other members");

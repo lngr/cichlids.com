@@ -128,7 +128,7 @@ try {
   assert.equal(entry.photos.length, 3, "all three photos are attached");
   assert.equal(entry.amount.unit, "percent");
   assert.ok(entry.waterChangeSessionId > 0);
-  for (const photo of entry.photos) assert.ok(photo.urls.thumb.startsWith("/api/care-photos/"), "the photos use private signed URLs");
+  for (const photo of entry.photos) assert.ok(photo.urls.thumb.startsWith("/api/media/photos/"), "the photos use private signed URLs");
   assert.equal((await fetch(`${API_URL}/api/tanks/${tank.id}/water-changes/current`, { headers })).status, 404, "no session stays open");
   await byTestId(page, "water-change-close").click();
   await byTestId(page, `care-entry-${entry.id}`).waitFor({ timeout: 30000 });

@@ -27,14 +27,14 @@ describe("apiErrorKey", () => {
     }
   });
 
-  it.each(["care_note_invalid", "care_photo_not_found", "care_photo_invalid", "care_photo_limit_reached", "todo_not_found", "todo_text_invalid", "todo_request_invalid"])("translates %s", (code) => {
+  it.each(["care_note_invalid", "media_not_found", "care_photo_invalid", "care_photo_limit_reached", "todo_not_found", "todo_text_invalid", "todo_request_invalid"])("translates %s", (code) => {
     expect(apiErrorKey(new ApiError("Refused", 400, code))).toBe(`errors.${code}`);
     for (const resource of Object.values(TRANSLATIONS)) {
       expect((resource.errors as Record<string, string>)[code], code).toBeTruthy();
     }
   });
 
-  it.each(["video_upload_not_found", "video_upload_invalid", "video_upload_offset_mismatch", "video_upload_complete", "video_upload_incomplete", "video_upload_expired", "video_upload_limit_reached", "video_chunk_too_large", "video_chunk_incomplete", "video_format_unsupported", "video_too_large", "video_target_not_found", "video_not_found", "care_video_limit_reached", "video_request_invalid", "video_auth_required", "video_too_long", "video_unreadable", "video_no_video_stream", "video_codec_unsupported", "video_dimensions_unsupported", "video_processing_failed", "care_video_not_found"])("translates %s", (code) => {
+  it.each(["video_upload_not_found", "video_upload_invalid", "video_upload_offset_mismatch", "video_upload_complete", "video_upload_incomplete", "video_upload_expired", "video_upload_limit_reached", "video_chunk_too_large", "video_chunk_incomplete", "video_format_unsupported", "video_too_large", "video_target_not_found", "video_not_found", "care_video_limit_reached", "video_request_invalid", "video_auth_required", "video_too_long", "video_unreadable", "video_no_video_stream", "video_codec_unsupported", "video_dimensions_unsupported", "video_processing_failed"])("translates %s", (code) => {
     expect(apiErrorKey(new ApiError("Refused", 400, code))).toBe(`errors.${code}`);
     for (const resource of Object.values(TRANSLATIONS)) {
       expect((resource.errors as Record<string, string>)[code], code).toBeTruthy();

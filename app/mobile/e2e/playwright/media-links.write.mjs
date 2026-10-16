@@ -152,7 +152,7 @@ try {
     await page.waitForFunction(
       id => {
         const image = document.querySelector(`[data-testid="care-photos-${id}"] img`);
-        return Boolean(image?.complete && image.naturalWidth > 0 && image.src.includes("/api/care-photos/"));
+        return Boolean(image?.complete && image.naturalWidth > 0 && image.src.includes("/api/media/photos/"));
       },
       careEntry,
       { timeout: 20000 },
