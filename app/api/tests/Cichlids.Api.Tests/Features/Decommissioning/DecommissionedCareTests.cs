@@ -92,6 +92,9 @@ public sealed class DecommissionedCareTests(ApiFixture fixture) : IAsyncLifetime
         var water = (await DueAsync(owner.Token)).Single(i => i.Tank == tank && i.Kind == "water_change").Item;
         Assert.Equal("2026-10-21", water.GetProperty("due").GetProperty("dueDate").GetString());
         Assert.Equal("due_in", water.GetProperty("due").GetProperty("state").GetString());
+        var window = water.GetProperty("streak");
+        Assert.Equal("2026-10-21", window.GetProperty("reminderFrom").GetString());
+        Assert.Equal("2026-10-24", window.GetProperty("deadline").GetString());
         var measurement = (await DueAsync(owner.Token)).Single(i => i.Tank == tank && i.Kind == "measurement").Item;
         Assert.Equal("2026-10-17", measurement.GetProperty("due").GetProperty("dueDate").GetString());
     }
