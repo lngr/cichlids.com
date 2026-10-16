@@ -24,7 +24,8 @@ public sealed record VacationDto(long Id, string StartDate, string? EndDate, boo
 /// <summary>
 /// The streaks of one tank a viewer may see: the water change streak needs the care stream and is null
 /// without it, the time-lapse streak needs the tank profile. Vacations are the ones of the owner of the
-/// tank; other viewers see only the ended ones.
+/// tank; other viewers see only the ended ones. A tank of a member with the streaks switched off has
+/// no streaks and no vacations.
 /// </summary>
 public sealed record TankStreaksDto(long TankId, WaterChangeStreakDto? WaterChange, TimeLapseStreakDto? TimeLapse,
     IReadOnlyList<VacationDto> Vacations);
@@ -32,9 +33,10 @@ public sealed record TankStreaksDto(long TankId, WaterChangeStreakDto? WaterChan
 public sealed record OwnTankStreaksDto(long TankId, string Title, WaterChangeStreakDto WaterChange, TimeLapseStreakDto TimeLapse);
 
 /// <summary>
-/// The streaks of every live tank of the member with the vacations of the member.
+/// The streaks of every live tank of the member with the vacations of the member. With Enabled false the
+/// member has switched the streaks off and Vacations and Tanks are empty.
 /// </summary>
-public sealed record MeStreaksDto(int FreezesPerYear, IReadOnlyList<VacationDto> Vacations, IReadOnlyList<OwnTankStreaksDto> Tanks);
+public sealed record MeStreaksDto(bool Enabled, int FreezesPerYear, IReadOnlyList<VacationDto> Vacations, IReadOnlyList<OwnTankStreaksDto> Tanks);
 
 public sealed record VacationListDto(IReadOnlyList<VacationDto> Items);
 

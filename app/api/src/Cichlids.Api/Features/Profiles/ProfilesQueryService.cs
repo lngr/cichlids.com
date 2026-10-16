@@ -16,7 +16,7 @@ namespace Cichlids.Api.Features.Profiles;
 /// with the avatar resolved the same way as everywhere an author is shown, the profile image
 /// resolved to its largest variant, and activity stats counted only over that profile's public
 /// content. The share of days on ended vacations is shown to the member and to viewers who see the
-/// profile of at least one tank of the member.
+/// profile of at least one tank of the member, and to nobody while the member has the streaks switched off.
 /// </summary>
 public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore objectStore, TimeProvider clock)
 {
@@ -79,6 +79,7 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
 
     private async Task<VacationShareDto?> VacationShareAsync(Profile profile, long? viewerProfileId, CancellationToken cancellationToken)
     {
+        if (!profile.StreaksEnabled) return null;
         var visible = viewerProfileId == profile.Id
             || await context.Tanks.Where(TankVisibilityRules.ProfileVisibleTo(viewerProfileId))
                 .AnyAsync(t => t.ProfileId == profile.Id && t.DeletedAt == null, cancellationToken);

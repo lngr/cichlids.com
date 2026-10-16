@@ -74,9 +74,11 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
     /// </summary>
     public async Task<TankStreaksDto> GetTankAsync(TankAccess access, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
     {
+        var owner = access.IsOwner;
+        var enabled = await StreaksEnabledAsync(access.OwnerProfileId, ct);
+        if (!enabled && !owner) return new TankStreaksDto(access.TankId, null, null, []);
         var history = (await LoadAsync([access.TankId], ct))[access.TankId];
         var spans = await LoadVacationsAsync(access.OwnerProfileId, ct);
-        var owner = access.IsOwner;
         WaterChangeStreakDto? water = null;
         if (access.CanSeeStream)
         {
@@ -84,18 +86,21 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
             if (owner) await RecordFreezesAsync(access.TankId, access.OwnerProfileId, streak.Freezes.Where(f => !f.Recorded).ToList(), ct);
             water = ToDto(streak, owner);
         }
+        if (!enabled) return new TankStreaksDto(access.TankId, null, null, []);
         var timeLapse = ToDto(TimeLapseStreaks.Evaluate(history.Photos, utcOffsetMinutes, spans.Select(s => s.Span).ToList(), today), owner);
         var shown = owner ? spans : spans.Where(s => s.Span.End is not null).ToList();
         return new TankStreaksDto(access.TankId, water, timeLapse, shown.Select(ToDto).ToList());
     }
 
     /// <summary>
-    /// The streaks of every live tank of the member.
+    /// The streaks of every live tank of the member. With the streaks switched off the evaluation runs and
+    /// records the freezes it consumes, and the result is empty.
     /// </summary>
     public async Task<MeStreaksDto> GetOwnAsync(long profileId, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
     {
         var tanks = await context.Tanks.AsNoTracking().Where(t => t.ProfileId == profileId && t.DeletedAt == null)
             .OrderBy(t => t.Id).Select(t => new { t.Id, t.Title }).ToListAsync(ct);
+        var enabled = await StreaksEnabledAsync(profileId, ct);
         var histories = await LoadAsync(tanks.Select(t => t.Id).ToList(), ct);
         var vacations = await LoadVacationsAsync(profileId, ct);
         var spans = vacations.Select(v => v.Span).ToList();
@@ -105,23 +110,25 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
             var history = histories[tank.Id];
             var streak = EvaluateWater(history, spans, today, utcOffsetMinutes);
             await RecordFreezesAsync(tank.Id, profileId, streak.Freezes.Where(f => !f.Recorded).ToList(), ct);
+            if (!enabled) continue;
             result.Add(new OwnTankStreaksDto(tank.Id, tank.Title, ToDto(streak, true),
                 ToDto(TimeLapseStreaks.Evaluate(history.Photos, utcOffsetMinutes, spans, today), true)));
         }
-        return new MeStreaksDto(Freezes, vacations.Select(ToDto).ToList(), result);
+        return new MeStreaksDto(enabled, Freezes, enabled ? vacations.Select(ToDto).ToList() : [], result);
     }
 
     /// <summary>
     /// The reminder window of the water change streak of each given tank, from the rhythm of its water
     /// change rule. A running streak has the days from the first reminder day through its deadline; after
     /// a vacation the first reminder day is the day after the vacation when that is later. A streak paused
-    /// by a vacation has no days, and every other tank is left out. Nothing is recorded.
+    /// by a vacation has no days, and every other tank is left out. A member with the streaks switched off
+    /// has no windows. Nothing is recorded.
     /// </summary>
     public async Task<Dictionary<long, DueStreakDto>> GetReminderWindowsAsync(long profileId, IReadOnlyDictionary<long, int> rhythmByTank,
         DateOnly today, int utcOffsetMinutes, CancellationToken ct)
     {
         var windows = new Dictionary<long, DueStreakDto>();
-        if (rhythmByTank.Count == 0) return windows;
+        if (rhythmByTank.Count == 0 || !await StreaksEnabledAsync(profileId, ct)) return windows;
         var histories = await LoadAsync(rhythmByTank.Keys.ToList(), ct, includePhotos: false);
         var spans = (await LoadVacationsAsync(profileId, ct)).Select(v => v.Span).ToList();
         foreach (var (tankId, rhythmDays) in rhythmByTank)
@@ -138,6 +145,9 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
         }
         return windows;
     }
+
+    private async Task<bool> StreaksEnabledAsync(long profileId, CancellationToken ct) =>
+        await context.Profiles.AsNoTracking().Where(p => p.Id == profileId).Select(p => p.StreaksEnabled).SingleAsync(ct);
 
     private WaterChangeStreak EvaluateWater(TankHistory history, IReadOnlyList<VacationSpan> spans, DateOnly today, int utcOffsetMinutes) =>
         WaterChangeStreaks.Evaluate(history.Changes, history.Rhythm, spans, history.Recorded, Freezes,
