@@ -267,7 +267,8 @@
     },
     "loginUnavailable": "Login is unavailable right now because the login service cannot be reached. Please try again.",
     "todos": "To-dos",
-    "media": "My media"
+    "media": "My media",
+    "profileImages": "Avatar and header"
   },
   "upload": {
     "title": "Upload photo",
@@ -410,7 +411,10 @@
     "selected_member_limit": "A tank can have at most 100 selected members.",
     "media_is_proof": "This photo proves the decommissioning of a tank and stays in your library.",
     "library_photo_invalid": "Choose a JPEG, PNG or WebP photo of up to 25 MB that can be opened.",
-    "library_filter_invalid": "This filter is not available."
+    "library_filter_invalid": "This filter is not available.",
+    "profile_media_invalid": "Choose the id of a photo from your media library.",
+    "profile_media_not_photo": "Only a photo can be an avatar or a header.",
+    "profile_photo_invalid": "The photo could not be read. Please send a JPEG, PNG or WebP photo of up to 25 MB."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -1151,5 +1155,30 @@
       "recommission": "Recommissioning"
     },
     "streakWarning": "This photo is the only one of the week starting {{week}} in the time-lapse of {{tank}}. Deleting it shortens or breaks the streak of that tank."
+  },
+  "profileImages": {
+    "title": "Avatar and header",
+    "intro": "Your avatar and header show on your profile, and your avatar next to your stories and comments, while your profile is active.",
+    "avatarTitle": "Avatar",
+    "headerTitle": "Header",
+    "avatarNone": "No avatar yet. Others see the default avatar.",
+    "headerNone": "No header yet.",
+    "avatarPreview": "Preview of your avatar",
+    "headerPreview": "Preview of your header",
+    "chooseLibrary": "Choose from library",
+    "upload": "Upload photo",
+    "takePhoto": "Take photo",
+    "remove": "Remove",
+    "saving": "Saving…",
+    "pickError": "The photo library could not be opened.",
+    "saveError": "The image could not be saved. Please try again.",
+    "removeError": "The image could not be removed. Please try again.",
+    "keepsFile": "Removing keeps the photo in your media library.",
+    "picker": {
+      "title": "Choose a photo",
+      "empty": "Your library has no photos yet. Upload a photo instead.",
+      "cancel": "Cancel",
+      "photo": "Photo from {{date}}"
+    }
   }
 }

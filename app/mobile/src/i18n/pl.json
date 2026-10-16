@@ -281,7 +281,8 @@
     },
     "loginUnavailable": "Logowanie jest niedostępne, ponieważ nie można połączyć się z usługą logowania. Spróbuj ponownie.",
     "todos": "Zadania",
-    "media": "Moje media"
+    "media": "Moje media",
+    "profileImages": "Awatar i nagłówek"
   },
   "upload": {
     "title": "Prześlij zdjęcie",
@@ -426,7 +427,10 @@
     "selected_member_limit": "Akwarium może mieć najwyżej 100 wybranych członków.",
     "media_is_proof": "To zdjęcie potwierdza wyłączenie akwarium z użytku i zostaje w Twojej bibliotece.",
     "library_photo_invalid": "Wybierz zdjęcie JPEG, PNG lub WebP do 25 MB, które da się otworzyć.",
-    "library_filter_invalid": "Ten filtr jest niedostępny."
+    "library_filter_invalid": "Ten filtr jest niedostępny.",
+    "profile_media_invalid": "Wybierz zdjęcie z biblioteki multimediów.",
+    "profile_media_not_photo": "Tylko zdjęcie może być awatarem lub nagłówkiem.",
+    "profile_photo_invalid": "Nie udało się odczytać zdjęcia. Prześlij zdjęcie JPEG, PNG lub WebP do 25 MB."
   },
   "featureFlags": {
     "activityTitle": "Aktywność społeczności",
@@ -1189,5 +1193,30 @@
       "recommission": "Ponowne uruchomienie"
     },
     "streakWarning": "To zdjęcie jest jedyne z tygodnia zaczynającego się {{week}} w timelapse akwarium {{tank}}. Jeśli je usuniesz, seria tego akwarium się skróci lub zostanie przerwana."
+  },
+  "profileImages": {
+    "title": "Awatar i nagłówek",
+    "intro": "Twój awatar i nagłówek widać na Twoim profilu, a awatar także przy Twoich historiach i komentarzach, dopóki profil jest aktywny.",
+    "avatarTitle": "Awatar",
+    "headerTitle": "Nagłówek",
+    "avatarNone": "Brak awatara. Inni widzą awatar domyślny.",
+    "headerNone": "Brak nagłówka.",
+    "avatarPreview": "Podgląd Twojego awatara",
+    "headerPreview": "Podgląd Twojego nagłówka",
+    "chooseLibrary": "Wybierz z biblioteki",
+    "upload": "Prześlij zdjęcie",
+    "takePhoto": "Zrób zdjęcie",
+    "remove": "Usuń",
+    "saving": "Zapisywanie…",
+    "pickError": "Nie udało się otworzyć biblioteki zdjęć.",
+    "saveError": "Nie udało się zapisać obrazu. Spróbuj ponownie.",
+    "removeError": "Nie udało się usunąć obrazu. Spróbuj ponownie.",
+    "keepsFile": "Po usunięciu zdjęcie zostaje w Twojej bibliotece multimediów.",
+    "picker": {
+      "title": "Wybierz zdjęcie",
+      "empty": "Twoja biblioteka nie ma jeszcze zdjęć. Prześlij zdjęcie.",
+      "cancel": "Anuluj",
+      "photo": "Zdjęcie z dnia {{date}}"
+    }
   }
 }

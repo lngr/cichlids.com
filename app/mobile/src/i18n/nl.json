@@ -267,7 +267,8 @@
     },
     "loginUnavailable": "Inloggen is niet beschikbaar omdat de aanmeldservice onbereikbaar is. Probeer het opnieuw.",
     "todos": "Taken",
-    "media": "Mijn media"
+    "media": "Mijn media",
+    "profileImages": "Avatar en omslag"
   },
   "upload": {
     "title": "Foto uploaden",
@@ -410,7 +411,10 @@
     "selected_member_limit": "Een aquarium kan maximaal 100 geselecteerde leden hebben.",
     "media_is_proof": "Deze foto bewijst de buitengebruikstelling van een aquarium en blijft in je bibliotheek.",
     "library_photo_invalid": "Kies een JPEG-, PNG- of WebP-foto tot 25 MB die geopend kan worden.",
-    "library_filter_invalid": "Dit filter is niet beschikbaar."
+    "library_filter_invalid": "Dit filter is niet beschikbaar.",
+    "profile_media_invalid": "Kies een foto uit je mediabibliotheek.",
+    "profile_media_not_photo": "Alleen een foto kan avatar of omslag zijn.",
+    "profile_photo_invalid": "De foto kon niet worden gelezen. Stuur een JPEG-, PNG- of WebP-foto van maximaal 25 MB."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -1151,5 +1155,30 @@
       "recommission": "Weer in gebruik"
     },
     "streakWarning": "Deze foto is de enige van de week die begint op {{week}} in de timelapse van {{tank}}. Als je hem verwijdert, wordt de reeks van dat aquarium korter of eindigt die."
+  },
+  "profileImages": {
+    "title": "Avatar en omslag",
+    "intro": "Je avatar en omslag staan op je profiel, en je avatar naast je verhalen en reacties, zolang je profiel actief is.",
+    "avatarTitle": "Avatar",
+    "headerTitle": "Omslag",
+    "avatarNone": "Nog geen avatar. Anderen zien de standaardavatar.",
+    "headerNone": "Nog geen omslag.",
+    "avatarPreview": "Voorbeeld van je avatar",
+    "headerPreview": "Voorbeeld van je omslag",
+    "chooseLibrary": "Kies uit de bibliotheek",
+    "upload": "Foto uploaden",
+    "takePhoto": "Foto maken",
+    "remove": "Verwijderen",
+    "saving": "Opslaan…",
+    "pickError": "De fotobibliotheek kon niet worden geopend.",
+    "saveError": "De afbeelding kon niet worden opgeslagen. Probeer het opnieuw.",
+    "removeError": "De afbeelding kon niet worden verwijderd. Probeer het opnieuw.",
+    "keepsFile": "Bij verwijderen blijft de foto in je mediabibliotheek.",
+    "picker": {
+      "title": "Kies een foto",
+      "empty": "Je bibliotheek heeft nog geen foto's. Upload een foto.",
+      "cancel": "Annuleren",
+      "photo": "Foto van {{date}}"
+    }
   }
 }

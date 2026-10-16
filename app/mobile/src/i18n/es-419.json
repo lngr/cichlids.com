@@ -274,7 +274,8 @@
     },
     "loginUnavailable": "No se puede iniciar sesión porque el servicio de acceso no está disponible. Inténtalo de nuevo.",
     "todos": "Tareas",
-    "media": "Mi contenido multimedia"
+    "media": "Mi contenido multimedia",
+    "profileImages": "Avatar y portada"
   },
   "upload": {
     "title": "Subir foto",
@@ -418,7 +419,10 @@
     "selected_member_limit": "Un acuario puede tener como máximo 100 miembros seleccionados.",
     "media_is_proof": "Esta foto prueba la baja de un acuario y permanece en tu biblioteca.",
     "library_photo_invalid": "Elige una foto JPEG, PNG o WebP de hasta 25 MB que se pueda abrir.",
-    "library_filter_invalid": "Este filtro no está disponible."
+    "library_filter_invalid": "Este filtro no está disponible.",
+    "profile_media_invalid": "Elige una foto de tu biblioteca de medios.",
+    "profile_media_not_photo": "Solo una foto puede ser avatar o portada.",
+    "profile_photo_invalid": "No se pudo leer la foto. Envía una foto JPEG, PNG o WebP de hasta 25 MB."
   },
   "featureFlags": {
     "activityTitle": "Actividad de la comunidad",
@@ -1170,5 +1174,30 @@
       "recommission": "Reactivación"
     },
     "streakWarning": "Esta foto es la única de la semana que empieza el {{week}} en el timelapse de {{tank}}. Si la eliminas, la racha de ese acuario se acorta o se rompe."
+  },
+  "profileImages": {
+    "title": "Avatar y portada",
+    "intro": "Tu avatar y tu portada aparecen en tu perfil, y tu avatar junto a tus historias y comentarios, mientras tu perfil esté activo.",
+    "avatarTitle": "Avatar",
+    "headerTitle": "Portada",
+    "avatarNone": "Todavía no hay avatar. Los demás ven el avatar predeterminado.",
+    "headerNone": "Todavía no hay portada.",
+    "avatarPreview": "Vista previa de tu avatar",
+    "headerPreview": "Vista previa de tu portada",
+    "chooseLibrary": "Elegir de la biblioteca",
+    "upload": "Subir foto",
+    "takePhoto": "Tomar foto",
+    "remove": "Quitar",
+    "saving": "Guardando…",
+    "pickError": "No se pudo abrir la biblioteca de fotos.",
+    "saveError": "No se pudo guardar la imagen. Inténtalo de nuevo.",
+    "removeError": "No se pudo quitar la imagen. Inténtalo de nuevo.",
+    "keepsFile": "Al quitarla, la foto sigue en tu biblioteca de medios.",
+    "picker": {
+      "title": "Elige una foto",
+      "empty": "Tu biblioteca todavía no tiene fotos. Sube una foto.",
+      "cancel": "Cancelar",
+      "photo": "Foto del {{date}}"
+    }
   }
 }

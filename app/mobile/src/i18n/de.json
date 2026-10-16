@@ -267,7 +267,8 @@
     },
     "loginUnavailable": "Die Anmeldung ist gerade nicht möglich, weil der Anmeldedienst nicht erreichbar ist. Bitte versuche es erneut.",
     "todos": "To-dos",
-    "media": "Meine Medien"
+    "media": "Meine Medien",
+    "profileImages": "Avatar und Titelbild"
   },
   "upload": {
     "title": "Foto hochladen",
@@ -410,7 +411,10 @@
     "selected_member_limit": "Ein Becken kann höchstens 100 ausgewählte Mitglieder haben.",
     "media_is_proof": "Dieses Foto belegt die Stilllegung eines Beckens und bleibt in deiner Mediathek.",
     "library_photo_invalid": "Wähle ein JPEG-, PNG- oder WebP-Foto bis 25 MB, das sich öffnen lässt.",
-    "library_filter_invalid": "Dieser Filter ist nicht verfügbar."
+    "library_filter_invalid": "Dieser Filter ist nicht verfügbar.",
+    "profile_media_invalid": "Wähle ein Foto aus deiner Mediathek.",
+    "profile_media_not_photo": "Nur ein Foto kann Avatar oder Titelbild sein.",
+    "profile_photo_invalid": "Das Foto konnte nicht gelesen werden. Bitte sende ein JPEG-, PNG- oder WebP-Foto bis 25 MB."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -1151,5 +1155,30 @@
       "recommission": "Wiederinbetriebnahme"
     },
     "streakWarning": "Dieses Foto ist das einzige der Woche ab {{week}} im Zeitraffer von {{tank}}. Wenn du es löschst, wird die Serie dieses Beckens kürzer oder reißt ab."
+  },
+  "profileImages": {
+    "title": "Avatar und Titelbild",
+    "intro": "Dein Avatar und dein Titelbild erscheinen auf deinem Profil, dein Avatar auch neben deinen Geschichten und Kommentaren, solange dein Profil aktiv ist.",
+    "avatarTitle": "Avatar",
+    "headerTitle": "Titelbild",
+    "avatarNone": "Noch kein Avatar. Andere sehen den Standard-Avatar.",
+    "headerNone": "Noch kein Titelbild.",
+    "avatarPreview": "Vorschau deines Avatars",
+    "headerPreview": "Vorschau deines Titelbilds",
+    "chooseLibrary": "Aus der Mediathek wählen",
+    "upload": "Foto hochladen",
+    "takePhoto": "Foto aufnehmen",
+    "remove": "Entfernen",
+    "saving": "Wird gespeichert…",
+    "pickError": "Die Fotobibliothek konnte nicht geöffnet werden.",
+    "saveError": "Das Bild konnte nicht gespeichert werden. Bitte versuche es erneut.",
+    "removeError": "Das Bild konnte nicht entfernt werden. Bitte versuche es erneut.",
+    "keepsFile": "Beim Entfernen bleibt das Foto in deiner Mediathek.",
+    "picker": {
+      "title": "Foto wählen",
+      "empty": "Deine Mediathek enthält noch keine Fotos. Lade stattdessen ein Foto hoch.",
+      "cancel": "Abbrechen",
+      "photo": "Foto vom {{date}}"
+    }
   }
 }

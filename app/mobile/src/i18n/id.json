@@ -267,7 +267,8 @@
     },
     "loginUnavailable": "Tidak dapat masuk karena layanan masuk tidak dapat dihubungi. Silakan coba lagi.",
     "todos": "Tugas",
-    "media": "Media saya"
+    "media": "Media saya",
+    "profileImages": "Avatar dan header"
   },
   "upload": {
     "title": "Unggah foto",
@@ -410,7 +411,10 @@
     "selected_member_limit": "Sebuah akuarium dapat memiliki paling banyak 100 anggota terpilih.",
     "media_is_proof": "Foto ini membuktikan penonaktifan akuarium dan tetap berada di pustaka Anda.",
     "library_photo_invalid": "Pilih foto JPEG, PNG, atau WebP berukuran maksimal 25 MB yang dapat dibuka.",
-    "library_filter_invalid": "Filter ini tidak tersedia."
+    "library_filter_invalid": "Filter ini tidak tersedia.",
+    "profile_media_invalid": "Pilih foto dari pustaka mediamu.",
+    "profile_media_not_photo": "Hanya foto yang bisa menjadi avatar atau header.",
+    "profile_photo_invalid": "Foto tidak dapat dibaca. Kirim foto JPEG, PNG, atau WebP hingga 25 MB."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -1140,5 +1144,30 @@
       "recommission": "Pengaktifan kembali"
     },
     "streakWarning": "Foto ini satu-satunya dari minggu yang dimulai {{week}} di timelapse {{tank}}. Jika kamu menghapusnya, rentetan akuarium itu menjadi lebih pendek atau putus."
+  },
+  "profileImages": {
+    "title": "Avatar dan header",
+    "intro": "Avatar dan header kamu tampil di profilmu, dan avatarmu di samping cerita dan komentarmu, selama profilmu aktif.",
+    "avatarTitle": "Avatar",
+    "headerTitle": "Header",
+    "avatarNone": "Belum ada avatar. Orang lain melihat avatar default.",
+    "headerNone": "Belum ada header.",
+    "avatarPreview": "Pratinjau avatarmu",
+    "headerPreview": "Pratinjau headermu",
+    "chooseLibrary": "Pilih dari pustaka",
+    "upload": "Unggah foto",
+    "takePhoto": "Ambil foto",
+    "remove": "Hapus",
+    "saving": "Menyimpan…",
+    "pickError": "Pustaka foto tidak dapat dibuka.",
+    "saveError": "Gambar tidak dapat disimpan. Silakan coba lagi.",
+    "removeError": "Gambar tidak dapat dihapus. Silakan coba lagi.",
+    "keepsFile": "Setelah dihapus, foto tetap ada di pustaka medianya.",
+    "picker": {
+      "title": "Pilih foto",
+      "empty": "Pustakamu belum punya foto. Unggah sebuah foto.",
+      "cancel": "Batal",
+      "photo": "Foto tanggal {{date}}"
+    }
   }
 }

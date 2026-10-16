@@ -281,7 +281,8 @@
     },
     "loginUnavailable": "Přihlášení není dostupné, protože se nelze připojit k přihlašovací službě. Zkuste to znovu.",
     "todos": "Úkoly",
-    "media": "Moje média"
+    "media": "Moje média",
+    "profileImages": "Avatar a záhlaví"
   },
   "upload": {
     "title": "Nahrát fotografii",
@@ -426,7 +427,10 @@
     "selected_member_limit": "Akvárium může mít nejvýše 100 vybraných členů.",
     "media_is_proof": "Tato fotografie dokládá vyřazení akvária z provozu a zůstává ve tvé knihovně.",
     "library_photo_invalid": "Vyber fotografii JPEG, PNG nebo WebP do 25 MB, kterou lze otevřít.",
-    "library_filter_invalid": "Tento filtr není k dispozici."
+    "library_filter_invalid": "Tento filtr není k dispozici.",
+    "profile_media_invalid": "Vyber fotku ze své knihovny médií.",
+    "profile_media_not_photo": "Avatarem nebo záhlavím může být jen fotka.",
+    "profile_photo_invalid": "Fotku se nepodařilo přečíst. Pošli fotku JPEG, PNG nebo WebP do 25 MB."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -1189,5 +1193,30 @@
       "recommission": "Opětovné uvedení do provozu"
     },
     "streakWarning": "Tato fotka je jediná z týdne začínajícího {{week}} v timelapse akvária {{tank}}. Když ji smažeš, série tohoto akvária se zkrátí nebo přeruší."
+  },
+  "profileImages": {
+    "title": "Avatar a záhlaví",
+    "intro": "Tvůj avatar a záhlaví se zobrazují na tvém profilu a avatar i u tvých příběhů a komentářů, dokud je profil aktivní.",
+    "avatarTitle": "Avatar",
+    "headerTitle": "Záhlaví",
+    "avatarNone": "Zatím žádný avatar. Ostatní vidí výchozí avatar.",
+    "headerNone": "Zatím žádné záhlaví.",
+    "avatarPreview": "Náhled tvého avataru",
+    "headerPreview": "Náhled tvého záhlaví",
+    "chooseLibrary": "Vybrat z knihovny",
+    "upload": "Nahrát fotku",
+    "takePhoto": "Vyfotit",
+    "remove": "Odebrat",
+    "saving": "Ukládání…",
+    "pickError": "Knihovnu fotek se nepodařilo otevřít.",
+    "saveError": "Obrázek se nepodařilo uložit. Zkus to prosím znovu.",
+    "removeError": "Obrázek se nepodařilo odebrat. Zkus to prosím znovu.",
+    "keepsFile": "Po odebrání zůstane fotka ve tvé knihovně médií.",
+    "picker": {
+      "title": "Vyber fotku",
+      "empty": "Tvoje knihovna zatím neobsahuje žádné fotky. Nahraj fotku.",
+      "cancel": "Zrušit",
+      "photo": "Fotka z {{date}}"
+    }
   }
 }

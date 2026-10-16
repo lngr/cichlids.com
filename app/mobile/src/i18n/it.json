@@ -274,7 +274,8 @@
     },
     "loginUnavailable": "L'accesso non è disponibile perché il servizio di autenticazione è irraggiungibile. Riprova.",
     "todos": "Attività",
-    "media": "I miei media"
+    "media": "I miei media",
+    "profileImages": "Avatar e copertina"
   },
   "upload": {
     "title": "Carica foto",
@@ -418,7 +419,10 @@
     "selected_member_limit": "Un acquario può avere al massimo 100 membri selezionati.",
     "media_is_proof": "Questa foto prova la messa fuori servizio di un acquario e resta nella tua libreria.",
     "library_photo_invalid": "Scegli una foto JPEG, PNG o WebP fino a 25 MB che si possa aprire.",
-    "library_filter_invalid": "Questo filtro non è disponibile."
+    "library_filter_invalid": "Questo filtro non è disponibile.",
+    "profile_media_invalid": "Scegli una foto dalla tua libreria multimediale.",
+    "profile_media_not_photo": "Solo una foto può essere avatar o copertina.",
+    "profile_photo_invalid": "Non è stato possibile leggere la foto. Invia una foto JPEG, PNG o WebP fino a 25 MB."
   },
   "featureFlags": {
     "activityTitle": "Attività della comunità",
@@ -1170,5 +1174,30 @@
       "recommission": "Rimessa in servizio"
     },
     "streakWarning": "Questa foto è l'unica della settimana che inizia il {{week}} nel timelapse di {{tank}}. Se la elimini, la serie di quella vasca si accorcia o si interrompe."
+  },
+  "profileImages": {
+    "title": "Avatar e copertina",
+    "intro": "Il tuo avatar e la tua copertina compaiono sul tuo profilo, e il tuo avatar accanto alle tue storie e ai tuoi commenti, finché il profilo è attivo.",
+    "avatarTitle": "Avatar",
+    "headerTitle": "Copertina",
+    "avatarNone": "Ancora nessun avatar. Gli altri vedono l'avatar predefinito.",
+    "headerNone": "Ancora nessuna copertina.",
+    "avatarPreview": "Anteprima del tuo avatar",
+    "headerPreview": "Anteprima della tua copertina",
+    "chooseLibrary": "Scegli dalla libreria",
+    "upload": "Carica foto",
+    "takePhoto": "Scatta foto",
+    "remove": "Rimuovi",
+    "saving": "Salvataggio…",
+    "pickError": "Non è stato possibile aprire la libreria foto.",
+    "saveError": "Non è stato possibile salvare l'immagine. Riprova.",
+    "removeError": "Non è stato possibile rimuovere l'immagine. Riprova.",
+    "keepsFile": "Rimuovendola, la foto resta nella tua libreria multimediale.",
+    "picker": {
+      "title": "Scegli una foto",
+      "empty": "La tua libreria non contiene ancora foto. Carica una foto.",
+      "cancel": "Annulla",
+      "photo": "Foto del {{date}}"
+    }
   }
 }

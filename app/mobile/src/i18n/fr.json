@@ -274,7 +274,8 @@
     },
     "loginUnavailable": "La connexion est indisponible car le service d'authentification est inaccessible. Veuillez réessayer.",
     "todos": "Tâches",
-    "media": "Mes médias"
+    "media": "Mes médias",
+    "profileImages": "Avatar et bannière"
   },
   "upload": {
     "title": "Importer une photo",
@@ -418,7 +419,10 @@
     "selected_member_limit": "Un aquarium peut avoir au maximum 100 membres sélectionnés.",
     "media_is_proof": "Cette photo prouve la mise hors service d'un aquarium et reste dans ta médiathèque.",
     "library_photo_invalid": "Choisis une photo JPEG, PNG ou WebP de 25 Mo maximum qui peut être ouverte.",
-    "library_filter_invalid": "Ce filtre n'est pas disponible."
+    "library_filter_invalid": "Ce filtre n'est pas disponible.",
+    "profile_media_invalid": "Choisissez une photo de votre médiathèque.",
+    "profile_media_not_photo": "Seule une photo peut servir d'avatar ou de bannière.",
+    "profile_photo_invalid": "La photo n'a pas pu être lue. Envoyez une photo JPEG, PNG ou WebP de 25 Mo au plus."
   },
   "featureFlags": {
     "activityTitle": "Activité de la communauté",
@@ -1170,5 +1174,30 @@
       "recommission": "Remise en service"
     },
     "streakWarning": "Cette photo est la seule de la semaine commençant le {{week}} dans le timelapse de {{tank}}. Si tu la supprimes, la série de cet aquarium se raccourcit ou s'interrompt."
+  },
+  "profileImages": {
+    "title": "Avatar et bannière",
+    "intro": "Votre avatar et votre bannière apparaissent sur votre profil, et votre avatar à côté de vos histoires et commentaires, tant que votre profil est actif.",
+    "avatarTitle": "Avatar",
+    "headerTitle": "Bannière",
+    "avatarNone": "Pas encore d'avatar. Les autres voient l'avatar par défaut.",
+    "headerNone": "Pas encore de bannière.",
+    "avatarPreview": "Aperçu de votre avatar",
+    "headerPreview": "Aperçu de votre bannière",
+    "chooseLibrary": "Choisir dans la médiathèque",
+    "upload": "Importer une photo",
+    "takePhoto": "Prendre une photo",
+    "remove": "Retirer",
+    "saving": "Enregistrement…",
+    "pickError": "La bibliothèque de photos n'a pas pu être ouverte.",
+    "saveError": "L'image n'a pas pu être enregistrée. Veuillez réessayer.",
+    "removeError": "L'image n'a pas pu être retirée. Veuillez réessayer.",
+    "keepsFile": "En la retirant, la photo reste dans votre médiathèque.",
+    "picker": {
+      "title": "Choisir une photo",
+      "empty": "Votre médiathèque ne contient pas encore de photo. Importez-en une.",
+      "cancel": "Annuler",
+      "photo": "Photo du {{date}}"
+    }
   }
 }

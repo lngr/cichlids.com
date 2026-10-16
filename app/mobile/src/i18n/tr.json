@@ -267,7 +267,8 @@
     },
     "loginUnavailable": "Giriş hizmetine ulaşılamadığı için giriş yapılamıyor. Lütfen tekrar deneyin.",
     "todos": "Görevler",
-    "media": "Medyam"
+    "media": "Medyam",
+    "profileImages": "Avatar ve başlık"
   },
   "upload": {
     "title": "Fotoğraf yükle",
@@ -410,7 +411,10 @@
     "selected_member_limit": "Bir akvaryumun en fazla 100 seçili üyesi olabilir.",
     "media_is_proof": "Bu fotoğraf bir akvaryumun devre dışı bırakıldığını kanıtlar ve kitaplığında kalır.",
     "library_photo_invalid": "Açılabilen, en fazla 25 MB boyutunda bir JPEG, PNG veya WebP fotoğraf seç.",
-    "library_filter_invalid": "Bu filtre kullanılamıyor."
+    "library_filter_invalid": "Bu filtre kullanılamıyor.",
+    "profile_media_invalid": "Medya kitaplığından bir fotoğraf seç.",
+    "profile_media_not_photo": "Yalnızca bir fotoğraf avatar veya başlık olabilir.",
+    "profile_photo_invalid": "Fotoğraf okunamadı. En fazla 25 MB'lık bir JPEG, PNG veya WebP fotoğraf gönder."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -1151,5 +1155,30 @@
       "recommission": "Yeniden devreye alma"
     },
     "streakWarning": "Bu fotoğraf, {{tank}} akvaryumunun timelapse'inde {{week}} tarihinde başlayan haftanın tek fotoğrafı. Silersen o akvaryumun serisi kısalır ya da bozulur."
+  },
+  "profileImages": {
+    "title": "Avatar ve başlık",
+    "intro": "Avatarın ve başlığın profilinde görünür, avatarın ise profilin etkin olduğu sürece hikayelerinin ve yorumlarının yanında da görünür.",
+    "avatarTitle": "Avatar",
+    "headerTitle": "Başlık",
+    "avatarNone": "Henüz avatar yok. Diğerleri varsayılan avatarı görür.",
+    "headerNone": "Henüz başlık yok.",
+    "avatarPreview": "Avatarının önizlemesi",
+    "headerPreview": "Başlığının önizlemesi",
+    "chooseLibrary": "Kitaplıktan seç",
+    "upload": "Fotoğraf yükle",
+    "takePhoto": "Fotoğraf çek",
+    "remove": "Kaldır",
+    "saving": "Kaydediliyor…",
+    "pickError": "Fotoğraf kitaplığı açılamadı.",
+    "saveError": "Görsel kaydedilemedi. Lütfen tekrar dene.",
+    "removeError": "Görsel kaldırılamadı. Lütfen tekrar dene.",
+    "keepsFile": "Kaldırdığında fotoğraf medya kitaplığında kalır.",
+    "picker": {
+      "title": "Bir fotoğraf seç",
+      "empty": "Kitaplığında henüz fotoğraf yok. Bir fotoğraf yükle.",
+      "cancel": "İptal",
+      "photo": "{{date}} tarihli fotoğraf"
+    }
   }
 }
