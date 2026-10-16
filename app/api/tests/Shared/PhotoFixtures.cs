@@ -104,6 +104,29 @@ internal static class PhotoFixtures
     }
 
     /// <summary>
+    /// A JPEG whose EXIF block holds only the given DateTimeOriginal and OffsetTimeOriginal
+    /// (each omitted when null), next to a GPS position that must never be read.
+    /// </summary>
+    public static byte[] JpegWithCaptureTime(string? dateTimeOriginal, string? offsetTimeOriginal = null, int width = 64, int height = 48)
+    {
+        var exif = new ExifBuilder();
+        exif.Ifd0.Add(exif.Ascii(0x0110, Model));
+        if (dateTimeOriginal is not null)
+        {
+            exif.Exif.Add(exif.Ascii(0x9003, dateTimeOriginal));
+        }
+
+        if (offsetTimeOriginal is not null)
+        {
+            exif.Exif.Add(exif.Ascii(0x9011, offsetTimeOriginal));
+        }
+
+        exif.Gps.AddRange([exif.Ascii(0x0001, "N"), exif.Rational(0x0002, (52, 1), (31, 1), (1234, 100))]);
+        return MetadataContainers.InsertIntoJpeg(
+            BaseJpeg(width, height), [MetadataContainers.JpegSegment(0xE1, MetadataContainers.ExifHeader, exif.Build())]);
+    }
+
+    /// <summary>
     /// A baseline JPEG of flat colour with an embedded sRGB ICC profile and no other metadata.
     /// </summary>
     public static byte[] BaseJpeg(int width, int height)
