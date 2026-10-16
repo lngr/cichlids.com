@@ -13,7 +13,7 @@ public enum PushOutcome
     /// <summary>The push service does not know the subscription (404 or 410).</summary>
     Gone,
 
-    /// <summary>The message was not delivered for another reason; trying again later may work.</summary>
+    /// <summary>The message was not delivered for another reason; a later attempt may succeed.</summary>
     Failed,
 }
 

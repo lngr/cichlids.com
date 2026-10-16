@@ -8,7 +8,7 @@ public sealed class WebPushSenderOptions
 {
     public const string SectionName = "WebPushSender";
 
-    /// <summary>Whether the hosted loop runs at all. The tests of the sender run its passes directly.</summary>
+    /// <summary>Whether the hosted loop runs at all.</summary>
     public bool Enabled { get; set; } = true;
 
     /// <summary>Time between two passes.</summary>

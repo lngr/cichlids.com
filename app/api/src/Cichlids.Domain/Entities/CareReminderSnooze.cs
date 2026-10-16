@@ -4,7 +4,7 @@ namespace Cichlids.Domain.Entities;
 
 /// <summary>
 /// A care reminder a member moved to a later local day: the reminder of one rule of a tank for one
-/// due date returns at 09:00 on the until date instead of the due day.
+/// due date returns at 09:00 on the until date.
 /// </summary>
 public class CareReminderSnooze
 {

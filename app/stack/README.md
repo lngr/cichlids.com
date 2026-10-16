@@ -418,8 +418,9 @@ the already-running Postgres, RustFS and Keycloak containers above:
 - a second `Cichlids.Api` instance built in Release to a temp directory and run on
   `http://localhost:5046`, pointed at that database and bucket, with the outbox dispatcher
   polling every second and giving events up after fifteen seconds, its own Data Protection key
-  ring in the state directory (removed on `down`) and the Me tab of the write web build as the
-  return address after a web sign-out;
+  ring and its own VAPID key pair in the state directory (removed on `down`), the sender loop of
+  Web Push reminders switched off and the Me tab of the write web build as the return address
+  after a web sign-out;
 - a static export of the Expo web app (`expo export --platform web`), built against that API and
   served on `http://localhost:8082`; `@cichlids/client-core` is compiled first, since the app
   imports its `dist/` output.

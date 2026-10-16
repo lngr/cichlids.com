@@ -31,7 +31,7 @@ const sameKey = (key: ArrayBuffer | null | undefined, bytes: Uint8Array) =>
 /**
  * Asks the browser for the permission to show notifications, which the member agreed to before,
  * registers the service worker and subscribes to the push service with the VAPID key of the
- * server. The permission prompt comes first so it still belongs to the click that started this.
+ * server. The permission prompt comes first so that it belongs to the click that started this.
  */
 export async function enableInBrowser(publicKey: string): Promise<PushSubscription> {
   if ((await Notification.requestPermission()) !== "granted") throw new PermissionDeniedError();
