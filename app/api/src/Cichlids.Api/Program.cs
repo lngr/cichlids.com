@@ -269,6 +269,8 @@ builder.Services.AddScoped<DraftCleanupService>();
 builder.Services.AddHostedService<DraftCleanupHostedService>();
 builder.Services.AddScoped<DraftsQueryService>();
 builder.Services.AddScoped<StoryPublishService>();
+builder.Services.AddScoped<StoryEditorQueryService>();
+builder.Services.AddScoped<StoryEditorService>();
 
 // Resolved once at startup so a deployment outside Development with no slug secret, or with the
 // development default, fails immediately instead of on the first request that mints a slug,
@@ -358,6 +360,7 @@ app.MapGet("/healthz", () => Results.Ok(new { status = "ok" }))
 app.MapFeatureFlagEndpoints();
 app.MapSpeciesEndpoints();
 app.MapStoriesEndpoints();
+app.MapStoryEditorEndpoints();
 app.MapTanksEndpoints();
 app.MapCareEndpoints();
 app.MapStreakEndpoints();

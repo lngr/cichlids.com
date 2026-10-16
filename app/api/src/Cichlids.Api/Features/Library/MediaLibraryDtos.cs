@@ -32,13 +32,20 @@ public sealed record MediaPlaceDto(
     TankMediaSection? Section, CareKind? CareKind, DateTimeOffset? At);
 
 /// <summary>
+/// The story that the quick share of a file created. Slug addresses the story while it is published and is
+/// null while it is a draft.
+/// </summary>
+public sealed record MediaQuickShareDto(long StoryId, string? Slug, StoryState State);
+
+/// <summary>
 /// A file of the media library. A photo has image URLs, a video has its video representation; both are
 /// signed for the owner. PlaceCount is the number of places that show the file and PlaceKinds their
-/// distinct kinds; a file without places is not linked.
+/// distinct kinds; a file without places is not linked. QuickShare names the story created by sharing the
+/// file to the gallery and is null for a file that was not shared that way.
 /// </summary>
 public sealed record MediaLibraryItemDto(
     long Id, MediaKind Kind, DateTimeOffset CreatedAt, int? Width, int? Height, ImageUrlsDto? Image, VideoDto? Video,
-    int PlaceCount, IReadOnlyList<MediaPlaceKind> PlaceKinds);
+    int PlaceCount, IReadOnlyList<MediaPlaceKind> PlaceKinds, MediaQuickShareDto? QuickShare);
 
 /// <summary>
 /// A time-lapse week of a tank that a file keeps: the file is the only in-app photo of that ISO week

@@ -69,14 +69,25 @@ public static class UploadsEndpoints
     /// error message for the 400 response.
     /// </summary>
     public static bool TryValidatePublish(
-        PublishStoryRequest request, out string title, out string? description, out StoryTopic topic, out string error)
+        PublishStoryRequest request, out string title, out string? description, out StoryTopic topic, out string error) =>
+        TryValidateText(request.Title, request.Description, request.Topic, titleRequired: true, out title, out description, out topic, out error);
+
+    /// <summary>
+    /// Validates the text of a story: a title of at most 200 characters after trimming (required when
+    /// titleRequired is set, otherwise blank counts as none), a description of at most 5000 characters
+    /// (blank counts as none) and a topic of cichlids, tanks or offtopic, cichlids when omitted. Returns the
+    /// normalized values, or an error message.
+    /// </summary>
+    public static bool TryValidateText(
+        string? rawTitle, string? rawDescription, string? rawTopic, bool titleRequired,
+        out string title, out string? description, out StoryTopic topic, out string error)
     {
-        title = request.Title?.Trim() ?? string.Empty;
-        description = string.IsNullOrWhiteSpace(request.Description) ? null : request.Description.Trim();
+        title = rawTitle?.Trim() ?? string.Empty;
+        description = string.IsNullOrWhiteSpace(rawDescription) ? null : rawDescription.Trim();
         topic = StoryTopic.Cichlids;
         error = string.Empty;
 
-        if (title.Length is 0 or > MaxTitleLength)
+        if ((titleRequired && title.Length == 0) || title.Length > MaxTitleLength)
         {
             error = $"title is required and must be at most {MaxTitleLength} characters.";
             return false;
@@ -88,8 +99,8 @@ public static class UploadsEndpoints
             return false;
         }
 
-        if (request.Topic is not null
-            && (!SnakeCaseEnum.TryParse<StoryTopic>(request.Topic, out topic) || !PublishableTopics.Contains(topic)))
+        if (rawTopic is not null
+            && (!SnakeCaseEnum.TryParse<StoryTopic>(rawTopic, out topic) || !PublishableTopics.Contains(topic)))
         {
             error = "topic must be one of: cichlids, tanks, offtopic.";
             return false;
@@ -174,7 +185,7 @@ public static class UploadsEndpoints
         return TypedResults.Ok(await draftsQueryService.ListAsync(profile.Id, cancellationToken));
     }
 
-    private static async Task<Results<Ok<StoryDetailDto>, BadRequest<string>, NotFound, Conflict<string>>> PublishAsync(
+    private static async Task<Results<Ok<StoryDetailDto>, BadRequest<string>, NotFound, Conflict<string>, ProblemHttpResult>> PublishAsync(
         StoryPublishService storyPublishService,
         CurrentProfileService currentProfileService,
         ClaimsPrincipal user,
@@ -194,6 +205,8 @@ public static class UploadsEndpoints
         {
             DraftActionOutcome.Succeeded => TypedResults.Ok(detail!),
             DraftActionOutcome.NotDraft => TypedResults.Conflict("Only a draft can be published."),
+            DraftActionOutcome.NoItems => ApiProblems.WithCode(StatusCodes.Status409Conflict, "Story without items",
+                "Add at least one photo or video before you publish the story.", "story_needs_item"),
             _ => TypedResults.NotFound(),
         };
     }

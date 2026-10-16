@@ -118,7 +118,7 @@ public sealed class MediaLibraryService(
         return (places, null);
     }
 
-    // A story without an item shows nothing: a draft is deleted and a published story is removed.
+    // A story without an item shows nothing: a draft that was never published is deleted, every other story is removed.
     private async Task RemoveEmptyStoriesAsync(long profileId, List<long> storyIds, CancellationToken cancellationToken)
     {
         var now = clock.GetUtcNow();
@@ -129,7 +129,7 @@ public sealed class MediaLibraryService(
                 continue;
             }
 
-            var drafts = await context.Stories.Where(s => s.Id == storyId && s.State == StoryState.Draft).ExecuteDeleteAsync(cancellationToken);
+            var drafts = await context.Stories.Where(s => s.Id == storyId && s.State == StoryState.Draft && !context.SlugAliases.Any(a => a.StoryId == s.Id)).ExecuteDeleteAsync(cancellationToken);
             if (drafts == 0)
             {
                 await context.Stories.Where(s => s.Id == storyId && s.DeletedAt == null).ExecuteUpdateAsync(

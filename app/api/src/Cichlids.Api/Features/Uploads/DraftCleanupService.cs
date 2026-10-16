@@ -26,7 +26,7 @@ public sealed class DraftCleanupService(
         var cutoff = timeProvider.GetUtcNow() - settings.Retention;
 
         var expiredIds = await context.Stories
-            .Where(p => p.State == StoryState.Draft && p.DeletedAt == null && p.UpdatedAt < cutoff)
+            .Where(p => p.State == StoryState.Draft && p.DeletedAt == null && p.UpdatedAt < cutoff && !context.SlugAliases.Any(a => a.StoryId == p.Id))
             .OrderBy(p => p.Id)
             .Select(p => p.Id)
             .Take(settings.BatchSize)

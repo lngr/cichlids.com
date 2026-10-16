@@ -220,6 +220,7 @@ public sealed class UploadsWriteService(
     {
         await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
 
+        // A story that was published has an address and stays; only a story that never was published is deleted.
         var candidates = context.Stories
             .Where(p => p.Id == storyId && p.DeletedAt == null && (authorProfileId == null || p.AuthorProfileId == authorProfileId));
 
@@ -227,7 +228,7 @@ public sealed class UploadsWriteService(
         // publish or removal of the same story on the row lock: whichever runs second sees the
         // committed outcome of the first and deletes nothing.
         var deleted = await candidates
-            .Where(p => p.State == StoryState.Draft && (changedBefore == null || p.UpdatedAt < changedBefore))
+            .Where(p => p.State == StoryState.Draft && !context.SlugAliases.Any(a => a.StoryId == p.Id) && (changedBefore == null || p.UpdatedAt < changedBefore))
             .ExecuteDeleteAsync(cancellationToken);
 
         if (deleted == 0)

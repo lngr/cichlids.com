@@ -184,6 +184,7 @@ public sealed class MediaLibraryQueryService(
         var places = knownPlaces ?? await PlacesOfAsync(profileId, ids, cancellationToken);
         var anonymousVisible = await context.AnonymousVisibleMediaItemIdsAsync(ids, now, cancellationToken);
         var generations = await context.VisibleMediaGenerationsAsync(ids, profileId, now, cancellationToken);
+        var quickShares = await QuickSharesAsync(items, cancellationToken);
         return items.Select(item =>
         {
             var itemPlaces = places.GetValueOrDefault(item.Id) ?? [];
@@ -193,7 +194,27 @@ public sealed class MediaLibraryQueryService(
                 item.Id, item.Kind, item.CreatedAt, item.Width, item.Height,
                 item.Kind == MediaKind.Photo ? _urls.Build(item.Variants, allowSigned: true, visible, generation) : null,
                 item.Kind == MediaKind.Video ? VideoQueryService.ToPublicDto(item, objectStore, signer, allowSigned: true, visible, generation) : null,
-                itemPlaces.Count, [.. itemPlaces.Select(p => p.Kind).Distinct()]);
+                itemPlaces.Count, [.. itemPlaces.Select(p => p.Kind).Distinct()], quickShares.GetValueOrDefault(item.Id));
         }).ToList();
+    }
+
+    // The story of the quick share of each file, as long as the story is not deleted.
+    private async Task<Dictionary<long, MediaQuickShareDto>> QuickSharesAsync(List<MediaItem> items, CancellationToken cancellationToken)
+    {
+        var storyIds = items.Select(i => i.QuickShareStoryId).OfType<long>().ToList();
+        if (storyIds.Count == 0)
+        {
+            return [];
+        }
+
+        var found = await context.Stories.AsNoTracking().Where(s => storyIds.Contains(s.Id) && s.DeletedAt == null)
+            .Select(s => new { s.Id, s.State }).ToDictionaryAsync(s => s.Id, cancellationToken);
+        var slugs = (await context.SlugAliases.AsNoTracking().Where(a => a.IsCanonical && found.Keys.Contains(a.StoryId))
+            .Select(a => new { a.StoryId, a.Value }).ToListAsync(cancellationToken)).ToDictionary(a => a.StoryId, a => a.Value);
+        return items.Where(i => i.QuickShareStoryId is { } id && found.ContainsKey(id)).ToDictionary(i => i.Id, i =>
+        {
+            var story = found[i.QuickShareStoryId!.Value];
+            return new MediaQuickShareDto(story.Id, story.State == StoryState.Published ? slugs.GetValueOrDefault(story.Id) : null, story.State);
+        });
     }
 }
