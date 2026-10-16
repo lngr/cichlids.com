@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { RHYTHM_CHOICES, parseRhythm, type CareKind, type CarePlanRule } from "@cichlids/client-core";
 import { Button } from "../components/Button";
 import { translateApiError } from "../lib/apiErrors";
+import { ReminderSettings } from "../reminders/ReminderSettings";
 import { minTouchTarget, useTheme } from "../theme";
 import { dueNote, dueText, ruleText } from "./carePlanText";
 import { useCarePlan } from "./useCarePlan";
@@ -12,11 +13,12 @@ import { useCarePlan } from "./useCarePlan";
 export function CarePlanView({ tankId, revision }: { tankId: number; revision: number }) {
   const { t } = useTranslation();
   const theme = useTheme();
-  const { plan, error, saving, change } = useCarePlan(tankId, true, revision);
+  const { plan, error, saving, savingReminders, change, setReminders } = useCarePlan(tankId, true, revision);
   const [editing, setEditing] = useState<CareKind | null>(null);
   if (!plan && !error) return null;
   return <View testID="care-plan" style={{ gap: theme.space[3] }}>
     <Text accessibilityRole="header" style={[theme.type.h2, { color: theme.colors.fg }]}>{t("care.plan.title")}</Text>
+    {plan ? <ReminderSettings enabled={plan.remindersEnabled} busy={savingReminders} onToggle={() => void setReminders(!plan.remindersEnabled)} /> : null}
     {plan?.rules.map(rule => <RuleCard key={rule.kind} rule={rule} busy={saving === rule.kind} editing={editing === rule.kind}
       onEdit={() => setEditing(editing === rule.kind ? null : rule.kind)}
       onChange={async request => { if (await change(rule.kind, request)) setEditing(null); }}

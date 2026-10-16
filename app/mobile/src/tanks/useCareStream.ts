@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useFocusEffect } from "expo-router";
 import type { CareEntry } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
 import { useAuth } from "../auth/AuthProvider";
 import { usePagedList } from "../hooks/usePagedList";
+import { reminderRefresh } from "../reminders/refreshSignal";
 import { useCareActors } from "./useCareActors";
 
 const key = (entry: CareEntry) => String(entry.id);
@@ -22,6 +23,12 @@ export function useCareStream(tankId: number, authorId: string | number) {
   }, [status, identity, authorId]);
   const { actor, state, measureActor, measureState, attachActor, attachState } = useCareActors(() => tankId);
   const revision = state.context.revision + measureState.context.revision + attachState.context.revision;
+  const loggedRevision = useRef(revision);
+  useEffect(() => {
+    if (loggedRevision.current === revision) return;
+    loggedRevision.current = revision;
+    reminderRefresh.request();
+  }, [revision]);
   const fetchPage = useCallback((offset: number, limit: number) => owner
     ? apiClient.care.list(tankId, { offset, limit }) : Promise.resolve({ total: 0, items: [] }), [owner, tankId]);
   const list = usePagedList<CareEntry>(fetchPage, [owner, identity, tankId, revision], key);

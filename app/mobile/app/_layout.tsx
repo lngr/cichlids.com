@@ -12,6 +12,7 @@ import { useTheme } from "../src/theme";
 import { AuthProvider } from "../src/auth/AuthProvider";
 import { initializeLocalization, subscribeDirection, getDirection, refreshDeviceLanguage } from "../src/i18n";
 import { FeatureFlagsProvider } from "../src/featureFlags/FeatureFlagsProvider";
+import { RemindersHost } from "../src/reminders/RemindersHost";
 
 export default function RootLayout() {
   const [ready, setReady] = useState(false);
@@ -53,6 +54,7 @@ export default function RootLayout() {
                 <Stack.Screen name="upload/index" options={{ title: t("upload.title") }} />
               </Stack>
               <OnboardingGate />
+              <RemindersHost />
               <CreateSheet />
             </NavigationProvider>
           </FeatureFlagsProvider>
