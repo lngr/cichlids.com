@@ -1,7 +1,9 @@
 using System.Text.Json;
+using Cichlids.Api.Features.Media;
 using Cichlids.Api.Features.Pictures;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Slugs;
 using Microsoft.EntityFrameworkCore;
@@ -9,13 +11,16 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Api.Features.Uploads;
 
 /// <summary>
-/// Publishes drafts. The state change, the canonical slug and the post.published outbox event
-/// are written in one transaction.
+/// Publishes drafts. The state change, the canonical slug, and the post.published outbox event are
+/// written in one transaction; the state change marks the media items of the post for placement. A published post is
+/// public, so its media items move into the public area; the publication waits for that within the
+/// configured budget.
 /// </summary>
 public sealed class PostPublishService(
     CichlidsDbContext context,
     SlugGenerator slugGenerator,
-    PicturesQueryService picturesQueryService)
+    PicturesQueryService picturesQueryService,
+    MediaPlacementTrigger placement)
 {
     private static readonly JsonSerializerOptions PayloadOptions = new(JsonSerializerDefaults.Web);
 
@@ -66,6 +71,7 @@ public sealed class PostPublishService(
         await context.SaveChangesAsync(cancellationToken);
         await transaction.CommitAsync(cancellationToken);
 
+        await placement.PlaceNowAsync(await context.MediaItemIdsOfPost(postId).ToListAsync(cancellationToken));
         return (DraftActionOutcome.Succeeded, await picturesQueryService.GetDetailAsync(postId, cancellationToken));
     }
 }

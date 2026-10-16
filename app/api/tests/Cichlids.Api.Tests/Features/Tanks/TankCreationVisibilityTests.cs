@@ -51,7 +51,6 @@ public sealed class TankCreationVisibilityTests(ApiFixture fixture)
         var tank = await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == id);
         Assert.Equal(TankVisibility.Public, tank.ProfileVisibility);
         Assert.Equal(TankVisibility.Public, tank.StreamVisibility);
-        Assert.True(tank.MediaPlacedPublic);
         var consent = await db.TankVisibilityConsents.AsNoTracking().SingleAsync(c => c.TankId == id);
         Assert.True(consent.Answer);
         Assert.Equal(TankVisibilityConsent.CreationContext, consent.Context);
@@ -79,7 +78,6 @@ public sealed class TankCreationVisibilityTests(ApiFixture fixture)
         var tank = await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == id);
         Assert.Equal(TankVisibility.Private, tank.ProfileVisibility);
         Assert.Equal(TankVisibility.Private, tank.StreamVisibility);
-        Assert.False(tank.MediaPlacedPublic);
         Assert.False((await db.TankVisibilityConsents.AsNoTracking().SingleAsync(c => c.TankId == id)).Answer);
         await RemoveTanksAsync(fixture, id);
     }

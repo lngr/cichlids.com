@@ -20,7 +20,7 @@ public sealed class VideoAttachmentTests(UploadsFixture fixture)
     [Fact]
     public async Task GivenACareVideo_ThenOnlyTheSignedPathServesItsFilesAndTheStoreRefusesEverythingDirect()
     {
-        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var (token, tank) = await OwnTankAsync(fixture.Client, isPublic: false);
         var entry = await LogAsync(fixture.Client, token, tank);
         var created = await UploadedAsync(fixture.Client, token, await SmallVideo, tank, entry);
         var mediaItemId = created.GetProperty("id").GetInt64();
@@ -30,7 +30,7 @@ public sealed class VideoAttachmentTests(UploadsFixture fixture)
         var video = Assert.Single((await BodyAsync(list)).GetProperty("items")[0].GetProperty("videos").EnumerateArray());
         Assert.Equal("ready", video.GetProperty("state").GetString());
         var playlistUrl = video.GetProperty("playlistUrl").GetString()!;
-        Assert.StartsWith("/api/care-videos/", playlistUrl);
+        Assert.StartsWith("/api/media/videos/", playlistUrl);
         Assert.EndsWith("/master.m3u8", playlistUrl);
         var baseUrl = playlistUrl[..^"master.m3u8".Length];
 
@@ -66,14 +66,14 @@ public sealed class VideoAttachmentTests(UploadsFixture fixture)
             Assert.Equal(HttpStatusCode.Forbidden, direct.StatusCode);
         }
 
-        var tokenPart = baseUrl["/api/care-videos/".Length..].TrimEnd('/');
+        var tokenPart = baseUrl["/api/media/videos/".Length..].TrimEnd('/');
         foreach (var path in new[]
         {
             $"{tokenPart[..^3]}AAA/master.m3u8", "not-a-token/master.m3u8", $"{tokenPart}/../master.m3u8", $"{tokenPart}/%2e%2e/x",
             $"{tokenPart}/480p/../../x", $"{tokenPart}/unknown.txt", $"{tokenPart}/{directory}evil.m4s", $"{tokenPart}/{directory}seg_1.m4s",
         })
         {
-            using var refused = await fixture.Client.GetAsync($"/api/care-videos/{path}");
+            using var refused = await fixture.Client.GetAsync($"/api/media/videos/{path}");
             Assert.True(refused.StatusCode is HttpStatusCode.NotFound or HttpStatusCode.BadRequest, $"{path} answered {refused.StatusCode}");
             Assert.NotEqual(HttpStatusCode.OK, refused.StatusCode);
         }

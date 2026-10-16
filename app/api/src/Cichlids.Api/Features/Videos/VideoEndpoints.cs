@@ -17,7 +17,6 @@ public static partial class VideoEndpoints
 {
     public const string OffsetHeader = "Upload-Offset";
     public const string ChunkContentType = "application/offset+octet-stream";
-    public const string CareVideoNotFoundCode = "care_video_not_found";
 
     /// <summary>
     /// Whether a request path is one of the exact routes of the video upload and of the videos of a
@@ -52,8 +51,6 @@ public static partial class VideoEndpoints
 
         app.MapDelete("/api/tanks/{tankId:long}/care/{id:long}/videos/{mediaItemId:long}", RemoveFromCareEntryAsync)
             .WithName("RemoveCareVideo").WithTags("Care").RequireAuthorization().ProducesProblem(401).ProducesProblem(404);
-        app.MapGet("/api/care-videos/{token}/{**path}", ServeCareVideoAsync).WithName("GetCareVideoFile").WithTags("Care").AllowAnonymous()
-            .Produces(StatusCodes.Status200OK, contentType: "application/vnd.apple.mpegurl").ProducesProblem(404);
         return app;
     }
 
@@ -141,32 +138,4 @@ public static partial class VideoEndpoints
             ? TypedResults.Ok(entry)
             : CareEndpoints.Problem("care_not_found");
     }
-
-    // The token is the credential: it is issued only to the owner of the care entry, names one video
-    // and expires. The path must be one of the files a transcode writes, and the video must still be
-    // attached to a care entry, so a removed video stops resolving.
-    private static async Task<Results<FileStreamHttpResult, ProblemHttpResult>> ServeCareVideoAsync(
-        string token, string path, CareVideoUrlSigner signer, CichlidsDbContext db, IObjectStore store, HttpContext http, CancellationToken ct)
-    {
-        if (signer.TryRead(token) is not { } mediaItemId || !MediaStorageKeys.IsHlsFile(path))
-        {
-            return NotFound();
-        }
-
-        var master = await db.MediaVariants.AsNoTracking()
-            .Where(v => v.MediaItemId == mediaItemId && v.Label == VideoStorage.HlsLabel && db.MediaLinks.Any(l => l.CareEntryId != null && l.MediaItemId == mediaItemId))
-            .Select(v => v.StorageKey).SingleOrDefaultAsync(ct);
-        var stream = master is null ? null : await store.GetAsync(master[..(master.LastIndexOf('/') + 1)] + path, ct);
-        if (stream is null)
-        {
-            return NotFound();
-        }
-
-        http.Response.Headers.CacheControl = "private, max-age=300";
-        http.Response.Headers.XContentTypeOptions = "nosniff";
-        return TypedResults.Stream(stream, MediaStorageKeys.ResolveHlsContentType(path));
-    }
-
-    private static ProblemHttpResult NotFound() =>
-        ApiProblems.WithCode(StatusCodes.Status404NotFound, "Video unavailable", "This video is unavailable.", CareVideoNotFoundCode);
 }

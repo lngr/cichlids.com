@@ -26,7 +26,7 @@ public sealed class DiscoverVisibilityTests(ApiFixture fixture)
         var tank = new Tank
         {
             ProfileId = fixture.Seed.Alice.Id, Title = $"Discover visibility {Guid.NewGuid():N}", Region = region, State = TankState.Published,
-            ProfileVisibility = level, StreamVisibility = level, MediaPlacedPublic = level == TankVisibility.Public,
+            ProfileVisibility = level, StreamVisibility = level,
         };
         db.Context.Tanks.Add(tank);
         await db.Context.SaveChangesAsync();
@@ -156,7 +156,7 @@ public sealed class DiscoverVisibilityTests(ApiFixture fixture)
 
         var json = JsonSerializer.Serialize(archive);
         Assert.DoesNotContain(seeded.MediaMarker, json);
-        Assert.DoesNotContain("/api/tank-media/", json);
+        Assert.DoesNotContain("/api/media/photos/", json);
         await Cleanup(db, seeded);
     }
 

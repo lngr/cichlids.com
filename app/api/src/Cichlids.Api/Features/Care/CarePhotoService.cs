@@ -72,7 +72,7 @@ public sealed class CarePhotoService(
             throw;
         }
 
-        return (await LoadDtoAsync(entryId, ct), null);
+        return (await LoadDtoAsync(entryId, profileId, ct), null);
     }
 
     /// <summary>
@@ -100,7 +100,7 @@ public sealed class CarePhotoService(
         }
 
         await deleter.DeleteAsync(storedKeys);
-        return (await LoadDtoAsync(entryId, ct), null);
+        return (await LoadDtoAsync(entryId, profileId, ct), null);
     }
 
     private async Task<int?> OwnPhotoCountAsync(long tankId, long entryId, long profileId, CancellationToken ct) =>
@@ -109,6 +109,10 @@ public sealed class CarePhotoService(
                 && context.Tanks.Any(t => t.Id == tankId && t.DeletedAt == null))
             .Select(e => (int?)e.MediaLinks.Count(l => l.Role == MediaLinkRole.Photo)).SingleOrDefaultAsync(ct);
 
-    private async Task<CareEntryDto> LoadDtoAsync(long entryId, CancellationToken ct) =>
-        mapper.ToDto(await CareEntryMapper.WithDetails(context.CareEntries.AsNoTracking()).SingleAsync(e => e.Id == entryId, ct));
+    private async Task<CareEntryDto> LoadDtoAsync(long entryId, long profileId, CancellationToken ct)
+    {
+        var entry = await CareEntryMapper.WithDetails(context.CareEntries.AsNoTracking()).SingleAsync(e => e.Id == entryId, ct);
+        await mapper.PrepareAsync([entry], profileId, ct);
+        return mapper.ToDto(entry);
+    }
 }

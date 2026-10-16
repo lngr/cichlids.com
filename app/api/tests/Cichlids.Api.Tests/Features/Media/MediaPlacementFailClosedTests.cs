@@ -1,7 +1,9 @@
 using System.Net;
 using System.Net.Http.Headers;
-using Cichlids.Api.Features.Tanks;
+using Cichlids.Api.Features.Media;
+using Cichlids.Api.Tests.Features.Tanks;
 using Cichlids.Api.Tests.Features.Uploads;
+using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Storage;
 using Cichlids.Tests.Shared;
@@ -12,14 +14,14 @@ using static Cichlids.Api.Tests.Features.Care.CareTestSupport;
 using static Cichlids.Api.Tests.Features.Uploads.UploadTestSupport;
 using static Cichlids.Api.Tests.Features.Videos.VideoTestSupport;
 
-namespace Cichlids.Api.Tests.Features.Tanks;
+namespace Cichlids.Api.Tests.Features.Media;
 
 /// <summary>
 /// The media of a tank that is not public are never handed out by public URL and leave the public prefix
 /// even when the placement fails midway, is retried, or races with an upload or a transcode.
 /// </summary>
 [Collection(UploadsCollection.Name)]
-public sealed class TankMediaFailClosedTests(UploadsFixture fixture)
+public sealed class MediaPlacementFailClosedTests(UploadsFixture fixture)
 {
     private sealed class Host : IAsyncDisposable
     {
@@ -33,7 +35,7 @@ public sealed class TankMediaFailClosedTests(UploadsFixture fixture)
     {
         var store = new FlakyObjectStore(fixture.ObjectStore);
         var factory = fixture.CreateHost(
-            new Dictionary<string, string?> { ["TankMediaPlacement:ImmediateBudget"] = immediateBudget },
+            new Dictionary<string, string?> { ["MediaPlacement:ImmediateBudget"] = immediateBudget },
             services => services.AddSingleton<IObjectStore>(store));
         return new Host { Factory = factory, Store = store, Client = factory.CreateClient() };
     }
@@ -49,15 +51,37 @@ public sealed class TankMediaFailClosedTests(UploadsFixture fixture)
         return await client.SendAsync(request);
     }
 
-    private static async Task<int> PlaceAllAsync(IServiceProvider services)
+    private async Task<List<long>> ItemIdsAsync(long tank)
     {
+        await using var db = fixture.CreateDbContext();
+        return await db.MediaLinks.Where(l => l.TankId == tank).Select(l => l.MediaItemId).ToListAsync();
+    }
+
+    // Places the due media items of the tank and returns how many were placed.
+    private async Task<int> PlaceAllAsync(IServiceProvider services, long tank)
+    {
+        var ids = await ItemIdsAsync(tank);
         var runs = 0;
         while (true)
         {
             using var scope = services.CreateScope();
-            if (!await scope.ServiceProvider.GetRequiredService<TankMediaPlacementService>().RunOnceAsync(CancellationToken.None)) return runs;
+            if (!await scope.ServiceProvider.GetRequiredService<MediaPlacementService>().RunOnceAsync(CancellationToken.None, ids)) return runs;
             runs++;
         }
+    }
+
+    private async Task<MediaItem> OnlyItemAsync(long tank)
+    {
+        await using var db = fixture.CreateDbContext();
+        var ids = db.MediaLinks.Where(l => l.TankId == tank).Select(l => l.MediaItemId);
+        return await db.MediaItems.AsNoTracking().SingleAsync(m => ids.Contains(m.Id));
+    }
+
+    private async Task MakeDueAsync(long tank)
+    {
+        await using var db = fixture.CreateDbContext();
+        var ids = db.MediaLinks.Where(l => l.TankId == tank).Select(l => l.MediaItemId);
+        await db.MediaItems.Where(m => ids.Contains(m.Id)).ExecuteUpdateAsync(s => s.SetProperty(m => m.PlacementNextAttemptAt, DateTimeOffset.UtcNow.AddSeconds(-1)));
     }
 
     private async Task SetVisibilityAsync(HttpClient client, string token, long tank, string level)
@@ -106,7 +130,7 @@ public sealed class TankMediaFailClosedTests(UploadsFixture fixture)
         var image = (await BodyAsync(series)).GetProperty("photos")[0].GetProperty("image");
         foreach (var label in new[] { "thumb", "small", "medium" })
         {
-            Assert.StartsWith("/api/tank-media/", image.GetProperty(label).GetString());
+            Assert.StartsWith("/api/media/photos/", image.GetProperty(label).GetString());
         }
 
         using var detail = await SendAsync(host.Client, HttpMethod.Get, $"/api/tanks/{tank}", token);
@@ -128,15 +152,12 @@ public sealed class TankMediaFailClosedTests(UploadsFixture fixture)
         host.Store.RefusePutsUnder = "private/variants/";
         host.Store.AllowedPutsBeforeRefusal = 1;
 
-        await PlaceAllAsync(host.Factory.Services);
+        await PlaceAllAsync(host.Factory.Services, tank);
 
-        await using (var db = fixture.CreateDbContext())
-        {
-            var stored = await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == tank);
-            Assert.True(stored.MediaMovePending);
-            Assert.Equal(1, stored.MediaMoveAttempts);
-            Assert.True(stored.MediaMoveNextAttemptAt > DateTimeOffset.UtcNow);
-        }
+        var stored = await OnlyItemAsync(tank);
+        Assert.True(stored.PlacementPending);
+        Assert.Equal(1, stored.PlacementAttempts);
+        Assert.True(stored.PlacementNextAttemptAt > DateTimeOffset.UtcNow);
 
         var midway = await VariantKeysAsync(tank);
         Assert.Contains(midway, key => key.StartsWith("private/", StringComparison.Ordinal));
@@ -146,27 +167,23 @@ public sealed class TankMediaFailClosedTests(UploadsFixture fixture)
             var image = (await BodyAsync(series)).GetProperty("photos")[0].GetProperty("image");
             foreach (var label in new[] { "thumb", "small", "medium" })
             {
-                Assert.StartsWith("/api/tank-media/", image.GetProperty(label).GetString());
+                Assert.StartsWith("/api/media/photos/", image.GetProperty(label).GetString());
             }
         }
 
         host.Store.RefusePutsUnder = null;
-        await using (var db = fixture.CreateDbContext())
-        {
-            await db.Tanks.Where(t => t.Id == tank).ExecuteUpdateAsync(s => s.SetProperty(t => t.MediaMoveNextAttemptAt, DateTimeOffset.UtcNow.AddSeconds(-1)));
-        }
+        await MakeDueAsync(tank);
 
-        Assert.Equal(1, await PlaceAllAsync(host.Factory.Services));
+        Assert.Equal(1, await PlaceAllAsync(host.Factory.Services, tank));
         await AssertNothingPublicAsync(tank);
-        await using var check = fixture.CreateDbContext();
-        var done = await check.Tanks.AsNoTracking().SingleAsync(t => t.Id == tank);
-        Assert.False(done.MediaMovePending);
-        Assert.False(done.MediaPlacedPublic);
-        Assert.Equal(0, done.MediaMoveAttempts);
+        var done = await OnlyItemAsync(tank);
+        Assert.False(done.PlacementPending);
+        Assert.False(done.PlacedPublic);
+        Assert.Equal(0, done.PlacementAttempts);
     }
 
     [Fact]
-    public async Task GivenADeleteThatSilentlyDoesNothing_WhenThePlacementRuns_ThenTheTankIsNeverConsideredDone()
+    public async Task GivenADeleteThatSilentlyDoesNothing_WhenThePlacementRuns_ThenTheMediaItemIsNeverConsideredDone()
     {
         await using var host = NewHost();
         var (token, tank) = await OwnTankAsync(host.Client);
@@ -175,22 +192,16 @@ public sealed class TankMediaFailClosedTests(UploadsFixture fixture)
         await SetVisibilityAsync(host.Client, token, tank, "private");
         host.Store.IgnoreDeletes = true;
 
-        await PlaceAllAsync(host.Factory.Services);
+        await PlaceAllAsync(host.Factory.Services, tank);
 
-        await using (var db = fixture.CreateDbContext())
-        {
-            var stored = await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == tank);
-            Assert.True(stored.MediaMovePending);
-            Assert.True(stored.MediaMoveAttempts >= 1);
-        }
+        var stored = await OnlyItemAsync(tank);
+        Assert.True(stored.PlacementPending);
+        Assert.True(stored.PlacementAttempts >= 1);
 
         host.Store.IgnoreDeletes = false;
-        await using (var db = fixture.CreateDbContext())
-        {
-            await db.Tanks.Where(t => t.Id == tank).ExecuteUpdateAsync(s => s.SetProperty(t => t.MediaMoveNextAttemptAt, DateTimeOffset.UtcNow.AddSeconds(-1)));
-        }
+        await MakeDueAsync(tank);
 
-        await PlaceAllAsync(host.Factory.Services);
+        await PlaceAllAsync(host.Factory.Services, tank);
         await AssertNothingPublicAsync(tank);
     }
 
@@ -205,8 +216,7 @@ public sealed class TankMediaFailClosedTests(UploadsFixture fixture)
         await SetVisibilityAsync(host.Client, token, tank, "private");
 
         await AssertNothingPublicAsync(tank);
-        await using var db = fixture.CreateDbContext();
-        Assert.False((await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == tank)).MediaMovePending);
+        Assert.False((await OnlyItemAsync(tank)).PlacementPending);
     }
 
     [Fact]
@@ -220,14 +230,11 @@ public sealed class TankMediaFailClosedTests(UploadsFixture fixture)
 
         await SetVisibilityAsync(host.Client, token, tank, "private");
 
-        await using (var db = fixture.CreateDbContext())
-        {
-            Assert.True((await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == tank)).MediaMovePending);
-            await db.Tanks.Where(t => t.Id == tank).ExecuteUpdateAsync(s => s.SetProperty(t => t.MediaMoveNextAttemptAt, DateTimeOffset.UtcNow.AddSeconds(-1)));
-        }
+        Assert.True((await OnlyItemAsync(tank)).PlacementPending);
+        await MakeDueAsync(tank);
 
         host.Store.RefusePutsUnder = null;
-        await PlaceAllAsync(host.Factory.Services);
+        await PlaceAllAsync(host.Factory.Services, tank);
         await AssertNothingPublicAsync(tank);
     }
 
@@ -243,24 +250,19 @@ public sealed class TankMediaFailClosedTests(UploadsFixture fixture)
             flipped = true;
             // The upload chose the public prefix; the owner makes the tank private before the photo commits.
             await SetVisibilityAsync(host.Client, token, tank, "private");
-            await PlaceAllAsync(host.Factory.Services);
         };
 
         using var added = await AddPhotoAsync(host.Client, token, tank, Jpeg(1200, 800));
 
         Assert.Equal(HttpStatusCode.Created, added.StatusCode);
         Assert.True(flipped);
-        await using (var db = fixture.CreateDbContext())
-        {
-            Assert.True((await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == tank)).MediaMovePending,
-                "The commit of the photo notices the changed level and queues the placement.");
-        }
+        Assert.True((await OnlyItemAsync(tank)).PlacementPending, "The link of the photo marks it for placement.");
 
         host.Store.BeforePut = null;
-        await PlaceAllAsync(host.Factory.Services);
+        await PlaceAllAsync(host.Factory.Services, tank);
         await AssertNothingPublicAsync(tank);
         var body = await BodyAsync(added);
-        Assert.StartsWith("/api/tank-media/", body.GetProperty("image").GetProperty("thumb").GetString());
+        Assert.StartsWith("/api/media/photos/", body.GetProperty("image").GetProperty("thumb").GetString());
     }
 
     [Fact]
@@ -276,19 +278,16 @@ public sealed class TankMediaFailClosedTests(UploadsFixture fixture)
             if (flipped || !key.StartsWith("variants/video/", StringComparison.Ordinal)) return;
             flipped = true;
             await SetVisibilityAsync(host.Client, token, tank, "private");
-            await PlaceAllAsync(host.Factory.Services);
+            await PlaceAllAsync(host.Factory.Services, tank);
         };
 
         await ProcessQueueAsync(host.Factory.Services);
 
         Assert.True(flipped);
-        await using (var db = fixture.CreateDbContext())
-        {
-            Assert.True((await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == tank)).MediaMovePending);
-        }
+        Assert.True((await OnlyItemAsync(tank)).PlacementPending);
 
         host.Store.BeforePut = null;
-        await PlaceAllAsync(host.Factory.Services);
+        await PlaceAllAsync(host.Factory.Services, tank);
 
         await using var check = fixture.CreateDbContext();
         var variants = await check.MediaVariants.Where(v => v.MediaItemId == mediaItemId).ToListAsync();

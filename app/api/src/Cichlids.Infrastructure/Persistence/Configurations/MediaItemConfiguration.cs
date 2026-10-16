@@ -18,6 +18,7 @@ public class MediaItemConfiguration : IEntityTypeConfiguration<MediaItem>
         builder.Property(x => x.CapturedInApp).IsRequired().HasDefaultValue(false);
         builder.Property(x => x.ReceivedAt).IsRequired().HasDefaultValueSql("now()");
         builder.Property(x => x.PlacedPublic).HasDefaultValue(true).ValueGeneratedNever().IsRequired();
+        builder.Property(x => x.VisibilityGeneration).HasDefaultValue(0L).ValueGeneratedNever().IsRequired();
         builder.Property(x => x.PlacementPending).HasDefaultValue(false).ValueGeneratedNever().IsRequired();
         builder.Property(x => x.PlacementAttempts).HasDefaultValue(0).ValueGeneratedNever().IsRequired();
         builder.Property(x => x.TakenAtLocal).HasColumnType("timestamp without time zone");

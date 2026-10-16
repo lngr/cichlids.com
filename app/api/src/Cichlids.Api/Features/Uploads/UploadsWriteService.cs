@@ -25,9 +25,10 @@ public sealed class UploadsWriteService(
     IObjectStore objectStore,
     IOptions<UploadLimitsOptions> limitOptions,
     TimeProvider timeProvider,
-    StoredObjectDeleter deleter)
+    StoredObjectDeleter deleter,
+    MediaUrlSigner? signer = null)
 {
-    private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore);
+    private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore, signer);
 
     /// <summary>
     /// Checks the owner's upload quota and returns the limit that is reached, or null when the
@@ -73,7 +74,7 @@ public sealed class UploadsWriteService(
     public async Task<DraftDto> CreateDraftAsync(
         Profile owner, byte[] bytes, UploadImageFormat format, string? originalFilename, CancellationToken cancellationToken)
     {
-        var stored = await StoreImageAsync(owner.Id, bytes, format, originalFilename, isPrivate: false, cancellationToken);
+        var stored = await StoreImageAsync(owner.Id, bytes, format, originalFilename, isPrivate: true, cancellationToken, privateArea: "gallery");
         try
         {
             var now = stored.Item.CreatedAt;
@@ -97,7 +98,9 @@ public sealed class UploadsWriteService(
             await context.SaveChangesAsync(cancellationToken);
             await transaction.CommitAsync(cancellationToken);
 
-            var image = _mediaUrlBuilder.Build(stored.Item.Variants.ToDictionary(v => v.Label, v => v.StorageKey));
+            var generations = await context.VisibleMediaGenerationsAsync([stored.Item.Id], owner.Id, timeProvider.GetUtcNow(), cancellationToken);
+            var image = _mediaUrlBuilder.Build(stored.Item.Variants, allowSigned: true, anonymousVisible: false,
+                generations.TryGetValue(stored.Item.Id, out var generation) ? generation : null);
             return new DraftDto(post.Id, post.State, post.Topic, post.Title, post.Description, post.CreatedAt, image);
         }
         catch
@@ -184,6 +187,7 @@ public sealed class UploadsWriteService(
             TakenAtOffsetMinutes = captured?.Offset is { } offset ? (short)offset.TotalMinutes : null,
             CaptureCheckedAt = createdAt,
             CapturedInApp = capturedInApp,
+            PlacedPublic = !isPrivate,
             ReceivedAt = timeProvider.GetUtcNow(),
             Variants = variants
                 .Select(v => new MediaVariant { Label = v.Label, Width = v.Width, StorageKey = v.Key, ByteSize = v.Bytes.LongLength })

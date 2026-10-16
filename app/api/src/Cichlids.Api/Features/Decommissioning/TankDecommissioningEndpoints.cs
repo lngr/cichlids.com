@@ -50,7 +50,7 @@ public static partial class TankDecommissioningEndpoints
     {
         if (await access.FindAsync(tankId, user, ct) is not { CanSeeStream: true } found) return Problem(TankDecommissioningService.NotFoundCode);
         if (streaks.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset)) return Problem(TankDecommissioningService.DateInvalidCode);
-        return TypedResults.Ok(await decommissioning.ReadAsync(tankId, found.Profile, today, offset, ct));
+        return TypedResults.Ok(await decommissioning.ReadAsync(tankId, await access.ViewerProfileIdAsync(user, ct), today, offset, ct));
     }
 
     private static async Task<Results<Created<TankOperationDto>, ProblemHttpResult>> StartAsync(

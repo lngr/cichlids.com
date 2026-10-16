@@ -1,6 +1,8 @@
 using Cichlids.Api.Features.Media;
 using Cichlids.Domain;
+using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
@@ -8,12 +10,13 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Api.Features.Uploads;
 
 /// <summary>
-/// Lists a profile's draft posts, newest first, each with the image URLs of its first photo.
+/// Lists a profile's draft posts, newest first, each with the image URLs of its first photo: signed paths
+/// for photos that only the author sees and public URLs for photos that anonymous viewers see anyway.
 /// </summary>
-public sealed class DraftsQueryService(CichlidsDbContext context, IObjectStore objectStore)
+public sealed class DraftsQueryService(CichlidsDbContext context, IObjectStore objectStore, MediaUrlSigner? signer = null)
 {
-    private static readonly IReadOnlyDictionary<string, string> NoVariants = new Dictionary<string, string>();
-    private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore);
+    private static readonly IReadOnlyList<MediaVariant> NoVariants = [];
+    private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore, signer);
 
     public async Task<IReadOnlyList<DraftDto>> ListAsync(long authorProfileId, CancellationToken cancellationToken, int limit = int.MaxValue)
     {
@@ -36,12 +39,13 @@ public sealed class DraftsQueryService(CichlidsDbContext context, IObjectStore o
 
         var mediaItemIds = mediaItemIdByPost.Values.ToList();
 
-        var variantsByMediaItem = (await context.MediaVariants
+        var variantsByMediaItem = (await context.MediaVariants.AsNoTracking()
                 .Where(v => mediaItemIds.Contains(v.MediaItemId))
-                .Select(v => new { v.MediaItemId, v.Label, v.StorageKey })
                 .ToListAsync(cancellationToken))
             .GroupBy(v => v.MediaItemId)
-            .ToDictionary(g => g.Key, g => (IReadOnlyDictionary<string, string>)g.ToDictionary(v => v.Label, v => v.StorageKey));
+            .ToDictionary(g => g.Key, g => (IReadOnlyList<MediaVariant>)g.ToList());
+        var anonymousVisible = await context.AnonymousVisibleMediaItemIdsAsync(mediaItemIds, DateTimeOffset.UtcNow, cancellationToken);
+        var generations = await context.VisibleMediaGenerationsAsync(mediaItemIds, authorProfileId, DateTimeOffset.UtcNow, cancellationToken);
 
         // Every draft the upload endpoint creates has exactly one photo; a draft without one has
         // nothing to show and is left out.
@@ -50,7 +54,7 @@ public sealed class DraftsQueryService(CichlidsDbContext context, IObjectStore o
             .Select(d =>
             {
                 var mediaItemId = mediaItemIdByPost[d.Id];
-                var image =  _mediaUrlBuilder.Build(variantsByMediaItem.GetValueOrDefault(mediaItemId, NoVariants));
+                var image = _mediaUrlBuilder.Build(variantsByMediaItem.GetValueOrDefault(mediaItemId, NoVariants), allowSigned: true, anonymousVisible.Contains(mediaItemId), generations.TryGetValue(mediaItemId, out var generation) ? generation : null);
                 return new DraftDto(d.Id, d.State, d.Topic, d.Title, d.Description, d.CreatedAt, image);
             })
             .ToList();

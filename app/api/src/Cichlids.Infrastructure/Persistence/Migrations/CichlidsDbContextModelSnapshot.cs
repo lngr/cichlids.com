@@ -961,6 +961,11 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("smallint")
                         .HasColumnName("taken_at_offset_minutes");
 
+                    b.Property<long>("VisibilityGeneration")
+                        .HasColumnType("bigint")
+                        .HasDefaultValue(0L)
+                        .HasColumnName("visibility_generation");
+
                     b.Property<int?>("Width")
                         .HasColumnType("integer")
                         .HasColumnName("width");
@@ -1963,25 +1968,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("light_duration");
 
-                    b.Property<int>("MediaMoveAttempts")
-                        .HasColumnType("integer")
-                        .HasDefaultValue(0)
-                        .HasColumnName("media_move_attempts");
-
-                    b.Property<DateTimeOffset?>("MediaMoveNextAttemptAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("media_move_next_attempt_at");
-
-                    b.Property<bool>("MediaMovePending")
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false)
-                        .HasColumnName("media_move_pending");
-
-                    b.Property<bool>("MediaPlacedPublic")
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(true)
-                        .HasColumnName("media_placed_public");
-
                     b.Property<string>("Notes")
                         .HasColumnType("text")
                         .HasColumnName("notes");
@@ -2085,10 +2071,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.HasIndex("LegacyId")
                         .IsUnique()
                         .HasDatabaseName("ix_tank_legacy_id");
-
-                    b.HasIndex("MediaMoveNextAttemptAt")
-                        .HasDatabaseName("ix_tank_media_move_next_attempt_at")
-                        .HasFilter("media_move_pending");
 
                     b.HasIndex("ProfileId")
                         .HasDatabaseName("ix_tank_profile_id");
@@ -2286,10 +2268,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.Property<DateTimeOffset?>("FinishedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("finished_at");
-
-                    b.Property<bool>("IsPrivate")
-                        .HasColumnType("boolean")
-                        .HasColumnName("is_private");
 
                     b.Property<DateTimeOffset?>("LockedUntil")
                         .HasColumnType("timestamp with time zone")

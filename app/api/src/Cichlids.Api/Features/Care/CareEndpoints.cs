@@ -68,6 +68,7 @@ public static partial class CareEndpoints
         var total = await query.CountAsync(ct);
         var entries = await CareEntryMapper.WithDetails(query.OrderByDescending(e => e.OccurredAt).ThenByDescending(e => e.Id).Skip(skip).Take(take))
             .ToListAsync(ct);
+        await mapper.PrepareAsync(entries, await access.ViewerProfileIdAsync(user, ct), ct);
         return TypedResults.Ok(new PagedResponse<CareEntryDto>(total, entries.Select(e => mapper.ToDto(e, stream.IsOwner)).ToList()));
     }
 
@@ -192,11 +193,10 @@ public static partial class CareEndpoints
     }
 
     internal static ProblemHttpResult Problem(string code) => ApiProblems.WithCode(
-        code is "care_not_found" or "care_photo_not_found" or "todo_not_found" or "water_change_not_found" ? 404 : code == "care_photo_limit_reached" ? 409 : 400,
+        code is "care_not_found" or "todo_not_found" or "water_change_not_found" ? 404 : code == "care_photo_limit_reached" ? 409 : 400,
         "Care request refused", code switch
         {
             "care_not_found" => "This care entry or tank is unavailable.",
-            "care_photo_not_found" => "This photo is unavailable or its link has expired.",
             "care_photo_invalid" => "Send one JPEG, PNG or WebP photo of up to 25 MB that can be decoded.",
             "care_photo_limit_reached" => "A care entry holds up to 6 photos.",
             "care_time_invalid" => "The time must not be more than two minutes in the future.",

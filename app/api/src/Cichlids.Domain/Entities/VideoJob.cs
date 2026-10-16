@@ -14,12 +14,6 @@ public class VideoJob
     public VideoJobStatus Status { get; set; }
 
     /// <summary>
-    /// Whether the renditions are written under the private prefix, as for the video of a care
-    /// entry, instead of under the public variant prefix.
-    /// </summary>
-    public bool IsPrivate { get; set; }
-
-    /// <summary>
     /// Number of times a worker has claimed the job.
     /// </summary>
     public int Attempts { get; set; }

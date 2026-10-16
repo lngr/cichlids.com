@@ -54,7 +54,7 @@ public class UploadResponsesExposeNoOriginalsTests(UploadsFixture fixture)
         var uploadJson = await upload.Content.ReadAsStringAsync();
         NoOriginalsAssert.Holds("upload", uploadJson, fixture.PublicBaseUrl);
         var draft = JsonSerializer.Deserialize<DraftDto>(uploadJson, TestJson.Options)!;
-        Assert.StartsWith($"{fixture.PublicBaseUrl}/variants/", draft.Image.Thumb);
+        Assert.StartsWith("/api/media/photos/", draft.Image.Thumb);
 
         var drafts = await ListDraftsAsync(fixture.Client, token);
         drafts.EnsureSuccessStatusCode();
@@ -64,6 +64,7 @@ public class UploadResponsesExposeNoOriginalsTests(UploadsFixture fixture)
             fixture.Client, token, draft.Id, new PublishPostRequest("Frontosa", null, "cichlids"));
         publish.EnsureSuccessStatusCode();
         var published = await ReadAsync<PictureDetailDto>(publish);
+        Assert.StartsWith($"{fixture.PublicBaseUrl}/variants/", published.Image!.Thumb);
 
         var detail = await fixture.Client.GetAsync($"/api/pictures/{published.Slug}");
         detail.EnsureSuccessStatusCode();

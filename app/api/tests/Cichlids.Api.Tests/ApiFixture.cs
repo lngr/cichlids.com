@@ -78,10 +78,10 @@ public sealed class ApiFixture : IAsyncLifetime
                     // dispatch drive it directly instead.
                     ["OutboxDispatcher:Enabled"] = "false",
                     // Tests run the media placement directly instead of racing the worker.
-                    ["TankMediaPlacement:Enabled"] = "false",
+                    ["MediaPlacement:Enabled"] = "false",
                     // The streak tests read dates in 2026; a dedicated test narrows the allowed difference to the server date.
                     ["Streaks:MaxClientDateSkewDays"] = "36500",
-                    ["TankMediaPlacement:ImmediateBudget"] = "00:00:00",
+                    ["MediaPlacement:ImmediateBudget"] = "00:00:00",
                 }));
 
             // Tokens are validated against the test signing key directly instead of an identity

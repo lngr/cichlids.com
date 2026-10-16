@@ -103,9 +103,9 @@ public sealed class UploadsFixture : IAsyncLifetime
                     ["ObjectStorage:ForcePathStyle"] = "true",
                     ["ObjectStorage:PublicBaseUrl"] = $"{serviceUrl}/{ObjectStoreBucket}",
                     ["OutboxDispatcher:Enabled"] = "false",
-                    // Tests run the media placement directly instead of racing the worker.
-                    ["TankMediaPlacement:Enabled"] = "false",
-                    ["TankMediaPlacement:ImmediateBudget"] = "00:00:00",
+                    // Tests run the media placement directly instead of racing the worker; uploads publish with a placement budget.
+                    ["MediaPlacement:Enabled"] = "false",
+                    ["MediaPlacement:ImmediateBudget"] = "00:00:10",
                     // Tests run cleanup passes directly instead of racing a timer.
                     ["DraftCleanup:Enabled"] = "false",
                     // Tests run the transcoding queue and the upload cleanup directly.

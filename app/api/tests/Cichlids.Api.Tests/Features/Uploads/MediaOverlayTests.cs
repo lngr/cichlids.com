@@ -47,7 +47,9 @@ public class MediaOverlayTests(UploadsFixture fixture)
             Assert.False(await fixture.ObjectStore.ExistsAsync(uploadedKey));
             Assert.False(await fixture.ObjectStore.ExistsAsync("golden/v1/media/" + uploadedKey));
         }
-        Assert.StartsWith(fixture.PublicBaseUrl + "/" + writePrefix, draft.Image!.Thumb);
+        Assert.StartsWith("/api/media/photos/", draft.Image!.Thumb);
+        using var served = await client.GetAsync(draft.Image.Thumb);
+        Assert.Equal(HttpStatusCode.OK, served.StatusCode);
 
         // A golden variant with the same logical key must survive draft removal.
         var shared = "golden/v1/media/" + keys[0];

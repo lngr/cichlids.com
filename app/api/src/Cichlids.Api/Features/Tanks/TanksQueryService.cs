@@ -2,6 +2,7 @@ using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Media;
 using Cichlids.Domain;
 using Cichlids.Domain.Enums;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,7 @@ namespace Cichlids.Api.Features.Tanks;
 /// ordered showcase/decoration/technic media sections. The owner of a tank always sees it. The photos of
 /// a tank are public URLs, or signed paths for photos that live under the private prefix.
 /// </summary>
-public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore objectStore, TankMediaUrlSigner? signer = null)
+public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore objectStore, MediaUrlSigner? signer = null)
 {
     private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore, signer);
 
@@ -59,12 +60,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             .ToDictionaryAsync(x => x.TankId, x => x.Count, cancellationToken);
 
         var mainMediaItemByTank = await ResolveMainMediaItemsAsync(page, cancellationToken);
-        var images = new Dictionary<long, ImageUrlsDto>();
-        foreach (var group in page.GroupBy(t => TankVisibilityRules.MediaBelongsInPublicStorage(t.ProfileVisibility)))
-        {
-            var groupIds = group.Where(t => mainMediaItemByTank.ContainsKey(t.Id)).Select(t => mainMediaItemByTank[t.Id]);
-            foreach (var (id, urls) in await LoadImagesAsync(groupIds, forcePrivate: !group.Key, cancellationToken)) images[id] = urls;
-        }
+        var images = await LoadImagesAsync(mainMediaItemByTank.Values, viewerProfileId, cancellationToken);
 
         var authors = await AuthorBatchLoader.LoadAsync(context, authorIds, cancellationToken);
 
@@ -113,8 +109,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
 
         IEnumerable<long> sectionMediaItemIds = mediaRows.Select(m => m.MediaItemId);
         var allMediaItemIds = sectionMediaItemIds.Concat(mainMediaItemByTank.Values).Distinct().ToList();
-        var images = await LoadImagesAsync(
-            allMediaItemIds, forcePrivate: !TankVisibilityRules.MediaBelongsInPublicStorage(tank.ProfileVisibility), cancellationToken);
+        var images = await LoadImagesAsync(allMediaItemIds, viewerProfileId, cancellationToken);
 
         var sections = new TankSectionsDto(
             BuildSection(mediaRows, MediaLinkRole.Showcase, images),
@@ -201,7 +196,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
     }
 
     private async Task<Dictionary<long, ImageUrlsDto>> LoadImagesAsync(
-        IEnumerable<long> mediaItemIds, bool forcePrivate, CancellationToken cancellationToken)
+        IEnumerable<long> mediaItemIds, long? viewerProfileId, CancellationToken cancellationToken)
     {
         var ids = mediaItemIds.Distinct().ToList();
         if (ids.Count == 0)
@@ -214,7 +209,9 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
                 .ToListAsync(cancellationToken))
             .ToLookup(v => v.MediaItemId);
 
-        return ids.ToDictionary(id => id, id => _mediaUrlBuilder.Build(variantsByMediaItem[id], allowSigned: true, forcePrivate));
+        var anonymousVisible = await context.AnonymousVisibleMediaItemIdsAsync(ids, DateTimeOffset.UtcNow, cancellationToken);
+        var generations = await context.VisibleMediaGenerationsAsync(ids, viewerProfileId, DateTimeOffset.UtcNow, cancellationToken);
+        return ids.ToDictionary(id => id, id => _mediaUrlBuilder.Build(variantsByMediaItem[id], allowSigned: true, anonymousVisible.Contains(id), generations.TryGetValue(id, out var generation) ? generation : null));
     }
 
     private async Task<List<InhabitantDto>> LoadInhabitantsAsync(long tankId, CancellationToken cancellationToken)

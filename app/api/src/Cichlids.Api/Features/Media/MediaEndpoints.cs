@@ -1,5 +1,4 @@
 using Cichlids.Api.Features.Common;
-using Cichlids.Api.Features.Media;
 using Cichlids.Api.Features.Videos;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Media;
@@ -8,33 +7,36 @@ using Cichlids.Infrastructure.Storage;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cichlids.Api.Features.Tanks;
+namespace Cichlids.Api.Features.Media;
 
 /// <summary>
-/// Serves the media of tanks whose files live under the private storage prefix. The token in the path
-/// is the credential: it is issued only to a viewer who sees the tank, names one photo variant or one
-/// video and expires. A token resolves only while the media item has a link to a tank, so removed
-/// media stop resolving.
+/// Serves the private photos and videos of every context. The token in the path is the credential: the
+/// API issues it only to a viewer who sees the media item. The route checks the signature, the expiry and
+/// that the visibility generation in the token equals the current one of the media item, so a link ends
+/// with the next change that can alter who sees the item. A token names one photo variant or one video;
+/// every request, including the segments under a playlist token, makes the same check, and a deleted media
+/// item or variant does not resolve.
 /// </summary>
-public static class TankMediaEndpoints
+public static class MediaEndpoints
 {
-    public const string NotFoundCode = "tank_media_not_found";
+    public const string NotFoundCode = "media_not_found";
 
-    public static IEndpointRouteBuilder MapTankMediaEndpoints(this IEndpointRouteBuilder app)
+    public static IEndpointRouteBuilder MapMediaEndpoints(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/api/tank-media/{token}", ServePhotoAsync).WithName("GetTankMedia").WithTags("Tanks").AllowAnonymous()
+        app.MapGet("/api/media/photos/{token}", ServePhotoAsync).WithName("GetMediaPhoto").WithTags("Media").AllowAnonymous()
             .Produces(StatusCodes.Status200OK, contentType: "image/jpeg").ProducesProblem(StatusCodes.Status404NotFound);
-        app.MapGet("/api/tank-videos/{token}/{**path}", ServeVideoAsync).WithName("GetTankVideoFile").WithTags("Tanks").AllowAnonymous()
+        app.MapGet("/api/media/videos/{token}/{**path}", ServeVideoAsync).WithName("GetMediaVideoFile").WithTags("Media").AllowAnonymous()
             .Produces(StatusCodes.Status200OK, contentType: "application/vnd.apple.mpegurl").ProducesProblem(StatusCodes.Status404NotFound);
         return app;
     }
 
     private static async Task<Results<FileStreamHttpResult, ProblemHttpResult>> ServePhotoAsync(
-        string token, TankMediaUrlSigner signer, CichlidsDbContext db, IObjectStore store, HttpContext http, CancellationToken ct)
+        string token, MediaUrlSigner signer, CichlidsDbContext db, IObjectStore store, HttpContext http, CancellationToken ct)
     {
-        if (signer.TryReadPhoto(token) is not { } variantId) return NotFound();
+        if (signer.TryReadPhoto(token) is not var (variantId, generation)) return NotFound();
         var key = await db.MediaVariants.AsNoTracking()
-            .Where(v => v.Id == variantId && db.MediaLinks.Any(l => l.MediaItemId == v.MediaItemId && l.TankId != null && l.Role != MediaLinkRole.Video))
+            .Where(v => v.Id == variantId && db.MediaItems.Any(m => m.Id == v.MediaItemId && m.Kind == MediaKind.Photo
+                && m.VisibilityGeneration == generation))
             .Select(v => v.StorageKey).SingleOrDefaultAsync(ct);
         var stream = key is null ? null : await store.GetAsync(key, ct);
         if (stream is null) return NotFound();
@@ -44,12 +46,12 @@ public static class TankMediaEndpoints
     }
 
     private static async Task<Results<FileStreamHttpResult, ProblemHttpResult>> ServeVideoAsync(
-        string token, string path, TankMediaUrlSigner signer, CichlidsDbContext db, IObjectStore store, HttpContext http, CancellationToken ct)
+        string token, string path, MediaUrlSigner signer, CichlidsDbContext db, IObjectStore store, HttpContext http, CancellationToken ct)
     {
-        if (signer.TryReadVideo(token) is not { } mediaItemId || !MediaStorageKeys.IsHlsFile(path)) return NotFound();
+        if (signer.TryReadVideo(token) is not var (mediaItemId, generation) || !MediaStorageKeys.IsHlsFile(path)) return NotFound();
         var master = await db.MediaVariants.AsNoTracking()
             .Where(v => v.MediaItemId == mediaItemId && v.Label == VideoStorage.HlsLabel
-                && db.MediaLinks.Any(l => l.MediaItemId == mediaItemId && l.TankId != null && l.Role == MediaLinkRole.Video))
+                && db.MediaItems.Any(m => m.Id == mediaItemId && m.VisibilityGeneration == generation))
             .Select(v => v.StorageKey).SingleOrDefaultAsync(ct);
         var stream = master is null ? null : await store.GetAsync(master[..(master.LastIndexOf('/') + 1)] + path, ct);
         if (stream is null) return NotFound();

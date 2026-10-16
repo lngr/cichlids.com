@@ -73,6 +73,13 @@ public class MediaItem
     public bool PlacedPublic { get; set; } = true;
 
     /// <summary>
+    /// A value that changes with every change that can alter who sees the item (a link created or removed,
+    /// a visibility change of a context). Signed links carry the value they were issued with and stop
+    /// working when it differs.
+    /// </summary>
+    public long VisibilityGeneration { get; set; }
+
+    /// <summary>
     /// Whether the placement of the item is due: a change happened that can alter whether anonymous
     /// viewers see the item.
     /// </summary>

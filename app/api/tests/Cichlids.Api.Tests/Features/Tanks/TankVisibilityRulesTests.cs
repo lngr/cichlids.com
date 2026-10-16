@@ -76,14 +76,7 @@ public sealed class TankVisibilityRulesTests
         var tank = new Tank();
         Assert.Equal(Public, tank.ProfileVisibility);
         Assert.Equal(Public, tank.StreamVisibility);
-        Assert.True(tank.MediaPlacedPublic);
     }
-
-    [Theory]
-    [InlineData(Public, true)]
-    [InlineData(Private, false)]
-    public void MediaIsPublicOnlyForAPublicProfile(TankVisibility profile, bool expected) =>
-        Assert.Equal(expected, TankVisibilityRules.MediaBelongsInPublicStorage(profile));
 
     [Fact]
     public void ProfileVisibleTo_SelectsPublicTanksAndTheOwnTanksOfTheViewer()

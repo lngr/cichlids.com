@@ -40,6 +40,24 @@ public static class MediaVisibility
     }
 
     /// <summary>
+    /// The visibility generation of each media item among the given ids that the viewer sees. The visibility
+    /// check and the read of the generation are one statement, so a generation is never newer than the state
+    /// the check saw. Callers issue a signed link only from this generation.
+    /// </summary>
+    public static async Task<Dictionary<long, long>> VisibleMediaGenerationsAsync(
+        this CichlidsDbContext db, IReadOnlyCollection<long> mediaItemIds, long? viewerProfileId, DateTimeOffset now,
+        CancellationToken cancellationToken = default)
+    {
+        if (mediaItemIds.Count == 0)
+        {
+            return [];
+        }
+
+        return await db.VisibleMediaItems(viewerProfileId, now).AsNoTracking()
+            .Where(m => mediaItemIds.Contains(m.Id)).ToDictionaryAsync(m => m.Id, m => m.VisibilityGeneration, cancellationToken);
+    }
+
+    /// <summary>
     /// The media items among the given ids that anonymous viewers see, which are the items that belong in
     /// the public storage area.
     /// </summary>

@@ -208,7 +208,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         var mediaItem = await db.MediaItems.SingleAsync(m => m.Id == postMedia.MediaItemId);
         Assert.Equal(profileId, mediaItem.OwnerProfileId);
         Assert.Equal(MediaKind.Photo, mediaItem.Kind);
-        Assert.StartsWith($"originals/uploads/{profileId}/", mediaItem.StorageKey);
+        Assert.StartsWith($"private/gallery/{profileId}/", mediaItem.StorageKey);
         Assert.EndsWith(".jpg", mediaItem.StorageKey);
         Assert.Equal("reef.jpg", mediaItem.OriginalFilename);
         Assert.Equal("image/jpeg", mediaItem.ContentType);
@@ -224,7 +224,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
 
         foreach (var variant in variants)
         {
-            Assert.Equal($"variants/{variant.Label}/{mediaItem.StorageKey}.jpg", variant.StorageKey);
+            Assert.Equal($"private/variants/{variant.Label}/{mediaItem.StorageKey}.jpg", variant.StorageKey);
             Assert.Equal(variant.ByteSize, await fixture.ObjectStore.GetSizeAsync(variant.StorageKey));
         }
     }
@@ -332,19 +332,32 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     }
 
     [Fact]
-    public async Task Upload_StoresAnOriginalAnonymousRequestsCannotReadAndVariantsTheyCan()
+    public async Task Upload_StoresTheFilesOfADraftPrivatelyAndPublishingMovesTheVariantsIntoThePublicArea()
     {
-        var draft = await UploadDraftAsync(fixture.Client, NewToken(), PhotoFixtures.PhoneJpeg(1000, 700));
+        var token = NewToken();
+        var draft = await UploadDraftAsync(fixture.Client, token, PhotoFixtures.PhoneJpeg(1000, 700));
 
         await using var db = fixture.CreateDbContext();
         var mediaItem = await LoadMediaItemAsync(db, draft.Id);
         var medium = await db.MediaVariants.SingleAsync(v => v.MediaItemId == mediaItem.Id && v.Label == "medium");
-
         using var anonymous = new HttpClient();
+        using var originalOfDraft = await anonymous.GetAsync($"{fixture.PublicBaseUrl}/{mediaItem.StorageKey}");
+        using var variantOfDraft = await anonymous.GetAsync($"{fixture.PublicBaseUrl}/{medium.StorageKey}");
+        Assert.Equal(HttpStatusCode.Forbidden, originalOfDraft.StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, variantOfDraft.StatusCode);
+
+        using var published = await PublishAsync(fixture.Client, token, draft.Id, new PublishPostRequest("Reef", null, "cichlids"));
+        published.EnsureSuccessStatusCode();
+
+        await using var after = fixture.CreateDbContext();
+        var publicMedium = await after.MediaVariants.AsNoTracking().SingleAsync(v => v.MediaItemId == mediaItem.Id && v.Label == "medium");
+        Assert.Equal($"variants/medium/{mediaItem.StorageKey}.jpg", publicMedium.StorageKey);
         using var original = await anonymous.GetAsync($"{fixture.PublicBaseUrl}/{mediaItem.StorageKey}");
-        using var variant = await anonymous.GetAsync($"{fixture.PublicBaseUrl}/{medium.StorageKey}");
+        using var variant = await anonymous.GetAsync($"{fixture.PublicBaseUrl}/{publicMedium.StorageKey}");
+        using var oldVariant = await anonymous.GetAsync($"{fixture.PublicBaseUrl}/{medium.StorageKey}");
         Assert.Equal(HttpStatusCode.Forbidden, original.StatusCode);
         Assert.Equal(HttpStatusCode.OK, variant.StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, oldVariant.StatusCode);
     }
 
     [Fact]

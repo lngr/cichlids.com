@@ -7,8 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Infrastructure.Tests.Persistence;
 
 /// <summary>
-/// A link that is created or removed marks its media item for placement in the transaction that saves
-/// the link change.
+/// A link that is created or removed marks its media item for placement in the transaction of the change.
 /// </summary>
 [Collection(PostgresCollection.Name)]
 public sealed class MediaPlacementMarksTests(PostgresFixture fixture)
@@ -74,21 +73,6 @@ public sealed class MediaPlacementMarksTests(PostgresFixture fixture)
         db.MediaLinks.Remove(link);
         await db.SaveChangesAsync();
 
-        Assert.True((await StoredAsync(item)).PlacementPending);
-    }
-
-    [Fact]
-    public async Task GivenATrackedItem_WhenALinkIsAddedThroughTheItem_ThenTheTrackedItemIsMarked()
-    {
-        var (item, tank) = await SeedAsync();
-        await SettleAsync(item);
-        await using var db = fixture.CreateContext();
-        var tracked = await db.MediaItems.SingleAsync(m => m.Id == item);
-
-        db.MediaLinks.Add(new MediaLink { ContextType = MediaLinkContext.Tank, TankId = tank, MediaItem = tracked, Role = MediaLinkRole.Showcase });
-        await db.SaveChangesAsync();
-
-        Assert.True(tracked.PlacementPending);
         Assert.True((await StoredAsync(item)).PlacementPending);
     }
 

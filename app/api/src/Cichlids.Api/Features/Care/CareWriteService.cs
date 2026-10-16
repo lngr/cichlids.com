@@ -3,13 +3,14 @@ using Cichlids.Api.Features.Uploads;
 using Cichlids.Domain;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Api.Features.Care;
 
 public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clock, CareEntryMapper mapper, StoredObjectDeleter deleter,
-    Videos.VideoRemovalService? videoRemoval = null)
+    Videos.VideoRemovalService? videoRemoval = null, Media.MediaPlacementTrigger? placement = null)
 {
     private const int MaxMeasurementValues = 10;
     private const int MaxNoteLength = 2000;
@@ -96,6 +97,7 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
         var entry = await CareEntryMapper.WithDetails(context.CareEntries)
             .SingleOrDefaultAsync(e => e.Id == id && e.TankId == tankId && e.AuthorProfileId == profileId, ct);
         if (entry is null) return (null, "care_not_found");
+        var onlyMeChanged = false;
         if (request is not null)
         {
             var noteChange = request.Note is null ? null : NormalizeNote(request.Note);
@@ -124,9 +126,14 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
                 }
                 if (request.Note is not null) entry.Note = noteChange;
             }
-            if (request.OnlyMe is { } onlyMe) entry.OnlyMe = onlyMe;
+            if (request.OnlyMe is { } onlyMe)
+            {
+                onlyMeChanged = onlyMe != entry.OnlyMe;
+                entry.OnlyMe = onlyMe;
+            }
             if (request.OccurredAt is { } occurredAt) entry.OccurredAt = AtMicrosecondPrecision(occurredAt.ToUniversalTime());
         }
+        await mapper.PrepareAsync([entry], profileId, ct);
         var dto = mapper.ToDto(entry);
         CareEvents.Add(context, request is null ? "care.deleted" : "care.updated", entry, clock.GetUtcNow());
         var storedKeys = new List<string>();
@@ -148,12 +155,18 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
         }
         await context.SaveChangesAsync(ct);
         await transaction.CommitAsync(ct);
+        if (onlyMeChanged && placement is not null)
+        {
+            await placement.PlaceNowAsync(await context.MediaItemIdsOfCareEntry(entry.Id).ToListAsync(ct));
+        }
+
         await deleter.DeleteAsync(storedKeys);
         if (videoRemoval is not null)
         {
             await videoRemoval.DeleteObjectsAsync(removedVideos);
         }
 
+        if (request is not null) await mapper.PrepareAsync([entry], profileId, ct);
         return (request is null ? dto : mapper.ToDto(entry), null);
     }
 

@@ -26,7 +26,7 @@ public sealed class VideoRemovalService(
         var keys = new List<string>();
         foreach (var video in videos)
         {
-            keys.AddRange(await VideoStorage.KeysOfAsync(store, video, VideoStorage.IsPrivate(video), CancellationToken.None));
+            keys.AddRange(await VideoStorage.KeysOfAsync(store, video, CancellationToken.None));
         }
 
         await deleter.DeleteAsync(keys);
@@ -97,6 +97,8 @@ public sealed class VideoRemovalService(
         }
 
         await DeleteObjectsAsync([item]);
-        return mapper.ToDto(await CareEntryMapper.WithDetails(context.CareEntries.AsNoTracking()).SingleAsync(e => e.Id == entryId, cancellationToken));
+        var remaining = await CareEntryMapper.WithDetails(context.CareEntries.AsNoTracking()).SingleAsync(e => e.Id == entryId, cancellationToken);
+        await mapper.PrepareAsync([remaining], profileId, cancellationToken);
+        return mapper.ToDto(remaining);
     }
 }

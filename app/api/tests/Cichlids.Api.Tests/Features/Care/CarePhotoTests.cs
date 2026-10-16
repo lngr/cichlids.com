@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using Cichlids.Api.Features.Media;
 using Cichlids.Api.Tests.Features.Uploads;
 using Cichlids.Tests.Shared;
 using Microsoft.AspNetCore.DataProtection;
@@ -27,7 +28,7 @@ public sealed class CarePhotoTests(UploadsFixture fixture)
         Assert.Equal(1000, photo.GetProperty("height").GetInt32());
         var urls = photo.GetProperty("urls");
         foreach (var label in new[] { "thumb", "small", "medium", "large" })
-            Assert.StartsWith("/api/care-photos/", urls.GetProperty(label).GetString());
+            Assert.StartsWith("/api/media/photos/", urls.GetProperty(label).GetString());
         using var list = await SendAsync(fixture.Client, HttpMethod.Get, $"/api/tanks/{tank}/care", token);
         Assert.Single((await BodyAsync(list)).GetProperty("items")[0].GetProperty("photos").EnumerateArray());
 
@@ -107,24 +108,21 @@ public sealed class CarePhotoTests(UploadsFixture fixture)
         using var added = await AddPhotoAsync(token, tank, id, Jpeg(400, 300));
         var url = (await BodyAsync(added)).GetProperty("photos")[0].GetProperty("urls").GetProperty("thumb").GetString()!;
         using var tampered = await fixture.Client.GetAsync(url[..^4] + "AAAA");
-        await AssertProblemAsync(tampered, HttpStatusCode.NotFound, "care_photo_not_found");
-        using var garbage = await fixture.Client.GetAsync("/api/care-photos/not-a-token");
-        await AssertProblemAsync(garbage, HttpStatusCode.NotFound, "care_photo_not_found");
+        await AssertProblemAsync(tampered, HttpStatusCode.NotFound, "media_not_found");
+        using var garbage = await fixture.Client.GetAsync("/api/media/photos/not-a-token");
+        await AssertProblemAsync(garbage, HttpStatusCode.NotFound, "media_not_found");
 
         var protector = fixture.Services.GetRequiredService<IDataProtectionProvider>()
-            .CreateProtector("Cichlids.CarePhotoUrl").ToTimeLimitedDataProtector();
+            .CreateProtector(MediaUrlSigner.PhotoPurpose).ToTimeLimitedDataProtector();
         await using var db = fixture.CreateDbContext();
         var variantId = await db.MediaVariants.Where(v => v.StorageKey.StartsWith("private/")).OrderByDescending(v => v.Id).Select(v => v.Id).FirstAsync();
         var expired = protector.Protect(variantId.ToString(), DateTimeOffset.UtcNow.AddMinutes(-1));
-        using var late = await fixture.Client.GetAsync($"/api/care-photos/{expired}");
-        await AssertProblemAsync(late, HttpStatusCode.NotFound, "care_photo_not_found");
+        using var late = await fixture.Client.GetAsync($"/api/media/photos/{expired}");
+        await AssertProblemAsync(late, HttpStatusCode.NotFound, "media_not_found");
 
-        var (publicToken, _) = NewCaller();
-        using var draft = await UploadAsync(fixture.Client, publicToken, Jpeg(300, 200), "image/jpeg");
-        var publicVariant = await db.MediaVariants.Where(v => v.StorageKey.StartsWith("variants/")).OrderByDescending(v => v.Id).Select(v => v.Id).FirstAsync();
-        var foreign = protector.Protect(publicVariant.ToString(), TimeSpan.FromMinutes(5));
-        using var notCare = await fixture.Client.GetAsync($"/api/care-photos/{foreign}");
-        await AssertProblemAsync(notCare, HttpStatusCode.NotFound, "care_photo_not_found");
+        var unknown = protector.Protect("9223372036854775807", TimeSpan.FromMinutes(5));
+        using var missing = await fixture.Client.GetAsync($"/api/media/photos/{unknown}");
+        await AssertProblemAsync(missing, HttpStatusCode.NotFound, "media_not_found");
     }
 
     [Fact]
@@ -189,7 +187,7 @@ public sealed class CarePhotoTests(UploadsFixture fixture)
         Assert.Equal(1, (await BodyAsync(removed)).GetProperty("photos").GetArrayLength());
         Assert.Equal(1, await db.MediaItems.CountAsync(m => m.OwnerProfileId == profileId));
         using var gone = await fixture.Client.GetAsync(photos[0].GetProperty("urls").GetProperty("thumb").GetString());
-        await AssertProblemAsync(gone, HttpStatusCode.NotFound, "care_photo_not_found");
+        await AssertProblemAsync(gone, HttpStatusCode.NotFound, "media_not_found");
         using var missing = await SendAsync(fixture.Client, HttpMethod.Delete, $"/api/tanks/{tank}/care/{id}/photos/{photos[0].GetProperty("id").GetInt64()}", token);
         await AssertProblemAsync(missing, HttpStatusCode.NotFound, "care_not_found");
 

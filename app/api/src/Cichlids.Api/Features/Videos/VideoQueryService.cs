@@ -12,13 +12,14 @@ namespace Cichlids.Api.Features.Videos;
 
 /// <summary>
 /// Reads the videos of a tank and builds the representation of a video: public URLs of the HLS
-/// playlist and the poster for a tank video, signed paths for the video of a care entry and for the
-/// video of a tank whose files live under the private prefix. A video is ready when its job is done,
-/// failed when its job failed and processing otherwise; a ready video whose files are private and
-/// whose caller allows no signed path is processing. The kind of URL follows the tank: a video of a tank that
-/// is not public (forcePrivate) never gets a public URL, even while its files still lie under the public prefix.
+/// playlist and the poster for a video that anonymous viewers see and whose files lie in the public
+/// area, signed paths for every other video. A video is ready when its job is done, failed when its job
+/// failed and processing otherwise; a ready video that has no public URL and whose caller allows no
+/// signed path is processing. The visibility rule decides the kind of URL: a video that anonymous viewers
+/// do not see (anonymousVisible false) never gets a public URL, even while its files lie under the
+/// public prefix.
 /// </summary>
-public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore store, TankMediaUrlSigner? signer = null)
+public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore store, MediaUrlSigner? signer = null)
 {
     /// <summary>
     /// Loads the media items of a video query together with their variants and jobs.
@@ -53,16 +54,19 @@ public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore st
         var ids = context.MediaLinks.Where(l => l.TankId == tankId && l.Role == MediaLinkRole.Video).Select(l => l.MediaItemId);
         var items = await WithDetails(context.MediaItems.AsNoTracking().Where(m => ids.Contains(m.Id) && m.Kind == MediaKind.Video))
             .OrderByDescending(m => m.CreatedAt).ThenByDescending(m => m.Id).ToListAsync(cancellationToken);
-        var forcePrivate = !TankVisibilityRules.MediaBelongsInPublicStorage(tank.ProfileVisibility);
-        var videos = items.Select(i => ToPublicDto(i, store, signer, allowSigned: true, forcePrivate));
+        var itemIds = items.Select(i => i.Id).ToList();
+        var anonymousVisible = await context.AnonymousVisibleMediaItemIdsAsync(itemIds, now, cancellationToken);
+        var generations = await context.VisibleMediaGenerationsAsync(itemIds, viewerProfileId, now, cancellationToken);
+        var videos = items.Select(i => ToPublicDto(i, store, signer, allowSigned: true, anonymousVisible.Contains(i.Id), generations.GetValueOrDefault(i.Id)));
         return (isOwner ? videos : videos.Where(v => v.State == VideoState.Ready)).ToList();
     }
 
     /// <summary>
-    /// The representation of a tank video, with public URLs once it is ready.
+    /// The representation of a video, with public URLs once it is ready and anonymous viewers see it, and
+    /// with signed paths otherwise when the caller allows them.
     /// </summary>
     public static VideoDto ToPublicDto(
-        MediaItem item, IObjectStore store, TankMediaUrlSigner? signer = null, bool allowSigned = false, bool forcePrivate = false)
+        MediaItem item, IObjectStore store, MediaUrlSigner? signer, bool allowSigned, bool anonymousVisible, long? issuableGeneration)
     {
         var state = StateOf(item);
         var hls = Variant(item, VideoStorage.HlsLabel);
@@ -73,10 +77,10 @@ public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore st
             return Build(item, state, null, null);
         }
 
-        if (forcePrivate || VideoStorage.IsPrivate(item))
+        if (!anonymousVisible || VideoStorage.IsPrivate(item))
         {
-            return allowSigned && signer is not null
-                ? Build(item, state, signer.VideoPathFor(item.Id, PosterFile), signer.VideoPathFor(item.Id, MasterFile))
+            return allowSigned && signer is not null && issuableGeneration is { } generation
+                ? Build(item, state, signer.VideoPathFor(item.Id, generation, PosterFile), signer.VideoPathFor(item.Id, generation, MasterFile))
                 : Build(item, VideoState.Processing, null, null);
         }
 
@@ -84,13 +88,19 @@ public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore st
     }
 
     /// <summary>
-    /// The representation of a care video, with signed paths once it is ready.
+    /// The representation of a video with signed paths once it is ready and a generation was read with the
+    /// visibility check of the viewer; without one a ready video is processing.
     /// </summary>
-    public static VideoDto ToCareDto(MediaItem item, CareVideoUrlSigner signer)
+    public static VideoDto ToSignedDto(MediaItem item, MediaUrlSigner signer, long? issuableGeneration)
     {
         var state = StateOf(item);
         var ready = state == VideoState.Ready && Variant(item, VideoStorage.HlsLabel) is not null;
-        return Build(item, state, ready ? signer.PathFor(item.Id, PosterFile) : null, ready ? signer.PathFor(item.Id, MasterFile) : null);
+        if (ready && issuableGeneration is not { } generation)
+        {
+            return Build(item, VideoState.Processing, null, null);
+        }
+
+        return Build(item, state, ready ? signer.VideoPathFor(item.Id, issuableGeneration!.Value, PosterFile) : null, ready ? signer.VideoPathFor(item.Id, issuableGeneration!.Value, MasterFile) : null);
     }
 
     private const string MasterFile = HlsTranscoder.MasterPlaylistName;

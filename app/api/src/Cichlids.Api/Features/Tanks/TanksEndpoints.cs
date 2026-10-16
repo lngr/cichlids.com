@@ -2,6 +2,10 @@ using System.Security.Claims;
 using Cichlids.Api.Features.Auth;
 using Cichlids.Api.Features.Comments;
 using Cichlids.Api.Features.Common;
+using Cichlids.Api.Features.Media;
+using Cichlids.Infrastructure.Media;
+using Cichlids.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Cichlids.Domain.Enums;
 using Microsoft.AspNetCore.Http.HttpResults;
 
@@ -32,7 +36,6 @@ public static class TanksEndpoints
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
         app.MapTankSeriesPhotoEndpoints();
-        app.MapTankMediaEndpoints();
 
         return app;
     }
@@ -93,15 +96,14 @@ public static class TanksEndpoints
 
     private static async Task<Results<Ok<TankVisibilityDto>, ProblemHttpResult>> SetVisibilityAsync(
         long id, UpdateTankVisibilityRequest request, CurrentProfileService currentProfileService, TanksWriteService writeService,
-        TankMediaPlacementService placement, Microsoft.Extensions.Options.IOptions<TankMediaPlacementOptions> placementOptions,
-        ClaimsPrincipal user, CancellationToken cancellationToken)
+        MediaPlacementTrigger placement, CichlidsDbContext db, ClaimsPrincipal user, CancellationToken cancellationToken)
     {
         var profile = await currentProfileService.ResolveAsync(user, cancellationToken);
         var (visibility, error) = await writeService.SetVisibilityAsync(id, profile.Id, request, cancellationToken);
-        if (error is null && visibility!.Profile != TankVisibility.Public && placementOptions.Value.ImmediateBudget > TimeSpan.Zero)
+        if (error is null)
         {
-            // The media of a tank that turned private leave the public prefix before the answer, within the budget.
-            await placement.PlaceNowAsync(id, placementOptions.Value.ImmediateBudget);
+            // The media items whose area changes are placed before the answer, within the budget.
+            await placement.PlaceNowAsync(await db.MediaItemIdsOfTank(id).ToListAsync(cancellationToken));
         }
 
         return error switch

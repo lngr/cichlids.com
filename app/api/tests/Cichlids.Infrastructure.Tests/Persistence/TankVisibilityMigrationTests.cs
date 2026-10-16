@@ -32,8 +32,6 @@ public sealed class TankVisibilityMigrationTests(PostgresFixture fixture)
         {
             Assert.Equal(TankVisibility.Public, t.ProfileVisibility);
             Assert.Equal(TankVisibility.Public, t.StreamVisibility);
-            Assert.True(t.MediaPlacedPublic);
-            Assert.False(t.MediaMovePending);
         });
         Assert.Empty(await context.TankVisibilityConsents.ToListAsync());
         Assert.False((await context.CareEntries.AsNoTracking().SingleAsync()).OnlyMe);

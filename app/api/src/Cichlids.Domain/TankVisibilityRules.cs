@@ -76,13 +76,6 @@ public static class TankVisibilityRules
         viewer == TankViewer.Member && CanSeeProfile(viewer, profile);
 
     /// <summary>
-    /// Whether the stored media of a tank (photos, time-lapse photos, videos) lives under the public
-    /// storage prefixes. Only a public profile has public media URLs; every other level keeps its media
-    /// under the private prefix.
-    /// </summary>
-    public static bool MediaBelongsInPublicStorage(TankVisibility profile) => profile == TankVisibility.Public;
-
-    /// <summary>
     /// The tanks whose profile the viewer sees. A null viewer is a caller without an account.
     /// </summary>
     public static Expression<Func<Tank, bool>> ProfileVisibleTo(long? viewerProfileId) =>

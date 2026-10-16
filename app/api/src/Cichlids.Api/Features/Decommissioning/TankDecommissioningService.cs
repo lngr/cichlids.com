@@ -21,12 +21,13 @@ namespace Cichlids.Api.Features.Decommissioning;
 /// state of the tank, and reads the operating time with the history of the decommissionings. A photo goes
 /// through the upload pipeline and is linked to the tank in the decommission or recommission role;
 /// it counts when it comes from the camera of the app, its capture time lies near the moment the server
-/// receives it and the same picture has not served as proof before. The row of the decommissioning, the
-/// media link and the outbox event commit in one transaction.
+/// receives it and the same picture has not served as proof before. The photo is visible like the care
+/// history of the tank. The row of the decommissioning, the media link and the outbox event commit in one
+/// transaction.
 /// </summary>
 public sealed class TankDecommissioningService(
     CichlidsDbContext context, UploadsWriteService uploads, StoredObjectDeleter deleter, IObjectStore objectStore, TimeProvider clock,
-    IOptions<WaterChangeOptions> waterChange, TankMediaUrlSigner? signer = null)
+    IOptions<WaterChangeOptions> waterChange, MediaUrlSigner? signer = null)
 {
     public const string NotFoundCode = "tank_not_found";
     public const string PhotoInvalidCode = "decommission_photo_invalid";
@@ -46,10 +47,10 @@ public sealed class TankDecommissioningService(
     public async Task<(TankOperationDto? Operation, string? Error)> StartAsync(long tankId, long profileId, IFormFile? file, bool capturedInApp,
         string? scopeName, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
     {
-        if (await OwnLevelAsync(tankId, profileId, ct) is not { } level) return (null, NotFoundCode);
+        if (await OwnHistoryPublicAsync(tankId, profileId, ct) is not { } historyPublic) return (null, NotFoundCode);
         if (!SnakeCaseEnum.TryParse<DecommissionScope>(scopeName, out var scope)) return (null, ScopeInvalidCode);
         if (await context.TankDecommissionings.AnyAsync(d => d.TankId == tankId && d.EndedAt == null, ct)) return (null, ActiveCode);
-        var (stored, error) = await StoreProofAsync(profileId, file, capturedInApp, level, ct);
+        var (stored, error) = await StoreProofAsync(profileId, file, capturedInApp, historyPublic, ct);
         if (stored is null) return (null, error);
 
         try
@@ -67,7 +68,7 @@ public sealed class TankDecommissioningService(
             }
 
             var now = clock.GetUtcNow();
-            await AttachAsync(tankId, stored, TankMediaSection.Decommission, TankVisibilityRules.MediaBelongsInPublicStorage(level), now, ct);
+            await AttachAsync(tankId, stored, TankMediaSection.Decommission, ct);
             var row = new TankDecommissioning
             {
                 TankId = tankId, Scope = scope, StartedAt = now, StartDate = today, StartMediaItemId = stored.Item.Id,
@@ -89,7 +90,7 @@ public sealed class TankDecommissioningService(
             throw;
         }
 
-        return (await ReadAsync(tankId, level, today, utcOffsetMinutes, ct), null);
+        return (await ReadAsync(tankId, profileId, today, utcOffsetMinutes, ct), null);
     }
 
     /// <summary>
@@ -99,9 +100,9 @@ public sealed class TankDecommissioningService(
     public async Task<(TankOperationDto? Operation, string? Error)> EndAsync(long tankId, long profileId, IFormFile? file, bool capturedInApp,
         DateOnly today, int utcOffsetMinutes, CancellationToken ct)
     {
-        if (await OwnLevelAsync(tankId, profileId, ct) is not { } level) return (null, NotFoundCode);
+        if (await OwnHistoryPublicAsync(tankId, profileId, ct) is not { } historyPublic) return (null, NotFoundCode);
         if (!await context.TankDecommissionings.AnyAsync(d => d.TankId == tankId && d.EndedAt == null, ct)) return (null, NotActiveCode);
-        var (stored, error) = await StoreProofAsync(profileId, file, capturedInApp, level, ct);
+        var (stored, error) = await StoreProofAsync(profileId, file, capturedInApp, historyPublic, ct);
         if (stored is null) return (null, error);
 
         try
@@ -125,7 +126,7 @@ public sealed class TankDecommissioningService(
             }
 
             var now = clock.GetUtcNow();
-            await AttachAsync(tankId, stored, TankMediaSection.Recommission, TankVisibilityRules.MediaBelongsInPublicStorage(level), now, ct);
+            await AttachAsync(tankId, stored, TankMediaSection.Recommission, ct);
             row.EndedAt = now;
             row.EndDate = today;
             row.EndMediaItemId = stored.Item.Id;
@@ -144,14 +145,14 @@ public sealed class TankDecommissioningService(
             throw;
         }
 
-        return (await ReadAsync(tankId, level, today, utcOffsetMinutes, ct), null);
+        return (await ReadAsync(tankId, profileId, today, utcOffsetMinutes, ct), null);
     }
 
     /// <summary>
-    /// The operating time and the decommissionings of a tank on a local date, with the photo URLs placed
-    /// for the profile level of the tank.
+    /// The operating time and the decommissionings of a tank on a local date, with the photo URLs of the
+    /// proof photos: public URLs for photos that anonymous viewers see and signed paths otherwise.
     /// </summary>
-    public async Task<TankOperationDto> ReadAsync(long tankId, TankVisibility profileLevel, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
+    public async Task<TankOperationDto> ReadAsync(long tankId, long? viewerProfileId, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
     {
         var created = await context.Tanks.AsNoTracking().Where(t => t.Id == tankId).Select(t => t.CreatedAt).SingleAsync(ct);
         var rows = await context.TankDecommissionings.AsNoTracking().Where(d => d.TankId == tankId)
@@ -161,21 +162,23 @@ public sealed class TankDecommissioningService(
         var itemIds = rows.SelectMany(r => new[] { (long?)r.StartMediaItemId, r.EndMediaItemId }).OfType<long>().Distinct().ToList();
         var variants = (await context.MediaVariants.AsNoTracking().Where(v => itemIds.Contains(v.MediaItemId)).ToListAsync(ct)).ToLookup(v => v.MediaItemId);
         var urls = new MediaUrlBuilder(objectStore, signer);
-        var forcePrivate = !TankVisibilityRules.MediaBelongsInPublicStorage(profileLevel);
-        ImageUrlsDto? Image(long? id) => id is { } key ? urls.Build(variants[key], allowSigned: true, forcePrivate) : null;
+        var anonymousVisible = await context.AnonymousVisibleMediaItemIdsAsync(itemIds, clock.GetUtcNow(), ct);
+        var generations = await context.VisibleMediaGenerationsAsync(itemIds, viewerProfileId, clock.GetUtcNow(), ct);
+        ImageUrlsDto? Image(long? id) => id is { } key ? urls.Build(variants[key], allowSigned: true, anonymousVisible.Contains(key), generations.TryGetValue(key, out var generation) ? generation : null) : null;
         var items = rows.Select(r => new DecommissioningDto(r.Id, r.Scope, StreakService.Format(r.StartDate),
             r.EndDate is { } end ? StreakService.Format(end) : null, r.EndedAt is null, Image(r.StartMediaItemId), Image(r.EndMediaItemId))).ToList();
         return new TankOperationDto(tankId, operation.OperatingDays, operation.OperatingMonths, operation.DecommissionedDays,
             rows.Any(r => r.EndedAt is null), items);
     }
 
-    private Task<TankVisibility?> OwnLevelAsync(long tankId, long profileId, CancellationToken ct) =>
+    // Whether the care history of the own tank is public, or null when the tank is not the member's own.
+    private Task<bool?> OwnHistoryPublicAsync(long tankId, long profileId, CancellationToken ct) =>
         context.Tanks.AsNoTracking().Where(t => t.Id == tankId && t.ProfileId == profileId && t.DeletedAt == null)
-            .Select(t => (TankVisibility?)t.ProfileVisibility).SingleOrDefaultAsync(ct);
+            .Select(t => (bool?)(t.ProfileVisibility == TankVisibility.Public && t.StreamVisibility == TankVisibility.Public)).SingleOrDefaultAsync(ct);
 
     // Stores the photo and judges its provenance; a photo that does not qualify leaves nothing behind.
     private async Task<(StoredImage? Stored, string? Error)> StoreProofAsync(long profileId, IFormFile? file, bool capturedInApp,
-        TankVisibility level, CancellationToken ct)
+        bool historyPublic, CancellationToken ct)
     {
         var (image, _) = await UploadedImageReader.ReadAsync(file, ct);
         if (image is null) return (null, PhotoInvalidCode);
@@ -184,7 +187,7 @@ public sealed class TankDecommissioningService(
         try
         {
             stored = await uploads.StoreImageAsync(profileId, image.Bytes, image.Format, Path.GetFileName(file!.FileName),
-                isPrivate: !TankVisibilityRules.MediaBelongsInPublicStorage(level), ct, privateArea: "tank", capturedInApp: capturedInApp);
+                isPrivate: !historyPublic, ct, privateArea: "tank", capturedInApp: capturedInApp);
         }
         catch (Exception ex) when (ex is ImageProcessor.ImageTooLargeException or ImageProcessor.UnsupportedImageFormatException
             or ImageProcessor.BrokenImageException)
@@ -222,17 +225,9 @@ public sealed class TankDecommissioningService(
                 || l.CareEntryId != null && l.Role == MediaLinkRole.Photo), ct);
     }
 
-    // Adds the media item to the tank in the given section. A change of the profile level since the
-    // upload queues the placement of the media of the tank.
-    private async Task AttachAsync(long tankId, StoredImage stored, TankMediaSection section, bool storedPublic, DateTimeOffset now, CancellationToken ct)
+    // Adds the media item to the tank in the given section. The link marks the item for placement.
+    private async Task AttachAsync(long tankId, StoredImage stored, TankMediaSection section, CancellationToken ct)
     {
-        var level = await context.Tanks.Where(t => t.Id == tankId).Select(t => t.ProfileVisibility).SingleAsync(ct);
-        if (TankVisibilityRules.MediaBelongsInPublicStorage(level) != storedPublic)
-        {
-            await context.Tanks.Where(t => t.Id == tankId).ExecuteUpdateAsync(s => s
-                .SetProperty(t => t.MediaMovePending, true).SetProperty(t => t.MediaMoveAttempts, 0)
-                .SetProperty(t => t.MediaMoveNextAttemptAt, now), ct);
-        }
         context.MediaItems.Add(stored.Item);
         await context.SaveChangesAsync(ct);
         var role = MediaLinkRoles.Of(section);

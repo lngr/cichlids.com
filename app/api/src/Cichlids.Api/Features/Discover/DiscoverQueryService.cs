@@ -142,9 +142,10 @@ public sealed class DiscoverQueryService(CichlidsDbContext context, TankTimeLaps
         var mediaIds = postMedia.Select(pm => pm.MediaItemId).Concat(tankMedia.Select(tm => tm.MediaItemId))
             .Concat(mainMedia.Values).Distinct().ToList();
         var variants = await context.MediaVariants.AsNoTracking().Where(v => mediaIds.Contains(v.MediaItemId)).ToListAsync(cancellationToken);
-        // The result is cached across viewers, so it holds public URLs only and no signed path.
+        // The result is cached across viewers, so it holds public URLs only and no signed path. Every item listed
+        // belongs to a public tank or a published post, so anonymous viewers see it.
         var builder = new MediaUrlBuilder(objectStore);
-        var images = variants.GroupBy(v => v.MediaItemId).ToDictionary(g => g.Key, g => builder.Build(g, allowSigned: false));
+        var images = variants.GroupBy(v => v.MediaItemId).ToDictionary(g => g.Key, g => builder.Build(g, allowSigned: false, anonymousVisible: true, issuableGeneration: null));
         var visiblePhotos = context.MediaItems.Where(m => m.Kind == MediaKind.Photo
             && (m.OwnerProfileId == null || members.Any(p => p.Id == m.OwnerProfileId)));
         var photoLinks = context.MediaLinks.Where(l => l.TankId != null && l.Role != MediaLinkRole.Decommission && l.Role != MediaLinkRole.Recommission).Select(l => new { TankId = l.TankId!.Value, l.MediaItemId })

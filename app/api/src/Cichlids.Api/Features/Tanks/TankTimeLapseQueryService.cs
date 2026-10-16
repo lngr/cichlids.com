@@ -2,6 +2,7 @@ using Cichlids.Api.Features.Media;
 using Cichlids.Api.Features.Videos;
 using Cichlids.Domain;
 using Cichlids.Domain.Enums;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
@@ -21,11 +22,11 @@ public sealed record TankTimeLapseDto(
 
 /// <summary>
 /// Reads the time-lapse of tanks: photos, story posts and videos of the tanks whose profile the viewer
-/// sees. A viewer without a profile is anonymous. Photos and videos under the private storage prefix
+/// sees. A viewer without a profile is anonymous. Photos and videos that anonymous viewers do not see
 /// resolve to signed paths only when the caller allows them, which a response cached across viewers
 /// never does.
 /// </summary>
-public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObjectStore objectStore, TankMediaUrlSigner? signer = null)
+public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObjectStore objectStore, MediaUrlSigner? signer = null)
 {
     public async Task<TankTimeLapseDto?> GetAsync(
         long id, CancellationToken cancellationToken, long? viewerProfileId = null, bool allowSigned = false) =>
@@ -63,14 +64,11 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
         var photoIds = media.Select(m => m.Id).ToList();
         var variants = await context.MediaVariants.AsNoTracking().Where(v => photoIds.Contains(v.MediaItemId)).ToListAsync(cancellationToken);
         var builder = new MediaUrlBuilder(objectStore, signer);
-        // The kind of URL follows the tank. Media that only a tank that is not public holds get no public URL,
-        // wherever their objects lie; media a published post also uses keep their own public URLs.
-        var nonPublicTanks = tanks.Where(t => !TankVisibilityRules.MediaBelongsInPublicStorage(t.ProfileVisibility)).Select(t => t.Id).ToHashSet();
-        var postMediaIds = postMedia.Select(pm => pm.MediaItemId).ToHashSet();
-        var privateMediaIds = directMedia.Where(m => nonPublicTanks.Contains(m.TankId)).Select(m => m.MediaItemId)
-            .Concat(mainMedia.Where(m => nonPublicTanks.Contains(m.Key)).Select(m => m.Value))
-            .Where(id => !postMediaIds.Contains(id)).ToHashSet();
-        var images = variants.GroupBy(v => v.MediaItemId).ToDictionary(g => g.Key, g => builder.Build(g, allowSigned, privateMediaIds.Contains(g.Key)));
+        // The visibility rule decides the kind of URL: media that anonymous viewers see get public URLs, every
+        // other photo a signed path for the viewer who sees the tank.
+        var anonymousVisible = await context.AnonymousVisibleMediaItemIdsAsync(ids, now, cancellationToken);
+        var generations = await context.VisibleMediaGenerationsAsync(ids, viewerProfileId, now, cancellationToken);
+        var images = variants.GroupBy(v => v.MediaItemId).ToDictionary(g => g.Key, g => builder.Build(g, allowSigned, anonymousVisible.Contains(g.Key), generations.TryGetValue(g.Key, out var generation) ? generation : null));
         var postDates = posts.ToDictionary(p => p.Id, p => p.PublishedAt ?? p.CreatedAt);
         var publicationDates = postMedia.GroupBy(pm => pm.MediaItemId).ToDictionary(g => g.Key,
             g => g.Min(pm => postDates[pm.PostId]));
@@ -90,7 +88,7 @@ public sealed class TankTimeLapseQueryService(CichlidsDbContext context, IObject
                     && visibleProfiles.Any(p => p.Id == m.OwnerProfileId && p.Kind == ProfileKind.Member)))
             .ToListAsync(cancellationToken);
         var readyVideos = videoItems.Select(m => (Item: m, Dto: VideoQueryService.ToPublicDto(m, objectStore, signer, allowSigned,
-                forcePrivate: directMedia.Any(d => d.MediaItemId == m.Id && nonPublicTanks.Contains(d.TankId)))))
+                anonymousVisible.Contains(m.Id), generations.TryGetValue(m.Id, out var videoGeneration) ? videoGeneration : null)))
             .Where(v => v.Dto.State == VideoState.Ready).ToList();
         var members = await visibleProfiles.Where(p => p.Kind == ProfileKind.Member && tanks.Select(t => t.ProfileId).Contains(p.Id))
             .Select(p => p.Id).ToListAsync(cancellationToken);

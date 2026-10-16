@@ -32,10 +32,33 @@ public sealed class TankVisibilitySettingsTests(ApiFixture fixture) : IAsyncLife
     private Task<HttpResponseMessage> PutAsync(long tank, string? token, object body) =>
         SendAsync(fixture, HttpMethod.Put, $"/api/tanks/{tank}/visibility", token, body);
 
+    // A settled photo of the tank, so a change of visibility has an item to mark.
+    private async Task<long> SettledPhotoAsync(long tank, long ownerProfileId)
+    {
+        await using var db = fixture.CreateDbContext();
+        var now = DateTimeOffset.UtcNow;
+        var item = new MediaItem
+        {
+            OwnerProfileId = ownerProfileId, Kind = MediaKind.Photo, StorageKey = $"originals/vis-{Guid.NewGuid():N}.jpg", CreatedAt = now, ReceivedAt = now,
+        };
+        db.MediaItems.Add(item);
+        db.MediaLinks.Add(new MediaLink { ContextType = MediaLinkContext.Tank, TankId = tank, MediaItem = item, Role = MediaLinkRole.Showcase });
+        await db.SaveChangesAsync();
+        await db.MediaItems.Where(m => m.Id == item.Id).ExecuteUpdateAsync(s => s.SetProperty(m => m.PlacementPending, false));
+        return item.Id;
+    }
+
+    private async Task<bool> PendingAsync(long mediaItemId)
+    {
+        await using var db = fixture.CreateDbContext();
+        return await db.MediaItems.AsNoTracking().Where(m => m.Id == mediaItemId).Select(m => m.PlacementPending).SingleAsync();
+    }
+
     [Fact]
     public async Task GivenAPublicTank_WhenTheOwnerMakesItPrivate_ThenBothLevelsChangeAnEventIsRecordedAndTheMediaAreQueuedForPlacement()
     {
         var (owner, tank) = await TankAsync(TankVisibility.Public, TankVisibility.Public);
+        var photo = await SettledPhotoAsync(tank, owner.ProfileId);
 
         using var response = await PutAsync(tank, owner.Token, new { profile = "private", stream = "private" });
 
@@ -47,8 +70,7 @@ public sealed class TankVisibilitySettingsTests(ApiFixture fixture) : IAsyncLife
         var stored = await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == tank);
         Assert.Equal(TankVisibility.Private, stored.ProfileVisibility);
         Assert.Equal(TankVisibility.Private, stored.StreamVisibility);
-        Assert.True(stored.MediaMovePending);
-        Assert.True(stored.MediaPlacedPublic);
+        Assert.True(await PendingAsync(photo));
         var evt = Assert.Single(await db.OutboxEvents.AsNoTracking()
             .Where(e => e.EventType == "tank.visibility_changed" && e.AggregateId == tank.ToString()).ToListAsync());
         Assert.Equal("tank", evt.AggregateType);
@@ -68,6 +90,7 @@ public sealed class TankVisibilitySettingsTests(ApiFixture fixture) : IAsyncLife
     public async Task GivenAPrivateTank_WhenTheOwnerMakesItPublic_ThenTheConsentIsStoredAndTheMediaAreQueued()
     {
         var (owner, tank) = await TankAsync(TankVisibility.Private, TankVisibility.Private);
+        var photo = await SettledPhotoAsync(tank, owner.ProfileId);
 
         using var response = await PutAsync(tank, owner.Token, new { profile = "public", stream = "public" });
 
@@ -76,16 +99,16 @@ public sealed class TankVisibilitySettingsTests(ApiFixture fixture) : IAsyncLife
         var stored = await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == tank);
         Assert.Equal(TankVisibility.Public, stored.ProfileVisibility);
         Assert.Equal(TankVisibility.Public, stored.StreamVisibility);
-        Assert.True(stored.MediaMovePending);
-        Assert.False(stored.MediaPlacedPublic);
+        Assert.True(await PendingAsync(photo));
         var consent = Assert.Single(await db.TankVisibilityConsents.AsNoTracking().Where(c => c.TankId == tank).ToListAsync());
         Assert.True(consent.Answer);
     }
 
     [Fact]
-    public async Task GivenAPublicTank_WhenOnlyTheStreamIsRestricted_ThenTheMediaStayAndNoConsentIsStored()
+    public async Task GivenAPublicTank_WhenOnlyTheStreamIsRestricted_ThenTheMediaItemsAreMarkedAndNoConsentIsStored()
     {
         var (owner, tank) = await TankAsync(TankVisibility.Public, TankVisibility.Public);
+        var photo = await SettledPhotoAsync(tank, owner.ProfileId);
 
         using var response = await PutAsync(tank, owner.Token, new { profile = "public", stream = "private" });
 
@@ -94,7 +117,7 @@ public sealed class TankVisibilitySettingsTests(ApiFixture fixture) : IAsyncLife
         var stored = await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == tank);
         Assert.Equal(TankVisibility.Public, stored.ProfileVisibility);
         Assert.Equal(TankVisibility.Private, stored.StreamVisibility);
-        Assert.False(stored.MediaMovePending);
+        Assert.True(await PendingAsync(photo));
         Assert.Empty(await db.TankVisibilityConsents.Where(c => c.TankId == tank).ToListAsync());
         Assert.Single(await db.OutboxEvents.Where(e => e.EventType == "tank.visibility_changed" && e.AggregateId == tank.ToString()).ToListAsync());
     }

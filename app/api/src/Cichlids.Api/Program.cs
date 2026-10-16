@@ -9,6 +9,7 @@ using Cichlids.Api.Features.Comments;
 using Cichlids.Api.Features.Community;
 using Cichlids.Api.Features.Decommissioning;
 using Cichlids.Api.Features.FeatureFlags;
+using Cichlids.Api.Features.Media;
 using Cichlids.Api.Features.LegacyRedirects;
 using Cichlids.Api.Features.Me;
 using Cichlids.Api.Features.Onboarding;
@@ -152,14 +153,16 @@ builder.Services.AddScoped<SpeciesQueryService>();
 builder.Services.AddScoped<PicturesQueryService>();
 builder.Services.AddScoped<TanksQueryService>();
 builder.Services.AddScoped<TankAccessService>();
-builder.Services.AddOptions<TankMediaPlacementOptions>()
-    .Bind(builder.Configuration.GetSection(TankMediaPlacementOptions.SectionName))
-    .Validate(o => o.PollInterval > TimeSpan.Zero && o.Lease > TimeSpan.Zero && o.RetryDelay >= TimeSpan.Zero,
-        "TankMediaPlacement durations must be positive.")
+builder.Services.AddOptions<MediaPlacementOptions>()
+    .Bind(builder.Configuration.GetSection(MediaPlacementOptions.SectionName))
+    .Validate(o => o.PollInterval > TimeSpan.Zero && o.Lease > TimeSpan.Zero && o.RetryDelay >= TimeSpan.Zero
+        && o.ReconcileInterval > TimeSpan.Zero && o.ReconcileBatchSize > 0,
+        "MediaPlacement durations must be positive.")
     .ValidateOnStart();
-builder.Services.AddScoped<TankMediaPlacementService>();
-builder.Services.AddHostedService<TankMediaPlacementHostedService>();
-builder.Services.AddSingleton<Cichlids.Api.Features.Media.TankMediaUrlSigner>();
+builder.Services.AddScoped<MediaPlacementService>();
+builder.Services.AddScoped<MediaPlacementTrigger>();
+builder.Services.AddHostedService<MediaPlacementHostedService>();
+builder.Services.AddSingleton<MediaUrlSigner>();
 builder.Services.AddScoped<TankTimeLapseQueryService>();
 builder.Services.AddScoped<DiscoverQueryService>();
 builder.Services.AddScoped<TodayQueryService>();
@@ -185,7 +188,6 @@ builder.Services.AddScoped<StreakService>();
 builder.Services.AddScoped<VacationService>();
 builder.Services.AddScoped<CareTodoService>();
 builder.Services.AddScoped<CareEntryMapper>();
-builder.Services.AddSingleton<CarePhotoUrlSigner>();
 builder.Services.AddScoped<CarePlanService>();
 builder.Services.AddScoped<CareHeatmapService>();
 builder.Services.AddScoped<WebPushSubscriptionService>();
@@ -246,7 +248,6 @@ builder.Services.AddSingleton<IProcessRunner, ProcessRunner>();
 builder.Services.AddSingleton<FfprobeClient>();
 builder.Services.AddSingleton<PosterFrameSelector>();
 builder.Services.AddSingleton<HlsTranscoder>();
-builder.Services.AddSingleton<CareVideoUrlSigner>();
 builder.Services.AddScoped<VideoLimitPolicy>();
 builder.Services.AddScoped<VideoUploadService>();
 builder.Services.AddScoped<VideoUploadCleanupService>();
@@ -366,6 +367,7 @@ app.MapCommunityEndpoints();
 app.MapLegacyRedirectsEndpoints();
 app.MapUploadsEndpoints();
 app.MapVideoEndpoints();
+app.MapMediaEndpoints();
 app.MapWebhookAdminEndpoints();
 app.MapOutboxAdminEndpoints();
 

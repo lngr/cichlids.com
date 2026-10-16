@@ -319,9 +319,6 @@ public sealed class VideoUploadService(
             return (null, new VideoProblem(StatusCodes.Status409Conflict, VideoProblem.CareVideoLimitReached, "The care entry holds the most videos it can."));
         }
 
-        var isPrivate = upload.Target == VideoUploadTarget.CareEntry
-            || !TankVisibilityRules.MediaBelongsInPublicStorage(
-                await context.Tanks.Where(t => t.Id == upload.TankId).Select(t => t.ProfileVisibility).SingleAsync(cancellationToken));
         var item = new MediaItem
         {
             OwnerProfileId = upload.OwnerProfileId,
@@ -336,9 +333,10 @@ public sealed class VideoUploadService(
             ChecksumSha256 = sha256,
             CreatedAt = now,
             ReceivedAt = now,
+            PlacedPublic = false,
             VideoJob = new VideoJob
             {
-                Status = VideoJobStatus.Queued, IsPrivate = isPrivate, RunAfter = now, CreatedAt = now,
+                Status = VideoJobStatus.Queued, RunAfter = now, CreatedAt = now,
             },
         };
         context.MediaItems.Add(item);

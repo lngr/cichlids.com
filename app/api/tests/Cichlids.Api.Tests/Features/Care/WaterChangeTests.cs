@@ -296,7 +296,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
         Assert.Equal(HttpStatusCode.OK, first.StatusCode);
         var photo = (await BodyAsync(first)).GetProperty("photos")[0];
         Assert.True(photo.GetProperty("capturedInApp").GetBoolean());
-        Assert.StartsWith("/api/care-photos/", photo.GetProperty("urls").GetProperty("thumb").GetString());
+        Assert.StartsWith("/api/media/photos/", photo.GetProperty("urls").GetProperty("thumb").GetString());
         using var served = await fixture.Client.GetAsync(photo.GetProperty("urls").GetProperty("thumb").GetString());
         Assert.Equal(HttpStatusCode.OK, served.StatusCode);
         Assert.Contains("private", served.Headers.CacheControl?.ToString());
@@ -347,7 +347,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
         var next = await StartAsync(token, tank);
         var previous = next.GetProperty("previousPhotos");
         Assert.Equal(3, previous.GetArrayLength());
-        Assert.StartsWith("/api/care-photos/", previous[0].GetProperty("thumb").GetString());
+        Assert.StartsWith("/api/media/photos/", previous[0].GetProperty("thumb").GetString());
     }
 
     [Fact]

@@ -3,6 +3,7 @@ using Cichlids.Api.Features.Common;
 using Cichlids.Domain;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -67,7 +68,6 @@ public sealed class TanksWriteService(CichlidsDbContext context)
             PublishedAt = now,
             ProfileVisibility = level,
             StreamVisibility = level,
-            MediaPlacedPublic = TankVisibilityRules.MediaBelongsInPublicStorage(level),
         };
         if (request.Dimensions is { } dimensions)
         {
@@ -107,9 +107,9 @@ public sealed class TanksWriteService(CichlidsDbContext context)
     /// Sets the profile and stream levels of the owner's tank. The error is a problem code:
     /// tank_visibility_invalid for a missing or unknown level, tank_not_found when the tank is not the
     /// caller's, and tank_stream_wider_than_profile for a stream wider than the profile. A change of
-    /// the profile level between public and not public is stored as a consent answer, queues the
-    /// placement of the media of the tank, and every change commits with its
-    /// tank.visibility_changed event.
+    /// the profile level between public and not public is stored as a consent answer. A change of either
+    /// level changes the visibility generation of the media items of the tank and marks them for placement
+    /// in the same transaction, and every change commits with its tank.visibility_changed event.
     /// </summary>
     public async Task<(TankVisibilityDto? Visibility, string? Error)> SetVisibilityAsync(
         long tankId, long profileId, UpdateTankVisibilityRequest request, CancellationToken cancellationToken)
@@ -147,12 +147,6 @@ public sealed class TanksWriteService(CichlidsDbContext context)
                 TankId = tank.Id, Answer = profile == TankVisibility.Public, AnsweredAt = now,
                 Context = TankVisibilityConsent.SettingsContext,
             });
-            if (TankVisibilityRules.MediaBelongsInPublicStorage(previous.Profile) != TankVisibilityRules.MediaBelongsInPublicStorage(profile))
-            {
-                tank.MediaMovePending = true;
-                tank.MediaMoveAttempts = 0;
-                tank.MediaMoveNextAttemptAt = now;
-            }
         }
 
         tank.ProfileVisibility = profile;

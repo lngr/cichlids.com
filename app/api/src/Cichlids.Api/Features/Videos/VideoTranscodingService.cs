@@ -83,7 +83,10 @@ public sealed class VideoTranscodingService(
         var output = Path.Combine(workDirectory, "hls");
         var result = await transcoder.TranscodeAsync(input, info, output, limits.MaxDuration, cancellationToken);
 
-        var prefix = MediaStorageKeys.BuildVideoDirectory(item.StorageKey, job.IsPrivate);
+        // The files are written for the area the visibility rule asks for now; a change before the commit marks
+        // the item for placement.
+        var toPublic = (await context.AnonymousVisibleMediaItemIdsAsync([item.Id], clock.GetUtcNow(), cancellationToken)).Contains(item.Id);
+        var prefix = MediaStorageKeys.BuildVideoDirectory(item.StorageKey, isPrivate: !toPublic);
         foreach (var relative in result.Files)
         {
             await using var stream = File.OpenRead(Path.Combine(output, relative));
@@ -94,13 +97,13 @@ public sealed class VideoTranscodingService(
         var top = result.Renditions[^1];
         var now = clock.GetUtcNow();
         await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
-        // The files were written for the placement chosen when the job was queued; a tank whose
-        // profile level has changed since is queued for the placement of its media.
-        await context.Tanks
-            .Where(t => context.MediaLinks.Any(l => l.TankId == t.Id && l.MediaItemId == item.Id)
-                && (t.ProfileVisibility == TankVisibility.Public) == job.IsPrivate)
-            .ExecuteUpdateAsync(s => s.SetProperty(t => t.MediaMovePending, true).SetProperty(t => t.MediaMoveAttempts, 0)
-                .SetProperty(t => t.MediaMoveNextAttemptAt, now), cancellationToken);
+        var stillPublic = (await context.AnonymousVisibleMediaItemIdsAsync([item.Id], now, cancellationToken)).Contains(item.Id) == toPublic;
+        await context.MediaItems.Where(m => m.Id == item.Id).ExecuteUpdateAsync(
+            s => s.SetProperty(m => m.PlacedPublic, toPublic)
+                .SetProperty(m => m.PlacementPending, m => m.PlacementPending || !stillPublic)
+                .SetProperty(m => m.PlacementAttempts, m => stillPublic ? m.PlacementAttempts : 0)
+                .SetProperty(m => m.PlacementNextAttemptAt, m => stillPublic ? m.PlacementNextAttemptAt : null),
+            cancellationToken);
         item.Width = info.DisplayWidth;
         item.Height = info.DisplayHeight;
         item.DurationMs = (int)info.Duration.TotalMilliseconds;

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Infrastructure.Media;
 
 /// <summary>
-/// Marks media items for placement. A change that can alter whether anonymous viewers see an item
-/// (a link created or removed, a tank changing its visibility, an entry set to only me, a post
-/// published, withdrawn or removed) marks the affected items; the placement worker then moves their
-/// variants into the area that matches the answer. Added and removed links mark their item when the
-/// context saves them. The marks of a changing context run in the transaction of the change.
+/// Queries the media items of a context and marks media items for placement. A change that can alter
+/// whether anonymous viewers see an item (a link created or removed, a tank changing its visibility, an
+/// entry set to only me, a post published, withdrawn or removed, a profile suspended) marks the affected
+/// items in the transaction of the change by database triggers, whichever statement makes the change; the
+/// placement worker then moves their variants into the area that matches the answer.
 /// </summary>
 public static class MediaPlacementMarks
 {
@@ -42,13 +42,15 @@ public static class MediaPlacementMarks
         db.MediaLinks.Where(l => l.PostId == postId).Select(l => l.MediaItemId);
 
     /// <summary>
-    /// Marks the given media items as due for placement at once and resets their failed attempts.
+    /// Marks the given media items as due for placement at once, resets their failed attempts and changes
+    /// their visibility generation, which ends the validity of the signed links issued before.
     /// Returns the number of marked items.
     /// </summary>
     public static Task<int> MarkForPlacementAsync(
         this CichlidsDbContext db, IQueryable<long> mediaItemIds, CancellationToken cancellationToken = default) =>
         db.MediaItems.Where(m => mediaItemIds.Contains(m.Id)).ExecuteUpdateAsync(
-            s => s.SetProperty(m => m.PlacementPending, true)
+            s => s.SetProperty(m => m.VisibilityGeneration, m => m.VisibilityGeneration + 1)
+                .SetProperty(m => m.PlacementPending, true)
                 .SetProperty(m => m.PlacementAttempts, 0)
                 .SetProperty(m => m.PlacementNextAttemptAt, (DateTimeOffset?)null),
             cancellationToken);

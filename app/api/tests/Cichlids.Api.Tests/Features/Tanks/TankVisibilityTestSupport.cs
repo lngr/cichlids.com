@@ -42,14 +42,11 @@ internal static class TankVisibilityTestSupport
         {
             ProfileId = ownerProfileId, Title = title ?? $"Visibility {Guid.NewGuid():N}", State = TankState.Published,
             CreatedAt = now, PublishedAt = now, ProfileVisibility = profile, StreamVisibility = stream,
-            MediaPlacedPublic = TankVisibilityRulesFor(profile),
         };
         db.Tanks.Add(tank);
         await db.SaveChangesAsync();
         return tank.Id;
     }
-
-    private static bool TankVisibilityRulesFor(TankVisibility profile) => Cichlids.Domain.TankVisibilityRules.MediaBelongsInPublicStorage(profile);
 
     public static async Task<HttpResponseMessage> SendAsync(
         ApiFixture fixture, HttpMethod method, string url, string? token = null, object? body = null)

@@ -5,7 +5,8 @@ using Cichlids.Infrastructure.Storage;
 namespace Cichlids.Api.Features.Videos;
 
 /// <summary>
-/// The stored objects of a video: the private original and every file below its HLS directory.
+/// The stored objects of a video: the private original and every file below its HLS directory in the
+/// public and in the private area.
 /// </summary>
 public static class VideoStorage
 {
@@ -16,12 +17,15 @@ public static class VideoStorage
     /// The keys of the original and of all HLS files of a video media item, as stored in the
     /// object store.
     /// </summary>
-    public static async Task<List<string>> KeysOfAsync(IObjectStore store, MediaItem item, bool isPrivate, CancellationToken cancellationToken)
+    public static async Task<List<string>> KeysOfAsync(IObjectStore store, MediaItem item, CancellationToken cancellationToken)
     {
         var keys = new List<string> { item.StorageKey };
-        await foreach (var key in store.ListKeysAsync(MediaStorageKeys.BuildVideoDirectory(item.StorageKey, isPrivate), cancellationToken))
+        foreach (var isPrivate in new[] { false, true })
         {
-            keys.Add(key);
+            await foreach (var key in store.ListKeysAsync(MediaStorageKeys.BuildVideoDirectory(item.StorageKey, isPrivate), cancellationToken))
+            {
+                keys.Add(key);
+            }
         }
 
         return keys;

@@ -188,6 +188,7 @@ public sealed class WaterChangeService(
         await transaction.CommitAsync(ct);
 
         var stored = await CareEntryMapper.WithDetails(context.CareEntries.AsNoTracking()).SingleAsync(e => e.Id == entry.Id, ct);
+        await mapper.PrepareAsync([stored], profileId, ct);
         return (new WaterChangeFinishedDto(await ToDtoAsync(session, ct), mapper.ToDto(stored)), null);
     }
 
@@ -305,6 +306,7 @@ public sealed class WaterChangeService(
         var photos = session.MediaLinks.OrderBy(l => l.Position).ToList();
         var ids = photos.Select(l => l.MediaItemId).ToList();
         var items = await context.MediaItems.AsNoTracking().Include(m => m.Variants).Where(m => ids.Contains(m.Id)).ToDictionaryAsync(m => m.Id, ct);
+        await mapper.PrepareAsync(ids, session.ProfileId, ct);
 
         var previousSessionId = await context.WaterChangeSessions.AsNoTracking()
             .Where(p => p.TankId == session.TankId && p.Id != session.Id && p.FinishedAt != null && p.MediaLinks.Any()
@@ -316,6 +318,7 @@ public sealed class WaterChangeService(
             var previousIds = await context.MediaLinks.AsNoTracking().EvidenceLinks().Where(l => l.WaterChangeSessionId == previousKey)
                 .OrderBy(l => l.Position).Select(l => l.MediaItemId).ToListAsync(ct);
             var previousItems = await context.MediaItems.AsNoTracking().Include(m => m.Variants).Where(m => previousIds.Contains(m.Id)).ToDictionaryAsync(m => m.Id, ct);
+            await mapper.PrepareAsync(previousIds, session.ProfileId, ct);
             previous = previousIds.Where(previousItems.ContainsKey).Select(key => mapper.UrlsOf(previousItems[key])).ToList();
         }
 
