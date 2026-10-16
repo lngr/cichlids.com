@@ -6,10 +6,10 @@ namespace Cichlids.Api.Features.Care;
 public sealed record WaterChangeStepDto(WaterChangeStep Step, WaterChangeStepState State, DateTimeOffset At);
 
 /// <summary>
-/// A photo of a guided water change: its private URLs, whether the client reported the app camera
+/// A photo of a guided water change: the id of its media item, its private URLs, whether the client reported the app camera
 /// as its source, when the server received it and the capture time from its EXIF data when present.
 /// </summary>
-public sealed record WaterChangePhotoDto(CarePhotoUrlsDto Urls, int? Width, int? Height, bool CapturedInApp,
+public sealed record WaterChangePhotoDto(long MediaItemId, CarePhotoUrlsDto Urls, int? Width, int? Height, bool CapturedInApp,
     DateTimeOffset ReceivedAt, DateTimeOffset? TakenAt);
 
 public sealed record WaterChangeEvidenceDto(WaterChangeEvidenceState State, IReadOnlyList<string> Missing)

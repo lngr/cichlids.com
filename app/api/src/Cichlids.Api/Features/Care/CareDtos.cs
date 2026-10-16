@@ -24,7 +24,7 @@ public sealed record MeasurementValueDto(CareParameter Parameter, decimal Value,
         value.NormalizedValue, CareMeasurements.RuleFor(value.Parameter).CanonicalUnit, value.Origin);
 }
 public sealed record CarePhotoUrlsDto(string? Thumb, string? Small, string? Medium, string? Large);
-public sealed record CarePhotoDto(long Id, int? Width, int? Height, CarePhotoUrlsDto Urls);
+public sealed record CarePhotoDto(long Id, long MediaItemId, int? Width, int? Height, CarePhotoUrlsDto Urls);
 public sealed record CareEntryDto(long Id, long TankId, long AuthorProfileId, CareKind Kind,
     DateTimeOffset OccurredAt, DateTimeOffset RecordedAt, CareAmountDto? Amount, IReadOnlyList<MeasurementValueDto>? Values,
     string? Note, IReadOnlyList<CarePhotoDto> Photos, IReadOnlyList<Videos.VideoDto> Videos, IReadOnlyList<CareTodoDto> Todos,

@@ -315,7 +315,7 @@ public sealed class WaterChangeService(
         return new WaterChangeSessionDto(session.Id, session.TankId, session.StartedAt, session.StartedAt + Settings.SessionLifetime,
             session.FinishedAt, session.DurationSeconds,
             session.Steps.OrderBy(s => s.At).ThenBy(s => s.Id).Select(s => new WaterChangeStepDto(s.Step, s.State, s.At)).ToList(),
-            photos.Where(l => items.ContainsKey(l.MediaItemId)).Select(l => new WaterChangePhotoDto(mapper.UrlsOf(items[l.MediaItemId]),
+            photos.Where(l => items.ContainsKey(l.MediaItemId)).Select(l => new WaterChangePhotoDto(l.MediaItemId, mapper.UrlsOf(items[l.MediaItemId]),
                 items[l.MediaItemId].Width, items[l.MediaItemId].Height, items[l.MediaItemId].CapturedInApp, items[l.MediaItemId].ReceivedAt,
                 items[l.MediaItemId].TakenAt)).ToList(),
             previous, (int)Settings.MinDuration.TotalSeconds);

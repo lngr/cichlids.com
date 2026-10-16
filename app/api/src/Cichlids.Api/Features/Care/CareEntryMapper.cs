@@ -69,7 +69,7 @@ public sealed class CareEntryMapper(MediaUrlSigner signer, CichlidsDbContext con
     private static WaterChangeEvidenceDto? EvidenceOf(CareEntry entry) => entry.Kind != CareKind.WaterChange ? null
         : entry.Evidence is { } state ? new(state, entry.EvidenceMissing) : WaterChangeEvidenceDto.From(WaterChangeEvidence.NoGuidedMode);
 
-    private CarePhotoDto ToDto(MediaLink link) => new(link.Id, link.MediaItem.Width, link.MediaItem.Height, UrlsOf(link.MediaItem));
+    private CarePhotoDto ToDto(MediaLink link) => new(link.Id, link.MediaItemId, link.MediaItem.Width, link.MediaItem.Height, UrlsOf(link.MediaItem));
 
     /// <summary>
     /// The signed URLs of the variants of a photo media item whose variants are loaded.
