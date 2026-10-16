@@ -112,8 +112,9 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
 
     /// <summary>
     /// The reminder window of the water change streak of each given tank, from the rhythm of its water
-    /// change rule. A running streak has the days from the first reminder day through its deadline, a
-    /// streak paused by a vacation has none, and every other tank is left out. Nothing is recorded.
+    /// change rule. A running streak has the days from the first reminder day through its deadline; after
+    /// a vacation the first reminder day is the day after the vacation when that is later. A streak paused
+    /// by a vacation has no days, and every other tank is left out. Nothing is recorded.
     /// </summary>
     public async Task<Dictionary<long, DueStreakDto>> GetReminderWindowsAsync(long profileId, IReadOnlyDictionary<long, int> rhythmByTank,
         DateOnly today, int utcOffsetMinutes, CancellationToken ct)
@@ -126,7 +127,11 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
         {
             var streak = EvaluateWater(histories[tankId], spans, today, utcOffsetMinutes);
             if (streak is { State: WaterChangeStreakState.Running, Deadline: { } deadline })
-                windows[tankId] = new DueStreakDto(streak.State, Format(WaterChangeStreaks.FirstReminderDay(deadline, rhythmDays)), Format(deadline));
+            {
+                var first = WaterChangeStreaks.FirstReminderDay(deadline, rhythmDays);
+                if (streak.FirstDayAfterVacation is { } afterVacation && afterVacation > first) first = afterVacation;
+                windows[tankId] = new DueStreakDto(streak.State, Format(first), Format(deadline));
+            }
             else if (streak.State == WaterChangeStreakState.Paused)
                 windows[tankId] = new DueStreakDto(streak.State, null, null);
         }

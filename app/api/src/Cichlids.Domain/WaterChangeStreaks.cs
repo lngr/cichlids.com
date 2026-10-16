@@ -15,8 +15,8 @@ public sealed record RhythmChange(DateTimeOffset At, int RhythmDays, bool Enable
 /// <summary>
 /// How a period between two water changes ended. Verified: the closing water change came in time and
 /// is verified. Frozen: it came in time without verification and a freeze kept the period. Bridged:
-/// it came in time only because a vacation or a switched off rule paused the days, so the period
-/// neither breaks nor extends the streak. Missed: the deadline passed before the closing water change.
+/// it came in time only because a switched off rule paused the days, so the period neither breaks nor
+/// extends the streak. Missed: the deadline passed before the closing water change.
 /// Unverified: it came in time without verification and no freeze was left.
 /// </summary>
 public enum PeriodOutcome { Verified, Frozen, Bridged, Missed, Unverified }
@@ -43,11 +43,12 @@ public enum WaterChangeStreakState { NoHistory, Running, Paused, Broken }
 /// The water change streak of a tank. Current counts the periods in a row that were verified or kept by
 /// a freeze, CurrentVerified the verified ones among them, Longest the best run so far. Deadline is the
 /// last day of the running period, null unless the streak is running. FreezesLeft is the allotment of
-/// the tank year of today that is not used.
+/// the tank year of today that is not used. FirstDayAfterVacation is the day after the last ended
+/// vacation that belongs to the running period, null without such a vacation.
 /// </summary>
 public sealed record WaterChangeStreak(WaterChangeStreakState State, int Current, int CurrentVerified, int Longest,
     DateOnly? Deadline, DateOnly? LastWaterChange, int FreezesLeft, IReadOnlyList<WaterChangePeriod> Periods,
-    IReadOnlyList<FreezeUse> Freezes);
+    IReadOnlyList<FreezeUse> Freezes, DateOnly? FirstDayAfterVacation = null);
 
 /// <summary>
 /// Computes the water change streak of a tank from its water changes, the history of its rhythm, the
@@ -95,12 +96,16 @@ public static class WaterChangeStreaks
     /// <summary>
     /// Walks the water changes in order. A water change on the same local day as another counts as
     /// one, verified when any of them is. Each water change starts the next period, which has to be
-    /// closed within the allowed days of the rhythm that applies on each day; days of a vacation or of
-    /// a switched off rule do not count. A closing water change that came in time counts when it is
-    /// verified, or when a freeze keeps the period: a recorded freeze first, otherwise a new one while
-    /// the allotment of the tank year of the period end is not used up (recorded freezes count
-    /// against it first). A period that vacation alone bridges does not change the length. After a
-    /// break the closing water change starts a new run. Water changes after today are ignored.
+    /// closed by its deadline. The regular deadline is the allowed days of the rhythm that applies on
+    /// each day after the water change; days of a switched off rule do not count, days of a vacation
+    /// count like any other. A vacation that starts on or before the deadline and ends within the period
+    /// moves the deadline to its last day plus the grace when that is later; the rule applies again to
+    /// the moved deadline, and a vacation without an end leaves the period without a deadline. A closing
+    /// water change that came in time counts when it is verified, or when a freeze keeps the period: a
+    /// recorded freeze first, otherwise a new one while the allotment of the tank year of the period end
+    /// is not used up (recorded freezes count against it first). A period that only a switched off rule
+    /// brings in time does not change the length. After a break the closing water change starts a new
+    /// run. Water changes after today are ignored.
     /// </summary>
     public static WaterChangeStreak Evaluate(IReadOnlyList<WaterChangeRecord> changes, IReadOnlyList<RhythmChange> rhythm,
         IReadOnlyList<VacationSpan> vacations, IReadOnlySet<long> recordedFreezes, int freezesPerYear, DateOnly tankStart, DateOnly today, int utcOffsetMinutes)
@@ -118,17 +123,43 @@ public static class WaterChangeStreaks
             return found;
         }
         bool IsPaused(DateOnly day) => !RhythmAt(day).Enabled || Vacations.Covers(vacations, day);
-        bool Missed(DateOnly anchor, DateOnly end, bool honorPauses)
+        // The last day on which a period that began on the anchor day is in time, judged on the days up
+        // to the given day. Vacations are not considered here.
+        DateOnly RegularDeadline(DateOnly anchor, DateOnly upTo, bool honorRulePauses)
         {
             var elapsed = 0;
-            for (var day = anchor.AddDays(1); day <= end; day = day.AddDays(1))
+            for (var day = anchor.AddDays(1); day <= upTo; day = day.AddDays(1))
             {
-                if (honorPauses && IsPaused(day)) continue;
+                if (honorRulePauses && !RhythmAt(day).Enabled) continue;
                 elapsed++;
-                if (elapsed > AllowedDays(RhythmAt(day).RhythmDays)) return true;
+                if (elapsed > AllowedDays(RhythmAt(day).RhythmDays)) return day.AddDays(-1);
             }
-            return false;
+            var extrapolated = upTo.AddDays(AllowedDays(RhythmAt(upTo).RhythmDays) - elapsed);
+            return extrapolated > upTo ? extrapolated : upTo;
         }
+        // The regular deadline moved by the vacations of the period; null while a vacation without an end
+        // reaches the deadline.
+        DateOnly? Deadline(DateOnly anchor, DateOnly upTo)
+        {
+            var deadline = RegularDeadline(anchor, upTo, honorRulePauses: true);
+            for (var moved = true; moved;)
+            {
+                moved = false;
+                foreach (var vacation in vacations)
+                {
+                    if (vacation.Start > deadline || vacation.End <= anchor) continue;
+                    if (vacation.End is not { } end) return null;
+                    var candidate = end.AddDays(GraceDays(RhythmAt(end).RhythmDays));
+                    if (candidate <= deadline) continue;
+                    deadline = candidate;
+                    moved = true;
+                }
+            }
+            return deadline;
+        }
+        bool Missed(DateOnly anchor, DateOnly closing) => Deadline(anchor, closing) is { } limit && closing > limit;
+        bool Bridged(DateOnly anchor, DateOnly closing) =>
+            closing > RegularDeadline(anchor, closing, honorRulePauses: false) && closing <= RegularDeadline(anchor, closing, honorRulePauses: true);
 
         var days = changes.Select(c => (c.Id, Date: CarePlans.LocalDate(c.OccurredAt, utcOffsetMinutes), c.Verified))
             .Where(c => c.Date <= today)
@@ -150,8 +181,8 @@ public static class WaterChangeStreaks
             Day anchor = days[i - 1], closing = days[i];
             var id = closing.Ids[0];
             PeriodOutcome outcome;
-            if (Missed(anchor.Date, closing.Date, honorPauses: true)) outcome = PeriodOutcome.Missed;
-            else if (Missed(anchor.Date, closing.Date, honorPauses: false)) outcome = PeriodOutcome.Bridged;
+            if (Missed(anchor.Date, closing.Date)) outcome = PeriodOutcome.Missed;
+            else if (Bridged(anchor.Date, closing.Date)) outcome = PeriodOutcome.Bridged;
             else if (closing.Verified) outcome = PeriodOutcome.Verified;
             else
             {
@@ -193,13 +224,13 @@ public static class WaterChangeStreaks
             return new WaterChangeStreak(WaterChangeStreakState.NoHistory, 0, 0, 0, null, null, freezesLeft, periods, freezes);
 
         var last = days[^1].Date;
-        if (Missed(last, today, honorPauses: true))
+        var periodDeadline = Deadline(last, today);
+        if (periodDeadline is { } due && today > due)
             return new WaterChangeStreak(WaterChangeStreakState.Broken, 0, 0, longest, null, last, freezesLeft, periods, freezes);
-        if (IsPaused(today))
+        if (periodDeadline is not { } runningDeadline || IsPaused(today))
             return new WaterChangeStreak(WaterChangeStreakState.Paused, current, currentVerified, longest, null, last, freezesLeft, periods, freezes);
-        var elapsedToday = 0;
-        for (var day = last.AddDays(1); day <= today; day = day.AddDays(1)) if (!IsPaused(day)) elapsedToday++;
-        var deadline = today.AddDays(AllowedDays(RhythmAt(today).RhythmDays) - elapsedToday);
-        return new WaterChangeStreak(WaterChangeStreakState.Running, current, currentVerified, longest, deadline, last, freezesLeft, periods, freezes);
+        var ended = vacations.Where(v => v.End is { } end && end > last && end < today && v.Start <= runningDeadline).Select(v => v.End!.Value).ToList();
+        DateOnly? firstDayAfterVacation = ended.Count == 0 ? null : ended.Max().AddDays(1);
+        return new WaterChangeStreak(WaterChangeStreakState.Running, current, currentVerified, longest, runningDeadline, last, freezesLeft, periods, freezes, firstDayAfterVacation);
     }
 }

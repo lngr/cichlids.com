@@ -83,6 +83,44 @@ public sealed class CareDueStreakTests(ApiFixture fixture) : IAsyncLifetime
         Assert.True(streak.GetProperty("reminderFrom").ValueKind is JsonValueKind.Null || !streak.TryGetProperty("reminderFrom", out _));
     }
 
+    [Theory]
+    [InlineData("2026-10-10", "2026-10-15", "2026-10-16", "2026-10-16", "2026-10-18")]
+    [InlineData("2026-10-13", "2026-10-17", "2026-10-18", "2026-10-18", "2026-10-20")]
+    [InlineData("2026-10-12", "2026-10-16", "2026-10-17", "2026-10-17", "2026-10-19")]
+    public async Task GivenAnEndedVacationInThePeriod_WhenReadingTheDueCare_ThenTheRemindersRunFromTheDayAfterItThroughTheNewDeadline(
+        string first, string last, string today, string reminderFrom, string deadline)
+    {
+        var (token, tank) = await TankWithWaterChangeAsync();
+        await using (var db = fixture.CreateDbContext())
+        {
+            var profile = await db.Tanks.Where(t => t.Id == tank).Select(t => t.ProfileId).SingleAsync();
+            db.Vacations.Add(new Vacation { ProfileId = profile, StartDate = DateOnly.Parse(first), EndDate = DateOnly.Parse(last), CreatedAt = WaterChange });
+            await db.SaveChangesAsync();
+        }
+
+        var streak = (await ItemAsync(token, tank, "water_change", today)).GetProperty("streak");
+
+        Assert.Equal("running", streak.GetProperty("state").GetString());
+        Assert.Equal(reminderFrom, streak.GetProperty("reminderFrom").GetString());
+        Assert.Equal(deadline, streak.GetProperty("deadline").GetString());
+    }
+
+    [Fact]
+    public async Task GivenAVacationThatCoversTheRegularDeadline_WhenTheNewDeadlinePasses_ThenTheStreakIsBroken()
+    {
+        var (token, tank) = await TankWithWaterChangeAsync();
+        await using (var db = fixture.CreateDbContext())
+        {
+            var profile = await db.Tanks.Where(t => t.Id == tank).Select(t => t.ProfileId).SingleAsync();
+            db.Vacations.Add(new Vacation { ProfileId = profile, StartDate = new DateOnly(2026, 10, 10), EndDate = new DateOnly(2026, 10, 15), CreatedAt = WaterChange });
+            await db.SaveChangesAsync();
+        }
+
+        var item = await ItemAsync(token, tank, "water_change", "2026-10-19");
+
+        Assert.False(item.TryGetProperty("streak", out var streak) && streak.ValueKind == JsonValueKind.Object);
+    }
+
     [Fact]
     public async Task GivenALoggedWaterChange_WhenReadingTheDueCare_ThenTheWindowMovesToTheNewPeriod()
     {

@@ -260,38 +260,6 @@ public sealed class WaterChangeStreakTests
         Assert.Equal(expected, WaterChangeStreaks.TankYear(new DateOnly(sy, sm, sd), new DateOnly(y, m, d)));
 
     [Fact]
-    public void AVacationInTheMiddlePausesThePeriodAndNeverExtendsTheStreak()
-    {
-        var vacation = new VacationSpan(Day(3), Day(30));
-        var streak = Run(Verified(0, 7, 33, 40), Day(41), vacations: [vacation]);
-        Assert.Equal([PeriodOutcome.Verified, PeriodOutcome.Bridged, PeriodOutcome.Verified], streak.Periods.Select(p => p.Outcome));
-        Assert.Equal(2, streak.Current);
-        Assert.Equal(2, streak.Longest);
-    }
-
-    [Fact]
-    public void AVacationDoesNotBreakAPeriodThatWouldOtherwiseHaveBeenMissed()
-    {
-        var vacation = new VacationSpan(Day(2), Day(21));
-        var withVacation = Run(Verified(0, 25), Day(25), vacations: [vacation]);
-        Assert.Equal(PeriodOutcome.Bridged, withVacation.Periods.Single().Outcome);
-        Assert.Equal(0, withVacation.Current);
-        Assert.Equal(WaterChangeStreakState.Running, withVacation.State);
-        var without = Run(Verified(0, 25), Day(25));
-        Assert.Equal(PeriodOutcome.Missed, without.Periods.Single().Outcome);
-    }
-
-    [Fact]
-    public void ADayOfVacationInsideALongerGapStillLeavesTheRestOfThePeriodTimed()
-    {
-        var vacation = new VacationSpan(Day(2), Day(4));
-        var kept = Run(Verified(0, 13), Day(13), vacations: [vacation]);
-        Assert.Equal(PeriodOutcome.Bridged, kept.Periods.Single().Outcome);
-        var missed = Run(Verified(0, 14), Day(14), vacations: [vacation]);
-        Assert.Equal(PeriodOutcome.Missed, missed.Periods.Single().Outcome);
-    }
-
-    [Fact]
     public void AWaterChangeDuringAVacationIsAnOrdinaryWaterChange()
     {
         var vacation = new VacationSpan(Day(2), Day(40));
@@ -310,13 +278,13 @@ public sealed class WaterChangeStreakTests
     }
 
     [Fact]
-    public void AfterTheVacationEndsTheDeadlineCountsOnlyDaysOutsideTheVacation()
+    public void AfterTheVacationEndsTheDeadlineIsTheGraceAfterTheLastVacationDay()
     {
         var vacation = new VacationSpan(Day(10), Day(59));
         var streak = Run(Verified(0, 7), Day(62), vacations: [vacation]);
         Assert.Equal(WaterChangeStreakState.Running, streak.State);
         Assert.Equal(1, streak.Current);
-        Assert.Equal(Day(7 + 10 + 50), streak.Deadline);
+        Assert.Equal(Day(62), streak.Deadline);
     }
 
     [Fact]

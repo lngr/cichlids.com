@@ -212,7 +212,7 @@ public sealed class StreakEndpointsTests(ApiFixture fixture) : IAsyncLifetime
     }
 
     [Fact]
-    public async Task GivenAPastVacation_WhenOthersRead_ThenItIsListedAndThePausedDaysDoNotBreakTheStreak()
+    public async Task GivenAPastVacation_WhenOthersRead_ThenItIsListedAndTheWaterChangeAfterItKeepsTheStreak()
     {
         var owner = await NewMemberAsync(fixture);
         var tank = await NewTankAsync(fixture, owner.ProfileId, TankVisibility.Public, TankVisibility.Public);
@@ -223,7 +223,7 @@ public sealed class StreakEndpointsTests(ApiFixture fixture) : IAsyncLifetime
         var viewer = await NewMemberAsync(fixture);
         var seen = await BodyAsync(await SendAsync(fixture, HttpMethod.Get, Url(tank), viewer.Token));
         Assert.Equal("running", seen.GetProperty("waterChange").GetProperty("state").GetString());
-        Assert.Equal(1, seen.GetProperty("waterChange").GetProperty("current").GetInt32());
+        Assert.Equal(2, seen.GetProperty("waterChange").GetProperty("current").GetInt32());
         var vacation = Assert.Single(seen.GetProperty("vacations").EnumerateArray());
         Assert.Equal("2026-09-10", vacation.GetProperty("startDate").GetString());
         Assert.Equal("2026-10-09", vacation.GetProperty("endDate").GetString());
