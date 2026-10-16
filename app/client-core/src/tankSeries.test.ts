@@ -24,4 +24,27 @@ describe("tank time-lapse API", () => {
       name: "ApiError", message: "Unavailable", status: 404, code: "tank_not_found",
     });
   });
+  it("adds a photo to the series as a multipart upload and returns the typed photo", async () => {
+    const photo = { mediaItemId: 9, image: { thumb: "t" }, takenAt: null, publishedAt: "2026-10-16T08:00:00Z" };
+    let request: Request | undefined;
+    const client = createCichlidsClient({
+      baseUrl: "https://api.test",
+      fetch: async input => {
+        request = input as Request;
+        return Response.json(photo, { status: 201 });
+      },
+    });
+    expect(await client.tanks.addTimeLapsePhoto(42, new Blob(["jpeg"], { type: "image/jpeg" }))).toEqual(photo);
+    expect(request?.method).toBe("POST");
+    expect(request?.url).toBe("https://api.test/api/tanks/42/time-lapse/photos");
+    expect(request?.headers.get("content-type")).toMatch(/^multipart\/form-data/);
+    expect((await request!.formData()).get("file")).toBeInstanceOf(Blob);
+  });
+  it("preserves the coded problem of a refused series photo", async () => {
+    const client = createCichlidsClient({
+      baseUrl: "https://api.test",
+      fetch: async () => Response.json({ code: "tank_photo_invalid", detail: "Bad photo" }, { status: 400 }),
+    });
+    await expect(client.tanks.addTimeLapsePhoto(42, new Blob(["x"]))).rejects.toMatchObject({ status: 400, code: "tank_photo_invalid" });
+  });
 });

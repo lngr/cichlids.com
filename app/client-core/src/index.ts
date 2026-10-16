@@ -42,6 +42,7 @@ export type {
   TankListItem,
   TankDetail,
   TankTimeLapse,
+  TankTimeLapsePhoto,
   TankMediaItem,
   Dimensions,
   WaterValues,
@@ -86,3 +87,4 @@ export {
   measurementMachine, PPM_PER_GERMAN_DEGREE, scaleSeries, seriesForDisplay, setField, setOrigin, showMore, validateDraft, valueInSystem, visibleParameters,
 } from "./measurement.js";
 export type { DisplayPoint, DisplaySeries, DraftErrors, MeasurementDraft, ScaledPoint, UnitSystem } from "./measurement.js";
+export { DEFAULT_OVERLAY_OPACITY, latestSeriesPhotoUrl, overlayOpacity, timeLapseCameraMachine } from "./timeLapseCamera.js";

@@ -38,6 +38,7 @@ import {
   getSpecies,
   getTank,
   getTankTimeLapse,
+  addTankSeriesPhoto,
   listCommunityCategories,
   listCommunityThreads,
   listMyDrafts,
@@ -100,6 +101,7 @@ import type {
   SpeciesListItemDto,
   TankDetailDto,
   TankTimeLapseDto,
+  TankTimeLapsePhotoDto,
   TankListItemDto,
   TankMediaItemDto,
   WaterValuesDto,
@@ -145,6 +147,7 @@ export type PictureDetail = PictureDetailDto;
 export type TankListItem = TankListItemDto;
 export type TankDetail = TankDetailDto;
 export type TankTimeLapse = TankTimeLapseDto;
+export type TankTimeLapsePhoto = TankTimeLapsePhotoDto;
 export type TankMediaItem = TankMediaItemDto;
 export type Dimensions = DimensionsDto;
 export type WaterValues = WaterValuesDto;
@@ -333,6 +336,8 @@ export interface CichlidsClient {
     list(params?: TanksListParams): Promise<PagedResponse<TankListItem>>;
     get(id: number): Promise<TankDetail>;
     timeLapse(id: number): Promise<TankTimeLapse>;
+    /** Adds a photo to the time-lapse series of an own tank. */
+    addTimeLapsePhoto(id: number, file: UploadFile): Promise<TankTimeLapsePhoto>;
     listComments(id: number, params?: PageParams): Promise<PagedResponse<Comment>>;
     createComment(id: number, request: CreateCommentRequest): Promise<CommentCreated>;
   };
@@ -469,6 +474,16 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
     tanks: {
       async timeLapse(id) {
         return unwrap(await getTankTimeLapse({ client, path: { id } }));
+      },
+      async addTimeLapsePhoto(id, file) {
+        return unwrap(await addTankSeriesPhoto({
+          client, path: { tankId: id }, body: { file: file as never },
+          bodySerializer: () => {
+            const formData = new FormData();
+            formData.append("file", file as never);
+            return formData;
+          },
+        }));
       },
       async refineRegion(id, region) {
         unwrap(await refineTankRegion({ client, path: { id }, body: { region } }));
