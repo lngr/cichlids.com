@@ -93,3 +93,6 @@ export {
 } from "./measurement.js";
 export type { DisplayPoint, DisplaySeries, DraftErrors, MeasurementDraft, ScaledPoint, UnitSystem } from "./measurement.js";
 export { DEFAULT_OVERLAY_OPACITY, latestSeriesPhotoUrl, overlayOpacity, timeLapseCameraMachine } from "./timeLapseCamera.js";
+
+export { PAIRING_WINDOW_MS, layoutChart, loadWaterChanges, pairWaterChanges } from "./waterChangeMarks.js";
+export type { ChartLayout, ChartLayoutOptions, LoadedWaterChange, PlacedMarker, WaterChangeLoadOptions, WaterChangeMark, WaterChangePair } from "./waterChangeMarks.js";
