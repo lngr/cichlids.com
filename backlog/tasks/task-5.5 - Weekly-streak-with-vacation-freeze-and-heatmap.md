@@ -4,7 +4,7 @@ title: Weekly streak with vacation freeze and heatmap
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 05:57'
+updated_date: '2026-10-16 06:15'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -49,4 +49,11 @@ A streak counts weeks with completed care, survives vacations through a freeze, 
 
 ### Rethink (project owner, 2026-10-16)
 - A streak built on self-reported care entries can be faked, unlike Strava (recorded activity) or Duolingo (completed lessons); a private streak with freeze is rejected. The streak should depend on verifiable factors, for example a current photo taken in the app each time, which also feeds the timeline; but any other subject could be photographed and would pollute the timeline. The concept is being reworked with the project owner; do not implement before.
+
+### Decided by the project owner (2026-10-16)
+- Several streaks can exist side by side.
+- A time-lapse streak: one guided in-app photo per week (TASK-5.11 camera) keeps it; it brings members back into the app. It earns reputation, has a leaderboard (how many members hold the streak, how long) from which the time-lapses can be watched directly.
+- Care heatmap (water changes, measurements) stays independent of the streak.
+- No freeze: instead the member declares a vacation, which pauses the streak for a good reason (nobody can change water while away); frequent vacations become visible.
+- The care (water change) streak is still being designed: self-reported entries are too easy to fake or to cheat oneself with; the project owner asks for creative ways to make it verifiable.
 <!-- SECTION:NOTES:END -->
