@@ -1258,6 +1258,255 @@
         }
       }
     },
+    "/api/me/media": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "ListMyMedia",
+        "parameters": [
+          {
+            "name": "kind",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResponseOfMediaLibraryItemDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/me/media/{id}": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "GetMyMedia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "utcOffsetMinutes",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MediaLibraryDetailDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "DeleteMyMedia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MediaLibraryDeletedDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/me/media/photos": {
+      "post": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "UploadMyMediaPhoto",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "$ref": "#/components/schemas/IFormFile"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MediaLibraryItemDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload Too Large"
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/me/onboarding": {
       "post": {
         "tags": [
@@ -8300,6 +8549,289 @@
           "video"
         ]
       },
+      "MediaLibraryDeletedDto": {
+        "required": [
+          "places"
+        ],
+        "type": "object",
+        "properties": {
+          "places": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MediaPlaceDto"
+            }
+          }
+        }
+      },
+      "MediaLibraryDetailDto": {
+        "required": [
+          "item",
+          "originalFilename",
+          "byteSize",
+          "capturedInApp",
+          "receivedAt",
+          "takenAt",
+          "canDelete",
+          "places",
+          "keepsStreak"
+        ],
+        "type": "object",
+        "properties": {
+          "item": {
+            "$ref": "#/components/schemas/MediaLibraryItemDto"
+          },
+          "originalFilename": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "byteSize": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "capturedInApp": {
+            "type": "boolean"
+          },
+          "receivedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "takenAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "canDelete": {
+            "type": "boolean"
+          },
+          "places": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MediaPlaceDto"
+            }
+          },
+          "keepsStreak": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MediaStreakWeekDto"
+            }
+          }
+        }
+      },
+      "MediaLibraryItemDto": {
+        "required": [
+          "id",
+          "kind",
+          "createdAt",
+          "width",
+          "height",
+          "image",
+          "video",
+          "placeCount",
+          "placeKinds"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/MediaKind"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "width": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "height": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "image": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ImageUrlsDto"
+              }
+            ]
+          },
+          "video": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/VideoDto"
+              }
+            ]
+          },
+          "placeCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "placeKinds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MediaPlaceKind"
+            }
+          }
+        }
+      },
+      "MediaPlaceDto": {
+        "required": [
+          "kind",
+          "name",
+          "tankId",
+          "careEntryId",
+          "storyId",
+          "storySlug",
+          "section",
+          "careKind",
+          "at"
+        ],
+        "type": "object",
+        "properties": {
+          "kind": {
+            "$ref": "#/components/schemas/MediaPlaceKind"
+          },
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "tankId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "careEntryId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "storyId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "storySlug": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "section": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TankMediaSection"
+              }
+            ]
+          },
+          "careKind": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/CareKind"
+              }
+            ]
+          },
+          "at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "MediaPlaceKind": {
+        "enum": [
+          "tank",
+          "tank_main",
+          "decommission_proof",
+          "inhabitant",
+          "care_entry",
+          "water_change",
+          "story",
+          "discussion_post",
+          "profile_avatar",
+          "profile_header"
+        ]
+      },
+      "MediaStreakWeekDto": {
+        "required": [
+          "tankId",
+          "tankTitle",
+          "weekStart"
+        ],
+        "type": "object",
+        "properties": {
+          "tankId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "tankTitle": {
+            "type": "string"
+          },
+          "weekStart": {
+            "type": "string"
+          }
+        }
+      },
       "MeDto": {
         "required": [
           "profile",
@@ -8619,6 +9151,29 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CommunityThreadListItemDto"
+            }
+          }
+        }
+      },
+      "PagedResponseOfMediaLibraryItemDto": {
+        "required": [
+          "total",
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MediaLibraryItemDto"
             }
           }
         }
@@ -10223,6 +10778,18 @@
             "$ref": "#/components/schemas/ImageUrlsDto"
           }
         }
+      },
+      "TankMediaSection": {
+        "enum": [
+          "showcase",
+          "decoration",
+          "technic",
+          "time_lapse",
+          "video",
+          "decommission",
+          "recommission",
+          null
+        ]
       },
       "TankMemberDto": {
         "required": [

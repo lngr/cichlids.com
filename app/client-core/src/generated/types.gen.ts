@@ -402,6 +402,54 @@ export type MeasurementValueRequest = {
 
 export type MediaKind = 'photo' | 'video';
 
+export type MediaLibraryDeletedDto = {
+    places: Array<MediaPlaceDto>;
+};
+
+export type MediaLibraryDetailDto = {
+    item: MediaLibraryItemDto;
+    originalFilename: null | string;
+    byteSize: null | number | string;
+    capturedInApp: boolean;
+    receivedAt: string;
+    takenAt: null | string;
+    canDelete: boolean;
+    places: Array<MediaPlaceDto>;
+    keepsStreak: Array<MediaStreakWeekDto>;
+};
+
+export type MediaLibraryItemDto = {
+    id: number | string;
+    kind: MediaKind;
+    createdAt: string;
+    width: null | number | string;
+    height: null | number | string;
+    image: null | ImageUrlsDto;
+    video: null | VideoDto;
+    placeCount: number | string;
+    placeKinds: Array<MediaPlaceKind>;
+};
+
+export type MediaPlaceDto = {
+    kind: MediaPlaceKind;
+    name: null | string;
+    tankId: null | number | string;
+    careEntryId: null | number | string;
+    storyId: null | number | string;
+    storySlug: null | string;
+    section: null | TankMediaSection;
+    careKind: null | CareKind;
+    at: null | string;
+};
+
+export type MediaPlaceKind = 'tank' | 'tank_main' | 'decommission_proof' | 'inhabitant' | 'care_entry' | 'water_change' | 'story' | 'discussion_post' | 'profile_avatar' | 'profile_header';
+
+export type MediaStreakWeekDto = {
+    tankId: number | string;
+    tankTitle: string;
+    weekStart: string;
+};
+
 export type MeDto = {
     profile: ProfileDetailDto;
     roles: Array<string>;
@@ -469,6 +517,11 @@ export type PagedResponseOfCommentDto = {
 export type PagedResponseOfCommunityThreadListItemDto = {
     total: number | string;
     items: Array<CommunityThreadListItemDto>;
+};
+
+export type PagedResponseOfMediaLibraryItemDto = {
+    total: number | string;
+    items: Array<MediaLibraryItemDto>;
 };
 
 export type PagedResponseOfOutboxEventDto = {
@@ -761,6 +814,8 @@ export type TankMediaItemDto = {
     mediaItemId: number | string;
     image: ImageUrlsDto;
 };
+
+export type TankMediaSection = 'showcase' | 'decoration' | 'technic' | 'time_lapse' | 'video' | 'decommission' | 'recommission';
 
 export type TankMemberDto = {
     member: AuthorDto;
@@ -1695,6 +1750,136 @@ export type UpdateMySettingsResponses = {
 };
 
 export type UpdateMySettingsResponse = UpdateMySettingsResponses[keyof UpdateMySettingsResponses];
+
+export type ListMyMediaData = {
+    body?: never;
+    path?: never;
+    query?: {
+        kind?: string;
+        filter?: string;
+        offset?: number | string;
+        limit?: number | string;
+    };
+    url: '/api/me/media';
+};
+
+export type ListMyMediaErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+};
+
+export type ListMyMediaError = ListMyMediaErrors[keyof ListMyMediaErrors];
+
+export type ListMyMediaResponses = {
+    /**
+     * OK
+     */
+    200: PagedResponseOfMediaLibraryItemDto;
+};
+
+export type ListMyMediaResponse = ListMyMediaResponses[keyof ListMyMediaResponses];
+
+export type DeleteMyMediaData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/media/{id}';
+};
+
+export type DeleteMyMediaErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type DeleteMyMediaError = DeleteMyMediaErrors[keyof DeleteMyMediaErrors];
+
+export type DeleteMyMediaResponses = {
+    /**
+     * OK
+     */
+    200: MediaLibraryDeletedDto;
+};
+
+export type DeleteMyMediaResponse = DeleteMyMediaResponses[keyof DeleteMyMediaResponses];
+
+export type GetMyMediaData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/me/media/{id}';
+};
+
+export type GetMyMediaErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetMyMediaError = GetMyMediaErrors[keyof GetMyMediaErrors];
+
+export type GetMyMediaResponses = {
+    /**
+     * OK
+     */
+    200: MediaLibraryDetailDto;
+};
+
+export type GetMyMediaResponse = GetMyMediaResponses[keyof GetMyMediaResponses];
+
+export type UploadMyMediaPhotoData = {
+    body: {
+        file?: IFormFile;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/me/media/photos';
+};
+
+export type UploadMyMediaPhotoErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Payload Too Large
+     */
+    413: unknown;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type UploadMyMediaPhotoError = UploadMyMediaPhotoErrors[keyof UploadMyMediaPhotoErrors];
+
+export type UploadMyMediaPhotoResponses = {
+    /**
+     * Created
+     */
+    201: MediaLibraryItemDto;
+};
+
+export type UploadMyMediaPhotoResponse = UploadMyMediaPhotoResponses[keyof UploadMyMediaPhotoResponses];
 
 export type CompleteOnboardingData = {
     body: OnboardingRequest;
