@@ -4,6 +4,7 @@ title: Provisional app accounts and the public web as a funnel
 status: Draft
 assignee: []
 created_date: '2026-10-16 05:30'
+updated_date: '2026-10-16 05:53'
 labels: []
 dependencies: []
 ---
@@ -30,3 +31,10 @@ dependencies: []
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Decided by the project owner (2026-10-16)
+- Provisional accounts may create their own tanks and log care, private until the member registers; registering keeps everything.
+<!-- SECTION:NOTES:END -->
