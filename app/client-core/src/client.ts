@@ -298,6 +298,23 @@ function unwrapPaged<T>(result: { data?: { total: number | string; items: T[] };
   return { total: Number(body.total), items: body.items };
 }
 
+/**
+ * The paths of the private media of a tank (photo variants and video files behind signed tokens) are
+ * relative to the API; every such string anywhere in a response becomes an absolute URL, so an image or
+ * video player can load it. Public URLs are already absolute and stay as they are.
+ */
+const TANK_MEDIA_PATH = /^\/api\/tank-(media|videos)\//;
+function absolutizeTankMedia<T>(value: T, baseUrl: string): T {
+  const root = baseUrl.replace(/\/+$/, "");
+  const visit = (item: unknown): unknown => {
+    if (typeof item === "string") return TANK_MEDIA_PATH.test(item) ? `${root}${item}` : item;
+    if (Array.isArray(item)) return item.map(visit);
+    if (item !== null && typeof item === "object") return Object.fromEntries(Object.entries(item).map(([key, entry]) => [key, visit(entry)]));
+    return item;
+  };
+  return visit(value) as T;
+}
+
 const toDue = (due: CareDueDto): CareDue => ({ state: due.state, days: Number(due.days), dueDate: due.dueDate });
 const toReason = (reason: CareReasonDto): CareReason => ({ code: reason.code, parameters: reason.parameters });
 const toPlan = (plan: CarePlanDto): CarePlan => ({
@@ -525,7 +542,7 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       async unsubscribe(endpoint) { unwrap(await unsubscribeWebPush({ client, body: { endpoint } })); },
     },
     videos: {
-      async listForTank(tankId) { return unwrap(await listTankVideos({ client, path: { tankId } })); },
+      async listForTank(tankId) { return absolutizeTankMedia(unwrap(await listTankVideos({ client, path: { tankId } })), options.baseUrl); },
       async removeFromTank(tankId, mediaItemId) { unwrap(await removeTankVideo({ client, path: { tankId, mediaItemId } })); },
       async removeFromCareEntry(tankId, entryId, mediaItemId) {
         return unwrap(await removeCareVideo({ client, path: { tankId, id: entryId, mediaItemId } }));
@@ -585,17 +602,17 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
     },
     tanks: {
       async timeLapse(id) {
-        return unwrap(await getTankTimeLapse({ client, path: { id } }));
+        return absolutizeTankMedia(unwrap(await getTankTimeLapse({ client, path: { id } })), options.baseUrl);
       },
       async addTimeLapsePhoto(id, file) {
-        return unwrap(await addTankSeriesPhoto({
+        return absolutizeTankMedia(unwrap(await addTankSeriesPhoto({
           client, path: { tankId: id }, body: { file: file as never },
           bodySerializer: () => {
             const formData = new FormData();
             formData.append("file", file as never);
             return formData;
           },
-        }));
+        })), options.baseUrl);
       },
       async setVisibility(id, levels) {
         return unwrap(await setTankVisibility({ client, path: { id }, body: levels }));
@@ -609,11 +626,11 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async list(params) {
         const result = await listTanks({ client, query: params ?? {} });
-        return unwrapPaged(result);
+        return absolutizeTankMedia(unwrapPaged(result), options.baseUrl);
       },
       async get(id) {
         const result = await getTank({ client, path: { id } });
-        return unwrap(result);
+        return absolutizeTankMedia(unwrap(result), options.baseUrl);
       },
       async listComments(id, params) {
         const result = await listTankComments({ client, path: { id }, query: params ?? {} });
@@ -664,7 +681,7 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
     },
     me: {
       async today(date) {
-        return unwrap(await getToday({ client, query: { date } }));
+        return absolutizeTankMedia(unwrap(await getToday({ client, query: { date } })), options.baseUrl);
       },
       async completeOnboarding(request) {
         return unwrap(await completeOnboarding({ client, body: request }));

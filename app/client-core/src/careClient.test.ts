@@ -126,3 +126,19 @@ it("sends the answer to the public question when creating a tank", async () => {
   await client.tanks.create({ title: "Answered", isPublic: false });
   expect(await requests[0].json()).toEqual({ title: "Answered", isPublic: false });
 });
+it("turns the signed paths of private tank media into absolute URLs and leaves public URLs alone", async () => {
+  const client = createCichlidsClient({ baseUrl: "http://media.test/", fetch: async request => {
+    const url = (request as Request).url;
+    if (url.endsWith("/time-lapse")) {
+      return Response.json({ isShowcase: false, posts: [], videos: [{ id: 1, posterUrl: "/api/tank-videos/abc/poster.jpg", playlistUrl: "/api/tank-videos/abc/master.m3u8" }],
+        photos: [{ mediaItemId: 1, image: { thumb: "/api/tank-media/t1", small: "http://cdn.test/variants/small/a.jpg", medium: null, large: null } }] });
+    }
+    return Response.json({ id: 1, mainImage: { thumb: "/api/tank-media/t2" }, sections: { showcase: [{ mediaItemId: 2, image: { thumb: "/api/tank-media/t3" } }] } });
+  } });
+  const series = await client.tanks.timeLapse(1);
+  expect(series.photos[0].image).toEqual({ thumb: "http://media.test/api/tank-media/t1", small: "http://cdn.test/variants/small/a.jpg", medium: null, large: null });
+  expect(series.videos[0].playlistUrl).toBe("http://media.test/api/tank-videos/abc/master.m3u8");
+  const tank = await client.tanks.get(1);
+  expect(tank.mainImage?.thumb).toBe("http://media.test/api/tank-media/t2");
+  expect(tank.sections.showcase[0].image.thumb).toBe("http://media.test/api/tank-media/t3");
+});
