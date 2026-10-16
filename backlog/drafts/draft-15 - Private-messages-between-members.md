@@ -4,6 +4,7 @@ title: Private messages between members
 status: Draft
 assignee: []
 created_date: '2026-10-16 06:27'
+updated_date: '2026-10-16 06:32'
 labels: []
 dependencies: []
 ---
@@ -26,3 +27,12 @@ Members write each other private messages with a private inbox, without revealin
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Decided by the project owner (2026-10-16)
+- Private messages only between members who follow each other (mutual follow).
+### Proposal of the main session
+- Mutual follow keeps spam out; still needed: blocking (ends the conversation and the mutual follow), reporting a conversation to moderation (only reported messages become visible to moderators), rate limits, notifications.
+<!-- SECTION:NOTES:END -->

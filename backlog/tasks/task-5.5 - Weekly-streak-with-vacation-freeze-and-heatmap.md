@@ -4,7 +4,7 @@ title: Weekly streak with vacation freeze and heatmap
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 06:27'
+updated_date: '2026-10-16 06:32'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -66,4 +66,7 @@ A streak counts weeks with completed care, survives vacations through a freeze, 
 - Vacation: either activated in advance (not public while active; published only after the return, which also avoids revealing absence) or recorded afterwards. Vacation skips any length of time without breaking a streak, but vacation weeks never extend it. The profile shows the vacation share, so implausible amounts are visible; there is no yearly vacation budget. Later leaderboards rank by how complete a streak is (DRAFT-14); a criterion against permanent vacation is worked out later.
 - Care sponsor (a neighbour or parent who takes the photo on behalf of a teenager): later feature, DRAFT-16.
 - Proposal of the main session, not yet confirmed: a week with a water change but without evidence neither extends nor breaks the streak; a week without any water change breaks it unless it is a vacation.
+
+- Week without evidence (decided by the project owner, 2026-10-16): a week with a water change but without evidence does not break the water change streak.
+- Evidence (decided by the project owner, 2026-10-16): the completed guided water change mode with its timer is the evidence; photos are an optional fun extra that creates content, not a requirement.
 <!-- SECTION:NOTES:END -->

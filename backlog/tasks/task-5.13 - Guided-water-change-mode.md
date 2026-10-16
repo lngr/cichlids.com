@@ -4,7 +4,7 @@ title: Guided water change mode
 status: In Progress
 assignee: []
 created_date: '2026-10-16 06:27'
-updated_date: '2026-10-16 06:29'
+updated_date: '2026-10-16 06:32'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -35,3 +35,9 @@ A wizard guides a water change step by step and produces the evidence for the wa
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Evidence rule (decided by the project owner, 2026-10-16): verified means the guided mode was started and finished in the app with at least 10 minutes between the start of draining and the finish; photos are optional and do not change the evidence state.
+<!-- SECTION:NOTES:END -->
