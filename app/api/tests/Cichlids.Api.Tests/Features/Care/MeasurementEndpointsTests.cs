@@ -221,6 +221,64 @@ public sealed class MeasurementEndpointsTests(ApiFixture fixture) : IAsyncLifeti
         Assert.Empty((await BodyAsync(none)).GetProperty("points").EnumerateArray());
     }
 
+    [Fact]
+    public async Task GivenMeasurementsOfSeveralParameters_WhenReadingAllSeries_ThenEachParameterWithPointsIsListedOldestFirstWithinTheRange()
+    {
+        var (token, tank) = await OwnTankAsync();
+        var (otherToken, otherTank) = await OwnTankAsync();
+        var day = DateTimeOffset.UtcNow.AddDays(-10);
+        await LogAsync(token, tank, day.AddDays(2), ("ph", 7.6m, "test_kit"), ("no3", 30m, null));
+        await LogAsync(token, tank, day, ("ph", 7.0m, "meter"), ("no3", 10m, null));
+        await LogAsync(token, tank, day.AddDays(1), ("ph", 7.3m, null));
+        await LogAsync(otherToken, otherTank, day, ("tds", 200m, null));
+        using var response = await SendAsync(HttpMethod.Get, $"/api/tanks/{tank}/care/series/all", token);
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var series = (await BodyAsync(response)).GetProperty("series").EnumerateArray().ToList();
+        Assert.Equal(new[] { "ph", "no3" }.Order(), series.Select(s => s.GetProperty("parameter").GetString()!).Order());
+        var ph = series.Single(s => s.GetProperty("parameter").GetString() == "ph");
+        Assert.Equal("none", ph.GetProperty("unit").GetString());
+        Assert.Equal(new[] { 7.0m, 7.3m, 7.6m }, ph.GetProperty("points").EnumerateArray().Select(p => p.GetProperty("value").GetDecimal()));
+        var no3 = series.Single(s => s.GetProperty("parameter").GetString() == "no3");
+        Assert.Equal("mg_per_liter", no3.GetProperty("unit").GetString());
+        Assert.Equal(new[] { 10m, 30m }, no3.GetProperty("points").EnumerateArray().Select(p => p.GetProperty("value").GetDecimal()));
+        var from = Uri.EscapeDataString(day.AddHours(12).ToString("o"));
+        var to = Uri.EscapeDataString(day.AddDays(1).AddHours(12).ToString("o"));
+        using var ranged = await SendAsync(HttpMethod.Get, $"/api/tanks/{tank}/care/series/all?from={from}&to={to}", token);
+        var inRange = Assert.Single((await BodyAsync(ranged)).GetProperty("series").EnumerateArray());
+        Assert.Equal("ph", inRange.GetProperty("parameter").GetString());
+        Assert.Equal(new[] { 7.3m }, inRange.GetProperty("points").EnumerateArray().Select(p => p.GetProperty("value").GetDecimal()));
+        using var empty = await SendAsync(HttpMethod.Get, $"/api/tanks/{otherTank}/care/series/all?from={from}&to={from}", otherToken);
+        Assert.Empty((await BodyAsync(empty)).GetProperty("series").EnumerateArray());
+    }
+
+    [Theory]
+    [InlineData("?from=2026-02-01T00:00:00Z&to=2026-01-01T00:00:00Z", "care_range_invalid")]
+    [InlineData("?from=yesterday", "care_request_invalid")]
+    public async Task GivenInvalidAllSeriesQuery_WhenReading_ThenCodedProblem(string query, string code)
+    {
+        var (token, tank) = await OwnTankAsync();
+        using var response = await SendAsync(HttpMethod.Get, $"/api/tanks/{tank}/care/series/all{query}", token);
+        await AssertProblemAsync(response, HttpStatusCode.BadRequest, code);
+    }
+
+    [Fact]
+    public async Task GivenMissingTank_WhenReadingAllSeries_ThenCoded404()
+    {
+        var (owner, _) = await OwnTankAsync();
+        using var missing = await SendAsync(HttpMethod.Get, "/api/tanks/9223372036854775807/care/series/all", owner);
+        await AssertProblemAsync(missing, HttpStatusCode.NotFound, "care_not_found");
+    }
+
+    [Theory]
+    [InlineData("/api/tanks/1/care/series/allx")]
+    [InlineData("/api/tanks/1/care/series/all/1")]
+    public async Task GivenSimilarAllSeriesRoute_WhenItFails_ThenNoCareProblemCode(string url)
+    {
+        using var response = await SendAsync(HttpMethod.Get, url, null);
+        Assert.NotEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.DoesNotContain("care_", await response.Content.ReadAsStringAsync(), StringComparison.Ordinal);
+    }
+
     [Theory]
     [InlineData("", "care_parameter_invalid")]
     [InlineData("?parameter=salinity", "care_parameter_invalid")]

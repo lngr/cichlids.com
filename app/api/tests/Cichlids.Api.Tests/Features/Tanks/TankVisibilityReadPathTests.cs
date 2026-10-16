@@ -160,6 +160,26 @@ public sealed class TankVisibilityReadPathTests(ApiFixture fixture) : IAsyncLife
 
     [Theory]
     [MemberData(nameof(Matrix))]
+    public async Task AllCareSeries_ShowTheStreamAndNeverTheMeasurementsMarkedOnlyMe(Viewer viewer, string which, bool profileVisible, bool streamVisible)
+    {
+        _ = profileVisible;
+        var tank = TankOf(which);
+        using var response = await GetAsync(viewer, $"/api/tanks/{tank}/care/series/all");
+        if (!streamVisible)
+        {
+            await AssertProblemAsync(response, HttpStatusCode.NotFound, "care_not_found");
+            return;
+        }
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var series = (await BodyAsync(response)).GetProperty("series").EnumerateArray()
+            .Single(s => s.GetProperty("parameter").GetString() == "ph");
+        var values = series.GetProperty("points").EnumerateArray().Select(p => p.GetProperty("value").GetDecimal()).ToList();
+        Assert.Equal(viewer == Viewer.Owner ? [7.0m, 8.5m] : [7.0m], values.Order());
+    }
+
+    [Theory]
+    [MemberData(nameof(Matrix))]
     public async Task CarePlan_ShowsTheStreamAndIgnoresEntriesMarkedOnlyMe(Viewer viewer, string which, bool profileVisible, bool streamVisible)
     {
         _ = profileVisible;

@@ -20,7 +20,7 @@ public static partial class CareEndpoints
     /// </summary>
     public static bool IsCarePath(PathString path) => path.HasValue && CarePath().IsMatch(path.Value!);
 
-    [GeneratedRegex("^(/api/tanks/[0-9]+/care(/[0-9]+(/photos(/[0-9]+)?|/videos/[0-9]+|/todos)?|/series|/heatmap|/plan|/plan/[a-z_]+)?|/api/tanks/[0-9]+/todos|/api/tanks/[0-9]+/water-changes(/current|/[0-9]+(/steps/[a-z_]+|/photos/[a-z_]+|/finish)?)?|/api/me/todos(/[0-9]+)?|/api/me/care/(due|heatmap|reminders/snooze)|/api/care-photos/[^/]+|/api/care-videos/[^/]+/.+)/?$", RegexOptions.CultureInvariant)]
+    [GeneratedRegex("^(/api/tanks/[0-9]+/care(/[0-9]+(/photos(/[0-9]+)?|/videos/[0-9]+|/todos)?|/series(/all)?|/heatmap|/plan|/plan/[a-z_]+)?|/api/tanks/[0-9]+/todos|/api/tanks/[0-9]+/water-changes(/current|/[0-9]+(/steps/[a-z_]+|/photos/[a-z_]+|/finish)?)?|/api/me/todos(/[0-9]+)?|/api/me/care/(due|heatmap|reminders/snooze)|/api/care-photos/[^/]+|/api/care-videos/[^/]+/.+)/?$", RegexOptions.CultureInvariant)]
     private static partial Regex CarePath();
 
     public static IEndpointRouteBuilder MapCareEndpoints(this IEndpointRouteBuilder app)
@@ -28,6 +28,7 @@ public static partial class CareEndpoints
         var group = app.MapGroup("/api/tanks/{tankId:long}/care").WithTags("Care");
         group.MapGet("", ListAsync).WithName("ListCareEntries").ProducesProblem(404);
         group.MapGet("/series", SeriesAsync).WithName("GetCareSeries").ProducesProblem(400).ProducesProblem(404);
+        group.MapGet("/series/all", AllSeriesAsync).WithName("ListCareSeries").ProducesProblem(400).ProducesProblem(404);
         group.MapPost("", LogAsync).WithName("LogCareEntry").RequireAuthorization()
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
         group.MapPatch("/{id:long}", UpdateAsync).WithName("UpdateCareEntry").RequireAuthorization()
@@ -131,14 +132,39 @@ public static partial class CareEndpoints
         if (await StreamAccessAsync(tankId, user, access, ct) is not { } stream) return Problem("care_not_found");
         if (!SnakeCaseEnum.TryParse<CareParameter>(parameter, out var kind)) return Problem("care_parameter_invalid");
         if (start > end) return Problem("care_range_invalid");
+        return TypedResults.Ok(await ReadSeriesAsync(db, tankId, stream.IsOwner, kind, start, end, ct));
+    }
+
+    /// <summary>
+    /// The series of every parameter that has points in the range, each with its newest points oldest first.
+    /// </summary>
+    private static async Task<Results<Ok<CareAllSeriesDto>, ProblemHttpResult>> AllSeriesAsync(
+        long tankId, [FromQuery(Name = "from")] DateTimeOffset? start, [FromQuery(Name = "to")] DateTimeOffset? end,
+        ClaimsPrincipal user, TankAccessService access, CichlidsDbContext db, CancellationToken ct)
+    {
+        if (await StreamAccessAsync(tankId, user, access, ct) is not { } stream) return Problem("care_not_found");
+        if (start > end) return Problem("care_range_invalid");
+        var series = new List<CareSeriesDto>();
+        foreach (var kind in Enum.GetValues<CareParameter>())
+        {
+            var item = await ReadSeriesAsync(db, tankId, stream.IsOwner, kind, start, end, ct);
+            if (item.Points.Count > 0) series.Add(item);
+        }
+
+        return TypedResults.Ok(new CareAllSeriesDto(series));
+    }
+
+    private static async Task<CareSeriesDto> ReadSeriesAsync(
+        CichlidsDbContext db, long tankId, bool isOwner, CareParameter kind, DateTimeOffset? start, DateTimeOffset? end, CancellationToken ct)
+    {
         var points = db.CareMeasurementValues.AsNoTracking().Where(v => v.Parameter == kind)
-            .Join(db.CareEntries.Where(e => e.TankId == tankId && (stream.IsOwner || !e.OnlyMe) && (start == null || e.OccurredAt >= start) && (end == null || e.OccurredAt <= end)),
+            .Join(db.CareEntries.Where(e => e.TankId == tankId && (isOwner || !e.OnlyMe) && (start == null || e.OccurredAt >= start) && (end == null || e.OccurredAt <= end)),
                 v => v.CareEntryId, e => e.Id, (v, e) => new { Value = v, Entry = e });
         var newest = await points.OrderByDescending(p => p.Entry.OccurredAt).ThenByDescending(p => p.Entry.Id).Take(MaxSeriesPoints)
             .Select(p => new CareSeriesPointDto(p.Entry.Id, p.Entry.OccurredAt, p.Value.NormalizedValue, p.Value.InputValue, p.Value.InputUnit, p.Value.Origin))
             .ToListAsync(ct);
         newest.Reverse();
-        return TypedResults.Ok(new CareSeriesDto(kind, CareMeasurements.RuleFor(kind).CanonicalUnit, newest));
+        return new CareSeriesDto(kind, CareMeasurements.RuleFor(kind).CanonicalUnit, newest);
     }
 
     private static async Task<Results<Created<CareEntryDto>, ProblemHttpResult>> LogAsync(

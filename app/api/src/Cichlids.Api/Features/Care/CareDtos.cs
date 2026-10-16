@@ -32,6 +32,7 @@ public sealed record CareEntryDto(long Id, long TankId, long AuthorProfileId, Ca
 public sealed record CareSeriesPointDto(long EntryId, DateTimeOffset OccurredAt, decimal Value, decimal InputValue,
     MeasurementUnit InputUnit, MeasurementOrigin? Origin);
 public sealed record CareSeriesDto(CareParameter Parameter, MeasurementUnit Unit, IReadOnlyList<CareSeriesPointDto> Points);
+public sealed record CareAllSeriesDto(IReadOnlyList<CareSeriesDto> Series);
 public sealed record CareReasonDto(string Code, IReadOnlyDictionary<string, string>? Parameters);
 public sealed record CareDueDto(CareDueState State, int Days, string? DueDate);
 /// <summary>
