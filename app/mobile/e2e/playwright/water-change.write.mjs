@@ -1,8 +1,8 @@
 // Story: TASK-5.13
 // The guided water change on the web build: a member starts it from the care view of an own tank,
-// checks off the steps, takes the drained and the refilled photo with the camera of the app (a
-// fake camera device) and finishes. The water change entry then exists with its duration and both
-// photos, and its evidence is verified. A second water change is started from the due care on
+// checks off the steps, takes two photos while draining and one after refilling with the camera of the
+// app (a fake camera device) and finishes. The water change entry then exists with its duration and
+// the three photos, and its evidence is verified. A second water change is started from the due care on
 // Today, survives a reload and ends with calm "not verified" wording when steps were skipped; a
 // third one has a long enough draining time but no photo, so it is partial with the missing photo.
 // The write stack counts the draining time as long enough from E2E_WATER_CHANGE_MIN_SECONDS seconds
@@ -70,7 +70,7 @@ try {
   await page.goto(`${WEB_URL}/me?lang=en`, { waitUntil: "networkidle" });
   await logInThroughKeycloak(page);
 
-  // AC #1: start from the care view, check off the steps, take both photos in the app, finish.
+  // AC #1: start from the care view, check off the steps, take several photos in the app, finish.
   await page.goto(`${WEB_URL}/tanks/${tank.id}?view=care`, { waitUntil: "networkidle" });
   await byTestId(page, "care-guided-water-change").click();
   await progress(page, 1);
@@ -88,6 +88,13 @@ try {
   await sizeOk(page, ["water-change-use", "water-change-retake", "water-change-photo-skip"]);
   await page.screenshot({ path: "/tmp/task-5.13-review-light.png" });
   await byTestId(page, "water-change-use").click();
+  await page.getByText("Photo added (1 of 6)", { exact: true }).waitFor({ timeout: 30000 });
+  await sizeOk(page, ["water-change-done", "water-change-another"]);
+  await byTestId(page, "water-change-another").click();
+  await shoot(page);
+  await byTestId(page, "water-change-use").click();
+  await page.getByText("Photo added (2 of 6)", { exact: true }).waitFor({ timeout: 30000 });
+  await byTestId(page, "water-change-done").click();
   await progress(page, 4);
   await byTestId(page, "water-change-tip-conditioner").click();
   await sizeOk(page, ["water-change-tip-conditioner", "water-change-tip-temperature_matched"]);
@@ -101,6 +108,8 @@ try {
   await progress(page, 7);
   await shoot(page);
   await byTestId(page, "water-change-use").click();
+  await page.getByText("Photo added (3 of 6)", { exact: true }).waitFor({ timeout: 30000 });
+  await byTestId(page, "water-change-done").click();
   await progress(page, 8);
   await finishWithAmount(page, 25);
   await page.screenshot({ path: "/tmp/task-5.13-summary-light.png" });
@@ -116,7 +125,7 @@ try {
   assert.ok(entry.durationSeconds >= minSeconds, "the entry has the duration");
   assert.equal(entry.evidence.state, "verified");
   assert.deepEqual(entry.evidence.missing, []);
-  assert.equal(entry.photos.length, 2, "both photos are attached");
+  assert.equal(entry.photos.length, 3, "all three photos are attached");
   assert.equal(entry.amount.unit, "percent");
   assert.ok(entry.waterChangeSessionId > 0);
   for (const photo of entry.photos) assert.ok(photo.urls.thumb.startsWith("/api/care-photos/"), "the photos use private signed URLs");
@@ -202,7 +211,7 @@ try {
   await page.goto(`${WEB_URL}/me?lang=en`, { waitUntil: "networkidle" });
   await signOutThroughKeycloak(page).catch(() => {});
   assert.deepEqual(errors, []);
-  console.log("TASK-5.13: guided steps, timers, app camera photos, private evidence photos, verified entry with duration, resume after reload, skipped steps without blocking, partial evidence with the missing photo and cancel passed.");
+  console.log("TASK-5.13: guided steps, timers, several app camera photos, private evidence photos, verified entry with duration, resume after reload, skipped steps without blocking, partial evidence with the missing photo and cancel passed.");
 } finally {
   await dark?.close();
   await light?.close();
