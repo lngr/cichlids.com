@@ -141,5 +141,6 @@ export { PAIRING_WINDOW_MS, layoutChart, loadWaterChanges, pairWaterChanges } fr
 export type { ChartLayout, ChartLayoutOptions, LoadedWaterChange, PlacedMarker, WaterChangeLoadOptions, WaterChangeMark, WaterChangePair } from "./waterChangeMarks.js";
 
 export { DeviceAuthError, createDeviceAuth, deviceSignatureMessage, toBase64Url } from "./deviceAuth.js";
-export type { DeviceAuth, DeviceAuthOptions, DeviceCredential, DeviceCredentialStore, DeviceKeyProvider, DeviceToken } from "./deviceAuth.js";
+export type { DeviceAuth, DeviceAuthOptions, DeviceCredential, DeviceCredentialStore, DeviceKeyProvider, DeviceProof, DeviceToken } from "./deviceAuth.js";
+export type { ProvisionalContent, RegistrationMode, RegistrationMove, RegistrationPreview } from "./registration.js";
 export { createWebCryptoKeyProvider } from "./deviceAuthWebCrypto.js";

@@ -48,9 +48,24 @@ export interface DeviceAuthOptions {
   renewBeforeMs?: number;
 }
 
+/**
+ * A challenge signed by the installation, the body that proves possession of the device key. The
+ * API accepts each proof once and within minutes of its timestamp.
+ */
+export interface DeviceProof {
+  challenge: string;
+  credentialId: string;
+  /** Whole seconds since 1970-01-01T00:00:00Z. */
+  timestamp: number;
+  /** The 64 bytes r and s of the signature, base64url. */
+  signature: string;
+}
+
 export interface DeviceAuth {
   /** The cached token, or a new one signed with the key of the installation. Parallel calls share one exchange. */
   getAccessToken(): Promise<string>;
+  /** Asks for a fresh challenge and signs it; the proof serves one request, such as handing the content of the installation to an account. */
+  signProof(): Promise<DeviceProof>;
   /** Creates the key pair when missing and registers it with the API when the installation has no credential. */
   ensureRegistered(): Promise<DeviceCredential>;
   /** Drops the cached token, so the next call signs a new challenge; for a request the API answered with 401. */
@@ -128,17 +143,16 @@ export function createDeviceAuth(options: DeviceAuthOptions): DeviceAuth {
     return credential;
   }
 
-  async function exchange(): Promise<DeviceToken> {
+  async function signProof(): Promise<DeviceProof> {
     const { credentialId } = await ensureRegistered();
     const { challenge } = await post<{ challenge: string }>("/api/auth/device/challenges", {});
     const timestamp = Math.floor(now() / 1000);
     const signature = await options.keys.sign(deviceSignatureMessage(challenge, credentialId, timestamp));
-    const issued = await post<{ accessToken: string; expiresAt: string }>("/api/auth/device/tokens", {
-      challenge,
-      credentialId,
-      timestamp,
-      signature: toBase64Url(signature),
-    });
+    return { challenge, credentialId, timestamp, signature: toBase64Url(signature) };
+  }
+
+  async function exchange(): Promise<DeviceToken> {
+    const issued = await post<{ accessToken: string; expiresAt: string }>("/api/auth/device/tokens", await signProof());
     return { accessToken: issued.accessToken, expiresAt: Date.parse(issued.expiresAt) };
   }
 
@@ -151,6 +165,7 @@ export function createDeviceAuth(options: DeviceAuthOptions): DeviceAuth {
 
   return {
     ensureRegistered,
+    signProof,
     invalidate() {
       token = undefined;
     },

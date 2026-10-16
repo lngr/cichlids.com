@@ -1,6 +1,8 @@
 import { createClient, createConfig } from "./generated/client/index.js";
 import type { Client } from "./generated/client/index.js";
 import type { DeviceAuth } from "./deviceAuth.js";
+import { toRegistrationMove, toRegistrationPreview } from "./registration.js";
+import type { RegistrationMove, RegistrationPreview } from "./registration.js";
 import type { VideoUploadTransport } from "./videoUpload.js";
 import { toCareHeatmap } from "./careHeatmap.js";
 import type { CareHeatmap } from "./careHeatmap.js";
@@ -86,6 +88,9 @@ import {
   getFeatureFlags,
   getDiscover,
   getMe,
+  moveProvisionalContent,
+  previewProvisionalRegistration,
+  upgradeProvisionalProfile,
   getToday,
   getStory,
   getProfile,
@@ -302,7 +307,7 @@ export interface CichlidsClientOptions {
    * from getAccessToken carries the device token instead; omit it for clients that never run
    * without a sign-in.
    */
-  deviceAuth?: Pick<DeviceAuth, "getAccessToken">;
+  deviceAuth?: Pick<DeviceAuth, "getAccessToken"> & Partial<Pick<DeviceAuth, "signProof">>;
 }
 
 export interface StoriesListParams {
@@ -549,6 +554,20 @@ export interface CichlidsClient {
     listThreads(params?: CommunityThreadsListParams): Promise<PagedResponse<CommunityThreadListItem>>;
     getThread(id: number): Promise<CommunityThreadDetail>;
   };
+  /**
+   * Hands the content of the installation to the account that is signed in. Every call needs the
+   * Keycloak session (getAccessToken) and the device key (deviceAuth) together and fails without
+   * either.
+   */
+  registration: {
+    /** What handing the content over does, asked before the member decides; changes nothing. */
+    preview(local: LocalTime): Promise<RegistrationPreview>;
+    /** The account has no profile: the profile of the installation becomes it and keeps all content. */
+    upgrade(): Promise<Me>;
+    /** The account has a profile: moves the content into it and removes the profile of the installation. */
+    /** local is the date of the member, against which moved vacations are judged. */
+    move(local: LocalTime): Promise<RegistrationMove>;
+  };
   me: {
     get(): Promise<Me>;
     today(date: string): Promise<Today>;
@@ -656,7 +675,26 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
   const editorOf = (result: { data?: StoryEditorDto; error?: unknown; response?: Response }): StoryEditor =>
     absolutizeMedia(toStoryEditor(unwrap(result)), options.baseUrl);
 
+  /** The signed challenge of the installation and the Keycloak token of the account, which a registration call sends together. */
+  const registrationProof = async () => {
+    const signProof = options.deviceAuth?.signProof;
+    if (!signProof) throw new Error("Handing content to an account needs the device authentication of the installation.");
+    if (!(await options.getAccessToken?.())) throw new ApiError("Sign in with the account first.", 401, "keycloak_session_required");
+    return signProof();
+  };
+
   return {
+    registration: {
+      async preview(local) {
+        return toRegistrationPreview(unwrap(await previewProvisionalRegistration({ client, query: local, body: await registrationProof() })));
+      },
+      async upgrade() {
+        return unwrap(await upgradeProvisionalProfile({ client, body: await registrationProof() }));
+      },
+      async move(local) {
+        return toRegistrationMove(unwrap(await moveProvisionalContent({ client, query: local, body: await registrationProof() })));
+      },
+    },
     care: {
       async list(tankId, params) { return unwrapPaged(await listCareEntries({ client, path: { tankId }, query: params ?? {} })); },
       async log(tankId, request) { return unwrap(await logCareEntry({ client, path: { tankId }, body: request ?? {} })); },
