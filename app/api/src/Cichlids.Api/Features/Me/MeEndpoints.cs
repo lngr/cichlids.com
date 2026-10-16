@@ -3,7 +3,9 @@ using System.Globalization;
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Auth;
 using Cichlids.Api.Features.Profiles;
+using Cichlids.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Api.Features.Me;
 
@@ -24,7 +26,39 @@ public static class MeEndpoints
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
+        app.MapGet("/api/me/settings", GetSettingsAsync)
+            .WithName("GetMySettings")
+            .WithTags("Me")
+            .RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status403Forbidden);
+
+        app.MapPut("/api/me/settings", UpdateSettingsAsync)
+            .WithName("UpdateMySettings")
+            .WithTags("Me")
+            .RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .ProducesProblem(StatusCodes.Status403Forbidden);
+
         return app;
+    }
+
+    private static async Task<Ok<MeSettingsDto>> GetSettingsAsync(
+        ClaimsPrincipal user, CurrentProfileService profiles, CancellationToken cancellationToken)
+    {
+        var profile = await profiles.ResolveAsync(user, cancellationToken);
+        return TypedResults.Ok(new MeSettingsDto(profile.StreaksEnabled));
+    }
+
+    private static async Task<Results<Ok<MeSettingsDto>, ProblemHttpResult>> UpdateSettingsAsync(
+        UpdateMeSettingsRequest? request, ClaimsPrincipal user, CurrentProfileService profiles, CichlidsDbContext context,
+        CancellationToken cancellationToken)
+    {
+        if (request?.StreaksEnabled is not { } streaksEnabled)
+            return ApiProblems.WithCode(400, "Invalid settings", "Send streaksEnabled as true or false.", "settings_invalid");
+        var profile = await profiles.ResolveAsync(user, cancellationToken);
+        await context.Profiles.Where(p => p.Id == profile.Id)
+            .ExecuteUpdateAsync(s => s.SetProperty(p => p.StreaksEnabled, streaksEnabled), cancellationToken);
+        return TypedResults.Ok(new MeSettingsDto(streaksEnabled));
     }
 
     private static async Task<Results<Ok<TodayDto>, ProblemHttpResult>> GetTodayAsync(
