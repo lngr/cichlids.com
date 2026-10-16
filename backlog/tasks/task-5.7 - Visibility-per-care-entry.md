@@ -4,7 +4,7 @@ title: Visibility per care entry
 status: In Review
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 08:42'
+updated_date: '2026-10-16 08:43'
 labels: []
 dependencies: []
 references:
@@ -79,4 +79,6 @@ Each care entry has a visibility; private entries never leave the owner, public 
 
 - Legacy takeover done: the onboarding shows a member's archive tanks right after yes without the question; the adopted tank stays public in profile and stream without a consent row; the question appears when a new tank is chosen.
 - Verification after the follow-ups: .NET 542/1062 (1 opt-in benchmark skipped)/349 with 0 warnings, client-core 198, mobile 384, both typechecks, all 34 write e2e specs green. A single run of visibility.write.mjs once timed out at care-only-me-badge and passed on rerun (small flake to watch).
+
+- Gallery posts linked to a tank (project owner, 2026-10-16): a photo is either part of a tank or posted in the public gallery independently of a tank; the mixed form of the current model (a gallery post with a tank link) does not match the concept of the project owner and is discussed again (PROJECT-STATUS O8). The behavior stays unchanged until then; the proposal that a post follows the visibility of its tank is withdrawn.
 <!-- SECTION:NOTES:END -->
