@@ -12,6 +12,7 @@ import {
   updateCareEntry,
   deleteCareEntry,
   listCareEntries,
+  listCareSeries,
   createPictureComment,
   addCarePhoto,
   createCareEntryTodo,
@@ -45,7 +46,6 @@ import {
   getWebPushConfig,
   subscribeWebPush,
   unsubscribeWebPush,
-  getCareSeries,
   listDueCare,
   getCareHeatmap,
   getMyCareHeatmap,
@@ -374,7 +374,8 @@ export interface CichlidsClient {
     /** Replaces or clears the amount and, when given, moves the occurred time; a null amount with a time moves only the time. */
     update(tankId: number, id: number, amount: CareAmountRequest | null, occurredAt?: string): Promise<CareEntry>;
     updateValues(tankId: number, id: number, values: MeasurementValueRequest[], occurredAt?: string): Promise<CareEntry>;
-    series(tankId: number, parameter: CareParameter, range?: CareSeriesRange): Promise<CareSeries>;
+    /** The series of every parameter that has points in the range, with the points oldest first. */
+    allSeries(tankId: number, range?: CareSeriesRange): Promise<CareSeries[]>;
     remove(tankId: number, id: number): Promise<CareEntry>;
     /** Sets the note of an entry; null or blank removes it. */
     setNote(tankId: number, id: number, note: string | null): Promise<CareEntry>;
@@ -546,7 +547,7 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       async updateValues(tankId, id, values, occurredAt) {
         return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: occurredAt ? { amount: null, values, occurredAt } : { amount: null, values } }));
       },
-      async series(tankId, parameter, range) { return unwrap(await getCareSeries({ client, path: { tankId }, query: { parameter, ...range } })); },
+      async allSeries(tankId, range) { return unwrap(await listCareSeries({ client, path: { tankId }, query: range })).series; },
       async remove(tankId, id) { return unwrap(await deleteCareEntry({ client, path: { tankId, id } })); },
       async setOnlyMe(tankId, id, onlyMe) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount: null, onlyMe } })); },
       async setNote(tankId, id, note) { return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount: null, note: note?.trim() ?? "" } })); },

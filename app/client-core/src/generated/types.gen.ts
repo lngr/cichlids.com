@@ -13,6 +13,10 @@ export type AuthorDto = {
     avatarUrl: null | string;
 };
 
+export type CareAllSeriesDto = {
+    series: Array<CareSeriesDto>;
+};
+
 export type CareAmountDto = {
     value: number | string;
     unit: CareAmountUnit;
@@ -2561,6 +2565,40 @@ export type GetCareSeriesResponses = {
 };
 
 export type GetCareSeriesResponse = GetCareSeriesResponses[keyof GetCareSeriesResponses];
+
+export type ListCareSeriesData = {
+    body?: never;
+    path: {
+        tankId: number;
+    };
+    query?: {
+        from?: string;
+        to?: string;
+    };
+    url: '/api/tanks/{tankId}/care/series/all';
+};
+
+export type ListCareSeriesErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type ListCareSeriesError = ListCareSeriesErrors[keyof ListCareSeriesErrors];
+
+export type ListCareSeriesResponses = {
+    /**
+     * OK
+     */
+    200: CareAllSeriesDto;
+};
+
+export type ListCareSeriesResponse = ListCareSeriesResponses[keyof ListCareSeriesResponses];
 
 export type DeleteCareEntryData = {
     body?: never;
