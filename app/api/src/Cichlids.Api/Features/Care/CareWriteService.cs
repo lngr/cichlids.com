@@ -101,6 +101,8 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
             var noteChange = request.Note is null ? null : NormalizeNote(request.Note);
             if (noteChange?.Length > MaxNoteLength) return (null, "care_note_invalid");
             if (request.OccurredAt > AtMicrosecondPrecision(clock.GetUtcNow()).AddMinutes(2)) return (null, "care_time_invalid");
+            if (entry.WaterChangeSessionId is not null && request.OccurredAt is { } requested
+                && AtMicrosecondPrecision(requested.ToUniversalTime()) != entry.OccurredAt) return (null, "care_time_fixed");
             if (request is { Amount: null, Values: null } && (request.Note is not null || request.OccurredAt is not null || request.OnlyMe is not null))
             {
                 if (request.Note is not null) entry.Note = noteChange;

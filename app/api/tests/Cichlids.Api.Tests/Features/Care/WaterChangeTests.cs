@@ -176,6 +176,37 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
     }
 
     [Fact]
+    public async Task GivenGuidedEntry_WhenChangingItsTime_ThenCodedProblemAndNoteAndAmountStayEditable()
+    {
+        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
+        using (var drain = await StepAsync(token, tank, id, "draining_started", "done")) Assert.Equal(HttpStatusCode.OK, drain.StatusCode);
+        long entryId;
+        DateTimeOffset occurred;
+        using (var finish = await FinishAsync(token, tank, id, new { amount = new { value = 30, unit = "percent" } }))
+        {
+            var entry = (await BodyAsync(finish)).GetProperty("entry");
+            entryId = entry.GetProperty("id").GetInt64();
+            occurred = entry.GetProperty("occurredAt").GetDateTimeOffset();
+        }
+        var url = $"/api/tanks/{tank}/care/{entryId}";
+        using (var moved = await SendAsync(fixture.Client, HttpMethod.Patch, url, token, new { occurredAt = occurred.AddHours(-30) }))
+            await AssertProblemAsync(moved, HttpStatusCode.BadRequest, "care_time_fixed");
+        using (var movedWithNote = await SendAsync(fixture.Client, HttpMethod.Patch, url, token, new { occurredAt = occurred.AddHours(-30), note = "late" }))
+            await AssertProblemAsync(movedWithNote, HttpStatusCode.BadRequest, "care_time_fixed");
+        using (var edited = await SendAsync(fixture.Client, HttpMethod.Patch, url, token, new { note = "refilled slowly", amount = new { value = 40, unit = "percent" } }))
+        {
+            Assert.Equal(HttpStatusCode.OK, edited.StatusCode);
+            var entry = await BodyAsync(edited);
+            Assert.Equal("refilled slowly", entry.GetProperty("note").GetString());
+            Assert.Equal(40m, entry.GetProperty("amount").GetProperty("value").GetDecimal());
+            Assert.Equal(occurred, entry.GetProperty("occurredAt").GetDateTimeOffset());
+        }
+        using (var same = await SendAsync(fixture.Client, HttpMethod.Patch, url, token, new { occurredAt = occurred, note = "same time" }))
+            Assert.Equal(HttpStatusCode.OK, same.StatusCode);
+    }
+
+    [Fact]
     public async Task GivenQuickOrSkippedGuidedMode_WhenFinishing_ThenTheEvidenceIsPartialWithTheFinding()
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);

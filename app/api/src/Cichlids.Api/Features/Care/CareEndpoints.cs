@@ -155,6 +155,7 @@ public static partial class CareEndpoints
             "care_photo_invalid" => "Send one JPEG, PNG or WebP photo of up to 25 MB that can be decoded.",
             "care_photo_limit_reached" => "A care entry holds up to 6 photos.",
             "care_time_invalid" => "The time must not be more than two minutes in the future.",
+            "care_time_fixed" => "The time of an entry from the guided water change is fixed; its note, amount and photos can be changed.",
             "care_kind_invalid" => "Choose water_change or measurement.",
             "care_amount_invalid" => "Enter a positive amount, up to 100 percent or 1000000 volume units.",
             "care_measurement_invalid" => "A measurement needs one to ten values with distinct parameters, and a water change takes none.",
