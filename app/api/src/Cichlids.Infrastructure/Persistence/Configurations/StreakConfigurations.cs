@@ -28,11 +28,11 @@ public sealed class StreakFreezeConfiguration : IEntityTypeConfiguration<StreakF
         builder.HasOne<Tank>().WithMany().HasForeignKey(x => x.TankId).OnDelete(DeleteBehavior.Cascade);
         builder.HasOne<CareEntry>().WithMany().HasForeignKey(x => x.CareEntryId).OnDelete(DeleteBehavior.Cascade);
         builder.HasIndex(x => x.CareEntryId).IsUnique();
-        builder.HasIndex(x => new { x.TankId, x.Year });
+        builder.HasIndex(x => new { x.TankId, x.TankYear });
         builder.ToTable("streak_freeze", table =>
         {
             table.HasCheckConstraint("ck_streak_freeze_period", "period_end >= period_start");
-            table.HasCheckConstraint("ck_streak_freeze_year", "year = EXTRACT(YEAR FROM period_end)");
+            table.HasCheckConstraint("ck_streak_freeze_tank_year", "tank_year >= 1");
         });
     }
 }

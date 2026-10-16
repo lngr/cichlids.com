@@ -4,7 +4,7 @@ namespace Cichlids.Api.Features.Streaks;
 
 /// <summary>
 /// The water change streak of a tank. Deadline, FreezesLeft and FreezesPerYear belong to the owner and
-/// are null for other viewers, who also never see the state Paused.
+/// are null for other viewers, who also never see the state Paused. FreezesPerYear is the allotment of freezes per tank year.
 /// </summary>
 public sealed record WaterChangeStreakDto(WaterChangeStreakState State, int Current, int CurrentVerified, int Longest,
     string? LastWaterChange, string? Deadline, int? FreezesLeft, int? FreezesPerYear);

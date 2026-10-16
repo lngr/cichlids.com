@@ -1830,9 +1830,9 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("tank_id");
 
-                    b.Property<int>("Year")
+                    b.Property<int>("TankYear")
                         .HasColumnType("integer")
-                        .HasColumnName("year");
+                        .HasColumnName("tank_year");
 
                     b.HasKey("Id")
                         .HasName("pk_streak_freeze");
@@ -1841,14 +1841,14 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_streak_freeze_care_entry_id");
 
-                    b.HasIndex("TankId", "Year")
-                        .HasDatabaseName("ix_streak_freeze_tank_id_year");
+                    b.HasIndex("TankId", "TankYear")
+                        .HasDatabaseName("ix_streak_freeze_tank_id_tank_year");
 
                     b.ToTable("streak_freeze", "public", t =>
                         {
                             t.HasCheckConstraint("ck_streak_freeze_period", "period_end >= period_start");
 
-                            t.HasCheckConstraint("ck_streak_freeze_year", "year = EXTRACT(YEAR FROM period_end)");
+                            t.HasCheckConstraint("ck_streak_freeze_tank_year", "tank_year >= 1");
                         });
                 });
 

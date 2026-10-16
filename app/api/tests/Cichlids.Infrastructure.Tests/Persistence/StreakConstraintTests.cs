@@ -33,8 +33,8 @@ public sealed class StreakConstraintTests(PostgresFixture fixture)
     private static Vacation Vacation(long profile, DateOnly start, DateOnly? end) =>
         new() { ProfileId = profile, StartDate = start, EndDate = end, CreatedAt = DateTimeOffset.UtcNow };
 
-    private static StreakFreeze Freeze(long tank, long entry, DateOnly start, DateOnly end, int? year = null) =>
-        new() { TankId = tank, CareEntryId = entry, PeriodStart = start, PeriodEnd = end, Year = year ?? end.Year, CreatedAt = DateTimeOffset.UtcNow };
+    private static StreakFreeze Freeze(long tank, long entry, DateOnly start, DateOnly end, int tankYear = 1) =>
+        new() { TankId = tank, CareEntryId = entry, PeriodStart = start, PeriodEnd = end, TankYear = tankYear, CreatedAt = DateTimeOffset.UtcNow };
 
     [Fact]
     public async Task A_vacation_is_stored_with_and_without_an_end()
@@ -91,7 +91,7 @@ public sealed class StreakConstraintTests(PostgresFixture fixture)
     }
 
     [Fact]
-    public async Task A_freeze_needs_a_period_that_does_not_end_before_it_starts_and_the_year_of_its_end()
+    public async Task A_freeze_needs_a_period_that_does_not_end_before_it_starts_and_a_positive_tank_year()
     {
         var (profile, tank) = await TankAsync();
         var first = await EntryAsync(tank, profile);
@@ -100,7 +100,7 @@ public sealed class StreakConstraintTests(PostgresFixture fixture)
         context.StreakFreezes.Add(Freeze(tank, first, Day, Day.AddDays(-2)));
         await Assert.ThrowsAsync<DbUpdateException>(() => context.SaveChangesAsync());
         await using var other = fixture.CreateContext();
-        other.StreakFreezes.Add(Freeze(tank, second, Day, Day.AddDays(7), year: 2025));
+        other.StreakFreezes.Add(Freeze(tank, second, Day, Day.AddDays(7), tankYear: 0));
         await Assert.ThrowsAsync<DbUpdateException>(() => other.SaveChangesAsync());
     }
 

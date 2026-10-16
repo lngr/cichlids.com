@@ -23,7 +23,7 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
     public const string NotFoundCode = "streak_not_found";
     private const string DateFormat = "yyyy-MM-dd";
 
-    private sealed record TankHistory(List<WaterChangeRecord> Changes, List<RhythmChange> Rhythm, HashSet<long> Recorded, List<SeriesPhoto> Photos);
+    private sealed record TankHistory(DateTimeOffset TankCreatedAt, List<WaterChangeRecord> Changes, List<RhythmChange> Rhythm, HashSet<long> Recorded, List<SeriesPhoto> Photos);
 
     private int Freezes => options.Value.FreezesPerYear;
 
@@ -111,11 +111,13 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
     }
 
     private WaterChangeStreak EvaluateWater(TankHistory history, IReadOnlyList<VacationSpan> spans, DateOnly today, int utcOffsetMinutes) =>
-        WaterChangeStreaks.Evaluate(history.Changes, history.Rhythm, spans, history.Recorded, Freezes, today, utcOffsetMinutes);
+        WaterChangeStreaks.Evaluate(history.Changes, history.Rhythm, spans, history.Recorded, Freezes,
+            CarePlans.LocalDate(history.TankCreatedAt, utcOffsetMinutes), today, utcOffsetMinutes);
 
     private async Task<Dictionary<long, TankHistory>> LoadAsync(IReadOnlyCollection<long> tankIds, CancellationToken ct)
     {
-        var result = tankIds.ToDictionary(id => id, _ => new TankHistory([], [], [], []));
+        var created = await context.Tanks.AsNoTracking().Where(t => tankIds.Contains(t.Id)).Select(t => new { t.Id, t.CreatedAt }).ToListAsync(ct);
+        var result = created.ToDictionary(t => t.Id, t => new TankHistory(t.CreatedAt, [], [], [], []));
         var changes = await context.CareEntries.AsNoTracking().Where(e => tankIds.Contains(e.TankId) && e.Kind == CareKind.WaterChange)
             .Select(e => new { e.TankId, e.Id, e.OccurredAt, Verified = e.Evidence == WaterChangeEvidenceState.Verified }).ToListAsync(ct);
         foreach (var change in changes) result[change.TankId].Changes.Add(new WaterChangeRecord(change.Id, change.OccurredAt, change.Verified));
@@ -151,7 +153,7 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
         {
             var row = new StreakFreeze
             {
-                TankId = tankId, CareEntryId = freeze.WaterChangeId, Year = freeze.Year, PeriodStart = freeze.PeriodStart,
+                TankId = tankId, CareEntryId = freeze.WaterChangeId, TankYear = freeze.TankYear, PeriodStart = freeze.PeriodStart,
                 PeriodEnd = freeze.PeriodEnd, CreatedAt = now,
             };
             context.StreakFreezes.Add(row);
@@ -160,7 +162,7 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
                 JsonSerializer.Serialize(new Dictionary<string, object?>
                 {
                     ["streakFreezeId"] = row.Id, ["tankId"] = tankId, ["profileId"] = profileId, ["careEntryId"] = row.CareEntryId,
-                    ["year"] = row.Year, ["periodStart"] = Format(row.PeriodStart), ["periodEnd"] = Format(row.PeriodEnd), ["usedAt"] = now,
+                    ["tankYear"] = row.TankYear, ["periodStart"] = Format(row.PeriodStart), ["periodEnd"] = Format(row.PeriodEnd), ["usedAt"] = now,
                 }), now));
         }
         await context.SaveChangesAsync(ct);

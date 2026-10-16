@@ -27,10 +27,10 @@ public enum PeriodOutcome { Verified, Frozen, Bridged, Missed, Unverified }
 public sealed record WaterChangePeriod(long WaterChangeId, DateOnly Start, DateOnly End, PeriodOutcome Outcome);
 
 /// <summary>
-/// A freeze that kept a period: the closing water change, the calendar year of the period end that the
-/// freeze is taken from and whether the usage was recorded before this evaluation.
+/// A freeze that kept a period: the closing water change, the tank year of the period end that the
+/// freeze is taken from (1 is the first tank year) and whether the usage was recorded before this evaluation.
 /// </summary>
-public sealed record FreezeUse(long WaterChangeId, int Year, DateOnly PeriodStart, DateOnly PeriodEnd, bool Recorded);
+public sealed record FreezeUse(long WaterChangeId, int TankYear, DateOnly PeriodStart, DateOnly PeriodEnd, bool Recorded);
 
 /// <summary>
 /// NoHistory: the tank has no water change. Running: the current period is within its deadline.
@@ -43,7 +43,7 @@ public enum WaterChangeStreakState { NoHistory, Running, Paused, Broken }
 /// The water change streak of a tank. Current counts the periods in a row that were verified or kept by
 /// a freeze, CurrentVerified the verified ones among them, Longest the best run so far. Deadline is the
 /// last day of the running period, null unless the streak is running. FreezesLeft is the allotment of
-/// the calendar year of today that is not used.
+/// the tank year of today that is not used.
 /// </summary>
 public sealed record WaterChangeStreak(WaterChangeStreakState State, int Current, int CurrentVerified, int Longest,
     DateOnly? Deadline, DateOnly? LastWaterChange, int FreezesLeft, IReadOnlyList<WaterChangePeriod> Periods,
@@ -51,11 +51,26 @@ public sealed record WaterChangeStreak(WaterChangeStreakState State, int Current
 
 /// <summary>
 /// Computes the water change streak of a tank from its water changes, the history of its rhythm, the
-/// vacations of the member and the freezes already recorded. All dates are local dates of the member.
+/// vacations of the member and the freezes already recorded. All dates are local dates of the member;
+/// tankStart is the local date the tank was created.
 /// </summary>
 public static class WaterChangeStreaks
 {
     public const int DefaultFreezesPerYear = 2;
+
+    /// <summary>
+    /// The tank year that contains a date, counted from 1. The first tank year starts on the creation
+    /// date of the tank and every further one on its calendar anniversary, so a tank year has 365 or 366
+    /// days; a tank created on February 29 has its anniversary on February 28 in years without that day.
+    /// Dates before the creation date belong to the first tank year.
+    /// </summary>
+    public static int TankYear(DateOnly tankStart, DateOnly date)
+    {
+        var years = date.Year - tankStart.Year;
+        if (years <= 0) return 1;
+        if (date < tankStart.AddYears(years)) years--;
+        return years + 1;
+    }
 
     /// <summary>
     /// The grace of a rhythm in days: one third of the rhythm, rounded up.
@@ -76,12 +91,12 @@ public static class WaterChangeStreaks
     /// closed within the allowed days of the rhythm that applies on each day; days of a vacation or of
     /// a switched off rule do not count. A closing water change that came in time counts when it is
     /// verified, or when a freeze keeps the period: a recorded freeze first, otherwise a new one while
-    /// the allotment of the calendar year of the period end is not used up (recorded freezes count
+    /// the allotment of the tank year of the period end is not used up (recorded freezes count
     /// against it first). A period that vacation alone bridges does not change the length. After a
     /// break the closing water change starts a new run. Water changes after today are ignored.
     /// </summary>
     public static WaterChangeStreak Evaluate(IReadOnlyList<WaterChangeRecord> changes, IReadOnlyList<RhythmChange> rhythm,
-        IReadOnlyList<VacationSpan> vacations, IReadOnlySet<long> recordedFreezes, int freezesPerYear, DateOnly today, int utcOffsetMinutes)
+        IReadOnlyList<VacationSpan> vacations, IReadOnlySet<long> recordedFreezes, int freezesPerYear, DateOnly tankStart, DateOnly today, int utcOffsetMinutes)
     {
         var schedule = rhythm.Select(r => (From: CarePlans.LocalDate(r.At, utcOffsetMinutes), r.RhythmDays, r.Enabled))
             .OrderBy(r => r.From).ToList();
@@ -115,7 +130,10 @@ public static class WaterChangeStreaks
 
         var used = new Dictionary<int, int>();
         foreach (var day in days.Where(d => d.Ids.Any(recordedFreezes.Contains)))
-            used[day.Date.Year] = used.GetValueOrDefault(day.Date.Year) + 1;
+        {
+            var tankYear = TankYear(tankStart, day.Date);
+            used[tankYear] = used.GetValueOrDefault(tankYear) + 1;
+        }
 
         var periods = new List<WaterChangePeriod>();
         var freezes = new List<FreezeUse>();
@@ -130,7 +148,7 @@ public static class WaterChangeStreaks
             else if (closing.Verified) outcome = PeriodOutcome.Verified;
             else
             {
-                var year = closing.Date.Year;
+                var year = TankYear(tankStart, closing.Date);
                 var recorded = closing.Ids.Where(recordedFreezes.Contains).Cast<long?>().FirstOrDefault();
                 if (recorded is { } recordedId)
                 {
@@ -163,7 +181,7 @@ public static class WaterChangeStreaks
             longest = Math.Max(longest, current);
         }
 
-        var freezesLeft = Math.Max(0, freezesPerYear - used.GetValueOrDefault(today.Year));
+        var freezesLeft = Math.Max(0, freezesPerYear - used.GetValueOrDefault(TankYear(tankStart, today)));
         if (days.Count == 0)
             return new WaterChangeStreak(WaterChangeStreakState.NoHistory, 0, 0, 0, null, null, freezesLeft, periods, freezes);
 

@@ -64,7 +64,7 @@ public sealed class StreakEndpointsTests(ApiFixture fixture) : IAsyncLifetime
         await using var db = fixture.CreateDbContext();
         var freeze = await db.StreakFreezes.SingleAsync(f => f.TankId == tank);
         Assert.Equal(unverified, freeze.CareEntryId);
-        Assert.Equal(2026, freeze.Year);
+        Assert.Equal(1, freeze.TankYear);
         Assert.Equal(new DateOnly(2026, 10, 1), freeze.PeriodStart);
         Assert.Equal(new DateOnly(2026, 10, 8), freeze.PeriodEnd);
         var events = (await db.OutboxEvents.Where(e => e.EventType == "streak.freeze_used").ToListAsync())
@@ -73,6 +73,25 @@ public sealed class StreakEndpointsTests(ApiFixture fixture) : IAsyncLifetime
         using var payload = JsonDocument.Parse(used.Payload);
         Assert.Equal(unverified, payload.RootElement.GetProperty("careEntryId").GetInt64());
         Assert.Equal(owner.ProfileId, payload.RootElement.GetProperty("profileId").GetInt64());
+    }
+
+    [Theory]
+    [InlineData(0, 2)]
+    [InlineData(120, 1)]
+    public async Task GivenATankCreatedLateOnAnAnniversaryEve_WhenTheOwnerReads_ThenTheTankYearFollowsTheLocalCreationDate(int offset, int tankYear)
+    {
+        var owner = await NewMemberAsync(fixture);
+        var tank = await NewTankAsync(fixture, owner.ProfileId, TankVisibility.Public, TankVisibility.Public);
+        await using (var db = fixture.CreateDbContext())
+            await db.Tanks.Where(t => t.Id == tank).ExecuteUpdateAsync(u => u.SetProperty(t => t.CreatedAt, new DateTimeOffset(2025, 10, 10, 23, 30, 0, TimeSpan.Zero)));
+        await AddWaterChangeAsync(fixture, tank, owner.ProfileId, At(10, 3), true);
+        await AddWaterChangeAsync(fixture, tank, owner.ProfileId, At(10, 10), false);
+
+        using var response = await SendAsync(fixture, HttpMethod.Get, Url(tank, offset: offset), owner.Token);
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        await using var verify = fixture.CreateDbContext();
+        Assert.Equal(tankYear, (await verify.StreakFreezes.SingleAsync(f => f.TankId == tank)).TankYear);
     }
 
     [Fact]

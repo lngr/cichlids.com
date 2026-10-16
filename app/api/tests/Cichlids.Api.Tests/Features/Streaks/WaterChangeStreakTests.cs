@@ -16,9 +16,9 @@ public sealed class WaterChangeStreakTests
 
     private static WaterChangeStreak Run(IReadOnlyList<WaterChangeRecord> changes, DateOnly today, int rhythm = 7,
         IReadOnlyList<VacationSpan>? vacations = null, IReadOnlySet<long>? recorded = null, int freezes = 2,
-        IReadOnlyList<RhythmChange>? rhythmChanges = null, int utcOffsetMinutes = 0) =>
+        IReadOnlyList<RhythmChange>? rhythmChanges = null, int utcOffsetMinutes = 0, DateOnly? tankStart = null) =>
         WaterChangeStreaks.Evaluate(changes, rhythmChanges ?? [new RhythmChange(DateTimeOffset.UnixEpoch, rhythm, true)],
-            vacations ?? [], recorded ?? new HashSet<long>(), freezes, today, utcOffsetMinutes);
+            vacations ?? [], recorded ?? new HashSet<long>(), freezes, tankStart ?? Start, today, utcOffsetMinutes);
 
     [Theory]
     [InlineData(7, 3)]
@@ -120,7 +120,7 @@ public sealed class WaterChangeStreakTests
         Assert.Equal(PeriodOutcome.Frozen, streak.Periods[0].Outcome);
         var freeze = Assert.Single(streak.Freezes);
         Assert.Equal(2, freeze.WaterChangeId);
-        Assert.Equal(2026, freeze.Year);
+        Assert.Equal(1, freeze.TankYear);
         Assert.Equal(Day(0), freeze.PeriodStart);
         Assert.Equal(Day(7), freeze.PeriodEnd);
         Assert.False(freeze.Recorded);
@@ -197,30 +197,67 @@ public sealed class WaterChangeStreakTests
     }
 
     [Fact]
-    public void TheAllotmentRenewsWithTheCalendarYearOfThePeriodEnd()
+    public void TheAllotmentRenewsOnTheAnniversaryOfTheTankWhichDecidesByThePeriodEnd()
     {
-        var december = new DateOnly(2026, 12, 20);
         var changes = new List<WaterChangeRecord>
         {
-            Change(1, december), Change(2, december.AddDays(5), verified: false), Change(3, december.AddDays(10), verified: false),
-            Change(4, december.AddDays(15), verified: false), Change(5, december.AddDays(20), verified: false),
-            Change(6, december.AddDays(25), verified: false),
+            Change(1, new DateOnly(2027, 2, 20)), Change(2, new DateOnly(2027, 2, 25), verified: false),
+            Change(3, new DateOnly(2027, 2, 28), verified: false), Change(4, new DateOnly(2027, 3, 3), verified: false),
+            Change(5, new DateOnly(2027, 3, 6), verified: false), Change(6, new DateOnly(2027, 3, 9), verified: false),
         };
-        var streak = Run(changes, new DateOnly(2027, 1, 14));
-        Assert.Equal([2026, 2026, 2027, 2027], streak.Freezes.Select(f => f.Year));
+        var streak = Run(changes, new DateOnly(2027, 3, 9));
+        Assert.Equal([1, 1, 2, 2], streak.Freezes.Select(f => f.TankYear));
         Assert.Equal([PeriodOutcome.Frozen, PeriodOutcome.Frozen, PeriodOutcome.Frozen, PeriodOutcome.Frozen, PeriodOutcome.Unverified],
             streak.Periods.Select(p => p.Outcome));
         Assert.Equal(0, streak.Current);
     }
 
     [Fact]
-    public void FreezesLeftCountsTheYearOfToday()
+    public void TheCalendarYearDoesNotRenewTheAllotment()
     {
-        var december = new DateOnly(2026, 12, 20);
-        var changes = new List<WaterChangeRecord> { Change(1, december), Change(2, december.AddDays(5), verified: false) };
-        Assert.Equal(1, Run(changes, december.AddDays(6)).FreezesLeft);
-        Assert.Equal(2, Run(changes, new DateOnly(2027, 1, 5)).FreezesLeft);
+        var changes = new List<WaterChangeRecord>
+        {
+            Change(1, new DateOnly(2026, 12, 20)), Change(2, new DateOnly(2026, 12, 25), verified: false),
+            Change(3, new DateOnly(2026, 12, 30), verified: false), Change(4, new DateOnly(2027, 1, 4), verified: false),
+        };
+        var streak = Run(changes, new DateOnly(2027, 1, 4));
+        Assert.Equal([PeriodOutcome.Frozen, PeriodOutcome.Frozen, PeriodOutcome.Unverified], streak.Periods.Select(p => p.Outcome));
+        Assert.Equal([1, 1], streak.Freezes.Select(f => f.TankYear));
     }
+
+    [Fact]
+    public void FreezesLeftCountsTheTankYearOfToday()
+    {
+        var changes = new List<WaterChangeRecord> { Change(1, new DateOnly(2027, 2, 20)), Change(2, new DateOnly(2027, 2, 25), verified: false) };
+        Assert.Equal(1, Run(changes, new DateOnly(2027, 2, 28)).FreezesLeft);
+        Assert.Equal(2, Run(changes, new DateOnly(2027, 3, 1)).FreezesLeft);
+    }
+
+    [Fact]
+    public void WaterChangesBeforeTheTankWasCreatedBelongToTheFirstTankYear()
+    {
+        var changes = new List<WaterChangeRecord>
+        {
+            Change(1, Day(-20)), Change(2, Day(-15), verified: false), Change(3, Day(-10), verified: false), Change(4, Day(-5), verified: false),
+        };
+        var streak = Run(changes, Day(-5));
+        Assert.Equal([1, 1], streak.Freezes.Select(f => f.TankYear));
+        Assert.Equal(PeriodOutcome.Unverified, streak.Periods[2].Outcome);
+    }
+
+    [Theory]
+    [InlineData(2026, 3, 1, 2026, 3, 1, 1)]
+    [InlineData(2026, 3, 1, 2027, 2, 28, 1)]
+    [InlineData(2026, 3, 1, 2027, 3, 1, 2)]
+    [InlineData(2027, 3, 1, 2028, 2, 29, 1)]
+    [InlineData(2027, 3, 1, 2028, 3, 1, 2)]
+    [InlineData(2024, 2, 29, 2025, 2, 27, 1)]
+    [InlineData(2024, 2, 29, 2025, 2, 28, 2)]
+    [InlineData(2024, 2, 29, 2028, 2, 28, 4)]
+    [InlineData(2024, 2, 29, 2028, 2, 29, 5)]
+    [InlineData(2026, 3, 1, 2026, 2, 28, 1)]
+    public void TheTankYearStartsOnTheCalendarAnniversaryOfTheCreationDate(int sy, int sm, int sd, int y, int m, int d, int expected) =>
+        Assert.Equal(expected, WaterChangeStreaks.TankYear(new DateOnly(sy, sm, sd), new DateOnly(y, m, d)));
 
     [Fact]
     public void AVacationInTheMiddlePausesThePeriodAndNeverExtendsTheStreak()
@@ -318,7 +355,7 @@ public sealed class WaterChangeStreakTests
     [Fact]
     public void WithoutStoredChangesTheDefaultRhythmOfSevenDaysApplies()
     {
-        var streak = WaterChangeStreaks.Evaluate(Verified(0, 11), [], [], new HashSet<long>(), 2, Day(11), 0);
+        var streak = WaterChangeStreaks.Evaluate(Verified(0, 11), [], [], new HashSet<long>(), 2, Start, Day(11), 0);
         Assert.Equal(PeriodOutcome.Missed, streak.Periods.Single().Outcome);
     }
 
