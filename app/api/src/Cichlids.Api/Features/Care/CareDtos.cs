@@ -24,7 +24,8 @@ public sealed record CarePhotoUrlsDto(string? Thumb, string? Small, string? Medi
 public sealed record CarePhotoDto(long Id, int? Width, int? Height, CarePhotoUrlsDto Urls);
 public sealed record CareEntryDto(long Id, long TankId, long AuthorProfileId, CareKind Kind,
     DateTimeOffset OccurredAt, DateTimeOffset RecordedAt, CareAmountDto? Amount, IReadOnlyList<MeasurementValueDto>? Values,
-    string? Note, IReadOnlyList<CarePhotoDto> Photos, IReadOnlyList<Videos.VideoDto> Videos, IReadOnlyList<CareTodoDto> Todos);
+    string? Note, IReadOnlyList<CarePhotoDto> Photos, IReadOnlyList<Videos.VideoDto> Videos, IReadOnlyList<CareTodoDto> Todos,
+    int? DurationSeconds = null, long? WaterChangeSessionId = null, WaterChangeEvidenceDto? Evidence = null);
 public sealed record CareSeriesPointDto(long EntryId, DateTimeOffset OccurredAt, decimal Value, decimal InputValue,
     MeasurementUnit InputUnit, MeasurementOrigin? Origin);
 public sealed record CareSeriesDto(CareParameter Parameter, MeasurementUnit Unit, IReadOnlyList<CareSeriesPointDto> Points);

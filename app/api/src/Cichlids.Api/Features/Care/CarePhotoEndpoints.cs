@@ -45,13 +45,14 @@ public static class CarePhotoEndpoints
     }
 
     // The token is the credential: it is issued only to the owner of the entry, names one variant and
-    // expires. The variant must still belong to a care photo, so a removed photo stops resolving.
+    // expires. The variant must still belong to a care photo or a photo of a water change session, so a removed photo stops resolving.
     private static async Task<Results<FileStreamHttpResult, ProblemHttpResult>> ServeAsync(
         string token, CarePhotoUrlSigner signer, CichlidsDbContext db, IObjectStore store, HttpContext http, CancellationToken ct)
     {
         if (signer.TryRead(token) is not { } variantId) return CareEndpoints.Problem("care_photo_not_found");
         var key = await db.MediaVariants.AsNoTracking()
-            .Where(v => v.Id == variantId && db.CarePhotos.Any(p => p.MediaItemId == v.MediaItemId))
+            .Where(v => v.Id == variantId && (db.CarePhotos.Any(p => p.MediaItemId == v.MediaItemId)
+                || db.WaterChangeSessions.Any(s => s.DrainedMediaItemId == v.MediaItemId || s.RefilledMediaItemId == v.MediaItemId)))
             .Select(v => v.StorageKey).SingleOrDefaultAsync(ct);
         var stream = key is null ? null : await store.GetAsync(key, ct);
         if (stream is null) return CareEndpoints.Problem("care_photo_not_found");

@@ -19,7 +19,7 @@ public static partial class CareEndpoints
     /// </summary>
     public static bool IsCarePath(PathString path) => path.HasValue && CarePath().IsMatch(path.Value!);
 
-    [GeneratedRegex("^(/api/tanks/[0-9]+/care(/[0-9]+(/photos(/[0-9]+)?|/videos/[0-9]+|/todos)?|/series|/plan|/plan/[a-z_]+)?|/api/tanks/[0-9]+/todos|/api/me/todos(/[0-9]+)?|/api/me/care/(due|reminders/snooze)|/api/care-photos/[^/]+|/api/care-videos/[^/]+/.+)/?$", RegexOptions.CultureInvariant)]
+    [GeneratedRegex("^(/api/tanks/[0-9]+/care(/[0-9]+(/photos(/[0-9]+)?|/videos/[0-9]+|/todos)?|/series|/plan|/plan/[a-z_]+)?|/api/tanks/[0-9]+/todos|/api/tanks/[0-9]+/water-changes(/current|/[0-9]+(/steps/[a-z_]+|/photos/[a-z_]+|/finish)?)?|/api/me/todos(/[0-9]+)?|/api/me/care/(due|reminders/snooze)|/api/care-photos/[^/]+|/api/care-videos/[^/]+/.+)/?$", RegexOptions.CultureInvariant)]
     private static partial Regex CarePath();
 
     public static IEndpointRouteBuilder MapCareEndpoints(this IEndpointRouteBuilder app)
@@ -39,6 +39,7 @@ public static partial class CareEndpoints
         group.MapPatch("/plan", ChangeRemindersAsync).WithName("UpdateCarePlan").RequireAuthorization()
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403).ProducesProblem(404);
         app.MapCarePhotoEndpoints();
+        app.MapWaterChangeEndpoints();
         app.MapTodoEndpoints();
         app.MapGet("/api/me/care/due", DueAsync).WithName("ListDueCare").WithTags("Care").RequireAuthorization()
             .ProducesProblem(400).ProducesProblem(401).ProducesProblem(403);
@@ -144,7 +145,7 @@ public static partial class CareEndpoints
     }
 
     internal static ProblemHttpResult Problem(string code) => ApiProblems.WithCode(
-        code is "care_not_found" or "care_photo_not_found" or "todo_not_found" ? 404 : code == "care_photo_limit_reached" ? 409 : 400,
+        code is "care_not_found" or "care_photo_not_found" or "todo_not_found" or "water_change_not_found" ? 404 : code == "care_photo_limit_reached" ? 409 : 400,
         "Care request refused", code switch
         {
             "care_not_found" => "This care entry or tank is unavailable.",
@@ -159,6 +160,8 @@ public static partial class CareEndpoints
             "care_unit_invalid" => "This unit does not apply to the parameter.",
             "care_value_invalid" => "The value is outside the plausible range of the parameter.",
             "care_origin_invalid" => "Choose test_kit, meter or probe.",
+            "water_change_not_found" => "This water change or tank is unavailable, or the water change is no longer open.",
+            "water_change_request_invalid" => "Choose a known step with the state done or skipped, or the photo slot drained or refilled.",
             "todo_not_found" => "This to-do is unavailable.",
             "todo_text_invalid" => "A to-do has 1 to 200 characters.",
             "todo_request_invalid" => "Send done as true or false, or a new text, and list open, done or all to-dos.",

@@ -152,6 +152,13 @@ builder.Services.AddMemoryCache();
 builder.Services.AddScoped<TanksWriteService>();
 builder.Services.AddScoped<CareWriteService>();
 builder.Services.AddScoped<CarePhotoService>();
+builder.Services.AddOptions<WaterChangeOptions>()
+    .Bind(builder.Configuration.GetSection(WaterChangeOptions.SectionName))
+    .Validate(o => o.MinDuration >= TimeSpan.Zero && o.SessionLifetime > TimeSpan.Zero && o.CleanupInterval > TimeSpan.Zero,
+        "WaterChange durations must be positive.")
+    .ValidateOnStart();
+builder.Services.AddScoped<WaterChangeService>();
+builder.Services.AddHostedService<WaterChangeCleanupHostedService>();
 builder.Services.AddScoped<TankSeriesPhotoService>();
 builder.Services.AddScoped<CareTodoService>();
 builder.Services.AddScoped<CareEntryMapper>();

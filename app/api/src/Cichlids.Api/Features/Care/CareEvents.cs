@@ -23,6 +23,12 @@ public static class CareEvents
             ["amount"] = entry.AmountInputValue is { } value ? new { value, unit = SnakeCaseEnum.ToSnakeCase(entry.AmountInputUnit!.Value), liters = entry.AmountLiters } : null,
             ["photos"] = entry.Photos.OrderBy(p => p.Position).Select(p => new { id = p.Id, mediaItemId = p.MediaItemId, position = p.Position }).ToList(),
         };
+        if (entry.WaterChangeSessionId is { } sessionId)
+        {
+            payload["waterChangeSessionId"] = sessionId;
+            payload["durationSeconds"] = entry.DurationSeconds;
+            payload["evidence"] = new { state = SnakeCaseEnum.ToSnakeCase(entry.Evidence!.Value), missing = entry.EvidenceMissing };
+        }
         if (entry.Kind == CareKind.Measurement)
             payload["values"] = entry.Values.OrderBy(v => v.Parameter).Select(v => new
             {

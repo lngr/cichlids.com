@@ -1,4 +1,5 @@
 using Cichlids.Api.Features.Videos;
+using Cichlids.Domain;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
@@ -28,12 +29,21 @@ public sealed class CareEntryMapper(CarePhotoUrlSigner signer, CareVideoUrlSigne
         entry.Note,
         entry.Photos.OrderBy(p => p.Position).Select(ToDto).ToList(),
         entry.Videos.OrderBy(v => v.Id).Select(v => VideoQueryService.ToCareDto(v.MediaItem, videoSigner)).ToList(),
-        entry.Todos.OrderBy(t => t.CreatedAt).ThenBy(t => t.Id).Select(CareTodoDto.From).ToList());
+        entry.Todos.OrderBy(t => t.CreatedAt).ThenBy(t => t.Id).Select(CareTodoDto.From).ToList(),
+        entry.DurationSeconds, entry.WaterChangeSessionId, EvidenceOf(entry));
 
-    private CarePhotoDto ToDto(CarePhoto photo)
+    // A water change logged without the guided mode has the evidence state none; a measurement has no evidence.
+    private static WaterChangeEvidenceDto? EvidenceOf(CareEntry entry) => entry.Kind != CareKind.WaterChange ? null
+        : entry.Evidence is { } state ? new(state, entry.EvidenceMissing) : WaterChangeEvidenceDto.From(WaterChangeEvidence.NoGuidedMode);
+
+    private CarePhotoDto ToDto(CarePhoto photo) => new(photo.Id, photo.MediaItem.Width, photo.MediaItem.Height, UrlsOf(photo.MediaItem));
+
+    /// <summary>
+    /// The signed URLs of the variants of a photo media item whose variants are loaded.
+    /// </summary>
+    public CarePhotoUrlsDto UrlsOf(MediaItem item)
     {
-        string? UrlOf(string label) => photo.MediaItem.Variants.SingleOrDefault(v => v.Label == label) is { } variant ? signer.PathFor(variant.Id) : null;
-        return new(photo.Id, photo.MediaItem.Width, photo.MediaItem.Height,
-            new CarePhotoUrlsDto(UrlOf("thumb"), UrlOf("small"), UrlOf("medium"), UrlOf("large")));
+        string? UrlOf(string label) => item.Variants.SingleOrDefault(v => v.Label == label) is { } variant ? signer.PathFor(variant.Id) : null;
+        return new(UrlOf("thumb"), UrlOf("small"), UrlOf("medium"), UrlOf("large"));
     }
 }

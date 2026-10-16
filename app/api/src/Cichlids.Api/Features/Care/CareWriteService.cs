@@ -151,7 +151,7 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
     private Task<bool> LockOwnTankAsync(long tankId, long profileId, CancellationToken ct) =>
         CareTanks.LockOwnAsync(context, tankId, profileId, ct);
 
-    private static DateTimeOffset AtMicrosecondPrecision(DateTimeOffset value) => value.AddTicks(-(value.Ticks % 10));
+    internal static DateTimeOffset AtMicrosecondPrecision(DateTimeOffset value) => value.AddTicks(-(value.Ticks % 10));
 
     private static void ReplaceValues(CareEntry entry, List<CareMeasurementValue> values)
     {
@@ -170,7 +170,7 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
         }
     }
 
-    private static void SetAmount(CareEntry entry, CareAmountRequest? amount)
+    internal static void SetAmount(CareEntry entry, CareAmountRequest? amount)
     {
         entry.AmountInputValue = amount?.Value;
         entry.AmountInputUnit = amount?.Unit switch
