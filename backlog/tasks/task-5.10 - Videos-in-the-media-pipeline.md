@@ -4,7 +4,7 @@ title: Videos in the media pipeline
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 05:01'
+updated_date: '2026-10-16 05:02'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -40,4 +40,8 @@ Videos upload resumably, are transcoded to HLS with ffmpeg, get a poster frame a
 - Videos up to 3 minutes; HLS renditions up to 1080p (for example 480p, 720p and 1080p, never above the source resolution).
 - The original stays stored privately after the transcoding, so videos can be transcoded again later.
 - Transcoding runs one video after the other in a queue, so it does not starve the other workloads of the node.
+
+### Open: length by reputation (project owner, 2026-10-16)
+- Long videos (up to 3 minutes) are meant only for members with a certain reputation; what reputation is, how it is earned and which length applies to everyone else is to be worked out (PROJECT-STATUS O6). Points and leaderboards are excluded from the app.
+- The pipeline resolves the maximum length per member through one policy, so the reputation rule plugs in without changing the upload or transcoding.
 <!-- SECTION:NOTES:END -->

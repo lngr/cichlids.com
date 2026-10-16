@@ -625,6 +625,10 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
   passen. Abzuwägen sind Abwesenheitsmuster aus genauen Zeitstempeln, Datenschutz durch
   Voreinstellung (DSGVO Art. 25 Abs. 2) und lebendige Timelines. Bis zur Entscheidung sieht nur
   der Besitzer seine Pflege-Einträge. TASK-5.7 wartet auf diese Entscheidung.
+- [ ] **O6** Videolänge nach Reputation (TASK-5.10): Lange Videos (bis 3 Minuten) sollen nur
+  Mitglieder mit einer gewissen Reputation hochladen dürfen. Was Reputation ist, wie sie entsteht
+  und welche Länge für alle anderen gilt, ist auszuarbeiten; Punkte und Ranglisten sind für die
+  App ausgeschlossen.
 
 ---
 
