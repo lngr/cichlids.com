@@ -30,6 +30,10 @@ BUCKET_NAME="cichlids-e2e"
 # the refill step; the write API gets the value, so a spec proves the rule within seconds.
 WATER_CHANGE_MIN_SECONDS=3
 
+# The specs upload photos as one member within a single run; the write API allows this many uploads
+# per member and hour, so the whole suite fits into the hourly limit.
+UPLOADS_PER_HOUR=500
+
 API_PORT=5046
 WEB_PORT=8082
 API_URL="http://localhost:${API_PORT}"
@@ -159,6 +163,7 @@ start_api() {
     WebPush__VapidKeyFile="$VAPID_KEY_FILE" \
     WebPushSender__Enabled=false \
     WaterChange__MinDuration="00:00:0${WATER_CHANGE_MIN_SECONDS}" \
+    UploadLimits__MaxUploadsPerHour="${UPLOADS_PER_HOUR}" \
     nohup "$DOTNET" "$API_BUILD_DIR/Cichlids.Api.dll" "--FeatureFlags:discover-activity=${CICHLIDS_WRITE_DISCOVER_ACTIVITY:-false}" >"$API_LOG" 2>&1 &
     echo $! >"$API_PID_FILE"
   )
