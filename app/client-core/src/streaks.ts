@@ -34,8 +34,8 @@ export type TankStreaks = { tankId: number; waterChange: WaterChangeStreak | nul
 
 export type OwnTankStreaks = { tankId: number; title: string; waterChange: WaterChangeStreak; timeLapse: TimeLapseStreak };
 
-/** The streaks of every tank of the member with the vacations of the member. */
-export type MeStreaks = { freezesPerYear: number; vacations: Vacation[]; tanks: OwnTankStreaks[] };
+/** The streaks of every tank of the member with the vacations of the member; enabled false means the member switched the streaks off, and vacations and tanks are empty. */
+export type MeStreaks = { enabled: boolean; freezesPerYear: number; vacations: Vacation[]; tanks: OwnTankStreaks[] };
 
 /** The days a member spent on ended vacations within a window of days. */
 export type VacationShare = { vacationDays: number; windowDays: number; fraction: number; pastVacationCount: number };
@@ -62,6 +62,7 @@ export const toTankStreaks = (dto: TankStreaksDto): TankStreaks => ({
 });
 
 export const toMeStreaks = (dto: MeStreaksDto): MeStreaks => ({
+  enabled: dto.enabled,
   freezesPerYear: Number(dto.freezesPerYear),
   vacations: dto.vacations.map(toVacation),
   tanks: dto.tanks.map(tank => ({

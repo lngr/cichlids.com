@@ -51,6 +51,19 @@ it("sends whether the camera of the app took a series photo", async () => {
   expect(forms.map(form => form.get("capturedInApp"))).toEqual(["true", "false"]);
 });
 
+it("reads and changes the streak switch of the member settings", async () => {
+  const requests: Request[] = [];
+  const client = createCichlidsClient({ baseUrl: "http://streaks.test", fetch: async request => {
+    const req = request as Request; requests.push(req);
+    return Response.json({ streaksEnabled: req.method === "GET" });
+  } });
+  expect(await client.me.settings()).toEqual({ streaksEnabled: true });
+  expect(requests[0].url).toBe("http://streaks.test/api/me/settings");
+  expect(await client.me.setStreaksEnabled(false)).toEqual({ streaksEnabled: false });
+  expect(requests[1].method).toBe("PUT");
+  expect(await requests[1].json()).toEqual({ streaksEnabled: false });
+});
+
 it("passes the coded refusals on", async () => {
   const client = createCichlidsClient({ baseUrl: "http://streaks.test", fetch: async () => Response.json({ code: "vacation_overlap" }, { status: 409 }) });
   await expect(client.me.startVacation({ date: "2026-10-15" })).rejects.toEqual(new ApiError("", 409, "vacation_overlap"));

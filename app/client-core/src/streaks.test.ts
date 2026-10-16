@@ -38,6 +38,7 @@ describe("normalizing the API answers", () => {
 
   it("normalizes the overview of the member", () => {
     const overview = toMeStreaks({
+      enabled: true,
       freezesPerYear: "2",
       vacations: [{ id: 1, startDate: "2026-10-10", endDate: null, active: true }],
       tanks: [{
@@ -46,9 +47,15 @@ describe("normalizing the API answers", () => {
         timeLapse: { current: 0, longest: 0, thisWeekHasPhoto: false, thisWeekOpen: false, weekStart: "2026-10-12", weekEnd: "2026-10-18", paused: true, keepingPhotoIds: [] },
       }],
     });
+    expect(overview.enabled).toBe(true);
     expect(overview.freezesPerYear).toBe(2);
     expect(overview.tanks[0]).toMatchObject({ tankId: 5, title: "Reef" });
     expect(activeVacation(overview.vacations)?.startDate).toBe("2026-10-10");
+  });
+
+  it("normalizes the overview of a member with streaks off", () => {
+    const overview = toMeStreaks({ enabled: false, freezesPerYear: 2, vacations: [], tanks: [] });
+    expect(overview).toEqual({ enabled: false, freezesPerYear: 2, vacations: [], tanks: [] });
   });
 
   it("normalizes the vacation share of a profile", () => {

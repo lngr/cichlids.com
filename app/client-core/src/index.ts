@@ -89,6 +89,7 @@ export type {
   LegacyTankDto,
   TankRegion,
   Me,
+  MeSettings,
   Today,
   Draft,
   UploadFile,

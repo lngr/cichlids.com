@@ -96,6 +96,10 @@ describe("planReminders", () => {
       const snooze: ReminderSnooze = { tankId: 4, kind: "water_change", dueDate: "2026-10-15", until: "2026-10-16" };
       expect(plan([weekly("overdue")], at("2026-10-16T10:00"), 0, [snooze]).map(r => r.date)).toEqual(["2026-10-17", "2026-10-18"]);
     });
+    it("gives a water change without a streak window, as of a member with streaks off, the single reminder on the due day", () => {
+      const planned = plan([weekly("due_in", null)], at("2026-10-12T12:00"));
+      expect(planned.map(r => [r.date, r.daysLeft])).toEqual([["2026-10-15", null]]);
+    });
     it("leaves other care kinds with the single reminder on the due day", () => {
       const planned = plan([item(4, "measurement", "due_in", "2026-10-18", true, running("2026-10-15", "2026-10-18"))], at("2026-10-12T12:00"));
       expect(planned.map(r => [r.date, r.daysLeft])).toEqual([["2026-10-18", null]]);

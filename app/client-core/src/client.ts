@@ -32,6 +32,8 @@ import {
   completeOnboarding,
   listMyLegacyTanks,
   setMyInterests,
+  getMySettings,
+  updateMySettings,
   refineTankRegion,
   discardPost,
   getCarePlan,
@@ -223,6 +225,8 @@ export type CommentCreated = CommentCreatedDto;
 export type { CreateTankRequest, CreateCommentRequest, PublishPostRequest, TankVisibility, TankVisibilityDto };
 export type { OnboardingRequest, OnboardingResultDto, LegacyTankDto, TankRegion };
 export type Me = MeDto;
+/** The settings of the member; streaksEnabled tells whether the streaks are shown to the member and to other viewers. */
+export type MeSettings = { streaksEnabled: boolean };
 export type Today = TodayDto;
 export type Draft = DraftDto;
 export type Video = VideoDto;
@@ -474,6 +478,10 @@ export interface CichlidsClient {
     legacyTanks(): Promise<LegacyTankDto[]>;
     setInterests(interests: string[]): Promise<string[]>;
     drafts(): Promise<Draft[]>;
+    /** The settings of the member. */
+    settings(): Promise<MeSettings>;
+    /** Turns the streaks of the member on or off. */
+    setStreaksEnabled(streaksEnabled: boolean): Promise<MeSettings>;
     /** The streaks of every tank of the member with the vacations of the member. */
     streaks(local: LocalTime): Promise<MeStreaks>;
     /** The vacations of the member, the newest first. */
@@ -773,6 +781,12 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
     me: {
       async today(date) {
         return absolutizeTankMedia(unwrap(await getToday({ client, query: { date } })), options.baseUrl);
+      },
+      async settings() {
+        return unwrap(await getMySettings({ client }));
+      },
+      async setStreaksEnabled(streaksEnabled) {
+        return unwrap(await updateMySettings({ client, body: { streaksEnabled } }));
       },
       async streaks(local) {
         return toMeStreaks(unwrap(await getMyStreaks({ client, query: local })));
