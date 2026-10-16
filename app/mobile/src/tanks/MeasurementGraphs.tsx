@@ -34,9 +34,9 @@ export function MeasurementGraphs({ tankId, revision }: { tankId: number; revisi
   useEffect(() => {
     let cancelled = false;
     void (async () => {
-      const all = await Promise.all(MEASUREMENT_PARAMETERS.map(parameter => apiClient.care.series(tankId, parameter).catch(() => null)));
+      const all = await apiClient.care.allSeries(tankId).catch(() => []);
       const next: Partial<Record<CareParameter, DisplaySeries>> = {};
-      for (const item of all) if (item && item.points.length > 0) next[item.parameter] = seriesForDisplay(item, system);
+      for (const item of all) if (item.points.length > 0) next[item.parameter] = seriesForDisplay(item, system);
       const times = Object.values(next).flatMap(item => item.points.map(point => Date.parse(point.occurredAt)));
       const changes = times.length === 0 ? [] : await loadWaterChanges(
         (offset, limit) => apiClient.care.list(tankId, { offset, limit }), Math.min(...times) - PAIRING_WINDOW_MS,
