@@ -93,6 +93,7 @@ function OnboardingFlow() {
         <Text style={textStyle}>{t("onboarding.visibility.explain")}</Text>
         <Button testID="onboarding-visibility-public" variant="secondary" label={t("onboarding.visibility.yes")} onPress={() => { setIsPublic(true); setPath("yes"); }} />
         <Button testID="onboarding-visibility-private" variant="secondary" label={t("onboarding.visibility.no")} onPress={() => { setIsPublic(false); setPath("yes"); }} />
+        <Button variant="secondary" label={t("navigation.back")} onPress={() => setPath("question")} />
       </> : path === "no" ? <RegionChoices multiple regions={interestRegions} selected={interests} onChange={value => setInterests(values => values.includes(value) ? values.filter(v => v !== value) : [...values, value])} /> : <>
         {!legacyTank && isPublic !== null ? <View style={{ gap: theme.space[2] }}>
           <Text testID="onboarding-visibility-summary" style={textStyle}>{t(isPublic ? "onboarding.visibility.summaryPublic" : "onboarding.visibility.summaryPrivate")}</Text>
@@ -124,7 +125,7 @@ function OnboardingFlow() {
         </> : <Text style={textStyle}>{t(`regions.${legacyTank.region}`)}</Text>}
       </>}
       {error ? <Text accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>{error}</Text> : null}
-      {path !== "question" ? <>
+      {path === "yes" || path === "no" ? <>
         <Button testID="onboarding-save" label={t("onboarding.save")} busy={busy} disabled={!canSave} onPress={() => void save()} />
         <Button variant="secondary" label={t("navigation.back")} disabled={busy} onPress={() => setPath(path === "yes" ? "visibility" : "question")} />
       </> : null}

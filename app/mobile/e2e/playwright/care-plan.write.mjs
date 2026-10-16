@@ -93,8 +93,7 @@ try {
   // Coded refusals for a foreign tank.
   const otherToken = await passwordGrantToken("dev-mod");
   const refused = await fetch(`${API_URL}/api/tanks/${tank.id}/care/plan?date=${localDate(new Date())}`, { headers: { Authorization: `Bearer ${otherToken}` } });
-  assert.equal(refused.status, 404);
-  assert.equal((await refused.json()).code, "care_not_found");
+  assert.equal(refused.status, 200, "the plan of a public stream is readable by other members");
   const refusedChange = await fetch(`${API_URL}/api/tanks/${tank.id}/care/plan/water_change?date=${localDate(new Date())}`, {
     method: "PATCH", headers: { Authorization: `Bearer ${otherToken}`, "Content-Type": "application/json" }, body: JSON.stringify({ rhythmDays: 3 }),
   });

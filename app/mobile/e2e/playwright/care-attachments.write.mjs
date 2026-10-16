@@ -105,8 +105,7 @@ try {
   assert.equal((await tampered.json()).code, "care_photo_not_found");
   const otherToken = await passwordGrantToken("dev-mod");
   const refused = await fetch(`${API_URL}/api/tanks/${tank.id}/care`, { headers: { Authorization: `Bearer ${otherToken}` } });
-  assert.equal(refused.status, 404);
-  assert.equal((await refused.json()).code, "care_not_found");
+  assert.equal(refused.status, 200, "the care stream of a public tank is readable by other members");
 
   // The viewer shows the photo large and closes.
   await byTestId(page, `care-photo-${stored.photos[0].id}`).click();

@@ -124,8 +124,7 @@ try {
   assert.equal((await bad.json()).code, "care_value_invalid");
   const otherToken = await passwordGrantToken("dev-mod");
   const refused = await fetch(`${API_URL}/api/tanks/${tank.id}/care/series?parameter=ph`, { headers: { Authorization: `Bearer ${otherToken}` } });
-  assert.equal(refused.status, 404);
-  assert.equal((await refused.json()).code, "care_not_found");
+  assert.equal(refused.status, 200, "the series of a public stream is readable by other members");
   await page.goto(`${WEB_URL}/me`, { waitUntil: "networkidle" });
   await signOutThroughKeycloak(page);
   assert.deepEqual(errors, []);
