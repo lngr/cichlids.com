@@ -73,5 +73,5 @@ it("lists the videos of a tank and removes one", async () => {
   await client.videos.removeFromTank(3, 5);
 
   expect(new URL(calls[1].url).pathname).toBe("/api/tanks/3/videos/5");
-  expect(client.videos.careVideoUrl("/api/care-videos/x/master.m3u8")).toBe("http://api.test/api/care-videos/x/master.m3u8");
+  expect(client.videos.careVideoUrl("/api/media/videos/x/master.m3u8")).toBe("http://api.test/api/media/videos/x/master.m3u8");
 });

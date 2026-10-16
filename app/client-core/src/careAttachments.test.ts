@@ -110,5 +110,5 @@ it("sends notes, photos and to-dos to the care routes and builds photo URLs", as
   expect(await requests[7].json()).toEqual({ done: true });
   await client.todos.remove(3);
   expect(requests[8].method).toBe("DELETE");
-  expect(client.care.photoUrl("/api/care-photos/abc")).toBe("http://care.test/api/care-photos/abc");
+  expect(client.care.photoUrl("/api/media/photos/abc")).toBe("http://care.test/api/media/photos/abc");
 });

@@ -1046,82 +1046,6 @@ export type AddTankSeriesPhotoResponses = {
 
 export type AddTankSeriesPhotoResponse = AddTankSeriesPhotoResponses[keyof AddTankSeriesPhotoResponses];
 
-export type GetTankMediaData = {
-    body?: never;
-    path: {
-        token: string;
-    };
-    query?: never;
-    url: '/api/tank-media/{token}';
-};
-
-export type GetTankMediaErrors = {
-    /**
-     * Not Found
-     */
-    404: ProblemDetails;
-};
-
-export type GetTankMediaError = GetTankMediaErrors[keyof GetTankMediaErrors];
-
-export type GetTankMediaResponses = {
-    /**
-     * OK
-     */
-    200: unknown;
-};
-
-export type GetTankVideoFileData = {
-    body?: never;
-    path: {
-        token: string;
-        path: string;
-    };
-    query?: never;
-    url: '/api/tank-videos/{token}/{path}';
-};
-
-export type GetTankVideoFileErrors = {
-    /**
-     * Not Found
-     */
-    404: ProblemDetails;
-};
-
-export type GetTankVideoFileError = GetTankVideoFileErrors[keyof GetTankVideoFileErrors];
-
-export type GetTankVideoFileResponses = {
-    /**
-     * OK
-     */
-    200: unknown;
-};
-
-export type GetCarePhotoData = {
-    body?: never;
-    path: {
-        token: string;
-    };
-    query?: never;
-    url: '/api/care-photos/{token}';
-};
-
-export type GetCarePhotoErrors = {
-    /**
-     * Not Found
-     */
-    404: ProblemDetails;
-};
-
-export type GetCarePhotoError = GetCarePhotoErrors[keyof GetCarePhotoErrors];
-
-export type GetCarePhotoResponses = {
-    /**
-     * OK
-     */
-    200: unknown;
-};
-
 export type CreateCareEntryTodoData = {
     body: CreateTodoRequest;
     path: {
@@ -2067,26 +1991,51 @@ export type RemoveCareVideoResponses = {
 
 export type RemoveCareVideoResponse = RemoveCareVideoResponses[keyof RemoveCareVideoResponses];
 
-export type GetCareVideoFileData = {
+export type GetMediaPhotoData = {
     body?: never;
     path: {
         token: string;
-        path: string;
     };
     query?: never;
-    url: '/api/care-videos/{token}/{path}';
+    url: '/api/media/photos/{token}';
 };
 
-export type GetCareVideoFileErrors = {
+export type GetMediaPhotoErrors = {
     /**
      * Not Found
      */
     404: ProblemDetails;
 };
 
-export type GetCareVideoFileError = GetCareVideoFileErrors[keyof GetCareVideoFileErrors];
+export type GetMediaPhotoError = GetMediaPhotoErrors[keyof GetMediaPhotoErrors];
 
-export type GetCareVideoFileResponses = {
+export type GetMediaPhotoResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type GetMediaVideoFileData = {
+    body?: never;
+    path: {
+        token: string;
+        path: string;
+    };
+    query?: never;
+    url: '/api/media/videos/{token}/{path}';
+};
+
+export type GetMediaVideoFileErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetMediaVideoFileError = GetMediaVideoFileErrors[keyof GetMediaVideoFileErrors];
+
+export type GetMediaVideoFileResponses = {
     /**
      * OK
      */

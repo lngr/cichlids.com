@@ -6,7 +6,7 @@ import type { TankOperation } from "./decommission.js";
 const dto = {
   tankId: 7, operatingDays: 212, operatingMonths: 7, decommissionedDays: 31, decommissioned: false,
   items: [{ id: 3, scope: "all_care", startDate: "2026-07-15", endDate: "2026-08-15", active: false,
-    startImage: { thumb: "/api/tank-media/start" }, endImage: { thumb: "https://cdn.test/end.jpg" } }],
+    startImage: { thumb: "/api/media/photos/start" }, endImage: { thumb: "https://cdn.test/end.jpg" } }],
 };
 const operation = (over: Partial<TankOperation> = {}): TankOperation => ({
   tankId: 7, operatingDays: 10, operatingMonths: 0, decommissionedDays: 0, decommissioned: false, items: [], ...over,
@@ -22,7 +22,7 @@ it("reads the operating time and the history of a tank with the local date", asy
   expect(requests[0]!.url).toBe("http://deco.test/api/tanks/7/decommissioning?date=2026-10-15&utcOffsetMinutes=120");
   expect(read.operatingMonths).toBe(7);
   expect(read.items[0]).toMatchObject({ scope: "all_care", startDate: "2026-07-15", endDate: "2026-08-15", active: false });
-  expect(read.items[0]!.startImage?.thumb).toBe("http://deco.test/api/tank-media/start");
+  expect(read.items[0]!.startImage?.thumb).toBe("http://deco.test/api/media/photos/start");
   expect(read.items[0]!.endImage?.thumb).toBe("https://cdn.test/end.jpg");
 });
 

@@ -107,7 +107,7 @@ const server = setupServer(
         state: "draft",
         topic: "cichlids",
         createdAt: "2026-01-01T00:00:00Z",
-        image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: null },
+        image: { thumb: "/api/media/photos/abc", small: "https://cdn.test/s.jpg", medium: "m.jpg", large: null },
       },
     ]);
   }),
@@ -251,6 +251,8 @@ describe("createCichlidsClient", () => {
 
     expect(drafts).toHaveLength(1);
     expect(drafts[0].id).toBe(42);
+    expect(drafts[0].image.thumb).toBe(`${baseUrl}/api/media/photos/abc`);
+    expect(drafts[0].image.small).toBe("https://cdn.test/s.jpg");
   });
 
   it("publishes a draft with a JSON body and returns the picture detail", async () => {

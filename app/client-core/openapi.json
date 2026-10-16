@@ -149,113 +149,6 @@
         }
       }
     },
-    "/api/tank-media/{token}": {
-      "get": {
-        "tags": [
-          "Tanks"
-        ],
-        "operationId": "GetTankMedia",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/tank-videos/{token}/{path}": {
-      "get": {
-        "tags": [
-          "Tanks"
-        ],
-        "operationId": "GetTankVideoFile",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "path",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/care-photos/{token}": {
-      "get": {
-        "tags": [
-          "Care"
-        ],
-        "operationId": "GetCarePhoto",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/tanks/{tankId}/care/{id}/todos": {
       "post": {
         "tags": [
@@ -1979,12 +1872,45 @@
         }
       }
     },
-    "/api/care-videos/{token}/{path}": {
+    "/api/media/photos/{token}": {
       "get": {
         "tags": [
-          "Care"
+          "Media"
         ],
-        "operationId": "GetCareVideoFile",
+        "operationId": "GetMediaPhoto",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/media/videos/{token}/{path}": {
+      "get": {
+        "tags": [
+          "Media"
+        ],
+        "operationId": "GetMediaVideoFile",
         "parameters": [
           {
             "name": "token",
@@ -10624,10 +10550,10 @@
       "name": "Tanks"
     },
     {
-      "name": "Care"
+      "name": "Todos"
     },
     {
-      "name": "Todos"
+      "name": "Care"
     },
     {
       "name": "Streaks"
@@ -10649,6 +10575,9 @@
     },
     {
       "name": "Posts"
+    },
+    {
+      "name": "Media"
     },
     {
       "name": "Species"

@@ -332,15 +332,15 @@ function unwrapPaged<T>(result: { data?: { total: number | string; items: T[] };
 }
 
 /**
- * The paths of the private media of a tank (photo variants and video files behind signed tokens) are
+ * The paths of private media (photo variants and video files behind signed tokens) are
  * relative to the API; every such string anywhere in a response becomes an absolute URL, so an image or
  * video player can load it. Public URLs are already absolute and stay as they are.
  */
-const TANK_MEDIA_PATH = /^\/api\/tank-(media|videos)\//;
-function absolutizeTankMedia<T>(value: T, baseUrl: string): T {
+const MEDIA_PATH = /^\/api\/media\/(photos|videos)\//;
+function absolutizeMedia<T>(value: T, baseUrl: string): T {
   const root = baseUrl.replace(/\/+$/, "");
   const visit = (item: unknown): unknown => {
-    if (typeof item === "string") return TANK_MEDIA_PATH.test(item) ? `${root}${item}` : item;
+    if (typeof item === "string") return MEDIA_PATH.test(item) ? `${root}${item}` : item;
     if (Array.isArray(item)) return item.map(visit);
     if (item !== null && typeof item === "object") return Object.fromEntries(Object.entries(item).map(([key, entry]) => [key, visit(entry)]));
     return item;
@@ -612,7 +612,7 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       async unsubscribe(endpoint) { unwrap(await unsubscribeWebPush({ client, body: { endpoint } })); },
     },
     videos: {
-      async listForTank(tankId) { return absolutizeTankMedia(unwrap(await listTankVideos({ client, path: { tankId } })), options.baseUrl); },
+      async listForTank(tankId) { return absolutizeMedia(unwrap(await listTankVideos({ client, path: { tankId } })), options.baseUrl); },
       async removeFromTank(tankId, mediaItemId) { unwrap(await removeTankVideo({ client, path: { tankId, mediaItemId } })); },
       async removeFromCareEntry(tankId, entryId, mediaItemId) {
         return unwrap(await removeCareVideo({ client, path: { tankId, id: entryId, mediaItemId } }));
@@ -672,10 +672,10 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
     },
     tanks: {
       async timeLapse(id) {
-        return absolutizeTankMedia(unwrap(await getTankTimeLapse({ client, path: { id } })), options.baseUrl);
+        return absolutizeMedia(unwrap(await getTankTimeLapse({ client, path: { id } })), options.baseUrl);
       },
       async addTimeLapsePhoto(id, file, capturedInApp = false) {
-        return absolutizeTankMedia(unwrap(await addTankSeriesPhoto({
+        return absolutizeMedia(unwrap(await addTankSeriesPhoto({
           client, path: { tankId: id }, body: { file: file as never, capturedInApp },
           bodySerializer: () => {
             const formData = new FormData();
@@ -689,10 +689,10 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
         return toTankStreaks(unwrap(await getTankStreaks({ client, path: { tankId: id }, query: local })));
       },
       async operation(id, local) {
-        return toTankOperation(absolutizeTankMedia(unwrap(await getTankOperation({ client, path: { tankId: id }, query: local })), options.baseUrl));
+        return toTankOperation(absolutizeMedia(unwrap(await getTankOperation({ client, path: { tankId: id }, query: local })), options.baseUrl));
       },
       async decommission(id, file, { scope, capturedInApp }, local) {
-        return toTankOperation(absolutizeTankMedia(unwrap(await decommissionTank({
+        return toTankOperation(absolutizeMedia(unwrap(await decommissionTank({
           client, path: { tankId: id }, query: local, body: { file: file as never, capturedInApp, scope },
           bodySerializer: () => {
             const formData = new FormData();
@@ -704,7 +704,7 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
         })), options.baseUrl));
       },
       async recommission(id, file, capturedInApp, local) {
-        return toTankOperation(absolutizeTankMedia(unwrap(await recommissionTank({
+        return toTankOperation(absolutizeMedia(unwrap(await recommissionTank({
           client, path: { tankId: id }, query: local, body: { file: file as never, capturedInApp },
           bodySerializer: () => {
             const formData = new FormData();
@@ -726,11 +726,11 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async list(params) {
         const result = await listTanks({ client, query: params ?? {} });
-        return absolutizeTankMedia(unwrapPaged(result), options.baseUrl);
+        return absolutizeMedia(unwrapPaged(result), options.baseUrl);
       },
       async get(id) {
         const result = await getTank({ client, path: { id } });
-        return absolutizeTankMedia(unwrap(result), options.baseUrl);
+        return absolutizeMedia(unwrap(result), options.baseUrl);
       },
       async listComments(id, params) {
         const result = await listTankComments({ client, path: { id }, query: params ?? {} });
@@ -781,7 +781,7 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
     },
     me: {
       async today(date) {
-        return absolutizeTankMedia(unwrap(await getToday({ client, query: { date } })), options.baseUrl);
+        return absolutizeMedia(unwrap(await getToday({ client, query: { date } })), options.baseUrl);
       },
       async settings() {
         return unwrap(await getMySettings({ client }));
@@ -819,7 +819,7 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async drafts() {
         const result = await listMyDrafts({ client });
-        return unwrap(result);
+        return absolutizeMedia(unwrap(result), options.baseUrl);
       },
     },
     uploads: {
@@ -833,7 +833,7 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
             return formData;
           },
         });
-        return unwrap(result);
+        return absolutizeMedia(unwrap(result), options.baseUrl);
       },
     },
     posts: {
