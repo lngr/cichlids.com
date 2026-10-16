@@ -30,9 +30,9 @@ to pseudonymized personal data. IDs are not renumbered.
 | `archive.legacy_comment`, `outbox_event`, `webhook_subscription` | Empty. |
 | `web_push_subscription`, `web_push_reminder_sent`, `video_upload`, `video_job` | Empty. Endpoints, keys, upload names, storage keys and job state are removed. Videos are excluded from the media subset. |
 | Species, species names and reference links | Preserved. |
-| Ratings, follows, inhabitants, collections and post/species relationships | Preserved, including IDs, numeric values, ordering and timestamps, except the private scopes below. |
+| Ratings, approved follows of public tanks and of members, inhabitants, collections and post/species relationships | Preserved, including IDs, numeric values, ordering and timestamps, except the private scopes below. |
 | Care entries (kind, times, amounts, evidence state and finding codes), measurement values, plan rules and rule history, water change sessions and steps, streak freezes, visibility consents, profile streak setting | Preserved for tanks with a public care stream, including IDs, values, kinds and times. Only notes are replaced. |
-| Private scopes | Removed: `vacation`, `care_reminder_snooze`, `care_todo` and `comment_vote` (empty); care entries marked only-me, with their measurement values, streak freezes, links and the water change session behind them; care entries, plan rules and rule history, water change sessions with steps and links, streak freezes, decommissionings and visibility consents of tanks whose stream visibility is not public; inhabitants, tank media links, tank comments and tank ratings of tanks whose profile visibility is not public; collection entries of non-public collections. |
+| Private scopes | Removed: `vacation`, `care_reminder_snooze`, `care_todo`, `comment_vote` and `tank_selected_member` (empty); pending follows; follows of tanks whose profile visibility is not public, because the follow list of a restricted tank reveals who is allowed to see it; care entries marked only-me, with their measurement values, streak freezes, links and the water change session behind them; care entries, plan rules and rule history, water change sessions with steps and links, streak freezes, decommissionings and visibility consents of tanks whose stream visibility is not public (the levels `private`, `selected` and `followers` all count as not public); inhabitants, tank media links, tank comments and tank ratings of tanks whose profile visibility is not public; collection entries of non-public collections. |
 | Media placement state | Every retained media item is placed public (its variants are public objects of the shared golden prefix), has no placement due, zero attempts, no next attempt time and visibility generation 0. A restored environment moves no files and issues its own signed links. |
 | Media capture metadata | Capture time, capture offset and capture check time are NULL, the receive time equals the creation time and the in-app flag is false, so photo series cannot be correlated with a member. |
 | Tank decommissionings | Preserved when the start photo and the end photo, if any, remain in the media subset. A decommissioning with a photo outside the subset is removed, because its photo references cannot be emptied. |
@@ -223,7 +223,7 @@ Operator activation order:
    Set `GOLDEN_ENVIRONMENT=staging`; `GOLDEN_TARGET_DSN` identifies staging only.
    This explicit operation uses `pg_restore --clean --if-exists` in one transaction
    inside the application database. Keycloak has its own database. Check
-   `RESTORE: tables=42 verified=1`, restart application writers, then sync the
+   `RESTORE: tables=43 verified=1`, restart application writers, then sync the
    ordinary Job to confirm the matching marker. A changed golden version never
    refreshes an existing database automatically.
 
