@@ -598,6 +598,10 @@ export type ReminderSnoozeDto = {
     untilDate: string;
 };
 
+export type SetProfileMediaRequest = {
+    mediaItemId: null | number | string;
+};
+
 export type SnoozeReminderRequest = {
     tankId: number | string;
     kind: null | string;
@@ -1880,6 +1884,166 @@ export type UploadMyMediaPhotoResponses = {
 };
 
 export type UploadMyMediaPhotoResponse = UploadMyMediaPhotoResponses[keyof UploadMyMediaPhotoResponses];
+
+export type RemoveMyAvatarData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/me/avatar';
+};
+
+export type RemoveMyAvatarResponses = {
+    /**
+     * OK
+     */
+    200: ProfileDetailDto;
+};
+
+export type RemoveMyAvatarResponse = RemoveMyAvatarResponses[keyof RemoveMyAvatarResponses];
+
+export type SetMyAvatarData = {
+    body?: null | SetProfileMediaRequest;
+    path?: never;
+    query?: never;
+    url: '/api/me/avatar';
+};
+
+export type SetMyAvatarErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type SetMyAvatarError = SetMyAvatarErrors[keyof SetMyAvatarErrors];
+
+export type SetMyAvatarResponses = {
+    /**
+     * OK
+     */
+    200: ProfileDetailDto;
+};
+
+export type SetMyAvatarResponse = SetMyAvatarResponses[keyof SetMyAvatarResponses];
+
+export type UploadMyAvatarData = {
+    body: {
+        file?: IFormFile;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/me/avatar/photo';
+};
+
+export type UploadMyAvatarErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Payload Too Large
+     */
+    413: unknown;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type UploadMyAvatarError = UploadMyAvatarErrors[keyof UploadMyAvatarErrors];
+
+export type UploadMyAvatarResponses = {
+    /**
+     * OK
+     */
+    200: ProfileDetailDto;
+};
+
+export type UploadMyAvatarResponse = UploadMyAvatarResponses[keyof UploadMyAvatarResponses];
+
+export type RemoveMyHeaderData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/me/header';
+};
+
+export type RemoveMyHeaderResponses = {
+    /**
+     * OK
+     */
+    200: ProfileDetailDto;
+};
+
+export type RemoveMyHeaderResponse = RemoveMyHeaderResponses[keyof RemoveMyHeaderResponses];
+
+export type SetMyHeaderData = {
+    body?: null | SetProfileMediaRequest;
+    path?: never;
+    query?: never;
+    url: '/api/me/header';
+};
+
+export type SetMyHeaderErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type SetMyHeaderError = SetMyHeaderErrors[keyof SetMyHeaderErrors];
+
+export type SetMyHeaderResponses = {
+    /**
+     * OK
+     */
+    200: ProfileDetailDto;
+};
+
+export type SetMyHeaderResponse = SetMyHeaderResponses[keyof SetMyHeaderResponses];
+
+export type UploadMyHeaderData = {
+    body: {
+        file?: IFormFile;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/me/header/photo';
+};
+
+export type UploadMyHeaderErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Payload Too Large
+     */
+    413: unknown;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type UploadMyHeaderError = UploadMyHeaderErrors[keyof UploadMyHeaderErrors];
+
+export type UploadMyHeaderResponses = {
+    /**
+     * OK
+     */
+    200: ProfileDetailDto;
+};
+
+export type UploadMyHeaderResponse = UploadMyHeaderResponses[keyof UploadMyHeaderResponses];
 
 export type CompleteOnboardingData = {
     body: OnboardingRequest;
