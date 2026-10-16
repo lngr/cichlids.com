@@ -634,10 +634,10 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
   ergibt ein anonymes, vorläufiges Konto; das Web zeigt indexierbare Profile und vom Verlauf nur
   die letzten 2 bis 3 Einträge. Rechte vorläufiger Konten und die Architektur der
   Geräte-Anmeldung sind auszuarbeiten (Draft im Backlog).
-- [ ] **O8** Fotos zwischen Becken und Galerie: Ein Foto ist entweder Teil eines Beckens oder
-  unabhängig in der öffentlichen Galerie veröffentlicht. Das heutige Modell kennt zusätzlich
-  Galerie-Beiträge mit einer Becken-Verknüpfung; das Konzept wird gemeinsam neu besprochen, bis
-  dahin bleibt das Verhalten unverändert (TASK-5.7).
+- [ ] **O8** Fotos zwischen Becken und Galerie: entschieden ist, dass jedes Foto und Video des
+  Beckens einmal in der Galerie geteilt werden kann; der Galerie-Eintrag verweist auf das
+  bestehende Medium, und der Becken-Bezug erscheint nur Betrachtern, die das Becken sehen dürfen.
+  Offen ist die Besprechung des Medien-Datenmodells mit dem User vor der Umsetzung.
 
 ---
 

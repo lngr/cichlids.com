@@ -4,7 +4,7 @@ title: Visibility per care entry
 status: In Review
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 08:43'
+updated_date: '2026-10-16 09:04'
 labels: []
 dependencies: []
 references:
@@ -81,4 +81,10 @@ Each care entry has a visibility; private entries never leave the owner, public 
 - Verification after the follow-ups: .NET 542/1062 (1 opt-in benchmark skipped)/349 with 0 warnings, client-core 198, mobile 384, both typechecks, all 34 write e2e specs green. A single run of visibility.write.mjs once timed out at care-only-me-badge and passed on rerun (small flake to watch).
 
 - Gallery posts linked to a tank (project owner, 2026-10-16): a photo is either part of a tank or posted in the public gallery independently of a tank; the mixed form of the current model (a gallery post with a tank link) does not match the concept of the project owner and is discussed again (PROJECT-STATUS O8). The behavior stays unchanged until then; the proposal that a post follows the visibility of its tank is withdrawn.
+
+### Gallery and tank photos (decided by the project owner, 2026-10-16; replaces the O8 note above)
+- Publishing in the gallery is a deliberate disclosure and does not contradict a private or restricted tank.
+- Every photo and video taken along the way (tank, time-lapse, care, water change) can be shared in the gallery, once per item while it is not yet shared. Sharing creates a gallery entry that references the existing media of the tank (no copy).
+- A gallery entry shows its link to the tank (with tank information in the app) only to viewers who may see that tank; everyone else sees a normal gallery picture without a tank reference.
+- The project owner wants to review the architecture, code and database model of media first (concern: separate models per kind of photo).
 <!-- SECTION:NOTES:END -->
