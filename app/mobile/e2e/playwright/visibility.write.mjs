@@ -28,6 +28,7 @@ async function log(amount) {
   assert.equal(response.status, 201);
   return (await response.json()).id;
 }
+const answeredTitle = `Private by answer ${tank.id}`;
 const publicEntry = await log(10);
 const secretEntry = await log(20);
 
@@ -49,7 +50,10 @@ try {
   await byTestId(ownerPage, `care-entry-${secretEntry}`).waitFor();
   const toggle = byTestId(ownerPage, `care-only-me-${secretEntry}`);
   assert.ok((await toggle.boundingBox()).height >= 48);
+  // The badge shows after the change request and the reload of the list; wait for the request first.
+  const changed = ownerPage.waitForResponse(response => response.request().method() !== "GET" && response.url().includes(`/care/${secretEntry}`));
   await toggle.click();
+  assert.ok((await changed).ok(), "the care entry change was refused");
   await byTestId(ownerPage, `care-only-me-badge-${secretEntry}`).waitFor();
   assert.equal(await byTestId(ownerPage, `care-only-me-badge-${publicEntry}`).count(), 0);
   await ownerPage.screenshot({ path: "/tmp/task-5.7-owner-care-light.png" });
@@ -121,11 +125,11 @@ try {
   await ownerPage.screenshot({ path: "/tmp/task-5.7-question-light.png" });
   await no.click();
   await byTestId(ownerPage, "standard-us-55").click();
-  await byTestId(ownerPage, "onboarding-title").fill("Private by answer");
+  await byTestId(ownerPage, "onboarding-title").fill(answeredTitle);
   await byTestId(ownerPage, "region-lake_malawi").click();
   await byTestId(ownerPage, "onboarding-save").click();
   await byTestId(ownerPage, "onboarding-reward").waitFor();
-  const answered = sql(`SELECT t.profile_visibility || '/' || t.stream_visibility || '/' || c.answer FROM public.tank t JOIN public.tank_visibility_consent c ON c.tank_id = t.id WHERE t.title = 'Private by answer'`);
+  const answered = sql(`SELECT t.profile_visibility || '/' || t.stream_visibility || '/' || c.answer FROM public.tank t JOIN public.tank_visibility_consent c ON c.tank_id = t.id WHERE t.title = '${answeredTitle}'`);
   assert.equal(answered, "private/private/false");
   sql(`DELETE FROM public.tank WHERE id = ${Number(archiveId)}`);
   await byTestId(ownerPage, "onboarding-done").click();
