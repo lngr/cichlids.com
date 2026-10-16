@@ -4,6 +4,7 @@ title: Daily water change reminders until the streak breaks
 status: To Do
 assignee: []
 created_date: '2026-10-16 12:35'
+updated_date: '2026-10-16 14:09'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -41,3 +42,12 @@ While a water change streak is running, the member gets a reminder every day at 
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Decisions of the project owner (2026-10-16)
+- The window starts at the deadline minus the grace, as built.
+- An active vacation stops all water change reminders of the tank, as built.
+- Streak reminders offer the familiar remind-me-tomorrow action; it dismisses the reminder of the day and the next planned one follows.
+<!-- SECTION:NOTES:END -->

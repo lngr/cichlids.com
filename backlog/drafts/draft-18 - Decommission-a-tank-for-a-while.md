@@ -4,6 +4,7 @@ title: Decommission a tank for a while
 status: Draft
 assignee: []
 created_date: '2026-10-16 12:44'
+updated_date: '2026-10-16 14:15'
 labels: []
 dependencies: []
 ---
@@ -35,3 +36,13 @@ Decommissioning is shown publicly on the profile of the tank with a photo that s
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Decided by the project owner (2026-10-16): the decommissioning and its photo are visible to exactly the viewers who may see the tank and its streak.
+
+Open (asked 2026-10-16, no preference given yet): whether the start photo must come from the app camera at the moment of decommissioning with checked provenance, as for the guided water change, or may be any photo.
+
+Decided by the project owner (2026-10-16): the start photo comes from the app camera at the moment of decommissioning, with checked provenance as for the guided water change (in app, received by the server then, plausible capture time), with the hint to photograph the empty tank.
+<!-- SECTION:NOTES:END -->
