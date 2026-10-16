@@ -1,4 +1,6 @@
 export { createCichlidsClient, ApiError } from "./client.js";
+export { uploadVideo } from "./videoUpload.js";
+export type { UploadVideoOptions, VideoUploadSession, VideoUploadSource, VideoUploadTransport } from "./videoUpload.js";
 export type {
   CareEntry,
   CarePhoto,

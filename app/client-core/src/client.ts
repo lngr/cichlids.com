@@ -1,5 +1,6 @@
 import { createClient, createConfig } from "./generated/client/index.js";
 import type { Client } from "./generated/client/index.js";
+import type { VideoUploadTransport } from "./videoUpload.js";
 import {
   logCareEntry,
   updateCareEntry,
@@ -39,6 +40,14 @@ import {
   getTank,
   getTankTimeLapse,
   addTankSeriesPhoto,
+  appendVideoUploadChunk,
+  cancelVideoUpload,
+  completeVideoUpload,
+  createVideoUpload,
+  getVideoUpload,
+  listTankVideos,
+  removeCareVideo,
+  removeTankVideo,
   listCommunityCategories,
   listCommunityThreads,
   listMyDrafts,
@@ -89,6 +98,8 @@ import type {
   TankRegion,
   DimensionsDto,
   DraftDto,
+  VideoDto,
+  VideoState,
   InhabitantDto,
   MeDto,
   TodayDto,
@@ -168,6 +179,8 @@ export type { OnboardingRequest, OnboardingResultDto, LegacyTankDto, TankRegion 
 export type Me = MeDto;
 export type Today = TodayDto;
 export type Draft = DraftDto;
+export type Video = VideoDto;
+export type { VideoState };
 export type PagedResponse<T> = { total: number; items: T[] };
 
 /**
@@ -366,6 +379,17 @@ export interface CichlidsClient {
   uploads: {
     create(file: UploadFile): Promise<Draft>;
   };
+  videos: {
+    /** The videos of a tank: the ready ones for everybody, every state for the owner. */
+    listForTank(tankId: number): Promise<Video[]>;
+    removeFromTank(tankId: number, mediaItemId: number): Promise<void>;
+    removeFromCareEntry(tankId: number, entryId: number, mediaItemId: number): Promise<CareEntry>;
+    /** The calls of the chunked upload, for uploadVideo. */
+    uploadTransport: VideoUploadTransport;
+    cancelUpload(id: number): Promise<void>;
+    /** The absolute URL for a playlist or poster path of a care video. */
+    careVideoUrl(path: string): string;
+  };
   posts: {
     publish(id: number, request: PublishPostRequest): Promise<PictureDetail>;
     discard(id: number): Promise<void>;
@@ -436,6 +460,31 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
         return { id: Number(stored.id), timeZone: stored.timeZone };
       },
       async unsubscribe(endpoint) { unwrap(await unsubscribeWebPush({ client, body: { endpoint } })); },
+    },
+    videos: {
+      async listForTank(tankId) { return unwrap(await listTankVideos({ client, path: { tankId } })); },
+      async removeFromTank(tankId, mediaItemId) { unwrap(await removeTankVideo({ client, path: { tankId, mediaItemId } })); },
+      async removeFromCareEntry(tankId, entryId, mediaItemId) {
+        return unwrap(await removeCareVideo({ client, path: { tankId, id: entryId, mediaItemId } }));
+      },
+      uploadTransport: {
+        async create(request) { return unwrap(await createVideoUpload({ client, body: request })); },
+        async status(id) { return unwrap(await getVideoUpload({ client, path: { id } })); },
+        async append(id, offset, chunk) {
+          const result = await appendVideoUploadChunk({
+            client, path: { id }, body: chunk as never, bodySerializer: body => body as never,
+            headers: { "Upload-Offset": String(offset) },
+          });
+          if (result.error !== undefined) unwrap(result as { error: unknown; response?: Response });
+          // A browser hides the header from a cross-origin page unless the server exposes it; the
+          // server accepts a chunk only whole, so the confirmed offset is then the end of the chunk.
+          const confirmed = Number(result.response?.headers.get("Upload-Offset"));
+          return Number.isFinite(confirmed) && confirmed > offset ? confirmed : offset + chunk.size;
+        },
+        async complete(id) { return unwrap(await completeVideoUpload({ client, path: { id } })); },
+      },
+      async cancelUpload(id) { unwrap(await cancelVideoUpload({ client, path: { id } })); },
+      careVideoUrl(path) { return `${options.baseUrl.replace(/\/+$/, "")}${path}`; },
     },
     todos: {
       async list(params) { return unwrapPaged(await listMyTodos({ client, query: params ?? {} })); },

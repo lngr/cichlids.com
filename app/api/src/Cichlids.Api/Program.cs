@@ -53,6 +53,7 @@ if (builder.Environment.IsDevelopment())
                 && uri.Host is "localhost" or "127.0.0.1")
                 .AllowAnyHeader()
                 .AllowAnyMethod()
+                .WithExposedHeaders(VideoEndpoints.OffsetHeader)
                 .AllowCredentials()));
 }
 
