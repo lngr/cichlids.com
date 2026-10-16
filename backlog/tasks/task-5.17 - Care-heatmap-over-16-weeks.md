@@ -1,9 +1,10 @@
 ---
 id: TASK-5.17
 title: Care heatmap over 16 weeks
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-16 09:22'
+updated_date: '2026-10-16 09:23'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
