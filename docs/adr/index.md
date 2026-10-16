@@ -73,4 +73,5 @@ by hand. Run that script (or its `--check` mode in CI) after adding or changing 
 | [0026](0026-legacy-import-runs-once-against-an-empty-target.md) | Legacy Import Runs Once Against an Empty Target | Accepted |
 | [0027](0027-session-model-for-native-and-web-clients.md) | Session Model for Native and Web Clients | Proposed |
 | [0028](0028-private-access-to-non-production-environments.md) | Private Access to Non-Production Environments | Accepted |
+| [0029](0029-media-links-and-stories.md) | Media Links and Stories | Accepted |
 <!-- END ADR LIST -->
