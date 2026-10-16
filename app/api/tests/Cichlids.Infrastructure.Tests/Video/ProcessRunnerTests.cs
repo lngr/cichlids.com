@@ -61,10 +61,15 @@ public sealed class ProcessRunnerTests
     [Fact]
     public async Task RunsAtTheRequestedNiceness()
     {
+        // A child inherits the niceness of the test host, and nice adds the requested value to it
+        // up to the maximum of 19, so the expectation derives from a child started without nice.
+        var baseline = await _runner.RunAsync(
+            new ProcessRequest("sh", ["-c", "ps -o ni= -p $$"], TimeSpan.FromSeconds(10)), CancellationToken.None);
         var result = await _runner.RunAsync(
             new ProcessRequest("sh", ["-c", "ps -o ni= -p $$"], TimeSpan.FromSeconds(10), Nice: 10), CancellationToken.None);
 
-        Assert.Equal("10", result.StandardOutput.Trim());
+        var inherited = int.Parse(baseline.StandardOutput.Trim(), System.Globalization.CultureInfo.InvariantCulture);
+        Assert.Equal(Math.Min(19, inherited + 10).ToString(System.Globalization.CultureInfo.InvariantCulture), result.StandardOutput.Trim());
     }
 
     [Fact]
