@@ -11,7 +11,7 @@ export const careMachine = setup({
     input: {} as Effects,
     context: {} as { effects: Effects; entry: CareEntry | null; amount: CareAmountRequest | null; occurredAt: string | undefined; error: unknown; revision: number },
     events: {} as { type: "UNDO" | "CANCEL" | "DELETE" } | { type: "LOG"; occurredAt?: string }
-      | { type: "EDIT"; entry: CareEntry } | { type: "SAVE"; amount: CareAmountRequest | null; occurredAt?: string },
+      | { type: "EDIT"; entry: CareEntry } | { type: "SAVE"; amount: CareAmountRequest | null; occurredAt?: string } | { type: "SAVE_TIME"; occurredAt: string },
   },
   actors: {
     log: fromPromise(({ input }: { input: { effects: Effects; occurredAt: string | undefined } }) => input.effects.log(input.occurredAt)),
@@ -25,7 +25,7 @@ export const careMachine = setup({
     edit: assign({ entry: ({ event }) => event.type === "EDIT" ? event.entry : null, error: null }),
     amount: assign({
       amount: ({ event }) => event.type === "SAVE" ? event.amount : null,
-      occurredAt: ({ event }) => event.type === "SAVE" ? event.occurredAt : undefined, error: null,
+      occurredAt: ({ event }) => event.type === "SAVE" || event.type === "SAVE_TIME" ? event.occurredAt : undefined, error: null,
     }),
   },
 }).createMachine({
@@ -45,7 +45,7 @@ export const careMachine = setup({
       on: { UNDO: { target: "undoing", actions: "clearError" }, EDIT: { target: "editing", actions: "edit" }, LOG: { target: "logging", actions: "logAt" } },
     },
     editing: {
-      on: { CANCEL: "idle", SAVE: { target: "saving", actions: "amount" }, DELETE: { target: "deleting", actions: "clearError" } },
+      on: { CANCEL: "idle", SAVE: { target: "saving", actions: "amount" }, SAVE_TIME: { target: "saving", actions: "amount" }, DELETE: { target: "deleting", actions: "clearError" } },
     },
     saving: {
       invoke: { src: "update", input: ({ context }) => ({ effects: context.effects, id: Number(context.entry!.id), amount: context.amount, occurredAt: context.occurredAt }),

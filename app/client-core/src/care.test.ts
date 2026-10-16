@@ -70,3 +70,12 @@ it("logs without a time when none is chosen", async () => {
   expect(log).toHaveBeenCalledWith(undefined);
   actor.stop();
 });
+it("moves only the time of an entry and keeps its amount", async () => {
+  const update = vi.fn(async () => entry);
+  const actor = createActor(careMachine, { input: { log: vi.fn(), update, remove: vi.fn() } }).start();
+  actor.send({ type: "EDIT", entry });
+  actor.send({ type: "SAVE_TIME", occurredAt: "2026-10-13T07:30:00.000Z" });
+  await waitFor(actor, s => s.matches("idle"));
+  expect(update).toHaveBeenCalledWith(7, null, "2026-10-13T07:30:00.000Z");
+  actor.stop();
+});

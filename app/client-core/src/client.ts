@@ -315,7 +315,7 @@ export interface CichlidsClient {
   care: {
     list(tankId: number, params?: PageParams): Promise<PagedResponse<CareEntry>>;
     log(tankId: number, request?: LogCareRequest): Promise<CareEntry>;
-    /** Replaces or clears the amount and, when given, moves the occurred time; clearing the amount and moving the time are two requests. */
+    /** Replaces or clears the amount and, when given, moves the occurred time; a null amount with a time moves only the time. */
     update(tankId: number, id: number, amount: CareAmountRequest | null, occurredAt?: string): Promise<CareEntry>;
     updateValues(tankId: number, id: number, values: MeasurementValueRequest[], occurredAt?: string): Promise<CareEntry>;
     series(tankId: number, parameter: CareParameter, range?: CareSeriesRange): Promise<CareSeries>;
@@ -451,10 +451,6 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       async list(tankId, params) { return unwrapPaged(await listCareEntries({ client, path: { tankId }, query: params ?? {} })); },
       async log(tankId, request) { return unwrap(await logCareEntry({ client, path: { tankId }, body: request ?? {} })); },
       async update(tankId, id, amount, occurredAt) {
-        if (occurredAt && amount === null) {
-          await unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount } }));
-          return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: { amount: null, occurredAt } }));
-        }
         return unwrap(await updateCareEntry({ client, path: { tankId, id }, body: occurredAt ? { amount, occurredAt } : { amount } }));
       },
       async updateValues(tankId, id, values, occurredAt) {

@@ -92,10 +92,7 @@ it("sends the occurred time with a log, a value correction and an amount change"
   await client.care.updateValues(42, 1, [{ parameter: "no3", value: 20 }], "2026-10-14T07:30:00.000Z");
   expect(await requests[0].json()).toEqual({ amount: null, values: [{ parameter: "no3", value: 20 }], occurredAt: "2026-10-14T07:30:00.000Z" });
   await client.care.update(42, 1, { value: 30, unit: "percent" }, "2026-10-14T07:30:00.000Z");
-  expect(requests).toHaveLength(2);
-  expect(await requests[1].json()).toEqual({ amount: { value: 30, unit: "percent" }, occurredAt: "2026-10-14T07:30:00.000Z" });
+    expect(await requests[1].json()).toEqual({ amount: { value: 30, unit: "percent" }, occurredAt: "2026-10-14T07:30:00.000Z" });
   await client.care.update(42, 1, null, "2026-10-14T07:30:00.000Z");
-  expect(requests).toHaveLength(4);
-  expect(await requests[2].json()).toEqual({ amount: null });
-  expect(await requests[3].json()).toEqual({ amount: null, occurredAt: "2026-10-14T07:30:00.000Z" });
+  expect(await requests[2].json()).toEqual({ amount: null, occurredAt: "2026-10-14T07:30:00.000Z" });
 });
