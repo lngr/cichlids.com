@@ -69,6 +69,7 @@ export type CarePhotoUrlsDto = {
 export type CarePlanDto = {
     tankId: number | string;
     rules: Array<CarePlanRuleDto>;
+    remindersEnabled: boolean;
 };
 
 export type CarePlanRuleDto = {
@@ -273,6 +274,7 @@ export type DueCareItemDto = {
     rhythmDays: number | string;
     reason: CareReasonDto;
     due: CareDueDto;
+    remindersEnabled: boolean;
 };
 
 export type IFormFile = Blob | File;
@@ -641,6 +643,10 @@ export type TodoListItemDto = {
     done: boolean;
     doneAt: null | string;
     createdAt: string;
+};
+
+export type UpdateCarePlanRequest = {
+    remindersEnabled?: null | boolean;
 };
 
 export type UpdateCarePlanRuleRequest = {
@@ -1870,6 +1876,48 @@ export type GetCarePlanResponses = {
 };
 
 export type GetCarePlanResponse = GetCarePlanResponses[keyof GetCarePlanResponses];
+
+export type UpdateCarePlanData = {
+    body: UpdateCarePlanRequest;
+    path: {
+        tankId: number;
+    };
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/tanks/{tankId}/care/plan';
+};
+
+export type UpdateCarePlanErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type UpdateCarePlanError = UpdateCarePlanErrors[keyof UpdateCarePlanErrors];
+
+export type UpdateCarePlanResponses = {
+    /**
+     * OK
+     */
+    200: CarePlanDto;
+};
+
+export type UpdateCarePlanResponse = UpdateCarePlanResponses[keyof UpdateCarePlanResponses];
 
 export type UpdateCarePlanRuleData = {
     body: UpdateCarePlanRuleRequest;

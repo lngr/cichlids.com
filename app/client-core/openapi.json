@@ -2122,6 +2122,105 @@
             }
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Care"
+        ],
+        "operationId": "UpdateCarePlan",
+        "parameters": [
+          {
+            "name": "tankId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "utcOffsetMinutes",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCarePlanRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarePlanDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/tanks/{tankId}/care/plan/{kind}": {
@@ -3398,7 +3497,8 @@
       "CarePlanDto": {
         "required": [
           "tankId",
-          "rules"
+          "rules",
+          "remindersEnabled"
         ],
         "type": "object",
         "properties": {
@@ -3415,6 +3515,9 @@
             "items": {
               "$ref": "#/components/schemas/CarePlanRuleDto"
             }
+          },
+          "remindersEnabled": {
+            "type": "boolean"
           }
         }
       },
@@ -4436,7 +4539,8 @@
           "kind",
           "rhythmDays",
           "reason",
-          "due"
+          "due",
+          "remindersEnabled"
         ],
         "type": "object",
         "properties": {
@@ -4467,6 +4571,9 @@
           },
           "due": {
             "$ref": "#/components/schemas/CareDueDto"
+          },
+          "remindersEnabled": {
+            "type": "boolean"
           }
         }
       },
@@ -6402,6 +6509,17 @@
           "createdAt": {
             "type": "string",
             "format": "date-time"
+          }
+        }
+      },
+      "UpdateCarePlanRequest": {
+        "type": "object",
+        "properties": {
+          "remindersEnabled": {
+            "type": [
+              "null",
+              "boolean"
+            ]
           }
         }
       },
