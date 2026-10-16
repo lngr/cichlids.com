@@ -108,6 +108,7 @@ public sealed class UploadsFixture : IAsyncLifetime
                     ["MediaPlacement:ImmediateBudget"] = "00:00:10",
                     // Tests run cleanup passes directly instead of racing a timer.
                     ["DraftCleanup:Enabled"] = "false",
+                    ["ProvisionalAccountCleanup:Enabled"] = "false",
                     // Tests run the transcoding queue and the upload cleanup directly.
                     ["VideoTranscoding:Enabled"] = "false",
                     ["VideoLimits:CleanupEnabled"] = "false",

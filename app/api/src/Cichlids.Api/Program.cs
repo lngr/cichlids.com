@@ -289,6 +289,14 @@ builder.Services.AddScoped<StoredObjectDeleter>();
 builder.Services.AddScoped<UploadsWriteService>();
 builder.Services.AddScoped<DraftCleanupService>();
 builder.Services.AddHostedService<DraftCleanupHostedService>();
+builder.Services.AddOptions<ProvisionalAccountCleanupOptions>()
+    .Bind(builder.Configuration.GetSection(ProvisionalAccountCleanupOptions.SectionName))
+    .Validate(
+        o => o.Interval > TimeSpan.Zero && o.InactivityMonths > 0 && o.BatchSize > 0,
+        "ProvisionalAccountCleanup interval, inactivity months and batch size must be positive.")
+    .ValidateOnStart();
+builder.Services.AddScoped<ProvisionalAccountCleanupService>();
+builder.Services.AddHostedService<ProvisionalAccountCleanupHostedService>();
 builder.Services.AddScoped<DraftsQueryService>();
 builder.Services.AddScoped<StoryPublishService>();
 builder.Services.AddScoped<StoryEditorQueryService>();

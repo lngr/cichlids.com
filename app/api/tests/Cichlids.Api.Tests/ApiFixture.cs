@@ -83,6 +83,8 @@ public sealed class ApiFixture : IAsyncLifetime
                     // check an outbox row's dispatched_at right after a write; tests that exercise
                     // dispatch drive it directly instead.
                     ["OutboxDispatcher:Enabled"] = "false",
+                    // Tests run cleanup passes directly instead of racing a timer.
+                    ["ProvisionalAccountCleanup:Enabled"] = "false",
                     // Tests run the media placement directly instead of racing the worker.
                     ["MediaPlacement:Enabled"] = "false",
                     // The streak tests read dates in 2026; a dedicated test narrows the allowed difference to the server date.

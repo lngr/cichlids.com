@@ -173,8 +173,14 @@ public sealed class DeviceAuthService(
             return Refuse("signature");
         }
 
-        await context.DeviceCredentials.Where(c => c.Id == credentialId)
+        // A credential removed together with its abandoned profile since the check above updates no row.
+        var recorded = await context.DeviceCredentials.Where(c => c.Id == credentialId)
             .ExecuteUpdateAsync(s => s.SetProperty(c => c.LastSignedRequestAt, now), cancellationToken);
+        if (recorded != 1)
+        {
+            return Refuse("credential");
+        }
+
         return issuer.Issue(credentialId, credential.ProfileId, now);
     }
 
