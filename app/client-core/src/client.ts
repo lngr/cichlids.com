@@ -13,7 +13,7 @@ import {
   deleteCareEntry,
   listCareEntries,
   listCareSeries,
-  createPictureComment,
+  createStoryComment,
   addCarePhoto,
   createCareEntryTodo,
   createTankTodo,
@@ -47,7 +47,7 @@ import {
   getMySettings,
   updateMySettings,
   refineTankRegion,
-  discardPost,
+  discardStory,
   getCarePlan,
   getTankStreaks,
   getMyStreaks,
@@ -67,7 +67,7 @@ import {
   getDiscover,
   getMe,
   getToday,
-  getPicture,
+  getStory,
   getProfile,
   getSpecies,
   getTank,
@@ -87,14 +87,14 @@ import {
   listCommunityCategories,
   listCommunityThreads,
   listMyDrafts,
-  listPictureComments,
-  listPictures,
-  listProfilePictures,
+  listStoryComments,
+  listStories,
+  listProfileStories,
   listProfileTanks,
   listSpecies,
   listTankComments,
   listTanks,
-  publishPost,
+  publishStory,
   uploadPhoto,
 } from "./generated/sdk.gen.js";
 import type {
@@ -150,10 +150,12 @@ import type {
   InhabitantDto,
   MeDto,
   TodayDto,
-  PictureDetailDto,
-  PictureListItemDto,
+  StoryDetailDto,
+  StoryItemDto,
+  StoryListItemDto,
+  StorySubjectDto,
   ProfileDetailDto,
-  PublishPostRequest,
+  PublishStoryRequest,
   SpeciesDetailDto,
   SpeciesLinkDto,
   SpeciesListItemDto,
@@ -216,8 +218,10 @@ export type { CareAmountRequest, CareParameter, LogCareRequest, MeasurementOrigi
 export type CareSeriesRange = { from?: string; to?: string };
 export type DiscoverArchive = DiscoverDto;
 export type DiscoverItem = DiscoverItemDto;
-export type PictureListItem = PictureListItemDto;
-export type PictureDetail = PictureDetailDto;
+export type StoryListItem = StoryListItemDto;
+export type StoryDetail = StoryDetailDto;
+export type StoryItem = StoryItemDto;
+export type StorySubject = StorySubjectDto;
 export type TankListItem = TankListItemDto;
 export type TankDetail = TankDetailDto;
 export type TankTimeLapse = TankTimeLapseDto;
@@ -237,7 +241,7 @@ export type CommunityAttachment = CommunityAttachmentDto;
 export type SpeciesLink = SpeciesLinkDto;
 export type Comment = CommentDto;
 export type CommentCreated = CommentCreatedDto;
-export type { CreateTankRequest, CreateCommentRequest, PublishPostRequest, TankVisibility, TankVisibilityDto };
+export type { CreateTankRequest, CreateCommentRequest, PublishStoryRequest, TankVisibility, TankVisibilityDto };
 export type TankFollow = TankFollowDto;
 export type TankAudience = TankAudienceDto;
 export type TankMember = TankMemberDto;
@@ -268,7 +272,7 @@ export interface CichlidsClientOptions {
   fetch?: typeof fetch;
 }
 
-export interface PicturesListParams {
+export interface StoriesListParams {
   sort?: "newest" | "views" | "rating";
   topic?: string;
   user?: number;
@@ -446,11 +450,13 @@ export interface CichlidsClient {
   featureFlags: {
     get(): Promise<Record<string, boolean>>;
   };
-  pictures: {
-    list(params?: PicturesListParams): Promise<PagedResponse<PictureListItem>>;
-    get(slug: string): Promise<PictureDetail>;
+  stories: {
+    list(params?: StoriesListParams): Promise<PagedResponse<StoryListItem>>;
+    get(slug: string): Promise<StoryDetail>;
     listComments(slug: string, params?: PageParams): Promise<PagedResponse<Comment>>;
     createComment(slug: string, request: CreateCommentRequest): Promise<CommentCreated>;
+    publish(id: number, request: PublishStoryRequest): Promise<StoryDetail>;
+    discard(id: number): Promise<void>;
   };
   tanks: {
     create(request: CreateTankRequest): Promise<TankDetail>;
@@ -498,7 +504,7 @@ export interface CichlidsClient {
   };
   profiles: {
     get(id: number): Promise<ProfileDetail>;
-    listPictures(id: number, params?: PageParams): Promise<PagedResponse<PictureListItem>>;
+    listStories(id: number, params?: PageParams): Promise<PagedResponse<StoryListItem>>;
     listTanks(id: number, params?: PageParams): Promise<PagedResponse<TankListItem>>;
   };
   species: {
@@ -545,10 +551,6 @@ export interface CichlidsClient {
     cancelUpload(id: number): Promise<void>;
     /** The absolute URL for a playlist or poster path of a care video. */
     careVideoUrl(path: string): string;
-  };
-  posts: {
-    publish(id: number, request: PublishPostRequest): Promise<PictureDetail>;
-    discard(id: number): Promise<void>;
   };
 }
 
@@ -690,22 +692,34 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
         return unwrap(await getFeatureFlags({ client, cache: "no-cache" }));
       },
     },
-    pictures: {
+    stories: {
       async list(params) {
-        const result = await listPictures({ client, query: params ?? {} });
+        const result = await listStories({ client, query: params ?? {} });
         return unwrapPaged(result);
       },
       async get(slug) {
-        const result = await getPicture({ client, path: { slug } });
-        return unwrap(result);
+        const result = await getStory({ client, path: { slug } });
+        return absolutizeMedia(unwrap(result), options.baseUrl);
       },
       async listComments(slug, params) {
-        const result = await listPictureComments({ client, path: { slug }, query: params ?? {} });
+        const result = await listStoryComments({ client, path: { slug }, query: params ?? {} });
         return unwrapPaged(result);
       },
       async createComment(slug, request) {
-        const result = await createPictureComment({ client, path: { slug }, body: request });
+        const result = await createStoryComment({ client, path: { slug }, body: request });
         return unwrap(result);
+      },
+      async publish(id, request) {
+        const result = await publishStory({
+          client,
+          path: { id },
+          body: request,
+        });
+        return absolutizeMedia(unwrap(result), options.baseUrl);
+      },
+      async discard(id) {
+        const result = await discardStory({ client, path: { id } });
+        unwrap(result);
       },
     },
     tanks: {
@@ -817,8 +831,8 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
         const result = await getProfile({ client, path: { id } });
         return unwrap(result);
       },
-      async listPictures(id, params) {
-        const result = await listProfilePictures({ client, path: { id }, query: params ?? {} });
+      async listStories(id, params) {
+        const result = await listProfileStories({ client, path: { id }, query: params ?? {} });
         return unwrapPaged(result);
       },
       async listTanks(id, params) {
@@ -905,20 +919,6 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
           },
         });
         return absolutizeMedia(unwrap(result), options.baseUrl);
-      },
-    },
-    posts: {
-      async publish(id, request) {
-        const result = await publishPost({
-          client,
-          path: { id },
-          body: request,
-        });
-        return unwrap(result);
-      },
-      async discard(id) {
-        const result = await discardPost({ client, path: { id } });
-        unwrap(result);
       },
     },
   };

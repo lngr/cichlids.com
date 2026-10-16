@@ -53,14 +53,16 @@ export type {
   Video,
   VideoState,
   CichlidsClientOptions,
-  PicturesListParams,
+  StoriesListParams,
   TanksListParams,
   SpeciesListParams,
   CommunityThreadsListParams,
   PageParams,
   PagedResponse,
-  PictureListItem,
-  PictureDetail,
+  StoryListItem,
+  StoryDetail,
+  StoryItem,
+  StorySubject,
   TankListItem,
   TankDetail,
   TankTimeLapse,
@@ -97,7 +99,7 @@ export type {
   Today,
   Draft,
   UploadFile,
-  PublishPostRequest,
+  PublishStoryRequest,
 } from "./client.js";
 export { navigationMachine, selectedTab, canonicalPath } from "./navigation.js";
 export type { NavigationTab, NavigationEvent, NavigationContext } from "./navigation.js";

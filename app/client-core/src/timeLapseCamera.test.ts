@@ -99,7 +99,7 @@ it("returns to the review with the error when the upload fails and allows anothe
 
 it("takes the newest photo of the series as the overlay", () => {
   const photo = (id: number, image: TankTimeLapsePhoto["image"]): TankTimeLapsePhoto => ({ ...added, mediaItemId: id, image });
-  const series = (photos: TankTimeLapsePhoto[]): TankTimeLapse => ({ isShowcase: false, photos, posts: [] });
+  const series = (photos: TankTimeLapsePhoto[]): TankTimeLapse => ({ isShowcase: false, photos, stories: [] });
   expect(latestSeriesPhotoUrl(series([]))).toBeNull();
   expect(latestSeriesPhotoUrl(series([photo(1, { large: "old" }), photo(2, { medium: "m2", small: "s2" })]))).toBe("m2");
   expect(latestSeriesPhotoUrl(series([photo(1, { large: "l1" }), photo(2, {})]))).toBe("l1");

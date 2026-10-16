@@ -143,7 +143,7 @@ it("turns the signed paths of private tank media into absolute URLs and leaves p
   const client = createCichlidsClient({ baseUrl: "http://media.test/", fetch: async request => {
     const url = (request as Request).url;
     if (url.endsWith("/time-lapse")) {
-      return Response.json({ isShowcase: false, posts: [], videos: [{ id: 1, posterUrl: "/api/media/videos/abc/poster.jpg", playlistUrl: "/api/media/videos/abc/master.m3u8" }],
+      return Response.json({ isShowcase: false, stories: [], videos: [{ id: 1, posterUrl: "/api/media/videos/abc/poster.jpg", playlistUrl: "/api/media/videos/abc/master.m3u8" }],
         photos: [{ mediaItemId: 1, image: { thumb: "/api/media/photos/t1", small: "http://cdn.test/variants/small/a.jpg", medium: null, large: null } }] });
     }
     return Response.json({ id: 1, mainImage: { thumb: "/api/media/photos/t2" }, sections: { showcase: [{ mediaItemId: 2, image: { thumb: "/api/media/photos/t3" } }] } });

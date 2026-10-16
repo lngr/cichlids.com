@@ -307,8 +307,8 @@ export type DiscussionThreadState = 'archived' | 'open';
 
 export type DraftDto = {
     id: number | string;
-    state: PostState;
-    topic: PostTopic;
+    state: StoryState;
+    topic: StoryTopic;
     title: null | string;
     description: null | string;
     createdAt: string;
@@ -400,6 +400,8 @@ export type MeasurementValueRequest = {
     origin?: null | string;
 };
 
+export type MediaKind = 'photo' | 'video';
+
 export type MeDto = {
     profile: ProfileDetailDto;
     roles: Array<string>;
@@ -474,14 +476,14 @@ export type PagedResponseOfOutboxEventDto = {
     items: Array<OutboxEventDto>;
 };
 
-export type PagedResponseOfPictureListItemDto = {
-    total: number | string;
-    items: Array<PictureListItemDto>;
-};
-
 export type PagedResponseOfSpeciesListItemDto = {
     total: number | string;
     items: Array<SpeciesListItemDto>;
+};
+
+export type PagedResponseOfStoryListItemDto = {
+    total: number | string;
+    items: Array<StoryListItemDto>;
 };
 
 export type PagedResponseOfTankListItemDto = {
@@ -498,41 +500,6 @@ export type PagedResponseOfTodoListItemDto = {
     total: number | string;
     items: Array<TodoListItemDto>;
 };
-
-export type PictureDetailDto = {
-    id: number | string;
-    slug: string;
-    canonicalSlug: string;
-    title: null | string;
-    description: null | string;
-    publishedAt: null | string;
-    viewCount: number | string;
-    ratingAverage: null | number | string;
-    ratingCount: number | string;
-    commentCount: number | string;
-    topic: PostTopic;
-    author: AuthorDto;
-    image: null | ImageUrlsDto;
-};
-
-export type PictureListItemDto = {
-    id: number | string;
-    slug: string;
-    title: null | string;
-    description: null | string;
-    publishedAt: null | string;
-    viewCount: number | string;
-    ratingAverage: null | number | string;
-    ratingCount: number | string;
-    commentCount: number | string;
-    topic: PostTopic;
-    author: AuthorDto;
-    image: null | ImageUrlsDto;
-};
-
-export type PostState = 'draft' | 'published' | 'archived';
-
-export type PostTopic = 'cichlids' | 'tanks' | 'offtopic' | 'contest' | 'unknown';
 
 export type ProblemDetails = {
     type?: null | string;
@@ -559,12 +526,12 @@ export type ProfileDetailDto = {
 };
 
 export type ProfileStatsDto = {
-    pictureCount: number | string;
+    storyCount: number | string;
     tankCount: number | string;
     commentCount: number | string;
 };
 
-export type PublishPostRequest = {
+export type PublishStoryRequest = {
     title: null | string;
     description: null | string;
     topic: null | string;
@@ -609,7 +576,7 @@ export type SpeciesDetailDto = {
     origin: null | string;
     habitat: null | string;
     morphs: null | string;
-    pictureCount: number | string;
+    storyCount: number | string;
 };
 
 export type SpeciesDiet = 'unspecified' | 'omnivore' | 'carnivore' | 'herbivore' | 'limnivore';
@@ -632,6 +599,89 @@ export type StartVacationRequest = {
     startDate?: null | string;
     endDate?: null | string;
 };
+
+export type StoryDetailDto = {
+    id: number | string;
+    slug: string;
+    canonicalSlug: string;
+    title: null | string;
+    description: null | string;
+    publishedAt: null | string;
+    viewCount: number | string;
+    ratingAverage: null | number | string;
+    ratingCount: number | string;
+    commentCount: number | string;
+    topic: StoryTopic;
+    author: AuthorDto;
+    cover: null | ImageUrlsDto;
+    coverItemId: null | number | string;
+    items: Array<StoryItemDto>;
+    subjects: Array<StorySubjectDto>;
+};
+
+export type StoryItemDto = {
+    id: number | string;
+    mediaItemId: number | string;
+    position: number | string;
+    caption: null | string;
+    kind: MediaKind;
+    image: null | ImageUrlsDto;
+    video: null | VideoDto;
+};
+
+export type StoryListItemDto = {
+    id: number | string;
+    slug: string;
+    title: null | string;
+    description: null | string;
+    publishedAt: null | string;
+    viewCount: number | string;
+    ratingAverage: null | number | string;
+    ratingCount: number | string;
+    commentCount: number | string;
+    topic: StoryTopic;
+    author: AuthorDto;
+    cover: null | ImageUrlsDto;
+    itemCount: number | string;
+};
+
+export type StoryState = 'draft' | 'published' | 'archived';
+
+export type StorySubjectDto = {
+    id: number | string;
+    type: StorySubjectType;
+    position: null | number | string;
+    tank: null | StorySubjectTankDto;
+    inhabitant: null | StorySubjectInhabitantDto;
+    species: null | StorySubjectSpeciesDto;
+};
+
+export type StorySubjectInhabitantDto = {
+    id: number | string;
+    tankId: number | string;
+    tankTitle: string;
+    species: null | InhabitantSpeciesRefDto;
+    count: null | number | string;
+};
+
+export type StorySubjectSpeciesDto = {
+    id: number | string;
+    slug: null | string;
+    genus: string;
+    name: string;
+    displayName: string;
+};
+
+export type StorySubjectTankDto = {
+    id: number | string;
+    title: string;
+    category: null | TankCategory;
+    image: null | ImageUrlsDto;
+};
+
+export type StorySubjectType = 'tank' | 'inhabitant' | 'species';
+
+export type StoryTopic = 'cichlids' | 'tanks' | 'offtopic' | 'contest' | 'unknown';
 
 export type SubscribeWebPushRequest = {
     endpoint: null | string;
@@ -686,6 +736,15 @@ export type TankFollowTeaserDto = {
     author: AuthorDto;
 };
 
+export type TankGalleryStoryDto = {
+    id: number | string;
+    slug: null | string;
+    title: null | string;
+    description: null | string;
+    publishedAt: string;
+    mediaItemIds: Array<number | string>;
+};
+
 export type TankListItemDto = {
     id: number | string;
     title: string;
@@ -725,15 +784,6 @@ export type TankSectionsDto = {
     technic: Array<TankMediaItemDto>;
 };
 
-export type TankStoryPostDto = {
-    id: number | string;
-    slug: null | string;
-    title: null | string;
-    description: null | string;
-    publishedAt: string;
-    mediaItemIds: Array<number | string>;
-};
-
 export type TankStreaksDto = {
     tankId: number | string;
     waterChange: null | WaterChangeStreakDto;
@@ -744,7 +794,7 @@ export type TankStreaksDto = {
 export type TankTimeLapseDto = {
     isShowcase: boolean;
     photos: Array<TankTimeLapsePhotoDto>;
-    posts: Array<TankStoryPostDto>;
+    stories: Array<TankGalleryStoryDto>;
     videos: Array<VideoDto>;
 };
 
@@ -789,7 +839,7 @@ export type TodayDto = {
 };
 
 export type TodayMemoryDto = {
-    postId: number | string;
+    storyId: number | string;
     slug: null | string;
     title: null | string;
     yearsAgo: number | string;
@@ -1918,16 +1968,16 @@ export type ListMyDraftsResponses = {
 
 export type ListMyDraftsResponse = ListMyDraftsResponses[keyof ListMyDraftsResponses];
 
-export type PublishPostData = {
-    body: PublishPostRequest;
+export type PublishStoryData = {
+    body: PublishStoryRequest;
     path: {
         id: number;
     };
     query?: never;
-    url: '/api/posts/{id}/publish';
+    url: '/api/stories/{id}/publish';
 };
 
-export type PublishPostErrors = {
+export type PublishStoryErrors = {
     /**
      * Bad Request
      */
@@ -1946,27 +1996,27 @@ export type PublishPostErrors = {
     409: string;
 };
 
-export type PublishPostError = PublishPostErrors[keyof PublishPostErrors];
+export type PublishStoryError = PublishStoryErrors[keyof PublishStoryErrors];
 
-export type PublishPostResponses = {
+export type PublishStoryResponses = {
     /**
      * OK
      */
-    200: PictureDetailDto;
+    200: StoryDetailDto;
 };
 
-export type PublishPostResponse = PublishPostResponses[keyof PublishPostResponses];
+export type PublishStoryResponse = PublishStoryResponses[keyof PublishStoryResponses];
 
-export type DiscardPostData = {
+export type DiscardStoryData = {
     body?: never;
     path: {
         id: number;
     };
     query?: never;
-    url: '/api/posts/{id}';
+    url: '/api/stories/{id}';
 };
 
-export type DiscardPostErrors = {
+export type DiscardStoryErrors = {
     /**
      * Forbidden
      */
@@ -1981,16 +2031,16 @@ export type DiscardPostErrors = {
     409: string;
 };
 
-export type DiscardPostError = DiscardPostErrors[keyof DiscardPostErrors];
+export type DiscardStoryError = DiscardStoryErrors[keyof DiscardStoryErrors];
 
-export type DiscardPostResponses = {
+export type DiscardStoryResponses = {
     /**
      * No Content
      */
     204: void;
 };
 
-export type DiscardPostResponse = DiscardPostResponses[keyof DiscardPostResponses];
+export type DiscardStoryResponse = DiscardStoryResponses[keyof DiscardStoryResponses];
 
 export type RemoveCareVideoData = {
     body?: never;
@@ -2121,7 +2171,7 @@ export type GetSpeciesResponses = {
 
 export type GetSpeciesResponse = GetSpeciesResponses[keyof GetSpeciesResponses];
 
-export type ListPicturesData = {
+export type ListStoriesData = {
     body?: never;
     path?: never;
     query?: {
@@ -2132,53 +2182,53 @@ export type ListPicturesData = {
         offset?: number | string;
         limit?: number | string;
     };
-    url: '/api/pictures';
+    url: '/api/stories';
 };
 
-export type ListPicturesErrors = {
+export type ListStoriesErrors = {
     /**
      * Bad Request
      */
     400: string;
 };
 
-export type ListPicturesError = ListPicturesErrors[keyof ListPicturesErrors];
+export type ListStoriesError = ListStoriesErrors[keyof ListStoriesErrors];
 
-export type ListPicturesResponses = {
+export type ListStoriesResponses = {
     /**
      * OK
      */
-    200: PagedResponseOfPictureListItemDto;
+    200: PagedResponseOfStoryListItemDto;
 };
 
-export type ListPicturesResponse = ListPicturesResponses[keyof ListPicturesResponses];
+export type ListStoriesResponse = ListStoriesResponses[keyof ListStoriesResponses];
 
-export type GetPictureData = {
+export type GetStoryData = {
     body?: never;
     path: {
         slug: string;
     };
     query?: never;
-    url: '/api/pictures/{slug}';
+    url: '/api/stories/{slug}';
 };
 
-export type GetPictureErrors = {
+export type GetStoryErrors = {
     /**
      * Not Found
      */
     404: unknown;
 };
 
-export type GetPictureResponses = {
+export type GetStoryResponses = {
     /**
      * OK
      */
-    200: PictureDetailDto;
+    200: StoryDetailDto;
 };
 
-export type GetPictureResponse = GetPictureResponses[keyof GetPictureResponses];
+export type GetStoryResponse = GetStoryResponses[keyof GetStoryResponses];
 
-export type ListPictureCommentsData = {
+export type ListStoryCommentsData = {
     body?: never;
     path: {
         slug: string;
@@ -2187,35 +2237,35 @@ export type ListPictureCommentsData = {
         offset?: number | string;
         limit?: number | string;
     };
-    url: '/api/pictures/{slug}/comments';
+    url: '/api/stories/{slug}/comments';
 };
 
-export type ListPictureCommentsErrors = {
+export type ListStoryCommentsErrors = {
     /**
      * Not Found
      */
     404: unknown;
 };
 
-export type ListPictureCommentsResponses = {
+export type ListStoryCommentsResponses = {
     /**
      * OK
      */
     200: PagedResponseOfCommentDto;
 };
 
-export type ListPictureCommentsResponse = ListPictureCommentsResponses[keyof ListPictureCommentsResponses];
+export type ListStoryCommentsResponse = ListStoryCommentsResponses[keyof ListStoryCommentsResponses];
 
-export type CreatePictureCommentData = {
+export type CreateStoryCommentData = {
     body: CreateCommentRequest;
     path: {
         slug: string;
     };
     query?: never;
-    url: '/api/pictures/{slug}/comments';
+    url: '/api/stories/{slug}/comments';
 };
 
-export type CreatePictureCommentErrors = {
+export type CreateStoryCommentErrors = {
     /**
      * Bad Request
      */
@@ -2230,16 +2280,16 @@ export type CreatePictureCommentErrors = {
     404: unknown;
 };
 
-export type CreatePictureCommentError = CreatePictureCommentErrors[keyof CreatePictureCommentErrors];
+export type CreateStoryCommentError = CreateStoryCommentErrors[keyof CreateStoryCommentErrors];
 
-export type CreatePictureCommentResponses = {
+export type CreateStoryCommentResponses = {
     /**
      * Created
      */
     201: CommentCreatedDto;
 };
 
-export type CreatePictureCommentResponse = CreatePictureCommentResponses[keyof CreatePictureCommentResponses];
+export type CreateStoryCommentResponse = CreateStoryCommentResponses[keyof CreateStoryCommentResponses];
 
 export type ListTanksData = {
     body?: never;
@@ -3812,7 +3862,7 @@ export type GetProfileResponses = {
 
 export type GetProfileResponse = GetProfileResponses[keyof GetProfileResponses];
 
-export type ListProfilePicturesData = {
+export type ListProfileStoriesData = {
     body?: never;
     path: {
         id: number;
@@ -3822,17 +3872,17 @@ export type ListProfilePicturesData = {
         offset?: number | string;
         limit?: number | string;
     };
-    url: '/api/profiles/{id}/pictures';
+    url: '/api/profiles/{id}/stories';
 };
 
-export type ListProfilePicturesResponses = {
+export type ListProfileStoriesResponses = {
     /**
      * OK
      */
-    200: PagedResponseOfPictureListItemDto;
+    200: PagedResponseOfStoryListItemDto;
 };
 
-export type ListProfilePicturesResponse = ListProfilePicturesResponses[keyof ListProfilePicturesResponses];
+export type ListProfileStoriesResponse = ListProfileStoriesResponses[keyof ListProfileStoriesResponses];
 
 export type ListProfileTanksData = {
     body?: never;

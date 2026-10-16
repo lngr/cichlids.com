@@ -6,7 +6,7 @@ import { ApiError, createCichlidsClient } from "./client.js";
 const baseUrl = "http://cichlids-mock.test";
 
 const server = setupServer(
-  http.get(`${baseUrl}/api/pictures`, ({ request }) => {
+  http.get(`${baseUrl}/api/stories`, ({ request }) => {
     const url = new URL(request.url);
     return HttpResponse.json({
       total: 143351,
@@ -23,11 +23,35 @@ const server = setupServer(
           commentCount: 0,
           topic: url.searchParams.get("topic") ?? "cichlids",
           author: { id: 6446, username: "bkrogers1965", displayName: "Byron Rogers", avatarUrl: null },
-          image: null,
+          cover: null,
+          itemCount: 0,
         },
       ],
     });
   }),
+  http.get(`${baseUrl}/api/stories/:slug`, () => HttpResponse.json({
+    id: 7,
+    slug: "abc123",
+    canonicalSlug: "abc123",
+    title: "Two photos and a tank",
+    description: null,
+    publishedAt: "2026-01-01T00:00:00Z",
+    viewCount: 1,
+    ratingAverage: null,
+    ratingCount: 0,
+    commentCount: 0,
+    topic: "tanks",
+    author: { id: 1, username: "me", displayName: "Me", avatarUrl: null },
+    cover: { thumb: "https://cdn.test/t2.jpg", small: null, medium: null, large: null },
+    coverItemId: 12,
+    items: [
+      { id: 11, mediaItemId: 1, position: 0, caption: "First", kind: "photo", image: { thumb: "https://cdn.test/t1.jpg", small: null, medium: null, large: null }, video: null },
+      { id: 12, mediaItemId: 2, position: 2, caption: null, kind: "photo", image: { thumb: "/api/media/photos/5?g=1&e=2&s=x", small: null, medium: null, large: null }, video: null },
+    ],
+    subjects: [
+      { id: 1, type: "tank", position: 1, tank: { id: 3, title: "Reef", category: null, image: null }, inhabitant: null, species: null },
+    ],
+  })),
   http.get(`${baseUrl}/api/tanks/:id`, ({ params }) => {
     return HttpResponse.json({
       id: Number(params.id),
@@ -51,7 +75,7 @@ const server = setupServer(
       author: { id: 6433, username: "squarebody85chevy", displayName: "Steve P", avatarUrl: null },
     });
   }),
-  http.post(`${baseUrl}/api/pictures/:slug/comments`, async ({ request, params }) => {
+  http.post(`${baseUrl}/api/stories/:slug/comments`, async ({ request, params }) => {
     const authorization = request.headers.get("Authorization");
     if (authorization !== "Bearer test-token") {
       return new HttpResponse(null, { status: 401 });
@@ -111,7 +135,7 @@ const server = setupServer(
       },
     ]);
   }),
-  http.post(`${baseUrl}/api/posts/:id/publish`, async ({ request, params }) => {
+  http.post(`${baseUrl}/api/stories/:id/publish`, async ({ request, params }) => {
     const body = (await request.json()) as { title: string | null; description: string | null; topic: string | null };
     if (!body.title) {
       return new HttpResponse("title is required", { status: 400 });
@@ -129,10 +153,13 @@ const server = setupServer(
       commentCount: 0,
       topic: body.topic ?? "cichlids",
       author: { id: 1, username: "me", displayName: "Me", avatarUrl: null },
-      image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: null },
+      cover: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: null },
+      coverItemId: 1,
+      items: [],
+      subjects: [],
     });
   }),
-  http.delete(`${baseUrl}/api/posts/:id`, ({ params }) => {
+  http.delete(`${baseUrl}/api/stories/:id`, ({ params }) => {
     if (params.id === "999") {
       return new HttpResponse("not a draft", { status: 409 });
     }
@@ -145,9 +172,20 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 describe("createCichlidsClient", () => {
-  it("lists pictures with query params and a numeric total", async () => {
+  it("reads a story with its items, captions, cover and subjects and makes signed media paths absolute", async () => {
     const client = createCichlidsClient({ baseUrl });
-    const result = await client.pictures.list({ topic: "tanks", limit: 1 });
+
+    const story = await client.stories.get("abc123");
+
+    expect(story.items.map(item => item.caption)).toEqual(["First", null]);
+    expect(story.items[1].image?.thumb).toBe(`${baseUrl}/api/media/photos/5?g=1&e=2&s=x`);
+    expect(story.coverItemId).toBe(12);
+    expect(story.subjects[0]).toMatchObject({ type: "tank", position: 1, tank: { id: 3, title: "Reef" } });
+  });
+
+  it("lists stories with query params and a numeric total", async () => {
+    const client = createCichlidsClient({ baseUrl });
+    const result = await client.stories.list({ topic: "tanks", limit: 1 });
 
     expect(result.total).toBe(143351);
     expect(typeof result.total).toBe("number");
@@ -169,7 +207,7 @@ describe("createCichlidsClient", () => {
       getAccessToken: () => "test-token",
     });
 
-    const created = await client.pictures.createComment("RRKaG", { body: "Nice fish!", stars: 5 });
+    const created = await client.stories.createComment("RRKaG", { body: "Nice fish!", stars: 5 });
 
     expect(created.comment?.body).toBe("Nice fish!");
     expect(created.rating?.stars).toBe(5);
@@ -178,7 +216,7 @@ describe("createCichlidsClient", () => {
   it("rejects with an ApiError when no access token is supplied for an authorized endpoint", async () => {
     const client = createCichlidsClient({ baseUrl });
 
-    const rejection = client.pictures.createComment("RRKaG", { body: "Nice fish!", stars: 5 });
+    const rejection = client.stories.createComment("RRKaG", { body: "Nice fish!", stars: 5 });
 
     await expect(rejection).rejects.toBeInstanceOf(ApiError);
     await expect(rejection).rejects.toMatchObject({ name: "ApiError", status: 401 });
@@ -255,13 +293,13 @@ describe("createCichlidsClient", () => {
     expect(drafts[0].image.small).toBe("https://cdn.test/s.jpg");
   });
 
-  it("publishes a draft with a JSON body and returns the picture detail", async () => {
+  it("publishes a draft with a JSON body and returns the story detail", async () => {
     const client = createCichlidsClient({
       baseUrl,
       getAccessToken: () => "test-token",
     });
 
-    const detail = await client.posts.publish(42, { title: "My tank", description: null, topic: "tanks" });
+    const detail = await client.stories.publish(42, { title: "My tank", description: null, topic: "tanks" });
 
     expect(detail.id).toBe(42);
     expect(detail.slug).toBe("abc123");
@@ -275,7 +313,7 @@ describe("createCichlidsClient", () => {
       getAccessToken: () => "test-token",
     });
 
-    await expect(client.posts.discard(42)).resolves.toBeUndefined();
+    await expect(client.stories.discard(42)).resolves.toBeUndefined();
   });
 
   it("rejects a discard with an ApiError carrying the status and message on a 409", async () => {
@@ -284,7 +322,7 @@ describe("createCichlidsClient", () => {
       getAccessToken: () => "test-token",
     });
 
-    await expect(client.posts.discard(999)).rejects.toMatchObject({
+    await expect(client.stories.discard(999)).rejects.toMatchObject({
       name: "ApiError",
       status: 409,
       message: "not a draft",
@@ -293,7 +331,7 @@ describe("createCichlidsClient", () => {
 
   it("rejects with an ApiError exposing the problem details code, status and detail on a 403", async () => {
     server.use(
-      http.post(`${baseUrl}/api/pictures/:slug/comments`, () =>
+      http.post(`${baseUrl}/api/stories/:slug/comments`, () =>
         HttpResponse.json(
           { title: "Forbidden", status: 403, detail: "You cannot rate your own picture.", code: "self_rating" },
           { status: 403, headers: { "Content-Type": "application/problem+json" } },
@@ -302,7 +340,7 @@ describe("createCichlidsClient", () => {
     );
     const client = createCichlidsClient({ baseUrl, getAccessToken: () => "test-token" });
 
-    await expect(client.pictures.createComment("RRKaG", { body: "Nice fish!", stars: 5 })).rejects.toMatchObject({
+    await expect(client.stories.createComment("RRKaG", { body: "Nice fish!", stars: 5 })).rejects.toMatchObject({
       name: "ApiError",
       status: 403,
       message: "You cannot rate your own picture.",
@@ -313,7 +351,7 @@ describe("createCichlidsClient", () => {
   it("leaves the code undefined for an error body without problem details", async () => {
     const client = createCichlidsClient({ baseUrl, getAccessToken: () => "test-token" });
 
-    await expect(client.posts.discard(999)).rejects.toMatchObject({ status: 409, code: undefined });
+    await expect(client.stories.discard(999)).rejects.toMatchObject({ status: 409, code: undefined });
   });
 });
 

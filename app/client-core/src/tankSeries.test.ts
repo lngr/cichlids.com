@@ -3,7 +3,7 @@ import { ApiError, createCichlidsClient } from "./client.js";
 
 describe("tank time-lapse API", () => {
   it("loads the typed series through the generated endpoint", async () => {
-    const series = { isShowcase: false, photos: [], posts: [] };
+    const series = { isShowcase: false, photos: [], stories: [] };
     let requested = "";
     const client = createCichlidsClient({
       baseUrl: "https://api.test",
