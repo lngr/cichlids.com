@@ -35,7 +35,7 @@ public sealed class OnboardingTests(ApiFixture fixture) : IAsyncLifetime
         var token = TestTokens.Create(Guid.NewGuid().ToString(), $"onboard-{Guid.NewGuid():N}"[..24]);
         var response = await SendAsync("/api/me/onboarding", new
         {
-            tank = new { title = titlePrefix + "First Malawi", region = "lake_malawi", dimensions = new { width = 60, height = 30, depth = 30, unit = "cm" }, volume = new { value = 54, unit = "liter" } },
+            tank = new { title = titlePrefix + "First Malawi", isPublic = true, region = "lake_malawi", dimensions = new { width = 60, height = 30, depth = 30, unit = "cm" }, volume = new { value = 54, unit = "liter" } },
         }, token);
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
@@ -62,7 +62,7 @@ public sealed class OnboardingTests(ApiFixture fixture) : IAsyncLifetime
     public async Task RegionSetsInterests(string region, int count)
     {
         var token = TestTokens.Create(Guid.NewGuid().ToString(), $"region-{Guid.NewGuid():N}"[..24]);
-        var response = await SendAsync("/api/me/onboarding", new { tank = new { title = titlePrefix + "Region", region } }, token);
+        var response = await SendAsync("/api/me/onboarding", new { tank = new { title = titlePrefix + "Region", isPublic = true, region } }, token);
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         using var read = new HttpRequestMessage(HttpMethod.Get, "/api/me");
         read.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -121,7 +121,7 @@ public sealed class OnboardingTests(ApiFixture fixture) : IAsyncLifetime
     public async Task RejectsUnassignedForNewTankAndInvalidInterests()
     {
         var token = TestTokens.Create(Guid.NewGuid().ToString(), $"invalid-{Guid.NewGuid():N}"[..24]);
-        Assert.Equal(HttpStatusCode.BadRequest, (await SendAsync("/api/tanks", new { title = "Invalid", region = "americas_unassigned" }, token)).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await SendAsync("/api/tanks", new { title = "Invalid", isPublic = true, region = "americas_unassigned" }, token)).StatusCode);
         Assert.Equal(HttpStatusCode.BadRequest, (await SendAsync("/api/me/onboarding", new { interests = new[] { "americas_unassigned" } }, token)).StatusCode);
     }
 
@@ -150,7 +150,7 @@ public sealed class OnboardingTests(ApiFixture fixture) : IAsyncLifetime
             {
                 var service = new OnboardingWriteService(write, new TanksWriteService(write));
                 await Assert.ThrowsAsync<InvalidOperationException>(() => service.CompleteAsync(profile.Id,
-                    new OnboardingRequest(Tank: new CreateTankRequest(title, null, null, TankRegion.LakeMalawi)), CancellationToken.None));
+                    new OnboardingRequest(Tank: new CreateTankRequest(title, null, null, TankRegion.LakeMalawi, true)), CancellationToken.None));
             }
             Assert.False(await db.Tanks.AnyAsync(t => t.Title == title));
             await db.Entry(profile).ReloadAsync();
@@ -209,9 +209,9 @@ public sealed class OnboardingTests(ApiFixture fixture) : IAsyncLifetime
             await first.Profiles.SingleAsync(p => p.Id == profile.Id);
             await second.Profiles.SingleAsync(p => p.Id == profile.Id);
             await new OnboardingWriteService(first, new TanksWriteService(first)).CompleteAsync(profile.Id,
-                new OnboardingRequest(Tank: new CreateTankRequest(titlePrefix + "First request", null, null, TankRegion.LakeMalawi)), CancellationToken.None);
+                new OnboardingRequest(Tank: new CreateTankRequest(titlePrefix + "First request", null, null, TankRegion.LakeMalawi, true)), CancellationToken.None);
             await new OnboardingWriteService(second, new TanksWriteService(second)).CompleteAsync(profile.Id,
-                new OnboardingRequest(Tank: new CreateTankRequest(titlePrefix + "Second request", null, null, TankRegion.SouthAmerica)), CancellationToken.None);
+                new OnboardingRequest(Tank: new CreateTankRequest(titlePrefix + "Second request", null, null, TankRegion.SouthAmerica, true)), CancellationToken.None);
             await db.Entry(profile).ReloadAsync();
             Assert.Equal(new[] { "lake_malawi", "south_america" }, profile.Interests);
             Assert.Single(profile.Badges);

@@ -19,7 +19,12 @@ public static class TanksEndpoints
         group.MapGet("/", ListAsync).WithName("ListTanks");
         group.MapGet("/{id:long}/time-lapse", GetTimeLapseAsync).WithName("GetTankTimeLapse")
             .ProducesProblem(StatusCodes.Status404NotFound);
-        group.MapGet("/{id:long}", GetByIdAsync).WithName("GetTank");
+        group.MapGet("/{id:long}", GetByIdAsync).WithName("GetTank")
+            .ProducesProblem(StatusCodes.Status404NotFound);
+        group.MapPut("/{id:long}/visibility", SetVisibilityAsync).WithName("SetTankVisibility").RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .ProducesProblem(StatusCodes.Status401Unauthorized)
+            .ProducesProblem(StatusCodes.Status404NotFound);
         group.MapGet("/{id:long}/comments", ListCommentsAsync).WithName("ListTankComments");
         group.MapPost("/{id:long}/comments", CreateCommentAsync).WithName("CreateTankComment")
             .RequireAuthorization()
@@ -45,12 +50,13 @@ public static class TanksEndpoints
 
         var author = await currentProfileService.ResolveAsync(user, cancellationToken);
         var tank = await writeService.CreateAsync(request, author.Id, cancellationToken);
-        var detail = await queryService.GetByIdAsync(tank.Id, cancellationToken);
+        var detail = await queryService.GetByIdAsync(tank.Id, author.Id, cancellationToken);
         return TypedResults.Created($"/api/tanks/{tank.Id}", detail!);
     }
 
     private static async Task<Results<Ok<PagedResponse<TankListItemDto>>, BadRequest<string>>> ListAsync(
-        TanksQueryService queryService, long? user, string? category, int? offset, int? limit, CancellationToken cancellationToken)
+        TanksQueryService queryService, TankAccessService access, ClaimsPrincipal viewer, long? user, string? category, int? offset, int? limit,
+        CancellationToken cancellationToken)
     {
         TankCategory? categoryFilter = null;
         if (category is not null)
@@ -64,37 +70,58 @@ public static class TanksEndpoints
         }
 
         var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
-        var result = await queryService.ListAsync(user, categoryFilter, normalizedOffset, normalizedLimit, cancellationToken);
+        var viewerProfileId = await access.ViewerProfileIdAsync(viewer, cancellationToken);
+        var result = await queryService.ListAsync(user, categoryFilter, viewerProfileId, normalizedOffset, normalizedLimit, cancellationToken);
         return TypedResults.Ok(result);
     }
 
     private static async Task<Results<Ok<TankTimeLapseDto>, ProblemHttpResult>> GetTimeLapseAsync(
-        TankTimeLapseQueryService queryService, long id, CancellationToken cancellationToken)
+        TankTimeLapseQueryService queryService, TankAccessService access, ClaimsPrincipal viewer, long id, CancellationToken cancellationToken)
     {
-        var result = await queryService.GetAsync(id, cancellationToken);
-        return result is null
-            ? ApiProblems.WithCode(StatusCodes.Status404NotFound, "Tank unavailable", "This tank is unavailable.", "tank_not_found")
-            : TypedResults.Ok(result);
+        var result = await queryService.GetAsync(id, cancellationToken, await access.ViewerProfileIdAsync(viewer, cancellationToken), allowSigned: true);
+        return result is null ? NotFoundProblem() : TypedResults.Ok(result);
     }
 
-    private static async Task<Results<Ok<TankDetailDto>, NotFound>> GetByIdAsync(
-        TanksQueryService queryService, long id, CancellationToken cancellationToken)
+    private static async Task<Results<Ok<TankDetailDto>, ProblemHttpResult>> GetByIdAsync(
+        TanksQueryService queryService, TankAccessService access, ClaimsPrincipal viewer, long id, CancellationToken cancellationToken)
     {
-        var detail = await queryService.GetByIdAsync(id, cancellationToken);
-        return detail is null ? TypedResults.NotFound() : TypedResults.Ok(detail);
+        var detail = await queryService.GetByIdAsync(id, await access.ViewerProfileIdAsync(viewer, cancellationToken), cancellationToken);
+        return detail is null ? NotFoundProblem() : TypedResults.Ok(detail);
     }
 
-    private static async Task<Results<Ok<PagedResponse<CommentDto>>, NotFound>> ListCommentsAsync(
+    private static async Task<Results<Ok<TankVisibilityDto>, ProblemHttpResult>> SetVisibilityAsync(
+        long id, UpdateTankVisibilityRequest request, CurrentProfileService currentProfileService, TanksWriteService writeService,
+        ClaimsPrincipal user, CancellationToken cancellationToken)
+    {
+        var profile = await currentProfileService.ResolveAsync(user, cancellationToken);
+        var (visibility, error) = await writeService.SetVisibilityAsync(id, profile.Id, request, cancellationToken);
+        return error switch
+        {
+            null => TypedResults.Ok(visibility!),
+            TanksWriteService.NotFoundCode => NotFoundProblem(),
+            TanksWriteService.StreamWiderCode => ApiProblems.WithCode(StatusCodes.Status400BadRequest, "Visibility refused",
+                "The care stream cannot be visible to more people than the tank profile.", error),
+            _ => ApiProblems.WithCode(StatusCodes.Status400BadRequest, "Visibility refused",
+                "Send the profile and the stream level as public or private.", error),
+        };
+    }
+
+    private static ProblemHttpResult NotFoundProblem() =>
+        ApiProblems.WithCode(StatusCodes.Status404NotFound, "Tank unavailable", "This tank is unavailable.", TanksWriteService.NotFoundCode);
+
+    private static async Task<Results<Ok<PagedResponse<CommentDto>>, ProblemHttpResult>> ListCommentsAsync(
         TanksQueryService tanksQueryService,
         CommentsQueryService commentsQueryService,
+        TankAccessService access,
+        ClaimsPrincipal viewer,
         long id,
         int? offset,
         int? limit,
         CancellationToken cancellationToken)
     {
-        if (!await tanksQueryService.IsVisibleAsync(id, cancellationToken))
+        if (!await tanksQueryService.IsVisibleAsync(id, await access.ViewerProfileIdAsync(viewer, cancellationToken), cancellationToken))
         {
-            return TypedResults.NotFound();
+            return NotFoundProblem();
         }
 
         var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
@@ -102,7 +129,7 @@ public static class TanksEndpoints
         return TypedResults.Ok(result);
     }
 
-    private static async Task<Results<Created<CommentCreatedDto>, BadRequest<string>, NotFound, ProblemHttpResult>> CreateCommentAsync(
+    private static async Task<Results<Created<CommentCreatedDto>, BadRequest<string>, ProblemHttpResult>> CreateCommentAsync(
         TanksQueryService tanksQueryService,
         CommentsWriteService commentsWriteService,
         CurrentProfileService currentProfileService,
@@ -121,12 +148,12 @@ public static class TanksEndpoints
             return CommentsEndpoints.CommentTooLongProblem();
         }
 
-        if (!await tanksQueryService.IsVisibleAsync(id, cancellationToken))
+        var author = await currentProfileService.ResolveAsync(user, cancellationToken);
+        if (!await tanksQueryService.IsVisibleAsync(id, author.Id, cancellationToken))
         {
-            return TypedResults.NotFound();
+            return NotFoundProblem();
         }
 
-        var author = await currentProfileService.ResolveAsync(user, cancellationToken);
         var created = await commentsWriteService.CreateAsync(postId: null, tankId: id, author, body, stars, cancellationToken);
         return created is null
             ? CommentsEndpoints.SelfRatingProblem()

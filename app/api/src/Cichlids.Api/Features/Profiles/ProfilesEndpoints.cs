@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Pictures;
 using Cichlids.Api.Features.Tanks;
@@ -19,9 +20,9 @@ public static class ProfilesEndpoints
     }
 
     private static async Task<Results<Ok<ProfileDetailDto>, NotFound>> GetByIdAsync(
-        ProfilesQueryService queryService, long id, CancellationToken cancellationToken)
+        ProfilesQueryService queryService, TankAccessService access, ClaimsPrincipal viewer, long id, CancellationToken cancellationToken)
     {
-        var detail = await queryService.GetByIdAsync(id, cancellationToken);
+        var detail = await queryService.GetByIdAsync(id, await access.ViewerProfileIdAsync(viewer, cancellationToken), cancellationToken);
         return detail is null ? TypedResults.NotFound() : TypedResults.Ok(detail);
     }
 
@@ -34,10 +35,13 @@ public static class ProfilesEndpoints
     }
 
     private static async Task<Ok<PagedResponse<TankListItemDto>>> ListTanksAsync(
-        TanksQueryService queryService, long id, int? offset, int? limit, CancellationToken cancellationToken)
+        TanksQueryService queryService, TankAccessService access, ClaimsPrincipal viewer, long id, int? offset, int? limit,
+        CancellationToken cancellationToken)
     {
         var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
-        var result = await queryService.ListAsync(userId: id, category: null, normalizedOffset, normalizedLimit, cancellationToken);
+        var viewerProfileId = await access.ViewerProfileIdAsync(viewer, cancellationToken);
+        var result = await queryService.ListAsync(
+            userId: id, category: null, viewerProfileId, normalizedOffset, normalizedLimit, cancellationToken);
         return TypedResults.Ok(result);
     }
 }

@@ -219,7 +219,7 @@ public sealed class CareEndpointsTests(ApiFixture fixture) : IAsyncLifetime
     private async Task<(string Token, long Tank)> OwnTankAsync()
     {
         var token = TestTokens.Create(Guid.NewGuid().ToString(), $"care-{Guid.NewGuid():N}"[..24]);
-        using var response = await SendAsync(HttpMethod.Post, "/api/tanks", token, new { title = "Care test" });
+        using var response = await SendAsync(HttpMethod.Post, "/api/tanks", token, new { title = "Care test", isPublic = true });
         response.EnsureSuccessStatusCode();
         var id = (await BodyAsync(response)).GetProperty("id").GetInt64();
         _tanks.Add(id);

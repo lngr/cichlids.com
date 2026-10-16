@@ -1,3 +1,5 @@
+using Cichlids.Api.Features.Media;
+using Cichlids.Domain;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Media;
@@ -10,10 +12,12 @@ namespace Cichlids.Api.Features.Videos;
 
 /// <summary>
 /// Reads the videos of a tank and builds the representation of a video: public URLs of the HLS
-/// playlist and the poster for a tank video, signed paths for the video of a care entry. A video
-/// is ready when its job is done, failed when its job failed and processing otherwise.
+/// playlist and the poster for a tank video, signed paths for the video of a care entry and for the
+/// video of a tank whose files live under the private prefix. A video is ready when its job is done,
+/// failed when its job failed and processing otherwise; a ready video whose files are private and
+/// whose caller allows no signed path is processing.
 /// </summary>
-public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore store)
+public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore store, TankMediaUrlSigner? signer = null)
 {
     /// <summary>
     /// Loads the media items of a video query together with their variants and jobs.
@@ -24,7 +28,7 @@ public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore st
     /// <summary>
     /// The videos of a tank, newest first, or null when the tank is not available to the viewer.
     /// The owner sees every video including those still processing or failed; everybody else sees
-    /// the ready videos of a published tank.
+    /// the ready videos of a published tank whose profile level allows them.
     /// </summary>
     public async Task<IReadOnlyList<VideoDto>?> ListForTankAsync(long tankId, long? viewerProfileId, CancellationToken cancellationToken)
     {
@@ -34,11 +38,13 @@ public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore st
             {
                 t.ProfileId,
                 t.State,
+                t.ProfileVisibility,
                 OwnerVisible = context.Profiles.Any(p => p.Id == t.ProfileId && (p.SuspendedUntil == null || p.SuspendedUntil <= now)),
             })
             .SingleOrDefaultAsync(cancellationToken);
         var isOwner = tank is not null && viewerProfileId == tank.ProfileId;
-        if (tank is null || (!isOwner && (tank.State != TankState.Published || !tank.OwnerVisible)))
+        if (tank is null || (!isOwner && (tank.State != TankState.Published || !tank.OwnerVisible
+                || !TankVisibilityRules.CanSeeProfile(TankVisibilityRules.ViewerOf(viewerProfileId, tank.ProfileId), tank.ProfileVisibility))))
         {
             return null;
         }
@@ -46,20 +52,32 @@ public sealed class VideoQueryService(CichlidsDbContext context, IObjectStore st
         var ids = context.TankMedia.Where(m => m.TankId == tankId && m.Section == TankMediaSection.Video).Select(m => m.MediaItemId);
         var items = await WithDetails(context.MediaItems.AsNoTracking().Where(m => ids.Contains(m.Id) && m.Kind == MediaKind.Video))
             .OrderByDescending(m => m.CreatedAt).ThenByDescending(m => m.Id).ToListAsync(cancellationToken);
-        var videos = items.Select(i => ToPublicDto(i, store));
+        var videos = items.Select(i => ToPublicDto(i, store, signer, allowSigned: true));
         return (isOwner ? videos : videos.Where(v => v.State == VideoState.Ready)).ToList();
     }
 
     /// <summary>
     /// The representation of a tank video, with public URLs once it is ready.
     /// </summary>
-    public static VideoDto ToPublicDto(MediaItem item, IObjectStore store)
+    public static VideoDto ToPublicDto(MediaItem item, IObjectStore store, TankMediaUrlSigner? signer = null, bool allowSigned = false)
     {
         var state = StateOf(item);
         var hls = Variant(item, VideoStorage.HlsLabel);
         var poster = Variant(item, VideoStorage.PosterLabel);
         var ready = state == VideoState.Ready && hls is not null && poster is not null;
-        return Build(item, state, ready ? PublicUrl(store, poster!.StorageKey) : null, ready ? PublicUrl(store, hls!.StorageKey) : null);
+        if (!ready)
+        {
+            return Build(item, state, null, null);
+        }
+
+        if (VideoStorage.IsPrivate(item))
+        {
+            return allowSigned && signer is not null
+                ? Build(item, state, signer.VideoPathFor(item.Id, PosterFile), signer.VideoPathFor(item.Id, MasterFile))
+                : Build(item, VideoState.Processing, null, null);
+        }
+
+        return Build(item, state, PublicUrl(store, poster!.StorageKey), PublicUrl(store, hls!.StorageKey));
     }
 
     /// <summary>

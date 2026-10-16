@@ -5,7 +5,8 @@ using Cichlids.Domain.Enums;
 namespace Cichlids.Api.Features.Tanks;
 
 public sealed record TankListItemDto(
-    long Id, string Title, TankCategory? Category, ImageUrlsDto? MainImage, int ImageCount, AuthorDto Author, TankRegion? Region = null);
+    long Id, string Title, TankCategory? Category, ImageUrlsDto? MainImage, int ImageCount, AuthorDto Author, TankRegion? Region = null,
+    TankVisibility ProfileVisibility = TankVisibility.Public);
 
 public sealed record WaterValuesDto(string? Ph, string? Kh, string? Gh, string? No2, string? No3, string? Po4, string? Notes);
 
@@ -19,7 +20,22 @@ public sealed record DimensionInputDto(decimal? Width, decimal? Height, decimal?
 
 public sealed record VolumeInputDto(decimal Value, VolumeUnit Unit);
 
-public sealed record CreateTankRequest(string Title, DimensionInputDto? Dimensions, VolumeInputDto? Volume, TankRegion? Region = null);
+/// <summary>
+/// The request to create a tank. IsPublic is the answer to the question whether the tank should be public;
+/// it has no default, and a request without it is refused.
+/// </summary>
+public sealed record CreateTankRequest(
+    string Title, DimensionInputDto? Dimensions, VolumeInputDto? Volume, TankRegion? Region = null, bool? IsPublic = null);
+
+/// <summary>
+/// The audience levels of a tank: its profile and its care stream, which is never wider than the profile.
+/// </summary>
+public sealed record TankVisibilityDto(TankVisibility Profile, TankVisibility Stream);
+
+/// <summary>
+/// The new levels of a tank, as the lower snake_case names public and private. Both are required.
+/// </summary>
+public sealed record UpdateTankVisibilityRequest(string? Profile, string? Stream);
 
 public sealed record TankMediaItemDto(long MediaItemId, ImageUrlsDto Image);
 
@@ -53,4 +69,5 @@ public sealed record TankDetailDto(
     IReadOnlyList<InhabitantDto> Inhabitants,
     AuthorDto Author,
     VolumeDto? Volume,
+    TankVisibilityDto Visibility,
     TankRegion? Region = null);

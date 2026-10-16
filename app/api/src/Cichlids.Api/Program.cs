@@ -145,6 +145,8 @@ builder.Services.AddExceptionHandler<NonMemberLoginExceptionHandler>();
 builder.Services.AddScoped<SpeciesQueryService>();
 builder.Services.AddScoped<PicturesQueryService>();
 builder.Services.AddScoped<TanksQueryService>();
+builder.Services.AddScoped<TankAccessService>();
+builder.Services.AddSingleton<Cichlids.Api.Features.Media.TankMediaUrlSigner>();
 builder.Services.AddScoped<TankTimeLapseQueryService>();
 builder.Services.AddScoped<DiscoverQueryService>();
 builder.Services.AddScoped<TodayQueryService>();

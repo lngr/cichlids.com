@@ -1,5 +1,6 @@
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Media;
+using Cichlids.Domain;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
@@ -8,19 +9,20 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Api.Features.Tanks;
 
 /// <summary>
-/// Query logic behind the tank list and detail endpoints: the public-visibility rule (published,
-/// not deleted), the main-image fallback to the first showcase photo, and the ordered
-/// showcase/decoration/technic media sections.
+/// Query logic behind the tank list and detail endpoints: the visibility rule (published, not deleted
+/// and a profile level that allows the viewer), the main-image fallback to the first showcase photo, and the
+/// ordered showcase/decoration/technic media sections. The owner of a tank always sees it. The photos of
+/// a tank are public URLs, or signed paths for photos that live under the private prefix.
 /// </summary>
-public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore objectStore)
+public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore objectStore, TankMediaUrlSigner? signer = null)
 {
-    private static readonly IReadOnlyDictionary<string, string> NoVariants = new Dictionary<string, string>();
-    private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore);
+    private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore, signer);
 
     public async Task<PagedResponse<TankListItemDto>> ListAsync(
-        long? userId, TankCategory? category, int offset, int limit, CancellationToken cancellationToken)
+        long? userId, TankCategory? category, long? viewerProfileId, int offset, int limit, CancellationToken cancellationToken)
     {
-        var filtered = context.Tanks.Where(t => t.State == TankState.Published && t.DeletedAt == null);
+        var filtered = context.Tanks.Where(t => t.State == TankState.Published && t.DeletedAt == null)
+            .Where(TankVisibilityRules.ProfileVisibleTo(viewerProfileId));
 
         if (userId is { } uid)
         {
@@ -37,7 +39,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
         var page = await filtered
             .OrderByDescending(t => t.PublishedAt ?? DateTimeOffset.MinValue).ThenByDescending(t => t.Id)
             .Skip(offset).Take(limit)
-            .Select(t => new TankProjection(t.Id, t.Title, t.Category, t.MainMediaId, t.ProfileId, t.Region))
+            .Select(t => new TankProjection(t.Id, t.Title, t.Category, t.MainMediaId, t.ProfileId, t.Region, t.ProfileVisibility))
             .ToListAsync(cancellationToken);
 
         if (page.Count == 0)
@@ -64,18 +66,19 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
                 t.Category,
                 mainMediaItemByTank.TryGetValue(t.Id, out var mediaItemId) ? images[mediaItemId] : null,
                 imageCounts.GetValueOrDefault(t.Id, 0),
-                authors[t.ProfileId].ToDto(objectStore), t.Region))
+                authors[t.ProfileId].ToDto(objectStore), t.Region, t.ProfileVisibility))
             .ToList();
 
         return new PagedResponse<TankListItemDto>(total, items);
     }
 
-    public Task<bool> IsVisibleAsync(long id, CancellationToken cancellationToken) =>
-        context.Tanks.AnyAsync(t => t.Id == id && t.State == TankState.Published && t.DeletedAt == null, cancellationToken);
+    public Task<bool> IsVisibleAsync(long id, long? viewerProfileId, CancellationToken cancellationToken) =>
+        context.Tanks.Where(TankVisibilityRules.ProfileVisibleTo(viewerProfileId))
+            .AnyAsync(t => t.Id == id && t.State == TankState.Published && t.DeletedAt == null, cancellationToken);
 
-    public async Task<TankDetailDto?> GetByIdAsync(long id, CancellationToken cancellationToken)
+    public async Task<TankDetailDto?> GetByIdAsync(long id, long? viewerProfileId, CancellationToken cancellationToken)
     {
-        var tank = await context.Tanks
+        var tank = await context.Tanks.Where(TankVisibilityRules.ProfileVisibleTo(viewerProfileId))
             .FirstOrDefaultAsync(t => t.Id == id && t.State == TankState.Published && t.DeletedAt == null, cancellationToken);
 
         if (tank is null)
@@ -90,7 +93,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             .ToListAsync(cancellationToken);
 
         var mainMediaItemByTank = await ResolveMainMediaItemsAsync(
-            [new TankProjection(tank.Id, tank.Title, tank.Category, tank.MainMediaId, tank.ProfileId, tank.Region)], cancellationToken);
+            [new TankProjection(tank.Id, tank.Title, tank.Category, tank.MainMediaId, tank.ProfileId, tank.Region, tank.ProfileVisibility)], cancellationToken);
 
         IEnumerable<long> sectionMediaItemIds = mediaRows.Select(m => m.MediaItemId);
         var allMediaItemIds = sectionMediaItemIds.Concat(mainMediaItemByTank.Values).Distinct().ToList();
@@ -129,7 +132,8 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             sections,
             inhabitants,
             authors[tank.ProfileId].ToDto(objectStore),
-            tank.VolumeLiters is { } liters ? new VolumeDto(liters, tank.VolumeInputValue, tank.VolumeInputUnit) : null, tank.Region);
+            tank.VolumeLiters is { } liters ? new VolumeDto(liters, tank.VolumeInputValue, tank.VolumeInputUnit) : null,
+            new TankVisibilityDto(tank.ProfileVisibility, tank.StreamVisibility), tank.Region);
     }
 
     private static List<TankMediaItemDto> BuildSection(
@@ -188,16 +192,12 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             return [];
         }
 
-        var variantsByMediaItem = (await context.MediaVariants
+        var variantsByMediaItem = (await context.MediaVariants.AsNoTracking()
                 .Where(v => ids.Contains(v.MediaItemId))
-                .Select(v => new { v.MediaItemId, v.Label, v.StorageKey })
                 .ToListAsync(cancellationToken))
-            .GroupBy(v => v.MediaItemId)
-            .ToDictionary(g => g.Key, g => (IReadOnlyDictionary<string, string>)g.ToDictionary(x => x.Label, x => x.StorageKey));
+            .ToLookup(v => v.MediaItemId);
 
-        return ids.ToDictionary(
-            id => id,
-            id => _mediaUrlBuilder.Build(variantsByMediaItem.GetValueOrDefault(id, NoVariants)));
+        return ids.ToDictionary(id => id, id => _mediaUrlBuilder.Build(variantsByMediaItem[id], allowSigned: true));
     }
 
     private async Task<List<InhabitantDto>> LoadInhabitantsAsync(long tankId, CancellationToken cancellationToken)
@@ -221,7 +221,8 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             .ToList();
     }
 
-    private sealed record TankProjection(long Id, string Title, TankCategory? Category, long? MainMediaId, long ProfileId, TankRegion? Region);
+    private sealed record TankProjection(
+        long Id, string Title, TankCategory? Category, long? MainMediaId, long ProfileId, TankRegion? Region, TankVisibility ProfileVisibility);
 
     private sealed record TankMediaRow(long MediaItemId, TankMediaSection Section);
 }

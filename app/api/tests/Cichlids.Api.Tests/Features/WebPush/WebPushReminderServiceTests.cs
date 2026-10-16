@@ -70,7 +70,7 @@ public sealed class WebPushReminderServiceTests(ApiFixture fixture) : IAsyncLife
     private async Task<(string Token, long Tank)> TankAsync(DateTimeOffset? lastWaterChange = null, string title = "Reminder tank")
     {
         var token = NewMemberToken();
-        using var created = await SendAsync(fixture.Client, HttpMethod.Post, "/api/tanks", token, new { title });
+        using var created = await SendAsync(fixture.Client, HttpMethod.Post, "/api/tanks", token, new { title, isPublic = true });
         var tank = (await BodyAsync(created)).GetProperty("id").GetInt64();
         _tanks.Add(tank);
         if (lastWaterChange is { } at) await LogAsync(fixture.Client, token, tank, new { kind = "water_change", occurredAt = at });

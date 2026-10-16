@@ -1,5 +1,6 @@
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Media;
+using Cichlids.Domain;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
@@ -16,7 +17,7 @@ namespace Cichlids.Api.Features.Profiles;
 /// </summary>
 public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore objectStore)
 {
-    public async Task<ProfileDetailDto?> GetByIdAsync(long id, CancellationToken cancellationToken)
+    public async Task<ProfileDetailDto?> GetByIdAsync(long id, long? viewerProfileId, CancellationToken cancellationToken)
     {
         var profile = await context.Profiles
             .FirstOrDefaultAsync(p => p.Id == id && p.Kind == ProfileKind.Member, cancellationToken);
@@ -51,7 +52,7 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
         var pictureCount = await context.Posts
             .CountAsync(p => p.AuthorProfileId == id && p.State == PostState.Published && p.DeletedAt == null, cancellationToken);
 
-        var tankCount = await context.Tanks
+        var tankCount = await context.Tanks.Where(TankVisibilityRules.ProfileVisibleTo(viewerProfileId))
             .CountAsync(t => t.ProfileId == id && t.State == TankState.Published && t.DeletedAt == null, cancellationToken);
 
         var commentCount = await context.Comments

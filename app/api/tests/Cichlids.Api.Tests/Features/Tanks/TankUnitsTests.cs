@@ -21,6 +21,7 @@ public sealed class TankUnitsTests(ApiFixture fixture)
             Content = JsonContent.Create(new
             {
                 title,
+                isPublic = true,
                 dimensions = new { width, height = 20m, depth = 12m, unit = lengthUnit },
                 volume = new { value = inputVolume, unit = volumeUnit },
             }),
@@ -55,7 +56,7 @@ public sealed class TankUnitsTests(ApiFixture fixture)
     [Fact]
     public async Task CreateRequiresAuthentication()
     {
-        var response = await fixture.Client.PostAsJsonAsync("/api/tanks", new { title = "Units" });
+        var response = await fixture.Client.PostAsJsonAsync("/api/tanks", new { title = "Units", isPublic = true });
         Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 
@@ -68,7 +69,7 @@ public sealed class TankUnitsTests(ApiFixture fixture)
     {
         using var request = new HttpRequestMessage(HttpMethod.Post, "/api/tanks")
         {
-            Content = JsonContent.Create(new { title = "Invalid units", volume = new { value, unit } }),
+            Content = JsonContent.Create(new { title = "Invalid units", isPublic = true, volume = new { value, unit } }),
         };
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", TestTokens.Create(Guid.NewGuid().ToString(), "units-invalid"));
         var response = await fixture.Client.SendAsync(request);

@@ -52,7 +52,7 @@ internal static class CareTestSupport
 
     public static async Task<long> CreateTankAsync(HttpClient client, string token)
     {
-        using var response = await SendAsync(client, HttpMethod.Post, "/api/tanks", token, new { title = "Care test" });
+        using var response = await SendAsync(client, HttpMethod.Post, "/api/tanks", token, new { title = "Care test", isPublic = true });
         response.EnsureSuccessStatusCode();
         return (await BodyAsync(response)).GetProperty("id").GetInt64();
     }

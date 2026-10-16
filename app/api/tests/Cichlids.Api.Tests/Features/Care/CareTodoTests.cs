@@ -130,7 +130,7 @@ public sealed class CareTodoTests(ApiFixture fixture) : IAsyncLifetime
     public async Task GivenTodosOfSeveralTanks_WhenListing_ThenAllOpenOnesOfTheMemberComeNewestFirst()
     {
         var (token, first) = await OwnTankAsync();
-        using var second = await SendAsync(fixture.Client, HttpMethod.Post, "/api/tanks", token, new { title = "Second tank" });
+        using var second = await SendAsync(fixture.Client, HttpMethod.Post, "/api/tanks", token, new { title = "Second tank", isPublic = true });
         var secondTank = (await BodyAsync(second)).GetProperty("id").GetInt64();
         _tanks.Add(secondTank);
         var a = await AddTodoAsync(token, first, "a");

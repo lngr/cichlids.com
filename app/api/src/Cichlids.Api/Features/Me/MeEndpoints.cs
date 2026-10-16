@@ -45,7 +45,7 @@ public static class MeEndpoints
     {
         var profile = await currentProfileService.ResolveAsync(user, cancellationToken);
 
-        var detail = await profilesQueryService.GetByIdAsync(profile.Id, cancellationToken)
+        var detail = await profilesQueryService.GetByIdAsync(profile.Id, profile.Id, cancellationToken)
             ?? throw new InvalidOperationException($"The resolved profile {profile.Id} has no public detail view.");
 
         var roles = user.Identity is ClaimsIdentity identity

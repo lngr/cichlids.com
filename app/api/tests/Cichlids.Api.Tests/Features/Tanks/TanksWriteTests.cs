@@ -16,7 +16,7 @@ public sealed class TanksWriteTests(ApiFixture fixture)
     public async Task GivenValidTank_WhenCreated_ThenTankAndOutboxEventArePersisted()
     {
         var title = $"Outbox {Guid.NewGuid():N}";
-        using var response = await CreateAsync(new { title = $"  {title}  " });
+        using var response = await CreateAsync(new { title = $"  {title}  ", isPublic = true });
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
         using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
         var id = json.RootElement.GetProperty("id").GetInt64();
@@ -45,7 +45,7 @@ public sealed class TanksWriteTests(ApiFixture fixture)
         {
             var service = new TanksWriteService(write);
             await Assert.ThrowsAsync<InvalidOperationException>(() => service.CreateAsync(
-                new CreateTankRequest(title, null, null), profileId, CancellationToken.None));
+                new CreateTankRequest(title, null, null, IsPublic: true), profileId, CancellationToken.None));
         }
         Assert.False(await read.Tanks.AnyAsync(t => t.Title == title));
         Assert.Equal(eventsBefore, await read.OutboxEvents.CountAsync());
@@ -65,12 +65,12 @@ public sealed class TanksWriteTests(ApiFixture fixture)
     }
 
     [Theory]
-    [InlineData("{\"title\":null}", "tank_title_invalid")]
-    [InlineData("{\"title\":\" \"}", "tank_title_invalid")]
-    [InlineData("{\"title\":\"Valid\",\"dimensions\":{\"width\":0,\"unit\":\"cm\"}}", "tank_dimensions_invalid")]
-    [InlineData("{\"title\":\"Valid\",\"dimensions\":{\"unit\":\"inch\"}}", "tank_dimensions_invalid")]
-    [InlineData("{\"title\":\"Valid\",\"volume\":{\"value\":-1,\"unit\":\"liter\"}}", "tank_volume_invalid")]
-    [InlineData("{\"title\":\"Valid\",\"volume\":{\"value\":1000001,\"unit\":\"us_gallon\"}}", "tank_volume_invalid")]
+    [InlineData("{\"title\":null,\"isPublic\":true}", "tank_title_invalid")]
+    [InlineData("{\"title\":\" \",\"isPublic\":true}", "tank_title_invalid")]
+    [InlineData("{\"title\":\"Valid\",\"isPublic\":true,\"dimensions\":{\"width\":0,\"unit\":\"cm\"}}", "tank_dimensions_invalid")]
+    [InlineData("{\"title\":\"Valid\",\"isPublic\":true,\"dimensions\":{\"unit\":\"inch\"}}", "tank_dimensions_invalid")]
+    [InlineData("{\"title\":\"Valid\",\"isPublic\":true,\"volume\":{\"value\":-1,\"unit\":\"liter\"}}", "tank_volume_invalid")]
+    [InlineData("{\"title\":\"Valid\",\"isPublic\":true,\"volume\":{\"value\":1000001,\"unit\":\"us_gallon\"}}", "tank_volume_invalid")]
     public async Task GivenInvalidTank_WhenCreated_ThenProblemCodeAndNoWrites(string body, string code)
     {
         await using var db = fixture.CreateDbContext();
@@ -89,7 +89,7 @@ public sealed class TanksWriteTests(ApiFixture fixture)
     [Fact]
     public async Task GivenLongTitle_WhenCreated_ThenTitleProblem()
     {
-        using var response = await CreateAsync(new { title = new string('x', 201) });
+        using var response = await CreateAsync(new { title = new string('x', 201), isPublic = true });
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
         Assert.Equal("tank_title_invalid", json.RootElement.GetProperty("code").GetString());
@@ -101,7 +101,7 @@ public sealed class TanksWriteTests(ApiFixture fixture)
         await using var db = fixture.CreateDbContext();
         var tanksBefore = await db.Tanks.CountAsync();
         var eventsBefore = await db.OutboxEvents.CountAsync();
-        using var response = await fixture.Client.PostAsJsonAsync("/api/tanks", new { title = "Anonymous" });
+        using var response = await fixture.Client.PostAsJsonAsync("/api/tanks", new { title = "Anonymous", isPublic = true });
         Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
         Assert.Equal(tanksBefore, await db.Tanks.CountAsync());
         Assert.Equal(eventsBefore, await db.OutboxEvents.CountAsync());
@@ -124,7 +124,7 @@ public sealed class TanksWriteTests(ApiFixture fixture)
         var eventsBefore = await db.OutboxEvents.CountAsync();
         using var request = new HttpRequestMessage(HttpMethod.Post, "/api/tanks")
         {
-            Content = JsonContent.Create(new { title = "Refused member" }),
+            Content = JsonContent.Create(new { title = "Refused member", isPublic = true }),
         };
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", TestTokens.Create(subject, "archived-tank"));
         using var response = await fixture.Client.SendAsync(request);
