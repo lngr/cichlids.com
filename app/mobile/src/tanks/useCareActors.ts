@@ -10,13 +10,13 @@ import { apiClient } from "../api/client";
  */
 export function useCareActors(tankId: () => number) {
   const [actor] = useState(() => createActor(careMachine, { input: {
-    log: () => apiClient.care.log(tankId()),
-    update: (id, amount) => apiClient.care.update(tankId(), id, amount),
+    log: occurredAt => apiClient.care.log(tankId(), occurredAt ? { occurredAt } : undefined),
+    update: (id, amount, occurredAt) => apiClient.care.update(tankId(), id, amount, occurredAt),
     remove: id => apiClient.care.remove(tankId(), id),
   } }).start());
   const [measureActor] = useState(() => createActor(measurementMachine, { input: {
-    log: values => apiClient.care.log(tankId(), { kind: "measurement", values }),
-    update: (id, values) => apiClient.care.updateValues(tankId(), id, values),
+    log: (values, occurredAt) => apiClient.care.log(tankId(), { kind: "measurement", values, ...(occurredAt ? { occurredAt } : {}) }),
+    update: (id, values, occurredAt) => apiClient.care.updateValues(tankId(), id, values, occurredAt),
     remove: id => apiClient.care.remove(tankId(), id),
   } }).start());
   const [attachActor] = useState(() => createActor(careAttachmentsMachine, { input: {

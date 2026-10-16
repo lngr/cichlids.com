@@ -1,11 +1,12 @@
 import { Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
-import { inputUnit, validateDraft, visibleParameters, MEASUREMENT_ORIGINS } from "@cichlids/client-core";
+import { draftWhen, inputUnit, validateDraft, visibleParameters, MEASUREMENT_ORIGINS } from "@cichlids/client-core";
 import { Button } from "../components/Button";
 import { Chip } from "../components/Chip";
 import { translateApiError } from "../lib/apiErrors";
 import { minTouchTarget, useTheme } from "../theme";
 import { measurementUnitSymbol } from "./measurementFormat";
+import { WhenPicker } from "./WhenPicker";
 import type { CareStream } from "./useCareStream";
 
 /** The progressive form of a measurement: the common parameters first, more on demand, one source for all values. */
@@ -16,6 +17,7 @@ export function MeasurementForm({ stream }: { stream: Pick<CareStream, "measure"
   const { draft, entry, error } = state.context;
   const busy = !state.matches("editing");
   const { values, errors } = validateDraft(draft);
+  const when = draftWhen(draft);
   return <>
     <Text accessibilityRole="header" style={[theme.type.h2, { color: theme.colors.fg }]}>{t(entry ? "care.measure.editTitle" : "care.measure.formTitle")}</Text>
     <Text style={[theme.type.body, { color: theme.colors.muted }]}>{t("care.measure.hint")}</Text>
@@ -32,6 +34,8 @@ export function MeasurementForm({ stream }: { stream: Pick<CareStream, "measure"
       </View>;
     })}
     {!draft.expanded ? <Button testID="measure-more" variant="secondary" disabled={busy} label={t("care.measure.more")} onPress={() => send({ type: "MORE" })} /> : null}
+    <WhenPicker testIDPrefix="measure-when" value={draft.when} onChange={next => send({ type: "WHEN", when: next })} existing={entry !== null}
+      prefill={entry ? new Date(entry.occurredAt) : new Date()} disabled={busy} />
     <Text style={[theme.type.bodyStrong, { color: theme.colors.fg }]}>{t("care.measure.origin")}</Text>
     <View style={{ flexDirection: "row", flexWrap: "wrap", gap: theme.space[2] }}>
       <Chip testID="measure-origin-none" label={t("care.measure.originNone")} active={draft.origin === null} onPress={() => send({ type: "ORIGIN", origin: null })} />
@@ -39,7 +43,7 @@ export function MeasurementForm({ stream }: { stream: Pick<CareStream, "measure"
         active={draft.origin === origin} onPress={() => send({ type: "ORIGIN", origin })} />)}
     </View>
     {error ? <Text accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>{translateApiError(error, t, "common.loadError")}</Text> : null}
-    <Button testID="measure-save" label={t("care.measure.save")} busy={state.matches("saving")} disabled={!values || busy} onPress={() => send({ type: "SAVE" })} />
+    <Button testID="measure-save" label={t("care.measure.save")} busy={state.matches("saving")} disabled={!values || busy || when.error !== null} onPress={() => send({ type: "SAVE" })} />
     {entry ? <Button testID="measure-delete" variant="secondary" busy={state.matches("deleting")} disabled={busy} label={t("care.measure.delete")} onPress={() => send({ type: "DELETE" })} /> : null}
     <Button testID="measure-cancel" variant="secondary" disabled={busy} label={t("navigation.cancel")} onPress={() => send({ type: "CANCEL" })} />
   </>;

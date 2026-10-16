@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Modal, ScrollView, Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
-import { formatElapsed, type CareEntry } from "@cichlids/client-core";
+import { deviceTimeZone, formatElapsed, resolveWhen, type CareEntry, type WhenChoice } from "@cichlids/client-core";
 import { Button } from "../components/Button";
 import { useTheme } from "../theme";
 import { useUnits } from "../units/useUnits";
@@ -13,6 +13,7 @@ import { CareEntryExtras } from "./CareEntryExtras";
 import { CarePlanView } from "./CarePlanView";
 import { MeasurementForm } from "./MeasurementForm";
 import { MeasurementGraphs } from "./MeasurementGraphs";
+import { WhenPicker } from "./WhenPicker";
 import { measurementLines } from "./measurementFormat";
 import type { CareStream } from "./useCareStream";
 
@@ -24,13 +25,17 @@ export function CareStreamView({ stream }: { stream: CareStream }) {
   const { state, send, list, entries, owner } = stream;
   const measure = stream.measure.state;
   const measuring = !measure.matches("idle");
+  const [when, setWhen] = useState<WhenChoice>({ kind: "now" });
+  const logTime = resolveWhen(when, new Date(), deviceTimeZone());
   const text = { color: theme.colors.fg };
   const busy = state.matches("logging") || state.matches("undoing") || state.matches("saving") || state.matches("deleting");
   const editing = state.matches("editing") || state.matches("saving") || state.matches("deleting");
   return <View style={{ gap: theme.space[3] }}>
     <Text accessibilityRole="header" style={[theme.type.h2, text]}>{t("tankStory.logs")}</Text>
     {owner ? <>
-      <Button testID="care-water-change" label={t("care.waterChange")} busy={busy} disabled={editing || measuring} onPress={() => send({ type: "LOG" })} />
+      <WhenPicker testIDPrefix="care-when" title={t("care.when.waterChangeTitle")} value={when} onChange={setWhen} prefill={new Date()} disabled={busy || editing || measuring} />
+      <Button testID="care-water-change" label={t("care.waterChange")} busy={busy} disabled={editing || measuring || logTime.error !== null}
+        onPress={() => { send({ type: "LOG", ...(logTime.occurredAt ? { occurredAt: logTime.occurredAt } : {}) }); setWhen({ kind: "now" }); }} />
       <Button testID="care-guided-water-change" variant="secondary" label={t("waterChange.start")} disabled={busy || editing || measuring}
         onPress={() => router.push(`/tanks/${stream.tankId}/water-change`)} />
       <Button testID="care-measure" variant="secondary" label={t("care.measure.button")} disabled={busy || editing || measuring}
@@ -87,6 +92,8 @@ function AmountEditor({ entry, stream }: { entry: CareEntry; stream: CareStream 
   const { state, send } = stream;
   const busy = !state.matches("editing");
   const parsed = parseCareAmount(draft.value, draft.unit);
+  const [when, setWhen] = useState<WhenChoice>({ kind: "keep" });
+  const chosen = resolveWhen(when, new Date(), deviceTimeZone());
   return <>
     <Text accessibilityRole="header" style={[theme.type.h2, { color: theme.colors.fg }]}>{t("care.editAmount")}</Text>
     <Text style={[theme.type.body, { color: theme.colors.fg }]}>{t("care.amount")}</Text>
@@ -98,8 +105,11 @@ function AmountEditor({ entry, stream }: { entry: CareEntry; stream: CareStream 
         <Button testID={`care-unit-${unit}`} variant={draft.unit === unit ? "primary" : "secondary"} disabled={busy} label={t(`care.${unit}`)} onPress={() => setDraft(current => ({ ...current, unit }))} />
       </View>)}
     </View>
+    <WhenPicker testIDPrefix="care-edit-when" existing value={when} onChange={setWhen} prefill={new Date(entry.occurredAt)} disabled={busy} />
     {state.context.error ? <Text accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>{translateApiError(state.context.error, t, "common.loadError")}</Text> : null}
-    <Button testID="care-amount-save" label={t("care.save")} busy={state.matches("saving")} disabled={!parsed || busy} onPress={() => parsed && send({ type: "SAVE", amount: parsed })} />
+    <Button testID="care-amount-save" label={t("care.save")} busy={state.matches("saving")} disabled={!parsed || busy || chosen.error !== null}
+      onPress={() => parsed && send({ type: "SAVE", amount: parsed, ...(chosen.occurredAt ? { occurredAt: chosen.occurredAt } : {}) })} />
+    {chosen.occurredAt ? <Button testID="care-time-save" variant="secondary" disabled={busy} label={t("care.when.save")} onPress={() => send({ type: "SAVE_TIME", occurredAt: chosen.occurredAt! })} /> : null}
     {entry.amount ? <Button testID="care-amount-clear" variant="secondary" disabled={busy} label={t("care.clearAmount")} onPress={() => send({ type: "SAVE", amount: null })} /> : null}
     <Button testID="care-delete" variant="secondary" busy={state.matches("deleting")} disabled={busy} label={t("care.delete")} onPress={() => send({ type: "DELETE" })} />
     <Button testID="care-amount-cancel" variant="secondary" disabled={busy} label={t("navigation.cancel")} onPress={() => send({ type: "CANCEL" })} />
