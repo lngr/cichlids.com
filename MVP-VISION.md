@@ -131,7 +131,6 @@ Die Zahlen stammen aus Abfragen gegen die Legacy-Datenbank `cichlids_typo3` und 
 - **Besatz:** in allen 4.990 Becken leer.
 - **Haltungsdaten der Arten:** Aggression, Endgröße und Wasserwerte sind praktisch leer.
 - **Pflegedaten, Follows, Favoriten:** keine.
-- **Aufnahmedatum im neuen Schema:** Der ETL liest kein EXIF; `media_item` hat dafür keine Spalte.
 - **Frische Inhalte:** Seit 2020 haben sich rund 450 Mitglieder angemeldet; 2023 kamen 24 Fotos hinzu.
 
 ### Folgerungen
