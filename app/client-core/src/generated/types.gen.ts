@@ -4769,6 +4769,13 @@ export type ListProfileStoriesData = {
     url: '/api/profiles/{id}/stories';
 };
 
+export type ListProfileStoriesErrors = {
+    /**
+     * Not Found
+     */
+    404: unknown;
+};
+
 export type ListProfileStoriesResponses = {
     /**
      * OK
@@ -4788,6 +4795,13 @@ export type ListProfileTanksData = {
         limit?: number | string;
     };
     url: '/api/profiles/{id}/tanks';
+};
+
+export type ListProfileTanksErrors = {
+    /**
+     * Not Found
+     */
+    404: unknown;
 };
 
 export type ListProfileTanksResponses = {
