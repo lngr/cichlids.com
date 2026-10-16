@@ -1,10 +1,10 @@
 ---
 id: TASK-5.7
 title: Visibility per care entry
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 06:55'
+updated_date: '2026-10-16 07:36'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
