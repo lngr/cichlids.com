@@ -1,8 +1,8 @@
 // Story: TASK-5.6
 // A water change entry gets a photo, a note and a to-do: the entry shows all three, the photo opens in
 // a viewer, the to-do appears in the to-do list (reached from Today) until it is done and can be
-// reopened, and a to-do without an entry can be added from the list. The photo is private: its
-// stored objects answer no anonymous request, and the care photo links serve only while they are valid.
+// reopened, and a to-do without an entry can be added from the list. The original of the photo is
+// private and answers no anonymous request, and the care photo links serve only while they are valid.
 //
 // Runs on the isolated write stack only (see e2e/write-stack.sh), since it writes to the database and
 // the bucket.
@@ -89,14 +89,19 @@ try {
   assert.equal(stored.todos.length, 1);
   assert.equal(stored.todos[0].done, false);
   assert.ok(!JSON.stringify(stored).includes(`/${BUCKET}/`), "The entry names a bucket URL");
-  const keys = sql(
-    `SELECT media_item.storage_key FROM media_link JOIN media_item ON media_item.id = media_link.media_item_id WHERE media_link.care_entry_id = ${entry.id} AND media_link.role = 'photo'
-     UNION ALL SELECT media_variant.storage_key FROM media_link JOIN media_variant ON media_variant.media_item_id = media_link.media_item_id WHERE media_link.care_entry_id = ${entry.id} AND media_link.role = 'photo'`,
-  ).split("\n");
-  assert.ok(keys.length >= 2 && keys.every(key => key.startsWith("private/")), `Unexpected storage keys ${keys}`);
+  const photoLinks = `media_link.care_entry_id = ${entry.id} AND media_link.role = 'photo'`;
+  const original = sql(`SELECT media_item.storage_key FROM media_link JOIN media_item ON media_item.id = media_link.media_item_id WHERE ${photoLinks}`);
+  assert.ok(original.startsWith("private/"), `Unexpected storage key ${original}`);
+  assert.equal((await fetch(`http://${PUBLIC_HOST}:9000/${BUCKET}/${original}`)).status, 403, `Expected 403 for ${original}`);
+  // The history of the tank is public, so the placement moves the renditions into the public area;
+  // the original stays private.
+  const variantKeys = () => sql(`SELECT media_variant.storage_key FROM media_link JOIN media_variant ON media_variant.media_item_id = media_link.media_item_id WHERE ${photoLinks}`).split("\n");
+  const deadline = Date.now() + 60000;
+  while (!variantKeys().every(key => key.startsWith("variants/")) && Date.now() < deadline) await new Promise(resolve => setTimeout(resolve, 1000));
+  const keys = variantKeys();
+  assert.ok(keys.length >= 1 && keys.every(key => key.startsWith("variants/")), `Unexpected variant keys ${keys}`);
   for (const key of keys) {
-    const direct = await fetch(`http://${PUBLIC_HOST}:9000/${BUCKET}/${key}`);
-    assert.equal(direct.status, 403, `Expected 403 for ${key}`);
+    assert.equal((await fetch(`http://${PUBLIC_HOST}:9000/${BUCKET}/${key}`)).status, 200, `Expected 200 for ${key}`);
   }
   const thumbPath = stored.photos[0].urls.thumb;
   assert.equal((await fetch(`${API_URL}${thumbPath}`)).status, 200);
