@@ -54,4 +54,6 @@ Each care entry has a visibility; private entries never leave the owner, public 
 - Tanks created before the visibility question existed (decided by the project owner, 2026-10-16): they stay public; the question applies to newly created tanks.
 
 - Single entries (decided by the project owner, 2026-10-16): each care entry can be set to only me as an exception; otherwise it follows the level of the stream.
+
+- Without an account (decided by the project owner, 2026-10-16): public tanks with their stream are visible without an account; following, kudos and comments need an account. The teaser cut of the web stays its own planning.
 <!-- SECTION:NOTES:END -->
