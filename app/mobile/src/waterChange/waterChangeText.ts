@@ -10,7 +10,9 @@ export function stageOfValue(value: unknown): WaterChangeStage | null {
 /** The translation key of the evidence state of a water change. */
 export const evidenceKey = (state: "none" | "partial" | "verified") => `waterChange.evidence.${state}` as const;
 
+const MISSING_CODES = ["draining_missing", "duration_too_short", "photo_missing", "photo_outside_session", "photo_reused"];
+
 /** The translation key of a finding that keeps a water change from being verified; null for an unknown code. */
 export function missingKey(code: string): string | null {
-  return code === "draining_missing" || code === "duration_too_short" || code === "photo_missing" ? `waterChange.missing.${code}` : null;
+  return MISSING_CODES.includes(code) ? `waterChange.missing.${code}` : null;
 }

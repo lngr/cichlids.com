@@ -799,6 +799,13 @@
       "uploadError": "Foto tidak dapat ditambahkan. Silakan coba lagi.",
       "skip": "Lanjut tanpa foto"
     },
+    "photos": {
+      "added": "Foto ditambahkan ({{count}} dari {{max}})",
+      "another": "Ambil foto lain",
+      "continue": "Lanjut",
+      "back": "Kembali",
+      "limit": "Itu batas maksimum {{max}} foto."
+    },
     "amount": {
       "invalid": "Masukkan angka positif, untuk persen paling banyak 100.",
       "tankVolume": "Akuarium Anda berisi {{volume}}.",
@@ -817,8 +824,7 @@
       "title": "Penggantian air selesai",
       "duration": "Lama: {{time}}",
       "amount": "Jumlah: {{amount}}",
-      "drained": "Dikuras",
-      "refilled": "Terisi",
+      "photo": "Foto {{number}}",
       "private": "Foto Anda tetap pribadi.",
       "close": "Kembali ke akuarium Anda"
     },
@@ -830,7 +836,9 @@
     "missing": {
       "draining_missing": "Langkah pengurasan dilewati.",
       "duration_too_short": "Menguras dan mengisi memakan waktu kurang dari {{minutes}} menit.",
-      "photo_missing": "Tidak ada foto yang diambil dengan kamera aplikasi. Dengan foto, pergantian air dihitung untuk rangkaian Anda."
+      "photo_missing": "Tidak ada foto yang diambil dengan kamera aplikasi. Dengan foto, pergantian air dihitung untuk rangkaian Anda.",
+      "photo_outside_session": "Foto tidak diambil selama pergantian air. Dengan foto dari kamera aplikasi yang diambil selama pergantian, pergantian air dihitung untuk rangkaian Anda.",
+      "photo_reused": "Gambar ini sudah dipakai pada pergantian air sebelumnya. Dengan foto baru, pergantian air ini dihitung untuk rangkaian Anda."
     },
     "entry": {
       "line": "Terpandu, {{time}}, {{evidence}}"

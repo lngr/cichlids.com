@@ -804,6 +804,13 @@
       "uploadError": "Das Foto konnte nicht hinzugefügt werden. Bitte versuche es erneut.",
       "skip": "Ohne Foto weiter"
     },
+    "photos": {
+      "added": "Foto hinzugefügt ({{count}} von {{max}})",
+      "another": "Weiteres Foto machen",
+      "continue": "Weiter",
+      "back": "Zurück",
+      "limit": "Mehr als {{max}} Fotos sind nicht möglich."
+    },
     "amount": {
       "invalid": "Gib eine positive Zahl ein, bei Prozent bis 100.",
       "tankVolume": "Dein Becken fasst {{volume}}.",
@@ -822,8 +829,7 @@
       "title": "Wasserwechsel erledigt",
       "duration": "Dauer: {{time}}",
       "amount": "Menge: {{amount}}",
-      "drained": "Abgelassen",
-      "refilled": "Befüllt",
+      "photo": "Foto {{number}}",
       "private": "Deine Fotos bleiben privat.",
       "close": "Zurück zu deinem Becken"
     },
@@ -835,7 +841,9 @@
     "missing": {
       "draining_missing": "Der Schritt Ablassen wurde übersprungen.",
       "duration_too_short": "Ablassen und Befüllen dauerten weniger als {{minutes}} Minuten.",
-      "photo_missing": "Es wurde kein Foto mit der Kamera der App gemacht. Mit einem Foto zählt ein Wasserwechsel für deine Serie."
+      "photo_missing": "Es wurde kein Foto mit der Kamera der App gemacht. Mit einem Foto zählt ein Wasserwechsel für deine Serie.",
+      "photo_outside_session": "Die Fotos wurden nicht während des Wasserwechsels gemacht. Mit einem Foto der App-Kamera, das währenddessen entsteht, zählt ein Wasserwechsel für deine Serie.",
+      "photo_reused": "Dieses Bild hat schon bei einem früheren Wasserwechsel gedient. Mit einem neuen Foto zählt dieser Wasserwechsel für deine Serie."
     },
     "entry": {
       "line": "Geführt, {{time}}, {{evidence}}"

@@ -2991,12 +2991,12 @@
         }
       }
     },
-    "/api/tanks/{tankId}/water-changes/{id}/photos/{slot}": {
-      "put": {
+    "/api/tanks/{tankId}/water-changes/{id}/photos": {
+      "post": {
         "tags": [
           "Care"
         ],
-        "operationId": "SetWaterChangePhoto",
+        "operationId": "AddWaterChangePhoto",
         "parameters": [
           {
             "name": "tankId",
@@ -3016,14 +3016,6 @@
               "pattern": "^-?(?:0|[1-9]\\d*)$",
               "type": "integer",
               "format": "int64"
-            }
-          },
-          {
-            "name": "slot",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -8466,9 +8458,8 @@
           "finishedAt",
           "durationSeconds",
           "steps",
-          "drainedPhoto",
-          "refilledPhoto",
-          "previousDrainedPhoto",
+          "photos",
+          "previousPhotos",
           "minDurationSeconds"
         ],
         "type": "object",
@@ -8519,35 +8510,17 @@
               "$ref": "#/components/schemas/WaterChangeStepDto"
             }
           },
-          "drainedPhoto": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/WaterChangePhotoDto"
-              }
-            ]
+          "photos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WaterChangePhotoDto"
+            }
           },
-          "refilledPhoto": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/WaterChangePhotoDto"
-              }
-            ]
-          },
-          "previousDrainedPhoto": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/CarePhotoUrlsDto"
-              }
-            ]
+          "previousPhotos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarePhotoUrlsDto"
+            }
           },
           "minDurationSeconds": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",

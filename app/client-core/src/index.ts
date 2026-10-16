@@ -8,7 +8,6 @@ export type {
   CareTodo,
   WaterChangeSession,
   WaterChangeFinished,
-  WaterChangePhotoSlot,
   WaterChangeStep,
   WaterChangeStepState,
   TodoListItem,
@@ -100,7 +99,7 @@ export { customFromInstant, deviceTimeZone, localToUtc, resolveWhen, whenFromEnt
 export type { LocalDateTime, ResolvedWhen, WhenChoice, WhenError } from "./occurredAt.js";
 export type { Clock, DisplayPoint, DisplaySeries, DraftErrors, MeasurementDraft, ScaledPoint, UnitSystem } from "./measurement.js";
 export {
-  WATER_CHANGE_STAGES, drainingSeconds, formatElapsed, nextWaterChangeStage, totalSeconds, waterChangeMachine,
+  WATER_CHANGE_MAX_PHOTOS, WATER_CHANGE_STAGES, drainingSeconds, formatElapsed, nextWaterChangeStage, totalSeconds, waterChangeMachine,
 } from "./waterChange.js";
 export type { StoredWaterChange, WaterChangeActor, WaterChangeEffects, WaterChangeStage, WaterChangeTip } from "./waterChange.js";
 export { DEFAULT_OVERLAY_OPACITY, latestSeriesPhotoUrl, overlayOpacity, timeLapseCameraMachine } from "./timeLapseCamera.js";

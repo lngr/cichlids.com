@@ -817,6 +817,13 @@
       "uploadError": "No se pudo agregar la foto. Inténtalo de nuevo.",
       "skip": "Continuar sin foto"
     },
+    "photos": {
+      "added": "Foto agregada ({{count}} de {{max}})",
+      "another": "Tomar otra foto",
+      "continue": "Continuar",
+      "back": "Atrás",
+      "limit": "Ese es el máximo de {{max}} fotos."
+    },
     "amount": {
       "invalid": "Ingresa un número positivo, hasta 100 para porcentaje.",
       "tankVolume": "Tu acuario contiene {{volume}}.",
@@ -835,8 +842,7 @@
       "title": "Cambio de agua terminado",
       "duration": "Duración: {{time}}",
       "amount": "Cantidad: {{amount}}",
-      "drained": "Vaciado",
-      "refilled": "Llenado",
+      "photo": "Foto {{number}}",
       "private": "Tus fotos se mantienen privadas.",
       "close": "Volver a tu acuario"
     },
@@ -848,7 +854,9 @@
     "missing": {
       "draining_missing": "Se omitió el paso de vaciado.",
       "duration_too_short": "Vaciar y llenar tomó menos de {{minutes}} minutos.",
-      "photo_missing": "No se tomó ninguna foto con la cámara de la app. Con una foto, un cambio de agua cuenta para tu racha."
+      "photo_missing": "No se tomó ninguna foto con la cámara de la app. Con una foto, un cambio de agua cuenta para tu racha.",
+      "photo_outside_session": "Las fotos no se tomaron durante el cambio de agua. Con una foto de la cámara de la app tomada durante él, un cambio de agua cuenta para tu racha.",
+      "photo_reused": "Esta imagen ya sirvió en un cambio de agua anterior. Con una foto nueva, este cambio de agua cuenta para tu racha."
     },
     "entry": {
       "line": "Guiado, {{time}}, {{evidence}}"

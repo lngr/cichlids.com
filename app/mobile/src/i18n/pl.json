@@ -830,6 +830,13 @@
       "uploadError": "Nie udało się dodać zdjęcia. Spróbuj ponownie.",
       "skip": "Kontynuuj bez zdjęcia"
     },
+    "photos": {
+      "added": "Dodano zdjęcie ({{count}} z {{max}})",
+      "another": "Zrób kolejne zdjęcie",
+      "continue": "Dalej",
+      "back": "Wstecz",
+      "limit": "To maksimum {{max}} zdjęć."
+    },
     "amount": {
       "invalid": "Podaj liczbę dodatnią, dla procentów do 100.",
       "tankVolume": "Twoje akwarium ma {{volume}}.",
@@ -848,8 +855,7 @@
       "title": "Podmiana wody zakończona",
       "duration": "Czas: {{time}}",
       "amount": "Ilość: {{amount}}",
-      "drained": "Spuszczone",
-      "refilled": "Napełnione",
+      "photo": "Zdjęcie {{number}}",
       "private": "Twoje zdjęcia pozostają prywatne.",
       "close": "Wróć do akwarium"
     },
@@ -861,7 +867,9 @@
     "missing": {
       "draining_missing": "Krok spuszczania wody został pominięty.",
       "duration_too_short": "Spuszczanie i napełnianie trwały krócej niż {{minutes}} min.",
-      "photo_missing": "Nie zrobiono zdjęcia aparatem aplikacji. Ze zdjęciem podmiana wody liczy się do Twojej serii."
+      "photo_missing": "Nie zrobiono zdjęcia aparatem aplikacji. Ze zdjęciem podmiana wody liczy się do Twojej serii.",
+      "photo_outside_session": "Zdjęcia nie zostały zrobione podczas podmiany wody. Ze zdjęciem z aparatu aplikacji zrobionym w jej trakcie podmiana wody liczy się do Twojej serii.",
+      "photo_reused": "To zdjęcie posłużyło już przy wcześniejszej podmianie wody. Z nowym zdjęciem ta podmiana wody liczy się do Twojej serii."
     },
     "entry": {
       "line": "Prowadzona, {{time}}, {{evidence}}"

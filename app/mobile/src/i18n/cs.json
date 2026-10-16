@@ -830,6 +830,13 @@
       "uploadError": "Fotku se nepodařilo přidat. Zkuste to prosím znovu.",
       "skip": "Pokračovat bez fotky"
     },
+    "photos": {
+      "added": "Fotka přidána ({{count}} z {{max}})",
+      "another": "Pořídit další fotku",
+      "continue": "Pokračovat",
+      "back": "Zpět",
+      "limit": "Je to nejvyšší počet {{max}} fotek."
+    },
     "amount": {
       "invalid": "Zadejte kladné číslo, u procent nejvýše 100.",
       "tankVolume": "Vaše nádrž pojme {{volume}}.",
@@ -848,8 +855,7 @@
       "title": "Výměna vody hotová",
       "duration": "Doba: {{time}}",
       "amount": "Množství: {{amount}}",
-      "drained": "Vypuštěno",
-      "refilled": "Napuštěno",
+      "photo": "Fotka {{number}}",
       "private": "Vaše fotky zůstávají soukromé.",
       "close": "Zpět k nádrži"
     },
@@ -861,7 +867,9 @@
     "missing": {
       "draining_missing": "Krok vypouštění byl přeskočen.",
       "duration_too_short": "Vypouštění a napouštění trvalo méně než {{minutes}} min.",
-      "photo_missing": "Nebyla pořízena žádná fotka kamerou aplikace. S fotkou se výměna vody počítá do vaší série."
+      "photo_missing": "Nebyla pořízena žádná fotka kamerou aplikace. S fotkou se výměna vody počítá do vaší série.",
+      "photo_outside_session": "Fotky nevznikly během výměny vody. S fotkou z kamery aplikace pořízenou během ní se výměna vody počítá do vaší série.",
+      "photo_reused": "Tato fotka už posloužila u dřívější výměny vody. Nová fotka zajistí, že se tato výměna započítá do vaší série."
     },
     "entry": {
       "line": "Vedená, {{time}}, {{evidence}}"

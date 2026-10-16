@@ -817,6 +817,13 @@
       "uploadError": "Non è stato possibile aggiungere la foto. Riprova.",
       "skip": "Continua senza foto"
     },
+    "photos": {
+      "added": "Foto aggiunta ({{count}} di {{max}})",
+      "another": "Scatta un'altra foto",
+      "continue": "Continua",
+      "back": "Indietro",
+      "limit": "Questo è il massimo di {{max}} foto."
+    },
     "amount": {
       "invalid": "Inserisci un numero positivo, fino a 100 per la percentuale.",
       "tankVolume": "La tua vasca contiene {{volume}}.",
@@ -835,8 +842,7 @@
       "title": "Cambio d'acqua completato",
       "duration": "Durata: {{time}}",
       "amount": "Quantità: {{amount}}",
-      "drained": "Svuotata",
-      "refilled": "Riempita",
+      "photo": "Foto {{number}}",
       "private": "Le tue foto restano private.",
       "close": "Torna alla tua vasca"
     },
@@ -848,7 +854,9 @@
     "missing": {
       "draining_missing": "Il passo dello svuotamento è stato saltato.",
       "duration_too_short": "Svuotare e riempire ha richiesto meno di {{minutes}} minuti.",
-      "photo_missing": "Non è stata scattata nessuna foto con la fotocamera dell'app. Con una foto un cambio d'acqua conta per la tua serie."
+      "photo_missing": "Non è stata scattata nessuna foto con la fotocamera dell'app. Con una foto un cambio d'acqua conta per la tua serie.",
+      "photo_outside_session": "Le foto non sono state scattate durante il cambio d'acqua. Con una foto della fotocamera dell'app scattata durante il cambio, un cambio d'acqua conta per la tua serie.",
+      "photo_reused": "Questa immagine è già servita per un cambio d'acqua precedente. Con una nuova foto questo cambio d'acqua conta per la tua serie."
     },
     "entry": {
       "line": "Guidato, {{time}}, {{evidence}}"

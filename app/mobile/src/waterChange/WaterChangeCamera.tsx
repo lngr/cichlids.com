@@ -13,13 +13,14 @@ const OVERLAY_OPACITY = 0.4;
 
 /**
  * The camera step of the guided water change. Only the camera of the app delivers a photo; the
- * overlay shows the drained photo of the previous water change for the same framing. A photo is
- * optional, so the step always offers a way on.
+ * overlay shows a photo of the previous water change for the same framing. A photo is optional,
+ * so the step always offers a way on.
  */
-export function WaterChangeCamera({ overlay, uploading, error, onUse, onSkip }: {
+export function WaterChangeCamera({ overlay, uploading, error, skipLabel, onUse, onSkip }: {
   overlay: string | null;
   uploading: boolean;
   error: string | null;
+  skipLabel: string;
   onUse: (file: UploadFile) => void;
   onSkip: () => void;
 }) {
@@ -47,7 +48,7 @@ export function WaterChangeCamera({ overlay, uploading, error, onUse, onSkip }: 
     ? <View testID="water-change-overlay" pointerEvents="none" style={[StyleSheet.absoluteFill, { opacity: OVERLAY_OPACITY }]}>
       <Image source={overlay} accessibilityLabel={t("waterChange.camera.overlayLabel")} contentFit="cover" style={StyleSheet.absoluteFill} />
     </View> : null;
-  const skip = <Button testID="water-change-photo-skip" variant="secondary" label={t("waterChange.camera.skip")} disabled={uploading} onPress={onSkip} />;
+  const skip = <Button testID="water-change-photo-skip" variant="secondary" label={skipLabel} disabled={uploading} onPress={onSkip} />;
 
   async function capture() {
     if (!camera.current || capturing) return;

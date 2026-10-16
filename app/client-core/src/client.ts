@@ -13,7 +13,7 @@ import {
   startWaterChange,
   getCurrentWaterChange,
   markWaterChangeStep,
-  setWaterChangePhoto,
+  addWaterChangePhoto,
   finishWaterChange,
   cancelWaterChange,
   deleteTodo,
@@ -135,7 +135,6 @@ export type WaterChangeSession = WaterChangeSessionDto;
 export type WaterChangeFinished = WaterChangeFinishedDto;
 export type { WaterChangeStep, WaterChangeStepState };
 /** Which photo of a guided water change: the partly drained tank or the refilled tank. */
-export type WaterChangePhotoSlot = "drained" | "refilled";
 export type TodoListItem = TodoListItemDto;
 /** Which to-dos a list shows: those still open, those marked done, or both. */
 export type TodoState = "open" | "done" | "all";
@@ -340,7 +339,7 @@ export interface CichlidsClient {
     current(tankId: number): Promise<WaterChangeSession | null>;
     markStep(tankId: number, id: number, step: WaterChangeStep, state: WaterChangeStepState): Promise<WaterChangeSession>;
     /** Stores the photo of a slot; capturedInApp tells that the camera of the app took it. */
-    setPhoto(tankId: number, id: number, slot: WaterChangePhotoSlot, file: UploadFile, capturedInApp: boolean): Promise<WaterChangeSession>;
+    addPhoto(tankId: number, id: number, file: UploadFile, capturedInApp: boolean): Promise<WaterChangeSession>;
     finish(tankId: number, id: number, amount: CareAmountRequest | null): Promise<WaterChangeFinished>;
     cancel(tankId: number, id: number): Promise<void>;
   };
@@ -492,9 +491,9 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
         }
       },
       async markStep(tankId, id, step, state) { return unwrap(await markWaterChangeStep({ client, path: { tankId, id, step }, body: { state } })); },
-      async setPhoto(tankId, id, slot, file, capturedInApp) {
-        return unwrap(await setWaterChangePhoto({
-          client, path: { tankId, id, slot }, body: { file: file as never },
+      async addPhoto(tankId, id, file, capturedInApp) {
+        return unwrap(await addWaterChangePhoto({
+          client, path: { tankId, id }, body: { file: file as never },
           bodySerializer: () => {
             const formData = new FormData();
             formData.append("file", file as never);

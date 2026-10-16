@@ -804,6 +804,13 @@
       "uploadError": "De foto kon niet worden toegevoegd. Probeer het opnieuw.",
       "skip": "Doorgaan zonder foto"
     },
+    "photos": {
+      "added": "Foto toegevoegd ({{count}} van {{max}})",
+      "another": "Nog een foto maken",
+      "continue": "Verder",
+      "back": "Terug",
+      "limit": "Dat is het maximum van {{max}} foto's."
+    },
     "amount": {
       "invalid": "Voer een positief getal in, bij procenten tot 100.",
       "tankVolume": "Je aquarium bevat {{volume}}.",
@@ -822,8 +829,7 @@
       "title": "Waterverversing klaar",
       "duration": "Duur: {{time}}",
       "amount": "Hoeveelheid: {{amount}}",
-      "drained": "Afgetapt",
-      "refilled": "Gevuld",
+      "photo": "Foto {{number}}",
       "private": "Je foto's blijven privé.",
       "close": "Terug naar je aquarium"
     },
@@ -835,7 +841,9 @@
     "missing": {
       "draining_missing": "De stap aftappen is overgeslagen.",
       "duration_too_short": "Aftappen en vullen duurden minder dan {{minutes}} minuten.",
-      "photo_missing": "Er is geen foto met de camera van de app gemaakt. Met een foto telt een waterverversing mee voor je reeks."
+      "photo_missing": "Er is geen foto met de camera van de app gemaakt. Met een foto telt een waterverversing mee voor je reeks.",
+      "photo_outside_session": "De foto's zijn niet tijdens de waterverversing gemaakt. Met een foto van de app-camera die tijdens de verversing is gemaakt, telt een waterverversing mee voor je reeks.",
+      "photo_reused": "Deze foto is al gebruikt bij een eerdere waterverversing. Met een nieuwe foto telt deze waterverversing mee voor je reeks."
     },
     "entry": {
       "line": "Begeleid, {{time}}, {{evidence}}"

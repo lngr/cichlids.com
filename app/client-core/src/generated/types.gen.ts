@@ -768,9 +768,8 @@ export type WaterChangeSessionDto = {
     finishedAt: null | string;
     durationSeconds: null | number | string;
     steps: Array<WaterChangeStepDto>;
-    drainedPhoto: null | WaterChangePhotoDto;
-    refilledPhoto: null | WaterChangePhotoDto;
-    previousDrainedPhoto: null | CarePhotoUrlsDto;
+    photos: Array<WaterChangePhotoDto>;
+    previousPhotos: Array<CarePhotoUrlsDto>;
     minDurationSeconds: number | string;
 };
 
@@ -2415,7 +2414,7 @@ export type MarkWaterChangeStepResponses = {
 
 export type MarkWaterChangeStepResponse = MarkWaterChangeStepResponses[keyof MarkWaterChangeStepResponses];
 
-export type SetWaterChangePhotoData = {
+export type AddWaterChangePhotoData = {
     body: {
         file?: IFormFile;
     } & {
@@ -2424,13 +2423,12 @@ export type SetWaterChangePhotoData = {
     path: {
         tankId: number;
         id: number;
-        slot: string;
     };
     query?: never;
-    url: '/api/tanks/{tankId}/water-changes/{id}/photos/{slot}';
+    url: '/api/tanks/{tankId}/water-changes/{id}/photos';
 };
 
-export type SetWaterChangePhotoErrors = {
+export type AddWaterChangePhotoErrors = {
     /**
      * Bad Request
      */
@@ -2453,16 +2451,16 @@ export type SetWaterChangePhotoErrors = {
     429: ProblemDetails;
 };
 
-export type SetWaterChangePhotoError = SetWaterChangePhotoErrors[keyof SetWaterChangePhotoErrors];
+export type AddWaterChangePhotoError = AddWaterChangePhotoErrors[keyof AddWaterChangePhotoErrors];
 
-export type SetWaterChangePhotoResponses = {
+export type AddWaterChangePhotoResponses = {
     /**
      * OK
      */
     200: WaterChangeSessionDto;
 };
 
-export type SetWaterChangePhotoResponse = SetWaterChangePhotoResponses[keyof SetWaterChangePhotoResponses];
+export type AddWaterChangePhotoResponse = AddWaterChangePhotoResponses[keyof AddWaterChangePhotoResponses];
 
 export type FinishWaterChangeData = {
     body?: null | FinishWaterChangeRequest;

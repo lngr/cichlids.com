@@ -2,7 +2,7 @@ import { createActor, waitFor } from "xstate";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import type { WaterChangeFinished, WaterChangeSession } from "./client.js";
 import {
-  drainingSeconds, formatElapsed, nextWaterChangeStage, totalSeconds, waterChangeMachine, type StoredWaterChange, type WaterChangeStage,
+  WATER_CHANGE_MAX_PHOTOS, drainingSeconds, formatElapsed, nextWaterChangeStage, totalSeconds, waterChangeMachine, type StoredWaterChange, type WaterChangeStage,
 } from "./waterChange.js";
 
 type Step = WaterChangeSession["steps"][number];
@@ -11,18 +11,21 @@ const iso = (offsetMs: number) => new Date(T0 + offsetMs).toISOString();
 const step = (name: Step["step"], state: Step["state"] = "done", offsetMs = 0): Step => ({ step: name, state, at: iso(offsetMs) });
 const session = (steps: Step[] = [], extra: Partial<WaterChangeSession> = {}): WaterChangeSession => ({
   id: 5, tankId: 42, startedAt: iso(0), expiresAt: iso(86400000), finishedAt: null, durationSeconds: null, steps,
-  drainedPhoto: null, refilledPhoto: null, previousDrainedPhoto: null, minDurationSeconds: 600, ...extra,
+  photos: [], previousPhotos: [], minDurationSeconds: 600, ...extra,
 });
-const photo = { urls: { thumb: "/t", small: null, medium: null, large: null }, width: 1, height: 1, capturedInApp: true, receivedAt: iso(0), takenAt: null };
+const photoAt = (offsetMs: number) => ({ urls: { thumb: "/t", small: null, medium: null, large: null }, width: 1, height: 1, capturedInApp: true, receivedAt: iso(offsetMs), takenAt: null });
+const photo = photoAt(0);
 const finished = (): WaterChangeFinished => ({ session: session([], { finishedAt: iso(1000), durationSeconds: 1 }), entry: { id: 9 } as never });
 
 function setup(start: WaterChangeSession = session(), stored: StoredWaterChange | null = null) {
   let nowMs = T0;
+  let photoCount = 0;
+  const storedPhotos: Array<ReturnType<typeof photoAt>> = [];
   const saved: Array<StoredWaterChange | null> = [];
   const effects = {
     start: vi.fn(async () => start),
     markStep: vi.fn(async (_id: number, name: Step["step"], state: Step["state"]) => session([step(name, state, nowMs - T0)])),
-    setPhoto: vi.fn(async (_id: number, slot: "drained" | "refilled") => session([], slot === "drained" ? { drainedPhoto: photo } : { refilledPhoto: photo })),
+    addPhoto: vi.fn(async () => { storedPhotos.push(photoAt(++photoCount)); return session([], { photos: [...storedPhotos] }); }),
     finish: vi.fn(async () => finished()),
     cancel: vi.fn(async () => undefined),
     storage: { load: vi.fn(async () => stored), save: vi.fn(async (value: StoredWaterChange | null) => { saved.push(value); }) },
@@ -47,12 +50,14 @@ it("derives the next stage from the steps and photos of the session", () => {
     [session([step("heater_filter_off")]), "draining"],
     [session([step("heater_filter_off", "skipped")]), "draining"],
     [session([step("heater_filter_off"), step("draining_started")]), "drainedPhoto"],
-    [session([step("heater_filter_off"), step("draining_started")], { drainedPhoto: photo }), "tips"],
+    [session([step("heater_filter_off"), step("draining_started")], { photos: [photo] }), "tips"],
     [session([step("heater_filter_off"), step("draining_started"), step("drained_photo", "skipped")]), "tips"],
     [session([step("heater_filter_off"), step("draining_started"), step("drained_photo", "skipped"), step("conditioner", "skipped")]), "refill"],
     [session([step("heater_filter_off"), step("draining_started"), step("drained_photo", "skipped"), step("temperature_matched"), step("refill_started")]), "heaterFilterOn"],
     [session([step("heater_filter_off"), step("draining_started"), step("drained_photo", "skipped"), step("conditioner"), step("refill_started"), step("heater_filter_on")]), "refilledPhoto"],
     [session([step("heater_filter_off"), step("draining_started"), step("drained_photo", "skipped"), step("conditioner"), step("refill_started"), step("heater_filter_on"), step("refilled_photo", "skipped")]), "amount"],
+    [session([step("heater_filter_off"), step("draining_started"), step("conditioner"), step("refill_started", "done", 1000), step("heater_filter_on", "done", 2000)], { photos: [photoAt(500)] }), "refilledPhoto"],
+    [session([step("heater_filter_off"), step("draining_started"), step("conditioner"), step("refill_started", "done", 1000), step("heater_filter_on", "done", 2000)], { photos: [photoAt(500), photoAt(2500)] }), "amount"],
   ];
   for (const [value, stage] of cases) expect(nextWaterChangeStage(value)).toBe(stage);
 });
@@ -157,19 +162,37 @@ it("remembers the stage and forgets it when the water change ends", async () => 
   expect(saved.at(-1)).toBeNull();
 });
 
-it("uploads a photo as app evidence and continues, or continues without it", async () => {
+it("uploads a photo as app evidence, offers another one and continues on request", async () => {
   const { actor, effects } = setup(session([step("heater_filter_off"), step("draining_started")]));
   await waitFor(actor, inStage("drainedPhoto"));
   const file = new Blob(["x"]);
   actor.send({ type: "PHOTO", file });
-  await waitFor(actor, inStage("tips"));
-  expect(effects.setPhoto).toHaveBeenCalledWith(5, "drained", file, true);
-  expect(actor.getSnapshot().context.session?.drainedPhoto).not.toBeNull();
+  await waitFor(actor, s => (s.value as { running?: Record<string, string> }).running?.drainedPhoto === "added");
+  expect(effects.addPhoto).toHaveBeenCalledWith(5, file, true);
+  expect(actor.getSnapshot().context.session?.photos).toHaveLength(1);
+  actor.send({ type: "PHOTO", file });
+  await waitFor(actor, s => (s.value as { running?: Record<string, string> }).running?.drainedPhoto === "added" && s.context.session?.photos.length === 2);
+  actor.send({ type: "DONE" });
+  expect(stageOf(actor)).toBe("tips");
+});
+
+it("takes no more photos once the session holds the maximum", async () => {
+  const { actor, effects } = setup(session([step("heater_filter_off"), step("draining_started")]));
+  await waitFor(actor, inStage("drainedPhoto"));
+  for (let count = 1; count <= WATER_CHANGE_MAX_PHOTOS; count++) {
+    actor.send({ type: "PHOTO", file: new Blob(["x"]) });
+    await waitFor(actor, s => s.context.session?.photos.length === count && (s.value as { running?: Record<string, string> }).running?.drainedPhoto === "added");
+  }
+  actor.send({ type: "PHOTO", file: new Blob(["x"]) });
+  await vi.advanceTimersByTimeAsync(0);
+  expect(effects.addPhoto).toHaveBeenCalledTimes(WATER_CHANGE_MAX_PHOTOS);
+  expect(actor.getSnapshot().context.session?.photos).toHaveLength(WATER_CHANGE_MAX_PHOTOS);
+  expect(stageOf(actor)).toBe("drainedPhoto");
 });
 
 it("stays on the photo stage after a failed upload and lets the member skip it", async () => {
   const { actor, effects } = setup(session([step("heater_filter_off"), step("draining_started")]));
-  effects.setPhoto.mockRejectedValueOnce(new Error("offline"));
+  effects.addPhoto.mockRejectedValueOnce(new Error("offline"));
   await waitFor(actor, inStage("drainedPhoto"));
   actor.send({ type: "PHOTO", file: new Blob(["x"]) });
   await waitFor(actor, s => (s.value as { running?: Record<string, string> }).running?.drainedPhoto === "ready" && s.context.error !== null);

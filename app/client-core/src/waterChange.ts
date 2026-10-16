@@ -1,6 +1,6 @@
 import { assign, fromCallback, fromPromise, setup, type ActorRefFrom } from "xstate";
 import type {
-  CareAmountRequest, UploadFile, WaterChangeFinished, WaterChangePhotoSlot, WaterChangeSession, WaterChangeStep, WaterChangeStepState,
+  CareAmountRequest, UploadFile, WaterChangeFinished, WaterChangeSession, WaterChangeStep, WaterChangeStepState,
 } from "./client.js";
 
 /** The screens of the guided water change in the order the member meets them. */
@@ -8,6 +8,9 @@ export const WATER_CHANGE_STAGES = [
   "heaterFilterOff", "draining", "drainedPhoto", "tips", "refill", "heaterFilterOn", "refilledPhoto", "amount",
 ] as const;
 export type WaterChangeStage = (typeof WATER_CHANGE_STAGES)[number];
+
+/** The number of photos a session holds at most. */
+export const WATER_CHANGE_MAX_PHOTOS = 6;
 
 /** The tips of the tips stage: optional, and recorded as done or skipped. */
 export type WaterChangeTip = Extract<WaterChangeStep, "conditioner" | "temperature_matched">;
@@ -19,7 +22,7 @@ export type WaterChangeEffects = {
   /** Starts the session on the server, or returns the open one. */
   start: () => Promise<WaterChangeSession>;
   markStep: (id: number, step: WaterChangeStep, state: WaterChangeStepState) => Promise<WaterChangeSession>;
-  setPhoto: (id: number, slot: WaterChangePhotoSlot, file: UploadFile, capturedInApp: boolean) => Promise<WaterChangeSession>;
+  addPhoto: (id: number, file: UploadFile, capturedInApp: boolean) => Promise<WaterChangeSession>;
   finish: (id: number, amount: CareAmountRequest | null) => Promise<WaterChangeFinished>;
   cancel: (id: number) => Promise<void>;
   storage: { load: () => Promise<StoredWaterChange | null>; save: (value: StoredWaterChange | null) => Promise<void> };
@@ -52,18 +55,25 @@ type Events =
 
 const marked = (session: WaterChangeSession, step: WaterChangeStep) => session.steps.some(s => s.step === step);
 
+// Whether the session holds a photo that arrived at or after the mark of the step.
+const photoSince = (session: WaterChangeSession, step: WaterChangeStep) => {
+  const mark = session.steps.find(s => s.step === step);
+  return mark !== undefined && session.photos.some(p => Date.parse(p.receivedAt) >= Date.parse(mark.at));
+};
+
 /**
  * The stage a session continues with: the first stage whose step is not marked and whose photo is
- * not stored. A step the member skipped counts as handled.
+ * not stored. A step the member skipped counts as handled. The photo of a photo stage is a photo
+ * received after the mark of the step before it.
  */
 export function nextWaterChangeStage(session: WaterChangeSession): WaterChangeStage {
   if (!marked(session, "heater_filter_off")) return "heaterFilterOff";
   if (!marked(session, "draining_started")) return "draining";
-  if (!session.drainedPhoto && !marked(session, "drained_photo")) return "drainedPhoto";
+  if (!photoSince(session, "draining_started") && !marked(session, "drained_photo")) return "drainedPhoto";
   if (!marked(session, "conditioner") && !marked(session, "temperature_matched")) return "tips";
   if (!marked(session, "refill_started")) return "refill";
   if (!marked(session, "heater_filter_on")) return "heaterFilterOn";
-  if (!session.refilledPhoto && !marked(session, "refilled_photo")) return "refilledPhoto";
+  if (!photoSince(session, "heater_filter_on") && !marked(session, "refilled_photo")) return "refilledPhoto";
   return "amount";
 }
 
@@ -75,7 +85,7 @@ const stepAt = (session: WaterChangeSession | null, step: WaterChangeStep): numb
   return found ? Date.parse(found.at) : null;
 };
 
-// Keeps the later mark of every step and the photos of either session, so answers that arrive out of
+// Keeps the later mark of every step and the longer list of photos, so answers that arrive out of
 // order never take a mark or a photo away.
 function merge(current: WaterChangeSession | null, incoming: WaterChangeSession): WaterChangeSession {
   if (!current) return incoming;
@@ -86,7 +96,7 @@ function merge(current: WaterChangeSession | null, incoming: WaterChangeSession)
   }
   return {
     ...incoming, steps: [...steps.values()],
-    drainedPhoto: incoming.drainedPhoto ?? current.drainedPhoto, refilledPhoto: incoming.refilledPhoto ?? current.refilledPhoto,
+    photos: incoming.photos.length >= current.photos.length ? incoming.photos : current.photos,
   };
 }
 
@@ -137,8 +147,8 @@ export const waterChangeMachine = setup({
       const stored = await input.storage.load().catch(() => null);
       return { session, stored };
     }),
-    upload: fromPromise(async ({ input }: { input: { effects: WaterChangeEffects; id: number; slot: WaterChangePhotoSlot; file: UploadFile; capturedInApp: boolean } }) =>
-      input.effects.setPhoto(input.id, input.slot, input.file, input.capturedInApp)),
+    upload: fromPromise(async ({ input }: { input: { effects: WaterChangeEffects; id: number; file: UploadFile; capturedInApp: boolean } }) =>
+      input.effects.addPhoto(input.id, input.file, input.capturedInApp)),
     complete: fromPromise(async ({ input }: { input: { effects: WaterChangeEffects; id: number; amount: CareAmountRequest | null } }) =>
       input.effects.finish(input.id, input.amount)),
     discard: fromPromise(async ({ input }: { input: { effects: WaterChangeEffects; id: number } }) => input.effects.cancel(input.id)),
@@ -178,6 +188,8 @@ export const waterChangeMachine = setup({
     clearError: assign({ error: null }),
   },
   guards: {
+    hasPhotoSince: ({ context }, params: { step: WaterChangeStep }) => context.session !== null && photoSince(context.session, params.step),
+    canTakeAnotherPhoto: ({ context }) => (context.session?.photos.length ?? 0) < WATER_CHANGE_MAX_PHOTOS,
     atStage: ({ context }, params: { stage: WaterChangeStage }) => context.initialStage === params.stage,
   },
 }).createMachine({
@@ -239,6 +251,7 @@ export const waterChangeMachine = setup({
           initial: "ready",
           states: {
             ready: {
+              always: { guard: { type: "hasPhotoSince", params: { step: "draining_started" as const } }, target: "added" },
               on: {
                 PHOTO: "uploading",
                 SKIP: { target: "#waterChange.running.tips", actions: ["clearError", { type: "mark", params: { step: "drained_photo", state: "skipped" } }] },
@@ -248,11 +261,17 @@ export const waterChangeMachine = setup({
               invoke: {
                 src: "upload",
                 input: ({ context, event }) => ({
-                  effects: context.effects, id: Number(context.session!.id), slot: "drained" as const,
+                  effects: context.effects, id: Number(context.session!.id),
                   file: (event as Extract<Events, { type: "PHOTO" }>).file, capturedInApp: (event as Extract<Events, { type: "PHOTO" }>).capturedInApp ?? true,
                 }),
-                onDone: { target: "#waterChange.running.tips", actions: "keepUploaded" },
+                onDone: { target: "added", actions: "keepUploaded" },
                 onError: { target: "ready", actions: "keepError" },
+              },
+            },
+            added: {
+              on: {
+                PHOTO: { guard: "canTakeAnotherPhoto", target: "uploading" },
+                DONE: "#waterChange.running.tips",
               },
             },
           },
@@ -284,6 +303,7 @@ export const waterChangeMachine = setup({
           initial: "ready",
           states: {
             ready: {
+              always: { guard: { type: "hasPhotoSince", params: { step: "heater_filter_on" as const } }, target: "added" },
               on: {
                 PHOTO: "uploading",
                 SKIP: { target: "#waterChange.running.amount", actions: ["clearError", { type: "mark", params: { step: "refilled_photo", state: "skipped" } }] },
@@ -293,11 +313,17 @@ export const waterChangeMachine = setup({
               invoke: {
                 src: "upload",
                 input: ({ context, event }) => ({
-                  effects: context.effects, id: Number(context.session!.id), slot: "refilled" as const,
+                  effects: context.effects, id: Number(context.session!.id),
                   file: (event as Extract<Events, { type: "PHOTO" }>).file, capturedInApp: (event as Extract<Events, { type: "PHOTO" }>).capturedInApp ?? true,
                 }),
-                onDone: { target: "#waterChange.running.amount", actions: "keepUploaded" },
+                onDone: { target: "added", actions: "keepUploaded" },
                 onError: { target: "ready", actions: "keepError" },
+              },
+            },
+            added: {
+              on: {
+                PHOTO: { guard: "canTakeAnotherPhoto", target: "uploading" },
+                DONE: "#waterChange.running.amount",
               },
             },
           },

@@ -804,6 +804,13 @@
       "uploadError": "The photo could not be added. Please try again.",
       "skip": "Continue without a photo"
     },
+    "photos": {
+      "added": "Photo added ({{count}} of {{max}})",
+      "another": "Take another photo",
+      "continue": "Continue",
+      "back": "Back",
+      "limit": "That is the maximum of {{max}} photos."
+    },
     "amount": {
       "invalid": "Enter a positive number, up to 100 for percent.",
       "tankVolume": "Your tank holds {{volume}}.",
@@ -822,8 +829,7 @@
       "title": "Water change done",
       "duration": "Duration: {{time}}",
       "amount": "Amount: {{amount}}",
-      "drained": "Drained",
-      "refilled": "Refilled",
+      "photo": "Photo {{number}}",
       "private": "Your photos stay private.",
       "close": "Back to your tank"
     },
@@ -835,7 +841,9 @@
     "missing": {
       "draining_missing": "The draining step was skipped.",
       "duration_too_short": "Draining and refilling took less than {{minutes}} minutes.",
-      "photo_missing": "No photo was taken with the camera of the app. With a photo, a water change counts for your streak."
+      "photo_missing": "No photo was taken with the camera of the app. With a photo, a water change counts for your streak.",
+      "photo_outside_session": "The photos were not taken during the water change. With a photo from the app camera taken during it, a water change counts for your streak.",
+      "photo_reused": "This picture already served for an earlier water change. With a new photo, this water change counts for your streak."
     },
     "entry": {
       "line": "Guided, {{time}}, {{evidence}}"

@@ -15,7 +15,7 @@ export function useWaterChange(tankId: number) {
     const effects: WaterChangeEffects = {
       start: () => apiClient.waterChange.start(tankId),
       markStep: (id, step, state) => apiClient.waterChange.markStep(tankId, id, step, state),
-      setPhoto: (id, slot, file, capturedInApp) => apiClient.waterChange.setPhoto(tankId, id, slot, file, capturedInApp),
+      addPhoto: (id, file, capturedInApp) => apiClient.waterChange.addPhoto(tankId, id, file, capturedInApp),
       finish: (id, amount) => apiClient.waterChange.finish(tankId, id, amount),
       cancel: id => apiClient.waterChange.cancel(tankId, id),
       storage: {

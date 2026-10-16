@@ -817,6 +817,13 @@
       "uploadError": "Não foi possível adicionar a foto. Tente novamente.",
       "skip": "Continuar sem foto"
     },
+    "photos": {
+      "added": "Foto adicionada ({{count}} de {{max}})",
+      "another": "Tirar outra foto",
+      "continue": "Continuar",
+      "back": "Voltar",
+      "limit": "Esse é o máximo de {{max}} fotos."
+    },
     "amount": {
       "invalid": "Informe um número positivo, até 100 para porcentagem.",
       "tankVolume": "Seu aquário comporta {{volume}}.",
@@ -835,8 +842,7 @@
       "title": "Troca de água concluída",
       "duration": "Duração: {{time}}",
       "amount": "Quantidade: {{amount}}",
-      "drained": "Esvaziado",
-      "refilled": "Cheio",
+      "photo": "Foto {{number}}",
       "private": "Suas fotos ficam privadas.",
       "close": "Voltar ao seu aquário"
     },
@@ -848,7 +854,9 @@
     "missing": {
       "draining_missing": "O passo de esvaziamento foi pulado.",
       "duration_too_short": "Esvaziar e encher levou menos de {{minutes}} minutos.",
-      "photo_missing": "Nenhuma foto foi tirada com a câmera do app. Com uma foto, uma troca de água conta para a sua sequência."
+      "photo_missing": "Nenhuma foto foi tirada com a câmera do app. Com uma foto, uma troca de água conta para a sua sequência.",
+      "photo_outside_session": "As fotos não foram tiradas durante a troca de água. Com uma foto da câmera do app tirada durante ela, uma troca de água conta para a sua sequência.",
+      "photo_reused": "Esta imagem já serviu em uma troca de água anterior. Com uma foto nova, esta troca de água conta para a sua sequência."
     },
     "entry": {
       "line": "Guiada, {{time}}, {{evidence}}"

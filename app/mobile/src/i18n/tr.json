@@ -804,6 +804,13 @@
       "uploadError": "Fotoğraf eklenemedi. Lütfen tekrar deneyin.",
       "skip": "Fotoğrafsız devam et"
     },
+    "photos": {
+      "added": "Fotoğraf eklendi ({{count}} / {{max}})",
+      "another": "Başka bir fotoğraf çek",
+      "continue": "Devam",
+      "back": "Geri",
+      "limit": "En fazla {{max}} fotoğraf eklenebilir."
+    },
     "amount": {
       "invalid": "Pozitif bir sayı girin; yüzde için en çok 100.",
       "tankVolume": "Akvaryumunuz {{volume}} alıyor.",
@@ -822,8 +829,7 @@
       "title": "Su değişimi tamamlandı",
       "duration": "Süre: {{time}}",
       "amount": "Miktar: {{amount}}",
-      "drained": "Boşaltılmış",
-      "refilled": "Doldurulmuş",
+      "photo": "Fotoğraf {{number}}",
       "private": "Fotoğraflarınız gizli kalır.",
       "close": "Akvaryumunuza dön"
     },
@@ -835,7 +841,9 @@
     "missing": {
       "draining_missing": "Boşaltma adımı atlandı.",
       "duration_too_short": "Boşaltma ve doldurma {{minutes}} dakikadan kısa sürdü.",
-      "photo_missing": "Uygulamanın kamerasıyla fotoğraf çekilmedi. Fotoğrafla bir su değişimi serinize sayılır."
+      "photo_missing": "Uygulamanın kamerasıyla fotoğraf çekilmedi. Fotoğrafla bir su değişimi serinize sayılır.",
+      "photo_outside_session": "Fotoğraflar su değişimi sırasında çekilmedi. Su değişimi sırasında uygulamanın kamerasıyla çekilen bir fotoğrafla su değişimi serinize sayılır.",
+      "photo_reused": "Bu görüntü daha önceki bir su değişiminde zaten kullanıldı. Yeni bir fotoğrafla bu su değişimi serinize sayılır."
     },
     "entry": {
       "line": "Rehberli, {{time}}, {{evidence}}"

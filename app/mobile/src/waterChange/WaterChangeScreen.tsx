@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import {
-  WATER_CHANGE_STAGES, drainingSeconds, formatElapsed, totalSeconds, type TankDetail, type WaterChangeStage, type WaterChangeStep,
+  WATER_CHANGE_MAX_PHOTOS, WATER_CHANGE_STAGES, drainingSeconds, formatElapsed, totalSeconds, type TankDetail, type WaterChangeStage, type WaterChangeStep,
 } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
 import { useAuth } from "../auth/AuthProvider";
@@ -43,11 +43,14 @@ function Wizard({ tankId }: { tankId: number }) {
   const stage = stageOfValue(state.value);
   const [tank, setTank] = useState<TankDetail | null>(null);
   const [confirmCancel, setConfirmCancel] = useState(false);
+  const [another, setAnother] = useState(false);
   useEffect(() => {
     let cancelled = false;
     void apiClient.tanks.get(tankId).then(value => { if (!cancelled) setTank(value); }).catch(() => {});
     return () => { cancelled = true; };
   }, [tankId]);
+  const photoCount = context.session?.photos.length ?? 0;
+  useEffect(() => { setAnother(false); }, [photoCount, stage]);
   const leaveTo = `/tanks/${tankId}?view=care`;
   const done = state.status === "done";
   const finished = done ? state.output.finished : null;
@@ -78,6 +81,10 @@ function Wizard({ tankId }: { tankId: number }) {
     <Text style={[theme.type.meta, muted]}>{label}</Text>
     <Text style={[styles.timer, text]}>{formatElapsed(seconds)}</Text>
   </View>;
+  const photoStage = stage === "drainedPhoto" || stage === "refilledPhoto";
+  const added = photoStage && state.matches({ running: { [stage]: "added" } });
+  const previous = context.session?.previousPhotos ?? [];
+  const previousPhoto = previous.length > 0 ? previous[Math.min(photoCount, previous.length - 1)] : null;
   const stageText = (key: string) => t(`waterChange.stage.${stage}.${key}`);
   const step = (primary: string, skip: string = "waterChange.skip") => <View style={{ gap: theme.space[3] }}>
     <Button testID="water-change-done" label={primary} onPress={() => actor.send({ type: "DONE" })} />
@@ -98,11 +105,21 @@ function Wizard({ tankId }: { tankId: number }) {
 
       {stage === "heaterFilterOff" || stage === "draining" || stage === "refill" || stage === "heaterFilterOn" ? step(stageText("done")) : null}
 
-      {stage === "drainedPhoto" || stage === "refilledPhoto" ? <WaterChangeCamera
-        overlay={stage === "drainedPhoto" && context.session?.previousDrainedPhoto
-          ? apiClient.care.photoUrl(context.session.previousDrainedPhoto.large ?? context.session.previousDrainedPhoto.medium ?? context.session.previousDrainedPhoto.thumb ?? "") : null}
+      {photoStage && added && !another ? <View style={{ gap: theme.space[3] }}>
+        <Text testID="water-change-photos-count" accessibilityRole="header" style={[theme.type.h2, text]}>
+          {t("waterChange.photos.added", { count: photoCount, max: WATER_CHANGE_MAX_PHOTOS })}</Text>
+        <Button testID="water-change-done" label={t("waterChange.photos.continue")} onPress={() => actor.send({ type: "DONE" })} />
+        {photoCount < WATER_CHANGE_MAX_PHOTOS
+          ? <Button testID="water-change-another" variant="secondary" label={t("waterChange.photos.another")} onPress={() => setAnother(true)} />
+          : <Text style={[theme.type.body, muted]}>{t("waterChange.photos.limit", { max: WATER_CHANGE_MAX_PHOTOS })}</Text>}
+      </View> : null}
+
+      {photoStage && (!added || another) ? <WaterChangeCamera
+        overlay={previousPhoto ? apiClient.care.photoUrl(previousPhoto.large ?? previousPhoto.medium ?? previousPhoto.thumb ?? "") : null}
         uploading={state.matches({ running: { [stage]: "uploading" } })} error={errorText}
-        onUse={file => actor.send({ type: "PHOTO", file, capturedInApp: true })} onSkip={() => actor.send({ type: "SKIP" })} /> : null}
+        skipLabel={t(added ? "waterChange.photos.back" : "waterChange.camera.skip")}
+        onUse={file => actor.send({ type: "PHOTO", file, capturedInApp: true })}
+        onSkip={() => (added ? setAnother(false) : actor.send({ type: "SKIP" }))} /> : null}
 
       {stage === "tips" ? <View style={{ gap: theme.space[3] }}>
         {(["conditioner", "temperature_matched"] as const satisfies readonly WaterChangeStep[]).map(tip => {

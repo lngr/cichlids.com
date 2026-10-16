@@ -817,6 +817,13 @@
       "uploadError": "La photo n'a pas pu être ajoutée. Veuillez réessayer.",
       "skip": "Continuer sans photo"
     },
+    "photos": {
+      "added": "Photo ajoutée ({{count}} sur {{max}})",
+      "another": "Prendre une autre photo",
+      "continue": "Continuer",
+      "back": "Retour",
+      "limit": "C'est le maximum de {{max}} photos."
+    },
     "amount": {
       "invalid": "Saisissez un nombre positif, jusqu'à 100 pour un pourcentage.",
       "tankVolume": "Votre aquarium contient {{volume}}.",
@@ -835,8 +842,7 @@
       "title": "Changement d'eau terminé",
       "duration": "Durée : {{time}}",
       "amount": "Quantité : {{amount}}",
-      "drained": "Vidé",
-      "refilled": "Rempli",
+      "photo": "Photo {{number}}",
       "private": "Vos photos restent privées.",
       "close": "Retour à votre aquarium"
     },
@@ -848,7 +854,9 @@
     "missing": {
       "draining_missing": "L'étape de vidange a été passée.",
       "duration_too_short": "La vidange et le remplissage ont duré moins de {{minutes}} minutes.",
-      "photo_missing": "Aucune photo n'a été prise avec l'appareil photo de l'app. Avec une photo, un changement d'eau compte pour votre série."
+      "photo_missing": "Aucune photo n'a été prise avec l'appareil photo de l'app. Avec une photo, un changement d'eau compte pour votre série.",
+      "photo_outside_session": "Les photos n'ont pas été prises pendant le changement d'eau. Avec une photo de l'appareil photo de l'app prise pendant celui-ci, un changement d'eau compte pour votre série.",
+      "photo_reused": "Cette image a déjà servi pour un changement d'eau précédent. Avec une nouvelle photo, ce changement d'eau compte pour votre série."
     },
     "entry": {
       "line": "Guidé, {{time}}, {{evidence}}"

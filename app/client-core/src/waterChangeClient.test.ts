@@ -20,8 +20,9 @@ it("calls the water change endpoints with auth and treats no open session as nul
   expect(requests[2].method).toBe("PUT");
   expect(requests[2].url).toBe("http://wc.test/api/tanks/42/water-changes/5/steps/draining_started");
   expect(await requests[2].json()).toEqual({ state: "done" });
-  await client.waterChange.setPhoto(42, 5, "drained", new Blob(["x"], { type: "image/jpeg" }), true);
-  expect(requests[3].url).toBe("http://wc.test/api/tanks/42/water-changes/5/photos/drained");
+  await client.waterChange.addPhoto(42, 5, new Blob(["x"], { type: "image/jpeg" }), true);
+  expect(requests[3].method).toBe("POST");
+  expect(requests[3].url).toBe("http://wc.test/api/tanks/42/water-changes/5/photos");
   const form = await requests[3].formData();
   expect(form.get("capturedInApp")).toBe("true");
   expect(form.get("file")).toBeInstanceOf(Blob);
