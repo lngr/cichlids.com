@@ -4,8 +4,9 @@
 // fake camera device) and finishes. The water change entry then exists with its duration and both
 // photos, and its evidence is verified. A second water change is started from the due care on
 // Today, survives a reload and ends with calm "not verified" wording when steps were skipped; a
-// third one is verified without any photo. The write stack counts a water change as verified from
-// E2E_WATER_CHANGE_MIN_SECONDS seconds between the start of draining and the refill step.
+// third one has a long enough draining time but no photo, so it is partial with the missing photo.
+// The write stack counts the draining time as long enough from E2E_WATER_CHANGE_MIN_SECONDS seconds
+// between the start of draining and the refill step.
 //
 // Runs on the isolated write stack only (see e2e/write-stack.sh), since it writes to the database and
 // the bucket.
@@ -152,13 +153,14 @@ try {
   await finishWithAmount(darkPage, 10);
   await darkPage.getByText("Logged. This one is not counted as verified.", { exact: true }).waitFor();
   await darkPage.getByText("The draining step was skipped.", { exact: true }).waitFor();
+  await darkPage.getByText("No photo was taken with the camera of the app. With a photo, a water change counts for your streak.", { exact: true }).waitFor();
   await darkPage.screenshot({ path: "/tmp/task-5.13-partial-dark.png" });
   const second = (await entriesOf(todayTank)).items.find(item => item.waterChangeSessionId !== null);
   assert.equal(second.evidence.state, "partial");
-  assert.deepEqual(second.evidence.missing, ["draining_missing"]);
+  assert.deepEqual(second.evidence.missing, ["draining_missing", "photo_missing"]);
   assert.equal(second.photos.length, 0);
 
-  // Verified without any photo.
+  // Long enough but without any photo: partial with the missing photo.
   await darkPage.goto(`${WEB_URL}/tanks/${tank.id}/water-change`, { waitUntil: "networkidle" });
   await progress(darkPage, 1);
   await byTestId(darkPage, "water-change-done").click();
@@ -180,9 +182,11 @@ try {
   await progress(darkPage, 8);
   await byTestId(darkPage, "water-change-finish").click();
   await byTestId(darkPage, "water-change-summary").waitFor({ timeout: 30000 });
-  await darkPage.getByText("Counted as a verified water change.", { exact: true }).waitFor();
+  await darkPage.getByText("Logged. This one is not counted as verified.", { exact: true }).waitFor();
+  await darkPage.getByText("No photo was taken with the camera of the app. With a photo, a water change counts for your streak.", { exact: true }).waitFor();
   const third = (await entriesOf(tank)).items.find(item => item.id !== entry.id);
-  assert.equal(third.evidence.state, "verified");
+  assert.equal(third.evidence.state, "partial");
+  assert.deepEqual(third.evidence.missing, ["photo_missing"]);
   assert.equal(third.photos.length, 0);
 
   // Stopping a water change discards it.
@@ -198,7 +202,7 @@ try {
   await page.goto(`${WEB_URL}/me?lang=en`, { waitUntil: "networkidle" });
   await signOutThroughKeycloak(page).catch(() => {});
   assert.deepEqual(errors, []);
-  console.log("TASK-5.13: guided steps, timers, app camera photos, private evidence photos, verified entry with duration, resume after reload, skipped steps without blocking, verified without photos and cancel passed.");
+  console.log("TASK-5.13: guided steps, timers, app camera photos, private evidence photos, verified entry with duration, resume after reload, skipped steps without blocking, partial evidence with the missing photo and cancel passed.");
 } finally {
   await dark?.close();
   await light?.close();

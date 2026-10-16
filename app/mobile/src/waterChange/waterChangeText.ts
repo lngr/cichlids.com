@@ -12,5 +12,5 @@ export const evidenceKey = (state: "none" | "partial" | "verified") => `waterCha
 
 /** The translation key of a finding that keeps a water change from being verified; null for an unknown code. */
 export function missingKey(code: string): string | null {
-  return code === "draining_missing" || code === "duration_too_short" ? `waterChange.missing.${code}` : null;
+  return code === "draining_missing" || code === "duration_too_short" || code === "photo_missing" ? `waterChange.missing.${code}` : null;
 }

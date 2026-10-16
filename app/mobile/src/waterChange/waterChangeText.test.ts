@@ -13,6 +13,7 @@ it("maps evidence states and findings to translation keys", () => {
   expect(evidenceKey("verified")).toBe("waterChange.evidence.verified");
   expect(missingKey("draining_missing")).toBe("waterChange.missing.draining_missing");
   expect(missingKey("duration_too_short")).toBe("waterChange.missing.duration_too_short");
+  expect(missingKey("photo_missing")).toBe("waterChange.missing.photo_missing");
   expect(missingKey("something_new")).toBeNull();
 });
 
