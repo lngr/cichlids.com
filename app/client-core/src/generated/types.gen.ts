@@ -486,6 +486,17 @@ export type RefineRegionRequest = {
     region: TankRegion;
 };
 
+export type ReminderSnoozeDto = {
+    untilDate: string;
+};
+
+export type SnoozeReminderRequest = {
+    tankId: number | string;
+    kind: null | string;
+    dueDate: null | string;
+    timeZone: null | string;
+};
+
 export type SpeciesBreeding = 'unspecified' | 'mouthbreeder' | 'cave_breeder' | 'substrate_breeder';
 
 export type SpeciesDetailDto = {
@@ -527,6 +538,12 @@ export type SpeciesListItemDto = {
     name: string;
     displayName: string;
     category: null | string;
+};
+
+export type SubscribeWebPushRequest = {
+    endpoint: null | string;
+    keys: null | WebPushKeysRequest;
+    timeZone: null | string;
 };
 
 export type TankCategory = 'tanganyika' | 'malawi' | 'american' | 'african' | 'community' | 'central_american' | 'south_american';
@@ -645,6 +662,10 @@ export type TodoListItemDto = {
     createdAt: string;
 };
 
+export type UnsubscribeWebPushRequest = {
+    endpoint: null | string;
+};
+
 export type UpdateCarePlanRequest = {
     remindersEnabled?: null | boolean;
 };
@@ -693,6 +714,22 @@ export type WebhookDto = {
     url: string;
     eventTypes: Array<string>;
     active: boolean;
+    createdAt: string;
+};
+
+export type WebPushConfigDto = {
+    available: boolean;
+    publicKey: null | string;
+};
+
+export type WebPushKeysRequest = {
+    p256dh: null | string;
+    auth: null | string;
+};
+
+export type WebPushSubscriptionDto = {
+    id: number | string;
+    timeZone: string;
     createdAt: string;
 };
 
@@ -859,6 +896,43 @@ export type ListDueCareResponses = {
 };
 
 export type ListDueCareResponse = ListDueCareResponses[keyof ListDueCareResponses];
+
+export type SnoozeCareReminderData = {
+    body: SnoozeReminderRequest;
+    path?: never;
+    query?: never;
+    url: '/api/me/care/reminders/snooze';
+};
+
+export type SnoozeCareReminderErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type SnoozeCareReminderError = SnoozeCareReminderErrors[keyof SnoozeCareReminderErrors];
+
+export type SnoozeCareReminderResponses = {
+    /**
+     * OK
+     */
+    200: ReminderSnoozeDto;
+};
+
+export type SnoozeCareReminderResponse = SnoozeCareReminderResponses[keyof SnoozeCareReminderResponses];
 
 export type GetDiscoverData = {
     body?: never;
@@ -2143,6 +2217,113 @@ export type UpdateTodoResponses = {
 };
 
 export type UpdateTodoResponse = UpdateTodoResponses[keyof UpdateTodoResponses];
+
+export type GetWebPushConfigData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/me/web-push';
+};
+
+export type GetWebPushConfigErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type GetWebPushConfigError = GetWebPushConfigErrors[keyof GetWebPushConfigErrors];
+
+export type GetWebPushConfigResponses = {
+    /**
+     * OK
+     */
+    200: WebPushConfigDto;
+};
+
+export type GetWebPushConfigResponse = GetWebPushConfigResponses[keyof GetWebPushConfigResponses];
+
+export type UnsubscribeWebPushData = {
+    body: UnsubscribeWebPushRequest;
+    path?: never;
+    query?: never;
+    url: '/api/me/web-push/subscriptions';
+};
+
+export type UnsubscribeWebPushErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type UnsubscribeWebPushError = UnsubscribeWebPushErrors[keyof UnsubscribeWebPushErrors];
+
+export type UnsubscribeWebPushResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type UnsubscribeWebPushResponse = UnsubscribeWebPushResponses[keyof UnsubscribeWebPushResponses];
+
+export type SubscribeWebPushData = {
+    body: SubscribeWebPushRequest;
+    path?: never;
+    query?: never;
+    url: '/api/me/web-push/subscriptions';
+};
+
+export type SubscribeWebPushErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type SubscribeWebPushError = SubscribeWebPushErrors[keyof SubscribeWebPushErrors];
+
+export type SubscribeWebPushResponses = {
+    /**
+     * OK
+     */
+    200: WebPushSubscriptionDto;
+    /**
+     * Created
+     */
+    201: WebPushSubscriptionDto;
+};
+
+export type SubscribeWebPushResponse = SubscribeWebPushResponses[keyof SubscribeWebPushResponses];
 
 export type GetProfileData = {
     body?: never;
