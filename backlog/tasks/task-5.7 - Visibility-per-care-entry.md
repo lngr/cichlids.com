@@ -4,7 +4,7 @@ title: Visibility per care entry
 status: To Do
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 05:06'
+updated_date: '2026-10-16 05:26'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -48,4 +48,6 @@ Each care entry has a visibility; private entries never leave the owner, public 
 - There is no default: creating a tank (also in the onboarding) asks first whether the tank should be public, with an explanation that others can see it and follow it, and two equal buttons without preselection. Yes makes the profile and the stream public and is stored with its time as consent; no makes the tank private. The finer levels are set afterwards in the prominently reachable tank settings.
 - The owner always sees everything of their own tanks.
 - Open details, asked one by one: legacy tanks of returning members (the archive was public), tanks created before this question existed, hiding single entries of a public stream, following without an account.
+
+- Legacy tanks (decided by the project owner, 2026-10-16): archive tanks stay public by default, including following; the legacy site only knew public tanks and had no care stream.
 <!-- SECTION:NOTES:END -->
