@@ -20,6 +20,7 @@ import { measurementLines } from "./measurementFormat";
 import { useUnits } from "../units/useUnits";
 import { useLocalSearchParams } from "expo-router";
 import { TankRegionSlot } from "./TankRegionSlot";
+import { CareHeatmapView } from "../careHeatmap/CareHeatmapView";
 import { TankStreaksCard } from "../streaks/TankStreaksCard";
 import { TankVisibilitySettings } from "./TankVisibilitySettings";
 import { VideoCard } from "../video/VideoCard";
@@ -127,6 +128,7 @@ export function TankExperience({ tank, series, children, onVisibilityChanged }: 
         </View>
       </View>
       {care ? <>
+        <CareHeatmapView tankId={Number(tank.id)} framed />
         <View testID="tank-care-stream" style={[styles.card, card]}>
           <CareStreamView stream={stream} />
         </View>

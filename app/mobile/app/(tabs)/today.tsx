@@ -13,6 +13,7 @@ import { translateApiError } from "../../src/lib/apiErrors";
 import { useMachineRouter } from "../../src/navigation/NavigationProvider";
 import { minTouchTarget, useTheme } from "../../src/theme";
 import { DueCareSection } from "../../src/today/DueCareSection";
+import { CareHeatmapView } from "../../src/careHeatmap/CareHeatmapView";
 import { TodayStreaks } from "../../src/streaks/TodayStreaks";
 import { OpenTodosLink } from "../../src/today/OpenTodosLink";
 import { localCalendarDate } from "../../src/today/localDate";
@@ -75,6 +76,7 @@ function MemberToday() {
         {today.memberSinceYear != null ? <Text style={[theme.type.body, { color: theme.colors.muted }]}>{t("today.memberSince", { year: today.memberSinceYear })}</Text> : null}
       </View>
       <TodayStreaks />
+      {today.tanks.length ? <CareHeatmapView /> : null}
       <DueCareSection />
       <OpenTodosLink />
       {today.tanks.length ? <View testID="today-tanks" style={{ gap: theme.space[3] }}>
