@@ -75,3 +75,31 @@ it("maps a list entry without sizes", () => {
   expect(toLibraryItem({ ...item, width: null, height: null, id: "9", placeCount: "0", placeKinds: [] } as never))
     .toMatchObject({ id: 9, width: null, height: null, placeCount: 0 });
 });
+
+it("chooses a library photo as avatar and as header and answers with the profile", async () => {
+  const requests: Request[] = [];
+  const client = clientWith(() => Response.json({ id: 1, avatarUrl: "http://cdn.test/a.jpg", profileImageUrl: null }), requests);
+  const avatar = await client.me.setProfileImage("avatar", 7);
+  await client.me.setProfileImage("header", 8);
+  expect(requests[0]!.method).toBe("PUT");
+  expect(requests[0]!.url).toBe("http://library.test/api/me/avatar");
+  expect(await requests[0]!.clone().json()).toEqual({ mediaItemId: 7 });
+  expect(requests[1]!.url).toBe("http://library.test/api/me/header");
+  expect(avatar.avatarUrl).toBe("http://cdn.test/a.jpg");
+});
+
+it("uploads a fresh photo as header and removes the avatar", async () => {
+  const requests: Request[] = [];
+  const client = clientWith(() => Response.json({ id: 1, avatarUrl: null, profileImageUrl: null }), requests);
+  await client.me.uploadProfileImage("header", new Blob(["x"], { type: "image/jpeg" }));
+  await client.me.removeProfileImage("avatar");
+  expect(requests[0]!.method).toBe("POST");
+  expect(requests[0]!.url).toBe("http://library.test/api/me/header/photo");
+  expect(requests[1]!.method).toBe("DELETE");
+  expect(requests[1]!.url).toBe("http://library.test/api/me/avatar");
+});
+
+it("keeps the problem code of a refused avatar", async () => {
+  const client = clientWith(() => Response.json({ title: "File unavailable", code: "media_not_found" }, { status: 404 }));
+  await expect(client.me.setProfileImage("avatar", 9)).rejects.toMatchObject({ status: 404, code: "media_not_found" });
+});

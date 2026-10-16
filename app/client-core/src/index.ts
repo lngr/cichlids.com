@@ -73,6 +73,7 @@ export type {
   WaterValues,
   Inhabitant,
   ProfileDetail,
+  ProfileImageRole,
   SpeciesListItem,
   SpeciesDetail,
   CommunityCategory,

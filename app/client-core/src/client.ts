@@ -47,7 +47,7 @@ import {
   listMyLegacyTanks,
   setMyInterests,
   getMySettings,
-  updateMySettings,
+  updateMySettings, setMyAvatar, setMyHeader, uploadMyAvatar, uploadMyHeader, removeMyAvatar, removeMyHeader,
   refineTankRegion,
   discardStory,
   getCarePlan,
@@ -237,6 +237,8 @@ export type Dimensions = DimensionsDto;
 export type WaterValues = WaterValuesDto;
 export type Inhabitant = InhabitantDto;
 export type ProfileDetail = ProfileDetailDto;
+/** The two images of a profile: the round avatar and the wide header. */
+export type ProfileImageRole = "avatar" | "header";
 export type SpeciesListItem = SpeciesListItemDto;
 export type SpeciesDetail = SpeciesDetailDto;
 export type CommunityCategory = CommunityCategoryDto;
@@ -533,6 +535,12 @@ export interface CichlidsClient {
     settings(): Promise<MeSettings>;
     /** Turns the streaks of the member on or off. */
     setStreaksEnabled(streaksEnabled: boolean): Promise<MeSettings>;
+    /** Chooses a photo of the media library as avatar or header of the profile; resolves with the profile. */
+    setProfileImage(role: ProfileImageRole, mediaItemId: number): Promise<ProfileDetail>;
+    /** Stores a fresh photo in the media library and chooses it as avatar or header of the profile. */
+    uploadProfileImage(role: ProfileImageRole, file: UploadFile): Promise<ProfileDetail>;
+    /** Removes the avatar or the header from the profile; the file stays in the media library. */
+    removeProfileImage(role: ProfileImageRole): Promise<ProfileDetail>;
     /** The streaks of every tank of the member with the vacations of the member. */
     streaks(local: LocalTime): Promise<MeStreaks>;
     /** The vacations of the member, the newest first. */
@@ -890,6 +898,26 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async setStreaksEnabled(streaksEnabled) {
         return unwrap(await updateMySettings({ client, body: { streaksEnabled } }));
+      },
+      async setProfileImage(role, mediaItemId) {
+        const call = role === "avatar" ? setMyAvatar : setMyHeader;
+        return unwrap(await call({ client, body: { mediaItemId } }));
+      },
+      async uploadProfileImage(role, file) {
+        const call = role === "avatar" ? uploadMyAvatar : uploadMyHeader;
+        const result = await call({
+          client,
+          body: { file: file as never },
+          bodySerializer: () => {
+            const formData = new FormData();
+            formData.append("file", file as never);
+            return formData;
+          },
+        });
+        return unwrap(result);
+      },
+      async removeProfileImage(role) {
+        return unwrap(await (role === "avatar" ? removeMyAvatar : removeMyHeader)({ client }));
       },
       async streaks(local) {
         return toMeStreaks(unwrap(await getMyStreaks({ client, query: local })));
