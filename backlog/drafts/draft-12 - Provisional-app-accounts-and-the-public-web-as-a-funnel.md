@@ -4,7 +4,7 @@ title: Provisional app accounts and the public web as a funnel
 status: Draft
 assignee: []
 created_date: '2026-10-16 05:30'
-updated_date: '2026-10-16 05:57'
+updated_date: '2026-10-16 16:32'
 labels: []
 dependencies: []
 ---
@@ -39,4 +39,6 @@ dependencies: []
 - Provisional accounts may create their own tanks and log care, private until the member registers; registering keeps everything.
 
 - Device authentication (decided by the project owner, 2026-10-16): the device creates a key pair and keeps the private key in the secure store (Keychain or Keystore); the API knows the public key and issues short-lived tokens to the provisional profile after a signed request; registering links the Keycloak account to that profile. Needs an ADR before implementation.
+
+- ADR-0030 (Proposed) describes the device accounts for discussion with the project owner before any build.
 <!-- SECTION:NOTES:END -->
