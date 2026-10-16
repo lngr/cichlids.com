@@ -67,6 +67,20 @@ public sealed class CarePlanEndpointsTests(ApiFixture fixture) : IAsyncLifetime
     }
 
     [Fact]
+    public async Task GivenALoggedWaterChange_WhenItsTimeIsCorrectedToEarlier_ThenTheDueStateFollowsTheCorrectedTime()
+    {
+        var (token, tank) = await OwnTankAsync();
+        using var logged = await SendAsync(HttpMethod.Post, $"/api/tanks/{tank}/care", token, new { kind = "water_change", occurredAt = Noon.AddDays(-1) });
+        var id = (await BodyAsync(logged)).GetProperty("id").GetInt64();
+        Assert.Equal("due_in", (await PlanAsync(token, tank))["water_change"].GetProperty("due").GetProperty("state").GetString());
+        using var corrected = await SendAsync(HttpMethod.Patch, $"/api/tanks/{tank}/care/{id}", token, new { occurredAt = Noon.AddDays(-10) });
+        Assert.Equal(HttpStatusCode.OK, corrected.StatusCode);
+        var due = (await PlanAsync(token, tank))["water_change"].GetProperty("due");
+        Assert.Equal("overdue", due.GetProperty("state").GetString());
+        Assert.Equal(3, due.GetProperty("days").GetInt32());
+    }
+
+    [Fact]
     public async Task GivenTheMembersUtcOffset_WhenReadingThePlan_ThenTheLastEntryCountsOnTheLocalDay()
     {
         var (token, tank) = await OwnTankAsync();
