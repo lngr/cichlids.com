@@ -1,6 +1,6 @@
 # Golden snapshots
 
-The operator creates a versioned, anonymized application database and a shared
+The operator creates a versioned, pseudonymized application database and a shared
 subset of public photo variants. Agents and CI use generated fixtures exclusively.
 Keycloak databases and production backup credentials are outside this tool.
 
@@ -11,29 +11,58 @@ The same image supplies matching PostgreSQL 18 clients for creation and restores
 
 ## Masking contract
 
+The result is pseudonymized. Row IDs, legacy IDs, post IDs and creation times stay
+stable, and public production routes address these IDs, so a snapshot row can be
+matched to a public profile, tank or post. Free text, names, contact data and the
+private scopes listed below are removed or replaced. Handle snapshot access as access
+to pseudonymized personal data. IDs are not renumbered.
+
 | Data | Transformation |
 | --- | --- |
 | Profile username and display name | `member-<n>`, with a 96-bit HMAC-SHA256 integer per profile ID and runtime key. Independent of row order and membership of the source population. Collisions abort. |
 | City, external avatar URL, last login, suspension | NULL. Country, profile kind, IDs and creation time are preserved. |
-| Profile avatar and profile image references | NULL to exclude profile pictures. |
+| Media links with context `profile` (roles `avatar`, `header`) | Removed to exclude profile pictures. |
 | `profile_identity`, `web_session` | Empty, including subjects and encrypted tokens. Test logins are provisioned separately. |
 | Comment and discussion guest names | `guest-<n>`, HMAC per table row ID. |
-| All comment bodies and delete reasons, discussion bodies and thread titles, post titles/descriptions/delete reasons, collection titles | Generated text with exactly the original character count; NULL and empty strings preserved. HMAC of table, column and row ID chooses words. |
+| All comment bodies and delete reasons, discussion bodies and thread titles, post titles/descriptions/delete reasons, collection titles, care entry notes, media link captions | Generated text with exactly the original character count; NULL and empty strings preserved. HMAC of table, column and row ID chooses words. |
 | Tank title, description, gravel, plants, decoration, light, light duration, filtration, technic, all water text fields, food, notes, delete reason | Same generated text rule, including water values stored as strings. |
 | `slug_alias.value` | `post-<post-id>-alias-<alias-id>`, retaining aliases and canonical flags. |
 | `archive.legacy_comment`, `outbox_event`, `webhook_subscription` | Empty. |
+| `web_push_subscription`, `web_push_reminder_sent`, `video_upload`, `video_job` | Empty. Endpoints, keys, upload names, storage keys and job state are removed. Videos are excluded from the media subset. |
 | Species, species names and reference links | Preserved. |
-| Ratings, votes, follows, inhabitants, collections and post/species relationships | Preserved, including IDs, numeric values, ordering and timestamps. |
-| Media | One photo per selected public post, up to 2,000 posts by deterministic HMAC sampling, or explicit post IDs. Only generated `thumb`, `small`, `medium`, `large` JPEG variants qualify. Originals, videos, public-copy fallbacks and forum attachments are excluded. |
+| Ratings, follows, inhabitants, collections and post/species relationships | Preserved, including IDs, numeric values, ordering and timestamps, except the private scopes below. |
+| Care entries (kind, times, amounts, evidence state and finding codes), measurement values, plan rules and rule history, water change sessions and steps, streak freezes, visibility consents, profile streak setting | Preserved for tanks with a public care stream, including IDs, values, kinds and times. Only notes are replaced. |
+| Private scopes | Removed: `vacation`, `care_reminder_snooze`, `care_todo` and `comment_vote` (empty); care entries marked only-me, with their measurement values, streak freezes, links and the water change session behind them; care entries, plan rules and rule history, water change sessions with steps and links, streak freezes, decommissionings and visibility consents of tanks whose stream visibility is not public; inhabitants and tank media links of tanks whose profile visibility is not public; collection entries of non-public collections. |
+| Media capture metadata | Capture time, capture offset and capture check time are NULL, the receive time equals the creation time and the in-app flag is false, so photo series cannot be correlated with a member. |
+| Tank decommissionings | Preserved when the start photo and the end photo, if any, remain in the media subset. A decommissioning with a photo outside the subset is removed, because its photo references cannot be emptied. |
+| Media | One photo per selected public post (the first media link of role `item` by position), up to 2,000 posts by deterministic HMAC sampling, or explicit post IDs. Only generated `thumb`, `small`, `medium`, `large` JPEG variants qualify. Originals, videos, public-copy fallbacks and forum attachments are excluded. |
 | Original file names, media keys and checksums | File name `media-<id>.jpg`, variant key `golden/<version>/media/variants/<label>/media-<id>.jpg`. The media item's key resolves to its thumb; the original checksum is NULL. Variant objects receive only content type and a generated checksum metadata field. |
-| Media relationships | Links to excluded media are removed; excluded tank main-media references are NULL. Posts, comments and their interaction counts are preserved even when their photos are outside the subset. |
+| Media relationships | Media links to excluded media are removed, whatever their context (tank, inhabitant, care entry, water change session including evidence photos, post, discussion post). Links of retained media in other contexts are preserved with a generated caption. Posts, comments and their interaction counts are preserved even when their photos are outside the subset. |
 
 `schema.json` specifies every supported column and PostgreSQL type. A schema
 mismatch aborts before copying. Extra schemas, views, materialized views,
 functions, large objects, foreign servers, custom types, extensions, event triggers
 rules, policies and logical replication objects also abort. `fixture-schema.sql` is generated from the EF
-model and includes its foreign keys, checks and indexes. Review schema and masking
-coverage together when migrations change.
+model (`dotnet ef dbcontext script`) and includes its foreign keys, checks and indexes. It ends with the
+migration history table and the latest migration ID, which `schema.json` and the manifest follow.
+Review schema and masking coverage together when migrations change.
+
+`COLUMN_HANDLING` in `snapshot.py` states for every column of `schema.json` how it is
+handled: generated text, pseudonym, NULL, rewritten alias, rewritten media key or fixed value,
+empty table or kept. Kept columns include fixed vocabularies (kinds, states, units, roles,
+finding codes), system values (reason codes and parameters, migration IDs), numbers, times and
+the public species catalog; the verification scans text columns like all others. A unit test
+compares this table with `schema.json`, so a new column of any type fails the test until it has a
+rule.
+
+| Handling | Columns |
+| --- | --- |
+| Generated text of the same length | Comment body, delete reason; discussion post body; discussion thread title; post title, description, delete reason; collection title; tank title, description, equipment, water and food fields, notes, delete reason; care entry note; media link caption |
+| Pseudonym | Profile username and display name; comment and discussion post guest name |
+| NULL | Profile city, external avatar URL, last login and suspension; media item capture time, offset and check time |
+| Rewritten | Slug alias value; media item storage key, original file name, content type, checksum, receive time and in-app flag; media variant storage key |
+| Empty table | `archive.legacy_comment`, `profile_identity`, `web_session`, `outbox_event`, `webhook_subscription`, `web_push_subscription`, `web_push_reminder_sent`, `video_upload`, `video_job`, `vacation`, `care_reminder_snooze`, `care_todo`, `comment_vote` |
+| Kept | IDs, numbers, flags and times; kinds, states, categories, regions, visibility levels, units, parameters, origins, roles, context types, scopes and step names; evidence state and finding codes; plan reason code and parameters; profile country code, kind, interests and badges; species catalog; migration history |
 
 The source session is read-only and exports a repeatable-read snapshot. `pg_dump`
 uses that snapshot and streams directly into a fresh target through `pg_restore`.
@@ -184,7 +213,7 @@ Operator activation order:
    Set `GOLDEN_ENVIRONMENT=staging`; `GOLDEN_TARGET_DSN` identifies staging only.
    This explicit operation uses `pg_restore --clean --if-exists` in one transaction
    inside the application database. Keycloak has its own database. Check
-   `RESTORE: tables=28 verified=1`, restart application writers, then sync the
+   `RESTORE: tables=42 verified=1`, restart application writers, then sync the
    ordinary Job to confirm the matching marker. A changed golden version never
    refreshes an existing database automatically.
 
@@ -246,8 +275,8 @@ must start with `synthetic_`. The fixture creates separate randomly named source
 target and clone databases and drops them in teardown. It tests the real custom
 dump restore, every masking rule, unchanged source contents, stable pseudonyms,
 masking rollback, denylist checks, populated-target refusal, staging refresh and
-idempotent preview initialization. A subprocess with a planted email must print
-`VERIFICATION: leaks=1` and exit 1. CI's `golden-snapshot` job runs this path using
+idempotent preview initialization. `GOLDEN_MIGRATED_DSN` points to a synthetic database (name starting with `synthetic_`) migrated by `dotnet ef database update`; `test_migrated_schema.py` then checks `schema.json`, the table list and the pinned migration ID of `fixture-schema.sql` against it. A subprocess with a planted email must print
+`VERIFICATION: leaks=1` and exit 1. CI's `golden-snapshot` job runs this path and the migrated-schema check using
 an isolated PostgreSQL service. CI has no source-data or publisher credentials.
 
 Live S3 policy enforcement, CNPG Job reconciliation, application readiness,
