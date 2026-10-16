@@ -191,18 +191,14 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] `tally.mjs` übernimmt Quellen-Einträge ungeprüft; ein Titel mit Doppelpunkt ohne
   Anführungszeichen erzeugt einen falschen Schlüssel (gesehen bei Geophagus altifrons). Quellen beim
   Zählen gegen das Schema prüfen und kaputte Einträge melden
-- [ ] Die Codex-Pipeline ins Repo übernehmen: Das Treiberskript überspringt jede Rolle, deren
-  Datei im Arbeitsordner schon liegt; bei einem erneuten Lauf für eine Legacy-Nummer (etwa 749 für
-  Heros efasciatus nach dem Severus-Lauf) muss es alte Dateien beiseitelegen statt sie mitzuzählen.
-  Bricht ein Codex-Lauf mit einem Fehlalarm des Inhaltsfilters ab ("flagged for possible
-  biological risk", gesehen bei Prüfer B zu Oscura heterospila), wiederholt es den Lauf. Weiter: ein Treiberskript je Art (Generator, Prüfer B und C
-  parallel, Warten auf Prüfer A, bis zu drei Tie-Break-Runden, Schiedsrichter, Abschlussprüfung),
-  ein Auftragsgenerator je Rolle, ein Gruppenabgleich aus den Validator-Warnungen und ein
-  Watchdog. Wiederholung bei "Selected model is at capacity", Ausweichen auf `gpt-6-sol`. Codex
-  läuft im Container mit `workspace-write` und Netzzugang, die Regeln stehen nur im Auftrag.
-  Bewährt: Prompt-Änderungen erst an einer Kopie testen und dann atomar tauschen; der
-  Schiedsrichter überschreibt kein vorhandenes Profil und ändert bestehende Gruppen nur um
-  Mitglieder
+- [ ] Parallele Pipeline-Läufe teilen sich `data/species/profiles/`, `directory.yaml` und
+  `legacy-mapping.yaml`: Die Abschlussprüfung und `build-directory.mjs` eines Laufs lesen Dateien, die
+  ein anderer Lauf gerade schreibt. Ein halb geschriebenes Profil kann so einen fremden Lauf scheitern
+  lassen; Abschlussschritte serialisieren
+- [ ] Nach dem Ausweichen von Codex auf `gpt-6-sol` nennt `provenance.runs` das Hauptmodell, weil der
+  Auftrag vor dem Lauf entsteht; das tatsächlich genutzte Modell nachtragen
+- [ ] Die 114 Profile mit YAML-Ankern mit `yaml-unalias.mjs` auflösen (Prüfung auf Kopien besteht
+  für alle) und den Diff stichprobenartig gegenlesen
 
 ### 3.4 Taxonomie-Zuordnung
 
