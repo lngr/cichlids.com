@@ -15,6 +15,8 @@ public class MediaItemConfiguration : IEntityTypeConfiguration<MediaItem>
         builder.Property(x => x.Kind).HasConversion<SnakeCaseEnumConverter<MediaKind>>().IsRequired();
         builder.Property(x => x.StorageKey).IsRequired();
         builder.Property(x => x.CreatedAt).IsRequired();
+        builder.Property(x => x.TakenAtLocal).HasColumnType("timestamp without time zone");
+        builder.Ignore(x => x.TakenAt);
 
         builder.HasIndex(x => x.LegacyId).IsUnique();
         builder.HasIndex(x => x.StorageKey).IsUnique();
@@ -24,8 +26,12 @@ public class MediaItemConfiguration : IEntityTypeConfiguration<MediaItem>
             .HasForeignKey(x => x.OwnerProfileId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.ToTable("media_item", tb => tb.HasCheckConstraint(
-            "ck_media_item_kind",
-            "kind IN ('photo', 'video')"));
+        builder.ToTable("media_item", tb =>
+        {
+            tb.HasCheckConstraint("ck_media_item_kind", "kind IN ('photo', 'video')");
+            tb.HasCheckConstraint(
+                "ck_media_item_taken_at_offset",
+                "taken_at_offset_minutes IS NULL OR (taken_at_local IS NOT NULL AND taken_at_offset_minutes BETWEEN -840 AND 840)");
+        });
     }
 }

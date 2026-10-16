@@ -21,5 +21,34 @@ public class MediaItem
     public string? ChecksumSha256 { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
 
+    /// <summary>
+    /// The wall-clock time the camera recorded as the capture time (EXIF DateTimeOriginal), with
+    /// DateTimeKind Unspecified, or null when the photo has no plausible capture time. It is not
+    /// UTC: TakenAtOffsetMinutes says which offset applies, and is null when the camera recorded none.
+    /// </summary>
+    public DateTime? TakenAtLocal { get; set; }
+
+    /// <summary>
+    /// The offset from UTC in minutes that goes with TakenAtLocal (EXIF OffsetTimeOriginal), or null
+    /// when the camera recorded none and the zone of TakenAtLocal is unknown.
+    /// </summary>
+    public short? TakenAtOffsetMinutes { get; set; }
+
+    /// <summary>
+    /// The moment the capture time of this item was last read from its original, or null when the
+    /// original has not been examined. A set value with a null TakenAtLocal means the original has
+    /// no usable capture time.
+    /// </summary>
+    public DateTimeOffset? CaptureCheckedAt { get; set; }
+
+    /// <summary>
+    /// The capture time as a DateTimeOffset: the wall-clock time with its recorded offset, or with
+    /// offset zero when none was recorded (TakenAtOffsetMinutes is null then, and the value is
+    /// not a UTC instant). Null when TakenAtLocal is null.
+    /// </summary>
+    public DateTimeOffset? TakenAt => TakenAtLocal is { } local
+        ? new DateTimeOffset(DateTime.SpecifyKind(local, DateTimeKind.Unspecified), TimeSpan.FromMinutes(TakenAtOffsetMinutes ?? 0))
+        : null;
+
     public List<MediaVariant> Variants { get; set; } = [];
 }

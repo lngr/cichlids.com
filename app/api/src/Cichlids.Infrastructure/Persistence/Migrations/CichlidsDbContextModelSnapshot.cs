@@ -825,6 +825,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("byte_size");
 
+                    b.Property<DateTimeOffset?>("CaptureCheckedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("capture_checked_at");
+
                     b.Property<string>("ChecksumSha256")
                         .HasColumnType("text")
                         .HasColumnName("checksum_sha256");
@@ -863,6 +867,14 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("storage_key");
 
+                    b.Property<DateTime?>("TakenAtLocal")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("taken_at_local");
+
+                    b.Property<short?>("TakenAtOffsetMinutes")
+                        .HasColumnType("smallint")
+                        .HasColumnName("taken_at_offset_minutes");
+
                     b.Property<int?>("Width")
                         .HasColumnType("integer")
                         .HasColumnName("width");
@@ -884,6 +896,8 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.ToTable("media_item", "public", t =>
                         {
                             t.HasCheckConstraint("ck_media_item_kind", "kind IN ('photo', 'video')");
+
+                            t.HasCheckConstraint("ck_media_item_taken_at_offset", "taken_at_offset_minutes IS NULL OR (taken_at_local IS NOT NULL AND taken_at_offset_minutes BETWEEN -840 AND 840)");
                         });
                 });
 
