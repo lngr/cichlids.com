@@ -62,6 +62,7 @@ independent values for production.
 | `api-data-protection` | `key-<uuid>.xml` files | Operator supplies a valid ASP.NET Core Data Protection key ring. All files mount read-only at `/keys`. |
 | `keycloak-web-bff` | `client-secret` | Use the same confidential client credential as the Keycloak realm apply for `cichlids-web-bff`. Staging enables web login. |
 | `api-media` | `access-key`, `secret-key` | Operator supplies the application credential scoped to environment writes and golden media reads. |
+| `api-web-push` | `public-key`, `private-key` | Optional. Operator supplies the VAPID key pair with which the API identifies itself to the push services of the browsers. The API reads the keys as `WebPush__VapidPublicKey` and `WebPush__VapidPrivateKey`. |
 
 [CloudNativePG](https://cloudnative-pg.io/docs/devel/applications/) also supplies
 `username` and `password` in `postgres-app`; the
@@ -95,6 +96,59 @@ For encrypted Git delivery, use the repository's KSOPS pattern and real operator
 recipients. Keep plaintext payloads outside the repository. Follow the
 [Keycloak operator rollout](../keycloak/README.md#operator-rollout) and apply its
 realm with the same BFF Secret before testing sign-in.
+
+## Web Push reminders
+
+The web app reminds members of due care through Web Push. The API signs its requests with a
+VAPID key pair (RFC 8292) and encrypts every payload for the receiving browser (RFC 8291). The
+private key exists only in the `api-web-push` Secret and in the memory of the API process. Both
+overlays set `WebPush__Enabled: 'false'`. With Web Push enabled, the API refuses to start unless
+both keys and `WebPush__Subject` are set, so a half-configured deployment never serves members.
+
+Generate the key pair outside the repository. The tool writes the private key readable by its
+owner only and never overwrites a file. Keep the files in the operator's secret store.
+
+```sh
+dotnet run tools/create-vapid-keys.cs -- files "$HOME/.config/cichlids/staging/web-push"
+```
+
+Provision the Secret directly:
+
+```sh
+kubectl -n cichlids-staging create secret generic api-web-push \
+  --from-file=public-key="$HOME/.config/cichlids/staging/web-push/public-key" \
+  --from-file=private-key="$HOME/.config/cichlids/staging/web-push/private-key"
+```
+
+For GitOps, configure the operator recipient and `argocd/sops-age` with the
+[SOPS age key](../../infra/README.md#sops-age-key) instructions first. The repository's fixture
+recipient is unsuitable for staging and production. Encrypt directly from the pipe:
+
+```sh
+kubectl -n cichlids-staging create secret generic api-web-push \
+  --from-file=public-key="$HOME/.config/cichlids/staging/web-push/public-key" \
+  --from-file=private-key="$HOME/.config/cichlids/staging/web-push/private-key" \
+  --dry-run=client -o yaml | \
+  sops --encrypt --filename-override apps/api/overlays/staging/web-push.sops.yaml \
+    /dev/stdin > apps/api/overlays/staging/web-push.sops.yaml
+```
+
+Add a `ksops-generator.yaml` beside the encrypted file with `tools/fixtures/secrets/ksops-generator.yaml`
+as the shape and `files: [web-push.sops.yaml]`, and list it under `generators` in the overlay's
+Kustomization. `python3 tools/check-secret-manifests.py` verifies that only ciphertext is committed.
+
+To switch Web Push on for an environment, set `WebPush__Enabled: 'true'` and `WebPush__Subject` in
+its `settings.yaml`. The subject is a `mailto:` or `https:` contact of the operator and holds no
+personal data. Restart the API pods so they read the Secret. A new key pair makes the subscriptions
+of the old pair useless: members switch the reminders of their browser off and on again.
+
+`WebPush__AllowedPushHosts__0` and further numbered entries replace the default allowlist of push
+services (`fcm.googleapis.com`, `push.services.mozilla.com`, `push.apple.com`,
+`notify.windows.com`); an entry matches the host and its subdomains. Each API instance runs the
+sender every five minutes (`WebPushSender__Interval`). A reminder is recorded in the database
+before it is sent, so several instances never send it twice. The pods need outbound HTTPS access to
+the push services. The offline checks cover the manifests; the delivery of a message by a real
+push service needs an operator check with a browser that subscribed on the deployed web app.
 
 Webhook targets default to an empty allowlist and dispatch is disabled. To enable
 delivery, configure `Webhooks__AllowedTargetHosts__0` and further numbered entries

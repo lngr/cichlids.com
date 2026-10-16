@@ -61,6 +61,10 @@ class ApplicationWorkloads(unittest.TestCase):
                         self.assertEqual(env['CICHLIDS_SLUG_SECRET']['valueFrom']['secretKeyRef'],
                                          {'name': 'api-slugs', 'key': 'secret'})
                         settings = resource(docs, 'ConfigMap')['data']
+                        for name, key in [('WebPush__VapidPublicKey', 'public-key'), ('WebPush__VapidPrivateKey', 'private-key')]:
+                            self.assertEqual(env[name]['valueFrom']['secretKeyRef'],
+                                             {'name': 'api-web-push', 'key': key, 'optional': True})
+                        self.assertEqual(settings['WebPush__Enabled'], 'false')
                         self.assertEqual(settings['ASPNETCORE_FORWARDEDHEADERS_ENABLED'], 'true')
                         self.assertEqual(settings['Authentication__Audience'], 'cichlids-api')
                         self.assertEqual(settings['OutboxDispatcher__Enabled'], 'false')

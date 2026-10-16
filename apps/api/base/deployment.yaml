@@ -69,6 +69,18 @@ spec:
             secretKeyRef:
               name: api-slugs
               key: secret
+        - name: WebPush__VapidPublicKey
+          valueFrom:
+            secretKeyRef:
+              name: api-web-push
+              key: public-key
+              optional: true
+        - name: WebPush__VapidPrivateKey
+          valueFrom:
+            secretKeyRef:
+              name: api-web-push
+              key: private-key
+              optional: true
         - name: ObjectStorage__AccessKey
           valueFrom:
             secretKeyRef:
