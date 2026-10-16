@@ -127,7 +127,7 @@ class DatabaseTests(unittest.TestCase):
                 for column in columns:
                     query = sql.SQL('select id, {} from {} order by id').format(sql.Identifier(column), snapshot.ident(table))
                     old, new = source.execute(query).fetchall(), conn.execute(query).fetchall()
-                    if table in ('public.media_link', 'public.care_entry', 'public.comment'):
+                    if table in ('public.media_link', 'public.care_entry', 'public.comment', 'public.story', 'public.collection', 'public.tank', 'public.discussion_post'):
                         self.assertTrue({r[0] for r in new} <= {r[0] for r in old})
                         old = [r for r in old if r[0] in {n[0] for n in new}]
                     else:
@@ -146,7 +146,7 @@ class DatabaseTests(unittest.TestCase):
             changed['public.story'].add('cover_media_link_id')
             changed['public.comment'].add('poster_name')
             changed['public.discussion_post'].add('poster_name')
-            subset_tables = {'public.media_item', 'public.media_variant', 'public.media_link', 'public.tank_decommissioning', 'public.care_entry', 'public.care_measurement_value', 'public.care_plan_rule', 'public.care_plan_rule_change', 'public.water_change_session', 'public.water_change_session_step', 'public.streak_freeze', 'public.tank_visibility_consent', 'public.inhabitant', 'public.collection_entry', 'public.comment', 'public.rating', 'public.follow', 'public.story_subject'}
+            subset_tables = {'public.media_item', 'public.media_variant', 'public.media_link', 'public.tank_decommissioning', 'public.care_entry', 'public.care_measurement_value', 'public.care_plan_rule', 'public.care_plan_rule_change', 'public.water_change_session', 'public.water_change_session_step', 'public.streak_freeze', 'public.tank_visibility_consent', 'public.inhabitant', 'public.collection_entry', 'public.comment', 'public.rating', 'public.follow', 'public.story_subject', 'public.story', 'public.collection', 'public.tank', 'public.profile', 'public.discussion_post'}
             for table, columns in snapshot.SCHEMA.items():
                 if table in snapshot.EMPTY_TABLES or table == 'public.__EFMigrationsHistory':
                     continue
@@ -191,19 +191,30 @@ class DatabaseTests(unittest.TestCase):
                 self.assertGreater(count(conn, f'select count(*) from {table} where tank_id in (1)'), 0, table)
             self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from inhabitant order by tank_id')), [1, 4, 8])
             self.assertEqual(count(conn, 'select count(*) from media_link where tank_id in (5, 6, 7)'), 0)
-            self.assertEqual(sorted(r[0] for r in conn.execute('select id from collection_entry')), [r[0] for r in source.execute('select id from collection_entry where collection_id=1')])
+            self.assertEqual(sorted(r[0] for r in conn.execute('select id from collection_entry')), [r[0] for r in source.execute('select id from collection_entry where collection_id=1 and story_id<>9')])
             self.assertEqual(count(conn, 'select count(*) from collection'), 2)
             self.assertEqual(sorted(r[0] for r in conn.execute('select id from comment where tank_id is not null')), [2, 4, 7])
             self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from rating where tank_id is not null')), [1, 4, 8])
-            self.assertEqual(count(conn, 'select count(*) from rating where story_id is not null'), count(source, 'select count(*) from rating where story_id is not null'))
-            self.assertEqual(count(conn, 'select count(*) from comment where story_id is not null'), count(source, 'select count(*) from comment where story_id is not null'))
+            self.assertEqual(count(conn, 'select count(*) from rating where story_id is not null'), count(source, 'select count(*) from rating where story_id is not null and story_id <> 9 and profile_id <> 9'))
+            self.assertEqual(count(conn, 'select count(*) from comment where story_id is not null'), count(source, 'select count(*) from comment where story_id is not null and story_id <> 9 and author_profile_id is distinct from 9'))
             self.assertEqual(sorted(r[0] for r in conn.execute('select target_tank_id from follow where target_tank_id is not null')), [1, 8])
             self.assertEqual(count(conn, "select count(*) from follow where status <> 'approved'"), 0)
             self.assertGreater(count(source, "select count(*) from follow where status = 'pending'"), 0)
-            self.assertEqual(count(conn, 'select count(*) from follow where target_tank_id is null'), count(source, 'select count(*) from follow where target_tank_id is null'))
+            self.assertEqual(count(conn, 'select count(*) from follow where target_tank_id is null'), count(source, 'select count(*) from follow where target_tank_id is null and follower_profile_id <> 9 and target_profile_id <> 9'))
             self.assertEqual(sorted((r[0], r[1]) for r in conn.execute('select story_id, subject_type from story_subject')), [(1, 'inhabitant'), (1, 'species'), (1, 'tank'), (2, 'species'), (3, 'inhabitant'), (3, 'tank')])
             self.assertEqual(count(conn, "select count(*) from story where cover_media_link_id is not null and cover_media_link_id not in (select id from media_link)"), 0)
             self.assertEqual(count(source, 'select count(*) from story where cover_media_link_id is not null'), 3)
+            self.assertEqual(count(source, "select count(*) from profile where kind = 'provisional'"), 1)
+            self.assertEqual(count(conn, "select count(*) from profile where kind = 'provisional' or id = 9"), 0)
+            for query in ('tank where profile_id = 9', 'story where author_profile_id = 9', 'media_item where owner_profile_id = 9', 'care_entry where tank_id = 9 or author_profile_id = 9',
+                          'comment where author_profile_id = 9 or tank_id = 9 or story_id = 9', 'rating where profile_id = 9 or tank_id = 9 or story_id = 9',
+                          'follow where follower_profile_id = 9 or target_profile_id = 9', 'collection where profile_id = 9', 'discussion_post where author_profile_id = 9',
+                          'media_link where media_item_id = 9', 'media_variant where media_item_id = 9', 'tank_decommissioning where tank_id = 9'):
+                self.assertEqual(count(conn, f'select count(*) from {query}'), 0, query)
+                self.assertGreater(count(source, f'select count(*) from {query}'), 0, query)
+            for table in ('device_credential', 'device_challenge'):
+                self.assertEqual(count(conn, f'select count(*) from {table}'), 0)
+                self.assertGreater(count(source, f'select count(*) from {table}'), 0)
             self.assertEqual(count(conn, 'select count(*) from tank_selected_member'), 0)
             self.assertGreater(count(source, 'select count(*) from tank_selected_member'), 0)
             for table in ('vacation', 'care_reminder_snooze', 'care_todo', 'comment_vote', 'used_checksum'):
@@ -254,6 +265,7 @@ class DatabaseTests(unittest.TestCase):
                 "insert into follow (follower_profile_id,target_tank_id,status,created_at) values (1,5,'approved',now())",
                 "update tank set profile_visibility='private', stream_visibility='private' where id=4",
                 "update comment set tank_id=5, story_id=null where id=2",
+                "update profile set kind='provisional' where id=1",
                 "insert into rating (tank_id,profile_id,stars,created_at) values (5,3,3,now())",
                 "update media_item set captured_in_app=true",
                 "update media_item set placement_pending=true where id=(select min(id) from media_item)",
@@ -273,7 +285,7 @@ class DatabaseTests(unittest.TestCase):
                     self.assertNotIn('SyntheticAlice', capture.getvalue())
                     self.assertNotIn('@', capture.getvalue())
                     conn.execute('rollback to savepoint leak')
-            parents = {'public.web_push_reminder_sent': ('public.web_push_subscription', 'subscription_id'), 'public.video_job': ('public.media_item', 'media_item_id')}
+            parents = {'public.device_credential': ('public.profile', 'profile_id'), 'public.web_push_reminder_sent': ('public.web_push_subscription', 'subscription_id'), 'public.video_job': ('public.media_item', 'media_item_id')}
 
             def copy_row(table, row_id=None):
                 query = sql.SQL('select * from {} order by 1').format(snapshot.ident(table)) if row_id is None else sql.SQL('select * from {} where id=%s').format(snapshot.ident(table))
@@ -330,7 +342,7 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(len(media), 2)
             self.assertTrue(media[0]['source_key'].startswith('variants/thumb/'))
             self.assertEqual({m['key'] for m in media}, {'golden/v1/media/variants/thumb/media-1.jpg', 'golden/v1/media/variants/medium/media-1.jpg'})
-            for invalid in ([4], [5], [999]):
+            for invalid in ([4], [5], [9], [999]):
                 with self.assertRaises(ValueError):
                     snapshot.select_media(source, KEY, 2000, invalid, 'v1')
 

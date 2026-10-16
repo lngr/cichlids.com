@@ -114,6 +114,22 @@
     "profile_id": "bigint",
     "value": "smallint"
   },
+  "public.device_challenge": {
+    "challenge_hash": "bytea",
+    "created_at": "timestamp with time zone",
+    "expires_at": "timestamp with time zone",
+    "id": "bigint"
+  },
+  "public.device_credential": {
+    "algorithm": "text",
+    "created_at": "timestamp with time zone",
+    "id": "uuid",
+    "last_signed_request_at": "timestamp with time zone",
+    "profile_id": "bigint",
+    "public_key": "bytea",
+    "retired_at": "timestamp with time zone",
+    "state": "text"
+  },
   "public.discussion_post": {
     "author_profile_id": "bigint",
     "body": "text",

@@ -21,7 +21,8 @@ EMPTY_TABLES = ('public.profile_identity', 'public.web_session', 'archive.legacy
                 'public.web_push_subscription', 'public.web_push_reminder_sent',
                 'public.video_upload', 'public.video_job', 'public.vacation',
                 'public.care_reminder_snooze', 'public.care_todo', 'public.comment_vote',
-                'public.tank_selected_member', 'public.used_checksum')
+                'public.tank_selected_member', 'public.used_checksum', 'public.device_credential',
+                'public.device_challenge')
 FREE_TEXT = {
     'public.comment': ('body', 'delete_reason'),
     'public.discussion_post': ('body',),
@@ -205,6 +206,12 @@ COLUMN_HANDLING = {
     'public.used_checksum': {
         'empty': 'checksum_sha256 first_used_at kind profile_id',
     },
+    'public.device_challenge': {
+        'empty': 'challenge_hash created_at expires_at id',
+    },
+    'public.device_credential': {
+        'empty': 'algorithm created_at id last_signed_request_at profile_id public_key retired_at state',
+    },
     'public.vacation': {
         'empty': 'created_at end_date id profile_id start_date',
     },
@@ -381,6 +388,7 @@ def verify(conn, originals, version):
         leaks += conn.execute(sql.SQL('select count(*) from {} where {}').format(ident(table), sql.SQL(scope))).fetchone()[0]
     leaks += conn.execute("select count(*) from media_item where not placed_public or placement_pending or placement_attempts <> 0 or placement_next_attempt_at is not null or visibility_generation <> 0").fetchone()[0]
     leaks += conn.execute("select count(*) from media_item where taken_at_local is not null or taken_at_offset_minutes is not null or capture_checked_at is not null or received_at <> created_at or captured_in_app").fetchone()[0]
+    leaks += conn.execute("select count(*) from profile where kind = 'provisional'").fetchone()[0]
     for column in ('city', 'external_avatar_url', 'last_login_at', 'suspended_until'):
         leaks += conn.execute(sql.SQL('select count(*) from profile where {} is not null').format(sql.Identifier(column))).fetchone()[0]
     leaks += conn.execute("select count(*) from media_link where context_type='profile'").fetchone()[0]
@@ -422,8 +430,11 @@ def select_media(conn, key, limit, story_ids, version):
         from story p join media_link ml on ml.story_id=p.id and ml.context_type='story' and ml.role='item'
         join media_item m on m.id=ml.media_item_id
         join media_variant v on v.media_item_id=m.id
+        join profile author on author.id=p.author_profile_id and author.kind <> 'provisional'
+        left join profile owner on owner.id=m.owner_profile_id
         where p.state='published' and p.deleted_at is null and m.kind='photo'
           and v.label=any(%s) and v.storage_key like 'variants/%%'
+          and owner.kind is distinct from 'provisional'
         order by p.id,ml.position,m.id,v.id
     """, (list(LABELS),)).fetchall()
     candidates = {r[0] for r in rows if r[3] == 'thumb'}
