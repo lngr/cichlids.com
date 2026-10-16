@@ -66,6 +66,29 @@ public class MediaItem
         ? new DateTimeOffset(DateTime.SpecifyKind(local, DateTimeKind.Unspecified), TimeSpan.FromMinutes(TakenAtOffsetMinutes ?? 0))
         : null;
 
+    /// <summary>
+    /// Whether the variants of the item (the photo sizes or the HLS files of a video) were last placed
+    /// under the public storage prefixes. The originals are private whatever the value.
+    /// </summary>
+    public bool PlacedPublic { get; set; } = true;
+
+    /// <summary>
+    /// Whether the placement of the item is due: a change happened that can alter whether anonymous
+    /// viewers see the item.
+    /// </summary>
+    public bool PlacementPending { get; set; }
+
+    /// <summary>
+    /// The earliest time the placement of the item is attempted next. While a worker holds the item,
+    /// this is the end of its lease.
+    /// </summary>
+    public DateTimeOffset? PlacementNextAttemptAt { get; set; }
+
+    /// <summary>
+    /// Failed placement attempts since the last successful one.
+    /// </summary>
+    public int PlacementAttempts { get; set; }
+
     public List<MediaVariant> Variants { get; set; } = [];
 
     /// <summary>

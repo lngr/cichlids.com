@@ -17,11 +17,15 @@ public class MediaItemConfiguration : IEntityTypeConfiguration<MediaItem>
         builder.Property(x => x.CreatedAt).IsRequired();
         builder.Property(x => x.CapturedInApp).IsRequired().HasDefaultValue(false);
         builder.Property(x => x.ReceivedAt).IsRequired().HasDefaultValueSql("now()");
+        builder.Property(x => x.PlacedPublic).HasDefaultValue(true).ValueGeneratedNever().IsRequired();
+        builder.Property(x => x.PlacementPending).HasDefaultValue(false).ValueGeneratedNever().IsRequired();
+        builder.Property(x => x.PlacementAttempts).HasDefaultValue(0).ValueGeneratedNever().IsRequired();
         builder.Property(x => x.TakenAtLocal).HasColumnType("timestamp without time zone");
         builder.Ignore(x => x.TakenAt);
 
         builder.HasIndex(x => x.LegacyId).IsUnique();
         builder.HasIndex(x => x.StorageKey).IsUnique();
+        builder.HasIndex(x => x.PlacementNextAttemptAt).HasFilter("placement_pending").HasDatabaseName("ix_media_item_placement_due");
 
         builder.HasOne<Profile>()
             .WithMany()

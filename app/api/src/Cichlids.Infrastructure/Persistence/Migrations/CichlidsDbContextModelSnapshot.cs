@@ -923,6 +923,25 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("owner_profile_id");
 
+                    b.Property<bool>("PlacedPublic")
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true)
+                        .HasColumnName("placed_public");
+
+                    b.Property<int>("PlacementAttempts")
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("placement_attempts");
+
+                    b.Property<DateTimeOffset?>("PlacementNextAttemptAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("placement_next_attempt_at");
+
+                    b.Property<bool>("PlacementPending")
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("placement_pending");
+
                     b.Property<DateTimeOffset>("ReceivedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
@@ -955,6 +974,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("OwnerProfileId")
                         .HasDatabaseName("ix_media_item_owner_profile_id");
+
+                    b.HasIndex("PlacementNextAttemptAt")
+                        .HasDatabaseName("ix_media_item_placement_due")
+                        .HasFilter("placement_pending");
 
                     b.HasIndex("StorageKey")
                         .IsUnique()
