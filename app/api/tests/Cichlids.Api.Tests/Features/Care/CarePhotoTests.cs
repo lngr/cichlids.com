@@ -168,7 +168,7 @@ public sealed class CarePhotoTests(UploadsFixture fixture)
     }
 
     [Fact]
-    public async Task GivenPhoto_WhenRemovedOrTheEntryIsDeleted_ThenRowsObjectsAndUrlsAreGoneAndEventsFollow()
+    public async Task GivenPhoto_WhenRemovedOrTheEntryIsDeleted_ThenLinksAndUrlsAreGoneTheFilesStayAndEventsFollow()
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);
         var id = await LogAsync(fixture.Client, token, tank);
@@ -185,7 +185,7 @@ public sealed class CarePhotoTests(UploadsFixture fixture)
 
         using var removed = await SendAsync(fixture.Client, HttpMethod.Delete, $"/api/tanks/{tank}/care/{id}/photos/{photos[0].GetProperty("id").GetInt64()}", token);
         Assert.Equal(1, (await BodyAsync(removed)).GetProperty("photos").GetArrayLength());
-        Assert.Equal(1, await db.MediaItems.CountAsync(m => m.OwnerProfileId == profileId));
+        Assert.Equal(2, await db.MediaItems.CountAsync(m => m.OwnerProfileId == profileId));
         using var gone = await fixture.Client.GetAsync(photos[0].GetProperty("urls").GetProperty("thumb").GetString());
         await AssertProblemAsync(gone, HttpStatusCode.NotFound, "media_not_found");
         using var missing = await SendAsync(fixture.Client, HttpMethod.Delete, $"/api/tanks/{tank}/care/{id}/photos/{photos[0].GetProperty("id").GetInt64()}", token);
@@ -193,9 +193,9 @@ public sealed class CarePhotoTests(UploadsFixture fixture)
 
         using var deleted = await SendAsync(fixture.Client, HttpMethod.Delete, $"/api/tanks/{tank}/care/{id}", token);
         Assert.Equal(HttpStatusCode.OK, deleted.StatusCode);
-        Assert.Equal(0, await db.MediaItems.CountAsync(m => m.OwnerProfileId == profileId));
+        Assert.Equal(2, await db.MediaItems.CountAsync(m => m.OwnerProfileId == profileId));
         Assert.Equal(0, await CountPhotoRowsAsync(id));
-        foreach (var key in keys) Assert.False(await fixture.ObjectStore.ExistsAsync(key), key);
+        foreach (var key in keys) Assert.True(await fixture.ObjectStore.ExistsAsync(key), key);
 
         var events = await EventsAsync(db, "care", id);
         Assert.Equal(new[] { "care.logged", "care.updated", "care.updated", "care.updated", "care.deleted" }, events.Select(e => e.Type));

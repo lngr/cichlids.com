@@ -217,12 +217,12 @@ public sealed class TankDecommissioningService(
         });
     }
 
+    // A picture counts as used before when its checksum was recorded as proof of the member: a proof of a
+    // decommissioning or recommissioning or a photo of a care entry, whatever happened to its links since.
     private async Task<bool> WasProofBeforeAsync(long profileId, string? checksum, CancellationToken ct)
     {
         if (checksum is null) return false;
-        return await context.MediaLinks.AsNoTracking().AnyAsync(l => l.MediaItem.OwnerProfileId == profileId && l.MediaItem.ChecksumSha256 == checksum
-            && (l.TankId != null && (l.Role == MediaLinkRole.Decommission || l.Role == MediaLinkRole.Recommission)
-                || l.CareEntryId != null && l.Role == MediaLinkRole.Photo), ct);
+        return (await context.UsedAmongAsync(profileId, UsedChecksumKind.Proof, [checksum], ct)).Contains(checksum);
     }
 
     // Adds the media item to the tank in the given section. The link marks the item for placement.
@@ -233,5 +233,6 @@ public sealed class TankDecommissioningService(
         var role = MediaLinkRoles.Of(section);
         var nextPosition = (await context.MediaLinks.Where(l => l.TankId == tankId && l.Role == role).MaxAsync(l => (int?)l.Position, ct) ?? -1) + 1;
         context.MediaLinks.Add(MediaLink.ForTank(tankId, stored.Item.Id, role, nextPosition));
+        await context.RecordUsedAsync(stored.Item.OwnerProfileId!.Value, UsedChecksumKind.Proof, [stored.Item.ChecksumSha256], clock.GetUtcNow(), ct);
     }
 }

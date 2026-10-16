@@ -603,7 +603,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     }
 
     [Fact]
-    public async Task Discard_RemovesTheDraftRowsAndStoredObjects()
+    public async Task Discard_RemovesTheDraftAndItsLinksAndKeepsThePhotoInTheLibrary()
     {
         var token = NewToken();
         var draft = await UploadDraftAsync(fixture.Client, token, Jpeg(1000, 700));
@@ -628,13 +628,13 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         {
             Assert.False(await db.Stories.AnyAsync(p => p.Id == draft.Id));
             Assert.False(await db.MediaLinks.AnyAsync(l => l.StoryId == draft.Id));
-            Assert.False(await db.MediaItems.AnyAsync(m => m.Id == mediaItemId));
-            Assert.False(await db.MediaVariants.AnyAsync(v => v.MediaItemId == mediaItemId));
+            Assert.True(await db.MediaItems.AnyAsync(m => m.Id == mediaItemId));
+            Assert.True(await db.MediaVariants.AnyAsync(v => v.MediaItemId == mediaItemId));
         }
 
         foreach (var key in storedKeys)
         {
-            Assert.False(await fixture.ObjectStore.ExistsAsync(key), $"Object '{key}' still exists.");
+            Assert.True(await fixture.ObjectStore.ExistsAsync(key), $"Object '{key}' is gone.");
         }
     }
 

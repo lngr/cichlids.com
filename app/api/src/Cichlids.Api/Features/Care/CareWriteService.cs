@@ -1,5 +1,4 @@
 using Cichlids.Api.Features.Common;
-using Cichlids.Api.Features.Uploads;
 using Cichlids.Domain;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
@@ -9,8 +8,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Api.Features.Care;
 
-public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clock, CareEntryMapper mapper, StoredObjectDeleter deleter,
-    Videos.VideoRemovalService? videoRemoval = null, Media.MediaPlacementTrigger? placement = null)
+public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clock, CareEntryMapper mapper,
+    Media.MediaPlacementTrigger? placement = null)
 {
     private const int MaxMeasurementValues = 10;
     private const int MaxNoteLength = 2000;
@@ -136,34 +135,24 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
         await mapper.PrepareAsync([entry], profileId, ct);
         var dto = mapper.ToDto(entry);
         CareEvents.Add(context, request is null ? "care.deleted" : "care.updated", entry, clock.GetUtcNow());
-        var storedKeys = new List<string>();
-        var removedVideos = new List<MediaItem>();
+        var mediaItemIds = new List<long>();
         if (request is null)
         {
-            var photos = entry.MediaLinks.Where(l => l.Role == MediaLinkRole.Photo).Select(l => l.MediaItem).ToList();
-            storedKeys.AddRange(photos.SelectMany(m => m.Variants.Select(v => v.StorageKey).Append(m.StorageKey)));
+            // Deleting the entry deletes its links; the photos and videos stay in the library of the author.
+            mediaItemIds = entry.MediaLinks.Select(l => l.MediaItemId).ToList();
             foreach (var todo in entry.Todos)
             {
                 todo.CareEntryId = null;
                 TodoEvents.Add(context, "todo.updated", todo, clock.GetUtcNow());
             }
             context.CareEntries.Remove(entry);
-            await context.SaveChangesAsync(ct);
-            context.MediaItems.RemoveRange(photos);
-            removedVideos = entry.MediaLinks.Where(l => l.Role == MediaLinkRole.Video).Select(l => l.MediaItem).ToList();
-            context.MediaItems.RemoveRange(removedVideos);
         }
         await context.SaveChangesAsync(ct);
         await transaction.CommitAsync(ct);
-        if (onlyMeChanged && placement is not null)
+        if (placement is not null)
         {
-            await placement.PlaceNowAsync(await context.MediaItemIdsOfCareEntry(entry.Id).ToListAsync(ct));
-        }
-
-        await deleter.DeleteAsync(storedKeys);
-        if (videoRemoval is not null)
-        {
-            await videoRemoval.DeleteObjectsAsync(removedVideos);
+            if (onlyMeChanged) await placement.PlaceNowAsync(await context.MediaItemIdsOfCareEntry(entry.Id).ToListAsync(ct));
+            if (mediaItemIds.Count > 0) await placement.PlaceNowAsync(mediaItemIds);
         }
 
         if (request is not null) await mapper.PrepareAsync([entry], profileId, ct);

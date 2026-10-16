@@ -23,8 +23,7 @@ internal static class CareTestSupport
     /// object store never serves a request, since these tests write entries without photos.
     /// </summary>
     public static CareWriteService CreateWriteService(CichlidsDbContext context) => new(context, TimeProvider.System,
-        new CareEntryMapper(new MediaUrlSigner(DataProtectionProvider.Create("care-tests")), context, TimeProvider.System),
-        new StoredObjectDeleter(new UrlOnlyObjectStore("http://objects.test"), NullLogger<StoredObjectDeleter>.Instance));
+        new CareEntryMapper(new MediaUrlSigner(DataProtectionProvider.Create("care-tests")), context, TimeProvider.System));
 
     /// <summary>
     /// Removes the given tanks with their care entries and outbox events, so tests that share the

@@ -7,7 +7,7 @@ namespace Cichlids.Api.Features.Uploads;
 
 /// <summary>
 /// One cleanup pass over abandoned drafts: every unpublished draft last changed longer ago than the
-/// retention is deleted with its rows and stored objects. Several instances may run a pass at the
+/// retention is deleted with its links; its photos stay in the media library. Several instances may run a pass at the
 /// same time; the delete of a draft happens once and a draft another instance removed first is
 /// skipped.
 /// </summary>

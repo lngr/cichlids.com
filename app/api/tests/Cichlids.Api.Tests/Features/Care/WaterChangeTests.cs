@@ -457,7 +457,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
     }
 
     [Fact]
-    public async Task GivenSessionOlderThan24Hours_WhenTheMemberReturns_ThenItIsGoneWithItsPhotosAndANewOneStarts()
+    public async Task GivenSessionOlderThan24Hours_WhenTheMemberReturns_ThenItIsGoneAndItsPhotosStayInTheLibraryAndANewOneStarts()
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);
         var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
@@ -470,7 +470,9 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
         using var current = await SendAsync(fixture.Client, HttpMethod.Get, $"{Base(tank)}/current", token);
         await AssertProblemAsync(current, HttpStatusCode.NotFound, "water_change_not_found");
         Assert.False(await db.WaterChangeSessions.AnyAsync(s => s.Id == id));
-        Assert.Equal(0, await CountKeysAsync(profileId));
+        Assert.Equal(1, await CountKeysAsync(profileId));
+        Assert.False(await db.MediaLinks.AnyAsync(l => l.WaterChangeSessionId == id));
+        Assert.Equal(1, await db.MediaItems.CountAsync(m => m.OwnerProfileId == profileId));
         var fresh = await StartAsync(token, tank);
         Assert.NotEqual(id, fresh.GetProperty("id").GetInt64());
     }
@@ -492,7 +494,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
     }
 
     [Fact]
-    public async Task GivenOpenSession_WhenCancelling_ThenItsRowsAndPhotosAreDeleted()
+    public async Task GivenOpenSession_WhenCancelling_ThenItsRowsAreDeletedAndThePhotosStayInTheLibrary()
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);
         var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
@@ -502,7 +504,8 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
         using var cancel = await SendAsync(fixture.Client, HttpMethod.Delete, $"{Base(tank)}/{id}", token);
         Assert.Equal(HttpStatusCode.NoContent, cancel.StatusCode);
         Assert.False(await db.WaterChangeSessions.AnyAsync(s => s.Id == id));
-        Assert.Equal(0, await CountKeysAsync(profileId));
+        Assert.Equal(1, await CountKeysAsync(profileId));
+        Assert.Equal(1, await db.MediaItems.CountAsync(m => m.OwnerProfileId == profileId));
         using var again = await SendAsync(fixture.Client, HttpMethod.Delete, $"{Base(tank)}/{id}", token);
         await AssertProblemAsync(again, HttpStatusCode.NotFound, "water_change_not_found");
     }

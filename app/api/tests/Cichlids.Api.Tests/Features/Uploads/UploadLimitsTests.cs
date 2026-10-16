@@ -120,7 +120,7 @@ public class UploadLimitsTests(UploadsFixture fixture)
     }
 
     [Fact]
-    public async Task Cleanup_RemovesDraftsUntouchedForThirtyDaysWithTheirObjects()
+    public async Task Cleanup_RemovesDraftsUntouchedForThirtyDaysAndKeepsTheirPhotosInTheLibrary()
     {
         var (token, subject) = NewCaller();
         var stale = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
@@ -146,10 +146,10 @@ public class UploadLimitsTests(UploadsFixture fixture)
         await using var db = fixture.CreateDbContext();
         Assert.False(await db.Stories.AnyAsync(p => p.Id == stale.Id));
         Assert.False(await db.MediaLinks.AnyAsync(l => l.StoryId == stale.Id));
-        Assert.False(await db.MediaItems.AnyAsync(m => m.OwnerProfileId == profileId && staleKeys.Contains(m.StorageKey)));
+        Assert.True(await db.MediaItems.AnyAsync(m => m.OwnerProfileId == profileId && staleKeys.Contains(m.StorageKey)));
         foreach (var key in staleKeys)
         {
-            Assert.False(await fixture.ObjectStore.ExistsAsync(key), $"Object '{key}' of the stale draft is still stored.");
+            Assert.True(await fixture.ObjectStore.ExistsAsync(key), $"Object '{key}' of the stale draft is gone.");
         }
 
         Assert.True(await db.Stories.AnyAsync(p => p.Id == fresh.Id));

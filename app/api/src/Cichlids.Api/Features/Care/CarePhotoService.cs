@@ -1,3 +1,4 @@
+using Cichlids.Api.Features.Media;
 using Cichlids.Api.Features.Uploads;
 using Cichlids.Domain;
 using Cichlids.Domain.Entities;
@@ -11,11 +12,12 @@ namespace Cichlids.Api.Features.Care;
 /// <summary>
 /// Adds photos to and removes photos from care entries. A photo goes through the upload pipeline
 /// (same formats, limits and variants) and is stored under the private prefix. Each change and its
-/// care.updated event commit in one transaction; the stored objects of a removed photo are deleted
-/// after the commit.
+/// care.updated event commit in one transaction. Removing a photo removes its link; the file stays in
+/// the media library of its owner.
 /// </summary>
 public sealed class CarePhotoService(
-    CichlidsDbContext context, UploadsWriteService uploads, StoredObjectDeleter deleter, CareEntryMapper mapper, TimeProvider clock)
+    CichlidsDbContext context, UploadsWriteService uploads, StoredObjectDeleter deleter, CareEntryMapper mapper, TimeProvider clock,
+    MediaPlacementTrigger? placement = null)
 {
     /// <summary>
     /// Attaches the uploaded file as a new photo of the author's entry. The error is a problem code:
@@ -62,6 +64,7 @@ public sealed class CarePhotoService(
                 .First(slot => entry!.MediaLinks.All(l => l.Role != MediaLinkRole.Photo || l.Position != slot));
             entry!.MediaLinks.Add(new MediaLink { ContextType = MediaLinkContext.CareEntry, Role = MediaLinkRole.Photo, MediaItem = stored.Item, Position = position });
             await context.SaveChangesAsync(ct);
+            await context.RecordUsedAsync(profileId, UsedChecksumKind.Proof, [stored.Item.ChecksumSha256], clock.GetUtcNow(), ct);
             CareEvents.Add(context, "care.updated", entry, clock.GetUtcNow());
             await context.SaveChangesAsync(ct);
             await transaction.CommitAsync(ct);
@@ -76,13 +79,13 @@ public sealed class CarePhotoService(
     }
 
     /// <summary>
-    /// Removes a photo of the author's entry with its media item and stored objects. The error is
-    /// the problem code care_not_found.
+    /// Removes the link of a photo from the author's entry. The media item and its stored objects stay
+    /// in the library of the owner. The error is the problem code care_not_found.
     /// </summary>
     public async Task<(CareEntryDto? Entry, string? Error)> RemoveAsync(
         long tankId, long entryId, long photoId, long profileId, CancellationToken ct)
     {
-        List<string> storedKeys;
+        long mediaItemId;
         await using (var transaction = await context.Database.BeginTransactionAsync(ct))
         {
             if (!await CareTanks.LockOwnAsync(context, tankId, profileId, ct)) return (null, "care_not_found");
@@ -91,15 +94,15 @@ public sealed class CarePhotoService(
             var link = entry?.MediaLinks.SingleOrDefault(l => l.Id == photoId && l.Role == MediaLinkRole.Photo);
             if (entry is null || link is null) return (null, "care_not_found");
 
-            storedKeys = link.MediaItem.Variants.Select(v => v.StorageKey).Append(link.MediaItem.StorageKey).ToList();
+            mediaItemId = link.MediaItemId;
             entry.MediaLinks.Remove(link);
-            context.MediaItems.Remove(link.MediaItem);
+            context.MediaLinks.Remove(link);
             CareEvents.Add(context, "care.updated", entry, clock.GetUtcNow());
             await context.SaveChangesAsync(ct);
             await transaction.CommitAsync(ct);
         }
 
-        await deleter.DeleteAsync(storedKeys);
+        if (placement is not null) await placement.PlaceNowAsync([mediaItemId]);
         return (await LoadDtoAsync(entryId, profileId, ct), null);
     }
 

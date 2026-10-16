@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Cichlids.Api.Features.Common;
+using Cichlids.Api.Features.Media;
 using Cichlids.Api.Features.Uploads;
 using Cichlids.Domain;
 using Cichlids.Domain.Entities;
@@ -30,14 +31,13 @@ public sealed class WaterChangeService(
     /// </summary>
     public async Task<(WaterChangeStart? Start, string? Error)> StartAsync(long tankId, long profileId, CancellationToken ct)
     {
-        List<string> removedKeys;
         WaterChangeSession session;
         var created = false;
         await using (var transaction = await context.Database.BeginTransactionAsync(ct))
         {
             if (!await CareTanks.LockOwnAsync(context, tankId, profileId, ct)) return (null, "water_change_not_found");
             var now = Now();
-            removedKeys = await RemoveExpiredAsync(context.WaterChangeSessions.Where(s => s.TankId == tankId), now, ct);
+            await RemoveExpiredAsync(context.WaterChangeSessions.Where(s => s.TankId == tankId), now, ct);
             var open = await context.WaterChangeSessions.Include(s => s.Steps).Include(s => s.MediaLinks).SingleOrDefaultAsync(s => s.TankId == tankId && s.FinishedAt == null, ct);
             if (open is null)
             {
@@ -52,7 +52,6 @@ public sealed class WaterChangeService(
             session = open;
         }
 
-        await deleter.DeleteAsync(removedKeys);
         return (new WaterChangeStart(await ToDtoAsync(session, ct), created), null);
     }
 
@@ -61,17 +60,15 @@ public sealed class WaterChangeService(
     /// </summary>
     public async Task<(WaterChangeSessionDto? Session, string? Error)> CurrentAsync(long tankId, long profileId, CancellationToken ct)
     {
-        List<string> removedKeys;
         WaterChangeSession? open;
         await using (var transaction = await context.Database.BeginTransactionAsync(ct))
         {
             if (!await CareTanks.LockOwnAsync(context, tankId, profileId, ct)) return (null, "water_change_not_found");
-            removedKeys = await RemoveExpiredAsync(context.WaterChangeSessions.Where(s => s.TankId == tankId), Now(), ct);
+            await RemoveExpiredAsync(context.WaterChangeSessions.Where(s => s.TankId == tankId), Now(), ct);
             open = await context.WaterChangeSessions.Include(s => s.Steps).Include(s => s.MediaLinks).SingleOrDefaultAsync(s => s.TankId == tankId && s.FinishedAt == null, ct);
             await transaction.CommitAsync(ct);
         }
 
-        await deleter.DeleteAsync(removedKeys);
         return open is null ? (null, "water_change_not_found") : (await ToDtoAsync(open, ct), null);
     }
 
@@ -177,6 +174,11 @@ public sealed class WaterChangeService(
         session.FinishedAt = now;
         session.DurationSeconds = duration;
         await context.SaveChangesAsync(ct);
+        var evidenceIds = session.MediaLinks.Select(l => l.MediaItemId).ToList();
+        var checksums = await context.MediaItems.AsNoTracking().Where(m => evidenceIds.Contains(m.Id))
+            .Select(m => m.ChecksumSha256).ToListAsync(ct);
+        await context.RecordUsedAsync(profileId, UsedChecksumKind.WaterChangeEvidence, checksums, now, ct);
+        await context.RecordUsedAsync(profileId, UsedChecksumKind.Proof, checksums, now, ct);
         CareEvents.Add(context, "care.logged", entry, now);
         AddEvent("water_change.finished", session, now, new Dictionary<string, object?>
         {
@@ -193,20 +195,19 @@ public sealed class WaterChangeService(
     }
 
     /// <summary>
-    /// Discards the open session with its photos.
+    /// Discards the open session and the links of its photos. The photos stay in the media library of the
+    /// member.
     /// </summary>
     public async Task<string?> CancelAsync(long tankId, long id, long profileId, CancellationToken ct)
     {
-        List<string> keys;
         await using (var transaction = await context.Database.BeginTransactionAsync(ct))
         {
             var session = await LockOpenAsync(tankId, id, profileId, ct);
             if (session is null) return "water_change_not_found";
-            keys = await RemoveAsync([session], ct);
+            await RemoveAsync([session], ct);
             await transaction.CommitAsync(ct);
         }
 
-        await deleter.DeleteAsync(keys);
         return null;
     }
 
@@ -219,34 +220,29 @@ public sealed class WaterChangeService(
         var total = 0;
         while (true)
         {
-            List<string> keys;
             int removed;
             await using (var transaction = await context.Database.BeginTransactionAsync(ct))
             {
                 var cutoff = Now() - Settings.SessionLifetime;
                 var batch = await context.WaterChangeSessions.Where(s => s.FinishedAt == null && s.StartedAt <= cutoff).OrderBy(s => s.Id).Take(100).ToListAsync(ct);
                 removed = batch.Count;
-                keys = removed == 0 ? [] : await RemoveAsync(batch, ct);
+                if (removed > 0) await RemoveAsync(batch, ct);
                 await transaction.CommitAsync(ct);
             }
-            await deleter.DeleteAsync(keys);
             total += removed;
             if (removed < 100) return total;
         }
     }
 
-    // A picture counts as used before when an evidence link of another finished session of the member
-    // holds a photo with the same checksum. The capture source and the receive time are those of the media item.
+    // A picture counts as used before when its checksum was recorded as evidence of an earlier finished
+    // session of the member, whatever happened to the links and the file since. The capture source and
+    // the receive time are those of the media item.
     private async Task<List<EvidencePhoto>> EvidencePhotosOfAsync(WaterChangeSession session, long profileId, CancellationToken ct)
     {
         var ids = session.MediaLinks.Select(l => l.MediaItemId).ToList();
         var items = await context.MediaItems.AsNoTracking().Where(m => ids.Contains(m.Id)).ToDictionaryAsync(m => m.Id, ct);
         var checksums = items.Values.Select(m => m.ChecksumSha256).OfType<string>().Distinct().ToList();
-        var used = await context.MediaLinks.AsNoTracking()
-            .Where(l => l.ContextType == MediaLinkContext.WaterChangeSession && l.WaterChangeSessionId != session.Id
-                && context.WaterChangeSessions.Any(s => s.Id == l.WaterChangeSessionId && s.FinishedAt != null)
-                && l.MediaItem.OwnerProfileId == profileId && l.MediaItem.ChecksumSha256 != null && checksums.Contains(l.MediaItem.ChecksumSha256))
-            .Select(l => l.MediaItem.ChecksumSha256!).Distinct().ToListAsync(ct);
+        var used = await context.UsedAmongAsync(profileId, UsedChecksumKind.WaterChangeEvidence, checksums, ct);
         return session.MediaLinks.Where(l => items.ContainsKey(l.MediaItemId)).Select(l =>
         {
             var item = items[l.MediaItemId];
@@ -271,24 +267,18 @@ public sealed class WaterChangeService(
             .SingleOrDefaultAsync(s => s.Id == id && s.TankId == tankId && s.ProfileId == profileId && s.FinishedAt == null && s.StartedAt > cutoff, ct);
     }
 
-    private async Task<List<string>> RemoveExpiredAsync(IQueryable<WaterChangeSession> scope, DateTimeOffset now, CancellationToken ct)
+    private async Task RemoveExpiredAsync(IQueryable<WaterChangeSession> scope, DateTimeOffset now, CancellationToken ct)
     {
         var cutoff = now - Settings.SessionLifetime;
         var expired = await scope.Where(s => s.FinishedAt == null && s.StartedAt <= cutoff).ToListAsync(ct);
-        return expired.Count == 0 ? [] : await RemoveAsync(expired, ct);
+        if (expired.Count > 0) await RemoveAsync(expired, ct);
     }
 
-    // Removes the sessions with their photo media items and returns the stored keys to delete after the commit.
-    private async Task<List<string>> RemoveAsync(IReadOnlyCollection<WaterChangeSession> sessions, CancellationToken ct)
+    // Removes the sessions with the links of their photos. The photos stay in the media library.
+    private async Task RemoveAsync(IReadOnlyCollection<WaterChangeSession> sessions, CancellationToken ct)
     {
-        var sessionIds = sessions.Select(s => s.Id).ToList();
-        var ids = await context.MediaLinks.EvidenceLinks().Where(l => sessionIds.Contains(l.WaterChangeSessionId!.Value)).Select(l => l.MediaItemId).ToListAsync(ct);
-        var items = await context.MediaItems.Include(m => m.Variants).Where(m => ids.Contains(m.Id)).ToListAsync(ct);
-        var keys = items.SelectMany(m => m.Variants.Select(v => v.StorageKey).Append(m.StorageKey)).ToList();
         context.WaterChangeSessions.RemoveRange(sessions);
-        context.MediaItems.RemoveRange(items);
         await context.SaveChangesAsync(ct);
-        return keys;
     }
 
     private void AddEvent(string type, WaterChangeSession session, DateTimeOffset now, Dictionary<string, object?> extra)

@@ -14,7 +14,7 @@ public class MediaOverlayTests(UploadsFixture fixture)
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public async Task Given_golden_media_when_uploading_and_removing_drafts_then_only_environment_objects_change(bool cleanup)
+    public async Task Given_golden_media_when_uploading_and_removing_drafts_then_environment_objects_stay_and_golden_objects_are_untouched(bool cleanup)
     {
         var writePrefix = $"environments/{Guid.NewGuid():N}/";
         using var host = fixture.CreateOverlayHost(writePrefix);
@@ -67,7 +67,7 @@ public class MediaOverlayTests(UploadsFixture fixture)
         }
         foreach (var uploadedKey in keys)
         {
-            Assert.False(await fixture.ObjectStore.ExistsAsync(writePrefix + uploadedKey));
+            Assert.True(await fixture.ObjectStore.ExistsAsync(writePrefix + uploadedKey));
         }
         Assert.Equal(2, await fixture.ObjectStore.GetSizeAsync(shared));
         Assert.Equal(3, await store.GetSizeAsync(goldenKey));

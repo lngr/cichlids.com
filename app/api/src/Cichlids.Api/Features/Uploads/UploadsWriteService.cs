@@ -16,7 +16,7 @@ namespace Cichlids.Api.Features.Uploads;
 /// metadata removed, and its variants in the object store, each with the media object metadata,
 /// and records the media item, its variants and a single-photo draft story in one transaction.
 /// Objects are written before the commit, so when the database write fails the stored keys are
-/// deleted (best effort, logged). Discarding removes a draft's rows and then its stored objects.
+/// deleted (best effort, logged). Discarding removes the draft story and its links; the photos stay in the library.
 /// Before an upload the owner's quota is checked: at most the configured number of open drafts
 /// and of uploads within the last hour.
 /// </summary>
@@ -196,10 +196,8 @@ public sealed class UploadsWriteService(
     }
 
     /// <summary>
-    /// Discards the author's draft: deletes the story, its media links, its media items and
-    /// their variants, then the stored original and variant objects. Object deletion runs after
-    /// the commit, so a failure there leaves unreferenced objects behind (logged) and never rows
-    /// that point at missing objects.
+    /// Discards the author's draft: deletes the story and its media links. The photos stay in the media
+    /// library of the author.
     /// </summary>
     public async Task<DraftActionOutcome> DiscardAsync(long storyId, long authorProfileId, CancellationToken cancellationToken)
     {
@@ -207,8 +205,8 @@ public sealed class UploadsWriteService(
     }
 
     /// <summary>
-    /// Deletes a draft that was last changed before the given moment, whoever owns it, with its rows
-    /// and stored objects like a discard. Returns false when there is no such draft any more, as
+    /// Deletes a draft that was last changed before the given moment, whoever owns it, with its links
+    /// like a discard. Returns false when there is no such draft any more, as
     /// when a concurrent cleanup deleted it first or it was published in the meantime.
     /// </summary>
     public async Task<bool> DeleteExpiredDraftAsync(long storyId, DateTimeOffset changedBefore, CancellationToken cancellationToken)
@@ -220,42 +218,25 @@ public sealed class UploadsWriteService(
     private async Task<DraftActionOutcome> RemoveDraftAsync(
         long storyId, long? authorProfileId, DateTimeOffset? changedBefore, CancellationToken cancellationToken)
     {
-        List<string> storedKeys;
+        await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
 
-        await using (var transaction = await context.Database.BeginTransactionAsync(cancellationToken))
+        var candidates = context.Stories
+            .Where(p => p.Id == storyId && p.DeletedAt == null && (authorProfileId == null || p.AuthorProfileId == authorProfileId));
+
+        // The state condition in the delete itself serializes a removal against a concurrent
+        // publish or removal of the same story on the row lock: whichever runs second sees the
+        // committed outcome of the first and deletes nothing.
+        var deleted = await candidates
+            .Where(p => p.State == StoryState.Draft && (changedBefore == null || p.UpdatedAt < changedBefore))
+            .ExecuteDeleteAsync(cancellationToken);
+
+        if (deleted == 0)
         {
-            var mediaItemIds = await context.MediaLinks.StoryLinks()
-                .Where(l => l.StoryId == storyId)
-                .Select(l => l.MediaItemId)
-                .ToListAsync(cancellationToken);
-
-            storedKeys = await context.MediaItems
-                .Where(m => mediaItemIds.Contains(m.Id))
-                .Select(m => m.StorageKey)
-                .Concat(context.MediaVariants.Where(v => mediaItemIds.Contains(v.MediaItemId)).Select(v => v.StorageKey))
-                .ToListAsync(cancellationToken);
-
-            var candidates = context.Stories
-                .Where(p => p.Id == storyId && p.DeletedAt == null && (authorProfileId == null || p.AuthorProfileId == authorProfileId));
-
-            // The state condition in the delete itself serializes a removal against a concurrent
-            // publish or removal of the same story on the row lock: whichever runs second sees the
-            // committed outcome of the first and deletes nothing.
-            var deleted = await candidates
-                .Where(p => p.State == StoryState.Draft && (changedBefore == null || p.UpdatedAt < changedBefore))
-                .ExecuteDeleteAsync(cancellationToken);
-
-            if (deleted == 0)
-            {
-                var exists = await candidates.AnyAsync(cancellationToken);
-                return exists ? DraftActionOutcome.NotDraft : DraftActionOutcome.NotFound;
-            }
-
-            await context.MediaItems.Where(m => mediaItemIds.Contains(m.Id)).ExecuteDeleteAsync(cancellationToken);
-            await transaction.CommitAsync(cancellationToken);
+            var exists = await candidates.AnyAsync(cancellationToken);
+            return exists ? DraftActionOutcome.NotDraft : DraftActionOutcome.NotFound;
         }
 
-        await deleter.DeleteAsync(storedKeys);
+        await transaction.CommitAsync(cancellationToken);
         return DraftActionOutcome.Succeeded;
     }
 }

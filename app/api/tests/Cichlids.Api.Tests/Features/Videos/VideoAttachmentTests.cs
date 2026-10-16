@@ -82,8 +82,8 @@ public sealed class VideoAttachmentTests(UploadsFixture fixture)
         Assert.Equal(HttpStatusCode.OK, removed.StatusCode);
         using var afterRemoval = await fixture.Client.GetAsync(playlistUrl);
         Assert.Equal(HttpStatusCode.NotFound, afterRemoval.StatusCode);
-        Assert.False(await fixture.ObjectStore.ExistsAsync(item.StorageKey));
-        Assert.False(await fixture.ObjectStore.ExistsAsync(hls));
+        Assert.True(await fixture.ObjectStore.ExistsAsync(item.StorageKey));
+        Assert.True(await fixture.ObjectStore.ExistsAsync(hls));
     }
 
     [Fact]
