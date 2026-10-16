@@ -309,6 +309,65 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.CareTodo", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long?>("CareEntryId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("care_entry_id");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateTimeOffset?>("DoneAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("done_at");
+
+                    b.Property<long>("ProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("profile_id");
+
+                    b.Property<long>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("text");
+
+                    b.HasKey("Id")
+                        .HasName("pk_care_todo");
+
+                    b.HasIndex("CareEntryId")
+                        .HasDatabaseName("ix_care_todo_care_entry_id");
+
+                    b.HasIndex("TankId")
+                        .HasDatabaseName("ix_care_todo_tank_id");
+
+                    b.HasIndex("ProfileId", "CreatedAt", "Id")
+                        .IsDescending(false, true, true)
+                        .HasDatabaseName("ix_care_todo_profile_open")
+                        .HasFilter("done_at IS NULL");
+
+                    b.HasIndex("ProfileId", "DoneAt", "Id")
+                        .IsDescending(false, true, true)
+                        .HasDatabaseName("ix_care_todo_profile_done")
+                        .HasFilter("done_at IS NOT NULL");
+
+                    b.ToTable("care_todo", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_care_todo_text", "char_length(text) BETWEEN 1 AND 200");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
                 {
                     b.Property<long>("Id")
@@ -1973,6 +2032,29 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasConstraintName("fk_care_plan_rule_tanks_tank_id");
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.CareTodo", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.CareEntry", null)
+                        .WithMany("Todos")
+                        .HasForeignKey("CareEntryId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_care_todo_care_entry_care_entry_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_todo_profiles_profile_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_care_todo_tanks_tank_id");
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.Collection", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.Profile", null)
@@ -2308,6 +2390,8 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Cichlids.Domain.Entities.CareEntry", b =>
                 {
                     b.Navigation("Photos");
+
+                    b.Navigation("Todos");
 
                     b.Navigation("Values");
                 });

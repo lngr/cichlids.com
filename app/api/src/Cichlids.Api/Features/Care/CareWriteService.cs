@@ -124,6 +124,11 @@ public sealed class CareWriteService(CichlidsDbContext context, TimeProvider clo
         {
             var photos = entry.Photos.Select(p => p.MediaItem).ToList();
             storedKeys.AddRange(photos.SelectMany(m => m.Variants.Select(v => v.StorageKey).Append(m.StorageKey)));
+            foreach (var todo in entry.Todos)
+            {
+                todo.CareEntryId = null;
+                TodoEvents.Add(context, "todo.updated", todo, clock.GetUtcNow());
+            }
             context.CareEntries.Remove(entry);
             await context.SaveChangesAsync(ct);
             context.MediaItems.RemoveRange(photos);

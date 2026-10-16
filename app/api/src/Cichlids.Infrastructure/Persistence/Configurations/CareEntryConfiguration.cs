@@ -17,6 +17,7 @@ public sealed class CareEntryConfiguration : IEntityTypeConfiguration<CareEntry>
         builder.HasOne<Profile>().WithMany().HasForeignKey(x => x.AuthorProfileId).OnDelete(DeleteBehavior.Restrict);
         builder.HasMany(x => x.Values).WithOne().HasForeignKey(x => x.CareEntryId).OnDelete(DeleteBehavior.Cascade);
         builder.HasMany(x => x.Photos).WithOne().HasForeignKey(x => x.CareEntryId).OnDelete(DeleteBehavior.Cascade);
+        builder.HasMany(x => x.Todos).WithOne().HasForeignKey(x => x.CareEntryId).OnDelete(DeleteBehavior.SetNull);
         builder.HasIndex(x => new { x.TankId, x.OccurredAt, x.Id }).IsDescending(false, true, true);
         builder.ToTable("care_entry", table =>
         {

@@ -21,4 +21,5 @@ public class CareEntry
 
     public List<CareMeasurementValue> Values { get; set; } = [];
     public List<CarePhoto> Photos { get; set; } = [];
+    public List<CareTodo> Todos { get; set; } = [];
 }
