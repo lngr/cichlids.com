@@ -1281,6 +1281,90 @@
         }
       }
     },
+    "/api/me/settings": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "GetMySettings",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeSettingsDto"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "UpdateMySettings",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/UpdateMeSettingsRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeSettingsDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/me/onboarding": {
       "post": {
         "tags": [
@@ -7548,14 +7632,29 @@
           }
         }
       },
+      "MeSettingsDto": {
+        "required": [
+          "streaksEnabled"
+        ],
+        "type": "object",
+        "properties": {
+          "streaksEnabled": {
+            "type": "boolean"
+          }
+        }
+      },
       "MeStreaksDto": {
         "required": [
+          "enabled",
           "freezesPerYear",
           "vacations",
           "tanks"
         ],
         "type": "object",
         "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
           "freezesPerYear": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
@@ -9633,6 +9732,20 @@
             "format": "date-time"
           },
           "onlyMe": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          }
+        }
+      },
+      "UpdateMeSettingsRequest": {
+        "required": [
+          "streaksEnabled"
+        ],
+        "type": "object",
+        "properties": {
+          "streaksEnabled": {
             "type": [
               "null",
               "boolean"
