@@ -1,12 +1,15 @@
 ---
 id: TASK-5.20.3
 title: Gallery entries are stories
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-16 14:17'
+updated_date: '2026-10-16 18:30'
 labels: []
 dependencies:
   - TASK-5.20.2
+references:
+  - app/mobile/e2e/playwright/story.write.mjs
 parent_task_id: TASK-5.20
 priority: high
 ordinal: 104000
@@ -48,3 +51,15 @@ Every gallery entry is a story: an ordered sequence of items (media links with r
 - ETL and VerifyStep write and verify the story shape.
 - App: gallery card with cover, story view with swipeable items, captions and cards.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implementation (2026-10-16)
+- post becomes story (kind and tank_id gone, cover_media_link_id with ON DELETE SET NULL), post_species becomes story_subject (tank, inhabitant, species; exactly-one key; optional position; unique per story); post_id becomes story_id in comment, rating, collection_entry, slug_alias and media_link; outbox types and payload keys follow (story.published, storyId), webhook subscriptions rewritten; migration 20261016181720_GalleryStories with full Down and a test in both directions.
+- Routes /api/stories, /api/stories/{slug}, comments, /api/stories/{id}/publish and DELETE, /api/profiles/{id}/stories; list carries cover and itemCount; detail carries items with captions and the subjects the viewer may see (tank and inhabitant subjects by the viewer-aware tank visibility of TASK-5.15, species public).
+- App: gallery card with cover and item count, story pager with captions and positioned cards, references below the text.
+- Web addresses /gallery/<slug>, public slugs and legacy redirects stay; mobile test ids picture-* stay.
+- Interpretations: see the journal F21 (video limit counts published stories; Discover excludes stories with a non-public tank subject; cover membership is kept by the application and checked by VerifyStep).
+- Verification (branch on main): .NET 639/2039 (1 skipped)/350, client-core 258, mobile 440, 45 write e2e specs green.
+<!-- SECTION:NOTES:END -->
