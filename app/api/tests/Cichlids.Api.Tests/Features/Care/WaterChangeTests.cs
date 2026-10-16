@@ -355,8 +355,8 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
     }
 
     // Runs a session whose draining span is long enough with one app photo received during draining;
-    // setCaptureTime sets the EXIF capture time of the stored photo before the finish.
-    private async Task<JsonElement> RunWithPhotoAsync(string token, long tank, byte[] bytes, string? setCaptureTimeSql = null)
+    // captureTimeUtc sets the EXIF capture time of the stored photo before the finish.
+    private async Task<JsonElement> RunWithPhotoAsync(string token, long tank, byte[] bytes, DateTime? captureTimeUtc = null)
     {
         var id = (await StartAsync(token, tank)).GetProperty("id").GetInt64();
         using (var drain = await StepAsync(token, tank, id, "draining_started", "done")) Assert.Equal(HttpStatusCode.OK, drain.StatusCode);
@@ -365,8 +365,10 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
         await using (var db = fixture.CreateDbContext())
         {
             await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE water_change_session_step SET at = at + interval '12 minutes' WHERE session_id = {id} AND step = 'refill_started'");
-            if (setCaptureTimeSql is not null)
-                await db.Database.ExecuteSqlRawAsync($"UPDATE media_item SET taken_at_local = {setCaptureTimeSql}, taken_at_offset_minutes = 0 WHERE id IN (SELECT media_item_id FROM water_change_session_photo WHERE session_id = {id})");
+            if (captureTimeUtc is { } captured)
+            {
+                await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE media_item SET taken_at_local = {captured}, taken_at_offset_minutes = 0 WHERE id IN (SELECT media_item_id FROM water_change_session_photo WHERE session_id = {id})");
+            }
         }
         using var finished = await FinishAsync(token, tank, id);
         return (await BodyAsync(finished)).GetProperty("entry").GetProperty("evidence").Clone();
@@ -378,10 +380,10 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
     public async Task GivenACaptureTimeFarFromTheSession_WhenFinishing_ThenThePhotoDoesNotCount()
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);
-        var old = await RunWithPhotoAsync(token, tank, Jpeg(800, 600), "TIMESTAMP '2020-01-01 10:00:00'");
+        var old = await RunWithPhotoAsync(token, tank, Jpeg(800, 600), new DateTime(2020, 1, 1, 10, 0, 0, DateTimeKind.Utc));
         Assert.Equal("partial", old.GetProperty("state").GetString());
         Assert.Equal(["photo_outside_session"], MissingOf(old));
-        var future = await RunWithPhotoAsync(token, tank, Jpeg(810, 600), "(now() AT TIME ZONE 'utc') + interval '2 hours'");
+        var future = await RunWithPhotoAsync(token, tank, Jpeg(810, 600), DateTime.UtcNow.AddHours(2));
         Assert.Equal(["photo_outside_session"], MissingOf(future));
     }
 
@@ -389,7 +391,7 @@ public sealed class WaterChangeTests(UploadsFixture fixture)
     public async Task GivenACaptureTimeInsideTheSessionOrNone_WhenFinishing_ThenThePhotoCounts()
     {
         var (token, tank) = await OwnTankAsync(fixture.Client);
-        var inside = await RunWithPhotoAsync(token, tank, Jpeg(800, 600), "(now() AT TIME ZONE 'utc') - interval '1 minute'");
+        var inside = await RunWithPhotoAsync(token, tank, Jpeg(800, 600), DateTime.UtcNow.AddMinutes(-1));
         Assert.Equal("verified", inside.GetProperty("state").GetString());
         var none = await RunWithPhotoAsync(token, tank, Jpeg(810, 600));
         Assert.Equal("verified", none.GetProperty("state").GetString());
