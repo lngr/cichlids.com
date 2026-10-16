@@ -59,7 +59,6 @@ public class TankConfiguration : IEntityTypeConfiguration<Tank>
                 "ck_tank_stream_within_profile",
                 "(CASE stream_visibility WHEN 'private' THEN 0 WHEN 'selected' THEN 1 WHEN 'followers' THEN 2 ELSE 3 END) <= " +
                 "(CASE profile_visibility WHEN 'private' THEN 0 WHEN 'selected' THEN 1 WHEN 'followers' THEN 2 ELSE 3 END)");
-            tb.HasCheckConstraint("ck_tank_media_move_attempts", "media_move_attempts >= 0");
         });
     }
 }

@@ -2095,8 +2095,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                             t.HasCheckConstraint("ck_tank_dimension_unit", "dimension_unit IS NULL OR dimension_unit IN ('cm', 'inch')");
 
-                            t.HasCheckConstraint("ck_tank_media_move_attempts", "media_move_attempts >= 0");
-
                             t.HasCheckConstraint("ck_tank_profile_visibility", "profile_visibility IN ('private', 'selected', 'followers', 'public')");
 
                             t.HasCheckConstraint("ck_tank_region", "region IS NULL OR region IN ('lake_malawi', 'lake_tanganyika', 'lake_victoria', 'africa_other', 'central_america', 'south_america', 'mixed', 'americas_unassigned')");
