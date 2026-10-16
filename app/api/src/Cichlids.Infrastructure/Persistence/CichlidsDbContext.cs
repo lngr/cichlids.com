@@ -28,6 +28,8 @@ public class CichlidsDbContext : DbContext
     public DbSet<VideoJob> VideoJobs => Set<VideoJob>();
     public DbSet<VideoUpload> VideoUploads => Set<VideoUpload>();
     public DbSet<CareTodo> CareTodos => Set<CareTodo>();
+    public DbSet<WaterChangeSession> WaterChangeSessions => Set<WaterChangeSession>();
+    public DbSet<WaterChangeSessionStep> WaterChangeSessionSteps => Set<WaterChangeSessionStep>();
     public DbSet<CarePlanRule> CarePlanRules => Set<CarePlanRule>();
     public DbSet<Tank> Tanks => Set<Tank>();
     public DbSet<Inhabitant> Inhabitants => Set<Inhabitant>();

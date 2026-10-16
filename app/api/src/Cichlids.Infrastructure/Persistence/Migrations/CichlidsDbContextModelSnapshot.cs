@@ -118,6 +118,21 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("author_profile_id");
 
+                    b.Property<int?>("DurationSeconds")
+                        .HasColumnType("integer")
+                        .HasColumnName("duration_seconds");
+
+                    b.Property<string>("Evidence")
+                        .HasColumnType("text")
+                        .HasColumnName("evidence");
+
+                    b.PrimitiveCollection<List<string>>("EvidenceMissing")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("text[]")
+                        .HasColumnName("evidence_missing")
+                        .HasDefaultValueSql("'{}'");
+
                     b.Property<string>("Kind")
                         .IsRequired()
                         .HasColumnType("text")
@@ -139,11 +154,20 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("tank_id");
 
+                    b.Property<long?>("WaterChangeSessionId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("water_change_session_id");
+
                     b.HasKey("Id")
                         .HasName("pk_care_entry");
 
                     b.HasIndex("AuthorProfileId")
                         .HasDatabaseName("ix_care_entry_author_profile_id");
+
+                    b.HasIndex("WaterChangeSessionId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_care_entry_water_change_session_id")
+                        .HasFilter("water_change_session_id IS NOT NULL");
 
                     b.HasIndex("TankId", "OccurredAt", "Id")
                         .IsDescending(false, true, true)
@@ -152,6 +176,8 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.ToTable("care_entry", "public", t =>
                         {
                             t.HasCheckConstraint("ck_care_amount", "(amount_input_value IS NULL AND amount_input_unit IS NULL AND amount_liters IS NULL)\nOR (amount_input_value IS NOT NULL AND amount_input_value > 0 AND amount_input_value <= 1000000\n    AND amount_input_unit IS NOT NULL AND (\n        (amount_input_unit = 'percent' AND amount_input_value <= 100 AND amount_liters IS NULL)\n        OR (amount_input_unit = 'liter' AND amount_liters IS NOT NULL AND amount_liters = amount_input_value)\n        OR (amount_input_unit = 'us_gallon' AND amount_liters IS NOT NULL AND amount_liters > 0)))");
+
+                            t.HasCheckConstraint("ck_care_evidence", "evidence IS NULL OR (evidence IN ('none', 'partial', 'verified') AND kind = 'water_change' AND water_change_session_id IS NOT NULL AND duration_seconds >= 0)");
 
                             t.HasCheckConstraint("ck_care_kind", "kind IN ('water_change', 'measurement')");
 
@@ -2128,6 +2154,127 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.WaterChangeSession", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<bool?>("DrainedCapturedInApp")
+                        .HasColumnType("boolean")
+                        .HasColumnName("drained_captured_in_app");
+
+                    b.Property<long?>("DrainedMediaItemId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("drained_media_item_id");
+
+                    b.Property<DateTimeOffset?>("DrainedPhotoAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("drained_photo_at");
+
+                    b.Property<int?>("DurationSeconds")
+                        .HasColumnType("integer")
+                        .HasColumnName("duration_seconds");
+
+                    b.Property<DateTimeOffset?>("FinishedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("finished_at");
+
+                    b.Property<long>("ProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("profile_id");
+
+                    b.Property<bool?>("RefilledCapturedInApp")
+                        .HasColumnType("boolean")
+                        .HasColumnName("refilled_captured_in_app");
+
+                    b.Property<long?>("RefilledMediaItemId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("refilled_media_item_id");
+
+                    b.Property<DateTimeOffset?>("RefilledPhotoAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("refilled_photo_at");
+
+                    b.Property<DateTimeOffset>("StartedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("started_at");
+
+                    b.Property<long>("TankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("tank_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_water_change_session");
+
+                    b.HasIndex("DrainedMediaItemId")
+                        .HasDatabaseName("ix_water_change_session_drained_media_item_id");
+
+                    b.HasIndex("ProfileId")
+                        .HasDatabaseName("ix_water_change_session_profile_id");
+
+                    b.HasIndex("RefilledMediaItemId")
+                        .HasDatabaseName("ix_water_change_session_refilled_media_item_id");
+
+                    b.HasIndex("TankId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_water_change_session_open")
+                        .HasFilter("finished_at IS NULL");
+
+                    b.HasIndex("TankId", "FinishedAt")
+                        .HasDatabaseName("ix_water_change_session_tank_id_finished_at");
+
+                    b.ToTable("water_change_session", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_water_change_session_finish", "(finished_at IS NULL AND duration_seconds IS NULL)\nOR (finished_at IS NOT NULL AND duration_seconds IS NOT NULL AND duration_seconds >= 0)");
+
+                            t.HasCheckConstraint("ck_water_change_session_photos", "((drained_photo_at IS NULL) = (drained_captured_in_app IS NULL))\nAND ((refilled_photo_at IS NULL) = (refilled_captured_in_app IS NULL))");
+                        });
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.WaterChangeSessionStep", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTimeOffset>("At")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("at");
+
+                    b.Property<long>("SessionId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("session_id");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("state");
+
+                    b.Property<string>("Step")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("step");
+
+                    b.HasKey("Id")
+                        .HasName("pk_water_change_session_step");
+
+                    b.HasIndex("SessionId", "Step")
+                        .IsUnique()
+                        .HasDatabaseName("ix_water_change_session_step_session_id_step");
+
+                    b.ToTable("water_change_session_step", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_water_change_session_step_state", "state IN ('done', 'skipped')");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.WebPushReminderSent", b =>
                 {
                     b.Property<long>("Id")
@@ -2365,6 +2512,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_care_entry_tanks_tank_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.WaterChangeSession", null)
+                        .WithMany()
+                        .HasForeignKey("WaterChangeSessionId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_care_entry_water_change_sessions_water_change_session_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.CareMeasurementValue", b =>
@@ -2800,8 +2953,8 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Cichlids.Domain.Entities.VideoJob", b =>
                 {
                     b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
-                        .WithMany()
-                        .HasForeignKey("MediaItemId")
+                        .WithOne("VideoJob")
+                        .HasForeignKey("Cichlids.Domain.Entities.VideoJob", "MediaItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_video_job_media_item_media_item_id");
@@ -2822,6 +2975,45 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_video_upload_tank_tank_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.WaterChangeSession", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
+                        .WithMany()
+                        .HasForeignKey("DrainedMediaItemId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_water_change_session_media_item_drained_media_item_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_water_change_session_profile_profile_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.MediaItem", null)
+                        .WithMany()
+                        .HasForeignKey("RefilledMediaItemId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_water_change_session_media_item_refilled_media_item_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("TankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_water_change_session_tank_tank_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.WaterChangeSessionStep", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.WaterChangeSession", null)
+                        .WithMany("Steps")
+                        .HasForeignKey("SessionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_water_change_session_step_water_change_session_session_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.WebPushReminderSent", b =>
@@ -2885,6 +3077,8 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Cichlids.Domain.Entities.MediaItem", b =>
                 {
                     b.Navigation("Variants");
+
+                    b.Navigation("VideoJob");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Post", b =>
@@ -2911,6 +3105,11 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.Navigation("Inhabitants");
 
                     b.Navigation("Media");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.WaterChangeSession", b =>
+                {
+                    b.Navigation("Steps");
                 });
 #pragma warning restore 612, 618
         }
