@@ -54,7 +54,7 @@ it("changes a rule and lists the due care of the member", async () => {
   const client = createCichlidsClient({ baseUrl: "http://care.test", getAccessToken: async () => "care-token", fetch: async request => {
     const req = request as Request; requests.push(req);
     if (req.url.includes("/me/care/due")) return Response.json({ items: [{ tankId: 4, tankTitle: "Mbuna", kind: "water_change", rhythmDays: 7,
-      reason: { code: "cichlid_default", parameters: null }, due: { state: "due_today", days: 0, dueDate: "2026-10-15" } }] });
+      reason: { code: "cichlid_default", parameters: null }, due: { state: "due_today", days: 0, dueDate: "2026-10-15" }, remindersEnabled: false }] });
     if (req.method === "PATCH" && req.url.includes("/plan/measurement")) return Response.json({ code: "care_plan_invalid", detail: "x" }, { status: 400 });
     return Response.json({ tankId: 42, rules: [] });
   } });
@@ -68,5 +68,18 @@ it("changes a rule and lists the due care of the member", async () => {
   const due = await client.care.due({ date: "2026-10-15", utcOffsetMinutes: -300 });
   expect(requests[3].url).toBe("http://care.test/api/me/care/due?date=2026-10-15&utcOffsetMinutes=-300");
   expect(due).toEqual([{ tankId: 4, tankTitle: "Mbuna", kind: "water_change", rhythmDays: 7,
-    reason: { code: "cichlid_default", parameters: null }, due: { state: "due_today", days: 0, dueDate: "2026-10-15" } }]);
+    reason: { code: "cichlid_default", parameters: null }, due: { state: "due_today", days: 0, dueDate: "2026-10-15" }, remindersEnabled: false }]);
+});
+it("reads and switches the reminders of a tank", async () => {
+  const requests: Request[] = [];
+  const client = createCichlidsClient({ baseUrl: "http://care.test", getAccessToken: async () => "care-token", fetch: async request => {
+    const req = request as Request; requests.push(req);
+    return Response.json({ tankId: 42, rules: [], remindersEnabled: req.method === "GET" });
+  } });
+  expect((await client.care.plan(42, { date: "2026-10-15" })).remindersEnabled).toBe(true);
+  const off = await client.care.setReminders(42, false, { date: "2026-10-15", utcOffsetMinutes: 60 });
+  expect(requests[1].method).toBe("PATCH");
+  expect(requests[1].url).toBe("http://care.test/api/tanks/42/care/plan?date=2026-10-15&utcOffsetMinutes=60");
+  expect(await requests[1].json()).toEqual({ remindersEnabled: false });
+  expect(off.remindersEnabled).toBe(false);
 });

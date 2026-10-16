@@ -23,6 +23,7 @@ import {
   getCarePlan,
   getCareSeries,
   listDueCare,
+  updateCarePlan,
   updateCarePlanRule,
   getCommunityThread,
   getFeatureFlags,
@@ -117,8 +118,8 @@ export type CareDue = { state: CareDueState; days: number; dueDate: string | nul
 export type CarePlanRule = {
   kind: CareKind; rhythmDays: number | null; enabled: boolean; isDefault: boolean; reason: CareReason | null; due: CareDue | null;
 };
-export type CarePlan = { tankId: number; rules: CarePlanRule[] };
-export type DueCareItem = { tankId: number; tankTitle: string; kind: CareKind; rhythmDays: number; reason: CareReason; due: CareDue };
+export type CarePlan = { tankId: number; rules: CarePlanRule[]; remindersEnabled: boolean };
+export type DueCareItem = { tankId: number; tankTitle: string; kind: CareKind; rhythmDays: number; reason: CareReason; due: CareDue; remindersEnabled: boolean };
 export type CarePlanChange = { rhythmDays?: number; enabled?: boolean };
 /** The member's local calendar date (YYYY-MM-DD) and, optionally, the offset of the clock from UTC in minutes. */
 export type LocalTime = { date: string; utcOffsetMinutes?: number };
@@ -260,10 +261,11 @@ const toPlan = (plan: CarePlanDto): CarePlan => ({
     kind: rule.kind, rhythmDays: rule.rhythmDays === null ? null : Number(rule.rhythmDays), enabled: rule.enabled,
     isDefault: rule.isDefault, reason: rule.reason && toReason(rule.reason), due: rule.due && toDue(rule.due),
   })),
+  remindersEnabled: plan.remindersEnabled,
 });
 const toDueItem = (item: DueCareItemDto): DueCareItem => ({
   tankId: Number(item.tankId), tankTitle: item.tankTitle, kind: item.kind, rhythmDays: Number(item.rhythmDays),
-  reason: toReason(item.reason), due: toDue(item.due),
+  reason: toReason(item.reason), due: toDue(item.due), remindersEnabled: item.remindersEnabled,
 });
 
 export interface CichlidsClient {
@@ -283,6 +285,8 @@ export interface CichlidsClient {
     photoUrl(path: string): string;
     plan(tankId: number, local: LocalTime): Promise<CarePlan>;
     changeRule(tankId: number, kind: CareKind, change: CarePlanChange, local: LocalTime): Promise<CarePlan>;
+    /** Switches the care reminders of a tank on or off for every device of the member. */
+    setReminders(tankId: number, enabled: boolean, local: LocalTime): Promise<CarePlan>;
     due(local: LocalTime): Promise<DueCareItem[]>;
   };
   todos: {
@@ -392,6 +396,9 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       async plan(tankId, local) { return toPlan(unwrap(await getCarePlan({ client, path: { tankId }, query: local }))); },
       async changeRule(tankId, kind, change, local) {
         return toPlan(unwrap(await updateCarePlanRule({ client, path: { tankId, kind }, query: local, body: change })));
+      },
+      async setReminders(tankId, enabled, local) {
+        return toPlan(unwrap(await updateCarePlan({ client, path: { tankId }, query: local, body: { remindersEnabled: enabled } })));
       },
       async due(local) { return unwrap<DueCareDto>(await listDueCare({ client, query: local })).items.map(toDueItem); },
     },
