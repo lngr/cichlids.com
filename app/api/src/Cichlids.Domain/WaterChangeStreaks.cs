@@ -83,6 +83,13 @@ public static class WaterChangeStreaks
     /// </summary>
     public static int AllowedDays(int rhythmDays) => rhythmDays + GraceDays(rhythmDays);
 
+    /// <summary>
+    /// The first day on which the member is reminded of a running streak: the last day of the rhythm
+    /// before the grace begins, which is the grace in days before the deadline. The reminders of the
+    /// period fall on every day from there through the deadline.
+    /// </summary>
+    public static DateOnly FirstReminderDay(DateOnly deadline, int rhythmDays) => deadline.AddDays(-GraceDays(rhythmDays));
+
     private sealed record Day(DateOnly Date, IReadOnlyList<long> Ids, bool Verified);
 
     /// <summary>

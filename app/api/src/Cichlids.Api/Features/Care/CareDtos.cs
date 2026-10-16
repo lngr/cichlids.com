@@ -38,8 +38,19 @@ public sealed record CarePlanRuleDto(CareKind Kind, int? RhythmDays, bool Enable
 public sealed record CarePlanDto(long TankId, IReadOnlyList<CarePlanRuleDto> Rules, bool RemindersEnabled);
 public sealed record UpdateCarePlanRequest(bool? RemindersEnabled = null);
 public sealed record UpdateCarePlanRuleRequest(int? RhythmDays = null, bool? Enabled = null);
+/// <summary>
+/// The water change streak of a due water change as the reminders need it. State is Running or Paused.
+/// While the streak is running, ReminderFrom and Deadline are the first and the last local date on
+/// which the member is reminded; while it is paused by a vacation, both are null and no reminder falls.
+/// </summary>
+public sealed record DueStreakDto(Cichlids.Domain.WaterChangeStreakState State, string? ReminderFrom, string? Deadline);
+
+/// <summary>
+/// A due rule of a tank. Streak is set for a water change whose streak is running or paused and is
+/// null otherwise.
+/// </summary>
 public sealed record DueCareItemDto(long TankId, string TankTitle, CareKind Kind, int RhythmDays, CareReasonDto Reason, CareDueDto Due,
-    bool RemindersEnabled);
+    bool RemindersEnabled, DueStreakDto? Streak = null);
 public sealed record DueCareDto(IReadOnlyList<DueCareItemDto> Items);
 
 /// <summary>

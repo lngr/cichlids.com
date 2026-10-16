@@ -110,11 +110,34 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
         return new MeStreaksDto(Freezes, vacations.Select(ToDto).ToList(), result);
     }
 
+    /// <summary>
+    /// The reminder window of the water change streak of each given tank, from the rhythm of its water
+    /// change rule. A running streak has the days from the first reminder day through its deadline, a
+    /// streak paused by a vacation has none, and every other tank is left out. Nothing is recorded.
+    /// </summary>
+    public async Task<Dictionary<long, DueStreakDto>> GetReminderWindowsAsync(long profileId, IReadOnlyDictionary<long, int> rhythmByTank,
+        DateOnly today, int utcOffsetMinutes, CancellationToken ct)
+    {
+        var windows = new Dictionary<long, DueStreakDto>();
+        if (rhythmByTank.Count == 0) return windows;
+        var histories = await LoadAsync(rhythmByTank.Keys.ToList(), ct, includePhotos: false);
+        var spans = (await LoadVacationsAsync(profileId, ct)).Select(v => v.Span).ToList();
+        foreach (var (tankId, rhythmDays) in rhythmByTank)
+        {
+            var streak = EvaluateWater(histories[tankId], spans, today, utcOffsetMinutes);
+            if (streak is { State: WaterChangeStreakState.Running, Deadline: { } deadline })
+                windows[tankId] = new DueStreakDto(streak.State, Format(WaterChangeStreaks.FirstReminderDay(deadline, rhythmDays)), Format(deadline));
+            else if (streak.State == WaterChangeStreakState.Paused)
+                windows[tankId] = new DueStreakDto(streak.State, null, null);
+        }
+        return windows;
+    }
+
     private WaterChangeStreak EvaluateWater(TankHistory history, IReadOnlyList<VacationSpan> spans, DateOnly today, int utcOffsetMinutes) =>
         WaterChangeStreaks.Evaluate(history.Changes, history.Rhythm, spans, history.Recorded, Freezes,
             CarePlans.LocalDate(history.TankCreatedAt, utcOffsetMinutes), today, utcOffsetMinutes);
 
-    private async Task<Dictionary<long, TankHistory>> LoadAsync(IReadOnlyCollection<long> tankIds, CancellationToken ct)
+    private async Task<Dictionary<long, TankHistory>> LoadAsync(IReadOnlyCollection<long> tankIds, CancellationToken ct, bool includePhotos = true)
     {
         var created = await context.Tanks.AsNoTracking().Where(t => tankIds.Contains(t.Id)).Select(t => new { t.Id, t.CreatedAt }).ToListAsync(ct);
         var result = created.ToDictionary(t => t.Id, t => new TankHistory(t.CreatedAt, [], [], [], []));
@@ -126,6 +149,7 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
         foreach (var change in rhythm) result[change.TankId].Rhythm.Add(new RhythmChange(change.At, change.RhythmDays, change.Enabled));
         var freezes = await context.StreakFreezes.AsNoTracking().Where(f => tankIds.Contains(f.TankId)).Select(f => new { f.TankId, f.CareEntryId }).ToListAsync(ct);
         foreach (var freeze in freezes) result[freeze.TankId].Recorded.Add(freeze.CareEntryId);
+        if (!includePhotos) return result;
         var photos = await context.TankMedia.AsNoTracking().Where(m => tankIds.Contains(m.TankId) && m.Section == TankMediaSection.TimeLapse && m.CapturedInApp)
             .Join(context.MediaItems, m => m.MediaItemId, i => i.Id, (m, i) => new { m.TankId, i.Id, i.CreatedAt }).ToListAsync(ct);
         foreach (var photo in photos) result[photo.TankId].Photos.Add(new SeriesPhoto(photo.Id, photo.CreatedAt));

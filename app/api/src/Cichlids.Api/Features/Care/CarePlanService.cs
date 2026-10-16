@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Text.Json;
 using Cichlids.Api.Features.Common;
+using Cichlids.Api.Features.Streaks;
 using Cichlids.Domain;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
@@ -14,7 +15,7 @@ namespace Cichlids.Api.Features.Care;
 /// without a stored rule falls back to the default rule of the domain. Every change of the rhythm
 /// or of the switch is added to the history of the rule.
 /// </summary>
-public sealed class CarePlanService(CichlidsDbContext context, TimeProvider clock)
+public sealed class CarePlanService(CichlidsDbContext context, TimeProvider clock, StreakService streaks)
 {
     private static readonly CareKind[] Kinds = [CareKind.WaterChange, CareKind.Measurement];
 
@@ -117,7 +118,8 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
     /// <summary>
     /// The enabled rules of all live tanks of a profile with their due state: overdue first (the
     /// longest overdue first), then due today, then due in a number of days (the nearest first),
-    /// then never logged.
+    /// then never logged. A water change with reminders on and a running or paused streak carries the
+    /// reminder window of the streak.
     /// </summary>
     public async Task<DueCareDto> ListDueAsync(long profileId, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
     {
@@ -134,6 +136,10 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
             items.AddRange(plan.Rules.Where(r => r is { Enabled: true, Due: not null, RhythmDays: not null, Reason: not null })
                 .Select(r => new DueCareItemDto(tank.Id, tank.Title, r.Kind, r.RhythmDays!.Value, r.Reason!, r.Due!, tank.CareRemindersEnabled)));
         }
+        var rhythms = items.Where(i => i is { Kind: CareKind.WaterChange, RemindersEnabled: true } && i.Due.State != CareDueState.NeverLogged)
+            .ToDictionary(i => i.TankId, i => i.RhythmDays);
+        var windows = await streaks.GetReminderWindowsAsync(profileId, rhythms, today, utcOffsetMinutes, ct);
+        items = items.Select(i => i.Kind == CareKind.WaterChange && windows.TryGetValue(i.TankId, out var window) ? i with { Streak = window } : i).ToList();
         var ordered = items.OrderBy(i => i.Due.State switch
             {
                 CareDueState.Overdue => 0, CareDueState.DueToday => 1, CareDueState.DueIn => 2, _ => 3,
