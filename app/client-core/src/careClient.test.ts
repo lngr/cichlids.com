@@ -40,13 +40,15 @@ it("reads the care plan with the local time and normalizes numbers", async () =>
     return Response.json({ tankId: "42", rules: [
       { kind: "water_change", rhythmDays: "7", enabled: true, isDefault: true, reason: { code: "cichlid_default", parameters: null }, due: { state: "overdue", days: "3", dueDate: "2026-10-12" } },
       { kind: "measurement", rhythmDays: null, enabled: false, isDefault: true, reason: null, due: null },
+      { kind: "measurement", rhythmDays: "3", enabled: true, isDefault: false, reason: null, due: null, paused: true },
     ] });
   } });
   const plan = await client.care.plan(42, { date: "2026-10-15", utcOffsetMinutes: 120 });
   expect(requests[0].url).toBe("http://care.test/api/tanks/42/care/plan?date=2026-10-15&utcOffsetMinutes=120");
   expect(plan.rules[0]).toEqual({ kind: "water_change", rhythmDays: 7, enabled: true, isDefault: true,
-    reason: { code: "cichlid_default", parameters: null }, due: { state: "overdue", days: 3, dueDate: "2026-10-12" } });
-  expect(plan.rules[1]).toEqual({ kind: "measurement", rhythmDays: null, enabled: false, isDefault: true, reason: null, due: null });
+    reason: { code: "cichlid_default", parameters: null }, due: { state: "overdue", days: 3, dueDate: "2026-10-12" }, paused: false });
+  expect(plan.rules[1]).toEqual({ kind: "measurement", rhythmDays: null, enabled: false, isDefault: true, reason: null, due: null, paused: false });
+  expect(plan.rules[2]).toMatchObject({ rhythmDays: 3, due: null, paused: true });
   expect(plan.tankId).toBe(42);
 });
 it("changes a rule and lists the due care of the member", async () => {

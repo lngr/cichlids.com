@@ -3,8 +3,8 @@ import { createCichlidsClient } from "./client.js";
 import { HEATMAP_WEEKS, heatmapIntensity, heatmapListItems, layoutHeatmap } from "./careHeatmap.js";
 import type { CareHeatmap } from "./careHeatmap.js";
 
-const heatmap = (days: CareHeatmap["days"], end = "2026-10-15"): CareHeatmap => ({
-  start: "2026-06-29", end, weeks: 16, days, activeDays: days.length,
+const heatmap = (days: CareHeatmap["days"], end = "2026-10-15", decommissionedDays: string[] = []): CareHeatmap => ({
+  start: "2026-06-29", end, weeks: 16, days, activeDays: days.length, decommissionedDays,
   lastWaterChange: days.filter(d => d.waterChanges > 0).map(d => d.date).at(-1) ?? null,
   lastMeasurement: days.filter(d => d.measurements > 0).map(d => d.date).at(-1) ?? null,
 });
@@ -52,6 +52,11 @@ it("tells which kinds of care a day holds", () => {
   expect(kinds).toEqual(["water_change", "measurement", "both", "none"]);
 });
 
+it("marks the days of rest on the grid", () => {
+  const cells = layoutHeatmap(heatmap([], "2026-10-15", ["2026-10-12", "2026-10-13"])).columns.flat();
+  expect(cells.filter(cell => cell.decommissioned).map(cell => cell.date)).toEqual(["2026-10-12", "2026-10-13"]);
+});
+
 it("lists the cared days newest first as the fallback for the grid", () => {
   const items = heatmapListItems(heatmap([
     { date: "2026-07-01", waterChanges: 1, measurements: 0 },
@@ -66,11 +71,12 @@ it("reads the heatmap of a tank and of the own tanks with the local date and off
   const client = createCichlidsClient({ baseUrl: "http://heatmap.test", getAccessToken: async () => "token", fetch: async request => {
     requests.push(request as Request);
     return Response.json({ start: "2026-06-29", end: "2026-10-15", weeks: 16, days: [{ date: "2026-10-15", waterChanges: 1, measurements: 0 }],
-      activeDays: 1, lastWaterChange: "2026-10-15", lastMeasurement: null });
+      activeDays: 1, lastWaterChange: "2026-10-15", lastMeasurement: null, decommissionedDays: ["2026-10-10"] });
   } });
   const tank = await client.care.heatmap(7, { date: "2026-10-15", utcOffsetMinutes: 120 });
   expect(requests[0]!.url).toBe("http://heatmap.test/api/tanks/7/care/heatmap?date=2026-10-15&utcOffsetMinutes=120");
   expect(tank.days).toEqual([{ date: "2026-10-15", waterChanges: 1, measurements: 0 }]);
+  expect(tank.decommissionedDays).toEqual(["2026-10-10"]);
   const own = await client.care.ownHeatmap({ date: "2026-10-15" });
   expect(requests[1]!.url).toBe("http://heatmap.test/api/me/care/heatmap?date=2026-10-15");
   expect(own.lastWaterChange).toBe("2026-10-15");

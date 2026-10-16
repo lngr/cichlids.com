@@ -3,6 +3,8 @@ import type { Client } from "./generated/client/index.js";
 import type { VideoUploadTransport } from "./videoUpload.js";
 import { toCareHeatmap } from "./careHeatmap.js";
 import type { CareHeatmap } from "./careHeatmap.js";
+import { toTankOperation } from "./decommission.js";
+import type { DecommissionScope, TankOperation } from "./decommission.js";
 import { toMeStreaks, toTankStreaks, toVacation } from "./streaks.js";
 import type { MeStreaks, TankStreaks, Vacation } from "./streaks.js";
 import {
@@ -58,6 +60,9 @@ import {
   getTank,
   getTankTimeLapse,
   addTankSeriesPhoto,
+  getTankOperation,
+  decommissionTank,
+  recommissionTank,
   appendVideoUploadChunk,
   cancelVideoUpload,
   completeVideoUpload,
@@ -162,6 +167,8 @@ export type CareReason = { code: string; parameters: Record<string, string> | nu
 export type CareDue = { state: CareDueState; days: number; dueDate: string | null };
 export type CarePlanRule = {
   kind: CareKind; rhythmDays: number | null; enabled: boolean; isDefault: boolean; reason: CareReason | null; due: CareDue | null;
+  /** Whether a decommissioning of the tank pauses this kind of care; a paused rule has no due state. */
+  paused: boolean;
 };
 export type CarePlan = { tankId: number; rules: CarePlanRule[]; remindersEnabled: boolean };
 /**
@@ -343,7 +350,7 @@ const toPlan = (plan: CarePlanDto): CarePlan => ({
   tankId: Number(plan.tankId),
   rules: plan.rules.map(rule => ({
     kind: rule.kind, rhythmDays: rule.rhythmDays === null ? null : Number(rule.rhythmDays), enabled: rule.enabled,
-    isDefault: rule.isDefault, reason: rule.reason && toReason(rule.reason), due: rule.due && toDue(rule.due),
+    isDefault: rule.isDefault, reason: rule.reason && toReason(rule.reason), due: rule.due && toDue(rule.due), paused: rule.paused === true,
   })),
   remindersEnabled: plan.remindersEnabled,
 });
@@ -434,6 +441,15 @@ export interface CichlidsClient {
     addTimeLapsePhoto(id: number, file: UploadFile, capturedInApp?: boolean): Promise<TankTimeLapsePhoto>;
     /** The streaks of a tank a viewer may see; local is the date of the viewer. */
     streaks(id: number, local: LocalTime): Promise<TankStreaks>;
+    /** The operating time and the decommissionings of a tank whose care stream the viewer sees. */
+    operation(id: number, local: LocalTime): Promise<TankOperation>;
+    /**
+     * Decommissions an own tank with the photo of the empty tank; capturedInApp tells that the camera of
+     * the app took it, which the decommissioning requires.
+     */
+    decommission(id: number, file: UploadFile, options: { scope: DecommissionScope; capturedInApp: boolean }, local: LocalTime): Promise<TankOperation>;
+    /** Puts an own decommissioned tank back into operation with the photo of the filled tank. */
+    recommission(id: number, file: UploadFile, capturedInApp: boolean, local: LocalTime): Promise<TankOperation>;
     listComments(id: number, params?: PageParams): Promise<PagedResponse<Comment>>;
     createComment(id: number, request: CreateCommentRequest): Promise<CommentCreated>;
   };
@@ -662,6 +678,32 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async streaks(id, local) {
         return toTankStreaks(unwrap(await getTankStreaks({ client, path: { tankId: id }, query: local })));
+      },
+      async operation(id, local) {
+        return toTankOperation(absolutizeTankMedia(unwrap(await getTankOperation({ client, path: { tankId: id }, query: local })), options.baseUrl));
+      },
+      async decommission(id, file, { scope, capturedInApp }, local) {
+        return toTankOperation(absolutizeTankMedia(unwrap(await decommissionTank({
+          client, path: { tankId: id }, query: local, body: { file: file as never, capturedInApp, scope },
+          bodySerializer: () => {
+            const formData = new FormData();
+            formData.append("file", file as never);
+            formData.append("capturedInApp", capturedInApp ? "true" : "false");
+            formData.append("scope", scope);
+            return formData;
+          },
+        })), options.baseUrl));
+      },
+      async recommission(id, file, capturedInApp, local) {
+        return toTankOperation(absolutizeTankMedia(unwrap(await recommissionTank({
+          client, path: { tankId: id }, query: local, body: { file: file as never, capturedInApp },
+          bodySerializer: () => {
+            const formData = new FormData();
+            formData.append("file", file as never);
+            formData.append("capturedInApp", capturedInApp ? "true" : "false");
+            return formData;
+          },
+        })), options.baseUrl));
       },
       async setVisibility(id, levels) {
         return unwrap(await setTankVisibility({ client, path: { id }, body: levels }));
