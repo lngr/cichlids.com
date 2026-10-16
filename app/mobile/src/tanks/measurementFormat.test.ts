@@ -53,7 +53,7 @@ describe("chart segments", () => {
 
 describe("measurement lines", () => {
   const entry = {
-    id: 1, tankId: 1, authorProfileId: 1, kind: "measurement" as const, occurredAt: "2026-10-01T10:00:00Z", recordedAt: "2026-10-01T10:00:00Z", amount: null, note: null, photos: [], todos: [],
+    id: 1, tankId: 1, authorProfileId: 1, kind: "measurement" as const, occurredAt: "2026-10-01T10:00:00Z", recordedAt: "2026-10-01T10:00:00Z", amount: null, note: null, photos: [], videos: [], todos: [],
     values: [
       { parameter: "ph" as const, value: 7.2, unit: "none" as const, normalizedValue: 7.2, canonicalUnit: "none" as const, origin: "test_kit" as const },
       { parameter: "temperature" as const, value: 25, unit: "celsius" as const, normalizedValue: 25, canonicalUnit: "celsius" as const, origin: null },

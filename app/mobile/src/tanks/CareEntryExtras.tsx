@@ -10,6 +10,7 @@ import { TextEntryModal } from "../components/TextEntryModal";
 import { translateApiError } from "../lib/apiErrors";
 import { minTouchTarget, useTheme } from "../theme";
 import { PhotoPickButton } from "../upload/PhotoPickButton";
+import { CareEntryVideos } from "../video/CareEntryVideos";
 import { canAddPhoto, photoPath } from "./carePhotos";
 import type { CareStream } from "./useCareStream";
 
@@ -52,6 +53,7 @@ export function CareEntryExtras({ entry, stream }: { entry: CareEntry; stream: C
         </Pressable>;
       })}
     </View> : null}
+    <CareEntryVideos entry={entry} reload={stream.list.reload} />
     {entry.note ? <Text testID={`care-note-text-${entry.id}`} style={[theme.type.body, text]}>{entry.note}</Text> : null}
     {entry.todos.map(todo => <View key={String(todo.id)} testID={`care-todo-${todo.id}`} accessible accessibilityLabel={t(todo.done ? "care.todo.done" : "care.todo.open", { text: todo.text })}
       style={{ flexDirection: "row", alignItems: "center", gap: theme.space[2] }}>

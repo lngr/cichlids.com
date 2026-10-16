@@ -1,5 +1,6 @@
 export { createCichlidsClient, ApiError } from "./client.js";
 export { uploadVideo } from "./videoUpload.js";
+export type { CreateVideoUploadRequest } from "./generated/types.gen.js";
 export type { UploadVideoOptions, VideoUploadSession, VideoUploadSource, VideoUploadTransport } from "./videoUpload.js";
 export type {
   CareEntry,
@@ -32,6 +33,8 @@ export type {
   WebPushSubscriptionRecord,
   WebPushSubscriptionRequest,
   CichlidsClient,
+  Video,
+  VideoState,
   CichlidsClientOptions,
   PicturesListParams,
   TanksListParams,

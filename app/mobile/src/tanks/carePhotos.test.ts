@@ -4,7 +4,7 @@ import { canAddPhoto, photoPath, remainingPhotoSlots } from "./carePhotos";
 
 const photo = (urls: Partial<CarePhoto["urls"]>): CarePhoto => ({ id: 1, width: 800, height: 600, urls: { thumb: null, small: null, medium: null, large: null, ...urls } });
 const entry = (photos: number): CareEntry => ({ id: 1, tankId: 2, authorProfileId: 3, kind: "water_change", occurredAt: "2026-10-15T12:00:00Z",
-  recordedAt: "2026-10-15T12:00:00Z", amount: null, values: null, note: null, todos: [], photos: Array.from({ length: photos }, (_, i) => ({ ...photo({ thumb: `/t${i}` }), id: i })) });
+  recordedAt: "2026-10-15T12:00:00Z", amount: null, values: null, note: null, todos: [], videos: [], photos: Array.from({ length: photos }, (_, i) => ({ ...photo({ thumb: `/t${i}` }), id: i })) });
 
 describe("photoPath", () => {
   it("prefers the requested size and falls back to the nearest variant that exists", () => {

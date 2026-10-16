@@ -20,6 +20,10 @@ import { measurementLines } from "./measurementFormat";
 import { useUnits } from "../units/useUnits";
 import { useLocalSearchParams } from "expo-router";
 import { TankRegionSlot } from "./TankRegionSlot";
+import { VideoCard } from "../video/VideoCard";
+import { TankVideosSection } from "../video/TankVideosSection";
+import { useTankVideos } from "../video/useTankVideos";
+import { videoStateOf } from "../video/videoState";
 
 function photoUrl(image: TankTimeLapse["photos"][number]["image"]) {
   return image.large ?? image.medium ?? image.small ?? image.thumb ?? "";
@@ -29,6 +33,7 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
   const { t, i18n } = useTranslation();
   const theme = useTheme();
   const stream = useCareStream(Number(tank.id), tank.author.id);
+  const ownVideos = useTankVideos(Number(tank.id), stream.owner);
   const system = useUnits();
   const { view } = useLocalSearchParams<{ view?: string }>();
   const router = useMachineRouter();
@@ -65,16 +70,19 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
       key: `care-${entry.id}`, date: entry.occurredAt,
       title: t(entry.kind === "measurement" ? "care.measure.entry" : "care.waterChange"),
       description: entry.kind === "measurement" ? measurementLines(entry, system, i18n.language).join("\n") : entry.amount ? formatCareAmount(entry.amount, i18n.language) : null,
-      image: undefined, slug: null,
+      image: undefined, slug: null, video: null,
     })),
     ...series.photos.filter(item => !postMedia.has(String(item.mediaItemId))).map(item => ({
       key: `photo-${item.mediaItemId}`, date: item.takenAt ?? item.publishedAt,
-      title: t("tankStory.photo"), description: null, image: item.image, slug: null,
+      title: t("tankStory.photo"), description: null, image: item.image, slug: null, video: null,
     })),
     ...series.posts.map(post => ({
       key: `post-${post.id}`, date: post.publishedAt, title: post.title ?? t("tankStory.post"), description: post.description,
       image: series.photos.find(item => post.mediaItemIds.some(id => String(id) === String(item.mediaItemId)))?.image,
-      slug: post.slug,
+      slug: post.slug, video: null,
+    })),
+    ...(stream.owner ? ownVideos.videos.filter(video => videoStateOf(video) === "ready") : series.videos).map(video => ({
+      key: `video-${video.id}`, date: video.createdAt, title: t("video.timeline"), description: null, image: undefined, slug: null, video,
     })),
   ].sort((a, b) => b.date.localeCompare(a.date) || b.key.localeCompare(a.key));
   function heading(label: string) { return <Text accessibilityRole="header" style={[theme.type.eyebrow, { color: theme.colors.muted, marginBottom: theme.space[3] }]}>{label}</Text>; }
@@ -156,6 +164,7 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
             <Button testID="tank-time-lapse-photo" variant="secondary" label={t("timeLapseCamera.action")} onPress={() => router.push(`/tanks/${tank.id}/camera`)} />
           </View> : null}
         </View>
+        {stream.owner ? <View style={[styles.card, card]}><TankVideosSection tankId={Number(tank.id)} videos={ownVideos.videos} reload={ownVideos.reload} /></View> : null}
         {tank.description ? <Text style={[theme.type.body, text]}>{tank.description}</Text> : null}
         <View style={styles.card}>
           {heading(t("tankStory.timeline"))}
@@ -169,6 +178,9 @@ export function TankExperience({ tank, series, children }: { tank: TankDetail; s
               <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{date(event.date)}</Text>
               <Text style={[theme.type.bodyStrong, text]}>{event.title}</Text>
               {event.description ? <Text style={[theme.type.body, text]}>{event.description}</Text> : null}
+              {event.video?.playlistUrl ? <View style={{ marginTop: theme.space[2] }}>
+                <VideoCard testID={`tank-timeline-video-${event.video.id}`} video={event.video} posterUrl={event.video.posterUrl ?? null} playlistUrl={event.video.playlistUrl} />
+              </View> : null}
             </View>
           </Pressable>)}
           {stream.owner && stream.list.hasMore ? <Button testID="tank-story-care-more" variant="secondary" label={t("care.more")} busy={stream.list.loadingMore} onPress={stream.list.loadMore} /> : null}
