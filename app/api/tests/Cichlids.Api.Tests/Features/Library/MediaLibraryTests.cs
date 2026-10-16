@@ -10,6 +10,7 @@ using Cichlids.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using static Cichlids.Api.Tests.Features.Care.CareTestSupport;
 using static Cichlids.Api.Tests.Features.Uploads.UploadTestSupport;
+using static Cichlids.Api.Tests.Features.Videos.VideoTestSupport;
 
 namespace Cichlids.Api.Tests.Features.Library;
 
@@ -313,6 +314,43 @@ public sealed class MediaLibraryTests(UploadsFixture fixture)
         Assert.Equal(0, (await BodyAsync(series)).GetProperty("photos").GetArrayLength());
         using var again = await SendAsync(fixture.Client, HttpMethod.Delete, $"/api/me/media/{item}", token);
         await AssertProblemAsync(again, HttpStatusCode.NotFound, "media_not_found");
+    }
+
+    [Fact]
+    public async Task GivenATankVideo_WhenListingAndDeleting_ThenTheLibraryShowsItWithItsPosterAndDeletingRemovesAllItsObjects()
+    {
+        var (token, tank) = await OwnTankAsync(fixture.Client);
+        var mediaItemId = (await UploadedAsync(fixture.Client, token, await SmallVideo, tank)).GetProperty("id").GetInt64();
+        await ProcessQueueAsync(fixture.Services);
+        var photo = await LibraryPhotoAsync(token, Jpeg(480, 360));
+
+        var videos = await ListAsync(token, "?kind=video");
+        Assert.Equal([mediaItemId], IdsOf(videos));
+        var entry = videos.GetProperty("items")[0];
+        Assert.Equal("video", entry.GetProperty("kind").GetString());
+        Assert.Equal(JsonValueKind.Null, entry.GetProperty("image").ValueKind);
+        var video = entry.GetProperty("video");
+        Assert.Equal("ready", video.GetProperty("state").GetString());
+        var posterUrl = video.GetProperty("posterUrl").GetString();
+        Assert.False(string.IsNullOrEmpty(posterUrl));
+        Assert.Equal(["tank"], entry.GetProperty("placeKinds").EnumerateArray().Select(k => k.GetString()));
+        Assert.Equal([photo], IdsOf(await ListAsync(token, "?kind=photo")));
+
+        List<string> keys;
+        await using (var db = fixture.CreateDbContext())
+        {
+            var item = await db.MediaItems.Include(m => m.Variants).SingleAsync(m => m.Id == mediaItemId);
+            keys = [item.StorageKey, .. item.Variants.Select(v => v.StorageKey)];
+        }
+
+        using var deleted = await SendAsync(fixture.Client, HttpMethod.Delete, $"/api/me/media/{mediaItemId}", token);
+        Assert.Equal(HttpStatusCode.OK, deleted.StatusCode);
+        foreach (var key in keys) Assert.False(await fixture.ObjectStore.ExistsAsync(key), key);
+        await using var after = fixture.CreateDbContext();
+        Assert.False(await after.MediaItems.AnyAsync(m => m.Id == mediaItemId));
+        Assert.False(await after.VideoJobs.AnyAsync(j => j.MediaItemId == mediaItemId));
+        using var tankVideos = await SendAsync(fixture.Client, HttpMethod.Get, $"/api/tanks/{tank}/videos", token);
+        Assert.Equal(0, (await BodyAsync(tankVideos)).GetArrayLength());
     }
 
     [Fact]
