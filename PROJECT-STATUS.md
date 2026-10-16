@@ -617,15 +617,17 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 - [x] **O2** Priorität: zuerst das Deployment (Strang A). Der MVP ist in `main` gemergt und dient als
   Testobjekt für Staging; die Stories in Review benötigen ihre Abnahme.
 - [x] **O3** ADR-0015 (Backlog.md) ist angenommen.
-- [ ] **O4** Serie in Wochen (TASK-5.5): Die Regel steht in den Notizen des Tasks, offen ist der
-  Umgang mit dem Freeze. Einträge beruhen auf Selbstauskunft; der Freeze verhindert erfundene
-  Einträge im Urlaub. Zur Wahl stehen eine nur private Serie mit Freeze, eine öffentliche Serie
-  mit Freeze, eine Serie ohne Freeze oder keine Serie. TASK-5.5 wartet auf diese Entscheidung.
-- [ ] **O5** Sichtbarkeit der Becken und Pflege-Einträge (TASK-5.7): Das Konzept ist entschieden
-  (Stufen öffentlich, Follower, ausgewählte Personen, privat; Verlauf erbt die Stufe des Profils;
-  ausdrückliche Frage beim Anlegen statt Voreinstellung; Notizen in TASK-5.7). Offen sind
-  Altbecken, vor der Frage angelegte Becken, das Ausblenden einzelner Einträge und Folgen ohne
-  Konto.
+- [x] **O4** Serien (TASK-5.5): entschieden. Die Wasserwechsel-Serie läuft in Plan-Perioden mit
+  einer Karenz von einem Drittel des Intervalls, aufgerundet. Ein Foto aus dem geführten
+  Wasserwechsel ist Pflicht, sonst hält nur ein Freeze die Serie (2 je Becken und Beckenjahr). Für
+  Urlaube gilt TASK-5.21: Urlaubstage zählen mit, die Frist endet frühestens am letzten Urlaubstag
+  plus Karenz. Tägliche Erinnerungen bis zum Fristende kommen aus TASK-5.18, der Schalter je Mitglied
+  aus TASK-5.19, die Stilllegung eines Beckens aus TASK-6. Regeln gegen gefälschte Serien stehen in
+  DRAFT-17.
+- [x] **O5** Sichtbarkeit der Becken und Pflege-Einträge (TASK-5.7): entschieden und umgesetzt.
+  Altbecken und vor der Frage angelegte Becken sind öffentlich, einzelne Einträge lassen sich auf
+  "nur ich" stellen, und ohne Konto lässt sich sehen, aber nicht folgen. Follower und ausgewählte
+  Personen folgen mit TASK-5.15.
 - [ ] **O6** Videolänge nach Reputation (TASK-5.10): Lange Videos (bis 3 Minuten) sollen nur
   Mitglieder mit einer gewissen Reputation hochladen dürfen. Was Reputation ist, wie sie entsteht
   und welche Länge für alle anderen gilt, ist auszuarbeiten; Punkte und Ranglisten sind für die
@@ -634,11 +636,11 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
   ergibt ein anonymes, vorläufiges Konto; das Web zeigt indexierbare Profile und vom Verlauf nur
   die letzten 2 bis 3 Einträge. Rechte vorläufiger Konten und die Architektur der
   Geräte-Anmeldung sind auszuarbeiten (Draft im Backlog).
-- [ ] **O8** Fotos zwischen Becken und Galerie: entschieden ist, dass jedes Foto und Video des
-  Beckens einmal in der Galerie geteilt werden kann; der Galerie-Eintrag verweist auf das
-  bestehende Medium, und der Becken-Bezug erscheint nur Betrachtern, die das Becken sehen dürfen.
-  Offen ist die Besprechung des Medien-Datenmodells mit dem User vor der Umsetzung.
-
+- [x] **O8** Fotos zwischen Becken und Galerie: entschieden in ADR-0029. Jedes Medium hängt über
+  einen Link an seinen Orten, Galerie-Einträge sind Stories mit Elementen, Beschriftungen,
+  Vorschaubild und Bezügen, und jedes Mitglied hat eine Mediathek. Schnelles Teilen erzeugt einmal je
+  Medium eine Story mit einem Bild; in weitere Stories lässt sich ein Medium beliebig oft aufnehmen.
+  Der Umbau steht in TASK-5.20.
 ---
 
 ## 10. Lese- und Arbeitsreihenfolge
