@@ -14,4 +14,5 @@ public sealed record ProfileDetailDto(
     ProfileStatsDto Stats,
     DateTimeOffset? OnboardingCompletedAt = null,
     string[]? Interests = null,
-    string[]? Badges = null);
+    string[]? Badges = null,
+    Streaks.VacationShareDto? VacationShare = null);

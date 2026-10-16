@@ -1,4 +1,5 @@
 using Cichlids.Api.Features.Care;
+using Cichlids.Api.Features.Streaks;
 using Cichlids.Api.Features.Discover;
 using System.Text.Json.Serialization;
 using Cichlids.Api.Features.Auth;
@@ -133,6 +134,8 @@ builder.Services.AddProblemDetails(options => options.CustomizeProblemDetails = 
 {
     if (CareEndpoints.IsCarePath(context.HttpContext.Request.Path))
         context.ProblemDetails.Extensions.TryAdd("code", "care_request_invalid");
+    else if (StreakEndpoints.IsStreakPath(context.HttpContext.Request.Path))
+        context.ProblemDetails.Extensions.TryAdd("code", StreakEndpoints.RequestInvalidCode);
     else if (WebPushEndpoints.IsWebPushPath(context.HttpContext.Request.Path))
         context.ProblemDetails.Extensions.TryAdd("code", "web_push_request_invalid");
     else if (TankSeriesPhotoEndpoints.IsSeriesPhotoPath(context.HttpContext.Request.Path))
@@ -170,6 +173,12 @@ builder.Services.AddOptions<WaterChangeOptions>()
 builder.Services.AddScoped<WaterChangeService>();
 builder.Services.AddHostedService<WaterChangeCleanupHostedService>();
 builder.Services.AddScoped<TankSeriesPhotoService>();
+builder.Services.AddOptions<StreakOptions>()
+    .Bind(builder.Configuration.GetSection(StreakOptions.SectionName))
+    .Validate(o => o.FreezesPerYear is >= 0 and <= 12, "Streaks:FreezesPerYear must be between 0 and 12.")
+    .ValidateOnStart();
+builder.Services.AddScoped<StreakService>();
+builder.Services.AddScoped<VacationService>();
 builder.Services.AddScoped<CareTodoService>();
 builder.Services.AddScoped<CareEntryMapper>();
 builder.Services.AddSingleton<CarePhotoUrlSigner>();
@@ -288,6 +297,14 @@ app.UseWhen(context => CareEndpoints.IsCarePath(context.Request.Path), branch =>
             status == 401 ? "care_auth_required" : "care_request_invalid").ExecuteAsync(context.HttpContext);
     }));
 
+app.UseWhen(context => StreakEndpoints.IsStreakPath(context.Request.Path), branch =>
+    branch.UseStatusCodePages(async context =>
+    {
+        var status = context.HttpContext.Response.StatusCode;
+        await Cichlids.Api.Features.Common.ApiProblems.WithCode(status, "Streak request refused", "The streak request could not be completed.",
+            status == 401 ? StreakEndpoints.AuthRequiredCode : StreakEndpoints.RequestInvalidCode).ExecuteAsync(context.HttpContext);
+    }));
+
 app.UseWhen(context => TankSeriesPhotoEndpoints.IsSeriesPhotoPath(context.Request.Path), branch =>
     branch.UseStatusCodePages(async context =>
     {
@@ -323,6 +340,7 @@ app.MapSpeciesEndpoints();
 app.MapPicturesEndpoints();
 app.MapTanksEndpoints();
 app.MapCareEndpoints();
+app.MapStreakEndpoints();
 app.MapWebPushEndpoints();
 app.MapDiscoverEndpoints();
 app.MapProfilesEndpoints();

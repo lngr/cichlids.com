@@ -32,10 +32,10 @@ public static partial class TankSeriesPhotoEndpoints
     }
 
     private static async Task<Results<Created<TankTimeLapsePhotoDto>, ProblemHttpResult>> AddAsync(
-        long tankId, IFormFile? file, ClaimsPrincipal user, CurrentProfileService profiles, TankSeriesPhotoService photos, CancellationToken ct)
+        long tankId, IFormFile? file, [FromForm] bool? capturedInApp, ClaimsPrincipal user, CurrentProfileService profiles, TankSeriesPhotoService photos, CancellationToken ct)
     {
         var profile = await profiles.ResolveAsync(user, ct);
-        var (photo, error) = await photos.AddAsync(tankId, profile.Id, file, ct);
+        var (photo, error) = await photos.AddAsync(tankId, profile.Id, file, capturedInApp ?? false, ct);
         if (error == UploadsEndpoints.UploadRateLimitedCode) return UploadsEndpoints.RateLimitProblem();
         return error is not null ? Problem(error) : TypedResults.Created($"/api/tanks/{tankId}/time-lapse", photo!);
     }

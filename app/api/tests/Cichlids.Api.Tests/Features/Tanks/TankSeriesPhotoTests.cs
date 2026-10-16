@@ -126,10 +126,25 @@ public sealed class TankSeriesPhotoTests(UploadsFixture fixture)
         Assert.Equal(2, (await EventsAsync(db, "tank", tank)).Count(e => e.Type == "tank.photo_added"));
     }
 
+    [Theory]
+    [InlineData("true", true)]
+    [InlineData("false", false)]
+    [InlineData(null, false)]
+    public async Task GivenTheOriginOfTheShot_WhenAddingAPhoto_ThenOnlyAnAppShotIsMarkedAsCapturedInTheApp(string? field, bool expected)
+    {
+        var (token, tank) = await OwnTankAsync(fixture.Client);
+        using var response = await AddAsync(fixture.Client, token, tank, PhotoFixtures.PhoneJpeg(600, 400), capturedInApp: field);
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        await using var db = fixture.CreateDbContext();
+        Assert.Equal(expected, (await db.TankMedia.SingleAsync(m => m.TankId == tank)).CapturedInApp);
+    }
+
     private static async Task<HttpResponseMessage> AddAsync(
-        HttpClient client, string? token, long tank, byte[] bytes, string contentType = "image/jpeg", string fileName = "photo.jpg")
+        HttpClient client, string? token, long tank, byte[] bytes, string contentType = "image/jpeg", string fileName = "photo.jpg",
+        string? capturedInApp = null)
     {
         using var content = new MultipartFormDataContent();
+        if (capturedInApp is not null) content.Add(new StringContent(capturedInApp), "capturedInApp");
         var file = new ByteArrayContent(bytes);
         file.Headers.ContentType = new MediaTypeHeaderValue(contentType);
         content.Add(file, "file", fileName);

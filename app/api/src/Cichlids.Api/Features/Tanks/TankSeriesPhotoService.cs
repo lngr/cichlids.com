@@ -30,11 +30,12 @@ public sealed class TankSeriesPhotoService(
     private static readonly JsonSerializerOptions PayloadOptions = new(JsonSerializerDefaults.Web);
 
     /// <summary>
-    /// Stores the uploaded file as a new photo of the owner's tank series. The error is a problem
+    /// Stores the uploaded file as a new photo of the owner's tank series; capturedInApp tells whether the
+    /// client took it with the camera of the app. The error is a problem
     /// code: tank_not_found, tank_photo_invalid or upload_rate_limited.
     /// </summary>
     public async Task<(TankTimeLapsePhotoDto? Photo, string? Error)> AddAsync(
-        long tankId, long profileId, IFormFile? file, CancellationToken ct)
+        long tankId, long profileId, IFormFile? file, bool capturedInApp, CancellationToken ct)
     {
         if (await ProfileLevelOfOwnAsync(tankId, profileId, ct) is not { } level) return (null, NotFoundCode);
         var storedPublic = TankVisibilityRules.MediaBelongsInPublicStorage(level);
@@ -77,11 +78,11 @@ public sealed class TankSeriesPhotoService(
                 .MaxAsync(m => (int?)m.Sort, ct) ?? -1) + 1;
             context.TankMedia.Add(new TankMedia
             {
-                TankId = tankId, MediaItemId = stored.Item.Id, Section = TankMediaSection.TimeLapse, Sort = nextSort,
+                TankId = tankId, MediaItemId = stored.Item.Id, Section = TankMediaSection.TimeLapse, Sort = nextSort, CapturedInApp = capturedInApp,
             });
             context.OutboxEvents.Add(OutboxEvent.Create(
                 "tank.photo_added", "tank", tankId.ToString(),
-                JsonSerializer.Serialize(new { tankId, mediaItemId = stored.Item.Id, profileId }, PayloadOptions), clock.GetUtcNow()));
+                JsonSerializer.Serialize(new { tankId, mediaItemId = stored.Item.Id, profileId, capturedInApp }, PayloadOptions), clock.GetUtcNow()));
             await context.SaveChangesAsync(ct);
             await transaction.CommitAsync(ct);
         }

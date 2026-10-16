@@ -11,7 +11,8 @@ namespace Cichlids.Api.Features.Care;
 
 /// <summary>
 /// Reads the care plan of a tank with the due state of each rule and changes its rules. A kind
-/// without a stored rule falls back to the default rule of the domain.
+/// without a stored rule falls back to the default rule of the domain. Every change of the rhythm
+/// or of the switch is added to the history of the rule.
 /// </summary>
 public sealed class CarePlanService(CichlidsDbContext context, TimeProvider clock)
 {
@@ -97,6 +98,11 @@ public sealed class CarePlanService(CichlidsDbContext context, TimeProvider cloc
             stored.UpdatedAt = now;
         }
         await context.SaveChangesAsync(ct);
+        if (current is null || current.RhythmDays != stored.RhythmDays || current.Enabled != stored.Enabled)
+            context.CarePlanRuleChanges.Add(new CarePlanRuleChange
+            {
+                TankId = tankId, Kind = kind, RhythmDays = stored.RhythmDays, Enabled = stored.Enabled, At = now,
+            });
         context.OutboxEvents.Add(OutboxEvent.Create("care_plan.updated", "care_plan", stored.Id.ToString(), JsonSerializer.Serialize(new Dictionary<string, object?>
         {
             ["carePlanRuleId"] = stored.Id, ["tankId"] = tankId, ["kind"] = SnakeCaseEnum.ToSnakeCase(kind),

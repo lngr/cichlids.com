@@ -1,6 +1,8 @@
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Media;
+using Cichlids.Api.Features.Streaks;
 using Cichlids.Domain;
+using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
@@ -13,9 +15,10 @@ namespace Cichlids.Api.Features.Profiles;
 /// Query logic behind the public profile endpoint: only browsable member profiles are visible,
 /// with the avatar resolved the same way as everywhere an author is shown, the profile image
 /// resolved to its largest variant, and activity stats counted only over that profile's public
-/// content.
+/// content. The share of days on ended vacations is shown to the member and to viewers who see the
+/// profile of at least one tank of the member.
 /// </summary>
-public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore objectStore)
+public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore objectStore, TimeProvider clock)
 {
     public async Task<ProfileDetailDto?> GetByIdAsync(long id, long? viewerProfileId, CancellationToken cancellationToken)
     {
@@ -68,6 +71,24 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
             avatarUrl,
             profileImageUrl,
             new ProfileStatsDto(pictureCount, tankCount, commentCount),
-            profile.OnboardingCompletedAt, profile.Interests, profile.Badges);
+            profile.OnboardingCompletedAt, profile.Interests, profile.Badges,
+            await VacationShareAsync(profile, viewerProfileId, cancellationToken));
+    }
+
+    private const int VacationShareWindowDays = 365;
+
+    private async Task<VacationShareDto?> VacationShareAsync(Profile profile, long? viewerProfileId, CancellationToken cancellationToken)
+    {
+        var visible = viewerProfileId == profile.Id
+            || await context.Tanks.Where(TankVisibilityRules.ProfileVisibleTo(viewerProfileId))
+                .AnyAsync(t => t.ProfileId == profile.Id && t.DeletedAt == null, cancellationToken);
+        if (!visible) return null;
+        var spans = (await context.Vacations.Where(v => v.ProfileId == profile.Id).ToListAsync(cancellationToken))
+            .Select(v => new VacationSpan(v.StartDate, v.EndDate)).ToList();
+        var today = DateOnly.FromDateTime(clock.GetUtcNow().UtcDateTime);
+        var firstDay = DateOnly.FromDateTime(profile.CreatedAt.UtcDateTime);
+        if (spans.Count > 0 && spans.Min(s => s.Start) < firstDay) firstDay = spans.Min(s => s.Start);
+        var share = Vacations.Share(spans, today, VacationShareWindowDays, firstDay);
+        return new VacationShareDto(share.VacationDays, share.WindowDays, share.Fraction, Vacations.Past(spans).Count);
     }
 }
