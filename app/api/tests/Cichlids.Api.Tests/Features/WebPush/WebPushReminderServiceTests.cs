@@ -311,6 +311,28 @@ public sealed class WebPushReminderServiceTests(ApiFixture fixture) : IAsyncLife
         Assert.Single(_push.RequestsFor(browser.Endpoint));
     }
 
+    [Fact]
+    [Trait("Story", "task-5.19")]
+    public async Task GivenAMemberWithStreaksOff_WhenTheWaterChangeIsNotLogged_ThenOnlyTheDueDayGetsAMessageWithoutDaysLeft()
+    {
+        var (token, _) = await TankAsync(LastWaterChange);
+        var browser = await SubscribeAsync(token);
+        using var off = await SendAsync(fixture.Client, HttpMethod.Put, "/api/me/settings", token, new { streaksEnabled = false });
+        Assert.Equal(HttpStatusCode.OK, off.StatusCode);
+        var clock = ClockAt(GraceMornings[0]);
+
+        foreach (var morning in GraceMornings)
+        {
+            clock.SetUtcNow(morning);
+            await RunAsync(clock);
+        }
+
+        var only = Assert.Single(_push.RequestsFor(browser.Endpoint));
+        var payload = JsonDocument.Parse(browser.Decrypt(only.Body)).RootElement;
+        Assert.Equal("2026-06-16", payload.GetProperty("dueDate").GetString());
+        Assert.True(!payload.TryGetProperty("daysLeft", out var daysLeft) || daysLeft.ValueKind == JsonValueKind.Null);
+    }
+
     [Theory]
     [InlineData(HttpStatusCode.NotFound)]
     [InlineData(HttpStatusCode.Gone)]
