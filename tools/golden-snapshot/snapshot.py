@@ -21,7 +21,7 @@ EMPTY_TABLES = ('public.profile_identity', 'public.web_session', 'archive.legacy
                 'public.web_push_subscription', 'public.web_push_reminder_sent',
                 'public.video_upload', 'public.video_job', 'public.vacation',
                 'public.care_reminder_snooze', 'public.care_todo', 'public.comment_vote',
-                'public.tank_selected_member')
+                'public.tank_selected_member', 'public.used_checksum')
 FREE_TEXT = {
     'public.comment': ('body', 'delete_reason'),
     'public.discussion_post': ('body',),
@@ -201,6 +201,9 @@ COLUMN_HANDLING = {
     },
     'public.tank_visibility_consent': {
         'kept': 'answer answered_at context id tank_id',
+    },
+    'public.used_checksum': {
+        'empty': 'checksum_sha256 first_used_at kind profile_id',
     },
     'public.vacation': {
         'empty': 'created_at end_date id profile_id start_date',

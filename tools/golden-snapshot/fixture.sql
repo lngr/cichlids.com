@@ -116,3 +116,4 @@ INSERT INTO story_subject(story_id,subject_type,tank_id,inhabitant_id,species_id
  (3,'tank',4,NULL,NULL,1),
  (3,'inhabitant',NULL,(SELECT id FROM inhabitant WHERE tank_id=8),NULL,2);
 UPDATE story SET cover_media_link_id=(SELECT id FROM media_link WHERE story_id=story.id AND role='item') WHERE id IN (1,2,3);
+INSERT INTO used_checksum(profile_id,checksum_sha256,kind,first_used_at) VALUES (1,repeat('b',64),'water_change_evidence','2020-03-01'),(2,repeat('c',64),'proof','2020-03-02');

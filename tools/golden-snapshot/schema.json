@@ -396,6 +396,12 @@
     "id": "bigint",
     "tank_id": "bigint"
   },
+  "public.used_checksum": {
+    "checksum_sha256": "text",
+    "first_used_at": "timestamp with time zone",
+    "kind": "text",
+    "profile_id": "bigint"
+  },
   "public.vacation": {
     "created_at": "timestamp with time zone",
     "end_date": "date",

@@ -206,7 +206,7 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(count(source, 'select count(*) from story where cover_media_link_id is not null'), 3)
             self.assertEqual(count(conn, 'select count(*) from tank_selected_member'), 0)
             self.assertGreater(count(source, 'select count(*) from tank_selected_member'), 0)
-            for table in ('vacation', 'care_reminder_snooze', 'care_todo', 'comment_vote'):
+            for table in ('vacation', 'care_reminder_snooze', 'care_todo', 'comment_vote', 'used_checksum'):
                 self.assertEqual(count(conn, f'select count(*) from {table}'), 0, table)
                 self.assertGreater(count(source, f'select count(*) from {table}'), 0, table)
             self.assertEqual(count(conn, "select count(*) from media_item where taken_at_local is not null or taken_at_offset_minutes is not null or capture_checked_at is not null or received_at <> created_at or captured_in_app"), 0)
@@ -273,7 +273,8 @@ class DatabaseTests(unittest.TestCase):
             parents = {'public.web_push_reminder_sent': ('public.web_push_subscription', 'subscription_id'), 'public.video_job': ('public.media_item', 'media_item_id')}
 
             def copy_row(table, row_id=None):
-                data = source.execute(sql.SQL('select * from {} where %s::bigint is null or id=%s order by id').format(snapshot.ident(table)), (row_id, row_id)).fetchone()
+                query = sql.SQL('select * from {} order by 1').format(snapshot.ident(table)) if row_id is None else sql.SQL('select * from {} where id=%s').format(snapshot.ident(table))
+                data = source.execute(query, None if row_id is None else (row_id,)).fetchone()
                 cols = [d.name for d in source.execute(sql.SQL('select * from {} limit 0').format(snapshot.ident(table))).description]
                 conn.execute(sql.SQL('insert into {} ({}) overriding system value values ({})').format(snapshot.ident(table), sql.SQL(',').join(map(sql.Identifier, cols)), sql.SQL(',').join(sql.Placeholder() for _ in cols)), [Jsonb(v) if isinstance(v, dict) else v for v in data])
 
