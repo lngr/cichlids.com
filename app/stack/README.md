@@ -336,6 +336,27 @@ builds it through the package's `prepare` script, an install that finds nothing 
 script, so after a change to the client-core sources `pnpm --filter @cichlids/client-core build`
 rebuilds it.
 
+## Web Push
+
+The API sends care reminders to browsers through Web Push. It identifies itself to the push
+services of the browsers with a VAPID key pair (RFC 8292). `WebPush:Enabled` is true in
+Development, and Web Push stays unavailable until the key file
+`app/stack/web-push-vapid-keys.json` exists (Git ignores it). Create it once; the tool never
+overwrites an existing file and writes the private key readable by its owner only:
+
+```sh
+dotnet run tools/create-vapid-keys.cs -- json app/stack/web-push-vapid-keys.json
+```
+
+Restart the API afterwards. The web app then offers the reminder setting of the browser. A new key
+pair makes the subscriptions of the old one useless: members switch the setting off and on again.
+Outside Development the API reads the keys from `WebPush:VapidPublicKey` and
+`WebPush:VapidPrivateKey`, needs `WebPush:Subject` (a `mailto:` or `https:` contact of the operator
+without personal data) and refuses to start with `WebPush:Enabled` true and no keys. The allowlist
+`WebPush:AllowedPushHosts` names the push services a subscription may point to; each entry matches
+the host and its subdomains, and the default covers the services of Chrome, Edge, Firefox and
+Safari.
+
 ## Webhooks and the outbox
 
 The API delivers outbox events as signed webhooks only to hosts on the allowlist

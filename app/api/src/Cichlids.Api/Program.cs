@@ -15,6 +15,7 @@ using Cichlids.Api.Features.Profiles;
 using Cichlids.Api.Features.Species;
 using Cichlids.Api.Features.Tanks;
 using Cichlids.Api.Features.Uploads;
+using Cichlids.Api.Features.WebPush;
 using Cichlids.Api.Features.Webhooks;
 using Cichlids.Infrastructure.Identity;
 using Cichlids.Infrastructure.Outbox;
@@ -76,6 +77,10 @@ builder.Services.AddSingleton(webSessionSettings);
 // that encrypts the stored web session tokens refuses to start.
 var keyRingSettings = KeyRingSettings.Resolve(builder.Configuration, builder.Environment.EnvironmentName, builder.Environment.ContentRootPath);
 builder.Services.AddKeyRing(keyRingSettings);
+// Resolved before the host is built so a deployment outside Development that enables Web Push
+// without the VAPID key pair refuses to start.
+var webPushSettings = WebPushSettings.Resolve(builder.Configuration, builder.Environment.EnvironmentName, builder.Environment.ContentRootPath);
+builder.Services.AddSingleton(webPushSettings);
 builder.Services.AddHttpClient(KeycloakOidcClient.HttpClientName, client => client.Timeout = TimeSpan.FromSeconds(15));
 builder.Services.AddSingleton<KeycloakOidcClient>();
 builder.Services.AddSingleton<WebSessionLocks>();
