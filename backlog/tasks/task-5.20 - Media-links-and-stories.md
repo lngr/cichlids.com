@@ -1,9 +1,10 @@
 ---
 id: TASK-5.20
 title: Media links and stories
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-16 14:10'
+updated_date: '2026-10-16 20:12'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -45,3 +46,10 @@ TASK-5.15 (followers and chosen people) builds on TASK-5.20.2.
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### All steps built (2026-10-16)
+- TASK-5.20.1 to 5.20.6 are in review; full suite on main green after the last step: .NET 643/2104 (1 skipped)/350, client-core and mobile green, 48 write e2e specs. The golden snapshot follows every schema step (TASK-5.22).
+<!-- SECTION:NOTES:END -->
