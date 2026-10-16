@@ -149,6 +149,34 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
     private async Task<bool> StreaksEnabledAsync(long profileId, CancellationToken ct) =>
         await context.Profiles.AsNoTracking().Where(p => p.Id == profileId).Select(p => p.StreaksEnabled).SingleAsync(ct);
 
+    /// <summary>
+    /// The time-lapse weeks of the member's live tanks that the given file keeps: the file is the only
+    /// in-app photo of the week within the current run, so deleting it shortens or breaks the streak of
+    /// the tank. Empty when the member switched the streaks off. Nothing is recorded.
+    /// </summary>
+    public async Task<IReadOnlyList<(long TankId, string TankTitle, DateOnly WeekStart)>> WeeksKeptByAsync(
+        long profileId, long mediaItemId, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
+    {
+        if (!await StreaksEnabledAsync(profileId, ct)) return [];
+        var tanks = await context.Tanks.AsNoTracking()
+            .Where(t => t.ProfileId == profileId && t.DeletedAt == null
+                && context.MediaLinks.Any(l => l.TankId == t.Id && l.MediaItemId == mediaItemId && l.Role == MediaLinkRole.TimeLapse))
+            .OrderBy(t => t.Id).Select(t => new { t.Id, t.Title }).ToListAsync(ct);
+        if (tanks.Count == 0) return [];
+        var histories = await LoadAsync(tanks.Select(t => t.Id).ToList(), ct);
+        var spans = (await LoadVacationsAsync(profileId, ct)).Select(v => v.Span).ToList();
+        var result = new List<(long, string, DateOnly)>();
+        foreach (var tank in tanks)
+        {
+            var photos = histories[tank.Id].Photos;
+            if (!TimeLapseStreaks.Evaluate(photos, utcOffsetMinutes, spans, today).KeepingPhotoIds.Contains(mediaItemId)) continue;
+            var at = photos.First(p => p.MediaItemId == mediaItemId).At;
+            result.Add((tank.Id, tank.Title, TimeLapseStreaks.WeekStartOf(CarePlans.LocalDate(at, utcOffsetMinutes))));
+        }
+
+        return result;
+    }
+
     private WaterChangeStreak EvaluateWater(TankHistory history, IReadOnlyList<VacationSpan> spans, DateOnly today, int utcOffsetMinutes) =>
         WaterChangeStreaks.Evaluate(history.Changes, history.Rhythm, spans, history.Recorded, Freezes,
             CarePlans.LocalDate(history.TankCreatedAt, utcOffsetMinutes), today, utcOffsetMinutes, history.Decommissions);
