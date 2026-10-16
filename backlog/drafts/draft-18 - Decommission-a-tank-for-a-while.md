@@ -4,7 +4,7 @@ title: Decommission a tank for a while
 status: Draft
 assignee: []
 created_date: '2026-10-16 12:44'
-updated_date: '2026-10-16 14:15'
+updated_date: '2026-10-16 14:19'
 labels: []
 dependencies: []
 ---
@@ -45,4 +45,9 @@ Decided by the project owner (2026-10-16): the decommissioning and its photo are
 Open (asked 2026-10-16, no preference given yet): whether the start photo must come from the app camera at the moment of decommissioning with checked provenance, as for the guided water change, or may be any photo.
 
 Decided by the project owner (2026-10-16): the start photo comes from the app camera at the moment of decommissioning, with checked provenance as for the guided water change (in app, received by the server then, plausible capture time), with the hint to photograph the empty tank.
+
+Decided by the project owner (2026-10-16): ending the decommissioning needs proof as well, a photo of the filled tank from the app camera at that moment with checked provenance, visible to the viewers who see the streak; the plan runs from that day and the streak continues with the next water change.
+
+Decided by the project owner (2026-10-16): the tank page shows the operating time without decommissioned days, and the tank year of the freezes counts operating days, so it moves by the decommissioned days.
+Decided by the project owner (2026-10-16): when decommissioning, the app asks the member whether all care pauses (no due care, not on Today, no reminders, heatmap shows the time as decommissioned) or only the water change and its streak pause while measurements stay due with their reminders.
 <!-- SECTION:NOTES:END -->
