@@ -6776,6 +6776,41 @@
           },
           "remindersEnabled": {
             "type": "boolean"
+          },
+          "streak": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/DueStreakDto"
+              }
+            ]
+          }
+        }
+      },
+      "DueStreakDto": {
+        "required": [
+          "state",
+          "reminderFrom",
+          "deadline"
+        ],
+        "type": "object",
+        "properties": {
+          "state": {
+            "$ref": "#/components/schemas/WaterChangeStreakState"
+          },
+          "reminderFrom": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "deadline": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },

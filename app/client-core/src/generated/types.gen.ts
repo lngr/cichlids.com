@@ -305,6 +305,13 @@ export type DueCareItemDto = {
     reason: CareReasonDto;
     due: CareDueDto;
     remindersEnabled: boolean;
+    streak?: null | DueStreakDto;
+};
+
+export type DueStreakDto = {
+    state: WaterChangeStreakState;
+    reminderFrom: null | string;
+    deadline: null | string;
 };
 
 export type FinishWaterChangeRequest = {
