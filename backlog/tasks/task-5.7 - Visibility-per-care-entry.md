@@ -4,9 +4,13 @@ title: Visibility per care entry
 status: In Progress
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 07:36'
+updated_date: '2026-10-16 08:22'
 labels: []
 dependencies: []
+references:
+  - app/mobile/e2e/playwright/visibility.write.mjs
+  - >-
+    app/api/tests/Cichlids.Api.Tests/Features/Tanks/TankVisibilityReadPathTests.cs
 parent_task_id: TASK-5
 priority: medium
 ordinal: 87000
@@ -61,4 +65,15 @@ Each care entry has a visibility; private entries never leave the owner, public 
 
 - The open note above is resolved by the decided concept and details; the story is ready.
 - Story cut: TASK-5.7 covers the levels public and private for profile and stream, only me per entry, the question on creating a tank, the enforcement in every read path and the private delivery of photos of tanks that are not public; the levels followers (approved follow requests) and selected members are TASK-5.15.
+
+### Implementation (2026-10-16)
+- Domain: TankVisibilityRules decides for owner, member and anonymous viewers (profile, stream, entry with only me, stream within profile, CanFollow); levels public and private with an enum ready for TASK-5.15. Migration: existing tanks stay public without a consent row.
+- Creating a tank requires isPublic (no default) and stores the consent with its time; tank settings change the levels (owner only, tank.visibility_changed, widening the stream beyond the profile is refused).
+- Read paths: tank list, detail, time-lapse, videos, comments; profile tank lists and counts; care entries, series, plan, to-dos, care photos and videos; Discover (one shared public-tank query for computing and the read-time filter, including pictures of tank-linked posts), Today, legacy redirects. Hidden items answer a coded 404.
+- Media: URLs follow the tank's profile level, never the storage location; media of a tank that is not public only get signed paths. The tank row carries the placement state; a worker moves variants and HLS directories between the public and private prefix (copy, repoint, delete the other side), retries with growing delays, logs failures, and clears the pending mark only after a check under the tank row lock; a tank that turns private waits up to 10 seconds for the immediate move. Series photo uploads and transcoding finishes re-check the level under the tank row lock. Public variants carry no Cache-Control header; a cache in front of the bucket can keep serving a copy after deletion (documented trade-off for the cache configuration).
+- Security review findings fixed: Discover visibility parity, fail-open media placement, races of series photos and transcoding with a visibility change.
+- Open question to the project owner (2026-10-16): gallery posts linked to a private tank still appear in the gallery feed; proposal: a post follows the visibility of its tank.
+- Verification: .NET 542/1061 (1 opt-in benchmark skipped)/349 with 0 warnings, client-core 198, mobile 382, both typechecks, all 34 write e2e specs green.
+- Tests: app/api/tests/Cichlids.Api.Tests/Features/Tanks/TankVisibility*Tests.cs, TankMediaPlacementTests.cs, TankMediaFailClosedTests.cs, Features/Care/CareOnlyMeTests.cs, Features/Discover/DiscoverVisibilityTests.cs, Features/Me/TodayVisibilityTests.cs, app/mobile/e2e/playwright/visibility.write.mjs.
+- Still in progress: the legacy takeover keeps archive tanks public without the question.
 <!-- SECTION:NOTES:END -->
