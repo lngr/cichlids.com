@@ -266,7 +266,8 @@
       "deleteError": "Verwijderen van het concept mislukt. Probeer het opnieuw."
     },
     "loginUnavailable": "Inloggen is niet beschikbaar omdat de aanmeldservice onbereikbaar is. Probeer het opnieuw.",
-    "todos": "Taken"
+    "todos": "Taken",
+    "media": "Mijn media"
   },
   "upload": {
     "title": "Foto uploaden",
@@ -406,7 +407,10 @@
     "selected_member_handle_invalid": "Voer de gebruikersnaam in van het lid dat je wilt toevoegen.",
     "selected_member_profile_not_found": "Er is geen lid met deze gebruikersnaam.",
     "selected_member_is_owner": "Je eigen aquarium zie je sowieso.",
-    "selected_member_limit": "Een aquarium kan maximaal 100 geselecteerde leden hebben."
+    "selected_member_limit": "Een aquarium kan maximaal 100 geselecteerde leden hebben.",
+    "media_is_proof": "Deze foto bewijst de buitengebruikstelling van een aquarium en blijft in je bibliotheek.",
+    "library_photo_invalid": "Kies een JPEG-, PNG- of WebP-foto tot 25 MB die geopend kan worden.",
+    "library_filter_invalid": "Dit filter is niet beschikbaar."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -1081,5 +1085,71 @@
     "reviewEmpty": "Je foto van het lege aquarium",
     "reviewFilled": "Je foto van het gevulde aquarium",
     "sendError": "De foto kon niet worden verstuurd. Probeer het opnieuw."
+  },
+  "library": {
+    "title": "Mijn media",
+    "intro": "Alle foto's en video's die van jou zijn. Een bestand blijft hier staan als je het uit een aquarium, een verzorgingsitem of een verhaal haalt. Als je het hier verwijdert, verdwijnt het overal.",
+    "signIn": "Log in om je media te zien.",
+    "upload": "Foto aan bibliotheek toevoegen",
+    "uploading": "Uploaden…",
+    "pickError": "De fotobibliotheek kon niet worden geopend.",
+    "uploadError": "Uploaden mislukt. Probeer het opnieuw.",
+    "detailError": "Het bestand kon niet worden geladen. Probeer het opnieuw.",
+    "deleteError": "Het bestand verwijderen is mislukt. Probeer het opnieuw.",
+    "empty": "Nog geen bestanden.",
+    "filter": {
+      "kind": {
+        "all": "Alle",
+        "photo": "Foto's",
+        "video": "Video's"
+      },
+      "use": {
+        "all": "Alle",
+        "linked": "In gebruik",
+        "unlinked": "Niet in gebruik"
+      }
+    },
+    "kind": {
+      "photo": "Foto",
+      "video": "Video"
+    },
+    "badgeUnused": "Ongebruikt",
+    "tileUsed": "{{kind}}, geüpload op {{date}}, plekken: {{places}}",
+    "tileUnused": "{{kind}}, geüpload op {{date}}, nergens getoond",
+    "uploaded": "Geüpload op {{date}}",
+    "placesTitle": "Getoond in",
+    "placesEmpty": "Nergens getoond. Alleen jij ziet dit bestand.",
+    "proofNote": "Deze foto bewijst de buitengebruikstelling van een aquarium. Hij blijft in je bibliotheek.",
+    "confirmTitle": "Uit bibliotheek verwijderen?",
+    "confirmPlaces": "Het bestand wordt definitief verwijderd en verdwijnt van deze plekken:",
+    "confirmNoPlaces": "Het bestand wordt nergens getoond en definitief verwijderd.",
+    "deleteConfirm": "Definitief verwijderen",
+    "deleteCancel": "Bestand behouden",
+    "delete": "Uit bibliotheek verwijderen",
+    "close": "Sluiten",
+    "placeNamed": "{{place}}: {{name}}",
+    "place": {
+      "tank": "Aquarium",
+      "tankSection": "Aquarium ({{section}})",
+      "tank_main": "Hoofdafbeelding van een aquarium",
+      "decommission_proof": "Bewijs van buitengebruikstelling",
+      "inhabitant": "Bewoners van een aquarium",
+      "care_entry": "Verzorgingsitem",
+      "water_change": "Water verversen",
+      "story": "Verhaal",
+      "discussion_post": "Forumbericht",
+      "profile_avatar": "Profielfoto",
+      "profile_header": "Profielkop"
+    },
+    "section": {
+      "showcase": "Uitgelicht",
+      "decoration": "Decoratie",
+      "technic": "Apparatuur",
+      "time_lapse": "Timelapse",
+      "video": "Video's",
+      "decommission": "Buiten gebruik",
+      "recommission": "Weer in gebruik"
+    },
+    "streakWarning": "Deze foto is de enige van de week die begint op {{week}} in de timelapse van {{tank}}. Als je hem verwijdert, wordt de reeks van dat aquarium korter of eindigt die."
   }
 }

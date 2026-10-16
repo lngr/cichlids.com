@@ -273,7 +273,8 @@
       "deleteError": "No se pudo eliminar el borrador. Inténtalo de nuevo."
     },
     "loginUnavailable": "No se puede iniciar sesión porque el servicio de acceso no está disponible. Inténtalo de nuevo.",
-    "todos": "Tareas"
+    "todos": "Tareas",
+    "media": "Mi contenido multimedia"
   },
   "upload": {
     "title": "Subir foto",
@@ -414,7 +415,10 @@
     "selected_member_handle_invalid": "Escribe el nombre de usuario del miembro que quieres agregar.",
     "selected_member_profile_not_found": "No hay ningún miembro con este nombre de usuario.",
     "selected_member_is_owner": "Tu propio acuario lo ves de todos modos.",
-    "selected_member_limit": "Un acuario puede tener como máximo 100 miembros seleccionados."
+    "selected_member_limit": "Un acuario puede tener como máximo 100 miembros seleccionados.",
+    "media_is_proof": "Esta foto prueba la baja de un acuario y permanece en tu biblioteca.",
+    "library_photo_invalid": "Elige una foto JPEG, PNG o WebP de hasta 25 MB que se pueda abrir.",
+    "library_filter_invalid": "Este filtro no está disponible."
   },
   "featureFlags": {
     "activityTitle": "Actividad de la comunidad",
@@ -1100,5 +1104,71 @@
     "reviewEmpty": "Tu foto del acuario vacío",
     "reviewFilled": "Tu foto del acuario lleno",
     "sendError": "No se pudo enviar la foto. Inténtalo de nuevo."
+  },
+  "library": {
+    "title": "Mi contenido multimedia",
+    "intro": "Todas las fotos y videos que te pertenecen. Un archivo permanece aquí cuando lo quitas de un acuario, un registro de cuidado o una historia. Si lo eliminas aquí, desaparece de todos los lugares.",
+    "signIn": "Inicia sesión para ver tu contenido multimedia.",
+    "upload": "Agregar foto a la biblioteca",
+    "uploading": "Subiendo…",
+    "pickError": "No se pudo abrir la biblioteca de fotos.",
+    "uploadError": "Error al subir. Inténtalo de nuevo.",
+    "detailError": "No se pudo cargar el archivo. Inténtalo de nuevo.",
+    "deleteError": "No se pudo eliminar el archivo. Inténtalo de nuevo.",
+    "empty": "Todavía no hay archivos.",
+    "filter": {
+      "kind": {
+        "all": "Todos",
+        "photo": "Fotos",
+        "video": "Videos"
+      },
+      "use": {
+        "all": "Todos",
+        "linked": "En uso",
+        "unlinked": "Sin usar"
+      }
+    },
+    "kind": {
+      "photo": "Foto",
+      "video": "Video"
+    },
+    "badgeUnused": "Sin usar",
+    "tileUsed": "{{kind}}, subido el {{date}}, lugares: {{places}}",
+    "tileUnused": "{{kind}}, subido el {{date}}, no se muestra en ningún lugar",
+    "uploaded": "Subido el {{date}}",
+    "placesTitle": "Se muestra en",
+    "placesEmpty": "No se muestra en ningún lugar. Solo tú ves este archivo.",
+    "proofNote": "Esta foto prueba la baja de un acuario. Permanece en tu biblioteca.",
+    "confirmTitle": "¿Eliminar de la biblioteca?",
+    "confirmPlaces": "El archivo se elimina permanentemente y desaparece de estos lugares:",
+    "confirmNoPlaces": "El archivo no se muestra en ningún lugar y se elimina permanentemente.",
+    "deleteConfirm": "Eliminar permanentemente",
+    "deleteCancel": "Conservar archivo",
+    "delete": "Eliminar de la biblioteca",
+    "close": "Cerrar",
+    "placeNamed": "{{place}}: {{name}}",
+    "place": {
+      "tank": "Acuario",
+      "tankSection": "Acuario ({{section}})",
+      "tank_main": "Imagen principal de un acuario",
+      "decommission_proof": "Prueba de baja",
+      "inhabitant": "Habitantes de un acuario",
+      "care_entry": "Registro de cuidado",
+      "water_change": "Cambio de agua",
+      "story": "Historia",
+      "discussion_post": "Publicación del foro",
+      "profile_avatar": "Foto de perfil",
+      "profile_header": "Encabezado del perfil"
+    },
+    "section": {
+      "showcase": "Destacado",
+      "decoration": "Decoración",
+      "technic": "Equipamiento",
+      "time_lapse": "Time-lapse",
+      "video": "Videos",
+      "decommission": "Baja temporal",
+      "recommission": "Reactivación"
+    },
+    "streakWarning": "Esta foto es la única de la semana que empieza el {{week}} en el timelapse de {{tank}}. Si la eliminas, la racha de ese acuario se acorta o se rompe."
   }
 }

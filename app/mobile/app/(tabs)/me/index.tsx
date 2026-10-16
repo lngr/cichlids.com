@@ -110,6 +110,7 @@ function MemberContent({ profile, onStreaksChanged }: { profile: Me["profile"]; 
       <View style={{ paddingHorizontal: theme.space[4], gap: theme.space[3] }}>
         <Button testID="me-profile-button" variant="secondary" label={t("me.openProfile")} onPress={() => router.push(`/profile/${profile.id}`)} />
         <Button testID="me-todos" variant="secondary" label={t("me.todos")} onPress={() => router.push("/todos")} />
+        <Button testID="me-media" variant="secondary" label={t("me.media")} onPress={() => router.push("/media")} />
         <Button testID="logout-button" variant="secondary" label={t("me.logout")} onPress={() => void logout()} />
       </View>
       <LanguageSettings />

@@ -266,7 +266,8 @@
       "deleteError": "Deleting the draft failed. Please try again."
     },
     "loginUnavailable": "Login is unavailable right now because the login service cannot be reached. Please try again.",
-    "todos": "To-dos"
+    "todos": "To-dos",
+    "media": "My media"
   },
   "upload": {
     "title": "Upload photo",
@@ -406,7 +407,10 @@
     "selected_member_handle_invalid": "Enter the handle of the member you want to add.",
     "selected_member_profile_not_found": "There is no member with this handle.",
     "selected_member_is_owner": "You see your own tank anyway.",
-    "selected_member_limit": "A tank can have at most 100 selected members."
+    "selected_member_limit": "A tank can have at most 100 selected members.",
+    "media_is_proof": "This photo proves the decommissioning of a tank and stays in your library.",
+    "library_photo_invalid": "Choose a JPEG, PNG or WebP photo of up to 25 MB that can be opened.",
+    "library_filter_invalid": "This filter is not available."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -1081,5 +1085,71 @@
     "reviewEmpty": "Your photo of the empty tank",
     "reviewFilled": "Your photo of the filled tank",
     "sendError": "The photo could not be sent. Please try again."
+  },
+  "library": {
+    "title": "My media",
+    "intro": "All photos and videos you own. A file stays here when you take it out of a tank, a care entry or a story. Deleting it here removes it everywhere.",
+    "signIn": "Sign in to see your media.",
+    "upload": "Add photo to library",
+    "uploading": "Uploading…",
+    "pickError": "The photo library could not be opened.",
+    "uploadError": "The upload failed. Please try again.",
+    "detailError": "The file could not be loaded. Please try again.",
+    "deleteError": "Deleting the file failed. Please try again.",
+    "empty": "No files here yet.",
+    "filter": {
+      "kind": {
+        "all": "All",
+        "photo": "Photos",
+        "video": "Videos"
+      },
+      "use": {
+        "all": "All",
+        "linked": "In use",
+        "unlinked": "Not in use"
+      }
+    },
+    "kind": {
+      "photo": "Photo",
+      "video": "Video"
+    },
+    "badgeUnused": "Unused",
+    "tileUsed": "{{kind}}, uploaded {{date}}, places: {{places}}",
+    "tileUnused": "{{kind}}, uploaded {{date}}, not shown anywhere",
+    "uploaded": "Uploaded {{date}}",
+    "placesTitle": "Shown in",
+    "placesEmpty": "Not shown anywhere. Only you can see this file.",
+    "proofNote": "This photo proves the decommissioning of a tank. It stays in your library.",
+    "confirmTitle": "Delete from library?",
+    "confirmPlaces": "The file is deleted for good and disappears from these places:",
+    "confirmNoPlaces": "The file is not shown anywhere and is deleted for good.",
+    "deleteConfirm": "Delete for good",
+    "deleteCancel": "Keep file",
+    "delete": "Delete from library",
+    "close": "Close",
+    "placeNamed": "{{place}}: {{name}}",
+    "place": {
+      "tank": "Tank",
+      "tankSection": "Tank ({{section}})",
+      "tank_main": "Main image of a tank",
+      "decommission_proof": "Decommissioning proof",
+      "inhabitant": "Inhabitants of a tank",
+      "care_entry": "Care entry",
+      "water_change": "Water change",
+      "story": "Story",
+      "discussion_post": "Forum post",
+      "profile_avatar": "Profile picture",
+      "profile_header": "Profile header"
+    },
+    "section": {
+      "showcase": "Showcase",
+      "decoration": "Decoration",
+      "technic": "Equipment",
+      "time_lapse": "Time-lapse",
+      "video": "Videos",
+      "decommission": "Decommissioning",
+      "recommission": "Recommissioning"
+    },
+    "streakWarning": "This photo is the only one of the week starting {{week}} in the time-lapse of {{tank}}. Deleting it shortens or breaks the streak of that tank."
   }
 }

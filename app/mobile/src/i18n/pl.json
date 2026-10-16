@@ -280,7 +280,8 @@
       "deleteError": "Nie udało się usunąć szkicu. Spróbuj ponownie."
     },
     "loginUnavailable": "Logowanie jest niedostępne, ponieważ nie można połączyć się z usługą logowania. Spróbuj ponownie.",
-    "todos": "Zadania"
+    "todos": "Zadania",
+    "media": "Moje media"
   },
   "upload": {
     "title": "Prześlij zdjęcie",
@@ -422,7 +423,10 @@
     "selected_member_handle_invalid": "Wpisz nazwę użytkownika członka, którego chcesz dodać.",
     "selected_member_profile_not_found": "Nie ma członka o tej nazwie użytkownika.",
     "selected_member_is_owner": "Własne akwarium i tak widzisz.",
-    "selected_member_limit": "Akwarium może mieć najwyżej 100 wybranych członków."
+    "selected_member_limit": "Akwarium może mieć najwyżej 100 wybranych członków.",
+    "media_is_proof": "To zdjęcie potwierdza wyłączenie akwarium z użytku i zostaje w Twojej bibliotece.",
+    "library_photo_invalid": "Wybierz zdjęcie JPEG, PNG lub WebP do 25 MB, które da się otworzyć.",
+    "library_filter_invalid": "Ten filtr jest niedostępny."
   },
   "featureFlags": {
     "activityTitle": "Aktywność społeczności",
@@ -1119,5 +1123,71 @@
     "reviewEmpty": "Twoje zdjęcie pustego akwarium",
     "reviewFilled": "Twoje zdjęcie napełnionego akwarium",
     "sendError": "Nie udało się wysłać zdjęcia. Spróbuj ponownie."
+  },
+  "library": {
+    "title": "Moje media",
+    "intro": "Wszystkie zdjęcia i filmy, które do Ciebie należą. Plik zostaje tutaj, gdy usuniesz go z akwarium, wpisu pielęgnacyjnego lub historii. Jeśli usuniesz go tutaj, zniknie wszędzie.",
+    "signIn": "Zaloguj się, aby zobaczyć swoje media.",
+    "upload": "Dodaj zdjęcie do biblioteki",
+    "uploading": "Przesyłanie…",
+    "pickError": "Nie udało się otworzyć biblioteki zdjęć.",
+    "uploadError": "Przesyłanie nie powiodło się. Spróbuj ponownie.",
+    "detailError": "Nie udało się wczytać pliku. Spróbuj ponownie.",
+    "deleteError": "Nie udało się usunąć pliku. Spróbuj ponownie.",
+    "empty": "Brak plików.",
+    "filter": {
+      "kind": {
+        "all": "Wszystkie",
+        "photo": "Zdjęcia",
+        "video": "Filmy"
+      },
+      "use": {
+        "all": "Wszystkie",
+        "linked": "Używane",
+        "unlinked": "Nieużywane"
+      }
+    },
+    "kind": {
+      "photo": "Zdjęcie",
+      "video": "Film"
+    },
+    "badgeUnused": "Nieużywane",
+    "tileUsed": "{{kind}}, przesłano {{date}}, miejsca: {{places}}",
+    "tileUnused": "{{kind}}, przesłano {{date}}, nigdzie niewyświetlane",
+    "uploaded": "Przesłano {{date}}",
+    "placesTitle": "Wyświetlane w",
+    "placesEmpty": "Nigdzie niewyświetlane. Tylko Ty widzisz ten plik.",
+    "proofNote": "To zdjęcie potwierdza wyłączenie akwarium z użytku. Zostaje w Twojej bibliotece.",
+    "confirmTitle": "Usunąć z biblioteki?",
+    "confirmPlaces": "Plik zostanie trwale usunięty i zniknie z tych miejsc:",
+    "confirmNoPlaces": "Plik nie jest nigdzie wyświetlany i zostanie trwale usunięty.",
+    "deleteConfirm": "Usuń trwale",
+    "deleteCancel": "Zachowaj plik",
+    "delete": "Usuń z biblioteki",
+    "close": "Zamknij",
+    "placeNamed": "{{place}}: {{name}}",
+    "place": {
+      "tank": "Akwarium",
+      "tankSection": "Akwarium ({{section}})",
+      "tank_main": "Główne zdjęcie akwarium",
+      "decommission_proof": "Dowód wyłączenia z użytku",
+      "inhabitant": "Obsada akwarium",
+      "care_entry": "Wpis pielęgnacyjny",
+      "water_change": "Podmiana wody",
+      "story": "Historia",
+      "discussion_post": "Wpis na forum",
+      "profile_avatar": "Zdjęcie profilowe",
+      "profile_header": "Nagłówek profilu"
+    },
+    "section": {
+      "showcase": "Wyróżnione",
+      "decoration": "Dekoracje",
+      "technic": "Wyposażenie",
+      "time_lapse": "Timelapse",
+      "video": "Filmy",
+      "decommission": "Wyłączenie z użytku",
+      "recommission": "Ponowne uruchomienie"
+    },
+    "streakWarning": "To zdjęcie jest jedyne z tygodnia zaczynającego się {{week}} w timelapse akwarium {{tank}}. Jeśli je usuniesz, seria tego akwarium się skróci lub zostanie przerwana."
   }
 }

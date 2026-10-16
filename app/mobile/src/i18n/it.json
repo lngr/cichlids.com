@@ -273,7 +273,8 @@
       "deleteError": "Eliminazione della bozza non riuscita. Riprova."
     },
     "loginUnavailable": "L'accesso non è disponibile perché il servizio di autenticazione è irraggiungibile. Riprova.",
-    "todos": "Attività"
+    "todos": "Attività",
+    "media": "I miei media"
   },
   "upload": {
     "title": "Carica foto",
@@ -414,7 +415,10 @@
     "selected_member_handle_invalid": "Inserisci il nome utente del membro che vuoi aggiungere.",
     "selected_member_profile_not_found": "Nessun membro ha questo nome utente.",
     "selected_member_is_owner": "Il tuo acquario lo vedi comunque.",
-    "selected_member_limit": "Un acquario può avere al massimo 100 membri selezionati."
+    "selected_member_limit": "Un acquario può avere al massimo 100 membri selezionati.",
+    "media_is_proof": "Questa foto prova la messa fuori servizio di un acquario e resta nella tua libreria.",
+    "library_photo_invalid": "Scegli una foto JPEG, PNG o WebP fino a 25 MB che si possa aprire.",
+    "library_filter_invalid": "Questo filtro non è disponibile."
   },
   "featureFlags": {
     "activityTitle": "Attività della comunità",
@@ -1100,5 +1104,71 @@
     "reviewEmpty": "La tua foto dell’acquario vuoto",
     "reviewFilled": "La tua foto dell’acquario pieno",
     "sendError": "Impossibile inviare la foto. Riprova."
+  },
+  "library": {
+    "title": "I miei media",
+    "intro": "Tutte le foto e i video che ti appartengono. Un file resta qui quando lo rimuovi da un acquario, da una voce di cura o da una storia. Se lo elimini qui, scompare ovunque.",
+    "signIn": "Accedi per vedere i tuoi media.",
+    "upload": "Aggiungi foto alla libreria",
+    "uploading": "Caricamento…",
+    "pickError": "Non è stato possibile aprire la libreria di foto.",
+    "uploadError": "Caricamento non riuscito. Riprova.",
+    "detailError": "Non è stato possibile caricare il file. Riprova.",
+    "deleteError": "Eliminazione del file non riuscita. Riprova.",
+    "empty": "Ancora nessun file.",
+    "filter": {
+      "kind": {
+        "all": "Tutti",
+        "photo": "Foto",
+        "video": "Video"
+      },
+      "use": {
+        "all": "Tutti",
+        "linked": "In uso",
+        "unlinked": "Non in uso"
+      }
+    },
+    "kind": {
+      "photo": "Foto",
+      "video": "Video"
+    },
+    "badgeUnused": "Inutilizzato",
+    "tileUsed": "{{kind}}, caricato il {{date}}, posizioni: {{places}}",
+    "tileUnused": "{{kind}}, caricato il {{date}}, non mostrato da nessuna parte",
+    "uploaded": "Caricato il {{date}}",
+    "placesTitle": "Mostrato in",
+    "placesEmpty": "Non mostrato da nessuna parte. Solo tu vedi questo file.",
+    "proofNote": "Questa foto prova la messa fuori servizio di un acquario. Resta nella tua libreria.",
+    "confirmTitle": "Eliminare dalla libreria?",
+    "confirmPlaces": "Il file viene eliminato definitivamente e scompare da questi posti:",
+    "confirmNoPlaces": "Il file non è mostrato da nessuna parte e viene eliminato definitivamente.",
+    "deleteConfirm": "Elimina definitivamente",
+    "deleteCancel": "Tieni il file",
+    "delete": "Elimina dalla libreria",
+    "close": "Chiudi",
+    "placeNamed": "{{place}}: {{name}}",
+    "place": {
+      "tank": "Acquario",
+      "tankSection": "Acquario ({{section}})",
+      "tank_main": "Immagine principale di un acquario",
+      "decommission_proof": "Prova di messa fuori servizio",
+      "inhabitant": "Popolazione di un acquario",
+      "care_entry": "Voce di cura",
+      "water_change": "Cambio d'acqua",
+      "story": "Storia",
+      "discussion_post": "Post del forum",
+      "profile_avatar": "Foto profilo",
+      "profile_header": "Intestazione del profilo"
+    },
+    "section": {
+      "showcase": "In evidenza",
+      "decoration": "Decorazioni",
+      "technic": "Attrezzatura",
+      "time_lapse": "Time-lapse",
+      "video": "Video",
+      "decommission": "Messa fuori servizio",
+      "recommission": "Rimessa in servizio"
+    },
+    "streakWarning": "Questa foto è l'unica della settimana che inizia il {{week}} nel timelapse di {{tank}}. Se la elimini, la serie di quella vasca si accorcia o si interrompe."
   }
 }

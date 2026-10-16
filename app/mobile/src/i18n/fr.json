@@ -273,7 +273,8 @@
       "deleteError": "Échec de la suppression du brouillon. Veuillez réessayer."
     },
     "loginUnavailable": "La connexion est indisponible car le service d'authentification est inaccessible. Veuillez réessayer.",
-    "todos": "Tâches"
+    "todos": "Tâches",
+    "media": "Mes médias"
   },
   "upload": {
     "title": "Importer une photo",
@@ -414,7 +415,10 @@
     "selected_member_handle_invalid": "Saisis l'identifiant du membre que tu veux ajouter.",
     "selected_member_profile_not_found": "Aucun membre n'a cet identifiant.",
     "selected_member_is_owner": "Tu vois de toute façon ton propre aquarium.",
-    "selected_member_limit": "Un aquarium peut avoir au maximum 100 membres sélectionnés."
+    "selected_member_limit": "Un aquarium peut avoir au maximum 100 membres sélectionnés.",
+    "media_is_proof": "Cette photo prouve la mise hors service d'un aquarium et reste dans ta médiathèque.",
+    "library_photo_invalid": "Choisis une photo JPEG, PNG ou WebP de 25 Mo maximum qui peut être ouverte.",
+    "library_filter_invalid": "Ce filtre n'est pas disponible."
   },
   "featureFlags": {
     "activityTitle": "Activité de la communauté",
@@ -1100,5 +1104,71 @@
     "reviewEmpty": "Ta photo de l’aquarium vide",
     "reviewFilled": "Ta photo de l’aquarium rempli",
     "sendError": "La photo n’a pas pu être envoyée. Réessaie."
+  },
+  "library": {
+    "title": "Mes médias",
+    "intro": "Toutes les photos et vidéos qui t'appartiennent. Un fichier reste ici quand tu le retires d'un aquarium, d'une entrée d'entretien ou d'une histoire. Si tu le supprimes ici, il disparaît partout.",
+    "signIn": "Connecte-toi pour voir tes médias.",
+    "upload": "Ajouter une photo à la médiathèque",
+    "uploading": "Importation…",
+    "pickError": "La photothèque n'a pas pu être ouverte.",
+    "uploadError": "L'importation a échoué. Réessaie.",
+    "detailError": "Le fichier n'a pas pu être chargé. Réessaie.",
+    "deleteError": "La suppression du fichier a échoué. Réessaie.",
+    "empty": "Aucun fichier pour le moment.",
+    "filter": {
+      "kind": {
+        "all": "Tous",
+        "photo": "Photos",
+        "video": "Vidéos"
+      },
+      "use": {
+        "all": "Tous",
+        "linked": "Utilisés",
+        "unlinked": "Non utilisés"
+      }
+    },
+    "kind": {
+      "photo": "Photo",
+      "video": "Vidéo"
+    },
+    "badgeUnused": "Inutilisé",
+    "tileUsed": "{{kind}}, importé le {{date}}, emplacements : {{places}}",
+    "tileUnused": "{{kind}}, importé le {{date}}, affiché nulle part",
+    "uploaded": "Importé le {{date}}",
+    "placesTitle": "Affiché dans",
+    "placesEmpty": "Affiché nulle part. Toi seul vois ce fichier.",
+    "proofNote": "Cette photo prouve la mise hors service d'un aquarium. Elle reste dans ta médiathèque.",
+    "confirmTitle": "Supprimer de la médiathèque ?",
+    "confirmPlaces": "Le fichier est supprimé définitivement et disparaît de ces emplacements :",
+    "confirmNoPlaces": "Le fichier n'est affiché nulle part et est supprimé définitivement.",
+    "deleteConfirm": "Supprimer définitivement",
+    "deleteCancel": "Garder le fichier",
+    "delete": "Supprimer de la médiathèque",
+    "close": "Fermer",
+    "placeNamed": "{{place}} : {{name}}",
+    "place": {
+      "tank": "Aquarium",
+      "tankSection": "Aquarium ({{section}})",
+      "tank_main": "Image principale d'un aquarium",
+      "decommission_proof": "Preuve de mise hors service",
+      "inhabitant": "Population d'un aquarium",
+      "care_entry": "Entrée d'entretien",
+      "water_change": "Changement d'eau",
+      "story": "Histoire",
+      "discussion_post": "Message du forum",
+      "profile_avatar": "Photo de profil",
+      "profile_header": "En-tête du profil"
+    },
+    "section": {
+      "showcase": "Remarquable",
+      "decoration": "Décoration",
+      "technic": "Équipement",
+      "time_lapse": "Time-lapse",
+      "video": "Vidéos",
+      "decommission": "Mise hors service",
+      "recommission": "Remise en service"
+    },
+    "streakWarning": "Cette photo est la seule de la semaine commençant le {{week}} dans le timelapse de {{tank}}. Si tu la supprimes, la série de cet aquarium se raccourcit ou s'interrompt."
   }
 }

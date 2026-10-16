@@ -266,7 +266,8 @@
       "deleteError": "Der Entwurf konnte nicht gelöscht werden. Bitte versuche es erneut."
     },
     "loginUnavailable": "Die Anmeldung ist gerade nicht möglich, weil der Anmeldedienst nicht erreichbar ist. Bitte versuche es erneut.",
-    "todos": "To-dos"
+    "todos": "To-dos",
+    "media": "Meine Medien"
   },
   "upload": {
     "title": "Foto hochladen",
@@ -406,7 +407,10 @@
     "selected_member_handle_invalid": "Gib den Handle des Mitglieds ein, das du hinzufügen möchtest.",
     "selected_member_profile_not_found": "Es gibt kein Mitglied mit diesem Handle.",
     "selected_member_is_owner": "Dein eigenes Becken siehst du ohnehin.",
-    "selected_member_limit": "Ein Becken kann höchstens 100 ausgewählte Mitglieder haben."
+    "selected_member_limit": "Ein Becken kann höchstens 100 ausgewählte Mitglieder haben.",
+    "media_is_proof": "Dieses Foto belegt die Stilllegung eines Beckens und bleibt in deiner Mediathek.",
+    "library_photo_invalid": "Wähle ein JPEG-, PNG- oder WebP-Foto bis 25 MB, das sich öffnen lässt.",
+    "library_filter_invalid": "Dieser Filter ist nicht verfügbar."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -1081,5 +1085,71 @@
     "reviewEmpty": "Dein Foto vom leeren Becken",
     "reviewFilled": "Dein Foto vom befüllten Becken",
     "sendError": "Das Foto konnte nicht gesendet werden. Bitte versuche es erneut."
+  },
+  "library": {
+    "title": "Meine Medien",
+    "intro": "Alle Fotos und Videos, die dir gehören. Eine Datei bleibt hier, wenn du sie aus einem Becken, einem Pflegeeintrag oder einer Story entfernst. Wenn du sie hier löschst, verschwindet sie überall.",
+    "signIn": "Melde dich an, um deine Medien zu sehen.",
+    "upload": "Foto zur Mediathek hinzufügen",
+    "uploading": "Wird hochgeladen…",
+    "pickError": "Die Fotomediathek konnte nicht geöffnet werden.",
+    "uploadError": "Das Hochladen ist fehlgeschlagen. Bitte versuche es erneut.",
+    "detailError": "Die Datei konnte nicht geladen werden. Bitte versuche es erneut.",
+    "deleteError": "Das Löschen der Datei ist fehlgeschlagen. Bitte versuche es erneut.",
+    "empty": "Noch keine Dateien.",
+    "filter": {
+      "kind": {
+        "all": "Alle",
+        "photo": "Fotos",
+        "video": "Videos"
+      },
+      "use": {
+        "all": "Alle",
+        "linked": "In Verwendung",
+        "unlinked": "Nicht verwendet"
+      }
+    },
+    "kind": {
+      "photo": "Foto",
+      "video": "Video"
+    },
+    "badgeUnused": "Nicht verwendet",
+    "tileUsed": "{{kind}}, hochgeladen am {{date}}, Orte: {{places}}",
+    "tileUnused": "{{kind}}, hochgeladen am {{date}}, nirgends angezeigt",
+    "uploaded": "Hochgeladen am {{date}}",
+    "placesTitle": "Angezeigt in",
+    "placesEmpty": "Nirgends angezeigt. Nur du siehst diese Datei.",
+    "proofNote": "Dieses Foto belegt die Stilllegung eines Beckens. Es bleibt in deiner Mediathek.",
+    "confirmTitle": "Aus der Mediathek löschen?",
+    "confirmPlaces": "Die Datei wird endgültig gelöscht und verschwindet aus diesen Orten:",
+    "confirmNoPlaces": "Die Datei wird nirgends angezeigt und endgültig gelöscht.",
+    "deleteConfirm": "Endgültig löschen",
+    "deleteCancel": "Datei behalten",
+    "delete": "Aus der Mediathek löschen",
+    "close": "Schließen",
+    "placeNamed": "{{place}}: {{name}}",
+    "place": {
+      "tank": "Becken",
+      "tankSection": "Becken ({{section}})",
+      "tank_main": "Hauptbild eines Beckens",
+      "decommission_proof": "Stilllegungsnachweis",
+      "inhabitant": "Besatz eines Beckens",
+      "care_entry": "Pflegeeintrag",
+      "water_change": "Wasserwechsel",
+      "story": "Story",
+      "discussion_post": "Forumbeitrag",
+      "profile_avatar": "Profilbild",
+      "profile_header": "Profil-Kopfbereich"
+    },
+    "section": {
+      "showcase": "Vorzeige",
+      "decoration": "Dekoration",
+      "technic": "Technik",
+      "time_lapse": "Zeitraffer",
+      "video": "Videos",
+      "decommission": "Stilllegung",
+      "recommission": "Wiederinbetriebnahme"
+    },
+    "streakWarning": "Dieses Foto ist das einzige der Woche ab {{week}} im Zeitraffer von {{tank}}. Wenn du es löschst, wird die Serie dieses Beckens kürzer oder reißt ab."
   }
 }

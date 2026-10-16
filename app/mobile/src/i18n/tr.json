@@ -266,7 +266,8 @@
       "deleteError": "Taslak silinemedi. Lütfen tekrar deneyin."
     },
     "loginUnavailable": "Giriş hizmetine ulaşılamadığı için giriş yapılamıyor. Lütfen tekrar deneyin.",
-    "todos": "Görevler"
+    "todos": "Görevler",
+    "media": "Medyam"
   },
   "upload": {
     "title": "Fotoğraf yükle",
@@ -406,7 +407,10 @@
     "selected_member_handle_invalid": "Eklemek istediğin üyenin kullanıcı adını gir.",
     "selected_member_profile_not_found": "Bu kullanıcı adına sahip üye yok.",
     "selected_member_is_owner": "Kendi akvaryumunu zaten görürsün.",
-    "selected_member_limit": "Bir akvaryumun en fazla 100 seçili üyesi olabilir."
+    "selected_member_limit": "Bir akvaryumun en fazla 100 seçili üyesi olabilir.",
+    "media_is_proof": "Bu fotoğraf bir akvaryumun devre dışı bırakıldığını kanıtlar ve kitaplığında kalır.",
+    "library_photo_invalid": "Açılabilen, en fazla 25 MB boyutunda bir JPEG, PNG veya WebP fotoğraf seç.",
+    "library_filter_invalid": "Bu filtre kullanılamıyor."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -1081,5 +1085,71 @@
     "reviewEmpty": "Boş akvaryum fotoğrafın",
     "reviewFilled": "Dolu akvaryum fotoğrafın",
     "sendError": "Fotoğraf gönderilemedi. Lütfen tekrar dene."
+  },
+  "library": {
+    "title": "Medyam",
+    "intro": "Sana ait tüm fotoğraflar ve videolar. Bir dosyayı akvaryumdan, bakım kaydından veya hikayeden çıkardığında burada kalır. Burada silersen her yerden kaldırılır.",
+    "signIn": "Medyanı görmek için giriş yap.",
+    "upload": "Kitaplığa fotoğraf ekle",
+    "uploading": "Yükleniyor…",
+    "pickError": "Fotoğraf kitaplığı açılamadı.",
+    "uploadError": "Yükleme başarısız oldu. Lütfen tekrar dene.",
+    "detailError": "Dosya yüklenemedi. Lütfen tekrar dene.",
+    "deleteError": "Dosya silinemedi. Lütfen tekrar dene.",
+    "empty": "Henüz dosya yok.",
+    "filter": {
+      "kind": {
+        "all": "Tümü",
+        "photo": "Fotoğraflar",
+        "video": "Videolar"
+      },
+      "use": {
+        "all": "Tümü",
+        "linked": "Kullanımda",
+        "unlinked": "Kullanımda değil"
+      }
+    },
+    "kind": {
+      "photo": "Fotoğraf",
+      "video": "Video"
+    },
+    "badgeUnused": "Kullanılmıyor",
+    "tileUsed": "{{kind}}, {{date}} tarihinde yüklendi, yerler: {{places}}",
+    "tileUnused": "{{kind}}, {{date}} tarihinde yüklendi, hiçbir yerde gösterilmiyor",
+    "uploaded": "{{date}} tarihinde yüklendi",
+    "placesTitle": "Gösterildiği yerler",
+    "placesEmpty": "Hiçbir yerde gösterilmiyor. Bu dosyayı yalnızca sen görürsün.",
+    "proofNote": "Bu fotoğraf bir akvaryumun devre dışı bırakıldığını kanıtlar. Kitaplığında kalır.",
+    "confirmTitle": "Kitaplıktan silinsin mi?",
+    "confirmPlaces": "Dosya kalıcı olarak silinir ve şu yerlerden kaldırılır:",
+    "confirmNoPlaces": "Dosya hiçbir yerde gösterilmiyor ve kalıcı olarak silinir.",
+    "deleteConfirm": "Kalıcı olarak sil",
+    "deleteCancel": "Dosyayı koru",
+    "delete": "Kitaplıktan sil",
+    "close": "Kapat",
+    "placeNamed": "{{place}}: {{name}}",
+    "place": {
+      "tank": "Akvaryum",
+      "tankSection": "Akvaryum ({{section}})",
+      "tank_main": "Akvaryumun ana görseli",
+      "decommission_proof": "Devre dışı bırakma kanıtı",
+      "inhabitant": "Akvaryum canlıları",
+      "care_entry": "Bakım kaydı",
+      "water_change": "Su değişimi",
+      "story": "Hikaye",
+      "discussion_post": "Forum gönderisi",
+      "profile_avatar": "Profil fotoğrafı",
+      "profile_header": "Profil başlığı"
+    },
+    "section": {
+      "showcase": "Öne çıkan",
+      "decoration": "Dekorasyon",
+      "technic": "Ekipman",
+      "time_lapse": "Zaman atlamalı",
+      "video": "Videolar",
+      "decommission": "Devre dışı bırakma",
+      "recommission": "Yeniden devreye alma"
+    },
+    "streakWarning": "Bu fotoğraf, {{tank}} akvaryumunun timelapse'inde {{week}} tarihinde başlayan haftanın tek fotoğrafı. Silersen o akvaryumun serisi kısalır ya da bozulur."
   }
 }

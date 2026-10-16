@@ -51,6 +51,7 @@ export default function RootLayout() {
                 <Stack.Screen name="auth" options={{ headerShown: false }} />
                 <Stack.Screen name="onboarding" options={{ title: t("onboarding.title") }} />
                 <Stack.Screen name="todos" options={{ title: t("todos.title") }} />
+                <Stack.Screen name="media" options={{ title: t("library.title") }} />
                 <Stack.Screen name="upload/index" options={{ title: t("upload.title") }} />
               </Stack>
               <OnboardingGate />

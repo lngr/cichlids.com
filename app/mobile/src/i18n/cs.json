@@ -280,7 +280,8 @@
       "deleteError": "Smazání konceptu se nezdařilo. Zkuste to znovu."
     },
     "loginUnavailable": "Přihlášení není dostupné, protože se nelze připojit k přihlašovací službě. Zkuste to znovu.",
-    "todos": "Úkoly"
+    "todos": "Úkoly",
+    "media": "Moje média"
   },
   "upload": {
     "title": "Nahrát fotografii",
@@ -422,7 +423,10 @@
     "selected_member_handle_invalid": "Zadejte uživatelské jméno člena, kterého chcete přidat.",
     "selected_member_profile_not_found": "Člen s tímto uživatelským jménem neexistuje.",
     "selected_member_is_owner": "Své vlastní akvárium vidíte tak či tak.",
-    "selected_member_limit": "Akvárium může mít nejvýše 100 vybraných členů."
+    "selected_member_limit": "Akvárium může mít nejvýše 100 vybraných členů.",
+    "media_is_proof": "Tato fotografie dokládá vyřazení akvária z provozu a zůstává ve tvé knihovně.",
+    "library_photo_invalid": "Vyber fotografii JPEG, PNG nebo WebP do 25 MB, kterou lze otevřít.",
+    "library_filter_invalid": "Tento filtr není k dispozici."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -1119,5 +1123,71 @@
     "reviewEmpty": "Tvoje fotka prázdného akvária",
     "reviewFilled": "Tvoje fotka naplněného akvária",
     "sendError": "Fotku se nepodařilo odeslat. Zkus to prosím znovu."
+  },
+  "library": {
+    "title": "Moje média",
+    "intro": "Všechny fotografie a videa, které ti patří. Soubor tu zůstane, když ho odebereš z akvária, záznamu péče nebo příběhu. Pokud ho smažeš tady, zmizí všude.",
+    "signIn": "Přihlas se, abys viděl svá média.",
+    "upload": "Přidat fotografii do knihovny",
+    "uploading": "Nahrávání…",
+    "pickError": "Knihovnu fotografií se nepodařilo otevřít.",
+    "uploadError": "Nahrání se nezdařilo. Zkus to prosím znovu.",
+    "detailError": "Soubor se nepodařilo načíst. Zkus to prosím znovu.",
+    "deleteError": "Soubor se nepodařilo smazat. Zkus to prosím znovu.",
+    "empty": "Zatím žádné soubory.",
+    "filter": {
+      "kind": {
+        "all": "Vše",
+        "photo": "Fotografie",
+        "video": "Videa"
+      },
+      "use": {
+        "all": "Vše",
+        "linked": "Používané",
+        "unlinked": "Nepoužívané"
+      }
+    },
+    "kind": {
+      "photo": "Fotografie",
+      "video": "Video"
+    },
+    "badgeUnused": "Nepoužito",
+    "tileUsed": "{{kind}}, nahráno {{date}}, místa: {{places}}",
+    "tileUnused": "{{kind}}, nahráno {{date}}, nikde se nezobrazuje",
+    "uploaded": "Nahráno {{date}}",
+    "placesTitle": "Zobrazuje se v",
+    "placesEmpty": "Nikde se nezobrazuje. Tento soubor vidíš jen ty.",
+    "proofNote": "Tato fotografie dokládá vyřazení akvária z provozu. Zůstává ve tvé knihovně.",
+    "confirmTitle": "Smazat z knihovny?",
+    "confirmPlaces": "Soubor bude trvale smazán a zmizí z těchto míst:",
+    "confirmNoPlaces": "Soubor se nikde nezobrazuje a bude trvale smazán.",
+    "deleteConfirm": "Smazat trvale",
+    "deleteCancel": "Ponechat soubor",
+    "delete": "Smazat z knihovny",
+    "close": "Zavřít",
+    "placeNamed": "{{place}}: {{name}}",
+    "place": {
+      "tank": "Akvárium",
+      "tankSection": "Akvárium ({{section}})",
+      "tank_main": "Hlavní obrázek akvária",
+      "decommission_proof": "Doklad o vyřazení z provozu",
+      "inhabitant": "Osádka akvária",
+      "care_entry": "Záznam péče",
+      "water_change": "Výměna vody",
+      "story": "Příběh",
+      "discussion_post": "Příspěvek ve fóru",
+      "profile_avatar": "Profilová fotka",
+      "profile_header": "Záhlaví profilu"
+    },
+    "section": {
+      "showcase": "Ukázkové",
+      "decoration": "Dekorace",
+      "technic": "Vybavení",
+      "time_lapse": "Časosběr",
+      "video": "Videa",
+      "decommission": "Vyřazení z provozu",
+      "recommission": "Opětovné uvedení do provozu"
+    },
+    "streakWarning": "Tato fotka je jediná z týdne začínajícího {{week}} v timelapse akvária {{tank}}. Když ji smažeš, série tohoto akvária se zkrátí nebo přeruší."
   }
 }

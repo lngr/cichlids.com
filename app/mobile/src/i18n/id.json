@@ -266,7 +266,8 @@
       "deleteError": "Gagal menghapus draf. Silakan coba lagi."
     },
     "loginUnavailable": "Tidak dapat masuk karena layanan masuk tidak dapat dihubungi. Silakan coba lagi.",
-    "todos": "Tugas"
+    "todos": "Tugas",
+    "media": "Media saya"
   },
   "upload": {
     "title": "Unggah foto",
@@ -406,7 +407,10 @@
     "selected_member_handle_invalid": "Masukkan nama pengguna anggota yang ingin Anda tambahkan.",
     "selected_member_profile_not_found": "Tidak ada anggota dengan nama pengguna ini.",
     "selected_member_is_owner": "Akuarium Anda sendiri tetap terlihat oleh Anda.",
-    "selected_member_limit": "Sebuah akuarium dapat memiliki paling banyak 100 anggota terpilih."
+    "selected_member_limit": "Sebuah akuarium dapat memiliki paling banyak 100 anggota terpilih.",
+    "media_is_proof": "Foto ini membuktikan penonaktifan akuarium dan tetap berada di pustaka Anda.",
+    "library_photo_invalid": "Pilih foto JPEG, PNG, atau WebP berukuran maksimal 25 MB yang dapat dibuka.",
+    "library_filter_invalid": "Filter ini tidak tersedia."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -1070,5 +1074,71 @@
     "reviewEmpty": "Fotomu tentang akuarium kosong",
     "reviewFilled": "Fotomu tentang akuarium terisi",
     "sendError": "Foto tidak bisa dikirim. Coba lagi."
+  },
+  "library": {
+    "title": "Media saya",
+    "intro": "Semua foto dan video milik Anda. File tetap ada di sini saat Anda mengeluarkannya dari akuarium, catatan perawatan, atau cerita. Jika Anda menghapusnya di sini, file hilang dari semua tempat.",
+    "signIn": "Masuk untuk melihat media Anda.",
+    "upload": "Tambahkan foto ke pustaka",
+    "uploading": "Mengunggah…",
+    "pickError": "Pustaka foto tidak dapat dibuka.",
+    "uploadError": "Pengunggahan gagal. Silakan coba lagi.",
+    "detailError": "File tidak dapat dimuat. Silakan coba lagi.",
+    "deleteError": "File gagal dihapus. Silakan coba lagi.",
+    "empty": "Belum ada file.",
+    "filter": {
+      "kind": {
+        "all": "Semua",
+        "photo": "Foto",
+        "video": "Video"
+      },
+      "use": {
+        "all": "Semua",
+        "linked": "Digunakan",
+        "unlinked": "Tidak digunakan"
+      }
+    },
+    "kind": {
+      "photo": "Foto",
+      "video": "Video"
+    },
+    "badgeUnused": "Tidak digunakan",
+    "tileUsed": "{{kind}}, diunggah {{date}}, tempat: {{places}}",
+    "tileUnused": "{{kind}}, diunggah {{date}}, tidak ditampilkan di mana pun",
+    "uploaded": "Diunggah {{date}}",
+    "placesTitle": "Ditampilkan di",
+    "placesEmpty": "Tidak ditampilkan di mana pun. Hanya Anda yang dapat melihat file ini.",
+    "proofNote": "Foto ini membuktikan penonaktifan akuarium. Foto tetap berada di pustaka Anda.",
+    "confirmTitle": "Hapus dari pustaka?",
+    "confirmPlaces": "File dihapus secara permanen dan hilang dari tempat-tempat ini:",
+    "confirmNoPlaces": "File tidak ditampilkan di mana pun dan dihapus secara permanen.",
+    "deleteConfirm": "Hapus permanen",
+    "deleteCancel": "Simpan file",
+    "delete": "Hapus dari pustaka",
+    "close": "Tutup",
+    "placeNamed": "{{place}}: {{name}}",
+    "place": {
+      "tank": "Akuarium",
+      "tankSection": "Akuarium ({{section}})",
+      "tank_main": "Gambar utama akuarium",
+      "decommission_proof": "Bukti penonaktifan",
+      "inhabitant": "Penghuni akuarium",
+      "care_entry": "Catatan perawatan",
+      "water_change": "Penggantian air",
+      "story": "Cerita",
+      "discussion_post": "Kiriman forum",
+      "profile_avatar": "Foto profil",
+      "profile_header": "Header profil"
+    },
+    "section": {
+      "showcase": "Unggulan",
+      "decoration": "Dekorasi",
+      "technic": "Peralatan",
+      "time_lapse": "Time-lapse",
+      "video": "Video",
+      "decommission": "Penonaktifan",
+      "recommission": "Pengaktifan kembali"
+    },
+    "streakWarning": "Foto ini satu-satunya dari minggu yang dimulai {{week}} di timelapse {{tank}}. Jika kamu menghapusnya, rentetan akuarium itu menjadi lebih pendek atau putus."
   }
 }

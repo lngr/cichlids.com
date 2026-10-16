@@ -273,7 +273,8 @@
       "deleteError": "Falha ao excluir o rascunho. Tente novamente."
     },
     "loginUnavailable": "Não é possível entrar porque o serviço de autenticação está inacessível. Tente novamente.",
-    "todos": "Tarefas"
+    "todos": "Tarefas",
+    "media": "Minhas mídias"
   },
   "upload": {
     "title": "Enviar foto",
@@ -414,7 +415,10 @@
     "selected_member_handle_invalid": "Digite o nome de usuário do membro que você quer adicionar.",
     "selected_member_profile_not_found": "Não há nenhum membro com este nome de usuário.",
     "selected_member_is_owner": "Você vê o seu próprio aquário de qualquer forma.",
-    "selected_member_limit": "Um aquário pode ter no máximo 100 membros selecionados."
+    "selected_member_limit": "Um aquário pode ter no máximo 100 membros selecionados.",
+    "media_is_proof": "Esta foto comprova a desativação de um aquário e permanece na sua biblioteca.",
+    "library_photo_invalid": "Escolha uma foto JPEG, PNG ou WebP de até 25 MB que possa ser aberta.",
+    "library_filter_invalid": "Este filtro não está disponível."
   },
   "featureFlags": {
     "activityTitle": "Atividade da comunidade",
@@ -1100,5 +1104,71 @@
     "reviewEmpty": "Sua foto do aquário vazio",
     "reviewFilled": "Sua foto do aquário cheio",
     "sendError": "Não foi possível enviar a foto. Tente de novo."
+  },
+  "library": {
+    "title": "Minhas mídias",
+    "intro": "Todas as fotos e vídeos que são seus. Um arquivo permanece aqui quando você o remove de um aquário, de um registro de cuidado ou de uma história. Se você o excluir aqui, ele some de todos os lugares.",
+    "signIn": "Entre para ver suas mídias.",
+    "upload": "Adicionar foto à biblioteca",
+    "uploading": "Enviando…",
+    "pickError": "Não foi possível abrir a biblioteca de fotos.",
+    "uploadError": "Falha no envio. Tente novamente.",
+    "detailError": "Não foi possível carregar o arquivo. Tente novamente.",
+    "deleteError": "Não foi possível excluir o arquivo. Tente novamente.",
+    "empty": "Ainda não há arquivos.",
+    "filter": {
+      "kind": {
+        "all": "Todos",
+        "photo": "Fotos",
+        "video": "Vídeos"
+      },
+      "use": {
+        "all": "Todos",
+        "linked": "Em uso",
+        "unlinked": "Sem uso"
+      }
+    },
+    "kind": {
+      "photo": "Foto",
+      "video": "Vídeo"
+    },
+    "badgeUnused": "Sem uso",
+    "tileUsed": "{{kind}}, enviado em {{date}}, locais: {{places}}",
+    "tileUnused": "{{kind}}, enviado em {{date}}, não exibido em nenhum lugar",
+    "uploaded": "Enviado em {{date}}",
+    "placesTitle": "Exibido em",
+    "placesEmpty": "Não exibido em nenhum lugar. Só você vê este arquivo.",
+    "proofNote": "Esta foto comprova a desativação de um aquário. Ela permanece na sua biblioteca.",
+    "confirmTitle": "Excluir da biblioteca?",
+    "confirmPlaces": "O arquivo é excluído permanentemente e some destes lugares:",
+    "confirmNoPlaces": "O arquivo não é exibido em nenhum lugar e é excluído permanentemente.",
+    "deleteConfirm": "Excluir permanentemente",
+    "deleteCancel": "Manter arquivo",
+    "delete": "Excluir da biblioteca",
+    "close": "Fechar",
+    "placeNamed": "{{place}}: {{name}}",
+    "place": {
+      "tank": "Aquário",
+      "tankSection": "Aquário ({{section}})",
+      "tank_main": "Imagem principal de um aquário",
+      "decommission_proof": "Comprovante de desativação",
+      "inhabitant": "Habitantes de um aquário",
+      "care_entry": "Registro de cuidado",
+      "water_change": "Troca de água",
+      "story": "História",
+      "discussion_post": "Publicação no fórum",
+      "profile_avatar": "Foto de perfil",
+      "profile_header": "Cabeçalho do perfil"
+    },
+    "section": {
+      "showcase": "Destaque",
+      "decoration": "Decoração",
+      "technic": "Equipamentos",
+      "time_lapse": "Time-lapse",
+      "video": "Vídeos",
+      "decommission": "Desativação",
+      "recommission": "Reativação"
+    },
+    "streakWarning": "Esta foto é a única da semana que começa em {{week}} no timelapse de {{tank}}. Se você a excluir, a sequência desse aquário fica mais curta ou quebra."
   }
 }
