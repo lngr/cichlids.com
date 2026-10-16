@@ -1,12 +1,15 @@
 ---
 id: TASK-5.5
 title: Weekly streak with vacation freeze and heatmap
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-15 12:26'
-updated_date: '2026-10-16 08:42'
+updated_date: '2026-10-16 09:22'
 labels: []
 dependencies: []
+references:
+  - app/mobile/e2e/playwright/streaks.write.mjs
+  - app/api/tests/Cichlids.Api.Tests/Features/Streaks/WaterChangeStreakTests.cs
 parent_task_id: TASK-5
 priority: medium
 ordinal: 85000
@@ -85,4 +88,14 @@ A streak counts weeks with completed care, survives vacations through a freeze, 
 - Freezes: 2 per calendar year (a configuration value); earning extra freezes is worked out later.
 - Vacation: activated in advance or recorded afterwards; it pauses both streaks for any length without breaking them, and vacation periods never extend a streak. An active vacation is never visible to others; after the return the past vacation becomes visible; the profile shows the vacation share.
 - No freeze-free bridging other than vacation. Leaderboards, reputation and ranking are later (DRAFT-14).
+
+### Implementation (2026-10-16)
+- Domain (pure): WaterChangeStreaks (plan periods with grace, verified or freeze, breaks, rhythm history from the change day), TimeLapseStreaks (ISO weeks with an in-app series photo), Vacations. Tables vacation, streak_freeze, care_plan_rule_change; tank_media.captured_in_app.
+- API: streaks of a tank (owner and, per TASK-5.7, viewers who see the stream or profile; viewers never see the paused state, deadline, freezes, last water change or an active vacation), the member's overview for Today, vacations (start, end, record afterwards; at most one open, no overlaps, at most 366 days, under the profile row lock), the vacation share on the profile (ended vacations, last 365 days). Outbox vacation.started, vacation.ended, streak.freeze_used.
+- App: streak cards on Today (StreakSlot) and the tank page, vacation mode in Me, vacation share on the profile; the camera marks series photos as taken in the app.
+- Security review findings fixed: input validation (client date within one day, offset range), information disclosure of the pause, authorization audit, check order and concurrency of vacation requests.
+- Interpretations of the subagent to confirm with the project owner: freezes are 2 per tank and calendar year (not per member); a vacation starting more than 7 days ago is refused when it would repair a broken period (vacation_would_repair); only-me entries count for every viewer's streak numbers; two water changes on one local day count as one; freezes are recorded when the owner reads.
+- Not built: the 16-week care heatmap (TASK-5.17) and a switch to turn streaks off (open); a confirmation before deleting a series photo that keeps the streak waits for a delete path (hook keepingPhotoIds).
+- Verification: .NET 553/1182 (1 opt-in benchmark skipped)/349 with 0 warnings, client-core 225, mobile 396, both typechecks, all 35 write e2e specs green.
+- Tests: app/api/tests/Cichlids.Api.Tests/Features/Streaks/*, app/api/tests/Cichlids.Infrastructure.Tests/Persistence/StreakConstraintTests.cs, app/client-core/src/streaks.test.ts, vacation.test.ts, app/mobile/src/streaks/streakText.test.ts, app/mobile/e2e/playwright/streaks.write.mjs.
 <!-- SECTION:NOTES:END -->
