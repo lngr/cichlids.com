@@ -22,5 +22,6 @@ mpz*-image.png
 tfplan
 infra/app/plan.json
 
-# Data Protection key ring of the local API (app/stack/README.md)
-/app/stack/data-protection-keys/
+# Data Protection key ring of the local API (app/stack/README.md); its development path is
+# relative to the content root, so a run from another directory places it elsewhere
+data-protection-keys/
