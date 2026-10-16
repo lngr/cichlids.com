@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using Cichlids.Domain.Entities;
 using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Storage;
 
@@ -10,8 +11,10 @@ namespace Cichlids.Api.Features.Media;
 /// public prefixes of the object store resolve; any other key, such as an original's, throws, so
 /// a private object never reaches a response.
 /// </summary>
-public sealed class MediaUrlBuilder(IObjectStore objectStore)
+public sealed class MediaUrlBuilder(IObjectStore objectStore, TankMediaUrlSigner? privateSigner = null)
 {
+    private const string PrivatePrefix = "private/";
+
     private static readonly string[] LabelsLargestFirst = ["large", "medium", "small", "thumb"];
 
     /// <summary>
@@ -32,6 +35,31 @@ public sealed class MediaUrlBuilder(IObjectStore objectStore)
             FindUrl(variantStorageKeysByLabel, "medium"),
             FindUrl(variantStorageKeysByLabel, "large"));
     }
+
+    /// <summary>
+    /// The URLs of the sized variants of a media item whose variants may live under the private
+    /// prefix, as the media of a tank do while its placement follows a change of visibility. A
+    /// variant under a public prefix resolves to its public URL. A variant under the private prefix
+    /// resolves to a signed path when signed paths are allowed and the builder has a signer, and to
+    /// null otherwise. Callers allow signed paths only for a viewer who sees the tank, and never for
+    /// a response that is cached across viewers.
+    /// </summary>
+    public ImageUrlsDto Build(IEnumerable<MediaVariant> variants, bool allowSigned)
+    {
+        var byLabel = variants.ToDictionary(v => v.Label);
+        string? ByLabel(string label) => byLabel.TryGetValue(label, out var variant) ? UrlOf(variant, allowSigned) : null;
+        if (!LabelsLargestFirst.Any(byLabel.ContainsKey) && ByLabel(MediaVariantSpec.PublicCopyLabel) is { } copy)
+        {
+            return new ImageUrlsDto(copy, copy, copy, copy);
+        }
+
+        return new ImageUrlsDto(ByLabel("thumb"), ByLabel("small"), ByLabel("medium"), ByLabel("large"));
+    }
+
+    private string? UrlOf(MediaVariant variant, bool allowSigned) =>
+        variant.StorageKey.StartsWith(PrivatePrefix, StringComparison.Ordinal)
+            ? allowSigned && privateSigner is not null ? privateSigner.PhotoPathFor(variant.Id) : null
+            : PublicUrl(variant.StorageKey);
 
     /// <summary>
     /// The URL of the largest sized variant present, otherwise of the public copy, or null when
