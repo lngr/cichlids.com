@@ -16,8 +16,10 @@ const SWIPE_DISTANCE = 48;
  * Shows the cards of a retrospective full screen, one after the other: progress bars on top, pause and
  * close next to them, tap or swipe to move between cards and buttons for the same steps.
  */
-export function RetrospectivePlayer({ cards, onClose, onAction }: {
+export function RetrospectivePlayer({ cards, suspended = false, onClose, onAction }: {
   cards: RetrospectiveCard[];
+  /** Pauses the cards while something else, such as the share sheet, is on top. */
+  suspended?: boolean;
   onClose: () => void;
   onAction: (action: RetrospectiveAction) => void;
 }) {
@@ -35,6 +37,9 @@ export function RetrospectivePlayer({ cards, onClose, onAction }: {
   const card = cards[index];
   const send = actor.send;
 
+  useEffect(() => {
+    if (suspended) send({ type: "PAUSE" });
+  }, [suspended, send]);
   useEffect(() => {
     if (!playing) return;
     const timer = setTimeout(() => send({ type: "TICK" }), RETROSPECTIVE_CARD_MS);

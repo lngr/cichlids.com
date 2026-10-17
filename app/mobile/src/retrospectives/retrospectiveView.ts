@@ -9,10 +9,11 @@ export type RetrospectiveAction =
   | { type: "set_up_tank" }
   | { type: "log_care"; tankId: number }
   | { type: "take_photo"; tankId: number }
-  | { type: "open_path"; path: string };
+  | { type: "open_path"; path: string }
+  | { type: "share" };
 
 /** The route an action leads to; adopting an archive tank opens its adoption, creating a tank runs through the onboarding with its first photo. */
-export function routeOfAction(action: RetrospectiveAction): string {
+export function routeOfAction(action: Exclude<RetrospectiveAction, { type: "share" }>): string {
   switch (action.type) {
     case "adopt_tank": return adoptionRoute(action.tankId);
     case "open_story": return `/gallery/${action.slug}`;

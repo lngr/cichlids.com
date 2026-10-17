@@ -40,7 +40,8 @@ export default function ReturnRetrospectiveScreen() {
   // The router changes with every navigation; the retrospective loads once per attempt.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, provisional, attempt, t]);
-  const open = (action: RetrospectiveAction) => router.push(routeOfAction(action));
+  // The return retrospective offers no sharing, so every action of its cards leads to a route.
+  const open = (action: RetrospectiveAction) => { if (action.type !== "share") router.push(routeOfAction(action)); };
   if (error) return <ErrorView message={error} onRetry={() => setAttempt(value => value + 1)} />;
   if (!cards) return <LoadingView label={t("me.loading")} />;
   return <RetrospectivePlayer cards={cards} onClose={() => send({ type: "BACK" })} onAction={open} />;

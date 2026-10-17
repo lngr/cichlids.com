@@ -18,6 +18,7 @@ export function RetrospectiveCardView({ card, onAction }: { card: RetrospectiveC
   const title = (key: string) => <Text accessibilityRole="header" style={[theme.type.h1, styles.centered, { color: theme.colors.fg }]}>{t(key)}</Text>;
   const eyebrow = (key: string) => <Text style={[theme.type.eyebrow, styles.centered, { color: theme.colors.muted }]}>{t(key)}</Text>;
   const figure = (text: string, testID?: string) => <Text testID={testID} style={[theme.type.display, styles.figure, { color: theme.colors.accent }]}>{text}</Text>;
+  const shareButton = (testID: string) => <Button testID={testID} variant="secondary" label={t("retrospective.share.open")} onPress={() => onAction({ type: "share" })} />;
   const photo = (url: string | undefined) => (
     <Image source={url} style={[styles.photo, { backgroundColor: theme.colors.placeholder, borderRadius: theme.radius.lg }]} contentFit="cover" accessibilityElementsHidden />
   );
@@ -36,6 +37,7 @@ export function RetrospectiveCardView({ card, onAction }: { card: RetrospectiveC
           {eyebrow(`retrospective.stats.${entry.key}`)}
           {figure(new Intl.NumberFormat(i18n.language).format(entry.value))}
         </View>)}
+        {shareButton("retrospective-share-stats")}
       </View>;
     case "most_viewed":
       return <View testID="retrospective-card-most-viewed" style={[styles.card, { gap: theme.space[3] }]}>
@@ -58,6 +60,7 @@ export function RetrospectiveCardView({ card, onAction }: { card: RetrospectiveC
         {title("retrospective.tankToday.title")}
         <Text style={[theme.type.body, styles.centered, { color: theme.colors.muted }]}>{t("retrospective.tankToday.text")}</Text>
         <Button testID="retrospective-set-up-tank" label={t("retrospective.tankToday.action")} onPress={() => onAction({ type: "set_up_tank" })} />
+        {shareButton("retrospective-share-last")}
       </View>;
     default:
       return <ReturnCardView card={card} onAction={onAction} />;
