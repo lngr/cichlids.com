@@ -4,6 +4,13 @@ export type ClientOptions = {
     baseUrl: 'http://localhost:5045/' | (string & {});
 };
 
+export type AddInhabitantRequest = {
+    speciesId: null | number | string;
+    count: null | number | string;
+    name: null | string;
+    movedInOn: null | string;
+};
+
 export type AddSelectedMemberRequest = {
     handle: null | string;
 };
@@ -466,9 +473,21 @@ export type ImageUrlsDto = {
 };
 
 export type InhabitantDto = {
+    id: number | string;
     species: null | InhabitantSpeciesRefDto;
     count: null | number | string;
+    name: null | string;
+    movedInOn: null | string;
+    removedOn: null | string;
+    removalReason: null | InhabitantRemovalReason;
 };
+
+export type InhabitantListDto = {
+    current: Array<InhabitantDto>;
+    history: Array<InhabitantDto>;
+};
+
+export type InhabitantRemovalReason = 'died' | 'given_away' | 'moved';
 
 export type InhabitantSpeciesRefDto = {
     id: number | string;
@@ -800,6 +819,11 @@ export type RegisterDeviceKeyRequest = {
 
 export type ReminderSnoozeDto = {
     untilDate: string;
+};
+
+export type RemoveInhabitantRequest = {
+    reason: null | string;
+    removedOn: null | string;
 };
 
 export type ReturnNextStepsDto = {
@@ -1289,6 +1313,13 @@ export type UpdateCareRequest = {
     note?: null | string;
     occurredAt?: null | string;
     onlyMe?: null | boolean;
+};
+
+export type UpdateInhabitantRequest = {
+    speciesId: null | number | string;
+    count: null | number | string;
+    name: null | string;
+    movedInOn: null | string;
 };
 
 export type UpdateMeSettingsRequest = {
@@ -4329,6 +4360,155 @@ export type RemoveTankSelectedMemberResponses = {
 };
 
 export type RemoveTankSelectedMemberResponse = RemoveTankSelectedMemberResponses[keyof RemoveTankSelectedMemberResponses];
+
+export type ListTankInhabitantsData = {
+    body?: never;
+    path: {
+        tankId: number;
+    };
+    query?: never;
+    url: '/api/tanks/{tankId}/inhabitants';
+};
+
+export type ListTankInhabitantsErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type ListTankInhabitantsError = ListTankInhabitantsErrors[keyof ListTankInhabitantsErrors];
+
+export type ListTankInhabitantsResponses = {
+    /**
+     * OK
+     */
+    200: InhabitantListDto;
+};
+
+export type ListTankInhabitantsResponse = ListTankInhabitantsResponses[keyof ListTankInhabitantsResponses];
+
+export type AddTankInhabitantData = {
+    body?: null | AddInhabitantRequest;
+    path: {
+        tankId: number;
+    };
+    query?: {
+        date?: string;
+    };
+    url: '/api/tanks/{tankId}/inhabitants';
+};
+
+export type AddTankInhabitantErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type AddTankInhabitantError = AddTankInhabitantErrors[keyof AddTankInhabitantErrors];
+
+export type AddTankInhabitantResponses = {
+    /**
+     * Created
+     */
+    201: InhabitantDto;
+};
+
+export type AddTankInhabitantResponse = AddTankInhabitantResponses[keyof AddTankInhabitantResponses];
+
+export type UpdateTankInhabitantData = {
+    body?: null | UpdateInhabitantRequest;
+    path: {
+        tankId: number;
+        id: number;
+    };
+    query?: {
+        date?: string;
+    };
+    url: '/api/tanks/{tankId}/inhabitants/{id}';
+};
+
+export type UpdateTankInhabitantErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type UpdateTankInhabitantError = UpdateTankInhabitantErrors[keyof UpdateTankInhabitantErrors];
+
+export type UpdateTankInhabitantResponses = {
+    /**
+     * OK
+     */
+    200: InhabitantDto;
+};
+
+export type UpdateTankInhabitantResponse = UpdateTankInhabitantResponses[keyof UpdateTankInhabitantResponses];
+
+export type RemoveTankInhabitantData = {
+    body?: null | RemoveInhabitantRequest;
+    path: {
+        tankId: number;
+        id: number;
+    };
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/tanks/{tankId}/inhabitants/{id}/removal';
+};
+
+export type RemoveTankInhabitantErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type RemoveTankInhabitantError = RemoveTankInhabitantErrors[keyof RemoveTankInhabitantErrors];
+
+export type RemoveTankInhabitantResponses = {
+    /**
+     * OK
+     */
+    200: InhabitantDto;
+};
+
+export type RemoveTankInhabitantResponse = RemoveTankInhabitantResponses[keyof RemoveTankInhabitantResponses];
 
 export type ListCareEntriesData = {
     body?: never;
