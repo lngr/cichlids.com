@@ -54,6 +54,7 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
             Assert.Equal(storyId, rating.StoryId);
             Assert.Equal((short)4, rating.Stars);
             Assert.Equal(comment.AuthorProfileId, rating.ProfileId);
+            Assert.Equal(comment.Id, rating.CommentId);
 
             var commentEvent = await db.OutboxEvents.SingleAsync(
                 e => e.EventType == "comment.created" && e.AggregateType == "story" && e.AggregateId == storyId.ToString());
@@ -108,7 +109,8 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
             await ratedResponse.Content.ReadAsStringAsync(), TestJson.Options)!;
         Assert.Equal((short)3, rated.Comment!.Stars);
 
-        // A migrated anonymous comment and its rating share only the legacy comment id.
+        // A migrated anonymous comment and its rating are joined by the stored comment reference; the
+        // rating carries a different timestamp than the comment.
         var legacyId = Random.Shared.Next(900_000_000, int.MaxValue);
         var legacyCreatedAt = DateTimeOffset.UtcNow.AddDays(-2);
         long legacyCommentId;
@@ -119,7 +121,12 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
                 LegacyId = legacyId, StoryId = storyId, PosterName = "Guest", Body = "Legacy rated", CreatedAt = legacyCreatedAt,
             };
             db.Comments.Add(legacyComment);
-            db.Ratings.Add(new Rating { LegacyCommentId = legacyId, StoryId = storyId, Stars = 2, CreatedAt = legacyCreatedAt });
+            await db.SaveChangesAsync();
+            db.Ratings.Add(new Rating
+            {
+                LegacyCommentId = legacyId, CommentId = legacyComment.Id, StoryId = storyId, Stars = 2,
+                CreatedAt = legacyCreatedAt.AddHours(1),
+            });
             await db.SaveChangesAsync();
             legacyCommentId = legacyComment.Id;
         }
@@ -256,6 +263,7 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
 
             var secondComment = await db.Comments.SingleAsync(c => c.Id == second.Comment!.Id);
             Assert.Equal(secondComment.CreatedAt, rating.CreatedAt);
+            Assert.Equal(secondComment.Id, rating.CommentId);
 
             var story = await db.Stories.SingleAsync(p => p.Id == storyId);
             Assert.Equal(1, story.RatingCount);
@@ -271,7 +279,7 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
             Assert.Equal(2, payload.RootElement.GetProperty("previousStars").GetInt32());
         }
 
-        // The stars show at the newest comment of the member, the rating row pairs with it by timestamp.
+        // The stars show at the newest comment of the member, the rating row references it.
         var list = await ListCommentsAsync($"/api/stories/{slug}/comments");
         Assert.Null(list.Items.Single(c => c.Id == first.Comment!.Id).Stars);
         Assert.Equal((short)5, list.Items.Single(c => c.Id == second.Comment!.Id).Stars);
@@ -297,9 +305,11 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
                 LegacyId = legacyId, StoryId = storyId, AuthorProfileId = raterId, Body = "Legacy", CreatedAt = legacyCreatedAt,
             };
             db.Comments.Add(legacyComment);
+            await db.SaveChangesAsync();
             db.Ratings.Add(new Rating
             {
-                LegacyCommentId = legacyId, StoryId = storyId, ProfileId = raterId, Stars = 1, CreatedAt = legacyCreatedAt,
+                LegacyCommentId = legacyId, CommentId = legacyComment.Id, StoryId = storyId, ProfileId = raterId, Stars = 1,
+                CreatedAt = legacyCreatedAt,
             });
             await db.SaveChangesAsync();
             legacyCommentId = legacyComment.Id;
@@ -312,6 +322,7 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
             var rating = await db.Ratings.SingleAsync(r => r.StoryId == storyId);
             Assert.Equal((short)4, rating.Stars);
             Assert.Null(rating.LegacyCommentId);
+            Assert.Equal(created.Comment!.Id, rating.CommentId);
         }
 
         var list = await ListCommentsAsync($"/api/stories/{slug}/comments");
@@ -338,6 +349,37 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
             Assert.True(await db.OutboxEvents.AnyAsync(
                 e => e.EventType == "rating.updated" && e.AggregateType == "tank" && e.AggregateId == tankId.ToString()));
         }
+
+        await SoftDeleteWriteTargetsAsync(tankId: tankId);
+    }
+
+    [Fact]
+    public async Task PostTankComment_RatingReferencesItsCommentAndAStarsOnlyRepeatDetachesIt()
+    {
+        var tankId = await CreatePublishedTankAsync();
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), $"tankref-{Guid.NewGuid():N}"[..24]);
+
+        var commented = await PostCreatedAsync(token, $"/api/tanks/{tankId}/comments", new CreateCommentRequest("Lovely tank", 5));
+
+        await using (var db = fixture.CreateDbContext())
+        {
+            Assert.Equal(commented.Comment!.Id, (await db.Ratings.SingleAsync(r => r.TankId == tankId)).CommentId);
+        }
+
+        var list = await ListCommentsAsync($"/api/tanks/{tankId}/comments");
+        Assert.Equal((short)5, list.Items.Single(c => c.Id == commented.Comment!.Id).Stars);
+
+        await PostCreatedAsync(token, $"/api/tanks/{tankId}/comments", new CreateCommentRequest(null, 2));
+
+        await using (var db = fixture.CreateDbContext())
+        {
+            var rating = await db.Ratings.SingleAsync(r => r.TankId == tankId);
+            Assert.Equal((short)2, rating.Stars);
+            Assert.Null(rating.CommentId);
+        }
+
+        list = await ListCommentsAsync($"/api/tanks/{tankId}/comments");
+        Assert.Null(list.Items.Single(c => c.Id == commented.Comment!.Id).Stars);
 
         await SoftDeleteWriteTargetsAsync(tankId: tankId);
     }

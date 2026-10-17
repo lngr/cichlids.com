@@ -9,12 +9,12 @@ namespace Cichlids.Api.Features.Comments;
 
 /// <summary>
 /// Write logic shared by the picture and tank comment endpoints. A request splits into a comment
-/// row and a rating row exactly like the legacy migration split them, the target story's
-/// denormalized rating aggregate is recomputed from the rating base table (derived aggregates are
-/// recomputed, never authored), and every write records its outbox event in the same transaction
-/// so a dispatcher can deliver it without ever seeing a half-committed change. A member has one
-/// rating per target: a repeat rating replaces stars and timestamp of the existing row in one
-/// atomic upsert, and a member cannot rate own content.
+/// row and a rating row exactly like the legacy migration split them, and the rating references
+/// its comment. The target story's denormalized rating aggregate is recomputed from the rating base
+/// table (derived aggregates are recomputed, never authored), and every write records its outbox
+/// event in the same transaction so a dispatcher can deliver it without ever seeing a half-committed
+/// change. A member has one rating per target: a repeat rating replaces stars and timestamp of the
+/// existing row in one atomic upsert, and a member cannot rate own content.
 /// </summary>
 public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore objectStore)
 {
@@ -33,9 +33,8 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
         }
 
         var trimmedBody = string.IsNullOrWhiteSpace(body) ? null : body.Trim();
-        // Comment and rating share this timestamp; the comment list pairs a rating with its comment by it.
-        // A replaced rating takes the timestamp of the request that replaced it, so its stars appear
-        // at the newest comment of the member and the earlier comments show none.
+        // A replaced rating takes the timestamp and the comment of the request that replaced it, so its
+        // stars appear at the newest comment of the member and the earlier comments show none.
         var now = DateTimeOffset.UtcNow;
 
         await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
@@ -59,7 +58,7 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
         UpsertedRating? rating = null;
         if (stars is { } starsValue)
         {
-            rating = await UpsertRatingAsync(storyId, tankId, author.Id, starsValue, now, cancellationToken);
+            rating = await UpsertRatingAsync(storyId, tankId, author.Id, starsValue, comment?.Id, now, cancellationToken);
 
             // Tanks have no denormalized rating aggregate columns, so only a story target is updated.
             if (storyId is { } ratedStoryId)
@@ -158,30 +157,33 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
     /// <summary>
     /// Inserts the rating of the member or replaces the existing one in a single statement on the
     /// partial unique index of the target, so parallel requests never create two rows. A
-    /// replacement takes the new stars and timestamp and is detached from any migrated comment, so the
-    /// stars pair with the comment of the request by the shared timestamp.
+    /// replacement takes the new stars, timestamp and comment reference (null when the request has no
+    /// comment) and is detached from any migrated comment, so the stars show at the comment of the request.
     /// The previous stars come from the statement snapshot taken before the replacement.
     /// </summary>
     private async Task<UpsertedRating> UpsertRatingAsync(
-        long? storyId, long? tankId, long profileId, short stars, DateTimeOffset createdAt, CancellationToken cancellationToken)
+        long? storyId, long? tankId, long profileId, short stars, long? commentId, DateTimeOffset createdAt,
+        CancellationToken cancellationToken)
     {
         var rows = storyId is { } ratedStoryId
             ? await context.Database.SqlQuery<UpsertedRating>(
                 $"""
-                INSERT INTO rating (story_id, profile_id, stars, created_at)
-                VALUES ({ratedStoryId}, {profileId}, {stars}, {createdAt})
+                INSERT INTO rating (story_id, profile_id, stars, comment_id, created_at)
+                VALUES ({ratedStoryId}, {profileId}, {stars}, {commentId}, {createdAt})
                 ON CONFLICT (profile_id, story_id) WHERE profile_id IS NOT NULL AND story_id IS NOT NULL
-                DO UPDATE SET stars = EXCLUDED.stars, created_at = EXCLUDED.created_at, legacy_comment_id = NULL
+                DO UPDATE SET stars = EXCLUDED.stars, created_at = EXCLUDED.created_at, comment_id = EXCLUDED.comment_id,
+                    legacy_comment_id = NULL
                 RETURNING id, stars, (xmax = 0) AS inserted,
                     (SELECT previous.stars FROM rating previous
                      WHERE previous.profile_id = {profileId} AND previous.story_id = {ratedStoryId}) AS previous_stars
                 """).ToListAsync(cancellationToken)
             : await context.Database.SqlQuery<UpsertedRating>(
                 $"""
-                INSERT INTO rating (tank_id, profile_id, stars, created_at)
-                VALUES ({tankId}, {profileId}, {stars}, {createdAt})
+                INSERT INTO rating (tank_id, profile_id, stars, comment_id, created_at)
+                VALUES ({tankId}, {profileId}, {stars}, {commentId}, {createdAt})
                 ON CONFLICT (profile_id, tank_id) WHERE profile_id IS NOT NULL AND tank_id IS NOT NULL
-                DO UPDATE SET stars = EXCLUDED.stars, created_at = EXCLUDED.created_at, legacy_comment_id = NULL
+                DO UPDATE SET stars = EXCLUDED.stars, created_at = EXCLUDED.created_at, comment_id = EXCLUDED.comment_id,
+                    legacy_comment_id = NULL
                 RETURNING id, stars, (xmax = 0) AS inserted,
                     (SELECT previous.stars FROM rating previous
                      WHERE previous.profile_id = {profileId} AND previous.tank_id = {tankId}) AS previous_stars
