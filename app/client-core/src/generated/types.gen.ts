@@ -21,6 +21,43 @@ export type AddStorySubjectRequest = {
 
 export type AggressionLevel = 'unspecified' | 'low' | 'moderate' | 'high';
 
+export type ArchiveMemberSinceDto = {
+    year: number | string;
+    month: number | string;
+};
+
+export type ArchiveMostViewedDto = {
+    storyId: number | string;
+    slug: string;
+    title: null | string;
+    viewCount: number | string;
+    image: null | ImageUrlsDto;
+};
+
+export type ArchiveRetrospectiveDto = {
+    memberSince: null | ArchiveMemberSinceDto;
+    stats: null | ArchiveStatsDto;
+    mostViewed: null | ArchiveMostViewedDto;
+    tanks: Array<ArchiveTankDto>;
+};
+
+export type ArchiveRetrospectiveStatusDto = {
+    available: boolean;
+    seenAt: null | string;
+};
+
+export type ArchiveStatsDto = {
+    photos: number | string;
+    comments: number | string;
+    stars: number | string;
+};
+
+export type ArchiveTankDto = {
+    id: number | string;
+    title: string;
+    image: null | ImageUrlsDto;
+};
+
 export type AuthorDto = {
     id: number | string;
     username: string;
@@ -530,6 +567,7 @@ export type MeDto = {
     roles: Array<string>;
     provisional?: boolean;
     handleChangeAvailableAt?: null | string;
+    archiveRetrospective?: null | ArchiveRetrospectiveStatusDto;
 };
 
 export type MeSettingsDto = {
@@ -2493,6 +2531,42 @@ export type RefineTankRegionResponses = {
      */
     200: unknown;
 };
+
+export type GetMyArchiveRetrospectiveData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/me/retrospectives/archive';
+};
+
+export type GetMyArchiveRetrospectiveResponses = {
+    /**
+     * OK
+     */
+    200: ArchiveRetrospectiveDto;
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type GetMyArchiveRetrospectiveResponse = GetMyArchiveRetrospectiveResponses[keyof GetMyArchiveRetrospectiveResponses];
+
+export type MarkMyArchiveRetrospectiveSeenData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/me/retrospectives/archive/seen';
+};
+
+export type MarkMyArchiveRetrospectiveSeenResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type MarkMyArchiveRetrospectiveSeenResponse = MarkMyArchiveRetrospectiveSeenResponses[keyof MarkMyArchiveRetrospectiveSeenResponses];
 
 export type LegacyPictureRedirectHtmlData = {
     body?: never;

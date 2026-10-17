@@ -2240,6 +2240,42 @@
         }
       }
     },
+    "/api/me/retrospectives/archive": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "GetMyArchiveRetrospective",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArchiveRetrospectiveDto"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/me/retrospectives/archive/seen": {
+      "post": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "MarkMyArchiveRetrospectiveSeen",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
     "/pictures/pic/{alias}.html": {
       "get": {
         "tags": [
@@ -8356,6 +8392,209 @@
           "high"
         ]
       },
+      "ArchiveMemberSinceDto": {
+        "required": [
+          "year",
+          "month"
+        ],
+        "type": "object",
+        "properties": {
+          "year": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "month": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "ArchiveMostViewedDto": {
+        "required": [
+          "storyId",
+          "slug",
+          "title",
+          "viewCount",
+          "image"
+        ],
+        "type": "object",
+        "properties": {
+          "storyId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "viewCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "image": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ImageUrlsDto"
+              }
+            ]
+          }
+        }
+      },
+      "ArchiveRetrospectiveDto": {
+        "required": [
+          "memberSince",
+          "stats",
+          "mostViewed",
+          "tanks"
+        ],
+        "type": "object",
+        "properties": {
+          "memberSince": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ArchiveMemberSinceDto"
+              }
+            ]
+          },
+          "stats": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ArchiveStatsDto"
+              }
+            ]
+          },
+          "mostViewed": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ArchiveMostViewedDto"
+              }
+            ]
+          },
+          "tanks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ArchiveTankDto"
+            }
+          }
+        }
+      },
+      "ArchiveRetrospectiveStatusDto": {
+        "required": [
+          "available",
+          "seenAt"
+        ],
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean"
+          },
+          "seenAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "ArchiveStatsDto": {
+        "required": [
+          "photos",
+          "comments",
+          "stars"
+        ],
+        "type": "object",
+        "properties": {
+          "photos": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "comments": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "stars": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "ArchiveTankDto": {
+        "required": [
+          "id",
+          "title",
+          "image"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "image": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ImageUrlsDto"
+              }
+            ]
+          }
+        }
+      },
       "AuthorDto": {
         "required": [
           "id",
@@ -10970,6 +11209,16 @@
               "string"
             ],
             "format": "date-time"
+          },
+          "archiveRetrospective": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ArchiveRetrospectiveStatusDto"
+              }
+            ]
           }
         }
       },
