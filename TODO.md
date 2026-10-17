@@ -63,14 +63,15 @@ Umgesetzt und in `main` gemergt. TASK-3.29 ist Done, die übrigen stehen in Revi
 
 ### 1.4 Slices des Zielbilds (`MVP-VISION.md`, Abschnitt 8)
 
-Die Slices 1 bis 3 haben Epics mit Stories im Backlog; ihre Umsetzung läuft lokal, die Abnahme
+Die Slices 1 bis 4 haben Epics mit Stories im Backlog; ihre Umsetzung läuft lokal, die Abnahme
 folgt, sobald Staging mit dem MVP als erstem Workload läuft.
 
 - [ ] Slice 1 App-Rahmen (TASK-4): Navigation, Mehrsprachigkeit, Einheiten, Onboarding, Becken-Seite, Entdecken: umgesetzt, abnehmen
 - [ ] Slice 2 Pflege und Medien (TASK-5, dazu TASK-6 Stilllegung und TASK-7 vorläufige App-Konten): Quick-Log, Pflegeplan, Serien, Erinnerungen, Fotos und Videos: umgesetzt, abnehmen
-- [ ] Slice 3 Rückblicke (TASK-8): Archiv-Rückblick, Rückkehr-Rückblick, Übernahme der Altbecken: in Umsetzung
-- [ ] Slice 4 Fish: Fish Log, Artenseiten, Besatz-Planer; dazu Import der Profildateien in die
-  API, Provenienz nur über Admin-Endpunkte
+- [ ] Slice 3 Rückblicke (TASK-8): Archiv-Rückblick, Rückkehr-Rückblick, Übernahme der Altbecken: umgesetzt, abnehmen
+- [ ] Slice 4 Fish (TASK-9, ADR-0031 Proposed): Fish Log, Artenseiten, Besatz-Planer: in Umsetzung;
+  Besatz-Planer und Artenkarte folgen dem Import der Profildateien in die API, Provenienz nur über
+  Admin-Endpunkte
 - [ ] Slice 5 Fragen: KI-Erstantwort mit Wissensdatenbank, Archiv-Fragen, Übersetzung, Kudos
 - [ ] Slice 6 Scanner mit dem Vision-Modell
 
