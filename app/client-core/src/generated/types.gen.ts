@@ -380,6 +380,29 @@ export type FinishWaterChangeRequest = {
     amount?: null | CareAmountRequest;
 };
 
+export type FollowedStoryDto = {
+    id: number | string;
+    slug: null | string;
+    title: null | string;
+};
+
+export type FollowedTankDto = {
+    tankId: number | string;
+    title: string;
+    owner: AuthorDto;
+    update: null | FollowedUpdateDto;
+};
+
+export type FollowedUpdateDto = {
+    kind: FollowedUpdateKind;
+    at: string;
+    careKind: null | CareKind;
+    story: null | FollowedStoryDto;
+    image: null | ImageUrlsDto;
+};
+
+export type FollowedUpdateKind = 'story' | 'time_lapse_photo' | 'tank_photo' | 'care_entry';
+
 export type HandleChangeDto = {
     handle: string;
     nextChangeAt: null | string;
@@ -520,6 +543,21 @@ export type MeStreaksDto = {
     tanks: Array<OwnTankStreaksDto>;
 };
 
+export type MilestoneDto = {
+    key: string;
+    kind: MilestoneKind;
+    tankId: number | string;
+    tankTitle: string;
+    value: number | string;
+    reachedOn: string;
+};
+
+export type MilestoneKind = 'first_care_week' | 'kept_streak' | 'tank_anniversary';
+
+export type MilestonesDto = {
+    items: Array<MilestoneDto>;
+};
+
 export type MyStoryDto = {
     id: number | string;
     state: StoryState;
@@ -582,6 +620,11 @@ export type PagedResponseOfCommentDto = {
 export type PagedResponseOfCommunityThreadListItemDto = {
     total: number | string;
     items: Array<CommunityThreadListItemDto>;
+};
+
+export type PagedResponseOfFollowedTankDto = {
+    total: number | string;
+    items: Array<FollowedTankDto>;
 };
 
 export type PagedResponseOfMediaLibraryItemDto = {
@@ -1039,6 +1082,11 @@ export type TodayDto = {
     drafts: Array<DraftDto>;
     tankOfTheWeek: null | TodayWeeklyTankDto;
     onThisDay?: null | TodayMemoryDto;
+};
+
+export type TodayFollowedDto = {
+    items: Array<FollowedTankDto>;
+    hasMore: boolean;
 };
 
 export type TodayMemoryDto = {
@@ -1880,6 +1928,126 @@ export type GetTodayResponses = {
 };
 
 export type GetTodayResponse = GetTodayResponses[keyof GetTodayResponses];
+
+export type GetTodayFollowedData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/me/today/followed';
+};
+
+export type GetTodayFollowedErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type GetTodayFollowedError = GetTodayFollowedErrors[keyof GetTodayFollowedErrors];
+
+export type GetTodayFollowedResponses = {
+    /**
+     * OK
+     */
+    200: TodayFollowedDto;
+};
+
+export type GetTodayFollowedResponse = GetTodayFollowedResponses[keyof GetTodayFollowedResponses];
+
+export type ListMyFollowedTanksData = {
+    body?: never;
+    path?: never;
+    query?: {
+        offset?: number | string;
+        limit?: number | string;
+    };
+    url: '/api/me/followed-tanks';
+};
+
+export type ListMyFollowedTanksErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type ListMyFollowedTanksError = ListMyFollowedTanksErrors[keyof ListMyFollowedTanksErrors];
+
+export type ListMyFollowedTanksResponses = {
+    /**
+     * OK
+     */
+    200: PagedResponseOfFollowedTankDto;
+};
+
+export type ListMyFollowedTanksResponse = ListMyFollowedTanksResponses[keyof ListMyFollowedTanksResponses];
+
+export type GetTodayMilestonesData = {
+    body?: never;
+    path?: never;
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/me/today/milestones';
+};
+
+export type GetTodayMilestonesErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type GetTodayMilestonesError = GetTodayMilestonesErrors[keyof GetTodayMilestonesErrors];
+
+export type GetTodayMilestonesResponses = {
+    /**
+     * OK
+     */
+    200: MilestonesDto;
+};
+
+export type GetTodayMilestonesResponse = GetTodayMilestonesResponses[keyof GetTodayMilestonesResponses];
+
+export type DismissMilestoneData = {
+    body?: never;
+    path: {
+        key: string;
+    };
+    query?: never;
+    url: '/api/me/today/milestones/{key}/dismissal';
+};
+
+export type DismissMilestoneErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type DismissMilestoneError = DismissMilestoneErrors[keyof DismissMilestoneErrors];
+
+export type DismissMilestoneResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type DismissMilestoneResponse = DismissMilestoneResponses[keyof DismissMilestoneResponses];
 
 export type GetMySettingsData = {
     body?: never;
