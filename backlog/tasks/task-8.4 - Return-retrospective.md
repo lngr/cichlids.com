@@ -1,10 +1,10 @@
 ---
 id: TASK-8.4
 title: Return retrospective
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-17 09:50'
-updated_date: '2026-10-17 10:39'
+updated_date: '2026-10-17 12:10'
 labels: []
 dependencies:
   - TASK-8.1
@@ -59,13 +59,13 @@ A member who was away for four weeks or longer sees what happened in the meantim
 ### Approach
 - Migration ProfileReturnRetrospective adds profile.return_retrospective_seen_at and profile.return_retrospective_since (the away_since at the time of seeing, so Me can open the same retrospective for 30 days after away_since is cleared). Both are private to the member.
 - ReturnRetrospectiveService (Features/Me) decides due-ness and builds the cards. Due: away_since set, no return retrospective seen within 91 days, and no archive retrospective due.
-- The archive rule sits behind IArchiveRetrospectiveGate (IsDueAsync(profile)). Until the archive retrospective exists, the registered gate answers false; it is replaced by the rule "legacy_id set and archive retrospective not seen" when the column of the archive retrospective exists.
-- The window of the cards is [since, now] where since is away_since (due) or return_retrospective_since (seen within 30 days).
+- The archive rule sits behind IArchiveRetrospectiveGate (IsDueAsync(profile)); the registered implementation answers true for a legacy member (profile.legacy_id) with archive content who has not seen the archive retrospective.
+- The window of the cards is from away_since (due) or from return_retrospective_since (seen within 30 days) until now.
 
 ### Cards (all built from what the member may see, no counts of hidden content)
 - Overdue care: CarePlanService.ListDueAsync filtered to the overdue state, at most 10 items.
-- Responses: positive comment votes of other members on own comments since the bound, and comments of other members on own published stories and live tanks since the bound (counts of content the owner always sees).
-- Followed tanks: FollowedTanksService gets a since-bound overload (same visibility, batched per kind, at most 5 plus hasMore).
+- Responses: positive comment votes of other members on own comments since the bound, and comments of other members on own published stories and live tanks since the bound (content the owner always sees).
+- Followed tanks: FollowedTanksService with a since-bound (same visibility, batched per kind, at most 5 plus hasMore).
 - Own regions: public published tanks of other, not suspended members whose region is in profile.interests (America unassigned counts for both American regions) and published stories pointing only to such public tanks, at most 5 each, newest first.
 - Next steps: derived from the cards, only present when a card above exists: tanks with overdue care (log missed care) and own tanks with a time-lapse (guided camera). No archive content.
 - No card with data means no retrospective (204).
@@ -76,11 +76,37 @@ A member who was away for four weeks or longer sees what happened in the meantim
 - Provisional callers get 403 like other registered-only routes.
 
 ### App
-- client-core mapping, OpenAPI client regenerated.
-- Mobile: first app start of a return (after the onboarding gate and after a due archive retrospective) opens the story presentation of the archive retrospective; Me lists an entry for 30 days; next steps lead to retroactive logging and the guided camera; texts in all 11 catalogs.
+- client-core mapping to the cards of the shared story presentation; OpenAPI client regenerated.
+- Mobile: the first app start of a return (after the onboarding gate and after a due archive retrospective) opens the presentation of the archive retrospective; Me lists an entry while a retrospective is due or seen within 30 days; next steps lead to the care view of the tank (retroactive logging) and the guided camera; texts in all 11 catalogs.
 
 ### Tests
 - API integration tests: 28-day absence, 91 days, archive wins, no cards is 204, visibility (private, followers, selected, only me, provisional and suspended owners, no hidden counts), seen stores and clears, Me window of 30 days.
 - Golden snapshot: both columns nulled, migration pinned.
 - client-core and mobile unit tests, one Playwright write spec.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Due and cards
+- GET /api/me/retrospectives/return (date and utcOffsetMinutes as the care routes) answers the retrospective or 204. It is due while away_since is set, no return retrospective was seen within 91 days and no archive retrospective is due. After it was seen it stays readable for 30 days, covering the absence it was shown for (profile.return_retrospective_since keeps the away_since; migration ProfileReturnRetrospective adds it and return_retrospective_seen_at). Both columns are private and nulled by the golden snapshot.
+- POST /api/me/retrospectives/return/seen stores both columns and clears away_since in one conditional UPDATE; it changes nothing when no absence is recorded, when a retrospective was seen within 91 days or when an archive retrospective is due. Both routes are registered-only (403 for provisional callers).
+- IArchiveRetrospectiveGate decides whether the archive retrospective is due: a member with profile.legacy_id and archive content who has not seen the archive retrospective. The legacy_id condition keeps members without legacy data out of the archive precedence, although the archive retrospective itself also counts comments on native content.
+- Cards: overdue care (CarePlanService.ListDueAsync, overdue only, at most 10), responses (positive votes on own comments and comments on own published stories and live tanks since the bound, as counts of content the owner sees), followed tanks (FollowedTanksService.GetSinceAsync with the visibility rules of Today, at most 5), news of the own regions (public published tanks and stories pointing only to public tanks in the regions of profile.interests, at most 5 each) and next steps (own tanks with overdue care and own tanks with a time-lapse). Cards without data are null; without any data card there is no retrospective and no next steps. Every list comes from visible data only, no count of hidden content is returned.
+- The queries are batched per card; the followed tanks keep the batching of TASK-5.24.
+
+### App
+- client-core maps the retrospective to the cards of the shared story presentation (a welcome card with the start of the absence, the data cards, the next steps).
+- The presentation of the archive retrospective (RetrospectivePlayer) plays them at /retrospective/return. The app opens it at the first start of a return (OnboardingGate), after the onboarding offer and only when no archive retrospective opens; opening records it as seen. The Me tab shows an entry while a retrospective is due or was seen within 30 days.
+- Next steps lead to the care view of the tank (/tanks/{id}?view=care, retroactive logging) and the guided camera (/tanks/{id}/camera). Texts are in all 11 catalogs.
+
+### Verification
+- .NET: Api.Tests 2544 passed (1 skipped), Infrastructure.Tests 744, Etl.Tests 351; client-core 368 tests and typecheck; mobile 562 tests and typecheck; golden snapshot tests green against PostgreSQL 18.6 (own container, removed); full write E2E 57 specs green including return-retrospective.write.mjs.
+- Tests: Features/Me/ReturnRetrospectiveTests (27: 28-day absence, 91 days, archive precedence, no cards, visibility of private, followers, selected, only-me, provisional and suspended owners, seen, Me window, provisional and anonymous callers), client-core returnRetrospective.test.ts, mobile retrospectiveView.test.ts, e2e return-retrospective.write.mjs.
+
+### Review follow-ups
+- GET /api/me/retrospectives/return is not free of side effects: a return retrospective belongs to the first app start of a return. When the read finds a recorded absence (away_since) that it cannot show, because the quarter is blocked or no card has data, it clears away_since in the same request with one conditional update, so the absence lapses and does not open weeks later. A due archive retrospective does not lapse the absence; the return retrospective waits for the next start. A retrospective seen within 30 days stays readable.
+- GET /api/me carries returnRetrospective { available, seenAt }, computed from the profile columns alone (due, or seen within 30 days with the covered start set); the Me tab reads it and the full read happens only at app start and when the presentation opens.
+- Kudos count only on comments whose story is published and not deleted, or whose tank is not deleted and visible to the member. Comments received count only from guests and from members who are not suspended.
+- Verification: Api.Tests 2567 passed (1 skipped), Infrastructure.Tests 744, Etl.Tests 351; client-core 373; mobile 572; return-retrospective and 00-onboarding write specs green.
+<!-- SECTION:NOTES:END -->
