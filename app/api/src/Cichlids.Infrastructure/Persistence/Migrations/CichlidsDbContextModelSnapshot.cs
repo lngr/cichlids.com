@@ -1517,6 +1517,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
+                    b.Property<long?>("CommentId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("comment_id");
+
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
@@ -1543,6 +1547,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id")
                         .HasName("pk_rating");
+
+                    b.HasIndex("CommentId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_rating_comment_id");
 
                     b.HasIndex("LegacyCommentId")
                         .IsUnique()
@@ -3241,6 +3249,12 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Rating", b =>
                 {
+                    b.HasOne("Cichlids.Domain.Entities.Comment", null)
+                        .WithMany()
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_rating_comment_comment_id");
+
                     b.HasOne("Cichlids.Domain.Entities.Profile", null)
                         .WithMany()
                         .HasForeignKey("ProfileId")

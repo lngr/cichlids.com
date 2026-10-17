@@ -15,6 +15,13 @@ public class RatingConfiguration : IEntityTypeConfiguration<Rating>
 
         builder.HasIndex(x => x.LegacyCommentId).IsUnique();
 
+        // A comment has at most one rating. A hard delete of the comment keeps the rating without a comment.
+        builder.HasIndex(x => x.CommentId).IsUnique();
+        builder.HasOne<Comment>()
+            .WithMany()
+            .HasForeignKey(x => x.CommentId)
+            .OnDelete(DeleteBehavior.SetNull);
+
         // A member has one rating per target. Anonymous ratings have no profile and stay unconstrained.
         builder.HasIndex(x => new { x.ProfileId, x.StoryId })
             .IsUnique()
