@@ -1,6 +1,6 @@
 INSERT INTO profile (id,username,display_name,city,country_code,external_avatar_url,kind,created_at,last_login_at,suspended_until)
 SELECT n, 'SyntheticAlice' || n, 'Synthetic Display' || n, 'Synthetic City', 'DE', 'https://avatar.example.invalid/a', 'member', '2020-01-01', '2025-01-01', '2027-01-01' FROM generate_series(1,3) n;
-UPDATE profile SET username='SyntheticAlice', display_name='Synthetic Display', handle_changed_at='2026-01-01' WHERE id=1;
+UPDATE profile SET username='SyntheticAlice', display_name='Synthetic Display', handle_changed_at='2026-01-01', last_seen_at='2026-09-01', away_since='2026-06-01' WHERE id=1;
 INSERT INTO released_handle(profile_id,handle,released_at,reserved_until) VALUES (1,'syntheticoldhandle','2026-01-01','2026-04-01');
 INSERT INTO profile_identity(profile_id,provider,subject,created_at) VALUES (1,'oidc','synthetic-subject','2020-01-01');
 INSERT INTO species(id,genus,name,display_name,breeding,aggression,intra_aggression,diet,description,created_at) VALUES (1,'Syntheticgenus','testfish','Test fish','unspecified','low','low','omnivore','Taxonomy reference','2020-01-01');

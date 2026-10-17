@@ -45,7 +45,8 @@ DELETE FROM public.comment WHERE tank_id IN (SELECT id FROM public.tank WHERE pr
 DELETE FROM public.rating WHERE tank_id IN (SELECT id FROM public.tank WHERE profile_visibility <> 'public');
 DELETE FROM public.collection_entry WHERE collection_id IN (SELECT id FROM public.collection WHERE NOT is_public);
 UPDATE public.profile SET city = NULL, external_avatar_url = NULL,
-    last_login_at = NULL, suspended_until = NULL, handle_changed_at = NULL;
+    last_login_at = NULL, suspended_until = NULL, handle_changed_at = NULL,
+    last_seen_at = NULL, away_since = NULL;
 UPDATE public.media_item SET checksum_sha256 = NULL, taken_at_local = NULL,
     taken_at_offset_minutes = NULL, capture_checked_at = NULL, received_at = created_at,
     captured_in_app = false;

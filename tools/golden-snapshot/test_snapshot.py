@@ -117,11 +117,12 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(snapshot.verify(conn, denylist, 'synthetic-v1'), 0)
             for table in snapshot.EMPTY_TABLES:
                 self.assertEqual(conn.execute(sql.SQL('select count(*) from {}').format(snapshot.ident(table))).fetchone()[0], 0)
-            profiles = conn.execute('select username, display_name, city, external_avatar_url, last_login_at, suspended_until, country_code, handle_changed_at from profile order by id').fetchall()
+            profiles = conn.execute('select username, display_name, city, external_avatar_url, last_login_at, suspended_until, country_code, handle_changed_at, last_seen_at, away_since from profile order by id').fetchall()
             self.assertEqual({r[0] for r in profiles}, set(snapshot.pseudonyms(KEY, [1, 2, 3], 'member').values()))
             for row in profiles:
                 self.assertEqual(row[0], row[1])
                 self.assertEqual(row[2:6], (None,) * 4)
+                self.assertEqual(row[7:], (None,) * 3)
                 self.assertEqual(row[6], 'DE')
                 self.assertIsNone(row[7])
             for table, columns in snapshot.FREE_TEXT.items():
@@ -140,7 +141,7 @@ class DatabaseTests(unittest.TestCase):
                 query = sql.SQL('select * from {} order by id').format(sql.Identifier(table))
                 self.assertEqual(source.execute(query).fetchall(), conn.execute(query).fetchall())
             changed = {table: set(columns) for table, columns in snapshot.FREE_TEXT.items()}
-            changed['public.profile'] = {'username', 'display_name', 'city', 'external_avatar_url', 'last_login_at', 'suspended_until', 'handle_changed_at'}
+            changed['public.profile'] = {'username', 'display_name', 'city', 'external_avatar_url', 'last_login_at', 'suspended_until', 'handle_changed_at', 'last_seen_at', 'away_since'}
             changed['public.slug_alias'] = {'value'}
             changed['public.media_item'] = {'storage_key', 'original_filename', 'content_type', 'checksum_sha256', 'taken_at_local', 'taken_at_offset_minutes', 'capture_checked_at', 'received_at', 'captured_in_app', 'placed_public', 'placement_attempts', 'placement_pending', 'placement_next_attempt_at', 'visibility_generation'}
             changed['public.media_variant'] = {'storage_key'}
@@ -232,6 +233,7 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(count(source, placement), count(source, 'select count(*) from media_item'))
             self.assertGreater(count(source, 'select count(*) from media_item where captured_in_app and taken_at_local is not null and received_at <> created_at'), 0)
             self.assertGreater(count(source, 'select count(*) from profile where handle_changed_at is not null'), 0)
+            self.assertGreater(count(source, 'select count(*) from profile where last_seen_at is not null and away_since is not null'), 0)
             self.assertEqual(source.execute('select bool_and(streaks_enabled) from profile').fetchone(), conn.execute('select bool_and(streaks_enabled) from profile').fetchone())
             for key, filename, checksum in conn.execute('select storage_key, original_filename, checksum_sha256 from media_item'):
                 self.assertIn(key, exported)

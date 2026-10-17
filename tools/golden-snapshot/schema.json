@@ -233,6 +233,7 @@
     "redelivered_at": "timestamp with time zone"
   },
   "public.profile": {
+    "away_since": "timestamp with time zone",
     "badges": "text[]",
     "city": "text",
     "country_code": "text",
@@ -244,6 +245,7 @@
     "interests": "text[]",
     "kind": "text",
     "last_login_at": "timestamp with time zone",
+    "last_seen_at": "timestamp with time zone",
     "legacy_id": "integer",
     "onboarding_completed_at": "timestamp with time zone",
     "streaks_enabled": "boolean",
