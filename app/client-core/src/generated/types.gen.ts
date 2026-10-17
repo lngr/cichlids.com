@@ -42,6 +42,7 @@ export type ArchiveMostViewedDto = {
     title: null | string;
     viewCount: number | string;
     image: null | ImageUrlsDto;
+    shareImageUrl: null | string;
 };
 
 export type ArchiveRetrospectiveDto = {

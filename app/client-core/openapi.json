@@ -8704,7 +8704,8 @@
           "slug",
           "title",
           "viewCount",
-          "image"
+          "image",
+          "shareImageUrl"
         ],
         "type": "object",
         "properties": {
@@ -8741,6 +8742,12 @@
               {
                 "$ref": "#/components/schemas/ImageUrlsDto"
               }
+            ]
+          },
+          "shareImageUrl": {
+            "type": [
+              "null",
+              "string"
             ]
           }
         }
