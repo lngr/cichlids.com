@@ -26,9 +26,11 @@ public sealed record ArchiveStatsDto(int Photos, int Comments, int Stars);
 
 /// <summary>
 /// The story of the member with the highest view count: its id, canonical slug, title, view count and
-/// cover image (null when the story has no image).
+/// cover image (null when the story has no image). The share image URL is a signed path on the origin
+/// of the API for the largest cover variant, also when the object itself lies in the public area; it is
+/// null when the story has no image.
 /// </summary>
-public sealed record ArchiveMostViewedDto(long StoryId, string Slug, string? Title, long ViewCount, ImageUrlsDto? Image);
+public sealed record ArchiveMostViewedDto(long StoryId, string Slug, string? Title, long ViewCount, ImageUrlsDto? Image, string? ShareImageUrl);
 
 /// <summary>
 /// An archive tank of the member that is not adopted yet, with its image (null when the tank has none).

@@ -220,6 +220,31 @@ public sealed class ArchiveRetrospectiveTests(ApiFixture fixture) : IAsyncLifeti
     }
 
     [Fact]
+    public async Task GivenAMostViewedStoryWithAPubliclyPlacedCover_WhenReadingTheRetrospective_ThenTheShareImageIsASignedPathOfTheApi()
+    {
+        var member = await NewTrackedMemberAsync();
+        await AddStoryAsync(member.ProfileId, views: 900);
+
+        var most = (await GetAsync(member))!.Value.GetProperty("mostViewed");
+
+        var shareImage = most.GetProperty("shareImageUrl").GetString();
+        Assert.StartsWith("/api/media/photos/", shareImage);
+        Assert.StartsWith("http", most.GetProperty("image").GetProperty("medium").GetString());
+    }
+
+    [Fact]
+    public async Task GivenAMostViewedStoryWithoutACover_WhenReadingTheRetrospective_ThenThereIsNoShareImage()
+    {
+        var member = await NewTrackedMemberAsync();
+        await AddStoryAsync(member.ProfileId, views: 900, withCover: false);
+        await AddMigratedPhotoAsync(member.ProfileId);
+
+        var most = (await GetAsync(member))!.Value.GetProperty("mostViewed");
+
+        Assert.Equal(JsonValueKind.Null, most.GetProperty("shareImageUrl").ValueKind);
+    }
+
+    [Fact]
     public async Task GivenStoriesWithoutViews_WhenReadingTheRetrospective_ThenThereIsNoMostViewedCard()
     {
         var member = await NewTrackedMemberAsync();

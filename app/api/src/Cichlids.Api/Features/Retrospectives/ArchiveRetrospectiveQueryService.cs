@@ -18,6 +18,8 @@ namespace Cichlids.Api.Features.Retrospectives;
 /// </summary>
 public sealed class ArchiveRetrospectiveQueryService(CichlidsDbContext context, IObjectStore objectStore, MediaUrlSigner? signer = null)
 {
+    private static readonly string[] ShareLabelsLargestFirst = ["large", "medium", "small", "thumb", MediaVariantSpec.PublicCopyLabel];
+
     private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore, signer);
 
     private IQueryable<MediaItem> Photos(long profileId) =>
@@ -83,6 +85,7 @@ public sealed class ArchiveRetrospectiveQueryService(CichlidsDbContext context, 
         }
 
         var images = await ImagesAsync(itemIds, profile.Id, cancellationToken);
+        var shareImage = coverItem is { } shareItem ? await ShareImageUrlAsync(shareItem, profile.Id, cancellationToken) : null;
 
         return new ArchiveRetrospectiveDto(
             LegacyProfiles.HasKnownCreatedAt(profile.CreatedAt)
@@ -91,7 +94,7 @@ public sealed class ArchiveRetrospectiveQueryService(CichlidsDbContext context, 
             stats,
             top is null ? null : new ArchiveMostViewedDto(
                 top.Id, slug ?? string.Empty, top.Title, top.ViewCount,
-                coverItem is { } cover ? images.GetValueOrDefault(cover) : null),
+                coverItem is { } cover ? images.GetValueOrDefault(cover) : null, shareImage),
             tanks.Select(t => new ArchiveTankDto(t.Id, t.Title, tankItems.TryGetValue(t.Id, out var item) ? images.GetValueOrDefault(item) : null)).ToList());
     }
 
@@ -118,6 +121,30 @@ public sealed class ArchiveRetrospectiveQueryService(CichlidsDbContext context, 
             .ToListAsync(cancellationToken);
         return rows.GroupBy(r => r.TankId).ToDictionary(g => g.Key,
             g => g.OrderBy(r => r.Role == MediaLinkRole.Main ? 0 : 1).ThenBy(r => r.Position).First().MediaItemId);
+    }
+
+    /// <summary>
+    /// The signed path of the API for the largest variant of the cover photo, whether or not the object
+    /// lies in the public area. The path is on the origin of the API, so a web page that shares the
+    /// origin (or is allowed by the CORS policy) may read the image into a canvas, which the public
+    /// object URLs do not allow. Null without a variant, a signer or a visibility generation.
+    /// </summary>
+    private async Task<string?> ShareImageUrlAsync(long mediaItemId, long viewerProfileId, CancellationToken cancellationToken)
+    {
+        if (signer is null)
+        {
+            return null;
+        }
+
+        var generations = await context.VisibleMediaGenerationsAsync([mediaItemId], viewerProfileId, DateTimeOffset.UtcNow, cancellationToken);
+        if (!generations.TryGetValue(mediaItemId, out var generation))
+        {
+            return null;
+        }
+
+        var variants = await context.MediaVariants.AsNoTracking().Where(v => v.MediaItemId == mediaItemId).ToListAsync(cancellationToken);
+        var best = ShareLabelsLargestFirst.Select(label => variants.FirstOrDefault(v => v.Label == label)).FirstOrDefault(v => v is not null);
+        return best is null ? null : signer.PhotoPathFor(best.Id, generation);
     }
 
     private async Task<Dictionary<long, ImageUrlsDto>> ImagesAsync(IReadOnlyCollection<long> mediaItemIds, long viewerProfileId, CancellationToken cancellationToken)
