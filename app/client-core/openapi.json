@@ -1330,6 +1330,82 @@
         }
       }
     },
+    "/api/me/handle": {
+      "put": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "ChangeMyHandle",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ChangeHandleRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HandleChangeDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/me/media": {
       "get": {
         "tags": [
@@ -8778,6 +8854,20 @@
           }
         }
       },
+      "ChangeHandleRequest": {
+        "required": [
+          "handle"
+        ],
+        "type": "object",
+        "properties": {
+          "handle": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
       "CommentCreatedDto": {
         "required": [
           "comment",
@@ -9900,6 +9990,25 @@
           }
         }
       },
+      "HandleChangeDto": {
+        "required": [
+          "handle",
+          "nextChangeAt"
+        ],
+        "type": "object",
+        "properties": {
+          "handle": {
+            "type": "string"
+          },
+          "nextChangeAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
       "IFormFile": {
         "type": "string",
         "format": "binary"
@@ -10532,6 +10641,13 @@
           "provisional": {
             "type": "boolean",
             "default": false
+          },
+          "handleChangeAvailableAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
           }
         }
       },

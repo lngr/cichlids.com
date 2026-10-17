@@ -156,6 +156,10 @@ export type CareTodoDto = {
     createdAt: string;
 };
 
+export type ChangeHandleRequest = {
+    handle: null | string;
+};
+
 export type CommentCreatedDto = {
     comment: null | CommentDto;
     rating: null | CreatedRatingDto;
@@ -376,6 +380,11 @@ export type FinishWaterChangeRequest = {
     amount?: null | CareAmountRequest;
 };
 
+export type HandleChangeDto = {
+    handle: string;
+    nextChangeAt: null | string;
+};
+
 export type IFormFile = Blob | File;
 
 export type ImageUrlsDto = {
@@ -497,6 +506,7 @@ export type MeDto = {
     profile: ProfileDetailDto;
     roles: Array<string>;
     provisional?: boolean;
+    handleChangeAvailableAt?: null | string;
 };
 
 export type MeSettingsDto = {
@@ -1924,6 +1934,43 @@ export type UpdateMySettingsResponses = {
 };
 
 export type UpdateMySettingsResponse = UpdateMySettingsResponses[keyof UpdateMySettingsResponses];
+
+export type ChangeMyHandleData = {
+    body?: null | ChangeHandleRequest;
+    path?: never;
+    query?: never;
+    url: '/api/me/handle';
+};
+
+export type ChangeMyHandleErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
+};
+
+export type ChangeMyHandleError = ChangeMyHandleErrors[keyof ChangeMyHandleErrors];
+
+export type ChangeMyHandleResponses = {
+    /**
+     * OK
+     */
+    200: HandleChangeDto;
+};
+
+export type ChangeMyHandleResponse = ChangeMyHandleResponses[keyof ChangeMyHandleResponses];
 
 export type ListMyMediaData = {
     body?: never;
