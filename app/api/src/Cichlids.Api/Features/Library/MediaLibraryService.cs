@@ -11,8 +11,9 @@ namespace Cichlids.Api.Features.Library;
 
 /// <summary>
 /// Writes the media library of a member: stores a photo without links and deletes a file with its
-/// renditions and all its links. Deleting a file is the only way a file leaves the library. Problem codes:
-/// library_photo_invalid, upload_rate_limited, media_not_found and media_is_proof.
+/// renditions and all its links, and links photos of the member to a tank. Deleting a file is the only way a
+/// file leaves the library. Problem codes: library_photo_invalid, upload_rate_limited, media_not_found,
+/// media_already_linked and media_is_proof.
 /// </summary>
 public sealed class MediaLibraryService(
     CichlidsDbContext context, UploadsWriteService uploads, MediaLibraryQueryService query, StoredObjectDeleter deleter,
@@ -21,6 +22,7 @@ public sealed class MediaLibraryService(
     public const string PhotoInvalidCode = "library_photo_invalid";
     public const string NotFoundCode = "media_not_found";
     public const string IsProofCode = "media_is_proof";
+    public const string AlreadyLinkedCode = "media_already_linked";
 
     /// <summary>
     /// Stores the uploaded photo in the library of the member without a link. The photo lies in the private
@@ -63,6 +65,46 @@ public sealed class MediaLibraryService(
         }
 
         return (await query.GetItemAsync(profileId, stored.Item.Id, cancellationToken), null);
+    }
+
+    /// <summary>
+    /// Adds links from photos of the member to a tank with the given role, in the given order after the links the
+    /// role already has. The caller owns the transaction and saves the context. The photos are locked against a
+    /// concurrent deletion. A file that is not a photo of the member answers like a missing file
+    /// (media_not_found); a photo that already has a link with this role to the tank answers media_already_linked.
+    /// Nothing is added when an error is returned.
+    /// </summary>
+    public async Task<string?> LinkPhotosToTankAsync(
+        long profileId, long tankId, MediaLinkRole role, IReadOnlyList<long> mediaItemIds, CancellationToken cancellationToken)
+    {
+        if (mediaItemIds.Count == 0)
+        {
+            return null;
+        }
+
+        var ids = mediaItemIds.Distinct().ToArray();
+        var locked = await context.MediaItems
+            .FromSqlInterpolated($"SELECT * FROM public.media_item WHERE id = ANY({ids}) AND owner_profile_id = {profileId} AND kind = 'photo' ORDER BY id FOR UPDATE")
+            .Select(m => m.Id).ToListAsync(cancellationToken);
+        if (locked.Count != ids.Length)
+        {
+            return NotFoundCode;
+        }
+
+        var existing = await context.MediaLinks.AsNoTracking().Where(l => l.TankId == tankId && l.Role == role)
+            .Select(l => new { l.MediaItemId, l.Position }).ToListAsync(cancellationToken);
+        if (existing.Any(l => ids.Contains(l.MediaItemId)))
+        {
+            return AlreadyLinkedCode;
+        }
+
+        var next = existing.Count == 0 ? 0 : existing.Max(l => l.Position) + 1;
+        foreach (var id in mediaItemIds)
+        {
+            context.MediaLinks.Add(MediaLink.ForTank(tankId, id, role, next++));
+        }
+
+        return null;
     }
 
     /// <summary>

@@ -73,6 +73,29 @@ public sealed class MediaLibraryQueryService(
     }
 
     /// <summary>
+    /// The image URLs of the photos with the given ids that the member owns, by media item id. Ids of other
+    /// members and of videos are left out. One read serves all ids.
+    /// </summary>
+    public async Task<Dictionary<long, ImageUrlsDto>> PhotoImagesAsync(
+        long profileId, IReadOnlyCollection<long> mediaItemIds, CancellationToken cancellationToken)
+    {
+        if (mediaItemIds.Count == 0)
+        {
+            return [];
+        }
+
+        var items = await context.MediaItems.AsNoTracking().Include(m => m.Variants)
+            .Where(m => mediaItemIds.Contains(m.Id) && m.OwnerProfileId == profileId && m.Kind == MediaKind.Photo)
+            .ToListAsync(cancellationToken);
+        var ids = items.Select(i => i.Id).ToList();
+        var now = clock.GetUtcNow();
+        var anonymousVisible = await context.AnonymousVisibleMediaItemIdsAsync(ids, now, cancellationToken);
+        var generations = await context.VisibleMediaGenerationsAsync(ids, profileId, now, cancellationToken);
+        return items.ToDictionary(i => i.Id, i => _urls.Build(
+            i.Variants, allowSigned: true, anonymousVisible.Contains(i.Id), generations.TryGetValue(i.Id, out var generation) ? generation : null));
+    }
+
+    /// <summary>
     /// The places that show each of the given files, by media item id, in a stable order. Names and ids are
     /// set for places of the member only.
     /// </summary>

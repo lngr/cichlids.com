@@ -242,6 +242,7 @@ builder.Services.AddSingleton<IWebPushTransport>(serviceProvider => webPushSetti
 builder.Services.AddScoped<WebPushReminderService>();
 builder.Services.AddHostedService<WebPushSenderHostedService>();
 builder.Services.AddScoped<OnboardingWriteService>();
+builder.Services.AddScoped<ArchiveTankAdoptionService>();
 builder.Services.AddScoped<ArchiveRetrospectiveQueryService>();
 builder.Services.AddScoped<ProfilesQueryService>();
 builder.Services.AddScoped<CommentsQueryService>();
