@@ -4,7 +4,7 @@ TRUNCATE public.profile_identity, public.web_session,
          public.video_upload, public.video_job, public.vacation,
          public.care_reminder_snooze, public.care_todo, public.comment_vote,
          public.tank_selected_member, public.used_checksum, public.device_credential,
-         public.device_challenge, public.released_handle;
+         public.device_challenge, public.released_handle, public.milestone_dismissal;
 -- Provisional profiles belong to unregistered installations; they and their content are removed.
 UPDATE public.comment SET deleted_by_profile_id = NULL WHERE deleted_by_profile_id IN (SELECT id FROM public.profile WHERE kind = 'provisional');
 UPDATE public.story SET deleted_by_profile_id = NULL WHERE deleted_by_profile_id IN (SELECT id FROM public.profile WHERE kind = 'provisional');

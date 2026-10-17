@@ -22,7 +22,7 @@ EMPTY_TABLES = ('public.profile_identity', 'public.web_session', 'archive.legacy
                 'public.video_upload', 'public.video_job', 'public.vacation',
                 'public.care_reminder_snooze', 'public.care_todo', 'public.comment_vote',
                 'public.tank_selected_member', 'public.used_checksum', 'public.device_credential',
-                'public.device_challenge', 'public.released_handle')
+                'public.device_challenge', 'public.released_handle', 'public.milestone_dismissal')
 FREE_TEXT = {
     'public.comment': ('body', 'delete_reason'),
     'public.discussion_post': ('body',),
@@ -214,6 +214,9 @@ COLUMN_HANDLING = {
     },
     'public.device_credential': {
         'empty': 'algorithm created_at id last_signed_request_at profile_id public_key retired_at state',
+    },
+    'public.milestone_dismissal': {
+        'empty': 'dismissed_at id key profile_id',
     },
     'public.vacation': {
         'empty': 'created_at end_date id profile_id start_date',

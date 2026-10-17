@@ -146,5 +146,6 @@ INSERT INTO device_challenge(challenge_hash,created_at,expires_at) VALUES ('\x01
 UPDATE rating SET comment_id = 2 WHERE tank_id = 1 AND profile_id = 2;
 UPDATE rating SET comment_id = 3 WHERE tank_id = 5 AND profile_id = 1;
 UPDATE rating SET comment_id = 9 WHERE story_id = 1 AND profile_id = 9;
+INSERT INTO milestone_dismissal(profile_id,key,dismissed_at) VALUES (1,'kept_streak:1:4','2020-04-01'),(9,'tank_anniversary:9:1','2020-04-02');
 -- The database guard refuses public content of a provisional profile, so profile 9 becomes provisional after its content exists.
 UPDATE profile SET kind='provisional' WHERE id=9;

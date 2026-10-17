@@ -216,6 +216,12 @@
     "storage_key": "text",
     "width": "integer"
   },
+  "public.milestone_dismissal": {
+    "dismissed_at": "timestamp with time zone",
+    "id": "bigint",
+    "key": "character varying(64)",
+    "profile_id": "bigint"
+  },
   "public.outbox_event": {
     "acknowledged_subscription_ids": "bigint[]",
     "aggregate_id": "text",

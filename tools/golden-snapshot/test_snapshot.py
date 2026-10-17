@@ -221,7 +221,7 @@ class DatabaseTests(unittest.TestCase):
                 self.assertGreater(count(source, f'select count(*) from {table}'), 0)
             self.assertEqual(count(conn, 'select count(*) from tank_selected_member'), 0)
             self.assertGreater(count(source, 'select count(*) from tank_selected_member'), 0)
-            for table in ('vacation', 'care_reminder_snooze', 'care_todo', 'comment_vote', 'used_checksum', 'released_handle'):
+            for table in ('vacation', 'care_reminder_snooze', 'care_todo', 'comment_vote', 'used_checksum', 'released_handle', 'milestone_dismissal'):
                 self.assertEqual(count(conn, f'select count(*) from {table}'), 0, table)
                 self.assertGreater(count(source, f'select count(*) from {table}'), 0, table)
             self.assertEqual(count(conn, "select count(*) from media_item where taken_at_local is not null or taken_at_offset_minutes is not null or capture_checked_at is not null or received_at <> created_at or captured_in_app"), 0)
