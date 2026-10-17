@@ -4,6 +4,7 @@ title: Page and timeline of a named fish
 status: To Do
 assignee: []
 created_date: '2026-10-17 12:36'
+updated_date: '2026-10-17 13:50'
 labels: []
 dependencies:
   - TASK-9.1
@@ -45,3 +46,21 @@ A named fish has a page with its name, species, photos and videos and a timeline
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Data model
+- Table inhabitant_event: id, inhabitant_id (cascade), kind (growth, spawning, moved, died), occurred_on (date), created_at, plus per kind: length_cm and input_value with input_unit (cm or inch) for growth, offspring_generation or offspring_hybrid for spawning, from_tank_id and to_tank_id for a move. Check constraints tie the columns to the kind; the tank keys restrict.
+- The role check of media_link gains photo and video for the inhabitant context. A trigger on inhabitant changes the visibility generation of the media of a fish whose tank changes, so signed links follow the new tank.
+- Anniversaries of moved_in_on are computed, never stored.
+
+### API
+- GET /api/fish/{id}: header, memorial state, photos and videos newest first, typed timeline (kind, date, per-kind detail; the list is the place where entries and stories of the tank join). A fish whose tank the viewer may not see answers the 404 of a missing fish. The owner reads own fish also after the tank was deleted.
+- Owner writes: POST /api/fish/{id}/growth, /spawning, /move, /death, DELETE /api/fish/{id}/events/{eventId} (growth and spawning), POST /api/fish/{id}/media and DELETE /api/fish/{id}/media/{mediaItemId}. A move changes the tank to another live tank of the owner and records the event in one transaction; death sets removed_on and the reason died and records the event, as the stocking removal with the reason died does for a named fish.
+- Milestone kind fish_anniversary:{inhabitant}:{year} on Today: only reached years, exact canonical form, dismissable by the owner.
+
+### Clients and tests
+- OpenAPI client regenerated, client-core mapping, mobile fish page at /fish/{id} linked from the stocking list, texts in all 11 catalogs.
+- Golden snapshot rules and pinned migration; API integration tests per acceptance criterion; client-core and mobile unit tests; one Playwright write spec.
+<!-- SECTION:PLAN:END -->
