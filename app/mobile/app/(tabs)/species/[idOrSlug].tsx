@@ -10,7 +10,8 @@ import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
 import { DataRow } from "../../../src/components/DataRow";
 import { ErrorView, LoadingView } from "../../../src/components/StatusView";
-import type { SpeciesDetail, SpeciesLink } from "@cichlids/client-core";
+import { SpeciesCommunitySections } from "../../../src/species/SpeciesCommunitySections";
+import type { SpeciesCommunity, SpeciesDetail, SpeciesLink } from "@cichlids/client-core";
 
 export default function SpeciesDetailScreen() {
   const { idOrSlug } = useLocalSearchParams<{ idOrSlug: string }>();
@@ -23,6 +24,7 @@ export default function SpeciesDetailScreen() {
   const [species, setSpecies] = useState<SpeciesDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [community, setCommunity] = useState<SpeciesCommunity | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -40,6 +42,18 @@ export default function SpeciesDetailScreen() {
       cancelled = true;
     };
   }, [idOrSlug, navigation, t]);
+
+  useEffect(() => {
+    let cancelled = false;
+    setCommunity(null);
+    apiClient.species
+      .community(idOrSlug)
+      .then((result) => !cancelled && setCommunity(result))
+      .catch(() => !cancelled && setCommunity(null));
+    return () => {
+      cancelled = true;
+    };
+  }, [idOrSlug]);
 
   if (loading) return <LoadingView label={t("species.detail.loading")} />;
   if (error || !species) return <ErrorView message={error ?? t("species.detail.notFound")} />;
@@ -81,6 +95,8 @@ export default function SpeciesDetailScreen() {
         </Text>
         <MaterialCommunityIcons testID="species-gallery-arrow" name={rtl ? "arrow-left" : "arrow-right"} size={20} color={theme.colors.accent} accessible={false} />
       </Pressable>
+
+      {community ? <SpeciesCommunitySections community={community} onNavigate={(route) => router.push(route)} /> : null}
 
       {species.links.length > 0 ? (
         <View style={styles.links}>
