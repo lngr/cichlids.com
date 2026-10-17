@@ -513,6 +513,15 @@ Becken-Seite nach der Hi-Fi-Vorlage mit Zeitraffer, Entdecken mit Hall of Fame j
 Heute als Startseite. Die Produktentscheidungen dazu stehen in den Notizen der Tasks; das
 vollständige Heute des Zielbilds hält DRAFT-11 fest.
 
+Slice 2 ist das Epic TASK-5 "Slice 2 care and media" mit Pflege-Log, Messwerten, Pflegeplan,
+Serien mit Urlaub und Freezes, Erinnerungen per Push, Videos, Zeitraffer-Kamera, Sichtbarkeit je
+Becken und Eintrag sowie Medien-Links und Stories (ADR-0029); dazu gehören TASK-6 (Becken
+stilllegen) und TASK-7 (vorläufige App-Konten, ADR-0030). Ihre Stories stehen In Review.
+
+Slice 3 ist das Epic TASK-8 "Slice 3 retrospectives": Aktivität eines Mitglieds,
+Archiv-Rückblick, Übernahme der Altbecken mit Fotovorschlägen, Rückkehr-Rückblick und eine
+teilbare Karte.
+
 ---
 
 ## 8. Design-Artefakte
