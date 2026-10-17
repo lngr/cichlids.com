@@ -78,6 +78,11 @@ export async function logInThroughKeycloak(page) {
   await submitKeycloakLogin(page, byTestId(page, "login-button"));
 
   const meName = byTestId(page, "me-name");
+  // A member with legacy content that has not seen the archive retrospective gets it at the first sign-in;
+  // it is closed here so the spec continues on the Me tab.
+  const closeRetrospective = byTestId(page, "retrospective-close");
+  await meName.or(closeRetrospective).waitFor({ timeout: 30000 });
+  if (await closeRetrospective.isVisible()) await closeRetrospective.click();
   await meName.waitFor({ timeout: 30000 });
   const loggedInName = (await meName.textContent())?.trim();
   if (!EXPECTED_NAMES.includes(loggedInName ?? "")) {
