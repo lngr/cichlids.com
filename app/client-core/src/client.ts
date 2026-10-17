@@ -115,6 +115,7 @@ import {
   getStory,
   getProfile,
   getSpecies,
+  getSpeciesCommunity,
   getTank,
   getTankTimeLapse,
   addTankSeriesPhoto,
@@ -207,7 +208,11 @@ import type {
   StorySubjectDto,
   ProfileDetailDto,
   PublishStoryRequest,
+  SpeciesCommunityDto,
+  SpeciesCommunityPhotoDto,
+  SpeciesCommunityTankDto,
   SpeciesDetailDto,
+  SpeciesStockingPartnerDto,
   SpeciesLinkDto,
   SpeciesListItemDto,
   TankDetailDto,
@@ -292,6 +297,10 @@ export type CommunityThreadDetail = CommunityThreadDetailDto;
 export type { CommunityPostDto };
 export type CommunityAttachment = CommunityAttachmentDto;
 export type SpeciesLink = SpeciesLinkDto;
+export type SpeciesCommunity = SpeciesCommunityDto;
+export type SpeciesCommunityPhoto = SpeciesCommunityPhotoDto;
+export type SpeciesCommunityTank = SpeciesCommunityTankDto;
+export type SpeciesStockingPartner = SpeciesStockingPartnerDto;
 export type Comment = CommentDto;
 export type CommentCreated = CommentCreatedDto;
 export type { CreateTankRequest, CreateCommentRequest, PublishStoryRequest, TankVisibility, TankVisibilityDto };
@@ -599,6 +608,7 @@ export interface CichlidsClient {
   species: {
     list(params?: SpeciesListParams): Promise<PagedResponse<SpeciesListItem>>;
     get(idOrSlug: string): Promise<SpeciesDetail>;
+    community(idOrSlug: string): Promise<SpeciesCommunity>;
   };
   community: {
     listCategories(): Promise<CommunityCategory[]>;
@@ -1057,6 +1067,10 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async get(idOrSlug) {
         const result = await getSpecies({ client, path: { idOrSlug } });
+        return unwrap(result);
+      },
+      async community(idOrSlug) {
+        const result = await getSpeciesCommunity({ client, path: { idOrSlug } });
         return unwrap(result);
       },
     },
