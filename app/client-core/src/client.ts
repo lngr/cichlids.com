@@ -16,6 +16,8 @@ import { toFollowedTank, toMilestone, toTodayFollowed } from "./todaySections.js
 import type { FollowedTank, Milestone, TodayFollowed } from "./todaySections.js";
 import { toMeStreaks, toTankStreaks, toVacation } from "./streaks.js";
 import type { MeStreaks, TankStreaks, Vacation } from "./streaks.js";
+import { toArchiveRetrospective } from "./retrospective.js";
+import type { Retrospective } from "./retrospective.js";
 import {
   addMyStoryItem,
   addMyStorySubject,
@@ -71,6 +73,8 @@ import {
   removeTankSelectedMember,
   completeOnboarding,
   listMyLegacyTanks,
+  getMyArchiveRetrospective,
+  markMyArchiveRetrospectiveSeen,
   setMyInterests,
   getMySettings,
   changeMyHandle,
@@ -619,6 +623,10 @@ export interface CichlidsClient {
     dismissMilestone(key: string): Promise<void>;
     completeOnboarding(request: OnboardingRequest): Promise<OnboardingResultDto>;
     legacyTanks(): Promise<LegacyTankDto[]>;
+    /** The archive retrospective of the member, or null when the member has none. */
+    archiveRetrospective(): Promise<Retrospective | null>;
+    /** Records that the member has seen the archive retrospective. */
+    markArchiveRetrospectiveSeen(): Promise<void>;
     setInterests(interests: string[]): Promise<string[]>;
     drafts(): Promise<Draft[]>;
     /** The settings of the member. */
@@ -1114,6 +1122,14 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async legacyTanks() {
         return unwrap(await listMyLegacyTanks({ client }));
+      },
+      async archiveRetrospective() {
+        const result = await getMyArchiveRetrospective({ client });
+        if (result.response?.status === 204) return null;
+        return toArchiveRetrospective(absolutizeMedia(unwrap(result) as Parameters<typeof toArchiveRetrospective>[0], options.baseUrl));
+      },
+      async markArchiveRetrospectiveSeen() {
+        unwrap(await markMyArchiveRetrospectiveSeen({ client }));
       },
       async setInterests(interests) {
         return unwrap(await setMyInterests({ client, body: { interests } }));

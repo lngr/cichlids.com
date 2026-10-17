@@ -1,5 +1,7 @@
 export { createCichlidsClient, ApiError } from "./client.js";
 export { handleProblemOf } from "./handle.js";
+export { RETROSPECTIVE_CARD_MS, retrospectivePlayerMachine, statEntries } from "./retrospective.js";
+export type { Retrospective, RetrospectiveCard, RetrospectiveImage } from "./retrospective.js";
 export type { HandleProblem, HandleProblemReason } from "./handle.js";
 export { uploadVideo } from "./videoUpload.js";
 export type {
