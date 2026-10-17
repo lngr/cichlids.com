@@ -67,6 +67,7 @@ import {
   listMyLegacyTanks,
   setMyInterests,
   getMySettings,
+  changeMyHandle,
   updateMySettings, setMyAvatar, setMyHeader, uploadMyAvatar, uploadMyHeader, removeMyAvatar, removeMyHeader,
   refineTankRegion,
   discardStory,
@@ -178,6 +179,7 @@ import type {
   VideoState,
   InhabitantDto,
   MeDto,
+  HandleChangeDto,
   TodayDto,
   StoryDetailDto,
   StoryEditorDto,
@@ -282,6 +284,8 @@ export type { OnboardingRequest, OnboardingResultDto, LegacyTankDto, TankRegion 
 export type Me = MeDto;
 /** The settings of the member; streaksEnabled tells whether the streaks are shown to the member and to other viewers. */
 export type MeSettings = { streaksEnabled: boolean };
+/** The public handle of the member after a change and the earliest time of the next change. */
+export type HandleChange = HandleChangeDto;
 export type Today = TodayDto;
 export type Draft = DraftDto;
 export type Video = VideoDto;
@@ -368,10 +372,20 @@ export class ApiError extends Error {
     message: string,
     public readonly status: number,
     public readonly code?: string,
+    /** The members of the problem details body beyond the standard ones and the code, such as the date a refusal names; undefined when there are none. */
+    public readonly problem?: Readonly<Record<string, unknown>>,
   ) {
     super(message);
     this.name = "ApiError";
   }
+}
+
+const STANDARD_PROBLEM_MEMBERS = new Set(["type", "title", "status", "detail", "instance", "code", "traceId"]);
+
+function problemExtensionsOf(error: unknown): Record<string, unknown> | undefined {
+  if (typeof error !== "object" || error === null) return undefined;
+  const extensions = Object.entries(error).filter(([name]) => !STANDARD_PROBLEM_MEMBERS.has(name));
+  return extensions.length > 0 ? Object.fromEntries(extensions) : undefined;
 }
 
 function problemDetailsOf(error: unknown): { message?: string; code?: string } {
@@ -392,7 +406,7 @@ function unwrap<T>({ data, error, response }: { data?: T; error?: unknown; respo
   if (error !== undefined) {
     const problem = problemDetailsOf(error);
     const message = typeof error === "string" ? error : (problem.message ?? response?.statusText ?? "Network error");
-    throw new ApiError(message, response?.status ?? 0, problem.code);
+    throw new ApiError(message, response?.status ?? 0, problem.code, problemExtensionsOf(error));
   }
   if (data === undefined) {
     throw new ApiError("Empty response body", response?.status ?? 0);
@@ -597,6 +611,11 @@ export interface CichlidsClient {
     settings(): Promise<MeSettings>;
     /** Turns the streaks of the member on or off. */
     setStreaksEnabled(streaksEnabled: boolean): Promise<MeSettings>;
+    /**
+     * Changes the public handle. The API lowercases it and refuses an unusable one with a problem
+     * code that handleProblemOf names; me().handleChangeAvailableAt tells when the next change is possible.
+     */
+    setHandle(handle: string): Promise<HandleChange>;
     /** Chooses a photo of the media library as avatar or header of the profile; resolves with the profile. */
     setProfileImage(role: ProfileImageRole, mediaItemId: number): Promise<ProfileDetail>;
     /** Stores a fresh photo in the media library and chooses it as avatar or header of the profile. */
@@ -1021,6 +1040,9 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async settings() {
         return unwrap(await getMySettings({ client }));
+      },
+      async setHandle(handle) {
+        return unwrap(await changeMyHandle({ client, body: { handle } }));
       },
       async setStreaksEnabled(streaksEnabled) {
         return unwrap(await updateMySettings({ client, body: { streaksEnabled } }));

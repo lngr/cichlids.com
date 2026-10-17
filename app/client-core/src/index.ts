@@ -1,4 +1,6 @@
 export { createCichlidsClient, ApiError } from "./client.js";
+export { handleProblemOf } from "./handle.js";
+export type { HandleProblem, HandleProblemReason } from "./handle.js";
 export { uploadVideo } from "./videoUpload.js";
 export type {
   LibraryDetail, LibraryItem, LibraryKind, LibraryListParams, LibraryPlace, LibraryPlaceKind, LibraryQuickShare, LibraryStreakWeek,
@@ -108,6 +110,7 @@ export type {
   TankRegion,
   Me,
   MeSettings,
+  HandleChange,
   Today,
   Draft,
   UploadFile,
