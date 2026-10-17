@@ -15,7 +15,7 @@ import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { API_URL, WEB_URL, byTestId, logInThroughKeycloak, passwordGrantToken, signOutThroughKeycloak } from "./support.mjs";
+import { API_URL, WEB_URL, byTestId, clearVacations, logInThroughKeycloak, passwordGrantToken, signOutThroughKeycloak } from "./support.mjs";
 
 assert.equal(process.env.E2E_DB, "cichlids_e2e", "Refusing to run outside the cichlids_e2e database");
 const COMPOSE_FILE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../stack/compose.yaml");
@@ -27,6 +27,8 @@ const dateOf = offset => new Date(Date.now() + offset * DAY).toISOString().slice
 const today = dateOf(0);
 const token = await passwordGrantToken();
 const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
+const profileId = Number((await (await fetch(`${API_URL}/api/me`, { headers })).json()).profile.id);
+clearVacations(profileId);
 
 const newTank = async title => {
   const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title, isPublic: true, volume: { value: 200, unit: "liter" } }) });
@@ -211,4 +213,6 @@ try {
   console.log("decommission spec passed");
 } finally {
   await browser.close();
+  sql(`delete from tank_decommissioning where tank_id in (select id from tank where profile_id = ${profileId})`);
+  clearVacations(profileId);
 }

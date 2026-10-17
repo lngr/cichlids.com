@@ -12,7 +12,7 @@
 // so the other specs of the shared member see streaks.
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
-import { API_URL, WEB_URL, byTestId, logInThroughKeycloak, passwordGrantToken, signOutThroughKeycloak } from "./support.mjs";
+import { API_URL, WEB_URL, byTestId, logInThroughKeycloak, passwordGrantToken, signOutThroughKeycloak, clearVacations } from "./support.mjs";
 
 assert.equal(process.env.E2E_DB, "cichlids_e2e", "Refusing to run outside the cichlids_e2e database");
 
@@ -26,6 +26,8 @@ const setStreaks = async enabled => {
   const response = await fetch(`${API_URL}/api/me/settings`, { method: "PUT", headers, body: JSON.stringify({ streaksEnabled: enabled }) });
   assert.equal(response.status, 200);
 };
+const profileId = Number((await (await fetch(`${API_URL}/api/me`, { headers })).json()).profile.id);
+clearVacations(profileId);
 await setStreaks(true);
 const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title: "Streak switch path", isPublic: true, volume: { value: 200, unit: "liter" } }) });
 assert.equal(created.status, 201);
@@ -130,4 +132,5 @@ try {
 } finally {
   await browser.close();
   await setStreaks(true);
+  clearVacations(profileId);
 }

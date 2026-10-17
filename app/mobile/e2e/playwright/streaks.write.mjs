@@ -16,7 +16,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { API_URL, WEB_URL, byTestId, passwordGrantToken, logInThroughKeycloak, signOutThroughKeycloak } from "./support.mjs";
+import { API_URL, WEB_URL, byTestId, passwordGrantToken, logInThroughKeycloak, signOutThroughKeycloak, clearVacations } from "./support.mjs";
 
 assert.equal(process.env.E2E_DB, "cichlids_e2e");
 const PHOTO = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "fixtures", "upload-photo.jpg");
@@ -27,6 +27,7 @@ const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, b
 assert.equal(created.status, 201);
 const tank = await created.json();
 const profileId = Number(psql(`SELECT profile_id FROM tank WHERE id = ${tank.id}`));
+clearVacations(profileId);
 
 // Dates in UTC: the browser of this spec runs in UTC, so its local date is the UTC date.
 const DAY = 24 * 3600 * 1000;
@@ -203,4 +204,5 @@ try {
   console.log("TASK-5.5: both streaks on Today and the tank page, the freeze recorded once, the camera photo counted and the library photo not, the vacation mode hidden while active and visible afterwards, the vacation share on the profile and the guest view passed.");
 } finally {
   await browser.close();
+  clearVacations(profileId);
 }

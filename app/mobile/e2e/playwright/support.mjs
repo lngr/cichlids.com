@@ -1,3 +1,7 @@
+import { execFileSync } from "node:child_process";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
 // Shared pieces of the write specs (*.write.mjs): the write stack's URLs, the local dev user's
 // credentials, and the Keycloak login through the real login page.
 
@@ -93,4 +97,21 @@ export const ZONE = "UTC";
 export function localDate(instant = new Date(), days = 0) {
   return new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "2-digit", day: "2-digit", timeZone: ZONE })
     .format(new Date(instant.getTime() + days * 24 * 3600 * 1000));
+}
+
+const COMPOSE_FILE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../stack/compose.yaml");
+
+/** Runs a statement on the database of the write stack and returns its trimmed output. */
+export function sql(statement) {
+  if (process.env.E2E_DB !== "cichlids_e2e") throw new Error("Refusing to run SQL outside the cichlids_e2e database");
+  return execFileSync("docker", ["compose", "-f", COMPOSE_FILE, "exec", "-T", "postgres", "psql", "-U", "cichlids", "-d", "cichlids_e2e", "-v", "ON_ERROR_STOP=1", "-Atc", statement], { encoding: "utf8" }).trim();
+}
+
+/**
+ * Removes the vacations of a member and their events. A spec that reads streaks calls it before it
+ * starts and when it ends, so the vacations of another spec never move its deadlines.
+ */
+export function clearVacations(profileId) {
+  sql(`delete from outbox_event where event_type in ('vacation.started', 'vacation.ended') and payload->>'profileId' = '${profileId}'`);
+  sql(`delete from vacation where profile_id = ${profileId}`);
 }

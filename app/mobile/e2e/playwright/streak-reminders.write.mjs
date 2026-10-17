@@ -20,7 +20,7 @@ import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { API_URL, WEB_URL, byTestId, logInThroughKeycloak, passwordGrantToken, signOutThroughKeycloak } from "./support.mjs";
+import { API_URL, WEB_URL, byTestId, logInThroughKeycloak, passwordGrantToken, signOutThroughKeycloak, clearVacations } from "./support.mjs";
 
 assert.equal(process.env.E2E_DB, "cichlids_e2e", "Refusing to run outside the cichlids_e2e database");
 const COMPOSE_FILE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../stack/compose.yaml");
@@ -35,6 +35,7 @@ const token = await passwordGrantToken();
 const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 const me = await (await fetch(`${API_URL}/api/me`, { headers })).json();
 const profileId = Number(me.profile.id);
+clearVacations(profileId);
 const created = await fetch(`${API_URL}/api/tanks`, { method: "POST", headers, body: JSON.stringify({ title: "Streak reminder path", isPublic: true, volume: { value: 200, unit: "liter" } }) });
 assert.equal(created.status, 201);
 const tank = await created.json();
