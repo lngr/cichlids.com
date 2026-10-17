@@ -162,6 +162,11 @@
   "public.inhabitant": {
     "count": "integer",
     "id": "bigint",
+    "moved_in_on": "date",
+    "name": "character varying(80)",
+    "owner_profile_id": "bigint",
+    "removal_reason": "text",
+    "removed_on": "date",
     "sort": "integer",
     "species_id": "bigint",
     "tank_id": "bigint"

@@ -7,7 +7,8 @@ INSERT INTO species(id,genus,name,display_name,breeding,aggression,intra_aggress
 INSERT INTO species_common_name(species_id,name) VALUES (1,'Synthetic fish');
 INSERT INTO species_link(species_id,url,label) VALUES (1,'urn:synthetic:taxonomy-reference','Reference');
 INSERT INTO tank(id,profile_id,title,description,state,created_at,care_reminders_enabled) VALUES (1,1,'SyntheticAlice tank','mail@example.invalid','published','2020-01-01',true),(2,2,'Second tank',NULL,'published','2020-01-01',true),(3,3,'Third tank',NULL,'published','2020-01-01',false);
-INSERT INTO inhabitant(tank_id,species_id,count) VALUES (1,1,5);
+INSERT INTO inhabitant(tank_id,owner_profile_id,species_id,count) VALUES (1,1,1,5);
+INSERT INTO inhabitant(tank_id,owner_profile_id,name,count,moved_in_on,removed_on,removal_reason) VALUES (1,1,'SyntheticAlice Bruno',1,'2020-02-01',NULL,NULL),(1,1,'SyntheticAlice Emma',1,'2020-02-01','2020-04-01','died');
 INSERT INTO story(id,author_profile_id,topic,title,description,state,view_count,rating_count,created_at,updated_at,published_at,delete_reason)
 SELECT n,1,'unknown','SyntheticAlice title','https://personal.example.invalid','published',15,1,'2020-01-01','2020-01-02','2020-01-02','mail@example.invalid' FROM generate_series(1,5) n;
 UPDATE story SET state='draft' WHERE id=4;
@@ -79,7 +80,7 @@ INSERT INTO care_plan_rule_change(tank_id,kind,rhythm_days,enabled,at) VALUES (4
 INSERT INTO streak_freeze(tank_id,care_entry_id,tank_year,period_start,period_end,created_at) VALUES (1,3,1,'2020-03-02','2020-03-08','2020-03-09'),(4,4,1,'2020-03-02','2020-03-08','2020-03-09'),(5,6,1,'2020-03-02','2020-03-08','2020-03-09');
 INSERT INTO tank_decommissioning(tank_id,scope,started_at,start_date,start_media_item_id) VALUES (4,'all_care','2020-02-01','2020-02-01',1),(5,'all_care','2020-02-01','2020-02-01',1);
 INSERT INTO tank_visibility_consent(tank_id,context,answer,answered_at) VALUES (4,'settings',true,'2020-01-01'),(5,'settings',true,'2020-01-01');
-INSERT INTO inhabitant(tank_id,species_id,count) VALUES (4,1,2),(5,1,3);
+INSERT INTO inhabitant(tank_id,owner_profile_id,species_id,count) SELECT t.id,t.profile_id,1,v.c FROM (VALUES (4,2),(5,3)) v(tid,c) JOIN tank t ON t.id=v.tid;
 INSERT INTO media_link(media_item_id,context_type,tank_id,role,position,created_at) VALUES (1,'tank',5,'showcase',0,'2020-01-01'),(2,'tank',4,'showcase',0,'2020-01-01');
 INSERT INTO comment(id,tank_id,author_profile_id,body,created_at) VALUES (2,1,2,'public tank comment','2020-01-01'),(3,5,1,'private tank comment','2020-01-01'),(4,4,1,'stream private tank comment','2020-01-01');
 INSERT INTO rating(tank_id,profile_id,stars,created_at) VALUES (1,2,5,'2020-01-01'),(5,1,4,'2020-01-01'),(4,2,3,'2020-01-01');
@@ -93,7 +94,7 @@ INSERT INTO care_entry(id,tank_id,author_profile_id,kind,occurred_at,recorded_at
  (9,7,1,'measurement','2020-03-02 10:00+00','2020-03-02 10:00+00','SyntheticAlice followers tank',false),
  (10,8,2,'measurement','2020-03-02 10:00+00','2020-03-02 10:00+00','SyntheticAlice stream followers tank',false);
 INSERT INTO care_plan_rule(tank_id,kind,rhythm_days,enabled,reason_code,updated_at) VALUES (6,'water_change',7,true,'cichlid_default','2020-03-01'),(7,'water_change',7,true,'cichlid_default','2020-03-01'),(8,'water_change',7,true,'cichlid_default','2020-03-01');
-INSERT INTO inhabitant(tank_id,species_id,count) VALUES (6,1,1),(7,1,1),(8,1,4);
+INSERT INTO inhabitant(tank_id,owner_profile_id,species_id,count) SELECT t.id,t.profile_id,1,v.c FROM (VALUES (6,1),(7,1),(8,4)) v(tid,c) JOIN tank t ON t.id=v.tid;
 INSERT INTO comment(id,tank_id,author_profile_id,body,created_at) VALUES (5,6,1,'selected tank comment','2020-01-01'),(6,7,2,'followers tank comment','2020-01-01'),(7,8,1,'stream followers tank comment','2020-01-01');
 INSERT INTO rating(tank_id,profile_id,stars,created_at) VALUES (6,2,4,'2020-01-01'),(7,3,4,'2020-01-01'),(8,3,5,'2020-01-01');
 INSERT INTO media_link(media_item_id,context_type,tank_id,role,position,created_at) VALUES (3,'tank',6,'showcase',0,'2020-01-01'),(3,'tank',7,'showcase',0,'2020-01-01');
@@ -108,7 +109,7 @@ INSERT INTO follow(follower_profile_id,target_tank_id,status,decided_at,created_
 INSERT INTO tank_selected_member(tank_id,member_profile_id,added_at) VALUES (6,1,'2020-01-01'),(7,2,'2020-01-01'),(1,3,'2020-01-01');
 INSERT INTO story_subject(story_id,subject_type,tank_id,inhabitant_id,species_id,position) VALUES
  (1,'tank',1,NULL,NULL,0),
- (1,'inhabitant',NULL,(SELECT id FROM inhabitant WHERE tank_id=1),NULL,1),
+ (1,'inhabitant',NULL,(SELECT id FROM inhabitant WHERE tank_id=1 AND name IS NULL),NULL,1),
  (1,'species',NULL,NULL,1,2),
  (2,'tank',5,NULL,NULL,0),
  (2,'inhabitant',NULL,(SELECT id FROM inhabitant WHERE tank_id=5),NULL,1),
@@ -121,7 +122,7 @@ INSERT INTO used_checksum(profile_id,checksum_sha256,kind,first_used_at) VALUES 
 UPDATE media_item SET quick_share_story_id=id WHERE id IN (1,2,3);
 INSERT INTO profile(id,username,display_name,kind,created_at) VALUES (9,'SyntheticProvisional','SyntheticProvisional','member','2020-01-01');
 INSERT INTO tank(id,profile_id,title,state,created_at,care_reminders_enabled) VALUES (9,9,'Provisional tank','draft','2020-01-01',true);
-INSERT INTO inhabitant(tank_id,species_id,count) VALUES (9,1,2);
+INSERT INTO inhabitant(tank_id,owner_profile_id,species_id,count) VALUES (9,9,1,2);
 INSERT INTO care_entry(id,tank_id,author_profile_id,kind,occurred_at,recorded_at,note,only_me) VALUES (11,9,9,'measurement','2020-03-02 10:00+00','2020-03-02 10:00+00','SyntheticAlice provisional',false);
 INSERT INTO care_plan_rule(tank_id,kind,rhythm_days,enabled,reason_code,updated_at) VALUES (9,'water_change',7,true,'cichlid_default','2020-03-01');
 INSERT INTO media_item(id,owner_profile_id,kind,storage_key,original_filename,content_type,created_at) VALUES (9,9,'photo','originals/Provisional/photo-9.jpg','SyntheticProvisional.jpg','image/jpeg','2020-01-01');

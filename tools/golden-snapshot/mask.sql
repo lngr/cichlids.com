@@ -24,6 +24,7 @@ DELETE FROM public.tank_decommissioning WHERE tank_id IN (SELECT id FROM public.
     OR start_media_item_id IN (SELECT id FROM public.media_item WHERE owner_profile_id IN (SELECT id FROM public.profile WHERE kind = 'provisional')) OR end_media_item_id IN (SELECT id FROM public.media_item WHERE owner_profile_id IN (SELECT id FROM public.profile WHERE kind = 'provisional'));
 DELETE FROM public.story WHERE author_profile_id IN (SELECT id FROM public.profile WHERE kind = 'provisional');
 DELETE FROM public.media_item WHERE owner_profile_id IN (SELECT id FROM public.profile WHERE kind = 'provisional');
+DELETE FROM public.inhabitant WHERE owner_profile_id IN (SELECT id FROM public.profile WHERE kind = 'provisional') OR tank_id IN (SELECT id FROM public.tank WHERE profile_id IN (SELECT id FROM public.profile WHERE kind = 'provisional'));
 DELETE FROM public.tank WHERE profile_id IN (SELECT id FROM public.profile WHERE kind = 'provisional');
 DELETE FROM public.profile WHERE kind = 'provisional';
 DELETE FROM public.follow WHERE status <> 'approved'

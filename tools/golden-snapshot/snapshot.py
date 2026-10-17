@@ -30,6 +30,7 @@ FREE_TEXT = {
     'public.story': ('title', 'description', 'delete_reason'),
     'public.collection': ('title',),
     'public.care_entry': ('note',),
+    'public.inhabitant': ('name',),
     'public.media_link': ('caption',),
     'public.tank': ('title', 'description', 'gravel', 'plants', 'decoration', 'light',
                     'light_duration', 'filtration', 'technic', 'water_ph', 'water_kh',
@@ -121,7 +122,8 @@ COLUMN_HANDLING = {
         'kept': 'created_at decided_at follower_profile_id id status target_profile_id target_tank_id',
     },
     'public.inhabitant': {
-        'kept': 'count id sort species_id tank_id',
+        'generated': 'name',
+        'kept': 'count id moved_in_on owner_profile_id removal_reason removed_on sort species_id tank_id',
     },
     'public.media_item': {
         'kept': 'byte_size created_at duration_ms height id kind legacy_id owner_profile_id quick_share_story_id width',

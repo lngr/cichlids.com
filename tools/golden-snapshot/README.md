@@ -71,7 +71,7 @@ rule.
 
 | Handling | Columns |
 | --- | --- |
-| Generated text of the same length | Comment body, delete reason; discussion post body; discussion thread title; post title, description, delete reason; collection title; tank title, description, equipment, water and food fields, notes, delete reason; care entry note; media link caption |
+| Generated text of the same length | Comment body, delete reason; discussion post body; discussion thread title; post title, description, delete reason; collection title; tank title, description, equipment, water and food fields, notes, delete reason; care entry note; media link caption; inhabitant name |
 | Pseudonym | Profile username and display name; comment and discussion post guest name |
 | NULL | Profile city, external avatar URL, last login, time of the last handle change, time of the last request, start of an absence, time the archive retrospective was seen, time and start of the last return retrospective and suspension; media item capture time, offset, check time and next placement attempt |
 | Rewritten | Slug alias value; media item storage key, original file name, content type, checksum, receive time, in-app flag and placement state; media variant storage key |

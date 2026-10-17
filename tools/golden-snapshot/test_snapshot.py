@@ -128,7 +128,7 @@ class DatabaseTests(unittest.TestCase):
                 for column in columns:
                     query = sql.SQL('select id, {} from {} order by id').format(sql.Identifier(column), snapshot.ident(table))
                     old, new = source.execute(query).fetchall(), conn.execute(query).fetchall()
-                    if table in ('public.media_link', 'public.care_entry', 'public.comment', 'public.story', 'public.collection', 'public.tank', 'public.discussion_post'):
+                    if table in ('public.media_link', 'public.care_entry', 'public.comment', 'public.story', 'public.collection', 'public.tank', 'public.discussion_post', 'public.inhabitant'):
                         self.assertTrue({r[0] for r in new} <= {r[0] for r in old})
                         old = [r for r in old if r[0] in {n[0] for n in new}]
                     else:
@@ -190,7 +190,7 @@ class DatabaseTests(unittest.TestCase):
                 self.assertGreater(count(source, f'select count(*) from {table} where tank_id in (4, 5, 6, 7, 8)'), 0, table)
             for table in ('care_plan_rule', 'care_plan_rule_change', 'streak_freeze', 'tank_visibility_consent'):
                 self.assertGreater(count(conn, f'select count(*) from {table} where tank_id in (1)'), 0, table)
-            self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from inhabitant order by tank_id')), [1, 4, 8])
+            self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from inhabitant order by tank_id')), [1, 1, 1, 4, 8])
             self.assertEqual(count(conn, 'select count(*) from media_link where tank_id in (5, 6, 7)'), 0)
             self.assertEqual(sorted(r[0] for r in conn.execute('select id from collection_entry')), [r[0] for r in source.execute('select id from collection_entry where collection_id=1 and story_id<>9')])
             self.assertEqual(count(conn, 'select count(*) from collection'), 2)
