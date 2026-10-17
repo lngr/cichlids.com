@@ -65,6 +65,8 @@ public sealed class ProvisionalGatedEndpointsTests(ApiFixture fixture)
         { "DELETE", "/api/me/header" },
         { "POST", "/api/me/onboarding" },
         { "GET", "/api/me/legacy-tanks" },
+        { "GET", "/api/me/retrospectives/archive" },
+        { "POST", "/api/me/retrospectives/archive/seen" },
         { "PUT", "/api/me/interests" },
         { "PUT", "/api/me/handle" },
         { "PUT", "/api/tanks/1/region" },

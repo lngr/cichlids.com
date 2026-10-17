@@ -4,6 +4,7 @@ using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Auth;
 using Cichlids.Api.Features.Auth.Devices;
 using Cichlids.Api.Features.Profiles;
+using Cichlids.Api.Features.Retrospectives;
 using Cichlids.Api.Features.Streaks;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -178,6 +179,7 @@ public static class MeEndpoints
         ClaimsPrincipal user,
         CurrentProfileService currentProfileService,
         ProfilesQueryService profilesQueryService,
+        ArchiveRetrospectiveQueryService retrospectives,
         TimeProvider clock,
         CancellationToken cancellationToken)
     {
@@ -190,7 +192,13 @@ public static class MeEndpoints
             ? identity.FindAll(identity.RoleClaimType).Select(c => c.Value).Distinct().ToList()
             : [];
 
+        var provisional = user.IsProvisional();
+        var archiveRetrospective = provisional
+            ? null
+            : new ArchiveRetrospectiveStatusDto(
+                await retrospectives.ExistsAsync(profile.Id, cancellationToken), profile.ArchiveRetrospectiveSeenAt);
+
         return TypedResults.Ok(new MeDto(
-            detail, roles, user.IsProvisional(), HandleChangeService.NextChangeAt(profile, clock.GetUtcNow())));
+            detail, roles, provisional, HandleChangeService.NextChangeAt(profile, clock.GetUtcNow()), archiveRetrospective));
     }
 }
