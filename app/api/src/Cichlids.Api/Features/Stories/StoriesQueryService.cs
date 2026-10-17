@@ -48,11 +48,7 @@ public sealed class StoriesQueryService(CichlidsDbContext context, IObjectStore 
         var sorted = sort switch
         {
             "views" => filtered.OrderByDescending(p => p.ViewCount).ThenByDescending(p => p.Id),
-            "rating" => filtered
-                .OrderByDescending(p =>
-                    (double)p.RatingCount / (p.RatingCount + RatingScore.PriorWeight) * (p.RatingAverage ?? 0) +
-                    (double)RatingScore.PriorWeight / (p.RatingCount + RatingScore.PriorWeight) * RatingScore.PriorMean)
-                .ThenByDescending(p => p.Id),
+            "rating" => filtered.OrderByDescending(RatingScore.OfStory).ThenByDescending(p => p.Id),
             _ => filtered.OrderByDescending(p => p.PublishedAt).ThenByDescending(p => p.Id),
         };
 

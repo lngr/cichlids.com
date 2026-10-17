@@ -181,6 +181,7 @@ builder.Services.AddExceptionHandler<NonMemberLoginExceptionHandler>();
 builder.Services.AddExceptionHandler<RegistrationRequiredExceptionHandler>();
 
 builder.Services.AddScoped<SpeciesQueryService>();
+builder.Services.AddScoped<SpeciesCommunityQueryService>();
 builder.Services.AddScoped<StoriesQueryService>();
 builder.Services.AddScoped<TanksQueryService>();
 builder.Services.AddScoped<TankAccessService>();

@@ -1,3 +1,6 @@
+using System.Linq.Expressions;
+using Cichlids.Domain.Entities;
+
 namespace Cichlids.Api.Features.Stories;
 
 /// <summary>
@@ -16,4 +19,11 @@ public static class RatingScore
     /// The rating a story is assumed to have before any real ratings pull it away from it.
     /// </summary>
     public const double PriorMean = 4.0;
+
+    /// <summary>
+    /// The score of a story as a database expression, for ordering stories by rating.
+    /// </summary>
+    public static readonly Expression<Func<Story, double>> OfStory = p =>
+        (double)p.RatingCount / (p.RatingCount + PriorWeight) * (p.RatingAverage ?? 0) +
+        (double)PriorWeight / (p.RatingCount + PriorWeight) * PriorMean;
 }

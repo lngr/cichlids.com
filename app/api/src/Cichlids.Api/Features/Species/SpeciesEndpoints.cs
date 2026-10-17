@@ -11,6 +11,7 @@ public static class SpeciesEndpoints
 
         group.MapGet("/", ListAsync).WithName("ListSpecies");
         group.MapGet("/{idOrSlug}", GetByIdOrSlugAsync).WithName("GetSpecies");
+        group.MapGet("/{idOrSlug}/community", GetCommunityAsync).WithName("GetSpeciesCommunity");
 
         return app;
     }
@@ -28,5 +29,12 @@ public static class SpeciesEndpoints
     {
         var detail = await queryService.GetByIdOrSlugAsync(idOrSlug, cancellationToken);
         return detail is null ? TypedResults.NotFound() : TypedResults.Ok(detail);
+    }
+
+    private static async Task<Results<Ok<SpeciesCommunityDto>, NotFound>> GetCommunityAsync(
+        SpeciesCommunityQueryService queryService, string idOrSlug, CancellationToken cancellationToken)
+    {
+        var community = await queryService.GetAsync(idOrSlug, cancellationToken);
+        return community is null ? TypedResults.NotFound() : TypedResults.Ok(community);
     }
 }
