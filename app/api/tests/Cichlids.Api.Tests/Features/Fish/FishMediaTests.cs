@@ -1,5 +1,6 @@
 // Story: TASK-9.2
 using System.Net;
+using System.Text.Json;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Media;
 using Microsoft.EntityFrameworkCore;
@@ -110,6 +111,29 @@ public sealed class FishMediaTests(ApiFixture fixture) : IAsyncLifetime
         Assert.Contains(photo, await check.VisibleMediaItemIdsAsync([photo], owner.ProfileId, DateTimeOffset.UtcNow));
         var item = await check.MediaItems.SingleAsync(m => m.Id == photo);
         Assert.True(item.VisibilityGeneration > before);
+    }
+
+    [Fact]
+    public async Task GivenAFileOnTheFishPage_WhenTheOwnerReadsItsPlaces_ThenThePlaceNamesTheFishAndSurvivesTheDeletionOfTheTank()
+    {
+        var (owner, tank) = await _world.OwnerWithTankAsync();
+        var fish = await _world.AddFishAsync(owner, tank);
+        var photo = await _world.NewMediaAsync(owner.ProfileId);
+        await _world.LinkAsync(owner, fish, photo);
+
+        async Task<JsonElement> PlaceAsync()
+        {
+            using var response = await SendAsync(fixture, HttpMethod.Get, $"/api/me/media/{photo}", owner.Token);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            return Assert.Single((await BodyAsync(response)).GetProperty("places").EnumerateArray());
+        }
+
+        var place = await PlaceAsync();
+        Assert.Equal("inhabitant", place.GetProperty("kind").GetString());
+        Assert.Equal("Bruno", place.GetProperty("name").GetString());
+        Assert.Equal(tank, place.GetProperty("tankId").GetInt64());
+        await _world.SoftDeleteTankAsync(tank);
+        Assert.Equal("inhabitant", (await PlaceAsync()).GetProperty("kind").GetString());
     }
 
     [Fact]

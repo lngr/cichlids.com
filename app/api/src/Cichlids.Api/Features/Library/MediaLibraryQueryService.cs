@@ -114,7 +114,7 @@ public sealed class MediaLibraryQueryService(
         var sessions = await LoadAsync(links.Select(l => l.WaterChangeSessionId), ids => context.WaterChangeSessions.AsNoTracking()
             .Where(s => ids.Contains(s.Id)).Select(s => new { s.Id, s.TankId, s.StartedAt }), s => s.Id, cancellationToken);
         var inhabitants = await LoadAsync(links.Select(l => l.InhabitantId), ids => context.Inhabitants.AsNoTracking()
-            .Where(i => ids.Contains(i.Id)).Select(i => new { i.Id, i.TankId }), i => i.Id, cancellationToken);
+            .Where(i => ids.Contains(i.Id)).Select(i => new { i.Id, i.TankId, i.Name }), i => i.Id, cancellationToken);
         var tankIds = links.Select(l => l.TankId).Concat(careEntries.Values.Select(e => (long?)e.TankId))
             .Concat(sessions.Values.Select(s => (long?)s.TankId)).Concat(inhabitants.Values.Select(i => (long?)i.TankId)).ToList();
         var tanks = await LoadAsync(tankIds, ids => context.Tanks.AsNoTracking()
@@ -130,6 +130,7 @@ public sealed class MediaLibraryQueryService(
 
         string? OwnTankTitle(long tankId) => tanks.TryGetValue(tankId, out var tank) && tank.ProfileId == profileId ? tank.Title : null;
         long? OwnTankId(long tankId) => tanks.TryGetValue(tankId, out var tank) && tank.ProfileId == profileId ? tankId : null;
+        string? OwnInhabitantName(long tankId, string? name) => OwnTankId(tankId) is null ? null : name ?? OwnTankTitle(tankId);
 
         var result = new Dictionary<long, List<MediaPlaceDto>>();
         foreach (var link in links)
@@ -145,7 +146,7 @@ public sealed class MediaLibraryQueryService(
                     },
                     OwnTankTitle(link.TankId!.Value), OwnTankId(link.TankId.Value), null, null, null, MediaLinkRoles.SectionOf(link.Role), null, null),
                 MediaLinkContext.Inhabitant when inhabitants.TryGetValue(link.InhabitantId!.Value, out var inhabitant) =>
-                    new MediaPlaceDto(MediaPlaceKind.Inhabitant, OwnTankTitle(inhabitant.TankId), OwnTankId(inhabitant.TankId), null, null, null, null, null, null),
+                    new MediaPlaceDto(MediaPlaceKind.Inhabitant, OwnInhabitantName(inhabitant.TankId, inhabitant.Name), OwnTankId(inhabitant.TankId), null, null, null, null, null, null),
                 MediaLinkContext.CareEntry when careEntries.TryGetValue(link.CareEntryId!.Value, out var entry) =>
                     new MediaPlaceDto(MediaPlaceKind.CareEntry, OwnTankTitle(entry.TankId), OwnTankId(entry.TankId),
                         OwnTankId(entry.TankId) is null ? null : entry.Id, null, null, null, entry.Kind, entry.OccurredAt),
@@ -179,11 +180,10 @@ public sealed class MediaLibraryQueryService(
     }
 
     // The links whose context is alive: a tank, a story or a place that belongs to a tank that was not
-    // deleted.
+    // deleted. The page of a named fish stays when its tank is deleted.
     private IQueryable<MediaLink> LiveLinks() => context.MediaLinks.Where(l =>
         (l.ContextType == MediaLinkContext.Tank && context.Tanks.Any(t => t.Id == l.TankId && t.DeletedAt == null))
-        || (l.ContextType == MediaLinkContext.Inhabitant
-            && context.Inhabitants.Any(i => i.Id == l.InhabitantId && context.Tanks.Any(t => t.Id == i.TankId && t.DeletedAt == null)))
+        || (l.ContextType == MediaLinkContext.Inhabitant && context.Inhabitants.Any(i => i.Id == l.InhabitantId))
         || (l.ContextType == MediaLinkContext.CareEntry
             && context.CareEntries.Any(e => e.Id == l.CareEntryId && context.Tanks.Any(t => t.Id == e.TankId && t.DeletedAt == null)))
         || (l.ContextType == MediaLinkContext.WaterChangeSession
