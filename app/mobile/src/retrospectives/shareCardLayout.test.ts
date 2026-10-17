@@ -7,7 +7,7 @@ const t = (key: string) => key;
 const full = buildShareCard([
   { kind: "member_since", year: 2011, month: 4 },
   { kind: "stats", photos: 1200, comments: 3, stars: 9 },
-  { kind: "most_viewed", storyId: 1, slug: "s", title: "T", viewCount: 4500, image: { thumb: "t", small: null, medium: null, large: "l" } },
+  { kind: "most_viewed", storyId: 1, slug: "s", title: "T", viewCount: 4500, image: { thumb: "t", small: null, medium: null, large: "l" }, shareImageUrl: "/share" },
 ], { handle: "fish", showHandle: true });
 
 describe("shareCardTexts", () => {

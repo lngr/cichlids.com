@@ -6,7 +6,7 @@ const image = { thumb: "t", small: "s", medium: "m", large: "https://media.test/
 const cards: RetrospectiveCard[] = [
   { kind: "member_since", year: 2011, month: 4 },
   { kind: "stats", photos: 12, comments: 3, stars: 7 },
-  { kind: "most_viewed", storyId: 7, slug: "blue", title: "Blue", viewCount: 900, image },
+  { kind: "most_viewed", storyId: 7, slug: "blue", title: "Blue", viewCount: 900, image, shareImageUrl: "/share/photo" },
   { kind: "archive_tank", tankId: 5, title: "Malawi", image: null },
   { kind: "tank_today" },
 ];
@@ -17,7 +17,7 @@ describe("buildShareCard", () => {
       memberSince: { year: 2011, month: 4 },
       photos: 12,
       comments: 3,
-      mostViewed: { imageUrl: "https://media.test/large", viewCount: 900 },
+      mostViewed: { imageUrl: "/share/photo", viewCount: 900 },
       handle: null,
     });
   });
@@ -38,8 +38,13 @@ describe("buildShareCard", () => {
   });
 
   it("keeps the view count of a most viewed photo without an image", () => {
-    const model = buildShareCard([{ kind: "most_viewed", storyId: 1, slug: "s", title: null, viewCount: 5, image: null }], { handle: null, showHandle: false });
+    const model = buildShareCard([{ kind: "most_viewed", storyId: 1, slug: "s", title: null, viewCount: 5, image: null, shareImageUrl: null }], { handle: null, showHandle: false });
     expect(model.mostViewed).toEqual({ imageUrl: null, viewCount: 5 });
+  });
+
+  it("falls back to the public image when the retrospective names no share image", () => {
+    const model = buildShareCard([{ kind: "most_viewed", storyId: 1, slug: "s", title: null, viewCount: 5, image, shareImageUrl: null }], { handle: null, showHandle: false });
+    expect(model.mostViewed?.imageUrl).toBe("https://media.test/large");
   });
 
   it("holds only the fields of the card: nothing of the archive tanks or the stars reaches it", () => {

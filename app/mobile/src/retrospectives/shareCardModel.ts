@@ -45,7 +45,7 @@ export function buildShareCard(cards: RetrospectiveCard[], { handle, showHandle 
     memberSince: memberSince ? { year: memberSince.year, month: memberSince.month } : null,
     photos: stats && stats.photos > 0 ? stats.photos : null,
     comments: stats && stats.comments > 0 ? stats.comments : null,
-    mostViewed: mostViewed ? { imageUrl: cardImageUrl(mostViewed.image) ?? null, viewCount: mostViewed.viewCount } : null,
+    mostViewed: mostViewed ? { imageUrl: mostViewed.shareImageUrl ?? cardImageUrl(mostViewed.image) ?? null, viewCount: mostViewed.viewCount } : null,
     handle: showHandle && trimmed ? trimmed : null,
   };
 }
