@@ -71,6 +71,8 @@ try {
   await returning.screenshot({ path: "/tmp/task-4.5-returned-light.png" });
   await byTestId(returning, "onboarding-done").click();
   const refineId = sql(`INSERT INTO public.tank (legacy_id, profile_id, title, category, region, state, created_at) VALUES (987655, ${Number(legacyMe.profile.id)}, 'Refine on tank page', 'american', 'americas_unassigned', 'published', now()) RETURNING id`).split("\n")[0];
+  // The archive tank just added gives the member an unseen archive retrospective, which would open over the tank page.
+  await fetch(`${API_URL}/api/me/retrospectives/archive/seen`, { method: "POST", headers: { Authorization: `Bearer ${legacyToken}` } });
   await returning.goto(`${WEB_URL}/tanks/${refineId}`, { waitUntil: "networkidle" });
   await byTestId(returning, "refine-central_america").click();
   await byTestId(returning, "tank-region").getByText("Central America", { exact: true }).waitFor();
