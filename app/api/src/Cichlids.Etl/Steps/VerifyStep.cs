@@ -606,6 +606,14 @@ public sealed class VerifyStep : IEtlStep
         }
 
         report.Add(VerificationRow.Compare("rating_not_newest", 0, ratingsNotNewest, MigrationRules.NewestRatings));
+
+        var expectedReferences = expectedRatingUids.Count(migratedCommentLegacyIds.Contains);
+        var actualReferences = await PgScalarAsync(
+            context,
+            "SELECT COUNT(*) FROM rating JOIN comment ON comment.id = rating.comment_id AND comment.legacy_id = rating.legacy_comment_id",
+            cancellationToken);
+        report.Add(VerificationRow.Compare(
+            "rating_comment_reference", expectedReferences, actualReferences, MigrationRules.RatingCommentReferences));
         report.Add(VerificationRow.Info(
             "rating_collapsed", memberRatings - newestRatingByMemberAndTarget.Count, MigrationRules.CollapsedRatings));
         report.Add(VerificationRow.Info("rating_self_dropped", selfRatings, MigrationRules.SelfRatings));

@@ -17,7 +17,8 @@ namespace Cichlids.Etl.Steps;
 /// comment_vote, and recomputes the denormalized aggregates the two feed (story.rating_average,
 /// story.rating_count and comment.score) from those base tables at the end of the run. A member
 /// keeps one rating per story or tank, the newest legacy one, and a rating of the member's own story
-/// or tank stays out while its comment text migrates. A legacy row whose target story or tank never
+/// or tank stays out while its comment text migrates. A rating whose legacy row has comment text
+/// references the migrated comment. A legacy row whose target story or tank never
 /// migrated, or whose type is neither 1 (picture) nor 2 (tank), is preserved in
 /// archive.legacy_comment.
 /// </summary>
@@ -127,8 +128,28 @@ public sealed class CommentMigrationStep : IEtlStep
                 cancellationToken);
         }
 
+        await LinkRatingsToCommentsAsync(context, cancellationToken);
         await MigrateCommentVotesAsync(context, profileByLegacyId, commentIdByLegacyId, stats, cancellationToken);
         await RecomputeAggregatesAsync(context, stats, cancellationToken);
+    }
+
+    /// <summary>
+    /// Sets the comment reference of every migrated rating that was written together with a
+    /// comment, by joining the legacy comment id of the rating to the legacy id of the comment.
+    /// A rating without comment text has no matching comment and keeps no reference.
+    /// </summary>
+    private static async Task LinkRatingsToCommentsAsync(EtlContext context, CancellationToken cancellationToken)
+    {
+        await using var command = new NpgsqlCommand(
+            """
+            UPDATE rating SET comment_id = comment.id
+            FROM comment
+            WHERE comment.legacy_id = rating.legacy_comment_id
+                AND rating.comment_id IS DISTINCT FROM comment.id
+            """,
+            context.Target,
+            context.Transaction);
+        await command.ExecuteNonQueryAsync(cancellationToken);
     }
 
     private static async Task ProcessBatchAsync(

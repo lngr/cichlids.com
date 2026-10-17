@@ -31,6 +31,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "comment", 3, 3);
         AssertRow(report, "rating", 2, 2);
         AssertRow(report, "rating_not_newest", 0, 0);
+        AssertRow(report, "rating_comment_reference", 1, 1);
         AssertInfoRow(report, "rating_collapsed", 1);
         AssertInfoRow(report, "rating_self_dropped", 2);
         AssertRow(report, "vault_legacy_comment", 3, 3);
@@ -145,6 +146,16 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         Assert.False(report.Passed);
         AssertRow(report, "rating", 2, 2);
         AssertMismatch(report, "rating_not_newest", 0, 1);
+    }
+
+    [Fact]
+    public async Task FlagsAMigratedRatingWithoutTheReferenceToItsComment()
+    {
+        var report = await fixture.VerifyInRolledBackTransactionAsync(context => VerifyEtlFixture.ExecuteAsync(
+            context, "UPDATE rating SET comment_id = NULL WHERE legacy_comment_id = 9301"));
+
+        Assert.False(report.Passed);
+        AssertMismatch(report, "rating_comment_reference", 1, 0);
     }
 
     [Fact]

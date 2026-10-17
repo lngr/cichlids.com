@@ -85,6 +85,9 @@ public static class MigrationRules
     public const string NewestRatings =
         "Every migrated rating is an anonymous rating or the newest legacy rating of its member on its story or tank, a tie going to the higher legacy uid.";
 
+    public const string RatingCommentReferences =
+        "Every migrated rating whose legacy row also carries comment text references the migrated comment of that row.";
+
     public const string CollapsedRatings =
         "An older legacy rating of a member on a story or tank collapses into the member's newest rating there.";
 

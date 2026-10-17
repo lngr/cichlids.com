@@ -65,11 +65,13 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             Assert.Equal(story4001.Id, rating5001.StoryId);
             Assert.Equal(owner400.Id, rating5001.ProfileId);
             Assert.Equal((short)4, rating5001.Stars);
+            Assert.Equal(comment5001.Id, rating5001.CommentId);
 
             // uid 5002: rating-only.
             Assert.False(await db.Comments.AnyAsync(c => c.LegacyId == 5002));
             var rating5002 = await db.Ratings.SingleAsync(r => r.LegacyCommentId == 5002);
             Assert.Equal((short)5, rating5002.Stars);
+            Assert.Null(rating5002.CommentId);
 
             // uid 5016: an older rating of member 400 on the same story as 5001 collapses into it.
             Assert.False(await db.Ratings.AnyAsync(r => r.LegacyCommentId == 5016));
@@ -112,6 +114,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             Assert.Equal(owner401.Id, hidden.DeletedByProfileId);
             var hiddenRating = await db.Ratings.SingleAsync(r => r.LegacyCommentId == 5009);
             Assert.Equal((short)2, hiddenRating.Stars);
+            Assert.Equal(hidden.Id, hiddenRating.CommentId);
 
             // uid 5010: tank-targeted split.
             var tankComment = await db.Comments.SingleAsync(c => c.LegacyId == 5010);
@@ -119,6 +122,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             Assert.Null(tankComment.StoryId);
             var tankRating = await db.Ratings.SingleAsync(r => r.LegacyCommentId == 5010);
             Assert.Equal(tank4101.Id, tankRating.TankId);
+            Assert.Equal(tankComment.Id, tankRating.CommentId);
 
             // uid 5011: hard-deleted at the top level, never reaches target resolution.
             Assert.False(await db.Comments.AnyAsync(c => c.LegacyId == 5011));
@@ -211,6 +215,9 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
 
             var comment5001 = await db.Comments.SingleAsync(c => c.LegacyId == 5001);
             Assert.Equal(3, comment5001.Score);
+            Assert.Equal(comment5001.Id, (await db.Ratings.SingleAsync(r => r.LegacyCommentId == 5001)).CommentId);
+            Assert.Equal(
+                3, await db.Ratings.CountAsync(r => r.LegacyCommentId >= 5000 && r.LegacyCommentId < 6000 && r.CommentId != null));
 
             Assert.Equal(SeedGuestNames.Shared, (await db.Comments.SingleAsync(c => c.LegacyId == 5014)).PosterName);
             Assert.Equal(SeedGuestNames.Second, (await db.Comments.SingleAsync(c => c.LegacyId == 5015)).PosterName);
