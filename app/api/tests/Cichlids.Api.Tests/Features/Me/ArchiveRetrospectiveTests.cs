@@ -15,9 +15,34 @@ namespace Cichlids.Api.Tests.Features.Me;
 /// </summary>
 [Collection(ApiCollection.Name)]
 [Trait("Story", "TASK-8.2")]
-public sealed class ArchiveRetrospectiveTests(ApiFixture fixture)
+public sealed class ArchiveRetrospectiveTests(ApiFixture fixture) : IAsyncLifetime
 {
     private const string Route = "/api/me/retrospectives/archive";
+
+    private readonly List<long> _profileIds = [];
+
+    public Task InitializeAsync() => Task.CompletedTask;
+
+    public async Task DisposeAsync()
+    {
+        await using var db = fixture.CreateDbContext();
+        var ids = _profileIds.ToList();
+        var storyIds = await db.Stories.Where(s => ids.Contains(s.AuthorProfileId)).Select(s => s.Id).ToListAsync();
+        var tankIds = await db.Tanks.Where(t => ids.Contains(t.ProfileId)).Select(t => t.Id).ToListAsync();
+        await db.Ratings.Where(r => (r.StoryId != null && storyIds.Contains(r.StoryId.Value)) || (r.TankId != null && tankIds.Contains(r.TankId.Value))).ExecuteDeleteAsync();
+        await db.Comments.Where(c => (c.StoryId != null && storyIds.Contains(c.StoryId.Value)) || (c.TankId != null && tankIds.Contains(c.TankId.Value))).ExecuteDeleteAsync();
+        await db.SlugAliases.Where(a => storyIds.Contains(a.StoryId)).ExecuteDeleteAsync();
+        await db.Stories.Where(s => storyIds.Contains(s.Id)).ExecuteDeleteAsync();
+        await db.Tanks.Where(t => tankIds.Contains(t.Id)).ExecuteDeleteAsync();
+        await db.MediaItems.Where(m => m.OwnerProfileId != null && ids.Contains(m.OwnerProfileId.Value)).ExecuteDeleteAsync();
+    }
+
+    private async Task<Member> NewTrackedMemberAsync()
+    {
+        var member = await NewMemberAsync(fixture);
+        _profileIds.Add(member.ProfileId);
+        return member;
+    }
 
     private static int NewLegacyId() => Random.Shared.Next(1_500_000_000, int.MaxValue);
 
@@ -128,7 +153,7 @@ public sealed class ArchiveRetrospectiveTests(ApiFixture fixture)
     [Fact]
     public async Task GivenAMemberWithoutArchiveData_WhenReadingTheRetrospective_ThenThereIsNone()
     {
-        var member = await NewMemberAsync(fixture);
+        var member = await NewTrackedMemberAsync();
         await AddMigratedPhotoAsync(member.ProfileId, withProfileLink: true);
 
         Assert.Null(await GetAsync(member));
@@ -139,8 +164,8 @@ public sealed class ArchiveRetrospectiveTests(ApiFixture fixture)
     [Fact]
     public async Task GivenAMemberWithPhotosCommentsAndRatings_WhenReadingTheRetrospective_ThenTheCardsCarryTheCounts()
     {
-        var member = await NewMemberAsync(fixture);
-        var other = await NewMemberAsync(fixture);
+        var member = await NewTrackedMemberAsync();
+        var other = await NewTrackedMemberAsync();
         await SetCreatedAtAsync(member.ProfileId, new DateTimeOffset(2011, 4, 20, 10, 0, 0, TimeSpan.Zero));
         var story = await AddStoryAsync(member.ProfileId, views: 40);
         await AddMigratedPhotoAsync(member.ProfileId);
@@ -168,7 +193,7 @@ public sealed class ArchiveRetrospectiveTests(ApiFixture fixture)
     [Fact]
     public async Task GivenTheUnknownCreationMarker_WhenReadingTheRetrospective_ThenThereIsNoMemberSinceCard()
     {
-        var member = await NewMemberAsync(fixture);
+        var member = await NewTrackedMemberAsync();
         await SetCreatedAtAsync(member.ProfileId, LegacyProfiles.UnknownCreatedAt);
         await AddMigratedPhotoAsync(member.ProfileId);
 
@@ -181,7 +206,7 @@ public sealed class ArchiveRetrospectiveTests(ApiFixture fixture)
     [Fact]
     public async Task GivenStoriesWithViews_WhenReadingTheRetrospective_ThenTheMostViewedStoryHasItsCoverAndCount()
     {
-        var member = await NewMemberAsync(fixture);
+        var member = await NewTrackedMemberAsync();
         await AddStoryAsync(member.ProfileId, views: 10);
         var top = await AddStoryAsync(member.ProfileId, views: 900);
         await AddStoryAsync(member.ProfileId, views: 5000, deleted: true);
@@ -197,7 +222,7 @@ public sealed class ArchiveRetrospectiveTests(ApiFixture fixture)
     [Fact]
     public async Task GivenStoriesWithoutViews_WhenReadingTheRetrospective_ThenThereIsNoMostViewedCard()
     {
-        var member = await NewMemberAsync(fixture);
+        var member = await NewTrackedMemberAsync();
         await AddStoryAsync(member.ProfileId, views: 0);
 
         var body = (await GetAsync(member))!.Value;
@@ -209,7 +234,7 @@ public sealed class ArchiveRetrospectiveTests(ApiFixture fixture)
     [Fact]
     public async Task GivenAdoptedAndDeletedArchiveTanks_WhenReadingTheRetrospective_ThenOnlyTheOpenOnesAreOffered()
     {
-        var member = await NewMemberAsync(fixture);
+        var member = await NewTrackedMemberAsync();
         var open = await AddArchiveTankAsync(member.ProfileId, withImage: true);
         await AddArchiveTankAsync(member.ProfileId, adopted: true);
         await AddArchiveTankAsync(member.ProfileId, deleted: true);
@@ -226,7 +251,7 @@ public sealed class ArchiveRetrospectiveTests(ApiFixture fixture)
     [Fact]
     public async Task GivenOnlyAdoptedArchiveTanks_WhenReadingTheRetrospective_ThenThereIsNoTankCardAndNoRetrospective()
     {
-        var member = await NewMemberAsync(fixture);
+        var member = await NewTrackedMemberAsync();
         await AddArchiveTankAsync(member.ProfileId, adopted: true);
 
         Assert.Null(await GetAsync(member));
@@ -235,8 +260,8 @@ public sealed class ArchiveRetrospectiveTests(ApiFixture fixture)
     [Fact]
     public async Task GivenDeletedAndOwnComments_WhenReadingTheRetrospective_ThenOnlyCommentsOfOthersCount()
     {
-        var member = await NewMemberAsync(fixture);
-        var other = await NewMemberAsync(fixture);
+        var member = await NewTrackedMemberAsync();
+        var other = await NewTrackedMemberAsync();
         var story = await AddStoryAsync(member.ProfileId, views: 1);
         await AddCommentAsync(story, null, other.ProfileId);
         await AddCommentAsync(story, null, other.ProfileId, deleted: true);
@@ -291,7 +316,7 @@ public sealed class ArchiveRetrospectiveTests(ApiFixture fixture)
     [Fact]
     public async Task GivenOnlyNewAppContent_WhenReadingTheRetrospective_ThenThereIsNone()
     {
-        var member = await NewMemberAsync(fixture);
+        var member = await NewTrackedMemberAsync();
         await using (var db = fixture.CreateDbContext())
         {
             var now = DateTimeOffset.UtcNow;
@@ -306,7 +331,7 @@ public sealed class ArchiveRetrospectiveTests(ApiFixture fixture)
     [Fact]
     public async Task GivenAnUnseenRetrospective_WhenMarkingItSeen_ThenTheTimeIsStoredOnceAndMeReportsIt()
     {
-        var member = await NewMemberAsync(fixture);
+        var member = await NewTrackedMemberAsync();
         await AddMigratedPhotoAsync(member.ProfileId);
 
         var first = await SendAsync(fixture, HttpMethod.Post, Route + "/seen", member.Token);
