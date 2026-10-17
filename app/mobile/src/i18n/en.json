@@ -472,7 +472,17 @@
     "account_has_no_profile": "This account has no profile yet. Please try again.",
     "account_suspended": "This account is suspended.",
     "device_auth_refused": "This device could not prove its account. Please try again.",
-    "keycloak_session_required": "Sign in first."
+    "keycloak_session_required": "Sign in first.",
+    "inhabitant_not_found": "This tank or inhabitant is unavailable.",
+    "inhabitant_invalid": "A group needs a species and a count from 1 to 10000; a named fish needs a name of up to 80 characters.",
+    "inhabitant_species_unknown": "This species is not in the catalog.",
+    "inhabitant_moved_in_invalid": "The moved-in day must be a date that is not in the future.",
+    "inhabitant_reason_invalid": "Choose why the inhabitant leaves.",
+    "inhabitant_removed_on_invalid": "The day must be a date that is not in the future and not before the inhabitant moved in.",
+    "inhabitant_removed": "This inhabitant has already left the stocking.",
+    "inhabitant_date_invalid": "Your device date could not be read.",
+    "inhabitant_request_invalid": "The stocking request could not be completed.",
+    "inhabitant_auth_required": "Please sign in to keep the stocking."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -562,6 +572,58 @@
     "range": "{{start}} to {{end}}",
     "photos": "Photos",
     "logsPrivate": "The owner keeps the care stream private."
+  },
+  "stocking": {
+    "add": "Add to stocking",
+    "addTitle": "Add to stocking",
+    "editTitle": "Change inhabitant",
+    "kindGroup": "Group",
+    "kindNamed": "Named fish",
+    "species": "Species",
+    "speciesOptional": "Species (optional)",
+    "speciesSearch": "Search the species catalog",
+    "speciesClear": "Clear species",
+    "speciesNone": "No species found.",
+    "count": "Count",
+    "name": "Name",
+    "movedIn": "Moved in on",
+    "dayPlaceholder": "YYYY-MM-DD, empty for today",
+    "save": "Save",
+    "edit": "Edit",
+    "remove": "Remove",
+    "editItem": "Edit {{name}}",
+    "removeItem": "Remove {{name}}",
+    "removeTitle": "Remove {{name}}",
+    "removeHint": "The inhabitant stays in the history of the tank.",
+    "removeConfirm": "Remove from stocking",
+    "removedOn": "Left on",
+    "since": "Since {{date}}",
+    "sinceCreated": "Since the tank was created",
+    "history": "History ({{count}})",
+    "show": "Show",
+    "hide": "Hide",
+    "saveError": "The stocking could not be saved. Please try again.",
+    "reason": {
+      "died": "Died",
+      "given_away": "Given away",
+      "moved": "Moved to another tank"
+    },
+    "left": {
+      "died": "Died on {{date}}",
+      "given_away": "Given away on {{date}}",
+      "moved": "Moved to another tank on {{date}}"
+    },
+    "errors": {
+      "species": "Choose a species from the catalog.",
+      "count": "Enter a count from 1 to 10000.",
+      "name": "Enter a name.",
+      "nameTooLong": "A name has up to 80 characters.",
+      "movedInInvalid": "Enter the day as YYYY-MM-DD.",
+      "movedInFuture": "The day cannot lie in the future.",
+      "removedInvalid": "Enter the day as YYYY-MM-DD.",
+      "removedFuture": "The day cannot lie in the future.",
+      "removedBefore": "The day cannot be before the inhabitant moved in."
+    }
   },
   "timeLapseCamera": {
     "action": "Time-lapse photo",

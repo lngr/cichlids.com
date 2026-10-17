@@ -482,7 +482,17 @@
     "account_has_no_profile": "Esta conta ainda não tem um perfil. Tente novamente.",
     "account_suspended": "Esta conta está suspensa.",
     "device_auth_refused": "Este dispositivo não conseguiu comprovar sua conta. Tente novamente.",
-    "keycloak_session_required": "Entre primeiro."
+    "keycloak_session_required": "Entre primeiro.",
+    "inhabitant_not_found": "Este aquário ou habitante não está disponível.",
+    "inhabitant_invalid": "Um grupo precisa de uma espécie e de uma quantidade de 1 a 10000; um peixe com nome precisa de um nome de até 80 caracteres.",
+    "inhabitant_species_unknown": "Esta espécie não está no catálogo.",
+    "inhabitant_moved_in_invalid": "O dia de chegada deve ser uma data que não esteja no futuro.",
+    "inhabitant_reason_invalid": "Escolha por que o habitante sai do plantel.",
+    "inhabitant_removed_on_invalid": "O dia deve ser uma data que não esteja no futuro nem antes da chegada do habitante.",
+    "inhabitant_removed": "Este habitante já saiu do plantel.",
+    "inhabitant_date_invalid": "Não foi possível ler a data do seu dispositivo.",
+    "inhabitant_request_invalid": "Não foi possível concluir a solicitação do plantel.",
+    "inhabitant_auth_required": "Entre para manter o plantel."
   },
   "featureFlags": {
     "activityTitle": "Atividade da comunidade",
@@ -572,6 +582,58 @@
     "range": "De {{start}} a {{end}}",
     "photos": "Fotos",
     "logsPrivate": "O dono mantém o registro de cuidados privado."
+  },
+  "stocking": {
+    "add": "Adicionar ao plantel",
+    "addTitle": "Adicionar ao plantel",
+    "editTitle": "Alterar habitante",
+    "kindGroup": "Grupo",
+    "kindNamed": "Peixe com nome",
+    "species": "Espécie",
+    "speciesOptional": "Espécie (opcional)",
+    "speciesSearch": "Buscar no catálogo de espécies",
+    "speciesClear": "Limpar espécie",
+    "speciesNone": "Nenhuma espécie encontrada.",
+    "count": "Quantidade",
+    "name": "Nome",
+    "movedIn": "Chegou em",
+    "dayPlaceholder": "AAAA-MM-DD, vazio para hoje",
+    "save": "Salvar",
+    "edit": "Editar",
+    "remove": "Remover",
+    "editItem": "Editar {{name}}",
+    "removeItem": "Remover {{name}}",
+    "removeTitle": "Remover {{name}}",
+    "removeHint": "O habitante permanece no histórico do aquário.",
+    "removeConfirm": "Remover do plantel",
+    "removedOn": "Saiu em",
+    "since": "Desde {{date}}",
+    "sinceCreated": "Desde a criação do aquário",
+    "history": "Histórico ({{count}})",
+    "show": "Mostrar",
+    "hide": "Ocultar",
+    "saveError": "Não foi possível salvar o plantel. Tente novamente.",
+    "reason": {
+      "died": "Morreu",
+      "given_away": "Doado",
+      "moved": "Mudou para outro aquário"
+    },
+    "left": {
+      "died": "Morreu em {{date}}",
+      "given_away": "Doado em {{date}}",
+      "moved": "Mudou para outro aquário em {{date}}"
+    },
+    "errors": {
+      "species": "Escolha uma espécie do catálogo.",
+      "count": "Informe uma quantidade de 1 a 10000.",
+      "name": "Informe um nome.",
+      "nameTooLong": "Um nome tem até 80 caracteres.",
+      "movedInInvalid": "Informe o dia como AAAA-MM-DD.",
+      "movedInFuture": "O dia não pode estar no futuro.",
+      "removedInvalid": "Informe o dia como AAAA-MM-DD.",
+      "removedFuture": "O dia não pode estar no futuro.",
+      "removedBefore": "O dia não pode ser anterior à chegada do habitante."
+    }
   },
   "timeLapseCamera": {
     "action": "Foto de time-lapse",

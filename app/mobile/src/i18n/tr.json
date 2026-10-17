@@ -472,7 +472,17 @@
     "account_has_no_profile": "Bu hesabın henüz bir profili yok. Lütfen tekrar dene.",
     "account_suspended": "Bu hesap askıya alındı.",
     "device_auth_refused": "Bu cihaz hesabını kanıtlayamadı. Lütfen tekrar dene.",
-    "keycloak_session_required": "Önce giriş yap."
+    "keycloak_session_required": "Önce giriş yap.",
+    "inhabitant_not_found": "Bu akvaryum veya sakin kullanılamıyor.",
+    "inhabitant_invalid": "Bir grup için tür ve 1 ile 10000 arasında adet, isimli bir balık için en çok 80 karakterlik isim gerekir.",
+    "inhabitant_species_unknown": "Bu tür katalogda yok.",
+    "inhabitant_moved_in_invalid": "Giriş günü gelecekte olmayan bir tarih olmalı.",
+    "inhabitant_reason_invalid": "Sakinin neden ayrıldığını seç.",
+    "inhabitant_removed_on_invalid": "Gün, gelecekte olmayan ve sakinin girdiği günden önce olmayan bir tarih olmalı.",
+    "inhabitant_removed": "Bu sakin stoktan zaten ayrıldı.",
+    "inhabitant_date_invalid": "Cihazının tarihi okunamadı.",
+    "inhabitant_request_invalid": "Stok isteği tamamlanamadı.",
+    "inhabitant_auth_required": "Stoku tutmak için giriş yap."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -562,6 +572,58 @@
     "range": "{{start}} ile {{end}}",
     "photos": "Fotoğraflar",
     "logsPrivate": "Sahibi bakım akışını gizli tutuyor."
+  },
+  "stocking": {
+    "add": "Stoka ekle",
+    "addTitle": "Stoka ekle",
+    "editTitle": "Sakini değiştir",
+    "kindGroup": "Grup",
+    "kindNamed": "İsimli balık",
+    "species": "Tür",
+    "speciesOptional": "Tür (isteğe bağlı)",
+    "speciesSearch": "Tür kataloğunda ara",
+    "speciesClear": "Türü temizle",
+    "speciesNone": "Tür bulunamadı.",
+    "count": "Adet",
+    "name": "İsim",
+    "movedIn": "Girdiği gün",
+    "dayPlaceholder": "YYYY-AA-GG, boş bırakılırsa bugün",
+    "save": "Kaydet",
+    "edit": "Düzenle",
+    "remove": "Çıkar",
+    "editItem": "{{name}} düzenle",
+    "removeItem": "{{name}} çıkar",
+    "removeTitle": "{{name}} çıkar",
+    "removeHint": "Sakin akvaryumun geçmişinde kalır.",
+    "removeConfirm": "Stoktan çıkar",
+    "removedOn": "Ayrıldığı gün",
+    "since": "{{date}} tarihinden beri",
+    "sinceCreated": "Akvaryum oluşturulduğundan beri",
+    "history": "Geçmiş ({{count}})",
+    "show": "Göster",
+    "hide": "Gizle",
+    "saveError": "Stok kaydedilemedi. Lütfen tekrar dene.",
+    "reason": {
+      "died": "Öldü",
+      "given_away": "Hediye edildi",
+      "moved": "Başka bir akvaryuma taşındı"
+    },
+    "left": {
+      "died": "{{date}} tarihinde öldü",
+      "given_away": "{{date}} tarihinde hediye edildi",
+      "moved": "{{date}} tarihinde başka bir akvaryuma taşındı"
+    },
+    "errors": {
+      "species": "Katalogdan bir tür seç.",
+      "count": "1 ile 10000 arasında bir adet gir.",
+      "name": "Bir isim gir.",
+      "nameTooLong": "Bir isim en çok 80 karakter olabilir.",
+      "movedInInvalid": "Günü YYYY-AA-GG olarak gir.",
+      "movedInFuture": "Gün gelecekte olamaz.",
+      "removedInvalid": "Günü YYYY-AA-GG olarak gir.",
+      "removedFuture": "Gün gelecekte olamaz.",
+      "removedBefore": "Gün, sakinin girdiği günden önce olamaz."
+    }
   },
   "timeLapseCamera": {
     "action": "Zaman atlamalı fotoğraf",

@@ -482,7 +482,17 @@
     "account_has_no_profile": "Questo account non ha ancora un profilo. Riprova.",
     "account_suspended": "Questo account è sospeso.",
     "device_auth_refused": "Questo dispositivo non ha potuto dimostrare il suo account. Riprova.",
-    "keycloak_session_required": "Accedi prima."
+    "keycloak_session_required": "Accedi prima.",
+    "inhabitant_not_found": "Questa vasca o questo abitante non è disponibile.",
+    "inhabitant_invalid": "Un gruppo richiede una specie e un numero da 1 a 10000; un pesce con nome richiede un nome fino a 80 caratteri.",
+    "inhabitant_species_unknown": "Questa specie non è nel catalogo.",
+    "inhabitant_moved_in_invalid": "Il giorno di arrivo deve essere una data non nel futuro.",
+    "inhabitant_reason_invalid": "Scegli perché l'abitante lascia la popolazione.",
+    "inhabitant_removed_on_invalid": "Il giorno deve essere una data non nel futuro e non prima dell'arrivo dell'abitante.",
+    "inhabitant_removed": "Questo abitante ha già lasciato la popolazione.",
+    "inhabitant_date_invalid": "Non è stato possibile leggere la data del tuo dispositivo.",
+    "inhabitant_request_invalid": "Non è stato possibile completare la richiesta sulla popolazione.",
+    "inhabitant_auth_required": "Accedi per tenere la popolazione."
   },
   "featureFlags": {
     "activityTitle": "Attività della comunità",
@@ -572,6 +582,58 @@
     "range": "Da {{start}} a {{end}}",
     "photos": "Foto",
     "logsPrivate": "Il proprietario tiene privato il diario di cura."
+  },
+  "stocking": {
+    "add": "Aggiungi alla popolazione",
+    "addTitle": "Aggiungi alla popolazione",
+    "editTitle": "Modifica abitante",
+    "kindGroup": "Gruppo",
+    "kindNamed": "Pesce con nome",
+    "species": "Specie",
+    "speciesOptional": "Specie (facoltativa)",
+    "speciesSearch": "Cerca nel catalogo delle specie",
+    "speciesClear": "Rimuovi specie",
+    "speciesNone": "Nessuna specie trovata.",
+    "count": "Numero",
+    "name": "Nome",
+    "movedIn": "Arrivato il",
+    "dayPlaceholder": "AAAA-MM-GG, vuoto per oggi",
+    "save": "Salva",
+    "edit": "Modifica",
+    "remove": "Rimuovi",
+    "editItem": "Modifica {{name}}",
+    "removeItem": "Rimuovi {{name}}",
+    "removeTitle": "Rimuovi {{name}}",
+    "removeHint": "L'abitante resta nella cronologia della vasca.",
+    "removeConfirm": "Rimuovi dalla popolazione",
+    "removedOn": "Uscito il",
+    "since": "Dal {{date}}",
+    "sinceCreated": "Dalla creazione della vasca",
+    "history": "Cronologia ({{count}})",
+    "show": "Mostra",
+    "hide": "Nascondi",
+    "saveError": "Non è stato possibile salvare la popolazione. Riprova.",
+    "reason": {
+      "died": "Morto",
+      "given_away": "Regalato",
+      "moved": "Spostato in un'altra vasca"
+    },
+    "left": {
+      "died": "Morto il {{date}}",
+      "given_away": "Regalato il {{date}}",
+      "moved": "Spostato in un'altra vasca il {{date}}"
+    },
+    "errors": {
+      "species": "Scegli una specie dal catalogo.",
+      "count": "Inserisci un numero da 1 a 10000.",
+      "name": "Inserisci un nome.",
+      "nameTooLong": "Un nome ha fino a 80 caratteri.",
+      "movedInInvalid": "Inserisci il giorno come AAAA-MM-GG.",
+      "movedInFuture": "Il giorno non può essere nel futuro.",
+      "removedInvalid": "Inserisci il giorno come AAAA-MM-GG.",
+      "removedFuture": "Il giorno non può essere nel futuro.",
+      "removedBefore": "Il giorno non può precedere l'arrivo dell'abitante."
+    }
   },
   "timeLapseCamera": {
     "action": "Foto time-lapse",

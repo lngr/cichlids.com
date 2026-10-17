@@ -482,7 +482,17 @@
     "account_has_no_profile": "Ce compte n'a pas encore de profil. Veuillez réessayer.",
     "account_suspended": "Ce compte est suspendu.",
     "device_auth_refused": "Cet appareil n'a pas pu prouver son compte. Veuillez réessayer.",
-    "keycloak_session_required": "Connectez-vous d'abord."
+    "keycloak_session_required": "Connectez-vous d'abord.",
+    "inhabitant_not_found": "Ce bac ou cet occupant est indisponible.",
+    "inhabitant_invalid": "Un groupe demande une espèce et un nombre de 1 à 10000, un poisson nommé demande un nom de 80 caractères au plus.",
+    "inhabitant_species_unknown": "Cette espèce n'est pas dans le catalogue.",
+    "inhabitant_moved_in_invalid": "Le jour d'arrivée doit être une date qui n'est pas dans le futur.",
+    "inhabitant_reason_invalid": "Choisis pourquoi l'occupant quitte l'effectif.",
+    "inhabitant_removed_on_invalid": "Le jour doit être une date qui n'est pas dans le futur ni avant l'arrivée de l'occupant.",
+    "inhabitant_removed": "Cet occupant a déjà quitté l'effectif.",
+    "inhabitant_date_invalid": "La date de ton appareil n'a pas pu être lue.",
+    "inhabitant_request_invalid": "La demande sur l'effectif n'a pas pu être traitée.",
+    "inhabitant_auth_required": "Connecte-toi pour tenir l'effectif."
   },
   "featureFlags": {
     "activityTitle": "Activité de la communauté",
@@ -572,6 +582,58 @@
     "range": "De {{start}} à {{end}}",
     "photos": "Photos",
     "logsPrivate": "Le propriétaire garde le journal d'entretien privé."
+  },
+  "stocking": {
+    "add": "Ajouter à l'effectif",
+    "addTitle": "Ajouter à l'effectif",
+    "editTitle": "Modifier l'occupant",
+    "kindGroup": "Groupe",
+    "kindNamed": "Poisson nommé",
+    "species": "Espèce",
+    "speciesOptional": "Espèce (facultatif)",
+    "speciesSearch": "Chercher dans le catalogue d'espèces",
+    "speciesClear": "Retirer l'espèce",
+    "speciesNone": "Aucune espèce trouvée.",
+    "count": "Nombre",
+    "name": "Nom",
+    "movedIn": "Arrivé le",
+    "dayPlaceholder": "AAAA-MM-JJ, vide pour aujourd'hui",
+    "save": "Enregistrer",
+    "edit": "Modifier",
+    "remove": "Retirer",
+    "editItem": "Modifier {{name}}",
+    "removeItem": "Retirer {{name}}",
+    "removeTitle": "Retirer {{name}}",
+    "removeHint": "L'occupant reste dans l'historique du bac.",
+    "removeConfirm": "Retirer de l'effectif",
+    "removedOn": "Parti le",
+    "since": "Depuis le {{date}}",
+    "sinceCreated": "Depuis la création du bac",
+    "history": "Historique ({{count}})",
+    "show": "Afficher",
+    "hide": "Masquer",
+    "saveError": "L'effectif n'a pas pu être enregistré. Réessaie.",
+    "reason": {
+      "died": "Mort",
+      "given_away": "Donné",
+      "moved": "Déplacé dans un autre bac"
+    },
+    "left": {
+      "died": "Mort le {{date}}",
+      "given_away": "Donné le {{date}}",
+      "moved": "Déplacé dans un autre bac le {{date}}"
+    },
+    "errors": {
+      "species": "Choisis une espèce dans le catalogue.",
+      "count": "Saisis un nombre de 1 à 10000.",
+      "name": "Saisis un nom.",
+      "nameTooLong": "Un nom compte jusqu'à 80 caractères.",
+      "movedInInvalid": "Saisis le jour au format AAAA-MM-JJ.",
+      "movedInFuture": "Le jour ne peut pas être dans le futur.",
+      "removedInvalid": "Saisis le jour au format AAAA-MM-JJ.",
+      "removedFuture": "Le jour ne peut pas être dans le futur.",
+      "removedBefore": "Le jour ne peut pas précéder l'arrivée de l'occupant."
+    }
   },
   "timeLapseCamera": {
     "action": "Photo de time-lapse",

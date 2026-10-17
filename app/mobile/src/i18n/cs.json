@@ -492,7 +492,17 @@
     "account_has_no_profile": "Tento účet ještě nemá profil. Zkuste to prosím znovu.",
     "account_suspended": "Tento účet je pozastaven.",
     "device_auth_refused": "Toto zařízení nemohlo prokázat svůj účet. Zkuste to prosím znovu.",
-    "keycloak_session_required": "Nejdřív se přihlaste."
+    "keycloak_session_required": "Nejdřív se přihlaste.",
+    "inhabitant_not_found": "Toto akvárium nebo tento obyvatel není dostupný.",
+    "inhabitant_invalid": "Skupina potřebuje druh a počet od 1 do 10000, ryba se jménem potřebuje jméno do 80 znaků.",
+    "inhabitant_species_unknown": "Tento druh není v katalogu.",
+    "inhabitant_moved_in_invalid": "Den nasazení musí být datum, které neleží v budoucnosti.",
+    "inhabitant_reason_invalid": "Vyber, proč obyvatel obsádku opouští.",
+    "inhabitant_removed_on_invalid": "Den musí být datum, které neleží v budoucnosti ani před nasazením obyvatele.",
+    "inhabitant_removed": "Tento obyvatel už obsádku opustil.",
+    "inhabitant_date_invalid": "Datum tvého zařízení se nepodařilo přečíst.",
+    "inhabitant_request_invalid": "Požadavek na obsádku se nepodařilo dokončit.",
+    "inhabitant_auth_required": "Přihlas se, abys mohl vést obsádku."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -582,6 +592,58 @@
     "range": "{{start}} až {{end}}",
     "photos": "Fotografie",
     "logsPrivate": "Majitel drží deník péče soukromý."
+  },
+  "stocking": {
+    "add": "Přidat do obsádky",
+    "addTitle": "Přidat do obsádky",
+    "editTitle": "Změnit obyvatele",
+    "kindGroup": "Skupina",
+    "kindNamed": "Ryba se jménem",
+    "species": "Druh",
+    "speciesOptional": "Druh (volitelné)",
+    "speciesSearch": "Hledat v katalogu druhů",
+    "speciesClear": "Zrušit druh",
+    "speciesNone": "Žádný druh nenalezen.",
+    "count": "Počet",
+    "name": "Jméno",
+    "movedIn": "Nasazeno dne",
+    "dayPlaceholder": "RRRR-MM-DD, prázdné znamená dnes",
+    "save": "Uložit",
+    "edit": "Upravit",
+    "remove": "Odebrat",
+    "editItem": "Upravit: {{name}}",
+    "removeItem": "Odebrat: {{name}}",
+    "removeTitle": "Odebrat: {{name}}",
+    "removeHint": "Obyvatel zůstane v historii akvária.",
+    "removeConfirm": "Odebrat z obsádky",
+    "removedOn": "Odešel dne",
+    "since": "Od {{date}}",
+    "sinceCreated": "Od založení akvária",
+    "history": "Historie ({{count}})",
+    "show": "Zobrazit",
+    "hide": "Skrýt",
+    "saveError": "Obsádku se nepodařilo uložit. Zkus to znovu.",
+    "reason": {
+      "died": "Uhynul",
+      "given_away": "Darován",
+      "moved": "Přestěhován do jiného akvária"
+    },
+    "left": {
+      "died": "Uhynul dne {{date}}",
+      "given_away": "Darován dne {{date}}",
+      "moved": "Přestěhován do jiného akvária dne {{date}}"
+    },
+    "errors": {
+      "species": "Vyber druh z katalogu.",
+      "count": "Zadej počet od 1 do 10000.",
+      "name": "Zadej jméno.",
+      "nameTooLong": "Jméno má nejvýše 80 znaků.",
+      "movedInInvalid": "Zadej den ve tvaru RRRR-MM-DD.",
+      "movedInFuture": "Den nemůže ležet v budoucnosti.",
+      "removedInvalid": "Zadej den ve tvaru RRRR-MM-DD.",
+      "removedFuture": "Den nemůže ležet v budoucnosti.",
+      "removedBefore": "Den nemůže být před nasazením obyvatele."
+    }
   },
   "timeLapseCamera": {
     "action": "Fotka pro časosběr",

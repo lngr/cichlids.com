@@ -492,7 +492,17 @@
     "account_has_no_profile": "To konto nie ma jeszcze profilu. Spróbuj ponownie.",
     "account_suspended": "To konto jest zawieszone.",
     "device_auth_refused": "To urządzenie nie mogło potwierdzić swojego konta. Spróbuj ponownie.",
-    "keycloak_session_required": "Najpierw się zaloguj."
+    "keycloak_session_required": "Najpierw się zaloguj.",
+    "inhabitant_not_found": "To akwarium lub ten mieszkaniec jest niedostępny.",
+    "inhabitant_invalid": "Grupa wymaga gatunku i liczby od 1 do 10000, ryba z imieniem wymaga imienia do 80 znaków.",
+    "inhabitant_species_unknown": "Tego gatunku nie ma w katalogu.",
+    "inhabitant_moved_in_invalid": "Dzień wprowadzenia musi być datą, która nie leży w przyszłości.",
+    "inhabitant_reason_invalid": "Wybierz, dlaczego mieszkaniec odchodzi z obsady.",
+    "inhabitant_removed_on_invalid": "Dzień musi być datą, która nie leży w przyszłości ani przed wprowadzeniem mieszkańca.",
+    "inhabitant_removed": "Ten mieszkaniec opuścił już obsadę.",
+    "inhabitant_date_invalid": "Nie udało się odczytać daty urządzenia.",
+    "inhabitant_request_invalid": "Nie udało się zrealizować żądania dotyczącego obsady.",
+    "inhabitant_auth_required": "Zaloguj się, aby prowadzić obsadę."
   },
   "featureFlags": {
     "activityTitle": "Aktywność społeczności",
@@ -582,6 +592,58 @@
     "range": "Od {{start}} do {{end}}",
     "photos": "Zdjęcia",
     "logsPrivate": "Właściciel utrzymuje dziennik pielęgnacji jako prywatny."
+  },
+  "stocking": {
+    "add": "Dodaj do obsady",
+    "addTitle": "Dodaj do obsady",
+    "editTitle": "Zmień mieszkańca",
+    "kindGroup": "Grupa",
+    "kindNamed": "Ryba z imieniem",
+    "species": "Gatunek",
+    "speciesOptional": "Gatunek (opcjonalnie)",
+    "speciesSearch": "Szukaj w katalogu gatunków",
+    "speciesClear": "Usuń gatunek",
+    "speciesNone": "Nie znaleziono gatunku.",
+    "count": "Liczba",
+    "name": "Imię",
+    "movedIn": "Wprowadzono dnia",
+    "dayPlaceholder": "RRRR-MM-DD, puste oznacza dziś",
+    "save": "Zapisz",
+    "edit": "Edytuj",
+    "remove": "Usuń",
+    "editItem": "Edytuj: {{name}}",
+    "removeItem": "Usuń: {{name}}",
+    "removeTitle": "Usuń: {{name}}",
+    "removeHint": "Mieszkaniec zostaje w historii akwarium.",
+    "removeConfirm": "Usuń z obsady",
+    "removedOn": "Odszedł dnia",
+    "since": "Od {{date}}",
+    "sinceCreated": "Od założenia akwarium",
+    "history": "Historia ({{count}})",
+    "show": "Pokaż",
+    "hide": "Ukryj",
+    "saveError": "Nie udało się zapisać obsady. Spróbuj ponownie.",
+    "reason": {
+      "died": "Padł",
+      "given_away": "Oddany",
+      "moved": "Przeniesiony do innego akwarium"
+    },
+    "left": {
+      "died": "Padł dnia {{date}}",
+      "given_away": "Oddany dnia {{date}}",
+      "moved": "Przeniesiony do innego akwarium dnia {{date}}"
+    },
+    "errors": {
+      "species": "Wybierz gatunek z katalogu.",
+      "count": "Podaj liczbę od 1 do 10000.",
+      "name": "Podaj imię.",
+      "nameTooLong": "Imię ma do 80 znaków.",
+      "movedInInvalid": "Podaj dzień jako RRRR-MM-DD.",
+      "movedInFuture": "Dzień nie może leżeć w przyszłości.",
+      "removedInvalid": "Podaj dzień jako RRRR-MM-DD.",
+      "removedFuture": "Dzień nie może leżeć w przyszłości.",
+      "removedBefore": "Dzień nie może być wcześniejszy niż wprowadzenie mieszkańca."
+    }
   },
   "timeLapseCamera": {
     "action": "Zdjęcie do timelapse",

@@ -482,7 +482,17 @@
     "account_has_no_profile": "Esta cuenta aún no tiene un perfil. Inténtalo de nuevo.",
     "account_suspended": "Esta cuenta está suspendida.",
     "device_auth_refused": "Este dispositivo no pudo demostrar su cuenta. Inténtalo de nuevo.",
-    "keycloak_session_required": "Inicia sesión primero."
+    "keycloak_session_required": "Inicia sesión primero.",
+    "inhabitant_not_found": "Este acuario o habitante no está disponible.",
+    "inhabitant_invalid": "Un grupo necesita una especie y una cantidad de 1 a 10000; un pez con nombre necesita un nombre de hasta 80 caracteres.",
+    "inhabitant_species_unknown": "Esta especie no está en el catálogo.",
+    "inhabitant_moved_in_invalid": "El día de llegada debe ser una fecha que no esté en el futuro.",
+    "inhabitant_reason_invalid": "Elige por qué el habitante sale de la población.",
+    "inhabitant_removed_on_invalid": "El día debe ser una fecha que no esté en el futuro ni antes de la llegada del habitante.",
+    "inhabitant_removed": "Este habitante ya salió de la población.",
+    "inhabitant_date_invalid": "No se pudo leer la fecha de tu dispositivo.",
+    "inhabitant_request_invalid": "No se pudo completar la solicitud de la población.",
+    "inhabitant_auth_required": "Inicia sesión para llevar la población."
   },
   "featureFlags": {
     "activityTitle": "Actividad de la comunidad",
@@ -572,6 +582,58 @@
     "range": "De {{start}} a {{end}}",
     "photos": "Fotos",
     "logsPrivate": "El dueño mantiene privado el registro de cuidados."
+  },
+  "stocking": {
+    "add": "Agregar a la población",
+    "addTitle": "Agregar a la población",
+    "editTitle": "Cambiar habitante",
+    "kindGroup": "Grupo",
+    "kindNamed": "Pez con nombre",
+    "species": "Especie",
+    "speciesOptional": "Especie (opcional)",
+    "speciesSearch": "Buscar en el catálogo de especies",
+    "speciesClear": "Quitar especie",
+    "speciesNone": "No se encontró ninguna especie.",
+    "count": "Cantidad",
+    "name": "Nombre",
+    "movedIn": "Llegó el",
+    "dayPlaceholder": "AAAA-MM-DD, vacío para hoy",
+    "save": "Guardar",
+    "edit": "Editar",
+    "remove": "Quitar",
+    "editItem": "Editar {{name}}",
+    "removeItem": "Quitar {{name}}",
+    "removeTitle": "Quitar {{name}}",
+    "removeHint": "El habitante queda en el historial del acuario.",
+    "removeConfirm": "Quitar de la población",
+    "removedOn": "Salió el",
+    "since": "Desde el {{date}}",
+    "sinceCreated": "Desde que se creó el acuario",
+    "history": "Historial ({{count}})",
+    "show": "Mostrar",
+    "hide": "Ocultar",
+    "saveError": "No se pudo guardar la población. Inténtalo de nuevo.",
+    "reason": {
+      "died": "Murió",
+      "given_away": "Regalado",
+      "moved": "Pasó a otro acuario"
+    },
+    "left": {
+      "died": "Murió el {{date}}",
+      "given_away": "Regalado el {{date}}",
+      "moved": "Pasó a otro acuario el {{date}}"
+    },
+    "errors": {
+      "species": "Elige una especie del catálogo.",
+      "count": "Escribe una cantidad de 1 a 10000.",
+      "name": "Escribe un nombre.",
+      "nameTooLong": "Un nombre tiene hasta 80 caracteres.",
+      "movedInInvalid": "Escribe el día como AAAA-MM-DD.",
+      "movedInFuture": "El día no puede estar en el futuro.",
+      "removedInvalid": "Escribe el día como AAAA-MM-DD.",
+      "removedFuture": "El día no puede estar en el futuro.",
+      "removedBefore": "El día no puede ser anterior a la llegada del habitante."
+    }
   },
   "timeLapseCamera": {
     "action": "Foto de time-lapse",

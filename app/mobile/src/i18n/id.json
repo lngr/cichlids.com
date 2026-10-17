@@ -472,7 +472,17 @@
     "account_has_no_profile": "Akun ini belum memiliki profil. Silakan coba lagi.",
     "account_suspended": "Akun ini ditangguhkan.",
     "device_auth_refused": "Perangkat ini tidak dapat membuktikan akunnya. Silakan coba lagi.",
-    "keycloak_session_required": "Masuk dulu."
+    "keycloak_session_required": "Masuk dulu.",
+    "inhabitant_not_found": "Akuarium atau penghuni ini tidak tersedia.",
+    "inhabitant_invalid": "Kelompok memerlukan spesies dan jumlah dari 1 sampai 10000, ikan bernama memerlukan nama paling banyak 80 karakter.",
+    "inhabitant_species_unknown": "Spesies ini tidak ada di katalog.",
+    "inhabitant_moved_in_invalid": "Hari masuk harus berupa tanggal yang tidak di masa depan.",
+    "inhabitant_reason_invalid": "Pilih alasan penghuni keluar.",
+    "inhabitant_removed_on_invalid": "Hari harus berupa tanggal yang tidak di masa depan dan tidak sebelum penghuni masuk.",
+    "inhabitant_removed": "Penghuni ini sudah keluar dari daftar penghuni.",
+    "inhabitant_date_invalid": "Tanggal perangkat Anda tidak dapat dibaca.",
+    "inhabitant_request_invalid": "Permintaan penghuni tidak dapat diselesaikan.",
+    "inhabitant_auth_required": "Masuk untuk mengelola penghuni."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -562,6 +572,58 @@
     "range": "{{start}} hingga {{end}}",
     "photos": "Foto",
     "logsPrivate": "Pemilik menjaga catatan perawatan tetap pribadi."
+  },
+  "stocking": {
+    "add": "Tambahkan ke penghuni",
+    "addTitle": "Tambahkan ke penghuni",
+    "editTitle": "Ubah penghuni",
+    "kindGroup": "Kelompok",
+    "kindNamed": "Ikan bernama",
+    "species": "Spesies",
+    "speciesOptional": "Spesies (opsional)",
+    "speciesSearch": "Cari di katalog spesies",
+    "speciesClear": "Hapus spesies",
+    "speciesNone": "Spesies tidak ditemukan.",
+    "count": "Jumlah",
+    "name": "Nama",
+    "movedIn": "Masuk pada",
+    "dayPlaceholder": "TTTT-BB-HH, kosong untuk hari ini",
+    "save": "Simpan",
+    "edit": "Ubah",
+    "remove": "Keluarkan",
+    "editItem": "Ubah {{name}}",
+    "removeItem": "Keluarkan {{name}}",
+    "removeTitle": "Keluarkan {{name}}",
+    "removeHint": "Penghuni tetap ada di riwayat akuarium.",
+    "removeConfirm": "Keluarkan dari penghuni",
+    "removedOn": "Keluar pada",
+    "since": "Sejak {{date}}",
+    "sinceCreated": "Sejak akuarium dibuat",
+    "history": "Riwayat ({{count}})",
+    "show": "Tampilkan",
+    "hide": "Sembunyikan",
+    "saveError": "Penghuni tidak dapat disimpan. Coba lagi.",
+    "reason": {
+      "died": "Mati",
+      "given_away": "Diberikan",
+      "moved": "Pindah ke akuarium lain"
+    },
+    "left": {
+      "died": "Mati pada {{date}}",
+      "given_away": "Diberikan pada {{date}}",
+      "moved": "Pindah ke akuarium lain pada {{date}}"
+    },
+    "errors": {
+      "species": "Pilih spesies dari katalog.",
+      "count": "Masukkan jumlah dari 1 sampai 10000.",
+      "name": "Masukkan nama.",
+      "nameTooLong": "Nama paling banyak 80 karakter.",
+      "movedInInvalid": "Masukkan hari sebagai TTTT-BB-HH.",
+      "movedInFuture": "Hari tidak boleh di masa depan.",
+      "removedInvalid": "Masukkan hari sebagai TTTT-BB-HH.",
+      "removedFuture": "Hari tidak boleh di masa depan.",
+      "removedBefore": "Hari tidak boleh sebelum penghuni masuk."
+    }
   },
   "timeLapseCamera": {
     "action": "Foto time-lapse",

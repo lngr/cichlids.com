@@ -472,7 +472,17 @@
     "account_has_no_profile": "Dieses Konto hat noch kein Profil. Bitte versuche es erneut.",
     "account_suspended": "Dieses Konto ist gesperrt.",
     "device_auth_refused": "Dieses Gerät konnte sein Konto nicht nachweisen. Bitte versuche es erneut.",
-    "keycloak_session_required": "Melde dich zuerst an."
+    "keycloak_session_required": "Melde dich zuerst an.",
+    "inhabitant_not_found": "Dieses Becken oder Tier ist nicht verfügbar.",
+    "inhabitant_invalid": "Eine Gruppe braucht eine Art und eine Anzahl von 1 bis 10000, ein Fisch mit Namen braucht einen Namen mit bis zu 80 Zeichen.",
+    "inhabitant_species_unknown": "Diese Art steht nicht im Katalog.",
+    "inhabitant_moved_in_invalid": "Der Einzugstag muss ein Datum sein, das nicht in der Zukunft liegt.",
+    "inhabitant_reason_invalid": "Wähle, warum das Tier den Besatz verlässt.",
+    "inhabitant_removed_on_invalid": "Der Tag muss ein Datum sein, das nicht in der Zukunft und nicht vor dem Einzug des Tieres liegt.",
+    "inhabitant_removed": "Dieses Tier hat den Besatz schon verlassen.",
+    "inhabitant_date_invalid": "Das Datum deines Geräts konnte nicht gelesen werden.",
+    "inhabitant_request_invalid": "Die Anfrage zum Besatz konnte nicht abgeschlossen werden.",
+    "inhabitant_auth_required": "Melde dich an, um den Besatz zu führen."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -562,6 +572,58 @@
     "range": "{{start}} bis {{end}}",
     "photos": "Fotos",
     "logsPrivate": "Der Besitzer hält den Pflege-Stream privat."
+  },
+  "stocking": {
+    "add": "Zum Besatz hinzufügen",
+    "addTitle": "Zum Besatz hinzufügen",
+    "editTitle": "Tier ändern",
+    "kindGroup": "Gruppe",
+    "kindNamed": "Fisch mit Namen",
+    "species": "Art",
+    "speciesOptional": "Art (optional)",
+    "speciesSearch": "Artenkatalog durchsuchen",
+    "speciesClear": "Art entfernen",
+    "speciesNone": "Keine Art gefunden.",
+    "count": "Anzahl",
+    "name": "Name",
+    "movedIn": "Eingezogen am",
+    "dayPlaceholder": "JJJJ-MM-TT, leer für heute",
+    "save": "Speichern",
+    "edit": "Bearbeiten",
+    "remove": "Entfernen",
+    "editItem": "{{name}} bearbeiten",
+    "removeItem": "{{name}} entfernen",
+    "removeTitle": "{{name}} entfernen",
+    "removeHint": "Das Tier bleibt in der Historie des Beckens.",
+    "removeConfirm": "Aus dem Besatz entfernen",
+    "removedOn": "Abgang am",
+    "since": "Seit {{date}}",
+    "sinceCreated": "Seit der Anlage des Beckens",
+    "history": "Historie ({{count}})",
+    "show": "Anzeigen",
+    "hide": "Ausblenden",
+    "saveError": "Der Besatz konnte nicht gespeichert werden. Bitte versuche es erneut.",
+    "reason": {
+      "died": "Gestorben",
+      "given_away": "Abgegeben",
+      "moved": "In ein anderes Becken umgezogen"
+    },
+    "left": {
+      "died": "Gestorben am {{date}}",
+      "given_away": "Abgegeben am {{date}}",
+      "moved": "In ein anderes Becken umgezogen am {{date}}"
+    },
+    "errors": {
+      "species": "Wähle eine Art aus dem Katalog.",
+      "count": "Gib eine Anzahl von 1 bis 10000 ein.",
+      "name": "Gib einen Namen ein.",
+      "nameTooLong": "Ein Name hat bis zu 80 Zeichen.",
+      "movedInInvalid": "Gib den Tag als JJJJ-MM-TT ein.",
+      "movedInFuture": "Der Tag darf nicht in der Zukunft liegen.",
+      "removedInvalid": "Gib den Tag als JJJJ-MM-TT ein.",
+      "removedFuture": "Der Tag darf nicht in der Zukunft liegen.",
+      "removedBefore": "Der Tag darf nicht vor dem Einzug des Tieres liegen."
+    }
   },
   "timeLapseCamera": {
     "action": "Zeitraffer-Foto",

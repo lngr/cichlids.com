@@ -472,7 +472,17 @@
     "account_has_no_profile": "Dit account heeft nog geen profiel. Probeer het opnieuw.",
     "account_suspended": "Dit account is geblokkeerd.",
     "device_auth_refused": "Dit apparaat kon zijn account niet aantonen. Probeer het opnieuw.",
-    "keycloak_session_required": "Log eerst in."
+    "keycloak_session_required": "Log eerst in.",
+    "inhabitant_not_found": "Dit aquarium of deze bewoner is niet beschikbaar.",
+    "inhabitant_invalid": "Een groep heeft een soort en een aantal van 1 tot 10000 nodig, een vis met naam heeft een naam van maximaal 80 tekens nodig.",
+    "inhabitant_species_unknown": "Deze soort staat niet in de catalogus.",
+    "inhabitant_moved_in_invalid": "De dag van komst moet een datum zijn die niet in de toekomst ligt.",
+    "inhabitant_reason_invalid": "Kies waarom de bewoner de bezetting verlaat.",
+    "inhabitant_removed_on_invalid": "De dag moet een datum zijn die niet in de toekomst en niet voor de komst van de bewoner ligt.",
+    "inhabitant_removed": "Deze bewoner heeft de bezetting al verlaten.",
+    "inhabitant_date_invalid": "De datum van je apparaat kon niet worden gelezen.",
+    "inhabitant_request_invalid": "Het verzoek over de bezetting kon niet worden afgerond.",
+    "inhabitant_auth_required": "Log in om de bezetting bij te houden."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -562,6 +572,58 @@
     "range": "{{start}} tot {{end}}",
     "photos": "Foto’s",
     "logsPrivate": "De eigenaar houdt het verzorgingslogboek privé."
+  },
+  "stocking": {
+    "add": "Toevoegen aan de bezetting",
+    "addTitle": "Toevoegen aan de bezetting",
+    "editTitle": "Bewoner wijzigen",
+    "kindGroup": "Groep",
+    "kindNamed": "Vis met naam",
+    "species": "Soort",
+    "speciesOptional": "Soort (optioneel)",
+    "speciesSearch": "Zoek in de soortencatalogus",
+    "speciesClear": "Soort wissen",
+    "speciesNone": "Geen soort gevonden.",
+    "count": "Aantal",
+    "name": "Naam",
+    "movedIn": "Gekomen op",
+    "dayPlaceholder": "JJJJ-MM-DD, leeg voor vandaag",
+    "save": "Opslaan",
+    "edit": "Bewerken",
+    "remove": "Verwijderen",
+    "editItem": "{{name}} bewerken",
+    "removeItem": "{{name}} verwijderen",
+    "removeTitle": "{{name}} verwijderen",
+    "removeHint": "De bewoner blijft in de geschiedenis van het aquarium.",
+    "removeConfirm": "Uit de bezetting verwijderen",
+    "removedOn": "Vertrokken op",
+    "since": "Sinds {{date}}",
+    "sinceCreated": "Sinds het aquarium is aangemaakt",
+    "history": "Geschiedenis ({{count}})",
+    "show": "Tonen",
+    "hide": "Verbergen",
+    "saveError": "De bezetting kon niet worden opgeslagen. Probeer het opnieuw.",
+    "reason": {
+      "died": "Gestorven",
+      "given_away": "Weggegeven",
+      "moved": "Verhuisd naar een ander aquarium"
+    },
+    "left": {
+      "died": "Gestorven op {{date}}",
+      "given_away": "Weggegeven op {{date}}",
+      "moved": "Verhuisd naar een ander aquarium op {{date}}"
+    },
+    "errors": {
+      "species": "Kies een soort uit de catalogus.",
+      "count": "Voer een aantal van 1 tot 10000 in.",
+      "name": "Voer een naam in.",
+      "nameTooLong": "Een naam heeft maximaal 80 tekens.",
+      "movedInInvalid": "Voer de dag in als JJJJ-MM-DD.",
+      "movedInFuture": "De dag kan niet in de toekomst liggen.",
+      "removedInvalid": "Voer de dag in als JJJJ-MM-DD.",
+      "removedFuture": "De dag kan niet in de toekomst liggen.",
+      "removedBefore": "De dag kan niet voor de komst van de bewoner liggen."
+    }
   },
   "timeLapseCamera": {
     "action": "Timelapse-foto",

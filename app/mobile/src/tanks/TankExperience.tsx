@@ -27,6 +27,8 @@ import { TankStreaksCard } from "../streaks/TankStreaksCard";
 import { TankOperationCard } from "../decommission/TankOperationCard";
 import { TankVisibilitySettings } from "./TankVisibilitySettings";
 import { TankFollowButton } from "./TankFollowButton";
+import { StockingSection } from "../stocking/StockingSection";
+import { useStocking } from "../stocking/useStocking";
 import { VideoCard } from "../video/VideoCard";
 import { TankVideosSection } from "../video/TankVideosSection";
 import { useTankVideos } from "../video/useTankVideos";
@@ -41,6 +43,7 @@ export function TankExperience({ tank, series, children, onVisibilityChanged }: 
   const theme = useTheme();
   const stream = useCareStream(Number(tank.id), tank.author.id);
   const ownVideos = useTankVideos(Number(tank.id), stream.owner);
+  const stocking = useStocking(Number(tank.id));
   const system = useUnits();
   const { view } = useLocalSearchParams<{ view?: string }>();
   const router = useMachineRouter();
@@ -129,7 +132,7 @@ export function TankExperience({ tank, series, children, onVisibilityChanged }: 
       <View testID="tank-datasheet" style={styles.metrics}>
         <TankMeasurements tank={tank} layout="summary" />
         <View style={[styles.speciesMetric, card]}>
-          <Text style={[theme.type.h1, text]}>{new Intl.NumberFormat(i18n.language).format(tank.inhabitants.length)}</Text>
+          <Text style={[theme.type.h1, text]}>{new Intl.NumberFormat(i18n.language).format((stocking.stocking?.current ?? tank.inhabitants).length)}</Text>
           <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("tankStory.species")}</Text>
         </View>
         <View style={[styles.speciesMetric, card]}>
@@ -204,14 +207,7 @@ export function TankExperience({ tank, series, children, onVisibilityChanged }: 
           {stream.list.hasMore ? <Button testID="tank-story-care-more" variant="secondary" label={t("care.more")} busy={stream.list.loadingMore} onPress={stream.list.loadMore} /> : null}
         </View>
         <View style={[styles.card, card]}>
-          {heading(t("tankStory.inhabitants"))}
-          {tank.inhabitants.length === 0 ? <Text style={[theme.type.body, text]}>{t("tankStory.inhabitantsEmpty")}</Text> : null}
-          {tank.inhabitants.map((item, i) => <Pressable key={i} accessibilityRole={item.species ? "button" : undefined}
-            onPress={item.species ? () => router.push(`/species/${item.species!.slug ?? item.species!.id}`) : undefined}
-            style={[styles.inhabitant, { borderColor: theme.colors.border }]}>
-            <Text style={[theme.type.bodyStrong, text, { flex: 1, fontStyle: "italic" }]}>{item.species?.displayName ?? t("common.unknownValue")}</Text>
-            <Text style={[theme.type.bodyStrong, text]}>{item.count == null ? t("common.unknownValue") : new Intl.NumberFormat(i18n.language).format(Number(item.count))}</Text>
-          </Pressable>)}
+          <StockingSection tank={tank} stocking={stocking.stocking} owner={stream.owner} reload={stocking.reload} />
         </View>
         {children}
       </>}
@@ -255,7 +251,6 @@ const styles = StyleSheet.create({
   event: { flexDirection: "row", gap: 12, minHeight: 64, paddingBottom: 20, paddingStart: 20, borderStartWidth: 2 },
   dot: { position: "absolute", start: -7, top: 4, width: 12, height: 12, borderRadius: 6, borderWidth: 2 },
   thumb: { width: 48, height: 48 },
-  inhabitant: { flexDirection: "row", gap: 12, minHeight: 48, alignItems: "center", borderTopWidth: 1 },
   player: { flex: 1, paddingTop: 32, paddingBottom: 16 },
   controls: { flexDirection: "row", gap: 8 },
 });
