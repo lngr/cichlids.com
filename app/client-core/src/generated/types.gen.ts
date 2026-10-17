@@ -875,6 +875,30 @@ export type SnoozeReminderRequest = {
 
 export type SpeciesBreeding = 'unspecified' | 'mouthbreeder' | 'cave_breeder' | 'substrate_breeder';
 
+export type SpeciesCommunityDto = {
+    photos: Array<SpeciesCommunityPhotoDto>;
+    tankCount: number | string;
+    tanks: Array<SpeciesCommunityTankDto>;
+    stockingPartners: Array<SpeciesStockingPartnerDto>;
+};
+
+export type SpeciesCommunityPhotoDto = {
+    storyId: number | string;
+    slug: string;
+    title: null | string;
+    image: ImageUrlsDto;
+    viewCount: number | string;
+    ratingAverage: null | number | string;
+    ratingCount: number | string;
+};
+
+export type SpeciesCommunityTankDto = {
+    id: number | string;
+    title: string;
+    category: null | TankCategory;
+    image: null | ImageUrlsDto;
+};
+
 export type SpeciesDetailDto = {
     id: number | string;
     slug: null | string;
@@ -914,6 +938,11 @@ export type SpeciesListItemDto = {
     name: string;
     displayName: string;
     category: null | string;
+};
+
+export type SpeciesStockingPartnerDto = {
+    species: InhabitantSpeciesRefDto;
+    tankCount: number | string;
 };
 
 export type StartVacationRequest = {
@@ -3192,6 +3221,31 @@ export type GetSpeciesResponses = {
 };
 
 export type GetSpeciesResponse = GetSpeciesResponses[keyof GetSpeciesResponses];
+
+export type GetSpeciesCommunityData = {
+    body?: never;
+    path: {
+        idOrSlug: string;
+    };
+    query?: never;
+    url: '/api/species/{idOrSlug}/community';
+};
+
+export type GetSpeciesCommunityErrors = {
+    /**
+     * Not Found
+     */
+    404: unknown;
+};
+
+export type GetSpeciesCommunityResponses = {
+    /**
+     * OK
+     */
+    200: SpeciesCommunityDto;
+};
+
+export type GetSpeciesCommunityResponse = GetSpeciesCommunityResponses[keyof GetSpeciesCommunityResponses];
 
 export type ListStoriesData = {
     body?: never;

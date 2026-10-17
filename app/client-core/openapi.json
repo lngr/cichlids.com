@@ -3164,6 +3164,39 @@
         }
       }
     },
+    "/api/species/{idOrSlug}/community": {
+      "get": {
+        "tags": [
+          "Species"
+        ],
+        "operationId": "GetSpeciesCommunity",
+        "parameters": [
+          {
+            "name": "idOrSlug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpeciesCommunityDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/api/stories": {
       "get": {
         "tags": [
@@ -12941,6 +12974,144 @@
           "substrate_breeder"
         ]
       },
+      "SpeciesCommunityDto": {
+        "required": [
+          "photos",
+          "tankCount",
+          "tanks",
+          "stockingPartners"
+        ],
+        "type": "object",
+        "properties": {
+          "photos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpeciesCommunityPhotoDto"
+            }
+          },
+          "tankCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "tanks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpeciesCommunityTankDto"
+            }
+          },
+          "stockingPartners": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpeciesStockingPartnerDto"
+            }
+          }
+        }
+      },
+      "SpeciesCommunityPhotoDto": {
+        "required": [
+          "storyId",
+          "slug",
+          "title",
+          "image",
+          "viewCount",
+          "ratingAverage",
+          "ratingCount"
+        ],
+        "type": "object",
+        "properties": {
+          "storyId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "image": {
+            "$ref": "#/components/schemas/ImageUrlsDto"
+          },
+          "viewCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "ratingAverage": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "ratingCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "SpeciesCommunityTankDto": {
+        "required": [
+          "id",
+          "title",
+          "category",
+          "image"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "category": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TankCategory"
+              }
+            ]
+          },
+          "image": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ImageUrlsDto"
+              }
+            ]
+          }
+        }
+      },
       "SpeciesDetailDto": {
         "required": [
           "id",
@@ -13151,6 +13322,26 @@
               "null",
               "string"
             ]
+          }
+        }
+      },
+      "SpeciesStockingPartnerDto": {
+        "required": [
+          "species",
+          "tankCount"
+        ],
+        "type": "object",
+        "properties": {
+          "species": {
+            "$ref": "#/components/schemas/InhabitantSpeciesRefDto"
+          },
+          "tankCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
           }
         }
       },
