@@ -1,5 +1,6 @@
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Media;
+using Cichlids.Api.Features.Species;
 using Cichlids.Domain;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Media;
@@ -215,8 +216,8 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
 
     private async Task<List<InhabitantDto>> LoadInhabitantsAsync(long tankId, CancellationToken cancellationToken)
     {
-        var rows = await context.Inhabitants.AsNoTracking()
-            .Where(i => i.TankId == tankId && i.RemovedOn == null)
+        var rows = await CurrentInhabitants.Query(context).AsNoTracking()
+            .Where(i => i.TankId == tankId)
             .OrderBy(i => i.Name == null).ThenBy(i => i.Sort).ThenBy(i => i.Id)
             .ToListAsync(cancellationToken);
         var dtos = await InhabitantMapper.ToDtosAsync(context, rows, cancellationToken);

@@ -10,7 +10,7 @@ namespace Cichlids.Api.Features.Species;
 public static class CurrentInhabitants
 {
     /// <summary>
-    /// The inhabitant rows that belong to the current stocking. Every inhabitant row is part of it.
+    /// The inhabitant rows that belong to the current stocking: those that have not been removed.
     /// </summary>
-    public static IQueryable<Inhabitant> Query(CichlidsDbContext context) => context.Inhabitants;
+    public static IQueryable<Inhabitant> Query(CichlidsDbContext context) => context.Inhabitants.Where(i => i.RemovedOn == null);
 }

@@ -53,7 +53,7 @@ public sealed class SpeciesCommunityTests(ApiFixture fixture)
             ProfileId = ownerId ?? fixture.Seed.Alice.Id, Title = title ?? Unique("Tank"), State = state,
             ProfileVisibility = visibility, StreamVisibility = visibility, CreatedAt = DateTimeOffset.UtcNow,
             PublishedAt = publishedAt ?? DateTimeOffset.UtcNow, DeletedAt = deleted ? DateTimeOffset.UtcNow : null,
-            Inhabitants = speciesIds.Select((id, index) => new Inhabitant { SpeciesId = id, Count = 3, Sort = index }).ToList(),
+            Inhabitants = speciesIds.Select((id, index) => new Inhabitant { SpeciesId = id, OwnerProfileId = ownerId ?? fixture.Seed.Alice.Id, Count = 3, Sort = index }).ToList(),
         };
         db.Tanks.Add(tank);
         await db.SaveChangesAsync();
@@ -168,6 +168,31 @@ public sealed class SpeciesCommunityTests(ApiFixture fixture)
 
         var partners = (await GetAsync(species.Slug!)).StockingPartners;
         Assert.Equal(3, Assert.Single(partners).TankCount);
+    }
+
+    [Fact]
+    public async Task GivenARemovedInhabitant_WhenAVisitorAsks_ThenItCountsNeitherForTheTankCountNorForThePartners()
+    {
+        await using var db = fixture.CreateDbContext();
+        var species = await AddSpeciesAsync(db);
+        var partner = await AddSpeciesAsync(db);
+        var kept = new List<Tank>();
+        for (var i = 0; i < 4; i++)
+        {
+            kept.Add(await AddTankAsync(db, null, [species.Id, partner.Id]));
+        }
+
+        var gone = await AddTankAsync(db, null, [species.Id, partner.Id]);
+        await db.Inhabitants.Where(i => i.TankId == gone.Id && i.SpeciesId == species.Id)
+            .ExecuteUpdateAsync(s => s.SetProperty(i => i.RemovedOn, new DateOnly(2026, 10, 1)).SetProperty(i => i.RemovalReason, Cichlids.Domain.Enums.InhabitantRemovalReason.Died));
+        await db.Inhabitants.Where(i => i.TankId == kept[0].Id && i.SpeciesId == partner.Id)
+            .ExecuteUpdateAsync(s => s.SetProperty(i => i.RemovedOn, new DateOnly(2026, 10, 1)).SetProperty(i => i.RemovalReason, Cichlids.Domain.Enums.InhabitantRemovalReason.GivenAway));
+
+        var community = await GetAsync(species.Slug!);
+
+        Assert.Equal(4, community.TankCount);
+        Assert.DoesNotContain(gone.Id, community.Tanks.Select(t => t.Id));
+        Assert.Equal(3, Assert.Single(community.StockingPartners).TankCount);
     }
 
     [Fact]
