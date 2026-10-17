@@ -30,6 +30,9 @@ public class MediaLink
     public static MediaLink ForTank(long tankId, long mediaItemId, MediaLinkRole role, int position = 0) =>
         new() { ContextType = MediaLinkContext.Tank, TankId = tankId, MediaItemId = mediaItemId, Role = role, Position = position };
 
+    public static MediaLink ForInhabitant(long inhabitantId, long mediaItemId, MediaLinkRole role, int position = 0) =>
+        new() { ContextType = MediaLinkContext.Inhabitant, InhabitantId = inhabitantId, MediaItemId = mediaItemId, Role = role, Position = position };
+
     public static MediaLink ForCareEntry(long careEntryId, long mediaItemId, MediaLinkRole role, int position = 0) =>
         new() { ContextType = MediaLinkContext.CareEntry, CareEntryId = careEntryId, MediaItemId = mediaItemId, Role = role, Position = position };
 

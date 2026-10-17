@@ -37,6 +37,7 @@ public class CichlidsDbContext : DbContext
     public DbSet<TankDecommissioning> TankDecommissionings => Set<TankDecommissioning>();
     public DbSet<Tank> Tanks => Set<Tank>();
     public DbSet<Inhabitant> Inhabitants => Set<Inhabitant>();
+    public DbSet<InhabitantEvent> InhabitantEvents => Set<InhabitantEvent>();
     public DbSet<TankVisibilityConsent> TankVisibilityConsents => Set<TankVisibilityConsent>();
     public DbSet<MediaItem> MediaItems => Set<MediaItem>();
     public DbSet<MediaVariant> MediaVariants => Set<MediaVariant>();

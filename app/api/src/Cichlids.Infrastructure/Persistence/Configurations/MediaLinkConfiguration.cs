@@ -70,6 +70,7 @@ public sealed class MediaLinkConfiguration : IEntityTypeConfiguration<MediaLink>
                 """);
             table.HasCheckConstraint("ck_media_link_role", """
                 (context_type = 'tank' AND role IN ('main', 'showcase', 'decoration', 'technic', 'time_lapse', 'video', 'decommission', 'recommission'))
+                OR (context_type = 'inhabitant' AND role IN ('photo', 'video'))
                 OR (context_type = 'care_entry' AND role IN ('photo', 'video'))
                 OR (context_type = 'water_change_session' AND role = 'evidence')
                 OR (context_type = 'story' AND role = 'item')

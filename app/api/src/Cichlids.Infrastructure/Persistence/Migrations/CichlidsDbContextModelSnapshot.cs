@@ -1005,6 +1005,91 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.InhabitantEvent", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at")
+                        .HasDefaultValueSql("now()");
+
+                    b.Property<long?>("FromTankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("from_tank_id");
+
+                    b.Property<long>("InhabitantId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("inhabitant_id");
+
+                    b.Property<string>("Kind")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("kind");
+
+                    b.Property<decimal?>("LengthCm")
+                        .HasColumnType("numeric(7,3)")
+                        .HasColumnName("length_cm");
+
+                    b.Property<string>("LengthInputUnit")
+                        .HasColumnType("text")
+                        .HasColumnName("length_input_unit");
+
+                    b.Property<decimal?>("LengthInputValue")
+                        .HasColumnType("numeric(9,4)")
+                        .HasColumnName("length_input_value");
+
+                    b.Property<DateOnly>("OccurredOn")
+                        .HasColumnType("date")
+                        .HasColumnName("occurred_on");
+
+                    b.Property<int?>("OffspringGeneration")
+                        .HasColumnType("integer")
+                        .HasColumnName("offspring_generation");
+
+                    b.Property<bool?>("OffspringHybrid")
+                        .HasColumnType("boolean")
+                        .HasColumnName("offspring_hybrid");
+
+                    b.Property<long?>("ToTankId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("to_tank_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_inhabitant_event");
+
+                    b.HasIndex("FromTankId")
+                        .HasDatabaseName("ix_inhabitant_event_from_tank_id");
+
+                    b.HasIndex("InhabitantId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_inhabitant_event_died")
+                        .HasFilter("kind = 'died'");
+
+                    b.HasIndex("ToTankId")
+                        .HasDatabaseName("ix_inhabitant_event_to_tank_id");
+
+                    b.HasIndex("InhabitantId", "OccurredOn")
+                        .HasDatabaseName("ix_inhabitant_event_inhabitant_id_occurred_on");
+
+                    b.ToTable("inhabitant_event", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_inhabitant_event_growth", "(kind = 'growth') = (length_cm IS NOT NULL AND length_input_value IS NOT NULL AND length_input_unit IS NOT NULL)\nAND (length_cm IS NULL OR (length_cm > 0 AND length_cm <= 300))\nAND (length_input_unit IS NULL OR length_input_unit IN ('cm', 'inch'))\nAND (length_input_value IS NULL OR length_input_value > 0)");
+
+                            t.HasCheckConstraint("ck_inhabitant_event_kind", "kind IN ('growth', 'spawning', 'moved', 'died')");
+
+                            t.HasCheckConstraint("ck_inhabitant_event_move", "(kind = 'moved') = (from_tank_id IS NOT NULL AND to_tank_id IS NOT NULL) AND (from_tank_id IS NULL OR from_tank_id <> to_tank_id)");
+
+                            t.HasCheckConstraint("ck_inhabitant_event_spawning", "(kind = 'spawning') = (offspring_hybrid IS NOT NULL)\nAND (kind <> 'spawning' OR (offspring_hybrid AND offspring_generation IS NULL)\n    OR (NOT offspring_hybrid AND offspring_generation BETWEEN 1 AND 99))\nAND (kind = 'spawning' OR offspring_generation IS NULL)");
+                        });
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.MediaItem", b =>
                 {
                     b.Property<long>("Id")
@@ -1283,7 +1368,7 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                             t.HasCheckConstraint("ck_media_link_position", "position >= 0\nAND (NOT (context_type = 'care_entry' AND role = 'photo') OR position < 6)\nAND (context_type <> 'water_change_session' OR position < 6)");
 
-                            t.HasCheckConstraint("ck_media_link_role", "(context_type = 'tank' AND role IN ('main', 'showcase', 'decoration', 'technic', 'time_lapse', 'video', 'decommission', 'recommission'))\nOR (context_type = 'care_entry' AND role IN ('photo', 'video'))\nOR (context_type = 'water_change_session' AND role = 'evidence')\nOR (context_type = 'story' AND role = 'item')\nOR (context_type = 'discussion_post' AND role = 'attachment')\nOR (context_type = 'profile' AND role IN ('avatar', 'header'))");
+                            t.HasCheckConstraint("ck_media_link_role", "(context_type = 'tank' AND role IN ('main', 'showcase', 'decoration', 'technic', 'time_lapse', 'video', 'decommission', 'recommission'))\nOR (context_type = 'inhabitant' AND role IN ('photo', 'video'))\nOR (context_type = 'care_entry' AND role IN ('photo', 'video'))\nOR (context_type = 'water_change_session' AND role = 'evidence')\nOR (context_type = 'story' AND role = 'item')\nOR (context_type = 'discussion_post' AND role = 'attachment')\nOR (context_type = 'profile' AND role IN ('avatar', 'header'))");
                         });
                 });
 
@@ -3299,6 +3384,28 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_inhabitant_tanks_tank_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.InhabitantEvent", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("FromTankId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("fk_inhabitant_event_tanks_from_tank_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Inhabitant", null)
+                        .WithMany()
+                        .HasForeignKey("InhabitantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_inhabitant_event_inhabitant_inhabitant_id");
+
+                    b.HasOne("Cichlids.Domain.Entities.Tank", null)
+                        .WithMany()
+                        .HasForeignKey("ToTankId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("fk_inhabitant_event_tanks_to_tank_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.MediaItem", b =>
