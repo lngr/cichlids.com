@@ -10,13 +10,13 @@ describe("toArchiveRetrospective", () => {
     const retrospective = toArchiveRetrospective({
       memberSince: { year: 2011, month: 4 },
       stats: { photos: 12, comments: 3, stars: 0 },
-      mostViewed: { storyId: 7, slug: "blue", title: "Blue", viewCount: 900, image },
+      mostViewed: { storyId: 7, slug: "blue", title: "Blue", viewCount: 900, image, shareImageUrl: "/api/media/photos/tok" },
       tanks: [{ id: 5, title: "Malawi", image: null }, { id: 6, title: "Victoria", image }],
     });
 
     expect(retrospective.cards.map(card => card.kind)).toEqual(["member_since", "stats", "most_viewed", "archive_tank", "archive_tank", "tank_today"]);
     expect(retrospective.cards[0]).toEqual({ kind: "member_since", year: 2011, month: 4 });
-    expect(retrospective.cards[2]).toEqual({ kind: "most_viewed", storyId: 7, slug: "blue", title: "Blue", viewCount: 900, image });
+    expect(retrospective.cards[2]).toEqual({ kind: "most_viewed", storyId: 7, slug: "blue", title: "Blue", viewCount: 900, image, shareImageUrl: "/api/media/photos/tok" });
     expect(retrospective.cards[3]).toEqual({ kind: "archive_tank", tankId: 5, title: "Malawi", image: null });
   });
 
@@ -92,6 +92,15 @@ describe("me.archiveRetrospective", () => {
       { kind: "archive_tank", tankId: 5, title: "Malawi", image: { ...image, medium: "http://retro.test/api/media/photos/abc" } },
       { kind: "tank_today" },
     ]);
+  });
+
+  it("makes the share image of the most viewed photo absolute", async () => {
+    const client = createCichlidsClient({ baseUrl: "http://retro.test", fetch: async () =>
+      Response.json({ memberSince: null, stats: null, tanks: [], mostViewed: { storyId: 7, slug: "blue", title: null, viewCount: 9, image: null, shareImageUrl: "/api/media/photos/tok" } }) });
+
+    const retrospective = await client.me.archiveRetrospective();
+
+    expect(retrospective?.cards[0]).toMatchObject({ kind: "most_viewed", shareImageUrl: "http://retro.test/api/media/photos/tok" });
   });
 
   it("answers null for a member without a retrospective", async () => {

@@ -13,7 +13,7 @@ export type RetrospectiveImage = ImageUrlsDto;
 export type RetrospectiveCard =
   | { kind: "member_since"; year: number; month: number }
   | { kind: "stats"; photos: number; comments: number; stars: number }
-  | { kind: "most_viewed"; storyId: number; slug: string; title: string | null; viewCount: number; image: RetrospectiveImage | null }
+  | { kind: "most_viewed"; storyId: number; slug: string; title: string | null; viewCount: number; image: RetrospectiveImage | null; shareImageUrl: string | null }
   | { kind: "archive_tank"; tankId: number; title: string; image: RetrospectiveImage | null }
   | { kind: "tank_today" }
   | { kind: "return_welcome"; since: string }
@@ -38,8 +38,8 @@ export function toArchiveRetrospective(dto: ArchiveRetrospectiveDto): Retrospect
     if (stats.photos + stats.comments + stats.stars > 0) cards.push({ kind: "stats", ...stats });
   }
   if (dto.mostViewed) {
-    const { storyId, slug, title, viewCount, image } = dto.mostViewed;
-    cards.push({ kind: "most_viewed", storyId: Number(storyId), slug, title, viewCount: Number(viewCount), image });
+    const { storyId, slug, title, viewCount, image, shareImageUrl } = dto.mostViewed;
+    cards.push({ kind: "most_viewed", storyId: Number(storyId), slug, title, viewCount: Number(viewCount), image, shareImageUrl: shareImageUrl ?? null });
   }
   for (const tank of dto.tanks) cards.push({ kind: "archive_tank", tankId: Number(tank.id), title: tank.title, image: tank.image });
   cards.push({ kind: "tank_today" });
