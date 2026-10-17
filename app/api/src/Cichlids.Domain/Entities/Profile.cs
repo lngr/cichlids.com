@@ -35,6 +35,11 @@ public class Profile
     /// </summary>
     public DateTimeOffset? AwaySince { get; set; }
 
+    /// <summary>
+    /// When the member first opened the archive retrospective; null while it is unopened.
+    /// </summary>
+    public DateTimeOffset? ArchiveRetrospectiveSeenAt { get; set; }
+
     public DateTimeOffset? OnboardingCompletedAt { get; set; }
     public string[] Interests { get; set; } = [];
     public string[] Badges { get; set; } = [];

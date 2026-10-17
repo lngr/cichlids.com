@@ -27,7 +27,7 @@ public sealed class ProfileMigrationStep : IEtlStep
     // (a small number of very old or admin-created rows), so there is no real creation moment to
     // convert. This fixed marker is deliberately earlier than the site's actual launch, so it
     // reads as "unknown" rather than as a plausible date.
-    private static readonly DateTimeOffset UnknownCreatedAtMarker = new(2003, 1, 1, 0, 0, 0, TimeSpan.Zero);
+    private static readonly DateTimeOffset UnknownCreatedAtMarker = Cichlids.Domain.LegacyProfiles.UnknownCreatedAt;
 
     private static readonly ValueConverter<ProfileKind, string> KindConverter = new SnakeCaseEnumConverter<ProfileKind>();
 

@@ -1418,6 +1418,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
+                    b.Property<DateTimeOffset?>("ArchiveRetrospectiveSeenAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("archive_retrospective_seen_at");
+
                     b.Property<DateTimeOffset?>("AwaySince")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("away_since");
