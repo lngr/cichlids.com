@@ -16,6 +16,8 @@ import { toFollowedTank, toMilestone, toTodayFollowed } from "./todaySections.js
 import type { FollowedTank, Milestone, TodayFollowed } from "./todaySections.js";
 import { toMeStreaks, toTankStreaks, toVacation } from "./streaks.js";
 import type { MeStreaks, TankStreaks, Vacation } from "./streaks.js";
+import { toPhotoSuggestion, toTankAdoption } from "./adoption.js";
+import type { PhotoSuggestion, TankAdoption } from "./adoption.js";
 import { toArchiveRetrospective } from "./retrospective.js";
 import type { Retrospective } from "./retrospective.js";
 import {
@@ -73,6 +75,8 @@ import {
   removeTankSelectedMember,
   completeOnboarding,
   listMyLegacyTanks,
+  listLegacyTankPhotoSuggestions,
+  adoptLegacyTank,
   getMyArchiveRetrospective,
   markMyArchiveRetrospectiveSeen,
   setMyInterests,
@@ -622,7 +626,12 @@ export interface CichlidsClient {
     /** Dismisses a milestone for good. */
     dismissMilestone(key: string): Promise<void>;
     completeOnboarding(request: OnboardingRequest): Promise<OnboardingResultDto>;
+    /** The archive tanks of the member that are not adopted. */
     legacyTanks(): Promise<LegacyTankDto[]>;
+    /** A page of the migrated photos that can be assigned to an archive tank, in the order of their dates. */
+    photoSuggestions(tankId: number, params?: PageParams): Promise<PagedResponse<PhotoSuggestion>>;
+    /** Adopts an archive tank and links the chosen photos to it in the given order. */
+    adoptLegacyTank(tankId: number, mediaItemIds: number[]): Promise<TankAdoption>;
     /** The archive retrospective of the member, or null when the member has none. */
     archiveRetrospective(): Promise<Retrospective | null>;
     /** Records that the member has seen the archive retrospective. */
@@ -1122,6 +1131,13 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async legacyTanks() {
         return unwrap(await listMyLegacyTanks({ client }));
+      },
+      async photoSuggestions(tankId, params = {}) {
+        const body = unwrap(await listLegacyTankPhotoSuggestions({ client, path: { id: tankId }, query: params }));
+        return absolutizeMedia({ total: Number(body.total), items: body.items.map(toPhotoSuggestion) }, options.baseUrl);
+      },
+      async adoptLegacyTank(tankId, mediaItemIds) {
+        return toTankAdoption(unwrap(await adoptLegacyTank({ client, path: { id: tankId }, body: { mediaItemIds } })));
       },
       async archiveRetrospective() {
         const result = await getMyArchiveRetrospective({ client });

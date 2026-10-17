@@ -1,4 +1,6 @@
 export { createCichlidsClient, ApiError } from "./client.js";
+export { ADOPTION_MAX_PHOTOS, adoptionProblemOf, toggleSuggestion } from "./adoption.js";
+export type { AdoptionProblem, PhotoSuggestion, TankAdoption } from "./adoption.js";
 export { handleProblemOf } from "./handle.js";
 export { RETROSPECTIVE_CARD_MS, retrospectivePlayerMachine, statEntries } from "./retrospective.js";
 export type { Retrospective, RetrospectiveCard, RetrospectiveImage } from "./retrospective.js";
