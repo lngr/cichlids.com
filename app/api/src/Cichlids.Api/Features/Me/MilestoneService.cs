@@ -7,8 +7,8 @@ namespace Cichlids.Api.Features.Me;
 
 /// <summary>
 /// The milestones of a member on Today and their dismissals. A milestone is listed from the day it is
-/// reached for a week, until the member dismisses it. A dismissal is stored per member and key, so the
-/// same milestone is never listed again.
+/// reached for a week, until the member dismisses it. A dismissal is stored per member and key, so a
+/// dismissed milestone is not listed.
 /// </summary>
 public sealed class MilestoneService(CichlidsDbContext context, StreakService streaks, TimeProvider clock)
 {

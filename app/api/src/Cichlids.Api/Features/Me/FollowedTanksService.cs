@@ -12,7 +12,7 @@ namespace Cichlids.Api.Features.Me;
 /// <summary>
 /// Reads the tanks a member follows together with the newest update of each that the member may see.
 /// A tank counts when it is published, its owner is a member who is not suspended, the follow is
-/// approved and the profile level of the tank still reaches the member. An update counts when the
+/// approved and the profile level of the tank reaches the member. An update counts when the
 /// visibility rules show it to the member: an entry of the care stream that is not marked only me, a
 /// published story that points to the tank, and a tank or time-lapse photo whose media link the
 /// media visibility rule shows. Updates, counts and the flag for more tanks come from visible data only.
