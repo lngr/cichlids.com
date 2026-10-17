@@ -75,4 +75,5 @@ by hand. Run that script (or its `--check` mode in CI) after adding or changing 
 | [0028](0028-private-access-to-non-production-environments.md) | Private Access to Non-Production Environments | Accepted |
 | [0029](0029-media-links-and-stories.md) | Media Links and Stories | Accepted |
 | [0030](0030-provisional-device-accounts.md) | Provisional Device Accounts | Accepted |
+| [0031](0031-named-fish-and-stocking.md) | Named Fish and Stocking | Proposed |
 <!-- END ADR LIST -->
