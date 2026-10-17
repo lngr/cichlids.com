@@ -171,6 +171,20 @@
     "species_id": "bigint",
     "tank_id": "bigint"
   },
+  "public.inhabitant_event": {
+    "created_at": "timestamp with time zone",
+    "from_tank_id": "bigint",
+    "id": "bigint",
+    "inhabitant_id": "bigint",
+    "kind": "text",
+    "length_cm": "numeric(7,3)",
+    "length_input_unit": "text",
+    "length_input_value": "numeric(9,4)",
+    "occurred_on": "date",
+    "offspring_generation": "integer",
+    "offspring_hybrid": "boolean",
+    "to_tank_id": "bigint"
+  },
   "public.media_item": {
     "byte_size": "bigint",
     "capture_checked_at": "timestamp with time zone",

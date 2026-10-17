@@ -147,7 +147,7 @@ class DatabaseTests(unittest.TestCase):
             changed['public.story'].add('cover_media_link_id')
             changed['public.comment'].add('poster_name')
             changed['public.discussion_post'].add('poster_name')
-            subset_tables = {'public.media_item', 'public.media_variant', 'public.media_link', 'public.tank_decommissioning', 'public.care_entry', 'public.care_measurement_value', 'public.care_plan_rule', 'public.care_plan_rule_change', 'public.water_change_session', 'public.water_change_session_step', 'public.streak_freeze', 'public.tank_visibility_consent', 'public.inhabitant', 'public.collection_entry', 'public.comment', 'public.rating', 'public.follow', 'public.story_subject', 'public.story', 'public.collection', 'public.tank', 'public.profile', 'public.discussion_post'}
+            subset_tables = {'public.media_item', 'public.media_variant', 'public.media_link', 'public.tank_decommissioning', 'public.care_entry', 'public.care_measurement_value', 'public.care_plan_rule', 'public.care_plan_rule_change', 'public.water_change_session', 'public.water_change_session_step', 'public.streak_freeze', 'public.tank_visibility_consent', 'public.inhabitant', 'public.inhabitant_event', 'public.collection_entry', 'public.comment', 'public.rating', 'public.follow', 'public.story_subject', 'public.story', 'public.collection', 'public.tank', 'public.profile', 'public.discussion_post'}
             for table, columns in snapshot.SCHEMA.items():
                 if table in snapshot.EMPTY_TABLES or table == 'public.__EFMigrationsHistory':
                     continue
@@ -191,6 +191,10 @@ class DatabaseTests(unittest.TestCase):
             for table in ('care_plan_rule', 'care_plan_rule_change', 'streak_freeze', 'tank_visibility_consent'):
                 self.assertGreater(count(conn, f'select count(*) from {table} where tank_id in (1)'), 0, table)
             self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from inhabitant order by tank_id')), [1, 1, 1, 4, 8])
+            self.assertEqual(sorted(r[0] for r in conn.execute('select kind from inhabitant_event order by id')),
+                             ['died', 'growth', 'moved', 'spawning', 'spawning'])
+            self.assertEqual(count(conn, 'select count(*) from inhabitant_event where 6 in (from_tank_id, to_tank_id)'), 0)
+            self.assertEqual(count(source, 'select count(*) from inhabitant_event where 6 in (from_tank_id, to_tank_id)'), 1)
             self.assertEqual(count(conn, 'select count(*) from media_link where tank_id in (5, 6, 7)'), 0)
             self.assertEqual(sorted(r[0] for r in conn.execute('select id from collection_entry')), [r[0] for r in source.execute('select id from collection_entry where collection_id=1 and story_id<>9')])
             self.assertEqual(count(conn, 'select count(*) from collection'), 2)

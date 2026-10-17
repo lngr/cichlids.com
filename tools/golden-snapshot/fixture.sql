@@ -95,6 +95,15 @@ INSERT INTO care_entry(id,tank_id,author_profile_id,kind,occurred_at,recorded_at
  (10,8,2,'measurement','2020-03-02 10:00+00','2020-03-02 10:00+00','SyntheticAlice stream followers tank',false);
 INSERT INTO care_plan_rule(tank_id,kind,rhythm_days,enabled,reason_code,updated_at) VALUES (6,'water_change',7,true,'cichlid_default','2020-03-01'),(7,'water_change',7,true,'cichlid_default','2020-03-01'),(8,'water_change',7,true,'cichlid_default','2020-03-01');
 INSERT INTO inhabitant(tank_id,owner_profile_id,species_id,count) SELECT t.id,t.profile_id,1,v.c FROM (VALUES (6,1),(7,1),(8,4)) v(tid,c) JOIN tank t ON t.id=v.tid;
+INSERT INTO inhabitant_event(inhabitant_id,kind,occurred_on,length_cm,length_input_value,length_input_unit,offspring_generation,offspring_hybrid,from_tank_id,to_tank_id)
+SELECT i.id,v.kind,v.day::date,v.cm,v.input_value,v.unit,v.generation,v.hybrid,v.from_tank,v.to_tank FROM inhabitant i JOIN (VALUES
+ ('SyntheticAlice Bruno','growth','2020-03-01',8.89,3.5,'inch',NULL::int,NULL::boolean,NULL::bigint,NULL::bigint),
+ ('SyntheticAlice Bruno','spawning','2020-03-10',NULL,NULL,NULL,1,false,NULL,NULL),
+ ('SyntheticAlice Bruno','spawning','2020-03-11',NULL,NULL,NULL,NULL,true,NULL,NULL),
+ ('SyntheticAlice Bruno','moved','2020-03-12',NULL,NULL,NULL,NULL,NULL,2,1),
+ ('SyntheticAlice Bruno','moved','2020-03-13',NULL,NULL,NULL,NULL,NULL,6,1),
+ ('SyntheticAlice Emma','died','2020-04-01',NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+) v(name,kind,day,cm,input_value,unit,generation,hybrid,from_tank,to_tank) ON i.name=v.name;
 INSERT INTO comment(id,tank_id,author_profile_id,body,created_at) VALUES (5,6,1,'selected tank comment','2020-01-01'),(6,7,2,'followers tank comment','2020-01-01'),(7,8,1,'stream followers tank comment','2020-01-01');
 INSERT INTO rating(tank_id,profile_id,stars,created_at) VALUES (6,2,4,'2020-01-01'),(7,3,4,'2020-01-01'),(8,3,5,'2020-01-01');
 INSERT INTO media_link(media_item_id,context_type,tank_id,role,position,created_at) VALUES (3,'tank',6,'showcase',0,'2020-01-01'),(3,'tank',7,'showcase',0,'2020-01-01');

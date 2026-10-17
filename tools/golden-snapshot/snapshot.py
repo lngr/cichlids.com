@@ -47,6 +47,7 @@ PRIVATE_SCOPE_CHECKS = (
     ('public.tank_decommissioning', PRIVATE_TANK),
     ('public.tank_visibility_consent', PRIVATE_TANK),
     ('public.inhabitant', "tank_id in (select id from tank where profile_visibility <> 'public')"),
+    ('public.inhabitant_event', "from_tank_id in (select id from tank where profile_visibility <> 'public') or to_tank_id in (select id from tank where profile_visibility <> 'public')"),
     ('public.media_link', "tank_id in (select id from tank where profile_visibility <> 'public')"),
     ('public.story_subject', "tank_id in (select id from tank where profile_visibility <> 'public') or inhabitant_id in (select id from inhabitant where tank_id in (select id from tank where profile_visibility <> 'public'))"),
     ('public.story', "cover_media_link_id is not null and cover_media_link_id not in (select id from media_link)"),
@@ -124,6 +125,11 @@ COLUMN_HANDLING = {
     'public.inhabitant': {
         'generated': 'name',
         'kept': 'count id moved_in_on owner_profile_id removal_reason removed_on sort species_id tank_id',
+    },
+    'public.inhabitant_event': {
+        'kept': (
+            'created_at from_tank_id id inhabitant_id kind length_cm length_input_unit length_input_value occurred_on '
+            'offspring_generation offspring_hybrid to_tank_id'),
     },
     'public.media_item': {
         'kept': 'byte_size created_at duration_ms height id kind legacy_id owner_profile_id quick_share_story_id width',
