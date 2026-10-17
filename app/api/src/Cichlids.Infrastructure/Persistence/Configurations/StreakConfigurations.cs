@@ -37,7 +37,19 @@ public sealed class StreakFreezeConfiguration : IEntityTypeConfiguration<StreakF
     }
 }
 
-public sealed class CarePlanRuleChangeConfiguration : IEntityTypeConfiguration<CarePlanRuleChange>
+public sealed class MilestoneDismissalConfiguration : IEntityTypeConfiguration<MilestoneDismissal>
+{
+    public void Configure(EntityTypeBuilder<MilestoneDismissal> builder)
+    {
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Key).HasMaxLength(64).IsRequired();
+        builder.HasOne<Profile>().WithMany().HasForeignKey(x => x.ProfileId).OnDelete(DeleteBehavior.Cascade);
+        builder.HasIndex(x => new { x.ProfileId, x.Key }).IsUnique();
+        builder.ToTable("milestone_dismissal");
+    }
+}
+
+public sealed class CarePlanRuleChangeConfiguration: IEntityTypeConfiguration<CarePlanRuleChange>
 {
     public void Configure(EntityTypeBuilder<CarePlanRuleChange> builder)
     {

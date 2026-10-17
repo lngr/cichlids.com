@@ -1297,6 +1297,39 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.ToTable("media_variant", "public");
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.MilestoneDismissal", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTimeOffset>("DismissedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("dismissed_at");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)")
+                        .HasColumnName("key");
+
+                    b.Property<long>("ProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("profile_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_milestone_dismissal");
+
+                    b.HasIndex("ProfileId", "Key")
+                        .IsUnique()
+                        .HasDatabaseName("ix_milestone_dismissal_profile_id_key");
+
+                    b.ToTable("milestone_dismissal", "public");
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.OutboxEvent", b =>
                 {
                     b.Property<Guid>("Id")
@@ -3291,6 +3324,16 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_media_variant_media_item_media_item_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.MilestoneDismissal", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_milestone_dismissal_profiles_profile_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.ProfileIdentity", b =>

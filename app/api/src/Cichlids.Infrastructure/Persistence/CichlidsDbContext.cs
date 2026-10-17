@@ -33,6 +33,7 @@ public class CichlidsDbContext : DbContext
     public DbSet<CarePlanRuleChange> CarePlanRuleChanges => Set<CarePlanRuleChange>();
     public DbSet<Vacation> Vacations => Set<Vacation>();
     public DbSet<StreakFreeze> StreakFreezes => Set<StreakFreeze>();
+    public DbSet<MilestoneDismissal> MilestoneDismissals => Set<MilestoneDismissal>();
     public DbSet<TankDecommissioning> TankDecommissionings => Set<TankDecommissioning>();
     public DbSet<Tank> Tanks => Set<Tank>();
     public DbSet<Inhabitant> Inhabitants => Set<Inhabitant>();
