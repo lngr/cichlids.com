@@ -188,7 +188,7 @@ try {
   // The move to a private tank: the owner keeps the page, the visitor gets the answer for a missing fish.
   await page.goto(`${WEB_URL}/fish/${fish}?lang=en`, { waitUntil: "networkidle" });
   await byTestId(page, "fish-move").click();
-  assert.match(await text(page, "fish-move-warning"), /follow the visibility of the new tank/);
+  assert.match(await text(page, "fish-move-warning"), /becomes visible to the viewers of the new tank/);
   await sizeOk(page, [`fish-move-tank-${tankB}`]);
   await byTestId(page, `fish-move-tank-${tankB}`).click();
   await byTestId(page, "fish-move-save").click();
