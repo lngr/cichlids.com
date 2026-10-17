@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cardImageUrl, memberSinceLabel, routeOfAction, shouldOpenArchiveRetrospective, tapDirection } from "./retrospectiveView";
+import { cardImageUrl, memberSinceLabel, regionStoryPath, routeOfAction, shouldCheckReturnRetrospective, shouldOpenArchiveRetrospective, tapDirection } from "./retrospectiveView";
 
 describe("memberSinceLabel", () => {
   it("names the month and the year in the language of the member, independent of the time zone", () => {
@@ -28,6 +28,12 @@ describe("routeOfAction", () => {
     expect(routeOfAction({ type: "adopt_tank", tankId: 5 })).toBe("/tanks/5/adopt");
     expect(routeOfAction({ type: "open_story", slug: "blue-peacock" })).toBe("/gallery/blue-peacock");
     expect(routeOfAction({ type: "set_up_tank" })).toBe("/onboarding");
+  });
+
+  it("leads to the care view for missed care, the guided camera and a given path", () => {
+    expect(routeOfAction({ type: "log_care", tankId: 5 })).toBe("/tanks/5?view=care");
+    expect(routeOfAction({ type: "take_photo", tankId: 5 })).toBe("/tanks/5/camera");
+    expect(routeOfAction({ type: "open_path", path: "/gallery/spawn" })).toBe("/gallery/spawn");
   });
 });
 
@@ -60,5 +66,26 @@ describe("tapDirection", () => {
   it("mirrors the thirds for a right-to-left layout", () => {
     expect(tapDirection(290, 300, true)).toBe("previous");
     expect(tapDirection(10, 300, true)).toBe("next");
+  });
+});
+
+describe("shouldCheckReturnRetrospective", () => {
+  it("checks for a registered member who is not otherwise sent away", () => {
+    expect(shouldCheckReturnRetrospective({ provisional: false, firstTankOffered: false, archiveOpens: false })).toBe(true);
+  });
+
+  it.each([
+    ["is provisional", true, false, false],
+    ["is offered the first tank", false, true, false],
+    ["gets the archive retrospective", false, false, true],
+  ])("does not check for a member who %s", (_, provisional, firstTankOffered, archiveOpens) => {
+    expect(shouldCheckReturnRetrospective({ provisional, firstTankOffered, archiveOpens })).toBe(false);
+  });
+});
+
+describe("regionStoryPath", () => {
+  it("uses the slug and falls back to the id", () => {
+    expect(regionStoryPath({ id: 9, slug: "spawn" })).toBe("/gallery/spawn");
+    expect(regionStoryPath({ id: 9, slug: null })).toBe("/gallery/9");
   });
 });

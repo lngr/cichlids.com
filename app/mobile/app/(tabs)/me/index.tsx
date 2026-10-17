@@ -85,14 +85,15 @@ function ProfileView() {
   if (!me) return <LoadingView label={t("me.loading")} />;
 
   return <MemberContent key={String(me.profile.id)} profile={me.profile} handleChangeAvailableAt={me.handleChangeAvailableAt}
-    archiveRetrospective={Boolean(me.archiveRetrospective?.available)}
+    archiveRetrospective={Boolean(me.archiveRetrospective?.available)} returnRetrospective={Boolean(me.returnRetrospective?.available)}
     onProfileChanged={() => setAttempt((n) => n + 1)} />;
 }
 
-function MemberContent({ profile, handleChangeAvailableAt, archiveRetrospective, onProfileChanged }: {
+function MemberContent({ profile, handleChangeAvailableAt, archiveRetrospective, returnRetrospective, onProfileChanged }: {
   profile: Me["profile"];
   handleChangeAvailableAt?: string | null;
   archiveRetrospective: boolean;
+  returnRetrospective: boolean;
   onProfileChanged: () => void;
 }) {
   const theme = useTheme();
@@ -127,6 +128,7 @@ function MemberContent({ profile, handleChangeAvailableAt, archiveRetrospective,
           <Button testID="me-profile-images" variant="secondary" label={t("me.profileImages")} onPress={() => router.push("/profile-images")} />
           <Button testID="me-stories" variant="secondary" label={t("me.stories")} onPress={() => router.push("/stories")} />
           {archiveRetrospective ? <Button testID="me-archive-retrospective" variant="secondary" label={t("me.archiveRetrospective")} onPress={() => router.push("/retrospective/archive")} /> : null}
+          {returnRetrospective ? <Button testID="me-return-retrospective" variant="secondary" label={t("me.returnRetrospective")} onPress={() => router.push("/retrospective/return")} /> : null}
           <Button testID="logout-button" variant="secondary" label={t("me.logout")} onPress={() => void logout()} />
         </>}
       </View>

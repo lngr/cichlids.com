@@ -5,6 +5,7 @@ import { statEntries, type RetrospectiveCard } from "@cichlids/client-core";
 import { Button } from "../components/Button";
 import { formatCount } from "../lib/format";
 import { useTheme } from "../theme";
+import { ReturnCardView } from "./ReturnCardView";
 import { cardImageUrl, memberSinceLabel, type RetrospectiveAction } from "./retrospectiveView";
 
 /**
@@ -58,6 +59,8 @@ export function RetrospectiveCardView({ card, onAction }: { card: RetrospectiveC
         <Text style={[theme.type.body, styles.centered, { color: theme.colors.muted }]}>{t("retrospective.tankToday.text")}</Text>
         <Button testID="retrospective-set-up-tank" label={t("retrospective.tankToday.action")} onPress={() => onAction({ type: "set_up_tank" })} />
       </View>;
+    default:
+      return <ReturnCardView card={card} onAction={onAction} />;
   }
 }
 

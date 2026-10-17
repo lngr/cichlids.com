@@ -6,7 +6,10 @@ import { resolveLanguage } from "../i18n/locales";
 export type RetrospectiveAction =
   | { type: "adopt_tank"; tankId: number }
   | { type: "open_story"; slug: string }
-  | { type: "set_up_tank" };
+  | { type: "set_up_tank" }
+  | { type: "log_care"; tankId: number }
+  | { type: "take_photo"; tankId: number }
+  | { type: "open_path"; path: string };
 
 /** The route an action leads to; adopting an archive tank opens its adoption, creating a tank runs through the onboarding with its first photo. */
 export function routeOfAction(action: RetrospectiveAction): string {
@@ -14,6 +17,9 @@ export function routeOfAction(action: RetrospectiveAction): string {
     case "adopt_tank": return adoptionRoute(action.tankId);
     case "open_story": return `/gallery/${action.slug}`;
     case "set_up_tank": return "/onboarding";
+    case "log_care": return `/tanks/${action.tankId}?view=care`;
+    case "take_photo": return `/tanks/${action.tankId}/camera`;
+    case "open_path": return action.path;
   }
 }
 
@@ -38,6 +44,23 @@ export function shouldOpenArchiveRetrospective({ status, provisional, firstTankO
   firstTankOffered: boolean;
 }): boolean {
   return Boolean(status?.available) && !status?.seenAt && !provisional && !firstTankOffered;
+}
+
+/**
+ * Whether the app looks for a due return retrospective at its start: the member is registered, is not
+ * sent to set up the first tank and no archive retrospective opens at the same time.
+ */
+export function shouldCheckReturnRetrospective({ provisional, firstTankOffered, archiveOpens }: {
+  provisional: boolean;
+  firstTankOffered: boolean;
+  archiveOpens: boolean;
+}): boolean {
+  return !provisional && !firstTankOffered && !archiveOpens;
+}
+
+/** The path of a story of the region news: the slug, otherwise the id. */
+export function regionStoryPath(story: { id: number; slug: string | null }): string {
+  return `/gallery/${story.slug ?? story.id}`;
 }
 
 /**
