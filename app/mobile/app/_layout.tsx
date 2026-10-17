@@ -54,6 +54,7 @@ export default function RootLayout() {
                 <Stack.Screen name="auth" options={{ headerShown: false }} />
                 <Stack.Screen name="onboarding" options={{ title: t("onboarding.title") }} />
                 <Stack.Screen name="todos" options={{ title: t("todos.title") }} />
+                <Stack.Screen name="followed" options={{ title: t("today.followed.title") }} />
                 <Stack.Screen name="media" options={{ title: t("library.title") }} />
                 <Stack.Screen name="profile-images" options={{ title: t("profileImages.title") }} />
                 <Stack.Screen name="stories/index" options={{ title: t("stories.title") }} />

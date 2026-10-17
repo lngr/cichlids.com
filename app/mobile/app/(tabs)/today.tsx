@@ -15,6 +15,8 @@ import { minTouchTarget, useTheme } from "../../src/theme";
 import { DueCareSection } from "../../src/today/DueCareSection";
 import { CareHeatmapView } from "../../src/careHeatmap/CareHeatmapView";
 import { TodayStreaks } from "../../src/streaks/TodayStreaks";
+import { FollowedTanksSection } from "../../src/today/FollowedTanksSection";
+import { MilestonesSection } from "../../src/today/MilestonesSection";
 import { OpenTodosLink } from "../../src/today/OpenTodosLink";
 import { localCalendarDate } from "../../src/today/localDate";
 import { draftTitle } from "../../src/upload/drafts";
@@ -75,10 +77,12 @@ function MemberToday() {
         <Text accessibilityRole="header" style={[theme.type.display, { color: theme.colors.fg }]}>{t("today.greeting", { name: today.displayName })}</Text>
         {today.memberSinceYear != null ? <Text style={[theme.type.body, { color: theme.colors.muted }]}>{t("today.memberSince", { year: today.memberSinceYear })}</Text> : null}
       </View>
+      <MilestonesSection />
       <TodayStreaks />
       {today.tanks.length ? <CareHeatmapView /> : null}
       <DueCareSection />
       <OpenTodosLink />
+      <FollowedTanksSection />
       {today.tanks.length ? <View testID="today-tanks" style={{ gap: theme.space[3] }}>
         {heading(t("today.tanks"))}
         {today.tanks.map(tank => card(`today-tank-${tank.id}`, tank.title, tank.newestPhoto?.image, `/tanks/${tank.id}`))}
