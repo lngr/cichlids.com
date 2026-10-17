@@ -147,7 +147,7 @@ COLUMN_HANDLING = {
     },
     'public.profile': {
         'kept': 'badges country_code created_at id interests kind legacy_id onboarding_completed_at streaks_enabled',
-        'null': 'archive_retrospective_seen_at away_since city external_avatar_url handle_changed_at last_login_at last_seen_at suspended_until',
+        'null': 'archive_retrospective_seen_at away_since city external_avatar_url handle_changed_at last_login_at last_seen_at return_retrospective_seen_at return_retrospective_since suspended_until',
         'pseudonym': 'display_name username',
     },
     'public.profile_identity': {
@@ -395,7 +395,7 @@ def verify(conn, originals, version):
     leaks += conn.execute("select count(*) from media_item where not placed_public or placement_pending or placement_attempts <> 0 or placement_next_attempt_at is not null or visibility_generation <> 0").fetchone()[0]
     leaks += conn.execute("select count(*) from media_item where taken_at_local is not null or taken_at_offset_minutes is not null or capture_checked_at is not null or received_at <> created_at or captured_in_app").fetchone()[0]
     leaks += conn.execute("select count(*) from profile where kind = 'provisional'").fetchone()[0]
-    for column in ('archive_retrospective_seen_at', 'away_since', 'city', 'external_avatar_url', 'handle_changed_at', 'last_login_at', 'last_seen_at', 'suspended_until'):
+    for column in ('archive_retrospective_seen_at', 'away_since', 'city', 'external_avatar_url', 'handle_changed_at', 'last_login_at', 'last_seen_at', 'return_retrospective_seen_at', 'return_retrospective_since', 'suspended_until'):
         leaks += conn.execute(sql.SQL('select count(*) from profile where {} is not null').format(sql.Identifier(column))).fetchone()[0]
     leaks += conn.execute("select count(*) from media_link where context_type='profile'").fetchone()[0]
     leaks += conn.execute("select count(*) from profile where username !~ '^member-[0-9]+$' or display_name is distinct from username").fetchone()[0]
