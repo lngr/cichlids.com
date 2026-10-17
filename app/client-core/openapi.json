@@ -1606,6 +1606,93 @@
         }
       }
     },
+    "/api/me/retrospectives/return": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "GetReturnRetrospective",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "utcOffsetMinutes",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReturnRetrospectiveDto"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/me/retrospectives/return/seen": {
+      "post": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "MarkReturnRetrospectiveSeen",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/me/media": {
       "get": {
         "tags": [
@@ -11413,6 +11500,16 @@
                 "$ref": "#/components/schemas/ArchiveRetrospectiveStatusDto"
               }
             ]
+          },
+          "returnRetrospective": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ReturnRetrospectiveStatusDto"
+              }
+            ]
           }
         }
       },
@@ -12478,6 +12575,299 @@
         "type": "object",
         "properties": {
           "untilDate": {
+            "type": "string"
+          }
+        }
+      },
+      "ReturnNextStepsDto": {
+        "required": [
+          "careTanks",
+          "timeLapseTanks"
+        ],
+        "type": "object",
+        "properties": {
+          "careTanks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReturnTankRefDto"
+            }
+          },
+          "timeLapseTanks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReturnTankRefDto"
+            }
+          }
+        }
+      },
+      "ReturnOverdueCareDto": {
+        "required": [
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReturnOverdueCareItemDto"
+            }
+          }
+        }
+      },
+      "ReturnOverdueCareItemDto": {
+        "required": [
+          "tankId",
+          "tankTitle",
+          "kind",
+          "daysOverdue"
+        ],
+        "type": "object",
+        "properties": {
+          "tankId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "tankTitle": {
+            "type": "string"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/CareKind"
+          },
+          "daysOverdue": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "ReturnRegionNewsDto": {
+        "required": [
+          "tanks",
+          "stories"
+        ],
+        "type": "object",
+        "properties": {
+          "tanks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReturnRegionTankDto"
+            }
+          },
+          "stories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReturnRegionStoryDto"
+            }
+          }
+        }
+      },
+      "ReturnRegionStoryDto": {
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "author"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "slug": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "author": {
+            "$ref": "#/components/schemas/AuthorDto"
+          }
+        }
+      },
+      "ReturnRegionTankDto": {
+        "required": [
+          "tankId",
+          "title",
+          "region",
+          "owner"
+        ],
+        "type": "object",
+        "properties": {
+          "tankId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "region": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TankRegion"
+              }
+            ]
+          },
+          "owner": {
+            "$ref": "#/components/schemas/AuthorDto"
+          }
+        }
+      },
+      "ReturnResponsesDto": {
+        "required": [
+          "kudos",
+          "comments"
+        ],
+        "type": "object",
+        "properties": {
+          "kudos": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "comments": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "ReturnRetrospectiveDto": {
+        "required": [
+          "seen",
+          "since",
+          "overdueCare",
+          "responses",
+          "followedTanks",
+          "regionNews",
+          "nextSteps"
+        ],
+        "type": "object",
+        "properties": {
+          "seen": {
+            "type": "boolean"
+          },
+          "since": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "overdueCare": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ReturnOverdueCareDto"
+              }
+            ]
+          },
+          "responses": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ReturnResponsesDto"
+              }
+            ]
+          },
+          "followedTanks": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TodayFollowedDto"
+              }
+            ]
+          },
+          "regionNews": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ReturnRegionNewsDto"
+              }
+            ]
+          },
+          "nextSteps": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ReturnNextStepsDto"
+              }
+            ]
+          }
+        }
+      },
+      "ReturnRetrospectiveStatusDto": {
+        "required": [
+          "available",
+          "seenAt"
+        ],
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean"
+          },
+          "seenAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "ReturnTankRefDto": {
+        "required": [
+          "tankId",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "tankId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
             "type": "string"
           }
         }

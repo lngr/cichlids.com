@@ -578,6 +578,7 @@ export type MeDto = {
     provisional?: boolean;
     handleChangeAvailableAt?: null | string;
     archiveRetrospective?: null | ArchiveRetrospectiveStatusDto;
+    returnRetrospective?: null | ReturnRetrospectiveStatusDto;
 };
 
 export type MeSettingsDto = {
@@ -798,6 +799,66 @@ export type RegisterDeviceKeyRequest = {
 
 export type ReminderSnoozeDto = {
     untilDate: string;
+};
+
+export type ReturnNextStepsDto = {
+    careTanks: Array<ReturnTankRefDto>;
+    timeLapseTanks: Array<ReturnTankRefDto>;
+};
+
+export type ReturnOverdueCareDto = {
+    items: Array<ReturnOverdueCareItemDto>;
+};
+
+export type ReturnOverdueCareItemDto = {
+    tankId: number | string;
+    tankTitle: string;
+    kind: CareKind;
+    daysOverdue: number | string;
+};
+
+export type ReturnRegionNewsDto = {
+    tanks: Array<ReturnRegionTankDto>;
+    stories: Array<ReturnRegionStoryDto>;
+};
+
+export type ReturnRegionStoryDto = {
+    id: number | string;
+    slug: null | string;
+    title: null | string;
+    author: AuthorDto;
+};
+
+export type ReturnRegionTankDto = {
+    tankId: number | string;
+    title: string;
+    region: null | TankRegion;
+    owner: AuthorDto;
+};
+
+export type ReturnResponsesDto = {
+    kudos: number | string;
+    comments: number | string;
+};
+
+export type ReturnRetrospectiveDto = {
+    seen: boolean;
+    since: string;
+    overdueCare: null | ReturnOverdueCareDto;
+    responses: null | ReturnResponsesDto;
+    followedTanks: null | TodayFollowedDto;
+    regionNews: null | ReturnRegionNewsDto;
+    nextSteps: null | ReturnNextStepsDto;
+};
+
+export type ReturnRetrospectiveStatusDto = {
+    available: boolean;
+    seenAt: null | string;
+};
+
+export type ReturnTankRefDto = {
+    tankId: number | string;
+    title: string;
 };
 
 export type SetProfileMediaRequest = {
@@ -2199,6 +2260,67 @@ export type ChangeMyHandleResponses = {
 };
 
 export type ChangeMyHandleResponse = ChangeMyHandleResponses[keyof ChangeMyHandleResponses];
+
+export type GetReturnRetrospectiveData = {
+    body?: never;
+    path?: never;
+    query?: {
+        date?: string;
+        utcOffsetMinutes?: number | string;
+    };
+    url: '/api/me/retrospectives/return';
+};
+
+export type GetReturnRetrospectiveErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type GetReturnRetrospectiveError = GetReturnRetrospectiveErrors[keyof GetReturnRetrospectiveErrors];
+
+export type GetReturnRetrospectiveResponses = {
+    /**
+     * OK
+     */
+    200: ReturnRetrospectiveDto;
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type GetReturnRetrospectiveResponse = GetReturnRetrospectiveResponses[keyof GetReturnRetrospectiveResponses];
+
+export type MarkReturnRetrospectiveSeenData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/me/retrospectives/return/seen';
+};
+
+export type MarkReturnRetrospectiveSeenErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type MarkReturnRetrospectiveSeenError = MarkReturnRetrospectiveSeenErrors[keyof MarkReturnRetrospectiveSeenErrors];
+
+export type MarkReturnRetrospectiveSeenResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type MarkReturnRetrospectiveSeenResponse = MarkReturnRetrospectiveSeenResponses[keyof MarkReturnRetrospectiveSeenResponses];
 
 export type ListMyMediaData = {
     body?: never;
