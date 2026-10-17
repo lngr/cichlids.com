@@ -25,6 +25,16 @@ public class Profile
     /// </summary>
     public DateTimeOffset? HandleChangedAt { get; set; }
 
+    /// <summary>
+    /// When an authenticated request of the registered member was last recorded; null while the API has not seen the member. Private to the member.
+    /// </summary>
+    public DateTimeOffset? LastSeenAt { get; set; }
+
+    /// <summary>
+    /// Start of an absence of 28 days or more that ended with a request of the member: the last_seen_at before that request. Null while no absence is recorded. Private to the member.
+    /// </summary>
+    public DateTimeOffset? AwaySince { get; set; }
+
     public DateTimeOffset? OnboardingCompletedAt { get; set; }
     public string[] Interests { get; set; } = [];
     public string[] Badges { get; set; } = [];

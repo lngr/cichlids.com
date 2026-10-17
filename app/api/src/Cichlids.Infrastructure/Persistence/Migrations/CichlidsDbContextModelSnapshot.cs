@@ -1385,6 +1385,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
+                    b.Property<DateTimeOffset?>("AwaySince")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("away_since");
+
                     b.PrimitiveCollection<string[]>("Badges")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
@@ -1431,6 +1435,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.Property<DateTimeOffset?>("LastLoginAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("last_login_at");
+
+                    b.Property<DateTimeOffset?>("LastSeenAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("last_seen_at");
 
                     b.Property<int?>("LegacyId")
                         .HasColumnType("integer")
