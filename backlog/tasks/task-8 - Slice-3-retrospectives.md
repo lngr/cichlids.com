@@ -1,9 +1,10 @@
 ---
 id: TASK-8
 title: Slice 3 retrospectives
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-17 09:50'
+updated_date: '2026-10-17 12:55'
 labels: []
 dependencies: []
 priority: high
