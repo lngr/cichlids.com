@@ -30,7 +30,7 @@ export type {
 } from "./streaks.js";
 export { opensOnStart, returnCards } from "./returnRetrospective.js";
 export type {
-  ReturnCardKind, ReturnNextSteps, ReturnOverdueItem, ReturnRegionStory, ReturnRegionTank, ReturnResponses, ReturnRetrospective, ReturnTankRef,
+  ReturnNextSteps, ReturnOverdueItem, ReturnRegionStory, ReturnRegionTank, ReturnResponses, ReturnRetrospective, ReturnTankRef,
 } from "./returnRetrospective.js";
 export { daysSince, updateImageUri, updatePath } from "./todaySections.js";
 export type {

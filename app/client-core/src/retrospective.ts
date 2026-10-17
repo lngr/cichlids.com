@@ -1,5 +1,7 @@
 import { assign, setup } from "xstate";
 import type { ArchiveRetrospectiveDto, ImageUrlsDto } from "./generated/types.gen.js";
+import type { ReturnNextSteps, ReturnOverdueItem, ReturnRegionStory, ReturnRegionTank, ReturnResponses } from "./returnRetrospective.js";
+import type { FollowedTank } from "./todaySections.js";
 
 /** The image of a card in the sizes the API derives; a size is null when it does not exist. */
 export type RetrospectiveImage = ImageUrlsDto;
@@ -13,7 +15,13 @@ export type RetrospectiveCard =
   | { kind: "stats"; photos: number; comments: number; stars: number }
   | { kind: "most_viewed"; storyId: number; slug: string; title: string | null; viewCount: number; image: RetrospectiveImage | null }
   | { kind: "archive_tank"; tankId: number; title: string; image: RetrospectiveImage | null }
-  | { kind: "tank_today" };
+  | { kind: "tank_today" }
+  | { kind: "return_welcome"; since: string }
+  | { kind: "return_overdue_care"; items: ReturnOverdueItem[] }
+  | { kind: "return_responses"; kudos: number; comments: number }
+  | { kind: "return_followed_tanks"; items: FollowedTank[] }
+  | { kind: "return_region_news"; tanks: ReturnRegionTank[]; stories: ReturnRegionStory[] }
+  | ({ kind: "return_next_steps" } & ReturnNextSteps);
 
 export type Retrospective = { cards: RetrospectiveCard[] };
 

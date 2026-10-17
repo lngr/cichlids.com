@@ -64,7 +64,7 @@ describe("return retrospective client", () => {
 });
 
 describe("return cards", () => {
-  it("lists the cards with data in presentation order and ends with the next steps", () => {
+  it("starts with a welcome card, lists the cards with data in order and ends with the next steps", () => {
     const cards = returnCards({
       ...empty,
       overdueCare: [{ tankId: 1, tankTitle: "A", kind: "water_change", daysOverdue: 3 }],
@@ -72,17 +72,25 @@ describe("return cards", () => {
       regionNews: { tanks: [], stories: [{ id: 1, slug: null, title: null, author: owner }] },
       nextSteps: { careTanks: [{ tankId: 1, title: "A" }], timeLapseTanks: [] },
     });
-    expect(cards).toEqual(["overdue_care", "responses", "region_news", "next_steps"]);
+    expect(cards.map(card => card.kind)).toEqual(["return_welcome", "return_overdue_care", "return_responses", "return_region_news", "return_next_steps"]);
+    expect(cards[0]).toEqual({ kind: "return_welcome", since: empty.since });
+    expect(cards[4]).toEqual({ kind: "return_next_steps", careTanks: [{ tankId: 1, title: "A" }], timeLapseTanks: [] });
   });
 
-  it("leaves out cards without data and the next steps of an empty retrospective", () => {
+  it("leaves out cards without data and every card of a retrospective without data", () => {
     expect(returnCards({ ...empty, nextSteps: { careTanks: [{ tankId: 1, title: "A" }], timeLapseTanks: [] } })).toEqual([]);
     expect(returnCards({ ...empty, followedTanks: { items: [], hasMore: false }, regionNews: { tanks: [], stories: [] } })).toEqual([]);
   });
 
   it("omits next steps without a tank", () => {
     const cards = returnCards({ ...empty, responses: { kudos: 0, comments: 2 }, nextSteps: { careTanks: [], timeLapseTanks: [] } });
-    expect(cards).toEqual(["responses"]);
+    expect(cards.map(card => card.kind)).toEqual(["return_welcome", "return_responses"]);
+  });
+
+  it("shows followed tanks with their updates", () => {
+    const tank = { tankId: 5, title: "Followed", owner, update: null };
+    const cards = returnCards({ ...empty, followedTanks: { items: [tank], hasMore: false } });
+    expect(cards[1]).toEqual({ kind: "return_followed_tanks", items: [tank] });
   });
 });
 

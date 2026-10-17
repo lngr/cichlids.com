@@ -1,6 +1,7 @@
 import type { AuthorDto, CareKind, ReturnRetrospectiveDto, TankRegion } from "./generated/types.gen.js";
 import { toTodayFollowed } from "./todaySections.js";
 import type { TodayFollowed } from "./todaySections.js";
+import type { RetrospectiveCard } from "./retrospective.js";
 
 type Author = AuthorDto;
 
@@ -36,9 +37,6 @@ export type ReturnRetrospective = {
   nextSteps: ReturnNextSteps | null;
 };
 
-/** The cards of the story presentation, in the order they appear. */
-export type ReturnCardKind = "overdue_care" | "responses" | "followed_tanks" | "region_news" | "next_steps";
-
 const toRef = (tank: { tankId: number | string; title: string }): ReturnTankRef => ({ tankId: Number(tank.tankId), title: tank.title });
 
 export const toReturnRetrospective = (dto: ReturnRetrospectiveDto): ReturnRetrospective => ({
@@ -62,16 +60,24 @@ export const toReturnRetrospective = (dto: ReturnRetrospectiveDto): ReturnRetros
     : null,
 });
 
-/** The cards that have data, in presentation order; the next steps close the story when there are any. */
-export const returnCards = (retrospective: ReturnRetrospective): ReturnCardKind[] => {
-  const cards: ReturnCardKind[] = [];
-  if (retrospective.overdueCare?.length) cards.push("overdue_care");
-  if (retrospective.responses) cards.push("responses");
-  if (retrospective.followedTanks?.items.length) cards.push("followed_tanks");
-  if (retrospective.regionNews && (retrospective.regionNews.tanks.length > 0 || retrospective.regionNews.stories.length > 0)) cards.push("region_news");
+/**
+ * The cards of the story presentation in order: a welcome card with the start of the absence, then the
+ * cards that have data (overdue care, responses, followed tanks, region news) and, when any of them
+ * exist, the next steps with the own tanks they refer to.
+ */
+export const returnCards = (retrospective: ReturnRetrospective): RetrospectiveCard[] => {
+  const data: RetrospectiveCard[] = [];
+  if (retrospective.overdueCare?.length) data.push({ kind: "return_overdue_care", items: retrospective.overdueCare });
+  if (retrospective.responses) data.push({ kind: "return_responses", ...retrospective.responses });
+  if (retrospective.followedTanks?.items.length) data.push({ kind: "return_followed_tanks", items: retrospective.followedTanks.items });
+  const region = retrospective.regionNews;
+  if (region && (region.tanks.length > 0 || region.stories.length > 0)) data.push({ kind: "return_region_news", tanks: region.tanks, stories: region.stories });
+  if (data.length === 0) return [];
   const steps = retrospective.nextSteps;
-  if (cards.length > 0 && steps && (steps.careTanks.length > 0 || steps.timeLapseTanks.length > 0)) cards.push("next_steps");
-  return cards;
+  const closing: RetrospectiveCard[] = steps && (steps.careTanks.length > 0 || steps.timeLapseTanks.length > 0)
+    ? [{ kind: "return_next_steps", careTanks: steps.careTanks, timeLapseTanks: steps.timeLapseTanks }]
+    : [];
+  return [{ kind: "return_welcome", since: retrospective.since }, ...data, ...closing];
 };
 
 /** Whether the app opens the retrospective on its own: it is due and not yet seen. */
