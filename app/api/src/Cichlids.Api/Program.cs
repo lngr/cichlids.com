@@ -10,6 +10,7 @@ using Cichlids.Api.Features.Comments;
 using Cichlids.Api.Features.Community;
 using Cichlids.Api.Features.Decommissioning;
 using Cichlids.Api.Features.FeatureFlags;
+using Cichlids.Api.Features.Fish;
 using Cichlids.Api.Features.Media;
 using Cichlids.Api.Features.Library;
 using Cichlids.Api.Features.LegacyRedirects;
@@ -170,6 +171,8 @@ builder.Services.AddProblemDetails(options => options.CustomizeProblemDetails = 
         context.ProblemDetails.Extensions.TryAdd("code", StreakEndpoints.RequestInvalidCode);
     else if (InhabitantEndpoints.IsInhabitantPath(context.HttpContext.Request.Path))
         context.ProblemDetails.Extensions.TryAdd("code", InhabitantEndpoints.RequestInvalidCode);
+    else if (FishEndpoints.IsFishPath(context.HttpContext.Request.Path))
+        context.ProblemDetails.Extensions.TryAdd("code", FishEndpoints.RequestInvalidCode);
     else if (WebPushEndpoints.IsWebPushPath(context.HttpContext.Request.Path))
         context.ProblemDetails.Extensions.TryAdd("code", "web_push_request_invalid");
     else if (TankSeriesPhotoEndpoints.IsSeriesPhotoPath(context.HttpContext.Request.Path))
@@ -210,6 +213,8 @@ builder.Services.AddScoped<IArchiveRetrospectiveGate, ArchiveRetrospectiveGate>(
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<TanksWriteService>();
 builder.Services.AddScoped<InhabitantService>();
+builder.Services.AddScoped<FishService>();
+builder.Services.AddScoped<FishWriteService>();
 builder.Services.AddScoped<CareWriteService>();
 builder.Services.AddScoped<CarePhotoService>();
 builder.Services.AddOptions<WaterChangeOptions>()
@@ -379,6 +384,14 @@ app.UseWhen(context => InhabitantEndpoints.IsInhabitantPath(context.Request.Path
             status == 401 ? InhabitantEndpoints.AuthRequiredCode : InhabitantEndpoints.RequestInvalidCode).ExecuteAsync(context.HttpContext);
     }));
 
+app.UseWhen(context => FishEndpoints.IsFishPath(context.Request.Path), branch =>
+    branch.UseStatusCodePages(async context =>
+    {
+        var status = context.HttpContext.Response.StatusCode;
+        await Cichlids.Api.Features.Common.ApiProblems.WithCode(status, "Fish request refused", "The fish request could not be completed.",
+            status == 401 ? FishEndpoints.AuthRequiredCode : FishEndpoints.RequestInvalidCode).ExecuteAsync(context.HttpContext);
+    }));
+
 app.UseWhen(context => TankSeriesPhotoEndpoints.IsSeriesPhotoPath(context.Request.Path), branch =>
     branch.UseStatusCodePages(async context =>
     {
@@ -424,6 +437,7 @@ app.MapSpeciesEndpoints();
 app.MapStoriesEndpoints();
 app.MapStoryEditorEndpoints();
 app.MapTanksEndpoints();
+app.MapFishEndpoints();
 app.MapCareEndpoints();
 app.MapStreakEndpoints();
 app.MapTankDecommissioningEndpoints();

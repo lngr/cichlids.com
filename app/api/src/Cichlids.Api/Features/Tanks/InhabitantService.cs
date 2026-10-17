@@ -15,7 +15,8 @@ namespace Cichlids.Api.Features.Tanks;
 /// Reads and writes the stocking of a tank. Everyone who may see the profile of a tank reads the stocking;
 /// only the owner of a live tank writes, and any other caller meets the answer for a missing tank. Each
 /// write commits with an outbox event (inhabitant.added, inhabitant.updated, inhabitant.removed) that
-/// carries ids only. A name makes the count one. Days are the calendar dates of the caller and never lie
+/// carries ids only. A name makes the count one. Removing a named fish with the reason died also records its
+/// death on its timeline. Days are the calendar dates of the caller and never lie
 /// after the local date of the caller.
 /// </summary>
 public sealed class InhabitantService(CichlidsDbContext context, TankAccessService access, TanksQueryService tanks, TimeProvider clock)
@@ -124,6 +125,13 @@ public sealed class InhabitantService(CichlidsDbContext context, TankAccessServi
         var presentSince = inhabitant.MovedInOn
             ?? CarePlans.LocalDate(await context.Tanks.Where(t => t.Id == tankId).Select(t => t.CreatedAt).SingleAsync(ct), utcOffsetMinutes);
         if (removedOn < presentSince) return (null, RemovedOnInvalidCode);
+        if (reason == InhabitantRemovalReason.Died && inhabitant.Name is not null)
+        {
+            // The death of a named fish is an event on its timeline and does not precede an earlier event.
+            if (await context.InhabitantEvents.AnyAsync(e => e.InhabitantId == id && e.OccurredOn > removedOn, ct)) return (null, RemovedOnInvalidCode);
+            context.InhabitantEvents.Add(new InhabitantEvent { InhabitantId = id, Kind = InhabitantEventKind.Died, OccurredOn = removedOn });
+        }
+
         inhabitant.RemovedOn = removedOn;
         inhabitant.RemovalReason = reason;
         AddEvent("inhabitant.removed", inhabitant);

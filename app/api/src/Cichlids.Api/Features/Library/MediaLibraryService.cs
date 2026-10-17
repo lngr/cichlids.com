@@ -108,6 +108,35 @@ public sealed class MediaLibraryService(
     }
 
     /// <summary>
+    /// Adds a link from a photo or video of the member to an inhabitant, with the role photo or video, after the
+    /// links the role already has. The caller owns the transaction, saves the context and has checked that the
+    /// member owns the inhabitant. The file is locked against a concurrent deletion. A file that is not a file of
+    /// the member answers like a missing file (media_not_found); a file that is already linked to the inhabitant
+    /// answers media_already_linked. Nothing is added when an error is returned.
+    /// </summary>
+    public async Task<string?> LinkToInhabitantAsync(long profileId, long inhabitantId, long mediaItemId, CancellationToken cancellationToken)
+    {
+        var kind = await context.MediaItems
+            .FromSqlInterpolated($"SELECT * FROM public.media_item WHERE id = {mediaItemId} AND owner_profile_id = {profileId} FOR UPDATE")
+            .Select(m => (MediaKind?)m.Kind).SingleOrDefaultAsync(cancellationToken);
+        if (kind is null)
+        {
+            return NotFoundCode;
+        }
+
+        var role = kind == MediaKind.Video ? MediaLinkRole.Video : MediaLinkRole.Photo;
+        var positions = await context.MediaLinks.AsNoTracking().Where(l => l.InhabitantId == inhabitantId && l.Role == role)
+            .Select(l => new { l.MediaItemId, l.Position }).ToListAsync(cancellationToken);
+        if (await context.MediaLinks.AnyAsync(l => l.InhabitantId == inhabitantId && l.MediaItemId == mediaItemId, cancellationToken))
+        {
+            return AlreadyLinkedCode;
+        }
+
+        context.MediaLinks.Add(MediaLink.ForInhabitant(inhabitantId, mediaItemId, role, positions.Count == 0 ? 0 : positions.Max(l => l.Position) + 1));
+        return null;
+    }
+
+    /// <summary>
     /// Deletes the file of the member with its renditions and all its links and returns the places it was
     /// linked to. A published story that loses its last item is removed with it, a draft story is deleted.
     /// The stored objects are deleted after the commit. A file that proves a decommissioning stays. A file
