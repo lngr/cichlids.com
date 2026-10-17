@@ -435,6 +435,65 @@ export type FinishWaterChangeRequest = {
     amount?: null | CareAmountRequest;
 };
 
+export type FishDto = {
+    id: number | string;
+    name: string;
+    species: null | InhabitantSpeciesRefDto;
+    owner: AuthorDto;
+    isOwner: boolean;
+    tank: FishTankDto;
+    movedInOn: null | string;
+    removedOn: null | string;
+    removalReason: null | InhabitantRemovalReason;
+    memorial: boolean;
+    photos: Array<FishPhotoDto>;
+    videos: Array<VideoDto>;
+    timeline: Array<FishTimelineItemDto>;
+};
+
+export type FishGrowthDto = {
+    lengthCm: number | string;
+    inputValue: number | string;
+    inputUnit: DimensionUnit;
+};
+
+export type FishMoveDto = {
+    fromTank: null | FishTankDto;
+    toTank: null | FishTankDto;
+};
+
+export type FishPhotoDto = {
+    mediaItemId: number | string;
+    width: null | number | string;
+    height: null | number | string;
+    image: ImageUrlsDto;
+    createdAt: string;
+};
+
+export type FishSpawningDto = {
+    generation: null | number | string;
+    hybrid: boolean;
+};
+
+export type FishTankDto = {
+    id: number | string;
+    title: string;
+    deleted: boolean;
+};
+
+export type FishTimelineItemDto = {
+    kind: FishTimelineKind;
+    on: string;
+    eventId: null | number | string;
+    growth: null | FishGrowthDto;
+    spawning: null | FishSpawningDto;
+    move: null | FishMoveDto;
+    year: null | number | string;
+    reason: null | InhabitantRemovalReason;
+};
+
+export type FishTimelineKind = 'moved_in' | 'growth' | 'spawning' | 'moved' | 'died' | 'left' | 'anniversary';
+
 export type FollowedStoryDto = {
     id: number | string;
     slug: null | string;
@@ -505,6 +564,10 @@ export type LegacyTankDto = {
     id: number | string;
     title: string;
     region: null | TankRegion;
+};
+
+export type LinkFishMediaRequest = {
+    mediaItemId: null | number | string;
 };
 
 export type LogCareRequest = {
@@ -619,12 +682,19 @@ export type MilestoneDto = {
     tankTitle: string;
     value: number | string;
     reachedOn: string;
+    inhabitantId: null | number | string;
+    inhabitantName: null | string;
 };
 
-export type MilestoneKind = 'first_care_week' | 'kept_streak' | 'tank_anniversary';
+export type MilestoneKind = 'first_care_week' | 'kept_streak' | 'tank_anniversary' | 'fish_anniversary';
 
 export type MilestonesDto = {
     items: Array<MilestoneDto>;
+};
+
+export type MoveFishRequest = {
+    toTankId: null | number | string;
+    on: null | string;
 };
 
 export type MyStoryDto = {
@@ -807,6 +877,22 @@ export type PublishStoryRequest = {
     title: null | string;
     description: null | string;
     topic: null | string;
+};
+
+export type RecordDeathRequest = {
+    on: null | string;
+};
+
+export type RecordGrowthRequest = {
+    length: null | number | string;
+    unit: null | string;
+    on: null | string;
+};
+
+export type RecordSpawningRequest = {
+    generation: null | number | string;
+    hybrid: null | boolean;
+    on: null | string;
 };
 
 export type RefineRegionRequest = {
@@ -4509,6 +4595,316 @@ export type RemoveTankInhabitantResponses = {
 };
 
 export type RemoveTankInhabitantResponse = RemoveTankInhabitantResponses[keyof RemoveTankInhabitantResponses];
+
+export type GetFishData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: {
+        date?: string;
+    };
+    url: '/api/fish/{id}';
+};
+
+export type GetFishErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type GetFishError = GetFishErrors[keyof GetFishErrors];
+
+export type GetFishResponses = {
+    /**
+     * OK
+     */
+    200: FishDto;
+};
+
+export type GetFishResponse = GetFishResponses[keyof GetFishResponses];
+
+export type RecordFishGrowthData = {
+    body?: null | RecordGrowthRequest;
+    path: {
+        id: number;
+    };
+    query?: {
+        date?: string;
+    };
+    url: '/api/fish/{id}/growth';
+};
+
+export type RecordFishGrowthErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type RecordFishGrowthError = RecordFishGrowthErrors[keyof RecordFishGrowthErrors];
+
+export type RecordFishGrowthResponses = {
+    /**
+     * OK
+     */
+    200: FishDto;
+};
+
+export type RecordFishGrowthResponse = RecordFishGrowthResponses[keyof RecordFishGrowthResponses];
+
+export type RecordFishSpawningData = {
+    body?: null | RecordSpawningRequest;
+    path: {
+        id: number;
+    };
+    query?: {
+        date?: string;
+    };
+    url: '/api/fish/{id}/spawning';
+};
+
+export type RecordFishSpawningErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type RecordFishSpawningError = RecordFishSpawningErrors[keyof RecordFishSpawningErrors];
+
+export type RecordFishSpawningResponses = {
+    /**
+     * OK
+     */
+    200: FishDto;
+};
+
+export type RecordFishSpawningResponse = RecordFishSpawningResponses[keyof RecordFishSpawningResponses];
+
+export type MoveFishData = {
+    body?: null | MoveFishRequest;
+    path: {
+        id: number;
+    };
+    query?: {
+        date?: string;
+    };
+    url: '/api/fish/{id}/move';
+};
+
+export type MoveFishErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type MoveFishError = MoveFishErrors[keyof MoveFishErrors];
+
+export type MoveFishResponses = {
+    /**
+     * OK
+     */
+    200: FishDto;
+};
+
+export type MoveFishResponse = MoveFishResponses[keyof MoveFishResponses];
+
+export type RecordFishDeathData = {
+    body?: null | RecordDeathRequest;
+    path: {
+        id: number;
+    };
+    query?: {
+        date?: string;
+    };
+    url: '/api/fish/{id}/death';
+};
+
+export type RecordFishDeathErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type RecordFishDeathError = RecordFishDeathErrors[keyof RecordFishDeathErrors];
+
+export type RecordFishDeathResponses = {
+    /**
+     * OK
+     */
+    200: FishDto;
+};
+
+export type RecordFishDeathResponse = RecordFishDeathResponses[keyof RecordFishDeathResponses];
+
+export type DeleteFishEventData = {
+    body?: never;
+    path: {
+        id: number;
+        eventId: number;
+    };
+    query?: {
+        date?: string;
+    };
+    url: '/api/fish/{id}/events/{eventId}';
+};
+
+export type DeleteFishEventErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type DeleteFishEventError = DeleteFishEventErrors[keyof DeleteFishEventErrors];
+
+export type DeleteFishEventResponses = {
+    /**
+     * OK
+     */
+    200: FishDto;
+};
+
+export type DeleteFishEventResponse = DeleteFishEventResponses[keyof DeleteFishEventResponses];
+
+export type LinkFishMediaData = {
+    body?: null | LinkFishMediaRequest;
+    path: {
+        id: number;
+    };
+    query?: {
+        date?: string;
+    };
+    url: '/api/fish/{id}/media';
+};
+
+export type LinkFishMediaErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type LinkFishMediaError = LinkFishMediaErrors[keyof LinkFishMediaErrors];
+
+export type LinkFishMediaResponses = {
+    /**
+     * OK
+     */
+    200: FishDto;
+};
+
+export type LinkFishMediaResponse = LinkFishMediaResponses[keyof LinkFishMediaResponses];
+
+export type UnlinkFishMediaData = {
+    body?: never;
+    path: {
+        id: number;
+        mediaItemId: number;
+    };
+    query?: {
+        date?: string;
+    };
+    url: '/api/fish/{id}/media/{mediaItemId}';
+};
+
+export type UnlinkFishMediaErrors = {
+    /**
+     * Unauthorized
+     */
+    401: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+};
+
+export type UnlinkFishMediaError = UnlinkFishMediaErrors[keyof UnlinkFishMediaErrors];
+
+export type UnlinkFishMediaResponses = {
+    /**
+     * OK
+     */
+    200: FishDto;
+};
+
+export type UnlinkFishMediaResponse = UnlinkFishMediaResponses[keyof UnlinkFishMediaResponses];
 
 export type ListCareEntriesData = {
     body?: never;
