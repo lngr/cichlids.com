@@ -99,7 +99,7 @@ public sealed class ProfileMigrationStep : IEtlStep
 
     /// <summary>
     /// Resolves every row's handle. A usable legacy username is kept, suffixed with the legacy id
-    /// when an earlier row has the same one. A row without a usable legacy username gets a
+    /// when an earlier row has the same one apart from case. A row without a usable legacy username gets a
     /// generated handle keyed by its legacy id, unique against every handle of this run and the
     /// usernames of profiles outside it.
     /// </summary>
@@ -108,10 +108,10 @@ public sealed class ProfileMigrationStep : IEtlStep
     {
         var usable = rows.Where(r => PublicHandle.IsUsable(r.Username)).ToList();
         var counts = usable
-            .GroupBy(r => r.Username, StringComparer.Ordinal)
-            .ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal);
+            .GroupBy(r => r.Username, StringComparer.OrdinalIgnoreCase)
+            .ToDictionary(g => g.Key, g => g.Count(), StringComparer.OrdinalIgnoreCase);
 
-        var seen = new HashSet<string>(StringComparer.Ordinal);
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var result = new Dictionary<int, string>();
         foreach (var row in usable)
         {
@@ -128,7 +128,7 @@ public sealed class ProfileMigrationStep : IEtlStep
             }
         }
 
-        var taken = new HashSet<string>(result.Values, StringComparer.Ordinal);
+        var taken = new HashSet<string>(result.Values, StringComparer.OrdinalIgnoreCase);
         taken.UnionWith(otherUsernames);
         foreach (var row in rows.Where(r => !PublicHandle.IsUsable(r.Username)))
         {
@@ -152,7 +152,7 @@ public sealed class ProfileMigrationStep : IEtlStep
             context.Transaction);
         command.Parameters.AddWithValue("legacy_ids", rows.Select(r => r.Uid).ToArray());
 
-        var result = new HashSet<string>(StringComparer.Ordinal);
+        var result = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         await using var reader = await command.ExecuteReaderAsync(cancellationToken);
         while (await reader.ReadAsync(cancellationToken))
         {

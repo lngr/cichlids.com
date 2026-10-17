@@ -64,7 +64,7 @@ VALUES
     (11, 'bob', '', 'Bob', 'B', '', '', NULL, 0, 0, 0, NULL, NULL, 0, 0),
     (12, 'charlie', 'Charlie C', 'Charlie', 'C', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 0),
     (13, 'dupuser', 'Dup One', 'Dup', 'One', '', '', NULL, 1000000000, 0, 0, 'dup-openid', NULL, 0, 0),
-    (14, 'dupuser', 'Dup Two', 'Dup', 'Two', '', '', NULL, 1000000000, 0, 0, 'dup-openid', NULL, 0, 0),
+    (14, 'DupUser', 'Dup Two', 'Dup', 'Two', '', '', NULL, 1000000000, 0, 0, 'dup-openid', NULL, 0, 0),
     (15, 'deleteduser', 'Deleted', 'Deleted', 'User', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 1, 0),
     (16, 'disableduser', 'Disabled', 'Disabled', 'User', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 1),
     (17, 'eve@example.com', '', '', '', '', '', 'https://s.gravatar.com/avatar/deadbeef?s=480', 1000000000, 0, 0, NULL, NULL, 0, 0),

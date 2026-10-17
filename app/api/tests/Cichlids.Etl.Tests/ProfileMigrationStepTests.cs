@@ -29,7 +29,7 @@ public sealed class ProfileMigrationStepTests(EtlFixture fixture)
         Assert.Equal(1, stats1.Updated);
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("profile_identity_duplicate"));
         var usernameWarning = Assert.Single(stats1.Warnings);
-        Assert.Contains("dupuser", usernameWarning);
+        Assert.Contains("DupUser", usernameWarning);
 
         await using (var db = fixture.CreateTargetContext())
         {
@@ -55,7 +55,7 @@ public sealed class ProfileMigrationStepTests(EtlFixture fixture)
             var dup1 = await db.Profiles.Include(p => p.Identities).SingleAsync(p => p.LegacyId == 13);
             var dup2 = await db.Profiles.Include(p => p.Identities).SingleAsync(p => p.LegacyId == 14);
             Assert.Equal("dupuser", dup1.Username);
-            Assert.Equal("dupuser-14", dup2.Username);
+            Assert.Equal("DupUser-14", dup2.Username);
             Assert.Equal(2, dup1.Identities.Count);
             Assert.Contains(dup1.Identities, i => i.Provider == "legacy-openid" && i.Subject == "dup-openid");
             var dup2Identity = Assert.Single(dup2.Identities);
