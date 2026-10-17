@@ -93,6 +93,9 @@ public sealed class ProvisionalAccountCleanupTests(UploadsFixture fixture) : IAs
         return profile;
     }
 
+    private static Task<int> SetKindAsync(CichlidsDbContext db, ProfileKind kind, params long[] profileIds) =>
+        db.Profiles.Where(p => profileIds.Contains(p.Id)).ExecuteUpdateAsync(s => s.SetProperty(p => p.Kind, kind));
+
     private async Task<bool> ExistsAsync(long profileId)
     {
         await using var db = fixture.CreateDbContext();
@@ -137,7 +140,11 @@ public sealed class ProvisionalAccountCleanupTests(UploadsFixture fixture) : IAs
     {
         await using var db = fixture.CreateDbContext();
         var keys = new List<string>();
-        var tank = new Tank { ProfileId = profileId, Title = "Tank", CreatedAt = Now };
+        var tank = new Tank
+        {
+            ProfileId = profileId, Title = "Tank", CreatedAt = Now,
+            ProfileVisibility = TankVisibility.Private, StreamVisibility = TankVisibility.Private,
+        };
         db.Tanks.Add(tank);
         await db.SaveChangesAsync();
 
@@ -294,6 +301,8 @@ public sealed class ProvisionalAccountCleanupTests(UploadsFixture fixture) : IAs
         long storyId;
         await using (var db = fixture.CreateDbContext())
         {
+            // The database refuses such content for a provisional profile, so the profiles are members while it is written.
+            await SetKindAsync(db, ProfileKind.Member, profile.Id, other.Id);
             var tank = new Tank { ProfileId = profile.Id, Title = "Tank", CreatedAt = Now };
             var story = new Story { AuthorProfileId = profile.Id, CreatedAt = Now, UpdatedAt = Now };
             db.Tanks.Add(tank);
@@ -305,6 +314,7 @@ public sealed class ProvisionalAccountCleanupTests(UploadsFixture fixture) : IAs
             db.Follows.Add(new Follow { FollowerProfileId = other.Id, TargetProfileId = profile.Id, CreatedAt = Now });
             db.Collections.Add(new Collection { ProfileId = profile.Id, Title = "c", CreatedAt = Now });
             await db.SaveChangesAsync();
+            await SetKindAsync(db, ProfileKind.Provisional, profile.Id, other.Id);
         }
 
         await RunAsync();
