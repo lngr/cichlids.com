@@ -195,7 +195,7 @@ public sealed class MediaVisibilityTests(PostgresFixture fixture)
         await db.Database.ExecuteSqlRawAsync("ALTER TABLE public.media_link DROP CONSTRAINT ck_media_link_role");
         var w = new World(db, await TestDataBuilder.CreateProfileAsync(db), await TestDataBuilder.CreateProfileAsync(db));
         var tank = await w.TankAsync(profile, TankVisibility.Private);
-        var inhabitant = new Inhabitant { TankId = tank.Id };
+        var inhabitant = new Inhabitant { TankId = tank.Id, OwnerProfileId = tank.ProfileId };
         db.Inhabitants.Add(inhabitant);
         await db.SaveChangesAsync();
         var item = await w.ItemAsync();

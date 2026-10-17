@@ -63,6 +63,8 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
             var first = reef.Inhabitants.Single(i => i.Sort == 0);
             Assert.Equal(species.Id, first.SpeciesId);
             Assert.Equal(5, first.Count);
+            Assert.All(reef.Inhabitants, i => Assert.Equal(owner.Id, i.OwnerProfileId));
+            Assert.All(reef.Inhabitants, i => Assert.Null(i.MovedInOn));
             var third = reef.Inhabitants.Single(i => i.Sort == 2);
             Assert.Null(third.SpeciesId);
             Assert.Equal(3, third.Count);
@@ -101,6 +103,17 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
             Assert.Null(communityArchive.LegacyId);
         }
 
+        // A named fish the member kept after the migration stays when the step runs a second time.
+        await using (var db = fixture.CreateTargetContext())
+        {
+            var reef = await db.Tanks.SingleAsync(t => t.LegacyId == 10);
+            db.Inhabitants.Add(new Inhabitant
+            {
+                TankId = reef.Id, OwnerProfileId = reef.ProfileId, Name = "Bruno", Count = 1, MovedInOn = new DateOnly(2026, 10, 1), Sort = 9,
+            });
+            await db.SaveChangesAsync();
+        }
+
         var stats2 = await RunStepAsync();
 
         Assert.Equal(6, stats2.Read);
@@ -120,7 +133,9 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
             Assert.Equal(1, await db.Profiles.CountAsync(p => p.Username == "community-archive"));
 
             var reef = await db.Tanks.Include(t => t.Inhabitants).SingleAsync(t => t.LegacyId == 10);
-            Assert.Equal(3, reef.Inhabitants.Count);
+            Assert.Equal(4, reef.Inhabitants.Count);
+            Assert.Single(reef.Inhabitants, i => i.Name == "Bruno");
+            Assert.Equal(3, reef.Inhabitants.Count(i => i.MovedInOn == null));
         }
     }
 

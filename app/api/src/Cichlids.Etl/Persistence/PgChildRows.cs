@@ -27,7 +27,8 @@ public static class PgChildRows
         IReadOnlyList<string> columns,
         IReadOnlyList<IReadOnlyList<object?>> rows,
         CancellationToken cancellationToken,
-        Scope? scope = null)
+        Scope? scope = null,
+        string? deleteFilter = null)
     {
         var scopeIndex = -1;
         if (scope is not null)
@@ -52,6 +53,11 @@ public static class PgChildRows
         if (scope is not null)
         {
             deleteSql += $" AND {scope.Column} = ANY(@scopeValues)";
+        }
+
+        if (deleteFilter is not null)
+        {
+            deleteSql += $" AND ({deleteFilter})";
         }
 
         await using (var delete = new NpgsqlCommand(deleteSql, connection, transaction))

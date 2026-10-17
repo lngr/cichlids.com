@@ -15,7 +15,7 @@ public sealed class StorySubjectTests(PostgresFixture fixture)
         await using var context = fixture.CreateContext();
         var owner = await TestDataBuilder.CreateProfileAsync(context);
         var tank = await TestDataBuilder.CreateTankAsync(context, owner.Id);
-        var inhabitant = new Inhabitant { TankId = tank.Id, Count = 3 };
+        var inhabitant = new Inhabitant { TankId = tank.Id, OwnerProfileId = owner.Id, Count = 3 };
         var species = new Species { Genus = $"G{Guid.NewGuid():N}", Name = "test" };
         context.AddRange(inhabitant, species);
         await context.SaveChangesAsync();

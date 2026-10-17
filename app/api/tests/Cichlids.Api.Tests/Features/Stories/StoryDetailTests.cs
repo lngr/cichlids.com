@@ -30,6 +30,7 @@ public class StoryDetailTests(ApiFixture fixture) : IAsyncLifetime
         await db.TankSelectedMembers.Where(s => _tankIds.Contains(s.TankId)).ExecuteDeleteAsync();
         await db.SlugAliases.Where(s => _storyIds.Contains(s.StoryId)).ExecuteDeleteAsync();
         await db.Stories.Where(s => _storyIds.Contains(s.Id)).ExecuteDeleteAsync();
+        await db.Inhabitants.Where(i => _tankIds.Contains(i.TankId)).ExecuteDeleteAsync();
         await db.Tanks.Where(t => _tankIds.Contains(t.Id)).ExecuteDeleteAsync();
         await db.Species.Where(s => _speciesIds.Contains(s.Id)).ExecuteDeleteAsync();
         await db.MediaVariants.Where(v => _mediaItemIds.Contains(v.MediaItemId)).ExecuteDeleteAsync();
@@ -91,7 +92,7 @@ public class StoryDetailTests(ApiFixture fixture) : IAsyncLifetime
         await raw.SaveChangesAsync();
         _tankIds.Add(tank.Id);
         _speciesIds.Add(species.Id);
-        var inhabitant = new Inhabitant { TankId = tank.Id, SpeciesId = species.Id, Count = 4, Sort = 0 };
+        var inhabitant = new Inhabitant { TankId = tank.Id, OwnerProfileId = tank.ProfileId, SpeciesId = species.Id, Count = 4, Sort = 0 };
         raw.Inhabitants.Add(inhabitant);
         var story = new Story
         {

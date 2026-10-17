@@ -122,16 +122,17 @@ public sealed class TankMigrationStep : IEtlStep
             }
 
             var inhabitants = ParseInhabitants(
-                reader.GetStringOrEmpty("fish"), reader.GetStringOrEmpty("fish_count"), speciesIdsByLegacyId, stats);
+                ownerProfileId, reader.GetStringOrEmpty("fish"), reader.GetStringOrEmpty("fish_count"), speciesIdsByLegacyId, stats);
             await PgChildRows.ReplaceAsync(
                 context.Target,
                 context.Transaction,
                 "inhabitant",
                 "tank_id",
                 tankId,
-                ["species_id", "count", "sort"],
+                ["owner_profile_id", "species_id", "count", "sort"],
                 inhabitants,
-                cancellationToken);
+                cancellationToken,
+                deleteFilter: "moved_in_on IS NULL");
         }
 
         anonymous.Report();
@@ -212,6 +213,7 @@ public sealed class TankMigrationStep : IEtlStep
     /// inhabitant row.
     /// </summary>
     private static List<IReadOnlyList<object?>> ParseInhabitants(
+        long ownerProfileId,
         string fishCsv,
         string fishCountText,
         IReadOnlyDictionary<int, long> speciesIdsByLegacyId,
@@ -250,7 +252,7 @@ public sealed class TankMigrationStep : IEtlStep
                 continue;
             }
 
-            result.Add(new object?[] { speciesId, count, i });
+            result.Add(new object?[] { ownerProfileId, speciesId, count, i });
         }
 
         return result;

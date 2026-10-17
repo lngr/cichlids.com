@@ -48,7 +48,7 @@ try {
   const addTank = (title, visibility, species) => {
     const id = Number(sql(`insert into tank (profile_id, title, state, profile_visibility, stream_visibility, created_at, published_at)
       values (${owner}, '${title}', 'published', '${visibility}', '${visibility}', now(), now()) returning id`).split("\n")[0]);
-    species.forEach((key, index) => sql(`insert into inhabitant (tank_id, species_id, count, sort) values (${id}, ${speciesId(key)}, 2, ${index})`));
+    species.forEach((key, index) => sql(`insert into inhabitant (tank_id, owner_profile_id, species_id, count, sort) values (${id}, ${owner}, ${speciesId(key)}, 2, ${index})`));
     return id;
   };
   tankTitles.forEach((title) => addTank(title, "public", ["main", "partner"]));
@@ -98,6 +98,7 @@ try {
       sql(`delete from media_item where id in (${items})`);
       sql(`delete from story where id = ${storyId}`);
     }
+    sql(`delete from inhabitant where tank_id in (select id from tank where title like 'Speccom ${run} %')`);
     sql(`delete from tank where title like 'Speccom ${run} %'`);
     sql(`delete from species where slug like 'speccom-${run}-%'`);
   } finally {

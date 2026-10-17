@@ -294,8 +294,8 @@ public sealed record SeedData(
         await context.SaveChangesAsync();
 
         context.Inhabitants.AddRange(
-            new Inhabitant { TankId = publishedTank.Id, SpeciesId = tropheus.Id, Count = 6, Sort = 0 },
-            new Inhabitant { TankId = publishedTank.Id, SpeciesId = neolamprologus.Id, Count = 8, Sort = 1 });
+            new Inhabitant { TankId = publishedTank.Id, OwnerProfileId = publishedTank.ProfileId, SpeciesId = tropheus.Id, Count = 6, Sort = 0 },
+            new Inhabitant { TankId = publishedTank.Id, OwnerProfileId = publishedTank.ProfileId, SpeciesId = neolamprologus.Id, Count = 8, Sort = 1 });
         await context.SaveChangesAsync();
 
         var tankCommentWithAuthor = new Comment

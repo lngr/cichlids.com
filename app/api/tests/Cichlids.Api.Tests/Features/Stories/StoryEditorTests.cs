@@ -505,7 +505,7 @@ public sealed class StoryEditorTests(UploadsFixture fixture)
             var species = new SpeciesEntity { Genus = $"Hidden{Guid.NewGuid():N}", Name = "test", DisplayName = "Hidden test" };
             db.Species.Add(species);
             await db.SaveChangesAsync();
-            db.Inhabitants.Add(new Inhabitant { TankId = tank, SpeciesId = species.Id, Count = 2, Sort = 0 });
+            db.Inhabitants.Add(new Inhabitant { TankId = tank, OwnerProfileId = await db.Tanks.Where(t => t.Id == tank).Select(t => t.ProfileId).SingleAsync(), SpeciesId = species.Id, Count = 2, Sort = 0 });
             await db.SaveChangesAsync();
         }
 

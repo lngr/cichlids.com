@@ -944,6 +944,27 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("count");
 
+                    b.Property<DateOnly?>("MovedInOn")
+                        .HasColumnType("date")
+                        .HasColumnName("moved_in_on");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)")
+                        .HasColumnName("name");
+
+                    b.Property<long>("OwnerProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("owner_profile_id");
+
+                    b.Property<string>("RemovalReason")
+                        .HasColumnType("text")
+                        .HasColumnName("removal_reason");
+
+                    b.Property<DateOnly?>("RemovedOn")
+                        .HasColumnType("date")
+                        .HasColumnName("removed_on");
+
                     b.Property<int>("Sort")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
@@ -961,13 +982,27 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.HasKey("Id")
                         .HasName("pk_inhabitant");
 
+                    b.HasIndex("OwnerProfileId")
+                        .HasDatabaseName("ix_inhabitant_owner_profile_id");
+
                     b.HasIndex("SpeciesId")
                         .HasDatabaseName("ix_inhabitant_species_id");
 
-                    b.HasIndex("TankId")
-                        .HasDatabaseName("ix_inhabitant_tank_id");
+                    b.HasIndex("TankId", "RemovedOn")
+                        .HasDatabaseName("ix_inhabitant_tank_id_removed_on");
 
-                    b.ToTable("inhabitant", "public");
+                    b.ToTable("inhabitant", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_inhabitant_dates", "removed_on IS NULL OR moved_in_on IS NULL OR removed_on >= moved_in_on");
+
+                            t.HasCheckConstraint("ck_inhabitant_name_count", "name IS NULL OR (count IS NOT NULL AND count = 1)");
+
+                            t.HasCheckConstraint("ck_inhabitant_name_not_blank", "name IS NULL OR length(btrim(name)) > 0");
+
+                            t.HasCheckConstraint("ck_inhabitant_removal", "(removed_on IS NULL) = (removal_reason IS NULL)");
+
+                            t.HasCheckConstraint("ck_inhabitant_removal_reason", "removal_reason IS NULL OR removal_reason IN ('died', 'given_away', 'moved')");
+                        });
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.MediaItem", b =>
@@ -3245,6 +3280,13 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Cichlids.Domain.Entities.Inhabitant", b =>
                 {
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("OwnerProfileId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_inhabitant_profiles_owner_profile_id");
+
                     b.HasOne("Cichlids.Domain.Entities.Species", null)
                         .WithMany()
                         .HasForeignKey("SpeciesId")
@@ -3254,7 +3296,7 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.HasOne("Cichlids.Domain.Entities.Tank", null)
                         .WithMany("Inhabitants")
                         .HasForeignKey("TankId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_inhabitant_tanks_tank_id");
                 });
