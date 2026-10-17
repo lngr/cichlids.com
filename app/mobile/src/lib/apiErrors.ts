@@ -101,6 +101,8 @@ export const API_ERROR_CODES = [
   "inhabitant_date_invalid",
   "inhabitant_request_invalid",
   "inhabitant_auth_required",
+  "inhabitant_moved_in_after_events",
+  "inhabitant_name_required",
   "fish_not_found",
   "fish_invalid",
   "fish_date_invalid",
