@@ -40,6 +40,7 @@ public sealed class ReturnRetrospectiveTests(ApiFixture fixture) : IAsyncLifetim
         await db.MediaItems.Where(m => _mediaItems.Contains(m.Id)).ExecuteDeleteAsync();
         await db.Comments.Where(c => c.TankId != null && _tanks.Contains(c.TankId.Value)).ExecuteDeleteAsync();
         await RemoveTanksAsync(fixture, _tanks.ToArray());
+        await db.Profiles.Where(p => p.LegacyId >= 1_500_000_000).ExecuteUpdateAsync(s => s.SetProperty(p => p.LegacyId, (int?)null));
     }
 
     private static DateTimeOffset Ago(int days, int hours = 0) => DateTimeOffset.UtcNow.AddDays(-days).AddHours(-hours);
@@ -308,6 +309,37 @@ public sealed class ReturnRetrospectiveTests(ApiFixture fixture) : IAsyncLifetim
         Assert.NotNull(profile.AwaySince);
         Assert.Null(profile.ReturnRetrospectiveSeenAt);
         Assert.Equal(HttpStatusCode.OK, (await GetAsync(member)).Status);
+    }
+
+    [Fact]
+    public async Task GivenArchiveContentThatTheMemberHasNotSeen_WhenTheRetrospectiveLoads_ThenTheArchiveRetrospectiveWinsUntilItIsSeen()
+    {
+        var member = await AwayMemberAsync();
+        var own = await TankAsync(member.ProfileId);
+        await CareAsync(own, member.ProfileId, Ago(60));
+        await using (var db = fixture.CreateDbContext())
+        {
+            await db.Tanks.Where(t => t.Id == own).ExecuteUpdateAsync(s => s.SetProperty(t => t.LegacyId, Random.Shared.Next(1_500_000_000, int.MaxValue)));
+            await db.Profiles.Where(p => p.Id == member.ProfileId).ExecuteUpdateAsync(s => s.SetProperty(p => p.LegacyId, Random.Shared.Next(1_500_000_000, int.MaxValue)));
+        }
+
+        await AssertNoRetrospectiveAsync(member);
+        Assert.Equal(HttpStatusCode.NoContent, await SeenAsync(member));
+        Assert.NotNull((await ProfileAsync(member.ProfileId)).AwaySince);
+
+        await SetProfileAsync(member.ProfileId, p => p.ArchiveRetrospectiveSeenAt = DateTimeOffset.UtcNow);
+
+        Assert.False((await RetrospectiveAsync(member)).GetProperty("seen").GetBoolean());
+    }
+
+    [Fact]
+    public async Task GivenAMemberWithoutLegacyData_WhenTheRetrospectiveLoads_ThenTheArchiveRetrospectiveDoesNotWait()
+    {
+        var member = await AwayMemberAsync();
+        var own = await TankAsync(member.ProfileId);
+        await CareAsync(own, member.ProfileId, Ago(60));
+
+        Assert.False((await RetrospectiveAsync(member)).GetProperty("seen").GetBoolean());
     }
 
     private sealed class FixedArchiveGate(bool due) : IArchiveRetrospectiveGate

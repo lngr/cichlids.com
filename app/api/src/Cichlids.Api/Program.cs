@@ -203,7 +203,7 @@ builder.Services.AddScoped<TodayQueryService>();
 builder.Services.AddScoped<FollowedTanksService>();
 builder.Services.AddScoped<MilestoneService>();
 builder.Services.AddScoped<ReturnRetrospectiveService>();
-builder.Services.AddScoped<IArchiveRetrospectiveGate, NoArchiveRetrospectiveGate>();
+builder.Services.AddScoped<IArchiveRetrospectiveGate, ArchiveRetrospectiveGate>();
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<TanksWriteService>();
 builder.Services.AddScoped<CareWriteService>();

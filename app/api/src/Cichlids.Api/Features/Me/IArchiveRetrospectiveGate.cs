@@ -1,3 +1,7 @@
+using Cichlids.Api.Features.Retrospectives;
+using Cichlids.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+
 namespace Cichlids.Api.Features.Me;
 
 /// <summary>
@@ -10,9 +14,12 @@ public interface IArchiveRetrospectiveGate
 }
 
 /// <summary>
-/// The archive retrospective gate of a deployment without archive retrospectives: none is ever due.
+/// The archive retrospective of a member is due while the member is a legacy member (profile.legacy_id), has
+/// archive content and has not seen the retrospective.
 /// </summary>
-public sealed class NoArchiveRetrospectiveGate : IArchiveRetrospectiveGate
+public sealed class ArchiveRetrospectiveGate(CichlidsDbContext context, ArchiveRetrospectiveQueryService archive) : IArchiveRetrospectiveGate
 {
-    public Task<bool> IsDueAsync(long profileId, CancellationToken cancellationToken) => Task.FromResult(false);
+    public async Task<bool> IsDueAsync(long profileId, CancellationToken cancellationToken) =>
+        await context.Profiles.AsNoTracking().AnyAsync(p => p.Id == profileId && p.LegacyId != null && p.ArchiveRetrospectiveSeenAt == null, cancellationToken)
+        && await archive.ExistsAsync(profileId, cancellationToken);
 }
