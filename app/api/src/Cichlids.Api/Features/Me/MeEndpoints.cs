@@ -4,6 +4,7 @@ using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Auth;
 using Cichlids.Api.Features.Auth.Devices;
 using Cichlids.Api.Features.Profiles;
+using Cichlids.Api.Features.Streaks;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,33 @@ public static class MeEndpoints
             .RequireAuthorization()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status403Forbidden);
+
+        app.MapGet("/api/me/today/followed", GetTodayFollowedAsync)
+            .WithName("GetTodayFollowed")
+            .WithTags("Me")
+            .RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status403Forbidden);
+
+        app.MapGet("/api/me/followed-tanks", ListFollowedTanksAsync)
+            .WithName("ListMyFollowedTanks")
+            .WithTags("Me")
+            .RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status403Forbidden);
+
+        app.MapGet("/api/me/today/milestones", GetTodayMilestonesAsync)
+            .WithName("GetTodayMilestones")
+            .WithTags("Me")
+            .RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .ProducesProblem(StatusCodes.Status403Forbidden);
+
+        app.MapPut("/api/me/today/milestones/{key}/dismissal", DismissMilestoneAsync)
+            .WithName("DismissMilestone")
+            .WithTags("Me")
+            .RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .ProducesProblem(StatusCodes.Status403Forbidden)
+            .ProducesProblem(StatusCodes.Status404NotFound);
 
         app.MapGet("/api/me/settings", GetSettingsAsync)
             .WithName("GetMySettings")
@@ -107,6 +135,43 @@ public static class MeEndpoints
             return ApiProblems.WithCode(400, "Invalid date", "Send your local calendar date as YYYY-MM-DD.", "today_invalid_date");
         var profile = await profiles.ResolveCallerAsync(user, cancellationToken);
         return TypedResults.Ok(await today.GetAsync(profile, localDate, cancellationToken));
+    }
+
+    private static async Task<Ok<TodayFollowedDto>> GetTodayFollowedAsync(
+        ClaimsPrincipal user, CurrentProfileService profiles, FollowedTanksService followed, CancellationToken cancellationToken)
+    {
+        var profile = await profiles.ResolveCallerAsync(user, cancellationToken);
+        return TypedResults.Ok(await followed.GetTodayAsync(profile.Id, cancellationToken));
+    }
+
+    private static async Task<Ok<PagedResponse<FollowedTankDto>>> ListFollowedTanksAsync(
+        int? offset, int? limit, ClaimsPrincipal user, CurrentProfileService profiles, FollowedTanksService followed, CancellationToken cancellationToken)
+    {
+        var profile = await profiles.ResolveCallerAsync(user, cancellationToken);
+        var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
+        return TypedResults.Ok(await followed.ListAsync(profile.Id, normalizedOffset, normalizedLimit, cancellationToken));
+    }
+
+    private static async Task<Results<Ok<MilestonesDto>, ProblemHttpResult>> GetTodayMilestonesAsync(
+        string? date, int? utcOffsetMinutes, ClaimsPrincipal user, CurrentProfileService profiles, StreakService streaks, MilestoneService milestones,
+        CancellationToken cancellationToken)
+    {
+        if (streaks.ParseLocalTime(date, utcOffsetMinutes) is not var (today, offset))
+            return ApiProblems.WithCode(400, "Invalid date", "Send your local calendar date as YYYY-MM-DD and, optionally, the offset of your clock from UTC in minutes (-840 to 840).", "today_invalid_date");
+        var profile = await profiles.ResolveCallerAsync(user, cancellationToken);
+        return TypedResults.Ok(await milestones.ListAsync(profile.Id, today, offset, cancellationToken));
+    }
+
+    private static async Task<Results<NoContent, ProblemHttpResult>> DismissMilestoneAsync(
+        string key, ClaimsPrincipal user, CurrentProfileService profiles, MilestoneService milestones, CancellationToken cancellationToken)
+    {
+        var profile = await profiles.ResolveCallerAsync(user, cancellationToken);
+        return await milestones.DismissAsync(profile.Id, key, cancellationToken) switch
+        {
+            MilestoneService.KeyInvalidCode => ApiProblems.WithCode(400, "Invalid milestone", "The milestone key is not valid.", MilestoneService.KeyInvalidCode),
+            MilestoneService.NotFoundCode => ApiProblems.WithCode(404, "Milestone not found", "The milestone belongs to no tank of yours.", MilestoneService.NotFoundCode),
+            _ => TypedResults.NoContent(),
+        };
     }
 
     private static async Task<Ok<MeDto>> GetAsync(

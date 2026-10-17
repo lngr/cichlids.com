@@ -199,6 +199,8 @@ builder.Services.AddSingleton<MediaUrlSigner>();
 builder.Services.AddScoped<TankTimeLapseQueryService>();
 builder.Services.AddScoped<DiscoverQueryService>();
 builder.Services.AddScoped<TodayQueryService>();
+builder.Services.AddScoped<FollowedTanksService>();
+builder.Services.AddScoped<MilestoneService>();
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<TanksWriteService>();
 builder.Services.AddScoped<CareWriteService>();

@@ -38,6 +38,12 @@ public sealed record OwnTankStreaksDto(long TankId, string Title, WaterChangeStr
 /// </summary>
 public sealed record MeStreaksDto(bool Enabled, int FreezesPerYear, IReadOnlyList<VacationDto> Vacations, IReadOnlyList<OwnTankStreaksDto> Tanks);
 
+/// <summary>
+/// A milestone of a tank with the local date it was reached. Value is the streak length in weeks of a
+/// kept streak, the number of the full tank year of an anniversary and 0 for the first care week.
+/// </summary>
+public sealed record ReachedMilestone(MilestoneKind Kind, long TankId, string TankTitle, int Value, DateOnly ReachedOn);
+
 public sealed record VacationListDto(IReadOnlyList<VacationDto> Items);
 
 /// <summary>

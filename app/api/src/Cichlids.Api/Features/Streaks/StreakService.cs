@@ -146,6 +146,48 @@ public sealed class StreakService(CichlidsDbContext context, TimeProvider clock,
         return windows;
     }
 
+    /// <summary>
+    /// The milestones of the live tanks of the member that were reached on one of the last days a
+    /// milestone shows. The first care week and the tank anniversaries are listed whatever the streak
+    /// switch says; the kept streaks of the time-lapse series follow the switch. Nothing is recorded.
+    /// </summary>
+    public async Task<IReadOnlyList<ReachedMilestone>> GetMilestonesAsync(long profileId, DateOnly today, int utcOffsetMinutes, CancellationToken ct)
+    {
+        var tanks = await context.Tanks.AsNoTracking().Where(t => t.ProfileId == profileId && t.DeletedAt == null)
+            .OrderBy(t => t.Id).Select(t => new { t.Id, t.Title }).ToListAsync(ct);
+        if (tanks.Count == 0) return [];
+        var enabled = await StreaksEnabledAsync(profileId, ct);
+        var histories = await LoadAsync(tanks.Select(t => t.Id).ToList(), ct);
+        var spans = (await LoadVacationsAsync(profileId, ct)).Select(v => v.Span).ToList();
+        var windowStart = today.AddDays(1 - Milestones.VisibleDays);
+        var result = new List<ReachedMilestone>();
+        foreach (var tank in tanks)
+        {
+            var history = histories[tank.Id];
+            if (Milestones.FirstCareWeek(EvaluateWater(history, spans, today, utcOffsetMinutes).Periods) is { } careWeek && Milestones.IsVisible(careWeek, today))
+                result.Add(new ReachedMilestone(MilestoneKind.FirstCareWeek, tank.Id, tank.Title, 0, careWeek));
+            if (enabled)
+            {
+                foreach (var (weeks, reached) in TimeLapseStreaks.ReachDates(history.Photos, utcOffsetMinutes, spans, today, Milestones.StreakWeeks))
+                    if (Milestones.IsVisible(reached, today)) result.Add(new ReachedMilestone(MilestoneKind.KeptStreak, tank.Id, tank.Title, weeks, reached));
+            }
+            foreach (var (year, reached) in Milestones.Anniversaries(CarePlans.LocalDate(history.TankCreatedAt, utcOffsetMinutes), history.Decommissions, windowStart, today))
+                result.Add(new ReachedMilestone(MilestoneKind.TankAnniversary, tank.Id, tank.Title, year, reached));
+        }
+
+        return result.OrderByDescending(m => m.ReachedOn).ThenBy(m => m.TankId).ThenBy(m => m.Kind).ThenBy(m => m.Value).ToList();
+    }
+
+    /// <summary>
+    /// The full tank years a tank has completed on the given date, counted in operating days. The date is
+    /// read against the creation instant in UTC, so a tank counts a year no later than its owner's clock does.
+    /// </summary>
+    public async Task<int> CompletedTankYearsAsync(long tankId, DateOnly today, CancellationToken ct)
+    {
+        var history = (await LoadAsync([tankId], ct, includePhotos: false)).GetValueOrDefault(tankId);
+        return history is null ? 0 : WaterChangeStreaks.TankYear(CarePlans.LocalDate(history.TankCreatedAt, 0), history.Decommissions, today) - 1;
+    }
+
     private async Task<bool> StreaksEnabledAsync(long profileId, CancellationToken ct) =>
         await context.Profiles.AsNoTracking().Where(p => p.Id == profileId).Select(p => p.StreaksEnabled).SingleAsync(ct);
 
