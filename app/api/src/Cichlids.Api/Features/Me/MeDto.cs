@@ -9,8 +9,8 @@ namespace Cichlids.Api.Features.Me;
 /// is true for the caller of a device token, whose profile has a generated name and no public handle.
 /// HandleChangeAvailableAt is the earliest time the member may change the public handle, and null
 /// when a change is possible now. ArchiveRetrospective tells whether the member has an archive
-/// retrospective and when the member first saw it; it is null for the caller of a device token.
+/// retrospective and when the member first saw it; ReturnRetrospective tells whether a return retrospective can be opened and when the member saw it; both are null for the caller of a device token.
 /// </summary>
 public sealed record MeDto(
     ProfileDetailDto Profile, IReadOnlyList<string> Roles, bool Provisional = false, DateTimeOffset? HandleChangeAvailableAt = null,
-    ArchiveRetrospectiveStatusDto? ArchiveRetrospective = null);
+    ArchiveRetrospectiveStatusDto? ArchiveRetrospective = null, ReturnRetrospectiveStatusDto? ReturnRetrospective = null);

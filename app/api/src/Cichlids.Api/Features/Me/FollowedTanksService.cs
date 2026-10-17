@@ -52,11 +52,17 @@ public sealed class FollowedTanksService(CichlidsDbContext context, IObjectStore
     /// <summary>
     /// The followed tanks with a visible update in the last 30 days, newest update first, at most five.
     /// </summary>
-    public async Task<TodayFollowedDto> GetTodayAsync(long viewer, CancellationToken cancellationToken)
+    public Task<TodayFollowedDto> GetTodayAsync(long viewer, CancellationToken cancellationToken) =>
+        GetSinceAsync(viewer, clock.GetUtcNow().AddDays(-FreshDays), cancellationToken);
+
+    /// <summary>
+    /// The followed tanks with a visible update since the given moment, newest update first, at most five.
+    /// </summary>
+    public async Task<TodayFollowedDto> GetSinceAsync(long viewer, DateTimeOffset since, CancellationToken cancellationToken)
     {
         var now = clock.GetUtcNow();
         var ids = await VisibleFollowedIdsAsync(viewer, now, cancellationToken);
-        var newest = await NewestAsync(ids, viewer, now, now.AddDays(-FreshDays), cancellationToken);
+        var newest = await NewestAsync(ids, viewer, now, since, cancellationToken);
         var ordered = newest.Values.OrderByDescending(n => n.At).ThenByDescending(n => n.TankId).ToList();
         var items = await ToDtosAsync(ordered.Take(TodayLimit).Select(n => (n.TankId, (Newest?)n)).ToList(), viewer, now, cancellationToken);
         return new TodayFollowedDto(items.Where(i => i.Update is not null).ToList(), ordered.Count > TodayLimit);

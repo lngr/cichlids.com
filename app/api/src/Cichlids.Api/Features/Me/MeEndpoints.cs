@@ -180,6 +180,7 @@ public static class MeEndpoints
         CurrentProfileService currentProfileService,
         ProfilesQueryService profilesQueryService,
         ArchiveRetrospectiveQueryService retrospectives,
+        ReturnRetrospectiveService returnRetrospectives,
         TimeProvider clock,
         CancellationToken cancellationToken)
     {
@@ -199,6 +200,7 @@ public static class MeEndpoints
                 await retrospectives.ExistsAsync(profile.Id, cancellationToken), profile.ArchiveRetrospectiveSeenAt);
 
         return TypedResults.Ok(new MeDto(
-            detail, roles, provisional, HandleChangeService.NextChangeAt(profile, clock.GetUtcNow()), archiveRetrospective));
+            detail, roles, provisional, HandleChangeService.NextChangeAt(profile, clock.GetUtcNow()), archiveRetrospective,
+            provisional ? null : await returnRetrospectives.GetStatusAsync(profile.Id, cancellationToken)));
     }
 }
