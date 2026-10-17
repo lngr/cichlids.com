@@ -1412,6 +1412,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("external_avatar_url");
 
+                    b.Property<DateTimeOffset?>("HandleChangedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("handle_changed_at");
+
                     b.PrimitiveCollection<string[]>("Interests")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
@@ -1577,6 +1581,50 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                             t.HasCheckConstraint("ck_rating_exactly_one_target", "(story_id IS NULL) <> (tank_id IS NULL)");
 
                             t.HasCheckConstraint("ck_rating_stars_range", "stars BETWEEN 1 AND 5");
+                        });
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.ReleasedHandle", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Handle")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("handle");
+
+                    b.Property<long>("ProfileId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("profile_id");
+
+                    b.Property<DateTimeOffset>("ReleasedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("released_at");
+
+                    b.Property<DateTimeOffset>("ReservedUntil")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("reserved_until");
+
+                    b.HasKey("Id")
+                        .HasName("pk_released_handle");
+
+                    b.HasIndex("Handle")
+                        .IsUnique()
+                        .HasDatabaseName("ix_released_handle_handle");
+
+                    b.HasIndex("ProfileId")
+                        .HasDatabaseName("ix_released_handle_profile_id");
+
+                    b.ToTable("released_handle", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_released_handle_lowercase", "handle = lower(handle)");
+
+                            t.HasCheckConstraint("ck_released_handle_period", "reserved_until > released_at");
                         });
                 });
 
@@ -3272,6 +3320,16 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasForeignKey("TankId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .HasConstraintName("fk_rating_tanks_tank_id");
+                });
+
+            modelBuilder.Entity("Cichlids.Domain.Entities.ReleasedHandle", b =>
+                {
+                    b.HasOne("Cichlids.Domain.Entities.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_released_handle_profile_profile_id");
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.SlugAlias", b =>

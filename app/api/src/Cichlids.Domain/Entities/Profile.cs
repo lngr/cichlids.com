@@ -20,6 +20,11 @@ public class Profile
     public DateTimeOffset? LastLoginAt { get; set; }
     public DateTimeOffset? SuspendedUntil { get; set; }
 
+    /// <summary>
+    /// When the member last changed the public handle; null while the handle has never been changed.
+    /// </summary>
+    public DateTimeOffset? HandleChangedAt { get; set; }
+
     public DateTimeOffset? OnboardingCompletedAt { get; set; }
     public string[] Interests { get; set; } = [];
     public string[] Badges { get; set; } = [];

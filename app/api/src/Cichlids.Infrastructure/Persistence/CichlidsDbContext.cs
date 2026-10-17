@@ -18,6 +18,7 @@ public class CichlidsDbContext : DbContext
 
     public DbSet<Profile> Profiles => Set<Profile>();
     public DbSet<ProfileIdentity> ProfileIdentities => Set<ProfileIdentity>();
+    public DbSet<ReleasedHandle> ReleasedHandles => Set<ReleasedHandle>();
     public DbSet<Species> Species => Set<Species>();
     public DbSet<SpeciesCommonName> SpeciesCommonNames => Set<SpeciesCommonName>();
     public DbSet<SpeciesLink> SpeciesLinks => Set<SpeciesLink>();
