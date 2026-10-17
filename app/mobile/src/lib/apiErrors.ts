@@ -129,6 +129,11 @@ export const API_ERROR_CODES = [
   "account_suspended",
   "device_auth_refused",
   "keycloak_session_required",
+  "handle_invalid",
+  "handle_generated",
+  "handle_reserved",
+  "handle_taken",
+  "handle_change_too_soon",
 ] as const;
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];

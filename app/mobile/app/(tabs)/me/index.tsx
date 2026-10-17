@@ -13,6 +13,7 @@ import { Button } from "../../../src/components/Button";
 import { ErrorView, LoadingView } from "../../../src/components/StatusView";
 import { translateApiError } from "../../../src/lib/apiErrors";
 import { useTheme } from "../../../src/theme";
+import { HandleSettings } from "../../../src/profile/HandleSettings";
 import { ProfileHeader } from "../../../src/profile/ProfileHeader";
 import { ProfileTabs, type ProfileSection } from "../../../src/profile/ProfileTabs";
 import { ProfileContentList } from "../../../src/profile/ProfileContentList";
@@ -83,10 +84,15 @@ function ProfileView() {
   }
   if (!me) return <LoadingView label={t("me.loading")} />;
 
-  return <MemberContent key={String(me.profile.id)} profile={me.profile} onStreaksChanged={() => setAttempt((n) => n + 1)} />;
+  return <MemberContent key={String(me.profile.id)} profile={me.profile} handleChangeAvailableAt={me.handleChangeAvailableAt}
+    onProfileChanged={() => setAttempt((n) => n + 1)} />;
 }
 
-function MemberContent({ profile, onStreaksChanged }: { profile: Me["profile"]; onStreaksChanged: () => void }) {
+function MemberContent({ profile, handleChangeAvailableAt, onProfileChanged }: {
+  profile: Me["profile"];
+  handleChangeAvailableAt?: string | null;
+  onProfileChanged: () => void;
+}) {
   const theme = useTheme();
   const { t } = useTranslation();
   const { logout, provisional } = useAuth();
@@ -122,8 +128,11 @@ function MemberContent({ profile, onStreaksChanged }: { profile: Me["profile"]; 
         </>}
       </View>
       <LanguageSettings />
+      {provisional ? null : <View style={{ paddingHorizontal: theme.space[4] }}>
+        <HandleSettings handle={profile.username} changeAvailableAt={handleChangeAvailableAt} onChanged={onProfileChanged} />
+      </View>}
       {provisional ? null : <View style={{ paddingHorizontal: theme.space[4] }}><WebPushSettings /></View>}
-      <View style={{ paddingHorizontal: theme.space[4] }}><StreakSettings onChanged={onStreaksChanged} /></View>
+      <View style={{ paddingHorizontal: theme.space[4] }}><StreakSettings onChanged={onProfileChanged} /></View>
       {provisional ? null : <OnboardingProfile profile={profile} />}
       <ProfileTabs section={section} onSelect={setSection} own drafts={!provisional} />
     </View>
