@@ -87,6 +87,7 @@ CREATE TABLE public.profile (
     handle_changed_at timestamp with time zone,
     last_seen_at timestamp with time zone,
     away_since timestamp with time zone,
+    archive_retrospective_seen_at timestamp with time zone,
     CONSTRAINT pk_profile PRIMARY KEY (id),
     CONSTRAINT ck_profile_kind CHECK (kind IN ('member', 'archived', 'system', 'provisional'))
 );
@@ -1415,4 +1416,4 @@ CREATE TRIGGER tank_of_provisional_profile_must_be_private BEFORE INSERT OR UPDA
 CREATE TRIGGER tank_selected_member_changes_media_visibility AFTER INSERT OR DELETE ON tank_selected_member FOR EACH ROW EXECUTE FUNCTION tank_selected_member_changes_media_visibility();
 
 CREATE TABLE public."__EFMigrationsHistory" (migration_id varchar(150) CONSTRAINT pk___ef_migrations_history PRIMARY KEY, product_version varchar(32) NOT NULL);
-INSERT INTO public."__EFMigrationsHistory" VALUES ('20261017101750_MilestoneDismissals', '10.0.9');
+INSERT INTO public."__EFMigrationsHistory" VALUES ('20261017105737_ProfileArchiveRetrospective', '10.0.9');
