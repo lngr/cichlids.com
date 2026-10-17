@@ -22,7 +22,7 @@ EMPTY_TABLES = ('public.profile_identity', 'public.web_session', 'archive.legacy
                 'public.video_upload', 'public.video_job', 'public.vacation',
                 'public.care_reminder_snooze', 'public.care_todo', 'public.comment_vote',
                 'public.tank_selected_member', 'public.used_checksum', 'public.device_credential',
-                'public.device_challenge')
+                'public.device_challenge', 'public.released_handle')
 FREE_TEXT = {
     'public.comment': ('body', 'delete_reason'),
     'public.discussion_post': ('body',),
@@ -147,7 +147,7 @@ COLUMN_HANDLING = {
     },
     'public.profile': {
         'kept': 'badges country_code created_at id interests kind legacy_id onboarding_completed_at streaks_enabled',
-        'null': 'city external_avatar_url last_login_at suspended_until',
+        'null': 'city external_avatar_url handle_changed_at last_login_at suspended_until',
         'pseudonym': 'display_name username',
     },
     'public.profile_identity': {
@@ -155,6 +155,9 @@ COLUMN_HANDLING = {
     },
     'public.rating': {
         'kept': 'comment_id created_at id legacy_comment_id story_id profile_id stars tank_id',
+    },
+    'public.released_handle': {
+        'empty': 'handle id profile_id released_at reserved_until',
     },
     'public.slug_alias': {
         'alias': 'value',
@@ -389,7 +392,7 @@ def verify(conn, originals, version):
     leaks += conn.execute("select count(*) from media_item where not placed_public or placement_pending or placement_attempts <> 0 or placement_next_attempt_at is not null or visibility_generation <> 0").fetchone()[0]
     leaks += conn.execute("select count(*) from media_item where taken_at_local is not null or taken_at_offset_minutes is not null or capture_checked_at is not null or received_at <> created_at or captured_in_app").fetchone()[0]
     leaks += conn.execute("select count(*) from profile where kind = 'provisional'").fetchone()[0]
-    for column in ('city', 'external_avatar_url', 'last_login_at', 'suspended_until'):
+    for column in ('city', 'external_avatar_url', 'handle_changed_at', 'last_login_at', 'suspended_until'):
         leaks += conn.execute(sql.SQL('select count(*) from profile where {} is not null').format(sql.Identifier(column))).fetchone()[0]
     leaks += conn.execute("select count(*) from media_link where context_type='profile'").fetchone()[0]
     leaks += conn.execute("select count(*) from profile where username !~ '^member-[0-9]+$' or display_name is distinct from username").fetchone()[0]

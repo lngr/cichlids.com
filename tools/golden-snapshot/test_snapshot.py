@@ -117,12 +117,13 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(snapshot.verify(conn, denylist, 'synthetic-v1'), 0)
             for table in snapshot.EMPTY_TABLES:
                 self.assertEqual(conn.execute(sql.SQL('select count(*) from {}').format(snapshot.ident(table))).fetchone()[0], 0)
-            profiles = conn.execute('select username, display_name, city, external_avatar_url, last_login_at, suspended_until, country_code from profile order by id').fetchall()
+            profiles = conn.execute('select username, display_name, city, external_avatar_url, last_login_at, suspended_until, country_code, handle_changed_at from profile order by id').fetchall()
             self.assertEqual({r[0] for r in profiles}, set(snapshot.pseudonyms(KEY, [1, 2, 3], 'member').values()))
             for row in profiles:
                 self.assertEqual(row[0], row[1])
                 self.assertEqual(row[2:6], (None,) * 4)
                 self.assertEqual(row[6], 'DE')
+                self.assertIsNone(row[7])
             for table, columns in snapshot.FREE_TEXT.items():
                 for column in columns:
                     query = sql.SQL('select id, {} from {} order by id').format(sql.Identifier(column), snapshot.ident(table))
@@ -139,7 +140,7 @@ class DatabaseTests(unittest.TestCase):
                 query = sql.SQL('select * from {} order by id').format(sql.Identifier(table))
                 self.assertEqual(source.execute(query).fetchall(), conn.execute(query).fetchall())
             changed = {table: set(columns) for table, columns in snapshot.FREE_TEXT.items()}
-            changed['public.profile'] = {'username', 'display_name', 'city', 'external_avatar_url', 'last_login_at', 'suspended_until'}
+            changed['public.profile'] = {'username', 'display_name', 'city', 'external_avatar_url', 'last_login_at', 'suspended_until', 'handle_changed_at'}
             changed['public.slug_alias'] = {'value'}
             changed['public.media_item'] = {'storage_key', 'original_filename', 'content_type', 'checksum_sha256', 'taken_at_local', 'taken_at_offset_minutes', 'capture_checked_at', 'received_at', 'captured_in_app', 'placed_public', 'placement_attempts', 'placement_pending', 'placement_next_attempt_at', 'visibility_generation'}
             changed['public.media_variant'] = {'storage_key'}
@@ -219,7 +220,7 @@ class DatabaseTests(unittest.TestCase):
                 self.assertGreater(count(source, f'select count(*) from {table}'), 0)
             self.assertEqual(count(conn, 'select count(*) from tank_selected_member'), 0)
             self.assertGreater(count(source, 'select count(*) from tank_selected_member'), 0)
-            for table in ('vacation', 'care_reminder_snooze', 'care_todo', 'comment_vote', 'used_checksum'):
+            for table in ('vacation', 'care_reminder_snooze', 'care_todo', 'comment_vote', 'used_checksum', 'released_handle'):
                 self.assertEqual(count(conn, f'select count(*) from {table}'), 0, table)
                 self.assertGreater(count(source, f'select count(*) from {table}'), 0, table)
             self.assertEqual(count(conn, "select count(*) from media_item where taken_at_local is not null or taken_at_offset_minutes is not null or capture_checked_at is not null or received_at <> created_at or captured_in_app"), 0)
@@ -230,6 +231,7 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(count(conn, placement), 0)
             self.assertEqual(count(source, placement), count(source, 'select count(*) from media_item'))
             self.assertGreater(count(source, 'select count(*) from media_item where captured_in_app and taken_at_local is not null and received_at <> created_at'), 0)
+            self.assertGreater(count(source, 'select count(*) from profile where handle_changed_at is not null'), 0)
             self.assertEqual(source.execute('select bool_and(streaks_enabled) from profile').fetchone(), conn.execute('select bool_and(streaks_enabled) from profile').fetchone())
             for key, filename, checksum in conn.execute('select storage_key, original_filename, checksum_sha256 from media_item'):
                 self.assertIn(key, exported)

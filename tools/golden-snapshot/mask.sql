@@ -4,7 +4,7 @@ TRUNCATE public.profile_identity, public.web_session,
          public.video_upload, public.video_job, public.vacation,
          public.care_reminder_snooze, public.care_todo, public.comment_vote,
          public.tank_selected_member, public.used_checksum, public.device_credential,
-         public.device_challenge;
+         public.device_challenge, public.released_handle;
 -- Provisional profiles belong to unregistered installations; they and their content are removed.
 UPDATE public.comment SET deleted_by_profile_id = NULL WHERE deleted_by_profile_id IN (SELECT id FROM public.profile WHERE kind = 'provisional');
 UPDATE public.story SET deleted_by_profile_id = NULL WHERE deleted_by_profile_id IN (SELECT id FROM public.profile WHERE kind = 'provisional');
@@ -45,7 +45,7 @@ DELETE FROM public.comment WHERE tank_id IN (SELECT id FROM public.tank WHERE pr
 DELETE FROM public.rating WHERE tank_id IN (SELECT id FROM public.tank WHERE profile_visibility <> 'public');
 DELETE FROM public.collection_entry WHERE collection_id IN (SELECT id FROM public.collection WHERE NOT is_public);
 UPDATE public.profile SET city = NULL, external_avatar_url = NULL,
-    last_login_at = NULL, suspended_until = NULL;
+    last_login_at = NULL, suspended_until = NULL, handle_changed_at = NULL;
 UPDATE public.media_item SET checksum_sha256 = NULL, taken_at_local = NULL,
     taken_at_offset_minutes = NULL, capture_checked_at = NULL, received_at = created_at,
     captured_in_app = false;

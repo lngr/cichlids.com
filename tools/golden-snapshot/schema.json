@@ -239,6 +239,7 @@
     "created_at": "timestamp with time zone",
     "display_name": "text",
     "external_avatar_url": "text",
+    "handle_changed_at": "timestamp with time zone",
     "id": "bigint",
     "interests": "text[]",
     "kind": "text",
@@ -265,6 +266,13 @@
     "stars": "smallint",
     "story_id": "bigint",
     "tank_id": "bigint"
+  },
+  "public.released_handle": {
+    "handle": "text",
+    "id": "bigint",
+    "profile_id": "bigint",
+    "released_at": "timestamp with time zone",
+    "reserved_until": "timestamp with time zone"
   },
   "public.slug_alias": {
     "created_at": "timestamp with time zone",
