@@ -50,8 +50,10 @@ are allowed only as listed in `routines.json`: each entry names the function (wi
 argument types) or the trigger (with its table) and holds the SHA-256 of its definition
 text (`pg_get_functiondef`, `pg_get_triggerdef`). Any other function or trigger, a changed
 definition and a missing entry abort. The listed ones are the media visibility functions and
-triggers of the EF migrations; they bump the visibility generation of media items and mark
-their placement as due. `fixture-schema.sql` is generated from the EF
+triggers of the EF migrations, which bump the visibility generation of media items and mark
+their placement as due, and the provisional content guard, which refuses writes of public
+content for provisional profiles. `fixture.sql` makes its provisional profile provisional
+after its content exists, since the guard refuses that content. `fixture-schema.sql` is generated from the EF
 model (`dotnet ef dbcontext script`) and includes its foreign keys, checks and indexes, followed by
 the functions and triggers of the migrations, the migration history table and the latest migration
 ID, which `schema.json` and the manifest follow. The triggers fire during masking, so masking

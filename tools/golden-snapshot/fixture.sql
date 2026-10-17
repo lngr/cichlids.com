@@ -118,7 +118,7 @@ INSERT INTO story_subject(story_id,subject_type,tank_id,inhabitant_id,species_id
 UPDATE story SET cover_media_link_id=(SELECT id FROM media_link WHERE story_id=story.id AND role='item') WHERE id IN (1,2,3);
 INSERT INTO used_checksum(profile_id,checksum_sha256,kind,first_used_at) VALUES (1,repeat('b',64),'water_change_evidence','2020-03-01'),(2,repeat('c',64),'proof','2020-03-02');
 UPDATE media_item SET quick_share_story_id=id WHERE id IN (1,2,3);
-INSERT INTO profile(id,username,display_name,kind,created_at) VALUES (9,'SyntheticProvisional','SyntheticProvisional','provisional','2020-01-01');
+INSERT INTO profile(id,username,display_name,kind,created_at) VALUES (9,'SyntheticProvisional','SyntheticProvisional','member','2020-01-01');
 INSERT INTO tank(id,profile_id,title,state,created_at,care_reminders_enabled) VALUES (9,9,'Provisional tank','draft','2020-01-01',true);
 INSERT INTO inhabitant(tank_id,species_id,count) VALUES (9,1,2);
 INSERT INTO care_entry(id,tank_id,author_profile_id,kind,occurred_at,recorded_at,note,only_me) VALUES (11,9,9,'measurement','2020-03-02 10:00+00','2020-03-02 10:00+00','SyntheticAlice provisional',false);
@@ -145,3 +145,5 @@ INSERT INTO device_challenge(challenge_hash,created_at,expires_at) VALUES ('\x01
 UPDATE rating SET comment_id = 2 WHERE tank_id = 1 AND profile_id = 2;
 UPDATE rating SET comment_id = 3 WHERE tank_id = 5 AND profile_id = 1;
 UPDATE rating SET comment_id = 9 WHERE story_id = 1 AND profile_id = 9;
+-- The database guard refuses public content of a provisional profile, so profile 9 becomes provisional after its content exists.
+UPDATE profile SET kind='provisional' WHERE id=9;

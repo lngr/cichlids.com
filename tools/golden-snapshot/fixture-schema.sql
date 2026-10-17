@@ -1260,6 +1260,51 @@ BEGIN
 END $function$
 ;
 
+CREATE OR REPLACE FUNCTION public.profile_is_provisional(p_profile_id bigint)
+ RETURNS boolean
+ LANGUAGE sql
+ STABLE
+AS $function$
+    SELECT EXISTS (SELECT 1 FROM public.profile WHERE id = p_profile_id AND kind = 'provisional')
+$function$
+;
+
+CREATE OR REPLACE FUNCTION public.reject_provisional_profile_rows()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+DECLARE
+    column_name text;
+    owner_id bigint;
+BEGIN
+    FOREACH column_name IN ARRAY TG_ARGV LOOP
+        owner_id := (to_jsonb(NEW) ->> column_name)::bigint;
+        IF owner_id IS NOT NULL AND public.profile_is_provisional(owner_id) THEN
+            RAISE EXCEPTION 'A row of % must not belong to the provisional profile % (column %).', TG_TABLE_NAME, owner_id, column_name
+                USING ERRCODE = 'PV001';
+        END IF;
+    END LOOP;
+    RETURN NEW;
+END $function$
+;
+
+CREATE OR REPLACE FUNCTION public.reject_rows_of_provisional_tanks()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+DECLARE
+    tank_id bigint;
+BEGIN
+    tank_id := (to_jsonb(NEW) ->> TG_ARGV[0])::bigint;
+    IF tank_id IS NOT NULL AND EXISTS (
+        SELECT 1 FROM public.tank t WHERE t.id = tank_id AND public.profile_is_provisional(t.profile_id)) THEN
+        RAISE EXCEPTION 'A row of % must not reference the tank % of a provisional profile (column %).', TG_TABLE_NAME, tank_id, TG_ARGV[0]
+            USING ERRCODE = 'PV001';
+    END IF;
+    RETURN NEW;
+END $function$
+;
+
 CREATE OR REPLACE FUNCTION public.story_changes_media_visibility()
  RETURNS trigger
  LANGUAGE plpgsql
@@ -1277,6 +1322,19 @@ AS $function$
 BEGIN
     PERFORM public.media_item_change_visibility(public.media_item_ids_of_tank(NEW.id));
     RETURN NULL;
+END $function$
+;
+
+CREATE OR REPLACE FUNCTION public.tank_of_provisional_profile_must_be_private()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+BEGIN
+    IF public.profile_is_provisional(NEW.profile_id) THEN
+        RAISE EXCEPTION 'The tank % of the provisional profile % must have private profile and stream visibility.', NEW.id, NEW.profile_id
+            USING ERRCODE = 'PV001';
+    END IF;
+    RETURN NEW;
 END $function$
 ;
 
@@ -1299,9 +1357,24 @@ CREATE TRIGGER follow_inserts_media_visibility AFTER INSERT ON follow FOR EACH R
 CREATE TRIGGER follow_updates_media_visibility AFTER UPDATE ON follow FOR EACH ROW WHEN (new.target_tank_id IS NOT NULL AND old.status IS DISTINCT FROM new.status) EXECUTE FUNCTION follow_changes_media_visibility();
 CREATE TRIGGER media_link_changes_visibility AFTER INSERT OR DELETE ON media_link FOR EACH ROW EXECUTE FUNCTION media_link_changes_visibility();
 CREATE TRIGGER profile_changes_media_visibility AFTER UPDATE ON profile FOR EACH ROW WHEN (old.suspended_until IS DISTINCT FROM new.suspended_until) EXECUTE FUNCTION profile_changes_media_visibility();
+CREATE TRIGGER provisional_content_guard BEFORE INSERT OR UPDATE OF profile_id ON collection FOR EACH ROW EXECUTE FUNCTION reject_provisional_profile_rows('profile_id');
+CREATE TRIGGER provisional_content_guard BEFORE INSERT OR UPDATE OF author_profile_id ON comment FOR EACH ROW EXECUTE FUNCTION reject_provisional_profile_rows('author_profile_id');
+CREATE TRIGGER provisional_content_guard BEFORE INSERT OR UPDATE OF profile_id ON comment_vote FOR EACH ROW EXECUTE FUNCTION reject_provisional_profile_rows('profile_id');
+CREATE TRIGGER provisional_content_guard BEFORE INSERT OR UPDATE OF author_profile_id ON discussion_post FOR EACH ROW EXECUTE FUNCTION reject_provisional_profile_rows('author_profile_id');
+CREATE TRIGGER provisional_content_guard BEFORE INSERT OR UPDATE OF follower_profile_id, target_profile_id ON follow FOR EACH ROW EXECUTE FUNCTION reject_provisional_profile_rows('follower_profile_id', 'target_profile_id');
+CREATE TRIGGER provisional_content_guard BEFORE INSERT OR UPDATE OF profile_id ON media_link FOR EACH ROW EXECUTE FUNCTION reject_provisional_profile_rows('profile_id');
+CREATE TRIGGER provisional_content_guard BEFORE INSERT OR UPDATE OF profile_id ON rating FOR EACH ROW EXECUTE FUNCTION reject_provisional_profile_rows('profile_id');
+CREATE TRIGGER provisional_content_guard BEFORE INSERT OR UPDATE OF author_profile_id ON story FOR EACH ROW EXECUTE FUNCTION reject_provisional_profile_rows('author_profile_id');
+CREATE TRIGGER provisional_content_guard BEFORE INSERT OR UPDATE OF member_profile_id ON tank_selected_member FOR EACH ROW EXECUTE FUNCTION reject_provisional_profile_rows('member_profile_id');
+CREATE TRIGGER provisional_tank_guard BEFORE INSERT OR UPDATE OF tank_id ON comment FOR EACH ROW EXECUTE FUNCTION reject_rows_of_provisional_tanks('tank_id');
+CREATE TRIGGER provisional_tank_guard BEFORE INSERT OR UPDATE OF target_tank_id ON follow FOR EACH ROW EXECUTE FUNCTION reject_rows_of_provisional_tanks('target_tank_id');
+CREATE TRIGGER provisional_tank_guard BEFORE INSERT OR UPDATE OF tank_id ON rating FOR EACH ROW EXECUTE FUNCTION reject_rows_of_provisional_tanks('tank_id');
+CREATE TRIGGER provisional_tank_guard BEFORE INSERT OR UPDATE OF tank_id ON story_subject FOR EACH ROW EXECUTE FUNCTION reject_rows_of_provisional_tanks('tank_id');
+CREATE TRIGGER provisional_tank_guard BEFORE INSERT OR UPDATE OF tank_id ON tank_selected_member FOR EACH ROW EXECUTE FUNCTION reject_rows_of_provisional_tanks('tank_id');
 CREATE TRIGGER story_changes_media_visibility AFTER UPDATE ON story FOR EACH ROW WHEN (old.state IS DISTINCT FROM new.state OR old.deleted_at IS DISTINCT FROM new.deleted_at OR old.author_profile_id IS DISTINCT FROM new.author_profile_id) EXECUTE FUNCTION story_changes_media_visibility();
 CREATE TRIGGER tank_changes_media_visibility AFTER UPDATE ON tank FOR EACH ROW WHEN (old.profile_visibility IS DISTINCT FROM new.profile_visibility OR old.stream_visibility IS DISTINCT FROM new.stream_visibility OR old.state IS DISTINCT FROM new.state OR old.deleted_at IS DISTINCT FROM new.deleted_at) EXECUTE FUNCTION tank_changes_media_visibility();
+CREATE TRIGGER tank_of_provisional_profile_must_be_private BEFORE INSERT OR UPDATE ON tank FOR EACH ROW WHEN (new.profile_visibility <> 'private'::text OR new.stream_visibility <> 'private'::text) EXECUTE FUNCTION tank_of_provisional_profile_must_be_private();
 CREATE TRIGGER tank_selected_member_changes_media_visibility AFTER INSERT OR DELETE ON tank_selected_member FOR EACH ROW EXECUTE FUNCTION tank_selected_member_changes_media_visibility();
 
 CREATE TABLE public."__EFMigrationsHistory" (migration_id varchar(150) CONSTRAINT pk___ef_migrations_history PRIMARY KEY, product_version varchar(32) NOT NULL);
-INSERT INTO public."__EFMigrationsHistory" VALUES ('20261017093424_RatingCommentReference', '10.0.9');
+INSERT INTO public."__EFMigrationsHistory" VALUES ('20261017093540_ProvisionalContentGuard', '10.0.9');
