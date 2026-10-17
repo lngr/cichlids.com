@@ -1,9 +1,10 @@
 ---
 id: TASK-5.24
 title: Today shows followed tanks and milestones
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-17 09:32'
+updated_date: '2026-10-17 09:35'
 labels: []
 dependencies: []
 parent_task_id: TASK-5
@@ -46,3 +47,22 @@ Today gains two sections of the target in DRAFT-11 whose data exists: the update
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Approach
+Sibling endpoints next to the existing Today parts (streaks, heatmap, due care), each section loads on its own.
+
+### API
+- GET /api/me/today/followed: followed tanks the viewer may see, newest visible update per tank within 30 days, at most five, hasMore. Visibility from TanksVisibleTo and TanksStreamVisibleTo (care entries without the only-me mark), published stories pointing to the tank, tank and time-lapse photo links through the media link visibility of ADR-0029. Tanks of provisional or suspended owners are left out.
+- GET /api/me/followed-tanks: all followed visible tanks (paged) behind the link of the section.
+- GET /api/me/today/milestones and PUT /api/me/today/milestones/{key}/dismissal. Milestone key: kind, tank and threshold or year. Table milestone_dismissal (profile, key) via migration.
+- Domain: TimeLapseStreaks reach dates per threshold (4, 12, 26, 52 weeks), tank anniversaries over the operating tank year (decommissioned days shift it), first care week from the first kept water change period. Streak milestones follow the streak switch.
+
+### Client and app
+- Regenerate the OpenAPI client, client-core mapping, two sections on Today, a followed tanks screen, texts in all 11 catalogs.
+
+### Tests
+- API integration tests per AC incl. visibility, switch off and decommissioned days; golden snapshot table rule and migration pin; client-core and mobile unit tests; one Playwright write spec.
+<!-- SECTION:PLAN:END -->
