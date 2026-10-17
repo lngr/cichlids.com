@@ -1,9 +1,10 @@
 ---
 id: TASK-7.5
 title: App flow of provisional accounts
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-16 20:28'
+updated_date: '2026-10-17 07:44'
 labels: []
 dependencies:
   - TASK-7.1
@@ -43,3 +44,16 @@ The app works from the first start without a form and leads to registration wher
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implementation (2026-10-17)
+- Native device account: ECDSA P-256 private key in expo-secure-store (Keychain AFTER_FIRST_UNLOCK_THIS_DEVICE_ONLY, Keystore-encrypted storage on Android), signatures through @noble/curves 2.2.0 since the Expo runtime has no ECDSA primitive; the key is loaded into memory for one signature. A key that never leaves the secure hardware needs a native module (DRAFT-18).
+- First start registers in the background with staggered retries; an offline first start never blocks the app.
+- Device tokens are sent only while no account session exists; a 401 drops the cached token, a refused credential ends the device account; a 403 registration_required on a write opens the registration with its reason.
+- Note about the device account before the first tank; gated actions (follow, comment, rate, stories, publish, visibility, profile images, audience) open the registration sheet with the reason.
+- After sign-in with an existing account: the question whether to take the content along, with the counts of the preview; on no the device account stays hidden on the device until sign-out or a later move.
+- Web: no device account; the write E2E build contains a WebCrypto test key provider (non-extractable key in IndexedDB) behind EXPO_PUBLIC_DEVICE_TEST_KEYS plus a browser opt-in; production and staging builds with the flag fail.
+- Verification on main: .NET 643/2392 (1 skipped)/350, client-core and mobile unit green (mobile 520), 53 write E2E specs green including provisional-app. Android and iOS are not run on a device.
+<!-- SECTION:NOTES:END -->
