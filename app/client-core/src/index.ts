@@ -26,6 +26,14 @@ export {
 export type {
   InhabitantDraft, InhabitantInput, InhabitantProblem, RemovalReason, StockedInhabitant, StockedSpecies, Stocking,
 } from "./stocking.js";
+export {
+  FISH_LENGTH_UNITS, FISH_MAX_GENERATION, FISH_MAX_LENGTH_CM, checkGrowthDraft, checkSpawningDraft, growthInput, latestGrowth,
+  lengthInCentimeters, moveTargets, parseLength, spawningInput,
+} from "./fish.js";
+export type {
+  FishGrowth, FishLengthUnit, FishMove, FishPage, FishPhoto, FishSpawning, FishTank, FishTimelineItem, FishTimelineItemKind, GrowthDraft,
+  GrowthInput, GrowthProblem, SpawningDraft, SpawningInput, SpawningProblem,
+} from "./fish.js";
 export { activeDecommissioning, operatingTime } from "./decommission.js";
 export type { DecommissionImage, DecommissionScope, Decommissioning, TankOperation } from "./decommission.js";
 export { proofCameraMachine } from "./proofCamera.js";

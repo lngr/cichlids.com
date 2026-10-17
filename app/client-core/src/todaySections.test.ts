@@ -47,11 +47,15 @@ describe("followed tanks of Today", () => {
 describe("milestones of Today", () => {
   it("sends the local time and maps the numbers", async () => {
     const { client, requests } = clientFor(() => Response.json({ items: [
-      { key: "kept_streak:5:4", kind: "kept_streak", tankId: "5", tankTitle: "Reef", value: "4", reachedOn: "2026-10-13" },
+      { key: "kept_streak:5:4", kind: "kept_streak", tankId: "5", tankTitle: "Reef", value: "4", reachedOn: "2026-10-13", inhabitantId: null, inhabitantName: null },
+      { key: "fish_anniversary:9:2", kind: "fish_anniversary", tankId: "5", tankTitle: "Reef", value: "2", reachedOn: "2026-10-12", inhabitantId: "9", inhabitantName: "Bruno" },
     ] }));
     const items = await client.me.milestones({ date: "2026-10-15", utcOffsetMinutes: 120 });
     expect(requests[0]?.url).toBe("https://api.test/api/me/today/milestones?date=2026-10-15&utcOffsetMinutes=120");
-    expect(items).toEqual([{ key: "kept_streak:5:4", kind: "kept_streak", tankId: 5, tankTitle: "Reef", value: 4, reachedOn: "2026-10-13" }]);
+    expect(items).toEqual([
+      { key: "kept_streak:5:4", kind: "kept_streak", tankId: 5, tankTitle: "Reef", value: 4, reachedOn: "2026-10-13", inhabitantId: null, inhabitantName: null },
+      { key: "fish_anniversary:9:2", kind: "fish_anniversary", tankId: 5, tankTitle: "Reef", value: 2, reachedOn: "2026-10-12", inhabitantId: 9, inhabitantName: "Bruno" },
+    ]);
   });
 
   it("dismisses a milestone by its key", async () => {

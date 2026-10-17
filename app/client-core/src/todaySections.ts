@@ -29,8 +29,15 @@ export type FollowedTank = {
 /** The followed tanks with an update in the last 30 days, at most five; hasMore tells whether more tanks have one. */
 export type TodayFollowed = { items: FollowedTank[]; hasMore: boolean };
 
-/** A milestone of an own tank; value is the streak length in weeks, the tank year or 0 for the first care week. */
-export type Milestone = { key: string; kind: MilestoneKind; tankId: number; tankTitle: string; value: number; reachedOn: string };
+/**
+ * A milestone of an own tank or an own named fish; value is the streak length in weeks, the tank year, the fish
+ * year or 0 for the first care week. tankId and tankTitle name the tank, the tank the fish lives in for a fish
+ * anniversary; inhabitantId and inhabitantName are set for a fish anniversary only.
+ */
+export type Milestone = {
+  key: string; kind: MilestoneKind; tankId: number; tankTitle: string; value: number; reachedOn: string;
+  inhabitantId: number | null; inhabitantName: string | null;
+};
 
 const toUpdate = (dto: FollowedUpdateDto): FollowedUpdate => ({
   kind: dto.kind,
@@ -51,6 +58,7 @@ export const toTodayFollowed = (dto: TodayFollowedDto): TodayFollowed => ({ item
 
 export const toMilestone = (dto: MilestoneDto): Milestone => ({
   key: dto.key, kind: dto.kind, tankId: Number(dto.tankId), tankTitle: dto.tankTitle, value: Number(dto.value), reachedOn: dto.reachedOn,
+  inhabitantId: dto.inhabitantId === null ? null : Number(dto.inhabitantId), inhabitantName: dto.inhabitantName,
 });
 
 const DAY_MS = 86_400_000;

@@ -18,6 +18,8 @@ import type { ReturnRetrospective } from "./returnRetrospective.js";
 import { toFollowedTank, toMilestone, toTodayFollowed } from "./todaySections.js";
 import type { FollowedTank, Milestone, TodayFollowed } from "./todaySections.js";
 import { toMeStreaks, toTankStreaks, toVacation } from "./streaks.js";
+import { toFishPage } from "./fish.js";
+import type { FishPage, GrowthInput, SpawningInput } from "./fish.js";
 import { toStockedInhabitant, toStocking } from "./stocking.js";
 import type { InhabitantInput, RemovalReason, StockedInhabitant, Stocking } from "./stocking.js";
 import type { MeStreaks, TankStreaks, Vacation } from "./streaks.js";
@@ -94,6 +96,14 @@ import {
   discardStory,
   getCarePlan,
   getTankStreaks,
+  getFish,
+  recordFishGrowth,
+  recordFishSpawning,
+  moveFish,
+  recordFishDeath,
+  deleteFishEvent,
+  linkFishMedia,
+  unlinkFishMedia,
   listTankInhabitants,
   addTankInhabitant,
   updateTankInhabitant,
@@ -203,6 +213,7 @@ import type {
   DraftDto,
   VideoDto,
   VideoState,
+  FishDto,
   InhabitantDto,
   MeDto,
   HandleChangeDto,
@@ -499,6 +510,25 @@ const toDueItem = (item: DueCareItemDto): DueCareItem => ({
 });
 
 export interface CichlidsClient {
+  /**
+   * The page of a named fish and the owner's writes to its timeline and media. Every write answers with the
+   * page as the owner sees it; the day of an event defaults to the local date.
+   */
+  fish: {
+    /** The page of a fish the viewer may see; local is the date of the viewer, up to which anniversaries show. */
+    get(id: number, local?: LocalTime): Promise<FishPage>;
+    recordGrowth(id: number, input: GrowthInput, local: LocalTime): Promise<FishPage>;
+    recordSpawning(id: number, input: SpawningInput, local: LocalTime): Promise<FishPage>;
+    /** Moves the fish to another live tank of its owner. */
+    move(id: number, toTankId: number, on: string | null, local: LocalTime): Promise<FishPage>;
+    /** Records the death of the fish; it leaves the stocking and the page becomes a memorial. */
+    recordDeath(id: number, on: string | null, local: LocalTime): Promise<FishPage>;
+    /** Deletes a growth or spawning entry. */
+    deleteEvent(id: number, eventId: number, local: LocalTime): Promise<FishPage>;
+    /** Shows a photo or video of the media library of the owner on the page. */
+    linkMedia(id: number, mediaItemId: number, local: LocalTime): Promise<FishPage>;
+    unlinkMedia(id: number, mediaItemId: number, local: LocalTime): Promise<FishPage>;
+  };
   care: {
     list(tankId: number, params?: PageParams): Promise<PagedResponse<CareEntry>>;
     log(tankId: number, request?: LogCareRequest): Promise<CareEntry>;
@@ -804,7 +834,26 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
     return signProof();
   };
 
+  const fishPage = (result: { data?: FishDto; error?: unknown; response?: Response }): FishPage =>
+    toFishPage(absolutizeMedia(unwrap(result), options.baseUrl));
+
   return {
+    fish: {
+      async get(id, local) { return fishPage(await getFish({ client, path: { id }, query: local ? { date: local.date } : {} })); },
+      async recordGrowth(id, input, local) {
+        return fishPage(await recordFishGrowth({ client, path: { id }, query: { date: local.date }, body: { length: input.length, unit: input.unit, on: input.on ?? null } }));
+      },
+      async recordSpawning(id, input, local) {
+        return fishPage(await recordFishSpawning({
+          client, path: { id }, query: { date: local.date }, body: { generation: input.generation ?? null, hybrid: input.hybrid ?? false, on: input.on ?? null },
+        }));
+      },
+      async move(id, toTankId, on, local) { return fishPage(await moveFish({ client, path: { id }, query: { date: local.date }, body: { toTankId, on } })); },
+      async recordDeath(id, on, local) { return fishPage(await recordFishDeath({ client, path: { id }, query: { date: local.date }, body: { on } })); },
+      async deleteEvent(id, eventId, local) { return fishPage(await deleteFishEvent({ client, path: { id, eventId }, query: { date: local.date } })); },
+      async linkMedia(id, mediaItemId, local) { return fishPage(await linkFishMedia({ client, path: { id }, query: { date: local.date }, body: { mediaItemId } })); },
+      async unlinkMedia(id, mediaItemId, local) { return fishPage(await unlinkFishMedia({ client, path: { id, mediaItemId }, query: { date: local.date } })); },
+    },
     registration: {
       async preview(local) {
         return toRegistrationPreview(unwrap(await previewProvisionalRegistration({ client, query: local, body: await registrationProof() })));
