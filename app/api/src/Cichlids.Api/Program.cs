@@ -184,6 +184,7 @@ builder.Services.AddScoped<StoriesQueryService>();
 builder.Services.AddScoped<TanksQueryService>();
 builder.Services.AddScoped<TankAccessService>();
 builder.Services.AddScoped<TankFollowService>();
+builder.Services.AddScoped<HandleChangeService>();
 builder.Services.AddScoped<TankSelectedMemberService>();
 builder.Services.AddOptions<MediaPlacementOptions>()
     .Bind(builder.Configuration.GetSection(MediaPlacementOptions.SectionName))

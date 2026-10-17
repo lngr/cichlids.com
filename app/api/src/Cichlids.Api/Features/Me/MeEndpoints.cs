@@ -40,7 +40,44 @@ public static class MeEndpoints
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
+        app.MapPut("/api/me/handle", ChangeHandleAsync)
+            .WithName("ChangeMyHandle")
+            .WithTags("Me")
+            .RequireRegistered()
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .ProducesProblem(StatusCodes.Status403Forbidden)
+            .ProducesProblem(StatusCodes.Status409Conflict)
+            .ProducesProblem(StatusCodes.Status429TooManyRequests);
+
         return app;
+    }
+
+    private static async Task<Results<Ok<HandleChangeDto>, ProblemHttpResult>> ChangeHandleAsync(
+        ChangeHandleRequest? request, ClaimsPrincipal user, HttpContext http, CurrentProfileService profiles,
+        HandleChangeService handles, TimeProvider clock, CancellationToken cancellationToken)
+    {
+        var profile = await profiles.ResolveAsync(user, cancellationToken);
+        var result = await handles.ChangeAsync(profile.Id, request?.Handle, cancellationToken);
+        switch (result.Outcome)
+        {
+            case HandleChangeOutcome.Changed:
+            case HandleChangeOutcome.Unchanged:
+                return TypedResults.Ok(new HandleChangeDto(result.Handle!, result.NextChangeAt));
+            case HandleChangeOutcome.Generated:
+                return ApiProblems.WithCode(400, "Handle not available", "Names of the form user plus eight digits, guest_ plus a number and provisional- are generated for members and cannot be chosen.", HandleChangeService.GeneratedCode);
+            case HandleChangeOutcome.Reserved:
+                return ApiProblems.WithCode(400, "Handle reserved", "This name is reserved for the platform.", HandleChangeService.ReservedCode);
+            case HandleChangeOutcome.Taken:
+                return ApiProblems.WithCode(409, "Handle taken", "Another member uses this handle or has it reserved.", HandleChangeService.TakenCode);
+            case HandleChangeOutcome.TooSoon:
+                var next = result.NextChangeAt!.Value;
+                http.Response.Headers.RetryAfter =
+                    Math.Max(1, (long)Math.Ceiling((next - clock.GetUtcNow()).TotalSeconds)).ToString(CultureInfo.InvariantCulture);
+                return ApiProblems.WithCode(429, "Handle changed recently", "The handle changes once per 30 days.", HandleChangeService.TooSoonCode,
+                    new Dictionary<string, object?> { ["nextChangeAt"] = next });
+            default:
+                return ApiProblems.WithCode(400, "Invalid handle", "Use 3 to 30 characters: letters a to z, digits, underscore and dot, starting with a letter and ending with a letter or digit, without two dots in a row.", HandleChangeService.InvalidCode);
+        }
     }
 
     private static async Task<Ok<MeSettingsDto>> GetSettingsAsync(
@@ -76,6 +113,7 @@ public static class MeEndpoints
         ClaimsPrincipal user,
         CurrentProfileService currentProfileService,
         ProfilesQueryService profilesQueryService,
+        TimeProvider clock,
         CancellationToken cancellationToken)
     {
         var profile = await currentProfileService.ResolveCallerAsync(user, cancellationToken);
@@ -87,6 +125,7 @@ public static class MeEndpoints
             ? identity.FindAll(identity.RoleClaimType).Select(c => c.Value).Distinct().ToList()
             : [];
 
-        return TypedResults.Ok(new MeDto(detail, roles, user.IsProvisional()));
+        return TypedResults.Ok(new MeDto(
+            detail, roles, user.IsProvisional(), HandleChangeService.NextChangeAt(profile, clock.GetUtcNow())));
     }
 }

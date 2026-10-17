@@ -14,4 +14,14 @@ public static class ApiProblems
             detail: detail,
             statusCode: statusCode,
             extensions: new Dictionary<string, object?> { ["code"] = code });
+
+    /// <summary>
+    /// A problem with a code and further members that describe the refusal.
+    /// </summary>
+    public static ProblemHttpResult WithCode(
+        int statusCode, string title, string detail, string code, IReadOnlyDictionary<string, object?> members)
+    {
+        var extensions = new Dictionary<string, object?>(members) { ["code"] = code };
+        return TypedResults.Problem(title: title, detail: detail, statusCode: statusCode, extensions: extensions);
+    }
 }
