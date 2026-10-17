@@ -2,7 +2,7 @@ namespace Cichlids.Domain.Entities;
 
 /// <summary>
 /// A member's dismissal of a milestone on Today. Key is the stable key of the milestone (its kind, the
-/// tank and the threshold or the tank year), so a milestone is dismissed once for ever.
+/// tank or named fish and the threshold or the year), so a milestone is dismissed once for ever.
 /// </summary>
 public class MilestoneDismissal
 {

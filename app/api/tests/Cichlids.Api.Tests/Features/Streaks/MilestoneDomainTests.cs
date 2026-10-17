@@ -78,7 +78,7 @@ public sealed class MilestoneDomainTests
         var parsed = Milestones.TryParseKey(key);
         Assert.NotNull(parsed);
         Assert.Equal(kind, parsed.Value.Kind);
-        Assert.Equal(tank, parsed.Value.TankId);
+        Assert.Equal(tank, parsed.Value.SubjectId);
         Assert.Equal(value, parsed.Value.Value);
     }
 
