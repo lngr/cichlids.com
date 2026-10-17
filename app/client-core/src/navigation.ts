@@ -31,7 +31,7 @@ function parentPath(path: string): string {
   const tab = selectedTab(path);
   return path.split("?")[0] === `/${tab}` ? "/today" : `/${tab}`;
 }
-const viewNames = ["today", "discover", "fish", "me", "gallery", "tanks", "community", "species", "profile", "upload", "onboarding", "care", "todos", "media", "stories"] as const;
+const viewNames = ["today", "discover", "fish", "me", "gallery", "tanks", "community", "species", "profile", "upload", "onboarding", "care", "todos", "media", "stories", "followed"] as const;
 export const navigationMachine = setup({
   types: { context: {} as NavigationContext, events: {} as NavigationEvent },
   actions: {
@@ -79,7 +79,7 @@ export const navigationMachine = setup({
             { target: "unknown" },
           ],
         },
-        today: {}, discover: {}, fish: {}, me: {}, gallery: {}, tanks: {}, community: {}, species: {}, profile: {}, upload: {}, onboarding: {}, care: {}, todos: {}, media: {}, stories: {}, unknown: {},
+        today: {}, discover: {}, fish: {}, me: {}, gallery: {}, tanks: {}, community: {}, species: {}, profile: {}, upload: {}, onboarding: {}, care: {}, todos: {}, media: {}, stories: {}, followed: {}, unknown: {},
       },
     },
     creating: {

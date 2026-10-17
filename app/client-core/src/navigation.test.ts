@@ -95,6 +95,17 @@ it("opens the to-do list as its own view of the Me tab and returns to where it w
   actor.stop();
 });
 
+it("opens the followed tanks as their own view of the Today tab and returns to Today", () => {
+  const actor = createActor(navigationMachine).start();
+  actor.send({ type: "OPEN", path: "/followed" });
+  expect(actor.getSnapshot().context.path).toBe("/followed");
+  expect(actor.getSnapshot().matches({ viewing: "followed" })).toBe(true);
+  expect(selectedTab("/followed")).toBe("today");
+  actor.send({ type: "BACK" });
+  expect(actor.getSnapshot().context.path).toBe("/today");
+  actor.stop();
+});
+
 it("opens the media library as its own view of the Me tab and returns to where it was opened", () => {
   const actor = createActor(navigationMachine).start();
   actor.send({ type: "OPEN", path: "/media" });
