@@ -243,6 +243,8 @@ builder.Services.AddScoped<ProfilesQueryService>();
 builder.Services.AddScoped<CommentsQueryService>();
 builder.Services.AddScoped<CommentsWriteService>();
 builder.Services.AddScoped<CurrentProfileService>();
+builder.Services.AddScoped<MemberActivityService>();
+builder.Services.AddSingleton<MemberActivityThrottle>();
 builder.Services.AddScoped<CommunityQueryService>();
 builder.Services.AddScoped<LegacyRedirectsQueryService>();
 builder.Services.AddOptions<UploadLimitsOptions>()
@@ -392,6 +394,7 @@ app.UseWhen(context => WebPushEndpoints.IsWebPushPath(context.Request.Path), bra
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseMemberActivity();
 app.UseRateLimiter();
 
 app.MapGet("/healthz", () => Results.Ok(new { status = "ok" }))

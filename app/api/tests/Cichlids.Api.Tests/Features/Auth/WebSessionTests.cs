@@ -27,6 +27,22 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
     private const string LoginCookie = "__Host-cichlids-login";
 
     [Fact]
+    [Trait("Story", "TASK-8.1")]
+    public async Task Requests_with_the_session_cookie_record_the_activity_of_the_member()
+    {
+        var login = await LogInAsync("/");
+
+        // The first request creates the profile of the new member; the next one records the activity.
+        using (await SendAsync(HttpMethod.Get, "/api/me", login.CookieHeader)) { }
+        using (await SendAsync(HttpMethod.Get, "/api/me", login.CookieHeader)) { }
+
+        await using var db = fixture.CreateDbContext();
+        var lastSeen = await db.ProfileIdentities.Where(i => i.Subject == login.Subject)
+            .Join(db.Profiles, i => i.ProfileId, p => p.Id, (_, p) => p.LastSeenAt).SingleAsync();
+        Assert.NotNull(lastSeen);
+    }
+
+    [Fact]
     public async Task Login_answers_the_Keycloak_address_with_PKCE_and_the_offline_scope()
     {
         using var response = await PostLoginAsync("/me");
