@@ -24,6 +24,10 @@ export {
 export type {
   MeStreaks, OwnTankStreaks, TankStreaks, TimeLapseStreak, Vacation, VacationShare, WaterChangeStreak, WaterChangeStreakState,
 } from "./streaks.js";
+export { daysSince, updateImageUri, updatePath } from "./todaySections.js";
+export type {
+  FollowedImage, FollowedStory, FollowedTank, FollowedUpdate, FollowedUpdateKind, Milestone, MilestoneKind, TodayFollowed,
+} from "./todaySections.js";
 export type { CreateVideoUploadRequest } from "./generated/types.gen.js";
 export type { UploadVideoOptions, VideoUploadSession, VideoUploadSource, VideoUploadTransport } from "./videoUpload.js";
 export type {

@@ -12,6 +12,8 @@ import { toLibraryDetail, toLibraryItem, toLibraryPlace, libraryQuery } from "./
 import type { LibraryDetail, LibraryItem, LibraryListParams, LibraryPlace } from "./library.js";
 import { toMyStory, toStoryEditor } from "./storyEditor.js";
 import type { EditorEntry, MyStory, StoryEditor, StorySubjectRequest, StoryTextRequest } from "./storyEditor.js";
+import { toFollowedTank, toMilestone, toTodayFollowed } from "./todaySections.js";
+import type { FollowedTank, Milestone, TodayFollowed } from "./todaySections.js";
 import { toMeStreaks, toTankStreaks, toVacation } from "./streaks.js";
 import type { MeStreaks, TankStreaks, Vacation } from "./streaks.js";
 import {
@@ -21,6 +23,10 @@ import {
   deleteMyStory,
   getMyStory,
   listMyStories,
+  dismissMilestone,
+  getTodayFollowed,
+  getTodayMilestones,
+  listMyFollowedTanks,
   placeMyStorySubject,
   removeMyStoryItem,
   removeMyStorySubject,
@@ -603,6 +609,14 @@ export interface CichlidsClient {
   me: {
     get(): Promise<Me>;
     today(date: string): Promise<Today>;
+    /** The followed tanks with a visible update in the last 30 days, newest first, at most five. */
+    followed(): Promise<TodayFollowed>;
+    /** All followed tanks the member sees, those with the newest update first. */
+    followedTanks(params?: PageParams): Promise<PagedResponse<FollowedTank>>;
+    /** The milestones of the own tanks reached within the last 7 days that are not dismissed. */
+    milestones(local: LocalTime): Promise<Milestone[]>;
+    /** Dismisses a milestone for good. */
+    dismissMilestone(key: string): Promise<void>;
     completeOnboarding(request: OnboardingRequest): Promise<OnboardingResultDto>;
     legacyTanks(): Promise<LegacyTankDto[]>;
     setInterests(interests: string[]): Promise<string[]>;
@@ -1037,6 +1051,19 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
     me: {
       async today(date) {
         return absolutizeMedia(unwrap(await getToday({ client, query: { date } })), options.baseUrl);
+      },
+      async followed() {
+        return toTodayFollowed(absolutizeMedia(unwrap(await getTodayFollowed({ client })), options.baseUrl));
+      },
+      async followedTanks(params) {
+        const page = unwrapPaged(await listMyFollowedTanks({ client, query: params ?? {} }));
+        return absolutizeMedia({ total: page.total, items: page.items.map(toFollowedTank) }, options.baseUrl);
+      },
+      async milestones(local) {
+        return unwrap(await getTodayMilestones({ client, query: local })).items.map(toMilestone);
+      },
+      async dismissMilestone(key) {
+        unwrap(await dismissMilestone({ client, path: { key } }));
       },
       async settings() {
         return unwrap(await getMySettings({ client }));
