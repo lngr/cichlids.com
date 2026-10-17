@@ -1,10 +1,10 @@
 ---
 id: TASK-9.1
 title: Stocking of a tank
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-17 12:36'
-updated_date: '2026-10-17 12:39'
+updated_date: '2026-10-17 13:33'
 labels: []
 dependencies: []
 parent_task_id: TASK-9
@@ -73,3 +73,19 @@ The owner keeps the stocking of a tank: groups (species and count) and named fis
 ### Tests
 - API integration tests per acceptance criterion plus name and count, future dates, removal before move-in, unknown species, provisional owner, visibility levels and migrated rows; client-core and mobile unit tests; one Playwright write spec.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- Migration InhabitantStocking: inhabitant gains name (up to 80), moved_in_on, removed_on, removal_reason (died, given_away, moved) and owner_profile_id (backfilled from the tank, not null). Check constraints: a name implies a count of one, the name is not blank, removed_on and removal_reason come together, removed_on is not before moved_in_on.
+- The tank foreign key restricts instead of cascading. Tanks are soft deleted; the only hard delete is the cleanup of provisional accounts, which deletes the inhabitants first. The content move of a provisional profile updates owner_profile_id. No new provisional guard trigger: the stocking is private content of the private tank.
+- API under /api/tanks/{tankId}/inhabitants: GET (current and history, follows the profile visibility of the tank, a draft tank only for the owner), POST, PUT /{id}, POST /{id}/removal. Writes by anyone but the owner answer inhabitant_not_found (404). The local date comes from the date query parameter like the streak routes; moved-in and removal days are never in the future, the removal is not before the move-in (migrated rows: the creation day of the tank). A name coerces the count to one. Outbox events inhabitant.added, inhabitant.updated and inhabitant.removed carry ids only.
+- InhabitantDto has id, name, movedInOn, removedOn, removalReason; the tank detail lists the current stocking with named fish first. CurrentInhabitants (TASK-9.5) now means removed_on is null.
+- The ETL step replaces only migrated rows (moved_in_on is null), so a re-run keeps the stocking of members.
+- client-core: stocking, addInhabitant, updateInhabitant, removeInhabitant, form and removal validation. Mobile: StockingSection on the tank page with the editor, the removal sheet and the collapsible history; texts in all 11 catalogues.
+- Golden snapshot: inhabitant name is generated text, the days, reason and owner are kept; masking deletes inhabitants of provisional profiles before their tanks; the migration is pinned.
+
+### Verification
+- API 2597 passed (1 skipped), Infrastructure 750, ETL 351, client-core 408, mobile 600, golden snapshot tests green in postgres:18.6, full write E2E 61 specs green including stocking.write.mjs.
+<!-- SECTION:NOTES:END -->
