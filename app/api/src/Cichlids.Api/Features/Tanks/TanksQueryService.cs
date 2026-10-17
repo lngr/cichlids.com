@@ -215,23 +215,12 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
 
     private async Task<List<InhabitantDto>> LoadInhabitantsAsync(long tankId, CancellationToken cancellationToken)
     {
-        var rows = await context.Inhabitants
-            .Where(i => i.TankId == tankId)
-            .OrderBy(i => i.Sort)
-            .Select(i => new { i.SpeciesId, i.Count })
+        var rows = await context.Inhabitants.AsNoTracking()
+            .Where(i => i.TankId == tankId && i.RemovedOn == null)
+            .OrderBy(i => i.Name == null).ThenBy(i => i.Sort).ThenBy(i => i.Id)
             .ToListAsync(cancellationToken);
-
-        var speciesIds = rows.Where(r => r.SpeciesId != null).Select(r => r.SpeciesId!.Value).Distinct().ToList();
-
-        var speciesById = await context.Species
-            .Where(s => speciesIds.Contains(s.Id))
-            .Select(s => new InhabitantSpeciesRefDto(s.Id, s.Slug, s.Genus, s.Name, s.DisplayName))
-            .ToDictionaryAsync(s => s.Id, cancellationToken);
-
-        return rows
-            .Select(r => new InhabitantDto(
-                r.SpeciesId is { } speciesId ? speciesById.GetValueOrDefault(speciesId) : null, r.Count))
-            .ToList();
+        var dtos = await InhabitantMapper.ToDtosAsync(context, rows, cancellationToken);
+        return rows.Select(r => dtos[r.Id]).ToList();
     }
 
     private sealed record TankProjection(

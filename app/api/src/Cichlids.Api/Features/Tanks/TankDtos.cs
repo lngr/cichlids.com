@@ -50,10 +50,6 @@ public sealed record TankSectionsDto(
     IReadOnlyList<TankMediaItemDto> Decoration,
     IReadOnlyList<TankMediaItemDto> Technic);
 
-public sealed record InhabitantSpeciesRefDto(long Id, string? Slug, string Genus, string Name, string DisplayName);
-
-public sealed record InhabitantDto(InhabitantSpeciesRefDto? Species, int? Count);
-
 public sealed record TankDetailDto(
     long Id,
     string Title,

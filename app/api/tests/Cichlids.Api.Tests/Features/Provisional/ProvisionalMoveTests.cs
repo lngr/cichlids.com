@@ -44,6 +44,11 @@ public sealed class ProvisionalMoveTests(ApiFixture fixture)
             Assert.Equal(HttpStatusCode.Created, current.StatusCode);
         }
 
+        using (var fish = await SendAsync(fixture.Client, HttpMethod.Post, $"/api/tanks/{content.Tank}/inhabitants{Query}", caller.Token, new { name = "Bruno" }))
+        {
+            Assert.Equal(HttpStatusCode.Created, fish.StatusCode);
+        }
+
         await AddVacationAsync(fixture, caller.Token, "2026-09-01", "2026-09-05");
         await AddVacationAsync(fixture, caller.Token, "2026-08-01", "2026-08-02");
         using (var active = await SendAsync(fixture.Client, HttpMethod.Post, $"/api/me/vacations{Query}", caller.Token, new { startDate = "2026-10-01" }))
@@ -114,6 +119,7 @@ public sealed class ProvisionalMoveTests(ApiFixture fixture)
         Assert.Equal(setup.MemberId, (await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == setup.Content.Tank)).ProfileId);
         Assert.Equal(TankVisibility.Private, (await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == setup.Content.Tank)).ProfileVisibility);
         Assert.Equal(setup.MemberId, (await db.Tanks.AsNoTracking().SingleAsync(t => t.Id == setup.MemberTank)).ProfileId);
+        Assert.Equal(setup.MemberId, (await db.Inhabitants.AsNoTracking().SingleAsync(i => i.TankId == setup.Content.Tank)).OwnerProfileId);
         Assert.Equal(setup.MemberId, (await db.CareEntries.AsNoTracking().SingleAsync(e => e.Id == setup.Content.CareEntry)).AuthorProfileId);
         Assert.Equal(setup.MemberId, (await db.MediaItems.AsNoTracking().SingleAsync(m => m.Id == setup.Content.MediaItem)).OwnerProfileId);
         Assert.True(await db.MediaLinks.AnyAsync(l => l.CareEntryId == setup.Content.CareEntry && l.MediaItemId == setup.Content.MediaItem));

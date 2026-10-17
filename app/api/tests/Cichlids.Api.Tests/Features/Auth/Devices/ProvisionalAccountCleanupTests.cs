@@ -154,6 +154,7 @@ public sealed class ProvisionalAccountCleanupTests(UploadsFixture fixture) : IAs
         db.CareEntries.Add(entry);
         db.CarePlanRules.Add(new CarePlanRule { TankId = tank.Id, Kind = CareKind.WaterChange, RhythmDays = 7, Enabled = true, ReasonCode = "default", UpdatedAt = Now });
         db.Vacations.Add(new Vacation { ProfileId = profileId, StartDate = new DateOnly(2026, 1, 1), CreatedAt = Now });
+        db.Inhabitants.Add(new Inhabitant { TankId = tank.Id, OwnerProfileId = profileId, Name = "Bruno", Count = 1, MovedInOn = new DateOnly(2026, 1, 1) });
         await db.SaveChangesAsync();
         db.StreakFreezes.Add(new StreakFreeze
         {
@@ -186,7 +187,7 @@ public sealed class ProvisionalAccountCleanupTests(UploadsFixture fixture) : IAs
     {
         await using var db = fixture.CreateDbContext();
         return await db.Tanks.AnyAsync(t => t.ProfileId == profileId) || await db.CareEntries.AnyAsync(e => e.AuthorProfileId == profileId)
-            || await db.WaterChangeSessions.AnyAsync(s => s.ProfileId == profileId) || await db.Vacations.AnyAsync(v => v.ProfileId == profileId)
+            || await db.Inhabitants.AnyAsync(i => i.OwnerProfileId == profileId) || await db.WaterChangeSessions.AnyAsync(s => s.ProfileId == profileId) || await db.Vacations.AnyAsync(v => v.ProfileId == profileId)
             || await db.MediaItems.AnyAsync(m => m.OwnerProfileId == profileId) || await db.DeviceCredentials.AnyAsync(c => c.ProfileId == profileId)
             || await db.StreakFreezes.AnyAsync(f => db.Tanks.Any(t => t.Id == f.TankId && t.ProfileId == profileId));
     }

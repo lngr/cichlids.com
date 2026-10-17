@@ -236,6 +236,8 @@ public sealed class ProvisionalGatedEndpointsTests(ApiFixture fixture)
         "POST /api/me/vacations/active/end",
         "POST /api/tanks",
         "POST /api/tanks/{tankId:long}/care",
+        "POST /api/tanks/{tankId:long}/inhabitants",
+        "POST /api/tanks/{tankId:long}/inhabitants/{id:long}/removal",
         "POST /api/tanks/{tankId:long}/care/{id:long}/photos",
         "POST /api/tanks/{tankId:long}/care/{id:long}/todos",
         "POST /api/tanks/{tankId:long}/decommissioning",
@@ -250,6 +252,7 @@ public sealed class ProvisionalGatedEndpointsTests(ApiFixture fixture)
         "PUT /api/me/settings",
         "PUT /api/me/today/milestones/{key}/dismissal",
         "PUT /api/tanks/{id:long}/visibility",
+        "PUT /api/tanks/{tankId:long}/inhabitants/{id:long}",
         "PUT /api/tanks/{tankId:long}/water-changes/{id:long}/steps/{step}",
     ];
 

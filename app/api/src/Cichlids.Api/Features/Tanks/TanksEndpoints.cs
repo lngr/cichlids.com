@@ -38,6 +38,7 @@ public static class TanksEndpoints
 
         app.MapTankSeriesPhotoEndpoints();
         app.MapTankFollowEndpoints();
+        app.MapInhabitantEndpoints();
 
         return app;
     }

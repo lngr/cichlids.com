@@ -168,6 +168,8 @@ builder.Services.AddProblemDetails(options => options.CustomizeProblemDetails = 
         context.ProblemDetails.Extensions.TryAdd("code", "care_request_invalid");
     else if (StreakEndpoints.IsStreakPath(context.HttpContext.Request.Path))
         context.ProblemDetails.Extensions.TryAdd("code", StreakEndpoints.RequestInvalidCode);
+    else if (InhabitantEndpoints.IsInhabitantPath(context.HttpContext.Request.Path))
+        context.ProblemDetails.Extensions.TryAdd("code", InhabitantEndpoints.RequestInvalidCode);
     else if (WebPushEndpoints.IsWebPushPath(context.HttpContext.Request.Path))
         context.ProblemDetails.Extensions.TryAdd("code", "web_push_request_invalid");
     else if (TankSeriesPhotoEndpoints.IsSeriesPhotoPath(context.HttpContext.Request.Path))
@@ -207,6 +209,7 @@ builder.Services.AddScoped<ReturnRetrospectiveService>();
 builder.Services.AddScoped<IArchiveRetrospectiveGate, ArchiveRetrospectiveGate>();
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<TanksWriteService>();
+builder.Services.AddScoped<InhabitantService>();
 builder.Services.AddScoped<CareWriteService>();
 builder.Services.AddScoped<CarePhotoService>();
 builder.Services.AddOptions<WaterChangeOptions>()
@@ -366,6 +369,14 @@ app.UseWhen(context => StreakEndpoints.IsStreakPath(context.Request.Path), branc
         var status = context.HttpContext.Response.StatusCode;
         await Cichlids.Api.Features.Common.ApiProblems.WithCode(status, "Streak request refused", "The streak request could not be completed.",
             status == 401 ? StreakEndpoints.AuthRequiredCode : StreakEndpoints.RequestInvalidCode).ExecuteAsync(context.HttpContext);
+    }));
+
+app.UseWhen(context => InhabitantEndpoints.IsInhabitantPath(context.Request.Path), branch =>
+    branch.UseStatusCodePages(async context =>
+    {
+        var status = context.HttpContext.Response.StatusCode;
+        await Cichlids.Api.Features.Common.ApiProblems.WithCode(status, "Stocking request refused", "The stocking request could not be completed.",
+            status == 401 ? InhabitantEndpoints.AuthRequiredCode : InhabitantEndpoints.RequestInvalidCode).ExecuteAsync(context.HttpContext);
     }));
 
 app.UseWhen(context => TankSeriesPhotoEndpoints.IsSeriesPhotoPath(context.Request.Path), branch =>

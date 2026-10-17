@@ -194,6 +194,8 @@ public sealed class ProvisionalRegistrationService(
 
         await context.Tanks.Where(t => t.ProfileId == from)
             .ExecuteUpdateAsync(s => s.SetProperty(t => t.ProfileId, into), cancellationToken);
+        await context.Inhabitants.Where(i => i.OwnerProfileId == from)
+            .ExecuteUpdateAsync(s => s.SetProperty(i => i.OwnerProfileId, into), cancellationToken);
         await context.Tanks.Where(t => t.DeletedByProfileId == from)
             .ExecuteUpdateAsync(s => s.SetProperty(t => t.DeletedByProfileId, into), cancellationToken);
         await context.CareEntries.Where(e => e.AuthorProfileId == from)
