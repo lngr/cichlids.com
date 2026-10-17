@@ -18,6 +18,8 @@ import type { ReturnRetrospective } from "./returnRetrospective.js";
 import { toFollowedTank, toMilestone, toTodayFollowed } from "./todaySections.js";
 import type { FollowedTank, Milestone, TodayFollowed } from "./todaySections.js";
 import { toMeStreaks, toTankStreaks, toVacation } from "./streaks.js";
+import { toStockedInhabitant, toStocking } from "./stocking.js";
+import type { InhabitantInput, RemovalReason, StockedInhabitant, Stocking } from "./stocking.js";
 import type { MeStreaks, TankStreaks, Vacation } from "./streaks.js";
 import { toPhotoSuggestion, toTankAdoption } from "./adoption.js";
 import type { PhotoSuggestion, TankAdoption } from "./adoption.js";
@@ -92,6 +94,10 @@ import {
   discardStory,
   getCarePlan,
   getTankStreaks,
+  listTankInhabitants,
+  addTankInhabitant,
+  updateTankInhabitant,
+  removeTankInhabitant,
   getMyStreaks,
   listMyVacations,
   startVacation,
@@ -469,6 +475,10 @@ function absolutizeMedia<T>(value: T, baseUrl: string): T {
   return visit(value) as T;
 }
 
+const inhabitantBody = (input: InhabitantInput) => ({
+  speciesId: input.speciesId ?? null, count: input.count ?? null, name: input.name ?? null, movedInOn: input.movedInOn ?? null,
+});
+
 const toDue = (due: CareDueDto): CareDue => ({ state: due.state, days: Number(due.days), dueDate: due.dueDate });
 const toReason = (reason: CareReasonDto): CareReason => ({ code: reason.code, parameters: reason.parameters });
 const toPlan = (plan: CarePlanDto): CarePlan => ({
@@ -588,6 +598,14 @@ export interface CichlidsClient {
     addTimeLapsePhoto(id: number, file: UploadFile, capturedInApp?: boolean): Promise<TankTimeLapsePhoto>;
     /** The streaks of a tank a viewer may see; local is the date of the viewer. */
     streaks(id: number, local: LocalTime): Promise<TankStreaks>;
+    /** The stocking of a tank the viewer sees: the current inhabitants, named fish first, and the history. */
+    stocking(id: number): Promise<Stocking>;
+    /** Adds a group or a named fish to an own tank; the moved-in day defaults to the local date. */
+    addInhabitant(id: number, input: InhabitantInput, local: LocalTime): Promise<StockedInhabitant>;
+    /** Changes a current inhabitant of an own tank; a moved-in day that is left out stays. */
+    updateInhabitant(id: number, inhabitantId: number, input: InhabitantInput, local: LocalTime): Promise<StockedInhabitant>;
+    /** Removes a current inhabitant from the stocking with a reason; the day defaults to the local date. */
+    removeInhabitant(id: number, inhabitantId: number, removal: { reason: RemovalReason; removedOn?: string }, local: LocalTime): Promise<StockedInhabitant>;
     /** The operating time and the decommissionings of a tank whose care stream the viewer sees. */
     operation(id: number, local: LocalTime): Promise<TankOperation>;
     /**
@@ -959,6 +977,18 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async streaks(id, local) {
         return toTankStreaks(unwrap(await getTankStreaks({ client, path: { tankId: id }, query: local })));
+      },
+      async stocking(id) {
+        return toStocking(unwrap(await listTankInhabitants({ client, path: { tankId: id } })));
+      },
+      async addInhabitant(id, input, local) {
+        return toStockedInhabitant(unwrap(await addTankInhabitant({ client, path: { tankId: id }, query: local, body: inhabitantBody(input) })));
+      },
+      async updateInhabitant(id, inhabitantId, input, local) {
+        return toStockedInhabitant(unwrap(await updateTankInhabitant({ client, path: { tankId: id, id: inhabitantId }, query: local, body: inhabitantBody(input) })));
+      },
+      async removeInhabitant(id, inhabitantId, removal, local) {
+        return toStockedInhabitant(unwrap(await removeTankInhabitant({ client, path: { tankId: id, id: inhabitantId }, query: local, body: { reason: removal.reason, removedOn: removal.removedOn ?? null } })));
       },
       async operation(id, local) {
         return toTankOperation(absolutizeMedia(unwrap(await getTankOperation({ client, path: { tankId: id }, query: local })), options.baseUrl));

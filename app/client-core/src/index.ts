@@ -19,6 +19,13 @@ export type {
 export { HEATMAP_WEEKS, heatmapIntensity, heatmapListItems, layoutHeatmap } from "./careHeatmap.js";
 export type { CareHeatmap, CareHeatmapDay, HeatmapCell, HeatmapKind, HeatmapLayout } from "./careHeatmap.js";
 export { checkVacationDates } from "./vacation.js";
+export {
+  INHABITANT_MAX_COUNT, INHABITANT_NAME_MAX_LENGTH, REMOVAL_REASONS, checkInhabitantDraft, checkRemovalDay, draftOf, inhabitantInput, inhabitantLabel,
+  isCalendarDate, toStockedInhabitant,
+} from "./stocking.js";
+export type {
+  InhabitantDraft, InhabitantInput, InhabitantProblem, RemovalReason, StockedInhabitant, StockedSpecies, Stocking,
+} from "./stocking.js";
 export { activeDecommissioning, operatingTime } from "./decommission.js";
 export type { DecommissionImage, DecommissionScope, Decommissioning, TankOperation } from "./decommission.js";
 export { proofCameraMachine } from "./proofCamera.js";
