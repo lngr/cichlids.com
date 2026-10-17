@@ -60,4 +60,33 @@ public static class TimeLapseStreaks
         }
         return new TimeLapseStreak(current, longest, hasPhoto, !hasPhoto && !paused, paused, thisWeek, thisWeek.AddDays(6), keeping);
     }
+
+    /// <summary>
+    /// The day each of the given streak lengths in weeks was first reached by a run of the tank: the
+    /// local date of the first photo of the week that completes the length. The runs follow the rules of
+    /// the streak, so a week without a photo ends a run unless a vacation touches it. Photos after today
+    /// are ignored and lengths no run reached are left out.
+    /// </summary>
+    public static IReadOnlyDictionary<int, DateOnly> ReachDates(IReadOnlyList<SeriesPhoto> photos, int utcOffsetMinutes,
+        IReadOnlyList<VacationSpan> vacations, DateOnly today, IReadOnlyList<int> weeks)
+    {
+        var firstPhotoOfWeek = photos.Select(p => CarePlans.LocalDate(p.At, utcOffsetMinutes))
+            .Where(date => date <= today)
+            .GroupBy(WeekStartOf)
+            .ToDictionary(g => g.Key, g => g.Min());
+        var reached = new Dictionary<int, DateOnly>();
+        if (firstPhotoOfWeek.Count == 0) return reached;
+        var thisWeek = WeekStartOf(today);
+        var run = 0;
+        for (var week = firstPhotoOfWeek.Keys.Min(); week <= thisWeek; week = week.AddDays(7))
+        {
+            if (firstPhotoOfWeek.TryGetValue(week, out var first))
+            {
+                run++;
+                if (weeks.Contains(run) && !reached.ContainsKey(run)) reached[run] = first;
+            }
+            else if (week != thisWeek && !Vacations.Touches(vacations, week, week.AddDays(6))) run = 0;
+        }
+        return reached;
+    }
 }
