@@ -28,6 +28,10 @@ export {
 export type {
   MeStreaks, OwnTankStreaks, TankStreaks, TimeLapseStreak, Vacation, VacationShare, WaterChangeStreak, WaterChangeStreakState,
 } from "./streaks.js";
+export { opensOnStart, returnCards } from "./returnRetrospective.js";
+export type {
+  ReturnCardKind, ReturnNextSteps, ReturnOverdueItem, ReturnRegionStory, ReturnRegionTank, ReturnResponses, ReturnRetrospective, ReturnTankRef,
+} from "./returnRetrospective.js";
 export { daysSince, updateImageUri, updatePath } from "./todaySections.js";
 export type {
   FollowedImage, FollowedStory, FollowedTank, FollowedUpdate, FollowedUpdateKind, Milestone, MilestoneKind, TodayFollowed,

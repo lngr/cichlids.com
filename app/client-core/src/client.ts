@@ -12,6 +12,9 @@ import { toLibraryDetail, toLibraryItem, toLibraryPlace, libraryQuery } from "./
 import type { LibraryDetail, LibraryItem, LibraryListParams, LibraryPlace } from "./library.js";
 import { toMyStory, toStoryEditor } from "./storyEditor.js";
 import type { EditorEntry, MyStory, StoryEditor, StorySubjectRequest, StoryTextRequest } from "./storyEditor.js";
+import type { ReturnRetrospectiveDto } from "./generated/types.gen.js";
+import { toReturnRetrospective } from "./returnRetrospective.js";
+import type { ReturnRetrospective } from "./returnRetrospective.js";
 import { toFollowedTank, toMilestone, toTodayFollowed } from "./todaySections.js";
 import type { FollowedTank, Milestone, TodayFollowed } from "./todaySections.js";
 import { toMeStreaks, toTankStreaks, toVacation } from "./streaks.js";
@@ -28,7 +31,9 @@ import {
   getMyStory,
   listMyStories,
   dismissMilestone,
+  getReturnRetrospective,
   getTodayFollowed,
+  markReturnRetrospectiveSeen,
   getTodayMilestones,
   listMyFollowedTanks,
   placeMyStorySubject,
@@ -625,6 +630,10 @@ export interface CichlidsClient {
     milestones(local: LocalTime): Promise<Milestone[]>;
     /** Dismisses a milestone for good. */
     dismissMilestone(key: string): Promise<void>;
+    /** The return retrospective that is due, or the one seen within the last 30 days; null when there is none. */
+    returnRetrospective(local: LocalTime): Promise<ReturnRetrospective | null>;
+    /** Stores that the member saw the due return retrospective. */
+    markReturnRetrospectiveSeen(): Promise<void>;
     completeOnboarding(request: OnboardingRequest): Promise<OnboardingResultDto>;
     /** The archive tanks of the member that are not adopted. */
     legacyTanks(): Promise<LegacyTankDto[]>;
@@ -1081,6 +1090,14 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       },
       async dismissMilestone(key) {
         unwrap(await dismissMilestone({ client, path: { key } }));
+      },
+      async returnRetrospective(local) {
+        const result = await getReturnRetrospective({ client, query: local });
+        if (result.error === undefined && result.response?.status === 204) return null;
+        return toReturnRetrospective(absolutizeMedia(unwrap(result) as ReturnRetrospectiveDto, options.baseUrl));
+      },
+      async markReturnRetrospectiveSeen() {
+        unwrap(await markReturnRetrospectiveSeen({ client }));
       },
       async settings() {
         return unwrap(await getMySettings({ client }));
