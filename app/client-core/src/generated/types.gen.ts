@@ -19,6 +19,16 @@ export type AddStorySubjectRequest = {
     positioned: boolean;
 };
 
+export type AdoptTankRequest = {
+    mediaItemIds: Array<number | string>;
+};
+
+export type AdoptTankResultDto = {
+    tankId: number | string;
+    title: string;
+    badge: null | string;
+};
+
 export type AggressionLevel = 'unspecified' | 'low' | 'moderate' | 'high';
 
 export type ArchiveMemberSinceDto = {
@@ -680,6 +690,11 @@ export type PagedResponseOfOutboxEventDto = {
     items: Array<OutboxEventDto>;
 };
 
+export type PagedResponseOfPhotoSuggestionDto = {
+    total: number | string;
+    items: Array<PhotoSuggestionDto>;
+};
+
 export type PagedResponseOfSpeciesListItemDto = {
     total: number | string;
     items: Array<SpeciesListItemDto>;
@@ -703,6 +718,13 @@ export type PagedResponseOfTankMemberDto = {
 export type PagedResponseOfTodoListItemDto = {
     total: number | string;
     items: Array<TodoListItemDto>;
+};
+
+export type PhotoSuggestionDto = {
+    mediaItemId: number | string;
+    image: null | ImageUrlsDto;
+    takenAt: null | string;
+    date: string;
 };
 
 export type ProblemDetails = {
@@ -2499,6 +2521,75 @@ export type ListMyLegacyTanksResponses = {
 };
 
 export type ListMyLegacyTanksResponse = ListMyLegacyTanksResponses[keyof ListMyLegacyTanksResponses];
+
+export type ListLegacyTankPhotoSuggestionsData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: {
+        offset?: number | string;
+        limit?: number | string;
+    };
+    url: '/api/me/legacy-tanks/{id}/photo-suggestions';
+};
+
+export type ListLegacyTankPhotoSuggestionsErrors = {
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type ListLegacyTankPhotoSuggestionsError = ListLegacyTankPhotoSuggestionsErrors[keyof ListLegacyTankPhotoSuggestionsErrors];
+
+export type ListLegacyTankPhotoSuggestionsResponses = {
+    /**
+     * OK
+     */
+    200: PagedResponseOfPhotoSuggestionDto;
+};
+
+export type ListLegacyTankPhotoSuggestionsResponse = ListLegacyTankPhotoSuggestionsResponses[keyof ListLegacyTankPhotoSuggestionsResponses];
+
+export type AdoptLegacyTankData = {
+    body: AdoptTankRequest;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/me/legacy-tanks/{id}/adopt';
+};
+
+export type AdoptLegacyTankErrors = {
+    /**
+     * Bad Request
+     */
+    400: ProblemDetails;
+    /**
+     * Not Found
+     */
+    404: ProblemDetails;
+    /**
+     * Conflict
+     */
+    409: ProblemDetails;
+};
+
+export type AdoptLegacyTankError = AdoptLegacyTankErrors[keyof AdoptLegacyTankErrors];
+
+export type AdoptLegacyTankResponses = {
+    /**
+     * OK
+     */
+    200: AdoptTankResultDto;
+};
+
+export type AdoptLegacyTankResponse = AdoptLegacyTankResponses[keyof AdoptLegacyTankResponses];
 
 export type SetMyInterestsData = {
     body: InterestsRequest;
