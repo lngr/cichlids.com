@@ -1,9 +1,10 @@
 ---
-id: DRAFT-3
+id: TASK-3.44
 title: Store the link between a rating and its comment
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-09-28 15:42'
+updated_date: '2026-10-17 09:30'
 labels: []
 dependencies: []
 parent_task_id: TASK-3
@@ -24,6 +25,12 @@ A rating written together with a comment carries a stored reference to that comm
 - ETL backfill by joining rating.legacy_comment_id to comment.legacy_id; verify step checks the count.
 - Comment list query reads the stars through comment_id only.
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Given a rating written together with a comment, When the comment list loads, Then the stars come from the stored comment reference of the rating
+- [ ] #2 Given migrated ratings with legacy comment ids, When the ETL runs, Then every pair gets its comment reference and the verify step checks the count
+<!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
