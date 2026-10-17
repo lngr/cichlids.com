@@ -193,7 +193,7 @@ public sealed class ProvisionalGatedEndpointsTests(ApiFixture fixture)
 
     /// <summary>
     /// The routes a provisional caller may use: its own tanks, care, streaks, vacations, media library,
-    /// uploads and settings.
+    /// uploads, settings and the sections of Today.
     /// </summary>
     private static readonly string[] ExpectedOpenRoutes =
     [
@@ -208,11 +208,14 @@ public sealed class ProvisionalGatedEndpointsTests(ApiFixture fixture)
         "GET /api/me",
         "GET /api/me/care/due",
         "GET /api/me/care/heatmap",
+        "GET /api/me/followed-tanks",
         "GET /api/me/media",
         "GET /api/me/media/{id:long}",
         "GET /api/me/settings",
         "GET /api/me/streaks",
         "GET /api/me/today",
+        "GET /api/me/today/followed",
+        "GET /api/me/today/milestones",
         "GET /api/me/todos",
         "GET /api/me/vacations",
         "GET /api/tanks/{tankId:long}/water-changes/current",
@@ -239,6 +242,7 @@ public sealed class ProvisionalGatedEndpointsTests(ApiFixture fixture)
         "POST /api/video-uploads",
         "POST /api/video-uploads/{id:long}/complete",
         "PUT /api/me/settings",
+        "PUT /api/me/today/milestones/{key}/dismissal",
         "PUT /api/tanks/{id:long}/visibility",
         "PUT /api/tanks/{tankId:long}/water-changes/{id:long}/steps/{step}",
     ];
