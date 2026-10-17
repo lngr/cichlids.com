@@ -154,7 +154,7 @@ COLUMN_HANDLING = {
         'empty': 'created_at id profile_id provider subject',
     },
     'public.rating': {
-        'kept': 'created_at id legacy_comment_id story_id profile_id stars tank_id',
+        'kept': 'comment_id created_at id legacy_comment_id story_id profile_id stars tank_id',
     },
     'public.slug_alias': {
         'alias': 'value',

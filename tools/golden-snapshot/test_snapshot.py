@@ -195,6 +195,8 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(count(conn, 'select count(*) from collection'), 2)
             self.assertEqual(sorted(r[0] for r in conn.execute('select id from comment where tank_id is not null')), [2, 4, 7])
             self.assertEqual(sorted(r[0] for r in conn.execute('select tank_id from rating where tank_id is not null')), [1, 4, 8])
+            self.assertEqual(sorted(conn.execute('select tank_id, comment_id from rating where comment_id is not null')), [(1, 2)])
+            self.assertEqual(count(source, 'select count(*) from rating where comment_id is not null'), 3)
             self.assertEqual(count(conn, 'select count(*) from rating where story_id is not null'), count(source, 'select count(*) from rating where story_id is not null and story_id <> 9 and profile_id <> 9'))
             self.assertEqual(count(conn, 'select count(*) from comment where story_id is not null'), count(source, 'select count(*) from comment where story_id is not null and story_id <> 9 and author_profile_id is distinct from 9'))
             self.assertEqual(sorted(r[0] for r in conn.execute('select target_tank_id from follow where target_tank_id is not null')), [1, 8])

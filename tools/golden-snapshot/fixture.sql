@@ -142,3 +142,6 @@ INSERT INTO care_todo(profile_id,tank_id,text,created_at) VALUES (9,9,'provision
 INSERT INTO tank_decommissioning(tank_id,scope,started_at,start_date,start_media_item_id) VALUES (9,'all_care','2020-02-01','2020-02-01',9);
 INSERT INTO device_credential(id,profile_id,public_key,algorithm,state,created_at,last_signed_request_at) VALUES ('00000000-0000-0000-0000-000000000001',9,'\x3059301306','ES256','active','2020-01-01','2020-01-02');
 INSERT INTO device_challenge(challenge_hash,created_at,expires_at) VALUES ('\x0102030405','2020-01-01','2020-01-01 00:05+00');
+UPDATE rating SET comment_id = 2 WHERE tank_id = 1 AND profile_id = 2;
+UPDATE rating SET comment_id = 3 WHERE tank_id = 5 AND profile_id = 1;
+UPDATE rating SET comment_id = 9 WHERE story_id = 1 AND profile_id = 9;
