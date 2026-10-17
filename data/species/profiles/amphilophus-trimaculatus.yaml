@@ -4782,6 +4782,7 @@ features:
   hybridGroups:
     value:
     - amphilophus
+    - amphilophus-istlanus-trimaculatus
     - amphilophus-lyonsi-trimaculatus
     - amphilophus-trimaculatus-midas
     - amphilophus-trimaculatus-petenia-splendida
@@ -4801,7 +4802,9 @@ features:
       \ file. The curated data/species/hybrid-groups.yaml\
       \ file defines amphilophus-trimaculatus-petenia-splendida as a presumed pairwise group based on Binns\
       \ Hybrid Encyclopedia reports of captive offspring, which do not verify parentage or free choice among\
-      \ conspecific mates."
+      \ conspecific mates. The curated group file also defines amphilophus-istlanus-trimaculatus as a presumed\
+      \ pairwise group with Amphilophus istlanus, based on a single secondhand aquarium-literature statement\
+      \ in an AquaInfo article that names no keeper, offspring or partner situation."
     sources:
     - kind: database
       title: "cichlids.com curated hybrid groups: amphilophus-trimaculatus-midas"
@@ -4876,6 +4879,11 @@ features:
       url: "https://www.ciklid.org/artregister/art.php?ID=337"
       archived: ciklid.org/artregister/art.php/q-24ec1b88/2026-10-14T131207Z
       accessed: '2026-10-13'
+    - kind: website
+      title: "AquaInfo: Amphilophus istlanus (article by R. Beerlink, NVC)"
+      url: "https://aquainfo.nl/en/article/amphilophus-istlanus/"
+      archived: aquainfo.nl/en/article/amphilophus-istlanus/2026-10-17T121603Z
+      accessed: '2026-10-17'
     evidence:
     - source: *snookPetenia
       value:
@@ -4984,6 +4992,15 @@ features:
       value:
       - amphilophus-lyonsi-trimaculatus
       note: A photographed fish is suggested as a hybrid by appearance; its parents and partner choice are unknown.
+    - source:
+        kind: website
+        title: "AquaInfo: Amphilophus istlanus (article by R. Beerlink, NVC)"
+        url: "https://aquainfo.nl/en/article/amphilophus-istlanus/"
+        archived: aquainfo.nl/en/article/amphilophus-istlanus/2026-10-17T121603Z
+        accessed: '2026-10-17'
+      value:
+      - amphilophus-istlanus-trimaculatus
+      note: Secondhand statement that aquarium literature reports hybrids with A. istlanus; no keeper or offspring is named.
     verification:
       method: unanimous
       votes:
