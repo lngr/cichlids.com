@@ -32,10 +32,11 @@ export function StockingSection({ tank, stocking, owner, reload }: { tank: TankD
     const count = countText(item, i18n.language, unknown);
     const since = kind === "current" ? movedInText(item, t, i18n.language) : leftText(item, t, i18n.language);
     const speciesName = item.species?.displayName ?? null;
-    const open = item.species ? () => router.push(`/species/${item.species!.slug ?? item.species!.id}`) : undefined;
+    const open = item.name !== null ? () => router.push(`/fish/${item.id}`)
+      : item.species ? () => router.push(`/species/${item.species!.slug ?? item.species!.id}`) : undefined;
     return <View key={item.id} testID={kind === "current" ? "stocking-item" : "stocking-history-item"} accessible accessibilityLabel={inhabitantSummary(item, labelOf(item), t, i18n.language, unknown)}
       style={[styles.item, { borderColor: theme.colors.border }]}>
-      <Pressable accessibilityRole={open ? "button" : undefined} onPress={open} style={styles.itemMain} disabled={!open}>
+      <Pressable testID={`stocking-open-${item.id}`} accessibilityRole={open ? "button" : undefined} onPress={open} style={styles.itemMain} disabled={!open}>
         <Text style={[theme.type.bodyStrong, text, item.name === null ? { fontStyle: "italic" } : null]}>{labelOf(item)}</Text>
         {item.name !== null && speciesName ? <Text style={[theme.type.meta, { color: theme.colors.muted, fontStyle: "italic" }]}>{speciesName}</Text> : null}
         {since ? <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{since}</Text> : null}

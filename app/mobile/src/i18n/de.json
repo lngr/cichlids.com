@@ -482,7 +482,16 @@
     "inhabitant_removed": "Dieses Tier hat den Besatz schon verlassen.",
     "inhabitant_date_invalid": "Das Datum deines Geräts konnte nicht gelesen werden.",
     "inhabitant_request_invalid": "Die Anfrage zum Besatz konnte nicht abgeschlossen werden.",
-    "inhabitant_auth_required": "Melde dich an, um den Besatz zu führen."
+    "inhabitant_auth_required": "Melde dich an, um den Besatz zu führen.",
+    "fish_not_found": "Diese Fischseite ist nicht verfügbar.",
+    "fish_invalid": "Prüfe die Eingabe: Eine Länge ist positiv in cm oder Zoll, ein Ablaichen hat eine Generation von 1 bis 99 oder ist ein Hybrid.",
+    "fish_date_invalid": "Der Tag muss ein Datum sein, das nicht in der Zukunft und nicht vor dem Einzug des Fisches liegt.",
+    "fish_move_tank_invalid": "Wähle ein anderes Becken von dir.",
+    "fish_removed": "Dieser Fisch hat den Besatz bereits verlassen.",
+    "fish_event_fixed": "Nur Einträge zu Wachstum und Ablaichen lassen sich löschen.",
+    "fish_request_invalid": "Die Anfrage zum Fisch konnte nicht abgeschlossen werden.",
+    "fish_auth_required": "Bitte melde dich an, um deine Fische zu führen.",
+    "media_already_linked": "Diese Datei ist bereits auf der Seite."
   },
   "featureFlags": {
     "activityTitle": "Aktivität der Community",
@@ -625,6 +634,102 @@
       "removedBefore": "Der Tag darf nicht vor dem Einzug des Tieres liegen."
     }
   },
+  "fish": {
+    "title": "Fisch",
+    "loadError": "Die Fischseite konnte nicht geladen werden.",
+    "notFound": "Diese Fischseite ist nicht verfügbar.",
+    "saveError": "Die Änderung konnte nicht gespeichert werden. Bitte versuche es erneut.",
+    "speciesUnknown": "Art unbekannt",
+    "keptBy": "Gehalten von {{name}}",
+    "lives": "Lebt in {{tank}}",
+    "lived": "Lebte in {{tank}}",
+    "tankDeleted": "{{tank}} (gelöscht)",
+    "since": "Eingezogen am {{date}}",
+    "length": "Länge: {{length}}",
+    "memorial": "Zum Gedenken",
+    "memorialDates": "{{from}} bis {{to}}",
+    "memorialDied": "Gestorben am {{date}}",
+    "media": "Fotos und Videos",
+    "mediaEmpty": "Noch keine Fotos oder Videos.",
+    "photoOf": "Foto von {{name}}",
+    "removeMedia": "Von der Seite entfernen",
+    "removeMediaFor": "Diese Datei von der Seite von {{name}} entfernen",
+    "timeline": "Verlauf",
+    "timelineEmpty": "Im Verlauf steht noch nichts.",
+    "day": "Tag",
+    "save": "Speichern",
+    "event": {
+      "movedIn": "Eingezogen",
+      "growth": "Gemessen: {{length}}",
+      "spawning": "Abgelaicht, Nachwuchs {{generation}}",
+      "spawningHybrid": "Abgelaicht, Hybrid-Nachwuchs",
+      "moved": "Umgezogen nach {{tank}}",
+      "movedAway": "In ein anderes Becken umgezogen",
+      "died": "Gestorben",
+      "left": {
+        "given_away": "Abgegeben",
+        "moved": "In ein anderes Becken umgezogen",
+        "died": "Gestorben"
+      },
+      "delete": "Löschen",
+      "deleteFor": "Eintrag vom {{date}} löschen",
+      "anniversary_one": "{{count}} Jahr zusammen",
+      "anniversary_other": "{{count}} Jahre zusammen"
+    },
+    "actions": {
+      "addPhoto": "Foto oder Video hinzufügen",
+      "growth": "Wachstum eintragen",
+      "spawning": "Ablaichen eintragen",
+      "move": "In ein anderes Becken umsetzen",
+      "death": "Tod eintragen"
+    },
+    "growth": {
+      "title": "Wachstum von {{name}}",
+      "length": "Länge"
+    },
+    "spawning": {
+      "title": "Ablaichen von {{name}}",
+      "hint": "Wähle, was der Nachwuchs ist: eine reinrassige Generation (F1 ist die erste) oder ein Hybrid.",
+      "purebred": "Reinrassig",
+      "hybrid": "Hybrid",
+      "generation": "Generation (1 für F1)"
+    },
+    "move": {
+      "title": "{{name}} umsetzen",
+      "warning": "Fotos und Videos dieses Fisches folgen der Sichtbarkeit des neuen Beckens. Ist es sichtbarer als das bisherige, sehen mehr Menschen sie.",
+      "none": "Du hast kein anderes Becken, in das du ihn umsetzen kannst.",
+      "confirm": "Umsetzen"
+    },
+    "death": {
+      "title": "{{name}} ist gestorben",
+      "hint": "Die Seite bleibt als Gedenkseite mit Fotos und Verlauf bestehen. Du kannst weiter Fotos hinzufügen.",
+      "confirm": "Tod eintragen"
+    },
+    "errors": {
+      "length": "Gib eine Länge größer als 0 ein.",
+      "lengthTooLarge": "Ein Fisch ist höchstens 300 cm lang.",
+      "generation": "Gib eine Generation von 1 bis 99 ein."
+    },
+    "photoSheet": {
+      "title": "Zur Seite von {{name}} hinzufügen",
+      "library": "Aus meiner Mediathek wählen",
+      "camera": "Foto aufnehmen",
+      "upload": "Foto vom Gerät wählen",
+      "uploading": "Foto wird hinzugefügt",
+      "libraryTitle": "Deine Mediathek",
+      "libraryEmpty": "Deine Mediathek hat keine Fotos oder Videos zum Hinzufügen.",
+      "more": "Mehr anzeigen",
+      "error": "Die Datei konnte nicht hinzugefügt werden. Bitte versuche es erneut."
+    },
+    "camera": {
+      "explain": "Die Kamera nimmt ein Foto für die Seite von {{name}} auf. Das Foto wird in deiner Mediathek gespeichert.",
+      "notAllowedYet": "Die Kamera ist noch nicht erlaubt. Du kannst stattdessen ein Foto vom Gerät wählen.",
+      "denied": "Erlaube die Kamera in den Einstellungen deines Geräts, um sie zu nutzen. Du kannst stattdessen ein Foto vom Gerät wählen.",
+      "deniedWeb": "Erlaube die Kamera für diese Seite in deinem Browser, um sie zu nutzen. Du kannst stattdessen ein Foto vom Gerät wählen.",
+      "unavailable": "Dieses Gerät bietet gerade keine Kamera an. Du kannst ein Foto vom Gerät wählen.",
+      "reviewLabel": "Neues Foto von {{name}}"
+    }
+  },
   "timeLapseCamera": {
     "action": "Zeitraffer-Foto",
     "title": "Zeitraffer-Foto",
@@ -765,7 +870,10 @@
       "keptStreak_one": "{{tank}}: {{count}} Woche Zeitraffer-Fotos in Folge.",
       "keptStreak_other": "{{tank}}: {{count}} Wochen Zeitraffer-Fotos in Folge.",
       "anniversary_one": "{{tank}} ist {{count}} Jahr alt.",
-      "anniversary_other": "{{tank}} ist {{count}} Jahre alt."
+      "anniversary_other": "{{tank}} ist {{count}} Jahre alt.",
+      "openFish": "Seite von {{name}} öffnen",
+      "fishAnniversary_one": "{{name}} lebt seit {{count}} Jahr bei dir in {{tank}}.",
+      "fishAnniversary_other": "{{name}} lebt seit {{count}} Jahren bei dir in {{tank}}."
     }
   },
   "care": {

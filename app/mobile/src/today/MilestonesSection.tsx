@@ -2,6 +2,7 @@ import { Text, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
 import { Button } from "../components/Button";
+import { useMachineRouter } from "../navigation/NavigationProvider";
 import { useTheme } from "../theme";
 import { milestoneText } from "./todaySectionsText";
 import { useMilestones } from "./useMilestones";
@@ -13,6 +14,7 @@ import { useMilestones } from "./useMilestones";
 export function MilestonesSection() {
   const { t } = useTranslation();
   const theme = useTheme();
+  const router = useMachineRouter();
   const { milestones, dismiss } = useMilestones();
   if (milestones.length === 0) return null;
   return <View testID="today-milestones" style={{ gap: theme.space[3] }}>
@@ -23,8 +25,11 @@ export function MilestonesSection() {
         <MaterialCommunityIcons name="party-popper" size={24} color={theme.colors.accent} />
         <Text style={[theme.type.body, { flex: 1, color: theme.colors.fg }]}>{milestoneText(milestone, t)}</Text>
       </View>
+      {milestone.inhabitantId !== null ? <Button testID={`today-milestone-open-${milestone.key}`} variant="secondary"
+        label={t("today.milestones.openFish", { name: milestone.inhabitantName ?? t("common.untitled") })}
+        onPress={() => router.push(`/fish/${milestone.inhabitantId}`)} /> : null}
       <Button testID={`today-milestone-dismiss-${milestone.key}`} variant="secondary" label={t("today.milestones.dismiss")}
-        accessibilityLabel={t("today.milestones.dismissFor", { tank: milestone.tankTitle || t("common.untitled") })}
+        accessibilityLabel={t("today.milestones.dismissFor", { tank: milestone.inhabitantName ?? (milestone.tankTitle || t("common.untitled")) })}
         onPress={() => dismiss(milestone.key)} />
     </View>)}
   </View>;

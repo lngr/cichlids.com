@@ -502,7 +502,16 @@
     "inhabitant_removed": "Ten mieszkaniec opuścił już obsadę.",
     "inhabitant_date_invalid": "Nie udało się odczytać daty urządzenia.",
     "inhabitant_request_invalid": "Nie udało się zrealizować żądania dotyczącego obsady.",
-    "inhabitant_auth_required": "Zaloguj się, aby prowadzić obsadę."
+    "inhabitant_auth_required": "Zaloguj się, aby prowadzić obsadę.",
+    "fish_not_found": "Ta strona ryby jest niedostępna.",
+    "fish_invalid": "Sprawdź żądanie: długość jest dodatnia w cm lub calach, tarło ma generację od 1 do 99 albo jest hybrydą.",
+    "fish_date_invalid": "Dzień musi być datą, która nie leży w przyszłości ani przed wpuszczeniem ryby.",
+    "fish_move_tank_invalid": "Wybierz inne swoje akwarium.",
+    "fish_removed": "Ta ryba opuściła już obsadę.",
+    "fish_event_fixed": "Można usunąć tylko wpisy o wzroście i tarle.",
+    "fish_request_invalid": "Nie udało się wykonać żądania dotyczącego ryby.",
+    "fish_auth_required": "Zaloguj się, aby prowadzić swoje ryby.",
+    "media_already_linked": "Ten plik jest już na stronie."
   },
   "featureFlags": {
     "activityTitle": "Aktywność społeczności",
@@ -643,6 +652,104 @@
       "removedInvalid": "Podaj dzień jako RRRR-MM-DD.",
       "removedFuture": "Dzień nie może leżeć w przyszłości.",
       "removedBefore": "Dzień nie może być wcześniejszy niż wprowadzenie mieszkańca."
+    }
+  },
+  "fish": {
+    "title": "Ryba",
+    "loadError": "Nie udało się wczytać strony ryby.",
+    "notFound": "Ta strona ryby jest niedostępna.",
+    "saveError": "Nie udało się zapisać zmiany. Spróbuj ponownie.",
+    "speciesUnknown": "Gatunek nieznany",
+    "keptBy": "Hoduje: {{name}}",
+    "lives": "Mieszka w: {{tank}}",
+    "lived": "Mieszkała w: {{tank}}",
+    "tankDeleted": "{{tank}} (usunięte)",
+    "since": "Wpuszczona {{date}}",
+    "length": "Długość: {{length}}",
+    "memorial": "Ku pamięci",
+    "memorialDates": "{{from}} do {{to}}",
+    "memorialDied": "Padła {{date}}",
+    "media": "Zdjęcia i filmy",
+    "mediaEmpty": "Brak zdjęć i filmów.",
+    "photoOf": "Zdjęcie ryby {{name}}",
+    "removeMedia": "Usuń ze strony",
+    "removeMediaFor": "Usuń ten plik ze strony ryby {{name}}",
+    "timeline": "Oś czasu",
+    "timelineEmpty": "Na osi czasu jeszcze nic nie ma.",
+    "day": "Dzień",
+    "save": "Zapisz",
+    "event": {
+      "movedIn": "Wpuszczona",
+      "growth": "Zmierzona: {{length}}",
+      "spawning": "Tarło, potomstwo {{generation}}",
+      "spawningHybrid": "Tarło, potomstwo hybrydowe",
+      "moved": "Przeniesiona do: {{tank}}",
+      "movedAway": "Przeniesiona do innego akwarium",
+      "died": "Padła",
+      "left": {
+        "given_away": "Oddana",
+        "moved": "Przeniesiona do innego akwarium",
+        "died": "Padła"
+      },
+      "delete": "Usuń",
+      "deleteFor": "Usuń wpis z dnia {{date}}",
+      "anniversary_one": "{{count}} rok razem",
+      "anniversary_few": "{{count}} lata razem",
+      "anniversary_many": "{{count}} lat razem",
+      "anniversary_other": "{{count}} roku razem"
+    },
+    "actions": {
+      "addPhoto": "Dodaj zdjęcie lub film",
+      "growth": "Dodaj wzrost",
+      "spawning": "Dodaj tarło",
+      "move": "Przenieś do innego akwarium",
+      "death": "Zapisz śmierć"
+    },
+    "growth": {
+      "title": "Wzrost ryby {{name}}",
+      "length": "Długość"
+    },
+    "spawning": {
+      "title": "Tarło ryby {{name}}",
+      "hint": "Wybierz, czym jest potomstwo: czystą generacją (F1 jest pierwsza) albo hybrydą.",
+      "purebred": "Czysta rasa",
+      "hybrid": "Hybryda",
+      "generation": "Generacja (1 dla F1)"
+    },
+    "move": {
+      "title": "Przenieś rybę {{name}}",
+      "warning": "Zdjęcia i filmy tej ryby podążają za widocznością nowego akwarium. Jeśli jest bardziej widoczne niż obecne, zobaczy je więcej osób.",
+      "none": "Nie masz innego akwarium, do którego można ją przenieść.",
+      "confirm": "Przenieś"
+    },
+    "death": {
+      "title": "Ryba {{name}} padła",
+      "hint": "Strona zostaje jako pamiątka ze zdjęciami i osią czasu. Nadal możesz dodawać zdjęcia.",
+      "confirm": "Zapisz śmierć"
+    },
+    "errors": {
+      "length": "Podaj długość większą niż 0.",
+      "lengthTooLarge": "Ryba ma najwyżej 300 cm.",
+      "generation": "Podaj generację od 1 do 99."
+    },
+    "photoSheet": {
+      "title": "Dodaj do strony ryby {{name}}",
+      "library": "Wybierz z mojej biblioteki",
+      "camera": "Zrób zdjęcie",
+      "upload": "Wybierz zdjęcie z urządzenia",
+      "uploading": "Dodawanie zdjęcia",
+      "libraryTitle": "Twoja biblioteka",
+      "libraryEmpty": "W bibliotece nie ma zdjęć ani filmów do dodania.",
+      "more": "Pokaż więcej",
+      "error": "Nie udało się dodać pliku. Spróbuj ponownie."
+    },
+    "camera": {
+      "explain": "Aparat robi zdjęcie na stronę ryby {{name}}. Zdjęcie trafia do Twojej biblioteki.",
+      "notAllowedYet": "Aparat nie jest jeszcze dozwolony. Możesz zamiast tego wybrać zdjęcie z urządzenia.",
+      "denied": "Aby użyć aparatu, zezwól na niego w ustawieniach urządzenia. Możesz zamiast tego wybrać zdjęcie z urządzenia.",
+      "deniedWeb": "Aby użyć aparatu, zezwól na niego dla tej witryny w przeglądarce. Możesz zamiast tego wybrać zdjęcie z urządzenia.",
+      "unavailable": "To urządzenie nie oferuje teraz aparatu. Możesz wybrać zdjęcie z urządzenia.",
+      "reviewLabel": "Nowe zdjęcie ryby {{name}}"
     }
   },
   "timeLapseCamera": {
@@ -795,7 +902,12 @@
       "anniversary_one": "{{tank}} ma {{count}} rok.",
       "anniversary_few": "{{tank}} ma {{count}} lata.",
       "anniversary_many": "{{tank}} ma {{count}} lat.",
-      "anniversary_other": "{{tank}} ma {{count}} roku."
+      "anniversary_other": "{{tank}} ma {{count}} roku.",
+      "openFish": "Otwórz stronę ryby {{name}}",
+      "fishAnniversary_one": "{{name}} mieszka z Tobą w {{tank}} już {{count}} rok.",
+      "fishAnniversary_few": "{{name}} mieszka z Tobą w {{tank}} już {{count}} lata.",
+      "fishAnniversary_many": "{{name}} mieszka z Tobą w {{tank}} już {{count}} lat.",
+      "fishAnniversary_other": "{{name}} mieszka z Tobą w {{tank}} już {{count}} roku."
     }
   },
   "care": {

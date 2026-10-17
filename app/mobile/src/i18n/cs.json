@@ -502,7 +502,16 @@
     "inhabitant_removed": "Tento obyvatel už obsádku opustil.",
     "inhabitant_date_invalid": "Datum tvého zařízení se nepodařilo přečíst.",
     "inhabitant_request_invalid": "Požadavek na obsádku se nepodařilo dokončit.",
-    "inhabitant_auth_required": "Přihlas se, abys mohl vést obsádku."
+    "inhabitant_auth_required": "Přihlas se, abys mohl vést obsádku.",
+    "fish_not_found": "Tato stránka ryby není dostupná.",
+    "fish_invalid": "Zkontroluj zadání: délka je kladná v cm nebo palcích, výtěr má generaci od 1 do 99 nebo je hybrid.",
+    "fish_date_invalid": "Den musí být datum, které není v budoucnosti ani před nastěhováním ryby.",
+    "fish_move_tank_invalid": "Vyber jiné své akvárium.",
+    "fish_removed": "Tato ryba už obsádku opustila.",
+    "fish_event_fixed": "Smazat lze jen záznamy o růstu a výtěru.",
+    "fish_request_invalid": "Požadavek k rybě se nepodařilo dokončit.",
+    "fish_auth_required": "Přihlas se, abys mohl vést své ryby.",
+    "media_already_linked": "Tento soubor už na stránce je."
   },
   "featureFlags": {
     "activityTitle": "Aktivita komunity",
@@ -643,6 +652,104 @@
       "removedInvalid": "Zadej den ve tvaru RRRR-MM-DD.",
       "removedFuture": "Den nemůže ležet v budoucnosti.",
       "removedBefore": "Den nemůže být před nasazením obyvatele."
+    }
+  },
+  "fish": {
+    "title": "Ryba",
+    "loadError": "Stránku ryby se nepodařilo načíst.",
+    "notFound": "Tato stránka ryby není dostupná.",
+    "saveError": "Změnu se nepodařilo uložit. Zkus to prosím znovu.",
+    "speciesUnknown": "Druh neznámý",
+    "keptBy": "Chová {{name}}",
+    "lives": "Žije v: {{tank}}",
+    "lived": "Žila v: {{tank}}",
+    "tankDeleted": "{{tank}} (smazáno)",
+    "since": "Nastěhována {{date}}",
+    "length": "Délka: {{length}}",
+    "memorial": "Na památku",
+    "memorialDates": "{{from}} až {{to}}",
+    "memorialDied": "Uhynula {{date}}",
+    "media": "Fotky a videa",
+    "mediaEmpty": "Zatím žádné fotky ani videa.",
+    "photoOf": "Fotka ryby {{name}}",
+    "removeMedia": "Odebrat ze stránky",
+    "removeMediaFor": "Odebrat tento soubor ze stránky ryby {{name}}",
+    "timeline": "Časová osa",
+    "timelineEmpty": "Na časové ose zatím nic není.",
+    "day": "Den",
+    "save": "Uložit",
+    "event": {
+      "movedIn": "Nastěhována",
+      "growth": "Změřeno: {{length}}",
+      "spawning": "Výtěr, potomstvo {{generation}}",
+      "spawningHybrid": "Výtěr, hybridní potomstvo",
+      "moved": "Přestěhována do: {{tank}}",
+      "movedAway": "Přestěhována do jiného akvária",
+      "died": "Uhynula",
+      "left": {
+        "given_away": "Darována",
+        "moved": "Přestěhována do jiného akvária",
+        "died": "Uhynula"
+      },
+      "delete": "Smazat",
+      "deleteFor": "Smazat záznam ze dne {{date}}",
+      "anniversary_one": "{{count}} rok spolu",
+      "anniversary_few": "{{count}} roky spolu",
+      "anniversary_many": "{{count}} roku spolu",
+      "anniversary_other": "{{count}} let spolu"
+    },
+    "actions": {
+      "addPhoto": "Přidat fotku nebo video",
+      "growth": "Přidat růst",
+      "spawning": "Přidat výtěr",
+      "move": "Přestěhovat do jiného akvária",
+      "death": "Zaznamenat úhyn"
+    },
+    "growth": {
+      "title": "Růst ryby {{name}}",
+      "length": "Délka"
+    },
+    "spawning": {
+      "title": "Výtěr ryby {{name}}",
+      "hint": "Vyber, čím potomstvo je: čistokrevnou generací (F1 je první), nebo hybridem.",
+      "purebred": "Čistokrevné",
+      "hybrid": "Hybrid",
+      "generation": "Generace (1 pro F1)"
+    },
+    "move": {
+      "title": "Přestěhovat rybu {{name}}",
+      "warning": "Fotky a videa této ryby sledují viditelnost nového akvária. Je-li viditelnější než dosavadní, uvidí je více lidí.",
+      "none": "Nemáš jiné akvárium, do kterého by šlo rybu přestěhovat.",
+      "confirm": "Přestěhovat"
+    },
+    "death": {
+      "title": "Ryba {{name}} uhynula",
+      "hint": "Stránka zůstane jako památník s fotkami a časovou osou. Fotky můžeš dál přidávat.",
+      "confirm": "Zaznamenat úhyn"
+    },
+    "errors": {
+      "length": "Zadej délku větší než 0.",
+      "lengthTooLarge": "Ryba měří nejvýše 300 cm.",
+      "generation": "Zadej generaci od 1 do 99."
+    },
+    "photoSheet": {
+      "title": "Přidat na stránku ryby {{name}}",
+      "library": "Vybrat z mé knihovny",
+      "camera": "Vyfotit",
+      "upload": "Vybrat fotku ze zařízení",
+      "uploading": "Fotka se přidává",
+      "libraryTitle": "Tvoje knihovna",
+      "libraryEmpty": "V knihovně nejsou žádné fotky ani videa k přidání.",
+      "more": "Zobrazit další",
+      "error": "Soubor se nepodařilo přidat. Zkus to prosím znovu."
+    },
+    "camera": {
+      "explain": "Fotoaparát pořídí fotku pro stránku ryby {{name}}. Fotka se uloží do tvé knihovny.",
+      "notAllowedYet": "Fotoaparát zatím není povolen. Místo toho můžeš vybrat fotku ze zařízení.",
+      "denied": "Pro použití fotoaparátu ho povol v nastavení zařízení. Místo toho můžeš vybrat fotku ze zařízení.",
+      "deniedWeb": "Pro použití fotoaparátu ho povol pro tento web v prohlížeči. Místo toho můžeš vybrat fotku ze zařízení.",
+      "unavailable": "Toto zařízení teď nenabízí žádný fotoaparát. Můžeš vybrat fotku ze zařízení.",
+      "reviewLabel": "Nová fotka ryby {{name}}"
     }
   },
   "timeLapseCamera": {
@@ -795,7 +902,12 @@
       "anniversary_one": "{{tank}} slaví {{count}} rok.",
       "anniversary_few": "{{tank}} slaví {{count}} roky.",
       "anniversary_many": "{{tank}} slaví {{count}} roku.",
-      "anniversary_other": "{{tank}} slaví {{count}} let."
+      "anniversary_other": "{{tank}} slaví {{count}} let.",
+      "openFish": "Otevřít stránku ryby {{name}}",
+      "fishAnniversary_one": "{{name}} žije s tebou v akváriu {{tank}} už {{count}} rok.",
+      "fishAnniversary_few": "{{name}} žije s tebou v akváriu {{tank}} už {{count}} roky.",
+      "fishAnniversary_many": "{{name}} žije s tebou v akváriu {{tank}} už {{count}} roku.",
+      "fishAnniversary_other": "{{name}} žije s tebou v akváriu {{tank}} už {{count}} let."
     }
   },
   "care": {

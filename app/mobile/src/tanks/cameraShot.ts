@@ -29,8 +29,8 @@ export interface CameraPicture {
  * The file the upload sends for a camera picture. A device picture is sent by its file address;
  * the data address of a browser picture becomes a file of the image type the address declares.
  */
-export async function shotToUploadFile(picture: CameraPicture, now: number = Date.now()): Promise<UploadFile> {
-  const name = `time-lapse-${now}.jpg`;
+export async function shotToUploadFile(picture: CameraPicture, now: number = Date.now(), prefix = "time-lapse"): Promise<UploadFile> {
+  const name = `${prefix}-${now}.jpg`;
   if (!picture.uri.startsWith("data:")) return { uri: picture.uri, name, type: "image/jpeg" };
   return (await fetch(picture.uri)).blob();
 }

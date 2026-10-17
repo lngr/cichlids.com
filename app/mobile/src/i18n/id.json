@@ -482,7 +482,16 @@
     "inhabitant_removed": "Penghuni ini sudah keluar dari daftar penghuni.",
     "inhabitant_date_invalid": "Tanggal perangkat Anda tidak dapat dibaca.",
     "inhabitant_request_invalid": "Permintaan penghuni tidak dapat diselesaikan.",
-    "inhabitant_auth_required": "Masuk untuk mengelola penghuni."
+    "inhabitant_auth_required": "Masuk untuk mengelola penghuni.",
+    "fish_not_found": "Halaman ikan ini tidak tersedia.",
+    "fish_invalid": "Periksa permintaan: panjang bernilai positif dalam cm atau inci, pemijahan punya generasi 1 sampai 99 atau berupa hibrida.",
+    "fish_date_invalid": "Harinya harus tanggal yang tidak di masa depan dan tidak sebelum ikan masuk.",
+    "fish_move_tank_invalid": "Pilih akuarium lain milikmu.",
+    "fish_removed": "Ikan ini sudah keluar dari daftar penghuni.",
+    "fish_event_fixed": "Hanya entri pertumbuhan dan pemijahan yang bisa dihapus.",
+    "fish_request_invalid": "Permintaan untuk ikan tidak dapat diselesaikan.",
+    "fish_auth_required": "Silakan masuk untuk mengelola ikanmu.",
+    "media_already_linked": "Berkas ini sudah ada di halaman."
   },
   "featureFlags": {
     "activityTitle": "Aktivitas komunitas",
@@ -625,6 +634,101 @@
       "removedBefore": "Hari tidak boleh sebelum penghuni masuk."
     }
   },
+  "fish": {
+    "title": "Ikan",
+    "loadError": "Halaman ikan tidak dapat dimuat.",
+    "notFound": "Halaman ikan ini tidak tersedia.",
+    "saveError": "Perubahan tidak dapat disimpan. Silakan coba lagi.",
+    "speciesUnknown": "Spesies tidak diketahui",
+    "keptBy": "Dipelihara oleh {{name}}",
+    "lives": "Tinggal di {{tank}}",
+    "lived": "Dulu tinggal di {{tank}}",
+    "tankDeleted": "{{tank}} (dihapus)",
+    "since": "Masuk pada {{date}}",
+    "length": "Panjang: {{length}}",
+    "memorial": "Dalam kenangan",
+    "memorialDates": "{{from}} sampai {{to}}",
+    "memorialDied": "Mati pada {{date}}",
+    "media": "Foto dan video",
+    "mediaEmpty": "Belum ada foto atau video.",
+    "photoOf": "Foto {{name}}",
+    "removeMedia": "Hapus dari halaman",
+    "removeMediaFor": "Hapus berkas ini dari halaman {{name}}",
+    "timeline": "Lini masa",
+    "timelineEmpty": "Belum ada apa pun di lini masa.",
+    "day": "Hari",
+    "save": "Simpan",
+    "event": {
+      "movedIn": "Masuk",
+      "growth": "Diukur: {{length}}",
+      "spawning": "Memijah, anakan {{generation}}",
+      "spawningHybrid": "Memijah, anakan hibrida",
+      "moved": "Pindah ke {{tank}}",
+      "movedAway": "Pindah ke akuarium lain",
+      "died": "Mati",
+      "left": {
+        "given_away": "Diberikan",
+        "moved": "Pindah ke akuarium lain",
+        "died": "Mati"
+      },
+      "delete": "Hapus",
+      "deleteFor": "Hapus entri tanggal {{date}}",
+      "anniversary_other": "{{count}} tahun bersama"
+    },
+    "actions": {
+      "addPhoto": "Tambahkan foto atau video",
+      "growth": "Tambahkan pertumbuhan",
+      "spawning": "Tambahkan pemijahan",
+      "move": "Pindahkan ke akuarium lain",
+      "death": "Catat kematian"
+    },
+    "growth": {
+      "title": "Pertumbuhan {{name}}",
+      "length": "Panjang"
+    },
+    "spawning": {
+      "title": "Pemijahan {{name}}",
+      "hint": "Pilih anakannya: generasi murni (F1 adalah yang pertama) atau hibrida.",
+      "purebred": "Murni",
+      "hybrid": "Hibrida",
+      "generation": "Generasi (1 untuk F1)"
+    },
+    "move": {
+      "title": "Pindahkan {{name}}",
+      "warning": "Foto dan video ikan ini mengikuti visibilitas akuarium baru. Jika lebih terlihat daripada yang sekarang, lebih banyak orang melihatnya.",
+      "none": "Kamu tidak punya akuarium lain untuk tujuan pindah.",
+      "confirm": "Pindahkan"
+    },
+    "death": {
+      "title": "{{name}} mati",
+      "hint": "Halaman tetap ada sebagai kenangan dengan foto dan lini masanya. Kamu masih bisa menambahkan foto.",
+      "confirm": "Catat kematian"
+    },
+    "errors": {
+      "length": "Masukkan panjang lebih dari 0.",
+      "lengthTooLarge": "Panjang ikan paling banyak 300 cm.",
+      "generation": "Masukkan generasi dari 1 sampai 99."
+    },
+    "photoSheet": {
+      "title": "Tambahkan ke halaman {{name}}",
+      "library": "Pilih dari pustaka saya",
+      "camera": "Ambil foto",
+      "upload": "Pilih foto dari perangkat",
+      "uploading": "Foto sedang ditambahkan",
+      "libraryTitle": "Pustaka kamu",
+      "libraryEmpty": "Pustaka kamu tidak punya foto atau video untuk ditambahkan.",
+      "more": "Tampilkan lagi",
+      "error": "Berkas tidak dapat ditambahkan. Silakan coba lagi."
+    },
+    "camera": {
+      "explain": "Kamera mengambil foto untuk halaman {{name}}. Foto disimpan di pustaka kamu.",
+      "notAllowedYet": "Kamera belum diizinkan. Kamu bisa memilih foto dari perangkat.",
+      "denied": "Untuk memakai kamera, izinkan di pengaturan perangkat. Kamu bisa memilih foto dari perangkat.",
+      "deniedWeb": "Untuk memakai kamera, izinkan untuk situs ini di browser. Kamu bisa memilih foto dari perangkat.",
+      "unavailable": "Perangkat ini tidak menyediakan kamera saat ini. Kamu bisa memilih foto dari perangkat.",
+      "reviewLabel": "Foto baru {{name}}"
+    }
+  },
   "timeLapseCamera": {
     "action": "Foto time-lapse",
     "title": "Foto time-lapse",
@@ -760,7 +864,9 @@
       "dismiss": "Tutup",
       "dismissFor": "Tutup ucapan selamat untuk {{tank}}",
       "keptStreak_other": "{{tank}}: {{count}} minggu berturut-turut dengan foto time-lapse.",
-      "anniversary_other": "{{tank}} berusia {{count}} tahun."
+      "anniversary_other": "{{tank}} berusia {{count}} tahun.",
+      "openFish": "Buka halaman {{name}}",
+      "fishAnniversary_other": "{{name}} sudah {{count}} tahun tinggal bersamamu di {{tank}}."
     }
   },
   "care": {

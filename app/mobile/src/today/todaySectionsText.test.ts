@@ -10,7 +10,7 @@ const update = (patch: Partial<FollowedUpdate> = {}): FollowedUpdate => ({
 });
 const tank = (patch: Partial<FollowedTank> = {}): FollowedTank => ({ tankId: 4, title: "Reef", owner, update: update(), ...patch });
 const milestone = (patch: Partial<Milestone>): Milestone => ({
-  key: "kept_streak:4:4", kind: "kept_streak", tankId: 4, tankTitle: "Reef", value: 4, reachedOn: "2026-10-13", ...patch,
+  key: "kept_streak:4:4", kind: "kept_streak", tankId: 4, tankTitle: "Reef", value: 4, reachedOn: "2026-10-13", inhabitantId: null, inhabitantName: null, ...patch,
 });
 const now = new Date("2026-10-17T12:00:00Z");
 
@@ -58,6 +58,13 @@ describe("milestone texts", () => {
     expect(milestoneText(milestone({ value: 12 }), en)).toBe("Reef: 12 weeks of time-lapse photos in a row.");
     expect(milestoneText(milestone({ kind: "tank_anniversary", value: 1 }), en)).toBe("Reef is 1 year old.");
     expect(milestoneText(milestone({ kind: "tank_anniversary", value: 3 }), de)).toBe("Reef ist 3 Jahre alt.");
+  });
+
+  it("congratulates on the year of a named fish", () => {
+    const fish = milestone({ kind: "fish_anniversary", key: "fish_anniversary:9:2", value: 2, inhabitantId: 9, inhabitantName: "Bruno" });
+    expect(milestoneText(fish, en)).toBe("Bruno has lived with you in Reef for 2 years.");
+    expect(milestoneText({ ...fish, value: 1 }, en)).toBe("Bruno has lived with you in Reef for 1 year.");
+    expect(milestoneText(fish, de)).toBe("Bruno lebt seit 2 Jahren bei dir in Reef.");
   });
 
   it("names a tank without a title", () => {

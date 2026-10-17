@@ -492,7 +492,16 @@
     "inhabitant_removed": "Este habitante ya salió de la población.",
     "inhabitant_date_invalid": "No se pudo leer la fecha de tu dispositivo.",
     "inhabitant_request_invalid": "No se pudo completar la solicitud de la población.",
-    "inhabitant_auth_required": "Inicia sesión para llevar la población."
+    "inhabitant_auth_required": "Inicia sesión para llevar la población.",
+    "fish_not_found": "Esta página del pez no está disponible.",
+    "fish_invalid": "Revisa la solicitud: una longitud es positiva en cm o pulgadas y un desove tiene una generación de 1 a 99 o es híbrido.",
+    "fish_date_invalid": "El día debe ser una fecha que no esté en el futuro ni antes de la llegada del pez.",
+    "fish_move_tank_invalid": "Elige otro acuario tuyo.",
+    "fish_removed": "Este pez ya salió de la población.",
+    "fish_event_fixed": "Solo se pueden eliminar las entradas de crecimiento y desove.",
+    "fish_request_invalid": "No se pudo completar la solicitud del pez.",
+    "fish_auth_required": "Inicia sesión para llevar tus peces.",
+    "media_already_linked": "Este archivo ya está en la página."
   },
   "featureFlags": {
     "activityTitle": "Actividad de la comunidad",
@@ -633,6 +642,103 @@
       "removedInvalid": "Escribe el día como AAAA-MM-DD.",
       "removedFuture": "El día no puede estar en el futuro.",
       "removedBefore": "El día no puede ser anterior a la llegada del habitante."
+    }
+  },
+  "fish": {
+    "title": "Pez",
+    "loadError": "No se pudo cargar la página del pez.",
+    "notFound": "Esta página del pez no está disponible.",
+    "saveError": "No se pudo guardar el cambio. Inténtalo de nuevo.",
+    "speciesUnknown": "Especie desconocida",
+    "keptBy": "Lo cuida {{name}}",
+    "lives": "Vive en {{tank}}",
+    "lived": "Vivió en {{tank}}",
+    "tankDeleted": "{{tank}} (eliminado)",
+    "since": "Llegó el {{date}}",
+    "length": "Longitud: {{length}}",
+    "memorial": "En memoria",
+    "memorialDates": "{{from}} a {{to}}",
+    "memorialDied": "Murió el {{date}}",
+    "media": "Fotos y videos",
+    "mediaEmpty": "Aún no hay fotos ni videos.",
+    "photoOf": "Foto de {{name}}",
+    "removeMedia": "Quitar de la página",
+    "removeMediaFor": "Quitar este archivo de la página de {{name}}",
+    "timeline": "Cronología",
+    "timelineEmpty": "Aún no hay nada en la cronología.",
+    "day": "Día",
+    "save": "Guardar",
+    "event": {
+      "movedIn": "Llegó",
+      "growth": "Medido: {{length}}",
+      "spawning": "Desove, crías {{generation}}",
+      "spawningHybrid": "Desove, crías híbridas",
+      "moved": "Pasó a {{tank}}",
+      "movedAway": "Pasó a otro acuario",
+      "died": "Murió",
+      "left": {
+        "given_away": "Regalado",
+        "moved": "Pasó a otro acuario",
+        "died": "Murió"
+      },
+      "delete": "Eliminar",
+      "deleteFor": "Eliminar la entrada del {{date}}",
+      "anniversary_one": "{{count}} año juntos",
+      "anniversary_many": "{{count}} años juntos",
+      "anniversary_other": "{{count}} años juntos"
+    },
+    "actions": {
+      "addPhoto": "Agregar foto o video",
+      "growth": "Agregar crecimiento",
+      "spawning": "Agregar desove",
+      "move": "Pasar a otro acuario",
+      "death": "Registrar muerte"
+    },
+    "growth": {
+      "title": "Crecimiento de {{name}}",
+      "length": "Longitud"
+    },
+    "spawning": {
+      "title": "Desove de {{name}}",
+      "hint": "Elige qué son las crías: una generación pura (F1 es la primera) o un híbrido.",
+      "purebred": "Pura",
+      "hybrid": "Híbrido",
+      "generation": "Generación (1 para F1)"
+    },
+    "move": {
+      "title": "Pasar a {{name}} a otro acuario",
+      "warning": "Las fotos y los videos de este pez siguen la visibilidad del acuario nuevo. Si es más visible que el actual, más personas los ven.",
+      "none": "No tienes otro acuario al que pasarlo.",
+      "confirm": "Pasar"
+    },
+    "death": {
+      "title": "{{name}} murió",
+      "hint": "La página queda como memorial con sus fotos y su cronología. Puedes seguir agregando fotos.",
+      "confirm": "Registrar muerte"
+    },
+    "errors": {
+      "length": "Ingresa una longitud mayor que 0.",
+      "lengthTooLarge": "Un pez mide como máximo 300 cm.",
+      "generation": "Ingresa una generación de 1 a 99."
+    },
+    "photoSheet": {
+      "title": "Agregar a la página de {{name}}",
+      "library": "Elegir de mi biblioteca",
+      "camera": "Tomar una foto",
+      "upload": "Elegir una foto del dispositivo",
+      "uploading": "Agregando la foto",
+      "libraryTitle": "Tu biblioteca",
+      "libraryEmpty": "Tu biblioteca no tiene fotos ni videos para agregar.",
+      "more": "Mostrar más",
+      "error": "No se pudo agregar el archivo. Inténtalo de nuevo."
+    },
+    "camera": {
+      "explain": "La cámara toma una foto para la página de {{name}}. La foto se guarda en tu biblioteca.",
+      "notAllowedYet": "La cámara aún no está permitida. Puedes elegir una foto del dispositivo.",
+      "denied": "Para usar la cámara, permítela en los ajustes de tu dispositivo. Puedes elegir una foto del dispositivo.",
+      "deniedWeb": "Para usar la cámara, permítela para este sitio en tu navegador. Puedes elegir una foto del dispositivo.",
+      "unavailable": "Este dispositivo no ofrece una cámara ahora. Puedes elegir una foto del dispositivo.",
+      "reviewLabel": "Foto nueva de {{name}}"
     }
   },
   "timeLapseCamera": {
@@ -780,7 +886,11 @@
       "keptStreak_other": "{{tank}}: {{count}} semanas seguidas con fotos del time-lapse.",
       "anniversary_one": "{{tank}} cumple {{count}} año.",
       "anniversary_many": "{{tank}} cumple {{count}} de años.",
-      "anniversary_other": "{{tank}} cumple {{count}} años."
+      "anniversary_other": "{{tank}} cumple {{count}} años.",
+      "openFish": "Abrir la página de {{name}}",
+      "fishAnniversary_one": "{{name}} vive contigo en {{tank}} desde hace {{count}} año.",
+      "fishAnniversary_many": "{{name}} vive contigo en {{tank}} desde hace {{count}} años.",
+      "fishAnniversary_other": "{{name}} vive contigo en {{tank}} desde hace {{count}} años."
     }
   },
   "care": {

@@ -482,7 +482,16 @@
     "inhabitant_removed": "Deze bewoner heeft de bezetting al verlaten.",
     "inhabitant_date_invalid": "De datum van je apparaat kon niet worden gelezen.",
     "inhabitant_request_invalid": "Het verzoek over de bezetting kon niet worden afgerond.",
-    "inhabitant_auth_required": "Log in om de bezetting bij te houden."
+    "inhabitant_auth_required": "Log in om de bezetting bij te houden.",
+    "fish_not_found": "Deze vispagina is niet beschikbaar.",
+    "fish_invalid": "Controleer het verzoek: een lengte is positief in cm of inch, kuit heeft een generatie van 1 tot 99 of is een hybride.",
+    "fish_date_invalid": "De dag moet een datum zijn die niet in de toekomst en niet vóór het inzetten van de vis ligt.",
+    "fish_move_tank_invalid": "Kies een ander aquarium van jou.",
+    "fish_removed": "Deze vis heeft de bezetting al verlaten.",
+    "fish_event_fixed": "Alleen items over groei en kuit kunnen worden verwijderd.",
+    "fish_request_invalid": "Het verzoek over de vis kon niet worden afgerond.",
+    "fish_auth_required": "Log in om je vissen bij te houden.",
+    "media_already_linked": "Dit bestand staat al op de pagina."
   },
   "featureFlags": {
     "activityTitle": "Gemeenschapsactiviteit",
@@ -625,6 +634,102 @@
       "removedBefore": "De dag kan niet voor de komst van de bewoner liggen."
     }
   },
+  "fish": {
+    "title": "Vis",
+    "loadError": "De vispagina kon niet worden geladen.",
+    "notFound": "Deze vispagina is niet beschikbaar.",
+    "saveError": "De wijziging kon niet worden opgeslagen. Probeer het opnieuw.",
+    "speciesUnknown": "Soort onbekend",
+    "keptBy": "Gehouden door {{name}}",
+    "lives": "Leeft in {{tank}}",
+    "lived": "Leefde in {{tank}}",
+    "tankDeleted": "{{tank}} (verwijderd)",
+    "since": "Ingezet op {{date}}",
+    "length": "Lengte: {{length}}",
+    "memorial": "Ter nagedachtenis",
+    "memorialDates": "{{from}} tot {{to}}",
+    "memorialDied": "Overleden op {{date}}",
+    "media": "Foto's en video's",
+    "mediaEmpty": "Nog geen foto's of video's.",
+    "photoOf": "Foto van {{name}}",
+    "removeMedia": "Van de pagina halen",
+    "removeMediaFor": "Dit bestand van de pagina van {{name}} halen",
+    "timeline": "Tijdlijn",
+    "timelineEmpty": "Er staat nog niets op de tijdlijn.",
+    "day": "Dag",
+    "save": "Opslaan",
+    "event": {
+      "movedIn": "Ingezet",
+      "growth": "Gemeten: {{length}}",
+      "spawning": "Gekuit, nageslacht {{generation}}",
+      "spawningHybrid": "Gekuit, hybride nageslacht",
+      "moved": "Verhuisd naar {{tank}}",
+      "movedAway": "Verhuisd naar een ander aquarium",
+      "died": "Overleden",
+      "left": {
+        "given_away": "Weggegeven",
+        "moved": "Verhuisd naar een ander aquarium",
+        "died": "Overleden"
+      },
+      "delete": "Verwijderen",
+      "deleteFor": "Het item van {{date}} verwijderen",
+      "anniversary_one": "{{count}} jaar samen",
+      "anniversary_other": "{{count}} jaar samen"
+    },
+    "actions": {
+      "addPhoto": "Foto of video toevoegen",
+      "growth": "Groei toevoegen",
+      "spawning": "Kuit toevoegen",
+      "move": "Naar een ander aquarium verhuizen",
+      "death": "Overlijden vastleggen"
+    },
+    "growth": {
+      "title": "Groei van {{name}}",
+      "length": "Lengte"
+    },
+    "spawning": {
+      "title": "Kuit van {{name}}",
+      "hint": "Kies wat het nageslacht is: een raszuivere generatie (F1 is de eerste) of een hybride.",
+      "purebred": "Raszuiver",
+      "hybrid": "Hybride",
+      "generation": "Generatie (1 voor F1)"
+    },
+    "move": {
+      "title": "{{name}} verhuizen",
+      "warning": "Foto's en video's van deze vis volgen de zichtbaarheid van het nieuwe aquarium. Is dat zichtbaarder dan het huidige, dan zien meer mensen ze.",
+      "none": "Je hebt geen ander aquarium om naartoe te verhuizen.",
+      "confirm": "Verhuizen"
+    },
+    "death": {
+      "title": "{{name}} is overleden",
+      "hint": "De pagina blijft bestaan als gedenkpagina met foto's en tijdlijn. Je kunt nog foto's toevoegen.",
+      "confirm": "Overlijden vastleggen"
+    },
+    "errors": {
+      "length": "Voer een lengte groter dan 0 in.",
+      "lengthTooLarge": "Een vis is hoogstens 300 cm lang.",
+      "generation": "Voer een generatie van 1 tot 99 in."
+    },
+    "photoSheet": {
+      "title": "Toevoegen aan de pagina van {{name}}",
+      "library": "Kiezen uit mijn bibliotheek",
+      "camera": "Foto maken",
+      "upload": "Foto van het apparaat kiezen",
+      "uploading": "Foto wordt toegevoegd",
+      "libraryTitle": "Je bibliotheek",
+      "libraryEmpty": "Je bibliotheek heeft geen foto's of video's om toe te voegen.",
+      "more": "Meer tonen",
+      "error": "Het bestand kon niet worden toegevoegd. Probeer het opnieuw."
+    },
+    "camera": {
+      "explain": "De camera maakt een foto voor de pagina van {{name}}. De foto wordt in je bibliotheek bewaard.",
+      "notAllowedYet": "De camera is nog niet toegestaan. Je kunt in plaats daarvan een foto van het apparaat kiezen.",
+      "denied": "Sta de camera toe in de instellingen van je apparaat om hem te gebruiken. Je kunt in plaats daarvan een foto van het apparaat kiezen.",
+      "deniedWeb": "Sta de camera toe voor deze site in je browser om hem te gebruiken. Je kunt in plaats daarvan een foto van het apparaat kiezen.",
+      "unavailable": "Dit apparaat biedt nu geen camera aan. Je kunt een foto van het apparaat kiezen.",
+      "reviewLabel": "Nieuwe foto van {{name}}"
+    }
+  },
   "timeLapseCamera": {
     "action": "Timelapse-foto",
     "title": "Timelapse-foto",
@@ -765,7 +870,10 @@
       "keptStreak_one": "{{tank}}: {{count}} week op rij timelapse-foto’s.",
       "keptStreak_other": "{{tank}}: {{count}} weken op rij timelapse-foto’s.",
       "anniversary_one": "{{tank}} is {{count}} jaar oud.",
-      "anniversary_other": "{{tank}} is {{count}} jaar oud."
+      "anniversary_other": "{{tank}} is {{count}} jaar oud.",
+      "openFish": "De pagina van {{name}} openen",
+      "fishAnniversary_one": "{{name}} woont al {{count}} jaar bij je in {{tank}}.",
+      "fishAnniversary_other": "{{name}} woont al {{count}} jaar bij je in {{tank}}."
     }
   },
   "care": {

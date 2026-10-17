@@ -482,7 +482,16 @@
     "inhabitant_removed": "This inhabitant has already left the stocking.",
     "inhabitant_date_invalid": "Your device date could not be read.",
     "inhabitant_request_invalid": "The stocking request could not be completed.",
-    "inhabitant_auth_required": "Please sign in to keep the stocking."
+    "inhabitant_auth_required": "Please sign in to keep the stocking.",
+    "fish_not_found": "This fish page is unavailable.",
+    "fish_invalid": "Check the request: a length is positive and in cm or inch, a spawning has a generation from 1 to 99 or is a hybrid.",
+    "fish_date_invalid": "The day must be a date that is not in the future and not before the fish moved in.",
+    "fish_move_tank_invalid": "Choose another tank of yours.",
+    "fish_removed": "This fish has already left the stocking.",
+    "fish_event_fixed": "Only growth and spawning entries can be deleted.",
+    "fish_request_invalid": "The fish request could not be completed.",
+    "fish_auth_required": "Please sign in to keep your fish.",
+    "media_already_linked": "This file is already on the page."
   },
   "featureFlags": {
     "activityTitle": "Community activity",
@@ -625,6 +634,102 @@
       "removedBefore": "The day cannot be before the inhabitant moved in."
     }
   },
+  "fish": {
+    "title": "Fish",
+    "loadError": "The fish page could not be loaded.",
+    "notFound": "This fish page is not available.",
+    "saveError": "The change could not be saved. Please try again.",
+    "speciesUnknown": "Species unknown",
+    "keptBy": "Kept by {{name}}",
+    "lives": "Lives in {{tank}}",
+    "lived": "Lived in {{tank}}",
+    "tankDeleted": "{{tank}} (deleted)",
+    "since": "Moved in on {{date}}",
+    "length": "Length: {{length}}",
+    "memorial": "In memory",
+    "memorialDates": "{{from}} to {{to}}",
+    "memorialDied": "Died on {{date}}",
+    "media": "Photos and videos",
+    "mediaEmpty": "No photos or videos yet.",
+    "photoOf": "Photo of {{name}}",
+    "removeMedia": "Remove from the page",
+    "removeMediaFor": "Remove this file from the page of {{name}}",
+    "timeline": "Timeline",
+    "timelineEmpty": "Nothing on the timeline yet.",
+    "day": "Day",
+    "save": "Save",
+    "event": {
+      "movedIn": "Moved in",
+      "growth": "Measured: {{length}}",
+      "spawning": "Spawned, offspring {{generation}}",
+      "spawningHybrid": "Spawned, hybrid offspring",
+      "moved": "Moved to {{tank}}",
+      "movedAway": "Moved to another tank",
+      "died": "Died",
+      "left": {
+        "given_away": "Given away",
+        "moved": "Moved to another tank",
+        "died": "Died"
+      },
+      "delete": "Delete",
+      "deleteFor": "Delete the entry of {{date}}",
+      "anniversary_one": "{{count}} year together",
+      "anniversary_other": "{{count}} years together"
+    },
+    "actions": {
+      "addPhoto": "Add a photo or video",
+      "growth": "Add growth",
+      "spawning": "Add spawning",
+      "move": "Move to another tank",
+      "death": "Record death"
+    },
+    "growth": {
+      "title": "Growth of {{name}}",
+      "length": "Length"
+    },
+    "spawning": {
+      "title": "Spawning of {{name}}",
+      "hint": "Choose what the offspring is: a pure-bred generation, where F1 is the first, or a hybrid.",
+      "purebred": "Pure-bred",
+      "hybrid": "Hybrid",
+      "generation": "Generation (1 for F1)"
+    },
+    "move": {
+      "title": "Move {{name}}",
+      "warning": "Photos and videos of this fish follow the visibility of the new tank. If it is more visible than the current one, more people see them.",
+      "none": "You have no other tank to move to.",
+      "confirm": "Move"
+    },
+    "death": {
+      "title": "{{name}} died",
+      "hint": "The page stays as a memorial with its photos and timeline. You can still add photos.",
+      "confirm": "Record death"
+    },
+    "errors": {
+      "length": "Enter a length greater than 0.",
+      "lengthTooLarge": "A fish is at most 300 cm long.",
+      "generation": "Enter a generation from 1 to 99."
+    },
+    "photoSheet": {
+      "title": "Add to the page of {{name}}",
+      "library": "Choose from my media library",
+      "camera": "Take a photo",
+      "upload": "Choose a photo from the device",
+      "uploading": "Adding the photo",
+      "libraryTitle": "Your media library",
+      "libraryEmpty": "Your library has no photos or videos to add.",
+      "more": "Show more",
+      "error": "The file could not be added. Please try again."
+    },
+    "camera": {
+      "explain": "The camera takes a photo for the page of {{name}}. The photo is saved in your media library.",
+      "notAllowedYet": "The camera is not allowed yet. You can choose a photo from the device instead.",
+      "denied": "To use the camera, allow it in the settings of your device. You can choose a photo from the device instead.",
+      "deniedWeb": "To use the camera, allow it for this site in your browser. You can choose a photo from the device instead.",
+      "unavailable": "This device offers no camera right now. You can choose a photo from the device.",
+      "reviewLabel": "New photo of {{name}}"
+    }
+  },
   "timeLapseCamera": {
     "action": "Time-lapse photo",
     "title": "Time-lapse photo",
@@ -765,7 +870,10 @@
       "keptStreak_one": "{{tank}}: {{count}} week of time-lapse photos in a row.",
       "keptStreak_other": "{{tank}}: {{count}} weeks of time-lapse photos in a row.",
       "anniversary_one": "{{tank}} is {{count}} year old.",
-      "anniversary_other": "{{tank}} is {{count}} years old."
+      "anniversary_other": "{{tank}} is {{count}} years old.",
+      "openFish": "Open the page of {{name}}",
+      "fishAnniversary_one": "{{name}} has lived with you in {{tank}} for {{count}} year.",
+      "fishAnniversary_other": "{{name}} has lived with you in {{tank}} for {{count}} years."
     }
   },
   "care": {

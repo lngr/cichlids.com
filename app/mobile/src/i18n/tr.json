@@ -482,7 +482,16 @@
     "inhabitant_removed": "Bu sakin stoktan zaten ayrıldı.",
     "inhabitant_date_invalid": "Cihazının tarihi okunamadı.",
     "inhabitant_request_invalid": "Stok isteği tamamlanamadı.",
-    "inhabitant_auth_required": "Stoku tutmak için giriş yap."
+    "inhabitant_auth_required": "Stoku tutmak için giriş yap.",
+    "fish_not_found": "Bu balık sayfası kullanılamıyor.",
+    "fish_invalid": "İsteği kontrol et: boy cm veya inç cinsinden pozitiftir, yumurtlamanın 1 ile 99 arasında bir nesli vardır veya melezdir.",
+    "fish_date_invalid": "Gün, gelecekte olmayan ve balık eklenmeden önce olmayan bir tarih olmalıdır.",
+    "fish_move_tank_invalid": "Kendi akvaryumlarından birini seç.",
+    "fish_removed": "Bu balık stoktan zaten ayrıldı.",
+    "fish_event_fixed": "Yalnızca büyüme ve yumurtlama kayıtları silinebilir.",
+    "fish_request_invalid": "Balık isteği tamamlanamadı.",
+    "fish_auth_required": "Balıklarını tutmak için giriş yap.",
+    "media_already_linked": "Bu dosya zaten sayfada."
   },
   "featureFlags": {
     "activityTitle": "Topluluk etkinliği",
@@ -625,6 +634,102 @@
       "removedBefore": "Gün, sakinin girdiği günden önce olamaz."
     }
   },
+  "fish": {
+    "title": "Balık",
+    "loadError": "Balık sayfası yüklenemedi.",
+    "notFound": "Bu balık sayfası kullanılamıyor.",
+    "saveError": "Değişiklik kaydedilemedi. Lütfen tekrar dene.",
+    "speciesUnknown": "Tür bilinmiyor",
+    "keptBy": "Besleyen: {{name}}",
+    "lives": "Yaşadığı akvaryum: {{tank}}",
+    "lived": "Son yaşadığı akvaryum: {{tank}}",
+    "tankDeleted": "{{tank}} (silindi)",
+    "since": "{{date}} tarihinde eklendi",
+    "length": "Boy: {{length}}",
+    "memorial": "Anısına",
+    "memorialDates": "{{from}} ile {{to}} arası",
+    "memorialDied": "{{date}} tarihinde öldü",
+    "media": "Fotoğraflar ve videolar",
+    "mediaEmpty": "Henüz fotoğraf veya video yok.",
+    "photoOf": "{{name}} fotoğrafı",
+    "removeMedia": "Sayfadan kaldır",
+    "removeMediaFor": "Bu dosyayı {{name}} sayfasından kaldır",
+    "timeline": "Zaman çizelgesi",
+    "timelineEmpty": "Zaman çizelgesinde henüz bir şey yok.",
+    "day": "Gün",
+    "save": "Kaydet",
+    "event": {
+      "movedIn": "Eklendi",
+      "growth": "Ölçüldü: {{length}}",
+      "spawning": "Yumurtlama, yavru {{generation}}",
+      "spawningHybrid": "Yumurtlama, melez yavru",
+      "moved": "{{tank}} akvaryumuna taşındı",
+      "movedAway": "Başka bir akvaryuma taşındı",
+      "died": "Öldü",
+      "left": {
+        "given_away": "Hediye edildi",
+        "moved": "Başka bir akvaryuma taşındı",
+        "died": "Öldü"
+      },
+      "delete": "Sil",
+      "deleteFor": "{{date}} tarihli kaydı sil",
+      "anniversary_one": "{{count}} yıl birlikte",
+      "anniversary_other": "{{count}} yıl birlikte"
+    },
+    "actions": {
+      "addPhoto": "Fotoğraf veya video ekle",
+      "growth": "Büyüme ekle",
+      "spawning": "Yumurtlama ekle",
+      "move": "Başka bir akvaryuma taşı",
+      "death": "Ölümü kaydet"
+    },
+    "growth": {
+      "title": "{{name}} büyümesi",
+      "length": "Boy"
+    },
+    "spawning": {
+      "title": "{{name}} yumurtlaması",
+      "hint": "Yavrunun ne olduğunu seç: saf ırk bir nesil (F1 ilkidir) veya melez.",
+      "purebred": "Saf ırk",
+      "hybrid": "Melez",
+      "generation": "Nesil (F1 için 1)"
+    },
+    "move": {
+      "title": "{{name}} balığını taşı",
+      "warning": "Bu balığın fotoğrafları ve videoları yeni akvaryumun görünürlüğünü izler. Yeni akvaryum şimdikinden daha görünürse daha çok kişi onları görür.",
+      "none": "Taşıyabileceğin başka bir akvaryumun yok.",
+      "confirm": "Taşı"
+    },
+    "death": {
+      "title": "{{name}} öldü",
+      "hint": "Sayfa, fotoğrafları ve zaman çizelgesiyle bir anı sayfası olarak kalır. Hâlâ fotoğraf ekleyebilirsin.",
+      "confirm": "Ölümü kaydet"
+    },
+    "errors": {
+      "length": "0'dan büyük bir boy gir.",
+      "lengthTooLarge": "Bir balık en fazla 300 cm boyundadır.",
+      "generation": "1 ile 99 arasında bir nesil gir."
+    },
+    "photoSheet": {
+      "title": "{{name}} sayfasına ekle",
+      "library": "Kitaplığımdan seç",
+      "camera": "Fotoğraf çek",
+      "upload": "Cihazdan fotoğraf seç",
+      "uploading": "Fotoğraf ekleniyor",
+      "libraryTitle": "Kitaplığın",
+      "libraryEmpty": "Kitaplığında eklenecek fotoğraf veya video yok.",
+      "more": "Daha fazla göster",
+      "error": "Dosya eklenemedi. Lütfen tekrar dene."
+    },
+    "camera": {
+      "explain": "Kamera, {{name}} sayfası için bir fotoğraf çeker. Fotoğraf kitaplığına kaydedilir.",
+      "notAllowedYet": "Kameraya henüz izin verilmedi. Bunun yerine cihazdan fotoğraf seçebilirsin.",
+      "denied": "Kamerayı kullanmak için cihazının ayarlarından izin ver. Bunun yerine cihazdan fotoğraf seçebilirsin.",
+      "deniedWeb": "Kamerayı kullanmak için tarayıcında bu site için izin ver. Bunun yerine cihazdan fotoğraf seçebilirsin.",
+      "unavailable": "Bu cihaz şu anda kamera sunmuyor. Cihazdan fotoğraf seçebilirsin.",
+      "reviewLabel": "{{name}} için yeni fotoğraf"
+    }
+  },
   "timeLapseCamera": {
     "action": "Zaman atlamalı fotoğraf",
     "title": "Zaman atlamalı fotoğraf",
@@ -765,7 +870,10 @@
       "keptStreak_one": "{{tank}}: Üst üste {{count}} hafta zaman atlamalı fotoğraf.",
       "keptStreak_other": "{{tank}}: Üst üste {{count}} hafta zaman atlamalı fotoğraf.",
       "anniversary_one": "{{tank}} {{count}} yaşında.",
-      "anniversary_other": "{{tank}} {{count}} yaşında."
+      "anniversary_other": "{{tank}} {{count}} yaşında.",
+      "openFish": "{{name}} sayfasını aç",
+      "fishAnniversary_one": "{{name}}, {{tank}} akvaryumunda {{count}} yıldır seninle yaşıyor.",
+      "fishAnniversary_other": "{{name}}, {{tank}} akvaryumunda {{count}} yıldır seninle yaşıyor."
     }
   },
   "care": {

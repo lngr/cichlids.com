@@ -37,6 +37,7 @@ export function milestoneText(milestone: Milestone, t: Translate): string {
   switch (milestone.kind) {
     case "first_care_week": return t("today.milestones.firstCareWeek", { tank });
     case "kept_streak": return t("today.milestones.keptStreak", { tank, count: milestone.value });
+    case "fish_anniversary": return t("today.milestones.fishAnniversary", { name: milestone.inhabitantName ?? t("common.untitled"), tank, count: milestone.value });
     default: return t("today.milestones.anniversary", { tank, count: milestone.value });
   }
 }
