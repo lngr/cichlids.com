@@ -24,8 +24,8 @@ describe("cardImageUrl", () => {
 });
 
 describe("routeOfAction", () => {
-  it("leads to the tank, the story and the creation of a tank", () => {
-    expect(routeOfAction({ type: "open_tank", tankId: 5 })).toBe("/tanks/5");
+  it("leads to the adoption of the tank, the story and the creation of a tank", () => {
+    expect(routeOfAction({ type: "adopt_tank", tankId: 5 })).toBe("/tanks/5/adopt");
     expect(routeOfAction({ type: "open_story", slug: "blue-peacock" })).toBe("/gallery/blue-peacock");
     expect(routeOfAction({ type: "set_up_tank" })).toBe("/onboarding");
   });

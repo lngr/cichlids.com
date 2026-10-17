@@ -1,16 +1,17 @@
 import type { Me, RetrospectiveImage } from "@cichlids/client-core";
+import { adoptionRoute } from "../adoption/adoptionView";
 import { resolveLanguage } from "../i18n/locales";
 
 /** What a card offers the member to do next. */
 export type RetrospectiveAction =
-  | { type: "open_tank"; tankId: number }
+  | { type: "adopt_tank"; tankId: number }
   | { type: "open_story"; slug: string }
   | { type: "set_up_tank" };
 
-/** The route an action leads to; creating a tank runs through the onboarding with its first photo. */
+/** The route an action leads to; adopting an archive tank opens its adoption, creating a tank runs through the onboarding with its first photo. */
 export function routeOfAction(action: RetrospectiveAction): string {
   switch (action.type) {
-    case "open_tank": return `/tanks/${action.tankId}`;
+    case "adopt_tank": return adoptionRoute(action.tankId);
     case "open_story": return `/gallery/${action.slug}`;
     case "set_up_tank": return "/onboarding";
   }

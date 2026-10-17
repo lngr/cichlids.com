@@ -50,7 +50,7 @@ export function RetrospectiveCardView({ card, onAction }: { card: RetrospectiveC
         {title("retrospective.archiveTank.title")}
         {photo(cardImageUrl(card.image))}
         <Text style={[theme.type.h2, styles.centered, { color: theme.colors.fg }]}>{card.title}</Text>
-        <Button testID={`retrospective-adopt-${card.tankId}`} label={t("retrospective.archiveTank.adopt")} onPress={() => onAction({ type: "open_tank", tankId: card.tankId })} />
+        <Button testID={`retrospective-adopt-${card.tankId}`} label={t("retrospective.archiveTank.adopt")} onPress={() => onAction({ type: "adopt_tank", tankId: card.tankId })} />
       </View>;
     case "tank_today":
       return <View testID="retrospective-card-tank-today" style={[styles.card, { gap: theme.space[3] }]}>

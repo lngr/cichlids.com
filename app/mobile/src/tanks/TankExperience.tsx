@@ -21,6 +21,7 @@ import { measurementLines } from "./measurementFormat";
 import { useUnits } from "../units/useUnits";
 import { useLocalSearchParams } from "expo-router";
 import { TankRegionSlot } from "./TankRegionSlot";
+import { ArchiveTankOffer } from "../adoption/ArchiveTankOffer";
 import { CareHeatmapView } from "../careHeatmap/CareHeatmapView";
 import { TankStreaksCard } from "../streaks/TankStreaksCard";
 import { TankOperationCard } from "../decommission/TankOperationCard";
@@ -107,6 +108,7 @@ export function TankExperience({ tank, series, children, onVisibilityChanged }: 
         </Pressable>
       </View>
     </View>
+    {stream.owner ? <ArchiveTankOffer tankId={Number(tank.id)} /> : null}
     {stream.owner ? <View style={styles.settings}>
       <TankVisibilitySettings tankId={Number(tank.id)} visibility={tank.visibility} audience={tank.audience} onChanged={() => onVisibilityChanged?.()}
         onOpenAudience={() => router.push(`/tanks/${tank.id}/audience`)} />

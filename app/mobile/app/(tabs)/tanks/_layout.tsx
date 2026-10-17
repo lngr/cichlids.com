@@ -18,6 +18,7 @@ export default function TanksStackLayout() {
       <Stack.Screen name="[id]/camera" options={{ title: t("timeLapseCamera.title") }} />
       <Stack.Screen name="[id]/water-change" options={{ title: t("waterChange.title") }} />
       <Stack.Screen name="[id]/audience" options={{ title: t("tanks.audience.title") }} />
+      <Stack.Screen name="[id]/adopt" options={{ title: t("adoption.title") }} />
       <Stack.Screen name="[id]/decommission" options={{ title: t("decommission.title") }} />
     </Stack>
   );
