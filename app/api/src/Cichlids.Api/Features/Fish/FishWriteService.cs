@@ -81,7 +81,7 @@ public sealed class FishWriteService(CichlidsDbContext context, MediaLibraryServ
     }
 
     /// <summary>
-    /// Moves the fish to another live tank of its owner and records the move. The error is a problem code.
+    /// Moves the fish to another live tank of its owner and records the move. The day is not before the latest event of the fish. The error is a problem code.
     /// </summary>
     public async Task<string?> MoveAsync(long id, long profileId, MoveFishRequest? request, DateOnly today, CancellationToken cancellationToken)
     {
@@ -92,6 +92,7 @@ public sealed class FishWriteService(CichlidsDbContext context, MediaLibraryServ
             if (ResolveDay(request.On, today, fish) is not { } day) return DateInvalidCode;
             if (target == fish.TankId || !await context.Tanks.AsNoTracking().AnyAsync(t => t.Id == target && t.ProfileId == profileId && t.DeletedAt == null, cancellationToken))
                 return MoveTankInvalidCode;
+            if (await context.InhabitantEvents.AnyAsync(e => e.InhabitantId == fish.Id && e.OccurredOn > day, cancellationToken)) return DateInvalidCode;
             var nextSort = (await context.Inhabitants.Where(i => i.TankId == target).MaxAsync(i => (int?)i.Sort, cancellationToken) ?? -1) + 1;
             context.InhabitantEvents.Add(new InhabitantEvent
             {

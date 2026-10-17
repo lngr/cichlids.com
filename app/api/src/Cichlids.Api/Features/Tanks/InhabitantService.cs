@@ -28,6 +28,8 @@ public sealed class InhabitantService(CichlidsDbContext context, TankAccessServi
     public const string ReasonInvalidCode = "inhabitant_reason_invalid";
     public const string RemovedOnInvalidCode = "inhabitant_removed_on_invalid";
     public const string RemovedCode = "inhabitant_removed";
+    public const string MovedInAfterEventsCode = "inhabitant_moved_in_after_events";
+    public const string NameRequiredCode = "inhabitant_name_required";
 
     public const int MaxCount = 10000;
 
@@ -96,6 +98,10 @@ public sealed class InhabitantService(CichlidsDbContext context, TankAccessServi
         var inhabitant = await context.Inhabitants.SingleOrDefaultAsync(i => i.Id == id && i.TankId == tankId, ct);
         if (inhabitant is null) return (null, NotFoundCode);
         if (inhabitant.RemovedOn is not null) return (null, RemovedCode);
+        // A named fish keeps its name, which carries its page, and its move-in day precedes its events.
+        if (inhabitant.Name is not null && fields!.Name is null) return (null, NameRequiredCode);
+        if (movedIn is { } newDay && inhabitant.Name is not null
+            && await context.InhabitantEvents.AnyAsync(e => e.InhabitantId == id && e.OccurredOn < newDay, ct)) return (null, MovedInAfterEventsCode);
         inhabitant.SpeciesId = fields!.SpeciesId;
         inhabitant.Count = fields.Count;
         inhabitant.Name = fields.Name;
@@ -125,11 +131,12 @@ public sealed class InhabitantService(CichlidsDbContext context, TankAccessServi
         var presentSince = inhabitant.MovedInOn
             ?? CarePlans.LocalDate(await context.Tanks.Where(t => t.Id == tankId).Select(t => t.CreatedAt).SingleAsync(ct), utcOffsetMinutes);
         if (removedOn < presentSince) return (null, RemovedOnInvalidCode);
-        if (reason == InhabitantRemovalReason.Died && inhabitant.Name is not null)
+        if (inhabitant.Name is not null)
         {
-            // The death of a named fish is an event on its timeline and does not precede an earlier event.
+            // The departure of a named fish does not precede an earlier event on its timeline; a death is an event of its own.
             if (await context.InhabitantEvents.AnyAsync(e => e.InhabitantId == id && e.OccurredOn > removedOn, ct)) return (null, RemovedOnInvalidCode);
-            context.InhabitantEvents.Add(new InhabitantEvent { InhabitantId = id, Kind = InhabitantEventKind.Died, OccurredOn = removedOn });
+            if (reason == InhabitantRemovalReason.Died)
+                context.InhabitantEvents.Add(new InhabitantEvent { InhabitantId = id, Kind = InhabitantEventKind.Died, OccurredOn = removedOn });
         }
 
         inhabitant.RemovedOn = removedOn;

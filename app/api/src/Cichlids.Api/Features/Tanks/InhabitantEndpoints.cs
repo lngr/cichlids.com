@@ -89,6 +89,8 @@ public static partial class InhabitantEndpoints
             InhabitantService.ReasonInvalidCode => "Send the reason as died, given_away or moved.",
             InhabitantService.RemovedOnInvalidCode => "Send the removal day as YYYY-MM-DD, not after your local date and not before the day the inhabitant moved in.",
             InhabitantService.RemovedCode => "This inhabitant has already left the stocking.",
+            InhabitantService.MovedInAfterEventsCode => "The moved-in day cannot be after the first entry on the timeline of the fish.",
+            InhabitantService.NameRequiredCode => "A named fish keeps its name.",
             _ => "Check the stocking request.",
         }, code);
 }

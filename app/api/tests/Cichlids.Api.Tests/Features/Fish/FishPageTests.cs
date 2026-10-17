@@ -501,6 +501,59 @@ public sealed class FishPageTests(ApiFixture fixture) : IAsyncLifetime
     }
 
     [Fact]
+    public async Task GivenAFishWithEvents_WhenTheStockingMovesItsMovedInDayAfterTheEarliestEvent_ThenTheApiRefuses()
+    {
+        var (owner, tank) = await _world.OwnerWithTankAsync();
+        var fish = await _world.AddFishAsync(owner, tank, movedInOn: "2026-09-01");
+        await _world.PostAsync(fish, "/growth", owner, new { length = 5, unit = "cm", on = "2026-10-01" });
+
+        using var later = await SendAsync(fixture, HttpMethod.Put, $"/api/tanks/{tank}/inhabitants/{fish}?date={FishWorld.Today}", owner.Token, new { name = "Bruno", movedInOn = "2026-10-02" });
+        using var equal = await SendAsync(fixture, HttpMethod.Put, $"/api/tanks/{tank}/inhabitants/{fish}?date={FishWorld.Today}", owner.Token, new { name = "Bruno", movedInOn = "2026-10-01" });
+
+        await AssertProblemAsync(later, HttpStatusCode.BadRequest, "inhabitant_moved_in_after_events");
+        Assert.Equal(HttpStatusCode.OK, equal.StatusCode);
+    }
+
+    [Fact]
+    public async Task GivenANamedFish_WhenTheStockingRemovesItsName_ThenTheApiRefusesAndTheFishKeepsItsPage()
+    {
+        var (owner, tank) = await _world.OwnerWithTankAsync();
+        var fish = await _world.AddFishAsync(owner, tank, species: fixture.Seed.Tropheus.Id);
+
+        using var refused = await SendAsync(fixture, HttpMethod.Put, $"/api/tanks/{tank}/inhabitants/{fish}?date={FishWorld.Today}", owner.Token,
+            new { speciesId = fixture.Seed.Tropheus.Id, count = 3 });
+
+        await AssertProblemAsync(refused, HttpStatusCode.BadRequest, "inhabitant_name_required");
+        Assert.Equal("Bruno", (await _world.GetAsync(fish, owner.Token)).GetProperty("name").GetString());
+    }
+
+    [Fact]
+    public async Task GivenAGroupOfOne_WhenTheStockingGivesItAName_ThenItBecomesAFishWithAPage()
+    {
+        var (owner, tank) = await _world.OwnerWithTankAsync();
+        var group = await AddGroupAsync(owner, tank);
+        using var many = await SendAsync(fixture, HttpMethod.Put, $"/api/tanks/{tank}/inhabitants/{group}?date={FishWorld.Today}", owner.Token, new { name = "Emma", speciesId = fixture.Seed.Tropheus.Id, count = 4 });
+        Assert.Equal(1, (await BodyAsync(many)).GetProperty("count").GetInt32());
+
+        Assert.Equal("Emma", (await _world.GetAsync(group, owner.Token)).GetProperty("name").GetString());
+    }
+
+    [Fact]
+    public async Task GivenAMoveOrADeparture_WhenItIsDatedBeforeALaterEvent_ThenTheApiRefuses()
+    {
+        var (owner, tank) = await _world.OwnerWithTankAsync();
+        var second = await NewTankAsync(fixture, owner.ProfileId, TankVisibility.Public, TankVisibility.Public);
+        var fish = await _world.AddFishAsync(owner, tank, movedInOn: "2026-09-01");
+        await _world.PostAsync(fish, "/move", owner, new { toTankId = second, on = "2026-10-10" });
+
+        await _world.AssertRefusedAsync(HttpMethod.Post, fish, "/move", owner.Token, new { toTankId = tank, on = "2026-10-05" }, HttpStatusCode.BadRequest, "fish_date_invalid");
+        using var leaving = await SendAsync(fixture, HttpMethod.Post, $"/api/tanks/{second}/inhabitants/{fish}/removal?date={FishWorld.Today}", owner.Token,
+            new { reason = "given_away", removedOn = "2026-10-05" });
+        await AssertProblemAsync(leaving, HttpStatusCode.BadRequest, "inhabitant_removed_on_invalid");
+        await _world.PostAsync(fish, "/move", owner, new { toTankId = tank, on = "2026-10-10" });
+    }
+
+    [Fact]
     public async Task GivenAProvisionalOwner_WhenKeepingAFish_ThenItWritesEventsAndOnlyItReadsThePage()
     {
         using var caller = await Provisional.ProvisionalTestSupport.NewAsync(fixture.Client);
