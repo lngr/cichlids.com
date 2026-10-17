@@ -40,6 +40,16 @@ public class Profile
     /// </summary>
     public DateTimeOffset? ArchiveRetrospectiveSeenAt { get; set; }
 
+    /// <summary>
+    /// When the member last saw a return retrospective; null while none was shown. Private to the member.
+    /// </summary>
+    public DateTimeOffset? ReturnRetrospectiveSeenAt { get; set; }
+
+    /// <summary>
+    /// The start of the absence the last seen return retrospective covers: the away_since at the time it was seen. Null while none was shown. Private to the member.
+    /// </summary>
+    public DateTimeOffset? ReturnRetrospectiveSince { get; set; }
+
     public DateTimeOffset? OnboardingCompletedAt { get; set; }
     public string[] Interests { get; set; } = [];
     public string[] Badges { get; set; } = [];

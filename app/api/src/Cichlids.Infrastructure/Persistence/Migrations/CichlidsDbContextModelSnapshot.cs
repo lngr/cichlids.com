@@ -1485,6 +1485,14 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("onboarding_completed_at");
 
+                    b.Property<DateTimeOffset?>("ReturnRetrospectiveSeenAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("return_retrospective_seen_at");
+
+                    b.Property<DateTimeOffset?>("ReturnRetrospectiveSince")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("return_retrospective_since");
+
                     b.Property<bool>("StreaksEnabled")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("boolean")
